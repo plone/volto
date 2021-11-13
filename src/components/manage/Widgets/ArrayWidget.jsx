@@ -23,6 +23,7 @@ import {
   DropdownIndicator,
   selectTheme,
   customSelectStyles,
+  MenuList,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 
 import { FormFieldWrapper } from '@plone/volto/components';
@@ -224,7 +225,13 @@ class ArrayWidget extends Component {
           }
           styles={customSelectStyles}
           theme={selectTheme}
-          components={{ DropdownIndicator, Option }}
+          components={{
+            ...(this.props.choices?.length > 25 && {
+              MenuList,
+            }),
+            DropdownIndicator,
+            Option,
+          }}
           value={selectedOption || []}
           placeholder={this.props.intl.formatMessage(messages.select)}
           onChange={this.handleChange}

@@ -6,6 +6,26 @@ import downSVG from '@plone/volto/icons/down-key.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import checkSVG from '@plone/volto/icons/check.svg';
 
+const height = 50; // The height of each option
+
+export const MenuList = injectLazyLibs('reactWindow')((props) => {
+  const { FixedSizeList: List } = props.reactWindow;
+  const { options, children, maxHeight, getValue } = props;
+  const [value] = getValue();
+  const initialOffset = options.indexOf(value) * height;
+
+  return (
+    <List
+      height={maxHeight}
+      itemCount={children.length}
+      itemSize={height}
+      initialScrollOffset={initialOffset}
+    >
+      {({ index, style }) => <div style={style}>{children[index]}</div>}
+    </List>
+  );
+});
+
 export const Option = injectLazyLibs('reactSelect')((props) => {
   const { Option } = props.reactSelect.components;
   return (

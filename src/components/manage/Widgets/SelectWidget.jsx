@@ -23,6 +23,7 @@ import {
   DropdownIndicator,
   Option,
   selectTheme,
+  MenuList,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
@@ -227,7 +228,13 @@ class SelectWidget extends Component {
           options={options}
           styles={customSelectStyles}
           theme={selectTheme}
-          components={{ DropdownIndicator, Option }}
+          components={{
+            ...(options?.length > 25 && {
+              MenuList,
+            }),
+            DropdownIndicator,
+            Option,
+          }}
           value={this.state.selectedOption}
           placeholder={this.props.intl.formatMessage(messages.select)}
           onChange={(selectedOption) => {

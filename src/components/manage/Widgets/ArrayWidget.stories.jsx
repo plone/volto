@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrayWidgetComponent } from './ArrayWidget';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
-import Wrapper from '@plone/volto/storybook';
+import { RealStoreWrapper as Wrapper } from '@plone/volto/storybook';
 
 const ArrayComponent = injectLazyLibs(['reactSelectCreateable'])(
   ArrayWidgetComponent,
@@ -151,6 +151,32 @@ Disabled.args = {
   title: 'Disabled field title',
   description: 'This select field is disabled',
   disabled: true,
+};
+
+const getOptionsGenerator = (count) => {
+  const options = [];
+  for (let i = 0; i < count; i = i + 1) {
+    options.push([i, `Option ${i}`]);
+  }
+  return options;
+};
+
+export const ManyOptions1000 = Array.bind({});
+ManyOptions1000.args = {
+  id: 'field-empty',
+  title: 'field 1 title',
+  description: 'Optional help text',
+  placeholder: 'Type something…',
+  choices: getOptionsGenerator(1000),
+};
+
+export const ManyOptions500 = Array.bind({});
+ManyOptions500.args = {
+  id: 'field-empty',
+  title: 'field 1 title',
+  description: 'Optional help text',
+  placeholder: 'Type something…',
+  choices: getOptionsGenerator(500),
 };
 
 export default {
