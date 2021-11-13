@@ -59,6 +59,7 @@ console.log('pub', process.env.RAZZLE_PUBLIC_DIR);
 
 const server = express()
   .disable('x-powered-by')
+  .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
   .use('/freshwater', express.static(process.env.RAZZLE_PUBLIC_DIR))
   .head('/*', function (req, res) {
     // Support for HEAD requests. Required by start-test utility in CI.
