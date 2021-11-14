@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Accordion, Segment, Message } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import AnimateHeight from 'react-animate-height';
-import { keys, map, isEqual } from 'lodash';
+import { keys, map } from 'lodash';
 
 import { Field, Icon } from '@plone/volto/components';
 
@@ -40,12 +40,14 @@ const InlineForm = (props) => {
     footer,
     focusIndex,
     intl,
+    onChangeFormData,
   } = props;
   const _ = intl.formatMessage;
   const defaultFieldset = schema.fieldsets.find((o) => o.id === 'default');
   const other = schema.fieldsets.filter((o) => o.id !== 'default');
 
   React.useEffect(() => {
+    if (!onChangeFormData) return;
     // Will set field values from schema, by matching the default values
 
     const objectSchema = typeof schema === 'function' ? schema(props) : schema;
@@ -64,11 +66,8 @@ const InlineForm = (props) => {
       ...formData,
     };
 
-    Object.keys(initialData).forEach((k) => {
-      if (!isEqual(initialData[k], formData?.[k])) {
-        onChangeField(k, initialData[k]);
-      }
-    });
+    onChangeFormData(initialData);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
