@@ -107,7 +107,7 @@ let config = {
     ToHTMLOptions,
     imageObjects: ['Image'],
     downloadableObjects: ['Link'],
-    listingPreviewImageField: 'image',
+    listingPreviewImageField: 'image', // deprecated from Volto 14 onwards
     customStyleMap: null,
     notSupportedBrowsers: ['ie'],
     defaultPageSize: 25,
