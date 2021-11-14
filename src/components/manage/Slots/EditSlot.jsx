@@ -222,7 +222,7 @@ class EditSlot extends React.Component {
               />
             </Portal>
             <Portal node={document.getElementById('sidebar')}>
-              <Sidebar documentTab={false} settingsTab={true} />
+              <Sidebar documentTab={true} settingsTab={true} />
             </Portal>
             <Portal node={document.getElementById('sidebar-settings')}>
               <div>
