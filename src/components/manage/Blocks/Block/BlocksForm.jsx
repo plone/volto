@@ -2,6 +2,7 @@ import React from 'react';
 import EditBlock from './Edit';
 import { DragDropList } from '@plone/volto/components';
 import { getBlocks } from '@plone/volto/helpers';
+import { useIntl } from 'react-intl';
 import {
   addBlock,
   insertBlock,
@@ -11,6 +12,7 @@ import {
   mutateBlock,
   nextBlockId,
   previousBlockId,
+  applyBlockDefaults,
 } from '@plone/volto/helpers';
 import EditBlockWrapper from './EditBlockWrapper';
 import { setSidebarTab } from '@plone/volto/actions';
@@ -149,6 +151,7 @@ const BlocksForm = (props) => {
   );
 
   const editBlockWrapper = children || defaultBlockWrapper;
+  const intl = useIntl();
 
   return (
     <div className="blocks-form" ref={ref}>
@@ -175,7 +178,12 @@ const BlocksForm = (props) => {
               allowedBlocks,
               showRestricted,
               block: childId,
-              data: child,
+              data: applyBlockDefaults({
+                data: child,
+                intl,
+                metadata,
+                properties,
+              }),
               handleKeyDown,
               id: childId,
               formTitle: title,

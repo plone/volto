@@ -49,6 +49,7 @@ import ToCSettingsSchema from '@plone/volto/components/manage/Blocks/ToC/Schema'
 
 import SearchBlockView from '@plone/volto/components/manage/Blocks/Search/SearchBlockView';
 import SearchBlockEdit from '@plone/volto/components/manage/Blocks/Search/SearchBlockEdit';
+import searchBlockSchema from '@plone/volto/components/manage/Blocks/Search/schema';
 
 import RightColumnFacets from '@plone/volto/components/manage/Blocks/Search/layout/RightColumnFacets';
 import LeftColumnFacets from '@plone/volto/components/manage/Blocks/Search/layout/LeftColumnFacets';
@@ -387,6 +388,7 @@ const blocksConfig = {
     group: 'common',
     view: SearchBlockView,
     edit: SearchBlockEdit,
+    schema: searchBlockSchema,
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,

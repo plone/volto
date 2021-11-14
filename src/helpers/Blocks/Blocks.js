@@ -359,3 +359,32 @@ export function visitBlocks(content, callback) {
     }
   }
 }
+
+/**
+ * Apply the block's default (as defined in schema) to the block data.
+ */
+export function applyBlockDefaults({ data, intl, ...rest }) {
+  const block_type = data['@type'];
+  const { schema } = config.blocks.blocksConfig[block_type] || {};
+  if (!schema) return data;
+
+  const objectSchema =
+    typeof schema === 'function' ? schema({ data, intl, ...rest }) : schema;
+
+  const initialData = {
+    ...Object.keys(objectSchema.properties).reduce(
+      (accumulator, currentField) => {
+        return objectSchema.properties[currentField].default
+          ? {
+              ...accumulator,
+              [currentField]: objectSchema.properties[currentField].default,
+            }
+          : accumulator;
+      },
+      {},
+    ),
+    ...data,
+  };
+
+  return initialData;
+}
