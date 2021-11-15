@@ -14,7 +14,7 @@ This upgrade guide lists all breaking changes in Volto and explains the
 
 ## Upgrading to Volto 14.x.x
 
-### Revisited rethought and refactored Seamless mode
+### Revisited rethought and refactored seamless mode
 
 Seamless mode was released as experimental in Volto 13. However, after a period of testing some issues were detected so the feature has been rethought and refactored.
 
@@ -36,7 +36,7 @@ add-ons without having to install the whole Volto package (which is not possible
 `@plone/scripts` package is the placeholder of the script, which has also been improved
 alongside the infrastructure (Babel config) for it to run.
 
-Steps for migration:
+**Steps for migration**:
 
 #### Projects
 
@@ -51,7 +51,8 @@ In a project's `package.json` replace the `scripts` `i18n` line with this one:
 
 #### Add-ons
 
-If you are an add-on maintainer, remove the `src/i18n.js` script since it's useless, and then within the `scripts` section of `package.json` apply the following change:
+If you are an add-on maintainer, remove the `src/i18n.js` script, since it's useless.
+Within the `scripts` section of `package.json` apply the following change:
 
 ```diff
    "scripts": {
@@ -68,7 +69,7 @@ afterwards add this to the `dependencies` list:
    }
 ```
 
-Now that `package.json` is modified afterwards replace `babel.config.js` contents with the following:
+Apply the following diff to `babel.config.js`:
 
 ```diff
 -module.exports = require('@plone/volto/babel');
@@ -131,6 +132,13 @@ the block title. Before, it took the `id` of the block, which is utterly wrong a
 
 Following the same convention as the above change, `Variation` field coming from the block enhancers now uses the `title` of the block as source for translating
 the variation title. Before, it took the `id` of the block, which as stated before, is wrong and missleading. There is a chance that  this change will trigger untranslated variation titles in your projects and add-ons.
+
+### Listing block no longer retrieve fullobjects
+
+The query used by the listing block always used the `fullobjects` flag, which fully serialized (and thus, wake from the db) the resultant response items. This was causing performance issues. From Volto 14, the results will get the normal catalog query metadata results. You'll need to adapt your code to get the appropiate data if required and/or use the metadata counterparts. If your code depends on this behavior and you don't have time to adapt now, there's a scape hatch: set the flag `bbb_listingBlockFetchesFullobjects` to `true` in the `settings` config object.
+
+!!! note
+      This feature needs at least `plone.restapi >= 8.13.0` and `plone.volto 3.1a4`. You need to update the catalog from your existing objects in your database, if you have already a production site in place, in order to have the new metadata filled in the catalog.
 
 ### New mobile navigation menu
 

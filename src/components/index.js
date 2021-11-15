@@ -114,6 +114,7 @@ export BlocksToolbar from '@plone/volto/components/manage/Form/BlocksToolbar';
 export Field from '@plone/volto/components/manage/Form/Field';
 export SearchTags from '@plone/volto/components/theme/Search/SearchTags';
 export CommentEditModal from '@plone/volto/components/theme/Comments/CommentEditModal';
+export ContentsBreadcrumbs from '@plone/volto/components/manage/Contents/ContentsBreadcrumbs';
 export ContentsIndexHeader from '@plone/volto/components/manage/Contents/ContentsIndexHeader';
 export ContentsItem from '@plone/volto/components/manage/Contents/ContentsItem';
 export ContentsUploadModal from '@plone/volto/components/manage/Contents/ContentsUploadModal';
