@@ -64,8 +64,6 @@ const server = express()
     res.send('');
   });
 
-if (expressMiddleware.length) server.use('/', expressMiddleware);
-
 // Internal proxy to bypass CORS while developing.
 if (__DEVELOPMENT__ && config.settings.devProxyToApiPath) {
   // This is the proxy to the API in case the accept header is 'application/json'
@@ -114,6 +112,7 @@ if (__DEVELOPMENT__ && config.settings.devProxyToApiPath) {
 }
 
 server.all('*', setupServer);
+if (expressMiddleware.length) server.use('/', expressMiddleware);
 
 function setupServer(req, res, next) {
   plugToRequest(req, res);
