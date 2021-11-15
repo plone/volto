@@ -16,6 +16,8 @@
 
 ### Internal
 
+- Upgrade stylelint to v14 (vscode-stylelint requires it now) @sneridagh
+
 ## 14.0.0-alpha.32 (2021-11-09)
 
 ### Breaking
