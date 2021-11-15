@@ -20,13 +20,21 @@ function NewBaseWidget(name) {
 }
 
 const withStateManagement = (Component) => ({ ...props }) => {
+  // onChangeField, formData, onChangeFormData
+  // are required props, connected to the main Volto's formdata state.
+  // Mocked here with local state.
   const [formData, setFormData] = React.useState(props.formData || {});
   const onChangeField = (id, value) => {
     setFormData({ ...formData, [id]: value });
   };
-
+  const onChangeFormData = (data) => setFormData({ ...formData, ...data });
   return (
-    <Component {...props} onChangeField={onChangeField} formData={formData} />
+    <Component
+      {...props}
+      onChangeField={onChangeField}
+      formData={formData}
+      onChangeFormData={onChangeFormData}
+    />
   );
 };
 
