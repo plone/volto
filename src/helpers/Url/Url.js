@@ -100,7 +100,7 @@ export function flattenToAppURL(url) {
     url
       .replace(settings.internalApiPath, '')
       .replace(settings.apiPath, '')
-      .replace(settings.publicURL, prefixPath)
+      .replace(settings.publicURL, prefixPath) // TODO: prefix with / ?
   );
 }
 

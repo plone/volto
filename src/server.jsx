@@ -55,12 +55,9 @@ function reactIntlErrorHandler(error) {
 
 const supported = new locale.Locales(keys(languages), 'en');
 
-console.log('pub', process.env.RAZZLE_PUBLIC_DIR);
-
 const server = express()
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
-  .use('/freshwater', express.static(process.env.RAZZLE_PUBLIC_DIR))
   .head('/*', function (req, res) {
     // Support for HEAD requests. Required by start-test utility in CI.
     res.send('');
@@ -69,6 +66,13 @@ const server = express()
     plugToRequest(req, res);
     next();
   });
+
+if (process.env.RAZZLE_PREFIX_PATH) {
+  server.use(
+    `/${process.env.RAZZLE_PREFIX_PATH}`,
+    express.static(process.env.RAZZLE_PUBLIC_DIR),
+  );
+}
 
 const middleware = (config.settings.expressMiddleware || []).filter((m) => m);
 
@@ -159,7 +163,6 @@ server.get('/*', (req, res) => {
   const extractor = new ChunkExtractor({
     statsFile: path.resolve('build/loadable-stats.json'),
     entrypoints: ['client'],
-    publicPath: process.env.RAZZLE_PREFIX_PATH || '',
   });
 
   const url = req.originalUrl || req.url;
