@@ -55,8 +55,6 @@ function reactIntlErrorHandler(error) {
 
 const supported = new locale.Locales(keys(languages), 'en');
 
-console.log('pub', process.env.RAZZLE_PUBLIC_DIR);
-
 const server = express()
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
@@ -165,7 +163,6 @@ server.get('/*', (req, res) => {
   const extractor = new ChunkExtractor({
     statsFile: path.resolve('build/loadable-stats.json'),
     entrypoints: ['client'],
-    publicPath: '/freshwater/',
   });
 
   const url = req.originalUrl || req.url;
