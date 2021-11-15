@@ -148,6 +148,42 @@ The mobile navigation menu has been improved using a customizable `CSSTransition
 
 In order to match the Plone logo and in lieu to use a better generic icon starting point, the `Logo.jsx` component and `.logo-nav-wrapper` styling have been adjusted. The logo is not constrained by default to `64px` and the wrapper now centers vertically. Please check that your project logo placeholder is still in good shape after upgrade.
 
+### Defaults in `BlockDataForm` and `InlineForm` helper components
+
+ Not strictly breaking, since the feature won't work if no action is taken, but for this new feature to work properly, you have to pass down this props `onChangeFormData` down in every instantiation of `BlockDataForm` or `InlineForm` like is shown here:
+
+ ```diff
+ --- a/src/components/manage/Blocks/Listing/ListingData.jsx
+ +++ b/src/components/manage/Blocks/Listing/ListingData.jsx
+
+ @@ -19,7 +19,7 @@ const ListingData = (props) => {
+            [id]: value,
+          });
+        }}
+ +      onChangeFormData={(data) => onChangeBlock(block, data)}
+        formData={data}
+        block={block}
+      />
+ ```
+
+Also, in your custom blocks settings you have to add a new property in `src/config.js`:
+
+```js hl_lines="8"
+  import searchBlockSchema from '@plone/volto/components/manage/Blocks/Search/schema';
+  ...
+  search: {
+    id: 'search',
+    title: 'Search',
+    icon: searchSVG,
+    group: 'common',
+    view: SearchBlockView,
+    edit: SearchBlockEdit,
+    schema: searchBlockSchema,
+    restricted: false,
+    mostUsed: false,
+    ...
+```
+
 ## Upgrading to Volto 13.x.x
 
 ## Deprecating NodeJS 10
