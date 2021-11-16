@@ -8,7 +8,15 @@
 
 ### Bugfix
 
+- Folder contents table header and breadcrumbs dropdown now appear only from the
+  bottom, fixing an issue where the breadcrumb dropdown content was clipped 
+  by the header area @ichim-david
+- Folder contents sort dropdown is now also simple as the other dropdowns 
+  ensuring we have the same behavior between adjecent dropdown @ichim-david
+
 ### Internal
+
+- Upgrade stylelint to v14 (vscode-stylelint requires it now) @sneridagh
 
 ## 14.0.0-alpha.32 (2021-11-09)
 
