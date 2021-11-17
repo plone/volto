@@ -4,14 +4,21 @@
 
 ### Breaking
 
+- The block settings schema, which used to sit in `config.blocks.blocksConfig.<blocId>.schema`
+  has been moved to `config.blocks.blocksConfig.<blocId>.layoutSettingsSchema`.
+
 ### Feature
+
+- Blocks can now declare, in their block configuration registry,
+  a `blockSchema` with a schema factory. This schema will also be used to
+  extract a default block value.
 
 ### Bugfix
 
 - Folder contents table header and breadcrumbs dropdown now appear only from the
-  bottom, fixing an issue where the breadcrumb dropdown content was clipped 
+  bottom, fixing an issue where the breadcrumb dropdown content was clipped
   by the header area @ichim-david
-- Folder contents sort dropdown is now also simple as the other dropdowns 
+- Folder contents sort dropdown is now also simple as the other dropdowns
   ensuring we have the same behavior between adjecent dropdown @ichim-david
 
 ### Internal
