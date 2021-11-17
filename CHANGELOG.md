@@ -15,6 +15,7 @@
 
 ### Bugfix
 
+- Fix downloadableObjects default value @giuliaghisini
 - Folder contents table header and breadcrumbs dropdown now appear only from the
   bottom, fixing an issue where the breadcrumb dropdown content was clipped
   by the header area @ichim-david
@@ -47,7 +48,7 @@
 - Fix the selection of Maps Block @iRohitSingh
 - UniversalLink: handle direct download for content-type File if user is not logged. @giuliaghisini
 - Fixed ObjectBrowserWidget when is multiple or maximumSelectionSize is not set @giuliaghisini
-- Fix full-width image overlaps the drag handle  @iRohitSingh
+- Fix full-width image overlaps the drag handle @iRohitSingh
 - Fix move item to top of the folder when clicking on move to top action button @iRohitSingh
 
 ### Internal
