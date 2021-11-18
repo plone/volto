@@ -24,7 +24,7 @@ const FilterList = (props) => {
   const showFilterList = !Object.values(facets).every((facet) => !facet.length);
 
   const currentFilters = Object.fromEntries(
-    Object.entries(facets).filter((v) => v[1]),
+    Object.entries(facets).filter((v) => v[1] && v[0] !== 'SearchableText'),
   );
 
   const totalFilters = [].concat.apply([], Object.values(currentFilters))
@@ -34,7 +34,7 @@ const FilterList = (props) => {
 
   const intl = useIntl();
 
-  return showFilterList && Object.keys(facets).length ? (
+  return showFilterList && Object.keys(currentFilters).length ? (
     <Accordion className="filter-listing">
       <Accordion.Title
         className="filter-list-header"

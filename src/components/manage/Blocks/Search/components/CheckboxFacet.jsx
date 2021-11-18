@@ -10,7 +10,7 @@ const SelectFacet = (props) => {
       <Header as="h4">{facet.title}</Header>
       <div className="entries">
         {choices.map(({ label, value }, i) => (
-          <div className="entry">
+          <div className="entry" key={value}>
             <Checkbox
               disabled={isEditMode}
               label={label}

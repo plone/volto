@@ -18,6 +18,14 @@ exports[`renders an Listing Data Sidebar component 1`] = `
       className="ui segment form attached"
     >
       <div
+        className="mocked-choices-widget"
+        id="mocked-field-variation"
+      >
+        Variation
+         - 
+        No description
+      </div>
+      <div
         className="mocked-default-widget"
         id="mocked-field-querystring"
       >

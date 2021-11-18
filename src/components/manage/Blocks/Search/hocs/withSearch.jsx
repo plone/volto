@@ -4,6 +4,10 @@ import { isEmpty } from 'lodash';
 import qs from 'query-string';
 import { useLocation, useHistory } from 'react-router-dom';
 
+function getDisplayName(WrappedComponent) {
+  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
+}
+
 const SEARCH_ENDPOINT_FIELDS = [
   'SearchableText',
   'b_size',
@@ -11,6 +15,8 @@ const SEARCH_ENDPOINT_FIELDS = [
   'sort_on',
   'sort_order',
 ];
+
+const PAQO = 'plone.app.querystring.operation';
 
 /**
  * Based on URL state, gets an initial internal state for the search
@@ -80,6 +86,11 @@ function normalizeState({ query, facets, id, searchText, sortOn, sortOrder }) {
   // TODO: need to check if SearchableText facet is not already in the query
   // Ideally the searchtext functionality should be restructured as being just
   // another facet
+  params.query = params.query.reduce(
+    // Remove SearchableText from query
+    (acc, kvp) => (kvp.i === 'SearchableText' ? acc : [...acc, kvp]),
+    [],
+  );
   if (searchText) {
     params.query.push({
       i: 'SearchableText',
@@ -97,7 +108,7 @@ const getSearchFields = (searchData) => {
     ...SEARCH_ENDPOINT_FIELDS.map((k) => {
       return searchData[k] ? { [k]: searchData[k] } : {};
     }),
-    searchData.query ? { query: JSON.stringify(searchData['query']) } : {},
+    searchData.query ? { query: serializeQuery(searchData['query']) } : {},
   );
 };
 
@@ -117,6 +128,7 @@ const useHashState = () => {
     {},
     ...Array.from(Object.keys(oldState)).map((k) => ({ [k]: oldState[k] })),
   );
+
   const setSearchData = React.useCallback(
     (searchData) => {
       const newParams = qs.parse(location.hash);
@@ -150,11 +162,11 @@ const useHashState = () => {
 
 /**
  * A hook to make it possible to switch disable mirroring the search block
- * state to the window location
+ * state to the window location. When using the internal state we "start from
+ * scratch", as it's intended to be used in the edit page.
  */
 const useSearchBlockState = (uniqueId, isEditMode) => {
-  const location = useLocation();
-  const [hashState, setHashState] = useHashState(qs.parse(location.hash));
+  const [hashState, setHashState] = useHashState();
   const [internalState, setInternalState] = React.useState({});
 
   return isEditMode
@@ -162,9 +174,23 @@ const useSearchBlockState = (uniqueId, isEditMode) => {
     : [hashState, setHashState];
 };
 
+// Simple compress/decompress the state in URL by replacing the lengthy string
+const deserializeQuery = (q) => {
+  return JSON.parse(q)?.map((kvp) => ({
+    ...kvp,
+    o: kvp.o.replace(/^paqo/, PAQO),
+  }));
+};
+const serializeQuery = (q) => {
+  return JSON.stringify(
+    q?.map((kvp) => ({ ...kvp, o: kvp.o.replace(PAQO, 'paqo') })),
+  );
+};
+
 const withSearch = (options) => (WrappedComponent) => {
   const { inputDelay = 1000 } = options || {};
-  return (props) => {
+
+  function WithSearch(props) {
     const { data, id, editable = false } = props;
 
     const [locationSearchData, setLocationSearchData] = useSearchBlockState(
@@ -173,9 +199,12 @@ const withSearch = (options) => (WrappedComponent) => {
     );
 
     const urlQuery = locationSearchData.query
-      ? JSON.parse(locationSearchData.query)
+      ? deserializeQuery(locationSearchData.query)
       : [];
-    const urlSearchText = locationSearchData.SearchableText || '';
+    const urlSearchText =
+      locationSearchData.SearchableText ||
+      urlQuery.find(({ i }) => i === 'SearchableText')?.v ||
+      '';
 
     // TODO: refactor, should use only useLocationStateManager()!!!
     const [searchText, setSearchText] = React.useState(urlSearchText);
@@ -245,9 +274,7 @@ const withSearch = (options) => (WrappedComponent) => {
       (state) => state.querystringsearch.subrequests,
     );
     const totalItems =
-      searchData.query?.length > 0 // This is to compensate for listing block not triggering fetch when query is empty
-        ? querystringResults[id]?.total || querystringResults[id]?.items?.length
-        : 0;
+      querystringResults[id]?.total || querystringResults[id]?.items?.length;
 
     return (
       <WrappedComponent
@@ -266,7 +293,10 @@ const withSearch = (options) => (WrappedComponent) => {
         totalItems={totalItems}
       />
     );
-  };
+  }
+  WithSearch.displayName = `WithSearch(${getDisplayName(WrappedComponent)})`;
+
+  return WithSearch;
 };
 
 export default withSearch;
