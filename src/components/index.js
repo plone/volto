@@ -36,6 +36,7 @@ export Avatar from '@plone/volto/components/theme/Avatar/Avatar';
 export Icon from '@plone/volto/components/theme/Icon/Icon';
 export ConditionalLink from '@plone/volto/components/manage/ConditionalLink/ConditionalLink';
 export UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
+export LinkMore from '@plone/volto/components/manage/LinkMore/LinkMore';
 
 // Lazy load them, since we want them and its deps to be in its own chunk
 export ContactForm from '@plone/volto/components/theme/ContactForm/ContactForm';
@@ -81,7 +82,8 @@ export ContentType from '@plone/volto/components/manage/Controlpanels/ContentTyp
 export ContentTypeLayout from '@plone/volto/components/manage/Controlpanels/ContentTypeLayout';
 export ContentTypeSchema from '@plone/volto/components/manage/Controlpanels/ContentTypeSchema';
 export ContentTypesActions from '@plone/volto/components/manage/Controlpanels/ContentTypesActions';
-export UsersControlpanel from '@plone/volto/components/manage/Controlpanels/UsersControlpanel';
+export UsersControlpanel from '@plone/volto/components/manage/Controlpanels/Users/UsersControlpanel';
+export GroupsControlpanel from '@plone/volto/components/manage/Controlpanels/Groups/GroupsControlpanel';
 export ModerateComments from '@plone/volto/components/manage/Controlpanels/ModerateComments';
 export VersionOverview from '@plone/volto/components/manage/Controlpanels/VersionOverview';
 export Delete from '@plone/volto/components/manage/Delete/Delete';
@@ -112,6 +114,7 @@ export BlocksToolbar from '@plone/volto/components/manage/Form/BlocksToolbar';
 export Field from '@plone/volto/components/manage/Form/Field';
 export SearchTags from '@plone/volto/components/theme/Search/SearchTags';
 export CommentEditModal from '@plone/volto/components/theme/Comments/CommentEditModal';
+export ContentsBreadcrumbs from '@plone/volto/components/manage/Contents/ContentsBreadcrumbs';
 export ContentsIndexHeader from '@plone/volto/components/manage/Contents/ContentsIndexHeader';
 export ContentsItem from '@plone/volto/components/manage/Contents/ContentsItem';
 export ContentsUploadModal from '@plone/volto/components/manage/Contents/ContentsUploadModal';
@@ -119,8 +122,8 @@ export ContentsPropertiesModal from '@plone/volto/components/manage/Contents/Con
 export ContentsRenameModal from '@plone/volto/components/manage/Contents/ContentsRenameModal';
 export ContentsWorkflowModal from '@plone/volto/components/manage/Contents/ContentsWorkflowModal';
 export ContentsTagsModal from '@plone/volto/components/manage/Contents/ContentsTagsModal';
-export UsersControlpanelUser from '@plone/volto/components/manage/Controlpanels/UsersControlpanelUser';
-export UsersControlpanelGroups from '@plone/volto/components/manage/Controlpanels/UsersControlpanelGroups';
+export RenderUsers from '@plone/volto/components/manage/Controlpanels/Users/RenderUsers';
+export RenderGroups from '@plone/volto/components/manage/Controlpanels/Groups/RenderGroups';
 export DiffField from '@plone/volto/components/manage/Diff/DiffField';
 export DragDropList from '@plone/volto/components/manage/DragDropList/DragDropList';
 export InlineForm from '@plone/volto/components/manage/Form/InlineForm';

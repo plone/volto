@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import jwtDecode from 'jwt-decode';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
@@ -25,6 +26,7 @@ import {
   getTypes,
   listActions,
   setExpandedToolbar,
+  unlockContent,
 } from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
 import { BodyClass, getBaseUrl } from '@plone/volto/helpers';
@@ -33,6 +35,7 @@ import { Pluggable } from '@plone/volto/components/manage/Pluggable';
 import pastanagaSmall from '@plone/volto/components/manage/Toolbar/pastanaga-small.svg';
 import pastanagalogo from '@plone/volto/components/manage/Toolbar/pastanaga.svg';
 import penSVG from '@plone/volto/icons/pen.svg';
+import unlockSVG from '@plone/volto/icons/unlock.svg';
 import folderSVG from '@plone/volto/icons/folder.svg';
 import addSVG from '@plone/volto/icons/add-document.svg';
 import moreSVG from '@plone/volto/icons/more.svg';
@@ -96,6 +99,10 @@ const messages = defineMessages({
     id: 'Back',
     defaultMessage: 'Back',
   },
+  unlock: {
+    id: 'Unlock',
+    defaultMessage: 'Unlock',
+  },
 });
 
 const toolbarComponents = {
@@ -134,6 +141,7 @@ class Toolbar extends Component {
       user: PropTypes.arrayOf(PropTypes.object),
     }),
     token: PropTypes.string,
+    userId: PropTypes.string,
     pathname: PropTypes.string.isRequired,
     content: PropTypes.shape({
       '@type': PropTypes.string,
@@ -149,6 +157,8 @@ class Toolbar extends Component {
       }),
     ),
     listActions: PropTypes.func.isRequired,
+    unlockContent: PropTypes.func,
+    unlockRequest: PropTypes.objectOf(PropTypes.any),
     inner: PropTypes.element.isRequired,
     hideDefaultViewButtons: PropTypes.bool,
   };
@@ -161,6 +171,7 @@ class Toolbar extends Component {
   static defaultProps = {
     actions: null,
     token: null,
+    userId: null,
     content: null,
     hideDefaultViewButtons: false,
     types: [],
@@ -199,6 +210,11 @@ class Toolbar extends Component {
     if (nextProps.pathname !== this.props.pathname) {
       this.props.listActions(getBaseUrl(nextProps.pathname));
       this.props.getTypes(getBaseUrl(nextProps.pathname));
+    }
+
+    // Unlock
+    if (this.props.unlockRequest.loading && nextProps.unlockRequest.loaded) {
+      this.props.listActions(getBaseUrl(nextProps.pathname));
     }
   }
 
@@ -270,6 +286,10 @@ class Toolbar extends Component {
     this.closeMenu();
   };
 
+  unlock = (e) => {
+    this.props.unlockContent(getBaseUrl(this.props.pathname), true);
+  };
+
   /**
    * Render method.
    * @method render
@@ -277,7 +297,11 @@ class Toolbar extends Component {
    */
   render() {
     const path = getBaseUrl(this.props.pathname);
-    const editAction = find(this.props.actions.object, { id: 'edit' });
+    const lock = this.props.content?.lock;
+    const unlockAction =
+      lock?.locked && lock?.stealable && lock?.creator !== this.props.userId;
+    const editAction =
+      !unlockAction && find(this.props.actions.object, { id: 'edit' });
     const folderContentsAction = find(this.props.actions.object, {
       id: 'folderContents',
     });
@@ -379,6 +403,24 @@ class Toolbar extends Component {
                 )}
                 {!this.props.hideDefaultViewButtons && (
                   <>
+                    {unlockAction && (
+                      <button
+                        aria-label={this.props.intl.formatMessage(
+                          messages.unlock,
+                        )}
+                        className="unlock"
+                        onClick={(e) => this.unlock(e)}
+                        tabIndex={0}
+                      >
+                        <Icon
+                          name={unlockSVG}
+                          size="30px"
+                          className="unlock"
+                          title={this.props.intl.formatMessage(messages.unlock)}
+                        />
+                      </button>
+                    )}
+
                     {editAction && (
                       <Link
                         aria-label={this.props.intl.formatMessage(
@@ -538,10 +580,14 @@ export default compose(
     (state, props) => ({
       actions: state.actions.actions,
       token: state.userSession.token,
+      userId: state.userSession.token
+        ? jwtDecode(state.userSession.token).sub
+        : '',
       content: state.content.data,
       pathname: props.pathname,
       types: filter(state.types.types, 'addable'),
+      unlockRequest: state.content.unlock,
     }),
-    { getTypes, listActions, setExpandedToolbar },
+    { getTypes, listActions, setExpandedToolbar, unlockContent },
   ),
 )(Toolbar);

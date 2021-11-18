@@ -74,11 +74,12 @@ let config = {
     port,
     // The URL Volto is going to be served (see sensible defaults above)
     publicURL,
-    // Internal proxy to bypass CORS *while developing*. Not intended for production use.
-    // In production, the proxy is disabled, make sure you specify an apiPath that does
-    // not require CORS to work.
     apiPath,
     apiExpanders: [],
+    // Internal proxy to bypass CORS *while developing*. NOT intended for production use.
+    // In production is recommended you use a Seamless mode deployment using a web server in
+    // front of both the frontend and the backend so you can bypass CORS safely.
+    // https://docs.voltocms.com/deploying/seamless-mode/
     devProxyToApiPath:
       process.env.RAZZLE_DEV_PROXY_API_PATH ||
       process.env.RAZZLE_API_PATH ||
@@ -92,6 +93,8 @@ let config = {
     actions_raising_api_errors: ['GET_CONTENT', 'UPDATE_CONTENT'],
     internalApiPath: process.env.RAZZLE_INTERNAL_API_PATH || undefined,
     websockets: process.env.RAZZLE_WEBSOCKETS || false,
+    // TODO: legacyTraverse to be removed when the use of the legacy traverse is deprecated.
+    legacyTraverse: process.env.RAZZLE_LEGACY_TRAVERSE || false,
     nonContentRoutes,
     extendedBlockRenderMap,
     blockStyleFn,
@@ -102,7 +105,8 @@ let config = {
     ToHTMLRenderers,
     ToHTMLOptions,
     imageObjects: ['Image'],
-    listingPreviewImageField: 'image',
+    downloadableObjects: ['File'], //list of content-types for which the direct download of the file will be carried out if the user is not authenticated
+    listingPreviewImageField: 'image', // deprecated from Volto 14 onwards
     customStyleMap: null,
     notSupportedBrowsers: ['ie'],
     defaultPageSize: 25,
@@ -177,18 +181,10 @@ let config = {
 
 config = applyAddonConfiguration(config);
 
-export const settings = config.settings;
-export const widgets = config.widgets;
-export const views = config.views;
-export const blocks = config.blocks;
-export const addonRoutes = [...config.addonRoutes];
-export const addonReducers = { ...config.addonReducers };
-export const appExtras = config.appExtras;
-
-ConfigRegistry.settings = settings;
-ConfigRegistry.blocks = blocks;
-ConfigRegistry.views = views;
-ConfigRegistry.widgets = widgets;
-ConfigRegistry.addonRoutes = addonRoutes;
-ConfigRegistry.addonReducers = addonReducers;
-ConfigRegistry.appExtras = appExtras;
+ConfigRegistry.settings = config.settings;
+ConfigRegistry.blocks = config.blocks;
+ConfigRegistry.views = config.views;
+ConfigRegistry.widgets = config.widgets;
+ConfigRegistry.addonRoutes = config.addonRoutes;
+ConfigRegistry.addonReducers = config.addonReducers;
+ConfigRegistry.appExtras = config.appExtras;

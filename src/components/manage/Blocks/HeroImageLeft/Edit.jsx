@@ -18,9 +18,11 @@ import cx from 'classnames';
 
 import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
 import { createContent } from '@plone/volto/actions';
-import { Icon } from '@plone/volto/components';
+import { Icon, SidebarPortal, LinkMore } from '@plone/volto/components';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
+
+import Data from './Data';
 
 const messages = defineMessages({
   title: {
@@ -296,6 +298,7 @@ class Edit extends Component {
     const placeholder =
       this.props.data.placeholder ||
       this.props.intl.formatMessage(messages.placeholder);
+
     return (
       <div
         className={cx('block hero', {
@@ -359,87 +362,95 @@ class Edit extends Component {
             </div>
           )}
           <div className="hero-body">
-            <Editor
-              ref={(node) => {
-                this.titleEditor = node;
-              }}
-              readOnly={!this.props.editable}
-              onChange={this.onChangeTitle}
-              editorState={this.state.titleEditorState}
-              blockRenderMap={extendedBlockRenderMap}
-              handleReturn={() => true}
-              placeholder={this.props.intl.formatMessage(messages.title)}
-              blockStyleFn={() => 'title-editor'}
-              onUpArrow={() => {
-                const selectionState = this.state.titleEditorState.getSelection();
-                const { titleEditorState } = this.state;
-                if (
-                  titleEditorState
-                    .getCurrentContent()
-                    .getBlockMap()
-                    .first()
-                    .getKey() === selectionState.getFocusKey()
-                ) {
-                  this.props.onFocusPreviousBlock(
-                    this.props.block,
-                    this.props.blockNode.current,
-                  );
-                }
-              }}
-              onDownArrow={() => {
-                const selectionState = this.state.titleEditorState.getSelection();
-                const { titleEditorState } = this.state;
-                if (
-                  titleEditorState
-                    .getCurrentContent()
-                    .getBlockMap()
-                    .last()
-                    .getKey() === selectionState.getFocusKey()
-                ) {
-                  this.setState(() => ({ currentFocused: 'description' }));
-                  this.descriptionEditor.focus();
-                }
-              }}
-            />
-            <Editor
-              ref={(node) => {
-                this.descriptionEditor = node;
-              }}
-              readOnly={!this.props.editable}
-              onChange={this.onChangeDescription}
-              editorState={this.state.descriptionEditorState}
-              blockRenderMap={extendedDescripBlockRenderMap}
-              handleReturn={() => true}
-              placeholder={this.props.intl.formatMessage(messages.description)}
-              blockStyleFn={() => 'description-editor'}
-              onUpArrow={() => {
-                const selectionState = this.state.descriptionEditorState.getSelection();
-                const currentCursorPosition = selectionState.getStartOffset();
+            <div className="hero-text">
+              <Editor
+                ref={(node) => {
+                  this.titleEditor = node;
+                }}
+                readOnly={!this.props.editable}
+                onChange={this.onChangeTitle}
+                editorState={this.state.titleEditorState}
+                blockRenderMap={extendedBlockRenderMap}
+                handleReturn={() => true}
+                placeholder={this.props.intl.formatMessage(messages.title)}
+                blockStyleFn={() => 'title-editor'}
+                onUpArrow={() => {
+                  const selectionState = this.state.titleEditorState.getSelection();
+                  const { titleEditorState } = this.state;
+                  if (
+                    titleEditorState
+                      .getCurrentContent()
+                      .getBlockMap()
+                      .first()
+                      .getKey() === selectionState.getFocusKey()
+                  ) {
+                    this.props.onFocusPreviousBlock(
+                      this.props.block,
+                      this.props.blockNode.current,
+                    );
+                  }
+                }}
+                onDownArrow={() => {
+                  const selectionState = this.state.titleEditorState.getSelection();
+                  const { titleEditorState } = this.state;
+                  if (
+                    titleEditorState
+                      .getCurrentContent()
+                      .getBlockMap()
+                      .last()
+                      .getKey() === selectionState.getFocusKey()
+                  ) {
+                    this.setState(() => ({ currentFocused: 'description' }));
+                    this.descriptionEditor.focus();
+                  }
+                }}
+              />
+              <Editor
+                ref={(node) => {
+                  this.descriptionEditor = node;
+                }}
+                readOnly={!this.props.editable}
+                onChange={this.onChangeDescription}
+                editorState={this.state.descriptionEditorState}
+                blockRenderMap={extendedDescripBlockRenderMap}
+                handleReturn={() => true}
+                placeholder={this.props.intl.formatMessage(
+                  messages.description,
+                )}
+                blockStyleFn={() => 'description-editor'}
+                onUpArrow={() => {
+                  const selectionState = this.state.descriptionEditorState.getSelection();
+                  const currentCursorPosition = selectionState.getStartOffset();
 
-                if (currentCursorPosition === 0) {
-                  this.setState(() => ({ currentFocused: 'title' }));
-                  this.titleEditor.focus();
-                }
-              }}
-              onDownArrow={() => {
-                const selectionState = this.state.descriptionEditorState.getSelection();
-                const { descriptionEditorState } = this.state;
-                const currentCursorPosition = selectionState.getStartOffset();
-                const blockLength = descriptionEditorState
-                  .getCurrentContent()
-                  .getFirstBlock()
-                  .getLength();
+                  if (currentCursorPosition === 0) {
+                    this.setState(() => ({ currentFocused: 'title' }));
+                    this.titleEditor.focus();
+                  }
+                }}
+                onDownArrow={() => {
+                  const selectionState = this.state.descriptionEditorState.getSelection();
+                  const { descriptionEditorState } = this.state;
+                  const currentCursorPosition = selectionState.getStartOffset();
+                  const blockLength = descriptionEditorState
+                    .getCurrentContent()
+                    .getFirstBlock()
+                    .getLength();
 
-                if (currentCursorPosition === blockLength) {
-                  this.props.onFocusNextBlock(
-                    this.props.block,
-                    this.props.blockNode.current,
-                  );
-                }
-              }}
-            />
+                  if (currentCursorPosition === blockLength) {
+                    this.props.onFocusNextBlock(
+                      this.props.block,
+                      this.props.blockNode.current,
+                    );
+                  }
+                }}
+              />
+            </div>
+            <LinkMore data={this.props.data} isEditMode={true} />
           </div>
         </div>
+        <SidebarPortal selected={this.props.selected}>
+          <Data {...this.props} />
+        </SidebarPortal>
       </div>
     );
   }
