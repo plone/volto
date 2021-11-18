@@ -23,6 +23,9 @@ import {
   DropdownIndicator,
   selectTheme,
   customSelectStyles,
+  MenuList,
+  SortableMultiValue,
+  SortableMultiValueLabel,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 
 import { FormFieldWrapper } from '@plone/volto/components';
@@ -41,6 +44,16 @@ const messages = defineMessages({
     defaultMessage: 'No options',
   },
 });
+
+function arrayMove(array, from, to) {
+  const slicedArray = array.slice();
+  slicedArray.splice(
+    to < 0 ? array.length + to : to,
+    0,
+    slicedArray.splice(from, 1)[0],
+  );
+  return slicedArray;
+}
 
 /**
  * ArrayWidget component class.
@@ -191,10 +204,25 @@ class ArrayWidget extends Component {
   render() {
     const { selectedOption } = this.state;
     const CreatableSelect = this.props.reactSelectCreateable.default;
+    const { SortableContainer } = this.props.reactSortableHOC;
+    const SortableSelect = SortableContainer(CreatableSelect);
+
+    const onSortEnd = ({ oldIndex, newIndex }) => {
+      const newValue = arrayMove(this.state.selectedOption, oldIndex, newIndex);
+
+      this.setState({ selectedOption: newValue });
+    };
 
     return (
       <FormFieldWrapper {...this.props}>
-        <CreatableSelect
+        <SortableSelect
+          useDragHandle
+          // react-sortable-hoc props:
+          axis="xy"
+          onSortEnd={onSortEnd}
+          distance={4}
+          // small fix for https://github.com/clauderic/react-sortable-hoc/pull/352:
+          getHelperDimensions={({ node }) => node.getBoundingClientRect()}
           id={`field-${this.props.id}`}
           key={this.props.id}
           isDisabled={this.props.isDisabled}
@@ -231,7 +259,15 @@ class ArrayWidget extends Component {
           }
           styles={customSelectStyles}
           theme={selectTheme}
-          components={{ DropdownIndicator, Option }}
+          components={{
+            ...(this.props.choices?.length > 25 && {
+              MenuList,
+            }),
+            MultiValue: SortableMultiValue,
+            MultiValueLabel: SortableMultiValueLabel,
+            DropdownIndicator,
+            Option,
+          }}
           value={selectedOption || []}
           placeholder={this.props.intl.formatMessage(messages.select)}
           onChange={this.handleChange}
@@ -246,7 +282,7 @@ export const ArrayWidgetComponent = injectIntl(ArrayWidget);
 
 export default compose(
   injectIntl,
-  injectLazyLibs(['reactSelectCreateable']),
+  injectLazyLibs(['reactSelectCreateable', 'reactSortableHOC']),
   connect(
     (state, props) => {
       const vocabBaseUrl =

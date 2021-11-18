@@ -6,6 +6,55 @@ import downSVG from '@plone/volto/icons/down-key.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import checkSVG from '@plone/volto/icons/check.svg';
 
+const height = 50; // The height of each option
+
+export const MenuList = injectLazyLibs('reactWindow')((props) => {
+  const { FixedSizeList: List } = props.reactWindow;
+  const { options, children, maxHeight, getValue } = props;
+  const [value] = getValue();
+  const initialOffset = options.indexOf(value) * height;
+
+  return (
+    <List
+      height={maxHeight}
+      itemCount={children.length}
+      itemSize={height}
+      initialScrollOffset={initialOffset}
+    >
+      {({ index, style }) => <div style={style}>{children[index]}</div>}
+    </List>
+  );
+});
+
+export const SortableMultiValue = injectLazyLibs([
+  'reactSelect',
+  'reactSortableHOC',
+])((props) => {
+  const { MultiValue } = props.reactSelect.components;
+  const { SortableElement } = props.reactSortableHOC;
+  // this prevents the menu from being opened/closed when the user clicks
+  // on a value to begin dragging it. ideally, detecting a click (instead of
+  // a drag) would still focus the control and toggle the menu, but that
+  // requires some magic with refs that are out of scope for this example
+  const onMouseDown = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+  const innerProps = { ...props.innerProps, onMouseDown };
+  const SortableComponent = SortableElement(MultiValue);
+  return <SortableComponent {...props} innerProps={innerProps} />;
+});
+
+export const SortableMultiValueLabel = injectLazyLibs([
+  'reactSelect',
+  'reactSortableHOC',
+])((props) => {
+  const { MultiValueLabel } = props.reactSelect.components;
+  const { SortableHandle } = props.reactSortableHOC;
+  const SortableComponent = SortableHandle(MultiValueLabel);
+  return <SortableComponent {...props} />;
+});
+
 export const Option = injectLazyLibs('reactSelect')((props) => {
   const { Option } = props.reactSelect.components;
   return (
