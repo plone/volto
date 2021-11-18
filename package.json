@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "14.0.0-alpha.23",
+  "version": "14.0.0-alpha.32",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -42,7 +42,7 @@
     "prettier": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,json}'",
     "prettier:fix": "./node_modules/.bin/prettier --single-quote --write 'src/**/*.{js,jsx,ts,tsx,json}'",
     "stylelint": "./node_modules/.bin/stylelint 'theme/**/*.{css,less}' 'src/**/*.{css,less}'",
-    "stylelint:overrides": "./node_modules/.bin/stylelint --syntax less 'theme/**/*.overrides' 'src/**/*.overrides'",
+    "stylelint:overrides": "./node_modules/.bin/stylelint 'theme/**/*.overrides' 'src/**/*.overrides'",
     "stylelint:fix": "yarn stylelint --fix && yarn stylelint:overrides --fix",
     "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx,json}'",
     "lint:fix": "./node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx,json}'",
@@ -87,12 +87,6 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
-  "bundlesize": [
-    {
-      "path": "build/public/static/js/*.js",
-      "maxSize": "680kB"
-    }
-  ],
   "bundlewatch": {
     "files": [
       {
@@ -165,6 +159,20 @@
     "plugins": [
       "stylelint-prettier"
     ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.less"
+        ],
+        "customSyntax": "postcss-less"
+      },
+      {
+        "files": [
+          "**/*.overrides"
+        ],
+        "customSyntax": "postcss-less"
+      }
+    ],
     "rules": {
       "prettier/prettier": true,
       "rule-empty-line-before": [
@@ -229,14 +237,14 @@
       "npx stylelint --fix"
     ],
     "theme/**/*.overrides": [
-      "npx stylelint --fix --syntax less"
+      "npx stylelint --fix"
     ],
     "src/**/*.overrides": [
-      "npx stylelint --fix --syntax less"
+      "npx stylelint --fix"
     ]
   },
   "engines": {
-    "node": "^12 || ^14"
+    "node": "^12 || ^14 || ^16"
   },
   "dependencies": {
     "@babel/plugin-proposal-export-default-from": "7.10.4",
@@ -263,7 +271,6 @@
     "babel-plugin-lodash": "3.3.4",
     "babel-plugin-react-intl": "5.1.17",
     "babel-plugin-root-import": "6.1.0",
-    "bundlesize": "0.18.0",
     "bundlewatch": "0.2.7",
     "circular-dependency-plugin": "5.2.2",
     "classnames": "2.2.6",
@@ -324,12 +331,14 @@
     "mini-css-extract-plugin": "0.9.0",
     "moment": "2.24.0",
     "pofile": "1.0.10",
+    "postcss": "8.3.11",
     "postcss-flexbugs-fixes": "4.2.1",
+    "postcss-less": "5.0.0",
     "postcss-loader": "3.0.0",
     "postcss-overrides": "3.1.4",
     "prettier": "2.0.5",
     "pretty-bytes": "5.3.0",
-    "prismjs": "1.24.0",
+    "prismjs": "1.25.0",
     "promise-file-reader": "1.0.2",
     "prop-types": "15.7.2",
     "query-string": "7.0.0",
@@ -379,7 +388,7 @@
     "semver": "5.6.0",
     "serialize-javascript": "3.1.0",
     "start-server-and-test": "1.10.6",
-    "stylelint": "13.3.3",
+    "stylelint": "14.0.1",
     "stylelint-config-idiomatic-order": "8.1.0",
     "stylelint-config-prettier": "8.0.1",
     "stylelint-prettier": "1.1.2",

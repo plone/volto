@@ -33,7 +33,7 @@ class FormFieldWrapper extends Component {
   static propTypes = {
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    description: PropTypes.string,
+    description: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     required: PropTypes.bool,
     error: PropTypes.arrayOf(PropTypes.string),
     wrapped: PropTypes.bool,

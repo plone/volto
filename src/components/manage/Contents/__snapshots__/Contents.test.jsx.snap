@@ -989,7 +989,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                       <div
                         aria-expanded={false}
                         aria-label="sort"
-                        className="ui simple dropdown sort-icon"
+                        className="ui item dropdown sort-icon"
                         onBlur={[Function]}
                         onChange={[Function]}
                         onClick={[Function]}
@@ -998,6 +998,12 @@ exports[`Contents renders a folder contents view component 1`] = `
                         role="listbox"
                         tabIndex={0}
                       >
+                        <div
+                          aria-atomic={true}
+                          aria-live="polite"
+                          className="text"
+                          role="alert"
+                        />
                         <svg
                           className="icon configuration-svg"
                           dangerouslySetInnerHTML={
@@ -1005,7 +1011,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                               "__html": undefined,
                             }
                           }
-                          onClick={null}
+                          onClick={[Function]}
                           style={
                             Object {
                               "fill": "#826a6a",

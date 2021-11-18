@@ -36,6 +36,7 @@ export Avatar from '@plone/volto/components/theme/Avatar/Avatar';
 export Icon from '@plone/volto/components/theme/Icon/Icon';
 export ConditionalLink from '@plone/volto/components/manage/ConditionalLink/ConditionalLink';
 export UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
+export LinkMore from '@plone/volto/components/manage/LinkMore/LinkMore';
 
 // Lazy load them, since we want them and its deps to be in its own chunk
 export ContactForm from '@plone/volto/components/theme/ContactForm/ContactForm';
@@ -113,6 +114,7 @@ export BlocksToolbar from '@plone/volto/components/manage/Form/BlocksToolbar';
 export Field from '@plone/volto/components/manage/Form/Field';
 export SearchTags from '@plone/volto/components/theme/Search/SearchTags';
 export CommentEditModal from '@plone/volto/components/theme/Comments/CommentEditModal';
+export ContentsBreadcrumbs from '@plone/volto/components/manage/Contents/ContentsBreadcrumbs';
 export ContentsIndexHeader from '@plone/volto/components/manage/Contents/ContentsIndexHeader';
 export ContentsItem from '@plone/volto/components/manage/Contents/ContentsItem';
 export ContentsUploadModal from '@plone/volto/components/manage/Contents/ContentsUploadModal';

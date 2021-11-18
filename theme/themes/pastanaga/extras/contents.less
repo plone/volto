@@ -13,6 +13,18 @@
       padding-top: 4px;
     }
   }
+  // #2818 allow any dropdown to reveal extra menu on hover
+  // not just the simple dropdown within /contents area
+  .ui.dropdown:hover > .menu > .item:hover > .menu,
+  .ui.dropdown > .menu > .item:active > .menu {
+    top: 0 !important;
+    left: 100% !important;
+    display: block;
+    overflow: visible;
+    width: auto;
+    height: auto;
+    opacity: 1;
+  }
 
   .ui.dropdown .menu > .item {
     display: flex;
