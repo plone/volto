@@ -323,7 +323,7 @@ export function previousBlockId(formData, currentBlock) {
  * Generate empty block form
  * @function emptyBlocksForm
  * @param {Object} formData Form data
- * @return {Object} Emptry blocks form with one defaultBlockType block
+ * @return {Object} Empty blocks form with one defaultBlockType block
  */
 export function emptyBlocksForm() {
   const { settings } = config;
@@ -340,6 +340,9 @@ export function emptyBlocksForm() {
 
 /**
  * Recursively discover blocks in data and call the provided callback
+ * @function visitBlocks
+ * @param {Object} content A content data structure (an object with blocks and blocks_layout)
+ * @param {Function} callback A function to call on each discovered block
  */
 export function visitBlocks(content, callback) {
   const queue = getBlocks(content);
@@ -351,40 +354,41 @@ export function visitBlocks(content, callback) {
     // { data: {blocks, blocks_layout}}
     if (Object.keys(blockdata || {}).indexOf('blocks') > -1) {
       queue.push(...getBlocks(blockdata));
-      // getBlocks(blockdata).forEach((tuple) => queue.push(tuple));
     }
     if (Object.keys(blockdata?.data || {}).indexOf('blocks') > -1) {
       queue.push(...getBlocks(blockdata.data));
-      // getBlocks(blockdata.data).forEach((tuple) => queue.push(tuple));
     }
   }
 }
 
 /**
  * Apply the block's default (as defined in schema) to the block data.
+ * @function applyBlockDefaults
+ * @param {Object} params An object with data, intl and anything else
+ * @return {Object} Derived data, with the defaults extracted from the schema
  */
-export function applyBlockDefaults({ data, intl, ...rest }) {
+export function applyBlockDefaults({ data, intl, ...rest }, blocksConfig) {
   const block_type = data['@type'];
-  const { schema } = config.blocks.blocksConfig[block_type] || {};
-  if (!schema) return data;
+  const { blockSchema } =
+    (blocksConfig || config.blocks.blocksConfig)[block_type] || {};
+  if (!blockSchema) return data;
 
-  const objectSchema =
-    typeof schema === 'function' ? schema({ data, intl, ...rest }) : schema;
+  const schema =
+    typeof blockSchema === 'function'
+      ? blockSchema({ data, intl, ...rest })
+      : blockSchema;
 
-  const initialData = {
-    ...Object.keys(objectSchema.properties).reduce(
-      (accumulator, currentField) => {
-        return objectSchema.properties[currentField].default
-          ? {
-              ...accumulator,
-              [currentField]: objectSchema.properties[currentField].default,
-            }
-          : accumulator;
-      },
-      {},
-    ),
+  const derivedData = {
+    ...Object.keys(schema.properties).reduce((accumulator, currentField) => {
+      return schema.properties[currentField].default
+        ? {
+            ...accumulator,
+            [currentField]: schema.properties[currentField].default,
+          }
+        : accumulator;
+    }, {}),
     ...data,
   };
 
-  return initialData;
+  return derivedData;
 }
