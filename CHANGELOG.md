@@ -4,14 +4,30 @@
 
 ### Breaking
 
+- The block settings schema, which used to sit in `config.blocks.blocksConfig.<blocId>.schema`
+  has been moved to `config.blocks.blocksConfig.<blocId>.layoutSettingsSchema`.
+
 ### Feature
+
+- Blocks can now declare, in their block configuration registry,
+  a `blockSchema` with a schema factory. This schema will also be used to
+  extract a default block value.
 
 ### Bugfix
 
 - Prevent ua-parser-js security breach. See: https://github.com/advisories/GHSA-pjwm-rvh2-c87w @thet
 - Fix storybook errors in the connected components, api is undefined. Using now a mock of the store instead of the whole thing @sneridagh
 - Removed pagination in vocabularies widgets (SelectWidget, ArrayWidget, TokenWidget) and introduced subrequest to vocabulary action. @giuliaghisini
+- Fix downloadableObjects default value @giuliaghisini
+- Folder contents table header and breadcrumbs dropdown now appear only from the
+  bottom, fixing an issue where the breadcrumb dropdown content was clipped
+  by the header area @ichim-david
+- Folder contents sort dropdown is now also simple as the other dropdowns
+  ensuring we have the same behavior between adjecent dropdown @ichim-david
+
 ### Internal
+
+- Upgrade stylelint to v14 (vscode-stylelint requires it now) @sneridagh
 
 ## 14.0.0-alpha.32 (2021-11-09)
 
@@ -35,7 +51,7 @@
 - Fix the selection of Maps Block @iRohitSingh
 - UniversalLink: handle direct download for content-type File if user is not logged. @giuliaghisini
 - Fixed ObjectBrowserWidget when is multiple or maximumSelectionSize is not set @giuliaghisini
-- Fix full-width image overlaps the drag handle  @iRohitSingh
+- Fix full-width image overlaps the drag handle @iRohitSingh
 - Fix move item to top of the folder when clicking on move to top action button @iRohitSingh
 
 ### Internal
