@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
-import { isObject } from 'lodash';
+import { isObject, findIndex } from 'lodash';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
@@ -152,11 +152,18 @@ class ArrayWidget extends Component {
       this.props.choices?.length > 0 &&
       this.props.vocabBaseUrl
     ) {
-      this.setState({
-        selectedOption: this.props.choices.filter(
-          (item) => this.props.value.indexOf(item.value) >= 0,
-        ),
-      });
+      const selectedOpt = this.props.choices.filter(
+        (item) =>
+          findIndex(this.props.value, (v) => {
+            return isObject(v) ? v.token === item.value : v === item.value;
+          }) >= 0,
+      );
+
+      if (selectedOpt.length > 0) {
+        this.setState({
+          selectedOption: selectedOpt,
+        });
+      }
     }
   }
 

@@ -171,9 +171,16 @@ class SelectWidget extends Component {
       this.props.value &&
       this.props.choices?.length > 0
     ) {
-      this.setState({
-        selectedOption: normalizeValue(this.props.choices, this.props.value),
-      });
+      const normalizedValue = normalizeValue(
+        this.props.choices,
+        this.props.value,
+      );
+
+      if (normalizedValue != null) {
+        this.setState({
+          selectedOption: normalizedValue,
+        });
+      }
     }
   }
 
