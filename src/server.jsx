@@ -17,7 +17,7 @@ import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
 import { resetServerContext } from 'react-beautiful-dnd';
 import debug from 'debug';
 
-import routes from '~/routes';
+import routes from '@package/routes';
 import config from '@plone/volto/registry';
 
 import {
@@ -43,7 +43,7 @@ let locales = {};
 if (config.settings) {
   config.settings.supportedLanguages.forEach((lang) => {
     const langFileName = normalizeLanguageName(lang);
-    import('~/../locales/' + langFileName + '.json').then((locale) => {
+    import('@package/../locales/' + langFileName + '.json').then((locale) => {
       locales = { ...locales, [lang]: locale.default };
     });
   });

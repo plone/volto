@@ -57,7 +57,7 @@ const LanguageSelector = (props) => {
               props.onClickAction();
               if (config.settings.supportedLanguages.includes(lang)) {
                 const langFileName = normalizeLanguageName(lang);
-                import('~/../locales/' + langFileName + '.json').then(
+                import('@package/../locales/' + langFileName + '.json').then(
                   (locale) => {
                     dispatch(changeLanguage(lang, locale.default));
                   },
