@@ -80,6 +80,20 @@
     "plugins": [
       "stylelint-prettier"
     ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.less"
+        ],
+        "customSyntax": "postcss-less"
+      },
+      {
+        "files": [
+          "**/*.overrides"
+        ],
+        "customSyntax": "postcss-less"
+      }
+    ],
     "rules": {
       "prettier/prettier": true,
       "rule-empty-line-before": [
@@ -110,7 +124,7 @@
   "devDependencies": {
     "eslint-plugin-prettier": "3.1.3",
     "prettier": "2.0.5",
-    "stylelint": "13.3.3",
+    "stylelint": "14.0.1",
     "stylelint-config-idiomatic-order": "8.1.0",
     "stylelint-config-prettier": "8.0.1",
     "stylelint-prettier": "1.1.2"
