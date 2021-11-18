@@ -14,6 +14,7 @@
   by the header area @ichim-david
 - Folder contents sort dropdown is now also simple as the other dropdowns 
   ensuring we have the same behavior between adjecent dropdown @ichim-david
+- Fix documention on block extensions, replace `render` with `template` to match Listing block @tiberiuichim
 
 ### Internal
 
