@@ -52,12 +52,12 @@ export const getImageAttributes = (
           else if (a.width < b.width) return -1;
           else return 0;
         });
-      attrs.src = sortedScales[0].download;
+      attrs.src = sortedScales[0]?.download ?? image.download;
       attrs.srcSet = sortedScales.map(
         (scale) => `${flattenToAppURL(scale.download)} ${scale.width}w`,
       );
 
-      if (useOriginal)
+      if (useOriginal || sortedScales?.length === 0)
         attrs.srcSet = attrs.srcSet.concat(
           `${flattenToAppURL(image.download)} ${image.width}w`,
         );
