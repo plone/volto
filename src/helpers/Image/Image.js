@@ -4,11 +4,16 @@ import config from '@plone/volto/registry';
 /**
  * Get src-set list from image
  * @param {object | string} image - Image content object or url
- * @param {object} options - { maxSize [number]: maximum size to render, useOriginal [boolean]: whether to render original img }
+ * @param {object} options
+ * @param {number} options.maxSize - maximum size to render
+ * @param {boolean} options.useOriginal - whether to render original img
+ * @returns {object} image attributes
+ * @returns {string} image.src attributes.src
+ * @returns {string} image.srcset attributes.srcset
  */
 export const getImageAttributes = (
   image,
-  { maxSize = 10000, useOriginal = false } = {},
+  { imageField = 'image', maxSize = 10000, useOriginal = false } = {},
 ) => {
   const imageScales = config.settings.imageScales;
   const minSize = Object.keys(imageScales).reduce((minSize, scale) => {
@@ -20,16 +25,22 @@ export const getImageAttributes = (
   }, null);
 
   let attrs = {};
-  let imageType =
+  let imageType = 'external';
+  if (image['content-type'] === 'image/svg+xml') imageType = 'svg';
+  else if (
     Object.prototype.toString.call(image) === '[object Object]' &&
     image.scales &&
     Object.keys(image.scales).length > 0
-      ? 'imageObject'
-      : typeof image === 'string' && isInternalURL(image)
-      ? 'internalUrl'
-      : 'external';
+  )
+    imageType = 'imageObject';
+  else if (typeof image === 'string' && isInternalURL(image))
+    imageType = 'internalUrl';
 
   switch (imageType) {
+    case 'svg':
+      attrs.src = flattenToAppURL(image.download);
+      break;
+
     // Scales object from Plone restapi
     // ideal use of Plone images
     case 'imageObject':
@@ -56,10 +67,12 @@ export const getImageAttributes = (
     case 'internalUrl':
       let baseUrl = `${flattenToAppURL(image.split('/@@images')[0])}${
         image.endsWith('/') ? '' : '/'
-      }@@images/image`;
+      }@@images/${imageField}`;
       attrs.src = `${baseUrl}/${minSize}`;
       attrs.srcSet = Object.keys(imageScales).reduce((srcSet, scale) => {
-        return [...srcSet, `${baseUrl}/${scale} ${imageScales[scale]}w`];
+        if (imageScales[scale] <= maxSize) {
+          return [...srcSet, `${baseUrl}/${scale} ${imageScales[scale]}w`];
+        } else return srcSet;
       }, []);
 
       if (useOriginal) attrs.srcSet = attrs.srcSet.concat(`${baseUrl} 1200w`); // expect that is for desktop screens, I don't have actual size
