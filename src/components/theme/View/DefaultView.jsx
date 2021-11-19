@@ -6,10 +6,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
-
-import { Container, Image } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
+import Image from '@plone/volto/components/theme/Image/Image';
 import { map } from 'lodash';
-import config from '@plone/volto/registry';
 
 import {
   getBlocksFieldname,
@@ -17,6 +16,7 @@ import {
   hasBlocksData,
   getBaseUrl,
 } from '@plone/volto/helpers';
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   unknownBlock: {
@@ -68,9 +68,8 @@ const DefaultView = ({ content, intl, location }) => {
       {content.image && (
         <Image
           className="document-image"
-          src={content.image.scales.thumb.download}
-          floated="right"
-          loading="lazy"
+          containerClassName="block image align right"
+          image={content.image}
         />
       )}
       {content.remoteUrl && (

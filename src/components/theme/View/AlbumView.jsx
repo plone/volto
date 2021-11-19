@@ -6,15 +6,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Container, Image, GridColumn, Segment } from 'semantic-ui-react';
+import { Container, GridColumn, Segment } from 'semantic-ui-react';
 import { Button, Modal, Grid } from 'semantic-ui-react';
 import { Icon } from '@plone/volto/components';
+import Image from '@plone/volto/components/theme/Image/Image';
 
 import openSVG from '@plone/volto/icons/open.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import backSVG from '@plone/volto/icons/back.svg';
-
-import { flattenToAppURL } from '@plone/volto/helpers';
 
 /**
  * Album view component class.
@@ -73,7 +72,7 @@ class AlbumView extends Component {
               {content.items &&
                 content.items.map((item, index) => (
                   <React.Fragment key={item.url}>
-                    {item.image && (
+                    {item.image_field && (
                       <Modal
                         className="gallery"
                         onClose={this.closeModal}
@@ -88,9 +87,9 @@ class AlbumView extends Component {
                                     ? item.image_caption
                                     : item.title
                                 }
-                                src={flattenToAppURL(
-                                  item.image.scales.preview.download,
-                                )}
+                                image={item['@id']}
+                                imageField={item.image_field}
+                                maxSize={400}
                                 onClick={() => {
                                   this.setState({
                                     openIndex: index,
@@ -137,14 +136,14 @@ class AlbumView extends Component {
                             <Grid.Column width={8}>
                               <Modal.Content image>
                                 <Image
-                                  wrapped
                                   alt={
                                     item.image_caption
                                       ? item.image_caption
                                       : item.title
                                   }
-                                  src={item.image.scales.large.download}
-                                  loading="lazy"
+                                  image={item['@id']}
+                                  imageField={item.image_field}
+                                  maxSize={800}
                                 />
                                 <Modal.Description>
                                   <p>{item.description}</p>
