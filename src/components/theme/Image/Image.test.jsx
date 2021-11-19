@@ -125,4 +125,30 @@ describe('Image', () => {
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
+
+  it('renders image with plone image object and floated prop', () => {
+    const component = renderer.create(
+      <Image
+        image={ploneImage}
+        alt="Photo"
+        className="photo-image"
+        floated="right"
+      />,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
+
+  it('renders image with plone image object and size prop', () => {
+    const component = renderer.create(
+      <Image
+        image={ploneImage}
+        alt="Photo"
+        className="photo-image"
+        size="medium"
+      />,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
 });

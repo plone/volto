@@ -2,7 +2,9 @@
 
 exports[`Image renders image with default values and image url 1`] = `
 Array [
-  <picture>
+  <picture
+    className="volto-image"
+  >
     <img
       alt=""
       loading="lazy"
@@ -37,7 +39,9 @@ Array [
 
 exports[`Image renders image with external url 1`] = `
 Array [
-  <picture>
+  <picture
+    className="volto-image"
+  >
     <img
       alt="External picsum photo"
       loading="lazy"
@@ -72,7 +76,9 @@ Array [
 
 exports[`Image renders image with plone image object 1`] = `
 Array [
-  <picture>
+  <picture
+    className="volto-image"
+  >
     <img
       alt="Photo"
       className="photo-image"
@@ -106,9 +112,55 @@ Array [
 ]
 `;
 
+exports[`Image renders image with plone image object and floated prop 1`] = `
+Array [
+  <picture
+    className="volto-image floated right"
+  >
+    <source
+      srcSet="/test-images/@@images/image/listing 16w, /test-images/@@images/image/icon 32w, /test-images/@@images/image/tile 64w, /test-images/@@images/image/thumb 128w, /test-images/@@images/image/mini 200w, /test-images/@@images/image/preview 400w, /test-images/@@images/image/large 768w"
+    />
+    <img
+      alt="Photo"
+      className="photo-image"
+      loading="lazy"
+      role="img"
+      src="http://localhost:8080/Plone/test-images/@@images/image/listing"
+      style={
+        Object {
+          "objectFit": "cover",
+          "width": "100%",
+        }
+      }
+    />
+  </picture>,
+  <noscript
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "
+              <img
+                src=\\"http://localhost:8080/Plone/test-images/@@images/image/listing\\"
+                srcset=\\"/test-images/@@images/image/listing 16w, /test-images/@@images/image/icon 32w, /test-images/@@images/image/tile 64w, /test-images/@@images/image/thumb 128w, /test-images/@@images/image/mini 200w, /test-images/@@images/image/preview 400w, /test-images/@@images/image/large 768w\\"
+                alt=\\"Photo\\"
+                class=\\"photo-image\\"
+                role=\\"img\\"
+                loading=\\"lazy\\"
+                style=\\"width: 100%; object-fit: cover;\\"
+            ",
+      }
+    }
+  />,
+]
+`;
+
 exports[`Image renders image with plone image object and opt props 1`] = `
 Array [
-  <picture>
+  <picture
+    className="volto-image"
+  >
+    <source
+      srcSet="/test-images/@@images/image/listing 16w, /test-images/@@images/image/icon 32w, /test-images/@@images/image/tile 64w, /test-images/@@images/image/thumb 128w, /test-images/@@images/image/mini 200w"
+    />
     <img
       alt="Photo"
       className="photo-image"
@@ -144,7 +196,12 @@ Array [
 
 exports[`Image renders image with plone image object and original 1`] = `
 Array [
-  <picture>
+  <picture
+    className="volto-image"
+  >
+    <source
+      srcSet="/test-images/@@images/image/listing 16w, /test-images/@@images/image/icon 32w, /test-images/@@images/image/tile 64w, /test-images/@@images/image/thumb 128w, /test-images/@@images/image/mini 200w, /test-images/@@images/image/preview 400w, /test-images/@@images/image/large 768w, /test-images/@@images/image 1920w"
+    />
     <img
       alt="Photo"
       className="photo-image"
@@ -178,9 +235,55 @@ Array [
 ]
 `;
 
+exports[`Image renders image with plone image object and size prop 1`] = `
+Array [
+  <picture
+    className="volto-image medium"
+  >
+    <source
+      srcSet="/test-images/@@images/image/listing 16w, /test-images/@@images/image/icon 32w, /test-images/@@images/image/tile 64w, /test-images/@@images/image/thumb 128w, /test-images/@@images/image/mini 200w, /test-images/@@images/image/preview 400w, /test-images/@@images/image/large 768w"
+    />
+    <img
+      alt="Photo"
+      className="photo-image"
+      loading="lazy"
+      role="img"
+      src="http://localhost:8080/Plone/test-images/@@images/image/listing"
+      style={
+        Object {
+          "objectFit": "cover",
+          "width": "100%",
+        }
+      }
+    />
+  </picture>,
+  <noscript
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "
+              <img
+                src=\\"http://localhost:8080/Plone/test-images/@@images/image/listing\\"
+                srcset=\\"/test-images/@@images/image/listing 16w, /test-images/@@images/image/icon 32w, /test-images/@@images/image/tile 64w, /test-images/@@images/image/thumb 128w, /test-images/@@images/image/mini 200w, /test-images/@@images/image/preview 400w, /test-images/@@images/image/large 768w\\"
+                alt=\\"Photo\\"
+                class=\\"photo-image\\"
+                role=\\"img\\"
+                loading=\\"lazy\\"
+                style=\\"width: 100%; object-fit: cover;\\"
+            ",
+      }
+    }
+  />,
+]
+`;
+
 exports[`Image renders image with props and image url 1`] = `
 Array [
-  <picture>
+  <picture
+    className="volto-image"
+  >
+    <source
+      srcSet="/photo.png/@@images/image/large 768w, /photo.png/@@images/image/preview 400w, /photo.png/@@images/image/mini 200w, /photo.png/@@images/image/thumb 128w, /photo.png/@@images/image/tile 64w, /photo.png/@@images/image/icon 32w, /photo.png/@@images/image/listing 16w"
+    />
     <img
       alt="Photo"
       className="photo-image"

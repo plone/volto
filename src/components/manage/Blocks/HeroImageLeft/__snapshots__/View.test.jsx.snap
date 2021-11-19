@@ -7,7 +7,9 @@ exports[`renders a view hero component 1`] = `
   <div
     className="block-inner-wrapper"
   >
-    <picture>
+    <picture
+      className="volto-image"
+    >
       <img
         alt=""
         className="hero-image"

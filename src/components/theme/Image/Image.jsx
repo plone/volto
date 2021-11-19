@@ -82,7 +82,7 @@ const Image = ({
         { threshold: [0] },
       );
       observer.observe(imageRef.current);
-    } else {
+    } else if (srcSet?.length > 0) {
       applySrcSet();
     }
   }, [imageRef, applySrcSet, imageHasLoaded, srcSet, srcset]);

@@ -4,7 +4,9 @@ exports[`renders a view image component 1`] = `
 <p
   className="block image align center"
 >
-  <picture>
+  <picture
+    className="volto-image"
+  >
     <img
       alt=""
       className=""
