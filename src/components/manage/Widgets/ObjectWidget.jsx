@@ -63,12 +63,6 @@ const FieldSet = ({
  * Creates an object widget with the given onChange handler and an ID. If there
  * are multiple field sets, it renders a Tab component with multiple tab panes.
  * Each tab has the title of the fieldset it renders.
- *
- * @param {object} schema Schema, follows Plone dexterity serialized schema
- * @param {object} value Object value, a JS object
- * @param {function} onChange Callback for object changed
- * @param {object} errors A list errors
- * @param {string} id Field id
  */
 const ObjectWidget = ({
   block,
