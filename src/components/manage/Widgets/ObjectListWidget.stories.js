@@ -57,7 +57,12 @@ const customStore = {
   },
 };
 
-const ObjectListWidgetComponent = (args) => {
+const ObjectListWidgetComponent = ({
+  children,
+  secondarySchema,
+  enableSchemaExtender,
+  ...args
+}) => {
   const [value, setValue] = React.useState([]);
   const onChange = (block, value) => setValue(value);
 
@@ -66,12 +71,8 @@ const ObjectListWidgetComponent = (args) => {
       location={{ pathname: '/folder2/folder21/doc212' }}
       customStore={customStore}
     >
-      <p>
-        This is a DataGridField-equivalent widget for schema-based values. The
-        shape of the items in the array is defined using a schema
-      </p>
-      <hr />
       <div className="ui segment form attached" style={{ width: '400px' }}>
+        {children}
         <ObjectListWidgetDefault
           {...args}
           id="SliderItem"
@@ -79,6 +80,33 @@ const ObjectListWidgetComponent = (args) => {
           block="testBlock"
           value={value}
           onChange={onChange}
+          schemaExtender={
+            enableSchemaExtender &&
+            ((schema, data, intl) => {
+              const finalSchema =
+                data?.href?.[0]?.['@id'] === '/image'
+                  ? {
+                      ...schema,
+                      fieldsets: [
+                        {
+                          ...schema.fieldsets[0],
+                          fields: [
+                            ...schema.fieldsets[0].fields,
+                            ...secondarySchema.fieldsets[0].fields,
+                          ],
+                        },
+                        ...schema.fieldsets.slice(1),
+                        ...secondarySchema.fieldsets.slice(1),
+                      ],
+                      properties: {
+                        ...schema.properties,
+                        ...secondarySchema.properties,
+                      },
+                    }
+                  : schema;
+              return finalSchema;
+            })
+          }
         />
         <hr />
         <strong>Resulting value</strong>
@@ -88,12 +116,53 @@ const ObjectListWidgetComponent = (args) => {
   );
 };
 
+// Something here
+export const Default = ObjectListWidgetComponent.bind({});
+Default.args = {
+  schema: defaultSchema,
+};
+
+const defaultSecondarySchema = {
+  title: 'Additional fields',
+  fieldsets: [
+    {
+      id: 'Default',
+      title: 'Default',
+      fields: ['size'],
+    },
+  ],
+  properties: {
+    size: {
+      title: 'Image size',
+    },
+  },
+  required: [],
+};
+
+export const SchemaExtender = (args) => {
+  return (
+    <ObjectListWidgetComponent enableSchemaExtender={true} {...args}>
+      <>
+        Notice the form changes if you pick "I am an image" for the{' '}
+        <em>source</em> field. We're achieving that by passing a custom{' '}
+        <em>schemaExtender</em> that combines the fields of the{' '}
+        <em>secondarySchema</em> storybook control.
+      </>
+    </ObjectListWidgetComponent>
+  );
+};
+SchemaExtender.args = {
+  schema: defaultSchema,
+  secondarySchema: defaultSecondarySchema,
+};
+
 export default {
   title: 'Widgets/Object List Widget',
   component: ObjectListWidgetDefault,
   decorators: [
     (Story) => (
       <div className="ui segment form attached" style={{ width: '400px' }}>
+        <h4>A DataGridField-like for lists of objects</h4>
         <Story />
       </div>
     ),
@@ -101,10 +170,4 @@ export default {
   argTypes: {
     schema: {},
   },
-  // subcomponents: { ArgsTable },
-};
-
-export const ObjectListWidget = ObjectListWidgetComponent.bind({});
-ObjectListWidget.args = {
-  schema: defaultSchema,
 };
