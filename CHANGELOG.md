@@ -2,16 +2,10 @@
 
 ## 14.0.0 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Apply form defaults from RenderBlocks and block Edit using a new helper, `applyBlockDefaults` @tiberiuichim
 - Now each block config object can declare a schema factory (a function that can produce a schema) and this will be used to derive the default data for the block @tiberiuichim
-
-### Bugfix
-
-### Internal
 
 ## 14.0.0-alpha.33 (2021-11-20)
 
