@@ -3,46 +3,44 @@ import Wrapper from '@plone/volto/storybook';
 import React from 'react';
 import { searchResults } from './ObjectBrowserWidget.stories';
 
-const itemSchema = (props) => {
-  return {
-    title: 'Item',
-    addMessage: 'Add item',
-    fieldsets: [
-      {
-        id: 'default',
-        title: 'Default',
-        fields: ['href', 'title', 'description', 'preview_image'],
-      },
-    ],
-
-    properties: {
-      href: {
-        title: 'Source',
-        widget: 'object_browser',
-        mode: 'link',
-        selectedItemAttrs: [
-          'Title',
-          'Description',
-          'hasPreviewImage',
-          'headtitle',
-        ],
-        allowExternals: true,
-      },
-      title: {
-        title: 'Title',
-      },
-      description: {
-        title: 'Description',
-      },
-      preview_image: {
-        title: 'Preview image',
-        widget: 'object_browser',
-        mode: 'image',
-        allowExternals: true,
-      },
+const defaultSchema = {
+  title: 'Item',
+  addMessage: 'Add item',
+  fieldsets: [
+    {
+      id: 'default',
+      title: 'Default',
+      fields: ['href', 'title', 'description', 'preview_image'],
     },
-    required: [],
-  };
+  ],
+
+  properties: {
+    href: {
+      title: 'Source',
+      widget: 'object_browser',
+      mode: 'link',
+      selectedItemAttrs: [
+        'Title',
+        'Description',
+        'hasPreviewImage',
+        'headtitle',
+      ],
+      allowExternals: true,
+    },
+    title: {
+      title: 'Title',
+    },
+    description: {
+      title: 'Description',
+    },
+    preview_image: {
+      title: 'Preview image',
+      widget: 'object_browser',
+      mode: 'image',
+      allowExternals: true,
+    },
+  },
+  required: [],
 };
 
 const customStore = {
@@ -68,6 +66,11 @@ const ObjectListWidgetComponent = (args) => {
       location={{ pathname: '/folder2/folder21/doc212' }}
       customStore={customStore}
     >
+      <p>
+        This is a DataGridField-equivalent widget for schema-based values. The
+        shape of the items in the array is defined using a schema
+      </p>
+      <hr />
       <div className="ui segment form attached" style={{ width: '400px' }}>
         <ObjectListWidgetDefault
           {...args}
@@ -76,8 +79,9 @@ const ObjectListWidgetComponent = (args) => {
           block="testBlock"
           value={value}
           onChange={onChange}
-          schema={itemSchema}
         />
+        <hr />
+        <strong>Resulting value</strong>
         <pre>{JSON.stringify(value, null, 4)}</pre>
       </div>
     </Wrapper>
@@ -94,7 +98,13 @@ export default {
       </div>
     ),
   ],
+  argTypes: {
+    schema: {},
+  },
   // subcomponents: { ArgsTable },
 };
 
-export const ObjectListWidget = () => <ObjectListWidgetComponent />;
+export const ObjectListWidget = ObjectListWidgetComponent.bind({});
+ObjectListWidget.args = {
+  schema: defaultSchema,
+};
