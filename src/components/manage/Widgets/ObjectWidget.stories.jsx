@@ -108,7 +108,7 @@ const customStore = {
 };
 
 const ObjectWidgetComponent = ({ children, ...args }) => {
-  const [value, setValue] = React.useState([]);
+  const [value, setValue] = React.useState();
   const onChange = (block, value) => setValue(value);
   return (
     <Wrapper
@@ -124,6 +124,7 @@ const ObjectWidgetComponent = ({ children, ...args }) => {
           value={value}
           onChange={onChange}
         />
+        <pre>{JSON.stringify(value, null, 4)}</pre>
       </div>
     </Wrapper>
   );
