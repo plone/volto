@@ -1,15 +1,14 @@
-/**
- * AlignWidget component.
- * To benefit from styling integration, use with a field named 'align'
- * @module components/manage/Widgets/AlignWidget
- */
-
 import React from 'react';
 import { injectIntl } from 'react-intl';
 
 import { FormFieldWrapper } from '@plone/volto/components';
 import AlignBlock from '@plone/volto/components/manage/Sidebar/AlignBlock';
 
+/**
+ * AlignWidget component.
+ * To benefit from styling integration, use with a field named 'align'
+ * @module components/manage/Widgets/AlignWidget
+ */
 const AlignWidget = (props) => {
   const { id, onChange, value } = props;
   return (

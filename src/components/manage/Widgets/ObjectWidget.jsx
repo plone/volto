@@ -58,11 +58,11 @@ const FieldSet = ({
 
 /**
  *
- * Provides an automatic form for complex JS objects, based on a schema
+ * A JSON data editor widget based on a schema. If you to represent complex
+ * data using a single field, this is the widget to use.
  *
- * Creates an object widget with the given onChange handler and an ID. If there
- * are multiple field sets, it renders a Tab component with multiple tab panes.
- * Each tab has the title of the fieldset it renders.
+ * If there are multiple field sets, it renders a Tab component with multiple
+ * tab panes.  Each tab has the title of the fieldset it renders.
  */
 const ObjectWidget = ({
   block,
