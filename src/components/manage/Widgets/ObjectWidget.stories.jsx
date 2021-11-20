@@ -124,7 +124,7 @@ const ObjectWidgetComponent = ({ children, ...args }) => {
           value={value}
           onChange={onChange}
         />
-        <pre>{JSON.stringify(value, null, 4)}</pre>
+        <pre>Value: {JSON.stringify(value, null, 4)}</pre>
       </div>
     </Wrapper>
   );

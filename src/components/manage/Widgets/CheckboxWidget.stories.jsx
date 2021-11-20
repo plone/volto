@@ -3,7 +3,7 @@ import CheckboxWidget from './CheckboxWidget';
 import Wrapper from '@plone/volto/storybook';
 
 const CheckboxWidgetComponent = ({ children, ...args }) => {
-  const [value, setValue] = React.useState();
+  const [value, setValue] = React.useState(false);
   const onChange = (block, value) => setValue(value);
   return (
     <Wrapper location={{ pathname: '/folder2/folder21/doc212' }}>
@@ -17,7 +17,7 @@ const CheckboxWidgetComponent = ({ children, ...args }) => {
           onChange={onChange}
         />
       </div>
-      <pre>{JSON.stringify(value, null, 4)}</pre>
+      <pre>Value: {JSON.stringify(value, null, 4)}</pre>
     </Wrapper>
   );
 };
@@ -30,7 +30,6 @@ export default {
   decorators: [
     (Story) => (
       <div className="ui segment form attached" style={{ width: '400px' }}>
-        <h4>Standard layout-oriented align widget</h4>
         <Story />
       </div>
     ),
