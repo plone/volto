@@ -32,6 +32,7 @@
 ### Internal
 
 - Upgrade stylelint to v14 (vscode-stylelint requires it now) @sneridagh
+- Add 2 new Volto websites by Eau de web for EEA @tiberiuichim
 
 ## 14.0.0-alpha.32 (2021-11-09)
 
