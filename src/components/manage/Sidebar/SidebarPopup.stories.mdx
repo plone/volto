@@ -16,6 +16,11 @@ import SidebarPopup from './SidebarPopup';
 ```
 
 export const CustomSidebarPopup = (args) => (
+<>
+  <p>Render a right-side sidebar. Mainly used to edit block settings and
+  documents metadata (in the case of composite pages, with blocks).
+  Use the controls to toggle the open state.
+  </p>
   <SidebarPopup {...args}>
     <div style={{ padding: '1em' }}>
       <h1>What Is Volto</h1>
@@ -30,6 +35,7 @@ export const CustomSidebarPopup = (args) => (
       </p>
     </div>
   </SidebarPopup>
+</>
 );
 
 <Story name="SidebarPopup" args={{ open: true }}>
