@@ -43,6 +43,56 @@ const defaultSchema = {
   required: [],
 };
 
+const multipleFieldsets = {
+  title: 'Item',
+  addMessage: 'Add item',
+  fieldsets: [
+    {
+      id: 'default',
+      title: 'Default',
+      fields: ['href', 'title', 'description', 'preview_image'],
+    },
+    {
+      id: 'second',
+      title: 'Secondary',
+      fields: ['contributors'],
+    },
+  ],
+
+  properties: {
+    contributors: {
+      title: 'Contributors',
+      description: 'Example field with contributors information',
+      wiget: 'textarea',
+    },
+    href: {
+      title: 'Source',
+      widget: 'object_browser',
+      mode: 'link',
+      selectedItemAttrs: [
+        'Title',
+        'Description',
+        'hasPreviewImage',
+        'headtitle',
+      ],
+      allowExternals: true,
+    },
+    title: {
+      title: 'Title',
+    },
+    description: {
+      title: 'Description',
+    },
+    preview_image: {
+      title: 'Preview image',
+      widget: 'object_browser',
+      mode: 'image',
+      allowExternals: true,
+    },
+  },
+  required: [],
+};
+
 const customStore = {
   search: {
     subrequests: {
@@ -82,6 +132,11 @@ const ObjectWidgetComponent = ({ children, ...args }) => {
 export const Default = ObjectWidgetComponent.bind({});
 Default.args = {
   schema: defaultSchema,
+};
+
+export const MultipleFieldsets = ObjectWidgetComponent.bind({});
+MultipleFieldsets.args = {
+  schema: multipleFieldsets,
 };
 
 export default {
