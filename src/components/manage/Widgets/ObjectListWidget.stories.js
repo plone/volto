@@ -157,12 +157,12 @@ SchemaExtender.args = {
 };
 
 export default {
-  title: 'Widgets/Object List Widget',
+  title: 'Widgets/Object List (JSON)',
   component: ObjectListWidgetDefault,
   decorators: [
     (Story) => (
       <div className="ui segment form attached" style={{ width: '400px' }}>
-        <h4>A DataGridField-like for lists of objects</h4>
+        <h4>A DataGridField-like for lists of JSON objects</h4>
         <Story />
       </div>
     ),

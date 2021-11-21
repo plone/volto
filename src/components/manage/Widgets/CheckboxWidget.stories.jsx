@@ -25,7 +25,7 @@ const CheckboxWidgetComponent = ({ children, ...args }) => {
 export const Default = CheckboxWidgetComponent.bind({});
 
 export default {
-  title: 'Widgets/Checkbox Widget',
+  title: 'Widgets/Checkbox',
   component: CheckboxWidget,
   decorators: [
     (Story) => (

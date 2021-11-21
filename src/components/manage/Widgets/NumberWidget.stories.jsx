@@ -26,7 +26,7 @@ const NumberWidgetComponent = ({ children, ...args }) => {
 export const Default = NumberWidgetComponent.bind({});
 
 export default {
-  title: 'Widgets/Number Widget',
+  title: 'Widgets/Number',
   component: NumberWidget,
   decorators: [
     (Story) => (

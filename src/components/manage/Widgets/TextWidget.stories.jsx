@@ -25,7 +25,7 @@ const TextWidgetComponent = ({ children, ...args }) => {
 export const Default = TextWidgetComponent.bind({});
 
 export default {
-  title: 'Widgets/Text Widget',
+  title: 'Widgets/Text',
   component: TextWidget,
   decorators: [
     (Story) => (

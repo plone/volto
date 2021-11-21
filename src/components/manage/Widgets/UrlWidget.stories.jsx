@@ -25,7 +25,7 @@ const UrlWidgetComponent = ({ children, ...args }) => {
 export const Default = UrlWidgetComponent.bind({});
 
 export default {
-  title: 'Widgets/Url Widget',
+  title: 'Widgets/Url',
   component: UrlWidget,
   decorators: [
     (Story) => (

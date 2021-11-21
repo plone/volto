@@ -25,7 +25,7 @@ const EmailWidgetComponent = ({ children, ...args }) => {
 export const Default = EmailWidgetComponent.bind({});
 
 export default {
-  title: 'Widgets/Email Widget',
+  title: 'Widgets/Email',
   component: EmailWidget,
   decorators: [
     (Story) => (

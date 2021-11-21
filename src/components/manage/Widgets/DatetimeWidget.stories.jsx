@@ -25,7 +25,7 @@ const DatetimeWidgetComponent = ({ children, ...args }) => {
 export const Default = DatetimeWidgetComponent.bind({});
 
 export default {
-  title: 'Widgets/Datetime Widget',
+  title: 'Widgets/Datetime',
   component: DatetimeWidget,
   decorators: [
     (Story) => (

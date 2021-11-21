@@ -155,7 +155,7 @@ Disabled.args = {
 };
 
 export default {
-  title: 'Widgets/ArrayWidget',
+  title: 'Widgets/Array',
   component: ArrayComponent,
   decorators: [
     (Story) => (

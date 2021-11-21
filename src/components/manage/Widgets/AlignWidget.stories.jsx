@@ -24,7 +24,7 @@ const AlignWidgetComponent = ({ children, ...args }) => {
 export const Default = AlignWidgetComponent.bind({});
 
 export default {
-  title: 'Widgets/Align Widget',
+  title: 'Widgets/Align',
   component: AlignWidget,
   decorators: [
     (Story) => (

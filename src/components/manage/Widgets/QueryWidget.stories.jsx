@@ -25,7 +25,7 @@ const QueryWidgetComponent = ({ children, ...args }) => {
 export const Default = QueryWidgetComponent.bind({});
 
 export default {
-  title: 'Widgets/Query Widget',
+  title: 'Widgets/Query',
   component: QueryWidget,
   decorators: [
     (Story) => (

@@ -25,7 +25,7 @@ const PasswordWidgetComponent = ({ children, ...args }) => {
 export const Default = PasswordWidgetComponent.bind({});
 
 export default {
-  title: 'Widgets/Password Widget',
+  title: 'Widgets/Password',
   component: PasswordWidget,
   decorators: [
     (Story) => (

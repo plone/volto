@@ -25,7 +25,7 @@ const FileWidgetComponent = ({ children, ...args }) => {
 export const Default = FileWidgetComponent.bind({});
 
 export default {
-  title: 'Widgets/File Widget',
+  title: 'Widgets/File',
   component: FileWidget,
   decorators: [
     (Story) => (

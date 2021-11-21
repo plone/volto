@@ -141,7 +141,7 @@ MultipleFieldsets.args = {
 };
 
 export default {
-  title: 'Widgets/Object Widget',
+  title: 'Widgets/Object (JSON)',
   component: ObjectWidgetDefault,
   decorators: [
     (Story) => (
