@@ -8,9 +8,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Input } from 'semantic-ui-react';
 
-/** EmailWidget function component
- * @function EmailWidget
- * @returns {string} Markup of the component
+/** EmailWidget, a widget for email addresses
  *
  * To use it, in schema properties, declare a field like:
  *
