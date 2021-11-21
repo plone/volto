@@ -43,6 +43,51 @@ const defaultSchema = {
   required: [],
 };
 
+const multiFieldsetSchema = {
+  title: 'Item',
+  addMessage: 'Add item',
+  fieldsets: [
+    {
+      id: 'default',
+      title: 'Default',
+      fields: ['href', 'title', 'description'],
+    },
+    {
+      id: 'preview',
+      title: 'Preview',
+      fields: ['preview_image'],
+    },
+  ],
+
+  properties: {
+    href: {
+      title: 'Source',
+      widget: 'object_browser',
+      mode: 'link',
+      selectedItemAttrs: [
+        'Title',
+        'Description',
+        'hasPreviewImage',
+        'headtitle',
+      ],
+      allowExternals: true,
+    },
+    title: {
+      title: 'Title',
+    },
+    description: {
+      title: 'Description',
+    },
+    preview_image: {
+      title: 'Preview image',
+      widget: 'object_browser',
+      mode: 'image',
+      allowExternals: true,
+    },
+  },
+  required: [],
+};
+
 const customStore = {
   search: {
     subrequests: {
@@ -116,10 +161,14 @@ const ObjectListWidgetComponent = ({
   );
 };
 
-// Something here
 export const Default = ObjectListWidgetComponent.bind({});
 Default.args = {
   schema: defaultSchema,
+};
+
+export const MultipleFieldsets = ObjectListWidgetComponent.bind({});
+MultipleFieldsets.args = {
+  schema: multiFieldsetSchema,
 };
 
 const defaultSecondarySchema = {
