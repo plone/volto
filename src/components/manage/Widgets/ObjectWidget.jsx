@@ -58,11 +58,11 @@ const FieldSet = ({
 
 /**
  *
- * A JSON data editor widget based on a schema. If you to represent complex
+ * A JSON data editor widget based on a schema. If you want to represent complex
  * data using a single field, this is the widget to use.
  *
  * If there are multiple field sets, it renders a Tab component with multiple
- * tab panes.  Each tab has the title of the fieldset it renders.
+ * tab panes. Each tab has the title of the fieldset it renders.
  */
 const ObjectWidget = ({
   block,
