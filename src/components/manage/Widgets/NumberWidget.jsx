@@ -11,9 +11,6 @@ import { injectIntl } from 'react-intl';
 
 /**
  * NumberWidget component class.
- * @function NumberWidget
- * @returns {string} Markup of the component.
- *
  *
  * To use it, in schema properties, declare a field like:
  *
