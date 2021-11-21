@@ -18,15 +18,7 @@ const AnontoolsComponent = ({ children, ...args }) => {
 export const Anontools = AnontoolsComponent.bind({});
 
 export default {
-  title: 'Anontools',
+  title: 'Public components/Anontools',
   component: AnontoolsDefault,
-  decorators: [
-    (Story) => (
-      <div className="ui segment form attached" style={{ width: '400px' }}>
-        <h4>Login link for anonymous users</h4>
-        <Story />
-      </div>
-    ),
-  ],
   argTypes: {},
 };
