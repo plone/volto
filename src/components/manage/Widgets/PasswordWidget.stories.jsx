@@ -22,7 +22,7 @@ const PasswordWidgetComponent = ({ children, ...args }) => {
   );
 };
 
-export const Default = PasswordWidgetComponent.bind({});
+export const Password = PasswordWidgetComponent.bind({});
 
 export default {
   title: 'Widgets/Password',

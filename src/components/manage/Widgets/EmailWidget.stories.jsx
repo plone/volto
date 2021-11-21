@@ -22,7 +22,7 @@ const EmailWidgetComponent = ({ children, ...args }) => {
   );
 };
 
-export const Default = EmailWidgetComponent.bind({});
+export const Email = EmailWidgetComponent.bind({});
 
 export default {
   title: 'Widgets/Email',

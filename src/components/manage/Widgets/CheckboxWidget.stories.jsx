@@ -22,7 +22,7 @@ const CheckboxWidgetComponent = ({ children, ...args }) => {
   );
 };
 
-export const Default = CheckboxWidgetComponent.bind({});
+export const Checkbox = CheckboxWidgetComponent.bind({});
 
 export default {
   title: 'Widgets/Checkbox',

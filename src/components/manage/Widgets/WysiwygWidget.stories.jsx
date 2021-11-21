@@ -22,7 +22,7 @@ const WysiwygWidgetComponent = ({ children, ...args }) => {
   );
 };
 
-export const Default = WysiwygWidgetComponent.bind({});
+export const Wysiwyg = WysiwygWidgetComponent.bind({});
 
 export default {
   title: 'Widgets/Wysiwyg',

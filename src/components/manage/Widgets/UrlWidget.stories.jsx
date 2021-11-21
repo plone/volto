@@ -22,7 +22,7 @@ const UrlWidgetComponent = ({ children, ...args }) => {
   );
 };
 
-export const Default = UrlWidgetComponent.bind({});
+export const Url = UrlWidgetComponent.bind({});
 
 export default {
   title: 'Widgets/Url',

@@ -23,7 +23,7 @@ const NumberWidgetComponent = ({ children, ...args }) => {
   );
 };
 
-export const Default = NumberWidgetComponent.bind({});
+export const Number = NumberWidgetComponent.bind({});
 
 export default {
   title: 'Widgets/Number',

@@ -22,7 +22,7 @@ const TextWidgetComponent = ({ children, ...args }) => {
   );
 };
 
-export const Default = TextWidgetComponent.bind({});
+export const Text = TextWidgetComponent.bind({});
 
 export default {
   title: 'Widgets/Text',

@@ -22,7 +22,7 @@ const DatetimeWidgetComponent = ({ children, ...args }) => {
   );
 };
 
-export const Default = DatetimeWidgetComponent.bind({});
+export const Datetime = DatetimeWidgetComponent.bind({});
 
 export default {
   title: 'Widgets/Datetime',

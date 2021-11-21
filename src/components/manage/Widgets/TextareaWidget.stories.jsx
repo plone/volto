@@ -22,7 +22,7 @@ const TextareaWidgetComponent = ({ children, ...args }) => {
   );
 };
 
-export const Default = TextareaWidgetComponent.bind({});
+export const Textarea = TextareaWidgetComponent.bind({});
 
 export default {
   title: 'Widgets/Textarea',

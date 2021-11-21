@@ -55,7 +55,7 @@ const messages = defineMessages({
 });
 
 /**
- * WysiwygWidget richtext editing widget
+ * WysiwygWidget HTML richtext editing widget
  *
  * To use it, in schema properties, declare a field like:
  *

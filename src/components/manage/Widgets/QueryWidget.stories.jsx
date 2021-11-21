@@ -22,7 +22,7 @@ const QueryWidgetComponent = ({ children, ...args }) => {
   );
 };
 
-export const Default = QueryWidgetComponent.bind({});
+export const Query = QueryWidgetComponent.bind({});
 
 export default {
   title: 'Widgets/Query',

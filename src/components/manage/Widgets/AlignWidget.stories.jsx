@@ -21,7 +21,7 @@ const AlignWidgetComponent = ({ children, ...args }) => {
   );
 };
 
-export const Default = AlignWidgetComponent.bind({});
+export const Align = AlignWidgetComponent.bind({});
 
 export default {
   title: 'Widgets/Align',

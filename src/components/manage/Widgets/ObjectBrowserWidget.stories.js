@@ -193,7 +193,7 @@ const ObjectBrowserWidget = (args) => {
 };
 
 export default {
-  title: 'Object Browser',
+  title: 'Internal Components/Object Browser',
   component: OBC,
   decorators: [
     (Story) => (
