@@ -35,7 +35,7 @@ const addonPrompt = [
     type: 'prompt',
     name: 'useAddons',
     message: 'Would you like to add another addon?',
-    default: false,
+    default: 'false',
   },
 ];
 
@@ -164,15 +164,16 @@ Run "npm install -g @plone/generator-volto" to update.`,
       });
     } else {
       if (this.opts['interactive'] && !this.opts['skip-addons']) {
+        const choices = ['false', 'f', 'no', 'n'];
         props = await this.prompt([
           {
             type: 'prompt',
             name: 'useAddons',
             message: 'Would you like to add addons?',
-            default: false,
+            default: 'false',
           },
         ]);
-        while (props.useAddons !== false) {
+        while (choices.indexOf(props.useAddons) === -1) {
           /* eslint-disable no-await-in-loop */
           props = await this.prompt(addonPrompt);
           this.globals.addons.push(props.addonName);
