@@ -10,6 +10,8 @@
 
 ### Internal
 
+- generator: addon add prompt now accept fallacy choices @nileshgulia1
+
 ## 14.0.0-alpha.34 (2021-11-20)
 
 ### Feature
