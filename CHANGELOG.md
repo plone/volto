@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix external link not supported by Navigation component #2853. @ericof
+
 ### Internal
 
 ## 14.0.0-alpha.34 (2021-11-20)
