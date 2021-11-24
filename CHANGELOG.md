@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Upgrade p.restapi to 8.15.2 @sneridagh
+
 ## 14.0.0-alpha.34 (2021-11-20)
 
 ### Feature
