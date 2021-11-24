@@ -8,6 +8,7 @@
 
 ### Bugfix
 
+- Fix external link not supported by Navigation component #2853. @ericof
 - Get Add/Edit schema contextually #2852 @ericof
 
 ### Internal
