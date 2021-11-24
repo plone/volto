@@ -50,12 +50,12 @@ export default (config) => {
       id: 'default',
       title: 'Default',
       isDefault: true,
-      render: SimpleTeaserView
+      template: SimpleTeaserView
     },
     {
       id: 'card',
       label: 'Card',
-      render: CardTeaserView,
+      template: CardTeaserView,
       schemaEnhancer: ({schema, formData, intl}) => {
         schema.properties.cardSize = '...'; // fill in your implementation
         return schema;
@@ -110,17 +110,17 @@ export default (config) => {
           id: 'default',
           title: 'Default',
           isDefault: true,
-          render: DefaultColumnRenderer
+          template: DefaultColumnRenderer
         },
         {
           id: 'number',
           title: 'Number',
-          render: NumberColumnRenderer,
+          template: NumberColumnRenderer,
         },
         {
           id: 'colored',
           title: 'Colored',
-          renderer: ColoredColumnRenderer,
+          template: ColoredColumnRenderer,
           schemaEnhancer: ({formData, schema, intl}) => {
             schema.properties.color = {
               widget: 'color',
