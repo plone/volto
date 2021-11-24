@@ -9,8 +9,11 @@
 ### Bugfix
 
 - Fix external link not supported by Navigation component #2853. @ericof
+- Get Add/Edit schema contextually #2852 @ericof
 
 ### Internal
+
+- Upgrade p.restapi to 8.15.2 @sneridagh
 
 ## 14.0.0-alpha.34 (2021-11-20)
 
