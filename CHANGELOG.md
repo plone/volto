@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Get Add/Edit schema contextually #2852 @ericof
+
 ### Internal
 
 - Upgrade p.restapi to 8.15.2 @sneridagh
