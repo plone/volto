@@ -10,17 +10,31 @@
 
 ### Bugfix
 
+### Internal
+
+## 14.0.0-alpha.34 (2021-11-20)
+
+### Feature
+
+- Apply form defaults from RenderBlocks and block Edit using a new helper, `applyBlockDefaults` @tiberiuichim
+- Now each block config object can declare a schema factory (a function that can produce a schema) and this will be used to derive the default data for the block @tiberiuichim
+
+## 14.0.0-alpha.33 (2021-11-20)
+
+### Bugfix
+
 - Fix downloadableObjects default value @giuliaghisini
 - Folder contents table header and breadcrumbs dropdown now appear only from the
-  bottom, fixing an issue where the breadcrumb dropdown content was clipped 
+  bottom, fixing an issue where the breadcrumb dropdown content was clipped
   by the header area @ichim-david
-- Folder contents sort dropdown is now also simple as the other dropdowns 
+- Folder contents sort dropdown is now also simple as the other dropdowns
   ensuring we have the same behavior between adjecent dropdown @ichim-david
 - Fix documention on block extensions, replace `render` with `template` to match Listing block @tiberiuichim
 
 ### Internal
 
 - Upgrade stylelint to v14 (vscode-stylelint requires it now) @sneridagh
+- Add 2 new Volto websites by Eau de web for EEA @tiberiuichim
 
 ## 14.0.0-alpha.32 (2021-11-09)
 

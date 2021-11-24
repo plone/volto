@@ -14,6 +14,7 @@ import {
   nextBlockId,
   previousBlockId,
   visitBlocks,
+  applyBlockDefaults,
 } from './Blocks';
 
 import config from '@plone/volto/registry';
@@ -31,6 +32,26 @@ config.blocks.blocksConfig.text = {
       (data.text?.blocks?.length === 1 && data.text.blocks[0].text === '');
     return !isEmpty;
   },
+  blockSchema: ({ data }) => ({
+    fieldsets: [
+      {
+        id: 'default',
+        fields: ['title', 'description', 'nonDefault'],
+        title: 'Default',
+      },
+    ],
+    properties: {
+      title: {
+        default: 'Default title',
+      },
+      description: {
+        default: 'Default description',
+      },
+      nonDefault: {
+        title: 'Non default',
+      },
+    },
+  }),
 };
 
 config.settings.defaultBlockType = 'text';
@@ -359,6 +380,31 @@ describe('Blocks', () => {
       });
 
       expect(a.length).toBe(13);
+    });
+  });
+
+  describe('applyBlockDefaults', () => {
+    it('Sets data according to schema default values', () => {
+      const data = {
+        '@type': 'text',
+        description: 'already filled',
+      };
+      expect(applyBlockDefaults({ data })).toEqual({
+        '@type': 'text',
+        title: 'Default title',
+        description: 'already filled',
+      });
+    });
+
+    it('Does not do anything if there is no schema for block', () => {
+      const data = {
+        '@type': 'missing',
+        description: 'already filled',
+      };
+      expect(applyBlockDefaults({ data })).toEqual({
+        '@type': 'missing',
+        description: 'already filled',
+      });
     });
   });
 });
