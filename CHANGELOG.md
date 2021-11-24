@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Get Add/Edit schema contextually #2852 @ericof
+
 ### Internal
 
 ## 14.0.0-alpha.34 (2021-11-20)
