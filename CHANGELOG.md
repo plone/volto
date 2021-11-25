@@ -8,6 +8,7 @@
 
 ### Bugfix
 
+- Fix regression in actions vocabularies calls because the change to use contextual schemas @sneridagh
 - Include block schema enhancers (main block schema enhancer + variation schema enhancer) when calculating block default data @tiberiuichim
 
 ### Internal
