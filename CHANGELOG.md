@@ -2,10 +2,6 @@
 
 ## 14.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fix regression in actions vocabularies calls because the change to use contextual schemas @sneridagh
