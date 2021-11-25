@@ -15,6 +15,7 @@ import {
   previousBlockId,
   visitBlocks,
   applyBlockDefaults,
+  applySchemaDefaults,
 } from './Blocks';
 
 import config from '@plone/volto/registry';
@@ -32,6 +33,111 @@ config.blocks.blocksConfig.text = {
       (data.text?.blocks?.length === 1 && data.text.blocks[0].text === '');
     return !isEmpty;
   },
+  blockSchema: ({ data }) => ({
+    fieldsets: [
+      {
+        id: 'default',
+        fields: ['title', 'description', 'nonDefault'],
+        title: 'Default',
+      },
+    ],
+    properties: {
+      title: {
+        default: 'Default title',
+      },
+      description: {
+        default: 'Default description',
+      },
+      nonDefault: {
+        title: 'Non default',
+      },
+    },
+  }),
+};
+
+config.blocks.blocksConfig.enhancedBlock = {
+  id: 'enhancedBlock',
+  title: 'Text',
+  group: 'text',
+  restricted: false,
+  mostUsed: false,
+  blockHasOwnFocusManagement: true,
+  blockHasValue: (data) => {
+    const isEmpty =
+      !data.text ||
+      (data.text?.blocks?.length === 1 && data.text.blocks[0].text === '');
+    return !isEmpty;
+  },
+  schemaEnhancer: ({ schema, formData }) => {
+    schema.fieldsets[0].fields.push('extra');
+    schema.properties.extra = { default: 'Extra value' };
+    return schema;
+  },
+  variations: [
+    {
+      id: 'firstVariation',
+      schemaEnhancer: ({ schema, formData }) => {
+        schema.fieldsets[0].fields.push('extraVariationField');
+        schema.properties['extraVariationField'] = {
+          default: 'Extra variation field',
+        };
+        return schema;
+      },
+    },
+  ],
+  blockSchema: ({ data }) => ({
+    fieldsets: [
+      {
+        id: 'default',
+        fields: ['title', 'description', 'nonDefault'],
+        title: 'Default',
+      },
+    ],
+    properties: {
+      title: {
+        default: 'Default title',
+      },
+      description: {
+        default: 'Default description',
+      },
+      nonDefault: {
+        title: 'Non default',
+      },
+    },
+  }),
+};
+
+config.blocks.blocksConfig.enhancedBlockCase2 = {
+  id: 'enhancedBlockCase2',
+  title: 'Text',
+  group: 'text',
+  restricted: false,
+  mostUsed: false,
+  blockHasOwnFocusManagement: true,
+  blockHasValue: (data) => {
+    const isEmpty =
+      !data.text ||
+      (data.text?.blocks?.length === 1 && data.text.blocks[0].text === '');
+    return !isEmpty;
+  },
+  schemaEnhancer: ({ schema, formData }) => {
+    schema.fieldsets[0].fields.push('extra');
+    schema.properties.extra = {
+      default: 'Extra value from block schema enhancer',
+    };
+    return schema;
+  },
+  variations: [
+    {
+      id: 'firstVariation',
+      schemaEnhancer: ({ schema, formData }) => {
+        schema.properties['extra'] = {
+          default: 'Extra variation field',
+        };
+        return schema;
+      },
+    },
+  ],
   blockSchema: ({ data }) => ({
     fieldsets: [
       {
@@ -383,6 +489,21 @@ describe('Blocks', () => {
     });
   });
 
+  describe('applySchemaDefaults', () => {
+    it('Sets data according to schema default values', () => {
+      const data = {
+        '@type': 'text',
+        description: 'already filled',
+      };
+      const schema = config.blocks.blocksConfig.text.blockSchema({ data });
+      expect(applySchemaDefaults({ schema, data })).toEqual({
+        '@type': 'text',
+        title: 'Default title',
+        description: 'already filled',
+      });
+    });
+  });
+
   describe('applyBlockDefaults', () => {
     it('Sets data according to schema default values', () => {
       const data = {
@@ -404,6 +525,51 @@ describe('Blocks', () => {
       expect(applyBlockDefaults({ data })).toEqual({
         '@type': 'missing',
         description: 'already filled',
+      });
+    });
+
+    it('Supports block schema enhancers', () => {
+      const data = {
+        '@type': 'enhancedBlock',
+        description: 'already filled',
+        // variation: 'firstVariation',
+      };
+      expect(applyBlockDefaults({ data })).toEqual({
+        '@type': 'enhancedBlock',
+        title: 'Default title',
+        description: 'already filled',
+        extra: 'Extra value',
+      });
+    });
+
+    it('Supports block schema enhancers coming from variations', () => {
+      const data = {
+        '@type': 'enhancedBlock',
+        description: 'already filled',
+        variation: 'firstVariation',
+      };
+      expect(applyBlockDefaults({ data })).toEqual({
+        '@type': 'enhancedBlock',
+        title: 'Default title',
+        description: 'already filled',
+        extra: 'Extra value',
+        extraVariationField: 'Extra variation field',
+        variation: 'firstVariation',
+      });
+    });
+
+    it('Block schema enhancers override variations', () => {
+      const data = {
+        '@type': 'enhancedBlockCase2',
+        description: 'already filled',
+        variation: 'firstVariation',
+      };
+      expect(applyBlockDefaults({ data })).toEqual({
+        '@type': 'enhancedBlockCase2',
+        title: 'Default title',
+        description: 'already filled',
+        extra: 'Extra value from block schema enhancer',
+        variation: 'firstVariation',
       });
     });
   });
