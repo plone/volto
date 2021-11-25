@@ -6,6 +6,10 @@
 
 ### Changes
 
+### Internal
+
+- Add more exceptions to .gitignore @avoinea
+
 ## 5.0.0-alpha.1 (2021-10-29)
 
 ### Added
