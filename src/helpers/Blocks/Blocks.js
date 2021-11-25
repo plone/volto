@@ -7,6 +7,7 @@ import { omit, without, endsWith, find, keys } from 'lodash';
 import move from 'lodash-move';
 import { v4 as uuid } from 'uuid';
 import config from '@plone/volto/registry';
+import { applySchemaEnhancer } from '@plone/volto/helpers';
 
 /**
  * Get blocks field.
@@ -362,22 +363,9 @@ export function visitBlocks(content, callback) {
 }
 
 /**
- * Apply the block's default (as defined in schema) to the block data.
- * @function applyBlockDefaults
- * @param {Object} params An object with data, intl and anything else
- * @return {Object} Derived data, with the defaults extracted from the schema
+ * Initializes data with the default values coming from schema
  */
-export function applyBlockDefaults({ data, intl, ...rest }, blocksConfig) {
-  const block_type = data['@type'];
-  const { blockSchema } =
-    (blocksConfig || config.blocks.blocksConfig)[block_type] || {};
-  if (!blockSchema) return data;
-
-  const schema =
-    typeof blockSchema === 'function'
-      ? blockSchema({ data, intl, ...rest })
-      : blockSchema;
-
+export function applySchemaDefaults({ data = {}, schema }) {
   const derivedData = {
     ...Object.keys(schema.properties).reduce((accumulator, currentField) => {
       return schema.properties[currentField].default
@@ -389,6 +377,27 @@ export function applyBlockDefaults({ data, intl, ...rest }, blocksConfig) {
     }, {}),
     ...data,
   };
-
   return derivedData;
+}
+
+/**
+ * Apply the block's default (as defined in schema) to the block data.
+ *
+ * @function applyBlockDefaults
+ * @param {Object} params An object with data, intl and anything else
+ * @return {Object} Derived data, with the defaults extracted from the schema
+ */
+export function applyBlockDefaults({ data, intl, ...rest }, blocksConfig) {
+  const block_type = data['@type'];
+  const { blockSchema } =
+    (blocksConfig || config.blocks.blocksConfig)[block_type] || {};
+  if (!blockSchema) return data;
+
+  let schema =
+    typeof blockSchema === 'function'
+      ? blockSchema({ data, intl, ...rest })
+      : blockSchema;
+  schema = applySchemaEnhancer({ schema, formData: data, intl });
+
+  return applySchemaDefaults({ data, schema });
 }
