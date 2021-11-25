@@ -39,7 +39,6 @@ const Image = ({
   const [srcset, setSrcset] = useState(
     critical && srcSet ? srcSet.join(', ') : null,
   );
-  const hasSrcSet = srcset?.length;
   const imageHasLoaded = imageRef?.current?.complete;
 
   let pictureClassName = `volto-image${
@@ -90,7 +89,7 @@ const Image = ({
   return (
     <>
       <picture className={pictureClassName}>
-        {hasSrcSet && <source srcSet={srcset} />}
+        {srcset?.length > 0 && <source srcSet={srcset} />}
         <img
           src={src}
           alt={alt}
