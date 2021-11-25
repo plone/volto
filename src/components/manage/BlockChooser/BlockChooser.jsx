@@ -82,8 +82,12 @@ const BlockChooser = ({
   const [filterValue, setFilterValue] = React.useState('');
 
   function blocksAvailableFilter(blocks) {
-    return blocks.filter((item) =>
-      item.title.toLowerCase().includes(filterValue),
+    return blocks.filter(
+      (item) =>
+        item.title.toLowerCase().includes(filterValue) ||
+        item.variations?.some((variation) =>
+          variation.title.toLowerCase().includes(filterValue),
+        ),
     );
   }
 
