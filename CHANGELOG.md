@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Include block schema enhancers (main block schema enhancer + variation schema enhancer) when calculating block default data @tiberiuichim
+
 ### Internal
 
 ## 14.0.0-alpha.35 (2021-11-24)

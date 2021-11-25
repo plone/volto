@@ -7,6 +7,7 @@ import { omit, without, endsWith, find, keys } from 'lodash';
 import move from 'lodash-move';
 import { v4 as uuid } from 'uuid';
 import config from '@plone/volto/registry';
+import { applySchemaEnhancer } from '@plone/volto/helpers';
 
 /**
  * Get blocks field.
@@ -373,10 +374,11 @@ export function applyBlockDefaults({ data, intl, ...rest }, blocksConfig) {
     (blocksConfig || config.blocks.blocksConfig)[block_type] || {};
   if (!blockSchema) return data;
 
-  const schema =
+  let schema =
     typeof blockSchema === 'function'
       ? blockSchema({ data, intl, ...rest })
       : blockSchema;
+  schema = applySchemaEnhancer({ schema, formData: data, intl });
 
   const derivedData = {
     ...Object.keys(schema.properties).reduce((accumulator, currentField) => {
