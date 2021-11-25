@@ -140,13 +140,13 @@ class DatetimeWidget extends Component {
       (prevState) => ({
         datetime: prevState.datetime
           ? prevState.datetime.set({
-              hours: time.hours(),
-              minutes: time.minutes(),
+              hours: time?.hours(),
+              minutes: time?.minutes(),
               seconds: 0,
             })
           : moment().set({
-              hours: time.hours(),
-              minutes: time.minutes(),
+              hours: time?.hours(),
+              minutes: time?.minutes(),
               seconds: 0,
             }),
         isDefault: false,

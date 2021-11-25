@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix when you remove the time from DatetimeWidget @iRohitSingh
+
 ### Internal
 
 ## 14.0.0-alpha.35 (2021-11-24)
