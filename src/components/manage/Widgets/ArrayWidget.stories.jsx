@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrayWidgetComponent } from './ArrayWidget';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
-import Wrapper from '@plone/volto/storybook';
+import { RealStoreWrapper as Wrapper } from '@plone/volto/storybook';
 
 const ArrayComponent = injectLazyLibs([
   'reactSelectCreateable',
