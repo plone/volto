@@ -68,8 +68,9 @@ const DefaultView = ({ content, intl, location }) => {
       {content.image && (
         <Image
           className="document-image"
-          containerClassName="block image align right"
           image={content.image}
+          floated="right"
+          size="medium"
         />
       )}
       {content.remoteUrl && (

@@ -69,7 +69,6 @@ const EventView = ({ intl, content }) => (
     {content.image && (
       <Image
         className="document-image"
-        containerClassName="block image align right"
         size="medium"
         floated="right"
         image={content.image}
