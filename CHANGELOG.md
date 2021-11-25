@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix regression in actions vocabularies calls because the change to use contextual schemas @sneridagh
+
 ### Internal
 
 ## 14.0.0-alpha.35 (2021-11-24)
