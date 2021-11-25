@@ -15,6 +15,7 @@ import {
   previousBlockId,
   visitBlocks,
   applyBlockDefaults,
+  applySchemaDefaults,
 } from './Blocks';
 
 import config from '@plone/volto/registry';
@@ -485,6 +486,21 @@ describe('Blocks', () => {
       });
 
       expect(a.length).toBe(13);
+    });
+  });
+
+  describe('applySchemaDefaults', () => {
+    it('Sets data according to schema default values', () => {
+      const data = {
+        '@type': 'text',
+        description: 'already filled',
+      };
+      const schema = config.blocks.blocksConfig.text.blockSchema({ data });
+      expect(applySchemaDefaults({ schema, data })).toEqual({
+        '@type': 'text',
+        title: 'Default title',
+        description: 'already filled',
+      });
     });
   });
 

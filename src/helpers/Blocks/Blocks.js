@@ -363,7 +363,26 @@ export function visitBlocks(content, callback) {
 }
 
 /**
+ * Initializes data with the default values coming from schema
+ */
+export function applySchemaDefaults({ data = {}, schema }) {
+  const derivedData = {
+    ...Object.keys(schema.properties).reduce((accumulator, currentField) => {
+      return schema.properties[currentField].default
+        ? {
+            ...accumulator,
+            [currentField]: schema.properties[currentField].default,
+          }
+        : accumulator;
+    }, {}),
+    ...data,
+  };
+  return derivedData;
+}
+
+/**
  * Apply the block's default (as defined in schema) to the block data.
+ *
  * @function applyBlockDefaults
  * @param {Object} params An object with data, intl and anything else
  * @return {Object} Derived data, with the defaults extracted from the schema
@@ -380,17 +399,5 @@ export function applyBlockDefaults({ data, intl, ...rest }, blocksConfig) {
       : blockSchema;
   schema = applySchemaEnhancer({ schema, formData: data, intl });
 
-  const derivedData = {
-    ...Object.keys(schema.properties).reduce((accumulator, currentField) => {
-      return schema.properties[currentField].default
-        ? {
-            ...accumulator,
-            [currentField]: schema.properties[currentField].default,
-          }
-        : accumulator;
-    }, {}),
-    ...data,
-  };
-
-  return derivedData;
+  return applySchemaDefaults({ data, schema });
 }
