@@ -171,6 +171,13 @@ describe('Url', () => {
       expect(isInternalURL(href)).toBe(true);
       settings.internalApiPath = saved;
     });
+    it('tells if an URL is external if settings.internalApiPath is empty', () => {
+      const href = `http://google.com`;
+      const saved = settings.internalApiPath;
+      settings.internalApiPath = '';
+      expect(isInternalURL(href)).toBe(false);
+      settings.internalApiPath = saved;
+    });
     it('tells if an URL is internal if it is an anchor', () => {
       const href = '#anchor';
       expect(isInternalURL(href)).toBe(true);
