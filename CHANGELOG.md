@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Fix references to old configuration style in apiExpanders documentation @tiberiuichim
+
 ## 14.0.0-alpha.35 (2021-11-24)
 
 ### Bugfix
