@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix action vocabularies call avoiding regex look behind @nzambello
+
 ### Internal
 
 - Fix select family widgets stories in storybook @sneridagh
