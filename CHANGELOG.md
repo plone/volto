@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add Image with srcset and lazy loading using Plone scales @nzambello
+
 ### Bugfix
 
 - Fix action vocabularies call avoiding regex look behind @nzambello

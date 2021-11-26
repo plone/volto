@@ -36,10 +36,39 @@ exports[`renders an gallery view component 1`] = `
           <div
             className="ui segment imageborder"
           >
-            <img
-              className="ui middle aligned image"
-              onClick={[Function]}
-              src="file:///preview.jpg"
+            <picture
+              className="volto-image"
+            >
+              <img
+                alt=""
+                loading="lazy"
+                onClick={[Function]}
+                role="img"
+                src="http://localhost:3000/news"
+                style={
+                  Object {
+                    "objectFit": "cover",
+                    "width": "100%",
+                  }
+                }
+                verticalAlign="middle"
+              />
+            </picture>
+            <noscript
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "
+              <img
+                src=\\"http://localhost:3000/news\\"
+                undefined
+                alt=\\"\\"
+                class=\\"\\"
+                role=\\"img\\"
+                loading=\\"lazy\\"
+                style=\\"width: 100%; object-fit: cover;\\"
+            ",
+                }
+              }
             />
           </div>
         </div>
@@ -54,10 +83,39 @@ exports[`renders an gallery view component 1`] = `
           <div
             className="ui segment imageborder"
           >
-            <img
-              className="ui middle aligned image"
-              onClick={[Function]}
-              src="file:///preview.jpg"
+            <picture
+              className="volto-image"
+            >
+              <img
+                alt=""
+                loading="lazy"
+                onClick={[Function]}
+                role="img"
+                src="http://localhost:3000/events"
+                style={
+                  Object {
+                    "objectFit": "cover",
+                    "width": "100%",
+                  }
+                }
+                verticalAlign="middle"
+              />
+            </picture>
+            <noscript
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "
+              <img
+                src=\\"http://localhost:3000/events\\"
+                undefined
+                alt=\\"\\"
+                class=\\"\\"
+                role=\\"img\\"
+                loading=\\"lazy\\"
+                style=\\"width: 100%; object-fit: cover;\\"
+            ",
+                }
+              }
             />
           </div>
         </div>
