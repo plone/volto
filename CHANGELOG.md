@@ -2,10 +2,6 @@
 
 ## 14.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fixed object browser selected items number. @giuliaghisini
