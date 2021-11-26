@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Remove getNavigation from Login.jsx @iRohitSingh
+
 ## 14.0.0-alpha.37 (2021-11-26)
 
 ### Bugfix
