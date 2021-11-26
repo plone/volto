@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fixed object browser selected items number. @giuliaghisini
+
 ### Internal
 
 - Fix select family widgets stories in storybook @sneridagh
