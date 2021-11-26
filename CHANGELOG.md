@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Fixed object browser selected items number. @giuliaghisini
+- Fix action vocabularies call avoiding regex look behind @nzambello
 
 ### Internal
 
