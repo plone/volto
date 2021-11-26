@@ -9,10 +9,20 @@
 ### Bugfix
 
 - Fix when you remove the time from DatetimeWidget @iRohitSingh
+### Internal
+
+- Fix select family widgets stories in storybook @sneridagh
+
+## 14.0.0-alpha.36 (2021-11-25)
+
+### Bugfix
+
+- Fix regression in actions vocabularies calls because the change to use contextual schemas @sneridagh
 - Include block schema enhancers (main block schema enhancer + variation schema enhancer) when calculating block default data @tiberiuichim
 
 ### Internal
 
+- Fix references to old configuration style in apiExpanders documentation @tiberiuichim
 - Add `applySchemaDefaults`, in addition to `applyBlockDefaults`, to allow reuse in object widgets and other advanced scenarios @tiberiuichim
 
 ## 14.0.0-alpha.35 (2021-11-24)
