@@ -65,3 +65,5 @@ export const schemaListing = (props) => {
     required: [],
   };
 };
+
+export default schemaListing;
