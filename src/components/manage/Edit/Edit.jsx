@@ -136,7 +136,10 @@ class Edit extends Component {
    */
   componentDidMount() {
     if (this.props.getRequest.loaded && this.props.content?.['@type']) {
-      this.props.getSchema(this.props.content['@type']);
+      this.props.getSchema(
+        this.props.content['@type'],
+        getBaseUrl(this.props.pathname),
+      );
     }
     this.setState({
       isClient: true,

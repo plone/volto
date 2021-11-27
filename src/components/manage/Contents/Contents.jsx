@@ -51,6 +51,7 @@ import {
 } from '@plone/volto/actions';
 import Indexes, { defaultIndexes } from '@plone/volto/constants/Indexes';
 import {
+  ContentsBreadcrumbs,
   ContentsIndexHeader,
   ContentsItem,
   ContentsRenameModal,
@@ -65,7 +66,6 @@ import {
   Unauthorized,
 } from '@plone/volto/components';
 
-import ContentsBreadcrumbs from './ContentsBreadcrumbs';
 import { Helmet, getBaseUrl } from '@plone/volto/helpers';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
@@ -1429,6 +1429,7 @@ class Contents extends Component {
                         <ContentsBreadcrumbs items={this.props.breadcrumbs} />
                         <Dropdown
                           item
+                          upward={false}
                           icon={
                             <Icon name={moreSVG} size="24px" color="#826a6a" />
                           }
@@ -1493,7 +1494,13 @@ class Contents extends Component {
                           <Table.Row>
                             <Table.HeaderCell>
                               <Dropdown
-                                trigger={
+                                item
+                                upward={false}
+                                className="sort-icon"
+                                aria-label={this.props.intl.formatMessage(
+                                  messages.sort,
+                                )}
+                                icon={
                                   <Icon
                                     name={configurationSVG}
                                     size="24px"
@@ -1501,12 +1508,6 @@ class Contents extends Component {
                                     className="configuration-svg"
                                   />
                                 }
-                                className="sort-icon"
-                                aria-label={this.props.intl.formatMessage(
-                                  messages.sort,
-                                )}
-                                icon={null}
-                                simple
                               >
                                 <Dropdown.Menu>
                                   <Dropdown.Header
@@ -1570,6 +1571,7 @@ class Contents extends Component {
                             </Table.HeaderCell>
                             <Table.HeaderCell>
                               <Dropdown
+                                upward={false}
                                 trigger={
                                   <Icon
                                     name={

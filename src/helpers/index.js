@@ -49,6 +49,8 @@ export {
   mutateBlock,
   nextBlockId,
   previousBlockId,
+  applyBlockDefaults,
+  applySchemaDefaults,
   isPlaceholderBlock,
   cleanupLastPlaceholders,
 } from '@plone/volto/helpers/Blocks/Blocks';
