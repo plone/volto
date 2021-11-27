@@ -3272,6 +3272,11 @@ msgstr "入力範囲の最小値"
 msgid "mostUsed"
 msgstr "よく使う物"
 
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+# defaultMessage: No
+msgid "no"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 # defaultMessage: No workflow state
 msgid "no workflow state"
@@ -3542,6 +3547,11 @@ msgstr "ビデオ"
 # defaultMessage: Visit external website
 msgid "visit_external_website"
 msgstr "外部サイトを表示"
+
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+# defaultMessage: Yes
+msgid "yes"
+msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: {count, plural, one {Upload {count} file} other {Upload {count} files}}
