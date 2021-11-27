@@ -23,15 +23,13 @@ function ToggleFacetFilterListEntry(props) {
       <Icon
         name="delete"
         onClick={() => {
-          !isEditMode &&
-            setFacets(
-              Object.assign(
-                {},
-                ...Object.keys(facets)
-                  .filter((f) => f !== facet)
-                  .map((f) => ({ f: facets[f] })),
-              ),
-            );
+          const filteredFacets = Object.assign(
+            {},
+            ...Object.keys(facets)
+              .filter((f) => f !== facet)
+              .map((f) => ({ [f]: facets[f] })),
+          );
+          !isEditMode && setFacets(filteredFacets);
         }}
       />
     </Label>

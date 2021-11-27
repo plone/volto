@@ -27,7 +27,8 @@ const FilterList = (props) => {
   const [isOpened, setIsOpened] = React.useState(false);
 
   const totalFilters = definedFacets.filter(
-    ({ field }) => field && Object.keys(facets).includes(field.value),
+    ({ field }) =>
+      field && Object.keys(facets).includes(field.value) && facets[field.value],
   ).length;
 
   const {
