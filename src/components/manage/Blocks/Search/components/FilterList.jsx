@@ -15,6 +15,10 @@ const messages = defineMessages({
   },
 });
 
+/**
+ * A list of active filtered values and controls to clear those filters.
+ *
+ */
 const FilterList = (props) => {
   const { data, facets, setFacets, isEditMode } = props;
   const [isOpened, setIsOpened] = React.useState(false);

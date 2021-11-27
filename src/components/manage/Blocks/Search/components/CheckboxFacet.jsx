@@ -1,7 +1,11 @@
 import React from 'react';
 import { Checkbox, Header } from 'semantic-ui-react';
 
-const SelectFacet = (props) => {
+/**
+ * A facet that uses radio/checkboxes to provide an explicit list of values for
+ * filtering
+ */
+const CheckboxFacet = (props) => {
   const { facet, choices, isMulti, onChange, value, isEditMode } = props;
   const facetValue = value;
 
@@ -43,4 +47,17 @@ const SelectFacet = (props) => {
   );
 };
 
-export default SelectFacet;
+CheckboxFacet.schemaEnhancer = ({ schema, formData }) => {
+  // adds (enables) the 'multiple' field after the 'type' dropdown
+  let { fields } = schema.fieldsets[0];
+  const pos = fields.indexOf('type') + 1;
+  fields = [
+    ...fields.slice(0, pos),
+    'multiple',
+    ...fields.slice(pos, fields.length),
+  ];
+  schema.fieldsets[0].fields = fields;
+  return schema;
+};
+
+export default CheckboxFacet;

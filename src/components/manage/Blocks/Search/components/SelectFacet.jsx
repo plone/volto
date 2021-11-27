@@ -47,4 +47,17 @@ const SelectFacet = (props) => {
   );
 };
 
+SelectFacet.schemaEnhancer = ({ schema, formData }) => {
+  // adds (enables) the 'multiple' field after the 'type' dropdown
+  let { fields } = schema.fieldsets[0];
+  const pos = fields.indexOf('type') + 1;
+  fields = [
+    ...fields.slice(0, pos),
+    'multiple',
+    ...fields.slice(pos, fields.length),
+  ];
+  schema.fieldsets[0].fields = fields;
+  return schema;
+};
+
 export default injectLazyLibs('reactSelect')(SelectFacet);

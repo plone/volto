@@ -1,6 +1,16 @@
 import React from 'react';
 import { resolveExtension } from '@plone/volto/helpers/Extensions/withBlockExtensions';
 import config from '@plone/volto/registry';
+import { hasNonValueOperation } from '../utils';
+
+const showFacet = (index) => {
+  const { values } = index;
+  return index
+    ? hasNonValueOperation(index.operations || [])
+      ? true
+      : values && Object.keys(values).length > 0
+    : values && Object.keys(values).length > 0;
+};
 
 const Facets = (props) => {
   const {
@@ -70,7 +80,7 @@ const Facets = (props) => {
             rewriteOptions = (name, options) => options,
           } = search.extensions.facetWidgets;
 
-          return FacetWrapper && Object.keys(values).length ? (
+          return FacetWrapper && (isEditMode || showFacet(index)) ? (
             <FacetWrapper key={facet['@id']}>
               <FacetWidget
                 facet={facet}
