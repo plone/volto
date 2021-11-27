@@ -10,6 +10,9 @@
 
 ### Internal
 
+- Allow listing block to be used in non-content pages (when used in a slot it
+  shouldn't crash on add/edit pages) @tiberiuichim
+
 ## 14.0.0-alpha.37 (2021-11-26)
 
 ### Bugfix
