@@ -32,9 +32,9 @@ const Facets = (props) => {
   return (
     <>
       {data?.facets
-        ?.filter((facet) => !facet.hidden)
-        .map((facet) => {
-          const field = facet?.field?.value;
+        ?.filter((facetSettings) => !facetSettings.hidden)
+        .map((facetSettings) => {
+          const field = facetSettings?.field?.value;
           const index = querystring.indexes[field] || {};
           const { values = {} } = index;
 
@@ -51,40 +51,28 @@ const Facets = (props) => {
                 : true,
             );
 
-          const isMulti = facet.multiple;
-          const selectedValue = facets[facet?.field?.value];
+          const isMulti = facetSettings.multiple;
+          const selectedValue = facets[facetSettings?.field?.value];
 
           // TODO :handle changing the type of facet (multi/nonmulti)
 
-          let value = selectedValue
-            ? isMulti
-              ? Array.isArray(selectedValue)
-                ? selectedValue.map((v) => ({
-                    value: v,
-                    label: index.values?.[v]?.title,
-                  }))
-                : []
-              : {
-                  value: selectedValue,
-                  label: index.values?.[selectedValue]?.title,
-                }
-            : [];
-
-          const { view: FacetWidget } = resolveExtension(
+          const { view: FacetWidget, stateToValue } = resolveExtension(
             'type',
             search.extensions.facetWidgets.types,
-            facet,
+            facetSettings,
           );
+
+          let value = stateToValue({ facetSettings, index, selectedValue });
 
           const {
             rewriteOptions = (name, options) => options,
           } = search.extensions.facetWidgets;
 
           return FacetWrapper && (isEditMode || showFacet(index)) ? (
-            <FacetWrapper key={facet['@id']}>
+            <FacetWrapper key={facetSettings['@id']}>
               <FacetWidget
-                facet={facet}
-                choices={rewriteOptions(facet?.field?.value, choices)}
+                facet={facetSettings}
+                choices={rewriteOptions(facetSettings?.field?.value, choices)}
                 isMulti={isMulti}
                 value={value}
                 isEditMode={isEditMode}

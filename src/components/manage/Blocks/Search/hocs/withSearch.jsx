@@ -1,8 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { isEmpty } from 'lodash';
 import qs from 'query-string';
 import { useLocation, useHistory } from 'react-router-dom';
+
+import { resolveExtension } from '@plone/volto/helpers/Extensions/withBlockExtensions';
+import config from '@plone/volto/registry';
 
 function getDisplayName(WrappedComponent) {
   return WrappedComponent.displayName || WrappedComponent.name || 'Component';
@@ -54,27 +56,42 @@ function getInitialState(data, facets, urlSearchText, id) {
 }
 
 /**
- * "Normalizes" the search state to something that's serializable and usable
- * as initial state
+ * "Normalizes" the search state to something that's serializable (for
+ * querying) and usable as initial state
  *
  * @function normalizeState
  *
  */
-function normalizeState({ query, facets, id, searchText, sortOn, sortOrder }) {
+function normalizeState({
+  query, // base query
+  facets, // facet values
+  id, // block id
+  searchText, // SearchableText
+  sortOn,
+  sortOrder,
+  facetSettings, // data.facets extracted from block data
+}) {
+  const {
+    types: facetWidgetTypes,
+  } = config.blocks.blocksConfig.search.extensions.facetWidgets;
+
   const params = {
     query: [
       ...(query.query || []),
-      ...Object.keys(facets).map((name) =>
-        !isEmpty(facets[name])
-          ? {
-              i: name,
-              o: Array.isArray(facets[name])
-                ? 'plone.app.querystring.operation.list.contains'
-                : 'plone.app.querystring.operation.selection.is',
-              v: facets[name],
-            }
-          : undefined,
-      ),
+      ...(facetSettings || []).map((facet) => {
+        if (!facet?.field) return null;
+
+        const { valueToQuery } = resolveExtension(
+          'type',
+          facetWidgetTypes,
+          facet,
+        );
+
+        const name = facet.field.value;
+        const value = facets[name];
+
+        return valueToQuery({ value, facet });
+      }),
     ].filter((o) => !!o),
     sort_on: sortOn || query.sort_on,
     sort_order: sortOrder || query.sort_order,
@@ -245,19 +262,21 @@ const withSearch = (options) => (WrappedComponent) => {
     );
 
     const timeoutRef = React.useRef();
+    const facetSettings = data?.facets;
 
     const onTriggerSearch = React.useCallback(
-      (toSearch, toSearchFacets, toSortOn, toSortOrder) => {
+      (toSearchText, toSearchFacets, toSortOn, toSortOrder) => {
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
         timeoutRef.current = setTimeout(
           () => {
             const searchData = normalizeState({
+              id,
               query: data.query || {},
               facets: toSearchFacets || facets,
-              id,
-              searchText: toSearch,
+              searchText: toSearchText,
               sortOn: toSortOn || sortOn,
               sortOrder: toSortOrder || sortOrder,
+              facetSettings,
             });
             if (toSearchFacets) setFacets(toSearchFacets);
             if (toSortOn) setSortOn(toSortOn);
@@ -268,7 +287,15 @@ const withSearch = (options) => (WrappedComponent) => {
           toSearchFacets ? inputDelay / 3 : inputDelay,
         );
       },
-      [data.query, facets, id, setLocationSearchData, sortOn, sortOrder],
+      [
+        data.query,
+        facets,
+        id,
+        setLocationSearchData,
+        sortOn,
+        sortOrder,
+        facetSettings,
+      ],
     );
 
     const querystringResults = useSelector(

@@ -5,6 +5,11 @@ import {
   DropdownIndicator,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 import { selectTheme, customSelectStyles } from './SelectStyling';
+import {
+  selectFacetSchemaEnhancer,
+  selectFacetStateToValue,
+  selectFacetValueToQuery,
+} from './base';
 
 const SelectFacet = (props) => {
   const {
@@ -47,17 +52,8 @@ const SelectFacet = (props) => {
   );
 };
 
-SelectFacet.schemaEnhancer = ({ schema, formData }) => {
-  // adds (enables) the 'multiple' field after the 'type' dropdown
-  let { fields } = schema.fieldsets[0];
-  const pos = fields.indexOf('type') + 1;
-  fields = [
-    ...fields.slice(0, pos),
-    'multiple',
-    ...fields.slice(pos, fields.length),
-  ];
-  schema.fieldsets[0].fields = fields;
-  return schema;
-};
+SelectFacet.schemaEnhancer = selectFacetSchemaEnhancer;
+SelectFacet.stateToValue = selectFacetStateToValue;
+SelectFacet.valueToQuery = selectFacetValueToQuery;
 
 export default injectLazyLibs('reactSelect')(SelectFacet);
