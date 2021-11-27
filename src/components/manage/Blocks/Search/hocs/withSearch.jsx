@@ -56,8 +56,8 @@ function getInitialState(data, facets, urlSearchText, id) {
 }
 
 /**
- * "Normalizes" the search state to something that's serializable (for
- * querying) and usable as initial state
+ * "Normalizes" the search state to something that's serializable
+ * (for querying) and used to compute data for the ListingBody
  *
  * @function normalizeState
  *

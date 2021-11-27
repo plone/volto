@@ -1,8 +1,10 @@
 import React from 'react';
-import { Accordion, Button, Label, Icon } from 'semantic-ui-react';
+import { Accordion, Button, Icon } from 'semantic-ui-react';
 import { Icon as VoltoIcon } from '@plone/volto/components';
 import downSVG from '@plone/volto/icons/down-key.svg';
 import { defineMessages, useIntl } from 'react-intl';
+import { resolveExtension } from '@plone/volto/helpers/Extensions/withBlockExtensions';
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   currentFilters: {
@@ -20,25 +22,21 @@ const messages = defineMessages({
  *
  */
 const FilterList = (props) => {
-  const { data, facets, setFacets, isEditMode } = props;
+  const { data = {}, facets = {}, setFacets, isEditMode } = props;
+  const definedFacets = data.facets || [];
   const [isOpened, setIsOpened] = React.useState(false);
 
-  // TODO: the facets are merged with the default query. We need to untangle
-  // and claim only the original facet values
-  const showFilterList = !Object.values(facets).every((facet) => !facet.length);
+  const totalFilters = definedFacets.filter(
+    ({ field }) => field && Object.keys(facets).includes(field.value),
+  ).length;
 
-  const currentFilters = Object.fromEntries(
-    Object.entries(facets).filter((v) => v[1] && v[0] !== 'SearchableText'),
-  );
-
-  const totalFilters = [].concat.apply([], Object.values(currentFilters))
-    .length;
-
-  // console.log({ data, facets, showFilterList, currentFilters, totalFilters });
+  const {
+    types: facetWidgetTypes,
+  } = config.blocks.blocksConfig.search.extensions.facetWidgets;
 
   const intl = useIntl();
 
-  return showFilterList && Object.keys(currentFilters).length ? (
+  return totalFilters ? (
     <Accordion className="filter-listing">
       <Accordion.Title
         className="filter-list-header"
@@ -65,59 +63,26 @@ const FilterList = (props) => {
       </Accordion.Title>
       <Accordion.Content className="filter-list-content" active={isOpened}>
         <div className="filter-list">
-          {Object.keys(facets || {}).map((facet, i) => (
-            <div key={i}>
-              {facets[facet].length > 0 && (
-                <div className="filter-list-group" key={i}>
-                  {data?.facets?.map((f, i) => {
-                    return facet === f?.field?.value ? (
-                      <span className="label-title" key={i}>
-                        {f.title || f?.field?.label}:
-                      </span>
-                    ) : (
-                      ''
-                    );
-                  })}
-                  {typeof facets[facet] === 'string' ? (
-                    <Label size="small" key={i}>
-                      {facets[facet]}
-                      <Icon
-                        name="delete"
-                        onClick={() => {
-                          !isEditMode &&
-                            setFacets({
-                              ...facets,
-                              [facet]: '',
-                            });
-                        }}
-                      />
-                    </Label>
-                  ) : (
-                    <>
-                      {facets[facet].map((entry, i) => (
-                        <Label size="small" key={i}>
-                          {entry}
-                          <Icon
-                            name="delete"
-                            onClick={() => {
-                              const entries = facets[facet].filter(
-                                (item) => item !== entry,
-                              );
-                              !isEditMode &&
-                                setFacets({
-                                  ...facets,
-                                  [facet]: entries,
-                                });
-                            }}
-                          />
-                        </Label>
-                      ))}
-                    </>
-                  )}
-                </div>
-              )}
-            </div>
-          ))}
+          {data.facets?.map((facetSettings, i) => {
+            const {
+              filterListComponent: FilterListComponent,
+            } = resolveExtension('type', facetWidgetTypes, facetSettings);
+            const facet = facetSettings?.field?.value;
+            if (!facet) return null;
+
+            return (
+              <div key={i}>
+                {Object.keys(facets).includes(facet) && !!facets[facet] && (
+                  <div className="filter-list-group" key={i}>
+                    <span className="label-title">
+                      {facetSettings.title ?? facetSettings?.field?.label}
+                    </span>
+                    <FilterListComponent {...props} facet={facet} />
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </Accordion.Content>
     </Accordion>
