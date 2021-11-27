@@ -27,16 +27,30 @@ const PAQO = 'plone.app.querystring.operation';
  *
  */
 function getInitialState(data, facets, urlSearchText, id) {
+  const {
+    types: facetWidgetTypes,
+  } = config.blocks.blocksConfig.search.extensions.facetWidgets;
+  const facetSettings = data?.facets || [];
+
   return {
     query: [
       ...(data.query?.query || []),
-      ...Object.keys(facets).map((name) => ({
-        i: name,
-        v: facets[name],
+      ...(facetSettings || [])
+        .map((facet) => {
+          if (!facet?.field) return null;
 
-        // TODO: make the facet operator pluggable
-        o: 'plone.app.querystring.operation.selection.is',
-      })),
+          const { valueToQuery } = resolveExtension(
+            'type',
+            facetWidgetTypes,
+            facet,
+          );
+
+          const name = facet.field.value;
+          const value = facets[name];
+
+          return valueToQuery({ value, facet });
+        })
+        .filter((f) => !!f),
       ...(urlSearchText
         ? [
             {
@@ -234,7 +248,7 @@ const withSearch = (options) => (WrappedComponent) => {
     const [facets, setFacets] = React.useState(
       Object.assign(
         {},
-        ...urlQuery.map(({ i, v }) => ({ [i]: v })),
+        ...urlQuery.map(({ i, v }) => ({ [i]: v })), // TODO: the 'o' should be kept. This would be a major refactoring of the facets
 
         // support for simple filters like ?Subject=something
         // TODO: since the move to hash params this is no longer working.

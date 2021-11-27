@@ -10,7 +10,7 @@ const ToggleFacet = (props) => {
       <div className="entries">
         <Radio
           toggle
-          checked={value}
+          checked={value || typeof value === 'string'}
           disabled={isEditMode}
           onChange={(e, { checked }) => {
             onChange(facet.field.value, checked);
@@ -22,17 +22,17 @@ const ToggleFacet = (props) => {
 };
 
 ToggleFacet.stateToValue = ({ facetSettings, index, selectedValue }) => {
-  return !!selectedValue;
+  return selectedValue || typeof selectedValue === 'string';
 };
 
 ToggleFacet.valueToQuery = ({ value, facet }) => {
-  return {
-    i: facet.field.value,
-    o: value
-      ? 'plone.app.querystring.operation.boolean.isTrue'
-      : 'plone.app.querystring.operation.boolean.isFalse',
-    v: '',
-  };
+  return value || typeof value === 'string'
+    ? {
+        i: facet.field.value,
+        o: 'plone.app.querystring.operation.boolean.isTrue',
+        v: '',
+      }
+    : null;
 };
 
 export default ToggleFacet;
