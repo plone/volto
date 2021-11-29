@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Always add lang attr in html @nzambello
+
 ### Internal
 
 - Fix select family widgets stories in storybook @sneridagh
