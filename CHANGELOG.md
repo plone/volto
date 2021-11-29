@@ -8,7 +8,7 @@
 
 ### Bugfix
 
-- Use subrequest in href block to not lost locking token. @cekk
+- Use subrequest in hero block to not lost locking token. @cekk
 ### Internal
 
 ## 14.0.0-alpha.37 (2021-11-26)
