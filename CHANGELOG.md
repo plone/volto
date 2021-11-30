@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- QuerystringWidget more resilient on old schemas @nzambello
+
 ### Internal
 
 ## 14.0.0-alpha.38 (2021-11-30)
