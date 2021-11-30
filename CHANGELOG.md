@@ -14,6 +14,7 @@
 
 ### Internal
 
+- Remove getNavigation from Login.jsx @iRohitSingh
 - Allow listing block to be used in non-content pages (when used in a slot it
   shouldn't crash on add/edit pages) @tiberiuichim
 
