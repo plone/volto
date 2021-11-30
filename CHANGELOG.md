@@ -2,10 +2,6 @@
 
 ## 14.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Use subrequest in hero block to not lost locking token. @cekk
