@@ -7,6 +7,7 @@ import {
   GET_VOCABULARY,
   GET_VOCABULARY_TOKEN_TITLE,
 } from '@plone/volto/constants/ActionTypes';
+import { getVocabName } from '@plone/volto/helpers/Vocabularies/Vocabularies';
 
 /**
  * Get vocabulary given a URL (coming from a Schema) or from a vocabulary name.
@@ -18,9 +19,7 @@ import {
  */
 export function getVocabulary(vocabNameOrURL, query = null, start = 0) {
   // In case we have a URL, we have to get the vocabulary name
-  const vocabulary = /(?<=\/@vocabularies\/)(.*)/.test(vocabNameOrURL)
-    ? /(?<=\/@vocabularies\/)(.*)/.exec(vocabNameOrURL)[0]
-    : vocabNameOrURL;
+  const vocabulary = getVocabName(vocabNameOrURL);
   let queryString = `b_start=${start}`;
   if (query) {
     queryString = `${queryString}&title=${query}`;
@@ -46,9 +45,7 @@ export function getVocabulary(vocabNameOrURL, query = null, start = 0) {
  */
 export function getVocabularyTokenTitle(vocabNameOrURL, token = null) {
   // In case we have a URL, we have to get the vocabulary name
-  const vocabulary = /(?<=\/@vocabularies\/)(.*)/.test(vocabNameOrURL)
-    ? /(?<=\/@vocabularies\/)(.*)/.exec(vocabNameOrURL)[0]
-    : vocabNameOrURL;
+  const vocabulary = getVocabName(vocabNameOrURL);
 
   return {
     type: GET_VOCABULARY_TOKEN_TITLE,
