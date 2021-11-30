@@ -13,6 +13,7 @@
 - Remove getNavigation from Login.jsx @iRohitSingh
 - Allow listing block to be used in non-content pages (when used in a slot it
   shouldn't crash on add/edit pages) @tiberiuichim
+- Fix typo "toolbalWidth" @iRohitSingh
 
 ## 14.0.0-alpha.37 (2021-11-26)
 
@@ -20,8 +21,6 @@
 
 - Fixed object browser selected items number. @giuliaghisini
 - Fix action vocabularies call avoiding regex look behind @nzambello
-
-- Fix typo "toolbalWidth" @iRohitSingh
 
 ### Internal
 
