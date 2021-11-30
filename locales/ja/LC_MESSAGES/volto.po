@@ -2574,6 +2574,11 @@ msgstr ""
 msgid "The item could not be deleted."
 msgstr ""
 
+#: components/theme/View/LinkView
+# defaultMessage: The link address is:
+msgid "The link address is:"
+msgstr ""
+
 #: components/theme/Register/Register
 # defaultMessage: The registration process has been successful. Please check your e-mail inbox for information on how activate your account.
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
