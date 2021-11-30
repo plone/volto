@@ -8,6 +8,7 @@
 
 ### Bugfix
 
+- Always add lang attr in html @nzambello
 - Fix time widget position on 24h format @nzambello
 
 ### Internal
