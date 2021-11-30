@@ -30,6 +30,32 @@ const messages = defineMessages({
   },
 });
 
+/**
+ * This is a DataGridField-equivalent widget for schema-based values.
+ * The shape of the items in the array is defined using a schema.
+ *
+ * ObjectListWidget can receive an optional `schemaExtender` prop which is
+ * a function that can mutate the schema for each individual item in the array.
+ * An example schema definition of the a field that renders with the
+ * ObjectListWidget:
+ *
+ * ```jsx
+ *  columns: {
+ *    title: 'Columns',
+ *    description: 'Leave empty to show all columns',
+ *    schema: SomeItemSchema,
+ *    widget: 'object_list',
+ *    schemaExtender: (schema, data) => {
+ *      const mutated = lodash.cloneDeep(schema);
+ *      mutated.properties.extraField = {
+ *        title: 'Extra field',
+ *      }
+ *      mutated.fieldsets[0].fields.push('extraField');
+ *      return mutated;
+ *    }
+ *  },
+ * ```
+ */
 const ObjectListWidget = (props) => {
   const {
     block,
