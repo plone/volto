@@ -10,6 +10,7 @@
 
 - In search block, read SearchableText search param, to use it as search text input
   @tiberiuichim
+- Fixed drag-and-drop list placeholder issues @reebalazs
 
 ### Internal
 
