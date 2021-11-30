@@ -8,6 +8,9 @@
 
 ### Bugfix
 
+- In search block, read SearchableText search param, to use it as search text input
+  @tiberiuichim
+
 ### Internal
 
 ## 14.0.0-alpha.39 (2021-11-30)
