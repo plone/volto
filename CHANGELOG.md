@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fixed drag-and-drop list placeholder issues @reebalazs
+
 ### Internal
 
 ## 14.0.0-alpha.37 (2021-11-26)
