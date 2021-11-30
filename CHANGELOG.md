@@ -8,6 +8,7 @@
 
 ### Bugfix
 
+- Use subrequest in hero block to not lost locking token. @cekk
 - Always add lang attr in html @nzambello
 - Fix time widget position on 24h format @nzambello
 
