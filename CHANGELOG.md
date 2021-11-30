@@ -25,6 +25,8 @@
 - Fixed object browser selected items number. @giuliaghisini
 - Fix action vocabularies call avoiding regex look behind @nzambello
 
+- Fix typo "toolbalWidth" @iRohitSingh
+
 ### Internal
 
 - Fix select family widgets stories in storybook @sneridagh
