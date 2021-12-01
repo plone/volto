@@ -2,18 +2,12 @@
 
 ## 14.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - In search block, read SearchableText search param, to use it as search text input
   @tiberiuichim
 - Fix missing translation in link content type @iRohitSingh
 - Fixed drag-and-drop list placeholder issues @reebalazs
-
-### Internal
 
 ## 14.0.0-alpha.39 (2021-11-30)
 
