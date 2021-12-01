@@ -10,6 +10,36 @@
 
 ### Internal
 
+## 14.0.0-alpha.40 (2021-12-01)
+
+### Bugfix
+
+- In search block, read SearchableText search param, to use it as search text input
+  @tiberiuichim
+- Fix missing translation in link content type @iRohitSingh
+- Fixed drag-and-drop list placeholder issues @reebalazs
+
+## 14.0.0-alpha.39 (2021-11-30)
+
+### Bugfix
+
+- QuerystringWidget more resilient on old schemas @nzambello
+
+## 14.0.0-alpha.38 (2021-11-30)
+
+### Bugfix
+
+- Use subrequest in hero block to not lost locking token. @cekk
+- Always add lang attr in html @nzambello
+- Fix time widget position on 24h format @nzambello
+
+### Internal
+
+- Remove getNavigation from Login.jsx @iRohitSingh
+- Allow listing block to be used in non-content pages (when used in a slot it
+  shouldn't crash on add/edit pages) @tiberiuichim
+- Fix typo "toolbalWidth" @iRohitSingh
+
 ## 14.0.0-alpha.37 (2021-11-26)
 
 ### Bugfix
