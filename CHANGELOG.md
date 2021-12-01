@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Updated italian translation @pnicolli
+
 ## 14.0.0-alpha.40 (2021-12-01)
 
 ### Bugfix
