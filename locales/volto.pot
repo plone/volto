@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-11-07T10:15:32.202Z\n"
+"POT-Creation-Date: 2021-11-30T14:58:55.270Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -2566,6 +2566,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: The item could not be deleted.
 msgid "The item could not be deleted."
+msgstr ""
+
+#: components/theme/View/LinkView
+# defaultMessage: The link address is:
+msgid "The link address is:"
 msgstr ""
 
 #: components/theme/Register/Register
