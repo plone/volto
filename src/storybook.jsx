@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
+import { createBrowserHistory } from 'history';
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
 import configureStore from 'redux-mock-store';
+import configureRealStore from '@plone/volto/store';
 
 const initialState = () => ({
   router: {
@@ -1350,6 +1352,7 @@ const initialState = () => ({
   toolbar: {
     expanded: true,
   },
+  lazyLibraries: {},
 });
 
 /**
@@ -1386,6 +1389,53 @@ export default class Wrapper extends Component {
   render() {
     const mockStore = configureStore();
     const store = mockStore(this.customState());
+
+    return (
+      <Provider store={store}>
+        <PluggablesProvider>
+          <IntlProvider locale="en">
+            <StaticRouter location={this.props.location}>
+              <div className="volto-storybook-container">
+                {this.props.children}
+              </div>
+            </StaticRouter>
+          </IntlProvider>
+        </PluggablesProvider>
+      </Provider>
+    );
+  }
+}
+
+export class RealStoreWrapper extends Component {
+  /**
+   * Property types.
+   * @property {Object} propTypes Property types.
+   * @static
+   */
+  static propTypes = {
+    pathname: PropTypes.string,
+    anonymous: PropTypes.bool,
+    customStore: PropTypes.object,
+  };
+
+  customState() {
+    let state = initialState();
+    if (this.props.anonymous) {
+      state.userSession.token = null;
+    }
+    if (this.props.customStore) {
+      state = {
+        ...state,
+        ...this.props.customStore,
+      };
+    }
+    return state;
+  }
+
+  render() {
+    // If thunk is not included there's a complaint about async actions
+    const history = createBrowserHistory();
+    const store = configureRealStore(this.customState(), history);
 
     return (
       <Provider store={store}>
