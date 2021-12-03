@@ -70,6 +70,15 @@ const defaultTimeDateOnly = {
  * DatetimeWidget component class
  * @class DatetimeWidget
  * @extends Component
+ *
+ * To use it, in schema properties, declare a field like:
+ *
+ * ```jsx
+ * {
+ *  title: "Publish date",
+ *  type: 'datetime',
+ * }
+ * ```
  */
 class DatetimeWidget extends Component {
   /**

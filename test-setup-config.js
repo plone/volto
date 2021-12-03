@@ -50,28 +50,33 @@ config.set('settings', {
   },
   controlPanelsIcons,
   apiExpanders: [],
+  downloadableObjects: ['Link'],
 });
 config.set('blocks', {
   blocksConfig: {
     listing: {
-      templates: {
-        default: {
-          label: 'Default',
+      variations: [
+        {
+          id: 'default',
+          isDefault: true,
+          title: 'Default',
           template: () => (
             <div className="mocked-default-listing-template"></div>
           ),
         },
-        imageGallery: {
-          label: 'Image gallery',
+        {
+          id: 'imageGallery',
+          title: 'Image gallery',
           template: () => <div className="mocked-image-listing-template"></div>,
         },
-        summary: {
-          label: 'Summary',
+        {
+          id: 'summary',
+          title: 'Summary',
           template: () => (
             <div className="mocked-summary-listing-template"></div>
           ),
         },
-      },
+      ],
     },
   },
   requiredBlocks: [],

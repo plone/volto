@@ -192,6 +192,16 @@ msgstr "Alfabéticamente"
 msgid "Alt text"
 msgstr "Texto alternativo"
 
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Leave empty if the image is purely decorative.
+msgid "Alt text hint"
+msgstr ""
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Describe the purpose of the image.
+msgid "Alt text hint link text"
+msgstr ""
+
 #: components/manage/Toolbar/More
 # defaultMessage: Apply working copy
 msgid "Apply working copy"
@@ -1378,16 +1388,19 @@ msgstr "Izquierda"
 msgid "Link"
 msgstr "Enlace"
 
+#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link more
 msgid "Link more"
 msgstr "Enlazar "más""
 
+#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link Title
 msgid "Link title"
 msgstr "Enlazar título"
 
+#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
@@ -2561,6 +2574,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: The item could not be deleted.
 msgid "The item could not be deleted."
+msgstr ""
+
+#: components/theme/View/LinkView
+# defaultMessage: The link address is:
+msgid "The link address is:"
 msgstr ""
 
 #: components/theme/Register/Register
