@@ -5,6 +5,7 @@ import { Icon } from '@plone/volto/components';
 import downSVG from '@plone/volto/icons/down-key.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import checkSVG from '@plone/volto/icons/check.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const height = 50; // The height of each option
 
@@ -81,6 +82,15 @@ export const DropdownIndicator = injectLazyLibs('reactSelect')((props) => {
   );
 });
 
+export const ClearIndicator = injectLazyLibs('reactSelect')((props) => {
+  const { ClearIndicator } = props.reactSelect.components;
+  return (
+    <ClearIndicator {...props}>
+      <Icon name={clearSVG} size="18px" color="#e40166" />
+    </ClearIndicator>
+  );
+});
+
 export const Group = injectLazyLibs('reactSelect')((props) => {
   const { Group } = props.reactSelect.components;
   return <Group {...props}></Group>;
@@ -123,6 +133,9 @@ export const customSelectStyles = {
   }),
   dropdownIndicator: (styles) => ({
     paddingRight: 0,
+  }),
+  clearIndicator: (styles) => ({
+    color: '#e40166',
   }),
   option: (styles, state) => ({
     ...styles,

@@ -21,6 +21,7 @@ import { getVocabulary } from '@plone/volto/actions';
 import {
   Option,
   DropdownIndicator,
+  ClearIndicator,
   selectTheme,
   customSelectStyles,
   MenuList,
@@ -268,6 +269,7 @@ class ArrayWidget extends Component {
             MultiValue: SortableMultiValue,
             MultiValueLabel: SortableMultiValueLabel,
             DropdownIndicator,
+            ClearIndicator,
             Option,
           }}
           value={selectedOption || []}

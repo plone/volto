@@ -21,6 +21,7 @@ import { normalizeValue } from './SelectUtils';
 import {
   customSelectStyles,
   DropdownIndicator,
+  ClearIndicator,
   Option,
   selectTheme,
   MenuList,
@@ -238,6 +239,7 @@ class SelectWidget extends Component {
               MenuList,
             }),
             DropdownIndicator,
+            ClearIndicator,
             Option,
           }}
           value={this.state.selectedOption}
