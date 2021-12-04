@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Added a new component, PreviewImage. It renders a preview image for a catalog brain (based on the `image_field` prop). @tiberiuichim
+
 ### Bugfix
 
 ### Internal

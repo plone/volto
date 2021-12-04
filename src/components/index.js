@@ -26,6 +26,7 @@ export OutdatedBrowser from '@plone/volto/components/theme/OutdatedBrowser/Outda
 export LanguageSelector from '@plone/volto/components/theme/LanguageSelector/LanguageSelector';
 export RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
 export SkipLinks from '@plone/volto/components/theme/SkipLinks/SkipLinks';
+export PreviewImage from '@plone/volto/components/theme/PreviewImage/PreviewImage';
 
 export Error from '@plone/volto/components/theme/Error/Error';
 export NotFound from '@plone/volto/components/theme/NotFound/NotFound';
