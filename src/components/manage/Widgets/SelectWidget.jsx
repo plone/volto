@@ -251,6 +251,7 @@ class SelectWidget extends Component {
                 : undefined,
             );
           }}
+          isClearable
         />
       </FormFieldWrapper>
     );

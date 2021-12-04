@@ -203,7 +203,11 @@ class ArrayWidget extends Component {
     const { selectedOption } = this.state;
     const CreatableSelect = this.props.reactSelectCreateable.default;
     const { SortableContainer } = this.props.reactSortableHOC;
-    const SortableSelect = SortableContainer(CreatableSelect);
+    const Select = this.props.reactSelect.default;
+    const SortableSelect =
+      this.props?.choices && !this.props.vocabBaseUrl
+        ? SortableContainer(Select)
+        : SortableContainer(CreatableSelect);
 
     const onSortEnd = ({ oldIndex, newIndex }) => {
       const newValue = arrayMove(this.state.selectedOption, oldIndex, newIndex);
@@ -269,6 +273,7 @@ class ArrayWidget extends Component {
           value={selectedOption || []}
           placeholder={this.props.intl.formatMessage(messages.select)}
           onChange={this.handleChange}
+          isClearable
           isMulti
         />
       </FormFieldWrapper>
@@ -280,7 +285,7 @@ export const ArrayWidgetComponent = injectIntl(ArrayWidget);
 
 export default compose(
   injectIntl,
-  injectLazyLibs(['reactSelectCreateable', 'reactSortableHOC']),
+  injectLazyLibs(['reactSelect', 'reactSelectCreateable', 'reactSortableHOC']),
   connect(
     (state, props) => {
       const vocabBaseUrl =
