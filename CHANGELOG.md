@@ -4,7 +4,11 @@
 
 ### Breaking
 
+- Removed pagination in vocabularies widgets (SelectWidget, ArrayWidget, TokenWidget) and introduced subrequest to vocabulary action. @giuliaghisini
+
 ### Feature
+
+- Add autocomplete Widget component - It holds off the vocabulary endpoint pull until you search (more than 2 chars). Useful when dealing with huge vocabularies @sneridagh
 
 ### Bugfix
 
@@ -88,9 +92,6 @@
 
 ### Bugfix
 
-- Prevent ua-parser-js security breach. See: https://github.com/advisories/GHSA-pjwm-rvh2-c87w @thet
-- Fix storybook errors in the connected components, api is undefined. Using now a mock of the store instead of the whole thing @sneridagh
-- Removed pagination in vocabularies widgets (SelectWidget, ArrayWidget, TokenWidget) and introduced subrequest to vocabulary action. @giuliaghisini
 - Fix downloadableObjects default value @giuliaghisini
 - Folder contents table header and breadcrumbs dropdown now appear only from the
   bottom, fixing an issue where the breadcrumb dropdown content was clipped
