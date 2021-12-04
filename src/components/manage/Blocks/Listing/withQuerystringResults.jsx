@@ -4,7 +4,7 @@ import hoistNonReactStatics from 'hoist-non-react-statics';
 import useDeepCompareEffect from 'use-deep-compare-effect';
 
 import { getContent, getQueryStringResults } from '@plone/volto/actions';
-import { usePagination } from '@plone/volto/helpers';
+import { usePagination, getBaseUrl } from '@plone/volto/helpers';
 
 import config from '@plone/volto/registry';
 
@@ -22,7 +22,7 @@ export default function withQuerystringResults(WrappedComponent) {
     const { b_size = settings.defaultPageSize } = querystring; // batchsize
 
     // save the path so it won't trigger dispatch on eager router location change
-    const [initialPath] = React.useState(path);
+    const [initialPath] = React.useState(getBaseUrl(path));
 
     const copyFields = ['limit', 'query', 'sort_on', 'sort_order', 'depth'];
 

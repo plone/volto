@@ -54,6 +54,18 @@ export function getVocabFromItems(props) {
 }
 
 /**
+ * Get vocabulary given a URL (coming from a Schema) or from a vocabulary name.
+ * @function getVocabName
+ * @param {string} vocabNameOrURL
+ * @returns {string} Vocabulary name
+ */
+export function getVocabName(vocabNameOrURL) {
+  return vocabNameOrURL.indexOf('@vocabularies') > -1
+    ? vocabNameOrURL.split('@vocabularies/')[1]
+    : vocabNameOrURL;
+}
+
+/**
  * Get Fields vocabulary
  * @function getFieldsVocabulary
  * @returns {Object} Fields vocabulary
