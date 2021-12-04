@@ -41,8 +41,10 @@ export default function vocabularies(state = initialState, action = {}) {
                   ...(subrequestState || {
                     data: null,
                   }),
-                  loaded: vocabState[action.subrequest].loaded || false,
-                  loading: !!((vocabState[action.subrequest].loading || 0) + 1),
+                  loaded: vocabState?.[action.subrequest]?.loaded || false,
+                  loading: !!(
+                    (vocabState?.[action.subrequest]?.loading || 0) + 1
+                  ),
                   error: null,
                 },
               },
