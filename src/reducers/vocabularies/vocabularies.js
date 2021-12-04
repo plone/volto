@@ -25,7 +25,7 @@ export default function vocabularies(state = initialState, action = {}) {
   switch (action.type) {
     case `${GET_VOCABULARY}_PENDING`:
     case `${GET_VOCABULARY_TOKEN_TITLE}_PENDING`:
-      return action.subrequesst
+      return action.subrequest
         ? {
             ...state,
             [action.vocabulary]: {

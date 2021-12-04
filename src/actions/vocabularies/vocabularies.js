@@ -15,20 +15,20 @@ import { getVocabName } from '@plone/volto/helpers/Vocabularies/Vocabularies';
  * @param {string} vocabNameOrURL Full API URL of vocabulary or vocabulary name
  * @param {string} query Only include results containing this string.
  * @param {number} start Start of result batch.
+ * @param {number} b_size The size of the batch.
+ * @param {string} subrequest Name of the subrequest.
  * @returns {Object} Get vocabulary action.
  */
-export function getVocabulary(
+export function getVocabulary({
   vocabNameOrURL,
   query = null,
   start = 0,
-  b_size,
+  size,
   subrequest,
-) {
+}) {
   const vocabulary = getVocabName(vocabNameOrURL);
 
-  let queryString = `${b_size !== -1 ? `b_start=${start}` : ''} ${
-    b_size ? '&b_size=' + b_size : ''
-  }`;
+  let queryString = `b_start=${start}${size ? '&b_size=' + size : ''}`;
 
   if (query) {
     queryString = `${queryString}&title=${query}`;

@@ -143,13 +143,11 @@ class ArrayWidget extends Component {
       !this.props.choices?.length &&
       this.props.vocabBaseUrl
     ) {
-      this.props.getVocabulary(
-        this.props.vocabBaseUrl,
-        null,
-        undefined,
-        100000,
-        this.props.intl.locale,
-      );
+      this.props.getVocabulary({
+        vocabNameOrURL: this.props.vocabBaseUrl,
+        size: -1,
+        subrequest: this.props.intl.locale,
+      });
     }
     this.setDefaultValues();
   }
