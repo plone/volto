@@ -119,9 +119,12 @@ const useHashState = () => {
   const location = useLocation();
   const history = useHistory();
 
-  const oldState = React.useMemo(() => qs.parse(location.hash), [
-    location.hash,
-  ]);
+  const oldState = React.useMemo(() => {
+    return {
+      ...qs.parse(location.search),
+      ...qs.parse(location.hash),
+    };
+  }, [location.hash, location.search]);
 
   // This creates a shallow copy. Why is this needed?
   const current = Object.assign(
@@ -149,8 +152,6 @@ const useHashState = () => {
       if (changed) {
         history.push({
           hash: qs.stringify(newParams),
-          // TODO: handle ?Subject= and ?SearchableText=
-          // search: location.search,
         });
       }
     },

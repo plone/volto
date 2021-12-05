@@ -8,7 +8,7 @@ import jwtDecode from 'jwt-decode';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { asyncConnect } from '@plone/volto/helpers';
+import { asyncConnect, Helmet } from '@plone/volto/helpers';
 import { Segment } from 'semantic-ui-react';
 import { renderRoutes } from 'react-router-config';
 import { Slide, ToastContainer, toast } from 'react-toastify';
@@ -19,6 +19,7 @@ import cx from 'classnames';
 import config from '@plone/volto/registry';
 import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
 import { visitBlocks } from '@plone/volto/helpers/Blocks/Blocks';
+import { injectIntl } from 'react-intl';
 
 import Error from '@plone/volto/error';
 
@@ -110,8 +111,16 @@ class App extends Component {
     const isCmsUI = isCmsUi(this.props.pathname);
     const ConnectionRefusedView = views.errorViews.ECONNREFUSED;
 
+    const language =
+      this.props.content?.language?.token ?? this.props.intl?.locale;
+
     return (
       <PluggablesProvider>
+        {language && (
+          <Helmet>
+            <html lang={language} />
+          </Helmet>
+        )}
         <BodyClass className={`view-${action}view`} />
         {/* Body class depending on content type */}
         {this.props.content && this.props.content['@type'] && (
@@ -266,6 +275,7 @@ export default compose(
         __SERVER__ && dispatch(getSlots(getBaseUrl(location.pathname))),
     },
   ]),
+  injectIntl,
   connect(
     (state, props) => ({
       pathname: props.location.pathname,

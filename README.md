@@ -14,7 +14,7 @@
 management systems, currently supporting three backend implementations: Plone,
 Guillotina and a NodeJS reference implementation.
 
-[Plone](https://plone.org) is a CMS built on Python with over 17 years of experience.
+[Plone](https://plone.org) is a CMS built on Python with over 20 years of history and experience.
 
 Plone has very interesting features that appeal to developers and users alike,
 such as customizable content types, hierarchical URL object traversing and a
