@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Udate demo address @ksuess
+- Update list of trainings documentation @ksuess
 
 ### Internal
 
