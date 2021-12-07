@@ -9,7 +9,7 @@ exports[`renders an event view component with all props 1`] = `
     className="ui grid"
   >
     <div
-      className="seven wide column"
+      className="seven wide computer twelve wide mobile seven wide tablet column"
     >
       <h1
         className="documentFirstHeading"
@@ -30,7 +30,7 @@ exports[`renders an event view component with all props 1`] = `
       />
     </div>
     <div
-      className="five wide column"
+      className="five wide computer twelve wide mobile five wide tablet column"
     >
       <aside
         className="ui right floated segment"
@@ -243,7 +243,7 @@ exports[`renders an event view component with only required props 1`] = `
     className="ui grid"
   >
     <div
-      className="seven wide column"
+      className="seven wide computer twelve wide mobile seven wide tablet column"
     >
       <h1
         className="documentFirstHeading"
@@ -252,7 +252,7 @@ exports[`renders an event view component with only required props 1`] = `
       </h1>
     </div>
     <div
-      className="five wide column"
+      className="five wide computer twelve wide mobile five wide tablet column"
     >
       <aside
         className="ui right floated segment"
@@ -298,7 +298,7 @@ exports[`renders an event view component without links to api in the text 1`] = 
     className="ui grid"
   >
     <div
-      className="seven wide column"
+      className="seven wide computer twelve wide mobile seven wide tablet column"
     >
       <h1
         className="documentFirstHeading"
@@ -314,7 +314,7 @@ exports[`renders an event view component without links to api in the text 1`] = 
       />
     </div>
     <div
-      className="five wide column"
+      className="five wide computer twelve wide mobile five wide tablet column"
     >
       <aside
         className="ui right floated segment"
