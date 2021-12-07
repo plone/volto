@@ -341,7 +341,7 @@ class AddonConfigurationRegistry {
         );
         notShadowed.forEach(([filename, name, targetPath]) => {
           debug(
-            `The file ${filename} doesn't exist in the ${name} package (${targetPath}).`,
+            `The file ${filename} doesn't exist in the ${name} package (Searched path: ${targetPath}).`,
           );
         });
       }
