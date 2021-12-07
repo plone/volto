@@ -6,7 +6,12 @@
 
 ### Feature
 
+- Style checkboxes @nileshgulia1
+
 ### Bugfix
+
+- Udate demo address @ksuess
+- Update list of trainings documentation @ksuess
 
 ### Internal
 
