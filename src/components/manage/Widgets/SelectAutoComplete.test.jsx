@@ -3,7 +3,7 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { waitFor, render, screen } from '@testing-library/react';
 
-import SelectWidget from './SelectWidget';
+import SelectAutoComplete from './SelectAutoComplete';
 
 const mockStore = configureStore();
 
@@ -29,7 +29,7 @@ test('renders a select widget component', async () => {
 
   const { container } = render(
     <Provider store={store}>
-      <SelectWidget
+      <SelectAutoComplete
         id="my-field"
         title="My field"
         fieldSet="default"

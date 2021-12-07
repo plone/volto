@@ -14,6 +14,9 @@ export const loadables = {
     () => import('react-select-async-paginate'),
     { ssr: false },
   ),
+  reactSelectAsync: loadable.lib(() => import('react-select/async'), {
+    ssr: false,
+  }),
   reactSelectCreateable: loadable.lib(() => import('react-select/creatable'), {
     ssr: false,
   }),
