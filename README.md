@@ -145,13 +145,13 @@ Please create a new [issue](https://github.com/plone/volto/issues/new) or [pull 
 
 ## Documentation
 
-You can find the documentation in [http://docs.voltocms.com](http://docs.voltocms.com)
+You can find the documentation in [https://docs.voltocms.com](https://docs.voltocms.com)
 
 ## Training
 
 On the [Plone Trainings Website](https://training.plone.org) you'll find
-Volto-dedicated open training materials plus React and other
-Javascript-centered trainings.
+Volto-dedicated open training materials, plus React and other
+JavaScript-centered trainings.
 
 - [Mastering Plone 6 Development](https://training.plone.org/5/mastering-plone/)
   The comprehensive training on Plone 6 with best practice tips for developers and integrators.
