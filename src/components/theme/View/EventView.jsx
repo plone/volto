@@ -6,13 +6,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
-import { flattenHTMLToAppURL } from '@plone/volto/helpers';
-import { Container, Image, Segment, Header, List } from 'semantic-ui-react';
+import { hasBlocksData, flattenHTMLToAppURL } from '@plone/volto/helpers';
+import { Image, Segment, Header, List, Grid } from 'semantic-ui-react';
+import RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
 
 import {
   When,
   Recurrence,
 } from '@plone/volto/components/theme/View/EventDatesInfo';
+import { useIntl } from 'react-intl';
 
 const messages = defineMessages({
   what: {
@@ -53,26 +55,11 @@ const messages = defineMessages({
   },
 });
 
-/**
- * EventView view component class.
- * @function EventView
- * @params {object} content Content object.
- * @returns {string} Markup of the component.
- */
-const EventView = ({ intl, content }) => (
-  <Container className="view-wrapper event-view">
-    {content.title && <h1 className="documentFirstHeading">{content.title}</h1>}
-    {content.description && (
-      <p className="documentDescription">{content.description}</p>
-    )}
-    {content.image && (
-      <Image
-        className="document-image"
-        src={content.image.scales.thumb.download}
-        floated="right"
-      />
-    )}
-    <Segment floated="right">
+const EventDetails = ({ content }) => {
+  const intl = useIntl();
+
+  return (
+    <Segment floated="right" as="aside">
       {content.subjects.length > 0 && (
         <>
           <Header dividing sub>
@@ -155,6 +142,22 @@ const EventView = ({ intl, content }) => (
         </>
       )}
     </Segment>
+  );
+};
+
+const EventMetadataView = ({ content }) => (
+  <React.Fragment>
+    {content.title && <h1 className="documentFirstHeading">{content.title}</h1>}
+    {content.description && (
+      <p className="documentDescription">{content.description}</p>
+    )}
+    {content.image && (
+      <Image
+        className="document-image"
+        src={content.image.scales.thumb.download}
+        floated="right"
+      />
+    )}
     {content.text && (
       <div
         dangerouslySetInnerHTML={{
@@ -162,8 +165,35 @@ const EventView = ({ intl, content }) => (
         }}
       />
     )}
-  </Container>
+  </React.Fragment>
 );
+
+/**
+ * EventView view component class.
+ * @function EventView
+ * @params {object} content Content object.
+ * @returns {string} Markup of the component.
+ */
+const EventView = (props) => {
+  const { content } = props;
+
+  return (
+    <div id="page-document" className="ui container viewwrapper event-view">
+      <Grid>
+        <Grid.Column width={7}>
+          {hasBlocksData(content) ? (
+            <RenderBlocks {...props} />
+          ) : (
+            <EventMetadataView {...props} />
+          )}
+        </Grid.Column>
+        <Grid.Column width={5}>
+          <EventDetails content={content} />
+        </Grid.Column>
+      </Grid>
+    </div>
+  );
+};
 
 /**
  * Property types.
