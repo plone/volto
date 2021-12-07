@@ -319,7 +319,6 @@ class AddonConfigurationRegistry {
             },
       );
 
-      const notShadowed = [];
       reg.forEach(({ customPath, name, sourcePath }) => {
         map(
           glob(`${customPath}/**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx)`),
@@ -330,21 +329,13 @@ class AddonConfigurationRegistry {
                 filename.replace(customPath, name).replace(/\.(js|jsx)$/, '')
               ] = path.resolve(filename);
             } else {
-              notShadowed.push([filename, name, targetPath]);
+              debug(
+                `The file ${filename} doesn't exist in the ${name} (${targetPath}), unable to customize.`,
+              );
             }
           },
         );
       });
-      if (notShadowed.length) {
-        debug(
-          'The following files do not shadow any original path. If this is intentional please ignore this message.',
-        );
-        notShadowed.forEach(([filename, name, targetPath]) => {
-          debug(
-            `The file ${filename} doesn't exist in the ${name} package (${targetPath}).`,
-          );
-        });
-      }
     });
 
     return aliases;
