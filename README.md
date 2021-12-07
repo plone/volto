@@ -36,7 +36,7 @@ through it.
 
 ## Demo
 
-You can try a Volto online demo in [https://volto.kitconcept.com](https://volto.kitconcept.com)
+You can try a Volto online demo in [https://6.demo.plone.org/](https://6.demo.plone.org/)
 
 ### Try the demo locally
 
