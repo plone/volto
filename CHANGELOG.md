@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- Move `theme.js` import to top of the client code, so it take precedence over any other inline imported CSS. This is not an strict breaking change, but it's worth to mention it as might be important and kept in mind.  @sneridagh
+
 ### Feature
 
 ### Bugfix
