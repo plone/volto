@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Udate demo address @ksuess
+
 ### Internal
 
 - Update to plone.restapi 8.16.2 (revert missing_value PR) @sneridagh
