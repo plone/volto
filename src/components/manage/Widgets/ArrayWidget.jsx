@@ -6,10 +6,11 @@
 import React, { Component } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
-import { isObject, findIndex } from 'lodash';
+// import { isObject, findIndex } from 'lodash';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import { find, isBoolean, isObject, isArray } from 'lodash';
 
 import {
   getVocabFromHint,
@@ -17,6 +18,8 @@ import {
   getVocabFromItems,
 } from '@plone/volto/helpers';
 import { getVocabulary } from '@plone/volto/actions';
+
+import { normalizeValue } from './SelectUtils';
 
 import {
   Option,
@@ -157,35 +160,56 @@ class ArrayWidget extends Component {
     this.setDefaultValues();
   }
 
-  setDefaultValues() {
+  normalizeArrayValue = (choices, value) => {
+    // Array of tokens (on add, and on change tab in Tab component)
+    if (
+      value &&
+      isArray(value) &&
+      value.length > 0 &&
+      typeof value[0] === 'string'
+    ) {
+      return value.map((v) => {
+        return {
+          label: find(choices, (c) => c.value === v)?.label || v,
+          value: v,
+        };
+      });
+    }
+    // Array of objects, containing label,value
+    if (
+      value &&
+      isArray(value) &&
+      value.length > 0 &&
+      isObject(value[0]) &&
+      Object.keys(value[0]).includes('token')
+    ) {
+      return value.map((v) => {
+        return {
+          label: find(choices, (c) => c.value === v.token).label,
+          value: v.token,
+        };
+      });
+    }
+    return null;
+  };
+
+  setDefaultValues = () => {
     if (
       (this.state.selectedOption || []).length === 0 &&
       this.props.value &&
       this.props.choices?.length > 0
     ) {
-      let selectedOpt;
-      if (!this.props.vocabBaseUrl) {
-        // We have a fixed vocabulary, values should be from the list
-        selectedOpt = this.props.choices.filter(
-          (item) =>
-            findIndex(this.props.value, (v) => {
-              return isObject(v) ? v.token === item.value : v === item.value;
-            }) >= 0,
-        );
-      } else if (this.props.vocabBaseUrl) {
-        // We have a not constrained vocabulary, values could be arbitrary
-        selectedOpt = this.props.value
-          ? this.props.value.map((item) => ({ label: item, value: item }))
-          : [];
-      }
-
-      if (selectedOpt.length > 0) {
+      const normalizedValue = this.normalizeArrayValue(
+        this.props.choices,
+        this.props.value,
+      );
+      if (normalizedValue !== null) {
         this.setState({
-          selectedOption: selectedOpt,
+          selectedOption: normalizedValue,
         });
       }
     }
-  }
+  };
 
   /**
    * Handle the field change, store it in the local state and back to simple
@@ -274,8 +298,8 @@ class ArrayWidget extends Component {
             ...(this.props.choices?.length > 25 && {
               MenuList,
             }),
-            MultiValue: SortableMultiValue,
-            MultiValueLabel: SortableMultiValueLabel,
+            // MultiValue: SortableMultiValue,
+            // MultiValueLabel: SortableMultiValueLabel,
             DropdownIndicator,
             ClearIndicator,
             Option,
