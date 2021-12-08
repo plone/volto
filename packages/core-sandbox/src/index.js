@@ -1,4 +1,4 @@
-import DefaultListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/DefaultTemplate';
+import ListingBlockVariationTeaserContent from './components/Blocks/Listing/ListingBlockVariationTeaserContent';
 import TestBlockView from './components/Blocks/TestBlock/View';
 import TestBlockEdit from './components/Blocks/TestBlock/Edit';
 import codeSVG from '@plone/volto/icons/code.svg';
@@ -38,11 +38,17 @@ const listing = (config) => {
     variations: [
       ...config.blocks.blocksConfig.listing.variations,
       {
-        id: 'listingBlockVariationWithFullobjects',
+        id: 'listingBlockVariationWithFullobjectsAndData',
         isDefault: false,
         title: 'Listing with items content',
-        template: DefaultListingBlockTemplate,
+        template: ListingBlockVariationTeaserContent,
         fullobjects: true,
+      },
+      {
+        id: 'listingBlockVariationWithFullobjectsButNoData',
+        isDefault: false,
+        title: 'Listing without items content',
+        template: ListingBlockVariationTeaserContent,
       },
     ],
   };
