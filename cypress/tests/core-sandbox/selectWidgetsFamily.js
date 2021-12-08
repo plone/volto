@@ -274,5 +274,28 @@ context('Select widgets family Acceptance Tests', () => {
         .contains('Option 100')
         .should('not.exist');
     });
+    it('As editor I interact with `available_languages` -> Array (vocabulary-based list of choices)', function () {
+      // available_languages = schema.List(
+      //     title=_(u'heading_available_languages',
+      //             default=u'Available languages'),
+      //     description=_(u'description_available_languages',
+      //                   default=u'The languages in which the site should be '
+      //                           u'translatable.'),
+      //     required=True,
+      //     default=['en'],
+      //     missing_value=[],
+      //     value_type=schema.Choice(
+      //         vocabulary='plone.app.vocabularies.AvailableContentLanguages'
+      //     )
+      // )
+      cy.findByText('Other fields').click();
+
+      // We select the choice 'Catalan' of the field by typing it
+      cy.wait(1000);
+      cy.get('#field-available_languages').click().type('Català{enter}');
+      cy.get(
+        '#field-available_languages > .react-select__control > .react-select__value-container',
+      ).contains('Català');
+    });
   });
 });

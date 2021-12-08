@@ -238,7 +238,21 @@ class ArrayWidget extends Component {
     const { SortableContainer } = this.props.reactSortableHOC;
     const Select = this.props.reactSelect.default;
     const SortableSelect =
-      this.props?.choices && !this.props.vocabBaseUrl
+      // It will be only createable if the named vocabulary is in the widget definition
+      // (hint) like:
+      // list_field_voc_unconstrained = schema.List(
+      //     title=u"List field with values from vocabulary but not constrained to them.",
+      //     description=u"zope.schema.List",
+      //     value_type=schema.TextLine(),
+      //     required=False,
+      //     missing_value=[],
+      // )
+      // directives.widget(
+      //     "list_field_voc_unconstrained",
+      //     AjaxSelectFieldWidget,
+      //     vocabulary="plone.app.vocabularies.PortalTypes",
+      // )
+      this.props?.choices && !getVocabFromHint(this.props)
         ? SortableContainer(Select)
         : SortableContainer(CreatableSelect);
 
@@ -298,8 +312,8 @@ class ArrayWidget extends Component {
             ...(this.props.choices?.length > 25 && {
               MenuList,
             }),
-            // MultiValue: SortableMultiValue,
-            // MultiValueLabel: SortableMultiValueLabel,
+            MultiValue: SortableMultiValue,
+            MultiValueLabel: SortableMultiValueLabel,
             DropdownIndicator,
             ClearIndicator,
             Option,
