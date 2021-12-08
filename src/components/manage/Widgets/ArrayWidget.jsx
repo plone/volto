@@ -161,15 +161,23 @@ class ArrayWidget extends Component {
     if (
       (this.state.selectedOption || []).length === 0 &&
       this.props.value &&
-      this.props.choices?.length > 0 &&
-      this.props.vocabBaseUrl
+      this.props.choices?.length > 0
     ) {
-      const selectedOpt = this.props.choices.filter(
-        (item) =>
-          findIndex(this.props.value, (v) => {
-            return isObject(v) ? v.token === item.value : v === item.value;
-          }) >= 0,
-      );
+      let selectedOpt;
+      if (!this.props.vocabBaseUrl) {
+        // We have a fixed vocabulary, values should be from the list
+        selectedOpt = this.props.choices.filter(
+          (item) =>
+            findIndex(this.props.value, (v) => {
+              return isObject(v) ? v.token === item.value : v === item.value;
+            }) >= 0,
+        );
+      } else if (this.props.vocabBaseUrl) {
+        // We have a not constrained vocabulary, values could be arbitrary
+        selectedOpt = this.props.value
+          ? this.props.value.map((item) => ({ label: item, value: item }))
+          : [];
+      }
 
       if (selectedOpt.length > 0) {
         this.setState({

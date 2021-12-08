@@ -68,7 +68,7 @@ export const widgetMapping = {
     object_list: ObjectListWidget,
     vocabularyterms: VocabularyTermsWidget,
     select_querystring_field: SelectMetadataWidget,
-    select_autocomplete: SelectAutoComplete,
+    autocomplete: SelectAutoComplete,
   },
   vocabulary: {
     'plone.app.vocabularies.Catalog': ObjectBrowserWidget,
