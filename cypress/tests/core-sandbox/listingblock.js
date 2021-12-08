@@ -9,9 +9,7 @@ context('Listing block tests', () => {
         contentId: 'document',
         contentTitle: 'Test document',
       });
-    });
 
-    it('Selecting a variation without option "fullobjects" and rendering blocks of items I do not see blocks of listing block items.', function () {
       cy.createContent({
         contentType: 'Document',
         contentId: 'newsdoc1',
@@ -30,7 +28,9 @@ context('Listing block tests', () => {
       // Add text block to news document
       cy.get('.block.text [contenteditable]').type('Aenean lacinia bibendum.');
       cy.get('#toolbar-save').click();
+    });
 
+    it('Selecting a variation without option "fullobjects" and rendering blocks of items I do not see blocks of listing block items.', function () {
       cy.visit('/document');
       cy.waitForResourceToLoad('@navigation');
       cy.waitForResourceToLoad('@breadcrumbs');
@@ -79,25 +79,6 @@ context('Listing block tests', () => {
     });
 
     it('Selecting a variation with option "fullobjects" and rendering blocks of items I see blocks of listing block items.', function () {
-      cy.createContent({
-        contentType: 'Document',
-        contentId: 'newsdoc1',
-        contentTitle: 'News 1',
-        path: '/document',
-      });
-
-      cy.visit('/document/newsdoc1');
-      cy.waitForResourceToLoad('@navigation');
-      cy.waitForResourceToLoad('@breadcrumbs');
-      cy.waitForResourceToLoad('@actions');
-      cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('newsdoc1');
-      cy.navigate('/document/newsdoc1/edit');
-
-      // Add text block to news document
-      cy.get('.block.text [contenteditable]').type('Aenean lacinia bibendum.');
-      cy.get('#toolbar-save').click();
-
       cy.visit('/document');
       cy.waitForResourceToLoad('@navigation');
       cy.waitForResourceToLoad('@breadcrumbs');
