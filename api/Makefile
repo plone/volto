@@ -37,20 +37,14 @@ help: ## This help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 .PHONY: build
-build:  ## Build Plone 5.2
-	python3 -m venv .
-	bin/pip install --upgrade pip
-	bin/pip install --upgrade wheel
-	bin/pip install -r requirements.txt
-	bin/buildout
-	bin/buildout instance:http-address=$(INSTANCE_PORT)
+build: ./.installed.cfg ## Build Plone 5.2
 
 .PHONY: test
-test:
+test: build
 	bin/test
 
 .PHONY: test-acceptance-server-old
-test-acceptance-server-old:
+test-acceptance-server-old: build
 	ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 
 .PHONY: clean
@@ -59,11 +53,25 @@ clean:
 
 
 .PHONY: start
-start: ## Start Plone Backend
+start: build ## Start Plone Backend
 	@echo "$(GREEN)==> Start Plone Backend$(RESET)"
 	PYTHONWARNINGS=ignore bin/instance fg
 
 .PHONY: start-test
-start-test: ## Start Test Plone Backend
+start-test: build ## Start Test Plone Backend
 	@echo "$(GREEN)==> Start Test Plone Backend$(RESET)"
 	ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
+
+
+# Real targets
+
+./.installed.cfg: ./bin/buildout ./buildout.cfg ./src/*/setup.py
+	"$(<)" instance:http-address=$(INSTANCE_PORT)
+
+./bin/buildout: ./requirements.txt ./bin/pip
+	bin/pip install --upgrade pip
+	bin/pip install --upgrade wheel
+	bin/pip install -r "$(<)"
+
+./bin/pip:
+	python3 -m venv .
