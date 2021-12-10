@@ -47,7 +47,10 @@ services:
     #   - plone
     #   - frontend
     command:
+      - "--log.level=INFO"
       # - "--log.level=DEBUG"
+      # https://doc.traefik.io/traefik/observability/access-logs/#configuration
+      - "--accesslog=true"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
       - "--entrypoints.web.address=:49080"

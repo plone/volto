@@ -16,9 +16,15 @@ INSTANCE_PORT=8080
 # The defaults from the UI configuration
 # export RAZZLE_DEV_PROXY_API_PATH=http://localhost:$(INSTANCE_PORT)/Plone
 # export RAZZLE_API_PATH=http://localhost:3000
-# Uncomment the following to run against the proxy hosting testbed
+# Uncomment the following to run against the proxy hosting testbed:
 # export RAZZLE_DEV_PROXY_API_PATH=
 # export RAZZLE_API_PATH=http://localhost:49080/api/Plone
+# Then run everything:
+#     $ make run-proxy-all
+# Finally, visit the parts of the stack in a browser:
+# - ZMI: http://localhost:49080/api/manage_main
+# - Plone Classic: http://localhost:49080/api/Plone
+# - Volto: http://localhost:49080/
 
 # Recipe snippets for reuse
 
@@ -101,9 +107,13 @@ start-backend-docker:
 start-backend-docker-guillotina:
 	docker-compose -f g-api/docker-compose.yml up -d
 
-.PHONY: start-proxy
-start-proxy: start
-	docker-compose up -d traefik
+.PHONY: run-proxy
+run-proxy:
+	docker-compose up traefik
+.PHONY: run-proxy-all
+# Run the back-end, front-end, and proxy testbed with all output combined
+run-proxy-all:
+	$(MAKE) -e -j 3 start-backend start-frontend run-proxy
 
 .PHONY: start-test
 start-test: ## Start Test
