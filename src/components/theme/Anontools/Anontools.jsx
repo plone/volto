@@ -15,8 +15,6 @@ import { loggedIn } from '@plone/volto/selectors/userSession/userSession';
 
 /**
  * Anontools container class.
- * @class Anontools
- * @extends Component
  */
 export class Anontools extends Component {
   /**

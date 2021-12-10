@@ -1,8 +1,8 @@
 # Blocks anatomy
 
-Every blocks is composed of an edit (`Edit.jsx`) and a view (`View.jsx`) component.
+Every block is composed of an edit (`Edit.jsx`) and a view (`View.jsx`) component.
 
-This components can be as simple as a dummy component, no boilerplate is required.
+These components can be as simple as a dummy component, no boilerplate is required.
 This is an example of the `Edit.jsx`:
 
 ```jsx

@@ -53,6 +53,7 @@ import {
 import Indexes, { defaultIndexes } from '@plone/volto/constants/Indexes';
 import { loggedIn } from '@plone/volto/selectors/userSession/userSession';
 import {
+  ContentsBreadcrumbs,
   ContentsIndexHeader,
   ContentsItem,
   ContentsRenameModal,
@@ -67,7 +68,6 @@ import {
   Unauthorized,
 } from '@plone/volto/components';
 
-import ContentsBreadcrumbs from './ContentsBreadcrumbs';
 import { Helmet, getBaseUrl } from '@plone/volto/helpers';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
@@ -738,8 +738,19 @@ class Contents extends Component {
    * @returns {undefined}
    */
   onMoveToTop(event, { value }) {
-    this.onOrderItem(this.state.items[value]['@id'], value, -value, false);
-    this.onOrderItem(this.state.items[value]['@id'], value, -value, true);
+    const id = this.state.items[value]['@id'];
+    value = this.state.currentPage * this.state.pageSize + value;
+    this.props.orderContent(
+      getBaseUrl(this.props.pathname),
+      id.replace(/^.*\//, ''),
+      -value,
+    );
+    this.setState(
+      {
+        currentPage: 0,
+      },
+      () => this.fetchContents(),
+    );
   }
 
   /**
@@ -1419,6 +1430,7 @@ class Contents extends Component {
                         <ContentsBreadcrumbs items={this.props.breadcrumbs} />
                         <Dropdown
                           item
+                          upward={false}
                           icon={
                             <Icon name={moreSVG} size="24px" color="#826a6a" />
                           }
@@ -1483,7 +1495,13 @@ class Contents extends Component {
                           <Table.Row>
                             <Table.HeaderCell>
                               <Dropdown
-                                trigger={
+                                item
+                                upward={false}
+                                className="sort-icon"
+                                aria-label={this.props.intl.formatMessage(
+                                  messages.sort,
+                                )}
+                                icon={
                                   <Icon
                                     name={configurationSVG}
                                     size="24px"
@@ -1491,12 +1509,6 @@ class Contents extends Component {
                                     className="configuration-svg"
                                   />
                                 }
-                                className="sort-icon"
-                                aria-label={this.props.intl.formatMessage(
-                                  messages.sort,
-                                )}
-                                icon={null}
-                                simple
                               >
                                 <Dropdown.Menu>
                                   <Dropdown.Header
@@ -1560,6 +1572,7 @@ class Contents extends Component {
                             </Table.HeaderCell>
                             <Table.HeaderCell>
                               <Dropdown
+                                upward={false}
                                 trigger={
                                   <Icon
                                     name={

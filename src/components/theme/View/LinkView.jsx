@@ -9,6 +9,7 @@ import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
+import { FormattedMessage } from 'react-intl';
 
 /**
  * View container class.
@@ -67,7 +68,10 @@ class LinkView extends Component {
         )}
         {remoteUrl && (
           <span>
-            The link address is:
+            <FormattedMessage
+              id="The link address is:"
+              defaultMessage="The link address is:"
+            />
             {isInternalURL(remoteUrl) ? (
               <Link to={flattenToAppURL(remoteUrl)}>
                 {flattenToAppURL(remoteUrl)}

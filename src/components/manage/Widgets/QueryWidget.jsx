@@ -41,9 +41,7 @@ const messages = defineMessages({
 });
 
 /**
- * QuerystringWidget component class.
- * @class QuerystringWidget
- * @extends Component
+ * Widget for a querystring value, to define a catalog search criteria.
  */
 class QuerystringWidget extends Component {
   /**
@@ -169,7 +167,7 @@ class QuerystringWidget extends Component {
         );
       case 'MultipleSelectionWidget':
         return (
-          <Form.Field style={{ flex: '1 0 auto', maxWidth: '93%' }}>
+          <Form.Field style={{ flex: '1 0 auto', maxWidth: '92%' }}>
             <Select
               {...props}
               className="react-select-container"

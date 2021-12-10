@@ -25,7 +25,7 @@ build-backend:  ## Build Plone 5.2
 
 .PHONY: test-acceptance-server
 test-acceptance-server:
-	ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,kitconcept.volto,kitconcept.volto.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,kitconcept.volto:default ./api/bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
+	ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default ./api/bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 
 .PHONY: test-acceptance-guillotina
 test-acceptance-guillotina:

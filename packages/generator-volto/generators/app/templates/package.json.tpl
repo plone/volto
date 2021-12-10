@@ -17,7 +17,7 @@
     "prettier:ci": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
     "test": "razzle test --env=jest-environment-jsdom-sixteen --passWithNoTests",
     "start:prod": "NODE_ENV=production node build/server.js",
-    "i18n": "NODE_ENV=production node node_modules/@plone/volto/src/i18n.js",
+    "i18n": "rm -rf build/messages && NODE_ENV=production i18n",
     "develop": "missdev --config=jsconfig.json --output=addons --fetch-https"
   },
   "private": <%- private %>,
@@ -80,6 +80,20 @@
     "plugins": [
       "stylelint-prettier"
     ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.less"
+        ],
+        "customSyntax": "postcss-less"
+      },
+      {
+        "files": [
+          "**/*.overrides"
+        ],
+        "customSyntax": "postcss-less"
+      }
+    ],
     "rules": {
       "prettier/prettier": true,
       "rule-empty-line-before": [
@@ -104,13 +118,13 @@
     "not dead"
   ],
   "engines": {
-    "node": "^10 || ^12 || ^14"
+    "node": "^12 || ^14 || ^16"
   },
   "dependencies": <%- dependencies %>,
   "devDependencies": {
     "eslint-plugin-prettier": "3.1.3",
     "prettier": "2.0.5",
-    "stylelint": "13.3.3",
+    "stylelint": "14.0.1",
     "stylelint-config-idiomatic-order": "8.1.0",
     "stylelint-config-prettier": "8.0.1",
     "stylelint-prettier": "1.1.2"

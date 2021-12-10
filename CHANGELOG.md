@@ -9,9 +9,355 @@
 
 ### Feature
 
+- Style checkboxes @nileshgulia1
+
 ### Bugfix
 
+- Udate demo address @ksuess
+- Update list of trainings documentation @ksuess
+
 ### Internal
+
+- Update to plone.restapi 8.16.2 (revert missing_value PR) @sneridagh
+- Update Plone version in api backend to 5.2.5. Update README and cleanup @fredvd
+
+## 14.0.0-alpha.40 (2021-12-01)
+
+### Bugfix
+
+- In search block, read SearchableText search param, to use it as search text input
+  @tiberiuichim
+- Fix missing translation in link content type @iRohitSingh
+- Fixed drag-and-drop list placeholder issues @reebalazs
+
+## 14.0.0-alpha.39 (2021-11-30)
+
+### Bugfix
+
+- QuerystringWidget more resilient on old schemas @nzambello
+
+## 14.0.0-alpha.38 (2021-11-30)
+
+### Bugfix
+
+- Use subrequest in hero block to not lost locking token. @cekk
+- Always add lang attr in html @nzambello
+- Fix time widget position on 24h format @nzambello
+
+### Internal
+
+- Remove getNavigation from Login.jsx @iRohitSingh
+- Allow listing block to be used in non-content pages (when used in a slot it
+  shouldn't crash on add/edit pages) @tiberiuichim
+- Fix typo "toolbalWidth" @iRohitSingh
+
+## 14.0.0-alpha.37 (2021-11-26)
+
+### Bugfix
+
+- Fixed object browser selected items number. @giuliaghisini
+- Fix action vocabularies call avoiding regex look behind @nzambello
+
+### Internal
+
+- Fix select family widgets stories in storybook @sneridagh
+
+## 14.0.0-alpha.36 (2021-11-25)
+
+### Bugfix
+
+- Fix regression in actions vocabularies calls because the change to use contextual schemas @sneridagh
+- Include block schema enhancers (main block schema enhancer + variation schema enhancer) when calculating block default data @tiberiuichim
+
+### Internal
+
+- Fix references to old configuration style in apiExpanders documentation @tiberiuichim
+- Add `applySchemaDefaults`, in addition to `applyBlockDefaults`, to allow reuse in object widgets and other advanced scenarios @tiberiuichim
+
+## 14.0.0-alpha.35 (2021-11-24)
+
+### Bugfix
+
+- Fix `isInternalURL` when `settings.internalApiPath` is empty @tiberiuichim
+- Fix external link not supported by Navigation component #2853. @ericof
+- Get Add/Edit schema contextually #2852 @ericof
+
+### Internal
+
+- Upgrade p.restapi to 8.15.2 @sneridagh
+
+## 14.0.0-alpha.34 (2021-11-20)
+
+### Feature
+
+- Apply form defaults from RenderBlocks and block Edit using a new helper, `applyBlockDefaults` @tiberiuichim
+- Now each block config object can declare a schema factory (a function that can produce a schema) and this will be used to derive the default data for the block @tiberiuichim
+
+## 14.0.0-alpha.33 (2021-11-20)
+
+### Bugfix
+
+- Fix downloadableObjects default value @giuliaghisini
+- Folder contents table header and breadcrumbs dropdown now appear only from the
+  bottom, fixing an issue where the breadcrumb dropdown content was clipped
+  by the header area @ichim-david
+- Folder contents sort dropdown is now also simple as the other dropdowns
+  ensuring we have the same behavior between adjecent dropdown @ichim-david
+- Fix documention on block extensions, replace `render` with `template` to match Listing block @tiberiuichim
+
+### Internal
+
+- Upgrade stylelint to v14 (vscode-stylelint requires it now) @sneridagh
+- Add several more stories for Storybook @tiberiuichim
+- Add 2 new Volto websites by Eau de web for EEA @tiberiuichim
+
+## 14.0.0-alpha.32 (2021-11-09)
+
+### Breaking
+
+- Listing block no longer use `fullobjects` to retrieve backend data. It uses the catalog data instead. @plone/volto-team
+
+### Internal
+
+- Remove bundlesize @tisto
+- Upgrade plone.restapi from 8.12.1 -> 8.13.0 @tisto
+
+## 14.0.0-alpha.31 (2021-11-07)
+
+### Feature
+
+- Added LinkMore component and link more in HeroImageLeft block. @giuliaghisini
+
+### Bugfix
+
+- Fix the selection of Maps Block @iRohitSingh
+- UniversalLink: handle direct download for content-type File if user is not logged. @giuliaghisini
+- Fixed ObjectBrowserWidget when is multiple or maximumSelectionSize is not set @giuliaghisini
+- Fix full-width image overlaps the drag handle @iRohitSingh
+- Fix move item to top of the folder when clicking on move to top action button @iRohitSingh
+
+### Internal
+
+- Removing the hardcoded default block type from text block @iRohitSingh
+- updated Volto sites list @giuliaghisini
+- Cleanup dangling virtualenv files that should not be committed @pnicolli
+- Improve italian translation @pnicolli
+
+## 14.0.0-alpha.30 (2021-11-07)
+
+### Feature
+
+- Support typescript usage in Volto sites @pnicolli
+
+## 14.0.0-alpha.29 (2021-11-06)
+
+### Bugfix
+
+- Fix reset pagination in searchblock when changing facet filters @tiberiuichim
+
+## 14.0.0-alpha.28 (2021-11-03)
+
+### Feature
+
+- Defaults are observed in block data if `InlineForm` or `BlockDataForm` are used. @sneridagh @tiberiuichim
+
+## 14.0.0-alpha.27 (2021-11-02)
+
+### Breaking
+
+- Use title instead of id as a source of translation in "Variation" field in block enhancers @sneridagh
+
+## 14.0.0-alpha.26 (2021-11-01)
+
+### Feature
+
+- Provide Server-Side Rendering capabilities for blocks with async-based content (such as the listing block). A block needs to provide its own `getAsyncData` implementation, which is similar to an `asyncConnect` wrapper promise. @tiberiuichim @sneridagh
+
+## 14.0.0-alpha.25 (2021-11-01)
+
+### Feature
+
+- FormFieldWrapper accepts now strings and elements for description @nzambello
+- Image block:
+  - When uploading an image or selecting that from the object browser, Image block will set an empty string as alternative text @nzambello
+  - Adds a description to the alt-tag with w3c explaination @nzambello
+
+### Bugfix
+
+- Fix disable mode of `QuerystringWidget` when all criteria are deleted @kreafox
+
+### Internal
+
+- Add RawMaterial website in Volto production sites @nzambello
+
+## 14.0.0-alpha.24 (2021-10-29)
+
+### Feature
+
+- Support Node 16 @timo
+
+### Bugfix
+
+- Prevent ua-parser-js security breach. See: https://github.com/advisories/GHSA-pjwm-rvh2-c87w @thet
+- Fix storybook errors in the connected components, api is undefined. Using now a mock of the store instead of the whole thing @sneridagh
+- CSS fix on `QueryWidget` to prevent line jumping for clear button when the multi selection widget has multiple items @kreafox
+
+## 14.0.0-alpha.23 (2021-10-21)
+
+### Feature
+
+- Enable to be able to use the internal proxy in production as well @sneridagh
+
+### Bugfix
+
+- Fix loading of cookie on SSR for certain requests, revert slight change in how they are loaded introduced in alpha 16 @sneridagh
+
+## 14.0.0-alpha.22 (2021-10-20)
+
+### Breaking
+
+- Improve mobile navigation menu with a nicer interaction and a fixed overlay with a drawer (customizable via CSSTransitionGroup) animation @sneridagh
+
+### Internal
+
+- Add locales to existing block variations @sneridagh
+
+## 14.0.0-alpha.21 (2021-10-17)
+
+### Feature
+
+- In the search block, allow editors to specify the sort on criteria.
+  @tiberiuichim
+- Updated Volto production sites list @giuliaghisini
+
+### Bugfix
+
+- Bugfixes to search block. By default search block, when empty, makes a simple
+  query to the nav root, to list all content. Fix reading search text from URL.
+  Implement a simple compression of URL. Don't count searched text as filter.
+  Fix an edge case with showSearchInput in schema. Rename title to Section
+  Title in facet column settings. Avoid double calls to querystring endpoint.
+  @tiberiuichim
+- Use correct shade of black in Plone logo @sneridagh
+
+## 14.0.0-alpha.20 (2021-10-15)
+
+### Breaking
+
+- Revisited, rethought and refactored Seamless mode Seamless mode @sneridagh
+  For more information, please read the deploying guide
+  https://docs.voltocms.com/deploying/seamless-mode/
+
+and the upgrade guide
+https://docs.voltocms.com/upgrade-guide/
+
+### Bugfix
+
+- Fixed SelectWidget: when there was a selected value, the selection was lost when the tab was changed. @giuliaghisini
+
+## 14.0.0-alpha.19 (2021-10-15)
+
+### Feature
+
+- Make VocabularyTermsWidget orderable @ksuess
+- Get widget by tagged values @ksuess
+
+## 14.0.0-alpha.18 (2021-10-11)
+
+### Internal
+
+- Re-release last release, since it does not show on NPM @sneridagh
+
+## 14.0.0-alpha.17 (2021-10-11)
+
+### Breaking
+
+- Fix logout action using the backend @logout endpoint, effectively removing the `__ac` cookie. It is recommended to upgrade to the latest p.restapi version to take full advantage of this feature @sneridagh
+
+### Bugfix
+
+- Add spinner on sharing View Button @iRohitSingh
+
+## 14.0.0-alpha.16 (2021-10-10)
+
+### Bugfix
+
+- Yet another attempt at fixing devproxy. Split the devproxy into a separate
+  express middleware. Introduce the `DEBUG_HPM` env var to make the devproxy
+  verbose @tiberiuichim
+
+## 14.0.0-alpha.15 (2021-10-10)
+
+### Breaking
+
+- Adjusted main `Logo` component styling @sneridagh
+
+For more information, please read the upgrade guide
+https://docs.voltocms.com/upgrade-guide/
+
+### Feature
+
+- Add `volto-guillotina` addon to core @sneridagh
+
+### Internal
+
+- Improved developer documentation. Proof read several chapters, most importantly the upgrade guide @ichim-david
+- Use Plone logo (Closes #2632) @ericof
+- Updated Brazilian Portuguese translations @ericof
+- Footer: Point to plone.org instead of plone.com @ericof
+- Fix "make start-frontend" @tisto
+- Update all the tests infrastructure for the new `volto-guillotina` addon @sneridagh
+
+## 14.0.0-alpha.14 (2021-10-01)
+
+### Bugfix
+
+- Get `blocks` and `blocks_layout` defaults from existing behavior when enabling TTW editable DX Layout @avoinea
+
+### Internal
+
+- Add development dependency on use-trace-update, useful for performance debugging @tiberiuichim
+- Upgrade to `@plone/scripts` 1.0.3 @sneridagh
+
+## 14.0.0-alpha.13 (2021-09-30)
+
+### Feature
+
+- Add the new search block @tiberiuichim @kreafox @sneridagh
+
+## 14.0.0-alpha.12 (2021-09-29)
+
+### Bugfix
+
+- Show correct fieldname and not internal field id in Toast error messages on Add/Edit forms @jackahl
+- sitemap.xml.gz obeys Plone Search settings @erral
+
+### Internal
+
+- Use plone.volto instead of kitconcept.volto @tisto
+- Silence customization errors, they are now behind a `debug` library namespace @sneridagh
+- Remove recently introduced `RAZZLE_I18NDEBUGMODE` in favor of a `debug` library namespace @sneridagh
+
+## 14.0.0-alpha.11 (2021-09-25)
+
+### Internal
+
+- Use released @plone/scripts, since the builds are broken if it's a local package @sneridagh
+
+## 14.0.0-alpha.10 (2021-09-25)
+
+### Breaking
+
+- New i18n infrastructure in the new `@plone/scripts` package @sneridagh
+- Removed `src/i18n.js` in favor of the above change @sneridagh
+
+### Feature
+
+- Add RAZZLE_I18NDEBUGMODE env var and corresponding i18nDebugMode config setting to enable/disable react-intl error messages. @sneridagh
+
+### Bugfix
+
+- Missing default messages from JSON EN language file @sneridagh
 
 ## 14.0.0-alpha.9 (2021-09-21)
 

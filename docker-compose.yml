@@ -6,8 +6,8 @@ services:
       - '8080:8080'
     environment:
       - SITE=Plone
-      - ADDONS=kitconcept.volto
-      - 'PROFILES=kitconcept.volto:default-homepage'
+      - ADDONS=plone.volto
+      - 'PROFILES=plone.volto:default-homepage'
     image: plone
     labels:
       traefik.enable: "true"

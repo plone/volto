@@ -18,11 +18,19 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
 import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
 
-/** UrlWidget function component
- * @function UrlWidget
- * @returns {string} Markup of the component
+/** Widget to edit urls
+ *
+ * This is the default widget used for the `remoteUrl` field. You can also use
+ * it by declaring a field like:
+ *
+ * ```jsx
+ * {
+ *  title: "URL",
+ *  widget: 'url',
+ * }
+ * ```
  */
-const UrlWidget = (props) => {
+export const UrlWidget = (props) => {
   const { id, onChange, onBlur, onClick, minLength, maxLength } = props;
   const inputId = `field-${id}`;
 
