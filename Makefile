@@ -81,7 +81,7 @@ docs-build:
 	yarn build-storybook -o docs/build/storybook
 
 .PHONY: start
-# Run both the back-end and the front end
+# Run both the back-end and the front-end
 start:
 	$(MAKE) -e -j 2 start-backend start-frontend
 
