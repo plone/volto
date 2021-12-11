@@ -5,8 +5,6 @@
 [![NPM](https://img.shields.io/npm/v/@plone/volto.svg)](https://www.npmjs.com/package/@plone/volto)
 [![Build Status Core](https://github.com/plone/volto/actions/workflows/core.yml/badge.svg)](https://github.com/plone/volto/actions)
 [![Build Status Docs](https://github.com/plone/volto/actions/workflows/docs.yml/badge.svg)](https://github.com/plone/volto/actions)
-[![Dependencies](https://img.shields.io/david/plone/volto.svg)](https://github.com/plone/volto/blob/master/package.json)
-[![Dev Dependencies](https://img.shields.io/david/dev/plone/volto.svg)](https://github.com/plone/volto/blob/master/package.json)
 
 ## Introduction
 
@@ -14,7 +12,7 @@
 management systems, currently supporting three backend implementations: Plone,
 Guillotina and a NodeJS reference implementation.
 
-[Plone](https://plone.org) is a CMS built on Python with over 17 years of experience.
+[Plone](https://plone.org) is a CMS built on Python with over 20 years of history and experience.
 
 Plone has very interesting features that appeal to developers and users alike,
 such as customizable content types, hierarchical URL object traversing and a
@@ -36,7 +34,7 @@ through it.
 
 ## Demo
 
-You can try a Volto online demo in [https://volto.kitconcept.com](https://volto.kitconcept.com)
+You can try a Volto online demo in [https://6.demo.plone.org/](https://6.demo.plone.org/)
 
 ### Try the demo locally
 
@@ -145,12 +143,23 @@ Please create a new [issue](https://github.com/plone/volto/issues/new) or [pull 
 
 ## Documentation
 
-You can find the (beta) documentation in [http://docs.voltocms.com](http://docs.voltocms.com)
+You can find the documentation in [https://docs.voltocms.com](https://docs.voltocms.com)
 
 ## Training
 
-A detailed training on how to create your own website using Volto is available
-as part of the Plone training docs at [https://training.plone.org/5/volto/index.html](https://training.plone.org/5/volto/index.html).
+On the [Plone Trainings Website](https://training.plone.org) you'll find
+Volto-dedicated open training materials, plus React and other
+JavaScript-centered trainings.
+
+- [Mastering Plone 6 Development](https://training.plone.org/5/mastering-plone/)
+  The comprehensive training on Plone 6 with best practice tips for developers and integrators.
+- [Volto](https://training.plone.org/5/volto/index.html)
+  A detailed training on how to create your own website using Volto frontend.
+- [Volto Hands-On](https://training.plone.org/5/voltohandson/index.html)
+- [Volto Add-ons Development](https://training.plone.org/5/voltoaddons/index.html)
+- [Plone Deployment](https://training.plone.org/5/plone-deployment/index.html)
+- [React](https://training.plone.org/5/react/index.html)
+- [JavaScript For Plone Developers](https://training.plone.org/5/javascript/index.html)
 
 ## Talks
 
