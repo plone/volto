@@ -1,70 +1,60 @@
-.. image:: https://travis-ci.org/kitconcept/buildout.svg?branch=master
-    :target: https://travis-ci.org/kitconcept/buildout
-
-kitconcept Buildout
+API Backend
 ===================
 
-Basic Buildout setup with the kitconcept best practices.
+This folder contains a basic Plone 5.2 backend setup to use with the Volto React frontend.
 
-Getting started
----------------
+It requires Python 3.8 / Python 3.9 . The Makefile in this folder has a build command
+which uses Python's venv module to create a new virtualenv, installs zc.buildout and
+runs bin/buildout to set up a Plone backend. 
 
-Fetch Makefile::
+The Makefile is similar to the Volto backend configuration documentation you can find
+at https://docs.voltocms.com/configuration/backend/
 
-    wget -O Makefile https://raw.githubusercontent.com/kitconcept/buildout/master/Makefile
+Do note that allthough this setup could work out of the box, on some OS'es and
+configurations you might run into issues. You do need some experience with Python
+development/setup and Plone development to solve these. One of the main sources of
+'trouble' is that some Python modules (packages) are required that have bindings to
+lower level libraries, like Pillow for image handling, Cryptography for ssl support
+and some Zope server components to efficiently handle the object database and backend
+requests. See below for more details.
 
-Update Buildout files::
+If this is not your cup of tea, coffee or other beverage, *please use* the provided
+Docker/container image setup instructions you can find in the main directory of this
+repo or in the getting started documentation, as this avoids this complexity and
+lets you focus first on the frontend, what Volto/Plone 6 is all about.
 
-    make update
+-> https://docs.voltocms.com/getting-started/install/
 
-This will automatically update the following files in your local folder:
+[ Also, if you cloned the Volto repository from GitHub just to create a Volto site,
+please be aware you are using a development version that can be unstable, it is for
+development *on* Volto, not for creating a Plone 6 website site *with* the Volto
+React frontend.
 
-- Makefile
-- requirements.txt
-- plone-4.3.x.cfg
-- plone-5.0.x.cfg
-- plone-5.1.x.cfg
-- plone-5.2.x.cfg
-- versions.cfg
-
-kitconcept Buildout expects a base.cfg configuration to be present in your buildout that contains your customizations and contains the following parts (replace collective.embeddedpage with your add-on)::
-
-    [buildout]
-    index = https://pypi.org/simple
-    show-picked-versions = true
-    extensions = mr.developer
-    parts =
-        instance
-    develop = .
-    versions = versions
-
-    [instance]
-    recipe = plone.recipe.zope2instance
-    user = admin:admin
-    http-address = 8080
-    eggs =
-        Plone
-        Pillow
-        collective.embeddedpage [test]
-
-    [versions]
-    # Don't use a released version of collective.embeddedpage
-    collective.embeddedpage =
-
-    # setuptools / buildout
-    setuptools =
-    zc.buildout =
-    zc.recipe.egg = 2.0.3
+Use the Yeoman generator as documented in the main README in the parent directory to
+scaffold a Volto frontend setup that uses a released npm Volto package. You can still
+copy this api directory as inspiration to start a lightweight 'local' backend. ]
 
 
-Make Commands
--------------
+API backend folder installation caveats
+---------------------------------------
 
-Available make commands:
+Most issues people have when building Plone 'from' source' by using zc.buildout at the 
+moment are caused by building Python packages that provide bindings to C libraries that
+are required for cryptography, image handling/scaling support and compression.
 
-- Update Makefile and Buildout: make update
-- Build Plone 4.3.x: make build-plone-4.3
-- Build Plone 5.0.x: make build-plone-5.0
-- Build Plone 5.1.x: make build-plone-5.1
-- Build Plone 5.2.x: make build-plone-5.2
-- Build Plone 5.2.x with Python 3: make build-py3
+You can find more up to date details on installing these necessary libraries for linux
+systems in the 'Mastering Plone' training at
+
+-> https://training.plone.org/5/mastering-plone/installation.html#installing-plone-backend
+
+For Windows you could try WSL (Windows subsystem for Linux) and for Mac OS X for example
+Homebrew to install these necessary support libraries.
+
+Work is being done to A) upgrade zc.buildout to use pip natively and not the outdated
+setuptools/distutils packages and B) we want to support installing Plone just with the
+dominant packaging installation solution: pip. This already works in an alpha version of
+Plone 6, but zc.buildout also has scaffolding tools to create necessary config files and
+these are not available yet. However, if you want to experiment, see the following post
+on the most recent Plone 6 alpha release:
+
+->  https://community.plone.org/t/plone-6-0-0a2-released

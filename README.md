@@ -5,8 +5,6 @@
 [![NPM](https://img.shields.io/npm/v/@plone/volto.svg)](https://www.npmjs.com/package/@plone/volto)
 [![Build Status Core](https://github.com/plone/volto/actions/workflows/core.yml/badge.svg)](https://github.com/plone/volto/actions)
 [![Build Status Docs](https://github.com/plone/volto/actions/workflows/docs.yml/badge.svg)](https://github.com/plone/volto/actions)
-[![Dependencies](https://img.shields.io/david/plone/volto.svg)](https://github.com/plone/volto/blob/master/package.json)
-[![Dev Dependencies](https://img.shields.io/david/dev/plone/volto.svg)](https://github.com/plone/volto/blob/master/package.json)
 
 ## Introduction
 
