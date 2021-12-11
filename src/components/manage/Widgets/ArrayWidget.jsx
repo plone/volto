@@ -6,11 +6,10 @@
 import React, { Component } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
-// import { isObject, findIndex } from 'lodash';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
-import { find, isBoolean, isObject, isArray } from 'lodash';
+import { find, isObject, isArray } from 'lodash';
 
 import {
   getVocabFromHint,
@@ -18,8 +17,6 @@ import {
   getVocabFromItems,
 } from '@plone/volto/helpers';
 import { getVocabulary } from '@plone/volto/actions';
-
-import { normalizeValue } from './SelectUtils';
 
 import {
   Option,
