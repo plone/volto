@@ -6,6 +6,9 @@
 
 ### Changes
 
+### Internal
+
+- Add more exceptions to .gitignore @avoinea
 - Addon add prompt now accept fallacy choices @nileshgulia1
 
 ## 5.0.0-alpha.1 (2021-10-29)
