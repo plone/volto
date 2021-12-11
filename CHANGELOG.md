@@ -9,6 +9,7 @@
 - Added `.storybook` setup in the Volto `app` generator. Volto projects
   generated from this scafolding are now ready to run Storybook for the project
   and develop addons (in `src/addons` folder).
+- Add new listing block option "fullobjects" per variation @ksuess
 - Style checkboxes @nileshgulia1
 
 ### Bugfix
