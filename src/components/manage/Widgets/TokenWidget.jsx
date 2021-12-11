@@ -18,6 +18,7 @@ import { getVocabulary } from '@plone/volto/actions';
 import {
   Option,
   DropdownIndicator,
+  ClearIndicator,
   selectTheme,
   customSelectStyles,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
@@ -160,7 +161,7 @@ class TokenWidget extends Component {
           options={defaultOptions}
           styles={customSelectStyles}
           theme={selectTheme}
-          components={{ DropdownIndicator, Option }}
+          components={{ ClearIndicator, DropdownIndicator, Option }}
           isMulti
           value={selectedOption || []}
           onChange={this.handleChange}
