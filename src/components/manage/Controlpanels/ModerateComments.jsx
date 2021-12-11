@@ -11,11 +11,15 @@ import { Link } from 'react-router-dom';
 import { getParentUrl, Helmet } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
 import { Container, Button, Table } from 'semantic-ui-react';
-import moment from 'moment';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import { deleteComment, searchContent } from '@plone/volto/actions';
-import { CommentEditModal, Icon, Toolbar } from '@plone/volto/components';
+import {
+  CommentEditModal,
+  FormattedI18nDate,
+  Icon,
+  Toolbar,
+} from '@plone/volto/components';
 
 import backSVG from '@plone/volto/icons/back.svg';
 
@@ -230,8 +234,23 @@ class ModerateComments extends Component {
                     <Table.Row key={item['@id']}>
                       <Table.Cell>{item.author_name}</Table.Cell>
                       <Table.Cell>
-                        <span title={moment(item.creation_date).format('LLLL')}>
-                          {moment(item.creation_date).fromNow()}
+                        <span
+                          title={FormattedI18nDate({
+                            date: item.creation_date,
+                            format: {
+                              dateStyle: 'full',
+                              timeStyle: 'short',
+                            },
+                          })}
+                        >
+                          <FormattedI18nDate
+                            date={item.creation_date}
+                            format={{
+                              year: 'numeric',
+                              month: 'numeric',
+                              day: 'numeric',
+                            }}
+                          />
                         </span>
                       </Table.Cell>
                       <Table.Cell>{item.text.data}</Table.Cell>
