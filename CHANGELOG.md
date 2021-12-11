@@ -20,7 +20,6 @@
 - Update to plone.restapi 8.16.2 (revert missing_value PR) @sneridagh
 - Update all requirements and the reasoning behind them in builds @sneridagh
 - Update Plone version in api backend to 5.2.6. Update README and cleanup @fredvd
-- Update Plone version in api backend to 5.2.6. Update README and cleanup @fredvd
 - Document CI changelog verifier failure details that mislead contributors
 
 ## 14.0.0-alpha.40 (2021-12-01)
