@@ -6,6 +6,7 @@
 
 ### Feature
 
+- Add new listing block option "fullobjects" per variation @ksuess
 - Style checkboxes @nileshgulia1
 
 ### Bugfix
