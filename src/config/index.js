@@ -157,6 +157,7 @@ let config = {
     showSelfRegistration: false,
     contentMetadataTagsImageField: 'image',
     hasWorkingCopySupport: false,
+    maxUndoLevels: 200,
   },
   widgets: {
     ...widgetMapping,
