@@ -16,6 +16,7 @@
 
 - Udate demo address @ksuess
 - Update list of trainings documentation @ksuess
+- Scroll to window top only when the location pathname changes, no longer take the window location search parameters into account. The search page and the listing block already use custom logic for their "scroll into view" behaviors. @tiberiuichim
 
 ### Internal
 
