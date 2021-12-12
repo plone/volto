@@ -40,11 +40,13 @@ const UndoToolbar = ({ state, onUndoRedo, maxUndoLevels, enableHotKeys }) => {
         return;
       }
       if (event.ctrlKey || event.metaKey) {
-        event.preventDefault();
-        event.stopPropagation();
         if (keyName === 'z') {
+          event.preventDefault();
+          event.stopPropagation();
           doUndo();
         } else if (keyName === 'y') {
+          event.preventDefault();
+          event.stopPropagation();
           doRedo();
         }
       } else {

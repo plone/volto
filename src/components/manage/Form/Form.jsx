@@ -528,9 +528,13 @@ class Form extends Component {
             onSelectBlock={this.onSelectBlock}
           />
           <UndoToolbar
-            state={this.state.formData}
+            state={{
+              formData: this.state.formData,
+              selected: this.state.selected,
+              multiSelected: this.state.multiSelected,
+            }}
             enableHotKeys
-            onUndoRedo={({ state }) => this.setState({ formData: state })}
+            onUndoRedo={({ state }) => this.setState(state)}
           />
           <BlocksForm
             onChangeFormData={(newFormData) =>
