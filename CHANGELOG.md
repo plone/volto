@@ -11,6 +11,7 @@
   and develop addons (in `src/addons` folder).
 - Add new listing block option "fullobjects" per variation @ksuess
 - Style checkboxes @nileshgulia1
+- Allow loading .less files also from a Volto project's `src` folder.  @tiberiuichim
 
 ### Bugfix
 
