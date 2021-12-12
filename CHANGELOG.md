@@ -12,6 +12,7 @@
 - Add new listing block option "fullobjects" per variation @ksuess
 - Style checkboxes @nileshgulia1
 - Added form undo support in the form of two buttons in the main toolbar and ctrl+z, ctrl+y as hotkeys for undo/redo @tiberiuichim
+- Allow the draftjs Text block edit to update the editor content when incoming block data is mutated outside the block (to support form undo) @tiberiuichim
 
 ### Bugfix
 
