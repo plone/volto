@@ -1929,6 +1929,11 @@ msgstr ""
 msgid "Recurrence ends on"
 msgstr ""
 
+#: components/manage/Form/UndoToolbar
+# defaultMessage: Redo
+msgid "Redo"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Minimalistic table design
 msgid "Reduce complexity"
@@ -2726,6 +2731,11 @@ msgstr ""
 #: components/theme/Unauthorized/Unauthorized
 # defaultMessage: Unauthorized
 msgid "Unauthorized"
+msgstr ""
+
+#: components/manage/Form/UndoToolbar
+# defaultMessage: Undo
+msgid "Undo"
 msgstr ""
 
 #: components/manage/BlockChooser/BlockChooser

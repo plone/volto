@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2021-11-30T14:58:55.270Z\n"
+"POT-Creation-Date: 2021-12-12T16:29:25.141Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1931,6 +1931,11 @@ msgstr ""
 msgid "Recurrence ends on"
 msgstr ""
 
+#: components/manage/Form/UndoToolbar
+# defaultMessage: Redo
+msgid "Redo"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Minimalistic table design
 msgid "Reduce complexity"
@@ -2728,6 +2733,11 @@ msgstr ""
 #: components/theme/Unauthorized/Unauthorized
 # defaultMessage: Unauthorized
 msgid "Unauthorized"
+msgstr ""
+
+#: components/manage/Form/UndoToolbar
+# defaultMessage: Undo
+msgid "Undo"
 msgstr ""
 
 #: components/manage/BlockChooser/BlockChooser
