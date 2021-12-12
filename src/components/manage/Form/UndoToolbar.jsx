@@ -20,7 +20,7 @@ const messages = defineMessages({
   },
 });
 
-const UndoToolbar = ({ state, onUndoRedo, maxUndoLevels }) => {
+const UndoToolbar = ({ state, onUndoRedo, maxUndoLevels, enableHotKeys }) => {
   const intl = useIntl();
   const undoLevels = maxUndoLevels ?? config.settings.maxUndoLevels;
   const { doUndo, doRedo, canUndo, canRedo } = useUndoManager(
@@ -30,6 +30,35 @@ const UndoToolbar = ({ state, onUndoRedo, maxUndoLevels }) => {
       maxUndoLevels: undoLevels,
     },
   );
+
+  const handleKeys = React.useCallback(
+    (event) => {
+      const keyName = event.key;
+
+      if (keyName === 'Control' || keyName === 'Meta') {
+        // do not alert when only Control key is pressed.
+        return;
+      }
+      if (event.ctrlKey || event.metaKey) {
+        event.preventDefault();
+        event.stopPropagation();
+        if (keyName === 'z') {
+          doUndo();
+        } else if (keyName === 'y') {
+          doRedo();
+        }
+      } else {
+        return;
+      }
+    },
+    [doUndo, doRedo],
+  );
+
+  React.useEffect(() => {
+    if (!enableHotKeys) return;
+    document.addEventListener('keydown', handleKeys);
+    return () => document.removeEventListener('keydown', handleKeys);
+  }, [enableHotKeys, handleKeys]);
 
   return (
     <>

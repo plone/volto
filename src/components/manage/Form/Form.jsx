@@ -529,6 +529,7 @@ class Form extends Component {
           />
           <UndoToolbar
             state={this.state.formData}
+            enableHotKeys
             onUndoRedo={({ state }) => this.setState({ formData: state })}
           />
           <BlocksForm
