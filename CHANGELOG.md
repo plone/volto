@@ -7,6 +7,7 @@
 ### Feature
 
 - Style checkboxes @nileshgulia1
+- Add catalan translation @bloodbare @sneridagh
 
 ### Bugfix
 

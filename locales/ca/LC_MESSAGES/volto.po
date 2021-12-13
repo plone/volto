@@ -1,7 +1,6 @@
 # Translation of plone.pot to Catalan
-# Víctor Fernández de Alba <sneridagh a gmail.com>, 2007-2012
-# Adaptat a la guia d'estil de softcatalà, Recursos web:
-# A Softcatalà http://www.softcatala.org/wiki/Plone
+# Ramon Navarro Bosch <bloodbare a plone.org>, 2021
+# Víctor Fernández de Alba <victor a plone.org>, 2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
