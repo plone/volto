@@ -16,6 +16,7 @@
 
 - Udate demo address @ksuess
 - Update list of trainings documentation @ksuess
+- Add missing layout view for document_view @MarcoCouto
 
 ### Internal
 
