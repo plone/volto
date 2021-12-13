@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Add missing `App.jsx` full paths @jimbiscuit
+
 ### Internal
 
 ## 14.0.0-alpha.42 (2021-12-13)
