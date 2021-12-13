@@ -169,9 +169,17 @@ class SelectWidget extends Component {
       this.props.value &&
       this.props.choices?.length > 0
     ) {
-      this.setState({
-        selectedOption: normalizeValue(this.props.choices, this.props.value),
-      });
+      const selectedOption = normalizeValue(
+        this.props.choices,
+        this.props.value,
+      );
+      if (selectedOption) {
+        // Note: only set the state when an option has been found,
+        // as setting this to null would cause an infinite loop.
+        this.setState({
+          selectedOption,
+        });
+      }
     }
   }
 
