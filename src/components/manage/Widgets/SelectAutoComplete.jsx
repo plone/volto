@@ -4,10 +4,13 @@
  */
 
 import React, { Component } from 'react';
+import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
+import { isObject } from 'lodash';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { defineMessages, injectIntl } from 'react-intl';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+
 import {
   getVocabFromHint,
   getVocabFromField,
@@ -18,13 +21,12 @@ import { getVocabulary } from '@plone/volto/actions';
 import {
   Option,
   DropdownIndicator,
-  ClearIndicator,
   selectTheme,
   customSelectStyles,
+  MenuList,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 
 import { FormFieldWrapper } from '@plone/volto/components';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 const messages = defineMessages({
   select: {
@@ -35,14 +37,18 @@ const messages = defineMessages({
     id: 'No options',
     defaultMessage: 'No options',
   },
+  type_text: {
+    id: 'Type text...',
+    defaultMessage: 'Type text...',
+  },
 });
 
 /**
- * TokenWidget component class.
- * @class TokenWidget
+ * ArrayWidget component class.
+ * @class ArrayWidget
  * @extends Component
  */
-class TokenWidget extends Component {
+class SelectAutoComplete extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -55,14 +61,18 @@ class TokenWidget extends Component {
     required: PropTypes.bool,
     error: PropTypes.arrayOf(PropTypes.string),
     getVocabulary: PropTypes.func.isRequired,
-    choices: PropTypes.arrayOf(PropTypes.object),
+    choices: PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+    ),
     items: PropTypes.shape({
       vocabulary: PropTypes.object,
     }),
     widgetOptions: PropTypes.shape({
       vocabulary: PropTypes.object,
     }),
-    value: PropTypes.arrayOf(PropTypes.string),
+    value: PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+    ),
     onChange: PropTypes.func.isRequired,
     wrapped: PropTypes.bool,
   };
@@ -94,26 +104,19 @@ class TokenWidget extends Component {
    */
   constructor(props) {
     super(props);
+
     this.handleChange = this.handleChange.bind(this);
 
     this.state = {
       selectedOption: props.value
-        ? props.value.map((item) => ({ label: item, value: item }))
+        ? props.value.map((item) =>
+            isObject(item)
+              ? { label: item.title || item.token, value: item.token }
+              : { label: item, value: item },
+          )
         : [],
+      searchLength: 0,
     };
-  }
-
-  /**
-   * Component did mount
-   * @method componentDidMount
-   * @returns {undefined}
-   */
-  componentDidMount() {
-    this.props.getVocabulary({
-      vocabNameOrURL: this.props.vocabBaseUrl,
-      size: -1,
-      subrequest: this.props.intl.locale,
-    });
   }
 
   /**
@@ -125,11 +128,45 @@ class TokenWidget extends Component {
    */
   handleChange(selectedOption) {
     this.setState({ selectedOption });
+
     this.props.onChange(
       this.props.id,
-      selectedOption ? selectedOption.map((item) => item.label) : null,
+      selectedOption ? selectedOption.map((item) => item.value) : null,
     );
   }
+
+  timeoutRef = React.createRef();
+
+  // How many characters to hold off searching from. Search tarts at this plus one.
+  SEARCH_HOLDOFF = 2;
+
+  loadOptions = (query) => {
+    // Implement a debounce of 400ms and a min search of 3 chars
+    if (query.length > this.SEARCH_HOLDOFF) {
+      if (this.timeoutRef.current) clearTimeout(this.timeoutRef.current);
+      return new Promise((resolve) => {
+        this.timeoutRef.current = setTimeout(async () => {
+          resolve(
+            await this.props
+              .getVocabulary({
+                vocabNameOrURL: this.props.vocabBaseUrl,
+                query,
+                size: -1,
+                subrequest: this.props.intl.locale,
+              })
+              .then((resp) => {
+                return resp.items.map((item) => ({
+                  label: item.title,
+                  value: item.token,
+                }));
+              }),
+          );
+        }, 400);
+      });
+    } else {
+      return Promise.resolve([]);
+    }
+  };
 
   /**
    * Render method.
@@ -138,46 +175,53 @@ class TokenWidget extends Component {
    */
   render() {
     const { selectedOption } = this.state;
-    const defaultOptions = (this.props.choices || [])
-      .filter(
-        (item) =>
-          !this.state.selectedOption.find(({ label }) => label === item.label),
-      )
-      .map((item) => ({
-        label: item.label || item.value,
-        value: item.value,
-      }));
-    const CreatableSelect = this.props.reactSelectCreateable.default;
+    const SelectAsync = this.props.reactSelectAsync.default;
 
     return (
       <FormFieldWrapper {...this.props}>
-        <CreatableSelect
+        <SelectAsync
           id={`field-${this.props.id}`}
           key={this.props.id}
           isDisabled={this.props.isDisabled}
           className="react-select-container"
           classNamePrefix="react-select"
-          defaultOptions={defaultOptions}
-          options={defaultOptions}
+          cacheOptions
+          defaultOptions={[]}
+          loadOptions={this.loadOptions}
+          onInputChange={(search) =>
+            this.setState({ searchLength: search.length })
+          }
+          noOptionsMessage={() =>
+            this.props.intl.formatMessage(
+              this.state.searchLength > this.SEARCH_HOLDOFF
+                ? messages.no_options
+                : messages.type_text,
+            )
+          }
           styles={customSelectStyles}
           theme={selectTheme}
-          components={{ ClearIndicator, DropdownIndicator, Option }}
-          isMulti
+          components={{
+            ...(this.props.choices?.length > 25 && {
+              MenuList,
+            }),
+            DropdownIndicator,
+            Option,
+          }}
           value={selectedOption || []}
-          onChange={this.handleChange}
           placeholder={this.props.intl.formatMessage(messages.select)}
-          noOptionsMessage={() =>
-            this.props.intl.formatMessage(messages.no_options)
-          }
+          onChange={this.handleChange}
+          isMulti
         />
       </FormFieldWrapper>
     );
   }
 }
 
+export const SelectAutoCompleteComponent = injectIntl(SelectAutoComplete);
+
 export default compose(
   injectIntl,
-  injectLazyLibs(['reactSelectCreateable']),
+  injectLazyLibs(['reactSelectAsync']),
   connect(
     (state, props) => {
       const vocabBaseUrl =
@@ -188,14 +232,15 @@ export default compose(
       const vocabState =
         state.vocabularies?.[vocabBaseUrl]?.subrequests?.[props.intl.locale];
 
-      if (vocabState) {
+      // If the schema already has the choices in it, then do not try to get the vocab,
+      // even if there is one
+      if (props.items?.choices) {
         return {
-          choices: vocabState.items
-            ? vocabState.items.map((item) => ({
-                label: item.label || item.value,
-                value: item.value,
-              }))
-            : [],
+          choices: props.items.choices,
+        };
+      } else if (vocabState) {
+        return {
+          choices: vocabState.items,
           vocabBaseUrl,
         };
       }
@@ -203,4 +248,4 @@ export default compose(
     },
     { getVocabulary },
   ),
-)(TokenWidget);
+)(SelectAutoComplete);

@@ -4,7 +4,11 @@
 
 ### Breaking
 
+- Removed pagination in vocabularies widgets (SelectWidget, ArrayWidget, TokenWidget) and introduced subrequest to vocabulary action. @giuliaghisini
+
 ### Feature
+
+- Add autocomplete Widget component - It holds off the vocabulary endpoint pull until you search (more than 2 chars). Useful when dealing with huge vocabularies @sneridagh @reebalazs
 
 ### Bugfix
 
