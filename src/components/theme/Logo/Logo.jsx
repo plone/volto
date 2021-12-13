@@ -3,7 +3,6 @@
  * @module components/theme/Logo/Logo
  */
 
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { defineMessages, useIntl } from 'react-intl';
 import { Image } from 'semantic-ui-react';

@@ -15,12 +15,21 @@ import { getVocabName } from '@plone/volto/helpers/Vocabularies/Vocabularies';
  * @param {string} vocabNameOrURL Full API URL of vocabulary or vocabulary name
  * @param {string} query Only include results containing this string.
  * @param {number} start Start of result batch.
+ * @param {number} b_size The size of the batch.
+ * @param {string} subrequest Name of the subrequest.
  * @returns {Object} Get vocabulary action.
  */
-export function getVocabulary(vocabNameOrURL, query = null, start = 0) {
-  // In case we have a URL, we have to get the vocabulary name
+export function getVocabulary({
+  vocabNameOrURL,
+  query = null,
+  start = 0,
+  size,
+  subrequest,
+}) {
   const vocabulary = getVocabName(vocabNameOrURL);
-  let queryString = `b_start=${start}`;
+
+  let queryString = `b_start=${start}${size ? '&b_size=' + size : ''}`;
+
   if (query) {
     queryString = `${queryString}&title=${query}`;
   }
@@ -32,6 +41,7 @@ export function getVocabulary(vocabNameOrURL, query = null, start = 0) {
       op: 'get',
       path: `/@vocabularies/${vocabulary}?${queryString}`,
     },
+    subrequest,
   };
 }
 
@@ -43,7 +53,11 @@ export function getVocabulary(vocabNameOrURL, query = null, start = 0) {
  * @param {string} token Only include results containing this string.
  * @returns {Object} Get vocabulary action.
  */
-export function getVocabularyTokenTitle(vocabNameOrURL, token = null) {
+export function getVocabularyTokenTitle(
+  vocabNameOrURL,
+  token = null,
+  subrequest,
+) {
   // In case we have a URL, we have to get the vocabulary name
   const vocabulary = getVocabName(vocabNameOrURL);
 
@@ -51,6 +65,7 @@ export function getVocabularyTokenTitle(vocabNameOrURL, token = null) {
     type: GET_VOCABULARY_TOKEN_TITLE,
     vocabulary: vocabNameOrURL,
     token,
+    subrequest,
     request: {
       op: 'get',
       path: `/@vocabularies/${vocabulary}?token=${token}`,
