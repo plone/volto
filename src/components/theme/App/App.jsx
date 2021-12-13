@@ -42,9 +42,9 @@ import {
 } from '@plone/volto/actions';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
-import MultilingualRedirector from '../MultilingualRedirector/MultilingualRedirector';
-import WorkingCopyToastsFactory from '../../manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory';
-import LockingToastsFactory from '../../manage/LockingToastsFactory/LockingToastsFactory';
+import MultilingualRedirector from '@plone/volto/components/theme/MultilingualRedirector/MultilingualRedirector';
+import WorkingCopyToastsFactory from '@plone/volto/components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory';
+import LockingToastsFactory from '@plone/volto/components/manage/LockingToastsFactory/LockingToastsFactory';
 
 import * as Sentry from '@sentry/browser';
 

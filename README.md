@@ -55,7 +55,7 @@ First get all the requirements installed on your system.
 ### Prerequisites
 
 - [Node.js LTS (16.x)](https://nodejs.org/)
-- [Python 3.7.x / 2.7.x](https://python.org/) or
+- [Python 3.8.x](https://python.org/) or
 - [Docker](https://www.docker.com/get-started) (if using the Plone/Guillotina docker images)
 
 ### Create a Volto project using the generator

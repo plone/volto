@@ -1647,6 +1647,7 @@ msgid "No occurences set"
 msgstr "Kein Datum gesetzt"
 
 #: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectAutoComplete
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TokenWidget
 # defaultMessage: No options
@@ -2258,6 +2259,7 @@ msgstr "Auswahl"
 
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectAutoComplete
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TokenWidget
 # defaultMessage: Select…
@@ -2727,6 +2729,11 @@ msgstr "Typ"
 # defaultMessage: Type a Video (YouTube, Vimeo or mp4) URL
 msgid "Type a Video (YouTube, Vimeo or mp4) URL"
 msgstr "Geben Sie eine Video-URL (YouTube, Video oder MP4) ein"
+
+#: components/manage/Widgets/SelectAutoComplete
+# defaultMessage: Type text...
+msgid "Type text..."
+msgstr ""
 
 #: components/manage/Blocks/Text/Edit
 # defaultMessage: Type text…
