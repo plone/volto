@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Add missing layout view for document_view @MarcoCouto
+- Add missing `App.jsx` full paths @jimbiscuit
 
 ### Internal
 
