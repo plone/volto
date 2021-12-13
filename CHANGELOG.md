@@ -6,6 +6,7 @@
 
 ### Feature
 
+- Add catalan translation @bloodbare @sneridagh
 - Added `.storybook` setup in the Volto `app` generator. Volto projects
   generated from this scafolding are now ready to run Storybook for the project
   and develop addons (in `src/addons` folder).
