@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Add missing layout view for document_view @MarcoCouto
+
 ### Internal
 
 ## 14.0.0-alpha.41 (2021-12-13)

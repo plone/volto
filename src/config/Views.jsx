@@ -21,6 +21,7 @@ const EventView = loadable(() =>
 
 // Layout View Registry
 export const layoutViews = {
+  document_view: DefaultView,
   summary_view: SummaryView,
   tabular_view: TabularView,
   listing_view: ListingView,
