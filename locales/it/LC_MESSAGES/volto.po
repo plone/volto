@@ -2571,7 +2571,7 @@ msgstr "L'elemento non può essere eliminato."
 #: components/theme/View/LinkView
 # defaultMessage: The link address is:
 msgid "The link address is:"
-msgstr ""
+msgstr "L'indirizzo del collegamento è:"
 
 #: components/theme/Register/Register
 # defaultMessage: The registration process has been successful. Please check your e-mail inbox for information on how activate your account.
