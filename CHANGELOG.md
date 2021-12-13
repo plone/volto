@@ -6,17 +6,19 @@
 
 ### Feature
 
+- Add catalan translation @bloodbare @sneridagh
 - Added `.storybook` setup in the Volto `app` generator. Volto projects
   generated from this scafolding are now ready to run Storybook for the project
   and develop addons (in `src/addons` folder).
 - Add new listing block option "fullobjects" per variation @ksuess
 - Style checkboxes @nileshgulia1
-- Add catalan translation @bloodbare @sneridagh
+- Allow loading .less files also from a Volto project's `src` folder.  @tiberiuichim
 
 ### Bugfix
 
 - Udate demo address @ksuess
 - Update list of trainings documentation @ksuess
+- Scroll to window top only when the location pathname changes, no longer take the window location search parameters into account. The search page and the listing block already use custom logic for their "scroll into view" behaviors. @tiberiuichim
 
 ### Internal
 
