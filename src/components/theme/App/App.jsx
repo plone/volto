@@ -3,7 +3,7 @@
  * @module components/theme/App/App
  */
 
-import React, { Component } from 'react';
+import { Component } from 'react';
 import jwtDecode from 'jwt-decode';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
