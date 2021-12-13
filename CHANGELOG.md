@@ -2,8 +2,6 @@
 
 ## 14.0.0 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Add catalan translation @bloodbare @sneridagh
