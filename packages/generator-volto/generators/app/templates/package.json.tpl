@@ -18,7 +18,9 @@
     "test": "razzle test --env=jest-environment-jsdom-sixteen --passWithNoTests",
     "start:prod": "NODE_ENV=production node build/server.js",
     "i18n": "rm -rf build/messages && NODE_ENV=production i18n",
-    "develop": "missdev --config=jsconfig.json --output=addons --fetch-https"
+    "develop": "missdev --config=jsconfig.json --output=addons --fetch-https",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "private": <%- private %>,
   "workspaces": <%- workspaces %>,
@@ -80,6 +82,20 @@
     "plugins": [
       "stylelint-prettier"
     ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.less"
+        ],
+        "customSyntax": "postcss-less"
+      },
+      {
+        "files": [
+          "**/*.overrides"
+        ],
+        "customSyntax": "postcss-less"
+      }
+    ],
     "rules": {
       "prettier/prettier": true,
       "rule-empty-line-before": [
@@ -110,7 +126,12 @@
   "devDependencies": {
     "eslint-plugin-prettier": "3.1.3",
     "prettier": "2.0.5",
-    "stylelint": "13.3.3",
+    "@storybook/addon-actions": "^6.3.0",
+    "@storybook/addon-controls": "6.3.0",
+    "@storybook/addon-essentials": "^6.3.0",
+    "@storybook/addon-links": "^6.3.0",
+    "@storybook/react": "^6.3.0",
+    "stylelint": "14.0.1",
     "stylelint-config-idiomatic-order": "8.1.0",
     "stylelint-config-prettier": "8.0.1",
     "stylelint-prettier": "1.1.2"

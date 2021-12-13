@@ -448,7 +448,7 @@ class ObjectBrowserBody extends Component {
           <Segment className="infos">
             {this.props.intl.formatMessage(messages.SelectedItems)}:{' '}
             {this.props.data?.length}
-            {this.props.maximumSelectionSize && (
+            {this.props.maximumSelectionSize > 0 && (
               <>
                 {' '}
                 {this.props.intl.formatMessage(messages.of)}{' '}
