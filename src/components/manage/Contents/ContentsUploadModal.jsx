@@ -267,14 +267,7 @@ class ContentsUploadModal extends Component {
                     <Table.Row className="upload-row" key={file.name}>
                       <Table.Cell>{file.name}</Table.Cell>
                       <Table.Cell>
-                        <FormattedI18nDate
-                          date={file.lastModifiedDate}
-                          format={{
-                            year: 'numeric',
-                            month: 'numeric',
-                            day: 'numeric',
-                          }}
-                        />
+                        <FormattedI18nDate date={file.lastModifiedDate} />
                       </Table.Cell>
                       <Table.Cell>
                         {filesize(file.size, { round: 0 })}

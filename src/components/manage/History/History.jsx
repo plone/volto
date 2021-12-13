@@ -12,10 +12,13 @@ import { compose } from 'redux';
 import { Container, Dropdown, Icon, Segment, Table } from 'semantic-ui-react';
 import { concat, map, reverse } from 'lodash';
 import { Portal } from 'react-portal';
-import moment from 'moment';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { Icon as IconNext, Toolbar } from '@plone/volto/components';
+import {
+  FormattedI18nDate,
+  Icon as IconNext,
+  Toolbar,
+} from '@plone/volto/components';
 import { getHistory, revertHistory } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
 
@@ -206,9 +209,7 @@ class History extends Component {
                   </Table.Cell>
                   <Table.Cell>{entry.actor.fullname}</Table.Cell>
                   <Table.Cell>
-                    <span title={moment(entry.time).format('LLLL')}>
-                      {moment(entry.time).fromNow()}
-                    </span>
+                    <FormattedI18nDate date={entry.time} includeTime />
                   </Table.Cell>
                   <Table.Cell>{entry.comments}</Table.Cell>
                   <Table.Cell>

@@ -193,13 +193,13 @@ class Diff extends Component {
     const versions = map(
       filter(this.props.historyEntries, (entry) => 'version' in entry),
       (entry, index) => ({
-        text: `${index === 0 ? 'Current' : entry.version} (${FormattedI18nDate({
-          date: entry.time,
-          format: {
-            dateStyle: 'full',
-            timeStyle: 'short',
-          },
-        })}, ${entry.actor.fullname})`,
+        text: (
+          <>
+            {index === 0 ? 'Current' : entry.version}&nbsp;(
+            <FormattedI18nDate date={entry.time} long />, &nbsp;
+            {entry.actor.fullname})
+          </>
+        ),
         value: `${entry.version}`,
         key: `${entry.version}`,
       }),

@@ -234,24 +234,7 @@ class ModerateComments extends Component {
                     <Table.Row key={item['@id']}>
                       <Table.Cell>{item.author_name}</Table.Cell>
                       <Table.Cell>
-                        <span
-                          title={FormattedI18nDate({
-                            date: item.creation_date,
-                            format: {
-                              dateStyle: 'full',
-                              timeStyle: 'short',
-                            },
-                          })}
-                        >
-                          <FormattedI18nDate
-                            date={item.creation_date}
-                            format={{
-                              year: 'numeric',
-                              month: 'numeric',
-                              day: 'numeric',
-                            }}
-                          />
-                        </span>
+                        <FormattedI18nDate date={item.creation_date} />
                       </Table.Cell>
                       <Table.Cell>{item.text.data}</Table.Cell>
                       <Table.Cell>

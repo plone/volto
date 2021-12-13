@@ -189,32 +189,13 @@ export const ContentsItemComponent = ({
               </div>
             )}
             {index.type === 'date' && (
-              <span
-                title={
-                  item[index.id] !== 'None'
-                    ? FormattedI18nDate({
-                        date: item[index.id],
-                        format: {
-                          dateStyle: 'full',
-                          timeStyle: 'short',
-                        },
-                      })
-                    : intl.formatMessage(messages.none)
-                }
-              >
+              <>
                 {item[index.id] !== 'None' ? (
-                  <FormattedI18nDate
-                    date={item[index.id]}
-                    format={{
-                      year: 'numeric',
-                      month: 'numeric',
-                      day: 'numeric',
-                    }}
-                  />
+                  <FormattedI18nDate date={item[index.id]} />
                 ) : (
                   intl.formatMessage(messages.none)
                 )}
-              </span>
+              </>
             )}
             {index.type === 'array' && (
               <span>{item[index.id]?.join(', ')}</span>
