@@ -5,7 +5,7 @@ import { RealStoreWrapper as Wrapper } from '@plone/volto/storybook';
 
 const ArrayComponent = injectLazyLibs([
   'reactSelectCreateable',
-  'reactSelectAsyncPaginate',
+  'reactSortableHOC',
 ])(ArrayWidgetComponent);
 
 const Array = (args) => {
@@ -123,7 +123,7 @@ export const VocabularyBased = Array.bind({});
 VocabularyBased.args = {
   id: 'field-vocab-based',
   title: 'field title',
-  description: 'This is a vocab-based field (AsyncSelect based)',
+  description: 'This is a vocab-based field',
   placeholder: 'Select something…',
   // choices in Vocabulary based selects that has choices and spects a string in return
   // Use case: Language select - A Choice schema that spects a string as value
@@ -152,6 +152,32 @@ Disabled.args = {
   title: 'Disabled field title',
   description: 'This select field is disabled',
   disabled: true,
+};
+
+const getOptionsGenerator = (count) => {
+  const options = [];
+  for (let i = 0; i < count; i = i + 1) {
+    options.push([i, `Option ${i}`]);
+  }
+  return options;
+};
+
+export const ManyOptions1000 = Array.bind({});
+ManyOptions1000.args = {
+  id: 'field-empty',
+  title: 'field 1 title',
+  description: 'Optional help text',
+  placeholder: 'Type something…',
+  choices: getOptionsGenerator(1000),
+};
+
+export const ManyOptions500 = Array.bind({});
+ManyOptions500.args = {
+  id: 'field-empty',
+  title: 'field 1 title',
+  description: 'Optional help text',
+  placeholder: 'Type something…',
+  choices: getOptionsGenerator(500),
 };
 
 export default {

@@ -4,17 +4,33 @@
 
 ### Breaking
 
+- Move `theme.js` import to top of the client code, so it take precedence over any other inline imported CSS. This is not an strict breaking change, but it's worth to mention it as might be important and kept in mind.  @sneridagh
+
 ### Feature
 
 - Add runtime configuration for `@babel/plugin-transform-react-jsx` set to `automatic`. This enables the new JSX runtime: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html So no longer `import React from 'react'` is needed anymore.
 
 ### Bugfix
 
-- Add missing layout view for document_view @MarcoCouto
+- Add missing `App.jsx` full paths @jimbiscuit
 
 ### Internal
 
 - Upgrade to react 17.0.2 @nzambello
+
+## 14.0.0-alpha.42 (2021-12-13)
+
+### Breaking
+
+- Removed pagination in vocabularies widgets (SelectWidget, ArrayWidget, TokenWidget) and introduced subrequest to vocabulary action. @giuliaghisini
+
+### Feature
+
+- Add autocomplete Widget component - It holds off the vocabulary endpoint pull until you search (more than 2 chars). Useful when dealing with huge vocabularies @sneridagh @reebalazs
+
+### Bugfix
+
+- Add missing layout view for document_view @MarcoCouto
 
 ## 14.0.0-alpha.41 (2021-12-13)
 
