@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Add missing layout view for document_view @MarcoCouto
+- Fix UniversalLink handling of remote URLs from Link @nzambello
 
 ### Internal
 
