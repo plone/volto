@@ -6,6 +6,15 @@
 
 ### Feature
 
+### Bugfix
+
+### Internal
+
+## 14.0.0-alpha.41 (2021-12-13)
+
+### Feature
+
+- Add catalan translation @bloodbare @sneridagh
 - Added `.storybook` setup in the Volto `app` generator. Volto projects
   generated from this scafolding are now ready to run Storybook for the project
   and develop addons (in `src/addons` folder).
@@ -13,11 +22,13 @@
 - Style checkboxes @nileshgulia1
 - Added form undo support in the form of two buttons in the main toolbar and ctrl+z, ctrl+y as hotkeys for undo/redo @tiberiuichim
 - Allow the draftjs Text block edit to update the editor content when incoming block data is mutated outside the block (to support form undo) @tiberiuichim
+- Allow loading .less files also from a Volto project's `src` folder.  @tiberiuichim
 
 ### Bugfix
 
 - Udate demo address @ksuess
 - Update list of trainings documentation @ksuess
+- Scroll to window top only when the location pathname changes, no longer take the window location search parameters into account. The search page and the listing block already use custom logic for their "scroll into view" behaviors. @tiberiuichim
 
 ### Internal
 
