@@ -41,7 +41,7 @@ const UniversalLink = ({
       url = flattenToAppURL(item['@id']);
 
       //case: item like a Link
-      let remoteUrl = item.remoteUrl || item.getRemoteUrl
+      let remoteUrl = item.remoteUrl || item.getRemoteUrl;
       if (!token && remoteUrl) {
         url = remoteUrl;
       }
