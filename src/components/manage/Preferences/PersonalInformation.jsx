@@ -12,7 +12,7 @@ import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
 
 import { Form, Toast } from '@plone/volto/components';
-import { getUser, updateUser } from '@plone/volto/actions';
+import { getUser, updateUser, getUserSchema } from '@plone/volto/actions';
 
 const messages = defineMessages({
   personalInformation: {
@@ -104,6 +104,7 @@ class PersonalInformation extends Component {
     loaded: PropTypes.bool.isRequired,
     loading: PropTypes.bool,
     closeMenu: PropTypes.func.isRequired,
+    getUserSchema: PropTypes.func.isRequired,
   };
 
   /**
@@ -120,6 +121,7 @@ class PersonalInformation extends Component {
 
   componentDidMount() {
     this.props.getUser(this.props.userId);
+    this.props.getUserSchema();
   }
 
   /**
@@ -162,65 +164,15 @@ class PersonalInformation extends Component {
    */
   render() {
     return (
-      <Form
-        formData={this.props.user}
-        schema={{
-          fieldsets: [
-            {
-              id: 'default',
-              title: this.props.intl.formatMessage(messages.default),
-              fields: [
-                'fullname',
-                'email',
-                'portrait',
-                'home_page',
-                'location',
-              ],
-            },
-          ],
-          properties: {
-            fullname: {
-              description: this.props.intl.formatMessage(
-                messages.fullnameDescription,
-              ),
-              title: this.props.intl.formatMessage(messages.fullnameTitle),
-              type: 'string',
-            },
-            email: {
-              description: this.props.intl.formatMessage(
-                messages.emailDescription,
-              ),
-              title: this.props.intl.formatMessage(messages.emailTitle),
-              type: 'string',
-            },
-            portrait: {
-              description: this.props.intl.formatMessage(
-                messages.portraitDescription,
-              ),
-              title: this.props.intl.formatMessage(messages.portraitTitle),
-              type: 'object',
-            },
-            home_page: {
-              description: this.props.intl.formatMessage(
-                messages.homePageDescription,
-              ),
-              title: this.props.intl.formatMessage(messages.homePageTitle),
-              type: 'string',
-            },
-            location: {
-              description: this.props.intl.formatMessage(
-                messages.locationDescription,
-              ),
-              title: this.props.intl.formatMessage(messages.locationTitle),
-              type: 'string',
-            },
-          },
-          required: ['email'],
-        }}
-        onSubmit={this.onSubmit}
-        onCancel={this.onCancel}
-        loading={this.props.loading}
-      />
+      this.props?.userschema?.loaded && (
+        <Form
+          formData={this.props.user}
+          schema={this.props?.userschema.userschema}
+          onSubmit={this.onSubmit}
+          onCancel={this.onCancel}
+          loading={this.props.userschema.loading}
+        />
+      )
     );
   }
 }
@@ -235,7 +187,8 @@ export default compose(
         : '',
       loaded: state.users.get.loaded,
       loading: state.users.update.loading,
+      userschema: state.userschema,
     }),
-    { getUser, updateUser },
+    { getUser, updateUser, getUserSchema },
   ),
 )(PersonalInformation);
