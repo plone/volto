@@ -33,6 +33,7 @@ import {
   Sitemap,
   UsersControlpanel,
   GroupsControlpanel,
+  PersonalInformation,
 } from '@plone/volto/components';
 
 // Deliberatelly use of absolute path of these components, since we do not want them
@@ -229,6 +230,11 @@ export const defaultRoutes = [
   {
     path: '/password-reset/:token',
     component: PasswordReset,
+    exact: true,
+  },
+  {
+    path: '/personal-information',
+    component: PersonalInformation,
     exact: true,
   },
   {
