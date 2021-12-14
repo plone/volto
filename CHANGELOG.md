@@ -44,7 +44,6 @@
   and develop addons (in `src/addons` folder).
 - Add new listing block option "fullobjects" per variation @ksuess
 - Style checkboxes @nileshgulia1
-- Add runtime configuration for `@babel/plugin-transform-react-jsx` set to `automatic`. This enables the new JSX runtime: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html So no longer `import React from 'react'` is needed anymore.=======
 - Allow loading .less files also from a Volto project's `src` folder.  @tiberiuichim
 
 ### Bugfix
@@ -55,8 +54,7 @@
 
 ### Internal
 
-
-- Upgrade to react 17.0.2 @nzambello- Update to plone.restapi 8.16.2 (revert missing_value PR) @sneridagh
+- Update to plone.restapi 8.16.2 (revert missing_value PR) @sneridagh
 - Update all requirements and the reasoning behind them in builds @sneridagh
 - Update Plone version in api backend to 5.2.6. Update README and cleanup @fredvd
 - Document CI changelog verifier failure details that mislead contributors
