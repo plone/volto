@@ -271,6 +271,7 @@ class History extends Component {
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
+              activity="history"
               inner={
                 <Link
                   to={`${getBaseUrl(this.props.pathname)}`}

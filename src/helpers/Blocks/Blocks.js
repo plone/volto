@@ -119,6 +119,7 @@ export function deleteBlock(formData, blockId) {
   let newFormData = {
     ...formData,
     [blocksLayoutFieldname]: {
+      ...formData[blocksLayoutFieldname],
       items: without(formData[blocksLayoutFieldname].items, blockId),
     },
     [blocksFieldname]: omit(formData[blocksFieldname], [blockId]),
@@ -360,6 +361,52 @@ export function visitBlocks(content, callback) {
       queue.push(...getBlocks(blockdata.data));
     }
   }
+}
+
+/**
+ * Returns true if the block data is an empty placeholder block
+ * @function isPlaceholderBlock
+ * @param {Object} blockData Block data
+ * @return {Boolean} True if block data is an empty placeholder block
+ */
+export function isPlaceholderBlock(blockData) {
+  const { settings } = config;
+  return (
+    blockData?.['@type'] === settings.defaultBlockType &&
+    !blockHasValue(blockData)
+  );
+}
+
+/**
+ * Placeholder blocks are annoying to deal with when they're inherited.
+ * We remove the last placeholder blocks from provided form data
+ *
+ * @function cleanupLastPlaceholders
+ * @param {Object} formData Form data with `blocks` and `blocks_layout`
+ * @return {Object} formData without placeholder blocks at the end
+ */
+export function cleanupLastPlaceholders(formData) {
+  const { blocks, blocks_layout } = formData;
+  if (!blocks_layout?.items?.length) return formData;
+
+  const remove = [];
+  [...(blocks_layout.items || [])].reverse().find((uid) => {
+    if (isPlaceholderBlock(blocks[uid])) {
+      remove.push(uid);
+      return false;
+    } else {
+      return true;
+    }
+  });
+
+  return {
+    ...formData,
+    blocks_layout: {
+      ...blocks_layout,
+      items: blocks_layout.items.filter((uid) => remove.indexOf(uid) === -1),
+    },
+    blocks: omit(blocks, remove),
+  };
 }
 
 /**

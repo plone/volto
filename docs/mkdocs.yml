@@ -37,7 +37,7 @@ nav:
       - Working copy: 'configuration/workingcopy.md'
       - Environment variables: 'configuration/environmentvariables.md'
       - API expanders: 'configuration/expanders.md'
-  - Theming & Semantic UI:
+  - Theming &amp; Semantic UI:
       - About Semantic UI: 'theming/about-semantic.md'
       - Semantic UI Theming: 'theming/semanticui-theming.md'
       - Theming Engine: 'theming/theming-engine.md'
@@ -65,6 +65,8 @@ nav:
       - Edit components: 'blocks/editcomponent.md'
       - Extensions: 'blocks/extensions.md'
       - SSR: 'blocks/ssr.md'
+  - Slots:
+      - Anatomy: 'slots/anatomy.md'
   - Addons:
       - Introduction: 'addons/index.md'
       - Internationalization: 'addons/i18n.md'

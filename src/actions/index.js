@@ -121,6 +121,7 @@ export { loadLazyLibrary } from '@plone/volto/actions/lazyLibraries/lazyLibrarie
 export { getContextNavigation } from '@plone/volto/actions/contextNavigation/contextNavigation';
 export { authenticatedRole } from '@plone/volto/actions/authRole/authRole';
 export * from './asyncConnect/asyncConnect';
+export { getSlots, saveSlot } from './slots/slots';
 export { changeLanguage, changeLanguageCookies } from './language/language';
 export {
   applyWorkingCopy,

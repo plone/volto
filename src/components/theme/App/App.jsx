@@ -39,6 +39,7 @@ import {
   getNavigation,
   getTypes,
   getWorkflow,
+  getSlots,
 } from '@plone/volto/actions';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -121,7 +122,6 @@ class App extends Component {
           </Helmet>
         )}
         <BodyClass className={`view-${action}view`} />
-
         {/* Body class depending on content type */}
         {this.props.content && this.props.content['@type'] && (
           <BodyClass
@@ -130,7 +130,6 @@ class App extends Component {
               .toLowerCase()}`}
           />
         )}
-
         {/* Body class depending on sections */}
         <BodyClass
           className={cx({
@@ -269,6 +268,11 @@ export default compose(
       key: 'workflow',
       promise: ({ location, store: { dispatch } }) =>
         __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
+    },
+    {
+      key: 'slots',
+      promise: ({ location, store: { dispatch } }) =>
+        __SERVER__ && dispatch(getSlots(getBaseUrl(location.pathname))),
     },
   ]),
   injectIntl,

@@ -163,10 +163,20 @@
 
 ### Feature
 
+- Add a Quanta block wrapper and toolbar. Make the Quanta wrapper the default.  You can opt-out from using it by setting `config.settings.useQuantaToolbar = false` @tiberiuichim
+
+- A new component was added, `MutateBlockButton`, it encapsulate the logic of show/hiding the `BlockChooser` @tiberiuichim
+- A new component was added, `BlockChooserButton`, it encapsulate the logic of show/hiding the `BlockChooser` @tiberiuichim
+
 - Added LinkMore component and link more in HeroImageLeft block. @giuliaghisini
 
 ### Bugfix
 
+- Improve consistency of `TokenWidget`'s use of the choice labels as "values" instead of internal uids assigned by `react-select`. @tiberiuichim
+
+- Prevent form submit when clicking on BlockChooserButton @giuliaghisini
+- Prevent ua-parser-js security breach. See: https://github.com/advisories/GHSA-pjwm-rvh2-c87w @thet
+- Fix storybook errors in the connected components, api is undefined. Using now a mock of the store instead of the whole thing @sneridagh
 - Fix the selection of Maps Block @iRohitSingh
 - UniversalLink: handle direct download for content-type File if user is not logged. @giuliaghisini
 - Fixed ObjectBrowserWidget when is multiple or maximumSelectionSize is not set @giuliaghisini
@@ -784,6 +794,22 @@ https://docs.voltocms.com/upgrade-guide/
 
 ### Breaking
 
+- Add a new config registry, the `toolbar`. You should migrate your projects `config.js` to export the `toolbar` registry. @tiberiuichim @ksuess
+
+- Introduction of the new Volto's Configuration Registry @sneridagh @tiberiuichim
+  For more information about this breaking change: https://docs.voltocms.com/upgrade-guide/#upgrading-to-volto-12xx
+
+### Feature
+
+### Bugfix
+
+### Internal
+
+## 11.1.0 (2021-02-08)
+
+- Introduction of the new Volto's Configuration Registry @sneridagh @tiberiuichim
+  For more information about this breaking change: https://docs.voltocms.com/upgrade-guide/#upgrading-to-volto-12xx
+
 - Seamless mode by default in development. Added `Host` header support for production
   deployments, so no `RAZZLE_API_PATH` is required in production builds anymore if the
   header is present. Not an strictly breaking change, but it's a default behavior change
@@ -848,6 +874,10 @@ https://docs.voltocms.com/upgrade-guide/
 - Fix selection of previous block when deleting a block @tiberiuichim
 
 ### Internal
+
+- Add `MutateBlockButton`, a component that makes centralizes logic around BlockChooser and block mutation (changing block type) @tiberiuichim
+
+- Upgrade Storybook to 6.2.2 @tiberiuichim
 
 - Upgrade Cypress to latest @sneridagh
 - Remove surge since it's not used anymore @sneridagh
@@ -1019,10 +1049,15 @@ https://docs.voltocms.com/upgrade-guide/
 
 ### Bugfix
 
+- Don't show empty groups in BlockChooser @tiberiuichim
+
 - Include selected block in multiselections @sneridagh
 - Correct the selected values rendering at isMulti SelectWidget @ionlizarazu
 
 ### Internal
+
+- BlocksForm and RenderBlocks now allow a `blocksConfig` configuration object as a prop @tiberiuichim
+- Upgrade Storybook to 6.2.2 @tiberiuichim
 
 - Implement Github actions workflow to deploy the documentation to the Plone Foundation server @ericof
 - Pin `immutable` to an updated version that does not produce continuous deprecation notices in console on every change @sneridagh
@@ -1160,6 +1195,7 @@ https://docs.voltocms.com/upgrade-guide/
 ### Feature
 
 - Improved comments @rexalex @avoinea
+- Include a pluggable architecture for pluggable render-time insertions (similar to <Portal>) @tiberiuichim
 - Added SidebarPopup component for extra sidebar handling @avoinea
 - Use SidebarPopup component in place of CSS transition sidebar @nileshgulia1
 
@@ -1285,6 +1321,7 @@ https://docs.voltocms.com/upgrade-guide/
 - Add `preloadLazyLibs` and `settings.lazyBundles` to allow preloading bundles of lazy libraries @tiberiuichim @silviubogan
 - Added onChangeFormData prop to Form component @giuliaghisini
 - Internationalization story for add-ons @sneridagh
+- Allow configuration of Toolbar actions @tiberiuichim
 - robots.txt from plone as fallback (if /public/robots.txt not exists and .env VOLTO_ROBOTSTXT variable not exists.) @giuliaghisini
 - UniversalLink and ConditionalLink accepts also an item to link to. If item is of @type Link, a direct link to remote url is generated if user is not logged. @giuliaghisini
 

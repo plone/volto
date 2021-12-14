@@ -23,6 +23,7 @@ import plugins, { inlineToolbarButtons } from './RichTextEditor/Plugins';
 import FromHTMLCustomBlockFn from './RichTextEditor/FromHTML';
 import {
   groupBlocksOrder,
+  toolbarGroups,
   requiredBlocks,
   blocksConfig,
   initialBlocks,
@@ -32,6 +33,8 @@ import { loadables } from './Loadables';
 import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
 import { controlPanelsIcons } from './ControlPanels';
+import { defaultToolbar } from './toolbar';
+import defaultSlots from './slots';
 
 import applyAddonConfiguration from 'load-volto-addons';
 
@@ -155,6 +158,7 @@ let config = {
       // },
     ],
     showSelfRegistration: false,
+    useQuantaToolbar: true,
     contentMetadataTagsImageField: 'image',
     hasWorkingCopySupport: false,
   },
@@ -172,11 +176,14 @@ let config = {
     requiredBlocks,
     blocksConfig,
     groupBlocksOrder,
+    toolbarGroups,
     initialBlocks,
     showEditBlocksInBabelView: false,
   },
   addonRoutes: [],
   addonReducers: {},
+  toolbar: defaultToolbar,
+  slots: defaultSlots,
 };
 
 config = applyAddonConfiguration(config);
@@ -188,3 +195,5 @@ ConfigRegistry.widgets = config.widgets;
 ConfigRegistry.addonRoutes = config.addonRoutes;
 ConfigRegistry.addonReducers = config.addonReducers;
 ConfigRegistry.appExtras = config.appExtras;
+ConfigRegistry.slots = config.slots;
+ConfigRegistry.toolbar = config.toolbar;
