@@ -55,7 +55,7 @@ First get all the requirements installed on your system.
 ### Prerequisites
 
 - [Node.js LTS (16.x)](https://nodejs.org/)
-- [Python 3.7.x / 2.7.x](https://python.org/) or
+- [Python 3.8.x](https://python.org/) or
 - [Docker](https://www.docker.com/get-started) (if using the Plone/Guillotina docker images)
 
 ### Create a Volto project using the generator
@@ -79,7 +79,7 @@ We recommend Plone as backend of choice for Volto.
 You can bootstrap a ready Docker Plone container with all the dependencies and ready for Volto use:
 
 ```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.volto" -e ZCML="plone.volto.cors" -e PROFILES="plone.volto:default-homepage" plone
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e VERSIONS="plone.restapi=8.16.2 plone.app.iterate=4.0.2 plone.rest=2.0.0a1 plone.app.vocabularies=4.3.0" -e ADDONS="plone.volto" -e ZCML="plone.volto.cors" -e PROFILES="plone.volto:default-homepage" plone
 ```
 
 or as an alternative if you have experience with Plone and you have all the

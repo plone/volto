@@ -148,6 +148,10 @@ The mobile navigation menu has been improved using a customizable `CSSTransition
 
 In order to match the Plone logo and in lieu to use a better generic icon starting point, the `Logo.jsx` component and `.logo-nav-wrapper` styling have been adjusted. The logo is not constrained by default to `64px` and the wrapper now centers vertically. Please check that your project logo placeholder is still in good shape after upgrade.
 
+### Move `theme.js` import to top of the client code
+
+This is not a strict breaking change, but it's worth mentioning it as it might be important to keep in mind, especially if you are using inline CSS imports in your code, it might change your CSS cascade apply order. However, if you use the theme approach adding `custom.overrides`/`custom.less` files, you are good to go since they are applied in the same batch.
+
 ## Upgrading to Volto 13.x.x
 
 ## Deprecating NodeJS 10
