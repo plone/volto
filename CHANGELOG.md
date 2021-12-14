@@ -5,7 +5,7 @@
 ### Breaking
 
 - Remove compatibility for old configuration (based on imports) system. Migrate your configuration to the new configuration system for your project before upgrading to Volto 14. See https://docs.voltocms.com/upgrade-guide/#volto-configuration-registry @sneridagh
-- Content locking is not a breaking change, but it's worth noting that Volto 14 comes with locking support enabled by default. Latest `plone.restapi` version is required.
+- Content locking is not a breaking change, but it's worth noting that Volto 14 comes with locking support enabled by default. Latest `plone.restapi` version is required. @avoinea
 - Use the block's title as the source of the translation instead of using the id of the block. See upgrade guide for more information @sneridagh
 - New i18n infrastructure in the new `@plone/scripts` package @sneridagh
 - Removed `src/i18n.js` in favor of the above change @sneridagh
@@ -46,10 +46,9 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 - Added `.storybook` setup in the Volto `app` generator. Volto projects generated from this scafolding are now ready to run Storybook for the project and develop addons (in `src/addons` folder).
 - Add new listing block option "fullobjects" per variation @ksuess
 - Style checkboxes @nileshgulia1
-- Add runtime configuration for `@babel/plugin-transform-react-jsx` set to `automatic`. This enables the new JSX runtime: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html So no longer `import React from 'react'` is needed anymore.
+- Add runtime configuration for `@babel/plugin-transform-react-jsx` set to `automatic`. This enables the new JSX runtime: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html So no longer `import React from 'react'` is needed anymore. @sneridagh
 - Allow loading .less files also from a Volto project's `src` folder.  @tiberiuichim
 - Add `autocomplete` Widget component - It holds off the vocabulary endpoint pull until you search (more than 2 chars). Useful when dealing with huge vocabularies @sneridagh @reebalazs
-- Add runtime configuration for `@babel/plugin-transform-react-jsx` set to `automatic`. This enables the new JSX runtime: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html So no longer `import React from 'react'` is needed anymore.
 - Add catalan translation @bloodbare @sneridagh
 - Updated Volto production sites list @giuliaghisini
 - Japanese translation updated @terapyon
