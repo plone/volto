@@ -116,6 +116,7 @@ export ManageTranslations from '@plone/volto/components/manage/Multilingual/Mana
 // we don't want them to end up in the main chunk
 export Form from '@plone/volto/components/manage/Form/Form';
 export BlocksToolbar from '@plone/volto/components/manage/Form/BlocksToolbar';
+export UndoToolbar from '@plone/volto/components/manage/Form/UndoToolbar';
 export Field from '@plone/volto/components/manage/Form/Field';
 export SearchTags from '@plone/volto/components/theme/Search/SearchTags';
 export CommentEditModal from '@plone/volto/components/theme/Comments/CommentEditModal';

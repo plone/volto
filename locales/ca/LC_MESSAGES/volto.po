@@ -1939,6 +1939,11 @@ msgstr "Després"
 msgid "Recurrence ends on"
 msgstr "La recurrència acava el"
 
+#: components/manage/Form/UndoToolbar
+# defaultMessage: Redo
+msgid "Redo"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Minimalistic table design
 msgid "Reduce complexity"
@@ -2743,6 +2748,11 @@ msgstr "UID"
 # defaultMessage: Unauthorized
 msgid "Unauthorized"
 msgstr "No autoritzada"
+
+#: components/manage/Form/UndoToolbar
+# defaultMessage: Undo
+msgid "Undo"
+msgstr ""
 
 #: components/manage/BlockChooser/BlockChooser
 # defaultMessage: Unfold

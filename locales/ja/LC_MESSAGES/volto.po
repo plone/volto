@@ -1495,6 +1495,11 @@ msgstr "繰り返し"
 msgid "Recurrence ends on"
 msgstr "最終日"
 
+#: components/manage/Form/UndoToolbar
+# defaultMessage: Redo
+msgid "Redo"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Reduce complexity"
 msgstr "見出し行の背景色を変更しない"
@@ -2083,6 +2088,11 @@ msgstr "UID"
 #: components/theme/Unauthorized/Unauthorized
 msgid "Unauthorized"
 msgstr "Unauthorized(未翻訳)"
+
+#: components/manage/Form/UndoToolbar
+# defaultMessage: Undo
+msgid "Undo"
+msgstr ""
 
 #: components/manage/BlockChooser/BlockChooser
 msgid "Unfold"

@@ -92,3 +92,4 @@ export { userHasRoles } from './User/User';
 export { useDetectClickOutside } from './Utils/useDetectClickOutside';
 export { usePrevious } from './Utils/usePrevious';
 export { usePagination } from './Utils/usePagination';
+export useUndoManager from './UndoManager/useUndoManager';

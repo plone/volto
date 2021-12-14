@@ -139,6 +139,25 @@ class Edit extends Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if (
+      !isEqual(this.props.data, prevProps.data) &&
+      !isEqual(
+        convertToRaw(this.state.editorState.getCurrentContent()),
+        this.props.data.text,
+      )
+    ) {
+      const editorState =
+        this.props.data && this.props.data.text
+          ? EditorState.createWithContent(convertFromRaw(this.props.data.text))
+          : EditorState.createEmpty();
+
+      this.setState({
+        editorState: editorState,
+      });
+    }
+  }
+
   /**
    * @param {*} nextProps
    * @param {*} nextState
