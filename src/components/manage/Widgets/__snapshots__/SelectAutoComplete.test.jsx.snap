@@ -42,7 +42,7 @@ exports[`renders a select widget component 1`] = `
               class="react-select__control css-1ard45z-control"
             >
               <div
-                class="react-select__value-container css-1a9cv00-ValueContainer"
+                class="react-select__value-container react-select__value-container--is-multi css-1a9cv00-ValueContainer"
               >
                 <div
                   class="react-select__placeholder css-1wa3eu0-placeholder"
@@ -93,11 +93,6 @@ exports[`renders a select widget component 1`] = `
                 </div>
               </div>
             </div>
-            <input
-              name="my-field"
-              type="hidden"
-              value=""
-            />
           </div>
         </div>
       </div>
