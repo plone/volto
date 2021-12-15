@@ -8,11 +8,18 @@
 
 ### Feature
 
+- Add runtime configuration for `@babel/plugin-transform-react-jsx` set to `automatic`. This enables the new JSX runtime: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html So no longer `import React from 'react'` is needed anymore.
+
 ### Bugfix
 
+- Add missing layout view for document_view @MarcoCouto
+- Fix UniversalLink handling of remote URLs from Link @nzambello
 - Add missing `App.jsx` full paths @jimbiscuit
 
 ### Internal
+
+- Upgrade to react 17.0.2 @nzambello
+- Upgrade caniuse-lite 1.0.30001286 @tiberiuichim
 
 ## 14.0.0-alpha.42 (2021-12-13)
 
