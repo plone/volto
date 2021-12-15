@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { injectIntl } from 'react-intl';
+import { withRouter } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
 import { messages } from '@plone/volto/helpers';
@@ -79,7 +80,7 @@ class PersonalInformation extends Component {
         content={this.props.intl.formatMessage(messages.saved)}
       />,
     );
-    this.props.closeMenu();
+    if (this.props.closeMenu) this.props.closeMenu();
   }
 
   /**
@@ -88,7 +89,8 @@ class PersonalInformation extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    this.props.closeMenu();
+    if (this.props.closeMenu) this.props.closeMenu();
+    else this.props.history.goBack();
   }
 
   /**
@@ -104,7 +106,7 @@ class PersonalInformation extends Component {
           schema={this.props?.userschema.userschema}
           onSubmit={this.onSubmit}
           onCancel={this.onCancel}
-          loading={this.props.userschema.loading}
+          loading={this.props.loading}
         />
       )
     );
@@ -112,6 +114,7 @@ class PersonalInformation extends Component {
 }
 
 export default compose(
+  withRouter,
   injectIntl,
   connect(
     (state, props) => ({
