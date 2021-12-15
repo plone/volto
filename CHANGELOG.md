@@ -11,7 +11,7 @@
 - Removed `src/i18n.js` in favor of the above change @sneridagh
 - Adjusted main `Logo` component styling @sneridagh
 - Fix logout action using the backend @logout endpoint, effectively removing the `__ac` cookie. It is recommended to upgrade to the latest p.restapi version to take full advantage of this feature @sneridagh
-- Revisited, rethought and refactored Seamless mode Seamless mode @sneridagh
+- Revisited, rethought and refactored Seamless mode @sneridagh
   For more information, please read the deploying guide
   https://docs.voltocms.com/deploying/seamless-mode/
 - Improve mobile navigation menu with a nicer interaction and a fixed overlay with a drawer (customizable via CSSTransitionGroup) animation @sneridagh
@@ -436,7 +436,7 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 
 ### Breaking
 
-- Revisited, rethought and refactored Seamless mode Seamless mode @sneridagh
+- Revisited, rethought and refactored Seamless mode @sneridagh
   For more information, please read the deploying guide
   https://docs.voltocms.com/deploying/seamless-mode/
 
