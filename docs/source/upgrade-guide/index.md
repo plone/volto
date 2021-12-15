@@ -152,6 +152,10 @@ In order to match the Plone logo and in lieu to use a better generic icon starti
 
 This is not a strict breaking change, but it's worth mentioning it as it might be important to keep in mind, especially if you are using inline CSS imports in your code, it might change your CSS cascade apply order. However, if you use the theme approach adding `custom.overrides`/`custom.less` files, you are good to go since they are applied in the same batch.
 
+### Other breaking changes
+
+The `getVocabulary` action has changed API. Before, it used separate arguments, but now it uses named arguments by passing a single object as the argument.  You'll have to adjust any call to this action to the new API.
+
 ## Upgrading to Volto 13.x.x
 
 ## Deprecating NodeJS 10
