@@ -33,6 +33,10 @@ export const messages = defineMessages({
     id: 'Save',
     defaultMessage: 'Save',
   },
+  saved: {
+    id: 'Saved',
+    defaultMessage: 'Saved',
+  },
   isNumber: {
     id: 'number',
     defaultMessage: 'Input must be number',

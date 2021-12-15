@@ -7,78 +7,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { defineMessages, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
-
+import { messages } from '@plone/volto/helpers';
 import { Form, Toast } from '@plone/volto/components';
 import { getUser, updateUser, getUserSchema } from '@plone/volto/actions';
-
-const messages = defineMessages({
-  personalInformation: {
-    id: 'Personal Information',
-    defaultMessage: 'Personal Information',
-  },
-  default: {
-    id: 'Default',
-    defaultMessage: 'Default',
-  },
-  fullnameTitle: {
-    id: 'Full Name',
-    defaultMessage: 'Full Name',
-  },
-  fullnameDescription: {
-    id: 'Enter full name, e.g. John Smith.',
-    defaultMessage: 'Enter full name, e.g. John Smith.',
-  },
-  emailTitle: {
-    id: 'E-mail',
-    defaultMessage: 'E-mail',
-  },
-  emailDescription: {
-    id: 'We will use this address if you need to recover your password',
-    defaultMessage:
-      'We will use this address if you need to recover your password',
-  },
-  portraitTitle: {
-    id: 'Portrait',
-    defaultMessage: 'Portrait',
-  },
-  portraitDescription: {
-    id: 'The user portrait/avatar',
-    defaultMessage: 'The user portrait/avatar',
-  },
-  homePageTitle: {
-    id: 'Home page',
-    defaultMessage: 'Home page',
-  },
-  homePageDescription: {
-    id: 'The URL for your external home page, if you have one.',
-    defaultMessage: 'The URL for your external home page, if you have one.',
-  },
-  locationTitle: {
-    id: 'Location',
-    defaultMessage: 'Location',
-  },
-  locationDescription: {
-    id:
-      'Your location - either city and country - or in a company setting, where your office is located.',
-    defaultMessage:
-      'Your location - either city and country - or in a company setting, where your office is located.',
-  },
-  saved: {
-    id: 'Changes saved',
-    defaultMessage: 'Changes saved',
-  },
-  back: {
-    id: 'Back',
-    defaultMessage: 'Back',
-  },
-  success: {
-    id: 'Success',
-    defaultMessage: 'Success',
-  },
-});
 
 /**
  * PersonalInformation class.
