@@ -79,7 +79,7 @@ We recommend Plone as backend of choice for Volto.
 You can bootstrap a ready Docker Plone container with all the dependencies and ready for Volto use:
 
 ```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.volto" -e ZCML="plone.volto.cors" -e PROFILES="plone.volto:default-homepage" plone
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e VERSIONS="plone.restapi=8.16.2 plone.app.iterate=4.0.2 plone.rest=2.0.0a1 plone.app.vocabularies=4.3.0" -e ADDONS="plone.volto" -e ZCML="plone.volto.cors" -e PROFILES="plone.volto:default-homepage" plone
 ```
 
 or as an alternative if you have experience with Plone and you have all the

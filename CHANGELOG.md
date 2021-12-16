@@ -12,11 +12,15 @@
 
 ### Bugfix
 
+- Add missing layout view for document_view @MarcoCouto
+- Fix UniversalLink handling of remote URLs from Link @nzambello
 - Add missing `App.jsx` full paths @jimbiscuit
 
 ### Internal
 
 - Upgrade to react 17.0.2 @nzambello
+- Upgrade caniuse-lite 1.0.30001286 @tiberiuichim
+- Add line in upgrade guide about `getVocabulary` API change @tiberiuichim
 
 ## 14.0.0-alpha.42 (2021-12-13)
 
@@ -42,7 +46,6 @@
   and develop addons (in `src/addons` folder).
 - Add new listing block option "fullobjects" per variation @ksuess
 - Style checkboxes @nileshgulia1
-- Add runtime configuration for `@babel/plugin-transform-react-jsx` set to `automatic`. This enables the new JSX runtime: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html So no longer `import React from 'react'` is needed anymore.=======
 - Allow loading .less files also from a Volto project's `src` folder.  @tiberiuichim
 
 ### Bugfix
@@ -53,8 +56,7 @@
 
 ### Internal
 
-
-- Upgrade to react 17.0.2 @nzambello- Update to plone.restapi 8.16.2 (revert missing_value PR) @sneridagh
+- Update to plone.restapi 8.16.2 (revert missing_value PR) @sneridagh
 - Update all requirements and the reasoning behind them in builds @sneridagh
 - Update Plone version in api backend to 5.2.6. Update README and cleanup @fredvd
 - Various local development build improvements @rpatterson
