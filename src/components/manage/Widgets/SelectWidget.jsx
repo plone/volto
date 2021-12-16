@@ -142,11 +142,6 @@ class SelectWidget extends Component {
     noValueOption: true,
   };
 
-  state = {
-    // TODO: also take into account this.props.defaultValue?
-    selectedOption: normalizeValue(this.props.choices, this.props.value),
-  };
-
   /**
    * Component did mount
    * @method componentDidMount
@@ -162,25 +157,6 @@ class SelectWidget extends Component {
         size: -1,
         subrequest: this.props.intl.locale,
       });
-    }
-  }
-
-  componentDidUpdate() {
-    if (
-      !this.state.selectedOption &&
-      this.props.value &&
-      this.props.choices?.length > 0
-    ) {
-      const normalizedValue = normalizeValue(
-        this.props.choices,
-        this.props.value,
-      );
-
-      if (normalizedValue != null) {
-        this.setState({
-          selectedOption: normalizedValue,
-        });
-      }
     }
   }
 
@@ -242,7 +218,7 @@ class SelectWidget extends Component {
             ClearIndicator,
             Option,
           }}
-          value={this.state.selectedOption}
+          value={normalizeValue(this.props.choices, this.props.value)}
           placeholder={this.props.intl.formatMessage(messages.select)}
           onChange={(selectedOption) => {
             this.setState({ selectedOption });
