@@ -1,5 +1,4 @@
 import { getQueryStringResults } from '@plone/volto/actions';
-import config from '@plone/volto/registry';
 
 export default ({ dispatch, data, path }) => {
   return [
@@ -8,7 +7,7 @@ export default ({ dispatch, data, path }) => {
         path,
         {
           ...data,
-          ...(config.settings.bbb_listingBlockFetchesFullobjects
+          ...(data.variation?.fullobjects
             ? { fullobjects: 1 }
             : { metadata_fields: '_all' }),
         },
