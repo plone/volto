@@ -4,12 +4,103 @@
 
 ### Breaking
 
+- Move `theme.js` import to top of the client code, so it take precedence over any other inline imported CSS. This is not an strict breaking change, but it's worth to mention it as might be important and kept in mind.  @sneridagh
+
 ### Feature
 
 - Add Image with srcset and lazy loading using Plone scales @nzambello
 
 ### Bugfix
 
+- Add runtime configuration for `@babel/plugin-transform-react-jsx` set to `automatic`. This enables the new JSX runtime: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html So no longer `import React from 'react'` is needed anymore.
+
+### Bugfix
+
+- Add missing layout view for document_view @MarcoCouto
+- Fix UniversalLink handling of remote URLs from Link @nzambello
+- Add missing `App.jsx` full paths @jimbiscuit
+
+### Internal
+
+- Upgrade to react 17.0.2 @nzambello
+- Upgrade caniuse-lite 1.0.30001286 @tiberiuichim
+- Add line in upgrade guide about `getVocabulary` API change @tiberiuichim
+
+## 14.0.0-alpha.42 (2021-12-13)
+
+### Breaking
+
+- Removed pagination in vocabularies widgets (SelectWidget, ArrayWidget, TokenWidget) and introduced subrequest to vocabulary action. @giuliaghisini
+
+### Feature
+
+- Add autocomplete Widget component - It holds off the vocabulary endpoint pull until you search (more than 2 chars). Useful when dealing with huge vocabularies @sneridagh @reebalazs
+
+### Bugfix
+
+- Add missing layout view for document_view @MarcoCouto
+
+## 14.0.0-alpha.41 (2021-12-13)
+
+### Feature
+
+- Add catalan translation @bloodbare @sneridagh
+- Added `.storybook` setup in the Volto `app` generator. Volto projects
+  generated from this scafolding are now ready to run Storybook for the project
+  and develop addons (in `src/addons` folder).
+- Add new listing block option "fullobjects" per variation @ksuess
+- Style checkboxes @nileshgulia1
+- Allow loading .less files also from a Volto project's `src` folder.  @tiberiuichim
+
+### Bugfix
+
+- Udate demo address @ksuess
+- Update list of trainings documentation @ksuess
+- Scroll to window top only when the location pathname changes, no longer take the window location search parameters into account. The search page and the listing block already use custom logic for their "scroll into view" behaviors. @tiberiuichim
+
+### Internal
+
+- Update to plone.restapi 8.16.2 (revert missing_value PR) @sneridagh
+- Update all requirements and the reasoning behind them in builds @sneridagh
+- Update Plone version in api backend to 5.2.6. Update README and cleanup @fredvd
+- Document CI changelog verifier failure details that mislead contributors
+- Updated italian translation @pnicolli
+
+## 14.0.0-alpha.40 (2021-12-01)
+
+### Bugfix
+
+- In search block, read SearchableText search param, to use it as search text input
+  @tiberiuichim
+- Fix missing translation in link content type @iRohitSingh
+- Fixed drag-and-drop list placeholder issues @reebalazs
+
+## 14.0.0-alpha.39 (2021-11-30)
+
+### Bugfix
+
+- QuerystringWidget more resilient on old schemas @nzambello
+
+## 14.0.0-alpha.38 (2021-11-30)
+
+### Bugfix
+
+- Use subrequest in hero block to not lost locking token. @cekk
+- Always add lang attr in html @nzambello
+- Fix time widget position on 24h format @nzambello
+
+### Internal
+
+- Remove getNavigation from Login.jsx @iRohitSingh
+- Allow listing block to be used in non-content pages (when used in a slot it
+  shouldn't crash on add/edit pages) @tiberiuichim
+- Fix typo "toolbalWidth" @iRohitSingh
+
+## 14.0.0-alpha.37 (2021-11-26)
+
+### Bugfix
+
+- Fixed object browser selected items number. @giuliaghisini
 - Fix action vocabularies call avoiding regex look behind @nzambello
 
 ### Internal

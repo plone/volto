@@ -17,7 +17,6 @@ class ScrollToTop extends React.Component {
   static propTypes = {
     location: PropTypes.shape({
       pathname: PropTypes.string,
-      search: PropTypes.string,
     }).isRequired,
     children: PropTypes.node.isRequired,
   };
@@ -28,10 +27,7 @@ class ScrollToTop extends React.Component {
    * @memberof ScrollToTop
    */
   componentDidUpdate(prevProps) {
-    if (
-      this.props.location.pathname !== prevProps.location.pathname ||
-      this.props.location.search !== prevProps.location.search
-    ) {
+    if (this.props.location.pathname !== prevProps.location.pathname) {
       window.scrollTo(0, 0);
     }
   }
