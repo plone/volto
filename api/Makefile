@@ -62,10 +62,19 @@ start-test: build ## Start Test Plone Backend
 	@echo "$(GREEN)==> Start Test Plone Backend$(RESET)"
 	ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 
+.PHONY: upgrade-versions
+upgrade-versions: ./bin/buildout ./version-constraints.cfg ./buildout.cfg ## Update all dependencies to latest versions within constraints
+# Erase all version pins so they're all upgraded
+	echo "[versions]" >"./versions.cfg"
+# Buildout will resolve all version constraints and rewrite the pins
+	"$(<)"
+
 
 # Real targets
 
-./.installed.cfg: ./bin/buildout ./buildout.cfg ./src/*/setup.py
+./.installed.cfg:
+		./bin/buildout ./src/*/setup.py \
+		./version-constraints.cfg ./versions.cfg ./buildout.cfg
 	"$(<)" instance:http-address=$(INSTANCE_PORT)
 
 ./bin/buildout: ./requirements.txt ./bin/pip
