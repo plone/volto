@@ -6,6 +6,7 @@ import { RealStoreWrapper as Wrapper } from '@plone/volto/storybook';
 const ArrayComponent = injectLazyLibs([
   'reactSelectCreateable',
   'reactSortableHOC',
+  'reactSelect',
 ])(ArrayWidgetComponent);
 
 const Array = (args) => {
