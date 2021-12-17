@@ -60,6 +60,24 @@ function arrayMove(array, from, to) {
  * ArrayWidget component class.
  * @class ArrayWidget
  * @extends Component
+ *
+ * A createable select array widget will be rendered if the named vocabulary is
+ * in the widget definition (hint) like:
+ *
+ * ```
+ * list_field_voc_unconstrained = schema.List(
+ *     title=u"List field with values from vocabulary but not constrained to them.",
+ *     description=u"zope.schema.List",
+ *     value_type=schema.TextLine(),
+ *     required=False,
+ *     missing_value=[],
+ * )
+ * directives.widget(
+ *     "list_field_voc_unconstrained",
+ *     AjaxSelectFieldWidget,
+ *     vocabulary="plone.app.vocabularies.PortalTypes",
+ * )
+ * ```
  */
 class ArrayWidget extends Component {
   /**
@@ -119,18 +137,33 @@ class ArrayWidget extends Component {
     super(props);
 
     this.handleChange = this.handleChange.bind(this);
+  }
 
-    this.state = {
-      selectedOption: this.props.vocabBaseUrl
-        ? []
-        : props.value
-        ? props.value.map((item) =>
-            isObject(item)
-              ? { label: item.title || item.token, value: item.token }
-              : { label: item, value: item },
-          )
-        : [],
-    };
+  getValue() {
+    let selectedOption = this.props.vocabBaseUrl
+      ? []
+      : this.props.value
+      ? this.props.value.map((item) =>
+          isObject(item)
+            ? { label: item.title || item.token, value: item.token }
+            : { label: item, value: item },
+        )
+      : [];
+    if (
+      (selectedOption || []).length === 0 &&
+      this.props.value?.length &&
+      this.props.choices?.length > 0
+    ) {
+      const normalizedValue = this.normalizeArrayValue(
+        this.props.choices,
+        this.props.value,
+      );
+      if (normalizedValue !== null) {
+        selectedOption = normalizedValue;
+      }
+    }
+
+    return selectedOption;
   }
 
   /**
@@ -150,11 +183,6 @@ class ArrayWidget extends Component {
         subrequest: this.props.intl.locale,
       });
     }
-    this.setDefaultValues();
-  }
-
-  componentDidUpdate() {
-    this.setDefaultValues();
   }
 
   normalizeArrayValue = (choices, value) => {
@@ -190,24 +218,6 @@ class ArrayWidget extends Component {
     return null;
   };
 
-  setDefaultValues = () => {
-    if (
-      (this.state.selectedOption || []).length === 0 &&
-      this.props.value &&
-      this.props.choices?.length > 0
-    ) {
-      const normalizedValue = this.normalizeArrayValue(
-        this.props.choices,
-        this.props.value,
-      );
-      if (normalizedValue !== null) {
-        this.setState({
-          selectedOption: normalizedValue,
-        });
-      }
-    }
-  };
-
   /**
    * Handle the field change, store it in the local state and back to simple
    * array of tokens for correct serialization
@@ -216,13 +226,17 @@ class ArrayWidget extends Component {
    * @returns {undefined}
    */
   handleChange(selectedOption) {
-    this.setState({ selectedOption });
-
     this.props.onChange(
       this.props.id,
       selectedOption ? selectedOption.map((item) => item.value) : null,
     );
   }
+
+  onSortEnd = (selectedOption, { oldIndex, newIndex }) => {
+    const newValue = arrayMove(selectedOption, oldIndex, newIndex);
+
+    this.handleChange(newValue);
+  };
 
   /**
    * Render method.
@@ -230,34 +244,14 @@ class ArrayWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { selectedOption } = this.state;
+    const selectedOption = this.getValue();
     const CreatableSelect = this.props.reactSelectCreateable.default;
     const { SortableContainer } = this.props.reactSortableHOC;
     const Select = this.props.reactSelect.default;
     const SortableSelect =
-      // It will be only createable if the named vocabulary is in the widget definition
-      // (hint) like:
-      // list_field_voc_unconstrained = schema.List(
-      //     title=u"List field with values from vocabulary but not constrained to them.",
-      //     description=u"zope.schema.List",
-      //     value_type=schema.TextLine(),
-      //     required=False,
-      //     missing_value=[],
-      // )
-      // directives.widget(
-      //     "list_field_voc_unconstrained",
-      //     AjaxSelectFieldWidget,
-      //     vocabulary="plone.app.vocabularies.PortalTypes",
-      // )
       this.props?.choices && !getVocabFromHint(this.props)
         ? SortableContainer(Select)
         : SortableContainer(CreatableSelect);
-
-    const onSortEnd = ({ oldIndex, newIndex }) => {
-      const newValue = arrayMove(this.state.selectedOption, oldIndex, newIndex);
-
-      this.setState({ selectedOption: newValue });
-    };
 
     return (
       <FormFieldWrapper {...this.props}>
@@ -265,7 +259,7 @@ class ArrayWidget extends Component {
           useDragHandle
           // react-sortable-hoc props:
           axis="xy"
-          onSortEnd={onSortEnd}
+          onSortEnd={this.onSortEnd}
           distance={4}
           // small fix for https://github.com/clauderic/react-sortable-hoc/pull/352:
           getHelperDimensions={({ node }) => node.getBoundingClientRect()}
