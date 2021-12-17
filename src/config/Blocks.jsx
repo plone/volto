@@ -453,8 +453,8 @@ const blocksConfig = {
 
 const requiredBlocks = ['title'];
 
-const initialBlocks = { Document: ['image', 'title'] };
-const initialBlocksFocus = { Document: 'title' };
+const initialBlocks = {};
+const initialBlocksFocus = {}; //{Document:'title'}
 
 export {
   groupBlocksOrder,
