@@ -1,17 +1,25 @@
 import React from 'react';
 import ArrayWidget, { ArrayWidgetComponent } from './ArrayWidget';
-import { RealStoreWrapper as Wrapper } from '@plone/volto/storybook';
+import {
+  FormUndoWrapper,
+  RealStoreWrapper as Wrapper,
+} from '@plone/volto/storybook';
 
 const Array = (args) => {
-  const [value, setValue] = React.useState(args.value ?? []);
-  const onChange = (block, value) => {
-    // args.onChange({ value });
-    setValue(value);
-  };
-
   return (
     <Wrapper>
-      <ArrayWidget {...args} onChange={onChange} value={value} />
+      <FormUndoWrapper initialState={{ value: undefined }} showControls={true}>
+        {({ state, onChange }) => (
+          <div className="ui segment form attached" style={{ width: '400px' }}>
+            <ArrayWidget
+              {...args}
+              value={state.value}
+              onChange={(block, value) => onChange({ value })}
+            />
+            <pre>Value: {JSON.stringify(state.value, null, 4)}</pre>
+          </div>
+        )}
+      </FormUndoWrapper>
     </Wrapper>
   );
 };
