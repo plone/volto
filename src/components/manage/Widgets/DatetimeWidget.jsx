@@ -3,6 +3,7 @@
  * @module components/manage/Widgets/DatetimeWidget
  */
 import React, { Component } from 'react';
+import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
 import loadable from '@loadable/component';
@@ -83,7 +84,7 @@ const defaultTimeDateOnly = {
  * }
  * ```
  */
-class DatetimeWidget extends Component {
+export class DatetimeWidgetComponent extends Component {
   /**
    * Constructor
    * @method constructor
@@ -92,16 +93,25 @@ class DatetimeWidget extends Component {
    */
   constructor(props) {
     super(props);
-
     const moment = props.moment.default;
-    let datetime = parseDateTime(this.props.intl.locale, this.props.value);
 
     this.state = {
       focused: false,
-      isDefault: datetime?.toISOString() === moment().utc().toISOString(),
-      datetime,
-      dateOnly: this.props.dateOnly || this.props.widget === 'date',
+      // if passed value matches the construction time, we guess it's a default
+      isDefault:
+        parseDateTime(
+          this.props.intl.locale,
+          this.props.value,
+        )?.toISOString() === moment().utc().toISOString(),
     };
+  }
+
+  getInternalValue() {
+    return parseDateTime(this.props.intl.locale, this.props.value);
+  }
+
+  getDateOnly() {
+    return this.props.dateOnly || this.props.widget === 'date';
   }
 
   /**
@@ -111,27 +121,21 @@ class DatetimeWidget extends Component {
    * @returns {undefined}
    */
   onDateChange = (date) => {
-    const moment = this.props.moment.default;
-    if (date)
-      this.setState(
-        (prevState) => ({
-          datetime: prevState.datetime
-            ? prevState.datetime.set({
-                year: date.year(),
-                month: date.month(),
-                date: date.date(),
-                ...(this.state.dateOnly ? defaultTimeDateOnly : {}),
-              })
-            : moment().set({
-                year: date.year(),
-                month: date.month(),
-                date: date.date(),
-                ...(this.state.dateOnly ? defaultTimeDateOnly : {}),
-              }),
-          isDefault: false,
-        }),
-        () => this.onDateTimeChange(),
-      );
+    if (date) {
+      const moment = this.props.moment.default;
+      const isDateOnly = this.getDateOnly();
+      const base = (this.getInternalValue() || moment()).set({
+        year: date.year(),
+        month: date.month(),
+        date: date.date(),
+        ...(isDateOnly ? defaultTimeDateOnly : {}),
+      });
+      const dateValue = isDateOnly
+        ? base.format('YYYY-MM-DD')
+        : base.toISOString();
+      this.props.onChange(this.props.id, dateValue);
+    }
+    this.setState({ isDefault: false });
   };
 
   /**
@@ -142,45 +146,20 @@ class DatetimeWidget extends Component {
    */
   onTimeChange = (time) => {
     const moment = this.props.moment.default;
-    this.setState(
-      (prevState) => ({
-        datetime: prevState.datetime
-          ? prevState.datetime.set({
-              hours: time.hours(),
-              minutes: time.minutes(),
-              seconds: 0,
-            })
-          : moment().set({
-              hours: time.hours(),
-              minutes: time.minutes(),
-              seconds: 0,
-            }),
-        isDefault: false,
-      }),
-      () => this.onDateTimeChange(),
-    );
-  };
-
-  /**
-   * Update date storage
-   * @method onDateTimeChange
-   * @returns {undefined}
-   */
-  onDateTimeChange = () => {
-    const dateValue = this.state.dateOnly
-      ? this.state.datetime.format('YYYY-MM-DD')
-      : this.state.datetime.toISOString();
-    this.props.onChange(this.props.id, dateValue);
+    if (time) {
+      const base = (this.getInternalValue() || moment()).set({
+        hours: time.hours(),
+        minutes: time.minutes(),
+        seconds: 0,
+      });
+      const dateValue = base.toISOString();
+      this.props.onChange(this.props.id, dateValue);
+    }
   };
 
   onResetDates = () => {
-    this.setState(
-      (prevState) => ({
-        datetime: null,
-        isDefault: false,
-      }),
-      this.props.onChange(this.props.id, null),
-    );
+    this.setState({ isDefault: false });
+    this.props.onChange(this.props.id, null);
   };
 
   /**
@@ -193,8 +172,9 @@ class DatetimeWidget extends Component {
 
   render() {
     const { id, noPastDates, resettable, intl, reactDates } = this.props;
-    const { datetime, isDefault, focused } = this.state;
     const moment = this.props.moment.default;
+    const datetime = this.getInternalValue();
+    const dateOnly = this.getDateOnly();
     const { SingleDatePicker } = reactDates;
 
     return (
@@ -202,14 +182,14 @@ class DatetimeWidget extends Component {
         <div className="date-time-widget-wrapper">
           <div
             className={cx('ui input date-input', {
-              'default-date': isDefault,
+              'default-date': this.state.isDefault,
             })}
           >
             <SingleDatePicker
               date={datetime}
               disabled={this.props.isDisabled}
               onDateChange={this.onDateChange}
-              focused={focused}
+              focused={this.state.focused}
               numberOfMonths={1}
               {...(noPastDates ? {} : { isOutsideRange: () => false })}
               onFocusChange={this.onFocusChange}
@@ -221,10 +201,10 @@ class DatetimeWidget extends Component {
               placeholder={intl.formatMessage(messages.date)}
             />
           </div>
-          {!this.state.dateOnly && (
+          {!dateOnly && (
             <div
               className={cx('ui input time-input', {
-                'default-date': isDefault,
+                'default-date': this.state.isDefault,
               })}
             >
               <TimePicker
@@ -263,7 +243,7 @@ class DatetimeWidget extends Component {
  * @property {Object} propTypes Property types.
  * @static
  */
-DatetimeWidget.propTypes = {
+DatetimeWidgetComponent.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
@@ -282,7 +262,7 @@ DatetimeWidget.propTypes = {
  * @property {Object} defaultProps Default properties.
  * @static
  */
-DatetimeWidget.defaultProps = {
+DatetimeWidgetComponent.defaultProps = {
   description: null,
   required: false,
   error: [],
@@ -292,8 +272,7 @@ DatetimeWidget.defaultProps = {
   resettable: true,
 };
 
-export const DatetimeWidgetComponent = injectIntl(DatetimeWidget);
-
-export default injectLazyLibs(['reactDates', 'moment'])(
-  DatetimeWidgetComponent,
-);
+export default compose(
+  injectLazyLibs(['reactDates', 'moment']),
+  injectIntl,
+)(DatetimeWidgetComponent);
