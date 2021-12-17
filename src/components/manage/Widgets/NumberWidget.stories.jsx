@@ -5,10 +5,7 @@ import Wrapper, { FormUndoWrapper } from '@plone/volto/storybook';
 const NumberWidgetComponent = ({ children, ...args }) => {
   return (
     <Wrapper location={{ pathname: '/folder2/folder21/doc212' }}>
-      <FormUndoWrapper
-        initialState={{ value: undefined }}
-        showControls={this.showUndoControls ?? false}
-      >
+      <FormUndoWrapper initialState={{ value: undefined }} showControls={true}>
         {({ state, onChange }) => (
           <div className="ui segment form attached" style={{ width: '400px' }}>
             <NumberWidget

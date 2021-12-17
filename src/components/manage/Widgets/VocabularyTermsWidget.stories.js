@@ -1,5 +1,5 @@
 import VocabularyTermsWidget from './VocabularyTermsWidget';
-import Wrapper from '@plone/volto/storybook';
+import Wrapper, { FormUndoWrapper } from '@plone/volto/storybook';
 import React from 'react';
 
 const customStore = {
@@ -11,7 +11,7 @@ const customStore = {
 };
 
 const WrappedJSONField = (args) => {
-  const [value, setValue] = React.useState({
+  const initialValue = {
     items: [
       {
         token: 'talk',
@@ -30,57 +30,68 @@ const WrappedJSONField = (args) => {
         },
       },
     ],
-  });
-  const onChange = (block, value) => setValue(value);
-
+  };
   return (
     <Wrapper
       location={{ pathname: '/folder2/folder21/doc212' }}
       customStore={customStore}
     >
-      <div className="ui segment form attached">
-        <VocabularyTermsWidget
-          {...args}
-          id="simplevocabulary"
-          title="Vocabulary terms"
-          block="testBlock"
-          value={value}
-          onChange={onChange}
-        />
-        <pre>{JSON.stringify(value, null, 4)}</pre>
-      </div>
+      <FormUndoWrapper
+        initialState={{ value: initialValue }}
+        showControls={true}
+      >
+        {({ state, onChange }) => (
+          <div className="ui segment form attached">
+            <VocabularyTermsWidget
+              {...args}
+              id="simplevocabulary"
+              title="Vocabulary terms"
+              block="testBlock"
+              value={state.value}
+              onChange={(block, value) => onChange({ value })}
+            />
+            <pre>Value: {JSON.stringify(state.value, null, 4)}</pre>
+          </div>
+        )}
+      </FormUndoWrapper>
     </Wrapper>
   );
 };
 
 const WrappedSimple = (args) => {
-  const [value, setValue] = React.useState({
+  const initialValue = {
     '001': 'manual',
     '002': 'questions & answers',
-  });
-  const onChange = (block, value) => setValue(value);
+  };
 
   return (
     <Wrapper
       location={{ pathname: '/folder2/folder21/doc212' }}
       customStore={customStore}
     >
-      <div className="ui segment form attached">
-        <VocabularyTermsWidget
-          {...args}
-          id="Simple"
-          title="Vocabulary terms"
-          block="testBlock"
-          value={value}
-          value_type={{
-            schema: {
-              type: 'string',
-            },
-          }}
-          onChange={onChange}
-        />
-        <pre>{JSON.stringify(value, null, 4)}</pre>
-      </div>
+      <FormUndoWrapper
+        initialState={{ value: initialValue }}
+        showControls={true}
+      >
+        {({ state, onChange }) => (
+          <div className="ui segment form attached">
+            <VocabularyTermsWidget
+              {...args}
+              id="Simple"
+              title="Vocabulary terms"
+              block="testBlock"
+              value_type={{
+                schema: {
+                  type: 'string',
+                },
+              }}
+              value={state.value}
+              onChange={(block, value) => onChange({ value })}
+            />
+            <pre>Value: {JSON.stringify(state.value, null, 4)}</pre>
+          </div>
+        )}
+      </FormUndoWrapper>
     </Wrapper>
   );
 };
