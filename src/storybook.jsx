@@ -1478,7 +1478,7 @@ export const FormUndoWrapper = ({
       {showControls && (
         <div>
           <Button
-            mini
+            size="mini"
             compact
             className="undo"
             onClick={() => doUndo()}
@@ -1488,7 +1488,7 @@ export const FormUndoWrapper = ({
             Undo
           </Button>
           <Button
-            mini
+            size="mini"
             compact
             className="redo"
             onClick={() => doRedo()}

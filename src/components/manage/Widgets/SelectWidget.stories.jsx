@@ -1,9 +1,6 @@
 import React from 'react';
-import { SelectWidgetComponent } from './SelectWidget';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import SelectWidget, { SelectWidgetComponent } from './SelectWidget';
 import { RealStoreWrapper as Wrapper } from '@plone/volto/storybook';
-
-const SelectComponent = injectLazyLibs(['reactSelect'])(SelectWidgetComponent);
 
 const Select = (args) => {
   const [value, setValue] = React.useState(args.value ?? '');
@@ -14,7 +11,7 @@ const Select = (args) => {
 
   return (
     <Wrapper>
-      <SelectComponent {...args} onChange={onChange} value={value} />
+      <SelectWidget {...args} onChange={onChange} value={value} />
     </Wrapper>
   );
 };
@@ -179,7 +176,7 @@ ManyOptions500.args = {
 
 export default {
   title: 'Widgets/Select Widget',
-  component: SelectComponent,
+  component: SelectWidgetComponent,
   decorators: [
     (Story) => (
       <div style={{ width: '400px' }}>

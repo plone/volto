@@ -1,6 +1,10 @@
 import React from 'react';
+import { DatetimeWidgetComponent } from './DatetimeWidget';
 import DatetimeWidget from './DatetimeWidget';
-import Wrapper, { FormUndoWrapper } from '@plone/volto/storybook';
+import {
+  FormUndoWrapper,
+  RealStoreWrapper as Wrapper,
+} from '@plone/volto/storybook';
 
 function StoryComponent({ children, ...args }) {
   return (
@@ -34,7 +38,7 @@ export const UndoSupport = StoryComponent.bind({ showUndoControls: true });
 
 export default {
   title: 'Widgets/Datetime',
-  component: DatetimeWidget,
+  component: DatetimeWidgetComponent,
   decorators: [
     (Story) => (
       <div className="ui segment form attached" style={{ width: '400px' }}>

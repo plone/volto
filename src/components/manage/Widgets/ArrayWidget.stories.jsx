@@ -1,16 +1,9 @@
 import React from 'react';
-import { ArrayWidgetComponent } from './ArrayWidget';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import ArrayWidget, { ArrayWidgetComponent } from './ArrayWidget';
 import { RealStoreWrapper as Wrapper } from '@plone/volto/storybook';
 
-const ArrayComponent = injectLazyLibs([
-  'reactSelectCreateable',
-  'reactSortableHOC',
-  'reactSelect',
-])(ArrayWidgetComponent);
-
 const Array = (args) => {
-  const [value, setValue] = React.useState(args.value ?? '');
+  const [value, setValue] = React.useState(args.value ?? []);
   const onChange = (block, value) => {
     // args.onChange({ value });
     setValue(value);
@@ -18,7 +11,7 @@ const Array = (args) => {
 
   return (
     <Wrapper>
-      <ArrayComponent {...args} onChange={onChange} value={value} />
+      <ArrayWidget {...args} onChange={onChange} value={value} />
     </Wrapper>
   );
 };
@@ -183,7 +176,7 @@ ManyOptions500.args = {
 
 export default {
   title: 'Widgets/Array',
-  component: ArrayComponent,
+  component: ArrayWidgetComponent,
   decorators: [
     (Story) => (
       <div style={{ width: '400px' }}>

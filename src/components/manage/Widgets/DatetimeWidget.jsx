@@ -5,18 +5,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
-import moment from 'moment';
-import { SingleDatePicker } from 'react-dates';
-import TimePicker from 'rc-time-picker';
+import loadable from '@loadable/component';
 import cx from 'classnames';
 import { Icon, FormFieldWrapper } from '@plone/volto/components';
 import { parseDateTime } from '@plone/volto/helpers';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+
 import leftKey from '@plone/volto/icons/left-key.svg';
 import rightKey from '@plone/volto/icons/right-key.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+
 import 'rc-time-picker/assets/index.css';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
+
+const TimePicker = loadable(() => import('rc-time-picker'));
 
 const messages = defineMessages({
   date: {
@@ -90,6 +93,7 @@ class DatetimeWidget extends Component {
   constructor(props) {
     super(props);
 
+    const moment = props.moment.default;
     let datetime = parseDateTime(this.props.intl.locale, this.props.value);
 
     this.state = {
@@ -107,6 +111,7 @@ class DatetimeWidget extends Component {
    * @returns {undefined}
    */
   onDateChange = (date) => {
+    const moment = this.props.moment.default;
     if (date)
       this.setState(
         (prevState) => ({
@@ -136,6 +141,7 @@ class DatetimeWidget extends Component {
    * @returns {undefined}
    */
   onTimeChange = (time) => {
+    const moment = this.props.moment.default;
     this.setState(
       (prevState) => ({
         datetime: prevState.datetime
@@ -186,8 +192,10 @@ class DatetimeWidget extends Component {
   onFocusChange = ({ focused }) => this.setState({ focused });
 
   render() {
-    const { id, noPastDates, resettable, intl } = this.props;
+    const { id, noPastDates, resettable, intl, reactDates } = this.props;
     const { datetime, isDefault, focused } = this.state;
+    const moment = this.props.moment.default;
+    const { SingleDatePicker } = reactDates;
 
     return (
       <FormFieldWrapper {...this.props}>
@@ -284,4 +292,8 @@ DatetimeWidget.defaultProps = {
   resettable: true,
 };
 
-export default injectIntl(DatetimeWidget);
+export const DatetimeWidgetComponent = injectIntl(DatetimeWidget);
+
+export default injectLazyLibs(['reactDates', 'moment'])(
+  DatetimeWidgetComponent,
+);
