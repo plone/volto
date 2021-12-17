@@ -4,7 +4,7 @@
 
 ### Breaking
 
-- Move `theme.js` import to top of the client code, so it take precedence over any other inline imported CSS. This is not an strict breaking change, but it's worth to mention it as might be important and kept in mind.  @sneridagh
+- Move `theme.js` import to top of the client code, so it take precedence over any other inline imported CSS. This is not an strict breaking change, but it's worth to mention it as might be important and kept in mind. @sneridagh
 
 ### Feature
 
@@ -15,6 +15,7 @@
 - Add missing layout view for document_view @MarcoCouto
 - Fix UniversalLink handling of remote URLs from Link @nzambello
 - Add missing `App.jsx` full paths @jimbiscuit
+- Fixed url validation in FormValidation to admit ip addresses. @giuliaghisini
 
 ### Internal
 
@@ -46,7 +47,7 @@
   and develop addons (in `src/addons` folder).
 - Add new listing block option "fullobjects" per variation @ksuess
 - Style checkboxes @nileshgulia1
-- Allow loading .less files also from a Volto project's `src` folder.  @tiberiuichim
+- Allow loading .less files also from a Volto project's `src` folder. @tiberiuichim
 
 ### Bugfix
 
