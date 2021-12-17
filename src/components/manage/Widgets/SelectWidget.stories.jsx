@@ -1,17 +1,25 @@
 import React from 'react';
 import SelectWidget, { SelectWidgetComponent } from './SelectWidget';
-import { RealStoreWrapper as Wrapper } from '@plone/volto/storybook';
+import {
+  FormUndoWrapper,
+  RealStoreWrapper as Wrapper,
+} from '@plone/volto/storybook';
 
 const Select = (args) => {
-  const [value, setValue] = React.useState(args.value ?? '');
-  const onChange = (block, value) => {
-    // args.onChange({ value });
-    setValue(value);
-  };
-
   return (
     <Wrapper>
-      <SelectWidget {...args} onChange={onChange} value={value} />
+      <FormUndoWrapper initialState={{ value: undefined }} showControls={true}>
+        {({ state, onChange }) => (
+          <>
+            <SelectWidget
+              {...args}
+              value={state.value}
+              onChange={(block, value) => onChange({ value })}
+            />
+            <pre>Value: {JSON.stringify(state.value, null, 4)}</pre>
+          </>
+        )}
+      </FormUndoWrapper>
     </Wrapper>
   );
 };
