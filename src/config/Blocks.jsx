@@ -453,6 +453,13 @@ const blocksConfig = {
 
 const requiredBlocks = ['title'];
 
-const initialBlocks = {};
+const initialBlocks = { Document: ['image', 'title'] };
+const initialBlocksFocus = { Document: 'title' };
 
-export { groupBlocksOrder, requiredBlocks, blocksConfig, initialBlocks };
+export {
+  groupBlocksOrder,
+  requiredBlocks,
+  blocksConfig,
+  initialBlocks,
+  initialBlocksFocus,
+};
