@@ -1,23 +1,25 @@
 import React from 'react';
 import PasswordWidget from './PasswordWidget';
-import Wrapper from '@plone/volto/storybook';
+import Wrapper, { FormUndoWrapper } from '@plone/volto/storybook';
 
 const PasswordWidgetComponent = ({ children, ...args }) => {
-  const [value, setValue] = React.useState('');
-  const onChange = (block, value) => setValue(value);
   return (
     <Wrapper location={{ pathname: '/folder2/folder21/doc212' }}>
-      <div className="ui segment form attached" style={{ width: '400px' }}>
-        <PasswordWidget
-          {...args}
-          id="field"
-          title="Password"
-          block="testBlock"
-          value={value}
-          onChange={onChange}
-        />
-      </div>
-      <pre>Value: {JSON.stringify(value, null, 4)}</pre>
+      <FormUndoWrapper initialState={{ value: undefined }} showControls={true}>
+        {({ state, onChange }) => (
+          <div className="ui segment form attached" style={{ width: '400px' }}>
+            <PasswordWidget
+              {...args}
+              id="field"
+              title="Password"
+              block="testBlock"
+              value={state.value}
+              onChange={(block, value) => onChange({ value })}
+            />
+            <pre>Value: {JSON.stringify(state.value, null, 4)}</pre>
+          </div>
+        )}
+      </FormUndoWrapper>
     </Wrapper>
   );
 };
