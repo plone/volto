@@ -4,7 +4,7 @@
 
 ### Breaking
 
-- Move `theme.js` import to top of the client code, so it take precedence over any other inline imported CSS. This is not an strict breaking change, but it's worth to mention it as might be important and kept in mind.  @sneridagh
+- Move `theme.js` import to top of the client code, so it take precedence over any other inline imported CSS. This is not an strict breaking change, but it's worth to mention it as might be important and kept in mind. @sneridagh
 
 ### Feature
 
@@ -20,6 +20,7 @@
 
 - Upgrade to react 17.0.2 @nzambello
 - Upgrade caniuse-lite 1.0.30001286 @tiberiuichim
+- fix:correctly checkout plone.volto in buildout @nileshgulia1
 - Add line in upgrade guide about `getVocabulary` API change @tiberiuichim
 
 ## 14.0.0-alpha.42 (2021-12-13)
@@ -46,7 +47,7 @@
   and develop addons (in `src/addons` folder).
 - Add new listing block option "fullobjects" per variation @ksuess
 - Style checkboxes @nileshgulia1
-- Allow loading .less files also from a Volto project's `src` folder.  @tiberiuichim
+- Allow loading .less files also from a Volto project's `src` folder. @tiberiuichim
 
 ### Bugfix
 
