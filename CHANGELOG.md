@@ -22,6 +22,7 @@
 - Upgrade caniuse-lite 1.0.30001286 @tiberiuichim
 - fix:correctly checkout plone.volto in buildout @nileshgulia1
 - Add line in upgrade guide about `getVocabulary` API change @tiberiuichim
+- Add new Volto websites in production @nzambello
 
 ## 14.0.0-alpha.42 (2021-12-13)
 
