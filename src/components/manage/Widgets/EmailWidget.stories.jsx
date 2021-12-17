@@ -1,23 +1,30 @@
 import React from 'react';
 import EmailWidget from './EmailWidget';
-import Wrapper from '@plone/volto/storybook';
+import Wrapper, { FormUndoWrapper } from '@plone/volto/storybook';
 
 const EmailWidgetComponent = ({ children, ...args }) => {
-  const [value, setValue] = React.useState('');
-  const onChange = (block, value) => setValue(value);
   return (
     <Wrapper location={{ pathname: '/folder2/folder21/doc212' }}>
       <div className="ui segment form attached" style={{ width: '400px' }}>
-        <EmailWidget
-          {...args}
-          id="field"
-          title="Email"
-          block="testBlock"
-          value={value}
-          onChange={onChange}
-        />
+        <FormUndoWrapper
+          initialState={{ value: undefined }}
+          showControls={true}
+        >
+          {({ state, onChange }) => (
+            <>
+              <EmailWidget
+                {...args}
+                id="field"
+                title="Email"
+                block="testBlock"
+                value={state.value}
+                onChange={(block, value) => onChange({ value })}
+              />
+              <pre>Value: {JSON.stringify(state.value, null, 4)}</pre>
+            </>
+          )}
+        </FormUndoWrapper>
       </div>
-      <pre>Value: {JSON.stringify(value, null, 4)}</pre>
     </Wrapper>
   );
 };
