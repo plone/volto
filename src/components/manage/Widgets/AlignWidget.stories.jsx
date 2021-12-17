@@ -10,7 +10,7 @@ const AlignWidgetComponent = ({ children, ...args }) => {
       <div className="ui segment form attached" style={{ width: '400px' }}>
         <AlignWidget
           {...args}
-          id="alignWidgetItem"
+          id="align"
           title="Align"
           block="testBlock"
           value={value}

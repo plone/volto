@@ -219,7 +219,10 @@ class SelectWidget extends Component {
             Option,
           }}
           value={normalizeValue(this.props.choices, this.props.value)}
-          placeholder={this.props.intl.formatMessage(messages.select)}
+          placeholder={
+            this.props.placeholder ??
+            this.props.intl.formatMessage(messages.select)
+          }
           onChange={(selectedOption) => {
             this.setState({ selectedOption });
             return onChange(
