@@ -7,7 +7,7 @@ import Undoo from 'undoo';
 const useUndoManager = (
   state,
   onUndoRedo,
-  { maxUndoLevels, enableHotKeys },
+  { maxUndoLevels, enableHotKeys = true },
 ) => {
   const [canUndo, setCanUndo] = React.useState(false);
   const [canRedo, setCanRedo] = React.useState(false);

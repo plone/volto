@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
 import { createBrowserHistory } from 'history';
 import React, { Component } from 'react';
+import { Button } from 'semantic-ui-react';
 import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
+import { useUndoManager } from '@plone/volto/helpers';
 import configureStore from 'redux-mock-store';
 import configureRealStore from '@plone/volto/store';
 
@@ -1452,3 +1454,51 @@ export class RealStoreWrapper extends Component {
     );
   }
 }
+
+export const FormUndoWrapper = ({
+  initialState = {},
+  children,
+  showControls = true,
+}) => {
+  const [state, setState] = React.useState(initialState);
+
+  const onUndoRedo = React.useCallback(({ state }) => setState(state), []);
+
+  const { doUndo, doRedo, canUndo, canRedo } = useUndoManager(
+    state,
+    onUndoRedo,
+    {
+      maxUndoLevels: 200,
+    },
+  );
+
+  return (
+    <div>
+      <div>{children({ state, onChange: setState })}</div>
+      {showControls && (
+        <div>
+          <Button
+            mini
+            compact
+            className="undo"
+            onClick={() => doUndo()}
+            aria-label="Undo"
+            disabled={!canUndo}
+          >
+            Undo
+          </Button>
+          <Button
+            mini
+            compact
+            className="redo"
+            onClick={() => doRedo()}
+            aria-label="Redo"
+            disabled={!canRedo}
+          >
+            Redo
+          </Button>
+        </div>
+      )}
+    </div>
+  );
+};
