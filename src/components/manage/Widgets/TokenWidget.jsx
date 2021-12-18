@@ -42,7 +42,7 @@ const messages = defineMessages({
  * @class TokenWidget
  * @extends Component
  */
-class TokenWidget extends Component {
+export class TokenWidgetComponent extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -109,11 +109,13 @@ class TokenWidget extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    this.props.getVocabulary({
-      vocabNameOrURL: this.props.vocabBaseUrl,
-      size: -1,
-      subrequest: this.props.intl.locale,
-    });
+    if (!this.props.choices?.length) {
+      this.props.getVocabulary({
+        vocabNameOrURL: this.props.vocabBaseUrl,
+        size: -1,
+        subrequest: this.props.intl.locale,
+      });
+    }
   }
 
   /**
@@ -203,4 +205,4 @@ export default compose(
     },
     { getVocabulary },
   ),
-)(TokenWidget);
+)(TokenWidgetComponent);
