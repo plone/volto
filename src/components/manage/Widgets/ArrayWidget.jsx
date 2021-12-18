@@ -57,7 +57,7 @@ function arrayMove(array, from, to) {
 }
 
 function normalizeArrayValue(choices, value) {
-  if (!value || !Array.isArray(value)) return null;
+  if (!value || !Array.isArray(value)) return [];
   if (value.length === 0) return value;
 
   if (typeof value[0] === 'string') {
@@ -83,7 +83,7 @@ function normalizeArrayValue(choices, value) {
     });
   }
 
-  return null;
+  return [];
 }
 
 function normalizeChoices(choices) {
@@ -95,6 +95,8 @@ function normalizeChoices(choices) {
         option[1] !== 'None' && option[1] ? option[1] : option[0],
     }));
   }
+
+  return choices;
 }
 
 /**
@@ -248,7 +250,7 @@ class ArrayWidget extends Component {
           getHelperDimensions={({ node }) => node.getBoundingClientRect()}
           id={`field-${this.props.id}`}
           key={this.props.id}
-          isDisabled={this.props.isDisabled}
+          isDisabled={this.props.disabled || this.props.isDisabled}
           className="react-select-container"
           classNamePrefix="react-select"
           options={
