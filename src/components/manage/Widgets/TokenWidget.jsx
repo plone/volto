@@ -42,7 +42,7 @@ const messages = defineMessages({
  * @class TokenWidget
  * @extends Component
  */
-export class TokenWidgetComponent extends Component {
+class TokenWidget extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -205,4 +205,4 @@ export default compose(
     },
     { getVocabulary },
   ),
-)(TokenWidgetComponent);
+)(TokenWidget);
