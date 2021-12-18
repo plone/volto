@@ -141,7 +141,7 @@ class Html extends Component {
             href="/favicon-16x16.png"
           />
           <link rel="manifest" href="/site.webmanifest" />
-          <meta name="generator" content="Volto - http://plone.org" />
+          <meta name="generator" content="Plone 6 - https://plone.org" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           {process.env.NODE_ENV === 'production' && criticalCss && (

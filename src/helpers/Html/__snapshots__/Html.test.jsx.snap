@@ -42,7 +42,7 @@ exports[`Html renders a html component 1`] = `
       rel="manifest"
     />
     <meta
-      content="Volto - http://plone.org"
+      content="Plone 6 - https://plone.org"
       name="generator"
     />
     <meta
@@ -139,7 +139,7 @@ exports[`Html renders a html component with apiPath present 1`] = `
       rel="manifest"
     />
     <meta
-      content="Volto - http://plone.org"
+      content="Plone 6 - https://plone.org"
       name="generator"
     />
     <meta
