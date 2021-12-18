@@ -1,5 +1,4 @@
 import VocabularyTermsWidget from './VocabularyTermsWidget';
-import Wrapper, { FormUndoWrapper } from '@plone/volto/storybook';
 import React from 'react';
 
 import WidgetStory from './story';
