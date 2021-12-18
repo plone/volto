@@ -159,7 +159,7 @@ Disabled.args = {
 const getOptionsGenerator = (count) => {
   const options = [];
   for (let i = 0; i < count; i = i + 1) {
-    options.push([i, `Option ${i}`]);
+    options.push([i.toString(), `Option ${i}`]);
   }
   return options;
 };

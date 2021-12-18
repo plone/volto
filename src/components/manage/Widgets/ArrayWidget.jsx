@@ -139,7 +139,7 @@ class ArrayWidget extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  getValue() {
+  getValue = () => {
     let selectedOption = this.props.vocabBaseUrl
       ? []
       : this.props.value
@@ -149,6 +149,7 @@ class ArrayWidget extends Component {
             : { label: item, value: item },
         )
       : [];
+
     if (
       (selectedOption || []).length === 0 &&
       this.props.value?.length &&
@@ -163,8 +164,15 @@ class ArrayWidget extends Component {
       }
     }
 
+    console.log(
+      'selected',
+      selectedOption,
+      this.props.value,
+      // this.props.choices,
+    );
+
     return selectedOption;
-  }
+  };
 
   /**
    * Component did mount
@@ -186,6 +194,7 @@ class ArrayWidget extends Component {
   }
 
   normalizeArrayValue = (choices, value) => {
+    console.log('normalize', value);
     // Array of tokens (on add, and on change tab in Tab component)
     if (
       value &&
