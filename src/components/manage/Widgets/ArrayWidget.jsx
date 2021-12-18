@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
-import { find, isObject, isArray } from 'lodash';
+import { find, isObject } from 'lodash';
 
 import {
   getVocabFromHint,
@@ -54,6 +54,47 @@ function arrayMove(array, from, to) {
     slicedArray.splice(from, 1)[0],
   );
   return slicedArray;
+}
+
+function normalizeArrayValue(choices, value) {
+  if (!value || !Array.isArray(value)) return null;
+  if (value.length === 0) return value;
+
+  if (typeof value[0] === 'string') {
+    // raw value like ['foo', 'bar']
+    return value.map((v) => {
+      return {
+        label: find(choices, (c) => c.value === v)?.label || v,
+        value: v,
+      };
+    });
+  }
+
+  if (
+    isObject(value[0]) &&
+    Object.keys(value[0]).includes('token') // Array of objects, w/ label+value
+  ) {
+    return value.map((v) => {
+      const item = find(choices, (c) => c.value === v.token);
+      return {
+        label: item.label || item.title || item.token,
+        value: v.token,
+      };
+    });
+  }
+
+  return null;
+}
+
+function normalizeChoices(choices) {
+  if (Array.isArray(choices) && choices.length && Array.isArray(choices[0])) {
+    return choices.map((option) => ({
+      value: option[0],
+      label:
+        // Fix "None" on the serializer, to remove when fixed in p.restapi
+        option[1] !== 'None' && option[1] ? option[1] : option[0],
+    }));
+  }
 }
 
 /**
@@ -139,41 +180,6 @@ class ArrayWidget extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  getValue = () => {
-    let selectedOption = this.props.vocabBaseUrl
-      ? []
-      : this.props.value
-      ? this.props.value.map((item) =>
-          isObject(item)
-            ? { label: item.title || item.token, value: item.token }
-            : { label: item, value: item },
-        )
-      : [];
-
-    if (
-      (selectedOption || []).length === 0 &&
-      this.props.value?.length &&
-      this.props.choices?.length > 0
-    ) {
-      const normalizedValue = this.normalizeArrayValue(
-        this.props.choices,
-        this.props.value,
-      );
-      if (normalizedValue !== null) {
-        selectedOption = normalizedValue;
-      }
-    }
-
-    console.log(
-      'selected',
-      selectedOption,
-      this.props.value,
-      // this.props.choices,
-    );
-
-    return selectedOption;
-  };
-
   /**
    * Component did mount
    * @method componentDidMount
@@ -192,40 +198,6 @@ class ArrayWidget extends Component {
       });
     }
   }
-
-  normalizeArrayValue = (choices, value) => {
-    console.log('normalize', value);
-    // Array of tokens (on add, and on change tab in Tab component)
-    if (
-      value &&
-      isArray(value) &&
-      value.length > 0 &&
-      typeof value[0] === 'string'
-    ) {
-      return value.map((v) => {
-        return {
-          label: find(choices, (c) => c.value === v)?.label || v,
-          value: v,
-        };
-      });
-    }
-    // Array of objects, containing label,value
-    if (
-      value &&
-      isArray(value) &&
-      value.length > 0 &&
-      isObject(value[0]) &&
-      Object.keys(value[0]).includes('token')
-    ) {
-      return value.map((v) => {
-        return {
-          label: find(choices, (c) => c.value === v.token).label,
-          value: v.token,
-        };
-      });
-    }
-    return null;
-  };
 
   /**
    * Handle the field change, store it in the local state and back to simple
@@ -253,7 +225,9 @@ class ArrayWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const selectedOption = this.getValue();
+    const choices = normalizeChoices(this.props?.choices || []);
+    const selectedOption = normalizeArrayValue(choices, this.props.value);
+
     const CreatableSelect = this.props.reactSelectCreateable.default;
     const { SortableContainer } = this.props.reactSortableHOC;
     const Select = this.props.reactSelect.default;
@@ -279,15 +253,10 @@ class ArrayWidget extends Component {
           classNamePrefix="react-select"
           options={
             this.props.vocabBaseUrl
-              ? this.props.choices
+              ? choices
               : this.props.choices
               ? [
-                  ...this.props.choices.map((option) => ({
-                    value: option[0],
-                    label:
-                      // Fix "None" on the serializer, to remove when fixed in p.restapi
-                      option[1] !== 'None' && option[1] ? option[1] : option[0],
-                  })),
+                  ...choices,
                   ...(this.props.noValueOption && !this.props.default
                     ? [
                         {

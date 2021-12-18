@@ -24,17 +24,19 @@ const Array = (args) => {
   );
 };
 
+const choices = [
+  ['foo', 'Foo'],
+  ['bar', 'Bar'],
+  ['fooBar', 'FooBar'],
+];
+
 export const Default = Array.bind({});
 Default.args = {
   id: 'field-empty',
   title: 'field 1 title',
   description: 'Optional help text',
   placeholder: 'Type something…',
-  choices: [
-    ['Foo', 'Foo'],
-    ['Bar', 'Bar'],
-    ['FooBar', 'FooBar'],
-  ],
+  choices,
 };
 
 export const Required = Array.bind({});
@@ -43,11 +45,7 @@ Required.args = {
   title: 'field 1 title',
   description: 'Optional help text',
   placeholder: 'Type something…',
-  choices: [
-    ['Foo', 'Foo'],
-    ['Bar', 'Bar'],
-    ['FooBar', 'FooBar'],
-  ],
+  choices,
   required: true,
 };
 
@@ -56,11 +54,7 @@ Filled.args = {
   id: 'field-filled',
   title: 'Filled field title',
   description: 'Optional help text',
-  choices: [
-    ['Foo', 'Foo'],
-    ['Bar', 'Bar'],
-    ['FooBar', 'FooBar'],
-  ],
+  choices,
   value: ['Foo'],
   placeholder: 'Type something…',
   required: true,
@@ -83,11 +77,7 @@ Errored.args = {
   //     required=False,
   //     default=None,
   // )
-  choices: [
-    ['Foo', 'Foo'],
-    ['Bar', 'Bar'],
-    ['FooBar', 'FooBar'],
-  ],
+  choices,
   value: ['Foo'],
   error: ['This is the error'],
   required: true,
@@ -98,11 +88,7 @@ NoPlaceholder.args = {
   id: 'field-without-novalue',
   title: 'Field title',
   description: 'This field has no value option',
-  choices: [
-    ['Foo', 'Foo'],
-    ['Bar', 'Bar'],
-    ['FooBar', 'FooBar'],
-  ],
+  choices,
   required: true,
 };
 
@@ -112,11 +98,7 @@ WithoutNoValueOption.args = {
   title: 'Field title',
   description: 'This field has no value option',
   placeholder: 'something…',
-  choices: [
-    ['Foo', 'Foo'],
-    ['Bar', 'Bar'],
-    ['FooBar', 'FooBar'],
-  ],
+  choices,
   required: true,
   noValueOption: false,
 };
