@@ -14,6 +14,8 @@
 
 ### Bugfix
 
+- In the contact form, only display the "back" button in the toolbar @tiberiuichim
+
 ## 14.0.0 (unreleased)
 
 ### Breaking
