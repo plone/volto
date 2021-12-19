@@ -4,11 +4,12 @@
 
 ### Breaking
 
-- Move `theme.js` import to top of the client code, so it take precedence over any other inline imported CSS. This is not an strict breaking change, but it's worth to mention it as might be important and kept in mind.  @sneridagh
+- Move `theme.js` import to top of the client code, so it take precedence over any other inline imported CSS. This is not an strict breaking change, but it's worth to mention it as might be important and kept in mind. @sneridagh
 
 ### Feature
 
 - Add runtime configuration for `@babel/plugin-transform-react-jsx` set to `automatic`. This enables the new JSX runtime: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html So no longer `import React from 'react'` is needed anymore.
+- Update favicon and related tags with best practices @sneridagh
 
 ### Bugfix
 
@@ -20,7 +21,10 @@
 
 - Upgrade to react 17.0.2 @nzambello
 - Upgrade caniuse-lite 1.0.30001286 @tiberiuichim
+- fix:correctly checkout plone.volto in buildout @nileshgulia1
 - Add line in upgrade guide about `getVocabulary` API change @tiberiuichim
+- Add new Volto websites in production @nzambello
+- Remove Pastanaga logos from Toolbar @sneridagh
 
 ## 14.0.0-alpha.42 (2021-12-13)
 
@@ -49,6 +53,7 @@
 - Added form undo support in the form of two buttons in the main toolbar and ctrl+z, ctrl+y as hotkeys for undo/redo @tiberiuichim
 - Allow the draftjs Text block edit to update the editor content when incoming block data is mutated outside the block (to support form undo) @tiberiuichim
 - Allow loading .less files also from a Volto project's `src` folder.  @tiberiuichim
+- Allow loading .less files also from a Volto project's `src` folder. @tiberiuichim
 
 ### Bugfix
 
