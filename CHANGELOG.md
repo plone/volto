@@ -1,5 +1,19 @@
 # Change Log
 
+## 14.1.0 (unreleased)
+
+### Feature
+
+- Added form undo support in the form of two buttons in the main toolbar and ctrl+z, ctrl+y as hotkeys for undo/redo. The undo capabilities are provided by a new helper hook, `useUndoManager`. @tiberiuichim
+- Allow the draftjs Text block edit to update the editor content when incoming block data is mutated outside the block (to support form undo) @tiberiuichim
+
+### Internal
+
+- Use lazy loading of react-dates and momentjs for the DatetimeWidget @tiberiuichim
+- Improve widget stories, add a common `WidgetStory` class, show undo capabilities in widget stories @tiberiuichim
+
+### Bugfix
+
 ## 14.0.0 (unreleased)
 
 ### Breaking
@@ -50,8 +64,6 @@
   and develop addons (in `src/addons` folder).
 - Add new listing block option "fullobjects" per variation @ksuess
 - Style checkboxes @nileshgulia1
-- Added form undo support in the form of two buttons in the main toolbar and ctrl+z, ctrl+y as hotkeys for undo/redo @tiberiuichim
-- Allow the draftjs Text block edit to update the editor content when incoming block data is mutated outside the block (to support form undo) @tiberiuichim
 - Allow loading .less files also from a Volto project's `src` folder.  @tiberiuichim
 - Allow loading .less files also from a Volto project's `src` folder. @tiberiuichim
 
