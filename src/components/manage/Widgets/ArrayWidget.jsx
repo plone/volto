@@ -74,13 +74,21 @@ function normalizeArrayValue(choices, value) {
     isObject(value[0]) &&
     Object.keys(value[0]).includes('token') // Array of objects, w/ label+value
   ) {
-    return value.map((v) => {
-      const item = find(choices, (c) => c.value === v.token);
-      return {
-        label: item.label || item.title || item.token,
-        value: v.token,
-      };
-    });
+    return value
+      .map((v) => {
+        const item = find(choices, (c) => c.value === v.token);
+        return item
+          ? {
+              label: item.label || item.title || item.token,
+              value: v.token,
+            }
+          : {
+              // avoid a crash if choices doesn't include this item
+              label: v.label,
+              value: v.token,
+            };
+      })
+      .filter((f) => !!f);
   }
 
   return [];
