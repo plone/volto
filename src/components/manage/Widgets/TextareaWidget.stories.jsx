@@ -2,7 +2,7 @@ import React from 'react';
 import TextareaWidget from './TextareaWidget';
 import WidgetStory from './story';
 
-export const TextArea = WidgetStory.bind({
+export const Textarea = WidgetStory.bind({
   props: { id: 'textarea', title: 'Text area', block: 'block' },
   widget: TextareaWidget,
 });

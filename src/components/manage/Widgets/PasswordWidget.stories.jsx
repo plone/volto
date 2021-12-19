@@ -2,7 +2,7 @@ import React from 'react';
 import PasswordWidget from './PasswordWidget';
 import WidgetStory from './story';
 
-export const Align = WidgetStory.bind({
+export const Password = WidgetStory.bind({
   props: { id: 'password', title: 'Password', block: 'block' },
   widget: PasswordWidget,
 });
