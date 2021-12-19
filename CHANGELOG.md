@@ -5,10 +5,11 @@
 ### Feature
 
 - Added form undo support in the form of two buttons in the main toolbar and ctrl+z, ctrl+y as hotkeys for undo/redo. The undo capabilities are provided by a new helper hook, `useUndoManager`. @tiberiuichim
-- Allow the draftjs Text block edit to update the editor content when incoming block data is mutated outside the block (to support form undo) @tiberiuichim
 
 ### Internal
 
+- Allow the draftjs Text block edit to update the editor content when incoming block data is mutated outside the block (to support form undo) @tiberiuichim
+- Remove use of internal component state for ArrayWidget, SelectWidget and TokenWidget, (to support form undo) @tiberiuichim
 - Use lazy loading of react-dates and momentjs for the DatetimeWidget @tiberiuichim
 - Improve widget stories, add a common `WidgetStory` class, show undo capabilities in widget stories @tiberiuichim
 
