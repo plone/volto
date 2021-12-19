@@ -1,6 +1,6 @@
 /**
- * ArrayWidget component.
- * @module components/manage/Widgets/ArrayWidget
+ * TokenWidget component.
+ * @module components/manage/Widgets/TokenWidget
  */
 
 import React, { Component } from 'react';
@@ -39,6 +39,11 @@ const messages = defineMessages({
 
 /**
  * TokenWidget component class.
+ *
+ * Because new terms are created through the web by using the widget, the token
+ * widget conflates the meaning of token, label and value and assumes they can
+ * be used interchangeably.
+ *
  * @class TokenWidget
  * @extends Component
  */

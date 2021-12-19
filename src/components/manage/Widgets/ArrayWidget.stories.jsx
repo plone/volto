@@ -1,28 +1,6 @@
 import React from 'react';
 import ArrayWidget, { ArrayWidgetComponent } from './ArrayWidget';
-import {
-  FormUndoWrapper,
-  RealStoreWrapper as Wrapper,
-} from '@plone/volto/storybook';
-
-const Array = (args) => {
-  return (
-    <Wrapper>
-      <FormUndoWrapper initialState={{ value: undefined }} showControls={true}>
-        {({ state, onChange }) => (
-          <div className="ui segment form attached" style={{ width: '400px' }}>
-            <ArrayWidget
-              {...args}
-              value={state.value}
-              onChange={(block, value) => onChange({ value })}
-            />
-            <pre>Value: {JSON.stringify(state.value, null, 4)}</pre>
-          </div>
-        )}
-      </FormUndoWrapper>
-    </Wrapper>
-  );
-};
+import WidgetStory from './story';
 
 const choices = [
   ['foo', 'Foo'],
@@ -30,7 +8,7 @@ const choices = [
   ['fooBar', 'FooBar'],
 ];
 
-export const Default = Array.bind({});
+export const Default = WidgetStory.bind({ widget: ArrayWidget });
 Default.args = {
   id: 'field-empty',
   title: 'field 1 title',
@@ -39,7 +17,7 @@ Default.args = {
   choices,
 };
 
-export const Required = Array.bind({});
+export const Required = WidgetStory.bind({ widget: ArrayWidget });
 Required.args = {
   id: 'field-empty',
   title: 'field 1 title',
@@ -49,7 +27,7 @@ Required.args = {
   required: true,
 };
 
-export const Filled = Array.bind({});
+export const Filled = WidgetStory.bind({ widget: ArrayWidget });
 Filled.args = {
   id: 'field-filled',
   title: 'Filled field title',
@@ -60,7 +38,7 @@ Filled.args = {
   required: true,
 };
 
-export const Errored = Array.bind({});
+export const Errored = WidgetStory.bind({ widget: ArrayWidget });
 Errored.args = {
   id: 'field-errored',
   title: 'Errored field title',
@@ -83,7 +61,7 @@ Errored.args = {
   required: true,
 };
 
-export const NoPlaceholder = Array.bind({});
+export const NoPlaceholder = WidgetStory.bind({ widget: ArrayWidget });
 NoPlaceholder.args = {
   id: 'field-without-novalue',
   title: 'Field title',
@@ -92,7 +70,7 @@ NoPlaceholder.args = {
   required: true,
 };
 
-export const WithoutNoValueOption = Array.bind({});
+export const WithoutNoValueOption = WidgetStory.bind({ widget: ArrayWidget });
 WithoutNoValueOption.args = {
   id: 'field-without-novalue',
   title: 'Field title',
@@ -103,7 +81,7 @@ WithoutNoValueOption.args = {
   noValueOption: false,
 };
 
-export const VocabularyBased = Array.bind({});
+export const VocabularyBased = WidgetStory.bind({ widget: ArrayWidget });
 VocabularyBased.args = {
   id: 'field-vocab-based',
   title: 'field title',
@@ -130,7 +108,7 @@ VocabularyBased.args = {
   vocabBaseUrl: 'https://anapivocabularyURL',
 };
 
-export const Disabled = Array.bind({});
+export const Disabled = WidgetStory.bind({ widget: ArrayWidget });
 Disabled.args = {
   id: 'field-disabled',
   title: 'Disabled field title',
@@ -146,7 +124,7 @@ const getOptionsGenerator = (count) => {
   return options;
 };
 
-export const ManyOptions1000 = Array.bind({});
+export const ManyOptions1000 = WidgetStory.bind({ widget: ArrayWidget });
 ManyOptions1000.args = {
   id: 'field-empty',
   title: 'field 1 title',
@@ -155,7 +133,7 @@ ManyOptions1000.args = {
   choices: getOptionsGenerator(1000),
 };
 
-export const ManyOptions500 = Array.bind({});
+export const ManyOptions500 = WidgetStory.bind({ widget: ArrayWidget });
 ManyOptions500.args = {
   id: 'field-empty',
   title: 'field 1 title',
