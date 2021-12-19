@@ -92,7 +92,7 @@ const actions = {
 
 function StoryComponent(props) {
   return (
-    <Wrapper customStore={{ actions }}>
+    <Wrapper customStore={{ actions, unlockRequest: {} }}>
       <div id="toolbar" style={{ display: 'none' }} />
       <IntlContactFormComponent
         {...props}
@@ -124,34 +124,3 @@ export default {
     error: { control: 'text' },
   },
 };
-
-// import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
-// import Wrapper from '@plone/volto/storybook';
-// import { defineMessages, injectIntl } from 'react-intl';
-//
-// <Meta
-//   title="Contact form"
-//   argTypes={{
-//     error: { control: 'text' },
-//   }}
-// />
-//
-// # Contact form
-//
-// ```jsx static
-//     <ContactForm error={{message : 'Something'}} loading={false} loaded={false} />
-// ```
-//
-// export const ContactForm = (props) => {
-//   const IntlContactFormComponent = injectIntl(ContactFormComponent);
-//   return (
-//   )
-// };
-//
-// <Story name="Contact form">
-//   {ContactForm.bind({})}
-// </Story>
-//
-// ## Props
-//
-// <ArgsTable of={ContactForm} />

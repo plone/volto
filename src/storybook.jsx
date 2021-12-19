@@ -614,6 +614,11 @@ const initialState = () => ({
     items: [],
   },
   content: {
+    unlock: {
+      loaded: false,
+      loading: false,
+      error: null,
+    },
     create: {
       loaded: false,
       loading: false,
