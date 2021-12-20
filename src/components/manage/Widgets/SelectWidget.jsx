@@ -227,7 +227,6 @@ class SelectWidget extends Component {
             this.props.intl.formatMessage(messages.select)
           }
           onChange={(selectedOption) => {
-            this.setState({ selectedOption });
             if (isMulti) {
               return onChange(
                 id,
