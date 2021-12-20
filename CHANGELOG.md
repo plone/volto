@@ -11,6 +11,10 @@
 - Blocks can now declare, in their block configuration registry,
   a `blockSchema` with a schema factory. This schema will also be used to
   extract a default block value.
+- Make VocabularyTermsWidget orderable @ksuess
+- Get widget by tagged values @ksuess
+- Added custom option to SelectWidget to render custom optionss (for example with icons) @giuliaghisini
+
 
 - Add Image with srcset and lazy loading using Plone scales @nzambello
 - Add runtime configuration for `@babel/plugin-transform-react-jsx` set to `automatic`. This enables the new JSX runtime: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html So no longer `import React from 'react'` is needed anymore.
@@ -155,6 +159,8 @@
 - Fix overflow table in Content view @giuliaghisini
 - Prevent ua-parser-js security breach. See: https://github.com/advisories/GHSA-pjwm-rvh2-c87w @thet
 - Fix storybook errors in the connected components, api is undefined. Using now a mock of the store instead of the whole thing @sneridagh
+
+- Fixed selected widget to use isMulti prop @giuliaghisini
 - Fix downloadableObjects default value @giuliaghisini
 - Folder contents table header and breadcrumbs dropdown now appear only from the
   bottom, fixing an issue where the breadcrumb dropdown content was clipped
