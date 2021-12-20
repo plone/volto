@@ -17,8 +17,40 @@ export function resolveExtension(name, extensions, data) {
   return index !== -1 ? extensions[index] : undefined;
 }
 
-export default (WrappedComponent) => (props) => {
-  const { data } = props;
+/**
+ * A block can declare extensions and variations like:
+ *
+ * {
+ *  variations: [
+ *    {
+ *      id: "summary",
+ *      isDefault: true,
+ *      template: Something
+ *    }
+ *  ],
+ *  extensions: {
+ *    'extensionA': {
+ *      items: [
+ *        // something similar to variations
+ *      ]
+ *    }
+ *  }
+ * }
+ *
+ * Exactly what an extension and what a variation represent is only up to the
+ * block. A block should incorporate these extension mechanisms and it should
+ * define what information is needed from them.
+ *
+ * resolveBlockExtensions will return an object with
+ * `{ extensions, resolvedExtensions}`, where:
+ *
+ * - extensions is the blocksConfig extensions object for that block
+ * - resolvedExtensions is an object with
+ *   `{ variation, <someExtensionA>, <someExtensionB> }` and each of these
+ *   fields hold the coresponding definition object from the block's
+ *   configuration.
+ */
+export function resolveBlockExtensions(data) {
   const block_type = data['@type'];
   const { extensions = {}, variations = [] } = config.blocks.blocksConfig[
     block_type
@@ -43,6 +75,12 @@ export default (WrappedComponent) => (props) => {
     resolvedExtensions.variation = variation;
   }
 
+  return { extensions, resolvedExtensions };
+}
+
+const withBlockExtensions = (WrappedComponent) => (props) => {
+  const { data } = props;
+  const { extensions, resolvedExtensions } = resolveBlockExtensions(data);
   return (
     <WrappedComponent
       {...resolvedExtensions}
@@ -51,3 +89,5 @@ export default (WrappedComponent) => (props) => {
     />
   );
 };
+
+export default withBlockExtensions;

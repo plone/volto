@@ -118,14 +118,6 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
         }
       }
 
-      .toolbar-bottom {
-        .minipastanaga {
-          bottom: 10px;
-          opacity: 0;
-          transition: bottom 0.3s 0.3s, opacity 0.3s;
-        }
-      }
-
       .toolbar-button-spacer {
         margin-left: auto;
       }
@@ -245,7 +237,7 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
       justify-content: center;
 
       button {
-        width: @toolbalWidth;
+        width: @toolbarWidth;
         height: 20px;
         padding: 0;
         border: 0;
@@ -280,19 +272,6 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
 
       .divider {
         display: none;
-      }
-
-      .pastanagalogo {
-        display: none;
-      }
-
-      .minipastanaga {
-        position: absolute;
-        bottom: 2px;
-        height: 14px;
-        padding: 0 6px;
-        opacity: 1;
-        transition: bottom 0.3s 0.3s, opacity 0.3s 0.3s;
       }
     }
   }
@@ -342,23 +321,23 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
 
   @media only screen and (min-width: @largestMobileScreen) {
     .toolbar {
-      width: @toolbalWidthMin;
+      width: @toolbarWidthMin;
       height: 100%;
       flex-direction: row;
       justify-content: flex-end;
       transition: width 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 
       & + .pusher {
-        margin-right: @toolbalWidthMin;
+        margin-right: @toolbarWidthMin;
         transition: margin-right 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
       }
 
       &.expanded {
-        width: @toolbalWidth;
+        width: @toolbarWidth;
         height: 100%;
 
         & + .pusher {
-          margin-right: @toolbalWidth;
+          margin-right: @toolbarWidth;
           transition: margin-right 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
         }
 
@@ -381,10 +360,6 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
             transition: opacity 0.1s 0.2s;
           }
 
-          .pastanagalogo {
-            display: block;
-          }
-
           .divider {
             width: 40px;
             height: 20px;
@@ -397,7 +372,7 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
 
       &-content {
         position: fixed;
-        left: @toolbalWidth;
+        left: @toolbarWidth;
         width: 320px;
       }
 
@@ -439,33 +414,18 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
           display: block;
           opacity: 0;
         }
-
-        .minipastanaga {
-          bottom: 10px;
-        }
-
-        .pastanagalogo {
-          display: block;
-          padding-right: 6px;
-          padding-left: 6px;
-          margin-bottom: 10px;
-
-          img {
-            width: 100%;
-          }
-        }
       }
 
       &-handler {
         display: flex;
-        width: @toolbalWidthMin;
+        width: @toolbarWidthMin;
         height: 100%;
         flex-direction: column;
         justify-content: center;
 
         button {
-          width: @toolbalWidthMin;
-          height: @toolbalWidth;
+          width: @toolbarWidthMin;
+          height: @toolbarWidth;
 
           &::before {
             left: 8px;
