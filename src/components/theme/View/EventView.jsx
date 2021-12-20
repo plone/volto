@@ -7,7 +7,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
 import { flattenHTMLToAppURL } from '@plone/volto/helpers';
-import { Container, Image, Segment, Header, List } from 'semantic-ui-react';
+import { Container, Segment, Header, List } from 'semantic-ui-react';
+import Image from '@plone/volto/components/theme/Image/Image';
 
 import {
   When,
@@ -68,8 +69,9 @@ const EventView = ({ intl, content }) => (
     {content.image && (
       <Image
         className="document-image"
-        src={content.image.scales.thumb.download}
+        size="medium"
         floated="right"
+        image={content.image}
       />
     )}
     <Segment floated="right">
