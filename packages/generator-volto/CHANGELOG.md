@@ -2,10 +2,6 @@
 
 ## 5.0.0 (unreleased)
 
-### Added
-
-### Changes
-
 ### Internal
 
 - Add more exceptions to .gitignore @avoinea
