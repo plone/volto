@@ -32,6 +32,7 @@ lighthouse-report.html
 /api/parts/
 /api/share/python-wheels/
 /api/src/
+/api/test/
 /api/var/
 /api/venv/
 /bin/
@@ -41,6 +42,7 @@ include
 pip-selfcheck.json
 pyvenv.cfg
 share
+/api/lib64
 
 # locales
 locales/*.json

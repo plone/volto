@@ -4,8 +4,7 @@
 
 ### Breaking
 
-- The block settings schema, which used to sit in `config.blocks.blocksConfig.<blocId>.schema`
-  has been moved to `config.blocks.blocksConfig.<blocId>.layoutSettingsSchema`.
+- Move `theme.js` import to top of the client code, so it take precedence over any other inline imported CSS. This is not an strict breaking change, but it's worth to mention it as might be important and kept in mind. @sneridagh
 
 ### Feature
 - Make VocabularyTermsWidget orderable @ksuess
@@ -13,9 +12,137 @@
 - Added custom option to SelectWidget to render custom optionss (for example with icons) @giuliaghisini
 
 
-- Blocks can now declare, in their block configuration registry,
-  a `blockSchema` with a schema factory. This schema will also be used to
-  extract a default block value.
+- Add runtime configuration for `@babel/plugin-transform-react-jsx` set to `automatic`. This enables the new JSX runtime: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html So no longer `import React from 'react'` is needed anymore.
+- Update favicon and related tags with best practices @sneridagh
+
+### Bugfix
+
+- Add missing layout view for document_view @MarcoCouto
+- Fix UniversalLink handling of remote URLs from Link @nzambello
+- Add missing `App.jsx` full paths @jimbiscuit
+
+### Internal
+
+- Upgrade to react 17.0.2 @nzambello
+- Upgrade caniuse-lite 1.0.30001286 @tiberiuichim
+- fix:correctly checkout plone.volto in buildout @nileshgulia1
+- Add line in upgrade guide about `getVocabulary` API change @tiberiuichim
+- Add new Volto websites in production @nzambello
+- Remove Pastanaga logos from Toolbar @sneridagh
+
+## 14.0.0-alpha.42 (2021-12-13)
+
+### Breaking
+
+- Removed pagination in vocabularies widgets (SelectWidget, ArrayWidget, TokenWidget) and introduced subrequest to vocabulary action. @giuliaghisini
+
+### Feature
+
+- Add autocomplete Widget component - It holds off the vocabulary endpoint pull until you search (more than 2 chars). Useful when dealing with huge vocabularies @sneridagh @reebalazs
+
+### Bugfix
+
+- Add missing layout view for document_view @MarcoCouto
+
+## 14.0.0-alpha.41 (2021-12-13)
+
+### Feature
+
+- Add catalan translation @bloodbare @sneridagh
+- Added `.storybook` setup in the Volto `app` generator. Volto projects
+  generated from this scafolding are now ready to run Storybook for the project
+  and develop addons (in `src/addons` folder).
+- Add new listing block option "fullobjects" per variation @ksuess
+- Style checkboxes @nileshgulia1
+- Allow loading .less files also from a Volto project's `src` folder. @tiberiuichim
+
+### Bugfix
+
+- Udate demo address @ksuess
+- Update list of trainings documentation @ksuess
+- Scroll to window top only when the location pathname changes, no longer take the window location search parameters into account. The search page and the listing block already use custom logic for their "scroll into view" behaviors. @tiberiuichim
+
+### Internal
+
+- Update to plone.restapi 8.16.2 (revert missing_value PR) @sneridagh
+- Update all requirements and the reasoning behind them in builds @sneridagh
+- Update Plone version in api backend to 5.2.6. Update README and cleanup @fredvd
+- Document CI changelog verifier failure details that mislead contributors
+- Updated italian translation @pnicolli
+
+## 14.0.0-alpha.40 (2021-12-01)
+
+### Bugfix
+
+- In search block, read SearchableText search param, to use it as search text input
+  @tiberiuichim
+- Fix missing translation in link content type @iRohitSingh
+- Fixed drag-and-drop list placeholder issues @reebalazs
+
+## 14.0.0-alpha.39 (2021-11-30)
+
+### Bugfix
+
+- QuerystringWidget more resilient on old schemas @nzambello
+
+## 14.0.0-alpha.38 (2021-11-30)
+
+### Bugfix
+
+- Use subrequest in hero block to not lost locking token. @cekk
+- Always add lang attr in html @nzambello
+- Fix time widget position on 24h format @nzambello
+
+### Internal
+
+- Remove getNavigation from Login.jsx @iRohitSingh
+- Allow listing block to be used in non-content pages (when used in a slot it
+  shouldn't crash on add/edit pages) @tiberiuichim
+- Fix typo "toolbalWidth" @iRohitSingh
+
+## 14.0.0-alpha.37 (2021-11-26)
+
+### Bugfix
+
+- Fixed object browser selected items number. @giuliaghisini
+- Fix action vocabularies call avoiding regex look behind @nzambello
+
+### Internal
+
+- Fix select family widgets stories in storybook @sneridagh
+
+## 14.0.0-alpha.36 (2021-11-25)
+
+### Bugfix
+
+- Fix regression in actions vocabularies calls because the change to use contextual schemas @sneridagh
+- Include block schema enhancers (main block schema enhancer + variation schema enhancer) when calculating block default data @tiberiuichim
+
+### Internal
+
+- Fix references to old configuration style in apiExpanders documentation @tiberiuichim
+- Add `applySchemaDefaults`, in addition to `applyBlockDefaults`, to allow reuse in object widgets and other advanced scenarios @tiberiuichim
+
+## 14.0.0-alpha.35 (2021-11-24)
+
+### Bugfix
+
+- Fix `isInternalURL` when `settings.internalApiPath` is empty @tiberiuichim
+- Fix external link not supported by Navigation component #2853. @ericof
+- Get Add/Edit schema contextually #2852 @ericof
+
+### Internal
+
+- Upgrade p.restapi to 8.15.2 @sneridagh
+
+## 14.0.0-alpha.34 (2021-11-20)
+
+### Feature
+
+- Apply form defaults from RenderBlocks and block Edit using a new helper, `applyBlockDefaults` @tiberiuichim
+- Now each block config object can declare a schema factory (a function that can produce a schema) and this will be used to derive the default data for the block @tiberiuichim
+
+## 14.0.0-alpha.33 (2021-11-20)
 
 ### Bugfix
 
@@ -27,10 +154,13 @@
   by the header area @ichim-david
 - Folder contents sort dropdown is now also simple as the other dropdowns
   ensuring we have the same behavior between adjecent dropdown @ichim-david
+- Fix documention on block extensions, replace `render` with `template` to match Listing block @tiberiuichim
 
 ### Internal
 
 - Upgrade stylelint to v14 (vscode-stylelint requires it now) @sneridagh
+- Add several more stories for Storybook @tiberiuichim
+- Add 2 new Volto websites by Eau de web for EEA @tiberiuichim
 
 ## 14.0.0-alpha.32 (2021-11-09)
 

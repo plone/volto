@@ -6,6 +6,11 @@
 
 ### Changes
 
+### Internal
+
+- Add more exceptions to .gitignore @avoinea
+- Addon add prompt now accept fallacy choices @nileshgulia1
+
 ## 5.0.0-alpha.1 (2021-10-29)
 
 ### Added
@@ -71,7 +76,7 @@
 ## 4.0.0-alpha.1 (2021-02-17)
 
 - Released another major alpha accidentally, continuing with this major then :/
-(Volto 12.0.0 and above compatible)
+  (Volto 12.0.0 and above compatible)
 
 ### Added
 

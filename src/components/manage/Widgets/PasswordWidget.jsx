@@ -11,8 +11,15 @@ import { injectIntl } from 'react-intl';
 
 /**
  * PasswordWidget component class.
- * @function PasswordWidget
- * @returns {string} Markup of the component.
+ *
+ * To use it, in schema properties, declare a field like:
+ *
+ * ```jsx
+ * {
+ *  title: "Password",
+ *  type: 'password',
+ * }
+ * ```
  */
 const PasswordWidget = (props) => {
   const { id, value, onChange, onBlur, onClick, minLength, maxLength } = props;
