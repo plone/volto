@@ -308,6 +308,7 @@ class Add extends Component {
             ref={this.form}
             key="translated-or-new-content-form"
             schema={this.props.schema}
+            type={this.props.type}
             formData={{
               ...(blocksFieldname && {
                 [blocksFieldname]:

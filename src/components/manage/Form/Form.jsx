@@ -172,15 +172,31 @@ class Form extends Component {
         };
       }
     }
+
+    let selectedBlock = null;
+    if (
+      formData.hasOwnProperty(blocksLayoutFieldname) &&
+      formData[blocksLayoutFieldname].items.length > 0
+    ) {
+      selectedBlock = formData[blocksLayoutFieldname].items[0];
+
+      if (config.blocks?.initialBlocksFocus?.[this.props.type]) {
+        //Default selected is not the first block, but the one from config.
+        Object.keys(formData[blocksFieldname]).forEach((b_key) => {
+          if (
+            formData[blocksFieldname][b_key]['@type'] ===
+            config.blocks?.initialBlocksFocus?.[this.props.type]
+          ) {
+            selectedBlock = b_key;
+          }
+        });
+      }
+    }
     this.state = {
       formData,
       initialFormData: cloneDeep(formData),
       errors: {},
-      selected:
-        formData.hasOwnProperty(blocksLayoutFieldname) &&
-        formData[blocksLayoutFieldname].items.length > 0
-          ? formData[blocksLayoutFieldname].items[0]
-          : null,
+      selected: selectedBlock,
       multiSelected: [],
       isClient: false,
     };

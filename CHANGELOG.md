@@ -16,6 +16,8 @@
 - Add runtime configuration for `@babel/plugin-transform-react-jsx` set to `automatic`. This enables the new JSX runtime: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html So no longer `import React from 'react'` is needed anymore.
 - Update favicon and related tags with best practices @sneridagh
 
+- Added initialBlocksFocus to blocks config, to set default focus on non-first block. @giuliaghisini
+
 ### Bugfix
 
 - Add missing layout view for document_view @MarcoCouto
