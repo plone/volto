@@ -157,13 +157,26 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 ### Breaking
 
 - Move `theme.js` import to top of the client code, so it take precedence over any other inline imported CSS. This is not an strict breaking change, but it's worth to mention it as might be important and kept in mind.  @sneridagh
+### Feature
+
+### Bugfix
+
+### Internal
+
+## 14.0.0-alpha.43 (2021-12-20)
+
+### Breaking
+
+- Move `theme.js` import to top of the client code, so it take precedence over any other inline imported CSS. This is not an strict breaking change, but it's worth to mention it as might be important and kept in mind. @sneridagh
 
 ### Feature
 
 - Add runtime configuration for `@babel/plugin-transform-react-jsx` set to `automatic`. This enables the new JSX runtime: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html So no longer `import React from 'react'` is needed anymore.
+- Update favicon and related tags with best practices @sneridagh
 
 ### Bugfix
 
+- Fix z-index value of hamburger-wrapper on mobile resolutions overlapping the sidebar @ichim-david
 - Add missing layout view for document_view @MarcoCouto
 - Fix UniversalLink handling of remote URLs from Link @nzambello
 - Add missing `App.jsx` full paths @jimbiscuit
@@ -172,7 +185,10 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 
 - Upgrade to react 17.0.2 @nzambello
 - Upgrade caniuse-lite 1.0.30001286 @tiberiuichim
+- fix:correctly checkout plone.volto in buildout @nileshgulia1
 - Add line in upgrade guide about `getVocabulary` API change @tiberiuichim
+- Add new Volto websites in production @nzambello
+- Remove Pastanaga logos from Toolbar @sneridagh
 
 ## 14.0.0-alpha.42 (2021-12-13)
 
@@ -198,7 +214,7 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
   and develop addons (in `src/addons` folder).
 - Add new listing block option "fullobjects" per variation @ksuess
 - Style checkboxes @nileshgulia1
-- Allow loading .less files also from a Volto project's `src` folder.  @tiberiuichim
+- Allow loading .less files also from a Volto project's `src` folder. @tiberiuichim
 
 ### Bugfix
 
