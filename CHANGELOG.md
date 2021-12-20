@@ -194,6 +194,10 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 - Move `theme.js` import to top of the client code, so it take precedence over any other inline imported CSS. This is not an strict breaking change, but it's worth to mention it as might be important and kept in mind. @sneridagh
 
 ### Feature
+- Make VocabularyTermsWidget orderable @ksuess
+- Get widget by tagged values @ksuess
+- Added custom option to SelectWidget to render custom optionss (for example with icons) @giuliaghisini
+
 
 - Add runtime configuration for `@babel/plugin-transform-react-jsx` set to `automatic`. This enables the new JSX runtime: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html So no longer `import React from 'react'` is needed anymore.
 - Update favicon and related tags with best practices @sneridagh
@@ -330,6 +334,8 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 
 ### Bugfix
 
+
+- Fixed selected widget to use isMulti prop @giuliaghisini
 - Fix downloadableObjects default value @giuliaghisini
 - Folder contents table header and breadcrumbs dropdown now appear only from the
   bottom, fixing an issue where the breadcrumb dropdown content was clipped

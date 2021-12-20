@@ -16,7 +16,7 @@ import {
 } from '@plone/volto/helpers';
 import { FormFieldWrapper } from '@plone/volto/components';
 import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
-import { normalizeValue } from './SelectUtils';
+import { normalizeValue } from '@plone/volto/components/manage/Widgets/SelectUtils';
 
 import {
   customSelectStyles,
@@ -107,6 +107,7 @@ class SelectWidget extends Component {
       PropTypes.object,
       PropTypes.string,
       PropTypes.bool,
+      PropTypes.func,
     ]),
     onChange: PropTypes.func.isRequired,
     onBlur: PropTypes.func,
@@ -115,6 +116,7 @@ class SelectWidget extends Component {
     onDelete: PropTypes.func,
     wrapped: PropTypes.bool,
     noValueOption: PropTypes.bool,
+    customOptionStyling: PropTypes.any,
   };
 
   /**
@@ -140,6 +142,7 @@ class SelectWidget extends Component {
     onEdit: null,
     onDelete: null,
     noValueOption: true,
+    customOptionStyling: null,
   };
 
   /**
@@ -192,6 +195,10 @@ class SelectWidget extends Component {
             : []),
         ];
 
+    const isMulti = this.props.isMulti
+      ? this.props.isMulti
+      : id === 'roles' || id === 'groups';
+
     return (
       <FormFieldWrapper {...this.props}>
         <Select
@@ -202,11 +209,7 @@ class SelectWidget extends Component {
           isSearchable={true}
           className="react-select-container"
           classNamePrefix="react-select"
-          isMulti={
-            this.props.isMulti
-              ? this.props.isMulti
-              : id === 'roles' || id === 'groups'
-          }
+          isMulti={isMulti}
           options={options}
           styles={customSelectStyles}
           theme={selectTheme}
@@ -216,7 +219,7 @@ class SelectWidget extends Component {
             }),
             DropdownIndicator,
             ClearIndicator,
-            Option,
+            Option: this.props.customOptionStyling || Option,
           }}
           value={normalizeValue(this.props.choices, this.props.value)}
           placeholder={
@@ -225,6 +228,12 @@ class SelectWidget extends Component {
           }
           onChange={(selectedOption) => {
             this.setState({ selectedOption });
+            if (isMulti) {
+              return onChange(
+                id,
+                selectedOption.map((el) => el.value),
+              );
+            }
             return onChange(
               id,
               selectedOption && selectedOption.value !== 'no-value'
