@@ -6,6 +6,10 @@
 
 ### Changes
 
+### Internal
+
+- Refresh app generator template `yarn.lock` to match latest upgrades @sneridagh
+
 ## 5.0.0 (2021-12-20)
 
 ### Breaking
