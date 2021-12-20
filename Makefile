@@ -16,6 +16,11 @@ INSTANCE_PORT=8080
 
 # Recipe snippets for reuse
 
+CHECKOUT_BASENAME=$(shell basename $(shell realpath ./))
+CHECKOUT_BRANCH=$(shell git branch --show-current)
+CHECKOUT_TMP=../$(CHECKOUT_BASENAME).tmp
+CHECKOUT_TMP_ABS=$(shell realpath $(CHECKOUT_TMP))
+
 # We like colors
 # From: https://coderwall.com/p/izxssa/colored-makefile-for-golang-projects
 RED=`tput setaf 1`
@@ -61,6 +66,29 @@ dist:
 .PHONY: test
 test:
 	$(MAKE) -C "./api/" test
+.PHONY: test-clean
+test-clean:  ## Test in a separate, clean worktree to expose clean build issues
+	mkdir -pv "$(CHECKOUT_TMP)/"
+	tmp_worktree="$$(
+	    mktemp -d -p '$(CHECKOUT_TMP)/' \
+	        '$(CHECKOUT_BRANCH)-tmp-XXXXXXXXXX'
+	)"
+# Disable VCS hooks which might be run when creating a worktree
+	if [ -e "./.git/hooks/post-checkout" ]
+	then
+	    mv --backup=numbered -v \
+	        "./.git/hooks/post-checkout" "./.git/hooks/post-checkout~"
+	fi
+	git worktree add "$${tmp_worktree}"
+	if [ -e "./.git/hooks/post-checkout~" ]
+	then
+	    mv --backup=numbered -v \
+	        "./.git/hooks/post-checkout~" "./.git/hooks/post-checkout"
+	fi
+	cd "$${tmp_worktree}"
+	$(MAKE) test
+# Leave the temporary worktree around for the developer to inspect.
+# Use the `$ make clean-tmp-worktrees` target to clean up all temporary worktrees
 
 .PHONY: docs-serve
 docs-serve:
@@ -147,5 +175,15 @@ test-acceptance-guillotina:
 
 .PHONY: clean
 clean:
+	$(MAKE) clean-tmp-worktrees
 	$(MAKE) -C "./api/" clean
 	rm -rf node_modules
+.PHONY: clean-tmp-worktrees
+clean-tmp-worktrees:  ## Cleanup temporary worktrees managed by this `./Makefile`
+	git worktree list --porcelain | tail -n +5 |
+	    sed -En 's|^worktree ($(CHECKOUT_TMP_ABS)/.+)$$|\1|p' |
+	while read
+	do
+	    git worktree remove --force "$${REPLY}"
+	    git branch -D "$$(basename "$${REPLY}")"
+	done

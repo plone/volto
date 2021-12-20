@@ -16,6 +16,8 @@ INSTANCE_PORT=8080
 
 # Recipe snippets for reuse
 
+DEVELOP_SETUPS=$(wildcard ./src/*/setup.py)
+
 # We like colors
 # From: https://coderwall.com/p/izxssa/colored-makefile-for-golang-projects
 RED=`tput setaf 1`
@@ -65,7 +67,7 @@ start-test: build ## Start Test Plone Backend
 
 # Real targets
 
-./.installed.cfg: ./bin/buildout ./buildout.cfg ./src/*/setup.py
+./.installed.cfg: ./bin/buildout ./buildout.cfg $(DEVELOP_SETUPS)
 	"$(<)" instance:http-address=$(INSTANCE_PORT)
 
 ./bin/buildout: ./requirements.txt ./bin/pip
