@@ -2,6 +2,14 @@ import React from 'react';
 import SelectWidget, { SelectWidgetComponent } from './SelectWidget';
 import WidgetStory from './story';
 
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import checkSVG from '@plone/volto/icons/check.svg';
+import { Icon } from '@plone/volto/components';
+
+import bellRingingSVG from '@plone/volto/icons/bell-ringing.svg';
+import blogSVG from '@plone/volto/icons/blog.svg';
+import bookSVG from '@plone/volto/icons/book.svg';
+
 export const Default = WidgetStory.bind({
   widget: SelectWidget,
 });
@@ -10,6 +18,7 @@ Default.args = {
   title: 'field 1 title',
   description: 'Optional help text',
   placeholder: 'Type something…',
+  isMulti: false,
   choices: [
     ['Foo', 'Foo'],
     ['Bar', 'Bar'],
@@ -178,6 +187,62 @@ ManyOptions500.args = {
   description: 'Optional help text',
   placeholder: 'Type something…',
   choices: getOptionsGenerator(500),
+};
+
+export const MultiSelection = WidgetStory.bind({
+  widget: SelectWidget,
+});
+MultiSelection.args = {
+  id: 'field-empty',
+  title: 'field 1 title',
+  description: 'Select multiple values',
+  placeholder: 'Type something…',
+  isMulti: true,
+  choices: [
+    ['Foo', 'Foo'],
+    ['Bar', 'Bar'],
+    ['FooBar', 'FooBar'],
+  ],
+};
+
+export const Option = injectLazyLibs('reactSelect')((props) => {
+  const { Option } = props.reactSelect.components;
+  const icons = {
+    FooBar: bellRingingSVG,
+    Bar: blogSVG,
+    Foo: bookSVG,
+  };
+  return (
+    <Option {...props}>
+      <div>
+        {icons[props.value] && <Icon name={icons[props.value]} size="24px" />}
+        {props.label}
+      </div>
+      {props.isFocused && !props.isSelected && (
+        <Icon name={checkSVG} size="24px" color="#b8c6c8" />
+      )}
+      {props.isSelected && <Icon name={checkSVG} size="24px" color="#007bc1" />}
+    </Option>
+  );
+});
+
+export const CustomOptions = WidgetStory.bind({
+  widget: SelectWidget,
+  props: {
+    customOptionStyling: Option,
+  },
+});
+CustomOptions.args = {
+  id: 'field-empty',
+  title: 'field 1 title',
+  description: 'Select a value',
+  placeholder: 'Type something…',
+  isMulti: false,
+  choices: [
+    ['Foo', 'Foo'],
+    ['Bar', 'Bar'],
+    ['FooBar', 'FooBar'],
+  ],
 };
 
 export default {

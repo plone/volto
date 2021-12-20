@@ -117,6 +117,7 @@ class SelectWidget extends Component {
     wrapped: PropTypes.bool,
     noValueOption: PropTypes.bool,
     customOptionStyling: PropTypes.any,
+    isMulti: PropTypes.bool,
   };
 
   /**
