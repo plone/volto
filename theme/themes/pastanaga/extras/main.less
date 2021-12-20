@@ -147,6 +147,56 @@ button {
     outline: none;
   }
 }
+//checkbox overrides
+/* Unchecked */
+.ui.checkbox {
+  label {
+    &:before {
+      border: @checkboxBorderUnchecked;
+      border-radius: unset;
+      box-shadow: 0 2px 2px 0 #0000001a;
+    }
+
+    &:hover:before {
+      border: @checkboxBorderUnchecked;
+    }
+
+    &:focus:before {
+      border: @checkboxBorderUnchecked;
+    }
+  }
+
+  input:focus ~ label:before {
+    border: @checkboxBorderUnchecked;
+  }
+}
+
+/* Checked */
+.ui.checkbox input:checked {
+  & ~ label:after,
+  .box:after {
+    color: @checkboxColor;
+    content: '\e800';
+  }
+
+  & ~ label:before {
+    border: @checkboxBorderChecked;
+    box-shadow: none;
+  }
+
+  /* Focus */
+  &:focus {
+    & ~ label:before {
+      border: @checkboxBorderChecked;
+    }
+
+    & ~ label:after,
+    .box:after {
+      color: @checkboxColor;
+      content: '\e800';
+    }
+  }
+}
 
 // Drag and drop
 .drag.layer {

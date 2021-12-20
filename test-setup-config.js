@@ -45,6 +45,7 @@ config.set('settings', {
       'prismCore',
       'toastify',
       'reactSelect',
+      'reactSortableHOC',
       // 'diffLib',
     ],
   },

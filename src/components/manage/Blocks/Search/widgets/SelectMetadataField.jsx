@@ -91,7 +91,7 @@ class SelectWidget extends Component {
    */
   componentDidMount() {
     if (!this.props.choices && this.props.vocabBaseUrl) {
-      this.props.getVocabulary(this.props.vocabBaseUrl);
+      this.props.getVocabulary({ vocabNameOrURL: this.props.vocabBaseUrl });
     }
   }
 
@@ -107,7 +107,11 @@ class SelectWidget extends Component {
     let hasMore = this.props.itemsTotal > previousOptions.length;
     if (hasMore) {
       const offset = this.state.search !== search ? 0 : additional.offset;
-      this.props.getVocabulary(this.props.vocabBaseUrl, search, offset);
+      this.props.getVocabulary({
+        vocabNameOrURL: this.props.vocabBaseUrl,
+        query: search,
+        start: offset,
+      });
       this.setState({ search });
 
       return {

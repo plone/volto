@@ -49,8 +49,8 @@ const getWidgetByName = (widget) =>
  * Get widget by tagged values
  * @param {object} widgetOptions
  * @returns {string} Widget component.
- * 
- 
+ *
+
 directives.widget(
     'fieldname',
     frontendOptions={
@@ -62,6 +62,25 @@ directives.widget(
 const getWidgetFromTaggedValues = (widgetOptions) =>
   typeof widgetOptions?.frontendOptions?.widget === 'string'
     ? config.widgets.widget[widgetOptions.frontendOptions.widget]
+    : null;
+
+/**
+ * Get widget props from tagged values
+ * @param {object} widgetOptions
+ * @returns {string} Widget component.
+ *
+
+directives.widget(
+    "fieldname",
+    frontendOptions={
+        "widget": "specialwidget",
+        "widgetProps": {"prop1": "specialprop"}
+    })
+
+ */
+const getWidgetPropsFromTaggedValues = (widgetOptions) =>
+  typeof widgetOptions?.frontendOptions?.widgetProps === 'object'
+    ? widgetOptions.frontendOptions.widgetProps
     : null;
 
 /**
@@ -147,6 +166,12 @@ const Field = (props, { intl }) => {
     return null;
   }
 
+  // Adding the widget props from tagged values (if any)
+  const widgetProps = {
+    ...props,
+    ...getWidgetPropsFromTaggedValues(props.widgetOptions),
+  };
+
   if (props.onOrder) {
     const WrappedWidget = DropTarget(
       'field',
@@ -200,9 +225,9 @@ const Field = (props, { intl }) => {
           ),
       ),
     );
-    return <WrappedWidget {...props} />;
+    return <WrappedWidget {...widgetProps} />;
   }
-  return <Widget {...props} />;
+  return <Widget {...widgetProps} />;
 };
 
 /**
