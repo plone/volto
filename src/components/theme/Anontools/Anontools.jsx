@@ -13,8 +13,6 @@ import config from '@plone/volto/registry';
 
 /**
  * Anontools container class.
- * @class Anontools
- * @extends Component
  */
 export class Anontools extends Component {
   /**
