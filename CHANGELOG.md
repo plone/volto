@@ -148,6 +148,10 @@
 
 ### Bugfix
 
+- Prevent form submit when clicking on BlockChooserButton @giuliaghisini
+- Fix overflow table in Content view @giuliaghisini
+- Prevent ua-parser-js security breach. See: https://github.com/advisories/GHSA-pjwm-rvh2-c87w @thet
+- Fix storybook errors in the connected components, api is undefined. Using now a mock of the store instead of the whole thing @sneridagh
 - Fix downloadableObjects default value @giuliaghisini
 - Folder contents table header and breadcrumbs dropdown now appear only from the
   bottom, fixing an issue where the breadcrumb dropdown content was clipped
