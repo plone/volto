@@ -21,6 +21,7 @@
 - Add missing layout view for document_view @MarcoCouto
 - Fix UniversalLink handling of remote URLs from Link @nzambello
 - Add missing `App.jsx` full paths @jimbiscuit
+- Fixed url validation in FormValidation to admit ip addresses. @giuliaghisini
 
 ### Internal
 
