@@ -13,6 +13,7 @@
 
 ### Bugfix
 
+- Fix z-index value of hamburger-wrapper on 767px or less overlapping the sidebar @ichim-david
 - Add missing layout view for document_view @MarcoCouto
 - Fix UniversalLink handling of remote URLs from Link @nzambello
 - Add missing `App.jsx` full paths @jimbiscuit
