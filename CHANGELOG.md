@@ -6,18 +6,18 @@
 
 - Remove compatibility for old configuration (based on imports) system. Migrate your configuration to the new configuration system for your project before upgrading to Volto 14. See https://docs.voltocms.com/upgrade-guide/#volto-configuration-registry @sneridagh
 - Content locking is not a breaking change, but it's worth noting that Volto 14 comes with locking support enabled by default. Latest `plone.restapi` version is required. @avoinea
-- Use the block's title as the source of the translation instead of using the id of the block. See upgrade guide for more information @sneridagh
-- New i18n infrastructure in the new `@plone/scripts` package @sneridagh
-- Removed `src/i18n.js` in favor of the above change @sneridagh
-- Adjusted main `Logo` component styling @sneridagh
-- Fix logout action using the backend @logout endpoint, effectively removing the `__ac` cookie. It is recommended to upgrade to the latest p.restapi version to take full advantage of this feature @sneridagh
 - Revisited, rethought and refactored Seamless mode @sneridagh
   For more information, please read the deploying guide
   https://docs.voltocms.com/deploying/seamless-mode/
+- Listing block no longer use `fullobjects` to retrieve backend data. It uses the catalog data instead. This improves the performance of the listing block. @plone/volto-team
+- Removed pagination in vocabularies widgets (SelectWidget, ArrayWidget, TokenWidget) and introduced subrequest to vocabulary action. @giuliaghisini
+- Use the block's title as the source of the translation instead of using the id of the block. See upgrade guide for more information @sneridagh
+- New i18n infrastructure in the new `@plone/scripts` package @sneridagh
+- Removed `src/i18n.js` in favor of the above change @sneridagh
+- Adjusted main `Logo.jsx` default component styling @sneridagh
+- Fix logout action using the backend @logout endpoint, effectively removing the `__ac` cookie. It is recommended to upgrade to the latest p.restapi version to take full advantage of this feature @sneridagh
 - Improve mobile navigation menu with a nicer interaction and a fixed overlay with a drawer (customizable via CSSTransitionGroup) animation @sneridagh
 - Use title instead of id as a source of translation in "Variation" field in block enhancers @sneridagh
-- Listing block no longer use `fullobjects` to retrieve backend data. It uses the catalog data instead. @plone/volto-team
-- Removed pagination in vocabularies widgets (SelectWidget, ArrayWidget, TokenWidget) and introduced subrequest to vocabulary action. @giuliaghisini
 - Move `theme.js` import to top of the client code, so it take precedence over any other inline imported CSS. This is not an strict breaking change, but it's worth to mention it as might be important and kept in mind. @sneridagh
 
 See https://docs.voltocms.com/upgrade-guide/ for more information about all the breaking changes.
@@ -27,28 +27,30 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 - Support Node 16 @timo
 - Content locking support for Plone (`plone.locking`) @avoinea
 - Add the new search block @tiberiuichim @kreafox @sneridagh
+- Provide Server-Side Rendering capabilities for blocks with async-based content (such as the listing block). A block needs to provide its own `getAsyncData` implementation, which is similar to an `asyncConnect` wrapper promise. @tiberiuichim @sneridagh
+- Defaults are observed in block data if `InlineForm` or `BlockDataForm` are used. @sneridagh @tiberiuichim
+- Apply form defaults from RenderBlocks and block Edit using a new helper, `applyBlockDefaults` @tiberiuichim
+- Now each block config object can declare a schema factory (a function that can produce a schema) and this will be used to derive the default data for the block @tiberiuichim
 - Add `volto-guillotina` addon to core @sneridagh
 - Make `VocabularyTermsWidget` orderable @ksuess
 - Get widget by tagged values utility function in the `Field` decider @ksuess
-- In the search block, allow editors to specify the sort on criteria.
-  @tiberiuichim
+- Use Plone logo @ericof
+- Update favicon and related tags with best practices @sneridagh
 - Enable to be able to use the internal proxy in production as well @sneridagh
+- Add runtime configuration for `@babel/plugin-transform-react-jsx` set to `automatic`. This enables the new JSX runtime: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html So no longer `import React from 'react'` is needed anymore. @sneridagh
+- Add `autocomplete` Widget component - It holds off the vocabulary endpoint pull until you search (more than 2 chars). Useful when dealing with huge vocabularies @sneridagh @reebalazs
+- Add new listing block option "fullobjects" per variation @ksuess
 - `FormFieldWrapper` accepts now strings and elements for description @nzambello
 - Image block:
   - When uploading an image or selecting that from the object browser, Image block will set an empty string as alternative text @nzambello
   - Adds a description to the alt-tag with w3c explaination @nzambello
-- Provide Server-Side Rendering capabilities for blocks with async-based content (such as the listing block). A block needs to provide its own `getAsyncData` implementation, which is similar to an `asyncConnect` wrapper promise. @tiberiuichim @sneridagh
-- Defaults are observed in block data if `InlineForm` or `BlockDataForm` are used. @sneridagh @tiberiuichim
 - Support TypeScript usage in Volto projects @pnicolli
 - Added `LinkMore` component and link more in `HeroImageLeft` block. @giuliaghisini
-- Apply form defaults from RenderBlocks and block Edit using a new helper, `applyBlockDefaults` @tiberiuichim
-- Now each block config object can declare a schema factory (a function that can produce a schema) and this will be used to derive the default data for the block @tiberiuichim
+- In the search block, allow editors to specify the sort on criteria.
+  @tiberiuichim
 - Added `.storybook` setup in the Volto `app` generator. Volto projects generated from this scafolding are now ready to run Storybook for the project and develop addons (in `src/addons` folder).
-- Add new listing block option "fullobjects" per variation @ksuess
 - Style checkboxes @nileshgulia1
-- Add runtime configuration for `@babel/plugin-transform-react-jsx` set to `automatic`. This enables the new JSX runtime: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html So no longer `import React from 'react'` is needed anymore. @sneridagh
 - Allow loading .less files also from a Volto project's `src` folder.  @tiberiuichim
-- Add `autocomplete` Widget component - It holds off the vocabulary endpoint pull until you search (more than 2 chars). Useful when dealing with huge vocabularies @sneridagh @reebalazs
 - Add catalan translation @bloodbare @sneridagh
 - Updated Volto production sites list @giuliaghisini
 - Japanese translation updated @terapyon
@@ -114,13 +116,19 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 - Scroll to window top only when the location pathname changes, no longer take the window location search parameters into account. The search page and the listing block already use custom logic for their "scroll into view" behaviors. @tiberiuichim
 - Add missing layout view for `document_view` @MarcoCouto
 - Add missing `App.jsx` full paths @jimbiscuit
+- Fix z-index value of hamburger-wrapper on mobile resolutions overlapping the sidebar @ichim-david
+- Fix UniversalLink handling of remote URLs from Link @nzambello
 
 ### Internal
 
 - Upgrade to react 17.0.2 @nzambello
 - Update to latest `plone.restapi` (8.16.2) @sneridagh
 - Upgrade to `@plone/scripts` 1.0.3 @sneridagh
-- Remove built workingcopy fixture environment based on local, back to docker based one @sneridagh
+- Upgrade caniuse-lite 1.0.30001286 @tiberiuichim
+- fix:correctly checkout plone.volto in buildout @nileshgulia1
+- Add line in upgrade guide about `getVocabulary` API change @tiberiuichim
+- Add new Volto websites in production @nzambello
+- Remove Pastanaga logos from Toolbar @sneridagh
 - Add `omelette` to the local Plone backend build @sneridagh
 - Optimize npm package by adding `docs/` `cypress/` and `tests/` to .npmignore @avoinea
 - Use released `@plone/scripts`, since the builds are broken if it's a local package @sneridagh
@@ -128,7 +136,6 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 - Silence customization errors, they are now behind a `debug` library namespace @sneridagh
 - Add development dependency on `use-trace-update`, useful for performance debugging @tiberiuichim
 - Improved developer documentation. Proof read several chapters, most importantly the upgrade guide @ichim-david
-- Use Plone logo (Closes #2632) @ericof
 - Footer: Point to `plone.org` instead of `plone.com` @ericof
 - Fix `make start-frontend` @tisto
 - Update all the tests infrastructure for the new `volto-guillotina` addon @sneridagh
@@ -152,17 +159,6 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 - Update Plone version in api backend to 5.2.6. Update README and cleanup @fredvd
 - Document CI changelog verifier failure details that mislead contributors @rpatterson
 
-## 14.0.0 (unreleased)
-
-### Breaking
-
-- Move `theme.js` import to top of the client code, so it take precedence over any other inline imported CSS. This is not an strict breaking change, but it's worth to mention it as might be important and kept in mind.  @sneridagh
-### Feature
-
-### Bugfix
-
-### Internal
-
 ## 14.0.0-alpha.43 (2021-12-20)
 
 ### Breaking
@@ -177,7 +173,6 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 ### Bugfix
 
 - Fix z-index value of hamburger-wrapper on mobile resolutions overlapping the sidebar @ichim-david
-- Add missing layout view for document_view @MarcoCouto
 - Fix UniversalLink handling of remote URLs from Link @nzambello
 - Add missing `App.jsx` full paths @jimbiscuit
 
