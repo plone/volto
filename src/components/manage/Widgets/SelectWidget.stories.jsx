@@ -205,7 +205,7 @@ MultiSelection.args = {
   ],
 };
 
-export const Option = injectLazyLibs('reactSelect')((props) => {
+const Option = injectLazyLibs('reactSelect')((props) => {
   const { Option } = props.reactSelect.components;
   const icons = {
     FooBar: bellRingingSVG,
