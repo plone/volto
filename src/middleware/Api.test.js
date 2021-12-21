@@ -14,7 +14,7 @@ describe('api middleware helpers', () => {
     const result = addExpandersToPath('/de/mypage', GET_CONTENT);
     expect(result).toEqual('/de/mypage?expand=mycustomexpander');
   });
-  it('addExpandersToPath with expanders already present (multilingual)', () => {
+  it('addExpandersToPath - Custom expander from settings, with expander (translation) already present (multilingual) in query', () => {
     config.settings.apiExpanders = [
       {
         match: '/',
@@ -28,7 +28,7 @@ describe('api middleware helpers', () => {
     );
     expect(result).toEqual('/de/mypage?expand=translations,mycustomexpander');
   });
-  it('addExpandersToPath not matching', () => {
+  it('addExpandersToPath - Path not matching', () => {
     config.settings.apiExpanders = [
       {
         match: '/de/otherpath',
@@ -39,7 +39,7 @@ describe('api middleware helpers', () => {
     const result = addExpandersToPath('/de/mypage', GET_CONTENT);
     expect(result).toEqual('/de/mypage');
   });
-  it('addExpandersToPath not matching, preserve query', () => {
+  it('addExpandersToPath - Path not matching, preserve query', () => {
     config.settings.apiExpanders = [
       {
         match: '/de/otherpath',
@@ -53,7 +53,7 @@ describe('api middleware helpers', () => {
     );
     expect(result).toEqual('/de/mypage/@navigation?expand.navigation.depth=3');
   });
-  it('addExpandersToPath should work as expected, several', () => {
+  it('addExpandersToPath - Two custom expanders from settings', () => {
     config.settings.apiExpanders = [
       {
         match: '/',
@@ -67,7 +67,7 @@ describe('api middleware helpers', () => {
       '/de/mypage?expand=mycustomexpander,mycustomexpander2',
     );
   });
-  it('addExpandersToPath should work as expected, already query present', () => {
+  it('addExpandersToPath - Two custom expanders from settings, expansion nested (with dots notation) present', () => {
     config.settings.apiExpanders = [
       {
         match: '/',
@@ -84,7 +84,7 @@ describe('api middleware helpers', () => {
       '/de/mypage/@navigation?expand=mycustomexpander,mycustomexpander2&expand.navigation.depth=3',
     );
   });
-  it('addExpandersToPath should work as expected, already query present', () => {
+  it('addExpandersToPath - Two custom expanders from settings, query present ', () => {
     config.settings.apiExpanders = [
       {
         match: '/',
@@ -99,6 +99,57 @@ describe('api middleware helpers', () => {
     // No need to stringify
     expect(result).toEqual(
       '/de/mypage/@navigation?expand=mycustomexpander,mycustomexpander2&expand.navigation.depth=3&someotherquery=1',
+    );
+  });
+  it('addExpandersToPath - Two custom expanders from settings, a list parameter present', () => {
+    config.settings.apiExpanders = [
+      {
+        match: '/',
+        GET_CONTENT: ['mycustomexpander', 'mycustomexpander2'],
+      },
+    ];
+
+    const result = addExpandersToPath(
+      '/de/mypage/@navigation?expand.navigation.depth=3&someotherquery=1&someotherquery=2',
+      GET_CONTENT,
+    );
+    // No need to stringify
+    expect(result).toEqual(
+      '/de/mypage/@navigation?expand=mycustomexpander,mycustomexpander2&expand.navigation.depth=3&someotherquery=1&someotherquery=2',
+    );
+  });
+  it('addExpandersToPath - Two custom expanders from settings, a list parameter present, and a translation expand already in query', () => {
+    config.settings.apiExpanders = [
+      {
+        match: '/',
+        GET_CONTENT: ['mycustomexpander', 'mycustomexpander2'],
+      },
+    ];
+
+    const result = addExpandersToPath(
+      '/de/mypage/@navigation?expand=translations&expand.navigation.depth=3&someotherquery=1&someotherquery=2',
+      GET_CONTENT,
+    );
+    // No need to stringify
+    expect(result).toEqual(
+      '/de/mypage/@navigation?expand=translations,mycustomexpander,mycustomexpander2&expand.navigation.depth=3&someotherquery=1&someotherquery=2',
+    );
+  });
+  it('addExpandersToPath - Two custom expanders from settings, a list parameter present, and a two expand present already in query', () => {
+    config.settings.apiExpanders = [
+      {
+        match: '/',
+        GET_CONTENT: ['mycustomexpander', 'mycustomexpander2'],
+      },
+    ];
+
+    const result = addExpandersToPath(
+      '/de/mypage/@navigation?expand=translations,secondexpand&expand.navigation.depth=3&someotherquery=1&someotherquery=2',
+      GET_CONTENT,
+    );
+    // No need to stringify
+    expect(result).toEqual(
+      '/de/mypage/@navigation?expand=translations,secondexpand,mycustomexpander,mycustomexpander2&expand.navigation.depth=3&someotherquery=1&someotherquery=2',
     );
   });
 });
