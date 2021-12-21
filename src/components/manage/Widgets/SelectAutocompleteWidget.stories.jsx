@@ -110,22 +110,10 @@ ManyOptions1000.args = {
   title: 'field 1 title',
   description: 'Optional help text',
   placeholder: 'Type something…',
-  items: {
-    choices: getOptionsGenerator(1000),
-  },
-};
-
-export const ManyOptions500 = WidgetStory.bind({
-  widget: SelectAutocompleteWidget,
-});
-ManyOptions500.args = {
-  ...props,
-  id: 'field-empty',
-  title: 'field 1 title',
-  description: 'Optional help text',
-  placeholder: 'Type something…',
-  items: {
-    choices: getOptionsGenerator(500),
+  getVocabulary: () => {
+    return Promise.resolve({
+      items: getOptionsGenerator(1000),
+    });
   },
 };
 
