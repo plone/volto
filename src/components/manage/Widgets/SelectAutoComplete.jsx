@@ -178,6 +178,7 @@ class SelectAutoComplete extends Component {
       size: -1,
       subrequest: this.props.intl.locale,
     });
+
     const choices =
       resp.items?.map((item) => ({
         label: item.title,
@@ -188,12 +189,10 @@ class SelectAutoComplete extends Component {
   };
 
   getValue = () => {
-    return this.props.value && this.props.currentTermPairs
+    return this.props.value && this.props.choices
       ? this.props.value.map((v) => {
           return {
-            label:
-              find(this.props.currentTermPairs, (c) => c.value === v)?.label ||
-              v,
+            label: find(this.props.choices, (c) => c.value === v)?.label || v,
             value: v,
           };
         })
@@ -269,21 +268,14 @@ export default compose(
 
       // If the schema already has the choices in it, then do not try to get the vocab,
       // even if there is one
-      if (props.items?.choices) {
-        return {
-          choices: props.items.choices,
-        };
-      } else if (vocabState) {
-        return {
-          choices: vocabState.items,
-          vocabBaseUrl,
-          currentTermPairs:
-            state.vocabularies?.[vocabBaseUrl]?.subrequests?.[
-              `widget-${props.id}-${props.intl.locale}`
-            ]?.items,
-        };
-      }
-      return { vocabBaseUrl };
+      return props.items?.choices
+        ? { choices: props.items.choices }
+        : vocabState
+        ? {
+            choices: vocabState.items,
+            vocabBaseUrl,
+          }
+        : { vocabBaseUrl };
     },
     { getVocabulary, getVocabularyTokenTitle },
   ),
