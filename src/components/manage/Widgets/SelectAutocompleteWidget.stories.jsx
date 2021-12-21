@@ -117,17 +117,6 @@ ManyOptions1000.args = {
   },
 };
 
-export const MultiSelection = WidgetStory.bind({
-  widget: SelectAutocompleteWidget,
-});
-MultiSelection.args = {
-  ...props,
-  id: 'field-empty',
-  title: 'field 1 title',
-  description: 'Select multiple values',
-  placeholder: 'Type something…',
-};
-
 export default {
   title: 'Widgets/SelectAutocomplete Widget',
   component: SelectAutoCompleteComponent,

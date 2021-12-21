@@ -4,7 +4,7 @@ import UrlWidgetDefault, { UrlWidget } from './UrlWidget';
 import WidgetStory from './story';
 
 export const Url = WidgetStory.bind({
-  props: { id: 'align', title: 'Align' },
+  props: { id: 'align', title: 'URL' },
   widget: UrlWidgetDefault,
 });
 
