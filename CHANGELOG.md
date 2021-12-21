@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix the a11y violation of UrlWidget @iRohitSingh
+
 ### Internal
 
 ## 14.0.0 (2021-12-20)
