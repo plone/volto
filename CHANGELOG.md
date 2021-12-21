@@ -2,15 +2,9 @@
 
 ## 14.0.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Construct request with list parameters as separate querystring key value pairs according Zope convention @ksuess
-
-### Internal
 
 ## 14.0.0 (2021-12-20)
 
