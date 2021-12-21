@@ -74,8 +74,7 @@ upgrade-versions: ./bin/buildout ./version-constraints.cfg ./buildout.cfg ## Upd
 
 # Real targets
 
-./.installed.cfg:
-		./bin/buildout $(DEVELOP_SETUPS) \
+./.installed.cfg: ./bin/buildout $(DEVELOP_SETUPS) \
 		./version-constraints.cfg ./versions.cfg ./buildout.cfg
 	"$(<)" instance:http-address=$(INSTANCE_PORT)
 
