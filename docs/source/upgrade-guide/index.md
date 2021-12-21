@@ -107,10 +107,11 @@ More information: https://docs.voltocms.com/upgrade-guide/#volto-configuration-r
 
 Not really a breaking change, but it's worth noting it. By default, Volto 14 comes with
 [content-locking](/configuration/locking) enabled, if the backend supports it. Thus:
-* Upgrade Plone RestAPI:
-    * **plone.restapi**>=`8.9.0` (Plone 5+)
-    * **plone.restapi**>=`7.4.0` (Plone 4)
-* Update `plone:CORSPolicy` to include `Lock-Token` within `allow_headers`:
+
+- Upgrade Plone RestAPI
+  - **plone.restapi**>=`8.9.0` (Plone 5+)
+  - **plone.restapi**>=`7.4.0` (Plone 4)
+- Update `plone:CORSPolicy` to include `Lock-Token` within `allow_headers`:
 
 ```xml
   <plone:CORSPolicy
