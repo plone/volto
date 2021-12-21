@@ -3,12 +3,6 @@ import { SelectAutoCompleteComponent } from './SelectAutoComplete';
 import WidgetStory from './story';
 
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
-import checkSVG from '@plone/volto/icons/check.svg';
-import { Icon } from '@plone/volto/components';
-
-import bellRingingSVG from '@plone/volto/icons/bell-ringing.svg';
-import blogSVG from '@plone/volto/icons/blog.svg';
-import bookSVG from '@plone/volto/icons/book.svg';
 
 const SelectAutocompleteWidget = injectLazyLibs(['reactSelectAsync'])(
   SelectAutoCompleteComponent,
@@ -36,7 +30,6 @@ Default.args = {
   title: 'field 1 title',
   description: 'Optional help text',
   placeholder: 'Type something…',
-  isMulti: false,
 };
 
 export const Required = WidgetStory.bind({
@@ -59,7 +52,7 @@ Filled.args = {
   id: 'field-filled',
   title: 'Filled field title',
   description: 'Optional help text',
-  value: 'Foo',
+  value: [{ token: 'foo', title: 'Foo' }],
   placeholder: 'Type something…',
   required: true,
 };
@@ -73,18 +66,7 @@ Errored.args = {
   title: 'Errored field title',
   description: 'Optional help text',
   placeholder: 'Type something…',
-  // Simplest example in Plone - a "hardcoded, hand made" vocab using SimpleVocabulary/SimpleTerm
-  // allow_discussion = schema.Choice(
-  //     title=_(u'Allow discussion'),
-  //     description=_(u'Allow discussion for this content object.'),
-  //     vocabulary=SimpleVocabulary([
-  //       SimpleTerm(value=True, title=_(u'Yes')),
-  //       SimpleTerm(value=False, title=_(u'No')),
-  //     ]),
-  //     required=False,
-  //     default=None,
-  // )
-  value: 'Foo',
+  value: [{ token: 'foo', title: 'Foo' }],
   error: ['This is the error'],
   required: true,
 };
@@ -98,49 +80,6 @@ NoPlaceholder.args = {
   title: 'Field title',
   description: 'This field has no value option',
   required: true,
-};
-
-export const WithoutNoValueOption = WidgetStory.bind({
-  widget: SelectAutocompleteWidget,
-});
-WithoutNoValueOption.args = {
-  ...props,
-  id: 'field-without-novalue',
-  title: 'Field title',
-  description: 'This field has no value option',
-  placeholder: 'Select something…',
-  required: true,
-  noValueOption: false,
-};
-
-export const VocabularyBased = WidgetStory.bind({
-  widget: SelectAutocompleteWidget,
-});
-VocabularyBased.args = {
-  ...props,
-  id: 'field-vocab-based',
-  title: 'field title',
-  description: 'This is a vocab-based field',
-  placeholder: 'Select something…',
-  // choices in Vocabulary based selects that has choices and spects a string in return
-  // Use case: Language select - A Choice schema that spects a string as value
-  //   language = schema.Choice(
-  //     title=_(u'label_language', default=u'Language'),
-  //     vocabulary='plone.app.vocabularies.SupportedContentLanguages',
-  //     required=False,
-  //     missing_value='',
-  //     defaultFactory=default_language,
-  // )
-  // p.restapi vocab endpoint outputs
-  // "items": [{title: "English", token: "en"}, ...]
-  // The widget sends a string as value in the PATCH/POST:
-  // value: "en"
-  choices: [
-    { label: 'English', value: 'en' },
-    { label: 'Catala', value: 'ca' },
-  ],
-  required: true,
-  vocabBaseUrl: 'https://anapivocabularyURL',
 };
 
 export const Disabled = WidgetStory.bind({
@@ -199,43 +138,6 @@ MultiSelection.args = {
   title: 'field 1 title',
   description: 'Select multiple values',
   placeholder: 'Type something…',
-  isMulti: true,
-};
-
-const Option = injectLazyLibs('reactSelect')((props) => {
-  const { Option } = props.reactSelect.components;
-  const icons = {
-    FooBar: bellRingingSVG,
-    Bar: blogSVG,
-    Foo: bookSVG,
-  };
-  return (
-    <Option {...props}>
-      <div>
-        {icons[props.value] && <Icon name={icons[props.value]} size="24px" />}
-        {props.label}
-      </div>
-      {props.isFocused && !props.isSelected && (
-        <Icon name={checkSVG} size="24px" color="#b8c6c8" />
-      )}
-      {props.isSelected && <Icon name={checkSVG} size="24px" color="#007bc1" />}
-    </Option>
-  );
-});
-
-export const CustomOptions = WidgetStory.bind({
-  widget: SelectAutocompleteWidget,
-  props: {
-    customOptionStyling: Option,
-  },
-});
-CustomOptions.args = {
-  ...props,
-  id: 'field-empty',
-  title: 'field 1 title',
-  description: 'Select a value',
-  placeholder: 'Type something…',
-  isMulti: false,
 };
 
 export default {

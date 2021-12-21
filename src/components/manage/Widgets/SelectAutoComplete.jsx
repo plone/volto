@@ -75,6 +75,7 @@ class SelectAutoComplete extends Component {
     ),
     onChange: PropTypes.func.isRequired,
     wrapped: PropTypes.bool,
+    isDisabled: PropTypes.bool,
   };
 
   /**
@@ -109,6 +110,7 @@ class SelectAutoComplete extends Component {
 
     this.state = {
       searchLength: 0,
+      availableChoices: {},
     };
   }
 
@@ -137,21 +139,8 @@ class SelectAutoComplete extends Component {
       if (this.timeoutRef.current) clearTimeout(this.timeoutRef.current);
       return new Promise((resolve) => {
         this.timeoutRef.current = setTimeout(async () => {
-          resolve(
-            await this.props
-              .getVocabulary({
-                vocabNameOrURL: this.props.vocabBaseUrl,
-                query,
-                size: -1,
-                subrequest: this.props.intl.locale,
-              })
-              .then((resp) => {
-                return resp.items.map((item) => ({
-                  label: item.title,
-                  value: item.token,
-                }));
-              }),
-          );
+          const res = await this.fetchAvailableChoices();
+          resolve(res);
         }, 400);
       });
     } else {
@@ -159,14 +148,43 @@ class SelectAutoComplete extends Component {
     }
   };
 
-  getValue = () =>
-    this.props.value
+  componentDidMount() {
+    Promise.resolve(this.fetchAvailableChoices(''));
+  }
+
+  fetchAvailableChoices = async (query) => {
+    const resp = await this.props.getVocabulary({
+      vocabNameOrURL: this.props.vocabBaseUrl,
+      query,
+      size: -1,
+      subrequest: this.props.intl.locale,
+    });
+    const choices =
+      resp.items?.map((item) => ({
+        label: item.title,
+        value: item.token,
+      })) || [];
+
+    this.setState((state) => {
+      const availableChoices = Object.assign(
+        { ...state.availableChoices },
+        ...choices.map(({ label, value }) => ({ [value]: label })),
+      );
+      return { availableChoices };
+    });
+
+    return choices;
+  };
+
+  getValue = () => {
+    return this.props.value
       ? this.props.value.map((item) =>
           isObject(item)
             ? { label: item.title || item.token, value: item.token }
-            : { label: item, value: item },
+            : { label: this.state.availableChoices[item] || item, value: item },
         )
       : [];
+  };
 
   /**
    * Render method.
@@ -183,7 +201,7 @@ class SelectAutoComplete extends Component {
         <SelectAsync
           id={`field-${this.props.id}`}
           key={this.props.id}
-          isDisabled={this.props.isDisabled}
+          isDisabled={this.props.disabled || this.props.isDisabled}
           className="react-select-container"
           classNamePrefix="react-select"
           cacheOptions

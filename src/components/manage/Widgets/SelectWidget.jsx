@@ -108,6 +108,7 @@ class SelectWidget extends Component {
       PropTypes.string,
       PropTypes.bool,
       PropTypes.func,
+      PropTypes.array,
     ]),
     onChange: PropTypes.func.isRequired,
     onBlur: PropTypes.func,
