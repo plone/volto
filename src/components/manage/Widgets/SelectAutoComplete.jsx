@@ -108,13 +108,6 @@ class SelectAutoComplete extends Component {
     this.handleChange = this.handleChange.bind(this);
 
     this.state = {
-      selectedOption: props.value
-        ? props.value.map((item) =>
-            isObject(item)
-              ? { label: item.title || item.token, value: item.token }
-              : { label: item, value: item },
-          )
-        : [],
       searchLength: 0,
     };
   }
@@ -127,8 +120,6 @@ class SelectAutoComplete extends Component {
    * @returns {undefined}
    */
   handleChange(selectedOption) {
-    this.setState({ selectedOption });
-
     this.props.onChange(
       this.props.id,
       selectedOption ? selectedOption.map((item) => item.value) : null,
@@ -168,13 +159,23 @@ class SelectAutoComplete extends Component {
     }
   };
 
+  getValue = () =>
+    this.props.value
+      ? this.props.value.map((item) =>
+          isObject(item)
+            ? { label: item.title || item.token, value: item.token }
+            : { label: item, value: item },
+        )
+      : [];
+
   /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
-    const { selectedOption } = this.state;
+    const selectedOption = this.getValue();
+
     const SelectAsync = this.props.reactSelectAsync.default;
 
     return (
