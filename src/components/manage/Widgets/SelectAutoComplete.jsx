@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
-import { isObject } from 'lodash';
+import { find } from 'lodash';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
@@ -16,7 +16,7 @@ import {
   getVocabFromField,
   getVocabFromItems,
 } from '@plone/volto/helpers';
-import { getVocabulary } from '@plone/volto/actions';
+import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
 
 import {
   Option,
@@ -110,8 +110,31 @@ class SelectAutoComplete extends Component {
 
     this.state = {
       searchLength: 0,
-      availableChoices: {},
     };
+  }
+
+  componentDidMount() {
+    const { id, intl, value } = this.props;
+    if (value && value?.length > 0) {
+      this.props.getVocabularyTokenTitle({
+        vocabNameOrURL: this.props.vocabBaseUrl,
+        tokens: this.props.value,
+        size: -1,
+        subrequest: `widget-${id}-${intl.locale}`,
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { id, intl, value } = this.props;
+    if (prevProps.value !== value && value?.length > 0) {
+      this.props.getVocabularyTokenTitle({
+        vocabNameOrURL: this.props.vocabBaseUrl,
+        tokens: this.props.value,
+        size: -1,
+        subrequest: `widget-${id}-${intl.locale}`,
+      });
+    }
   }
 
   /**
@@ -139,7 +162,7 @@ class SelectAutoComplete extends Component {
       if (this.timeoutRef.current) clearTimeout(this.timeoutRef.current);
       return new Promise((resolve) => {
         this.timeoutRef.current = setTimeout(async () => {
-          const res = await this.fetchAvailableChoices();
+          const res = await this.fetchAvailableChoices(query);
           resolve(res);
         }, 400);
       });
@@ -147,10 +170,6 @@ class SelectAutoComplete extends Component {
       return Promise.resolve([]);
     }
   };
-
-  componentDidMount() {
-    Promise.resolve(this.fetchAvailableChoices(''));
-  }
 
   fetchAvailableChoices = async (query) => {
     const resp = await this.props.getVocabulary({
@@ -165,24 +184,19 @@ class SelectAutoComplete extends Component {
         value: item.token,
       })) || [];
 
-    this.setState((state) => {
-      const availableChoices = Object.assign(
-        { ...state.availableChoices },
-        ...choices.map(({ label, value }) => ({ [value]: label })),
-      );
-      return { availableChoices };
-    });
-
     return choices;
   };
 
   getValue = () => {
-    return this.props.value
-      ? this.props.value.map((item) =>
-          isObject(item)
-            ? { label: item.title || item.token, value: item.token }
-            : { label: this.state.availableChoices[item] || item, value: item },
-        )
+    return this.props.value && this.props.currentTermPairs
+      ? this.props.value.map((v) => {
+          return {
+            label:
+              find(this.props.currentTermPairs, (c) => c.value === v)?.label ||
+              v,
+            value: v,
+          };
+        })
       : [];
   };
 
@@ -249,7 +263,9 @@ export default compose(
         getVocabFromItems(props);
 
       const vocabState =
-        state.vocabularies?.[vocabBaseUrl]?.subrequests?.[props.intl.locale];
+        state.vocabularies?.[vocabBaseUrl]?.subrequests?.[
+          `widget-${props.id}-${props.intl.locale}`
+        ]?.items;
 
       // If the schema already has the choices in it, then do not try to get the vocab,
       // even if there is one
@@ -261,10 +277,14 @@ export default compose(
         return {
           choices: vocabState.items,
           vocabBaseUrl,
+          currentTermPairs:
+            state.vocabularies?.[vocabBaseUrl]?.subrequests?.[
+              `widget-${props.id}-${props.intl.locale}`
+            ]?.items,
         };
       }
       return { vocabBaseUrl };
     },
-    { getVocabulary },
+    { getVocabulary, getVocabularyTokenTitle },
   ),
 )(SelectAutoComplete);
