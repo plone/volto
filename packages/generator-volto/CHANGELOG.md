@@ -1,10 +1,28 @@
 # Change Log
 
-## 5.0.0 (unreleased)
+## 5.0.1 (unreleased)
 
 ### Added
 
 ### Changes
+
+## 5.0.0 (2021-12-20)
+
+### Breaking
+
+- Added new configuration for i18n using the new package `@plone/scripts`. 5.0.0 and onwards is supposed to work on Volto 14 and above. @sneridagh
+
+### Added
+
+- Support Node 16 @sneridagh
+- Add prettier and lint scripts to generator @tisto
+
+### Internal
+
+- Add more exceptions to .gitignore @avoinea
+- Addon add prompt now accept fallacy choices @nileshgulia1
+
+## 5.0.0-alpha.2 (2021-12-20)
 
 ### Internal
 
