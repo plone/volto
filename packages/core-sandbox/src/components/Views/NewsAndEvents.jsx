@@ -14,7 +14,7 @@ const NewsAndEvents = () => {
         '/',
         {
           portal_type: ['News Item', 'Event'],
-          metadata_fields: ['subject', 'modified'],
+          metadata_fields: ['subject', 'modified', 'someotherinfo'],
 
           // That's OK:
           // portal_type: ['News Item'],
@@ -30,7 +30,7 @@ const NewsAndEvents = () => {
       <h1>News And Events</h1>
       {newsandevents &&
         newsandevents.map((item) => (
-          <div>
+          <div key={item['@id']}>
             <div>{item.title}</div>
             <div>{item['@type']}</div>
             <div>{item.subject}</div>

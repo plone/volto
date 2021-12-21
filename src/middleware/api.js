@@ -41,7 +41,6 @@ export function addExpandersToPath(path, type) {
     query.expand = expand;
   }
   const stringifiedQuery = qs.stringify(query, {
-    arrayFormat: 'comma',
     encode: false,
   });
   if (!stringifiedQuery) {

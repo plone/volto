@@ -5,17 +5,17 @@ context('Search action tests', () => {
       cy.visit('/');
       cy.autologin();
       cy.createContent({
-        contentType: 'Document',
-        contentId: 'document',
-        contentTitle: 'Test document',
+        contentType: 'Folder',
+        contentId: 'folder1',
+        contentTitle: 'Test folder',
       });
 
-      cy.visit('/document');
+      cy.visit('/folder1');
       cy.waitForResourceToLoad('@navigation');
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('document');
+      cy.waitForResourceToLoad('folder1');
 
       cy.createContent({
         contentType: 'News Item',
@@ -39,12 +39,12 @@ context('Search action tests', () => {
         .type('{enter}');
       cy.get('#toolbar-save').click();
 
-      cy.visit('/document');
+      cy.visit('/folder1');
       cy.waitForResourceToLoad('@navigation');
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('document');
+      cy.waitForResourceToLoad('folder1');
     });
 
     it('Search result contains news item with subject', function () {

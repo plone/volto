@@ -83,7 +83,7 @@ const applyConfig = (config) => {
       ...config.views,
       contentTypesViews: {
         ...config.views.contentTypesViews,
-        Document: NewsAndEvents,
+        Folder: NewsAndEvents,
       },
     },
   };
