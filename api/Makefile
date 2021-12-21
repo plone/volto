@@ -16,6 +16,8 @@ INSTANCE_PORT=8080
 
 # Recipe snippets for reuse
 
+DEVELOP_SETUPS=$(wildcard ./src/*/setup.py)
+
 # We like colors
 # From: https://coderwall.com/p/izxssa/colored-makefile-for-golang-projects
 RED=`tput setaf 1`
@@ -73,7 +75,7 @@ upgrade-versions: ./bin/buildout ./version-constraints.cfg ./buildout.cfg ## Upd
 # Real targets
 
 ./.installed.cfg:
-		./bin/buildout ./src/*/setup.py \
+		./bin/buildout $(DEVELOP_SETUPS) \
 		./version-constraints.cfg ./versions.cfg ./buildout.cfg
 	"$(<)" instance:http-address=$(INSTANCE_PORT)
 
