@@ -9,6 +9,7 @@
 ### Internal
 
 - Refresh app generator template `yarn.lock` to match latest upgrades @sneridagh
+- Fix Volto project template devDependencies @avoinea
 
 ## 5.0.0 (2021-12-20)
 
