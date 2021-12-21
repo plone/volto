@@ -44,15 +44,28 @@ Required.args = {
   required: true,
 };
 
-export const Filled = WidgetStory.bind({
+export const FilledWithToken = WidgetStory.bind({
   widget: SelectAutocompleteWidget,
 });
-Filled.args = {
+FilledWithToken.args = {
   ...props,
   id: 'field-filled',
   title: 'Filled field title',
   description: 'Optional help text',
   value: [{ token: 'foo', title: 'Foo' }],
+  placeholder: 'Type something…',
+  required: true,
+};
+
+export const FilledWithString = WidgetStory.bind({
+  widget: SelectAutocompleteWidget,
+});
+FilledWithString.args = {
+  ...props,
+  id: 'field-filled',
+  title: 'Filled field title',
+  description: 'Optional help text',
+  value: ['foo'],
   placeholder: 'Type something…',
   required: true,
 };
