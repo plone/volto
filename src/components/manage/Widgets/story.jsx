@@ -13,7 +13,9 @@ export default function StoryComponent({ children, ...args }) {
       customStore={this.customStore}
     >
       <FormUndoWrapper
-        initialState={{ value: args.initialValue || this.initialValue }}
+        initialState={{
+          value: args.value || args.initialValue || this.initialValue,
+        }}
         showControls={this.showUndoControls ?? true}
       >
         {({ state, onChange }) => (

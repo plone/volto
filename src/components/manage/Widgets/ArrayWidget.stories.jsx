@@ -27,13 +27,16 @@ Required.args = {
   required: true,
 };
 
-export const Filled = WidgetStory.bind({ widget: ArrayWidget });
+export const Filled = WidgetStory.bind({
+  widget: ArrayWidget,
+  props: { value: ['foo'] },
+});
 Filled.args = {
   id: 'field-filled',
   title: 'Filled field title',
   description: 'Optional help text',
   choices,
-  value: ['Foo'],
+  value: ['foo'],
   placeholder: 'Type something…',
   required: true,
 };
