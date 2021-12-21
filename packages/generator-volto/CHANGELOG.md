@@ -6,6 +6,10 @@
 
 ### Changes
 
+### Internal
+
+- Fix Volto project template devDependencies @avoinea
+
 ## 5.0.0 (2021-12-20)
 
 ### Breaking
