@@ -2,12 +2,6 @@
 
 ## 14.0.2 (unreleased)
 
-### Breaking
-
-### Feature
-
-### Bugfix
-
 ### Internal
 
 - Better favicon definitions, 2021 bullet proof @sneridagh
