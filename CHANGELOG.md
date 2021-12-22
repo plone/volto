@@ -12,6 +12,7 @@
 - Remove use of internal component state for ArrayWidget, SelectWidget and TokenWidget, (to support form undo) @tiberiuichim
 - Use lazy loading of react-dates and momentjs for the DatetimeWidget @tiberiuichim
 - Improve widget stories, add a common `WidgetStory` class, show undo capabilities in widget stories @tiberiuichim
+- Better SelectAutocompleteWidget and SelectUtils @giuliaghisini @sneridagh @tiberiuichim
 
 ### Bugfix
 
