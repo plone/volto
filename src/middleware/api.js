@@ -108,7 +108,7 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
     return action(dispatch, getState);
   }
 
-  const { request, type, mode = 'paralel', ...rest } = action;
+  const { request, type, mode = 'parallel', ...rest } = action;
   let actionPromise;
 
   if (!request) {
