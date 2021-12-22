@@ -10,22 +10,33 @@ const messages = defineMessages({
 });
 
 /**
- * Extract the tokens from the value of a field (for a select widget).
+ * Prepares a vocab endpoint query for tokens based on passed value.
  *
  * This can be used to facilitate querying a vocabulary endpoint for labels,
  * given some token values. This assumes that the value has already been
  * normalized by normalizeValue.
  */
-export function convertValueToTokens(value) {
-  if (!value) return null;
+export function convertValueToVocabQuery(value) {
+  if (isString(value) || isBoolean(value)) return { token: value.toString() };
 
-  if (isString(value)) return value;
+  if (!value) return {};
 
   if (Array.isArray(value)) {
-    return value.map(({ token }) => token);
+    return {
+      tokens: value
+        .map((v) =>
+          isObject(v)
+            ? v.value ?? v.token
+            : isString(v) || isBoolean(v)
+            ? v
+            : null,
+        )
+        .filter((f) => f !== null),
+    };
   }
 
-  return value.token;
+  const token = value.value ?? value.token;
+  return isString(token) ? { token } : {};
 }
 
 /**

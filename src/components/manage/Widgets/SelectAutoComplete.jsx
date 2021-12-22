@@ -12,7 +12,7 @@ import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import {
   normalizeValue,
   normalizeChoices,
-  convertValueToTokens,
+  convertValueToVocabQuery,
 } from './SelectUtils';
 
 import {
@@ -118,13 +118,16 @@ class SelectAutoComplete extends Component {
   }
 
   componentDidMount() {
-    const { id, intl, value } = this.props;
+    const { id, intl, value, choices } = this.props;
     if (value && value?.length > 0) {
+      const tokensQuery = convertValueToVocabQuery(
+        normalizeValue(choices, value),
+      );
       this.props.getVocabularyTokenTitle({
         vocabNameOrURL: this.props.vocabBaseUrl,
-        tokens: this.props.value,
         size: -1,
         subrequest: `widget-${id}-${intl.locale}`,
+        ...tokensQuery,
       });
     }
   }
@@ -132,11 +135,14 @@ class SelectAutoComplete extends Component {
   componentDidUpdate(prevProps, prevState) {
     const { id, intl, value, choices = [] } = this.props;
     if (prevProps.value !== value && value?.length > 0) {
+      const tokensQuery = convertValueToVocabQuery(
+        normalizeValue(choices, value),
+      );
       this.props.getVocabularyTokenTitle({
         vocabNameOrURL: this.props.vocabBaseUrl,
-        tokens: convertValueToTokens(normalizeValue(choices, value)),
         size: -1,
         subrequest: `widget-${id}-${intl.locale}`,
+        ...tokensQuery,
       });
     }
   }
