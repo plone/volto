@@ -36,6 +36,13 @@ describe('Add Content Tests', () => {
     cy.findByLabelText('Edit');
     cy.contains('My File');
   });
+  it('As editor I can add a file', function () {
+    cy.get('#toolbar-add').click();
+    cy.get('#toolbar-add-event').click();
+    cy.get('#start-time').click();
+    cy.get('.rc-time-picker-panel-input').click();
+    cy.get('.rc-time-picker-panel-input').clear();
+  });
 
   it('As editor I can add a page', function () {
     // when I add a page
@@ -129,7 +136,6 @@ describe('Add Content Tests', () => {
   });
 
   it('As editor I can add a Link (with an external link)', function () {
-
     // When I add a link
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-link').click();
@@ -152,7 +158,6 @@ describe('Add Content Tests', () => {
   });
 
   it('As editor I can add a Link (with an internal link)', function () {
-
     // Given a Document "Link Target"
     cy.createContent({
       contentType: 'Document',
@@ -184,5 +189,4 @@ describe('Add Content Tests', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/link-target');
     cy.get('main').contains('Link Target');
   });
-
 });
