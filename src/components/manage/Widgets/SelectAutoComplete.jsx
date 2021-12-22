@@ -9,7 +9,11 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
-import { normalizeValue, normalizeChoices } from './SelectUtils';
+import {
+  normalizeValue,
+  normalizeChoices,
+  convertValueToTokens,
+} from './SelectUtils';
 
 import {
   getVocabFromHint,
@@ -126,11 +130,11 @@ class SelectAutoComplete extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { id, intl, value } = this.props;
+    const { id, intl, value, choices = [] } = this.props;
     if (prevProps.value !== value && value?.length > 0) {
       this.props.getVocabularyTokenTitle({
         vocabNameOrURL: this.props.vocabBaseUrl,
-        tokens: this.props.value,
+        tokens: convertValueToTokens(normalizeValue(choices, value)),
         size: -1,
         subrequest: `widget-${id}-${intl.locale}`,
       });
