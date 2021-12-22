@@ -114,6 +114,8 @@ const getOptionsGenerator = (count) => {
   return options;
 };
 
+const manyOptions1000 = getOptionsGenerator(1000);
+
 export const ManyOptions1000 = WidgetStory.bind({
   widget: SelectAutocompleteWidget,
 });
@@ -123,9 +125,10 @@ ManyOptions1000.args = {
   title: 'field 1 title',
   description: 'Optional help text',
   placeholder: 'Type something…',
+  choices: manyOptions1000.slice(0, 20),
   getVocabulary: () => {
     return Promise.resolve({
-      items: getOptionsGenerator(1000),
+      items: manyOptions1000,
     });
   },
 };
