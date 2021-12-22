@@ -2,10 +2,6 @@
 
 ## 5.0.1 (unreleased)
 
-### Added
-
-### Changes
-
 ### Internal
 
 - Refresh app generator template `yarn.lock` to match latest upgrades @sneridagh
