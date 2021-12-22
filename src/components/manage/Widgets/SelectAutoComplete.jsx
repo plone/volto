@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import { normalizeValue, normalizeChoices } from './SelectUtils';
 
 import {
   getVocabFromHint,
@@ -42,23 +43,9 @@ const messages = defineMessages({
   },
 });
 
-const normalizeChoices = (items) =>
-  items.map((item) => {
-    return item.token
-      ? {
-          label: item.title || item.token,
-          value: item.token,
-        }
-      : item.label
-      ? item
-      : Array.isArray(item)
-      ? { value: item[0], label: item[1] }
-      : item;
-  }) || [];
-
 /**
- * ArrayWidget component class.
- * @class ArrayWidget
+ * SelectAutoComplete component class.
+ * @class SelectAutoComplete
  * @extends Component
  */
 class SelectAutoComplete extends Component {
@@ -195,27 +182,16 @@ class SelectAutoComplete extends Component {
     return normalizeChoices(resp.items || []);
   };
 
-  getValue = () => {
-    const choiceMap = Object.assign(
-      {},
-      ...normalizeChoices(this.props.choices).map(({ label, value }) => ({
-        [value]: label,
-      })),
-    );
-    return (this.props.value || []).map((v) => ({
-      label: choiceMap[v] || v,
-      value: v,
-    }));
-  };
-
   /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
-    const selectedOption = this.getValue();
-
+    const selectedOption = normalizeValue(
+      this.props.choices || [],
+      this.props.value,
+    );
     const SelectAsync = this.props.reactSelectAsync.default;
 
     return (
