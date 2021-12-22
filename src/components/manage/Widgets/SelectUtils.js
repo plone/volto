@@ -1,4 +1,4 @@
-import { find, isBoolean, isObject, isArray } from 'lodash';
+import { isBoolean, isObject } from 'lodash';
 import { getBoolean } from '@plone/volto/helpers';
 import { defineMessages } from 'react-intl';
 
@@ -10,28 +10,63 @@ const messages = defineMessages({
 });
 
 /**
+ * Normalizes provided value to a "best representation" value, as accepted by
+ * react-select. In this case, it is an object of shape `{ label, value }`
+ */
+export function normalizeSingleSelectOption(value) {
+  if (!value) return value;
+
+  if (Array.isArray(value)) {
+    // assuming [token, title] pair
+    if (value.length === 2) return { value: value[0], label: value[1] };
+
+    throw new Error(`Unknown value type of select widget: ${value}`);
+  }
+
+  const token = value.token ?? value.value ?? 'no-value';
+  const label =
+    (value.title && value.title !== 'None' ? value.title : undefined) ??
+    value.label ??
+    this.props.intl.formatMessage(messages.no_value);
+
+  return {
+    value: token,
+    label,
+  };
+}
+
+export const normalizeChoices = (items) =>
+  items.map(normalizeSingleSelectOption);
+
+/**
  * Given the value from the API, it normalizes to a value valid to use in react-select.
  * This is necessary because of the inconsistencies in p.restapi vocabularies implementations as
  * they need to adapt to react-select public interface.
  * @function normalizeValue
  * @param {array} choices The choices
  * @param {string|object|boolean|array} value The value
- * @returns {Object} An object of shape {label: "", value: ""}.
+ * @returns {Object} An object of shape {label: "", value: ""} (or an array)
  */
 export function normalizeValue(choices, value) {
+  choices = normalizeChoices(choices || []);
+  const choiceMap = Object.assign(
+    {},
+    ...choices.map(({ label, value }) => ({
+      [value]: label,
+    })),
+  );
+
   if (!isObject(value) && isBoolean(value)) {
     // We have a boolean value, which means we need to provide a "No value"
     // option
-    const label = find(choices, (o) => getBoolean(o[0]) === value);
+    const label = choiceMap[getBoolean(value)];
     return label
       ? {
-          label: label[1],
+          label,
           value,
         }
       : {};
   }
-  if (value === undefined) return null;
-  if (!value || value.length === 0) return null;
   if (value === 'no-value') {
     return {
       label: this.props.intl.formatMessage(messages.no_value),
@@ -39,27 +74,20 @@ export function normalizeValue(choices, value) {
     };
   }
 
-  if (isArray(value) && choices.length > 0) {
-    return value.map((v) => ({
-      label: find(choices, (o) => o[0] === v)?.[1] || v,
-      value: v,
-    }));
-  } else if (isObject(value)) {
-    return {
-      label: value.title !== 'None' && value.title ? value.title : value.token,
-      value: value.token,
-    };
-  } else if (value && choices && choices.length > 0 && isArray(choices[0])) {
-    return { label: find(choices, (o) => o[0] === value)?.[1] || value, value };
-  } else if (
-    value &&
-    choices &&
-    choices.length > 0 &&
-    Object.keys(choices[0]).includes('value') &&
-    Object.keys(choices[0]).includes('label')
-  ) {
-    return find(choices, (o) => o.value === value) || null;
-  } else {
-    return null;
+  if (value === undefined || !value || value.length === 0) return null;
+
+  if (Array.isArray(value)) {
+    // a list of values, like ['foo', 'bar'];
+    return value.map((v) => normalizeValue(choices, v));
   }
+
+  if (isObject(value)) {
+    // an object like `{label, value}` or `{ title, value }`
+    return normalizeSingleSelectOption(value);
+  }
+
+  // fallback: treat value as a token and look it up in choices
+  return Object.keys(choiceMap).includes(value)
+    ? { label: choiceMap[value], value }
+    : null;
 }

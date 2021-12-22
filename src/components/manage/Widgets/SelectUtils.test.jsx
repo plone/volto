@@ -98,4 +98,16 @@ describe('normalizeValue', () => {
     const value = undefined;
     expect(normalizeValue(choices, value)).toStrictEqual(null);
   });
+
+  it('Given an array of tokenized value objects, with no choices', () => {
+    const choices = [];
+    const value = [
+      { title: 'Option 1', value: 'opt1' },
+      { title: 'Option 2', value: 'opt2' },
+    ];
+    expect(normalizeValue(choices, value)).toStrictEqual([
+      { label: 'Option 1', value: 'opt1' },
+      { label: 'Option 2', value: 'opt2' },
+    ]);
+  });
 });
