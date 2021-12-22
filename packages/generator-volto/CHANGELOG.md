@@ -1,6 +1,6 @@
 # Change Log
 
-## 5.0.1 (unreleased)
+## 5.0.1 (2021-12-22)
 
 ### Internal
 
