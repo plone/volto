@@ -1,12 +1,11 @@
 /**
- * ArrayWidget component.
- * @module components/manage/Widgets/ArrayWidget
+ * SelectAutoComplete component.
+ * @module components/manage/Widgets/SelectAutoComplete
  */
 
 import React, { Component } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
-import { find } from 'lodash';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
@@ -42,6 +41,20 @@ const messages = defineMessages({
     defaultMessage: 'Type text...',
   },
 });
+
+const normalizeChoices = (items) =>
+  items.map((item) => {
+    return item.token
+      ? {
+          label: item.title || item.token,
+          value: item.token,
+        }
+      : item.label
+      ? item
+      : Array.isArray(item)
+      ? { value: item[0], label: item[1] }
+      : item;
+  }) || [];
 
 /**
  * ArrayWidget component class.
@@ -179,24 +192,20 @@ class SelectAutoComplete extends Component {
       subrequest: this.props.intl.locale,
     });
 
-    const choices =
-      resp.items?.map((item) => ({
-        label: item.title,
-        value: item.token,
-      })) || [];
-
-    return choices;
+    return normalizeChoices(resp.items || []);
   };
 
   getValue = () => {
-    return this.props.value && this.props.choices
-      ? this.props.value.map((v) => {
-          return {
-            label: find(this.props.choices, (c) => c.value === v)?.label || v,
-            value: v,
-          };
-        })
-      : [];
+    const choiceMap = Object.assign(
+      {},
+      ...normalizeChoices(this.props.choices).map(({ label, value }) => ({
+        [value]: label,
+      })),
+    );
+    return (this.props.value || []).map((v) => ({
+      label: choiceMap[v] || v,
+      value: v,
+    }));
   };
 
   /**
@@ -266,13 +275,13 @@ export default compose(
           `widget-${props.id}-${props.intl.locale}`
         ]?.items;
 
-      // If the schema already has the choices in it, then do not try to get the vocab,
-      // even if there is one
+      // If the schema already has the choices in it, then do not try to get
+      // the vocab, even if there is one
       return props.items?.choices
         ? { choices: props.items.choices }
         : vocabState
         ? {
-            choices: vocabState.items,
+            choices: vocabState,
             vocabBaseUrl,
           }
         : { vocabBaseUrl };

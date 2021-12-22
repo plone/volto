@@ -9,16 +9,16 @@ const SelectAutocompleteWidget = injectLazyLibs(['reactSelectAsync'])(
 );
 
 const props = {
-  items: {
-    choices: [
-      { token: 'foo', title: 'Foo' },
-      { token: 'bar', title: 'Bar' },
-      { token: 'fooBar', title: 'FooBar' },
-    ],
-  },
+  choices: [
+    { token: 'foo', title: 'Foo' },
+    { token: 'bar', title: 'Bar' },
+    { token: 'fooBar', title: 'FooBar' },
+  ],
+
   getVocabulary: () => {
-    return Promise.resolve({ items: props.items.choices });
+    return Promise.resolve({ items: props.choices });
   },
+  getVocabularyTokenTitle: () => {},
 };
 
 export const Default = WidgetStory.bind({
