@@ -1,4 +1,4 @@
-import { isBoolean, isObject } from 'lodash';
+import { isBoolean, isObject, isString } from 'lodash';
 import { getBoolean } from '@plone/volto/helpers';
 import { defineMessages } from 'react-intl';
 
@@ -8,6 +8,25 @@ const messages = defineMessages({
     defaultMessage: 'No value',
   },
 });
+
+/**
+ * Extract the tokens from the value of a field (for a select widget).
+ *
+ * This can be used to facilitate querying a vocabulary endpoint for labels,
+ * given some token values. This assumes that the value has already been
+ * normalized by normalizeValue.
+ */
+export function convertValueToTokens(value) {
+  if (!value) return null;
+
+  if (isString(value)) return value;
+
+  if (Array.isArray(value)) {
+    return value.map(({ token }) => token);
+  }
+
+  return value.token;
+}
 
 /**
  * Normalizes provided value to a "best representation" value, as accepted by
