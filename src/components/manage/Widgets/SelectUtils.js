@@ -47,8 +47,9 @@ export function normalizeSingleSelectOption(value) {
   if (!value) return value;
 
   if (Array.isArray(value)) {
-    // assuming [token, title] pair
-    if (value.length === 2) return { value: value[0], label: value[1] };
+    // assuming [token, title] pair.
+    if (value.length === 2)
+      return { value: value[0], label: value[1] || value[0] };
 
     throw new Error(`Unknown value type of select widget: ${value}`);
   }
