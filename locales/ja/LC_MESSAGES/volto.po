@@ -2562,8 +2562,8 @@ msgid "The backend is responding, but the CORS headers are not configured proper
 msgstr "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources. (未翻訳)"
 
 #: components/theme/CorsError/CorsError
-# defaultMessage: The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
-msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
+# defaultMessage: The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
+msgid "The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
 msgstr "Webサイトのバックエンドサーバが応答しません。ご不便をおかけして申し訳ありません。ページの再読み込みを実行してください。問題が解決しない場合は、サイト管理者にお問い合わせください。"
 
 #: components/manage/Blocks/Search/schema
