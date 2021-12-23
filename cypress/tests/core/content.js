@@ -37,11 +37,16 @@ describe('Add Content Tests', () => {
     cy.contains('My File');
   });
   it('As editor I am setting the time in  datetimeWidget', function () {
+    // when I add a Event
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-event').click();
     cy.get('#start-time').click();
     cy.get('.rc-time-picker-panel-input').click();
-    cy.get('.rc-time-picker-panel-input').clear();
+    cy.get('.rc-time-picker-panel-input').clear().type('6:40 AM');
+
+    // then
+
+    cy.get('.rc-time-picker-panel-input').should('have.text', '6:40 AM');
   });
 
   it('As editor I can add a page', function () {
