@@ -2,8 +2,6 @@
 
 ## 5.0.2 (unreleased)
 
-### Added
-
 ### Changes
 
 - Add missing public files from Volto 14 @sneridagh
