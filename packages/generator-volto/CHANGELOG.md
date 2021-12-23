@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Add missing public files from Volto 14 @sneridagh
+
 ## 5.0.1 (2021-12-22)
 
 ### Internal
