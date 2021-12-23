@@ -109,10 +109,10 @@
           ]
         }
       ]
-    },
+    }
     "ignoreFiles": "theme/themes/default/**/*.overrides"
   },
-    "browserslist": [
+  "browserslist": [
     ">1%",
     "last 4 versions",
     "Firefox ESR",
@@ -133,7 +133,6 @@
     "@storybook/addon-essentials": "^6.3.0",
     "@storybook/addon-links": "^6.3.0",
     "@storybook/react": "^6.3.0",
-    "release-it": "14.7.0",
     "stylelint": "14.0.1",
     "stylelint-config-idiomatic-order": "8.1.0",
     "stylelint-config-prettier": "8.0.1",
