@@ -36,7 +36,7 @@ describe('Add Content Tests', () => {
     cy.findByLabelText('Edit');
     cy.contains('My File');
   });
-  it('As editor I can add a file', function () {
+  it('As editor I can add a Event', function () {
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-event').click();
     cy.get('#start-time').click();
