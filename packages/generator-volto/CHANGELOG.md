@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Missing new stylelint config in app template @sneridagh
+
 ## 5.0.2 (2021-12-23)
 
 ### Changes
