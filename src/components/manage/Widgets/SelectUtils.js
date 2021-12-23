@@ -58,6 +58,7 @@ export function normalizeSingleSelectOption(value, intl) {
   const label =
     (value.title && value.title !== 'None' ? value.title : undefined) ??
     value.label ??
+    value.token ??
     intl.formatMessage(messages.no_value);
 
   return {
@@ -114,7 +115,7 @@ export function normalizeValue(choices, value, intl) {
 
   if (isObject(value)) {
     // an object like `{label, value}` or `{ title, value }`
-    return normalizeSingleSelectOption(value);
+    return normalizeSingleSelectOption(value, intl);
   }
 
   // fallback: treat value as a token and look it up in choices

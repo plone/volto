@@ -172,6 +172,7 @@ class SelectWidget extends Component {
    */
   render() {
     const { id, choices, value, intl, onChange } = this.props;
+    const normalizedValue = normalizeValue(choices, value, intl);
     // Make sure that both disabled and isDisabled (from the DX layout feat work)
     const disabled = this.props.disabled || this.props.isDisabled;
     const Select = this.props.reactSelect.default;
@@ -223,7 +224,7 @@ class SelectWidget extends Component {
             ClearIndicator,
             Option: this.props.customOptionStyling || Option,
           }}
-          value={normalizeValue(choices, value, intl)}
+          value={normalizedValue}
           placeholder={
             this.props.placeholder ??
             this.props.intl.formatMessage(messages.select)
@@ -252,7 +253,6 @@ class SelectWidget extends Component {
 export const SelectWidgetComponent = injectIntl(SelectWidget);
 
 export default compose(
-  injectIntl,
   injectLazyLibs(['reactSelect']),
   connect(
     (state, props) => {
@@ -287,4 +287,4 @@ export default compose(
     },
     { getVocabulary, getVocabularyTokenTitle },
   ),
-)(SelectWidget);
+)(SelectWidgetComponent);
