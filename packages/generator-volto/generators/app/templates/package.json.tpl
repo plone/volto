@@ -109,7 +109,7 @@
           ]
         }
       ]
-    }
+    },
     "ignoreFiles": "theme/themes/default/**/*.overrides"
   },
   "browserslist": [
