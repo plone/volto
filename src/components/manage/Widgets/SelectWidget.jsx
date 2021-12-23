@@ -171,7 +171,7 @@ class SelectWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { id, choices, onChange } = this.props;
+    const { id, choices, value, intl, onChange } = this.props;
     // Make sure that both disabled and isDisabled (from the DX layout feat work)
     const disabled = this.props.disabled || this.props.isDisabled;
     const Select = this.props.reactSelect.default;
@@ -223,7 +223,7 @@ class SelectWidget extends Component {
             ClearIndicator,
             Option: this.props.customOptionStyling || Option,
           }}
-          value={normalizeValue(this.props.choices, this.props.value)}
+          value={normalizeValue(choices, value, intl)}
           placeholder={
             this.props.placeholder ??
             this.props.intl.formatMessage(messages.select)

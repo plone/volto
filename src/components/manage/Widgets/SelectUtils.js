@@ -43,7 +43,7 @@ export function convertValueToVocabQuery(value) {
  * Normalizes provided value to a "best representation" value, as accepted by
  * react-select. In this case, it is an object of shape `{ label, value }`
  */
-export function normalizeSingleSelectOption(value) {
+export function normalizeSingleSelectOption(value, intl) {
   if (!value) return value;
 
   if (Array.isArray(value)) {
@@ -58,7 +58,7 @@ export function normalizeSingleSelectOption(value) {
   const label =
     (value.title && value.title !== 'None' ? value.title : undefined) ??
     value.label ??
-    this.props.intl.formatMessage(messages.no_value);
+    intl.formatMessage(messages.no_value);
 
   return {
     value: token,
@@ -66,8 +66,8 @@ export function normalizeSingleSelectOption(value) {
   };
 }
 
-export const normalizeChoices = (items) =>
-  items.map(normalizeSingleSelectOption);
+export const normalizeChoices = (items, intl) =>
+  items.map((item) => normalizeSingleSelectOption(item, intl));
 
 /**
  * Given the value from the API, it normalizes to a value valid to use in react-select.
@@ -78,8 +78,8 @@ export const normalizeChoices = (items) =>
  * @param {string|object|boolean|array} value The value
  * @returns {Object} An object of shape {label: "", value: ""} (or an array)
  */
-export function normalizeValue(choices, value) {
-  choices = normalizeChoices(choices || []);
+export function normalizeValue(choices, value, intl) {
+  choices = normalizeChoices(choices || [], intl);
   const choiceMap = Object.assign(
     {},
     ...choices.map(({ label, value }) => ({
@@ -100,7 +100,7 @@ export function normalizeValue(choices, value) {
   }
   if (value === 'no-value') {
     return {
-      label: this.props.intl.formatMessage(messages.no_value),
+      label: intl.formatMessage(messages.no_value),
       value: 'no-value',
     };
   }

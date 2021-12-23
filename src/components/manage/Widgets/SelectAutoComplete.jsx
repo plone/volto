@@ -121,7 +121,7 @@ class SelectAutoComplete extends Component {
     const { id, intl, value, choices } = this.props;
     if (value && value?.length > 0) {
       const tokensQuery = convertValueToVocabQuery(
-        normalizeValue(choices, value),
+        normalizeValue(choices, value, this.props.intl),
       );
       this.props.getVocabularyTokenTitle({
         vocabNameOrURL: this.props.vocabBaseUrl,
@@ -136,7 +136,7 @@ class SelectAutoComplete extends Component {
     const { id, intl, value, choices = [] } = this.props;
     if (prevProps.value !== value && value?.length > 0) {
       const tokensQuery = convertValueToVocabQuery(
-        normalizeValue(choices, value),
+        normalizeValue(choices, value, this.props.intl),
       );
       this.props.getVocabularyTokenTitle({
         vocabNameOrURL: this.props.vocabBaseUrl,
@@ -189,7 +189,7 @@ class SelectAutoComplete extends Component {
       subrequest: this.props.intl.locale,
     });
 
-    return normalizeChoices(resp.items || []);
+    return normalizeChoices(resp.items || [], this.props.intl);
   };
 
   /**
@@ -201,6 +201,7 @@ class SelectAutoComplete extends Component {
     const selectedOption = normalizeValue(
       this.props.choices || [],
       this.props.value,
+      this.props.intl,
     );
     const SelectAsync = this.props.reactSelectAsync.default;
 
