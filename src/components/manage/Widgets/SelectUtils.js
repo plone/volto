@@ -121,5 +121,5 @@ export function normalizeValue(choices, value, intl) {
   // fallback: treat value as a token and look it up in choices
   return Object.keys(choiceMap).includes(value)
     ? { label: choiceMap[value], value }
-    : null;
+    : { label: value, value };
 }

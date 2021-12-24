@@ -110,6 +110,15 @@ describe('normalizeValue', () => {
       { label: 'Option 2', value: 'opt2' },
     ]);
   });
+
+  it('Given an array of strings, with no choices', () => {
+    const choices = [];
+    const value = ['opt1', 'opt2'];
+    expect(normalizeValue(choices, value)).toStrictEqual([
+      { label: 'opt1', value: 'opt1' },
+      { label: 'opt2', value: 'opt2' },
+    ]);
+  });
 });
 
 describe('convertValueToVocabQuery', () => {

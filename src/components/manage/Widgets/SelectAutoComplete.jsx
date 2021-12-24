@@ -123,6 +123,7 @@ class SelectAutoComplete extends Component {
       const tokensQuery = convertValueToVocabQuery(
         normalizeValue(choices, value, this.props.intl),
       );
+
       this.props.getVocabularyTokenTitle({
         vocabNameOrURL: this.props.vocabBaseUrl,
         size: -1,
