@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix getVocabName when vocabNameOrURL is false @avoinea #2955
+
 ### Internal
 
 ## 14.0.2 (2021-12-22)
