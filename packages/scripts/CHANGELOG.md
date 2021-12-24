@@ -1,5 +1,15 @@
 # Change Log
 
+## 1.1.1 (unreleased)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
 ## 1.1.0 (2021-12-24)
 
 ### Feature
