@@ -132,7 +132,7 @@
   "dependencies": <%- dependencies %>,
   "devDependencies": {
     "eslint-plugin-prettier": "3.1.3",
-    "jest-junit": "8.0.0"
+    "jest-junit": "8.0.0",
     "mrs-developer": "*",
     "postcss": "8.3.11",
     "prettier": "2.0.5",
