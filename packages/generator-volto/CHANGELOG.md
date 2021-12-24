@@ -4,6 +4,8 @@
 
 ### Added
 
+- Add Cypress testing infrastructure to app generator @sneridagh
+
 ### Changes
 
 - Missing new stylelint config in app template @sneridagh

@@ -5,6 +5,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "razzle start",
+    "preinstall": "if [ -f $(pwd)/mrs.developer.json ]; then if [ -f $(pwd)/node_modules/.bin/missdev ]; then yarn develop; else yarn develop:npx; fi; fi",
     "postinstall": "yarn omelette && yarn patches",
     "omelette": "ln -sf node_modules/@plone/volto/ omelette",
     "patches": "/bin/bash patches/patchit.sh > /dev/null 2>&1 ||true",
@@ -16,8 +17,14 @@
     "prettier:fix": "./node_modules/.bin/prettier --single-quote --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
     "prettier:ci": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
     "test": "razzle test --env=jest-environment-jsdom-sixteen --passWithNoTests",
+    "cypress:open": "NODE_ENV=test cypress open",
+    "cypress:start-frontend": "RAZZLE_API_PATH=http://localhost:55001/plone yarn start",
+		"cypress:test-acceptance-server": "make test-acceptance-server",
+		"cy:test:fixture:setup": "node cypress/support/reset-fixture.js",
+		"cy:test:fixture:teardown": "node cypress/support/reset-fixture.js teardown",
     "start:prod": "NODE_ENV=production node build/server.js",
     "i18n": "rm -rf build/messages && NODE_ENV=production i18n",
+    "develop:npx": "npx -p mrs-developer missdev --config=jsconfig.json --output=addons --fetch-https",
     "develop": "missdev --config=jsconfig.json --output=addons --fetch-https",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
@@ -126,6 +133,7 @@
   "devDependencies": {
     "eslint-plugin-prettier": "3.1.3",
     "jest-junit": "8.0.0",
+    "mrs-developer": "*",
     "postcss": "8.3.11",
     "prettier": "2.0.5",
     "@storybook/addon-actions": "^6.3.0",
