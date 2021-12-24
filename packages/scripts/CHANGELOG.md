@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Initial version of the CLI for addon testing @sneridagh
+
 ### Bugfix
 
 ### Internal
