@@ -2,15 +2,9 @@
 
 ## 1.0.4 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Initial version of the CLI for addon testing @sneridagh
-
-### Bugfix
-
-### Internal
 
 ## 1.0.3 (2021-10-01)
 
