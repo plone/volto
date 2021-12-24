@@ -30,8 +30,8 @@ function amendPackageJSON(name, destination) {
 
 function createMrsDeveloperConfig(config) {
   const template = { [config.name]: {} };
-  const package = config.fullname || config.name;
-  template[config.name].package = package;
+  const packageName = config.fullname || config.name;
+  template[config.name].package = packageName;
   template[config.name].url = config.source;
   template[config.name].branch = config.branch || 'main';
 
