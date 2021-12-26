@@ -1,10 +1,33 @@
 # Change Log
 
-## 5.0.1 (unreleased)
+## 5.1.1 (unreleased)
 
 ### Added
 
 ### Changes
+
+## 5.1.0 (2021-12-24)
+
+### Added
+
+- Add Cypress testing infrastructure to app generator @sneridagh
+
+### Changes
+
+- Missing new stylelint config in app template @sneridagh
+
+## 5.0.2 (2021-12-23)
+
+### Changes
+
+- Add missing public files from Volto 14 @sneridagh
+
+## 5.0.1 (2021-12-22)
+
+### Internal
+
+- Refresh app generator template `yarn.lock` to match latest upgrades @sneridagh
+- Fix Volto project template devDependencies @avoinea
 
 ## 5.0.0 (2021-12-20)
 
