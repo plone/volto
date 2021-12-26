@@ -41,7 +41,6 @@ const actions = {
       title: 'Contents',
     },
   ],
-  user: [{ id: 'logout' }],
 };
 const actionsById = arrayWIdsToObject(actions);
 
@@ -49,6 +48,9 @@ describe('Contents', () => {
   it('renders a folder contents view component', () => {
     const store = mockStore({
       actions: { actions, actionsById },
+      userSession: {
+        token: '14134234123qwdaf',
+      },
       search: {
         items: [
           {

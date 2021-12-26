@@ -134,6 +134,11 @@ const actions = {
       id: 'login',
       title: 'Log in',
     },
+    {
+      icon: '',
+      id: 'logout',
+      title: 'Log out',
+    },
   ],
 };
 const actionsById = arrayWIdsToObject(actions);
@@ -143,6 +148,7 @@ describe('View', () => {
     const store = mockStore({
       actions: { actions, actionsById },
       content: { get: { error: null } },
+      userSession: { token: null },
       apierror: {},
       intl: {
         locale: 'en',
@@ -162,6 +168,7 @@ describe('View', () => {
     const store = mockStore({
       actions: { actions, actionsById },
       content: { data: { layout: 'summary_view' }, get: { error: null } },
+      userSession: { token: null },
       apierror: {},
       intl: {
         locale: 'en',
@@ -181,6 +188,7 @@ describe('View', () => {
     const store = mockStore({
       actions: { actions, actionsById },
       content: { data: { layout: 'tabular_view' }, get: { error: null } },
+      userSession: { token: null },
       apierror: {},
       intl: {
         locale: 'en',
@@ -200,6 +208,7 @@ describe('View', () => {
     const store = mockStore({
       actions: { actions, actionsById },
       content: { data: {}, get: { error: null } },
+      userSession: { token: null },
       apierror: {},
       intl: {
         locale: 'en',
