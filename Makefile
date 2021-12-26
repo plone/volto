@@ -196,8 +196,13 @@ test-acceptance-guillotina:
 .PHONY: clean
 clean:
 	$(MAKE) clean-tmp-worktrees
-	$(MAKE) -C "./api/" clean
+	$(MAKE) -C "./api/" "$(@)"
 	rm -rf node_modules
+.PHONY: clean-data
+clean-data: ## Remove all variable user data
+# E.g., to run the proxy test bed against a fresh Plone + Volto site:
+#     $ make clean-data run-proxy-all
+	$(MAKE) -C "./api/" "$(@)"
 .PHONY: clean-tmp-worktrees
 clean-tmp-worktrees:  ## Cleanup temporary worktrees managed by this `./Makefile`
 	git worktree list --porcelain | tail -n +5 |
