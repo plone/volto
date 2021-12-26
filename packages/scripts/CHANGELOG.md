@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.0.4 (unreleased)
+## 1.1.1 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,12 @@
 ### Bugfix
 
 ### Internal
+
+## 1.1.0 (2021-12-24)
+
+### Feature
+
+- Initial version of the CLI for addon testing @sneridagh
 
 ## 1.0.3 (2021-10-01)
 

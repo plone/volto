@@ -1,6 +1,6 @@
 # Change Log
 
-## 14.0.1 (unreleased)
+## 14.0.3 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,18 @@
 ### Bugfix
 
 ### Internal
+
+## 14.0.2 (2021-12-22)
+
+### Internal
+
+- Better favicon definitions, 2021 bullet proof @sneridagh
+
+## 14.0.1 (2021-12-21)
+
+### Bugfix
+
+- Construct request with list parameters as separate querystring key value pairs according Zope convention @ksuess
 
 ## 14.0.0 (2021-12-20)
 
