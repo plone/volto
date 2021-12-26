@@ -55,7 +55,7 @@ First get all the requirements installed on your system.
 ### Prerequisites
 
 - [Node.js LTS (16.x)](https://nodejs.org/)
-- [Python 3.7.x / 2.7.x](https://python.org/) or
+- [Python 3.8.x](https://python.org/) or
 - [Docker](https://www.docker.com/get-started) (if using the Plone/Guillotina docker images)
 
 ### Create a Volto project using the generator
@@ -79,7 +79,7 @@ We recommend Plone as backend of choice for Volto.
 You can bootstrap a ready Docker Plone container with all the dependencies and ready for Volto use:
 
 ```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.volto" -e ZCML="plone.volto.cors" -e PROFILES="plone.volto:default-homepage" plone
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e VERSIONS="plone.restapi=8.16.2 plone.app.iterate=4.0.2 plone.rest=2.0.0a1 plone.app.vocabularies=4.3.0" -e ADDONS="plone.volto" -e ZCML="plone.volto.cors" -e PROFILES="plone.volto:default-homepage" plone
 ```
 
 or as an alternative if you have experience with Plone and you have all the
@@ -138,6 +138,8 @@ Volto is actively developed since 2017 and used in production since 2018 on the 
 - [RawMaterial](https://rawmaterial.it/en) (Company's website. Developed by [RawMaterial](https://rawmaterial.it/en), 2021)
 - [WISE-Freshwater](https://water.europa.eu/freshwater) (WISE-Freshwater, the Freshwater Information System for Europe. Developed by [Eau de web](https://eaudeweb.ro) for the European Environmental Agency, 2021)
 - [EEA-IMSv4](https://www.eea.europa.eu/ims) (EEA Indicator Management System v4. Developed by [Eau de web](https://eaudeweb.ro) for the European Environmental Agency, 2021)
+- [Memori](https://memori.ai/en) (Corporate website for Memori, startup specialising in technologies applied to the experience of memory through the development of Artificial Intelligences. Developed by [RawMaterial](https://rawmaterial.it/en), 2021)
+- [TwinCreator](https://twincreator.com/en) (TwinCreator allows you to design and train multiple AI’s through simple conversation through NLP. Developed by [RawMaterial](https://rawmaterial.it/en), 2021)
 
 Please create a new [issue](https://github.com/plone/volto/issues/new) or [pull request](https://github.com/plone/volto/pulls) to add your Volto-site here!
 

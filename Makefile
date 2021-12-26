@@ -28,6 +28,11 @@ INSTANCE_PORT=8080
 
 # Recipe snippets for reuse
 
+CHECKOUT_BASENAME=$(shell basename $(shell realpath ./))
+CHECKOUT_BRANCH=$(shell git branch --show-current)
+CHECKOUT_TMP=../$(CHECKOUT_BASENAME).tmp
+CHECKOUT_TMP_ABS=$(shell realpath $(CHECKOUT_TMP))
+
 # We like colors
 # From: https://coderwall.com/p/izxssa/colored-makefile-for-golang-projects
 RED=`tput setaf 1`
@@ -44,6 +49,7 @@ all: build
 # Add the following 'help' target to your Makefile
 # And add help text after each target name starting with '\#\#'
 .PHONY: help
+help: .SHELLFLAGS:=-eu -o pipefail -O inherit_errexit -c
 help: ## This help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
@@ -72,6 +78,29 @@ dist:
 .PHONY: test
 test:
 	$(MAKE) -C "./api/" test
+.PHONY: test-clean
+test-clean:  ## Test in a separate, clean worktree to expose clean build issues
+	mkdir -pv "$(CHECKOUT_TMP)/"
+	tmp_worktree="$$(
+	    mktemp -d -p '$(CHECKOUT_TMP)/' \
+	        '$(CHECKOUT_BRANCH)-tmp-XXXXXXXXXX'
+	)"
+# Disable VCS hooks which might be run when creating a worktree
+	if [ -e "./.git/hooks/post-checkout" ]
+	then
+	    mv --backup=numbered -v \
+	        "./.git/hooks/post-checkout" "./.git/hooks/post-checkout~"
+	fi
+	git worktree add "$${tmp_worktree}"
+	if [ -e "./.git/hooks/post-checkout~" ]
+	then
+	    mv --backup=numbered -v \
+	        "./.git/hooks/post-checkout~" "./.git/hooks/post-checkout"
+	fi
+	cd "$${tmp_worktree}"
+	$(MAKE) test
+# Leave the temporary worktree around for the developer to inspect.
+# Use the `$ make clean-tmp-worktrees` target to clean up all temporary worktrees
 
 .PHONY: docs-serve
 docs-serve:
@@ -140,16 +169,21 @@ stop-backend-docker-guillotina:
 
 .PHONY: test-acceptance-server
 test-acceptance-server:
-	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e VERSIONS="plone.restapi=8.16.2 plone.rest=2.0.0a1" -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors -e ADDONS='plone.app.robotframework plone.app.contenttypes plone.restapi plone.volto' plone ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
+	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e VERSIONS="plone.restapi=8.16.2 plone.rest=2.0.0a1 plone.app.vocabularies=4.3.0" -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors -e ADDONS='plone.app.robotframework plone.app.contenttypes plone.restapi plone.volto' plone ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 
 .PHONY: test-acceptance-server-multilingual
 test-acceptance-server-multilingual:
-	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e VERSIONS="plone.restapi=8.16.2 plone.rest=2.0.0a1" -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:multilingual -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors -e ADDONS='plone.app.robotframework plone.app.contenttypes plone.restapi plone.volto' plone ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
+	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e VERSIONS="plone.restapi=8.16.2 plone.rest=2.0.0a1 plone.app.vocabularies=4.3.0" -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:multilingual -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors -e ADDONS='plone.app.robotframework plone.app.contenttypes plone.restapi plone.volto' plone ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 
 .PHONY: test-acceptance-server-workingcopy
 test-acceptance-server-workingcopy:
-	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e VERSIONS="plone.restapi=8.16.2 plone.app.iterate=4.0.2 plone.rest=2.0.0a1" -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors -e ADDONS='plone.app.robotframework plone.app.contenttypes plone.restapi plone.app.iterate plone.volto' plone ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
+	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e VERSIONS="plone.restapi=8.16.2 plone.app.iterate=4.0.2 plone.rest=2.0.0a1 plone.app.vocabularies=4.3.0" -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors -e ADDONS='plone.app.robotframework plone.app.contenttypes plone.restapi plone.app.iterate plone.volto' plone ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 	# ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.app.iterate,plone.volto,plone.volto.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default,plone.volto:default-homepage ./api/bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
+
+.PHONY: test-acceptance-server-workingcopy
+test-acceptance-server-coresandbox:
+	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e VERSIONS="plone.restapi=8.16.2 plone.app.iterate=4.0.2 plone.rest=2.0.0a1 plone.app.vocabularies=4.3.0" -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage,plone.volto:coresandbox -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors,plone.volto.coresandbox -e ADDONS='plone.app.robotframework plone.app.contenttypes plone.restapi plone.app.iterate plone.volto' plone ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
+	# ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors,plone.volto.coresandbox APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage,plone.volto:coresandbox ./api/bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 
 .PHONY: test-acceptance-server-old
 test-acceptance-server-old:
@@ -161,5 +195,15 @@ test-acceptance-guillotina:
 
 .PHONY: clean
 clean:
+	$(MAKE) clean-tmp-worktrees
 	$(MAKE) -C "./api/" clean
 	rm -rf node_modules
+.PHONY: clean-tmp-worktrees
+clean-tmp-worktrees:  ## Cleanup temporary worktrees managed by this `./Makefile`
+	git worktree list --porcelain | tail -n +5 |
+	    sed -En 's|^worktree ($(CHECKOUT_TMP_ABS)/.+)$$|\1|p' |
+	while read
+	do
+	    git worktree remove --force "$${REPLY}"
+	    git branch -D "$$(basename "$${REPLY}")"
+	done

@@ -14,7 +14,7 @@ function getDisplayName(WrappedComponent) {
 
 export default function withQuerystringResults(WrappedComponent) {
   function WithQuerystringResults(props) {
-    const { data = {}, properties: content, path } = props;
+    const { data = {}, properties: content, path, variation } = props;
     const { settings } = config;
     const querystring = data.querystring || data; // For backwards compat with data saved before Blocks schema. Note, this is also how the Search block passes data to ListingBody
 
@@ -27,9 +27,7 @@ export default function withQuerystringResults(WrappedComponent) {
     const copyFields = ['limit', 'query', 'sort_on', 'sort_order', 'depth'];
 
     const adaptedQuery = Object.assign(
-      config.settings.bbb_listingBlockFetchesFullobjects
-        ? { fullobjects: 1 }
-        : { metadata_fields: '_all' },
+      variation?.fullobjects ? { fullobjects: 1 } : { metadata_fields: '_all' },
       {
         b_size: b_size,
       },
