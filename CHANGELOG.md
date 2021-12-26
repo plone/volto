@@ -871,6 +871,8 @@ https://docs.voltocms.com/upgrade-guide/
 ### Feature
 
 - Allowing user to paste url in search box in objectBrowser @iFlameing
+- Log in and out through either Plone Classic or the Volto UI also does the same in the
+  other @rpatterson
 - Allowing user to click on the breadcrumbs of objectBrowser @iFlameing
 - `Navigation` and `Breadcrumbs` are `apiExpanders` aware and run the action depending on them @sneridagh
 

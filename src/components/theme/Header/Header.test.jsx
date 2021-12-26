@@ -4,7 +4,6 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
 import Header from './Header';
-import { arrayWIdsToObject } from '@plone/volto/helpers/Utils/Utils';
 
 const mockStore = configureStore();
 
@@ -22,13 +21,10 @@ jest.mock('../LanguageSelector/LanguageSelector', () =>
   jest.fn(() => <div id="language-selector" />),
 );
 
-const actions = { user: [{ id: 'login' }] };
-const actionsById = arrayWIdsToObject(actions);
-
 describe('Header', () => {
   it('renders a header component', () => {
     const store = mockStore({
-      actions: { actions, actionsById },
+      userSession: { token: null },
       intl: {
         locale: 'en',
         messages: {},
