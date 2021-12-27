@@ -5,11 +5,12 @@
  * @module scripts/testing-addon
  */
 const { program } = require('commander');
-const { exec } = require('child_process');
+const { execSync } = require('child_process');
 const https = require('https');
 const GitUrlParse = require('git-url-parse');
 const fs = require('fs');
 const { develop } = require('mrs-developer');
+const chalk = require('chalk');
 
 function main() {}
 
@@ -33,6 +34,7 @@ function createMrsDeveloperConfig(config) {
   const packageName = config.fullname || config.name;
   template[config.name].package = packageName;
   template[config.name].url = config.source;
+  template[config.name].path = 'src';
   template[config.name].branch = config.branch || 'main';
 
   fs.writeFileSync(
@@ -44,42 +46,61 @@ function createMrsDeveloperConfig(config) {
 /*
  * Retrieves latest Volto released version from NPM registry
  */
-async function getAddonInfo(source, branch = 'main') {
+async function getAddonInfo({ source, branch = 'main', isPrivate }) {
   const sourceParse = GitUrlParse(source);
-  const httpRawURL = sourceParse
-    .toString('https')
-    .replace('github.com', 'raw.githubusercontent.com');
-  const packageJSONURL = `${httpRawURL}/${branch}/package.json`;
+  const packageJSONURL = isPrivate
+    ? `https://api.github.com/repos/${sourceParse.full_name}/contents/package.json`
+    : `https://raw.githubusercontent.com/${sourceParse.full_name}/${branch}/package.json`;
 
   console.log(sourceParse);
   console.log(packageJSONURL);
 
   return new Promise((resolve, reject) => {
     https
-      .get(packageJSONURL, { headers: {} }, (resp) => {
-        let data = [];
-        resp.on('data', (chunk) => {
-          data.push(chunk);
-        });
-        resp.on('end', () => {
-          const res = JSON.parse(data.join(''));
-          resolve({
-            name: res.name,
-            version: res.version,
-            ...(res.name.includes('@')
-              ? { fullname: res.name, name: res.name.split('/')[1] }
+      .get(
+        packageJSONURL,
+        {
+          headers: {
+            ...(isPrivate
+              ? {
+                  Authorization: `token ${process.env.GITHUB_TOKEN}`,
+                  'User-Agent': 'node.js',
+                  Accept: 'application/vnd.github.VERSION.raw',
+                }
               : {}),
+          },
+        },
+        (resp) => {
+          let data = [];
+          resp.on('data', (chunk) => {
+            data.push(chunk);
           });
-        });
-      })
+          resp.on('end', () => {
+            const res = JSON.parse(data.join(''));
+            console.log(res);
+            resolve({
+              name: res.name,
+              version: res.version,
+              ...(res.name.includes('@')
+                ? { fullname: res.name, name: res.name.split('/')[1] }
+                : {}),
+            });
+          });
+        },
+      )
       .on('error', (err) => {
         reject(err.message);
       });
   });
 }
 
-async function runGenerator(source, destination = 'addon-testing-project') {
-  const { fullname, name, version } = await getAddonInfo(source);
+async function runGenerator({
+  source,
+  destination = 'addon-testing-project',
+  isPrivate = false,
+  branch = 'main',
+}) {
+  const { fullname, name, version } = await getAddonInfo({ source, isPrivate });
   console.log(fullname);
   console.log(name);
   console.log(version);
@@ -87,7 +108,7 @@ async function runGenerator(source, destination = 'addon-testing-project') {
     fullname || name
   }`;
 
-  exec(GENERATOR_CLI, (error, stdout, stderr) => {
+  execSync(GENERATOR_CLI, (error, stdout, stderr) => {
     if (error) {
       console.log(`error: ${error.message}`);
       return;
@@ -98,7 +119,15 @@ async function runGenerator(source, destination = 'addon-testing-project') {
     }
     console.log(`stdout: ${stdout}`);
   });
-  createMrsDeveloperConfig({ fullname, name, version, source, destination });
+
+  createMrsDeveloperConfig({
+    fullname,
+    name,
+    version,
+    source,
+    destination,
+    branch,
+  });
 
   await develop({
     root: destination,
@@ -106,7 +135,7 @@ async function runGenerator(source, destination = 'addon-testing-project') {
     output: 'addons',
   });
 
-  exec(`cd ${destination} && yarn`, (error, stdout, stderr) => {
+  execSync(`cd ${destination} && yarn`, (error, stdout, stderr) => {
     if (error) {
       console.log(`error: ${error.message}`);
       return;
@@ -121,10 +150,17 @@ async function runGenerator(source, destination = 'addon-testing-project') {
   amendPackageJSON(name, destination);
 }
 
-function cloneAddon(source, destination) {
-  console.log(`${source} : ${destination}`);
-  //  exec();
-  runGenerator(source, destination).then();
+function cloneAddon(
+  source,
+  destination = 'addon-testing-project',
+  branch = 'main',
+) {
+  console.log(
+    chalk.green(
+      `Cloning addon from ${source} and creating a testing environment in ${destination}`,
+    ),
+  );
+  runGenerator(source, destination, branch).then();
 }
 
 // This is the equivalent of `if __name__ == '__main__'` in Python :)
@@ -132,8 +168,18 @@ if (require.main === module) {
   program
     .command('clone <source> [destination]')
     .description('clone a repository into a newly created directory')
-    .action((source, destination) => {
-      cloneAddon(source, destination);
+    .option(
+      '-p, --private',
+      'set if the repo is private, then GITHUB_TOKEN is used',
+    )
+    .option('-b, --branch <branch>', 'set the repo branch, defaults to main')
+    .action((source, destination, options) => {
+      cloneAddon({
+        source,
+        destination,
+        isPrivate: options.private,
+        branch: options.branch,
+      });
     });
   program.parse(process.argv);
   const options = program.opts();
