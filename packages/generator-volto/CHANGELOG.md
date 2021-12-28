@@ -4,7 +4,7 @@
 
 ### Added
 
-### Changes
+- Add missing stylelint check script in project @sneridagh
 
 ## 5.2.0 (2021-12-28)
 
