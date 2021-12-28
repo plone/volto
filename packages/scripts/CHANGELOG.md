@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Improved CLI for creating addon testing environments @sneridagh
+
 ### Bugfix
 
 ### Internal
