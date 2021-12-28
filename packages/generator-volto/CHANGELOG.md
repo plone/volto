@@ -7,8 +7,6 @@
 - Add Cypress testing infrastructure to addon generator @sneridagh
 - Add `jest-addon.config.js` default in addon generator @sneridagh
 
-### Changes
-
 ## 5.1.0 (2021-12-24)
 
 ### Added
