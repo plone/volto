@@ -88,6 +88,7 @@ class ArrayWidget extends Component {
     ),
     onChange: PropTypes.func.isRequired,
     wrapped: PropTypes.bool,
+    creatable: PropTypes.bool, //if widget has no vocab and you want to be creatable
   };
 
   /**
@@ -107,6 +108,7 @@ class ArrayWidget extends Component {
     error: [],
     choices: [],
     value: null,
+    creatable: false,
   };
 
   /**
@@ -249,7 +251,9 @@ class ArrayWidget extends Component {
       //     AjaxSelectFieldWidget,
       //     vocabulary="plone.app.vocabularies.PortalTypes",
       // )
-      this.props?.choices && !getVocabFromHint(this.props)
+      this.props?.choices &&
+      !getVocabFromHint(this.props) &&
+      !this.props.creatable
         ? SortableContainer(Select)
         : SortableContainer(CreatableSelect);
 
