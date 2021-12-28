@@ -2,13 +2,9 @@
 
 ## 1.2.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
-### Bugfix
-
-### Internal
+- Add custom `test` script for getting the right `RAZZLE_JEST_CONFIG` (in addon test environment) @sneridagh
 
 ## 1.2.0 (2021-12-28)
 
