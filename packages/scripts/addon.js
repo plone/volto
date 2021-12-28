@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /* eslint no-console: 0 */
 /**
- * testing-addon script.
- * @module scripts/testing-addon
+ * addon testing setup convenience script
+ * @module scripts/addon
  */
 const { program } = require('commander');
 const { execSync } = require('child_process');
@@ -12,8 +12,6 @@ const fs = require('fs');
 const { develop } = require('mrs-developer');
 const chalk = require('chalk');
 
-function main() {}
-
 function amendPackageJSON(name, destination) {
   const packageJSON = JSON.parse(
     fs.readFileSync(`${destination}/package.json`, 'utf8'),
@@ -22,7 +20,6 @@ function amendPackageJSON(name, destination) {
     ...packageJSON.scripts,
     'cypress:open': `cd src/addons/${name} && NODE_ENV=test cypress open`,
   };
-  console.log(packageJSON);
   fs.writeFileSync(
     `${destination}/package.json`,
     `${JSON.stringify(packageJSON, null, 4)}`,
@@ -52,9 +49,6 @@ async function getAddonInfo({ source, branch = 'main', isPrivate }) {
     ? `https://api.github.com/repos/${sourceParse.full_name}/contents/package.json`
     : `https://raw.githubusercontent.com/${sourceParse.full_name}/${branch}/package.json`;
 
-  console.log(sourceParse);
-  console.log(packageJSONURL);
-
   return new Promise((resolve, reject) => {
     https
       .get(
@@ -77,7 +71,6 @@ async function getAddonInfo({ source, branch = 'main', isPrivate }) {
           });
           resp.on('end', () => {
             const res = JSON.parse(data.join(''));
-            console.log(res);
             resolve({
               name: res.name,
               version: res.version,
@@ -100,10 +93,34 @@ async function runGenerator({
   isPrivate = false,
   branch = 'main',
 }) {
+  if (isPrivate) {
+    console.log(
+      chalk.green(
+        `Retrieving private package info from branch ${chalk.yellow(
+          branch,
+        )} repo ${chalk.yellow(source)}`,
+      ),
+    );
+  } else {
+    console.log(
+      chalk.blue(
+        `Retrieving package info from branch ${chalk.yellow(
+          branch,
+        )} repo ${chalk.yellow(source)}`,
+      ),
+    );
+  }
+
   const { fullname, name, version } = await getAddonInfo({ source, isPrivate });
-  console.log(fullname);
-  console.log(name);
-  console.log(version);
+
+  console.log(
+    chalk.green(
+      `The package name is ${chalk.yellow(
+        fullname || name,
+      )} pulling version ${chalk.yellow(version)}`,
+    ),
+  );
+
   const GENERATOR_CLI = `yo --force --no-insight @plone/volto ${destination} --no-interactive --skip-install --workspace src/addons/${name} --addon ${
     fullname || name
   }`;
@@ -117,7 +134,7 @@ async function runGenerator({
       console.log(`stderr: ${stderr}`);
       return;
     }
-    console.log(`stdout: ${stdout}`);
+    //  console.log(`stdout: ${stdout}`);
   });
 
   createMrsDeveloperConfig({
@@ -144,23 +161,31 @@ async function runGenerator({
       console.log(`stderr: ${stderr}`);
       return;
     }
-    console.log(`stdout: ${stdout}`);
+    //  console.log(`stdout: ${stdout}`);
   });
 
+  console.log(
+    chalk.green(
+      `Preparing and amending testing project ${chalk.yellow('package.json')}`,
+    ),
+  );
   amendPackageJSON(name, destination);
 }
 
-function cloneAddon(
+function cloneAddon({
   source,
   destination = 'addon-testing-project',
   branch = 'main',
-) {
+  isPrivate,
+}) {
   console.log(
     chalk.green(
-      `Cloning addon from ${source} and creating a testing environment in ${destination}`,
+      `Cloning addon from ${chalk.yellow(
+        source,
+      )} and creating a testing environment in ${chalk.yellow(destination)}`,
     ),
   );
-  runGenerator(source, destination, branch).then();
+  runGenerator({ source, destination, branch, isPrivate }).then();
 }
 
 // This is the equivalent of `if __name__ == '__main__'` in Python :)
@@ -182,6 +207,4 @@ if (require.main === module) {
       });
     });
   program.parse(process.argv);
-  const options = program.opts();
-  main({ addonMode: options.addon });
 }
