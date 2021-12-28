@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.2.1 (unreleased)
+## 1.3.0 (2021-12-28)
 
 ### Feature
 
