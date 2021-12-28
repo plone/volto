@@ -2,15 +2,9 @@
 
 ## 1.1.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Improved CLI for creating addon testing environments @sneridagh
-
-### Bugfix
-
-### Internal
 
 ## 1.1.0 (2021-12-24)
 
