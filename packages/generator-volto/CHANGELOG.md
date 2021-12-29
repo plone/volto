@@ -4,6 +4,8 @@
 
 ### Added
 
+- Add further CI cypress commands and complimentary Makefile for app template @sneridagh
+
 ### Changes
 
 ## 5.3.0 (2021-12-28)
