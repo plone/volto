@@ -8,7 +8,7 @@
 
 ### Bugfix
 
-- Fix getVocabName when vocabNameOrURL is false @avoinea #2955
+- Fix getVocabName when vocabNameOrURL is false @avoinea #2955, #2919
 
 ### Internal
 
