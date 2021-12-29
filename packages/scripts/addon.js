@@ -20,6 +20,7 @@ function amendPackageJSON(name, destination) {
     ...packageJSON.scripts,
     'cypress:open': `cd src/addons/${name} && NODE_ENV=test cypress open`,
     test: `RAZZLE_JEST_CONFIG=src/addons/${name}/jest-addon.config.js razzle test --env=jest-environment-jsdom-sixteen --passWithNoTests`,
+    'cypress:run': `cd src/addons/${name} && NODE_ENV=test cypress run`,
   };
   fs.writeFileSync(
     `${destination}/package.json`,

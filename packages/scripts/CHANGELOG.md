@@ -2,13 +2,9 @@
 
 ## 1.3.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
-### Bugfix
-
-### Internal
+- Add custom `cypress:run` script for starting the right Cypress suite (in addon test environment) @sneridagh
 
 ## 1.3.0 (2021-12-28)
 
