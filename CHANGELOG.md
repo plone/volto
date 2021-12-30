@@ -8,6 +8,7 @@
 
 ### Bugfix
 
+- Fix query data in listing blocks ssr async call @cekk
 ### Internal
 
 ## 14.0.2 (2021-12-22)
