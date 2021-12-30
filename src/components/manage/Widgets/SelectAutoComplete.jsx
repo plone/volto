@@ -114,6 +114,7 @@ class SelectAutoComplete extends Component {
 
     this.state = {
       searchLength: 0,
+      termsPairsCache: [],
     };
   }
 
@@ -134,17 +135,15 @@ class SelectAutoComplete extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { id, intl, value, choices = [] } = this.props;
-    if (prevProps.value !== value && value?.length > 0) {
-      const tokensQuery = convertValueToVocabQuery(
-        normalizeValue(choices, value, this.props.intl),
-      );
-      this.props.getVocabularyTokenTitle({
-        vocabNameOrURL: this.props.vocabBaseUrl,
-        size: -1,
-        subrequest: `widget-${id}-${intl.locale}`,
-        ...tokensQuery,
-      });
+    const { value, choices = [] } = this.props;
+    if (
+      this.state.termsPairsCache.length === 0 &&
+      value?.length > 0 &&
+      choices.length > 0
+    ) {
+      this.setState((state) => ({
+        termsPairsCache: [...state.termsPairsCache, ...choices],
+      }));
     }
   }
 
@@ -160,6 +159,9 @@ class SelectAutoComplete extends Component {
       this.props.id,
       selectedOption ? selectedOption.map((item) => item.value) : null,
     );
+    this.setState((state) => ({
+      termsPairsCache: [...state.termsPairsCache, ...selectedOption],
+    }));
   }
 
   timeoutRef = React.createRef();
@@ -200,7 +202,7 @@ class SelectAutoComplete extends Component {
    */
   render() {
     const selectedOption = normalizeValue(
-      this.props.choices || [],
+      this.state.termsPairsCache,
       this.props.value,
       this.props.intl,
     );
