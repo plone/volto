@@ -1,4 +1,5 @@
 import ListingBlockVariationTeaserContent from './components/Blocks/Listing/ListingBlockVariationTeaserContent';
+import NewsAndEvents from './components/Views/NewsAndEvents';
 import TestBlockView from './components/Blocks/TestBlock/View';
 import TestBlockEdit from './components/Blocks/TestBlock/Edit';
 import codeSVG from '@plone/volto/icons/code.svg';
@@ -76,6 +77,13 @@ const applyConfig = (config) => {
         ...config.blocks.blocksConfig,
         ...addonBlocks,
         listing: listing(config),
+      },
+    },
+    views: {
+      ...config.views,
+      contentTypesViews: {
+        ...config.views.contentTypesViews,
+        Folder: NewsAndEvents,
       },
     },
   };

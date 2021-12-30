@@ -2569,8 +2569,8 @@ msgid "The backend is responding, but the CORS headers are not configured proper
 msgstr "La base de datos responde pero las cabeceras CORS no están configuradas correctamente y el navegador no puede acceder a los datos."
 
 #: components/theme/CorsError/CorsError
-# defaultMessage: The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
-msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
+# defaultMessage: The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
+msgid "The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
 msgstr "La base de datos no responde, disculpe las molestias. Intente cargar la página otra vez. Si el problema continúa póngase en contacto con el administrador del sitio."
 
 #: components/manage/Blocks/Search/schema
