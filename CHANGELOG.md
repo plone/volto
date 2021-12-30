@@ -1,10 +1,18 @@
 # Change Log
 
-## 14.1.0 (unreleased)
+## 14.0.3 (unreleased)
+
+### Breaking
 
 ### Feature
 
+- Added custom option to SelectWidget to render custom optionss (for example with icons) @giuliaghisini
 - Added form undo support in the form of two buttons in the main toolbar and ctrl+z, ctrl+y as hotkeys for undo/redo. The undo capabilities are provided by a new helper hook, `useUndoManager`. @tiberiuichim
+
+### Bugfix
+
+- In the contact form, only display the "back" button in the toolbar @tiberiuichim
+- Fixed selected widget to use isMulti prop @giuliaghisini
 
 ### Internal
 
@@ -13,22 +21,6 @@
 - Use lazy loading of react-dates and momentjs for the DatetimeWidget @tiberiuichim
 - Improve widget stories, add a common `WidgetStory` class, show undo capabilities in widget stories @tiberiuichim
 - Better SelectAutocompleteWidget and SelectUtils @giuliaghisini @sneridagh @tiberiuichim
-
-### Bugfix
-
-- In the contact form, only display the "back" button in the toolbar @tiberiuichim
-
-## 14.0.0 (unreleased)
-## 14.0.1 (unreleased)
-## 14.0.3 (unreleased)
-
-### Breaking
-
-### Feature
-
-### Bugfix
-
-### Internal
 
 ## 14.0.2 (2021-12-22)
 
@@ -41,7 +33,7 @@
 ### Bugfix
 
 - Construct request with list parameters as separate querystring key value pairs according Zope convention @ksuess
-- Fix spelling in error message when backend is unreachable @instification 
+- Fix spelling in error message when backend is unreachable @instification
 
 ## 14.0.0 (2021-12-20)
 
@@ -209,10 +201,6 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 - Move `theme.js` import to top of the client code, so it take precedence over any other inline imported CSS. This is not an strict breaking change, but it's worth to mention it as might be important and kept in mind. @sneridagh
 
 ### Feature
-- Make VocabularyTermsWidget orderable @ksuess
-- Get widget by tagged values @ksuess
-- Added custom option to SelectWidget to render custom optionss (for example with icons) @giuliaghisini
-
 
 - Add runtime configuration for `@babel/plugin-transform-react-jsx` set to `automatic`. This enables the new JSX runtime: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html So no longer `import React from 'react'` is needed anymore.
 - Update favicon and related tags with best practices @sneridagh
@@ -256,7 +244,6 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
   and develop addons (in `src/addons` folder).
 - Add new listing block option "fullobjects" per variation @ksuess
 - Style checkboxes @nileshgulia1
-- Allow loading .less files also from a Volto project's `src` folder.  @tiberiuichim
 - Allow loading .less files also from a Volto project's `src` folder. @tiberiuichim
 
 ### Bugfix
@@ -349,8 +336,6 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 
 ### Bugfix
 
-
-- Fixed selected widget to use isMulti prop @giuliaghisini
 - Fix downloadableObjects default value @giuliaghisini
 - Folder contents table header and breadcrumbs dropdown now appear only from the
   bottom, fixing an issue where the breadcrumb dropdown content was clipped
