@@ -11,6 +11,7 @@
 
 ### Bugfix
 
+- Fix query data in listing blocks ssr async call @cekk
 - In the contact form, only display the "back" button in the toolbar @tiberiuichim
 - Fixed selected widget to use isMulti prop @giuliaghisini
 
