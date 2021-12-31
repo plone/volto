@@ -24,6 +24,7 @@ import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
 
 import {
   Option,
+  ClearIndicator,
   DropdownIndicator,
   selectTheme,
   customSelectStyles,
@@ -127,7 +128,6 @@ class SelectAutoComplete extends Component {
 
       this.props.getVocabularyTokenTitle({
         vocabNameOrURL: this.props.vocabBaseUrl,
-        size: -1,
         subrequest: `widget-${id}-${intl.locale}`,
         ...tokensQuery,
       });
@@ -235,6 +235,7 @@ class SelectAutoComplete extends Component {
             ...(this.props.choices?.length > 25 && {
               MenuList,
             }),
+            ClearIndicator,
             DropdownIndicator,
             Option,
           }}
