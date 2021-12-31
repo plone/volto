@@ -2,8 +2,6 @@
 
 ## 14.0.3 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Added custom option to SelectWidget to render custom optionss (for example with icons) @giuliaghisini
