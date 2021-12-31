@@ -6,9 +6,21 @@
 
 ### Feature
 
+- Added custom option to SelectWidget to render custom optionss (for example with icons) @giuliaghisini
+- Added form undo support in the form of two buttons in the main toolbar and ctrl+z, ctrl+y as hotkeys for undo/redo. The undo capabilities are provided by a new helper hook, `useUndoManager`. @tiberiuichim
+
 ### Bugfix
 
+- In the contact form, only display the "back" button in the toolbar @tiberiuichim
+- Fixed selected widget to use isMulti prop @giuliaghisini
+
 ### Internal
+
+- Allow the draftjs Text block edit to update the editor content when incoming block data is mutated outside the block (to support form undo) @tiberiuichim
+- Remove use of internal component state for ArrayWidget, SelectWidget and TokenWidget, (to support form undo) @tiberiuichim
+- Use lazy loading of react-dates and momentjs for the DatetimeWidget @tiberiuichim
+- Improve widget stories, add a common `WidgetStory` class, show undo capabilities in widget stories @tiberiuichim
+- Better SelectAutocompleteWidget and SelectUtils @giuliaghisini @sneridagh @tiberiuichim
 
 ## 14.0.2 (2021-12-22)
 
@@ -21,7 +33,7 @@
 ### Bugfix
 
 - Construct request with list parameters as separate querystring key value pairs according Zope convention @ksuess
-- Fix spelling in error message when backend is unreachable @instification 
+- Fix spelling in error message when backend is unreachable @instification
 
 ## 14.0.0 (2021-12-20)
 

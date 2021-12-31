@@ -239,7 +239,7 @@ context('Select widgets family Acceptance Tests', () => {
       // on the Tab component. A workaround would be to maintain the tabs mounted
       cy.get(
         '#field-list_field_voc_huge > .react-select__control > .react-select__value-container',
-      ).contains('option100');
+      ).contains('Option 100');
 
       // We save, edit again, and the value set is there
       cy.get('#toolbar-save').click();
