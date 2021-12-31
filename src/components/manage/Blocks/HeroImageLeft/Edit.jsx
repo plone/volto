@@ -87,7 +87,7 @@ class Edit extends Component {
     block: PropTypes.string.isRequired,
     index: PropTypes.number.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
-    content: PropTypes.objectOf(PropTypes.any).isRequired,
+    content: PropTypes.objectOf(PropTypes.any),
     request: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
