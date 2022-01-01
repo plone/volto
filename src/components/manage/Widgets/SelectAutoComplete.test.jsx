@@ -27,9 +27,25 @@ test('renders a select widget component', async () => {
     },
   });
 
+  const props = {
+    getVocabulary: () => {
+      return Promise.resolve({
+        items: [
+          { token: 'foo', title: 'Foo' },
+          { token: 'bar', title: 'Bar' },
+          { token: 'fooBar', title: 'FooBar' },
+        ],
+      });
+    },
+    widgetOptions: {
+      vocabulary: { '@id': 'plone.app.vocabularies.Keywords' },
+    },
+  };
+
   const { container } = render(
     <Provider store={store}>
       <SelectAutoComplete
+        {...props}
         id="my-field"
         title="My field"
         fieldSet="default"

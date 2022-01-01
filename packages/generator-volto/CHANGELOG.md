@@ -1,10 +1,29 @@
 # Change Log
 
-## 5.1.1 (unreleased)
+## 5.4.1 (unreleased)
 
 ### Added
 
 ### Changes
+
+## 5.4.0 (2021-12-29)
+
+### Added
+
+- Add further CI cypress commands and complimentary Makefile for app template @sneridagh
+
+## 5.3.0 (2021-12-28)
+
+### Added
+
+- Add missing stylelint check script in project @sneridagh
+
+## 5.2.0 (2021-12-28)
+
+### Added
+
+- Add Cypress testing infrastructure to addon generator @sneridagh
+- Add `jest-addon.config.js` default in addon generator @sneridagh
 
 ## 5.1.0 (2021-12-24)
 

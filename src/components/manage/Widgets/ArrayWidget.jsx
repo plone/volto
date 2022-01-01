@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
-import { find, isObject, isArray } from 'lodash';
+import { find, isObject } from 'lodash';
 
 import {
   getVocabFromHint,
@@ -56,10 +56,79 @@ function arrayMove(array, from, to) {
   return slicedArray;
 }
 
+function normalizeArrayValue(choices, value) {
+  if (!value || !Array.isArray(value)) return [];
+  if (value.length === 0) return value;
+
+  if (typeof value[0] === 'string') {
+    // raw value like ['foo', 'bar']
+    return value.map((v) => {
+      return {
+        label: find(choices, (c) => c.value === v)?.label || v,
+        value: v,
+      };
+    });
+  }
+
+  if (
+    isObject(value[0]) &&
+    Object.keys(value[0]).includes('token') // Array of objects, w/ label+value
+  ) {
+    return value
+      .map((v) => {
+        const item = find(choices, (c) => c.value === v.token);
+        return item
+          ? {
+              label: item.label || item.title || item.token,
+              value: v.token,
+            }
+          : {
+              // avoid a crash if choices doesn't include this item
+              label: v.label,
+              value: v.token,
+            };
+      })
+      .filter((f) => !!f);
+  }
+
+  return [];
+}
+
+function normalizeChoices(choices) {
+  if (Array.isArray(choices) && choices.length && Array.isArray(choices[0])) {
+    return choices.map((option) => ({
+      value: option[0],
+      label:
+        // Fix "None" on the serializer, to remove when fixed in p.restapi
+        option[1] !== 'None' && option[1] ? option[1] : option[0],
+    }));
+  }
+
+  return choices;
+}
+
 /**
  * ArrayWidget component class.
  * @class ArrayWidget
  * @extends Component
+ *
+ * A createable select array widget will be rendered if the named vocabulary is
+ * in the widget definition (hint) like:
+ *
+ * ```
+ * list_field_voc_unconstrained = schema.List(
+ *     title=u"List field with values from vocabulary but not constrained to them.",
+ *     description=u"zope.schema.List",
+ *     value_type=schema.TextLine(),
+ *     required=False,
+ *     missing_value=[],
+ * )
+ * directives.widget(
+ *     "list_field_voc_unconstrained",
+ *     AjaxSelectFieldWidget,
+ *     vocabulary="plone.app.vocabularies.PortalTypes",
+ * )
+ * ```
  */
 class ArrayWidget extends Component {
   /**
@@ -121,18 +190,6 @@ class ArrayWidget extends Component {
     super(props);
 
     this.handleChange = this.handleChange.bind(this);
-
-    this.state = {
-      selectedOption: this.props.vocabBaseUrl
-        ? []
-        : props.value
-        ? props.value.map((item) =>
-            isObject(item)
-              ? { label: item.title || item.token, value: item.token }
-              : { label: item, value: item },
-          )
-        : [],
-    };
   }
 
   /**
@@ -152,63 +209,7 @@ class ArrayWidget extends Component {
         subrequest: this.props.intl.locale,
       });
     }
-    this.setDefaultValues();
   }
-
-  componentDidUpdate() {
-    this.setDefaultValues();
-  }
-
-  normalizeArrayValue = (choices, value) => {
-    // Array of tokens (on add, and on change tab in Tab component)
-    if (
-      value &&
-      isArray(value) &&
-      value.length > 0 &&
-      typeof value[0] === 'string'
-    ) {
-      return value.map((v) => {
-        return {
-          label: find(choices, (c) => c.value === v)?.label || v,
-          value: v,
-        };
-      });
-    }
-    // Array of objects, containing label,value
-    if (
-      value &&
-      isArray(value) &&
-      value.length > 0 &&
-      isObject(value[0]) &&
-      Object.keys(value[0]).includes('token')
-    ) {
-      return value.map((v) => {
-        return {
-          label: find(choices, (c) => c.value === v.token).label,
-          value: v.token,
-        };
-      });
-    }
-    return null;
-  };
-
-  setDefaultValues = () => {
-    if (
-      (this.state.selectedOption || []).length === 0 &&
-      this.props.value &&
-      this.props.choices?.length > 0
-    ) {
-      const normalizedValue = this.normalizeArrayValue(
-        this.props.choices,
-        this.props.value,
-      );
-      if (normalizedValue !== null) {
-        this.setState({
-          selectedOption: normalizedValue,
-        });
-      }
-    }
-  };
 
   /**
    * Handle the field change, store it in the local state and back to simple
@@ -218,13 +219,17 @@ class ArrayWidget extends Component {
    * @returns {undefined}
    */
   handleChange(selectedOption) {
-    this.setState({ selectedOption });
-
     this.props.onChange(
       this.props.id,
       selectedOption ? selectedOption.map((item) => item.value) : null,
     );
   }
+
+  onSortEnd = (selectedOption, { oldIndex, newIndex }) => {
+    const newValue = arrayMove(selectedOption, oldIndex, newIndex);
+
+    this.handleChange(newValue);
+  };
 
   /**
    * Render method.
@@ -232,7 +237,9 @@ class ArrayWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { selectedOption } = this.state;
+    const choices = normalizeChoices(this.props?.choices || []);
+    const selectedOption = normalizeArrayValue(choices, this.props.value);
+
     const CreatableSelect = this.props.reactSelectCreateable.default;
     const { SortableContainer } = this.props.reactSortableHOC;
     const Select = this.props.reactSelect.default;
@@ -257,38 +264,27 @@ class ArrayWidget extends Component {
         ? SortableContainer(Select)
         : SortableContainer(CreatableSelect);
 
-    const onSortEnd = ({ oldIndex, newIndex }) => {
-      const newValue = arrayMove(this.state.selectedOption, oldIndex, newIndex);
-
-      this.setState({ selectedOption: newValue });
-    };
-
     return (
       <FormFieldWrapper {...this.props}>
         <SortableSelect
           useDragHandle
           // react-sortable-hoc props:
           axis="xy"
-          onSortEnd={onSortEnd}
+          onSortEnd={this.onSortEnd}
           distance={4}
           // small fix for https://github.com/clauderic/react-sortable-hoc/pull/352:
           getHelperDimensions={({ node }) => node.getBoundingClientRect()}
           id={`field-${this.props.id}`}
           key={this.props.id}
-          isDisabled={this.props.isDisabled}
+          isDisabled={this.props.disabled || this.props.isDisabled}
           className="react-select-container"
           classNamePrefix="react-select"
           options={
             this.props.vocabBaseUrl
-              ? this.props.choices
+              ? choices
               : this.props.choices
               ? [
-                  ...this.props.choices.map((option) => ({
-                    value: option[0],
-                    label:
-                      // Fix "None" on the serializer, to remove when fixed in p.restapi
-                      option[1] !== 'None' && option[1] ? option[1] : option[0],
-                  })),
+                  ...choices,
                   ...(this.props.noValueOption && !this.props.default
                     ? [
                         {

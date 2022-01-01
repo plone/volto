@@ -1,25 +1,30 @@
 /**
- * ArrayWidget component.
- * @module components/manage/Widgets/ArrayWidget
+ * SelectAutoComplete component.
+ * @module components/manage/Widgets/SelectAutoComplete
  */
 
 import React, { Component } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
-import { isObject } from 'lodash';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import {
+  normalizeValue,
+  normalizeChoices,
+  convertValueToVocabQuery,
+} from './SelectUtils';
 
 import {
   getVocabFromHint,
   getVocabFromField,
   getVocabFromItems,
 } from '@plone/volto/helpers';
-import { getVocabulary } from '@plone/volto/actions';
+import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
 
 import {
   Option,
+  ClearIndicator,
   DropdownIndicator,
   selectTheme,
   customSelectStyles,
@@ -44,8 +49,8 @@ const messages = defineMessages({
 });
 
 /**
- * ArrayWidget component class.
- * @class ArrayWidget
+ * SelectAutoComplete component class.
+ * @class SelectAutoComplete
  * @extends Component
  */
 class SelectAutoComplete extends Component {
@@ -75,6 +80,7 @@ class SelectAutoComplete extends Component {
     ),
     onChange: PropTypes.func.isRequired,
     wrapped: PropTypes.bool,
+    isDisabled: PropTypes.bool,
   };
 
   /**
@@ -108,15 +114,37 @@ class SelectAutoComplete extends Component {
     this.handleChange = this.handleChange.bind(this);
 
     this.state = {
-      selectedOption: props.value
-        ? props.value.map((item) =>
-            isObject(item)
-              ? { label: item.title || item.token, value: item.token }
-              : { label: item, value: item },
-          )
-        : [],
       searchLength: 0,
+      termsPairsCache: [],
     };
+  }
+
+  componentDidMount() {
+    const { id, intl, value, choices } = this.props;
+    if (value && value?.length > 0) {
+      const tokensQuery = convertValueToVocabQuery(
+        normalizeValue(choices, value, this.props.intl),
+      );
+
+      this.props.getVocabularyTokenTitle({
+        vocabNameOrURL: this.props.vocabBaseUrl,
+        subrequest: `widget-${id}-${intl.locale}`,
+        ...tokensQuery,
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { value, choices = [] } = this.props;
+    if (
+      this.state.termsPairsCache.length === 0 &&
+      value?.length > 0 &&
+      choices.length > 0
+    ) {
+      this.setState((state) => ({
+        termsPairsCache: [...state.termsPairsCache, ...choices],
+      }));
+    }
   }
 
   /**
@@ -127,12 +155,13 @@ class SelectAutoComplete extends Component {
    * @returns {undefined}
    */
   handleChange(selectedOption) {
-    this.setState({ selectedOption });
-
     this.props.onChange(
       this.props.id,
       selectedOption ? selectedOption.map((item) => item.value) : null,
     );
+    this.setState((state) => ({
+      termsPairsCache: [...state.termsPairsCache, ...selectedOption],
+    }));
   }
 
   timeoutRef = React.createRef();
@@ -146,26 +175,24 @@ class SelectAutoComplete extends Component {
       if (this.timeoutRef.current) clearTimeout(this.timeoutRef.current);
       return new Promise((resolve) => {
         this.timeoutRef.current = setTimeout(async () => {
-          resolve(
-            await this.props
-              .getVocabulary({
-                vocabNameOrURL: this.props.vocabBaseUrl,
-                query,
-                size: -1,
-                subrequest: this.props.intl.locale,
-              })
-              .then((resp) => {
-                return resp.items.map((item) => ({
-                  label: item.title,
-                  value: item.token,
-                }));
-              }),
-          );
+          const res = await this.fetchAvailableChoices(query);
+          resolve(res);
         }, 400);
       });
     } else {
       return Promise.resolve([]);
     }
+  };
+
+  fetchAvailableChoices = async (query) => {
+    const resp = await this.props.getVocabulary({
+      vocabNameOrURL: this.props.vocabBaseUrl,
+      query,
+      size: -1,
+      subrequest: this.props.intl.locale,
+    });
+
+    return normalizeChoices(resp.items || [], this.props.intl);
   };
 
   /**
@@ -174,7 +201,11 @@ class SelectAutoComplete extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { selectedOption } = this.state;
+    const selectedOption = normalizeValue(
+      this.state.termsPairsCache,
+      this.props.value,
+      this.props.intl,
+    );
     const SelectAsync = this.props.reactSelectAsync.default;
 
     return (
@@ -182,7 +213,7 @@ class SelectAutoComplete extends Component {
         <SelectAsync
           id={`field-${this.props.id}`}
           key={this.props.id}
-          isDisabled={this.props.isDisabled}
+          isDisabled={this.props.disabled || this.props.isDisabled}
           className="react-select-container"
           classNamePrefix="react-select"
           cacheOptions
@@ -204,6 +235,7 @@ class SelectAutoComplete extends Component {
             ...(this.props.choices?.length > 25 && {
               MenuList,
             }),
+            ClearIndicator,
             DropdownIndicator,
             Option,
           }}
@@ -230,22 +262,21 @@ export default compose(
         getVocabFromItems(props);
 
       const vocabState =
-        state.vocabularies?.[vocabBaseUrl]?.subrequests?.[props.intl.locale];
+        state.vocabularies?.[vocabBaseUrl]?.subrequests?.[
+          `widget-${props.id}-${props.intl.locale}`
+        ]?.items;
 
-      // If the schema already has the choices in it, then do not try to get the vocab,
-      // even if there is one
-      if (props.items?.choices) {
-        return {
-          choices: props.items.choices,
-        };
-      } else if (vocabState) {
-        return {
-          choices: vocabState.items,
-          vocabBaseUrl,
-        };
-      }
-      return { vocabBaseUrl };
+      // If the schema already has the choices in it, then do not try to get
+      // the vocab, even if there is one
+      return props.items?.choices
+        ? { choices: props.items.choices }
+        : vocabState
+        ? {
+            choices: vocabState,
+            vocabBaseUrl,
+          }
+        : { vocabBaseUrl };
     },
-    { getVocabulary },
+    { getVocabulary, getVocabularyTokenTitle },
   ),
 )(SelectAutoComplete);
