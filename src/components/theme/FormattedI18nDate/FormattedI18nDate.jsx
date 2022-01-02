@@ -20,30 +20,25 @@ const FormattedI18nDate = ({ date, format, long, includeTime }) => {
     timeStyle: 'short',
   };
 
-  const getFormattedDateString = () => {
-    if (long && !includeTime) {
-      return new Intl.DateTimeFormat(language, readable_date_format).format(
-        new Date(date),
-      );
-    } else if (!long && !includeTime) {
-      return new Intl.DateTimeFormat(language, short_date_format).format(
-        new Date(date),
-      );
-    } else if (includeTime) {
-      return new Intl.DateTimeFormat(
-        language,
-        short_date_and_time_format,
-      ).format(new Date(date));
-    }
+  const getFormattedDateString = (format) => {
+    format = format
+      ? format
+      : long && !includeTime
+      ? readable_date_format
+      : includeTime
+      ? short_date_and_time_format
+      : short_date_format;
+    return new Intl.DateTimeFormat(language, format).format(new Date(date));
   };
+
   return (
     <time
-      datetime={date}
+      dateTime={date}
       title={new Intl.DateTimeFormat(language, readable_date_format).format(
         new Date(date),
       )}
     >
-      {getFormattedDateString()}
+      {getFormattedDateString(format)}
     </time>
   );
 };
