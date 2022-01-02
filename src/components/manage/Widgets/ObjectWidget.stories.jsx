@@ -1,7 +1,7 @@
 import React from 'react';
 import { searchResults } from './ObjectBrowserWidget.stories';
-import ObjectWidgetDefault from './ObjectWidget';
-import Wrapper from '@plone/volto/storybook';
+import ObjectWidget from './ObjectWidget';
+import WidgetStory from './story';
 
 const defaultSchema = {
   title: 'Item',
@@ -107,42 +107,27 @@ const customStore = {
   },
 };
 
-const ObjectWidgetComponent = ({ children, ...args }) => {
-  const [value, setValue] = React.useState();
-  const onChange = (block, value) => setValue(value);
-  return (
-    <Wrapper
-      location={{ pathname: '/folder2/folder21/doc212' }}
-      customStore={customStore}
-    >
-      <div className="ui segment form attached" style={{ width: '400px' }}>
-        <ObjectWidgetDefault
-          {...args}
-          id="SliderItem"
-          title="Slider Item"
-          block="testBlock"
-          value={value}
-          onChange={onChange}
-        />
-        <pre>Value: {JSON.stringify(value, null, 4)}</pre>
-      </div>
-    </Wrapper>
-  );
-};
-
-export const Default = ObjectWidgetComponent.bind({});
+export const Default = WidgetStory.bind({
+  props: { id: 'objectwidget', title: 'Slides' },
+  widget: ObjectWidget,
+  customStore,
+});
 Default.args = {
   schema: defaultSchema,
 };
 
-export const MultipleFieldsets = ObjectWidgetComponent.bind({});
+export const MultipleFieldsets = WidgetStory.bind({
+  props: { id: 'objectwidget', title: 'Slides' },
+  widget: ObjectWidget,
+  customStore,
+});
 MultipleFieldsets.args = {
   schema: multipleFieldsets,
 };
 
 export default {
   title: 'Widgets/Object (JSON)',
-  component: ObjectWidgetDefault,
+  component: ObjectWidget,
   decorators: [
     (Story) => (
       <div className="ui segment form attached" style={{ width: '400px' }}>

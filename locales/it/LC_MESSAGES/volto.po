@@ -1632,6 +1632,7 @@ msgid "No occurences set"
 msgstr "Nessuna ricorrenza impostata"
 
 #: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectAutoComplete
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TokenWidget
 # defaultMessage: No options
@@ -1928,6 +1929,11 @@ msgstr "dopo"
 # defaultMessage: on
 msgid "Recurrence ends on"
 msgstr "il"
+
+#: components/manage/Form/UndoToolbar
+# defaultMessage: Redo
+msgid "Redo"
+msgstr ""
 
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Minimalistic table design
@@ -2238,6 +2244,7 @@ msgstr "Selezione"
 
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectAutoComplete
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TokenWidget
 # defaultMessage: Select…
@@ -2552,8 +2559,8 @@ msgid "The backend is responding, but the CORS headers are not configured proper
 msgstr "Il backend sta rispondendo, ma i CORS headers non sono adeguatamente configurati e il browser ha negato l'accesso alle risorse del backend."
 
 #: components/theme/CorsError/CorsError
-# defaultMessage: The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
-msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
+# defaultMessage: The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
+msgid "The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
 msgstr "Il server di backend del tuo sito web non risponde, ci scusiamo per l'inconveniente. Prova a ricaricare la pagina e riprova. Se il problema persiste, contattare gli amministratori del sito."
 
 #: components/manage/Blocks/Search/schema
@@ -2708,6 +2715,11 @@ msgstr "Tipo"
 msgid "Type a Video (YouTube, Vimeo or mp4) URL"
 msgstr "Digita l'URL di un Video (YouTube, Vimeo or mp4)"
 
+#: components/manage/Widgets/SelectAutoComplete
+# defaultMessage: Type text...
+msgid "Type text..."
+msgstr ""
+
 #: components/manage/Blocks/Text/Edit
 # defaultMessage: Type text…
 msgid "Type text…"
@@ -2727,6 +2739,11 @@ msgstr "UID"
 # defaultMessage: Unauthorized
 msgid "Unauthorized"
 msgstr "Non autorizzato"
+
+#: components/manage/Form/UndoToolbar
+# defaultMessage: Undo
+msgid "Undo"
+msgstr ""
 
 #: components/manage/BlockChooser/BlockChooser
 # defaultMessage: Unfold
