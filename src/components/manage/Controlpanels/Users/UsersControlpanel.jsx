@@ -39,9 +39,8 @@ import {
   Popup,
   Segment,
   Table,
+  Checkbox,
 } from 'semantic-ui-react';
-import checkboxUncheckedSVG from '@plone/volto/icons/checkbox-unchecked.svg';
-import checkboxCheckedSVG from '@plone/volto/icons/checkbox-checked.svg';
 import addUserSvg from '@plone/volto/icons/add-user.svg';
 import saveSVG from '@plone/volto/icons/save.svg';
 import groupSVG from '@plone/volto/icons/group.svg';
@@ -390,7 +389,9 @@ class UsersControlpanel extends Component {
         : '';*/
 
     const isSelectedAll =
-      this.state.selected.length === this.state.entries.length;
+      this.state.entries.length > 0
+        ? this.state.selected.length === this.state.entries.length
+        : false;
 
     return (
       <Container className="users-control-panel">
@@ -525,9 +526,10 @@ class UsersControlpanel extends Component {
           </Segment>
           <Segment>
             <Menu secondary attached>
-              <Menu.Item position="left">
+              <Menu.Item position="left" style={{ width: '90%' }}>
                 <Input
                   transparent
+                  fluid
                   name="SearchableText"
                   placeholder={this.props.intl.formatMessage(
                     messages.searchUsers,
@@ -538,7 +540,7 @@ class UsersControlpanel extends Component {
                 />
                 <Icon
                   name={zoomSVG}
-                  size="30px"
+                  size="28px"
                   color="#007eb1"
                   onClick={this.onSearch}
                   className="zoom"
@@ -574,15 +576,9 @@ class UsersControlpanel extends Component {
               <Table.Header>
                 <Table.Row>
                   <Table.HeaderCell>
-                    <Icon
-                      name={
-                        isSelectedAll
-                          ? checkboxCheckedSVG
-                          : checkboxUncheckedSVG
-                      }
-                      onClick={this.onSelectAll}
-                      color={isSelectedAll ? '#007eb1' : '#826a6a'}
-                      size="24px"
+                    <Checkbox
+                      checked={isSelectedAll ? true : false}
+                      onChange={this.onSelectAll}
                     />
                   </Table.HeaderCell>
                   <Table.HeaderCell>

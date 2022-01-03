@@ -5,10 +5,8 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { injectIntl } from 'react-intl';
-import { Table } from 'semantic-ui-react';
+import { Table, Checkbox } from 'semantic-ui-react';
 import { Icon } from '@plone/volto/components';
-import checkboxUncheckedSVG from '@plone/volto/icons/checkbox-unchecked.svg';
-import checkboxCheckedSVG from '@plone/volto/icons/checkbox-checked.svg';
 import groupSVG from '@plone/volto/icons/group.svg';
 
 /**
@@ -57,7 +55,7 @@ class RenderGroups extends Component {
    * @param {*} { value }
    * @memberof UsersControlpanelUser
    */
-  onChangeRole(event, value) {
+  onChangeRole(event, { value }) {
     const [group, role] = value.split('.');
     this.props.updateGroups(group, role);
   }
@@ -70,16 +68,6 @@ class RenderGroups extends Component {
   isAuthGroup = (roleId) => {
     return this.props.inheritedRole.includes(roleId);
   };
-
-  /**
-   *@param {string}
-   *@returns {Boolean}
-   *@memberof RenderGroups
-   */
-  renderIcon = (role) =>
-    this.props.group.id === 'AuthenticatedUsers'
-      ? this.isAuthGroup(role.id)
-      : this.props.group.roles.includes(role.id);
 
   /**
    * Render method.
@@ -98,14 +86,13 @@ class RenderGroups extends Component {
     return (
       <Table.Row key={group.title}>
         <Table.Cell>
-          <Icon
-            name={isSelected ? checkboxCheckedSVG : checkboxUncheckedSVG}
-            color={isSelected ? '#007eb1' : '#826a6a'}
-            onClick={(e) => {
+          <Checkbox
+            checked={isSelected}
+            onChange={(e) => {
               e.stopPropagation();
               onChangeSelect(group.id);
             }}
-            size="24px"
+            value={`${group.id}`}
           />
         </Table.Cell>
         <Table.Cell>{group.groupname}</Table.Cell>
@@ -121,15 +108,14 @@ class RenderGroups extends Component {
                 title={'plone-svg'}
               />
             ) : (
-              <Icon
-                name={
-                  this.renderIcon(role)
-                    ? checkboxCheckedSVG
-                    : checkboxUncheckedSVG
+              <Checkbox
+                checked={
+                  group.id === 'AuthenticatedUsers'
+                    ? this.isAuthGroup(role.id)
+                    : group.roles.includes(role.id)
                 }
-                onClick={(e) => this.onChangeRole(e, `${group.id}.${role.id}`)}
-                color={this.renderIcon(role) ? '#007eb1' : '#826a6a'}
-                size="24px"
+                onChange={this.onChangeRole}
+                value={`${this.props.group.id}.${role.id}`}
               />
             )}
           </Table.Cell>

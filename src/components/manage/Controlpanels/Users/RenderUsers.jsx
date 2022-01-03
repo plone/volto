@@ -5,10 +5,8 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { injectIntl } from 'react-intl';
-import { Table } from 'semantic-ui-react';
+import { Table, Checkbox } from 'semantic-ui-react';
 import { Icon } from '@plone/volto/components';
-import checkboxUncheckedSVG from '@plone/volto/icons/checkbox-unchecked.svg';
-import checkboxCheckedSVG from '@plone/volto/icons/checkbox-checked.svg';
 import groupSVG from '@plone/volto/icons/group.svg';
 
 /**
@@ -53,17 +51,10 @@ class RenderUsers extends Component {
    * @memberof UsersControlpanelUser
    */
 
-  onChange(event, value) {
+  onChange(event, { value }) {
     const [user, role] = value.split('.');
     this.props.updateUser(user, role);
   }
-
-  /**
-   *@param {string}
-   *@returns {Boolean}
-   *@memberof RenderUsers
-   */
-  renderIcon = (role) => this.props.user.roles.includes(role.id);
 
   /**
    * Render method.
@@ -76,14 +67,13 @@ class RenderUsers extends Component {
     return (
       <Table.Row key={this.props.user.username}>
         <Table.Cell>
-          <Icon
-            name={isSelected ? checkboxCheckedSVG : checkboxUncheckedSVG}
-            color={isSelected ? '#007eb1' : '#826a6a'}
-            onClick={(e) => {
+          <Checkbox
+            checked={isSelected}
+            onChange={(e) => {
               e.stopPropagation();
               onChangeSelect(user.id);
             }}
-            size="24px"
+            value={`${user.id}`}
           />
         </Table.Cell>
         <Table.Cell className="fullname">
@@ -99,15 +89,10 @@ class RenderUsers extends Component {
                 title={'plone-svg'}
               />
             ) : (
-              <Icon
-                name={
-                  this.renderIcon(role)
-                    ? checkboxCheckedSVG
-                    : checkboxUncheckedSVG
-                }
-                onClick={(e) => this.onChange(e, `${user.id}.${role.id}`)}
-                color={this.renderIcon(role) ? '#007eb1' : '#826a6a'}
-                size="24px"
+              <Checkbox
+                checked={user.roles.includes(role.id)}
+                onChange={this.onChange}
+                value={`${user.id}.${role.id}`}
               />
             )}
           </Table.Cell>

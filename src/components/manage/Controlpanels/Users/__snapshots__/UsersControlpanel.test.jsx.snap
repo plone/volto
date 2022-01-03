@@ -48,9 +48,14 @@ exports[`UsersControlpanel renders a user control component 1`] = `
         <div
           className="left item"
           onClick={[Function]}
+          style={
+            Object {
+              "width": "90%",
+            }
+          }
         >
           <div
-            className="ui large transparent input"
+            className="ui large fluid transparent input"
           >
             <input
               id="user-search-input"
@@ -71,7 +76,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
             style={
               Object {
                 "fill": "#007eb1",
-                "height": "30px",
+                "height": "28px",
                 "width": "auto",
               }
             }
@@ -123,24 +128,22 @@ exports[`UsersControlpanel renders a user control component 1`] = `
             <th
               className=""
             >
-              <svg
-                className="icon"
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": undefined,
-                  }
-                }
+              <div
+                className="ui fitted checkbox"
+                onChange={[Function]}
                 onClick={[Function]}
-                style={
-                  Object {
-                    "fill": "#007eb1",
-                    "height": "24px",
-                    "width": "auto",
-                  }
-                }
-                viewBox=""
-                xmlns=""
-              />
+                onMouseDown={[Function]}
+                onMouseUp={[Function]}
+              >
+                <input
+                  checked={false}
+                  className="hidden"
+                  readOnly={true}
+                  tabIndex={0}
+                  type="checkbox"
+                />
+                <label />
+              </div>
             </th>
             <th
               className=""
