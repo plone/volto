@@ -22,7 +22,7 @@ import qs from 'query-string';
 import { withRouter } from 'react-router-dom';
 
 import { Icon } from '@plone/volto/components';
-import { getNavigation, login } from '@plone/volto/actions';
+import { login } from '@plone/volto/actions';
 import { toast } from 'react-toastify';
 import { Toast } from '@plone/volto/components';
 
@@ -318,6 +318,6 @@ export default compose(
           .replace(/\/logout$/, '') ||
         '/',
     }),
-    { login, getNavigation },
+    { login },
   ),
 )(Login);

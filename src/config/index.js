@@ -105,7 +105,8 @@ let config = {
     ToHTMLRenderers,
     ToHTMLOptions,
     imageObjects: ['Image'],
-    listingPreviewImageField: 'image',
+    downloadableObjects: ['File'], //list of content-types for which the direct download of the file will be carried out if the user is not authenticated
+    listingPreviewImageField: 'image', // deprecated from Volto 14 onwards
     customStyleMap: null,
     notSupportedBrowsers: ['ie'],
     defaultPageSize: 25,
@@ -156,6 +157,7 @@ let config = {
     showSelfRegistration: false,
     contentMetadataTagsImageField: 'image',
     hasWorkingCopySupport: false,
+    maxUndoLevels: 200, // undo history size for the main form
   },
   widgets: {
     ...widgetMapping,

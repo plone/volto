@@ -1,5 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Navigation renders a navigation component including external links 1`] = `
+<nav
+  className="navigation"
+  id="navigation"
+>
+  <div
+    className="hamburger-wrapper mobile tablet only"
+  >
+    <button
+      aria-label="Open menu"
+      className="hamburger hamburger--spin"
+      onClick={[Function]}
+      title="Open menu"
+      type="button"
+    >
+      <span
+        className="hamburger-box"
+      >
+        <span
+          className="hamburger-inner"
+        />
+      </span>
+    </button>
+  </div>
+  <div
+    className="ui pointing secondary stackable computer large screen widescreen only menu"
+    onClick={[Function]}
+  >
+    <a
+      aria-current={null}
+      className="item"
+      href="/blog"
+      onClick={[Function]}
+    >
+      Blog
+    </a>
+    <a
+      aria-current={null}
+      className="item"
+      href="/users"
+      onClick={[Function]}
+    >
+      Users
+    </a>
+    <a
+      className="item"
+      href="https://store.plone.org"
+      rel="noopener noreferrer"
+    >
+      Store
+    </a>
+  </div>
+</nav>
+`;
+
 exports[`Navigation renders a navigation component with an active item 1`] = `
 <nav
   className="navigation"

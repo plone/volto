@@ -48,7 +48,7 @@ mrs-developer should work with this project by running the configured shortcut s
 yarn develop
 ```
 
-Volto's latest razzle config will pay attention to your jsconfig.json file for any customizations.
+Volto's latest razzle config will pay attention to your tsconfig.json (or jsconfig.json) file for any customizations.
 
 In case you don't want (or can't) install mrs-developer globally, you can install it in this project by running:
 

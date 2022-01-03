@@ -1,17 +1,19 @@
 import VocabularyTermsWidget from './VocabularyTermsWidget';
-import Wrapper from '@plone/volto/storybook';
 import React from 'react';
 
-const customStore = {
-  userSession: { token: '1234' },
-  intl: {
-    locale: 'en',
-    messages: {},
-  },
-};
+import WidgetStory from './story';
 
-const WrappedJSONField = (args) => {
-  const [value, setValue] = React.useState({
+export const JSONField = WidgetStory.bind({
+  props: { id: 'simplevocabulary', title: 'Vocabulary terms' },
+  widget: VocabularyTermsWidget,
+  customStore: {
+    userSession: { token: '1234' },
+    intl: {
+      locale: 'en',
+      messages: {},
+    },
+  },
+  initialValue: {
     items: [
       {
         token: 'talk',
@@ -30,60 +32,24 @@ const WrappedJSONField = (args) => {
         },
       },
     ],
-  });
-  const onChange = (block, value) => setValue(value);
+  },
+});
 
-  return (
-    <Wrapper
-      location={{ pathname: '/folder2/folder21/doc212' }}
-      customStore={customStore}
-    >
-      <div className="ui segment form attached">
-        <VocabularyTermsWidget
-          {...args}
-          id="simplevocabulary"
-          title="Vocabulary terms"
-          block="testBlock"
-          value={value}
-          onChange={onChange}
-        />
-        <pre>{JSON.stringify(value, null, 4)}</pre>
-      </div>
-    </Wrapper>
-  );
-};
-
-const WrappedSimple = (args) => {
-  const [value, setValue] = React.useState({
+export const Simple = WidgetStory.bind({
+  props: { id: 'simplevocabulary', title: 'Vocabulary terms' },
+  widget: VocabularyTermsWidget,
+  customStore: {
+    userSession: { token: '1234' },
+    intl: {
+      locale: 'en',
+      messages: {},
+    },
+  },
+  initialValue: {
     '001': 'manual',
     '002': 'questions & answers',
-  });
-  const onChange = (block, value) => setValue(value);
-
-  return (
-    <Wrapper
-      location={{ pathname: '/folder2/folder21/doc212' }}
-      customStore={customStore}
-    >
-      <div className="ui segment form attached">
-        <VocabularyTermsWidget
-          {...args}
-          id="Simple"
-          title="Vocabulary terms"
-          block="testBlock"
-          value={value}
-          value_type={{
-            schema: {
-              type: 'string',
-            },
-          }}
-          onChange={onChange}
-        />
-        <pre>{JSON.stringify(value, null, 4)}</pre>
-      </div>
-    </Wrapper>
-  );
-};
+  },
+});
 
 export default {
   title: 'Widgets/Vocabulary',
@@ -96,6 +62,3 @@ export default {
     ),
   ],
 };
-
-export const JSONField = () => <WrappedJSONField />;
-export const Simple = () => <WrappedSimple />;

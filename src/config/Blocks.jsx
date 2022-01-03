@@ -57,6 +57,12 @@ import {
   SelectFacet,
   CheckboxFacet,
 } from '@plone/volto/components/manage/Blocks/Search/components';
+import getListingBlockAsyncData from '@plone/volto/components/manage/Blocks/Listing/getAsyncData';
+
+// block sidebar schemas (not the Dexterity Layout block settings schemas)
+import HeroImageLeftBlockSchema from '@plone/volto/components/manage/Blocks/HeroImageLeft/schema';
+import ListingBlockSchema from '@plone/volto/components/manage/Blocks/Listing/schema';
+import SearchBlockSchema from '@plone/volto/components/manage/Blocks/Search/schema';
 
 defineMessages({
   title: {
@@ -252,6 +258,7 @@ const blocksConfig = {
     view: ViewListingBlock,
     edit: EditListingBlock,
     schema: BlockSettingsSchema,
+    blockSchema: ListingBlockSchema,
     restricted: false,
     mostUsed: true,
     sidebarTab: 1,
@@ -278,6 +285,7 @@ const blocksConfig = {
         template: SummaryListingBlockTemplate,
       },
     ],
+    getAsyncData: getListingBlockAsyncData,
   },
   video: {
     id: 'video',
@@ -319,15 +327,17 @@ const blocksConfig = {
     view: ViewHeroImageLeftBlock,
     edit: EditHeroImageLeftBlock,
     schema: BlockSettingsSchema,
+    blockSchema: HeroImageLeftBlockSchema,
     restricted: false,
     mostUsed: false,
     blockHasOwnFocusManagement: true,
-    sidebarTab: 0,
+    sidebarTab: 1,
     security: {
       addPermission: [],
       view: [],
     },
   },
+
   maps: {
     id: 'maps',
     title: 'Maps',
@@ -384,6 +394,7 @@ const blocksConfig = {
     group: 'common',
     view: SearchBlockView,
     edit: SearchBlockEdit,
+    blockSchema: SearchBlockSchema,
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,
