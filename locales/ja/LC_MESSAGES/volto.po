@@ -47,8 +47,6 @@ msgstr "アクション"
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Controlpanels/Groups/GroupsControlpanel
-#: components/manage/Controlpanels/Users/UsersControlpanel
 # defaultMessage: Actions
 msgid "Actions"
 msgstr "アクション"
@@ -644,14 +642,13 @@ msgstr "基本"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
-#: components/manage/Controlpanels/Groups/RenderGroups
 #: components/manage/Controlpanels/ModerateComments
-#: components/manage/Controlpanels/Users/RenderUsers
 #: components/manage/Delete/Delete
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/Comments
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Delete
 msgid "Delete"
 msgstr "削除"
@@ -728,25 +725,25 @@ msgstr "{license} の下で配布されています。"
 msgid "Divide each row into separate cells"
 msgstr "列の区切り線を表示"
 
+#: components/manage/Controlpanels/Groups/GroupsControlpanel
+# defaultMessage: Do you really want to delete the following groups?
+msgid "Do you really want to delete the following groups?"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: Do you really want to delete the following items?
 msgid "Do you really want to delete the following items?"
 msgstr "以下のアイテムを削除してよろしいですか?"
 
-#: components/manage/Controlpanels/Groups/GroupsControlpanel
-# defaultMessage: Do you really want to delete the group {groupname}?
-msgid "Do you really want to delete the group {groupname}?"
-msgstr "グループ {groupname} を削除してよろしいですか?"
+#: components/manage/Controlpanels/Users/UsersControlpanel
+# defaultMessage: Do you really want to delete the following users?
+msgid "Do you really want to delete the following users?"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Do you really want to delete type {typename}?
 msgid "Do you really want to delete the type {typename}?"
 msgstr "本当にコンテンツタイプ {typename} を削除しますか?"
-
-#: components/manage/Controlpanels/Users/UsersControlpanel
-# defaultMessage: Do you really want to delete the user {username}?
-msgid "Do you really want to delete the user {username}?"
-msgstr "ユーザ {username} を削除してよろしいですか?"
 
 #: components/manage/Delete/Delete
 # defaultMessage: Do you really want to delete this item?
