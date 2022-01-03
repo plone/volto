@@ -41,8 +41,6 @@ import {
   Table,
   Checkbox,
 } from 'semantic-ui-react';
-import checkboxUncheckedSVG from '@plone/volto/icons/checkbox-unchecked.svg';
-import checkboxCheckedSVG from '@plone/volto/icons/checkbox-checked.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import addUserSvg from '@plone/volto/icons/add-user.svg';
 import saveSVG from '@plone/volto/icons/save.svg';
