@@ -209,7 +209,7 @@ class History extends Component {
                   </Table.Cell>
                   <Table.Cell>{entry.actor.fullname}</Table.Cell>
                   <Table.Cell>
-                    <FormattedI18nDate date={entry.time} includeTime />
+                    <FormattedI18nDate date={entry.time} includeTime relative />
                   </Table.Cell>
                   <Table.Cell>{entry.comments}</Table.Cell>
                   <Table.Cell>

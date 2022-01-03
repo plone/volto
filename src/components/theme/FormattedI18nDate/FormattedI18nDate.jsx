@@ -1,7 +1,14 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-const FormattedI18nDate = ({ date, format, long, includeTime }) => {
+const SECOND = 1000;
+const MINUTE = SECOND * 60;
+const HOUR = MINUTE * 60;
+const DAY = HOUR * 24;
+const YEAR = DAY * 365; // ? is this safe or should it be more accurate
+
+const FormattedI18nDate = ({ date, format, long, includeTime, relative }) => {
+  const now = React.useState(new Date());
   const language = useSelector((state) => state.intl.locale);
   const readable_date_format = {
     // Thursday, December 9, 2021 at 10:39 AM
@@ -20,7 +27,7 @@ const FormattedI18nDate = ({ date, format, long, includeTime }) => {
     timeStyle: 'short',
   };
 
-  const getFormattedDateString = (format) => {
+  const getFormattedDateString = (date, format) => {
     format = format
       ? format
       : long && !includeTime
@@ -31,6 +38,22 @@ const FormattedI18nDate = ({ date, format, long, includeTime }) => {
     return new Intl.DateTimeFormat(language, format).format(new Date(date));
   };
 
+  function formatDaysAgo(value) {
+    const date = new Date(value);
+    const deltaMiliTime = date.getTime() - Date.now();
+    const deltaSeconds = deltaMiliTime / SECOND;
+    const deltaDays = deltaMiliTime / DAY;
+    const formatter = new Intl.RelativeTimeFormat(language);
+    const tag = deltaDays < 1 ? 1 : 1;
+    return formatter.format(Math.round(deltaDays), 'days');
+  }
+
+  const getRelativeFormattedDateString = () => {
+    //
+  };
+
+  React.useEffect(() => {}, []);
+
   return (
     <time
       dateTime={date}
@@ -38,7 +61,9 @@ const FormattedI18nDate = ({ date, format, long, includeTime }) => {
         new Date(date),
       )}
     >
-      {getFormattedDateString(format)}
+      {relative
+        ? getRelativeFormattedDateString()
+        : getFormattedDateString(format)}
     </time>
   );
 };
