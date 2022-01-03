@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Use plone-backend docker images for Cypress tests @sneridagh
+
 ## 14.1.1 (2022-01-03)
 
 ### Internal
