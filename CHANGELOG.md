@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Update to plone.restapi 8.18.0, remove some defensive code in vocabularies action now that it's fixed in the backend @sneridagh
+
 ## 14.1.0 (2021-12-31)
 
 ### Feature
