@@ -364,25 +364,25 @@ export class BasicToolbarComponent extends Component {
               </div>
               <div className="toolbar-bottom">
                 <Pluggable name="main.toolbar.bottom" />
-                {!this.props.hideDefaultViewButtons && (
-                  <button
-                    className="user"
-                    aria-label={this.props.intl.formatMessage(
-                      messages.personalTools,
-                    )}
-                    onClick={(e) => this.toggleMenu(e, 'personalTools')}
-                    tabIndex={0}
-                    id="toolbar-personal"
-                  >
-                    <Icon
-                      name={userSVG}
-                      size="30px"
-                      title={this.props.intl.formatMessage(
-                        messages.personalTools,
-                      )}
-                    />
-                  </button>
-                )}
+                {/* {!this.props.hideDefaultViewButtons && ( */}
+                {/*   <button */}
+                {/*     className="user" */}
+                {/*     aria-label={this.props.intl.formatMessage( */}
+                {/*       messages.personalTools, */}
+                {/*     )} */}
+                {/*     onClick={(e) => this.toggleMenu(e, 'personalTools')} */}
+                {/*     tabIndex={0} */}
+                {/*     id="toolbar-personal" */}
+                {/*   > */}
+                {/*     <Icon */}
+                {/*       name={userSVG} */}
+                {/*       size="30px" */}
+                {/*       title={this.props.intl.formatMessage( */}
+                {/*         messages.personalTools, */}
+                {/*       )} */}
+                {/*     /> */}
+                {/*   </button> */}
+                {/* )} */}
                 <Bottom {...this.props}>
                   {bottom.map((BottomComponent, index) => {
                     return matchPath(
