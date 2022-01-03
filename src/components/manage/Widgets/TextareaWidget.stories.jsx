@@ -1,28 +1,11 @@
 import React from 'react';
 import TextareaWidget from './TextareaWidget';
-import Wrapper from '@plone/volto/storybook';
+import WidgetStory from './story';
 
-const TextareaWidgetComponent = ({ children, ...args }) => {
-  const [value, setValue] = React.useState('');
-  const onChange = (block, value) => setValue(value);
-  return (
-    <Wrapper location={{ pathname: '/folder2/folder21/doc212' }}>
-      <div className="ui segment form attached" style={{ width: '400px' }}>
-        <TextareaWidget
-          {...args}
-          id="field"
-          title="Textarea"
-          block="testBlock"
-          value={value}
-          onChange={onChange}
-        />
-      </div>
-      <pre>Value: {JSON.stringify(value, null, 4)}</pre>
-    </Wrapper>
-  );
-};
-
-export const Textarea = TextareaWidgetComponent.bind({});
+export const Textarea = WidgetStory.bind({
+  props: { id: 'textarea', title: 'Text area', block: 'block' },
+  widget: TextareaWidget,
+});
 
 export default {
   title: 'Widgets/Textarea',

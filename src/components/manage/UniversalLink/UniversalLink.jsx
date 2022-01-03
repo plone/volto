@@ -41,8 +41,9 @@ const UniversalLink = ({
       url = flattenToAppURL(item['@id']);
 
       //case: item like a Link
-      if (!token && item.remoteUrl) {
-        url = item.remoteUrl;
+      let remoteUrl = item.remoteUrl || item.getRemoteUrl;
+      if (!token && remoteUrl) {
+        url = remoteUrl;
       }
 
       //case: item of type 'File'

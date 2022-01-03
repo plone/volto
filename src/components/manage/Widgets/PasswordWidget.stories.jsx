@@ -1,28 +1,11 @@
 import React from 'react';
 import PasswordWidget from './PasswordWidget';
-import Wrapper from '@plone/volto/storybook';
+import WidgetStory from './story';
 
-const PasswordWidgetComponent = ({ children, ...args }) => {
-  const [value, setValue] = React.useState('');
-  const onChange = (block, value) => setValue(value);
-  return (
-    <Wrapper location={{ pathname: '/folder2/folder21/doc212' }}>
-      <div className="ui segment form attached" style={{ width: '400px' }}>
-        <PasswordWidget
-          {...args}
-          id="field"
-          title="Password"
-          block="testBlock"
-          value={value}
-          onChange={onChange}
-        />
-      </div>
-      <pre>Value: {JSON.stringify(value, null, 4)}</pre>
-    </Wrapper>
-  );
-};
-
-export const Password = PasswordWidgetComponent.bind({});
+export const Password = WidgetStory.bind({
+  props: { id: 'password', title: 'Password', block: 'block' },
+  widget: PasswordWidget,
+});
 
 export default {
   title: 'Widgets/Password',

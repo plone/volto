@@ -1,5 +1,5 @@
 import ObjectListWidgetDefault from './ObjectListWidget';
-import Wrapper from '@plone/volto/storybook';
+import Wrapper, { FormUndoWrapper } from '@plone/volto/storybook';
 import React from 'react';
 import { searchResults } from './ObjectBrowserWidget.stories';
 
@@ -108,55 +108,55 @@ const ObjectListWidgetComponent = ({
   enableSchemaExtender,
   ...args
 }) => {
-  const [value, setValue] = React.useState([]);
-  const onChange = (block, value) => setValue(value);
-
   return (
     <Wrapper
       location={{ pathname: '/folder2/folder21/doc212' }}
       customStore={customStore}
     >
-      <div className="ui segment form attached" style={{ width: '400px' }}>
-        {children}
-        <ObjectListWidgetDefault
-          {...args}
-          id="SliderItem"
-          title="Slider Item"
-          block="testBlock"
-          value={value}
-          onChange={onChange}
-          schemaExtender={
-            enableSchemaExtender &&
-            ((schema, data, intl) => {
-              const finalSchema =
-                data?.href?.[0]?.['@id'] === '/image'
-                  ? {
-                      ...schema,
-                      fieldsets: [
-                        {
-                          ...schema.fieldsets[0],
-                          fields: [
-                            ...schema.fieldsets[0].fields,
-                            ...secondarySchema.fieldsets[0].fields,
+      <FormUndoWrapper initialState={{ value: undefined }} showControls={true}>
+        {({ state, onChange }) => (
+          <div className="ui segment form attached" style={{ width: '400px' }}>
+            {children}
+            <ObjectListWidgetDefault
+              {...args}
+              id="SliderItem"
+              title="Slider Item"
+              block="testBlock"
+              value={state.value}
+              onChange={(block, value) => onChange({ value })}
+              schemaExtender={
+                enableSchemaExtender &&
+                ((schema, data, intl) => {
+                  const finalSchema =
+                    data?.href?.[0]?.['@id'] === '/image'
+                      ? {
+                          ...schema,
+                          fieldsets: [
+                            {
+                              ...schema.fieldsets[0],
+                              fields: [
+                                ...schema.fieldsets[0].fields,
+                                ...secondarySchema.fieldsets[0].fields,
+                              ],
+                            },
+                            ...schema.fieldsets.slice(1),
+                            ...secondarySchema.fieldsets.slice(1),
                           ],
-                        },
-                        ...schema.fieldsets.slice(1),
-                        ...secondarySchema.fieldsets.slice(1),
-                      ],
-                      properties: {
-                        ...schema.properties,
-                        ...secondarySchema.properties,
-                      },
-                    }
-                  : schema;
-              return finalSchema;
-            })
-          }
-        />
-        <hr />
-        <strong>Resulting value</strong>
-        <pre>{JSON.stringify(value, null, 4)}</pre>
-      </div>
+                          properties: {
+                            ...schema.properties,
+                            ...secondarySchema.properties,
+                          },
+                        }
+                      : schema;
+                  return finalSchema;
+                })
+              }
+            />
+            <hr />
+            <pre>Value: {JSON.stringify(state.value, null, 4)}</pre>
+          </div>
+        )}
+      </FormUndoWrapper>
     </Wrapper>
   );
 };

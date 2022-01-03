@@ -8,6 +8,7 @@ import {
   GET_VOCABULARY_TOKEN_TITLE,
 } from '@plone/volto/constants/ActionTypes';
 import { getVocabName } from '@plone/volto/helpers/Vocabularies/Vocabularies';
+import qs from 'query-string';
 
 /**
  * Get vocabulary given a URL (coming from a Schema) or from a vocabulary name.
@@ -53,22 +54,32 @@ export function getVocabulary({
  * @param {string} token Only include results containing this string.
  * @returns {Object} Get vocabulary action.
  */
-export function getVocabularyTokenTitle(
+export function getVocabularyTokenTitle({
   vocabNameOrURL,
   token = null,
+  tokens = null,
   subrequest,
-) {
+}) {
   // In case we have a URL, we have to get the vocabulary name
   const vocabulary = getVocabName(vocabNameOrURL);
+  const queryString = {
+    ...(token && { token }),
+    ...(tokens && { tokens }),
+  };
 
   return {
     type: GET_VOCABULARY_TOKEN_TITLE,
     vocabulary: vocabNameOrURL,
     token,
+    tokens,
     subrequest,
     request: {
       op: 'get',
-      path: `/@vocabularies/${vocabulary}?token=${token}`,
+      path: `/@vocabularies/${vocabulary}?b_size=-1&${qs
+        .stringify(queryString, {
+          encode: false,
+        })
+        .replace('tokens', 'tokens:list')}`, // TODO: Remove when p.restapi 8.18.0 is released
     },
   };
 }

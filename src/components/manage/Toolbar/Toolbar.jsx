@@ -25,6 +25,14 @@ import { Bottom } from '@plone/volto/components/manage/Toolbar/ToolbarComponents
 import { Pluggable } from '@plone/volto/components/manage/Pluggable';
 import config from '@plone/volto/registry';
 
+import penSVG from '@plone/volto/icons/pen.svg';
+import unlockSVG from '@plone/volto/icons/unlock.svg';
+import folderSVG from '@plone/volto/icons/folder.svg';
+import addSVG from '@plone/volto/icons/add-document.svg';
+import moreSVG from '@plone/volto/icons/more.svg';
+import userSVG from '@plone/volto/icons/user.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
+
 const messages = defineMessages({
   shrinkToolbar: {
     id: 'Shrink toolbar',
@@ -356,6 +364,25 @@ export class BasicToolbarComponent extends Component {
               </div>
               <div className="toolbar-bottom">
                 <Pluggable name="main.toolbar.bottom" />
+                {!this.props.hideDefaultViewButtons && (
+                  <button
+                    className="user"
+                    aria-label={this.props.intl.formatMessage(
+                      messages.personalTools,
+                    )}
+                    onClick={(e) => this.toggleMenu(e, 'personalTools')}
+                    tabIndex={0}
+                    id="toolbar-personal"
+                  >
+                    <Icon
+                      name={userSVG}
+                      size="30px"
+                      title={this.props.intl.formatMessage(
+                        messages.personalTools,
+                      )}
+                    />
+                  </button>
+                )}
                 <Bottom {...this.props}>
                   {bottom.map((BottomComponent, index) => {
                     return matchPath(
