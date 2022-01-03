@@ -1,3 +1,5 @@
+import { first } from 'lodash';
+
 describe('User Control Panel Test', () => {
   beforeEach(() => {
     // given a logged in editor
@@ -65,14 +67,14 @@ describe('User Control Panel Test', () => {
     cy.get('input[id="field-password"]').clear().type('test@test');
     cy.get('button[title="Save"]').click(-50, -50, { force: true });
 
-    cy.get('td:nth-child(1) > .icon').click();
-    cy.get('.delete').click();
-    cy.contains('iFlameing');
+    cy.get('td:nth-child(1) > .checkbox').first().click();
+    cy.get('button.ui.item').should('not.have.class', 'disabled').click();
+    cy.contains('test_user_1');
     cy.get('div.modal .primary').click();
 
-    cy.get('input[id="user-search-input"]').clear().type('i');
+    cy.get('input[id="user-search-input"]').clear().type('test');
     cy.get('.icon.zoom').click();
-    cy.getIfExists('.fullname').should('not.have.text', 'Alok Kumar');
+    cy.getIfExists('.fullname').should('not.have.text', 'test');
   });
 
   it('Should update user roles', () => {
@@ -89,12 +91,14 @@ describe('User Control Panel Test', () => {
     cy.get('input[id="field-password"]').clear().type('test@test');
     cy.get('button[title="Save"]').click(-50, -50, { force: true });
 
-    cy.get('td:nth-child(3) > .icon').click();
+    cy.get('td:nth-child(3) > .checkbox').first().click();
 
     cy.get('Button[id="toolbar-save"]').click();
 
     cy.reload();
 
-    cy.get('td:nth-child(3) > .icon').should('have.css', 'rgb');
+    cy.get('td:nth-child(3) > .checkbox')
+      .first()
+      .should('have.class', 'checked');
   });
 });
