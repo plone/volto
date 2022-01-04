@@ -29,7 +29,7 @@ const toDate = (d) => (typeof d === 'string' ? new Date(d) : d);
 export function formatDate({
   date, // Date() or  '2022-01-03T19:26:08.999Z'
   format, // format object, see https://tc39.es/ecma402/#datetimeformat-objects
-  language = 'en',
+  locale = 'en',
   long, // true if format should be in long readable form.
   includeTime, // true if short date format should include time
 }) {
@@ -41,12 +41,12 @@ export function formatDate({
     : includeTime
     ? short_date_and_time_format
     : short_date_format;
-  return new Intl.DateTimeFormat(language, format).format(date);
+  return new Intl.DateTimeFormat(locale, format).format(date);
 }
 
 export function formatRelativeDate({
   date,
-  language = 'en',
+  locale = 'en',
   relativeTo,
   style = 'long', // long|short|narrow
 }) {
@@ -73,7 +73,7 @@ export function formatRelativeDate({
   const pos = deltas.map(Math.round).findIndex((d) => d > 0);
   const tag = ['years', 'months', 'days', 'hours', 'minutes', 'seconds'][pos];
 
-  const formatter = new Intl.RelativeTimeFormat(language, {
+  const formatter = new Intl.RelativeTimeFormat(locale, {
     numeric: 'auto',
     style,
   });

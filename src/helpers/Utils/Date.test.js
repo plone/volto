@@ -20,7 +20,7 @@ describe('formatDate helper', () => {
   });
 
   it('formats a date object in other language', () => {
-    expect(formatDate({ date, language: 'de' })).toBe('3.1.2022');
+    expect(formatDate({ date, locale: 'de' })).toBe('3.1.2022');
   });
 
   it('formats a date object with time in default en locale', () => {
@@ -28,7 +28,7 @@ describe('formatDate helper', () => {
   });
 
   it('formats a date object with time in other language', () => {
-    expect(formatDate({ date, language: 'de', includeTime: true })).toBe(
+    expect(formatDate({ date, locale: 'de', includeTime: true })).toBe(
       '03.01.22, 19:26',
     );
   });
@@ -40,7 +40,7 @@ describe('formatDate helper', () => {
   });
 
   it('formats a date as long in other language', () => {
-    expect(formatDate({ date, long: true, language: 'de' })).toBe(
+    expect(formatDate({ date, long: true, locale: 'de' })).toBe(
       'Montag, 3. Januar 2022 um 19:26',
     );
   });

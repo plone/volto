@@ -5,7 +5,7 @@ import FormattedDate from './FormattedDate';
 const date = new Date();
 
 function StoryComponent(args) {
-  const { date, format, long, includeTime, locale = 'en' } = args;
+  const { date, format, long, includeTime, locale } = args;
   return (
     <Wrapper
       customStore={{ intl: { locale } }}
@@ -15,6 +15,7 @@ function StoryComponent(args) {
         date={date}
         format={format}
         long={long}
+        locale={locale}
         includeTime={includeTime}
       />
     </Wrapper>
@@ -56,7 +57,7 @@ CustomFormat.args = {
 
 export default {
   title: 'Internal Components/Formatted Date',
-  component: FormattedI18nDate,
+  component: FormattedDate,
   decorators: [
     (Story) => (
       <div style={{ width: '400px' }}>

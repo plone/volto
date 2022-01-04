@@ -9,8 +9,9 @@ const FormattedDate = ({
   includeTime,
   relative,
   className,
+  locale,
 }) => {
-  const language = useSelector((state) => state.intl.locale);
+  const language = useSelector((state) => locale || state.intl.locale);
   const toDate = (d) => (typeof d === 'string' ? new Date(d) : d);
 
   return (
@@ -21,7 +22,7 @@ const FormattedDate = ({
         new Date(toDate(date)),
       )}
     >
-      {formatDate({ date, long, includeTime, format })}
+      {formatDate({ date, long, includeTime, format, locale: language })}
     </time>
   );
 };

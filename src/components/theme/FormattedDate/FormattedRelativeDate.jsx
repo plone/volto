@@ -5,8 +5,14 @@ import {
 } from '@plone/volto/helpers/Utils/Date';
 import { useSelector } from 'react-redux';
 
-const FormattedRelativeDate = ({ date, style, relativeTo, className }) => {
-  const language = useSelector((state) => state.intl.locale);
+const FormattedRelativeDate = ({
+  date,
+  style,
+  relativeTo,
+  className,
+  locale,
+}) => {
+  const language = useSelector((state) => locale || state.intl.locale);
 
   return (
     <time
@@ -16,7 +22,7 @@ const FormattedRelativeDate = ({ date, style, relativeTo, className }) => {
         new Date(date),
       )}
     >
-      {formatRelativeDate({ language, date, style, relativeTo })}
+      {formatRelativeDate({ locale: language, date, style, relativeTo })}
     </time>
   );
 };
