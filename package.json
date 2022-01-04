@@ -117,7 +117,8 @@
       "load-volto-addons": "<rootDir>/jest-addons-loader.js",
       "@package/config": "<rootDir>/jest-addons-loader.js",
       "@voltoconfig": "<rootDir>/jest-addons-loader.js",
-      "\\.(css|less|scss|sass)$": "identity-obj-proxy"
+      "\\.(css|less|scss|sass)$": "identity-obj-proxy",
+      "Intl": "<rootDir>/node_modules/intl/"
     },
     "coverageThreshold": {
       "global": {
@@ -415,6 +416,7 @@
     "babel-loader": "^8.1.0",
     "crypto-random-string": "3.2.0",
     "identity-obj-proxy": "3.0.0",
+    "intl": "1.2.5",
     "jest": "27.4.5",
     "jest-environment-jsdom-sixteen": "1.0.3",
     "react-is": "^16.13.1",
