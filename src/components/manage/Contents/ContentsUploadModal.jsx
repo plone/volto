@@ -23,7 +23,7 @@ import { concat, filter, map } from 'lodash';
 import filesize from 'filesize';
 import { readAsDataURL } from 'promise-file-reader';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { FormattedI18nDate } from '@plone/volto/components';
+import { FormattedDate } from '@plone/volto/components';
 import { createContent } from '@plone/volto/actions';
 
 const Dropzone = loadable(() => import('react-dropzone'));
@@ -267,7 +267,7 @@ class ContentsUploadModal extends Component {
                     <Table.Row className="upload-row" key={file.name}>
                       <Table.Cell>{file.name}</Table.Cell>
                       <Table.Cell>
-                        <FormattedI18nDate date={file.lastModifiedDate} />
+                        <FormattedDate date={file.lastModifiedDate} />
                       </Table.Cell>
                       <Table.Cell>
                         {filesize(file.size, { round: 0 })}

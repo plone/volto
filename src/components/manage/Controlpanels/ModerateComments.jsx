@@ -16,7 +16,7 @@ import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { deleteComment, searchContent } from '@plone/volto/actions';
 import {
   CommentEditModal,
-  FormattedI18nDate,
+  FormattedDate,
   Icon,
   Toolbar,
 } from '@plone/volto/components';
@@ -234,7 +234,7 @@ class ModerateComments extends Component {
                     <Table.Row key={item['@id']}>
                       <Table.Cell>{item.author_name}</Table.Cell>
                       <Table.Cell>
-                        <FormattedI18nDate date={item.creation_date} />
+                        <FormattedDate date={item.creation_date} />
                       </Table.Cell>
                       <Table.Cell>{item.text.data}</Table.Cell>
                       <Table.Cell>

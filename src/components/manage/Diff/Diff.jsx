@@ -24,7 +24,7 @@ import {
 } from '@plone/volto/helpers';
 import {
   DiffField,
-  FormattedI18nDate,
+  FormattedDate,
   Icon,
   Toolbar,
 } from '@plone/volto/components';
@@ -196,7 +196,7 @@ class Diff extends Component {
         text: (
           <>
             {index === 0 ? 'Current' : entry.version}&nbsp;(
-            <FormattedI18nDate date={entry.time} long />, &nbsp;
+            <FormattedDate date={entry.time} long />, &nbsp;
             {entry.actor.fullname})
           </>
         ),

@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import { DragSource, DropTarget } from 'react-dnd';
 import { useIntl, defineMessages, FormattedMessage } from 'react-intl';
-import { Circle, FormattedI18nDate, Icon } from '@plone/volto/components';
+import { Circle, FormattedDate, Icon } from '@plone/volto/components';
 import { getContentIcon } from '@plone/volto/helpers';
 import moreSVG from '@plone/volto/icons/more.svg';
 import checkboxUncheckedSVG from '@plone/volto/icons/checkbox-unchecked.svg';
@@ -191,7 +191,7 @@ export const ContentsItemComponent = ({
             {index.type === 'date' && (
               <>
                 {item[index.id] !== 'None' ? (
-                  <FormattedI18nDate date={item[index.id]} />
+                  <FormattedDate date={item[index.id]} />
                 ) : (
                   intl.formatMessage(messages.none)
                 )}

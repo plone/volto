@@ -1,6 +1,6 @@
 import React from 'react';
 import Wrapper from '@plone/volto/storybook';
-import FormattedI18nDate from './FormattedI18nDate';
+import FormattedDate from './FormattedDate';
 
 const date = new Date();
 
@@ -11,7 +11,7 @@ function StoryComponent(args) {
       customStore={{ intl: { locale } }}
       location={{ pathname: '/folder2/folder21/doc212' }}
     >
-      <FormattedI18nDate
+      <FormattedDate
         date={date}
         format={format}
         long={long}
