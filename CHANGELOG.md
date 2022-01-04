@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Upgrade jest to latest release, 27 major. @tiberiuichim
+
 ## 14.2.0 (2022-01-04)
 
 ### Feature
