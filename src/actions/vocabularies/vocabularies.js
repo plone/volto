@@ -75,11 +75,12 @@ export function getVocabularyTokenTitle({
     subrequest,
     request: {
       op: 'get',
-      path: `/@vocabularies/${vocabulary}?b_size=-1&${qs
-        .stringify(queryString, {
+      path: `/@vocabularies/${vocabulary}?b_size=-1&${qs.stringify(
+        queryString,
+        {
           encode: false,
-        })
-        .replace('tokens', 'tokens:list')}`, // TODO: Remove when p.restapi 8.18.0 is released
+        },
+      )}`,
     },
   };
 }

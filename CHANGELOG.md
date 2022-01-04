@@ -1,6 +1,6 @@
 # Change Log
 
-## 14.1.1 (unreleased)
+## 14.1.2 (unreleased)
 
 ### Breaking
 
@@ -11,6 +11,12 @@
 ### Bugfix
 
 ### Internal
+
+## 14.1.1 (2022-01-03)
+
+### Internal
+
+- Update to plone.restapi 8.18.0, remove some defensive code in vocabularies action now that it's fixed in the backend @sneridagh
 
 ## 14.1.0 (2021-12-31)
 
