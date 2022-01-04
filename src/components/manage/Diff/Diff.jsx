@@ -196,7 +196,7 @@ class Diff extends Component {
         text: (
           <>
             {index === 0 ? 'Current' : entry.version}&nbsp;(
-            <FormattedDate date={entry.time} long />, &nbsp;
+            <FormattedDate date={entry.time} long className="text" />, &nbsp;
             {entry.actor.fullname})
           </>
         ),

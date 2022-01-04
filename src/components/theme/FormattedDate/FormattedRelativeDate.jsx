@@ -5,11 +5,12 @@ import {
 } from '@plone/volto/helpers/Utils/Date';
 import { useSelector } from 'react-redux';
 
-const FormattedRelativeDate = ({ date, style, relativeTo }) => {
+const FormattedRelativeDate = ({ date, style, relativeTo, className }) => {
   const language = useSelector((state) => state.intl.locale);
 
   return (
     <time
+      className={className}
       dateTime={date}
       title={new Intl.DateTimeFormat(language, long_date_format).format(
         new Date(date),
