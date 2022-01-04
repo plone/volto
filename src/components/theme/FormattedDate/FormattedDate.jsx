@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  formatDate,
-  readable_date_format,
-} from '@plone/volto/helpers/Utils/Date';
+import { formatDate, long_date_format } from '@plone/volto/helpers/Utils/Date';
 import { useSelector } from 'react-redux';
 
 const FormattedDate = ({ date, format, long, includeTime, relative }) => {
@@ -11,7 +8,7 @@ const FormattedDate = ({ date, format, long, includeTime, relative }) => {
   return (
     <time
       dateTime={date}
-      title={new Intl.DateTimeFormat(language, readable_date_format).format(
+      title={new Intl.DateTimeFormat(language, long_date_format).format(
         new Date(date),
       )}
     >
