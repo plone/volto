@@ -2,15 +2,10 @@
 
 ## 14.1.2 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Allow `creatable` prop to be passed to `ArrayWidgets`, in case they don't have a vocabulary @giuliaghisini
-
-### Bugfix
-
-### Internal
+- Added initialBlocksFocus to blocks config, to set default focus on non-first block. @giuliaghisini
 
 ## 14.1.1 (2022-01-03)
 
@@ -221,8 +216,6 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 
 - Add runtime configuration for `@babel/plugin-transform-react-jsx` set to `automatic`. This enables the new JSX runtime: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html So no longer `import React from 'react'` is needed anymore.
 - Update favicon and related tags with best practices @sneridagh
-
-- Added initialBlocksFocus to blocks config, to set default focus on non-first block. @giuliaghisini
 
 ### Bugfix
 
