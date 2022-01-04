@@ -27,6 +27,7 @@ import {
   requiredBlocks,
   blocksConfig,
   initialBlocks,
+  initialBlocksFocus,
 } from './Blocks';
 import { loadables } from './Loadables';
 
@@ -179,6 +180,7 @@ let config = {
     groupBlocksOrder,
     toolbarGroups,
     initialBlocks,
+    initialBlocksFocus,
     showEditBlocksInBabelView: false,
   },
   addonRoutes: [],

@@ -486,6 +486,7 @@ const blocksConfig = {
 const requiredBlocks = ['title'];
 
 const initialBlocks = {};
+const initialBlocksFocus = {}; //{Document:'title'}
 
 export {
   groupBlocksOrder,
@@ -493,4 +494,5 @@ export {
   requiredBlocks,
   blocksConfig,
   initialBlocks,
+  initialBlocksFocus,
 };

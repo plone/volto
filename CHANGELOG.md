@@ -1,6 +1,6 @@
 # Change Log
 
-## 14.1.1 (unreleased)
+## 14.2.1 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,19 @@
 ### Bugfix
 
 ### Internal
+
+## 14.2.0 (2022-01-04)
+
+### Feature
+
+- Allow `creatable` prop to be passed to `ArrayWidgets`, in case they don't have a vocabulary @giuliaghisini
+- Added initialBlocksFocus to blocks config, to set default focus on non-first block. @giuliaghisini
+
+## 14.1.1 (2022-01-03)
+
+### Internal
+
+- Update to plone.restapi 8.18.0, remove some defensive code in vocabularies action now that it's fixed in the backend @sneridagh
 
 ## 14.1.0 (2021-12-31)
 
