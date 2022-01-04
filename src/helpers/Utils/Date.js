@@ -78,8 +78,8 @@ export function formatRelativeDate({
     style,
   });
 
-  return formatter.format(
-    Math.round(deltaMiliTime < 0 ? -1 * deltas[pos] : deltas[pos]),
-    tag,
-  );
+  const v = Math.round(deltaMiliTime < 0 ? -1 * deltas[pos] : deltas[pos]);
+  // console.log({ date, relativeTo, v });
+
+  return isNaN(v) ? '' : formatter.format(v, tag); // use "now" ?
 }

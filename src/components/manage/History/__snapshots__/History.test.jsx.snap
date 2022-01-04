@@ -87,11 +87,12 @@ exports[`History renders a history component 1`] = `
           <td
             className=""
           >
-            <span
-              title="Sunday, April 23, 2017 3:38 AM"
+            <time
+              dateTime="2017-04-19T14:09:36+02:00"
+              title="Wednesday, April 19, 2017 at 12:09 PM"
             >
-              a few seconds ago
-            </span>
+              4 days ago
+            </time>
           </td>
           <td
             className=""
@@ -125,11 +126,12 @@ exports[`History renders a history component 1`] = `
           <td
             className=""
           >
-            <span
-              title="Sunday, April 23, 2017 3:38 AM"
+            <time
+              dateTime="2017-04-19T14:09:35+02:00"
+              title="Wednesday, April 19, 2017 at 12:09 PM"
             >
-              a few seconds ago
-            </span>
+              4 days ago
+            </time>
           </td>
           <td
             className=""
@@ -191,11 +193,12 @@ exports[`History renders a history component 1`] = `
           <td
             className=""
           >
-            <span
-              title="Sunday, April 23, 2017 3:38 AM"
+            <time
+              dateTime="2017-04-19T14:09:34+02:00"
+              title="Wednesday, April 19, 2017 at 12:09 PM"
             >
-              a few seconds ago
-            </span>
+              4 days ago
+            </time>
           </td>
           <td
             className=""
