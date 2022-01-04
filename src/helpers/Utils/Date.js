@@ -44,9 +44,12 @@ export function formatDate({
   return new Intl.DateTimeFormat(language, format).format(date);
 }
 
-export function formatRelativeDate({ date, language = 'en', relativeTo }) {
-  const formatter = new Intl.RelativeTimeFormat(language);
-
+export function formatRelativeDate({
+  date,
+  language = 'en',
+  relativeTo,
+  style = 'long', // long|short|narrow
+}) {
   date = toDate(date);
   relativeTo = toDate(relativeTo || new Date());
 
@@ -67,8 +70,13 @@ export function formatRelativeDate({ date, language = 'en', relativeTo }) {
     deltaMinutes,
     deltaSeconds,
   ];
-  const pos = deltas.map(Math.floor).findIndex((d) => d > 0);
+  const pos = deltas.map(Math.round).findIndex((d) => d > 0);
   const tag = ['years', 'months', 'days', 'hours', 'minutes', 'seconds'][pos];
+
+  const formatter = new Intl.RelativeTimeFormat(language, {
+    numeric: 'auto',
+    style,
+  });
 
   return formatter.format(
     Math.round(deltaMiliTime < 0 ? -1 * deltas[pos] : deltas[pos]),

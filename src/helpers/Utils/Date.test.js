@@ -91,6 +91,30 @@ describe('formatRelativeDate helper', () => {
     expect(formatRelativeDate({ date })).toBeTruthy();
   });
 
+  it('uses auto numeric to format close past days', () => {
+    const now = Date.now();
+    const d = new Date(now - 1 * DAY);
+    expect(formatRelativeDate({ date: d })).toBe('yesterday');
+  });
+
+  it('uses auto numeric to format close future days', () => {
+    const now = Date.now();
+    const d = new Date(now + 1 * DAY);
+    expect(formatRelativeDate({ date: d })).toBe('tomorrow');
+  });
+
+  it('uses auto numeric to format close future years', () => {
+    const now = Date.now();
+    const d = new Date(now + 1 * YEAR);
+    expect(formatRelativeDate({ date: d })).toBe('next year');
+  });
+
+  it('uses auto numeric to format close last years', () => {
+    const now = Date.now();
+    const d = new Date(now - 1 * YEAR);
+    expect(formatRelativeDate({ date: d })).toBe('last year');
+  });
+
   it('accepts a relativeTo date', () => {
     const relativeTo = new Date(date.getTime() + 4 * DAY);
     expect(formatRelativeDate({ date, relativeTo })).toBe('4 days ago');
@@ -158,5 +182,17 @@ describe('formatRelativeDate helper', () => {
       date.getTime() - 4 * YEAR - +4 * MONTH - 4 * DAY,
     );
     expect(formatRelativeDate({ date, relativeTo })).toBe('in 4 years');
+  });
+
+  it('can use alternate style short', () => {
+    const now = Date.now();
+    const d = new Date(now + 3 * MONTH);
+    expect(formatRelativeDate({ date: d, style: 'short' })).toBe('in 3 mo.');
+  });
+
+  it('can use alternate style narrow', () => {
+    const now = Date.now();
+    const d = new Date(now + 3 * MONTH);
+    expect(formatRelativeDate({ date: d, style: 'narrow' })).toBe('in 3 mo.');
   });
 });
