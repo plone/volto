@@ -119,6 +119,14 @@ Disabled.args = {
   disabled: true,
 };
 
+export const Creatable = WidgetStory.bind({ widget: ArrayWidget });
+Creatable.args = {
+  id: 'field-creatable',
+  title: 'Field with creatable',
+  description: 'Allows creation of new terms',
+  creatable: true,
+};
+
 const getOptionsGenerator = (count) => {
   const options = [];
   for (let i = 0; i < count; i = i + 1) {

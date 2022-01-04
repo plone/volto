@@ -1,6 +1,6 @@
 # Change Log
 
-## 14.1.2 (unreleased)
+## 14.2.1 (unreleased)
 
 ### Breaking
 
@@ -11,6 +11,12 @@
 ### Internal
 
 - Use plone-backend docker images for Cypress tests @sneridagh
+## 14.2.0 (2022-01-04)
+
+### Feature
+
+- Allow `creatable` prop to be passed to `ArrayWidgets`, in case they don't have a vocabulary @giuliaghisini
+- Added initialBlocksFocus to blocks config, to set default focus on non-first block. @giuliaghisini
 
 ## 14.1.1 (2022-01-03)
 
