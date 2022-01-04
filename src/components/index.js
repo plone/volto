@@ -199,5 +199,6 @@ export ToCSettingsSchema from '@plone/volto/components/manage/Blocks/ToC/Schema'
 export MaybeWrap from '@plone/volto/components/manage/MaybeWrap/MaybeWrap';
 export ContentMetadataTags from '@plone/volto/components/theme/ContentMetadataTags/ContentMetadataTags';
 export FormattedDate from '@plone/volto/components/theme/FormattedDate/FormattedDate';
+export FormattedRelativeDate from '@plone/volto/components/theme/FormattedDate/FormattedRelativeDate';
 
 export App from '@plone/volto/components/theme/App/App';

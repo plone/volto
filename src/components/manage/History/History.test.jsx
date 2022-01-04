@@ -10,12 +10,8 @@ const mockStore = configureStore();
 jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),
 }));
-jest.mock('moment', () =>
-  jest.fn(() => ({
-    format: jest.fn(() => 'Sunday, April 23, 2017 3:38 AM'),
-    fromNow: jest.fn(() => 'a few seconds ago'),
-  })),
-);
+
+// jest.setSystemTime(new Date('2017-04-23T15:38:00.000Z').getTime());
 
 describe('History', () => {
   it('renders a history component', () => {
