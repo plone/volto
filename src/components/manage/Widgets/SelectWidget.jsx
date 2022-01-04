@@ -16,7 +16,7 @@ import {
 } from '@plone/volto/helpers';
 import { FormFieldWrapper } from '@plone/volto/components';
 import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
-import { normalizeValue } from './SelectUtils';
+import { normalizeValue } from '@plone/volto/components/manage/Widgets/SelectUtils';
 
 import {
   customSelectStyles,
@@ -107,6 +107,8 @@ class SelectWidget extends Component {
       PropTypes.object,
       PropTypes.string,
       PropTypes.bool,
+      PropTypes.func,
+      PropTypes.array,
     ]),
     onChange: PropTypes.func.isRequired,
     onBlur: PropTypes.func,
@@ -115,6 +117,8 @@ class SelectWidget extends Component {
     onDelete: PropTypes.func,
     wrapped: PropTypes.bool,
     noValueOption: PropTypes.bool,
+    customOptionStyling: PropTypes.any,
+    isMulti: PropTypes.bool,
   };
 
   /**
@@ -140,11 +144,7 @@ class SelectWidget extends Component {
     onEdit: null,
     onDelete: null,
     noValueOption: true,
-  };
-
-  state = {
-    // TODO: also take into account this.props.defaultValue?
-    selectedOption: normalizeValue(this.props.choices, this.props.value),
+    customOptionStyling: null,
   };
 
   /**
@@ -165,32 +165,14 @@ class SelectWidget extends Component {
     }
   }
 
-  componentDidUpdate() {
-    if (
-      !this.state.selectedOption &&
-      this.props.value &&
-      this.props.choices?.length > 0
-    ) {
-      const normalizedValue = normalizeValue(
-        this.props.choices,
-        this.props.value,
-      );
-
-      if (normalizedValue != null) {
-        this.setState({
-          selectedOption: normalizedValue,
-        });
-      }
-    }
-  }
-
   /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
-    const { id, choices, onChange } = this.props;
+    const { id, choices, value, intl, onChange } = this.props;
+    const normalizedValue = normalizeValue(choices, value, intl);
     // Make sure that both disabled and isDisabled (from the DX layout feat work)
     const disabled = this.props.disabled || this.props.isDisabled;
     const Select = this.props.reactSelect.default;
@@ -216,6 +198,10 @@ class SelectWidget extends Component {
             : []),
         ];
 
+    const isMulti = this.props.isMulti
+      ? this.props.isMulti
+      : id === 'roles' || id === 'groups';
+
     return (
       <FormFieldWrapper {...this.props}>
         <Select
@@ -226,11 +212,7 @@ class SelectWidget extends Component {
           isSearchable={true}
           className="react-select-container"
           classNamePrefix="react-select"
-          isMulti={
-            this.props.isMulti
-              ? this.props.isMulti
-              : id === 'roles' || id === 'groups'
-          }
+          isMulti={isMulti}
           options={options}
           styles={customSelectStyles}
           theme={selectTheme}
@@ -240,12 +222,20 @@ class SelectWidget extends Component {
             }),
             DropdownIndicator,
             ClearIndicator,
-            Option,
+            Option: this.props.customOptionStyling || Option,
           }}
-          value={this.state.selectedOption}
-          placeholder={this.props.intl.formatMessage(messages.select)}
+          value={normalizedValue}
+          placeholder={
+            this.props.placeholder ??
+            this.props.intl.formatMessage(messages.select)
+          }
           onChange={(selectedOption) => {
-            this.setState({ selectedOption });
+            if (isMulti) {
+              return onChange(
+                id,
+                selectedOption.map((el) => el.value),
+              );
+            }
             return onChange(
               id,
               selectedOption && selectedOption.value !== 'no-value'
@@ -263,7 +253,6 @@ class SelectWidget extends Component {
 export const SelectWidgetComponent = injectIntl(SelectWidget);
 
 export default compose(
-  injectIntl,
   injectLazyLibs(['reactSelect']),
   connect(
     (state, props) => {
@@ -298,4 +287,4 @@ export default compose(
     },
     { getVocabulary, getVocabularyTokenTitle },
   ),
-)(SelectWidget);
+)(SelectWidgetComponent);

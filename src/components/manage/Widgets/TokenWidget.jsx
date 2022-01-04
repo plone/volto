@@ -1,6 +1,6 @@
 /**
- * ArrayWidget component.
- * @module components/manage/Widgets/ArrayWidget
+ * TokenWidget component.
+ * @module components/manage/Widgets/TokenWidget
  */
 
 import React, { Component } from 'react';
@@ -39,6 +39,11 @@ const messages = defineMessages({
 
 /**
  * TokenWidget component class.
+ *
+ * Because new terms are created through the web by using the widget, the token
+ * widget conflates the meaning of token, label and value and assumes they can
+ * be used interchangeably.
+ *
  * @class TokenWidget
  * @extends Component
  */
@@ -95,12 +100,6 @@ class TokenWidget extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
-
-    this.state = {
-      selectedOption: props.value
-        ? props.value.map((item) => ({ label: item, value: item }))
-        : [],
-    };
   }
 
   /**
@@ -109,11 +108,13 @@ class TokenWidget extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    this.props.getVocabulary({
-      vocabNameOrURL: this.props.vocabBaseUrl,
-      size: -1,
-      subrequest: this.props.intl.locale,
-    });
+    if (!this.props.choices?.length) {
+      this.props.getVocabulary({
+        vocabNameOrURL: this.props.vocabBaseUrl,
+        size: -1,
+        subrequest: this.props.intl.locale,
+      });
+    }
   }
 
   /**
@@ -124,7 +125,6 @@ class TokenWidget extends Component {
    * @returns {undefined}
    */
   handleChange(selectedOption) {
-    this.setState({ selectedOption });
     this.props.onChange(
       this.props.id,
       selectedOption ? selectedOption.map((item) => item.label) : null,
@@ -137,11 +137,13 @@ class TokenWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { selectedOption } = this.state;
+    const selectedOption = this.props.value
+      ? this.props.value.map((item) => ({ label: item, value: item }))
+      : [];
+
     const defaultOptions = (this.props.choices || [])
       .filter(
-        (item) =>
-          !this.state.selectedOption.find(({ label }) => label === item.label),
+        (item) => !selectedOption.find(({ label }) => label === item.label),
       )
       .map((item) => ({
         label: item.label || item.value,

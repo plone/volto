@@ -27,4 +27,6 @@ export const loadables = {
     },
   ),
   diffLib: loadable.lib(() => import('diff')),
+  moment: loadable.lib(() => import('moment')),
+  reactDates: loadable.lib(() => import('react-dates')),
 };
