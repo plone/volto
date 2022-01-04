@@ -108,6 +108,7 @@ class SelectWidget extends Component {
       PropTypes.string,
       PropTypes.bool,
       PropTypes.func,
+      PropTypes.array,
     ]),
     onChange: PropTypes.func.isRequired,
     onBlur: PropTypes.func,
@@ -117,6 +118,7 @@ class SelectWidget extends Component {
     wrapped: PropTypes.bool,
     noValueOption: PropTypes.bool,
     customOptionStyling: PropTypes.any,
+    isMulti: PropTypes.bool,
   };
 
   /**
@@ -145,11 +147,6 @@ class SelectWidget extends Component {
     customOptionStyling: null,
   };
 
-  state = {
-    // TODO: also take into account this.props.defaultValue?
-    selectedOption: normalizeValue(this.props.choices, this.props.value),
-  };
-
   /**
    * Component did mount
    * @method componentDidMount
@@ -168,32 +165,14 @@ class SelectWidget extends Component {
     }
   }
 
-  componentDidUpdate() {
-    if (
-      !this.state.selectedOption &&
-      this.props.value &&
-      this.props.choices?.length > 0
-    ) {
-      const normalizedValue = normalizeValue(
-        this.props.choices,
-        this.props.value,
-      );
-
-      if (normalizedValue != null) {
-        this.setState({
-          selectedOption: normalizedValue,
-        });
-      }
-    }
-  }
-
   /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
-    const { id, choices, onChange } = this.props;
+    const { id, choices, value, intl, onChange } = this.props;
+    const normalizedValue = normalizeValue(choices, value, intl);
     // Make sure that both disabled and isDisabled (from the DX layout feat work)
     const disabled = this.props.disabled || this.props.isDisabled;
     const Select = this.props.reactSelect.default;
@@ -245,10 +224,12 @@ class SelectWidget extends Component {
             ClearIndicator,
             Option: this.props.customOptionStyling || Option,
           }}
-          value={this.state.selectedOption}
-          placeholder={this.props.intl.formatMessage(messages.select)}
+          value={normalizedValue}
+          placeholder={
+            this.props.placeholder ??
+            this.props.intl.formatMessage(messages.select)
+          }
           onChange={(selectedOption) => {
-            this.setState({ selectedOption });
             if (isMulti) {
               return onChange(
                 id,
@@ -272,7 +253,6 @@ class SelectWidget extends Component {
 export const SelectWidgetComponent = injectIntl(SelectWidget);
 
 export default compose(
-  injectIntl,
   injectLazyLibs(['reactSelect']),
   connect(
     (state, props) => {
@@ -307,4 +287,4 @@ export default compose(
     },
     { getVocabulary, getVocabularyTokenTitle },
   ),
-)(SelectWidget);
+)(SelectWidgetComponent);

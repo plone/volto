@@ -71,6 +71,7 @@ export default function vocabularies(state = initialState, action = {}) {
             [action.vocabulary]: {
               ...vocabState,
               subrequests: {
+                ...vocabState.subrequests,
                 [action.subrequest]: {
                   ...subrequestState,
                   error: null,
@@ -141,8 +142,18 @@ export default function vocabularies(state = initialState, action = {}) {
                   ...subrequestState,
                   error: null,
                   loaded: true,
-                  loading: !!(vocabState[action.subrequest].loading - 1),
-                  [action.token]: action.result.items[0].title,
+                  loading: !!(subrequestState.loading - 1),
+                  ...(action.token && {
+                    [action.token]: action.result.items[0].title,
+                  }),
+                  ...(action.tokens && {
+                    items: [
+                      ...action.result.items.map((item) => ({
+                        label: item.title,
+                        value: item.token,
+                      })),
+                    ],
+                  }),
                 },
               },
             },

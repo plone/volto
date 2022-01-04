@@ -6,7 +6,7 @@ export default ({ dispatch, data, path }) => {
       getQueryStringResults(
         path,
         {
-          ...data,
+          ...data.querystring,
           ...(data.variation?.fullobjects
             ? { fullobjects: 1 }
             : { metadata_fields: '_all' }),

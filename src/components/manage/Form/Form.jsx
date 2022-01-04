@@ -39,7 +39,7 @@ import {
 } from 'semantic-ui-react';
 import { v4 as uuid } from 'uuid';
 import { toast } from 'react-toastify';
-import { BlocksToolbar } from '@plone/volto/components';
+import { BlocksToolbar, UndoToolbar } from '@plone/volto/components';
 import { setSidebarTab } from '@plone/volto/actions';
 import { compose } from 'redux';
 import config from '@plone/volto/registry';
@@ -237,6 +237,7 @@ class Form extends Component {
 
     if (this.props.onChangeFormData) {
       if (
+        // TODO: use fast-deep-equal
         JSON.stringify(prevState?.formData) !==
         JSON.stringify(this.state.formData)
       ) {
@@ -541,6 +542,15 @@ class Form extends Component {
               this.setState({ multiSelected: blockIds })
             }
             onSelectBlock={this.onSelectBlock}
+          />
+          <UndoToolbar
+            state={{
+              formData: this.state.formData,
+              selected: this.state.selected,
+              multiSelected: this.state.multiSelected,
+            }}
+            enableHotKeys
+            onUndoRedo={({ state }) => this.setState(state)}
           />
           <BlocksForm
             onChangeFormData={(newFormData) =>

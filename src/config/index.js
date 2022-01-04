@@ -160,6 +160,7 @@ let config = {
     showSelfRegistration: false,
     contentMetadataTagsImageField: 'image',
     hasWorkingCopySupport: false,
+    maxUndoLevels: 200, // undo history size for the main form
   },
   widgets: {
     ...widgetMapping,
