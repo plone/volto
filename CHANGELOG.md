@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Allow `creatable` prop to be passed to `ArrayWidgets`, in case they don't have a vocabulary @giuliaghisini
+
 ### Bugfix
 
 ### Internal
