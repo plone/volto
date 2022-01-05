@@ -17,6 +17,7 @@ const FormattedDate = ({
 }) => {
   const language = useSelector((state) => locale || state.intl.locale);
   const toDate = (d) => (typeof d === 'string' ? new Date(d) : d);
+  const args = { date, long, includeTime, format, locale: language };
 
   return (
     <time
@@ -29,15 +30,11 @@ const FormattedDate = ({
       {children
         ? children(
             formatDate({
-              date,
-              long,
-              includeTime,
-              format,
-              locale: language,
+              ...args,
               formatToParts: true,
             }),
           )
-        : formatDate({ date, long, includeTime, format, locale: language })}
+        : formatDate(args)}
     </time>
   );
 };

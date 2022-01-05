@@ -14,6 +14,7 @@ const FormattedRelativeDate = ({
   children,
 }) => {
   const language = useSelector((state) => locale || state.intl.locale);
+  const args = { locale: language, date, style, relativeTo };
 
   return (
     <time
@@ -26,14 +27,11 @@ const FormattedRelativeDate = ({
       {children
         ? children(
             formatRelativeDate({
-              locale: language,
-              date,
-              style,
-              relativeTo,
+              ...args,
               formatToParts: true,
             }),
           )
-        : formatRelativeDate({ locale: language, date, style, relativeTo })}
+        : formatRelativeDate(args)}
     </time>
   );
 };
