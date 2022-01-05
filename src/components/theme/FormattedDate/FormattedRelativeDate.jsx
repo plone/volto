@@ -2,6 +2,7 @@ import React from 'react';
 import {
   formatRelativeDate,
   long_date_format,
+  toDate,
 } from '@plone/volto/helpers/Utils/Date';
 import { useSelector } from 'react-redux';
 
@@ -12,9 +13,26 @@ const FormattedRelativeDate = ({
   className,
   locale,
   children,
+  live = false,
+  refresh = 5000,
 }) => {
   const language = useSelector((state) => locale || state.intl.locale);
-  const args = { locale: language, date, style, relativeTo };
+  const [liveRelativeTo, setLiveRelativeTo] = React.useState(
+    relativeTo ? toDate(relativeTo) : new Date(),
+  );
+
+  const interval = React.useRef();
+
+  React.useEffect(() => {
+    if (live) {
+      interval.current = setInterval(() => {
+        setLiveRelativeTo(new Date());
+      }, refresh);
+    }
+    return () => interval.current && clearInterval(interval.current);
+  }, [refresh, live]);
+
+  const args = { locale: language, date, style, relativeTo: liveRelativeTo };
 
   return (
     <time

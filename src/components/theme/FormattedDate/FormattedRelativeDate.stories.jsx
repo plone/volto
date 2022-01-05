@@ -2,13 +2,13 @@ import React from 'react';
 import Wrapper from '@plone/volto/storybook';
 import FormattedRelativeDate from './FormattedRelativeDate';
 
-const date = new Date();
+const date = new Date(new Date() - 1000);
 const relativeTo = new Date(new Date().getTime() + 123213124);
 
 const toDate = (date) => (typeof date === 'number' ? new Date(date) : date);
 
 function StoryComponent(args) {
-  const { style, locale } = args;
+  const { style, locale, live, refresh } = args;
   const date = toDate(args.date);
   const relativeTo = args.relativeTo
     ? toDate(args.relativeTo)
@@ -23,6 +23,8 @@ function StoryComponent(args) {
         locale={locale}
         style={style}
         relativeTo={relativeTo}
+        live={live}
+        refresh={refresh}
       >
         {this.children}
       </FormattedRelativeDate>
@@ -53,6 +55,13 @@ RelativeToDate.args = {
   relativeTo,
 };
 
+export const LiveRefresh = StoryComponent.bind({});
+LiveRefresh.args = {
+  date,
+  live: true,
+  refresh: 1000,
+};
+
 export const SplitParts = StoryComponent.bind({
   children: (parts) =>
     parts.map((p, i) => (
@@ -77,6 +86,16 @@ export default {
     ),
   ],
   argTypes: {
+    live: {
+      control: {
+        type: 'disabled',
+      },
+    },
+    refresh: {
+      control: {
+        type: 'disabled',
+      },
+    },
     date: {
       control: {
         type: 'date',

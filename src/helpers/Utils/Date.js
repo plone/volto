@@ -24,7 +24,8 @@ export const long_date_format = {
   timeStyle: 'short',
 };
 
-const toDate = (d) => (typeof d === 'string' ? new Date(d) : d);
+export const toDate = (d) =>
+  ['string', 'number'].includes(typeof d) ? new Date(d) : d;
 
 /**
  * Friendly formatting for dates
