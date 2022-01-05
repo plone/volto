@@ -17,7 +17,9 @@ function StoryComponent(args) {
         long={long}
         locale={locale}
         includeTime={includeTime}
-      />
+      >
+        {this.children}
+      </FormattedDate>
     </Wrapper>
   );
 }
@@ -53,6 +55,19 @@ CustomFormat.args = {
     month: 'short',
     day: 'numeric',
   },
+};
+
+export const SplitParts = StoryComponent.bind({
+  children: (parts) =>
+    parts.map((p, i) => (
+      <div key={i}>
+        <strong>{p.value}</strong> <small>({p.type}</small>)
+      </div>
+    )),
+});
+SplitParts.args = {
+  date,
+  long: true,
 };
 
 export default {
