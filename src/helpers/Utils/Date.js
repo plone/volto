@@ -55,6 +55,7 @@ export function formatRelativeDate({
   locale = 'en',
   relativeTo,
   style = 'long', // long|short|narrow
+  formatToParts = false,
 }) {
   date = toDate(date);
   relativeTo = toDate(relativeTo || new Date());
@@ -87,5 +88,9 @@ export function formatRelativeDate({
   const v = Math.round(deltaMiliTime < 0 ? -1 * deltas[pos] : deltas[pos]);
   // console.log({ date, relativeTo, v });
 
-  return isNaN(v) ? '' : formatter.format(v, tag); // use "now" ?
+  return isNaN(v)
+    ? ''
+    : formatToParts
+    ? formatter.formatToParts(v, tag)
+    : formatter.format(v, tag); // use "now" ?
 }
