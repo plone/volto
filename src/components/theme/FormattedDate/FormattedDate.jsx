@@ -2,6 +2,9 @@ import React from 'react';
 import { formatDate, long_date_format } from '@plone/volto/helpers/Utils/Date';
 import { useSelector } from 'react-redux';
 
+/**
+ * Friendly formatting of dates
+ */
 const FormattedDate = ({
   date,
   format,
@@ -10,6 +13,7 @@ const FormattedDate = ({
   relative,
   className,
   locale,
+  children,
 }) => {
   const language = useSelector((state) => locale || state.intl.locale);
   const toDate = (d) => (typeof d === 'string' ? new Date(d) : d);
@@ -22,7 +26,18 @@ const FormattedDate = ({
         new Date(toDate(date)),
       )}
     >
-      {formatDate({ date, long, includeTime, format, locale: language })}
+      {children
+        ? children(
+            formatDate({
+              date,
+              long,
+              includeTime,
+              format,
+              locale: language,
+              formatToParts: true,
+            }),
+          )
+        : formatDate({ date, long, includeTime, format, locale: language })}
     </time>
   );
 };
