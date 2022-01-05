@@ -74,7 +74,7 @@ describe('formatDate helper', () => {
           year: 'numeric',
           month: 'narrow',
           day: '2-digit',
-          dayPeriod: 'long',
+          // dayPeriod: 'long',
         },
       }),
     ).toBe('J 03, 2022');
