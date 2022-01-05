@@ -117,8 +117,7 @@
       "load-volto-addons": "<rootDir>/jest-addons-loader.js",
       "@package/config": "<rootDir>/jest-addons-loader.js",
       "@voltoconfig": "<rootDir>/jest-addons-loader.js",
-      "\\.(css|less|scss|sass)$": "identity-obj-proxy",
-      "Intl": "<rootDir>/node_modules/intl/"
+      "\\.(css|less|scss|sass)$": "identity-obj-proxy"
     },
     "coverageThreshold": {
       "global": {
