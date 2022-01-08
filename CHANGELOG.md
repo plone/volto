@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Upgrade `query-string` library so it supports Plone `:list` qs marker @sneridagh
+
 ## 14.2.0 (2022-01-04)
 
 ### Feature
