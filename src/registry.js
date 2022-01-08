@@ -79,6 +79,14 @@ class Config {
   set slots(slots) {
     this._data.slots = slots;
   }
+
+  get components() {
+    return this._data.components;
+  }
+
+  set components(components) {
+    this._data.components = components;
+  }
 }
 
 const instance = new Config();

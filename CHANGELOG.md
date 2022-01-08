@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Enable `components` property in Volto's config registry. Does not expose any direct feature but this will open the door to be able to override registered components using the config registry and avoid using shadowing explicitly. @sneridagh
+
 ### Bugfix
 
 ### Internal
