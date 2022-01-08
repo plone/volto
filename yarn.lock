@@ -15128,10 +15128,10 @@ qs@~6.5.2:
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
   integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
 
-query-string@7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/query-string/-/query-string-7.0.0.tgz#aaad2c8d5c6a6d0c6afada877fecbd56af79e609"
-  integrity sha512-Iy7moLybliR5ZgrK/1R3vjrXq03S13Vz4Rbm5Jg3EFq1LUmQppto0qtXz4vqZ386MSRjZgnTSZ9QC+NZOSd/XA==
+query-string@7.1.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/query-string/-/query-string-7.1.0.tgz#96b88f27b39794f97b8c8ccd060bc900495078ef"
+  integrity sha512-wnJ8covk+S9isYR5JIXPt93kFUmI2fQ4R/8130fuq+qwLiGVTurg7Klodgfw4NSz/oe7xnyi09y3lSrogUeM3g==
   dependencies:
     decode-uri-component "^0.2.0"
     filter-obj "^1.1.0"
