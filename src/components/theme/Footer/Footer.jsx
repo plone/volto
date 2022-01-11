@@ -38,6 +38,10 @@ const Footer = ({ intl }) => {
     >
       <Container>
         <Segment basic inverted color="grey" className="discreet">
+          <img src="/dasd/asdasd/@@images/large" alt="" />
+          <img src="/dasd2/asdasd/@@images/large" alt="" />
+          <img src="/dasd3/asdasd/@@images/large" alt="" />
+          <img src="/dasd4/asdasd/@@images/large" alt="" />
           <FormattedMessage
             id="The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
             defaultMessage="The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
