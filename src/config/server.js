@@ -7,10 +7,10 @@ import devProxyMiddleware from '@plone/volto/express-middleware/devproxy';
 const settings = {
   expressMiddleware: [
     devProxyMiddleware(),
-    filesMiddleware(),
+    // filesMiddleware(),
     imagesMiddleware(),
-    robotstxtMiddleware(),
-    sitemapMiddleware(),
+    // robotstxtMiddleware(),
+    // sitemapMiddleware(),
   ],
   criticalCssPath: 'public/critical.css',
   readCriticalCss: null, // so it will be defaultReadCriticalCss

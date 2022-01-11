@@ -13,10 +13,12 @@ function imageMiddleware(req, res, next) {
           res.set(header, resource.headers[header]);
         }
       });
-
       res.send(resource.body);
-    }, errorHandler)
-    .catch(errorHandler);
+    })
+    .catch((err) => {
+      console.log('catched');
+      next(err);
+    });
 }
 
 export default function () {
