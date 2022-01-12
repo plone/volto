@@ -2,10 +2,6 @@
 
 ## 14.2.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fix home URL item in Navigation, which was evaluating as non-internal
