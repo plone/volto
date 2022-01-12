@@ -8,8 +8,11 @@
 
 ### Bugfix
 
+- Fix home URL item in Navigation, which was evaluating as non-internal
+
 ### Internal
 
+- Use plone-backend docker images for Cypress tests @sneridagh
 - Upgrade `query-string` library so it supports Plone `:list` qs marker @sneridagh
 
 ## 14.2.0 (2022-01-04)
