@@ -8,7 +8,8 @@
 
 ### Bugfix
 
-- Fix home URL item in Navigation, which was evaluating as non-internal
+- Fix home URL item in Navigation, which was evaluating as non-internal @sneridagh
+- Improve the request handling in `getAPIResourceWithAuth` and in `Api` helper. This fixes the "Cannot set headers once the content has being sent" @sneridagh
 
 ### Internal
 
