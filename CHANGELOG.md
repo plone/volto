@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix home URL item in Navigation, which was evaluating as non-internal
+
 ### Internal
 
 - Use plone-backend docker images for Cypress tests @sneridagh
