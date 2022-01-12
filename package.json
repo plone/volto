@@ -34,7 +34,7 @@
     "start-spa": "razzle start --type=spa",
     "build": "razzle build",
     "build-spa": "razzle build --type=spa",
-    "test": "razzle test --env=jest-environment-jsdom-sixteen",
+    "test": "razzle test --env=jest-environment-jsdom-sixteen --maxWorkers=50%",
     "test:ci": "CI=true razzle test --env=jest-environment-jsdom-sixteen",
     "test:husky": "CI=true yarn test --bail --findRelatedTests",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
