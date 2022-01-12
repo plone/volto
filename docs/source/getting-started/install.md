@@ -107,7 +107,7 @@ When you have installed Docker, you can run an standard Plone Docker container w
 ```shell
 docker run -it --rm --name=plone \
   -p 8080:8080 -e SITE=Plone -e \
-  ADDONS="plone.restapi==8.16.2 plone.app.iterate==4.0.2 plone.rest==2.0.0a1 plone.app.vocabularies==4.3.0 plone.volto==3.1.0a7" \
+  ADDONS="plone.restapi==8.18.0 plone.app.iterate==4.0.2 plone.rest==2.0.0a1 plone.app.vocabularies==4.3.0 plone.volto==3.1.0a8" \
   -e PROFILES="plone.volto:default-homepage" \
   plone/plone-backend
 ```

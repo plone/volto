@@ -76,10 +76,10 @@ follow the prompts questions, provide `myvoltoproject` as project name then, whe
 
 We recommend Plone as backend of choice for Volto.
 
-You can bootstrap a ready Docker Plone container with all the dependencies and ready for Volto use. We recommend to use the new Plone docker builds based in `pip` [plone/plone-backend](https://github.com/plone/plone-backend) image:
+You can bootstrap a ready Docker Plone container with all the dependencies and ready for Volto use. We recommend to use the Plone docker builds based in `pip` [plone/plone-backend](https://github.com/plone/plone-backend) image:
 
 ```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.restapi==8.16.2 plone.app.iterate==4.0.2 plone.rest==2.0.0a1 plone.app.vocabularies==4.3.0 plone.volto==3.1.0a7" -e PROFILES="plone.volto:default-homepage" plone/plone-backend
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.restapi==8.18.0 plone.app.iterate==4.0.2 plone.rest==2.0.0a1 plone.app.vocabularies==4.3.0 plone.volto==3.1.0a7" -e PROFILES="plone.volto:default-homepage" plone/plone-backend
 ```
 
 or as an alternative if you have experience with Plone and you have all the
