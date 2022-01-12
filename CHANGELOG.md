@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix home URL item in Navigation, which was evaluating as non-internal
+
 ### Internal
 
 - Upgrade `query-string` library so it supports Plone `:list` qs marker @sneridagh
