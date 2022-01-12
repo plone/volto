@@ -76,19 +76,40 @@ follow the prompts questions, provide `myvoltoproject` as project name then, whe
 
 We recommend Plone as backend of choice for Volto.
 
-You can bootstrap a ready Docker Plone container with all the dependencies and ready for Volto use:
+You can bootstrap a ready Docker Plone container with all the dependencies and ready for Volto use. We recommend to use the Plone docker builds based in `pip` [plone/plone-backend](https://github.com/plone/plone-backend) image:
 
 ```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e VERSIONS="plone.restapi=8.16.2 plone.app.iterate=4.0.2 plone.rest=2.0.0a1 plone.app.vocabularies=4.3.0" -e ADDONS="plone.volto" -e ZCML="plone.volto.cors" -e PROFILES="plone.volto:default-homepage" plone
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.restapi==8.18.0 plone.app.iterate==4.0.2 plone.rest==2.0.0a1 plone.app.vocabularies==4.3.0 plone.volto==3.1.0a7" -e PROFILES="plone.volto:default-homepage" plone/plone-backend
 ```
 
 or as an alternative if you have experience with Plone and you have all the
-dependencies installed on your system, you can use the supplied buildout in the
+dependencies installed on your system, you can use the supplied convenience buildout in the
 `api` folder by issuing the command:
 
 ```shell
 make build-backend
 ```
+
+#### Recommended Plone version
+
+Volto is Plone 6 default UI, so it will work for all Plone 6 released versions.
+
+For the Plone 5 series latest released version (with Python 3) and above is recommended (at the time of writing 5.2.6).
+
+The following KGS (or above) are also recommended, for any Plone version used.
+
+#### KGS (known good versions) for backend packages
+
+Volto always works best with latest versions of the "Frontend stack" or at least the recommended ones (in parenthesis) which are:
+
+- plone.restapi (8.18.0)
+- plone.rest (2.0.0a1)
+- plone.volto (3.1.0a7)
+
+and the following core packages since some features require up to date versions:
+
+- plone.app.iterate (4.0.2)
+- plone.app.vocabularies (4.3.0)
 
 ### Start Volto
 
