@@ -43,7 +43,7 @@ const messages = defineMessages({
 /**
  * Widget for a querystring value, to define a catalog search criteria.
  */
-class QuerystringWidget extends Component {
+export class QuerystringWidgetComponent extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -475,4 +475,4 @@ export default compose(
     }),
     { getQuerystring },
   ),
-)(QuerystringWidget);
+)(QuerystringWidgetComponent);

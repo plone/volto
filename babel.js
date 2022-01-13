@@ -2,6 +2,12 @@ module.exports = function (api) {
   api.cache(true);
   const presets = ['razzle/babel'];
   const plugins = [
+    [
+      '@babel/plugin-transform-react-jsx',
+      {
+        runtime: 'automatic',
+      },
+    ],
     'lodash',
     '@babel/plugin-proposal-export-default-from', // Stage 1
     '@babel/plugin-syntax-export-namespace-from', // Stage 4

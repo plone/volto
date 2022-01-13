@@ -4,7 +4,6 @@ import config from '@plone/volto/registry';
 
 const ContentMetadataTags = (props) => {
   const {
-    language,
     opengraph_title,
     opengraph_description,
     seo_title,
@@ -48,7 +47,6 @@ const ContentMetadataTags = (props) => {
   return (
     <>
       <Helmet>
-        {language && <html lang={language.token} />}
         <title>{seo_title || title}</title>
         <meta name="description" content={seo_description || description} />
         <meta

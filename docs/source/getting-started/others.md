@@ -6,7 +6,10 @@ On the [Plone Trainings Website](https://training.plone.org) you'll find
 Volto-dedicated open training materials plus React and other
 Javascript-centered trainings.
 
+- [Mastering Plone 6 Development](https://training.plone.org/5/mastering-plone/)
+  The comprehensive training on Plone 6 with best practice tips for developers and integrators.
 - [Volto](https://training.plone.org/5/volto/index.html)
+  A detailed training on how to create your own website using Volto frontend.
 - [Volto Hands-On](https://training.plone.org/5/voltohandson/index.html)
 - [Volto Add-ons Development](https://training.plone.org/5/voltoaddons/index.html)
 - [Plone Deployment](https://training.plone.org/5/plone-deployment/index.html)
