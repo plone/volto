@@ -148,8 +148,8 @@ export class DatetimeWidgetComponent extends Component {
     const moment = this.props.moment.default;
     if (time) {
       const base = (this.getInternalValue() || moment()).set({
-        hours: time.hours(),
-        minutes: time.minutes(),
+        hours: time?.hours() ?? 0,
+        minutes: time?.minutes() ?? 0,
         seconds: 0,
       });
       const dateValue = base.toISOString();
