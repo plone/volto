@@ -11,6 +11,8 @@
 - Fix when you remove the time from DatetimeWidget @iRohitSingh
 ### Internal
 
+- Fix URL for Climate-Energy, a Volto website @tiberiuichim
+
 ## 14.2.1 (2022-01-12)
 
 ### Bugfix
