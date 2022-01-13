@@ -34,11 +34,5 @@ export const getAPIResourceWithAuth = (req) =>
     if (authToken) {
       request.set('Authorization', `Bearer ${authToken}`);
     }
-    request
-      .then((res = {}) => {
-        return resolve(res);
-      })
-      .catch((error) => {
-        reject(error);
-      });
+    request.then(resolve).catch(reject);
   });

@@ -14,9 +14,7 @@ function imageMiddleware(req, res, next) {
       });
       res.send(resource.body);
     })
-    .catch((err) => {
-      next(err);
-    });
+    .catch(next);
 }
 
 export default function () {
