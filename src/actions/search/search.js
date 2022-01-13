@@ -3,16 +3,7 @@
  * @module actions/search/search
  */
 
-import {
-  compact,
-  concat,
-  isArray,
-  join,
-  map,
-  pickBy,
-  toPairs,
-  identity,
-} from 'lodash';
+import qs from 'query-string';
 
 import {
   RESET_SEARCH_CONTENT,
@@ -28,42 +19,14 @@ import {
  * @returns {Object} Search content action.
  */
 export function searchContent(url, options, subrequest = null) {
-  let queryArray = [];
-  options = pickBy(options, identity);
-  const arrayOptions = pickBy(options, (item) => isArray(item));
-
-  queryArray = concat(
-    queryArray,
-    options
-      ? join(
-          map(toPairs(pickBy(options, (item) => !isArray(item))), (item) => {
-            if (item[0] === 'SearchableText') {
-              // Adds the wildcard to the SearchableText param
-              item[1] = `${item[1]}*`;
-            }
-            return join(item, '=');
-          }),
-          '&',
-        )
-      : '',
-  );
-
-  queryArray = concat(
-    queryArray,
-    arrayOptions
-      ? join(
-          map(pickBy(arrayOptions), (item, key) =>
-            join(
-              item.map((value) => `${key}:list=${value}`),
-              '&',
-            ),
-          ),
-          '&',
-        )
-      : '',
-  );
-
-  const querystring = join(compact(queryArray), '&');
+  if (options && Object.keys(options).includes('SearchableText')) {
+    // Adds the wildcard to the SearchableText param
+    options.SearchableText = `${options.SearchableText}*`;
+  }
+  const querystring = qs.stringify(options, {
+    encode: false,
+    arrayFormat: 'colon-list-separator',
+  });
 
   return {
     type: SEARCH_CONTENT,
