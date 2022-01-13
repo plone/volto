@@ -12,6 +12,7 @@
 ### Internal
 
 - Fix URL for Climate-Energy, a Volto website @tiberiuichim
+- Fix quirky Cypress test in "DX control panel schema" (see https://github.com/plone/volto/runs/4803206906?check_suite_focus=true) @sneridagh
 
 ## 14.2.1 (2022-01-12)
 
