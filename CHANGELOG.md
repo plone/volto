@@ -1,6 +1,6 @@
 # Change Log
 
-## 14.2.1 (unreleased)
+## 14.2.2 (unreleased)
 
 ### Breaking
 
@@ -10,6 +10,14 @@
 
 - Fix home URL item in Navigation, which was evaluating as non-internal @sneridagh
 - Improve the request handling in `getAPIResourceWithAuth` and in `Api` helper. This fixes the "Cannot set headers once the content has being sent" @sneridagh
+
+### Internal
+
+## 14.2.1 (2022-01-12)
+
+### Bugfix
+
+- Fix home URL item in Navigation, which was evaluating as non-internal
 
 ### Internal
 
