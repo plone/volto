@@ -7,6 +7,7 @@ import {
   safeWrapper,
   normalizeLanguageName,
   hasApiExpander,
+  parseDateTime,
 } from './Utils';
 
 describe('Utils tests', () => {
@@ -318,6 +319,23 @@ describe('Utils tests', () => {
       expect(hasApiExpander('navigation', '', 'GET_CONTENT')).toStrictEqual(
         false,
       );
+    });
+  });
+
+  describe('parseDateTime', () => {
+    it('Parses iso date strings in en locale', () => {
+      const isoDate = '2022-01-16T07:40:04.331Z';
+      expect(parseDateTime('en', isoDate).toISOString()).toBe(isoDate);
+    });
+
+    it('Parses iso date strings in de locale', () => {
+      const isoDate = '2022-01-16T07:40:04.331Z';
+      expect(parseDateTime('de', isoDate).toISOString()).toBe(isoDate);
+    });
+
+    it('Parses iso date strings in de locale with Z marker', () => {
+      const isoDate = '2022-01-16T07:40:04.331';
+      expect(parseDateTime('de', isoDate).toISOString()).toBe(`${isoDate}Z`);
     });
   });
 });
