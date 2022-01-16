@@ -1,6 +1,6 @@
 # Change Log
 
-## 14.2.1 (unreleased)
+## 14.2.3 (unreleased)
 
 ### Breaking
 
@@ -11,6 +11,30 @@
 ### Internal
 
 - Upgrade jest to latest release, 27 major. @tiberiuichim
+
+## 14.2.2 (2022-01-13)
+
+### Bugfix
+
+- Fix home URL item in Navigation, which was evaluating as non-internal @sneridagh
+- Improve the request handling in `getAPIResourceWithAuth` and in `Api` helper. This fixes the "Cannot set headers once the content has being sent" @sneridagh
+- Fix when you remove the time from DatetimeWidget @iRohitSingh
+
+### Internal
+
+- Fix URL for Climate-Energy, a Volto website @tiberiuichim
+- Fix quirky Cypress test in "DX control panel schema" (see https://github.com/plone/volto/runs/4803206906?check_suite_focus=true) @sneridagh
+
+## 14.2.1 (2022-01-12)
+
+### Bugfix
+
+- Fix home URL item in Navigation, which was evaluating as non-internal
+
+### Internal
+
+- Use plone-backend docker images for Cypress tests @sneridagh
+- Upgrade `query-string` library so it supports Plone `:list` qs marker @sneridagh
 
 ## 14.2.0 (2022-01-04)
 
