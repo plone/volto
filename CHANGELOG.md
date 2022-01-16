@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Lazyload react-beautiful-dnd @tiberiuichim
+
 ## 14.2.2 (2022-01-13)
 
 ### Bugfix
