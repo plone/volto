@@ -33,7 +33,6 @@ import {
   pull,
 } from 'lodash';
 import move from 'lodash-move';
-// import { DragDropContext } from 'react-dnd';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { asyncConnect } from '@plone/volto/helpers';
 
