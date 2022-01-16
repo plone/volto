@@ -6,11 +6,14 @@
 
 ### Feature
 
+- Add `<FormattedDate>` and `<FormattedRelativeDate>` components. Check their Storybook stories for details. This is part of ongoing work to minimize the use of 'deprecated' momentjs. @sneridagh @tiberiuichim
+
 ### Bugfix
 
 ### Internal
 
 - Upgrade jest to latest release, 27 major. @tiberiuichim
+- Lazyload momentjs. `parseDateTime` helper now requires passing the momentjs library @tiberiuichim
 
 ## 14.2.2 (2022-01-13)
 
