@@ -317,7 +317,7 @@ ContentsItemComponent.propTypes = {
 const DragDropConnector = (props) => {
   const { DropTarget, DragSource } = props.reactDnd;
 
-  const Connected = React.useMemo(
+  const DndConnectedContentsItem = React.useMemo(
     () =>
       DropTarget(
         'item',
@@ -374,7 +374,7 @@ const DragDropConnector = (props) => {
     [DragSource, DropTarget],
   );
 
-  return <Connected {...props} />;
+  return <DndConnectedContentsItem {...props} />;
 };
 
 export default injectLazyLibs('reactDnd')(DragDropConnector);
