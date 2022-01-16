@@ -18,10 +18,11 @@ import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
  */
 
 const WeekdayOfTheMonthField = (props) => {
-  const { disabled = false } = props;
+  const { disabled = false, moment: momentlib } = props;
   const intl = useIntl();
-  const moment = props.moment.default;
-  moment.default.locale(intl.locale);
+
+  const moment = momentlib.default;
+  moment.locale(intl.locale);
 
   const weekdayOfTheMonthList = [
     ...map(Object.keys(Days), (d) => ({
