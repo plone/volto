@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import moment from 'moment';
-import { DragSource, DropTarget } from 'react-dnd';
 import { useIntl, defineMessages, FormattedMessage } from 'react-intl';
 import { Icon, Circle } from '@plone/volto/components';
 import { getContentIcon } from '@plone/volto/helpers';
@@ -25,6 +24,8 @@ import moveDownSVG from '@plone/volto/icons/move-down.svg';
 import editingSVG from '@plone/volto/icons/editing.svg';
 import dragSVG from '@plone/volto/icons/drag.svg';
 import cx from 'classnames';
+
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 const messages = defineMessages({
   private: {
@@ -313,55 +314,67 @@ ContentsItemComponent.propTypes = {
   onOrderItem: PropTypes.func.isRequired,
 };
 
-export default DropTarget(
-  'item',
-  {
-    hover(props, monitor) {
-      const id = monitor.getItem().id;
-      const dragOrder = monitor.getItem().order;
-      const hoverOrder = props.order;
+const DragDropConnector = (props) => {
+  const { DropTarget, DragSource } = props.reactDnd;
 
-      if (dragOrder === hoverOrder) {
-        return;
-      }
+  const Connected = React.useMemo(
+    () =>
+      DropTarget(
+        'item',
+        {
+          hover(props, monitor) {
+            const id = monitor.getItem().id;
+            const dragOrder = monitor.getItem().order;
+            const hoverOrder = props.order;
 
-      props.onOrderItem(id, dragOrder, hoverOrder - dragOrder, false);
+            if (dragOrder === hoverOrder) {
+              return;
+            }
 
-      monitor.getItem().order = hoverOrder;
-    },
-    drop(props, monitor) {
-      const id = monitor.getItem().id;
-      const dragOrder = monitor.getItem().startOrder;
-      const dropOrder = props.order;
+            props.onOrderItem(id, dragOrder, hoverOrder - dragOrder, false);
 
-      if (dragOrder === dropOrder) {
-        return;
-      }
+            monitor.getItem().order = hoverOrder;
+          },
+          drop(props, monitor) {
+            const id = monitor.getItem().id;
+            const dragOrder = monitor.getItem().startOrder;
+            const dropOrder = props.order;
 
-      props.onOrderItem(id, dragOrder, dropOrder - dragOrder, true);
+            if (dragOrder === dropOrder) {
+              return;
+            }
 
-      monitor.getItem().order = dropOrder;
-    },
-  },
-  (connect) => ({
-    connectDropTarget: connect.dropTarget(),
-  }),
-)(
-  DragSource(
-    'item',
-    {
-      beginDrag(props) {
-        return {
-          id: props.item['@id'],
-          order: props.order,
-          startOrder: props.order,
-        };
-      },
-    },
-    (connect, monitor) => ({
-      connectDragSource: connect.dragSource(),
-      connectDragPreview: connect.dragPreview(),
-      isDragging: monitor.isDragging(),
-    }),
-  )(ContentsItemComponent),
-);
+            props.onOrderItem(id, dragOrder, dropOrder - dragOrder, true);
+
+            monitor.getItem().order = dropOrder;
+          },
+        },
+        (connect) => ({
+          connectDropTarget: connect.dropTarget(),
+        }),
+      )(
+        DragSource(
+          'item',
+          {
+            beginDrag(props) {
+              return {
+                id: props.item['@id'],
+                order: props.order,
+                startOrder: props.order,
+              };
+            },
+          },
+          (connect, monitor) => ({
+            connectDragSource: connect.dragSource(),
+            connectDragPreview: connect.dragPreview(),
+            isDragging: monitor.isDragging(),
+          }),
+        )(ContentsItemComponent),
+      ),
+    [DragSource, DropTarget],
+  );
+
+  return <Connected {...props} />;
+};
+
+export default injectLazyLibs('reactDnd')(DragDropConnector);
