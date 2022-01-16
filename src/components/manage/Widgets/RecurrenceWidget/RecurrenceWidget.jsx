@@ -199,7 +199,7 @@ class RecurrenceWidget extends Component {
       open: false,
       rruleSet: rruleSet,
       formValues: this.getFormValues(rruleSet),
-      RRULE_LANGUAGE: rrulei18n(this.props.intl),
+      RRULE_LANGUAGE: rrulei18n(this.props.intl, this.moment),
     };
   }
 
