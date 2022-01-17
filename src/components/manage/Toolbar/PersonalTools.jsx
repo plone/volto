@@ -100,13 +100,6 @@ class PersonalTools extends Component {
         }}
       >
         <header className="header">
-          <button className="back" onClick={this.pull}>
-            <Icon
-              name={backSVG}
-              size="30px"
-              title={this.props.intl.formatMessage(messages.back)}
-            />
-          </button>
           <div className="vertical divider" />
           <h2>
             {this.props.user.fullname
@@ -137,13 +130,13 @@ class PersonalTools extends Component {
           {/* This (probably also) should be a Component by itself*/}
           <ul>
             <li>
-              <button
-                aria-label={this.props.intl.formatMessage(messages.profile)}
-                onClick={() => this.push('profile')}
+              <Link
+                id={this.props.intl.formatMessage(messages.profile)}
+                to="/personal-information"
               >
                 <FormattedMessage id="Profile" defaultMessage="Profile" />
                 <Icon name={rightArrowSVG} size="24px" />
-              </button>
+              </Link>
             </li>
             <li>
               <button

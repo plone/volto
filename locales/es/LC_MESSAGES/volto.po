@@ -241,7 +241,6 @@ msgstr "Disponible"
 #: components/manage/History/History
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
@@ -364,7 +363,6 @@ msgid "Changes applied."
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 # defaultMessage: Changes saved
 msgid "Changes saved"
@@ -628,7 +626,6 @@ msgstr "Fecha (primero los más recientes)"
 #: components/manage/Contents/ContentsTagsModal
 #: components/manage/Contents/ContentsWorkflowModal
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -781,7 +778,6 @@ msgstr "Arrastre aquí el archivo para añadir un nuevo"
 msgid "Drop files here ..."
 msgstr "Arrastrar archivos aquí..."
 
-#: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
 # defaultMessage: E-mail
 msgid "E-mail"
@@ -883,7 +879,6 @@ msgstr "Introduzca un nombre de usuario o haga clic en "Mostrar todos""
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr "Ingrese una dirección de correo electrónico. Este será el nombre de usuario. Nosotros respetamos su privacidad: y no daremos la dirección de correo electrónico a terceros, o la expondremos de alguna forma en el portal."
 
-#: components/manage/Preferences/PersonalInformation
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 # defaultMessage: Enter full name, e.g. John Smith.
@@ -1060,7 +1055,6 @@ msgstr "De"
 msgid "Full"
 msgstr "Completo"
 
-#: components/manage/Preferences/PersonalInformation
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 # defaultMessage: Full Name
@@ -1167,11 +1161,6 @@ msgstr "Historial de {title}"
 # defaultMessage: Home
 msgid "Home"
 msgstr "Inicio"
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Home page
-msgid "Home page"
-msgstr "Página personal"
 
 #: components/manage/Contents/Contents
 # defaultMessage: ID
@@ -1429,11 +1418,6 @@ msgstr "Cargar más"
 # defaultMessage: Loading.
 msgid "Loading"
 msgstr "Cargando"
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Location
-msgid "Location"
-msgstr "Ubicación"
 
 #: components/theme/Login/Login
 # defaultMessage: Login
@@ -1793,7 +1777,6 @@ msgstr "Los permisos se han actualizado correctamente"
 msgid "Permissions updated"
 msgstr "Permisos actualizados"
 
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Personal Information
 msgid "Personal Information"
@@ -1845,11 +1828,6 @@ msgstr "Sitio Plone"
 # defaultMessage: Plone{reg} Open Source CMS/WCM
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} CMS/WCM de Fuentes Abiertos"
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Portrait
-msgid "Portrait"
-msgstr "Retrato"
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Possible values (Enter allowed choices one per line).
@@ -2120,6 +2098,11 @@ msgstr "Guardar"
 # defaultMessage: Save
 msgid "Save recurrence"
 msgstr "Guardar repetición"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Saved
+msgid "Saved"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypesActions
 # defaultMessage: Schema
@@ -2481,7 +2464,6 @@ msgstr "Asunto"
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -2553,11 +2535,6 @@ msgstr "Gracias."
 msgid "The Database Manager allow you to view database status information"
 msgstr "El Bestor de la Base de Datos permite ver la infromación del estado de la base de datos"
 
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: The URL for your external home page, if you have one.
-msgid "The URL for your external home page, if you have one."
-msgstr "La dirección URL de su página personal externa, si tiene una."
-
 #: components/theme/ConnectionRefused/ConnectionRefused
 # defaultMessage: The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable.
 msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
@@ -2592,11 +2569,6 @@ msgstr ""
 # defaultMessage: The registration process has been successful. Please check your e-mail inbox for information on how activate your account.
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgstr "El registro fue exitoso. Verifique su bandeja de entrada para obtener información sobre cómo activar su cuenta."
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: The user portrait/avatar
-msgid "The user portrait/avatar"
-msgstr "El retrato/avatar del usuario"
 
 #: components/manage/Toolbar/More
 # defaultMessage: The working copy was discarded
@@ -2961,11 +2933,6 @@ msgstr "Disculpe las molestias, la página a la que está intentando acceder no 
 msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
 msgstr "Disculpe las molestias pero no tiene permisos en este elemento."
 
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: We will use this address if you need to recover your password
-msgid "We will use this address if you need to recover your password"
-msgstr "Usaremos esta dirección de correo electrónico, en el caso si usted necesita recuperar su contraseña"
-
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: The
 msgid "Weeek day of month"
@@ -3061,11 +3028,6 @@ msgstr "No puede pegar el contenido aquí"
 # defaultMessage: Your email is required for reset your password.
 msgid "Your email is required for reset your password."
 msgstr "La dirección de correo electrónico es necesaria para restablecer su contraseña."
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Your location - either city and country - or in a company setting, where your office is located.
-msgid "Your location - either city and country - or in a company setting, where your office is located."
-msgstr "Su ubicación, ya sea ciudad y país, o en un entorno de empresa, donde se encuentra su oficina."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Your password has been set successfully. You may now {link} with your new password.

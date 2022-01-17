@@ -239,7 +239,6 @@ msgstr "利用可能"
 #: components/manage/History/History
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
@@ -362,7 +361,6 @@ msgid "Changes applied."
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 # defaultMessage: Changes saved
 msgid "Changes saved"
@@ -626,7 +624,6 @@ msgstr "日付 (新しい順)"
 #: components/manage/Contents/ContentsTagsModal
 #: components/manage/Contents/ContentsWorkflowModal
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -779,7 +776,6 @@ msgstr "ファイルをここにドロップして、新しいファイルをア
 msgid "Drop files here ..."
 msgstr "ファイルをここにドロップ"
 
-#: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
 # defaultMessage: E-mail
 msgid "E-mail"
@@ -881,7 +877,6 @@ msgstr "検索するユーザ名を上に入力するか、[すべて表示]を�
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere. (未翻訳)"
 
-#: components/manage/Preferences/PersonalInformation
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 # defaultMessage: Enter full name, e.g. John Smith.
@@ -1058,7 +1053,6 @@ msgstr "メールアドレス"
 msgid "Full"
 msgstr "フルサイズ"
 
-#: components/manage/Preferences/PersonalInformation
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 # defaultMessage: Full Name
@@ -1164,11 +1158,6 @@ msgstr "{title} の履歴"
 #: components/theme/Breadcrumbs/Breadcrumbs
 # defaultMessage: Home
 msgid "Home"
-msgstr "ホーム"
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Home page
-msgid "Home page"
 msgstr "ホーム"
 
 #: components/manage/Contents/Contents
@@ -1427,11 +1416,6 @@ msgstr ""
 # defaultMessage: Loading.
 msgid "Loading"
 msgstr "読み込み中"
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Location
-msgid "Location"
-msgstr "場所"
 
 #: components/theme/Login/Login
 # defaultMessage: Login
@@ -1791,7 +1775,6 @@ msgstr ""
 msgid "Permissions updated"
 msgstr ""
 
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Personal Information
 msgid "Personal Information"
@@ -1843,11 +1826,6 @@ msgstr "Ploneサイト"
 # defaultMessage: Plone{reg} Open Source CMS/WCM
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} Open Source CMS/WCM"
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Portrait
-msgid "Portrait"
-msgstr "顔写真"
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Possible values (Enter allowed choices one per line).
@@ -2118,6 +2096,11 @@ msgstr "保存"
 # defaultMessage: Save
 msgid "Save recurrence"
 msgstr "繰り返しを保存"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Saved
+msgid "Saved"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypesActions
 # defaultMessage: Schema
@@ -2479,7 +2462,6 @@ msgstr "件名"
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -2551,11 +2533,6 @@ msgstr "ありがとうございます。"
 msgid "The Database Manager allow you to view database status information"
 msgstr "この画面でデータベースの状態を確認できます。"
 
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: The URL for your external home page, if you have one.
-msgid "The URL for your external home page, if you have one."
-msgstr "外部ホームページがあればURLを記載してください。"
-
 #: components/theme/ConnectionRefused/ConnectionRefused
 # defaultMessage: The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable.
 msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
@@ -2590,11 +2567,6 @@ msgstr ""
 # defaultMessage: The registration process has been successful. Please check your e-mail inbox for information on how activate your account.
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgstr "The registration process has been successful. Please check your e-mail inbox for information on how activate your account. (未翻訳)"
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: The user portrait/avatar
-msgid "The user portrait/avatar"
-msgstr "写真やアバターなどプロフィール画像を登録してください。"
 
 #: components/manage/Toolbar/More
 # defaultMessage: The working copy was discarded
@@ -2959,11 +2931,6 @@ msgstr "不便をかけて申し訳ありませんが、アクセスしようと
 msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
 msgstr "We apologize for the inconvenience, but you don't have permissions on this resource.(未翻訳)"
 
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: We will use this address if you need to recover your password
-msgid "We will use this address if you need to recover your password"
-msgstr "あなたのパスワードを回復する必要がある場合、このアドレスが使われます。"
-
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: The
 msgid "Weeek day of month"
@@ -3059,11 +3026,6 @@ msgstr "このコンテンツをここに貼り付けることはできません
 # defaultMessage: Your email is required for reset your password.
 msgid "Your email is required for reset your password."
 msgstr "Your email is required for reset your password. (未翻訳)"
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Your location - either city and country - or in a company setting, where your office is located.
-msgid "Your location - either city and country - or in a company setting, where your office is located."
-msgstr "あなたのいる場所を入力してください。国名や都市名あるいはオフィスの場所など"
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Your password has been set successfully. You may now {link} with your new password.

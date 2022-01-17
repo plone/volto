@@ -250,7 +250,6 @@ msgstr ""
 #: components/manage/History/History
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
@@ -373,7 +372,6 @@ msgid "Changes applied."
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 # defaultMessage: Changes saved
 msgid "Changes saved"
@@ -637,7 +635,6 @@ msgstr ""
 #: components/manage/Contents/ContentsTagsModal
 #: components/manage/Contents/ContentsWorkflowModal
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -790,7 +787,6 @@ msgstr ""
 msgid "Drop files here ..."
 msgstr ""
 
-#: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
 # defaultMessage: E-mail
 msgid "E-mail"
@@ -892,7 +888,6 @@ msgstr ""
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr ""
 
-#: components/manage/Preferences/PersonalInformation
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 # defaultMessage: Enter full name, e.g. John Smith.
@@ -1069,7 +1064,6 @@ msgstr ""
 msgid "Full"
 msgstr ""
 
-#: components/manage/Preferences/PersonalInformation
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 # defaultMessage: Full Name
@@ -1176,11 +1170,6 @@ msgstr "Geschiedenis van {title}"
 # defaultMessage: Home
 msgid "Home"
 msgstr "Home"
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Home page
-msgid "Home page"
-msgstr "Homepage"
 
 #: components/manage/Contents/Contents
 # defaultMessage: ID
@@ -1438,11 +1427,6 @@ msgstr ""
 # defaultMessage: Loading.
 msgid "Loading"
 msgstr ""
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Location
-msgid "Location"
-msgstr "Locatie"
 
 #: components/theme/Login/Login
 # defaultMessage: Login
@@ -1802,7 +1786,6 @@ msgstr ""
 msgid "Permissions updated"
 msgstr ""
 
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Personal Information
 msgid "Personal Information"
@@ -1854,11 +1837,6 @@ msgstr "Plone website"
 # defaultMessage: Plone{reg} Open Source CMS/WCM
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} CMS - Open Source Web Content Management Systeem"
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Portrait
-msgid "Portrait"
-msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Possible values (Enter allowed choices one per line).
@@ -2128,6 +2106,11 @@ msgstr "Opslaan"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: Save
 msgid "Save recurrence"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Saved
+msgid "Saved"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypesActions
@@ -2490,7 +2473,6 @@ msgstr ""
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -2562,11 +2544,6 @@ msgstr "Bedankt."
 msgid "The Database Manager allow you to view database status information"
 msgstr ""
 
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: The URL for your external home page, if you have one.
-msgid "The URL for your external home page, if you have one."
-msgstr "Het internet adres van uw externe home page, indien u die heeft."
-
 #: components/theme/ConnectionRefused/ConnectionRefused
 # defaultMessage: The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable.
 msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
@@ -2600,11 +2577,6 @@ msgstr ""
 #: components/theme/Register/Register
 # defaultMessage: The registration process has been successful. Please check your e-mail inbox for information on how activate your account.
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
-msgstr ""
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: The user portrait/avatar
-msgid "The user portrait/avatar"
 msgstr ""
 
 #: components/manage/Toolbar/More
@@ -2970,11 +2942,6 @@ msgstr "Onze excuses voor het ongemak, maar de pagina die u probeerde te bereike
 msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
 msgstr ""
 
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: We will use this address if you need to recover your password
-msgid "We will use this address if you need to recover your password"
-msgstr "Wij gebruiken dit adres wanneer u uw wachtwoord wilt terugkrijgen"
-
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: The
 msgid "Weeek day of month"
@@ -3070,11 +3037,6 @@ msgstr ""
 # defaultMessage: Your email is required for reset your password.
 msgid "Your email is required for reset your password."
 msgstr ""
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Your location - either city and country - or in a company setting, where your office is located.
-msgid "Your location - either city and country - or in a company setting, where your office is located."
-msgstr "Uw woonplaats - stad en land - of als u vanuit een bedrijf werkt, waar uw kantoor is gevestigd."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Your password has been set successfully. You may now {link} with your new password.

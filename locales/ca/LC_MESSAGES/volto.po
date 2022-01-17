@@ -240,7 +240,6 @@ msgstr "Disponible"
 #: components/manage/History/History
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
@@ -363,7 +362,6 @@ msgid "Changes applied."
 msgstr "Canvis aplicats"
 
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 # defaultMessage: Changes saved
 msgid "Changes saved"
@@ -627,7 +625,6 @@ msgstr "Data (el més nou primer)"
 #: components/manage/Contents/ContentsTagsModal
 #: components/manage/Contents/ContentsWorkflowModal
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -780,7 +777,6 @@ msgstr "Deixeu anar el fitxer aquí per pujar un fitxer nou"
 msgid "Drop files here ..."
 msgstr "Deixeu fitxers aquí..."
 
-#: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
 # defaultMessage: E-mail
 msgid "E-mail"
@@ -882,7 +878,6 @@ msgstr "Introduïu un nom d'usuari a dalt per cercar o feu clic a 'Mostra-ho tot
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr "Introduïu una adreça de correu electrònic. Aquest serà el vostre nom d'inici de sessió. Respectem la vostra privadesa i no donarem l'adreça a tercers ni l'exposarem enlloc."
 
-#: components/manage/Preferences/PersonalInformation
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 # defaultMessage: Enter full name, e.g. John Smith.
@@ -1059,7 +1054,6 @@ msgstr "Des de"
 msgid "Full"
 msgstr "Complet"
 
-#: components/manage/Preferences/PersonalInformation
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 # defaultMessage: Full Name
@@ -1166,11 +1160,6 @@ msgstr "Historial de {title}"
 # defaultMessage: Home
 msgid "Home"
 msgstr "Inici"
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Home page
-msgid "Home page"
-msgstr "Pàgina inicial"
 
 #: components/manage/Contents/Contents
 # defaultMessage: ID
@@ -1428,11 +1417,6 @@ msgstr "Carrega més..."
 # defaultMessage: Loading.
 msgid "Loading"
 msgstr "Carregant."
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Location
-msgid "Location"
-msgstr "Ubicació"
 
 #: components/theme/Login/Login
 # defaultMessage: Login
@@ -1792,7 +1776,6 @@ msgstr "Els permisos s'han actualitzat correctament"
 msgid "Permissions updated"
 msgstr "Permisos actualitzats"
 
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Personal Information
 msgid "Personal Information"
@@ -1844,11 +1827,6 @@ msgstr "Lloc de Plone"
 # defaultMessage: Plone{reg} Open Source CMS/WCM
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} CMS/WCM de codi obert"
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Portrait
-msgid "Portrait"
-msgstr "Retrat"
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Possible values (Enter allowed choices one per line).
@@ -2119,6 +2097,11 @@ msgstr "Desa"
 # defaultMessage: Save
 msgid "Save recurrence"
 msgstr "Desa"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Saved
+msgid "Saved"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypesActions
 # defaultMessage: Schema
@@ -2480,7 +2463,6 @@ msgstr "Assumpte"
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -2552,11 +2534,6 @@ msgstr "Gràcies."
 msgid "The Database Manager allow you to view database status information"
 msgstr "El Gestor de bases de dades us permet veure la informació d'estat de la base de dades"
 
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: The URL for your external home page, if you have one.
-msgid "The URL for your external home page, if you have one."
-msgstr "L'URL de la vostra pàgina d'inici externa, si en teniu."
-
 #: components/theme/ConnectionRefused/ConnectionRefused
 # defaultMessage: The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable.
 msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
@@ -2591,11 +2568,6 @@ msgstr "L'adreça de l'enllaç és:"
 # defaultMessage: The registration process has been successful. Please check your e-mail inbox for information on how activate your account.
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgstr "El procés de registre ha estat satisfactori. Si us plau, comproveu la vostra bústia d'entrada de correu electrònic per obtenir informació sobre com activar el vostre compte."
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: The user portrait/avatar
-msgid "The user portrait/avatar"
-msgstr "El retrat/avatar de l'usuari"
 
 #: components/manage/Toolbar/More
 # defaultMessage: The working copy was discarded
@@ -2960,11 +2932,6 @@ msgstr "Demanem disculpes per les molèsties, però la pàgina a la qual estàve
 msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
 msgstr "Demanem disculpes per les molèsties, però no teniu permisos sobre aquest recurs."
 
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: We will use this address if you need to recover your password
-msgid "We will use this address if you need to recover your password"
-msgstr "Utilitzarem aquesta adreça si necessiteu recuperar la vostra contrasenya"
-
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: The
 msgid "Weeek day of month"
@@ -3060,11 +3027,6 @@ msgstr "No podeu enganxar aquest contingut aquí"
 # defaultMessage: Your email is required for reset your password.
 msgid "Your email is required for reset your password."
 msgstr "El vostre correu electrònic és necessari per restablir la contrasenya."
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Your location - either city and country - or in a company setting, where your office is located.
-msgid "Your location - either city and country - or in a company setting, where your office is located."
-msgstr "La vostra ubicació (ciutat i país) o en un entorn d'empresa, on es troba la vostra oficina."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Your password has been set successfully. You may now {link} with your new password.
