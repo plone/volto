@@ -26,6 +26,7 @@ const useBackend = ({ subrequest, ...request }) => {
       }
     }
     setLoading(true);
+    setLoaded(false);
     fetchData();
 
     return () => {
