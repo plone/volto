@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "14.0.2",
+  "version": "14.2.2",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -34,7 +34,7 @@
     "start-spa": "razzle start --type=spa",
     "build": "razzle build",
     "build-spa": "razzle build --type=spa",
-    "test": "razzle test --env=jest-environment-jsdom-sixteen",
+    "test": "razzle test --env=jest-environment-jsdom-sixteen --maxWorkers=50%",
     "test:ci": "CI=true razzle test --env=jest-environment-jsdom-sixteen",
     "test:husky": "CI=true yarn test --bail --findRelatedTests",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
@@ -342,7 +342,7 @@
     "prismjs": "1.25.0",
     "promise-file-reader": "1.0.2",
     "prop-types": "15.7.2",
-    "query-string": "7.0.0",
+    "query-string": "7.1.0",
     "razzle": "3.4.5",
     "razzle-plugin-bundle-analyzer": "1.2.0",
     "rc-time-picker": "3.7.3",
@@ -400,6 +400,7 @@
     "svgo": "1.3.2",
     "svgo-loader": "2.2.1",
     "tlds": "1.203.1",
+    "undoo": "0.5.0",
     "use-deep-compare-effect": "1.6.1",
     "xmlrpc": "1.3.2",
     "yarn-deduplicate": "3.1.0",
