@@ -100,6 +100,13 @@ class PersonalTools extends Component {
         }}
       >
         <header className="header">
+          <button className="back" onClick={this.pull}>
+            <Icon
+              name={backSVG}
+              size="30px"
+              title={this.props.intl.formatMessage(messages.back)}
+            />
+          </button>
           <div className="vertical divider" />
           <h2>
             {this.props.user.fullname

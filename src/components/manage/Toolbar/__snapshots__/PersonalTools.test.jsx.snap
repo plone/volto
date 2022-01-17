@@ -12,6 +12,29 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
   <header
     className="header"
   >
+    <button
+      className="back"
+      onClick={[Function]}
+    >
+      <svg
+        className="icon"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<title>Back</title>undefined",
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "currentColor",
+            "height": "30px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+    </button>
     <div
       className="vertical divider"
     />
