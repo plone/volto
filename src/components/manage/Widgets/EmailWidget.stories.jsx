@@ -1,28 +1,11 @@
 import React from 'react';
 import EmailWidget from './EmailWidget';
-import Wrapper from '@plone/volto/storybook';
+import WidgetStory from './story';
 
-const EmailWidgetComponent = ({ children, ...args }) => {
-  const [value, setValue] = React.useState('');
-  const onChange = (block, value) => setValue(value);
-  return (
-    <Wrapper location={{ pathname: '/folder2/folder21/doc212' }}>
-      <div className="ui segment form attached" style={{ width: '400px' }}>
-        <EmailWidget
-          {...args}
-          id="field"
-          title="Email"
-          block="testBlock"
-          value={value}
-          onChange={onChange}
-        />
-      </div>
-      <pre>Value: {JSON.stringify(value, null, 4)}</pre>
-    </Wrapper>
-  );
-};
-
-export const Email = EmailWidgetComponent.bind({});
+export const Email = WidgetStory.bind({
+  props: { id: 'email', title: 'Email', block: 'block' },
+  widget: EmailWidget,
+});
 
 export default {
   title: 'Widgets/Email',

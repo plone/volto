@@ -1,6 +1,6 @@
 # Change Log
 
-## 14.0.3 (unreleased)
+## 14.2.3 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,64 @@
 ### Bugfix
 
 ### Internal
+
+## 14.2.2 (2022-01-13)
+
+### Bugfix
+
+- Fix home URL item in Navigation, which was evaluating as non-internal @sneridagh
+- Improve the request handling in `getAPIResourceWithAuth` and in `Api` helper. This fixes the "Cannot set headers once the content has being sent" @sneridagh
+- Fix when you remove the time from DatetimeWidget @iRohitSingh
+
+### Internal
+
+- Fix URL for Climate-Energy, a Volto website @tiberiuichim
+- Fix quirky Cypress test in "DX control panel schema" (see https://github.com/plone/volto/runs/4803206906?check_suite_focus=true) @sneridagh
+
+## 14.2.1 (2022-01-12)
+
+### Bugfix
+
+- Fix home URL item in Navigation, which was evaluating as non-internal
+
+### Internal
+
+- Use plone-backend docker images for Cypress tests @sneridagh
+- Upgrade `query-string` library so it supports Plone `:list` qs marker @sneridagh
+
+## 14.2.0 (2022-01-04)
+
+### Feature
+
+- Allow `creatable` prop to be passed to `ArrayWidgets`, in case they don't have a vocabulary @giuliaghisini
+- Added initialBlocksFocus to blocks config, to set default focus on non-first block. @giuliaghisini
+
+## 14.1.1 (2022-01-03)
+
+### Internal
+
+- Update to plone.restapi 8.18.0, remove some defensive code in vocabularies action now that it's fixed in the backend @sneridagh
+
+## 14.1.0 (2021-12-31)
+
+### Feature
+
+- Added custom option to SelectWidget to render custom optionss (for example with icons) @giuliaghisini
+- Added form undo support in the form of two buttons in the main toolbar and ctrl+z, ctrl+y as hotkeys for undo/redo. The undo capabilities are provided by a new helper hook, `useUndoManager`. @tiberiuichim
+
+### Bugfix
+
+- Fix query data in listing blocks ssr async call @cekk
+- In the contact form, only display the "back" button in the toolbar @tiberiuichim
+- Fixed selected widget to use isMulti prop @giuliaghisini
+
+### Internal
+
+- Allow the draftjs Text block edit to update the editor content when incoming block data is mutated outside the block (to support form undo) @tiberiuichim
+- Remove use of internal component state for ArrayWidget, SelectWidget and TokenWidget, (to support form undo) @tiberiuichim
+- Use lazy loading of react-dates and momentjs for the DatetimeWidget @tiberiuichim
+- Improve widget stories, add a common `WidgetStory` class, show undo capabilities in widget stories @tiberiuichim
+- Better SelectAutocompleteWidget and SelectUtils @giuliaghisini @sneridagh @tiberiuichim
 
 ## 14.0.2 (2021-12-22)
 
@@ -21,6 +79,7 @@
 ### Bugfix
 
 - Construct request with list parameters as separate querystring key value pairs according Zope convention @ksuess
+- Fix spelling in error message when backend is unreachable @instification
 
 ## 14.0.0 (2021-12-20)
 

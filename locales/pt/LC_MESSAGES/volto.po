@@ -1938,6 +1938,11 @@ msgstr ""
 msgid "Recurrence ends on"
 msgstr ""
 
+#: components/manage/Form/UndoToolbar
+# defaultMessage: Redo
+msgid "Redo"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Minimalistic table design
 msgid "Reduce complexity"
@@ -2562,8 +2567,8 @@ msgid "The backend is responding, but the CORS headers are not configured proper
 msgstr ""
 
 #: components/theme/CorsError/CorsError
-# defaultMessage: The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
-msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
+# defaultMessage: The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
+msgid "The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
 msgstr ""
 
 #: components/manage/Blocks/Search/schema
@@ -2741,6 +2746,11 @@ msgstr ""
 #: components/theme/Unauthorized/Unauthorized
 # defaultMessage: Unauthorized
 msgid "Unauthorized"
+msgstr ""
+
+#: components/manage/Form/UndoToolbar
+# defaultMessage: Undo
+msgid "Undo"
 msgstr ""
 
 #: components/manage/BlockChooser/BlockChooser

@@ -1939,6 +1939,11 @@ msgstr "Després"
 msgid "Recurrence ends on"
 msgstr "La recurrència acava el"
 
+#: components/manage/Form/UndoToolbar
+# defaultMessage: Redo
+msgid "Redo"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Minimalistic table design
 msgid "Reduce complexity"
@@ -2563,8 +2568,8 @@ msgid "The backend is responding, but the CORS headers are not configured proper
 msgstr "El backend està responent, però les capçaleres CORS no estan configurades correctament i el navegador ha denegat l'accés als recursos del backend."
 
 #: components/theme/CorsError/CorsError
-# defaultMessage: The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
-msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
+# defaultMessage: The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
+msgid "The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
 msgstr "El servidor backend del vostre lloc web no respon, demanem disculpes per les molèsties. Si us plau, prova de tornar a carregar la pàgina i torna-ho a provar. Si el problema persisteix, poseu-vos en contacte amb els administradors del lloc."
 
 #: components/manage/Blocks/Search/schema
@@ -2743,6 +2748,11 @@ msgstr "UID"
 # defaultMessage: Unauthorized
 msgid "Unauthorized"
 msgstr "No autoritzada"
+
+#: components/manage/Form/UndoToolbar
+# defaultMessage: Undo
+msgid "Undo"
+msgstr ""
 
 #: components/manage/BlockChooser/BlockChooser
 # defaultMessage: Unfold
