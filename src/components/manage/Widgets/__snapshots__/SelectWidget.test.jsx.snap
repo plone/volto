@@ -47,7 +47,7 @@ exports[`renders a select widget component 1`] = `
                 <div
                   class="react-select__placeholder css-1wa3eu0-placeholder"
                 >
-                  Select...
+                  Select…
                 </div>
                 <div
                   class="css-b8ldur-Input"

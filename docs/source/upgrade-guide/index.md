@@ -14,7 +14,7 @@ This upgrade guide lists all breaking changes in Volto and explains the
 
 ## Upgrading to Volto 14.x.x
 
-### Revisited rethought and refactored Seamless mode
+### Revisited rethought and refactored seamless mode
 
 Seamless mode was released as experimental in Volto 13. However, after a period of testing some issues were detected so the feature has been rethought and refactored.
 
@@ -36,7 +36,7 @@ add-ons without having to install the whole Volto package (which is not possible
 `@plone/scripts` package is the placeholder of the script, which has also been improved
 alongside the infrastructure (Babel config) for it to run.
 
-Steps for migration:
+**Steps for migration**:
 
 #### Projects
 
@@ -51,7 +51,8 @@ In a project's `package.json` replace the `scripts` `i18n` line with this one:
 
 #### Add-ons
 
-If you are an add-on maintainer, remove the `src/i18n.js` script since it's useless, and then within the `scripts` section of `package.json` apply the following change:
+If you are an add-on maintainer, remove the `src/i18n.js` script, since it's useless.
+Within the `scripts` section of `package.json` apply the following change:
 
 ```diff
    "scripts": {
@@ -68,7 +69,7 @@ afterwards add this to the `dependencies` list:
    }
 ```
 
-Now that `package.json` is modified afterwards replace `babel.config.js` contents with the following:
+Apply the following diff to `babel.config.js`:
 
 ```diff
 -module.exports = require('@plone/volto/babel');
@@ -106,10 +107,11 @@ More information: https://docs.voltocms.com/upgrade-guide/#volto-configuration-r
 
 Not really a breaking change, but it's worth noting it. By default, Volto 14 comes with
 [content-locking](/configuration/locking) enabled, if the backend supports it. Thus:
-* Upgrade Plone RestAPI:
-    * **plone.restapi**>=`8.9.0` (Plone 5+)
-    * **plone.restapi**>=`7.4.0` (Plone 4)
-* Update `plone:CORSPolicy` to include `Lock-Token` within `allow_headers`:
+
+- Upgrade Plone RestAPI
+  - **plone.restapi**>=`8.9.0` (Plone 5+)
+  - **plone.restapi**>=`7.4.0` (Plone 4)
+- Update `plone:CORSPolicy` to include `Lock-Token` within `allow_headers`:
 
 ```xml
   <plone:CORSPolicy
@@ -125,7 +127,31 @@ Not really a breaking change, but it's worth noting it. By default, Volto 14 com
 ### Blocks chooser now uses the title instead of the id of the block as translation source
 
 The `BlockChooser` component now uses the `title` of the block as source for translating
-the block title. Before, it took the `id` of the block, which is utterly wrong. Could be that this change will trigger untranslated blocks titles in your projects and add-ons.
+the block title. Before, it took the `id` of the block, which is utterly wrong and missleading. There is a chance that this change will trigger untranslated blocks titles in your projects and add-ons.
+
+### Variation field now uses the title instead of the id of the variation as translation source
+
+Following the same convention as the above change, `Variation` field coming from the block enhancers now uses the `title` of the block as source for translating
+the variation title. Before, it took the `id` of the block, which as stated before, is wrong and missleading. There is a chance that  this change will trigger untranslated variation titles in your projects and add-ons.
+
+### Listing block no longer retrieve fullobjects by default
+
+The query used by the listing block always used the `fullobjects` flag, which fully serialized (and thus, wake from the db) the resultant response items. This was causing performance issues. From Volto 14, the results will get the normal catalog query metadata results. You'll need to adapt your code to get the appropiate data if required and/or use the metadata counterparts. If your custom code depends on this behavior and you don't have time to adapt now, there's a scape hatch: set an additional `fullobjects` key to `true` per variation in the variation of the listing block config object:
+
+```js
+    variations: [
+      {
+        id: 'default',
+        isDefault: true,
+        title: 'Default',
+        template: DefaultListingBlockTemplate,
+        fullobjects: true
+      },
+    ]
+```
+
+!!! note
+      This feature needs at least `plone.restapi >= 8.13.0` and `plone.volto 3.1a4`. You need to update the catalog from your existing objects in your database, if you have already a production site in place, in order to have the new metadata filled in the catalog.
 
 ### New mobile navigation menu
 
@@ -134,6 +160,14 @@ The mobile navigation menu has been improved using a customizable `CSSTransition
 ### Adjusted main Logo component styling
 
 In order to match the Plone logo and in lieu to use a better generic icon starting point, the `Logo.jsx` component and `.logo-nav-wrapper` styling have been adjusted. The logo is not constrained by default to `64px` and the wrapper now centers vertically. Please check that your project logo placeholder is still in good shape after upgrade.
+
+### Move `theme.js` import to top of the client code
+
+This is not a strict breaking change, but it's worth mentioning it as it might be important to keep in mind, especially if you are using inline CSS imports in your code, it might change your CSS cascade apply order. However, if you use the theme approach adding `custom.overrides`/`custom.less` files, you are good to go since they are applied in the same batch.
+
+### `getVocabulary` action changed its signature
+
+The `getVocabulary` action has changed API. Before, it used separate positional arguments, but now it uses named arguments by passing a single object as the argument.  You'll have to adjust any call you do if you are using this action in custom code to the new API.
 
 ## Upgrading to Volto 13.x.x
 

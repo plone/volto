@@ -149,7 +149,7 @@ class Add extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    this.props.getSchema(this.props.type);
+    this.props.getSchema(this.props.type, getBaseUrl(this.props.pathname));
     this.setState({ isClient: true });
   }
 
@@ -308,6 +308,7 @@ class Add extends Component {
             ref={this.form}
             key="translated-or-new-content-form"
             schema={this.props.schema}
+            type={this.props.type}
             formData={{
               ...(blocksFieldname && {
                 [blocksFieldname]:

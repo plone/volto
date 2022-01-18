@@ -55,9 +55,17 @@ const messages = defineMessages({
 });
 
 /**
- * WysiwygWidget container class.
- * @class WysiwygWidget
- * @extends Component
+ * WysiwygWidget HTML richtext editing widget
+ *
+ * To use it, in schema properties, declare a field like:
+ *
+ * ```jsx
+ * {
+ *  title: "Rich text",
+ *  widget: 'richtext',
+ * }
+ * ```
+ *
  */
 class WysiwygWidget extends Component {
   /**

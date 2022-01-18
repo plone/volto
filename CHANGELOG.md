@@ -1,6 +1,6 @@
 # Change Log
 
-## 14.0.0 (unreleased)
+## 14.2.3 (unreleased)
 
 ### Breaking
 
@@ -8,10 +8,484 @@
 
 ### Bugfix
 
-- Prevent ua-parser-js security breach. See: https://github.com/advisories/GHSA-pjwm-rvh2-c87w @thet
-- Fix storybook errors in the connected components, api is undefined. Using now a mock of the store instead of the whole thing @sneridagh
+### Internal
+
+## 14.2.2 (2022-01-13)
+
+### Bugfix
+
+- Fix home URL item in Navigation, which was evaluating as non-internal @sneridagh
+- Improve the request handling in `getAPIResourceWithAuth` and in `Api` helper. This fixes the "Cannot set headers once the content has being sent" @sneridagh
+- Fix when you remove the time from DatetimeWidget @iRohitSingh
 
 ### Internal
+
+- Fix URL for Climate-Energy, a Volto website @tiberiuichim
+- Fix quirky Cypress test in "DX control panel schema" (see https://github.com/plone/volto/runs/4803206906?check_suite_focus=true) @sneridagh
+
+## 14.2.1 (2022-01-12)
+
+### Bugfix
+
+- Fix home URL item in Navigation, which was evaluating as non-internal
+
+### Internal
+
+- Use plone-backend docker images for Cypress tests @sneridagh
+- Upgrade `query-string` library so it supports Plone `:list` qs marker @sneridagh
+
+## 14.2.0 (2022-01-04)
+
+### Feature
+
+- Allow `creatable` prop to be passed to `ArrayWidgets`, in case they don't have a vocabulary @giuliaghisini
+- Added initialBlocksFocus to blocks config, to set default focus on non-first block. @giuliaghisini
+
+## 14.1.1 (2022-01-03)
+
+### Internal
+
+- Update to plone.restapi 8.18.0, remove some defensive code in vocabularies action now that it's fixed in the backend @sneridagh
+
+## 14.1.0 (2021-12-31)
+
+### Feature
+
+- Added custom option to SelectWidget to render custom optionss (for example with icons) @giuliaghisini
+- Added form undo support in the form of two buttons in the main toolbar and ctrl+z, ctrl+y as hotkeys for undo/redo. The undo capabilities are provided by a new helper hook, `useUndoManager`. @tiberiuichim
+
+### Bugfix
+
+- Fix query data in listing blocks ssr async call @cekk
+- In the contact form, only display the "back" button in the toolbar @tiberiuichim
+- Fixed selected widget to use isMulti prop @giuliaghisini
+
+### Internal
+
+- Allow the draftjs Text block edit to update the editor content when incoming block data is mutated outside the block (to support form undo) @tiberiuichim
+- Remove use of internal component state for ArrayWidget, SelectWidget and TokenWidget, (to support form undo) @tiberiuichim
+- Use lazy loading of react-dates and momentjs for the DatetimeWidget @tiberiuichim
+- Improve widget stories, add a common `WidgetStory` class, show undo capabilities in widget stories @tiberiuichim
+- Better SelectAutocompleteWidget and SelectUtils @giuliaghisini @sneridagh @tiberiuichim
+
+## 14.0.2 (2021-12-22)
+
+### Internal
+
+- Better favicon definitions, 2021 bullet proof @sneridagh
+
+## 14.0.1 (2021-12-21)
+
+### Bugfix
+
+- Construct request with list parameters as separate querystring key value pairs according Zope convention @ksuess
+- Fix spelling in error message when backend is unreachable @instification
+
+## 14.0.0 (2021-12-20)
+
+### Breaking
+
+- Remove compatibility for old configuration (based on imports) system. Migrate your configuration to the new configuration system for your project before upgrading to Volto 14. See https://docs.voltocms.com/upgrade-guide/#volto-configuration-registry @sneridagh
+- Content locking is not a breaking change, but it's worth noting that Volto 14 comes with locking support enabled by default. Latest `plone.restapi` version is required. @avoinea
+- Revisited, rethought and refactored Seamless mode @sneridagh
+  For more information, please read the deploying guide
+  https://docs.voltocms.com/deploying/seamless-mode/
+- Listing block no longer use `fullobjects` to retrieve backend data. It uses the catalog data instead. This improves the performance of the listing block. @plone/volto-team
+- Removed pagination in vocabularies widgets (SelectWidget, ArrayWidget, TokenWidget) and introduced subrequest to vocabulary action. @giuliaghisini
+- Use the block's title as the source of the translation instead of using the id of the block. See upgrade guide for more information @sneridagh
+- New i18n infrastructure in the new `@plone/scripts` package @sneridagh
+- Removed `src/i18n.js` in favor of the above change @sneridagh
+- Adjusted main `Logo.jsx` default component styling @sneridagh
+- Fix logout action using the backend @logout endpoint, effectively removing the `__ac` cookie. It is recommended to upgrade to the latest p.restapi version to take full advantage of this feature @sneridagh
+- Improve mobile navigation menu with a nicer interaction and a fixed overlay with a drawer (customizable via CSSTransitionGroup) animation @sneridagh
+- Use title instead of id as a source of translation in "Variation" field in block enhancers @sneridagh
+- Move `theme.js` import to top of the client code, so it take precedence over any other inline imported CSS. This is not an strict breaking change, but it's worth to mention it as might be important and kept in mind. @sneridagh
+
+See https://docs.voltocms.com/upgrade-guide/ for more information about all the breaking changes.
+
+### Feature
+
+- Support Node 16 @timo
+- Content locking support for Plone (`plone.locking`) @avoinea
+- Add the new search block @tiberiuichim @kreafox @sneridagh
+- Provide Server-Side Rendering capabilities for blocks with async-based content (such as the listing block). A block needs to provide its own `getAsyncData` implementation, which is similar to an `asyncConnect` wrapper promise. @tiberiuichim @sneridagh
+- Defaults are observed in block data if `InlineForm` or `BlockDataForm` are used. @sneridagh @tiberiuichim
+- Apply form defaults from RenderBlocks and block Edit using a new helper, `applyBlockDefaults` @tiberiuichim
+- Now each block config object can declare a schema factory (a function that can produce a schema) and this will be used to derive the default data for the block @tiberiuichim
+- Add `volto-guillotina` addon to core @sneridagh
+- Make `VocabularyTermsWidget` orderable @ksuess
+- Get widget by tagged values utility function in the `Field` decider @ksuess
+- Use Plone logo @ericof
+- Update favicon and related tags with best practices @sneridagh
+- Enable to be able to use the internal proxy in production as well @sneridagh
+- Add runtime configuration for `@babel/plugin-transform-react-jsx` set to `automatic`. This enables the new JSX runtime: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html So no longer `import React from 'react'` is needed anymore. @sneridagh
+- Add `autocomplete` Widget component - It holds off the vocabulary endpoint pull until you search (more than 2 chars). Useful when dealing with huge vocabularies @sneridagh @reebalazs
+- Add new listing block option "fullobjects" per variation @ksuess
+- `FormFieldWrapper` accepts now strings and elements for description @nzambello
+- Image block:
+  - When uploading an image or selecting that from the object browser, Image block will set an empty string as alternative text @nzambello
+  - Adds a description to the alt-tag with w3c explaination @nzambello
+- Support TypeScript usage in Volto projects @pnicolli
+- Added `LinkMore` component and link more in `HeroImageLeft` block. @giuliaghisini
+- In the search block, allow editors to specify the sort on criteria.
+  @tiberiuichim
+- Added `.storybook` setup in the Volto `app` generator. Volto projects generated from this scafolding are now ready to run Storybook for the project and develop addons (in `src/addons` folder).
+- Style checkboxes @nileshgulia1
+- Allow loading .less files also from a Volto project's `src` folder.  @tiberiuichim
+- Add catalan translation @bloodbare @sneridagh
+- Updated Volto production sites list @giuliaghisini
+- Japanese translation updated @terapyon
+- German translations updated @tisto
+- Updated italian translation @pnicolli
+- Updated Brazilian Portuguese translations @ericof
+
+### Bugfix
+
+- Fix `SelectWidget` vocabulary load on second component mount @avoinea #2655
+- Fix `/edit` and `/add` `nonContentRoutes` to fix `isCmsUi` fn @giuliaghisini
+- Register the dev api proxy after the express middleware @tiberiuichim
+- Fix on form errors in block editor, not changing to metadata tab @sneridagh
+- Fix SSR on `/edit` with dev proxy @tiberiuichim
+- Fix logout action, removing the `__ac` cookie as well, if present. @sneridagh
+- Do not show lead image block when the content type does not have the behavior enabled @sneridagh
+- Missing default messages from JSON EN language file @sneridagh
+- Show correct fieldname and not internal field id in Toast error messages on Add/Edit forms @jackahl
+- `sitemap.xml.gz` obeys Plone Search settings @erral
+- Get `blocks` and `blocks_layout` defaults from existing behavior when enabling TTW editable DX Layout @avoinea
+- Yet another attempt at fixing devproxy. Split the devproxy into a separate devproxy verbose @tiberiuichim
+- Add spinner on sharing View Button @iRohitSingh
+- Fixed `SelectWidget`: when there was a selected value, the selection was lost when the tab was changed. @giuliaghisini
+- Bugfixes to search block. By default search block, when empty, makes a simple
+  query to the nav root, to list all content. Fix reading search text from URL.
+  Implement a simple compression of URL. Don't count searched text as filter.
+  Fix an edge case with showSearchInput in schema. Rename title to Section
+  Title in facet column settings. Avoid double calls to querystring endpoint.
+  @tiberiuichim
+- Use correct shade of black in Plone logo @sneridagh
+- Fix loading of cookie on SSR for certain requests, revert slight change in how they are loaded introduced in alpha 16 @sneridagh
+- Prevent `ua-parser-js` security breach. See: https://github.com/advisories/GHSA-pjwm-rvh2-c87w @thet
+- Fix storybook errors in the connected components, api is undefined. Using now a mock of the store instead of the whole thing @sneridagh
+- CSS fix on `QueryWidget` to prevent line jumping for clear button when the multi selection widget has multiple items @kreafox
+- Fix disable mode of `QuerystringWidget` when all criteria are deleted @kreafox
+- Fix reset pagination in searchblock when changing facet filters @tiberiuichim
+- Fix the selection of Maps Block @iRohitSingh
+- `UniversalLink`: handle direct download for content-type File if user is not logged. @giuliaghisini
+- Fixed `ObjectBrowserWidget` when is multiple or `maximumSelectionSize` is not set @giuliaghisini
+- Fix full-width image overlaps the drag handle @iRohitSingh
+- Fix move item to top of the folder when clicking on move to top action button @iRohitSingh
+- Fix `downloadableObjects` default value @giuliaghisini
+- Folder contents table header and breadcrumbs dropdown now appear only from the bottom, fixing an issue where the breadcrumb dropdown content was clipped by the header area @ichim-david
+- Folder contents sort dropdown is now also simple as the other dropdowns
+  ensuring we have the same behavior between adjecent dropdown @ichim-david
+- Fix documention on block extensions, replace `render` with `template` to match Listing block @tiberiuichim
+- Fix `isInternalURL` when `settings.internalApiPath` is empty @tiberiuichim
+- Fix external link not supported by Navigation component #2853. @ericof
+- Get Add/Edit schema contextually #2852 @ericof
+- Fix regression in actions vocabularies calls because the change to use contextual schemas @sneridagh
+- Include block schema enhancers (main block schema enhancer + variation schema enhancer) when calculating block default data @tiberiuichim
+- Fixed object browser selected items number. @giuliaghisini
+- Fix action vocabularies call avoiding regex look behind @nzambello
+- Use subrequest in hero block to not lost locking token. @cekk
+- Always add lang attr in html @nzambello
+- Fix time widget position on 24h format @nzambello
+- QuerystringWidget more resilient on old schemas @nzambello
+- In search block, read SearchableText search param, to use it as search text input @tiberiuichim
+- Fix missing translation in link content type @iRohitSingh
+- Fixed drag-and-drop list placeholder issues @reebalazs
+- Update demo address @ksuess
+- Update list of trainings documentation @ksuess
+- Scroll to window top only when the location pathname changes, no longer take the window location search parameters into account. The search page and the listing block already use custom logic for their "scroll into view" behaviors. @tiberiuichim
+- Add missing layout view for `document_view` @MarcoCouto
+- Add missing `App.jsx` full paths @jimbiscuit
+- Fix z-index value of hamburger-wrapper on mobile resolutions overlapping the sidebar @ichim-david
+- Fix UniversalLink handling of remote URLs from Link @nzambello
+
+### Internal
+
+- Upgrade to react 17.0.2 @nzambello
+- Update to latest `plone.restapi` (8.16.2) @sneridagh
+- Upgrade to `@plone/scripts` 1.0.3 @sneridagh
+- Upgrade caniuse-lite 1.0.30001286 @tiberiuichim
+- fix:correctly checkout plone.volto in buildout @nileshgulia1
+- Add line in upgrade guide about `getVocabulary` API change @tiberiuichim
+- Add new Volto websites in production @nzambello
+- Remove Pastanaga logos from Toolbar @sneridagh
+- Add `omelette` to the local Plone backend build @sneridagh
+- Optimize npm package by adding `docs/` `cypress/` and `tests/` to .npmignore @avoinea
+- Use released `@plone/scripts`, since the builds are broken if it's a local package @sneridagh
+- Use `plone.volto` instead of `kitconcept.volto` @tisto
+- Silence customization errors, they are now behind a `debug` library namespace @sneridagh
+- Add development dependency on `use-trace-update`, useful for performance debugging @tiberiuichim
+- Improved developer documentation. Proof read several chapters, most importantly the upgrade guide @ichim-david
+- Footer: Point to `plone.org` instead of `plone.com` @ericof
+- Fix `make start-frontend` @tisto
+- Update all the tests infrastructure for the new `volto-guillotina` addon @sneridagh
+- Add locales to existing block variations @sneridagh
+- Add RawMaterial website in Volto production sites @nzambello
+- Removing the hardcoded default block type from text block @iRohitSingh
+- updated Volto sites list @giuliaghisini
+- Cleanup dangling virtualenv files that should not be committed @pnicolli
+- Remove bundlesize @tisto
+- Upgrade stylelint to v14 (vscode-stylelint requires it now) @sneridagh
+- Add several more stories for Storybook @tiberiuichim
+- Add 2 new Volto websites by Eau de web for EEA @tiberiuichim
+- Fix references to old configuration style in apiExpanders documentation @tiberiuichim
+- Add `applySchemaDefaults`, in addition to `applyBlockDefaults`, to allow reuse in object widgets and other advanced scenarios @tiberiuichim
+- Fix select family widgets stories in storybook @sneridagh
+- Remove getNavigation from `Login.jsx` @iRohitSingh
+- Allow listing block to be used in non-content pages (when used in a slot it
+  shouldn't crash on add/edit pages) @tiberiuichim
+- Fix typo "toolbalWidth" @iRohitSingh
+- Update all requirements and the reasoning behind them in builds @sneridagh
+- Update Plone version in api backend to 5.2.6. Update README and cleanup @fredvd
+- Document CI changelog verifier failure details that mislead contributors @rpatterson
+
+## 14.0.0-alpha.43 (2021-12-20)
+
+### Breaking
+
+- Move `theme.js` import to top of the client code, so it take precedence over any other inline imported CSS. This is not an strict breaking change, but it's worth to mention it as might be important and kept in mind. @sneridagh
+
+### Feature
+
+- Add runtime configuration for `@babel/plugin-transform-react-jsx` set to `automatic`. This enables the new JSX runtime: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html So no longer `import React from 'react'` is needed anymore.
+- Update favicon and related tags with best practices @sneridagh
+
+### Bugfix
+
+- Fix z-index value of hamburger-wrapper on mobile resolutions overlapping the sidebar @ichim-david
+- Fix UniversalLink handling of remote URLs from Link @nzambello
+- Add missing `App.jsx` full paths @jimbiscuit
+
+### Internal
+
+- Upgrade to react 17.0.2 @nzambello
+- Upgrade caniuse-lite 1.0.30001286 @tiberiuichim
+- fix:correctly checkout plone.volto in buildout @nileshgulia1
+- Add line in upgrade guide about `getVocabulary` API change @tiberiuichim
+- Add new Volto websites in production @nzambello
+- Remove Pastanaga logos from Toolbar @sneridagh
+
+## 14.0.0-alpha.42 (2021-12-13)
+
+### Breaking
+
+- Removed pagination in vocabularies widgets (SelectWidget, ArrayWidget, TokenWidget) and introduced subrequest to vocabulary action. @giuliaghisini
+
+### Feature
+
+- Add autocomplete Widget component - It holds off the vocabulary endpoint pull until you search (more than 2 chars). Useful when dealing with huge vocabularies @sneridagh @reebalazs
+
+### Bugfix
+
+- Add missing layout view for document_view @MarcoCouto
+
+## 14.0.0-alpha.41 (2021-12-13)
+
+### Feature
+
+- Add catalan translation @bloodbare @sneridagh
+- Added `.storybook` setup in the Volto `app` generator. Volto projects
+  generated from this scafolding are now ready to run Storybook for the project
+  and develop addons (in `src/addons` folder).
+- Add new listing block option "fullobjects" per variation @ksuess
+- Style checkboxes @nileshgulia1
+- Allow loading .less files also from a Volto project's `src` folder. @tiberiuichim
+
+### Bugfix
+
+- Udate demo address @ksuess
+- Update list of trainings documentation @ksuess
+- Scroll to window top only when the location pathname changes, no longer take the window location search parameters into account. The search page and the listing block already use custom logic for their "scroll into view" behaviors. @tiberiuichim
+
+### Internal
+
+- Update to plone.restapi 8.16.2 (revert missing_value PR) @sneridagh
+- Update all requirements and the reasoning behind them in builds @sneridagh
+- Update Plone version in api backend to 5.2.6. Update README and cleanup @fredvd
+- Document CI changelog verifier failure details that mislead contributors @rpatterson
+- Updated italian translation @pnicolli
+
+## 14.0.0-alpha.40 (2021-12-01)
+
+### Bugfix
+
+- In search block, read SearchableText search param, to use it as search text input
+  @tiberiuichim
+- Fix missing translation in link content type @iRohitSingh
+- Fixed drag-and-drop list placeholder issues @reebalazs
+
+## 14.0.0-alpha.39 (2021-11-30)
+
+### Bugfix
+
+- QuerystringWidget more resilient on old schemas @nzambello
+
+## 14.0.0-alpha.38 (2021-11-30)
+
+### Bugfix
+
+- Use subrequest in hero block to not lost locking token. @cekk
+- Always add lang attr in html @nzambello
+- Fix time widget position on 24h format @nzambello
+
+### Internal
+
+- Remove getNavigation from Login.jsx @iRohitSingh
+- Allow listing block to be used in non-content pages (when used in a slot it
+  shouldn't crash on add/edit pages) @tiberiuichim
+- Fix typo "toolbalWidth" @iRohitSingh
+
+## 14.0.0-alpha.37 (2021-11-26)
+
+### Bugfix
+
+- Fixed object browser selected items number. @giuliaghisini
+- Fix action vocabularies call avoiding regex look behind @nzambello
+
+### Internal
+
+- Fix select family widgets stories in storybook @sneridagh
+
+## 14.0.0-alpha.36 (2021-11-25)
+
+### Bugfix
+
+- Fix regression in actions vocabularies calls because the change to use contextual schemas @sneridagh
+- Include block schema enhancers (main block schema enhancer + variation schema enhancer) when calculating block default data @tiberiuichim
+
+### Internal
+
+- Fix references to old configuration style in apiExpanders documentation @tiberiuichim
+- Add `applySchemaDefaults`, in addition to `applyBlockDefaults`, to allow reuse in object widgets and other advanced scenarios @tiberiuichim
+
+## 14.0.0-alpha.35 (2021-11-24)
+
+### Bugfix
+
+- Fix `isInternalURL` when `settings.internalApiPath` is empty @tiberiuichim
+- Fix external link not supported by Navigation component #2853. @ericof
+- Get Add/Edit schema contextually #2852 @ericof
+
+### Internal
+
+- Upgrade p.restapi to 8.15.2 @sneridagh
+
+## 14.0.0-alpha.34 (2021-11-20)
+
+### Feature
+
+- Apply form defaults from RenderBlocks and block Edit using a new helper, `applyBlockDefaults` @tiberiuichim
+- Now each block config object can declare a schema factory (a function that can produce a schema) and this will be used to derive the default data for the block @tiberiuichim
+
+## 14.0.0-alpha.33 (2021-11-20)
+
+### Bugfix
+
+- Fix downloadableObjects default value @giuliaghisini
+- Folder contents table header and breadcrumbs dropdown now appear only from the
+  bottom, fixing an issue where the breadcrumb dropdown content was clipped
+  by the header area @ichim-david
+- Folder contents sort dropdown is now also simple as the other dropdowns
+  ensuring we have the same behavior between adjecent dropdown @ichim-david
+- Fix documention on block extensions, replace `render` with `template` to match Listing block @tiberiuichim
+
+### Internal
+
+- Upgrade stylelint to v14 (vscode-stylelint requires it now) @sneridagh
+- Add several more stories for Storybook @tiberiuichim
+- Add 2 new Volto websites by Eau de web for EEA @tiberiuichim
+
+## 14.0.0-alpha.32 (2021-11-09)
+
+### Breaking
+
+- Listing block no longer use `fullobjects` to retrieve backend data. It uses the catalog data instead. @plone/volto-team
+
+### Internal
+
+- Remove bundlesize @tisto
+- Upgrade plone.restapi from 8.12.1 -> 8.13.0 @tisto
+
+## 14.0.0-alpha.31 (2021-11-07)
+
+### Feature
+
+- Added LinkMore component and link more in HeroImageLeft block. @giuliaghisini
+
+### Bugfix
+
+- Fix the selection of Maps Block @iRohitSingh
+- UniversalLink: handle direct download for content-type File if user is not logged. @giuliaghisini
+- Fixed ObjectBrowserWidget when is multiple or maximumSelectionSize is not set @giuliaghisini
+- Fix full-width image overlaps the drag handle @iRohitSingh
+- Fix move item to top of the folder when clicking on move to top action button @iRohitSingh
+
+### Internal
+
+- Removing the hardcoded default block type from text block @iRohitSingh
+- updated Volto sites list @giuliaghisini
+- Cleanup dangling virtualenv files that should not be committed @pnicolli
+- Improve italian translation @pnicolli
+
+## 14.0.0-alpha.30 (2021-11-07)
+
+### Feature
+
+- Support typescript usage in Volto sites @pnicolli
+
+## 14.0.0-alpha.29 (2021-11-06)
+
+### Bugfix
+
+- Fix reset pagination in searchblock when changing facet filters @tiberiuichim
+
+## 14.0.0-alpha.28 (2021-11-03)
+
+### Feature
+
+- Defaults are observed in block data if `InlineForm` or `BlockDataForm` are used. @sneridagh @tiberiuichim
+
+## 14.0.0-alpha.27 (2021-11-02)
+
+### Breaking
+
+- Use title instead of id as a source of translation in "Variation" field in block enhancers @sneridagh
+
+## 14.0.0-alpha.26 (2021-11-01)
+
+### Feature
+
+- Provide Server-Side Rendering capabilities for blocks with async-based content (such as the listing block). A block needs to provide its own `getAsyncData` implementation, which is similar to an `asyncConnect` wrapper promise. @tiberiuichim @sneridagh
+
+## 14.0.0-alpha.25 (2021-11-01)
+
+### Feature
+
+- FormFieldWrapper accepts now strings and elements for description @nzambello
+- Image block:
+  - When uploading an image or selecting that from the object browser, Image block will set an empty string as alternative text @nzambello
+  - Adds a description to the alt-tag with w3c explaination @nzambello
+
+### Bugfix
+
+- Fix disable mode of `QuerystringWidget` when all criteria are deleted @kreafox
+
+### Internal
+
+- Add RawMaterial website in Volto production sites @nzambello
+
+## 14.0.0-alpha.24 (2021-10-29)
+
+### Feature
+
+- Support Node 16 @timo
+
+### Bugfix
+
+- Prevent ua-parser-js security breach. See: https://github.com/advisories/GHSA-pjwm-rvh2-c87w @thet
+- Fix storybook errors in the connected components, api is undefined. Using now a mock of the store instead of the whole thing @sneridagh
+- CSS fix on `QueryWidget` to prevent line jumping for clear button when the multi selection widget has multiple items @kreafox
 
 ## 14.0.0-alpha.23 (2021-10-21)
 
@@ -55,7 +529,7 @@
 
 ### Breaking
 
-- Revisited, rethought and refactored Seamless mode Seamless mode @sneridagh
+- Revisited, rethought and refactored Seamless mode @sneridagh
   For more information, please read the deploying guide
   https://docs.voltocms.com/deploying/seamless-mode/
 
