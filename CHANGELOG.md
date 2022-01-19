@@ -256,6 +256,7 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 - Fix z-index value of hamburger-wrapper on mobile resolutions overlapping the sidebar @ichim-david
 - Fix UniversalLink handling of remote URLs from Link @nzambello
 - Add missing `App.jsx` full paths @jimbiscuit
+- Fixed url validation in FormValidation to admit ip addresses. @giuliaghisini
 
 ### Internal
 
