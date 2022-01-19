@@ -8,11 +8,16 @@ import Edit from './Edit';
 global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
 
 const mockStore = configureStore();
+const blockId = '1234';
+
 test('renders an edit hero block component', () => {
   const store = mockStore({
     content: {
       create: {},
       data: {},
+      subrequests: {
+        [blockId]: {},
+      },
     },
     intl: {
       locale: 'en',
@@ -24,7 +29,7 @@ test('renders an edit hero block component', () => {
       <Edit
         data={{ url: 'hero' }}
         selected={false}
-        block="1234"
+        block={blockId}
         content={{}}
         request={{
           loading: false,

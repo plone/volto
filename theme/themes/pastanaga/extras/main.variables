@@ -11,3 +11,8 @@
 /* Mobile Menu Nav Item */
 @mobileMenuNavItemJustifyContent: center;
 @mobileMenuNavItemLineHeight: 1.25;
+
+/* Checkbox */
+@checkboxBorderUnchecked: 1px solid #826a6a;
+@checkboxBorderChecked: 1px solid #007eb1;
+@checkboxColor: #007eb1;

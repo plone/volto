@@ -5,8 +5,6 @@
 [![NPM](https://img.shields.io/npm/v/@plone/volto.svg)](https://www.npmjs.com/package/@plone/volto)
 [![Build Status Core](https://github.com/plone/volto/actions/workflows/core.yml/badge.svg)](https://github.com/plone/volto/actions)
 [![Build Status Docs](https://github.com/plone/volto/actions/workflows/docs.yml/badge.svg)](https://github.com/plone/volto/actions)
-[![Dependencies](https://img.shields.io/david/plone/volto.svg)](https://github.com/plone/volto/blob/master/package.json)
-[![Dev Dependencies](https://img.shields.io/david/dev/plone/volto.svg)](https://github.com/plone/volto/blob/master/package.json)
 
 ## Introduction
 
@@ -14,7 +12,7 @@
 management systems, currently supporting three backend implementations: Plone,
 Guillotina and a NodeJS reference implementation.
 
-[Plone](https://plone.org) is a CMS built on Python with over 17 years of experience.
+[Plone](https://plone.org) is a CMS built on Python with over 20 years of history and experience.
 
 Plone has very interesting features that appeal to developers and users alike,
 such as customizable content types, hierarchical URL object traversing and a
@@ -36,7 +34,7 @@ through it.
 
 ## Demo
 
-You can try a Volto online demo in [https://volto.kitconcept.com](https://volto.kitconcept.com)
+You can try a Volto online demo in [https://6.demo.plone.org/](https://6.demo.plone.org/)
 
 ### Try the demo locally
 
@@ -57,7 +55,7 @@ First get all the requirements installed on your system.
 ### Prerequisites
 
 - [Node.js LTS (16.x)](https://nodejs.org/)
-- [Python 3.7.x / 2.7.x](https://python.org/) or
+- [Python 3.8.x](https://python.org/) or
 - [Docker](https://www.docker.com/get-started) (if using the Plone/Guillotina docker images)
 
 ### Create a Volto project using the generator
@@ -78,19 +76,40 @@ follow the prompts questions, provide `myvoltoproject` as project name then, whe
 
 We recommend Plone as backend of choice for Volto.
 
-You can bootstrap a ready Docker Plone container with all the dependencies and ready for Volto use:
+You can bootstrap a ready Docker Plone container with all the dependencies and ready for Volto use. We recommend to use the Plone docker builds based in `pip` [plone/plone-backend](https://github.com/plone/plone-backend) image:
 
 ```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.volto" -e ZCML="plone.volto.cors" -e PROFILES="plone.volto:default-homepage" plone
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.restapi==8.18.0 plone.app.iterate==4.0.2 plone.rest==2.0.0a1 plone.app.vocabularies==4.3.0 plone.volto==3.1.0a7" -e PROFILES="plone.volto:default-homepage" plone/plone-backend
 ```
 
 or as an alternative if you have experience with Plone and you have all the
-dependencies installed on your system, you can use the supplied buildout in the
+dependencies installed on your system, you can use the supplied convenience buildout in the
 `api` folder by issuing the command:
 
 ```shell
 make build-backend
 ```
+
+#### Recommended Plone version
+
+Volto is Plone 6 default UI, so it will work for all Plone 6 released versions.
+
+For the Plone 5 series latest released version (with Python 3) and above is recommended (at the time of writing 5.2.6).
+
+The following KGS (or above) are also recommended, for any Plone version used.
+
+#### KGS (known good versions) for backend packages
+
+Volto always works best with latest versions of the "Frontend stack" or at least the recommended ones (in parenthesis) which are:
+
+- plone.restapi (8.18.0)
+- plone.rest (2.0.0a1)
+- plone.volto (3.1.0a7)
+
+and the following core packages since some features require up to date versions:
+
+- plone.app.iterate (4.0.2)
+- plone.app.vocabularies (4.3.0)
 
 ### Start Volto
 
@@ -111,7 +130,7 @@ Volto is actively developed since 2017 and used in production since 2018 on the 
 - [Excellence at Humboldt-Universität zu Berlin](https://www.alles-beginnt-mit-einer-frage.de) (Website for the excellence initiative of the [Humboldt University Berlin](https://hu-berlin.de), developed by [kitconcept GmbH](https://kitconcept.com), 2019)
 - [Forest Information System for Europe](https://forest.eea.europa.eu) (Thematic website focusing on European forests, developed by [Eau de Web](https://www.eaudeweb.ro), 2019)
 - [Industrial Emissions portal for Europe](https://industry.eea.europa.eu) (Thematic website focusing on European industrial emissions, developed by [Eau de Web](https://www.eaudeweb.ro), 2020)
-- [Energy Climate Union portal for Europe](https://demo-energy-union.eea.europa.eu) (Thematic website focusing on European strides towards mitigating climate change, developed by [Eau de Web](https://www.eaudeweb.ro), 2020)
+- [Energy Climate Union portal for Europe](https://climate-energy.eea.europa.eu/) (Thematic website focusing on European strides towards mitigating climate change, developed by [Eau de Web](https://www.eaudeweb.ro), 2020)
 - [Talke Carrer Website](https://karriere.talke.com/) (Carrer website for [Talke](https://www.talke.com), one of the leading a chemical and petrochemical logistics companies in Germany, developed by [kitconcept GmbH](https://kitconcept.com), 2020)
 - [Stradanove](http://www.stradanove.it/) (Website of the Department of Youth Policies of the Municipality of Modena, developed by [RedTurtle](https://redturtle.it), 2020)
 - [VisitModena](https://www.visitmodena.it/) (Tourist website of the Municipality of Modena, developed by [RedTurtle](https://redturtle.it), 2020)
@@ -140,17 +159,30 @@ Volto is actively developed since 2017 and used in production since 2018 on the 
 - [RawMaterial](https://rawmaterial.it/en) (Company's website. Developed by [RawMaterial](https://rawmaterial.it/en), 2021)
 - [WISE-Freshwater](https://water.europa.eu/freshwater) (WISE-Freshwater, the Freshwater Information System for Europe. Developed by [Eau de web](https://eaudeweb.ro) for the European Environmental Agency, 2021)
 - [EEA-IMSv4](https://www.eea.europa.eu/ims) (EEA Indicator Management System v4. Developed by [Eau de web](https://eaudeweb.ro) for the European Environmental Agency, 2021)
+- [Memori](https://memori.ai/en) (Corporate website for Memori, startup specialising in technologies applied to the experience of memory through the development of Artificial Intelligences. Developed by [RawMaterial](https://rawmaterial.it/en), 2021)
+- [TwinCreator](https://twincreator.com/en) (TwinCreator allows you to design and train multiple AI’s through simple conversation through NLP. Developed by [RawMaterial](https://rawmaterial.it/en), 2021)
 
 Please create a new [issue](https://github.com/plone/volto/issues/new) or [pull request](https://github.com/plone/volto/pulls) to add your Volto-site here!
 
 ## Documentation
 
-You can find the (beta) documentation in [http://docs.voltocms.com](http://docs.voltocms.com)
+You can find the documentation in [https://docs.voltocms.com](https://docs.voltocms.com)
 
 ## Training
 
-A detailed training on how to create your own website using Volto is available
-as part of the Plone training docs at [https://training.plone.org/5/volto/index.html](https://training.plone.org/5/volto/index.html).
+On the [Plone Trainings Website](https://training.plone.org) you'll find
+Volto-dedicated open training materials, plus React and other
+JavaScript-centered trainings.
+
+- [Mastering Plone 6 Development](https://training.plone.org/5/mastering-plone/)
+  The comprehensive training on Plone 6 with best practice tips for developers and integrators.
+- [Volto](https://training.plone.org/5/volto/index.html)
+  A detailed training on how to create your own website using Volto frontend.
+- [Volto Hands-On](https://training.plone.org/5/voltohandson/index.html)
+- [Volto Add-ons Development](https://training.plone.org/5/voltoaddons/index.html)
+- [Plone Deployment](https://training.plone.org/5/plone-deployment/index.html)
+- [React](https://training.plone.org/5/react/index.html)
+- [JavaScript For Plone Developers](https://training.plone.org/5/javascript/index.html)
 
 ## Talks
 
