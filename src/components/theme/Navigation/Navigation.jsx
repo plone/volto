@@ -124,7 +124,7 @@ class Navigation extends Component {
    */
   render() {
     return (
-      <nav className="navigation" id="navigation">
+      <nav className="navigation" id="navigation" aria-label="navigation">
         <div className="hamburger-wrapper mobile tablet only">
           <button
             className={cx('hamburger hamburger--spin', {

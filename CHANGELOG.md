@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+-Fix A11Y violations in Navigation @iRohitSingh
+
 ### Internal
 
 ## 14.2.2 (2022-01-13)
