@@ -8,6 +8,9 @@
 
 ### Bugfix
 
+- Fix overflow table in Content view @giuliaghisini
+- Fixed url validation in FormValidation to admit ip addresses. @giuliaghisini
+
 ### Internal
 
 ## 14.2.2 (2022-01-13)
@@ -256,7 +259,6 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 - Fix z-index value of hamburger-wrapper on mobile resolutions overlapping the sidebar @ichim-david
 - Fix UniversalLink handling of remote URLs from Link @nzambello
 - Add missing `App.jsx` full paths @jimbiscuit
-- Fixed url validation in FormValidation to admit ip addresses. @giuliaghisini
 
 ### Internal
 
@@ -383,10 +385,6 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 
 ### Bugfix
 
-- Prevent form submit when clicking on BlockChooserButton @giuliaghisini
-- Fix overflow table in Content view @giuliaghisini
-- Prevent ua-parser-js security breach. See: https://github.com/advisories/GHSA-pjwm-rvh2-c87w @thet
-- Fix storybook errors in the connected components, api is undefined. Using now a mock of the store instead of the whole thing @sneridagh
 - Fix downloadableObjects default value @giuliaghisini
 - Folder contents table header and breadcrumbs dropdown now appear only from the
   bottom, fixing an issue where the breadcrumb dropdown content was clipped
