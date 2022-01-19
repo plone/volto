@@ -5,17 +5,18 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Editor from 'draft-js-plugins-editor';
-import { convertFromRaw, convertToRaw, EditorState, RichUtils } from 'draft-js';
-import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
+import { compose } from 'redux';
 
-import isSoftNewlineEvent from 'draft-js/lib/isSoftNewlineEvent';
 import { defineMessages, injectIntl } from 'react-intl';
 import { includes, isEqual } from 'lodash';
-import { filterEditorState } from 'draftjs-filters';
 import config from '@plone/volto/registry';
 
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { BlockChooserButton } from '@plone/volto/components';
+
+import loadable from '@loadable/component';
+
+const Editor = loadable(() => import('draft-js-plugins-editor'));
 
 const messages = defineMessages({
   text: {
@@ -29,7 +30,7 @@ const messages = defineMessages({
  * @class Edit
  * @extends Component
  */
-class Edit extends Component {
+export class EditComponent extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -76,6 +77,8 @@ class Edit extends Component {
    */
   constructor(props) {
     super(props);
+    const { EditorState, convertFromRaw } = props.draftJs;
+    const createInlineToolbarPlugin = props.draftJsInlineToolbarPlugin.default;
 
     if (!__SERVER__) {
       let editorState;
@@ -128,6 +131,7 @@ class Edit extends Component {
         //nothing is selected, move focus to end
         // See https://github.com/draft-js-plugins/draft-js-plugins/issues/800
         setTimeout(this.node.focus, 0);
+        const { EditorState } = this.props.draftJs;
 
         this.setState({
           editorState: EditorState.moveFocusToEnd(this.state.editorState),
@@ -137,6 +141,7 @@ class Edit extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    const { convertToRaw, EditorState, convertFromRaw } = this.props.draftJs;
     if (
       !isEqual(this.props.data, prevProps.data) &&
       !isEqual(
@@ -178,6 +183,9 @@ class Edit extends Component {
   onChange(editorState) {
     const shouldFilterPaste =
       editorState.getLastChangeType() === 'insert-fragment';
+
+    const { convertToRaw } = this.props.draftJs;
+    const { filterEditorState } = this.props.draftJsFilters;
 
     if (
       !isEqual(
@@ -230,6 +238,9 @@ class Edit extends Component {
       this.props.data?.disableNewBlocks || this.props.detached;
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
     const { settings } = config;
+
+    const isSoftNewlineEvent = this.props.draftJsLibIsSoftNewlineEvent.default;
+    const { RichUtils } = this.props.draftJs;
 
     return (
       <>
@@ -329,4 +340,22 @@ class Edit extends Component {
   }
 }
 
-export default injectIntl(Edit);
+export const Edit = compose(
+  injectIntl,
+  injectLazyLibs([
+    'draftJs',
+    'draftJsLibIsSoftNewlineEvent',
+    'draftJsFilters',
+    'draftJsInlineToolbarPlugin',
+  ]),
+)(EditComponent);
+
+const Preloader = (props) => {
+  const [loaded, setLoaded] = React.useState(false);
+  React.useEffect(() => {
+    Editor.load().then(() => setLoaded(true));
+  }, []);
+  return loaded ? <Edit {...props} /> : null;
+};
+
+export default Preloader;

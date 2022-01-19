@@ -29,4 +29,14 @@ export const loadables = {
   diffLib: loadable.lib(() => import('diff')),
   moment: loadable.lib(() => import('moment')),
   reactDates: loadable.lib(() => import('react-dates')),
+
+  // draftjs libs
+  draftJs: loadable.lib(() => import('draft-js')),
+  draftJsLibIsSoftNewlineEvent: loadable.lib(() =>
+    import('draft-js/lib/isSoftNewlineEvent'),
+  ),
+  draftJsFilters: loadable.lib(() => import('draftjs-filters')),
+  draftJsInlineToolbarPlugin: loadable.lib(() =>
+    import('draft-js-inline-toolbar-plugin'),
+  ),
 };
