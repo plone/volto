@@ -95,6 +95,7 @@ export const UrlWidget = (props) => {
           minLength={minLength || null}
           maxLength={maxLength || null}
           error={isInvalid}
+          placeholder={props.placeholder}
         />
         {value?.length > 0 ? (
           <Button.Group>
@@ -154,6 +155,7 @@ UrlWidget.propTypes = {
   minLength: PropTypes.number,
   maxLength: PropTypes.number,
   openObjectBrowser: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
 };
 
 /**

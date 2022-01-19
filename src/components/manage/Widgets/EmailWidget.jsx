@@ -39,6 +39,7 @@ const EmailWidget = (props) => {
         onClick={() => onClick()}
         minLength={minLength || null}
         maxLength={maxLength || null}
+        placeholder={props.placeholder}
       />
     </FormFieldWrapper>
   );
@@ -61,6 +62,7 @@ EmailWidget.propTypes = {
   onClick: PropTypes.func,
   minLength: PropTypes.number,
   maxLength: PropTypes.number,
+  placeholder: PropTypes.string,
 };
 
 /**
