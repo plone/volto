@@ -1,6 +1,7 @@
 # Backend configuration
 
 ## plone.volto
+
 In order to fully support all Volto features, the Plone backend, needs to be prepared for
 Volto. This involves configuration, add-ons installation and some patches to the core.
 The add'on `plone.volto` does all the heavy lifting for you and it's ready to use

@@ -72,6 +72,34 @@ const middleware = (config.settings.expressMiddleware || []).filter((m) => m);
 server.all('*', setupServer);
 if (middleware.length) server.use('/', middleware);
 
+server.use(function (err, req, res, next) {
+  if (err) {
+    const { store } = req.app.locals;
+    const errorPage = (
+      <Provider store={store} onError={reactIntlErrorHandler}>
+        <StaticRouter context={{}} location={req.url}>
+          <ErrorPage message={err.message} />
+        </StaticRouter>
+      </Provider>
+    );
+
+    res.set({
+      'Cache-Control': 'public, max-age=60, no-transform',
+    });
+
+    /* Displays error in console
+     * TODO:
+     * - get ignored codes from Plone error_log
+     */
+    const ignoredErrors = [301, 302, 401, 404];
+    if (!ignoredErrors.includes(err.status)) console.error(err);
+
+    res
+      .status(err.status || 500) // If error happens in Volto code itself error status is undefined
+      .send(`<!doctype html> ${renderToString(errorPage)}`);
+  }
+});
+
 function setupServer(req, res, next) {
   const api = new Api(req);
 
