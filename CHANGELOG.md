@@ -2,16 +2,10 @@
 
 ## 14.2.3 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fix overflow table in Content view @giuliaghisini
 - Fixed url validation in FormValidation to admit ip addresses. @giuliaghisini
-
-### Internal
 
 ## 14.2.2 (2022-01-13)
 
