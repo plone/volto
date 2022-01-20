@@ -1,6 +1,6 @@
 # Change Log
 
-## 14.2.3 (unreleased)
+## 14.2.3 (2022-01-20)
 
 ### Bugfix
 
