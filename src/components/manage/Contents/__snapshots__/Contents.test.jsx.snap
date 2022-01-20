@@ -978,38 +978,22 @@ exports[`Contents renders a folder contents view component 1`] = `
                   <tr
                     className=""
                   >
-                    <div
-                      aria-expanded={false}
-                      aria-label="sort"
-                      className="ui item dropdown sort-icon"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onClick={[Function]}
-                      onFocus={[Function]}
-                      onKeyDown={[Function]}
-                      onMouseDown={[Function]}
-                      role="listbox"
-                      tabIndex={0}
+                    <th
+                      className=""
                     >
-                      <svg
-                        className="icon configuration-svg"
-                        dangerouslySetInnerHTML={
-                          Object {
-                            "__html": undefined,
-                          }
-                        }
+                      <div
+                        aria-expanded={false}
+                        aria-label="sort"
+                        className="ui item dropdown sort-icon"
+                        onBlur={[Function]}
+                        onChange={[Function]}
                         onClick={[Function]}
                         onFocus={[Function]}
+                        onKeyDown={[Function]}
                         onMouseDown={[Function]}
                         role="listbox"
                         tabIndex={0}
                       >
-                        <div
-                          aria-atomic={true}
-                          aria-live="polite"
-                          className="text"
-                          role="alert"
-                        />
                         <svg
                           className="icon configuration-svg"
                           dangerouslySetInnerHTML={
@@ -1524,22 +1508,9 @@ exports[`Contents renders a folder contents view component 1`] = `
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </th>
-                  <th
-                    className=""
-                  >
-                    <div
-                      aria-expanded={false}
-                      className="ui dropdown"
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onClick={[Function]}
-                      onFocus={[Function]}
-                      onKeyDown={[Function]}
-                      onMouseDown={[Function]}
-                      role="listbox"
-                      tabIndex={0}
+                    </th>
+                    <th
+                      className=""
                     >
                       <div
                         aria-expanded={false}
@@ -1548,6 +1519,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                         onChange={[Function]}
                         onClick={[Function]}
                         onFocus={[Function]}
+                        onKeyDown={[Function]}
                         onMouseDown={[Function]}
                         role="listbox"
                         tabIndex={0}
