@@ -20,6 +20,7 @@
 
 ### Bugfix
 
+- Fix ListingBlock to add "No results" message when there are no messages @erral
 - Fix overflow table in Content view @giuliaghisini
 - Fixed url validation in FormValidation to admit ip addresses. @giuliaghisini
 
