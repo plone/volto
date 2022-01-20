@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Language independent fields support in Volto forms @sneridagh
+
 ### Bugfix
 
 ### Internal
@@ -22,6 +24,7 @@
 
 - Fix overflow table in Content view @giuliaghisini
 - Fixed url validation in FormValidation to admit ip addresses. @giuliaghisini
+- Upgrade to plone.restapi 8.19.0 (to support the language independent fields serialization) @sneridagh
 
 ## 14.2.2 (2022-01-13)
 
