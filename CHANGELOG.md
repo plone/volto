@@ -2,15 +2,9 @@
 
 ## 14.3.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Language independent fields support in Volto forms @sneridagh
-
-### Bugfix
-
-### Internal
 
 ## 14.3.0 (2022-01-20)
 
