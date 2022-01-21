@@ -28,13 +28,6 @@ exports[`renders a dictionary widget component 1`] = `
         className="eight wide column"
       >
         <div
-          className="ui basic segment"
-        >
-          <h3>
-            My Vocabulary
-          </h3>
-        </div>
-        <div
           className="add-item-button-wrapper"
         >
           <button

@@ -88,7 +88,7 @@ import { findIndex, remove } from 'lodash';
 import { defineMessages, useIntl } from 'react-intl';
 import { v4 as uuid } from 'uuid';
 
-import { Button, Segment } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 
 import {
   DragDropList,
@@ -218,9 +218,6 @@ const VocabularyTermsWidget = (props) => {
 
   return (
     <FormFieldWrapper {...props} className="dictwidget">
-      <Segment basic>
-        <h3>{props.title}</h3>
-      </Segment>
       <div className="add-item-button-wrapper">
         <Button
           aria-label={intl.formatMessage(messages.termtitle)}

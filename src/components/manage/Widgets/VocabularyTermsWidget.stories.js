@@ -35,22 +35,6 @@ export const JSONField = WidgetStory.bind({
   },
 });
 
-export const Simple = WidgetStory.bind({
-  props: { id: 'simplevocabulary', title: 'Vocabulary terms' },
-  widget: VocabularyTermsWidget,
-  customStore: {
-    userSession: { token: '1234' },
-    intl: {
-      locale: 'en',
-      messages: {},
-    },
-  },
-  initialValue: {
-    '001': 'manual',
-    '002': 'questions & answers',
-  },
-});
-
 export default {
   title: 'Widgets/Vocabulary',
   component: VocabularyTermsWidget,
