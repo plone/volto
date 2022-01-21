@@ -6,7 +6,6 @@ import { useIntl, defineMessages } from 'react-intl';
 import { Icon } from '@plone/volto/components';
 import AnimateHeight from 'react-animate-height';
 import config from '@plone/volto/registry';
-
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
 import BlockChooserSearch from './BlockChooserSearch';
@@ -90,7 +89,31 @@ const BlockChooser = ({
         ),
     );
   }
-
+  const ButtonGroup = ({ block }) => (
+    <Button.Group key={block.id}>
+      <Button
+        icon
+        basic
+        className={block.id}
+        onClick={(e) => {
+          onInsertBlock
+            ? onInsertBlock(currentBlock, {
+                '@type': block.id,
+              })
+            : onMutateBlock(currentBlock, {
+                '@type': block.id,
+              });
+          e.stopPropagation();
+        }}
+      >
+        <Icon name={block.icon} size="36px" />
+        {intl.formatMessage({
+          id: block.title,
+          defaultMessage: block.title,
+        })}
+      </Button>
+    </Button.Group>
+  );
   return (
     <div className="blocks-chooser" ref={blockChooserRef}>
       <BlockChooserSearch
@@ -99,30 +122,8 @@ const BlockChooser = ({
       />
       {filterValue ? (
         <>
-          {map(blocksAvailableFilter(filteredBlocksConfig), (block, index) => (
-            <Button.Group key={block.id}>
-              <Button
-                icon
-                basic
-                className={block.id}
-                onClick={(e) => {
-                  onInsertBlock
-                    ? onInsertBlock(currentBlock, {
-                        '@type': block.id,
-                      })
-                    : onMutateBlock(currentBlock, {
-                        '@type': block.id,
-                      });
-                  e.stopPropagation();
-                }}
-              >
-                <Icon name={block.icon} size="36px" />
-                {intl.formatMessage({
-                  id: block.title,
-                  defaultMessage: block.title,
-                })}
-              </Button>
-            </Button.Group>
+          {map(blocksAvailableFilter(filteredBlocksConfig), (block) => (
+            <ButtonGroup block={block} key={block.id} />
           ))}
           {blocksAvailableFilter(filteredBlocksConfig).length === 0 && (
             <h4 style={{ textAlign: 'center', lineHeight: '40px' }}>
@@ -173,27 +174,7 @@ const BlockChooser = ({
                   height={activeIndex === index ? 'auto' : 0}
                 >
                   {map(blocksAvailable[groupName.id], (block) => (
-                    <Button.Group key={block.id}>
-                      <Button
-                        icon
-                        basic
-                        className={block.id}
-                        onClick={(e) => {
-                          onInsertBlock
-                            ? onInsertBlock(currentBlock, { '@type': block.id })
-                            : onMutateBlock(currentBlock, {
-                                '@type': block.id,
-                              });
-                          e.stopPropagation();
-                        }}
-                      >
-                        <Icon name={block.icon} size="36px" />
-                        {intl.formatMessage({
-                          id: block.title,
-                          defaultMessage: block.title,
-                        })}
-                      </Button>
-                    </Button.Group>
+                    <ButtonGroup block={block} key={block.id} />
                   ))}
                 </AnimateHeight>
               </Accordion.Content>
