@@ -5,6 +5,30 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
   <div
     class="blocks-chooser"
   >
+    <form
+      class="ui form"
+      style="padding: 0.5em;"
+    >
+      <div
+        class="field searchbox"
+        style="border-left: 0; height: 2em; padding: 0px;"
+      >
+        <div
+          class="ui transparent input"
+        >
+          <input
+            aria-label="Search"
+            autocomplete="off"
+            name="SearchableText"
+            placeholder="Search"
+            title="Search"
+            type="text"
+            value=""
+          />
+        </div>
+        
+      </div>
+    </form>
     <div
       class="accordion ui fluid styled form"
     >
@@ -307,6 +331,30 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
   <div
     class="blocks-chooser"
   >
+    <form
+      class="ui form"
+      style="padding: 0.5em;"
+    >
+      <div
+        class="field searchbox"
+        style="border-left: 0; height: 2em; padding: 0px;"
+      >
+        <div
+          class="ui transparent input"
+        >
+          <input
+            aria-label="Search"
+            autocomplete="off"
+            name="SearchableText"
+            placeholder="Search"
+            title="Search"
+            type="text"
+            value=""
+          />
+        </div>
+        
+      </div>
+    </form>
     <div
       class="accordion ui fluid styled form"
     >
