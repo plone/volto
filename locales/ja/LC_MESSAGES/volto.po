@@ -1680,6 +1680,7 @@ msgstr "未設定"
 msgid "No options"
 msgstr "選択肢無し"
 
+#: components/manage/BlockChooser/BlockChooser
 #: components/theme/Search/Search
 # defaultMessage: No results found
 msgid "No results found"
@@ -2167,6 +2168,7 @@ msgstr "スキーマ"
 msgid "Schema updates"
 msgstr "スキーマの更新"
 
+#: components/manage/BlockChooser/BlockChooserSearch
 #: components/manage/Blocks/Search/components/SearchInput
 #: components/manage/Blocks/Search/layout/LeftColumnFacets
 #: components/manage/Blocks/Search/layout/RightColumnFacets

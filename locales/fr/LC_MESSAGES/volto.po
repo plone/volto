@@ -1689,6 +1689,7 @@ msgstr ""
 msgid "No options"
 msgstr ""
 
+#: components/manage/BlockChooser/BlockChooser
 #: components/theme/Search/Search
 # defaultMessage: No results found
 msgid "No results found"
@@ -2176,6 +2177,7 @@ msgstr ""
 msgid "Schema updates"
 msgstr ""
 
+#: components/manage/BlockChooser/BlockChooserSearch
 #: components/manage/Blocks/Search/components/SearchInput
 #: components/manage/Blocks/Search/layout/LeftColumnFacets
 #: components/manage/Blocks/Search/layout/RightColumnFacets
