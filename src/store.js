@@ -8,10 +8,18 @@ import config from '@plone/volto/registry';
 import reducers from '~/reducers';
 
 import { api, crashReporter, blacklistRoutes } from '@plone/volto/middleware';
+import {
+  optimizeProvidersFetch,
+  precacheContentStart,
+  precacheContentEnd,
+  prefetch,
+} from './storePrefetchUtils';
 
 const configureStore = (initialState, history, apiHelper) => {
   let stack = [
     blacklistRoutes,
+    optimizeProvidersFetch,
+    precacheContentStart,
     routerMiddleware(history),
     crashReporter,
     thunk,
@@ -19,6 +27,7 @@ const configureStore = (initialState, history, apiHelper) => {
     ...(__CLIENT__
       ? [save({ states: config.settings.persistentReducers, debounce: 500 })]
       : []),
+    precacheContentEnd,
   ];
   stack = config.settings.storeExtenders.reduce(
     (acc, extender) => extender(acc),
@@ -30,6 +39,7 @@ const configureStore = (initialState, history, apiHelper) => {
       router: connectRouter(history),
       ...reducers,
       ...config.addonReducers,
+      prefetch,
     }),
     {
       ...initialState,
