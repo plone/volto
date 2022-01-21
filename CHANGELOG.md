@@ -516,6 +516,7 @@
 ### Feature
 
 - Show addons installed in control panel @sneridagh
+- Added a search input in the block chooser @bipoza
 
 ### Bugfix
 
