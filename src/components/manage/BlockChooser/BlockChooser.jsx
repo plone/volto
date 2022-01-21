@@ -9,7 +9,7 @@ import config from '@plone/volto/registry';
 
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
-import BlockChooserSearch from './BlockChooserSearch.jsx';
+import BlockChooserSearch from './BlockChooserSearch';
 import { FormattedMessage } from 'react-intl';
 
 const messages = defineMessages({
@@ -93,7 +93,10 @@ const BlockChooser = ({
 
   return (
     <div className="blocks-chooser" ref={blockChooserRef}>
-      <BlockChooserSearch onChange={(value) => setFilterValue(value)} />
+      <BlockChooserSearch
+        onChange={(value) => setFilterValue(value)}
+        searchValue={filterValue}
+      />
       {filterValue ? (
         <>
           {map(blocksAvailableFilter(filteredBlocksConfig), (block, index) => (
