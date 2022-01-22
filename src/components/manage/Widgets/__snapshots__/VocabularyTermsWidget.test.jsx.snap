@@ -2,7 +2,7 @@
 
 exports[`renders a dictionary widget component 1`] = `
 <div
-  className="inline field dictwidget field-wrapper-test-dict"
+  className="inline field vocabularytermswidget dictwidget field-wrapper-test-dict"
 >
   <div
     className="ui grid"

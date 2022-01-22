@@ -84,7 +84,7 @@ def TalkTypesVocabulary(context):
 
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { findIndex, remove } from 'lodash';
+import { find, findIndex, remove } from 'lodash';
 import { defineMessages, useIntl } from 'react-intl';
 import { v4 as uuid } from 'uuid';
 
@@ -134,6 +134,7 @@ const VocabularyTermsWidget = (props) => {
   var widgetvalue = value;
   const dispatch = useDispatch();
   const [toFocusId, setToFocusId] = React.useState('');
+  const [editableToken, setEditableToken] = React.useState('');
   const intl = useIntl();
 
   React.useEffect(() => {
@@ -206,6 +207,7 @@ const VocabularyTermsWidget = (props) => {
       items: newitems,
     });
     setToFocusId(`field-${supportedLanguages[0]}-0-${id}-${newtoken}`);
+    setEditableToken(newtoken);
   }
 
   function swap(arr, from, to) {
@@ -217,7 +219,7 @@ const VocabularyTermsWidget = (props) => {
   });
 
   return (
-    <FormFieldWrapper {...props} className="dictwidget">
+    <FormFieldWrapper {...props} className="vocabularytermswidget dictwidget">
       <div className="add-item-button-wrapper">
         <Button
           aria-label={intl.formatMessage(messages.termtitle)}
@@ -265,7 +267,7 @@ const VocabularyTermsWidget = (props) => {
               schema={TermSchema}
               title="Translation of term"
             />,
-            termProps,
+            { editableToken, setEditableToken, ...termProps },
           );
         }}
       </DragDropList>
@@ -284,6 +286,33 @@ const TermsWrapper = (props) => {
   const { termProps, draginfo, children } = props;
   const { id, vocabularyterms, vterm, onChange } = termProps;
 
+  const _updateTermsWithNewToken = (term, newtoken) => {
+    let newitems = termProps.vocabularyterms;
+    let index = findIndex(newitems, { token: term.token });
+    newitems.splice(index, 1, {
+      token: newtoken,
+      titles: newitems[index].titles,
+    });
+    onChange(id, {
+      items: newitems,
+    });
+  };
+
+  function onChangeTokenHandler(event) {
+    let value = event.target.value;
+    // required token length: 3
+    if (value.length > 2) {
+      // check if value is different from already used tokens
+      if (find(termProps.vocabularyterms, (el) => el.token === value)) {
+        // token already token. Stay with uuid.
+      } else {
+        // `token '${value}' is OK`
+        _updateTermsWithNewToken(vterm, value);
+        termProps.setEditableToken('');
+      }
+    }
+  }
+
   return (
     <div
       ref={draginfo.innerRef}
@@ -296,6 +325,14 @@ const TermsWrapper = (props) => {
         </div>
         <div className="ui drag block inner">{children}</div>
         <div>
+          {vterm.token === termProps.editableToken ? (
+            <input
+              id={`token-${vterm.token}`}
+              title="Token"
+              placeholder="token"
+              onBlur={onChangeTokenHandler}
+            />
+          ) : null}
           <Button
             icon
             basic
