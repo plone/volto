@@ -29,5 +29,7 @@ export const loadables = {
   diffLib: loadable.lib(() => import('diff')),
   moment: loadable.lib(() => import('moment')),
   reactDates: loadable.lib(() => import('react-dates')),
+  reactDnd: loadable.lib(() => import('react-dnd')),
+  reactDndHtml5Backend: loadable.lib(() => import('react-dnd-html5-backend')),
   reactBeautifulDnd: loadable.lib(() => import('react-beautiful-dnd')),
 };

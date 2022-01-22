@@ -12,6 +12,8 @@
 
 - Lazyload react-beautiful-dnd @tiberiuichim
 
+- Lazyload react-dnd @tiberiuichim
+
 ## 14.4.0 (2022-01-21)
 
 ### Feature

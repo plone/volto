@@ -33,8 +33,6 @@ import {
   pull,
 } from 'lodash';
 import move from 'lodash-move';
-import { DragDropContext } from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { asyncConnect } from '@plone/volto/helpers';
 
@@ -1780,9 +1778,21 @@ class Contents extends Component {
   }
 }
 
+const DragDropConnector = (props) => {
+  const { DragDropContext } = props.reactDnd;
+  const HTML5Backend = props.reactDndHtml5Backend.default;
+
+  const DndConnectedContents = React.useMemo(
+    () => DragDropContext(HTML5Backend)(Contents),
+    [DragDropContext, HTML5Backend],
+  );
+
+  return <DndConnectedContents {...props} />;
+};
+
 export const __test__ = compose(
   injectIntl,
-  injectLazyLibs(['toastify']),
+  injectLazyLibs(['toastify', 'reactDnd']),
   connect(
     (store, props) => {
       return {
@@ -1822,7 +1832,6 @@ export const __test__ = compose(
 )(Contents);
 
 export default compose(
-  DragDropContext(HTML5Backend),
   injectIntl,
   connect(
     (store, props) => {
@@ -1869,5 +1878,5 @@ export default compose(
         await dispatch(listActions(getBaseUrl(location.pathname))),
     },
   ]),
-  injectLazyLibs(['toastify']),
-)(Contents);
+  injectLazyLibs(['toastify', 'reactDnd', 'reactDndHtml5Backend']),
+)(DragDropConnector);
