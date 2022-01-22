@@ -1,6 +1,6 @@
 # Change Log
 
-## 14.2.3 (unreleased)
+## 14.4.1 (unreleased)
 
 ### Breaking
 
@@ -11,6 +11,26 @@
 ### Internal
 
 - Lazyload react-beautiful-dnd @tiberiuichim
+
+## 14.4.0 (2022-01-21)
+
+### Feature
+
+- Language independent fields support in Volto forms @sneridagh
+
+## 14.3.0 (2022-01-20)
+
+### Feature
+
+- Bump semantic-ui-react to v2.0.3 @nileshgulia1
+
+## 14.2.3 (2022-01-20)
+
+### Bugfix
+
+- Fix overflow table in Content view @giuliaghisini
+- Fixed url validation in FormValidation to admit ip addresses. @giuliaghisini
+- Upgrade to plone.restapi 8.19.0 (to support the language independent fields serialization) @sneridagh
 
 ## 14.2.2 (2022-01-13)
 
