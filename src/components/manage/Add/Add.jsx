@@ -31,6 +31,7 @@ import {
   flattenToAppURL,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
+  getLanguageIndependentFields,
   langmap,
   normalizeLanguageName,
 } from '@plone/volto/helpers';
@@ -295,6 +296,16 @@ class Add extends Component {
         });
       }
 
+      const lifData = () => {
+        const data = {};
+        if (translationObject) {
+          getLanguageIndependentFields(this.props.schema).forEach(
+            (lif) => (data[lif] = translationObject[lif]),
+          );
+        }
+        return data;
+      };
+
       const pageAdd = (
         <div id="page-add">
           <Helmet
@@ -321,6 +332,9 @@ class Add extends Component {
                       ?.items,
                 },
               }),
+              // Copy the Language Independent Fields values from the to-be translated content
+              // into the default values of the translated content Add form.
+              ...lifData(),
             }}
             requestError={this.state.error}
             onSubmit={this.onSubmit}
