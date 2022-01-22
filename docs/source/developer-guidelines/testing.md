@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Testing
 
 We use Jest for unit testing in Volto. The popular `@testing-library/react` is also

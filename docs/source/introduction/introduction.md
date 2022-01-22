@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Introduction to Volto
 
 Volto is a React-based frontend for content management systems (CMS), currently

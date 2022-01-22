@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Accessibility guidelines
 
 Attention points to improve and maintain accessibility. In documentation, code and filenames you will often see this abbreviated as "a11y".

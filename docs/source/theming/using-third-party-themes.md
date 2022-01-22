@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Using third party libraries/themes different from semantic-ui
 
 You can use Volto with third party libraries or themes written in sass and avoid applying semantic-ui on public facing views.

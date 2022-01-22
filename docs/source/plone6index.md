@@ -39,6 +39,18 @@ project and start hacking!
 :hidden: true
 
 getting-started/index
+design-principles/index
+style-guide/index
+configuration/index
+theming/index
+recipes/index
+blocks/index
+addons/index
+backend/index
+deploying/index
+upgrade-guide/index
+developer-guidelines/index
+contributing/index
 ```
 
 <!--

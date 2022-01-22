@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Blocks - Edit components
 
 The edit component part of a block anatomy is specially different to the view component because they have to support the UX for editing the block.

@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Simple deployment
 
 Volto is a Node application that runs on your machine/server and listens to a port. Once you are ready to deploy it, you should build it running:

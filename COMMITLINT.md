@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Volto Commit Messages
 
 Volto uses the (conventional commit specification)[https://www.conventionalcommits.org/en/v1.0.0/#specification] for consistent commit messages.

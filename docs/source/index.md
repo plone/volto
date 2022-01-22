@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Welcome to Volto's developer documentation!
 
 Volto is a React-based frontend for the [Plone CMS](https://plone.org). It will

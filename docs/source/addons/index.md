@@ -1,4 +1,21 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Volto addons
+
+```{toctree}
+:maxdepth: 3
+:hidden: true
+
+./i18n
+./best-practices
+
+```
 
 There are several advanced scenarios where we might want to have more control
 and flexibility beyond using the plain Volto project to build a site.

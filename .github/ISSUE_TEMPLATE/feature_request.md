@@ -1,4 +1,12 @@
 ---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
+---
 name: Feature request
 about: Suggest an idea for Volto
 title: ''

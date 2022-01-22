@@ -6,7 +6,7 @@ html_meta:
   "keywords": ""
 ---
 
-# Getting started
+# Introduction
 
 
 ```{toctree}
@@ -18,3 +18,8 @@ html_meta:
 ./others
 ./howdoesitwork
 ```
+
+- [Bootstrap Volto](./install.md)
+- [Developer roadmap](./roadmap.md)
+- [Learning resources](./others.md)
+- [How does it work under the hood](./howdoesitwork.md)

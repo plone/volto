@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 [comment]: # 'Mosaic'
 [comment]: # 'header-1 already done by styleguidist'
 

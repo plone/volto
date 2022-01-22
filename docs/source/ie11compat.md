@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # IE11 compatibility
 
 There are some caveats if we still want to target IE11 as supported browser.

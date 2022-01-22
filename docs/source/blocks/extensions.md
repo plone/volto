@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Block extensions mechanism
 
 A common pattern in blocks is the "variations" pattern - a slightly different versions of

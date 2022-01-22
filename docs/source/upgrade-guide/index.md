@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Upgrade Guide
 
 This upgrade guide lists all breaking changes in Volto and explains the

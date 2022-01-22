@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 This code is copied and adopted from MIT-licensed
 https://github.com/makeomatic/redux-connect/
 

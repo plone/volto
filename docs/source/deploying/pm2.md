@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Deployment using a node process manager (pm2)
 
 PM2 is a popular and maintained process manager based in node (https://pm2.keymetrics.io/)

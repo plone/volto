@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Lazy loading
 
 Since Volto 5.0.0 you are able to do splitting and lazy loading safely any app component

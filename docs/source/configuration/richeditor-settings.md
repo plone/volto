@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # RichEditor Settings
 
 You can customize how the Rich Text Editor behaves and its features. These are

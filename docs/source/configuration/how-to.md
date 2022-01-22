@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # The configuration registry
 
 Volto has a centralized configuration registry used to parameterize Volto. It has the

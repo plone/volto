@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Environment variables
 
 All the environment variables defined at runtime that have the "RAZZLE_" prefix, are available in the browser under window.env

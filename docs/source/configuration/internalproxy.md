@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Internal proxy to API
 
 While in development, Volto has an internal proxy to the backend API enabled by default.

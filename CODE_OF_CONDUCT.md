@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Code of Conduct
 
 ## Anti-Harassment and Anti-Bullying Code of Conduct

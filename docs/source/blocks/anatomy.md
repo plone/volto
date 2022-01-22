@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Blocks anatomy
 
 Every block is composed of an edit (`Edit.jsx`) and a view (`View.jsx`) component.

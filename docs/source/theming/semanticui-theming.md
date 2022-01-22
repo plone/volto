@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Semantic Theming
 
 As we hinted previously, Semantic UI theming happens in several stages using several layers of inheritance, let's discover each of these layers.

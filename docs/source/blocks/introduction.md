@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Blocks
 
 Volto features the Pastanaga Editor Engine, allowing you to visually compose a page using blocks.

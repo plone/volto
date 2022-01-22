@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Developer roadmap
 
 If you're coming to Volto as a backend Plone developer, you'll have to learn

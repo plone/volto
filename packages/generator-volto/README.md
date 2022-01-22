@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Yeoman Volto App Generator
 
 @plone/generator-volto is a Yeoman generator that helps you to set up Volto via command line.
