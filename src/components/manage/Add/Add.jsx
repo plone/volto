@@ -12,8 +12,6 @@ import { keys, isEmpty } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Button, Grid, Menu } from 'semantic-ui-react';
 import { Portal } from 'react-portal';
-import { DragDropContext } from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
 import { v4 as uuid } from 'uuid';
 import qs from 'query-string';
 import { toast } from 'react-toastify';
@@ -446,7 +444,6 @@ class Add extends Component {
 }
 
 export default compose(
-  DragDropContext(HTML5Backend),
   injectIntl,
   connect(
     (state, props) => ({
