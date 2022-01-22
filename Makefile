@@ -91,7 +91,7 @@ start-backend: ## Start Plone Backend
 
 .PHONY: start-backend-docker
 start-backend-docker:
-	docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.volto" -e ZCML="plone.volto.cors" plone
+	docker run -it --rm -p 8080:8080 -e SITE=Plone -e ADDONS='$(KGS)' $(DOCKER_IMAGE)
 
 .PHONY: start-backend-docker-guillotina
 start-backend-docker-guillotina:

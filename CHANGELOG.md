@@ -11,8 +11,8 @@
 ### Internal
 
 - Lazyload react-beautiful-dnd @tiberiuichim
-
 - Lazyload react-dnd @tiberiuichim
+- Improve docs on environment variables, add recipes @sneridagh
 
 ## 14.4.0 (2022-01-21)
 
