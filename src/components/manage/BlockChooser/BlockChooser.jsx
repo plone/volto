@@ -80,17 +80,23 @@ const BlockChooser = ({
   }
   const [filterValue, setFilterValue] = React.useState('');
 
+  const getFormatMessage = (message) =>
+    intl.formatMessage({
+      id: message,
+      defaultMessage: message,
+    });
+
   function blocksAvailableFilter(blocks) {
     return blocks.filter(
       (block) =>
-        block.title.toLowerCase().includes(filterValue) ||
+        getFormatMessage(block.title).toLowerCase().includes(filterValue) ||
         filterVariations(block)?.length,
     );
   }
   function filterVariations(block) {
     return block.variations?.filter(
       (variation) =>
-        variation.title.toLowerCase().includes(filterValue) &&
+        getFormatMessage(variation.title).toLowerCase().includes(filterValue) &&
         !variation.title.toLowerCase().includes('default'),
     );
   }
@@ -115,17 +121,9 @@ const BlockChooser = ({
           }}
         >
           <Icon name={block.icon} size="36px" />
-          {intl.formatMessage({
-            id: block.title,
-            defaultMessage: block.title,
-          })}
+          {getFormatMessage(block.title)}
           {filterValue && variations?.[0]?.title && (
-            <small>
-              {intl.formatMessage({
-                id: variations?.[0]?.title,
-                defaultMessage: variations?.[0]?.title,
-              })}
-            </small>
+            <small>{getFormatMessage(variations[0].title)}</small>
           )}
         </Button>
       </Button.Group>
