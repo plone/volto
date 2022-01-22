@@ -82,38 +82,56 @@ const BlockChooser = ({
 
   function blocksAvailableFilter(blocks) {
     return blocks.filter(
-      (item) =>
-        item.title.toLowerCase().includes(filterValue) ||
-        item.variations?.some((variation) =>
-          variation.title.toLowerCase().includes(filterValue),
-        ),
+      (block) =>
+        block.title.toLowerCase().includes(filterValue) ||
+        filterVariations(block)?.length,
     );
   }
-  const ButtonGroup = ({ block }) => (
-    <Button.Group key={block.id}>
-      <Button
-        icon
-        basic
-        className={block.id}
-        onClick={(e) => {
-          onInsertBlock
-            ? onInsertBlock(currentBlock, {
-                '@type': block.id,
-              })
-            : onMutateBlock(currentBlock, {
-                '@type': block.id,
-              });
-          e.stopPropagation();
-        }}
-      >
-        <Icon name={block.icon} size="36px" />
-        {intl.formatMessage({
-          id: block.title,
-          defaultMessage: block.title,
-        })}
-      </Button>
-    </Button.Group>
-  );
+  function filterVariations(block) {
+    return block.variations?.filter(
+      (variation) =>
+        variation.title.toLowerCase().includes(filterValue) &&
+        !variation.title.toLowerCase().includes('default'),
+    );
+  }
+
+  const ButtonGroup = ({ block }) => {
+    const variations = filterVariations(block);
+    return (
+      <Button.Group key={block.id}>
+        <Button
+          icon
+          basic
+          className={block.id}
+          onClick={(e) => {
+            onInsertBlock
+              ? onInsertBlock(currentBlock, {
+                  '@type': block.id,
+                })
+              : onMutateBlock(currentBlock, {
+                  '@type': block.id,
+                });
+            e.stopPropagation();
+          }}
+        >
+          <Icon name={block.icon} size="36px" />
+          {intl.formatMessage({
+            id: block.title,
+            defaultMessage: block.title,
+          })}
+          {filterValue && variations?.[0]?.title && (
+            <small>
+              {intl.formatMessage({
+                id: variations?.[0]?.title,
+                defaultMessage: variations?.[0]?.title,
+              })}
+            </small>
+          )}
+        </Button>
+      </Button.Group>
+    );
+  };
+
   return (
     <div className="blocks-chooser" ref={blockChooserRef}>
       <BlockChooserSearch
