@@ -70,6 +70,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
                 Image
+                
               </button>
             </div>
             <div
@@ -83,6 +84,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
                 Listing
+                
               </button>
             </div>
             <div
@@ -96,6 +98,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
                 Video
+                
               </button>
             </div>
           </div>
@@ -139,6 +142,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
                 Text
+                
               </button>
             </div>
           </div>
@@ -182,6 +186,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
                 Image
+                
               </button>
             </div>
             <div
@@ -195,6 +200,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
                 Lead Image Field
+                
               </button>
             </div>
             <div
@@ -208,6 +214,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
                 Video
+                
               </button>
             </div>
           </div>
@@ -251,6 +258,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
                 Listing
+                
               </button>
             </div>
             <div
@@ -264,6 +272,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
                 Table of Contents
+                
               </button>
             </div>
             <div
@@ -277,6 +286,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
                 Hero
+                
               </button>
             </div>
             <div
@@ -290,6 +300,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
                 Maps
+                
               </button>
             </div>
             <div
@@ -303,6 +314,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
                 HTML
+                
               </button>
             </div>
             <div
@@ -316,6 +328,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
                 Table
+                
               </button>
             </div>
           </div>
@@ -396,6 +409,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
                 Image
+                
               </button>
             </div>
             <div
@@ -409,6 +423,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
                 Listing
+                
               </button>
             </div>
             <div
@@ -422,6 +437,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
                 Video
+                
               </button>
             </div>
           </div>
@@ -465,6 +481,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
                 Text
+                
               </button>
             </div>
           </div>
@@ -508,6 +525,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
                 Image
+                
               </button>
             </div>
             <div
@@ -521,6 +539,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
                 Lead Image Field
+                
               </button>
             </div>
             <div
@@ -534,6 +553,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
                 Video
+                
               </button>
             </div>
           </div>
@@ -577,6 +597,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
                 Listing
+                
               </button>
             </div>
             <div
@@ -590,6 +611,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
                 Table of Contents
+                
               </button>
             </div>
             <div
@@ -603,6 +625,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
                 Hero
+                
               </button>
             </div>
             <div
@@ -616,6 +639,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
                 Maps
+                
               </button>
             </div>
             <div
@@ -629,6 +653,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
                 HTML
+                
               </button>
             </div>
             <div
@@ -642,6 +667,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
                   style="height: 36px; width: auto; fill: currentColor;"
                 />
                 Table
+                
               </button>
             </div>
           </div>
