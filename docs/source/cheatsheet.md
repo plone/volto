@@ -11,43 +11,45 @@ html_meta:
 https://python-markdown.github.io/extensions/
 https://facelessuser.github.io/pymdown-extensions/extensions/
 
-Admonition
+## Admonition
 
-!!! note
-    You should note that the title will be automatically capitalized.
+```{note}
+You should note that the title will be automatically capitalized.
+```
 
-!!! danger "Don't try this at home"
-    ...
+```{important}
+This is an admonition box without a title.
+```
 
-!!! important ""
-    This is an admonition box without a title.
+```{tip}
+This is an admonition box without a title.
+```
 
-!!! tip "This is a tip"
-    This is an admonition box without a title.
+```{warning}
+This is an admonition box without a title.
+```
 
-!!! check "This is a check"
-    This is an admonition box without a title.
+```{danger} Don't try this at home
+```
 
-!!! cite "This is a cite"
-    This is an admonition box without a title.
+```{seealso}
+This is a see also section
+```
 
-!!! question "This is a question"
-    This is an admonition box without a title.
+```{deprecated} 13
+This is an admonition box without a title.
+```
 
-!!! example "This is a example"
-    This is an admonition box without a title.
+## Links
 
-!!! warning "This is a warning"
-    This is an admonition box without a title.
+Magic link https://volto.kitconcept.com
 
-!!! bug "This is a bug"
-    This is an admonition box without a title.
+## Code
 
-Magic link https://volto.kitconcept.com @sneridagh
+```{code-block} jsx
+:linenos:
+:emphasize-lines: 1, 3, 12
 
-:smile: :heart: :thumbsup:
-
-```jsx hl_lines="1 3 12"
   /**
    * Render method.
    * @method render
@@ -83,38 +85,17 @@ Magic link https://volto.kitconcept.com @sneridagh
   """ """
 ```
 
-=== "Tab 1"
-    Markdown **content**.
+## Toggle paragraph (Exercises / FAQ)
 
-    Multiple paragraphs.
+````{admonition} This is a title
+:class: toggle
 
-=== "Tab 2"
-    More Markdown **content**.
+```{code-block} python
+:linenos:
+:emphasize-lines: 1, 3
 
-    - list item a
-    - list item b
-
-Task List
-
-- [X] item 1
-    * [X] item A
-    * [ ] item B
-        more text
-        + [x] item a
-        + [ ] item b
-        + [x] item c
-    * [X] item C
-- [ ] item 2
-- [ ] item 3
-
-
-???+ note "Open styled details"
-
-    ??? danger "Nested details!"
-        And more content again.
-
-??? success "asdasd"
-    Content.
-
-??? warning classes
-    Content.
+a = 2
+print("my 1st line")
+print(f"my {a}nd line")
+```
+````

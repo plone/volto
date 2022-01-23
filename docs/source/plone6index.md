@@ -8,20 +8,17 @@ html_meta:
 
 (index-label)=
 
-# Volto Frontend
+# Frontend
 
-Volto is a React-based frontend for the [Plone CMS](https://plone.org). It is
+Volto is the React-based frontend for the [Plone CMS](https://plone.org). It is
 the default UI for the Plone 6 release.
 
-Although it hasn't reached yet full parity with Plone "classic" UI, Volto
-provides a very attractive proposition to its early adopters: integration with
-the modern frontend development world, access to the huge ecosystem of React
-libraries and addons and not least, open Plone as a development platform for
-non-Plone trained programmers.
+Volto provides integration with the modern frontend development world, access to the
+huge ecosystem of React libraries and addons and not least, open Plone as a development
+platform for non-Plone trained programmers.
 
 Thanks to the use of the Plone API framework, it is fully compatible with
-Plone's Dexterity content type framework (and even the older Archetypes
-framework). But its power comes from the innovative Pastanaga Editor,
+Plone's content type framework. But its power comes from the innovative Pastanaga Editor,
 which replaces the typical richtext editing experience provided by the
 TinyMCE editor with a streamlined Mosaic-like editor based on "blocks".
 
