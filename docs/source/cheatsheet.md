@@ -8,8 +8,8 @@ html_meta:
 
 # Cheatsheet
 
-https://python-markdown.github.io/extensions/
-https://facelessuser.github.io/pymdown-extensions/extensions/
+- https://python-markdown.github.io/extensions/
+- https://facelessuser.github.io/pymdown-extensions/extensions/
 
 ## Admonition
 
