@@ -11,8 +11,8 @@
 ### Internal
 
 - Lazyload react-beautiful-dnd @tiberiuichim
-
 - Lazyload react-dnd @tiberiuichim
+- Update p.restapi to 8.20.0 and plone.volto to 4.0.0a1 and plone.rest to 2.0.0a2 @sneridagh
 
 ## 14.4.0 (2022-01-21)
 
