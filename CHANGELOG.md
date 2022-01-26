@@ -32,6 +32,7 @@ VocabularyTermsWidget: Token is now on creation of term editable, but stays ined
 
 ### Bugfix
 
+- Fix ListingBlock to add "No results" message when there are no messages @erral
 - Fix overflow table in Content view @giuliaghisini
 - Fixed url validation in FormValidation to admit ip addresses. @giuliaghisini
 - Upgrade to plone.restapi 8.19.0 (to support the language independent fields serialization) @sneridagh
