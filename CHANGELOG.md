@@ -10,6 +10,8 @@ VocabularyTermsWidget: Token is now on creation of term editable, but stays ined
 
 ### Bugfix
 
+-Fix A11Y violations in Navigation @iRohitSingh
+
 ### Internal
 
 - Lazyload react-beautiful-dnd @tiberiuichim
