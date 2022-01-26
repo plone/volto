@@ -6,13 +6,18 @@
 
 ### Feature
 
+VocabularyTermsWidget: Token is now on creation of term editable, but stays ineditable afterwards.  @ksuess
+
 ### Bugfix
+
+-Fix A11Y violations in Navigation @iRohitSingh
 
 ### Internal
 
 - Lazyload react-beautiful-dnd @tiberiuichim
 - Lazyload react-dnd @tiberiuichim
 - Improve docs on environment variables, add recipes @sneridagh
+- Update p.restapi to 8.20.0 and plone.volto to 4.0.0a1 and plone.rest to 2.0.0a2 @sneridagh
 
 ## 14.4.0 (2022-01-21)
 
@@ -30,6 +35,7 @@
 
 ### Bugfix
 
+- Fix ListingBlock to add "No results" message when there are no messages @erral
 - Fix overflow table in Content view @giuliaghisini
 - Fixed url validation in FormValidation to admit ip addresses. @giuliaghisini
 - Upgrade to plone.restapi 8.19.0 (to support the language independent fields serialization) @sneridagh
