@@ -6,11 +6,12 @@
 
 ### Feature
 
-VocabularyTermsWidget: Token is now on creation of term editable, but stays ineditable afterwards.  @ksuess
+- VocabularyTermsWidget: Token is now on creation of term editable, but stays ineditable afterwards.  @ksuess
 
 ### Bugfix
 
--Fix A11Y violations in Navigation @iRohitSingh
+- Fix A11Y violations in Navigation @iRohitSingh
+- Fix `language-independent-field` CSS class styling @sneridagh
 
 ### Internal
 
