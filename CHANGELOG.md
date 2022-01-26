@@ -6,6 +6,8 @@
 
 ### Feature
 
+VocabularyTermsWidget: Token is now on creation of term editable, but stays ineditable afterwards.  @ksuess
+
 ### Bugfix
 
 ### Internal
