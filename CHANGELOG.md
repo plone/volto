@@ -2,8 +2,6 @@
 
 ## 14.4.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - VocabularyTermsWidget: Token is now on creation of term editable, but stays ineditable afterwards.  @ksuess
