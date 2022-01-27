@@ -227,7 +227,7 @@ const defaultModify = ({
     include.push(fs.realpathSync(`${registry.voltoPath}/src`));
   }
   // Add babel support external (ie. node_modules npm published packages)
-  if (registry.addonNames?.length > 0) {
+  if (registry.addonNames && registry.addonNames.length > 0) {
     registry.addonNames.forEach((addon) => {
       const p = fs.realpathSync(registry.packages[addon].modulePath);
       if (include.indexOf(p) === -1) {
