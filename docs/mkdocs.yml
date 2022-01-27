@@ -24,8 +24,6 @@ nav:
       - Developer roadmap: 'getting-started/roadmap.md'
       - Learning resources: 'getting-started/others.md'
       - How does it work under the hood: 'getting-started/howdoesitwork.md'
-  - Design principles: 'design-principles/index.md'
-  - Style Guide: 'style-guide/index.md'
   - Configuration:
       - What is configurable?: 'configuration/how-to.md'
       - Settings reference guide: 'configuration/settings-reference.md'
@@ -79,6 +77,8 @@ nav:
       - Performance improvements: 'deploying/performance.md'
   - Upgrade Guide: 'upgrade-guide/index.md'
   - Developer Guidelines:
+      - Design principles: 'developer-guidelines/design-principles.md'
+      - Style Guide: 'developer-guidelines/style-guide.md'
       - Language features: 'developer-guidelines/language-features.md'
       - Linting: 'developer-guidelines/linting.md'
       - React: 'developer-guidelines/react.md'
