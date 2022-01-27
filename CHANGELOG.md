@@ -10,6 +10,9 @@
 
 ### Internal
 
+- Fix ObjectListWidget story bug caused by lazyloading dnd libraries
+  @tiberiuichim
+
 ## 14.5.0 (2022-01-26)
 
 ### Feature
