@@ -4,6 +4,15 @@ On the [Plone Trainings Website](https://training.plone.org) you'll find
 Volto-dedicated open training materials plus React and other
 Javascript-centered trainings.
 
+
+## How does it work under the hood
+
+You can watch the talk during the World Plone Day 2021:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/kHec4MXH8vo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
 ## PloneConf 2019
 
 PloneConf 2019 had several Volto-relevant presentations.
