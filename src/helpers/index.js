@@ -33,6 +33,7 @@ export {
   nestContent,
   getLayoutFieldname,
   getContentIcon,
+  getLanguageIndependentFields,
 } from '@plone/volto/helpers/Content/Content';
 export {
   addBlock,

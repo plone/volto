@@ -135,6 +135,7 @@ let config = {
         'prismCore',
         'toastify',
         'reactSelect',
+        'reactBeautifulDnd',
         // 'diffLib',
       ],
     },

@@ -1,6 +1,6 @@
 # Change Log
 
-## 14.2.3 (unreleased)
+## 14.5.1 (unreleased)
 
 ### Breaking
 
@@ -11,6 +11,45 @@
 ### Bugfix
 
 ### Internal
+
+## 14.5.0 (2022-01-26)
+
+### Feature
+
+- VocabularyTermsWidget: Token is now on creation of term editable, but stays ineditable afterwards.  @ksuess
+
+### Bugfix
+
+- Fix A11Y violations in Navigation @iRohitSingh
+- Fix `language-independent-field` CSS class styling @sneridagh
+
+### Internal
+
+- Lazyload react-beautiful-dnd @tiberiuichim
+- Lazyload react-dnd @tiberiuichim
+- Improve docs on environment variables, add recipes @sneridagh
+- Update p.restapi to 8.20.0 and plone.volto to 4.0.0a1 and plone.rest to 2.0.0a2 @sneridagh
+
+## 14.4.0 (2022-01-21)
+
+### Feature
+
+- Language independent fields support in Volto forms @sneridagh
+
+## 14.3.0 (2022-01-20)
+
+### Feature
+
+- Bump semantic-ui-react to v2.0.3 @nileshgulia1
+
+## 14.2.3 (2022-01-20)
+
+### Bugfix
+
+- Fix ListingBlock to add "No results" message when there are no messages @erral
+- Fix overflow table in Content view @giuliaghisini
+- Fixed url validation in FormValidation to admit ip addresses. @giuliaghisini
+- Upgrade to plone.restapi 8.19.0 (to support the language independent fields serialization) @sneridagh
 
 ## 14.2.2 (2022-01-13)
 

@@ -368,16 +368,11 @@ exports[`Contents renders a folder contents view component 1`] = `
                 onChange={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
                 onMouseDown={[Function]}
                 role="listbox"
                 tabIndex={0}
               >
-                <div
-                  aria-atomic={true}
-                  aria-live="polite"
-                  className="text"
-                  role="alert"
-                />
                 <svg
                   className="icon"
                   dangerouslySetInnerHTML={
@@ -994,16 +989,11 @@ exports[`Contents renders a folder contents view component 1`] = `
                         onChange={[Function]}
                         onClick={[Function]}
                         onFocus={[Function]}
+                        onKeyDown={[Function]}
                         onMouseDown={[Function]}
                         role="listbox"
                         tabIndex={0}
-                      >
-                        <div
-                          aria-atomic={true}
-                          aria-live="polite"
-                          className="text"
-                          role="alert"
-                        />
+                      > 
                         <svg
                           className="icon configuration-svg"
                           dangerouslySetInnerHTML={
