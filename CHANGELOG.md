@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Use `volto.config.js` as dynamic configuration for addons. It adds up to the `package.json` `addons` key, allowing dynamic load of addons (eg. via environment variables) @sneridagh
+
 ### Bugfix
 
 ### Internal
