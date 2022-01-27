@@ -226,16 +226,8 @@ const defaultModify = ({
   if (packageJson.name !== '@plone/volto') {
     include.push(fs.realpathSync(`${registry.voltoPath}/src`));
   }
-  let voltoConfigJS = [];
-  if (fs.existsSync(path.join(projectRootPath, 'volto.config.js'))) {
-    voltoConfigJS = require(path.join(projectRootPath, 'volto.config.js'));
-  }
-  const resultantMergedAddons = [
-    ...(packageJson.addons || []),
-    ...(voltoConfigJS.addons || []),
-  ];
   // Add babel support external (ie. node_modules npm published packages)
-  if (resultantMergedAddons) {
+  if (registry.addonNames?.length > 0) {
     registry.addonNames.forEach((addon) => {
       const p = fs.realpathSync(registry.packages[addon].modulePath);
       if (include.indexOf(p) === -1) {
