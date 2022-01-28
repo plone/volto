@@ -14,7 +14,7 @@ MAKEFLAGS+=--no-builtin-rules
 
 INSTANCE_PORT=8080
 DOCKER_IMAGE=plone/plone-backend:5.2.6
-KGS=plone.restapi==8.18.0 plone.app.iterate==4.0.2 plone.rest==2.0.0a1 plone.app.vocabularies==4.3.0 plone.volto==3.1.0a8
+KGS=plone.restapi==8.20.0 plone.volto==4.0.0a2 plone.rest==2.0.0a2 plone.app.iterate==4.0.2 plone.app.vocabularies==4.3.0
 
 # Recipe snippets for reuse
 
@@ -91,7 +91,7 @@ start-backend: ## Start Plone Backend
 
 .PHONY: start-backend-docker
 start-backend-docker:
-	docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.volto" -e ZCML="plone.volto.cors" plone
+	docker run -it --rm -p 8080:8080 -e SITE=Plone -e ADDONS='$(KGS)' $(DOCKER_IMAGE)
 
 .PHONY: start-backend-docker-guillotina
 start-backend-docker-guillotina:

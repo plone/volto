@@ -135,3 +135,15 @@
     margin: 0;
   }
 }
+
+// Fake "disabled" field for language independent fields
+// Only on Add form
+#page-add-translation #page-add .language-independent-field {
+  pointer-events: none;
+
+  input,
+  svg,
+  .ui.checkbox label:after {
+    opacity: 0.3 !important;
+  }
+}

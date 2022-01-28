@@ -6,17 +6,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { map } from 'lodash';
-import moment from 'moment';
 import { useIntl } from 'react-intl';
 import { Form } from 'semantic-ui-react';
 import SelectInput from './SelectInput';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 /**
  * MonthOfTheYearField component class.
  * @function MonthOfTheYearField
  * @returns {string} Markup of the component.
  */
-const MonthOfTheYearField = ({ value, disabled, inline, onChange }) => {
+const MonthOfTheYearField = ({
+  value,
+  disabled,
+  inline,
+  onChange,
+  moment: momentlib,
+}) => {
+  const moment = momentlib.default;
   const intl = useIntl();
   moment.locale(intl.locale);
   const monthList = [
@@ -63,4 +70,4 @@ MonthOfTheYearField.defaultProps = {
   onChange: null,
 };
 
-export default MonthOfTheYearField;
+export default injectLazyLibs(['moment'])(MonthOfTheYearField);

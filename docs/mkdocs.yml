@@ -31,6 +31,7 @@ nav:
       - Settings reference guide: 'configuration/settings-reference.md'
       - Zero config builds: 'configuration/zero-config-builds.md'
       - Internal proxy: 'configuration/internalproxy.md'
+      - Dynamic Volto Addons Configuration: 'configuration/volto-config-js.md'
       - Backend configuration: 'configuration/backend.md'
       - Richeditor settings: 'configuration/richeditor-settings.md'
       - Multilingual: 'configuration/multilingual.md'
