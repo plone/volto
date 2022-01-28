@@ -8,9 +8,8 @@ import { Button, Dropdown, Table } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { map } from 'lodash';
-import moment from 'moment';
 import { useIntl, defineMessages, FormattedMessage } from 'react-intl';
-import { Icon, Circle } from '@plone/volto/components';
+import { Circle, FormattedDate, Icon } from '@plone/volto/components';
 import { getContentIcon } from '@plone/volto/helpers';
 import moreSVG from '@plone/volto/icons/more.svg';
 import checkboxUncheckedSVG from '@plone/volto/icons/checkbox-unchecked.svg';
@@ -47,6 +46,10 @@ const messages = defineMessages({
   no_workflow_state: {
     id: 'no workflow state',
     defaultMessage: 'No workflow state',
+  },
+  none: {
+    id: 'None',
+    defaultMessage: 'None',
   },
 });
 
@@ -187,21 +190,13 @@ export const ContentsItemComponent = ({
               </div>
             )}
             {index.type === 'date' && (
-              <span
-                title={
-                  item[index.id] !== 'None' ? (
-                    moment(item[index.id]).format('LLLL')
-                  ) : (
-                    <FormattedMessage id="None" defaultMessage="None" />
-                  )
-                }
-              >
+              <>
                 {item[index.id] !== 'None' ? (
-                  moment(item[index.id]).format('L')
+                  <FormattedDate date={item[index.id]} />
                 ) : (
-                  <FormattedMessage id="None" defaultMessage="None" />
+                  intl.formatMessage(messages.none)
                 )}
-              </span>
+              </>
             )}
             {index.type === 'array' && (
               <span>{item[index.id]?.join(', ')}</span>
