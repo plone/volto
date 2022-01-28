@@ -2,13 +2,9 @@
 
 ## 14.6.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Add `<FormattedDate>` and `<FormattedRelativeDate>` components. Check their Storybook stories for details. This is part of ongoing work to minimize the use of 'deprecated' momentjs. @sneridagh @tiberiuichim
-
-### Bugfix
 
 ### Internal
 
