@@ -25,22 +25,18 @@ The default values from Volto configuration expect a Plone content backend locat
 
 What happens in the default development configuration/setup:
 
-* The client side Volto process its javascript and precooked HTML (SSR) is served from http://localhost:3000/ by the NodeJS server process
-* Content resources are requested on the same url at http://localhost:3000/++api++/
+* The client side Volto javascript files precooked HTML (SSR) is served from http://localhost:3000/ by the NodeJS server process
+* The client javascript does API requests for content and other data on the same url at http://localhost:3000/++api++/
 * The NodeJS service its internal proxy requests the data from the Plone content backend api and delivers
 back json to the frontend.
 * The web browser application is happy, because all connections go through the same URL and no CORS related security issues will be triggered.
 
 !!! tip
-    You don't want to deal with CORS in your production deployments, so using the proxy is only meant to be enabled in development mode (e.g `yarn start`). However, for convenience and for testing/demoing using the stock build, it's also enabled in production mode since Volto 14.
+    You could also use the internal proxy for production setups. For convenience and for testing/demoing using the stock build, it is also enabled in production mode since Volto 14. But it is bad for
+    performance because the server side running Node process is also responsable for generating the
+    SSR HTML. With Nginx, Apache or another 'reverse proxy' you can also create an internal API mount which is more suited for that. For more deployment information see ['Seemless mode'](/deploying/seamless-mode)
 
-!!! note
-    You can disable the proxy by redefining a new `apiPath` and redefining an empty
-    `devProxyToApiPath` setting.
-
-Here are some examples.
-
-### Redefining the proxy target
+### Examples redefining the proxy target
 
 You can redefine the local proxy target by using the `RAZZLE_DEV_PROXY_API_PATH` or setting `devProxyToApiPath` in the configuration object (`src/config.js`).
 
