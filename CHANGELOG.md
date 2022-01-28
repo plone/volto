@@ -15,7 +15,6 @@
 - Upgrade jest to latest release, 27 major. @tiberiuichim
 - Lazyload momentjs. `parseDateTime` helper now requires passing the momentjs library @tiberiuichim
 
-- Lazyload react-beautiful-dnd @tiberiuichim
 ## 14.6.0 (2022-01-27)
 
 ### Feature
