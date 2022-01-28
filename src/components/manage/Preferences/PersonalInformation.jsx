@@ -38,7 +38,7 @@ class PersonalInformation extends Component {
     userId: PropTypes.string.isRequired,
     loaded: PropTypes.bool.isRequired,
     loading: PropTypes.bool,
-    closeMenu: PropTypes.func.isRequired,
+    closeMenu: PropTypes.func,
     getUserSchema: PropTypes.func.isRequired,
   };
 
