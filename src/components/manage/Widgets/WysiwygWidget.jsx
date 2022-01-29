@@ -9,19 +9,24 @@ import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import Editor from 'draft-js-plugins-editor';
-import { stateFromHTML } from 'draft-js-import-html';
-import { convertToRaw, EditorState } from 'draft-js';
+// import Editor from 'draft-js-plugins-editor';
+// import { stateFromHTML } from 'draft-js-import-html';
+// import { convertToRaw, EditorState } from 'draft-js';
 import redraft from 'redraft';
 import { Form, Label, TextArea } from 'semantic-ui-react';
 import { map } from 'lodash';
-import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
+// import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import { defineMessages, injectIntl } from 'react-intl';
 import configureStore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
 import config from '@plone/volto/registry';
 
 import { FormFieldWrapper } from '@plone/volto/components';
+
+import loadable from '@loadable/component';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+
+const Editor = loadable(() => import('draft-js-plugins-editor'));
 
 const messages = defineMessages({
   default: {
@@ -67,7 +72,7 @@ const messages = defineMessages({
  * ```
  *
  */
-class WysiwygWidget extends Component {
+class WysiwygWidgetComponent extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -161,6 +166,10 @@ class WysiwygWidget extends Component {
   constructor(props) {
     super(props);
 
+    const { stateFromHTML } = props.draftJsImportHtml;
+    const { EditorState } = props.draftJs;
+    const createInlineToolbarPlugin = props.draftJsInlineToolbarPlugin.default;
+
     if (!__SERVER__) {
       let editorState;
       if (props.value && props.value.data) {
@@ -220,6 +229,7 @@ class WysiwygWidget extends Component {
    * @returns {undefined}
    */
   onChange(editorState) {
+    const { convertToRaw } = this.props.draftJs;
     const { settings } = config;
     this.setState({ editorState });
     const mockStore = configureStore();
@@ -320,12 +330,27 @@ class WysiwygWidget extends Component {
   }
 }
 
-export default compose(
+export const WysiwygWidget = compose(
   injectIntl,
+  injectLazyLibs([
+    'draftJs',
+    'draftJsInlineToolbarPlugin',
+    'draftJsImportHtml',
+  ]),
   connect(
     (state, props) => ({
       token: state.userSession.token,
     }),
     {},
   ),
-)(WysiwygWidget);
+)(WysiwygWidgetComponent);
+
+const Preloader = (props) => {
+  const [loaded, setLoaded] = React.useState(false);
+  React.useEffect(() => {
+    Editor.load().then(() => setLoaded(true));
+  }, []);
+  return loaded ? <WysiwygWidget {...props} /> : null;
+};
+
+export default Preloader;
