@@ -6,16 +6,11 @@
 import React, { Component } from 'react';
 import ReactDOMServer from 'react-dom/server';
 import PropTypes from 'prop-types';
-import { Provider } from 'react-redux';
-import { connect } from 'react-redux';
+import { connect, Provider } from 'react-redux';
 import { compose } from 'redux';
-// import Editor from 'draft-js-plugins-editor';
-// import { stateFromHTML } from 'draft-js-import-html';
-// import { convertToRaw, EditorState } from 'draft-js';
 import redraft from 'redraft';
 import { Form, Label, TextArea } from 'semantic-ui-react';
 import { map } from 'lodash';
-// import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import { defineMessages, injectIntl } from 'react-intl';
 import configureStore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
