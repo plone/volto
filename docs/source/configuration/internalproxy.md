@@ -16,10 +16,6 @@ These are the settings that allows you to configure the API and how the proxy wo
 !!! tip
     You don't want to deal with CORS in your production deployments, so using the proxy is only meant to be enabled in development mode (e.g `yarn start`). However, for convenience and for testing/demoing using the stock build, it's also enabled in production mode since Volto 14.
 
-!!! note
-    You can disable the proxy by redefining a new `apiPath` and redefining an empty
-    `devProxyToApiPath` setting.
-
 Here are some examples.
 
 ### Redefining the proxy target
@@ -40,30 +36,6 @@ or use the environment variable:
 RAZZLE_DEV_PROXY_API_PATH=http://localhost:8081/mysite yarn start
 ```
 
-### Disabling the proxy
-
-```js
-export const settings = {
-  ...defaultSettings,
-  apiPath: process.env.RAZZLE_API_PATH || `http://localhost:8081/mysite`, // for Plone
-  devProxyToApiPath: '', // Set it to '' for disabling the proxy
-};
-```
-
-or use the environment variable:
-```bash
-RAZZLE_DEV_PROXY_API_PATH= RAZZLE_API_PATH=http://localhost:8081/mysite yarn start
-```
-
-!!! tip
-    To view the existing configuration, add console.log(config) to the `applyConfig` function. This dumps the existing config to your terminal console.
-
 ### Advanced usage
 
-It's possible to define the proxy target more accuratelly using the `RAZZLE_PROXY_REWRITE_TARGET` environment variable, or the `proxyRewriteTarget` setting in the configuration object.
-
-This allows you to run Volto against an external (not local) site, e.g. for debugging purposes. In theory then, this is possible:
-
-```bash
-RAZZLE_PROXY_REWRITE_TARGET=https://plone.org RAZZLE_DEV_PROXY_API_PATH=https://plone.org yarn start
-```
+See [](../recipes/environment-variables.md) for recipes on internal proxy usage.

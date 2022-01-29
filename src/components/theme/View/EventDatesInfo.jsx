@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { List } from 'semantic-ui-react';
-import moment from 'moment';
 import { useIntl } from 'react-intl';
 import cx from 'classnames';
 import { RRule, rrulestr } from 'rrule';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
-export const datesForDisplay = (start, end) => {
+export const datesForDisplay = (start, end, moment) => {
   const mStart = moment(start);
   const mEnd = moment(end);
   if (!mStart.isValid() || !mEnd.isValid()) {
@@ -24,11 +24,13 @@ export const datesForDisplay = (start, end) => {
   };
 };
 
-export const When = ({ start, end, whole_day, open_end }) => {
+const When_ = ({ start, end, whole_day, open_end, moment: momentlib }) => {
   const intl = useIntl();
+
+  const moment = momentlib.default;
   moment.locale(intl.locale);
 
-  const datesInfo = datesForDisplay(start, end);
+  const datesInfo = datesForDisplay(start, end, moment);
   if (!datesInfo) {
     return;
   }
@@ -97,6 +99,8 @@ export const When = ({ start, end, whole_day, open_end }) => {
   );
 };
 
+export const When = injectLazyLibs(['moment'])(When_);
+
 When.propTypes = {
   start: PropTypes.string.isRequired,
   end: PropTypes.string,
@@ -104,7 +108,8 @@ When.propTypes = {
   open_end: PropTypes.bool,
 };
 
-export const Recurrence = ({ recurrence, start }) => {
+export const Recurrence_ = ({ recurrence, start, moment: momentlib }) => {
+  const moment = momentlib.default;
   if (recurrence.indexOf('DTSTART') < 0) {
     var dtstart = RRule.optionsToString({
       dtstart: new Date(start),
@@ -117,11 +122,12 @@ export const Recurrence = ({ recurrence, start }) => {
     <List
       items={rrule
         .all()
-        .map((date) => datesForDisplay(date))
+        .map((date) => datesForDisplay(date, undefined, moment))
         .map((date) => date.startDate)}
     />
   );
 };
+export const Recurrence = injectLazyLibs(['moment'])(Recurrence_);
 
 Recurrence.propTypes = {
   recurrence: PropTypes.string.isRequired,

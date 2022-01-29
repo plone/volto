@@ -11,7 +11,7 @@ import { concat, findIndex, isString, map, omit, slice, without } from 'lodash';
 import move from 'lodash-move';
 import { Confirm, Form, Grid, Icon, Message, Segment } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
-import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import {
   Field,
@@ -1078,7 +1078,8 @@ class SchemaWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { error } = this.props;
+    const { error, reactBeautifulDnd } = this.props;
+    const { Draggable, DragDropContext, Droppable } = reactBeautifulDnd;
     if (!this.props.value) {
       return '';
     }
@@ -1427,6 +1428,7 @@ class SchemaWidget extends Component {
 
 export default compose(
   injectIntl,
+  injectLazyLibs(['reactBeautifulDnd']),
   connect(
     (state, props) => ({
       value: isString(props.value) ? JSON.parse(props.value) : props.value,
