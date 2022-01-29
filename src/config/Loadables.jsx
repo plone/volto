@@ -34,6 +34,7 @@ export const loadables = {
   reactBeautifulDnd: loadable.lib(() => import('react-beautiful-dnd')),
 
   // draftjs libs
+  immutableLib: loadable.lib(() => import('immutable')),
   draftJs: loadable.lib(() => import('draft-js')),
   draftJsLibIsSoftNewlineEvent: loadable.lib(() =>
     import('draft-js/lib/isSoftNewlineEvent'),
@@ -42,4 +43,5 @@ export const loadables = {
   draftJsInlineToolbarPlugin: loadable.lib(() =>
     import('draft-js-inline-toolbar-plugin'),
   ),
+  draftJsImportHtml: loadable.lib(() => import('draft-js-import-html')),
 };
