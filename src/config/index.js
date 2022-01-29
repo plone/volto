@@ -121,9 +121,7 @@ let config = {
     persistentReducers: ['blocksClipboard'],
     initialReducersBlacklist: [], // reducers in this list won't be hydrated in windows.__data
     asyncPropsExtenders: [], // per route asyncConnect customizers
-    sentryOptions: {
-      ...sentryOptions,
-    },
+    sentryOptions,
     contentIcons: contentIcons,
     loadables,
     lazyBundles: {

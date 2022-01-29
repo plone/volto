@@ -1,7 +1,9 @@
 import config from '@plone/volto/registry';
+
 const reserved_option_names = ['tags', 'extras'];
 
-const initSentry = (Sentry) => {
+const initSentry = (libraries) => {
+  const { Sentry } = libraries;
   const { settings } = config;
   let sentry_config = __SENTRY__;
 
@@ -57,9 +59,13 @@ const initSentry = (Sentry) => {
     }
   }
 
-  if (sentry_config || settings?.sentryOptions?.dsn) {
+  const sentryOptions = settings.sentryOptions
+    ? settings.sentryOptions(libraries)
+    : {};
+
+  if (sentry_config || sentryOptions.dsn) {
     let sentry_options = {
-      ...settings.sentryOptions,
+      ...sentryOptions,
     };
     if (sentry_config?.SENTRY_DSN) {
       sentry_options.dsn = sentry_config.SENTRY_DSN;
