@@ -467,7 +467,9 @@ class EditComponent extends Component {
   }
 }
 
-const Edit = injectLazyLibs(['draftJs', 'immutableLib'])(EditComponent);
+const Edit = injectLazyLibs(['draftJs', 'immutableLib', 'draftJsImportHtml'])(
+  EditComponent,
+);
 
 export default compose(
   injectIntl,
