@@ -1,5 +1,3 @@
-// import { CaptureConsole } from '@sentry/integrations';
-
 export const sentryOptions = (libraries) => {
   const { CaptureConsole } = libraries['SentryIntegrations'];
   return {

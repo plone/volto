@@ -4,9 +4,11 @@ import http from 'http';
 import app from './server';
 
 import * as Sentry from '@sentry/node';
+import * as SentryIntegrations from '@sentry/integrations';
+
 import initSentry from '@plone/volto/sentry';
 
-initSentry(Sentry);
+initSentry({ Sentry, SentryIntegrations });
 
 export default () => {
   const server = http.createServer(app);
