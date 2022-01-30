@@ -5,19 +5,20 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Editor from 'draft-js-plugins-editor';
-import { convertFromRaw, EditorState, RichUtils } from 'draft-js';
-import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
-import isSoftNewlineEvent from 'draft-js/lib/isSoftNewlineEvent';
 import { includes } from 'lodash';
 import config from '@plone/volto/registry';
+
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import loadable from '@loadable/component';
+
+const Editor = loadable(() => import('draft-js-plugins-editor'));
 
 /**
  * Edit text cell class.
  * @class Cell
  * @extends Component
  */
-class Cell extends Component {
+class CellComponent extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -53,6 +54,9 @@ class Cell extends Component {
    */
   constructor(props) {
     super(props);
+
+    const { EditorState, convertFromRaw } = props.draftJs;
+    const createInlineToolbarPlugin = props.draftJsInlineToolbarPlugin.default;
 
     if (!__SERVER__) {
       let editorState;
@@ -126,6 +130,8 @@ class Cell extends Component {
 
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
     const { settings } = config;
+    const isSoftNewlineEvent = this.props.draftJsLibIsSoftNewlineEvent.default;
+    const { RichUtils } = this.props.draftJs;
 
     return (
       <div>
@@ -178,4 +184,18 @@ class Cell extends Component {
   }
 }
 
-export default Cell;
+export const Cell = injectLazyLibs([
+  'draftJs',
+  'draftJsLibIsSoftNewlineEvent',
+  'draftJsInlineToolbarPlugin',
+])(CellComponent);
+
+const Preloader = (props) => {
+  const [loaded, setLoaded] = React.useState(false);
+  React.useEffect(() => {
+    Editor.load().then(() => setLoaded(true));
+  }, []);
+  return loaded ? <Cell {...props} /> : null;
+};
+
+export default Preloader;
