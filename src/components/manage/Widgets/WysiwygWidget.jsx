@@ -165,11 +165,13 @@ class WysiwygWidgetComponent extends Component {
     const { EditorState } = props.draftJs;
     const createInlineToolbarPlugin = props.draftJsInlineToolbarPlugin.default;
 
+    this.draftConfig = config.settings.richtextEditorSettings(props);
+
     if (!__SERVER__) {
       let editorState;
       if (props.value && props.value.data) {
         const contentState = stateFromHTML(props.value.data, {
-          customBlockFn: config.settings.FromHTMLCustomBlockFn,
+          customBlockFn: this.draftConfig.FromHTMLCustomBlockFn,
         });
         editorState = EditorState.createWithContent(contentState);
       } else {
@@ -177,7 +179,7 @@ class WysiwygWidgetComponent extends Component {
       }
 
       const inlineToolbarPlugin = createInlineToolbarPlugin({
-        structure: config.settings.richTextEditorInlineToolbarButtons,
+        structure: this.draftConfig.richTextEditorInlineToolbarButtons,
       });
 
       this.state = { editorState, inlineToolbarPlugin };
@@ -225,7 +227,6 @@ class WysiwygWidgetComponent extends Component {
    */
   onChange(editorState) {
     const { convertToRaw } = this.props.draftJs;
-    const { settings } = config;
     this.setState({ editorState });
     const mockStore = configureStore();
 
@@ -245,8 +246,8 @@ class WysiwygWidgetComponent extends Component {
           <MemoryRouter>
             {redraft(
               convertToRaw(editorState.getCurrentContent()),
-              settings.ToHTMLRenderers,
-              settings.ToHTMLOptions,
+              this.draftConfig.ToHTMLRenderers,
+              this.draftConfig.ToHTMLOptions,
             )}
           </MemoryRouter>
         </Provider>,
@@ -293,7 +294,6 @@ class WysiwygWidgetComponent extends Component {
       );
     }
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
-    const { settings } = config;
 
     return (
       <FormFieldWrapper {...this.props} className="wysiwyg">
@@ -307,12 +307,12 @@ class WysiwygWidgetComponent extends Component {
                 editorState={this.state.editorState}
                 plugins={[
                   this.state.inlineToolbarPlugin,
-                  ...settings.richTextEditorPlugins,
+                  ...this.draftConfig.richTextEditorPlugins,
                 ]}
                 placeholder={this.props.placeholder}
-                blockRenderMap={settings.extendedBlockRenderMap}
-                blockStyleFn={settings.blockStyleFn}
-                customStyleMap={settings.customStyleMap}
+                blockRenderMap={this.draftConfig.extendedBlockRenderMap}
+                blockStyleFn={this.draftConfig.blockStyleFn}
+                customStyleMap={this.draftConfig.customStyleMap}
               />
               {this.props.onChange && <InlineToolbar />}
             </>
