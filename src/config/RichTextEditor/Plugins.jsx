@@ -27,7 +27,7 @@ const plugins = (props) => {
     breakOutOptions,
   );
 
-  const linkPlugin = createLinkPlugin(props);
+  const linkPlugin = createLinkPlugin({ libraries: props });
 
   const buttons = Styles(props);
   const {

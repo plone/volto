@@ -358,6 +358,7 @@ export const Edit = compose(
     'draftJsBlockBreakoutPlugin',
     'draftJsCreateInlineStyleButton',
     'draftJsCreateBlockStyleButton',
+    'immutableLib',
     // TODO: add all plugin dependencies, also in Wysiwyg and Cell
   ]),
 )(EditComponent);

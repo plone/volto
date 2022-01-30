@@ -53,4 +53,5 @@ export const loadables = {
   draftJsCreateBlockStyleButton: loadable.lib(() =>
     import('draft-js-buttons/lib/utils/createBlockStyleButton'),
   ),
+  draftJsPluginsUtils: loadable.lib(() => import('draft-js-plugins-utils')),
 };

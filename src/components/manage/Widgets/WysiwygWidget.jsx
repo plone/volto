@@ -329,8 +329,14 @@ export const WysiwygWidget = compose(
   injectIntl,
   injectLazyLibs([
     'draftJs',
-    'draftJsInlineToolbarPlugin',
+    'draftJsBlockBreakoutPlugin',
+    'draftJsCreateBlockStyleButton',
+    'draftJsCreateInlineStyleButton',
+    'draftJsFilters',
     'draftJsImportHtml',
+    'draftJsInlineToolbarPlugin',
+    'draftJsLibIsSoftNewlineEvent',
+    'immutableLib',
   ]),
   connect(
     (state, props) => ({

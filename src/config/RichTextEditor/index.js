@@ -1,18 +1,21 @@
 import ToHTMLRenderers, { options as ToHTMLOptions } from './ToHTML';
-import { extendedBlockRenderMap, blockStyleFn, listBlockTypes } from './Blocks';
+import Blocks from './Blocks';
 import Plugins from './Plugins';
 import FromHTMLCustomBlockFn from './FromHTML';
 
 export const richtextEditorSettings = (props) => {
   const { plugins, inlineToolbarButtons } = Plugins(props);
+  const { extendedBlockRenderMap, blockStyleFn, listBlockTypes } = Blocks(
+    props,
+  );
 
   return {
-    extendedBlockRenderMap: extendedBlockRenderMap(props),
+    extendedBlockRenderMap,
     blockStyleFn: blockStyleFn,
     listBlockTypes: listBlockTypes,
-    FromHTMLCustomBlockFn: FromHTMLCustomBlockFn(props),
     richTextEditorPlugins: plugins,
     richTextEditorInlineToolbarButtons: inlineToolbarButtons,
+    FromHTMLCustomBlockFn,
   };
 };
 

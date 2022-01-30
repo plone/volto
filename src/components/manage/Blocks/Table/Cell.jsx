@@ -186,8 +186,14 @@ class CellComponent extends Component {
 
 export const Cell = injectLazyLibs([
   'draftJs',
-  'draftJsLibIsSoftNewlineEvent',
+  'draftJsBlockBreakoutPlugin',
+  'draftJsCreateBlockStyleButton',
+  'draftJsCreateInlineStyleButton',
+  'draftJsFilters',
+  'draftJsImportHtml',
   'draftJsInlineToolbarPlugin',
+  'draftJsLibIsSoftNewlineEvent',
+  'immutableLib',
 ])(CellComponent);
 
 const Preloader = (props) => {
