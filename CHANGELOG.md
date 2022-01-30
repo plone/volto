@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Alias `lodash` to `lodash-es`, as this will include only one copy of lodash in the bundle @tiberiuichim
+
 ## 14.7.0 (2022-01-28)
 
 ### Feature

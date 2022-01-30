@@ -212,6 +212,7 @@ const defaultModify = ({
     '@package': `${projectRootPath}/src`,
     // we're incorporating redux-connect
     'redux-connect': `${registry.voltoPath}/src/helpers/AsyncConnect`,
+    lodash: path.dirname(require.resolve('lodash-es')),
   };
 
   config.performance = {
