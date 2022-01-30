@@ -14,8 +14,8 @@ import blockquoteSVG from '@plone/volto/icons/quote.svg';
 import calloutSVG from '@plone/volto/icons/megaphone.svg';
 
 export default function (props) {
-  const createInlineStyleButton = props.draftJsCreateInlineStyleButton;
-  const createBlockStyleButton = props.draftJsCreateBlockStyleButton;
+  const createInlineStyleButton = props.draftJsCreateInlineStyleButton.default;
+  const createBlockStyleButton = props.draftJsCreateBlockStyleButton.default;
 
   const BoldButton = createInlineStyleButton({
     style: 'BOLD',

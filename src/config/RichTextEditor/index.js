@@ -5,13 +5,14 @@ import FromHTMLCustomBlockFn from './FromHTML';
 
 export const richtextEditorSettings = (props) => {
   const { plugins, inlineToolbarButtons } = Plugins(props);
+
   return {
     extendedBlockRenderMap: extendedBlockRenderMap(props),
     blockStyleFn: blockStyleFn,
     listBlockTypes: listBlockTypes,
     FromHTMLCustomBlockFn: FromHTMLCustomBlockFn(props),
-    richTextEditorPlugins: plugins(props),
-    richTextEditorInlineToolbarButtons: inlineToolbarButtons(props),
+    richTextEditorPlugins: plugins,
+    richTextEditorInlineToolbarButtons: inlineToolbarButtons,
   };
 };
 

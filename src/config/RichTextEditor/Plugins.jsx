@@ -23,7 +23,9 @@ const breakOutOptions = {
 const plugins = (props) => {
   const { draftJsInlineToolbarPlugin, draftJsBlockBreakoutPlugin } = props;
   const { Separator } = draftJsInlineToolbarPlugin;
-  const blockBreakoutPlugin = draftJsBlockBreakoutPlugin(breakOutOptions);
+  const blockBreakoutPlugin = draftJsBlockBreakoutPlugin.default(
+    breakOutOptions,
+  );
   const linkPlugin = createLinkPlugin(props);
 
   const buttons = Styles(props);
