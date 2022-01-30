@@ -11,9 +11,16 @@ import { injectIntl } from 'react-intl';
 import { FormFieldWrapper } from '@plone/volto/components';
 
 /**
- * TextareaWidget component class.
- * @function TextareaWidget
- * @returns {string} Markup of the component.
+ * TextareaWidget, a widget for multiple lines text
+ *
+ * To use it, in schema properties, declare a field like:
+ *
+ * ```jsx
+ * {
+ *  title: "Text",
+ *  widget: 'textarea',
+ * }
+ * ```
  */
 const TextareaWidget = (props) => {
   const { id, maxLength, value, onChange, placeholder } = props;

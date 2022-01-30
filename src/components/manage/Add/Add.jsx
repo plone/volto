@@ -12,8 +12,6 @@ import { keys, isEmpty } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Button, Grid, Menu } from 'semantic-ui-react';
 import { Portal } from 'react-portal';
-import { DragDropContext } from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
 import { v4 as uuid } from 'uuid';
 import qs from 'query-string';
 import { toast } from 'react-toastify';
@@ -33,6 +31,7 @@ import {
   flattenToAppURL,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
+  getLanguageIndependentFields,
   langmap,
   normalizeLanguageName,
 } from '@plone/volto/helpers';
@@ -149,7 +148,7 @@ class Add extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    this.props.getSchema(this.props.type);
+    this.props.getSchema(this.props.type, getBaseUrl(this.props.pathname));
     this.setState({ isClient: true });
   }
 
@@ -297,6 +296,16 @@ class Add extends Component {
         });
       }
 
+      const lifData = () => {
+        const data = {};
+        if (translationObject) {
+          getLanguageIndependentFields(this.props.schema).forEach(
+            (lif) => (data[lif] = translationObject[lif]),
+          );
+        }
+        return data;
+      };
+
       const pageAdd = (
         <div id="page-add">
           <Helmet
@@ -308,6 +317,7 @@ class Add extends Component {
             ref={this.form}
             key="translated-or-new-content-form"
             schema={this.props.schema}
+            type={this.props.type}
             formData={{
               ...(blocksFieldname && {
                 [blocksFieldname]:
@@ -322,6 +332,9 @@ class Add extends Component {
                       ?.items,
                 },
               }),
+              // Copy the Language Independent Fields values from the to-be translated content
+              // into the default values of the translated content Add form.
+              ...lifData(),
             }}
             requestError={this.state.error}
             onSubmit={this.onSubmit}
@@ -431,7 +444,6 @@ class Add extends Component {
 }
 
 export default compose(
-  DragDropContext(HTML5Backend),
   injectIntl,
   connect(
     (state, props) => ({

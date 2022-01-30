@@ -6,10 +6,17 @@ export const loadables = {
   prismCore: loadable.lib(() => import('prismjs/components/prism-core')),
   toastify: loadable.lib(() => import('react-toastify')),
   reactSelect: loadable.lib(() => import('react-select'), { ssr: false }),
+  reactWindow: loadable.lib(() => import('react-window'), { ssr: false }),
+  reactSortableHOC: loadable.lib(() => import('react-sortable-hoc'), {
+    ssr: false,
+  }),
   reactSelectAsyncPaginate: loadable.lib(
     () => import('react-select-async-paginate'),
     { ssr: false },
   ),
+  reactSelectAsync: loadable.lib(() => import('react-select/async'), {
+    ssr: false,
+  }),
   reactSelectCreateable: loadable.lib(() => import('react-select/creatable'), {
     ssr: false,
   }),
@@ -20,4 +27,9 @@ export const loadables = {
     },
   ),
   diffLib: loadable.lib(() => import('diff')),
+  moment: loadable.lib(() => import('moment')),
+  reactDates: loadable.lib(() => import('react-dates')),
+  reactDnd: loadable.lib(() => import('react-dnd')),
+  reactDndHtml5Backend: loadable.lib(() => import('react-dnd-html5-backend')),
+  reactBeautifulDnd: loadable.lib(() => import('react-beautiful-dnd')),
 };

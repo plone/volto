@@ -23,6 +23,7 @@ The default values from Volto configuration expect a Plone content backend locat
 - `devProxyToApiPath` - The real backend URL, picked up by the Volto Node.js server process. By default, `http://localhost:8080/Plone`
 
 
+<<<<<<< HEAD
 What happens in the default development configuration/setup:
 
 * The client side Volto javascript files precooked HTML (SSR) is served from http://localhost:3000/ by the NodeJS server process
@@ -30,11 +31,17 @@ What happens in the default development configuration/setup:
 * The NodeJS service its internal proxy requests the data from the Plone content backend api and delivers
 back json to the frontend.
 * The web browser application is happy, because all connections go through the same URL and no CORS related security issues will be triggered.
+=======
+Here are some examples.
+>>>>>>> master
 
 !!! tip
-    You could also use the internal proxy for production setups. For convenience and for testing/demoing using the stock build, it is also enabled in production mode since Volto 14. But it is bad for
-    performance because the server side running Node process is also responsable for generating the
-    SSR HTML. With Nginx, Apache or another 'reverse proxy' you can also create an internal API mount which is more suited for that. For more deployment information see ['Seemless mode'](/deploying/seamless-mode)
+    You could also use the internal proxy for production setups. For convenience and for
+    testing/demoing using the stock build, it is also enabled in production mode since 
+    Volto 14. But it is bad for performance because the server side running Node process
+    is also responsable for generating the SSR HTML. With Nginx, Apache or another
+    'reverse proxy' you can also create an internal API mount which is more suited for
+    that. For more deployment information see ['Seemless mode'](/deploying/seamless-mode)
 
 ### Examples redefining the proxy target
 
@@ -54,8 +61,8 @@ or use the environment variable:
 RAZZLE_DEV_PROXY_API_PATH=http://localhost:8081/mysite yarn start
 ```
 
-This redefines the request path from the server side Node proces to the Plone content backend API, but
-leaves the frontend Volto process making all content requests to http://locahost:3000/
+This redefines the request path from the internal proxy of the server side Node proces to the Plone content backend API, but leaves the frontend Volto process making all content requests to http://locahost:3000/++api++/
+
 ### Disabling the proxy
 
 ```js
@@ -71,20 +78,14 @@ or use the environment variable:
 RAZZLE_DEV_PROXY_API_PATH= RAZZLE_API_PATH=http://localhost:8081/mysite yarn start
 ```
 
-If you disable the proxy, the frontend Volto javascript process in the browser will directly query 
-the Plone content backend API. If that URL is on a different domain as from which Volto is
-initially served, you will run into CORS issues if the content backend API doesn't contain the correct
-CORS headers. 
+If you disable the proxy, the frontend Volto javascript process in the browser will
+directly query the Plone content backend API. If that URL is on a different domain as
+from which Volto is initially served, you will run into CORS issues if the content
+backend API doesn't contain the correct CORS headers. 
 
 !!! tip
     To view the existing configuration, add console.log(config) to the `applyConfig` function. This dumps the existing config to your terminal console.
 
 ### Advanced usage
 
-It's possible to define the proxy target more accuratelly using the `RAZZLE_PROXY_REWRITE_TARGET` environment variable, or the `proxyRewriteTarget` setting in the configuration object.
-
-This allows you to run Volto against an external (not local) site, e.g. for debugging purposes. In theory then, this is possible:
-
-```bash
-RAZZLE_PROXY_REWRITE_TARGET=https://plone.org RAZZLE_DEV_PROXY_API_PATH=https://plone.org yarn start
-```
+See [](../recipes/environment-variables.md) for recipes on internal proxy usage.

@@ -176,7 +176,8 @@ export function isInternalURL(url) {
   return (
     url &&
     (url.indexOf(settings.publicURL) !== -1 ||
-      url.indexOf(settings.internalApiPath) !== -1 ||
+      (settings.internalApiPath &&
+        url.indexOf(settings.internalApiPath) !== -1) ||
       url.indexOf(settings.apiPath) !== -1 ||
       url.charAt(0) === '/' ||
       url.charAt(0) === '.' ||

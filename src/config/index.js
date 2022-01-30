@@ -26,6 +26,7 @@ import {
   requiredBlocks,
   blocksConfig,
   initialBlocks,
+  initialBlocksFocus,
 } from './Blocks';
 import { loadables } from './Loadables';
 
@@ -105,7 +106,7 @@ let config = {
     ToHTMLRenderers,
     ToHTMLOptions,
     imageObjects: ['Image'],
-    downloadableObjects: ['Link'],
+    downloadableObjects: ['File'], //list of content-types for which the direct download of the file will be carried out if the user is not authenticated
     listingPreviewImageField: 'image', // deprecated from Volto 14 onwards
     customStyleMap: null,
     notSupportedBrowsers: ['ie'],
@@ -132,6 +133,7 @@ let config = {
         'prismCore',
         'toastify',
         'reactSelect',
+        'reactBeautifulDnd',
         // 'diffLib',
       ],
     },
@@ -157,6 +159,7 @@ let config = {
     showSelfRegistration: false,
     contentMetadataTagsImageField: 'image',
     hasWorkingCopySupport: false,
+    maxUndoLevels: 200, // undo history size for the main form
   },
   widgets: {
     ...widgetMapping,
@@ -173,6 +176,7 @@ let config = {
     blocksConfig,
     groupBlocksOrder,
     initialBlocks,
+    initialBlocksFocus,
     showEditBlocksInBabelView: false,
   },
   addonRoutes: [],

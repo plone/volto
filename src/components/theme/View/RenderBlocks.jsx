@@ -1,5 +1,5 @@
 import React from 'react';
-import { getBaseUrl } from '@plone/volto/helpers';
+import { getBaseUrl, applyBlockDefaults } from '@plone/volto/helpers';
 import { defineMessages, injectIntl } from 'react-intl';
 import { map } from 'lodash';
 import {
@@ -28,13 +28,21 @@ const RenderBlocks = (props) => {
       {map(content[blocksLayoutFieldname].items, (block) => {
         const Block =
           blocksConfig[content[blocksFieldname]?.[block]?.['@type']]?.view;
+
+        const blockData = applyBlockDefaults({
+          data: content[blocksFieldname][block],
+          intl,
+          metadata,
+          properties: content,
+        });
+
         return Block ? (
           <Block
             key={block}
             id={block}
             metadata={metadata}
             properties={content}
-            data={content[blocksFieldname][block]}
+            data={blockData}
             path={getBaseUrl(path || '')}
             blocksConfig={blocksConfig}
           />

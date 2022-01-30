@@ -5,7 +5,7 @@
 Volto can be installed in any operating system assuming that this requirements
 are met:
 
-- [Node.js LTS (14.x, 16.x)](https://nodejs.org/)
+- [Node.js LTS (16.x)](https://nodejs.org/)
 - [Python 3.7.x / 3.8.x](https://python.org/) or
 - [Docker](https://www.docker.com/get-started) (if using the Plone/Guillotina
   docker images)
@@ -121,13 +121,17 @@ should not throw an error and show the current running containers.
 
 When you have installed Docker, you can use the official Plone Docker container with the proper configuration for Volto using the `plone.volto` add'on right away by issuing:
 
+
 ```shell
 docker run -it --rm --name=plone \
-  -p 8080:8080 -e SITE=Plone -e ADDONS="plone.volto" \
-  -e ZCML="plone.volto.cors" \
+  -p 8080:8080 -e SITE=Plone -e \
+  ADDONS="plone.restapi==8.18.0 plone.app.iterate==4.0.2 plone.rest==2.0.0a1 plone.app.vocabularies==4.3.0 plone.volto==3.1.0a8" \
   -e PROFILES="plone.volto:default-homepage" \
-  plone
+  plone/plone-backend
 ```
+
+!!! tip
+    This setup is meant only for demonstration and quick testing purposes (since it destroys the container on exit (--rm)). In case you need production ready deployment, check the latest [Plone Deployment Training](https://training.plone.org/5/plone-deployment/index.html).
 
 !!! note
     The example above does not persist yet any changes you make through Volto in
