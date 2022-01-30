@@ -5,11 +5,8 @@
 
 import React, { Component } from 'react';
 import { compose } from 'redux';
-// import { Map } from 'immutable';
 import PropTypes from 'prop-types';
-// import { stateFromHTML } from 'draft-js-import-html';
 import { isEqual } from 'lodash';
-// import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
