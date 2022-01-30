@@ -4,13 +4,15 @@
  */
 
 import React, { Component } from 'react';
-import { Map } from 'immutable';
+import { compose } from 'redux';
+// import { Map } from 'immutable';
 import PropTypes from 'prop-types';
-import { stateFromHTML } from 'draft-js-import-html';
+// import { stateFromHTML } from 'draft-js-import-html';
 import { isEqual } from 'lodash';
-import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
+// import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import config from '@plone/volto/registry';
 
 const messages = defineMessages({
@@ -19,14 +21,6 @@ const messages = defineMessages({
     defaultMessage: 'Add a description…',
   },
 });
-
-const blockRenderMap = Map({
-  unstyled: {
-    element: 'div',
-  },
-});
-
-const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMap);
 
 /**
  * Edit description block class.
@@ -72,9 +66,26 @@ class Edit extends Component {
     super(props);
 
     if (!__SERVER__) {
+      const { Editor, EditorState, DefaultDraftBlockRenderMap } = props.draftJs;
+      const { Map } = props.immutableLib;
+
+      this.Editor = Editor;
+      this.EditorState = EditorState;
+      this.stateFromHTML = props.draftJsImportHtml.stateFromHTML;
+
+      const blockRenderMap = Map({
+        unstyled: {
+          element: 'div',
+        },
+      });
+
+      this.extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(
+        blockRenderMap,
+      );
+
       let editorState;
       if (props.properties && props.properties.description) {
-        const contentState = stateFromHTML(props.properties.description);
+        const contentState = this.stateFromHTML(props.properties.description);
         editorState = EditorState.createWithContent(contentState);
       } else {
         editorState = EditorState.createEmpty();
@@ -109,11 +120,11 @@ class Edit extends Component {
       this.props.properties.description !== nextProps.properties.description &&
       !this.state.focus
     ) {
-      const contentState = stateFromHTML(nextProps.properties.description);
+      const contentState = this.stateFromHTML(nextProps.properties.description);
       this.setState({
         editorState: nextProps.properties.description
-          ? EditorState.createWithContent(contentState)
-          : EditorState.createEmpty(),
+          ? this.EditorState.createWithContent(contentState)
+          : this.EditorState.createEmpty(),
       });
     }
 
@@ -163,6 +174,9 @@ class Edit extends Component {
     if (__SERVER__) {
       return <div />;
     }
+
+    const Editor = this.editor;
+
     return (
       <div
         className={cx('block description', { selected: this.props.selected })}
@@ -171,7 +185,7 @@ class Edit extends Component {
           onChange={this.onChange}
           editorState={this.state.editorState}
           readOnly={!this.props.editable}
-          blockRenderMap={extendedBlockRenderMap}
+          blockRenderMap={this.extendedBlockRenderMap}
           handleReturn={() => {
             if (this.props.data?.disableNewBlocks) {
               return 'handled';
@@ -223,4 +237,7 @@ class Edit extends Component {
   }
 }
 
-export default injectIntl(Edit);
+export default compose(
+  injectLazyLibs(['draftJs', 'immutableLib']),
+  injectIntl,
+)(Edit);
