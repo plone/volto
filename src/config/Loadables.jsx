@@ -47,4 +47,10 @@ export const loadables = {
   draftJsBlockBreakoutPlugin: loadable.lib(() =>
     import('draft-js-block-breakout-plugin'),
   ),
+  draftJsCreateInlineStyleButton: loadable.lib(() =>
+    import('draft-js-buttons/lib/utils/createInlineStyleButton'),
+  ),
+  draftJsCreateBlockStyleButton: loadable.lib(() =>
+    import('draft-js-buttons/lib/utils/createBlockStyleButton'),
+  ),
 };

@@ -356,6 +356,8 @@ export const Edit = compose(
     'draftJsFilters',
     'draftJsInlineToolbarPlugin',
     'draftJsBlockBreakoutPlugin',
+    'draftJsCreateInlineStyleButton',
+    'draftJsCreateBlockStyleButton',
     // TODO: add all plugin dependencies, also in Wysiwyg and Cell
   ]),
 )(EditComponent);
