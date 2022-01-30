@@ -59,11 +59,12 @@ class CellComponent extends Component {
     const createInlineToolbarPlugin = props.draftJsInlineToolbarPlugin.default;
 
     if (!__SERVER__) {
+      this.draftConfig = config.settings.richtextEditorSettings(props);
       let editorState;
       editorState = EditorState.createWithContent(convertFromRaw(props.value));
 
       const inlineToolbarPlugin = createInlineToolbarPlugin({
-        structure: config.settings.richTextEditorInlineToolbarButtons,
+        structure: this.draftConfig.richTextEditorInlineToolbarButtons,
       });
 
       this.state = {
@@ -129,7 +130,6 @@ class CellComponent extends Component {
     }
 
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
-    const { settings } = config;
     const isSoftNewlineEvent = this.props.draftJsLibIsSoftNewlineEvent.default;
     const { RichUtils } = this.props.draftJs;
 
@@ -141,11 +141,11 @@ class CellComponent extends Component {
           editorState={this.state.editorState}
           plugins={[
             this.state.inlineToolbarPlugin,
-            ...settings.richTextEditorPlugins,
+            ...this.draftConfig.richTextEditorPlugins,
           ]}
-          blockRenderMap={settings.extendedBlockRenderMap}
-          blockStyleFn={settings.blockStyleFn}
-          customStyleMap={settings.customStyleMap}
+          blockRenderMap={this.draftConfig.extendedBlockRenderMap}
+          blockStyleFn={this.draftConfig.blockStyleFn}
+          customStyleMap={this.draftConfig.customStyleMap}
           handleReturn={(e) => {
             if (isSoftNewlineEvent(e)) {
               this.onChange(
@@ -161,10 +161,10 @@ class CellComponent extends Component {
                 anchorKey,
               );
               const blockType = currentContentBlock.getType();
-              if (!includes(settings.listBlockTypes, blockType)) {
+              if (!includes(this.draftConfig.listBlockTypes, blockType)) {
                 this.props.onSelectBlock(
                   this.props.onAddBlock(
-                    settings.defaultBlockType,
+                    this.draftConfig.defaultBlockType,
                     this.props.index + 1,
                   ),
                 );
