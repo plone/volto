@@ -246,8 +246,8 @@ class WysiwygWidgetComponent extends Component {
           <MemoryRouter>
             {redraft(
               convertToRaw(editorState.getCurrentContent()),
-              this.draftConfig.ToHTMLRenderers,
-              this.draftConfig.ToHTMLOptions,
+              config.settings.richtextViewSettings.ToHTMLRenderers,
+              config.settings.richtextViewSettings.ToHTMLOptions,
             )}
           </MemoryRouter>
         </Provider>,

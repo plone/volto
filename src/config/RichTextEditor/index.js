@@ -11,9 +11,10 @@ export const richtextEditorSettings = (props) => {
     FromHTMLCustomBlockFn: FromHTMLCustomBlockFn(props),
     richTextEditorPlugins: plugins(props),
     richTextEditorInlineToolbarButtons: inlineToolbarButtons(props),
-    ToHTMLRenderers: ToHTMLRenderers(props),
-    ToHTMLOptions,
   };
 };
 
-export default richtextEditorSettings;
+export const richtextViewSettings = {
+  ToHTMLRenderers,
+  ToHTMLOptions,
+};

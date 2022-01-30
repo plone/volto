@@ -24,7 +24,7 @@ import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
 import { controlPanelsIcons } from './ControlPanels';
 
-import richtextEditorSettings from './RichTextEditor';
+import { richtextEditorSettings, richtextViewSettings } from './RichTextEditor';
 
 import applyAddonConfiguration from 'load-volto-addons';
 
@@ -90,6 +90,7 @@ let config = {
     legacyTraverse: process.env.RAZZLE_LEGACY_TRAVERSE || false,
     nonContentRoutes,
     richtextEditorSettings,
+    richtextViewSettings,
     imageObjects: ['Image'],
     downloadableObjects: ['File'], //list of content-types for which the direct download of the file will be carried out if the user is not authenticated
     listingPreviewImageField: 'image', // deprecated from Volto 14 onwards

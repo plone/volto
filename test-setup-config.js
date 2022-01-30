@@ -34,9 +34,12 @@ const richtextEditorSettings = (props) => {
     FromHTMLCustomBlockFn,
     // richTextEditorPlugins: plugins,
     // richTextEditorInlineToolbarButtons: inlineToolbarButtons,
-    ToHTMLRenderers,
-    ToHTMLOptions,
   };
+};
+
+const richtextViewSettings = {
+  ToHTMLRenderers,
+  ToHTMLOptions,
 };
 
 config.set('settings', {
@@ -47,6 +50,7 @@ config.set('settings', {
   isMultilingual: false,
   nonContentRoutes,
   richtextEditorSettings,
+  richtextViewSettings,
   contentIcons: contentIcons,
   loadables,
   lazyBundles: {
