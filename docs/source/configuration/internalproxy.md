@@ -11,19 +11,14 @@ To understand the need for the internal proxy, there are three processes running
 
 1. A frontend web application running in your browser (Javascript)
 2. A Node.js server process that delivers the javascript to the client and does
-   Server Side Generation (SSR) of your pages on first request (Javascript, the
+   Server Side Rendering (SSR) of your pages on first request (Javascript, the
    Razzle package is used for SSR)
 3. A Plone server process that stores and delivers all content through a REST API (Python)
 
 ## Configuration
 
-The default values from Volto configuration expect a Plone content backend located at `http://localhost:8080/Plone`. Below are the settings that allows you to change the its location
+The default values from Volto configuration expect a Plone content backend located at `http://localhost:8080/Plone`.
 
-- `apiPath` [API_PATH] - URL of the backend, used by Volto running in the frontend browser. By default, the proxy URL. (http://localhost:3000/++api++/)
-- `devProxyToApiPath` - The real backend URL, picked up by the Volto Node.js server process. By default, `http://localhost:8080/Plone`
-
-
-<<<<<<< HEAD
 What happens in the default development configuration/setup:
 
 * The client side Volto javascript files precooked HTML (SSR) is served from http://localhost:3000/ by the NodeJS server process
@@ -31,9 +26,6 @@ What happens in the default development configuration/setup:
 * The NodeJS service its internal proxy requests the data from the Plone content backend api and delivers
 back json to the frontend.
 * The web browser application is happy, because all connections go through the same URL and no CORS related security issues will be triggered.
-=======
-Here are some examples.
->>>>>>> master
 
 !!! tip
     You could also use the internal proxy for production setups. For convenience and for

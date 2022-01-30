@@ -19,7 +19,7 @@ There are three processes continuously running when you have a working Volto web
 
 1. A frontend web application running in your browser (Javascript)
 2. A Node.js server process that delivers the javascript to the client and does
-   Server Side Generation (SSR) of your pages on first request (Javascript, the
+   Server Side Rendering (SSR) of your pages on first request (Javascript, the
    Razzle package is used for SSR)
 3. A Plone server process that stores and delivers all content through a REST API (Python)
 
