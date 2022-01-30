@@ -129,6 +129,7 @@ let config = {
         'draftJsFilters',
         'draftJsInlineToolbarPlugin',
         'draftJsImportHtml',
+        'draftJsBlockBreakoutPlugin',
       ],
     },
     appExtras: [],

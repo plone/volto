@@ -1,8 +1,8 @@
-import { Separator } from 'draft-js-inline-toolbar-plugin';
-
-import createBlockBreakoutPlugin from 'draft-js-block-breakout-plugin';
 import createLinkPlugin from '@plone/volto/components/manage/AnchorPlugin';
-//import createLinkDetectionPlugin from '@plone/volto/components/manage/LinkDetectionPlugin/link-detection-plugin';
+
+// import { Separator } from 'draft-js-inline-toolbar-plugin';
+// import createBlockBreakoutPlugin from 'draft-js-block-breakout-plugin';
+// import createLinkDetectionPlugin from '@plone/volto/components/manage/LinkDetectionPlugin/link-detection-plugin';
 
 import {
   BlockquoteButton,
@@ -31,23 +31,29 @@ const breakOutOptions = {
   ],
 };
 
-const blockBreakoutPlugin = createBlockBreakoutPlugin(breakOutOptions);
-const linkPlugin = createLinkPlugin();
 //const linkDetectionPlugin = createLinkDetectionPlugin();
 
-export const inlineToolbarButtons = () => [
-  BoldButton,
-  ItalicButton,
-  linkPlugin.LinkButton,
-  Separator,
-  HeadlineTwoButton,
-  HeadlineThreeButton,
-  UnorderedListButton,
-  OrderedListButton,
-  BlockquoteButton,
-  CalloutButton,
-];
+const plugins = ({
+  draftJsInlineToolbarPlugin,
+  draftJsBlockBreakoutPlugin,
+}) => {
+  const { Separator } = draftJsInlineToolbarPlugin;
+  const blockBreakoutPlugin = draftJsBlockBreakoutPlugin(breakOutOptions);
+  const linkPlugin = createLinkPlugin();
 
-const plugins = () => [linkPlugin, blockBreakoutPlugin]; //linkDetectionPlugin
+  const inlineToolbarButtons = () => [
+    BoldButton,
+    ItalicButton,
+    linkPlugin.LinkButton,
+    Separator,
+    HeadlineTwoButton,
+    HeadlineThreeButton,
+    UnorderedListButton,
+    OrderedListButton,
+    BlockquoteButton,
+    CalloutButton,
+  ];
+  return { inlineToolbarButtons, plugins: [linkPlugin, blockBreakoutPlugin] }; //linkDetectionPlugin
+};
 
 export default plugins;

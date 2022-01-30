@@ -44,4 +44,7 @@ export const loadables = {
     import('draft-js-inline-toolbar-plugin'),
   ),
   draftJsImportHtml: loadable.lib(() => import('draft-js-import-html')),
+  draftJsBlockBreakoutPlugin: loadable.lib(() =>
+    import('draft-js-block-breakout-plugin'),
+  ),
 };

@@ -355,6 +355,8 @@ export const Edit = compose(
     'draftJsLibIsSoftNewlineEvent',
     'draftJsFilters',
     'draftJsInlineToolbarPlugin',
+    'draftJsBlockBreakoutPlugin',
+    // TODO: add all plugin dependencies, also in Wysiwyg and Cell
   ]),
 )(EditComponent);
 
