@@ -35,7 +35,7 @@ const blockBreakoutPlugin = createBlockBreakoutPlugin(breakOutOptions);
 const linkPlugin = createLinkPlugin();
 //const linkDetectionPlugin = createLinkDetectionPlugin();
 
-export const inlineToolbarButtons = [
+export const inlineToolbarButtons = () => [
   BoldButton,
   ItalicButton,
   linkPlugin.LinkButton,
@@ -48,6 +48,6 @@ export const inlineToolbarButtons = [
   CalloutButton,
 ];
 
-const plugins = [linkPlugin, blockBreakoutPlugin]; //linkDetectionPlugin
+const plugins = () => [linkPlugin, blockBreakoutPlugin]; //linkDetectionPlugin
 
 export default plugins;

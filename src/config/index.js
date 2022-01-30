@@ -11,16 +11,6 @@ import {
   errorViews,
 } from './Views';
 import { nonContentRoutes } from './NonContentRoutes';
-import ToHTMLRenderers, {
-  options as ToHTMLOptions,
-} from './RichTextEditor/ToHTML';
-import {
-  extendedBlockRenderMap,
-  blockStyleFn,
-  listBlockTypes,
-} from './RichTextEditor/Blocks';
-import plugins, { inlineToolbarButtons } from './RichTextEditor/Plugins';
-import FromHTMLCustomBlockFn from './RichTextEditor/FromHTML';
 import {
   groupBlocksOrder,
   requiredBlocks,
@@ -33,6 +23,8 @@ import { loadables } from './Loadables';
 import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
 import { controlPanelsIcons } from './ControlPanels';
+
+import richtextEditorSettings from './RichTextEditor';
 
 import applyAddonConfiguration from 'load-volto-addons';
 
@@ -97,14 +89,7 @@ let config = {
     // TODO: legacyTraverse to be removed when the use of the legacy traverse is deprecated.
     legacyTraverse: process.env.RAZZLE_LEGACY_TRAVERSE || false,
     nonContentRoutes,
-    extendedBlockRenderMap,
-    blockStyleFn,
-    listBlockTypes,
-    FromHTMLCustomBlockFn,
-    richTextEditorInlineToolbarButtons: inlineToolbarButtons,
-    richTextEditorPlugins: plugins,
-    ToHTMLRenderers,
-    ToHTMLOptions,
+    richtextEditorSettings,
     imageObjects: ['Image'],
     downloadableObjects: ['File'], //list of content-types for which the direct download of the file will be carried out if the user is not authenticated
     listingPreviewImageField: 'image', // deprecated from Volto 14 onwards

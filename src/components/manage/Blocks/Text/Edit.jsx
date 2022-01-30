@@ -77,6 +77,11 @@ export class EditComponent extends Component {
    */
   constructor(props) {
     super(props);
+
+    const { settings } = config;
+
+    this.draftConfig = settings.richtextEditorSettings(props);
+
     const { EditorState, convertFromRaw } = props.draftJs;
     const createInlineToolbarPlugin = props.draftJsInlineToolbarPlugin.default;
 
@@ -91,7 +96,7 @@ export class EditComponent extends Component {
       }
 
       const inlineToolbarPlugin = createInlineToolbarPlugin({
-        structure: config.settings.richTextEditorInlineToolbarButtons,
+        structure: this.draftConfig.richTextEditorInlineToolbarButtons,
       });
 
       this.state = {
@@ -225,6 +230,8 @@ export class EditComponent extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    // console.log('draft config', this.draftConfig);
+
     if (__SERVER__) {
       return <div />;
     }
@@ -237,7 +244,7 @@ export class EditComponent extends Component {
     const disableNewBlocks =
       this.props.data?.disableNewBlocks || this.props.detached;
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
-    const { settings } = config;
+    // const { settings } = config;
 
     const isSoftNewlineEvent = this.props.draftJsLibIsSoftNewlineEvent.default;
     const { RichUtils } = this.props.draftJs;
@@ -250,11 +257,12 @@ export class EditComponent extends Component {
           editorState={this.state.editorState}
           plugins={[
             this.state.inlineToolbarPlugin,
-            ...settings.richTextEditorPlugins,
+            // ...settings.richTextEditorPlugins,
+            ...this.draftConfig.richTextEditorPlugins,
           ]}
-          blockRenderMap={settings.extendedBlockRenderMap}
-          blockStyleFn={settings.blockStyleFn}
-          customStyleMap={settings.customStyleMap}
+          blockRenderMap={this.draftConfig.extendedBlockRenderMap}
+          blockStyleFn={this.draftConfig.blockStyleFn}
+          customStyleMap={this.draftConfig.customStyleMap}
           placeholder={placeholder}
           handleReturn={(e) => {
             if (isSoftNewlineEvent(e)) {
@@ -271,7 +279,7 @@ export class EditComponent extends Component {
                 anchorKey,
               );
               const blockType = currentContentBlock.getType();
-              if (!includes(settings.listBlockTypes, blockType)) {
+              if (!includes(this.draftConfig.listBlockTypes, blockType)) {
                 this.props.onSelectBlock(
                   this.props.onAddBlock(
                     config.settings.defaultBlockType,

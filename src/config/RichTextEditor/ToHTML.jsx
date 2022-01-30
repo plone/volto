@@ -251,10 +251,10 @@ export const options = {
   // joinOutput: true,
 };
 
-const renderers = {
+const renderers = () => ({
   inline,
   blocks,
   entities,
-};
+});
 
 export default renderers;
