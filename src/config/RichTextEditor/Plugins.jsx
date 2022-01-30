@@ -26,6 +26,7 @@ const plugins = (props) => {
   const blockBreakoutPlugin = draftJsBlockBreakoutPlugin.default(
     breakOutOptions,
   );
+
   const linkPlugin = createLinkPlugin(props);
 
   const buttons = Styles(props);
@@ -40,7 +41,7 @@ const plugins = (props) => {
     CalloutButton,
   } = buttons;
 
-  const inlineToolbarButtons = () => [
+  const inlineToolbarButtons = [
     BoldButton,
     ItalicButton,
     linkPlugin.LinkButton,
@@ -52,6 +53,7 @@ const plugins = (props) => {
     BlockquoteButton,
     CalloutButton,
   ];
+
   return { inlineToolbarButtons, plugins: [linkPlugin, blockBreakoutPlugin] }; //linkDetectionPlugin
 };
 
