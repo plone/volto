@@ -11,6 +11,10 @@ html_meta:
 - https://python-markdown.github.io/extensions/
 - https://facelessuser.github.io/pymdown-extensions/extensions/
 
+```{seealso}
+{doc}`/contributing/writing-docs-guide`
+```
+
 ## Admonition
 
 ```{note}
@@ -29,20 +33,38 @@ This is an admonition box without a title.
 This is an admonition box without a title.
 ```
 
-```{danger} Don't try this at home
+```{danger}
+Don't try this at home.
 ```
 
 ```{seealso}
-This is a see also section
+This is a see also section.
 ```
 
 ```{deprecated} 13
 This is an admonition box without a title.
 ```
 
+
 ## Links
 
-Magic link https://volto.kitconcept.com
+Magic link (bare URLs via `linkify` Sphinx extension)
+
+https://volto.kitconcept.com
+
+Link to a file in the documentation.
+
+{doc}`plone6index`
+
+
+(volto-demo-label)=
+
+### Link to an arbitrary target
+
+This requires setting up a label above a heading, then using MyST syntax to create a link to that label.
+
+Click the reference {ref}`volto-demo-label` to jump to the target.
+
 
 ## Code
 
