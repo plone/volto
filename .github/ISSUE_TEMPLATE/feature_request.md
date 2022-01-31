@@ -1,18 +1,9 @@
 ---
-html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
----
-
----
 name: Feature request
 about: Suggest an idea for Volto
 title: ''
 labels: '04 type: enhancement'
 assignees: ''
-
 ---
 
 **Is your feature request related to a problem? Please describe.**

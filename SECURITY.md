@@ -1,11 +1,3 @@
----
-html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
----
-
 # Security Policy
 
 ## Supported Versions
@@ -20,4 +12,3 @@ Volto is currently under very active development. Therefore we only support the 
 ## Reporting a Vulnerability
 
 If you found a possible vulnerability please contact the Plone security team under security@plone.org.
-

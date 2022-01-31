@@ -1,11 +1,3 @@
----
-html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
----
-
 ## Documentation
 
 A training on how to create your own website using Volto is available as part of the Plone training at [https://training.plone.org/5/volto/index.html](https://training.plone.org/5/volto/index.html).
@@ -43,7 +35,6 @@ By default, runs tests related to files changed since the last commit.
 
 Runs the test i18n runner which extracts all the translation strings and
 generates the needed files.
-
 
 ### mrs-developer
 

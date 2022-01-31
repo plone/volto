@@ -1,11 +1,3 @@
----
-html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
----
-
 # Volto
 
 <img align="right" width="300" alt="Volto png" src="./docs/logos/volto-colorful.png" />
