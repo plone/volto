@@ -22,27 +22,26 @@ You can watch the talk during the World Plone Day 2021:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/kHec4MXH8vo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## Presentations at PloneConf
+## Presentations at the last two PloneConf's
 
-### PloneConf 2021
+In recent years the new Volto frontend for Plone has been presented in more and more talks from
+our yearly Conferences:
 
-[Playlist on YouTube](https://www.youtube.com/playlist?list=PLGN9BI-OAQkQDLQinBwdEXpebDTQCwdGi)
+- [PloneConf 2021 Playlist on YouTube](https://www.youtube.com/playlist?list=PLGN9BI-OAQkQDLQinBwdEXpebDTQCwdGi)
 
-### PloneConf 2020
+- [PloneConf 2020 Playlist on YouTube](https://www.youtube.com/playlist?list=PLGN9BI-OAQkTJPayNdKIZ8lLDm5RVOLV3)
 
-[Playlist on YouTube](https://www.youtube.com/playlist?list=PLGN9BI-OAQkTJPayNdKIZ8lLDm5RVOLV3)
->>>>>>> master
 
-### PloneConf 2019
+## PloneConf 2019
 
-PloneConf 2019 had several Volto-relevant presentations.
-
-#### Howtos
+PloneConf 2019 and other events have several Volto-relevant presentations, but not stored in a
+single playlist:
+### Howtos
 
 - [Rob Gietema - How to create your own Volto site!](https://www.youtube.com/watch?v=3QLN8tsjjf4)
 - [Rodrigo Ferreira de Souza - Data migration to Plone 5.2 and Volto](https://www.youtube.com/watch?v=kb9SEsnllqE)
 
-#### Panels and discussions
+### Panels and discussions
 
 - [Timo Stollenwerk - Breaking New Grounds](https://www.youtube.com/watch?v=9nRxgeCuIDs)
 - [Panel - Ask me anything on Volto](https://www.youtube.com/watch?v=jwbpXJlDVOs)
