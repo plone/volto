@@ -14,6 +14,8 @@ html_meta:
 
 ### Feature
 
+- (Experimental) Prepare documentation for MyST and importing into `plone/documentation@6-dev`.
+
 ### Bugfix
 
 ### Internal
