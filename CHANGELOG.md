@@ -16,6 +16,10 @@
 
 - Lazyload react-dnd @tiberiuichim
 
+### Documentation
+
+- Add metadata on i18n page @ksuess
+
 ## 14.4.0 (2022-01-21)
 
 ### Feature
