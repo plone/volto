@@ -13,8 +13,8 @@ html_meta:
 Volto can be installed in any operating system assuming that this requirements
 are met:
 
-- [Node.js LTS (16.x)](https://nodejs.org/)
-- [Python 3.7.x / 3.8.x](https://python.org/) or
+- [Node.js LTS (16.x)](https://nodejs.org/en/)
+- [Python 3.7.x / 3.8.x](https://www.python.org/) or
 - [Docker](https://www.docker.com/get-started) (if using the Plone/Guillotina
   docker images)
 
@@ -91,9 +91,7 @@ To install Docker desktop for Mac, here are the detailed instructions:
 
     https://hub.docker.com/editions/community/docker-ce-desktop-mac
 
-1. Download the .dmg from:
-
-    https://download.docker.com/mac/stable/Docker.dmg
+1. Download the appropriate .dmg for your Intel or Apple chip.
 
 2. Install the package as any other Mac software, if required, follow
    instructions from:
@@ -173,7 +171,7 @@ This command will build an in-memory bundle and execute Volto in development mod
 take a look at http://localhost:3000
 
 !!! warning `@plone/create-volto-app` is deprecated
-    It was deprecated from January 2021, in favor of [@plone/generator-volto](https://github.com/plone/generator-volto.git).
+    It was deprecated from January 2021, in favor of [@plone/generator-volto](https://github.com/plone/generator-volto).
 
 ## Build the production bundle
 

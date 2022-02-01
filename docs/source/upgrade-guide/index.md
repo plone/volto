@@ -857,7 +857,7 @@ notice anything strange.
 Helper method `getIcon` from `Url` has been removed in favor of `getContentIcon`
 from `Content` which is now configurable.
 
-See [contentIcons docs](../configuration/settings-reference.md#contenticons).
+See {ref}`settings-reference-contenticons-label`.
 
 ## Upgrading to Volto 8.x.x
 
@@ -1319,7 +1319,7 @@ In case you had custom blocks using it, you have to update the call in case you 
              onChangeBlock(block, {
 ```
 
-See the [blocks section](../blocks/editcomponent.md#openobjectbrowser-handler-api) for more details.
+See {ref}`openobjectbrowser-handler-api` for more details.
 
 ### Renaming Tiles into Blocks
 

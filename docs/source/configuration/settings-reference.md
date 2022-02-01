@@ -64,6 +64,9 @@ This is a summary of all the configuration options and what they control.
 
     See more about [Sentry integration](../deploying/sentry.md).
 
+
+(settings-reference-contenticons-label)=
+
 ### contentIcons
 
 !!! block ""

@@ -9,7 +9,7 @@ html_meta:
 # Cheatsheet
 
 - https://python-markdown.github.io/extensions/
-- https://facelessuser.github.io/pymdown-extensions/extensions/
+- https://facelessuser.github.io/pymdown-extensions/
 
 ```{seealso}
 {doc}`/contributing/writing-docs-guide`

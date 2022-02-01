@@ -38,7 +38,7 @@ Quite often, you need different configurations and enabling components for testi
 
 ## Developing Cypress tests
 
-Volto uses [Cypress](https://cypress.io) to run integration tests. When
+Volto uses [Cypress](https://www.cypress.io) to run integration tests. When
 developing or debugging Cypress tests, it's useful to be able to replicate the
 test environment.
 

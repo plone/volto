@@ -13,7 +13,7 @@ This UX can be very complex depending on the kind of block and the feature that 
 The project requirements will tell how far you should go with the UX story of each tile, and how complex it will become.
 You can use all the props that the edit component is receiving to model the UX for the block and how it will render.
 
-See the [complete list of props](anatomy.md#block-edit-component-props).
+See the complete list of {ref}`block-edit-component-props-label`.
 
 We have several UI/UX artifacts in order to model our block edit component UX.
 The sidebar and the object browser are the main ones.
@@ -147,6 +147,9 @@ However, if you need to instantiate it somewhere else, you can do it anyways by 
 
 !!! note
     The default image block in Volto features both the Sidebar and the object browser, take a look at its source code in case you need more context on how they work.
+
+
+(openobjectbrowser-handler-api-label)=
 
 ### openObjectBrowser handler API
 

@@ -38,4 +38,4 @@ Quanta for now have the shape of a Volto addon: https://github.com/plone/volto-q
 
 ## Help to make Quanta a reality
 
-Do you want to help Quanta a reality in Plone 6? Just ping the Volto Team in Github or in the Plone organization Volto Slack channel: https://plone.slack.com/archives/CQLBSUKRT to ask for access to the Quanta specs.
+Do you want to help Quanta a reality in Plone 6? Just ping the Volto Team in Github or in the Plone organization Volto Slack channel: https://plone.slack.com/?redir=%2Farchives%2FCQLBSUKRT to ask for access to the Quanta specs.

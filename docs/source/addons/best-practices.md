@@ -69,7 +69,7 @@ hold the Cypress integration tests and trigger the CI tests.
 
 ## Use appropriate npmjs tags
 
-If you're releasing your addon to npmjs.com, please consider adding the
+If you're releasing your addon to `npmjs.com`, please consider adding the
 following tags, next to your addon-specific tags:
 
 - volto-addon

@@ -74,7 +74,7 @@ Delegating to the web server the responsibility of configuring how the component
 Theoretically, you could deploy several sites using the same Volto SSR server without
 recompiling (just using the `Host` header in the reverse proxy). Before seamless mode, you would've had to have a Volto build for every site domain.
 
-Opens the door for http://servername/sitename deployments as well, so several sites
+Opens the door for `http://servername/sitename` deployments as well, so several sites
 hosted by the same Volto SSR server.
 
 All internal links are app ones (thanks to the ``++api++`` traversal), so a link to a page /my-page will be returned by the API as is. So `flattenToAppURL` will still be required (for old deployments) but if seamless is adopted, it won't be required anymore in the mid-term.
