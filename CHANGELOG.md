@@ -10,6 +10,11 @@
 
 ### Internal
 
+### Docs
+
+Update documentation for internal proxy & other smaller reorganisation for quicker onboarding of 
+new users/evaluators. @fredvd
+
 ## 14.7.0 (2022-01-28)
 
 ### Feature

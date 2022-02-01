@@ -13,17 +13,36 @@ are met:
 Depending on the OS that you are using some of the following might change, they
 are assuming a MacOS/Linux machine:
 
+## Components / Processes running
+
+There are three processes continuously running when you have a working Volto website:
+
+1. A frontend web application running in your browser (Javascript)
+2. A Node.js server process that delivers the javascript to the client and does
+   Server Side Rendering (SSR) of your pages on first request (Javascript, the
+   Razzle package is used for SSR)
+3. A Plone server process that stores and delivers all content through a REST API (Python)
+
+When you start with Volto most of the first customisations you will want to make (or mabye
+ever need to make) are in the javascript code used in the browser and Razzle process. Therefore
+this getting started chapter will focus on installing a nodejs/javascript environment locally
+and suggest you start the API backend using a container. 
+
+
 ## Install nvm (NodeJS version manager)
 
-If you have a working nodejs development setup on your machine, this step is
-not required. But it's a good idea to integrate nvm for development, as it
-provides easy access to any Nodejs released version.
+If you have a working Node javascript development already set up on your machine or you prefer
+another management tool to install/maintain node this step is not needed. If you have less 
+experience with setting up javascript, it's a good idea to integrate nvm for development, as
+it provides easy access to any NodeJS released version. 
 
 1. Open a terminal console and type:
 ```bash
 touch ~/.bash_profile
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.39.1/install.sh | bash
 ```
+
+(Please check the latest available version of nvm on the [main README](https://github.com/nvm-sh/nvm)
 
 2. Close the terminal and open a new one or execute:
 ```
@@ -50,10 +69,8 @@ node -v
     If you're using the fish shell, you can use [nvm.fish](https://github.com/jorgebucaran/nvm.fish)
 
 !!! note
-    Volto supports all currently active NodeJS LTS versions based on [NodeJS
-    Releases page](https://nodejs.org/en/about/releases/). On 2021-04-30 Volto
-    will not support Node 10 as it will reach its end of life.
-
+    Volto supports currently active NodeJS LTS versions based on [NodeJS
+    Releases page](https://nodejs.org/en/about/releases/), starting with Node 12 LTS. 
 ## Yarn (NodeJS package manager)
 
 Install the Yarn Classic version (not the 2.x one!), of the popular node package manager.
@@ -102,7 +119,8 @@ should not throw an error and show the current running containers.
 
 ## Run a Volto ready Plone Docker container
 
-When you have installed Docker, you can run an standard Plone Docker container with the proper configuration for Volto using the `plone.volto` add-on right away by issuing:
+When you have installed Docker, you can use the official Plone Docker container with the proper configuration for Volto using the `plone.volto` add'on right away by issuing:
+
 
 ```shell
 docker run -it --rm --name=plone \
