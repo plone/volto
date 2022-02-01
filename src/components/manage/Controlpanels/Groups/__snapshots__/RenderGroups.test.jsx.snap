@@ -79,15 +79,16 @@ exports[`UsersControlpanelGroups renders a UsersControlpanelGroups component 1`]
       className="ui checked fitted checkbox"
       onChange={[Function]}
       onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
     >
-      <i
-        aria-hidden="true"
-        className="ellipsis horizontal icon"
-        onClick={[Function]}
+      <input
+        checked={true}
+        className="hidden"
+        readOnly={true}
+        tabIndex={0}
+        type="checkbox"
+        value="Administrators.Manager"
       />
       <label />
     </div>
