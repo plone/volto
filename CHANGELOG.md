@@ -1,6 +1,6 @@
 # Change Log
 
-## 14.2.1 (unreleased)
+## 14.7.1 (unreleased)
 
 ### Breaking
 
@@ -11,6 +11,91 @@
 ### Bugfix
 
 ### Internal
+
+## 14.7.0 (2022-01-28)
+
+### Feature
+
+- Add `<FormattedDate>` and `<FormattedRelativeDate>` components. Check their Storybook stories for details. This is part of ongoing work to minimize the use of 'deprecated' momentjs. @sneridagh @tiberiuichim
+
+### Internal
+
+- Upgrade jest to latest release, 27 major. @tiberiuichim
+- Lazyload momentjs. `parseDateTime` helper now requires passing the momentjs library @tiberiuichim
+
+## 14.6.0 (2022-01-27)
+
+### Feature
+
+- Use `volto.config.js` as dynamic configuration for addons. It adds up to the `package.json` `addons` key, allowing dynamic load of addons (eg. via environment variables) @sneridagh
+
+### Internal
+
+- Fix ObjectListWidget story bug caused by lazyloading dnd libraries
+  @tiberiuichim
+
+## 14.5.0 (2022-01-26)
+
+### Feature
+
+- VocabularyTermsWidget: Token is now on creation of term editable, but stays ineditable afterwards.  @ksuess
+
+### Bugfix
+
+- Fix A11Y violations in Navigation @iRohitSingh
+- Fix `language-independent-field` CSS class styling @sneridagh
+
+### Internal
+
+- Lazyload react-beautiful-dnd @tiberiuichim
+- Lazyload react-dnd @tiberiuichim
+- Improve docs on environment variables, add recipes @sneridagh
+- Update p.restapi to 8.20.0 and plone.volto to 4.0.0a1 and plone.rest to 2.0.0a2 @sneridagh
+
+## 14.4.0 (2022-01-21)
+
+### Feature
+
+- Language independent fields support in Volto forms @sneridagh
+
+## 14.3.0 (2022-01-20)
+
+### Feature
+
+- Bump semantic-ui-react to v2.0.3 @nileshgulia1
+
+## 14.2.3 (2022-01-20)
+
+### Bugfix
+
+- Fix ListingBlock to add "No results" message when there are no messages @erral
+- Fix overflow table in Content view @giuliaghisini
+- Fixed url validation in FormValidation to admit ip addresses. @giuliaghisini
+- Upgrade to plone.restapi 8.19.0 (to support the language independent fields serialization) @sneridagh
+
+## 14.2.2 (2022-01-13)
+
+### Bugfix
+
+- Fix home URL item in Navigation, which was evaluating as non-internal @sneridagh
+- Improve the request handling in `getAPIResourceWithAuth` and in `Api` helper. This fixes the "Cannot set headers once the content has being sent" @sneridagh
+- Fix when you remove the time from DatetimeWidget @iRohitSingh
+
+### Internal
+
+- Fix URL for Climate-Energy, a Volto website @tiberiuichim
+- Fix quirky Cypress test in "DX control panel schema" (see https://github.com/plone/volto/runs/4803206906?check_suite_focus=true) @sneridagh
+
+## 14.2.1 (2022-01-12)
+
+### Bugfix
+
+- Fix home URL item in Navigation, which was evaluating as non-internal
+
+### Internal
+
+- Use plone-backend docker images for Cypress tests @sneridagh
+- Upgrade `query-string` library so it supports Plone `:list` qs marker @sneridagh
 
 ## 14.2.0 (2022-01-04)
 

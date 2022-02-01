@@ -127,9 +127,22 @@ describe('Add Content Tests', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/my-folder');
     cy.get('.navigation .item.active').should('have.text', 'My Folder');
   });
+  it('As editor I am setting the time in  datetimeWidget', function () {
+    // when I add a Event
+    cy.get('#toolbar-add').click();
+    cy.get('#toolbar-add-event').click();
+    cy.get('#field-title').type('datetimeWidget test');
+    cy.get('#start-time').click();
+    cy.get('.rc-time-picker-panel-input').click();
+    cy.get('.rc-time-picker-panel-input').clear().type('6:40 AM');
+    cy.get('#toolbar-save').click();
+
+    // then
+
+    cy.get('.documentFirstHeading').should('have.text', 'datetimeWidget test');
+  });
 
   it('As editor I can add a Link (with an external link)', function () {
-
     // When I add a link
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-link').click();
@@ -152,7 +165,6 @@ describe('Add Content Tests', () => {
   });
 
   it('As editor I can add a Link (with an internal link)', function () {
-
     // Given a Document "Link Target"
     cy.createContent({
       contentType: 'Document',
@@ -184,5 +196,4 @@ describe('Add Content Tests', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/link-target');
     cy.get('main').contains('Link Target');
   });
-
 });

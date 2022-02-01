@@ -93,7 +93,7 @@ export class DatetimeWidgetComponent extends Component {
    */
   constructor(props) {
     super(props);
-    const moment = props.moment.default;
+    this.moment = props.moment.default;
 
     this.state = {
       focused: false,
@@ -102,12 +102,19 @@ export class DatetimeWidgetComponent extends Component {
         parseDateTime(
           this.props.intl.locale,
           this.props.value,
-        )?.toISOString() === moment().utc().toISOString(),
+          undefined,
+          this.moment,
+        )?.toISOString() === this.moment().utc().toISOString(),
     };
   }
 
   getInternalValue() {
-    return parseDateTime(this.props.intl.locale, this.props.value);
+    return parseDateTime(
+      this.props.intl.locale,
+      this.props.value,
+      undefined,
+      this.moment,
+    );
   }
 
   getDateOnly() {
@@ -148,8 +155,8 @@ export class DatetimeWidgetComponent extends Component {
     const moment = this.props.moment.default;
     if (time) {
       const base = (this.getInternalValue() || moment()).set({
-        hours: time.hours(),
-        minutes: time.minutes(),
+        hours: time?.hours() ?? 0,
+        minutes: time?.minutes() ?? 0,
         seconds: 0,
       });
       const dateValue = base.toISOString();
