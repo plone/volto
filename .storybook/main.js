@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
 const fileLoaderFinder = makeLoaderFinder('file-loader');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const projectRootPath = path.resolve('.');
 const createAddonsLoader = require('../create-addons-loader');
@@ -47,21 +48,25 @@ module.exports = {
     // Make whatever fine-grained changes you need
     let baseConfig;
     baseConfig = await createConfig(
-      'web',
-      'dev',
+      'node',
+      'prod',
       {
         // clearConsole: false,
         modifyWebpackConfig: razzleConfig.modifyWebpackConfig,
-        plugins: razzleConfig.plugins,
       },
       webpack,
+      // undefined,
+      // undefined,
+      // undefined,
+      // razzleConfig.plugins.map((o) => [o.object, {}]),
+      // undefined,
     );
     const AddonConfigurationRegistry = require('../addon-registry');
 
     const registry = new AddonConfigurationRegistry(projectRootPath);
 
     config = lessPlugin({ registry }).modifyWebpackConfig({
-      env: { target: 'web', dev: 'dev' },
+      env: { target: 'node', dev: false},
       webpackConfig: config,
       webpackObject: webpack,
       options: {},
@@ -80,6 +85,23 @@ module.exports = {
         __SERVER__: false,
       }),
     );
+
+    const razzleOptions = {
+      cssPrefix: 'cssPrefix',
+    };
+    const experimental = {};
+
+    const miniPlugin = new MiniCssExtractPlugin({
+      filename: `${razzleOptions.cssPrefix}/bundle.[${
+              experimental.newContentHash ? 'contenthash' : 'chunkhash'
+            }:8].css`,
+      chunkFilename: `${razzleOptions.cssPrefix}/[name].[${
+              experimental.newContentHash ? 'contenthash' : 'chunkhash'
+            }:8].chunk.css`,
+    });
+
+    config.plugins.unshift(miniPlugin);
+
 
     const resultConfig = {
       ...config,
