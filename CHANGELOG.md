@@ -1,6 +1,6 @@
 # Change Log
 
-## 14.4.1 (unreleased)
+## 14.7.1 (unreleased)
 
 ### Breaking
 
@@ -16,9 +16,50 @@
 
 ### Internal
 
-- Lazyload react-beautiful-dnd @tiberiuichim
+### Docs
 
+Update documentation for internal proxy & other smaller reorganisation for quicker onboarding of 
+new users/evaluators. @fredvd
+
+## 14.7.0 (2022-01-28)
+
+### Feature
+
+- Add `<FormattedDate>` and `<FormattedRelativeDate>` components. Check their Storybook stories for details. This is part of ongoing work to minimize the use of 'deprecated' momentjs. @sneridagh @tiberiuichim
+
+### Internal
+
+- Upgrade jest to latest release, 27 major. @tiberiuichim
+- Lazyload momentjs. `parseDateTime` helper now requires passing the momentjs library @tiberiuichim
+
+## 14.6.0 (2022-01-27)
+
+### Feature
+
+- Use `volto.config.js` as dynamic configuration for addons. It adds up to the `package.json` `addons` key, allowing dynamic load of addons (eg. via environment variables) @sneridagh
+
+### Internal
+
+- Fix ObjectListWidget story bug caused by lazyloading dnd libraries
+  @tiberiuichim
+
+## 14.5.0 (2022-01-26)
+
+### Feature
+
+- VocabularyTermsWidget: Token is now on creation of term editable, but stays ineditable afterwards.  @ksuess
+
+### Bugfix
+
+- Fix A11Y violations in Navigation @iRohitSingh
+- Fix `language-independent-field` CSS class styling @sneridagh
+
+### Internal
+
+- Lazyload react-beautiful-dnd @tiberiuichim
 - Lazyload react-dnd @tiberiuichim
+- Improve docs on environment variables, add recipes @sneridagh
+- Update p.restapi to 8.20.0 and plone.volto to 4.0.0a1 and plone.rest to 2.0.0a2 @sneridagh
 
 ## 14.4.0 (2022-01-21)
 
@@ -36,6 +77,7 @@
 
 ### Bugfix
 
+- Fix ListingBlock to add "No results" message when there are no messages @erral
 - Fix overflow table in Content view @giuliaghisini
 - Fixed url validation in FormValidation to admit ip addresses. @giuliaghisini
 - Upgrade to plone.restapi 8.19.0 (to support the language independent fields serialization) @sneridagh
