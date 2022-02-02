@@ -87,6 +87,14 @@ class Config {
   set components(components) {
     this._data.components = components;
   }
+
+  resolve(component) {
+    return this._data.components[component] || {};
+  }
+
+  register(name, component) {
+    this._data.components[name] = component;
+  }
 }
 
 const instance = new Config();
