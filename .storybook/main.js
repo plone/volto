@@ -48,25 +48,20 @@ module.exports = {
     // Make whatever fine-grained changes you need
     let baseConfig;
     baseConfig = await createConfig(
-      'node',
-      'prod',
+      'web',
+      'dev',
       {
         // clearConsole: false,
         modifyWebpackConfig: razzleConfig.modifyWebpackConfig,
       },
       webpack,
-      // undefined,
-      // undefined,
-      // undefined,
-      // razzleConfig.plugins.map((o) => [o.object, {}]),
-      // undefined,
     );
     const AddonConfigurationRegistry = require('../addon-registry');
 
     const registry = new AddonConfigurationRegistry(projectRootPath);
 
     config = lessPlugin({ registry }).modifyWebpackConfig({
-      env: { target: 'node', dev: false},
+      env: { target: 'web', dev: false},
       webpackConfig: config,
       webpackObject: webpack,
       options: {},
@@ -87,7 +82,7 @@ module.exports = {
     );
 
     const razzleOptions = {
-      cssPrefix: 'cssPrefix',
+      cssPrefix: 'css',
     };
     const experimental = {};
 
