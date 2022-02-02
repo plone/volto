@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Update volta pins in package.json @fredvd
+
 ### Docs
 
 Update documentation for internal proxy & other smaller reorganisation for quicker onboarding of 
