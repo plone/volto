@@ -1,6 +1,6 @@
 # Change Log
 
-## 14.7.1 (unreleased)
+## 14.7.2 (unreleased)
 
 ### Breaking
 
@@ -8,13 +8,20 @@
 
 ### Bugfix
 
+- Fix the a11y violation of UrlWidget @iRohitSingh
+
 ### Internal
 
 - Update volta pins in package.json @fredvd
+## 14.7.1 (2022-02-02)
+
+### Internal
+
+- Add CSS body class in Babel view. Improve marker for language independent fields in Babel view too. @sneridagh
 
 ### Docs
 
-Update documentation for internal proxy & other smaller reorganisation for quicker onboarding of 
+Update documentation for internal proxy & other smaller reorganisation for quicker onboarding of
 new users/evaluators. @fredvd
 
 ## 14.7.0 (2022-01-28)
