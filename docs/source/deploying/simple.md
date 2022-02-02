@@ -38,7 +38,7 @@ The simplest deployment is to start this node process in your server by any mean
 
 ## Reverse proxies
 
-You need to make available to your users both Volto and the API in public URLs. It's heavily recommended you serve both from the same DNS name, eg. Volto-> https://mywebsite.com and API-> https://mywebsite.com/api in order to avoid any CORS problem.
+You need to make available to your users both Volto and the API in public URLs. It's heavily recommended you serve both from the same DNS name, eg. Volto-> `https://mywebsite.com` and API-> `https://mywebsite.com/api` in order to avoid any CORS problem.
 
 !!! warning
     Avoid dealing with CORS in production at all costs. Period.

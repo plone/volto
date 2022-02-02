@@ -282,7 +282,7 @@ def from12to13_migrate_listings(context):
 
 If you have trouble configuring the upgrade step in your own package, you can take a
 look and configure it as in `plone.volto` as shown in this PR:
-https://github.com/kitconcept/plone.volto/pull/29
+https://github.com/kitconcept/kitconcept.volto/pull/29
 
 !!! note
 When an official integration package exists, these upgrade steps in the backend
@@ -857,7 +857,7 @@ notice anything strange.
 Helper method `getIcon` from `Url` has been removed in favor of `getContentIcon`
 from `Content` which is now configurable.
 
-See [contentIcons docs](../configuration/settings-reference.md#contenticons).
+See {ref}`settings-reference-contenticons-label`.
 
 ## Upgrading to Volto 8.x.x
 
@@ -1319,7 +1319,7 @@ In case you had custom blocks using it, you have to update the call in case you 
              onChangeBlock(block, {
 ```
 
-See the [blocks section](../blocks/editcomponent.md#openobjectbrowser-handler-api) for more details.
+See {ref}`openobjectbrowser-handler-api` for more details.
 
 ### Renaming Tiles into Blocks
 

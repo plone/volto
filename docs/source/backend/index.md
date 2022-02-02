@@ -11,8 +11,8 @@ html_meta:
 ## Plone backend integration
 
 Integration with the Plone CMS is provided by the Plone API framework, namely
-[plone.restapi](https://github.com/plone/plone.restapi.git) and its lower-level
-[plone.rest](https://github.com/plone/plone.rest.git). For details please check
+[plone.restapi](https://github.com/plone/plone.restapi) and its lower-level
+[plone.rest](https://github.com/plone/plone.rest). For details please check
 the plone.restapi [documentation website](https://plonerestapi.readthedocs.io/en/latest/).
 
 Some of the more interesting integration features that you can look up in the

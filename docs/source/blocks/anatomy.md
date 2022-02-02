@@ -48,6 +48,9 @@ The view component of a block receives these props from the Blocks Engine:
 
 You can use them to render the view component.
 
+
+(block-edit-component-props-label)=
+
 ## Block edit component props
 
 The edit component of a block receives these props from the Blocks Engine:
