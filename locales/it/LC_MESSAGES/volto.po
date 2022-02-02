@@ -1336,6 +1336,11 @@ msgstr "Etichetta"
 msgid "Language"
 msgstr "Lingua"
 
+#: components/manage/Widgets/FormFieldWrapper
+# defaultMessage: Language independent field.
+msgid "Language independent field."
+msgstr "Campo indipendete dalla lingua"
+
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Last
 msgid "Last"
@@ -1933,7 +1938,7 @@ msgstr "il"
 #: components/manage/Form/UndoToolbar
 # defaultMessage: Redo
 msgid "Redo"
-msgstr ""
+msgstr "Ripeti"
 
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Minimalistic table design
@@ -2718,12 +2723,12 @@ msgstr "Digita l'URL di un Video (YouTube, Vimeo or mp4)"
 #: components/manage/Widgets/SelectAutoComplete
 # defaultMessage: Type text...
 msgid "Type text..."
-msgstr ""
+msgstr "Digita il testo..."
 
 #: components/manage/Blocks/Text/Edit
 # defaultMessage: Type text…
 msgid "Type text…"
-msgstr "Digita testo…"
+msgstr "Digita il testo…"
 
 #: components/manage/Blocks/Title/Edit
 # defaultMessage: Type the title…
@@ -2743,7 +2748,7 @@ msgstr "Non autorizzato"
 #: components/manage/Form/UndoToolbar
 # defaultMessage: Undo
 msgid "Undo"
-msgstr ""
+msgstr "Annulla"
 
 #: components/manage/BlockChooser/BlockChooser
 # defaultMessage: Unfold
@@ -3503,7 +3508,7 @@ msgstr "Indice dei contenuti"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be valid url (www.something.com or http(s)://www.something.com)
 msgid "url"
-msgstr "URL"
+msgstr "Il testo inserito deve essere un url valido (www.qualcosa.com oppure http(s)://www.qualcosa.com)"
 
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: user avatar

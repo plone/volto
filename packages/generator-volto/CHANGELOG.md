@@ -4,6 +4,8 @@
 
 ### Added
 
+- Add mrs-developer.json in template
+
 ### Changes
 
 ## 5.4.0 (2021-12-29)
