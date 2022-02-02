@@ -2,12 +2,6 @@
 
 ## 14.7.1 (unreleased)
 
-### Breaking
-
-### Feature
-
-### Bugfix
-
 ### Internal
 
 - Add CSS body class in Babel view. Improve marker for language independent fields in Babel view too. @sneridagh
