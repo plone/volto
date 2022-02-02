@@ -6,7 +6,7 @@ html_meta:
   "keywords": ""
 ---
 
-(index-label)=
+(plone6index-label)=
 
 # Frontend
 
