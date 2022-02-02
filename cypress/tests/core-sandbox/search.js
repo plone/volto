@@ -32,9 +32,7 @@ context('Search action tests', () => {
       cy.navigate('/newsitem/edit');
 
       // Add subject
-      cy.get('a:contains("Categorization")')
-        .click()
-        .get('.field-wrapper-subjects input')
+      cy.get('.field-wrapper-subjects input')
         .type('garden', { force: true })
         .type('{enter}');
       cy.get('#toolbar-save').click();
