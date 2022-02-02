@@ -10,9 +10,11 @@
 
 ### Internal
 
+- Add CSS body class in Babel view. Improve marker for language independent fields in Babel view too. @sneridagh
+
 ### Docs
 
-Update documentation for internal proxy & other smaller reorganisation for quicker onboarding of 
+Update documentation for internal proxy & other smaller reorganisation for quicker onboarding of
 new users/evaluators. @fredvd
 
 ## 14.7.0 (2022-01-28)
