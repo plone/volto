@@ -83,9 +83,9 @@ class Edit extends Component {
       let editorState;
       if (props.properties && props.properties.description) {
         const contentState = this.stateFromHTML(props.properties.description);
-        editorState = EditorState.createWithContent(contentState);
+        editorState = this.EditorState.createWithContent(contentState);
       } else {
-        editorState = EditorState.createEmpty();
+        editorState = this.EditorState.createEmpty();
       }
       this.state = { editorState, focus: false };
     }
@@ -172,7 +172,7 @@ class Edit extends Component {
       return <div />;
     }
 
-    const Editor = this.editor;
+    const Editor = this.Editor;
 
     return (
       <div
@@ -235,6 +235,6 @@ class Edit extends Component {
 }
 
 export default compose(
-  injectLazyLibs(['draftJs', 'immutableLib']),
+  injectLazyLibs(['draftJs', 'immutableLib', 'draftJsImportHtml']),
   injectIntl,
 )(Edit);
