@@ -21,7 +21,6 @@ html_meta:
 ./i18n.md
 ./express.md
 ./lazyload.md
-./overridei18n.md
 ./appextras.md
 ./contextnavigation.md
 ./pluggables.md
@@ -37,7 +36,6 @@ html_meta:
 - [Internationalization](./i18n.md)
 - [Express middleware](./express.md)
 - [Lazy loading and code splitting](./lazyload.md)
-- [Overriding i18n messages](./overridei18n.md)
 - [App component insertion point](./appextras.md)
 - [Context navigation component](./contextnavigation.md)
 - [Pluggables](./pluggables.md)

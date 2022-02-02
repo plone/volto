@@ -85,7 +85,6 @@ contributing/index
       - Internationalization: 'recipes/i18n.md'
       - Express middleware: 'recipes/express.md'
       - Lazy loading and code splitting: 'recipes/lazyload.md'
-      - Overriding i18n messages: 'recipes/overridei18n.md'
       - App component insertion point: 'recipes/appextras.md'
       - Context navigation component: 'recipes/contextnavigation.md'
       - Pluggables: 'recipes/pluggables.md'
