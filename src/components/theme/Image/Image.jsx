@@ -27,6 +27,7 @@ const Image = ({
   role = 'img',
   critical = false,
   maxSize,
+  minSize = 0,
   useOriginal = false,
   ...imageProps
 }) => {
@@ -34,6 +35,7 @@ const Image = ({
     imageField,
     maxSize,
     useOriginal,
+    minSize,
   });
   const imageRef = useRef();
   const [srcset, setSrcset] = useState(
@@ -54,11 +56,18 @@ const Image = ({
   const applySrcSet = useCallback(() => {
     setSrcset(
       srcSet
-        .filter(
-          (s) =>
-            parseInt(s.split(' ')[1].replace('w', ''), 10) <=
-            (imageRef?.current?.width ?? Infinity),
-        )
+        .filter((s, index) => {
+          let addable = (ss) =>
+            ss
+              ? parseInt(ss.split(' ')[1].replace('w', ''), 10) <=
+                (imageRef?.current?.width ?? Infinity)
+              : false;
+          let add = addable(s);
+          if (!add && addable(srcSet[index - 1])) {
+            add = true; //add the next item grather then imageRef width, to avoid less quality
+          }
+          return add;
+        })
         .join(', '),
     );
   }, [srcSet]);
