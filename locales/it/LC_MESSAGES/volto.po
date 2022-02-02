@@ -1006,6 +1006,11 @@ msgstr "Gli elementi devono essere unici."
 msgid "Language"
 msgstr "Lingua"
 
+#: components/manage/Widgets/FormFieldWrapper
+# defaultMessage: Language independent field.
+msgid "Language independent field."
+msgstr "Campo indipendete dalla lingua"
+
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Last"
 msgstr "Ultimo"
@@ -1478,7 +1483,7 @@ msgstr "il"
 #: components/manage/Form/UndoToolbar
 # defaultMessage: Redo
 msgid "Redo"
-msgstr ""
+msgstr "Ripeti"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Reduce complexity"
@@ -2051,11 +2056,11 @@ msgstr "Digita l'URL di un Video (YouTube, Vimeo or mp4)"
 #: components/manage/Widgets/SelectAutoComplete
 # defaultMessage: Type text...
 msgid "Type text..."
-msgstr ""
+msgstr "Digita il testo..."
 
 #: components/manage/Blocks/Text/Edit
 msgid "Type text…"
-msgstr "Digita testo…"
+msgstr "Digita il testo…"
 
 #: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
@@ -2072,7 +2077,7 @@ msgstr "Non autorizzato"
 #: components/manage/Form/UndoToolbar
 # defaultMessage: Undo
 msgid "Undo"
-msgstr ""
+msgstr "Annulla"
 
 #: components/manage/BlockChooser/BlockChooser
 msgid "Unfold"
@@ -2682,7 +2687,7 @@ msgstr "Indice dei contenuti"
 
 #: helpers/MessageLabels/MessageLabels
 msgid "url"
-msgstr "URL"
+msgstr "Il testo inserito deve essere un url valido (www.qualcosa.com oppure http(s)://www.qualcosa.com)"
 
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"

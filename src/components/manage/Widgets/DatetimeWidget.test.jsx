@@ -1,4 +1,3 @@
-import moment from 'moment';
 import React from 'react';
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
@@ -20,6 +19,7 @@ test('renders a datetime widget component', async () => {
       messages: {},
     },
   });
+  const isoDate = new Date('2019-10-21').toISOString();
   const { container } = render(
     <Provider store={store}>
       <DatetimeWidget
@@ -27,7 +27,7 @@ test('renders a datetime widget component', async () => {
         title="My field"
         fieldSet="default"
         onChange={() => {}}
-        value={moment('2019-10-21').toISOString()}
+        value={isoDate}
       />
     </Provider>,
   );

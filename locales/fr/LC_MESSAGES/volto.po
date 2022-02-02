@@ -1033,6 +1033,11 @@ msgstr "Les éléments doivent être unique."
 msgid "Language"
 msgstr "Langage"
 
+#: components/manage/Widgets/FormFieldWrapper
+# defaultMessage: Language independent field.
+msgid "Language independent field."
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Last"
 msgstr ""
