@@ -66,9 +66,8 @@ module.exports = (userOptions = {}) => ({
     options: { pluginOptions, razzleOptions, webpackOptions },
     paths,
   }) {
-    console.log('calling less');
-    const isServer = false; //target !== 'web';
-    const constantEnv = 'prod'; // dev ? 'dev' : 'prod';
+    const isServer = target !== 'web';
+    const constantEnv = dev ? 'dev' : 'prod';
 
     const config = Object.assign({}, defaultConfig);
     const { registry } = userOptions;
@@ -126,7 +125,6 @@ module.exports = (userOptions = {}) => ({
         ],
         use: isServer
           ? [
-              MiniCssExtractPlugin.loader,
               {
                 loader: require.resolve('css-loader'),
                 options: Object.assign({}, options.css[constantEnv], {
@@ -146,8 +144,6 @@ module.exports = (userOptions = {}) => ({
             ],
       },
     ];
-
-    console.dir(config.module.rules, { depth: null });
 
     return config;
   },
