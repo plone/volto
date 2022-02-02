@@ -10,7 +10,7 @@
 
 - (Experimental) Prepare documentation for MyST and importing into `plone/documentation@6-dev`. @stevepiercy
 - Fix broken links and redirects in documentation to be compatible with MyST. @stevepiercy
-- Update add-on nternationalization @ksuess
+- Update add-on internationalization. @ksuess
 
 ### Bugfix
 
