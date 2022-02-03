@@ -16,6 +16,7 @@
 
 ### Internal
 
+- Update volta pins in package.json @fredvd
 ## 14.7.1 (2022-02-02)
 
 ### Internal
