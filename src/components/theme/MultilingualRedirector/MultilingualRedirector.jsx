@@ -8,7 +8,7 @@ import { normalizeLanguageName } from '@plone/volto/helpers';
 
 const MultilingualRedirector = (props) => {
   const { settings } = config;
-  const { pathname, children } = props;
+  const { pathname, contentLanguage, children } = props;
   const currentLanguage =
     cookie.load('I18N_LANGUAGE') || settings.defaultLanguage;
   const redirectToLanguage = settings.supportedLanguages.includes(
@@ -17,6 +17,33 @@ const MultilingualRedirector = (props) => {
     ? currentLanguage
     : settings.defaultLanguage;
   const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    // This ensures the current content language and the current active language in the
+    // UI are the same. Otherwise, there are inconsistencies between the UI main elements
+    // eg. Home link in breadcrumbs, other i18n dependant literals from the main UI and
+    // the current content language.
+    if (
+      contentLanguage &&
+      currentLanguage !== contentLanguage &&
+      pathname &&
+      // We don't want to trigger it in Babel View, since Babel view already takes care
+      // of it
+      !pathname.endsWith('/add') &&
+      settings.isMultilingual
+    ) {
+      const langFileName = normalizeLanguageName(contentLanguage);
+      import('~/../locales/' + langFileName + '.json').then((locale) => {
+        dispatch(changeLanguage(contentLanguage, locale.default));
+      });
+    }
+  }, [
+    pathname,
+    dispatch,
+    currentLanguage,
+    contentLanguage,
+    settings.isMultilingual,
+  ]);
 
   React.useEffect(() => {
     // ToDo: Add means to support language negotiation (with config)
