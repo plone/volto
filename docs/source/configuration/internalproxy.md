@@ -61,7 +61,7 @@ or use the environment variable:
 RAZZLE_DEV_PROXY_API_PATH=http://localhost:8081/mysite yarn start
 ```
 
-This redefines the request path from the internal proxy of the server side Node proces to the Plone content backend API, but leaves the frontend Volto process making all content requests to http://locahost:3000/++api++/
+This redefines the request path from the internal proxy of the server side Node proces to the Plone content backend API, but leaves the frontend Volto process making all content requests to http://localhost:3000/++api++/
 
 ### Advanced usage
 
