@@ -9,7 +9,7 @@ html_meta:
 # Backend configuration
 
 ## plone.volto
-In order to fully support all Volto features, the Plone backend content API needs to be prepared for Volto. The add'on `plone.volto` does all the heavy lifting for you and is ready to use in your own projects. We used it in our Getting Started section.
+In order to fully support all Volto features, the Plone backend content API needs to be prepared for Volto. The add-on `plone.volto` does all the heavy lifting for you and is ready to use in your own projects. We used it in our Getting Started section.
 
 This package is slightly opinionated but provides the correct default settings for when
 you want to start with Volto. If you have advanced needs or want to move the setting to
