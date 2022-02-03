@@ -192,3 +192,4 @@ ConfigRegistry.widgets = config.widgets;
 ConfigRegistry.addonRoutes = config.addonRoutes;
 ConfigRegistry.addonReducers = config.addonReducers;
 ConfigRegistry.appExtras = config.appExtras;
+ConfigRegistry.components = config.components;

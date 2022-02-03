@@ -1,10 +1,14 @@
 # Change Log
 
-## 14.7.1 (unreleased)
+## 14.7.2 (unreleased)
 
 ### Breaking
 
 ### Feature
+
+- Enable `components` property in Volto's config registry. Does not expose any direct feature but this will open the door to be able to override registered components using the config registry and avoid using shadowing explicitly. @sneridagh
+- Add `resolve` and `register` helper methods for the Volto config. They retrieve and register new components in the registry. @tiberiuichim @sneridagh
+- Add `Component` component, given a `name` of a component registered in the registry, it renders it, passing down the props. @tiberiuichim
 
 ### Documentation
 
@@ -14,11 +18,20 @@
 
 ### Bugfix
 
+- Fix the a11y violation of UrlWidget @iRohitSingh
+
 ### Internal
+
+- Update volta pins in package.json @fredvd
+## 14.7.1 (2022-02-02)
+
+### Internal
+
+- Add CSS body class in Babel view. Improve marker for language independent fields in Babel view too. @sneridagh
 
 ### Docs
 
-Update documentation for internal proxy & other smaller reorganisation for quicker onboarding of 
+Update documentation for internal proxy & other smaller reorganisation for quicker onboarding of
 new users/evaluators. @fredvd
 
 ## 14.7.0 (2022-01-28)
