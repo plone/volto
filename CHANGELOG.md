@@ -2,8 +2,6 @@
 
 ## 14.7.2 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Enable `components` property in Volto's config registry. Does not expose any direct feature but this will open the door to be able to override registered components using the config registry and avoid using shadowing explicitly. @sneridagh
@@ -18,6 +16,7 @@
 ### Internal
 
 - Update volta pins in package.json @fredvd
+
 ## 14.7.1 (2022-02-02)
 
 ### Internal
