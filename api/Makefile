@@ -41,7 +41,6 @@ build:  ## Build Plone 5.2
 	bin/pip install --upgrade pip
 	bin/pip install --upgrade wheel
 	bin/pip install -r requirements.txt
-	bin/buildout
 	bin/buildout instance:http-address=$(INSTANCE_PORT)
 
 .PHONY: test
