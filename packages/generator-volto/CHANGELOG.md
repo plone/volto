@@ -7,8 +7,6 @@
 - Add mrs-developer.json in template
 - Fix app template Makefile @avoinea
 
-### Changes
-
 ## 5.4.0 (2021-12-29)
 
 ### Added
