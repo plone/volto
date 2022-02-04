@@ -33,7 +33,7 @@ context('Search action tests', () => {
 
       // Add subject
       // because of lazyloading wait for the element to reach an actionable state
-      cy.wait(1000);
+      cy.wait(2000);
       cy.get('.field-wrapper-subjects input')
         .type('garden', { force: true })
         .type('{enter}');
