@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix wrong CSS in language independent class selector @sneridagh
+
 ### Internal
 
 - Cleanup redundant buildout install run.
