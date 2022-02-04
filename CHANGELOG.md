@@ -2,10 +2,6 @@
 
 ## 14.8.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fix wrong CSS in language independent class selector @sneridagh
