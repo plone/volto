@@ -1,6 +1,6 @@
 # Change Log
 
-## 14.8.1 (unreleased)
+## 14.8.1 (2022-02-04)
 
 ### Bugfix
 
