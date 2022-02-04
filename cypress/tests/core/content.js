@@ -105,6 +105,8 @@ describe('Add Content Tests', () => {
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-news-item').click();
     cy.get('input[name="title"]')
+      // because of lazyloading wait for the element to reach an actionable state
+      .clear()
       .type('My News Item')
       .should('have.value', 'My News Item');
     cy.get('#toolbar-save').click();
