@@ -17,7 +17,7 @@ This is an example of the `Edit.jsx`:
 import React from 'react';
 
 const Edit = props => {
-  return "<div>I'm the Block edit component!</div>";
+  return <div>I'm the Block edit component!</div>;
 };
 
 export default Edit;
@@ -29,7 +29,7 @@ and the `View.jsx`.
 import React from 'react';
 
 const View = props => {
-  return "<div>I'm the Block view component!</div>";
+  return <div>I'm the Block view component!</div>;
 };
 
 export default View;

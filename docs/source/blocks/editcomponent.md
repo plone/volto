@@ -107,11 +107,11 @@ import { Icon } from '@plone/volto/components';
 
 <SidebarPortal selected={this.props.selected}>
   <InlineForm
-    icon={"<Icon size="24px" name={nameSVG} />"}
+    icon={<Icon size="24px" name={nameSVG} />}
     schema={schema}
     title={schema.title}
-    headerActions={"<button onClick={() => {}}>Action</button>"}
-    footer={"<div>I'm footer</div>"}
+    headerActions={<button onClick={() => {}}>Action</button>}
+    footer={<div>I'm footer</div>}
     onChangeField={(id, value) => {
       this.props.onChangeBlock(this.props.block, {
         ...this.props.data,
