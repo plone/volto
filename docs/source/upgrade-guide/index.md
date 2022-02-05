@@ -1,9 +1,9 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "This upgrade guide lists all breaking changes in Volto and explains the steps that are necessary to upgrade to the latest version."
+  "property=og:description": "This upgrade guide lists all breaking changes in Volto and explains the steps that are necessary to upgrade to the latest version."
+  "property=og:title": "Upgrade Guide"
+  "keywords": "Volto, Plone, frontend, React, Upgrade, Guide"
 ---
 
 # Upgrade Guide
@@ -910,7 +910,6 @@ First, update the `package.json` of your Volto project to Volto 6.x.x.
 ```json
   "dependencies": {
     "@plone/volto": "6.0.0",
-    ...
   }
 ```
 
@@ -958,7 +957,6 @@ Add this key to the `jest.moduleNameMapper`:
 "jest":
   "moduleNameMapper": {
     "@plone/volto/babel": "<rootDir>/node_modules/@plone/volto/babel",
-    ...
   }
 ```
 
@@ -1073,7 +1071,6 @@ First, update the `package.json` of your Volto project to Volto 5.x.x.
 ```json
   "dependencies": {
     "@plone/volto": "5.0.0",
-    ...
   }
 ```
 
@@ -1173,7 +1170,6 @@ First, update your `package.json` to Volto 4.x.x.
 ```json
   "dependencies": {
     "@plone/volto": "4.0.0",
-    ...
   }
 ```
 
@@ -1319,7 +1315,7 @@ In case you had custom blocks using it, you have to update the call in case you 
              onChangeBlock(block, {
 ```
 
-See {ref}`openobjectbrowser-handler-api` for more details.
+See {ref}`openobjectbrowser-handler-api-label` for more details.
 
 ### Renaming Tiles into Blocks
 
@@ -1514,7 +1510,6 @@ Then update your `package.json` to Volto 3.x.
 ```json
   "dependencies": {
     "@plone/volto": "3.0.0",
-    ...
   }
 ```
 
