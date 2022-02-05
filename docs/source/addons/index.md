@@ -1,19 +1,19 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "Volto add-ons extend the core functionality of the Plone CMS frontend."
+  "property=og:description": "Volto add-ons extend the core functionality of the Plone CMS frontend."
+  "property=og:title": "Volto add-ons"
+  "keywords": "Volto, add-on, extensions, frontend, Plone"
 ---
 
-# Volto addons
+# Volto add-ons
 
 ```{toctree}
 :maxdepth: 3
 :hidden: true
 
-./i18n
-./best-practices
+i18n
+best-practices
 
 ```
 
@@ -101,10 +101,11 @@ their configuration, so they may offer additional configuration functions,
 which you can load by overloading the addon name in the ``addons`` package.json
 key, like so:
 
-```json hl_lines="5"
+```{code-block} json
+:emphasize-lines: 4
+
 {
   "name": "my-nice-volto-project",
-  ...
   "addons": [
     "acme-volto-foo-addon:loadOptionalBlocks,overrideSomeDefaultBlock",
     "volto-ga"
@@ -269,7 +270,7 @@ key of your project's `package.json`) then the customizations in the Volto
 project, last one wins.
 
 !!! tip
-    See the [Advanced customization scenarios](../../customizing-components/)
+    See the {ref}`advanced-customization-scenarios-label`
     section on how to enhance this pattern and how to include customizations
     inside addons.
 
@@ -424,13 +425,15 @@ which will be loaded as well. Circular dependencies should be avoided.
 We should let jest know about our aliases and make them available to it to
 resolve them, so in `package.json`:
 
-```json hl_lines="6"
+```{code-block} json
+:emphasize-lines: 6
+
   "jest": {
     "moduleNameMapper": {
       "@plone/volto/(.*)$": "<rootDir>/node_modules/@plone/volto/src/$1",
       "@package/(.*)$": "<rootDir>/src/$1",
       "@plone/some-volto-addon/(.*)$": "<rootDir>/src/addons/@plone/some-volto-addon/src/$1",
-      'my-volto-addon/(.*)$': '<rootDir>/src/addons/my-volto-addon/src/$1',
+      "my-volto-addon/(.*)$": "<rootDir>/src/addons/my-volto-addon/src/$1",
       "~/(.*)$": "<rootDir>/src/$1"
     },
 ```
@@ -446,4 +449,4 @@ You can use `yarn test src/addons/addon-name` to run tests.
 If you have generated your Volto project recently (after the summer of 2020),
 you don't have to do anything to have automatic integration with ESLint,
 otherwise make sure to upgrade your project's `.eslintrc` to the `.eslintrc.js`
-version, according to the [Upgrade Guide](/upgrade-guide).
+version, according to the {doc}`/upgrade-guide/index`.
