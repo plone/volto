@@ -1,25 +1,18 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "Getting started with Volto"
+  "property=og:description": "Getting started with Volto"
+  "property=og:title": "Getting Started Introduction"
+  "keywords": "Volto, Plone, frontend, React, Getting, Started"
 ---
 
 # Introduction
-
 
 ```{toctree}
 :maxdepth: 2
 :hidden: true
 
-./install
-./roadmap
-./others
-./howdoesitwork
+install
+roadmap
+others
 ```
-
-- [Bootstrap Volto](./install.md)
-- [Developer roadmap](./roadmap.md)
-- [Learning resources](./others.md)
-- [How does it work under the hood](./howdoesitwork.md)
