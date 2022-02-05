@@ -1,9 +1,9 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "Volto Style Guide"
+  "property=og:description": "Volto Style Guide"
+  "property=og:title": "Style Guide"
+  "keywords": "Volto, Plone, frontend, React, Style, Guide, Design, Quanta, Pastanaga"
 ---
 
 # Style Guide
@@ -18,7 +18,7 @@ Albert gifted the community with Pastanaga UI some years ago, which was implemen
 
 Lately, Albert has evolved Pastanaga to match the current trends, the feedback of these last years and the lessons learned developing Volto projects. So he has evolved Pastanaga and created Quanta. You can think in Quanta in a PastanagaUI 2.0.
 
-You can find some excerpts of how Quanta looks like in this PDF file: [Quanta Spring 2021](./Quanta.pdf)
+You can find some excerpts of how Quanta looks like in this PDF file: {download}`Quanta Spring 2021 <Quanta.pdf>`
 
 ## Tooling around a design system
 
