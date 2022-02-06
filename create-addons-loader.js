@@ -60,6 +60,11 @@ const projectConfigLoader = require('@package/config');
   });
 
   buf += `
+${addons ? `const addons = ${JSON.stringify(addons)}` : 'const addons = []'};
+export { addons };
+  `;
+
+  buf += `
 const safeWrapper = (func) => (config) => {
   const res = func(config);
   if (typeof res === 'undefined') {

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-01-20T14:52:55.940Z\n"
+"POT-Creation-Date: 2022-02-06T18:58:41.144Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1601,6 +1601,11 @@ msgstr ""
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: No
 msgid "No"
+msgstr ""
+
+#: components/manage/Controlpanels/VersionOverview
+# defaultMessage: No addons found
+msgid "No addons found"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
