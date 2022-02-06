@@ -111,7 +111,7 @@ import { Icon } from '@plone/volto/components';
     schema={schema}
     title={schema.title}
     headerActions={<button onClick={() => {}}>Action</button>}
-    footer={<div>I'm footer</div>}
+    footer={<div>I am footer</div>}
     onChangeField={(id, value) => {
       this.props.onChangeBlock(this.props.block, {
         ...this.props.data,
