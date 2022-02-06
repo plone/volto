@@ -54,7 +54,7 @@ https://volto.kitconcept.com
 
 Link to a file in the documentation.
 
-{doc}`plone6index`
+{doc}`index`
 
 
 (volto-demo-label)=

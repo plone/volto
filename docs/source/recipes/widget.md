@@ -1,9 +1,9 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "Volto forms and widgets"
+  "property=og:description": "Volto forms and widgets"
+  "property=og:title": "Forms and widgets"
+  "keywords": "Volto, Plone, frontend, React, Blocks, Edit, components, Forms, widgets"
 ---
 
 # Forms and widgets
@@ -146,7 +146,7 @@ Based on this setup, Volto will render this field with the `TokenWidget`.
 
 
 !!! tip
-    See [storybook](docs.voltocms.com/storybook) with available widgets.
+    See [storybook](https://docs.voltocms.com/storybook) with available widgets.
 
 
 ## Write a new widget

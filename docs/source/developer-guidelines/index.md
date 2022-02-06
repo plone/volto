@@ -1,34 +1,25 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "Developer Guidelines"
+  "property=og:description": "Developer Guidelines"
+  "property=og:title": "Developer Guidelines"
+  "keywords": "Developer, Guidelines"
 ---
 
 # Developer Guidelines
-
 
 ```{toctree}
 :maxdepth: 3
 :hidden: true
 
-./language-features.md
-./linting.md
-./react.md
-./redux.md
-./routing.md
-./testing.md
-./acceptance-tests.md
-./accessibility-guidelines.md
-
+design-principles
+style-guide
+language-features
+linting
+react
+redux
+routing
+testing
+acceptance-tests
+accessibility-guidelines
 ```
-
-- [Language features](./language-features.md)
-- [Linting](./linting.md)
-- [React](./react.md)
-- [Redux](./redux.md)
-- [Routing](./routing.md)
-- [Testing](./testing.md)
-- [Acceptance tests](./acceptance-tests.md)
-- [Accessibility](./accessibility-guidelines.md)

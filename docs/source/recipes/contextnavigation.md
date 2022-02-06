@@ -1,9 +1,9 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "A contextual navigation component is available in Volto for customization and integration into your project."
+  "property=og:description": "A contextual navigation component is available in Volto for customization and integration into your project."
+  "property=og:title": "Context navigation component"
+  "keywords": "Volto, Plone, frontend, React, Context, navigation, component"
 ---
 
 # Context navigation component
@@ -14,7 +14,7 @@ theme component (for example `App.jsx` or `DefaultView.jsx`) and insert the
 ContextNavigation component:
 
 ```jsx
-import ContextNavigation from '@plone/volto/components/theme/Navigation/ContextNavigation
+import ContextNavigation from '@plone/volto/components/theme/Navigation/ContextNavigation'
 
 // and insert it like:
 
@@ -22,7 +22,6 @@ import ContextNavigation from '@plone/volto/components/theme/Navigation/ContextN
 
 // or:
 <ContextNavigation params={{ currentFolderOnly: true }} />
-
 ```
 
 By default it uses the current location path to fetch the portlet listing, but

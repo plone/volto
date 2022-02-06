@@ -106,6 +106,9 @@ Locate the `Tags.jsx` file and override this file so that there is a label in fr
 The final path of the overrided component will be
 `customizations/components/theme/Tags/Tags.jsx`.
 
+
+(advanced-customization-scenarios-label)=
+
 ## Advanced customization scenarios
 
 Once you've started developing your Volto project, you'll find that you want
