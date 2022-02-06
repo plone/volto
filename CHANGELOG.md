@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add Pluggable to toolbar user menu. @ksuess
+
 ### Bugfix
 
 ### Internal
