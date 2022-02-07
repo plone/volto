@@ -16,6 +16,16 @@ INSTANCE_PORT=8080
 DOCKER_IMAGE=plone/plone-backend:5.2.6
 KGS=plone.restapi==8.20.0 plone.volto==4.0.0a2 plone.rest==2.0.0a2 plone.app.iterate==4.0.2 plone.app.vocabularies==4.3.0
 
+# Sphinx variables
+# You can set these variables from the command line.
+SPHINXOPTS      ?=
+# Internal variables.
+SPHINXBUILD     = $(realpath bin/sphinx-build)
+SPHINXAUTOBUILD = $(realpath bin/sphinx-autobuild)
+DOCS_DIR        = ./docs/source/
+BUILDDIR        = ../_build/
+ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(SPHINXOPTS) .
+
 # Recipe snippets for reuse
 
 # We like colors
@@ -75,6 +85,51 @@ docs-build:
 	./bin/pip install -r requirements-docs.txt
 	(cd docs && ../bin/mkdocs build)
 	yarn build-storybook -o docs/build/storybook
+
+bin/python:
+	python3 -m venv . || virtualenv --clear --python=python3 .
+	bin/python -m pip install --upgrade pip
+	bin/pip install -r requirements-myst.txt
+
+.PHONY: docs-clean
+docs-clean:  ## Clean docs build directory
+	cd $(DOCS_DIR) && rm -rf $(BUILDDIR)/
+
+.PHONY: docs-html
+html: bin/python  ## Build html
+	cd $(DOCS_DIR) && $(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
+	@echo
+	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
+
+.PHONY: docs-livehtml
+docs-livehtml: bin/python  ## Rebuild Sphinx documentation on changes, with live-reload in the browser
+	cd "$(DOCS_DIR)" && ${SPHINXAUTOBUILD} \
+		--ignore "*.swp" \
+		-b html . "$(BUILDDIR)/html" $(SPHINXOPTS) $(O)
+
+.PHONY: docs-linkcheck
+docs-linkcheck: bin/python  ## Run linkcheck
+	cd $(DOCS_DIR) && $(SPHINXBUILD) -b linkcheck $(ALLSPHINXOPTS) $(BUILDDIR)/linkcheck
+	@echo
+	@echo "Link check complete; look for any errors in the above output " \
+		"or in $(BUILDDIR)/linkcheck/ ."
+
+.PHONY: docs-linkcheckbroken
+docs-linkcheckbroken: bin/python  ## Run linkcheck and show only broken links
+	cd $(DOCS_DIR) && $(SPHINXBUILD) -b linkcheck $(ALLSPHINXOPTS) $(BUILDDIR)/linkcheck | GREP_COLORS='0;31' egrep -wi broken --color=auto
+	@echo
+	@echo "Link check complete; look for any errors in the above output " \
+		"or in $(BUILDDIR)/linkcheck/ ."
+
+.PHONY: docs-spellcheck
+docs-spellcheck: bin/python  ## Run spellcheck
+	cd $(DOCS_DIR) && LANGUAGE=$* $(SPHINXBUILD) -b spelling -j 4 $(ALLSPHINXOPTS) $(BUILDDIR)/spellcheck/$*
+	@echo
+	@echo "Spellcheck is finished; look for any errors in the above output " \
+		" or in $(BUILDDIR)/spellcheck/ ."
+
+.PHONY: docs-test
+docs-test: docs-clean docs-linkcheck docs-spellcheck  ## Clean docs build, then run linkcheck, spellcheck
 
 .PHONY: start
 # Run both the back-end and the front end

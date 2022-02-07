@@ -1,9 +1,9 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "Volto has a centralized configuration registry used to parameterize Volto."
+  "property=og:description": "Volto has a centralized configuration registry used to parameterize Volto."
+  "property=og:title": "The configuration registry"
+  "keywords": "Volto, Plone, frontend, React, configuration, registry"
 ---
 
 # The configuration registry
@@ -34,7 +34,7 @@ Both use the same method, using a function as the default export. This function 
 add-ons, it must be provided in the main `index.js` module of the add-on. For project's
 it must be provided in the `src/config.js` module of the project.
 
-See the [Add-ons](/addons) section for extended information on how to work with add-ons.
+See the {doc}`/addons/index` section for extended information on how to work with add-ons.
 
 ## Extending configuration in a project
 

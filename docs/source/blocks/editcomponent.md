@@ -1,9 +1,9 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "The edit component part of a block anatomy is specially different to the view component because they have to support the UX for editing the block."
+  "property=og:description": "The edit component part of a block anatomy is specially different to the view component because they have to support the UX for editing the block."
+  "property=og:title": "Blocks - Edit components"
+  "keywords": "Volto, Plone, frontend, React, Blocks, Edit, components"
 ---
 
 # Blocks - Edit components
@@ -30,7 +30,7 @@ import { SidebarPortal } from '@plone/volto/components';
 [...]
 
 <SidebarPortal selected={this.props.selected}>
-  ...
+  // ...
 </SidebarPortal>
 ```
 
@@ -111,7 +111,7 @@ import { Icon } from '@plone/volto/components';
     schema={schema}
     title={schema.title}
     headerActions={<button onClick={() => {}}>Action</button>}
-    footer={<div>I'm footer</div>}
+    footer={<div>I am footer</div>}
     onChangeField={(id, value) => {
       this.props.onChangeBlock(this.props.block, {
         ...this.props.data,

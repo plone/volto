@@ -15,6 +15,8 @@
 - (Experimental) Prepare documentation for MyST and importing into `plone/documentation@6-dev`. @stevepiercy
 - Fix broken links and redirects in documentation to be compatible with MyST. @stevepiercy
 - Update add-on internationalization. @ksuess
+- Add MyST and Sphinx basic configuration for rapid build and comparison against MkDocs builds. @stevepiercy
+- Fix many MyST and Sphinx warnings. @stevepiercy 
 
 ### Bugfix
 
