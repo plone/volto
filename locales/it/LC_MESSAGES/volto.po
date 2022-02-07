@@ -977,7 +977,7 @@ msgstr "Filtri"
 #: config/Blocks
 # defaultMessage: Facets on left side
 msgid "Facets on left side"
-msgstr "Filtir nel lato sinistro"
+msgstr "Filtri nel lato sinistro"
 
 #: config/Blocks
 # defaultMessage: Facets on right side
