@@ -967,7 +967,7 @@ msgstr "Filtro"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Facet widget
 msgid "Facet widget"
-msgstr "Widget della filtro"
+msgstr "Widget dei filtri"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Facets
