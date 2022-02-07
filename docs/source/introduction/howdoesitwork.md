@@ -1,9 +1,9 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "How does volto work under the hood"
+  "property=og:description": "How does volto work under the hood"
+  "property=og:title": "Volto Internals"
+  "keywords": "Volto,Frontend,Internals,Architecture"
 ---
 
 # How does it work under the hood

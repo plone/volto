@@ -1,9 +1,9 @@
 ---
 html_meta:
-  'description': ''
-  'property=og:description': ''
-  'property=og:title': ''
-  'keywords': ''
+  "description": "Configuration recipe for volto developers"
+  "property=og:description": "Configuration recipe for volto developers"
+  "property=og:title": "Configuration"
+  "keywords": "volto,Configuration,Frontend,Razzle"
 ---
 
 (configuration-index-label)=

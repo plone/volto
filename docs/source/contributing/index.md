@@ -1,11 +1,12 @@
 ---
 html_meta:
-  'description': ''
-  'property=og:description': ''
-  'property=og:title': ''
-  'keywords': ''
+  "description": "Volto contributing guidelines"
+  "property=og:description": "Volto contributing guidelines"
+  "property=og:title": "Contributing Guidelines"
+  "keywords": "Contribute,Volto,Frontend,Github"
 ---
 
+(contributing-index-label)=
 # Design principles
 
 ```{toctree}
