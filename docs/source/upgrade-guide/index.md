@@ -12,6 +12,42 @@ This upgrade guide lists all breaking changes in Volto and explains the
     runs if it's outdated. The generator is also able to "update" your project with
     the latest changes, and propose to you to merge the changes, so you can run it on top of your project by answering the prompt.
 
+## Upgrading to Volto 15.x.x
+
+### Update your Rich Text Editor configuration
+
+DraftJS libraries are now lazy-loaded, and some changes have been introduced in the way that the rich text editor is bootstrapped. In case you have extended the rich text editor configuration in your projects you have to update your `src/config.js`:
+
+The old way:
+
+```js
+  export default function applyConfig(config) {
+    config.settings = {
+      ...config.settings,
+      listBlockTypes: {
+        ...config.settings.listBlockTypes,
+        'my-list-item',
+      }
+    }
+    return config;
+  };
+
+```
+
+The new way:
+
+```js
+  export default function applyConfig(config) {
+    const { richtextEditorSettings } = config.settings;
+    config.settings.richtextEditorSettings = (props) => {
+      const result = richtextEditorSettings(props);
+      result.listBlockTypes = [...result.listBlockTypes, 'my-list-item']
+      return result;
+    }
+    return config;
+  }
+```
+
 ## Upgrading to Volto 14.x.x
 
 ### Revisited rethought and refactored seamless mode
