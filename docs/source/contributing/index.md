@@ -18,7 +18,7 @@ html_meta:
 ```
 
 Since the very beginning, Volto has been developed with a set of principles in mind,
-brought from the years of experience developing [Plone](https://plone.org 'Link to website of Plone') core and implementing projects on it.
+brought from the years of experience developing [Plone](https://plone.org) core and implementing projects on it.
 
 - Approachability
 - Developer experience first
