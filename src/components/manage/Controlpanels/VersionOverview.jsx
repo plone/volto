@@ -6,9 +6,10 @@
 import React from 'react';
 import { List } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
+import { isEmpty } from 'lodash';
 
-import packageJSON from '../../../../package.json';
-import { addons } from 'load-volto-addons';
+import { version as voltoVersion } from '../../../../package.json';
+import { addonsInfo } from 'load-volto-addons';
 
 import { defineMessages, useIntl } from 'react-intl';
 
@@ -19,12 +20,6 @@ const messages = defineMessages({
   },
 });
 
-const getAddonVersion = (addon) => {
-  if (Object.keys(packageJSON.dependencies).includes(addon)) {
-    return packageJSON.dependencies[addon];
-  }
-};
-
 const VersionOverview = ({
   cmf_version,
   pil_version,
@@ -33,7 +28,6 @@ const VersionOverview = ({
   python_version,
   zope_version,
 }) => {
-  const voltoVersion = packageJSON.version;
   const intl = useIntl();
 
   return (
@@ -57,12 +51,10 @@ const VersionOverview = ({
       </List>
 
       <h3>Add-ons</h3>
-      {addons.length === 0 && <p>{intl.formatMessage(messages.no_addons)}</p>}
+      {isEmpty(addonsInfo) && <p>{intl.formatMessage(messages.no_addons)}</p>}
       <ul style={{ fontSize: '16px', fontFamily: 'Monospace' }}>
-        {addons.map((addon) => (
-          <li>
-            {addon} {getAddonVersion(addon)}
-          </li>
+        {Object.keys(addonsInfo).map((addon) => (
+          <li>{`${addon} ${addonsInfo[addon].version || ''}`}</li>
         ))}
       </ul>
       <p>

@@ -186,10 +186,10 @@ const defaultModify = ({
     testingAddons = process.env.RAZZLE_TESTING_ADDONS.split(',');
   }
 
-  const addonsLoaderPath = createAddonsLoader([
-    ...registry.getAddonDependencies(),
-    ...testingAddons,
-  ]);
+  const addonsLoaderPath = createAddonsLoader(
+    [...registry.getAddonDependencies(), ...testingAddons],
+    registry.packages,
+  );
 
   config.resolve.plugins = [
     new RelativeResolverPlugin(registry),
