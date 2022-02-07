@@ -19,6 +19,7 @@ html_meta:
 ./theming-strategy.md
 ./custom-styling.md
 ./using-third-party-themes.md
+./integrate-third-party.md
 
 ```
 

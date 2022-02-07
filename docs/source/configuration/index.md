@@ -1,13 +1,14 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  'description': ''
+  'property=og:description': ''
+  'property=og:title': ''
+  'keywords': ''
 ---
 
-# Configuration
+(configuration-index-label)=
 
+# Configuration
 
 ```{toctree}
 :maxdepth: 3
@@ -17,6 +18,8 @@ html_meta:
 ./settings-reference
 ./zero-config-builds
 ./internalproxy
+./locking
+./volto-config-js
 ./backend
 ./richeditor-settings
 ./multilingual

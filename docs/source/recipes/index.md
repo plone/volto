@@ -25,6 +25,9 @@ html_meta:
 ./contextnavigation.md
 ./pluggables.md
 ./widget.md
+./fetch-data.md
+./environment-variables.md
+./actions-reducers.md
 
 ```
 

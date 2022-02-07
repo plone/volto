@@ -33,14 +33,14 @@ developer frustration and improves end-user experience.
 
 To start developing a new Volto project you should have minimal React and
 modern Javascript knowledge. Follow the
-{doc}`/getting-started/install` guide to bootstrap a new Volto
+{doc}`/introduction/install` guide to bootstrap a new Volto
 project and start hacking!
 
 ```{toctree}
 :maxdepth: 2
 :hidden: true
 
-getting-started/index
+introduction/index
 configuration/index
 theming/index
 recipes/index
@@ -51,4 +51,6 @@ deploying/index
 upgrade-guide/index
 developer-guidelines/index
 contributing/index
+ie11compat
+releases
 ```

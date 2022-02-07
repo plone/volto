@@ -1,9 +1,9 @@
 ---
 html_meta:
-  "description": "Developer Guidelines"
-  "property=og:description": "Developer Guidelines"
-  "property=og:title": "Developer Guidelines"
-  "keywords": "Developer, Guidelines"
+  'description': 'Developer Guidelines'
+  'property=og:description': 'Developer Guidelines'
+  'property=og:title': 'Developer Guidelines'
+  'keywords': 'Developer, Guidelines'
 ---
 
 # Developer Guidelines
@@ -16,6 +16,7 @@ design-principles
 style-guide
 language-features
 linting
+typescript
 react
 redux
 routing
