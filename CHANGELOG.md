@@ -17,6 +17,7 @@
 - Update add-on internationalization. @ksuess
 - Add MyST and Sphinx basic configuration for rapid build and comparison against MkDocs builds. @stevepiercy
 - Fix many MyST and Sphinx warnings. @stevepiercy 
+- Fix more MyST warnings and restructure docs @nileshgulia1
 
 ### Bugfix
 
