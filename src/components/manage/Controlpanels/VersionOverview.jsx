@@ -4,7 +4,6 @@
  */
 
 import React from 'react';
-import { List } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 import { isEmpty } from 'lodash';
 
@@ -33,31 +32,31 @@ const VersionOverview = ({
 
   return (
     <>
-      <List
-        bulleted
-        size="large"
-        style={{ fontSize: '16px', fontFamily: 'Monospace' }}
+      <ul
+        style={{
+          fontSize: '16px',
+          fontFamily: 'Monospace',
+          paddingLeft: '1rem',
+        }}
       >
-        {voltoVersion && (
-          <List.Item key="volto-version">Volto {voltoVersion}</List.Item>
-        )}
-        <List.Item key="plone-version">Plone {plone_version}</List.Item>
-        <List.Item key="plone-restapi-version">
-          plone.restapi {plone_restapi_version}
-        </List.Item>
-        <List.Item key="cmf-version"> CMF {cmf_version}</List.Item>
-        <List.Item key="zope-version">Zope {zope_version}</List.Item>
-        <List.Item key="python-version">Python {python_version}</List.Item>
-        <List.Item key="pil-version">PIL {pil_version}</List.Item>
-      </List>
-
-      <h3>Add-ons</h3>
-      {isEmpty(addonsInfo) && <p>{intl.formatMessage(messages.no_addons)}</p>}
-      <ul style={{ fontSize: '16px', fontFamily: 'Monospace' }}>
-        {Object.keys(addonsInfo).map((addon) => (
-          <li>{`${addon} ${addonsInfo[addon].version || ''}`}</li>
-        ))}
+        {voltoVersion && <li>Volto {voltoVersion}</li>}
+        <li>Plone {plone_version}</li>
+        <li>plone.restapi {plone_restapi_version}</li>
+        <li>CMF {cmf_version}</li>
+        <li>Zope {zope_version}</li>
+        <li>Python {python_version}</li>
+        <li>PIL {pil_version}</li>
       </ul>
+      <h3>Add-ons</h3>
+      {isEmpty(addonsInfo) ? (
+        <p>{intl.formatMessage(messages.no_addons)}</p>
+      ) : (
+        <ul style={{ fontSize: '16px', fontFamily: 'Monospace' }}>
+          {Object.keys(addonsInfo).map((addon) => (
+            <li>{`${addon} ${addonsInfo[addon].version || ''}`}</li>
+          ))}
+        </ul>
+      )}
       {debug_mode !== 'No' && (
         <p>
           <FormattedMessage
