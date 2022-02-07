@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-02-06T18:58:41.144Z\n"
+"POT-Creation-Date: 2022-02-07T09:39:49.063Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -58,6 +58,11 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add
 msgid "Add"
+msgstr ""
+
+#: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Add
+msgid "Add (object list)"
 msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
