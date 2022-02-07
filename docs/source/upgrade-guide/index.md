@@ -24,13 +24,13 @@ The old way:
   export default function applyConfig(config) {
     config.settings = {
       ...config.settings,
-      listBlockTypes: {
+      listBlockTypes = [
         ...config.settings.listBlockTypes,
         'my-list-item',
-      }
+      ]
     }
     return config;
-  };
+  }
 
 ```
 
