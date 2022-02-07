@@ -28,6 +28,10 @@ const messages = defineMessages({
     id: 'Empty object list',
     defaultMessage: 'Empty object list',
   },
+  add: {
+    id: 'Add (object list)',
+    defaultMessage: 'Add',
+  },
 });
 
 /**
@@ -88,7 +92,10 @@ const ObjectListWidget = (props) => {
           <Button
             compact
             icon
-            aria-label={objectSchema.addMessage || `Add ${objectSchema.title}`}
+            aria-label={
+              objectSchema.addMessage ||
+              `${intl.formatMessage(messages.add)} ${objectSchema.title}`
+            }
             onClick={(e) => {
               e.preventDefault();
               onChange(id, [
@@ -103,7 +110,8 @@ const ObjectListWidget = (props) => {
             <Icon name={addSVG} size="18px" />
             &nbsp;
             {/* Custom addMessage in schema, else default to english */}
-            {objectSchema.addMessage || `Add ${objectSchema.title}`}
+            {objectSchema.addMessage ||
+              `${intl.formatMessage(messages.add)} ${objectSchema.title}`}
           </Button>
         </div>
         {value.length === 0 && (
