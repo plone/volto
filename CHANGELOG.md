@@ -2,15 +2,9 @@
 
 ## 14.9.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Add Pluggable to toolbar user menu. @ksuess
-
-### Bugfix
-
-### Internal
 
 ## 14.9.0 (2022-02-08)
 
