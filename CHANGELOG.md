@@ -2,15 +2,13 @@
 
 ## 14.8.2 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Show addons installed in control panel @sneridagh
 
 ### Bugfix
 
-### Internal
+- Fix italian translations in ObjectBrowser @giuliaghisini
 
 ## 14.8.1 (2022-02-04)
 
