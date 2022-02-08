@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Show addons installed in control panel @sneridagh
+
 ### Bugfix
 
 ### Internal

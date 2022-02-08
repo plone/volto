@@ -1614,6 +1614,11 @@ msgstr "ニュース"
 msgid "No"
 msgstr "No"
 
+#: components/manage/Controlpanels/VersionOverview
+# defaultMessage: No addons found
+msgid "No addons found"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected
 msgid "No image selected"

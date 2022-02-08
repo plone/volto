@@ -162,6 +162,7 @@ class AddonConfigurationRegistry {
         const pkg = {
           modulePath: packagePath,
           packageJson: packageJsonPath,
+          version: require(packageJsonPath).version,
           isPublishedPackage: false,
           name,
           addons: require(packageJsonPath).addons || [],
@@ -193,6 +194,7 @@ class AddonConfigurationRegistry {
       const modulePath = path.dirname(require.resolve(`${basePath}/${main}`));
       this.packages[name] = {
         name,
+        version: pkg.version,
         isPublishedPackage: true,
         modulePath,
         packageJson,
@@ -220,6 +222,7 @@ class AddonConfigurationRegistry {
         this.addonNames.push(normalizedAddonName);
       const pkg = {
         modulePath: testingPackagePath,
+        version: require(packageJson).version,
         packageJson: packageJson,
         isPublishedPackage: false,
         name: normalizedAddonName,
