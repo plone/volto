@@ -77,6 +77,11 @@ msgstr ""
 msgid "Add"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Add
+msgid "Add (object list)"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
 msgid "Add Addons"
@@ -1618,6 +1623,11 @@ msgstr ""
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: No
 msgid "No"
+msgstr ""
+
+#: components/manage/Controlpanels/VersionOverview
+# defaultMessage: No addons found
+msgid "No addons found"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
