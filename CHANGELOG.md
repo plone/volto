@@ -2,15 +2,9 @@
 
 ## 15.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fix the `null` error in SelectAutoComplete Widget @iFlameing
-
-### Internal
 
 ## 15.0.0-alpha.0 (2022-02-09)
 
