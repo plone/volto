@@ -16,6 +16,10 @@
 - Update Docker compose to latest images and best practices @sneridagh
 - Rename `core-sandbox` to `coresandbox` for sake of consistency @sneridagh
 
+### Documentation
+
+- Upgrade Guide i18n: Make clear what's project, what add-on. @ksuess
+
 ## 15.0.0-alpha.1 (2022-02-09)
 
 ### Bugfix
