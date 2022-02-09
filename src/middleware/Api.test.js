@@ -2,7 +2,7 @@ import { addExpandersToPath } from './api';
 import { GET_CONTENT } from '@plone/volto/constants/ActionTypes';
 import config from '@plone/volto/registry';
 
-describe('api middleware helpers', () => {
+describe.skip('api middleware helpers', () => {
   it('addExpandersToPath should work as expected', () => {
     config.settings.apiExpanders = [
       {
