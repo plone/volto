@@ -139,7 +139,7 @@ class SelectAutoComplete extends Component {
     if (
       this.state.termsPairsCache.length === 0 &&
       value?.length > 0 &&
-      choices.length > 0
+      choices?.length > 0
     ) {
       this.setState((state) => ({
         termsPairsCache: [...state.termsPairsCache, ...choices],
