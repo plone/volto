@@ -10,6 +10,10 @@
 
 ### Internal
 
+### Documentation
+
+- Upgrade Guide i18n: Make clear what's project, what add-on. @ksuess
+
 ## 15.0.0-alpha.1 (2022-02-09)
 
 ### Bugfix
