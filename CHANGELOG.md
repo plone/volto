@@ -10,6 +10,12 @@
 
 ### Internal
 
+- House cleanup, remove some unused files in the root @sneridagh
+- Move Webpack related files to `webpack-plugins` folder @sneridagh
+- Remove unused Dockerfiles @sneridagh
+- Update Docker compose to latest images and best practices @sneridagh
+- Rename `core-sandbox` to `coresandbox` for sake of consistency @sneridagh
+
 ## 15.0.0-alpha.1 (2022-02-09)
 
 ### Bugfix

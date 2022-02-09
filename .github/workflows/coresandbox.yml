@@ -59,7 +59,7 @@ jobs:
       #     CI: true
 
       - name: Cypress Core Sandbox Acceptance Tests
-        run: yarn ci:cypress:run:core-sandbox
+        run: yarn ci:cypress:run:coresandbox
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
