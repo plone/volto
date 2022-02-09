@@ -1,16 +1,20 @@
-import cookie from 'react-cookie';
+import Cookies from 'universal-cookie';
 import jwt from 'jsonwebtoken';
 import jwtDecode from 'jwt-decode';
 
 import { getAuthToken, persistAuthToken } from './AuthToken';
 
-jest.mock('react-cookie', () => ({
-  load: jest
-    .fn(() => require('jsonwebtoken').sign({ exp: 1 }, 'secret')) // eslint-disable-line global-require
-    .mockImplementationOnce(() => null), // the first call is for anonymous, no auth_token cookie
-  remove: jest.fn(),
-  save: jest.fn(),
-}));
+jest.mock('universal-cookie', () =>
+  jest.fn().mockImplementation(() => ({
+    get: jest
+      .fn(() => require('jsonwebtoken').sign({ exp: 1 }, 'secret')) // eslint-disable-line global-require
+      .mockImplementationOnce(() => null), // the first call is for anonymous, no auth_token cookie
+    remove: jest.fn(),
+    set: jest.fn(),
+  })),
+);
+
+const cookies = new Cookies();
 
 describe('AuthToken', () => {
   describe('anonymousAuthToken', () => {
@@ -24,14 +28,14 @@ describe('AuthToken', () => {
         })),
       };
       persistAuthToken(store);
-      expect(cookie.remove).not.toBeCalledWith('auth_token', { path: '/' });
+      expect(cookies.remove).not.toBeCalledWith('auth_token', { path: '/' });
     });
   });
 
   describe('getAuthToken', () => {
     it('can get the auth token', () => {
       getAuthToken();
-      expect(cookie.load).toBeCalledWith('auth_token');
+      expect(cookies.get).toBeCalledWith('auth_token');
     });
   });
 
@@ -48,7 +52,7 @@ describe('AuthToken', () => {
       const { token } = store.getState().userSession;
 
       persistAuthToken(store);
-      expect(cookie.save).toBeCalledWith('auth_token', token, {
+      expect(cookies.set).toBeCalledWith('auth_token', token, {
         path: '/',
         expires: new Date(jwtDecode(token).exp * 1000),
       });
@@ -65,7 +69,7 @@ describe('AuthToken', () => {
       };
 
       persistAuthToken(store);
-      expect(cookie.remove).toBeCalledWith('auth_token', { path: '/' });
+      expect(cookies.remove).toBeCalledWith('auth_token', { path: '/' });
     });
   });
 });
