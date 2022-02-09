@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
+import { BodyClass, Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { keys, isEmpty } from 'lodash';
@@ -400,41 +400,44 @@ class Add extends Component {
       );
 
       return translationObject ? (
-        <Grid
-          celled="internally"
-          stackable
-          columns={2}
-          id="page-add-translation"
-        >
-          <Grid.Column className="source-object">
-            <TranslationObject
-              translationObject={translationObject}
-              schema={this.props.schema}
-              pathname={this.props.pathname}
-              visual={visual}
-              isFormSelected={
-                this.state.formSelected === 'translationObjectForm'
-              }
-              onSelectForm={() => {
-                this.setState({
-                  formSelected: 'translationObjectForm',
-                });
-              }}
-            />
-          </Grid.Column>
-          <Grid.Column>
-            <div className="new-translation">
-              <Menu pointing secondary attached tabular>
-                <Menu.Item name={translateTo.toUpperCase()} active={true}>
-                  {`${this.props.intl.formatMessage(messages.translateTo, {
-                    lang: translateTo,
-                  })}`}
-                </Menu.Item>
-              </Menu>
-              {pageAdd}
-            </div>
-          </Grid.Column>
-        </Grid>
+        <>
+          <BodyClass className="babel-view" />
+          <Grid
+            celled="internally"
+            stackable
+            columns={2}
+            id="page-add-translation"
+          >
+            <Grid.Column className="source-object">
+              <TranslationObject
+                translationObject={translationObject}
+                schema={this.props.schema}
+                pathname={this.props.pathname}
+                visual={visual}
+                isFormSelected={
+                  this.state.formSelected === 'translationObjectForm'
+                }
+                onSelectForm={() => {
+                  this.setState({
+                    formSelected: 'translationObjectForm',
+                  });
+                }}
+              />
+            </Grid.Column>
+            <Grid.Column>
+              <div className="new-translation">
+                <Menu pointing secondary attached tabular>
+                  <Menu.Item name={translateTo.toUpperCase()} active={true}>
+                    {`${this.props.intl.formatMessage(messages.translateTo, {
+                      lang: translateTo,
+                    })}`}
+                  </Menu.Item>
+                </Menu>
+                {pageAdd}
+              </div>
+            </Grid.Column>
+          </Grid>
+        </>
       ) : (
         pageAdd
       );

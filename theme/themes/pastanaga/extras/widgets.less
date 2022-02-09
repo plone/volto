@@ -138,7 +138,8 @@
 
 // Fake "disabled" field for language independent fields
 // Only on Add form
-#page-add-translation #page-add .language-independent-field {
+body.babel-view #page-add-translation #page-add .language-independent-field,
+body.babel-view .field.language-independent-field {
   pointer-events: none;
 
   input,

@@ -58,6 +58,11 @@ msgstr "Attiva e disattiva"
 msgid "Add"
 msgstr "Aggiungi"
 
+#: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Add
+msgid "Add (object list)"
+msgstr "Aggiungi"
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
 msgid "Add Addons"
@@ -957,32 +962,32 @@ msgstr "URL esterno"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Facet
 msgid "Facet"
-msgstr "Faccetta"
+msgstr "Filtro"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Facet widget
 msgid "Facet widget"
-msgstr "Widget della faccetta"
+msgstr "Widget dei filtri"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Facets
 msgid "Facets"
-msgstr "Faccette"
+msgstr "Filtri"
 
 #: config/Blocks
 # defaultMessage: Facets on left side
 msgid "Facets on left side"
-msgstr "Faccette nel lato sinistro"
+msgstr "Filtri nel lato sinistro"
 
 #: config/Blocks
 # defaultMessage: Facets on right side
 msgid "Facets on right side"
-msgstr "Faccette nel lato destro"
+msgstr "Filtri nel lato destro"
 
 #: config/Blocks
 # defaultMessage: Facets on top
 msgid "Facets on top"
-msgstr "Faccette in alto"
+msgstr "Filtri in alto"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Field
@@ -1123,7 +1128,7 @@ msgstr "Intestazione"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hidden facets will still filter the results if proper parameters are passed in URLs
 msgid "Hidden facets will still filter the results if proper parameters are passed in URLs"
-msgstr "Le faccette nascoste filtreranno comunque i risultati se saranno passati parametri adeguati nell'URL"
+msgstr "I filtri nascosti filtreranno comunque i risultati se saranno passati parametri adeguati nell'URL"
 
 #: components/theme/Comments/Comments
 # defaultMessage: Hide Replies
@@ -1133,7 +1138,7 @@ msgstr "Nascondi risposte"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hide facet?
 msgid "Hide facet?"
-msgstr "Nascondere la faccetta?"
+msgstr "Nascondi il filtro"
 
 #: components/manage/History/History
 #: components/manage/Toolbar/More
@@ -1561,7 +1566,7 @@ msgstr "Sposta in cima alla cartella"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Multiple choices?
 msgid "Multiple choices?"
-msgstr "Scelta multipla?"
+msgstr "Scelta multipla"
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: My email address is
@@ -1600,6 +1605,11 @@ msgstr "Notizia"
 # defaultMessage: No
 msgid "No"
 msgstr "No"
+
+#: components/manage/Controlpanels/VersionOverview
+# defaultMessage: No addons found
+msgid "No addons found"
+msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected

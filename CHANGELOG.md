@@ -1,6 +1,6 @@
 # Change Log
 
-## 14.7.1 (unreleased)
+## 15.0.0 (unreleased)
 
 ### Breaking
 
@@ -11,6 +11,73 @@
 ### Bugfix
 
 ### Internal
+
+## 15.0.0-alpha.1 (2022-02-09)
+
+### Bugfix
+
+- Fix the `null` error in SelectAutoComplete Widget @iFlameing
+
+## 15.0.0-alpha.0 (2022-02-09)
+
+### Breaking
+
+- Upgrade `react-cookie` to latest version. @sneridagh @robgietema
+  See https://docs.voltocms.com/upgrade-guide/ for more information.
+
+## 14.10.0 (2022-02-08)
+
+### Feature
+
+- Add Pluggable to toolbar user menu. @ksuess
+
+## 14.9.0 (2022-02-08)
+
+### Feature
+
+- Show addons installed in control panel @sneridagh
+
+### Bugfix
+
+- Fix italian translations in ObjectBrowser @giuliaghisini
+
+## 14.8.1 (2022-02-04)
+
+### Bugfix
+
+- Fix wrong CSS in language independent class selector @sneridagh
+
+### Internal
+
+- Cleanup redundant buildout install run.
+
+## 14.8.0 (2022-02-03)
+
+### Feature
+
+- Enable `components` property in Volto's config registry. Does not expose any direct feature but this will open the door to be able to override registered components using the config registry and avoid using shadowing explicitly. @sneridagh
+- Add `resolve` and `register` helper methods for the Volto config. They retrieve and register new components in the registry. @tiberiuichim @sneridagh
+- Add `Component` component, given a `name` of a component registered in the registry, it renders it, passing down the props. @tiberiuichim
+- Syncronize the content language with the UI language in multilingual sites. So when you are accessing a content in a given language the rest of the interface literals follow along (it updates the language cookie). So the UI remains consistent. @sneridagh
+
+### Bugfix
+
+- Fix the a11y violation of UrlWidget @iRohitSingh
+
+### Internal
+
+- Update volta pins in package.json @fredvd
+
+## 14.7.1 (2022-02-02)
+
+### Internal
+
+- Add CSS body class in Babel view. Improve marker for language independent fields in Babel view too. @sneridagh
+
+### Docs
+
+Update documentation for internal proxy & other smaller reorganisation for quicker onboarding of
+new users/evaluators. @fredvd
 
 ## 14.7.0 (2022-01-28)
 

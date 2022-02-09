@@ -14,6 +14,21 @@ This upgrade guide lists all breaking changes in Volto and explains the
 
 ## Upgrading to Volto 15.x.x
 
+### Updated react-cookie library
+
+This fixes a use case where cookies could potentially be messed up if your site is under heavy load.
+The old `react-cookie` library was not able to handle correctly the SSR part, specially the one that
+is shared in "Nobody's land" (not SSR, not under the React tree, actions, Redux middleware).
+Upgrading to the latest version of the `react-cookie` suite (`react-cookie`, `universal-cookie-express` and `universal-cookie`) will fix it.
+
+You have to take action only in case you did some development involving cookies. The `react-cookie`
+library has been updated to the latest version and its companion libraries
+(`universal-cookie-express` and `universal-cookie`), and the API changed over the years. Please look into the documentation of these packages to get a grasp on the changes:
+
+https://www.npmjs.com/package/react-cookie
+https://www.npmjs.com/package/universal-cookie-express
+https://www.npmjs.com/package/universal-cookie
+
 ### Update your Rich Text Editor configuration
 
 DraftJS libraries are now lazy-loaded, and some changes have been introduced in the way that the rich text editor is bootstrapped. In case you have extended the rich text editor configuration in your projects you have to update your `src/config.js`:
@@ -50,7 +65,7 @@ The new way:
 
 ## Upgrading to Volto 14.x.x
 
-### Revisited rethought and refactored seamless mode
+### Revisited, rethought and refactored seamless mode
 
 Seamless mode was released as experimental in Volto 13. However, after a period of testing some issues were detected so the feature has been rethought and refactored.
 
