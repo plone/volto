@@ -64,10 +64,6 @@ const server = express()
     res.send('');
   })
   .use(cookiesMiddleware());
-// .all('*', (req, res, next) => {
-//   plugToRequest(req, res);
-//   next();
-// });
 
 const middleware = (config.settings.expressMiddleware || []).filter((m) => m);
 
@@ -134,7 +130,6 @@ function setupServer(req, res, next) {
   // Create a new Redux store instance
   const store = configureStore(initialState, history, api);
 
-  // cookie: pass also the current auth_token cookie here?
   persistAuthToken(store, req);
 
   function errorHandler(error) {

@@ -64,7 +64,6 @@ class Api {
           }
           if (authToken) {
             request.set('Authorization', `Bearer ${authToken}`);
-            // if (__SERVER__) request.set('Cookie', `auth_token=${authToken}`);
           }
 
           request.set('Accept', 'application/json');
