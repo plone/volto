@@ -204,10 +204,8 @@ class AddonConfigurationRegistry {
   }
 
   initTestingPackages() {
-    if (process.env.RAZZLE_TESTING_ADDONS) {
-      process.env.RAZZLE_TESTING_ADDONS.split(',').forEach(
-        this.initTestingPackage.bind(this),
-      );
+    if (process.env.ADDONS) {
+      process.env.ADDONS.split(',').forEach(this.initTestingPackage.bind(this));
     }
   }
 
@@ -391,8 +389,8 @@ class AddonConfigurationRegistry {
    */
   getTestingAddonCustomizationPaths() {
     let aliases = {};
-    if (process.env.RAZZLE_TESTING_ADDONS) {
-      process.env.RAZZLE_TESTING_ADDONS.split(',').forEach((addon) => {
+    if (process.env.ADDONS) {
+      process.env.ADDONS.split(',').forEach((addon) => {
         const normalizedAddonName = addon.split(':')[0];
         const testingPackagePath = `${this.projectRootPath}/packages/${normalizedAddonName}/src`;
         if (fs.existsSync(testingPackagePath)) {

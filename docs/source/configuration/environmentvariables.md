@@ -89,3 +89,12 @@ It displays the errors of the non-compliant customizations (in server console) i
 #### Internationalization errors (i18n)
 
 It will enable the log of missing i18n messages (in console).
+
+### Add addons via environment variable
+
+Quite often, you need different configurations and enabling components (eg. for testing purposes). You can use the `ADDONS` environment variable to define them. These addons do not have the capacity to install dependencies (as opposed to properly defined addons), but all the rest of the addon features work as expected.
+
+    ADDONS=test-addon,test-addon2 yarn start
+
+!!! note
+    You can force install dependencies if you declare a (yarn) workspace for that add-on.

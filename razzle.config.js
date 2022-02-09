@@ -182,8 +182,8 @@ const defaultModify = ({
   config.module.rules.splice(0, 1);
 
   let testingAddons = [];
-  if (process.env.RAZZLE_TESTING_ADDONS) {
-    testingAddons = process.env.RAZZLE_TESTING_ADDONS.split(',');
+  if (process.env.ADDONS) {
+    testingAddons = process.env.ADDONS.split(',');
   }
 
   const addonsLoaderPath = createAddonsLoader(
@@ -237,7 +237,7 @@ const defaultModify = ({
     addonsAsExternals = registry.addonNames.map((addon) => new RegExp(addon));
   }
 
-  if (process.env.RAZZLE_TESTING_ADDONS) {
+  if (process.env.ADDONS) {
     testingAddons.forEach((addon) => {
       const normalizedAddonName = addon.split(':')[0];
       const p = fs.realpathSync(
