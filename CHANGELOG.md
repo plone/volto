@@ -4,6 +4,9 @@
 
 ### Breaking
 
+- Upgrade `react-cookie` to latest version. @sneridagh @robgietema
+  See https://docs.voltocms.com/upgrade-guide/ for more information.
+
 ### Feature
 
 ### Bugfix
