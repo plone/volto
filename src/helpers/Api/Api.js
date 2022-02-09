@@ -4,7 +4,7 @@
  */
 
 import superagent from 'superagent';
-import cookie from 'react-cookie';
+import Cookies from 'universal-cookie';
 import config from '@plone/volto/registry';
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];
@@ -42,7 +42,9 @@ class Api {
    * @method constructor
    * @constructs Api
    */
-  constructor() {
+  constructor(req) {
+    const cookies = new Cookies();
+
     methods.forEach((method) => {
       this[method] = (path, { params, data, type, headers = {} } = {}) => {
         let request;
@@ -53,10 +55,15 @@ class Api {
             request.query(params);
           }
 
-          const authToken = cookie.load('auth_token');
+          let authToken;
+          if (req) {
+            // We are in SSR
+            authToken = req.universalCookies.get('auth_token');
+          } else {
+            authToken = cookies.get('auth_token');
+          }
           if (authToken) {
             request.set('Authorization', `Bearer ${authToken}`);
-            if (__SERVER__) request.set('Cookie', `auth_token=${authToken}`);
           }
 
           request.set('Accept', 'application/json');

@@ -1,6 +1,6 @@
 # Change Log
 
-## 14.10.1 (unreleased)
+## 15.0.0 (unreleased)
 
 ### Breaking
 
@@ -11,6 +11,13 @@
 ### Internal
 
 - Alias `lodash` to `lodash-es`, as this will include only one copy of lodash in the bundle @tiberiuichim
+
+## 15.0.0-alpha.0 (2022-02-09)
+
+### Breaking
+
+- Upgrade `react-cookie` to latest version. @sneridagh @robgietema
+  See https://docs.voltocms.com/upgrade-guide/ for more information.
 
 ## 14.10.0 (2022-02-08)
 
