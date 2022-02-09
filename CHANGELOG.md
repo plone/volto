@@ -1,6 +1,6 @@
 # Change Log
 
-## 14.9.1 (unreleased)
+## 15.0.0 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,25 @@
 ### Bugfix
 
 ### Internal
+
+## 15.0.0-alpha.1 (2022-02-09)
+
+### Bugfix
+
+- Fix the `null` error in SelectAutoComplete Widget @iFlameing
+
+## 15.0.0-alpha.0 (2022-02-09)
+
+### Breaking
+
+- Upgrade `react-cookie` to latest version. @sneridagh @robgietema
+  See https://docs.voltocms.com/upgrade-guide/ for more information.
+
+## 14.10.0 (2022-02-08)
+
+### Feature
+
+- Add Pluggable to toolbar user menu. @ksuess
 
 ## 14.9.0 (2022-02-08)
 
