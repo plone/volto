@@ -7,12 +7,6 @@
 - Upgrade `react-cookie` to latest version. @sneridagh @robgietema
   See https://docs.voltocms.com/upgrade-guide/ for more information.
 
-### Feature
-
-### Bugfix
-
-### Internal
-
 ## 14.10.0 (2022-02-08)
 
 ### Feature
