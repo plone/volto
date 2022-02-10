@@ -4,11 +4,13 @@
 
 ### Breaking
 
+- Language Switcher no longer takes care of the change of the language on the Redux Store. This responsability has been unified in the `MultilingualRedirector` @sneridagh
+
 ### Feature
 
 ### Bugfix
 
-- Prevent the MultilingualRedirector to force 4 content load when switching the language @sneridagh
+- Prevent the MultilingualRedirector to force 4 content load when switching the language @reebalazs
 
 ### Internal
 
