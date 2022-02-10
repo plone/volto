@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix opening of overlay on first click @iRohitSingh
+
 ### Internal
 
 ## 15.0.0-alpha.2 (2022-02-10)

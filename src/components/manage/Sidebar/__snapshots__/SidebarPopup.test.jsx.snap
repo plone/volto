@@ -3,6 +3,20 @@
 exports[`sidebar popup is not rendered when the block is not selected 1`] = `
 <React.Fragment>
   <CSSTransition
+    classNames=""
+    in={false}
+    timeout={500}
+    unmountOnExit={true}
+  >
+    <Portal
+      node={<body />}
+    >
+      <div
+        className="overlay-container"
+      />
+    </Portal>
+  </CSSTransition>
+  <CSSTransition
     classNames="sidebar-container"
     in={false}
     timeout={500}
@@ -31,6 +45,20 @@ exports[`sidebar popup is not rendered when the block is not selected 1`] = `
 
 exports[`sidebar popup is rendered when the block is selected 1`] = `
 <React.Fragment>
+  <CSSTransition
+    classNames=""
+    in={true}
+    timeout={500}
+    unmountOnExit={true}
+  >
+    <Portal
+      node={<body />}
+    >
+      <div
+        className="overlay-container"
+      />
+    </Portal>
+  </CSSTransition>
   <CSSTransition
     classNames="sidebar-container"
     in={true}

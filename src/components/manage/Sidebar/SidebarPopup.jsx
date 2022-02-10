@@ -25,18 +25,17 @@ const SidebarPopup = (props) => {
 
   return (
     <>
-      {overlay && (
-        <CSSTransition
-          in={open}
-          timeout={DEFAULT_TIMEOUT}
-          classNames="overlay-container"
-          unmountOnExit
-        >
-          <Portal node={document?.body}>
-            <div className="overlay-container"></div>
-          </Portal>
-        </CSSTransition>
-      )}
+      <CSSTransition
+        in={open}
+        timeout={DEFAULT_TIMEOUT}
+        classNames={overlay ? 'overlay-container' : ''}
+        unmountOnExit
+      >
+        <Portal node={document?.body}>
+          <div className="overlay-container"></div>
+        </Portal>
+      </CSSTransition>
+
       <CSSTransition
         in={open}
         timeout={DEFAULT_TIMEOUT}
