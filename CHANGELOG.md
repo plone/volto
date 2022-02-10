@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix the upload image in contents view @iFlameing
+
 ### Internal
 
 ### Documentation
