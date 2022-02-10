@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Prevent the MultilingualRedirector to force 4 content load when switching the language @sneridagh
+
 ### Internal
 
 ### Documentation

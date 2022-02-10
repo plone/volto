@@ -23,10 +23,14 @@ const MultilingualRedirector = (props) => {
     // UI are the same. Otherwise, there are inconsistencies between the UI main elements
     // eg. Home link in breadcrumbs, other i18n dependant literals from the main UI and
     // the current content language.
+    // This variable makes sure that the async operation in the lazy load import does not
+    // happen twice (when switching language)
+    let mounted = true;
     if (
       contentLanguage &&
       currentLanguage !== contentLanguage &&
       pathname &&
+      pathname !== '/' &&
       // We don't want to trigger it in Babel View, since Babel view already takes care
       // of it
       !pathname.endsWith('/add') &&
@@ -34,9 +38,14 @@ const MultilingualRedirector = (props) => {
     ) {
       const langFileName = normalizeLanguageName(contentLanguage);
       import('~/../locales/' + langFileName + '.json').then((locale) => {
-        dispatch(changeLanguage(contentLanguage, locale.default));
+        if (mounted) {
+          dispatch(changeLanguage(contentLanguage, locale.default));
+        }
       });
     }
+    return () => {
+      mounted = false;
+    };
   }, [
     pathname,
     dispatch,
@@ -48,12 +57,18 @@ const MultilingualRedirector = (props) => {
   React.useEffect(() => {
     // ToDo: Add means to support language negotiation (with config)
     // const detectedLang = (navigator.language || navigator.userLanguage).substring(0, 2);
+    let mounted = true;
     if (settings.isMultilingual && pathname === '/') {
       const langFileName = normalizeLanguageName(redirectToLanguage);
       import('~/../locales/' + langFileName + '.json').then((locale) => {
-        dispatch(changeLanguage(redirectToLanguage, locale.default));
+        if (mounted) {
+          dispatch(changeLanguage(redirectToLanguage, locale.default));
+        }
       });
     }
+    return () => {
+      mounted = false;
+    };
   }, [pathname, dispatch, redirectToLanguage, settings.isMultilingual]);
 
   return pathname === '/' && settings.isMultilingual ? (
