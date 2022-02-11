@@ -12,6 +12,8 @@
 
 ### Internal
 
+- Add new RawMaterial Volto websites in production @nzambello
+
 ## 15.0.0-alpha.2 (2022-02-10)
 
 ### Breaking
