@@ -5,6 +5,7 @@
 ### Breaking
 
 - Markup change in `LinkView` component.
+- Rename `core-sandbox` to `coresandbox` for sake of consistency @sneridagh
   See https://docs.voltocms.com/upgrade-guide/ for more information.
 
 ### Feature
@@ -12,6 +13,11 @@
 ### Bugfix
 
 ### Internal
+
+- House cleanup, remove some unused files in the root @sneridagh
+- Move Webpack related files to `webpack-plugins` folder @sneridagh
+- Remove unused Dockerfiles @sneridagh
+- Update Docker compose to latest images and best practices @sneridagh
 
 ## 15.0.0-alpha.3 (2022-02-11)
 
