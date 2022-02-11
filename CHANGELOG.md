@@ -10,8 +10,12 @@
 
 - Fix the upload image in contents view @iFlameing
 - add "view" id to contact-form container for main content skiplink @ThomasKindermann
+- Add "view" id to contact-form container for main content skiplink @ThomasKindermann
+- Fix loading indicator positioning on Login form submit @sneridagh
 
 ### Internal
+
+- Add new RawMaterial Volto websites in production @nzambello
 
 ## 15.0.0-alpha.2 (2022-02-10)
 
