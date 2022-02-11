@@ -2,15 +2,10 @@
 
 ## 15.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fix the upload image in contents view @iFlameing
 - add "view" id to contact-form container for main content skiplink @ThomasKindermann
-- Add "view" id to contact-form container for main content skiplink @ThomasKindermann
 - Fix loading indicator positioning on Login form submit @sneridagh
 
 ### Internal
