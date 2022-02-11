@@ -83,6 +83,8 @@ but also the [lookup
 mechanism](https://github.com/plone/volto/blob/6fd62cb2860bc7cf3cb7c36ea86bfd8bd03247d9/src/components/manage/Form/Field.jsx#L112)
 to understand how things work.
 
+See [Widgets](/recipes/widget) for more information.
+
 ## views
 
 The `views` registry allows configuration of the components that will be used
