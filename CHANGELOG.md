@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- add "view" id to contact-form container for main content skiplink @ThomasKindermann
+
 ### Internal
 
 ## 15.0.0-alpha.2 (2022-02-10)
