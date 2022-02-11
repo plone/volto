@@ -267,13 +267,8 @@ class ContentsUploadModal extends Component {
                     <Table.Row className="upload-row" key={file.name}>
                       <Table.Cell>{file.name}</Table.Cell>
                       <Table.Cell>
-                        {file.lastModifiedDate ? (
+                        {file.lastModifiedDate && (
                           <FormattedRelativeDate date={file.lastModifiedDate} />
-                        ) : (
-                          <FormattedMessage
-                            id="Not Found"
-                            defaultMessage="Not Found"
-                          />
                         )}
                       </Table.Cell>
                       <Table.Cell>
