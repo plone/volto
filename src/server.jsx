@@ -9,12 +9,13 @@ import { renderToString } from 'react-dom/server';
 import { createMemoryHistory } from 'history';
 import { parse as parseUrl } from 'url';
 import { keys } from 'lodash';
-import cookie, { plugToRequest } from 'react-cookie';
 import locale from 'locale';
 import { detect } from 'detect-browser';
 import path from 'path';
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
 import { resetServerContext } from 'react-beautiful-dnd';
+import { CookiesProvider } from 'react-cookie';
+import cookiesMiddleware from 'universal-cookie-express';
 import debug from 'debug';
 
 import routes from '~/routes';
@@ -62,10 +63,7 @@ const server = express()
     // Support for HEAD requests. Required by start-test utility in CI.
     res.send('');
   })
-  .all('*', (req, res, next) => {
-    plugToRequest(req, res);
-    next();
-  });
+  .use(cookiesMiddleware());
 
 const middleware = (config.settings.expressMiddleware || []).filter((m) => m);
 
@@ -106,14 +104,14 @@ function setupServer(req, res, next) {
   const browserdetect = detect(req.headers['user-agent']);
 
   const lang = new locale.Locales(
-    cookie.load('I18N_LANGUAGE') ||
+    req.universalCookies.get('I18N_LANGUAGE') ||
       config.settings.defaultLanguage ||
       req.headers['accept-language'],
   )
     .best(supported)
     .toString();
 
-  const authToken = cookie.load('auth_token');
+  const authToken = req.universalCookies.get('auth_token');
   const initialState = {
     userSession: { ...userSession(), token: authToken },
     form: req.body,
@@ -132,7 +130,7 @@ function setupServer(req, res, next) {
   // Create a new Redux store instance
   const store = configureStore(initialState, history, api);
 
-  persistAuthToken(store);
+  persistAuthToken(store, req);
 
   function errorHandler(error) {
     const errorPage = (
@@ -204,11 +202,13 @@ server.get('/*', (req, res) => {
       resetServerContext();
       const markup = renderToString(
         <ChunkExtractorManager extractor={extractor}>
-          <Provider store={store} onError={reactIntlErrorHandler}>
-            <StaticRouter context={context} location={req.url}>
-              <ReduxAsyncConnect routes={routes} helpers={api} />
-            </StaticRouter>
-          </Provider>
+          <CookiesProvider cookies={req.universalCookies}>
+            <Provider store={store} onError={reactIntlErrorHandler}>
+              <StaticRouter context={context} location={req.url}>
+                <ReduxAsyncConnect routes={routes} helpers={api} />
+              </StaticRouter>
+            </Provider>
+          </CookiesProvider>
         </ChunkExtractorManager>,
       );
 

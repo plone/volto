@@ -2,7 +2,7 @@
 
 exports[`renders a dictionary widget component 1`] = `
 <div
-  className="inline field dictwidget field-wrapper-test-dict"
+  className="inline field vocabularytermswidget dictwidget field-wrapper-test-dict"
 >
   <div
     className="ui grid"
@@ -27,13 +27,6 @@ exports[`renders a dictionary widget component 1`] = `
       <div
         className="eight wide column"
       >
-        <div
-          className="ui basic segment"
-        >
-          <h3>
-            My Vocabulary
-          </h3>
-        </div>
         <div
           className="add-item-button-wrapper"
         >

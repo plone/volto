@@ -1,10 +1,9 @@
-import VocabularyTermsWidget from './VocabularyTermsWidget';
 import React from 'react';
-
+import VocabularyTermsWidget from './VocabularyTermsWidget';
 import WidgetStory from './story';
 
-export const JSONField = WidgetStory.bind({
-  props: { id: 'simplevocabulary', title: 'Vocabulary terms' },
+export const VocabularyTerms = WidgetStory.bind({
+  props: { id: 'vocabularyterms', title: 'Vocabulary terms', block: 'block' },
   widget: VocabularyTermsWidget,
   customStore: {
     userSession: { token: '1234' },
@@ -34,26 +33,12 @@ export const JSONField = WidgetStory.bind({
     ],
   },
 });
-
-export const Simple = WidgetStory.bind({
-  props: { id: 'simplevocabulary', title: 'Vocabulary terms' },
-  widget: VocabularyTermsWidget,
-  customStore: {
-    userSession: { token: '1234' },
-    intl: {
-      locale: 'en',
-      messages: {},
-    },
-  },
-  initialValue: {
-    '001': 'manual',
-    '002': 'questions & answers',
-  },
-});
+VocabularyTerms.args = {};
 
 export default {
-  title: 'Widgets/Vocabulary',
+  title: 'Widgets/VocabularyTerms',
   component: VocabularyTermsWidget,
+  argTypes: {},
   decorators: [
     (Story) => (
       <div className="ui segment form attached" style={{ width: '600px' }}>

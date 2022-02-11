@@ -3,7 +3,7 @@
  * @module middleware/api
  */
 
-import cookie from 'react-cookie';
+import Cookies from 'universal-cookie';
 import jwtDecode from 'jwt-decode';
 import { compact, flatten, union } from 'lodash';
 import { matchPath } from 'react-router';
@@ -174,7 +174,8 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
           });
         }
         if (type === LOGIN && settings.websockets) {
-          cookie.save('auth_token', result.token, {
+          const cookies = new Cookies();
+          cookies.set('auth_token', result.token, {
             path: '/',
             expires: new Date(jwtDecode(result.token).exp * 1000),
           });

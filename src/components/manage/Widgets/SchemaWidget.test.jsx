@@ -5,6 +5,12 @@ import { Provider } from 'react-intl-redux';
 
 import SchemaWidget from './SchemaWidget';
 
+jest.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(
+  async () =>
+    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
+);
+
 const mockStore = configureStore();
 
 test('renders a schema widget component', () => {
