@@ -74,7 +74,6 @@ exports[`ContentsItem renders a contents item component 1`] = `
       className="icon-align-name"
       href="/blog"
       onClick={[Function]}
-      title="Document"
     >
       <div
         className="expire-align"
@@ -83,7 +82,7 @@ exports[`ContentsItem renders a contents item component 1`] = `
           className="icon icon-margin"
           dangerouslySetInnerHTML={
             Object {
-              "__html": undefined,
+              "__html": "<title>Document</title>undefined",
             }
           }
           onClick={null}
@@ -98,7 +97,9 @@ exports[`ContentsItem renders a contents item component 1`] = `
           xmlns=""
         />
          
-        <span>
+        <span
+          title="Blog"
+        >
            
           Blog
         </span>
@@ -120,16 +121,11 @@ exports[`ContentsItem renders a contents item component 1`] = `
       onChange={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
+      onKeyDown={[Function]}
       onMouseDown={[Function]}
       role="listbox"
       tabIndex={0}
     >
-      <div
-        aria-atomic={true}
-        aria-live="polite"
-        className="text"
-        role="alert"
-      />
       <svg
         className="icon"
         dangerouslySetInnerHTML={

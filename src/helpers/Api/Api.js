@@ -4,7 +4,7 @@
  */
 
 import superagent from 'superagent';
-import cookie from 'react-cookie';
+import Cookies from 'universal-cookie';
 import config from '@plone/volto/registry';
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];
@@ -17,16 +17,19 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
  */
 function formatUrl(path) {
   const { settings } = config;
+  const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
+
   if (path.startsWith('http://') || path.startsWith('https://')) return path;
 
   const adjustedPath = path[0] !== '/' ? `/${path}` : path;
   let apiPath = '';
   if (settings.internalApiPath && __SERVER__) {
     apiPath = settings.internalApiPath;
-  } else if (config.settings.apiPath) {
-    apiPath = config.settings.apiPath;
+  } else if (settings.apiPath) {
+    apiPath = settings.apiPath;
   }
-  return `${apiPath}${adjustedPath}`;
+
+  return `${apiPath}${APISUFIX}${adjustedPath}`;
 }
 
 /**
@@ -39,7 +42,9 @@ class Api {
    * @method constructor
    * @constructs Api
    */
-  constructor() {
+  constructor(req) {
+    const cookies = new Cookies();
+
     methods.forEach((method) => {
       this[method] = (path, { params, data, type, headers = {} } = {}) => {
         let request;
@@ -50,7 +55,13 @@ class Api {
             request.query(params);
           }
 
-          const authToken = cookie.load('auth_token');
+          let authToken;
+          if (req) {
+            // We are in SSR
+            authToken = req.universalCookies.get('auth_token');
+          } else {
+            authToken = cookies.get('auth_token');
+          }
           if (authToken) {
             request.set('Authorization', `Bearer ${authToken}`);
           }

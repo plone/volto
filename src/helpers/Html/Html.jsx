@@ -87,7 +87,14 @@ class Html extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { extractor, markup, store, criticalCss, apiPath } = this.props;
+    const {
+      extractor,
+      markup,
+      store,
+      criticalCss,
+      apiPath,
+      publicURL,
+    } = this.props;
     const head = Helmet.rewind();
     const bodyClass = join(BodyClass.rewind(), ' ');
     return (
@@ -109,12 +116,22 @@ class Html extends Component {
                 ...(apiPath && {
                   apiPath,
                 }),
+                ...(publicURL && {
+                  publicURL,
+                }),
               })};`,
             }}
           />
 
-          <link rel="shortcut icon" href="/favicon.ico" />
-          <meta name="generator" content="Volto - http://plone.org" />
+          <link rel="icon" href="/favicon.ico" sizes="any" />
+          <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/apple-touch-icon.png"
+          />
+          <link rel="manifest" href="/site.webmanifest" />
+          <meta name="generator" content="Plone 6 - https://plone.org" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           {process.env.NODE_ENV === 'production' && criticalCss && (

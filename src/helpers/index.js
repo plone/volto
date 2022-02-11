@@ -33,6 +33,7 @@ export {
   nestContent,
   getLayoutFieldname,
   getContentIcon,
+  getLanguageIndependentFields,
 } from '@plone/volto/helpers/Content/Content';
 export {
   addBlock,
@@ -49,6 +50,8 @@ export {
   mutateBlock,
   nextBlockId,
   previousBlockId,
+  applyBlockDefaults,
+  applySchemaDefaults,
 } from '@plone/volto/helpers/Blocks/Blocks';
 export BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 export ScrollToTop from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
@@ -79,8 +82,12 @@ export {
   withBlockSchemaEnhancer,
   withVariationSchemaEnhancer,
   withBlockExtensions,
+  applySchemaEnhancer,
 } from './Extensions';
 export { asyncConnect } from './AsyncConnect';
 export { userHasRoles } from './User/User';
 // export { injectLazyLibs } from './Loadable/Loadable';
 export { useDetectClickOutside } from './Utils/useDetectClickOutside';
+export { usePrevious } from './Utils/usePrevious';
+export { usePagination } from './Utils/usePagination';
+export useUndoManager from './UndoManager/useUndoManager';

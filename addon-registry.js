@@ -2,7 +2,7 @@
 const glob = require('glob').sync;
 const path = require('path');
 const fs = require('fs');
-
+const debug = require('debug')('shadowing');
 const { map } = require('lodash');
 const { DepGraph } = require('dependency-graph');
 
@@ -99,13 +99,26 @@ class AddonConfigurationRegistry {
       projectRootPath,
       'package.json',
     )));
+    // Loads the dynamic config, if any
+    if (fs.existsSync(path.join(projectRootPath, 'volto.config.js'))) {
+      this.voltoConfigJS = require(path.join(
+        projectRootPath,
+        'volto.config.js',
+      ));
+    } else {
+      this.voltoConfigJS = [];
+    }
+    this.resultantMergedAddons = [
+      ...(packageJson.addons || []),
+      ...(this.voltoConfigJS.addons || []),
+    ];
 
     this.projectRootPath = projectRootPath;
     this.voltoPath =
       packageJson.name === '@plone/volto'
         ? `${projectRootPath}`
         : `${projectRootPath}/node_modules/@plone/volto`;
-    this.addonNames = (packageJson.addons || []).map((s) => s.split(':')[0]);
+    this.addonNames = this.resultantMergedAddons.map((s) => s.split(':')[0]);
     this.packages = {};
     this.customizations = new Map();
 
@@ -114,7 +127,7 @@ class AddonConfigurationRegistry {
     this.initTestingPackages();
 
     this.dependencyGraph = buildDependencyGraph(
-      packageJson.addons || [],
+      this.resultantMergedAddons,
       (name) => {
         this.initPublishedPackage(name);
         return this.packages[name].addons || [];
@@ -125,13 +138,19 @@ class AddonConfigurationRegistry {
   }
 
   /**
-   * Use jsconfig.js to get paths for "development" packages/addons (coming from mrs.developer.json)
+   * Use tsconfig.json or jsconfig.json to get paths for "development" packages/addons
+   * (coming from mrs.developer.json)
    * Not all of these packages have to be Volto addons.
    */
   initDevelopmentPackages() {
-    if (fs.existsSync(`${this.projectRootPath}/jsconfig.json`)) {
-      const jsConfig = require(`${this.projectRootPath}/jsconfig`)
-        .compilerOptions;
+    let configFile;
+    if (fs.existsSync(`${this.projectRootPath}/tsconfig.json`))
+      configFile = `${this.projectRootPath}/tsconfig.json`;
+    else if (fs.existsSync(`${this.projectRootPath}/jsconfig.json`))
+      configFile = `${this.projectRootPath}/jsconfig.json`;
+
+    if (configFile) {
+      const jsConfig = require(configFile).compilerOptions;
       const pathsConfig = jsConfig.paths;
 
       Object.keys(pathsConfig).forEach((name) => {
@@ -143,6 +162,7 @@ class AddonConfigurationRegistry {
         const pkg = {
           modulePath: packagePath,
           packageJson: packageJsonPath,
+          version: require(packageJsonPath).version,
           isPublishedPackage: false,
           name,
           addons: require(packageJsonPath).addons || [],
@@ -174,6 +194,7 @@ class AddonConfigurationRegistry {
       const modulePath = path.dirname(require.resolve(`${basePath}/${main}`));
       this.packages[name] = {
         name,
+        version: pkg.version,
         isPublishedPackage: true,
         modulePath,
         packageJson,
@@ -201,6 +222,7 @@ class AddonConfigurationRegistry {
         this.addonNames.push(normalizedAddonName);
       const pkg = {
         modulePath: testingPackagePath,
+        version: require(packageJson).version,
         packageJson: packageJson,
         isPublishedPackage: false,
         name: normalizedAddonName,
@@ -284,7 +306,8 @@ class AddonConfigurationRegistry {
       const base = path.join(rootPath, customizationPath);
       const reg = [];
 
-      // All registered addon packages (in jsconfig.json and package.json:addons) can be customized
+      // All registered addon packages (in tsconfig.json/jsconfig.json and package.json:addons)
+      // can be customized
       Object.values(this.packages).forEach((addon) => {
         const { name, modulePath } = addon;
         if (fs.existsSync(path.join(base, name))) {
@@ -322,7 +345,7 @@ class AddonConfigurationRegistry {
                 filename.replace(customPath, name).replace(/\.(js|jsx)$/, '')
               ] = path.resolve(filename);
             } else {
-              console.log(
+              debug(
                 `The file ${filename} doesn't exist in the ${name} (${targetPath}), unable to customize.`,
               );
             }
@@ -359,6 +382,33 @@ class AddonConfigurationRegistry {
       };
     });
     return aliases;
+  }
+
+  /**
+   * Allow testing packages addons to customize Volto and other addons.
+   *
+   * Same as the above one, but specific for Volto testing addons
+   */
+  getTestingAddonCustomizationPaths() {
+    let aliases = {};
+    if (process.env.RAZZLE_TESTING_ADDONS) {
+      process.env.RAZZLE_TESTING_ADDONS.split(',').forEach((addon) => {
+        const normalizedAddonName = addon.split(':')[0];
+        const testingPackagePath = `${this.projectRootPath}/packages/${normalizedAddonName}/src`;
+        if (fs.existsSync(testingPackagePath)) {
+          const basePath = getPackageBasePath(testingPackagePath);
+          const packageJson = path.join(basePath, 'package.json');
+          aliases = {
+            ...aliases,
+            ...this.getCustomizationPaths(require(packageJson), basePath),
+          };
+        }
+      });
+
+      return aliases;
+    } else {
+      return [];
+    }
   }
 
   /**

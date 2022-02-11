@@ -3,7 +3,7 @@
  * @module middleware/api
  */
 
-import cookie from 'react-cookie';
+import Cookies from 'universal-cookie';
 import jwtDecode from 'jwt-decode';
 import { compact, flatten, union } from 'lodash';
 import { matchPath } from 'react-router';
@@ -22,6 +22,13 @@ let socket = null;
 /**
  *
  * Add configured expanders to an api call for an action
+ * Requirements:
+ *
+ * - It should add the expanders set in the config settings
+ * - It should preserve any query if present
+ * - It should preserve (and add) any expand parameter (if present) e.g. translations
+ * - It should take use the correct codification for arrays in querystring (repeated parameter for each member of the array)
+ *
  * @function addExpandersToPath
  * @param {string} path The url/path including the querystring
  * @param {*} type The action type
@@ -31,24 +38,38 @@ export function addExpandersToPath(path, type) {
   const { settings } = config;
   const { apiExpanders = [] } = settings;
 
-  const pathPart = path.split('?')[0] || '';
-  const expanders = apiExpanders
-    .filter((expand) => matchPath(pathPart, expand.match) && expand[type])
+  const {
+    url,
+    query: { expand, ...query },
+  } = qs.parseUrl(path);
+
+  const expandersFromConfig = apiExpanders
+    .filter((expand) => matchPath(url, expand.match) && expand[type])
     .map((expand) => expand[type]);
-  const query = qs.parse(qs.extract(path));
-  const expand = compact(union([query.expand, ...flatten(expanders)]));
-  if (expand) {
-    query.expand = expand;
-  }
+
+  const expandMerge = compact(union([expand, ...flatten(expandersFromConfig)]));
+
+  const stringifiedExpand = qs.stringify(
+    { expand: expandMerge },
+    {
+      arrayFormat: 'comma',
+      encode: false,
+    },
+  );
+
   const stringifiedQuery = qs.stringify(query, {
-    arrayFormat: 'comma',
     encode: false,
   });
-  if (!stringifiedQuery) {
-    return pathPart;
-  }
 
-  return `${pathPart}?${stringifiedQuery}`;
+  if (stringifiedQuery && stringifiedExpand) {
+    return `${url}?${stringifiedExpand}&${stringifiedQuery}`;
+  } else if (!stringifiedQuery && stringifiedExpand) {
+    return `${url}?${stringifiedExpand}`;
+  } else if (stringifiedQuery && !stringifiedExpand) {
+    return `${url}?${stringifiedQuery}`;
+  } else {
+    return url;
+  }
 }
 
 /**
@@ -153,7 +174,8 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
           });
         }
         if (type === LOGIN && settings.websockets) {
-          cookie.save('auth_token', result.token, {
+          const cookies = new Cookies();
+          cookies.set('auth_token', result.token, {
             path: '/',
             expires: new Date(jwtDecode(result.token).exp * 1000),
           });

@@ -171,6 +171,13 @@ describe('Url', () => {
       expect(isInternalURL(href)).toBe(true);
       settings.internalApiPath = saved;
     });
+    it('tells if an URL is external if settings.internalApiPath is empty', () => {
+      const href = `http://google.com`;
+      const saved = settings.internalApiPath;
+      settings.internalApiPath = '';
+      expect(isInternalURL(href)).toBe(false);
+      settings.internalApiPath = saved;
+    });
     it('tells if an URL is internal if it is an anchor', () => {
       const href = '#anchor';
       expect(isInternalURL(href)).toBe(true);
@@ -182,6 +189,14 @@ describe('Url', () => {
     it('tells if an URL is internal if a relative path', () => {
       const href = './../';
       expect(isInternalURL(href)).toBe(true);
+    });
+    it('Behave if URL is not a string', () => {
+      const href = null;
+      expect(isInternalURL(href)).toBe(null);
+    });
+    it('Behave if URL is not a string II', () => {
+      const href = undefined;
+      expect(isInternalURL(href)).toBe(undefined);
     });
   });
   describe('isUrl', () => {

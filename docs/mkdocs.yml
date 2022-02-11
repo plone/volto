@@ -20,17 +20,15 @@ extra_css:
 
 nav:
   - Getting Started:
-      - Bootstrap Volto: 'getting-started/install.md'
+      - Installing Volto: 'getting-started/install.md'
       - Developer roadmap: 'getting-started/roadmap.md'
       - Learning resources: 'getting-started/others.md'
-      - How does it work under the hood: 'getting-started/howdoesitwork.md'
-  - Design principles: 'design-principles/index.md'
-  - Style Guide: 'style-guide/index.md'
   - Configuration:
       - What is configurable?: 'configuration/how-to.md'
       - Settings reference guide: 'configuration/settings-reference.md'
       - Zero config builds: 'configuration/zero-config-builds.md'
       - Internal proxy: 'configuration/internalproxy.md'
+      - Dynamic Volto Addons Configuration: 'configuration/volto-config-js.md'
       - Backend configuration: 'configuration/backend.md'
       - Richeditor settings: 'configuration/richeditor-settings.md'
       - Multilingual: 'configuration/multilingual.md'
@@ -57,12 +55,14 @@ nav:
       - App component insertion point: 'recipes/appextras.md'
       - Context navigation component: 'recipes/contextnavigation.md'
       - Pluggables: 'recipes/pluggables.md'
+      - Forms and widgets: 'recipes/widget.md'
   - Blocks:
       - Introduction: 'blocks/introduction.md'
       - Anatomy: 'blocks/anatomy.md'
       - Settings: 'blocks/settings.md'
       - Edit components: 'blocks/editcomponent.md'
       - Extensions: 'blocks/extensions.md'
+      - SSR: 'blocks/ssr.md'
   - Addons:
       - Introduction: 'addons/index.md'
       - Internationalization: 'addons/i18n.md'
@@ -77,6 +77,8 @@ nav:
       - Performance improvements: 'deploying/performance.md'
   - Upgrade Guide: 'upgrade-guide/index.md'
   - Developer Guidelines:
+      - Design principles: 'developer-guidelines/design-principles.md'
+      - Style Guide: 'developer-guidelines/style-guide.md'
       - Language features: 'developer-guidelines/language-features.md'
       - Linting: 'developer-guidelines/linting.md'
       - React: 'developer-guidelines/react.md'

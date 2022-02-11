@@ -8,6 +8,19 @@ lib/
 g-api/
 tests/
 
+# Docs
+docs/
+
+# Cypress
+cypress/fixtures
+cypress/tests
+cypress/screenshots
+cypress/videos
+
+# Tests
+__tests__/
+*.snap
+
 # Files
 .travis.yml
 requirements-docs.txt
@@ -84,3 +97,4 @@ typings/
 styleguide.config
 .vscode
 packages
+.tx

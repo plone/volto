@@ -1,42 +1,44 @@
-import VocabularyTermsWidgetDefault from './VocabularyTermsWidget';
-import Wrapper from '@plone/volto/storybook';
 import React from 'react';
+import VocabularyTermsWidget from './VocabularyTermsWidget';
+import WidgetStory from './story';
 
-const customStore = {
-  userSession: { token: '1234' },
-  intl: {
-    locale: 'en',
-    messages: {},
+export const VocabularyTerms = WidgetStory.bind({
+  props: { id: 'vocabularyterms', title: 'Vocabulary terms', block: 'block' },
+  widget: VocabularyTermsWidget,
+  customStore: {
+    userSession: { token: '1234' },
+    intl: {
+      locale: 'en',
+      messages: {},
+    },
   },
-};
-
-const VocabularyTermsWidgetComponent = (args) => {
-  const [value, setValue] = React.useState({});
-  const onChange = (block, value) => setValue(value);
-
-  return (
-    <Wrapper
-      location={{ pathname: '/folder2/folder21/doc212' }}
-      customStore={customStore}
-    >
-      <div className="ui segment form attached">
-        <VocabularyTermsWidgetDefault
-          {...args}
-          id="Dictionary"
-          title="Vocabulary terms"
-          block="testBlock"
-          value={value}
-          onChange={onChange}
-        />
-        <pre>{JSON.stringify(value, null, 4)}</pre>
-      </div>
-    </Wrapper>
-  );
-};
+  initialValue: {
+    items: [
+      {
+        token: 'talk',
+        titles: {
+          en: 'Talk',
+          de: 'Vortrag',
+          it: 'Lettura',
+        },
+      },
+      {
+        token: 'lightning-talk',
+        titles: {
+          en: 'Lightning-Talk',
+          de: 'kürzerer erleuchtender Vortrag',
+          it: 'Lightning-Talk',
+        },
+      },
+    ],
+  },
+});
+VocabularyTerms.args = {};
 
 export default {
-  title: 'Widgets/VocabularyTermsWidget',
-  component: VocabularyTermsWidgetDefault,
+  title: 'Widgets/VocabularyTerms',
+  component: VocabularyTermsWidget,
+  argTypes: {},
   decorators: [
     (Story) => (
       <div className="ui segment form attached" style={{ width: '600px' }}>
@@ -45,5 +47,3 @@ export default {
     ),
   ],
 };
-
-export const VocabularyTermsWidget = () => <VocabularyTermsWidgetComponent />;

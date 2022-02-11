@@ -55,9 +55,17 @@ const messages = defineMessages({
 });
 
 /**
- * WysiwygWidget container class.
- * @class WysiwygWidget
- * @extends Component
+ * WysiwygWidget HTML richtext editing widget
+ *
+ * To use it, in schema properties, declare a field like:
+ *
+ * ```jsx
+ * {
+ *  title: "Rich text",
+ *  widget: 'richtext',
+ * }
+ * ```
+ *
  */
 class WysiwygWidget extends Component {
   /**
@@ -99,6 +107,10 @@ class WysiwygWidget extends Component {
        */
       encoding: PropTypes.string,
     }),
+    /**
+     * Placeholder for the editor
+     */
+    placeholder: PropTypes.string,
     /**
      * List of error messages
      */
@@ -292,6 +304,7 @@ class WysiwygWidget extends Component {
                   this.state.inlineToolbarPlugin,
                   ...settings.richTextEditorPlugins,
                 ]}
+                placeholder={this.props.placeholder}
                 blockRenderMap={settings.extendedBlockRenderMap}
                 blockStyleFn={settings.blockStyleFn}
                 customStyleMap={settings.customStyleMap}

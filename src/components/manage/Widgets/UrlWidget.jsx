@@ -18,15 +18,23 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
 import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
 
-/** UrlWidget function component
- * @function UrlWidget
- * @returns {string} Markup of the component
+/** Widget to edit urls
+ *
+ * This is the default widget used for the `remoteUrl` field. You can also use
+ * it by declaring a field like:
+ *
+ * ```jsx
+ * {
+ *  title: "URL",
+ *  widget: 'url',
+ * }
+ * ```
  */
-const UrlWidget = (props) => {
+export const UrlWidget = (props) => {
   const { id, onChange, onBlur, onClick, minLength, maxLength } = props;
   const inputId = `field-${id}`;
 
-  const [value, setValue] = useState(props.value);
+  const [value, setValue] = useState(flattenToAppURL(props.value));
   const [isInvalid, setIsInvalid] = useState(false);
   /**
    * Clear handler
@@ -93,6 +101,7 @@ const UrlWidget = (props) => {
             <Button
               basic
               className="cancel"
+              aria-label="clearUrlBrowser"
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -107,6 +116,7 @@ const UrlWidget = (props) => {
             <Button
               basic
               icon
+              aria-label="openUrlBrowser"
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();

@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "13.6.0",
+  "version": "15.0.0-alpha.2",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -34,19 +34,19 @@
     "start-spa": "razzle start --type=spa",
     "build": "razzle build",
     "build-spa": "razzle build --type=spa",
-    "test": "razzle test --env=jest-environment-jsdom-sixteen",
-    "test:ci": "CI=true razzle test --env=jest-environment-jsdom-sixteen",
+    "test": "razzle test --env=jest-environment-jsdom-sixteen --maxWorkers=50%",
+    "test:ci": "CI=true NODE_ICU_DATA=node_modules/full-icu razzle test --env=jest-environment-jsdom-sixteen",
     "test:husky": "CI=true yarn test --bail --findRelatedTests",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
     "start:prod": "NODE_ENV=production node build/server.js",
     "prettier": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,json}'",
     "prettier:fix": "./node_modules/.bin/prettier --single-quote --write 'src/**/*.{js,jsx,ts,tsx,json}'",
     "stylelint": "./node_modules/.bin/stylelint 'theme/**/*.{css,less}' 'src/**/*.{css,less}'",
-    "stylelint:overrides": "./node_modules/.bin/stylelint --syntax less 'theme/**/*.overrides' 'src/**/*.overrides'",
+    "stylelint:overrides": "./node_modules/.bin/stylelint 'theme/**/*.overrides' 'src/**/*.overrides'",
     "stylelint:fix": "yarn stylelint --fix && yarn stylelint:overrides --fix",
     "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx,json}'",
     "lint:fix": "./node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx,json}'",
-    "i18n": "rm -rf build/messages && NODE_ENV=production node src/i18n.js",
+    "i18n": "rm -rf build/messages && NODE_ENV=production i18n",
     "i18n:ci": "yarn i18n && git diff -G'^[^\"POT]' --exit-code",
     "stylelint:patches": "patch -p0 -N node_modules/stylelint/lib/getPostcssResult.js < patches/fixstylelint.patch || true",
     "patches": "/bin/bash patches/patchit.sh > /dev/null 2>&1 ||true",
@@ -60,11 +60,12 @@
     "cypress:run:core-sandbox": "NODE_ENV=production CYPRESS_API=plone cypress run --config integrationFolder='cypress/tests/core-sandbox'",
     "cypress:run:multilingual": "NODE_ENV=production CYPRESS_API=plone cypress run --config integrationFolder='cypress/tests/multilingual'",
     "cypress:run:workingCopy": "NODE_ENV=production CYPRESS_API=plone cypress run --config integrationFolder='cypress/tests/workingCopy'",
-    "cypress:run:guillotina": "NODE_ENV=production CYPRESS_API=guillotina cypress run --config-file cypress/cypress.guillotina.json",
+    "cypress:run:guillotina": "NODE_ENV=production CYPRESS_API=guillotina cypress run --config integrationFolder='cypress/tests/guillotina'",
     "cy:install": "cypress install",
     "cy:test:fixture:setup": "node cypress/support/reset-fixture.js",
     "cy:test:fixture:teardown": "node cypress/support/reset-fixture.js teardown",
     "ci:start-api-plone": "make test-acceptance-server",
+    "ci:start-api-plone-core-sandbox": "make test-acceptance-server-coresandbox",
     "ci:start-api-plone-multilingual": "make test-acceptance-server-multilingual",
     "ci:start-api-plone-workingCopy": "make test-acceptance-server-workingcopy",
     "ci:start-api-guillotina": "make test-acceptance-guillotina",
@@ -73,10 +74,10 @@
     "ci:start-frontend-multilingual": "RAZZLE_TESTING_ADDONS=core-sandbox:multilingualFixture RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http://localhost:3000 cypress:run:multilingual",
     "ci:start-frontend-workingCopy": "RAZZLE_TESTING_ADDONS=core-sandbox:workingCopyFixture RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http://localhost:3000 cypress:run:workingCopy",
     "ci:start-project-frontend": "cd my-volto-app && RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http://localhost:3000 'cd .. && yarn cypress:run'",
-    "ci:start-frontend-guillotina": "RAZZLE_API_PATH=http://localhost:8081/db/web yarn build && start-test start:prod http://localhost:3000 cypress:run:guillotina",
+    "ci:start-frontend-guillotina": "RAZZLE_TESTING_ADDONS=volto-guillotina RAZZLE_API_PATH=http://localhost:8081/db/web RAZZLE_LEGACY_TRAVERSE=true yarn build && start-test start:prod http://localhost:3000 cypress:run:guillotina",
     "ci:cypress:run": "start-test ci:start-api-plone http-get://localhost:55001/plone ci:start-frontend",
     "ci:cypress:project:run": "start-test ci:start-api-plone http-get://localhost:55001/plone ci:start-project-frontend",
-    "ci:cypress:run:core-sandbox": "start-test ci:start-api-plone http-get://localhost:55001/plone ci:start-frontend-core-sandbox",
+    "ci:cypress:run:core-sandbox": "start-test ci:start-api-plone-core-sandbox http-get://localhost:55001/plone ci:start-frontend-core-sandbox",
     "ci:cypress:run:multilingual": "start-test ci:start-api-plone-multilingual http-get://localhost:55001/plone ci:start-frontend-multilingual",
     "ci:cypress:run:workingCopy": "start-test ci:start-api-plone-workingCopy http-get://localhost:55001/plone ci:start-frontend-workingCopy",
     "ci:cypress:run:guillotina": "start-test ci:start-api-guillotina http-get://localhost:8081 ci:start-frontend-guillotina",
@@ -87,12 +88,6 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
-  "bundlesize": [
-    {
-      "path": "build/public/static/js/*.js",
-      "maxSize": "680kB"
-    }
-  ],
   "bundlewatch": {
     "files": [
       {
@@ -165,6 +160,20 @@
     "plugins": [
       "stylelint-prettier"
     ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.less"
+        ],
+        "customSyntax": "postcss-less"
+      },
+      {
+        "files": [
+          "**/*.overrides"
+        ],
+        "customSyntax": "postcss-less"
+      }
+    ],
     "rules": {
       "prettier/prettier": true,
       "rule-empty-line-before": [
@@ -229,14 +238,14 @@
       "npx stylelint --fix"
     ],
     "theme/**/*.overrides": [
-      "npx stylelint --fix --syntax less"
+      "npx stylelint --fix"
     ],
     "src/**/*.overrides": [
-      "npx stylelint --fix --syntax less"
+      "npx stylelint --fix"
     ]
   },
   "engines": {
-    "node": "^12 || ^14"
+    "node": "^12 || ^14 || ^16"
   },
   "dependencies": {
     "@babel/plugin-proposal-export-default-from": "7.10.4",
@@ -247,6 +256,7 @@
     "@loadable/component": "5.14.1",
     "@loadable/server": "5.14.0",
     "@loadable/webpack-plugin": "5.14.0",
+    "@plone/scripts": "1.0.3",
     "@sentry/browser": "5.12.1",
     "@sentry/integrations": "5.27.3",
     "@sentry/node": "5.12.3",
@@ -262,15 +272,16 @@
     "babel-plugin-lodash": "3.3.4",
     "babel-plugin-react-intl": "5.1.17",
     "babel-plugin-root-import": "6.1.0",
-    "bundlesize": "0.18.0",
     "bundlewatch": "0.2.7",
     "circular-dependency-plugin": "5.2.2",
     "classnames": "2.2.6",
+    "commander": "8.2.0",
     "connected-react-router": "6.8.0",
     "coveralls": "3.0.2",
     "cypress": "7.3.0",
     "cypress-axe": "0.12.2",
     "cypress-file-upload": "5.0.7",
+    "debug": "4.3.2",
     "dependency-graph": "0.10.0",
     "detect-browser": "5.1.0",
     "diff": "3.5.0",
@@ -299,7 +310,7 @@
     "hamburgers": "1.1.3",
     "handlebars": "4.7.7",
     "history": "4.10.1",
-    "http-proxy-middleware": "1.0.4",
+    "http-proxy-middleware": "2.0.1",
     "husky": "4.2.5",
     "identity-obj-proxy": "3.0.0",
     "jest-css-modules": "1.1.0",
@@ -321,28 +332,30 @@
     "mini-css-extract-plugin": "0.9.0",
     "moment": "2.24.0",
     "pofile": "1.0.10",
+    "postcss": "8.3.11",
     "postcss-flexbugs-fixes": "4.2.1",
+    "postcss-less": "5.0.0",
     "postcss-loader": "3.0.0",
     "postcss-overrides": "3.1.4",
     "prettier": "2.0.5",
     "pretty-bytes": "5.3.0",
-    "prismjs": "1.24.0",
+    "prismjs": "1.25.0",
     "promise-file-reader": "1.0.2",
     "prop-types": "15.7.2",
-    "query-string": "7.0.0",
-    "razzle": "3.3.7",
+    "query-string": "7.1.0",
+    "razzle": "3.4.5",
     "razzle-plugin-bundle-analyzer": "1.2.0",
     "rc-time-picker": "3.7.3",
-    "react": "16.14.0",
+    "react": "17.0.2",
     "react-anchor-link-smooth-scroll": "1.0.12",
     "react-animate-height": "2.0.17",
     "react-beautiful-dnd": "13.0.0",
-    "react-cookie": "1.0.5",
+    "react-cookie": "4.1.1",
     "react-dates": "21.5.1",
     "react-detect-click-outside": "1.1.1",
     "react-dnd": "5.0.0",
     "react-dnd-html5-backend": "5.0.1",
-    "react-dom": "16.14.0",
+    "react-dom": "17.0.2",
     "react-dropzone": "11.1.0",
     "react-fast-compare": "2.0.4",
     "react-image-gallery": "1.0.7",
@@ -354,13 +367,15 @@
     "react-router": "5.2.0",
     "react-router-config": "5.1.1",
     "react-router-dom": "5.2.0",
-    "react-select": "4.0.2",
-    "react-select-async-paginate": "0.3.10",
+    "react-select": "4.3.1",
+    "react-select-async-paginate": "0.5.3",
     "react-share": "2.3.1",
     "react-side-effect": "2.1.0",
     "react-simple-code-editor": "0.7.1",
-    "react-test-renderer": "16.14.0",
+    "react-sortable-hoc": "2.0.0",
+    "react-test-renderer": "17.0.2",
     "react-toastify": "5.4.1",
+    "react-window": "1.8.6",
     "redraft": "0.10.2",
     "redux": "4.1.0",
     "redux-actions": "2.6.5",
@@ -372,11 +387,11 @@
     "release-it": "14.2.1",
     "rrule": "2.6.4",
     "semantic-ui-less": "2.4.1",
-    "semantic-ui-react": "0.88.1",
+    "semantic-ui-react": "2.0.3",
     "semver": "5.6.0",
     "serialize-javascript": "3.1.0",
     "start-server-and-test": "1.10.6",
-    "stylelint": "13.3.3",
+    "stylelint": "14.0.1",
     "stylelint-config-idiomatic-order": "8.1.0",
     "stylelint-config-prettier": "8.0.1",
     "stylelint-prettier": "1.1.2",
@@ -385,6 +400,8 @@
     "svgo": "1.3.2",
     "svgo-loader": "2.2.1",
     "tlds": "1.203.1",
+    "undoo": "0.5.0",
+    "universal-cookie-express": "4.0.3",
     "use-deep-compare-effect": "1.6.1",
     "xmlrpc": "1.3.2",
     "yarn-deduplicate": "3.1.0",
@@ -398,20 +415,27 @@
     "@storybook/react": "^6.3.0",
     "babel-loader": "^8.1.0",
     "crypto-random-string": "3.2.0",
+    "full-icu": "1.4.0",
     "identity-obj-proxy": "3.0.0",
+    "jest": "27.4.5",
     "jest-environment-jsdom-sixteen": "1.0.3",
     "react-is": "^16.13.1",
-    "tmp": "0.2.1"
+    "tmp": "0.2.1",
+    "use-trace-update": "1.3.2"
+  },
+  "resolutions-comments": {
+    "ua-parser-js": "See https://github.com/faisalman/ua-parser-js/issues/536"
   },
   "resolutions": {
     "http-proxy": "^1.18.1",
     "draft-js/immutable": "3.8.2",
     "draft-js-block-breakout-plugin/immutable": "3.8.2",
     "draft-js-inline-toolbar-plugin/immutable": "3.8.2",
-    "draft-js-plugins-editor/immutable": "3.8.2"
+    "draft-js-plugins-editor/immutable": "3.8.2",
+    "ua-parser-js": "0.7.28"
   },
   "volta": {
-    "node": "14.17.0",
-    "yarn": "1.19.1"
+    "node": "16.13.2",
+    "yarn": "1.22.17"
   }
 }

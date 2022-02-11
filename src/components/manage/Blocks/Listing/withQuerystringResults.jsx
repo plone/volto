@@ -1,9 +1,12 @@
 import React from 'react';
-import hoistNonReactStatics from 'hoist-non-react-statics';
-import { getContent, getQueryStringResults } from '@plone/volto/actions';
 import { useDispatch, useSelector } from 'react-redux';
-import config from '@plone/volto/registry';
+import hoistNonReactStatics from 'hoist-non-react-statics';
 import useDeepCompareEffect from 'use-deep-compare-effect';
+
+import { getContent, getQueryStringResults } from '@plone/volto/actions';
+import { usePagination, getBaseUrl } from '@plone/volto/helpers';
+
+import config from '@plone/volto/registry';
 
 function getDisplayName(WrappedComponent) {
   return WrappedComponent.displayName || WrappedComponent.name || 'Component';
@@ -11,21 +14,22 @@ function getDisplayName(WrappedComponent) {
 
 export default function withQuerystringResults(WrappedComponent) {
   function WithQuerystringResults(props) {
-    const { data = {}, properties: content, path } = props;
+    const { data = {}, properties: content, path, variation } = props;
     const { settings } = config;
-    const querystring = data.querystring || data; // For backwards compat with data saved before Blocks schema
+    const querystring = data.querystring || data; // For backwards compat with data saved before Blocks schema. Note, this is also how the Search block passes data to ListingBody
+
     const { block } = data;
     const { b_size = settings.defaultPageSize } = querystring; // batchsize
 
     // save the path so it won't trigger dispatch on eager router location change
-    const [initialPath] = React.useState(path);
+    const [initialPath] = React.useState(getBaseUrl(path));
 
     const copyFields = ['limit', 'query', 'sort_on', 'sort_order', 'depth'];
 
     const adaptedQuery = Object.assign(
+      variation?.fullobjects ? { fullobjects: 1 } : { metadata_fields: '_all' },
       {
         b_size: b_size,
-        fullobjects: 1,
       },
       ...copyFields.map((name) =>
         Object.keys(querystring).includes(name)
@@ -33,7 +37,7 @@ export default function withQuerystringResults(WrappedComponent) {
           : {},
       ),
     );
-    const [currentPage, setCurrentPage] = React.useState(1);
+    const { currentPage, setCurrentPage } = usePagination(querystring, 1);
     const querystringResults = useSelector(
       (state) => state.querystringsearch.subrequests,
     );
@@ -69,25 +73,15 @@ export default function withQuerystringResults(WrappedComponent) {
       ? querystringResults[block].batching?.next
       : null;
 
-    function handleContentPaginationChange(e, { activePage }) {
-      setCurrentPage(activePage);
-      dispatch(getContent(initialPath, null, null, activePage));
-    }
-
-    function handleQueryPaginationChange(e, { activePage }) {
-      setCurrentPage(activePage);
-      dispatch(
-        getQueryStringResults(initialPath, adaptedQuery, block, activePage),
-      );
-    }
-
     const isImageGallery =
       (!data.variation && data.template === 'imageGallery') ||
       data.variation === 'imageGallery';
 
     useDeepCompareEffect(() => {
       if (hasQuery) {
-        dispatch(getQueryStringResults(initialPath, adaptedQuery, block));
+        dispatch(
+          getQueryStringResults(initialPath, adaptedQuery, block, currentPage),
+        );
       } else if (isImageGallery && !hasQuery) {
         // when used as image gallery, it doesn't need a query to list children
         dispatch(
@@ -106,17 +100,23 @@ export default function withQuerystringResults(WrappedComponent) {
             block,
           ),
         );
+      } else {
+        dispatch(getContent(initialPath, null, null, currentPage));
       }
-    }, [block, isImageGallery, adaptedQuery, hasQuery, initialPath, dispatch]);
+    }, [
+      block,
+      isImageGallery,
+      adaptedQuery,
+      hasQuery,
+      initialPath,
+      dispatch,
+      currentPage,
+    ]);
 
     return (
       <WrappedComponent
         {...props}
-        onPaginationChange={(e, { activePage }) => {
-          showAsFolderListing
-            ? handleContentPaginationChange(e, { activePage })
-            : handleQueryPaginationChange(e, { activePage });
-        }}
+        onPaginationChange={(e, { activePage }) => setCurrentPage(activePage)}
         total={querystringResults?.[block]?.total}
         batch_size={b_size}
         currentPage={currentPage}

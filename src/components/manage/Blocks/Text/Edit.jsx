@@ -5,8 +5,6 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'semantic-ui-react';
-import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import Editor from 'draft-js-plugins-editor';
 import { convertFromRaw, convertToRaw, EditorState, RichUtils } from 'draft-js';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
@@ -17,8 +15,7 @@ import { includes, isEqual } from 'lodash';
 import { filterEditorState } from 'draftjs-filters';
 import config from '@plone/volto/registry';
 
-import { Icon, BlockChooser } from '@plone/volto/components';
-import addSVG from '@plone/volto/icons/circle-plus.svg';
+import { BlockChooserButton } from '@plone/volto/components';
 
 const messages = defineMessages({
   text: {
@@ -58,6 +55,7 @@ class Edit extends Component {
     formTitle: PropTypes.string,
     formDescription: PropTypes.string,
     blocksConfig: PropTypes.objectOf(PropTypes.any),
+    properties: PropTypes.objectOf(PropTypes.any),
   };
 
   /**
@@ -96,7 +94,6 @@ class Edit extends Component {
       this.state = {
         editorState,
         inlineToolbarPlugin,
-        addNewBlockOpened: false,
       };
     }
 
@@ -113,7 +110,6 @@ class Edit extends Component {
       // See https://github.com/draft-js-plugins/draft-js-plugins/issues/800
       setTimeout(this.node.focus, 0);
     }
-    document.addEventListener('mousedown', this.handleClickOutside, false);
   }
 
   /**
@@ -140,6 +136,25 @@ class Edit extends Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if (
+      !isEqual(this.props.data, prevProps.data) &&
+      !isEqual(
+        convertToRaw(this.state.editorState.getCurrentContent()),
+        this.props.data.text,
+      )
+    ) {
+      const editorState =
+        this.props.data && this.props.data.text
+          ? EditorState.createWithContent(convertFromRaw(this.props.data.text))
+          : EditorState.createEmpty();
+
+      this.setState({
+        editorState: editorState,
+      });
+    }
+  }
+
   /**
    * @param {*} nextProps
    * @param {*} nextState
@@ -152,15 +167,6 @@ class Edit extends Component {
       !isEqual(this.props.data, nextProps.data) ||
       !isEqual(this.state.editorState, nextState.editorState)
     );
-  }
-
-  /**
-   * Component will unmount
-   * @method componentWillUnmount
-   * @returns {undefined}
-   */
-  componentWillUnmount() {
-    document.removeEventListener('mousedown', this.handleClickOutside, false);
   }
 
   /**
@@ -204,22 +210,6 @@ class Edit extends Component {
     }
     this.setState({ editorState });
   }
-
-  toggleAddNewBlock = (e) => {
-    e.preventDefault();
-    this.setState((state) => ({ addNewBlockOpened: !state.addNewBlockOpened }));
-  };
-
-  handleClickOutside = (e) => {
-    if (
-      this.props.blockNode.current &&
-      doesNodeContainClick(this.props.blockNode.current, e)
-    )
-      return;
-    this.setState(() => ({
-      addNewBlockOpened: false,
-    }));
-  };
 
   /**
    * Render method.
@@ -272,7 +262,10 @@ class Edit extends Component {
               const blockType = currentContentBlock.getType();
               if (!includes(settings.listBlockTypes, blockType)) {
                 this.props.onSelectBlock(
-                  this.props.onAddBlock('text', this.props.index + 1),
+                  this.props.onAddBlock(
+                    config.settings.defaultBlockType,
+                    this.props.index + 1,
+                  ),
                 );
                 return 'handled';
               }
@@ -317,32 +310,18 @@ class Edit extends Component {
           }}
         />
         <InlineToolbar />
-        {this.props.selected &&
-          !disableNewBlocks &&
-          !config.blocks.blocksConfig[
-            this.props.data?.['@type'] || 'text'
-          ].blockHasValue(this.props.data) && (
-            <Button
-              basic
-              icon
-              onClick={this.toggleAddNewBlock}
-              className="block-add-button"
-            >
-              <Icon name={addSVG} className="block-add-button" size="24px" />
-            </Button>
-          )}
-        {this.state.addNewBlockOpened && (
-          <BlockChooser
+        {this.props.selected && (
+          <BlockChooserButton
+            data={this.props.data}
+            block={this.props.block}
             onInsertBlock={(id, value) => {
-              this.setState((state) => ({
-                addNewBlockOpened: !state.addNewBlockOpened,
-              }));
               this.props.onSelectBlock(this.props.onInsertBlock(id, value));
             }}
-            currentBlock={this.props.block}
             allowedBlocks={this.props.allowedBlocks}
-            showRestricted={this.props.showRestricted}
             blocksConfig={this.props.blocksConfig}
+            size="24px"
+            className="block-add-button"
+            properties={this.props.properties}
           />
         )}
       </>

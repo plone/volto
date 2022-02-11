@@ -5,7 +5,7 @@
 Volto can be installed in any operating system assuming that this requirements
 are met:
 
-- [Node.js LTS (14.x)](https://nodejs.org/)
+- [Node.js LTS (16.x)](https://nodejs.org/)
 - [Python 3.7.x / 3.8.x](https://python.org/) or
 - [Docker](https://www.docker.com/get-started) (if using the Plone/Guillotina
   docker images)
@@ -13,17 +13,36 @@ are met:
 Depending on the OS that you are using some of the following might change, they
 are assuming a MacOS/Linux machine:
 
+## Components / Processes running
+
+There are three processes continuously running when you have a working Volto website:
+
+1. A frontend web application running in your browser (Javascript)
+2. A Node.js server process that delivers the javascript to the client and does
+   Server Side Rendering (SSR) of your pages on first request (Javascript, the
+   Razzle package is used for SSR)
+3. A Plone server process that stores and delivers all content through a REST API (Python)
+
+When you start with Volto most of the first customisations you will want to make (or mabye
+ever need to make) are in the javascript code used in the browser and Razzle process. Therefore
+this getting started chapter will focus on installing a nodejs/javascript environment locally
+and suggest you start the API backend using a container. 
+
+
 ## Install nvm (NodeJS version manager)
 
-If you have a working nodejs development setup on your machine, this step is
-not required. But it's a good idea to integrate nvm for development, as it
-provides easy access to any Nodejs released version.
+If you have a working Node javascript development already set up on your machine or you prefer
+another management tool to install/maintain node this step is not needed. If you have less 
+experience with setting up javascript, it's a good idea to integrate nvm for development, as
+it provides easy access to any NodeJS released version. 
 
 1. Open a terminal console and type:
 ```bash
 touch ~/.bash_profile
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.39.1/install.sh | bash
 ```
+
+(Please check the latest available version of nvm on the [main README](https://github.com/nvm-sh/nvm)
 
 2. Close the terminal and open a new one or execute:
 ```
@@ -37,8 +56,8 @@ nvm version
 
 4. Install any active LTS version of NodeJS (https://nodejs.org/en/about/releases/):
 ```
-nvm install 14.15.1
-nvm use 14.15.1
+nvm install 16
+nvm use 16
 ```
 
 5. Test NodeJS:
@@ -50,10 +69,8 @@ node -v
     If you're using the fish shell, you can use [nvm.fish](https://github.com/jorgebucaran/nvm.fish)
 
 !!! note
-    Volto supports all currently active NodeJS LTS versions based on [NodeJS
-    Releases page](https://nodejs.org/en/about/releases/). On 2021-04-30 Volto
-    will not support Node 10 as it will reach its end of life.
-
+    Volto supports currently active NodeJS LTS versions based on [NodeJS
+    Releases page](https://nodejs.org/en/about/releases/), starting with Node 12 LTS. 
 ## Yarn (NodeJS package manager)
 
 Install the Yarn Classic version (not the 2.x one!), of the popular node package manager.
@@ -102,15 +119,19 @@ should not throw an error and show the current running containers.
 
 ## Run a Volto ready Plone Docker container
 
-When you have installed Docker, you can run an standard Plone Docker container with the proper configuration for Volto using the `kitconcept.volto` add'on right away by issuing:
+When you have installed Docker, you can use the official Plone Docker container with the proper configuration for Volto using the `plone.volto` add'on right away by issuing:
+
 
 ```shell
 docker run -it --rm --name=plone \
-  -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.volto" \
-  -e ZCML="kitconcept.volto.cors" \
-  -e PROFILES="kitconcept.volto:default-homepage" \
-  plone
+  -p 8080:8080 -e SITE=Plone -e \
+  ADDONS="plone.restapi==8.18.0 plone.app.iterate==4.0.2 plone.rest==2.0.0a1 plone.app.vocabularies==4.3.0 plone.volto==3.1.0a8" \
+  -e PROFILES="plone.volto:default-homepage" \
+  plone/plone-backend
 ```
+
+!!! tip
+    This setup is meant only for demonstration and quick testing purposes (since it destroys the container on exit (--rm)). In case you need production ready deployment, check the latest [Plone Deployment Training](https://training.plone.org/5/plone-deployment/index.html).
 
 !!! note
     The example above does not persist yet any changes you make through Volto in
@@ -125,7 +146,7 @@ docker run -it --rm --name=plone \
 
 If you are somewhat familiar with Python development, you can also install Plone locally
 without using Docker. Check the [backend configuration](../configuration/backend.md) section.
-It also has more information on kitconcept.volto.
+It also has more information on plone.volto.
 
 
 ## Install Volto
@@ -133,21 +154,19 @@ It also has more information on kitconcept.volto.
 Use the project generator helper utility.
 
 1. Open a terminal and execute:
-```
-npm init yo @plone/volto
+```console
+$ npm install -g yo @plone/generator-volto
+$ yo @plone/volto
 ```
 
 2. Answer to the prompted questions and provide the name of the new app (folder) to be created. For the sake of this documentation, provide `myvoltoproject` as project name then.
 
 !!! info
-    This is the shortcut for using `npm init` command. It uses Yeoman (`yo`) and `@plone/generator-volto` and execute them without having to be installed globally. However, more advanced options for the generator are available, but you'll have to install it and run it without `npm init`:
-
-    ```console
-    $ npm install -g yo
-    $ npm install -g @plone/generator-volto
+    You can run the generator with parameters to tailor your requirements.
+    ```
     $ yo @plone/volto --help
     ```
-    take a look at the full [README](https://github.com/plone/volto/blob/master/packages/generator-volto/README.md) for more information.
+    or take a look at the [README](https://github.com/plone/volto/blob/master/packages/generator-volto/README.md) for more information.
 
 3. Change directory to the newly created folder `myvoltoapp` (or the one you've chosen):
 ```

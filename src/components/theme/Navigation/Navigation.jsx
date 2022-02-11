@@ -7,14 +7,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { NavLink } from 'react-router-dom';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Menu } from 'semantic-ui-react';
 import cx from 'classnames';
-import { getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
+import { BodyClass, getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
-
 import { getNavigation } from '@plone/volto/actions';
+import { CSSTransition } from 'react-transition-group';
+import NavItems from '@plone/volto/components/theme/Navigation/NavItems';
 
 const messages = defineMessages({
   closeMobileMenu: {
@@ -123,14 +123,11 @@ class Navigation extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { settings } = config;
-    const { lang } = this.props;
-
     return (
-      <nav className="navigation" id="navigation">
+      <nav className="navigation" id="navigation" aria-label="navigation">
         <div className="hamburger-wrapper mobile tablet only">
           <button
-            className={cx('hamburger hamburger--collapse', {
+            className={cx('hamburger hamburger--spin', {
               'is-active': this.state.isMobileMenuOpen,
             })}
             aria-label={
@@ -163,29 +160,26 @@ class Navigation extends Component {
           stackable
           pointing
           secondary
-          className={
-            this.state.isMobileMenuOpen
-              ? 'open'
-              : 'computer large screen widescreen only'
-          }
+          className="computer large screen widescreen only"
           onClick={this.closeMobileMenu}
         >
-          {this.props.items.map((item) => (
-            <NavLink
-              to={item.url === '' ? '/' : item.url}
-              key={item.url}
-              className="item"
-              activeClassName="active"
-              exact={
-                settings.isMultilingual
-                  ? item.url === `/${lang}`
-                  : item.url === ''
-              }
-            >
-              {item.title}
-            </NavLink>
-          ))}
+          <NavItems items={this.props.items} lang={this.props.lang} />
         </Menu>
+        <CSSTransition
+          in={this.state.isMobileMenuOpen}
+          timeout={500}
+          classNames="mobile-menu"
+          unmountOnExit
+        >
+          <div key="mobile-menu-key" className="mobile-menu">
+            <BodyClass className="has-mobile-menu-open" />
+            <div className="mobile-menu-nav">
+              <Menu stackable pointing secondary onClick={this.closeMobileMenu}>
+                <NavItems items={this.props.items} lang={this.props.lang} />
+              </Menu>
+            </div>
+          </div>
+        </CSSTransition>
       </nav>
     );
   }

@@ -60,6 +60,17 @@ exports[`Field renders a select widget for a vocabulary-based field 1`] = `
 />
 `;
 
+exports[`Field renders a widget regarding the priority of tagged value over name 1`] = `
+Array [
+  <div
+    className="TextareaWidget"
+  />,
+  <div
+    className="WysiwygWidget"
+  />,
+]
+`;
+
 exports[`Field renders an \`array\` type field 1`] = `
 <div
   className="ArrayWidget"

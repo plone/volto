@@ -98,10 +98,10 @@
   }
 
   &.full-size {
-    width: calc(100% - @toolbalWidth);
+    width: calc(100% - @toolbarWidth);
 
     &.no-toolbar {
-      width: calc(100% - @toolbalWidthMin);
+      width: calc(100% - @toolbarWidthMin);
     }
   }
 
@@ -317,6 +317,12 @@
 
       .right-arrow-icon:hover {
         background: #edf1f2;
+      }
+
+      .right-arrow-link-mode {
+        display: flex;
+        width: 50px;
+        justify-content: flex-end;
       }
 
       span {

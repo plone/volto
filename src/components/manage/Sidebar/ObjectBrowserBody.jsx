@@ -125,6 +125,7 @@ class ObjectBrowserBody extends Component {
           : '',
       showSearchInput: false,
     };
+    this.searchInputRef = React.createRef();
   }
 
   /**
@@ -187,9 +188,14 @@ class ObjectBrowserBody extends Component {
   };
 
   toggleSearchInput = () =>
-    this.setState((prevState) => ({
-      showSearchInput: !prevState.showSearchInput,
-    }));
+    this.setState(
+      (prevState) => ({
+        showSearchInput: !prevState.showSearchInput,
+      }),
+      () => {
+        if (this.searchInputRef?.current) this.searchInputRef.current.focus();
+      },
+    );
 
   onSearch = (e) => {
     const text = flattenToAppURL(e.target.value);
@@ -228,7 +234,6 @@ class ObjectBrowserBody extends Component {
 
   onSelectItem = (item) => {
     const url = item['@id'];
-    const title = item.title;
     const { block, data, mode, dataName, onChangeBlock } = this.props;
 
     const updateState = (mode) => {
@@ -261,7 +266,7 @@ class ObjectBrowserBody extends Component {
       onChangeBlock(block, {
         ...data,
         url: flattenToAppURL(item.getURL),
-        alt: title,
+        alt: '',
       });
     } else if (mode === 'link') {
       onChangeBlock(block, {
@@ -297,12 +302,19 @@ class ObjectBrowserBody extends Component {
       if (this.isSelectable(item)) {
         if (
           !this.props.maximumSelectionSize ||
+          this.props.mode === 'multiple' ||
           !this.props.data ||
           this.props.data.length < this.props.maximumSelectionSize
         ) {
           this.onSelectItem(item);
           let length = this.props.data ? this.props.data.length : 0;
-          if (length + 1 >= this.props.maximumSelectionSize) {
+
+          let stopSelecting =
+            this.props.mode !== 'multiple' ||
+            (this.props.maximumSelectionSize > 0 &&
+              length + 1 >= this.props.maximumSelectionSize);
+
+          if (stopSelecting) {
             this.props.closeObjectBrowser();
           }
         } else {
@@ -364,6 +376,7 @@ class ObjectBrowserBody extends Component {
           {this.state.showSearchInput ? (
             <Input
               className="search"
+              ref={this.searchInputRef}
               onChange={this.onSearch}
               placeholder={this.props.intl.formatMessage(
                 messages.SearchInputPlaceholder,
@@ -435,7 +448,7 @@ class ObjectBrowserBody extends Component {
           <Segment className="infos">
             {this.props.intl.formatMessage(messages.SelectedItems)}:{' '}
             {this.props.data?.length}
-            {this.props.maximumSelectionSize && (
+            {this.props.maximumSelectionSize > 0 && (
               <>
                 {' '}
                 {this.props.intl.formatMessage(messages.of)}{' '}

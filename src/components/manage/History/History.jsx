@@ -12,10 +12,13 @@ import { compose } from 'redux';
 import { Container, Dropdown, Icon, Segment, Table } from 'semantic-ui-react';
 import { concat, map, reverse } from 'lodash';
 import { Portal } from 'react-portal';
-import moment from 'moment';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { Icon as IconNext, Toolbar } from '@plone/volto/components';
+import {
+  FormattedRelativeDate,
+  Icon as IconNext,
+  Toolbar,
+} from '@plone/volto/components';
 import { getHistory, revertHistory } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
 
@@ -145,6 +148,12 @@ class History extends Component {
           <Table selectable compact singleLine attached>
             <Table.Header>
               <Table.Row>
+                <Table.HeaderCell width={1}>
+                  <FormattedMessage
+                    id="History Version Number"
+                    defaultMessage="#"
+                  />
+                </Table.HeaderCell>
                 <Table.HeaderCell width={4}>
                   <FormattedMessage id="What" defaultMessage="What" />
                 </Table.HeaderCell>
@@ -174,6 +183,18 @@ class History extends Component {
                           entry.version - 1
                         }&two=${entry.version}`}
                       >
+                        {entry.version}
+                      </Link>
+                    )) || <span>{entry.version}</span>}
+                  </Table.Cell>
+                  <Table.Cell>
+                    {('version' in entry && entry.version > 0 && (
+                      <Link
+                        className="item"
+                        to={`${getBaseUrl(this.props.pathname)}/diff?one=${
+                          entry.version - 1
+                        }&two=${entry.version}`}
+                      >
                         {entry.transition_title}
                       </Link>
                     )) || (
@@ -188,9 +209,7 @@ class History extends Component {
                   </Table.Cell>
                   <Table.Cell>{entry.actor.fullname}</Table.Cell>
                   <Table.Cell>
-                    <span title={moment(entry.time).format('LLLL')}>
-                      {moment(entry.time).fromNow()}
-                    </span>
+                    <FormattedRelativeDate date={entry.time} />
                   </Table.Cell>
                   <Table.Cell>{entry.comments}</Table.Cell>
                   <Table.Cell>

@@ -221,6 +221,7 @@ export class ContactFormComponent extends Component {
             <Portal node={document.getElementById('toolbar')}>
               <Toolbar
                 pathname={this.props.pathname}
+                hideDefaultViewButtons
                 inner={
                   <Link
                     to={`${getBaseUrl(this.props.pathname)}`}

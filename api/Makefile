@@ -41,7 +41,6 @@ build:  ## Build Plone 5.2
 	bin/pip install --upgrade pip
 	bin/pip install --upgrade wheel
 	bin/pip install -r requirements.txt
-	bin/buildout
 	bin/buildout instance:http-address=$(INSTANCE_PORT)
 
 .PHONY: test
@@ -50,7 +49,7 @@ test:
 
 .PHONY: test-acceptance-server-old
 test-acceptance-server-old:
-	ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,kitconcept.volto,kitconcept.volto.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,kitconcept.volto:default-homepage ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
+	ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 
 .PHONY: clean
 clean:
@@ -65,4 +64,4 @@ start: ## Start Plone Backend
 .PHONY: start-test
 start-test: ## Start Test Plone Backend
 	@echo "$(GREEN)==> Start Test Plone Backend$(RESET)"
-	ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,kitconcept.volto,kitconcept.volto.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,kitconcept.volto:default-homepage ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
+	ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING

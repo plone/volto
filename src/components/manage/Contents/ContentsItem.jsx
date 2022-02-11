@@ -8,10 +8,8 @@ import { Button, Dropdown, Table } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { map } from 'lodash';
-import moment from 'moment';
-import { DragSource, DropTarget } from 'react-dnd';
 import { useIntl, defineMessages, FormattedMessage } from 'react-intl';
-import { Icon, Circle } from '@plone/volto/components';
+import { Circle, FormattedDate, Icon } from '@plone/volto/components';
 import { getContentIcon } from '@plone/volto/helpers';
 import moreSVG from '@plone/volto/icons/more.svg';
 import checkboxUncheckedSVG from '@plone/volto/icons/checkbox-unchecked.svg';
@@ -25,6 +23,8 @@ import moveDownSVG from '@plone/volto/icons/move-down.svg';
 import editingSVG from '@plone/volto/icons/editing.svg';
 import dragSVG from '@plone/volto/icons/drag.svg';
 import cx from 'classnames';
+
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 const messages = defineMessages({
   private: {
@@ -46,6 +46,10 @@ const messages = defineMessages({
   no_workflow_state: {
     id: 'no workflow state',
     defaultMessage: 'No workflow state',
+  },
+  none: {
+    id: 'None',
+    defaultMessage: 'None',
   },
 });
 
@@ -139,7 +143,6 @@ export const ContentsItemComponent = ({
           <Link
             className="icon-align-name"
             to={`${item['@id']}${item.is_folderish ? '/contents' : ''}`}
-            title={item['@type']}
           >
             <div className="expire-align">
               <Icon
@@ -147,8 +150,9 @@ export const ContentsItemComponent = ({
                 size="20px"
                 className="icon-margin"
                 color="#878f93"
+                title={item['@type']}
               />{' '}
-              <span> {item.title}</span>
+              <span title={item.title}> {item.title}</span>
             </div>
             {item.ExpirationDate !== 'None' &&
               new Date(item.ExpirationDate).getTime() <
@@ -186,21 +190,16 @@ export const ContentsItemComponent = ({
               </div>
             )}
             {index.type === 'date' && (
-              <span
-                title={
-                  item[index.id] !== 'None' ? (
-                    moment(item[index.id]).format('LLLL')
-                  ) : (
-                    <FormattedMessage id="None" defaultMessage="None" />
-                  )
-                }
-              >
+              <>
                 {item[index.id] !== 'None' ? (
-                  moment(item[index.id]).format('L')
+                  <FormattedDate date={item[index.id]} />
                 ) : (
-                  <FormattedMessage id="None" defaultMessage="None" />
+                  intl.formatMessage(messages.none)
                 )}
-              </span>
+              </>
+            )}
+            {index.type === 'array' && (
+              <span>{item[index.id]?.join(', ')}</span>
             )}
           </Table.Cell>
         ))}
@@ -310,55 +309,67 @@ ContentsItemComponent.propTypes = {
   onOrderItem: PropTypes.func.isRequired,
 };
 
-export default DropTarget(
-  'item',
-  {
-    hover(props, monitor) {
-      const id = monitor.getItem().id;
-      const dragOrder = monitor.getItem().order;
-      const hoverOrder = props.order;
+const DragDropConnector = (props) => {
+  const { DropTarget, DragSource } = props.reactDnd;
 
-      if (dragOrder === hoverOrder) {
-        return;
-      }
+  const DndConnectedContentsItem = React.useMemo(
+    () =>
+      DropTarget(
+        'item',
+        {
+          hover(props, monitor) {
+            const id = monitor.getItem().id;
+            const dragOrder = monitor.getItem().order;
+            const hoverOrder = props.order;
 
-      props.onOrderItem(id, dragOrder, hoverOrder - dragOrder, false);
+            if (dragOrder === hoverOrder) {
+              return;
+            }
 
-      monitor.getItem().order = hoverOrder;
-    },
-    drop(props, monitor) {
-      const id = monitor.getItem().id;
-      const dragOrder = monitor.getItem().startOrder;
-      const dropOrder = props.order;
+            props.onOrderItem(id, dragOrder, hoverOrder - dragOrder, false);
 
-      if (dragOrder === dropOrder) {
-        return;
-      }
+            monitor.getItem().order = hoverOrder;
+          },
+          drop(props, monitor) {
+            const id = monitor.getItem().id;
+            const dragOrder = monitor.getItem().startOrder;
+            const dropOrder = props.order;
 
-      props.onOrderItem(id, dragOrder, dropOrder - dragOrder, true);
+            if (dragOrder === dropOrder) {
+              return;
+            }
 
-      monitor.getItem().order = dropOrder;
-    },
-  },
-  (connect) => ({
-    connectDropTarget: connect.dropTarget(),
-  }),
-)(
-  DragSource(
-    'item',
-    {
-      beginDrag(props) {
-        return {
-          id: props.item['@id'],
-          order: props.order,
-          startOrder: props.order,
-        };
-      },
-    },
-    (connect, monitor) => ({
-      connectDragSource: connect.dragSource(),
-      connectDragPreview: connect.dragPreview(),
-      isDragging: monitor.isDragging(),
-    }),
-  )(ContentsItemComponent),
-);
+            props.onOrderItem(id, dragOrder, dropOrder - dragOrder, true);
+
+            monitor.getItem().order = dropOrder;
+          },
+        },
+        (connect) => ({
+          connectDropTarget: connect.dropTarget(),
+        }),
+      )(
+        DragSource(
+          'item',
+          {
+            beginDrag(props) {
+              return {
+                id: props.item['@id'],
+                order: props.order,
+                startOrder: props.order,
+              };
+            },
+          },
+          (connect, monitor) => ({
+            connectDragSource: connect.dragSource(),
+            connectDragPreview: connect.dragPreview(),
+            isDragging: monitor.isDragging(),
+          }),
+        )(ContentsItemComponent),
+      ),
+    [DragSource, DropTarget],
+  );
+
+  return <DndConnectedContentsItem {...props} />;
+};
+
+export default injectLazyLibs('reactDnd')(DragDropConnector);

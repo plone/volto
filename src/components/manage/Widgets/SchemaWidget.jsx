@@ -11,8 +11,7 @@ import { concat, findIndex, isString, map, omit, slice, without } from 'lodash';
 import move from 'lodash-move';
 import { Confirm, Form, Grid, Icon, Message, Segment } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
-import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
-import { getFieldsVocabulary } from '@plone/volto/helpers';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import {
   Field,
@@ -129,18 +128,7 @@ const messages = defineMessages({
 });
 
 /**
- * Makes a list of field types formated for select widget
- * @param {Object[]} listOfTypes array of strings
- * @param {*} intl
- * @returns {Object[]} example [['text', 'text']]
- */
-const makeFieldTypes = (listOfTypes, intl) => {
-  const result = listOfTypes.map((type) => [type.title, type.title]);
-  return result;
-};
-
-/**
- * Makes a list of fieldset types formated for select widget
+ * Makes a list of fieldset types formatted for select widget
  * @param {Object[]} listOfTypes array of strings
  * @param {*} intl
  * @returns {Object[]} example [['default', 'default']]
@@ -172,23 +160,32 @@ const schemaField = (factory, intl, fieldsets) => ({
               return ['maxLength'];
             case 'URL':
             case 'Password':
+            case 'label_password_field':
             case 'Email':
+            case 'label_email':
               return ['minLength', 'maxLength'];
             case 'Integer':
+            case 'label_integer_field':
               return ['minimum', 'maximum'];
             case 'Floating-point number':
+            case 'label_float_field':
             case 'Date/Time':
+            case 'label_datetime_field':
             case 'Date':
+            case 'label_date_field':
             case 'File':
             case 'File Upload':
             case 'Image':
             case 'Yes/No':
+            case 'label_boolean_field':
             case 'JSONField':
             case 'Relation Choice':
             case 'Relation List':
               return [];
             case 'Multiple Choice':
+            case 'label_multi_choice_field':
             case 'Choice':
+            case 'label_choice_field':
               return ['values'];
             default:
               return ['minLength', 'maxLength'];
@@ -228,7 +225,9 @@ const schemaField = (factory, intl, fieldsets) => ({
           };
         case 'URL':
         case 'Password':
+        case 'label_password_field':
         case 'Email':
+        case 'label_email':
           return {
             minLength: {
               type: 'integer',
@@ -240,6 +239,7 @@ const schemaField = (factory, intl, fieldsets) => ({
             },
           };
         case 'Integer':
+        case 'label_integer_field':
           return {
             minimum: {
               type: 'integer',
@@ -251,18 +251,24 @@ const schemaField = (factory, intl, fieldsets) => ({
             },
           };
         case 'Floating-point number':
+        case 'label_float_field':
         case 'Date/Time':
+        case 'label_datetime_field':
         case 'Date':
+        case 'label_date_field':
         case 'File':
         case 'File Upload':
         case 'Image':
         case 'Yes/No':
+        case 'label_boolean_field':
         case 'JSONField':
         case 'Relation Choice':
         case 'Relation List':
           return {};
         case 'Multiple Choice':
+        case 'label_multi_choice_field':
         case 'Choice':
+        case 'label_choice_field':
           return {
             values: {
               type: 'string',
@@ -327,7 +333,7 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   // change background colour if dragging
   background: isDragging ? 'white' : 'transparent',
 
-  // styles we need to apply on draggables
+  // styles we need to apply on draggable
   ...draggableStyle,
 });
 
@@ -514,18 +520,21 @@ class SchemaWidget extends Component {
           ...((factory) => {
             switch (factory) {
               case 'Date/Time':
+              case 'label_datetime_field':
                 return {
                   type: 'string',
                   widget: 'datetime',
                   factory,
                 };
               case 'Date':
+              case 'label_date_field':
                 return {
                   type: 'string',
                   widget: 'date',
                   factory,
                 };
               case 'Email':
+              case 'label_email':
                 return {
                   type: 'string',
                   widget: 'email',
@@ -538,11 +547,13 @@ class SchemaWidget extends Component {
                   factory,
                 };
               case 'Floating-point number':
+              case 'label_float_field':
                 return {
                   type: 'number',
                   factory,
                 };
               case 'Integer':
+              case 'label_integer_field':
                 return {
                   type: 'integer',
                   factory,
@@ -559,6 +570,7 @@ class SchemaWidget extends Component {
                   factory,
                 };
               case 'Multiple Choice':
+              case 'label_multi_choice_field':
                 return {
                   type: 'array',
                   factory,
@@ -569,6 +581,7 @@ class SchemaWidget extends Component {
                   factory,
                 };
               case 'Choice':
+              case 'label_choice_field':
                 return {
                   type: 'string',
                   choices: [],
@@ -580,6 +593,7 @@ class SchemaWidget extends Component {
                   factory,
                 };
               case 'Password':
+              case 'label_password_field':
                 return {
                   type: 'string',
                   widget: 'password',
@@ -598,6 +612,7 @@ class SchemaWidget extends Component {
                   factory,
                 };
               case 'Yes/No':
+              case 'label_boolean_field':
                 return {
                   type: 'boolean',
                   factory,
@@ -766,7 +781,9 @@ class SchemaWidget extends Component {
 
     const multiple =
       this.props.value.properties[this.state.editField.id]?.factory ===
-      'Multiple Choice';
+        'Multiple Choice' ||
+      this.props.value.properties[this.state.editField.id]?.factory ===
+        'label_multi_choice_field';
     const result = {
       ...this.props.value,
       fieldsets: formattedValues.parentFieldSet
@@ -1061,11 +1078,11 @@ class SchemaWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { error } = this.props;
+    const { error, reactBeautifulDnd } = this.props;
+    const { Draggable, DragDropContext, Droppable } = reactBeautifulDnd;
     if (!this.props.value) {
       return '';
     }
-    const vocabularyFields = getFieldsVocabulary();
     const nonUserCreatedFields = this.props.value.fieldsets[
       this.state.currentFieldset
     ].fields.filter(
@@ -1081,7 +1098,7 @@ class SchemaWidget extends Component {
     const lastUserCreatedFieldsIndex = hasChangeNote
       ? this.props.value.fieldsets[this.state.currentFieldset].fields.length - 1
       : this.props.value.fieldsets[this.state.currentFieldset].fields.length;
-    // fields that were not created by the user, but are part of a behaviour
+    // fields that were not created by the user, but are part of a behavior
     const makeNonUserFields = () =>
       map(
         this.props.value.fieldsets[this.state.currentFieldset].fields.slice(
@@ -1101,7 +1118,6 @@ class SchemaWidget extends Component {
               draggable={false}
               isDisabled={true}
               order={index}
-              vocabularyFields={vocabularyFields}
               onDelete={this.onShowDeleteField}
               onChange={this.onChangeDefaultValue}
               value={this.props.value.properties[field].default}
@@ -1311,8 +1327,11 @@ class SchemaWidget extends Component {
               properties: {
                 factory: {
                   type: 'string',
+                  factory: 'Choice',
                   title: this.props.intl.formatMessage(messages.type),
-                  choices: makeFieldTypes(vocabularyFields?.items),
+                  vocabulary: {
+                    '@id': `Fields`,
+                  },
                 },
                 title: {
                   type: 'string',
@@ -1409,6 +1428,7 @@ class SchemaWidget extends Component {
 
 export default compose(
   injectIntl,
+  injectLazyLibs(['reactBeautifulDnd']),
   connect(
     (state, props) => ({
       value: isString(props.value) ? JSON.parse(props.value) : props.value,

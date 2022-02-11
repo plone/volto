@@ -1,5 +1,5 @@
 /* eslint no-console: 0 */
-import '~/config'; // This is the bootstrap for the global config - server side
+import '@plone/volto/config'; // This is the bootstrap for the global config - server side
 import { existsSync, lstatSync, readFileSync } from 'fs';
 import React from 'react';
 import { StaticRouter } from 'react-router-dom';
@@ -9,13 +9,14 @@ import { renderToString } from 'react-dom/server';
 import { createMemoryHistory } from 'history';
 import { parse as parseUrl } from 'url';
 import { keys } from 'lodash';
-import cookie, { plugToRequest } from 'react-cookie';
 import locale from 'locale';
 import { detect } from 'detect-browser';
 import path from 'path';
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
-import { createProxyMiddleware } from 'http-proxy-middleware';
 import { resetServerContext } from 'react-beautiful-dnd';
+import { CookiesProvider } from 'react-cookie';
+import cookiesMiddleware from 'universal-cookie-express';
+import debug from 'debug';
 
 import routes from '~/routes';
 import config from '@plone/volto/registry';
@@ -49,6 +50,10 @@ if (config.settings) {
   });
 }
 
+function reactIntlErrorHandler(error) {
+  debug('i18n')(error);
+}
+
 const supported = new locale.Locales(keys(languages), 'en');
 
 const server = express()
@@ -57,53 +62,56 @@ const server = express()
   .head('/*', function (req, res) {
     // Support for HEAD requests. Required by start-test utility in CI.
     res.send('');
-  });
+  })
+  .use(cookiesMiddleware());
 
-// Internal proxy to bypass CORS while developing.
-if (__DEVELOPMENT__ && config.settings.devProxyToApiPath) {
-  // This is the proxy to the API in case the accept header is 'application/json'
-  const filter = function (pathname, req) {
-    return req.headers.accept === 'application/json';
-  };
-  const apiPathURL = parseUrl(config.settings.apiPath);
-  const proxyURL = parseUrl(config.settings.devProxyToApiPath);
-  const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
-  const instancePath = proxyURL.pathname;
-  server.use(
-    createProxyMiddleware(filter, {
-      target: serverURL,
-      pathRewrite: {
-        '^/':
-          config.settings.proxyRewriteTarget ||
-          `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/`,
-      },
-      logLevel: 'silent', // change to 'debug' to see all requests
-      ...(config.settings?.proxyRewriteTarget?.startsWith('https') && {
-        changeOrigin: true,
-        secure: false,
-      }),
-    }),
-  );
-}
+const middleware = (config.settings.expressMiddleware || []).filter((m) => m);
 
 server.all('*', setupServer);
+if (middleware.length) server.use('/', middleware);
+
+server.use(function (err, req, res, next) {
+  if (err) {
+    const { store } = req.app.locals;
+    const errorPage = (
+      <Provider store={store} onError={reactIntlErrorHandler}>
+        <StaticRouter context={{}} location={req.url}>
+          <ErrorPage message={err.message} />
+        </StaticRouter>
+      </Provider>
+    );
+
+    res.set({
+      'Cache-Control': 'public, max-age=60, no-transform',
+    });
+
+    /* Displays error in console
+     * TODO:
+     * - get ignored codes from Plone error_log
+     */
+    const ignoredErrors = [301, 302, 401, 404];
+    if (!ignoredErrors.includes(err.status)) console.error(err);
+
+    res
+      .status(err.status || 500) // If error happens in Volto code itself error status is undefined
+      .send(`<!doctype html> ${renderToString(errorPage)}`);
+  }
+});
 
 function setupServer(req, res, next) {
-  plugToRequest(req, res);
-
   const api = new Api(req);
 
   const browserdetect = detect(req.headers['user-agent']);
 
   const lang = new locale.Locales(
-    cookie.load('I18N_LANGUAGE') ||
+    req.universalCookies.get('I18N_LANGUAGE') ||
       config.settings.defaultLanguage ||
       req.headers['accept-language'],
   )
     .best(supported)
     .toString();
 
-  const authToken = cookie.load('auth_token');
+  const authToken = req.universalCookies.get('auth_token');
   const initialState = {
     userSession: { ...userSession(), token: authToken },
     form: req.body,
@@ -122,11 +130,11 @@ function setupServer(req, res, next) {
   // Create a new Redux store instance
   const store = configureStore(initialState, history, api);
 
-  persistAuthToken(store);
+  persistAuthToken(store, req);
 
   function errorHandler(error) {
     const errorPage = (
-      <Provider store={store}>
+      <Provider store={store} onError={reactIntlErrorHandler}>
         <StaticRouter context={{}} location={req.url}>
           <ErrorPage message={error.message} />
         </StaticRouter>
@@ -149,6 +157,14 @@ function setupServer(req, res, next) {
       .send(`<!doctype html> ${renderToString(errorPage)}`);
   }
 
+  if (!process.env.RAZZLE_API_PATH && req.headers.host) {
+    req.app.locals.detectedHost = `${
+      req.headers['x-forwarded-proto'] || req.protocol
+    }://${req.headers.host}`;
+    config.settings.apiPath = req.app.locals.detectedHost;
+    config.settings.publicURL = req.app.locals.detectedHost;
+  }
+
   req.app.locals = {
     ...req.app.locals,
     store,
@@ -158,11 +174,6 @@ function setupServer(req, res, next) {
 
   next();
 }
-
-const expressMiddleware = (config.settings.expressMiddleware || []).filter(
-  (m) => typeof m !== 'undefined',
-);
-if (expressMiddleware.length) server.use('/', expressMiddleware);
 
 server.get('/*', (req, res) => {
   const { store, api, errorHandler } = req.app.locals;
@@ -175,16 +186,6 @@ server.get('/*', (req, res) => {
 
   const url = req.originalUrl || req.url;
   const location = parseUrl(url);
-
-  let apiPathFromHostHeader;
-  // Get the Host header as apiPath just in case that the apiPath is not set
-  if (!config.settings.apiPath && req.headers.host) {
-    apiPathFromHostHeader = `${
-      req.headers['x-forwarded-proto'] || req.protocol
-    }://${req.headers.host}`;
-    config.settings.apiPath = apiPathFromHostHeader;
-    config.settings.publicURL = apiPathFromHostHeader;
-  }
 
   loadOnServer({ store, location, routes, api })
     .then(() => {
@@ -201,11 +202,13 @@ server.get('/*', (req, res) => {
       resetServerContext();
       const markup = renderToString(
         <ChunkExtractorManager extractor={extractor}>
-          <Provider store={store}>
-            <StaticRouter context={context} location={req.url}>
-              <ReduxAsyncConnect routes={routes} helpers={api} />
-            </StaticRouter>
-          </Provider>
+          <CookiesProvider cookies={req.universalCookies}>
+            <Provider store={store} onError={reactIntlErrorHandler}>
+              <StaticRouter context={context} location={req.url}>
+                <ReduxAsyncConnect routes={routes} helpers={api} />
+              </StaticRouter>
+            </Provider>
+          </CookiesProvider>
         </ChunkExtractorManager>,
       );
 
@@ -231,7 +234,12 @@ server.get('/*', (req, res) => {
                     process.env.NODE_ENV !== 'production'
                   }
                   criticalCss={readCriticalCss(req)}
-                  apiPath={apiPathFromHostHeader || config.settings.apiPath}
+                  apiPath={
+                    req.app.locals.detectedHost || config.settings.apiPath
+                  }
+                  publicURL={
+                    req.app.locals.detectedHost || config.settings.publicURL
+                  }
                 />,
               )}
             `,
@@ -245,7 +253,12 @@ server.get('/*', (req, res) => {
                   markup={markup}
                   store={store}
                   criticalCss={readCriticalCss(req)}
-                  apiPath={apiPathFromHostHeader || config.settings.apiPath}
+                  apiPath={
+                    req.app.locals.detectedHost || config.settings.apiPath
+                  }
+                  publicURL={
+                    req.app.locals.detectedHost || config.settings.publicURL
+                  }
                 />,
               )}
             `,
