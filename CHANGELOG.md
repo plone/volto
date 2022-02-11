@@ -4,6 +4,9 @@
 
 ### Breaking
 
+- Markup change in `LinkView` component.
+  See https://docs.voltocms.com/upgrade-guide/ for more information.
+
 ### Feature
 
 ### Bugfix
