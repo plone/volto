@@ -8,7 +8,8 @@
 
 ### Bugfix
 
-- add "view" id to contact-form container for main content skiplink @ThomasKindermann
+- Add "view" id to contact-form container for main content skiplink @ThomasKindermann
+- Fix loading indicator positioning on Login form submit @sneridagh
 
 ### Internal
 
