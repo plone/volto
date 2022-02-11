@@ -96,6 +96,7 @@ let config = {
     websockets: process.env.RAZZLE_WEBSOCKETS || false,
     // TODO: legacyTraverse to be removed when the use of the legacy traverse is deprecated.
     legacyTraverse: process.env.RAZZLE_LEGACY_TRAVERSE || false,
+    cookieExpires: 15552000, //in seconds. Default is 6 month (15552000)
     nonContentRoutes,
     extendedBlockRenderMap,
     blockStyleFn,
@@ -111,8 +112,8 @@ let config = {
     customStyleMap: null,
     notSupportedBrowsers: ['ie'],
     defaultPageSize: 25,
-    isMultilingual: false,
-    supportedLanguages: ['en'],
+    isMultilingual: true,
+    supportedLanguages: ['en', 'it'],
     defaultLanguage: 'en',
     navDepth: 1,
     expressMiddleware: serverConfig.expressMiddleware, // BBB
