@@ -124,7 +124,7 @@ class AddonConfigurationRegistry {
 
     this.initDevelopmentPackages();
     this.initPublishedPackages();
-    this.initTestingPackages();
+    this.initAddonsFromEnvVar();
 
     this.dependencyGraph = buildDependencyGraph(
       this.resultantMergedAddons,
@@ -203,13 +203,16 @@ class AddonConfigurationRegistry {
     }
   }
 
-  initTestingPackages() {
+  initAddonsFromEnvVar() {
     if (process.env.ADDONS) {
-      process.env.ADDONS.split(',').forEach(this.initTestingPackage.bind(this));
+      process.env.ADDONS.split(',').forEach(
+        this.initAddonFromEnvVar.bind(this),
+      );
     }
   }
 
-  initTestingPackage(name) {
+  initAddonFromEnvVar(name) {
+    // First lookup in the packages folder, local to the root (either vanilla Volto or project)
     const normalizedAddonName = name.split(':')[0];
     const testingPackagePath = `${this.projectRootPath}/packages/${normalizedAddonName}/src`;
     if (fs.existsSync(testingPackagePath)) {
@@ -231,6 +234,9 @@ class AddonConfigurationRegistry {
         this.packages[normalizedAddonName] || {},
         pkg,
       );
+    } else {
+      // Fallback in case the addon is released (not in packages folder nor in development, but in node_modules)
+      this.initPublishedPackage(name);
     }
   }
 
@@ -383,11 +389,11 @@ class AddonConfigurationRegistry {
   }
 
   /**
-   * Allow testing packages addons to customize Volto and other addons.
+   * Allow packages from addons set in env vars to customize Volto and other addons.
    *
-   * Same as the above one, but specific for Volto testing addons
+   * Same as the above one, but specific for Volto addons coming from env vars
    */
-  getTestingAddonCustomizationPaths() {
+  getAddonsFromEnvVarCustomizationPaths() {
     let aliases = {};
     if (process.env.ADDONS) {
       process.env.ADDONS.split(',').forEach((addon) => {

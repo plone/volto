@@ -197,7 +197,7 @@ const defaultModify = ({
   ];
 
   config.resolve.alias = {
-    ...registry.getTestingAddonCustomizationPaths(),
+    ...registry.getAddonsFromEnvVarCustomizationPaths(),
     ...registry.getAddonCustomizationPaths(),
     ...registry.getProjectCustomizationPaths(),
     ...config.resolve.alias,
