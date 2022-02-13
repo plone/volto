@@ -41,14 +41,6 @@
 
 - Prevent the MultilingualRedirector to force 4 content load when switching the language @reebalazs
 
-### Internal
-
-- House cleanup, remove some unused files in the root @sneridagh
-- Move Webpack related files to `webpack-plugins` folder @sneridagh
-- Remove unused Dockerfiles @sneridagh
-- Update Docker compose to latest images and best practices @sneridagh
-- Rename `core-sandbox` to `coresandbox` for sake of consistency @sneridagh
-
 ### Documentation
 
 - Upgrade Guide i18n: Make clear what's project, what add-on. @ksuess
