@@ -43,6 +43,11 @@ The `LinkView` component `The link address is:` part now it's wrapped in a `<p>`
 
 Only applying to Volto core development, for the sake of consistency with the other fixtures, `core-sandbox` fixture it's been renamed to `coresandbox` in all scripts and related file paths and filenames.
 
+### Extend the original intent and rename `RAZZLE_TESTING_ADDONS` to `ADDONS`.
+
+Originally, `RAZZLE_TESTING_ADDONS` environment variable was a scape hatch to load some components and configurations not present in vanilla Volto, so one could enable them at will. Initially thought as fixtures for acceptance tests, the original intent has been repurposed and extended to just `ADDONS`, so one could extend the ADDONS list configuration via this environment variable.
+
+It works for published packages, and those addons that can live in `packages` folder locally to your project (like testing addons for vanilla Volto do).
 
 ## Upgrading to Volto 14.x.x
 

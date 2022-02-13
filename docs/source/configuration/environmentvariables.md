@@ -103,3 +103,7 @@ $ ADDONS=volto-slate:asDefault yarn start
 (given a packages folder 'coresandbox')
 $ ADDONS=coresandbox:multilingualFixture yarn start
 ```
+
+!!! important
+    It does *not* work for development packages, which are *always* enabled if defined in your
+    `jsconfig.json` (or via `mrs.developer.json`)

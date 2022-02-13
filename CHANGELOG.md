@@ -6,6 +6,7 @@
 
 - Markup change in `LinkView` component.
 - Rename `core-sandbox` to `coresandbox` for sake of consistency @sneridagh
+- Extend the original intent and rename `RAZZLE_TESTING_ADDONS` to `ADDONS`. @sneridagh
   See https://docs.voltocms.com/upgrade-guide/ for more information.
 
 ### Feature
