@@ -197,8 +197,8 @@ const defaultModify = ({
   ];
 
   config.resolve.alias = {
-    ...registry.getAddonsFromEnvVarCustomizationPaths(),
     ...registry.getAddonCustomizationPaths(),
+    ...registry.getAddonsFromEnvVarCustomizationPaths(),
     ...registry.getProjectCustomizationPaths(),
     ...config.resolve.alias,
     '../../theme.config$': `${projectRootPath}/theme/theme.config`,
