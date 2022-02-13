@@ -142,7 +142,7 @@ exports[`Login renders a login component 1`] = `
         >
           <button
             aria-label="Log in"
-            className="ui basic primary right floated button"
+            className="ui basic icon primary right floated button"
             id="login-form-submit"
             onClick={[Function]}
             title="Log in"
@@ -169,7 +169,7 @@ exports[`Login renders a login component 1`] = `
           </button>
           <a
             aria-label="Cancel"
-            className="ui basic secondary right floated button"
+            className="ui basic icon secondary right floated button"
             href="/"
             id="login-form-cancel"
             onClick={[Function]}

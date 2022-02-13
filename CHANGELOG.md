@@ -1,16 +1,111 @@
 # Change Log
 
-## 14.7.1 (unreleased)
+## 15.0.0 (unreleased)
 
 ### Breaking
 
-### Feature
+- Markup change in `LinkView` component.
+  See https://docs.voltocms.com/upgrade-guide/ for more information.
 
-- multi select user/groups and ability to delete them @nileshgulia1
+### Feature
 
 ### Bugfix
 
 ### Internal
+
+## 15.0.0-alpha.3 (2022-02-11)
+
+### Bugfix
+
+- Fix the upload image in contents view @iFlameing
+- add "view" id to contact-form container for main content skiplink @ThomasKindermann
+- Fix loading indicator positioning on Login form submit @sneridagh
+
+### Internal
+
+- Add new RawMaterial Volto websites in production @nzambello
+
+## 15.0.0-alpha.2 (2022-02-10)
+
+### Breaking
+
+- Language Switcher no longer takes care of the change of the language on the Redux Store. This responsability has been unified in the `MultilingualRedirector` @sneridagh
+
+### Bugfix
+
+- Prevent the MultilingualRedirector to force 4 content load when switching the language @reebalazs
+
+### Documentation
+
+- Upgrade Guide i18n: Make clear what's project, what add-on. @ksuess
+
+## 15.0.0-alpha.1 (2022-02-09)
+
+### Bugfix
+
+- Fix the `null` error in SelectAutoComplete Widget @iFlameing
+
+## 15.0.0-alpha.0 (2022-02-09)
+
+### Breaking
+
+- Upgrade `react-cookie` to latest version. @sneridagh @robgietema
+  See https://docs.voltocms.com/upgrade-guide/ for more information.
+
+## 14.10.0 (2022-02-08)
+
+### Feature
+
+- Add Pluggable to toolbar user menu. @ksuess
+
+## 14.9.0 (2022-02-08)
+
+### Feature
+
+- Show addons installed in control panel @sneridagh
+
+### Bugfix
+
+- Fix italian translations in ObjectBrowser @giuliaghisini
+
+## 14.8.1 (2022-02-04)
+
+### Bugfix
+
+- Fix wrong CSS in language independent class selector @sneridagh
+
+### Internal
+
+- Cleanup redundant buildout install run.
+
+## 14.8.0 (2022-02-03)
+
+### Feature
+
+- multi select user/groups and ability to delete them @nileshgulia1
+- Enable `components` property in Volto's config registry. Does not expose any direct feature but this will open the door to be able to override registered components using the config registry and avoid using shadowing explicitly. @sneridagh
+- Add `resolve` and `register` helper methods for the Volto config. They retrieve and register new components in the registry. @tiberiuichim @sneridagh
+- Add `Component` component, given a `name` of a component registered in the registry, it renders it, passing down the props. @tiberiuichim
+- Syncronize the content language with the UI language in multilingual sites. So when you are accessing a content in a given language the rest of the interface literals follow along (it updates the language cookie). So the UI remains consistent. @sneridagh
+
+### Bugfix
+
+- Fix the a11y violation of UrlWidget @iRohitSingh
+
+### Internal
+
+- Update volta pins in package.json @fredvd
+
+## 14.7.1 (2022-02-02)
+
+### Internal
+
+- Add CSS body class in Babel view. Improve marker for language independent fields in Babel view too. @sneridagh
+
+### Docs
+
+Update documentation for internal proxy & other smaller reorganisation for quicker onboarding of
+new users/evaluators. @fredvd
 
 ## 14.7.0 (2022-01-28)
 

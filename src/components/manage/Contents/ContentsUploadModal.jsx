@@ -267,7 +267,9 @@ class ContentsUploadModal extends Component {
                     <Table.Row className="upload-row" key={file.name}>
                       <Table.Cell>{file.name}</Table.Cell>
                       <Table.Cell>
-                        <FormattedRelativeDate date={file.lastModifiedDate} />
+                        {file.lastModifiedDate && (
+                          <FormattedRelativeDate date={file.lastModifiedDate} />
+                        )}
                       </Table.Cell>
                       <Table.Cell>
                         {filesize(file.size, { round: 0 })}
