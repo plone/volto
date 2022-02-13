@@ -30,6 +30,8 @@
 - Extend the original intent and rename `RAZZLE_TESTING_ADDONS` to `ADDONS`. @sneridagh
   See https://docs.voltocms.com/upgrade-guide/ for more information.
 
+DatetimeWidget 'noPastDates' option: Take widgetOptions?.pattern_options?.noPastDates of backend schema into account. @ksuess
+
 ### Internal
 
 - House cleanup, remove some unused files in the root @sneridagh
