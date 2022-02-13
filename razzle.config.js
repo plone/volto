@@ -181,13 +181,13 @@ const defaultModify = ({
   // Disabling the ESlint pre loader
   config.module.rules.splice(0, 1);
 
-  let testingAddons = [];
+  let addonsFromEnvVar = [];
   if (process.env.ADDONS) {
-    testingAddons = process.env.ADDONS.split(',');
+    addonsFromEnvVar = process.env.ADDONS.split(',');
   }
 
   const addonsLoaderPath = createAddonsLoader(
-    [...registry.getAddonDependencies(), ...testingAddons],
+    [...registry.getAddonDependencies(), ...addonsFromEnvVar],
     registry.packages,
   );
 
@@ -238,7 +238,7 @@ const defaultModify = ({
   }
 
   if (process.env.ADDONS) {
-    testingAddons.forEach((addon) => {
+    addonsFromEnvVar.forEach((addon) => {
       const normalizedAddonName = addon.split(':')[0];
       const p = fs.realpathSync(
         registry.packages[normalizedAddonName].modulePath,

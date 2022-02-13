@@ -236,7 +236,8 @@ class AddonConfigurationRegistry {
       );
     } else {
       // Fallback in case the addon is released (not in packages folder nor in development, but in node_modules)
-      this.initPublishedPackage(name);
+      const normalizedAddonName = name.split(':')[0];
+      this.initPublishedPackage(normalizedAddonName);
     }
   }
 
