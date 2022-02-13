@@ -29,6 +29,21 @@ https://www.npmjs.com/package/react-cookie
 https://www.npmjs.com/package/universal-cookie-express
 https://www.npmjs.com/package/universal-cookie
 
+### Language Switcher no longer takes care of the sync of the language
+
+This responsability has been transferred in full to the `MultilingualRedirector`, if you have
+shadowed these components, either `LanguageSwitcher` or `MultilingualRedirector`, please update them.
+Not doing so won't break your project, but they won't get the latest features and bug fixes.
+
+### LinkView component markup change
+
+The `LinkView` component `The link address is:` part now it's wrapped in a `<p>` block instead of a `<span>` block. Please check if you have a CSS bound to that node and adjust accordingly.
+
+### Rename core-sandbox fixture to coresandbox
+
+Only applying to Volto core development, for the sake of consistency with the other fixtures, `core-sandbox` fixture it's been renamed to `coresandbox` in all scripts and related file paths and filenames.
+
+
 ## Upgrading to Volto 14.x.x
 
 ### Revisited, rethought and refactored seamless mode
@@ -47,7 +62,8 @@ Read the full documentation about Seamless mode: https://docs.voltocms.com/deplo
 ### Update i18n configuration for projects and add-ons
 
 The i18n script and infrastructure have been moved to their own package since we needed them
-to be independent of Volto itself. This was necessary for being able to use them from the
+to be independent of Volto itself.
+This was necessary for being able to use them from the
 add-ons without having to install the whole Volto package (which is not possible).
 
 `@plone/scripts` package is the placeholder of the script, which has also been improved
@@ -86,7 +102,7 @@ afterwards add this to the `dependencies` list:
    }
 ```
 
-Apply the following diff to `babel.config.js`:
+Apply the following diff to your add-on's `babel.config.js`:
 
 ```diff
 -module.exports = require('@plone/volto/babel');
