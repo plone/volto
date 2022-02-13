@@ -17,17 +17,17 @@ const messages = defineMessages({
 
 const ContentsBreadcrumbs = (props) => {
   const { settings } = config;
-  const { items } = props;
+  const { items, root } = props;
   const intl = useIntl();
   const pathname = useLocation().pathname;
   const lang = pathname.split('/')[1];
-
+  const rootPath = root || '';
   return (
     <Breadcrumb>
       {settings.isMultilingual && (
         <>
           <Link
-            to="/contents"
+            to={`${rootPath}/contents`}
             className="section"
             title={intl.formatMessage(messages.root)}
           >
@@ -38,7 +38,7 @@ const ContentsBreadcrumbs = (props) => {
       )}
       {settings.isMultilingual && pathname?.split('/')?.length > 2 && (
         <Link
-          to={`/${lang}/contents`}
+          to={`${rootPath}/${lang}/contents`}
           className="section"
           title={intl.formatMessage(messages.home)}
         >
@@ -47,7 +47,7 @@ const ContentsBreadcrumbs = (props) => {
       )}
       {!settings.isMultilingual && (
         <Link
-          to="/contents"
+          to={`${rootPath}/contents`}
           className="section"
           title={intl.formatMessage(messages.home)}
         >
