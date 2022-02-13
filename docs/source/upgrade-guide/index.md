@@ -72,7 +72,8 @@ Read the full documentation about Seamless mode: https://docs.voltocms.com/deplo
 ### Update i18n configuration for projects and add-ons
 
 The i18n script and infrastructure have been moved to their own package since we needed them
-to be independent of Volto itself. This was necessary for being able to use them from the
+to be independent of Volto itself. 
+This was necessary for being able to use them from the
 add-ons without having to install the whole Volto package (which is not possible).
 
 `@plone/scripts` package is the placeholder of the script, which has also been improved
@@ -111,7 +112,7 @@ afterwards add this to the `dependencies` list:
    }
 ```
 
-Apply the following diff to `babel.config.js`:
+Apply the following diff to your add-on's `babel.config.js`:
 
 ```diff
 -module.exports = require('@plone/volto/babel');
