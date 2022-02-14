@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { isEmpty } from 'lodash';
-import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { v4 as uuid } from 'uuid';
 
 const getPlaceholder = (draggedDOM, sourceIndex, destinationIndex) => {
@@ -55,7 +55,9 @@ const DragDropList = (props) => {
     as = 'div',
     style,
     forwardedAriaLabelledBy,
+    reactBeautifulDnd,
   } = props; //renderChild
+  const { DragDropContext, Draggable, Droppable } = reactBeautifulDnd;
   const [placeholderProps, setPlaceholderProps] = React.useState({});
   const [uid] = React.useState(uuid());
   // queueing timed action
@@ -157,4 +159,4 @@ const DragDropList = (props) => {
   );
 };
 
-export default DragDropList;
+export default injectLazyLibs(['reactBeautifulDnd'])(DragDropList);

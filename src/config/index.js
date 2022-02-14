@@ -26,6 +26,7 @@ import {
   requiredBlocks,
   blocksConfig,
   initialBlocks,
+  initialBlocksFocus,
 } from './Blocks';
 import { loadables } from './Loadables';
 
@@ -134,6 +135,7 @@ let config = {
         'prismCore',
         'toastify',
         'reactSelect',
+        'reactBeautifulDnd',
         // 'diffLib',
       ],
     },
@@ -159,6 +161,7 @@ let config = {
     showSelfRegistration: false,
     contentMetadataTagsImageField: 'image',
     hasWorkingCopySupport: false,
+    maxUndoLevels: 200, // undo history size for the main form
   },
   widgets: {
     ...widgetMapping,
@@ -175,6 +178,7 @@ let config = {
     blocksConfig,
     groupBlocksOrder,
     initialBlocks,
+    initialBlocksFocus,
     showEditBlocksInBabelView: false,
   },
   addonRoutes: [],
@@ -190,3 +194,4 @@ ConfigRegistry.widgets = config.widgets;
 ConfigRegistry.addonRoutes = config.addonRoutes;
 ConfigRegistry.addonReducers = config.addonReducers;
 ConfigRegistry.appExtras = config.appExtras;
+ConfigRegistry.components = config.components;

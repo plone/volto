@@ -4,6 +4,7 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
 import jwt from 'jsonwebtoken';
+import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
 
 import PersonalTools from './PersonalTools';
 
@@ -35,14 +36,16 @@ describe('Toolbar Personal Tools component', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <MemoryRouter>
-          <PersonalTools
-            loadComponent={() => {}}
-            theToolbar={{
-              current: { getBoundingClientRect: () => ({ width: '320' }) },
-            }}
-          />
-        </MemoryRouter>
+        <PluggablesProvider>
+          <MemoryRouter>
+            <PersonalTools
+              loadComponent={() => {}}
+              theToolbar={{
+                current: { getBoundingClientRect: () => ({ width: '320' }) },
+              }}
+            />
+          </MemoryRouter>
+        </PluggablesProvider>
       </Provider>,
     );
     const json = component.toJSON();

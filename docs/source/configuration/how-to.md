@@ -14,9 +14,10 @@ like:
 const absoluteUrl = `${config.settings.apiPath}/${content.url}`
 ```
 
-Both add-ons and projects can extend Volto's configuration registry. First the add-ons
-configuration is applied, in the order they are defined in `package.json`, then finally
-the project configuration is applied. Visualized like a pipe would be:
+Both the main project and individual add-ons can extend Volto's configuration registry.
+First the add-ons configuration is applied, in the order they are defined in 
+`package.json`, then finally the project configuration is applied. Visualized like
+a pipe would be:
 
 > Default Volto configuration -> Add-on 1 -> Add-on 2 -> ... -> Add-on n -> Project
 
@@ -73,6 +74,8 @@ definition](https://github.com/plone/volto/blob/master/src/config/Widgets.jsx)
 but also the [lookup
 mechanism](https://github.com/plone/volto/blob/6fd62cb2860bc7cf3cb7c36ea86bfd8bd03247d9/src/components/manage/Form/Field.jsx#L112)
 to understand how things work.
+
+See [Widgets](/recipes/widget) for more information.
 
 ## views
 
