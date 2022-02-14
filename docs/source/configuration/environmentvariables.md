@@ -92,10 +92,10 @@ It will enable the log of missing i18n messages (in console).
 
 ### Add add-ons via environment variable
 
-Quite often, you need different configurations and enabling components (for example, testing purposes).
-You can use the `ADDONS` environment variable to define them.
-They sum up to the ones set in `package.json` or programatically in `volto.config.js`.
+You can use the `ADDONS` environment variable to enable and configure add-ons in your project.
+They sum up to the ones set fixed in `package.json` or programatically in `volto.config.js`.
 You can specify released (published) packages (installed previously in your environment, and present already in `node_modules`), or `packages` folder local to your project (not in development, but optional, for example, Volto's testing packages).
+It can be used for temporarily add an add-on to your build, for testing purposes. Also it can be used for enabling a temporary feature or set of customizations.
 
 ```bash
 $ ADDONS=test-addon,test-addon2 yarn start
