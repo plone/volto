@@ -412,6 +412,10 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 - Move `theme.js` import to top of the client code, so it take precedence over any other inline imported CSS. This is not an strict breaking change, but it's worth to mention it as might be important and kept in mind. @sneridagh
 
 ### Feature
+- Close object browser when pressing ESC @nzambello
+- Blocks can now declare, in their block configuration registry,
+  a `blockSchema` with a schema factory. This schema will also be used to
+  extract a default block value.
 
 - Add Image with srcset and lazy loading using Plone scales @nzambello
 - Add runtime configuration for `@babel/plugin-transform-react-jsx` set to `automatic`. This enables the new JSX runtime: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html So no longer `import React from 'react'` is needed anymore.
@@ -545,6 +549,7 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 - Now each block config object can declare a schema factory (a function that can produce a schema) and this will be used to derive the default data for the block @tiberiuichim
 
 ## 14.0.0-alpha.33 (2021-11-20)
+
 
 ### Bugfix
 
@@ -951,6 +956,9 @@ https://docs.voltocms.com/upgrade-guide/
 
 ### Bugfix
 
+- Fix outside click handling in object browser @nzambello
+- Prevent form submit when clicking on BlockChooserButton @giuliaghisini
+- Opening the search input in the object browser, it will get the focus @nzambello
 - Fix ObjectBrowserNav items key @nzambello
 - Fix ObjectBrowserNav aria label: id => title @nzambello
 - Fix missing code in `ArrayWidget` from refactored `SelectWidget` @sneridagh
