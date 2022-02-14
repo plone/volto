@@ -45,9 +45,13 @@ Only applying to Volto core development, for the sake of consistency with the ot
 
 ### Extend the original intent and rename `RAZZLE_TESTING_ADDONS` to `ADDONS`.
 
-Originally, `RAZZLE_TESTING_ADDONS` environment variable was a scape hatch to load some components and configurations not present in vanilla Volto, so one could enable them at will. Initially thought as fixtures for acceptance tests, the original intent has been repurposed and extended to just `ADDONS`, so one could extend the ADDONS list configuration via this environment variable.
+Originally the `RAZZLE_TESTING_ADDONS` environment variable was an escape hatch to load some components and configurations not present in vanilla Volto.
+One could enable them at will.
+Initially thought as fixtures for acceptance tests, the original intent has been repurposed and extended to just `ADDONS`.
+One could extend the `ADDONS` list configuration via this environment variable.
 
-It works for published packages, and those addons that can live in `packages` folder locally to your project (like testing addons for vanilla Volto do).
+It works for published packages, such as those add-ons that live in the `packages` folder locally to your project.
+This is similar to the testing add-ons from vanilla Volto.
 
 ## Upgrading to Volto 14.x.x
 

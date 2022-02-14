@@ -90,9 +90,12 @@ It displays the errors of the non-compliant customizations (in server console) i
 
 It will enable the log of missing i18n messages (in console).
 
-### Add addons via environment variable
+### Add add-ons via environment variable
 
-Quite often, you need different configurations and enabling components (eg. for testing purposes). You can use the `ADDONS` environment variable to define them. They sum up to the ones set in `package.json` or programatically in `volto.config.js`. You can specify released (published) packages (installed previously in your environment, and present already in node_modules), or "packages" folder local to your project (not in development, but optional, eg. Volto's testing packages).
+Quite often, you need different configurations and enabling components (for example, testing purposes).
+You can use the `ADDONS` environment variable to define them.
+They sum up to the ones set in `package.json` or programatically in `volto.config.js`.
+You can specify released (published) packages (installed previously in your environment, and present already in `node_modules`), or `packages` folder local to your project (not in development, but optional, for example, Volto's testing packages).
 
 ```bash
 $ ADDONS=test-addon,test-addon2 yarn start
@@ -100,7 +103,7 @@ $ ADDONS=test-addon,test-addon2 yarn start
 $ yarn add volto-slate
 $ ADDONS=volto-slate:asDefault yarn start
 
-(given a packages folder 'coresandbox')
+# given a package folder 'coresandbox'
 $ ADDONS=coresandbox:multilingualFixture yarn start
 ```
 

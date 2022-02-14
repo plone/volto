@@ -22,13 +22,16 @@ environment variable.
 
 This is specially useful in CI while developing add-ons, so you can pass an specific configuration that deals with the addon config properly.
 
-## Add addons via environment variable (for testing purposes)
+## Add add-ons via environment variable for testing purposes
 
-Sometimes, you need to enable different configurations and enable optional components (eg. for testing purposes). You can use the `ADDONS` environment variable to define them.
+Sometimes you need to enable different configurations and enable optional components (for example, testing purposes).
+You can use the `ADDONS` environment variable to define them.
 
-    ADDONS=test-addon,test-addon2 yarn start
+```bash
+ADDONS=test-addon,test-addon2 yarn start
+```
 
-See [Addons via environment variables](../configuration/environmentvariables.md) for more information.
+See [Add-ons via environment variables](../configuration/environmentvariables.md) for more information.
 
 ## Developing Cypress tests
 
