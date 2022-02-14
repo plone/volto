@@ -2,6 +2,18 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import AlbumView from './AlbumView';
 
+import config from '@plone/volto/registry';
+
+config.settings.imageScales = {
+  large: 768,
+  preview: 400,
+  mini: 200,
+  thumb: 128,
+  tile: 64,
+  icon: 32,
+  listing: 16,
+};
+
 test('renders an gallery view component', () => {
   const component = renderer.create(
     <AlbumView
@@ -10,8 +22,10 @@ test('renders an gallery view component', () => {
         description: 'Hi',
         items: [
           {
+            '@id': 'http://localhost:3000/news',
             url: '/news',
             image: {
+              download: 'file:///preview.jpg',
               scales: {
                 preview: {
                   download: 'file:///preview.jpg',
@@ -21,10 +35,13 @@ test('renders an gallery view component', () => {
                 },
               },
             },
+            image_field: 'image',
           },
           {
-            url: '',
+            '@id': 'http://localhost:3000/events',
+            url: '/events',
             image: {
+              download: 'file:///preview.jpg',
               scales: {
                 preview: {
                   download: 'file:///preview.jpg',
@@ -34,6 +51,7 @@ test('renders an gallery view component', () => {
                 },
               },
             },
+            image_field: 'image',
           },
         ],
       }}
