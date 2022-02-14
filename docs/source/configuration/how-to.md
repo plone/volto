@@ -124,3 +124,17 @@ this data structure:
 ```
 config.addonRoutes.push({ path: '/**/chat', component: Chat });
 ```
+
+## cookiesExpire
+According to the EU law on the management of the GDPR privacy and cookies, technical cookies must have a maximum expiration of 6 months.
+But for sites outside the European Union the expiration could be different. So, expiration time is configurable from config, expressing it in 'seconds':
+
+```js
+export default function applyConfig(config) {
+  config.settings = {
+    ...config.settings,
+    cookieExpires: 15552000, //in seconds. Default is 6 month (15552000)
+  };
+
+  return config;
+}
