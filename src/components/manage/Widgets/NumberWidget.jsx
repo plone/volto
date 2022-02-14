@@ -32,6 +32,7 @@ const NumberWidget = (props) => {
     isDisabled,
     maximum,
     minimum,
+    placeholder,
   } = props;
 
   return (
@@ -51,6 +52,7 @@ const NumberWidget = (props) => {
           onBlur(id, target.value === '' ? undefined : target.value)
         }
         onClick={() => onClick()}
+        placeholder={placeholder}
       />
     </FormFieldWrapper>
   );
@@ -72,6 +74,7 @@ NumberWidget.propTypes = {
   wrapped: PropTypes.bool,
   maximum: PropTypes.number,
   minimum: PropTypes.number,
+  placeholder: PropTypes.string,
 };
 
 /**

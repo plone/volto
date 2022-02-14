@@ -204,3 +204,9 @@ export default {
 
 export const Connected = () => <ObjectBrowserWidget />;
 export const SingleElement = () => <ObjectBrowserWidget mode="link" />;
+export const Placeholder = () => (
+  <ObjectBrowserWidget
+    allowExternals={true}
+    placeholder="This is the placeholder text"
+  />
+);
