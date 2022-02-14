@@ -4,14 +4,28 @@
 
 ### Breaking
 
+- Markup change in `LinkView` component.
+- Rename `core-sandbox` to `coresandbox` for sake of consistency @sneridagh
+  See https://docs.voltocms.com/upgrade-guide/ for more information.
+
 ### Feature
 - Added cookiesExpire prop to configure the cookie expiration @giuliaghisini
 
 ### Bugfix
 
+### Internal
+
+- House cleanup, remove some unused files in the root @sneridagh
+- Move Webpack related files to `webpack-plugins` folder @sneridagh
+- Remove unused Dockerfiles @sneridagh
+- Update Docker compose to latest images and best practices @sneridagh
+
+## 15.0.0-alpha.3 (2022-02-11)
+
+### Bugfix
+
 - Fix the upload image in contents view @iFlameing
 - add "view" id to contact-form container for main content skiplink @ThomasKindermann
-- Add "view" id to contact-form container for main content skiplink @ThomasKindermann
 - Fix loading indicator positioning on Login form submit @sneridagh
 
 ### Internal

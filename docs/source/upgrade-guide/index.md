@@ -35,6 +35,15 @@ This responsability has been transferred in full to the `MultilingualRedirector`
 shadowed these components, either `LanguageSwitcher` or `MultilingualRedirector`, please update them.
 Not doing so won't break your project, but they won't get the latest features and bug fixes.
 
+### LinkView component markup change
+
+The `LinkView` component `The link address is:` part now it's wrapped in a `<p>` block instead of a `<span>` block. Please check if you have a CSS bound to that node and adjust accordingly.
+
+### Rename core-sandbox fixture to coresandbox
+
+Only applying to Volto core development, for the sake of consistency with the other fixtures, `core-sandbox` fixture it's been renamed to `coresandbox` in all scripts and related file paths and filenames.
+
+
 ## Upgrading to Volto 14.x.x
 
 ### Revisited, rethought and refactored seamless mode
