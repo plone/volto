@@ -1,16 +1,178 @@
 # Change Log
 
-## 14.2.3 (unreleased)
+## 15.0.0 (unreleased)
 
 ### Breaking
 
-### Feature
+- Markup change in `LinkView` component.
+- Rename `core-sandbox` to `coresandbox` for sake of consistency @sneridagh
+  See https://docs.voltocms.com/upgrade-guide/ for more information.
 
-- Added placeholder param to widget, to change default placeholder @giuliaghisini
+### Feature
 
 ### Bugfix
 
 ### Internal
+
+- House cleanup, remove some unused files in the root @sneridagh
+- Move Webpack related files to `webpack-plugins` folder @sneridagh
+- Remove unused Dockerfiles @sneridagh
+- Update Docker compose to latest images and best practices @sneridagh
+
+## 15.0.0-alpha.3 (2022-02-11)
+
+### Bugfix
+
+- Fix the upload image in contents view @iFlameing
+- add "view" id to contact-form container for main content skiplink @ThomasKindermann
+- Fix loading indicator positioning on Login form submit @sneridagh
+
+### Internal
+
+- Add new RawMaterial Volto websites in production @nzambello
+
+## 15.0.0-alpha.2 (2022-02-10)
+
+### Breaking
+
+- Language Switcher no longer takes care of the change of the language on the Redux Store. This responsability has been unified in the `MultilingualRedirector` @sneridagh
+
+### Bugfix
+
+- Prevent the MultilingualRedirector to force 4 content load when switching the language @reebalazs
+
+### Documentation
+
+- Upgrade Guide i18n: Make clear what's project, what add-on. @ksuess
+
+## 15.0.0-alpha.1 (2022-02-09)
+
+### Bugfix
+
+- Fix the `null` error in SelectAutoComplete Widget @iFlameing
+
+## 15.0.0-alpha.0 (2022-02-09)
+
+### Breaking
+
+- Upgrade `react-cookie` to latest version. @sneridagh @robgietema
+  See https://docs.voltocms.com/upgrade-guide/ for more information.
+
+## 14.10.0 (2022-02-08)
+
+### Feature
+
+- Add Pluggable to toolbar user menu. @ksuess
+
+## 14.9.0 (2022-02-08)
+
+### Feature
+
+- Show addons installed in control panel @sneridagh
+
+### Bugfix
+
+- Fix italian translations in ObjectBrowser @giuliaghisini
+
+## 14.8.1 (2022-02-04)
+
+### Bugfix
+
+- Fix wrong CSS in language independent class selector @sneridagh
+
+### Internal
+
+- Cleanup redundant buildout install run.
+
+## 14.8.0 (2022-02-03)
+
+### Feature
+
+- Added placeholder param to widget, to change default placeholder @giuliaghisini
+- Enable `components` property in Volto's config registry. Does not expose any direct feature but this will open the door to be able to override registered components using the config registry and avoid using shadowing explicitly. @sneridagh
+- Add `resolve` and `register` helper methods for the Volto config. They retrieve and register new components in the registry. @tiberiuichim @sneridagh
+- Add `Component` component, given a `name` of a component registered in the registry, it renders it, passing down the props. @tiberiuichim
+- Syncronize the content language with the UI language in multilingual sites. So when you are accessing a content in a given language the rest of the interface literals follow along (it updates the language cookie). So the UI remains consistent. @sneridagh
+
+### Bugfix
+
+- Fix the a11y violation of UrlWidget @iRohitSingh
+
+### Internal
+
+- Update volta pins in package.json @fredvd
+
+## 14.7.1 (2022-02-02)
+
+### Internal
+
+- Add CSS body class in Babel view. Improve marker for language independent fields in Babel view too. @sneridagh
+
+### Docs
+
+Update documentation for internal proxy & other smaller reorganisation for quicker onboarding of
+new users/evaluators. @fredvd
+
+## 14.7.0 (2022-01-28)
+
+### Feature
+
+- Add `<FormattedDate>` and `<FormattedRelativeDate>` components. Check their Storybook stories for details. This is part of ongoing work to minimize the use of 'deprecated' momentjs. @sneridagh @tiberiuichim
+
+### Internal
+
+- Upgrade jest to latest release, 27 major. @tiberiuichim
+- Lazyload momentjs. `parseDateTime` helper now requires passing the momentjs library @tiberiuichim
+
+## 14.6.0 (2022-01-27)
+
+### Feature
+
+- Use `volto.config.js` as dynamic configuration for addons. It adds up to the `package.json` `addons` key, allowing dynamic load of addons (eg. via environment variables) @sneridagh
+
+### Internal
+
+- Fix ObjectListWidget story bug caused by lazyloading dnd libraries
+  @tiberiuichim
+
+## 14.5.0 (2022-01-26)
+
+### Feature
+
+- VocabularyTermsWidget: Token is now on creation of term editable, but stays ineditable afterwards.  @ksuess
+
+### Bugfix
+
+- Fix A11Y violations in Navigation @iRohitSingh
+- Fix `language-independent-field` CSS class styling @sneridagh
+
+### Internal
+
+- Lazyload react-beautiful-dnd @tiberiuichim
+- Lazyload react-dnd @tiberiuichim
+- Improve docs on environment variables, add recipes @sneridagh
+- Update p.restapi to 8.20.0 and plone.volto to 4.0.0a1 and plone.rest to 2.0.0a2 @sneridagh
+
+## 14.4.0 (2022-01-21)
+
+### Feature
+
+- Language independent fields support in Volto forms @sneridagh
+
+## 14.3.0 (2022-01-20)
+
+### Feature
+
+- Bump semantic-ui-react to v2.0.3 @nileshgulia1
+
+## 14.2.3 (2022-01-20)
+
+### Bugfix
+
+- Fix ListingBlock to add "No results" message when there are no messages @erral
+- Fix overflow table in Content view @giuliaghisini
+- Fixed url validation in FormValidation to admit ip addresses. @giuliaghisini
+- Upgrade to plone.restapi 8.19.0 (to support the language independent fields serialization) @sneridagh
 
 ## 14.2.2 (2022-01-13)
 

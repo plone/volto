@@ -1,5 +1,5 @@
 import ObjectListWidgetDefault from './ObjectListWidget';
-import Wrapper, { FormUndoWrapper } from '@plone/volto/storybook';
+import { RealStoreWrapper, FormUndoWrapper } from '@plone/volto/storybook';
 import React from 'react';
 import { searchResults } from './ObjectBrowserWidget.stories';
 
@@ -109,7 +109,7 @@ const ObjectListWidgetComponent = ({
   ...args
 }) => {
   return (
-    <Wrapper
+    <RealStoreWrapper
       location={{ pathname: '/folder2/folder21/doc212' }}
       customStore={customStore}
     >
@@ -157,7 +157,7 @@ const ObjectListWidgetComponent = ({
           </div>
         )}
       </FormUndoWrapper>
-    </Wrapper>
+    </RealStoreWrapper>
   );
 };
 

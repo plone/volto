@@ -8,6 +8,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 import { ReduxAsyncConnect } from '@plone/volto/helpers/AsyncConnect';
 import { loadableReady } from '@loadable/component';
+import { CookiesProvider } from 'react-cookie';
 import debug from 'debug';
 import routes from '~/routes';
 import config from '@plone/volto/registry';
@@ -55,15 +56,17 @@ export default () => {
 
   loadableReady(() => {
     hydrate(
-      <Provider store={store}>
-        <IntlProvider onError={reactIntlErrorHandler}>
-          <ConnectedRouter history={history}>
-            <ScrollToTop>
-              <ReduxAsyncConnect routes={routes} helpers={api} />
-            </ScrollToTop>
-          </ConnectedRouter>
-        </IntlProvider>
-      </Provider>,
+      <CookiesProvider>
+        <Provider store={store}>
+          <IntlProvider onError={reactIntlErrorHandler}>
+            <ConnectedRouter history={history}>
+              <ScrollToTop>
+                <ReduxAsyncConnect routes={routes} helpers={api} />
+              </ScrollToTop>
+            </ConnectedRouter>
+          </IntlProvider>
+        </Provider>
+      </CookiesProvider>,
       document.getElementById('main'),
     );
   });

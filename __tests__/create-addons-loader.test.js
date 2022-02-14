@@ -13,6 +13,9 @@ Instead, change the "addons" setting in your package.json file.
 
 const projectConfigLoader = require('@package/config');
 
+const addonsInfo = {};
+export { addonsInfo };
+
 const safeWrapper = (func) => (config) => {
   const res = func(config);
   if (typeof res === 'undefined') {

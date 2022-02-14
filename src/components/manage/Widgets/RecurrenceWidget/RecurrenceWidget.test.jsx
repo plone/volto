@@ -6,6 +6,12 @@ import { waitFor } from '@testing-library/react';
 
 import RecurrenceWidget from './RecurrenceWidget';
 
+jest.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(
+  async () =>
+    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
+);
+
 const mockStore = configureStore();
 
 test('renders a recurrence widget component', async () => {

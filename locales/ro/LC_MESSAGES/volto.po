@@ -58,6 +58,11 @@ msgstr "Activare și dezactivare"
 msgid "Add"
 msgstr "Adăugare"
 
+#: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Add
+msgid "Add (object list)"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
 msgid "Add Addons"
@@ -1336,6 +1341,11 @@ msgstr ""
 msgid "Language"
 msgstr "Limba"
 
+#: components/manage/Widgets/FormFieldWrapper
+# defaultMessage: Language independent field.
+msgid "Language independent field."
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Last
 msgid "Last"
@@ -1595,6 +1605,11 @@ msgstr "Articol de știri"
 # defaultMessage: No
 msgid "No"
 msgstr "Nu"
+
+#: components/manage/Controlpanels/VersionOverview
+# defaultMessage: No addons found
+msgid "No addons found"
+msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected

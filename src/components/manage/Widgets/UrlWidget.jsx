@@ -102,6 +102,7 @@ export const UrlWidget = (props) => {
             <Button
               basic
               className="cancel"
+              aria-label="clearUrlBrowser"
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -116,6 +117,7 @@ export const UrlWidget = (props) => {
             <Button
               basic
               icon
+              aria-label="openUrlBrowser"
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
