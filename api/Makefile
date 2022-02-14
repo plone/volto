@@ -79,8 +79,7 @@ upgrade-versions: ./bin/buildout ./version-constraints.cfg ./buildout.cfg ## Upd
 	"$(<)" instance:http-address=$(INSTANCE_PORT)
 
 ./bin/buildout: ./requirements.txt ./bin/pip
-	bin/pip install --upgrade pip
-	bin/pip install --upgrade wheel
+	bin/pip install --upgrade pip wheel
 	bin/pip install -r "$(<)"
 
 ./bin/pip:
