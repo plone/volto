@@ -97,6 +97,12 @@ const ListingBody = withQuerystringResults((props) => {
     </div>
   ) : (
     <div>
+      {hasLoaded && (
+        <FormattedMessage
+          id="No results found."
+          defaultMessage="No results found."
+        />
+      )}
       <Dimmer active={!hasLoaded} inverted>
         <Loader indeterminate size="small">
           <FormattedMessage id="loading" defaultMessage="Loading" />

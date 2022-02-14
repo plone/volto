@@ -12,9 +12,41 @@ This upgrade guide lists all breaking changes in Volto and explains the
     runs if it's outdated. The generator is also able to "update" your project with
     the latest changes, and propose to you to merge the changes, so you can run it on top of your project by answering the prompt.
 
+## Upgrading to Volto 15.x.x
+
+### Updated react-cookie library
+
+This fixes a use case where cookies could potentially be messed up if your site is under heavy load.
+The old `react-cookie` library was not able to handle correctly the SSR part, specially the one that
+is shared in "Nobody's land" (not SSR, not under the React tree, actions, Redux middleware).
+Upgrading to the latest version of the `react-cookie` suite (`react-cookie`, `universal-cookie-express` and `universal-cookie`) will fix it.
+
+You have to take action only in case you did some development involving cookies. The `react-cookie`
+library has been updated to the latest version and its companion libraries
+(`universal-cookie-express` and `universal-cookie`), and the API changed over the years. Please look into the documentation of these packages to get a grasp on the changes:
+
+https://www.npmjs.com/package/react-cookie
+https://www.npmjs.com/package/universal-cookie-express
+https://www.npmjs.com/package/universal-cookie
+
+### Language Switcher no longer takes care of the sync of the language
+
+This responsability has been transferred in full to the `MultilingualRedirector`, if you have
+shadowed these components, either `LanguageSwitcher` or `MultilingualRedirector`, please update them.
+Not doing so won't break your project, but they won't get the latest features and bug fixes.
+
+### LinkView component markup change
+
+The `LinkView` component `The link address is:` part now it's wrapped in a `<p>` block instead of a `<span>` block. Please check if you have a CSS bound to that node and adjust accordingly.
+
+### Rename core-sandbox fixture to coresandbox
+
+Only applying to Volto core development, for the sake of consistency with the other fixtures, `core-sandbox` fixture it's been renamed to `coresandbox` in all scripts and related file paths and filenames.
+
+
 ## Upgrading to Volto 14.x.x
 
-### Revisited rethought and refactored seamless mode
+### Revisited, rethought and refactored seamless mode
 
 Seamless mode was released as experimental in Volto 13. However, after a period of testing some issues were detected so the feature has been rethought and refactored.
 
@@ -30,7 +62,8 @@ Read the full documentation about Seamless mode: https://docs.voltocms.com/deplo
 ### Update i18n configuration for projects and add-ons
 
 The i18n script and infrastructure have been moved to their own package since we needed them
-to be independent of Volto itself. This was necessary for being able to use them from the
+to be independent of Volto itself.
+This was necessary for being able to use them from the
 add-ons without having to install the whole Volto package (which is not possible).
 
 `@plone/scripts` package is the placeholder of the script, which has also been improved
@@ -69,7 +102,7 @@ afterwards add this to the `dependencies` list:
    }
 ```
 
-Apply the following diff to `babel.config.js`:
+Apply the following diff to your add-on's `babel.config.js`:
 
 ```diff
 -module.exports = require('@plone/volto/babel');
@@ -107,10 +140,11 @@ More information: https://docs.voltocms.com/upgrade-guide/#volto-configuration-r
 
 Not really a breaking change, but it's worth noting it. By default, Volto 14 comes with
 [content-locking](/configuration/locking) enabled, if the backend supports it. Thus:
-* Upgrade Plone RestAPI:
-    * **plone.restapi**>=`8.9.0` (Plone 5+)
-    * **plone.restapi**>=`7.4.0` (Plone 4)
-* Update `plone:CORSPolicy` to include `Lock-Token` within `allow_headers`:
+
+- Upgrade Plone RestAPI
+  - **plone.restapi**>=`8.9.0` (Plone 5+)
+  - **plone.restapi**>=`7.4.0` (Plone 4)
+- Update `plone:CORSPolicy` to include `Lock-Token` within `allow_headers`:
 
 ```xml
   <plone:CORSPolicy

@@ -15,7 +15,7 @@ exports[`renders a link view component 1`] = `
   >
     Hi
   </p>
-  <span>
+  <p>
     The link address is:
     <a
       href="/news"
@@ -23,6 +23,6 @@ exports[`renders a link view component 1`] = `
     >
       /news
     </a>
-  </span>
+  </p>
 </div>
 `;

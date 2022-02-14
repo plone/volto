@@ -5,8 +5,8 @@ const nodeExternals = require('webpack-node-externals');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const fs = require('fs');
-const RootResolverPlugin = require('./webpack-root-resolver');
-const RelativeResolverPlugin = require('./webpack-relative-resolver');
+const RootResolverPlugin = require('./webpack-plugins/webpack-root-resolver');
+const RelativeResolverPlugin = require('./webpack-plugins/webpack-relative-resolver');
 const createAddonsLoader = require('./create-addons-loader');
 const AddonConfigurationRegistry = require('./addon-registry');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
@@ -186,10 +186,10 @@ const defaultModify = ({
     testingAddons = process.env.RAZZLE_TESTING_ADDONS.split(',');
   }
 
-  const addonsLoaderPath = createAddonsLoader([
-    ...registry.getAddonDependencies(),
-    ...testingAddons,
-  ]);
+  const addonsLoaderPath = createAddonsLoader(
+    [...registry.getAddonDependencies(), ...testingAddons],
+    registry.packages,
+  );
 
   config.resolve.plugins = [
     new RelativeResolverPlugin(registry),
@@ -227,7 +227,7 @@ const defaultModify = ({
     include.push(fs.realpathSync(`${registry.voltoPath}/src`));
   }
   // Add babel support external (ie. node_modules npm published packages)
-  if (packageJson.addons) {
+  if (registry.addonNames && registry.addonNames.length > 0) {
     registry.addonNames.forEach((addon) => {
       const p = fs.realpathSync(registry.packages[addon].modulePath);
       if (include.indexOf(p) === -1) {
@@ -275,10 +275,10 @@ const defaultModify = ({
 const addonExtenders = registry.getAddonExtenders().map((m) => require(m));
 
 const defaultPlugins = [
-  { object: require('./webpack-less-plugin')({ registry }) },
-  { object: require('./webpack-sentry-plugin') },
-  { object: require('./webpack-svg-plugin') },
-  { object: require('./webpack-bundle-analyze-plugin') },
+  { object: require('./webpack-plugins/webpack-less-plugin')({ registry }) },
+  { object: require('./webpack-plugins/webpack-sentry-plugin') },
+  { object: require('./webpack-plugins/webpack-svg-plugin') },
+  { object: require('./webpack-plugins/webpack-bundle-analyze-plugin') },
   { object: require('./jest-extender-plugin') },
 ];
 

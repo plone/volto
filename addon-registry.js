@@ -99,13 +99,26 @@ class AddonConfigurationRegistry {
       projectRootPath,
       'package.json',
     )));
+    // Loads the dynamic config, if any
+    if (fs.existsSync(path.join(projectRootPath, 'volto.config.js'))) {
+      this.voltoConfigJS = require(path.join(
+        projectRootPath,
+        'volto.config.js',
+      ));
+    } else {
+      this.voltoConfigJS = [];
+    }
+    this.resultantMergedAddons = [
+      ...(packageJson.addons || []),
+      ...(this.voltoConfigJS.addons || []),
+    ];
 
     this.projectRootPath = projectRootPath;
     this.voltoPath =
       packageJson.name === '@plone/volto'
         ? `${projectRootPath}`
         : `${projectRootPath}/node_modules/@plone/volto`;
-    this.addonNames = (packageJson.addons || []).map((s) => s.split(':')[0]);
+    this.addonNames = this.resultantMergedAddons.map((s) => s.split(':')[0]);
     this.packages = {};
     this.customizations = new Map();
 
@@ -114,7 +127,7 @@ class AddonConfigurationRegistry {
     this.initTestingPackages();
 
     this.dependencyGraph = buildDependencyGraph(
-      packageJson.addons || [],
+      this.resultantMergedAddons,
       (name) => {
         this.initPublishedPackage(name);
         return this.packages[name].addons || [];
@@ -149,6 +162,7 @@ class AddonConfigurationRegistry {
         const pkg = {
           modulePath: packagePath,
           packageJson: packageJsonPath,
+          version: require(packageJsonPath).version,
           isPublishedPackage: false,
           name,
           addons: require(packageJsonPath).addons || [],
@@ -180,6 +194,7 @@ class AddonConfigurationRegistry {
       const modulePath = path.dirname(require.resolve(`${basePath}/${main}`));
       this.packages[name] = {
         name,
+        version: pkg.version,
         isPublishedPackage: true,
         modulePath,
         packageJson,
@@ -207,6 +222,7 @@ class AddonConfigurationRegistry {
         this.addonNames.push(normalizedAddonName);
       const pkg = {
         modulePath: testingPackagePath,
+        version: require(packageJson).version,
         packageJson: packageJson,
         isPublishedPackage: false,
         name: normalizedAddonName,

@@ -1,10 +1,77 @@
 # Change Log
 
-## 5.0.0 (unreleased)
+## 5.5.1 (unreleased)
 
 ### Added
 
 ### Changes
+
+## 5.5.0 (2022-02-03)
+
+### Added
+
+- Add mrs-developer.json in template
+- Fix app template Makefile @avoinea
+
+## 5.4.0 (2021-12-29)
+
+### Added
+
+- Add further CI cypress commands and complimentary Makefile for app template @sneridagh
+
+## 5.3.0 (2021-12-28)
+
+### Added
+
+- Add missing stylelint check script in project @sneridagh
+
+## 5.2.0 (2021-12-28)
+
+### Added
+
+- Add Cypress testing infrastructure to addon generator @sneridagh
+- Add `jest-addon.config.js` default in addon generator @sneridagh
+
+## 5.1.0 (2021-12-24)
+
+### Added
+
+- Add Cypress testing infrastructure to app generator @sneridagh
+
+### Changes
+
+- Missing new stylelint config in app template @sneridagh
+
+## 5.0.2 (2021-12-23)
+
+### Changes
+
+- Add missing public files from Volto 14 @sneridagh
+
+## 5.0.1 (2021-12-22)
+
+### Internal
+
+- Refresh app generator template `yarn.lock` to match latest upgrades @sneridagh
+- Fix Volto project template devDependencies @avoinea
+
+## 5.0.0 (2021-12-20)
+
+### Breaking
+
+- Added new configuration for i18n using the new package `@plone/scripts`. 5.0.0 and onwards is supposed to work on Volto 14 and above. @sneridagh
+
+### Added
+
+- Support Node 16 @sneridagh
+- Add prettier and lint scripts to generator @tisto
+
+### Internal
+
+- Add more exceptions to .gitignore @avoinea
+- Addon add prompt now accept fallacy choices @nileshgulia1
+
+## 5.0.0-alpha.2 (2021-12-20)
 
 ### Internal
 
