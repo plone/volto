@@ -112,8 +112,8 @@ let config = {
     customStyleMap: null,
     notSupportedBrowsers: ['ie'],
     defaultPageSize: 25,
-    isMultilingual: true,
-    supportedLanguages: ['en', 'it'],
+    isMultilingual: false,
+    supportedLanguages: ['en'],
     defaultLanguage: 'en',
     navDepth: 1,
     expressMiddleware: serverConfig.expressMiddleware, // BBB
