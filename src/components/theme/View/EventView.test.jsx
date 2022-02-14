@@ -14,6 +14,12 @@ const store = mockStore({
   },
 });
 
+jest.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(
+  async () =>
+    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
+);
+
 const { settings } = config;
 
 test('renders an event view component with all props', () => {

@@ -15,7 +15,29 @@ In the frontend we can access this variable with:
 window.env.RAZZLE_MY_VARIABLE
 ```
 
-## RAZZLE_LEGACY_TRAVERSE
+## Runtime environment variables
+
+All the environment variables that are configurable work at runtime, not only at build time. This works since Volto 13 onwards.
+
+!!! info
+Before Volto 13, you'd do:
+
+    ```bash
+    RAZZLE_API_PATH=https://plone.org yarn build && yarn start:prod
+    ```
+
+    From Volto 13 onwards, you can now do:
+
+    ```bash
+    yarn build && RAZZLE_API_PATH=https://plone.org yarn start:prod
+    ```
+
+This brings you a lot of power since you don't have to rebuild on every config change. You can also generate builds on your CI, then deploy them anywhere.
+
+
+## Environment variables reference
+
+### RAZZLE_LEGACY_TRAVERSE
 
 From Volto 14 onwards, Seamless mode is the recommended way of setting up your depoloyments. However, it forces you to upgrade several packages in the backend (`plone.restapi` and `plone.rest`) and adjust your web server configuration accordingly.
 
@@ -25,7 +47,7 @@ In case you can't afford or change your deployment, you can still upgrade Volto 
 RAZZLE_LEGACY_TRAVERSE=true yarn start:prod
 ```
 
-## VOLTO_ROBOTSTXT
+### VOLTO_ROBOTSTXT
 
 You can override the robots.txt file with an environment variable called
 `VOLTO_ROBOTSTXT`. This is useful when using the same build on multiple
@@ -39,7 +61,6 @@ Disallow: /" yarn start
 !!! note
     If you want to use the `VOLTO_ROBOTSTXT` environment variable, make sure to
     delete the file `public/robots.txt` from your project.
-
 
 ### DEBUG
 
