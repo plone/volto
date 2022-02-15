@@ -93,20 +93,70 @@ It will enable the log of missing i18n messages (in console).
 ### Add add-ons via environment variable
 
 You can use the `ADDONS` environment variable to enable and configure add-ons in your project.
-They sum up to the ones set fixed in `package.json` or programatically in `volto.config.js`.
-You can specify released (published) packages (installed previously in your environment, and present already in `node_modules`), or `packages` folder local to your project (not in development, but optional, for example, Volto's testing packages).
 It can be used to temporarily add an add-on to your build for testing purposes.
 It can also be used to temporarily enable a feature or a set of customizations.
 
+When running your app, the set of add-ons that will be loaded is the union of the add-ons defined in this three locations, in this order:
+
+- the file `package.json`,
+- programatically set in the file `volto.config.js`,
+- and finally, the environment variable `ADDONS`
+
+In the environment variable `ADDONS` you can specify released (published) packages (installed previously in your environment, and present already in `node_modules`), or addons located in the `packages` folder of your project (for example, Volto's testing packages).
+
+It can be used to temporarily add an add-on to your build for testing purposes.
+
 ```bash
-$ ADDONS=test-addon,test-addon2 yarn start
-
-$ yarn add volto-slate
-$ ADDONS=volto-slate:asDefault yarn start
-
-# given a package folder 'coresandbox'
-$ ADDONS=coresandbox:multilingualFixture yarn start
+yarn add volto-slate
+ADDONS=volto-slate:asDefault yarn start
 ```
+
+It can also be used to temporarily enable a feature or a set of customizations.
+
+```bash
+# given a folder './packages/coresandbox', like in vanilla Volto
+ADDONS=coresandbox:multilingualFixture yarn start
+```
+
+You can also provide several of them:
+
+```bash
+ADDONS=test-addon,test-addon2 yarn start
+```
+
+You can provide install profiles along:
+
+```bash
+ADDONS=test-addon:profile1,test-addon2:profile2 yarn start
+```
+
+In combination with `package.json` defined ones:
+
+```json
+"addons": [
+    "@kitconcept/volto-blocks-grid"
+]
+```
+
+and the `volto.config.js`:
+```js
+module.exports = {
+    addons: ['@eeacms/volto-accordion-block']
+}
+```
+
+```bash
+yarn add volto-slate
+ADDONS=volto-slate:asDefault yarn start
+```
+
+as resultant, it will add as app add-ons:
+
+- `@kitconcept/volto-blocks-grid`
+- `@eeacms/volto-accordion-block`
+- `volto-slate`
+
+in this particular order (important for shadowing and profile install order).
 
 !!! important
     It does *not* work for development packages, which are *always* enabled if defined in your
