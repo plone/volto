@@ -5,13 +5,11 @@
 ### Breaking
 
 - Lazyload draftjs library. See the upgrade guide on how that impacts you, in case you have extended the rich text editor configuration @tiberiuichim @kreafox
+  See https://docs.voltocms.com/upgrade-guide/ for more information.
 
 ### Feature
-- Added cookiesExpire prop to configure the cookie expiration @giuliaghisini
 
-### Bugfix
-
-### Internal
+- Add `cookiesExpire` value to config to control the cookie expiration @giuliaghisini
 
 ## 15.0.0-alpha.4 (2022-02-16)
 
