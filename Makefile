@@ -85,7 +85,7 @@ docs-build:
 bin/python:
 	python3 -m venv . || virtualenv --clear --python=python3 .
 	bin/python -m pip install --upgrade pip
-	bin/pip install -r requirements-myst.txt
+	bin/pip install -r requirements-docs.txt
 
 .PHONY: docs-clean
 docs-clean:  ## Clean docs build directory
