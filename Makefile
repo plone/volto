@@ -83,7 +83,7 @@ bin/python:
 	bin/pip install -r requirements-docs.txt
 
 .PHONY: docs-clean
-docs-clean:  ## Clean docs build directory (and legacy docs installs)
+docs-clean:  ## Clean current and legacy docs build directories, and Python virtual environment
 	cd $(DOCS_DIR) && rm -rf $(BUILDDIR)/
 	rm -rf bin include lib
 	rm -rf docs/build
