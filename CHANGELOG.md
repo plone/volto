@@ -5,6 +5,7 @@
 ### Breaking
 
 ### Feature
+- Added cookiesExpire prop to configure the cookie expiration @giuliaghisini
 
 ### Bugfix
 

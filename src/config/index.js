@@ -96,6 +96,7 @@ let config = {
     websockets: process.env.RAZZLE_WEBSOCKETS || false,
     // TODO: legacyTraverse to be removed when the use of the legacy traverse is deprecated.
     legacyTraverse: process.env.RAZZLE_LEGACY_TRAVERSE || false,
+    cookieExpires: 15552000, //in seconds. Default is 6 month (15552000)
     nonContentRoutes,
     extendedBlockRenderMap,
     blockStyleFn,
