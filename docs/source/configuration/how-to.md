@@ -75,6 +75,8 @@ but also the [lookup
 mechanism](https://github.com/plone/volto/blob/6fd62cb2860bc7cf3cb7c36ea86bfd8bd03247d9/src/components/manage/Form/Field.jsx#L112)
 to understand how things work.
 
+See [Widgets](/recipes/widget) for more information.
+
 ## views
 
 The `views` registry allows configuration of the components that will be used
@@ -124,3 +126,18 @@ this data structure:
 ```
 config.addonRoutes.push({ path: '/**/chat', component: Chat });
 ```
+
+## cookieExpires
+According to the EU law on the management of the GDPR privacy and cookies, technical cookies must have a maximum expiration of 6 months.
+For sites outside the European Union, the expiration could be different.
+Expiration time is configurable in `config`, expressed in seconds:
+
+```js
+export default function applyConfig(config) {
+  config.settings = {
+    ...config.settings,
+    cookieExpires: 15552000, //in seconds. Default is 6 month (15552000)
+  };
+
+  return config;
+}
