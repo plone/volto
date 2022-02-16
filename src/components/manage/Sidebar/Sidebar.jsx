@@ -18,6 +18,8 @@ import { setSidebarTab } from '@plone/volto/actions';
 import expandSVG from '@plone/volto/icons/left-key.svg';
 import collapseSVG from '@plone/volto/icons/right-key.svg';
 
+import config from '@plone/volto/registry';
+
 const messages = defineMessages({
   document: {
     id: 'Document',
@@ -98,7 +100,9 @@ class Sidebar extends Component {
   onToggleExpanded() {
     const { cookies } = this.props;
     cookies.set('sidebar_expanded', !this.state.expanded, {
-      expires: new Date((2 ** 31 - 1) * 1000),
+      expires: new Date(
+        new Date().getTime() + config.settings.cookieExpires * 1000,
+      ),
       path: '/',
     });
     this.setState({
