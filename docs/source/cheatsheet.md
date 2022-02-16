@@ -12,8 +12,9 @@ html_meta:
 - https://facelessuser.github.io/pymdown-extensions/
 
 ```{seealso}
-{doc}`/contributing/writing-docs-guide`
+{doc}`plone:contributing/writing-docs-guide`
 ```
+
 
 ## Admonition
 
