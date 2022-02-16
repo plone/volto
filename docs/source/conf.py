@@ -132,8 +132,9 @@ myst_enable_extensions = [
 # https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html
 #
 intersphinx_mapping = {
-    "training": ("https://training.plone.org/5/", None),
+    "plone": ("https://6.dev-docs.plone.org/", None),
     "python": ("https://docs.python.org/3/", None),
+    "training": ("https://training.plone.org/5/", None),
 }
 
 
