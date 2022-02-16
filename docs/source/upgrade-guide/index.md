@@ -29,6 +29,40 @@ https://www.npmjs.com/package/react-cookie
 https://www.npmjs.com/package/universal-cookie-express
 https://www.npmjs.com/package/universal-cookie
 
+### Update your Rich Text Editor configuration
+
+DraftJS libraries are now lazy-loaded, and some changes have been introduced in the way that the rich text editor is bootstrapped. In case you have extended the rich text editor configuration in your projects you have to update your `src/config.js`:
+
+The old way:
+
+```js
+  export default function applyConfig(config) {
+    config.settings = {
+      ...config.settings,
+      listBlockTypes = [
+        ...config.settings.listBlockTypes,
+        'my-list-item',
+      ]
+    }
+    return config;
+  }
+
+```
+
+The new way:
+
+```js
+  export default function applyConfig(config) {
+    const { richtextEditorSettings } = config.settings;
+    config.settings.richtextEditorSettings = (props) => {
+      const result = richtextEditorSettings(props);
+      result.listBlockTypes = [...result.listBlockTypes, 'my-list-item']
+      return result;
+    }
+    return config;
+  }
+```
+
 ### Language Switcher no longer takes care of the sync of the language
 
 This responsability has been transferred in full to the `MultilingualRedirector`, if you have
