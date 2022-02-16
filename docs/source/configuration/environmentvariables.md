@@ -94,7 +94,7 @@ It will enable the log of missing i18n messages (in console).
 
 You can use the `ADDONS` environment variable to enable and configure add-ons in your project.
 
-When running your app, the add-ons will shadow components, and will be loaded in the following order:
+When running your app, the add-ons will be loaded in the following order:
 
 - the file `package.json`
 - programmatically set in the file `volto.config.js`
@@ -131,7 +131,7 @@ You can specify profiles for installation:
 ADDONS=test-addon:profile1,test-addon2:profile2 yarn start
 ```
 
-The following code snippets demonstrate how to configure add-ons using component shadowing.
+The following code snippets demonstrate how to configure add-ons.
 First in `package.json`:
 
 ```json
