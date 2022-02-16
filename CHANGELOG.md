@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- Lazyload draftjs library. See the upgrade guide on how that impacts you, in case you have extended the rich text editor configuration @tiberiuichim @kreafox
+
 ### Feature
 - Added cookiesExpire prop to configure the cookie expiration @giuliaghisini
 

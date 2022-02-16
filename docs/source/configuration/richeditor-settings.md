@@ -46,10 +46,10 @@ Add a button to the toolbar to style a text selection as `CODE`.
 * export const settings = {
 *   ...defaultSettings,
 *   port: 4300,
-*   listBlockTypes: {
+*   listBlockTypes = [
 *     ...defaultSettings.listBlockTypes,
 *     'my-list-item',
-*   }
+*   ]
 * }
 */
 
