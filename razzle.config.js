@@ -181,13 +181,13 @@ const defaultModify = ({
   // Disabling the ESlint pre loader
   config.module.rules.splice(0, 1);
 
-  let testingAddons = [];
-  if (process.env.RAZZLE_TESTING_ADDONS) {
-    testingAddons = process.env.RAZZLE_TESTING_ADDONS.split(',');
+  let addonsFromEnvVar = [];
+  if (process.env.ADDONS) {
+    addonsFromEnvVar = process.env.ADDONS.split(',');
   }
 
   const addonsLoaderPath = createAddonsLoader(
-    [...registry.getAddonDependencies(), ...testingAddons],
+    [...registry.getAddonDependencies(), ...addonsFromEnvVar],
     registry.packages,
   );
 
@@ -197,8 +197,8 @@ const defaultModify = ({
   ];
 
   config.resolve.alias = {
-    ...registry.getTestingAddonCustomizationPaths(),
     ...registry.getAddonCustomizationPaths(),
+    ...registry.getAddonsFromEnvVarCustomizationPaths(),
     ...registry.getProjectCustomizationPaths(),
     ...config.resolve.alias,
     '../../theme.config$': `${projectRootPath}/theme/theme.config`,
@@ -237,8 +237,8 @@ const defaultModify = ({
     addonsAsExternals = registry.addonNames.map((addon) => new RegExp(addon));
   }
 
-  if (process.env.RAZZLE_TESTING_ADDONS) {
-    testingAddons.forEach((addon) => {
+  if (process.env.ADDONS) {
+    addonsFromEnvVar.forEach((addon) => {
       const normalizedAddonName = addon.split(':')[0];
       const p = fs.realpathSync(
         registry.packages[normalizedAddonName].modulePath,
