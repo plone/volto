@@ -18,6 +18,7 @@
 - Add MyST and Sphinx basic configuration for rapid build and comparison against MkDocs builds. @stevepiercy
 - Fix many MyST and Sphinx warnings. @stevepiercy
 - Add Plone docs to Intersphinx and fix broken link. @stevepiercy
+- Get version from `package.json` @sneridagh
 
 ### Bugfix
 
