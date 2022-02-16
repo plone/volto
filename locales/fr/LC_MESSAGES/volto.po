@@ -75,6 +75,11 @@ msgstr "Activé et désactivé"
 msgid "Add"
 msgstr "Ajouter"
 
+#: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Add
+msgid "Add (object list)"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
 msgid "Add Addons"
@@ -1353,6 +1358,11 @@ msgstr ""
 msgid "Language"
 msgstr "Langage"
 
+#: components/manage/Widgets/FormFieldWrapper
+# defaultMessage: Language independent field.
+msgid "Language independent field."
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Last
 msgid "Last"
@@ -1612,6 +1622,11 @@ msgstr "Actualité"
 # defaultMessage: No
 msgid "No"
 msgstr "Non"
+
+#: components/manage/Controlpanels/VersionOverview
+# defaultMessage: No addons found
+msgid "No addons found"
+msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected
@@ -1945,6 +1960,11 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/EndField
 # defaultMessage: on
 msgid "Recurrence ends on"
+msgstr ""
+
+#: components/manage/Form/UndoToolbar
+# defaultMessage: Redo
+msgid "Redo"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
@@ -2571,8 +2591,8 @@ msgid "The backend is responding, but the CORS headers are not configured proper
 msgstr "Le backend répond, mais les en-têtes CORS ne sont pas configurés correctement et le navigateur a refusé l'accès aux ressources du backend."
 
 #: components/theme/CorsError/CorsError
-# defaultMessage: The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
-msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
+# defaultMessage: The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
+msgid "The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
 msgstr ""
 
 #: components/manage/Blocks/Search/schema
@@ -2751,6 +2771,11 @@ msgstr "UID"
 # defaultMessage: Unauthorized
 msgid "Unauthorized"
 msgstr "Non autorisé"
+
+#: components/manage/Form/UndoToolbar
+# defaultMessage: Undo
+msgid "Undo"
+msgstr ""
 
 #: components/manage/BlockChooser/BlockChooser
 # defaultMessage: Unfold

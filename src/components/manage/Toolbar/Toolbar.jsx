@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
-import cookie from 'react-cookie';
+import { withCookies } from 'react-cookie';
 import { filter, find } from 'lodash';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
@@ -175,16 +175,20 @@ class Toolbar extends Component {
     types: [],
   };
 
-  state = {
-    expanded: cookie.load('toolbar_expanded') !== 'false',
-    showMenu: false,
-    menuStyle: {},
-    menuComponents: [],
-    loadedComponents: [],
-    hideToolbarBody: false,
-  };
-
   toolbarWindow = React.createRef();
+
+  constructor(props) {
+    super(props);
+    const { cookies } = props;
+    this.state = {
+      expanded: cookies.get('toolbar_expanded') !== 'false',
+      showMenu: false,
+      menuStyle: {},
+      menuComponents: [],
+      loadedComponents: [],
+      hideToolbarBody: false,
+    };
+  }
 
   /**
    * Component will mount
@@ -228,7 +232,8 @@ class Toolbar extends Component {
   }
 
   handleShrink = () => {
-    cookie.save('toolbar_expanded', !this.state.expanded, {
+    const { cookies } = this.props;
+    cookies.set('toolbar_expanded', !this.state.expanded, {
       expires: new Date((2 ** 31 - 1) * 1000),
       path: '/',
     });
@@ -571,6 +576,7 @@ class Toolbar extends Component {
 
 export default compose(
   injectIntl,
+  withCookies,
   connect(
     (state, props) => ({
       actions: state.actions.actions,

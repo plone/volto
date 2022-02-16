@@ -1,7 +1,6 @@
 import { flatten, isEqual, isObject, transform } from 'lodash';
 import React from 'react';
 import { matchPath } from 'react-router';
-import moment from 'moment';
 import config from '@plone/volto/registry';
 
 /**
@@ -152,7 +151,7 @@ export const getColor = (name) => {
  * @param {string} format Date format of choice
  * @returns {Object|string} Moment object or string if format is set
  */
-export const parseDateTime = (locale, value, format) => {
+export const parseDateTime = (locale, value, format, moment) => {
   //  Used to set a server timezone or UTC as default
   moment.defineLocale(locale, moment.localeData(locale)._config); // copy locale to moment-timezone
   let datetime = null;

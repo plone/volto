@@ -260,6 +260,7 @@ class Edit extends Component {
         isEditForm
         ref={this.form}
         schema={this.props.schema}
+        type={this.props.content?.['@type']}
         formData={this.props.content}
         requestError={this.state.error}
         onSubmit={this.onSubmit}

@@ -1,32 +1,16 @@
 import React from 'react';
+import { DatetimeWidgetComponent } from './DatetimeWidget';
 import DatetimeWidget from './DatetimeWidget';
-import Wrapper from '@plone/volto/storybook';
+import WidgetStory from './story';
 
-const DatetimeWidgetComponent = ({ children, ...args }) => {
-  const [value, setValue] = React.useState(false);
-  const onChange = (block, value) => setValue(value);
-  return (
-    <Wrapper location={{ pathname: '/folder2/folder21/doc212' }}>
-      <div className="ui segment form attached" style={{ width: '400px' }}>
-        <DatetimeWidget
-          {...args}
-          id="field"
-          title="Datetime"
-          block="testBlock"
-          value={value}
-          onChange={onChange}
-        />
-      </div>
-      <pre>Value: {JSON.stringify(value, null, 4)}</pre>
-    </Wrapper>
-  );
-};
-
-export const Datetime = DatetimeWidgetComponent.bind({});
+export const Datetime = WidgetStory.bind({
+  props: { id: 'datetime', title: 'Datetime', block: 'block' },
+  widget: DatetimeWidget,
+});
 
 export default {
   title: 'Widgets/Datetime',
-  component: DatetimeWidget,
+  component: DatetimeWidgetComponent,
   decorators: [
     (Story) => (
       <div className="ui segment form attached" style={{ width: '400px' }}>

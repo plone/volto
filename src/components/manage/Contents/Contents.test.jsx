@@ -25,13 +25,6 @@ jest.mock('./ContentsUploadModal', () =>
   jest.fn(() => <div className="UploadModal" />),
 );
 
-jest.mock('moment', () =>
-  jest.fn(() => ({
-    format: jest.fn(() => 'Sunday, April 23, 2017 3:38 AM'),
-    fromNow: jest.fn(() => 'a few seconds ago'),
-  })),
-);
-
 const actions = {
   document_actions: [],
   object: [

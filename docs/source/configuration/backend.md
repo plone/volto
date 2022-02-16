@@ -1,22 +1,20 @@
 # Backend configuration
 
 ## plone.volto
-In order to fully support all Volto features, the Plone backend, needs to be prepared for
-Volto. This involves configuration, add-ons installation and some patches to the core.
-The add'on `plone.volto` does all the heavy lifting for you and it's ready to use
-in your own projects. We used it in our Getting Started section.
+<<<<<<< HEAD
+In order to fully support all Volto features, the Plone backend content API needs to be prepared for Volto. The add'on `plone.volto` does all the heavy lifting for you and is ready to use in your own projects. We used it in our Getting Started section.
 
-However, this package is oppinionated and might not fit your needs, so if you want to
-use your own integration package instead, just take a look at the features it provides,
+This package is slightly opinionated but provides the correct default settings for when
+you want to start with Volto. If you have advanced needs or want to move the setting to
+your own integration package instead, just take a look at the features it provides,
 copy the ones you need for your project and create your own integration package.
 
 https://github.com/plone/plone.volto
 
 !!! tip
     From Volto 5.1 and above, Volto features an internal proxy to your API server. So
-    you don't have to deal with CORS. It's enabled by default, pointing to the server
-    specified in the `devProxyToApiPath` Volto settings (http://localhost:8080/Plone).
-    See [here](../configuration/internalproxy.md) for more details.
+    you don't have to deal with CORS issues. It's enabled by default, pointing to the server specified in the `devProxyToApiPath` Volto settings
+    (http://localhost:8080/Plone). See [here](../configuration/internalproxy.md) for more information.
 
 ## Install a Plone backend locally without Docker
 
