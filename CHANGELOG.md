@@ -12,6 +12,48 @@
 
 ### Internal
 
+## 15.0.0-alpha.4 (2022-02-16)
+
+### Breaking
+
+- Markup change in `LinkView` component.
+- Rename `core-sandbox` to `coresandbox` for sake of consistency @sneridagh
+- Extend the original intent and rename `RAZZLE_TESTING_ADDONS` to `ADDONS`. @sneridagh
+  See https://docs.voltocms.com/upgrade-guide/ for more information.
+
+### Internal
+
+- House cleanup, remove some unused files in the root @sneridagh
+- Move Webpack related files to `webpack-plugins` folder @sneridagh
+- Remove unused Dockerfiles @sneridagh
+- Update Docker compose to latest images and best practices @sneridagh
+
+## 15.0.0-alpha.3 (2022-02-11)
+
+### Bugfix
+
+- Fix the upload image in contents view @iFlameing
+- add "view" id to contact-form container for main content skiplink @ThomasKindermann
+- Fix loading indicator positioning on Login form submit @sneridagh
+
+### Internal
+
+- Add new RawMaterial Volto websites in production @nzambello
+
+## 15.0.0-alpha.2 (2022-02-10)
+
+### Breaking
+
+- Language Switcher no longer takes care of the change of the language on the Redux Store. This responsability has been unified in the `MultilingualRedirector` @sneridagh
+
+### Bugfix
+
+- Prevent the MultilingualRedirector to force 4 content load when switching the language @reebalazs
+
+### Documentation
+
+- Upgrade Guide i18n: Make clear what's project, what add-on. @ksuess
+
 ## 15.0.0-alpha.1 (2022-02-09)
 
 ### Bugfix
@@ -433,6 +475,8 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 - Update to plone.restapi 8.16.2 (revert missing_value PR) @sneridagh
 - Update all requirements and the reasoning behind them in builds @sneridagh
 - Update Plone version in api backend to 5.2.6. Update README and cleanup @fredvd
+- Various local development build improvements @rpatterson
+- Document CI changelog verifier failure details that mislead contributors
 - Document CI changelog verifier failure details that mislead contributors @rpatterson
 - Updated italian translation @pnicolli
 

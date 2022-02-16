@@ -68,7 +68,7 @@ class LinkView extends Component {
           </p>
         )}
         {remoteUrl && (
-          <span>
+          <p>
             <FormattedMessage
               id="The link address is:"
               defaultMessage="The link address is:"
@@ -108,7 +108,7 @@ class LinkView extends Component {
                 )}
               </>
             )}
-          </span>
+          </p>
         )}
       </Container>
     );
