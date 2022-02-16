@@ -73,10 +73,6 @@ dist:
 test:
 	$(MAKE) -C "./api/" test
 
-.PHONY: docs-serve
-docs-serve:
-	(cd docs && ../bin/mkdocs serve)
-
 .PHONY: docs-build
 docs-build:
 # The build in netlify breaks because they have not installed ensurepip
@@ -96,7 +92,7 @@ docs-clean:  ## Clean docs build directory
 	cd $(DOCS_DIR) && rm -rf $(BUILDDIR)/
 
 .PHONY: docs-html
-html: bin/python  ## Build html
+docs-html: bin/python  ## Build html
 	cd $(DOCS_DIR) && $(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
