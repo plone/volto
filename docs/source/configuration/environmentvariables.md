@@ -90,7 +90,7 @@ It displays the errors of the non-compliant customizations (in server console) i
 
 It will enable the log of missing i18n messages (in console).
 
-## Add add-ons via the `ADDONS` environment variable
+## Use add-ons via the `ADDONS` environment variable
 
 You can use the `ADDONS` environment variable to enable and configure add-ons in your project.
 
