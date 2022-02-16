@@ -73,13 +73,8 @@ dist:
 test:
 	$(MAKE) -C "./api/" test
 
-.PHONY: docs-build
-docs-build:
-# The build in netlify breaks because they have not installed ensurepip
-# So we should continue using virtualenv
-	virtualenv --python=python3 .
-	./bin/pip install -r requirements-docs.txt
-	(cd docs && ../bin/mkdocs build)
+.PHONY: storybook-build
+storybook-build:
 	yarn build-storybook -o docs/build/storybook
 
 bin/python:
@@ -88,8 +83,10 @@ bin/python:
 	bin/pip install -r requirements-docs.txt
 
 .PHONY: docs-clean
-docs-clean:  ## Clean docs build directory
+docs-clean:  ## Clean docs build directory (and legacy docs installs)
 	cd $(DOCS_DIR) && rm -rf $(BUILDDIR)/
+	rm -rf bin include lib
+	rm -rf docs/build
 
 .PHONY: docs-html
 docs-html: bin/python  ## Build html
