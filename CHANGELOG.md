@@ -467,6 +467,8 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 - Update to plone.restapi 8.16.2 (revert missing_value PR) @sneridagh
 - Update all requirements and the reasoning behind them in builds @sneridagh
 - Update Plone version in api backend to 5.2.6. Update README and cleanup @fredvd
+- Various local development build improvements @rpatterson
+- Document CI changelog verifier failure details that mislead contributors
 - Document CI changelog verifier failure details that mislead contributors @rpatterson
 - Updated italian translation @pnicolli
 
