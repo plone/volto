@@ -3274,6 +3274,11 @@ msgstr "Mínimo"
 msgid "mostUsed"
 msgstr "Más usado"
 
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+# defaultMessage: No
+msgid "no"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 # defaultMessage: No workflow state
 msgid "no workflow state"
@@ -3544,6 +3549,11 @@ msgstr "Vídeo"
 # defaultMessage: Visit external website
 msgid "visit_external_website"
 msgstr "Visitar web externa"
+
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+# defaultMessage: Yes
+msgid "yes"
+msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: {count, plural, one {Upload {count} file} other {Upload {count} files}}

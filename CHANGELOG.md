@@ -319,6 +319,7 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 - German translations updated @tisto
 - Updated italian translation @pnicolli
 - Updated Brazilian Portuguese translations @ericof
+- Add a new type of filter facet for the Search block. Heavily refactor some searchblock internals. @tiberiuichim
 
 ### Bugfix
 

@@ -1,6 +1,7 @@
 import config from '@plone/volto/registry';
 import { defineMessages } from 'react-intl';
 import { cloneDeep } from 'lodash';
+import { hasNonValueOperation } from './utils';
 
 const messages = defineMessages({
   searchBlock: {
@@ -99,9 +100,9 @@ const messages = defineMessages({
 
 const enhanceSchema = (originalSchema, formData) => {
   const extensionName = 'facetWidgets';
-  const extensionType = 'type';
+  const extensionType = 'type'; // property name in stored block data
   const variations =
-    config.blocks.blocksConfig.search.extensions[extensionName][extensionType];
+    config.blocks.blocksConfig.search.extensions[extensionName].types;
 
   const activeItemName = formData?.[extensionType];
   let activeItem = variations?.find((item) => item.id === activeItemName);
@@ -122,7 +123,7 @@ const FacetSchema = ({ intl }) => ({
     {
       id: 'default',
       title: 'Default',
-      fields: ['title', 'field', 'type', 'multiple', 'hidden'],
+      fields: ['title', 'field', 'type', 'hidden'],
     },
   ],
   properties: {
@@ -141,7 +142,8 @@ const FacetSchema = ({ intl }) => ({
         return Object.assign(
           {},
           ...Object.keys(options).map((k) =>
-            Object.keys(options[k].values || {}).length
+            Object.keys(options[k].values || {}).length ||
+            hasNonValueOperation(options[k].operations)
               ? { [k]: options[k] }
               : {},
           ),

@@ -56,6 +56,9 @@ import TopSideFacets from '@plone/volto/components/manage/Blocks/Search/layout/T
 import {
   SelectFacet,
   CheckboxFacet,
+  ToggleFacet,
+  ToggleFacetFilterListEntry,
+  SelectFacetFilterListEntry,
 } from '@plone/volto/components/manage/Blocks/Search/components';
 import getListingBlockAsyncData from '@plone/volto/components/manage/Blocks/Listing/getAsyncData';
 
@@ -438,12 +441,29 @@ const blocksConfig = {
             title: 'Select',
             view: SelectFacet,
             isDefault: true,
+            schemaEnhancer: SelectFacet.schemaEnhancer,
+            stateToValue: SelectFacet.stateToValue,
+            valueToQuery: SelectFacet.valueToQuery,
+            filterListComponent: SelectFacetFilterListEntry,
           },
           {
             id: 'checkboxFacet',
             title: 'Checkbox',
             view: CheckboxFacet,
             isDefault: false,
+            schemaEnhancer: CheckboxFacet.schemaEnhancer,
+            stateToValue: CheckboxFacet.stateToValue,
+            valueToQuery: CheckboxFacet.valueToQuery,
+            filterListComponent: SelectFacetFilterListEntry,
+          },
+          {
+            id: 'toggleFacet',
+            title: 'Toggle',
+            view: ToggleFacet,
+            isDefault: false,
+            stateToValue: ToggleFacet.stateToValue,
+            valueToQuery: ToggleFacet.valueToQuery,
+            filterListComponent: ToggleFacetFilterListEntry,
           },
         ],
       },

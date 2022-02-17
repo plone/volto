@@ -3273,6 +3273,11 @@ msgstr "Inici de la gamma"
 msgid "mostUsed"
 msgstr "El més utilitzat"
 
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+# defaultMessage: No
+msgid "no"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 # defaultMessage: No workflow state
 msgid "no workflow state"
@@ -3543,6 +3548,11 @@ msgstr "Vídeo"
 # defaultMessage: Visit external website
 msgid "visit_external_website"
 msgstr "Visiteu el lloc web extern"
+
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+# defaultMessage: Yes
+msgid "yes"
+msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: {count, plural, one {Upload {count} file} other {Upload {count} files}}
