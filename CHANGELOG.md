@@ -20,6 +20,7 @@
 ### Feature
 
 - Add `cookiesExpire` value to config to control the cookie expiration @giuliaghisini
+- Add a new type of filter facet for the Search block. Heavily refactor some searchblock internals. @tiberiuichim
 
 ## 15.0.0-alpha.4 (2022-02-16)
 
@@ -156,7 +157,7 @@ new users/evaluators. @fredvd
 
 ### Feature
 
-- VocabularyTermsWidget: Token is now on creation of term editable, but stays ineditable afterwards.  @ksuess
+- VocabularyTermsWidget: Token is now on creation of term editable, but stays ineditable afterwards. @ksuess
 
 ### Bugfix
 
@@ -312,14 +313,13 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
   @tiberiuichim
 - Added `.storybook` setup in the Volto `app` generator. Volto projects generated from this scafolding are now ready to run Storybook for the project and develop addons (in `src/addons` folder).
 - Style checkboxes @nileshgulia1
-- Allow loading .less files also from a Volto project's `src` folder.  @tiberiuichim
+- Allow loading .less files also from a Volto project's `src` folder. @tiberiuichim
 - Add catalan translation @bloodbare @sneridagh
 - Updated Volto production sites list @giuliaghisini
 - Japanese translation updated @terapyon
 - German translations updated @tisto
 - Updated italian translation @pnicolli
 - Updated Brazilian Portuguese translations @ericof
-- Add a new type of filter facet for the Search block. Heavily refactor some searchblock internals. @tiberiuichim
 
 ### Bugfix
 
