@@ -16,7 +16,11 @@
 - Fix broken links and redirects in documentation to be compatible with MyST. @stevepiercy
 - Update add-on internationalization. @ksuess
 - Add MyST and Sphinx basic configuration for rapid build and comparison against MkDocs builds. @stevepiercy
-- Fix many MyST and Sphinx warnings. @stevepiercy 
+- Fix many MyST and Sphinx warnings. @stevepiercy
+- Add Plone docs to Intersphinx and fix broken link. @stevepiercy
+- Get version from `package.json` @sneridagh
+- Remove legacy folder in docs @sneridagh
+- Backport docs of RAZZLE_TESTING_ADDONS environment variables. See https://github.com/plone/volto/pull/3067/files#diff-00609ed769cd40cf3bc3d6fcc4431b714cb37c73cedaaea18fe9fc4c1c589597 @stevepiercy
 
 ### Bugfix
 

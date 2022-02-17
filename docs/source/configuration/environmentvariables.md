@@ -1,9 +1,9 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "Environment variables allow configuration of your Volto application at runtime."
+  "property=og:description": "Environment variables allow configuration of your Volto application at runtime."
+  "property=og:title": "Environment variables"
+  "keywords": "Volto, React, Plone, Environment variables, Razzle,"
 ---
 
 # Environment variables
@@ -97,3 +97,77 @@ It displays the errors of the non-compliant customizations (in server console) i
 #### Internationalization errors (i18n)
 
 It will enable the log of missing i18n messages (in console).
+
+## Use add-ons via the `ADDONS` environment variable
+
+You can use the `ADDONS` environment variable to enable and configure add-ons in your project.
+
+When running your app, the add-ons will be loaded in the following order:
+
+- the file `package.json`
+- programmatically set in the file `volto.config.js`
+- the environment variable `ADDONS`
+
+In the environment variable `ADDONS`, you can specify:
+
+- released (or published) packages that were installed previously in your environment and are already present in the `node_modules` directory,
+- or addons located in the `packages` folder of your project, such as Volto's testing packages.
+
+`ADDONS` can be used to temporarily add an add-on to your build for testing purposes.
+
+```bash
+yarn add volto-slate
+ADDONS=volto-slate:asDefault yarn start
+```
+
+`ADDONS` can also be used to temporarily enable a feature or a set of customizations.
+
+```bash
+# given a folder './packages/coresandbox', like in vanilla Volto
+ADDONS=coresandbox:multilingualFixture yarn start
+```
+
+You can specify multiple add-ons, seperated by commas:
+
+```bash
+ADDONS=test-addon,test-addon2 yarn start
+```
+
+You can specify profiles for installation:
+
+```bash
+ADDONS=test-addon:profile1,test-addon2:profile2 yarn start
+```
+
+The following code snippets demonstrate how to configure add-ons.
+First in `package.json`:
+
+```json
+"addons": [
+    "@kitconcept/volto-blocks-grid"
+]
+```
+
+...next in `volto.config.js`:
+
+```js
+module.exports = {
+    addons: ['@eeacms/volto-accordion-block']
+}
+```
+
+...and finally using `ADDONS`:
+
+```bash
+yarn add volto-slate
+ADDONS=volto-slate:asDefault yarn start
+```
+
+As a result, your app will load the add-ons in the following order:
+
+- `@kitconcept/volto-blocks-grid`
+- `@eeacms/volto-accordion-block`
+- `volto-slate`
+
+!!! important
+    `ADDONS` does *not* work for development packages, which are *always* enabled if defined in your `jsconfig.json` or via `mrs.developer.json`.
