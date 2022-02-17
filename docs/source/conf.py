@@ -14,6 +14,8 @@ from datetime import datetime
 # import sys
 # sys.path.insert(0, os.path.abspath("."))
 
+import os
+import json
 
 # -- Project information -----------------------------------------------------
 
@@ -28,10 +30,20 @@ year = str(now.year)
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
-# The short X.Y version.
-version = "14.8.1"
-# The full version, including alpha/beta/rc tags.
-release = "14.8.1"
+
+with open(os.path.join(os.path.abspath('.'), '../../package.json'), 'r') as package_json:
+    data=package_json.read()
+
+version_from_package_json = json.loads(data)['version']
+
+if version_from_package_json:
+    # The short X.Y version.
+    version = version_from_package_json
+    # The full version, including alpha/beta/rc tags.
+    release = version_from_package_json
+else:
+    version = "14.8.1"
+    release = "14.8.1"
 
 # -- General configuration ----------------------------------------------------
 
@@ -132,8 +144,9 @@ myst_enable_extensions = [
 # https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html
 #
 intersphinx_mapping = {
-    "training": ("https://training.plone.org/5/", None),
+    "plone": ("https://6.dev-docs.plone.org/", None),
     "python": ("https://docs.python.org/3/", None),
+    "training": ("https://training.plone.org/5/", None),
 }
 
 
