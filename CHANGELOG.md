@@ -19,6 +19,7 @@
 - Fix many MyST and Sphinx warnings. @stevepiercy
 - Add Plone docs to Intersphinx and fix broken link. @stevepiercy
 - Get version from `package.json` @sneridagh
+- Remove legacy folder in docs @sneridagh
 
 ### Bugfix
 
