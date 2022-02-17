@@ -34,6 +34,7 @@ const initialState = {
   },
   items: [],
   items_total: null,
+  permissions: {},
   next: null,
 };
 
@@ -75,6 +76,7 @@ export default function comments(state = initialState, action = {}) {
         items: action.result.items,
         next: action.result.batching?.next,
         items_total: action.result.items_total,
+        permissions: action.result.permissions,
         [getRequestKey(action.type)]: {
           loading: false,
           loaded: true,
@@ -108,6 +110,7 @@ export default function comments(state = initialState, action = {}) {
         ...state,
         items: [],
         items_total: null,
+        permissions: {},
         next: null,
         [getRequestKey(action.type)]: {
           loading: false,
