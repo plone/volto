@@ -19,6 +19,7 @@
 - Fix many MyST and Sphinx warnings. @stevepiercy
 - Add Plone docs to Intersphinx and fix broken link. @stevepiercy
 - Get version from `package.json` @sneridagh
+- Fix JSX syntax in `developer-guidelines/accessibility-guidelines.md`. See https://github.com/plone/volto/issues/3038#issuecomment-1041465786 @stevepiercy
 
 ### Bugfix
 
