@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Use `View comments` and `Reply to item` permissions in `Comments` component. @razvanMiu
+
 ### Bugfix
 
 ### Internal
