@@ -25,6 +25,7 @@ const messages = defineMessages({
 
 const PrevIcon = () => (
   <div
+    className="prev-icon"
     style={{
       color: '#000',
       left: '22px',
@@ -40,6 +41,7 @@ const PrevIcon = () => (
 );
 const NextIcon = () => (
   <div
+    className="next-icon"
     style={{
       color: '#000',
       right: '22px',
