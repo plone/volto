@@ -19,6 +19,8 @@
 - Fix many MyST and Sphinx warnings. @stevepiercy
 - Remove MkDocs configuration. See https://github.com/plone/volto/issues/3042 @stevepiercy
 - Add Plone docs to Intersphinx and fix broken link. @stevepiercy
+- Get version from `package.json` @sneridagh
+- Remove legacy folder in docs @sneridagh
 - Add Netlify for preview of Sphinx builds for pull requests against `master` and `plone6-docs`. @stevepiercy
 
 ### Bugfix
