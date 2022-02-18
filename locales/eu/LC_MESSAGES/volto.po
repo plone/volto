@@ -865,6 +865,7 @@ msgstr ""
 msgid "Enable editable Blocks"
 msgstr "Aktibatu editatu daitezkeen blokeak"
 
+#: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 # defaultMessage: End Date
 msgid "End Date"
@@ -2445,6 +2446,7 @@ msgstr "YouTubeko bideo edo erreprodukzio-zerrenda baten URLa adierazi"
 msgid "Split"
 msgstr "Banatu"
 
+#: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 # defaultMessage: Start Date
 msgid "Start Date"
@@ -3271,6 +3273,7 @@ msgstr "Balio minimoa"
 msgid "mostUsed"
 msgstr "Gehien erabilia"
 
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
 # defaultMessage: No
 msgid "no"
@@ -3547,6 +3550,7 @@ msgstr "Bideoa"
 msgid "visit_external_website"
 msgstr "Webgunea ikusi"
 
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
 # defaultMessage: Yes
 msgid "yes"
