@@ -1,7 +1,7 @@
 import config from '@plone/volto/registry';
 import { defineMessages } from 'react-intl';
 import { cloneDeep } from 'lodash';
-import { hasNonValueOperation } from './utils';
+import { hasNonValueOperation, hasDateOperation } from './utils';
 
 const messages = defineMessages({
   searchBlock: {
@@ -143,7 +143,8 @@ const FacetSchema = ({ intl }) => ({
           {},
           ...Object.keys(options).map((k) =>
             Object.keys(options[k].values || {}).length ||
-            hasNonValueOperation(options[k].operations)
+            hasNonValueOperation(options[k].operations) ||
+            hasDateOperation(options[k].operations)
               ? { [k]: options[k] }
               : {},
           ),

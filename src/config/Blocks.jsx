@@ -56,9 +56,11 @@ import TopSideFacets from '@plone/volto/components/manage/Blocks/Search/layout/T
 import {
   SelectFacet,
   CheckboxFacet,
+  DateRangeFacet,
   ToggleFacet,
   ToggleFacetFilterListEntry,
   SelectFacetFilterListEntry,
+  DateRangeFacetFilterListEntry,
 } from '@plone/volto/components/manage/Blocks/Search/components';
 import getListingBlockAsyncData from '@plone/volto/components/manage/Blocks/Listing/getAsyncData';
 
@@ -455,6 +457,15 @@ const blocksConfig = {
             stateToValue: CheckboxFacet.stateToValue,
             valueToQuery: CheckboxFacet.valueToQuery,
             filterListComponent: SelectFacetFilterListEntry,
+          },
+          {
+            id: 'daterangeFacet',
+            title: 'Date range',
+            view: DateRangeFacet,
+            isDefault: false,
+            stateToValue: DateRangeFacet.stateToValue,
+            valueToQuery: DateRangeFacet.valueToQuery,
+            filterListComponent: DateRangeFacetFilterListEntry,
           },
           {
             id: 'toggleFacet',

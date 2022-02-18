@@ -21,6 +21,7 @@
 
 - Add `cookiesExpire` value to config to control the cookie expiration @giuliaghisini
 - Add a new type of filter facet for the Search block. Heavily refactor some searchblock internals. @tiberiuichim
+- Add date range facet to the search block @robgietema
 
 ## 15.0.0-alpha.4 (2022-02-16)
 

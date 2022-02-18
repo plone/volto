@@ -877,6 +877,7 @@ msgstr ""
 msgid "Enable editable Blocks"
 msgstr ""
 
+#: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 # defaultMessage: End Date
 msgid "End Date"
@@ -2457,6 +2458,7 @@ msgstr ""
 msgid "Split"
 msgstr ""
 
+#: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 # defaultMessage: Start Date
 msgid "Start Date"
@@ -3283,6 +3285,7 @@ msgstr ""
 msgid "mostUsed"
 msgstr ""
 
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
 # defaultMessage: No
 msgid "no"
@@ -3559,6 +3562,7 @@ msgstr ""
 msgid "visit_external_website"
 msgstr ""
 
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
 # defaultMessage: Yes
 msgid "yes"

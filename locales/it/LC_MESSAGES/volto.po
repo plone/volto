@@ -858,6 +858,7 @@ msgstr "Lista di oggetti vuota"
 msgid "Enable editable Blocks"
 msgstr "Abilita i blocchi editabili"
 
+#: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 # defaultMessage: End Date
 msgid "End Date"
@@ -2438,6 +2439,7 @@ msgstr "Specifica l'URL di un video o una playlist di YouTube"
 msgid "Split"
 msgstr "Dividi"
 
+#: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 # defaultMessage: Start Date
 msgid "Start Date"
@@ -3264,6 +3266,7 @@ msgstr "Inizio del range"
 msgid "mostUsed"
 msgstr "Più usati"
 
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
 # defaultMessage: No
 msgid "no"
@@ -3540,6 +3543,7 @@ msgstr "Video"
 msgid "visit_external_website"
 msgstr "Visita il sito web"
 
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
 # defaultMessage: Yes
 msgid "yes"

@@ -866,6 +866,7 @@ msgstr ""
 msgid "Enable editable Blocks"
 msgstr "Block編集を有効化"
 
+#: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 # defaultMessage: End Date
 msgid "End Date"
@@ -2446,6 +2447,7 @@ msgstr "YouTubeビデオまたはプレイリストURLを指定してくださ�
 msgid "Split"
 msgstr "分割"
 
+#: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 # defaultMessage: Start Date
 msgid "Start Date"
@@ -3272,6 +3274,7 @@ msgstr "入力範囲の最小値"
 msgid "mostUsed"
 msgstr "よく使う物"
 
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
 # defaultMessage: No
 msgid "no"
@@ -3548,6 +3551,7 @@ msgstr "ビデオ"
 msgid "visit_external_website"
 msgstr "外部サイトを表示"
 
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
 # defaultMessage: Yes
 msgid "yes"

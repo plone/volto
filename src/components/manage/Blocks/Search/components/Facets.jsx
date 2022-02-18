@@ -1,12 +1,13 @@
 import React from 'react';
 import { resolveExtension } from '@plone/volto/helpers/Extensions/withBlockExtensions';
 import config from '@plone/volto/registry';
-import { hasNonValueOperation } from '../utils';
+import { hasNonValueOperation, hasDateOperation } from '../utils';
 
 const showFacet = (index) => {
   const { values } = index;
   return index
-    ? hasNonValueOperation(index.operations || [])
+    ? hasNonValueOperation(index.operations || []) ||
+      hasDateOperation(index.operations || [])
       ? true
       : values && Object.keys(values).length > 0
     : values && Object.keys(values).length > 0;
