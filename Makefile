@@ -121,6 +121,11 @@ docs-spellcheck: bin/python  ## Run spellcheck
 	@echo "Spellcheck is finished; look for any errors in the above output " \
 		" or in $(BUILDDIR)/spellcheck/ ."
 
+.PHONY: netlify
+netlify:
+	pip install -r requirements-docs.txt
+	cd $(DOCS_DIR) && sphinx-build -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
+
 .PHONY: docs-test
 docs-test: docs-clean docs-linkcheck docs-spellcheck  ## Clean docs build, then run linkcheck, spellcheck
 
