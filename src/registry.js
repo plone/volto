@@ -89,7 +89,7 @@ class Config {
   }
 
   resolve(component) {
-    return this._data.components[component] || {};
+    return this._data.components?.[component];
   }
 
   register(name, component) {

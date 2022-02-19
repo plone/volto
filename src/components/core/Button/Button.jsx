@@ -1,7 +1,17 @@
 import { Button } from 'semantic-ui-react';
+import { Component } from '@plone/volto/components';
+import config from '@plone/volto/registry';
 
-import config from '@plone/volto';
+const coreButton = (props, { children }) => {
+  const isComponentInRegistry = config.resolve('Button');
 
-const coreButton = config.resolve('Button') || Button;
+  return isComponentInRegistry ? (
+    <Component {...props} name="Button">
+      {children}
+    </Component>
+  ) : (
+    <Button {...props}>{children}</Button>
+  );
+};
 
 export default coreButton;

@@ -28,6 +28,8 @@ import { richtextEditorSettings, richtextViewSettings } from './RichTextEditor';
 
 import applyAddonConfiguration from 'load-volto-addons';
 
+import { ButtonAlternative } from '@plone/volto/components/core/Button/ButtonAlternative';
+
 import ConfigRegistry from '@plone/volto/registry';
 
 const host = process.env.HOST || 'localhost';
@@ -177,6 +179,9 @@ let config = {
   },
   addonRoutes: [],
   addonReducers: {},
+  components: {
+    Button: { component: ButtonAlternative },
+  },
 };
 
 config = applyAddonConfiguration(config);
