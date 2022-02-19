@@ -145,11 +145,12 @@ const applyConfig = (config) => {
 Based on this setup, Volto will render this field with the `TokenWidget`.
 
 
-!!! tip
-    See [storybook](https://docs.voltocms.com/storybook) with available widgets.
-
+```{seealso}
+See [storybook](https://docs.voltocms.com/storybook) with available widgets.
+```
 
 ## Write a new widget
 
-!!! note
-    Please contribute to this section!
+```{note}
+Please contribute to this section!
+```

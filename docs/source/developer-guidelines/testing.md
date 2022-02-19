@@ -25,8 +25,9 @@ environment variable.
 
     RAZZLE_JEST_CONFIG=my-custom-jest-config.js yarn test
 
-!!! Note
-    Both configurations are merged in a way that the keys of the config provided override  the initial (`package.json`) default config, either in Volto or in your projects.
+```{note}
+Both configurations are merged in a way that the keys of the config provided override  the initial (`package.json`) default config, either in Volto or in your projects.
+```
 
 This is specially useful in CI while developing add-ons, so you can pass an specific configuration that deals with the addon config properly.
 

@@ -40,8 +40,9 @@ The simplest deployment is to start this node process in your server by any mean
 
 You need to make available to your users both Volto and the API in public URLs. It's heavily recommended you serve both from the same DNS name, eg. Volto-> `https://mywebsite.com` and API-> `https://mywebsite.com/api` in order to avoid any CORS problem.
 
-!!! warning
-    Avoid dealing with CORS in production at all costs. Period.
+```{warning}
+Avoid dealing with CORS in production at all costs. Period.
+```
 
 For SSL support is recommended to use a reverse proxy of your choice that points to Volto port and an API rewrite eg. `/api` in your server. This is the Nginx configuration:
 

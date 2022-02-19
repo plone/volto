@@ -37,9 +37,9 @@ and in `src/client.jsx`:
 import '@babel/polyfill';
 ```
 
-!!! note
-    See https://babeljs.io/docs/en/babel-polyfill for more updated information
-
+```{seealso}
+See https://babeljs.io/docs/en/babel-polyfill for more updated information
+```
 
 ## babel-env
 

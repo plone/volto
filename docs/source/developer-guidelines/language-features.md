@@ -60,8 +60,9 @@ works in: https://github.com/browserslist/browserslist#queries
 
 ### Support to deprecated browsers
 
-!!! warning
-    Volto does not support deprecated browsers from its vendor (eg. IE11).
+```{warning}
+Volto does not support deprecated browsers from its vendor (eg. IE11).
+```
 
 If you still need to support deprecated browsers, you should use `browserslist` in your
 project to enable the required transforms for the target deprecated environments you

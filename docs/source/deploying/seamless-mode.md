@@ -20,8 +20,9 @@ The first implementation wanted to unify both backend and frontend under the sam
 
 For all these reasons, we have reconsidered and adjusted the feature a bit to overcome all the issues found in the past.
 
-!!! note
+```{note}
 Seamless mode will no longer try to unify both frontend and backend servers, differentiating them using the `Accept` header. However, we are sticking to the name since it also depicts the intention of the feature: to ease the setup of Volto deployments.
+```
 
 ## Challenges and goals
 
@@ -42,18 +43,19 @@ Seamless mode is a set of features in itself. Here is a brief introduction of th
 
 All the environment variables that are configurable now work at runtime, not at build time. This works since Volto 13.
 
-!!! info
+````{note}
 Before Volto 13, you'd do:
 
-    ```bash
-    RAZZLE_API_PATH=https://plone.org yarn build && yarn start:prod
-    ```
+```bash
+RAZZLE_API_PATH=https://plone.org yarn build && yarn start:prod
+```
 
-    From Volto 13 onwards, you can now do:
+From Volto 13 onwards, you can now do:
 
-    ```bash
-    yarn build && RAZZLE_API_PATH=https://plone.org yarn start:prod
-    ```
+```bash
+yarn build && RAZZLE_API_PATH=https://plone.org yarn start:prod
+```
+````
 
 This brings you a lot of power since you don't have to rebuild on every config change. You can also generate builds on your CI, then deploy them anywhere.
 
