@@ -6,7 +6,9 @@ html_meta:
   "keywords": ""
 ---
 
-# Releases
+(volto-versioning-policy)=
+
+# Versioning policy
 
 What you can expect from Volto releases and the Volto release management. Volto uses
 Semantic Versioning to communicate bugfixes, new features, and breaking changes. It
