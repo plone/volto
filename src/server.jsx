@@ -58,7 +58,13 @@ const supported = new locale.Locales(keys(languages), 'en');
 
 const server = express()
   .disable('x-powered-by')
-  .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
+  .use(
+    express.static(
+      process.env.BUILD_DIR
+        ? path.join(process.env.BUILD_DIR, 'public')
+        : process.env.RAZZLE_PUBLIC_DIR,
+    ),
+  )
   .head('/*', function (req, res) {
     // Support for HEAD requests. Required by start-test utility in CI.
     res.send('');
@@ -179,8 +185,9 @@ server.get('/*', (req, res) => {
   const { store, api, errorHandler } = req.app.locals;
 
   // @loadable/server extractor
+  const buildDir = process.env.BUILD_DIR || 'build';
   const extractor = new ChunkExtractor({
-    statsFile: path.resolve('build/loadable-stats.json'),
+    statsFile: path.resolve(path.join(buildDir, 'loadable-stats.json')),
     entrypoints: ['client'],
   });
 
