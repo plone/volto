@@ -163,3 +163,19 @@ As a result, your app will load the add-ons in the following order:
 
 !!! important
     `ADDONS` does *not* work for development packages, which are *always* enabled if defined in your `jsconfig.json` or via `mrs.developer.json`.
+
+## BUILD_DIR
+
+This is a runtime-only environment variable that directs the build to run Volto from an especific location, other than the default folder `build`.
+
+```
+yarn
+BUILD_DIR=dist node dist/server.js
+```
+
+or
+
+```
+yarn
+yarn start:dist
+```

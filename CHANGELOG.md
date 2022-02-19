@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Introduce the new `BUILD_DIR` runtime environment variable to direct the build to run in an especific location, different than `build` folder. @sneridagh
+
 ### Bugfix
 
 ### Internal
