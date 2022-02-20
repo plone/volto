@@ -25,12 +25,12 @@ Javascript packages that can be included in any Volto project. By doing so we
 can provide code and component reutilization across projects and, of course,
 benefit from open source collaboration.
 
-!!! note
-    By declaring a Javascript package as a "Volto addon", Volto provides
-    several integration features: language features (so they can be transpiled
-    by Babel), whole-process customization via razzle.extend.js and
-    integration with Volto's configuration registry.
-
+```{note}
+By declaring a Javascript package as a "Volto addon", Volto provides
+several integration features: language features (so they can be transpiled
+by Babel), whole-process customization via razzle.extend.js and
+integration with Volto's configuration registry.
+```
 
 The addon can be published to an NPM registry or directly installed from github
 by Yarn. By using [mrs-develop](https://github.com/collective/mrs-developer),
@@ -90,11 +90,12 @@ package names, like:
 }
 ```
 
-!!! warning
-    Adding the addon package to the `addons` key is obligatory! It allows Volto
-    to treat that package properly and provide it with BabelJS language
-    features. In Plone terminology, it is like including a Python egg to the
-    `zcml` section of zc.buildout.
+```{warning}
+Adding the addon package to the `addons` key is obligatory! It allows Volto
+to treat that package properly and provide it with BabelJS language
+features. In Plone terminology, it is like including a Python egg to the
+`zcml` section of zc.buildout.
+```
 
 Some addons might choose to allow the Volto project to selectively load some of
 their configuration, so they may offer additional configuration functions,
@@ -113,10 +114,11 @@ key, like so:
 }
 ```
 
-!!! info
-    The additional comma-separated names should be exported from the addon
-    package's ``index.js``. The main configuration function should be exported as
-    the default. An addon's default configuration method will always be loaded.
+```{note}
+The additional comma-separated names should be exported from the addon
+package's ``index.js``. The main configuration function should be exported as
+the default. An addon's default configuration method will always be loaded.
+```
 
 If for some reason, you want to manually load the addon, you could always do,
 in your project's ``config.js`` module:
@@ -226,11 +228,12 @@ yarn develop
 
 Now the addon is found in `src/addons/`.
 
-!!! info
-    `package` property is optional, set it up only if your package has a scope.
-    `src` is required if the content of your addon is located in the `src`
-    directory (but, as that is the convention recommended for all Volto add-on
-    packages, you will always include it)
+```{note}
+`package` property is optional, set it up only if your package has a scope.
+`src` is required if the content of your addon is located in the `src`
+directory (but, as that is the convention recommended for all Volto add-on
+packages, you will always include it)
+```
 
 If you want to know more about `mrs-developer` config options, please refer to
 [its npm page](https://www.npmjs.com/package/mrs-developer).
@@ -254,13 +257,15 @@ to use mrs-developer, you'll have to add something like this to your
 }
 ```
 
-!!! warning
-    Please note that both `paths` and `baseUrl` are required to match your
-    project layout.
+```{warning}
+Please note that both `paths` and `baseUrl` are required to match your
+project layout.
+```
 
-!!! tip
-    You should use the `src` path inside your package and point the `main` key
-    in `package.json` to the `index.js` file in `src/index.js`.
+```{tip}
+You should use the `src` path inside your package and point the `main` key
+in `package.json` to the `index.js` file in `src/index.js`.
+```
 
 ### Customizations
 
@@ -269,10 +274,11 @@ The customizations are resolved in the order: addons (as sorted in the `addons`
 key of your project's `package.json`) then the customizations in the Volto
 project, last one wins.
 
-!!! tip
-    See the {ref}`advanced-customization-scenarios-label`
-    section on how to enhance this pattern and how to include customizations
-    inside addons.
+```{tip}
+See the {ref}`advanced-customization-scenarios-label`
+section on how to enhance this pattern and how to include customizations
+inside addons.
+```
 
 ### Providing addon configuration
 
@@ -310,8 +316,9 @@ And the `package.json` file of your addon:
 }
 ```
 
-!!! warning
-    An addon's default configuration method will always be loaded.
+```{warning}
+An addon's default configuration method will always be loaded.
+```
 
 #### Multiple addon configurations
 
@@ -438,9 +445,10 @@ resolve them, so in `package.json`:
     },
 ```
 
-!!! tip
-    We're in the process of moving the default scaffolding generators to
-    provide a `jest.config.js` file in Volto, making this step unneeded.
+```{tip}
+We're in the process of moving the default scaffolding generators to
+provide a `jest.config.js` file in Volto, making this step unneeded.
+```
 
 You can use `yarn test src/addons/addon-name` to run tests.
 
