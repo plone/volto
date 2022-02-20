@@ -18,7 +18,7 @@ This list is still incomplete, contributions are welcomed!
 ## Main settings
 
 ```{glossary}
-:sorted: true
+:sorted:
 
 navDepth
     Navigation levels depth used in the navigation endpoint calls. Increasing this is useful for implementing fat navigation menus. Defaults to `1`.
@@ -206,7 +206,7 @@ Settings that are relevant to the Express-powered Volto SSR server are stored
 in the `config.settings.serverConfig` object.
 
 ```{glossary}
-:sorted: true
+:sorted:
 
 expressMiddleware
     A list of ExpressJs middleware that can extend the built-in functionality of
