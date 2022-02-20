@@ -39,6 +39,40 @@ https://www.npmjs.com/package/universal-cookie-express
 
 https://www.npmjs.com/package/universal-cookie
 
+### Update your Rich Text Editor configuration
+
+DraftJS libraries are now lazy-loaded, and some changes have been introduced in the way that the rich text editor is bootstrapped. In case you have extended the rich text editor configuration in your projects you have to update your `src/config.js`:
+
+The old way:
+
+```js
+  export default function applyConfig(config) {
+    config.settings = {
+      ...config.settings,
+      listBlockTypes = [
+        ...config.settings.listBlockTypes,
+        'my-list-item',
+      ]
+    }
+    return config;
+  }
+
+```
+
+The new way:
+
+```js
+  export default function applyConfig(config) {
+    const { richtextEditorSettings } = config.settings;
+    config.settings.richtextEditorSettings = (props) => {
+      const result = richtextEditorSettings(props);
+      result.listBlockTypes = [...result.listBlockTypes, 'my-list-item']
+      return result;
+    }
+    return config;
+  }
+```
+
 ### Language Switcher no longer takes care of the sync of the language
 
 This responsibility has been transferred in full to the `MultilingualRedirector`, if you have
@@ -72,7 +106,7 @@ Read the full documentation about Seamless mode: https://docs.voltocms.com/deplo
 ### Update i18n configuration for projects and add-ons
 
 The i18n script and infrastructure have been moved to their own package since we needed them
-to be independent of Volto itself. 
+to be independent of Volto itself.
 This was necessary for being able to use them from the
 add-ons without having to install the whole Volto package (which is not possible).
 
