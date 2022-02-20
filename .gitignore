@@ -65,3 +65,6 @@ cypress/screenshots
 # Local environment setup
 .env
 public/critical.css
+
+# Sphinx and MyST
+docs/_build/

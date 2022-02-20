@@ -1,7 +1,16 @@
+---
+html_meta:
+  "description": "Volto 13 has several new features that allows zero configuration on build time, using some sensible defaults and using the current request to know in which domain Volto is being hosted and configuring itself in runtime."
+  "property=og:description": "Volto 13 has several new features that allows zero configuration on build time, using some sensible defaults and using the current request to know in which domain Volto is being hosted and configuring itself in runtime."
+  "property=og:title": "Zero configuration builds"
+  "keywords": "Volto, Plone, frontend, React, Zero, configuration, builds"
+---
+
 # Zero configuration builds
 
-!!! note
-    This feature is available since Volto 13.
+```{note}
+This feature is available since Volto 13.
+```
 
 In the past (before Volto 13), Volto was configured in build time using several
 environment vars, commonly supplied via the command line, like:
@@ -22,13 +31,16 @@ variables in build time, and it will work as it used to be, but we encourage you
 
 Volto is able to look into the request and infer the API path to be used. This only
 happens in seamless mode, since it assumes that the backend will be hosted in the same
-path (the root) of the request that is getting. This feature relies in the Host header.
+path (the root) of the request that is getting. This feature relies in the `Host` header.
 You can set this header in the webserver that you are using in front of Volto. This
 configuration is for Nginx:
 
 
-```conf hl_lines="15"
-[...more config here]
+```{code-block} nginx
+:emphasize-lines: 16
+
+# ...more config here
+
 server {
   listen 80;
   server_name plone.org;
@@ -40,7 +52,7 @@ server {
 
   location ~(.*)$ {
 
-[...more config here]
+# ...more config here
 
     proxy_set_header        Host $host;
     proxy_set_header        X-Real-IP $remote_addr;

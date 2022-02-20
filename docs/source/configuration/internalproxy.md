@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Internal proxy to content backend API
 
 The server side Volto SSR process (based on Razzle) has an internal proxy to the backend API
@@ -27,13 +35,14 @@ What happens in the default development configuration/setup:
 back json to the frontend.
 * The web browser application is happy, because all connections go through the same URL and no CORS related security issues will be triggered.
 
-!!! tip
-    You could also use the internal proxy for production setups. For convenience and for
-    testing/demoing using the stock build, it is also enabled in production mode since 
-    Volto 14. But it is bad for performance because the server side running Node process
-    is also responsable for generating the SSR HTML. With Nginx, Apache or another
-    'reverse proxy' you can also create an internal API mount which is more suited for
-    that. For more deployment information see ['Seemless mode'](/deploying/seamless-mode)
+```{tip}
+You could also use the internal proxy for production setups. For convenience and for
+testing/demoing using the stock build, it is also enabled in production mode since
+Volto 14. But it is bad for performance because the server side running Node process
+is also responsable for generating the SSR HTML. With Nginx, Apache or another
+'reverse proxy' you can also create an internal API mount which is more suited for
+that. For more deployment information see ['Seemless mode'](/deploying/seamless-mode)
+```
 
 ### Examples redefining the proxy target
 
@@ -53,7 +62,7 @@ or use the environment variable:
 RAZZLE_DEV_PROXY_API_PATH=http://localhost:8081/mysite yarn start
 ```
 
-This redefines the request path from the internal proxy of the server side Node proces to the Plone content backend API, but leaves the frontend Volto process making all content requests to http://locahost:3000/++api++/
+This redefines the request path from the internal proxy of the server side Node proces to the Plone content backend API, but leaves the frontend Volto process making all content requests to http://localhost:3000/++api++/
 
 ### Advanced usage
 

@@ -1,4 +1,20 @@
-# Releases
+---
+html_meta:
+  "description": "Volto release management uses
+Semantic Versioning to communicate bugfixes, new features, and breaking changes."
+  "property=og:description": "Volto release management uses
+Semantic Versioning to communicate bugfixes, new features, and breaking changes."
+  "property=og:title": "Versioning policy"
+  "keywords": "Volto, Plone, frontend, React, Release, Version, Semantic"
+---
+
+```{eval-rst}
+:orphan:
+```
+
+(volto-versioning-policy)=
+
+# Versioning policy
 
 What you can expect from Volto releases and the Volto release management. Volto uses
 Semantic Versioning to communicate bugfixes, new features, and breaking changes. It

@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Blocks settings
 
 You should make Volto aware of your custom blocks.
@@ -109,9 +117,10 @@ export const blocks = {
 
 We start by importing both view and edit components of our recently created custom block.
 
-!!! note
-    Notice the `@package` alias.
-    You can use it when importing modules/components from your own project.
+```{note}
+Notice the `@package` alias.
+You can use it when importing modules/components from your own project.
+```
 
 Then you define the block, using the object described in the example.
 

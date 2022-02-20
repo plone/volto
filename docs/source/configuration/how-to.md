@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": "Volto has a centralized configuration registry used to parameterize Volto."
+  "property=og:description": "Volto has a centralized configuration registry used to parameterize Volto."
+  "property=og:title": "The configuration registry"
+  "keywords": "Volto, Plone, frontend, React, configuration, registry"
+---
+
 # The configuration registry
 
 Volto has a centralized configuration registry used to parameterize Volto. It has the
@@ -26,7 +34,7 @@ Both use the same method, using a function as the default export. This function 
 add-ons, it must be provided in the main `index.js` module of the add-on. For project's
 it must be provided in the `src/config.js` module of the project.
 
-See the [Add-ons](/addons) section for extended information on how to work with add-ons.
+See the {doc}`/addons/index` section for extended information on how to work with add-ons.
 
 ## Extending configuration in a project
 
@@ -51,7 +59,7 @@ add-ons configuration in `config` argument. Next, perform all the required modif
 to the config and finally, return the config object.
 
 By reading Volto's
-[src/config/index.js](https://github.com/plone/volto/tree/master/src/config/index.js),
+[src/config/index.js](https://github.com/plone/volto/blob/master/src/config/index.js),
 you'll get to see that Volto provides some default configuration objects
 (`blocks`, `widgets`, `settings`, etc), passes them through the
 `applyAddonConfiguration()` function, which allows any installed addons to
