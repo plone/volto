@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Improve flaky test in coresandbox search Cypress tests @sneridagh
+
 ## 15.0.0-alpha.5 (2022-02-16)
 
 ### Breaking
