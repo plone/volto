@@ -22,6 +22,11 @@
 - Get version from `package.json` @sneridagh
 - Remove legacy folder in docs @sneridagh
 - Backport docs of RAZZLE_TESTING_ADDONS environment variables. See https://github.com/plone/volto/pull/3067/files#diff-00609ed769cd40cf3bc3d6fcc4431b714cb37c73cedaaea18fe9fc4c1c589597 @stevepiercy
+- Add missing developer-guidelines/typescript to toctree @stevepiercy
+- Add Netlify for preview of Sphinx builds for pull requests against `master` and `plone6-docs`. @stevepiercy
+- Clean up toctree errors by removing obsolete files, adding `:orphan:` field list, and reorganizing some files. @sneridagh and @stevepiercy
+- Switch to using netlify.toml to configure Netlify Python environment. @stevepiercy
+- Convert admonition syntax from Markdown to MyST. @sneridagh
 
 ## 15.0.0-alpha.5 (2022-02-16)
 
@@ -127,11 +132,6 @@ DatetimeWidget 'noPastDates' option: Take widgetOptions?.pattern_options?.noPast
 - Add `resolve` and `register` helper methods for the Volto config. They retrieve and register new components in the registry. @tiberiuichim @sneridagh
 - Add `Component` component, given a `name` of a component registered in the registry, it renders it, passing down the props. @tiberiuichim
 - Syncronize the content language with the UI language in multilingual sites. So when you are accessing a content in a given language the rest of the interface literals follow along (it updates the language cookie). So the UI remains consistent. @sneridagh
-- Add missing developer-guidelines/typescript to toctree @stevepiercy
-- Add Netlify for preview of Sphinx builds for pull requests against `master` and `plone6-docs`. @stevepiercy
-- Clean up toctree errors by removing obsolete files, adding `:orphan:` field list, and reorganizing some files. @sneridagh and @stevepiercy
-- Switch to using netlify.toml to configure Netlify Python environment. @stevepiercy
-- Convert admonition syntax from Markdown to MyST. @sneridagh
 
 ### Bugfix
 
@@ -178,7 +178,7 @@ new users/evaluators. @fredvd
 
 ### Feature
 
-- VocabularyTermsWidget: Token is now on creation of term editable, but stays ineditable afterwards.  @ksuess
+- VocabularyTermsWidget: Token is now on creation of term editable, but stays ineditable afterwards. @ksuess
 
 ### Bugfix
 
@@ -506,6 +506,8 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 - Update to plone.restapi 8.16.2 (revert missing_value PR) @sneridagh
 - Update all requirements and the reasoning behind them in builds @sneridagh
 - Update Plone version in api backend to 5.2.6. Update README and cleanup @fredvd
+- Various local development build improvements @rpatterson
+- Document CI changelog verifier failure details that mislead contributors
 - Document CI changelog verifier failure details that mislead contributors @rpatterson
 - Updated italian translation @pnicolli
 

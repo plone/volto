@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
-import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
+import { URLUtils } from '@plone/volto/helpers';
 import { FormattedMessage } from 'react-intl';
 
 /**
@@ -68,7 +68,7 @@ class LinkView extends Component {
           </p>
         )}
         {remoteUrl && (
-          <span>
+          <p>
             <FormattedMessage
               id="The link address is:"
               defaultMessage="The link address is:"
@@ -108,7 +108,7 @@ class LinkView extends Component {
                 )}
               </>
             )}
-          </span>
+          </p>
         )}
       </Container>
     );

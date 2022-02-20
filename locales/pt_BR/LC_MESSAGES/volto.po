@@ -68,6 +68,11 @@ msgstr "Ativar e desativar"
 msgid "Add"
 msgstr "Adicionar"
 
+#: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Add
+msgid "Add (object list)"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
 msgid "Add Addons"
@@ -863,6 +868,7 @@ msgstr "Lista de objetos vazia"
 msgid "Enable editable Blocks"
 msgstr "Habilitar blocos editáveis"
 
+#: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 # defaultMessage: End Date
 msgid "End Date"
@@ -1610,6 +1616,11 @@ msgstr "Notícia"
 # defaultMessage: No
 msgid "No"
 msgstr "Não"
+
+#: components/manage/Controlpanels/VersionOverview
+# defaultMessage: No addons found
+msgid "No addons found"
+msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected
@@ -2438,6 +2449,7 @@ msgstr "Informe a url para um vídeo ou uma playlist do YouTube"
 msgid "Split"
 msgstr "Dividir"
 
+#: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 # defaultMessage: Start Date
 msgid "Start Date"
@@ -3264,6 +3276,12 @@ msgstr "Valor mínimo"
 msgid "mostUsed"
 msgstr "Mais usados"
 
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+# defaultMessage: No
+msgid "no"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 # defaultMessage: No workflow state
 msgid "no workflow state"
@@ -3534,6 +3552,12 @@ msgstr "vídeo"
 # defaultMessage: Visit external website
 msgid "visit_external_website"
 msgstr "Visitar site externo"
+
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+# defaultMessage: Yes
+msgid "yes"
+msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: {count, plural, one {Upload {count} file} other {Upload {count} files}}

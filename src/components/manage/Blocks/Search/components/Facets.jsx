@@ -1,6 +1,17 @@
 import React from 'react';
 import { resolveExtension } from '@plone/volto/helpers/Extensions/withBlockExtensions';
 import config from '@plone/volto/registry';
+import { hasNonValueOperation, hasDateOperation } from '../utils';
+
+const showFacet = (index) => {
+  const { values } = index;
+  return index
+    ? hasNonValueOperation(index.operations || []) ||
+      hasDateOperation(index.operations || [])
+      ? true
+      : values && Object.keys(values).length > 0
+    : values && Object.keys(values).length > 0;
+};
 
 const Facets = (props) => {
   const {
@@ -22,9 +33,9 @@ const Facets = (props) => {
   return (
     <>
       {data?.facets
-        ?.filter((facet) => !facet.hidden)
-        .map((facet) => {
-          const field = facet?.field?.value;
+        ?.filter((facetSettings) => !facetSettings.hidden)
+        .map((facetSettings) => {
+          const field = facetSettings?.field?.value;
           const index = querystring.indexes[field] || {};
           const { values = {} } = index;
 
@@ -41,40 +52,28 @@ const Facets = (props) => {
                 : true,
             );
 
-          const isMulti = facet.multiple;
-          const selectedValue = facets[facet?.field?.value];
+          const isMulti = facetSettings.multiple;
+          const selectedValue = facets[facetSettings?.field?.value];
 
           // TODO :handle changing the type of facet (multi/nonmulti)
 
-          let value = selectedValue
-            ? isMulti
-              ? Array.isArray(selectedValue)
-                ? selectedValue.map((v) => ({
-                    value: v,
-                    label: index.values?.[v]?.title,
-                  }))
-                : []
-              : {
-                  value: selectedValue,
-                  label: index.values?.[selectedValue]?.title,
-                }
-            : [];
-
-          const { view: FacetWidget } = resolveExtension(
+          const { view: FacetWidget, stateToValue } = resolveExtension(
             'type',
             search.extensions.facetWidgets.types,
-            facet,
+            facetSettings,
           );
+
+          let value = stateToValue({ facetSettings, index, selectedValue });
 
           const {
             rewriteOptions = (name, options) => options,
           } = search.extensions.facetWidgets;
 
-          return FacetWrapper && Object.keys(values).length ? (
-            <FacetWrapper key={facet['@id']}>
+          return FacetWrapper && (isEditMode || showFacet(index)) ? (
+            <FacetWrapper key={facetSettings['@id']}>
               <FacetWidget
-                facet={facet}
-                choices={rewriteOptions(facet?.field?.value, choices)}
+                facet={facetSettings}
+                choices={rewriteOptions(facetSettings?.field?.value, choices)}
                 isMulti={isMulti}
                 value={value}
                 isEditMode={isEditMode}

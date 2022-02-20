@@ -26,6 +26,7 @@ export {
   isUrl,
   normalizeUrl,
   removeProtocol,
+  URLUtils,
 } from '@plone/volto/helpers/Url/Url';
 export { generateSitemap } from '@plone/volto/helpers/Sitemap/Sitemap';
 export { generateRobots } from '@plone/volto/helpers/Robots/Robots';
@@ -83,6 +84,7 @@ export {
   withVariationSchemaEnhancer,
   withBlockExtensions,
   applySchemaEnhancer,
+  resolveExtension,
 } from './Extensions';
 export { asyncConnect } from './AsyncConnect';
 export { userHasRoles } from './User/User';

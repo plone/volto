@@ -66,6 +66,11 @@ msgstr ""
 msgid "Add"
 msgstr "Adicionar"
 
+#: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Add
+msgid "Add (object list)"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
 msgid "Add Addons"
@@ -861,6 +866,7 @@ msgstr ""
 msgid "Enable editable Blocks"
 msgstr ""
 
+#: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 # defaultMessage: End Date
 msgid "End Date"
@@ -1607,6 +1613,11 @@ msgstr ""
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: No
 msgid "No"
+msgstr ""
+
+#: components/manage/Controlpanels/VersionOverview
+# defaultMessage: No addons found
+msgid "No addons found"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
@@ -2436,6 +2447,7 @@ msgstr "Especifique um vídeo youtube ou um URL de um repertório (playlist)"
 msgid "Split"
 msgstr "Dividir"
 
+#: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 # defaultMessage: Start Date
 msgid "Start Date"
@@ -3262,6 +3274,12 @@ msgstr ""
 msgid "mostUsed"
 msgstr "maisUsado"
 
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+# defaultMessage: No
+msgid "no"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 # defaultMessage: No workflow state
 msgid "no workflow state"
@@ -3531,6 +3549,12 @@ msgstr "vídeo"
 #: components/theme/View/EventView
 # defaultMessage: Visit external website
 msgid "visit_external_website"
+msgstr ""
+
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+# defaultMessage: Yes
+msgid "yes"
 msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal

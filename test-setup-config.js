@@ -18,10 +18,29 @@ import {
   blockStyleFn,
   listBlockTypes,
 } from '@plone/volto/config/RichTextEditor/Blocks';
+import FromHTMLCustomBlockFn from '@plone/volto/config/RichTextEditor/FromHTML';
 import { contentIcons } from '@plone/volto/config/ContentIcons';
 
-import FromHTMLCustomBlockFn from '@plone/volto/config/RichTextEditor/FromHTML';
 import { controlPanelsIcons } from '@plone/volto/config/ControlPanels';
+
+// we need to do a redefinition here because of circular import issues
+// because draftjs-based components are not really tested, this is basically
+// dummy code.
+const richtextEditorSettings = (props) => {
+  return {
+    extendedBlockRenderMap,
+    blockStyleFn,
+    listBlockTypes,
+    FromHTMLCustomBlockFn,
+    // richTextEditorPlugins: plugins,
+    // richTextEditorInlineToolbarButtons: inlineToolbarButtons,
+  };
+};
+
+const richtextViewSettings = {
+  ToHTMLRenderers,
+  ToHTMLOptions,
+};
 
 config.set('settings', {
   apiPath: 'http://localhost:8080/Plone',
@@ -30,12 +49,8 @@ config.set('settings', {
   defaultPageSize: 25,
   isMultilingual: false,
   nonContentRoutes,
-  extendedBlockRenderMap,
-  blockStyleFn,
-  listBlockTypes,
-  FromHTMLCustomBlockFn,
-  ToHTMLRenderers,
-  ToHTMLOptions,
+  richtextEditorSettings,
+  richtextViewSettings,
   contentIcons: contentIcons,
   loadables,
   lazyBundles: {

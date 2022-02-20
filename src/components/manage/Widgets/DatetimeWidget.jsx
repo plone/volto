@@ -178,7 +178,9 @@ export class DatetimeWidgetComponent extends Component {
   onFocusChange = ({ focused }) => this.setState({ focused });
 
   render() {
-    const { id, noPastDates, resettable, intl, reactDates } = this.props;
+    const { id, resettable, intl, reactDates, widgetOptions } = this.props;
+    const noPastDates =
+      this.props.noPastDates || widgetOptions?.pattern_options?.noPastDates;
     const moment = this.props.moment.default;
     const datetime = this.getInternalValue();
     const dateOnly = this.getDateOnly();

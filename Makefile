@@ -14,7 +14,7 @@ MAKEFLAGS+=--no-builtin-rules
 
 INSTANCE_PORT=8080
 DOCKER_IMAGE=plone/plone-backend:5.2.6
-KGS=plone.restapi==8.20.0 plone.volto==4.0.0a2 plone.rest==2.0.0a2 plone.app.iterate==4.0.2 plone.app.vocabularies==4.3.0
+KGS=plone.restapi==8.21.0 plone.volto==4.0.0a3 plone.rest==2.0.0a2 plone.app.iterate==4.0.2 plone.app.vocabularies==4.3.0
 
 # Sphinx variables
 # You can set these variables from the command line.
@@ -27,6 +27,11 @@ BUILDDIR        = ../_build/
 ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(SPHINXOPTS) .
 
 # Recipe snippets for reuse
+
+CHECKOUT_BASENAME=$(shell basename $(shell realpath ./))
+CHECKOUT_BRANCH=$(shell git branch --show-current)
+CHECKOUT_TMP=../$(CHECKOUT_BASENAME).tmp
+CHECKOUT_TMP_ABS=$(shell realpath $(CHECKOUT_TMP))
 
 # We like colors
 # From: https://coderwall.com/p/izxssa/colored-makefile-for-golang-projects
@@ -44,6 +49,7 @@ all: build
 # Add the following 'help' target to your Makefile
 # And add help text after each target name starting with '\#\#'
 .PHONY: help
+help: .SHELLFLAGS:=-eu -o pipefail -O inherit_errexit -c
 help: ## This help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
@@ -72,6 +78,29 @@ dist:
 .PHONY: test
 test:
 	$(MAKE) -C "./api/" test
+.PHONY: test-clean
+test-clean:  ## Test in a separate, clean worktree to expose clean build issues
+	mkdir -pv "$(CHECKOUT_TMP)/"
+	tmp_worktree="$$(
+	    mktemp -d -p '$(CHECKOUT_TMP)/' \
+	        '$(CHECKOUT_BRANCH)-tmp-XXXXXXXXXX'
+	)"
+# Disable VCS hooks which might be run when creating a worktree
+	if [ -e "./.git/hooks/post-checkout" ]
+	then
+	    mv --backup=numbered -v \
+	        "./.git/hooks/post-checkout" "./.git/hooks/post-checkout~"
+	fi
+	git worktree add "$${tmp_worktree}"
+	if [ -e "./.git/hooks/post-checkout~" ]
+	then
+	    mv --backup=numbered -v \
+	        "./.git/hooks/post-checkout~" "./.git/hooks/post-checkout"
+	fi
+	cd "$${tmp_worktree}"
+	$(MAKE) test
+# Leave the temporary worktree around for the developer to inspect.
+# Use the `$ make clean-tmp-worktrees` target to clean up all temporary worktrees
 
 .PHONY: storybook-build
 storybook-build:
@@ -201,5 +230,15 @@ test-acceptance-guillotina:
 
 .PHONY: clean
 clean:
+	$(MAKE) clean-tmp-worktrees
 	$(MAKE) -C "./api/" clean
 	rm -rf node_modules
+.PHONY: clean-tmp-worktrees
+clean-tmp-worktrees:  ## Cleanup temporary worktrees managed by this `./Makefile`
+	git worktree list --porcelain | tail -n +5 |
+	    sed -En 's|^worktree ($(CHECKOUT_TMP_ABS)/.+)$$|\1|p' |
+	while read
+	do
+	    git worktree remove --force "$${REPLY}"
+	    git branch -D "$$(basename "$${REPLY}")"
+	done

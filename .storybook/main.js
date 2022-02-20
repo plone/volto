@@ -5,7 +5,7 @@ const fileLoaderFinder = makeLoaderFinder('file-loader');
 
 const projectRootPath = path.resolve('.');
 const createAddonsLoader = require('../create-addons-loader');
-const lessPlugin = require('../webpack-less-plugin');
+const lessPlugin = require('../webpack-plugins/webpack-less-plugin');
 
 const createConfig = require('../node_modules/razzle/config/createConfigAsync.js');
 const razzleConfig = require(path.join(projectRootPath, 'razzle.config.js'));
@@ -31,14 +31,8 @@ const SVGLOADER = {
 };
 
 module.exports = {
-  stories: [
-    '../src/**/*.stories.mdx',
-    '../src/**/*.stories.@(js|jsx|ts|tsx)'
-  ],
-  addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-  ],
+  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
     // You can change the configuration based on that.
