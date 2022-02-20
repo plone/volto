@@ -1,9 +1,11 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "Volto is developed using Babel to transpile modern Javascript to Javascript that
+browsers are able to understand and execute."
+  "property=og:description": "Volto is developed using Babel to transpile modern Javascript to Javascript that
+browsers are able to understand and execute."
+  "property=og:title": "Language features and conventions"
+  "keywords": "Volto, Plone, frontend, React, Babel, translations, language, internationalization, i18n, localization, transpilation"
 ---
 
 # Language features and conventions
@@ -67,5 +69,5 @@ have to support.
 
 However, Volto (or its dependencies) might not be compatible with old browsers anyways,
 and you might need to provide some other workarounds to make the build work (and the
-deprecated browser not crash). You can refer to [this (outdated)
-document](../ie11compat.md) in order to get some hints on how to do it.
+deprecated browser not crash). You can refer to {doc}`this (outdated)
+document </recipes/ie11compat>` in order to get some hints on how to do it.

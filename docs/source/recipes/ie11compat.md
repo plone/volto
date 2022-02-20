@@ -6,9 +6,13 @@ html_meta:
   "keywords": ""
 ---
 
-# IE11 compatibility
+# Legacy Browser Support (IE11 compatibility)
 
 There are some caveats if we still want to target IE11 as supported browser.
+
+```{important}
+This documentation is orientative. Volto does NOT support legacy or vendor deprecated browsers (as in IE11).
+```
 
 ## Version pinning
 
