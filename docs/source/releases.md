@@ -6,6 +6,10 @@ html_meta:
   "keywords": ""
 ---
 
+```{eval-rst}
+:orphan:
+```
+
 (volto-versioning-policy)=
 
 # Versioning policy

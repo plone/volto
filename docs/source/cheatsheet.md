@@ -6,6 +6,10 @@ html_meta:
   "keywords": ""
 ---
 
+```{eval-rst}
+:orphan:
+```
+
 # Cheatsheet
 
 - https://python-markdown.github.io/extensions/
