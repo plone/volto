@@ -12,9 +12,6 @@ html_meta:
 
 # Cheatsheet
 
-- https://python-markdown.github.io/extensions/
-- https://facelessuser.github.io/pymdown-extensions/
-
 ```{seealso}
 {doc}`plone:contributing/writing-docs-guide`
 ```
