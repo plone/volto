@@ -22,6 +22,7 @@
 - Get version from `package.json` @sneridagh
 - Remove legacy folder in docs @sneridagh
 - Add Netlify for preview of Sphinx builds for pull requests against `master` and `plone6-docs`. @stevepiercy
+- Switch to using netlify.toml to configure Netlify Python environment. @stevepiercy
 
 ### Bugfix
 
