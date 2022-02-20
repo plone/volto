@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Testing
 
 We use Jest for unit testing in Volto. The popular `@testing-library/react` is also
@@ -17,8 +25,9 @@ environment variable.
 
     RAZZLE_JEST_CONFIG=my-custom-jest-config.js yarn test
 
-!!! Note
-    Both configurations are merged in a way that the keys of the config provided override  the initial (`package.json`) default config, either in Volto or in your projects.
+```{note}
+Both configurations are merged in a way that the keys of the config provided override  the initial (`package.json`) default config, either in Volto or in your projects.
+```
 
 This is specially useful in CI while developing add-ons, so you can pass an specific configuration that deals with the addon config properly.
 
@@ -31,11 +40,11 @@ You can use the `ADDONS` environment variable to define them.
 ADDONS=test-addon,test-addon2 yarn start
 ```
 
-See [Add-ons via environment variables](../configuration/environmentvariables.md) for more information.
+ See {doc}`/configuration/environmentvariables` for more information.
 
 ## Developing Cypress tests
 
-Volto uses [Cypress](https://cypress.io) to run integration tests. When
+Volto uses [Cypress](https://www.cypress.io) to run integration tests. When
 developing or debugging Cypress tests, it's useful to be able to replicate the
 test environment.
 

@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": "Environment variables allow configuration of your Volto application at runtime."
+  "property=og:description": "Environment variables allow configuration of your Volto application at runtime."
+  "property=og:title": "Environment variables"
+  "keywords": "Volto, React, Plone, Environment variables, Razzle,"
+---
+
 # Environment variables
 
 All the environment variables defined at runtime that have the "RAZZLE_" prefix, are available in the browser under window.env
@@ -19,18 +27,19 @@ window.env.RAZZLE_MY_VARIABLE
 
 All the environment variables that are configurable work at runtime, not only at build time. This works since Volto 13 onwards.
 
-!!! info
+````{note}
 Before Volto 13, you'd do:
 
-    ```bash
-    RAZZLE_API_PATH=https://plone.org yarn build && yarn start:prod
-    ```
+```bash
+RAZZLE_API_PATH=https://plone.org yarn build && yarn start:prod
+```
 
-    From Volto 13 onwards, you can now do:
+From Volto 13 onwards, you can now do:
 
-    ```bash
-    yarn build && RAZZLE_API_PATH=https://plone.org yarn start:prod
-    ```
+```bash
+yarn build && RAZZLE_API_PATH=https://plone.org yarn start:prod
+```
+````
 
 This brings you a lot of power since you don't have to rebuild on every config change. You can also generate builds on your CI, then deploy them anywhere.
 
@@ -58,9 +67,10 @@ $ VOLTO_ROBOTSTXT="User-agent: *
 Disallow: /" yarn start
 ```
 
-!!! note
-    If you want to use the `VOLTO_ROBOTSTXT` environment variable, make sure to
-    delete the file `public/robots.txt` from your project.
+```{note}
+If you want to use the `VOLTO_ROBOTSTXT` environment variable, make sure to
+delete the file `public/robots.txt` from your project.
+```
 
 ### DEBUG
 

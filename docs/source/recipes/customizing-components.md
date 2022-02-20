@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Customizing Components
 
 You are able to customize the existing Volto components using a pattern called
@@ -5,11 +13,12 @@ You are able to customize the existing Volto components using a pattern called
 the component that you want to customize, let's say the Logo component in [Volto source
 code](https://github.com/plone/volto/tree/master/src).
 
-!!! tip
-    Those familiar with Plone's JBOT customizing add-on will recognize this pattern
-    since it works the same way, except that here you have to create exactly the same
-    folder structure hierarchy of the original component instead of using the dotted
-    notation used in JBOT overrides.
+```{tip}
+Those familiar with Plone's JBOT customizing add-on will recognize this pattern
+since it works the same way, except that here you have to create exactly the same
+folder structure hierarchy of the original component instead of using the dotted
+notation used in JBOT overrides.
+```
 
 You can override any component that lives inside Volto's `src` folder and
 adapt it to your needs, without touching the original (source) counterparts.
@@ -98,6 +107,9 @@ Locate the `Tags.jsx` file and override this file so that there is a label in fr
 The final path of the overrided component will be
 `customizations/components/theme/Tags/Tags.jsx`.
 
+
+(advanced-customization-scenarios-label)=
+
 ## Advanced customization scenarios
 
 Once you've started developing your Volto project, you'll find that you want
@@ -122,9 +134,10 @@ in `package.json`. The `customizationPaths` is a list that takes strings with
 paths relative to the `package.json` file. All these paths are looked up for
 customization files.
 
-!!! tip
-  The `customizationPaths` key is also available in the project, not just the
-  addons
+```{tip}
+The `customizationPaths` key is also available in the project, not just the
+addons
+```
 
 In case of conflicts where multiple addons customize the same file, the order
 of addon declaration matters: the last addon declared in the `addons` key in

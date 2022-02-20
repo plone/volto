@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Best practices for addons
 
 Although the addon framework is relatively new in Volto's world, there are
@@ -61,7 +69,7 @@ hold the Cypress integration tests and trigger the CI tests.
 
 ## Use appropriate npmjs tags
 
-If you're releasing your addon to npmjs.com, please consider adding the
+If you're releasing your addon to `npmjs.com`, please consider adding the
 following tags, next to your addon-specific tags:
 
 - volto-addon

@@ -12,6 +12,24 @@
 
 ### Internal
 
+### Documentation
+
+- (Experimental) Prepare documentation for MyST and importing into `plone/documentation@6-dev`. @stevepiercy
+- Fix broken links and redirects in documentation to be compatible with MyST. @stevepiercy
+- Update add-on internationalization. @ksuess
+- Add MyST and Sphinx basic configuration for rapid build and comparison against MkDocs builds. @stevepiercy
+- Fix many MyST and Sphinx warnings. @stevepiercy
+- Remove MkDocs configuration. See https://github.com/plone/volto/issues/3042 @stevepiercy
+- Add Plone docs to Intersphinx and fix broken link. @stevepiercy
+- Get version from `package.json` @sneridagh
+- Remove legacy folder in docs @sneridagh
+- Backport docs of RAZZLE_TESTING_ADDONS environment variables. See https://github.com/plone/volto/pull/3067/files#diff-00609ed769cd40cf3bc3d6fcc4431b714cb37c73cedaaea18fe9fc4c1c589597 @stevepiercy
+- Add missing developer-guidelines/typescript to toctree @stevepiercy
+- Add Netlify for preview of Sphinx builds for pull requests against `master` and `plone6-docs`. @stevepiercy
+- Clean up toctree errors by removing obsolete files, adding `:orphan:` field list, and reorganizing some files. @sneridagh and @stevepiercy
+- Switch to using netlify.toml to configure Netlify Python environment. @stevepiercy
+- Convert admonition syntax from Markdown to MyST. @sneridagh
+
 ## 15.0.0-alpha.5 (2022-02-16)
 
 ### Breaking

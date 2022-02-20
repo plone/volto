@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # critical.css (above the fold) optimizations
 
 A very important technique to improve the perceived initial load performance of
