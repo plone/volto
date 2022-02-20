@@ -12,6 +12,8 @@
 
 ### Internal
 
+- Improve flaky test in coresandbox search Cypress tests @sneridagh
+
 ### Documentation
 
 - (Experimental) Prepare documentation for MyST and importing into `plone/documentation@6-dev`. @stevepiercy
