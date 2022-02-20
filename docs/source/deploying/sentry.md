@@ -1,6 +1,12 @@
+---
+html_meta:
+  "description": "Volto Integration with Sentry"
+  "property=og:description": "Volto Integration with Sentry"
+  "property=og:title": "Integration with Sentry"
+  "keywords": "Volto, Plone, frontend, React, Integration, Sentry"
+---
 
-
-# Integration with SENTRY
+# Integration with Sentry
 
 ## Prerequisities
 1. In Sentry create a new organization, and add a project to it
@@ -124,8 +130,15 @@ exec "$@"
 
 Starting with docker:
 
-```bash
-docker run -p 3000:3000 -p 3001:3001 -e SENTRY_URL=https://mysentry.com -e SENTRY_AUTH_TOKEN=foo -e SENTRY_ORG=my_organization -e SENTRY_PROJECT=new_project -e SENTRY_RELEASE=2.0.0 -e RAZZLE_SENTRY_DSN=https://boo@sentry.com/1 -e RAZZLE_SENTRY_RELEASE=2.0.0 volto-app:latest
+```shell
+docker run -p 3000:3000 -p 3001:3001 \
+  -e SENTRY_URL=https://mysentry.com \
+  -e SENTRY_AUTH_TOKEN=foo \
+  -e SENTRY_ORG=my_organization \
+  -e SENTRY_PROJECT=new_project \
+  -e SENTRY_RELEASE=2.0.0 \
+  -e RAZZLE_SENTRY_DSN=https://boo@sentry.com/1 \
+  -e RAZZLE_SENTRY_RELEASE=2.0.0 volto-app:latest
 ```
 
 Or using docker-compose:
@@ -175,13 +188,22 @@ Example of configurations:
   "maxBreadcrumbs": 50
 }
 ```
+
 Example of usage with buildtime setup:
 
-```bash
-SENTRY_URL=https://mysentry.com SENTRY_AUTH_TOKEN=foo SENTRY_ORG=my_organization SENTRY_PROJECT=new_project SENTRY_RELEASE=2.0.0 SENTRY_DSN=https://boo@sentry.com/1 SENTRY_FRONTEND_CONFIG='{"tags":{"site":"www.test.com","app":"test_app"},"extras":{"logger":"javascript-frontend", "release":"1.4.1"}}' SENTRY_BACKEND_CONFIG='{"tags":{"site":"www.test.com","app":"test_app"} yarn build
+```console
+SENTRY_URL=https://mysentry.com
+SENTRY_AUTH_TOKEN=foo
+SENTRY_ORG=my_organization
+SENTRY_PROJECT=new_project
+SENTRY_RELEASE=2.0.0
+SENTRY_DSN=https://boo@sentry.com/1
+SENTRY_FRONTEND_CONFIG='{"tags":{"site":"www.test.com","app":"test_app"},"extras":{"logger":"javascript-frontend", "release":"1.4.1"}}'
+SENTRY_BACKEND_CONFIG='{"tags":{"site":"www.test.com","app":"test_app"} yarn build
 node build/server.js
 ```
- Example with docker-compose:
+
+Example with docker-compose:
 
 ```yaml
 version: '3'
@@ -207,7 +229,7 @@ services:
 
 1. List of messages
 ![](sentry_messages.png)
-2. Messages from the frontend, with it's own TAGS and ADDITIONAL DATA
+2. Messages from the frontend, with its own TAGS and ADDITIONAL DATA
 ![](sentry_frontend_message.png)
-3. Messages from the backend, with it's own TAGS and ADDITIONAL DATA
+3. Messages from the backend, with its own TAGS and ADDITIONAL DATA
 ![](sentry_backend_message.png)

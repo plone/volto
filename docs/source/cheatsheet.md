@@ -1,45 +1,79 @@
+---
+html_meta:
+  "description": "Cheatsheet for MyST and reStructuredText syntax"
+  "property=og:description": "Cheatsheet for MyST and reStructuredText syntax"
+  "property=og:title": "Cheatsheet"
+  "keywords": "Volto, Plone, frontend, React, MyST, reStructuredText, syntax"
+---
+
+```{eval-rst}
+:orphan:
+```
+
 # Cheatsheet
 
-https://python-markdown.github.io/extensions/
-https://facelessuser.github.io/pymdown-extensions/extensions/
+```{seealso}
+{doc}`plone:contributing/writing-docs-guide`
+```
 
-Admonition
 
-!!! note
-    You should note that the title will be automatically capitalized.
+## Admonition
 
-!!! danger "Don't try this at home"
-    ...
+```{note}
+You should note that the title will be automatically capitalized.
+```
 
-!!! important ""
-    This is an admonition box without a title.
+```{important}
+This is an admonition box without a title.
+```
 
-!!! tip "This is a tip"
-    This is an admonition box without a title.
+```{tip}
+This is an admonition box without a title.
+```
 
-!!! check "This is a check"
-    This is an admonition box without a title.
+```{warning}
+This is an admonition box without a title.
+```
 
-!!! cite "This is a cite"
-    This is an admonition box without a title.
+```{danger}
+Don't try this at home.
+```
 
-!!! question "This is a question"
-    This is an admonition box without a title.
+```{seealso}
+This is a see also section.
+```
 
-!!! example "This is a example"
-    This is an admonition box without a title.
+```{deprecated} 13
+This is an admonition box without a title.
+```
 
-!!! warning "This is a warning"
-    This is an admonition box without a title.
 
-!!! bug "This is a bug"
-    This is an admonition box without a title.
+## Links
 
-Magic link https://volto.kitconcept.com @sneridagh
+Magic link (bare URLs via `linkify` Sphinx extension)
 
-:smile: :heart: :thumbsup:
+https://volto.kitconcept.com
 
-```jsx hl_lines="1 3 12"
+Link to a file in the documentation.
+
+{doc}`index`
+
+
+(volto-demo-label)=
+
+### Link to an arbitrary target
+
+This requires setting up a label above a heading, then using MyST syntax to create a link to that label.
+
+Click the reference {ref}`volto-demo-label` to jump to the target.
+
+
+## Code
+
+```{code-block} jsx
+:linenos:
+:emphasize-lines: 1, 3, 12
+
   /**
    * Render method.
    * @method render
@@ -75,38 +109,17 @@ Magic link https://volto.kitconcept.com @sneridagh
   """ """
 ```
 
-=== "Tab 1"
-    Markdown **content**.
+## Toggle paragraph (Exercises / FAQ)
 
-    Multiple paragraphs.
+````{admonition} This is a title
+:class: toggle
 
-=== "Tab 2"
-    More Markdown **content**.
+```{code-block} python
+:linenos:
+:emphasize-lines: 1, 3
 
-    - list item a
-    - list item b
-
-Task List
-
-- [X] item 1
-    * [X] item A
-    * [ ] item B
-        more text
-        + [x] item a
-        + [ ] item b
-        + [x] item c
-    * [X] item C
-- [ ] item 2
-- [ ] item 3
-
-
-???+ note "Open styled details"
-
-    ??? danger "Nested details!"
-        And more content again.
-
-??? success "asdasd"
-    Content.
-
-??? warning classes
-    Content.
+a = 2
+print("my 1st line")
+print(f"my {a}nd line")
+```
+````

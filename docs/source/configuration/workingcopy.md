@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Working copy support
 
 Volto provide support for Plone's Working Copy feature. You need to install `plone.app.iterate` add-on in your Plone site that comes available by default. You can do that in Plone's control panel or using the Generic Setup facility.
