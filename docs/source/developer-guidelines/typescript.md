@@ -8,8 +8,9 @@ html_meta:
 
 # TypeScript
 
-!!! note
-    This feature is available since Volto 14. Please note that TypeScript is *not* allowed in Volto core, that's why it's not enabled in the core by default. This feature enables the use of TypeScript (as opt-in) in projects and in add-ons.
+```{note}
+This feature is available since Volto 14. Please note that TypeScript is *not* allowed in Volto core, that's why it's not enabled in the core by default. This feature enables the use of TypeScript (as opt-in) in projects and in add-ons.
+```
 
 It is possible to enable TypeScript support when developing you project with Volto.
 Volto itself is not written in TypeScript, but it is ready to use it if you want.

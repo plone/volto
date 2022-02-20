@@ -22,4 +22,5 @@ routing
 testing
 acceptance-tests
 accessibility-guidelines
+typescript
 ```

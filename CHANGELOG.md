@@ -17,6 +17,7 @@
 - Update add-on internationalization. @ksuess
 - Add MyST and Sphinx basic configuration for rapid build and comparison against MkDocs builds. @stevepiercy
 - Fix many MyST and Sphinx warnings. @stevepiercy
+- Remove MkDocs configuration. See https://github.com/plone/volto/issues/3042 @stevepiercy
 - Add Plone docs to Intersphinx and fix broken link. @stevepiercy
 - Get version from `package.json` @sneridagh
 - Remove legacy folder in docs @sneridagh
@@ -126,6 +127,11 @@ DatetimeWidget 'noPastDates' option: Take widgetOptions?.pattern_options?.noPast
 - Add `resolve` and `register` helper methods for the Volto config. They retrieve and register new components in the registry. @tiberiuichim @sneridagh
 - Add `Component` component, given a `name` of a component registered in the registry, it renders it, passing down the props. @tiberiuichim
 - Syncronize the content language with the UI language in multilingual sites. So when you are accessing a content in a given language the rest of the interface literals follow along (it updates the language cookie). So the UI remains consistent. @sneridagh
+- Add missing developer-guidelines/typescript to toctree @stevepiercy
+- Add Netlify for preview of Sphinx builds for pull requests against `master` and `plone6-docs`. @stevepiercy
+- Clean up toctree errors by removing obsolete files, adding `:orphan:` field list, and reorganizing some files. @sneridagh and @stevepiercy
+- Switch to using netlify.toml to configure Netlify Python environment. @stevepiercy
+- Convert admonition syntax from Markdown to MyST. @sneridagh
 
 ### Bugfix
 

@@ -39,7 +39,7 @@ plone.restapi documentation:
 - **Search and indexing integration**: by providing the right adapters, you can
   extract searchable text from blocks.
 
-!!! note
-    This section contains pointers for backend integration with Plone.
-    Contributions for the Guillotina backend are needed.
-
+```{note}
+This section contains pointers for backend integration with Plone.
+Contributions for the Guillotina backend are needed.
+```

@@ -49,8 +49,9 @@ import { SidebarPopup } from '@plone/volto/components';
 
 A helper component is available in core in order to simplify the task of defining and rendering the settings for a block: the `BlockDataForm` component.
 
-!!! note
-    `BlockDataForm` is a convenience component around the already available in core `InlineForm` that takes care of some aspects exclusively for Volto Blocks, like Variants and schemaExtenders. You can still use `InlineForm` across Volto, but using `BlockDataForm` is recommeneded for the blocks settings use case.
+```{note}
+`BlockDataForm` is a convenience component around the already available in core `InlineForm` that takes care of some aspects exclusively for Volto Blocks, like Variants and schemaExtenders. You can still use `InlineForm` across Volto, but using `BlockDataForm` is recommeneded for the blocks settings use case.
+```
 
 The edit block settings component needs to be described by a schema that matches the format used to serialize the content type definitions. The widgets that will be used in rendering the form follow the same algorithm that is used for the regular metadata fields for the content types. As an example of schema, it could look like this:
 
@@ -145,9 +146,9 @@ The HOC component `withObjectBrowser` wraps your component by making available t
 By default, it's enabled for all the component tree under the Blocks Editor, so it's available already for all the blocks in edit mode.
 However, if you need to instantiate it somewhere else, you can do it anyways by wrapping your component with it.
 
-!!! note
-    The default image block in Volto features both the Sidebar and the object browser, take a look at its source code in case you need more context on how they work.
-
+```{note}
+The default image block in Volto features both the Sidebar and the object browser, take a look at its source code in case you need more context on how they work.
+```
 
 (openobjectbrowser-handler-api-label)=
 

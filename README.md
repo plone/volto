@@ -1,6 +1,6 @@
 # Volto
 
-<img align="right" width="300" alt="Volto png" src="./docs/logos/volto-colorful.png" />
+<img align="right" width="300" alt="Volto png" src="./logos/volto-colorful.png" />
 
 [![NPM](https://img.shields.io/npm/v/@plone/volto.svg)](https://www.npmjs.com/package/@plone/volto)
 [![Build Status Core](https://github.com/plone/volto/actions/workflows/core.yml/badge.svg)](https://github.com/plone/volto/actions)

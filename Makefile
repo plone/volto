@@ -73,30 +73,23 @@ dist:
 test:
 	$(MAKE) -C "./api/" test
 
-.PHONY: docs-serve
-docs-serve:
-	(cd docs && ../bin/mkdocs serve)
-
-.PHONY: docs-build
-docs-build:
-# The build in netlify breaks because they have not installed ensurepip
-# So we should continue using virtualenv
-	virtualenv --python=python3 .
-	./bin/pip install -r requirements-docs.txt
-	(cd docs && ../bin/mkdocs build)
+.PHONY: storybook-build
+storybook-build:
 	yarn build-storybook -o docs/build/storybook
 
 bin/python:
 	python3 -m venv . || virtualenv --clear --python=python3 .
 	bin/python -m pip install --upgrade pip
-	bin/pip install -r requirements-myst.txt
+	bin/pip install -r requirements-docs.txt
 
 .PHONY: docs-clean
-docs-clean:  ## Clean docs build directory
+docs-clean:  ## Clean current and legacy docs build directories, and Python virtual environment
 	cd $(DOCS_DIR) && rm -rf $(BUILDDIR)/
+	rm -rf bin include lib
+	rm -rf docs/build
 
 .PHONY: docs-html
-html: bin/python  ## Build html
+docs-html: bin/python  ## Build html
 	cd $(DOCS_DIR) && $(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
@@ -105,7 +98,7 @@ html: bin/python  ## Build html
 docs-livehtml: bin/python  ## Rebuild Sphinx documentation on changes, with live-reload in the browser
 	cd "$(DOCS_DIR)" && ${SPHINXAUTOBUILD} \
 		--ignore "*.swp" \
-		-b html . "$(BUILDDIR)/html" $(SPHINXOPTS) $(O)
+		-b html . "$(BUILDDIR)/html" $(SPHINXOPTS)
 
 .PHONY: docs-linkcheck
 docs-linkcheck: bin/python  ## Run linkcheck
@@ -127,6 +120,11 @@ docs-spellcheck: bin/python  ## Run spellcheck
 	@echo
 	@echo "Spellcheck is finished; look for any errors in the above output " \
 		" or in $(BUILDDIR)/spellcheck/ ."
+
+.PHONY: netlify
+netlify:
+	pip install -r requirements-docs.txt
+	cd $(DOCS_DIR) && sphinx-build -b html $(ALLSPHINXOPTS) ../$(BUILDDIR)/html
 
 .PHONY: docs-test
 docs-test: docs-clean docs-linkcheck docs-spellcheck  ## Clean docs build, then run linkcheck, spellcheck
