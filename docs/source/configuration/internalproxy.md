@@ -35,13 +35,14 @@ What happens in the default development configuration/setup:
 back json to the frontend.
 * The web browser application is happy, because all connections go through the same URL and no CORS related security issues will be triggered.
 
-!!! tip
-    You could also use the internal proxy for production setups. For convenience and for
-    testing/demoing using the stock build, it is also enabled in production mode since
-    Volto 14. But it is bad for performance because the server side running Node process
-    is also responsable for generating the SSR HTML. With Nginx, Apache or another
-    'reverse proxy' you can also create an internal API mount which is more suited for
-    that. For more deployment information see ['Seemless mode'](/deploying/seamless-mode)
+```{tip}
+You could also use the internal proxy for production setups. For convenience and for
+testing/demoing using the stock build, it is also enabled in production mode since
+Volto 14. But it is bad for performance because the server side running Node process
+is also responsable for generating the SSR HTML. With Nginx, Apache or another
+'reverse proxy' you can also create an internal API mount which is more suited for
+that. For more deployment information see ['Seemless mode'](/deploying/seamless-mode)
+```
 
 ### Examples redefining the proxy target
 

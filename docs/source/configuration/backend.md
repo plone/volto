@@ -18,10 +18,11 @@ copy the ones you need for your project and create your own integration package.
 
 https://github.com/plone/plone.volto
 
-!!! tip
-    From Volto 5.1 and above, Volto features an internal proxy to your API server. So
-    you don't have to deal with CORS issues. It's enabled by default, pointing to the server specified in the `devProxyToApiPath` Volto settings
-    (http://localhost:8080/Plone). See [here](../configuration/internalproxy.md) for more information.
+```{tip}
+From Volto 5.1 and above, Volto features an internal proxy to your API server. So
+you don't have to deal with CORS issues. It's enabled by default, pointing to the server specified in the `devProxyToApiPath` Volto settings
+(http://localhost:8080/Plone). See [here](../configuration/internalproxy.md) for more information.
+```
 
 ## Install a Plone backend locally without Docker
 

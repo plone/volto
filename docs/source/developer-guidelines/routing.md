@@ -8,6 +8,7 @@ html_meta:
 
 # Routing
 
-!!! note
-    This documentation is a work in progress. Any help is welcome to fill in the
-    gaps!
+```{note}
+This documentation is a work in progress. Any help is welcome to fill in the
+gaps!
+```

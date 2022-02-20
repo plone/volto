@@ -8,8 +8,9 @@ html_meta:
 
 # Zero configuration builds
 
-!!! note
-    This feature is available since Volto 13.
+```{note}
+This feature is available since Volto 13.
+```
 
 In the past (before Volto 13), Volto was configured in build time using several
 environment vars, commonly supplied via the command line, like:
