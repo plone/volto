@@ -1,9 +1,11 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "Volto release management uses
+Semantic Versioning to communicate bugfixes, new features, and breaking changes."
+  "property=og:description": "Volto release management uses
+Semantic Versioning to communicate bugfixes, new features, and breaking changes."
+  "property=og:title": "Versioning policy"
+  "keywords": "Volto, Plone, frontend, React, Release, Version, Semantic"
 ---
 
 ```{eval-rst}
