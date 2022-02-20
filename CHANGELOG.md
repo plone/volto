@@ -4,14 +4,42 @@
 
 ### Breaking
 
-- Markup change in `LinkView` component.
-  See https://docs.voltocms.com/upgrade-guide/ for more information.
-
 ### Feature
 
 ### Bugfix
 
 ### Internal
+
+## 15.0.0-alpha.5 (2022-02-16)
+
+### Breaking
+
+- Lazyload draftjs library. See the upgrade guide on how that impacts you, in case you have extended the rich text editor configuration @tiberiuichim @kreafox
+  See https://docs.voltocms.com/upgrade-guide/ for more information.
+
+### Feature
+
+- Add `cookiesExpire` value to config to control the cookie expiration @giuliaghisini
+- Add a new type of filter facet for the Search block. Heavily refactor some searchblock internals. @tiberiuichim
+- Add date range facet to the search block @robgietema
+
+## 15.0.0-alpha.4 (2022-02-16)
+
+### Breaking
+
+- Markup change in `LinkView` component.
+- Rename `core-sandbox` to `coresandbox` for sake of consistency @sneridagh
+- Extend the original intent and rename `RAZZLE_TESTING_ADDONS` to `ADDONS`. @sneridagh
+  See https://docs.voltocms.com/upgrade-guide/ for more information.
+
+DatetimeWidget 'noPastDates' option: Take widgetOptions?.pattern_options?.noPastDates of backend schema into account. @ksuess
+
+### Internal
+
+- House cleanup, remove some unused files in the root @sneridagh
+- Move Webpack related files to `webpack-plugins` folder @sneridagh
+- Remove unused Dockerfiles @sneridagh
+- Update Docker compose to latest images and best practices @sneridagh
 
 ## 15.0.0-alpha.3 (2022-02-11)
 
@@ -133,7 +161,7 @@ new users/evaluators. @fredvd
 
 ### Feature
 
-- VocabularyTermsWidget: Token is now on creation of term editable, but stays ineditable afterwards.  @ksuess
+- VocabularyTermsWidget: Token is now on creation of term editable, but stays ineditable afterwards. @ksuess
 
 ### Bugfix
 
@@ -461,6 +489,8 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 - Update to plone.restapi 8.16.2 (revert missing_value PR) @sneridagh
 - Update all requirements and the reasoning behind them in builds @sneridagh
 - Update Plone version in api backend to 5.2.6. Update README and cleanup @fredvd
+- Various local development build improvements @rpatterson
+- Document CI changelog verifier failure details that mislead contributors
 - Document CI changelog verifier failure details that mislead contributors @rpatterson
 - Updated italian translation @pnicolli
 

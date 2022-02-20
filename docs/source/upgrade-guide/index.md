@@ -29,6 +29,40 @@ https://www.npmjs.com/package/react-cookie
 https://www.npmjs.com/package/universal-cookie-express
 https://www.npmjs.com/package/universal-cookie
 
+### Update your Rich Text Editor configuration
+
+DraftJS libraries are now lazy-loaded, and some changes have been introduced in the way that the rich text editor is bootstrapped. In case you have extended the rich text editor configuration in your projects you have to update your `src/config.js`:
+
+The old way:
+
+```js
+  export default function applyConfig(config) {
+    config.settings = {
+      ...config.settings,
+      listBlockTypes = [
+        ...config.settings.listBlockTypes,
+        'my-list-item',
+      ]
+    }
+    return config;
+  }
+
+```
+
+The new way:
+
+```js
+  export default function applyConfig(config) {
+    const { richtextEditorSettings } = config.settings;
+    config.settings.richtextEditorSettings = (props) => {
+      const result = richtextEditorSettings(props);
+      result.listBlockTypes = [...result.listBlockTypes, 'my-list-item']
+      return result;
+    }
+    return config;
+  }
+```
+
 ### Language Switcher no longer takes care of the sync of the language
 
 This responsability has been transferred in full to the `MultilingualRedirector`, if you have
@@ -38,6 +72,20 @@ Not doing so won't break your project, but they won't get the latest features an
 ### LinkView component markup change
 
 The `LinkView` component `The link address is:` part now it's wrapped in a `<p>` block instead of a `<span>` block. Please check if you have a CSS bound to that node and adjust accordingly.
+
+### Rename core-sandbox fixture to coresandbox
+
+Only applying to Volto core development, for the sake of consistency with the other fixtures, `core-sandbox` fixture it's been renamed to `coresandbox` in all scripts and related file paths and filenames.
+
+### Extend the original intent and rename `RAZZLE_TESTING_ADDONS` to `ADDONS`.
+
+Originally the `RAZZLE_TESTING_ADDONS` environment variable was an escape hatch to load some components and configurations not present in vanilla Volto.
+One could enable them at will.
+Initially thought as fixtures for acceptance tests, the original intent has been repurposed and extended to just `ADDONS`.
+One could extend the `ADDONS` list configuration via this environment variable.
+
+It works for published packages, such as those add-ons that live in the `packages` folder locally to your project.
+This is similar to the testing add-ons from vanilla Volto.
 
 ## Upgrading to Volto 14.x.x
 
