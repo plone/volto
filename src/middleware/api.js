@@ -205,6 +205,7 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
       },
       (error) => {
         const { settings } = config;
+
         // Only SRR can set ECONNREFUSED
         if (error.code === 'ECONNREFUSED') {
           next({
@@ -234,6 +235,17 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
             error,
             statusCode: error.code,
             connectionRefused: true,
+            type: SET_APIERROR,
+          });
+        }
+
+        // Redirect
+        else if (error?.code === 301) {
+          next({
+            ...rest,
+            error,
+            statusCode: error.code,
+            connectionRefused: false,
             type: SET_APIERROR,
           });
         }
