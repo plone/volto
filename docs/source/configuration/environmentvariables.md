@@ -165,6 +165,13 @@ yarn add volto-slate
 ADDONS=volto-slate:asDefault yarn start
 ```
 
+If you need to specify several of them:
+
+```bash
+yarn add volto-slate
+ADDONS="volto-slate:asDefault;@kitconcept/volto-blocks-grid" yarn start
+```
+
 As a result, your app will load the add-ons in the following order:
 
 - `@kitconcept/volto-blocks-grid`
