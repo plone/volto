@@ -457,4 +457,4 @@ You can use `yarn test src/addons/addon-name` to run tests.
 If you have generated your Volto project recently (after the summer of 2020),
 you don't have to do anything to have automatic integration with ESLint,
 otherwise make sure to upgrade your project's `.eslintrc` to the `.eslintrc.js`
-version, according to the {doc}`/upgrade-guide/index`.
+version, according to the {doc}`../upgrade-guide/index`.

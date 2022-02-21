@@ -41,6 +41,7 @@
 - Clean up toctree errors by removing obsolete files, adding `:orphan:` field list, and reorganizing some files. @sneridagh and @stevepiercy
 - Switch to using netlify.toml to configure Netlify Python environment. @stevepiercy
 - Convert admonition syntax from Markdown to MyST. @sneridagh
+- Make links build both in Volto and Plone documentation. See https://github.com/plone/volto/pull/3094 @stevepiercy
 
 ## 15.0.0-alpha.5 (2022-02-16)
 

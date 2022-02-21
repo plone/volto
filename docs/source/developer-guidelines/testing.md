@@ -1,9 +1,9 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "We use Jest for unit testing in Volto. The popular @testing-library/react is also available for writing your tests. For every feature or component, a unit test is mandatory in Volto core."
+  "property=og:description": "We use Jest for unit testing in Volto. The popular @testing-library/react is also available for writing your tests. For every feature or component, a unit test is mandatory in Volto core."
+  "property=og:title": "Testing Volto"
+  "keywords": "Volto, Plone, frontend, React, testing, Jest"
 ---
 
 # Testing
@@ -23,7 +23,9 @@ or slightly modify it. Volto provide a way to do it using a `jest.config.js` fil
 pointing the test runner to a file of your choice, using `RAZZLE_JEST_CONFIG`
 environment variable.
 
-    RAZZLE_JEST_CONFIG=my-custom-jest-config.js yarn test
+```shell
+RAZZLE_JEST_CONFIG=my-custom-jest-config.js yarn test
+```
 
 ```{note}
 Both configurations are merged in a way that the keys of the config provided override  the initial (`package.json`) default config, either in Volto or in your projects.
@@ -40,7 +42,7 @@ You can use the `ADDONS` environment variable to define them.
 ADDONS=test-addon,test-addon2 yarn start
 ```
 
- See {doc}`/configuration/environmentvariables` for more information.
+ See {doc}`../configuration/environmentvariables` for more information.
 
 ## Developing Cypress tests
 
