@@ -173,7 +173,6 @@ As a result, your app will load the add-ons in the following order:
 
 ```{important}
 The `ADDONS` key is a Volto specific configuration. Simply setting `ADDONS` doesn't download the javascript package. This has to be covered by another way, either installing the addon package (with yarn add) or loading it as a development package with mrs-developer.
-Please also notice that `ADDONS` does *not* work for development packages, which are *always* enabled if declared via `mrs.developer.json`.
 ```
 
 ## BUILD_DIR

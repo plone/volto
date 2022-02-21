@@ -187,7 +187,7 @@ const defaultModify = ({
   }
 
   const addonsLoaderPath = createAddonsLoader(
-    [...registry.getAddonDependencies(), ...addonsFromEnvVar],
+    registry.getAddonDependencies(),
     registry.packages,
   );
 
