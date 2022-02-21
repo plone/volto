@@ -34,11 +34,14 @@
     "start-spa": "razzle start --type=spa",
     "build": "razzle build",
     "build-spa": "razzle build --type=spa",
+    "build:clean": "rm -rf build dist",
+    "build:dist": "yarn build:clean && yarn build && mv build dist",
     "test": "razzle test --env=jest-environment-jsdom-sixteen --maxWorkers=50%",
     "test:ci": "CI=true NODE_ICU_DATA=node_modules/full-icu razzle test --env=jest-environment-jsdom-sixteen",
     "test:husky": "CI=true yarn test --bail --findRelatedTests",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
     "start:prod": "NODE_ENV=production node build/server.js",
+    "start:dist": "NODE_ENV=production BUILD_DIR=dist node dist/server.js",
     "prettier": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,json}'",
     "prettier:fix": "./node_modules/.bin/prettier --single-quote --write 'src/**/*.{js,jsx,ts,tsx,json}'",
     "stylelint": "./node_modules/.bin/stylelint 'theme/**/*.{css,less}' 'src/**/*.{css,less}'",
@@ -199,7 +202,7 @@
   ],
   "release-it": {
     "hooks": {
-      "before:bump": "yarn i18n",
+      "before:bump": "yarn i18n && yarn build:dist",
       "after:bump": "node changelogupdater.js bump ${version}",
       "after:release": "node changelogupdater.js back ${version} && git commit -am 'Back to development' && git push"
     },

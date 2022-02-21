@@ -171,5 +171,23 @@ As a result, your app will load the add-ons in the following order:
 - `@eeacms/volto-accordion-block`
 - `volto-slate`
 
-!!! important
-    `ADDONS` does *not* work for development packages, which are *always* enabled if defined in your `jsconfig.json` or via `mrs.developer.json`.
+```{important}
+The `ADDONS` key is a Volto specific configuration. Simply setting `ADDONS` doesn't download the javascript package. This has to be covered by another way, either installing the addon package (with yarn add) or loading it as a development package with mrs-developer.
+Please also notice that `ADDONS` does *not* work for development packages, which are *always* enabled if declared via `mrs.developer.json`.
+```
+
+## BUILD_DIR
+
+This is a runtime-only environment variable that directs the build to run Volto from an especific location, other than the default folder `build`.
+
+```bash
+yarn
+BUILD_DIR=dist node dist/server.js
+```
+
+or
+
+```bash
+yarn
+yarn start:dist
+```
