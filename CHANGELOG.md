@@ -2,11 +2,11 @@
 
 ## 15.0.0 (unreleased)
 
-### Breaking
-
 ### Feature
 
-### Bugfix
+- DatetimeWidget 'noPastDates' option: Take widgetOptions?.pattern_options?.noPastDates of backend schema into account. @ksuess
+- Add a new type of filter facet for the Search block. Heavily refactor some searchblock internals. @tiberiuichim
+- Add date range facet to the search block @robgietema
 
 ### Internal
 
@@ -40,8 +40,6 @@
 ### Feature
 
 - Add `cookiesExpire` value to config to control the cookie expiration @giuliaghisini
-- Add a new type of filter facet for the Search block. Heavily refactor some searchblock internals. @tiberiuichim
-- Add date range facet to the search block @robgietema
 
 ## 15.0.0-alpha.4 (2022-02-16)
 
@@ -51,8 +49,6 @@
 - Rename `core-sandbox` to `coresandbox` for sake of consistency @sneridagh
 - Extend the original intent and rename `RAZZLE_TESTING_ADDONS` to `ADDONS`. @sneridagh
   See https://docs.voltocms.com/upgrade-guide/ for more information.
-
-DatetimeWidget 'noPastDates' option: Take widgetOptions?.pattern_options?.noPastDates of backend schema into account. @ksuess
 
 ### Internal
 
