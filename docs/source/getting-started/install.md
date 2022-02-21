@@ -3,7 +3,7 @@ html_meta:
   "description": "Installing Volto"
   "property=og:description": "Installing Volto"
   "property=og:title": "Getting Started"
-  "keywords": "Volto, Plone, frontend, React, install, nvm, nodejs"
+  "keywords": "Volto, Plone, frontend, React, install, nvm, NodeJS, JavaScript"
 ---
 
 # Getting Started
@@ -25,23 +25,23 @@ are assuming a MacOS/Linux machine:
 
 There are three processes continuously running when you have a working Volto website:
 
-1. A frontend web application running in your browser (Javascript)
-2. A Node.js server process that delivers the javascript to the client and does
-   Server Side Rendering (SSR) of your pages on first request (Javascript, the
+1. A frontend web application running in your browser (JavaScript)
+2. A Node.js server process that delivers the JavaScript to the client and does
+   Server Side Rendering (SSR) of your pages on first request (JavaScript, the
    Razzle package is used for SSR)
 3. A Plone server process that stores and delivers all content through a REST API (Python)
 
-When you start with Volto most of the first customisations you will want to make (or mabye
-ever need to make) are in the javascript code used in the browser and Razzle process. Therefore
-this getting started chapter will focus on installing a nodejs/javascript environment locally
+When you start with Volto most of the first customisations you will want to make (or maybe
+ever need to make) are in the JavaScript code used in the browser and Razzle process. Therefore
+this getting started chapter will focus on installing a NodeJS/JavaScript environment locally
 and suggest you start the API backend using a container.
 
 
 ## Install nvm (NodeJS version manager)
 
-If you have a working Node javascript development already set up on your machine or you prefer
+If you have a working Node JavaScript development already set up on your machine or you prefer
 another management tool to install/maintain node this step is not needed. If you have less
-experience with setting up javascript, it's a good idea to integrate nvm for development, as
+experience with setting up JavaScript, it's a good idea to integrate nvm for development, as
 it provides easy access to any NodeJS released version.
 
 1.  Open a terminal console and type:

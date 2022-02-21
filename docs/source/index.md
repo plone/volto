@@ -33,7 +33,7 @@ developer frustration and improves end-user experience.
 
 To start developing a new Volto project you should have minimal React and
 modern Javascript knowledge. Follow the
-{doc}`/getting-started/install` guide to bootstrap a new Volto
+{doc}`getting-started/install` guide to bootstrap a new Volto
 project and start hacking!
 
 ```{toctree}
