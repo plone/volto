@@ -32,6 +32,13 @@ class RenderUsers extends Component {
       }),
     ).isRequired,
     onDelete: PropTypes.func.isRequired,
+    groups: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string,
+        roles: PropTypes.arrayOf(PropTypes.string),
+        groupname: PropTypes.string,
+      }),
+    ),
   };
 
   /**
@@ -44,6 +51,7 @@ class RenderUsers extends Component {
     super(props);
     this.state = {};
     this.onChange = this.onChange.bind(this);
+    this.renderIcon = this.renderIcon.bind(this);
   }
   /**
    * @param {*} event
@@ -56,13 +64,31 @@ class RenderUsers extends Component {
     this.props.updateUser(user, role);
   }
 
+  renderIcon(role) {
+    const { user, groups } = this.props;
+    const isMember = user.groups.items.some((group) => {
+      const inheritedGroup = groups.find((item) => item.id === group);
+      return inheritedGroup?.roles.includes(role);
+    });
+    if (isMember) {
+      return <Icon name={groupSVG} size="20px" title={'plone-svg'} />;
+    }
+    return (
+      <Checkbox
+        checked={user.roles.includes(role)}
+        onChange={this.onChange}
+        value={`${user.id}.${role}`}
+      />
+    );
+  }
+
   /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
-    const { selected, user, onChangeSelect, roles, inheritedRole } = this.props;
+    const { selected, user, onChangeSelect, roles } = this.props;
     const isSelected = selected.includes(user.id);
     return (
       <Table.Row key={this.props.user.username}>
@@ -80,22 +106,7 @@ class RenderUsers extends Component {
           {user.fullname || user.username}
         </Table.Cell>
         {roles.map((role) => (
-          <Table.Cell key={role.id}>
-            {inheritedRole && inheritedRole.includes(role.id) ? (
-              <Icon
-                name={groupSVG}
-                size="20px"
-                color="#007EB1"
-                title={'plone-svg'}
-              />
-            ) : (
-              <Checkbox
-                checked={user.roles.includes(role.id)}
-                onChange={this.onChange}
-                value={`${user.id}.${role.id}`}
-              />
-            )}
-          </Table.Cell>
+          <Table.Cell key={role.id}>{this.renderIcon(role.id)}</Table.Cell>
         ))}
       </Table.Row>
     );

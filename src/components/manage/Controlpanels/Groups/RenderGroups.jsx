@@ -37,6 +37,13 @@ class RenderGroups extends Component {
     ).isRequired,
     inheritedRole: PropTypes.array,
     onDelete: PropTypes.func.isRequired,
+    groups: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string,
+        roles: PropTypes.arrayOf(PropTypes.string),
+        groupname: PropTypes.string,
+      }),
+    ),
   };
 
   /**
@@ -48,6 +55,7 @@ class RenderGroups extends Component {
   constructor(props) {
     super(props);
     this.onChangeRole = this.onChangeRole.bind(this);
+    this.renderIcon = this.renderIcon.bind(this);
   }
 
   /**
@@ -60,14 +68,23 @@ class RenderGroups extends Component {
     this.props.updateGroups(group, role);
   }
 
-  /**
-   *@param {*}
-   *@returns {Boolean}
-   *@memberof RenderGroups
-   */
-  isAuthGroup = (roleId) => {
-    return this.props.inheritedRole.includes(roleId);
-  };
+  renderIcon(role) {
+    const { groups, group } = this.props;
+    const isMember = group.members.items.some((member) => {
+      const childMembers = groups.find((item) => item.id === member);
+      return childMembers?.roles.includes(role);
+    });
+    if (isMember) {
+      return <Icon name={groupSVG} size="20px" title={'plone-svg'} />;
+    }
+    return (
+      <Checkbox
+        checked={group.roles.includes(role)}
+        onChange={this.onChangeRole}
+        value={`${group.id}.${role}`}
+      />
+    );
+  }
 
   /**
    * Render method.
@@ -75,13 +92,7 @@ class RenderGroups extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const {
-      selected,
-      group,
-      onChangeSelect,
-      roles,
-      inheritedRole,
-    } = this.props;
+    const { selected, group, onChangeSelect, roles } = this.props;
     const isSelected = selected.includes(group.id);
     return (
       <Table.Row key={group.title}>
@@ -97,28 +108,7 @@ class RenderGroups extends Component {
         </Table.Cell>
         <Table.Cell>{group.groupname}</Table.Cell>
         {roles.map((role) => (
-          <Table.Cell key={role.id}>
-            {inheritedRole &&
-            inheritedRole.includes(role.id) &&
-            group.roles.includes('Authenticated') ? (
-              <Icon
-                name={groupSVG}
-                size="20px"
-                color="#007EB1"
-                title={'plone-svg'}
-              />
-            ) : (
-              <Checkbox
-                checked={
-                  group.id === 'AuthenticatedUsers'
-                    ? this.isAuthGroup(role.id)
-                    : group.roles.includes(role.id)
-                }
-                onChange={this.onChangeRole}
-                value={`${this.props.group.id}.${role.id}`}
-              />
-            )}
-          </Table.Cell>
+          <Table.Cell key={role.id}>{this.renderIcon(role.id)}</Table.Cell>
         ))}
       </Table.Row>
     );

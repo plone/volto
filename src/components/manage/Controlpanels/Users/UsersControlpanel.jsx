@@ -514,12 +514,7 @@ class UsersControlpanel extends Component {
               defaultMessage="Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group."
               values={{
                 plone_svg: (
-                  <Icon
-                    name={groupSVG}
-                    size="20px"
-                    color="#007EB1"
-                    title={'plone-svg'}
-                  />
+                  <Icon name={groupSVG} size="20px" title={'plone-svg'} />
                 ),
               }}
             />
@@ -605,8 +600,8 @@ class UsersControlpanel extends Component {
                       onChangeSelect={this.onChangeSelect}
                       roles={this.props.roles}
                       user={user}
+                      groups={this.props.groups}
                       updateUser={this.updateUserRole}
-                      inheritedRole={this.props.inheritedRole}
                     />
                   ))}
               </Table.Body>
@@ -695,7 +690,6 @@ export default compose(
       deleteRequest: state.users.delete,
       createRequest: state.users.create,
       loadRolesRequest: state.roles,
-      inheritedRole: state.authRole.authenticatedRole,
     }),
     (dispatch) =>
       bindActionCreators(

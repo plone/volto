@@ -8,7 +8,6 @@ import {
   listGroups,
   listRoles,
   updateGroup,
-  authenticatedRole,
 } from '@plone/volto/actions';
 import {
   Icon,
@@ -485,12 +484,7 @@ class GroupsControlpanel extends Component {
               defaultMessage="Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group."
               values={{
                 plone_svg: (
-                  <Icon
-                    name={groupSVG}
-                    size="20px"
-                    color="#007EB1"
-                    title={'plone-svg'}
-                  />
+                  <Icon name={groupSVG} size="20px" title={'plone-svg'} />
                 ),
               }}
             />
@@ -573,10 +567,10 @@ class GroupsControlpanel extends Component {
                       key={group.id}
                       roles={this.props.roles}
                       group={group}
+                      groups={this.props.groups}
                       selected={this.state.selected}
                       onChangeSelect={this.onChangeSelect}
                       updateGroups={this.updateGroupRole}
-                      inheritedRole={this.state.authenticatedRole}
                     />
                   ))}
               </Table.Body>
@@ -664,7 +658,6 @@ export default compose(
       deleteGroupRequest: state.groups.delete,
       createGroupRequest: state.groups.create,
       loadRolesRequest: state.roles,
-      inheritedRole: state.authRole.authenticatedRole,
     }),
     (dispatch) =>
       bindActionCreators(
@@ -674,7 +667,6 @@ export default compose(
           deleteGroup,
           createGroup,
           updateGroup,
-          authenticatedRole,
         },
         dispatch,
       ),
