@@ -79,7 +79,11 @@ class Api {
           }
 
           request.end((err, response) => {
-            if (request.url !== request.xhr?.responseURL) {
+            if (
+              request.url &&
+              request.xhr &&
+              request.url !== request.xhr.responseURL
+            ) {
               return reject({
                 code: 301,
                 url: request.xhr.responseURL,
