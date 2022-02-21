@@ -7,6 +7,7 @@
 ### Feature
 
 - Introduce the new `BUILD_DIR` runtime environment variable to direct the build to run in an especific location, different than `build` folder. @sneridagh
+- Handle redirect permanent calls from the backend in the frontend (e.g. when changing the short name) @robgietema
 
 ### Bugfix
 
@@ -52,9 +53,6 @@
 ### Feature
 
 - Add `cookiesExpire` value to config to control the cookie expiration @giuliaghisini
-- Add a new type of filter facet for the Search block. Heavily refactor some searchblock internals. @tiberiuichim
-- Add date range facet to the search block @robgietema
-- Handle redirect permanent calls from the backend in the frontend (e.g. when changing the short name) @robgietema
 
 ## 15.0.0-alpha.4 (2022-02-16)
 
