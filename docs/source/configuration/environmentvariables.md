@@ -165,7 +165,7 @@ yarn add volto-slate
 ADDONS=volto-slate:asDefault yarn start
 ```
 
-If you need to specify several of them:
+If you need to specify several add-ons, separate them with a semicolon (`;`):
 
 ```bash
 yarn add volto-slate
