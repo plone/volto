@@ -411,15 +411,15 @@
   "client": {
     "css": [
       "/static/css/15.2cdd5437.chunk.css",
-      "/static/css/client.72f6ae1a.chunk.css"
+      "/static/css/client.4cb92c57.chunk.css"
     ],
     "js": [
       "/static/js/runtime~client.d372df0e.js",
       "/static/js/runtime~client.d372df0e.js.map",
       "/static/js/15.2cdd5437.chunk.js",
       "/static/js/15.2cdd5437.chunk.js.map",
-      "/static/js/client.72f6ae1a.chunk.js",
-      "/static/js/client.72f6ae1a.chunk.js.map"
+      "/static/js/client.4cb92c57.chunk.js",
+      "/static/js/client.4cb92c57.chunk.js.map"
     ],
     "chunks": [
       14,
