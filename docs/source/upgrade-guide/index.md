@@ -272,7 +272,7 @@ More information: https://docs.voltocms.com/upgrade-guide/#volto-configuration-r
 ### Content locking
 
 Not really a breaking change, but it's worth noting it. By default, Volto 14 comes with
-[content-locking](/configuration/locking) enabled, if the backend supports it. Thus:
+{doc}`../configuration/locking` enabled, if the backend supports it. Thus:
 
 - Upgrade Plone RestAPI
   - **plone.restapi**>=`8.9.0` (Plone 5+)
@@ -348,8 +348,8 @@ we are deprecating it in Volto 13. Please update your projects to a NodeJS LTS v
 
 Not really a breaking change, but it's worth noting it. By default, Volto 13 in
 development mode uses the internal proxy in seamless mode otherwise configured
-differently. To learn more about the seamless mode read: [Seamless mode](/deploying/seamless-mode)
-and [zero configuration builds](/configuration/zero-config-builds)
+differently. To learn more about the seamless mode read: {doc}`../deploying/seamless-mode`
+and {doc}`../configuration/zero-config-builds`.
 
 ## Refactored Listing block using schemas and ObjectWidget
 

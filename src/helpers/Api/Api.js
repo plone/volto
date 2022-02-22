@@ -46,7 +46,10 @@ class Api {
     const cookies = new Cookies();
 
     methods.forEach((method) => {
-      this[method] = (path, { params, data, type, headers = {} } = {}) => {
+      this[method] = (
+        path,
+        { params, data, type, headers = {}, checkUrl = false } = {},
+      ) => {
         let request;
         let promise = new Promise((resolve, reject) => {
           request = superagent[method](formatUrl(path));
@@ -78,9 +81,20 @@ class Api {
             request.send(data);
           }
 
-          request.end((err, response) =>
-            err ? reject(err) : resolve(response.body || response.text),
-          );
+          request.end((err, response) => {
+            if (
+              checkUrl &&
+              request.url &&
+              request.xhr &&
+              request.url !== request.xhr.responseURL
+            ) {
+              return reject({
+                code: 301,
+                url: request.xhr.responseURL,
+              });
+            }
+            return err ? reject(err) : resolve(response.body || response.text);
+          });
         });
         promise.request = request;
         return promise;

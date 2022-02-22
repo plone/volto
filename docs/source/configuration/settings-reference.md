@@ -216,7 +216,7 @@ criticalCssPath
     A path relative to the project root that points to an optional CSS file. If
     this file exists it is loaded and its content is embedded inline into the
     generated HTML. By default this path is `public/critical.css`. See the
-    [Performance](/deploying/performance) section for more details.
+    {doc}`../deploying/performance` section for more details.
 
 extractScripts
     An object that allows you to configure the insertion of scripts on the page
