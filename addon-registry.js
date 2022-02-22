@@ -111,7 +111,7 @@ class AddonConfigurationRegistry {
     this.resultantMergedAddons = [
       ...(packageJson.addons || []),
       ...(this.voltoConfigJS.addons || []),
-      ...(process.env.ADDONS || '').split(';'),
+      ...(process.env.ADDONS ? process.env.ADDONS.split(';') : []),
     ];
 
     this.projectRootPath = projectRootPath;
