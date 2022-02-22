@@ -7,6 +7,7 @@
 ### Feature
 
 - Introduce the new `BUILD_DIR` runtime environment variable to direct the build to run in an especific location, different than `build` folder. @sneridagh
+- Handle redirect permanent calls from the backend in the frontend (e.g. when changing the short name) @robgietema
 
 ### Bugfix
 
