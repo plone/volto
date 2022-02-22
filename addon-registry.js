@@ -111,7 +111,6 @@ class AddonConfigurationRegistry {
     this.resultantMergedAddons = [
       ...(packageJson.addons || []),
       ...(this.voltoConfigJS.addons || []),
-      ...(process.env.ADDONS ? process.env.ADDONS.split(';') : []),
     ];
 
     this.projectRootPath = projectRootPath;
@@ -128,7 +127,10 @@ class AddonConfigurationRegistry {
     this.initAddonsFromEnvVar();
 
     this.dependencyGraph = buildDependencyGraph(
-      this.resultantMergedAddons,
+      [
+        ...this.resultantMergedAddons,
+        ...(process.env.ADDONS ? process.env.ADDONS.split(';') : []),
+      ],
       (name) => {
         this.initPublishedPackage(name);
         return this.packages[name].addons || [];
