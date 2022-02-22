@@ -2,12 +2,6 @@
 
 ## 15.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
-### Bugfix
-
 ### Internal
 
 - Better implementation of the add-on load coming from the environment variable `ADDONS` @sneridagh
