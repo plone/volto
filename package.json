@@ -203,7 +203,11 @@
   ],
   "release-it": {
     "hooks": {
-      "before:bump": "yarn i18n && yarn build:dist && git add dist",
+      "before:bump": [
+        "yarn i18n",
+        "yarn build:dist",
+        "git add locales dist"
+      ],
       "after:bump": "node changelogupdater.js bump ${version}",
       "after:release": "node changelogupdater.js back ${version} && git commit -am 'Back to development' && git push"
     },
