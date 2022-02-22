@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Better implementation of the add-on load coming from the environment variable `ADDONS` @sneridagh
+
 ## 15.0.0-alpha.7 (2022-02-22)
 
 ### Feature

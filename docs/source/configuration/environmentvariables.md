@@ -165,6 +165,13 @@ yarn add volto-slate
 ADDONS=volto-slate:asDefault yarn start
 ```
 
+If you need to specify several add-ons, separate them with a semicolon (`;`):
+
+```bash
+yarn add volto-slate
+ADDONS="volto-slate:asDefault;@kitconcept/volto-blocks-grid" yarn start
+```
+
 As a result, your app will load the add-ons in the following order:
 
 - `@kitconcept/volto-blocks-grid`
@@ -173,7 +180,6 @@ As a result, your app will load the add-ons in the following order:
 
 ```{important}
 The `ADDONS` key is a Volto specific configuration. Simply setting `ADDONS` doesn't download the javascript package. This has to be covered by another way, either installing the addon package (with yarn add) or loading it as a development package with mrs-developer.
-Please also notice that `ADDONS` does *not* work for development packages, which are *always* enabled if declared via `mrs.developer.json`.
 ```
 
 ## BUILD_DIR

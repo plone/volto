@@ -127,7 +127,10 @@ class AddonConfigurationRegistry {
     this.initAddonsFromEnvVar();
 
     this.dependencyGraph = buildDependencyGraph(
-      this.resultantMergedAddons,
+      [
+        ...this.resultantMergedAddons,
+        ...(process.env.ADDONS ? process.env.ADDONS.split(';') : []),
+      ],
       (name) => {
         this.initPublishedPackage(name);
         return this.packages[name].addons || [];
@@ -205,7 +208,7 @@ class AddonConfigurationRegistry {
 
   initAddonsFromEnvVar() {
     if (process.env.ADDONS) {
-      process.env.ADDONS.split(',').forEach(
+      process.env.ADDONS.split(';').forEach(
         this.initAddonFromEnvVar.bind(this),
       );
     }
@@ -397,7 +400,7 @@ class AddonConfigurationRegistry {
   getAddonsFromEnvVarCustomizationPaths() {
     let aliases = {};
     if (process.env.ADDONS) {
-      process.env.ADDONS.split(',').forEach((addon) => {
+      process.env.ADDONS.split(';').forEach((addon) => {
         const normalizedAddonName = addon.split(':')[0];
         const testingPackagePath = `${this.projectRootPath}/packages/${normalizedAddonName}/src`;
         if (fs.existsSync(testingPackagePath)) {
