@@ -109,8 +109,7 @@ test-clean:  ## Test in a separate, clean worktree to expose clean build issues
 	    mv --backup=numbered -v \
 	        "./.git/hooks/post-checkout~" "./.git/hooks/post-checkout"
 	fi
-	cd "$${tmp_worktree}"
-	$(MAKE) test
+	$(MAKE) -C "$${tmp_worktree}/" test
 # Leave the temporary worktree around for the developer to inspect.
 # Use the `$ make clean-tmp-worktrees` target to clean up all temporary worktrees
 
