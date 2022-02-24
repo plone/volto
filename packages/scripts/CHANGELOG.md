@@ -1,5 +1,15 @@
 # Change Log
 
+## 1.4.2 (unreleased)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
 ## 1.4.1 (2022-02-24)
 
 ### Bugfix
