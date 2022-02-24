@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix `branch` option not getting into the `getAddonInfo` function @sneridagh
+
 ### Internal
 
 ## 1.4.0 (2021-12-29)
