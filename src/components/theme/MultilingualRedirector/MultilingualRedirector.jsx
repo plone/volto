@@ -9,7 +9,7 @@ import { normalizeLanguageName } from '@plone/volto/helpers';
 const MultilingualRedirector = (props) => {
   const { settings } = config;
   const { pathname, children } = props;
-  const [cookies] = useCookies(['name']);
+  const [cookies] = useCookies();
   const currentLanguage = cookies['I18N_LANGUAGE'] || settings.defaultLanguage;
   const redirectToLanguage = settings.supportedLanguages.includes(
     currentLanguage,
