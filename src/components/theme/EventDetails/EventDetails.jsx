@@ -45,11 +45,13 @@ const messages = defineMessages({
   },
 });
 
-const EventDetails = ({ content }) => {
+const EventDetails = ({ content, display_as = 'aside' }) => {
   const intl = useIntl();
-
   return (
-    <Segment floated="right" as="aside">
+    <Segment
+      as={display_as}
+      {...(display_as === 'aside' ? { floated: 'right' } : {})}
+    >
       {content.subjects.length > 0 && (
         <>
           <Header dividing sub>

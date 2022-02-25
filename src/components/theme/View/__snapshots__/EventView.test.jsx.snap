@@ -9,7 +9,7 @@ exports[`renders an event view component with all props 1`] = `
     className="ui grid"
   >
     <div
-      className="seven wide computer twelve wide mobile seven wide tablet column"
+      className="seven wide column mobile hidden"
     >
       <h1
         className="documentFirstHeading"
@@ -30,7 +30,7 @@ exports[`renders an event view component with all props 1`] = `
       />
     </div>
     <div
-      className="five wide computer twelve wide mobile five wide tablet column"
+      className="five wide column mobile hidden"
     >
       <aside
         className="ui right floated segment"
@@ -230,6 +230,27 @@ exports[`renders an event view component with all props 1`] = `
         </p>
       </aside>
     </div>
+    <div
+      className="mobile only twelve wide column"
+    >
+      <h1
+        className="documentFirstHeading"
+      >
+        Hello World!
+      </h1>
+      <p
+        className="documentDescription"
+      >
+        Hi
+      </p>
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<p>Hello World!</p>",
+          }
+        }
+      />
+    </div>
   </div>
 </div>
 `;
@@ -243,7 +264,7 @@ exports[`renders an event view component with only required props 1`] = `
     className="ui grid"
   >
     <div
-      className="seven wide computer twelve wide mobile seven wide tablet column"
+      className="seven wide column mobile hidden"
     >
       <h1
         className="documentFirstHeading"
@@ -252,7 +273,7 @@ exports[`renders an event view component with only required props 1`] = `
       </h1>
     </div>
     <div
-      className="five wide computer twelve wide mobile five wide tablet column"
+      className="five wide column mobile hidden"
     >
       <aside
         className="ui right floated segment"
@@ -285,6 +306,15 @@ exports[`renders an event view component with only required props 1`] = `
         </p>
       </aside>
     </div>
+    <div
+      className="mobile only twelve wide column"
+    >
+      <h1
+        className="documentFirstHeading"
+      >
+        Hello World!
+      </h1>
+    </div>
   </div>
 </div>
 `;
@@ -298,7 +328,7 @@ exports[`renders an event view component without links to api in the text 1`] = 
     className="ui grid"
   >
     <div
-      className="seven wide computer twelve wide mobile seven wide tablet column"
+      className="seven wide column mobile hidden"
     >
       <h1
         className="documentFirstHeading"
@@ -314,7 +344,7 @@ exports[`renders an event view component without links to api in the text 1`] = 
       />
     </div>
     <div
-      className="five wide computer twelve wide mobile five wide tablet column"
+      className="five wide column mobile hidden"
     >
       <aside
         className="ui right floated segment"
@@ -346,6 +376,22 @@ exports[`renders an event view component without links to api in the text 1`] = 
           </span>
         </p>
       </aside>
+    </div>
+    <div
+      className="mobile only twelve wide column"
+    >
+      <h1
+        className="documentFirstHeading"
+      >
+        Hello World!
+      </h1>
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<p>Hello World!</p><p>This is an <a href=\\"/foo/bar\\">internal link</a> and a <a href=\\"/foo/baz\\">second link</a></p>",
+          }
+        }
+      />
     </div>
   </div>
 </div>
