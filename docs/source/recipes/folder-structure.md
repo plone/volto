@@ -6,8 +6,8 @@ resources is used.
 
 ## Components
 
-`components` contains all the React components, AKA views. This includes views for the
-management interface and the theme.
+`components` contains all the React components, also known as views. This includes views
+for the management interface and the theme.
 
 ## Actions
 

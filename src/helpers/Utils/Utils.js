@@ -187,10 +187,10 @@ export const normalizeLanguageName = (language) => {
 };
 
 /**
- * Create an object with properties for each object with an `id` in an array
+ * Given array of objects with `id` property, map to object w/ properties by `id`
  * @function arrayWIdsToObject
  * @param {Array} An array of objects, each has an `id` property with a string value
- * @returns {Object} Oobject with property for each array object keyed by the `id`
+ * @returns {Object} Object with property for each array object keyed by the `id`
  */
 export function arrayWIdsToObject(arrayOfObjs) {
   /* The user may be authenticated by different means, including outside the UI.  Defer
