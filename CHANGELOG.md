@@ -8,7 +8,10 @@
 
 ### Bugfix
 
-- Fix redirect bug with URLs containing querystrings @robgietema
+### Internal
+
+- Various build improvements and minor refactoring captured during the effort to unify
+  Volto, Plone classic, and ZMI authentication.  @rpatterson
 
 ### Internal
 
