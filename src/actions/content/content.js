@@ -176,8 +176,8 @@ export function getContent(
       // UI are the same. Otherwise, there are inconsistencies between the UI main elements
       // eg. Home link in breadcrumbs, other i18n dependant literals from the main UI and
       // the current content language.
-      const lang = response.language.token;
-      if (getState().intl.language !== lang && !subrequest) {
+      const lang = response?.language?.token;
+      if (lang && getState().intl.language !== lang && !subrequest) {
         const langFileName = normalizeLanguageName(lang);
         import('~/../locales/' + langFileName + '.json').then((locale) => {
           dispatch(changeLanguage(lang, locale.default));
