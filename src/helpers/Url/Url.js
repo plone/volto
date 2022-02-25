@@ -102,6 +102,15 @@ export function flattenToAppURL(url) {
       .replace(settings.publicURL, '')
   );
 }
+/**
+ * Given a URL it remove the querystring from the URL.
+ * @method stripQuerystring
+ * @param {string} url URL of the object
+ * @returns {string} URL without querystring
+ */
+export function stripQuerystring(url) {
+  return url.replace(/\?.*$/, '');
+}
 
 /**
  * Given a URL if it starts with the API server URL
