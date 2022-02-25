@@ -4,13 +4,77 @@
 
 ### Breaking
 
-- Markup change in `LinkView` component.
-- Rename `core-sandbox` to `coresandbox` for sake of consistency @sneridagh
+### Feature
+
+### Bugfix
+
+- Fix redirect bug with URLs containing querystrings @robgietema
+
+### Internal
+
+## 15.0.0-alpha.8 (2022-02-22)
+
+### Internal
+
+- Better implementation of the add-on load coming from the environment variable `ADDONS` @sneridagh
+
+## 15.0.0-alpha.7 (2022-02-22)
+
+### Feature
+
+- Introduce the new `BUILD_DIR` runtime environment variable to direct the build to run in an especific location, different than `build` folder. @sneridagh
+- Handle redirect permanent calls from the backend in the frontend (e.g. when changing the short name) @robgietema
+
+## 15.0.0-alpha.6 (2022-02-21)
+
+### Feature
+
+- DatetimeWidget 'noPastDates' option: Take widgetOptions?.pattern_options?.noPastDates of backend schema into account. @ksuess
+- Add a new type of filter facet for the Search block. Heavily refactor some searchblock internals. @tiberiuichim
+- Add date range facet to the search block @robgietema
+
+### Internal
+
+- Improve flaky test in coresandbox search Cypress tests @sneridagh
+
+### Documentation
+
+- (Experimental) Prepare documentation for MyST and importing into `plone/documentation@6-dev`. @stevepiercy
+- Fix broken links and redirects in documentation to be compatible with MyST. @stevepiercy
+- Update add-on internationalization. @ksuess
+- Add MyST and Sphinx basic configuration for rapid build and comparison against MkDocs builds. @stevepiercy
+- Fix many MyST and Sphinx warnings. @stevepiercy
+- Remove MkDocs configuration. See https://github.com/plone/volto/issues/3042 @stevepiercy
+- Add Plone docs to Intersphinx and fix broken link. @stevepiercy
+- Get version from `package.json` @sneridagh
+- Remove legacy folder in docs @sneridagh
+- Backport docs of RAZZLE_TESTING_ADDONS environment variables. See https://github.com/plone/volto/pull/3067/files#diff-00609ed769cd40cf3bc3d6fcc4431b714cb37c73cedaaea18fe9fc4c1c589597 @stevepiercy
+- Add missing developer-guidelines/typescript to toctree @stevepiercy
+- Add Netlify for preview of Sphinx builds for pull requests against `master` and `plone6-docs`. @stevepiercy
+- Clean up toctree errors by removing obsolete files, adding `:orphan:` field list, and reorganizing some files. @sneridagh and @stevepiercy
+- Switch to using netlify.toml to configure Netlify Python environment. @stevepiercy
+- Convert admonition syntax from Markdown to MyST. @sneridagh
+- Make links build both in Volto and Plone documentation. See https://github.com/plone/volto/pull/3094 @stevepiercy
+
+## 15.0.0-alpha.5 (2022-02-16)
+
+### Breaking
+
+- Lazyload draftjs library. See the upgrade guide on how that impacts you, in case you have extended the rich text editor configuration @tiberiuichim @kreafox
   See https://docs.voltocms.com/upgrade-guide/ for more information.
 
 ### Feature
 
-### Bugfix
+- Add `cookiesExpire` value to config to control the cookie expiration @giuliaghisini
+
+## 15.0.0-alpha.4 (2022-02-16)
+
+### Breaking
+
+- Markup change in `LinkView` component.
+- Rename `core-sandbox` to `coresandbox` for sake of consistency @sneridagh
+- Extend the original intent and rename `RAZZLE_TESTING_ADDONS` to `ADDONS`. @sneridagh
+  See https://docs.voltocms.com/upgrade-guide/ for more information.
 
 ### Internal
 
@@ -138,7 +202,7 @@ new users/evaluators. @fredvd
 
 ### Feature
 
-- VocabularyTermsWidget: Token is now on creation of term editable, but stays ineditable afterwards.  @ksuess
+- VocabularyTermsWidget: Token is now on creation of term editable, but stays ineditable afterwards. @ksuess
 
 ### Bugfix
 
@@ -294,7 +358,7 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
   @tiberiuichim
 - Added `.storybook` setup in the Volto `app` generator. Volto projects generated from this scafolding are now ready to run Storybook for the project and develop addons (in `src/addons` folder).
 - Style checkboxes @nileshgulia1
-- Allow loading .less files also from a Volto project's `src` folder.  @tiberiuichim
+- Allow loading .less files also from a Volto project's `src` folder. @tiberiuichim
 - Add catalan translation @bloodbare @sneridagh
 - Updated Volto production sites list @giuliaghisini
 - Japanese translation updated @terapyon

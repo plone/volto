@@ -868,6 +868,7 @@ msgstr "Lista de objetos vacía"
 msgid "Enable editable Blocks"
 msgstr "Activar bloques editables"
 
+#: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 # defaultMessage: End Date
 msgid "End Date"
@@ -2448,6 +2449,7 @@ msgstr "Especifica la dirección URL de un vídeo o una lista de reproducción d
 msgid "Split"
 msgstr "División"
 
+#: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 # defaultMessage: Start Date
 msgid "Start Date"
@@ -3274,6 +3276,12 @@ msgstr "Mínimo"
 msgid "mostUsed"
 msgstr "Más usado"
 
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+# defaultMessage: No
+msgid "no"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 # defaultMessage: No workflow state
 msgid "no workflow state"
@@ -3544,6 +3552,12 @@ msgstr "Vídeo"
 # defaultMessage: Visit external website
 msgid "visit_external_website"
 msgstr "Visitar web externa"
+
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+# defaultMessage: Yes
+msgid "yes"
+msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: {count, plural, one {Upload {count} file} other {Upload {count} files}}

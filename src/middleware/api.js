@@ -104,11 +104,13 @@ function sendOnSocket(request) {
  * @returns {Promise} Action promise.
  */
 export default (api) => ({ dispatch, getState }) => (next) => (action) => {
+  const { settings } = config;
+
   if (typeof action === 'function') {
     return action(dispatch, getState);
   }
 
-  const { request, type, mode = 'paralel', ...rest } = action;
+  const { request, type, mode = 'parallel', ...rest } = action;
   let actionPromise;
 
   if (!request) {
@@ -143,6 +145,9 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
                 type: item.type,
                 headers: item.headers,
                 params: request.params,
+                checkUrl: settings.actions_raising_api_errors.includes(
+                  action.type,
+                ),
               }).then((reqres) => {
                 return [...acc, reqres];
               });
@@ -155,6 +160,9 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
                 type: item.type,
                 headers: item.headers,
                 params: request.params,
+                checkUrl: settings.actions_raising_api_errors.includes(
+                  action.type,
+                ),
               }),
             ),
           )
@@ -163,6 +171,7 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
           type: request.type,
           headers: request.headers,
           params: request.params,
+          checkUrl: settings.actions_raising_api_errors.includes(action.type),
         });
     actionPromise.then(
       (result) => {
@@ -204,7 +213,6 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
         return next({ ...rest, result, type: `${type}_SUCCESS` });
       },
       (error) => {
-        const { settings } = config;
         // Only SRR can set ECONNREFUSED
         if (error.code === 'ECONNREFUSED') {
           next({
@@ -234,6 +242,17 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
             error,
             statusCode: error.code,
             connectionRefused: true,
+            type: SET_APIERROR,
+          });
+        }
+
+        // Redirect
+        else if (error?.code === 301) {
+          next({
+            ...rest,
+            error,
+            statusCode: error.code,
+            connectionRefused: false,
             type: SET_APIERROR,
           });
         }

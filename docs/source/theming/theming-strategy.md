@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Theming Strategy
 
 One approaches the theming of a Volto site usually with a predefined mockup or
