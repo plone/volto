@@ -1742,6 +1742,11 @@ msgstr "Vorkommen"
 msgid "Ok"
 msgstr "OK"
 
+#: components/manage/Widgets/IdWidget
+# defaultMessage: Only lowercase alphanumeric without accents, numbers, _ and - are allowed
+msgid "Only lowercase alphanumeric without accents, numbers, _ and - are allowed"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
@@ -2655,6 +2660,11 @@ msgstr "Dritter"
 # defaultMessage: This has an ongoing working copy in {title}
 msgid "This has an ongoing working copy in {title}"
 msgstr "Diese Seite hat eine Arbeitskopie unter {title}"
+
+#: components/manage/Widgets/IdWidget
+# defaultMessage: This is a reserved name and can't be used
+msgid "This is a reserved name and can't be used"
+msgstr ""
 
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This is a working copy of {title}
