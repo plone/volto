@@ -145,6 +145,7 @@ export const RecurrenceWidget = loadable(() =>
 );
 
 export FileWidget from '@plone/volto/components/manage/Widgets/FileWidget';
+export IdWidget from '@plone/volto/components/manage/Widgets/IdWidget';
 export PasswordWidget from '@plone/volto/components/manage/Widgets/PasswordWidget';
 export ReferenceWidget from '@plone/volto/components/manage/Widgets/ReferenceWidget';
 export SchemaWidget from '@plone/volto/components/manage/Widgets/SchemaWidget';

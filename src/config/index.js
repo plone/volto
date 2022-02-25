@@ -93,6 +93,7 @@ let config = {
     richtextEditorSettings,
     richtextViewSettings,
     imageObjects: ['Image'],
+    reservedIds: ['login', 'layout', 'plone', 'zip', 'properties'],
     downloadableObjects: ['File'], //list of content-types for which the direct download of the file will be carried out if the user is not authenticated
     listingPreviewImageField: 'image', // deprecated from Volto 14 onwards
     customStyleMap: null,
