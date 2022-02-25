@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Added id widget to manage short name @robgietema
+
 ### Bugfix
 
 - Fix redirect bug with URLs containing querystrings @robgietema
