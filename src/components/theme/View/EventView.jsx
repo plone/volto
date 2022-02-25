@@ -8,9 +8,9 @@ import PropTypes from 'prop-types';
 import { hasBlocksData, flattenHTMLToAppURL } from '@plone/volto/helpers';
 import { Image, Grid } from 'semantic-ui-react';
 import RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
-import EventDetails from '@plone/volto/components/theme/View/EventDetails';
+import { EventDetails } from '@plone/volto/components';
 
-const EventMetadataView = ({ content }) => (
+const EventTextfieldView = ({ content }) => (
   <React.Fragment>
     {content.title && <h1 className="documentFirstHeading">{content.title}</h1>}
     {content.description && (
@@ -49,7 +49,7 @@ const EventView = (props) => {
           {hasBlocksData(content) ? (
             <RenderBlocks {...props} />
           ) : (
-            <EventMetadataView {...props} />
+            <EventTextfieldView {...props} />
           )}
         </Grid.Column>
         <Grid.Column mobile={12} tablet={5} computer={5}>
