@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-02-18T11:04:21.684Z\n"
+"POT-Creation-Date: 2022-02-25T11:29:23.539Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -3138,49 +3138,41 @@ msgid "email"
 msgstr ""
 
 #: components/theme/EventDetails/EventDetails
-#: components/theme/View/EventDetails
 # defaultMessage: All dates
 msgid "event_alldates"
 msgstr ""
 
 #: components/theme/EventDetails/EventDetails
-#: components/theme/View/EventDetails
 # defaultMessage: Attendees
 msgid "event_attendees"
 msgstr ""
 
 #: components/theme/EventDetails/EventDetails
-#: components/theme/View/EventDetails
 # defaultMessage: Contact Name
 msgid "event_contactname"
 msgstr ""
 
 #: components/theme/EventDetails/EventDetails
-#: components/theme/View/EventDetails
 # defaultMessage: Contact Phone
 msgid "event_contactphone"
 msgstr ""
 
 #: components/theme/EventDetails/EventDetails
-#: components/theme/View/EventDetails
 # defaultMessage: Website
 msgid "event_website"
 msgstr ""
 
 #: components/theme/EventDetails/EventDetails
-#: components/theme/View/EventDetails
 # defaultMessage: What
 msgid "event_what"
 msgstr ""
 
 #: components/theme/EventDetails/EventDetails
-#: components/theme/View/EventDetails
 # defaultMessage: When
 msgid "event_when"
 msgstr ""
 
 #: components/theme/EventDetails/EventDetails
-#: components/theme/View/EventDetails
 # defaultMessage: Where
 msgid "event_where"
 msgstr ""
@@ -3549,7 +3541,6 @@ msgid "video"
 msgstr ""
 
 #: components/theme/EventDetails/EventDetails
-#: components/theme/View/EventDetails
 # defaultMessage: Visit external website
 msgid "visit_external_website"
 msgstr ""

@@ -3136,49 +3136,41 @@ msgid "email"
 msgstr ""
 
 #: components/theme/EventDetails/EventDetails
-#: components/theme/View/EventDetails
 # defaultMessage: All dates
 msgid "event_alldates"
 msgstr "Toate"
 
 #: components/theme/EventDetails/EventDetails
-#: components/theme/View/EventDetails
 # defaultMessage: Attendees
 msgid "event_attendees"
 msgstr "Participanți"
 
 #: components/theme/EventDetails/EventDetails
-#: components/theme/View/EventDetails
 # defaultMessage: Contact Name
 msgid "event_contactname"
 msgstr "Nume"
 
 #: components/theme/EventDetails/EventDetails
-#: components/theme/View/EventDetails
 # defaultMessage: Contact Phone
 msgid "event_contactphone"
 msgstr "Telefon"
 
 #: components/theme/EventDetails/EventDetails
-#: components/theme/View/EventDetails
 # defaultMessage: Website
 msgid "event_website"
 msgstr "Website"
 
 #: components/theme/EventDetails/EventDetails
-#: components/theme/View/EventDetails
 # defaultMessage: What
 msgid "event_what"
 msgstr "Despre"
 
 #: components/theme/EventDetails/EventDetails
-#: components/theme/View/EventDetails
 # defaultMessage: When
 msgid "event_when"
 msgstr "Data"
 
 #: components/theme/EventDetails/EventDetails
-#: components/theme/View/EventDetails
 # defaultMessage: Where
 msgid "event_where"
 msgstr "Locație"
@@ -3547,7 +3539,6 @@ msgid "video"
 msgstr "Video"
 
 #: components/theme/EventDetails/EventDetails
-#: components/theme/View/EventDetails
 # defaultMessage: Visit external website
 msgid "visit_external_website"
 msgstr "Vizitează site extern"
