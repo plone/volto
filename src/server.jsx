@@ -28,7 +28,6 @@ import {
   persistAuthToken,
   normalizeLanguageName,
 } from '@plone/volto/helpers';
-import { changeLanguage } from '@plone/volto/actions';
 
 import userSession from '@plone/volto/reducers/userSession/userSession';
 
@@ -196,15 +195,6 @@ server.get('/*', (req, res) => {
 
   loadOnServer({ store, location, routes, api })
     .then(() => {
-      // The content info is in the store at this point thanks to the asynconnect
-      // features, then we can force the current language info into the store when
-      // coming from an SSR request
-      const updatedLang =
-        store.getState().content.data?.language?.token ||
-        config.settings.defaultLanguage;
-
-      store.dispatch(changeLanguage(updatedLang, locales[updatedLang]));
-
       const context = {};
       resetServerContext();
       const markup = renderToString(
