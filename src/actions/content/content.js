@@ -17,6 +17,9 @@ import {
 import { nestContent } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
+import { changeLanguage } from '@plone/volto/actions';
+import { normalizeLanguageName } from '@plone/volto/helpers';
+
 /**
  * Create content function.
  * @function createContent
@@ -158,15 +161,29 @@ export function getContent(
     })
     .join('&');
 
-  return {
-    type: GET_CONTENT,
-    subrequest,
-    request: {
-      op: 'get',
-      path: `${url}${version ? `/@history/${version}` : ''}${
-        qs ? `?${qs}` : ''
-      }`,
-    },
+  return (dispatch, getState) => {
+    dispatch({
+      type: GET_CONTENT,
+      subrequest,
+      request: {
+        op: 'get',
+        path: `${url}${version ? `/@history/${version}` : ''}${
+          qs ? `?${qs}` : ''
+        }`,
+      },
+    }).then((response) => {
+      // This ensures the current content language and the current active language in the
+      // UI are the same. Otherwise, there are inconsistencies between the UI main elements
+      // eg. Home link in breadcrumbs, other i18n dependant literals from the main UI and
+      // the current content language.
+      const lang = response.language.token;
+      if (getState().intl.language !== lang && !subrequest) {
+        const langFileName = normalizeLanguageName(lang);
+        import('~/../locales/' + langFileName + '.json').then((locale) => {
+          dispatch(changeLanguage(lang, locale.default));
+        });
+      }
+    });
   };
 }
 

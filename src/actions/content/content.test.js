@@ -151,63 +151,98 @@ describe('Content action', () => {
   });
 
   describe('getContent', () => {
-    it('should create an action to get content', () => {
-      const url = 'http://localhost';
-      const action = getContent(url);
+    const getState = () => ({
+      intl: {
+        language: 'en',
+      },
+    });
+    const dispatch = jest.fn(() =>
+      Promise.resolve({ language: { token: 'de' } }),
+    );
 
-      expect(action.type).toEqual(GET_CONTENT);
-      expect(action.request.op).toEqual('get');
-      expect(action.request.path).toEqual(`${url}`);
+    it('should create an action to get content', async () => {
+      const url = 'http://localhost';
+
+      await getContent(url)(dispatch, getState);
+      expect(dispatch).toHaveBeenCalledWith({
+        type: GET_CONTENT,
+        subrequest: null,
+        request: {
+          op: 'get',
+          path: `${url}`,
+        },
+      });
     });
 
-    it('should create an action to get content and full objects', () => {
+    it('should create an action to get content and full objects', async () => {
       const url = 'http://localhost';
-      const action = getContent(url, null, null, null, true);
-
-      expect(action.type).toEqual(GET_CONTENT);
-      expect(action.request.op).toEqual('get');
-      expect(action.request.path).toEqual(`${url}?fullobjects=true`);
+      await getContent(url, null, null, null, true)(dispatch, getState);
+      expect(dispatch).toHaveBeenCalledWith({
+        type: GET_CONTENT,
+        subrequest: null,
+        request: {
+          op: 'get',
+          path: `${url}?fullobjects=true`,
+        },
+      });
     });
 
-    it('should create an action to get content with version', () => {
+    it('should create an action to get content with version', async () => {
       const url = 'http://localhost';
       const version = '0';
-      const action = getContent(url, version);
+      await getContent(url, version)(dispatch, getState);
 
-      expect(action.type).toEqual(GET_CONTENT);
-      expect(action.request.op).toEqual('get');
-      expect(action.request.path).toEqual(`${url}/@history/${version}`);
+      expect(dispatch).toHaveBeenCalledWith({
+        type: GET_CONTENT,
+        subrequest: null,
+        request: {
+          op: 'get',
+          path: `${url}/@history/${version}`,
+        },
+      });
     });
 
-    it('should create an action to get content with version and fullobjects', () => {
+    it('should create an action to get content with version and fullobjects', async () => {
       const url = 'http://localhost';
       const version = '0';
-      const action = getContent(url, version, null, null, true);
+      await getContent(url, version, null, null, true)(dispatch, getState);
 
-      expect(action.type).toEqual(GET_CONTENT);
-      expect(action.request.op).toEqual('get');
-      expect(action.request.path).toEqual(
-        `${url}/@history/${version}?fullobjects=true`,
-      );
+      expect(dispatch).toHaveBeenCalledWith({
+        type: GET_CONTENT,
+        subrequest: null,
+        request: {
+          op: 'get',
+          path: `${url}/@history/${version}?fullobjects=true`,
+        },
+      });
     });
 
-    it('should create an action to get content with a subrequest', () => {
+    it('should create an action to get content with a subrequest', async () => {
       const url = 'http://localhost';
-      const action = getContent(url, null, 'my-subrequest');
+      await getContent(url, null, 'my-subrequest')(dispatch, getState);
 
-      expect(action.type).toEqual(GET_CONTENT);
-      expect(action.subrequest).toEqual('my-subrequest');
-      expect(action.request.op).toEqual('get');
-      expect(action.request.path).toEqual(`${url}`);
+      expect(dispatch).toHaveBeenCalledWith({
+        type: GET_CONTENT,
+        subrequest: 'my-subrequest',
+        request: {
+          op: 'get',
+          path: `${url}`,
+        },
+      });
     });
 
-    it('should create an action to get content with a pagination page', () => {
+    it('should create an action to get content with a pagination page', async () => {
       const url = 'http://localhost';
-      const action = getContent(url, null, null, 2);
+      await getContent(url, null, null, 2)(dispatch, getState);
 
-      expect(action.type).toEqual(GET_CONTENT);
-      expect(action.request.op).toEqual('get');
-      expect(action.request.path).toEqual(`${url}?b_start=25&b_size=25`);
+      expect(dispatch).toHaveBeenCalledWith({
+        type: GET_CONTENT,
+        subrequest: null,
+        request: {
+          op: 'get',
+          path: `${url}?b_start=25&b_size=25`,
+        },
+      });
     });
   });
 

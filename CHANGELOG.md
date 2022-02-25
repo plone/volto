@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Refactor language syncronizer. Remove it from the React tree, and handling it on the `getContent` action level as a Redux Thunk. @sneridagh
+
 ### Bugfix
 
 ### Internal

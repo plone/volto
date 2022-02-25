@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import thunk from 'redux-thunk';
 
 import View from './View';
 import config from '@plone/volto/registry';
@@ -23,7 +24,7 @@ beforeAll(() => {
   config.settings.publicURL = 'https://plone.org';
 });
 
-const mockStore = configureStore();
+const mockStore = configureStore([thunk]);
 
 jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),
@@ -36,6 +37,10 @@ jest.mock('../Tags/Tags', () => jest.fn(() => <div id="Tags" />));
 jest.mock('../ContentMetadataTags/ContentMetadataTags', () =>
   jest.fn(() => <div id="ContentMetadataTags" />),
 );
+
+jest.mock('../../../actions/content/content', () => ({
+  getContent: jest.fn(() => ({ type: 'GET_CONTENT' })),
+}));
 
 const actions = {
   document_actions: [],

@@ -6,12 +6,25 @@ config.settings.isMultilingual = true;
 config.settings.supportedLanguages = ['de', 'es'];
 
 describe('getContent', () => {
-  it('[Multilingual] should create an action to get content', () => {
+  it('[Multilingual] should create an action to get content', async () => {
+    const getState = () => ({
+      intl: {
+        language: 'en',
+      },
+    });
+    const dispatch = jest.fn(() =>
+      Promise.resolve({ language: { token: 'de' } }),
+    );
     const url = 'http://localhost';
-    const action = getContent(url);
+    await getContent(url)(dispatch, getState);
 
-    expect(action.type).toEqual(GET_CONTENT);
-    expect(action.request.op).toEqual('get');
-    expect(action.request.path).toEqual(`${url}?expand=translations`);
+    expect(dispatch).toHaveBeenCalledWith({
+      type: GET_CONTENT,
+      subrequest: null,
+      request: {
+        op: 'get',
+        path: `${url}?expand=translations`,
+      },
+    });
   });
 });
