@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add blocks rendering in Event and NewsItem views (rel plone.volto#32) @nzambello @ksuess
+
 ### Bugfix
 
 - Fix redirect bug with URLs containing querystrings @robgietema
