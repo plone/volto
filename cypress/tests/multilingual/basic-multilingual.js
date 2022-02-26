@@ -26,14 +26,12 @@ describe('Basic multilingual Tests', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/it');
   });
 
-  it.only('Language coming from SSR', function () {
+  it('Language coming from SSR', function () {
     cy.visit('/it');
 
     cy.findByText('Mappa del sito');
     cy.get('.language-selector .selected').contains('Italiano');
-    cy.wait(1000)
-      .getCookie('I18N_LANGUAGE')
-      .should('have.property', 'value', 'it');
+    cy.getCookie('I18N_LANGUAGE').should('have.property', 'value', 'it');
   });
 
   it('Language selector in content', function () {
