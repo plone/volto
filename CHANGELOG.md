@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Add `debug` library introspection in requests pipeline @sneridagh
+
 ## 15.0.0-alpha.8 (2022-02-22)
 
 ### Internal
