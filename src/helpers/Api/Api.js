@@ -6,6 +6,7 @@
 import superagent from 'superagent';
 import Cookies from 'universal-cookie';
 import config from '@plone/volto/registry';
+import debug from 'debug';
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];
 
@@ -53,6 +54,8 @@ class Api {
         let request;
         let promise = new Promise((resolve, reject) => {
           request = superagent[method](formatUrl(path));
+
+          debug('requests')(formatUrl(path));
 
           if (params) {
             request.query(params);

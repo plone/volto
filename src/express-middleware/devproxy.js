@@ -8,6 +8,7 @@ import {
 } from 'http-proxy-middleware';
 import querystring from 'querystring';
 import { parse as parseUrl } from 'url';
+import debug from 'debug';
 
 const filter = function (pathname, req) {
   // This is the proxy to the API in case the accept header is 'application/json'
@@ -77,7 +78,9 @@ export default function () {
         config.settings.proxyRewriteTarget ||
         `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/++api++/VirtualHostRoot`;
 
-      return `${target}${path.replace('/++api++', '')}`;
+      const normalizedTarget = `${target}${path.replace('/++api++', '')}`;
+      debug('proxy')(normalizedTarget);
+      return normalizedTarget;
     },
     logLevel: process.env.DEBUG_HPM ? 'debug' : 'silent',
     ...(config.settings?.proxyRewriteTarget?.startsWith('https') && {
