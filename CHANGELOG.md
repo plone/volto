@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Fix redirect bug with URLs containing querystrings @robgietema
+
 ### Internal
 
 ## 15.0.0-alpha.8 (2022-02-22)
