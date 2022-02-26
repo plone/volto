@@ -7,6 +7,7 @@ import superagent from 'superagent';
 import Cookies from 'universal-cookie';
 import config from '@plone/volto/registry';
 import debug from 'debug';
+import { stripQuerystring } from '@plone/volto/helpers';
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];
 
@@ -89,7 +90,8 @@ class Api {
               checkUrl &&
               request.url &&
               request.xhr &&
-              request.url !== request.xhr.responseURL
+              stripQuerystring(request.url) !==
+                stripQuerystring(request.xhr.responseURL)
             ) {
               return reject({
                 code: 301,

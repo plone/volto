@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix redirect bug with URLs containing querystrings @robgietema
+
 ### Internal
 
 - Add `debug` library introspection in requests pipeline @sneridagh
