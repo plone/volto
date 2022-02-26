@@ -70,6 +70,7 @@ context('Listing block tests', () => {
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
+      cy.waitForResourceToLoad('document');
 
       // Test after save
       // Text of listing block is visible
@@ -125,5 +126,33 @@ context('Listing block tests', () => {
         .contains('Aenean lacinia bibendum.')
         .should('not.exist');
     });
+
+    it('Should not offer admin listing variation to editor.', () => {
+      cy.visit('/document/edit');
+
+      // Add listing block
+      cy.get('.block.text [contenteditable]').click();
+      cy.get('button.block-add-button').click();
+      cy.get('.blocks-chooser .title').contains('Common').click();
+      cy.get('.blocks-chooser .common').contains('Listing').click();
+
+      // select variation
+      cy.get('#field-variation').click().type('listing_for_all{enter}');
+
+      // Add listing block
+      cy.get('.block.text [contenteditable]').click();
+      cy.get('button.block-add-button').click();
+      cy.get('.blocks-chooser .title').contains('Common').click();
+      cy.get('.blocks-chooser .common').contains('Listing').click();
+
+      // select variation
+      cy.get('#field-variation').click().type('listing_for_admins{enter}');
+
+      cy.get('#toolbar-save').click();
+
+      cy.get('.block.listing.listing_for_all').should('exist');
+      cy.get('.block.listing.listing_for_admins').should('not.exist');
+    });
   });
 });
+

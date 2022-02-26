@@ -94,6 +94,12 @@ config.set('blocks', {
         },
       ],
     },
+    search: {
+      variations: [],
+      extensions: {
+        facetWidgets: {},
+      },
+    },
   },
   requiredBlocks: [],
   groupBlocksOrder: [

@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add search block variations source 'variations_internal' for internal use of search block, not exposed to editor. @ksuess
+
 ### Bugfix
 
 - Fix redirect bug with URLs containing querystrings @robgietema

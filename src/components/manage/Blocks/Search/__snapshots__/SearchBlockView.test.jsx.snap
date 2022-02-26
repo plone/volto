@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBlock renders a search block with special admin list variation template 1`] = `
+<div
+  className="block search"
+>
+  <div
+    className="ui stackable grid searchBlock-facets right-column-facets"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="column"
+      />
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="twelve wide computer twelve wide mobile twelve wide tablet column"
+      >
+        <div
+          className="search-wrapper"
+        >
+          <div
+            className="search-input"
+          >
+            <div
+              className="ui fluid input"
+            >
+              <input
+                id="abc123-searchtext"
+                onChange={[Function]}
+                onKeyPress={[Function]}
+                placeholder="Search"
+                type="text"
+                value=""
+              />
+            </div>
+            <button
+              className="ui basic icon button search-input-live-icon-button"
+              onClick={[Function]}
+            >
+              <svg
+                className="icon"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
+                }
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "36px",
+                    "width": "auto",
+                  }
+                }
+                viewBox=""
+                xmlns=""
+              />
+            </button>
+          </div>
+        </div>
+        <div />
+        <div
+          className="search-results-count-sort"
+        >
+          <h4
+            className="search-details"
+          >
+            
+            Search results
+            : 
+            2
+          </h4>
+        </div>
+        <div>
+          <div
+            className="mocked-admin-listing-template"
+          />
+        </div>
+      </div>
+      0
+    </div>
+  </div>
+</div>
+`;

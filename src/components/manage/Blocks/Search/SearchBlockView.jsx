@@ -11,7 +11,10 @@ import { useSelector } from 'react-redux';
 import { isEqual, isFunction } from 'lodash';
 
 const getListingBodyVariation = (data) => {
-  const { variations } = config.blocks.blocksConfig.listing;
+  const variations = [
+    ...config.blocks.blocksConfig.listing.variations,
+    ...(config.blocks.blocksConfig.listing.variations_internal || []),
+  ];
 
   const variation = data.listingBodyTemplate
     ? variations.find(({ id }) => id === data.listingBodyTemplate)

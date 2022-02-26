@@ -51,6 +51,12 @@ const listing = (config) => {
         title: 'Listing without items content',
         template: ListingBlockVariationTeaserContent,
       },
+      {
+        id: 'listing_for_all',
+        isDefault: false,
+        title: 'Fancy listing variation for general use',
+        template: ListingBlockVariationTeaserContent,
+      },
     ],
   };
 };
