@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Turn `lazyLibraries` action into a thunk. Added a conditional if the library is loaded or in process to be loaded, do not try to load it again. This fixes the lag on load `draftjs` when having a lot of draftjs blocks. @sneridagh
+
 ### Internal
 
 ## 15.0.0-alpha.9 (2022-02-28)
