@@ -11,16 +11,6 @@ import {
   errorViews,
 } from './Views';
 import { nonContentRoutes } from './NonContentRoutes';
-import ToHTMLRenderers, {
-  options as ToHTMLOptions,
-} from './RichTextEditor/ToHTML';
-import {
-  extendedBlockRenderMap,
-  blockStyleFn,
-  listBlockTypes,
-} from './RichTextEditor/Blocks';
-import plugins, { inlineToolbarButtons } from './RichTextEditor/Plugins';
-import FromHTMLCustomBlockFn from './RichTextEditor/FromHTML';
 import {
   groupBlocksOrder,
   requiredBlocks,
@@ -34,6 +24,8 @@ import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
 import { imageScales } from './ImageScales';
 import { controlPanelsIcons } from './ControlPanels';
+
+import { richtextEditorSettings, richtextViewSettings } from './RichTextEditor';
 
 import applyAddonConfiguration from 'load-volto-addons';
 
@@ -99,15 +91,10 @@ let config = {
     legacyTraverse: process.env.RAZZLE_LEGACY_TRAVERSE || false,
     cookieExpires: 15552000, //in seconds. Default is 6 month (15552000)
     nonContentRoutes,
-    extendedBlockRenderMap,
-    blockStyleFn,
-    listBlockTypes,
-    FromHTMLCustomBlockFn,
-    richTextEditorInlineToolbarButtons: inlineToolbarButtons,
-    richTextEditorPlugins: plugins,
-    ToHTMLRenderers,
-    ToHTMLOptions,
+    richtextEditorSettings,
+    richtextViewSettings,
     imageObjects: ['Image'],
+    reservedIds: ['login', 'layout', 'plone', 'zip', 'properties'],
     downloadableObjects: ['File'], //list of content-types for which the direct download of the file will be carried out if the user is not authenticated
     listingPreviewImageField: 'image', // deprecated from Volto 14 onwards
     customStyleMap: null,
@@ -138,6 +125,15 @@ let config = {
         'reactSelect',
         'reactBeautifulDnd',
         // 'diffLib',
+      ],
+      draftEditor: [
+        'immutableLib',
+        'draftJs',
+        'draftJsLibIsSoftNewlineEvent',
+        'draftJsFilters',
+        'draftJsInlineToolbarPlugin',
+        'draftJsImportHtml',
+        'draftJsBlockBreakoutPlugin',
       ],
     },
     appExtras: [],

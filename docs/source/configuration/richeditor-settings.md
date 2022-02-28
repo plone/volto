@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # RichEditor Settings
 
 You can customize how the Rich Text Editor behaves and its features. These are
@@ -46,10 +54,10 @@ Add a button to the toolbar to style a text selection as `CODE`.
 * export const settings = {
 *   ...defaultSettings,
 *   port: 4300,
-*   listBlockTypes: {
+*   listBlockTypes = [
 *     ...defaultSettings.listBlockTypes,
 *     'my-list-item',
-*   }
+*   ]
 * }
 */
 

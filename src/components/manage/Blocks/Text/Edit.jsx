@@ -5,17 +5,18 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Editor from 'draft-js-plugins-editor';
-import { convertFromRaw, convertToRaw, EditorState, RichUtils } from 'draft-js';
-import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
+import { compose } from 'redux';
 
-import isSoftNewlineEvent from 'draft-js/lib/isSoftNewlineEvent';
 import { defineMessages, injectIntl } from 'react-intl';
 import { includes, isEqual } from 'lodash';
-import { filterEditorState } from 'draftjs-filters';
 import config from '@plone/volto/registry';
 
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { BlockChooserButton } from '@plone/volto/components';
+
+import loadable from '@loadable/component';
+
+const Editor = loadable(() => import('draft-js-plugins-editor'));
 
 const messages = defineMessages({
   text: {
@@ -29,7 +30,7 @@ const messages = defineMessages({
  * @class Edit
  * @extends Component
  */
-class Edit extends Component {
+export class EditComponent extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -77,6 +78,13 @@ class Edit extends Component {
   constructor(props) {
     super(props);
 
+    const { settings } = config;
+
+    this.draftConfig = settings.richtextEditorSettings(props);
+
+    const { EditorState, convertFromRaw } = props.draftJs;
+    const createInlineToolbarPlugin = props.draftJsInlineToolbarPlugin.default;
+
     if (!__SERVER__) {
       let editorState;
       if (props.data && props.data.text) {
@@ -88,7 +96,7 @@ class Edit extends Component {
       }
 
       const inlineToolbarPlugin = createInlineToolbarPlugin({
-        structure: config.settings.richTextEditorInlineToolbarButtons,
+        structure: this.draftConfig.richTextEditorInlineToolbarButtons,
       });
 
       this.state = {
@@ -128,6 +136,7 @@ class Edit extends Component {
         //nothing is selected, move focus to end
         // See https://github.com/draft-js-plugins/draft-js-plugins/issues/800
         setTimeout(this.node.focus, 0);
+        const { EditorState } = this.props.draftJs;
 
         this.setState({
           editorState: EditorState.moveFocusToEnd(this.state.editorState),
@@ -137,6 +146,7 @@ class Edit extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    const { convertToRaw, EditorState, convertFromRaw } = this.props.draftJs;
     if (
       !isEqual(this.props.data, prevProps.data) &&
       !isEqual(
@@ -179,6 +189,9 @@ class Edit extends Component {
     const shouldFilterPaste =
       editorState.getLastChangeType() === 'insert-fragment';
 
+    const { convertToRaw } = this.props.draftJs;
+    const { filterEditorState } = this.props.draftJsFilters;
+
     if (
       !isEqual(
         convertToRaw(editorState.getCurrentContent()),
@@ -217,6 +230,8 @@ class Edit extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    // console.log('draft config', this.draftConfig);
+
     if (__SERVER__) {
       return <div />;
     }
@@ -229,7 +244,10 @@ class Edit extends Component {
     const disableNewBlocks =
       this.props.data?.disableNewBlocks || this.props.detached;
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
-    const { settings } = config;
+    // const { settings } = config;
+
+    const isSoftNewlineEvent = this.props.draftJsLibIsSoftNewlineEvent.default;
+    const { RichUtils } = this.props.draftJs;
 
     return (
       <>
@@ -239,11 +257,12 @@ class Edit extends Component {
           editorState={this.state.editorState}
           plugins={[
             this.state.inlineToolbarPlugin,
-            ...settings.richTextEditorPlugins,
+            // ...settings.richTextEditorPlugins,
+            ...this.draftConfig.richTextEditorPlugins,
           ]}
-          blockRenderMap={settings.extendedBlockRenderMap}
-          blockStyleFn={settings.blockStyleFn}
-          customStyleMap={settings.customStyleMap}
+          blockRenderMap={this.draftConfig.extendedBlockRenderMap}
+          blockStyleFn={this.draftConfig.blockStyleFn}
+          customStyleMap={this.draftConfig.customStyleMap}
           placeholder={placeholder}
           handleReturn={(e) => {
             if (isSoftNewlineEvent(e)) {
@@ -260,7 +279,7 @@ class Edit extends Component {
                 anchorKey,
               );
               const blockType = currentContentBlock.getType();
-              if (!includes(settings.listBlockTypes, blockType)) {
+              if (!includes(this.draftConfig.listBlockTypes, blockType)) {
                 this.props.onSelectBlock(
                   this.props.onAddBlock(
                     config.settings.defaultBlockType,
@@ -329,4 +348,27 @@ class Edit extends Component {
   }
 }
 
-export default injectIntl(Edit);
+export const Edit = compose(
+  injectIntl,
+  injectLazyLibs([
+    'draftJs',
+    'draftJsLibIsSoftNewlineEvent',
+    'draftJsFilters',
+    'draftJsInlineToolbarPlugin',
+    'draftJsBlockBreakoutPlugin',
+    'draftJsCreateInlineStyleButton',
+    'draftJsCreateBlockStyleButton',
+    'immutableLib',
+    // TODO: add all plugin dependencies, also in Wysiwyg and Cell
+  ]),
+)(EditComponent);
+
+const Preloader = (props) => {
+  const [loaded, setLoaded] = React.useState(false);
+  React.useEffect(() => {
+    Editor.load().then(() => setLoaded(true));
+  }, []);
+  return loaded ? <Edit {...props} /> : null;
+};
+
+export default Preloader;

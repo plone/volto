@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import EditorUtils from '../../utils/EditorUtils';
-import DraftEditorUtils from 'draft-js-plugins-utils';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import AddLinkForm from '@plone/volto/components/manage/AnchorPlugin/components/LinkButton/AddLinkForm';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 
@@ -26,6 +26,13 @@ class LinkButton extends Component {
     onOverrideContent: PropTypes.func.isRequired,
   };
 
+  constructor(props) {
+    super(props);
+
+    this.DraftEditorUtils = props.draftJsPluginsUtils.default;
+    this.EditorUtils = EditorUtils(props);
+  }
+
   static defaultProps = {
     placeholder: '',
   };
@@ -38,7 +45,7 @@ class LinkButton extends Component {
     e.preventDefault();
     e.stopPropagation();
     const { ownTheme, placeholder, onOverrideContent } = this.props;
-    const link = EditorUtils.getCurrentEntity(
+    const link = this.EditorUtils.getCurrentEntity(
       this.props.getEditorState(),
     )?.getData()?.url;
 
@@ -52,12 +59,14 @@ class LinkButton extends Component {
         onChangeBlock={() => {}}
         onClear={() => {
           this.props.setEditorState(
-            DraftEditorUtils.removeLinkAtSelection(this.props.getEditorState()),
+            this.DraftEditorUtils.removeLinkAtSelection(
+              this.props.getEditorState(),
+            ),
           );
         }}
         onChangeValue={(url) => {
           this.props.setEditorState(
-            DraftEditorUtils.createLinkAtSelection(
+            this.DraftEditorUtils.createLinkAtSelection(
               this.props.getEditorState(),
               url,
             ),
@@ -75,7 +84,7 @@ class LinkButton extends Component {
    */
   render() {
     const { theme } = this.props;
-    const hasLinkSelected = EditorUtils.hasEntity(
+    const hasLinkSelected = this.EditorUtils.hasEntity(
       this.props.getEditorState(),
       'LINK',
     );
@@ -114,4 +123,4 @@ class LinkButton extends Component {
   }
 }
 
-export default LinkButton;
+export default injectLazyLibs(['draftJs', 'draftJsPluginsUtils'])(LinkButton);

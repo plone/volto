@@ -1,6 +1,14 @@
+---
+html_meta:
+  "description": "Accessibility guidelines in Volto"
+  "property=og:description": "Accessibility guidelines in Volto"
+  "property=og:title": "Accessibility guidelines"
+  "keywords": "Volto, Plone, frontend, React, Accessibility, guidelines, a11y"
+---
+
 # Accessibility guidelines
 
-Attention points to improve and maintain accessibility. In documentation, code and filenames you will often see this abbreviated as "a11y".
+Attention should be paid to improve and maintain accessibility. In documentation, code and filenames you will often see this abbreviated as "a11y".
 
 ## Clickable elements that have a symbol or icon and no visible text
 
@@ -11,7 +19,7 @@ If available, use the translation machinery available to make the label appear i
 
 Example:
 
-```jsx noeditor
+```jsx
 <button className="cancel" aria-label="Cancel" onClick={() => this.onCancel()}>
   <Icon
     name={clearSVG}

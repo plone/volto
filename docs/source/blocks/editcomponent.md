@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": "The edit component part of a block anatomy is specially different to the view component because they have to support the UX for editing the block."
+  "property=og:description": "The edit component part of a block anatomy is specially different to the view component because they have to support the UX for editing the block."
+  "property=og:title": "Blocks - Edit components"
+  "keywords": "Volto, Plone, frontend, React, Blocks, Edit, components"
+---
+
 # Blocks - Edit components
 
 The edit component part of a block anatomy is specially different to the view component because they have to support the UX for editing the block.
@@ -5,7 +13,7 @@ This UX can be very complex depending on the kind of block and the feature that 
 The project requirements will tell how far you should go with the UX story of each tile, and how complex it will become.
 You can use all the props that the edit component is receiving to model the UX for the block and how it will render.
 
-See the [complete list of props](anatomy.md#block-edit-component-props).
+See the complete list of {ref}`block-edit-component-props-label`.
 
 We have several UI/UX artifacts in order to model our block edit component UX.
 The sidebar and the object browser are the main ones.
@@ -22,7 +30,7 @@ import { SidebarPortal } from '@plone/volto/components';
 [...]
 
 <SidebarPortal selected={this.props.selected}>
-  ...
+  // ...
 </SidebarPortal>
 ```
 
@@ -41,8 +49,9 @@ import { SidebarPopup } from '@plone/volto/components';
 
 A helper component is available in core in order to simplify the task of defining and rendering the settings for a block: the `BlockDataForm` component.
 
-!!! note
-    `BlockDataForm` is a convenience component around the already available in core `InlineForm` that takes care of some aspects exclusively for Volto Blocks, like Variants and schemaExtenders. You can still use `InlineForm` across Volto, but using `BlockDataForm` is recommeneded for the blocks settings use case.
+```{note}
+`BlockDataForm` is a convenience component around the already available in core `InlineForm` that takes care of some aspects exclusively for Volto Blocks, like Variants and schemaExtenders. You can still use `InlineForm` across Volto, but using `BlockDataForm` is recommeneded for the blocks settings use case.
+```
 
 The edit block settings component needs to be described by a schema that matches the format used to serialize the content type definitions. The widgets that will be used in rendering the form follow the same algorithm that is used for the regular metadata fields for the content types. As an example of schema, it could look like this:
 
@@ -103,7 +112,7 @@ import { Icon } from '@plone/volto/components';
     schema={schema}
     title={schema.title}
     headerActions={<button onClick={() => {}}>Action</button>}
-    footer={<div>I'm footer</div>}
+    footer={<div>I am footer</div>}
     onChangeField={(id, value) => {
       this.props.onChangeBlock(this.props.block, {
         ...this.props.data,
@@ -137,8 +146,11 @@ The HOC component `withObjectBrowser` wraps your component by making available t
 By default, it's enabled for all the component tree under the Blocks Editor, so it's available already for all the blocks in edit mode.
 However, if you need to instantiate it somewhere else, you can do it anyways by wrapping your component with it.
 
-!!! note
-    The default image block in Volto features both the Sidebar and the object browser, take a look at its source code in case you need more context on how they work.
+```{note}
+The default image block in Volto features both the Sidebar and the object browser, take a look at its source code in case you need more context on how they work.
+```
+
+(openobjectbrowser-handler-api-label)=
 
 ### openObjectBrowser handler API
 

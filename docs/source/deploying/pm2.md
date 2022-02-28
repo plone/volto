@@ -1,14 +1,24 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Deployment using a node process manager (pm2)
 
 PM2 is a popular and maintained process manager based in node (https://pm2.keymetrics.io/)
 
-!!! info
-    You can use the good'ol known supervisord as well. However, the supervisord project is stalled and in low maintenance mode last years. PM2 is a good alternative, and as you'll see you can manage all kind of processes, not only node ones, including the Plone processes.
+```{note}
+You can use the good'ol known supervisord as well. However, the supervisord project is stalled and in low maintenance mode last years. PM2 is a good alternative, and as you'll see you can manage all kind of processes, not only node ones, including the Plone processes.
+```
 
 Create a file mywebsite.com.pm2.config.js in your repo or on your server.
 
-!!! important
-    Make sure your pm2 config file sufix ends in `config.js`, otherwise PM2 will ignore it.
+```{important}
+Make sure your pm2 config file sufix ends in `config.js`, otherwise PM2 will ignore it.
+```
 
 ```js
 module.exports = {

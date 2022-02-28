@@ -1,8 +1,17 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Linting
 
-!!! note
-    This documentation is a work in progress. Any help is welcome to fill in the
-    gaps!
+```{note}
+This documentation is a work in progress. Any help is welcome to fill in the
+gaps!
+```
 
 Volto developers can enjoy a lot of freedom in their choice of text editors and
 IDEs, thanks to the strong tooling provided by the Javascript ecosystem.
