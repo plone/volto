@@ -130,7 +130,7 @@ describe('Add Content Tests', () => {
     cy.get('.navigation .item.active').should('have.text', 'My Folder');
   });
 
-  it('As editor I am setting the time in  datetimeWidget', function () {
+  it('As editor I am setting the time in datetimeWidget', function () {
     // when I add a Event
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-event').click();
@@ -144,8 +144,10 @@ describe('Add Content Tests', () => {
     cy.get('#toolbar-save').click();
 
     // then
-
-    cy.get('.documentFirstHeading').should('have.text', 'datetimeWidget test');
+    cy.get('.documentFirstHeading:first').should(
+      'have.text',
+      'datetimeWidget test',
+    );
   });
 
   it('As editor I can add a Link (with an external link)', function () {

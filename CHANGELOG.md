@@ -7,6 +7,7 @@
 ### Feature
 
 - Added id widget to manage short name @robgietema
+- Add blocks rendering in Event and NewsItem views (rel plone.volto#32) @nzambello @ksuess
 
 ### Bugfix
 
