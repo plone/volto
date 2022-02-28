@@ -4,9 +4,12 @@
 
 ### Breaking
 
+- Deprecating `lang` cookie in favor of Plone official one `I18N_LANGUAGE` @sneridagh
+
 ### Feature
 
 - Added id widget to manage short name @robgietema
+- Refactor language syncronizer. Remove it from the React tree, integrate it into the Api Redux middleware @sneridagh
 - Add blocks rendering in Event and NewsItem views (rel plone.volto#32) @nzambello @ksuess
 
 ### Bugfix

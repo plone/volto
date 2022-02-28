@@ -199,11 +199,18 @@ server.get('/*', (req, res) => {
       // The content info is in the store at this point thanks to the asynconnect
       // features, then we can force the current language info into the store when
       // coming from an SSR request
-      const updatedLang =
+      const contentLang =
         store.getState().content.data?.language?.token ||
         config.settings.defaultLanguage;
 
-      store.dispatch(changeLanguage(updatedLang, locales[updatedLang]));
+      const cookie_lang =
+        req.universalCookies.get('I18N_LANGUAGE') ||
+        config.settings.defaultLanguage ||
+        req.headers['accept-language'];
+
+      if (cookie_lang !== contentLang) {
+        store.dispatch(changeLanguage(contentLang, locales[contentLang], req));
+      }
 
       const context = {};
       resetServerContext();

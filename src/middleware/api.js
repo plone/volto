@@ -12,11 +12,13 @@ import qs from 'query-string';
 import config from '@plone/volto/registry';
 
 import {
+  GET_CONTENT,
   LOGIN,
   RESET_APIERROR,
   SET_APIERROR,
 } from '@plone/volto/constants/ActionTypes';
-
+import { changeLanguage } from '@plone/volto/actions';
+import { normalizeLanguageName } from '@plone/volto/helpers';
 let socket = null;
 
 /**
@@ -111,6 +113,8 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
   }
 
   const { request, type, mode = 'parallel', ...rest } = action;
+  const { subrequest } = action; // We want subrequest remains in `...rest` above
+
   let actionPromise;
 
   if (!request) {
@@ -181,6 +185,15 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
             ...rest,
             type: RESET_APIERROR,
           });
+        }
+        if (type === GET_CONTENT) {
+          const lang = result?.language?.token;
+          if (lang && getState().intl.language !== lang && !subrequest) {
+            const langFileName = normalizeLanguageName(lang);
+            import('~/../locales/' + langFileName + '.json').then((locale) => {
+              dispatch(changeLanguage(lang, locale.default));
+            });
+          }
         }
         if (type === LOGIN && settings.websockets) {
           const cookies = new Cookies();
