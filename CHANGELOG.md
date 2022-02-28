@@ -4,8 +4,11 @@
 
 ### Breaking
 
+- Deprecating `lang` cookie in favor of Plone official one `I18N_LANGUAGE` @sneridagh
+
 ### Feature
 
+- Refactor language syncronizer. Remove it from the React tree, integrate it into the Api Redux middleware @sneridagh
 - Add blocks rendering in Event and NewsItem views (rel plone.volto#32) @nzambello @ksuess
 
 ### Bugfix
