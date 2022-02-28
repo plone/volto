@@ -3143,42 +3143,42 @@ msgstr ""
 msgid "email"
 msgstr ""
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: All dates
 msgid "event_alldates"
 msgstr ""
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Attendees
 msgid "event_attendees"
 msgstr ""
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Contact Name
 msgid "event_contactname"
 msgstr ""
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Contact Phone
 msgid "event_contactphone"
 msgstr ""
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Website
 msgid "event_website"
 msgstr ""
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: What
 msgid "event_what"
 msgstr ""
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: When
 msgid "event_when"
 msgstr ""
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Where
 msgid "event_where"
 msgstr ""
@@ -3546,7 +3546,7 @@ msgstr "avatar do utilizador"
 msgid "video"
 msgstr "vídeo"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Visit external website
 msgid "visit_external_website"
 msgstr ""
