@@ -11,6 +11,7 @@
 ### Bugfix
 
 - Fix redirect bug with URLs containing querystrings @robgietema
+- Fix overflowing issue in the toolbar @kreafox
 
 ### Internal
 
