@@ -1745,7 +1745,7 @@ msgstr "OK"
 #: components/manage/Widgets/IdWidget
 # defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed.
 msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed."
-msgstr "Nur Kleinbuchstaben (A-Z) ohne Akzente, Zahlen (0-9) und die beiden Zeichen "-" und "_" sind erlaubt."
+msgstr "Nur Kleinbuchstaben (A-Z) ohne Umlaute, Zahlen (0-9) und die beiden Zeichen "-" und "_" sind erlaubt."
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
