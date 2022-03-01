@@ -181,7 +181,7 @@ exports[`IdWidget renders an id widget with invalid characters 1`] = `
           <div
             class="ui red pointing basic label"
           >
-            Only lowercase alphanumeric without accents, numbers, _ and - are allowed
+            Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed.
           </div>
         </div>
       </div>

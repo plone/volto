@@ -1728,8 +1728,8 @@ msgid "Ok"
 msgstr ""
 
 #: components/manage/Widgets/IdWidget
-# defaultMessage: Only lowercase alphanumeric without accents, numbers, _ and - are allowed
-msgid "Only lowercase alphanumeric without accents, numbers, _ and - are allowed"
+# defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed.
+msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed."
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
