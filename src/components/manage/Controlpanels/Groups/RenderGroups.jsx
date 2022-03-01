@@ -70,12 +70,15 @@ class RenderGroups extends Component {
 
   renderIcon(role) {
     const { groups, group } = this.props;
-    const isMember = group.members.items.some((member) => {
-      const childMembers = groups.find((item) => item.id === member);
-      return childMembers?.roles.includes(role);
-    });
-    if (isMember) {
-      return <Icon name={groupSVG} size="20px" title={'plone-svg'} />;
+    const childMembers = groups.some(
+      (item) =>
+        item.members.items.includes(group.id) && item.roles.includes(role),
+    );
+
+    if (childMembers) {
+      return (
+        <Icon name={groupSVG} size="20px" title={'inherited from group'} />
+      );
     }
     return (
       <Checkbox
