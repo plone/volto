@@ -1743,9 +1743,9 @@ msgid "Ok"
 msgstr "OK"
 
 #: components/manage/Widgets/IdWidget
-# defaultMessage: Only lowercase alphanumeric without accents, numbers, _ and - are allowed
-msgid "Only lowercase alphanumeric without accents, numbers, _ and - are allowed"
-msgstr ""
+# defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed.
+msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed."
+msgstr "Nur Kleinbuchstaben (A-Z) ohne Akzente, Zahlen (0-9) und die beiden Zeichen "-" und "_" sind erlaubt."
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -2664,7 +2664,7 @@ msgstr "Diese Seite hat eine Arbeitskopie unter {title}"
 #: components/manage/Widgets/IdWidget
 # defaultMessage: This is a reserved name and can't be used
 msgid "This is a reserved name and can't be used"
-msgstr ""
+msgstr "Dies ist ein reservierter Name und kann nicht verwendet werden"
 
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This is a working copy of {title}

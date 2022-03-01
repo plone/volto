@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fixed id widget translations @robgietema
+
 ### Internal
 
 ## 15.0.0-alpha.10 (2022-02-28)

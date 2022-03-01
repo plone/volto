@@ -22,9 +22,9 @@ const messages = defineMessages({
   },
   invalidCharacters: {
     id:
-      'Only lowercase alphanumeric without accents, numbers, _ and - are allowed',
+      'Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed.',
     defaultMessage:
-      'Only lowercase alphanumeric without accents, numbers, _ and - are allowed',
+      'Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed.',
   },
 });
 
