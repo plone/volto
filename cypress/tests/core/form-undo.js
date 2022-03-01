@@ -24,6 +24,11 @@ describe('Form Undo/Redo', () => {
     cy.waitForResourceToLoad('@types');
     cy.waitForResourceToLoad('my-page');
     cy.navigate('/my-page/edit');
+
+    cy.intercept('/static/js/draft-js-plugins-utils.chunk.js').as(
+      'lazyLoadDraft',
+    );
+    cy.wait('@lazyLoadDraft');
   });
 
   it('Undo/Redo form', () => {
