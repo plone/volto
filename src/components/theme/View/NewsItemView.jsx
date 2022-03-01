@@ -5,9 +5,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Image } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
+import Image from '@plone/volto/components/theme/Image/Image';
 
-import { flattenToAppURL, flattenHTMLToAppURL } from '@plone/volto/helpers';
+import { flattenHTMLToAppURL } from '@plone/volto/helpers';
 
 /**
  * NewsItemView view component class.
@@ -28,15 +29,10 @@ const NewsItemView = ({ content }) => (
     )}
     {content.image && (
       <Image
-        className="documentImage"
-        alt={content.title}
-        title={content.title}
-        src={
-          content.image['content-type'] === 'image/svg+xml'
-            ? flattenToAppURL(content.image.download)
-            : flattenToAppURL(content.image.scales.mini.download)
-        }
+        className="document-image"
+        size="medium"
         floated="right"
+        image={content.image}
       />
     )}
     {content.text && (

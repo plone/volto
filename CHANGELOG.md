@@ -412,6 +412,7 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 
 ### Feature
 
+- Add Image with srcset and lazy loading using Plone scales @nzambello
 - Add runtime configuration for `@babel/plugin-transform-react-jsx` set to `automatic`. This enables the new JSX runtime: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html So no longer `import React from 'react'` is needed anymore.
 - Update favicon and related tags with best practices @sneridagh
 
