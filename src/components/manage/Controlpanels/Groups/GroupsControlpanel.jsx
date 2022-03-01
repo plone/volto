@@ -94,7 +94,6 @@ class GroupsControlpanel extends Component {
       showAddGroup: false,
       groupEntries: [],
       isClient: false,
-      authenticatedRole: props.inheritedRole || [],
       currentPage: 0,
       pageSize: 10,
       selected: [],
@@ -235,13 +234,6 @@ class GroupsControlpanel extends Component {
             ? entry.roles
             : pull(entry.roles, value),
       })),
-      authenticatedRole:
-        name === 'AuthenticatedUsers' &&
-        !includes(prevState.authenticatedRole, value)
-          ? [...prevState.authenticatedRole, value]
-          : name !== 'AuthenticatedUsers'
-          ? prevState.authenticatedRole
-          : pull(prevState.authenticatedRole, value),
     }));
   };
   /**
@@ -253,7 +245,6 @@ class GroupsControlpanel extends Component {
     this.state.groupEntries.forEach((item) => {
       this.props.updateGroup(item.id, item);
     });
-    this.props.authenticatedRole(this.state.authenticatedRole);
     toast.success(
       <Toast
         success

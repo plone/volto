@@ -71,7 +71,9 @@ class RenderUsers extends Component {
       return inheritedGroup?.roles.includes(role);
     });
     if (isMember) {
-      return <Icon name={groupSVG} size="20px" title={'plone-svg'} />;
+      return (
+        <Icon name={groupSVG} size="20px" title={'inherited from group'} />
+      );
     }
     return (
       <Checkbox
