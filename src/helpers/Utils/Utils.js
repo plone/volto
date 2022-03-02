@@ -187,14 +187,24 @@ export const normalizeLanguageName = (language) => {
 };
 
 /**
- * Given array of objects with `id` property, map to object w/ properties by `id`
+ * Given an array of objects where each object has a property whose key
+ * is `id` with a value of `value`, return an array of transformed objects
+ * where each object's `value` becomes the key of each object.
+ *
+ * Example:
+ * [{id: 'a', title: 'A'}, {id: 'b', title: 'B'}]
+ * ...transforms to:
+ * [{'a': {id: 'a', title: 'A'}, 'b': {id: 'b', title: 'B'}}]
+ *
+ * This makes lookups more convenient, such as `mapped_actions['a'].title`.
+ *
  * @function arrayWIdsToObject
  * @param {Array} An array of objects, each has an `id` property with a string value
  * @returns {Object} Object with property for each array object keyed by the `id`
  */
 export function arrayWIdsToObject(arrayOfObjs) {
   /* The user may be authenticated by different means, including outside the UI.  Defer
-   * to the response from Plone, sepcifically whether Plone presents an option to log
+   * to the response from Plone, specifically whether Plone presents an option to log
    * in. */
   return Object.fromEntries(
     Object.entries(arrayOfObjs).map((entry) => [
