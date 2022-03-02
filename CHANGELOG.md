@@ -2,10 +2,6 @@
 
 ## 15.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fixed id widget translations @robgietema
