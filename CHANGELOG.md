@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Change prop `name` -> `componentName` in component `Component` @sneridagh
+
 ## 15.0.0-alpha.11 (2022-03-02)
 
 ### Bugfix
