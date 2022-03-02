@@ -16,6 +16,16 @@ INSTANCE_PORT=8080
 DOCKER_IMAGE=plone/plone-backend:5.2.6
 KGS=plone.restapi==8.21.0 plone.volto==4.0.0a3 plone.rest==2.0.0a2 plone.app.iterate==4.0.2 plone.app.vocabularies==4.3.0
 
+# Sphinx variables
+# You can set these variables from the command line.
+SPHINXOPTS      ?=
+# Internal variables.
+SPHINXBUILD     = $(realpath bin/sphinx-build)
+SPHINXAUTOBUILD = $(realpath bin/sphinx-autobuild)
+DOCS_DIR        = ./docs/source/
+BUILDDIR        = ../_build/
+ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(SPHINXOPTS) .
+
 # Recipe snippets for reuse
 
 CHECKOUT_BASENAME=$(shell basename $(shell realpath ./))
@@ -92,18 +102,61 @@ test-clean:  ## Test in a separate, clean worktree to expose clean build issues
 # Leave the temporary worktree around for the developer to inspect.
 # Use the `$ make clean-tmp-worktrees` target to clean up all temporary worktrees
 
-.PHONY: docs-serve
-docs-serve:
-	(cd docs && ../bin/mkdocs serve)
-
-.PHONY: docs-build
-docs-build:
-# The build in netlify breaks because they have not installed ensurepip
-# So we should continue using virtualenv
-	virtualenv --python=python3 .
-	./bin/pip install -r requirements-docs.txt
-	(cd docs && ../bin/mkdocs build)
+.PHONY: storybook-build
+storybook-build:
 	yarn build-storybook -o docs/build/storybook
+
+bin/python:
+	python3 -m venv . || virtualenv --clear --python=python3 .
+	bin/python -m pip install --upgrade pip
+	bin/pip install -r requirements-docs.txt
+
+.PHONY: docs-clean
+docs-clean:  ## Clean current and legacy docs build directories, and Python virtual environment
+	cd $(DOCS_DIR) && rm -rf $(BUILDDIR)/
+	rm -rf bin include lib
+	rm -rf docs/build
+
+.PHONY: docs-html
+docs-html: bin/python  ## Build html
+	cd $(DOCS_DIR) && $(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
+	@echo
+	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
+
+.PHONY: docs-livehtml
+docs-livehtml: bin/python  ## Rebuild Sphinx documentation on changes, with live-reload in the browser
+	cd "$(DOCS_DIR)" && ${SPHINXAUTOBUILD} \
+		--ignore "*.swp" \
+		-b html . "$(BUILDDIR)/html" $(SPHINXOPTS)
+
+.PHONY: docs-linkcheck
+docs-linkcheck: bin/python  ## Run linkcheck
+	cd $(DOCS_DIR) && $(SPHINXBUILD) -b linkcheck $(ALLSPHINXOPTS) $(BUILDDIR)/linkcheck
+	@echo
+	@echo "Link check complete; look for any errors in the above output " \
+		"or in $(BUILDDIR)/linkcheck/ ."
+
+.PHONY: docs-linkcheckbroken
+docs-linkcheckbroken: bin/python  ## Run linkcheck and show only broken links
+	cd $(DOCS_DIR) && $(SPHINXBUILD) -b linkcheck $(ALLSPHINXOPTS) $(BUILDDIR)/linkcheck | GREP_COLORS='0;31' egrep -wi broken --color=auto
+	@echo
+	@echo "Link check complete; look for any errors in the above output " \
+		"or in $(BUILDDIR)/linkcheck/ ."
+
+.PHONY: docs-spellcheck
+docs-spellcheck: bin/python  ## Run spellcheck
+	cd $(DOCS_DIR) && LANGUAGE=$* $(SPHINXBUILD) -b spelling -j 4 $(ALLSPHINXOPTS) $(BUILDDIR)/spellcheck/$*
+	@echo
+	@echo "Spellcheck is finished; look for any errors in the above output " \
+		" or in $(BUILDDIR)/spellcheck/ ."
+
+.PHONY: netlify
+netlify:
+	pip install -r requirements-docs.txt
+	cd $(DOCS_DIR) && sphinx-build -b html $(ALLSPHINXOPTS) ../$(BUILDDIR)/html
+
+.PHONY: docs-test
+docs-test: docs-clean docs-linkcheck docs-spellcheck  ## Clean docs build, then run linkcheck, spellcheck
 
 .PHONY: start
 # Run both the back-end and the front end

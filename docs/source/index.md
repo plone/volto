@@ -1,4 +1,16 @@
-# Welcome to Volto's developer documentation!
+---
+html_meta:
+  "description": "Volto is the React-based frontend for the Plone CMS. It is
+the default UI for the Plone 6 release."
+  "property=og:description": "Volto is the React-based frontend for the Plone CMS. It is
+the default UI for the Plone 6 release."
+  "property=og:title": "Frontend"
+  "keywords": "Volto, Plone, frontend, React"
+---
+
+(volto-index-label)=
+
+# Frontend
 
 Volto is a React-based frontend for the [Plone CMS](https://plone.org). It will
 become the default UI for the upcoming Plone 6 release.
@@ -21,5 +33,22 @@ developer frustration and improves end-user experience.
 
 To start developing a new Volto project you should have minimal React and
 modern Javascript knowledge. Follow the
-[Getting started](/getting-started/install) guide to bootstrap a new Volto
+{doc}`getting-started/install` guide to bootstrap a new Volto
 project and start hacking!
+
+```{toctree}
+:maxdepth: 2
+:hidden: true
+
+getting-started/index
+configuration/index
+theming/index
+recipes/index
+blocks/index
+addons/index
+backend/index
+deploying/index
+upgrade-guide/index
+developer-guidelines/index
+contributing/index
+```

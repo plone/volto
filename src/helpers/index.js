@@ -16,6 +16,7 @@ export {
   addAppURL,
   flattenHTMLToAppURL,
   flattenToAppURL,
+  stripQuerystring,
   toPublicURL,
   isInternalURL,
   getParentUrl,
@@ -84,6 +85,7 @@ export {
   withVariationSchemaEnhancer,
   withBlockExtensions,
   applySchemaEnhancer,
+  resolveExtension,
 } from './Extensions';
 export { asyncConnect } from './AsyncConnect';
 export { userHasRoles } from './User/User';

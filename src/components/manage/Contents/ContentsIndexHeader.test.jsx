@@ -1,11 +1,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 import { Provider } from 'react-intl-redux';
 
 import { ContentsIndexHeader } from '@plone/volto/components';
 
-const mockStore = configureStore();
+const mockStore = configureStore([thunk]);
 
 describe('ContentsIndexHeader', () => {
   it('renders a contents titles component', () => {

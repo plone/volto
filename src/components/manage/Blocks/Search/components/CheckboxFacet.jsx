@@ -1,13 +1,22 @@
 import React from 'react';
 import { Checkbox, Header } from 'semantic-ui-react';
+import {
+  selectFacetSchemaEnhancer,
+  selectFacetStateToValue,
+  selectFacetValueToQuery,
+} from './base';
 
-const SelectFacet = (props) => {
+/**
+ * A facet that uses radio/checkboxes to provide an explicit list of values for
+ * filtering
+ */
+const CheckboxFacet = (props) => {
   const { facet, choices, isMulti, onChange, value, isEditMode } = props;
   const facetValue = value;
 
   return (
     <div className="checkbox-facet">
-      <Header as="h4">{facet.title}</Header>
+      <Header as="h4">{facet.title ?? facet?.field?.label}</Header>
       <div className="entries">
         {choices.map(({ label, value }, i) => (
           <div className="entry" key={value}>
@@ -43,4 +52,8 @@ const SelectFacet = (props) => {
   );
 };
 
-export default SelectFacet;
+CheckboxFacet.schemaEnhancer = selectFacetSchemaEnhancer;
+CheckboxFacet.stateToValue = selectFacetStateToValue;
+CheckboxFacet.valueToQuery = selectFacetValueToQuery;
+
+export default CheckboxFacet;

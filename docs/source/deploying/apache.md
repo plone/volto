@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Apache
 
 Apache configuration for a Plone backend deployed under /api and a Volto frontend deployed under the root "/". This configuration also redirects http -> https:

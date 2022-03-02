@@ -3,6 +3,7 @@ import config from '@plone/volto/registry';
 import {
   flattenToAppURL,
   flattenHTMLToAppURL,
+  stripQuerystring,
   toPublicURL,
   getBaseUrl,
   getView,
@@ -81,6 +82,12 @@ describe('Url', () => {
       settings.internalApiPath = 'http://plone:8080/Plone';
       expect(flattenToAppURL(url)).toBe('/something');
       settings.internalApiPath = saved;
+    });
+  });
+
+  describe('stripQuerystring', () => {
+    it('returns stripped URL given a URL with a querystring', () => {
+      expect(stripQuerystring('/content?search=test')).toBe('/content');
     });
   });
 

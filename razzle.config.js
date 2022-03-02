@@ -183,11 +183,11 @@ const defaultModify = ({
 
   let addonsFromEnvVar = [];
   if (process.env.ADDONS) {
-    addonsFromEnvVar = process.env.ADDONS.split(',');
+    addonsFromEnvVar = process.env.ADDONS.split(';');
   }
 
   const addonsLoaderPath = createAddonsLoader(
-    [...registry.getAddonDependencies(), ...addonsFromEnvVar],
+    registry.getAddonDependencies(),
     registry.packages,
   );
 

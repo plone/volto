@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Guidelines
 
 You probably came here by clicking one of the ‘guidelines for contributing’ links on

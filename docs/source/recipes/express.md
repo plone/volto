@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Custom Express middleware
 
 Volto uses the popular [Express](https://expressjs.com/) server for its
@@ -42,6 +50,7 @@ project's ``config.js`` gets executed by both the server and the client
 
 See [ExpressJS](https://expressjs.com/) website for more documentation.
 
-!!! note
-    Addon authors should add the ``id`` property to the middleware so that it
-    can be identified and manipulated in Volto projects configuration.
+```{note}
+Addon authors should add the ``id`` property to the middleware so that it
+can be identified and manipulated in Volto projects configuration.
+```
