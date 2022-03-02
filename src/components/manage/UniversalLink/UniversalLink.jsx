@@ -7,8 +7,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers/Url/Url';
-import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
+import {
+  flattenToAppURL,
+  isInternalURL,
+  URLUtils,
+} from '@plone/volto/helpers/Url/Url';
 import { matchPath } from 'react-router';
 
 import config from '@plone/volto/registry';
@@ -41,8 +44,9 @@ const UniversalLink = ({
       url = flattenToAppURL(item['@id']);
 
       //case: item like a Link
-      if (!token && item.remoteUrl) {
-        url = item.remoteUrl;
+      let remoteUrl = item.remoteUrl || item.getRemoteUrl;
+      if (!token && remoteUrl) {
+        url = remoteUrl;
       }
 
       //case: item of type 'File'

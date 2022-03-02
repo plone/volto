@@ -99,22 +99,38 @@ class AddonConfigurationRegistry {
       projectRootPath,
       'package.json',
     )));
+    // Loads the dynamic config, if any
+    if (fs.existsSync(path.join(projectRootPath, 'volto.config.js'))) {
+      this.voltoConfigJS = require(path.join(
+        projectRootPath,
+        'volto.config.js',
+      ));
+    } else {
+      this.voltoConfigJS = [];
+    }
+    this.resultantMergedAddons = [
+      ...(packageJson.addons || []),
+      ...(this.voltoConfigJS.addons || []),
+    ];
 
     this.projectRootPath = projectRootPath;
     this.voltoPath =
       packageJson.name === '@plone/volto'
         ? `${projectRootPath}`
         : `${projectRootPath}/node_modules/@plone/volto`;
-    this.addonNames = (packageJson.addons || []).map((s) => s.split(':')[0]);
+    this.addonNames = this.resultantMergedAddons.map((s) => s.split(':')[0]);
     this.packages = {};
     this.customizations = new Map();
 
     this.initDevelopmentPackages();
     this.initPublishedPackages();
-    this.initTestingPackages();
+    this.initAddonsFromEnvVar();
 
     this.dependencyGraph = buildDependencyGraph(
-      packageJson.addons || [],
+      [
+        ...this.resultantMergedAddons,
+        ...(process.env.ADDONS ? process.env.ADDONS.split(';') : []),
+      ],
       (name) => {
         this.initPublishedPackage(name);
         return this.packages[name].addons || [];
@@ -149,6 +165,7 @@ class AddonConfigurationRegistry {
         const pkg = {
           modulePath: packagePath,
           packageJson: packageJsonPath,
+          version: require(packageJsonPath).version,
           isPublishedPackage: false,
           name,
           addons: require(packageJsonPath).addons || [],
@@ -180,6 +197,7 @@ class AddonConfigurationRegistry {
       const modulePath = path.dirname(require.resolve(`${basePath}/${main}`));
       this.packages[name] = {
         name,
+        version: pkg.version,
         isPublishedPackage: true,
         modulePath,
         packageJson,
@@ -188,15 +206,16 @@ class AddonConfigurationRegistry {
     }
   }
 
-  initTestingPackages() {
-    if (process.env.RAZZLE_TESTING_ADDONS) {
-      process.env.RAZZLE_TESTING_ADDONS.split(',').forEach(
-        this.initTestingPackage.bind(this),
+  initAddonsFromEnvVar() {
+    if (process.env.ADDONS) {
+      process.env.ADDONS.split(';').forEach(
+        this.initAddonFromEnvVar.bind(this),
       );
     }
   }
 
-  initTestingPackage(name) {
+  initAddonFromEnvVar(name) {
+    // First lookup in the packages folder, local to the root (either vanilla Volto or project)
     const normalizedAddonName = name.split(':')[0];
     const testingPackagePath = `${this.projectRootPath}/packages/${normalizedAddonName}/src`;
     if (fs.existsSync(testingPackagePath)) {
@@ -207,6 +226,7 @@ class AddonConfigurationRegistry {
         this.addonNames.push(normalizedAddonName);
       const pkg = {
         modulePath: testingPackagePath,
+        version: require(packageJson).version,
         packageJson: packageJson,
         isPublishedPackage: false,
         name: normalizedAddonName,
@@ -217,6 +237,10 @@ class AddonConfigurationRegistry {
         this.packages[normalizedAddonName] || {},
         pkg,
       );
+    } else {
+      // Fallback in case the addon is released (not in packages folder nor in development, but in node_modules)
+      const normalizedAddonName = name.split(':')[0];
+      this.initPublishedPackage(normalizedAddonName);
     }
   }
 
@@ -369,14 +393,14 @@ class AddonConfigurationRegistry {
   }
 
   /**
-   * Allow testing packages addons to customize Volto and other addons.
+   * Allow packages from addons set in env vars to customize Volto and other addons.
    *
-   * Same as the above one, but specific for Volto testing addons
+   * Same as the above one, but specific for Volto addons coming from env vars
    */
-  getTestingAddonCustomizationPaths() {
+  getAddonsFromEnvVarCustomizationPaths() {
     let aliases = {};
-    if (process.env.RAZZLE_TESTING_ADDONS) {
-      process.env.RAZZLE_TESTING_ADDONS.split(',').forEach((addon) => {
+    if (process.env.ADDONS) {
+      process.env.ADDONS.split(';').forEach((addon) => {
         const normalizedAddonName = addon.split(':')[0];
         const testingPackagePath = `${this.projectRootPath}/packages/${normalizedAddonName}/src`;
         if (fs.existsSync(testingPackagePath)) {

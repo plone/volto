@@ -15,7 +15,7 @@ const configureStore = (initialState, history, apiHelper) => {
     routerMiddleware(history),
     crashReporter,
     thunk,
-    api(apiHelper),
+    ...(apiHelper ? [api(apiHelper)] : []),
     ...(__CLIENT__
       ? [save({ states: config.settings.persistentReducers, debounce: 500 })]
       : []),

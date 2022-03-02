@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { map, keys } from 'lodash';
-import cookie from 'react-cookie';
+import { withCookies } from 'react-cookie';
 import { defineMessages, injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 
@@ -112,9 +112,10 @@ class PersonalPreferences extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { cookies } = this.props;
     return (
       <Form
-        formData={{ language: cookie.load('I18N_LANGUAGE') || '' }}
+        formData={{ language: cookies.get('I18N_LANGUAGE') || '' }}
         schema={{
           fieldsets: [
             {
@@ -144,5 +145,6 @@ class PersonalPreferences extends Component {
 
 export default compose(
   injectIntl,
+  withCookies,
   connect(null, { changeLanguage }),
 )(PersonalPreferences);

@@ -106,6 +106,7 @@ const TranslationObject = ({
             key="translation-object-form"
             schema={schema}
             formData={translationObject}
+            type={translationObject['@type']}
             onSubmit={() => {
               /*do nothing*/
             }}

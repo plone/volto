@@ -51,6 +51,24 @@ const messages = defineMessages({
  * FileWidget component class.
  * @function FileWidget
  * @returns {string} Markup of the component.
+ *
+ * To use it, in schema properties, declare a field like:
+ *
+ * ```jsx
+ * {
+ *  title: "File",
+ *  widget: 'file',
+ * }
+ * ```
+ * or:
+ *
+ * ```jsx
+ * {
+ *  title: "File",
+ *  type: 'object',
+ * }
+ * ```
+ *
  */
 const FileWidget = (props) => {
   const { id, value, onChange } = props;

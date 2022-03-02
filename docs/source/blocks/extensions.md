@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Block extensions mechanism
 
 A common pattern in blocks is the "variations" pattern - a slightly different versions of
@@ -12,12 +20,13 @@ to shadow its stock components. These enhancements can be at the settings level
 block allows it, even use alternative renderers (e.g., in view mode) showing the
 enhanced fields or modifying the block behavior or look and feel.
 
-!!! note
-    The `Listing` block already supports several of them (only in the "template" or
-    the component seen on view mode), and can be extended, although it still
-    does not use the final specification on how to define them in the
-    configuration, (that will change in next Volto versions). The rest of the
-    stock Volto blocks will also follow to support variations by default.
+```{note}
+The `Listing` block already supports several of them (only in the "template" or
+the component seen on view mode), and can be extended, although it still
+does not use the final specification on how to define them in the
+configuration, (that will change in next Volto versions). The rest of the
+stock Volto blocks will also follow to support variations by default.
+```
 
 While it is up to each specific block implementation on how they use
 this machinery, Volto provides the infrastructure to help define block
@@ -50,12 +59,12 @@ export default (config) => {
       id: 'default',
       title: 'Default',
       isDefault: true,
-      render: SimpleTeaserView
+      template: SimpleTeaserView
     },
     {
       id: 'card',
       label: 'Card',
-      render: CardTeaserView,
+      template: CardTeaserView,
       schemaEnhancer: ({schema, formData, intl}) => {
         schema.properties.cardSize = '...'; // fill in your implementation
         return schema;
@@ -110,17 +119,17 @@ export default (config) => {
           id: 'default',
           title: 'Default',
           isDefault: true,
-          render: DefaultColumnRenderer
+          template: DefaultColumnRenderer
         },
         {
           id: 'number',
           title: 'Number',
-          render: NumberColumnRenderer,
+          template: NumberColumnRenderer,
         },
         {
           id: 'colored',
           title: 'Colored',
-          renderer: ColoredColumnRenderer,
+          template: ColoredColumnRenderer,
           schemaEnhancer: ({formData, schema, intl}) => {
             schema.properties.color = {
               widget: 'color',
@@ -136,10 +145,11 @@ export default (config) => {
 }
 ```
 
-!!! note
-    The `schemaEnhancer` is a generic extension mechanism provided by
-    `withBlockSchemaEnhancer`. The `BlockDataForm` component already integrates
-    it for the `variation` extension.
+```{note}
+The `schemaEnhancer` is a generic extension mechanism provided by
+`withBlockSchemaEnhancer`. The `BlockDataForm` component already integrates
+it for the `variation` extension.
+```
 
 ## Consuming the extensions
 

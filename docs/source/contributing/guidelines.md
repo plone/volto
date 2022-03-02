@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Guidelines
 
 You probably came here by clicking one of the ‘guidelines for contributing’ links on
@@ -35,7 +43,14 @@ upgrade in the [upgrade guide](../upgrade-guide/index.md).
 All text that can be shown in a browser must be translatable. Please mark all such
 strings as translatable as defined in the [i18n guide](../recipes/i18n.md)
 
-Code formatting and linting are already enforced in Volto.
+Code formatting and linting are already enforced in Volto.  Note that this project uses
+a GitHub PR check that enforces all changes must include an entry in `./CHANGELOG.md`.
+If a PR is missing such an entry [the details
+link](https://jenkins.plone.org/roboto/missing-changelog) indicates that entries should
+be added as files in `./news/`.  This is true for the Plone projects that use
+[towncrier](https://pypi.org/project/towncrier/) but not for this project.  Simply add
+an entry directly to `./CHANGELOG.md` as a part of the commit the makes the described
+change.
 
 See if you can use git to squash multiple commits into one where this makes sense.
 If you are not comfortable with git, never mind.

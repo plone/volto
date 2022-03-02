@@ -9,12 +9,13 @@ import { renderToString } from 'react-dom/server';
 import { createMemoryHistory } from 'history';
 import { parse as parseUrl } from 'url';
 import { keys } from 'lodash';
-import cookie, { plugToRequest } from 'react-cookie';
 import locale from 'locale';
 import { detect } from 'detect-browser';
 import path from 'path';
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
 import { resetServerContext } from 'react-beautiful-dnd';
+import { CookiesProvider } from 'react-cookie';
+import cookiesMiddleware from 'universal-cookie-express';
 import debug from 'debug';
 
 import routes from '@package/routes';
@@ -57,20 +58,51 @@ const supported = new locale.Locales(keys(languages), 'en');
 
 const server = express()
   .disable('x-powered-by')
-  .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
+  .use(
+    express.static(
+      process.env.BUILD_DIR
+        ? path.join(process.env.BUILD_DIR, 'public')
+        : process.env.RAZZLE_PUBLIC_DIR,
+    ),
+  )
   .head('/*', function (req, res) {
     // Support for HEAD requests. Required by start-test utility in CI.
     res.send('');
   })
-  .all('*', (req, res, next) => {
-    plugToRequest(req, res);
-    next();
-  });
+  .use(cookiesMiddleware());
 
 const middleware = (config.settings.expressMiddleware || []).filter((m) => m);
 
 server.all('*', setupServer);
 if (middleware.length) server.use('/', middleware);
+
+server.use(function (err, req, res, next) {
+  if (err) {
+    const { store } = req.app.locals;
+    const errorPage = (
+      <Provider store={store} onError={reactIntlErrorHandler}>
+        <StaticRouter context={{}} location={req.url}>
+          <ErrorPage message={err.message} />
+        </StaticRouter>
+      </Provider>
+    );
+
+    res.set({
+      'Cache-Control': 'public, max-age=60, no-transform',
+    });
+
+    /* Displays error in console
+     * TODO:
+     * - get ignored codes from Plone error_log
+     */
+    const ignoredErrors = [301, 302, 401, 404];
+    if (!ignoredErrors.includes(err.status)) console.error(err);
+
+    res
+      .status(err.status || 500) // If error happens in Volto code itself error status is undefined
+      .send(`<!doctype html> ${renderToString(errorPage)}`);
+  }
+});
 
 function setupServer(req, res, next) {
   const api = new Api(req);
@@ -78,14 +110,14 @@ function setupServer(req, res, next) {
   const browserdetect = detect(req.headers['user-agent']);
 
   const lang = new locale.Locales(
-    cookie.load('I18N_LANGUAGE') ||
+    req.universalCookies.get('I18N_LANGUAGE') ||
       config.settings.defaultLanguage ||
       req.headers['accept-language'],
   )
     .best(supported)
     .toString();
 
-  const authToken = cookie.load('auth_token');
+  const authToken = req.universalCookies.get('auth_token');
   const initialState = {
     userSession: { ...userSession(), token: authToken },
     form: req.body,
@@ -104,7 +136,7 @@ function setupServer(req, res, next) {
   // Create a new Redux store instance
   const store = configureStore(initialState, history, api);
 
-  persistAuthToken(store);
+  persistAuthToken(store, req);
 
   function errorHandler(error) {
     const errorPage = (
@@ -153,8 +185,9 @@ server.get('/*', (req, res) => {
   const { store, api, errorHandler } = req.app.locals;
 
   // @loadable/server extractor
+  const buildDir = process.env.BUILD_DIR || 'build';
   const extractor = new ChunkExtractor({
-    statsFile: path.resolve('build/loadable-stats.json'),
+    statsFile: path.resolve(path.join(buildDir, 'loadable-stats.json')),
     entrypoints: ['client'],
   });
 
@@ -166,21 +199,30 @@ server.get('/*', (req, res) => {
       // The content info is in the store at this point thanks to the asynconnect
       // features, then we can force the current language info into the store when
       // coming from an SSR request
-      const updatedLang =
+      const contentLang =
         store.getState().content.data?.language?.token ||
         config.settings.defaultLanguage;
 
-      store.dispatch(changeLanguage(updatedLang, locales[updatedLang]));
+      const cookie_lang =
+        req.universalCookies.get('I18N_LANGUAGE') ||
+        config.settings.defaultLanguage ||
+        req.headers['accept-language'];
+
+      if (cookie_lang !== contentLang) {
+        store.dispatch(changeLanguage(contentLang, locales[contentLang], req));
+      }
 
       const context = {};
       resetServerContext();
       const markup = renderToString(
         <ChunkExtractorManager extractor={extractor}>
-          <Provider store={store} onError={reactIntlErrorHandler}>
-            <StaticRouter context={context} location={req.url}>
-              <ReduxAsyncConnect routes={routes} helpers={api} />
-            </StaticRouter>
-          </Provider>
+          <CookiesProvider cookies={req.universalCookies}>
+            <Provider store={store} onError={reactIntlErrorHandler}>
+              <StaticRouter context={context} location={req.url}>
+                <ReduxAsyncConnect routes={routes} helpers={api} />
+              </StaticRouter>
+            </Provider>
+          </CookiesProvider>
         </ChunkExtractorManager>,
       );
 

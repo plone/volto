@@ -136,7 +136,10 @@ class Edit extends Component {
    */
   componentDidMount() {
     if (this.props.getRequest.loaded && this.props.content?.['@type']) {
-      this.props.getSchema(this.props.content['@type']);
+      this.props.getSchema(
+        this.props.content['@type'],
+        getBaseUrl(this.props.pathname),
+      );
     }
     this.setState({
       isClient: true,
@@ -256,6 +259,7 @@ class Edit extends Component {
         isEditForm
         ref={this.form}
         schema={this.props.schema}
+        type={this.props.content?.['@type']}
         formData={this.props.content}
         requestError={this.state.error}
         onSubmit={this.onSubmit}

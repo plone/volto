@@ -7,15 +7,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Map } from 'immutable';
 import { readAsDataURL } from 'promise-file-reader';
 import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
-import { stateFromHTML } from 'draft-js-import-html';
-import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { isEqual } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
 import { createContent } from '@plone/volto/actions';
 import { Icon, SidebarPortal, LinkMore } from '@plone/volto/components';
@@ -51,32 +49,12 @@ const messages = defineMessages({
   },
 });
 
-const blockTitleRenderMap = Map({
-  unstyled: {
-    element: 'h1',
-  },
-});
-
-const blockDescriptionRenderMap = Map({
-  unstyled: {
-    element: 'div',
-  },
-});
-
-const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(
-  blockTitleRenderMap,
-);
-
-const extendedDescripBlockRenderMap = DefaultDraftBlockRenderMap.merge(
-  blockDescriptionRenderMap,
-);
-
 /**
  * Edit image block class.
  * @class Edit
  * @extends Component
  */
-class Edit extends Component {
+class EditComponent extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -87,7 +65,7 @@ class Edit extends Component {
     block: PropTypes.string.isRequired,
     index: PropTypes.number.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
-    content: PropTypes.objectOf(PropTypes.any).isRequired,
+    content: PropTypes.objectOf(PropTypes.any),
     request: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
@@ -126,7 +104,32 @@ class Edit extends Component {
       uploading: false,
     };
 
+    const { Map } = this.props.immutableLib;
+
     if (!__SERVER__) {
+      const { DefaultDraftBlockRenderMap, EditorState } = props.draftJs;
+      const { stateFromHTML } = props.draftJsImportHtml;
+
+      const blockTitleRenderMap = Map({
+        unstyled: {
+          element: 'h1',
+        },
+      });
+
+      const blockDescriptionRenderMap = Map({
+        unstyled: {
+          element: 'div',
+        },
+      });
+
+      this.extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(
+        blockTitleRenderMap,
+      );
+
+      this.extendedDescripBlockRenderMap = DefaultDraftBlockRenderMap.merge(
+        blockDescriptionRenderMap,
+      );
+
       let titleEditorState;
       let descriptionEditorState;
       if (props.data && props.data.title) {
@@ -186,6 +189,9 @@ class Edit extends Component {
         url: nextProps.content['@id'],
       });
     }
+
+    const { EditorState } = this.props.draftJs;
+    const { stateFromHTML } = this.props.draftJsImportHtml;
 
     if (
       nextProps.data.title &&
@@ -274,15 +280,19 @@ class Edit extends Component {
     });
     readAsDataURL(file).then((data) => {
       const fields = data.match(/^data:(.*);(.*),(.*)$/);
-      this.props.createContent(getBaseUrl(this.props.pathname), {
-        '@type': 'Image',
-        image: {
-          data: fields[3],
-          encoding: fields[2],
-          'content-type': fields[1],
-          filename: file.name,
+      this.props.createContent(
+        getBaseUrl(this.props.pathname),
+        {
+          '@type': 'Image',
+          image: {
+            data: fields[3],
+            encoding: fields[2],
+            'content-type': fields[1],
+            filename: file.name,
+          },
         },
-      });
+        this.props.block,
+      );
     });
   }
 
@@ -295,6 +305,7 @@ class Edit extends Component {
     if (__SERVER__) {
       return <div />;
     }
+    const { Editor } = this.props.draftJs;
     const placeholder =
       this.props.data.placeholder ||
       this.props.intl.formatMessage(messages.placeholder);
@@ -370,7 +381,7 @@ class Edit extends Component {
                 readOnly={!this.props.editable}
                 onChange={this.onChangeTitle}
                 editorState={this.state.titleEditorState}
-                blockRenderMap={extendedBlockRenderMap}
+                blockRenderMap={this.extendedBlockRenderMap}
                 handleReturn={() => true}
                 placeholder={this.props.intl.formatMessage(messages.title)}
                 blockStyleFn={() => 'title-editor'}
@@ -412,7 +423,7 @@ class Edit extends Component {
                 readOnly={!this.props.editable}
                 onChange={this.onChangeDescription}
                 editorState={this.state.descriptionEditorState}
-                blockRenderMap={extendedDescripBlockRenderMap}
+                blockRenderMap={this.extendedDescripBlockRenderMap}
                 handleReturn={() => true}
                 placeholder={this.props.intl.formatMessage(
                   messages.description,
@@ -456,12 +467,16 @@ class Edit extends Component {
   }
 }
 
+const Edit = injectLazyLibs(['draftJs', 'immutableLib', 'draftJsImportHtml'])(
+  EditComponent,
+);
+
 export default compose(
   injectIntl,
   connect(
-    (state) => ({
-      request: state.content.create,
-      content: state.content.data,
+    (state, ownProps) => ({
+      request: state.content.subrequests[ownProps.block] || {},
+      content: state.content.subrequests[ownProps.block]?.data,
     }),
     { createContent },
   ),

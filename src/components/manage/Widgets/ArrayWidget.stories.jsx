@@ -1,70 +1,47 @@
 import React from 'react';
-import { ArrayWidgetComponent } from './ArrayWidget';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
-import Wrapper from '@plone/volto/storybook';
+import ArrayWidget, { ArrayWidgetComponent } from './ArrayWidget';
+import WidgetStory from './story';
 
-const ArrayComponent = injectLazyLibs([
-  'reactSelectCreateable',
-  'reactSelectAsyncPaginate',
-])(ArrayWidgetComponent);
+const choices = [
+  ['foo', 'Foo'],
+  ['bar', 'Bar'],
+  ['fooBar', 'FooBar'],
+];
 
-const Array = (args) => {
-  const [value, setValue] = React.useState(args.value ?? '');
-  const onChange = (block, value) => {
-    // args.onChange({ value });
-    setValue(value);
-  };
-
-  return (
-    <Wrapper>
-      <ArrayComponent {...args} onChange={onChange} value={value} />
-    </Wrapper>
-  );
-};
-
-export const Default = Array.bind({});
+export const Default = WidgetStory.bind({ widget: ArrayWidget });
 Default.args = {
   id: 'field-empty',
   title: 'field 1 title',
   description: 'Optional help text',
   placeholder: 'Type something…',
-  choices: [
-    ['Foo', 'Foo'],
-    ['Bar', 'Bar'],
-    ['FooBar', 'FooBar'],
-  ],
+  choices,
 };
 
-export const Required = Array.bind({});
+export const Required = WidgetStory.bind({ widget: ArrayWidget });
 Required.args = {
   id: 'field-empty',
   title: 'field 1 title',
   description: 'Optional help text',
   placeholder: 'Type something…',
-  choices: [
-    ['Foo', 'Foo'],
-    ['Bar', 'Bar'],
-    ['FooBar', 'FooBar'],
-  ],
+  choices,
   required: true,
 };
 
-export const Filled = Array.bind({});
+export const Filled = WidgetStory.bind({
+  widget: ArrayWidget,
+  props: { value: ['foo'] },
+});
 Filled.args = {
   id: 'field-filled',
   title: 'Filled field title',
   description: 'Optional help text',
-  choices: [
-    ['Foo', 'Foo'],
-    ['Bar', 'Bar'],
-    ['FooBar', 'FooBar'],
-  ],
-  value: ['Foo'],
+  choices,
+  value: ['foo'],
   placeholder: 'Type something…',
   required: true,
 };
 
-export const Errored = Array.bind({});
+export const Errored = WidgetStory.bind({ widget: ArrayWidget });
 Errored.args = {
   id: 'field-errored',
   title: 'Errored field title',
@@ -81,49 +58,37 @@ Errored.args = {
   //     required=False,
   //     default=None,
   // )
-  choices: [
-    ['Foo', 'Foo'],
-    ['Bar', 'Bar'],
-    ['FooBar', 'FooBar'],
-  ],
+  choices,
   value: ['Foo'],
   error: ['This is the error'],
   required: true,
 };
 
-export const NoPlaceholder = Array.bind({});
+export const NoPlaceholder = WidgetStory.bind({ widget: ArrayWidget });
 NoPlaceholder.args = {
   id: 'field-without-novalue',
   title: 'Field title',
   description: 'This field has no value option',
-  choices: [
-    ['Foo', 'Foo'],
-    ['Bar', 'Bar'],
-    ['FooBar', 'FooBar'],
-  ],
+  choices,
   required: true,
 };
 
-export const WithoutNoValueOption = Array.bind({});
+export const WithoutNoValueOption = WidgetStory.bind({ widget: ArrayWidget });
 WithoutNoValueOption.args = {
   id: 'field-without-novalue',
   title: 'Field title',
   description: 'This field has no value option',
   placeholder: 'something…',
-  choices: [
-    ['Foo', 'Foo'],
-    ['Bar', 'Bar'],
-    ['FooBar', 'FooBar'],
-  ],
+  choices,
   required: true,
   noValueOption: false,
 };
 
-export const VocabularyBased = Array.bind({});
+export const VocabularyBased = WidgetStory.bind({ widget: ArrayWidget });
 VocabularyBased.args = {
   id: 'field-vocab-based',
   title: 'field title',
-  description: 'This is a vocab-based field (AsyncSelect based)',
+  description: 'This is a vocab-based field',
   placeholder: 'Select something…',
   // choices in Vocabulary based selects that has choices and spects a string in return
   // Use case: Language select - A Choice schema that spects a string as value
@@ -146,7 +111,7 @@ VocabularyBased.args = {
   vocabBaseUrl: 'https://anapivocabularyURL',
 };
 
-export const Disabled = Array.bind({});
+export const Disabled = WidgetStory.bind({ widget: ArrayWidget });
 Disabled.args = {
   id: 'field-disabled',
   title: 'Disabled field title',
@@ -154,9 +119,43 @@ Disabled.args = {
   disabled: true,
 };
 
+export const Creatable = WidgetStory.bind({ widget: ArrayWidget });
+Creatable.args = {
+  id: 'field-creatable',
+  title: 'Field with creatable',
+  description: 'Allows creation of new terms',
+  creatable: true,
+};
+
+const getOptionsGenerator = (count) => {
+  const options = [];
+  for (let i = 0; i < count; i = i + 1) {
+    options.push([i.toString(), `Option ${i}`]);
+  }
+  return options;
+};
+
+export const ManyOptions1000 = WidgetStory.bind({ widget: ArrayWidget });
+ManyOptions1000.args = {
+  id: 'field-empty',
+  title: 'field 1 title',
+  description: 'Optional help text',
+  placeholder: 'Type something…',
+  choices: getOptionsGenerator(1000),
+};
+
+export const ManyOptions500 = WidgetStory.bind({ widget: ArrayWidget });
+ManyOptions500.args = {
+  id: 'field-empty',
+  title: 'field 1 title',
+  description: 'Optional help text',
+  placeholder: 'Type something…',
+  choices: getOptionsGenerator(500),
+};
+
 export default {
-  title: 'Widgets/ArrayWidget',
-  component: ArrayComponent,
+  title: 'Widgets/Array',
+  component: ArrayWidgetComponent,
   decorators: [
     (Story) => (
       <div style={{ width: '400px' }}>

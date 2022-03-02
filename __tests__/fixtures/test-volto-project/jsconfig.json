@@ -2,7 +2,8 @@
   "compilerOptions": {
     "paths": {
       "test-addon": ["test-addon/src"],
-      "test-released-dummy": ["test-released-dummy"]
+      "test-released-dummy": ["test-released-dummy"],
+      "my-volto-config-addon": ["my-volto-config-addon/src"]
     },
     "baseUrl": "addons"
   }
