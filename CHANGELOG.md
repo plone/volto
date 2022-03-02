@@ -13,6 +13,7 @@
 ### Internal
 
 - Use `@root` alias instead of `~` in several module references. Most of the Volto project code no longer needs the root alias, so it makes sense to phase it out at some point @tiberiuichim
+- Alias `lodash` to `lodash-es`, as this will include only one copy of lodash in the bundle @tiberiuichim
 
 ## 15.0.0-alpha.10 (2022-02-28)
 
