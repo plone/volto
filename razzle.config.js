@@ -212,6 +212,9 @@ const defaultModify = ({
     '@package': `${projectRootPath}/src`,
     // we're incorporating redux-connect
     'redux-connect': `${registry.voltoPath}/src/helpers/AsyncConnect`,
+    // avoids including lodash multiple times.
+    // semantic-ui-react uses lodash-es, everything else uses lodash
+    'lodash-es': path.dirname(require.resolve('lodash')),
   };
 
   config.performance = {
