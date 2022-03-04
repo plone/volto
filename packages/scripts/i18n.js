@@ -31,7 +31,7 @@ function extractMessages() {
     // We also ignore the addons folder since they are populated using
     // their own locales files and taken care separatedly in this script
     glob('src/**/*.js?(x)', {
-      ignore: ['src/customizations/**', 'src/addons/**'],
+      ignore: ['src/addons/**'],
     }),
     (filename) => {
       babel.transformFileSync(filename, {}, (err) => {
