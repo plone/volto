@@ -60,7 +60,6 @@ function getMessages() {
         // their own locales files and taken care separatedly in this script
         glob('build/messages/src/**/*.json', {
           ignore: [
-            'build/messages/src/customizations/**',
             'build/messages/src/addons/**',
           ],
         }),
