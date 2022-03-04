@@ -5,6 +5,7 @@
 ### Breaking
 
 ### Feature
+- Complete spanis translation @erral
 
 ### Bugfix
 
