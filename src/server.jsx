@@ -18,7 +18,7 @@ import { CookiesProvider } from 'react-cookie';
 import cookiesMiddleware from 'universal-cookie-express';
 import debug from 'debug';
 
-import routes from '~/routes';
+import routes from '@root/routes';
 import config from '@plone/volto/registry';
 
 import {
@@ -44,7 +44,7 @@ let locales = {};
 if (config.settings) {
   config.settings.supportedLanguages.forEach((lang) => {
     const langFileName = normalizeLanguageName(lang);
-    import('~/../locales/' + langFileName + '.json').then((locale) => {
+    import('@root/../locales/' + langFileName + '.json').then((locale) => {
       locales = { ...locales, [lang]: locale.default };
     });
   });
@@ -199,11 +199,18 @@ server.get('/*', (req, res) => {
       // The content info is in the store at this point thanks to the asynconnect
       // features, then we can force the current language info into the store when
       // coming from an SSR request
-      const updatedLang =
+      const contentLang =
         store.getState().content.data?.language?.token ||
         config.settings.defaultLanguage;
 
-      store.dispatch(changeLanguage(updatedLang, locales[updatedLang]));
+      const cookie_lang =
+        req.universalCookies.get('I18N_LANGUAGE') ||
+        config.settings.defaultLanguage ||
+        req.headers['accept-language'];
+
+      if (cookie_lang !== contentLang) {
+        store.dispatch(changeLanguage(contentLang, locales[contentLang], req));
+      }
 
       const context = {};
       resetServerContext();

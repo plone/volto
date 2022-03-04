@@ -210,8 +210,12 @@ const defaultModify = ({
     '@plone/volto-original': `${registry.voltoPath}/src`,
     // be able to reference current package from customized package
     '@package': `${projectRootPath}/src`,
+    '@root': `${projectRootPath}/src`,
     // we're incorporating redux-connect
     'redux-connect': `${registry.voltoPath}/src/helpers/AsyncConnect`,
+    // avoids including lodash multiple times.
+    // semantic-ui-react uses lodash-es, everything else uses lodash
+    'lodash-es': path.dirname(require.resolve('lodash')),
   };
 
   config.performance = {
