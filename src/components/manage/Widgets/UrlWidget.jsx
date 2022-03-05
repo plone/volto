@@ -12,11 +12,11 @@ import {
   addAppURL,
   isInternalURL,
   flattenToAppURL,
+  URLUtils,
 } from '@plone/volto/helpers';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
-import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
 
 /** Widget to edit urls
  *
@@ -101,6 +101,7 @@ export const UrlWidget = (props) => {
             <Button
               basic
               className="cancel"
+              aria-label="clearUrlBrowser"
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -115,6 +116,7 @@ export const UrlWidget = (props) => {
             <Button
               basic
               icon
+              aria-label="openUrlBrowser"
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();

@@ -184,3 +184,53 @@ describe('Addon chain loading dependencies', () => {
     ]);
   });
 });
+
+describe('Addon via env var - Released addon', () => {
+  const originalEnv = process.env;
+
+  beforeEach(() => {
+    jest.resetModules();
+    process.env = {
+      ...originalEnv,
+      ADDONS: 'test-released-via-addons-env-var',
+    };
+  });
+
+  afterEach(() => {
+    process.env = originalEnv;
+  });
+
+  it('addons can be specified on the fly using ADDONS env var - Released addon', () => {
+    const base = path.join(__dirname, 'fixtures', 'test-volto-project');
+    const reg = new AddonConfigurationRegistry(base);
+    expect(
+      Object.keys(reg.packages).includes('test-released-via-addons-env-var'),
+    ).toBe(true);
+  });
+});
+
+describe('Addon via env var - local packages folder addon', () => {
+  const originalEnv = process.env;
+
+  beforeEach(() => {
+    jest.resetModules();
+    process.env = {
+      ...originalEnv,
+      ADDONS: 'test-local-packages-via-addons-env-var',
+    };
+  });
+
+  afterEach(() => {
+    process.env = originalEnv;
+  });
+
+  it('addons can be specified on the fly using ADDONS env var - local packages folder addon', () => {
+    const base = path.join(__dirname, 'fixtures', 'test-volto-project');
+    const reg = new AddonConfigurationRegistry(base);
+    expect(
+      Object.keys(reg.packages).includes(
+        'test-local-packages-via-addons-env-var',
+      ),
+    ).toBe(true);
+  });
+});

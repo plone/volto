@@ -11,8 +11,8 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import jwtDecode from 'jwt-decode';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
-import cookie from 'react-cookie';
-import { filter } from 'lodash';
+import { withCookies } from 'react-cookie';
+import { filter, find } from 'lodash';
 import cx from 'classnames';
 import {
   getTypes,
@@ -94,19 +94,20 @@ export class BasicToolbarComponent extends Component {
     types: [],
   };
 
-  getCookieName = () => 'toolbar_expanded';
-  // `${this.props.activity ? `${this.props.activity}-` : ''}toolbar_expanded`;
-
-  state = {
-    expanded: cookie.load(this.getCookieName()) !== 'false',
-    showMenu: false,
-    menuStyle: {},
-    menuComponents: [],
-    loadedComponents: [],
-    hideToolbarBody: false,
-  };
-
   toolbarWindow = React.createRef();
+
+  constructor(props) {
+    super(props);
+    const { cookies } = props;
+    this.state = {
+      expanded: cookies.get('toolbar_expanded') !== 'false',
+      showMenu: false,
+      menuStyle: {},
+      menuComponents: [],
+      loadedComponents: [],
+      hideToolbarBody: false,
+    };
+  }
 
   /**
    * Component will mount
@@ -148,8 +149,11 @@ export class BasicToolbarComponent extends Component {
   }
 
   handleShrink = () => {
-    cookie.save(this.getCookieName(), !this.state.expanded, {
-      expires: new Date((2 ** 31 - 1) * 1000),
+    const { cookies } = this.props;
+    cookies.set('toolbar_expanded', !this.state.expanded, {
+      expires: new Date(
+        new Date().getTime() + config.settings.cookieExpires * 1000,
+      ),
       path: '/',
     });
     this.setState(
@@ -425,6 +429,7 @@ export class BasicToolbarComponent extends Component {
 
 export const BasicToolbar = compose(
   injectIntl,
+  withCookies,
   connect(
     (state, props) => ({
       actions: state.actions.actions,

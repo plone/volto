@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.4.1 (unreleased)
+## 1.4.2 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,12 @@
 ### Bugfix
 
 ### Internal
+
+## 1.4.1 (2022-02-24)
+
+### Bugfix
+
+- Fix `branch` option not getting into the `getAddonInfo` function @sneridagh
 
 ## 1.4.0 (2021-12-29)
 

@@ -78,7 +78,7 @@ describe('Search Block Tests', () => {
       .contains('Event')
       .click();
 
-    //  Add facet
+    //  Add checkbox facet
     cy.get('#blockform-fieldset-facets > .title').click();
     cy.get('.add-item-button-wrapper > button').click();
     cy.get('#field-field-1-facets-0 .react-select__value-container').click();
@@ -87,6 +87,14 @@ describe('Search Block Tests', () => {
     cy.get('#field-type-2-facets-0').click();
     cy.get('.react-select__option').contains('Checkbox').click();
     cy.get('label[for="field-multiple-3-facets-0"]').click();
+
+    //  Add data range facet
+    cy.get('.add-item-button-wrapper > button').click();
+    cy.get('#field-field-1-facets-1 .react-select__value-container').click();
+    cy.get('.react-select__option').contains('Effective date').click();
+    cy.get('#field-title-0-facets-1').type('Effective date');
+    cy.get('#field-type-2-facets-1').click();
+    cy.get('.react-select__option').contains('Date range').click();
 
     // Save the page
     cy.get('#toolbar-save > .icon').click();

@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Design principles
 
 Since the very beginning, Volto has been developed with a set of principles in mind,

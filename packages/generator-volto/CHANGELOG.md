@@ -1,12 +1,17 @@
 # Change Log
 
-## 5.4.1 (unreleased)
+## 5.5.1 (unreleased)
+
+### Added
+
+### Changes
+
+## 5.5.0 (2022-02-03)
 
 ### Added
 
 - Add mrs-developer.json in template
-
-### Changes
+- Fix app template Makefile @avoinea
 
 ## 5.4.0 (2021-12-29)
 

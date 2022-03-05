@@ -4,7 +4,7 @@
  */
 
 import { last, memoize } from 'lodash';
-import urlRegex from './urlRegex';
+import { urlRegex, telRegex, mailRegex } from './urlRegex';
 import prependHttp from 'prepend-http';
 import config from '@plone/volto/registry';
 
@@ -101,6 +101,15 @@ export function flattenToAppURL(url) {
       .replace(settings.apiPath, '')
       .replace(settings.publicURL, '')
   );
+}
+/**
+ * Given a URL it remove the querystring from the URL.
+ * @method stripQuerystring
+ * @param {string} url URL of the object
+ * @returns {string} URL without querystring
+ */
+export function stripQuerystring(url) {
+  return url.replace(/\?.*$/, '');
 }
 
 /**
@@ -214,3 +223,34 @@ export function normalizeUrl(url) {
 export function removeProtocol(url) {
   return url.replace('https://', '').replace('http://', '');
 }
+
+export function isMail(text) {
+  return mailRegex().test(text);
+}
+
+export function isTelephone(text) {
+  return telRegex().test(text);
+}
+
+export function normaliseMail(email) {
+  if (email.toLowerCase().startsWith('mailto:')) {
+    return email;
+  }
+  return `mailto:${email}`;
+}
+
+export function normalizeTelephone(tel) {
+  if (tel.toLowerCase().startsWith('tel:')) {
+    return tel;
+  }
+  return `tel:${tel}`;
+}
+
+export const URLUtils = {
+  normalizeTelephone,
+  normaliseMail,
+  normalizeUrl,
+  isTelephone,
+  isMail,
+  isUrl,
+};
