@@ -26,15 +26,7 @@ const SummaryTemplate = ({ items, linkTitle, linkHref, isEditMode }) => {
         {items.map((item) => (
           <div className="listing-item" key={item['@id']}>
             <ConditionalLink item={item} condition={!isEditMode}>
-              {!item.image_field && <img src={DefaultImageSVG} alt="" />}
-              {item.image_field && (
-                <img
-                  src={flattenToAppURL(
-                    `${item['@id']}/@@images/${item.image_field}/preview`,
-                  )}
-                  alt={item.title}
-                />
-              )}
+              <PreviewImage item={item} />
               <div className="listing-body">
                 <h3>{item.title ? item.title : item.id}</h3>
                 <p>{item.description}</p>
