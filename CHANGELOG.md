@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add internal volto ids to invalid ids @robgietema
+
 ### Bugfix
 
 ### Internal
