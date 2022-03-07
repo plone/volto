@@ -18,6 +18,7 @@ import {
   initialBlocks,
   initialBlocksFocus,
 } from './Blocks';
+import { components } from './Components';
 import { loadables } from './Loadables';
 
 import { sentryOptions } from './Sentry';
@@ -178,6 +179,7 @@ let config = {
   },
   addonRoutes: [],
   addonReducers: {},
+  components,
 };
 
 config = applyAddonConfiguration(config);
