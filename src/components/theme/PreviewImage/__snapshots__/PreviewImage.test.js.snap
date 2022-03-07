@@ -22,19 +22,6 @@ exports[`PreviewImage renders a preview image 1`] = `
 />
 `;
 
-exports[`PreviewImage renders a preview image as a background cover 1`] = `
-<img
-  alt="Item title"
-  className="preview-image large"
-  src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-  style={
-    Object {
-      "backgroundImage": "url(\\"http://localhost:3000/something/@@images/image/large\\")",
-    }
-  }
-/>
-`;
-
 exports[`PreviewImage renders a preview image with custom size 1`] = `
 <img
   alt="Item title"

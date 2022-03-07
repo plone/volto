@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
 
 import { flattenToAppURL } from '@plone/volto/helpers';
 
@@ -11,21 +10,12 @@ import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/defau
  *
  */
 function PreviewImage(props) {
-  const { item, size = 'preview', cover, ...rest } = props;
+  const { item, size = 'preview', ...rest } = props;
   const src = item.image_field
     ? flattenToAppURL(`${item['@id']}/@@images/${item.image_field}/${size}`)
     : DefaultImageSVG;
 
-  return cover ? (
-    <img
-      src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-      style={{ backgroundImage: `url("${src}")` }}
-      alt={item.title}
-      className={cx('preview-image', size)}
-    />
-  ) : (
-    <img src={src} alt={item.title} {...rest} />
-  );
+  return <img src={src} alt={item.title} {...rest} />;
 }
 
 PreviewImage.propTypes = {

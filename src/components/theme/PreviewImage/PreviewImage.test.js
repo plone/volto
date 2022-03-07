@@ -41,19 +41,6 @@ describe('PreviewImage', () => {
     expect(json).toMatchSnapshot();
   });
 
-  it('renders a preview image as a background cover', () => {
-    const item = {
-      image_field: 'image',
-      title: 'Item title',
-      '@id': 'http://localhost:3000/something',
-    };
-    const component = renderer.create(
-      <PreviewImage item={item} size="large" cover />,
-    );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
-  });
-
   it('renders a fallback image', () => {
     const item = {
       title: 'Item title',
