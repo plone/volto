@@ -6,6 +6,7 @@
 
 ### Feature
 
+- Add internal volto ids to invalid ids @robgietema
 - Complete basque translation @erral
 - Complete spanish translation @erral
 
