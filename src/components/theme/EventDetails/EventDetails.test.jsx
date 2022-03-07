@@ -2,10 +2,11 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 import config from '@plone/volto/registry';
 import EventDetails from './EventDetails';
 
-const mockStore = configureStore();
+const mockStore = configureStore([thunk]);
 
 const store = mockStore({
   intl: {
