@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Sort the choices in Facets @iFlameing
+
 ### Bugfix
 
 ### Internal
