@@ -561,8 +561,8 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 - Add new listing block option "fullobjects" per variation @ksuess
 - Style checkboxes @nileshgulia1
 - Allow loading .less files also from a Volto project's `src` folder. @tiberiuichim
-- Allow loading .less files also from a Volto project's `src` folder.  @tiberiuichim
-- Add a dynamic user form based in @userschema endpoint @erral
+- Allow loading .less files also from a Volto project's `src` folder. @tiberiuichim
+- Add a dynamic user form based in @userschema endpoint @erral @nileshgulia1
 
 ### Bugfix
 
