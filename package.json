@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "14.7.0",
+  "version": "15.0.0-alpha.12",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -34,11 +34,15 @@
     "start-spa": "razzle start --type=spa",
     "build": "razzle build",
     "build-spa": "razzle build --type=spa",
+    "build:clean": "rm -rf build dist",
+    "dist:clean": "rm -rf build/messages && find build -name '*.map' -exec rm -rf {} \\;",
+    "build:dist": "yarn build:clean && yarn build && yarn dist:clean && mv build dist",
     "test": "razzle test --env=jest-environment-jsdom-sixteen --maxWorkers=50%",
     "test:ci": "CI=true NODE_ICU_DATA=node_modules/full-icu razzle test --env=jest-environment-jsdom-sixteen",
     "test:husky": "CI=true yarn test --bail --findRelatedTests",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
     "start:prod": "NODE_ENV=production node build/server.js",
+    "start:dist": "NODE_ENV=production BUILD_DIR=dist node dist/server.js",
     "prettier": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,json}'",
     "prettier:fix": "./node_modules/.bin/prettier --single-quote --write 'src/**/*.{js,jsx,ts,tsx,json}'",
     "stylelint": "./node_modules/.bin/stylelint 'theme/**/*.{css,less}' 'src/**/*.{css,less}'",
@@ -52,12 +56,12 @@
     "patches": "/bin/bash patches/patchit.sh > /dev/null 2>&1 ||true",
     "deduplicate": "yarn-deduplicate yarn.lock",
     "cypress:open": "NODE_ENV=production CYPRESS_API=plone cypress open",
-    "cypress:open:core-sandbox": "NODE_ENV=production CYPRESS_API=plone cypress open --config integrationFolder='cypress/tests/core-sandbox'",
+    "cypress:open:coresandbox": "NODE_ENV=production CYPRESS_API=plone cypress open --config integrationFolder='cypress/tests/coresandbox'",
     "cypress:open:multilingual": "NODE_ENV=production CYPRESS_API=plone cypress open --config integrationFolder='cypress/tests/multilingual'",
     "cypress:open:workingCopy": "NODE_ENV=production CYPRESS_API=plone cypress open --config integrationFolder='cypress/tests/workingCopy'",
     "cypress:open:guillotina": "NODE_ENV=production CYPRESS_API=guillotina cypress open --config-file cypress/cypress.guillotina.json",
     "cypress:run": "NODE_ENV=production CYPRESS_API=plone CYPRESS_RETRIES=2 cypress run",
-    "cypress:run:core-sandbox": "NODE_ENV=production CYPRESS_API=plone cypress run --config integrationFolder='cypress/tests/core-sandbox'",
+    "cypress:run:coresandbox": "NODE_ENV=production CYPRESS_API=plone cypress run --config integrationFolder='cypress/tests/coresandbox'",
     "cypress:run:multilingual": "NODE_ENV=production CYPRESS_API=plone cypress run --config integrationFolder='cypress/tests/multilingual'",
     "cypress:run:workingCopy": "NODE_ENV=production CYPRESS_API=plone cypress run --config integrationFolder='cypress/tests/workingCopy'",
     "cypress:run:guillotina": "NODE_ENV=production CYPRESS_API=guillotina cypress run --config integrationFolder='cypress/tests/guillotina'",
@@ -65,19 +69,19 @@
     "cy:test:fixture:setup": "node cypress/support/reset-fixture.js",
     "cy:test:fixture:teardown": "node cypress/support/reset-fixture.js teardown",
     "ci:start-api-plone": "make test-acceptance-server",
-    "ci:start-api-plone-core-sandbox": "make test-acceptance-server-coresandbox",
+    "ci:start-api-plone-coresandbox": "make test-acceptance-server-coresandbox",
     "ci:start-api-plone-multilingual": "make test-acceptance-server-multilingual",
     "ci:start-api-plone-workingCopy": "make test-acceptance-server-workingcopy",
     "ci:start-api-guillotina": "make test-acceptance-guillotina",
     "ci:start-frontend": "RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http://localhost:3000 cypress:run",
-    "ci:start-frontend-core-sandbox": "RAZZLE_TESTING_ADDONS=core-sandbox RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http://localhost:3000 cypress:run:core-sandbox",
-    "ci:start-frontend-multilingual": "RAZZLE_TESTING_ADDONS=core-sandbox:multilingualFixture RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http://localhost:3000 cypress:run:multilingual",
-    "ci:start-frontend-workingCopy": "RAZZLE_TESTING_ADDONS=core-sandbox:workingCopyFixture RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http://localhost:3000 cypress:run:workingCopy",
+    "ci:start-frontend-coresandbox": "ADDONS=coresandbox RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http://localhost:3000 cypress:run:coresandbox",
+    "ci:start-frontend-multilingual": "ADDONS=coresandbox:multilingualFixture RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http://localhost:3000 cypress:run:multilingual",
+    "ci:start-frontend-workingCopy": "ADDONS=coresandbox:workingCopyFixture RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http://localhost:3000 cypress:run:workingCopy",
     "ci:start-project-frontend": "cd my-volto-app && RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http://localhost:3000 'cd .. && yarn cypress:run'",
-    "ci:start-frontend-guillotina": "RAZZLE_TESTING_ADDONS=volto-guillotina RAZZLE_API_PATH=http://localhost:8081/db/web RAZZLE_LEGACY_TRAVERSE=true yarn build && start-test start:prod http://localhost:3000 cypress:run:guillotina",
+    "ci:start-frontend-guillotina": "ADDONS=volto-guillotina RAZZLE_API_PATH=http://localhost:8081/db/web RAZZLE_LEGACY_TRAVERSE=true yarn build && start-test start:prod http://localhost:3000 cypress:run:guillotina",
     "ci:cypress:run": "start-test ci:start-api-plone http-get://localhost:55001/plone ci:start-frontend",
     "ci:cypress:project:run": "start-test ci:start-api-plone http-get://localhost:55001/plone ci:start-project-frontend",
-    "ci:cypress:run:core-sandbox": "start-test ci:start-api-plone-core-sandbox http-get://localhost:55001/plone ci:start-frontend-core-sandbox",
+    "ci:cypress:run:coresandbox": "start-test ci:start-api-plone-coresandbox http-get://localhost:55001/plone ci:start-frontend-coresandbox",
     "ci:cypress:run:multilingual": "start-test ci:start-api-plone-multilingual http-get://localhost:55001/plone ci:start-frontend-multilingual",
     "ci:cypress:run:workingCopy": "start-test ci:start-api-plone-workingCopy http-get://localhost:55001/plone ci:start-frontend-workingCopy",
     "ci:cypress:run:guillotina": "start-test ci:start-api-guillotina http-get://localhost:8081 ci:start-frontend-guillotina",
@@ -115,7 +119,9 @@
       "~/../locales/${lang}.json": "<rootDir>/locales/en.json",
       "(.*)/locales/(.*)": "<rootDir>/locales/$2",
       "load-volto-addons": "<rootDir>/jest-addons-loader.js",
-      "@package/config": "<rootDir>/jest-addons-loader.js",
+      "@package/(.*)$": "<rootDir>/src/$1",
+      "@root/config": "<rootDir>/jest-addons-loader.js",
+      "@root/(.*)$": "<rootDir>/src/$1",
       "@voltoconfig": "<rootDir>/jest-addons-loader.js",
       "\\.(css|less|scss|sass)$": "identity-obj-proxy"
     },
@@ -199,7 +205,11 @@
   ],
   "release-it": {
     "hooks": {
-      "before:bump": "yarn i18n",
+      "before:bump": [
+        "yarn i18n",
+        "yarn build:dist",
+        "git add locales dist"
+      ],
       "after:bump": "node changelogupdater.js bump ${version}",
       "after:release": "node changelogupdater.js back ${version} && git commit -am 'Back to development' && git push"
     },
@@ -339,7 +349,7 @@
     "postcss-overrides": "3.1.4",
     "prettier": "2.0.5",
     "pretty-bytes": "5.3.0",
-    "prismjs": "1.25.0",
+    "prismjs": "1.27.0",
     "promise-file-reader": "1.0.2",
     "prop-types": "15.7.2",
     "query-string": "7.1.0",
@@ -350,7 +360,7 @@
     "react-anchor-link-smooth-scroll": "1.0.12",
     "react-animate-height": "2.0.17",
     "react-beautiful-dnd": "13.0.0",
-    "react-cookie": "1.0.5",
+    "react-cookie": "4.1.1",
     "react-dates": "21.5.1",
     "react-detect-click-outside": "1.1.1",
     "react-dnd": "5.0.0",
@@ -401,6 +411,7 @@
     "svgo-loader": "2.2.1",
     "tlds": "1.203.1",
     "undoo": "0.5.0",
+    "universal-cookie-express": "4.0.3",
     "use-deep-compare-effect": "1.6.1",
     "xmlrpc": "1.3.2",
     "yarn-deduplicate": "3.1.0",
@@ -434,7 +445,7 @@
     "ua-parser-js": "0.7.28"
   },
   "volta": {
-    "node": "14.17.0",
-    "yarn": "1.19.1"
+    "node": "16.13.2",
+    "yarn": "1.22.17"
   }
 }

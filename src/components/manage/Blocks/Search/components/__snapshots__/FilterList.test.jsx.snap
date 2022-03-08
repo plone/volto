@@ -31,7 +31,7 @@ exports[`FilterList renders filters listing component for search block 1`] = `
       />
       Current filters applied
       : 
-      2
+      1
     </div>
     <button
       className="ui small basic compact icon button"
@@ -55,6 +55,11 @@ exports[`FilterList renders filters listing component for search block 1`] = `
         <div
           className="filter-list-group"
         >
+          <span
+            className="label-title"
+          >
+            Portal type
+          </span>
           <div
             className="ui small label"
             onClick={[Function]}

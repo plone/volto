@@ -44,8 +44,9 @@ RAZZLE_DEV_PROXY_API_PATH='http://localhost:55001/myplonesite' yarn start
 
 ### Debug an external site (provided you have access to it)
 
-!!! warning
-    This is an advanced feature, and needs understanding of what you are doing and which server are you accessing. Also, it depends on your server configuration.
+```{warning}
+This is an advanced feature, and needs understanding of what you are doing and which server are you accessing. Also, it depends on your server configuration.
+```
 
 Let's say you want to debug a deployed site in production, but the build does not allow you to look deeper into the tracebacks. You could bootstrap a frontend in your machine, and point it to the production server, combining environment variables like:
 
@@ -63,25 +64,26 @@ RAZZLE_DEV_PROXY_API_PATH=http://2021.ploneconf.org:8080/Plone yarn start
 
 This will use the internal proxy to access the backend, bypassing CORS.
 
-!!! important
-    Anything that would mean not using the internal proxy (eg. using RAZZLE_API_PATH) will have to deal with CORS. You could enable `plone.volto.cors` ZCML or add your config to the build to support bypassing CORS at a server level. Like this:
+````{important}
+Anything that would mean not using the internal proxy (eg. using RAZZLE_API_PATH) will have to deal with CORS. You could enable `plone.volto.cors` ZCML or add your config to the build to support bypassing CORS at a server level. Like this:
 
-    https://github.com/plone/volto/blob/master/api/buildout.cfg#L29-L40
+https://github.com/plone/volto/blob/master/api/buildout.cfg#L29-L40
 
-    ```
-    zcml-additional =
-      <configure xmlns="http://namespaces.zope.org/zope"
-                xmlns:plone="http://namespaces.plone.org/plone">
-      <plone:CORSPolicy
-        allow_origin="http://localhost:3000,http://127.0.0.1:3000"
-        allow_methods="DELETE,GET,OPTIONS,PATCH,POST,PUT"
-        allow_credentials="true"
-        expose_headers="Content-Length,X-My-Header"
-        allow_headers="Accept,Authorization,Content-Type,X-Custom-Header,Origin,Lock-Token"
-        max_age="3600"
-        />
-      </configure>
-    ```
+```
+zcml-additional =
+  <configure xmlns="http://namespaces.zope.org/zope"
+            xmlns:plone="http://namespaces.plone.org/plone">
+  <plone:CORSPolicy
+    allow_origin="http://localhost:3000,http://127.0.0.1:3000"
+    allow_methods="DELETE,GET,OPTIONS,PATCH,POST,PUT"
+    allow_credentials="true"
+    expose_headers="Content-Length,X-My-Header"
+    allow_headers="Accept,Authorization,Content-Type,X-Custom-Header,Origin,Lock-Token"
+    max_age="3600"
+    />
+  </configure>
+```
+````
 
 ## Disabling the internal proxy
 
@@ -89,5 +91,6 @@ The internal proxy is always available, even in production since Volto 14.
 
 When `RAZZLE_API_PATH` is present, Volto does not use it, and use the URL in there instead.
 
-!!! important
-    Again, when `RAZZLE_API_PATH` is present your deployment is the one who has to deal with CORS.
+```{important}
+Again, when `RAZZLE_API_PATH` is present your deployment is the one who has to deal with CORS.
+```

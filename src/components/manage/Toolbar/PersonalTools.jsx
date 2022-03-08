@@ -11,6 +11,7 @@ import cx from 'classnames';
 import { FormattedMessage, injectIntl, defineMessages } from 'react-intl';
 import { Icon } from '@plone/volto/components';
 import { getUser } from '@plone/volto/actions';
+import { Pluggable } from '@plone/volto/components/manage/Pluggable';
 import { userHasRoles } from '@plone/volto/helpers';
 
 import logoutSVG from '@plone/volto/icons/log-out.svg';
@@ -172,6 +173,7 @@ class PersonalTools extends Component {
                 </Link>
               </li>
             )}
+            <Pluggable name="toolbar-user-menu" />
           </ul>
         </div>
       </div>
