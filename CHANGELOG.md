@@ -8,6 +8,7 @@
 
 ### Bugfix
 
+- Fix overflow of very long file name in `FileWidget` @sneridagh
 - Fix overflowing issue in the toolbar @kreafox
 
 ### Internal
