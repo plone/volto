@@ -26,6 +26,8 @@
 
 ### Bugfix
 
+- Fix redirect bug with URLs containing querystrings @robgietema
+- Fix overflowing issue in the toolbar @kreafox
 - Fixed id widget translations @robgietema
 
 ### Internal
