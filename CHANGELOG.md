@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix overflowing issue in the toolbar @kreafox
+
 ### Internal
 
 ## 15.0.0-alpha.12 (2022-03-07)
@@ -27,7 +29,6 @@
 ### Bugfix
 
 - Fix redirect bug with URLs containing querystrings @robgietema
-- Fix overflowing issue in the toolbar @kreafox
 - Fixed id widget translations @robgietema
 
 ### Internal
