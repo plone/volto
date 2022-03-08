@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Fix overflow of very long file name in `FileWidget` @sneridagh
+- Fix overflowing issue in the toolbar @kreafox
 
 ### Internal
 
@@ -29,7 +30,6 @@
 ### Bugfix
 
 - Fix redirect bug with URLs containing querystrings @robgietema
-- Fix overflowing issue in the toolbar @kreafox
 - Fixed id widget translations @robgietema
 
 ### Internal
