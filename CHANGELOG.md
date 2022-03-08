@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix overflow of very long file name in `FileWidget` @sneridagh
+
 ### Internal
 
 ## 15.0.0-alpha.12 (2022-03-07)
