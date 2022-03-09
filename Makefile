@@ -13,8 +13,8 @@ MAKEFLAGS+=--no-builtin-rules
 # Project settings
 
 INSTANCE_PORT=8080
-DOCKER_IMAGE=plone/plone-backend:5.2.6
-KGS=plone.restapi==8.21.0 plone.volto==4.0.0a3 plone.rest==2.0.0a2 plone.app.iterate==4.0.2 plone.app.vocabularies==4.3.0
+DOCKER_IMAGE=plone/plone-backend:5.2.7
+KGS=plone.restapi==8.21.2 plone.volto==4.0.0a3 plone.rest==2.0.0a3 plone.app.iterate==4.0.2 plone.app.vocabularies==4.3.0
 
 # Sphinx variables
 # You can set these variables from the command line.
@@ -173,7 +173,11 @@ start-backend: ## Start Plone Backend
 
 .PHONY: start-backend-docker
 start-backend-docker:
-	docker run -it --rm -p 8080:8080 -e SITE=Plone -e ADDONS='$(KGS)' $(DOCKER_IMAGE)
+	docker run -it --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS='$(KGS)' $(DOCKER_IMAGE)
+
+.PHONY: start-frontend-docker
+start-frontend-docker:
+	docker run -it --rm --name=volto --link backend -p 3000:3000 -e RAZZLE_INTERNAL_API_PATH=http://backend:8080/Plone -e RAZZLE_DEV_PROXY_API_PATH=http://backend:8080/Plone plone/plone-frontend:latest
 
 .PHONY: start-backend-docker-guillotina
 start-backend-docker-guillotina:
