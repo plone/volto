@@ -16,6 +16,31 @@
 ### Documentation
 
 - Fix broken links. @stevepiercy
+- Fixed id widget translations @robgietema
+
+### Internal
+
+## 15.0.0-alpha.10 (2022-02-28)
+
+### Bugfix
+
+- Turn `lazyLibraries` action into a thunk. Added a conditional if the library is loaded or in process to be loaded, do not try to load it again. This fixes the lag on load `draftjs` when having a lot of draftjs blocks. @sneridagh
+
+## 15.0.0-alpha.9 (2022-02-28)
+
+### Breaking
+
+- Deprecating `lang` cookie in favor of Plone official one `I18N_LANGUAGE` @sneridagh
+
+### Feature
+
+- Added id widget to manage short name @robgietema
+- Refactor language syncronizer. Remove it from the React tree, integrate it into the Api Redux middleware @sneridagh
+- Add blocks rendering in Event and NewsItem views (rel plone.volto#32) @nzambello @ksuess
+
+### Bugfix
+
+- Fix redirect bug with URLs containing querystrings @robgietema
 
 ## 15.0.0-alpha.8 (2022-02-22)
 
