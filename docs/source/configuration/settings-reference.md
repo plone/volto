@@ -65,7 +65,7 @@ contentIcons
     With this property you can configure Content Types icons.
     Those are visible in Contents view (ex "Folder contents").  The default
     ones are in
-    [config/ContentIcons.jsx](https://github.com/plone/volto/tree/master/src/config/ContentIcons.jsx)
+    [config/ContentIcons.jsx](https://github.com/plone/volto/blob/master/src/config/ContentIcons.jsx)
     and you can extend them in your project's config for custom content types
     using `settings.contentIcons`.
 
@@ -146,7 +146,7 @@ asyncPropsExtenders
     proper server-side rendering of content that depends on additional async
     props coming from backend calls. It is a list of route-like configuration
     objects (they are matched using
-    [matchRoutes](https://github.com/ReactTraining/react-router/blob/ea44618e68f6a112e48404b2ea0da3e207daf4f0/packages/react-router-config/modules/matchRoutes.js).
+    [matchRoutes](https://github.com/remix-run/react-router/blob/ea44618e68f6a112e48404b2ea0da3e207daf4f0/packages/react-router-config/modules/matchRoutes.js).
     Instead of the `component` key you should provide an `extend`
     method with signature `asyncItems => asyncItems`, so it receives a list of
     asyncConnect "prop" objects and returns a similar list. You can add
