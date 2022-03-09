@@ -11,7 +11,7 @@
 
 [Volto](https://github.com/plone/volto) is a ReactJS-based frontend for the [Plone](https://plone.org) Content Management System. It will become the default UI for the upcoming Plone 6 release.
 
-[Plone](https://plone.org) is a CMS built on Python with over more than 20 years of history and experience.
+[Plone](https://plone.org) is a CMS built on Python with more than 20 years of history and experience.
 
 Plone has very interesting features that appeal to developers and users alike,
 such as customizable content types, hierarchical URL object traversing and a
@@ -19,11 +19,13 @@ sophisticated content workflow powered by a granular permissions model. This
 allows you to build anything from simple websites to enterprise-grade
 intranets.
 
-Volto exposes all these features and communicates with Plone via its [REST API](https://github.com/plone/plone.restapi). Volto has the ability of being easy extensible, themable and customizable.
+Volto exposes all these features and communicates with Plone via its [REST API](https://github.com/plone/plone.restapi).
+Volto has the ability of being easily extensible, themeable, and customizable.
 
-It features the Pastanaga Editor, a modern block based content layout editor. It is extensible and customizable, so you can adapt the default blocks provided to match your requirements, or build new ones to cover them.
+It features the Pastanaga editor, a modern block-based content layout editor. It is extensible and customizable, so you can adapt the default blocks provided to match your requirements, or build new ones to cover them.
 
-Volto is extensible using add-ons, you can build your own or choose from the community released ones:
+Volto is extensible using add-ons.
+You can build your own or choose from the community released ones:
 
 - [Volto Add-ons in NPM](https://www.npmjs.com/search?q=keywords%3Avolto-addon%2Cvolto)
 - [Volto Awesome](https://github.com/collective/awesome-volto)
@@ -219,7 +221,7 @@ JavaScript-centered trainings.
 Volto works well with any modern (evergreen) browser, including their mobile
 flavors: Chrome, Firefox, Safari, Edge.
 
-We do not guarantee that browsers who were deprecated by their vendors (e.g. Internet Explorer 11) are supported by Volto. Although proven possible, it's known to be a huge effort and up to the integrator to provide support for it.
+We do not guarantee that deprecated browsers (e.g., Internet Explorer 11) are supported by Volto. Although proven possible, it's too great an effort to maintain. It is left to the integrator to provide support for it.
 
 ## Upgrades
 
@@ -331,23 +333,23 @@ Volto uses [Cypress](https://www.cypress.io/) for browser-based acceptance testi
 
 There are a number of fixtures available covering all the configuration use cases. These fixtures have both a specific backend and frontend configuration setup and a related set of tests. The CI infrastructure runs them all automatically on every push to a branch or PR.
 
-The tests can be run in headless mode (as the CI do), or within the Cypress user interface. The later is the one that you run under development.
+The tests can be run in headless mode (same as the CI does), or within the Cypress user interface. The latter is the one that you run under development.
 
 ### How to run acceptance tests locally (during development)
 
-When writing new acceptance tests you usually want to minimize the time it takes to run the tests, and still be able to debug or inspect what's going on.
+When writing new acceptance tests, you usually want to minimize the time it takes to run the tests, while also being able to debug or inspect what's going on.
 
-To do so, start three individual terminal sessions for running the Plone backend, the Volto frontend and the acceptance tests.
+To do so, start three individual terminal sessions for running the Plone backend, the Volto frontend, and the acceptance tests.
 
-1. Run the backend fixture
+1.  Run the backend fixture
     ```shell
     make test-acceptance-server
     ```
-2. Run the frontend fixture
+2.  Run the frontend fixture
     ```shell
     yarn cypress:start-frontend
     ```
-3. Run the Cypress tests for that fixture
+3.  Run the Cypress tests for that fixture
     ```shell
     yarn cypress:open
     ```
@@ -382,9 +384,9 @@ If you would like contribute to translate Volto into several languages, please, 
 
 Volto also supports other APIs like [Guillotina](https://guillotina.io/), a
 Python resource management system, inspired by Plone and using the same basic
-concepts like traversal, content types and permissions model.
+concepts like traversal, content types, and permissions model.
 
-Last but not least, it also supports a [Volto Nodejs-based backend reference](https://github.com/plone/volto-reference-backend) API implementation that
+Last but not least, it also supports a [Volto Node.js-based backend reference](https://github.com/plone/volto-reference-backend) API implementation that
 demos how other systems could also use Volto to display and create content
 through it.
 
@@ -404,7 +406,7 @@ make start-backend-docker-guillotina
 
 ### Running the acceptance tests with Guillotina backend
 
-If you want to use Guillotina as backend to run the tests you should run:
+If you want to use Guillotina as a backend to run the tests you should run:
 
 ```shell
 yarn ci:start-api-plone-guillotina
