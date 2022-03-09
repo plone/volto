@@ -46,14 +46,8 @@
 
 ### Internal
 
-- Various build improvements and minor refactoring captured during the effort to unify
-  Volto, Plone classic, and ZMI authentication.  @rpatterson
 - Use `@root` alias instead of `~` in several module references. Most of the Volto project code no longer needs the root alias, so it makes sense to phase it out at some point @tiberiuichim
 - Alias `lodash` to `lodash-es`, as this will include only one copy of lodash in the bundle @tiberiuichim
-
-### Documentation
-
-- Fixed id widget translations @robgietema
 
 ## 15.0.0-alpha.10 (2022-02-28)
 
