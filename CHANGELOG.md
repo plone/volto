@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Sort the choices in Facets @iFlameing
+
 ### Bugfix
 
 - Fix overflow of very long file name in `FileWidget` @sneridagh
