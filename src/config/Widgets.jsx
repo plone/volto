@@ -89,6 +89,7 @@ export const widgetMapping = {
     password: PasswordWidget,
     number: NumberWidget,
     integer: NumberWidget,
+    id: IdWidget,
   },
 };
 
