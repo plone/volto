@@ -2,18 +2,14 @@
 
 ## 15.0.0 (unreleased)
 
-### Breaking
-
 ### Feature
 
-- Sort the choices in Facets @iFlameing
+- Sort the choices in Facets in the search block @iFlameing
 
 ### Bugfix
 
 - Fix overflow of very long file name in `FileWidget` @sneridagh
 - Fix overflowing issue in the toolbar @kreafox
-
-### Internal
 
 ## 15.0.0-alpha.12 (2022-03-07)
 
