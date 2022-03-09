@@ -13,7 +13,9 @@
 - Various build improvements and minor refactoring captured during the effort to unify
   Volto, Plone classic, and ZMI authentication.  @rpatterson
 
-### Internal
+### Documentation
+
+- Fix broken links. @stevepiercy
 
 ## 15.0.0-alpha.8 (2022-02-22)
 
