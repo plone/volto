@@ -8,7 +8,11 @@
 
 ### Bugfix
 
+- Contents Rename Modal, use `id` Widget type @sneridagh
+
 ### Internal
+
+- Add `id` as widget type as well @sneridagh
 
 ## 15.0.0-alpha.13 (2022-03-09)
 
