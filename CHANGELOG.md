@@ -12,6 +12,14 @@
 
 ### Internal
 
+- Various build improvements and minor refactoring captured during the effort to unify
+  Volto, Plone classic, and ZMI authentication.  @rpatterson
+
+### Documentation
+
+- Fix broken links. @stevepiercy
+- Fixed id widget translations @robgietema
+
 ## 15.0.0-alpha.10 (2022-02-28)
 
 ### Bugfix
