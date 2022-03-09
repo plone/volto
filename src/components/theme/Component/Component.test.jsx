@@ -15,16 +15,16 @@ config.set('components', {
 
 describe('Component component :P', () => {
   it('Render a Component in the registry', () => {
-    const { container } = render(<Component name="Toolbar" />);
+    const { container } = render(<Component componentName="Toolbar" />);
     expect(container).toMatchSnapshot();
   });
   it('Renders a Fallback Component that does not exists in the registry', () => {
-    const { container } = render(<Component name="Toolbar.Foo" />);
+    const { container } = render(<Component componentName="Toolbar.Foo" />);
     expect(container).toMatchSnapshot();
   });
   it('Renders a Component in the registry - passes props correctly', () => {
     const { container } = render(
-      <Component name="Toolbar.Types" teststring="Hi!" />,
+      <Component componentName="Toolbar.Types" teststring="Hi!" />,
     );
     expect(container).toMatchSnapshot();
   });

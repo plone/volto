@@ -8,16 +8,51 @@
 
 ### Bugfix
 
+### Internal
+
+### Documentation
+
+- Fix broken links. @stevepiercy
+
+## 15.0.0-alpha.13 (2022-03-09)
+
+### Feature
+
+- Sort the choices in Facets in the search block @iFlameing
+
+### Bugfix
+
+- Fix overflow of very long file name in `FileWidget` @sneridagh
+- Fix overflowing issue in the toolbar @kreafox
+
+## 15.0.0-alpha.12 (2022-03-07)
+
+### Feature
+
+- Add internal volto ids to invalid ids @robgietema
+- Complete basque translation @erral
+- Complete spanish translation @erral
+
+### Internal
+
+- Change prop `name` -> `componentName` in component `Component` @sneridagh
+
+## 15.0.0-alpha.11 (2022-03-02)
+
+### Bugfix
+
+- Fix redirect bug with URLs containing querystrings @robgietema
 - Fixed id widget translations @robgietema
 
 ### Internal
 
 - Various build improvements and minor refactoring captured during the effort to unify
   Volto, Plone classic, and ZMI authentication.  @rpatterson
+- Use `@root` alias instead of `~` in several module references. Most of the Volto project code no longer needs the root alias, so it makes sense to phase it out at some point @tiberiuichim
+- Alias `lodash` to `lodash-es`, as this will include only one copy of lodash in the bundle @tiberiuichim
 
 ### Documentation
 
-- Fix broken links. @stevepiercy
 - Fixed id widget translations @robgietema
 
 ## 15.0.0-alpha.10 (2022-02-28)

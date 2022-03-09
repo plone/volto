@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Input } from 'semantic-ui-react';
-import { concat, keys } from 'lodash';
+import { compact, concat, keys, map, union, uniq } from 'lodash';
 
 import { defineMessages, injectIntl } from 'react-intl';
 import { Icon, FormFieldWrapper } from '@plone/volto/components';
@@ -96,6 +96,16 @@ class IdWidget extends Component {
     super(props);
     this.state = {
       error: [],
+      reservedIds: compact(
+        uniq(
+          union(
+            config.settings.reservedIds,
+            map(config.settings.nonContentRoutes, (route) =>
+              String(route).replace(/[^a-z-]/g, ''),
+            ),
+          ),
+        ),
+      ),
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -126,7 +136,7 @@ class IdWidget extends Component {
     const error = [];
 
     // Check reserved id's
-    if (config.settings.reservedIds.indexOf(value) !== -1) {
+    if (this.state.reservedIds.indexOf(value) !== -1) {
       error.push(this.props.intl.formatMessage(messages.reservedId));
     }
 

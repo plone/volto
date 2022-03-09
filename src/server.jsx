@@ -18,7 +18,7 @@ import { CookiesProvider } from 'react-cookie';
 import cookiesMiddleware from 'universal-cookie-express';
 import debug from 'debug';
 
-import routes from '~/routes';
+import routes from '@root/routes';
 import config from '@plone/volto/registry';
 
 import {
@@ -44,7 +44,7 @@ let locales = {};
 if (config.settings) {
   config.settings.supportedLanguages.forEach((lang) => {
     const langFileName = normalizeLanguageName(lang);
-    import('~/../locales/' + langFileName + '.json').then((locale) => {
+    import('@root/../locales/' + langFileName + '.json').then((locale) => {
       locales = { ...locales, [lang]: locale.default };
     });
   });
