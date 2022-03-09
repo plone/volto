@@ -246,6 +246,9 @@ export function insertBlock(formData, id, value) {
       [blocksFieldname]: {
         ...formData[blocksFieldname],
         [newBlockId]: value || null,
+        [id]: {
+          '@type': config.settings.defaultBlockType,
+        },
       },
       [blocksLayoutFieldname]: {
         items: [
