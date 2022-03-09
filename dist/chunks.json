@@ -400,15 +400,15 @@
   "client": {
     "css": [
       "/static/css/14.803b450c.chunk.css",
-      "/static/css/client.fa4bb735.chunk.css"
+      "/static/css/client.f8d3e12c.chunk.css"
     ],
     "js": [
       "/static/js/runtime~client.c5015e27.js",
       "/static/js/runtime~client.c5015e27.js.map",
       "/static/js/14.803b450c.chunk.js",
       "/static/js/14.803b450c.chunk.js.map",
-      "/static/js/client.fa4bb735.chunk.js",
-      "/static/js/client.fa4bb735.chunk.js.map"
+      "/static/js/client.f8d3e12c.chunk.js",
+      "/static/js/client.f8d3e12c.chunk.js.map"
     ],
     "chunks": [
       13,
