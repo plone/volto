@@ -2,10 +2,6 @@
 
 ## 15.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Contents Rename Modal, use `id` Widget type @sneridagh
