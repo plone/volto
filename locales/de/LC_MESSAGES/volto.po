@@ -1336,6 +1336,11 @@ msgstr "Artikel eingefügt."
 msgid "Item(s) state has been updated."
 msgstr "Der Status der Objekte wurde aktualisiert."
 
+#: components/manage/Contents/Contents
+# defaultMessage: Item(s) successfully removed from clipboard
+msgid "Item(s) successfully removed from clipboard"
+msgstr "Ausgewählte(s) Objekt(e) erfolgreich aus dem Zwischenspeicher entfernt."
+
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Items
 msgid "Items"
@@ -1992,6 +1997,11 @@ msgstr "Registrierungsformular"
 # defaultMessage: Relevance
 msgid "Relevance"
 msgstr "relevanz"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Remove Item(s) from clipboard
+msgid "Remove Item(s) from clipboard"
+msgstr "Ausgewählte(s) Objekt(e) aus der Zwischenablage entfernen"
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item

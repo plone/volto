@@ -1328,6 +1328,11 @@ msgstr "Elementuak ondo itsatsi dira."
 msgid "Item(s) state has been updated."
 msgstr "Elementuen egoera eguneratu egin da."
 
+#: components/manage/Contents/Contents
+# defaultMessage: Item(s) successfully removed from clipboard
+msgid "Item(s) successfully removed from clipboard"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Items
 msgid "Items"
@@ -1984,6 +1989,11 @@ msgstr "Erregistro formularioa"
 # defaultMessage: Relevance
 msgid "Relevance"
 msgstr "Errelebantzia"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Remove Item(s) from clipboard
+msgid "Remove Item(s) from clipboard"
+msgstr ""
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item
