@@ -78,7 +78,7 @@ The new way:
 
 ### Language Switcher no longer takes care of the sync of the language
 
-This responsibility has been transferred in full to the Api Redux middleware, if you have shadowed either `LanguageSwitcher` or `MultilingualRedirector` (during the alpha phase) components, please update them.
+This responsibility has been transferred in full to the API Redux middleware, if you have shadowed either `LanguageSwitcher` or `MultilingualRedirector` (during the alpha phase) components, please update them.
 Not doing so won't break your project, but they won't get the latest features and bug fixes, and probably will update the language cookie twice.
 
 ### LinkView component markup change
