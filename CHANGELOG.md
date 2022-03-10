@@ -12,6 +12,9 @@
 
 ### Internal
 
+- Better Readme, updated to 2022 @sneridagh
+- Update to latest versions for Python packages @sneridagh
+
 ### Documentation
 
 - Fix broken links. @stevepiercy
