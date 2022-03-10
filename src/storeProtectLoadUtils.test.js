@@ -401,6 +401,20 @@ describe('storeProtectLoadUtils', () => {
         location: { pathname: '/NEW-PATH' },
       });
     });
+    test('RESET_CONTENT will remove the reset condition', () => {
+      const state = {
+        foo: 'BAR',
+        resetBeforeFetch: true,
+      };
+      const action = {
+        type: 'RESET_CONTENT',
+      };
+      const result = loadProtector(state, action);
+      expect(result).toEqual({
+        foo: 'BAR',
+        resetBeforeFetch: false,
+      });
+    });
     describe('pass when not counting', () => {
       const expectPass = (action, requestCount) => () => {
         const state = {

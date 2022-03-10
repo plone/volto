@@ -136,6 +136,15 @@ export function loadProtector(state = {}, action = {}) {
       } else {
         return state;
       }
+    case RESET_CONTENT:
+      if (state.resetBeforeFetch) {
+        return {
+          ...state,
+          resetBeforeFetch: false,
+        };
+      } else {
+        return state;
+      }
     default:
       const { isCounting, requestCount } = state;
       if (isCounting && isRequestAction(action)) {
