@@ -87,7 +87,7 @@
 ### Bugfix
 
 - Contents Rename Modal, use `id` Widget type @sneridagh
-- Clear current block on insert new block. @robgietema
+- Overwrite current block on insert new block. @robgietema
 
 ### Internal
 
