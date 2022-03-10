@@ -8,6 +8,7 @@ import {
   MOVE_CONTENT,
   COPY,
   CUT,
+  CLEAR_CLIPBOARD,
 } from '@plone/volto/constants/ActionTypes';
 
 /**
@@ -69,5 +70,16 @@ export function cut(urls) {
   return {
     type: CUT,
     source: urls,
+  };
+}
+
+/**
+ * CLEAR_CLIPBOARD function.
+ * @function clearClipboard
+ * @returns {Object} Cut action.
+ */
+export function clearClipboard() {
+  return {
+    type: CLEAR_CLIPBOARD,
   };
 }

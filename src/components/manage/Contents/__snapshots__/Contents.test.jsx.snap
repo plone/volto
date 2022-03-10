@@ -296,6 +296,37 @@ exports[`Contents renders a folder contents view component 1`] = `
                 </button>
               </div>
               <div
+                className="menu top-menu-menu clearclipboard active"
+              >
+                <button
+                  className="ui button icon item"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                >
+                  <svg
+                    className="icon clearclipboard"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "#e40166",
+                        "height": "24px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+              </div>
+              <div
                 className="right menu top-menu-searchbox"
               >
                 <div

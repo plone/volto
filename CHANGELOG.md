@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add Undo (clear clipboard) button in folder contents @steffenri
+
 ### Bugfix
 
 - Contents Rename Modal, use `id` Widget type @sneridagh
