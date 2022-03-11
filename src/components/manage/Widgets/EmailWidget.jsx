@@ -76,9 +76,9 @@ EmailWidget.defaultProps = {
   required: false,
   error: [],
   value: null,
-  onChange: () => { },
-  onBlur: () => { },
-  onClick: () => { },
+  onChange: () => {},
+  onBlur: () => {},
+  onClick: () => {},
   minLength: null,
   maxLength: null,
 };
