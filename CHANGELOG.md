@@ -5,14 +5,14 @@
 ### Breaking
 
 - Upgrade `react-cookie` to the latest version. @sneridagh @robgietema
-  See https://docs.voltocms.com/upgrade-guide/ for more information.
-- Language Switcher no longer takes care of the change of the language on the Redux Store. This responsibility has been unified in the Api Redux middleware @sneridagh
+  See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+- Language Switcher no longer takes care of the change of the language on the Redux Store. This responsibility has been unified in the API Redux middleware @sneridagh
 - Markup change in `LinkView` component.
 - Rename `core-sandbox` to `coresandbox` for sake of consistency @sneridagh
 - Extend the original intent and rename `RAZZLE_TESTING_ADDONS` to `ADDONS`. @sneridagh
-  See https://docs.voltocms.com/upgrade-guide/ for more information.
-- Lazyload draftjs library. See the upgrade guide on how that impacts you, in case you have extended the rich text editor configuration @tiberiuichim @kreafox
-  See https://docs.voltocms.com/upgrade-guide/ for more information.
+  See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+- Lazyload Draft.js library. See the upgrade guide on how that impacts you, in case you have extended the rich text editor configuration @tiberiuichim @kreafox
+  See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
 - Deprecating `lang` cookie in favor of Plone official one `I18N_LANGUAGE` @sneridagh
 
 ### Feature
@@ -27,14 +27,14 @@
 - Refactor language synchronizer. Remove it from the React tree, integrate it into the Api Redux middleware @sneridagh
 - Add blocks rendering in Event and NewsItem views (rel plone.volto#32) @nzambello @ksuess
 - Add internal volto ids to invalid ids @robgietema
-- Complete basque translation @erral
-- Complete spanish translation @erral
+- Complete Basque translation @erral
+- Complete Spanish translation @erral
 - Sort the choices in Facets in the search block @iFlameing
 
 ### Bugfix
 
 - Fix the `null` error in SelectAutoComplete Widget @iFlameing
-- Prevent the MultilingualRedirector to force 4 content load when switching the language @reebalazs
+- Prevent the `MultilingualRedirector` to force content load when switching the language @reebalazs
 - Fix the upload image in contents view @iFlameing
 - add "view" id to contact-form container for main content skiplink @ThomasKindermann
 - Fix loading indicator positioning on Login form submit @sneridagh
