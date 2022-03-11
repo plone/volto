@@ -4,9 +4,119 @@
 
 ### Breaking
 
+- Upgrade `react-cookie` to the latest version. @sneridagh @robgietema
+  See https://docs.voltocms.com/upgrade-guide/ for more information.
+- Language Switcher no longer takes care of the change of the language on the Redux Store. This responsibility has been unified in the Api Redux middleware @sneridagh
+- Markup change in `LinkView` component.
+- Rename `core-sandbox` to `coresandbox` for sake of consistency @sneridagh
+- Extend the original intent and rename `RAZZLE_TESTING_ADDONS` to `ADDONS`. @sneridagh
+  See https://docs.voltocms.com/upgrade-guide/ for more information.
+- Lazyload draftjs library. See the upgrade guide on how that impacts you, in case you have extended the rich text editor configuration @tiberiuichim @kreafox
+  See https://docs.voltocms.com/upgrade-guide/ for more information.
+- Deprecating `lang` cookie in favor of Plone official one `I18N_LANGUAGE` @sneridagh
+
 ### Feature
 
+- Add `cookiesExpire` value to config to control the cookie expiration @giuliaghisini
+- DatetimeWidget 'noPastDates' option: Take widgetOptions?.pattern_options?.noPastDates of backend schema into account. @ksuess
+- Add a new type of filter facet for the Search block. Heavily refactor some searchblock internals. @tiberiuichim
+- Add date range facet to the search block @robgietema
+- Introduce the new `BUILD_DIR` runtime environment variable to direct the build to run in a specific location, different than `build` folder. @sneridagh
+- Handle redirect permanent calls from the backend in the frontend (e.g. when changing the short name) @robgietema
+- Added id widget to manage short name @robgietema
+- Refactor language synchronizer. Remove it from the React tree, integrate it into the Api Redux middleware @sneridagh
+- Add blocks rendering in Event and NewsItem views (rel plone.volto#32) @nzambello @ksuess
+- Add internal volto ids to invalid ids @robgietema
+- Complete basque translation @erral
+- Complete spanish translation @erral
+- Sort the choices in Facets in the search block @iFlameing
+
 ### Bugfix
+
+- Fix the `null` error in SelectAutoComplete Widget @iFlameing
+- Prevent the MultilingualRedirector to force 4 content load when switching the language @reebalazs
+- Fix the upload image in contents view @iFlameing
+- add "view" id to contact-form container for main content skiplink @ThomasKindermann
+- Fix loading indicator positioning on Login form submit @sneridagh
+- Fix redirect bug with URLs containing querystrings @robgietema
+- Fixed id widget translations @robgietema
+- Contents Rename Modal, use `id` Widget type @sneridagh
+- Fix overflow of very long file name in `FileWidget` @sneridagh
+- Fix overflowing issue in the toolbar @kreafox
+
+### Internal
+
+- Change prop `name` -> `componentName` in component `Component` @sneridagh
+- Add new RawMaterial Volto websites in production @nzambello
+- House cleanup, remove some unused files in the root @sneridagh
+- Move Webpack related files to `webpack-plugins` folder @sneridagh
+- Remove unused Dockerfiles @sneridagh
+- Update Docker compose to latest images and best practices @sneridagh
+- Improve flaky test in coresandbox search Cypress tests @sneridagh
+- Better implementation of the add-on load coming from the environment variable `ADDONS` @sneridagh
+- Turn `lazyLibraries` action into a thunk. Added a conditional if the library is loaded or in process to be loaded, do not try to load it again. This fixes the lag on load `draftjs` when having a lot of draftjs blocks. @sneridagh
+- Use `@root` alias instead of `~` in several module references. Most of the Volto project code no longer needs the root alias, so it makes sense to phase it out at some point @tiberiuichim
+- Alias `lodash` to `lodash-es`, as this will include only one copy of lodash in the bundle @tiberiuichim
+- Better Readme, updated to 2022 @sneridagh
+- Update to latest versions for Python packages @sneridagh
+- Add `id` as widget type as well @sneridagh
+
+### Documentation
+
+- Upgrade Guide i18n: Make clear what's project, what add-on. @ksuess
+- (Experimental) Prepare documentation for MyST and importing into `plone/documentation@6-dev`. @stevepiercy
+- Fix broken links and redirects in documentation to be compatible with MyST. @stevepiercy
+- Update add-on internationalization. @ksuess
+- Add MyST and Sphinx basic configuration for rapid build and comparison against MkDocs builds. @stevepiercy
+- Fix many MyST and Sphinx warnings. @stevepiercy
+- Remove MkDocs configuration. See https://github.com/plone/volto/issues/3042 @stevepiercy
+- Add Plone docs to Intersphinx and fix broken link. @stevepiercy
+- Get version from `package.json` @sneridagh
+- Remove legacy folder in docs @sneridagh
+- Backport docs of RAZZLE_TESTING_ADDONS environment variables. See https://github.com/plone/volto/pull/3067/files#diff-00609ed769cd40cf3bc3d6fcc4431b714cb37c73cedaaea18fe9fc4c1c589597 @stevepiercy
+- Add missing developer-guidelines/typescript to toctree @stevepiercy
+- Add Netlify for preview of Sphinx builds for pull requests against `master` and `plone6-docs`. @stevepiercy
+- Clean up toctree errors by removing obsolete files, adding `:orphan:` field list, and reorganizing some files. @sneridagh and @stevepiercy
+- Switch to using netlify.toml to configure Netlify Python environment. @stevepiercy
+- Convert admonition syntax from Markdown to MyST. @sneridagh
+- Make links build both in Volto and Plone documentation. See https://github.com/plone/volto/pull/3094 @stevepiercy
+- Fix broken links. @stevepiercy
+
+## 15.0.0-alpha.14 (2022-03-10)
+
+### Bugfix
+
+- Contents Rename Modal, use `id` Widget type @sneridagh
+- Overwrite current block on insert new block. @robgietema
+
+### Internal
+
+- Better Readme, updated to 2022 @sneridagh
+- Update to latest versions for Python packages @sneridagh
+- Add `id` as widget type as well @sneridagh
+
+### Documentation
+
+- Fix broken links. @stevepiercy
+
+## 15.0.0-alpha.13 (2022-03-09)
+
+### Feature
+
+- Sort the choices in Facets in the search block @iFlameing
+
+### Bugfix
+
+- Fix overflow of very long file name in `FileWidget` @sneridagh
+- Fix overflowing issue in the toolbar @kreafox
+
+## 15.0.0-alpha.12 (2022-03-07)
+
+### Feature
+
+- Add internal volto ids to invalid ids @robgietema
+- Complete basque translation @erral
+- Complete spanish translation @erral
 
 ### Internal
 
@@ -18,6 +128,7 @@
 
 ### Bugfix
 
+- Fix redirect bug with URLs containing querystrings @robgietema
 - Fixed id widget translations @robgietema
 
 ### Internal
