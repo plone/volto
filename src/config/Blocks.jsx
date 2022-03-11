@@ -40,12 +40,16 @@ import tableSVG from '@plone/volto/icons/table.svg';
 import listBulletSVG from '@plone/volto/icons/list-bullet.svg';
 import tocSVG from '@plone/volto/icons/list-bullet.svg';
 import searchSVG from '@plone/volto/icons/zoom.svg';
+import rowSVG from '@plone/volto/icons/rowblock.svg';
 
 import ImageGalleryListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/ImageGallery';
 import BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Schema';
 import TextSettingsSchema from '@plone/volto/components/manage/Blocks/Text/Schema';
 import ImageSettingsSchema from '@plone/volto/components/manage/Blocks/Image/Schema';
 import ToCSettingsSchema from '@plone/volto/components/manage/Blocks/ToC/Schema';
+
+import RowViewBlock from '@plone/volto/components/manage/Blocks/Row/View';
+import RowEditBlock from '@plone/volto/components/manage/Blocks/Row/Edit';
 
 import SearchBlockView from '@plone/volto/components/manage/Blocks/Search/SearchBlockView';
 import SearchBlockEdit from '@plone/volto/components/manage/Blocks/Search/SearchBlockEdit';
@@ -479,6 +483,24 @@ const blocksConfig = {
         ],
       },
     },
+  },
+  row: {
+    id: 'row',
+    title: 'Row',
+    icon: rowSVG,
+    group: 'common',
+    view: RowViewBlock,
+    edit: RowEditBlock,
+    restricted: false,
+    mostUsed: true,
+    sidebarTab: 1,
+    // This has a good reason: Slate does not work in detached mode if enabled
+    blockHasOwnFocusManagement: true,
+    security: {
+      addPermission: [],
+      view: [],
+    },
+    gridAllowedBlocks: ['teaser', 'image', 'listing', 'slate', 'text'],
   },
 };
 

@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a TemplateChooser component 1`] = `
+<div
+  className="template-chooser"
+>
+  <div
+    className="ui message"
+  >
+    <div
+      className="ui one column grid"
+    >
+      <div
+        className="column"
+      >
+        <button
+          className="ui button template-chooser-item"
+          onClick={[Function]}
+        >
+          <img
+            alt=""
+            src="template.svg"
+          />
+          <div
+            className="template-chooser-title"
+          >
+            Template default translation
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

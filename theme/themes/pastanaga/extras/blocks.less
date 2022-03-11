@@ -1087,3 +1087,279 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     }
   }
 }
+
+// Row block
+@blueArctic: #e2f1fd;
+@greySnow: #f3f5f7;
+@greySmoke: #e4e8ec;
+
+.block-editor-row {
+  position: relative;
+  // Removed because it broke the z-index of the blockChooser, making it fall behind
+  // z-index: 10;
+}
+
+.renderer-wrapper {
+  position: relative;
+  height: 100%;
+  border-radius: 6px;
+
+  &.empty {
+    background: @blueArctic;
+  }
+
+  &.selected::before {
+    position: absolute;
+    // otherwise, this layer is above the object, then it does not allow clicking inside
+    z-index: -1;
+    top: -5px;
+    left: -5px;
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
+    border: 1px solid rgba(120, 192, 215, 0.5);
+    border-radius: 3px;
+    content: '';
+  }
+
+  .block {
+    margin: 0;
+  }
+
+  .ui.basic.button.remove-block-button {
+    position: absolute;
+    z-index: 2;
+    top: 6px;
+    right: 2px;
+
+    .icon {
+      height: 18px !important;
+    }
+
+    .circled {
+      padding: 8px;
+      border: 1px solid @greySmoke;
+      background: @greySnow;
+
+      &:hover {
+        background-color: @greySmoke;
+      }
+    }
+
+    &:hover {
+      background-color: transparent !important;
+    }
+  }
+}
+
+.uber-grid-default-item {
+  position: relative;
+  display: flex;
+  height: 100%;
+  min-height: 200px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .ui.basic.button.add-block-button {
+    .icon {
+      height: 32px !important;
+    }
+
+    .circled {
+      padding: 10px;
+      border: none;
+      background: @greySnow;
+
+      &:hover {
+        background-color: @greySmoke;
+      }
+    }
+
+    &:hover {
+      background-color: transparent !important;
+    }
+  }
+
+  .blocks-chooser {
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+}
+
+.block .block.detached:hover::before {
+  border: none;
+}
+
+// Transfer upstream
+.block [data-rbd-draggable-context-id] {
+  margin-bottom: 0;
+}
+
+// Required to overcome the droppable from b-d&d at the bottom
+// !! Required for ALL blocks that have b-d&d and a grid
+.block.row,
+[class$='Grid'].block {
+  .ui.grid {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .column {
+    // Removed because it broke the z-index of the blockChooser, making it fall behind
+    // z-index: 2;
+  }
+}
+
+// This is required to overcome the inline-flex imposed from semantic grids
+.block.row,
+[class$='Grid'].block {
+  .ui.stretched.grid > .column.grid-block-slate {
+    display: block !important;
+  }
+}
+
+.block-editor-row .block .toolbar,
+[class$='Grid'] .block .toolbar {
+  top: -49px;
+  left: -10px;
+  border-radius: 6px;
+  box-shadow: 0px 9px 18px rgba(2, 19, 34, 0.18),
+    0px 6px 12px rgba(2, 19, 34, 0.06);
+  transform: initial;
+}
+
+[class$='Grid'] .block,
+.block.row {
+  h2,
+  h3 {
+    &:not(.headline) {
+      margin: 0 !important;
+    }
+  }
+
+  .grid-teaser-item {
+    h2,
+    h3 {
+      margin-bottom: 1rem !important;
+    }
+
+    .content {
+      h2 {
+        padding-bottom: 7px;
+        margin-bottom: 0px !important;
+        font-size: 14px;
+        font-weight: 300;
+      }
+    }
+  }
+
+  .grid-image-wrapper {
+    display: flex;
+    // This one is because Safari has a bug with flexed items, the default is
+    // align-items `stretched`, so it's required to reset it.
+    align-items: flex-start;
+  }
+
+  .grid-image-wrapper::before {
+    padding-top: 60%;
+    content: '';
+    float: left;
+  }
+
+  .grid-image-wrapper::after {
+    display: block;
+    clear: both;
+    content: '';
+  }
+
+  .grid-image-wrapper {
+    position: relative;
+
+    img {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .ui.message {
+    margin: 0;
+    border-radius: 6px;
+  }
+
+  // Override for grid image hover
+  .block.image:hover::before {
+    display: none;
+  }
+
+  .block.listing:hover::before {
+    display: none;
+  }
+}
+
+.grid-teaser-item {
+  display: flex;
+  flex-direction: column;
+
+  a,
+  a:hover {
+    color: rgba(0, 0, 0, 0.87);
+  }
+
+  p {
+    // Defaults are always standard, on theme with customizations
+    margin-bottom: 0;
+    text-align: left;
+  }
+
+  &.default {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      max-width: 300px;
+      align-self: center;
+    }
+  }
+
+  &.top .grid-image-wrapper {
+    margin-bottom: 25px;
+  }
+
+  &.top a {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.ui.button.template-chooser-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 20px 0 20px;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+
+  .template-chooser-title {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+  }
+}
+
+[data-rbd-draggable-context-id].grid-block-slate {
+  cursor: text;
+
+  .renderer-wrapper {
+    min-height: 50px;
+  }
+}
