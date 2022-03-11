@@ -103,9 +103,14 @@ This is similar to the testing add-ons from vanilla Volto.
 
 Initially, Volto used a `lang` named cookie to keep track of the current language. However, Plone was using a cookie named `I18N_LANGUAGE` for the same purpose, we updated Volto to use both at some point. We decided to deprecate the `lang` one in favor of the used in Plone core. If someone relied on this cookie for some reason or feature, should change to use `I18N_LANGUAGE` instead.
 
-### Use `@root` alias instead of `~` deprecation notice
+### Use `@root` alias instead of `~`
 
-Not a breaking in this release, since the support for the `~` alias is still in place, but a new `@root` alias has been set up in order to replace the `~` one. However we mark now as deprecated the use of `~` will be removed from Volto 16 onwards.
+A new `@root` alias has been set up to replace the `~` alias.
+Support for the `~` alias is still in place, but we now mark it as deprecated.
+The use of `~` will be removed in Volto 16.
+
+```{deprecated} 15.0
+```
 
 ## Upgrading to Volto 14.x.x
 
