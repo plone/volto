@@ -51,10 +51,15 @@ const Facets = (props) => {
                 ? query_to_values[field].includes(value)
                 : true,
             );
-
-          choices = choices.sort((a, b) =>
-            a.label.localeCompare(b.label, 'en', { sensitivity: 'base' }),
-          );
+          if (field === 'year') {
+            choices = choices.sort((a, b) =>
+              b.label.localeCompare(a.label, 'en', { sensitivity: 'base' }),
+            );
+          } else {
+            choices = choices.sort((a, b) =>
+              a.label.localeCompare(b.label, 'en', { sensitivity: 'base' }),
+            );
+          }
 
           const isMulti = facetSettings.multiple;
           const selectedValue = facets[facetSettings?.field?.value];
