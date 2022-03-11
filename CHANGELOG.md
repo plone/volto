@@ -43,6 +43,7 @@
 - Contents Rename Modal, use `id` Widget type @sneridagh
 - Fix overflow of very long file name in `FileWidget` @sneridagh
 - Fix overflowing issue in the toolbar @kreafox
+- Overwrite current block on insert new block. @robgietema
 
 ### Internal
 
@@ -87,7 +88,6 @@
 ### Bugfix
 
 - Contents Rename Modal, use `id` Widget type @sneridagh
-- Overwrite current block on insert new block. @robgietema
 
 ### Internal
 
