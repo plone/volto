@@ -31,7 +31,7 @@ import navTreeSVG from '@plone/volto/icons/nav.svg';
  * ```
  */
 export const UrlWidget = (props) => {
-  const { id, onChange, onBlur, onClick, minLength, maxLength } = props;
+  const { id, onChange, onBlur, onClick, minLength, maxLength, placeholder, isDisabled } = props;
   const inputId = `field-${id}`;
 
   const [value, setValue] = useState(flattenToAppURL(props.value));
@@ -87,6 +87,8 @@ export const UrlWidget = (props) => {
           name={id}
           type="url"
           value={value || ''}
+          disabled={isDisabled}
+          placeholder={placeholder}
           onChange={({ target }) => onChangeValue(target.value)}
           onBlur={({ target }) =>
             onBlur(id, target.value === '' ? undefined : target.value)
@@ -156,6 +158,7 @@ UrlWidget.propTypes = {
   minLength: PropTypes.number,
   maxLength: PropTypes.number,
   openObjectBrowser: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
 };
 
 /**

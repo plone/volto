@@ -44,6 +44,8 @@
 - Fix overflow of very long file name in `FileWidget` @sneridagh
 - Fix overflowing issue in the toolbar @kreafox
 - Overwrite current block on insert new block. @robgietema
+- Pass placeholder and isDisabled properties to EmailWidget and UrlWidget
+- Pass placeholder property to PasswordWidget and NumberWidget
 
 ### Internal
 
