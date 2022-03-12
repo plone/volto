@@ -126,8 +126,8 @@ const BlocksForm = (props) => {
     onChangeFormData(newFormData);
   };
 
-  const onInsertBlock = (id, value) => {
-    const [newId, newFormData] = insertBlock(properties, id, value);
+  const onInsertBlock = (id, value, current) => {
+    const [newId, newFormData] = insertBlock(properties, id, value, current);
     onChangeFormData(newFormData);
     return newId;
   };

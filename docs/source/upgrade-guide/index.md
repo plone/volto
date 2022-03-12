@@ -78,9 +78,8 @@ The new way:
 
 ### Language Switcher no longer takes care of the sync of the language
 
-This responsibility has been transferred in full to the `MultilingualRedirector`, if you have
-shadowed these components, either `LanguageSwitcher` or `MultilingualRedirector`, please update them.
-Not doing so won't break your project, but they won't get the latest features and bug fixes.
+This responsibility has been transferred in full to the API Redux middleware, if you have shadowed either `LanguageSwitcher` or `MultilingualRedirector` (during the alpha phase) components, please update them.
+Not doing so won't break your project, but they won't get the latest features and bug fixes, and probably will update the language cookie twice.
 
 ### LinkView component markup change
 
@@ -100,9 +99,18 @@ One could extend the `ADDONS` list configuration via this environment variable.
 It works for published packages, such as those add-ons that live in the `packages` folder locally to your project.
 This is similar to the testing add-ons from vanilla Volto.
 
-### Deprecate `lang` cookie
+### Remove and deprecate `lang` cookie
 
 Initially, Volto used a `lang` named cookie to keep track of the current language. However, Plone was using a cookie named `I18N_LANGUAGE` for the same purpose, we updated Volto to use both at some point. We decided to deprecate the `lang` one in favor of the used in Plone core. If someone relied on this cookie for some reason or feature, should change to use `I18N_LANGUAGE` instead.
+
+### Use `@root` alias instead of `~`
+
+A new `@root` alias has been set up to replace the `~` alias.
+Support for the `~` alias is still in place, but we now mark it as deprecated.
+The use of `~` will be removed in Volto 16.
+
+```{deprecated} 15.0
+```
 
 ## Upgrading to Volto 14.x.x
 

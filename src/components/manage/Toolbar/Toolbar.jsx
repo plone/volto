@@ -215,7 +215,7 @@ export class BasicToolbarComponent extends Component {
     } else {
       this.setState((state) => ({
         showMenu: !state.showMenu,
-        menuStyle,
+        menuStyle: { top: 0 },
         extras,
         loadedComponentName,
       }));
