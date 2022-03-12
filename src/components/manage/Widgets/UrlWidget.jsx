@@ -31,7 +31,16 @@ import navTreeSVG from '@plone/volto/icons/nav.svg';
  * ```
  */
 export const UrlWidget = (props) => {
-  const { id, onChange, onBlur, onClick, minLength, maxLength, placeholder, isDisabled } = props;
+  const {
+    id,
+    onChange,
+    onBlur,
+    onClick,
+    minLength,
+    maxLength,
+    placeholder,
+    isDisabled,
+  } = props;
   const inputId = `field-${id}`;
 
   const [value, setValue] = useState(flattenToAppURL(props.value));

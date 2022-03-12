@@ -22,7 +22,16 @@ import { injectIntl } from 'react-intl';
  * ```
  */
 const PasswordWidget = (props) => {
-  const { id, value, onChange, onBlur, onClick, minLength, maxLength, placeholder } = props;
+  const {
+    id,
+    value,
+    onChange,
+    onBlur,
+    onClick,
+    minLength,
+    maxLength,
+    placeholder,
+  } = props;
 
   return (
     <FormFieldWrapper {...props}>

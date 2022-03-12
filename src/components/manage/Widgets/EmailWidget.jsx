@@ -20,7 +20,17 @@ import { Input } from 'semantic-ui-react';
  * ```
  */
 const EmailWidget = (props) => {
-  const { id, value, onChange, onBlur, onClick, minLength, maxLength, placeholder, isDisabled } = props;
+  const {
+    id,
+    value,
+    onChange,
+    onBlur,
+    onClick,
+    minLength,
+    maxLength,
+    placeholder,
+    isDisabled,
+  } = props;
   const inputId = `field-${id}`;
 
   return (
