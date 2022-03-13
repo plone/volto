@@ -67,7 +67,7 @@ boilerplate to start customizing your Volto site.
 npm install -g yo @plone/generator-volto
 yo @plone/volto
 ```
-in case npm install commands throws an error, which would be most likely due to a permissions issue in your home directory, you will need to reclaim ownership of the .npm directory.
+> 💡 **HINT** In case the `npm install` command throws an error, which would be most likely due to a permissions issue in your home directory, you will need to reclaim ownership of the `.npm` directory.
 You can do so by executing
 
 ```shell
