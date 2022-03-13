@@ -82,6 +82,7 @@
 - Convert admonition syntax from Markdown to MyST. @sneridagh
 - Make links build both in Volto and Plone documentation. See https://github.com/plone/volto/pull/3094 @stevepiercy
 - Fix broken links. @stevepiercy
+- Update Sphinx configuration to check anchors in links and exclude problematic URLs. @sneridagh and @stevepiercy
 
 ## 15.0.0-alpha.14 (2022-03-10)
 
