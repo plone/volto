@@ -10,8 +10,11 @@ import { v4 as uuid } from 'uuid';
 import cx from 'classnames';
 
 import TemplateChooser from '@plone/volto/components/manage/TemplateChooser/TemplateChooser';
+
 import addSVG from '@plone/volto/icons/add.svg';
 import configSVG from '@plone/volto/icons/configuration.svg';
+import circleDownSVG from '@plone/volto/icons/circle-bottom.svg';
+import circleRightSVG from '@plone/volto/icons/circle-right.svg';
 
 import templates from './templates';
 
@@ -100,14 +103,21 @@ const RowEdit = (props) => {
     });
   };
 
+  const onToggleDirection = () => {
+    onChangeBlock(block, {
+      ...data,
+      '@type': data['@type'] === 'row' ? 'column' : 'row',
+    });
+  };
+
   const allowedBlocksConfig = pickBy(config.blocks.blocksConfig, (value, key) =>
     allowedBlocks.includes(key),
   );
 
-  const direction = data['@type'] === 'row' ? 'horizontal' : null;
+  const direction = data['@type'] === 'row' ? 'horizontal' : 'vertical';
 
   return (
-    <fieldset
+    <div
       className={cx({
         one: data?.data && data.data.blocks_layout.items.length === 1,
         two: data?.data && data.data.blocks_layout.items.length === 2,
@@ -123,10 +133,27 @@ const RowEdit = (props) => {
               aria-label={`Add row element`}
               icon
               basic
-              disabled={data.data.blocks_layout.items.length >= maxRowLength}
+              disabled={
+                data?.data?.blocks_layout?.items?.length >= maxRowLength
+              }
               onClick={(e) => onAddNewBlock()}
             >
               <Icon name={addSVG} size="24px" />
+            </Button>
+          </Button.Group>
+          <Button.Group>
+            <Button
+              aria-label={`Toggle`}
+              icon
+              basic
+              onClick={(e) => onToggleDirection()}
+            >
+              <Icon
+                name={
+                  direction === 'horizontal' ? circleDownSVG : circleRightSVG
+                }
+                size="24px"
+              />
             </Button>
           </Button.Group>
           <Button.Group>
@@ -197,7 +224,7 @@ const RowEdit = (props) => {
       <SidebarPortal selected={selected}>
         <GridData {...props}></GridData>
       </SidebarPortal>
-    </fieldset>
+    </div>
   );
 };
 

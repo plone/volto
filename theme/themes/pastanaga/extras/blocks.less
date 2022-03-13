@@ -1241,6 +1241,7 @@ body.has-toolbar.has-sidebar .drag.row.handle.wrapper {
 }
 
 .block-editor-row .block .toolbar,
+.block-editor-column .block .toolbar,
 [class$='Grid'] .block .toolbar {
   top: -49px;
   left: -10px;
@@ -1385,9 +1386,21 @@ body.has-toolbar.has-sidebar .drag.row.handle.wrapper {
   }
 }
 
+.block.row .rows [data-rbd-droppable-id] {
+  display: flex;
+  margin-top: 1rem;
+}
+
 .block.row [class^='block-editor-'] {
   padding-right: 1rem;
   padding-left: 1rem;
+  margin-bottom: 0;
+}
+
+.block.column [class^='block-editor-'] {
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .block.row .one.rows [class^='block-editor-'] {
