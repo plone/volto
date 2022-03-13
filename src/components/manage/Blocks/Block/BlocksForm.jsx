@@ -37,6 +37,7 @@ const BlocksForm = (props) => {
     isMainForm = true,
     blocksConfig = config.blocks.blocksConfig,
     editable = true,
+    direction,
   } = props;
 
   const blockList = getBlocks(properties);
@@ -168,6 +169,7 @@ const BlocksForm = (props) => {
             onChangeFormData(newFormData);
             return true;
           }}
+          direction={direction}
         >
           {(dragProps) => {
             const { child, childId, index } = dragProps;

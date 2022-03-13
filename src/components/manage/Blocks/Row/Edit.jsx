@@ -7,6 +7,7 @@ import GridData from './Data';
 import EditBlockWrapper from './EditBlockWrapper';
 import { useIntl } from 'react-intl';
 import { v4 as uuid } from 'uuid';
+import cx from 'classnames';
 
 import TemplateChooser from '@plone/volto/components/manage/TemplateChooser/TemplateChooser';
 import addSVG from '@plone/volto/icons/add.svg';
@@ -103,8 +104,18 @@ const RowEdit = (props) => {
     allowedBlocks.includes(key),
   );
 
+  const direction = data['@type'] === 'row' ? 'horizontal' : null;
+
   return (
-    <fieldset className="section-block">
+    <fieldset
+      className={cx({
+        one: data?.data && data.data.blocks_layout.items.length === 1,
+        two: data?.data && data.data.blocks_layout.items.length === 2,
+        three: data?.data && data.data.blocks_layout.items.length === 3,
+        four: data?.data && data.data.blocks_layout.items.length === 4,
+        rows: true,
+      })}
+    >
       {selected && (
         <div className="toolbar">
           <Button.Group>
@@ -147,6 +158,7 @@ const RowEdit = (props) => {
       <BlocksForm
         metadata={metadata}
         properties={properties}
+        direction={direction}
         manage={manage}
         selectedBlock={selected ? selectedBlock : null}
         blocksConfig={allowedBlocksConfig}

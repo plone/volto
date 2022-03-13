@@ -51,6 +51,7 @@ const DragDropList = (props) => {
   const {
     childList,
     children,
+    direction,
     onMoveItem,
     as = 'div',
     style,
@@ -116,7 +117,7 @@ const DragDropList = (props) => {
       onDragUpdate={onDragUpdate}
       onDragEnd={onDragEnd}
     >
-      <Droppable droppableId={uid}>
+      <Droppable droppableId={uid} direction={direction || null}>
         {(provided, snapshot) => (
           <AsDomComponent
             ref={provided.innerRef}
