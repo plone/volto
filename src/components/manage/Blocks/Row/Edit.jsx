@@ -6,18 +6,18 @@ import { Button, Grid, Ref } from 'semantic-ui-react';
 import GridData from './Data';
 import EditBlockWrapper from './EditBlockWrapper';
 import { useIntl } from 'react-intl';
+import { v4 as uuid } from 'uuid';
 
 import TemplateChooser from '@plone/volto/components/manage/TemplateChooser/TemplateChooser';
 import addSVG from '@plone/volto/icons/add.svg';
-import clearSVG from '@plone/volto/icons/clear.svg';
 import configSVG from '@plone/volto/icons/configuration.svg';
 
 import templates from './templates';
 
 import config from '@plone/volto/registry';
 
-function getAllowedBlocks(type) {
-  return config.blocks.blocksConfig?.[type]?.allowedBlocks;
+function getBlockConfig(type) {
+  return config.blocks.blocksConfig?.[type];
 }
 
 function emptyBlocksForm() {
@@ -38,13 +38,15 @@ const RowEdit = (props) => {
     pathname,
     selected,
     manage,
-    formDescription,
   } = props;
 
   const intl = useIntl();
   const metadata = props.metadata || props.properties;
   const data_blocks = data?.data?.blocks;
   const properties = isEmpty(data_blocks) ? emptyBlocksForm() : data.data;
+  const blockConfig = getBlockConfig(data['@type']);
+  const allowedBlocks = blockConfig.allowedBlocks;
+  const maxRowLength = blockConfig.maxRowLength;
 
   const [selectedBlock, setSelectedBlock] = useState(
     properties.blocks_layout.items[0],
@@ -65,19 +67,32 @@ const RowEdit = (props) => {
 
   const blockState = {};
 
-  // Get editing instructions from block settings or props
-  let instructions = data?.instructions?.data || data?.instructions;
-  if (!instructions || instructions === '<p><br/></p>') {
-    instructions = formDescription;
-  }
-
-  const allowedBlocks = [...getAllowedBlocks(data['@type']), 'emptyRowCell'];
+  const onAddNewBlock = () => {
+    const newuuid = uuid();
+    const type = allowedBlocks?.length === 1 ? allowedBlocks[0] : null;
+    const newFormData = {
+      ...data.data,
+      blocks: {
+        ...data.data.blocks,
+        [newuuid]: {
+          ...(type && { '@type': type }),
+        },
+      },
+      blocks_layout: {
+        items: [...data.data.blocks_layout.items, newuuid],
+      },
+    };
+    if (data.data.blocks_layout.items.length < maxRowLength) {
+      onChangeBlock(block, {
+        ...data,
+        data: newFormData,
+      });
+    }
+  };
 
   const onSelectTemplate = (templateIndex) => {
     const resultantTemplates =
-      getAllowedBlocks(data['@type'])?.length === 1
-        ? templates(getAllowedBlocks(data['@type'])[0])
-        : templates();
+      allowedBlocks?.length === 1 ? templates(allowedBlocks[0]) : templates();
     onChangeBlock(block, {
       ...data,
       data: resultantTemplates(intl)[templateIndex].blocksData,
@@ -94,24 +109,24 @@ const RowEdit = (props) => {
         <div className="toolbar">
           <Button.Group>
             <Button
-              aria-label={`Add grid element`}
+              aria-label={`Add row element`}
               icon
               basic
-              onClick={(e) => this.addNewColumn(e)}
+              disabled={data.data.blocks_layout.items.length >= maxRowLength}
+              onClick={(e) => onAddNewBlock()}
             >
               <Icon name={addSVG} size="24px" />
             </Button>
           </Button.Group>
           <Button.Group>
             <Button
-              aria-label={`Select grid block`}
+              aria-label={`Row block settings`}
               icon
               basic
               onClick={(e) => {
                 e.stopPropagation();
                 setSelectedBlock();
                 props.setSidebarTab(1);
-                // this.node.current.focus();
               }}
             >
               <Icon name={configSVG} size="24px" />
@@ -122,8 +137,8 @@ const RowEdit = (props) => {
       {isEmpty(data_blocks) && (
         <TemplateChooser
           templates={
-            getAllowedBlocks(data['@type'])?.length === 1
-              ? templates(getAllowedBlocks(data['@type'])[0])
+            allowedBlocks?.length === 1
+              ? templates(allowedBlocks[0])
               : templates()
           }
           onSelectTemplate={onSelectTemplate}
@@ -136,7 +151,6 @@ const RowEdit = (props) => {
         selectedBlock={selected ? selectedBlock : null}
         blocksConfig={allowedBlocksConfig}
         title={data.placeholder}
-        description={instructions}
         onSelectBlock={(id) => {
           setSelectedBlock(id);
         }}
@@ -168,14 +182,7 @@ const RowEdit = (props) => {
           </EditBlockWrapper>
         )}
       </BlocksForm>
-      <SidebarPortal
-        selected={
-          selected
-          // selected &&
-          // !this.state.selectedColumnIndex &&
-          // this.state.selectedColumnIndex !== 0
-        }
-      >
+      <SidebarPortal selected={selected}>
         <GridData {...props}></GridData>
       </SidebarPortal>
     </fieldset>

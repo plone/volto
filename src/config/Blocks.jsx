@@ -497,28 +497,30 @@ const blocksConfig = {
     sidebarTab: 1,
     // This has a good reason: Slate does not work in detached mode if enabled
     blockHasOwnFocusManagement: false,
+    maxRowLength: 4,
     security: {
       addPermission: [],
       view: [],
     },
     allowedBlocks: ['image', 'listing', 'slate', 'text'],
   },
-  emptyRowCell: {
-    id: 'emptyRowCell',
-    title: 'emptyRowCell',
+  column: {
+    id: 'column',
+    title: 'Column',
     icon: rowSVG,
     group: 'common',
     view: RowViewBlock,
-    edit: emptyRowCellEditBlock,
-    restricted: true,
+    edit: RowEditBlock,
+    restricted: false,
     mostUsed: false,
     sidebarTab: 1,
     // This has a good reason: Slate does not work in detached mode if enabled
-    blockHasOwnFocusManagement: true,
+    blockHasOwnFocusManagement: false,
     security: {
       addPermission: [],
       view: [],
     },
+    allowedBlocks: ['image', 'listing', 'slate', 'text'],
   },
 };
 
