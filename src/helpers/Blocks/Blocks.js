@@ -343,6 +343,24 @@ export function emptyBlocksForm() {
   };
 }
 
+export function blocksFormGenerator(number, type) {
+  const idMap = [...Array(number).keys()].map(() => uuid());
+  const start = {
+    blocks: {},
+    blocks_layout: { items: idMap },
+  };
+
+  return {
+    ...start,
+    blocks: Object.fromEntries(
+      start.blocks_layout.items.map((item) => [
+        item,
+        type ? { '@type': type } : {},
+      ]),
+    ),
+  };
+}
+
 /**
  * Recursively discover blocks in data and call the provided callback
  * @function visitBlocks

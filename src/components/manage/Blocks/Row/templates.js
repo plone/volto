@@ -1,5 +1,5 @@
-import { v4 as uuid } from 'uuid';
 import { defineMessages } from 'react-intl';
+import { blocksFormGenerator } from '@plone/volto/helpers';
 
 import gridTemplate1 from './grid-1.svg';
 import gridTemplate2 from './grid-2.svg';
@@ -22,69 +22,25 @@ const templates = (type) => (intl) => [
     image: gridTemplate1,
     id: 'gridtemplateone',
     title: `1 ${intl.formatMessage(messages.column)}`,
-    columns: [
-      {
-        id: uuid(),
-        ...(type && { '@type': type }),
-      },
-    ],
+    blocksData: blocksFormGenerator(1, type),
   },
   {
     image: gridTemplate2,
     id: 'gridtemplatetwo',
     title: `2 ${intl.formatMessage(messages.columns)}`,
-    columns: [
-      {
-        id: uuid(),
-        ...(type && { '@type': type }),
-      },
-      {
-        id: uuid(),
-        ...(type && { '@type': type }),
-      },
-    ],
+    blocksData: blocksFormGenerator(2, type),
   },
   {
     image: gridTemplate3,
     id: 'gridtemplatethree',
     title: `3 ${intl.formatMessage(messages.columns)}`,
-    columns: [
-      {
-        id: uuid(),
-        ...(type && { '@type': type }),
-      },
-      {
-        id: uuid(),
-        ...(type && { '@type': type }),
-      },
-      {
-        id: uuid(),
-        ...(type && { '@type': type }),
-      },
-    ],
+    blocksData: blocksFormGenerator(3, type),
   },
   {
     image: gridTemplate4,
     id: 'gridtemplatefour',
     title: `4 ${intl.formatMessage(messages.columns)}`,
-    columns: [
-      {
-        id: uuid(),
-        ...(type && { '@type': type }),
-      },
-      {
-        id: uuid(),
-        ...(type && { '@type': type }),
-      },
-      {
-        id: uuid(),
-        ...(type && { '@type': type }),
-      },
-      {
-        id: uuid(),
-        ...(type && { '@type': type }),
-      },
-    ],
+    blocksData: blocksFormGenerator(4, type),
   },
 ];
 

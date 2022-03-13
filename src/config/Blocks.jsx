@@ -50,6 +50,7 @@ import ToCSettingsSchema from '@plone/volto/components/manage/Blocks/ToC/Schema'
 
 import RowViewBlock from '@plone/volto/components/manage/Blocks/Row/View';
 import RowEditBlock from '@plone/volto/components/manage/Blocks/Row/Edit';
+import emptyRowCellEditBlock from '@plone/volto/components/manage/Blocks/Row/emptyRowCellEditBlock';
 
 import SearchBlockView from '@plone/volto/components/manage/Blocks/Search/SearchBlockView';
 import SearchBlockEdit from '@plone/volto/components/manage/Blocks/Search/SearchBlockEdit';
@@ -495,12 +496,29 @@ const blocksConfig = {
     mostUsed: true,
     sidebarTab: 1,
     // This has a good reason: Slate does not work in detached mode if enabled
+    blockHasOwnFocusManagement: false,
+    security: {
+      addPermission: [],
+      view: [],
+    },
+    allowedBlocks: ['image', 'listing', 'slate', 'text'],
+  },
+  emptyRowCell: {
+    id: 'emptyRowCell',
+    title: 'emptyRowCell',
+    icon: rowSVG,
+    group: 'common',
+    view: RowViewBlock,
+    edit: emptyRowCellEditBlock,
+    restricted: true,
+    mostUsed: false,
+    sidebarTab: 1,
+    // This has a good reason: Slate does not work in detached mode if enabled
     blockHasOwnFocusManagement: true,
     security: {
       addPermission: [],
       view: [],
     },
-    gridAllowedBlocks: ['teaser', 'image', 'listing', 'slate', 'text'],
   },
 };
 
