@@ -74,7 +74,8 @@ You can do so by executing
 sudo chown -R $(whoami) ~/.npm
 ```
 
-follow the prompts questions, provide `myvoltoproject` as project name then, when it finishes:
+Follow the prompt's questions, providing `myvoltoproject` as the project name.
+When it finishes, change your working directory:
 
 ```shell
 cd myvoltoproject
