@@ -13,7 +13,7 @@ import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import { getDatabaseInformation } from '@plone/volto/actions';
 import { Helmet } from '@plone/volto/helpers';
-import { Icon, Toolbar } from '@plone/volto/components';
+import { Icon, Toolbar, Error } from '@plone/volto/components';
 import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({
@@ -65,6 +65,9 @@ class DatabaseInformation extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    if (this.props.database?.error) {
+      return <Error error={this.props.database.error} />;
+    }
     return this.props.databaseInformation ? (
       <Container id="database-page" className="controlpanel-database">
         <Helmet title="DatabaseInformation" />
@@ -241,6 +244,7 @@ export default compose(
   connect(
     (state, props) => ({
       databaseInformation: state.controlpanels.databaseinformation,
+      database: state.controlpanels.database,
       pathname: props.location.pathname,
     }),
     { getDatabaseInformation },

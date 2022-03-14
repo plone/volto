@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Added Error Handling in Addons and Database components of control panel @avimishra18
+
 ### Bugfix
 
 ### Internal
