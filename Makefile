@@ -22,7 +22,7 @@ SPHINXOPTS      ?=
 # Internal variables.
 SPHINXBUILD     = $(realpath bin/sphinx-build)
 SPHINXAUTOBUILD = $(realpath bin/sphinx-autobuild)
-DOCS_DIR        = ./docs/
+DOCS_DIR        = ./docs/source/
 BUILDDIR        = ../_build/
 ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(SPHINXOPTS) .
 
