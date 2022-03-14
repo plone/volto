@@ -44,6 +44,7 @@
 - Fix overflow of very long file name in `FileWidget` @sneridagh
 - Fix overflowing issue in the toolbar @kreafox
 - Overwrite current block on insert new block. @robgietema
+- Fix error when lock data is gone after an invariant error. @robgietema
 
 ### Internal
 
