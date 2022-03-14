@@ -2,6 +2,7 @@ import React from 'react';
 import { getBaseUrl, applyBlockDefaults } from '@plone/volto/helpers';
 import { defineMessages, injectIntl } from 'react-intl';
 import { map } from 'lodash';
+import { MaybeWrap } from '@plone/volto/components';
 import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
@@ -17,14 +18,13 @@ const messages = defineMessages({
 });
 
 const RenderBlocks = (props) => {
-  const { path, intl, content, metadata } = props;
+  const { path, intl, content, metadata, as } = props;
   const blocksFieldname = getBlocksFieldname(content);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
   const blocksConfig = props.blocksConfig || config.blocks.blocksConfig;
-  const CustomTag = `${props.as || 'div'}`;
 
   return hasBlocksData(content) ? (
-    <CustomTag>
+    <>
       {map(content[blocksLayoutFieldname].items, (block) => {
         const Block =
           blocksConfig[content[blocksFieldname]?.[block]?.['@type']]?.view;
@@ -37,15 +37,17 @@ const RenderBlocks = (props) => {
         });
 
         return Block ? (
-          <Block
-            key={block}
-            id={block}
-            metadata={metadata}
-            properties={content}
-            data={blockData}
-            path={getBaseUrl(path || '')}
-            blocksConfig={blocksConfig}
-          />
+          <MaybeWrap condition={as} as={as}>
+            <Block
+              key={block}
+              id={block}
+              metadata={metadata}
+              properties={content}
+              data={blockData}
+              path={getBaseUrl(path || '')}
+              blocksConfig={blocksConfig}
+            />
+          </MaybeWrap>
         ) : (
           <div key={block}>
             {intl.formatMessage(messages.unknownBlock, {
@@ -54,7 +56,7 @@ const RenderBlocks = (props) => {
           </div>
         );
       })}
-    </CustomTag>
+    </>
   ) : (
     ''
   );

@@ -50,7 +50,6 @@ import ToCSettingsSchema from '@plone/volto/components/manage/Blocks/ToC/Schema'
 
 import RowViewBlock from '@plone/volto/components/manage/Blocks/Row/View';
 import RowEditBlock from '@plone/volto/components/manage/Blocks/Row/Edit';
-import emptyRowCellEditBlock from '@plone/volto/components/manage/Blocks/Row/emptyRowCellEditBlock';
 
 import SearchBlockView from '@plone/volto/components/manage/Blocks/Search/SearchBlockView';
 import SearchBlockEdit from '@plone/volto/components/manage/Blocks/Search/SearchBlockEdit';
@@ -502,7 +501,7 @@ const blocksConfig = {
       addPermission: [],
       view: [],
     },
-    allowedBlocks: ['image', 'listing', 'slate', 'text'],
+    allowedBlocks: ['image'],
   },
   column: {
     id: 'column',

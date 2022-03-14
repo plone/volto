@@ -2,10 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from 'semantic-ui-react';
 import cx from 'classnames';
-import BlockRenderer from '@plone/volto/components/manage/BlockRenderer/BlockRenderer';
+import { RenderBlocks } from '@plone/volto/components';
 import { withBlockExtensions } from '@plone/volto/helpers';
 
-const RowBlockView = ({ data, render, path }) => {
+const RowBlockView = (props) => {
+  const { data } = props;
+  const metadata = props.metadata || props.properties;
+  const columns = data.data.blocks_layout.items;
+
   return (
     <div
       className={cx('block __grid', {
@@ -13,28 +17,21 @@ const RowBlockView = ({ data, render, path }) => {
         centered: data.align === 'center' || data.align === undefined,
         'space-between': data.align === 'space-between',
         'centered-text': data.centeredText,
-        one: data?.columns?.length === 1,
-        two: data?.columns?.length === 2,
-        three: data?.columns?.length === 3,
-        four: data?.columns?.length === 4,
+        one: columns?.length === 1,
+        two: columns?.length === 2,
+        three: columns?.length === 3,
+        four: columns?.length === 4,
       })}
     >
       {data.headline && <h2 className="headline">{data.headline}</h2>}
 
-      <Grid stackable stretched columns={data.columns.length}>
-        {data.columns.map((column) => (
-          <Grid.Column
-            key={column.id}
-            className={`grid-block-${column['@type']}`}
-          >
-            <BlockRenderer
-              block={column.id}
-              type={column['@type']}
-              data={column}
-              path={path}
-            />
-          </Grid.Column>
-        ))}
+      <Grid stackable stretched columns={columns.length}>
+        <RenderBlocks
+          {...props}
+          as={Grid.Column}
+          metadata={metadata}
+          content={data.data}
+        />
       </Grid>
     </div>
   );
