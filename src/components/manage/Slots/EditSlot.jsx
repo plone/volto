@@ -50,10 +50,10 @@ function addPlaceholderBlock(formData) {
   const blocks = getBlocks(formData || {});
 
   const emptyBlocks = blocks
-    .filter(([, block]) => !blockHasValue(block))
+    .filter(([, block]) => (block ? !blockHasValue(block) : false))
     .map(([id]) => id);
   const readOnlyBlocks = blocks
-    .filter(([, block]) => block.readOnly)
+    .filter(([, block]) => (block ? block.readOnly : false))
     .map(([id]) => id);
 
   const hasPlaceholder = !!emptyBlocks.find(
