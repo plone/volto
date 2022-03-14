@@ -63,7 +63,7 @@ Create a new Volto project by using the `@plone/generator-volto` utility.
 It will bootstrap a Volto project in a folder of your choice with all the required
 boilerplate to start customizing your Volto site.
 
-For trouble shooting and detailed installation instructions, see the [documentation](https://docs.voltocms.com/getting-started/install/#install-nvm-nodejs-version-manager).
+For detailed installation instructions and troubleshooting tips, see the [documentation](https://docs.voltocms.com/getting-started/install/#install-nvm-nodejs-version-manager).
 
 
 #### Recommended Plone version
