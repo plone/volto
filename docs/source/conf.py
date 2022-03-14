@@ -90,9 +90,8 @@ linkcheck_ignore = [
     r"https://github.com/browserslist/browserslist#queries",
     r"https://github.com/plone/plone.docker#for-basic-usage",
     r"https://github.com/plone/plone.rest#cors",
-    r"https://github.com/plone/plone.volto/blob/6f5382c74f668935527e962490b81cb72bf3bc94/src/kitconcept/volto/upgrades.py#L6-L54 ",
+    r"https://github.com/plone/plone.volto/blob/6f5382c74f668935527e962490b81cb72bf3bc94/src/kitconcept/volto/upgrades.py#L6-L54",
     r"https://github.com/tc39/proposals/blob/HEAD/finished-proposals.md#finished-proposals",
-    r"",
 ]
 linkcheck_anchors = True
 linkcheck_timeout = 10
