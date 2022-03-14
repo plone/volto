@@ -8,9 +8,9 @@ import { FormattedMessage } from 'react-intl';
 import { isEmpty } from 'lodash';
 
 import { version as voltoVersion } from '../../../../package.json';
-import { addonsInfo } from 'load-volto-addons';
 
 import { defineMessages, useIntl } from 'react-intl';
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   no_addons: {
@@ -29,6 +29,7 @@ const VersionOverview = ({
   zope_version,
 }) => {
   const intl = useIntl();
+  const { addonsInfo } = config.settings;
 
   return (
     <>
