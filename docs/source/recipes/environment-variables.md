@@ -67,8 +67,6 @@ This will use the internal proxy to access the backend, bypassing CORS.
 ````{important}
 Anything that would mean not using the internal proxy (eg. using RAZZLE_API_PATH) will have to deal with CORS. You could enable `plone.volto.cors` ZCML or add your config to the build to support bypassing CORS at a server level. Like this:
 
-https://github.com/plone/volto/blob/master/api/buildout.cfg#L29-L40
-
 ```
 zcml-additional =
   <configure xmlns="http://namespaces.zope.org/zope"
