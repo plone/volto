@@ -82,6 +82,7 @@
 - Convert admonition syntax from Markdown to MyST. @sneridagh
 - Make links build both in Volto and Plone documentation. See https://github.com/plone/volto/pull/3094 @stevepiercy
 - Fix broken links. @stevepiercy
+- Updated Installation Guide. @ktsrivastava29
 
 ## 15.0.0-alpha.14 (2022-03-10)
 
