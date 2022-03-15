@@ -974,7 +974,7 @@ to be more in line with the rest of the existing files. You should add the
 following value to the `moduleNameMapper` property of the `jest` key in your
 project's package.json:
 
-```
+```json
 "load-volto-addons": "<rootDir>/node_modules/@plone/volto/jest-addons-loader.js",
 ```
 
