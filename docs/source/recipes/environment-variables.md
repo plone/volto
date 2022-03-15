@@ -24,21 +24,21 @@ Let's assume you have your site in http://localhost:55001/Plone
 
 In order to simulate it, you could launch the backend like:
 
-```
+```shell
 docker run -it --rm -p 55001:8080 -e SITE=Plone -e ADDONS='plone.restapi==8.20.0 plone.app.iterate==4.0.2 plone.rest==2.0.0a1 plone.app.vocabularies==4.3.0 plone.volto==3.1.0a8' plone/plone-backend:6.0.0a2
 ```
 
-```
+```shell
 RAZZLE_DEV_PROXY_API_PATH='http://localhost:55001/Plone' yarn start
 ```
 
 Let's say that you do have it in a customized site id: http://localhost:55001/myplonesite
 
-```
+```shell
 docker run -it --rm -p 55001:8080 -e SITE=myplonesite -e ADDONS='plone.restapi==8.20.0 plone.app.iterate==4.0.2 plone.rest==2.0.0a1 plone.app.vocabularies==4.3.0 plone.volto==3.1.0a8' plone/plone-backend:6.0.0a2
 ```
 
-```
+```shell
 RAZZLE_DEV_PROXY_API_PATH='http://localhost:55001/myplonesite' yarn start
 ```
 
