@@ -1,8 +1,16 @@
 # Change Log
 
-## 15.0.1 (unreleased)
+## 15.1.1 (unreleased)
 
 ### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
+## 15.1.0 (2022-03-15)
 
 ### Feature
 
@@ -11,8 +19,6 @@
 ### Bugfix
 
 - Clear search results before new query is done. @robgietema
-
-### Internal
 
 ### Documentation
 
