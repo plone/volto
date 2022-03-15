@@ -204,7 +204,7 @@ As announced in the deprecation notice in Volto 12 release, from Volto 14 onward
 configuration system based on imports will stop working. Migrate your Volto configuration
 for your projects before upgrading to Volto 14.
 
-More information: https://docs.voltocms.com/upgrade-guide/#volto-configuration-registry
+More information: https://6.dev-docs.plone.org/volto/upgrade-guide/index.html#volto-configuration-registry
 
 ### Content locking
 
