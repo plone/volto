@@ -27,6 +27,7 @@ export LanguageSelector from '@plone/volto/components/theme/LanguageSelector/Lan
 export RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
 export SkipLinks from '@plone/volto/components/theme/SkipLinks/SkipLinks';
 export EventDetails from '@plone/volto/components/theme/EventDetails/EventDetails';
+export PreviewImage from '@plone/volto/components/theme/PreviewImage/PreviewImage';
 
 export Error from '@plone/volto/components/theme/Error/Error';
 export NotFound from '@plone/volto/components/theme/NotFound/NotFound';
@@ -202,5 +203,6 @@ export MaybeWrap from '@plone/volto/components/manage/MaybeWrap/MaybeWrap';
 export ContentMetadataTags from '@plone/volto/components/theme/ContentMetadataTags/ContentMetadataTags';
 export FormattedDate from '@plone/volto/components/theme/FormattedDate/FormattedDate';
 export FormattedRelativeDate from '@plone/volto/components/theme/FormattedDate/FormattedRelativeDate';
+export Component from '@plone/volto/components/theme/Component/Component';
 
 export App from '@plone/volto/components/theme/App/App';
