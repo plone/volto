@@ -63,8 +63,28 @@ Create a new Volto project by using the `@plone/generator-volto` utility.
 It will bootstrap a Volto project in a folder of your choice with all the required
 boilerplate to start customizing your Volto site.
 
-For detailed installation instructions and troubleshooting tips, see the [documentation](https://docs.voltocms.com/getting-started/install/#install-nvm-nodejs-version-manager).
+    $ npm install -g yo @plone/generator-volto
+    $ yo @plone/volto
 
+follow the prompts questions, provide `myvoltoproject` as project name then, when it finishes:
+
+    $ cd myvoltoproject
+
+### Bootstrap the Plone API backend
+
+You can bootstrap a ready Docker Plone container with all the dependencies and ready for Volto use. We recommend to use the Plone docker builds based in `pip` [plone/plone-backend](https://github.com/plone/plone-backend) image:
+
+```shell
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.restapi==8.18.0 plone.app.iterate==4.0.2 plone.rest==2.0.0a1 plone.app.vocabularies==4.3.0 plone.volto==3.1.0a7" -e PROFILES="plone.volto:default-homepage" plone/plone-backend
+```
+
+or as an alternative if you have experience with Plone and you have all the
+dependencies installed on your system, you can use the supplied convenience buildout in the
+`api` folder by issuing the command:
+
+```shell
+make build-backend
+```
 
 #### Recommended Plone version
 
@@ -87,6 +107,15 @@ and the following core packages since some features require up to date versions:
 - plone.app.iterate (4.0.2)
 - plone.app.vocabularies (4.3.0)
 
+### Start Volto
+
+```shell
+yarn start
+```
+
+### Browsing
+
+Go to [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Volto in Production
 
@@ -197,6 +226,75 @@ We do not guarantee that deprecated browsers (e.g., Internet Explorer 11) are su
 ## Upgrades
 
 You can find the upgrade guide here: https://6.dev-docs.plone.org/volto/upgrade-guide/index.html
+
+## Volto Development
+
+For Volto development you need all the requirements already mentioned on the
+[Quick Start](#quick-start) section.
+
+### Checkout the Volto repository
+
+```shell
+git clone https://github.com/plone/volto.git
+```
+
+### Install dependencies
+
+```shell
+yarn
+```
+
+### Install Plone backend
+
+Either using a Docker command:
+
+```shell
+docker run -it --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS="plone.restapi==8.21.2 plone.app.iterate==4.0.2 plone.rest==2.0.0a3 plone.app.vocabularies==4.3.0 plone.volto==4.0.0a3" -e PROFILES="plone.volto:default-homepage" plone/plone-backend
+```
+
+or using the convenience makefile command:
+
+```shell
+make start-backend-docker
+```
+
+or running Plone on your machine (advanced), additional dependencies might be
+required, only for Plone experienced integrators/developers. Check the [Plone
+Installation Documentation](https://docs.plone.org/manage/installing/installation.html).
+
+```shell
+make build-backend
+```
+
+### Run frontend
+
+Either using a Docker command:
+
+```shell
+docker run -it --rm --name=volto --link backend -p 3000:3000 -e RAZZLE_INTERNAL_API_PATH=http://backend:8080/Plone -e RAZZLE_DEV_PROXY_API_PATH=http://backend:8080/Plone plone/plone-frontend:latest
+```
+
+or using the convenience makefile command:
+
+```shell
+make start-frontend-docker
+```
+
+or from the local repository code:
+
+```shell
+yarn && yarn start
+```
+
+### Browsing
+
+Browse to [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Testing
+
+```shell
+yarn test
+```
 
 ### Releasing
 
