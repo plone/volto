@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Clear search results before new query is done. @robgietema
+
 ### Internal
 
 ### Documentation
