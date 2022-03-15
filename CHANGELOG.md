@@ -71,6 +71,7 @@
 - Overwrite current block on insert new block. @robgietema
 - Fix hot reload on updates related to the config object because of `VersionOverview` component @sneridagh
 - Fix error when lock data is gone after an invariant error. @robgietema
+- Fix for clipped dropdown menus when the table has few or no records in Contents view
 
 ### Internal
 
