@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Updated deprecated `moment.js` code triggered by DatetimeWidget @avimishra18
+
 ### Internal
 
 ## 15.1.0 (2022-03-15)
