@@ -178,14 +178,15 @@ Use the project generator helper utility.
     yo @plone/volto
     ```
 
-    > 💡 **HINT** In case the `npm install` command throws an error, which would be most likely due to a permissions issue in your home directory, you will need to reclaim ownership of the `.npm` directory.
+      ````{hint}
+    In case the `npm install` command throws an error, which would be most likely due to a permissions issue in your home directory, you will need to reclaim ownership of the `.npm` directory.
 
     You can do so by executing the following command.
-
 
     ```shell
     sudo chown -R $(whoami)  ~/.npm
     ```
+    ````
 
 
 2.  Answer to the prompted questions and provide the name of the new app (folder) to be created. For the sake of this documentation, provide `myvoltoproject` as project name then.
