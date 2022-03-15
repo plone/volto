@@ -10,6 +10,10 @@
 
 ### Internal
 
+### Documentation
+
+- Updated README.md @ktsrivastava29
+
 ## 15.0.0 (2022-03-14)
 
 ### Breaking
