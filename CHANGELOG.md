@@ -10,6 +10,10 @@
 
 ### Internal
 
+### Documentation
+
+- Updated Installation Guide. @ktsrivastava29
+
 ## 15.0.0 (2022-03-14)
 
 ### Breaking
@@ -97,6 +101,7 @@
 - Update Sphinx configuration to check anchors in links and exclude problematic URLs. @sneridagh and @stevepiercy
 - Fix StoryBook links @sneridagh
 - Clean up `linkcheck_ignore` values. @stevepiercy
+
 
 ## 15.0.0-alpha.14 (2022-03-10)
 
