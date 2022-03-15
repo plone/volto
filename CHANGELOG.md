@@ -1,6 +1,16 @@
 # Change Log
 
-## 15.0.0 (unreleased)
+## 15.0.1 (unreleased)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
+## 15.0.0 (2022-03-14)
 
 ### Breaking
 
@@ -44,6 +54,8 @@
 - Fix overflow of very long file name in `FileWidget` @sneridagh
 - Fix overflowing issue in the toolbar @kreafox
 - Overwrite current block on insert new block. @robgietema
+- Fix hot reload on updates related to the config object because of `VersionOverview` component @sneridagh
+- Fix error when lock data is gone after an invariant error. @robgietema
 
 ### Internal
 
@@ -82,6 +94,9 @@
 - Convert admonition syntax from Markdown to MyST. @sneridagh
 - Make links build both in Volto and Plone documentation. See https://github.com/plone/volto/pull/3094 @stevepiercy
 - Fix broken links. @stevepiercy
+- Update Sphinx configuration to check anchors in links and exclude problematic URLs. @sneridagh and @stevepiercy
+- Fix StoryBook links @sneridagh
+- Clean up `linkcheck_ignore` values. @stevepiercy
 
 ## 15.0.0-alpha.14 (2022-03-10)
 
