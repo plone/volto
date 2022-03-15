@@ -372,7 +372,7 @@ This directory is hot reloaded with your changes as you write the tests. For mor
 
 ## Translations
 
-If you would like contribute to translate Volto into several languages, please, read the [Internationalization (i18n) guide](https://docs.voltocms.com/customizing/i18n/).
+If you would like contribute to translate Volto into several languages, please, read the [Internationalization (i18n) guide](https://6.dev-docs.plone.org/volto/recipes/i18n.html).
 
 ## Contributors
 
