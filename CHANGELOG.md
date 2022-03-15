@@ -23,6 +23,7 @@
 ### Documentation
 
 - Updated README.md @ktsrivastava29
+- Added language to codeblocks in md files @ktsrivastava29
 
 ## 15.0.0 (2022-03-14)
 
