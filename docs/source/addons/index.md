@@ -102,7 +102,7 @@ their configuration, so they may offer additional configuration functions,
 which you can load by overloading the addon name in the ``addons`` package.json
 key, like so:
 
-```{code-block} json
+```json
 :emphasize-lines: 4
 
 {
@@ -137,7 +137,7 @@ export blocks = {
 
 As this is a common operation, Volto provides a helper method for this:
 
-```
+```js
 import { applyConfig } from '@plone/volto/helpers';
 import * as voltoConfig from '@plone/volto/config';
 
@@ -340,14 +340,14 @@ root](https://classic.yarnpkg.com/en/docs/workspaces/).
 
 So you'll need to add, in your Volto project's `package.json`:
 
-```
+```json
 "private": true,
 "workspaces": [],
 ```
 
 Then populate the `workspaces` key with the path to your development addons:
 
-```
+```json
 "workspaces": [
   "src/addons/my-volto-addon"
 ]
