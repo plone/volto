@@ -2,17 +2,13 @@
 
 ## 15.1.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
-- add optional alt tag to PreviewImage props @kindermann
+- Add optional alt tag to PreviewImage props @kindermann
 
 ### Bugfix
 
 - Remove non add-on names from `addonNames` list in Addons Registry. Update the list in the `addonsInfo` for the addons loader as well. @sneridagh
-
-### Internal
 
 ## 15.1.0 (2022-03-15)
 
