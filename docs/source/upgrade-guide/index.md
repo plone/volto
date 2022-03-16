@@ -6,6 +6,8 @@ html_meta:
   "keywords": "Volto, Plone, frontend, React, Upgrade, Guide"
 ---
 
+(volto-upgrade-guide)=
+
 # Upgrade Guide
 
 This upgrade guide lists all breaking changes in Volto and explains the
@@ -22,6 +24,8 @@ current Volto release. Please notice that the generator is able to tell you when
 runs if it's outdated. The generator is also able to "update" your project with
 the latest changes, and propose to you to merge the changes, so you can run it on top of your project by answering the prompt.
 ```
+
+(volto-upgrade-guide-15.x.x)=
 
 ## Upgrading to Volto 15.x.x
 
@@ -126,7 +130,7 @@ If you were already using Seamless mode in your deployments, you should update t
 The proxy in development mode will only work using the new traversal `++api++`. You need to upgrade your development environment to include the requirements explained above.
 ```
 
-Read the full documentation about Seamless mode: https://docs.voltocms.com/deploying/seamless-mode/
+Read the full documentation about Seamless mode: {doc}`../deploying/seamless-mode`.
 
 ### Update i18n configuration for projects and add-ons
 
