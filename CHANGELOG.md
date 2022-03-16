@@ -1,6 +1,6 @@
 # Change Log
 
-## 15.1.1 (unreleased)
+## 15.1.2 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,13 @@
 ### Bugfix
 
 ### Internal
+
+## 15.1.1 (2022-03-16)
+
+### Bugfix
+
+- Add optional alt tag to PreviewImage props @kindermann
+- Remove non add-on names from `addonNames` list in Addons Registry. Update the list in the `addonsInfo` for the addons loader as well. @sneridagh
 
 ## 15.1.0 (2022-03-15)
 
@@ -25,6 +32,7 @@
 - Updated README.md @ktsrivastava29
 - Added language to codeblocks in md files @ktsrivastava29
 - Added html_meta values and labels for Intersphinx cross-references from Trainings. @stevepiercy
+- Replaced `docs.voltocms.com` with MyST references. @stevepiercy
 
 ## 15.0.0 (2022-03-14)
 

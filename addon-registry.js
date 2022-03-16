@@ -157,7 +157,6 @@ class AddonConfigurationRegistry {
       const pathsConfig = jsConfig.paths;
 
       Object.keys(pathsConfig).forEach((name) => {
-        if (!this.addonNames.includes(name)) this.addonNames.push(name);
         const packagePath = `${this.projectRootPath}/${jsConfig.baseUrl}/${pathsConfig[name][0]}`;
         const packageJsonPath = `${getPackageBasePath(
           packagePath,
@@ -167,6 +166,7 @@ class AddonConfigurationRegistry {
           packageJson: packageJsonPath,
           version: require(packageJsonPath).version,
           isPublishedPackage: false,
+          isRegisteredAddon: this.addonNames.includes(name),
           name,
           addons: require(packageJsonPath).addons || [],
         };
@@ -199,6 +199,7 @@ class AddonConfigurationRegistry {
         name,
         version: pkg.version,
         isPublishedPackage: true,
+        isRegisteredAddon: this.addonNames.includes(name),
         modulePath,
         packageJson,
         addons: pkg.addons || [],
@@ -229,6 +230,7 @@ class AddonConfigurationRegistry {
         version: require(packageJson).version,
         packageJson: packageJson,
         isPublishedPackage: false,
+        isRegisteredAddon: this.addonNames.includes(name),
         name: normalizedAddonName,
         addons: require(packageJson).addons || [],
       };

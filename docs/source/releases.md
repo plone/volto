@@ -36,7 +36,7 @@ A `breaking` release indicates a `breaking change` that might break an applicati
 4.2.0 -> 5.0.0
 ````
 
-For every `breaking` release, a detailed documentation of what in a breaking change release can be found in our [upgrade guide](https://docs.voltocms.com/upgrade-guide/).
+For every `breaking` release, a detailed documentation of what in a breaking change release can be found in our {doc}`./upgrade-guide/index`.
 
 We sometimes might want to indicate a major
 
