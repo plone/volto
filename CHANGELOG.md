@@ -6,6 +6,8 @@
 
 ### Feature
 
+- add optional alt tag to PreviewImage props @kindermann
+
 ### Bugfix
 
 - Remove non add-on names from `addonNames` list in Addons Registry. Update the list in the `addonsInfo` for the addons loader as well. @sneridagh
