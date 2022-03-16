@@ -27,7 +27,6 @@ describe('AddonConfigurationRegistry', () => {
       'test-released-addon',
       'test-released-source-addon',
       'my-volto-config-addon',
-      'test-released-dummy',
       'test-released-unmentioned',
     ]);
 
@@ -38,6 +37,8 @@ describe('AddonConfigurationRegistry', () => {
         name: 'test-addon',
         packageJson: `${base}/addons/test-addon/package.json`,
         addons: ['test-released-dummy'],
+        isRegisteredAddon: true,
+        version: '0.0.0',
       },
       'test-released-addon': {
         isPublishedPackage: true,
@@ -45,6 +46,8 @@ describe('AddonConfigurationRegistry', () => {
         name: 'test-released-addon',
         packageJson: `${base}/node_modules/test-released-addon/package.json`,
         addons: ['test-released-unmentioned:extra1,extra2'],
+        isRegisteredAddon: true,
+        version: '0.0.0',
       },
       'test-released-source-addon': {
         isPublishedPackage: true,
@@ -53,6 +56,8 @@ describe('AddonConfigurationRegistry', () => {
         packageJson: `${base}/node_modules/test-released-source-addon/package.json`,
         razzleExtender: `${base}/node_modules/test-released-source-addon/razzle.extend.js`,
         addons: [],
+        isRegisteredAddon: true,
+        version: '0.0.0',
       },
       'test-released-unmentioned': {
         addons: [],
@@ -60,6 +65,8 @@ describe('AddonConfigurationRegistry', () => {
         modulePath: `${base}/node_modules/test-released-unmentioned`,
         name: 'test-released-unmentioned',
         packageJson: `${base}/node_modules/test-released-unmentioned/package.json`,
+        isRegisteredAddon: true,
+        version: '0.0.0',
       },
       'my-volto-config-addon': {
         addons: ['test-released-dummy'],
@@ -67,6 +74,8 @@ describe('AddonConfigurationRegistry', () => {
         modulePath: `${base}/addons/my-volto-config-addon/src`,
         name: 'my-volto-config-addon',
         packageJson: `${base}/addons/my-volto-config-addon/package.json`,
+        isRegisteredAddon: true,
+        version: '0.0.0',
       },
       'test-released-dummy': {
         addons: ['test-released-unmentioned'],
@@ -74,6 +83,8 @@ describe('AddonConfigurationRegistry', () => {
         modulePath: `${base}/addons/test-released-dummy`,
         name: 'test-released-dummy',
         packageJson: `${base}/addons/test-released-dummy/package.json`,
+        isRegisteredAddon: false,
+        version: '0.0.0',
       },
     });
   });
