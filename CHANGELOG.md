@@ -6,6 +6,8 @@
 
 ### Feature
 
+- add optional alt tag to PreviewImage props @kindermann
+
 ### Bugfix
 
 ### Internal
