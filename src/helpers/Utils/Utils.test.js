@@ -350,7 +350,7 @@ describe('Utils tests', () => {
     });
   });
 
-  describe('parseDateTime', () => {
+  describe('replaceItemOfArray', () => {
     it('replaces the position of an element into an array immutable-ish', () => {
       const array = ['a', 'b', 'c'];
       deepFreeze(array);
@@ -359,7 +359,7 @@ describe('Utils tests', () => {
     });
   });
 
-  describe('parseDateTime', () => {
+  describe('removeFromArray', () => {
     it('removes an element from the array immutable-ish', () => {
       const array = ['a', 'b', 'c'];
       deepFreeze(array);
@@ -368,7 +368,7 @@ describe('Utils tests', () => {
     });
   });
 
-  describe('parseDateTime', () => {
+  describe('reorderArray', () => {
     it('reorders an array immutable-ish', () => {
       const array = ['a', 'b', 'c'];
       deepFreeze(array);
