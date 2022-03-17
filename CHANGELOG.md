@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add helper utilities to be used by addons @robgietema
+
 ### Bugfix
 
 ### Internal
