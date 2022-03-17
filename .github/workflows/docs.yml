@@ -5,8 +5,10 @@ on:
       - master
     paths:
       - 'docs/**'
-    # Build pull requests
-    pull_request:
+  # Build pull requests
+  pull_request:
+    paths:
+      - 'docs/**'
 
 jobs:
   docs:
