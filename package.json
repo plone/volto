@@ -296,6 +296,7 @@
     "cypress-axe": "0.12.2",
     "cypress-file-upload": "5.0.7",
     "debug": "4.3.2",
+    "deep-freeze": "0.0.1",
     "dependency-graph": "0.10.0",
     "detect-browser": "5.1.0",
     "diff": "3.5.0",

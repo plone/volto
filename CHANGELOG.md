@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add helper utilities to be used by addons @robgietema
+
 ### Bugfix
 
 ### Internal
@@ -13,6 +15,7 @@
 ### Documentation
 
 - Reduced build minutes on Netlify by building only on changes to the `docs/**` path on pull requests. See https://github.com/plone/volto/pull/3171. @stevepiercy
+- Add "Documentation" heading to the automatic change log updater file `changelogupdater.js`. @stevepiercy
 
 ## 15.1.2 (2022-03-17)
 
