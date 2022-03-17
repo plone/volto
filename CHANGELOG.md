@@ -6,9 +6,15 @@
 
 ### Feature
 
+- Add helper utilities to be used by addons @robgietema
+
 ### Bugfix
 
 ### Internal
+
+### Documentation
+
+- Add "Documentation" heading to the automatic change log updater file `changelogupdater.js`. @stevepiercy
 
 ## 15.1.2 (2022-03-17)
 
@@ -38,6 +44,7 @@
 - Updated README.md @ktsrivastava29
 
 - Added language to code-blocks in md files @ktsrivastava29
+- Added html_meta values and labels for Intersphinx cross-references from Trainings. @stevepiercy
 - Replaced `docs.voltocms.com` with MyST references. @stevepiercy
 
 
