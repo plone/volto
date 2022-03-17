@@ -10,6 +10,10 @@
 
 ### Internal
 
+### Documentation
+
+- Reduced build minutes on Netlify by building only on changes to the `docs/**` path on pull requests. See https://github.com/plone/volto/pull/3171. @stevepiercy
+
 ## 15.1.1 (2022-03-16)
 
 ### Bugfix
