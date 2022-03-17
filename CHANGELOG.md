@@ -2,15 +2,9 @@
 
 ## 15.1.2 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fix the alt prop in `PreviewImage` component @sneridagh
-
-### Internal
 
 ## 15.1.1 (2022-03-16)
 
