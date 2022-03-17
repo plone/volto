@@ -127,7 +127,8 @@
 
 ### Documentation
 
-- Fix broken links. @stevepiercy
+- Updated simple.md
+- fixes #3157 issue
 
 ## 15.0.0-alpha.13 (2022-03-09)
 
