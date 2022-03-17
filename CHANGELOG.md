@@ -12,6 +12,10 @@
 
 ### Internal
 
+### Documentation
+
+- Add "Documentation" heading to the automatic change log updater file `changelogupdater.js`. @stevepiercy
+
 ## 15.1.2 (2022-03-17)
 
 ### Bugfix
