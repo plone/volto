@@ -1,6 +1,6 @@
 # Change Log
 
-## 15.1.2 (unreleased)
+## 15.1.3 (unreleased)
 
 ### Breaking
 
@@ -10,11 +10,17 @@
 
 ### Internal
 
+## 15.1.2 (2022-03-17)
+
+### Bugfix
+
+- Fix the alt prop in `PreviewImage` component @sneridagh
+
 ## 15.1.1 (2022-03-16)
 
 ### Bugfix
 
-- Add optional alt tag to PreviewImage props @kindermann
+- Add optional alt tag to `PreviewImage` props @kindermann
 - Remove non add-on names from `addonNames` list in Addons Registry. Update the list in the `addonsInfo` for the addons loader as well. @sneridagh
 
 ## 15.1.0 (2022-03-15)
