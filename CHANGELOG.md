@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Added `make epub` feature for Volto documentation @avimishra18
+
 ### Bugfix
 
 ### Internal

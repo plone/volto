@@ -246,3 +246,9 @@ clean-tmp-worktrees:  ## Cleanup temporary worktrees managed by this `./Makefile
 	    git worktree remove --force "$${REPLY}"
 	    git branch -D "$$(basename "$${REPLY}")"
 	done
+
+.PHONY: epub
+epub:
+	cd $(DOCS_DIR) && $(SPHINXBUILD) -b epub $(ALLSPHINXOPTS) $(BUILDDIR)/epub
+	@echo
+	@echo "Build finished. The epub file is in $(BUILDDIR)/epub."
