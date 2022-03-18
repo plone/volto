@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Fix `Bosnian` language @avoinea
+
 ### Internal
 
 ### Documentation
