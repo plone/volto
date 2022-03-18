@@ -34,16 +34,14 @@ function Popup(props) {
       },
       [onClose, setOpen],
     ),
-    handlePortalMount = useCallback(
-      function(){
-      },
-      [],
-    );;
+    handlePortalMount = useCallback(function () {}, []);
 
-  function PopupContainer(props) {
-    console.log('render')
-    return <div {...props} onClickCapture={handleClick}></div>;
-  }
+  const PopupContainer = React.useCallback(
+    (props) => {
+      return <div {...props} onClickCapture={handleClick}></div>;
+    },
+    [handleClick],
+  );
 
   return (
     <SemanticPopup
