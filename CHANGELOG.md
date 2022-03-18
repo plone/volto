@@ -1,6 +1,52 @@
 # Change Log
 
-## 15.0.0 (unreleased)
+## 15.1.3 (unreleased)
+
+### Breaking
+
+### Feature
+
+- Add helper utilities to be used by addons @robgietema
+
+### Bugfix
+
+### Internal
+
+### Documentation
+
+- Add "Documentation" heading to the automatic change log updater file `changelogupdater.js`. @stevepiercy
+
+## 15.1.2 (2022-03-17)
+
+### Bugfix
+
+- Fix the alt prop in `PreviewImage` component @sneridagh
+
+## 15.1.1 (2022-03-16)
+
+### Bugfix
+
+- Add optional alt tag to `PreviewImage` props @kindermann
+- Remove non add-on names from `addonNames` list in Addons Registry. Update the list in the `addonsInfo` for the addons loader as well. @sneridagh
+
+## 15.1.0 (2022-03-15)
+
+### Feature
+
+- Added a new component, PreviewImage. It renders a preview image for a catalog brain (based on the `image_field` prop). @tiberiuichim
+
+### Bugfix
+
+- Clear search results before new query is done. @robgietema
+
+### Documentation
+
+- Updated README.md @ktsrivastava29
+- Added language to codeblocks in md files @ktsrivastava29
+- Added html_meta values and labels for Intersphinx cross-references from Trainings. @stevepiercy
+- Replaced `docs.voltocms.com` with MyST references. @stevepiercy
+
+## 15.0.0 (2022-03-14)
 
 ### Breaking
 
@@ -44,6 +90,8 @@
 - Fix overflow of very long file name in `FileWidget` @sneridagh
 - Fix overflowing issue in the toolbar @kreafox
 - Overwrite current block on insert new block. @robgietema
+- Fix hot reload on updates related to the config object because of `VersionOverview` component @sneridagh
+- Fix error when lock data is gone after an invariant error. @robgietema
 
 ### Internal
 
@@ -82,6 +130,9 @@
 - Convert admonition syntax from Markdown to MyST. @sneridagh
 - Make links build both in Volto and Plone documentation. See https://github.com/plone/volto/pull/3094 @stevepiercy
 - Fix broken links. @stevepiercy
+- Update Sphinx configuration to check anchors in links and exclude problematic URLs. @sneridagh and @stevepiercy
+- Fix StoryBook links @sneridagh
+- Clean up `linkcheck_ignore` values. @stevepiercy
 
 ## 15.0.0-alpha.14 (2022-03-10)
 

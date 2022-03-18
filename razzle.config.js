@@ -5,6 +5,7 @@ const nodeExternals = require('webpack-node-externals');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const fs = require('fs');
+const { pickBy } = require('lodash');
 const RootResolverPlugin = require('./webpack-plugins/webpack-root-resolver');
 const RelativeResolverPlugin = require('./webpack-plugins/webpack-relative-resolver');
 const createAddonsLoader = require('./create-addons-loader');
@@ -188,7 +189,7 @@ const defaultModify = ({
 
   const addonsLoaderPath = createAddonsLoader(
     registry.getAddonDependencies(),
-    registry.packages,
+    pickBy(registry.packages, (value) => value.isRegisteredAddon),
   );
 
   config.resolve.plugins = [

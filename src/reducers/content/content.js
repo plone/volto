@@ -292,7 +292,6 @@ export default function content(state = initialState, action = {}) {
     case `${LOCK_CONTENT}_FAIL`:
     case `${DELETE_CONTENT}_FAIL`:
     case `${UNLOCK_CONTENT}_FAIL`:
-    case `${UPDATE_CONTENT}_FAIL`:
     case `${GET_CONTENT}_FAIL`:
     case `${ORDER_CONTENT}_FAIL`:
       return action.subrequest
@@ -311,6 +310,27 @@ export default function content(state = initialState, action = {}) {
         : {
             ...state,
             data: null,
+            [getRequestKey(action.type)]: {
+              loading: false,
+              loaded: false,
+              error: action.error,
+            },
+          };
+    case `${UPDATE_CONTENT}_FAIL`:
+      return action.subrequest
+        ? {
+            ...state,
+            subrequests: {
+              ...state.subrequests,
+              [action.subrequest]: {
+                loading: false,
+                loaded: false,
+                error: action.error,
+              },
+            },
+          }
+        : {
+            ...state,
             [getRequestKey(action.type)]: {
               loading: false,
               loaded: false,
