@@ -1,10 +1,12 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "A common pattern in blocks is the 'variations' pattern - a slightly different versions of a block that can be toggled on demand by the editors."
+  "property=og:description": "A common pattern in blocks is the 'variations' pattern - a slightly different versions of a block that can be toggled on demand by the editors."
+  "property=og:title": "Block extensions mechanism"
+  "keywords": "Volto, Plone, frontend, React, Upgrade, Guide, Block extensions, variations, schema enhancers"
 ---
+
+(extensions-block-extensions-mechanism)=
 
 # Block extensions mechanism
 
@@ -31,6 +33,9 @@ stock Volto blocks will also follow to support variations by default.
 While it is up to each specific block implementation on how they use
 this machinery, Volto provides the infrastructure to help define block
 extensions and variations.
+
+
+(extensions-block-variations)=
 
 ## Block variations
 
@@ -88,6 +93,9 @@ const GalleryBlockForm = withBlockSchemaEnhancer(InlineForm, 'galleryTemplates')
 
 You can even wrap `BlockDataForm` with it and "stack" multiple block extensions
 selection dropdowns.
+
+
+(extensions-schema-enhancers)=
 
 ## Schema enhancers
 
@@ -150,6 +158,9 @@ The `schemaEnhancer` is a generic extension mechanism provided by
 `withBlockSchemaEnhancer`. The `BlockDataForm` component already integrates
 it for the `variation` extension.
 ```
+
+
+(extensions-consuming-extensions)=
 
 ## Consuming the extensions
 
