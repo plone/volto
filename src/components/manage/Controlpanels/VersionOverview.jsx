@@ -53,8 +53,8 @@ const VersionOverview = ({
         <p>{intl.formatMessage(messages.no_addons)}</p>
       ) : (
         <ul style={{ fontSize: '16px', fontFamily: 'Monospace' }}>
-          {Object.keys(addonsInfo).map((addon) => (
-            <li>{`${addon} ${addonsInfo[addon].version || ''}`}</li>
+          {addonsInfo.map((addon) => (
+            <li>{`${addon.name} ${addon.version || ''}`}</li>
           ))}
         </ul>
       )}

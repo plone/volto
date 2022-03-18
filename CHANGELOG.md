@@ -10,6 +10,7 @@
 
 ### Bugfix
 
+- Fix addon registry regression @sneridagh
 - Fix `Bosnian` language @avoinea
 
 ### Internal
