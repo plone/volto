@@ -4,12 +4,16 @@ import {
   difference,
   getColor,
   getInitials,
-  safeWrapper,
-  normalizeLanguageName,
   hasApiExpander,
+  normalizeLanguageName,
   parseDateTime,
+  removeFromArray,
+  reorderArray,
+  replaceItemOfArray,
+  safeWrapper,
 } from './Utils';
 import moment from 'moment';
+import deepFreeze from 'deep-freeze';
 
 describe('Utils tests', () => {
   describe('difference', () => {
@@ -343,6 +347,33 @@ describe('Utils tests', () => {
       expect(
         parseDateTime('de', isoDate, undefined, moment).toISOString(),
       ).toBe(`${isoDate}Z`);
+    });
+  });
+
+  describe('replaceItemOfArray', () => {
+    it('replaces the position of an element into an array immutable-ish', () => {
+      const array = ['a', 'b', 'c'];
+      deepFreeze(array);
+      const result = replaceItemOfArray(array, 2, 'v');
+      expect(result).toEqual(['a', 'b', 'v']);
+    });
+  });
+
+  describe('removeFromArray', () => {
+    it('removes an element from the array immutable-ish', () => {
+      const array = ['a', 'b', 'c'];
+      deepFreeze(array);
+      const result = removeFromArray(array, 2);
+      expect(result).toEqual(['a', 'b']);
+    });
+  });
+
+  describe('reorderArray', () => {
+    it('reorders an array immutable-ish', () => {
+      const array = ['a', 'b', 'c'];
+      deepFreeze(array);
+      const result = reorderArray(array, 2, 0);
+      expect(result).toEqual(['c', 'a', 'b']);
     });
   });
 });

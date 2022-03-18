@@ -6,11 +6,19 @@
 
 ### Feature
 
+- Add helper utilities to be used by addons @robgietema
+
 ### Bugfix
 
 - Fix addon registry regression @sneridagh
+- Fix `Bosnian` language @avoinea
 
 ### Internal
+
+### Documentation
+
+- Reduced build minutes on Netlify by building only on changes to the `docs/**` path on pull requests. See https://github.com/plone/volto/pull/3171. @stevepiercy
+- Add "Documentation" heading to the automatic change log updater file `changelogupdater.js`. @stevepiercy
 
 ## 15.1.2 (2022-03-17)
 
@@ -39,6 +47,7 @@
 
 - Updated README.md @ktsrivastava29
 - Added language to codeblocks in md files @ktsrivastava29
+- Added html_meta values and labels for Intersphinx cross-references from Trainings. @stevepiercy
 - Replaced `docs.voltocms.com` with MyST references. @stevepiercy
 
 ## 15.0.0 (2022-03-14)

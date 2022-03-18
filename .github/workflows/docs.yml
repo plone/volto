@@ -3,8 +3,12 @@ on:
   push:
     branches:
       - master
-    # Build pull requests
-    pull_request:
+    paths:
+      - 'docs/**'
+  # Build pull requests
+  pull_request:
+    paths:
+      - 'docs/**'
 
 jobs:
   docs:
