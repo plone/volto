@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix addon registry regression @sneridagh
+
 ### Internal
 
 ## 15.1.2 (2022-03-17)

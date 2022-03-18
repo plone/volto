@@ -187,9 +187,13 @@ const defaultModify = ({
     addonsFromEnvVar = process.env.ADDONS.split(';');
   }
 
+  const registeredAddons = pickBy(
+    registry.packages,
+    (value) => value.isRegisteredAddon,
+  );
   const addonsLoaderPath = createAddonsLoader(
     registry.getAddonDependencies(),
-    pickBy(registry.packages, (value) => value.isRegisteredAddon),
+    registeredAddons,
   );
 
   config.resolve.plugins = [
@@ -231,15 +235,17 @@ const defaultModify = ({
   if (packageJson.name !== '@plone/volto') {
     include.push(fs.realpathSync(`${registry.voltoPath}/src`));
   }
+
   // Add babel support external (ie. node_modules npm published packages)
-  if (registry.addonNames && registry.addonNames.length > 0) {
-    registry.addonNames.forEach((addon) => {
+  const packagesNames = Object.keys(registry.packages);
+  if (registry.packages && packagesNames.length > 0) {
+    packagesNames.forEach((addon) => {
       const p = fs.realpathSync(registry.packages[addon].modulePath);
       if (include.indexOf(p) === -1) {
         include.push(p);
       }
     });
-    addonsAsExternals = registry.addonNames.map((addon) => new RegExp(addon));
+    addonsAsExternals = packagesNames.map((addon) => new RegExp(addon));
   }
 
   if (process.env.ADDONS) {
