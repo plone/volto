@@ -2,8 +2,6 @@
 
 ## 15.1.3 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Add helper utilities to be used by addons @robgietema
@@ -12,8 +10,6 @@
 
 - Fix addon registry regression @sneridagh
 - Fix `Bosnian` language @avoinea
-
-### Internal
 
 ### Documentation
 
