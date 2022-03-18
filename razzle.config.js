@@ -187,13 +187,9 @@ const defaultModify = ({
     addonsFromEnvVar = process.env.ADDONS.split(';');
   }
 
-  const registeredAddons = pickBy(
-    registry.packages,
-    (value) => value.isRegisteredAddon,
-  );
   const addonsLoaderPath = createAddonsLoader(
     registry.getAddonDependencies(),
-    registeredAddons,
+    registry.getAddons(),
   );
 
   config.resolve.plugins = [
