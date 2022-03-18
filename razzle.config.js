@@ -257,9 +257,12 @@ const defaultModify = ({
       if (include.indexOf(p) === -1) {
         include.push(p);
       }
-      addonsAsExternals = registry.addonNames.map(
-        (normalizedAddonName) => new RegExp(normalizedAddonName),
-      );
+      addonsAsExternals = [
+        ...addonsAsExternals,
+        ...packagesNames.map(
+          (normalizedAddonName) => new RegExp(normalizedAddonName),
+        ),
+      ];
     });
   }
 
