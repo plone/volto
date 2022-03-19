@@ -18,13 +18,13 @@ const messages = defineMessages({
 });
 
 const RenderBlocks = (props) => {
-  const { path, intl, content, metadata, as } = props;
+  const { path, intl, content, metadata, as, blockWrapperTag } = props;
   const blocksFieldname = getBlocksFieldname(content);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
   const blocksConfig = props.blocksConfig || config.blocks.blocksConfig;
 
   return hasBlocksData(content) ? (
-    <>
+    <MaybeWrap condition={as} as={as}>
       {map(content[blocksLayoutFieldname].items, (block) => {
         const Block =
           blocksConfig[content[blocksFieldname]?.[block]?.['@type']]?.view;
@@ -37,7 +37,7 @@ const RenderBlocks = (props) => {
         });
 
         return Block ? (
-          <MaybeWrap condition={as} as={as}>
+          <MaybeWrap condition={blockWrapperTag} as={blockWrapperTag}>
             <Block
               key={block}
               id={block}
@@ -56,7 +56,7 @@ const RenderBlocks = (props) => {
           </div>
         );
       })}
-    </>
+    </MaybeWrap>
   ) : (
     ''
   );

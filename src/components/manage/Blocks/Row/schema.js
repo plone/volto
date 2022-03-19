@@ -5,13 +5,17 @@ const messages = defineMessages({
     id: 'Headline',
     defaultMessage: 'Headline',
   },
+  row: {
+    id: 'Row',
+    defaultMessage: 'Row',
+  },
 });
 
 export const GridSchema = (props) => {
   const { intl } = props;
   return {
-    title: 'Grid',
-    block: '__grid',
+    title: intl.formatMessage(messages.row),
+    block: 'row',
     fieldsets: [
       {
         id: 'default',
