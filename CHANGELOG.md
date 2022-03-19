@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix replace `<a>` anchor element with the `UniversalLink` component in `DefaultTemplate.jsx`
+
 ### Internal
 
 ### Documentation

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ConditionalLink } from '@plone/volto/components';
+import { ConditionalLink, UniversalLink } from '@plone/volto/components';
 import { flattenToAppURL } from '@plone/volto/helpers';
 
 import { isInternalURL } from '@plone/volto/helpers/Url/Url';
@@ -16,7 +16,7 @@ const DefaultTemplate = ({ items, linkTitle, linkHref, isEditMode }) => {
       </ConditionalLink>
     );
   } else if (href) {
-    link = <a href={href}>{linkTitle || href}</a>;
+    link = <UniversalLink href={href}>{linkTitle || href}</UniversalLink>;
   }
 
   return (
