@@ -28,7 +28,7 @@ const RowBlockView = (props) => {
       <Grid stackable stretched columns={columns.length}>
         <RenderBlocks
           {...props}
-          as={Grid.Column}
+          blockWrapperTag={Grid.Column}
           metadata={metadata}
           content={data.data}
         />
