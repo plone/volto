@@ -13,6 +13,7 @@
 ### Documentation
 
 - Reenable `make docs-linkcheckbroken`. @stevepiercy
+- Replace deprecated `egrep` with `grep` in `make docs-linkcheckbroken`. @stevepiercy
 
 ## 15.2.0 (2022-03-18)
 
