@@ -1,6 +1,6 @@
 # Change Log
 
-## 15.1.1 (unreleased)
+## 15.2.1 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,39 @@
 ### Bugfix
 
 ### Internal
+
+### Documentation
+
+- Replace deprecated `egrep` with `grep` in `make docs-linkcheckbroken`. @stevepiercy
+
+## 15.2.0 (2022-03-18)
+
+### Feature
+
+- Add helper utilities to be used by addons @robgietema
+
+### Bugfix
+
+- Fix addon registry regression @sneridagh
+- Fix `Bosnian` language @avoinea
+
+### Documentation
+
+- Reduced build minutes on Netlify by building only on changes to the `docs/**` path on pull requests. See https://github.com/plone/volto/pull/3171. @stevepiercy
+- Add "Documentation" heading to the automatic change log updater file `changelogupdater.js`. @stevepiercy
+
+## 15.1.2 (2022-03-17)
+
+### Bugfix
+
+- Fix the alt prop in `PreviewImage` component @sneridagh
+
+## 15.1.1 (2022-03-16)
+
+### Bugfix
+
+- Add optional alt tag to `PreviewImage` props @kindermann
+- Remove non add-on names from `addonNames` list in Addons Registry. Update the list in the `addonsInfo` for the addons loader as well. @sneridagh
 
 ## 15.1.0 (2022-03-15)
 
@@ -24,6 +57,9 @@
 
 - Updated README.md @ktsrivastava29
 - Added language to code-blocks in md files @ktsrivastava29
+- Added language to codeblocks in md files @ktsrivastava29
+- Added html_meta values and labels for Intersphinx cross-references from Trainings. @stevepiercy
+- Replaced `docs.voltocms.com` with MyST references. @stevepiercy
 
 ## 15.0.0 (2022-03-14)
 
