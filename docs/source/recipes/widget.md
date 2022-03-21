@@ -146,7 +146,7 @@ Based on this setup, Volto will render this field with the `TokenWidget`.
 
 
 ```{seealso}
-See [storybook](https://docs.voltocms.com/storybook) with available widgets.
+See [storybook](https://6.dev-docs.plone.org/storybook) with available widgets.
 ```
 
 ## Write a new widget

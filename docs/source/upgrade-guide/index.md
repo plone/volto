@@ -6,6 +6,8 @@ html_meta:
   "keywords": "Volto, Plone, frontend, React, Upgrade, Guide"
 ---
 
+(volto-upgrade-guide)=
+
 # Upgrade Guide
 
 This upgrade guide lists all breaking changes in Volto and explains the
@@ -22,6 +24,8 @@ current Volto release. Please notice that the generator is able to tell you when
 runs if it's outdated. The generator is also able to "update" your project with
 the latest changes, and propose to you to merge the changes, so you can run it on top of your project by answering the prompt.
 ```
+
+(volto-upgrade-guide-15.x.x)=
 
 ## Upgrading to Volto 15.x.x
 
@@ -126,7 +130,7 @@ If you were already using Seamless mode in your deployments, you should update t
 The proxy in development mode will only work using the new traversal `++api++`. You need to upgrade your development environment to include the requirements explained above.
 ```
 
-Read the full documentation about Seamless mode: https://docs.voltocms.com/deploying/seamless-mode/
+Read the full documentation about Seamless mode: {doc}`../deploying/seamless-mode`.
 
 ### Update i18n configuration for projects and add-ons
 
@@ -204,7 +208,7 @@ As announced in the deprecation notice in Volto 12 release, from Volto 14 onward
 configuration system based on imports will stop working. Migrate your Volto configuration
 for your projects before upgrading to Volto 14.
 
-More information: https://docs.voltocms.com/upgrade-guide/#volto-configuration-registry
+More information: https://6.dev-docs.plone.org/volto/upgrade-guide/index.html#volto-configuration-registry
 
 ### Content locking
 
@@ -312,7 +316,7 @@ the step from there if you have installed `plone.volto` in your project, it's na
 control panel. Alternatively, you can transfer it to your own integration packages and
 run it from there.
 
-https://github.com/plone/plone.volto/blob/main/src/plone/volto/upgrades.py#L6-L64
+https://github.com/plone/plone.volto/blob/6f5382c74f668935527e962490b81cb72bf3bc94/src/kitconcept/volto/upgrades.py#L6-L54
 
 ```python
 def from12to13_migrate_listings(context):
