@@ -14,6 +14,7 @@
 
 ### Documentation
 
+- Reenable `make docs-linkcheckbroken`. @stevepiercy
 - Add html_meta values to add-on best practices, s/addon/add-on. @stevepiercy
 - Netlify now only builds on changes to the `./docs/` directory. @stevepiercy
 - Replace deprecated `egrep` with `grep` in `make docs-linkcheckbroken`. @stevepiercy
