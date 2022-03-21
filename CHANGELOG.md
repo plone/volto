@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- `Manage translations` view error on seamless mode, `flattenToAppURL` missing. @sneridagh
+
 ### Internal
 
 ### Documentation
