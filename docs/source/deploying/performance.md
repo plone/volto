@@ -1,12 +1,15 @@
 ---
 html_meta:
-  'description': 'How to improve performance of applications built around Volto stack'
-  'property=og:description': 'How to improve performance of applications built around Volto stack'
-  'property=og:title': 'Performance'
-  'keywords': 'Volto, Plone, frontend, React, optimizations'
+  "description": "How to improve performance of applications built around Volto stack"
+  "property=og:description": "How to improve performance of applications built around Volto stack"
+  "property=og:title": "Performance"
+  "keywords": "Volto, Plone, frontend, React, optimizations"
 ---
 
-# critical.css (above the fold) optimizations
+# Performance
+
+(critical-css-optimizations-label)=
+## Critical css (above the fold) optimizations
 
 A very important technique to improve the perceived initial load performance of
 a website is to
@@ -61,7 +64,9 @@ want to implement this type of scenario, look at
 [Penthouse](https://github.com/pocketjoso/penthouse) and override the
 `settings.serverConfig.readCriticalCss` function with your own implementation.
 
-# Caching webpack assets and prefetch using a service worker
+
+(caching-webpack-assets-label)=
+## Caching webpack assets and prefetch using a service worker
 
 In production environments, sometimes we get error messages "ChunkLoadError" or "Failed to load chunk". This error originates when a chunk changed its name based on the content and when a browser requests it, and the old chunk would not be there.
 
