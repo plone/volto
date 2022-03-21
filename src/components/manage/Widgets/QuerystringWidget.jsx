@@ -33,7 +33,7 @@ const messages = defineMessages({
   },
 });
 
-export const objectSchema = ({ intl, value }) => ({
+export const objectSchema = ({ intl, isDisabled, value }) => ({
   fieldsets: [
     {
       id: 'default',
@@ -62,18 +62,22 @@ export const objectSchema = ({ intl, value }) => ({
     sort_on: {
       title: intl.formatMessage(messages.SortOn),
       widget: 'query_sort_on',
+      isDisabled: isDisabled,
     },
     sort_order_boolean: {
       title: intl.formatMessage(messages.reversedOrder),
       type: 'boolean',
+      isDisabled: isDisabled,
     },
     limit: {
       title: intl.formatMessage(messages.limit),
       type: 'number',
+      isDisabled: isDisabled,
     },
     b_size: {
       title: intl.formatMessage(messages.itemBatchSize),
       type: 'number',
+      isDisabled: isDisabled,
     },
   },
   required: [],
@@ -81,9 +85,10 @@ export const objectSchema = ({ intl, value }) => ({
 
 const QuerystringWidget = (props) => {
   const { block, onChange, schemaEnhancer } = props;
+  const isDisabled = props.value?.query?.length ? false : true;
 
   const intl = useIntl();
-  let schema = objectSchema({ ...props, intl });
+  let schema = objectSchema({ ...props, intl, isDisabled });
   schema = schemaEnhancer ? schemaEnhancer({ ...props, intl, schema }) : schema;
 
   return (

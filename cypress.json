@@ -3,5 +3,6 @@
   "viewportWidth": 1280,
   "ignoreTestFiles": ["*~"],
   "integrationFolder": "cypress/tests/core",
-  "chromeWebSecurity": false
+  "chromeWebSecurity": false,
+  "projectId": "5iy5e2"
 }

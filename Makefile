@@ -13,8 +13,25 @@ MAKEFLAGS+=--no-builtin-rules
 # Project settings
 
 INSTANCE_PORT=8080
+DOCKER_IMAGE=plone/plone-backend:5.2.7
+KGS=plone.restapi==8.21.2 plone.volto==4.0.0a3 plone.rest==2.0.0a3 plone.app.iterate==4.0.2 plone.app.vocabularies==4.3.0
+
+# Sphinx variables
+# You can set these variables from the command line.
+SPHINXOPTS      ?=
+# Internal variables.
+SPHINXBUILD     = $(realpath bin/sphinx-build)
+SPHINXAUTOBUILD = $(realpath bin/sphinx-autobuild)
+DOCS_DIR        = ./docs/source/
+BUILDDIR        = ../_build/
+ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(SPHINXOPTS) .
 
 # Recipe snippets for reuse
+
+CHECKOUT_BASENAME=$(shell basename $(shell realpath ./))
+CHECKOUT_BRANCH=$(shell git branch --show-current)
+CHECKOUT_TMP=../$(CHECKOUT_BASENAME).tmp
+CHECKOUT_TMP_ABS=$(shell realpath $(CHECKOUT_TMP))
 
 # We like colors
 # From: https://coderwall.com/p/izxssa/colored-makefile-for-golang-projects
@@ -32,6 +49,7 @@ all: build
 # Add the following 'help' target to your Makefile
 # And add help text after each target name starting with '\#\#'
 .PHONY: help
+help: .SHELLFLAGS:=-eu -o pipefail -O inherit_errexit -c
 help: ## This help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
@@ -60,19 +78,85 @@ dist:
 .PHONY: test
 test:
 	$(MAKE) -C "./api/" test
+.PHONY: test-clean
+test-clean:  ## Test in a separate, clean worktree to expose clean build issues
+	mkdir -pv "$(CHECKOUT_TMP)/"
+	tmp_worktree="$$(
+	    mktemp -d -p '$(CHECKOUT_TMP)/' \
+	        '$(CHECKOUT_BRANCH)-tmp-XXXXXXXXXX'
+	)"
+# Disable VCS hooks which might be run when creating a worktree
+	if [ -e "./.git/hooks/post-checkout" ]
+	then
+	    mv --backup=numbered -v \
+	        "./.git/hooks/post-checkout" "./.git/hooks/post-checkout~"
+	fi
+	git worktree add "$${tmp_worktree}"
+	if [ -e "./.git/hooks/post-checkout~" ]
+	then
+	    mv --backup=numbered -v \
+	        "./.git/hooks/post-checkout~" "./.git/hooks/post-checkout"
+	fi
+	cd "$${tmp_worktree}"
+	$(MAKE) test
+# Leave the temporary worktree around for the developer to inspect.
+# Use the `$ make clean-tmp-worktrees` target to clean up all temporary worktrees
 
-.PHONY: docs-serve
-docs-serve:
-	(cd docs && ../bin/mkdocs serve)
-
-.PHONY: docs-build
-docs-build:
-# The build in netlify breaks because they have not installed ensurepip
-# So we should continue using virtualenv
-	virtualenv --python=python3 .
-	./bin/pip install -r requirements-docs.txt
-	(cd docs && ../bin/mkdocs build)
+.PHONY: storybook-build
+storybook-build:
 	yarn build-storybook -o docs/build/storybook
+
+bin/python:
+	python3 -m venv . || virtualenv --clear --python=python3 .
+	bin/python -m pip install --upgrade pip
+	bin/pip install -r requirements-docs.txt
+
+.PHONY: docs-clean
+docs-clean:  ## Clean current and legacy docs build directories, and Python virtual environment
+	cd $(DOCS_DIR) && rm -rf $(BUILDDIR)/
+	rm -rf bin include lib
+	rm -rf docs/build
+
+.PHONY: docs-html
+docs-html: bin/python  ## Build html
+	cd $(DOCS_DIR) && $(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
+	@echo
+	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
+
+.PHONY: docs-livehtml
+docs-livehtml: bin/python  ## Rebuild Sphinx documentation on changes, with live-reload in the browser
+	cd "$(DOCS_DIR)" && ${SPHINXAUTOBUILD} \
+		--ignore "*.swp" \
+		-b html . "$(BUILDDIR)/html" $(SPHINXOPTS)
+
+.PHONY: docs-linkcheck
+docs-linkcheck: bin/python  ## Run linkcheck
+	cd $(DOCS_DIR) && $(SPHINXBUILD) -b linkcheck $(ALLSPHINXOPTS) $(BUILDDIR)/linkcheck
+	@echo
+	@echo "Link check complete; look for any errors in the above output " \
+		"or in $(BUILDDIR)/linkcheck/ ."
+
+.PHONY: docs-linkcheckbroken
+docs-linkcheckbroken: bin/python  ## Run linkcheck and show only broken links
+	cd $(DOCS_DIR) && $(SPHINXBUILD) -b linkcheck $(ALLSPHINXOPTS) $(BUILDDIR)/linkcheck | GREP_COLORS='0;31' grep -wi "broken\|redirect" --color=auto
+	@echo
+	@echo "Link check complete; look for any errors in the above output " \
+		"or in $(BUILDDIR)/linkcheck/ ."
+
+.PHONY: docs-spellcheck
+docs-spellcheck: bin/python  ## Run spellcheck
+	cd $(DOCS_DIR) && LANGUAGE=$* $(SPHINXBUILD) -b spelling -j 4 $(ALLSPHINXOPTS) $(BUILDDIR)/spellcheck/$*
+	@echo
+	@echo "Spellcheck is finished; look for any errors in the above output " \
+		" or in $(BUILDDIR)/spellcheck/ ."
+
+.PHONY: netlify
+netlify:
+	pip install -r requirements-docs.txt
+	cd $(DOCS_DIR) && sphinx-build -b html $(ALLSPHINXOPTS) ../$(BUILDDIR)/html
+
+.PHONY: docs-test
+docs-test: docs-clean docs-linkcheck docs-spellcheck  ## Clean docs build, then run linkcheck, spellcheck
 
 .PHONY: start
 # Run both the back-end and the front end
@@ -80,8 +164,8 @@ start:
 	$(MAKE) -j 2 start-backend start-frontend
 
 .PHONY: start-frontend
-start-frontend: dist
-	yarn start:prod
+start-frontend:
+	yarn start
 
 .PHONY: start-backend
 start-backend: ## Start Plone Backend
@@ -89,7 +173,11 @@ start-backend: ## Start Plone Backend
 
 .PHONY: start-backend-docker
 start-backend-docker:
-	docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.volto" -e ZCML="kitconcept.volto.cors" plone
+	docker run -it --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS='$(KGS)' $(DOCKER_IMAGE)
+
+.PHONY: start-frontend-docker
+start-frontend-docker:
+	docker run -it --rm --name=volto --link backend -p 3000:3000 -e RAZZLE_INTERNAL_API_PATH=http://backend:8080/Plone -e RAZZLE_DEV_PROXY_API_PATH=http://backend:8080/Plone plone/plone-frontend:latest
 
 .PHONY: start-backend-docker-guillotina
 start-backend-docker-guillotina:
@@ -120,16 +208,21 @@ stop-backend-docker-guillotina:
 
 .PHONY: test-acceptance-server
 test-acceptance-server:
-	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e VERSIONS="plone.restapi=8.3.0" -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,kitconcept.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,kitconcept.volto,kitconcept.volto.cors -e ADDONS='plone.app.robotframework plone.app.contenttypes plone.restapi kitconcept.volto' plone ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
+	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) plone.app.robotframework plone.app.contenttypes' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 
 .PHONY: test-acceptance-server-multilingual
 test-acceptance-server-multilingual:
-	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e VERSIONS="plone.restapi=8.3.0" -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,kitconcept.volto:multilingual -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,kitconcept.volto,kitconcept.volto.cors -e ADDONS='plone.app.robotframework plone.app.contenttypes plone.restapi kitconcept.volto' plone ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
+	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) plone.app.robotframework plone.app.contenttypes' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:multilingual -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 
 .PHONY: test-acceptance-server-workingcopy
 test-acceptance-server-workingcopy:
-	#docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e VERSIONS="plone.restapi=8.3.0" -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,kitconcept.volto,kitconcept.volto.cors -e ADDONS='plone.app.robotframework plone.app.contenttypes plone.restapi plone.app.iterate kitconcept.volto' plone ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
-	ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.app.iterate,kitconcept.volto,kitconcept.volto.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default,kitconcept.volto:default-homepage ./api/bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
+	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) plone.app.robotframework plone.app.contenttypes' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
+	# ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.app.iterate,plone.volto,plone.volto.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default,plone.volto:default-homepage ./api/bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
+
+.PHONY: test-acceptance-server-coresandbox
+test-acceptance-server-coresandbox:
+	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) plone.app.robotframework plone.app.contenttypes' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage,plone.volto:coresandbox -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors,plone.volto.coresandbox $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
+	# ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors,plone.volto.coresandbox APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage,plone.volto:coresandbox ./api/bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 
 .PHONY: test-acceptance-server-old
 test-acceptance-server-old:
@@ -141,5 +234,15 @@ test-acceptance-guillotina:
 
 .PHONY: clean
 clean:
+	$(MAKE) clean-tmp-worktrees
 	$(MAKE) -C "./api/" clean
 	rm -rf node_modules
+.PHONY: clean-tmp-worktrees
+clean-tmp-worktrees:  ## Cleanup temporary worktrees managed by this `./Makefile`
+	git worktree list --porcelain | tail -n +5 |
+	    sed -En 's|^worktree ($(CHECKOUT_TMP_ABS)/.+)$$|\1|p' |
+	while read
+	do
+	    git worktree remove --force "$${REPLY}"
+	    git branch -D "$$(basename "$${REPLY}")"
+	done

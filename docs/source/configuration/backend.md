@@ -1,28 +1,34 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Backend configuration
 
-## kitconcept.volto
-In order to fully support all Volto features, the Plone backend, needs to be prepared for
-Volto. This involves configuration, add-ons installation and some patches to the core.
-The add'on `kitconcept.volto` does all the heavy lifting for you and it's ready to use
-in your own projects. We used it in our Getting Started section. 
+## plone.volto
+In order to fully support all Volto features, the Plone backend content API needs to be prepared for Volto. The add-on `plone.volto` does all the heavy lifting for you and is ready to use in your own projects. We used it in our Getting Started section.
 
-However, this package is oppinionated and might not fit your needs, so if you want to
-use your own integration package instead, just take a look at the features it provides,
+This package is slightly opinionated but provides the correct default settings for when
+you want to start with Volto. If you have advanced needs or want to move the setting to
+your own integration package instead, just take a look at the features it provides,
 copy the ones you need for your project and create your own integration package.
 
-https://github.com/kitconcept/kitconcept.volto
+https://github.com/plone/plone.volto
 
-!!! tip
-    From Volto 5.1 and above, Volto features an internal proxy to your API server. So
-    you don't have to deal with CORS. It's enabled by default, pointing to the server
-    specified in the `devProxyToApiPath` Volto settings (http://localhost:8080/Plone).
-    See [here](../configuration/internalproxy.md) for more details.
+```{tip}
+From Volto 5.1 and above, Volto features an internal proxy to your API server. So
+you don't have to deal with CORS issues. It's enabled by default, pointing to the server specified in the `devProxyToApiPath` Volto settings
+(http://localhost:8080/Plone). See [here](../configuration/internalproxy.md) for more information.
+```
 
 ## Install a Plone backend locally without Docker
 
 If you have some experience with Python development, you can also install a Plone backend
 from source. The Volto source repository contains an example Plone backend configuration
-using zc.buildout. 
+using zc.buildout.
 
     https://github.com/plone/volto/tree/master/api
 
@@ -34,7 +40,7 @@ You also need a working python3.8 environment (at the time of writing the newest
 Python 3 version).
 
 In a nutshell, cd to the directory where you have stored the two config files, and install
-Plone locally on your system. 
+Plone locally on your system.
 
 ```shell
    > cd <backend dir>
@@ -50,9 +56,9 @@ Plone locally on your system.
 These steps will:
 
 * Install a Python3.8 virtualenv using the built-in `venv` module
-* Install zc.buildout and setuptools using `pip`. 
+* Install zc.buildout and setuptools using `pip`.
 * Run buildout to install the Plone backend server
-* Start the Plone backend server in the foreground (fg). 
+* Start the Plone backend server in the foreground (fg).
 
 With this setup, any changes you make in your site will be persisted on filesystem
 in the Plone Database directories.
@@ -61,4 +67,4 @@ in the Plone Database directories.
 * <backend dir>/var/blobstorage
 
 As long as you backup these directories and your `buildout.cfg/requirements.txt`, you
-can rebuild/recreate your backend service on any machine. 
+can rebuild/recreate your backend service on any machine.

@@ -30,6 +30,8 @@ import {
 import {
   updateContent,
   getContent,
+  lockContent,
+  unlockContent,
   getSchema,
   listActions,
 } from '@plone/volto/actions';
@@ -75,6 +77,8 @@ class Edit extends Component {
     updateContent: PropTypes.func.isRequired,
     getContent: PropTypes.func.isRequired,
     getSchema: PropTypes.func.isRequired,
+    lockContent: PropTypes.func.isRequired,
+    unlockContent: PropTypes.func.isRequired,
     updateRequest: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
@@ -132,7 +136,10 @@ class Edit extends Component {
    */
   componentDidMount() {
     if (this.props.getRequest.loaded && this.props.content?.['@type']) {
-      this.props.getSchema(this.props.content['@type']);
+      this.props.getSchema(
+        this.props.content['@type'],
+        getBaseUrl(this.props.pathname),
+      );
     }
     this.setState({
       isClient: true,
@@ -168,6 +175,7 @@ class Edit extends Component {
 
     if (this.props.updateRequest.loading && nextProps.updateRequest.error) {
       const message =
+        nextProps.updateRequest.error?.response?.body?.error?.message ||
         nextProps.updateRequest.error?.response?.body?.message ||
         nextProps.updateRequest.error?.response?.text ||
         '';
@@ -198,13 +206,26 @@ class Edit extends Component {
   }
 
   /**
+   * Component will unmount
+   * @method componentWillUnmount
+   * @returns {undefined}
+   */
+  componentWillUnmount() {
+    if (this.props.content?.lock?.locked) {
+      this.props.unlockContent(getBaseUrl(this.props.pathname));
+    }
+  }
+
+  /**
    * Submit handler
    * @method onSubmit
    * @param {object} data Form data.
    * @returns {undefined}
    */
   onSubmit(data) {
-    this.props.updateContent(getBaseUrl(this.props.pathname), data);
+    const lock_token = this.props.content?.lock?.token;
+    const headers = lock_token ? { 'Lock-Token': lock_token } : {};
+    this.props.updateContent(getBaseUrl(this.props.pathname), data, headers);
   }
 
   /**
@@ -238,6 +259,7 @@ class Edit extends Component {
         isEditForm
         ref={this.form}
         schema={this.props.schema}
+        type={this.props.content?.['@type']}
         formData={this.props.content}
         requestError={this.state.error}
         onSubmit={this.onSubmit}
@@ -422,6 +444,8 @@ export const __test__ = compose(
       updateContent,
       getContent,
       getSchema,
+      lockContent,
+      unlockContent,
     },
   ),
 )(Edit);
@@ -437,8 +461,15 @@ export default compose(
     },
     {
       key: 'content',
-      promise: async ({ location, store: { dispatch } }) =>
-        await dispatch(getContent(getBaseUrl(location.pathname))),
+      promise: async ({ location, store: { dispatch } }) => {
+        const content = await dispatch(
+          getContent(getBaseUrl(location.pathname)),
+        );
+        if (content?.lock !== undefined) {
+          await dispatch(lockContent(getBaseUrl(location.pathname)));
+        }
+        return content;
+      },
     },
   ]),
   connect(
@@ -458,6 +489,8 @@ export default compose(
       updateContent,
       getContent,
       getSchema,
+      lockContent,
+      unlockContent,
     },
   ),
   preloadLazyLibs('cms'),

@@ -14,6 +14,7 @@ $ npm install -g @plone/generator-volto
 ## Usage
 
 ### Creating a new Volto project using `npm init`
+
 ```
 npm init yo @plone/volto
 ```
@@ -23,6 +24,7 @@ This is the shortcut for using `npm init` command. It uses Yeoman (`yo`) and `@p
 Answer the prompt questions to complete the generation process.
 
 ### Creating a new Volto project
+
 ```
 $ yo @plone/volto
 ```
@@ -121,7 +123,7 @@ Please note that you have to run a Plone backend as well.
 E.g. with docker:
 
 ```
-$ docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.volto" -e ZCML="kitconcept.volto.cors" -e PROFILES="kitconcept.volto:default-homepage" plone
+$ docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.volto" -e ZCML="plone.volto.cors" -e PROFILES="plone.volto:default-homepage" plone
 ```
 
 Consult the Volto docs for further details:

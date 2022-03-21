@@ -1,0 +1,75 @@
+{
+  "name": "@plone/scripts",
+  "description": "Volto Core scripts package - Contains scripts and dependencies for these scripts for tooling when developing Plone 6 / Volto",
+  "maintainers": [
+    {
+      "name": "Plone Foundation",
+      "email": "plone-developers@lists.sourceforge.net",
+      "url": "http://plone.org"
+    }
+  ],
+  "license": "MIT",
+  "version": "1.4.1",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:plone/volto.git"
+  },
+  "bugs": {
+    "url": "https://github.com/plone/volto/issues",
+    "email": "plone-developers@lists.sourceforge.net"
+  },
+  "homepage": "https://plone.org",
+  "keywords": [
+    "volto",
+    "plone",
+    "plone6",
+    "react",
+    "cms"
+  ],
+  "scripts": {
+    "dry-release": "release-it --dry-run",
+    "release": "release-it",
+    "release-major-alpha": "release-it major --preRelease=alpha",
+    "release-alpha": "release-it --preRelease=alpha"
+  },
+  "bin": {
+    "i18n": "./i18n.js",
+    "changelogupdater": "./changelogupdater.js",
+    "addon": "./addon.js"
+  },
+  "release-it": {
+    "hooks": {
+      "after:bump": "node ./changelogupdater.js bump ${version}",
+      "after:release": "node ./changelogupdater.js back ${version} && git commit -am 'Back to development (@plone/scripts)' && git push"
+    },
+    "git": {
+      "changelog": "node ./changelogupdater.js excerpt",
+      "requireUpstream": false,
+      "requireCleanWorkingDir": false,
+      "commitMessage": "Release @plone/scripts ${version}",
+      "tagName": "plone-scripts-${version}",
+      "tagAnnotation": "Release @plone/scripts ${version}"
+    },
+    "github": {
+      "release": true,
+      "releaseName": "@plone/scripts ${version}",
+      "releaseNotes": "node ./changelogupdater.js excerpt"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "babel-plugin-react-intl": "5.1.17",
+    "babel-preset-razzle": "3.4.5",
+    "commander": "8.2.0",
+    "git-url-parse": "^11.6.0",
+    "mrs-developer": "*",
+    "pofile": "1.0.10",
+    "razzle": "3.4.5",
+    "simple-git": "2.48.0"
+  },
+  "devDependencies": {
+    "release-it": "14.2.1"
+  }
+}

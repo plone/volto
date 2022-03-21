@@ -3,11 +3,12 @@
  * @module components/theme/App/App
  */
 
-import React, { Component } from 'react';
+import { Component } from 'react';
+import jwtDecode from 'jwt-decode';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { asyncConnect } from '@plone/volto/helpers';
+import { asyncConnect, Helmet } from '@plone/volto/helpers';
 import { Segment } from 'semantic-ui-react';
 import { renderRoutes } from 'react-router-config';
 import { Slide, ToastContainer, toast } from 'react-toastify';
@@ -17,6 +18,8 @@ import trim from 'lodash/trim';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
 import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
+import { visitBlocks } from '@plone/volto/helpers/Blocks/Blocks';
+import { injectIntl } from 'react-intl';
 
 import Error from '@plone/volto/error';
 
@@ -39,8 +42,9 @@ import {
 } from '@plone/volto/actions';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
-import MultilingualRedirector from '../MultilingualRedirector/MultilingualRedirector';
-import WorkingCopyToastsFactory from '../../manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory';
+import MultilingualRedirector from '@plone/volto/components/theme/MultilingualRedirector/MultilingualRedirector';
+import WorkingCopyToastsFactory from '@plone/volto/components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory';
+import LockingToastsFactory from '@plone/volto/components/manage/LockingToastsFactory/LockingToastsFactory';
 
 import * as Sentry from '@sentry/browser';
 
@@ -106,8 +110,16 @@ class App extends Component {
     const isCmsUI = isCmsUi(this.props.pathname);
     const ConnectionRefusedView = views.errorViews.ECONNREFUSED;
 
+    const language =
+      this.props.content?.language?.token ?? this.props.intl?.locale;
+
     return (
       <PluggablesProvider>
+        {language && (
+          <Helmet>
+            <html lang={language} />
+          </Helmet>
+        )}
         <BodyClass className={`view-${action}view`} />
 
         {/* Body class depending on content type */}
@@ -134,7 +146,10 @@ class App extends Component {
         <SkipLinks />
         <Header pathname={path} />
         <Breadcrumbs pathname={path} />
-        <MultilingualRedirector pathname={this.props.pathname}>
+        <MultilingualRedirector
+          pathname={this.props.pathname}
+          contentLanguage={this.props.content?.language?.token}
+        >
           <Segment basic className="content-area">
             <main>
               <OutdatedBrowser />
@@ -154,6 +169,10 @@ class App extends Component {
           </Segment>
         </MultilingualRedirector>
         <Footer />
+        <LockingToastsFactory
+          content={this.props.content}
+          user={this.props.userId}
+        />
         <WorkingCopyToastsFactory content={this.props.content} />
         <ToastContainer
           position={toast.POSITION.BOTTOM_CENTER}
@@ -185,6 +204,42 @@ export const __test__ = connect(
   {},
 )(App);
 
+export const fetchContent = async ({ store, location }) => {
+  const content = await store.dispatch(
+    getContent(getBaseUrl(location.pathname)),
+  );
+
+  const promises = [];
+  const { blocksConfig } = config.blocks;
+
+  const visitor = ([id, data]) => {
+    const blockType = data['@type'];
+    const { getAsyncData } = blocksConfig[blockType];
+    if (getAsyncData) {
+      const p = getAsyncData({
+        store,
+        dispatch: store.dispatch,
+        path: location.pathname,
+        location,
+        id,
+        data,
+      });
+      if (!p?.length) {
+        throw new Error(
+          'You should return a list of promises from getAsyncData',
+        );
+      }
+      promises.push(...p);
+    }
+  };
+
+  visitBlocks(content, visitor);
+
+  await Promise.allSettled(promises);
+
+  return content;
+};
+
 export default compose(
   asyncConnect([
     {
@@ -194,8 +249,8 @@ export default compose(
     },
     {
       key: 'content',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ && dispatch(getContent(getBaseUrl(location.pathname))),
+      promise: ({ location, store }) =>
+        __SERVER__ && fetchContent({ store, location }),
     },
     {
       key: 'navigation',
@@ -219,10 +274,14 @@ export default compose(
         __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
     },
   ]),
+  injectIntl,
   connect(
     (state, props) => ({
       pathname: props.location.pathname,
       token: state.userSession.token,
+      userId: state.userSession.token
+        ? jwtDecode(state.userSession.token).sub
+        : '',
       content: state.content.data,
       apiError: state.apierror.error,
       connectionRefused: state.apierror.connectionRefused,

@@ -1,93 +1,44 @@
-import VocabularyTermsWidget from './VocabularyTermsWidget';
-import Wrapper from '@plone/volto/storybook';
 import React from 'react';
+import VocabularyTermsWidget from './VocabularyTermsWidget';
+import WidgetStory from './story';
 
-const customStore = {
-  userSession: { token: '1234' },
-  intl: {
-    locale: 'en',
-    messages: {},
-  },
-};
-
-const customStoreTranslations = {
-  userSession: { token: '1234' },
-  intl: {
-    locale: 'it',
-    messages: {},
-  },
-};
-
-const WrappedSimple = (args) => {
-  const [value, setValue] = React.useState({
-    '001': 'manual',
-    '002': 'questions & answers',
-  });
-  const onChange = (block, value) => setValue(value);
-
-  return (
-    <Wrapper
-      location={{ pathname: '/folder2/folder21/doc212' }}
-      customStore={customStore}
-    >
-      <div className="ui segment form attached">
-        <VocabularyTermsWidget
-          {...args}
-          id="Simple"
-          title="Vocabulary terms"
-          block="testBlock"
-          value={value}
-          value_type={{
-            schema: {
-              type: 'string',
-            },
-          }}
-          onChange={onChange}
-        />
-        <pre>{JSON.stringify(value, null, 4)}</pre>
-      </div>
-    </Wrapper>
-  );
-};
-
-const WrappedTranslations = (args) => {
-  const [value, setValue] = React.useState({
-    '001': {
-      en: 'manual',
-      it: 'manuale',
-      de: 'Anleitung',
+export const VocabularyTerms = WidgetStory.bind({
+  props: { id: 'vocabularyterms', title: 'Vocabulary terms', block: 'block' },
+  widget: VocabularyTermsWidget,
+  customStore: {
+    userSession: { token: '1234' },
+    intl: {
+      locale: 'en',
+      messages: {},
     },
-    '002': {
-      en: 'questions & answers',
-      it: 'domande frequenti',
-      de: 'FAQs',
-    },
-  });
-  const onChange = (block, value) => setValue(value);
-
-  return (
-    <Wrapper
-      location={{ pathname: '/folder2/folder21/doc212' }}
-      customStore={customStoreTranslations}
-    >
-      <div className="ui segment form attached">
-        <VocabularyTermsWidget
-          {...args}
-          id="Translations"
-          title="Vocabulary terms"
-          block="testBlock"
-          value={value}
-          onChange={onChange}
-        />
-        <pre>{JSON.stringify(value, null, 4)}</pre>
-      </div>
-    </Wrapper>
-  );
-};
+  },
+  initialValue: {
+    items: [
+      {
+        token: 'talk',
+        titles: {
+          en: 'Talk',
+          de: 'Vortrag',
+          it: 'Lettura',
+        },
+      },
+      {
+        token: 'lightning-talk',
+        titles: {
+          en: 'Lightning-Talk',
+          de: 'kürzerer erleuchtender Vortrag',
+          it: 'Lightning-Talk',
+        },
+      },
+    ],
+  },
+});
+VocabularyTerms.args = {};
 
 export default {
-  title: 'Widgets/Vocabulary',
+  title: 'Widgets/VocabularyTerms',
   component: VocabularyTermsWidget,
+  argTypes: {},
   decorators: [
     (Story) => (
       <div className="ui segment form attached" style={{ width: '600px' }}>
@@ -96,7 +47,3 @@ export default {
     ),
   ],
 };
-
-export const Simple = () => <WrappedSimple />;
-
-export const Translations = () => <WrappedTranslations />;

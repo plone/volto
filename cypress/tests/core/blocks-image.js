@@ -29,7 +29,7 @@ describe('Blocks Tests', () => {
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.image').contains('Image').click();
     cy.get('.block.image .ui.input input[type="text"]').type(
-      `https://github.com/plone/volto/raw/master/docs/logos/volto-colorful.png{enter}`,
+      `https://github.com/plone/volto/raw/master/logos/volto-colorful.png{enter}`,
     );
     cy.get('#toolbar-save').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
@@ -38,7 +38,7 @@ describe('Blocks Tests', () => {
     cy.get('#page-document img').should(
       'have.attr',
       'src',
-      'https://github.com/plone/volto/raw/master/docs/logos/volto-colorful.png',
+      'https://github.com/plone/volto/raw/master/logos/volto-colorful.png',
     );
 
     cy.get('#page-document img')
@@ -147,5 +147,23 @@ describe('Blocks Tests', () => {
         // "naturalWidth" and "naturalHeight" are set when the image loads
         expect($img[0].naturalWidth).to.be.greaterThan(0);
       });
+  });
+
+  it('Create an image block and initially alt attr is empty', () => {
+    // when I add an image block via upload
+    cy.get('.block.inner.text .public-DraftEditor-content').click();
+    cy.get('.ui.basic.icon.button.block-add-button').click();
+    cy.get('.ui.basic.icon.button.image').contains('Image').click();
+
+    cy.get('input[type="file"]').attachFile('image.png', {
+      subjectType: 'input',
+      encoding: 'utf8',
+    });
+    cy.waitForResourceToLoad('image.png/@@images/image');
+
+    // then in sidebar alt attr should be empty
+    cy.get('#sidebar-properties .field-wrapper-alt input#field-alt')
+      .should('have.attr', 'value')
+      .and('eq', '');
   });
 });

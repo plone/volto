@@ -20,8 +20,9 @@ body {
     flex-direction: column;
   }
 
-  &.has-toolbar-menu-open {
-    // The body scroll locker when the menu is active in mobile.
+  &.has-toolbar-menu-open,
+  &.has-mobile-menu-open {
+    // The body scroll locker when the toolbar or the mobile menu are active in mobile.
     @media only screen and (max-width: @largestMobileScreen) {
       overflow: hidden;
     }
@@ -144,6 +145,56 @@ button {
 
   &:focus {
     outline: none;
+  }
+}
+//checkbox overrides
+/* Unchecked */
+.ui.checkbox {
+  label {
+    &:before {
+      border: @checkboxBorderUnchecked;
+      border-radius: unset;
+      box-shadow: 0 2px 2px 0 #0000001a;
+    }
+
+    &:hover:before {
+      border: @checkboxBorderUnchecked;
+    }
+
+    &:focus:before {
+      border: @checkboxBorderUnchecked;
+    }
+  }
+
+  input:focus ~ label:before {
+    border: @checkboxBorderUnchecked;
+  }
+}
+
+/* Checked */
+.ui.checkbox input:checked {
+  & ~ label:after,
+  .box:after {
+    color: @checkboxColor;
+    content: '\e800';
+  }
+
+  & ~ label:before {
+    border: @checkboxBorderChecked;
+    box-shadow: none;
+  }
+
+  /* Focus */
+  &:focus {
+    & ~ label:before {
+      border: @checkboxBorderChecked;
+    }
+
+    & ~ label:after,
+    .box:after {
+      color: @checkboxColor;
+      content: '\e800';
+    }
   }
 }
 
@@ -427,6 +478,81 @@ fieldset.invisible {
     border-radius: 1px;
     color: #826a6a !important;
   }
+}
+
+.hamburger-wrapper {
+  position: relative;
+  z-index: 5;
+}
+
+.mobile-menu {
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+body.has-toolbar .mobile-menu {
+  padding-top: 60px;
+}
+
+body.has-toolbar-collapsed .mobile-menu {
+  padding-top: 20px;
+}
+
+.mobile-menu-nav {
+  display: flex;
+  overflow: auto;
+  height: 100%;
+  align-items: @mobileMenuNavAlignItems;
+  justify-content: @mobileMenuNavJustifyContent;
+  text-align: @mobileMenuNavTextAlign;
+
+  &::-webkit-scrollbar {
+    width: @mobileScrollbarWidth;
+    -webkit-appearance: none;
+    background: @mobileScrollbarTrackBackground;
+  }
+
+  .ui.pointing.secondary.stackable.menu {
+    align-items: @mobileMenuNavMenuAlignItems;
+    font-size: @mobileMenuNavMenuFontSize;
+
+    .item {
+      display: flex;
+      justify-content: @mobileMenuNavItemJustifyContent;
+      line-height: @mobileMenuNavItemLineHeight;
+    }
+  }
+}
+
+.mobile-menu {
+  background-color: #fff;
+}
+
+.mobile-menu-enter {
+  transform: translate(0%, -100%);
+}
+
+.mobile-menu-enter.mobile-menu-enter-active {
+  transform: translate(0%, 0%);
+  transition: transform 0.5s cubic-bezier(0.09, 0.11, 0.24, 0.91);
+}
+
+.mobile-menu-enter-done {
+}
+
+.mobile-menu-exit {
+  transform: translate(0%, 0%);
+  transition: transform 0.5s cubic-bezier(0.09, 0.11, 0.24, 0.91);
+}
+
+.mobile-menu-exit.mobile-menu-exit-active {
+  transform: translate(0%, -100%);
+  transition: transform 0.5s cubic-bezier(0.09, 0.11, 0.24, 0.91);
 }
 
 // Deprecated as per https://github.com/plone/volto/issues/1265

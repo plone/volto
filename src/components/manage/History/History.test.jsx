@@ -3,21 +3,26 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
+import FakeTimers from '@sinonjs/fake-timers';
+
 import History from './History';
 
 const mockStore = configureStore();
-
 jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),
 }));
-jest.mock('moment', () =>
-  jest.fn(() => ({
-    format: jest.fn(() => 'Sunday, April 23, 2017 3:38 AM'),
-    fromNow: jest.fn(() => 'a few seconds ago'),
-  })),
-);
+
+const FIXED_SYSTEM_TIME = '2017-04-23T15:38:00.000Z';
 
 describe('History', () => {
+  let clock;
+  beforeEach(() => {
+    clock = FakeTimers.install({ now: Date.parse(FIXED_SYSTEM_TIME) });
+  });
+  afterEach(() => {
+    clock.uninstall();
+  });
+
   it('renders a history component', () => {
     const store = mockStore({
       history: {

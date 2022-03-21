@@ -5,11 +5,11 @@ import config from '@plone/volto/registry';
 // nonContentRoute eg. '/add' will match '/foo/bar/add'
 export const nonContentRoutes = [
   /\?.*$/,
-  '/add',
+  /\/add$/,
   '/contents',
   '/delete',
   '/diff',
-  '/edit',
+  /\/edit$/,
   '/history',
   '/layout',
   '/login',

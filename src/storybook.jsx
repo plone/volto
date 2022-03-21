@@ -1,11 +1,14 @@
-import { createBrowserHistory } from 'history';
 import PropTypes from 'prop-types';
+import { createBrowserHistory } from 'history';
 import React, { Component } from 'react';
+import { Button } from 'semantic-ui-react';
 import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
-import configureStore from '@plone/volto/store';
+import { useUndoManager } from '@plone/volto/helpers';
+import configureStore from 'redux-mock-store';
+import configureRealStore from '@plone/volto/store';
 
 const initialState = () => ({
   router: {
@@ -611,6 +614,11 @@ const initialState = () => ({
     items: [],
   },
   content: {
+    unlock: {
+      loaded: false,
+      loading: false,
+      error: null,
+    },
     create: {
       loaded: false,
       loading: false,
@@ -1351,6 +1359,7 @@ const initialState = () => ({
   toolbar: {
     expanded: true,
   },
+  lazyLibraries: {},
 });
 
 /**
@@ -1385,9 +1394,8 @@ export default class Wrapper extends Component {
   }
 
   render() {
-    // If thunk is not included there's a complaint about async actions
-    const history = createBrowserHistory();
-    const store = configureStore(this.customState(), history);
+    const mockStore = configureStore();
+    const store = mockStore(this.customState());
 
     return (
       <Provider store={store}>
@@ -1404,3 +1412,98 @@ export default class Wrapper extends Component {
     );
   }
 }
+
+export class RealStoreWrapper extends Component {
+  /**
+   * Property types.
+   * @property {Object} propTypes Property types.
+   * @static
+   */
+  static propTypes = {
+    pathname: PropTypes.string,
+    anonymous: PropTypes.bool,
+    customStore: PropTypes.object,
+  };
+
+  customState() {
+    let state = initialState();
+    if (this.props.anonymous) {
+      state.userSession.token = null;
+    }
+    if (this.props.customStore) {
+      state = {
+        ...state,
+        ...this.props.customStore,
+      };
+    }
+    return state;
+  }
+
+  render() {
+    // If thunk is not included there's a complaint about async actions
+    const history = createBrowserHistory();
+    const store = configureRealStore(this.customState(), history);
+
+    return (
+      <Provider store={store}>
+        <PluggablesProvider>
+          <IntlProvider locale="en">
+            <StaticRouter location={this.props.location}>
+              <div className="volto-storybook-container">
+                {this.props.children}
+              </div>
+            </StaticRouter>
+          </IntlProvider>
+        </PluggablesProvider>
+      </Provider>
+    );
+  }
+}
+
+export const FormUndoWrapper = ({
+  initialState = {},
+  children,
+  showControls = true,
+}) => {
+  const [state, setState] = React.useState(initialState);
+
+  const onUndoRedo = React.useCallback(({ state }) => setState(state), []);
+
+  const { doUndo, doRedo, canUndo, canRedo } = useUndoManager(
+    state,
+    onUndoRedo,
+    {
+      maxUndoLevels: 200,
+    },
+  );
+
+  return (
+    <div>
+      <div>{children({ state, onChange: setState })}</div>
+      {showControls && (
+        <div>
+          <Button
+            size="mini"
+            compact
+            className="undo"
+            onClick={() => doUndo()}
+            aria-label="Undo"
+            disabled={!canUndo}
+          >
+            Undo
+          </Button>
+          <Button
+            size="mini"
+            compact
+            className="redo"
+            onClick={() => doRedo()}
+            aria-label="Redo"
+            disabled={!canRedo}
+          >
+            Redo
+          </Button>
+        </div>
+      )}
+    </div>
+  );
+};

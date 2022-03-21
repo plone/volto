@@ -1,4 +1,5 @@
-import '~/config'; // This is the bootstrap for the global config - client side
+import '@plone/volto/config'; // This is the bootstrap for the global config - client side
+import '@root/theme';
 import React from 'react';
 import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
@@ -8,9 +9,10 @@ import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 import { ReduxAsyncConnect } from '@plone/volto/helpers/AsyncConnect';
 import { loadableReady } from '@loadable/component';
-import routes from '~/routes';
+import { CookiesProvider } from 'react-cookie';
+import debug from 'debug';
+import routes from '@root/routes';
 import config from '@plone/volto/registry';
-import '~/theme';
 import configureStore from '@plone/volto/store';
 import { Api, persistAuthToken, ScrollToTop } from '@plone/volto/helpers';
 
@@ -29,10 +31,7 @@ if (process.env.NODE_ENV === 'production' && cookie.load('auth_token')) {
 }
 
 function reactIntlErrorHandler(error) {
-  if (process.env.NODE_ENV !== 'production') {
-    /* eslint no-console: 0 */
-    console.info(error);
-  }
+  debug('i18n')(error);
 }
 
 export default () => {
@@ -49,25 +48,32 @@ export default () => {
     window.settings = config.settings;
   }
 
-  // If Host header is present (so window.env.apiPath is)
+  // Setup the client registry from the SSR response values, presents in the `window.env`
+  // variable. This is key for the Seamless mode to work.
   if (window.env.apiPath) {
     config.settings.apiPath = window.env.apiPath;
   }
   if (window.env.publicURL) {
     config.settings.publicURL = window.env.publicURL;
   }
+  // TODO: To be removed when the use of the legacy traverse is deprecated.
+  if (window.env.RAZZLE_LEGACY_TRAVERSE) {
+    config.settings.legacyTraverse = true;
+  }
 
   loadableReady(() => {
     hydrate(
-      <Provider store={store}>
-        <IntlProvider onError={reactIntlErrorHandler}>
-          <ConnectedRouter history={history}>
-            <ScrollToTop>
-              <ReduxAsyncConnect routes={routes} helpers={api} />
-            </ScrollToTop>
-          </ConnectedRouter>
-        </IntlProvider>
-      </Provider>,
+      <CookiesProvider>
+        <Provider store={store}>
+          <IntlProvider onError={reactIntlErrorHandler}>
+            <ConnectedRouter history={history}>
+              <ScrollToTop>
+                <ReduxAsyncConnect routes={routes} helpers={api} />
+              </ScrollToTop>
+            </ConnectedRouter>
+          </IntlProvider>
+        </Provider>
+      </CookiesProvider>,
       document.getElementById('main'),
     );
   });

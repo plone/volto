@@ -121,8 +121,21 @@ describe('Listing Block Tests', () => {
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('Listing').click();
 
-    //verify before save
-    cy.get(`.block.listing .listing-body:first-of-type`).contains('Page One');
+    //********  add Type criteria filter
+    cy.get('.querystring-widget .fields').contains('Add criteria').click();
+    cy.get(
+      '.querystring-widget .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
+    )
+      .contains('Type')
+      .click();
+
+    //insert Page
+    cy.get('.querystring-widget .fields:first-of-type > .field').click();
+    cy.get(
+      '.querystring-widget .fields:first-of-type > .field .react-select__menu .react-select__option',
+    )
+      .contains('Page')
+      .click();
 
     // set effective date (reverse order)
     cy.get('#select-listingblock-sort-on')
@@ -136,11 +149,11 @@ describe('Listing Block Tests', () => {
     cy.get('#toolbar-save').click();
 
     //test after save
-    cy.get('#page-document .listing-body:first-of-type').contains('Page One');
+    cy.get('#page-document .listing-body:first-of-type').contains('Page Two');
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page/page-one',
+      '/my-page/page-two',
     );
   });
 

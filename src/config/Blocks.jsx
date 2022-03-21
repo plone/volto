@@ -39,12 +39,35 @@ import heroSVG from '@plone/volto/icons/hero.svg';
 import tableSVG from '@plone/volto/icons/table.svg';
 import listBulletSVG from '@plone/volto/icons/list-bullet.svg';
 import tocSVG from '@plone/volto/icons/list-bullet.svg';
+import searchSVG from '@plone/volto/icons/zoom.svg';
 
 import ImageGalleryListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/ImageGallery';
 import BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Schema';
 import TextSettingsSchema from '@plone/volto/components/manage/Blocks/Text/Schema';
 import ImageSettingsSchema from '@plone/volto/components/manage/Blocks/Image/Schema';
 import ToCSettingsSchema from '@plone/volto/components/manage/Blocks/ToC/Schema';
+
+import SearchBlockView from '@plone/volto/components/manage/Blocks/Search/SearchBlockView';
+import SearchBlockEdit from '@plone/volto/components/manage/Blocks/Search/SearchBlockEdit';
+
+import RightColumnFacets from '@plone/volto/components/manage/Blocks/Search/layout/RightColumnFacets';
+import LeftColumnFacets from '@plone/volto/components/manage/Blocks/Search/layout/LeftColumnFacets';
+import TopSideFacets from '@plone/volto/components/manage/Blocks/Search/layout/TopSideFacets';
+import {
+  SelectFacet,
+  CheckboxFacet,
+  DateRangeFacet,
+  ToggleFacet,
+  ToggleFacetFilterListEntry,
+  SelectFacetFilterListEntry,
+  DateRangeFacetFilterListEntry,
+} from '@plone/volto/components/manage/Blocks/Search/components';
+import getListingBlockAsyncData from '@plone/volto/components/manage/Blocks/Listing/getAsyncData';
+
+// block sidebar schemas (not the Dexterity Layout block settings schemas)
+import HeroImageLeftBlockSchema from '@plone/volto/components/manage/Blocks/HeroImageLeft/schema';
+import ListingBlockSchema from '@plone/volto/components/manage/Blocks/Listing/schema';
+import SearchBlockSchema from '@plone/volto/components/manage/Blocks/Search/schema';
 
 defineMessages({
   title: {
@@ -107,6 +130,28 @@ defineMessages({
   common: {
     id: 'common',
     defaultMessage: 'Common',
+  },
+  // Listing block variations
+  summary: {
+    id: 'Summary',
+    defaultMessage: 'Summary',
+  },
+  imageGallery: {
+    id: 'Image gallery',
+    defaultMessage: 'Image gallery',
+  },
+  // Search block variations
+  facetsRightSide: {
+    id: 'Facets on right side',
+    defaultMessage: 'Facets on right side',
+  },
+  facetsLeftSide: {
+    id: 'Facets on left side',
+    defaultMessage: 'Facets on left side',
+  },
+  facetsTopSide: {
+    id: 'Facets on top',
+    defaultMessage: 'Facets on top',
   },
 });
 
@@ -202,7 +247,7 @@ const blocksConfig = {
     view: ViewLeadImageBlock,
     edit: EditLeadImageBlock,
     schema: BlockSettingsSchema,
-    restricted: false,
+    restricted: ({ properties }) => !properties.hasOwnProperty('image'),
     mostUsed: false,
     sidebarTab: 1,
     security: {
@@ -218,6 +263,7 @@ const blocksConfig = {
     view: ViewListingBlock,
     edit: EditListingBlock,
     schema: BlockSettingsSchema,
+    blockSchema: ListingBlockSchema,
     restricted: false,
     mostUsed: true,
     sidebarTab: 1,
@@ -244,6 +290,7 @@ const blocksConfig = {
         template: SummaryListingBlockTemplate,
       },
     ],
+    getAsyncData: getListingBlockAsyncData,
   },
   video: {
     id: 'video',
@@ -285,15 +332,17 @@ const blocksConfig = {
     view: ViewHeroImageLeftBlock,
     edit: EditHeroImageLeftBlock,
     schema: BlockSettingsSchema,
+    blockSchema: HeroImageLeftBlockSchema,
     restricted: false,
     mostUsed: false,
     blockHasOwnFocusManagement: true,
-    sidebarTab: 0,
+    sidebarTab: 1,
     security: {
       addPermission: [],
       view: [],
     },
   },
+
   maps: {
     id: 'maps',
     title: 'Maps',
@@ -343,10 +392,105 @@ const blocksConfig = {
       view: [],
     },
   },
+  search: {
+    id: 'search',
+    title: 'Search',
+    icon: searchSVG,
+    group: 'common',
+    view: SearchBlockView,
+    edit: SearchBlockEdit,
+    blockSchema: SearchBlockSchema,
+    restricted: false,
+    mostUsed: false,
+    sidebarTab: 1,
+    security: {
+      addPermission: [],
+      view: [],
+    },
+    variations: [
+      {
+        id: 'facetsRightSide',
+        title: 'Facets on right side',
+        view: RightColumnFacets,
+        isDefault: true,
+      },
+      {
+        id: 'facetsLeftSide',
+        title: 'Facets on left side',
+        view: LeftColumnFacets,
+        isDefault: false,
+      },
+      {
+        id: 'facetsTopSide',
+        title: 'Facets on top',
+        view: TopSideFacets,
+        isDefault: false,
+      },
+    ],
+    extensions: {
+      facetWidgets: {
+        rewriteOptions: (name, choices) => {
+          return name === 'review_state'
+            ? choices.map((opt) => ({
+                ...opt,
+                label: opt.label.replace(/\[.+\]/, '').trim(),
+              }))
+            : choices;
+        },
+        types: [
+          {
+            id: 'selectFacet',
+            title: 'Select',
+            view: SelectFacet,
+            isDefault: true,
+            schemaEnhancer: SelectFacet.schemaEnhancer,
+            stateToValue: SelectFacet.stateToValue,
+            valueToQuery: SelectFacet.valueToQuery,
+            filterListComponent: SelectFacetFilterListEntry,
+          },
+          {
+            id: 'checkboxFacet',
+            title: 'Checkbox',
+            view: CheckboxFacet,
+            isDefault: false,
+            schemaEnhancer: CheckboxFacet.schemaEnhancer,
+            stateToValue: CheckboxFacet.stateToValue,
+            valueToQuery: CheckboxFacet.valueToQuery,
+            filterListComponent: SelectFacetFilterListEntry,
+          },
+          {
+            id: 'daterangeFacet',
+            title: 'Date range',
+            view: DateRangeFacet,
+            isDefault: false,
+            stateToValue: DateRangeFacet.stateToValue,
+            valueToQuery: DateRangeFacet.valueToQuery,
+            filterListComponent: DateRangeFacetFilterListEntry,
+          },
+          {
+            id: 'toggleFacet',
+            title: 'Toggle',
+            view: ToggleFacet,
+            isDefault: false,
+            stateToValue: ToggleFacet.stateToValue,
+            valueToQuery: ToggleFacet.valueToQuery,
+            filterListComponent: ToggleFacetFilterListEntry,
+          },
+        ],
+      },
+    },
+  },
 };
 
 const requiredBlocks = ['title'];
 
 const initialBlocks = {};
+const initialBlocksFocus = {}; //{Document:'title'}
 
-export { groupBlocksOrder, requiredBlocks, blocksConfig, initialBlocks };
+export {
+  groupBlocksOrder,
+  requiredBlocks,
+  blocksConfig,
+  initialBlocks,
+  initialBlocksFocus,
+};

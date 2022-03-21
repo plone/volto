@@ -31,6 +31,11 @@ exports[`History renders a history component 1`] = `
           className=""
         >
           <th
+            className="one wide"
+          >
+            #
+          </th>
+          <th
             className="four wide"
           >
             What
@@ -64,6 +69,11 @@ exports[`History renders a history component 1`] = `
           <td
             className=""
           >
+            <span />
+          </td>
+          <td
+            className=""
+          >
             <span>
               Publish
                (Private → Published)
@@ -77,11 +87,12 @@ exports[`History renders a history component 1`] = `
           <td
             className=""
           >
-            <span
-              title="Sunday, April 23, 2017 3:38 AM"
+            <time
+              dateTime="2017-04-19T14:09:36+02:00"
+              title="Wednesday, April 19, 2017 at 12:09 PM"
             >
-              a few seconds ago
-            </span>
+              4 days ago
+            </time>
           </td>
           <td
             className=""
@@ -98,6 +109,11 @@ exports[`History renders a history component 1`] = `
           <td
             className=""
           >
+            <span />
+          </td>
+          <td
+            className=""
+          >
             <span>
               Edited
             </span>
@@ -110,11 +126,12 @@ exports[`History renders a history component 1`] = `
           <td
             className=""
           >
-            <span
-              title="Sunday, April 23, 2017 3:38 AM"
+            <time
+              dateTime="2017-04-19T14:09:35+02:00"
+              title="Wednesday, April 19, 2017 at 12:09 PM"
             >
-              a few seconds ago
-            </span>
+              4 days ago
+            </time>
           </td>
           <td
             className=""
@@ -131,16 +148,11 @@ exports[`History renders a history component 1`] = `
               onChange={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
               onMouseDown={[Function]}
               role="listbox"
               tabIndex={0}
             >
-              <div
-                aria-atomic={true}
-                aria-live="polite"
-                className="text"
-                role="alert"
-              />
               <i
                 aria-hidden="true"
                 className="ellipsis horizontal icon"
@@ -158,6 +170,11 @@ exports[`History renders a history component 1`] = `
           <td
             className=""
           >
+            <span />
+          </td>
+          <td
+            className=""
+          >
             <span>
               Create
                (Private)
@@ -171,11 +188,12 @@ exports[`History renders a history component 1`] = `
           <td
             className=""
           >
-            <span
-              title="Sunday, April 23, 2017 3:38 AM"
+            <time
+              dateTime="2017-04-19T14:09:34+02:00"
+              title="Wednesday, April 19, 2017 at 12:09 PM"
             >
-              a few seconds ago
-            </span>
+              4 days ago
+            </time>
           </td>
           <td
             className=""

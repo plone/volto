@@ -6,10 +6,10 @@
 import React, { Component } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
-import { isObject, intersection } from 'lodash';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import { find, isObject } from 'lodash';
 
 import {
   getVocabFromHint,
@@ -21,8 +21,12 @@ import { getVocabulary } from '@plone/volto/actions';
 import {
   Option,
   DropdownIndicator,
+  ClearIndicator,
   selectTheme,
   customSelectStyles,
+  MenuList,
+  SortableMultiValue,
+  SortableMultiValueLabel,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 
 import { FormFieldWrapper } from '@plone/volto/components';
@@ -42,10 +46,89 @@ const messages = defineMessages({
   },
 });
 
+function arrayMove(array, from, to) {
+  const slicedArray = array.slice();
+  slicedArray.splice(
+    to < 0 ? array.length + to : to,
+    0,
+    slicedArray.splice(from, 1)[0],
+  );
+  return slicedArray;
+}
+
+function normalizeArrayValue(choices, value) {
+  if (!value || !Array.isArray(value)) return [];
+  if (value.length === 0) return value;
+
+  if (typeof value[0] === 'string') {
+    // raw value like ['foo', 'bar']
+    return value.map((v) => {
+      return {
+        label: find(choices, (c) => c.value === v)?.label || v,
+        value: v,
+      };
+    });
+  }
+
+  if (
+    isObject(value[0]) &&
+    Object.keys(value[0]).includes('token') // Array of objects, w/ label+value
+  ) {
+    return value
+      .map((v) => {
+        const item = find(choices, (c) => c.value === v.token);
+        return item
+          ? {
+              label: item.label || item.title || item.token,
+              value: v.token,
+            }
+          : {
+              // avoid a crash if choices doesn't include this item
+              label: v.label,
+              value: v.token,
+            };
+      })
+      .filter((f) => !!f);
+  }
+
+  return [];
+}
+
+function normalizeChoices(choices) {
+  if (Array.isArray(choices) && choices.length && Array.isArray(choices[0])) {
+    return choices.map((option) => ({
+      value: option[0],
+      label:
+        // Fix "None" on the serializer, to remove when fixed in p.restapi
+        option[1] !== 'None' && option[1] ? option[1] : option[0],
+    }));
+  }
+
+  return choices;
+}
+
 /**
  * ArrayWidget component class.
  * @class ArrayWidget
  * @extends Component
+ *
+ * A createable select array widget will be rendered if the named vocabulary is
+ * in the widget definition (hint) like:
+ *
+ * ```
+ * list_field_voc_unconstrained = schema.List(
+ *     title=u"List field with values from vocabulary but not constrained to them.",
+ *     description=u"zope.schema.List",
+ *     value_type=schema.TextLine(),
+ *     required=False,
+ *     missing_value=[],
+ * )
+ * directives.widget(
+ *     "list_field_voc_unconstrained",
+ *     AjaxSelectFieldWidget,
+ *     vocabulary="plone.app.vocabularies.PortalTypes",
+ * )
+ * ```
  */
 class ArrayWidget extends Component {
   /**
@@ -63,7 +146,6 @@ class ArrayWidget extends Component {
     choices: PropTypes.arrayOf(
       PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
     ),
-    loading: PropTypes.bool,
     items: PropTypes.shape({
       vocabulary: PropTypes.object,
     }),
@@ -74,8 +156,8 @@ class ArrayWidget extends Component {
       PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     ),
     onChange: PropTypes.func.isRequired,
-    itemsTotal: PropTypes.number,
     wrapped: PropTypes.bool,
+    creatable: PropTypes.bool, //if widget has no vocab and you want to be creatable
   };
 
   /**
@@ -94,8 +176,8 @@ class ArrayWidget extends Component {
     },
     error: [],
     choices: [],
-    loading: false,
     value: null,
+    creatable: false,
   };
 
   /**
@@ -106,23 +188,8 @@ class ArrayWidget extends Component {
    */
   constructor(props) {
     super(props);
-    this.search = this.search.bind(this);
-    this.loadOptions = this.loadOptions.bind(this);
+
     this.handleChange = this.handleChange.bind(this);
-    this.vocabBaseUrl =
-      getVocabFromHint(props) ||
-      getVocabFromField(props) ||
-      getVocabFromItems(props);
-    this.state = {
-      search: '',
-      selectedOption: props.value
-        ? props.value.map((item) =>
-            isObject(item)
-              ? { label: item.title || item.token, value: item.token }
-              : { label: item, value: item },
-          )
-        : [],
-    };
   }
 
   /**
@@ -132,56 +199,17 @@ class ArrayWidget extends Component {
    */
   componentDidMount() {
     if (
-      !this.props.items?.choices &&
-      !this.props.choices &&
-      this.vocabBaseUrl
+      !this.props.items?.choices?.length &&
+      !this.props.choices?.length &&
+      this.props.vocabBaseUrl
     ) {
-      this.props.getVocabulary(this.vocabBaseUrl);
+      this.props.getVocabulary({
+        vocabNameOrURL: this.props.vocabBaseUrl,
+        size: -1,
+        subrequest: this.props.intl.locale,
+      });
     }
   }
-
-  /**
-   * Initiate search with new query
-   * @param {string} query Search query.
-   * @returns {undefined}
-   */
-  search(query) {
-    if (query.length > 1) {
-      this.props.getVocabulary(this.vocabBaseUrl, query);
-    }
-  }
-
-  /**
-   * Initiate search with new query
-   * @method loadOptions
-   * @param {string} search Search query.
-   * @param {string} previousOptions The previous options rendered.
-   * @param {string} additional Additional arguments to pass to the next loadOptions.
-   * @returns {undefined}
-   */
-  loadOptions = (search, previousOptions, additional) => {
-    let hasMore = this.props.itemsTotal > previousOptions.length;
-    const offset = this.state.search !== search ? 0 : additional.offset;
-    this.setState({ search });
-
-    if (hasMore || this.state.search !== search) {
-      this.props.getVocabulary(this.vocabBaseUrl, search, offset);
-
-      return {
-        options:
-          intersection(previousOptions, this.props.choices).length ===
-          this.props.choices.length
-            ? []
-            : this.props.choices,
-        hasMore: hasMore,
-        additional: {
-          offset: offset === additional.offset ? offset + 25 : offset,
-        },
-      };
-    }
-    // We should return always an object like this, if not it complains:
-    return { options: [] };
-  };
 
   /**
    * Handle the field change, store it in the local state and back to simple
@@ -191,13 +219,17 @@ class ArrayWidget extends Component {
    * @returns {undefined}
    */
   handleChange(selectedOption) {
-    this.setState({ selectedOption });
-
     this.props.onChange(
       this.props.id,
       selectedOption ? selectedOption.map((item) => item.value) : null,
     );
   }
+
+  onSortEnd = (selectedOption, { oldIndex, newIndex }) => {
+    const newValue = arrayMove(selectedOption, oldIndex, newIndex);
+
+    this.handleChange(newValue);
+  };
 
   /**
    * Render method.
@@ -205,70 +237,90 @@ class ArrayWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { selectedOption } = this.state;
+    const choices = normalizeChoices(this.props?.choices || []);
+    const selectedOption = normalizeArrayValue(choices, this.props.value);
+
     const CreatableSelect = this.props.reactSelectCreateable.default;
-    const AsyncPaginate = this.props.reactSelectAsyncPaginate.AsyncPaginate;
+    const { SortableContainer } = this.props.reactSortableHOC;
+    const Select = this.props.reactSelect.default;
+    const SortableSelect =
+      // It will be only createable if the named vocabulary is in the widget definition
+      // (hint) like:
+      // list_field_voc_unconstrained = schema.List(
+      //     title=u"List field with values from vocabulary but not constrained to them.",
+      //     description=u"zope.schema.List",
+      //     value_type=schema.TextLine(),
+      //     required=False,
+      //     missing_value=[],
+      // )
+      // directives.widget(
+      //     "list_field_voc_unconstrained",
+      //     AjaxSelectFieldWidget,
+      //     vocabulary="plone.app.vocabularies.PortalTypes",
+      // )
+      this.props?.choices &&
+      !getVocabFromHint(this.props) &&
+      !this.props.creatable
+        ? SortableContainer(Select)
+        : SortableContainer(CreatableSelect);
 
     return (
       <FormFieldWrapper {...this.props}>
-        {!this.props.items?.choices && this.vocabBaseUrl ? (
-          <AsyncPaginate
-            isDisabled={this.props.isDisabled}
-            className="react-select-container"
-            classNamePrefix="react-select"
-            options={this.props.choices || []}
-            styles={customSelectStyles}
-            theme={selectTheme}
-            components={{ DropdownIndicator, Option }}
-            isMulti
-            value={selectedOption || []}
-            loadOptions={this.loadOptions}
-            onChange={this.handleChange}
-            additional={{
-              offset: 25,
-            }}
-            placeholder={this.props.intl.formatMessage(messages.select)}
-            noOptionsMessage={() =>
-              this.props.intl.formatMessage(messages.no_options)
-            }
-          />
-        ) : (
-          <CreatableSelect
-            className="react-select-container"
-            classNamePrefix="react-select"
-            options={
-              this.props.choices
-                ? [
-                    ...this.props.choices.map((option) => ({
-                      value: option[0],
-                      label:
-                        // Fix "None" on the serializer, to remove when fixed in p.restapi
-                        option[1] !== 'None' && option[1]
-                          ? option[1]
-                          : option[0],
-                    })),
-                    {
-                      label: this.props.intl.formatMessage(messages.no_value),
-                      value: 'no-value',
-                    },
-                  ]
-                : [
-                    {
-                      label: this.props.intl.formatMessage(messages.no_value),
-                      value: 'no-value',
-                    },
-                  ]
-            }
-            styles={customSelectStyles}
-            isDisabled={this.props.isDisabled}
-            theme={selectTheme}
-            components={{ DropdownIndicator, Option }}
-            value={selectedOption || []}
-            placeholder={this.props.intl.formatMessage(messages.select)}
-            onChange={this.handleChange}
-            isMulti
-          />
-        )}
+        <SortableSelect
+          useDragHandle
+          // react-sortable-hoc props:
+          axis="xy"
+          onSortEnd={this.onSortEnd}
+          distance={4}
+          // small fix for https://github.com/clauderic/react-sortable-hoc/pull/352:
+          getHelperDimensions={({ node }) => node.getBoundingClientRect()}
+          id={`field-${this.props.id}`}
+          key={this.props.id}
+          isDisabled={this.props.disabled || this.props.isDisabled}
+          className="react-select-container"
+          classNamePrefix="react-select"
+          options={
+            this.props.vocabBaseUrl
+              ? choices
+              : this.props.choices
+              ? [
+                  ...choices,
+                  ...(this.props.noValueOption && !this.props.default
+                    ? [
+                        {
+                          label: this.props.intl.formatMessage(
+                            messages.no_value,
+                          ),
+                          value: 'no-value',
+                        },
+                      ]
+                    : []),
+                ]
+              : [
+                  {
+                    label: this.props.intl.formatMessage(messages.no_value),
+                    value: 'no-value',
+                  },
+                ]
+          }
+          styles={customSelectStyles}
+          theme={selectTheme}
+          components={{
+            ...(this.props.choices?.length > 25 && {
+              MenuList,
+            }),
+            MultiValue: SortableMultiValue,
+            MultiValueLabel: SortableMultiValueLabel,
+            DropdownIndicator,
+            ClearIndicator,
+            Option,
+          }}
+          value={selectedOption || []}
+          placeholder={this.props.intl.formatMessage(messages.select)}
+          onChange={this.handleChange}
+          isClearable
+          isMulti
+        />
       </FormFieldWrapper>
     );
   }
@@ -278,14 +330,17 @@ export const ArrayWidgetComponent = injectIntl(ArrayWidget);
 
 export default compose(
   injectIntl,
-  injectLazyLibs(['reactSelectCreateable', 'reactSelectAsyncPaginate']),
+  injectLazyLibs(['reactSelect', 'reactSelectCreateable', 'reactSortableHOC']),
   connect(
     (state, props) => {
       const vocabBaseUrl =
         getVocabFromHint(props) ||
         getVocabFromField(props) ||
         getVocabFromItems(props);
-      const vocabState = state.vocabularies[vocabBaseUrl];
+
+      const vocabState =
+        state.vocabularies?.[vocabBaseUrl]?.subrequests?.[props.intl.locale];
+
       // If the schema already has the choices in it, then do not try to get the vocab,
       // even if there is one
       if (props.items?.choices) {
@@ -295,11 +350,10 @@ export default compose(
       } else if (vocabState) {
         return {
           choices: vocabState.items,
-          itemsTotal: vocabState.itemsTotal,
-          loading: Boolean(vocabState.loading),
+          vocabBaseUrl,
         };
       }
-      return {};
+      return { vocabBaseUrl };
     },
     { getVocabulary },
   ),

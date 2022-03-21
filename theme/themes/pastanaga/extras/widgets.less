@@ -85,6 +85,10 @@
   border: none;
 }
 
+.ui.accordion.form .objectlist-widget .accordion {
+  margin-top: 0;
+}
+
 .accordion-title-wrapper {
   display: flex;
   align-content: center;
@@ -92,7 +96,10 @@
 
 .querystring-widget {
   padding-bottom: 20px;
+}
 
+.querystring-widget,
+.query-widget {
   .simple-field-name {
     padding-top: 20px;
     padding-bottom: 10px;
@@ -126,5 +133,18 @@
 .field.inline.dictwidget {
   .ui.grid.entries-list {
     margin: 0;
+  }
+}
+
+// Fake "disabled" field for language independent fields
+// Only on Add form
+body.babel-view #page-add-translation #page-add .language-independent-field,
+body.babel-view .field.language-independent-field {
+  pointer-events: none;
+
+  input,
+  svg,
+  .ui.checkbox label:after {
+    opacity: 0.3 !important;
   }
 }

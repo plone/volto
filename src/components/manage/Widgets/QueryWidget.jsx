@@ -14,6 +14,7 @@ import { getQuerystring } from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
 import { format, parse } from 'date-fns';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import cx from 'classnames';
 
 import {
   Option,
@@ -40,11 +41,9 @@ const messages = defineMessages({
 });
 
 /**
- * QuerystringWidget component class.
- * @class QuerystringWidget
- * @extends Component
+ * Widget for a querystring value, to define a catalog search criteria.
  */
-class QuerystringWidget extends Component {
+export class QuerystringWidgetComponent extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -168,7 +167,7 @@ class QuerystringWidget extends Component {
         );
       case 'MultipleSelectionWidget':
         return (
-          <Form.Field style={{ flex: '1 0 auto', maxWidth: '93%' }}>
+          <Form.Field style={{ flex: '1 0 auto', maxWidth: '92%' }}>
             <Select
               {...props}
               className="react-select-container"
@@ -260,7 +259,7 @@ class QuerystringWidget extends Component {
         inline
         required={required}
         error={error.length > 0}
-        className={description ? 'help' : ''}
+        className={cx('query-widget', description ? 'help' : '')}
         id={`${fieldSet || 'field'}-${id}`}
       >
         <Grid>
@@ -476,4 +475,4 @@ export default compose(
     }),
     { getQuerystring },
   ),
-)(QuerystringWidget);
+)(QuerystringWidgetComponent);

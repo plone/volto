@@ -5,9 +5,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { DragSource, DropTarget } from 'react-dnd';
 import { injectIntl } from 'react-intl';
 import config from '@plone/volto/registry';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 const MODE_HIDDEN = 'hidden'; //hidden mode. If mode is hidden, field is not rendered
 /**
@@ -43,6 +43,44 @@ const getWidgetByFactory = (factory) =>
 const getWidgetByName = (widget) =>
   typeof widget === 'string'
     ? config.widgets.widget[widget] || getWidgetDefault()
+    : null;
+
+/**
+ * Get widget by tagged values
+ * @param {object} widgetOptions
+ * @returns {string} Widget component.
+ *
+
+directives.widget(
+    'fieldname',
+    frontendOptions={
+        "widget": 'specialwidget',
+        "version": 'extra'
+    })
+
+ */
+const getWidgetFromTaggedValues = (widgetOptions) =>
+  typeof widgetOptions?.frontendOptions?.widget === 'string'
+    ? config.widgets.widget[widgetOptions.frontendOptions.widget]
+    : null;
+
+/**
+ * Get widget props from tagged values
+ * @param {object} widgetOptions
+ * @returns {string} Widget component.
+ *
+
+directives.widget(
+    "fieldname",
+    frontendOptions={
+        "widget": "specialwidget",
+        "widgetProps": {"prop1": "specialprop"}
+    })
+
+ */
+const getWidgetPropsFromTaggedValues = (widgetOptions) =>
+  typeof widgetOptions?.frontendOptions?.widgetProps === 'object'
+    ? widgetOptions.frontendOptions.widgetProps
     : null;
 
 /**
@@ -112,9 +150,10 @@ const getWidgetByType = (type) => config.widgets.type[type] || null;
  * @param {Object} props Properties.
  * @returns {string} Markup of the component.
  */
-const Field = (props, { intl }) => {
+const UnconnectedField = (props, { intl }) => {
   const Widget =
     getWidgetByFieldId(props.id) ||
+    getWidgetFromTaggedValues(props.widgetOptions) ||
     getWidgetByName(props.widget) ||
     getWidgetByChoices(props) ||
     getWidgetByVocabulary(props.vocabulary) ||
@@ -127,7 +166,14 @@ const Field = (props, { intl }) => {
     return null;
   }
 
+  // Adding the widget props from tagged values (if any)
+  const widgetProps = {
+    ...props,
+    ...getWidgetPropsFromTaggedValues(props.widgetOptions),
+  };
+
   if (props.onOrder) {
+    const { DropTarget, DragSource } = props.reactDnd;
     const WrappedWidget = DropTarget(
       'field',
       {
@@ -180,10 +226,19 @@ const Field = (props, { intl }) => {
           ),
       ),
     );
-    return <WrappedWidget {...props} />;
+    return <WrappedWidget {...widgetProps} />;
   }
-  return <Widget {...props} />;
+  return <Widget {...widgetProps} />;
 };
+
+const DndConnectedField = injectLazyLibs(['reactDnd'])(UnconnectedField);
+
+const Field = (props) =>
+  props.onOrder ? (
+    <DndConnectedField {...props} />
+  ) : (
+    <UnconnectedField {...props} />
+  );
 
 /**
  * Property types.

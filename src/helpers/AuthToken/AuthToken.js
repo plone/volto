@@ -3,19 +3,20 @@
  * @module helpers/AuthToken
  */
 
-import cookie from 'react-cookie';
+import Cookies from 'universal-cookie';
 import jwtDecode from 'jwt-decode';
 
 import { loginRenew } from '@plone/volto/actions';
 import { push } from 'connected-react-router';
 
 /**
- * Get auth token method.
+ * Get auth token method (does not work in SSR)
  * @method getAuthToken
  * @returns {undefined}
  */
 export function getAuthToken() {
-  return cookie.load('auth_token');
+  const cookies = new Cookies();
+  return cookies.get('auth_token');
 }
 
 /**
@@ -24,8 +25,15 @@ export function getAuthToken() {
  * @param {object} store Redux store.
  * @returns {undefined}
  */
-export function persistAuthToken(store) {
-  let currentValue = getAuthToken();
+export function persistAuthToken(store, req) {
+  const cookies = new Cookies();
+  let currentValue;
+  if (req) {
+    // We are in SSR
+    currentValue = req.universalCookies.get('auth_token');
+  } else {
+    currentValue = cookies.get('auth_token');
+  }
 
   /**
    * handleChange method.
@@ -50,13 +58,15 @@ export function persistAuthToken(store) {
     if (previousValue !== currentValue || initial) {
       if (!currentValue) {
         if (previousValue) {
-          cookie.remove('auth_token', { path: '/' });
+          cookies.remove('auth_token', { path: '/' });
         }
       } else {
-        cookie.save('auth_token', currentValue, {
-          path: '/',
-          expires: new Date(jwtDecode(currentValue).exp * 1000),
-        });
+        if (previousValue !== currentValue) {
+          cookies.set('auth_token', currentValue, {
+            path: '/',
+            expires: new Date(jwtDecode(currentValue).exp * 1000),
+          });
+        }
         const exp =
           (jwtDecode(store.getState().userSession.token).exp * 1000 -
             new Date().getTime()) *
