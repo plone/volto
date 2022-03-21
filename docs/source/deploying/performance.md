@@ -1,9 +1,9 @@
 ---
 html_meta:
-  "description": "How to improve initial page load performance of above-the-fold content with critical.css."
-  "property=og:description": "How to improve initial page load performance of above-the-fold content with critical.css."
-  "property=og:title": "critical.css (above the fold) optimizations"
-  "keywords": "Volto, Plone, frontend, React, critical.css, optimizations"
+  'description': 'How to improve performance of applications built around Volto stack'
+  'property=og:description': 'How to improve performance of applications built around Volto stack'
+  'property=og:title': 'Performance'
+  'keywords': 'Volto, Plone, frontend, React, optimizations'
 ---
 
 # critical.css (above the fold) optimizations
@@ -61,11 +61,11 @@ want to implement this type of scenario, look at
 [Penthouse](https://github.com/pocketjoso/penthouse) and override the
 `settings.serverConfig.readCriticalCss` function with your own implementation.
 
-# caching webpack assets and prefetch using a service worker
+# Caching webpack assets and prefetch using a service worker
 
-In production environments sometimes we get this nasty "ChunkLoadError" or "Failed to load chunk". This error originates when a chunk changed its name based on the content and when a browser requests it, the old chunk would not be there.
+In production environments, sometimes we get error messages "ChunkLoadError" or "Failed to load chunk". This error originates when a chunk changed its name based on the content and when a browser requests it, and the old chunk would not be there.
 
-The idea is to cache chunknames using a worker and let the user to load it from `cache first` to avoid the error.
+The idea is to cache chunk names using a worker and let the user load it from `cache first` to avoid the error.
 
-Volto uses [offline-plugin](https://github.com/NekR/offline-plugin) which is a webpack plugin to provide PWA support for projects.
-It creates a `sw.js`(by default) service worker file on the build time, which have all webpack assets output as minified.
+Volto uses [offline-plugin](https://github.com/NekR/offline-plugin), which is a webpack plugin to provide PWA support for projects.
+It creates a service worker file with the default name of `sw.js` at build time, which contains all webpack cached assets.
