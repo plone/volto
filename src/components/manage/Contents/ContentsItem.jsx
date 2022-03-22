@@ -4,13 +4,13 @@
  */
 
 import React from 'react';
-import { Button, Dropdown, Table } from 'semantic-ui-react';
+import { Button, Dropdown, Table, Menu, Divider } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import { useIntl, defineMessages, FormattedMessage } from 'react-intl';
 import { Circle, FormattedDate, Icon } from '@plone/volto/components';
-import { getContentIcon } from '@plone/volto/helpers';
+import { Popup, getContentIcon } from '@plone/volto/helpers';
 import moreSVG from '@plone/volto/icons/more.svg';
 import checkboxUncheckedSVG from '@plone/volto/icons/checkbox-unchecked.svg';
 import checkboxCheckedSVG from '@plone/volto/icons/checkbox-checked.svg';
@@ -207,69 +207,87 @@ export const ContentsItemComponent = ({
           className={cx('', { 'dragging-cell': isDragging })}
           textAlign="right"
         >
-          <Dropdown
-            className="row-actions"
-            icon={<Icon name={moreSVG} size="24px" color="#007eb1" />}
-          >
-            <Dropdown.Menu className="left">
-              <Link className="item icon-align" to={`${item['@id']}/edit`}>
-                <Icon name={editingSVG} color="#007eb1" size="24px" />{' '}
-                <FormattedMessage id="Edit" defaultMessage="Edit" />
-              </Link>
-              <Link className="item right-dropdown icon-align" to={item['@id']}>
-                <Icon name={showSVG} color="#007eb1" size="24px" />{' '}
-                <FormattedMessage id="View" defaultMessage="View" />
-              </Link>
-              <Dropdown.Divider />
-              <Dropdown.Item
-                onClick={onCut}
-                value={item['@id']}
-                className="right-dropdown icon-align"
-              >
-                <Icon name={cutSVG} color="#007eb1" size="24px" />{' '}
-                <FormattedMessage id="Cut" defaultMessage="Cut" />
-              </Dropdown.Item>
-              <Dropdown.Item
-                onClick={onCopy}
-                value={item['@id']}
-                className="right-dropdown icon-align"
-              >
-                <Icon name={copySVG} color="#007eb1" size="24px" />{' '}
-                <FormattedMessage id="Copy" defaultMessage="Copy" />
-              </Dropdown.Item>
-              <Dropdown.Item
-                onClick={onDelete}
-                value={item['@id']}
-                className="right-dropdown icon-align"
-              >
-                <Icon name={deleteSVG} color="#e40166" size="24px" />{' '}
-                <FormattedMessage id="Delete" defaultMessage="Delete" />
-              </Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item
-                onClick={onMoveToTop}
-                value={order}
-                className="right-dropdown icon-align"
-              >
-                <Icon name={moveUpSVG} color="#007eb1" size="24px" />{' '}
-                <FormattedMessage
-                  id="Move to top of folder"
-                  defaultMessage="Move to top of folder"
-                />
-              </Dropdown.Item>
-              <Dropdown.Item
-                onClick={onMoveToBottom}
-                value={order}
-                className="right-dropdown icon-align"
-              >
-                <Icon name={moveDownSVG} color="#007eb1" size="24px" />{' '}
-                <FormattedMessage
-                  id="Move to bottom of folder"
-                  defaultMessage="Move to bottom of folder"
-                />
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+          <Popup
+            content={
+              <Menu vertical borderless fluid>
+                <Link className="item icon-align" to={`${item['@id']}/edit`}>
+                  <Icon name={editingSVG} color="#007eb1" size="24px" />{' '}
+                  <FormattedMessage id="Edit" defaultMessage="Edit" />
+                </Link>
+                <Link
+                  className="item right-dropdown icon-align"
+                  to={item['@id']}
+                >
+                  <Icon name={showSVG} color="#007eb1" size="24px" />{' '}
+                  <FormattedMessage id="View" defaultMessage="View" />
+                </Link>
+                <Divider />
+                <Menu.Item
+                  onClick={onCut}
+                  value={item['@id']}
+                  className="right-dropdown icon-align"
+                >
+                  <Icon name={cutSVG} color="#007eb1" size="24px" />{' '}
+                  <FormattedMessage id="Cut" defaultMessage="Cut" />
+                </Menu.Item>
+                <Menu.Item
+                  onClick={onCopy}
+                  value={item['@id']}
+                  className="right-dropdown icon-align"
+                >
+                  <Icon name={copySVG} color="#007eb1" size="24px" />{' '}
+                  <FormattedMessage id="Copy" defaultMessage="Copy" />
+                </Menu.Item>
+                <Menu.Item
+                  onClick={onDelete}
+                  value={item['@id']}
+                  className="right-dropdown icon-align"
+                >
+                  <Icon name={deleteSVG} color="#e40166" size="24px" />{' '}
+                  <FormattedMessage id="Delete" defaultMessage="Delete" />
+                </Menu.Item>
+                <Divider />
+                <Menu.Item
+                  onClick={onMoveToTop}
+                  value={order}
+                  className="right-dropdown icon-align"
+                >
+                  <Icon name={moveUpSVG} color="#007eb1" size="24px" />{' '}
+                  <FormattedMessage
+                    id="Move to top of folder"
+                    defaultMessage="Move to top of folder"
+                  />
+                </Menu.Item>
+                <Menu.Item
+                  onClick={onMoveToBottom}
+                  value={order}
+                  className="right-dropdown icon-align"
+                >
+                  <Icon name={moveDownSVG} color="#007eb1" size="24px" />{' '}
+                  <FormattedMessage
+                    id="Move to bottom of folder"
+                    defaultMessage="Move to bottom of folder"
+                  />
+                </Menu.Item>
+              </Menu>
+            }
+            menu={true}
+            position="bottom right"
+            flowing={true}
+            basic={true}
+            on="click"
+            popper={{
+              className: 'dropdown-popup',
+            }}
+            trigger={
+              <Icon
+                name={moreSVG}
+                className="dropdown-popup-trigger"
+                size="24px"
+                color="#007eb1"
+              />
+            }
+          />
         </Table.Cell>
       </tr>,
     ),

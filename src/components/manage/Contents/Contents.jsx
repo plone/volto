@@ -13,6 +13,7 @@ import {
   Button,
   Confirm,
   Container,
+  Divider,
   Dropdown,
   Menu,
   Input,
@@ -58,14 +59,13 @@ import {
   ContentsTagsModal,
   ContentsPropertiesModal,
   Pagination,
-  Popup,
   Toolbar,
   Toast,
   Icon,
   Unauthorized,
 } from '@plone/volto/components';
 
-import { Helmet, getBaseUrl } from '@plone/volto/helpers';
+import { Popup, Helmet, getBaseUrl } from '@plone/volto/helpers';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import backSVG from '@plone/volto/icons/back.svg';
@@ -1494,9 +1494,85 @@ class Contents extends Component {
                           <Table.Header>
                             <Table.Row>
                               <Table.HeaderCell>
+                                <Dropdown
+                                  item
+                                  upward={false}
+                                  className="sort-icon"
+                                  aria-label={this.props.intl.formatMessage(
+                                    messages.sort,
+                                  )}
+                                  icon={
+                                    <Icon
+                                      name={configurationSVG}
+                                      size="24px"
+                                      color="#826a6a"
+                                      className="configuration-svg"
+                                    />
+                                  }
+                                >
+                                  <Dropdown.Menu>
+                                    <Dropdown.Header
+                                      content={this.props.intl.formatMessage(
+                                        messages.rearrangeBy,
+                                      )}
+                                    />
+                                    {map(
+                                      [
+                                        'id',
+                                        'sortable_title',
+                                        'EffectiveDate',
+                                        'CreationDate',
+                                        'ModificationDate',
+                                        'portal_type',
+                                      ],
+                                      (index) => (
+                                        <Dropdown.Item
+                                          key={index}
+                                          className={`sort_${index} icon-align`}
+                                        >
+                                          <Icon name={downKeySVG} size="24px" />
+                                          <FormattedMessage
+                                            id={Indexes[index].label}
+                                          />
+                                          <Dropdown.Menu>
+                                            <Dropdown.Item
+                                              onClick={this.onSortItems}
+                                              value={`${Indexes[index].sort_on}|ascending`}
+                                              className={`sort_${Indexes[index].sort_on}_ascending icon-align`}
+                                            >
+                                              <Icon
+                                                name={sortDownSVG}
+                                                size="24px"
+                                              />{' '}
+                                              <FormattedMessage
+                                                id="Ascending"
+                                                defaultMessage="Ascending"
+                                              />
+                                            </Dropdown.Item>
+                                            <Dropdown.Item
+                                              onClick={this.onSortItems}
+                                              value={`${Indexes[index].sort_on}|descending`}
+                                              className={`sort_${Indexes[index].sort_on}_descending icon-align`}
+                                            >
+                                              <Icon
+                                                name={sortUpSVG}
+                                                size="24px"
+                                              />{' '}
+                                              <FormattedMessage
+                                                id="Descending"
+                                                defaultMessage="Descending"
+                                              />
+                                            </Dropdown.Item>
+                                          </Dropdown.Menu>
+                                        </Dropdown.Item>
+                                      ),
+                                    )}
+                                  </Dropdown.Menu>
+                                </Dropdown>
+
                                 <Popup
                                   content={
-                                    <Menu vertical borderless fluid secondary>
+                                    <Menu vertical borderless fluid>
                                       <Menu.Header
                                         content={this.props.intl.formatMessage(
                                           messages.rearrangeBy,
@@ -1563,6 +1639,7 @@ class Contents extends Component {
                                     </Menu>
                                   }
                                   menu={true}
+                                  position="bottom left"
                                   flowing={true}
                                   basic={true}
                                   on="click"
@@ -1574,7 +1651,7 @@ class Contents extends Component {
                                       name={configurationSVG}
                                       size="24px"
                                       color="#826a6a"
-                                      className="configuration-svg"
+                                      className="dropdown-popup-trigger configuration-svg"
                                     />
                                   }
                                 />
@@ -1669,7 +1746,7 @@ class Contents extends Component {
                                 </Dropdown>
                                 <Popup
                                   content={
-                                    <Menu vertical borderless fluid secondary>
+                                    <Menu vertical borderless fluid>
                                       <Menu.Header
                                         content={this.props.intl.formatMessage(
                                           messages.select,
@@ -1696,6 +1773,7 @@ class Contents extends Component {
                                           defaultMessage="None"
                                         />
                                       </Menu.Item>
+                                      <Divider />
                                       <Menu.Header
                                         content={this.props.intl.formatMessage(
                                           messages.selected,
@@ -1707,7 +1785,7 @@ class Contents extends Component {
                                           <Icon name={zoomSVG} size="24px" />
                                         }
                                         iconPosition="left"
-                                        className="search"
+                                        className="item search"
                                         placeholder={this.props.intl.formatMessage(
                                           messages.filter,
                                         )}
@@ -1717,9 +1795,26 @@ class Contents extends Component {
                                           e.stopPropagation();
                                         }}
                                       />
+                                      <Menu.Menu scrolling>
+                                        {map(filteredItems, (item) => (
+                                          <Menu.Item
+                                            key={item}
+                                            value={item}
+                                            onClick={this.onDeselect}
+                                          >
+                                            <Icon
+                                              name={deleteSVG}
+                                              color="#e40166"
+                                              size="24px"
+                                            />{' '}
+                                            {this.getFieldById(item, 'title')}
+                                          </Menu.Item>
+                                        ))}
+                                      </Menu.Menu>
                                     </Menu>
                                   }
                                   menu={true}
+                                  position="bottom left"
                                   flowing={true}
                                   basic={true}
                                   on="click"
@@ -1741,6 +1836,7 @@ class Contents extends Component {
                                           ? '#007eb1'
                                           : '#826a6a'
                                       }
+                                      className="dropdown-popup-trigger"
                                       size="24px"
                                     />
                                   }
