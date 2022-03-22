@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { Button, Dropdown, Table, Menu, Divider } from 'semantic-ui-react';
+import { Button, Table, Menu, Divider } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { map } from 'lodash';

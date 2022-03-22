@@ -1508,6 +1508,24 @@ exports[`Contents renders a folder contents view component 1`] = `
                           </div>
                         </div>
                       </div>
+                      <svg
+                        className="icon dropdown-popup-trigger configuration-svg"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={[Function]}
+                        style={
+                          Object {
+                            "fill": "#826a6a",
+                            "height": "24px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
                     </th>
                     <th
                       className=""
@@ -1643,6 +1661,24 @@ exports[`Contents renders a folder contents view component 1`] = `
                           />
                         </div>
                       </div>
+                      <svg
+                        className="icon dropdown-popup-trigger"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={[Function]}
+                        style={
+                          Object {
+                            "fill": "#826a6a",
+                            "height": "24px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
                     </th>
                     <th
                       className="four wide"
