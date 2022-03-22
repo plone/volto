@@ -18,6 +18,7 @@ import {
   initialBlocks,
   initialBlocksFocus,
 } from './Blocks';
+import { components } from './Components';
 import { loadables } from './Loadables';
 
 import { sentryOptions } from './Sentry';
@@ -26,7 +27,7 @@ import { controlPanelsIcons } from './ControlPanels';
 
 import { richtextEditorSettings, richtextViewSettings } from './RichTextEditor';
 
-import applyAddonConfiguration from 'load-volto-addons';
+import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
 
 import ConfigRegistry from '@plone/volto/registry';
 
@@ -157,6 +158,7 @@ let config = {
     contentMetadataTagsImageField: 'image',
     hasWorkingCopySupport: false,
     maxUndoLevels: 200, // undo history size for the main form
+    addonsInfo: addonsInfo,
   },
   widgets: {
     ...widgetMapping,
@@ -178,6 +180,7 @@ let config = {
   },
   addonRoutes: [],
   addonReducers: {},
+  components,
 };
 
 config = applyAddonConfiguration(config);
