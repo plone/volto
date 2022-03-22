@@ -1,6 +1,6 @@
 # Change Log
 
-## 15.2.1 (unreleased)
+## 15.2.2 (unreleased)
 
 ### Breaking
 
@@ -11,6 +11,19 @@
 ### Internal
 
 ### Documentation
+
+## 15.2.1 (2022-03-21)
+
+### Bugfix
+
+- `Manage translations` view error on seamless mode, `flattenToAppURL` missing. @sneridagh
+
+### Documentation
+
+- Reenable `make docs-linkcheckbroken`. @stevepiercy
+- Add html_meta values to add-on best practices, s/addon/add-on. @stevepiercy
+- Netlify now only builds on changes to the `./docs/` directory. @stevepiercy
+- Replace deprecated `egrep` with `grep` in `make docs-linkcheckbroken`. @stevepiercy
 
 ## 15.2.0 (2022-03-18)
 
