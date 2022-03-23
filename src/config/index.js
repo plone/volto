@@ -31,11 +31,13 @@ import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
 
 import ConfigRegistry from '@plone/volto/registry';
 
-const host = process.env.HOST || 'localhost';
-const port = process.env.PORT || '3000';
+const clientEnv = (typeof window !== 'undefined' ? window : process).env;
+
+const host = clientEnv.HOST || 'localhost';
+const port = clientEnv.PORT || '3000';
 
 const apiPath =
-  process.env.RAZZLE_API_PATH ||
+  clientEnv.RAZZLE_API_PATH ||
   (__DEVELOPMENT__ ? `http://${host}:${port}` : '');
 
 const getServerURL = (url) => {
@@ -52,10 +54,10 @@ const getServerURL = (url) => {
 // if in PROD, assume it's RAZZLE_API_PATH server name (no /api or alikes) or fallback
 // to DEV settings if RAZZLE_API_PATH is not present
 const publicURL =
-  process.env.RAZZLE_PUBLIC_URL ||
+  clientEnv.RAZZLE_PUBLIC_URL ||
   (__DEVELOPMENT__
     ? `http://${host}:${port}`
-    : getServerURL(process.env.RAZZLE_API_PATH) || `http://${host}:${port}`);
+    : getServerURL(clientEnv.RAZZLE_API_PATH) || `http://${host}:${port}`);
 
 const serverConfig =
   typeof __SERVER__ !== 'undefined' && __SERVER__
@@ -75,21 +77,21 @@ let config = {
     // front of both the frontend and the backend so you can bypass CORS safely.
     // https://docs.voltocms.com/deploying/seamless-mode/
     devProxyToApiPath:
-      process.env.RAZZLE_DEV_PROXY_API_PATH ||
-      process.env.RAZZLE_API_PATH ||
+      clientEnv.RAZZLE_DEV_PROXY_API_PATH ||
+      clientEnv.RAZZLE_API_PATH ||
       'http://localhost:8080/Plone', // Set it to '' for disabling the proxy
     // proxyRewriteTarget Set it for set a custom target for the proxy or overide the internal VHM rewrite
     // proxyRewriteTarget: '/VirtualHostBase/http/localhost:8080/Plone/VirtualHostRoot/_vh_api'
     // proxyRewriteTarget: 'https://myvoltositeinproduction.com'
-    proxyRewriteTarget: process.env.RAZZLE_PROXY_REWRITE_TARGET || undefined,
-    // apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8000/Plone', // for Volto reference
-    // apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8081/db/web', // for guillotina
+    proxyRewriteTarget: clientEnv.RAZZLE_PROXY_REWRITE_TARGET || undefined,
+    // apiPath: clientEnv.RAZZLE_API_PATH || 'http://localhost:8000/Plone', // for Volto reference
+    // apiPath: clientEnv.RAZZLE_API_PATH || 'http://localhost:8081/db/web', // for guillotina
     actions_raising_api_errors: ['GET_CONTENT', 'UPDATE_CONTENT'],
-    internalApiPath: process.env.RAZZLE_INTERNAL_API_PATH || undefined,
-    prefixPath: process.env.RAZZLE_PREFIX_PATH || undefined,
-    websockets: process.env.RAZZLE_WEBSOCKETS || false,
+    internalApiPath: clientEnv.RAZZLE_INTERNAL_API_PATH || undefined,
+    prefixPath: clientEnv.RAZZLE_PREFIX_PATH || undefined,
+    websockets: clientEnv.RAZZLE_WEBSOCKETS || false,
     // TODO: legacyTraverse to be removed when the use of the legacy traverse is deprecated.
-    legacyTraverse: process.env.RAZZLE_LEGACY_TRAVERSE || false,
+    legacyTraverse: clientEnv.RAZZLE_LEGACY_TRAVERSE || false,
     cookieExpires: 15552000, //in seconds. Default is 6 month (15552000)
     nonContentRoutes,
     richtextEditorSettings,
