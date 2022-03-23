@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix external url  append issue of @@download/file @iRohitSingh
+
 ### Internal
 
 ### Documentation
