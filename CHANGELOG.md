@@ -37,6 +37,8 @@
 
 - Fix addon registry regression @sneridagh
 - Fix `Bosnian` language @avoinea
+- Fix headers in sitemap middleware when errors occur in the sitemap generation @mamico
+- Fix use `settings.internalApiPath` in sitemap genaration @mamico
 
 ### Documentation
 
