@@ -73,11 +73,17 @@ export default function () {
     },
     pathRewrite: (path, req) => {
       const { apiPathURL, instancePath } = getEnv();
+      const { proxyRewriteTarget, prefixPath } = config.settings;
       const target =
-        config.settings.proxyRewriteTarget ||
+        proxyRewriteTarget ||
         `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/++api++/VirtualHostRoot`;
 
-      return `${target}${path.replace('/++api++', '')}`;
+      const p = `${target}${path
+        .replace('/++api++', '')
+        .replace(prefixPath, `_vh_${prefixPath}`)}`;
+
+      console.log('path rewrite', { p, path, prefixPath });
+      return p;
     },
     logLevel: process.env.DEBUG_HPM ? 'debug' : 'silent',
     ...(config.settings?.proxyRewriteTarget?.startsWith('https') && {
