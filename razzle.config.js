@@ -279,6 +279,15 @@ const defaultModify = ({
           }),
         ]
       : [];
+
+  const relativePath = process.env.RAZZLE_PREFIX_PATH || '';
+
+  if (target === 'web' && dev) {
+    config.devServer.publicPath = `/${relativePath}`;
+  }
+  config.output.publicPath = `${config.output.publicPath}${relativePath || ''}`;
+
+  console.log(config);
   return config;
 };
 
