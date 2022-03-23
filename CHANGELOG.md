@@ -1,6 +1,6 @@
 # Change Log
 
-## 15.2.2 (unreleased)
+## 15.2.2 (2022-03-23)
 
 ### Bugfix
 
