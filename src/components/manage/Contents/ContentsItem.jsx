@@ -208,69 +208,6 @@ export const ContentsItemComponent = ({
           textAlign="right"
         >
           <Popup
-            content={
-              <Menu vertical borderless fluid>
-                <Link className="item icon-align" to={`${item['@id']}/edit`}>
-                  <Icon name={editingSVG} color="#007eb1" size="24px" />{' '}
-                  <FormattedMessage id="Edit" defaultMessage="Edit" />
-                </Link>
-                <Link
-                  className="item right-dropdown icon-align"
-                  to={item['@id']}
-                >
-                  <Icon name={showSVG} color="#007eb1" size="24px" />{' '}
-                  <FormattedMessage id="View" defaultMessage="View" />
-                </Link>
-                <Divider />
-                <Menu.Item
-                  onClick={onCut}
-                  value={item['@id']}
-                  className="right-dropdown icon-align"
-                >
-                  <Icon name={cutSVG} color="#007eb1" size="24px" />{' '}
-                  <FormattedMessage id="Cut" defaultMessage="Cut" />
-                </Menu.Item>
-                <Menu.Item
-                  onClick={onCopy}
-                  value={item['@id']}
-                  className="right-dropdown icon-align"
-                >
-                  <Icon name={copySVG} color="#007eb1" size="24px" />{' '}
-                  <FormattedMessage id="Copy" defaultMessage="Copy" />
-                </Menu.Item>
-                <Menu.Item
-                  onClick={onDelete}
-                  value={item['@id']}
-                  className="right-dropdown icon-align"
-                >
-                  <Icon name={deleteSVG} color="#e40166" size="24px" />{' '}
-                  <FormattedMessage id="Delete" defaultMessage="Delete" />
-                </Menu.Item>
-                <Divider />
-                <Menu.Item
-                  onClick={onMoveToTop}
-                  value={order}
-                  className="right-dropdown icon-align"
-                >
-                  <Icon name={moveUpSVG} color="#007eb1" size="24px" />{' '}
-                  <FormattedMessage
-                    id="Move to top of folder"
-                    defaultMessage="Move to top of folder"
-                  />
-                </Menu.Item>
-                <Menu.Item
-                  onClick={onMoveToBottom}
-                  value={order}
-                  className="right-dropdown icon-align"
-                >
-                  <Icon name={moveDownSVG} color="#007eb1" size="24px" />{' '}
-                  <FormattedMessage
-                    id="Move to bottom of folder"
-                    defaultMessage="Move to bottom of folder"
-                  />
-                </Menu.Item>
-              </Menu>
-            }
             menu={true}
             position="bottom right"
             flowing={true}
@@ -287,7 +224,66 @@ export const ContentsItemComponent = ({
                 color="#007eb1"
               />
             }
-          />
+          >
+            <Menu vertical borderless fluid>
+              <Link className="item icon-align" to={`${item['@id']}/edit`}>
+                <Icon name={editingSVG} color="#007eb1" size="24px" />{' '}
+                <FormattedMessage id="Edit" defaultMessage="Edit" />
+              </Link>
+              <Link className="item right-dropdown icon-align" to={item['@id']}>
+                <Icon name={showSVG} color="#007eb1" size="24px" />{' '}
+                <FormattedMessage id="View" defaultMessage="View" />
+              </Link>
+              <Divider />
+              <Menu.Item
+                onClick={onCut}
+                value={item['@id']}
+                className="right-dropdown icon-align"
+              >
+                <Icon name={cutSVG} color="#007eb1" size="24px" />{' '}
+                <FormattedMessage id="Cut" defaultMessage="Cut" />
+              </Menu.Item>
+              <Menu.Item
+                onClick={onCopy}
+                value={item['@id']}
+                className="right-dropdown icon-align"
+              >
+                <Icon name={copySVG} color="#007eb1" size="24px" />{' '}
+                <FormattedMessage id="Copy" defaultMessage="Copy" />
+              </Menu.Item>
+              <Menu.Item
+                onClick={onDelete}
+                value={item['@id']}
+                className="right-dropdown icon-align"
+              >
+                <Icon name={deleteSVG} color="#e40166" size="24px" />{' '}
+                <FormattedMessage id="Delete" defaultMessage="Delete" />
+              </Menu.Item>
+              <Divider />
+              <Menu.Item
+                onClick={onMoveToTop}
+                value={order}
+                className="right-dropdown icon-align"
+              >
+                <Icon name={moveUpSVG} color="#007eb1" size="24px" />{' '}
+                <FormattedMessage
+                  id="Move to top of folder"
+                  defaultMessage="Move to top of folder"
+                />
+              </Menu.Item>
+              <Menu.Item
+                onClick={onMoveToBottom}
+                value={order}
+                className="right-dropdown icon-align"
+              >
+                <Icon name={moveDownSVG} color="#007eb1" size="24px" />{' '}
+                <FormattedMessage
+                  id="Move to bottom of folder"
+                  defaultMessage="Move to bottom of folder"
+                />
+              </Menu.Item>
+            </Menu>
+          </Popup>
         </Table.Cell>
       </tr>,
     ),

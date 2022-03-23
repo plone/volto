@@ -1495,74 +1495,6 @@ class Contents extends Component {
                             <Table.Row>
                               <Table.HeaderCell>
                                 <Popup
-                                  content={
-                                    <Menu vertical borderless fluid>
-                                      <Menu.Header
-                                        content={this.props.intl.formatMessage(
-                                          messages.rearrangeBy,
-                                        )}
-                                      />
-                                      {map(
-                                        [
-                                          'id',
-                                          'sortable_title',
-                                          'EffectiveDate',
-                                          'CreationDate',
-                                          'ModificationDate',
-                                          'portal_type',
-                                        ],
-                                        (index) => (
-                                          <Dropdown
-                                            key={index}
-                                            item
-                                            simple
-                                            className={`sort_${index} icon-align`}
-                                            icon={
-                                              <Icon
-                                                name={downKeySVG}
-                                                size="24px"
-                                                className="left"
-                                              />
-                                            }
-                                            text={this.props.intl.formatMessage(
-                                              { id: Indexes[index].label },
-                                            )}
-                                          >
-                                            <Dropdown.Menu>
-                                              <Dropdown.Item
-                                                onClick={this.onSortItems}
-                                                value={`${Indexes[index].sort_on}|ascending`}
-                                                className={`sort_${Indexes[index].sort_on}_ascending icon-align`}
-                                              >
-                                                <Icon
-                                                  name={sortDownSVG}
-                                                  size="24px"
-                                                />{' '}
-                                                <FormattedMessage
-                                                  id="Ascending"
-                                                  defaultMessage="Ascending"
-                                                />
-                                              </Dropdown.Item>
-                                              <Dropdown.Item
-                                                onClick={this.onSortItems}
-                                                value={`${Indexes[index].sort_on}|descending`}
-                                                className={`sort_${Indexes[index].sort_on}_descending icon-align`}
-                                              >
-                                                <Icon
-                                                  name={sortUpSVG}
-                                                  size="24px"
-                                                />{' '}
-                                                <FormattedMessage
-                                                  id="Descending"
-                                                  defaultMessage="Descending"
-                                                />
-                                              </Dropdown.Item>
-                                            </Dropdown.Menu>
-                                          </Dropdown>
-                                        ),
-                                      )}
-                                    </Menu>
-                                  }
                                   menu={true}
                                   position="bottom left"
                                   flowing={true}
@@ -1579,78 +1511,77 @@ class Contents extends Component {
                                       className="dropdown-popup-trigger configuration-svg"
                                     />
                                   }
-                                />
+                                >
+                                  <Menu vertical borderless fluid>
+                                    <Menu.Header
+                                      content={this.props.intl.formatMessage(
+                                        messages.rearrangeBy,
+                                      )}
+                                    />
+                                    {map(
+                                      [
+                                        'id',
+                                        'sortable_title',
+                                        'EffectiveDate',
+                                        'CreationDate',
+                                        'ModificationDate',
+                                        'portal_type',
+                                      ],
+                                      (index) => (
+                                        <Dropdown
+                                          key={index}
+                                          item
+                                          simple
+                                          className={`sort_${index} icon-align`}
+                                          icon={
+                                            <Icon
+                                              name={downKeySVG}
+                                              size="24px"
+                                              className="left"
+                                            />
+                                          }
+                                          text={this.props.intl.formatMessage({
+                                            id: Indexes[index].label,
+                                          })}
+                                        >
+                                          <Dropdown.Menu>
+                                            <Dropdown.Item
+                                              onClick={this.onSortItems}
+                                              value={`${Indexes[index].sort_on}|ascending`}
+                                              className={`sort_${Indexes[index].sort_on}_ascending icon-align`}
+                                            >
+                                              <Icon
+                                                name={sortDownSVG}
+                                                size="24px"
+                                              />{' '}
+                                              <FormattedMessage
+                                                id="Ascending"
+                                                defaultMessage="Ascending"
+                                              />
+                                            </Dropdown.Item>
+                                            <Dropdown.Item
+                                              onClick={this.onSortItems}
+                                              value={`${Indexes[index].sort_on}|descending`}
+                                              className={`sort_${Indexes[index].sort_on}_descending icon-align`}
+                                            >
+                                              <Icon
+                                                name={sortUpSVG}
+                                                size="24px"
+                                              />{' '}
+                                              <FormattedMessage
+                                                id="Descending"
+                                                defaultMessage="Descending"
+                                              />
+                                            </Dropdown.Item>
+                                          </Dropdown.Menu>
+                                        </Dropdown>
+                                      ),
+                                    )}
+                                  </Menu>
+                                </Popup>
                               </Table.HeaderCell>
                               <Table.HeaderCell>
                                 <Popup
-                                  content={
-                                    <Menu vertical borderless fluid>
-                                      <Menu.Header
-                                        content={this.props.intl.formatMessage(
-                                          messages.select,
-                                        )}
-                                      />
-                                      <Menu.Item onClick={this.onSelectAll}>
-                                        <Icon
-                                          name={checkboxCheckedSVG}
-                                          color="#007eb1"
-                                          size="24px"
-                                        />{' '}
-                                        <FormattedMessage
-                                          id="All"
-                                          defaultMessage="All"
-                                        />
-                                      </Menu.Item>
-                                      <Menu.Item onClick={this.onSelectNone}>
-                                        <Icon
-                                          name={checkboxUncheckedSVG}
-                                          size="24px"
-                                        />{' '}
-                                        <FormattedMessage
-                                          id="None"
-                                          defaultMessage="None"
-                                        />
-                                      </Menu.Item>
-                                      <Divider />
-                                      <Menu.Header
-                                        content={this.props.intl.formatMessage(
-                                          messages.selected,
-                                          { count: this.state.selected.length },
-                                        )}
-                                      />
-                                      <Input
-                                        icon={
-                                          <Icon name={zoomSVG} size="24px" />
-                                        }
-                                        iconPosition="left"
-                                        className="item search"
-                                        placeholder={this.props.intl.formatMessage(
-                                          messages.filter,
-                                        )}
-                                        onChange={this.onChangeSelected}
-                                        onClick={(e) => {
-                                          e.preventDefault();
-                                          e.stopPropagation();
-                                        }}
-                                      />
-                                      <Menu.Menu scrolling>
-                                        {map(filteredItems, (item) => (
-                                          <Menu.Item
-                                            key={item}
-                                            value={item}
-                                            onClick={this.onDeselect}
-                                          >
-                                            <Icon
-                                              name={deleteSVG}
-                                              color="#e40166"
-                                              size="24px"
-                                            />{' '}
-                                            {this.getFieldById(item, 'title')}
-                                          </Menu.Item>
-                                        ))}
-                                      </Menu.Menu>
-                                    </Menu>
-                                  }
                                   menu={true}
                                   position="bottom left"
                                   flowing={true}
@@ -1678,7 +1609,72 @@ class Contents extends Component {
                                       size="24px"
                                     />
                                   }
-                                />
+                                >
+                                  <Menu vertical borderless fluid>
+                                    <Menu.Header
+                                      content={this.props.intl.formatMessage(
+                                        messages.select,
+                                      )}
+                                    />
+                                    <Menu.Item onClick={this.onSelectAll}>
+                                      <Icon
+                                        name={checkboxCheckedSVG}
+                                        color="#007eb1"
+                                        size="24px"
+                                      />{' '}
+                                      <FormattedMessage
+                                        id="All"
+                                        defaultMessage="All"
+                                      />
+                                    </Menu.Item>
+                                    <Menu.Item onClick={this.onSelectNone}>
+                                      <Icon
+                                        name={checkboxUncheckedSVG}
+                                        size="24px"
+                                      />{' '}
+                                      <FormattedMessage
+                                        id="None"
+                                        defaultMessage="None"
+                                      />
+                                    </Menu.Item>
+                                    <Divider />
+                                    <Menu.Header
+                                      content={this.props.intl.formatMessage(
+                                        messages.selected,
+                                        { count: this.state.selected.length },
+                                      )}
+                                    />
+                                    <Input
+                                      icon={<Icon name={zoomSVG} size="24px" />}
+                                      iconPosition="left"
+                                      className="item search"
+                                      placeholder={this.props.intl.formatMessage(
+                                        messages.filter,
+                                      )}
+                                      onChange={this.onChangeSelected}
+                                      onClick={(e) => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                      }}
+                                    />
+                                    <Menu.Menu scrolling>
+                                      {map(filteredItems, (item) => (
+                                        <Menu.Item
+                                          key={item}
+                                          value={item}
+                                          onClick={this.onDeselect}
+                                        >
+                                          <Icon
+                                            name={deleteSVG}
+                                            color="#e40166"
+                                            size="24px"
+                                          />{' '}
+                                          {this.getFieldById(item, 'title')}
+                                        </Menu.Item>
+                                      ))}
+                                    </Menu.Menu>
+                                  </Menu>
+                                </Popup>
                               </Table.HeaderCell>
                               <Table.HeaderCell
                                 width={Math.ceil(
