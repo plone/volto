@@ -2,17 +2,10 @@
 
 ## 15.2.2 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fix external url  append issue of @@download/file @iRohitSingh
-
-### Internal
-
-### Documentation
+- Fix headers in sitemap middleware when errors occur in the sitemap generation @mamico
 
 ## 15.2.1 (2022-03-21)
 
@@ -37,7 +30,6 @@
 
 - Fix addon registry regression @sneridagh
 - Fix `Bosnian` language @avoinea
-- Fix headers in sitemap middleware when errors occur in the sitemap generation @mamico
 - Fix use `settings.internalApiPath` in sitemap genaration @mamico
 
 ### Documentation
