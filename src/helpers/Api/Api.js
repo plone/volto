@@ -26,10 +26,9 @@ export function formatUrl(path) {
 
   let adjustedPath = path[0] !== '/' ? `/${path}` : path;
 
-  if (prefixPath) {
-    adjustedPath = adjustedPath.replace(`/${prefixPath}`, '');
+  if (prefixPath && !adjustedPath.startsWith(`/${prefixPath}`)) {
+    adjustedPath = `/${prefixPath}${adjustedPath}`;
   }
-
   let apiPath = '';
   if (settings.internalApiPath && __SERVER__) {
     apiPath = settings.internalApiPath;
@@ -37,7 +36,9 @@ export function formatUrl(path) {
     apiPath = settings.apiPath;
   }
 
-  return `${apiPath}${APISUFIX}${adjustedPath}`;
+  const res = `${apiPath}${APISUFIX}${adjustedPath}`;
+  console.log('final path', settings, res);
+  return res;
 }
 
 /**

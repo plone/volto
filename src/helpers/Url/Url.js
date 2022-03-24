@@ -93,15 +93,25 @@ export function getView(url) {
  * @returns {string} Flattened URL to the app server
  */
 export function flattenToAppURL(url) {
-  const { settings } = config;
-  const prefixPath = settings.prefixPath ? `/${settings.prefixPath}` : '';
-  return (
-    url &&
-    url
-      .replace(settings.internalApiPath, '')
-      .replace(settings.apiPath, '')
-      .replace(settings.publicURL, prefixPath || '') // TODO: prefix with / ?
-  );
+  const {
+    settings: { internalApiPath, publicURL, apiPath },
+  } = config;
+
+  // prefixPath: _prefixPath,
+  //   const prefixPath = _prefixPath ? `/${_prefixPath}` : '';
+  // console.log('ss', {
+  //   internalApiPath,
+  //   apiPath,
+  //   publicURL,
+  //   prefixPath,
+  //   _prefixPath,
+  // });
+
+  // TODO: prefix with / ?
+  return (url || '')
+    .replace(internalApiPath, '')
+    .replace(apiPath, '')
+    .replace(publicURL, '');
 }
 /**
  * Given a URL it remove the querystring from the URL.
