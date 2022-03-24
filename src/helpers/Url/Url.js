@@ -97,17 +97,6 @@ export function flattenToAppURL(url) {
     settings: { internalApiPath, publicURL, apiPath },
   } = config;
 
-  // prefixPath: _prefixPath,
-  //   const prefixPath = _prefixPath ? `/${_prefixPath}` : '';
-  // console.log('ss', {
-  //   internalApiPath,
-  //   apiPath,
-  //   publicURL,
-  //   prefixPath,
-  //   _prefixPath,
-  // });
-
-  // TODO: prefix with / ?
   return (url || '')
     .replace(internalApiPath, '')
     .replace(apiPath, '')

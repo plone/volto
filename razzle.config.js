@@ -280,14 +280,14 @@ const defaultModify = ({
         ]
       : [];
 
-  const relativePath = process.env.RAZZLE_PREFIX_PATH || '';
+  const prefixPath = process.env.RAZZLE_PREFIX_PATH || '';
 
   if (target === 'web' && dev) {
-    config.devServer.publicPath = `/${relativePath}/`;
+    config.devServer.publicPath = `/${prefixPath}/`;
   }
 
   config.output.publicPath = `${config.output.publicPath}${
-    relativePath ? `${relativePath}/` : ''
+    prefixPath ? `${prefixPath}/` : ''
   }`;
 
   return config;

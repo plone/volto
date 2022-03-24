@@ -5,7 +5,7 @@
 
 import config from '@plone/volto/registry';
 
-const relativePathRoot = (history) => ({ dispatch, getState }) => (next) => (
+const prefixPathRoot = (history) => ({ dispatch, getState }) => (next) => (
   action,
 ) => {
   if (typeof action === 'function') {
@@ -33,4 +33,4 @@ const relativePathRoot = (history) => ({ dispatch, getState }) => (next) => (
   return next(action);
 };
 
-export default relativePathRoot;
+export default prefixPathRoot;
