@@ -17,7 +17,7 @@ import {
 const configureStore = (initialState, history, apiHelper) => {
   let stack = [
     blacklistRoutes,
-    relativePathRoot,
+    relativePathRoot(history),
     routerMiddleware(history),
     crashReporter,
     thunk,

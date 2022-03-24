@@ -5,7 +5,9 @@
 
 import config from '@plone/volto/registry';
 
-const relativePathRoot = ({ dispatch, getState }) => (next) => (action) => {
+const relativePathRoot = (history) => ({ dispatch, getState }) => (next) => (
+  action,
+) => {
   if (typeof action === 'function') {
     return next(action);
   }
@@ -14,17 +16,20 @@ const relativePathRoot = ({ dispatch, getState }) => (next) => (action) => {
     case '@@router/LOCATION_CHANGE':
       const { pathname } = action.payload.location;
       const { prefixPath } = config.settings;
-      console.log('rel', prefixPath);
+      // console.log('rel', prefixPath, pathname);
       if (!prefixPath) break;
 
       if (!pathname.startsWith(`/${prefixPath}`)) {
-        action.payload.location.pathname = `/${prefixPath}${pathname}`;
-        console.log(
-          'relativePath',
-          pathname,
-          prefixPath,
-          action.payload.location.pathname,
-        );
+        const newPathname = `/${prefixPath}${pathname === '/' ? '' : pathname}`;
+        // console.log('relativePath', {
+        //   oldPathname: pathname,
+        //   prefixPath,
+        //   newPathname,
+        //   action,
+        //   history,
+        // });
+        action.payload.location.pathname = newPathname;
+        history.push(newPathname);
       }
       return next(action);
     default:
