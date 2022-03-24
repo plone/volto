@@ -1,33 +1,24 @@
 import React from 'react';
-import { SelectWidgetComponent } from './SelectWidget';
+import SelectWidget, { SelectWidgetComponent } from './SelectWidget';
+import WidgetStory from './story';
+
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
-import Wrapper from '@plone/volto/storybook';
+import checkSVG from '@plone/volto/icons/check.svg';
+import { Icon } from '@plone/volto/components';
 
-const SelectComponent = injectLazyLibs([
-  'reactSelect',
-  'reactSelectAsyncPaginate',
-])(SelectWidgetComponent);
+import bellRingingSVG from '@plone/volto/icons/bell-ringing.svg';
+import blogSVG from '@plone/volto/icons/blog.svg';
+import bookSVG from '@plone/volto/icons/book.svg';
 
-const Select = (args) => {
-  const [value, setValue] = React.useState(args.value ?? '');
-  const onChange = (block, value) => {
-    // args.onChange({ value });
-    setValue(value);
-  };
-
-  return (
-    <Wrapper>
-      <SelectComponent {...args} onChange={onChange} value={value} />
-    </Wrapper>
-  );
-};
-
-export const Default = Select.bind({});
+export const Default = WidgetStory.bind({
+  widget: SelectWidget,
+});
 Default.args = {
   id: 'field-empty',
   title: 'field 1 title',
   description: 'Optional help text',
   placeholder: 'Type something…',
+  isMulti: false,
   choices: [
     ['Foo', 'Foo'],
     ['Bar', 'Bar'],
@@ -35,7 +26,9 @@ Default.args = {
   ],
 };
 
-export const Required = Select.bind({});
+export const Required = WidgetStory.bind({
+  widget: SelectWidget,
+});
 Required.args = {
   id: 'field-empty',
   title: 'field 1 title',
@@ -49,7 +42,9 @@ Required.args = {
   required: true,
 };
 
-export const Filled = Select.bind({});
+export const Filled = WidgetStory.bind({
+  widget: SelectWidget,
+});
 Filled.args = {
   id: 'field-filled',
   title: 'Filled field title',
@@ -64,7 +59,9 @@ Filled.args = {
   required: true,
 };
 
-export const Errored = Select.bind({});
+export const Errored = WidgetStory.bind({
+  widget: SelectWidget,
+});
 Errored.args = {
   id: 'field-errored',
   title: 'Errored field title',
@@ -91,7 +88,9 @@ Errored.args = {
   required: true,
 };
 
-export const NoPlaceholder = Select.bind({});
+export const NoPlaceholder = WidgetStory.bind({
+  widget: SelectWidget,
+});
 NoPlaceholder.args = {
   id: 'field-without-novalue',
   title: 'Field title',
@@ -104,7 +103,9 @@ NoPlaceholder.args = {
   required: true,
 };
 
-export const WithoutNoValueOption = Select.bind({});
+export const WithoutNoValueOption = WidgetStory.bind({
+  widget: SelectWidget,
+});
 WithoutNoValueOption.args = {
   id: 'field-without-novalue',
   title: 'Field title',
@@ -119,11 +120,13 @@ WithoutNoValueOption.args = {
   noValueOption: false,
 };
 
-export const VocabularyBased = Select.bind({});
+export const VocabularyBased = WidgetStory.bind({
+  widget: SelectWidget,
+});
 VocabularyBased.args = {
   id: 'field-vocab-based',
   title: 'field title',
-  description: 'This is a vocab-based field (AsyncSelect based)',
+  description: 'This is a vocab-based field',
   placeholder: 'Select something…',
   // choices in Vocabulary based selects that has choices and spects a string in return
   // Use case: Language select - A Choice schema that spects a string as value
@@ -146,7 +149,9 @@ VocabularyBased.args = {
   vocabBaseUrl: 'https://anapivocabularyURL',
 };
 
-export const Disabled = Select.bind({});
+export const Disabled = WidgetStory.bind({
+  widget: SelectWidget,
+});
 Disabled.args = {
   id: 'field-disabled',
   title: 'Disabled field title',
@@ -154,9 +159,95 @@ Disabled.args = {
   disabled: true,
 };
 
+const getOptionsGenerator = (count) => {
+  const options = [];
+  for (let i = 0; i < count; i = i + 1) {
+    options.push([i, `Option ${i}`]);
+  }
+  return options;
+};
+
+export const ManyOptions1000 = WidgetStory.bind({
+  widget: SelectWidget,
+});
+ManyOptions1000.args = {
+  id: 'field-empty',
+  title: 'field 1 title',
+  description: 'Optional help text',
+  placeholder: 'Type something…',
+  choices: getOptionsGenerator(1000),
+};
+
+export const ManyOptions500 = WidgetStory.bind({
+  widget: SelectWidget,
+});
+ManyOptions500.args = {
+  id: 'field-empty',
+  title: 'field 1 title',
+  description: 'Optional help text',
+  placeholder: 'Type something…',
+  choices: getOptionsGenerator(500),
+};
+
+export const MultiSelection = WidgetStory.bind({
+  widget: SelectWidget,
+});
+MultiSelection.args = {
+  id: 'field-empty',
+  title: 'field 1 title',
+  description: 'Select multiple values',
+  placeholder: 'Type something…',
+  isMulti: true,
+  choices: [
+    ['Foo', 'Foo'],
+    ['Bar', 'Bar'],
+    ['FooBar', 'FooBar'],
+  ],
+};
+
+const Option = injectLazyLibs('reactSelect')((props) => {
+  const { Option } = props.reactSelect.components;
+  const icons = {
+    FooBar: bellRingingSVG,
+    Bar: blogSVG,
+    Foo: bookSVG,
+  };
+  return (
+    <Option {...props}>
+      <div>
+        {icons[props.value] && <Icon name={icons[props.value]} size="24px" />}
+        {props.label}
+      </div>
+      {props.isFocused && !props.isSelected && (
+        <Icon name={checkSVG} size="24px" color="#b8c6c8" />
+      )}
+      {props.isSelected && <Icon name={checkSVG} size="24px" color="#007bc1" />}
+    </Option>
+  );
+});
+
+export const CustomOptions = WidgetStory.bind({
+  widget: SelectWidget,
+  props: {
+    customOptionStyling: Option,
+  },
+});
+CustomOptions.args = {
+  id: 'field-empty',
+  title: 'field 1 title',
+  description: 'Select a value',
+  placeholder: 'Type something…',
+  isMulti: false,
+  choices: [
+    ['Foo', 'Foo'],
+    ['Bar', 'Bar'],
+    ['FooBar', 'FooBar'],
+  ],
+};
+
 export default {
   title: 'Widgets/Select Widget',
-  component: SelectComponent,
+  component: SelectWidgetComponent,
   decorators: [
     (Story) => (
       <div style={{ width: '400px' }}>

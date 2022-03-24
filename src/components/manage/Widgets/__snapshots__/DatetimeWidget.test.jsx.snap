@@ -1,127 +1,202 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a datetime widget component 1`] = `
-<div
-  className="inline field field-wrapper-my-field"
->
+exports[`datetime widget converts UTC date and adapt to local datetime 1`] = `
+<div>
   <div
-    className="ui grid"
+    class="inline field field-wrapper-my-field"
   >
     <div
-      className="stretched row"
+      class="ui grid"
     >
       <div
-        className="four wide column"
+        class="stretched row"
       >
         <div
-          className="wrapper"
-        >
-          <label
-            htmlFor="field-my-field"
-            id="fieldset-default-field-label-my-field"
-          >
-            My field
-          </label>
-        </div>
-      </div>
-      <div
-        className="eight wide column"
-      >
-        <div
-          className="date-time-widget-wrapper"
+          class="four wide column"
         >
           <div
-            className="ui input date-input"
+            class="wrapper"
+          >
+            <label
+              for="field-my-field"
+              id="fieldset-undefined-field-label-my-field"
+            >
+              My field
+            </label>
+          </div>
+        </div>
+        <div
+          class="eight wide column"
+        >
+          <div
+            class="date-time-widget-wrapper"
           >
             <div
-              className="SingleDatePicker SingleDatePicker_1"
+              class="ui input date-input"
             >
-              <div>
-                <div
-                  className="SingleDatePickerInput SingleDatePickerInput_1"
-                >
+              <div
+                class="SingleDatePicker SingleDatePicker_1"
+              >
+                <div>
                   <div
-                    className="DateInput DateInput_1"
+                    class="SingleDatePickerInput SingleDatePickerInput_1"
                   >
-                    <input
-                      aria-describedby="DateInput__screen-reader-message-my-field-date"
-                      aria-label="Date"
-                      autoComplete="off"
-                      className="DateInput_input DateInput_input_1"
-                      disabled={false}
-                      id="my-field-date"
-                      name="my-field-date"
-                      onChange={[Function]}
-                      onFocus={[Function]}
-                      onKeyDown={[Function]}
-                      placeholder="Date"
-                      readOnly={false}
-                      required={false}
-                      type="text"
-                      value="10/21/2019"
-                    />
-                    <p
-                      className="DateInput_screenReaderMessage DateInput_screenReaderMessage_1"
-                      id="DateInput__screen-reader-message-my-field-date"
+                    <div
+                      class="DateInput DateInput_1"
                     >
-                      Navigate forward to interact with the calendar and select a date. Press the question mark key to get the keyboard shortcuts for changing dates.
-                    </p>
+                      <input
+                        aria-describedby="DateInput__screen-reader-message-my-field-date"
+                        aria-label="Date"
+                        autocomplete="off"
+                        class="DateInput_input DateInput_input_1"
+                        id="my-field-date"
+                        name="my-field-date"
+                        placeholder="Date"
+                        type="text"
+                        value="02/10/2020"
+                      />
+                      <p
+                        class="DateInput_screenReaderMessage DateInput_screenReaderMessage_1"
+                        id="DateInput__screen-reader-message-my-field-date"
+                      >
+                        Navigate forward to interact with the calendar and select a date. Press the question mark key to get the keyboard shortcuts for changing dates.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div
-            className="ui input time-input"
-          >
-            <span
-              className="rc-time-picker"
-              onClick={[Function]}
-              onMouseDown={[Function]}
-              onTouchStart={[Function]}
-              style={Object {}}
+            <div
+              class="ui input time-input"
             >
-              <input
-                className="rc-time-picker-input"
-                id="my-field-time"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                placeholder="Time"
-                readOnly={false}
-                type="text"
-                value="12:00 AM"
-              />
               <span
-                className="rc-time-picker-icon"
+                class="rc-time-picker"
+              >
+                <input
+                  class="rc-time-picker-input"
+                  id="my-field-time"
+                  placeholder="Time"
+                  type="text"
+                  value="3:01 PM"
+                />
+                <span
+                  class="rc-time-picker-icon"
+                />
+              </span>
+            </div>
+            <button
+              class="item ui noborder button"
+            >
+              <svg
+                class="icon close"
+                style="height: 24px; width: auto; fill: currentColor;"
+                viewBox=""
+                xmlns=""
               />
-            </span>
+            </button>
           </div>
-          <button
-            className="item ui noborder button"
-            disabled={false}
-            onClick={[Function]}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders a datetime widget component 1`] = `
+<div>
+  <div
+    class="inline field field-wrapper-my-field"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="stretched row"
+      >
+        <div
+          class="four wide column"
+        >
+          <div
+            class="wrapper"
           >
-            <svg
-              className="icon close"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": undefined,
-                }
-              }
-              onClick={null}
-              style={
-                Object {
-                  "fill": "currentColor",
-                  "height": "24px",
-                  "width": "auto",
-                }
-              }
-              viewBox=""
-              xmlns=""
-            />
-          </button>
+            <label
+              for="field-my-field"
+              id="fieldset-default-field-label-my-field"
+            >
+              My field
+            </label>
+          </div>
+        </div>
+        <div
+          class="eight wide column"
+        >
+          <div
+            class="date-time-widget-wrapper"
+          >
+            <div
+              class="ui input date-input"
+            >
+              <div
+                class="SingleDatePicker SingleDatePicker_1"
+              >
+                <div>
+                  <div
+                    class="SingleDatePickerInput SingleDatePickerInput_1"
+                  >
+                    <div
+                      class="DateInput DateInput_1"
+                    >
+                      <input
+                        aria-describedby="DateInput__screen-reader-message-my-field-date"
+                        aria-label="Date"
+                        autocomplete="off"
+                        class="DateInput_input DateInput_input_1"
+                        id="my-field-date"
+                        name="my-field-date"
+                        placeholder="Date"
+                        type="text"
+                        value="10/21/2019"
+                      />
+                      <p
+                        class="DateInput_screenReaderMessage DateInput_screenReaderMessage_1"
+                        id="DateInput__screen-reader-message-my-field-date"
+                      >
+                        Navigate forward to interact with the calendar and select a date. Press the question mark key to get the keyboard shortcuts for changing dates.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="ui input time-input"
+            >
+              <span
+                class="rc-time-picker"
+              >
+                <input
+                  class="rc-time-picker-input"
+                  id="my-field-time"
+                  placeholder="Time"
+                  type="text"
+                  value="12:00 AM"
+                />
+                <span
+                  class="rc-time-picker-icon"
+                />
+              </span>
+            </div>
+            <button
+              class="item ui noborder button"
+            >
+              <svg
+                class="icon close"
+                style="height: 24px; width: auto; fill: currentColor;"
+                viewBox=""
+                xmlns=""
+              />
+            </button>
+          </div>
         </div>
       </div>
     </div>

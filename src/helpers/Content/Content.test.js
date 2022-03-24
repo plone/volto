@@ -1,4 +1,8 @@
-import { nestContent, getContentIcon } from './Content';
+import {
+  nestContent,
+  getContentIcon,
+  getLanguageIndependentFields,
+} from './Content';
 import contentExistingSVG from '@plone/volto/icons/content-existing.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
 import calendarSVG from '@plone/volto/icons/calendar.svg';
@@ -75,6 +79,21 @@ describe('Content', () => {
 
     it('returns an icon for a non folderish item', () => {
       expect(getContentIcon('Custom', false)).toBe(fileSVG);
+    });
+  });
+
+  describe('getLanguageIndependentFields', () => {
+    it('returns the language independenr field', () => {
+      const schema = {
+        properties: {
+          lif: {
+            multilingual_options: {
+              language_independent: true,
+            },
+          },
+        },
+      };
+      expect(getLanguageIndependentFields(schema)).toStrictEqual(['lif']);
     });
   });
 });

@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Server-side rendering for async blocks
 
 By default blocks that depend on async-fetched data won't be rendered fully in

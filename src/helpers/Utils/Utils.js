@@ -1,7 +1,6 @@
 import { flatten, isEqual, isObject, transform } from 'lodash';
 import React from 'react';
 import { matchPath } from 'react-router';
-import moment from 'moment';
 import config from '@plone/volto/registry';
 
 /**
@@ -110,6 +109,7 @@ const safeColors = [
   'Teal',
 ];
 const namedColors = {};
+
 /**
  * Will generate initials from string
  * @param {string} name
@@ -152,7 +152,7 @@ export const getColor = (name) => {
  * @param {string} format Date format of choice
  * @returns {Object|string} Moment object or string if format is set
  */
-export const parseDateTime = (locale, value, format) => {
+export const parseDateTime = (locale, value, format, moment) => {
   //  Used to set a server timezone or UTC as default
   moment.defineLocale(locale, moment.localeData(locale)._config); // copy locale to moment-timezone
   let datetime = null;
@@ -198,4 +198,54 @@ export const hasApiExpander = (expander, path = '', type = 'GET_CONTENT') => {
       .filter((expand) => matchPath(path, expand.match) && expand[type])
       .map((expand) => expand[type]),
   ).includes(expander);
+};
+
+/**
+ * Insert element into array at a give index
+ * @param {Array} array Array with data
+ * @param {*} element Element to be inserted
+ * @param {number} index Index of item to be inserted at
+ * @returns {Array} Array with inserted element
+ */
+export const insertInArray = (array, element, index) => [
+  ...array.slice(0, index),
+  element,
+  ...array.slice(index),
+];
+
+/**
+ * Replace element in array at a give index
+ * @param {Array} array Array with data
+ * @param {*} element Element to be replaced
+ * @param {number} index Index of item to be replaced at
+ * @returns {Array} Array with replaced element
+ */
+export const replaceItemOfArray = (array, index, value) =>
+  Object.assign([...array], { [index]: value });
+
+/**
+ * Remove item from array at given index
+ * @param {Array} array Array with data
+ * @param {number} index Index of item to be removed
+ * @returns {Array} Array without deleted element
+ */
+export const removeFromArray = (array, index) => {
+  let newArray = array.slice();
+  newArray.splice(index, 1);
+  return newArray;
+};
+
+/**
+ * Reorder array
+ * @param {Array} array Array with data
+ * @param {number} origin Index of item to be reordered
+ * @param {number} target Index of item to be reordered to
+ * @returns {Array} Array with reordered elements
+ */
+export const reorderArray = (array, origin, target) => {
+  const result = Array.from(array);
+  const [removed] = result.splice(origin, 1);
+  result.splice(target, 0, removed);
+
+  return result;
 };

@@ -11,7 +11,7 @@ import jwtDecode from 'jwt-decode';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
-import cookie from 'react-cookie';
+import { withCookies } from 'react-cookie';
 import { filter, find } from 'lodash';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
@@ -32,8 +32,6 @@ import { Icon } from '@plone/volto/components';
 import { BodyClass, getBaseUrl } from '@plone/volto/helpers';
 import { Pluggable } from '@plone/volto/components/manage/Pluggable';
 
-import pastanagaSmall from '@plone/volto/components/manage/Toolbar/pastanaga-small.svg';
-import pastanagalogo from '@plone/volto/components/manage/Toolbar/pastanaga.svg';
 import penSVG from '@plone/volto/icons/pen.svg';
 import unlockSVG from '@plone/volto/icons/unlock.svg';
 import folderSVG from '@plone/volto/icons/folder.svg';
@@ -177,16 +175,20 @@ class Toolbar extends Component {
     types: [],
   };
 
-  state = {
-    expanded: cookie.load('toolbar_expanded') !== 'false',
-    showMenu: false,
-    menuStyle: {},
-    menuComponents: [],
-    loadedComponents: [],
-    hideToolbarBody: false,
-  };
-
   toolbarWindow = React.createRef();
+
+  constructor(props) {
+    super(props);
+    const { cookies } = props;
+    this.state = {
+      expanded: cookies.get('toolbar_expanded') !== 'false',
+      showMenu: false,
+      menuStyle: {},
+      menuComponents: [],
+      loadedComponents: [],
+      hideToolbarBody: false,
+    };
+  }
 
   /**
    * Component will mount
@@ -228,8 +230,11 @@ class Toolbar extends Component {
   }
 
   handleShrink = () => {
-    cookie.save('toolbar_expanded', !this.state.expanded, {
-      expires: new Date((2 ** 31 - 1) * 1000),
+    const { cookies } = this.props;
+    cookies.set('toolbar_expanded', !this.state.expanded, {
+      expires: new Date(
+        new Date().getTime() + config.settings.cookieExpires * 1000,
+      ),
       path: '/',
     });
     this.setState(
@@ -275,7 +280,7 @@ class Toolbar extends Component {
     } else {
       this.setState((state) => ({
         showMenu: !state.showMenu,
-        menuStyle: { top: 0, overflow: 'initial' },
+        menuStyle: { top: 0 },
       }));
     }
     this.loadComponent(selector);
@@ -528,7 +533,6 @@ class Toolbar extends Component {
               </div>
               <div className="toolbar-bottom">
                 <Pluggable name="main.toolbar.bottom" />
-                <img className="minipastanaga" src={pastanagaSmall} alt="" />
                 {!this.props.hideDefaultViewButtons && (
                   <button
                     className="user"
@@ -548,10 +552,6 @@ class Toolbar extends Component {
                     />
                   </button>
                 )}
-                <div className="divider" />
-                <div className="pastanagalogo">
-                  <img src={pastanagalogo} alt="" />
-                </div>
               </div>
             </div>
             <div className="toolbar-handler">
@@ -576,6 +576,7 @@ class Toolbar extends Component {
 
 export default compose(
   injectIntl,
+  withCookies,
   connect(
     (state, props) => ({
       actions: state.actions.actions,

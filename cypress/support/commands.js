@@ -91,7 +91,9 @@ Cypress.Commands.add(
         },
       });
     }
-    if (['Document', 'Folder', 'CMSFolder'].includes(contentType)) {
+    if (
+      ['Document', 'News Item', 'Folder', 'CMSFolder'].includes(contentType)
+    ) {
       return cy
         .request({
           method: 'POST',
@@ -172,7 +174,7 @@ Cypress.Commands.add(
     fullname = 'editor',
     email = 'editor@local.dev',
     password = 'secret',
-    roles = ['Editor']
+    roles = ['Editor'],
   }) => {
     let api_url, auth, path;
     if (Cypress.env('API') === 'guillotina') {
@@ -200,12 +202,12 @@ Cypress.Commands.add(
         },
         auth: auth,
         body: {
-          "@type": "User",
+          '@type': 'User',
           username: username,
           fullname: fullname,
           email: email,
           password: password,
-          roles: roles
+          roles: roles,
         },
       })
       .then(() => console.log(`User ${username} created`));
@@ -213,40 +215,35 @@ Cypress.Commands.add(
 );
 
 // Remove user
-Cypress.Commands.add(
-  'removeUser',
-  (
-    username = 'editor',
-  ) => {
-    let api_url, auth, path;
-    if (Cypress.env('API') === 'guillotina') {
-      api_url = 'http://localhost:8081/db/web';
-      auth = {
-        user: 'root',
-        pass: 'root',
-      };
-      path = 'users';
-    } else {
-      api_url = 'http://localhost:55001/plone';
-      auth = {
-        user: 'admin',
-        pass: 'secret',
-      };
-      path = '@users';
-    }
+Cypress.Commands.add('removeUser', (username = 'editor') => {
+  let api_url, auth, path;
+  if (Cypress.env('API') === 'guillotina') {
+    api_url = 'http://localhost:8081/db/web';
+    auth = {
+      user: 'root',
+      pass: 'root',
+    };
+    path = 'users';
+  } else {
+    api_url = 'http://localhost:55001/plone';
+    auth = {
+      user: 'admin',
+      pass: 'secret',
+    };
+    path = '@users';
+  }
 
-    return cy
-      .request({
-        method: 'DELETE',
-        url: `${api_url}/${path}/${username}`,
-        headers: {
-          Accept: 'application/json',
-        },
-        auth: auth,
-      })
-      .then(() => console.log(`User ${username} removed`));
-  },
-);
+  return cy
+    .request({
+      method: 'DELETE',
+      url: `${api_url}/${path}/${username}`,
+      headers: {
+        Accept: 'application/json',
+      },
+      auth: auth,
+    })
+    .then(() => console.log(`User ${username} removed`));
+});
 
 // --- SET WORKFLOW ----------------------------------------------------------
 Cypress.Commands.add(
@@ -309,9 +306,13 @@ Cypress.Commands.add('waitForResourceToLoad', (fileName, type) => {
       }
 
       count[0] += 1;
-      setTimeout(checkIfResourceHasBeenLoaded, resourceCheckInterval);
+      const tid = setTimeout(
+        checkIfResourceHasBeenLoaded,
+        resourceCheckInterval,
+      );
 
       if (count[0] > maxChecks) {
+        clearTimeout(tid);
         throw new Error(
           `Timeout resolving resource: ${fileName} (type ${type})`,
         );

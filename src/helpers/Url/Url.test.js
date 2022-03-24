@@ -3,6 +3,7 @@ import config from '@plone/volto/registry';
 import {
   flattenToAppURL,
   flattenHTMLToAppURL,
+  stripQuerystring,
   toPublicURL,
   getBaseUrl,
   getView,
@@ -81,6 +82,12 @@ describe('Url', () => {
       settings.internalApiPath = 'http://plone:8080/Plone';
       expect(flattenToAppURL(url)).toBe('/something');
       settings.internalApiPath = saved;
+    });
+  });
+
+  describe('stripQuerystring', () => {
+    it('returns stripped URL given a URL with a querystring', () => {
+      expect(stripQuerystring('/content?search=test')).toBe('/content');
     });
   });
 
@@ -169,6 +176,13 @@ describe('Url', () => {
       const saved = settings.internalApiPath;
       settings.internalApiPath = 'http://plone:8080/Plone';
       expect(isInternalURL(href)).toBe(true);
+      settings.internalApiPath = saved;
+    });
+    it('tells if an URL is external if settings.internalApiPath is empty', () => {
+      const href = `http://google.com`;
+      const saved = settings.internalApiPath;
+      settings.internalApiPath = '';
+      expect(isInternalURL(href)).toBe(false);
       settings.internalApiPath = saved;
     });
     it('tells if an URL is internal if it is an anchor', () => {

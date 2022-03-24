@@ -168,7 +168,7 @@ export class ContactFormComponent extends Component {
   render() {
     return (
       <div id="contact-form">
-        <Container>
+        <Container id="view">
           <Helmet title={this.props.intl.formatMessage(messages.contactForm)} />
           {this.props.error && (
             <Message
@@ -221,6 +221,7 @@ export class ContactFormComponent extends Component {
             <Portal node={document.getElementById('toolbar')}>
               <Toolbar
                 pathname={this.props.pathname}
+                hideDefaultViewButtons
                 inner={
                   <Link
                     to={`${getBaseUrl(this.props.pathname)}`}

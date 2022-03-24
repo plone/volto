@@ -13,13 +13,12 @@ import {
   addAppURL,
   isInternalURL,
   flattenToAppURL,
+  URLUtils,
 } from '@plone/volto/helpers';
 
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import { Input, Form, Button } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
-
-import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';

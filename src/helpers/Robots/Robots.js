@@ -4,7 +4,6 @@
  */
 
 import superagent from 'superagent';
-import cookie from 'react-cookie';
 import config from '@plone/volto/registry';
 
 /**
@@ -23,7 +22,7 @@ export const generateRobots = (req) =>
     );
     request.set('Accept', 'text/plain');
 
-    const authToken = cookie.load('auth_token');
+    const authToken = req.universalCookies.get('auth_token');
     if (authToken) {
       request.set('Authorization', `Bearer ${authToken}`);
     }
