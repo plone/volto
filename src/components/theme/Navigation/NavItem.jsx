@@ -15,7 +15,10 @@ const NavItem = ({ item, lang }) => {
         className="item"
         activeClassName="active"
         exact={
-          settings.isMultilingual ? item.url === `/${lang}` : item.url === ''
+          settings.isMultilingual
+            ? item.url === `/${lang}`
+            : item.url ===
+              (settings.prefixPath ? `/${settings.prefixPath}` : '')
         }
       >
         {item.title}
