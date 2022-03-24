@@ -285,11 +285,11 @@ const defaultModify = ({
   if (target === 'web' && dev) {
     config.devServer.publicPath = `/${relativePath}/`;
   }
+
   config.output.publicPath = `${config.output.publicPath}${
     relativePath ? `${relativePath}/` : ''
   }`;
 
-  // console.log(config);
   return config;
 };
 
