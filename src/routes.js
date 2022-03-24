@@ -248,7 +248,7 @@ export const defaultRoutes = [
  */
 const routes = [
   {
-    path: '/',
+    path: `/${config.settings.prefixPath || ''}`,
     component: App,
     routes: [
       // redirect to external links if path is in blacklist
@@ -260,7 +260,11 @@ const routes = [
       ...(config.addonRoutes || []),
       ...((config.settings?.isMultilingual && multilingualRoutes) || []),
       ...defaultRoutes,
-    ],
+    ].map((r) =>
+      config.settings.prefixPath
+        ? { ...r, path: `/${config.settings.prefixPath}${r.path}` }
+        : r,
+    ),
   },
 ];
 

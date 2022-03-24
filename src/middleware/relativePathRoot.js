@@ -16,18 +16,12 @@ const relativePathRoot = (history) => ({ dispatch, getState }) => (next) => (
     case '@@router/LOCATION_CHANGE':
       const { pathname } = action.payload.location;
       const { prefixPath } = config.settings;
-      // console.log('rel', prefixPath, pathname);
-      if (!prefixPath) break;
+      if (!prefixPath) {
+        break;
+      }
 
       if (!pathname.startsWith(`/${prefixPath}`)) {
         const newPathname = `/${prefixPath}${pathname === '/' ? '' : pathname}`;
-        // console.log('relativePath', {
-        //   oldPathname: pathname,
-        //   prefixPath,
-        //   newPathname,
-        //   action,
-        //   history,
-        // });
         action.payload.location.pathname = newPathname;
         history.push(newPathname);
       }
@@ -35,6 +29,8 @@ const relativePathRoot = (history) => ({ dispatch, getState }) => (next) => (
     default:
       return next(action);
   }
+
+  return next(action);
 };
 
 export default relativePathRoot;

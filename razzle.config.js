@@ -287,7 +287,7 @@ const defaultModify = ({
   }
   config.output.publicPath = `${config.output.publicPath}${relativePath || ''}`;
 
-  console.log(config);
+  // console.log(config);
   return config;
 };
 
