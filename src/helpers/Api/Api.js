@@ -16,19 +16,14 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
  * @param {string} path Path (or URL) to be formatted.
  * @returns {string} Formatted path.
  */
-export function formatUrl(path) {
+function formatUrl(path) {
   const { settings } = config;
   const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
 
-  // const prefixPath = settings.prefixPath;
-
   if (path.startsWith('http://') || path.startsWith('https://')) return path;
 
-  let adjustedPath = path[0] !== '/' ? `/${path}` : path;
+  const adjustedPath = path[0] !== '/' ? `/${path}` : path;
 
-  // if (prefixPath && !adjustedPath.startsWith(`/${prefixPath}`)) {
-  //   adjustedPath = `/${prefixPath}${adjustedPath}`;
-  // }
   let apiPath = '';
   if (settings.internalApiPath && __SERVER__) {
     apiPath = settings.internalApiPath;
