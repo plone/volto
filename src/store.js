@@ -11,13 +11,13 @@ import {
   api,
   crashReporter,
   blacklistRoutes,
-  prefixPathRoot,
+  // prefixPathRoot,
 } from '@plone/volto/middleware';
 
 const configureStore = (initialState, history, apiHelper) => {
   let stack = [
     blacklistRoutes,
-    prefixPathRoot(history),
+    // prefixPathRoot(history),
     routerMiddleware(history),
     crashReporter,
     thunk,
