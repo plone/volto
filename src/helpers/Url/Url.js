@@ -34,6 +34,12 @@ export const getBaseUrl = memoize((url) => {
   );
 
   adjustedUrl = adjustedUrl || '/';
+  if (
+    settings.prefixPath &&
+    adjustedUrl.startsWith(`/${settings.prefixPath}`)
+  ) {
+    adjustedUrl = adjustedUrl.slice(`/${settings.prefixPath}`.length);
+  }
   return adjustedUrl === '/' ? '' : adjustedUrl;
 });
 
@@ -94,14 +100,18 @@ export function getView(url) {
  */
 export function flattenToAppURL(url) {
   const { settings } = config;
+
+  const prefix = settings.prefixPath ? `/${settings.prefixPath}` : '';
+
   return (
     url &&
-    url
+    `${prefix}${url
       .replace(settings.internalApiPath, '')
       .replace(settings.apiPath, '')
-      .replace(settings.publicURL, '')
+      .replace(settings.publicURL, '')}`
   );
 }
+
 /**
  * Given a URL it remove the querystring from the URL.
  * @method stripQuerystring
