@@ -41,7 +41,7 @@ For production setup, when hosting Volto behind a proxy HTTP server, you can
 configure your rewrite rules to something like this (in this case, for Apache):
 
 ```
-RewriteRule ^/my-prefixed-path/\+\+api\+\+\/my-prefixed-path(.*) \
-  http://plone:8080/VirtualHostBase/http/example.com:80/Plone/VirtualHostRoot/_vh_my-prefixed-path/$$1 [P,L]
-RewriteRule ^/my-prefixed-path(.*) http://volto:3000/my-prefixed-path$$1 [P,L]
+RewriteRule ^/my-prefix/\+\+api\+\+\/(.*) \
+  http://plone:8080/VirtualHostBase/http/example.com:80/Plone/VirtualHostRoot/_vh_my-prefix/$$1 [P,L]
+RewriteRule ^/my-prefix(.*) http://volto:3000/my-prefix$$1 [P,L]
 ```
