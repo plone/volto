@@ -33,7 +33,7 @@ incorrect: `/my-prefix`.
 
 
 The prefix location will be used regardless of how you start Volto, in
-development or production mode. When developing, though, if your backed is
+development or production mode. When developing, though, if your backend is
 something other then `http://localhost:8080`, you'll need to provide your own
 solution on how to handle things.
 
