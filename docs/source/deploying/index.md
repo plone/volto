@@ -28,3 +28,4 @@ html_meta:
 - [Using apache](./apache.md)
 - [Using sentry](./sentry.md)
 - [Performance improvements](./performance.md)
+- [Non-root deployment](./prefixed-root.md)
