@@ -141,4 +141,32 @@ describe('Navigation', () => {
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
+
+  it('renders a navigation component with a prefixed path', () => {
+    config.settings.prefixPath = 'my-prefix-path';
+    const store = mockStore({
+      navigation: {
+        items: [
+          { title: 'Blog', url: '/blog' },
+          { title: 'Blog of mine', url: '/blog-of-mine' },
+          { title: 'Users', url: '/users' },
+        ],
+      },
+      userSession: { token: '1234' },
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <MemoryRouter initialEntries={[{ pathname: '/my-prefix-path/blog' }]}>
+          <Navigation pathname="/blog" />
+        </MemoryRouter>
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+    config.settings.prefixPath = undefined;
+  });
 });
