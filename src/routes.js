@@ -256,15 +256,17 @@ const routes = [
         ...route.match,
         component: NotFound,
       })),
-      // addon routes have a higher priority then default routes
-      ...(config.addonRoutes || []),
-      ...((config.settings?.isMultilingual && multilingualRoutes) || []),
-      ...defaultRoutes,
-    ].map((r) =>
-      config.settings.prefixPath
-        ? { ...r, path: `/${config.settings.prefixPath}${r.path}` }
-        : r,
-    ),
+      ...[
+        // addon routes have a higher priority then default routes
+        ...(config.addonRoutes || []),
+        ...((config.settings?.isMultilingual && multilingualRoutes) || []),
+        ...defaultRoutes,
+      ].map((route) =>
+        config.settings.prefixPath
+          ? { ...route, path: `/${config.settings.prefixPath}${route.path}` }
+          : route,
+      ),
+    ],
   },
 ];
 
