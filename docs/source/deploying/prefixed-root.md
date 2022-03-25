@@ -14,11 +14,34 @@ having Volto serve directly the root folder.
 
 The first step is to set an environment variable, `RAZZLE_PREFIX_PATH` to the
 path "prefixed path" of your Volto. For example, if I want Volto's root to be
-hosted at https://example.com/my/volto/site, you need to start Volto with:
+hosted at `https://example.com/my/volto/site`, you need to start Volto with:
 
 ```
-RAZZLE_PREFIX_PATH=my/volto/site yarn start
+RAZZLE_PREFIX_PATH=my-prefix yarn start
 ```
 
-Notice the absence of the first slash. Correct: `my-prefix`, incorrect:
-`/my-prefix`.
+If you need to debug and understand how the requests are rewritten by the Volto
+SSR, you can add the following environment variables to the Volto start line:
+
+
+```
+DEBUG_HPM=true DEBUG=superagent RAZZLE_PREFIX_PATH=my-prefix yarn start
+```
+
+Notice the absence of a slash in the prefix name. Correct: `my-prefix`,
+incorrect: `/my-prefix`.
+
+
+The prefix location will be used regardless of how you start Volto, in
+development or production mode. When developing, though, if your backed is
+something other then `http://localhost:8080`, you'll need to provide your own
+solution on how to handle things.
+
+For production setup, when hosting Volto behind a proxy HTTP server, you can
+configure your rewrite rules to something like this (in this case, for Apache):
+
+```
+RewriteRule ^/my-prefixed-path/\+\+api\+\+\/my-prefixed-path(.*) \
+  http://plone:8080/VirtualHostBase/http/example.com:80/Plone/VirtualHostRoot/_vh_my-prefixed-path$$1 [P,L]
+RewriteRule ^/my-prefixed-path(.*) http://volto:3000/my-prefixed-path$$1 [P,L]
+```
