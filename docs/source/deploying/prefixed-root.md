@@ -14,7 +14,7 @@ having Volto serve directly the root folder.
 
 The first step is to set an environment variable, `RAZZLE_PREFIX_PATH` to the
 path "prefixed path" of your Volto. For example, if I want Volto's root to be
-hosted at `https://example.com/my/volto/site`, you need to start Volto with:
+hosted at **example.com/my/volto/site**, you need to start Volto with:
 
 ```
 RAZZLE_PREFIX_PATH=my-prefix yarn start
