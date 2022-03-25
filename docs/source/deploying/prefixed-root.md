@@ -42,6 +42,6 @@ configure your rewrite rules to something like this (in this case, for Apache):
 
 ```
 RewriteRule ^/my-prefixed-path/\+\+api\+\+\/my-prefixed-path(.*) \
-  http://plone:8080/VirtualHostBase/http/example.com:80/Plone/VirtualHostRoot/_vh_my-prefixed-path$$1 [P,L]
+  http://plone:8080/VirtualHostBase/http/example.com:80/Plone/VirtualHostRoot/_vh_my-prefixed-path/$$1 [P,L]
 RewriteRule ^/my-prefixed-path(.*) http://volto:3000/my-prefixed-path$$1 [P,L]
 ```
