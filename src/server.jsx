@@ -59,7 +59,6 @@ const supported = new locale.Locales(keys(languages), 'en');
 const server = express()
   .disable('x-powered-by')
   .use(
-    `/`,
     express.static(
       process.env.BUILD_DIR
         ? path.join(process.env.BUILD_DIR, 'public')
