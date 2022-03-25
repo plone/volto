@@ -25,7 +25,7 @@ export const getAPIResourceWithAuth = (req) =>
     } else {
       apiPath = settings.apiPath;
     }
-    // TODO: rewrite with _vh_<prefixPath> ?
+
     const path = `${apiPath}${APISUFIX}${req.path.replace(
       settings.prefixPath || '',
       '',

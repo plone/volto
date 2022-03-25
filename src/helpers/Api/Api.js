@@ -36,9 +36,7 @@ export function formatUrl(path) {
     apiPath = settings.apiPath;
   }
 
-  const res = `${apiPath}${APISUFIX}${adjustedPath}`;
-  // console.log('final path', settings, res);
-  return res;
+  return `${apiPath}${APISUFIX}${adjustedPath}`;
 }
 
 /**
