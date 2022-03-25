@@ -93,14 +93,14 @@ export function getView(url) {
  * @returns {string} Flattened URL to the app server
  */
 export function flattenToAppURL(url) {
-  const {
-    settings: { internalApiPath, publicURL, apiPath },
-  } = config;
-
-  return (url || '')
-    .replace(internalApiPath, '')
-    .replace(apiPath, '')
-    .replace(publicURL, '');
+  const { settings } = config;
+  return (
+    url &&
+    url
+      .replace(settings.internalApiPath, '')
+      .replace(settings.apiPath, '')
+      .replace(settings.publicURL, '')
+  );
 }
 /**
  * Given a URL it remove the querystring from the URL.
