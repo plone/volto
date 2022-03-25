@@ -7,12 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Embed } from 'semantic-ui-react';
 import cx from 'classnames';
-import {
-  isInternalURL,
-  getParentUrl,
-  flattenToAppURL,
-} from '@plone/volto/helpers';
-import config from '@plone/volto/registry';
+import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
 
 /**
  * View video block class.
@@ -121,13 +116,8 @@ const View = ({ data }) => (
                   // eslint-disable-next-line jsx-a11y/media-has-caption
                   <video
                     src={
-                      isInternalURL(
-                        data.url.replace(
-                          getParentUrl(config.settings.apiPath),
-                          '',
-                        ),
-                      )
-                        ? `${data.url}/@@download/file`
+                      isInternalURL(data.url)
+                        ? `${flattenToAppURL(data.url)}/@@download/file`
                         : data.url
                     }
                     controls
