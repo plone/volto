@@ -78,10 +78,10 @@ export default function () {
         proxyRewriteTarget ||
         `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/++api++/VirtualHostRoot`;
 
-      const prefix = prefixPath ? `/_vh_${prefixPath}` : '';
+      // const prefix = prefixPath ? `/_vh_${prefixPath}` : '';
       const rewrittenPath = `${target}${path
-        .replace(prefixPath, '')
-        .replace('/++api++', prefix)}`;
+        .replace(`/${prefixPath}`, '')
+        .replace('/++api++', '')}`;
 
       // proper rewritten path should look like:
       // /VirtualHostBase/http/localhost:3000/Plone/++api++/VirtualHostRoot/_vh_MY_PREFIX_PATH/@querystring-search
