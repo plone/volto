@@ -5,6 +5,7 @@ const nodeExternals = require('webpack-node-externals');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const fs = require('fs');
+const { pickBy } = require('lodash');
 const RootResolverPlugin = require('./webpack-plugins/webpack-root-resolver');
 const RelativeResolverPlugin = require('./webpack-plugins/webpack-relative-resolver');
 const createAddonsLoader = require('./create-addons-loader');
@@ -188,7 +189,7 @@ const defaultModify = ({
 
   const addonsLoaderPath = createAddonsLoader(
     registry.getAddonDependencies(),
-    registry.packages,
+    registry.getAddons(),
   );
 
   config.resolve.plugins = [
@@ -230,15 +231,17 @@ const defaultModify = ({
   if (packageJson.name !== '@plone/volto') {
     include.push(fs.realpathSync(`${registry.voltoPath}/src`));
   }
+
   // Add babel support external (ie. node_modules npm published packages)
-  if (registry.addonNames && registry.addonNames.length > 0) {
-    registry.addonNames.forEach((addon) => {
+  const packagesNames = Object.keys(registry.packages);
+  if (registry.packages && packagesNames.length > 0) {
+    packagesNames.forEach((addon) => {
       const p = fs.realpathSync(registry.packages[addon].modulePath);
       if (include.indexOf(p) === -1) {
         include.push(p);
       }
     });
-    addonsAsExternals = registry.addonNames.map((addon) => new RegExp(addon));
+    addonsAsExternals = packagesNames.map((addon) => new RegExp(addon));
   }
 
   if (process.env.ADDONS) {
@@ -250,9 +253,12 @@ const defaultModify = ({
       if (include.indexOf(p) === -1) {
         include.push(p);
       }
-      addonsAsExternals = registry.addonNames.map(
-        (normalizedAddonName) => new RegExp(normalizedAddonName),
-      );
+      addonsAsExternals = [
+        ...addonsAsExternals,
+        ...packagesNames.map(
+          (normalizedAddonName) => new RegExp(normalizedAddonName),
+        ),
+      ];
     });
   }
 
