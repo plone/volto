@@ -42,8 +42,8 @@ RewriteRule ^/my-prefix/\+\+api\+\+/(.*) \
 RewriteRule ^/my-prefix(.*) http://volto:3000/my-prefix$$1 [P,L]
 ```
 
-In case you have a deeper prefix path (for ex, `level1/level2`), you can do
-like (notice the multiple `_vh_` segments in the rewrite rule):
+In case you have a deeper prefix path (for example, `level1/level2`), you can
+do the following (notice the multiple `_vh_` segments in the rewrite rule):
 
 ```apache
 RewriteRule ^/level1/level2/\+\+api\+\+/(.*) \
