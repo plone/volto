@@ -8,7 +8,7 @@ html_meta:
 
 # Prefixed (non-root) deployment
 
-If you're integrating a Volto website with another, existing website, you may
+If you're integrating a Volto website with another existing website, you may
 need to have Volto running on an "folder" inside that website, rather than
 having Volto serve directly the root folder.
 
