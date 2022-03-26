@@ -12,11 +12,11 @@ If you're integrating a Volto website with another existing website, you may
 need to run Volto on a "folder" inside that website, rather than
 Volto directly serving the root folder.
 
-The first step is to set an environment variable, `RAZZLE_PREFIX_PATH` to the
+The first step is to set an environment variable `RAZZLE_PREFIX_PATH` to the
 path "prefixed path" of your Volto. For example, if I want Volto's root to be
 hosted at `http://example.com/my-prefix`, you need to start Volto with:
 
-```
+```shell
 RAZZLE_PREFIX_PATH=/my-prefix yarn start
 ```
 
@@ -24,17 +24,17 @@ If you need to debug and understand how the requests are rewritten by the Volto
 SSR, you can add the following environment variables to the Volto start line:
 
 
-```
+```shell
 DEBUG_HPM=true DEBUG=superagent RAZZLE_PREFIX_PATH=/my-prefix yarn start
 ```
 
-The prefix location will be used regardless of how you start Volto, in
+The prefix location will be used regardless of how you start Volto, whether in
 development or production mode. When developing, though, if your backend is
 something other then `http://localhost:8080`, you'll need to provide your own
-solution on how to handle things.
+solution for how to handle things.
 
-For production setup, when hosting Volto behind a proxy HTTP server, you can
-configure your rewrite rules to something like this (in this case, for Apache):
+For a production setup, when hosting Volto behind a proxy HTTP server, you can
+configure your rewrite rules to something like the following (in this case, for Apache).
 
 ```apache
 RewriteRule ^/my-prefix/\+\+api\+\+/(.*) \
