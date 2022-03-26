@@ -9,6 +9,7 @@ junit.xml
 eslint.xml
 yarn-error.log
 build
+lib64
 
 # Other
 .DS_Store

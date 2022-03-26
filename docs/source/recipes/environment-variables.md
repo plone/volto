@@ -9,12 +9,16 @@ in order to ease configuration. These are the defaults:
 
 That means that your backend will be available under `http://localhost:3000/++api++`
 
+```shell
 RAZZLE_DEV_PROXY_API_PATH = 'http://localhost:8080/Plone'
+```
 
 The internal proxy simulates a web server doing reverse proxy with standard Plone VHM config.
 You can configure this if required too:
 
+```shell
 RAZZLE_PROXY_REWRITE_TARGET = '/VirtualHostBase/http/localhost:3000/Plone/++api++/VirtualHostRoot'
+```
 
 (this variable by default is parameterized like this: `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/++api++/VirtualHostRoot`)
 

@@ -35,8 +35,7 @@ For using Volto for a project (i.e. use Volto as a library), You should use Volt
     cd myvoltoapp
     ```
 
-4.  The project is ready to be started, `@plone/generator-volto` already has run the
-   dependencies installations for you.
+4.  The project is ready to be started, `@plone/generator-volto` already has run the dependencies installations for you.
 
     ```shell
     yarn start
