@@ -9,7 +9,7 @@ html_meta:
 # Prefixed (non-root) deployment
 
 If you're integrating a Volto website with another existing website, you may
-need to have Volto running on an "folder" inside that website, rather than
+need to run Volto on a "folder" inside that website, rather than
 having Volto serve directly the root folder.
 
 The first step is to set an environment variable, `RAZZLE_PREFIX_PATH` to the
