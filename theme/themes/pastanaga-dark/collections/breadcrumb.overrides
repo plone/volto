@@ -1,0 +1,23 @@
+/*******************************
+        Theme Overrides
+*******************************/
+
+.ui.secondary {
+  background: #000;
+}
+
+.ui.breadcrumb {
+  display: flex;
+  align-items: center;
+  padding-right: 1rem;
+  padding-left: 1rem;
+
+  .home.icon {
+    margin-right: 0;
+  }
+
+  @media only screen and (min-width: @tabletBreakpoint) {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
