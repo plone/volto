@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Remove offending `Makefile` command that broke on MacOS due to lack of compatibility of the MacOS `make` utility. @tisto
+
 ### Documentation
 
 ## 15.2.2 (2022-03-23)
