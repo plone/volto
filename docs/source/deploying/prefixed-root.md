@@ -54,7 +54,7 @@ RewriteRule ^/level1/level2/\+\+api\+\+/(.*) \
 RewriteRule ^/level1/level2(.*) http://volto:3000/level1/level2$$1 [P,L]
 ```
 
-And start Volto with:
+And start Volto with the following.
 
 ```shell
 RAZZLE_PREFIX_PATH=level1/level2 RAZZLE_API_PATH=http://example.com/level1/level2 yarn start
