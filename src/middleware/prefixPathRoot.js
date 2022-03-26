@@ -20,8 +20,8 @@ const prefixPathRoot = (history) => ({ dispatch, getState }) => (next) => (
         break;
       }
 
-      if (!pathname.startsWith(`/${prefixPath}`)) {
-        const newPathname = `/${prefixPath}${pathname === '/' ? '' : pathname}`;
+      if (!pathname.startsWith(prefixPath)) {
+        const newPathname = `${prefixPath}${pathname === '/' ? '' : pathname}`;
         action.payload.location.pathname = newPathname;
         history.push(newPathname);
       }

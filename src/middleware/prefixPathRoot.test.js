@@ -20,7 +20,7 @@ describe('prefixPathRoot', () => {
   });
 
   it('inserts prefix path', () => {
-    config.settings.prefixPath = 'my-prefix/second-level';
+    config.settings.prefixPath = '/my-prefix/second-level';
 
     const next = jest.fn();
     const history = {

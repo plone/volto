@@ -9,13 +9,12 @@ const NavItem = ({ item, lang }) => {
   // The item.url in the root is ''
   // TODO: make more consistent it everywhere (eg. reducers to return '/' instead of '')
   const location = useLocation();
-  const unprefixedLocation = {
-    ...location,
-    pathname: location.pathname.replace(
-      settings.prefixPath ? `/${settings.prefixPath}` : '',
-      '',
-    ),
-  };
+  const unprefixedLocation = settings.prefixPath
+    ? {
+        ...location,
+        pathname: location.pathname.slice(settings.prefixPath.length),
+      }
+    : undefined;
 
   if (isInternalURL(item.url) || item.url === '') {
     return (

@@ -17,7 +17,7 @@ path "prefixed path" of your Volto. For example, if I want Volto's root to be
 hosted at `http://example.com/my-prefix`, you need to start Volto with:
 
 ```
-RAZZLE_PREFIX_PATH=my-prefix yarn start
+RAZZLE_PREFIX_PATH=/my-prefix yarn start
 ```
 
 If you need to debug and understand how the requests are rewritten by the Volto
@@ -25,12 +25,8 @@ SSR, you can add the following environment variables to the Volto start line:
 
 
 ```
-DEBUG_HPM=true DEBUG=superagent RAZZLE_PREFIX_PATH=my-prefix yarn start
+DEBUG_HPM=true DEBUG=superagent RAZZLE_PREFIX_PATH=/my-prefix yarn start
 ```
-
-Notice the absence of a slash in the prefix name. Correct: `my-prefix`,
-incorrect: `/my-prefix`.
-
 
 The prefix location will be used regardless of how you start Volto, in
 development or production mode. When developing, though, if your backend is
@@ -58,5 +54,9 @@ RewriteRule ^/level1/level2(.*) http://volto:3000/level1/level2$$1 [P,L]
 And start Volto with the following.
 
 ```shell
-RAZZLE_PREFIX_PATH=level1/level2 RAZZLE_API_PATH=http://example.com/level1/level2 yarn start
+RAZZLE_PREFIX_PATH=/level1/level2 RAZZLE_API_PATH=http://example.com/level1/level2 yarn start
 ```
+
+One final note, as you'll be integrating Volto with an existing website, you
+need to configure `config.settings.externalRoutes` so that the router knows
+which routes it should consider internal.

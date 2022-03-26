@@ -285,11 +285,10 @@ const defaultModify = ({
 
   if (prefixPath) {
     if (target === 'web' && dev) {
-      config.devServer.publicPath = `/${prefixPath}/`;
+      config.devServer.publicPath = prefixPath;
     }
-    config.output.publicPath = `${config.output.publicPath}${
-      prefixPath ? `${prefixPath}/` : ''
-    }`;
+    const pp = config.output.publicPath;
+    config.output.publicPath = `${pp}${prefixPath.slice(1)}/`;
   }
 
   return config;

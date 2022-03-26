@@ -143,7 +143,7 @@ describe('Navigation', () => {
   });
 
   it('renders a navigation component with a prefixed path', () => {
-    config.settings.prefixPath = 'my-prefix-path';
+    config.settings.prefixPath = '/my-prefix-path';
     const store = mockStore({
       navigation: {
         items: [
