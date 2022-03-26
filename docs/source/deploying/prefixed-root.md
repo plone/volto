@@ -1,9 +1,9 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "Prefix (non-root) deployment for Volto"
+  "property=og:description": "Prefix (non-root) deployment for Volto"
+  "property=og:title": "Prefixed (non-root) deployment"
+  "keywords": "Volto, deployment"
 ---
 
 # Prefixed (non-root) deployment
@@ -14,7 +14,7 @@ Volto directly serving the root folder.
 
 The first step is to set an environment variable, `RAZZLE_PREFIX_PATH` to the
 path "prefixed path" of your Volto. For example, if I want Volto's root to be
-hosted at **example.com/my-prefix**, you need to start Volto with:
+hosted at `http://example.com/my-prefix`, you need to start Volto with:
 
 ```
 RAZZLE_PREFIX_PATH=my-prefix yarn start
@@ -46,7 +46,8 @@ RewriteRule ^/my-prefix/\+\+api\+\+/(.*) \
 RewriteRule ^/my-prefix(.*) http://volto:3000/my-prefix$$1 [P,L]
 ```
 
-In case you have a deeper prefix path (for ex, `level1/level2`), you can do like:
+In case you have a deeper prefix path (for ex, `level1/level2`), you can do
+like (notice the multiple `_vh_` segments in the rewrite rule):
 
 ```apache
 RewriteRule ^/level1/level2/\+\+api\+\+/(.*) \
