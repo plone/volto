@@ -26,7 +26,7 @@ For using Volto for a project (i.e. use Volto as a library), You should use Volt
     yo @plone/volto --help
     ```
 
-or take a look at the [README](https://github.com/plone/volto/blob/master/packages/generator-volto/README.md) for more information.
+    or take a look at the [README](https://github.com/plone/volto/blob/master/packages/generator-volto/README.md) for more information.
     ````
     
 3.  Change directory to the newly created folder `myvoltoapp` (or the one you've chosen).
@@ -42,5 +42,5 @@ or take a look at the [README](https://github.com/plone/volto/blob/master/packag
     yarn start
     ```
 
-will start the development server, compiling and leaving the app ready at:
-http://localhost:3000
+    will start the development server, compiling and leaving the app ready at:
+    http://localhost:3000

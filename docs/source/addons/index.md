@@ -102,7 +102,7 @@ their configuration, so they may offer additional configuration functions,
 which you can load by overloading the addon name in the ``addons`` package.json
 key, like so:
 
-```json
+```{code-block} json
 :emphasize-lines: 4
 
 {

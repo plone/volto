@@ -22,7 +22,7 @@ To access the global state, a component needs to be connected with `connect`.
 A simple example of such component is the
 `src/theme/ContactForm/ContactForm.jsx`, which is exported connected as:
 
-```js
+```jsx
 export default compose(
   withRouter,
   injectIntl,

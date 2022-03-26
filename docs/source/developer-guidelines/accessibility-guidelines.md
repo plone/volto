@@ -19,7 +19,7 @@ If available, use the translation machinery available to make the label appear i
 
 Example:
 
-```jsx
+```text
 <button className="cancel" aria-label="Cancel" onClick={() => this.onCancel()}>
   <Icon
     name={clearSVG}
