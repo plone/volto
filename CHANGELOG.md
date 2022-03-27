@@ -1,6 +1,6 @@
 # Change Log
 
-## 15.2.1 (unreleased)
+## 15.2.3 (unreleased)
 
 ### Breaking
 
@@ -10,8 +10,30 @@
 
 ### Internal
 
+- Remove offending `Makefile` command that broke on MacOS due to lack of compatibility of the MacOS `make` utility. @tisto
+
 ### Documentation
 
+- Switch from `docs-linkcheckbroken` to `docs-linkcheck` in GitHub Actions because the former is broken. @stevepiercy
+
+## 15.2.2 (2022-03-23)
+
+### Bugfix
+
+- Fix external url  append issue of @@download/file @iRohitSingh
+- Fix headers in sitemap middleware when errors occur in the sitemap generation @mamico
+
+## 15.2.1 (2022-03-21)
+
+### Bugfix
+
+- `Manage translations` view error on seamless mode, `flattenToAppURL` missing. @sneridagh
+
+### Documentation
+
+- Reenable `make docs-linkcheckbroken`. @stevepiercy
+- Add html_meta values to add-on best practices, s/addon/add-on. @stevepiercy
+- Netlify now only builds on changes to the `./docs/` directory. @stevepiercy
 - Replace deprecated `egrep` with `grep` in `make docs-linkcheckbroken`. @stevepiercy
 
 ## 15.2.0 (2022-03-18)
@@ -24,6 +46,7 @@
 
 - Fix addon registry regression @sneridagh
 - Fix `Bosnian` language @avoinea
+- Fix use `settings.internalApiPath` in sitemap genaration @mamico
 
 ### Documentation
 
