@@ -19,6 +19,7 @@ html_meta:
 ./apache.md
 ./sentry.md
 ./performance.md
+./prefixed-root.md
 
 ```
 
