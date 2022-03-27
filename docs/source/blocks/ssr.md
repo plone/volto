@@ -19,7 +19,7 @@ configuration, pointing to a function that returns a list of promises.
 
 For example:
 
-```
+```js
 export default ({ dispatch, data, path }) => {
   return [
     dispatch(
