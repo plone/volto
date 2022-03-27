@@ -14,6 +14,7 @@
 
 ### Documentation
 
+- Switch from `docs-linkcheckbroken` to `docs-linkcheck` in GitHub Actions because the former is broken. @stevepiercy
 - Set the output for storybook to the correct directory. @stevepiercy
 
 ## 15.2.2 (2022-03-23)
