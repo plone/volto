@@ -16,7 +16,7 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
  * @param {string} path Path (or URL) to be formatted.
  * @returns {string} Formatted path.
  */
-function formatUrl(path) {
+export function formatApiUrl(path) {
   const { settings } = config;
   const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
 
@@ -54,7 +54,7 @@ class Api {
       ) => {
         let request;
         let promise = new Promise((resolve, reject) => {
-          request = superagent[method](formatUrl(path));
+          request = superagent[method](formatApiUrl(path));
 
           if (params) {
             request.query(params);

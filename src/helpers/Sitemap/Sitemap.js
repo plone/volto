@@ -7,8 +7,7 @@ import superagent from 'superagent';
 import { map } from 'lodash';
 import zlib from 'zlib';
 import { toPublicURL } from '@plone/volto/helpers';
-
-import config from '@plone/volto/registry';
+import { formatApiUrl } from '@plone/volto/helpers/Api/Api';
 
 /**
  * Generate sitemap
@@ -18,10 +17,10 @@ import config from '@plone/volto/registry';
  */
 export const generateSitemap = (_req) =>
   new Promise((resolve) => {
-    const { settings } = config;
-    const apiPath = settings.internalApiPath ?? settings.apiPath;
     const request = superagent.get(
-      `${apiPath}/@search?metadata_fields=modified&b_size=100000000&use_site_search_settings=1`,
+      formatApiUrl(
+        '/@search?metadata_fields=modified&b_size=100000000&use_site_search_settings=1',
+      ),
     );
     request.set('Accept', 'application/json');
     const authToken = _req.universalCookies.get('auth_token');
