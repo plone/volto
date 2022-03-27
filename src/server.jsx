@@ -73,7 +73,7 @@ const server = express()
 
 if (process.env.RAZZLE_PREFIX_PATH)
   server.use(
-    `/${process.env.RAZZLE_PREFIX_PATH}`,
+    process.env.RAZZLE_PREFIX_PATH,
     express.static(
       process.env.BUILD_DIR
         ? path.join(process.env.BUILD_DIR, 'public')

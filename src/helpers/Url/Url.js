@@ -100,7 +100,7 @@ export function flattenToAppURL(url) {
 
   return (
     url &&
-    `${settings.prefixPath || ''}${url
+    `${settings.prefixPath}${url
       .replace(settings.internalApiPath, '')
       .replace(settings.apiPath, '')
       .replace(settings.publicURL, '')}`
