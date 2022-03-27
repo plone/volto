@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix/Improve the console logging when the server starts. @sneridagh
+
 ### Internal
 
 - Remove offending `Makefile` command that broke on MacOS due to lack of compatibility of the MacOS `make` utility. @tisto

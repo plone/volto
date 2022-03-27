@@ -27,7 +27,10 @@ export default () => {
         console.log(
           `Using internal proxy: ${app.publicURL} -> ${app.devProxyToApiPath}`,
         );
-      console.log(`🎭 Volto started at ${app.publicURL} 🚀`);
+      if (!process.env.RAZZLE_PUBLIC_URL)
+        console.log(`Current guessed public URL: ${app.publicURL}`);
+
+      console.log(`🎭 Volto started at ${bind_address}:${port} 🚀`);
     })
     .on('error', (e) => {
       console.error(e.message);
