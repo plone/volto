@@ -82,7 +82,7 @@ test:
 
 .PHONY: storybook-build
 storybook-build:
-	yarn build-storybook -o docs/build/storybook
+	yarn build-storybook -o docs/_build/storybook
 
 bin/python:
 	python3 -m venv . || virtualenv --clear --python=python3 .
