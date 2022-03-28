@@ -19,6 +19,7 @@ html_meta:
 ./apache.md
 ./sentry.md
 ./performance.md
+./prefixed-root.md
 
 ```
 
@@ -28,3 +29,4 @@ html_meta:
 - [Using apache](./apache.md)
 - [Using sentry](./sentry.md)
 - [Performance improvements](./performance.md)
+- [Non-root deployment](./prefixed-root.md)

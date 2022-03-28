@@ -37,8 +37,7 @@ modern Javascript knowledge. Follow the
 project and start hacking!
 
 ```{toctree}
-:maxdepth: 2
-:hidden: true
+:maxdepth: 1
 
 getting-started/index
 configuration/index

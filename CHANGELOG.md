@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Allow deployment of Volto on a prefixed path (non-root deployment). See Deployment docs for details. @cekk @tiberiuichim
+
 ### Bugfix
 
 ### Internal

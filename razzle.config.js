@@ -1,11 +1,12 @@
 /* eslint no-console: 0 */
 const path = require('path');
+const fs = require('fs');
+
 const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
 const nodeExternals = require('webpack-node-externals');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
-const fs = require('fs');
-const { pickBy } = require('lodash');
+
 const RootResolverPlugin = require('./webpack-plugins/webpack-root-resolver');
 const RelativeResolverPlugin = require('./webpack-plugins/webpack-relative-resolver');
 const createAddonsLoader = require('./create-addons-loader');
@@ -279,6 +280,17 @@ const defaultModify = ({
           }),
         ]
       : [];
+
+  const prefixPath = process.env.RAZZLE_PREFIX_PATH || '';
+
+  if (prefixPath) {
+    if (target === 'web' && dev) {
+      config.devServer.publicPath = prefixPath;
+    }
+    const pp = config.output.publicPath;
+    config.output.publicPath = `${pp}${prefixPath.slice(1)}/`;
+  }
+
   return config;
 };
 
