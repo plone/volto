@@ -147,9 +147,9 @@ describe('Navigation', () => {
     const store = mockStore({
       navigation: {
         items: [
-          { title: 'Blog', url: '/blog' },
-          { title: 'Blog of mine', url: '/blog-of-mine' },
-          { title: 'Users', url: '/users' },
+          { title: 'Blog', url: '/my-prefix-path/blog' },
+          { title: 'Blog of mine', url: '/my-prefix-path/blog-of-mine' },
+          { title: 'Users', url: '/my-prefix-path/users' },
         ],
       },
       userSession: { token: '1234' },

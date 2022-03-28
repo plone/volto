@@ -88,7 +88,7 @@ exports[`Navigation renders a navigation component with a prefixed path 1`] = `
     <a
       aria-current="page"
       className="item active"
-      href="/blog"
+      href="/my-prefix-path/blog"
       onClick={[Function]}
       style={Object {}}
     >
@@ -97,7 +97,7 @@ exports[`Navigation renders a navigation component with a prefixed path 1`] = `
     <a
       aria-current={null}
       className="item"
-      href="/blog-of-mine"
+      href="/my-prefix-path/blog-of-mine"
       onClick={[Function]}
     >
       Blog of mine
@@ -105,7 +105,7 @@ exports[`Navigation renders a navigation component with a prefixed path 1`] = `
     <a
       aria-current={null}
       className="item"
-      href="/users"
+      href="/my-prefix-path/users"
       onClick={[Function]}
     >
       Users

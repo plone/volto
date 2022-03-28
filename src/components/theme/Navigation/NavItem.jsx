@@ -2,19 +2,11 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { isInternalURL } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
-import { useLocation } from 'react-router';
 
 const NavItem = ({ item, lang }) => {
   const { settings } = config;
   // The item.url in the root is ''
   // TODO: make more consistent it everywhere (eg. reducers to return '/' instead of '')
-  const location = useLocation();
-  const unprefixedLocation = settings.prefixPath
-    ? {
-        ...location,
-        pathname: location.pathname.slice(settings.prefixPath.length),
-      }
-    : undefined;
 
   if (isInternalURL(item.url) || item.url === '') {
     return (
@@ -23,11 +15,9 @@ const NavItem = ({ item, lang }) => {
         key={item.url}
         className="item"
         activeClassName="active"
-        location={unprefixedLocation}
         exact={
           settings.isMultilingual ? item.url === `/${lang}` : item.url === ''
         }
-        isActive={(match, location) => !!match}
       >
         {item.title}
       </NavLink>
