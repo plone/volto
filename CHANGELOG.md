@@ -11,6 +11,7 @@
 ### Internal
 
 - Remove offending `Makefile` command that broke on MacOS due to lack of compatibility of the MacOS `make` utility. @tisto
+- Upgraded use-deep-compare-effect to version 1.8.1. @pnicolli
 
 ### Documentation
 
