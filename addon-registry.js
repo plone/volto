@@ -161,6 +161,16 @@ class AddonConfigurationRegistry {
         const packageJsonPath = `${getPackageBasePath(
           packagePath,
         )}/package.json`;
+        const innerAddons = require(packageJsonPath).addons || [];
+        const innerAddonsNormalized = innerAddons.map((s) => s.split(':')[0]);
+        if (
+          this.addonNames.includes(name) &&
+          innerAddonsNormalized.length > 0
+        ) {
+          innerAddonsNormalized.forEach((name) => {
+            if (!this.addonNames.includes(name)) this.addonNames.push(name);
+          });
+        }
         const pkg = {
           modulePath: packagePath,
           packageJson: packageJsonPath,
@@ -188,13 +198,19 @@ class AddonConfigurationRegistry {
 
   initPublishedPackage(name) {
     if (!Object.keys(this.packages).includes(name)) {
-      if (!this.addonNames.includes(name)) this.addonNames.push(name);
       const resolved = require.resolve(name, { paths: [this.projectRootPath] });
       const basePath = getPackageBasePath(resolved);
       const packageJson = path.join(basePath, 'package.json');
       const pkg = require(packageJson);
       const main = pkg.main || 'src/index.js';
       const modulePath = path.dirname(require.resolve(`${basePath}/${main}`));
+      const innerAddons = pkg.addons || [];
+      const innerAddonsNormalized = innerAddons.map((s) => s.split(':')[0]);
+      if (this.addonNames.includes(name) && innerAddonsNormalized.length > 0) {
+        innerAddonsNormalized.forEach((name) => {
+          if (!this.addonNames.includes(name)) this.addonNames.push(name);
+        });
+      }
       this.packages[name] = {
         name,
         version: pkg.version,
