@@ -7,7 +7,6 @@ const NavItem = ({ item, lang }) => {
   const { settings } = config;
   // The item.url in the root is ''
   // TODO: make more consistent it everywhere (eg. reducers to return '/' instead of '')
-
   if (isInternalURL(item.url) || item.url === '') {
     return (
       <NavLink
