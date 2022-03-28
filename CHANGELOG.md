@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Change which api calls can set specific api errors @robgietema
+
 ### Internal
 
 - Remove offending `Makefile` command that broke on MacOS due to lack of compatibility of the MacOS `make` utility. @tisto
@@ -21,7 +23,7 @@
 
 ### Bugfix
 
-- Fix external url  append issue of @@download/file @iRohitSingh
+- Fix external url append issue of @@download/file @iRohitSingh
 - Fix headers in sitemap middleware when errors occur in the sitemap generation @mamico
 
 ## 15.2.1 (2022-03-21)
@@ -84,7 +86,6 @@
 - Added language to code-blocks in md files @ktsrivastava29
 - Added html_meta values and labels for Intersphinx cross-references from Trainings. @stevepiercy
 - Replaced `docs.voltocms.com` with MyST references. @stevepiercy
-
 
 ## 15.0.0 (2022-03-14)
 
