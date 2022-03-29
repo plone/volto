@@ -291,6 +291,7 @@ const defaultModify = ({
     config.output.publicPath = `${pp}${prefixPath.slice(1)}/`;
   }
 
+  // console.log('config', config);
   return config;
 };
 
