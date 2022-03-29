@@ -38,7 +38,7 @@
     "cypress:run:workingCopy": "Description for `npm run cypress:run:workingCopy` command",
     "cypress:run:guillotina": "Description for `npm run cypress:run:guillotina` command",
     "cypress:start-frontend": "Description for `npm run cypress:start-frontend` command",
-    "cypress:start-frontend-coresandbox": "Description for `npm run cypress:start-frontend-coresandbox` command",
+    "cypress:start-frontend-coresandbox": "Run Cypress tests with add-on coresandbox.\n  Volto Core Sandbox add-on - Contains configuration and elements that are not present in vanilla Volto",
     "cypress:start-frontend-multilingual": "Description for `npm run cypress:start-frontend-multilingual` command",
     "cypress:start-frontend-workingCopy": "Description for `npm run cypress:start-frontend-workingCopy` command",
     "cy:install": "Description for `npm run cy:install` command",
