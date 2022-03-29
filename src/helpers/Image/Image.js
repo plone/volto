@@ -46,12 +46,17 @@ export const getImageAttributes = (
     case 'imageObject':
       let sortedScales = Object.values(image.scales)
         .filter((scale) => scale.width <= maxSize)
-        .filter((scale) => scale.width < image.width) // avoid duplicates if image is small and original is smaller than scale
+        .filter(
+          (scale, index, array) =>
+            index ===
+            array.findIndex((foundItem) => foundItem.width === scale.width),
+        ) // avoid duplicates if image is small and original is smaller than scale
         .sort((a, b) => {
           if (a.width > b.width) return 1;
           else if (a.width < b.width) return -1;
           else return 0;
         });
+
       attrs.src = sortedScales[0]?.download ?? image.download;
       attrs.srcSet = sortedScales.map(
         (scale) => `${flattenToAppURL(scale.download)} ${scale.width}w`,
