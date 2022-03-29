@@ -58,6 +58,11 @@ msgstr "Attiva e disattiva"
 msgid "Add"
 msgstr "Aggiungi"
 
+#: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Add
+msgid "Add (object list)"
+msgstr "Aggiungi"
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
 msgid "Add Addons"
@@ -853,6 +858,7 @@ msgstr "Lista di oggetti vuota"
 msgid "Enable editable Blocks"
 msgstr "Abilita i blocchi editabili"
 
+#: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 # defaultMessage: End Date
 msgid "End Date"
@@ -957,32 +963,32 @@ msgstr "URL esterno"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Facet
 msgid "Facet"
-msgstr "Faccetta"
+msgstr "Filtro"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Facet widget
 msgid "Facet widget"
-msgstr "Widget della faccetta"
+msgstr "Widget dei filtri"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Facets
 msgid "Facets"
-msgstr "Faccette"
+msgstr "Filtri"
 
 #: config/Blocks
 # defaultMessage: Facets on left side
 msgid "Facets on left side"
-msgstr "Faccette nel lato sinistro"
+msgstr "Filtri nel lato sinistro"
 
 #: config/Blocks
 # defaultMessage: Facets on right side
 msgid "Facets on right side"
-msgstr "Faccette nel lato destro"
+msgstr "Filtri nel lato destro"
 
 #: config/Blocks
 # defaultMessage: Facets on top
 msgid "Facets on top"
-msgstr "Faccette in alto"
+msgstr "Filtri in alto"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Field
@@ -1123,7 +1129,7 @@ msgstr "Intestazione"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hidden facets will still filter the results if proper parameters are passed in URLs
 msgid "Hidden facets will still filter the results if proper parameters are passed in URLs"
-msgstr "Le faccette nascoste filtreranno comunque i risultati se saranno passati parametri adeguati nell'URL"
+msgstr "I filtri nascosti filtreranno comunque i risultati se saranno passati parametri adeguati nell'URL"
 
 #: components/theme/Comments/Comments
 # defaultMessage: Hide Replies
@@ -1133,7 +1139,7 @@ msgstr "Nascondi risposte"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hide facet?
 msgid "Hide facet?"
-msgstr "Nascondere la faccetta?"
+msgstr "Nascondi il filtro"
 
 #: components/manage/History/History
 #: components/manage/Toolbar/More
@@ -1335,6 +1341,11 @@ msgstr "Etichetta"
 # defaultMessage: Language
 msgid "Language"
 msgstr "Lingua"
+
+#: components/manage/Widgets/FormFieldWrapper
+# defaultMessage: Language independent field.
+msgid "Language independent field."
+msgstr "Campo indipendete dalla lingua"
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Last
@@ -1556,7 +1567,7 @@ msgstr "Sposta in cima alla cartella"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Multiple choices?
 msgid "Multiple choices?"
-msgstr "Scelta multipla?"
+msgstr "Scelta multipla"
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: My email address is
@@ -1595,6 +1606,11 @@ msgstr "Notizia"
 # defaultMessage: No
 msgid "No"
 msgstr "No"
+
+#: components/manage/Controlpanels/VersionOverview
+# defaultMessage: No addons found
+msgid "No addons found"
+msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected
@@ -1710,6 +1726,11 @@ msgstr "occorrenze"
 # defaultMessage: Ok
 msgid "Ok"
 msgstr "Ok"
+
+#: components/manage/Widgets/IdWidget
+# defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed.
+msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed."
+msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1933,7 +1954,7 @@ msgstr "il"
 #: components/manage/Form/UndoToolbar
 # defaultMessage: Redo
 msgid "Redo"
-msgstr ""
+msgstr "Ripeti"
 
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Minimalistic table design
@@ -2423,6 +2444,7 @@ msgstr "Specifica l'URL di un video o una playlist di YouTube"
 msgid "Split"
 msgstr "Dividi"
 
+#: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 # defaultMessage: Start Date
 msgid "Start Date"
@@ -2624,6 +2646,11 @@ msgstr "Terzo"
 msgid "This has an ongoing working copy in {title}"
 msgstr "Questa è una copia di lavoro in corso di {title}"
 
+#: components/manage/Widgets/IdWidget
+# defaultMessage: This is a reserved name and can't be used
+msgid "This is a reserved name and can't be used"
+msgstr ""
+
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This is a working copy of {title}
 msgid "This is a working copy of {title}"
@@ -2718,12 +2745,12 @@ msgstr "Digita l'URL di un Video (YouTube, Vimeo or mp4)"
 #: components/manage/Widgets/SelectAutoComplete
 # defaultMessage: Type text...
 msgid "Type text..."
-msgstr ""
+msgstr "Digita il testo..."
 
 #: components/manage/Blocks/Text/Edit
 # defaultMessage: Type text…
 msgid "Type text…"
-msgstr "Digita testo…"
+msgstr "Digita il testo…"
 
 #: components/manage/Blocks/Title/Edit
 # defaultMessage: Type the title…
@@ -2743,7 +2770,7 @@ msgstr "Non autorizzato"
 #: components/manage/Form/UndoToolbar
 # defaultMessage: Undo
 msgid "Undo"
-msgstr ""
+msgstr "Annulla"
 
 #: components/manage/BlockChooser/BlockChooser
 # defaultMessage: Unfold
@@ -3118,42 +3145,42 @@ msgstr "Bozza"
 msgid "email"
 msgstr "email"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: All dates
 msgid "event_alldates"
 msgstr "Tutte le date"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Attendees
 msgid "event_attendees"
 msgstr "Partecipanti"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Contact Name
 msgid "event_contactname"
 msgstr "Nome del contatto"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Contact Phone
 msgid "event_contactphone"
 msgstr "Telefono del contatto"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Website
 msgid "event_website"
 msgstr "Sito web"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: What
 msgid "event_what"
 msgstr "Cosa"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: When
 msgid "event_when"
 msgstr "Quando"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Where
 msgid "event_where"
 msgstr "Dove"
@@ -3248,6 +3275,12 @@ msgstr "Inizio del range"
 # defaultMessage: Most used
 msgid "mostUsed"
 msgstr "Più usati"
+
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+# defaultMessage: No
+msgid "no"
+msgstr ""
 
 #: components/manage/Contents/ContentsItem
 # defaultMessage: No workflow state
@@ -3503,7 +3536,7 @@ msgstr "Indice dei contenuti"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be valid url (www.something.com or http(s)://www.something.com)
 msgid "url"
-msgstr "URL"
+msgstr "Il testo inserito deve essere un url valido (www.qualcosa.com oppure http(s)://www.qualcosa.com)"
 
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: user avatar
@@ -3515,10 +3548,16 @@ msgstr "Avatar dell'utente"
 msgid "video"
 msgstr "Video"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Visit external website
 msgid "visit_external_website"
 msgstr "Visita il sito web"
+
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+# defaultMessage: Yes
+msgid "yes"
+msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: {count, plural, one {Upload {count} file} other {Upload {count} files}}

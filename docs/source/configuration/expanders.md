@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # API expanders
 
 You can configure the API expanders Volto uses using the `settings.apiExpanders` like this:

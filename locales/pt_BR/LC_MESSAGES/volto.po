@@ -68,6 +68,11 @@ msgstr "Ativar e desativar"
 msgid "Add"
 msgstr "Adicionar"
 
+#: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Add
+msgid "Add (object list)"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
 msgid "Add Addons"
@@ -863,6 +868,7 @@ msgstr "Lista de objetos vazia"
 msgid "Enable editable Blocks"
 msgstr "Habilitar blocos editáveis"
 
+#: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 # defaultMessage: End Date
 msgid "End Date"
@@ -1346,6 +1352,11 @@ msgstr ""
 msgid "Language"
 msgstr "Idioma"
 
+#: components/manage/Widgets/FormFieldWrapper
+# defaultMessage: Language independent field.
+msgid "Language independent field."
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Last
 msgid "Last"
@@ -1606,6 +1617,11 @@ msgstr "Notícia"
 msgid "No"
 msgstr "Não"
 
+#: components/manage/Controlpanels/VersionOverview
+# defaultMessage: No addons found
+msgid "No addons found"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected
 msgid "No image selected"
@@ -1720,6 +1736,11 @@ msgstr "Ocorrências"
 # defaultMessage: Ok
 msgid "Ok"
 msgstr "Ok"
+
+#: components/manage/Widgets/IdWidget
+# defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed.
+msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed."
+msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -2433,6 +2454,7 @@ msgstr "Informe a url para um vídeo ou uma playlist do YouTube"
 msgid "Split"
 msgstr "Dividir"
 
+#: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 # defaultMessage: Start Date
 msgid "Start Date"
@@ -2633,6 +2655,11 @@ msgstr "Terceiro"
 # defaultMessage: This has an ongoing working copy in {title}
 msgid "This has an ongoing working copy in {title}"
 msgstr "Este conteúdo tem uma cópia de trabalho ativa em {title}"
+
+#: components/manage/Widgets/IdWidget
+# defaultMessage: This is a reserved name and can't be used
+msgid "This is a reserved name and can't be used"
+msgstr ""
 
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This is a working copy of {title}
@@ -3128,42 +3155,42 @@ msgstr "Rascunho"
 msgid "email"
 msgstr "E-mail"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: All dates
 msgid "event_alldates"
 msgstr "Todas as datas"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Attendees
 msgid "event_attendees"
 msgstr "Participantes"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Contact Name
 msgid "event_contactname"
 msgstr "Pessoa de contato"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Contact Phone
 msgid "event_contactphone"
 msgstr "Telefone de contato"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Website
 msgid "event_website"
 msgstr "Site"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: What
 msgid "event_what"
 msgstr "O quê"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: When
 msgid "event_when"
 msgstr "Quando"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Where
 msgid "event_where"
 msgstr "Onde"
@@ -3258,6 +3285,12 @@ msgstr "Valor mínimo"
 # defaultMessage: Most used
 msgid "mostUsed"
 msgstr "Mais usados"
+
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+# defaultMessage: No
+msgid "no"
+msgstr ""
 
 #: components/manage/Contents/ContentsItem
 # defaultMessage: No workflow state
@@ -3525,10 +3558,16 @@ msgstr "avatar do usuário"
 msgid "video"
 msgstr "vídeo"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Visit external website
 msgid "visit_external_website"
 msgstr "Visitar site externo"
+
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+# defaultMessage: Yes
+msgid "yes"
+msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: {count, plural, one {Upload {count} file} other {Upload {count} files}}

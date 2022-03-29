@@ -7,8 +7,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers/Url/Url';
-import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
+import {
+  flattenToAppURL,
+  isInternalURL,
+  URLUtils,
+} from '@plone/volto/helpers/Url/Url';
 import { matchPath } from 'react-router';
 
 import config from '@plone/volto/registry';

@@ -13,7 +13,6 @@ MAKEFLAGS+=--no-builtin-rules
 # Project settings
 
 DIR=$(shell basename $$(pwd))
-ADDON ?= "<%= addonName %>"
 
 # Recipe snippets for reuse
 

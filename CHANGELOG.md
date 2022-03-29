@@ -1,8 +1,515 @@
 # Change Log
 
-## 14.0.3 (unreleased)
+## 15.2.3 (unreleased)
 
 ### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
+- Remove offending `Makefile` command that broke on MacOS due to lack of compatibility of the MacOS `make` utility. @tisto
+
+### Documentation
+
+- Switch from `docs-linkcheckbroken` to `docs-linkcheck` in GitHub Actions because the former is broken. @stevepiercy
+- Set the output for storybook to the correct directory. @stevepiercy
+
+## 15.2.2 (2022-03-23)
+
+### Bugfix
+
+- Fix external url  append issue of @@download/file @iRohitSingh
+- Fix headers in sitemap middleware when errors occur in the sitemap generation @mamico
+
+## 15.2.1 (2022-03-21)
+
+### Bugfix
+
+- `Manage translations` view error on seamless mode, `flattenToAppURL` missing. @sneridagh
+
+### Documentation
+
+- Reenable `make docs-linkcheckbroken`. @stevepiercy
+- Add html_meta values to add-on best practices, s/addon/add-on. @stevepiercy
+- Netlify now only builds on changes to the `./docs/` directory. @stevepiercy
+- Replace deprecated `egrep` with `grep` in `make docs-linkcheckbroken`. @stevepiercy
+
+## 15.2.0 (2022-03-18)
+
+### Feature
+
+- Add helper utilities to be used by addons @robgietema
+
+### Bugfix
+
+- Fix addon registry regression @sneridagh
+- Fix `Bosnian` language @avoinea
+- Fix use `settings.internalApiPath` in sitemap genaration @mamico
+
+### Documentation
+
+- Reduced build minutes on Netlify by building only on changes to the `docs/**` path on pull requests. See https://github.com/plone/volto/pull/3171. @stevepiercy
+- Add "Documentation" heading to the automatic change log updater file `changelogupdater.js`. @stevepiercy
+
+## 15.1.2 (2022-03-17)
+
+### Bugfix
+
+- Fix the alt prop in `PreviewImage` component @sneridagh
+
+## 15.1.1 (2022-03-16)
+
+### Bugfix
+
+- Add optional alt tag to `PreviewImage` props @kindermann
+- Remove non add-on names from `addonNames` list in Addons Registry. Update the list in the `addonsInfo` for the addons loader as well. @sneridagh
+
+## 15.1.0 (2022-03-15)
+
+### Feature
+
+- Added a new component, PreviewImage. It renders a preview image for a catalog brain (based on the `image_field` prop). @tiberiuichim
+
+### Bugfix
+
+- Clear search results before new query is done. @robgietema
+
+### Documentation
+
+- Updated README.md @ktsrivastava29
+
+- Added language to code-blocks in md files @ktsrivastava29
+- Added html_meta values and labels for Intersphinx cross-references from Trainings. @stevepiercy
+- Replaced `docs.voltocms.com` with MyST references. @stevepiercy
+
+
+## 15.0.0 (2022-03-14)
+
+### Breaking
+
+- Upgrade `react-cookie` to the latest version. @sneridagh @robgietema
+  See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+- Language Switcher no longer takes care of the change of the language on the Redux Store. This responsibility has been unified in the API Redux middleware @sneridagh
+- Markup change in `LinkView` component.
+- Rename `core-sandbox` to `coresandbox` for sake of consistency @sneridagh
+- Extend the original intent and rename `RAZZLE_TESTING_ADDONS` to `ADDONS`. @sneridagh
+  See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+- Lazyload Draft.js library. See the upgrade guide on how that impacts you, in case you have extended the rich text editor configuration @tiberiuichim @kreafox
+  See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+- Deprecating `lang` cookie in favor of Plone official one `I18N_LANGUAGE` @sneridagh
+
+### Feature
+
+- Add `cookiesExpire` value to config to control the cookie expiration @giuliaghisini
+- DatetimeWidget 'noPastDates' option: Take widgetOptions?.pattern_options?.noPastDates of backend schema into account. @ksuess
+- Add a new type of filter facet for the Search block. Heavily refactor some searchblock internals. @tiberiuichim
+- Add date range facet to the search block @robgietema
+- Introduce the new `BUILD_DIR` runtime environment variable to direct the build to run in a specific location, different than `build` folder. @sneridagh
+- Handle redirect permanent calls from the backend in the frontend (e.g. when changing the short name) @robgietema
+- Added id widget to manage short name @robgietema
+- Refactor language synchronizer. Remove it from the React tree, integrate it into the Api Redux middleware @sneridagh
+- Add blocks rendering in Event and NewsItem views (rel plone.volto#32) @nzambello @ksuess
+- Add internal volto ids to invalid ids @robgietema
+- Complete Basque translation @erral
+- Complete Spanish translation @erral
+- Sort the choices in Facets in the search block @iFlameing
+
+### Bugfix
+
+- Fix the `null` error in SelectAutoComplete Widget @iFlameing
+- Prevent the `MultilingualRedirector` to force content load when switching the language @reebalazs
+- Fix the upload image in contents view @iFlameing
+- add "view" id to contact-form container for main content skiplink @ThomasKindermann
+- Fix loading indicator positioning on Login form submit @sneridagh
+- Fix redirect bug with URLs containing querystrings @robgietema
+- Fixed id widget translations @robgietema
+- Contents Rename Modal, use `id` Widget type @sneridagh
+- Fix overflow of very long file name in `FileWidget` @sneridagh
+- Fix overflowing issue in the toolbar @kreafox
+- Overwrite current block on insert new block. @robgietema
+- Fix hot reload on updates related to the config object because of `VersionOverview` component @sneridagh
+- Fix error when lock data is gone after an invariant error. @robgietema
+
+### Internal
+
+- Change prop `name` -> `componentName` in component `Component` @sneridagh
+- Add new RawMaterial Volto websites in production @nzambello
+- House cleanup, remove some unused files in the root @sneridagh
+- Move Webpack related files to `webpack-plugins` folder @sneridagh
+- Remove unused Dockerfiles @sneridagh
+- Update Docker compose to latest images and best practices @sneridagh
+- Improve flaky test in coresandbox search Cypress tests @sneridagh
+- Better implementation of the add-on load coming from the environment variable `ADDONS` @sneridagh
+- Turn `lazyLibraries` action into a thunk. Added a conditional if the library is loaded or in process to be loaded, do not try to load it again. This fixes the lag on load `draftjs` when having a lot of draftjs blocks. @sneridagh
+- Use `@root` alias instead of `~` in several module references. Most of the Volto project code no longer needs the root alias, so it makes sense to phase it out at some point @tiberiuichim
+- Alias `lodash` to `lodash-es`, as this will include only one copy of lodash in the bundle @tiberiuichim
+- Better Readme, updated to 2022 @sneridagh
+- Update to latest versions for Python packages @sneridagh
+- Add `id` as widget type as well @sneridagh
+
+### Documentation
+
+- Upgrade Guide i18n: Make clear what's project, what add-on. @ksuess
+- (Experimental) Prepare documentation for MyST and importing into `plone/documentation@6-dev`. @stevepiercy
+- Fix broken links and redirects in documentation to be compatible with MyST. @stevepiercy
+- Update add-on internationalization. @ksuess
+- Add MyST and Sphinx basic configuration for rapid build and comparison against MkDocs builds. @stevepiercy
+- Fix many MyST and Sphinx warnings. @stevepiercy
+- Remove MkDocs configuration. See https://github.com/plone/volto/issues/3042 @stevepiercy
+- Add Plone docs to Intersphinx and fix broken link. @stevepiercy
+- Get version from `package.json` @sneridagh
+- Remove legacy folder in docs @sneridagh
+- Backport docs of RAZZLE_TESTING_ADDONS environment variables. See https://github.com/plone/volto/pull/3067/files#diff-00609ed769cd40cf3bc3d6fcc4431b714cb37c73cedaaea18fe9fc4c1c589597 @stevepiercy
+- Add missing developer-guidelines/typescript to toctree @stevepiercy
+- Add Netlify for preview of Sphinx builds for pull requests against `master` and `plone6-docs`. @stevepiercy
+- Clean up toctree errors by removing obsolete files, adding `:orphan:` field list, and reorganizing some files. @sneridagh and @stevepiercy
+- Switch to using netlify.toml to configure Netlify Python environment. @stevepiercy
+- Convert admonition syntax from Markdown to MyST. @sneridagh
+- Make links build both in Volto and Plone documentation. See https://github.com/plone/volto/pull/3094 @stevepiercy
+- Fix broken links. @stevepiercy
+- Update Sphinx configuration to check anchors in links and exclude problematic URLs. @sneridagh and @stevepiercy
+- Fix StoryBook links @sneridagh
+- Clean up `linkcheck_ignore` values. @stevepiercy
+
+## 15.0.0-alpha.14 (2022-03-10)
+
+### Bugfix
+
+- Contents Rename Modal, use `id` Widget type @sneridagh
+
+### Internal
+
+- Better Readme, updated to 2022 @sneridagh
+- Update to latest versions for Python packages @sneridagh
+- Add `id` as widget type as well @sneridagh
+
+### Documentation
+
+- Fix broken links. @stevepiercy
+
+## 15.0.0-alpha.13 (2022-03-09)
+
+### Feature
+
+- Sort the choices in Facets in the search block @iFlameing
+
+### Bugfix
+
+- Fix overflow of very long file name in `FileWidget` @sneridagh
+- Fix overflowing issue in the toolbar @kreafox
+
+## 15.0.0-alpha.12 (2022-03-07)
+
+### Feature
+
+- Add internal volto ids to invalid ids @robgietema
+- Complete basque translation @erral
+- Complete spanish translation @erral
+
+### Internal
+
+- Change prop `name` -> `componentName` in component `Component` @sneridagh
+
+## 15.0.0-alpha.11 (2022-03-02)
+
+### Bugfix
+
+- Fix redirect bug with URLs containing querystrings @robgietema
+- Fixed id widget translations @robgietema
+
+### Internal
+
+- Use `@root` alias instead of `~` in several module references. Most of the Volto project code no longer needs the root alias, so it makes sense to phase it out at some point @tiberiuichim
+- Alias `lodash` to `lodash-es`, as this will include only one copy of lodash in the bundle @tiberiuichim
+
+## 15.0.0-alpha.10 (2022-02-28)
+
+### Bugfix
+
+- Turn `lazyLibraries` action into a thunk. Added a conditional if the library is loaded or in process to be loaded, do not try to load it again. This fixes the lag on load `draftjs` when having a lot of draftjs blocks. @sneridagh
+
+## 15.0.0-alpha.9 (2022-02-28)
+
+### Breaking
+
+- Deprecating `lang` cookie in favor of Plone official one `I18N_LANGUAGE` @sneridagh
+
+### Feature
+
+- Added id widget to manage short name @robgietema
+- Refactor language syncronizer. Remove it from the React tree, integrate it into the Api Redux middleware @sneridagh
+- Add blocks rendering in Event and NewsItem views (rel plone.volto#32) @nzambello @ksuess
+
+### Bugfix
+
+- Fix redirect bug with URLs containing querystrings @robgietema
+
+## 15.0.0-alpha.8 (2022-02-22)
+
+### Internal
+
+- Better implementation of the add-on load coming from the environment variable `ADDONS` @sneridagh
+
+## 15.0.0-alpha.7 (2022-02-22)
+
+### Feature
+
+- Introduce the new `BUILD_DIR` runtime environment variable to direct the build to run in an especific location, different than `build` folder. @sneridagh
+- Handle redirect permanent calls from the backend in the frontend (e.g. when changing the short name) @robgietema
+
+## 15.0.0-alpha.6 (2022-02-21)
+
+### Feature
+
+- DatetimeWidget 'noPastDates' option: Take widgetOptions?.pattern_options?.noPastDates of backend schema into account. @ksuess
+- Add a new type of filter facet for the Search block. Heavily refactor some searchblock internals. @tiberiuichim
+- Add date range facet to the search block @robgietema
+
+### Internal
+
+- Improve flaky test in coresandbox search Cypress tests @sneridagh
+
+### Documentation
+
+- (Experimental) Prepare documentation for MyST and importing into `plone/documentation@6-dev`. @stevepiercy
+- Fix broken links and redirects in documentation to be compatible with MyST. @stevepiercy
+- Update add-on internationalization. @ksuess
+- Add MyST and Sphinx basic configuration for rapid build and comparison against MkDocs builds. @stevepiercy
+- Fix many MyST and Sphinx warnings. @stevepiercy
+- Remove MkDocs configuration. See https://github.com/plone/volto/issues/3042 @stevepiercy
+- Add Plone docs to Intersphinx and fix broken link. @stevepiercy
+- Get version from `package.json` @sneridagh
+- Remove legacy folder in docs @sneridagh
+- Backport docs of RAZZLE_TESTING_ADDONS environment variables. See https://github.com/plone/volto/pull/3067/files#diff-00609ed769cd40cf3bc3d6fcc4431b714cb37c73cedaaea18fe9fc4c1c589597 @stevepiercy
+- Add missing developer-guidelines/typescript to toctree @stevepiercy
+- Add Netlify for preview of Sphinx builds for pull requests against `master` and `plone6-docs`. @stevepiercy
+- Clean up toctree errors by removing obsolete files, adding `:orphan:` field list, and reorganizing some files. @sneridagh and @stevepiercy
+- Switch to using netlify.toml to configure Netlify Python environment. @stevepiercy
+- Convert admonition syntax from Markdown to MyST. @sneridagh
+- Make links build both in Volto and Plone documentation. See https://github.com/plone/volto/pull/3094 @stevepiercy
+
+## 15.0.0-alpha.5 (2022-02-16)
+
+### Breaking
+
+- Lazyload draftjs library. See the upgrade guide on how that impacts you, in case you have extended the rich text editor configuration @tiberiuichim @kreafox
+  See https://docs.voltocms.com/upgrade-guide/ for more information.
+
+### Feature
+
+- Add `cookiesExpire` value to config to control the cookie expiration @giuliaghisini
+
+## 15.0.0-alpha.4 (2022-02-16)
+
+### Breaking
+
+- Markup change in `LinkView` component.
+- Rename `core-sandbox` to `coresandbox` for sake of consistency @sneridagh
+- Extend the original intent and rename `RAZZLE_TESTING_ADDONS` to `ADDONS`. @sneridagh
+  See https://docs.voltocms.com/upgrade-guide/ for more information.
+
+### Internal
+
+- House cleanup, remove some unused files in the root @sneridagh
+- Move Webpack related files to `webpack-plugins` folder @sneridagh
+- Remove unused Dockerfiles @sneridagh
+- Update Docker compose to latest images and best practices @sneridagh
+
+## 15.0.0-alpha.3 (2022-02-11)
+
+### Bugfix
+
+- Fix the upload image in contents view @iFlameing
+- add "view" id to contact-form container for main content skiplink @ThomasKindermann
+- Fix loading indicator positioning on Login form submit @sneridagh
+
+### Internal
+
+- Add new RawMaterial Volto websites in production @nzambello
+
+## 15.0.0-alpha.2 (2022-02-10)
+
+### Breaking
+
+- Language Switcher no longer takes care of the change of the language on the Redux Store. This responsability has been unified in the `MultilingualRedirector` @sneridagh
+
+### Bugfix
+
+- Prevent the MultilingualRedirector to force 4 content load when switching the language @reebalazs
+
+### Documentation
+
+- Upgrade Guide i18n: Make clear what's project, what add-on. @ksuess
+
+## 15.0.0-alpha.1 (2022-02-09)
+
+### Bugfix
+
+- Fix the `null` error in SelectAutoComplete Widget @iFlameing
+
+## 15.0.0-alpha.0 (2022-02-09)
+
+### Breaking
+
+- Upgrade `react-cookie` to latest version. @sneridagh @robgietema
+  See https://docs.voltocms.com/upgrade-guide/ for more information.
+
+## 14.10.0 (2022-02-08)
+
+### Feature
+
+- Add Pluggable to toolbar user menu. @ksuess
+
+## 14.9.0 (2022-02-08)
+
+### Feature
+
+- Show addons installed in control panel @sneridagh
+
+### Bugfix
+
+- Fix italian translations in ObjectBrowser @giuliaghisini
+
+## 14.8.1 (2022-02-04)
+
+### Bugfix
+
+- Fix wrong CSS in language independent class selector @sneridagh
+
+### Internal
+
+- Cleanup redundant buildout install run.
+
+## 14.8.0 (2022-02-03)
+
+### Feature
+
+- Enable `components` property in Volto's config registry. Does not expose any direct feature but this will open the door to be able to override registered components using the config registry and avoid using shadowing explicitly. @sneridagh
+- Add `resolve` and `register` helper methods for the Volto config. They retrieve and register new components in the registry. @tiberiuichim @sneridagh
+- Add `Component` component, given a `name` of a component registered in the registry, it renders it, passing down the props. @tiberiuichim
+- Syncronize the content language with the UI language in multilingual sites. So when you are accessing a content in a given language the rest of the interface literals follow along (it updates the language cookie). So the UI remains consistent. @sneridagh
+
+### Bugfix
+
+- Fix the a11y violation of UrlWidget @iRohitSingh
+
+### Internal
+
+- Update volta pins in package.json @fredvd
+
+## 14.7.1 (2022-02-02)
+
+### Internal
+
+- Add CSS body class in Babel view. Improve marker for language independent fields in Babel view too. @sneridagh
+
+### Docs
+
+Update documentation for internal proxy & other smaller reorganisation for quicker onboarding of
+new users/evaluators. @fredvd
+
+## 14.7.0 (2022-01-28)
+
+### Feature
+
+- Add `<FormattedDate>` and `<FormattedRelativeDate>` components. Check their Storybook stories for details. This is part of ongoing work to minimize the use of 'deprecated' momentjs. @sneridagh @tiberiuichim
+
+### Internal
+
+- Upgrade jest to latest release, 27 major. @tiberiuichim
+- Lazyload momentjs. `parseDateTime` helper now requires passing the momentjs library @tiberiuichim
+
+## 14.6.0 (2022-01-27)
+
+### Feature
+
+- Use `volto.config.js` as dynamic configuration for addons. It adds up to the `package.json` `addons` key, allowing dynamic load of addons (eg. via environment variables) @sneridagh
+
+### Internal
+
+- Fix ObjectListWidget story bug caused by lazyloading dnd libraries
+  @tiberiuichim
+
+## 14.5.0 (2022-01-26)
+
+### Feature
+
+- VocabularyTermsWidget: Token is now on creation of term editable, but stays ineditable afterwards. @ksuess
+
+### Bugfix
+
+- Fix A11Y violations in Navigation @iRohitSingh
+- Fix `language-independent-field` CSS class styling @sneridagh
+
+### Internal
+
+- Lazyload react-beautiful-dnd @tiberiuichim
+- Lazyload react-dnd @tiberiuichim
+- Improve docs on environment variables, add recipes @sneridagh
+- Update p.restapi to 8.20.0 and plone.volto to 4.0.0a1 and plone.rest to 2.0.0a2 @sneridagh
+
+## 14.4.0 (2022-01-21)
+
+### Feature
+
+- Language independent fields support in Volto forms @sneridagh
+
+## 14.3.0 (2022-01-20)
+
+### Feature
+
+- Bump semantic-ui-react to v2.0.3 @nileshgulia1
+
+## 14.2.3 (2022-01-20)
+
+### Bugfix
+
+- Fix ListingBlock to add "No results" message when there are no messages @erral
+- Fix overflow table in Content view @giuliaghisini
+- Fixed url validation in FormValidation to admit ip addresses. @giuliaghisini
+- Upgrade to plone.restapi 8.19.0 (to support the language independent fields serialization) @sneridagh
+
+## 14.2.2 (2022-01-13)
+
+### Bugfix
+
+- Fix home URL item in Navigation, which was evaluating as non-internal @sneridagh
+- Improve the request handling in `getAPIResourceWithAuth` and in `Api` helper. This fixes the "Cannot set headers once the content has being sent" @sneridagh
+- Fix when you remove the time from DatetimeWidget @iRohitSingh
+
+### Internal
+
+- Fix URL for Climate-Energy, a Volto website @tiberiuichim
+- Fix quirky Cypress test in "DX control panel schema" (see https://github.com/plone/volto/runs/4803206906?check_suite_focus=true) @sneridagh
+
+## 14.2.1 (2022-01-12)
+
+### Bugfix
+
+- Fix home URL item in Navigation, which was evaluating as non-internal
+
+### Internal
+
+- Use plone-backend docker images for Cypress tests @sneridagh
+- Upgrade `query-string` library so it supports Plone `:list` qs marker @sneridagh
+
+## 14.2.0 (2022-01-04)
+
+### Feature
+
+- Allow `creatable` prop to be passed to `ArrayWidgets`, in case they don't have a vocabulary @giuliaghisini
+- Added initialBlocksFocus to blocks config, to set default focus on non-first block. @giuliaghisini
+
+## 14.1.1 (2022-01-03)
+
+### Internal
+
+- Update to plone.restapi 8.18.0, remove some defensive code in vocabularies action now that it's fixed in the backend @sneridagh
+
+## 14.1.0 (2021-12-31)
 
 ### Feature
 
@@ -87,7 +594,7 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
   @tiberiuichim
 - Added `.storybook` setup in the Volto `app` generator. Volto projects generated from this scafolding are now ready to run Storybook for the project and develop addons (in `src/addons` folder).
 - Style checkboxes @nileshgulia1
-- Allow loading .less files also from a Volto project's `src` folder.  @tiberiuichim
+- Allow loading .less files also from a Volto project's `src` folder. @tiberiuichim
 - Add catalan translation @bloodbare @sneridagh
 - Updated Volto production sites list @giuliaghisini
 - Japanese translation updated @terapyon
@@ -259,6 +766,8 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 - Update to plone.restapi 8.16.2 (revert missing_value PR) @sneridagh
 - Update all requirements and the reasoning behind them in builds @sneridagh
 - Update Plone version in api backend to 5.2.6. Update README and cleanup @fredvd
+- Various local development build improvements @rpatterson
+- Document CI changelog verifier failure details that mislead contributors
 - Document CI changelog verifier failure details that mislead contributors @rpatterson
 - Updated italian translation @pnicolli
 

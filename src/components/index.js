@@ -26,6 +26,8 @@ export OutdatedBrowser from '@plone/volto/components/theme/OutdatedBrowser/Outda
 export LanguageSelector from '@plone/volto/components/theme/LanguageSelector/LanguageSelector';
 export RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
 export SkipLinks from '@plone/volto/components/theme/SkipLinks/SkipLinks';
+export EventDetails from '@plone/volto/components/theme/EventDetails/EventDetails';
+export PreviewImage from '@plone/volto/components/theme/PreviewImage/PreviewImage';
 
 export Error from '@plone/volto/components/theme/Error/Error';
 export NotFound from '@plone/volto/components/theme/NotFound/NotFound';
@@ -145,6 +147,7 @@ export const RecurrenceWidget = loadable(() =>
 );
 
 export FileWidget from '@plone/volto/components/manage/Widgets/FileWidget';
+export IdWidget from '@plone/volto/components/manage/Widgets/IdWidget';
 export PasswordWidget from '@plone/volto/components/manage/Widgets/PasswordWidget';
 export ReferenceWidget from '@plone/volto/components/manage/Widgets/ReferenceWidget';
 export SchemaWidget from '@plone/volto/components/manage/Widgets/SchemaWidget';
@@ -198,5 +201,8 @@ export ToCSettingsSchema from '@plone/volto/components/manage/Blocks/ToC/Schema'
 
 export MaybeWrap from '@plone/volto/components/manage/MaybeWrap/MaybeWrap';
 export ContentMetadataTags from '@plone/volto/components/theme/ContentMetadataTags/ContentMetadataTags';
+export FormattedDate from '@plone/volto/components/theme/FormattedDate/FormattedDate';
+export FormattedRelativeDate from '@plone/volto/components/theme/FormattedDate/FormattedRelativeDate';
+export Component from '@plone/volto/components/theme/Component/Component';
 
 export App from '@plone/volto/components/theme/App/App';

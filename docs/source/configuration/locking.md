@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # Locking support
 
 Content edit locking feature is to prevent simultaneous conflicting edits of the same content.

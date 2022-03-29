@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": "Volto forms and widgets"
+  "property=og:description": "Volto forms and widgets"
+  "property=og:title": "Forms and widgets"
+  "keywords": "Volto, Plone, frontend, React, Blocks, Edit, components, Forms, widgets"
+---
+
 # Forms and widgets
 
 ## Set frontend widget
@@ -136,7 +144,13 @@ const applyConfig = (config) => {
 
 Based on this setup, Volto will render this field with the `TokenWidget`.
 
+
+```{seealso}
+See [storybook](https://6.dev-docs.plone.org/storybook) with available widgets.
+```
+
 ## Write a new widget
 
-!!! note
-    Please contribute to this section!
+```{note}
+Please contribute to this section!
+```

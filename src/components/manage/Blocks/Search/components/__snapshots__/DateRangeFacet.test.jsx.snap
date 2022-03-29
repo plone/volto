@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DateRangeFaceg renders a facet component with a date range widget 1`] = `
+<div>
+  <div
+    class="daterange-facet"
+  >
+    <h4
+      class="ui header"
+    >
+      Test Facet
+    </h4>
+    <div
+      class="ui form date-time-widget-wrapper"
+    >
+      <div
+        class="ui input date-input"
+      >
+        <div
+          class="DateRangePicker DateRangePicker_1"
+        >
+          <div>
+            <div
+              class="DateRangePickerInput DateRangePickerInput_1 DateRangePickerInput__showClearDates DateRangePickerInput__showClearDates_2"
+            >
+              <div
+                class="DateInput DateInput_1"
+              >
+                <input
+                  aria-describedby="DateInput__screen-reader-message-undefined-start-date"
+                  aria-label="Start Date"
+                  autocomplete="off"
+                  class="DateInput_input DateInput_input_1"
+                  id="undefined-start-date"
+                  name="undefined-start-date"
+                  placeholder="Start Date"
+                  type="text"
+                  value=""
+                />
+                <p
+                  class="DateInput_screenReaderMessage DateInput_screenReaderMessage_1"
+                  id="DateInput__screen-reader-message-undefined-start-date"
+                >
+                  Navigate forward to interact with the calendar and select a date. Press the question mark key to get the keyboard shortcuts for changing dates.
+                </p>
+              </div>
+              <div
+                aria-hidden="true"
+                class="DateRangePickerInput_arrow DateRangePickerInput_arrow_1"
+                role="presentation"
+              >
+                <svg
+                  class="DateRangePickerInput_arrow_svg DateRangePickerInput_arrow_svg_1"
+                  focusable="false"
+                  viewBox="0 0 1000 1000"
+                >
+                  <path
+                    d="M694 242l249 250c12 11 12 21 1 32L694 773c-5 5-10 7-16 7s-11-2-16-7c-11-11-11-21 0-32l210-210H68c-13 0-23-10-23-23s10-23 23-23h806L662 275c-21-22 11-54 32-33z"
+                  />
+                </svg>
+              </div>
+              <div
+                class="DateInput DateInput_1"
+              >
+                <input
+                  aria-describedby="DateInput__screen-reader-message-undefined-end-date"
+                  aria-label="End Date"
+                  autocomplete="off"
+                  class="DateInput_input DateInput_input_1"
+                  id="undefined-end-date"
+                  name="undefined-end-date"
+                  placeholder="End Date"
+                  type="text"
+                  value=""
+                />
+                <p
+                  class="DateInput_screenReaderMessage DateInput_screenReaderMessage_1"
+                  id="DateInput__screen-reader-message-undefined-end-date"
+                >
+                  Navigate backward to interact with the calendar and select a date. Press the question mark key to get the keyboard shortcuts for changing dates.
+                </p>
+              </div>
+              <button
+                aria-label="Clear Dates"
+                class="DateRangePickerInput_clearDates DateRangePickerInput_clearDates_1 DateRangePickerInput_clearDates__hide DateRangePickerInput_clearDates__hide_2"
+                type="button"
+              >
+                <svg
+                  class="icon close"
+                  style="height: 24px; width: auto; fill: currentColor;"
+                  viewBox=""
+                  xmlns=""
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
