@@ -75,7 +75,7 @@ export const getImageAttributes = (
         } else return srcSet;
       }, []);
 
-      if (useOriginal) attrs.srcSet = attrs.srcSet.concat(`${baseUrl} 1200w`); // expect that is for desktop screens, I don't have actual size
+      if (useOriginal) attrs.srcSet = attrs.srcSet.concat(`${baseUrl} 1900w`); // expect that is for desktop screens, I don't have actual size
       break;
 
     // External URL or other element

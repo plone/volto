@@ -117,9 +117,6 @@ Array [
   <picture
     className="volto-image floated right"
   >
-    <source
-      srcSet="/test-images/@@images/image/listing 16w, /test-images/@@images/image/icon 32w, /test-images/@@images/image/tile 64w, /test-images/@@images/image/thumb 128w, /test-images/@@images/image/mini 200w, /test-images/@@images/image/preview 400w, /test-images/@@images/image/large 768w"
-    />
     <img
       alt="Photo"
       className="photo-image"
@@ -158,9 +155,6 @@ Array [
   <picture
     className="volto-image"
   >
-    <source
-      srcSet="/test-images/@@images/image/listing 16w, /test-images/@@images/image/icon 32w, /test-images/@@images/image/tile 64w, /test-images/@@images/image/thumb 128w, /test-images/@@images/image/mini 200w"
-    />
     <img
       alt="Photo"
       className="photo-image"
@@ -199,9 +193,6 @@ Array [
   <picture
     className="volto-image"
   >
-    <source
-      srcSet="/test-images/@@images/image/listing 16w, /test-images/@@images/image/icon 32w, /test-images/@@images/image/tile 64w, /test-images/@@images/image/thumb 128w, /test-images/@@images/image/mini 200w, /test-images/@@images/image/preview 400w, /test-images/@@images/image/large 768w, /test-images/@@images/image 1920w"
-    />
     <img
       alt="Photo"
       className="photo-image"
@@ -240,9 +231,6 @@ Array [
   <picture
     className="volto-image medium"
   >
-    <source
-      srcSet="/test-images/@@images/image/listing 16w, /test-images/@@images/image/icon 32w, /test-images/@@images/image/tile 64w, /test-images/@@images/image/thumb 128w, /test-images/@@images/image/mini 200w, /test-images/@@images/image/preview 400w, /test-images/@@images/image/large 768w"
-    />
     <img
       alt="Photo"
       className="photo-image"
@@ -281,9 +269,6 @@ Array [
   <picture
     className="volto-image"
   >
-    <source
-      srcSet="/photo.png/@@images/image/large 768w, /photo.png/@@images/image/preview 400w, /photo.png/@@images/image/mini 200w, /photo.png/@@images/image/thumb 128w, /photo.png/@@images/image/tile 64w, /photo.png/@@images/image/icon 32w, /photo.png/@@images/image/listing 16w"
-    />
     <img
       alt="Photo"
       className="photo-image"
