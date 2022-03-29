@@ -57,15 +57,20 @@ const Image = ({
     setSrcset(
       srcSet
         .filter((s, index) => {
-          let addable = (ss) =>
-            ss
-              ? parseInt(ss.split(' ')[1].replace('w', ''), 10) <=
-                (imageRef?.current?.width ?? Infinity)
+          let addable = (ss) => {
+            let w = ss ? parseInt(ss.split(' ')[1].replace('w', ''), 10) : null;
+            return w
+              ? w <= (imageRef?.current?.width ?? Infinity) ||
+                  w <= (imageRef?.current?.height ?? Infinity)
               : false;
+          };
+
           let add = addable(s);
+
           if (!add && addable(srcSet[index - 1])) {
             add = true; //add the next item grather then imageRef width, to avoid less quality
           }
+
           return add;
         })
         .join(', '),
