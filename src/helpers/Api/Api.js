@@ -22,7 +22,10 @@ export function formatApiUrl(path) {
 
   if (path.startsWith('http://') || path.startsWith('https://')) return path;
 
-  const adjustedPath = path[0] !== '/' ? `/${path}` : path;
+  let adjustedPath = path[0] !== '/' ? `/${path}` : path;
+  if (adjustedPath.indexOf(settings.prefixPath) === 0) {
+    adjustedPath = adjustedPath.slice(settings.prefixPath.length);
+  }
 
   let apiPath = '';
   if (settings.internalApiPath && __SERVER__) {
@@ -31,7 +34,9 @@ export function formatApiUrl(path) {
     apiPath = settings.apiPath;
   }
 
-  return `${apiPath}${APISUFIX}${adjustedPath}`;
+  const res = `${apiPath}${APISUFIX}${adjustedPath}`;
+  // console.log('formatApiUrl', { path, res });
+  return res;
 }
 
 /**
