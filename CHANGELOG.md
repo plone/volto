@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add package.json scripts documentation @ksuess
+
 ### Bugfix
 
 ### Internal
