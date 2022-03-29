@@ -37,18 +37,16 @@ For a production setup, when hosting Volto behind a proxy HTTP server, you can
 configure your rewrite rules to something like the following (in this case, for Apache).
 
 ```apache
-RewriteRule ^/my-prefix/\+\+api\+\+/(.*) \
-  http://plone:8080/VirtualHostBase/http/example.com:80/Plone/VirtualHostRoot/_vh_my-prefix/$$1 [P,L]
-RewriteRule ^/my-prefix(.*) http://volto:3000/my-prefix$$1 [P,L]
+RewriteRule ^/level-1/\+\+api\+\+(.*) http://plone:8080/VirtualHostBase/http/example.com:80/Plone/VirtualHostRoot/_vh_level-1$$1 [P,L]
+RewriteRule ^/level-1(.*) http://volto:3000/level-1/level-2$$1 [P,L]
 ```
 
-In case you have a deeper prefix path (for example, `level1/level2`), you can
+In case you have a deeper prefix path (for example, `/level1/level2`), you can
 do the following (notice the multiple `_vh_` segments in the rewrite rule):
 
 ```apache
-RewriteRule ^/level1/level2/\+\+api\+\+/(.*) \
-  http://plone:8080/VirtualHostBase/http/example.com:80/Plone/VirtualHostRoot/_vh_level1/_vh_level2/$$1 [P,L]
-RewriteRule ^/level1/level2(.*) http://volto:3000/level1/level2$$1 [P,L]
+RewriteRule ^/level-1/level-2/\+\+api\+\+(.*) http://plone:8080/VirtualHostBase/http/example.com:80/Plone/VirtualHostRoot/_vh_level-1/_vh_level-2$$1 [P,L]
+RewriteRule ^/level-1/level-2(.*) http://volto:3000/level-1/level-2$$1 [P,L]
 ```
 
 And start Volto with the following.
@@ -57,6 +55,14 @@ And start Volto with the following.
 RAZZLE_PREFIX_PATH=/level1/level2 RAZZLE_API_PATH=http://example.com/level1/level2 yarn start
 ```
 
-One final note, as you'll be integrating Volto with an existing website, you
+Note, as you'll be integrating Volto with an existing website, you
 need to configure `config.settings.externalRoutes` so that the router knows
 which routes it should consider internal.
+
+And one final notice, because the `RAZZLE_PREFIX_PATH` is also used to instruct
+webpack on the location of the static resources, you also have to use it when
+building the static resources bundle, like:
+
+```shell
+RAZZLE_PREFIX_PATH=/level1/level2 yarn build
+```
