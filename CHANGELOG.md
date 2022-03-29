@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Change which api calls can set specific api errors @robgietema
+- Fix helper import. @robgietema
 
 ### Internal
 
