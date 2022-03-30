@@ -4,7 +4,7 @@ import React from 'react';
 import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl-redux';
-import cookie from 'react-cookie';
+import Cookies from 'universal-cookie';
 import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 import { ReduxAsyncConnect } from '@plone/volto/helpers/AsyncConnect';
@@ -22,8 +22,9 @@ import initSentry from '@plone/volto/sentry';
 export const history = createBrowserHistory();
 
 initSentry(Sentry);
+const cookies = new Cookies();
 
-if (process.env.NODE_ENV === 'production' && cookie?.load('auth_token')) {
+if (process.env.NODE_ENV === 'production' && cookies.get('auth_token')) {
   import('offline-plugin/runtime').then((plugin) => plugin.install());
 }
 
