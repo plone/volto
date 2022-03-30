@@ -11,7 +11,7 @@ html_meta:
 Volto has a pre-defined set of SVG icons from the Pastanaga UI icon system.
 They are available under [Volto icons](https://github.com/plone/volto/tree/master/src/icons).
 
-The following example shows how to display one of these icons.```
+The following example shows how to display one of these icons.
 
 ```js
 import addUserSVG from '@plone/volto/icons/add-user.svg';
