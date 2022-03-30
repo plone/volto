@@ -1,9 +1,9 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "How to configure a new block"
+  "property=og:description": "How to configure a new block"
+  "property=og:title": "Blocks settings"
+  "keywords": "Volto, Plone, frontend, React, Block settings"
 ---
 
 # Blocks settings

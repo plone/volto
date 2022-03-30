@@ -1,9 +1,9 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "Learn how to enable TypeScript support when developing you project with Volto."
+  "property=og:description": "Learn how to enable TypeScript support when developing you project with Volto."
+  "property=og:title": "TypeScript"
+  "keywords": "Volto, Plone, frontend, React, typescript, css"
 ---
 
 # TypeScript

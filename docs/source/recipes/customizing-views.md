@@ -1,9 +1,9 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "Learn how to customize volto views."
+  "property=og:description": "Learn how to customize volto views."
+  "property=og:title": "Customizing Volto Views"
+  "keywords": "Volto, Plone, frontend, React, views"
 ---
 
 # Customizing Volto Views

@@ -1,9 +1,9 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "Legacy Browser Support (IE11 compatibility): Polyfills, babel-env, Pre-transpiling"
+  "property=og:description": "Legacy Browser Support (IE11 compatibility): Polyfills, babel-env, Pre-transpiling"
+  "property=og:title": "Legacy Browser Support"
+  "keywords": "Volto, Plone, frontend, React, legacy browser support"
 ---
 
 # Legacy Browser Support (IE11 compatibility)

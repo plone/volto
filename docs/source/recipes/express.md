@@ -1,9 +1,9 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "Volto uses the popular Express server for its Server-Side Rendering implementation and static resource serving."
+  "property=og:description": "Volto uses the popular Express server for its Server-Side Rendering implementation and static resource serving."
+  "property=og:title": "Custom Express middleware"
+  "keywords": "Volto, Plone, frontend, React, middleware"
 ---
 
 # Custom Express middleware

@@ -1,9 +1,9 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "Learn to configure the API expanders Volto uses using the `settings.apiExpanders` like this"
+  "property=og:description": "Learn to configure the API expanders Volto uses using the `settings.apiExpanders` like this"
+  "property=og:title": "API expanders"
+  "keywords": "Volto, Plone, frontend, React, api expanders"
 ---
 
 # API expanders

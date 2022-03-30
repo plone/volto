@@ -1,9 +1,9 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "Recipes: Development"
+  "property=og:description": "Recipes: Development"
+  "property=og:title": "Development recipes"
+  "keywords": "Volto, Plone, frontend, React, development"
 ---
 
 # Development recipes

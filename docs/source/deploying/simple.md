@@ -1,9 +1,9 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "Volto is a Node application that runs on your machine/server and listens to a port. Once you are ready to deploy it, you should build it running:"
+  "property=og:description": "Volto is a Node application that runs on your machine/server and listens to a port. Once you are ready to deploy it, you should build it running:"
+  "property=og:title": "Simple deployment"
+  "keywords": "Volto, Plone, frontend, React, deployment"
 ---
 
 # Simple deployment

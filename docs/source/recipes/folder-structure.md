@@ -1,9 +1,11 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "Volto is based on React, Redux, and React-Router. All of the
+code is located in the `src` folder."
+  "property=og:description": "Volto is based on React, Redux, and React-Router. All of the
+code is located in the `src` folder."
+  "property=og:title": "Folder structure"
+  "keywords": "Volto, Plone, frontend, React, folder structure"
 ---
 
 # Folder structure
