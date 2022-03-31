@@ -1,11 +1,7 @@
 ---
 html_meta:
-  "description": "Volto has been developed with a set of principles in mind,
-brought from the years of experience developing Plone core and implementing projects on
-it."
-  "property=og:description": "Volto has been developed with a set of principles in mind,
-brought from the years of experience developing Plone core and implementing projects on
-it."
+  "description": "Volto design principles"
+  "property=og:description": "Volto design principles"
   "property=og:title": "Design principles"
   "keywords": "Volto, Plone, frontend, React, design principles"
 ---

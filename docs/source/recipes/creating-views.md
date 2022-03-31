@@ -1,8 +1,7 @@
 ---
 html_meta:
-  "description": "In this chapter we are going to create a new type of view for displaying
-contents in a folder. We will call this view `full view`."
-  "property=og:description": "In this chapter we are going to create a new type of view for displaying contents in a folder. We will call this view `full view`."
+  "description": "Creating Volto views"
+  "property=og:description": "Creating Volto views"
   "property=og:title": "Creating Volto Views"
   "keywords": "Volto, Plone, frontend, React, views"
 ---

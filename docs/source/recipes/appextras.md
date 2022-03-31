@@ -1,8 +1,7 @@
 ---
 html_meta:
-  "description": "The `AppExtras` component is a general use insertion point for things like
-analytics, general purpose code spanning the whole application or third party services code."
-  "property=og:description": "The `AppExtras` component is a general use insertion point for things like analytics, general purpose code spanning the whole application or third party services code."
+  "description": "The `AppExtras` component is a general use insertion point for general purpose code spanning the whole application or for third party services code."
+  "property=og:description": "The `AppExtras` component is a general use insertion point for general purpose code spanning the whole application or for third party services code."
   "property=og:title": "AppExtras component"
   "keywords": "Volto, Plone, frontend, React, app extra component"
 ---

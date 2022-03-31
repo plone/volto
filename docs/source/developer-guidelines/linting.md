@@ -1,9 +1,7 @@
 ---
 html_meta:
-  "description": "Volto developers can enjoy a lot of freedom in their choice of text editors and
-IDEs"
-  "property=og:description": "Volto developers can enjoy a lot of freedom in their choice of text editors and
-IDEs"
+  "description": "Code linting in Volto"
+  "property=og:description": "Code linting in Volto"
   "property=og:title": "Linting"
   "keywords": "Volto, Plone, frontend, React, lint"
 ---

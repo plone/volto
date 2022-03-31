@@ -1,7 +1,7 @@
 ---
 html_meta:
-  "description": "A guide to deployment"
-  "property=og:description": "A guide to deployment"
+  "description": "A guide to Volto frontend deployment"
+  "property=og:description": "A guide to Volto frontend deployment"
   "property=og:title": "Deploying"
   "keywords": "Volto, Plone, frontend, React, deploying"
 ---

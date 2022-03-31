@@ -1,7 +1,7 @@
 ---
 html_meta:
-  "description": "Gain an understanding of how to create a new Volto project."
-  "property=og:description": "Gain an understanding of how to create a new Volto project."
+  "description": "Creating a new Volto project"
+  "property=og:description": "Creating a new Volto project"
   "property=og:title": "Creating a new Volto project"
   "keywords": "Volto, Plone, frontend, React, new, volto project, basic"
 ---

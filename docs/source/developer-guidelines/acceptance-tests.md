@@ -3,7 +3,7 @@ html_meta:
   "description": "Developer guidelines for acceptance tests."
   "property=og:description": "Developer guidelines for acceptance tests."
   "property=og:title": "Acceptance tests"
-  "keywords": "Volto, Plone, frontend, React, helper command, redux"
+  "keywords": "Volto, Plone, frontend, React, helper command, redux, acceptance, tests, Cypress"
 ---
 
 # Acceptance tests

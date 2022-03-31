@@ -1,7 +1,7 @@
 ---
 html_meta:
-  "description": "In this chapter we will learn how to change settings for the Rich Text Editor."
-  "property=og:description": "In this chapter we will learn how to change settings for the Rich Text Editor."
+  "description": "How to change settings for the rich text editor."
+  "property=og:description": "How to change settings for the rich text editor."
   "property=og:title": "RichEditor Settings"
   "keywords": "Volto, Plone, frontend, React, rich text editor"
 ---

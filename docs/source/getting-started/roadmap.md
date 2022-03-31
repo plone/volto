@@ -1,7 +1,7 @@
 ---
 html_meta:
-  "description": "A roadmap to learn Volto."
-  "property=og:description": "A roadmap to learn Volto."
+  "description": "Volto developer roadmap"
+  "property=og:description": "Volto developer roadmap"
   "property=og:title": "Developer roadmap"
   "keywords": "Volto, Plone, frontend, React, developer roadmap, development basic"
 ---

@@ -1,7 +1,7 @@
 ---
 html_meta:
-  "description": "Prepare the Plone backend content API for volto in order to fully support all volto features"
-  "property=og:description": "Prepare the Plone backend content API for volto in order to fully support all volto features"
+  "description": "Prepare the Plone backend content API for Volto in order to fully support all volto features"
+  "property=og:description": "Prepare the Plone backend content API for Volto in order to fully support all volto features"
   "property=og:title": "Backend configuration"
   "keywords": "Volto, Plone, frontend, React, backend configuration"
 ---
