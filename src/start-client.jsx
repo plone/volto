@@ -1,7 +1,7 @@
 import '@plone/volto/config'; // This is the bootstrap for the global config - client side
 import '@root/theme';
 import React from 'react';
-import { hydrate } from 'react-dom';
+import { hydrateRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl-redux';
 import { ConnectedRouter } from 'connected-react-router';
@@ -55,7 +55,8 @@ export default () => {
   }
 
   loadableReady(() => {
-    hydrate(
+    hydrateRoot(
+      document.getElementById('main'),
       <CookiesProvider>
         <Provider store={store}>
           <IntlProvider onError={reactIntlErrorHandler}>
@@ -67,7 +68,6 @@ export default () => {
           </IntlProvider>
         </Provider>
       </CookiesProvider>,
-      document.getElementById('main'),
     );
   });
 };
