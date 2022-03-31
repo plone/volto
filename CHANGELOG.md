@@ -522,6 +522,7 @@ new users/evaluators. @fredvd
 
 ### Bugfix
 
+- Fix getVocabName when vocabNameOrURL is false @avoinea #2955, #2919
 - Fix query data in listing blocks ssr async call @cekk
 - In the contact form, only display the "back" button in the toolbar @tiberiuichim
 - Fixed selected widget to use isMulti prop @giuliaghisini
