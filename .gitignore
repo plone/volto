@@ -42,6 +42,7 @@ pip-selfcheck.json
 pyvenv.cfg
 share
 /api/lib64
+lib64
 
 # locales
 locales/*.json

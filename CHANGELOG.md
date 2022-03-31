@@ -9,18 +9,24 @@
 ### Bugfix
 
 - Fix/Improve the console logging when the server starts. @sneridagh
+- Change which api calls can set specific api errors @robgietema
+- Fix helper import. @robgietema
 
 ### Internal
 
 - Remove offending `Makefile` command that broke on MacOS due to lack of compatibility of the MacOS `make` utility. @tisto
+- Upgraded use-deep-compare-effect to version 1.8.1. @pnicolli
 
 ### Documentation
+
+- Switch from `docs-linkcheckbroken` to `docs-linkcheck` in GitHub Actions because the former is broken. @stevepiercy
+- Set the output for storybook to the correct directory. @stevepiercy
 
 ## 15.2.2 (2022-03-23)
 
 ### Bugfix
 
-- Fix external url  append issue of @@download/file @iRohitSingh
+- Fix external url append issue of @@download/file @iRohitSingh
 - Fix headers in sitemap middleware when errors occur in the sitemap generation @mamico
 
 ## 15.2.1 (2022-03-21)
@@ -79,7 +85,8 @@
 ### Documentation
 
 - Updated README.md @ktsrivastava29
-- Added language to codeblocks in md files @ktsrivastava29
+
+- Added language to code-blocks in md files @ktsrivastava29
 - Added html_meta values and labels for Intersphinx cross-references from Trainings. @stevepiercy
 - Replaced `docs.voltocms.com` with MyST references. @stevepiercy
 
