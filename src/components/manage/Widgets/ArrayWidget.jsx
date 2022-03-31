@@ -318,6 +318,7 @@ class ArrayWidget extends Component {
           value={selectedOption || []}
           placeholder={this.props.intl.formatMessage(messages.select)}
           onChange={this.handleChange}
+          isValidNewOption={() => true}
           isClearable
           isMulti
         />
