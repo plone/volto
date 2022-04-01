@@ -138,6 +138,7 @@
 - Pass placeholder property to PasswordWidget and NumberWidget @mihaislobozeanu
 - Fix hot reload on updates related to the config object because of `VersionOverview` component @sneridagh
 - Fix error when lock data is gone after an invariant error. @robgietema
+- Move `customStyleMap` to `richtextEditorSettings`
 
 ### Internal
 
