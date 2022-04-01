@@ -2,10 +2,6 @@
 
 ## 15.2.3 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Change which api calls can set specific api errors @robgietema
