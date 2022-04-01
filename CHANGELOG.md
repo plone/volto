@@ -12,12 +12,18 @@
 
 ### Documentation
 
+- Added meta-html values in most of the pages. @ktsrivastava29
+
 ## 15.2.3 (2022-04-01)
 
 ### Bugfix
 
 - Change which api calls can set specific api errors @robgietema
 - Fix helper import. @robgietema
+- Move `customStyleMap` to `richtextEditorSettings`
+- Pass placeholder and isDisabled properties to EmailWidget and UrlWidget @mihaislobozeanu
+- Pass placeholder property to PasswordWidget and NumberWidget @mihaislobozeanu
+- Fix getVocabName when vocabNameOrURL is false @avoinea #2955, #2919
 
 ### Internal
 
@@ -29,7 +35,8 @@
 
 - Switch from `docs-linkcheckbroken` to `docs-linkcheck` in GitHub Actions because the former is broken. @stevepiercy
 - Set the output for storybook to the correct directory. @stevepiercy
-- Fix typo in Makefile: docs/_build
+- Fix typo in Makefile: docs/_build @ksuess
+- Added language to code-blocks in md files @ktsrivastava29
 
 ## 15.2.2 (2022-03-23)
 
@@ -97,7 +104,6 @@
 - Added language to code-blocks in md files @ktsrivastava29
 - Added html_meta values and labels for Intersphinx cross-references from Trainings. @stevepiercy
 - Replaced `docs.voltocms.com` with MyST references. @stevepiercy
-- Added meta-html values in most of the pages. @ktsrivastava29
 
 ## 15.0.0 (2022-03-14)
 
@@ -143,11 +149,8 @@
 - Fix overflow of very long file name in `FileWidget` @sneridagh
 - Fix overflowing issue in the toolbar @kreafox
 - Overwrite current block on insert new block. @robgietema
-- Pass placeholder and isDisabled properties to EmailWidget and UrlWidget @mihaislobozeanu
-- Pass placeholder property to PasswordWidget and NumberWidget @mihaislobozeanu
 - Fix hot reload on updates related to the config object because of `VersionOverview` component @sneridagh
 - Fix error when lock data is gone after an invariant error. @robgietema
-- Move `customStyleMap` to `richtextEditorSettings`
 
 ### Internal
 
@@ -534,7 +537,6 @@ new users/evaluators. @fredvd
 
 ### Bugfix
 
-- Fix getVocabName when vocabNameOrURL is false @avoinea #2955, #2919
 - Fix query data in listing blocks ssr async call @cekk
 - In the contact form, only display the "back" button in the toolbar @tiberiuichim
 - Fixed selected widget to use isMulti prop @giuliaghisini
