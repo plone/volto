@@ -19,6 +19,7 @@ linting
 react
 redux
 routing
+icons
 testing
 acceptance-tests
 accessibility-guidelines
