@@ -78,7 +78,7 @@ if (middleware.length) server.use('/', middleware);
 
 server.use(function (err, req, res, next) {
   if (err) {
-    const { store } = res.app.locals;
+    const { store } = res.locals;
     const errorPage = (
       <Provider store={store} onError={reactIntlErrorHandler}>
         <StaticRouter context={{}} location={req.url}>
@@ -157,15 +157,15 @@ function setupServer(req, res, next) {
   }
 
   if (!process.env.RAZZLE_API_PATH && req.headers.host) {
-    res.app.locals.detectedHost = `${
+    res.locals.detectedHost = `${
       req.headers['x-forwarded-proto'] || req.protocol
     }://${req.headers.host}`;
-    config.settings.apiPath = res.app.locals.detectedHost;
-    config.settings.publicURL = res.app.locals.detectedHost;
+    config.settings.apiPath = res.locals.detectedHost;
+    config.settings.publicURL = res.locals.detectedHost;
   }
 
-  res.app.locals = {
-    ...res.app.locals,
+  res.locals = {
+    ...res.locals,
     store,
     api,
     errorHandler,
@@ -175,7 +175,7 @@ function setupServer(req, res, next) {
 }
 
 server.get('/*', (req, res) => {
-  const { errorHandler } = res.app.locals;
+  const { errorHandler } = res.locals;
 
   const api = new Api(req);
 
@@ -274,11 +274,9 @@ server.get('/*', (req, res) => {
                     process.env.NODE_ENV !== 'production'
                   }
                   criticalCss={readCriticalCss(req)}
-                  apiPath={
-                    res.app.locals.detectedHost || config.settings.apiPath
-                  }
+                  apiPath={res.locals.detectedHost || config.settings.apiPath}
                   publicURL={
-                    res.app.locals.detectedHost || config.settings.publicURL
+                    res.locals.detectedHost || config.settings.publicURL
                   }
                 />,
               )}
@@ -293,11 +291,9 @@ server.get('/*', (req, res) => {
                   markup={markup}
                   store={store}
                   criticalCss={readCriticalCss(req)}
-                  apiPath={
-                    res.app.locals.detectedHost || config.settings.apiPath
-                  }
+                  apiPath={res.locals.detectedHost || config.settings.apiPath}
                   publicURL={
-                    res.app.locals.detectedHost || config.settings.publicURL
+                    res.locals.detectedHost || config.settings.publicURL
                   }
                 />,
               )}
