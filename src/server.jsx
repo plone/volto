@@ -115,8 +115,8 @@ function setupServer(req, res, next) {
     .best(supported)
     .toString();
 
+  // Minimum initial state for the fake Redux store instance
   const initialState = {
-    form: req.body,
     intl: {
       defaultLocale: 'en',
       locale: lang,
@@ -128,7 +128,8 @@ function setupServer(req, res, next) {
     initialEntries: [req.url],
   });
 
-  // Create a new Redux store instance
+  // Create a fake Redux store instance for the `errorHandler` to render
+  // and for being used by the rest of the middlewares, if required
   const store = configureStore(initialState, history, api);
 
   function errorHandler(error) {
