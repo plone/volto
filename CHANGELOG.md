@@ -1,6 +1,6 @@
 # Change Log
 
-## 15.2.3 (unreleased)
+## 15.2.4 (unreleased)
 
 ### Breaking
 
@@ -14,11 +14,37 @@
 
 ### Documentation
 
+- Added meta-html values in most of the pages. @ktsrivastava29
+
+## 15.2.3 (2022-04-01)
+
+### Bugfix
+
+- Change which api calls can set specific api errors @robgietema
+- Fix helper import. @robgietema
+- Move `customStyleMap` to `richtextEditorSettings`
+- Pass placeholder and isDisabled properties to EmailWidget and UrlWidget @mihaislobozeanu
+- Pass placeholder property to PasswordWidget and NumberWidget @mihaislobozeanu
+- Fix getVocabName when vocabNameOrURL is false @avoinea #2955, #2919
+
+### Internal
+
+- Remove offending `Makefile` command that broke on MacOS due to lack of compatibility of the MacOS `make` utility. @tisto
+- Upgraded use-deep-compare-effect to version 1.8.1. @pnicolli
+- chore(icons): add missing pastanaga icons @nileshgulia1
+
+### Documentation
+
+- Switch from `docs-linkcheckbroken` to `docs-linkcheck` in GitHub Actions because the former is broken. @stevepiercy
+- Set the output for storybook to the correct directory. @stevepiercy
+- Fix typo in Makefile: docs/_build @ksuess
+- Added language to code-blocks in md files @ktsrivastava29
+
 ## 15.2.2 (2022-03-23)
 
 ### Bugfix
 
-- Fix external url  append issue of @@download/file @iRohitSingh
+- Fix external url append issue of @@download/file @iRohitSingh
 - Fix headers in sitemap middleware when errors occur in the sitemap generation @mamico
 
 ## 15.2.1 (2022-03-21)
@@ -77,7 +103,7 @@
 ### Documentation
 
 - Updated README.md @ktsrivastava29
-- Added language to codeblocks in md files @ktsrivastava29
+- Added language to code-blocks in md files @ktsrivastava29
 - Added html_meta values and labels for Intersphinx cross-references from Trainings. @stevepiercy
 - Replaced `docs.voltocms.com` with MyST references. @stevepiercy
 
