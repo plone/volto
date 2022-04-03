@@ -8,7 +8,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { find } from 'lodash';
 import { toast } from 'react-toastify';
 import { parse } from 'date-fns';
@@ -20,7 +20,7 @@ import {
   createWorkingCopy,
   removeWorkingCopy,
 } from '@plone/volto/actions';
-import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
+import { flattenToAppURL, getBaseUrl, withRouter } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';

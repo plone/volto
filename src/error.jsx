@@ -6,7 +6,7 @@
 import React from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 /**
  * Error page.
@@ -14,7 +14,7 @@ import { useHistory } from 'react-router-dom';
  * @returns {string} Markup of the error page.
  */
 const Error = ({ message, stackTrace }) => {
-  let history = useHistory();
+  let navigate = useNavigate();
 
   return (
     <div
@@ -38,7 +38,7 @@ const Error = ({ message, stackTrace }) => {
       <pre>{stackTrace}</pre>
       <span style={{ textAlign: 'center' }}>
         <p>
-          <button onClick={() => history.goBack()}>
+          <button onClick={() => navigate(-1)}>
             <FormattedMessage
               id="Navigate back"
               defaultMessage="Navigate back"

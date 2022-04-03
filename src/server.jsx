@@ -2,7 +2,7 @@
 import '@plone/volto/config'; // This is the bootstrap for the global config - server side
 import { existsSync, lstatSync, readFileSync } from 'fs';
 import React from 'react';
-import { StaticRouter } from 'react-router-dom';
+import { StaticRouter } from 'react-router-dom/server';
 import { Provider } from 'react-intl-redux';
 import express from 'express';
 import { renderToString } from 'react-dom/server';
@@ -18,7 +18,7 @@ import { CookiesProvider } from 'react-cookie';
 import cookiesMiddleware from 'universal-cookie-express';
 import debug from 'debug';
 
-import routes from '@root/routes';
+import routes, { Routes } from '@root/routes';
 import config from '@plone/volto/registry';
 
 import {
@@ -194,50 +194,48 @@ server.get('/*', (req, res) => {
   const url = req.originalUrl || req.url;
   const location = parseUrl(url);
 
-  loadOnServer({ store, location, routes, api })
-    .then(() => {
-      // The content info is in the store at this point thanks to the asynconnect
-      // features, then we can force the current language info into the store when
-      // coming from an SSR request
-      const contentLang =
-        store.getState().content.data?.language?.token ||
-        config.settings.defaultLanguage;
+  // The content info is in the store at this point thanks to the asynconnect
+  // features, then we can force the current language info into the store when
+  // coming from an SSR request
+  const contentLang =
+    store.getState().content.data?.language?.token ||
+    config.settings.defaultLanguage;
 
-      const cookie_lang =
-        req.universalCookies.get('I18N_LANGUAGE') ||
-        config.settings.defaultLanguage ||
-        req.headers['accept-language'];
+  const cookie_lang =
+    req.universalCookies.get('I18N_LANGUAGE') ||
+    config.settings.defaultLanguage ||
+    req.headers['accept-language'];
 
-      if (cookie_lang !== contentLang) {
-        store.dispatch(changeLanguage(contentLang, locales[contentLang], req));
-      }
+  if (cookie_lang !== contentLang) {
+    store.dispatch(changeLanguage(contentLang, locales[contentLang], req));
+  }
 
-      const context = {};
-      resetServerContext();
-      const markup = renderToString(
-        <ChunkExtractorManager extractor={extractor}>
-          <CookiesProvider cookies={req.universalCookies}>
-            <Provider store={store} onError={reactIntlErrorHandler}>
-              <StaticRouter context={context} location={req.url}>
-                <ReduxAsyncConnect routes={routes} helpers={api} />
-              </StaticRouter>
-            </Provider>
-          </CookiesProvider>
-        </ChunkExtractorManager>,
-      );
+  const context = {};
+  resetServerContext();
+  const markup = renderToString(
+    <ChunkExtractorManager extractor={extractor}>
+      <CookiesProvider cookies={req.universalCookies}>
+        <Provider store={store} onError={reactIntlErrorHandler}>
+          <StaticRouter context={context} location={req.url}>
+            <Routes />
+          </StaticRouter>
+        </Provider>
+      </CookiesProvider>
+    </ChunkExtractorManager>,
+  );
 
-      const readCriticalCss =
-        config.settings.serverConfig.readCriticalCss || defaultReadCriticalCss;
+  const readCriticalCss =
+    config.settings.serverConfig.readCriticalCss || defaultReadCriticalCss;
 
-      if (context.url) {
-        res.redirect(flattenToAppURL(context.url));
-      } else if (context.error_code) {
-        res.set({
-          'Cache-Control': 'no-cache',
-        });
+  if (context.url) {
+    res.redirect(flattenToAppURL(context.url));
+  } else if (context.error_code) {
+    res.set({
+      'Cache-Control': 'no-cache',
+    });
 
-        res.status(context.error_code).send(
-          `<!doctype html>
+    res.status(context.error_code).send(
+      `<!doctype html>
               ${renderToString(
                 <Html
                   extractor={extractor}
@@ -257,10 +255,10 @@ server.get('/*', (req, res) => {
                 />,
               )}
             `,
-        );
-      } else {
-        res.status(200).send(
-          `<!doctype html>
+    );
+  } else {
+    res.status(200).send(
+      `<!doctype html>
               ${renderToString(
                 <Html
                   extractor={extractor}
@@ -276,10 +274,8 @@ server.get('/*', (req, res) => {
                 />,
               )}
             `,
-        );
-      }
-    }, errorHandler)
-    .catch(errorHandler);
+    );
+  }
 });
 
 export const defaultReadCriticalCss = () => {

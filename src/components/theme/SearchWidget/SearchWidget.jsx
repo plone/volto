@@ -4,7 +4,7 @@
  */
 
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter } from '@plone/volto/helpers';
 import { Form, Input } from 'semantic-ui-react';
 import { compose } from 'redux';
 import { PropTypes } from 'prop-types';

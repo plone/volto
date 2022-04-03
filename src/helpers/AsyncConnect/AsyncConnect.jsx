@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Route } from 'react-router';
-import { renderRoutes } from 'react-router-config';
+import { renderRoutes } from 'react-router-dom';
 import { ReactReduxContext } from 'react-redux';
 import { loadAsyncConnect } from './ssr';
 import { getMutableState } from './utils';

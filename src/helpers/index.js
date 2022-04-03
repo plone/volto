@@ -5,6 +5,7 @@
  */
 
 // export { injectLazyLibs } from './Loadable/Loadable';
+export { withRouter } from './withRouter/withRouter';
 export Api from '@plone/volto/helpers/Api/Api';
 export { getAPIResourceWithAuth } from '@plone/volto/helpers/Api/APIResourceWithAuth';
 export Html from '@plone/volto/helpers/Html/Html';

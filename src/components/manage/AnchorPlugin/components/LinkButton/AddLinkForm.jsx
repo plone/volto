@@ -25,7 +25,7 @@ import navTreeSVG from '@plone/volto/icons/nav.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
-import { withRouter } from 'react-router';
+import { withRouter } from '@plone/volto/helpers';
 
 import { Icon } from '@plone/volto/components';
 

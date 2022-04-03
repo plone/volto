@@ -27,7 +27,7 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import homeSVG from '@plone/volto/icons/home.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import blankSVG from '@plone/volto/icons/blank.svg';
-import { withRouter } from 'react-router';
+import { withRouter } from '@plone/volto/helpers';
 
 const messages = defineMessages({
   placeholder: {

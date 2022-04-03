@@ -19,7 +19,7 @@ import {
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import qs from 'query-string';
-import { withRouter } from 'react-router-dom';
+import { withRouter } from '@plone/volto/helpers';
 
 import { Icon } from '@plone/volto/components';
 import { login } from '@plone/volto/actions';

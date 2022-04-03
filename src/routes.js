@@ -39,7 +39,7 @@ import {
 // in the components/index.js file.
 import App from '@plone/volto/components/theme/App/App';
 import View from '@plone/volto/components/theme/View/View';
-
+import { useRoutes } from 'react-router';
 import config from '@plone/volto/registry';
 
 /**
@@ -50,34 +50,34 @@ import config from '@plone/volto/registry';
 export const multilingualRoutes = [
   {
     path: `/(${config.settings?.supportedLanguages.join('|')})/sitemap`,
-    component: Sitemap,
+    element: <Sitemap />,
   },
   {
     path: `/(${config.settings?.supportedLanguages.join('|')})/search`,
-    component: Search,
+    element: <Search />,
   },
   {
     path: `/(${config.settings?.supportedLanguages.join('|')})/contact-form`,
-    component: ContactForm,
+    element: <ContactForm />,
   },
   {
     path: `/(${config.settings?.supportedLanguages.join('|')})/change-password`,
-    component: ChangePassword,
+    element: <ChangePassword />,
   },
   {
     path: `/(${config.settings?.supportedLanguages.join('|')})/register`,
-    component: Register,
+    element: <Register />,
   },
   {
     path: `/(${config.settings?.supportedLanguages.join('|')})/password-reset`,
-    component: RequestPasswordReset,
+    element: <RequestPasswordReset />,
     exact: true,
   },
   {
     path: `/(${config.settings?.supportedLanguages.join(
       '|',
     )})/password-reset/:token`,
-    component: PasswordReset,
+    element: <PasswordReset />,
     exact: true,
   },
 ];
@@ -85,161 +85,163 @@ export const multilingualRoutes = [
 export const defaultRoutes = [
   {
     path: '/',
-    component: View,
+    element: (props) => 'hello',
     exact: true,
   },
-  {
-    path: '/login',
-    component: Login,
-  },
-  {
-    path: '/logout',
-    component: Logout,
-  },
-  {
-    path: '/sitemap',
-    component: Sitemap,
-  },
-  {
-    path: '/search',
-    component: Search,
-  },
-  {
-    path: '/contact-form',
-    component: ContactForm,
-  },
-  {
-    path: '/controlpanel',
-    exact: true,
-    component: Controlpanels,
-  },
-  {
-    path: '/controlpanel/dexterity-types/:id/layout',
-    component: ContentTypeLayout,
-  },
-  {
-    path: '/controlpanel/dexterity-types/:id/schema',
-    component: ContentTypeSchema,
-  },
-  {
-    path: '/controlpanel/dexterity-types/:id',
-    component: ContentType,
-  },
-  {
-    path: '/controlpanel/dexterity-types',
-    component: ContentTypes,
-  },
-  {
-    path: '/controlpanel/addons',
-    component: AddonsControlpanel,
-  },
-  {
-    path: '/controlpanel/database',
-    component: DatabaseInformation,
-  },
-  {
-    path: '/controlpanel/moderate-comments',
-    component: ModerateComments,
-  },
-  {
-    path: '/controlpanel/users',
-    component: UsersControlpanel,
-  },
-  {
-    path: '/controlpanel/groups',
-    component: GroupsControlpanel,
-  },
-  {
-    path: '/controlpanel/:id',
-    component: Controlpanel,
-  },
-  {
-    path: '/change-password',
-    component: ChangePassword,
-  },
-  {
-    path: '/add',
-    component: Add,
-  },
-  {
-    path: '/edit',
-    component: Edit,
-  },
-  {
-    path: '/contents',
-    component: Contents,
-  },
-  {
-    path: '/sharing',
-    component: Sharing,
-  },
-  {
-    path: '/**/add',
-    component: Add,
-  },
-  {
-    path: '/**/create-translation',
-    component: CreateTranslation,
-  },
-  {
-    path: '/**/contents',
-    component: Contents,
-  },
-  {
-    path: '/**/sharing',
-    component: Sharing,
-  },
-  {
-    path: '/**/delete',
-    component: Delete,
-  },
-  {
-    path: '/**/diff',
-    component: Diff,
-  },
-  {
-    path: '/**/edit',
-    component: Edit,
-  },
-  {
-    path: '/**/history',
-    component: History,
-  },
-  {
-    path: '/**/sharing',
-    component: Sharing,
-  },
-  {
-    path: '/**/manage-translations',
-    component: ManageTranslations,
-  },
-  {
-    path: '/**/login',
-    component: Login,
-  },
-  {
-    path: '/register',
-    component: Register,
-  },
-  {
-    path: '/password-reset',
-    component: RequestPasswordReset,
-    exact: true,
-  },
-  {
-    path: '/password-reset/:token',
-    component: PasswordReset,
-    exact: true,
-  },
+  // {
+  //   path: '/login',
+  //   element: <Login />,
+  // },
+  // {
+  //   path: '/logout',
+  //   element: <Logout />,
+  // },
+  // {
+  //   path: '/sitemap',
+  //   element: <Sitemap />,
+  // },
+  // {
+  //   path: '/search',
+  //   element: <Search />,
+  // },
+  // {
+  //   path: '/contact-form',
+  //   element: <ContactForm />,
+  // },
+  // {
+  //   path: '/controlpanel',
+  //   exact: true,
+  //   element: <Controlpanels />,
+  // },
+  // {
+  //   path: '/controlpanel/dexterity-types/:id/layout',
+  //   element: <ContentTypeLayout />,
+  // },
+  // {
+  //   path: '/controlpanel/dexterity-types/:id/schema',
+  //   element: <ContentTypeSchema />,
+  // },
+  // {
+  //   path: '/controlpanel/dexterity-types/:id',
+  //   element: <ContentType />,
+  // },
+  // {
+  //   path: '/controlpanel/dexterity-types',
+  //   element: <ContentTypes />,
+  // },
+  // {
+  //   path: '/controlpanel/addons',
+  //   element: <AddonsControlpanel />,
+  // },
+  // {
+  //   path: '/controlpanel/database',
+  //   element: <DatabaseInformation />,
+  // },
+  // {
+  //   path: '/controlpanel/moderate-comments',
+  //   element: <ModerateComments />,
+  // },
+  // {
+  //   path: '/controlpanel/users',
+  //   element: <UsersControlpanel />,
+  // },
+  // {
+  //   path: '/controlpanel/groups',
+  //   element: <GroupsControlpanel />,
+  // },
+  // {
+  //   path: '/controlpanel/:id',
+  //   element: <Controlpanel />,
+  // },
+  // {
+  //   path: '/change-password',
+  //   element: <ChangePassword />,
+  // },
+  // {
+  //   path: '/add',
+  //   element: <Add />,
+  // },
+  // {
+  //   path: '/edit',
+  //   element: <Edit />,
+  // },
+  // {
+  //   path: '/contents',
+  //   element: <Contents />,
+  // },
+  // {
+  //   path: '/sharing',
+  //   element: <Sharing />,
+  // },
+  // {
+  //   path: '/**/add',
+  //   element: <Add />,
+  // },
+  // {
+  //   path: '/**/create-translation',
+  //   element: <CreateTranslation />,
+  // },
+  // {
+  //   path: '/**/contents',
+  //   element: <Contents />,
+  // },
+  // {
+  //   path: '/**/sharing',
+  //   element: <Sharing />,
+  // },
+  // {
+  //   path: '/**/delete',
+  //   element: <Delete />,
+  // },
+  // {
+  //   path: '/**/diff',
+  //   element: <Diff />,
+  // },
+  // {
+  //   path: '/**/edit',
+  //   element: <Edit />,
+  // },
+  // {
+  //   path: '/**/history',
+  //   element: <History />,
+  // },
+  // {
+  //   path: '/**/sharing',
+  //   element: <Sharing />,
+  // },
+  // {
+  //   path: '/**/manage-translations',
+  //   element: <ManageTranslations />,
+  // },
+  // {
+  //   path: '/**/login',
+  //   element: <Login />,
+  // },
+  // {
+  //   path: '/register',
+  //   element: <Register />,
+  // },
+  // {
+  //   path: '/password-reset',
+  //   element: <RequestPasswordReset />,
+  //   exact: true,
+  // },
+  // {
+  //   path: '/password-reset/:token',
+  //   element: <PasswordReset />,
+  //   exact: true,
+  // },
   {
     path: '/**',
-    component: View,
+    element: (props) => 'hello',
   },
   {
     path: '*',
-    component: NotFound,
+    element: (props) => 'hello',
   },
 ];
+
+console.log(View);
 
 /**
  * Routes array.
@@ -249,19 +251,26 @@ export const defaultRoutes = [
 const routes = [
   {
     path: '/',
-    component: App,
-    routes: [
-      // redirect to external links if path is in blacklist
-      ...(config.settings?.externalRoutes || []).map((route) => ({
-        ...route.match,
-        component: NotFound,
-      })),
-      // addon routes have a higher priority then default routes
-      ...(config.addonRoutes || []),
-      ...((config.settings?.isMultilingual && multilingualRoutes) || []),
-      ...defaultRoutes,
-    ],
+    element: <App />,
+    children: [{ index: true, element: <View /> }],
+    // children: [
+    //   // redirect to external links if path is in blacklist
+    //   ...(config.settings?.externalRoutes || []).map((route) => ({
+    //     ...route.match,
+    //     element: <NotFound />,
+    //   })),
+    //   // addon routes have a higher priority then default routes
+    //   ...(config.addonRoutes || []),
+    //   ...((config.settings?.isMultilingual && multilingualRoutes) || []),
+    //   ...defaultRoutes,
+    // ],
   },
 ];
 
+const Routes = function Routes() {
+  let element = useRoutes(routes);
+  return element;
+};
+
+export { Routes };
 export default routes;

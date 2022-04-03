@@ -1,4 +1,4 @@
-import { matchRoutes } from 'react-router-config';
+import { matchRoutes } from 'react-router-dom';
 import { mapSeries, isPromise } from './utils';
 import { endGlobalLoad } from '@plone/volto/actions/asyncConnect/asyncConnect';
 

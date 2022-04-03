@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { asyncConnect, Helmet } from '@plone/volto/helpers';
 import { Segment } from 'semantic-ui-react';
-import { renderRoutes } from 'react-router-config';
+import { Outlet } from 'react-router-dom';
 import { Slide, ToastContainer, toast } from 'react-toastify';
 import split from 'lodash/split';
 import join from 'lodash/join';
@@ -104,6 +104,8 @@ class App extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    console.log('routes');
+
     const { views } = config;
     const path = getBaseUrl(this.props.pathname);
     const action = getView(this.props.pathname);
@@ -161,9 +163,10 @@ class App extends Component {
                   stackTrace={this.state.errorInfo.componentStack}
                 />
               ) : (
-                renderRoutes(this.props.route.routes, {
-                  staticContext: this.props.staticContext,
-                })
+                // renderRoutes(this.props.route.routes, {
+                //   staticContext: this.props.staticContext,
+                // })
+                <Outlet />
               )}
             </main>
           </Segment>
@@ -241,39 +244,39 @@ export const fetchContent = async ({ store, location }) => {
 };
 
 export default compose(
-  asyncConnect([
-    {
-      key: 'breadcrumbs',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ && dispatch(getBreadcrumbs(getBaseUrl(location.pathname))),
-    },
-    {
-      key: 'content',
-      promise: ({ location, store }) =>
-        __SERVER__ && fetchContent({ store, location }),
-    },
-    {
-      key: 'navigation',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ &&
-        dispatch(
-          getNavigation(
-            getBaseUrl(location.pathname),
-            config.settings.navDepth,
-          ),
-        ),
-    },
-    {
-      key: 'types',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ && dispatch(getTypes(getBaseUrl(location.pathname))),
-    },
-    {
-      key: 'workflow',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
-    },
-  ]),
+  // asyncConnect([
+  //   {
+  //     key: 'breadcrumbs',
+  //     promise: ({ location, store: { dispatch } }) =>
+  //       __SERVER__ && dispatch(getBreadcrumbs(getBaseUrl(location.pathname))),
+  //   },
+  //   {
+  //     key: 'content',
+  //     promise: ({ location, store }) =>
+  //       __SERVER__ && fetchContent({ store, location }),
+  //   },
+  //   {
+  //     key: 'navigation',
+  //     promise: ({ location, store: { dispatch } }) =>
+  //       __SERVER__ &&
+  //       dispatch(
+  //         getNavigation(
+  //           getBaseUrl(location.pathname),
+  //           config.settings.navDepth,
+  //         ),
+  //       ),
+  //   },
+  //   {
+  //     key: 'types',
+  //     promise: ({ location, store: { dispatch } }) =>
+  //       __SERVER__ && dispatch(getTypes(getBaseUrl(location.pathname))),
+  //   },
+  //   {
+  //     key: 'workflow',
+  //     promise: ({ location, store: { dispatch } }) =>
+  //       __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
+  //   },
+  // ]),
   injectIntl,
   connect(
     (state, props) => ({

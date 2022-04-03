@@ -1,9 +1,10 @@
 import React from 'react';
 import { Provider, connect } from 'react-redux';
-import { withRouter, StaticRouter, MemoryRouter } from 'react-router';
-import { renderRoutes } from 'react-router-config';
+import { StaticRouter, MemoryRouter } from 'react-router';
+import { renderRoutes } from 'react-router-dom';
 import { createStore, combineReducers } from 'redux';
 import { render } from '@testing-library/react';
+import { withRouter } from '@plone/volto/helpers';
 
 import { endGlobalLoad, beginGlobalLoad } from '@plone/volto/actions';
 import reduxAsyncConnect from '@plone/volto/reducers/asyncConnect/asyncConnect';

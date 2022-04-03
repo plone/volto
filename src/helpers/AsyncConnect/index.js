@@ -1,7 +1,7 @@
-import { withRouter } from 'react-router';
+import { withRouter } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import config from '@plone/volto/registry';
-import { matchRoutes } from 'react-router-config';
+import { matchRoutes } from 'react-router-dom';
 
 import {
   load,

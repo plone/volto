@@ -4,13 +4,14 @@ import React from 'react';
 import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl-redux';
-import { ConnectedRouter } from 'connected-react-router';
+// import { ConnectedRouter } from 'connected-react-router';
+import { HistoryRouter as Router } from 'redux-first-history/rr6';
 import { createBrowserHistory } from 'history';
 import { ReduxAsyncConnect } from '@plone/volto/helpers/AsyncConnect';
 import { loadableReady } from '@loadable/component';
 import { CookiesProvider } from 'react-cookie';
 import debug from 'debug';
-import routes from '@root/routes';
+import { Routes } from '@root/routes';
 import config from '@plone/volto/registry';
 
 import configureStore from '@plone/volto/store';
@@ -18,6 +19,7 @@ import { Api, persistAuthToken, ScrollToTop } from '@plone/volto/helpers';
 
 import * as Sentry from '@sentry/browser';
 import initSentry from '@plone/volto/sentry';
+import App from './components/theme/App/App';
 
 export const history = createBrowserHistory();
 
@@ -59,11 +61,11 @@ export default () => {
       <CookiesProvider>
         <Provider store={store}>
           <IntlProvider onError={reactIntlErrorHandler}>
-            <ConnectedRouter history={history}>
+            <Router history={history}>
               <ScrollToTop>
-                <ReduxAsyncConnect routes={routes} helpers={api} />
+                <Routes />
               </ScrollToTop>
-            </ConnectedRouter>
+            </Router>
           </IntlProvider>
         </Provider>
       </CookiesProvider>,

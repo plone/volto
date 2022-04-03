@@ -4,7 +4,7 @@ import { List, Image } from 'semantic-ui-react';
 import { Link as RouterLink } from 'react-router-dom';
 import cx from 'classnames';
 import { compose } from 'redux';
-import { withRouter } from 'react-router';
+import { withRouter } from '@plone/volto/helpers';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { flattenToAppURL } from '@plone/volto/helpers';

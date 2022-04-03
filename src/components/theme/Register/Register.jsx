@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { withRouter } from '@plone/volto/helpers';
 import { toast } from 'react-toastify';
 
 import { Form, Toast } from '@plone/volto/components';
