@@ -4,7 +4,7 @@ import React from 'react';
 import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl-redux';
-import { ConnectedRouter } from 'connected-react-router';
+import { Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import { ReduxAsyncConnect } from '@plone/volto/helpers/AsyncConnect';
 import { loadableReady } from '@loadable/component';
@@ -30,7 +30,7 @@ function reactIntlErrorHandler(error) {
 export default () => {
   const api = new Api();
 
-  const store = configureStore(window.__data, history, api);
+  const [store, connectedHistory] = configureStore(window.__data, history, api);
   persistAuthToken(store);
 
   // On Cypress we expose the history, the store and the settings
@@ -59,11 +59,11 @@ export default () => {
       <CookiesProvider>
         <Provider store={store}>
           <IntlProvider onError={reactIntlErrorHandler}>
-            <ConnectedRouter history={history}>
+            <Router history={connectedHistory}>
               <ScrollToTop>
                 <ReduxAsyncConnect routes={routes} helpers={api} />
               </ScrollToTop>
-            </ConnectedRouter>
+            </Router>
           </IntlProvider>
         </Provider>
       </CookiesProvider>,

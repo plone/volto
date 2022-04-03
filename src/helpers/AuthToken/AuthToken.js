@@ -7,7 +7,7 @@ import Cookies from 'universal-cookie';
 import jwtDecode from 'jwt-decode';
 
 import { loginRenew } from '@plone/volto/actions';
-import { push } from 'connected-react-router';
+import { push } from 'redux-first-history';
 
 /**
  * Get auth token method (does not work in SSR)

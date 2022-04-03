@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Replace `connected-react-router` with `redux-first-history` (drop-in replacement, compatible with RR6) @sneridagh
+
 ### Documentation
 
 - Added meta-html values in most of the pages. @ktsrivastava29

@@ -11,7 +11,7 @@ import { Table } from 'semantic-ui-react';
 import ReactDOMServer from 'react-dom/server';
 import { Provider } from 'react-intl-redux';
 import { createBrowserHistory } from 'history';
-import { ConnectedRouter } from 'connected-react-router';
+import { Router } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { Api } from '@plone/volto/helpers';
@@ -76,16 +76,16 @@ const DiffField = ({
         parts = diffWords(
           ReactDOMServer.renderToStaticMarkup(
             <Provider store={store}>
-              <ConnectedRouter history={history}>
+              <Router history={history}>
                 <DefaultView content={contentOne} />
-              </ConnectedRouter>
+              </Router>
             </Provider>,
           ),
           ReactDOMServer.renderToStaticMarkup(
             <Provider store={store}>
-              <ConnectedRouter history={history}>
+              <Router history={history}>
                 <DefaultView content={contentTwo} />
-              </ConnectedRouter>
+              </Router>
             </Provider>,
           ),
         );
