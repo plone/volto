@@ -50,11 +50,13 @@ const LeftColumnFacets = (props) => {
 
   return (
     <Grid className="searchBlock-facets left-column-facets" stackable>
-      <Grid.Row>
-        <Grid.Column>
-          {data.headline && <h2 className="headline">{data.headline}</h2>}
-        </Grid.Column>
-      </Grid.Row>
+      {data.headline && (
+        <Grid.Row>
+          <Grid.Column>
+            <h2 className="headline">{data.headline}</h2>
+          </Grid.Column>
+        </Grid.Row>
+      )}
 
       <Grid.Row>
         {data.facets?.length && (
