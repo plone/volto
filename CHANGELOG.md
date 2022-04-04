@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Improve the fix for the "user swap" vulnerability @sneridagh
+
 ### Internal
 
 ### Documentation
