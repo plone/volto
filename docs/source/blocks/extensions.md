@@ -1,3 +1,13 @@
+---
+html_meta:
+  "description": "A common pattern in blocks is the 'variations' pattern - a slightly different versions of a block that can be toggled on demand by the editors."
+  "property=og:description": "A common pattern in blocks is the 'variations' pattern - a slightly different versions of a block that can be toggled on demand by the editors."
+  "property=og:title": "Block extensions mechanism"
+  "keywords": "Volto, Plone, frontend, React, Upgrade, Guide, Block extensions, variations, schema enhancers"
+---
+
+(extensions-block-extensions-mechanism)=
+
 # Block extensions mechanism
 
 A common pattern in blocks is the "variations" pattern - a slightly different versions of
@@ -12,16 +22,20 @@ to shadow its stock components. These enhancements can be at the settings level
 block allows it, even use alternative renderers (e.g., in view mode) showing the
 enhanced fields or modifying the block behavior or look and feel.
 
-!!! note
-    The `Listing` block already supports several of them (only in the "template" or
-    the component seen on view mode), and can be extended, although it still
-    does not use the final specification on how to define them in the
-    configuration, (that will change in next Volto versions). The rest of the
-    stock Volto blocks will also follow to support variations by default.
+```{note}
+The `Listing` block already supports several of them (only in the "template" or
+the component seen on view mode), and can be extended, although it still
+does not use the final specification on how to define them in the
+configuration, (that will change in next Volto versions). The rest of the
+stock Volto blocks will also follow to support variations by default.
+```
 
 While it is up to each specific block implementation on how they use
 this machinery, Volto provides the infrastructure to help define block
 extensions and variations.
+
+
+(extensions-block-variations)=
 
 ## Block variations
 
@@ -80,6 +94,9 @@ const GalleryBlockForm = withBlockSchemaEnhancer(InlineForm, 'galleryTemplates')
 You can even wrap `BlockDataForm` with it and "stack" multiple block extensions
 selection dropdowns.
 
+
+(extensions-schema-enhancers)=
+
 ## Schema enhancers
 
 In addition to the select dropdown, the `withBlockSchemaEnhancer` also provides
@@ -136,10 +153,14 @@ export default (config) => {
 }
 ```
 
-!!! note
-    The `schemaEnhancer` is a generic extension mechanism provided by
-    `withBlockSchemaEnhancer`. The `BlockDataForm` component already integrates
-    it for the `variation` extension.
+```{note}
+The `schemaEnhancer` is a generic extension mechanism provided by
+`withBlockSchemaEnhancer`. The `BlockDataForm` component already integrates
+it for the `variation` extension.
+```
+
+
+(extensions-consuming-extensions)=
 
 ## Consuming the extensions
 

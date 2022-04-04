@@ -1,4 +1,20 @@
-# Basic design principles
+---
+html_meta:
+  "description": "Volto design principles"
+  "property=og:description": "Volto design principles"
+  "property=og:title": "Design principles"
+  "keywords": "Volto, Plone, frontend, React, contributing, design principles"
+---
+
+# Design principles
+
+```{toctree}
+:maxdepth: 3
+:hidden: true
+
+./guidelines
+
+```
 
 Since the very beginning, Volto has been developed with a set of principles in mind,
 brought from the years of experience developing [Plone](https://plone.org "Link to website of Plone") core and implementing projects on it.

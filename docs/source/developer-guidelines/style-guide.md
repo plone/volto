@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": "Volto Style Guide"
+  "property=og:description": "Volto Style Guide"
+  "property=og:title": "Style Guide"
+  "keywords": "Volto, Plone, frontend, React, Style, Guide, Design, Quanta, Pastanaga"
+---
+
 # Style Guide
 
 ## About design systems
@@ -10,7 +18,7 @@ Albert gifted the community with Pastanaga UI some years ago, which was implemen
 
 Lately, Albert has evolved Pastanaga to match the current trends, the feedback of these last years and the lessons learned developing Volto projects. So he has evolved Pastanaga and created Quanta. You can think in Quanta in a PastanagaUI 2.0.
 
-You can find some excerpts of how Quanta looks like in this PDF file: [Quanta Spring 2021](./Quanta.pdf)
+You can find some excerpts of how Quanta looks like in this PDF file: {download}`Quanta Spring 2021 <Quanta.pdf>`
 
 ## Tooling around a design system
 
@@ -18,7 +26,7 @@ Volto adopted some time ago [Storybook](https://storybook.js.org), a tool that i
 
 Not all Volto's visual components are covered yet in Storybook, but it has already a good foundation.
 
-You can find the current Storybook build in: https://docs.voltocms.com/storybook
+You can find the current Storybook build in: https://6.dev-docs.plone.org/storybook
 
 ## Quanta, the design system for Plone 6
 
@@ -30,4 +38,4 @@ Quanta for now have the shape of a Volto addon: https://github.com/plone/volto-q
 
 ## Help to make Quanta a reality
 
-Do you want to help Quanta a reality in Plone 6? Just ping the Volto Team in Github or in the Plone organization Volto Slack channel: https://plone.slack.com/archives/CQLBSUKRT to ask for access to the Quanta specs.
+Do you want to help Quanta a reality in Plone 6? Just ping the Volto Team in Github or in the Plone organization Volto Slack channel: https://plone.slack.com/?redir=%2Farchives%2FCQLBSUKRT to ask for access to the Quanta specs.

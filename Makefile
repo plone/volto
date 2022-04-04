@@ -13,10 +13,25 @@ MAKEFLAGS+=--no-builtin-rules
 # Project settings
 
 INSTANCE_PORT=8080
-DOCKER_IMAGE=plone/plone-backend:5.2.6
-KGS=plone.restapi==8.21.0 plone.volto==4.0.0a3 plone.rest==2.0.0a2 plone.app.iterate==4.0.2 plone.app.vocabularies==4.3.0
+DOCKER_IMAGE=plone/plone-backend:5.2.7
+KGS=plone.restapi==8.21.2 plone.volto==4.0.0a3 plone.rest==2.0.0a3 plone.app.iterate==4.0.2 plone.app.vocabularies==4.3.0
+
+# Sphinx variables
+# You can set these variables from the command line.
+SPHINXOPTS      ?=
+# Internal variables.
+SPHINXBUILD     = $(realpath bin/sphinx-build)
+SPHINXAUTOBUILD = $(realpath bin/sphinx-autobuild)
+DOCS_DIR        = ./docs/source/
+BUILDDIR        = ../_build/
+ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(SPHINXOPTS) .
 
 # Recipe snippets for reuse
+
+CHECKOUT_BASENAME=$(shell basename $(shell realpath ./))
+CHECKOUT_BRANCH=$(shell git branch --show-current)
+CHECKOUT_TMP=../$(CHECKOUT_BASENAME).tmp
+CHECKOUT_TMP_ABS=$(shell realpath $(CHECKOUT_TMP))
 
 # We like colors
 # From: https://coderwall.com/p/izxssa/colored-makefile-for-golang-projects
@@ -34,6 +49,7 @@ all: build
 # Add the following 'help' target to your Makefile
 # And add help text after each target name starting with '\#\#'
 .PHONY: help
+help: .SHELLFLAGS:=-eu -o pipefail -O inherit_errexit -c
 help: ## This help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
@@ -63,18 +79,62 @@ dist:
 test:
 	$(MAKE) -C "./api/" test
 
-.PHONY: docs-serve
-docs-serve:
-	(cd docs && ../bin/mkdocs serve)
 
-.PHONY: docs-build
-docs-build:
-# The build in netlify breaks because they have not installed ensurepip
-# So we should continue using virtualenv
-	virtualenv --python=python3 .
-	./bin/pip install -r requirements-docs.txt
-	(cd docs && ../bin/mkdocs build)
-	yarn build-storybook -o docs/build/storybook
+.PHONY: storybook-build
+storybook-build:
+	yarn build-storybook -o docs/_build/storybook
+
+bin/python:
+	python3 -m venv . || virtualenv --clear --python=python3 .
+	bin/python -m pip install --upgrade pip
+	bin/pip install -r requirements-docs.txt
+
+.PHONY: docs-clean
+docs-clean:  ## Clean current and legacy docs build directories, and Python virtual environment
+	cd $(DOCS_DIR) && rm -rf $(BUILDDIR)/
+	rm -rf bin include lib
+	rm -rf docs/_build
+
+.PHONY: docs-html
+docs-html: bin/python  ## Build html
+	cd $(DOCS_DIR) && $(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
+	@echo
+	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
+
+.PHONY: docs-livehtml
+docs-livehtml: bin/python  ## Rebuild Sphinx documentation on changes, with live-reload in the browser
+	cd "$(DOCS_DIR)" && ${SPHINXAUTOBUILD} \
+		--ignore "*.swp" \
+		-b html . "$(BUILDDIR)/html" $(SPHINXOPTS)
+
+.PHONY: docs-linkcheck
+docs-linkcheck: bin/python  ## Run linkcheck
+	cd $(DOCS_DIR) && $(SPHINXBUILD) -b linkcheck $(ALLSPHINXOPTS) $(BUILDDIR)/linkcheck
+	@echo
+	@echo "Link check complete; look for any errors in the above output " \
+		"or in $(BUILDDIR)/linkcheck/ ."
+
+.PHONY: docs-linkcheckbroken
+docs-linkcheckbroken: bin/python  ## Run linkcheck and show only broken links
+	cd $(DOCS_DIR) && $(SPHINXBUILD) -b linkcheck $(ALLSPHINXOPTS) $(BUILDDIR)/linkcheck | GREP_COLORS='0;31' grep -wi "broken\|redirect" --color=auto
+	@echo
+	@echo "Link check complete; look for any errors in the above output " \
+		"or in $(BUILDDIR)/linkcheck/ ."
+
+.PHONY: docs-spellcheck
+docs-spellcheck: bin/python  ## Run spellcheck
+	cd $(DOCS_DIR) && LANGUAGE=$* $(SPHINXBUILD) -b spelling -j 4 $(ALLSPHINXOPTS) $(BUILDDIR)/spellcheck/$*
+	@echo
+	@echo "Spellcheck is finished; look for any errors in the above output " \
+		" or in $(BUILDDIR)/spellcheck/ ."
+
+.PHONY: netlify
+netlify:
+	pip install -r requirements-docs.txt
+	cd $(DOCS_DIR) && sphinx-build -b html $(ALLSPHINXOPTS) ../$(BUILDDIR)/html
+
+.PHONY: docs-test
+docs-test: docs-clean docs-linkcheck docs-spellcheck  ## Clean docs build, then run linkcheck, spellcheck
 
 .PHONY: start
 # Run both the back-end and the front end
@@ -91,7 +151,11 @@ start-backend: ## Start Plone Backend
 
 .PHONY: start-backend-docker
 start-backend-docker:
-	docker run -it --rm -p 8080:8080 -e SITE=Plone -e ADDONS='$(KGS)' $(DOCKER_IMAGE)
+	docker run -it --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS='$(KGS)' $(DOCKER_IMAGE)
+
+.PHONY: start-frontend-docker
+start-frontend-docker:
+	docker run -it --rm --name=volto --link backend -p 3000:3000 -e RAZZLE_INTERNAL_API_PATH=http://backend:8080/Plone -e RAZZLE_DEV_PROXY_API_PATH=http://backend:8080/Plone plone/plone-frontend:latest
 
 .PHONY: start-backend-docker-guillotina
 start-backend-docker-guillotina:

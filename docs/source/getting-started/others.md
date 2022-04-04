@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": "Links to other learning resources."
+  "property=og:description": "Links to other learning resources."
+  "property=og:title": "learning resources"
+  "keywords": "Volto, Plone, frontend, React, learning resources"
+---
+
 # Other learning resources
 
 ## Plone Trainings

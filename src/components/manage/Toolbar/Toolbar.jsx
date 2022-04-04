@@ -232,7 +232,9 @@ class Toolbar extends Component {
   handleShrink = () => {
     const { cookies } = this.props;
     cookies.set('toolbar_expanded', !this.state.expanded, {
-      expires: new Date((2 ** 31 - 1) * 1000),
+      expires: new Date(
+        new Date().getTime() + config.settings.cookieExpires * 1000,
+      ),
       path: '/',
     });
     this.setState(
@@ -278,7 +280,7 @@ class Toolbar extends Component {
     } else {
       this.setState((state) => ({
         showMenu: !state.showMenu,
-        menuStyle: { top: 0, overflow: 'initial' },
+        menuStyle: { top: 0 },
       }));
     }
     this.loadComponent(selector);

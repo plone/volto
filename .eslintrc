@@ -32,7 +32,7 @@
   "settings": {
     "import/resolver": {
       "alias": {
-        "map": [["@plone/volto", "./src"]],
+        "map": [["@plone/volto", "./src"], ["@package", "./src"], ["@root", "./src"]],
         "extensions": [".js", ".jsx", ".json"]
       },
       "babel-plugin-root-import": {

@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": "Install multilingual support to use Plone's multilingual feature"
+  "property=og:description": "Install multilingual support to use Plone's multilingual feature"
+  "property=og:title": "Multilingual"
+  "keywords": "Volto, Plone, frontend, React, multilingual"
+---
+
 # Multilingual
 
 Volto provide support for Plone's Multilingual feature. You need to install Multiligual
@@ -22,10 +30,11 @@ config.settings = {
 Declare the language you want to support in your site in the `supportedLanguages` array,
 and which is the default language of your site.
 
-!!! warning
-    The default language and the supported languages must match the one set in the Plone
-    side, and those should be set using GenericSetup using your policy package, or
-    manually via the Languages control panel, i.e. en for English, or pt-br for Portuguese (Brazil)
+```{warning}
+The default language and the supported languages must match the one set in the Plone
+side, and those should be set using GenericSetup using your policy package, or
+manually via the Languages control panel, i.e. en for English, or pt-br for Portuguese (Brazil)
+```
 
 ## Features
 

@@ -1,4 +1,21 @@
-# Volto addons
+---
+html_meta:
+  "description": "Volto add-ons extend the core functionality of the Plone CMS frontend."
+  "property=og:description": "Volto add-ons extend the core functionality of the Plone CMS frontend."
+  "property=og:title": "Volto add-ons"
+  "keywords": "Volto, add-on, extensions, frontend, Plone"
+---
+
+# Volto add-ons
+
+```{toctree}
+:maxdepth: 3
+:hidden: true
+
+i18n
+best-practices
+
+```
 
 There are several advanced scenarios where we might want to have more control
 and flexibility beyond using the plain Volto project to build a site.
@@ -8,12 +25,12 @@ Javascript packages that can be included in any Volto project. By doing so we
 can provide code and component reutilization across projects and, of course,
 benefit from open source collaboration.
 
-!!! note
-    By declaring a Javascript package as a "Volto addon", Volto provides
-    several integration features: language features (so they can be transpiled
-    by Babel), whole-process customization via razzle.extend.js and
-    integration with Volto's configuration registry.
-
+```{note}
+By declaring a Javascript package as a "Volto addon", Volto provides
+several integration features: language features (so they can be transpiled
+by Babel), whole-process customization via razzle.extend.js and
+integration with Volto's configuration registry.
+```
 
 The addon can be published to an NPM registry or directly installed from github
 by Yarn. By using [mrs-develop](https://github.com/collective/mrs-developer),
@@ -35,13 +52,13 @@ An addon can be almost anything that a Volto project can be. They can:
 
 You can install a Volto addon just like any other JS package:
 
-```
+```shell
 yarn add name-of-addon
 ```
 
 If the addon is not published on NPM, you can retrieve it directly from Github:
 
-```
+```shell
 yarn add collective/volto-dropdownmenu
 ```
 
@@ -73,21 +90,23 @@ package names, like:
 }
 ```
 
-!!! warning
-    Adding the addon package to the `addons` key is obligatory! It allows Volto
-    to treat that package properly and provide it with BabelJS language
-    features. In Plone terminology, it is like including a Python egg to the
-    `zcml` section of zc.buildout.
+```{warning}
+Adding the addon package to the `addons` key is obligatory! It allows Volto
+to treat that package properly and provide it with BabelJS language
+features. In Plone terminology, it is like including a Python egg to the
+`zcml` section of zc.buildout.
+```
 
 Some addons might choose to allow the Volto project to selectively load some of
 their configuration, so they may offer additional configuration functions,
 which you can load by overloading the addon name in the ``addons`` package.json
 key, like so:
 
-```json hl_lines="5"
+```{code-block} json
+:emphasize-lines: 4
+
 {
   "name": "my-nice-volto-project",
-  ...
   "addons": [
     "acme-volto-foo-addon:loadOptionalBlocks,overrideSomeDefaultBlock",
     "volto-ga"
@@ -95,10 +114,11 @@ key, like so:
 }
 ```
 
-!!! info
-    The additional comma-separated names should be exported from the addon
-    package's ``index.js``. The main configuration function should be exported as
-    the default. An addon's default configuration method will always be loaded.
+```{note}
+The additional comma-separated names should be exported from the addon
+package's ``index.js``. The main configuration function should be exported as
+the default. An addon's default configuration method will always be loaded.
+```
 
 If for some reason, you want to manually load the addon, you could always do,
 in your project's ``config.js`` module:
@@ -117,7 +137,7 @@ export blocks = {
 
 As this is a common operation, Volto provides a helper method for this:
 
-```
+```js
 import { applyConfig } from '@plone/volto/helpers';
 import * as voltoConfig from '@plone/volto/config';
 
@@ -208,11 +228,12 @@ yarn develop
 
 Now the addon is found in `src/addons/`.
 
-!!! info
-    `package` property is optional, set it up only if your package has a scope.
-    `src` is required if the content of your addon is located in the `src`
-    directory (but, as that is the convention recommended for all Volto add-on
-    packages, you will always include it)
+```{note}
+`package` property is optional, set it up only if your package has a scope.
+`src` is required if the content of your addon is located in the `src`
+directory (but, as that is the convention recommended for all Volto add-on
+packages, you will always include it)
+```
 
 If you want to know more about `mrs-developer` config options, please refer to
 [its npm page](https://www.npmjs.com/package/mrs-developer).
@@ -236,13 +257,15 @@ to use mrs-developer, you'll have to add something like this to your
 }
 ```
 
-!!! warning
-    Please note that both `paths` and `baseUrl` are required to match your
-    project layout.
+```{warning}
+Please note that both `paths` and `baseUrl` are required to match your
+project layout.
+```
 
-!!! tip
-    You should use the `src` path inside your package and point the `main` key
-    in `package.json` to the `index.js` file in `src/index.js`.
+```{tip}
+You should use the `src` path inside your package and point the `main` key
+in `package.json` to the `index.js` file in `src/index.js`.
+```
 
 ### Customizations
 
@@ -251,10 +274,11 @@ The customizations are resolved in the order: addons (as sorted in the `addons`
 key of your project's `package.json`) then the customizations in the Volto
 project, last one wins.
 
-!!! tip
-    See the [Advanced customization scenarios](../../customizing-components/)
-    section on how to enhance this pattern and how to include customizations
-    inside addons.
+```{tip}
+See the {ref}`advanced-customization-scenarios-label`
+section on how to enhance this pattern and how to include customizations
+inside addons.
+```
 
 ### Providing addon configuration
 
@@ -292,8 +316,9 @@ And the `package.json` file of your addon:
 }
 ```
 
-!!! warning
-    An addon's default configuration method will always be loaded.
+```{warning}
+An addon's default configuration method will always be loaded.
+```
 
 #### Multiple addon configurations
 
@@ -315,14 +340,14 @@ root](https://classic.yarnpkg.com/en/docs/workspaces/).
 
 So you'll need to add, in your Volto project's `package.json`:
 
-```
+```json
 "private": true,
 "workspaces": [],
 ```
 
 Then populate the `workspaces` key with the path to your development addons:
 
-```
+```json
 "workspaces": [
   "src/addons/my-volto-addon"
 ]
@@ -330,7 +355,7 @@ Then populate the `workspaces` key with the path to your development addons:
 You'll have to manage the addon dependencies via the workspace root (your Volto
 project). For example, to add a new dependency:
 
-```
+```shell
 yarn workspace @plone/my-volto-addon add some-third-party-package
 ```
 
@@ -339,7 +364,7 @@ You can run `yarn workspaces info` to see a list of workspaces defined.
 In case you want to add new dependencies to the Volto project, now you'll have
 to run the `yarn add` command with the `-W` switch:
 
-```
+```shell
 yarn add -W some-dependency
 ```
 
@@ -351,7 +376,7 @@ addon root folder. An example of such file where the theme.config alias is
 changed, to enable a custom Semantic theme inside the addon:
 
 
-```
+```js
 const analyzerPlugin = {
   name: 'bundle-analyzer',
   options: {
@@ -407,20 +432,23 @@ which will be loaded as well. Circular dependencies should be avoided.
 We should let jest know about our aliases and make them available to it to
 resolve them, so in `package.json`:
 
-```json hl_lines="6"
+```{code-block} json
+:emphasize-lines: 6
+
   "jest": {
     "moduleNameMapper": {
       "@plone/volto/(.*)$": "<rootDir>/node_modules/@plone/volto/src/$1",
       "@package/(.*)$": "<rootDir>/src/$1",
       "@plone/some-volto-addon/(.*)$": "<rootDir>/src/addons/@plone/some-volto-addon/src/$1",
-      'my-volto-addon/(.*)$': '<rootDir>/src/addons/my-volto-addon/src/$1',
+      "my-volto-addon/(.*)$": "<rootDir>/src/addons/my-volto-addon/src/$1",
       "~/(.*)$": "<rootDir>/src/$1"
     },
 ```
 
-!!! tip
-    We're in the process of moving the default scaffolding generators to
-    provide a `jest.config.js` file in Volto, making this step unneeded.
+```{tip}
+We're in the process of moving the default scaffolding generators to
+provide a `jest.config.js` file in Volto, making this step unneeded.
+```
 
 You can use `yarn test src/addons/addon-name` to run tests.
 
@@ -429,4 +457,4 @@ You can use `yarn test src/addons/addon-name` to run tests.
 If you have generated your Volto project recently (after the summer of 2020),
 you don't have to do anything to have automatic integration with ESLint,
 otherwise make sure to upgrade your project's `.eslintrc` to the `.eslintrc.js`
-version, according to the [Upgrade Guide](/upgrade-guide).
+version, according to the {doc}`../upgrade-guide/index`.

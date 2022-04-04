@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": ""
+  "property=og:description": ""
+  "property=og:title": ""
+  "keywords": ""
+---
+
 # How does the theming engine work?
 
 It basically uses heavily the LESS precompiler language features. No code is involved (which is good).
