@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Make the parseDateTime function to handle only date also @iFlameing
+
 ### Internal
 
 ### Documentation
