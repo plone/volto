@@ -13,7 +13,6 @@
 ### Documentation
 
 - Added meta-html values in most of the pages. @ktsrivastava29
-- Fix the redirect link for upc.edu to /en. @stevepiercy
 
 ## 15.2.3 (2022-04-01)
 
