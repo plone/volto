@@ -19,8 +19,9 @@ const EventTextfieldView = ({ content }) => (
     {content.image && (
       <Image
         className="document-image"
-        src={content.image.scales.thumb.download}
+        size="medium"
         floated="right"
+        image={content.image}
       />
     )}
     {content.text && (

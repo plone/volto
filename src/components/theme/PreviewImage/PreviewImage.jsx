@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { flattenToAppURL } from '@plone/volto/helpers';
-
+import Image from '@plone/volto/components/theme/Image/Image';
 import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/default-image.svg';
 
 /**
@@ -11,11 +10,18 @@ import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/defau
  */
 function PreviewImage(props) {
   const { item, size = 'preview', alt, ...rest } = props;
-  const src = item.image_field
-    ? flattenToAppURL(`${item['@id']}/@@images/${item.image_field}/${size}`)
-    : DefaultImageSVG;
 
-  return <img src={src} alt={alt ?? item.title} {...rest} />;
+  return item.image_field ? (
+    <Image
+      image={item['@id']}
+      size={size}
+      imageField={item.image_field}
+      alt={alt ?? item.title}
+      {...rest}
+    />
+  ) : (
+    <img src={DefaultImageSVG} alt={alt ?? item.title} {...rest} />
+  );
 }
 
 PreviewImage.propTypes = {

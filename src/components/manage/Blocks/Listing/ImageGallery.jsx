@@ -77,6 +77,7 @@ const ImageGalleryTemplate = ({ items }) => {
     (content) =>
       settings.imageObjects.includes(content['@type']) && content.image_field,
   );
+
   const imagesInfo = renderItems.map((item) => {
     return {
       original: `${flattenToAppURL(item['@id'])}/@@images/${

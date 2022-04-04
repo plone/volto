@@ -2,6 +2,12 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 import PreviewImage from './PreviewImage';
+import { imageScales } from '@plone/volto/config/ImageScales';
+import config from '@plone/volto/registry';
+
+beforeAll(() => {
+  config.settings.imageScales = imageScales;
+});
 
 describe('PreviewImage', () => {
   it('renders a preview image', () => {

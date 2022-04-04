@@ -81,6 +81,8 @@ export {
   hasApiExpander,
   replaceItemOfArray,
 } from '@plone/volto/helpers/Utils/Utils';
+
+export { getImageAttributes } from './Image/Image';
 export { messages } from './MessageLabels/MessageLabels';
 export {
   withBlockSchemaEnhancer,

@@ -23,6 +23,7 @@ import { loadables } from './Loadables';
 
 import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
+import { imageScales } from './ImageScales';
 import { controlPanelsIcons } from './ControlPanels';
 
 import { richtextEditorSettings, richtextViewSettings } from './RichTextEditor';
@@ -112,7 +113,8 @@ let config = {
     sentryOptions: {
       ...sentryOptions,
     },
-    contentIcons: contentIcons,
+    contentIcons,
+    imageScales,
     loadables,
     lazyBundles: {
       cms: [

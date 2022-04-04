@@ -32,23 +32,113 @@ exports[`PreviewImage renders a fallback image with extra props 1`] = `
 `;
 
 exports[`PreviewImage renders a preview image 1`] = `
-<img
-  alt="Item title"
-  src="http://localhost:3000/something/@@images/image/preview"
-/>
+Array [
+  <picture
+    className="volto-image preview"
+  >
+    <img
+      alt="Item title"
+      loading="lazy"
+      role="img"
+      src="http://localhost:3000/something"
+      style={
+        Object {
+          "objectFit": "cover",
+          "width": "100%",
+        }
+      }
+    />
+  </picture>,
+  <noscript
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "
+              <img
+                src=\\"http://localhost:3000/something\\"
+                undefined
+                alt=\\"Item title\\"
+                class=\\"\\"
+                role=\\"img\\"
+                loading=\\"lazy\\"
+                style=\\"width: 100%; object-fit: cover;\\"
+            ",
+      }
+    }
+  />,
+]
 `;
 
 exports[`PreviewImage renders a preview image with custom size 1`] = `
-<img
-  alt="Item title"
-  src="http://localhost:3000/something/@@images/image/large"
-/>
+Array [
+  <picture
+    className="volto-image large"
+  >
+    <img
+      alt="Item title"
+      loading="lazy"
+      role="img"
+      src="http://localhost:3000/something"
+      style={
+        Object {
+          "objectFit": "cover",
+          "width": "100%",
+        }
+      }
+    />
+  </picture>,
+  <noscript
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "
+              <img
+                src=\\"http://localhost:3000/something\\"
+                undefined
+                alt=\\"Item title\\"
+                class=\\"\\"
+                role=\\"img\\"
+                loading=\\"lazy\\"
+                style=\\"width: 100%; object-fit: cover;\\"
+            ",
+      }
+    }
+  />,
+]
 `;
 
 exports[`PreviewImage renders a preview image with extra props 1`] = `
-<img
-  alt="Item title"
-  className="extra"
-  src="http://localhost:3000/something/@@images/image/preview"
-/>
+Array [
+  <picture
+    className="volto-image preview"
+  >
+    <img
+      alt="Item title"
+      className="extra"
+      loading="lazy"
+      role="img"
+      src="http://localhost:3000/something"
+      style={
+        Object {
+          "objectFit": "cover",
+          "width": "100%",
+        }
+      }
+    />
+  </picture>,
+  <noscript
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "
+              <img
+                src=\\"http://localhost:3000/something\\"
+                undefined
+                alt=\\"Item title\\"
+                class=\\"extra\\"
+                role=\\"img\\"
+                loading=\\"lazy\\"
+                style=\\"width: 100%; object-fit: cover;\\"
+            ",
+      }
+    }
+  />,
+]
 `;

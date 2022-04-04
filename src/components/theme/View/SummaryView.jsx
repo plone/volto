@@ -6,8 +6,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Container, Image } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
+import Image from '@plone/volto/components/theme/Image/Image';
 
 /**
  * Summary view component class.
@@ -32,12 +33,13 @@ const SummaryView = ({ content }) => (
                 {item.title}
               </Link>
             </h2>
-            {item.image && (
+            {item.image_field && (
               <Image
-                clearing
+                image={item['@id']}
+                imageField={item.image_field}
+                maxSize={128}
+                size="thumb"
                 floated="right"
-                alt={item.image_caption ? item.image_caption : item.title}
-                src={item.image.scales.thumb.download}
               />
             )}
             {item.description && <p>{item.description}</p>}
