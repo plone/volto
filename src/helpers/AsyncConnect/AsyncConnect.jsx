@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Route } from 'react-router';
-import { renderRoutes } from 'react-router-dom';
+// import { renderRoutes } from 'react-router-dom';
 import { ReactReduxContext } from 'react-redux';
 import { loadAsyncConnect } from './ssr';
 import { getMutableState } from './utils';
@@ -111,9 +111,9 @@ AsyncConnect.defaultProps = {
   reloadOnPropsChange() {
     return true;
   },
-  render({ routes }) {
-    return renderRoutes(routes);
-  },
+  // render({ routes }) {
+  //   return renderRoutes(routes);
+  // },
 };
 
 export const AsyncConnectWithContext = ({ context, ...otherProps }) => {

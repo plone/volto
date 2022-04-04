@@ -50,13 +50,13 @@ class Logout extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    return <Login location={{ query: this.props.location.query }} />;
+    return <Login location={{ query: this.props.query }} />;
   }
 }
 
 export default connect(
   (state, props) => ({
-    query: qs.parse(props.location.search),
+    query: qs.parse(state.router.location.search),
   }),
   { logout, purgeMessages },
 )(Logout);

@@ -104,8 +104,6 @@ class App extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    console.log('routes');
-
     const { views } = config;
     const path = getBaseUrl(this.props.pathname);
     const action = getView(this.props.pathname);
@@ -163,9 +161,6 @@ class App extends Component {
                   stackTrace={this.state.errorInfo.componentStack}
                 />
               ) : (
-                // renderRoutes(this.props.route.routes, {
-                //   staticContext: this.props.staticContext,
-                // })
                 <Outlet />
               )}
             </main>
@@ -280,7 +275,7 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
-      pathname: props.location.pathname,
+      pathname: state.router.location.pathname,
       token: state.userSession.token,
       userId: state.userSession.token
         ? jwtDecode(state.userSession.token).sub

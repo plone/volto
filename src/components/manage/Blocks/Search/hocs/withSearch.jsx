@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import qs from 'query-string';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { resolveExtension } from '@plone/volto/helpers/Extensions/withBlockExtensions';
 import config from '@plone/volto/registry';
@@ -148,7 +148,7 @@ const getSearchFields = (searchData) => {
  */
 const useHashState = () => {
   const location = useLocation();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const oldState = React.useMemo(() => {
     return {
@@ -181,12 +181,10 @@ const useHashState = () => {
         });
 
       if (changed) {
-        history.push({
-          hash: qs.stringify(newParams),
-        });
+        navigate(qs.stringify(newParams));
       }
     },
-    [history, oldState, location.hash],
+    [navigate, oldState, location.hash],
   );
 
   return [current, setSearchData];

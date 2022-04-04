@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from '@plone/volto/helpers/withRouter/withRouter';
+import { withRouter } from '@plone/volto/helpers';
 
 /**
  *
@@ -15,8 +15,10 @@ class ScrollToTop extends React.Component {
    * @static
    */
   static propTypes = {
-    location: PropTypes.shape({
-      pathname: PropTypes.string,
+    router: PropTypes.shape({
+      location: PropTypes.shape({
+        pathname: PropTypes.string,
+      }),
     }).isRequired,
     children: PropTypes.node.isRequired,
   };
@@ -27,7 +29,9 @@ class ScrollToTop extends React.Component {
    * @memberof ScrollToTop
    */
   componentDidUpdate(prevProps) {
-    if (this.props.location.pathname !== prevProps.location.pathname) {
+    if (
+      this.props.router.location.pathname !== prevProps.router.location.pathname
+    ) {
       window.scrollTo(0, 0);
     }
   }
@@ -37,6 +41,7 @@ class ScrollToTop extends React.Component {
    * @memberof ScrollToTop
    */
   render() {
+    console.log(this.props.router);
     return this.props.children;
   }
 }

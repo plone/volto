@@ -4,10 +4,8 @@ import React from 'react';
 import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl-redux';
-// import { ConnectedRouter } from 'connected-react-router';
 import { HistoryRouter as Router } from 'redux-first-history/rr6';
 import { createBrowserHistory } from 'history';
-import { ReduxAsyncConnect } from '@plone/volto/helpers/AsyncConnect';
 import { loadableReady } from '@loadable/component';
 import { CookiesProvider } from 'react-cookie';
 import debug from 'debug';
@@ -19,7 +17,6 @@ import { Api, persistAuthToken, ScrollToTop } from '@plone/volto/helpers';
 
 import * as Sentry from '@sentry/browser';
 import initSentry from '@plone/volto/sentry';
-import App from './components/theme/App/App';
 
 export const history = createBrowserHistory();
 
@@ -32,7 +29,7 @@ function reactIntlErrorHandler(error) {
 export default () => {
   const api = new Api();
 
-  const store = configureStore(window.__data, history, api);
+  const [store, connectedHistory] = configureStore(window.__data, history, api);
   persistAuthToken(store);
 
   // On Cypress we expose the history, the store and the settings
@@ -61,7 +58,7 @@ export default () => {
       <CookiesProvider>
         <Provider store={store}>
           <IntlProvider onError={reactIntlErrorHandler}>
-            <Router history={history}>
+            <Router history={connectedHistory}>
               <ScrollToTop>
                 <Routes />
               </ScrollToTop>

@@ -83,19 +83,20 @@ export const multilingualRoutes = [
 ];
 
 export const defaultRoutes = [
+  // {
+  //   path: '/',
+  //   element: (props) => 'hello',
+  //   exact: true,
+  // },
+  { index: true, element: <View /> },
   {
-    path: '/',
-    element: (props) => 'hello',
-    exact: true,
+    path: 'login',
+    element: <Login />,
   },
-  // {
-  //   path: '/login',
-  //   element: <Login />,
-  // },
-  // {
-  //   path: '/logout',
-  //   element: <Logout />,
-  // },
+  {
+    path: '/logout',
+    element: <Logout />,
+  },
   // {
   //   path: '/sitemap',
   //   element: <Sitemap />,
@@ -232,16 +233,10 @@ export const defaultRoutes = [
   //   exact: true,
   // },
   {
-    path: '/**',
-    element: (props) => 'hello',
-  },
-  {
     path: '*',
-    element: (props) => 'hello',
+    element: <View />,
   },
 ];
-
-console.log(View);
 
 /**
  * Routes array.
@@ -252,18 +247,17 @@ const routes = [
   {
     path: '/',
     element: <App />,
-    children: [{ index: true, element: <View /> }],
-    // children: [
-    //   // redirect to external links if path is in blacklist
-    //   ...(config.settings?.externalRoutes || []).map((route) => ({
-    //     ...route.match,
-    //     element: <NotFound />,
-    //   })),
-    //   // addon routes have a higher priority then default routes
-    //   ...(config.addonRoutes || []),
-    //   ...((config.settings?.isMultilingual && multilingualRoutes) || []),
-    //   ...defaultRoutes,
-    // ],
+    children: [
+      // // redirect to external links if path is in blacklist
+      // ...(config.settings?.externalRoutes || []).map((route) => ({
+      //   ...route.match,
+      //   element: <NotFound />,
+      // })),
+      // addon routes have a higher priority then default routes
+      ...(config.addonRoutes || []),
+      // ...((config.settings?.isMultilingual && multilingualRoutes) || []),
+      ...defaultRoutes,
+    ],
   },
 ];
 

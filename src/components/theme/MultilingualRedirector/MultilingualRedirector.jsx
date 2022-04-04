@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useCookies } from 'react-cookie';
 import config from '@plone/volto/registry';
@@ -36,7 +36,7 @@ const MultilingualRedirector = (props) => {
   }, [pathname, dispatch, redirectToLanguage, settings.isMultilingual]);
 
   return pathname === '/' && settings.isMultilingual ? (
-    <Redirect to={`/${redirectToLanguage}`} />
+    <Navigate to={`/${redirectToLanguage}`} />
   ) : (
     <>{children}</>
   );
