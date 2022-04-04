@@ -2,15 +2,10 @@
 
 ## 15.2.4 (unreleased)
 
-### Breaking
-
 ### Feature
 
-### Bugfix
-
-- Improve the fix for the "user swap" vulnerability @sneridagh
-
-### Internal
+- Improve the fix for the "user swap" vulnerability @sneridagh @plone/volto-team
+  Thanks to @ericof and @cekk for their help and efforts at pinpointing the latests culprits!
 
 ### Documentation
 
