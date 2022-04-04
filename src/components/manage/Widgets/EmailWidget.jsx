@@ -20,7 +20,17 @@ import { Input } from 'semantic-ui-react';
  * ```
  */
 const EmailWidget = (props) => {
-  const { id, value, onChange, onBlur, onClick, minLength, maxLength } = props;
+  const {
+    id,
+    value,
+    onChange,
+    onBlur,
+    onClick,
+    minLength,
+    maxLength,
+    placeholder,
+    isDisabled,
+  } = props;
   const inputId = `field-${id}`;
 
   return (
@@ -30,6 +40,8 @@ const EmailWidget = (props) => {
         name={id}
         type="email"
         value={value || ''}
+        disabled={isDisabled}
+        placeholder={placeholder}
         onChange={({ target }) =>
           onChange(id, target.value === '' ? undefined : target.value)
         }

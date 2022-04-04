@@ -32,4 +32,26 @@ export const loadables = {
   reactDnd: loadable.lib(() => import('react-dnd')),
   reactDndHtml5Backend: loadable.lib(() => import('react-dnd-html5-backend')),
   reactBeautifulDnd: loadable.lib(() => import('react-beautiful-dnd')),
+
+  // draftjs libs
+  immutableLib: loadable.lib(() => import('immutable')),
+  draftJs: loadable.lib(() => import('draft-js')),
+  draftJsLibIsSoftNewlineEvent: loadable.lib(() =>
+    import('draft-js/lib/isSoftNewlineEvent'),
+  ),
+  draftJsFilters: loadable.lib(() => import('draftjs-filters')),
+  draftJsInlineToolbarPlugin: loadable.lib(() =>
+    import('draft-js-inline-toolbar-plugin'),
+  ),
+  draftJsImportHtml: loadable.lib(() => import('draft-js-import-html')),
+  draftJsBlockBreakoutPlugin: loadable.lib(() =>
+    import('draft-js-block-breakout-plugin'),
+  ),
+  draftJsCreateInlineStyleButton: loadable.lib(() =>
+    import('draft-js-buttons/lib/utils/createInlineStyleButton'),
+  ),
+  draftJsCreateBlockStyleButton: loadable.lib(() =>
+    import('draft-js-buttons/lib/utils/createBlockStyleButton'),
+  ),
+  draftJsPluginsUtils: loadable.lib(() => import('draft-js-plugins-utils')),
 };

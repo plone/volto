@@ -41,6 +41,7 @@ const PasswordWidget = (props) => {
         type="password"
         disabled={props.isDisabled}
         value={value || ''}
+        placeholder={placeholder}
         onChange={({ target }) =>
           onChange(id, target.value === '' ? undefined : target.value)
         }

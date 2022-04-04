@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": "Customize Volto views."
+  "property=og:description": "Customize Volto views."
+  "property=og:title": "Customizing Volto Views"
+  "keywords": "Volto, Plone, frontend, React, views"
+---
+
 # Customizing Volto Views
 
 Overriding existing views works exactly the same as components. Override the
