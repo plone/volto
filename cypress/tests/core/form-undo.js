@@ -25,10 +25,8 @@ describe('Form Undo/Redo', () => {
     cy.waitForResourceToLoad('my-page');
     cy.navigate('/my-page/edit');
 
-    cy.intercept('/static/js/draft-js-plugins-utils.chunk.js').as(
-      'lazyLoadDraft',
-    );
-    cy.wait('@lazyLoadDraft');
+    // // Waiting for the lazy loading draftJS to happen
+    cy.get('.block.inner.text .public-DraftEditor-content').should('exist');
   });
 
   it('Undo/Redo form', () => {
