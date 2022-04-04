@@ -16,6 +16,7 @@ export {
   addAppURL,
   flattenHTMLToAppURL,
   flattenToAppURL,
+  stripQuerystring,
   toPublicURL,
   isInternalURL,
   getParentUrl,
@@ -26,6 +27,7 @@ export {
   isUrl,
   normalizeUrl,
   removeProtocol,
+  URLUtils,
 } from '@plone/volto/helpers/Url/Url';
 export { generateSitemap } from '@plone/volto/helpers/Sitemap/Sitemap';
 export { generateRobots } from '@plone/volto/helpers/Robots/Robots';
@@ -57,6 +59,7 @@ export BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 export ScrollToTop from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
 export {
   getBoolean,
+  getVocabName,
   getVocabFromHint,
   getVocabFromField,
   getVocabFromItems,
@@ -76,6 +79,7 @@ export {
   parseDateTime,
   normalizeLanguageName,
   hasApiExpander,
+  replaceItemOfArray,
 } from '@plone/volto/helpers/Utils/Utils';
 export { messages } from './MessageLabels/MessageLabels';
 export {
@@ -83,6 +87,7 @@ export {
   withVariationSchemaEnhancer,
   withBlockExtensions,
   applySchemaEnhancer,
+  resolveExtension,
 } from './Extensions';
 export { asyncConnect } from './AsyncConnect';
 export { userHasRoles } from './User/User';

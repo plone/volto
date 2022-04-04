@@ -32,9 +32,9 @@ context('Search action tests', () => {
       cy.navigate('/newsitem/edit');
 
       // Add subject
-      cy.get('.field-wrapper-subjects input')
-        .type('garden', { force: true })
-        .type('{enter}');
+      // because of lazyloading wait for the element to reach an actionable state
+      cy.wait(2000);
+      cy.get('#field-subjects').click().wait(1000).type('garden{enter}');
       cy.get('#toolbar-save').click();
 
       cy.visit('/folder1');

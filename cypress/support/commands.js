@@ -91,7 +91,9 @@ Cypress.Commands.add(
         },
       });
     }
-    if (['Document', 'Folder', 'CMSFolder'].includes(contentType)) {
+    if (
+      ['Document', 'News Item', 'Folder', 'CMSFolder'].includes(contentType)
+    ) {
       return cy
         .request({
           method: 'POST',

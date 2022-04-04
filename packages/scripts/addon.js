@@ -113,7 +113,11 @@ async function runGenerator({
     );
   }
 
-  const { fullname, name, version } = await getAddonInfo({ source, isPrivate });
+  const { fullname, name, version } = await getAddonInfo({
+    source,
+    branch,
+    isPrivate,
+  });
 
   console.log(
     chalk.green(

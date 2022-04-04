@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": "A guide on how to contribute to the Plone's community"
+  "property=og:description": "A guide on how to contribute to the Plone's community"
+  "property=og:title": "Guidelines"
+  "keywords": "Volto, Plone, frontend, React, guidelines"
+---
+
 # Guidelines
 
 You probably came here by clicking one of the ‘guidelines for contributing’ links on

@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": "Volto has a centralized configuration registry used to parameterize Volto."
+  "property=og:description": "Volto has a centralized configuration registry used to parameterize Volto."
+  "property=og:title": "The configuration registry"
+  "keywords": "Volto, Plone, frontend, React, configuration, registry"
+---
+
 # The configuration registry
 
 Volto has a centralized configuration registry used to parameterize Volto. It has the
@@ -26,7 +34,7 @@ Both use the same method, using a function as the default export. This function 
 add-ons, it must be provided in the main `index.js` module of the add-on. For project's
 it must be provided in the `src/config.js` module of the project.
 
-See the [Add-ons](/addons) section for extended information on how to work with add-ons.
+See the {doc}`../addons/index` section for extended information on how to work with add-ons.
 
 ## Extending configuration in a project
 
@@ -51,7 +59,7 @@ add-ons configuration in `config` argument. Next, perform all the required modif
 to the config and finally, return the config object.
 
 By reading Volto's
-[src/config/index.js](https://github.com/plone/volto/tree/master/src/config/index.js),
+[src/config/index.js](https://github.com/plone/volto/blob/master/src/config/index.js),
 you'll get to see that Volto provides some default configuration objects
 (`blocks`, `widgets`, `settings`, etc), passes them through the
 `applyAddonConfiguration()` function, which allows any installed addons to
@@ -62,9 +70,8 @@ a Volto project.
 
 ## settings
 
-The `settings` object of the configruration registry is a big registry of miscellaneous
-settings. See the [Settings reference](/configuration/settings-reference) for
-a bit more details.
+The `settings` object of the configruration registry is a big registry of miscellaneous settings.
+See {doc}`settings-reference` for details.
 
 ## widgets
 
@@ -75,7 +82,7 @@ but also the [lookup
 mechanism](https://github.com/plone/volto/blob/6fd62cb2860bc7cf3cb7c36ea86bfd8bd03247d9/src/components/manage/Form/Field.jsx#L112)
 to understand how things work.
 
-See [Widgets](/recipes/widget) for more information.
+See {doc}`../recipes/widget` for more information.
 
 ## views
 
@@ -98,7 +105,7 @@ The `blocks` registry holds the information of all the registered blocks in Volt
 - groupBlocksOrder
 - initialBlocks
 
-See [Blocks](/blocks/settings) for more information.
+See {doc}`../blocks/settings` for more information.
 
 ## addonReducers
 
@@ -111,7 +118,7 @@ The `addonRoutes` is a list of routes declaration, to be used as child
 sub-routes for the App component. A route declaration looks like this (an
 example):
 
-```
+```js
   {
     path: '/**/chat',
     component: Chat,
@@ -123,6 +130,21 @@ can use them to override the existing routes, as well. See `src/routes.js` for
 more details. In its configuration, an addon would push additional routes to
 this data structure:
 
-```
+```js
 config.addonRoutes.push({ path: '/**/chat', component: Chat });
 ```
+
+## cookieExpires
+According to the EU law on the management of the GDPR privacy and cookies, technical cookies must have a maximum expiration of 6 months.
+For sites outside the European Union, the expiration could be different.
+Expiration time is configurable in `config`, expressed in seconds:
+
+```js
+export default function applyConfig(config) {
+  config.settings = {
+    ...config.settings,
+    cookieExpires: 15552000, //in seconds. Default is 6 month (15552000)
+  };
+
+  return config;
+}

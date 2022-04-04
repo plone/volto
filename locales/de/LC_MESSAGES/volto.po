@@ -873,6 +873,7 @@ msgstr "Leere Liste von Elementen"
 msgid "Enable editable Blocks"
 msgstr "Aktiviere bearbeitbare Blocks"
 
+#: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 # defaultMessage: End Date
 msgid "End Date"
@@ -1741,6 +1742,11 @@ msgstr "Vorkommen"
 msgid "Ok"
 msgstr "OK"
 
+#: components/manage/Widgets/IdWidget
+# defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed.
+msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed."
+msgstr "Nur Kleinbuchstaben (a-z) ohne Umlaute oder Sonderzeichen, Zahlen (0-9) und die beiden Zeichen "-" und "_" sind erlaubt."
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
@@ -2453,6 +2459,7 @@ msgstr "Geben Sie ein YouTube-Video oder eine YouTube-Playlist URL ein"
 msgid "Split"
 msgstr "Aufsplitten"
 
+#: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 # defaultMessage: Start Date
 msgid "Start Date"
@@ -2653,6 +2660,11 @@ msgstr "Dritter"
 # defaultMessage: This has an ongoing working copy in {title}
 msgid "This has an ongoing working copy in {title}"
 msgstr "Diese Seite hat eine Arbeitskopie unter {title}"
+
+#: components/manage/Widgets/IdWidget
+# defaultMessage: This is a reserved name and can't be used
+msgid "This is a reserved name and can't be used"
+msgstr "Dies ist ein reservierter Name und kann nicht verwendet werden"
 
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This is a working copy of {title}
@@ -3148,42 +3160,42 @@ msgstr "Entwurf"
 msgid "email"
 msgstr "E-Mail"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: All dates
 msgid "event_alldates"
 msgstr "Alle Termine"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Attendees
 msgid "event_attendees"
 msgstr "Teilnehmer"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Contact Name
 msgid "event_contactname"
 msgstr "Kontaktname"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Contact Phone
 msgid "event_contactphone"
 msgstr "Kontakttelefon"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Website
 msgid "event_website"
 msgstr "Webseite"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: What
 msgid "event_what"
 msgstr "Was"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: When
 msgid "event_when"
 msgstr "Datum"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Where
 msgid "event_where"
 msgstr "Ort"
@@ -3278,6 +3290,12 @@ msgstr "Minimum"
 # defaultMessage: Most used
 msgid "mostUsed"
 msgstr "Häufig genutzt"
+
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+# defaultMessage: No
+msgid "no"
+msgstr ""
 
 #: components/manage/Contents/ContentsItem
 # defaultMessage: No workflow state
@@ -3545,10 +3563,16 @@ msgstr "Nutzer Avatar"
 msgid "video"
 msgstr "Video"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Visit external website
 msgid "visit_external_website"
 msgstr "Externe Webseite besuchen"
+
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+# defaultMessage: Yes
+msgid "yes"
+msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: {count, plural, one {Upload {count} file} other {Upload {count} files}}

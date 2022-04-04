@@ -233,7 +233,7 @@ export function mutateBlock(formData, id, value) {
  * @param {number} value New block's value
  * @return {Array} New block id, New form data
  */
-export function insertBlock(formData, id, value) {
+export function insertBlock(formData, id, value, current = {}) {
   const blocksFieldname = getBlocksFieldname(formData);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
   const index = formData[blocksLayoutFieldname].items.indexOf(id);
@@ -246,6 +246,10 @@ export function insertBlock(formData, id, value) {
       [blocksFieldname]: {
         ...formData[blocksFieldname],
         [newBlockId]: value || null,
+        [id]: {
+          ...formData[blocksFieldname][id],
+          ...current,
+        },
       },
       [blocksLayoutFieldname]: {
         items: [

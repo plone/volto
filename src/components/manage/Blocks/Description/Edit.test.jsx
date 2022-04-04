@@ -5,6 +5,12 @@ import { Provider } from 'react-intl-redux';
 
 import Edit from './Edit';
 
+jest.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(
+  async () =>
+    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
+);
+
 const mockStore = configureStore();
 
 global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
