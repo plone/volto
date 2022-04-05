@@ -2,6 +2,8 @@
 
 ## 15.3.1 (unreleased)
 
+- fixed bug in HTML block edit @giuliaghisini
+
 ### Breaking
 
 ### Feature
@@ -44,7 +46,7 @@
 
 - Switch from `docs-linkcheckbroken` to `docs-linkcheck` in GitHub Actions because the former is broken. @stevepiercy
 - Set the output for storybook to the correct directory. @stevepiercy
-- Fix typo in Makefile: docs/_build @ksuess
+- Fix typo in Makefile: docs/\_build @ksuess
 - Added language to code-blocks in md files @ktsrivastava29
 
 ## 15.2.2 (2022-03-23)
