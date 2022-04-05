@@ -13,6 +13,7 @@
 ### Documentation
 
 - Added meta-html values in most of the pages. @ktsrivastava29
+- Added html_meta values to remaining pages. @stevepiercy
 
 ## 15.2.3 (2022-04-01)
 

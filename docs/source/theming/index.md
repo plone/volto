@@ -1,9 +1,9 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "Theming a Volto website."
+  "property=og:description": "Theming a Volto website."
+  "property=og:title": "Theming"
+  "keywords": "Volto, Plone, frontend, React, Theming"
 ---
 
 # Theming
@@ -11,20 +11,11 @@ html_meta:
 
 ```{toctree}
 :maxdepth: 3
-:hidden: true
 
-./about-semantic.md
-./semanticui-theming.md
-./theming-engine.md
-./theming-strategy.md
-./custom-styling.md
-./using-third-party-themes.md
-
+about-semantic
+semanticui-theming
+theming-engine
+theming-strategy
+custom-styling
+using-third-party-themes
 ```
-
-- [About Semantic UI](./about-semantic.md)
-- [Semantic UI Theming](./semanticui-theming.md)
-- [Theming Engine](./theming-engine.md)
-- [Theming strategy](./theming-strategy.md)
-- [Custom styling](./custom-styling.md)
-- [Use another theming engine](./using-third-party-themes.md)
