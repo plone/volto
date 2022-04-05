@@ -22,9 +22,6 @@ export const generateRobots = (req) =>
       }/robots.txt`,
     );
     request.set('Accept', 'text/plain');
-    request.set('x-forwarded-for', req.headers['x-forwarded-for']);
-    request.set('x-forwarded-host', req.headers['x-forwarded-host']);
-
     const authToken = req.universalCookies.get('auth_token');
     if (authToken) {
       request.set('Authorization', `Bearer ${authToken}`);

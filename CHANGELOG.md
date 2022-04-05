@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Added X-Forwarded-* headers to superagent requests. @mamico
+
 ### Bugfix
 
 ### Internal
