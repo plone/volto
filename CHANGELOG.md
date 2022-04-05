@@ -1,6 +1,6 @@
 # Change Log
 
-## 15.2.4 (unreleased)
+## 15.3.1 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,15 @@
 ### Bugfix
 
 ### Internal
+
+### Documentation
+
+## 15.3.0 (2022-04-04)
+
+### Feature
+
+- Improve the fix for the "user swap" vulnerability @sneridagh @plone/volto-team
+  Thanks to @ericof and @cekk for their help and efforts at pinpointing the latests culprits!
 
 ### Documentation
 
