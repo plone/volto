@@ -10,7 +10,7 @@ html_meta:
 
 
 ```{toctree}
-:maxdepth: 3
+:maxdepth: 1
 
 about-semantic
 semanticui-theming
