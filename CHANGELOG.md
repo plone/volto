@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Complete Romanian translation @sboghy
+
 ### Bugfix
 
 ### Internal
