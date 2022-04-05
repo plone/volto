@@ -5,6 +5,7 @@
 
 import superagent from 'superagent';
 import config from '@plone/volto/registry';
+import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
 
 /**
  * Generate robots. Get robots from plone
@@ -21,12 +22,14 @@ export const generateRobots = (req) =>
       }/robots.txt`,
     );
     request.set('Accept', 'text/plain');
+    request.set('x-forwarded-for', req.headers['x-forwarded-for']);
+    request.set('x-forwarded-host', req.headers['x-forwarded-host']);
 
     const authToken = req.universalCookies.get('auth_token');
     if (authToken) {
       request.set('Authorization', `Bearer ${authToken}`);
     }
-
+    request.use(addHeadersFactory(req));
     request.end((error, { text }) => {
       if (error) {
         resolve(text || error);
