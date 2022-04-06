@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Fix/Improve the console logging when the server starts. @sneridagh
+
 ### Internal
 
 ### Documentation
