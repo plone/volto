@@ -267,8 +267,8 @@ class View extends Component {
 }
 
 export default compose(
-  withRouter,
   injectIntl,
+  withRouter,
   connect(
     (state, props) => ({
       actions: state.actions.actions,
@@ -277,11 +277,10 @@ export default compose(
       error: state.content.get.error,
       apiError: state.apierror.error,
       connectionRefused: state.apierror.connectionRefused,
-      pathname: state.router.location.pathname,
-      location: state.router.location,
+      pathname: props.location.pathname,
       versionId:
-        qs.parse(state.router.location.search) &&
-        qs.parse(state.router.location.search).version,
+        qs.parse(props.location.search) &&
+        qs.parse(props.location.search).version,
     }),
     {
       listActions,

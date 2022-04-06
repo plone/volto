@@ -134,7 +134,7 @@ function setupServer(req, res, next) {
   });
 
   // Create a new Redux store instance
-  const [store] = configureStore(initialState, history, api);
+  const store = configureStore(initialState, history, api);
 
   persistAuthToken(store, req);
 

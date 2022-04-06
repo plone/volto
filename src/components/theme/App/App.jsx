@@ -8,7 +8,7 @@ import jwtDecode from 'jwt-decode';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { asyncConnect, Helmet } from '@plone/volto/helpers';
+import { asyncConnect, Helmet, withRouter } from '@plone/volto/helpers';
 import { Segment } from 'semantic-ui-react';
 import { Outlet } from 'react-router-dom';
 import { Slide, ToastContainer, toast } from 'react-toastify';
@@ -273,9 +273,10 @@ export default compose(
   //   },
   // ]),
   injectIntl,
+  withRouter,
   connect(
     (state, props) => ({
-      pathname: state.router.location.pathname,
+      pathname: props.location.pathname,
       token: state.userSession.token,
       userId: state.userSession.token
         ? jwtDecode(state.userSession.token).sub

@@ -314,8 +314,8 @@ export default compose(
       loading: state.userSession.login.loading,
       token: state.userSession.token,
       returnUrl:
-        qs.parse(state.router.location.search).return_url ||
-        state.router.location.pathname
+        qs.parse(props.location.search).return_url ||
+        props.location.pathname
           .replace(/\/login$/, '')
           .replace(/\/logout$/, '') ||
         '/',

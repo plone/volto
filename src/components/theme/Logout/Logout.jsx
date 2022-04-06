@@ -56,7 +56,7 @@ class Logout extends Component {
 
 export default connect(
   (state, props) => ({
-    query: qs.parse(state.router.location.search),
+    query: qs.parse(props.location.search),
   }),
   { logout, purgeMessages },
 )(Logout);
