@@ -7,7 +7,6 @@ import Cookies from 'universal-cookie';
 import jwtDecode from 'jwt-decode';
 
 import { loginRenew } from '@plone/volto/actions';
-import { push } from 'connected-react-router';
 
 /**
  * Get auth token method (does not work in SSR)
@@ -79,14 +78,7 @@ export function persistAuthToken(store, req) {
             ) {
               store.dispatch(loginRenew());
             } else {
-              // Logout
-              store.dispatch(
-                push(
-                  `/logout?return_url=${
-                    store.getState().router.location.pathname
-                  }`,
-                ),
-              );
+              // TODO: issue Logout
             }
           }
         }, exp);

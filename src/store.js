@@ -1,7 +1,6 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
-import { createReduxHistoryContext } from 'redux-first-history';
 import { save, load } from 'redux-localstorage-simple';
 
 import config from '@plone/volto/registry';
@@ -10,17 +9,8 @@ import reducers from '@root/reducers';
 import { api, crashReporter, blacklistRoutes } from '@plone/volto/middleware';
 
 const configureStore = (initialState, history, apiHelper) => {
-  const {
-    createReduxHistory,
-    routerMiddleware,
-    routerReducer,
-  } = createReduxHistoryContext({
-    history,
-  });
-
   let stack = [
     blacklistRoutes,
-    routerMiddleware,
     crashReporter,
     thunk,
     ...(apiHelper ? [api(apiHelper)] : []),
@@ -35,7 +25,6 @@ const configureStore = (initialState, history, apiHelper) => {
   const middlewares = composeWithDevTools(applyMiddleware(...stack));
   const store = createStore(
     combineReducers({
-      router: routerReducer,
       ...reducers,
       ...config.addonReducers,
     }),
@@ -48,7 +37,7 @@ const configureStore = (initialState, history, apiHelper) => {
     middlewares,
   );
 
-  return [store, createReduxHistory(store)];
+  return store;
 };
 
 export default configureStore;

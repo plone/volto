@@ -4,7 +4,7 @@ import React from 'react';
 import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl-redux';
-import { HistoryRouter as Router } from 'redux-first-history/rr6';
+import { BrowserRouter } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import { loadableReady } from '@loadable/component';
 import { CookiesProvider } from 'react-cookie';
@@ -29,7 +29,7 @@ function reactIntlErrorHandler(error) {
 export default () => {
   const api = new Api();
 
-  const [store, connectedHistory] = configureStore(window.__data, history, api);
+  const store = configureStore(window.__data, history, api);
   persistAuthToken(store);
 
   // On Cypress we expose the history, the store and the settings
@@ -58,11 +58,11 @@ export default () => {
       <CookiesProvider>
         <Provider store={store}>
           <IntlProvider onError={reactIntlErrorHandler}>
-            <Router history={connectedHistory}>
+            <BrowserRouter>
               <ScrollToTop>
                 <Routes />
               </ScrollToTop>
-            </Router>
+            </BrowserRouter>
           </IntlProvider>
         </Provider>
       </CookiesProvider>,
