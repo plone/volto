@@ -14,6 +14,9 @@
 
 ### Documentation
 
+- Added html_meta values to remaining pages. @stevepiercy
+- Remove duplicate toctrees and set maxdepth to appropriate values. @stevepiercy
+
 ## 15.3.0 (2022-04-04)
 
 ### Feature
