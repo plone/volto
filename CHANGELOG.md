@@ -8,6 +8,8 @@
 
 ### Feature
 
+- Add package.json scripts documentation @ksuess
+
 ### Bugfix
 
 - Fix/Improve the console logging when the server starts. @sneridagh

@@ -436,7 +436,8 @@
     "jest-environment-jsdom-sixteen": "1.0.3",
     "react-is": "^16.13.1",
     "tmp": "0.2.1",
-    "use-trace-update": "1.3.2"
+    "use-trace-update": "1.3.2",
+    "why": "0.6.2"
   },
   "resolutions-comments": {
     "ua-parser-js": "See https://github.com/faisalman/ua-parser-js/issues/536"
