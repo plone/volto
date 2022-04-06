@@ -1,6 +1,8 @@
 # Change Log
 
-## 15.2.3 (unreleased)
+## 15.3.1 (unreleased)
+
+- fixed bug in HTML block edit @giuliaghisini
 
 ### Breaking
 
@@ -9,18 +11,48 @@
 ### Bugfix
 
 - Fix/Improve the console logging when the server starts. @sneridagh
+
+### Internal
+
+### Documentation
+
+- Added html_meta values to remaining pages. @stevepiercy
+- Remove duplicate toctrees and set maxdepth to appropriate values. @stevepiercy
+
+## 15.3.0 (2022-04-04)
+
+### Feature
+
+- Improve the fix for the "user swap" vulnerability @sneridagh @plone/volto-team
+  Thanks to @ericof and @cekk for their help and efforts at pinpointing the latests culprits!
+
+### Documentation
+
+- Added meta-html values in most of the pages. @ktsrivastava29
+
+## 15.2.3 (2022-04-01)
+
+### Bugfix
+
 - Change which api calls can set specific api errors @robgietema
 - Fix helper import. @robgietema
+- Move `customStyleMap` to `richtextEditorSettings`
+- Pass placeholder and isDisabled properties to EmailWidget and UrlWidget @mihaislobozeanu
+- Pass placeholder property to PasswordWidget and NumberWidget @mihaislobozeanu
+- Fix getVocabName when vocabNameOrURL is false @avoinea #2955, #2919
 
 ### Internal
 
 - Remove offending `Makefile` command that broke on MacOS due to lack of compatibility of the MacOS `make` utility. @tisto
 - Upgraded use-deep-compare-effect to version 1.8.1. @pnicolli
+- chore(icons): add missing pastanaga icons @nileshgulia1
 
 ### Documentation
 
 - Switch from `docs-linkcheckbroken` to `docs-linkcheck` in GitHub Actions because the former is broken. @stevepiercy
 - Set the output for storybook to the correct directory. @stevepiercy
+- Fix typo in Makefile: docs/\_build @ksuess
+- Added language to code-blocks in md files @ktsrivastava29
 
 ## 15.2.2 (2022-03-23)
 
@@ -85,7 +117,6 @@
 ### Documentation
 
 - Updated README.md @ktsrivastava29
-
 - Added language to code-blocks in md files @ktsrivastava29
 - Added html_meta values and labels for Intersphinx cross-references from Trainings. @stevepiercy
 - Replaced `docs.voltocms.com` with MyST references. @stevepiercy

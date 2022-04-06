@@ -1,9 +1,9 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "A guide to lazy-loading libraries in Volto."
+  "property=og:description": "A guide to lazy-loading libraries in Volto."
+  "property=og:title": "Lazy loading"
+  "keywords": "Volto, Plone, frontend, React, lazy loading, useLazyLibs hook"
 ---
 
 # Lazy loading
