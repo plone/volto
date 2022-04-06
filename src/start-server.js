@@ -2,6 +2,7 @@
 import http from 'http';
 
 import app from './server';
+import debug from 'debug';
 
 import * as Sentry from '@sentry/node';
 import initSentry from '@plone/volto/sentry';
@@ -27,7 +28,10 @@ export default () => {
         console.log(
           `Using internal proxy: ${app.publicURL} -> ${app.devProxyToApiPath}`,
         );
-      console.log(`🎭 Volto started at ${app.publicURL} 🚀`);
+      console.log(`🎭 Volto started at ${bind_address}:${port} 🚀`);
+
+      if (!process.env.RAZZLE_PUBLIC_URL)
+        debug('config')(`Current public URL: ${app.publicURL}`);
     })
     .on('error', (e) => {
       console.error(e.message);

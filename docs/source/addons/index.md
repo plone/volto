@@ -9,12 +9,10 @@ html_meta:
 # Volto add-ons
 
 ```{toctree}
-:maxdepth: 3
-:hidden: true
+:maxdepth: 1
 
 i18n
 best-practices
-
 ```
 
 There are several advanced scenarios where we might want to have more control
@@ -137,7 +135,7 @@ export blocks = {
 
 As this is a common operation, Volto provides a helper method for this:
 
-```
+```js
 import { applyConfig } from '@plone/volto/helpers';
 import * as voltoConfig from '@plone/volto/config';
 
@@ -340,14 +338,14 @@ root](https://classic.yarnpkg.com/en/docs/workspaces/).
 
 So you'll need to add, in your Volto project's `package.json`:
 
-```
+```json
 "private": true,
 "workspaces": [],
 ```
 
 Then populate the `workspaces` key with the path to your development addons:
 
-```
+```json
 "workspaces": [
   "src/addons/my-volto-addon"
 ]
