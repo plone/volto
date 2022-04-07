@@ -24,6 +24,9 @@
 - Fixed bug in HTML block edit @giuliaghisini
 - Fix cannot read properties of undefined in Content.jsx @iFlameing
 - Fix fixed `ObjectBrowserBody` to handle data fields based on `ObjectBrowser` mode @giuliaghisini
+- Fix handling of single reference field. @robgietema
+
+### Internal
 
 ### Documentation
 

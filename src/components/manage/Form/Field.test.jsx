@@ -245,4 +245,28 @@ describe('Field', () => {
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
+
+  it('renders a widget with the image object browser', () => {
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <>
+          <Field
+            vocabulary={{ '@id': 'plone.app.vocabularies.Catalog' }}
+            widgetOptions={{
+              pattern_options: { selectableTypes: ['Image'] },
+            }}
+            id="test"
+          />
+        </>
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
 });
