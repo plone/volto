@@ -7,7 +7,7 @@ import { compose } from 'redux';
 import { withRouter } from 'react-router';
 import { defineMessages, useIntl } from 'react-intl';
 
-import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
+import { flattenToAppURL } from '@plone/volto/helpers';
 import { Icon } from '@plone/volto/components';
 import { withContentNavigation } from './withContentNavigation';
 
