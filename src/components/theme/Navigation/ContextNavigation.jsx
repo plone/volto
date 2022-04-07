@@ -7,7 +7,7 @@ import { compose } from 'redux';
 import { withRouter } from 'react-router';
 import { defineMessages, useIntl } from 'react-intl';
 
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
 import { Icon } from '@plone/volto/components';
 import { withContentNavigation } from './withContentNavigation';
 
@@ -29,6 +29,7 @@ function renderNode(node, parentLevel) {
       className={`level-${level}`}
     >
       <List.Content>
+      {node.type !== 'link' ? (
         <RouterLink
           to={flattenToAppURL(node.href)}
           title={node.description}
@@ -46,6 +47,9 @@ function renderNode(node, parentLevel) {
             ''
           )}
         </RouterLink>
+         ) : (
+          <a href={flattenToAppURL(node.href)}>{node.title}</a>
+        )}
         {(node.items?.length && (
           <List.List>
             {node.items.map((node) => renderNode(node, level))}
