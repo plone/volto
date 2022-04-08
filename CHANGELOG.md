@@ -14,6 +14,7 @@
 ### Bugfix
 
 - Fix/Improve the console logging when the server starts. @sneridagh
+- Resoves 'semantic-ui-react' package ```<Icon name=``` issue. @priyansh71 #3217
 
 ### Internal
 
