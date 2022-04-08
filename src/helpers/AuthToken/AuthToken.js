@@ -78,7 +78,7 @@ export function persistAuthToken(store, req) {
             ) {
               store.dispatch(loginRenew());
             } else {
-              // TODO: issue Logout
+              // TODO: issue Logout, depend on history, pass it from the client
             }
           }
         }, exp);

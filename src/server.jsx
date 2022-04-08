@@ -1,4 +1,5 @@
 /* eslint no-console: 0 */
+import fs from 'fs';
 import '@plone/volto/config'; // This is the bootstrap for the global config - server side
 import { existsSync, lstatSync, readFileSync } from 'fs';
 import React from 'react';
@@ -17,6 +18,7 @@ import { resetServerContext } from 'react-beautiful-dnd';
 import { CookiesProvider } from 'react-cookie';
 import cookiesMiddleware from 'universal-cookie-express';
 import debug from 'debug';
+import { renderToPipeableStream } from 'react-dom/server';
 
 import routes, { Routes } from '@root/routes';
 import config from '@plone/volto/registry';
@@ -190,6 +192,9 @@ server.get('/*', (req, res) => {
     statsFile: path.resolve(path.join(buildDir, 'loadable-stats.json')),
     entrypoints: ['client'],
   });
+  const assets = JSON.parse(
+    fs.readFileSync(path.resolve(path.join(buildDir, 'loadable-stats.json'))),
+  );
 
   const url = req.originalUrl || req.url;
   const location = parseUrl(url);
@@ -257,24 +262,39 @@ server.get('/*', (req, res) => {
             `,
     );
   } else {
-    res.status(200).send(
-      `<!doctype html>
-              ${renderToString(
-                <Html
-                  extractor={extractor}
-                  markup={markup}
-                  store={store}
-                  criticalCss={readCriticalCss(req)}
-                  apiPath={
-                    req.app.locals.detectedHost || config.settings.apiPath
-                  }
-                  publicURL={
-                    req.app.locals.detectedHost || config.settings.publicURL
-                  }
-                />,
-              )}
-            `,
+    let didError = false;
+    const assetsJS = assets['entrypoints']['client']['assets'].filter((asd) =>
+      asd.endsWith('.js'),
     );
+    console.log(assetsJS);
+    res.socket.on('error', (error) => {
+      console.error('Fatal', error);
+    });
+
+    const { pipe, abort } = renderToPipeableStream(
+      <Html
+        extractor={extractor}
+        markup={markup}
+        store={store}
+        criticalCss={readCriticalCss(req)}
+        apiPath={req.app.locals.detectedHost || config.settings.apiPath}
+        publicURL={req.app.locals.detectedHost || config.settings.publicURL}
+      />,
+      {
+        bootstrapScripts: assetsJS,
+        onShellReady() {
+          // If something errored before we started streaming, we set the error code appropriately.
+          res.statusCode = didError ? 500 : 200;
+          res.setHeader('Content-type', 'text/html');
+          pipe(res);
+        },
+        onError(x) {
+          didError = true;
+          console.error(x);
+        },
+      },
+    );
+    setTimeout(abort, 10000);
   }
 });
 
