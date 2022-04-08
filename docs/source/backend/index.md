@@ -1,9 +1,9 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "Integrate Plone backend using the Plone API framework"
+  "property=og:description": "Integrate Plone backend using the Plone API framework"
+  "property=og:title": "Integration with the backend"
+  "keywords": "Volto, Plone, frontend, React, Backend integration"
 ---
 
 # Integration with the backend

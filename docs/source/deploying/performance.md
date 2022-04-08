@@ -45,7 +45,7 @@ through `settings.serverConfig.criticalCssPath`). When this file exists, Volto
 changes the way the CSS files are loaded. By default, the CSS is loaded with
 two elements in the `<head>`:
 
-```
+```html
 <link rel="preload" href="static/1234.chunk.css" as="style"/>
 <link rel="stylesheet" href="1234.chunk.css" />
 ```

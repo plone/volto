@@ -1,13 +1,12 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  'description': 'A guide to Volto frontend deployment'
+  'property=og:description': 'A guide to Volto frontend deployment'
+  'property=og:title': 'Deploying'
+  'keywords': 'Volto, Plone, frontend, React, deploying'
 ---
 
 # Deploying
-
 
 ```{toctree}
 :maxdepth: 3
@@ -21,6 +20,12 @@ html_meta:
 ./performance.md
 ./prefixed-root.md
 
+simple
+pm2
+seamless-mode
+apache
+sentry
+performance
 ```
 
 - [Simple deployment](./simple.md)
