@@ -27,7 +27,6 @@ const UniversalLink = ({
   ...props
 }) => {
   const token = useSelector((state) => state.userSession?.token);
-
   let url = href;
   if (!href && item) {
     if (!item['@id']) {
@@ -42,7 +41,6 @@ const UniversalLink = ({
     } else {
       //case: generic item
       url = flattenToAppURL(item['@id']);
-
       //case: item like a Link
       let remoteUrl = item.remoteUrl || item.getRemoteUrl;
       if (!token && remoteUrl) {
@@ -58,7 +56,6 @@ const UniversalLink = ({
       }
     }
   }
-
   const isBlacklisted =
     (config.settings.externalRoutes ?? []).find((route) =>
       matchPath(flattenToAppURL(url), route.match),
@@ -91,7 +88,7 @@ const UniversalLink = ({
     </a>
   ) : (
     <Link
-      to={flattenToAppURL(url)}
+      to={url}
       target={openLinkInNewTab ?? false ? '_blank' : null}
       title={title}
       className={className}
