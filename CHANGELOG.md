@@ -2,11 +2,6 @@
 
 ## 15.3.1 (unreleased)
 
-- fixed bug in HTML block edit @giuliaghisini
-- Fix cannot read properties of undefined in Content.jsx @iFlameing
-
-### Breaking
-
 ### Feature
 
 - Add package.json scripts documentation @ksuess
@@ -14,8 +9,9 @@
 ### Bugfix
 
 - Fix/Improve the console logging when the server starts. @sneridagh
-
-### Internal
+- Fixed bug in HTML block edit @giuliaghisini
+- Fix cannot read properties of undefined in Content.jsx @iFlameing
+- Fix fixed `ObjectBrowserBody` to handle data fields based on `ObjectBrowser` mode @giuliaghisini
 
 ### Documentation
 
