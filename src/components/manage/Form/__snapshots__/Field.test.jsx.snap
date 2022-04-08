@@ -73,7 +73,7 @@ Array [
 
 exports[`Field renders a widget with the image object browser 1`] = `
 <div
-  className="ReferenceWidget"
+  className="ObjectBrowserWidget"
 />
 `;
 

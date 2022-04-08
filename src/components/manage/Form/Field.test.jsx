@@ -19,6 +19,7 @@ beforeAll(() => {
       password: () => <div className="PasswordWidget" />,
       file: () => <div className="FileWidget" />,
       vocabularyterms: () => <div className="VocabularyTermsWidget" />,
+      object_browser: () => <div className="ObjectBrowserWidget" />,
     },
     vocabulary: {
       'plone.app.vocabularies.Catalog': () => (
@@ -257,9 +258,11 @@ describe('Field', () => {
       <Provider store={store}>
         <>
           <Field
-            vocabulary={{ '@id': 'plone.app.vocabularies.Catalog' }}
             widgetOptions={{
-              pattern_options: { selectableTypes: ['Image'] },
+              frontendOptions: {
+                widget: 'object_browser',
+                widgetProps: { mode: 'image', return: 'single' },
+              },
             }}
             id="test"
           />

@@ -147,6 +147,7 @@ const customStore = {
     subrequests: {
       'testBlock-multiple': searchResults,
       'testBlock-link': searchResults,
+      'testBlock-image': searchResults,
     },
   },
   userSession: { token: '1234' },
@@ -204,3 +205,4 @@ export default {
 
 export const Connected = () => <ObjectBrowserWidget />;
 export const SingleElement = () => <ObjectBrowserWidget mode="link" />;
+export const Image = () => <ObjectBrowserWidget mode="image" return="single" />;

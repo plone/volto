@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import config from '@plone/volto/registry';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
-import { intersection, isArray } from 'lodash';
 
 const MODE_HIDDEN = 'hidden'; //hidden mode. If mode is hidden, field is not rendered
 /**
@@ -85,30 +84,6 @@ const getWidgetPropsFromTaggedValues = (widgetOptions) =>
     : null;
 
 /**
- * Get widget props from patternOptions
- * @param {object} widgetOptions
- * @returns {string} Widget component.
- *
-
-directives.widget(
-    "fieldname",
-    pattern_options={
-        "selectableTypes": [
-            "Image"
-        ]
-    })
-
- */
-const getWidgetPropsFromPatternOptions = (widgetOptions) =>
-  isArray(widgetOptions?.pattern_options?.selectableTypes) &&
-  intersection(
-    widgetOptions.pattern_options.selectableType,
-    config.settings.imageObjects,
-  )
-    ? { mode: 'image' }
-    : null;
-
-/**
  * Get widget by field's `vocabulary` attribute
  * @method getWidgetByVocabulary
  * @param {string} vocabulary Widget
@@ -177,9 +152,9 @@ const UnconnectedField = (props, { intl }) => {
     getWidgetByFieldId(props.id) ||
     getWidgetFromTaggedValues(props.widgetOptions) ||
     getWidgetByName(props.widget) ||
+    getWidgetByChoices(props) ||
     getWidgetByVocabulary(props.vocabulary) ||
     getWidgetByVocabularyFromHint(props) ||
-    getWidgetByChoices(props) ||
     getWidgetByFactory(props.factory) ||
     getWidgetByType(props.type) ||
     getWidgetDefault();
@@ -192,7 +167,6 @@ const UnconnectedField = (props, { intl }) => {
   const widgetProps = {
     ...props,
     ...getWidgetPropsFromTaggedValues(props.widgetOptions),
-    ...getWidgetPropsFromPatternOptions(props.widgetOptions),
   };
 
   if (props.onOrder) {
