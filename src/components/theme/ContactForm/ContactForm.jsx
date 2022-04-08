@@ -228,7 +228,7 @@ export class ContactFormComponent extends Component {
                     className="item"
                   >
                     <Icon
-                      name="arrow left"
+                      className="arrow left"
                       size="big"
                       color="blue"
                       title={this.props.intl.formatMessage(messages.back)}

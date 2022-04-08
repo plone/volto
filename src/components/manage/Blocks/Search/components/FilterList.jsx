@@ -58,7 +58,7 @@ const FilterList = (props) => {
             !isEditMode && setFacets({});
           }}
         >
-          <Icon name="trash" />
+          <Icon className="trash" />
           {intl.formatMessage(messages.clearFilters)}
         </Button>
       </Accordion.Title>

@@ -21,7 +21,7 @@ function ToggleFacetFilterListEntry(props) {
     <Label size="small">
       {intl.formatMessage(facets[facet] ? messages.yes : messages.no)}
       <Icon
-        name="delete"
+        className="delete"
         onClick={() => {
           const filteredFacets = Object.assign(
             {},

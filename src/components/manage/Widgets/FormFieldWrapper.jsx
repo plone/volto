@@ -148,7 +148,11 @@ class FormFieldWrapper extends Component {
                       onEdit(id);
                     }}
                   >
-                    <IconOld name="write square" size="large" color="blue" />
+                    <IconOld
+                      className="write square"
+                      size="large"
+                      color="blue"
+                    />
                   </button>
                   <button
                     aria-label={intl.formatMessage(messages.delete)}
@@ -158,7 +162,7 @@ class FormFieldWrapper extends Component {
                       onDelete(id);
                     }}
                   >
-                    <IconOld name="close" size="large" color="red" />
+                    <IconOld className="close" size="large" color="red" />
                   </button>
                 </div>
               )}

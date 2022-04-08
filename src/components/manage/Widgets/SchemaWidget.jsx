@@ -1227,7 +1227,7 @@ class SchemaWidget extends Component {
                       className="item ui noborder button"
                       onClick={this.onShowAddFieldset}
                     >
-                      <Icon name="plus" size="large" />
+                      <Icon className="plus" size="large" />
                     </button>
                   </div>
 
@@ -1297,7 +1297,7 @@ class SchemaWidget extends Component {
                         className="item ui noborder button"
                         onClick={this.onShowAddField}
                       >
-                        <Icon name="plus" color="blue" size="large" />
+                        <Icon className="plus" color="blue" size="large" />
                       </button>
                     </div>
                   </Grid.Column>

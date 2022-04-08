@@ -221,7 +221,7 @@ class Actions extends Component {
         id="toolbar-actions"
         trigger={
           <span>
-            <Icon name="lightning" size="big" />{' '}
+            <Icon className="lightning" size="big" />{' '}
             <FormattedMessage id="Actions" defaultMessage="Actions" />
           </span>
         }
@@ -265,7 +265,7 @@ class Actions extends Component {
                       to={`${this.props.pathname}/delete`}
                       className="item"
                     >
-                      <Icon name="trash" />
+                      <Icon className="trash" />
                       {item.title}
                     </Link>
                   );

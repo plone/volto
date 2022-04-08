@@ -366,7 +366,7 @@ class Comments extends Component {
                 onClick={() => this.onDelete(flattenToAppURL(comment['@id']))}
                 color="red"
               >
-                <Icon name="delete" color="red" />
+                <Icon className="delete" color="red" />
                 <FormattedMessage
                   id="Delete"
                   defaultMessage="Delete"
@@ -382,7 +382,7 @@ class Comments extends Component {
               0 ? (
                 this.state.collapsedComments[comment.comment_id] ? (
                   <>
-                    <Icon name="eye" color="blue" />
+                    <Icon className="eye" color="blue" />
                     <FormattedMessage
                       id="Show Replies"
                       defaultMessage="Show Replies"
@@ -390,7 +390,7 @@ class Comments extends Component {
                   </>
                 ) : (
                   <>
-                    <Icon name="minus" color="blue" />
+                    <Icon className="minus" color="blue" />
                     <FormattedMessage
                       id="Hide Replies"
                       defaultMessage="Hide Replies"

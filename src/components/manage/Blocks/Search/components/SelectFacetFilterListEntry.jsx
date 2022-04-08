@@ -7,7 +7,7 @@ function SelectFacetFilterListEntry(props) {
     <Label size="small">
       {facets[facet]}
       <Icon
-        name="delete"
+        className="delete"
         onClick={() => {
           !isEditMode &&
             setFacets({
@@ -23,7 +23,7 @@ function SelectFacetFilterListEntry(props) {
         <Label size="small" key={i}>
           {entry}
           <Icon
-            name="delete"
+            className="delete"
             onClick={() => {
               const entries = facets[facet].filter((item) => item !== entry);
               !isEditMode &&

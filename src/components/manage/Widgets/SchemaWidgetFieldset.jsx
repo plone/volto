@@ -55,7 +55,7 @@ export const SchemaWidgetFieldsetComponent = ({
               onShowEditFieldset(order);
             }}
           >
-            <Icon name="write square" size="large" color="blue" />
+            <Icon className="write square" size="large" color="blue" />
           </button>
         )}
 
@@ -68,7 +68,7 @@ export const SchemaWidgetFieldsetComponent = ({
               onShowDeleteFieldset(order);
             }}
           >
-            <Icon name="close" size="large" color="red" />
+            <Icon className="close" size="large" color="red" />
           </button>
         )}
       </div>

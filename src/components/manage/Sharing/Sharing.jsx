@@ -395,10 +395,10 @@ class SharingComponent extends Component {
                   defaultMessage="By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
                   values={{
                     inherited: (
-                      <IconOld name="check circle outline" color="green" />
+                      <IconOld className="check circle outline" color="green" />
                     ),
                     global: (
-                      <IconOld name="check circle outline" color="blue" />
+                      <IconOld className="check circle outline" color="blue" />
                     ),
                   }}
                 />

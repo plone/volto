@@ -196,7 +196,7 @@ class ReferenceWidget extends Component {
         key={item.value}
         content={
           <>
-            <Icon name="home" /> {item.value}
+            <Icon className="home" /> {item.value}
           </>
         }
         trigger={

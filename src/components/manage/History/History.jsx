@@ -225,7 +225,7 @@ class History extends Component {
                                 entry.version
                               }`}
                             >
-                              <Icon name="copy" />{' '}
+                              <Icon className="copy" />{' '}
                               <FormattedMessage
                                 id="View changes"
                                 defaultMessage="View changes"
@@ -239,7 +239,7 @@ class History extends Component {
                                 entry.version
                               }`}
                             >
-                              <Icon name="eye" />{' '}
+                              <Icon className="eye" />{' '}
                               <FormattedMessage
                                 id="View this revision"
                                 defaultMessage="View this revision"
@@ -251,7 +251,7 @@ class History extends Component {
                               value={entry.version}
                               onClick={this.onRevert}
                             >
-                              <Icon name="undo" />{' '}
+                              <Icon className="undo" />{' '}
                               <FormattedMessage
                                 id="Revert to this revision"
                                 defaultMessage="Revert to this revision"
