@@ -17,12 +17,12 @@ const MultilingualRedirector = (props) => {
     ? currentLanguage
     : settings.defaultLanguage;
   const dispatch = useDispatch();
-
+  const isRoot = pathname === '/' || pathname === settings.prefixPath + '/';
   React.useEffect(() => {
     // ToDo: Add means to support language negotiation (with config)
     // const detectedLang = (navigator.language || navigator.userLanguage).substring(0, 2);
     let mounted = true;
-    if (settings.isMultilingual && pathname === '/') {
+    if (settings.isMultilingual && isRoot) {
       const langFileName = normalizeLanguageName(redirectToLanguage);
       import('@root/../locales/' + langFileName + '.json').then((locale) => {
         if (mounted) {
@@ -33,9 +33,9 @@ const MultilingualRedirector = (props) => {
     return () => {
       mounted = false;
     };
-  }, [pathname, dispatch, redirectToLanguage, settings.isMultilingual]);
+  }, [pathname, dispatch, redirectToLanguage, settings.isMultilingual, isRoot]);
 
-  return pathname === '/' && settings.isMultilingual ? (
+  return isRoot && settings.isMultilingual ? (
     <Redirect to={`/${redirectToLanguage}`} />
   ) : (
     <>{children}</>
