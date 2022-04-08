@@ -13,6 +13,7 @@
 ### Bugfix
 
 - Fix/Improve the console logging when the server starts. @sneridagh
+- Fix ContextNavigation component with Link type objects. @UnaiEtxaburu #3232
 
 ### Internal
 

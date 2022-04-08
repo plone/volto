@@ -48,7 +48,9 @@ function renderNode(node, parentLevel) {
             )}
           </RouterLink>
         ) : (
-          <UniversalLink href={flattenToAppURL(node.href)}>{node.title}</UniversalLink>
+          <UniversalLink href={flattenToAppURL(node.href)}>
+            {node.title}
+          </UniversalLink>
         )}
         {(node.items?.length && (
           <List.List>
