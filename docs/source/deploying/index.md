@@ -1,15 +1,14 @@
 ---
 html_meta:
-  "description": "A guide to Volto frontend deployment"
-  "property=og:description": "A guide to Volto frontend deployment"
-  "property=og:title": "Deploying"
-  "keywords": "Volto, Plone, frontend, React, deploying"
+  'description': 'A guide to Volto frontend deployment'
+  'property=og:description': 'A guide to Volto frontend deployment'
+  'property=og:title': 'Deploying'
+  'keywords': 'Volto, Plone, frontend, React, deploying'
 ---
 
 # Deploying
 
 ```{toctree}
-<<<<<<< HEAD
 :maxdepth: 3
 :hidden: true
 
@@ -20,9 +19,6 @@ html_meta:
 ./sentry.md
 ./performance.md
 ./prefixed-root.md
-=======
-:maxdepth: 1
->>>>>>> master
 
 simple
 pm2
@@ -31,7 +27,6 @@ apache
 sentry
 performance
 ```
-<<<<<<< HEAD
 
 - [Simple deployment](./simple.md)
 - [Using PM2](./pm2.md)
@@ -40,5 +35,3 @@ performance
 - [Using sentry](./sentry.md)
 - [Performance improvements](./performance.md)
 - [Non-root deployment](./prefixed-root.md)
-=======
->>>>>>> master
