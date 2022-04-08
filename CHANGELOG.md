@@ -3,6 +3,7 @@
 ## 15.3.1 (unreleased)
 
 - fixed bug in HTML block edit @giuliaghisini
+- Fix cannot read properties of undefined in Content.jsx @iFlameing
 
 ### Breaking
 
