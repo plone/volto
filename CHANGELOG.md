@@ -1,11 +1,18 @@
 # Change Log
 
-## 15.3.1 (unreleased)
-
-- fixed bug in HTML block edit @giuliaghisini
-- Fix cannot read properties of undefined in Content.jsx @iFlameing
+## 15.4.1 (unreleased)
 
 ### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
+### Documentation
+
+## 15.4.0 (2022-04-08)
 
 ### Feature
 
@@ -17,6 +24,10 @@
 - Resoves 'semantic-ui-react' package ```<Icon name=``` issue. @priyansh71 #3217
 
 ### Internal
+
+- Fixed bug in HTML block edit @giuliaghisini
+- Fix cannot read properties of undefined in Content.jsx @iFlameing
+- Fix fixed `ObjectBrowserBody` to handle data fields based on `ObjectBrowser` mode @giuliaghisi
 
 ### Documentation
 
