@@ -35,7 +35,15 @@ jobs:
       - run: yarn install --frozen-lockfile
 
       - name: Cypress acceptance tests
-        run: yarn ci:cypress:run:guillotina
+        uses: cypress-io/github-action@v2
+        with:
+          browser: chrome
+          headless: true
+          spec: cypress/tests/guillotina
+          start: |
+            make start-test-acceptance-server-guillotina
+            make start-test-acceptance-frontend-guillotina
+           wait-on: 'http://localhost:8081, http://localhost:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
@@ -45,7 +53,7 @@ jobs:
           path: cypress/screenshots
       # Upload Cypress videos
       - uses: actions/upload-artifact@v1
-        if: always()
+        if: failure()
         with:
           name: cypress-videos
           path: cypress/videos

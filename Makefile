@@ -15,6 +15,7 @@ MAKEFLAGS+=--no-builtin-rules
 INSTANCE_PORT=8080
 DOCKER_IMAGE=plone/plone-backend:5.2.7
 KGS=plone.restapi==8.21.2 plone.volto==4.0.0a3 plone.rest==2.0.0a3 plone.app.iterate==4.0.2 plone.app.vocabularies==4.3.0
+NODEBIN = ./node_modules/.bin
 
 # Sphinx variables
 # You can set these variables from the command line.
@@ -53,6 +54,19 @@ help: .SHELLFLAGS:=-eu -o pipefail -O inherit_errexit -c
 help: ## This help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
+.PHONY: start
+# Run both the back-end and the front end
+start:
+	$(MAKE) -j 2 start-backend start-frontend
+
+.PHONY: start-frontend
+start-frontend:
+	yarn start
+
+.PHONY: start-backend
+start-backend: ## Start Plone Backend
+	$(MAKE) -C "./api/" start
+
 .PHONY: release
 release:
 	./node_modules/.bin/release-it
@@ -79,15 +93,12 @@ dist:
 test:
 	$(MAKE) -C "./api/" test
 
-
-.PHONY: storybook-build
-storybook-build:
-	yarn build-storybook -o docs/_build/storybook
-
 bin/python:
 	python3 -m venv . || virtualenv --clear --python=python3 .
 	bin/python -m pip install --upgrade pip
 	bin/pip install -r requirements-docs.txt
+
+##### Documentation
 
 .PHONY: docs-clean
 docs-clean:  ## Clean current and legacy docs build directories, and Python virtual environment
@@ -136,18 +147,11 @@ netlify:
 .PHONY: docs-test
 docs-test: docs-clean docs-linkcheck docs-spellcheck  ## Clean docs build, then run linkcheck, spellcheck
 
-.PHONY: start
-# Run both the back-end and the front end
-start:
-	$(MAKE) -j 2 start-backend start-frontend
+.PHONY: storybook-build
+storybook-build:
+	yarn build-storybook -o docs/_build/storybook
 
-.PHONY: start-frontend
-start-frontend:
-	yarn start
-
-.PHONY: start-backend
-start-backend: ## Start Plone Backend
-	$(MAKE) -C "./api/" start
+##### Docker containers
 
 .PHONY: start-backend-docker
 start-backend-docker:
@@ -160,6 +164,8 @@ start-frontend-docker:
 .PHONY: start-backend-docker-guillotina
 start-backend-docker-guillotina:
 	docker-compose -f g-api/docker-compose.yml up -d
+
+##### Acceptance tests (Cypress)
 
 .PHONY: start-test
 start-test: ## Start Test
@@ -177,28 +183,28 @@ start-test-frontend: ## Start Test Volto Frontend
 	RAZZLE_API_PATH=http://localhost:55001/plone yarn build && NODE_ENV=production node build/server.js
 
 .PHONY: start-test-backend
-start-test-backend: ## Start Test Plone Backend
+start-test-backend: ## Start Test Plone Backend (api folder)
 	$(MAKE) -C "./api/" start-test
 
 .PHONY: stop-backend-docker-guillotina
 stop-backend-docker-guillotina:
 	docker-compose -f g-api/docker-compose.yml down
 
-.PHONY: test-acceptance-server
-test-acceptance-server:
+.PHONY: start-test-acceptance-server test-acceptance-server
+start-test-acceptance-server test-acceptance-server: ## Start Test Acceptance Server Main Fixture (docker container)
 	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) plone.app.robotframework plone.app.contenttypes' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 
-.PHONY: test-acceptance-server-multilingual
-test-acceptance-server-multilingual:
+.PHONY: start-test-acceptance-server-multilingual test-acceptance-server-multilingual
+start-test-acceptance-server-multilingual test-acceptance-server-multilingual: ## Start Test Acceptance Server Multilingual Fixture (docker container)
 	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) plone.app.robotframework plone.app.contenttypes' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:multilingual -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 
-.PHONY: test-acceptance-server-workingcopy
-test-acceptance-server-workingcopy:
+.PHONY: start-test-acceptance-server-workingcopy test-acceptance-server-workingcopy
+start-test-acceptance-server-workingcopy test-acceptance-server-workingcopy : ## Start Test Acceptance Server WorkingCopy Fixture (docker container)
 	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) plone.app.robotframework plone.app.contenttypes' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 	# ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.app.iterate,plone.volto,plone.volto.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default,plone.volto:default-homepage ./api/bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 
-.PHONY: test-acceptance-server-coresandbox
-test-acceptance-server-coresandbox:
+.PHONY: start-test-acceptance-server-coresandbox test-acceptance-server-coresandbox
+start-test-acceptance-server-coresandbox test-acceptance-server-coresandbox: ## Start Test Acceptance Server CoreSandbox Fixture (docker container)
 	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) plone.app.robotframework plone.app.contenttypes' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage,plone.volto:coresandbox -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors,plone.volto.coresandbox $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 	# ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors,plone.volto.coresandbox APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage,plone.volto:coresandbox ./api/bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 
@@ -206,9 +212,25 @@ test-acceptance-server-coresandbox:
 test-acceptance-server-old:
 	$(MAKE) -C "./api/" test-acceptance-server-old
 
-.PHONY: test-acceptance-guillotina
-test-acceptance-guillotina:
+.PHONY: start-test-acceptance-server-guillotina
+start-test-acceptance-server-guillotina: ## Start Test Acceptance Server Guillotina (docker container)
 	docker-compose -f g-api/docker-compose.yml up > /dev/null
+
+.PHONY: start-test-acceptance-frontend-guillotina
+start-test-acceptance-frontend-guillotina: ## Start
+	ADDONS=volto-guillotina RAZZLE_API_PATH=http://localhost:8081/db/web RAZZLE_LEGACY_TRAVERSE=true yarn build && yarn start:prod
+
+.PHONY: test-acceptance-guillotina
+test-acceptance-guillotina: ## Start Test Acce
+	NODE_ENV=production CYPRESS_API=guillotina $(NODEBIN)/cypress open --config integrationFolder='cypress/tests/guillotina'
+
+.PHONY: test-acceptance-guillotina-headless
+test-acceptance-guillotina-headless: ## Start Test Acce
+	NODE_ENV=production CYPRESS_API=guillotina $(NODEBIN)/cypress run --config integrationFolder='cypress/tests/guillotina'
+
+.PHONY: full-test-acceptance-guillotina
+full-test-acceptance-guillotina: ## Start Test Acceptance Server Gu
+	$(NODEBIN)/start-test "make start-test-acceptance-server-guillotina" http-get://localhost:8081 "make start-test-acceptance-frontend-guillotina" http://localhost:3000 "make test-acceptance-guillotina-headless"
 
 .PHONY: clean
 clean:
