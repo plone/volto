@@ -43,7 +43,7 @@ jobs:
           start: |
             make start-test-acceptance-server-guillotina
             make start-test-acceptance-frontend-guillotina
-          wait-on: 'http-get://localhost:8081, http://localhost:3000'
+          wait-on: 'npx wait-on http-get://localhost:8081, npx wait-on http://localhost:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
