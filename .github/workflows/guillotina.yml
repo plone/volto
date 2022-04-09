@@ -39,7 +39,9 @@ jobs:
         with:
           browser: chrome
           headless: true
-          env: NODE_ENV=production,CYPRESS_API=guillotina
+          env:
+            NODE_ENV: production
+            CYPRESS_API: guillotina
           config: integrationFolder=cypress/tests
           spec: cypress/tests/guillotina/**/*.js
           start: |
