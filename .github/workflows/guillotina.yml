@@ -39,7 +39,7 @@ jobs:
         with:
           browser: chrome
           headless: true
-          spec: cypress/tests/guillotina
+          spec: cypress/tests/guillotina/*.js
           start: |
             make start-test-acceptance-server-guillotina
             make start-test-acceptance-frontend-guillotina
