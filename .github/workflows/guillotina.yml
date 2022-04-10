@@ -30,12 +30,11 @@ jobs:
 
       # node install
       - run: yarn install --frozen-lockfile
-      - run: ADDONS=volto-guillotina RAZZLE_API_PATH=http://localhost:8081/db/web RAZZLE_LEGACY_TRAVERSE=true yarn build
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v2
         env:
-          NODE_ENV: production
+          BABEL_ENV: production
           CYPRESS_API: guillotina
         with:
           browser: chrome
@@ -44,7 +43,7 @@ jobs:
           spec: cypress/tests/guillotina/**/*.js
           start: |
             make start-test-acceptance-server-guillotina
-            yarn start:prod
+            make start-test-acceptance-frontend-guillotina
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:8081 http://localhost:3000'
 
       # Upload Cypress screenshots
