@@ -195,11 +195,6 @@ start-test-backend: ## Start Test Plone Backend (api folder)
 stop-backend-docker-guillotina:
 	docker-compose -f g-api/docker-compose.yml down
 
-.PHONY: start-test-acceptance-server-workingcopy test-acceptance-server-workingcopy
-start-test-acceptance-server-workingcopy test-acceptance-server-workingcopy : ## Start Test Acceptance Server WorkingCopy Fixture (docker container)
-	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) plone.app.robotframework plone.app.contenttypes' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
-	# ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.app.iterate,plone.volto,plone.volto.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default,plone.volto:default-homepage ./api/bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
-
 
 .PHONY: test-acceptance-server-old
 test-acceptance-server-old:
@@ -283,6 +278,29 @@ test-acceptance-multilingual-headless: ## Start Multilingual Cypress Acceptance 
 .PHONY: full-test-acceptance-multilingual
 full-test-acceptance-multilingual: ## Runs Multilingual Full Acceptance Testing in headless mode
 	$(NODEBIN)/start-test "make start-test-acceptance-server-multilingual" http-get://localhost:55001/plone "make start-test-acceptance-frontend-multilingual" http://localhost:3000 "make test-acceptance-multilingual-headless"
+
+######### WorkingCopy Acceptance tests
+
+.PHONY: start-test-acceptance-server-workingcopy test-acceptance-server-workingcopy
+start-test-acceptance-server-workingcopy test-acceptance-server-workingcopy : ## Start the WorkingCopy Acceptance Server  Fixture (docker container)
+	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) plone.app.robotframework plone.app.contenttypes' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
+	# ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.app.iterate,plone.volto,plone.volto.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default,plone.volto:default-homepage ./api/bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
+
+.PHONY: start-test-acceptance-frontend-workingcopy
+start-test-acceptance-frontend-workingcopy: ## Start the WorkingCopy Acceptance Frontend Fixture
+	ADDONS=coresandbox:workingCopyFixture RAZZLE_API_PATH=http://localhost:55001/plone yarn build && yarn start:prod
+
+.PHONY: test-acceptance-workingcopy
+test-acceptance-workingcopy: ## Start WorkingCopy Cypress Acceptance Tests
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config integrationFolder='cypress/tests/workingCopy'
+
+.PHONY: test-acceptance-workingcopy-headless
+test-acceptance-workingcopy-headless: ## Start WorkingCopy Cypress Acceptance Tests in headless mode
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config integrationFolder='cypress/tests/workingCopy'
+
+.PHONY: full-test-acceptance-workingcopy
+full-test-acceptance-workingcopy: ## Runs WorkingCopy Full Acceptance Testing in headless mode
+	$(NODEBIN)/start-test "make start-test-acceptance-server-workingcopy" http-get://localhost:55001/plone "make start-test-acceptance-frontend-workingcopy" http://localhost:3000 "make test-acceptance-workingcopy-headless"
 
 ######### Guillotina Acceptance tests
 
