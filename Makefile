@@ -233,6 +233,12 @@ test-acceptance-headless: ## Start Core Cypress Acceptance Tests in headless mod
 full-test-acceptance: ## Runs Core Full Acceptance Testing in headless mode
 	$(NODEBIN)/start-test "make start-test-acceptance-server" http-get://localhost:55001/plone "make start-test-acceptance-frontend" http://localhost:3000 "make test-acceptance-headless"
 
+######### Project Acceptance tests
+
+.PHONY: start-test-acceptance-frontend-project
+start-test-acceptance-frontend-project: ## Start the Project Acceptance Frontend Fixture
+	cd my-volto-app && RAZZLE_API_PATH=http://localhost:55001/plone yarn build && yarn start:prod
+
 ######### CoreSandbox Acceptance tests
 
 .PHONY: start-test-acceptance-server-coresandbox test-acceptance-server-coresandbox
