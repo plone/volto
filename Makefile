@@ -98,6 +98,11 @@ bin/python:
 	bin/python -m pip install --upgrade pip
 	bin/pip install -r requirements-docs.txt
 
+.PHONY: clean
+clean:
+	$(MAKE) -C "./api/" clean
+	rm -rf node_modules
+
 ##### Documentation
 
 .PHONY: docs-clean
@@ -190,9 +195,6 @@ start-test-backend: ## Start Test Plone Backend (api folder)
 stop-backend-docker-guillotina:
 	docker-compose -f g-api/docker-compose.yml down
 
-.PHONY: start-test-acceptance-server test-acceptance-server
-start-test-acceptance-server test-acceptance-server: ## Start Test Acceptance Server Main Fixture (docker container)
-	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) plone.app.robotframework plone.app.contenttypes' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 
 .PHONY: start-test-acceptance-server-multilingual test-acceptance-server-multilingual
 start-test-acceptance-server-multilingual test-acceptance-server-multilingual: ## Start Test Acceptance Server Multilingual Fixture (docker container)
@@ -212,27 +214,51 @@ start-test-acceptance-server-coresandbox test-acceptance-server-coresandbox: ## 
 test-acceptance-server-old:
 	$(MAKE) -C "./api/" test-acceptance-server-old
 
+######### Dev mode Acceptance tests
+
+.PHONY: start-test-acceptance-frontend-dev
+start-test-acceptance-frontend-dev: ## Start the Core Acceptance Frontend Fixture in dev mode
+	RAZZLE_API_PATH=http://localhost:55001/plone yarn start
+
+######### Core Acceptance tests
+
+.PHONY: start-test-acceptance-server test-acceptance-server
+start-test-acceptance-server test-acceptance-server: ## Start Test Acceptance Server Main Fixture (docker container)
+	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) plone.app.robotframework plone.app.contenttypes' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
+
+.PHONY: start-test-acceptance-frontend
+start-test-acceptance-frontend: ## Start the Core Acceptance Frontend Fixture
+	RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start:prod
+
+.PHONY: test-acceptance
+test-acceptance: ## Start Core Cypress Acceptance Tests
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open
+
+.PHONY: test-acceptance
+test-acceptance-headless: ## Start Core Cypress Acceptance Tests in headless mode
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run
+
+.PHONY: full-test-acceptance
+full-test-acceptance: ## Runs Core Full Acceptance Testing in headless mode
+	$(NODEBIN)/start-test "make start-test-acceptance-server" http-get://localhost:55001/plone "make start-test-acceptance-frontend" http://localhost:3000 "make test-acceptance-headless"
+
+######### Guillotina Acceptance tests
 .PHONY: start-test-acceptance-server-guillotina
 start-test-acceptance-server-guillotina: ## Start Test Acceptance Server Guillotina (docker container)
 	docker-compose -f g-api/docker-compose.yml up > /dev/null
 
 .PHONY: start-test-acceptance-frontend-guillotina
-start-test-acceptance-frontend-guillotina: ## Start
+start-test-acceptance-frontend-guillotina: ## Start the Guillotina Acceptance Frontend Fixture
 	ADDONS=volto-guillotina RAZZLE_API_PATH=http://localhost:8081/db/web RAZZLE_LEGACY_TRAVERSE=true yarn build && yarn start:prod
 
 .PHONY: test-acceptance-guillotina
-test-acceptance-guillotina: ## Start Test Acce
+test-acceptance-guillotina: ## Start the Guillotina Cypress Acceptance Tests
 	NODE_ENV=production CYPRESS_API=guillotina $(NODEBIN)/cypress open --config integrationFolder='cypress/tests/guillotina'
 
 .PHONY: test-acceptance-guillotina-headless
-test-acceptance-guillotina-headless: ## Start Test Acce
+test-acceptance-guillotina-headless: ## Start the Guillotina Cypress Acceptance Tests in headless mode
 	NODE_ENV=production CYPRESS_API=guillotina $(NODEBIN)/cypress run --config integrationFolder='cypress/tests/guillotina'
 
 .PHONY: full-test-acceptance-guillotina
-full-test-acceptance-guillotina: ## Start Test Acceptance Server Gu
+full-test-acceptance-guillotina: ## Runs the Guillotina Full Acceptance Testing in headless mode
 	$(NODEBIN)/start-test "make start-test-acceptance-server-guillotina" http-get://localhost:8081 "make start-test-acceptance-frontend-guillotina" http://localhost:3000 "make test-acceptance-guillotina-headless"
-
-.PHONY: clean
-clean:
-	$(MAKE) -C "./api/" clean
-	rm -rf node_modules

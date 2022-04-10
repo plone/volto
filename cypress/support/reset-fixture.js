@@ -10,7 +10,7 @@ const client = xmlrpc.createClient({
   path: '/plone/RobotRemote',
 });
 
-function setup() {
+export function setup() {
   // Setup site
   client.methodCall(
     'run_keyword',
@@ -22,7 +22,7 @@ function setup() {
   );
 }
 
-function teardown() {
+export function teardown() {
   // Tearing down
   client.methodCall(
     'run_keyword',
@@ -34,11 +34,20 @@ function teardown() {
   );
 }
 
-switch (command) {
-  case 'setup':
-    return setup();
-  case 'teardown':
-    return teardown();
-  default:
-    return setup();
+function main() {
+  switch (command) {
+    case 'setup':
+      setup();
+      break;
+    case 'teardown':
+      teardown();
+      break;
+    default:
+      setup();
+  }
+}
+
+// This is the equivalent of `if __name__ == '__main__'` in Python :)
+if (require.main === module) {
+  main();
 }
