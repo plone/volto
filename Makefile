@@ -14,7 +14,7 @@ MAKEFLAGS+=--no-builtin-rules
 
 INSTANCE_PORT=8080
 DOCKER_IMAGE=plone/plone-backend:5.2.7
-KGS=plone.restapi==8.21.2 plone.volto==4.0.0a3 plone.rest==2.0.0a3 plone.app.iterate==4.0.2 plone.app.vocabularies==4.3.0
+KGS=plone.restapi==8.22.0 plone.volto==4.0.0a4 plone.rest==2.0.0a5 plone.app.iterate==4.0.2 plone.app.vocabularies==4.3.0
 NODEBIN = ./node_modules/.bin
 
 # Sphinx variables
@@ -228,7 +228,7 @@ start-test-acceptance-server test-acceptance-server: ## Start Test Acceptance Se
 
 .PHONY: start-test-acceptance-frontend
 start-test-acceptance-frontend: ## Start the Core Acceptance Frontend Fixture
-	RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start:prod
+	RAZZLE_API_PATH=http://localhost:55001/plone yarn build && yarn start:prod
 
 .PHONY: test-acceptance
 test-acceptance: ## Start Core Cypress Acceptance Tests
