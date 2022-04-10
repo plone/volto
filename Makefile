@@ -14,7 +14,7 @@ MAKEFLAGS+=--no-builtin-rules
 
 INSTANCE_PORT=8080
 DOCKER_IMAGE=plone/plone-backend:5.2.7
-KGS=plone.restapi==8.22.0 plone.volto==4.0.0a4 plone.rest==2.0.0a5 plone.app.iterate==4.0.2 plone.app.vocabularies==4.3.0
+KGS=plone.restapi==8.22.0 plone.volto==4.0.0a4 plone.rest==2.0.0a5 plone.app.iterate==4.0.2 plone.app.vocabularies==4.3.0 plone.app.robotframework==2.0.0a3
 NODEBIN = ./node_modules/.bin
 
 # Sphinx variables
@@ -227,6 +227,16 @@ test-acceptance-headless: ## Start Core Cypress Acceptance Tests in headless mod
 .PHONY: full-test-acceptance
 full-test-acceptance: ## Runs Core Full Acceptance Testing in headless mode
 	$(NODEBIN)/start-test "make start-test-acceptance-server" http-get://localhost:55001/plone "make start-test-acceptance-frontend" http://localhost:3000 "make test-acceptance-headless"
+
+######### Seamless Core Acceptance tests
+
+.PHONY: start-test-acceptance-frontend-seamless
+start-test-acceptance-frontend-seamless: ## Start the Seamless Core Acceptance Frontend Fixture
+	RAZZLE_DEV_PROXY_API_PATH=http://localhost:55001/plone yarn build && yarn start:prod
+
+.PHONY: full-test-acceptance-seamless
+full-test-acceptance-seamless: ## Runs Seamless Core Full Acceptance Testing in headless mode
+	$(NODEBIN)/start-test "make start-test-acceptance-server" http-get://localhost:55001/plone "make start-test-acceptance-frontend-seamless" http://localhost:3000 "make test-acceptance-headless"
 
 ######### Project Acceptance tests
 
