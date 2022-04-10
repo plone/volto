@@ -9,9 +9,6 @@ jobs:
         python-version: [3.7]
     steps:
       - uses: actions/checkout@v2
-      - name: debug
-        working-directory: api
-        run: ls -al
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
@@ -33,6 +30,7 @@ jobs:
 
       # node install
       - run: yarn install --frozen-lockfile
+      - run: ADDONS=volto-guillotina RAZZLE_API_PATH=http://localhost:8081/db/web RAZZLE_LEGACY_TRAVERSE=true yarn build
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v2
@@ -46,7 +44,7 @@ jobs:
           spec: cypress/tests/guillotina/**/*.js
           start: |
             make start-test-acceptance-server-guillotina
-            make start-test-acceptance-frontend-guillotina
+            yarn start:prod
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:8081 http://localhost:3000'
 
       # Upload Cypress screenshots
