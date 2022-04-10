@@ -330,49 +330,6 @@ and alpha release can also be cut using:
 yarn release-alpha
 ```
 
-### Acceptance testing
-
-Volto uses [Cypress](https://www.cypress.io/) for browser-based acceptance testing.
-
-There are a number of fixtures available covering all the configuration use cases. These fixtures have both a specific backend and frontend configuration setup and a related set of tests. The CI infrastructure runs them all automatically on every push to a branch or PR.
-
-The tests can be run in headless mode (same as the CI does), or within the Cypress user interface. The latter is the one that you run under development.
-
-### How to run acceptance tests locally (during development)
-
-When writing new acceptance tests, you usually want to minimize the time it takes to run the tests, while also being able to debug or inspect what's going on.
-
-To do so, start three individual terminal sessions for running the Plone backend, the Volto frontend, and the acceptance tests.
-
-1.  Run the backend fixture
-    ```shell
-    make test-acceptance-server
-    ```
-2.  Run the frontend fixture
-    ```shell
-    yarn cypress:start-frontend
-    ```
-3.  Run the Cypress tests for that fixture
-    ```shell
-    yarn cypress:open
-    ```
-
-Available fixtures:
-
-- Core (core or not special naming in the test commands)
-- Multilingual (multilingual)
-- Working Copy (workingCopy)
-- Core Sandbox (coresandbox)
-
-There are convenience commands for each of these fixtures. See `package.json` or `.github` CI setup for more information.
-
-#### Writing new acceptance tests
-
-Go to the `cypress/tests` folder to see existing tests. There is a directory per fixture.
-This directory is hot reloaded with your changes as you write the tests. For more information on how to write Cypress tests:
-
-    https://docs.cypress.io
-
 ## Translations
 
 If you would like contribute to translate Volto into several languages, please, read the [Internationalization (i18n) guide](https://6.dev-docs.plone.org/volto/recipes/i18n.html).
