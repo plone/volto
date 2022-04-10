@@ -73,7 +73,7 @@ jobs:
           browser: chrome
           headless: true
           config: integrationFolder=cypress/tests
-          spec: cypress/tests/**/*.js
+          spec: cypress/tests/core/**/*.js
           start: |
             make start-test-acceptance-server
             make start-test-acceptance-frontend
