@@ -195,11 +195,6 @@ start-test-backend: ## Start Test Plone Backend (api folder)
 stop-backend-docker-guillotina:
 	docker-compose -f g-api/docker-compose.yml down
 
-
-.PHONY: start-test-acceptance-server-multilingual test-acceptance-server-multilingual
-start-test-acceptance-server-multilingual test-acceptance-server-multilingual: ## Start Test Acceptance Server Multilingual Fixture (docker container)
-	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) plone.app.robotframework plone.app.contenttypes' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:multilingual -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
-
 .PHONY: start-test-acceptance-server-workingcopy test-acceptance-server-workingcopy
 start-test-acceptance-server-workingcopy test-acceptance-server-workingcopy : ## Start Test Acceptance Server WorkingCopy Fixture (docker container)
 	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) plone.app.robotframework plone.app.contenttypes' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
@@ -251,17 +246,40 @@ start-test-acceptance-frontend-coresandbox: ## Start the CoreSandbox Acceptance 
 
 .PHONY: test-acceptance-coresandbox
 test-acceptance-coresandbox: ## Start CoreSandbox Cypress Acceptance Tests
-	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config integrationFolder='cypress/tests/coresandbox'
 
 .PHONY: test-acceptance-coresandbox-headless
 test-acceptance-coresandbox-headless: ## Start CoreSandbox Cypress Acceptance Tests in headless mode
-	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config integrationFolder='cypress/tests/coresandbox'
 
 .PHONY: full-test-acceptance-coresandbox
 full-test-acceptance-coresandbox: ## Runs CoreSandbox Full Acceptance Testing in headless mode
 	$(NODEBIN)/start-test "make start-test-acceptance-server-coresandbox" http-get://localhost:55001/plone "make start-test-acceptance-frontend-coresandbox" http://localhost:3000 "make test-acceptance-coresandbox-headless"
 
+######### Multilingual Acceptance tests
+
+.PHONY: start-test-acceptance-server-multilingual test-acceptance-server-multilingual
+start-test-acceptance-server-multilingual test-acceptance-server-multilingual: ## Start Multilingual Acceptance Server Multilingual Fixture (docker container)
+	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) plone.app.robotframework plone.app.contenttypes' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:multilingual -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
+
+.PHONY: start-test-acceptance-frontend-multilingual
+start-test-acceptance-frontend-multilingual: ## Start the Multilingual Acceptance Frontend Fixture
+	ADDONS=coresandbox:multilingualFixture RAZZLE_API_PATH=http://localhost:55001/plone yarn build && yarn start:prod
+
+.PHONY: test-acceptance-multilingual
+test-acceptance-multilingual: ## Start Multilingual Cypress Acceptance Tests
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config integrationFolder='cypress/tests/multilingual'
+
+.PHONY: test-acceptance-multilingual-headless
+test-acceptance-multilingual-headless: ## Start Multilingual Cypress Acceptance Tests in headless mode
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config integrationFolder='cypress/tests/multilingual'
+
+.PHONY: full-test-acceptance-multilingual
+full-test-acceptance-multilingual: ## Runs Multilingual Full Acceptance Testing in headless mode
+	$(NODEBIN)/start-test "make start-test-acceptance-server-multilingual" http-get://localhost:55001/plone "make start-test-acceptance-frontend-multilingual" http://localhost:3000 "make test-acceptance-multilingual-headless"
+
 ######### Guillotina Acceptance tests
+
 .PHONY: start-test-acceptance-server-guillotina
 start-test-acceptance-server-guillotina: ## Start Guillotina Test Acceptance Server (docker container)
 	docker-compose -f g-api/docker-compose.yml up > /dev/null

@@ -34,8 +34,19 @@ jobs:
       # node install
       - run: yarn install --frozen-lockfile
 
-      - name: Cypress Multilingual Acceptance Tests
-        run: yarn ci:cypress:run:multilingual
+      - name: Cypress acceptance tests
+        uses: cypress-io/github-action@v2
+        env:
+          BABEL_ENV: production
+        with:
+          browser: chrome
+          headless: true
+          config: integrationFolder=cypress/tests
+          spec: cypress/tests/multilingual/**/*.js
+          start: |
+            make start-test-acceptance-server-multilingual
+            make start-test-acceptance-frontend-multilingual
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
@@ -45,7 +56,7 @@ jobs:
           path: cypress/screenshots
       # Upload Cypress videos
       - uses: actions/upload-artifact@v1
-        if: always()
+        if: failure()
         with:
           name: cypress-videos
           path: cypress/videos
