@@ -1,10 +1,23 @@
 # Change Log
 
-## 15.3.1 (unreleased)
-
-- fixed bug in HTML block edit @giuliaghisini
+## 15.4.1 (unreleased)
 
 ### Breaking
+
+### Feature
+
+### Bugfix
+
+- Make the parseDateTime function to handle only date also @iFlameing
+- Fix ContextNavigation component with Link type objects. @UnaiEtxaburu #3232
+
+### Internal
+
+- Upgrade react-image-gallery to latest to fix a11y problem @sneridagh
+
+### Documentation
+
+## 15.4.0 (2022-04-08)
 
 ### Feature
 
@@ -13,9 +26,11 @@
 ### Bugfix
 
 - Fix/Improve the console logging when the server starts. @sneridagh
-- Fix ContextNavigation component with Link type objects. @UnaiEtxaburu #3232
 
 ### Internal
+- Fixed bug in HTML block edit @giuliaghisini
+- Fix cannot read properties of undefined in Content.jsx @iFlameing
+- Fix fixed `ObjectBrowserBody` to handle data fields based on `ObjectBrowser` mode @giuliaghisini
 
 ### Documentation
 
