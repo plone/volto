@@ -8,6 +8,7 @@
 
 ### Bugfix
 
+- Fix handling of single reference field. @robgietema
 - Make the parseDateTime function to handle only date also @iFlameing
 
 ### Internal
