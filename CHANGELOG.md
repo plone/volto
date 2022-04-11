@@ -9,8 +9,11 @@
 ### Bugfix
 
 - Fix handling of single reference field. @robgietema
+- Make the parseDateTime function to handle only date also @iFlameing
 
 ### Internal
+
+- Upgrade react-image-gallery to latest to fix a11y problem @sneridagh
 
 ### Documentation
 
