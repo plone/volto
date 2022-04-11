@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Upgrade react-image-gallery to latest to fix a11y problem @sneridagh
+
 ### Documentation
 
 ## 15.4.0 (2022-04-08)
