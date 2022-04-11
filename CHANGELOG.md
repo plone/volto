@@ -2,21 +2,18 @@
 
 ## 15.4.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
-- Fix handling of single reference field. @robgietema
-- Make the parseDateTime function to handle only date also @iFlameing
-- Fix ContextNavigation component with Link type objects. @UnaiEtxaburu #3232
+- Fix handling of single reference field in `ObjectBrowser` @robgietema
+- Make the parseDateTime function to handle only date as well @iFlameing
+- Fix ContextNavigation component with Link type objects @UnaiEtxaburu #3232
 
 ### Internal
 
 - Upgrade react-image-gallery to latest to fix a11y problem @sneridagh
-
-### Documentation
+- Fixed bug in HTML block edit @giuliaghisini
+- Fix cannot read properties of undefined in Content.jsx @iFlameing
+- Fix fixed `ObjectBrowserBody` to handle data fields based on `ObjectBrowser` mode @giuliaghisini
 
 ## 15.4.0 (2022-04-08)
 
@@ -27,11 +24,6 @@
 ### Bugfix
 
 - Fix/Improve the console logging when the server starts. @sneridagh
-
-### Internal
-- Fixed bug in HTML block edit @giuliaghisini
-- Fix cannot read properties of undefined in Content.jsx @iFlameing
-- Fix fixed `ObjectBrowserBody` to handle data fields based on `ObjectBrowser` mode @giuliaghisini
 
 ### Documentation
 
