@@ -35,9 +35,31 @@ jobs:
       - run: yarn i18n
       - run: yarn test:ci
 
+ cypress-install:
+    runs-on: ubuntu-latest
+    container: cypress/browsers:node16.13.2-chrome100-ff98
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Save build folder
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          if-no-files-found: error
+          path: build
+
+      - name: Cypress install
+        uses: cypress-io/github-action@v2
+        with:
+          # Disable running of tests within install job
+          runTests: false
+          build: yarn install --frozen-lockfile && RAZZLE_API_PATH=http://localhost:55001/plone yarn build
+
   acceptance:
     runs-on: ubuntu-latest
     container: cypress/browsers:node16.13.2-chrome100-ff98
+    needs: cypress-install
     strategy:
       fail-fast: false
       matrix:
@@ -84,7 +106,7 @@ jobs:
           spec: cypress/tests/core/**/*.js
           start: |
             make start-test-acceptance-server
-            make start-test-acceptance-frontend
+            yarn start:prod
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
 
       # Upload Cypress screenshots
