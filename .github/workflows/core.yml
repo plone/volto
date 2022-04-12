@@ -35,7 +35,7 @@ jobs:
       - run: yarn i18n
       - run: yarn test:ci
 
- cypress-install:
+  cypress-install:
     runs-on: ubuntu-latest
     container: cypress/browsers:node16.13.2-chrome100-ff98
     steps:
