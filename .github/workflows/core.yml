@@ -35,28 +35,11 @@ jobs:
       - run: yarn i18n
       - run: yarn test:ci
 
-  cypress-install:
-    runs-on: ubuntu-latest
-    container: cypress/browsers:node16.13.2-chrome100-ff98
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Cypress install
-        uses: cypress-io/github-action@v2
-        with:
-          # Disable running of tests within install job
-          runTests: false
-
   acceptance:
     runs-on: ubuntu-latest
-    container: cypress/browsers:node16.13.2-chrome100-ff98
-    needs: cypress-install
     strategy:
-      fail-fast: false
       matrix:
         node-version: [12.x, 14.x, 16.x]
-        containers: [1, 2, 3]
     steps:
       - uses: actions/checkout@v2
 
