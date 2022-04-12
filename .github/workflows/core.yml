@@ -37,10 +37,12 @@ jobs:
 
   acceptance:
     runs-on: ubuntu-latest
+    fail-fast: false
+    container: cypress/browsers:node16.13.2-chrome100-ff98
     strategy:
       matrix:
         node-version: [12.x, 14.x, 16.x]
-        python-version: [3.7]
+        containers: [1, 2, 3]
     steps:
       - uses: actions/checkout@v2
 
@@ -69,7 +71,13 @@ jobs:
         uses: cypress-io/github-action@v2
         env:
           BABEL_ENV: production
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          # Recommended: pass the GitHub token lets this action correctly
+          # determine the unique run id necessary to re-run the checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          record: true
+          parallel: true
           browser: chrome
           headless: true
           config: integrationFolder=cypress/tests
