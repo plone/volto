@@ -77,6 +77,7 @@ jobs:
           parallel: true
           browser: chrome
           headless: true
+          group: Core
           config: integrationFolder=cypress/tests
           spec: cypress/tests/core/**/*.js
           start: |
