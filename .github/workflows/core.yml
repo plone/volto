@@ -39,8 +39,8 @@ jobs:
     runs-on: ubuntu-latest
     container: cypress/browsers:node16.13.2-chrome100-ff98
     strategy:
+      fail-fast: false
       matrix:
-        fail-fast: false
         node-version: [12.x, 14.x, 16.x]
         containers: [1, 2, 3]
     steps:
