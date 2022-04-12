@@ -67,6 +67,8 @@ jobs:
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          record: true
+          parallel: true
           browser: chrome
           headless: true
           group: Core Sandbox
