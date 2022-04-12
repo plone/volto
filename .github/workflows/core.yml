@@ -50,7 +50,7 @@ jobs:
         with:
           # Disable running of tests within install job
           runTests: false
-          build: RAZZLE_API_PATH=http://localhost:55001/plone yarn build
+          build: "RAZZLE_API_PATH=http://localhost:55001/plone yarn build"
 
       - name: Save build folder
         uses: actions/upload-artifact@v3
