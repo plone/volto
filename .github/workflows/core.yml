@@ -42,26 +42,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      # node install
-      - run: yarn --frozen-lockfile
-
       - name: Cypress install
         uses: cypress-io/github-action@v2
         with:
           # Disable running of tests within install job
           runTests: false
-
-      - name: Build
-        run: RAZZLE_API_PATH=http://localhost:55001/plone yarn build
-
-      - name: Save build folder
-        uses: actions/upload-artifact@v3
-        with:
-          name: build
-          if-no-files-found: error
-          path: |
-            build
-            node_modules
 
   acceptance:
     runs-on: ubuntu-latest
@@ -94,13 +79,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       # # node install
-      # - run: yarn install --frozen-lockfile
-
-      - name: Download the build folders
-        uses: actions/download-artifact@v3
-        with:
-          name: build
-          path: build
+      - run: yarn --frozen-lockfile
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v2
@@ -119,7 +98,7 @@ jobs:
           spec: cypress/tests/core/**/*.js
           start: |
             make start-test-acceptance-server
-            yarn start:prod
+            make start-test-acceptance-frontend
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
 
       # Upload Cypress screenshots
