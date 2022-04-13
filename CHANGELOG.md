@@ -269,6 +269,8 @@
 
 ### Internal
 
+- Various build improvements and minor refactoring captured during the effort to unify
+  Volto, Plone classic, and ZMI authentication.  @rpatterson
 - Change prop `name` -> `componentName` in component `Component` @sneridagh
 
 ## 15.0.0-alpha.11 (2022-03-02)

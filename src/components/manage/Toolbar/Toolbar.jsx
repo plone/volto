@@ -7,7 +7,6 @@ import React, { Component } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import jwtDecode from 'jwt-decode';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
@@ -28,6 +27,10 @@ import {
   setExpandedToolbar,
   unlockContent,
 } from '@plone/volto/actions';
+import {
+  loggedIn,
+  userData,
+} from '@plone/volto/selectors/userSession/userSession';
 import { Icon } from '@plone/volto/components';
 import { BodyClass, getBaseUrl } from '@plone/volto/helpers';
 import { Pluggable } from '@plone/volto/components/manage/Pluggable';
@@ -138,8 +141,7 @@ class Toolbar extends Component {
       object_buttons: PropTypes.arrayOf(PropTypes.object),
       user: PropTypes.arrayOf(PropTypes.object),
     }),
-    token: PropTypes.string,
-    userId: PropTypes.string,
+    userLoggedIn: PropTypes.bool,
     pathname: PropTypes.string.isRequired,
     content: PropTypes.shape({
       '@type': PropTypes.string,
@@ -168,8 +170,6 @@ class Toolbar extends Component {
    */
   static defaultProps = {
     actions: null,
-    token: null,
-    userId: null,
     content: null,
     hideDefaultViewButtons: false,
     types: [],
@@ -196,9 +196,10 @@ class Toolbar extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    this.props.listActions(getBaseUrl(this.props.pathname));
-    this.props.getTypes(getBaseUrl(this.props.pathname));
-    this.props.setExpandedToolbar(this.state.expanded);
+    this.props
+      .listActions(getBaseUrl(this.props.pathname))
+      .then(() => this.props.getTypes(getBaseUrl(this.props.pathname)));
+
     document.addEventListener('mousedown', this.handleClickOutside, false);
   }
 
@@ -210,8 +211,9 @@ class Toolbar extends Component {
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
-      this.props.listActions(getBaseUrl(nextProps.pathname));
-      this.props.getTypes(getBaseUrl(nextProps.pathname));
+      this.props
+        .listActions(getBaseUrl(nextProps.pathname))
+        .then(() => this.props.getTypes(getBaseUrl(this.props.pathname)));
     }
 
     // Unlock
@@ -313,7 +315,7 @@ class Toolbar extends Component {
     const { expanded } = this.state;
 
     return (
-      this.props.token && (
+      this.props.userLoggedIn && (
         <>
           <BodyClass
             className={expanded ? 'has-toolbar' : 'has-toolbar-collapsed'}
@@ -580,10 +582,8 @@ export default compose(
   connect(
     (state, props) => ({
       actions: state.actions.actions,
-      token: state.userSession.token,
-      userId: state.userSession.token
-        ? jwtDecode(state.userSession.token).sub
-        : '',
+      userLoggedIn: loggedIn(state),
+      userId: userData(state).userId,
       content: state.content.data,
       pathname: props.pathname,
       types: filter(state.types.types, 'addable'),

@@ -15,6 +15,18 @@ MAKEFLAGS+=--no-builtin-rules
 INSTANCE_PORT=8080
 DOCKER_IMAGE=plone/plone-backend:5.2.7
 KGS=plone.restapi==8.21.2 plone.volto==4.0.0a3 plone.rest==2.0.0a3 plone.app.iterate==4.0.2 plone.app.vocabularies==4.3.0
+# The defaults from the UI configuration
+# export RAZZLE_DEV_PROXY_API_PATH=http://localhost:$(INSTANCE_PORT)/Plone
+# export RAZZLE_API_PATH=http://localhost:3000
+# Uncomment the following to run against the proxy hosting testbed:
+# export RAZZLE_DEV_PROXY_API_PATH=
+# export RAZZLE_API_PATH=http://localhost:49080/api/Plone
+# Then run everything:
+#     $ make run-proxy-all
+# Finally, visit the parts of the stack in a browser:
+# - ZMI: http://localhost:49080/api/manage_main
+# - Plone Classic: http://localhost:49080/api/Plone
+# - Volto: http://localhost:49080/
 
 # Sphinx variables
 # You can set these variables from the command line.
@@ -78,7 +90,28 @@ dist:
 .PHONY: test
 test:
 	$(MAKE) -C "./api/" test
-
+.PHONY: test-clean
+test-clean:  ## Test in a separate, clean worktree to expose clean build issues
+	mkdir -pv "$(CHECKOUT_TMP)/"
+	tmp_worktree="$$(
+	    mktemp -d -p '$(CHECKOUT_TMP)/' \
+	        '$(CHECKOUT_BRANCH)-tmp-XXXXXXXXXX'
+	)"
+# Disable VCS hooks which might be run when creating a worktree
+	if [ -e "./.git/hooks/post-checkout" ]
+	then
+	    mv --backup=numbered -v \
+	        "./.git/hooks/post-checkout" "./.git/hooks/post-checkout~"
+	fi
+	git worktree add "$${tmp_worktree}"
+	if [ -e "./.git/hooks/post-checkout~" ]
+	then
+	    mv --backup=numbered -v \
+	        "./.git/hooks/post-checkout~" "./.git/hooks/post-checkout"
+	fi
+	$(MAKE) -C "$${tmp_worktree}/" test
+# Leave the temporary worktree around for the developer to inspect.
+# Use the `$ make clean-tmp-worktrees` target to clean up all temporary worktrees
 
 .PHONY: storybook-build
 storybook-build:
@@ -137,9 +170,9 @@ netlify:
 docs-test: docs-clean docs-linkcheck docs-spellcheck  ## Clean docs build, then run linkcheck, spellcheck
 
 .PHONY: start
-# Run both the back-end and the front end
+# Run both the back-end and the front-end
 start:
-	$(MAKE) -j 2 start-backend start-frontend
+	$(MAKE) -e -j 2 start-backend start-frontend
 
 .PHONY: start-frontend
 start-frontend:
@@ -160,6 +193,14 @@ start-frontend-docker:
 .PHONY: start-backend-docker-guillotina
 start-backend-docker-guillotina:
 	docker-compose -f g-api/docker-compose.yml up -d
+
+.PHONY: run-proxy
+run-proxy:
+	docker-compose up traefik
+.PHONY: run-proxy-all
+# Run the back-end, front-end, and proxy testbed with all output combined
+run-proxy-all:
+	$(MAKE) -e -j 3 start-backend start-frontend run-proxy
 
 .PHONY: start-test
 start-test: ## Start Test
@@ -212,5 +253,19 @@ test-acceptance-guillotina:
 
 .PHONY: clean
 clean:
-	$(MAKE) -C "./api/" clean
+	$(MAKE) -C "./api/" "$(@)"
 	rm -rf node_modules
+.PHONY: clean-data
+clean-data: ## Remove all variable user data
+# E.g., to run the proxy test bed against a fresh Plone + Volto site:
+#     $ make clean-data run-proxy-all
+	$(MAKE) -C "./api/" "$(@)"
+.PHONY: clean-tmp-worktrees
+clean-tmp-worktrees:  ## Cleanup temporary worktrees managed by this `./Makefile`
+	git worktree list --porcelain | tail -n +5 |
+	    sed -En 's|^worktree ($(CHECKOUT_TMP_ABS)/.+)$$|\1|p' |
+	while read
+	do
+	    git worktree remove --force "$${REPLY}"
+	    git branch -D "$$(basename "$${REPLY}")"
+	done

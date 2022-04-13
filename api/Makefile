@@ -50,9 +50,18 @@ test-acceptance-server-old: build
 	ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 
 .PHONY: clean
-clean:
+clean: ## Remove all build artifacts
 	rm -rf bin eggs develop-eggs include lib parts .installed.cfg .mr.developer.cfg
-
+.PHONY: clean-data
+clean-data: ## Remove all variable user data
+	mkdir -pv "./var/backups/"
+	for data_path in ./var/*storage ./var/instance ./parts/instance
+	do
+	    test '!' -e "$${data_path}" || (
+	        mv --backup=numbered -f -v "$${data_path}" "./var/backups/"
+	    )
+	done
+	touch -c "./buildout.cfg"
 
 .PHONY: start
 start: build ## Start Plone Backend

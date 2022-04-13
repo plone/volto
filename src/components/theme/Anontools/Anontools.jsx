@@ -9,7 +9,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
+
 import config from '@plone/volto/registry';
+import { loggedIn } from '@plone/volto/selectors/userSession/userSession';
 
 /**
  * Anontools container class.
@@ -21,7 +23,7 @@ export class Anontools extends Component {
    * @static
    */
   static propTypes = {
-    token: PropTypes.string,
+    userLoggedIn: PropTypes.bool,
     content: PropTypes.shape({
       '@id': PropTypes.string,
     }),
@@ -33,7 +35,6 @@ export class Anontools extends Component {
    * @static
    */
   static defaultProps = {
-    token: null,
     content: {
       '@id': null,
     },
@@ -47,7 +48,7 @@ export class Anontools extends Component {
   render() {
     const { settings } = config;
     return (
-      !this.props.token && (
+      !this.props.userLoggedIn && (
         <Menu pointing secondary floated="right">
           <Menu.Item>
             <Link
@@ -78,6 +79,6 @@ export class Anontools extends Component {
 }
 
 export default connect((state) => ({
-  token: state.userSession.token,
+  userLoggedIn: loggedIn(state),
   content: state.content.data,
 }))(Anontools);
