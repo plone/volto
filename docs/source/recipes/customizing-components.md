@@ -1,9 +1,9 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "Use a pattern called component shadowing to customize volto components."
+  "property=og:description": "Use a pattern called component shadowing to customize volto components."
+  "property=og:title": "Customizing Components"
+  "keywords": "Volto, Plone, frontend, React, customizing component"
 ---
 
 # Customizing Components

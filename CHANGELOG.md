@@ -1,18 +1,162 @@
 # Change Log
 
-## 15.0.0 (unreleased)
+## 15.4.2 (unreleased)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
+### Documentation
+
+## 15.4.1 (2022-04-11)
+
+### Bugfix
+
+- Fix handling of single reference field in `ObjectBrowser` @robgietema
+- Make the parseDateTime function to handle only date as well @iFlameing
+- Fix ContextNavigation component with Link type objects @UnaiEtxaburu #3232
+
+### Internal
+
+- Upgrade react-image-gallery to latest to fix a11y problem @sneridagh
+- Fixed bug in HTML block edit @giuliaghisini
+- Fix cannot read properties of undefined in Content.jsx @iFlameing
+- Fix fixed `ObjectBrowserBody` to handle data fields based on `ObjectBrowser` mode @giuliaghisini
+
+## 15.4.0 (2022-04-08)
+
+### Feature
+
+- Add package.json scripts documentation @ksuess
+
+### Bugfix
+
+- Fix/Improve the console logging when the server starts. @sneridagh
+
+### Documentation
+
+- Added html_meta values to remaining pages. @stevepiercy
+- Remove duplicate toctrees and set maxdepth to appropriate values. @stevepiercy
+
+## 15.3.0 (2022-04-04)
+
+### Feature
+
+- Improve the fix for the "user swap" vulnerability @sneridagh @plone/volto-team
+  Thanks to @ericof and @cekk for their help and efforts at pinpointing the latests culprits!
+
+### Documentation
+
+- Added meta-html values in most of the pages. @ktsrivastava29
+
+## 15.2.3 (2022-04-01)
+
+### Bugfix
+
+- Change which api calls can set specific api errors @robgietema
+- Fix helper import. @robgietema
+- Move `customStyleMap` to `richtextEditorSettings`
+- Pass placeholder and isDisabled properties to EmailWidget and UrlWidget @mihaislobozeanu
+- Pass placeholder property to PasswordWidget and NumberWidget @mihaislobozeanu
+- Fix getVocabName when vocabNameOrURL is false @avoinea #2955, #2919
+
+### Internal
+
+- Remove offending `Makefile` command that broke on MacOS due to lack of compatibility of the MacOS `make` utility. @tisto
+- Upgraded use-deep-compare-effect to version 1.8.1. @pnicolli
+- chore(icons): add missing pastanaga icons @nileshgulia1
+
+### Documentation
+
+- Switch from `docs-linkcheckbroken` to `docs-linkcheck` in GitHub Actions because the former is broken. @stevepiercy
+- Set the output for storybook to the correct directory. @stevepiercy
+- Fix typo in Makefile: docs/\_build @ksuess
+- Added language to code-blocks in md files @ktsrivastava29
+
+## 15.2.2 (2022-03-23)
+
+### Bugfix
+
+- Fix external url append issue of @@download/file @iRohitSingh
+- Fix headers in sitemap middleware when errors occur in the sitemap generation @mamico
+
+## 15.2.1 (2022-03-21)
+
+### Bugfix
+
+- `Manage translations` view error on seamless mode, `flattenToAppURL` missing. @sneridagh
+
+### Documentation
+
+- Reenable `make docs-linkcheckbroken`. @stevepiercy
+- Add html_meta values to add-on best practices, s/addon/add-on. @stevepiercy
+- Netlify now only builds on changes to the `./docs/` directory. @stevepiercy
+- Replace deprecated `egrep` with `grep` in `make docs-linkcheckbroken`. @stevepiercy
+
+## 15.2.0 (2022-03-18)
+
+### Feature
+
+- Add helper utilities to be used by addons @robgietema
+
+### Bugfix
+
+- Fix addon registry regression @sneridagh
+- Fix `Bosnian` language @avoinea
+- Fix use `settings.internalApiPath` in sitemap genaration @mamico
+
+### Documentation
+
+- Reduced build minutes on Netlify by building only on changes to the `docs/**` path on pull requests. See https://github.com/plone/volto/pull/3171. @stevepiercy
+- Add "Documentation" heading to the automatic change log updater file `changelogupdater.js`. @stevepiercy
+
+## 15.1.2 (2022-03-17)
+
+### Bugfix
+
+- Fix the alt prop in `PreviewImage` component @sneridagh
+
+## 15.1.1 (2022-03-16)
+
+### Bugfix
+
+- Add optional alt tag to `PreviewImage` props @kindermann
+- Remove non add-on names from `addonNames` list in Addons Registry. Update the list in the `addonsInfo` for the addons loader as well. @sneridagh
+
+## 15.1.0 (2022-03-15)
+
+### Feature
+
+- Added a new component, PreviewImage. It renders a preview image for a catalog brain (based on the `image_field` prop). @tiberiuichim
+
+### Bugfix
+
+- Clear search results before new query is done. @robgietema
+
+### Documentation
+
+- Updated README.md @ktsrivastava29
+- Added language to code-blocks in md files @ktsrivastava29
+- Added html_meta values and labels for Intersphinx cross-references from Trainings. @stevepiercy
+- Replaced `docs.voltocms.com` with MyST references. @stevepiercy
+
+## 15.0.0 (2022-03-14)
 
 ### Breaking
 
 - Upgrade `react-cookie` to the latest version. @sneridagh @robgietema
-  See https://docs.voltocms.com/upgrade-guide/ for more information.
-- Language Switcher no longer takes care of the change of the language on the Redux Store. This responsibility has been unified in the Api Redux middleware @sneridagh
+  See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+- Language Switcher no longer takes care of the change of the language on the Redux Store. This responsibility has been unified in the API Redux middleware @sneridagh
 - Markup change in `LinkView` component.
 - Rename `core-sandbox` to `coresandbox` for sake of consistency @sneridagh
 - Extend the original intent and rename `RAZZLE_TESTING_ADDONS` to `ADDONS`. @sneridagh
-  See https://docs.voltocms.com/upgrade-guide/ for more information.
-- Lazyload draftjs library. See the upgrade guide on how that impacts you, in case you have extended the rich text editor configuration @tiberiuichim @kreafox
-  See https://docs.voltocms.com/upgrade-guide/ for more information.
+  See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+- Lazyload Draft.js library. See the upgrade guide on how that impacts you, in case you have extended the rich text editor configuration @tiberiuichim @kreafox
+  See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
 - Deprecating `lang` cookie in favor of Plone official one `I18N_LANGUAGE` @sneridagh
 
 ### Feature
@@ -27,14 +171,14 @@
 - Refactor language synchronizer. Remove it from the React tree, integrate it into the Api Redux middleware @sneridagh
 - Add blocks rendering in Event and NewsItem views (rel plone.volto#32) @nzambello @ksuess
 - Add internal volto ids to invalid ids @robgietema
-- Complete basque translation @erral
-- Complete spanish translation @erral
+- Complete Basque translation @erral
+- Complete Spanish translation @erral
 - Sort the choices in Facets in the search block @iFlameing
 
 ### Bugfix
 
 - Fix the `null` error in SelectAutoComplete Widget @iFlameing
-- Prevent the MultilingualRedirector to force 4 content load when switching the language @reebalazs
+- Prevent the `MultilingualRedirector` to force content load when switching the language @reebalazs
 - Fix the upload image in contents view @iFlameing
 - add "view" id to contact-form container for main content skiplink @ThomasKindermann
 - Fix loading indicator positioning on Login form submit @sneridagh
@@ -43,6 +187,9 @@
 - Contents Rename Modal, use `id` Widget type @sneridagh
 - Fix overflow of very long file name in `FileWidget` @sneridagh
 - Fix overflowing issue in the toolbar @kreafox
+- Overwrite current block on insert new block. @robgietema
+- Fix hot reload on updates related to the config object because of `VersionOverview` component @sneridagh
+- Fix error when lock data is gone after an invariant error. @robgietema
 
 ### Internal
 
@@ -81,13 +228,15 @@
 - Convert admonition syntax from Markdown to MyST. @sneridagh
 - Make links build both in Volto and Plone documentation. See https://github.com/plone/volto/pull/3094 @stevepiercy
 - Fix broken links. @stevepiercy
+- Update Sphinx configuration to check anchors in links and exclude problematic URLs. @sneridagh and @stevepiercy
+- Fix StoryBook links @sneridagh
+- Clean up `linkcheck_ignore` values. @stevepiercy
 
 ## 15.0.0-alpha.14 (2022-03-10)
 
 ### Bugfix
 
 - Contents Rename Modal, use `id` Widget type @sneridagh
-- Overwrite current block on insert new block. @robgietema
 
 ### Internal
 

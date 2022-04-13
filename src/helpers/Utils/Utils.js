@@ -109,6 +109,7 @@ const safeColors = [
   'Teal',
 ];
 const namedColors = {};
+
 /**
  * Will generate initials from string
  * @param {string} name
@@ -158,11 +159,12 @@ export const parseDateTime = (locale, value, format, moment) => {
 
   if (value) {
     // check if datetime has timezone, otherwise assumes it's UTC
-    datetime = value.match(/T(.)*(-|\+|Z)/g)
-      ? // Since we assume UTC everywhere, then transform to local (momentjs default)
-        moment(value)
-      : // This might happen in old Plone versions dates
-        moment(`${value}Z`);
+    datetime =
+      !value.match(/T/) || value.match(/T(.)*(-|\+|Z)/g)
+        ? // Since we assume UTC everywhere, then transform to local (momentjs default)
+          moment(value)
+        : // This might happen in old Plone versions dates
+          moment(`${value}Z`);
   }
 
   if (format && datetime) {
@@ -225,4 +227,54 @@ export const hasApiExpander = (expander, path = '', type = 'GET_CONTENT') => {
       .filter((expand) => matchPath(path, expand.match) && expand[type])
       .map((expand) => expand[type]),
   ).includes(expander);
+};
+
+/**
+ * Insert element into array at a give index
+ * @param {Array} array Array with data
+ * @param {*} element Element to be inserted
+ * @param {number} index Index of item to be inserted at
+ * @returns {Array} Array with inserted element
+ */
+export const insertInArray = (array, element, index) => [
+  ...array.slice(0, index),
+  element,
+  ...array.slice(index),
+];
+
+/**
+ * Replace element in array at a give index
+ * @param {Array} array Array with data
+ * @param {*} element Element to be replaced
+ * @param {number} index Index of item to be replaced at
+ * @returns {Array} Array with replaced element
+ */
+export const replaceItemOfArray = (array, index, value) =>
+  Object.assign([...array], { [index]: value });
+
+/**
+ * Remove item from array at given index
+ * @param {Array} array Array with data
+ * @param {number} index Index of item to be removed
+ * @returns {Array} Array without deleted element
+ */
+export const removeFromArray = (array, index) => {
+  let newArray = array.slice();
+  newArray.splice(index, 1);
+  return newArray;
+};
+
+/**
+ * Reorder array
+ * @param {Array} array Array with data
+ * @param {number} origin Index of item to be reordered
+ * @param {number} target Index of item to be reordered to
+ * @returns {Array} Array with reordered elements
+ */
+export const reorderArray = (array, origin, target) => {
+  const result = Array.from(array);
+  const [removed] = result.splice(origin, 1);
+  result.splice(target, 0, removed);
+
+  return result;
 };

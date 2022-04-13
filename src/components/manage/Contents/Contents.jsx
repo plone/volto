@@ -1110,7 +1110,7 @@ class Contents extends Component {
       (this.props.orderRequest?.loading && !this.props.orderRequest?.error) ||
       (this.props.searchRequest?.loading && !this.props.searchRequest?.error);
 
-    return this.props.userLoggedIn && this.props.objectActions.length > 0 ? (
+    return this.props.userLoggedIn && this.props.objectActions?.length > 0 ? (
       <>
         {folderContentsAction ? (
           <Container id="page-contents" className="folder-contents">

@@ -63,12 +63,15 @@ Create a new Volto project by using the `@plone/generator-volto` utility.
 It will bootstrap a Volto project in a folder of your choice with all the required
 boilerplate to start customizing your Volto site.
 
-    $ npm install -g yo @plone/generator-volto
-    $ yo @plone/volto
-
+```
+npm install -g yo @plone/generator-volto
+yo @plone/volto
+```
 follow the prompts questions, provide `myvoltoproject` as project name then, when it finishes:
 
-    $ cd myvoltoproject
+```
+cd myvoltoproject
+```
 
 ### Bootstrap the Plone API backend
 
@@ -372,7 +375,7 @@ This directory is hot reloaded with your changes as you write the tests. For mor
 
 ## Translations
 
-If you would like contribute to translate Volto into several languages, please, read the [Internationalization (i18n) guide](https://docs.voltocms.com/customizing/i18n/).
+If you would like contribute to translate Volto into several languages, please, read the [Internationalization (i18n) guide](https://6.dev-docs.plone.org/volto/recipes/i18n.html).
 
 ## Contributors
 

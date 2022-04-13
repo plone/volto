@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "15.0.0-alpha.14",
+  "version": "15.4.1",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -296,6 +296,7 @@
     "cypress-axe": "0.12.2",
     "cypress-file-upload": "5.0.7",
     "debug": "4.3.2",
+    "deep-freeze": "0.0.1",
     "dependency-graph": "0.10.0",
     "detect-browser": "5.1.0",
     "diff": "3.5.0",
@@ -372,7 +373,7 @@
     "react-dom": "17.0.2",
     "react-dropzone": "11.1.0",
     "react-fast-compare": "2.0.4",
-    "react-image-gallery": "1.0.7",
+    "react-image-gallery": "1.2.7",
     "react-intl": "3.8.0",
     "react-intl-redux": "2.2.0",
     "react-medium-image-zoom": "3.0.15",
@@ -416,7 +417,7 @@
     "tlds": "1.203.1",
     "undoo": "0.5.0",
     "universal-cookie-express": "4.0.3",
-    "use-deep-compare-effect": "1.6.1",
+    "use-deep-compare-effect": "1.8.1",
     "xmlrpc": "1.3.2",
     "yarn-deduplicate": "3.1.0",
     "yarnhook": "0.5.1"
@@ -435,7 +436,8 @@
     "jest-environment-jsdom-sixteen": "1.0.3",
     "react-is": "^16.13.1",
     "tmp": "0.2.1",
-    "use-trace-update": "1.3.2"
+    "use-trace-update": "1.3.2",
+    "why": "0.6.2"
   },
   "resolutions-comments": {
     "ua-parser-js": "See https://github.com/faisalman/ua-parser-js/issues/536"
