@@ -43,7 +43,7 @@ jobs:
           record: true
           parallel: true
           browser: chrome
-          headless: true
+          # headless: true
           group: Core
           config: integrationFolder=cypress/tests
           # spec: cypress/tests/core/**/*.js
@@ -51,7 +51,7 @@ jobs:
           start: |
             make start-test-acceptance-server
             make start-test-acceptance-frontend
-          wait-on: 'http://localhost:55001/plone http://localhost:3000'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
