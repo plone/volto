@@ -1,17 +1,14 @@
-name: Multilingual Tests
+name: Acceptance Tests
 on: [push]
 jobs:
-  build:
+  core:
     runs-on: ubuntu-latest
     strategy:
       matrix:
+        # node-version: [12.x, 14.x, 16.x]
         node-version: [16.x]
-        python-version: [3.7]
     steps:
       - uses: actions/checkout@v2
-      - name: debug
-        working-directory: api
-        run: ls -al
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
@@ -31,8 +28,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      # node install
-      - run: yarn install --frozen-lockfile
+      ## node install
+      - run: yarn --frozen-lockfile
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v2
@@ -47,13 +44,14 @@ jobs:
           parallel: true
           browser: chrome
           headless: true
-          group: Multilingual
+          group: Core
           config: integrationFolder=cypress/tests
-          spec: cypress/tests/multilingual/**/*.js
+          # spec: cypress/tests/core/**/*.js
+          spec: cypress/tests/core/login.js
           start: |
-            make start-test-acceptance-server-multilingual
-            make start-test-acceptance-frontend-multilingual
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+            make start-test-acceptance-server
+            make start-test-acceptance-frontend
+          wait-on: 'http://localhost:55001/plone http://localhost:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
