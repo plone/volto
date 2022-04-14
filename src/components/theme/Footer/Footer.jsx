@@ -7,8 +7,9 @@ import React from 'react';
 import { Container, List, Segment } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { useSelector } from 'react-redux';
+import { useSelector, shallowEqual } from 'react-redux';
 import config from '@plone/volto/registry';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 const messages = defineMessages({
   copyright: {
@@ -25,7 +26,14 @@ const messages = defineMessages({
  */
 const Footer = ({ intl }) => {
   const { settings } = config;
-  const lang = useSelector((state) => state.intl.locale);
+  const { lang, siteActions = [] } = useSelector(
+    (state) => ({
+      lang: state.intl.locale,
+      siteActions: state.actions?.actions?.site_actions,
+    }),
+    shallowEqual,
+  );
+
   return (
     <Segment
       role="contentinfo"
@@ -82,42 +90,20 @@ const Footer = ({ intl }) => {
           />
         </Segment>
         <List horizontal inverted>
-          {/* wrap in div for a11y reasons: listitem role cannot be on the <a> element directly */}
-          <div role="listitem" className="item">
-            <Link
-              className="item"
-              to={settings.isMultilingual ? `/${lang}/sitemap` : '/sitemap'}
-            >
-              <FormattedMessage id="Site Map" defaultMessage="Site Map" />
-            </Link>
-          </div>
-          <div role="listitem" className="item">
-            <Link
-              className="item"
-              to={
-                settings.isMultilingual
-                  ? `/${lang}/accesibility-info`
-                  : '/accesibility-info'
-              }
-            >
-              <FormattedMessage
-                id="Accessibility"
-                defaultMessage="Accessibility"
-              />
-            </Link>
-          </div>
-          <div role="listitem" className="item">
-            <Link
-              className="item"
-              to={
-                settings.isMultilingual
-                  ? `/${lang}/contact-form`
-                  : '/contact-form'
-              }
-            >
-              <FormattedMessage id="Contact" defaultMessage="Contact" />
-            </Link>
-          </div>
+          {siteActions?.map((item) => (
+            <div role="listitem" className="item">
+              <Link
+                className="item"
+                to={
+                  settings.isMultilingual
+                    ? `/${lang}/${flattenToAppURL(item.url)}`
+                    : flattenToAppURL(item.url)
+                }
+              >
+                {item.title}
+              </Link>
+            </div>
+          ))}
           <div role="listitem" className="item">
             <a className="item" href="https://plone.org">
               <FormattedMessage
