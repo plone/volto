@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-04-14T12:54:33.245Z\n"
+"POT-Creation-Date: 2022-04-14T13:13:34.347Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -3554,6 +3554,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: {count} selected
 msgid "{count} selected"
+msgstr ""
+
+#: components/theme/Footer/Footer
+# defaultMessage: {title}
+msgid "{id}"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentType
