@@ -8,6 +8,9 @@
 
 ### Bugfix
 
+- fix hardcoded site_actions,instead consume them from restapi
+  See:https://github.com/plone/plone.restapi/pull/1076 @nileshgulia1
+
 ### Internal
 
 ### Documentation
