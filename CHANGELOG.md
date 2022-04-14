@@ -24,6 +24,7 @@
 
 - Updated README.md @ktsrivastava29
 - Added language to codeblocks in md files @ktsrivastava29
+- Updated simple.md @MdSahil-oss
 
 ## 15.0.0 (2022-03-14)
 
@@ -127,8 +128,7 @@
 
 ### Documentation
 
-- Updated simple.md
-- fixes #3157 issue
+- Fix broken links. @stevepiercy
 
 ## 15.0.0-alpha.13 (2022-03-09)
 
