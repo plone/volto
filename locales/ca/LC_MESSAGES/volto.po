@@ -25,11 +25,6 @@ msgstr ""
 msgid "<p>Add some HTML here</p>"
 msgstr "<p>Afegeix codi HTML aquí</p>"
 
-#: components/theme/Footer/Footer
-# defaultMessage: Accessibility
-msgid "Accessibility"
-msgstr "Accessibilitat"
-
 #: components/theme/Register/Register
 # defaultMessage: Account Registration Completed
 msgid "Account Registration Completed"
@@ -479,11 +474,6 @@ msgstr "Confirma la contrassenya"
 # defaultMessage: Connection refused
 msgid "Connection refused"
 msgstr "Connexió rebutjada"
-
-#: components/theme/Footer/Footer
-# defaultMessage: Contact
-msgid "Contact"
-msgstr "Contacte"
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Contact form
@@ -2384,11 +2374,6 @@ msgstr "Lloc"
 # defaultMessage: Site Administration
 msgid "Site Administration"
 msgstr "Administració del lloc"
-
-#: components/theme/Footer/Footer
-# defaultMessage: Site Map
-msgid "Site Map"
-msgstr "Mapa del lloc"
 
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools

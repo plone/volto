@@ -24,11 +24,6 @@ msgstr ""
 msgid "<p>Add some HTML here</p>"
 msgstr "<p>ここにHTMLを記述</p>"
 
-#: components/theme/Footer/Footer
-# defaultMessage: Accessibility
-msgid "Accessibility"
-msgstr "アクセシビリティ"
-
 #: components/theme/Register/Register
 # defaultMessage: Account Registration Completed
 msgid "Account Registration Completed"
@@ -478,11 +473,6 @@ msgstr "パスワードを確認"
 # defaultMessage: Connection refused
 msgid "Connection refused"
 msgstr "接続が拒否されました"
-
-#: components/theme/Footer/Footer
-# defaultMessage: Contact
-msgid "Contact"
-msgstr "お問い合わせ"
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Contact form
@@ -2383,11 +2373,6 @@ msgstr "サイト"
 # defaultMessage: Site Administration
 msgid "Site Administration"
 msgstr "サイト管理"
-
-#: components/theme/Footer/Footer
-# defaultMessage: Site Map
-msgid "Site Map"
-msgstr "サイトマップ"
 
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools

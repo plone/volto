@@ -24,11 +24,6 @@ msgstr ""
 msgid "<p>Add some HTML here</p>"
 msgstr ""
 
-#: components/theme/Footer/Footer
-# defaultMessage: Accessibility
-msgid "Accessibility"
-msgstr "Acessibilidade"
-
 #: components/theme/Register/Register
 # defaultMessage: Account Registration Completed
 msgid "Account Registration Completed"
@@ -478,11 +473,6 @@ msgstr "Confirmar senha"
 # defaultMessage: Connection refused
 msgid "Connection refused"
 msgstr ""
-
-#: components/theme/Footer/Footer
-# defaultMessage: Contact
-msgid "Contact"
-msgstr "Contacto"
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Contact form
@@ -2383,11 +2373,6 @@ msgstr "Sítio"
 # defaultMessage: Site Administration
 msgid "Site Administration"
 msgstr "Administração do Sítio"
-
-#: components/theme/Footer/Footer
-# defaultMessage: Site Map
-msgid "Site Map"
-msgstr "Mapa do Sítio"
 
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
