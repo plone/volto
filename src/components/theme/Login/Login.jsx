@@ -176,130 +176,138 @@ class Login extends Component {
     return (
       <div id="page-login">
         <Helmet title={this.props.intl.formatMessage(messages.Login)} />
-        <Container text>
-          <Form method="post" onSubmit={this.onLogin}>
-            <Segment.Group raised>
-              <Segment className="primary">
-                <FormattedMessage id="Log In" defaultMessage="Login" />
-              </Segment>
-              <Segment secondary>
-                <FormattedMessage
-                  id="Sign in to start session"
-                  defaultMessage="Sign in to start session"
-                />
-              </Segment>
-              <Segment className="form">
-                <Form.Field inline className="help">
-                  <Grid>
-                    <Grid.Row stretched>
-                      <Grid.Column width="4">
-                        <div className="wrapper">
-                          <label htmlFor="login">
-                            <FormattedMessage
-                              id="Login Name"
-                              defaultMessage="Login Name"
+        <Grid centered>
+          <Grid.Row>
+            <Container text>
+              <Form method="post" onSubmit={this.onLogin}>
+                <Segment.Group raised>
+                  <Segment className="primary">
+                    <FormattedMessage id="Log In" defaultMessage="Login" />
+                  </Segment>
+                  <Segment secondary>
+                    <FormattedMessage
+                      id="Sign in to start session"
+                      defaultMessage="Sign in to start session"
+                    />
+                  </Segment>
+                  <Segment className="form">
+                    <Form.Field inline className="help">
+                      <Grid>
+                        <Grid.Row stretched>
+                          <Grid.Column width="4">
+                            <div className="wrapper">
+                              <label htmlFor="login">
+                                <FormattedMessage
+                                  id="Login Name"
+                                  defaultMessage="Login Name"
+                                />
+                              </label>
+                            </div>
+                          </Grid.Column>
+                          <Grid.Column width="8">
+                            {/* eslint-disable jsx-a11y/no-autofocus */}
+                            <Input
+                              id="login"
+                              name="login"
+                              placeholder={this.props.intl.formatMessage(
+                                messages.loginName,
+                              )}
+                              autoFocus
                             />
-                          </label>
-                        </div>
-                      </Grid.Column>
-                      <Grid.Column width="8">
-                        {/* eslint-disable jsx-a11y/no-autofocus */}
-                        <Input
-                          id="login"
-                          name="login"
-                          placeholder={this.props.intl.formatMessage(
-                            messages.loginName,
-                          )}
-                          autoFocus
-                        />
-                      </Grid.Column>
-                    </Grid.Row>
-                  </Grid>
-                </Form.Field>
-                <Form.Field inline className="help">
-                  <Grid>
-                    <Grid.Row stretched>
-                      <Grid.Column stretched width="4">
-                        <div className="wrapper">
-                          <label htmlFor="password">
-                            <FormattedMessage
-                              id="Password"
-                              defaultMessage="Password"
+                          </Grid.Column>
+                        </Grid.Row>
+                      </Grid>
+                    </Form.Field>
+                    <Form.Field inline className="help">
+                      <Grid>
+                        <Grid.Row stretched>
+                          <Grid.Column stretched width="4">
+                            <div className="wrapper">
+                              <label htmlFor="password">
+                                <FormattedMessage
+                                  id="Password"
+                                  defaultMessage="Password"
+                                />
+                              </label>
+                            </div>
+                          </Grid.Column>
+                          <Grid.Column stretched width="8">
+                            <Input
+                              type="password"
+                              id="password"
+                              name="password"
+                              placeholder={this.props.intl.formatMessage(
+                                messages.password,
+                              )}
+                              tabIndex={0}
                             />
-                          </label>
-                        </div>
-                      </Grid.Column>
-                      <Grid.Column stretched width="8">
-                        <Input
-                          type="password"
-                          id="password"
-                          name="password"
-                          placeholder={this.props.intl.formatMessage(
-                            messages.password,
+                          </Grid.Column>
+                        </Grid.Row>
+                      </Grid>
+                    </Form.Field>
+                    <Form.Field inline className="help">
+                      <Grid>
+                        <Grid.Row stretched>
+                          {config.settings.showSelfRegistration && (
+                            <Grid.Column stretched width="12">
+                              <p className="help">
+                                <Link to="/register">
+                                  {this.props.intl.formatMessage(
+                                    messages.register,
+                                  )}
+                                </Link>
+                              </p>
+                            </Grid.Column>
                           )}
-                          tabIndex={0}
-                        />
-                      </Grid.Column>
-                    </Grid.Row>
-                  </Grid>
-                </Form.Field>
-                <Form.Field inline className="help">
-                  <Grid>
-                    <Grid.Row stretched>
-                      {config.settings.showSelfRegistration && (
-                        <Grid.Column stretched width="12">
-                          <p className="help">
-                            <Link to="/register">
-                              {this.props.intl.formatMessage(messages.register)}
-                            </Link>
-                          </p>
-                        </Grid.Column>
-                      )}
-                      <Grid.Column stretched width="12">
-                        <p className="help">
-                          <Link to="/password-reset">
-                            {this.props.intl.formatMessage(
-                              messages.forgotPassword,
-                            )}
-                          </Link>
-                        </p>
-                      </Grid.Column>
-                    </Grid.Row>
-                  </Grid>
-                </Form.Field>
-              </Segment>
-              <Segment className="actions" clearing>
-                <Button
-                  basic
-                  primary
-                  icon
-                  floated="right"
-                  type="submit"
-                  id="login-form-submit"
-                  aria-label={this.props.intl.formatMessage(messages.login)}
-                  title={this.props.intl.formatMessage(messages.login)}
-                  loading={this.props.loading}
-                >
-                  <Icon className="circled" name={aheadSVG} size="30px" />
-                </Button>
+                          <Grid.Column stretched width="12">
+                            <p className="help">
+                              <Link to="/password-reset">
+                                {this.props.intl.formatMessage(
+                                  messages.forgotPassword,
+                                )}
+                              </Link>
+                            </p>
+                          </Grid.Column>
+                        </Grid.Row>
+                      </Grid>
+                    </Form.Field>
+                  </Segment>
+                  <Segment className="actions" clearing>
+                    <Button
+                      basic
+                      primary
+                      icon
+                      floated="right"
+                      type="submit"
+                      id="login-form-submit"
+                      aria-label={this.props.intl.formatMessage(messages.login)}
+                      title={this.props.intl.formatMessage(messages.login)}
+                      loading={this.props.loading}
+                    >
+                      <Icon className="circled" name={aheadSVG} size="30px" />
+                    </Button>
 
-                <Button
-                  basic
-                  secondary
-                  icon
-                  floated="right"
-                  id="login-form-cancel"
-                  as={Link}
-                  to="/"
-                  aria-label={this.props.intl.formatMessage(messages.cancel)}
-                  title={this.props.intl.formatMessage(messages.cancel)}
-                >
-                  <Icon className="circled" name={clearSVG} size="30px" />
-                </Button>
-              </Segment>
-            </Segment.Group>
-          </Form>
-        </Container>
+                    <Button
+                      basic
+                      secondary
+                      icon
+                      floated="right"
+                      id="login-form-cancel"
+                      as={Link}
+                      to="/"
+                      aria-label={this.props.intl.formatMessage(
+                        messages.cancel,
+                      )}
+                      title={this.props.intl.formatMessage(messages.cancel)}
+                    >
+                      <Icon className="circled" name={clearSVG} size="30px" />
+                    </Button>
+                  </Segment>
+                </Segment.Group>
+              </Form>
+            </Container>
+          </Grid.Row>
+        </Grid>
       </div>
     );
   }
