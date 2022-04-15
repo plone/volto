@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "15.3.0",
+  "version": "15.4.1",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -373,7 +373,7 @@
     "react-dom": "17.0.2",
     "react-dropzone": "11.1.0",
     "react-fast-compare": "2.0.4",
-    "react-image-gallery": "1.0.7",
+    "react-image-gallery": "1.2.7",
     "react-intl": "3.8.0",
     "react-intl-redux": "2.2.0",
     "react-medium-image-zoom": "3.0.15",
@@ -436,7 +436,8 @@
     "jest-environment-jsdom-sixteen": "1.0.3",
     "react-is": "^16.13.1",
     "tmp": "0.2.1",
-    "use-trace-update": "1.3.2"
+    "use-trace-update": "1.3.2",
+    "why": "0.6.2"
   },
   "resolutions-comments": {
     "ua-parser-js": "See https://github.com/faisalman/ua-parser-js/issues/536"
