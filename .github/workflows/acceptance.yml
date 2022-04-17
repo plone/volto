@@ -3,7 +3,7 @@ on: [push]
 jobs:
   core:
     runs-on: ubuntu-latest
-    name: Core Acceptance tests
+    name: Core
     strategy:
       matrix:
         # node-version: [12.x, 14.x, 16.x]
@@ -68,7 +68,7 @@ jobs:
 
   coresandbox:
     runs-on: ubuntu-latest
-    name: Coresandbox Acceptance tests
+    name: Coresandbox
     strategy:
       matrix:
         node-version: [16.x]

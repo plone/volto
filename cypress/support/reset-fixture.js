@@ -1,40 +1,27 @@
-const xmlrpc = require('xmlrpc');
-
-// const args = process.argv;
-const command = process.argv[2];
-
-// create a client
-const client = xmlrpc.createClient({
-  host: 'localhost',
-  port: 55001,
-  path: '/plone/RobotRemote',
-});
-
-export function setup() {
-  // Setup site
-  client.methodCall(
-    'run_keyword',
-    [
-      'remote_zodb_setup',
-      ['plone.app.robotframework.testing.PLONE_ROBOT_TESTING'],
-    ],
-    () => {},
-  );
+function setup() {
+  const api_url = Cypress.env('API_PATH') || 'http://localhost:55001/plone';
+  cy.request({
+    method: 'POST',
+    url: `${api_url}/RobotRemote`,
+    headers: { Accept: 'text/xml', 'content-type': 'text/xml' },
+    body:
+      '<?xml version="1.0"?><methodCall><methodName>run_keyword</methodName><params><param><value><string>remote_zodb_setup</string></value></param><param><value><array><data><value><string>plone.app.robotframework.testing.PLONE_ROBOT_TESTING</string></value></data></array></value></param></params></methodCall>',
+  });
 }
 
-export function teardown() {
-  // Tearing down
-  client.methodCall(
-    'run_keyword',
-    [
-      'remote_zodb_teardown',
-      ['plone.app.robotframework.testing.PLONE_ROBOT_TESTING'],
-    ],
-    () => {},
-  );
+function teardown() {
+  const api_url = Cypress.env('API_PATH') || 'http://localhost:55001/plone';
+  cy.request({
+    method: 'POST',
+    url: `${api_url}/RobotRemote`,
+    headers: { Accept: 'text/xml', 'content-type': 'text/xml' },
+    body:
+      '<?xml version="1.0"?><methodCall><methodName>run_keyword</methodName><params><param><value><string>remote_zodb_teardown</string></value></param><param><value><array><data><value><string>plone.app.robotframework.testing.PLONE_ROBOT_TESTING</string></value></data></array></value></param></params></methodCall>',
+  });
 }
 
 function main() {
+  const command = process.argv[2];
   switch (command) {
     case 'setup':
       setup();
@@ -51,3 +38,8 @@ function main() {
 if (require.main === module) {
   main();
 }
+
+module.exports = {
+  setup,
+  teardown,
+};
