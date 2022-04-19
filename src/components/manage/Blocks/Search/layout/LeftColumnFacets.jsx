@@ -5,6 +5,7 @@ import {
   Facets,
   FilterList,
   SortOn,
+  ViewSwitcher,
 } from '../components';
 import { Grid, Segment } from 'semantic-ui-react';
 import { Button } from 'semantic-ui-react';
@@ -50,11 +51,13 @@ const LeftColumnFacets = (props) => {
 
   return (
     <Grid className="searchBlock-facets left-column-facets" stackable>
-      <Grid.Row>
-        <Grid.Column>
-          {data.headline && <h2 className="headline">{data.headline}</h2>}
-        </Grid.Column>
-      </Grid.Row>
+      {data.headline && (
+        <Grid.Row>
+          <Grid.Column>
+            <h2 className="headline">{data.headline}</h2>
+          </Grid.Column>
+        </Grid.Row>
+      )}
 
       <Grid.Row>
         {data.facets?.length && (
@@ -96,18 +99,16 @@ const LeftColumnFacets = (props) => {
             </div>
           )}
 
-          <div>
-            <FilterList
-              {...props}
-              isEditMode={isEditMode}
-              setFacets={(f) => {
-                flushSync(() => {
-                  setFacets(f);
-                  onTriggerSearch(searchedText || '', f);
-                });
-              }}
-            />
-          </div>
+          <FilterList
+            {...props}
+            isEditMode={isEditMode}
+            setFacets={(f) => {
+              flushSync(() => {
+                setFacets(f);
+                onTriggerSearch(searchedText || '', f);
+              });
+            }}
+          />
 
           <div className="search-results-count-sort">
             <SearchDetails text={searchedText} total={totalItems} />
@@ -138,6 +139,7 @@ const LeftColumnFacets = (props) => {
                 }}
               />
             )}
+            {data.availableViews && <ViewSwitcher {...props} />}
           </div>
           {children}
         </Grid.Column>

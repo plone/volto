@@ -60,12 +60,17 @@ msgid "Activate and deactivate"
 msgstr "Activar i desactivar"
 
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Toolbar/Toolbar
+#: components/manage/Toolbar/ToolbarComponents
 #: components/manage/Widgets/SchemaWidget
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add
 msgid "Add"
 msgstr "Afegeix"
+
+#: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Add
+msgid "Add (object list)"
+msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
@@ -245,7 +250,7 @@ msgstr "Disponible"
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Toolbar/PersonalTools
-#: components/manage/Toolbar/Toolbar
+#: components/manage/Toolbar/ToolbarComponents
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Back
@@ -319,6 +324,7 @@ msgstr "No es pot editar el disseny per al tipus de contingut <strong>{type}</st
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/manage/Slots/EditSlot
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Cancel
@@ -437,7 +443,7 @@ msgstr "Codi"
 msgid "Collapse item"
 msgstr "Replega l'element"
 
-#: components/manage/Toolbar/Toolbar
+#: components/manage/Toolbar/ToolbarComponents
 # defaultMessage: Collection
 msgid "Collection"
 msgstr "Col·lecció"
@@ -501,7 +507,7 @@ msgid "Content type deleted"
 msgstr "S'ha suprimit el tipus de contingut"
 
 #: components/manage/Contents/Contents
-#: components/manage/Toolbar/Toolbar
+#: components/manage/Toolbar/ToolbarComponents
 # defaultMessage: Contents
 msgid "Contents"
 msgstr "Continguts"
@@ -794,7 +800,7 @@ msgstr "Les adreces de correu electrònic no coincideixen."
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
-#: components/manage/Toolbar/Toolbar
+#: components/manage/Toolbar/ToolbarComponents
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
 #: components/theme/Comments/Comments
@@ -862,6 +868,7 @@ msgstr "Llista d'objectes buida"
 msgid "Enable editable Blocks"
 msgstr "Activa els blocs editables"
 
+#: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 # defaultMessage: End Date
 msgid "End Date"
@@ -914,6 +921,7 @@ msgstr "Introduïu la vostra nova contrasenya. Mínim 5 caràcters."
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
+#: components/manage/Slots/EditSlot
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
@@ -998,7 +1006,7 @@ msgstr "Facetes a la part superior"
 msgid "Field"
 msgstr "Camp"
 
-#: components/manage/Toolbar/Toolbar
+#: components/manage/Toolbar/ToolbarComponents
 # defaultMessage: File
 msgid "File"
 msgstr "Dossier"
@@ -1146,6 +1154,7 @@ msgstr "Amagar la faceta?"
 
 #: components/manage/History/History
 #: components/manage/Toolbar/More
+#: components/manage/Toolbar/ToolbarComponents
 # defaultMessage: History
 msgid "History"
 msgstr "Història"
@@ -1387,7 +1396,7 @@ msgstr "Imatge Principal"
 msgid "Left"
 msgstr "A l'esquerra"
 
-#: components/manage/Toolbar/Toolbar
+#: components/manage/Toolbar/ToolbarComponents
 # defaultMessage: Link
 msgid "Link"
 msgstr "Enllaç"
@@ -1482,6 +1491,7 @@ msgstr "Redueix el farciment cel·lular"
 
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Toolbar/More
+#: components/manage/Toolbar/ToolbarComponents
 # defaultMessage: Manage Translations
 msgid "Manage Translations"
 msgstr "Gestionar les traduccions"
@@ -1552,7 +1562,7 @@ msgstr "Dia"
 msgid "Monthly"
 msgstr "Mensual"
 
-#: components/manage/Toolbar/Toolbar
+#: components/manage/Toolbar/ToolbarComponents
 # defaultMessage: More
 msgid "More"
 msgstr "Més"
@@ -1599,7 +1609,7 @@ msgstr "Navegació"
 msgid "New password"
 msgstr "Nova contrasenya"
 
-#: components/manage/Toolbar/Toolbar
+#: components/manage/Toolbar/ToolbarComponents
 # defaultMessage: News Item
 msgid "News Item"
 msgstr "Noticia"
@@ -1609,6 +1619,11 @@ msgstr "Noticia"
 # defaultMessage: No
 msgid "No"
 msgstr "No"
+
+#: components/manage/Controlpanels/VersionOverview
+# defaultMessage: No addons found
+msgid "No addons found"
+msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected
@@ -1725,6 +1740,11 @@ msgstr "esdeveniment(s)"
 msgid "Ok"
 msgstr "D'acord"
 
+#: components/manage/Widgets/IdWidget
+# defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed.
+msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed."
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
@@ -1749,7 +1769,7 @@ msgstr "Obre el navegador d'objectes"
 msgid "Origin"
 msgstr "Origen"
 
-#: components/manage/Toolbar/Toolbar
+#: components/manage/Toolbar/ToolbarComponents
 # defaultMessage: Page
 msgid "Page"
 msgstr "Pàgina"
@@ -1798,19 +1818,21 @@ msgid "Permissions updated"
 msgstr "Permisos actualitzats"
 
 #: components/manage/Preferences/PersonalInformation
-#: components/manage/Toolbar/Toolbar
+#: components/manage/Toolbar/ToolbarComponents
+#: config/toolbar
 # defaultMessage: Personal Information
 msgid "Personal Information"
 msgstr "Informació personal"
 
 #: components/manage/Preferences/PersonalPreferences
-#: components/manage/Toolbar/Toolbar
+#: components/manage/Toolbar/ToolbarComponents
+#: config/toolbar
 # defaultMessage: Personal Preferences
 msgid "Personal Preferences"
 msgstr "Preferències personals"
 
 #: components/manage/Toolbar/More
-#: components/manage/Toolbar/Toolbar
+#: components/manage/Toolbar/ToolbarComponents
 # defaultMessage: Personal tools
 msgid "Personal tools"
 msgstr "Eines personals"
@@ -2115,6 +2137,7 @@ msgstr "Arrel"
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/manage/Slots/EditSlot
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Save
 msgid "Save"
@@ -2202,9 +2225,9 @@ msgid "Search users…"
 msgstr "Cerca usuaris..."
 
 #: components/manage/Blocks/Search/components/SearchDetails
-# defaultMessage: Searched for
-msgid "Searched for"
-msgstr "Buscant"
+# defaultMessage: Searched for: <em>{searchedtext}</em>.
+msgid "Searched for: <em>{searchedtext}</em>."
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Second
@@ -2287,6 +2310,7 @@ msgstr "Configuració"
 
 #: components/manage/Sharing/Sharing
 #: components/manage/Toolbar/More
+#: components/manage/Toolbar/ToolbarComponents
 # defaultMessage: Sharing
 msgid "Sharing"
 msgstr "Compartir"
@@ -2349,6 +2373,7 @@ msgid "Shrink sidebar"
 msgstr "Redueix la barra lateral"
 
 #: components/manage/Toolbar/Toolbar
+#: components/manage/Toolbar/ToolbarComponents
 # defaultMessage: Shrink toolbar
 msgid "Shrink toolbar"
 msgstr "Redueix la barra d'eines"
@@ -2413,11 +2438,6 @@ msgid "Sort on"
 msgstr "Ordena"
 
 #: components/manage/Blocks/Search/schema
-# defaultMessage: Sort on label
-msgid "Sort on label"
-msgstr "Ordena per etiqueta"
-
-#: components/manage/Blocks/Search/schema
 # defaultMessage: Sort on options
 msgid "Sort on options"
 msgstr "Ordena les opcions"
@@ -2437,6 +2457,7 @@ msgstr "Especifiqueu un URL de vídeo o llista de reproducció de YouTube"
 msgid "Split"
 msgstr "Dividir"
 
+#: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 # defaultMessage: Start Date
 msgid "Start Date"
@@ -2573,8 +2594,8 @@ msgid "The backend is responding, but the CORS headers are not configured proper
 msgstr "El backend està responent, però les capçaleres CORS no estan configurades correctament i el navegador ha denegat l'accés als recursos del backend."
 
 #: components/theme/CorsError/CorsError
-# defaultMessage: The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
-msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
+# defaultMessage: The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
+msgid "The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
 msgstr "El servidor backend del vostre lloc web no respon, demanem disculpes per les molèsties. Si us plau, prova de tornar a carregar la pàgina i torna-ho a provar. Si el problema persisteix, poseu-vos en contacte amb els administradors del lloc."
 
 #: components/manage/Blocks/Search/schema
@@ -2637,6 +2658,11 @@ msgstr "Tercer"
 # defaultMessage: This has an ongoing working copy in {title}
 msgid "This has an ongoing working copy in {title}"
 msgstr "Té una còpia de treball en curs a {title}"
+
+#: components/manage/Widgets/IdWidget
+# defaultMessage: This is a reserved name and can't be used
+msgid "This is a reserved name and can't be used"
+msgstr ""
 
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This is a working copy of {title}
@@ -2775,6 +2801,7 @@ msgid "Uninstall"
 msgstr "Desinstal·lar"
 
 #: components/manage/Blocks/Block/Edit
+#: components/theme/SlotRenderer/RenderSlotFill
 #: components/theme/View/DefaultView
 #: components/theme/View/RenderBlocks
 # defaultMessage: Unknown Block {block}
@@ -2785,11 +2812,6 @@ msgstr "Bloc desconegut {block}"
 # defaultMessage: Unlink translation for
 msgid "Unlink translation for"
 msgstr "Desenllaça la traducció de"
-
-#: components/manage/Toolbar/Toolbar
-# defaultMessage: Unlock
-msgid "Unlock"
-msgstr "Descobrir"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update
@@ -3081,6 +3103,11 @@ msgstr "La vostra contrasenya s'ha establert correctament. Ara podeu {link} amb 
 msgid "Your preferred language"
 msgstr "El teu idioma preferit"
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Available views
+msgid "availableViews"
+msgstr ""
+
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Forgot your password?
@@ -3098,6 +3125,7 @@ msgid "compare_to"
 msgstr "Compara amb la llengua"
 
 #: components/manage/Blocks/Block/EditBlockWrapper
+#: components/manage/Blocks/Block/QuantaEditBlockWrapper
 # defaultMessage: delete
 msgid "delete"
 msgstr "Suprimeix"
@@ -3132,42 +3160,42 @@ msgstr "Esborrany"
 msgid "email"
 msgstr "L'entrada ha de ser un correu electrònic vàlid (alguna cosa@domini.com)"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: All dates
 msgid "event_alldates"
 msgstr "Totes les dates"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Attendees
 msgid "event_attendees"
 msgstr "Assistents"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Contact Name
 msgid "event_contactname"
 msgstr "Nom de contacte"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Contact Phone
 msgid "event_contactphone"
 msgstr "Telèfon de contacte"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Website
 msgid "event_website"
 msgstr "Lloc web"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: What
 msgid "event_what"
 msgstr "Què"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: When
 msgid "event_when"
 msgstr "quan"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Where
 msgid "event_where"
 msgstr "On?"
@@ -3262,6 +3290,12 @@ msgstr "Inici de la gamma"
 # defaultMessage: Most used
 msgid "mostUsed"
 msgstr "El més utilitzat"
+
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+# defaultMessage: No
+msgid "no"
+msgstr ""
 
 #: components/manage/Contents/ContentsItem
 # defaultMessage: No workflow state
@@ -3474,6 +3508,16 @@ msgstr "Curs"
 msgid "rrule_years"
 msgstr "Anys"
 
+#: components/manage/Blocks/Search/components/ViewSwitcher
+# defaultMessage: Select view
+msgid "selectView"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Site
+msgid "site"
+msgstr ""
+
 #: components/theme/SkipLinks/SkipLinks
 # defaultMessage: Skip to footer
 msgid "skiplink-footer"
@@ -3529,10 +3573,21 @@ msgstr "avatar de l'usuari"
 msgid "video"
 msgstr "Vídeo"
 
-#: components/theme/View/EventView
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Views
+msgid "views"
+msgstr ""
+
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Visit external website
 msgid "visit_external_website"
 msgstr "Visiteu el lloc web extern"
+
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+# defaultMessage: Yes
+msgid "yes"
+msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: {count, plural, one {Upload {count} file} other {Upload {count} files}}
