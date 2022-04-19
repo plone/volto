@@ -3097,6 +3097,11 @@ msgstr "Your password has been set successfully. You may now {link} with your ne
 msgid "Your preferred language"
 msgstr "優先する言語"
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Available views
+msgid "availableViews"
+msgstr ""
+
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Forgot your password?
@@ -3496,6 +3501,11 @@ msgstr "年"
 msgid "rrule_years"
 msgstr "年"
 
+#: components/manage/Blocks/Search/components/ViewSwitcher
+# defaultMessage: Select view
+msgid "selectView"
+msgstr ""
+
 #: components/theme/SkipLinks/SkipLinks
 # defaultMessage: Skip to footer
 msgid "skiplink-footer"
@@ -3550,6 +3560,11 @@ msgstr "ユーザアイコン"
 # defaultMessage: Video
 msgid "video"
 msgstr "ビデオ"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Views
+msgid "views"
+msgstr ""
 
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Visit external website

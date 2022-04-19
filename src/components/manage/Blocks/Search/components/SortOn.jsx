@@ -66,7 +66,7 @@ const SortOn = (props) => {
           {intl.formatMessage(messages.sortOn)}
         </span>
         <Select
-          id="select-search-sort-on"
+          id={`select-search-sort-on`}
           name="select-searchblock-sort-on"
           className="search-react-select-container"
           classNamePrefix="react-select"

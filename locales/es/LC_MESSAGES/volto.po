@@ -3099,6 +3099,11 @@ msgstr "Su contraseña ha sido restablecida exitosamente. Usted puede {link} usa
 msgid "Your preferred language"
 msgstr "Su idioma preferido"
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Available views
+msgid "availableViews"
+msgstr ""
+
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Forgot your password?
@@ -3498,6 +3503,11 @@ msgstr "año"
 msgid "rrule_years"
 msgstr "años"
 
+#: components/manage/Blocks/Search/components/ViewSwitcher
+# defaultMessage: Select view
+msgid "selectView"
+msgstr ""
+
 #: components/theme/SkipLinks/SkipLinks
 # defaultMessage: Skip to footer
 msgid "skiplink-footer"
@@ -3552,6 +3562,11 @@ msgstr "avatar de usuario"
 # defaultMessage: Video
 msgid "video"
 msgstr "Vídeo"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Views
+msgid "views"
+msgstr ""
 
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Visit external website

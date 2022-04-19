@@ -3104,6 +3104,11 @@ msgstr "Ihr Passwort wurde erfolgreich vergeben. Sie können sich jetzt mit Ihre
 msgid "Your preferred language"
 msgstr "Ihre bevorzugte Sprache"
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Available views
+msgid "availableViews"
+msgstr ""
+
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Forgot your password?
@@ -3503,6 +3508,11 @@ msgstr "Regel Jahr"
 msgid "rrule_years"
 msgstr "Regel Jahre"
 
+#: components/manage/Blocks/Search/components/ViewSwitcher
+# defaultMessage: Select view
+msgid "selectView"
+msgstr ""
+
 #: components/theme/SkipLinks/SkipLinks
 # defaultMessage: Skip to footer
 msgid "skiplink-footer"
@@ -3557,6 +3567,11 @@ msgstr "Nutzer Avatar"
 # defaultMessage: Video
 msgid "video"
 msgstr "Video"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Views
+msgid "views"
+msgstr ""
 
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Visit external website

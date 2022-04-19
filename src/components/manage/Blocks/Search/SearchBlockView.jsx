@@ -13,9 +13,11 @@ import { isEqual, isFunction } from 'lodash';
 const getListingBodyVariation = (data) => {
   const { variations } = config.blocks.blocksConfig.listing;
 
-  const variation = data.listingBodyTemplate
+  let variation = data.listingBodyTemplate
     ? variations.find(({ id }) => id === data.listingBodyTemplate)
     : variations.find(({ isDefault }) => isDefault);
+
+  if (!variation) variation = variations[0];
 
   return variation;
 };
@@ -59,15 +61,24 @@ const SearchBlockView = (props) => {
 
   const Layout = variation.view;
 
-  const listingBodyVariation = getListingBodyVariation(data);
+  const [selectedView, setSelectedView] = React.useState(
+    getListingBodyVariation(data).id,
+  );
   const root = useSelector((state) => state.breadcrumbs.root);
   const listingBodyData = applyDefaults(searchData, root);
 
+  const { variations } = config.blocks.blocksConfig.listing;
+
   return (
     <div className="block search">
-      <Layout {...props} isEditMode={mode === 'edit'}>
+      <Layout
+        {...props}
+        isEditMode={mode === 'edit'}
+        selectedView={selectedView}
+        setSelectedView={setSelectedView}
+      >
         <ListingBody
-          variation={listingBodyVariation}
+          variation={variations.find(({ id }) => id === selectedView)}
           data={listingBodyData}
           path={props.path}
           isEditMode={mode === 'edit'}

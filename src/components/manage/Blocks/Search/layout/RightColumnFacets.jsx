@@ -5,6 +5,7 @@ import {
   Facets,
   FilterList,
   SortOn,
+  ViewSwitcher,
 } from '../components';
 import { Grid, Segment } from 'semantic-ui-react';
 import { Button } from 'semantic-ui-react';
@@ -117,6 +118,7 @@ const RightColumnFacets = (props) => {
                 }}
               />
             )}
+            {data.availableViews && <ViewSwitcher {...props} />}
           </div>
           {children}
         </Grid.Column>

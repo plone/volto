@@ -3097,6 +3097,11 @@ msgstr "A sua senha foi definida com sucesso. Pode agora {link} com a sua nova s
 msgid "Your preferred language"
 msgstr "O seu idioma preferido"
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Available views
+msgid "availableViews"
+msgstr ""
+
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Forgot your password?
@@ -3496,6 +3501,11 @@ msgstr ""
 msgid "rrule_years"
 msgstr ""
 
+#: components/manage/Blocks/Search/components/ViewSwitcher
+# defaultMessage: Select view
+msgid "selectView"
+msgstr ""
+
 #: components/theme/SkipLinks/SkipLinks
 # defaultMessage: Skip to footer
 msgid "skiplink-footer"
@@ -3550,6 +3560,11 @@ msgstr "avatar do utilizador"
 # defaultMessage: Video
 msgid "video"
 msgstr "vídeo"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Views
+msgid "views"
+msgstr ""
 
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Visit external website

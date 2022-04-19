@@ -1,15 +1,16 @@
 import React from 'react';
+import { flushSync } from 'react-dom';
+import { defineMessages, useIntl } from 'react-intl';
+import { Button, Grid } from 'semantic-ui-react';
+
 import {
   SearchInput,
   SearchDetails,
   Facets,
   FilterList,
   SortOn,
+  ViewSwitcher,
 } from '../components';
-import { Grid } from 'semantic-ui-react';
-import { Button } from 'semantic-ui-react';
-import { flushSync } from 'react-dom';
-import { defineMessages, useIntl } from 'react-intl';
 
 const messages = defineMessages({
   searchButtonText: {
@@ -112,6 +113,7 @@ const TopSideFacets = (props) => {
                 }}
               />
             )}
+            {data.availableViews && <ViewSwitcher {...props} />}
           </div>
           {data.facets?.length > 0 && (
             <div className="facets">

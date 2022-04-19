@@ -92,6 +92,14 @@ const messages = defineMessages({
     id: 'Facet widget',
     defaultMessage: 'Facet widget',
   },
+  views: {
+    id: 'views',
+    defaultMessage: 'Views',
+  },
+  availableViews: {
+    id: 'availableViews',
+    defaultMessage: 'Available views',
+  },
 });
 
 const enhanceSchema = (originalSchema, formData) => {
@@ -202,6 +210,11 @@ export default ({ data = {}, intl }) => {
           // ...(data.showSearchButton ? ['searchButtonLabel'] : []),
         ],
       },
+      {
+        id: 'views',
+        title: intl.formatMessage(messages.views),
+        fields: ['availableViews'],
+      },
     ],
     properties: {
       headline: {
@@ -244,6 +257,13 @@ export default ({ data = {}, intl }) => {
       },
       query: {
         title: 'Query',
+      },
+      availableViews: {
+        title: intl.formatMessage(messages.availableViews),
+        choices: config.blocks.blocksConfig.listing.variations.map(
+          ({ id, title }) => [id, title],
+        ),
+        widget: 'array',
       },
     },
     required: [],

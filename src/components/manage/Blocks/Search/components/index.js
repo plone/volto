@@ -10,3 +10,4 @@ export ToggleFacet from './ToggleFacet';
 export SelectFacetFilterListEntry from './SelectFacetFilterListEntry';
 export ToggleFacetFilterListEntry from './ToggleFacetFilterListEntry';
 export DateRangeFacetFilterListEntry from './DateRangeFacetFilterListEntry';
+export ViewSwitcher from './ViewSwitcher';
