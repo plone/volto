@@ -1,6 +1,6 @@
 # Change Log
 
-## 15.2.4 (unreleased)
+## 15.4.2 (unreleased)
 
 ### Breaking
 
@@ -11,6 +11,45 @@
 - Fixes in search block. Disable default live search. Added clear button for search input. Fixed facet dropdown clear button. Removed sort on label customization option. Layout improvements, CSS polishments. @kreafox
 
 ### Internal
+
+### Documentation
+
+## 15.4.1 (2022-04-11)
+
+### Bugfix
+
+- Fix handling of single reference field in `ObjectBrowser` @robgietema
+- Make the parseDateTime function to handle only date as well @iFlameing
+- Fix ContextNavigation component with Link type objects @UnaiEtxaburu #3232
+
+### Internal
+
+- Upgrade react-image-gallery to latest to fix a11y problem @sneridagh
+- Fixed bug in HTML block edit @giuliaghisini
+- Fix cannot read properties of undefined in Content.jsx @iFlameing
+- Fix fixed `ObjectBrowserBody` to handle data fields based on `ObjectBrowser` mode @giuliaghisini
+
+## 15.4.0 (2022-04-08)
+
+### Feature
+
+- Add package.json scripts documentation @ksuess
+
+### Bugfix
+
+- Fix/Improve the console logging when the server starts. @sneridagh
+
+### Documentation
+
+- Added html_meta values to remaining pages. @stevepiercy
+- Remove duplicate toctrees and set maxdepth to appropriate values. @stevepiercy
+
+## 15.3.0 (2022-04-04)
+
+### Feature
+
+- Improve the fix for the "user swap" vulnerability @sneridagh @plone/volto-team
+  Thanks to @ericof and @cekk for their help and efforts at pinpointing the latests culprits!
 
 ### Documentation
 
@@ -37,7 +76,7 @@
 
 - Switch from `docs-linkcheckbroken` to `docs-linkcheck` in GitHub Actions because the former is broken. @stevepiercy
 - Set the output for storybook to the correct directory. @stevepiercy
-- Fix typo in Makefile: docs/_build @ksuess
+- Fix typo in Makefile: docs/\_build @ksuess
 - Added language to code-blocks in md files @ktsrivastava29
 
 ## 15.2.2 (2022-03-23)

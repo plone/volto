@@ -9,10 +9,9 @@ html_meta:
 # Design principles
 
 ```{toctree}
-:maxdepth: 3
-:hidden: true
+:maxdepth: 1
 
-./guidelines
+guidelines
 
 ```
 

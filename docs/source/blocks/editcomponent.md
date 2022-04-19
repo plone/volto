@@ -202,6 +202,18 @@ It works in 3 different mode:
   The path of selected item is saved in 'href' property of value object. (fieldName: {href:''})
 - **multiple**: The field value is an array of objects.
 
+#### `return` prop
+
+The object widget returns always an array, even if it's meant to have only one object in return. In order to fix that situation and do not issue a breaking change, a `return` prop is being introduced, so if it's value is `single`, then it returns a single value:
+
+```js
+export const Image = () => <ObjectBrowserWidget mode="image" return="single" />;
+```
+
+```{note}
+This situation will be fixed in subsequent Volto releases.
+```
+
 #### PropDataName vs dataName
 
 - **dataName** is the prop inside _data_ object, used for _link_ and _image_ mode.
