@@ -25,7 +25,7 @@ context('Select widgets family Acceptance Tests', () => {
       cy.findAllByText('Choice and Multiple Choice fields').click();
 
       // We select the choice 'One' of the field
-      cy.get('#field-choice_field').click();
+      cy.get('#field-choice_field .react-select__indicators').click();
       cy.findAllByText('One').click();
       cy.get(
         '#field-choice_field > .react-select__control > .react-select__value-container',
@@ -69,7 +69,7 @@ context('Select widgets family Acceptance Tests', () => {
       cy.findByText('Choice and Multiple Choice fields').click();
 
       // We select the choice 'Folder' of the field
-      cy.get('#field-choice_field_select').click();
+      cy.get('#field-choice_field_select .react-select__indicators').click();
       cy.findByText('Folder').click();
       cy.get(
         '#field-choice_field_select > .react-select__control > .react-select__value-container',
@@ -134,7 +134,9 @@ context('Select widgets family Acceptance Tests', () => {
       cy.findByText('Choice and Multiple Choice fields').click();
 
       // We select the choice 'Folder' of the field
-      cy.get('#field-list_field_voc_unconstrained').click();
+      cy.get(
+        '#field-list_field_voc_unconstrained .react-select__indicators',
+      ).click();
       cy.findByText('Folder').click();
       cy.get(
         '#field-list_field_voc_unconstrained > .react-select__control > .react-select__value-container',
@@ -212,7 +214,7 @@ context('Select widgets family Acceptance Tests', () => {
       cy.findByText('Choice and Multiple Choice fields').click();
 
       // We select the field and no query is sent
-      cy.get('#field-list_field_voc_huge').click();
+      cy.get('#field-list_field_voc_huge .react-select__indicators').click();
       cy.contains('Type text');
       cy.get('#field-list_field_voc_huge').type('10');
       cy.contains('Type text');
