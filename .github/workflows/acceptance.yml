@@ -201,6 +201,7 @@ jobs:
           parallel: true
           browser: chrome
           headless: true
+          group: guillotina
           config: integrationFolder=cypress/tests
           spec: cypress/tests/guillotina/**/*.js
           start: |
