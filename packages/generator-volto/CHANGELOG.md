@@ -2,7 +2,7 @@
 
 ## 5.5.1 (unreleased)
 
-### Added
+### Bugfix
 
 - Fix webpack-less-plugin import in storybook @nileshgulia1
 - Remove useless import in storybook `main.js` @sneridagh
