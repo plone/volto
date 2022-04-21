@@ -330,6 +330,12 @@ and alpha release can also be cut using:
 yarn release-alpha
 ```
 
+## Acceptance testing
+
+Here you can find a guide on how acceptance testing is done in Volto:
+
+https://6.dev-docs.plone.org/volto/developer-guidelines/acceptance-tests.html
+
 ## Translations
 
 If you would like contribute to translate Volto into several languages, please, read the [Internationalization (i18n) guide](https://6.dev-docs.plone.org/volto/recipes/i18n.html).

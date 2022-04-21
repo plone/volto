@@ -10,9 +10,12 @@ html_meta:
 
 Volto uses [Cypress](https://www.cypress.io/) for browser-based acceptance testing.
 
-There are a number of fixtures available covering all the configuration use cases. These fixtures have both a specific backend and frontend configuration setup and a related set of tests. The CI infrastructure runs them all automatically on every push to a branch or PR.
+There are a number of fixtures available covering all the configuration use cases.
+These fixtures have both a specific backend and frontend configuration setup and a related set of tests.
+The CI infrastructure runs them all automatically on every push to a branch or PR.
 
-The tests can be run in headless mode (same as the CI does), or within the Cypress user interface. The latter is the one that you run under development.
+The tests can be run in headless mode (same as the CI does), or within the Cypress user interface.
+The latter is the one that you run under development.
 
 ## How to run acceptance tests locally (during development)
 
@@ -50,8 +53,10 @@ There are convenience commands for each of these fixtures. See `Makefile` for mo
 
 ### Writing new acceptance tests
 
-Go to the `cypress/tests` folder to see existing tests. There is a directory per fixture.
-This directory is hot reloaded with your changes as you write the tests. For more information on how to write Cypress tests:
+Go to the `cypress/tests` folder to see existing tests.
+There is a directory per fixture.
+This directory is hot reloaded with your changes as you write the tests.
+For more information on how to write Cypress tests:
 
     https://docs.cypress.io
 
