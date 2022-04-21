@@ -18,21 +18,22 @@ The tests can be run in headless mode (same as the CI does), or within the Cypre
 
 When writing new acceptance tests, you usually want to minimize the time it takes to run the tests, while also being able to debug or inspect what's going on.
 
-Being able to restart individual components also come in handy, so it's recommended to start three individual terminal sessions for running the Plone backend, the Volto frontend, and the acceptance tests.
+Being able to restart individual components also comes in handy.
+It's recommended to start three individual terminal sessions, one each for running the Plone backend, the Volto frontend, and the acceptance tests.
 
-1. Run the backend fixture
+1.  Run the backend fixture.
 
     ```shell
     make start-test-acceptance-server
     ```
 
-2. Run the frontend fixture
+2.  Run the frontend fixture.
 
     ```shell
     make start-test-acceptance-frontend
     ```
 
-3. Run the Cypress tests for that fixture
+3.  Run the Cypress tests for that fixture.
 
     ```shell
     make test-acceptance
@@ -40,10 +41,10 @@ Being able to restart individual components also come in handy, so it's recommen
 
 Available fixtures:
 
-- Core (core or not special naming in the test commands)
-- Multilingual (multilingual)
-- Working Copy (workingCopy)
-- Core Sandbox (coresandbox)
+- Core (`core` or not special naming in the test commands)
+- Multilingual (`multilingual`)
+- Working Copy (`workingCopy`)
+- Core Sandbox (`coresandbox`)
 
 There are convenience commands for each of these fixtures. See `Makefile` for more information.
 
