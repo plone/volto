@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Use `plone/plone-backend:6.0.0a4` in `Makefile` for new projects template for starting test backend @sneridagh
+
 ### Bugfix
 
 ### Internal
