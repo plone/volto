@@ -3,6 +3,12 @@ describe('Document locking', () => {
     // given a logged in editor and a page in edit mode
     cy.createUser({ username: 'editor1', fullname: 'Editor 1' });
     cy.createUser({ username: 'editor2', fullname: 'Editor 2' });
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'document',
+      contentTitle: 'Test document',
+      transition: 'publish',
+    });
     cy.visit('/');
   });
 
@@ -13,12 +19,9 @@ describe('Document locking', () => {
 
   it('As editor, a page is locked for other users when I edit that page', function () {
     // As an editor I can add a document
+    cy.intercept('/**/@logout').as('logout');
+
     cy.autologin('editor1');
-    cy.createContent({
-      contentType: 'Document',
-      contentId: 'document',
-      contentTitle: 'Test document',
-    });
     cy.visit('/document');
     cy.waitForResourceToLoad('@navigation');
     cy.waitForResourceToLoad('@breadcrumbs');
@@ -34,6 +37,7 @@ describe('Document locking', () => {
     cy.waitForResourceToLoad('document');
 
     cy.visit('/logout');
+    cy.wait('@logout');
 
     // As another editor I can see the locked document
     cy.autologin('editor2');
@@ -51,12 +55,9 @@ describe('Document locking', () => {
 
   it('As editor, I can see when a page is currently edited by another user', function () {
     // As an editor I can add a document
+    cy.intercept('/**/@logout').as('logout');
+
     cy.autologin('editor1');
-    cy.createContent({
-      contentType: 'Document',
-      contentId: 'document',
-      contentTitle: 'Test document',
-    });
     cy.visit('/document');
     cy.waitForResourceToLoad('@navigation');
     cy.waitForResourceToLoad('@breadcrumbs');
@@ -72,6 +73,7 @@ describe('Document locking', () => {
     cy.waitForResourceToLoad('document');
 
     cy.visit('/logout');
+    cy.wait('@logout');
 
     // As another editor I can see the locked document
     cy.autologin('editor2');
@@ -90,12 +92,9 @@ describe('Document locking', () => {
 
   it('As editor, I can unlock a locked page', function () {
     // As an editor I can add a document
+    cy.intercept('/**/@logout').as('logout');
+
     cy.autologin('editor1');
-    cy.createContent({
-      contentType: 'Document',
-      contentId: 'document',
-      contentTitle: 'Test document',
-    });
     cy.visit('/document');
     cy.waitForResourceToLoad('@navigation');
     cy.waitForResourceToLoad('@breadcrumbs');
@@ -111,6 +110,7 @@ describe('Document locking', () => {
     cy.waitForResourceToLoad('document');
 
     cy.visit('/logout');
+    cy.wait('@logout');
 
     // As another editor I can see the locked document
     cy.autologin('editor2');
@@ -135,6 +135,8 @@ describe('Document locking', () => {
       .clear()
       .type('New title by Editor 2');
     cy.get('#toolbar-save').click();
+    cy.waitForResourceToLoad('document');
+
     cy.url().should('eq', Cypress.config().baseUrl + '/document');
     cy.get('h1.documentFirstHeading').contains('New title by Editor 2');
   });
