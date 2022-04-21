@@ -1,6 +1,6 @@
 # Change Log
 
-## 5.5.1 (unreleased)
+## 5.5.1 (2022-04-21)
 
 ### Bugfix
 
