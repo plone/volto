@@ -290,7 +290,7 @@ export const widgets = {
 
 #### Selectable types
 
-If **selectableTypes** is set in `widgetOptions.pattern_options`, then only items whose content type has a name that is defined in `widgetOptions.pattern_options.selectableTypes` will be selectable.
+If `selectableTypes` is set in `widgetOptions.pattern_options`, then only items whose content type has a name that is defined in `widgetOptions.pattern_options.selectableTypes` will be selectable.
 
 ```jsx
 <ObjectBrowserWidget ... widgetOptions={{pattern_options:{selectableTypes:['News Item','Event']}}}>
