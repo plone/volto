@@ -2,15 +2,9 @@
 
 ## 5.6.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fix build for the docker image 6.0.0a4 in the `Makefile` command @sneridagh
-
-### Internal
 
 ## 5.6.0 (2022-04-21)
 
