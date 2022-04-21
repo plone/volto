@@ -5,6 +5,8 @@
 ### Added
 
 - Fix webpack-less-plugin import in storybook @nileshgulia1
+- Remove useless import in storybook `main.js` @sneridagh
+
 ### Changes
 
 ## 5.5.0 (2022-02-03)
