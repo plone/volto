@@ -159,7 +159,7 @@ let config = {
     hasWorkingCopySupport: false,
     maxUndoLevels: 200, // undo history size for the main form
     addonsInfo: addonsInfo,
-    useQuantaToolbar: true,
+    enableQuantaToolbar: true,
   },
   widgets: {
     ...widgetMapping,

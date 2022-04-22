@@ -160,12 +160,6 @@ const BlocksForm = (props) => {
     onChangeFormData(newFormData);
   };
 
-  const editBlockWrapper =
-    children ||
-    (props.isMainForm && config.settings.useQuantaToolbar
-      ? topLevelBlockWrapper
-      : defaultBlockWrapper);
-
   return (
     <div className="blocks-form" ref={ref}>
       <fieldset className="invisible" disabled={!editable}>
@@ -219,6 +213,14 @@ const BlocksForm = (props) => {
               type: child['@type'],
               editable,
             };
+            const editBlockWrapper =
+              children ||
+              (props.isMainForm &&
+              (config.settings.enableQuantaToolbar ||
+                blocksConfig[child['@type']].enableQuantaToolbar)
+                ? topLevelBlockWrapper
+                : defaultBlockWrapper);
+
             return editBlockWrapper(
               dragProps,
               <WrapperlessBlockEdit key={childId} {...blockProps} />,

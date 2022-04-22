@@ -248,8 +248,8 @@ export class EditComponent extends Component {
       this.props.data?.disableNewBlocks || this.props.detached;
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
     const { settings } = config;
-    const usesQuantaToolbar = settings.useQuantaToolbar; // && !usesClassicWrapper(this.props.data);
-    const PlugInsert = usesQuantaToolbar ? Plug : PassThrough;
+    const enableQuantaToolbar = settings.enableQuantaToolbar; // && !usesClassicWrapper(this.props.data);
+    const PlugInsert = enableQuantaToolbar ? Plug : PassThrough;
     const { selected, block } = this.props;
     const isSoftNewlineEvent = this.props.draftJsLibIsSoftNewlineEvent.default;
     const { RichUtils } = this.props.draftJs;
