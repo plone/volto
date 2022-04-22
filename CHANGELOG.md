@@ -51,6 +51,7 @@
 - Pass placeholder and isDisabled properties to EmailWidget and UrlWidget @mihaislobozeanu
 - Pass placeholder property to PasswordWidget and NumberWidget @mihaislobozeanu
 - Fix getVocabName when vocabNameOrURL is false @avoinea #2955, #2919
+- Fix folder content layout @SaraBianchi
 
 ### Internal
 
