@@ -1,10 +1,33 @@
 # Change Log
 
-## 5.5.1 (unreleased)
+## 5.6.2 (unreleased)
 
-### Added
+### Breaking
 
-### Changes
+### Feature
+
+### Bugfix
+
+### Internal
+
+## 5.6.1 (2022-04-21)
+
+### Bugfix
+
+- Fix build for the docker image 6.0.0a4 in the `Makefile` command @sneridagh
+
+## 5.6.0 (2022-04-21)
+
+### Feature
+
+- Use `plone/plone-backend:6.0.0a4` in `Makefile` for new projects template for starting test backend @sneridagh
+
+## 5.5.1 (2022-04-21)
+
+### Bugfix
+
+- Fix webpack-less-plugin import in storybook @nileshgulia1
+- Remove useless import in storybook `main.js` @sneridagh
 
 ## 5.5.0 (2022-02-03)
 

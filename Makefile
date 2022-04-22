@@ -82,7 +82,7 @@ test:
 
 .PHONY: storybook-build
 storybook-build:
-	yarn build-storybook -o docs/build/storybook
+	yarn build-storybook -o docs/_build/storybook
 
 bin/python:
 	python3 -m venv . || virtualenv --clear --python=python3 .
@@ -93,7 +93,7 @@ bin/python:
 docs-clean:  ## Clean current and legacy docs build directories, and Python virtual environment
 	cd $(DOCS_DIR) && rm -rf $(BUILDDIR)/
 	rm -rf bin include lib
-	rm -rf docs/build
+	rm -rf docs/_build
 
 .PHONY: docs-html
 docs-html: bin/python  ## Build html

@@ -1,9 +1,9 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "A guide to lazy-loading libraries in Volto."
+  "property=og:description": "A guide to lazy-loading libraries in Volto."
+  "property=og:title": "Lazy loading"
+  "keywords": "Volto, Plone, frontend, React, lazy loading, useLazyLibs hook"
 ---
 
 # Lazy loading
@@ -34,8 +34,8 @@ You can find the complete `@loadable/component` documentation here: https://load
 
 You can check the code splitting state by using the included bundle analyzer:
 
-```bash
-$ yarn analyze
+```shell
+yarn analyze
 ```
 
 A browser will open with the bundle inspector.
