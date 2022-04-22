@@ -1,6 +1,6 @@
 /**
- * View video block.
- * @module components/manage/Blocks/Video/View
+ * Body video block.
+ * @module components/manage/Blocks/Video/Body
  */
 
 import React from 'react';
@@ -11,11 +11,11 @@ import cx from 'classnames';
 import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
 
 /**
- * View video block class.
- * @class View
+ * Body video block class.
+ * @class Body
  * @extends Component
  */
-const View = ({ data, isEditMode }) => {
+const Body = ({ data, isEditMode }) => {
   let placeholder = data.preview_image
     ? isInternalURL(data.preview_image)
       ? `${flattenToAppURL(data.preview_image)}/@@images/image`
@@ -132,8 +132,8 @@ const View = ({ data, isEditMode }) => {
  * @property {Object} propTypes Property types.
  * @static
  */
-View.propTypes = {
+Body.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-export default View;
+export default Body;
