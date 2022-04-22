@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Used UniversalLink and PreviewImage components where needed, to right handle link and images. @giuliaghisini
+
 ### Internal
 
 ### Documentation
