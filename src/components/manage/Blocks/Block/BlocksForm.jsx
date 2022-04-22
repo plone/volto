@@ -54,6 +54,7 @@ const BlocksForm = (props) => {
     isMainForm = true,
     blocksConfig = config.blocks.blocksConfig,
     editable = true,
+    direction,
   } = props;
 
   const blockList = getBlocks(properties);
@@ -170,6 +171,7 @@ const BlocksForm = (props) => {
       <fieldset className="invisible" disabled={!editable}>
         <DragDropList
           childList={blockList}
+          direction={direction}
           onMoveItem={(result) => {
             const { source, destination } = result;
             if (!destination) {
