@@ -20,6 +20,10 @@
 - Make the parseDateTime function to handle only date as well @iFlameing
 - Fix ContextNavigation component with Link type objects @UnaiEtxaburu #3232
 
+### Documentation
+
+- Added a `selectableTypes` example to the `ObjectBrowserWidget` storybook @JeffersonBledsoe #3255
+
 ### Internal
 
 - Upgrade react-image-gallery to latest to fix a11y problem @sneridagh
