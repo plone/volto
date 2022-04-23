@@ -506,6 +506,7 @@ const blocksConfig = {
       view: [],
     },
     allowedBlocks: ['image', 'listing', 'slate', 'text', 'teaser'],
+    // enableQuantaToolbar: true,
   },
   column: {
     id: 'column',
@@ -524,6 +525,7 @@ const blocksConfig = {
       view: [],
     },
     allowedBlocks: ['image', 'listing', 'slate', 'text', 'teaser'],
+    enableQuantaToolbar: true,
   },
   teaser: {
     id: 'teaser',

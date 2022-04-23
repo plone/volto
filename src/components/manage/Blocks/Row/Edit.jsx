@@ -10,6 +10,7 @@ import { v4 as uuid } from 'uuid';
 import cx from 'classnames';
 
 import TemplateChooser from '@plone/volto/components/manage/TemplateChooser/TemplateChooser';
+import QuantaEditBlockWrapper from '../Block/QuantaEditBlockWrapper';
 
 import addSVG from '@plone/volto/icons/add.svg';
 import configSVG from '@plone/volto/icons/configuration.svg';
@@ -115,7 +116,7 @@ const RowEdit = (props) => {
   );
 
   const direction = data['@type'] === 'row' ? 'horizontal' : 'vertical';
-
+  console.log(selected);
   return (
     <div
       className={cx({
@@ -216,9 +217,9 @@ const RowEdit = (props) => {
         pathname={pathname}
       >
         {({ draginfo }, editBlock, blockProps) => (
-          <EditBlockWrapper draginfo={draginfo} blockProps={blockProps}>
+          <QuantaEditBlockWrapper draginfo={draginfo} blockProps={blockProps}>
             {editBlock}
-          </EditBlockWrapper>
+          </QuantaEditBlockWrapper>
         )}
       </BlocksForm>
       <SidebarPortal selected={selected}>

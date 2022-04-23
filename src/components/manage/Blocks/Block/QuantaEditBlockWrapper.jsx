@@ -53,7 +53,7 @@ const QuantaEditBlockWrapper = (props) => {
     : includes(config.blocks.requiredBlocks, type);
 
   // const visibleHandler = selected && !hideHandler(data);
-
+  console.log(selected);
   return (
     <div
       ref={draginfo.innerRef}
@@ -61,6 +61,7 @@ const QuantaEditBlockWrapper = (props) => {
       className={cx(
         'quanta-block',
         `quanta-block-editor-${data['@type']}`,
+        `block-editor-${data['@type']}`,
         classNames,
       )}
     >
