@@ -38,7 +38,6 @@ project and start hacking!
 
 ```{toctree}
 :maxdepth: 2
-:hidden: true
 
 getting-started/index
 configuration/index

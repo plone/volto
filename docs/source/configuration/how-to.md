@@ -118,7 +118,7 @@ The `addonRoutes` is a list of routes declaration, to be used as child
 sub-routes for the App component. A route declaration looks like this (an
 example):
 
-```
+```js
   {
     path: '/**/chat',
     component: Chat,
@@ -130,7 +130,7 @@ can use them to override the existing routes, as well. See `src/routes.js` for
 more details. In its configuration, an addon would push additional routes to
 this data structure:
 
-```
+```js
 config.addonRoutes.push({ path: '/**/chat', component: Chat });
 ```
 

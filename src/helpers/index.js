@@ -60,6 +60,7 @@ export BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 export ScrollToTop from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
 export {
   getBoolean,
+  getVocabName,
   getVocabFromHint,
   getVocabFromField,
   getVocabFromItems,
@@ -79,6 +80,7 @@ export {
   parseDateTime,
   normalizeLanguageName,
   hasApiExpander,
+  replaceItemOfArray,
 } from '@plone/volto/helpers/Utils/Utils';
 export { messages } from './MessageLabels/MessageLabels';
 export {
