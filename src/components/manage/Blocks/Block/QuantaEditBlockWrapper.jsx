@@ -5,7 +5,7 @@ import includes from 'lodash/includes';
 import isBoolean from 'lodash/isBoolean';
 import { defineMessages, useIntl } from 'react-intl';
 import { BlockChooserButton, Icon } from '@plone/volto/components';
-import { blockHasValue } from '@plone/volto/helpers';
+// import { blockHasValue } from '@plone/volto/helpers';
 import {
   Pluggable,
   Plug,
@@ -17,17 +17,27 @@ import config from '@plone/volto/registry';
 
 import dragSVG from '@plone/volto/icons/drag.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
+import insertBeforeSVG from '@plone/volto/icons/row-before.svg';
+import insertAfterSVG from '@plone/volto/icons/row-after.svg';
 
 const messages = defineMessages({
-  delete: {
-    id: 'delete',
-    defaultMessage: 'delete',
+  remove: {
+    id: 'remove',
+    defaultMessage: 'Remove block',
+  },
+  insertBefore: {
+    id: 'insertBefore',
+    defaultMessage: 'Add block before',
+  },
+  insertAfter: {
+    id: 'insertAfter',
+    defaultMessage: 'Add block after',
   },
 });
 
-const hideHandler = (data) => {
-  return !!data.fixed || !blockHasValue(data);
-};
+// const hideHandler = (data) => {
+//   return !!data.fixed || !blockHasValue(data);
+// };
 
 const QuantaToolbar = (props) => {
   // const pluggableContext = React.useContext(PluggableContext);
@@ -42,7 +52,7 @@ const QuantaEditBlockWrapper = (props) => {
     ? data.required
     : includes(config.blocks.requiredBlocks, type);
 
-  const visibleHandler = selected && !hideHandler(data);
+  // const visibleHandler = selected && !hideHandler(data);
 
   return (
     <div
@@ -56,26 +66,23 @@ const QuantaEditBlockWrapper = (props) => {
     >
       {selected ? (
         <QuantaToolbar {...props}>
-          <Button
-            style={{
-              // avoid react-dnd to complain
-              visibility: visibleHandler ? 'visible' : 'visible',
-            }}
-            {...draginfo.dragHandleProps}
-            icon
-            basic
-          >
-            <Icon name={dragSVG} size="18px" />
+          <Button {...draginfo.dragHandleProps} className="drag handler" icon>
+            <Icon name={dragSVG} size="20px" />
           </Button>
 
           <Pluggable
             name={`block-toolbar-required:${block}`}
             params={blockProps}
           />
-          <Pluggable name={`block-toolbar-main:${block}`} params={blockProps} />
+          <div className="block-toolbar-main">
+            <Pluggable
+              name={`block-toolbar-main:${block}`}
+              params={blockProps}
+            />
+          </div>
           <PluggableMenuSection
             name={`block-toolbar-extra:${block}`}
-            maxSizeBeforeCollapse={3}
+            maxSizeBeforeCollapse={1}
             params={blockProps}
           />
 
@@ -90,39 +97,77 @@ const QuantaEditBlockWrapper = (props) => {
                 blockProps.onSelectBlock(blockProps.onInsertBlock(id, value));
               }}
               className="quanta-block-add-button"
+              size="24px"
             />
           </Plug>
           <Plug
             pluggable={`block-toolbar-extra:${block}`}
-            id="delete-button"
+            id="insert-before-button"
             dependencies={[blockProps]}
           >
             <>
-              {!required ? (
+              <Button
+                aria-label={intl.formatMessage(messages.insertBefore)}
+                icon
+                basic
+                onClick={() =>
+                  blockProps.onInsertBlock(blockProps.id, {
+                    '@type': config.settings.defaultBlockType,
+                  })
+                }
+                className="insert-before-button"
+              >
+                <Icon name={insertBeforeSVG} size="18px" />
+                {intl.formatMessage(messages.insertBefore)}
+              </Button>
+            </>
+          </Plug>
+          <Plug
+            pluggable={`block-toolbar-extra:${block}`}
+            id="insert-after-button"
+            dependencies={[blockProps]}
+          >
+            <Button
+              aria-label={intl.formatMessage(messages.insertAfter)}
+              icon
+              basic
+              onClick={() =>
+                blockProps.onInsertBlockAfter(blockProps.id, {
+                  '@type': config.settings.defaultBlockType,
+                })
+              }
+              className="insert-after-button"
+            >
+              <Icon name={insertAfterSVG} size="18px" />
+              {intl.formatMessage(messages.insertAfter)}
+            </Button>
+          </Plug>
+
+          {!required ? (
+            <Plug
+              pluggable={`block-toolbar-extra:${block}`}
+              id="delete-button"
+              dependencies={[blockProps]}
+            >
+              <>
                 <Button
                   icon
                   basic
                   onClick={() => onDeleteBlock(block)}
                   className="delete-button"
-                  aria-label={intl.formatMessage(messages.delete)}
+                  aria-label={intl.formatMessage(messages.remove)}
                 >
                   <Icon name={trashSVG} size="18px" />
+                  {intl.formatMessage(messages.remove)}
                 </Button>
-              ) : null}
-            </>
-          </Plug>
+              </>
+            </Plug>
+          ) : null}
         </QuantaToolbar>
       ) : (
         <div {...draginfo.dragHandleProps} style={{ display: 'none' }}></div>
       )}
       <div className={`ui drag block inner ${type}`}>{children}</div>
-      <Plug
-        pluggable={`block-toolbar-main:${block}`}
-        id="mutate-block-button-classic"
-        dependencies={[{ ...blockProps }]}
-      >
-        <></>
-      </Plug>
     </div>
   );
 };

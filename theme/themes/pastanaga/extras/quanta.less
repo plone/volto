@@ -3,22 +3,156 @@
 
 @import (multiple, reference, optional) '../../theme.config';
 
+@smoke: var(--color--grey-smoke, #e4e8ec);
+@denim: var(--color--blue-denim, #021322);
+@iron: var(--color--grey-iron, #4a5b68);
+
+// Put this in a mixins
+.button-reset {
+  padding: 0;
+  border: 0;
+  margin: 0;
+  background: transparent;
+  color: @iron;
+  cursor: pointer;
+  text-align: initial;
+
+  &:focus {
+    outline: none;
+  }
+}
+
 .quanta-block-toolbar {
   position: absolute;
   z-index: 10;
   display: flex;
-  padding: 4px;
+  height: 48px;
   background-color: rgba(255, 255, 255, 0.975);
-  border-radius: 2px;
+  border-radius: 6px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.05);
-  transform: translate(0, -52px);
+  transform: translate(-8px, -57px);
 
-  .ui.basic.button {
-    padding: 8px 5px;
+  .button-wrapper {
+    display: inline-flex;
+    align-items: center;
   }
 
-  .ui.basic.button:hover {
-    background: transparent !important;
+  [class^='block-toolbar-'] {
+    display: flex;
+    padding-right: 7px;
+    padding-left: 7px;
+
+    .button-wrapper {
+      > .ui.button {
+        .button-reset();
+        padding: 6px;
+      }
+
+      &:hover > .ui.button {
+        background-color: @smoke !important;
+        color: @denim !important;
+      }
+    }
+  }
+
+  .block-toolbar-main {
+    border-right: 1px solid @smoke;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  .quanta-block-add-button {
+    .button-reset();
+    padding: 6px;
+    border-radius: 6px;
+
+    &:hover {
+      background-color: @smoke !important;
+      color: @denim !important;
+    }
+  }
+
+  // .ui.basic.button:hover {
+  //   background: transparent !important;
+  // }
+
+  .drag.handler.button {
+    .button-reset();
+
+    padding-right: 5px;
+    padding-left: 5px;
+
+    background-color: @smoke;
+    border-radius: 6px 0 0 6px;
+
+    cursor: grab;
+
+    font-weight: normal;
+    text-shadow: none !important;
+    text-transform: none;
+  }
+
+  .group.button.block-toolbar-extra {
+    .button-reset();
+    padding: 6px;
+    margin-right: 7px;
+    margin-left: 7px;
+    border-radius: 6px;
+  }
+
+  .ui.dropdown.grouped-buttons {
+    display: inline-flex;
+
+    &.active .group.button,
+    &:hover .group.button {
+      background-color: @smoke;
+      color: @denim;
+    }
+
+    .menu {
+      top: calc(100% - 6px);
+      border: none;
+      background-color: #fff;
+      border-radius: 6px;
+      box-shadow: 0px 3px 6px rgba(2, 19, 34, 0.12),
+        0px 2px 4px rgba(2, 19, 34, 0.06);
+
+      .ui.basic.button {
+        display: flex;
+        align-items: center;
+
+        svg {
+          margin-right: 10px !important;
+        }
+      }
+
+      .item,
+      .item .button {
+        &:hover {
+          background-color: @smoke !important;
+          color: @denim !important;
+        }
+      }
+
+      .item:first-child {
+        border-radius: 6px 6px 0 0;
+      }
+
+      .item:last-child {
+        border-radius: 0 0 6px 6px;
+      }
+
+      .item.delete-button {
+        border-top: 1px solid @smoke;
+      }
+    }
+  }
+
+  .ui.upward.dropdown > .menu {
+    top: auto;
+    bottom: calc(100% - 6px);
   }
 }
 

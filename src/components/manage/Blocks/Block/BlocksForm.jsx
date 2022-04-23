@@ -5,6 +5,7 @@ import { getBlocks } from '@plone/volto/helpers';
 import {
   addBlock,
   insertBlock,
+  insertBlockAfter,
   changeBlock,
   deleteBlock,
   moveBlock,
@@ -133,6 +134,17 @@ const BlocksForm = (props) => {
     return newId;
   };
 
+  const onInsertBlockAfter = (id, value, current) => {
+    const [newId, newFormData] = insertBlockAfter(
+      properties,
+      id,
+      value,
+      current,
+    );
+    onChangeFormData(newFormData);
+    return newId;
+  };
+
   const onAddBlock = (type, index) => {
     if (editable) {
       const [id, newFormData] = addBlock(properties, type, index);
@@ -195,6 +207,7 @@ const BlocksForm = (props) => {
               manage,
               onAddBlock,
               onInsertBlock,
+              onInsertBlockAfter,
               onChangeBlock,
               onChangeField,
               onChangeFormData,

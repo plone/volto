@@ -9,7 +9,6 @@ import { compose } from 'redux';
 
 import { defineMessages, injectIntl } from 'react-intl';
 import { includes, isEqual } from 'lodash';
-import { Plug } from '@plone/volto/components/manage/Pluggable';
 
 import config from '@plone/volto/registry';
 
@@ -17,7 +16,6 @@ import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { BlockChooserButton } from '@plone/volto/components';
 
 import loadable from '@loadable/component';
-const PassThrough = (props) => props.children;
 
 const Editor = loadable(() => import('draft-js-plugins-editor'));
 
@@ -248,9 +246,10 @@ export class EditComponent extends Component {
       this.props.data?.disableNewBlocks || this.props.detached;
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
     const { settings } = config;
-    const enableQuantaToolbar = settings.enableQuantaToolbar; // && !usesClassicWrapper(this.props.data);
-    const PlugInsert = enableQuantaToolbar ? Plug : PassThrough;
-    const { selected, block } = this.props;
+    const isQuantaEnabled =
+      settings.enableQuantaToolbar ||
+      this.prosblocksConfig[this.props.type].enableQuantaToolbar; // && !usesClassicWrapper(this.props.data);
+    const { selected } = this.props;
     const isSoftNewlineEvent = this.props.draftJsLibIsSoftNewlineEvent.default;
     const { RichUtils } = this.props.draftJs;
 
@@ -334,28 +333,21 @@ export class EditComponent extends Component {
           }}
         />
         <InlineToolbar />
-        <PlugInsert
-          pluggable={`block-toolbar-main:${block}`}
-          id="mutate-block-button-classic"
-          dependencies={[selected]}
-        >
-          <>
-            {selected ? (
-              <BlockChooserButton
-                data={this.props.data}
-                block={this.props.block}
-                onInsertBlock={(id, value) => {
-                  this.props.onSelectBlock(this.props.onInsertBlock(id, value));
-                }}
-                allowedBlocks={this.props.allowedBlocks}
-                blocksConfig={this.props.blocksConfig}
-                size="24px"
-                className="block-add-button"
-                properties={this.props.properties}
-              />
-            ) : null}
-          </>
-        </PlugInsert>
+
+        {selected && !isQuantaEnabled ? (
+          <BlockChooserButton
+            data={this.props.data}
+            block={this.props.block}
+            onInsertBlock={(id, value) => {
+              this.props.onSelectBlock(this.props.onInsertBlock(id, value));
+            }}
+            allowedBlocks={this.props.allowedBlocks}
+            blocksConfig={this.props.blocksConfig}
+            size="24px"
+            className="block-add-button"
+            properties={this.props.properties}
+          />
+        ) : null}
       </>
     );
   }

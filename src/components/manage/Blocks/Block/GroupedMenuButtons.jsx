@@ -3,13 +3,15 @@ import { Button, Dropdown } from 'semantic-ui-react';
 import moreSVG from '@plone/volto/icons/more.svg';
 import { Icon } from '@plone/volto/components';
 import config from '@plone/volto/registry';
+import cx from 'classnames';
 
 const GroupedMenuButtons = ({
   items,
   maxSizeBeforeCollapse = 3,
   params = {},
-  moreIcon = moreSVG,
+  groupIcon = moreSVG,
   toolbarGroups = config.blocks.toolbarGroups,
+  className,
 }) => {
   const groups = new Map();
   const seen = [];
@@ -40,15 +42,19 @@ const GroupedMenuButtons = ({
     .forEach((entries) => (allItems = [...allItems, ...entries]));
   allItems = [...allItems, ...ungrouped];
 
-  return allItems.length > maxSizeBeforeCollapse ? (
+  const isDropdown = allItems.length > maxSizeBeforeCollapse;
+
+  return isDropdown ? (
     <Dropdown
       item
       icon={
-        <Button basic icon>
-          <Icon name={moreIcon} size="18px" color="#826a6a" />
-        </Button>
+        <div className="button-wrapper">
+          <Button icon className={cx('group', [className])}>
+            <Icon name={groupIcon} size="24px" />
+          </Button>
+        </div>
       }
-      className=""
+      className={cx('grouped-buttons', [className])}
     >
       <Dropdown.Menu className="right">
         <>
@@ -57,7 +63,8 @@ const GroupedMenuButtons = ({
             const { title } = config.blocks.toolbarGroups.find(
               (g) => g.id === groupName,
             );
-            return (
+
+            return results.length > 0 ? (
               <>
                 <Dropdown.Header content={title} />
                 <Dropdown.Menu scrolling>
@@ -66,13 +73,14 @@ const GroupedMenuButtons = ({
                   ))}
                 </Dropdown.Menu>
               </>
-            );
+            ) : null;
           })}
           {ungrouped.length > 0 ? (
             <>
-              <Dropdown.Divider />
               {ungrouped.map(([res, id]) => (
-                <React.Fragment key={id}>{res}</React.Fragment>
+                <Dropdown.Item key={id} className={id}>
+                  {res}
+                </Dropdown.Item>
               ))}
             </>
           ) : (

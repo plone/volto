@@ -11,6 +11,7 @@ const PluggableMenuSection = (props) => {
           items={pluggables}
           maxSizeBeforeCollapse={maxSizeBeforeCollapse}
           params={params}
+          className={name.split(':').shift()}
         />
       )}
     </Pluggable>
