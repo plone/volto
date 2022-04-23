@@ -1,10 +1,11 @@
 import React from 'react';
-import EditBlock from './Edit';
+import WrapperlessBlockEdit from './Edit';
 import { DragDropList } from '@plone/volto/components';
 import { getBlocks } from '@plone/volto/helpers';
 import {
   addBlock,
   insertBlock,
+  insertBlockAfter,
   changeBlock,
   deleteBlock,
   moveBlock,
@@ -16,7 +17,24 @@ import EditBlockWrapper from './EditBlockWrapper';
 import { setSidebarTab } from '@plone/volto/actions';
 import { useDispatch } from 'react-redux';
 import { useDetectClickOutside } from '@plone/volto/helpers';
+import QuantaEditBlockWrapper from './QuantaEditBlockWrapper';
 import config from '@plone/volto/registry';
+
+const topLevelBlockWrapper = ({ draginfo }, editBlock, blockProps) => {
+  return (
+    <QuantaEditBlockWrapper draginfo={draginfo} blockProps={blockProps}>
+      {editBlock}
+    </QuantaEditBlockWrapper>
+  );
+};
+
+const defaultBlockWrapper = ({ draginfo }, editBlock, blockProps) => {
+  return (
+    <EditBlockWrapper draginfo={draginfo} blockProps={blockProps}>
+      {editBlock}
+    </EditBlockWrapper>
+  );
+};
 
 const BlocksForm = (props) => {
   const {
@@ -116,6 +134,17 @@ const BlocksForm = (props) => {
     return newId;
   };
 
+  const onInsertBlockAfter = (id, value, current) => {
+    const [newId, newFormData] = insertBlockAfter(
+      properties,
+      id,
+      value,
+      current,
+    );
+    onChangeFormData(newFormData);
+    return newId;
+  };
+
   const onAddBlock = (type, index) => {
     if (editable) {
       const [id, newFormData] = addBlock(properties, type, index);
@@ -143,19 +172,12 @@ const BlocksForm = (props) => {
     onChangeFormData(newFormData);
   };
 
-  const defaultBlockWrapper = ({ draginfo }, editBlock, blockProps) => (
-    <EditBlockWrapper draginfo={draginfo} blockProps={blockProps}>
-      {editBlock}
-    </EditBlockWrapper>
-  );
-
-  const editBlockWrapper = children || defaultBlockWrapper;
-
   return (
     <div className="blocks-form" ref={ref}>
       <fieldset className="invisible" disabled={!editable}>
         <DragDropList
           childList={blockList}
+          direction={direction}
           onMoveItem={(result) => {
             const { source, destination } = result;
             if (!destination) {
@@ -169,7 +191,6 @@ const BlocksForm = (props) => {
             onChangeFormData(newFormData);
             return true;
           }}
-          direction={direction}
         >
           {(dragProps) => {
             const { child, childId, index } = dragProps;
@@ -186,6 +207,7 @@ const BlocksForm = (props) => {
               manage,
               onAddBlock,
               onInsertBlock,
+              onInsertBlockAfter,
               onChangeBlock,
               onChangeField,
               onChangeFormData,
@@ -204,9 +226,17 @@ const BlocksForm = (props) => {
               type: child['@type'],
               editable,
             };
+            const editBlockWrapper =
+              children ||
+              (props.isMainForm &&
+              (config.settings.enableQuantaToolbar ||
+                blocksConfig[child['@type']].enableQuantaToolbar)
+                ? topLevelBlockWrapper
+                : defaultBlockWrapper);
+
             return editBlockWrapper(
               dragProps,
-              <EditBlock key={childId} {...blockProps} />,
+              <WrapperlessBlockEdit key={childId} {...blockProps} />,
               blockProps,
             );
           }}

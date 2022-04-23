@@ -99,6 +99,7 @@ export Workflow from '@plone/volto/components/manage/Workflow/Workflow';
 export Messages from '@plone/volto/components/manage/Messages/Messages';
 export BlockChooser from '@plone/volto/components/manage/BlockChooser/BlockChooser';
 export BlockChooserButton from '@plone/volto/components/manage/BlockChooser/BlockChooserButton';
+export BlockToolbarItem from '@plone/volto/components/manage/Blocks/Block/BlockToolbarItem';
 export Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 export Sidebar from '@plone/volto/components/manage/Sidebar/Sidebar';
 export SidebarPopup from '@plone/volto/components/manage/Sidebar/SidebarPopup';

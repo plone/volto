@@ -9,6 +9,7 @@ import { compose } from 'redux';
 
 import { defineMessages, injectIntl } from 'react-intl';
 import { includes, isEqual } from 'lodash';
+
 import config from '@plone/volto/registry';
 
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
@@ -244,8 +245,11 @@ export class EditComponent extends Component {
     const disableNewBlocks =
       this.props.data?.disableNewBlocks || this.props.detached;
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
-    // const { settings } = config;
-
+    const { settings } = config;
+    const isQuantaEnabled =
+      settings.enableQuantaToolbar ||
+      this.props.blocksConfig[this.props.type].enableQuantaToolbar; // && !usesClassicWrapper(this.props.data);
+    const { selected } = this.props;
     const isSoftNewlineEvent = this.props.draftJsLibIsSoftNewlineEvent.default;
     const { RichUtils } = this.props.draftJs;
 
@@ -329,7 +333,8 @@ export class EditComponent extends Component {
           }}
         />
         <InlineToolbar />
-        {this.props.selected && (
+
+        {selected && !isQuantaEnabled ? (
           <BlockChooserButton
             data={this.props.data}
             block={this.props.block}
@@ -342,7 +347,7 @@ export class EditComponent extends Component {
             className="block-add-button"
             properties={this.props.properties}
           />
-        )}
+        ) : null}
       </>
     );
   }

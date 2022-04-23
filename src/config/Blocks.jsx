@@ -547,10 +547,16 @@ const requiredBlocks = ['title'];
 const initialBlocks = {};
 const initialBlocksFocus = {}; //{Document:'title'}
 
+const toolbarGroups = [
+  { id: 'slot', title: 'Slot' },
+  { id: 'misc', title: 'Miscellaneous' },
+];
+
 export {
   groupBlocksOrder,
   requiredBlocks,
   blocksConfig,
   initialBlocks,
   initialBlocksFocus,
+  toolbarGroups,
 };

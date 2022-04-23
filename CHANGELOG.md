@@ -2,11 +2,20 @@
 
 ## 15.4.2 (unreleased)
 
+### Experimental
+
+- First working version of the Quanta Toolbar is available. This implementation is marked as experimental. The components, API and the styling are subject to change *without issuing a breaking change*. You can start using it in your projects and add-ons, but taking this into account.
+
+This feature is "opt-in", globally using the `config.settings.enableQuantaToolbar` setting or block-by-block using the `enableQuantaToolbar` key in the block config itself. So you can test drive it or even enable it for one block only.
+
+This is done because this feature needs to be battle tested in a number of scenarios, so we need that available without having to use alpha versions around, and merging hell afterwards.
+
 ### Breaking
 
 ### Feature
 
 ### Bugfix
+
 - Fixed edit internal link and image url in this blocks: image block, leadimage block, video block, objectBrowser. In objectBrowser, if pasted url was internal, it wasn't flatted and wass handled from Plone as an external. @giuliaghisini
 
 ### Internal

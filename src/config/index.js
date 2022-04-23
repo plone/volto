@@ -17,6 +17,7 @@ import {
   blocksConfig,
   initialBlocks,
   initialBlocksFocus,
+  toolbarGroups,
 } from './Blocks';
 import { components } from './Components';
 import { loadables } from './Loadables';
@@ -158,6 +159,7 @@ let config = {
     hasWorkingCopySupport: false,
     maxUndoLevels: 200, // undo history size for the main form
     addonsInfo: addonsInfo,
+    enableQuantaToolbar: false,
   },
   widgets: {
     ...widgetMapping,
@@ -175,6 +177,7 @@ let config = {
     groupBlocksOrder,
     initialBlocks,
     initialBlocksFocus,
+    toolbarGroups,
     showEditBlocksInBabelView: false,
   },
   addonRoutes: [],

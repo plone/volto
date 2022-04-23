@@ -263,6 +263,43 @@ export function insertBlock(formData, id, value, current = {}) {
 }
 
 /**
+ * Insert new block after another block
+ * @function insertBlockAfter
+ * @param {Object} formData Form data
+ * @param {string} id Insert new after before the block with this id
+ * @param {number} value New block's value
+ * @return {Array} New block id, New form data
+ */
+export function insertBlockAfter(formData, id, value, current = {}) {
+  const blocksFieldname = getBlocksFieldname(formData);
+  const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
+  const index = formData[blocksLayoutFieldname].items.indexOf(id);
+
+  const newBlockId = uuid();
+  return [
+    newBlockId,
+    {
+      ...formData,
+      [blocksFieldname]: {
+        ...formData[blocksFieldname],
+        [id]: {
+          ...formData[blocksFieldname][id],
+          ...current,
+        },
+        [newBlockId]: value || null,
+      },
+      [blocksLayoutFieldname]: {
+        items: [
+          ...formData[blocksLayoutFieldname].items.slice(0, index + 1),
+          newBlockId,
+          ...formData[blocksLayoutFieldname].items.slice(index + 1),
+        ],
+      },
+    },
+  ];
+}
+
+/**
  * Change block
  * @function changeBlock
  * @param {Object} formData Form data

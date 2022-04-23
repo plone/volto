@@ -31,6 +31,37 @@ const UndoToolbar = ({ state, onUndoRedo, maxUndoLevels, enableHotKeys }) => {
     },
   );
 
+  const handleKeys = React.useCallback(
+    (event) => {
+      const keyName = event.key;
+
+      if (keyName === 'Control' || keyName === 'Meta') {
+        // do not alert when only Control key is pressed.
+        return;
+      }
+      if (event.ctrlKey || event.metaKey) {
+        if (keyName === 'z') {
+          event.preventDefault();
+          event.stopPropagation();
+          doUndo();
+        } else if (keyName === 'y') {
+          event.preventDefault();
+          event.stopPropagation();
+          doRedo();
+        }
+      } else {
+        return;
+      }
+    },
+    [doUndo, doRedo],
+  );
+
+  React.useEffect(() => {
+    if (!enableHotKeys) return;
+    document.addEventListener('keydown', handleKeys);
+    return () => document.removeEventListener('keydown', handleKeys);
+  }, [enableHotKeys, handleKeys]);
+
   return (
     <>
       <Plug
