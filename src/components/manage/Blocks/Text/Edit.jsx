@@ -248,7 +248,7 @@ export class EditComponent extends Component {
     const { settings } = config;
     const isQuantaEnabled =
       settings.enableQuantaToolbar ||
-      this.prosblocksConfig[this.props.type].enableQuantaToolbar; // && !usesClassicWrapper(this.props.data);
+      this.props.blocksConfig[this.props.type].enableQuantaToolbar; // && !usesClassicWrapper(this.props.data);
     const { selected } = this.props;
     const isSoftNewlineEvent = this.props.draftJsLibIsSoftNewlineEvent.default;
     const { RichUtils } = this.props.draftJs;
