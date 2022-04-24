@@ -13,6 +13,8 @@
 
 ### Documentation
 
+- Add labels for Intersphinx. @stevepiercy
+
 ## 15.4.1 (2022-04-11)
 
 ### Bugfix
