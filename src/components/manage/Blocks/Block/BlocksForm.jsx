@@ -16,6 +16,7 @@ import EditBlockWrapper from './EditBlockWrapper';
 import { setSidebarTab } from '@plone/volto/actions';
 import { useDispatch } from 'react-redux';
 import { useDetectClickOutside } from '@plone/volto/helpers';
+import BlocksDnDList from '../../DragDropList/BlocksDnDList';
 import config from '@plone/volto/registry';
 
 const BlocksForm = (props) => {
@@ -37,6 +38,7 @@ const BlocksForm = (props) => {
     isMainForm = true,
     blocksConfig = config.blocks.blocksConfig,
     editable = true,
+    blocksFormId,
   } = props;
 
   const blockList = getBlocks(properties);
@@ -153,7 +155,8 @@ const BlocksForm = (props) => {
   return (
     <div className="blocks-form" ref={ref}>
       <fieldset className="invisible" disabled={!editable}>
-        <DragDropList
+        <BlocksDnDList
+          droppableId={blocksFormId}
           childList={blockList}
           onMoveItem={(result) => {
             const { source, destination } = result;
@@ -208,7 +211,7 @@ const BlocksForm = (props) => {
               blockProps,
             );
           }}
-        </DragDropList>
+        </BlocksDnDList>
       </fieldset>
     </div>
   );

@@ -8,6 +8,7 @@ import move from 'lodash-move';
 import { v4 as uuid } from 'uuid';
 import config from '@plone/volto/registry';
 import { applySchemaEnhancer } from '@plone/volto/helpers';
+import { insertInArray, removeFromArray } from '../Utils/Utils';
 
 /**
  * Get blocks field.
@@ -103,6 +104,58 @@ export function moveBlock(formData, source, destination) {
       items: move(formData[blocksLayoutFieldname].items, source, destination),
     },
   };
+}
+
+/**
+ * Move block to different location across droppables inside a nested blocks/blocks_layout pair
+ * @function moveBlock
+ * @param {Object} formData Form data
+ * @param {number} source source information, contain the droppableId and the index
+ * @param {number} destination destination information, contain the droppableId and the index
+ * @return {Object} New form data
+ */
+export function moveDataAcrossDropables(formData, source, destination) {
+  const blocksFieldName = getBlocksFieldname(formData);
+  const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
+  let sourceData;
+  if (source.droppableId === 'main') {
+    sourceData = {
+      ...formData.blocks[formData.blocks_layout.items[source.index]],
+    };
+
+    return {
+      ...formData,
+      [blocksFieldName]: {
+        ...formData[blocksFieldName],
+        [destination.droppableId]: {
+          ...formData[blocksFieldName][destination.droppableId],
+          data: {
+            ...formData[blocksFieldName][destination.droppableId].data,
+            blocks: {
+              ...formData[blocksFieldName][destination.droppableId].data.blocks,
+              [formData.blocks_layout.items[source.index]]: sourceData,
+            },
+            blocks_layout: {
+              ...formData[blocksFieldName][destination.droppableId].data
+                .blocks_layout,
+              items: insertInArray(
+                formData[blocksFieldName][destination.droppableId].data
+                  .blocks_layout.items,
+                formData.blocks_layout.items[source.index],
+                destination.index,
+              ),
+            },
+          },
+        },
+      },
+      [blocksLayoutFieldname]: {
+        items: removeFromArray(
+          formData[blocksLayoutFieldname].items,
+          source.index,
+        ),
+      },
+    };
+  }
 }
 
 /**
