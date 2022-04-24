@@ -8,6 +8,7 @@ import move from 'lodash-move';
 import { v4 as uuid } from 'uuid';
 import config from '@plone/volto/registry';
 import { applySchemaEnhancer } from '@plone/volto/helpers';
+import { insertInArray, removeFromArray } from '../Utils/Utils';
 
 /**
  * Get blocks field.
@@ -103,6 +104,51 @@ export function moveBlock(formData, source, destination) {
       items: move(formData[blocksLayoutFieldname].items, source, destination),
     },
   };
+}
+
+export function moveDataAcrossDropables(formData, source, destination) {
+  // Save the source data
+  const blocksFieldName = getBlocksFieldname(formData);
+  const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
+  let sourceData;
+  if (source.droppableId === 'main') {
+    sourceData = {
+      ...formData.blocks[formData.blocks_layout.items[source.index]],
+    };
+
+    return {
+      ...formData,
+      [blocksFieldName]: {
+        ...formData[blocksFieldName],
+        [destination.droppableId]: {
+          ...formData[blocksFieldName][destination.droppableId],
+          data: {
+            ...formData[blocksFieldName][destination.droppableId].data,
+            blocks: {
+              ...formData[blocksFieldName][destination.droppableId].data.blocks,
+              [formData.blocks_layout.items[source.index]]: sourceData,
+            },
+            blocks_layout: {
+              ...formData[blocksFieldName][destination.droppableId].data
+                .blocks_layout,
+              items: insertInArray(
+                formData[blocksFieldName][destination.droppableId].data
+                  .blocks_layout.items,
+                formData.blocks_layout.items[source.index],
+                destination.index,
+              ),
+            },
+          },
+        },
+      },
+      [blocksLayoutFieldname]: {
+        items: removeFromArray(
+          formData[blocksLayoutFieldname].items,
+          source.index,
+        ),
+      },
+    };
+  }
 }
 
 /**

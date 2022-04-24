@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { isEmpty } from 'lodash';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
-// import { v4 as uuid } from 'uuid';
+import { v4 as uuid } from 'uuid';
 
 const getPlaceholder = (draggedDOM, sourceIndex, destinationIndex) => {
   // Because of the margin rendering rules, there is no easy
@@ -37,6 +37,14 @@ const getPlaceholder = (draggedDOM, sourceIndex, destinationIndex) => {
       draggedDOM.getBoundingClientRect().height -
       parentRect.top;
   }
+  console.log({
+    clientY: top,
+    clientHeight: bottom - top,
+    clientX: parseFloat(
+      window.getComputedStyle(draggedDOM.parentNode).paddingLeft,
+    ),
+    clientWidth: draggedDOM.clientWidth,
+  });
   return {
     clientY: top,
     clientHeight: bottom - top,
@@ -47,7 +55,7 @@ const getPlaceholder = (draggedDOM, sourceIndex, destinationIndex) => {
   };
 };
 
-const DragDropList = (props) => {
+const MainDnDContainer = (props) => {
   const {
     childList,
     children,
@@ -56,12 +64,11 @@ const DragDropList = (props) => {
     as = 'div',
     style,
     forwardedAriaLabelledBy,
-    droppableId,
     reactBeautifulDnd,
   } = props; //renderChild
   const { DragDropContext, Draggable, Droppable } = reactBeautifulDnd;
   const [placeholderProps, setPlaceholderProps] = React.useState({});
-  // const [uid] = React.useState(uuid());
+  const [uid] = React.useState(uuid());
   // queueing timed action
   const timer = useRef(null);
 
@@ -74,6 +81,7 @@ const DragDropList = (props) => {
       return;
     }
     const sourceIndex = event.source.index;
+
     setPlaceholderProps(getPlaceholder(draggedDOM, sourceIndex, sourceIndex));
   }, []);
 
@@ -96,6 +104,7 @@ const DragDropList = (props) => {
     const queryAttr = 'data-rbd-draggable-id';
     const domQuery = `[${queryAttr}='${draggableId}']`;
     const draggedDOM = document.querySelector(domQuery);
+
     if (!draggedDOM) {
       return;
     }
@@ -113,46 +122,14 @@ const DragDropList = (props) => {
 
   const AsDomComponent = as;
   return (
-    <Droppable droppableId={droppableId} direction={direction}>
-      {(provided, snapshot) => (
-        <AsDomComponent
-          ref={provided.innerRef}
-          {...provided.droppableProps}
-          style={{ ...style, position: 'relative' }}
-          aria-labelledby={forwardedAriaLabelledBy}
-        >
-          {childList
-            .filter(([id, child]) => id && child) // beware numbers!
-            .map(([childId, child], index) => (
-              <Draggable
-                draggableId={childId.toString()}
-                index={index}
-                key={childId}
-                style={{
-                  userSelect: 'none',
-                }}
-              >
-                {(draginfo) => children({ child, childId, index, draginfo })}
-              </Draggable>
-            ))}
-          {provided.placeholder}
-          {!isEmpty(placeholderProps) && snapshot.isDraggingOver && (
-            <div
-              style={{
-                position: 'absolute',
-                top: placeholderProps.clientY,
-                left: placeholderProps.clientX,
-                height: placeholderProps.clientHeight,
-                background: '#eee',
-                width: placeholderProps.clientWidth,
-                borderRadius: '3px',
-              }}
-            />
-          )}
-        </AsDomComponent>
-      )}
-    </Droppable>
+    <DragDropContext
+      onDragStart={onDragStart}
+      onDragUpdate={onDragUpdate}
+      onDragEnd={onDragEnd}
+    >
+      {children}
+    </DragDropContext>
   );
 };
 
-export default injectLazyLibs(['reactBeautifulDnd'])(DragDropList);
+export default injectLazyLibs(['reactBeautifulDnd'])(MainDnDContainer);

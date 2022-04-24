@@ -56,6 +56,7 @@ const BlocksForm = (props) => {
     blocksConfig = config.blocks.blocksConfig,
     editable = true,
     direction,
+    blocksFormId,
   } = props;
 
   const blockList = getBlocks(properties);
@@ -176,6 +177,7 @@ const BlocksForm = (props) => {
     <div className="blocks-form" ref={ref}>
       <fieldset className="invisible" disabled={!editable}>
         <DragDropList
+          droppableId={blocksFormId}
           childList={blockList}
           direction={direction}
           onMoveItem={(result) => {

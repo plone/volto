@@ -36,6 +36,7 @@ function emptyBlocksForm() {
 
 const RowEdit = (props) => {
   const {
+    id,
     block,
     data,
     onChangeBlock,
@@ -116,7 +117,7 @@ const RowEdit = (props) => {
   );
 
   const direction = data['@type'] === 'row' ? 'horizontal' : 'vertical';
-  console.log(selected);
+
   return (
     <div
       className={cx({
@@ -184,6 +185,7 @@ const RowEdit = (props) => {
         />
       )}
       <BlocksForm
+        blocksFormId={id}
         metadata={metadata}
         properties={properties}
         direction={direction}
