@@ -2,17 +2,18 @@
 
 ## 15.4.2 (unreleased)
 
-### Breaking
-
 ### Feature
 
-### Bugfix
-- Fixed edit internal link and image url in this blocks: image block, leadimage block, video block, objectBrowser. In objectBrowser, if pasted url was internal, it wasn't flatted and wass handled from Plone as an external. @giuliaghisini
+- More Italian translations @giuliaghisini
 
-### Internal
+### Bugfix
+
+- Fixed edit internal link and image url in this blocks: image block, leadimage block, video block, objectBrowser. In objectBrowser, if pasted url was internal, it wasn't flatted and wass handled from Plone as an external. @giuliaghisini
+- Fix folder content layout @SaraBianchi
 
 ### Documentation
 
+- Added a `selectableTypes` example to the `ObjectBrowserWidget` storybook @JeffersonBledsoe #3255
 - Add labels for Intersphinx. @stevepiercy
 
 ## 15.4.1 (2022-04-11)
@@ -22,10 +23,6 @@
 - Fix handling of single reference field in `ObjectBrowser` @robgietema
 - Make the parseDateTime function to handle only date as well @iFlameing
 - Fix ContextNavigation component with Link type objects @UnaiEtxaburu #3232
-
-### Documentation
-
-- Added a `selectableTypes` example to the `ObjectBrowserWidget` storybook @JeffersonBledsoe #3255
 
 ### Internal
 
@@ -70,7 +67,6 @@
 - Pass placeholder and isDisabled properties to EmailWidget and UrlWidget @mihaislobozeanu
 - Pass placeholder property to PasswordWidget and NumberWidget @mihaislobozeanu
 - Fix getVocabName when vocabNameOrURL is false @avoinea #2955, #2919
-- Fix folder content layout @SaraBianchi
 
 ### Internal
 
