@@ -16,6 +16,7 @@ import {
   visitBlocks,
   applyBlockDefaults,
   applySchemaDefaults,
+  buildStyleClassNamesFromData,
 } from './Blocks';
 
 import config from '@plone/volto/registry';
@@ -571,6 +572,50 @@ describe('Blocks', () => {
         extra: 'Extra value from block schema enhancer',
         variation: 'firstVariation',
       });
+    });
+  });
+  describe('buildStyleClassNamesFromData', () => {
+    it('Sets styles classname array according to style values', () => {
+      const styles = {
+        color: 'red',
+        backgroundColor: '#AABBCC',
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual([
+        'has--color--red',
+        'has--backgroundColor--AABBCC',
+      ]);
+    });
+    it('Sets styles classname array according to style values with nested', () => {
+      const styles = {
+        color: 'red',
+        backgroundColor: '#AABBCC',
+        nested: {
+          foo: 'white',
+          bar: 'black',
+        },
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual([
+        'has--color--red',
+        'has--backgroundColor--AABBCC',
+        'has--nested--foo--white',
+        'has--nested--bar--black',
+      ]);
+    });
+    it('Sets styles classname array according to style values with nested and colors', () => {
+      const styles = {
+        color: 'red',
+        backgroundColor: '#AABBCC',
+        nested: {
+          foo: '#fff',
+          bar: '#000',
+        },
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual([
+        'has--color--red',
+        'has--backgroundColor--AABBCC',
+        'has--nested--foo--fff',
+        'has--nested--bar--000',
+      ]);
     });
   });
 });

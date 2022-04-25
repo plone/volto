@@ -15,6 +15,7 @@ introduction
 anatomy
 settings
 editcomponent
+blockStyleWrapper
 extensions
 ssr
 ```

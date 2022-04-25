@@ -2,6 +2,14 @@
 
 ## 15.5.1 (unreleased)
 
+### Experimental
+
+- First working version of the Core Style Wrapper is available. This implementation is marked as **experimental**. The components, API and the styling are subject to change **without issuing a breaking change**. You can start using it in your projects and add-ons, but taking this into account.
+
+  This feature adds a wrapper around all blocks so you can inject styles into your custom blocks. Refer to the documentation for more information.
+
+  This is done because this feature needs to be battle tested in a number of scenarios, so we need that available without having to use alpha versions around, and merging hell afterwards.
+
 ### Breaking
 
 ### Feature

@@ -3,7 +3,7 @@
  * @module helpers/Blocks
  */
 
-import { omit, without, endsWith, find, keys } from 'lodash';
+import { omit, without, endsWith, find, isObject, keys, toPairs } from 'lodash';
 import move from 'lodash-move';
 import { v4 as uuid } from 'uuid';
 import config from '@plone/volto/registry';
@@ -405,3 +405,33 @@ export function applyBlockDefaults({ data, intl, ...rest }, blocksConfig) {
 
   return applySchemaDefaults({ data, schema });
 }
+
+export const buildStyleClassNamesFromData = (styles) => {
+  // styles has the form
+  // const styles = {
+  // color: 'red',
+  // backgroundColor: '#AABBCC',
+  // }
+  // Returns: ['has--color--red', 'has--backgroundColor--AABBCC']
+  let styleArray = [];
+  const pairedStyles = toPairs(styles);
+  pairedStyles.forEach((item) => {
+    if (isObject(item[1])) {
+      const flattenedNestedStyles = toPairs(item[1]).map((nested) => [
+        item[0],
+        ...nested,
+      ]);
+      flattenedNestedStyles.forEach((sub) => styleArray.push(sub));
+    } else {
+      styleArray.push(item);
+    }
+  });
+  return styleArray.map((item) => {
+    const classname = item.map((item) =>
+      item.startsWith('#') ? item.replace('#', '') : item,
+    );
+    return `has--${classname[0]}--${classname[1]}${
+      classname[2] ? `--${classname[2]}` : ''
+    }`;
+  });
+};
