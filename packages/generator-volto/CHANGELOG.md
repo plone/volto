@@ -2,13 +2,9 @@
 
 ## 5.6.2 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
-### Internal
+- Fix `yarn lint` in Volto project generator scripts wasn't enforcing `--max-warnings=0` @sneridagh
 
 ## 5.6.1 (2022-04-21)
 
