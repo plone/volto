@@ -8,11 +8,14 @@ html_meta:
 
 # Blocks - Style Wrapper
 
-The block style wrapper part of a block anatomy, allows you to inject styles from the block schema into the block wrapper in form of class names. It's wrapping the block edit and the view components.
+The block style wrapper is part of a block anatomy.
+It allows you to inject styles from the block schema into the block wrapper in the form of class names.
+It wraps the block edit and the view components.
 
 ## Enabling Style Wrapper in a block
 
-The wrapper is always present in the render of the view and the edit components, but if you want to add styles, you have to enhance the schema of your block:
+The wrapper is always present in the render of the view and the edit components.
+If you want to add styles, you have to enhance the schema of your block:
 
 ```js
 import { styleSchemaEnhancer } from '@plone/volto/components/manage/Blocks/Block/StylesSchema';
@@ -26,7 +29,7 @@ import { styleSchemaEnhancer } from '@plone/volto/components/manage/Blocks/Block
 
 This will add a new fieldset `Styling` to your block schema settings.
 By default, only a `backgroundColor` property is set, configured by: `defaultSchema` in `src/components/manage/Blocks/Block/StylesSchema.jsx`.
-The schema can be overriden, using the `stylesSchema` key in your block config object, like:
+The schema can be overridden using the `stylesSchema` key in your block config object as follows:
 
 ```js
 import { styleSchemaEnhancer } from '@plone/volto/components/manage/Blocks/Block/StylesSchema';
@@ -53,10 +56,10 @@ The `style` field is mapped to an `objectWidget`, and the `stylesSchema` adds th
 }
 ```
 
-The resultant class names injected into the Style Wrapper are built from this `style` field and its values, like:
+The resultant class names injected into the Style Wrapper are built from this `style` field and its values as follows:
 
-```
+```html
 <div className="has--backgroundColor--ee22ee has--myCustomStyleField--red has--myCustom2StyleField--color--black has--myCustom2StyleField--color--MyGradient">
 ```
 
-Then, it's at your discretion how you define this CSS class names in your theme.
+Then it's at your discretion how you define the CSS class names in your theme.
