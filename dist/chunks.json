@@ -62,8 +62,8 @@
   "27": {
     "css": [],
     "js": [
-      "/static/js/27.cacef41c.chunk.js",
-      "/static/js/27.cacef41c.chunk.js.map"
+      "/static/js/27.ce5e05d3.chunk.js",
+      "/static/js/27.ce5e05d3.chunk.js.map"
     ],
     "chunks": [
       27
@@ -400,15 +400,15 @@
   "client": {
     "css": [
       "/static/css/14.28a992d7.chunk.css",
-      "/static/css/client.674692a1.chunk.css"
+      "/static/css/client.d1eef743.chunk.css"
     ],
     "js": [
-      "/static/js/runtime~client.7d96c65b.js",
-      "/static/js/runtime~client.7d96c65b.js.map",
+      "/static/js/runtime~client.99af7cc8.js",
+      "/static/js/runtime~client.99af7cc8.js.map",
       "/static/js/14.28a992d7.chunk.js",
       "/static/js/14.28a992d7.chunk.js.map",
-      "/static/js/client.674692a1.chunk.js",
-      "/static/js/client.674692a1.chunk.js.map"
+      "/static/js/client.d1eef743.chunk.js",
+      "/static/js/client.d1eef743.chunk.js.map"
     ],
     "chunks": [
       13,

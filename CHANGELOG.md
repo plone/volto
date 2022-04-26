@@ -1,18 +1,36 @@
 # Change Log
 
-## 15.4.2 (unreleased)
+## 15.5.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
+- Allow final users to switch between available views in the search block. A "view" is any of available listing block variations. In the search block configuration you can pick the available views for that block. @tiberiuichim
+
 ### Bugfix
 
-- Fixes in search block. Disable default live search. Added clear button for search input. Fixed facet dropdown clear button. Removed sort on label customization option. Layout improvements, CSS polishments. @kreafox
+- Fixes in search block. Disable default live search. Added clear button for search input. Fixed facet dropdown clear button. Removed sort on label customization option. Layout improvements, CSS polishments. @kreafox @tiberiuichim
 
 ### Internal
 
 ### Documentation
+
+## 15.5.0 (2022-04-25)
+
+### Feature
+
+- More Italian translations @giuliaghisini
+
+### Bugfix
+
+- Fixed edit internal link and image url in this blocks: image block, leadimage block, video block, objectBrowser. In objectBrowser, if pasted url was internal, it wasn't flatted and wass handled from Plone as an external. @giuliaghisini
+- Fix folder content layout @SaraBianchi
+
+### Documentation
+
+- Added a `selectableTypes` example to the `ObjectBrowserWidget` storybook @JeffersonBledsoe #3255
+- Add labels for Intersphinx. @stevepiercy
 
 ## 15.4.1 (2022-04-11)
 

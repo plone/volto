@@ -10,7 +10,7 @@
     }
   ],
   "license": "MIT",
-  "version": "5.5.0",
+  "version": "5.6.2",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/plone/generator-volto.git"
@@ -61,11 +61,11 @@
   },
   "release-it": {
     "hooks": {
-      "after:bump": "node changelogupdater.js bump ${version}",
-      "after:release": "node changelogupdater.js back ${version} && git commit -am 'Back to development (generator-volto)' && git push"
+      "after:bump": "node ../scripts/changelogupdater.js bump ${version}",
+      "after:release": "node ../scripts/changelogupdater.js back ${version} && git commit -am 'Back to development (generator-volto)' && git push"
     },
     "git": {
-      "changelog": "node changelogupdater.js excerpt",
+      "changelog": "node ../scripts/changelogupdater.js excerpt",
       "requireUpstream": false,
       "requireCleanWorkingDir": false,
       "commitMessage": "Release generate-volto ${version}",
@@ -75,7 +75,7 @@
     "github": {
       "release": true,
       "releaseName": "@plone/generator-volto ${version}",
-      "releaseNotes": "node changelogupdater.js excerpt",
+      "releaseNotes": "node ../scripts/changelogupdater.js excerpt",
       "assets": [
         "*.tgz"
       ]

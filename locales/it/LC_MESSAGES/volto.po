@@ -1614,7 +1614,7 @@ msgstr "No"
 #: components/manage/Controlpanels/VersionOverview
 # defaultMessage: No addons found
 msgid "No addons found"
-msgstr ""
+msgstr "Nesssun addon trovato"
 
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected
@@ -1734,7 +1734,7 @@ msgstr "Ok"
 #: components/manage/Widgets/IdWidget
 # defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed.
 msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed."
-msgstr ""
+msgstr "Solo lettere minuscole (a-z) senza accenti, numeri (0-9), e i due caratteri '-' e '_' sono ammesssi"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -2653,7 +2653,7 @@ msgstr "Questa è una copia di lavoro in corso di {title}"
 #: components/manage/Widgets/IdWidget
 # defaultMessage: This is a reserved name and can't be used
 msgid "This is a reserved name and can't be used"
-msgstr ""
+msgstr "Questo è un nome riservato, e non può essere utilizzato"
 
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This is a working copy of {title}
@@ -3286,7 +3286,7 @@ msgstr "Più usati"
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
 # defaultMessage: No
 msgid "no"
-msgstr ""
+msgstr "No"
 
 #: components/manage/Contents/ContentsItem
 # defaultMessage: No workflow state
@@ -3578,7 +3578,7 @@ msgstr "Visita il sito web"
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
 # defaultMessage: Yes
 msgid "yes"
-msgstr ""
+msgstr "Sì"
 
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: {count, plural, one {Upload {count} file} other {Upload {count} files}}

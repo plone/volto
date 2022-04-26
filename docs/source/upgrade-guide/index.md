@@ -208,7 +208,7 @@ As announced in the deprecation notice in Volto 12 release, from Volto 14 onward
 configuration system based on imports will stop working. Migrate your Volto configuration
 for your projects before upgrading to Volto 14.
 
-More information: https://6.dev-docs.plone.org/volto/upgrade-guide/index.html#volto-configuration-registry
+More information: :ref:`frontend-upgrade-guide-volto-configuration-registry-label`.
 
 ### Content locking
 
@@ -446,6 +446,9 @@ CSS set. Better naming of options and labels in table block (English). Updating 
 messages for the used translations is advisable, but not required.
 
 ## Upgrading to Volto 12.x.x
+
+
+(frontend-upgrade-guide-volto-configuration-registry-label)=
 
 ### Volto Configuration Registry
 
