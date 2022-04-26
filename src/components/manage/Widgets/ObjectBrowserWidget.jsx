@@ -239,7 +239,7 @@ export class ObjectBrowserWidgetComponent extends Component {
             } else {
               this.props.onChange(this.props.id, [
                 {
-                  '@id': normalizeUrl(link),
+                  '@id': flattenToAppURL(link),
                   title: removeProtocol(link),
                 },
               ]);

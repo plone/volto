@@ -1,6 +1,6 @@
 # Change Log
 
-## 15.4.2 (unreleased)
+## 15.5.1 (unreleased)
 
 ### Breaking
 
@@ -13,6 +13,22 @@
 ### Internal
 
 ### Documentation
+
+## 15.5.0 (2022-04-25)
+
+### Feature
+
+- More Italian translations @giuliaghisini
+
+### Bugfix
+
+- Fixed edit internal link and image url in this blocks: image block, leadimage block, video block, objectBrowser. In objectBrowser, if pasted url was internal, it wasn't flatted and wass handled from Plone as an external. @giuliaghisini
+- Fix folder content layout @SaraBianchi
+
+### Documentation
+
+- Added a `selectableTypes` example to the `ObjectBrowserWidget` storybook @JeffersonBledsoe #3255
+- Add labels for Intersphinx. @stevepiercy
 
 ## 15.4.1 (2022-04-11)
 
