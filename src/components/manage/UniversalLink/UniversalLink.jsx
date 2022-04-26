@@ -65,23 +65,19 @@ const UniversalLink = ({
     )?.length > 0;
   const isExternal = !isInternalURL(url) || isBlacklisted;
   const isDownload = (!isExternal && url.includes('@@download')) || download;
-  const isMail = URLUtils.isMail(url) || URLUtils.isMail('mailto:' + url);
-  if (isMail) {
-    url = URLUtils.normaliseMail(url);
-  }
 
-  const isTelephone =
-    URLUtils.isTelephone(url) || URLUtils.isTelephone('tel:' + url);
-  if (isTelephone) {
-    url = URLUtils.normalizeTelephone(url);
-  }
+  const checkedURL = URLUtils.checkAndNormalizeUrl(url);
+
+  url = checkedURL.url;
 
   return isExternal ? (
     <a
       href={url}
       title={title}
       target={
-        !isMail && !isTelephone && !(openLinkInNewTab === false)
+        !checkedURL.isMail &&
+        !checkedURL.isTelephone &&
+        !(openLinkInNewTab === false)
           ? '_blank'
           : null
       }
