@@ -6,6 +6,7 @@
 
 ### Feature
 
+- Handle @@display-file api endpoint like @@download @cekk
 ### Bugfix
 
 ### Internal
