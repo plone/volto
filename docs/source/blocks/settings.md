@@ -8,7 +8,8 @@ html_meta:
 
 # Blocks settings
 
-Volto has a set of default blocks. You can extend it by adding your custom blocks in your project configuration object.
+Volto has a set of default blocks.
+You can extend it by adding your custom blocks in your project's configuration object.
 
 ## Configuring a new block
 
