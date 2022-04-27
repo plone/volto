@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Added Cypress environment variables for adjusting the backend URL of commands @JeffersonBledsoe #3271
+
 ### Documentation
 
 ## 15.5.0 (2022-04-25)
