@@ -173,15 +173,15 @@ export class Edit extends Component {
                 blockNode={this.blockNode}
                 data={applyBlockDefaults(this.props)}
               />
-              {this.props.manage && (
-                <SidebarPortal
-                  selected={this.props.selected}
-                  tab="sidebar-settings"
-                >
-                  <BlockSettingsSidebar {...this.props} schema={schema} />
-                </SidebarPortal>
-              )}
             </StyleWrapper>
+            {this.props.manage && (
+              <SidebarPortal
+                selected={this.props.selected}
+                tab="sidebar-settings"
+              >
+                <BlockSettingsSidebar {...this.props} schema={schema} />
+              </SidebarPortal>
+            )}
           </div>
         ) : (
           <div

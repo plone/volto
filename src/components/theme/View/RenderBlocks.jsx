@@ -38,9 +38,8 @@ const RenderBlocks = (props) => {
         });
 
         return Block ? (
-          <StyleWrapper {...props} data={blockData}>
+          <StyleWrapper key={block} {...props} data={blockData}>
             <Block
-              key={block}
               id={block}
               metadata={metadata}
               properties={content}
