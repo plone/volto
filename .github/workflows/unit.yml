@@ -35,6 +35,7 @@ jobs:
       - run: yarn i18n && yarn test:ci
 
       # Bundlewatch
+      - run: yarn build
       - uses: jackyef/bundlewatch-gh-action@master
         with:
           bundlewatch-github-token: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
