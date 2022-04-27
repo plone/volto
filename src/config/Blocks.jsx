@@ -272,6 +272,7 @@ const blocksConfig = {
       addPermission: [],
       view: [],
     },
+    stylesEnabled: true,
     variations: [
       {
         id: 'default',

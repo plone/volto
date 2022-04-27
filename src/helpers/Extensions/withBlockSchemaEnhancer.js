@@ -10,7 +10,7 @@ const messages = defineMessages({
     id: 'Variation',
     defaultMessage: 'Variation',
   },
-  styles: {
+  styling: {
     id: 'Styling',
     defaultMessage: 'Styling',
   },
@@ -265,20 +265,23 @@ export const withStylingSchemaEnhancer = (FormComponent) => (props) => {
   const { blocks } = config;
 
   const blockType = formData['@type'];
-  const stylesSchema =
-    blocks?.blocksConfig[blockType]?.stylesSchema || defaultStyleSchema;
+  const stylesEnabled = blocks?.blocksConfig[blockType]?.stylesEnabled;
 
-  schema.fieldsets.push({
-    id: 'styling',
-    title: 'Styling',
-    fields: ['styles'],
-  });
+  if (stylesEnabled) {
+    const stylesSchema =
+      blocks?.blocksConfig[blockType]?.stylesSchema || defaultStyleSchema;
 
-  schema.properties.styles = {
-    widget: 'object',
-    title: intl.formatMessage(messages.styles),
-    schema: stylesSchema({ defaultStyleSchema, formData, intl }),
-  };
+    schema.fieldsets.push({
+      id: 'styling',
+      title: intl.formatMessage(messages.styling),
+      fields: ['styles'],
+    });
 
+    schema.properties.styles = {
+      widget: 'object',
+      title: intl.formatMessage(messages.styling),
+      schema: stylesSchema({ defaultStyleSchema, formData, intl }),
+    };
+  }
   return <FormComponent {...props} schema={schema} />;
 };

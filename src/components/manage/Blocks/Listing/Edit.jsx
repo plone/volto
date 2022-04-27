@@ -48,7 +48,7 @@ const Edit = React.memo(
         : intl.formatMessage(messages.items));
 
     return (
-      <>
+      <div className={props.className}>
         <p className="items-preview">{placeholder}</p>
         <ListingBody {...props} path={getBaseUrl(pathname)} isEditMode />
         <SidebarPortal selected={selected}>
@@ -60,7 +60,7 @@ const Edit = React.memo(
             onChangeBlock={onChangeBlock}
           />
         </SidebarPortal>
-      </>
+      </div>
     );
   },
   function areEquals(prevProps, nextProps) {
