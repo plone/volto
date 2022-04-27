@@ -30,7 +30,6 @@ import ObjectListWidget from '@plone/volto/components/manage/Widgets/ObjectListW
 import VocabularyTermsWidget from '@plone/volto/components/manage/Widgets/VocabularyTermsWidget';
 import SelectMetadataWidget from '@plone/volto/components/manage/Blocks/Search/widgets/SelectMetadataField';
 import SelectAutoComplete from '@plone/volto/components/manage/Widgets/SelectAutoComplete';
-import StyleWidget from '@plone/volto/components/manage/Widgets/StyleWidget';
 import BasicColorPicker from '@plone/volto/components/manage/Widgets/BasicColorPicker';
 
 export const DatetimeWidget = loadable(() =>
@@ -73,7 +72,6 @@ export const widgetMapping = {
     vocabularyterms: VocabularyTermsWidget,
     select_querystring_field: SelectMetadataWidget,
     autocomplete: SelectAutoComplete,
-    style_widget: StyleWidget,
     basic_color_picker: BasicColorPicker,
   },
   vocabulary: {

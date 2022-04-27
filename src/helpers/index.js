@@ -86,6 +86,7 @@ export { messages } from './MessageLabels/MessageLabels';
 export {
   withBlockSchemaEnhancer,
   withVariationSchemaEnhancer,
+  withStylingSchemaEnhancer,
   withBlockExtensions,
   applySchemaEnhancer,
   resolveExtension,

@@ -2,10 +2,6 @@ import config from '@plone/volto/registry';
 import { defineMessages } from 'react-intl';
 
 const messages = defineMessages({
-  styles: {
-    id: 'Styles',
-    defaultMessage: 'Styles',
-  },
   color: {
     id: 'Color',
     defaultMessage: 'Color',
@@ -16,7 +12,7 @@ const messages = defineMessages({
   },
 });
 
-export const defaultSchema = ({ schema, formData, intl }) => {
+export const defaultStyleSchema = ({ schema, formData, intl }) => {
   const availableColors =
     config.blocks?.blocksConfig?.[formData['@type']]?.availableColors;
   const defaultColor =
@@ -40,24 +36,4 @@ export const defaultSchema = ({ schema, formData, intl }) => {
     },
     required: [],
   };
-};
-
-export const styleSchemaEnhancer = ({ schema, formData, intl }) => {
-  const stylesSchema =
-    config.blocks?.blocksConfig?.[formData['@type']]?.stylesSchema ||
-    defaultSchema;
-
-  schema.fieldsets.push({
-    id: 'styling',
-    title: 'Styling',
-    fields: ['styles'],
-  });
-
-  schema.properties.styles = {
-    widget: 'style_widget',
-    title: intl.formatMessage(messages.styles),
-    schema: stylesSchema({ schema, formData, intl }),
-  };
-
-  return schema;
 };

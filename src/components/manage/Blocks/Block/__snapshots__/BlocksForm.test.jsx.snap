@@ -47,18 +47,10 @@ exports[`Allow override of blocksConfig 1`] = `
                 style="outline: none;"
                 tabindex="-1"
               >
-                <div
-                  class=""
-                >
-                  <div
-                    class="ui container"
-                  >
-                    <div>
-                      a
-                       - 
-                      a
-                    </div>
-                  </div>
+                <div>
+                  a
+                   - 
+                  a
                 </div>
               </div>
               <button
@@ -109,18 +101,10 @@ exports[`Allow override of blocksConfig 1`] = `
                 style="outline: none;"
                 tabindex="-1"
               >
-                <div
-                  class=""
-                >
-                  <div
-                    class="ui container"
-                  >
-                    <div>
-                      b
-                       - 
-                      b
-                    </div>
-                  </div>
+                <div>
+                  b
+                   - 
+                  b
                 </div>
               </div>
             </div>

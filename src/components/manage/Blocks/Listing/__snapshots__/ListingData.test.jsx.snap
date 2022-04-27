@@ -35,5 +35,73 @@ exports[`renders an Listing Data Sidebar component 1`] = `
       </div>
     </div>
   </div>
+  <div
+    className="accordion ui fluid styled form"
+  >
+    <div
+      id="blockform-fieldset-styling"
+    >
+      <div
+        className="active title"
+        onClick={[Function]}
+      >
+        Styling
+        <svg
+          className="icon"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": undefined,
+            }
+          }
+          onClick={null}
+          style={
+            Object {
+              "fill": "currentColor",
+              "height": "20px",
+              "width": "auto",
+            }
+          }
+          viewBox=""
+          xmlns=""
+        />
+      </div>
+      <div
+        className="content active"
+      >
+        <div
+          aria-hidden={false}
+          className="rah-static rah-static--height-auto"
+          style={
+            Object {
+              "height": "auto",
+              "overflow": "visible",
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "WebkitTransition": "opacity 500ms ease 0ms",
+                "transition": "opacity 500ms ease 0ms",
+              }
+            }
+          >
+            <div
+              className="ui segment attached"
+            >
+              <div
+                className="mocked-default-widget"
+                id="mocked-field-styles"
+              >
+                Styling
+                 - 
+                No description
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 `;

@@ -1,16 +1,30 @@
+import React from 'react';
 import cx from 'classnames';
-import { Container } from 'semantic-ui-react';
 import { buildStyleClassNamesFromData } from '@plone/volto/helpers';
 
-const StyleWrapper = ({ children, data }) => {
+const StyleWrapper = ({ ...props }) => {
+  const { children, data } = props;
   const styles = buildStyleClassNamesFromData(data?.styles);
+  const rewrittenChildren = React.Children.map(children, (child) => {
+    if (React.isValidElement(child)) {
+      const childProps = {
+        ...props,
+        className: cx([child.props.className, ...styles]),
+      };
+      return React.cloneElement(child, childProps);
+    }
+    return child;
+  });
 
-  return (
-    <div className={cx(styles)}>
-      {/* This container is to maintain the style cascade consistent with the `full-width` hack */}
-      <Container>{children}</Container>
-    </div>
-  );
+  return rewrittenChildren;
 };
 
 export default StyleWrapper;
+
+// For some reason the HOC alternative is not working, and ends in an infinite updateloop
+// const withStyleWrapper = (Component) => ({ ...props }) => {
+//   const { data } = props;
+//   const styles = buildStyleClassNamesFromData(data?.styles);
+
+//   return <Component {...props} className={cx(styles)} />;
+// };

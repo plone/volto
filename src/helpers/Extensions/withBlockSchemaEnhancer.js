@@ -3,11 +3,16 @@ import React from 'react';
 import { useIntl } from 'react-intl';
 import config from '@plone/volto/registry';
 import { cloneDeep } from 'lodash';
+import { defaultStyleSchema } from '@plone/volto/components/manage/Blocks/Block/StylesSchema';
 
 const messages = defineMessages({
   variation: {
     id: 'Variation',
     defaultMessage: 'Variation',
+  },
+  styles: {
+    id: 'Styling',
+    defaultMessage: 'Styling',
   },
 });
 
@@ -243,6 +248,37 @@ export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
       insertFieldToOrder: _addField,
     });
   }
+
+  return <FormComponent {...props} schema={schema} />;
+};
+
+/**
+ * A HOC that enhances the incoming schema prop with styling widget support
+ * by:
+ *
+ * - adds the variation selection input (as a choice widget)
+ */
+export const withStylingSchemaEnhancer = (FormComponent) => (props) => {
+  const { formData, schema } = props;
+  const intl = useIntl();
+
+  const { blocks } = config;
+
+  const blockType = formData['@type'];
+  const stylesSchema =
+    blocks?.blocksConfig[blockType]?.stylesSchema || defaultStyleSchema;
+
+  schema.fieldsets.push({
+    id: 'styling',
+    title: 'Styling',
+    fields: ['styles'],
+  });
+
+  schema.properties.styles = {
+    widget: 'object',
+    title: intl.formatMessage(messages.styles),
+    schema: stylesSchema({ defaultStyleSchema, formData, intl }),
+  };
 
   return <FormComponent {...props} schema={schema} />;
 };
