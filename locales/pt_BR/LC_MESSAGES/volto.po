@@ -258,6 +258,11 @@ msgstr "Disponível"
 msgid "Back"
 msgstr "Voltar"
 
+#: components/manage/Blocks/Block/StylesSchema
+# defaultMessage: Background color
+msgid "Background color"
+msgstr ""
+
 #: components/manage/Diff/Diff
 # defaultMessage: Base
 msgid "Base"
@@ -447,6 +452,11 @@ msgstr "Colapsar item"
 # defaultMessage: Collection
 msgid "Collection"
 msgstr "Coleção"
+
+#: components/manage/Blocks/Block/StylesSchema
+# defaultMessage: Color
+msgid "Color"
+msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
 #: components/theme/Comments/CommentEditModal
@@ -2492,6 +2502,11 @@ msgstr "Texto"
 msgid "Stripe alternate rows with color"
 msgstr "Alternar cores das linhas"
 
+#: helpers/Extensions/withBlockSchemaEnhancer
+# defaultMessage: Styling
+msgid "Styling"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Subject
 msgid "Subject"
@@ -2798,7 +2813,6 @@ msgid "Uninstall"
 msgstr "Desinstalar"
 
 #: components/manage/Blocks/Block/Edit
-#: components/theme/View/DefaultView
 #: components/theme/View/RenderBlocks
 # defaultMessage: Unknown Block {block}
 msgid "Unknown Block"

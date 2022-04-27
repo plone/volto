@@ -257,6 +257,11 @@ msgstr "Disponible"
 msgid "Back"
 msgstr "Enrere"
 
+#: components/manage/Blocks/Block/StylesSchema
+# defaultMessage: Background color
+msgid "Background color"
+msgstr ""
+
 #: components/manage/Diff/Diff
 # defaultMessage: Base
 msgid "Base"
@@ -446,6 +451,11 @@ msgstr "Replega l'element"
 # defaultMessage: Collection
 msgid "Collection"
 msgstr "Col·lecció"
+
+#: components/manage/Blocks/Block/StylesSchema
+# defaultMessage: Color
+msgid "Color"
+msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
 #: components/theme/Comments/CommentEditModal
@@ -2491,6 +2501,11 @@ msgstr "Cadena"
 msgid "Stripe alternate rows with color"
 msgstr "Color de fons alternatiu de la fila"
 
+#: helpers/Extensions/withBlockSchemaEnhancer
+# defaultMessage: Styling
+msgid "Styling"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Subject
 msgid "Subject"
@@ -2797,7 +2812,6 @@ msgid "Uninstall"
 msgstr "Desinstal·lar"
 
 #: components/manage/Blocks/Block/Edit
-#: components/theme/View/DefaultView
 #: components/theme/View/RenderBlocks
 # defaultMessage: Unknown Block {block}
 msgid "Unknown Block"

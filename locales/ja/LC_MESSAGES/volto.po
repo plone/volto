@@ -256,6 +256,11 @@ msgstr "利用可能"
 msgid "Back"
 msgstr "戻る"
 
+#: components/manage/Blocks/Block/StylesSchema
+# defaultMessage: Background color
+msgid "Background color"
+msgstr ""
+
 #: components/manage/Diff/Diff
 # defaultMessage: Base
 msgid "Base"
@@ -445,6 +450,11 @@ msgstr ""
 # defaultMessage: Collection
 msgid "Collection"
 msgstr "コレクション"
+
+#: components/manage/Blocks/Block/StylesSchema
+# defaultMessage: Color
+msgid "Color"
+msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
 #: components/theme/Comments/CommentEditModal
@@ -2490,6 +2500,11 @@ msgstr "String (未翻訳)"
 msgid "Stripe alternate rows with color"
 msgstr "一行おきに背景色を付加"
 
+#: helpers/Extensions/withBlockSchemaEnhancer
+# defaultMessage: Styling
+msgid "Styling"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Subject
 msgid "Subject"
@@ -2796,7 +2811,6 @@ msgid "Uninstall"
 msgstr "アンインストール"
 
 #: components/manage/Blocks/Block/Edit
-#: components/theme/View/DefaultView
 #: components/theme/View/RenderBlocks
 # defaultMessage: Unknown Block {block}
 msgid "Unknown Block"

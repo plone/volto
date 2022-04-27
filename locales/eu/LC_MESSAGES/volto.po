@@ -255,6 +255,11 @@ msgstr "Aukerak"
 msgid "Back"
 msgstr "Atzera"
 
+#: components/manage/Blocks/Block/StylesSchema
+# defaultMessage: Background color
+msgid "Background color"
+msgstr ""
+
 #: components/manage/Diff/Diff
 # defaultMessage: Base
 msgid "Base"
@@ -444,6 +449,11 @@ msgstr "Batu elementua"
 # defaultMessage: Collection
 msgid "Collection"
 msgstr "Bilduma"
+
+#: components/manage/Blocks/Block/StylesSchema
+# defaultMessage: Color
+msgid "Color"
+msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
 #: components/theme/Comments/CommentEditModal
@@ -2489,6 +2499,11 @@ msgstr "Karaktere-katea"
 msgid "Stripe alternate rows with color"
 msgstr "Errenkaden koloreak aldatzen joan"
 
+#: helpers/Extensions/withBlockSchemaEnhancer
+# defaultMessage: Styling
+msgid "Styling"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Subject
 msgid "Subject"
@@ -2795,7 +2810,6 @@ msgid "Uninstall"
 msgstr "Desinstalatu"
 
 #: components/manage/Blocks/Block/Edit
-#: components/theme/View/DefaultView
 #: components/theme/View/RenderBlocks
 # defaultMessage: Unknown Block {block}
 msgid "Unknown Block"

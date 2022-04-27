@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-03-01T09:32:55.808Z\n"
+"POT-Creation-Date: 2022-04-27T11:26:40.167Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -250,6 +250,11 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
+#: components/manage/Blocks/Block/StylesSchema
+# defaultMessage: Background color
+msgid "Background color"
+msgstr ""
+
 #: components/manage/Diff/Diff
 # defaultMessage: Base
 msgid "Base"
@@ -438,6 +443,11 @@ msgstr ""
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Collection
 msgid "Collection"
+msgstr ""
+
+#: components/manage/Blocks/Block/StylesSchema
+# defaultMessage: Color
+msgid "Color"
 msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
@@ -2484,6 +2494,11 @@ msgstr ""
 msgid "Stripe alternate rows with color"
 msgstr ""
 
+#: helpers/Extensions/withBlockSchemaEnhancer
+# defaultMessage: Styling
+msgid "Styling"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Subject
 msgid "Subject"
@@ -2790,7 +2805,6 @@ msgid "Uninstall"
 msgstr ""
 
 #: components/manage/Blocks/Block/Edit
-#: components/theme/View/DefaultView
 #: components/theme/View/RenderBlocks
 # defaultMessage: Unknown Block {block}
 msgid "Unknown Block"
