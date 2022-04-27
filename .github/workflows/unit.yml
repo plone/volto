@@ -32,7 +32,7 @@ jobs:
       - run: yarn --frozen-lockfile
 
       # node test
-      - run: yarn test:ci
+      - run: yarn i18n && yarn test:ci
 
       # Bundlewatch
       - uses: jackyef/bundlewatch-gh-action@master
