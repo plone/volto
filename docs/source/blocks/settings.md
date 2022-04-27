@@ -139,7 +139,7 @@ defineMessages({
 });
 ```
 
-Our new block should be ready to use in the editor by selecting in the editor's block chooser.
+Our new block should be ready to use in the editor by selecting it in the editor's block chooser.
 
 ## Other block options
 
