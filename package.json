@@ -88,12 +88,10 @@
     },
     "moduleNameMapper": {
       "@plone/volto/(.*)$": "<rootDir>/src/$1",
-      "~/config": "<rootDir>/src/config",
-      "~/../locales/${lang}.json": "<rootDir>/locales/en.json",
       "load-volto-addons": "<rootDir>/jest-addons-loader.js",
-      "@package/(.*)$": "<rootDir>/src/$1",
-      "@root/config": "<rootDir>/jest-addons-loader.js",
       "@root/(.*)$": "<rootDir>/src/$1",
+      "@root/config": "<rootDir>/jest-addons-loader.js",
+      "@package/(.*)$": "<rootDir>/src/$1",
       "@voltoconfig": "<rootDir>/jest-addons-loader.js",
       "\\.(css|less|scss|sass)$": "identity-obj-proxy"
     },
