@@ -8,12 +8,11 @@ html_meta:
 
 # Blocks settings
 
-You should make Volto aware of your custom blocks.
-Since Volto have its own set of default blocks, you should extend them by adding your custom ones in your project configuration object.
+Volto has a set of default blocks. You can extend them by adding your custom ones in your project configuration object.
 
 ## Configuring a new block
 
-So we add these lines to the `src/config.js`:
+To extend the default set of blocks, you add the following lines to the `src/config.js`:
 
 ```js
 import MainSliderViewBlock from '@package/components/Blocks/MainSlider/View';
@@ -139,7 +138,7 @@ defineMessages({
 });
 ```
 
-Our new block should be ready to use in the editor.
+Our new block should be ready to use in the editor by selecting in the editor's block chooser.
 
 ## Other block options
 
