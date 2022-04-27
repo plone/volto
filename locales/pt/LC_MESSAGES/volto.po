@@ -1329,6 +1329,11 @@ msgstr "Item(ns) colado(s)."
 msgid "Item(s) state has been updated."
 msgstr ""
 
+#: components/manage/Contents/Contents
+# defaultMessage: Item(s) successfully removed from clipboard
+msgid "Item(s) successfully removed from clipboard"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Items
 msgid "Items"
@@ -1984,6 +1989,11 @@ msgstr "Formulário de registo"
 #: components/theme/Search/Search
 # defaultMessage: Relevance
 msgid "Relevance"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Remove Item(s) from clipboard
+msgid "Remove Item(s) from clipboard"
 msgstr ""
 
 #: components/manage/Widgets/ObjectListWidget

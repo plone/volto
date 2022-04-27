@@ -11,6 +11,7 @@ export {
   cut,
   copyContent,
   moveContent,
+  clearClipboard,
 } from '@plone/volto/actions/clipboard/clipboard';
 export {
   installAddon,

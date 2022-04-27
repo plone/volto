@@ -1321,6 +1321,11 @@ msgstr "Elemento/i incollato/i."
 msgid "Item(s) state has been updated."
 msgstr "Stato/i aggiornato/i"
 
+#: components/manage/Contents/Contents
+# defaultMessage: Item(s) successfully removed from clipboard
+msgid "Item(s) successfully removed from clipboard"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Items
 msgid "Items"
@@ -1977,6 +1982,11 @@ msgstr "Form di iscrizione"
 # defaultMessage: Relevance
 msgid "Relevance"
 msgstr "Rilevanza"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Remove Item(s) from clipboard
+msgid "Remove Item(s) from clipboard"
+msgstr ""
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item

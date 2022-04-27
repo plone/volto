@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Portal } from 'react-portal';
 import { Link } from 'react-router-dom';
+import cx from 'classnames';
 import {
   Button,
   Confirm,
@@ -47,6 +48,7 @@ import {
   orderContent,
   sortContent,
   updateColumnsContent,
+  clearClipboard,
 } from '@plone/volto/actions';
 import Indexes, { defaultIndexes } from '@plone/volto/constants/Indexes';
 import {
@@ -87,6 +89,7 @@ import sortDownSVG from '@plone/volto/icons/sort-down.svg';
 import sortUpSVG from '@plone/volto/icons/sort-up.svg';
 import downKeySVG from '@plone/volto/icons/down-key.svg';
 import moreSVG from '@plone/volto/icons/more.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   back: {
@@ -265,6 +268,14 @@ const messages = defineMessages({
     id: 'All',
     defaultMessage: 'All',
   },
+  clearClipboard: {
+    id: 'Remove Item(s) from clipboard',
+    defaultMessage: 'Remove Item(s) from clipboard',
+  },
+  clipboardCleared: {
+    id: 'Item(s) successfully removed from clipboard',
+    defaultMessage: 'Item(s) successfully removed from clipboard',
+  },
 });
 
 /**
@@ -284,6 +295,7 @@ class Contents extends Component {
     searchContent: PropTypes.func.isRequired,
     cut: PropTypes.func.isRequired,
     copy: PropTypes.func.isRequired,
+    clearClipboard: PropTypes.func.isRequired,
     copyContent: PropTypes.func.isRequired,
     deleteContent: PropTypes.func.isRequired,
     moveContent: PropTypes.func.isRequired,
@@ -379,6 +391,7 @@ class Contents extends Component {
     this.onMoveToBottom = this.onMoveToBottom.bind(this);
     this.cut = this.cut.bind(this);
     this.copy = this.copy.bind(this);
+    this.clearClipboard = this.clearClipboard.bind(this);
     this.delete = this.delete.bind(this);
     this.upload = this.upload.bind(this);
     this.rename = this.rename.bind(this);
@@ -1002,6 +1015,24 @@ class Contents extends Component {
   }
 
   /**
+   * ClearClipboard handler
+   * @method clearClipboard
+   * @returns {undefined}
+   */
+
+  clearClipboard() {
+    this.props.clearClipboard();
+    this.onSelectNone();
+    this.props.toastify.toast.success(
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.success)}
+        content={this.props.intl.formatMessage(messages.clipboardCleared)}
+      />,
+    );
+  }
+
+  /**
    * Delete handler
    * @method delete
    * @param {Object} event Event object.
@@ -1392,6 +1423,35 @@ class Contents extends Component {
                             position="top center"
                             content={this.props.intl.formatMessage(
                               messages.delete,
+                            )}
+                            size="mini"
+                          />
+                        </Menu.Menu>
+                        <Menu.Menu
+                          className={cx('top-menu-menu clearclipboard', {
+                            active:
+                              this.props.action === 'cut' ||
+                              this.props.action === 'copy',
+                          })}
+                        >
+                          <Popup
+                            trigger={
+                              <Menu.Item
+                                icon
+                                as={Button}
+                                onClick={this.clearClipboard}
+                              >
+                                <Icon
+                                  name={clearSVG}
+                                  color="#e40166"
+                                  size="24px"
+                                  className="clearclipboard"
+                                />
+                              </Menu.Item>
+                            }
+                            position="top center"
+                            content={this.props.intl.formatMessage(
+                              messages.clearClipboard,
                             )}
                             size="mini"
                           />
@@ -1860,6 +1920,7 @@ export default compose(
       searchContent,
       cut,
       copy,
+      clearClipboard,
       copyContent,
       deleteContent,
       listActions,

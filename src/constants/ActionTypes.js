@@ -9,6 +9,7 @@ export const SET_APIERROR = 'SET_APIERROR';
 export const RESET_APIERROR = 'RESET_APIERROR';
 export const COPY = 'COPY';
 export const COPY_CONTENT = 'COPY_CONTENT';
+export const CLEAR_CLIPBOARD = 'CLEAR_CLIPBOARD';
 export const CREATE_CONTENT = 'CREATE_CONTENT';
 export const CREATE_GROUP = 'CREATE_GROUP';
 export const CREATE_USER = 'CREATE_USER';

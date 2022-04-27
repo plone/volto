@@ -8,6 +8,7 @@ import {
   CUT,
   COPY_CONTENT,
   MOVE_CONTENT,
+  CLEAR_CLIPBOARD,
 } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
@@ -40,6 +41,12 @@ export default function clipboard(state = initialState, action = {}) {
         ...state,
         action: 'cut',
         source: action.source,
+      };
+    case CLEAR_CLIPBOARD:
+      return {
+        ...state,
+        action: null,
+        source: null,
       };
     case `${COPY_CONTENT}_PENDING`:
     case `${MOVE_CONTENT}_PENDING`:
