@@ -1,9 +1,9 @@
 ---
 html_meta:
-  'description': 'Creating Volto views'
-  'property=og:description': 'Creating Volto views'
-  'property=og:title': 'Creating Volto Views'
-  'keywords': 'Volto, Plone, frontend, React, views'
+  "description": "Creating Volto views"
+  "property=og:description": "Creating Volto views"
+  "property=og:title": "Creating Volto Views"
+  "keywords": "Volto, Plone, frontend, React, views"
 ---
 
 # Creating Volto Views
