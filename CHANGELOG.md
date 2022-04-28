@@ -10,7 +10,12 @@
 
 ### Internal
 
+- Improve Cypress integration, using Cypress official Github Action. Improve some flaky tests that showed up, and were known as problematic. Refactor and rename all the Github actions giving them meaningful names, and group them by type. Enable Cypress Dashboard for Volto. @sneridagh
+- Move all cypress actions to the main `Makefile`, providing better meaningful names. Remove them from `package.json` script section. @sneridagh
+
 ### Documentation
+
+- Move Cypress documentation from `README.md` to the docs. Improve the docs with the new `Makefile` commands.
 
 ## 15.4.0 (2022-04-08)
 
