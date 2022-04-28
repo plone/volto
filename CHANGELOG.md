@@ -1,6 +1,6 @@
 # Change Log
 
-## 15.4.1 (unreleased)
+## 15.5.1 (unreleased)
 
 ### Breaking
 
@@ -16,6 +16,36 @@
 ### Documentation
 
 - Move Cypress documentation from `README.md` to the docs. Improve the docs with the new `Makefile` commands.
+## 15.5.0 (2022-04-25)
+
+### Feature
+
+- More Italian translations @giuliaghisini
+
+### Bugfix
+
+- Fixed edit internal link and image url in this blocks: image block, leadimage block, video block, objectBrowser. In objectBrowser, if pasted url was internal, it wasn't flatted and wass handled from Plone as an external. @giuliaghisini
+- Fix folder content layout @SaraBianchi
+
+### Documentation
+
+- Added a `selectableTypes` example to the `ObjectBrowserWidget` storybook @JeffersonBledsoe #3255
+- Add labels for Intersphinx. @stevepiercy
+
+## 15.4.1 (2022-04-11)
+
+### Bugfix
+
+- Fix handling of single reference field in `ObjectBrowser` @robgietema
+- Make the parseDateTime function to handle only date as well @iFlameing
+- Fix ContextNavigation component with Link type objects @UnaiEtxaburu #3232
+
+### Internal
+
+- Upgrade react-image-gallery to latest to fix a11y problem @sneridagh
+- Fixed bug in HTML block edit @giuliaghisini
+- Fix cannot read properties of undefined in Content.jsx @iFlameing
+- Fix fixed `ObjectBrowserBody` to handle data fields based on `ObjectBrowser` mode @giuliaghisini
 
 ## 15.4.0 (2022-04-08)
 
@@ -26,9 +56,6 @@
 ### Bugfix
 
 - Fix/Improve the console logging when the server starts. @sneridagh
-- Fixed bug in HTML block edit @giuliaghisini
-- Fix cannot read properties of undefined in Content.jsx @iFlameing
-- Fix fixed `ObjectBrowserBody` to handle data fields based on `ObjectBrowser` mode @giuliaghisini
 
 ### Documentation
 

@@ -60,6 +60,12 @@ describe('Basic multilingual Tests', () => {
     cy.findByLabelText('Vai a english').click();
 
     // The english doc should be shown
+    cy.waitForResourceToLoad('@navigation');
+    cy.waitForResourceToLoad('@breadcrumbs');
+    cy.waitForResourceToLoad('@actions');
+    cy.waitForResourceToLoad('@types');
+    cy.waitForResourceToLoad('document');
+
     cy.get('#page-document').findByText('Test document');
     cy.url().should('eq', Cypress.config().baseUrl + '/en/document');
   });
