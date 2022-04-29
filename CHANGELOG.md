@@ -18,6 +18,7 @@
 ### Documentation
 
 - Move Cypress documentation from `README.md` to the docs. Improve the docs with the new `Makefile` commands.
+
 ## 15.6.1 (2022-04-29)
 
 ### Bugfix
