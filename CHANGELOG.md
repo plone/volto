@@ -6,6 +6,8 @@
 
 ### Feature
 
+- added 'secure' cookie option if site is in https. @giuliaghisini
+
 ### Bugfix
 
 ### Internal
