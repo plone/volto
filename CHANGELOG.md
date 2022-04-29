@@ -2,17 +2,9 @@
 
 ## 15.6.2 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - added 'secure' cookie option if site is in https. @giuliaghisini
-
-### Bugfix
-
-### Internal
-
-### Documentation
 
 ## 15.6.1 (2022-04-29)
 
