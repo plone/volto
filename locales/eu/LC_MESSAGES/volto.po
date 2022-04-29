@@ -451,6 +451,7 @@ msgid "Collection"
 msgstr "Bilduma"
 
 #: components/manage/Blocks/Block/StylesSchema
+#: components/manage/Widgets/ColorPicker
 # defaultMessage: Color
 msgid "Color"
 msgstr ""
