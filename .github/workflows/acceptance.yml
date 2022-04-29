@@ -108,7 +108,7 @@ jobs:
           parallel: true
           browser: chrome
           # headless: true
-          group: Core
+          group: Core Blocks
           config: integrationFolder=cypress/tests
           spec: cypress/tests/core/blocks/**/*.js
           start: |
