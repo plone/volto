@@ -78,7 +78,7 @@ cd myvoltoproject
 You can bootstrap a ready Docker Plone container with all the dependencies and ready for Volto use. We recommend to use the Plone docker builds based in `pip` [plone/plone-backend](https://github.com/plone/plone-backend) image:
 
 ```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.restapi==8.18.0 plone.app.iterate==4.0.2 plone.rest==2.0.0a1 plone.app.vocabularies==4.3.0 plone.volto==3.1.0a7" -e PROFILES="plone.volto:default-homepage" plone/plone-backend
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.restapi==8.22.0 plone.volto==4.0.0a4 plone.rest==2.0.0a5 plone.app.iterate==4.0.2 plone.app.vocabularies==4.3.0" -e PROFILES="plone.volto:default-homepage" plone/plone-backend
 ```
 
 or as an alternative if you have experience with Plone and you have all the
@@ -101,9 +101,9 @@ The following KGS (or above) are also recommended, for any Plone version used.
 
 Volto always works best with latest versions of the "Frontend stack" or at least the recommended ones (in parenthesis) which are:
 
-- plone.restapi (8.21.2)
-- plone.rest (2.0.0a3)
-- plone.volto (4.0.0a3)
+- plone.restapi (8.22.0)
+- plone.rest (2.0.0a5)
+- plone.volto (4.0.0a4)
 
 and the following core packages since some features require up to date versions:
 
@@ -252,7 +252,7 @@ yarn
 Either using a Docker command:
 
 ```shell
-docker run -it --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS="plone.restapi==8.21.2 plone.app.iterate==4.0.2 plone.rest==2.0.0a3 plone.app.vocabularies==4.3.0 plone.volto==4.0.0a3" -e PROFILES="plone.volto:default-homepage" plone/plone-backend
+docker run -it --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS="plone.restapi==8.22.0 plone.app.iterate==4.0.2 plone.rest==2.0.0a5 plone.app.vocabularies==4.3.0 plone.volto==4.0.0a3" -e PROFILES="plone.volto:default-homepage" plone/plone-backend
 ```
 
 or using the convenience makefile command:
