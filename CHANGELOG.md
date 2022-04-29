@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- Move all cypress actions to the main `Makefile`, providing better meaningful names. Remove them from `package.json` script section. @sneridagh
+
 ### Feature
 
 ### Bugfix
@@ -11,11 +13,12 @@
 ### Internal
 
 - Improve Cypress integration, using Cypress official Github Action. Improve some flaky tests that showed up, and were known as problematic. Refactor and rename all the Github actions giving them meaningful names, and group them by type. Enable Cypress Dashboard for Volto. @sneridagh
-- Move all cypress actions to the main `Makefile`, providing better meaningful names. Remove them from `package.json` script section. @sneridagh
+- Stop using `xmlrpc` library for issuing the setup/teardown in core, use a `cy.request` instead. @sneridagh
 
 ### Documentation
 
 - Move Cypress documentation from `README.md` to the docs. Improve the docs with the new `Makefile` commands.
+
 ## 15.6.0 (2022-04-29)
 
 ### Feature
