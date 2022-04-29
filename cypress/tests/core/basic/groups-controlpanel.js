@@ -7,6 +7,7 @@ describe('Groups Control Panel Test', () => {
     cy.autologin();
   });
   it('Should add a new group to controlPanel', () => {
+    cy.intercept('POST', '/plone/++api++/@groups').as('addGroup');
     cy.visit('/controlpanel/groups');
     cy.waitForResourceToLoad('@navigation');
     cy.waitForResourceToLoad('@breadcrumbs');
@@ -21,6 +22,7 @@ describe('Groups Control Panel Test', () => {
     cy.get('input[id="field-email"]').clear().type('test@gmail.com');
     cy.get('button[title="Save"]').click(-50, -50, { force: true });
 
+    cy.wait('@addGroup');
     // then the group section must contains a groupname when I searched the
     // same with the same groupname
     cy.get('input[id="group-search-input"]').clear().type('uni');
