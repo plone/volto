@@ -6,7 +6,7 @@ jobs:
     name: Core Basic
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
+        node-version: [14.x, 16.x]
     steps:
       - uses: actions/checkout@v2
 
@@ -41,7 +41,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           record: true
-          parallel: true
+          parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
           # headless: true
           group: Core
@@ -70,7 +70,7 @@ jobs:
     name: Core Blocks
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
+        node-version: [14.x, 16.x]
     steps:
       - uses: actions/checkout@v2
 
@@ -105,7 +105,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           record: true
-          parallel: true
+          parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
           # headless: true
           group: Core Blocks
