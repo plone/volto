@@ -1,8 +1,24 @@
 # Change Log
 
-## 15.5.1 (unreleased)
+## 15.6.2 (unreleased)
 
 ### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
+### Documentation
+
+## 15.6.1 (2022-04-29)
+
+### Bugfix
+
+- Overwrite isValidNewOption of ArrayWidget to allow variants @ksuess
+
+## 15.6.0 (2022-04-29)
 
 ### Feature
 
@@ -11,10 +27,6 @@
 ### Bugfix
 
 - Used UniversalLink and PreviewImage components where needed, to right handle link and images. @giuliaghisini
-
-### Internal
-
-### Documentation
 
 ## 15.5.0 (2022-04-25)
 
