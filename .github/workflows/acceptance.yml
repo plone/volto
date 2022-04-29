@@ -44,7 +44,7 @@ jobs:
           parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
           # headless: true
-          group: Core
+          group: Core ${{ matrix.node-version }}
           config: integrationFolder=cypress/tests
           spec: cypress/tests/core/basic/**/*.js
           start: |
@@ -108,7 +108,7 @@ jobs:
           parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
           # headless: true
-          group: Core Blocks
+          group: Core Blocks ${{ matrix.node-version }}
           config: integrationFolder=cypress/tests
           spec: cypress/tests/core/blocks/**/*.js
           start: |
