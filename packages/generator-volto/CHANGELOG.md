@@ -1,6 +1,6 @@
 # Change Log
 
-## 5.6.3 (unreleased)
+## 5.6.3 (2022-04-29)
 
 ### Bugfix
 
