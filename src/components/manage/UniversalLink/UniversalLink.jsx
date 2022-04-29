@@ -66,12 +66,20 @@ const UniversalLink = ({
   const isExternal = !isInternalURL(url) || isBlacklisted;
   const isDownload = (!isExternal && url.includes('@@download')) || download;
 
+  const checkedURL = URLUtils.checkAndNormalizeUrl(url);
+
+  url = checkedURL.url;
+
   return isExternal ? (
     <a
       href={url}
       title={title}
       target={
-        !URLUtils.isMail(url) && !(openLinkInNewTab === false) ? '_blank' : null
+        !checkedURL.isMail &&
+        !checkedURL.isTelephone &&
+        !(openLinkInNewTab === false)
+          ? '_blank'
+          : null
       }
       rel="noopener noreferrer"
       className={className}

@@ -1,6 +1,6 @@
 # Change Log
 
-## 15.5.1 (unreleased)
+## 15.6.1 (unreleased)
 
 ### Breaking
 
@@ -16,6 +16,15 @@
 ### Documentation
 
 - Move Cypress documentation from `README.md` to the docs. Improve the docs with the new `Makefile` commands.
+## 15.6.0 (2022-04-29)
+
+### Feature
+
+- Added 'checkAndNormalizeUrl' function in URLUtils. @giuliaghisini
+
+### Bugfix
+
+- Used UniversalLink and PreviewImage components where needed, to right handle link and images. @giuliaghisini
 
 ## 15.5.0 (2022-04-25)
 
