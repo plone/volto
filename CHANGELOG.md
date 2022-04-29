@@ -2,8 +2,6 @@
 
 ## 15.5.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Added 'checkAndNormalizeUrl' function in URLUtils. @giuliaghisini
@@ -11,10 +9,6 @@
 ### Bugfix
 
 - Used UniversalLink and PreviewImage components where needed, to right handle link and images. @giuliaghisini
-
-### Internal
-
-### Documentation
 
 ## 15.5.0 (2022-04-25)
 
