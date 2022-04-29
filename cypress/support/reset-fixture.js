@@ -6,7 +6,7 @@ function setup() {
     headers: { Accept: 'text/xml', 'content-type': 'text/xml' },
     body:
       '<?xml version="1.0"?><methodCall><methodName>run_keyword</methodName><params><param><value><string>remote_zodb_setup</string></value></param><param><value><array><data><value><string>plone.app.robotframework.testing.PLONE_ROBOT_TESTING</string></value></data></array></value></param></params></methodCall>',
-  });
+  }).then(() => cy.log('Setting up API fixture'));
 }
 
 function teardown() {
@@ -17,7 +17,7 @@ function teardown() {
     headers: { Accept: 'text/xml', 'content-type': 'text/xml' },
     body:
       '<?xml version="1.0"?><methodCall><methodName>run_keyword</methodName><params><param><value><string>remote_zodb_teardown</string></value></param><param><value><array><data><value><string>plone.app.robotframework.testing.PLONE_ROBOT_TESTING</string></value></data></array></value></param></params></methodCall>',
-  });
+  }).then(() => cy.log('Tearing down API fixture'));
 }
 
 function main() {
