@@ -2,17 +2,9 @@
 
 ## 15.6.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Overwrite isValidNewOption of ArrayWidget to allow variants @ksuess
-
-### Internal
-
-### Documentation
 
 ## 15.6.0 (2022-04-29)
 
@@ -91,7 +83,6 @@
 - Pass placeholder and isDisabled properties to EmailWidget and UrlWidget @mihaislobozeanu
 - Pass placeholder property to PasswordWidget and NumberWidget @mihaislobozeanu
 - Fix getVocabName when vocabNameOrURL is false @avoinea #2955, #2919
-- Overwrite isValidNewOption of ArrayWidget to allow variants @ksuess
 
 ### Internal
 
