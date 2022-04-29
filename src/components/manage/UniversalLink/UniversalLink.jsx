@@ -68,6 +68,10 @@ const UniversalLink = ({
   const isDisplayFile =
     (!isExternal && url.includes('@@display-file')) || false;
 
+  const checkedURL = URLUtils.checkAndNormalizeUrl(url);
+
+  url = checkedURL.url;
+
   let tag = (
     <Link
       to={flattenToAppURL(url)}
@@ -86,7 +90,9 @@ const UniversalLink = ({
         href={url}
         title={title}
         target={
-          !URLUtils.isMail(url) && !(openLinkInNewTab === false)
+          !checkedURL.isMail &&
+          !checkedURL.isTelephone &&
+          !(openLinkInNewTab === false)
             ? '_blank'
             : null
         }
