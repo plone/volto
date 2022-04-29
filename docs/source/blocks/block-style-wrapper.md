@@ -23,7 +23,7 @@ See below for an example.
 
 ## Enabling Style Wrapper in a block
 
-The wrapper is always present in the render of the view and the edit components.
+The wrapper is always present in the rendering of both the view and edit components.
 If you want to add the default set of styles, you need to enable them with the following flag:
 
 ```js
