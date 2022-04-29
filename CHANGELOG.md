@@ -1,6 +1,6 @@
 # Change Log
 
-## 15.6.1 (unreleased)
+## 15.6.2 (unreleased)
 
 ### Breaking
 
@@ -18,6 +18,11 @@
 ### Documentation
 
 - Move Cypress documentation from `README.md` to the docs. Improve the docs with the new `Makefile` commands.
+## 15.6.1 (2022-04-29)
+
+### Bugfix
+
+- Overwrite isValidNewOption of ArrayWidget to allow variants @ksuess
 
 ## 15.6.0 (2022-04-29)
 
