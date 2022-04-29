@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": "Links to other learning resources."
+  "property=og:description": "Links to other learning resources."
+  "property=og:title": "learning resources"
+  "keywords": "Volto, Plone, frontend, React, learning resources"
+---
+
 # Other learning resources
 
 ## Plone Trainings
@@ -16,18 +24,26 @@ Javascript-centered trainings.
 - [React](https://training.plone.org/5/react/index.html)
 - [JavaScript For Plone Developers](https://training.plone.org/5/javascript/index.html)
 
-## PloneConf 2021
+## How does it work under the hood
 
-[Playlist on YouTube](https://www.youtube.com/playlist?list=PLGN9BI-OAQkQDLQinBwdEXpebDTQCwdGi)
+You can watch the talk during the World Plone Day 2021:
 
-## PloneConf 2020
+<iframe width="560" height="315" src="https://www.youtube.com/embed/kHec4MXH8vo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-[Playlist on YouTube](https://www.youtube.com/playlist?list=PLGN9BI-OAQkTJPayNdKIZ8lLDm5RVOLV3)
+## Presentations at the last two PloneConf's
+
+In recent years the new Volto frontend for Plone has been presented in more and more talks from
+our yearly Conferences:
+
+- [PloneConf 2021 Playlist on YouTube](https://www.youtube.com/playlist?list=PLGN9BI-OAQkQDLQinBwdEXpebDTQCwdGi)
+
+- [PloneConf 2020 Playlist on YouTube](https://www.youtube.com/playlist?list=PLGN9BI-OAQkTJPayNdKIZ8lLDm5RVOLV3)
+
 
 ## PloneConf 2019
 
-PloneConf 2019 had several Volto-relevant presentations.
-
+PloneConf 2019 and other events have several Volto-relevant presentations, but not stored in a
+single playlist:
 ### Howtos
 
 - [Rob Gietema - How to create your own Volto site!](https://www.youtube.com/watch?v=3QLN8tsjjf4)

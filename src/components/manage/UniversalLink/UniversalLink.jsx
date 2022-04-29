@@ -7,8 +7,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers/Url/Url';
-import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
+import {
+  flattenToAppURL,
+  isInternalURL,
+  URLUtils,
+} from '@plone/volto/helpers/Url/Url';
 import { matchPath } from 'react-router';
 
 import config from '@plone/volto/registry';
@@ -63,12 +66,20 @@ const UniversalLink = ({
   const isExternal = !isInternalURL(url) || isBlacklisted;
   const isDownload = (!isExternal && url.includes('@@download')) || download;
 
+  const checkedURL = URLUtils.checkAndNormalizeUrl(url);
+
+  url = checkedURL.url;
+
   return isExternal ? (
     <a
       href={url}
       title={title}
       target={
-        !URLUtils.isMail(url) && !(openLinkInNewTab === false) ? '_blank' : null
+        !checkedURL.isMail &&
+        !checkedURL.isTelephone &&
+        !(openLinkInNewTab === false)
+          ? '_blank'
+          : null
       }
       rel="noopener noreferrer"
       className={className}

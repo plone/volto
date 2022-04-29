@@ -6,9 +6,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
-import { Link } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
-import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
+import { UniversalLink } from '@plone/volto/components';
 import { FormattedMessage } from 'react-intl';
 
 /**
@@ -68,47 +67,15 @@ class LinkView extends Component {
           </p>
         )}
         {remoteUrl && (
-          <span>
+          <p>
             <FormattedMessage
               id="The link address is:"
               defaultMessage="The link address is:"
-            />
-            {isInternalURL(remoteUrl) ? (
-              <Link to={flattenToAppURL(remoteUrl)}>
-                {flattenToAppURL(remoteUrl)}
-              </Link>
-            ) : (
-              <>
-                {URLUtils.isMail('mailto:' + remoteUrl) ? (
-                  <a
-                    href={URLUtils.normaliseMail(remoteUrl)}
-                    rel="noopener noreferrer"
-                  >
-                    {remoteUrl}
-                  </a>
-                ) : (
-                  <>
-                    {URLUtils.isTelephone(remoteUrl) ? (
-                      <a
-                        href={URLUtils.normalizeTelephone(remoteUrl)}
-                        rel="noopener noreferrer"
-                      >
-                        {remoteUrl}
-                      </a>
-                    ) : (
-                      <a
-                        href={remoteUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {remoteUrl}
-                      </a>
-                    )}
-                  </>
-                )}
-              </>
-            )}
-          </span>
+            />{' '}
+            <UniversalLink href={remoteUrl}>
+              {flattenToAppURL(remoteUrl)}
+            </UniversalLink>
+          </p>
         )}
       </Container>
     );

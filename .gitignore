@@ -5,7 +5,6 @@ jsdoc
 webpack-assets.json
 webpack-stats.json
 npm-debug.log
-dist
 junit.xml
 eslint.xml
 yarn-error.log
@@ -43,6 +42,7 @@ pip-selfcheck.json
 pyvenv.cfg
 share
 /api/lib64
+lib64
 
 # locales
 locales/*.json
@@ -65,3 +65,6 @@ cypress/screenshots
 # Local environment setup
 .env
 public/critical.css
+
+# Sphinx and MyST
+docs/_build/

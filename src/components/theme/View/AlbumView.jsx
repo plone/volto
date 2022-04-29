@@ -5,16 +5,13 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { Container, Image, GridColumn, Segment } from 'semantic-ui-react';
+import { Container, GridColumn, Segment } from 'semantic-ui-react';
 import { Button, Modal, Grid } from 'semantic-ui-react';
-import { Icon } from '@plone/volto/components';
+import { Icon, UniversalLink, PreviewImage } from '@plone/volto/components';
 
 import openSVG from '@plone/volto/icons/open.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import backSVG from '@plone/volto/icons/back.svg';
-
-import { flattenToAppURL } from '@plone/volto/helpers';
 
 /**
  * Album view component class.
@@ -73,7 +70,7 @@ class AlbumView extends Component {
               {content.items &&
                 content.items.map((item, index) => (
                   <React.Fragment key={item.url}>
-                    {item.image && (
+                    {item.image_field && (
                       <Modal
                         className="gallery"
                         onClose={this.closeModal}
@@ -81,21 +78,19 @@ class AlbumView extends Component {
                         trigger={
                           <Grid.Column>
                             <Segment className="imageborder">
-                              <Image
-                                verticalAlign="middle"
+                              <PreviewImage
+                                item={item}
                                 alt={
                                   item.image_caption
                                     ? item.image_caption
                                     : item.title
                                 }
-                                src={flattenToAppURL(
-                                  item.image.scales.preview.download,
-                                )}
                                 onClick={() => {
                                   this.setState({
                                     openIndex: index,
                                   });
                                 }}
+                                className="ui middle aligned image"
                               />
                             </Segment>
                           </Grid.Column>
@@ -107,13 +102,13 @@ class AlbumView extends Component {
                             <Grid.Row>
                               <GridColumn width={10}>{item.title}</GridColumn>
                               <GridColumn width={2} textAlign="right">
-                                <Link
-                                  to={item.url}
+                                <UniversalLink
+                                  href={item.url}
                                   title={item['@type']}
                                   onClick={this.closeModal}
                                 >
                                   <Icon size="30px" fitted name={openSVG} />
-                                </Link>
+                                </UniversalLink>
                               </GridColumn>
                             </Grid.Row>
                           </Grid>
@@ -136,15 +131,22 @@ class AlbumView extends Component {
                             </Grid.Column>
                             <Grid.Column width={8}>
                               <Modal.Content image>
-                                <Image
-                                  wrapped
+                                <PreviewImage
+                                  item={item}
                                   alt={
                                     item.image_caption
                                       ? item.image_caption
                                       : item.title
                                   }
-                                  src={item.image.scales.large.download}
+                                  onClick={() => {
+                                    this.setState({
+                                      openIndex: index,
+                                    });
+                                  }}
+                                  size="large"
+                                  className="ui image"
                                 />
+
                                 <Modal.Description>
                                   <p>{item.description}</p>
                                 </Modal.Description>

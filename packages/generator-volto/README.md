@@ -14,6 +14,7 @@ $ npm install -g @plone/generator-volto
 ## Usage
 
 ### Creating a new Volto project using `npm init`
+
 ```
 npm init yo @plone/volto
 ```
@@ -23,6 +24,7 @@ This is the shortcut for using `npm init` command. It uses Yeoman (`yo`) and `@p
 Answer the prompt questions to complete the generation process.
 
 ### Creating a new Volto project
+
 ```
 $ yo @plone/volto
 ```

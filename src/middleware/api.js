@@ -3,7 +3,7 @@
  * @module middleware/api
  */
 
-import cookie from 'react-cookie';
+import Cookies from 'universal-cookie';
 import jwtDecode from 'jwt-decode';
 import { compact, flatten, union } from 'lodash';
 import { matchPath } from 'react-router';
@@ -12,11 +12,13 @@ import qs from 'query-string';
 import config from '@plone/volto/registry';
 
 import {
+  GET_CONTENT,
   LOGIN,
   RESET_APIERROR,
   SET_APIERROR,
 } from '@plone/volto/constants/ActionTypes';
-
+import { changeLanguage } from '@plone/volto/actions';
+import { normalizeLanguageName } from '@plone/volto/helpers';
 let socket = null;
 
 /**
@@ -104,11 +106,15 @@ function sendOnSocket(request) {
  * @returns {Promise} Action promise.
  */
 export default (api) => ({ dispatch, getState }) => (next) => (action) => {
+  const { settings } = config;
+
   if (typeof action === 'function') {
     return action(dispatch, getState);
   }
 
-  const { request, type, mode = 'paralel', ...rest } = action;
+  const { request, type, mode = 'parallel', ...rest } = action;
+  const { subrequest } = action; // We want subrequest remains in `...rest` above
+
   let actionPromise;
 
   if (!request) {
@@ -143,6 +149,9 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
                 type: item.type,
                 headers: item.headers,
                 params: request.params,
+                checkUrl: settings.actions_raising_api_errors.includes(
+                  action.type,
+                ),
               }).then((reqres) => {
                 return [...acc, reqres];
               });
@@ -155,6 +164,9 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
                 type: item.type,
                 headers: item.headers,
                 params: request.params,
+                checkUrl: settings.actions_raising_api_errors.includes(
+                  action.type,
+                ),
               }),
             ),
           )
@@ -163,6 +175,7 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
           type: request.type,
           headers: request.headers,
           params: request.params,
+          checkUrl: settings.actions_raising_api_errors.includes(action.type),
         });
     actionPromise.then(
       (result) => {
@@ -173,8 +186,18 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
             type: RESET_APIERROR,
           });
         }
+        if (type === GET_CONTENT) {
+          const lang = result?.language?.token;
+          if (lang && getState().intl.language !== lang && !subrequest) {
+            const langFileName = normalizeLanguageName(lang);
+            import('~/../locales/' + langFileName + '.json').then((locale) => {
+              dispatch(changeLanguage(lang, locale.default));
+            });
+          }
+        }
         if (type === LOGIN && settings.websockets) {
-          cookie.save('auth_token', result.token, {
+          const cookies = new Cookies();
+          cookies.set('auth_token', result.token, {
             path: '/',
             expires: new Date(jwtDecode(result.token).exp * 1000),
           });
@@ -203,7 +226,6 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
         return next({ ...rest, result, type: `${type}_SUCCESS` });
       },
       (error) => {
-        const { settings } = config;
         // Only SRR can set ECONNREFUSED
         if (error.code === 'ECONNREFUSED') {
           next({
@@ -226,20 +248,32 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
           });
         }
 
-        // Gateway timeout
-        else if (error?.response?.statusCode === 504) {
-          next({
-            ...rest,
-            error,
-            statusCode: error.code,
-            connectionRefused: true,
-            type: SET_APIERROR,
-          });
-        }
+        // Check for actions who can raise api errors
+        if (settings.actions_raising_api_errors.includes(action.type)) {
+          // Gateway timeout
+          if (error?.response?.statusCode === 504) {
+            next({
+              ...rest,
+              error,
+              statusCode: error.code,
+              connectionRefused: true,
+              type: SET_APIERROR,
+            });
+          }
 
-        // The rest
-        else if (settings.actions_raising_api_errors.includes(action.type)) {
-          if (error?.response?.statusCode === 401) {
+          // Redirect
+          else if (error?.code === 301) {
+            next({
+              ...rest,
+              error,
+              statusCode: error.code,
+              connectionRefused: false,
+              type: SET_APIERROR,
+            });
+          }
+
+          // Unauthorized
+          else if (error?.response?.statusCode === 401) {
             next({
               ...rest,
               error,

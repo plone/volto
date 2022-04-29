@@ -1,5 +1,5 @@
 import React from 'react';
-import withBlockExtensions from './withBlockExtensions';
+import withBlockExtensions, { resolveExtension } from './withBlockExtensions';
 import config from '@plone/volto/registry';
 import { render } from '@testing-library/react';
 
@@ -54,5 +54,30 @@ describe('withBlockExtensions', () => {
     const data = { '@type': 'testBlock', variation: 'extra' };
     const { container } = render(<ExtendedBlock data={data} />);
     expect(container).toMatchSnapshot();
+  });
+});
+
+describe('resolveExtensions', () => {
+  it('resolves the extensions from provided configuration', () => {
+    const data = { variation: 'extB' };
+    const extensions = {
+      variations: [
+        {
+          id: 'extA',
+          payload: 'extA specific',
+        },
+        {
+          id: 'extB',
+          payload: 'extB specific',
+        },
+      ],
+    };
+
+    const resolved = resolveExtension(
+      'variation',
+      extensions['variations'],
+      data,
+    );
+    expect(resolved.payload).toEqual('extB specific');
   });
 });

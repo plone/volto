@@ -135,11 +135,11 @@ class SelectAutoComplete extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { value, choices = [] } = this.props;
+    const { value, choices } = this.props;
     if (
       this.state.termsPairsCache.length === 0 &&
       value?.length > 0 &&
-      choices.length > 0
+      choices?.length > 0
     ) {
       this.setState((state) => ({
         termsPairsCache: [...state.termsPairsCache, ...choices],

@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import { Redirect } from 'react-router-dom';
 import { Portal } from 'react-portal';
 import { injectIntl } from 'react-intl';
 import qs from 'query-string';
@@ -21,6 +22,7 @@ import { listActions, getContent } from '@plone/volto/actions';
 import {
   BodyClass,
   getBaseUrl,
+  flattenToAppURL,
   getLayoutFieldname,
 } from '@plone/volto/helpers';
 
@@ -194,7 +196,9 @@ class View extends Component {
    */
   render() {
     const { views } = config;
-    if (this.props.error && !this.props.connectionRefused) {
+    if (this.props.error && this.props.error.code === 301) {
+      return <Redirect to={flattenToAppURL(this.props.error.url)} />;
+    } else if (this.props.error && !this.props.connectionRefused) {
       let FoundView;
       if (this.props.error.status === undefined) {
         // For some reason, while development and if CORS is in place and the

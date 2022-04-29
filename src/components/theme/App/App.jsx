@@ -147,7 +147,10 @@ class App extends Component {
         <SkipLinks />
         <Header pathname={path} />
         <Breadcrumbs pathname={path} />
-        <MultilingualRedirector pathname={this.props.pathname}>
+        <MultilingualRedirector
+          pathname={this.props.pathname}
+          contentLanguage={this.props.content?.language?.token}
+        >
           <Segment basic className="content-area">
             <main>
               <OutdatedBrowser />

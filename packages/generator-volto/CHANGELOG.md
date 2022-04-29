@@ -1,12 +1,46 @@
 # Change Log
 
-## 5.4.1 (unreleased)
+## 5.6.3 (unreleased)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
+## 5.6.2 (2022-04-25)
+
+### Bugfix
+
+- Fix `yarn lint` in Volto project generator scripts wasn't enforcing `--max-warnings=0` @sneridagh
+
+## 5.6.1 (2022-04-21)
+
+### Bugfix
+
+- Fix build for the docker image 6.0.0a4 in the `Makefile` command @sneridagh
+
+## 5.6.0 (2022-04-21)
+
+### Feature
+
+- Use `plone/plone-backend:6.0.0a4` in `Makefile` for new projects template for starting test backend @sneridagh
+
+## 5.5.1 (2022-04-21)
+
+### Bugfix
+
+- Fix webpack-less-plugin import in storybook @nileshgulia1
+- Remove useless import in storybook `main.js` @sneridagh
+
+## 5.5.0 (2022-02-03)
 
 ### Added
 
 - Add mrs-developer.json in template
-
-### Changes
+- Fix app template Makefile @avoinea
 
 ## 5.4.0 (2021-12-29)
 
