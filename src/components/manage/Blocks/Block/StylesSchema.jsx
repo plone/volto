@@ -12,9 +12,14 @@ const messages = defineMessages({
   },
 });
 
+const DEFAULT_COLORS = [
+  { name: 'blue', label: 'Blue' },
+  { name: 'grey', label: 'Grey' },
+];
+
 export const defaultStyleSchema = ({ schema, formData, intl }) => {
-  const availableColors =
-    config.blocks?.blocksConfig?.[formData['@type']]?.availableColors;
+  const colors =
+    config.blocks?.blocksConfig?.[formData['@type']]?.colors || DEFAULT_COLORS;
   const defaultColor =
     config.blocks?.blocksConfig?.[formData['@type']]?.defaultColor;
 
@@ -28,9 +33,9 @@ export const defaultStyleSchema = ({ schema, formData, intl }) => {
     ],
     properties: {
       backgroundColor: {
-        widget: 'basic_color_picker',
+        widget: 'color_picker',
         title: intl.formatMessage(messages.backgroundColor),
-        availableColors,
+        colors,
         defaultColor,
       },
     },
