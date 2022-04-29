@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix `omelette` yarn script to avoid creating a bogus symlink inside the Volto sources convinience facility @sneridagh
+
 ### Internal
 
 ## 5.6.2 (2022-04-25)
