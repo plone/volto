@@ -40,6 +40,7 @@ exports[`Search renders a search component 1`] = `
               className="summary url"
               href="/blog"
               onClick={[Function]}
+              target={null}
               title="Folder"
             >
               Blog
@@ -58,8 +59,11 @@ exports[`Search renders a search component 1`] = `
             className="tileFooter"
           >
             <a
+              className={null}
               href="/blog"
               onClick={[Function]}
+              target={null}
+              title={null}
             >
               Read More…
             </a>

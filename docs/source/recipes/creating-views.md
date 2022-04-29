@@ -23,7 +23,7 @@ We start by creating a file called: `components/FullView/FullView.jsx`.
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { UniversalLink } from '@plone/volto/components';
 import { Container, Image } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 
@@ -43,12 +43,12 @@ const FullView = ({ content }) => (
         )}
       </header>
       <section id="content-core">
-        {content.items.map(item => (
+        {content.items.map((item) => (
           <article key={item.url}>
             <h2>
-              <Link to={item.url} title={item['@type']}>
+              <UniversalLink href={item.url} title={item['@type']}>
                 {item.title}
-              </Link>
+              </UniversalLink>
             </h2>
             {item.image && (
               <Image
@@ -163,7 +163,7 @@ class from `semantic-ui`, `components/AlbumView/AlbumView.jsx`:
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { UniversalLink } from '@plone/volto/components';
 import { Card, Container, Image } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 
@@ -184,7 +184,7 @@ const AlbumView = ({ content }) => (
       </header>
       <section id="content-core">
         <Card.Group>
-          {content.items.map(item => (
+          {content.items.map((item) => (
             <Card key={item.url}>
               {item.image && (
                 <Image
@@ -194,9 +194,9 @@ const AlbumView = ({ content }) => (
               )}
               <Card.Content>
                 <Card.Header>
-                  <Link to={item.url} title={item['@type']}>
+                  <UniversalLink href={item.url} title={item['@type']}>
                     {item.title}
-                  </Link>
+                  </UniversalLink>
                 </Card.Header>
               </Card.Content>
             </Card>
