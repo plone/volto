@@ -6,7 +6,11 @@
 
 ### Feature
 
+- Added 'checkAndNormalizeUrl' function in URLUtils. @giuliaghisini
+
 ### Bugfix
+
+- Used UniversalLink and PreviewImage components where needed, to right handle link and images. @giuliaghisini
 
 ### Internal
 
