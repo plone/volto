@@ -42,13 +42,13 @@ plone.restapi documentation:
 ### Proxied backend routes
 
 Accessing to images and files are a special use case in Volto.
-Usually used as in plain HTML (src and href attributes) resource calls, they can't be wrapped in a JS backend call.
-This is problematic when dealing with protected resources that need the user to be auth to access them.
-For this reason, this resources are rerouted to an internal route in Node Express server in order to be wrapped with the proper authentication headers.
+Usually used as in plain HTML (`src` and `href` attributes) resource calls, they can't be wrapped in a JavaScript backend call.
+This is problematic when dealing with protected resources that need the user to be authenticated to access them.
+For this reason, this resources are rerouted through an internal route in Node Express server in order to be wrapped with the proper authentication headers.
 
-These proxied backend routes are in place for accessing `@@downloads` `@@display-file` and `@@images`.
-These are the backend `BrowserView`s routes that provide access to the images and file resources.
-So the Node Express Server proxy them, enhancing them at the same time with the authentication headers.
+These proxied backend routes are in place for accessing URLs containing `@@downloads` `@@display-file` and `@@images` backend views.
+These are the backend `BrowserView`s routes that retrieve images and file resources.
+So the Node Express server take care of proxy and enhancing them at the same time with the authentication headers.
 
 ```{note}
 This section contains pointers for backend integration with Plone.
