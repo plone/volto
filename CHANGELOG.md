@@ -2,19 +2,10 @@
 
 ## 15.7.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Handle @@display-file api endpoint like @@download @cekk
-- added 'secure' cookie option if site is in https. @giuliaghisini
 - Add calendar link to @ics_view @iFlameing
-
-### Bugfix
-
-### Internal
-
-### Documentation
 
 ## 15.7.0 (2022-04-29)
 
