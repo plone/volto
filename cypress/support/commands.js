@@ -32,6 +32,7 @@ Cypress.Commands.add(
     contentTitle,
     path = '',
     allow_discussion = false,
+    transition = '',
   }) => {
     let api_url, auth;
     if (Cypress.env('API') === 'guillotina') {
@@ -119,7 +120,15 @@ Cypress.Commands.add(
             allow_discussion: allow_discussion,
           },
         })
-        .then(() => console.log(`${contentType} created`));
+        .then(() => {
+          if (transition) {
+            cy.setWorkflow({
+              path: path || contentId,
+              review_state: transition,
+            });
+          }
+          console.log(`${contentType} created`);
+        });
     } else {
       return cy
         .request({
@@ -136,7 +145,15 @@ Cypress.Commands.add(
             allow_discussion: allow_discussion,
           },
         })
-        .then(() => console.log(`${contentType} created`));
+        .then(() => {
+          if (transition) {
+            cy.setWorkflow({
+              path: path || contentId,
+              review_state: transition,
+            });
+          }
+          console.log(`${contentType} created`);
+        });
     }
   },
 );
@@ -174,7 +191,7 @@ Cypress.Commands.add(
     fullname = 'editor',
     email = 'editor@local.dev',
     password = 'secret',
-    roles = ['Editor'],
+    roles = ['Member', 'Reader', 'Editor'],
   }) => {
     let api_url, auth, path;
     if (Cypress.env('API') === 'guillotina') {

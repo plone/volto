@@ -1,17 +1,14 @@
-name: Multilingual Tests
+name: Unit Tests
 on: [push]
 jobs:
-  build:
+  unit:
+    name: Core Unit Tests
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16.x]
-        python-version: [3.7]
+        node-version: [14.x, 16.x]
     steps:
       - uses: actions/checkout@v2
-      - name: debug
-        working-directory: api
-        run: ls -al
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
@@ -32,20 +29,14 @@ jobs:
             ${{ runner.os }}-yarn-
 
       # node install
-      - run: yarn install --frozen-lockfile
+      - run: yarn --frozen-lockfile
 
-      - name: Cypress Multilingual Acceptance Tests
-        run: yarn ci:cypress:run:multilingual
+      # node test
+      - run: yarn i18n && yarn test:ci
 
-      # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
-        if: failure()
+      # Bundlewatch
+      - run: yarn build
+      - uses: jackyef/bundlewatch-gh-action@master
         with:
-          name: cypress-screenshots
-          path: cypress/screenshots
-      # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
-        if: always()
-        with:
-          name: cypress-videos
-          path: cypress/videos
+          bundlewatch-github-token: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
+

@@ -17,6 +17,8 @@ describe('Blocks copy/paste', () => {
   });
 
   it('Copy/paste multiple blocks', () => {
+    cy.intercept('PATCH', '/**/my-page').as('save');
+    cy.intercept('GET', '/**/my-page').as('content');
     // GIVEN: A page with multiple blocks
     cy.get('.block.inner.text .public-DraftEditor-content').click();
     cy.get('button.block-add-button').click();
@@ -37,7 +39,8 @@ describe('Blocks copy/paste', () => {
     cy.get('.block.text [contenteditable]').click();
 
     cy.get('#toolbar-save').click();
-
+    cy.wait('@save');
+    cy.wait('@content');
     cy.get('a[aria-label="Edit"]').click();
 
     // WHEN: I copy paste them
@@ -50,6 +53,7 @@ describe('Blocks copy/paste', () => {
     cy.get('.block.inner.text .public-DraftEditor-content')
       .type('{shift}')
       .click();
+    cy.get('#toolbar-paste-blocks').should('be.visible');
     cy.get('#toolbar-paste-blocks').click();
 
     // THEN: the page will contain duplicated blocks
@@ -64,6 +68,8 @@ describe('Blocks copy/paste', () => {
 
   it('Cut/paste multiple blocks', () => {
     // GIVEN: A page with multiple blocks
+    cy.intercept('PATCH', '/**/my-page').as('save');
+    cy.intercept('GET', '/**/my-page').as('content');
     cy.get('.block.inner.text .public-DraftEditor-content').click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
@@ -83,7 +89,8 @@ describe('Blocks copy/paste', () => {
     cy.get('.block.text [contenteditable]').click();
 
     cy.get('#toolbar-save').click();
-
+    cy.wait('@save');
+    cy.wait('@content');
     cy.get('a[aria-label="Edit"]').click();
 
     // WHEN: I cut paste them
@@ -96,6 +103,8 @@ describe('Blocks copy/paste', () => {
     cy.get('.block.inner.text .public-DraftEditor-content')
       .type('{shift}')
       .click();
+
+    cy.get('#toolbar-paste-blocks').should('be.visible');
     cy.get('#toolbar-paste-blocks').click();
 
     // THEN: the page will contain only one of each blocks
@@ -109,6 +118,8 @@ describe('Blocks copy/paste', () => {
   });
 
   it('Delete multiple blocks', () => {
+    cy.intercept('PATCH', '/**/my-page').as('save');
+    cy.intercept('GET', '/**/my-page').as('content');
     // GIVEN: A page with multiple blocks
     cy.get('.block.inner.text .public-DraftEditor-content').click();
     cy.get('button.block-add-button').click();
@@ -129,7 +140,8 @@ describe('Blocks copy/paste', () => {
     cy.get('.block.text [contenteditable]').click();
 
     cy.get('#toolbar-save').click();
-
+    cy.wait('@save');
+    cy.wait('@content');
     cy.get('a[aria-label="Edit"]').click();
 
     // WHEN: I delete them
@@ -137,6 +149,7 @@ describe('Blocks copy/paste', () => {
       .click()
       .type('{shift}', { release: false });
     cy.get('.block-editor-maps').click();
+    cy.get('#toolbar-delete-blocks').should('be.visible');
     cy.get('#toolbar-delete-blocks').click();
 
     // THEN: the page will contain none of the blocks
