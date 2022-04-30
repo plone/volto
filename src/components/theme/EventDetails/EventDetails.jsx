@@ -5,6 +5,11 @@ import {
   When,
   Recurrence,
 } from '@plone/volto/components/theme/View/EventDatesInfo';
+import calendarSVG from '@plone/volto/icons/calendar.svg';
+
+import config from '@plone/volto/registry';
+import { Icon } from '@plone/volto/components';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 const messages = defineMessages({
   what: {
@@ -18,6 +23,10 @@ const messages = defineMessages({
   allDates: {
     id: 'event_alldates',
     defaultMessage: 'All dates',
+  },
+  downloadEvent: {
+    id: 'Download Event',
+    defaultMessage: 'Download Event',
   },
   where: {
     id: 'event_where',
@@ -44,6 +53,11 @@ const messages = defineMessages({
     defaultMessage: 'Visit external website',
   },
 });
+
+const toApiURL = (url) =>
+  config.settings.devProxyToApiPath
+    ? config.settings.devProxyToApiPath.concat(flattenToAppURL(url))
+    : config.settings.apiPath.concat(flattenToAppURL(url));
 
 const EventDetails = ({ content, display_as = 'aside' }) => {
   const intl = useIntl();
@@ -133,6 +147,17 @@ const EventDetails = ({ content, display_as = 'aside' }) => {
           </p>
         </>
       )}
+      <div className="download-event">
+        <Icon name={calendarSVG} />
+        <a
+          className="ics-download"
+          target="_blank"
+          rel="noreferrer"
+          href={`${toApiURL(content['@id'])}/ics_view`}
+        >
+          {intl.formatMessage(messages.downloadEvent)}
+        </a>
+      </div>
     </Segment>
   );
 };
