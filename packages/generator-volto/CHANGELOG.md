@@ -1,6 +1,6 @@
 # Change Log
 
-## 5.6.3 (unreleased)
+## 5.6.4 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,12 @@
 ### Bugfix
 
 ### Internal
+
+## 5.6.3 (2022-04-29)
+
+### Bugfix
+
+- Fix `omelette` yarn script to avoid creating a bogus symlink inside the Volto sources convinience facility @sneridagh
 
 ## 5.6.2 (2022-04-25)
 

@@ -1,6 +1,6 @@
 # Change Log
 
-## 15.6.2 (unreleased)
+## 15.7.1 (unreleased)
 
 ### Breaking
 
@@ -14,6 +14,12 @@
 ### Internal
 
 ### Documentation
+
+## 15.7.0 (2022-04-29)
+
+### Feature
+
+- added 'secure' cookie option if site is in https. @giuliaghisini
 
 ## 15.6.1 (2022-04-29)
 
