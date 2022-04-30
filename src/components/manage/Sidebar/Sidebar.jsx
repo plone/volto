@@ -11,14 +11,12 @@ import { compose } from 'redux';
 import { withCookies } from 'react-cookie';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
-import { BodyClass } from '@plone/volto/helpers';
+import { BodyClass, getCookieOptions } from '@plone/volto/helpers';
 import { Icon } from '@plone/volto/components';
 import forbiddenSVG from '@plone/volto/icons/forbidden.svg';
 import { setSidebarTab } from '@plone/volto/actions';
 import expandSVG from '@plone/volto/icons/left-key.svg';
 import collapseSVG from '@plone/volto/icons/right-key.svg';
-
-import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   document: {
@@ -99,12 +97,7 @@ class Sidebar extends Component {
    */
   onToggleExpanded() {
     const { cookies } = this.props;
-    cookies.set('sidebar_expanded', !this.state.expanded, {
-      expires: new Date(
-        new Date().getTime() + config.settings.cookieExpires * 1000,
-      ),
-      path: '/',
-    });
+    cookies.set('sidebar_expanded', !this.state.expanded, getCookieOptions());
     this.setState({
       expanded: !this.state.expanded,
     });

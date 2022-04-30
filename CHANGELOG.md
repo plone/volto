@@ -1,8 +1,11 @@
 # Change Log
 
-## 15.5.1 (unreleased)
+## 15.8.1 (unreleased)
 
 ### Breaking
+
+- Deprecate NodeJS 12 since it's out of LTS since April 30, 2022 @sneridagh
+- Move all cypress actions to the main `Makefile`, providing better meaningful names. Remove them from `package.json` script section. @sneridagh
 
 ### Feature
 
@@ -10,7 +13,43 @@
 
 ### Internal
 
+- Improve Cypress integration, using Cypress official Github Action. Improve some flaky tests that showed up, and were known as problematic. Refactor and rename all the Github actions giving them meaningful names, and group them by type. Enable Cypress Dashboard for Volto. @sneridagh
+- Stop using `xmlrpc` library for issuing the setup/teardown in core, use a `cy.request` instead. @sneridagh
+- Added Cypress environment variables for adjusting the backend URL of commands @JeffersonBledsoe #3271
+
 ### Documentation
+
+- Move Cypress documentation from `README.md` to the docs. Improve the docs with the new `Makefile` commands.
+- Improve English grammar and syntax in backend docs. @stevepiercy
+
+## 15.8.0 (2022-04-30)
+
+### Feature
+
+- Handle @@display-file api endpoint like @@download @cekk
+- Add calendar link to @ics_view @iFlameing
+
+## 15.7.0 (2022-04-29)
+
+### Feature
+
+- added 'secure' cookie option if site is in https. @giuliaghisini
+
+## 15.6.1 (2022-04-29)
+
+### Bugfix
+
+- Overwrite isValidNewOption of ArrayWidget to allow variants @ksuess
+
+## 15.6.0 (2022-04-29)
+
+### Feature
+
+- Added 'checkAndNormalizeUrl' function in URLUtils. @giuliaghisini
+
+### Bugfix
+
+- Used UniversalLink and PreviewImage components where needed, to right handle link and images. @giuliaghisini
 
 ## 15.5.0 (2022-04-25)
 
