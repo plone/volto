@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Changed Cypress command generation to use the Cypress Commands from Volto core @JeffersonBledsoe #3271
+
 ### Internal
 
 ## 5.6.3 (2022-04-29)
