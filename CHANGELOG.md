@@ -4,6 +4,7 @@
 
 ### Breaking
 
+- Deprecate NodeJS 12 since it's out of LTS since April 30, 2022 @sneridagh
 - Move all cypress actions to the main `Makefile`, providing better meaningful names. Remove them from `package.json` script section. @sneridagh
 
 ### Feature
@@ -18,6 +19,7 @@
 ### Documentation
 
 - Move Cypress documentation from `README.md` to the docs. Improve the docs with the new `Makefile` commands.
+
 ## 15.8.0 (2022-04-30)
 
 ### Feature
