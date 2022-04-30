@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Handle @@display-file api endpoint like @@download @cekk
+- added 'secure' cookie option if site is in https. @giuliaghisini
 - Add calendar link to @ics_view @iFlameing
 
 ### Bugfix
