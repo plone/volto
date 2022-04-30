@@ -4,7 +4,7 @@ import { getIfExists } from '../helpers';
 const HOSTNAME = Cypress.env('BACKEND_HOST') || 'localhost';
 const GUILLOTINA_API_URL = `http://${HOSTNAME}:8081/db/web`;
 const PLONE_SITE_ID = Cypress.env('SITE_ID') || 'plone';
-const PLONE_API_URL = `http://${HOSTNAME}:55001/${PLONE_SITE_ID}`;
+const PLONE_API_URL = Cypress.env('API_PATH') || `http://${HOSTNAME}:55001/${PLONE_SITE_ID}`;
 
 // --- AUTOLOGIN -------------------------------------------------------------
 Cypress.Commands.add('autologin', (usr, pass) => {
