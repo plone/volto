@@ -1,6 +1,6 @@
 # Change Log
 
-## 15.6.2 (unreleased)
+## 15.8.1 (unreleased)
 
 ### Breaking
 
@@ -18,6 +18,18 @@
 ### Documentation
 
 - Move Cypress documentation from `README.md` to the docs. Improve the docs with the new `Makefile` commands.
+## 15.8.0 (2022-04-30)
+
+### Feature
+
+- Handle @@display-file api endpoint like @@download @cekk
+- Add calendar link to @ics_view @iFlameing
+
+## 15.7.0 (2022-04-29)
+
+### Feature
+
+- added 'secure' cookie option if site is in https. @giuliaghisini
 
 ## 15.6.1 (2022-04-29)
 
