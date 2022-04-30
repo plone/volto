@@ -19,10 +19,10 @@ describe('Add Content Tests', () => {
       .type('My File')
       .should('have.value', 'My File');
 
-    cy.get('input[id="field-file"]').attachFile('file.pdf', {
-      subjectType: 'input',
-    });
-    cy.wait(2000);
+    cy.fixture('file.pdf', { encoding: null }).as('pdf');
+    cy.get('input[id="field-file"]').selectFile('@pdf', { force: true });
+
+    cy.wait(1000);
 
     cy.get('#toolbar-save').focus().click();
     cy.waitForResourceToLoad('@navigation');
@@ -74,6 +74,8 @@ describe('Add Content Tests', () => {
   });
 
   it('As editor I can add an image', function () {
+    cy.intercept('POST', '*').as('saveImage');
+    cy.intercept('GET', '/**/image.png').as('getImage');
     // when I add an image
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-image').click();
@@ -82,22 +84,22 @@ describe('Add Content Tests', () => {
       .type('My image')
       .should('have.value', 'My image');
 
-    cy.fixture('image.png', 'base64')
-      .then((fc) => {
-        return Cypress.Blob.base64StringToBlob(fc);
-      })
-      .then((fileContent) => {
-        cy.get('input#field-image').attachFile(
-          { fileContent, fileName: 'image.png', mimeType: 'image/png' },
-          { subjectType: 'input' },
-        );
-        cy.get('#field-image-image').parent().parent().contains('image.png');
-      });
+    cy.fixture('image.png', { encoding: null }).as('image');
+    cy.get('input[id="field-image"]').selectFile('@image', { force: true });
 
     cy.get('#toolbar-save').click();
+    cy.wait('@saveImage');
+    cy.wait('@getImage');
+
     cy.url().should('eq', Cypress.config().baseUrl + '/image.png');
 
     cy.contains('My image');
+    cy.get('.view-wrapper img')
+      .should('be.visible')
+      .and(($img) => {
+        // "naturalWidth" and "naturalHeight" are set when the image loads
+        expect($img[0].naturalWidth).to.be.greaterThan(0);
+      });
   });
 
   it('As editor I can add a news item', function () {
@@ -151,6 +153,8 @@ describe('Add Content Tests', () => {
   });
 
   it('As editor I can add a Link (with an external link)', function () {
+    cy.intercept('POST', '*').as('saveLink');
+    cy.intercept('GET', '/**/my-link').as('getLink');
     // When I add a link
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-link').click();
@@ -164,6 +168,9 @@ describe('Add Content Tests', () => {
       .should('have.value', 'https://google.com');
 
     cy.get('#toolbar-save').click();
+    cy.wait('@saveLink');
+    cy.wait('@getLink');
+
     cy.url().should('eq', Cypress.config().baseUrl + '/my-link');
 
     // Then the link title should show up on the link view
@@ -173,6 +180,8 @@ describe('Add Content Tests', () => {
   });
 
   it('As editor I can add a Link (with an internal link)', function () {
+    cy.intercept('POST', '*').as('saveLink');
+    cy.intercept('GET', '/**/my-link').as('getLink');
     // Given a Document "Link Target"
     cy.createContent({
       contentType: 'Document',
@@ -193,6 +202,9 @@ describe('Add Content Tests', () => {
       .should('have.value', '/link-target');
 
     cy.get('#toolbar-save').click();
+    cy.wait('@saveLink');
+    cy.wait('@getLink');
+
     cy.url().should('eq', Cypress.config().baseUrl + '/my-link');
 
     // Then the link title should show up on the link view
