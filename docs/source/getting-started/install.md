@@ -6,7 +6,12 @@ html_meta:
   "keywords": "Volto, Plone, frontend, React, install, nvm, NodeJS, JavaScript"
 ---
 
+(frontend-getting-started-label)=
+
 # Getting Started
+
+
+(frontend-getting-started-installing-volto-label)=
 
 ## Installing Volto
 
@@ -20,6 +25,9 @@ are met:
 
 Depending on the OS that you are using some of the following might change, they
 are assuming a MacOS/Linux machine:
+
+
+(frontend-getting-started-components-processes-running-label)=
 
 ## Components / Processes running
 
@@ -36,6 +44,8 @@ ever need to make) are in the JavaScript code used in the browser and Razzle pro
 this getting started chapter will focus on installing a NodeJS/JavaScript environment locally
 and suggest you start the API backend using a container.
 
+
+(frontend-getting-started-install-nvm-label)=
 
 ## Install nvm (NodeJS version manager)
 
@@ -87,6 +97,9 @@ it provides easy access to any NodeJS released version.
     Releases page](https://nodejs.org/en/about/releases/), starting with Node 12 LTS.
     ```
 
+
+(frontend-getting-started-yarn-label)=
+
 ## Yarn (NodeJS package manager)
 
 Install the Yarn Classic version (not the 2.x one!), of the popular node package manager.
@@ -108,6 +121,9 @@ Install the Yarn Classic version (not the 2.x one!), of the popular node package
     platform you are on. Take a look at the original `yarn`
     [documentation](https://classic.yarnpkg.com/lang/en/) for a list of them.
     ```
+
+
+(frontend-getting-started-use-or-install-docker-label)=
 
 ## Use or Install Docker
 
@@ -133,6 +149,9 @@ To install Docker desktop for Mac, here are the detailed instructions:
     ```
 
     should not throw an error and show the current running containers.
+
+
+(frontend-getting-started-run-a-volto-ready-plone-docker-container-label)=
 
 ## Run a Volto ready Plone Docker container
 
@@ -166,6 +185,8 @@ If you are somewhat familiar with Python development, you can also install Plone
 without using Docker. Check the [backend configuration](../configuration/backend.md) section.
 It also has more information on plone.volto.
 
+
+(frontend-getting-started-install-volto-label)=
 
 ## Install Volto
 
@@ -207,6 +228,9 @@ Use the project generator helper utility.
     ```{danger}
     `create-volto-app` was deprecated from January 2021, in favor of [@plone/generator-volto](https://github.com/plone/generator-volto).
     ```
+
+
+(frontend-getting-started-build-the-production-bundle-label)=
 
 ## Build the production bundle
 

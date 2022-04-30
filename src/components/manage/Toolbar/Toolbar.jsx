@@ -29,7 +29,7 @@ import {
   unlockContent,
 } from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
-import { BodyClass, getBaseUrl } from '@plone/volto/helpers';
+import { BodyClass, getBaseUrl, getCookieOptions } from '@plone/volto/helpers';
 import { Pluggable } from '@plone/volto/components/manage/Pluggable';
 
 import penSVG from '@plone/volto/icons/pen.svg';
@@ -231,12 +231,7 @@ class Toolbar extends Component {
 
   handleShrink = () => {
     const { cookies } = this.props;
-    cookies.set('toolbar_expanded', !this.state.expanded, {
-      expires: new Date(
-        new Date().getTime() + config.settings.cookieExpires * 1000,
-      ),
-      path: '/',
-    });
+    cookies.set('toolbar_expanded', !this.state.expanded, getCookieOptions());
     this.setState(
       (state) => ({ expanded: !state.expanded }),
       () => this.props.setExpandedToolbar(this.state.expanded),
