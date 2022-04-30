@@ -19,7 +19,8 @@ jobs:
       # node cache
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+
       - uses: actions/cache@v3
         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
@@ -29,7 +30,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       # node install
-      - run: yarn --frozen-lockfile
+      - run: yarn --immutable
 
       - name: Prettier check
         run: yarn run prettier
@@ -62,7 +63,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       # node install
-      - run: yarn --frozen-lockfile
+      - run: yarn --immutable
 
       - name: ESlint check
         run: yarn run lint
@@ -95,7 +96,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       # node install
-      - run: yarn --frozen-lockfile
+      - run: yarn --immutable
 
       - name: i18n locales in sync
         run: yarn run i18n:ci

@@ -19,8 +19,9 @@ jobs:
       # node cache
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+
+      - uses: actions/cache@v3
         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -29,7 +30,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       ## node install
-      - run: yarn --frozen-lockfile
+      - run: yarn --immutable
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v2
@@ -83,8 +84,9 @@ jobs:
       # node cache
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+
+      - uses: actions/cache@v3
         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -93,7 +95,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       ## node install
-      - run: yarn --frozen-lockfile
+      - run: yarn --immutable
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v2
@@ -147,8 +149,9 @@ jobs:
       # node cache
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+
+      - uses: actions/cache@v3
         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -157,7 +160,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       ## node install
-      - run: yarn --frozen-lockfile
+      - run: yarn --immutable
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v2
@@ -215,8 +218,9 @@ jobs:
       # node cache
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+
+      - uses: actions/cache@v3
         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -224,7 +228,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - run: yarn --frozen-lockfile
+      - run: yarn --immutable
 
       # python setup (temporary, while p.volto coresandbox changes are in a PR)
       # - name: Set up Python ${{ matrix.python-version }}
@@ -302,8 +306,9 @@ jobs:
       # node cache
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+
+      - uses: actions/cache@v3
         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -312,7 +317,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       # node install
-      - run: yarn --frozen-lockfile
+      - run: yarn --immutable
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v2
@@ -370,8 +375,9 @@ jobs:
       # node cache
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+
+      - uses: actions/cache@v3
         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -380,7 +386,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       # node install
-      - run: yarn --frozen-lockfile
+      - run: yarn --immutable
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v2
@@ -435,8 +441,9 @@ jobs:
       # node cache
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+
+      - uses: actions/cache@v3
         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -445,7 +452,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       # node install
-      - run: yarn --frozen-lockfile
+      - run: yarn --immutable
 
       # # python setup (temporary, while p.a.iterate changes are in a PR)
       # - name: Set up Python ${{ matrix.python-version }}
@@ -528,8 +535,9 @@ jobs:
       # node cache
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+
+      - uses: actions/cache@v3
         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -539,7 +547,7 @@ jobs:
 
       # Build main Volto environment
       - name: Build main Volto environment
-        run: yarn --frozen-lockfile
+        run: yarn --immutable
 
       # Generator own tests
       - name: Generator tests
@@ -625,8 +633,9 @@ jobs:
       # node cache
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+
+      - uses: actions/cache@v3
         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -635,7 +644,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       # node install
-      - run: yarn --frozen-lockfile
+      - run: yarn --immutable
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v2
