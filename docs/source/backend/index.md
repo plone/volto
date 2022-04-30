@@ -39,6 +39,17 @@ plone.restapi documentation:
 - **Search and indexing integration**: by providing the right adapters, you can
   extract searchable text from blocks.
 
+### Proxied backend routes
+
+Accessing to images and files are a special use case in Volto.
+Usually used as in plain HTML (src and href attributes) resource calls, they can't be wrapped in a JS backend call.
+This is problematic when dealing with protected resources that need the user to be auth to access them.
+For this reason, this resources are rerouted to an internal route in Node Express server in order to be wrapped with the proper authentication headers.
+
+These proxied backend routes are in place for accessing `@@downloads` `@@display-file` and `@@images`.
+These are the backend `BrowserView`s routes that provide access to the images and file resources.
+So the Node Express Server proxy them, enhancing them at the same time with the authentication headers.
+
 ```{note}
 This section contains pointers for backend integration with Plone.
 Contributions for the Guillotina backend are needed.
