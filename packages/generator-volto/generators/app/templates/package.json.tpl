@@ -135,7 +135,7 @@
     "not dead"
   ],
   "engines": {
-    "node": "^12 || ^14 || ^16"
+    "node": "^14 || ^16"
   },
   "dependencies": <%- dependencies %>,
   "devDependencies": {
