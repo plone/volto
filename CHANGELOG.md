@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add calendar link to @ics_view @iFlameing
+
 ### Bugfix
 
 ### Internal
