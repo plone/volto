@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Deprecate NodeJS 12 from package generators since it's out of LTS since April 30th, 2022. @sneridagh
+
 ### Bugfix
 
 ### Internal

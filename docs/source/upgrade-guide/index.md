@@ -29,6 +29,16 @@ the latest changes, and propose to you to merge the changes, so you can run it o
 
 ## Upgrading to Volto 15.x.x
 
+## Deprecating NodeJS 12
+
+Since April 30th, 2022 NodeJS 12 is out of Long Term Support by the NodeJS community, so
+we are deprecating it in Volto 13.
+Please update your projects to a NodeJS LTS version (14 or 16 at the moment of this writing, 16 is recommended).
+
+(volto-upgrade-guide-15.x.x)=
+
+## Upgrading to Volto 15.x.x
+
 ### Updated react-cookie library
 
 This fixes a use case where cookies could potentially be messed up if your site is under heavy load.
