@@ -217,7 +217,7 @@ JavaScript-centered trainings.
 
 - Node 16: Supported since Volto 14
 - Node 14: Supported since Volto 8.8.0
-- Node 12: Supported since Volto 4
+- Node 12: Deprecated from Volto 16 onwards. It was supported since Volto 4
 - Node 10: Deprecated from Volto 13 onwards. It was supported since Volto 1 (and its predecessor "plone-react")
 
 ## Browser support
