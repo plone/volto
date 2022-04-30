@@ -7,10 +7,9 @@ describe('FileWidget Test', () => {
   it('As editor I am able to see the preview of uploading image', () => {
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-news-item').click();
-
-    cy.fixture('image.png', { encoding: null }).as('image');
-    cy.get('input[id="field-image"]').selectFile('@image', { force: true });
-
+    cy.get('input[id="field-image"]').attachFile('image.png', {
+      subjectType: 'input',
+    });
     cy.get('#field-image-image').should('have.attr', 'src');
   });
 });

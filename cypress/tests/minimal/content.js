@@ -19,10 +19,11 @@ describe('Add Content Tests', () => {
       .type('My File')
       .should('have.value', 'My File');
 
-    cy.fixture('file.pdf', { encoding: null }).as('pdf');
-    cy.get('input[id="field-file"]').selectFile('@pdf', { force: true });
+    cy.get('input[id="field-file"]').attachFile('file.pdf', {
+      subjectType: 'input',
+    });
 
-    cy.wait(1000);
+    cy.wait(2000);
 
     cy.get('#toolbar-save').focus().click();
     cy.waitForResourceToLoad('@navigation');
@@ -84,8 +85,17 @@ describe('Add Content Tests', () => {
       .type('My image')
       .should('have.value', 'My image');
 
-    cy.fixture('image.png', { encoding: null }).as('image');
-    cy.get('input[id="field-image"]').selectFile('@image', { force: true });
+    cy.fixture('image.png', 'base64')
+      .then((fc) => {
+        return Cypress.Blob.base64StringToBlob(fc);
+      })
+      .then((fileContent) => {
+        cy.get('input#field-image').attachFile(
+          { fileContent, fileName: 'image.png', mimeType: 'image/png' },
+          { subjectType: 'input' },
+        );
+        cy.get('#field-image-image').parent().parent().contains('image.png');
+      });
 
     cy.get('#toolbar-save').click();
     cy.wait('@saveImage');
