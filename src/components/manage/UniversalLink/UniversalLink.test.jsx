@@ -177,3 +177,17 @@ describe('UniversalLink', () => {
     expect(global.console.error).toHaveBeenCalled();
   });
 });
+
+it('renders a UniversalLink component when url ends with @@display-file', () => {
+  const component = renderer.create(
+    <Provider store={store}>
+      <MemoryRouter>
+        <UniversalLink href="http://localhost:3000/en/welcome-to-volto/@@display-file">
+          <h1>Title</h1>
+        </UniversalLink>
+      </MemoryRouter>
+    </Provider>,
+  );
+  const json = component.toJSON();
+  expect(json).toMatchSnapshot();
+});

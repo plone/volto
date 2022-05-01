@@ -5,9 +5,10 @@
 
 import React from 'react';
 import { Container, List, Segment } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { useSelector, shallowEqual } from 'react-redux';
+import { UniversalLink } from '@plone/volto/components';
 import config from '@plone/volto/registry';
 import { flattenToAppURL } from '@plone/volto/helpers';
 
@@ -96,9 +97,9 @@ const Footer = ({ intl }) => {
         <List horizontal inverted>
           {siteActions?.map((item) => (
             <div role="listitem" className="item">
-              <Link
+              <UniversalLink
                 className="item"
-                to={
+                href={
                   settings.isMultilingual
                     ? `/${lang}/${flattenToAppURL(item.url)}`
                     : flattenToAppURL(item.url)
@@ -108,7 +109,7 @@ const Footer = ({ intl }) => {
                   title: item.title,
                   id: item.id,
                 })}
-              </Link>
+              </UniversalLink>
             </div>
           ))}
           <div role="listitem" className="item">
