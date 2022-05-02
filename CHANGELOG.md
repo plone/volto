@@ -6,7 +6,7 @@
 
 - Deprecate NodeJS 12 since it's out of LTS since April 30, 2022 @sneridagh
 - Move all cypress actions to the main `Makefile`, providing better meaningful names. Remove them from `package.json` script section. @sneridagh
-
+- Added viewableInBrowserObjects setting to use in alternative to downloadableObjects, if you want to view file in browser intstead downloading. @giuliaghisini
 ### Feature
 
 ### Bugfix
