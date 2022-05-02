@@ -41,9 +41,9 @@ describe('Blocks Tests', () => {
     cy.waitForResourceToLoad('my-page');
 
     // then the page view should contain an embedded YouTube video
-    cy.get('.block.video iframe')
+    cy.get('.block.video img.placeholder')
       .should('have.attr', 'src')
-      .and('match', /\/\/www.youtube.com\/embed\/T6J3d35oIAY/);
+      .and('match', /\/\/img.youtube.com\/vi\/T6J3d35oIAY\/sddefault.jpg/);
   });
 
   it('Add Video Block with Vimeo Video', () => {
@@ -59,7 +59,7 @@ describe('Blocks Tests', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
 
     // then the page view should contain an embedded Vimeo video
-    cy.get('.block.video iframe')
+    cy.get('.block.video src')
       .should('have.attr', 'src')
       .and('match', /\/\/player.vimeo.com\/video\/85804536/);
   });
