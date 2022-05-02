@@ -5,8 +5,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { Segment, Container } from 'semantic-ui-react';
+import { UniversalLink } from '@plone/volto/components';
 import Image from '@plone/volto/components/theme/Image/Image';
 
 /**
@@ -22,9 +22,9 @@ const ListingView = ({ content }) => (
         <Segment key={item.url} className="listing-item">
           <Container>
             <h2>
-              <Link to={item.url} title={item['@type']}>
+              <UniversalLink item={item} title={item['@type']}>
                 {item.title}
-              </Link>
+              </UniversalLink>
             </h2>
             {item.description && <p>{item.description}</p>}
           </Container>

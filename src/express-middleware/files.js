@@ -20,7 +20,7 @@ function fileMiddleware(req, res, next) {
 export default function () {
   const middleware = express.Router();
 
-  middleware.all(['**/@@download/*'], fileMiddleware);
+  middleware.all(['**/@@download/*', '**/@@display-file/*'], fileMiddleware);
   middleware.id = 'filesResourcesProcessor';
   return middleware;
 }

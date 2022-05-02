@@ -2,6 +2,8 @@ import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+import { Provider } from 'react-intl-redux';
+import configureStore from 'redux-mock-store';
 import View from './View';
 
 import config from '@plone/volto/registry';
@@ -15,6 +17,14 @@ config.settings.imageScales = {
   icon: 32,
   listing: 16,
 };
+const mockStore = configureStore();
+
+const store = mockStore({
+  intl: {
+    locale: 'en',
+    messages: {},
+  },
+});
 
 describe('Image View Component', () => {
   test('renders a view image component with a local image', () => {
@@ -25,9 +35,11 @@ describe('Image View Component', () => {
   });
   test('renders a view image component with a local image with a link', () => {
     const { container, getByRole } = render(
-      <MemoryRouter>
-        <View data={{ url: '/image.jpg', href: '/front-page' }} />
-      </MemoryRouter>,
+      <Provider store={store}>
+        <MemoryRouter>
+          <View data={{ url: '/image.jpg', href: '/front-page' }} />
+        </MemoryRouter>
+      </Provider>,
     );
     const img = getByRole('img');
     const a = container.querySelector('a');
@@ -36,16 +48,23 @@ describe('Image View Component', () => {
   });
   test('renders a view image component with an external image', () => {
     const { getByRole } = render(
-      <View data={{ url: 'https://plone.org/logo.jpg' }} />,
+      <Provider store={store}>
+        <View data={{ url: 'https://plone.org/logo.jpg' }} />
+      </Provider>,
     );
     const img = getByRole('img');
     expect(img).toHaveAttribute('src', 'https://plone.org/logo.jpg');
   });
   test('renders a view image component with an external image with a link', () => {
     const { container, getByRole } = render(
-      <View
-        data={{ url: 'https://plone.org/logo.jpg', href: 'http://front-page' }}
-      />,
+      <Provider store={store}>
+        <View
+          data={{
+            url: 'https://plone.org/logo.jpg',
+            href: 'http://front-page',
+          }}
+        />
+      </Provider>,
     );
     const img = getByRole('img');
     const a = container.querySelector('a');

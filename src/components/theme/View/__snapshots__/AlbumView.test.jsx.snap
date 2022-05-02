@@ -41,6 +41,7 @@ exports[`renders an gallery view component 1`] = `
             >
               <img
                 alt=""
+                className="ui middle aligned image"
                 loading="lazy"
                 onClick={[Function]}
                 role="img"
@@ -51,7 +52,6 @@ exports[`renders an gallery view component 1`] = `
                     "width": "100%",
                   }
                 }
-                verticalAlign="middle"
               />
             </picture>
             <noscript
@@ -62,7 +62,7 @@ exports[`renders an gallery view component 1`] = `
                 src=\\"http://localhost:3000/news\\"
                 undefined
                 alt=\\"\\"
-                class=\\"\\"
+                class=\\"ui middle aligned image\\"
                 role=\\"img\\"
                 loading=\\"lazy\\"
                 style=\\"width: 100%; object-fit: cover;\\"
@@ -88,6 +88,7 @@ exports[`renders an gallery view component 1`] = `
             >
               <img
                 alt=""
+                className="ui middle aligned image"
                 loading="lazy"
                 onClick={[Function]}
                 role="img"
@@ -98,7 +99,6 @@ exports[`renders an gallery view component 1`] = `
                     "width": "100%",
                   }
                 }
-                verticalAlign="middle"
               />
             </picture>
             <noscript
@@ -109,7 +109,7 @@ exports[`renders an gallery view component 1`] = `
                 src=\\"http://localhost:3000/events\\"
                 undefined
                 alt=\\"\\"
-                class=\\"\\"
+                class=\\"ui middle aligned image\\"
                 role=\\"img\\"
                 loading=\\"lazy\\"
                 style=\\"width: 100%; object-fit: cover;\\"

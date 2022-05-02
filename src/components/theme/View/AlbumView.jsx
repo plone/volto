@@ -5,10 +5,9 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { Container, GridColumn, Segment } from 'semantic-ui-react';
 import { Button, Modal, Grid } from 'semantic-ui-react';
-import { Icon } from '@plone/volto/components';
+import { Icon, UniversalLink } from '@plone/volto/components';
 import Image from '@plone/volto/components/theme/Image/Image';
 
 import openSVG from '@plone/volto/icons/open.svg';
@@ -81,20 +80,19 @@ class AlbumView extends Component {
                           <Grid.Column>
                             <Segment className="imageborder">
                               <Image
-                                verticalAlign="middle"
                                 alt={
                                   item.image_caption
                                     ? item.image_caption
                                     : item.title
                                 }
                                 image={item['@id']}
-                                imageField={item.image_field}
                                 maxSize={400}
                                 onClick={() => {
                                   this.setState({
                                     openIndex: index,
                                   });
                                 }}
+                                className="ui middle aligned image"
                               />
                             </Segment>
                           </Grid.Column>
@@ -106,13 +104,13 @@ class AlbumView extends Component {
                             <Grid.Row>
                               <GridColumn width={10}>{item.title}</GridColumn>
                               <GridColumn width={2} textAlign="right">
-                                <Link
-                                  to={item.url}
+                                <UniversalLink
+                                  href={item.url}
                                   title={item['@type']}
                                   onClick={this.closeModal}
                                 >
                                   <Icon size="30px" fitted name={openSVG} />
-                                </Link>
+                                </UniversalLink>
                               </GridColumn>
                             </Grid.Row>
                           </Grid>
@@ -142,9 +140,16 @@ class AlbumView extends Component {
                                       : item.title
                                   }
                                   image={item['@id']}
-                                  imageField={item.image_field}
                                   maxSize={800}
+                                  onClick={() => {
+                                    this.setState({
+                                      openIndex: index,
+                                    });
+                                  }}
+                                  size="large"
+                                  className="ui image"
                                 />
+
                                 <Modal.Description>
                                   <p>{item.description}</p>
                                 </Modal.Description>
