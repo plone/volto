@@ -108,6 +108,22 @@ function normalizeChoices(choices) {
 }
 
 /**
+ * Compare values and return true if equal.
+ * Consider upper and lower case.
+ * @method compareOption
+ * @param {*} inputValue
+ * @param {*} option
+ * @param {*} accessors
+ * @returns {boolean}
+ */
+const compareOption = (inputValue = '', option, accessors) => {
+  const candidate = String(inputValue);
+  const optionValue = String(accessors.getOptionValue(option));
+  const optionLabel = String(accessors.getOptionLabel(option));
+  return optionValue === candidate || optionLabel === candidate;
+};
+
+/**
  * ArrayWidget component class.
  * @class ArrayWidget
  * @extends Component
@@ -322,6 +338,22 @@ class ArrayWidget extends Component {
             this.props.intl.formatMessage(messages.select)
           }
           onChange={this.handleChange}
+          isValidNewOption={(
+            inputValue,
+            selectValue,
+            selectOptions,
+            accessors,
+          ) =>
+            !(
+              !inputValue ||
+              selectValue.some((option) =>
+                compareOption(inputValue, option, accessors),
+              ) ||
+              selectOptions.some((option) =>
+                compareOption(inputValue, option, accessors),
+              )
+            )
+          }
           isClearable
           isMulti
         />

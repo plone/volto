@@ -147,6 +147,7 @@ const customStore = {
     subrequests: {
       'testBlock-multiple': searchResults,
       'testBlock-link': searchResults,
+      'testBlock-image': searchResults,
     },
   },
   userSession: { token: '1234' },
@@ -190,6 +191,21 @@ const ObjectBrowserWidget = (args) => {
 
 export default {
   title: 'Widgets/Object Browser',
+  argTypes: {
+    selectableTypes: {
+      name: 'widgetOptions.pattern_options.selectableTypes',
+      description: 'List of content type names that can be selected',
+      table: {
+        type: {
+          summary: 'Something short',
+          detail: 'Something really really long',
+        },
+      },
+      control: {
+        type: null,
+      },
+    },
+  },
   component: OBC,
   decorators: [
     (Story) => (
@@ -208,5 +224,13 @@ export const Placeholder = () => (
   <ObjectBrowserWidget
     allowExternals={true}
     placeholder="This is the placeholder text"
+  />
+);
+export const Image = () => <ObjectBrowserWidget mode="image" return="single" />;
+export const SelectableType = () => (
+  <ObjectBrowserWidget
+    widgetOptions={{
+      pattern_options: { selectableTypes: ['Folder', 'Image', 'Event'] },
+    }}
   />
 );
