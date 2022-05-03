@@ -157,7 +157,7 @@ class Controlpanels extends Component {
       }),
     );
     const groups = map(uniqBy(controlpanels, 'group'), 'group');
-    const { controlPanelsIcons: icons } = config.settings;
+    const { controlPanelsIcons: icons, prefixPath } = config.settings;
 
     return (
       <div className="view-wrapper">
@@ -176,7 +176,9 @@ class Controlpanels extends Component {
                   <Grid.Row>
                     {map(filter(controlpanels, { group }), (controlpanel) => (
                       <Grid.Column key={controlpanel.id}>
-                        <Link to={`/controlpanel/${controlpanel.id}`}>
+                        <Link
+                          to={`${prefixPath}/controlpanel/${controlpanel.id}`}
+                        >
                           <Header as="h3" icon textAlign="center">
                             <Icon
                               name={icons?.[controlpanel.id] || icons.default}
