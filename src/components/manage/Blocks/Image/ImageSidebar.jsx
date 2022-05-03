@@ -10,7 +10,7 @@ const ImageSidebar = (props) => {
   const schema = ImageSchema({ formData: data, intl });
 
   const dataAdapter = (data) => {
-    if (typeof data.url === 'object') {
+    if (data?.url && typeof data.url === 'object' && !Array.isArray(data.url)) {
       data.url = data.url[0]['@id'];
     }
     return data;

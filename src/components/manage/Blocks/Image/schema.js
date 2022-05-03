@@ -45,6 +45,14 @@ const messages = defineMessages({
     id: 'External URL',
     defaultMessage: 'External URL',
   },
+  AltTextHint: {
+    id: 'Alt text hint',
+    defaultMessage: 'Leave empty if the image is purely decorative.',
+  },
+  AltTextHintLinkText: {
+    id: 'Alt text hint link text',
+    defaultMessage: 'Describe the purpose of the image.',
+  },
 });
 
 export function ImageSchema({ formData, intl }) {
@@ -54,10 +62,7 @@ export function ImageSchema({ formData, intl }) {
       {
         id: 'default',
         title: 'Default',
-        fields: [
-          'url',
-          ...(formData.url ? ['alt', 'href', 'openLinkInNewTab'] : []),
-        ],
+        fields: [...(formData.url ? ['url', 'alt', 'alignment', 'size'] : [])],
       },
       ...(formData.url
         ? [
@@ -72,16 +77,30 @@ export function ImageSchema({ formData, intl }) {
     properties: {
       url: {
         title: intl.formatMessage(messages.Source),
-        widget: 'object_browser',
-        mode: 'image',
-        legacy: true,
-        allowExternals: true,
+        widget: 'text',
       },
       title: {
         title: intl.formatMessage(messages.title),
       },
       alt: {
         title: intl.formatMessage(messages.AltText),
+        description: (
+          <>
+            <a
+              href="https://www.w3.org/WAI/tutorials/images/decision-tree/"
+              title={intl.formatMessage(messages.openLinkInNewTab)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {intl.formatMessage(messages.AltTextHintLinkText)}
+            </a>{' '}
+            {intl.formatMessage(messages.AltTextHint)}
+          </>
+        ),
+      },
+      alignment: {
+        title: intl.formatMessage(messages.Align),
+        widget: 'align',
       },
       size: {
         title: intl.formatMessage(messages.size),

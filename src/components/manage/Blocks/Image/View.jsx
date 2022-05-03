@@ -7,7 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { UniversalLink } from '@plone/volto/components';
 import cx from 'classnames';
-
+import { withBlockExtensions } from '@plone/volto/helpers';
 import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
 
 /**
@@ -86,4 +86,4 @@ View.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-export default View;
+export default withBlockExtensions(View);

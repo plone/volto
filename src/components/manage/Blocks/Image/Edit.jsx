@@ -15,6 +15,7 @@ import cx from 'classnames';
 import { isEqual } from 'lodash';
 
 import { Icon, ImageSidebar, SidebarPortal } from '@plone/volto/components';
+import { withBlockExtensions } from '@plone/volto/helpers';
 import { createContent } from '@plone/volto/actions';
 import {
   flattenToAppURL,
@@ -399,6 +400,7 @@ class Edit extends Component {
 
 export default compose(
   injectIntl,
+  withBlockExtensions,
   connect(
     (state, ownProps) => ({
       request: state.content.subrequests[ownProps.block] || {},
