@@ -1978,6 +1978,11 @@ msgstr "Recorrência se encerra após"
 msgid "Recurrence ends on"
 msgstr "Recorrência se encerra em"
 
+#: components/manage/Blocks/Redirect/schema
+# defaultMessage: Redirect Block
+msgid "Redirect Block"
+msgstr ""
+
 #: components/manage/Form/UndoToolbar
 # defaultMessage: Redo
 msgid "Redo"
@@ -2004,6 +2009,11 @@ msgstr "Formulário de cadastro"
 # defaultMessage: Relevance
 msgid "Relevance"
 msgstr "Relevância"
+
+#: components/manage/Blocks/Redirect/schema
+# defaultMessage: Remote URL
+msgid "Remote URL"
+msgstr ""
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item
@@ -2627,6 +2637,7 @@ msgstr ""
 msgid "The item could not be deleted."
 msgstr "O item não pôde ser excluído."
 
+#: components/manage/Blocks/Redirect/View
 #: components/theme/View/LinkView
 # defaultMessage: The link address is:
 msgid "The link address is:"

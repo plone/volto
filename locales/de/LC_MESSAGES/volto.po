@@ -1983,6 +1983,11 @@ msgstr "Wiederkehrendes Vorkommen endet nach"
 msgid "Recurrence ends on"
 msgstr "Wiederkehrendes Vorkommen endet am"
 
+#: components/manage/Blocks/Redirect/schema
+# defaultMessage: Redirect Block
+msgid "Redirect Block"
+msgstr ""
+
 #: components/manage/Form/UndoToolbar
 # defaultMessage: Redo
 msgid "Redo"
@@ -2009,6 +2014,11 @@ msgstr "Registrierungsformular"
 # defaultMessage: Relevance
 msgid "Relevance"
 msgstr "relevanz"
+
+#: components/manage/Blocks/Redirect/schema
+# defaultMessage: Remote URL
+msgid "Remote URL"
+msgstr ""
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item
@@ -2632,6 +2642,7 @@ msgstr "Der Button deaktiviert die Live-Suche, die Suchanfrage wird abgeschickt 
 msgid "The item could not be deleted."
 msgstr "Das Objekt kann nicht gelöscht werden."
 
+#: components/manage/Blocks/Redirect/View
 #: components/theme/View/LinkView
 # defaultMessage: The link address is:
 msgid "The link address is:"

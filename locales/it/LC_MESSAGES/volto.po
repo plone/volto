@@ -1968,6 +1968,11 @@ msgstr "dopo"
 msgid "Recurrence ends on"
 msgstr "il"
 
+#: components/manage/Blocks/Redirect/schema
+# defaultMessage: Redirect Block
+msgid "Redirect Block"
+msgstr ""
+
 #: components/manage/Form/UndoToolbar
 # defaultMessage: Redo
 msgid "Redo"
@@ -1994,6 +1999,11 @@ msgstr "Form di iscrizione"
 # defaultMessage: Relevance
 msgid "Relevance"
 msgstr "Rilevanza"
+
+#: components/manage/Blocks/Redirect/schema
+# defaultMessage: Remote URL
+msgid "Remote URL"
+msgstr ""
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item
@@ -2617,6 +2627,7 @@ msgstr "La presenza del bottone disabilita la ricerca al volo, la ricerca verrà
 msgid "The item could not be deleted."
 msgstr "L'elemento non può essere eliminato."
 
+#: components/manage/Blocks/Redirect/View
 #: components/theme/View/LinkView
 # defaultMessage: The link address is:
 msgid "The link address is:"

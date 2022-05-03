@@ -1968,6 +1968,11 @@ msgstr "Recurența se termină după"
 msgid "Recurrence ends on"
 msgstr "Recurența se termină pe"
 
+#: components/manage/Blocks/Redirect/schema
+# defaultMessage: Redirect Block
+msgid "Redirect Block"
+msgstr ""
+
 #: components/manage/Form/UndoToolbar
 # defaultMessage: Redo
 msgid "Redo"
@@ -1994,6 +1999,11 @@ msgstr "Formular de înregistrare"
 # defaultMessage: Relevance
 msgid "Relevance"
 msgstr "Relevanţă"
+
+#: components/manage/Blocks/Redirect/schema
+# defaultMessage: Remote URL
+msgid "Remote URL"
+msgstr ""
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item
@@ -2617,6 +2627,7 @@ msgstr "Prezența butonului dezactivează căutarea live, interogarea este emis�
 msgid "The item could not be deleted."
 msgstr "Elementul nu a putut fi șters."
 
+#: components/manage/Blocks/Redirect/View
 #: components/theme/View/LinkView
 # defaultMessage: The link address is:
 msgid "The link address is:"

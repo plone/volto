@@ -1977,6 +1977,11 @@ msgstr "Després"
 msgid "Recurrence ends on"
 msgstr "La recurrència acava el"
 
+#: components/manage/Blocks/Redirect/schema
+# defaultMessage: Redirect Block
+msgid "Redirect Block"
+msgstr ""
+
 #: components/manage/Form/UndoToolbar
 # defaultMessage: Redo
 msgid "Redo"
@@ -2003,6 +2008,11 @@ msgstr "Formulari d'inscripció"
 # defaultMessage: Relevance
 msgid "Relevance"
 msgstr "Pertinència"
+
+#: components/manage/Blocks/Redirect/schema
+# defaultMessage: Remote URL
+msgid "Remote URL"
+msgstr ""
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item
@@ -2626,6 +2636,7 @@ msgstr "La presència del botó desactiva la cerca en directe, la consulta s'eme
 msgid "The item could not be deleted."
 msgstr "No s'ha pogut suprimir l'element."
 
+#: components/manage/Blocks/Redirect/View
 #: components/theme/View/LinkView
 # defaultMessage: The link address is:
 msgid "The link address is:"
