@@ -13,6 +13,7 @@
 
 - Fix sidebar full size bottom opacity on edit page when sidebar is collapsed @ichim-david
 - Fix toolbar bottom opacity on edit page when toolbar is collapsed @ichim-david
+- Changed identifier field for password reset to username. @giuliaghisini
 
 ### Internal
 
