@@ -2,35 +2,35 @@
   "errors": [],
   "warnings": [],
   "version": "4.43.0",
-  "hash": "034223af6c2b02c25425",
+  "hash": "bb8ff0c1cb4e31d0c2e5",
   "publicPath": "/",
   "outputPath": "/Users/sneridagh/Development/plone/volto/build/public",
   "assetsByChunkName": {
     "react-select": [
-      "static/js/react-select.6ac1d612.chunk.js",
-      "static/js/react-select.6ac1d612.chunk.js.map"
+      "static/js/react-select.c8927c3b.chunk.js",
+      "static/js/react-select.c8927c3b.chunk.js.map"
     ],
     "moment": [
       "static/js/moment.dfd83abb.chunk.js",
       "static/js/moment.dfd83abb.chunk.js.map"
     ],
     "client": [
-      "static/css/client.674692a1.chunk.css",
-      "static/js/client.674692a1.chunk.js",
-      "static/js/client.674692a1.chunk.js.map"
+      "static/css/client.bd76578e.chunk.css",
+      "static/js/client.bd76578e.chunk.js",
+      "static/js/client.bd76578e.chunk.js.map"
     ],
     "draft-js-lib-isSoftNewlineEvent": [
       "static/js/draft-js-lib-isSoftNewlineEvent.ad4b1307.chunk.js",
       "static/js/draft-js-lib-isSoftNewlineEvent.ad4b1307.chunk.js.map"
     ],
     "plone-volto-components-manage-Widgets-DatetimeWidget": [
-      "static/css/plone-volto-components-manage-Widgets-DatetimeWidget.c6a47163.chunk.css",
-      "static/js/plone-volto-components-manage-Widgets-DatetimeWidget.c6a47163.chunk.js",
-      "static/js/plone-volto-components-manage-Widgets-DatetimeWidget.c6a47163.chunk.js.map"
+      "static/css/plone-volto-components-manage-Widgets-DatetimeWidget.843e0db1.chunk.css",
+      "static/js/plone-volto-components-manage-Widgets-DatetimeWidget.843e0db1.chunk.js",
+      "static/js/plone-volto-components-manage-Widgets-DatetimeWidget.843e0db1.chunk.js.map"
     ],
     "plone-volto-components-theme-View-EventView": [
-      "static/js/plone-volto-components-theme-View-EventView.d0a7e38a.chunk.js",
-      "static/js/plone-volto-components-theme-View-EventView.d0a7e38a.chunk.js.map"
+      "static/js/plone-volto-components-theme-View-EventView.8826e9d6.chunk.js",
+      "static/js/plone-volto-components-theme-View-EventView.8826e9d6.chunk.js.map"
     ],
     "react-dates": [
       "static/js/react-dates.d94a34ee.chunk.js",
@@ -41,8 +41,8 @@
       "static/js/react-simple-code-editor.484ec69f.chunk.js.map"
     ],
     "runtime~client": [
-      "static/js/runtime~client.7d96c65b.js",
-      "static/js/runtime~client.7d96c65b.js.map"
+      "static/js/runtime~client.91e1fbb4.js",
+      "static/js/runtime~client.91e1fbb4.js.map"
     ]
   },
   "assets": [
@@ -167,8 +167,8 @@
       "emitted": false
     },
     {
-      "name": "static/css/client.674692a1.chunk.css",
-      "size": 127644,
+      "name": "static/css/client.bd76578e.chunk.css",
+      "size": 127971,
       "chunks": [
         7
       ],
@@ -181,15 +181,15 @@
       "emitted": false
     },
     {
-      "name": "static/css/client.674692a1.chunk.css.map",
-      "size": 227501,
+      "name": "static/css/client.bd76578e.chunk.css.map",
+      "size": 228042,
       "chunks": [],
       "chunkNames": [],
       "info": {},
       "emitted": false
     },
     {
-      "name": "static/css/plone-volto-components-manage-Widgets-DatetimeWidget.c6a47163.chunk.css",
+      "name": "static/css/plone-volto-components-manage-Widgets-DatetimeWidget.843e0db1.chunk.css",
       "size": 2768,
       "chunks": [
         9
@@ -203,7 +203,7 @@
       "emitted": false
     },
     {
-      "name": "static/css/plone-volto-components-manage-Widgets-DatetimeWidget.c6a47163.chunk.css.map",
+      "name": "static/css/plone-volto-components-manage-Widgets-DatetimeWidget.843e0db1.chunk.css.map",
       "size": 4960,
       "chunks": [],
       "chunkNames": [],
@@ -459,8 +459,8 @@
       "emitted": false
     },
     {
-      "name": "static/js/21.5eb5dd94.chunk.js",
-      "size": 36908,
+      "name": "static/js/21.15e450b9.chunk.js",
+      "size": 36928,
       "chunks": [
         21
       ],
@@ -471,7 +471,7 @@
       "emitted": false
     },
     {
-      "name": "static/js/21.5eb5dd94.chunk.js.map",
+      "name": "static/js/21.15e450b9.chunk.js.map",
       "size": 107,
       "chunks": [
         21
@@ -483,8 +483,8 @@
       "emitted": false
     },
     {
-      "name": "static/js/22.df7a39a6.chunk.js",
-      "size": 35392,
+      "name": "static/js/22.7fe17013.chunk.js",
+      "size": 35412,
       "chunks": [
         22
       ],
@@ -495,7 +495,7 @@
       "emitted": false
     },
     {
-      "name": "static/js/22.df7a39a6.chunk.js.map",
+      "name": "static/js/22.7fe17013.chunk.js.map",
       "size": 107,
       "chunks": [
         22
@@ -507,8 +507,8 @@
       "emitted": false
     },
     {
-      "name": "static/js/23.d81c9266.chunk.js",
-      "size": 32857,
+      "name": "static/js/23.697dd102.chunk.js",
+      "size": 32891,
       "chunks": [
         23
       ],
@@ -519,7 +519,7 @@
       "emitted": false
     },
     {
-      "name": "static/js/23.d81c9266.chunk.js.map",
+      "name": "static/js/23.697dd102.chunk.js.map",
       "size": 107,
       "chunks": [
         23
@@ -531,8 +531,8 @@
       "emitted": false
     },
     {
-      "name": "static/js/24.b937f292.chunk.js",
-      "size": 36191,
+      "name": "static/js/24.3cfe4479.chunk.js",
+      "size": 36211,
       "chunks": [
         24
       ],
@@ -543,7 +543,7 @@
       "emitted": false
     },
     {
-      "name": "static/js/24.b937f292.chunk.js.map",
+      "name": "static/js/24.3cfe4479.chunk.js.map",
       "size": 107,
       "chunks": [
         24
@@ -555,8 +555,8 @@
       "emitted": false
     },
     {
-      "name": "static/js/25.4ca4d9bb.chunk.js",
-      "size": 33950,
+      "name": "static/js/25.4270ce7e.chunk.js",
+      "size": 33970,
       "chunks": [
         25
       ],
@@ -567,7 +567,7 @@
       "emitted": false
     },
     {
-      "name": "static/js/25.4ca4d9bb.chunk.js.map",
+      "name": "static/js/25.4270ce7e.chunk.js.map",
       "size": 107,
       "chunks": [
         25
@@ -579,8 +579,8 @@
       "emitted": false
     },
     {
-      "name": "static/js/26.2923056d.chunk.js",
-      "size": 29719,
+      "name": "static/js/26.391b1f16.chunk.js",
+      "size": 29739,
       "chunks": [
         26
       ],
@@ -591,7 +591,7 @@
       "emitted": false
     },
     {
-      "name": "static/js/26.2923056d.chunk.js.map",
+      "name": "static/js/26.391b1f16.chunk.js.map",
       "size": 107,
       "chunks": [
         26
@@ -603,8 +603,8 @@
       "emitted": false
     },
     {
-      "name": "static/js/27.cacef41c.chunk.js",
-      "size": 35073,
+      "name": "static/js/27.048ed54c.chunk.js",
+      "size": 35285,
       "chunks": [
         27
       ],
@@ -615,7 +615,7 @@
       "emitted": false
     },
     {
-      "name": "static/js/27.cacef41c.chunk.js.map",
+      "name": "static/js/27.048ed54c.chunk.js.map",
       "size": 107,
       "chunks": [
         27
@@ -627,8 +627,8 @@
       "emitted": false
     },
     {
-      "name": "static/js/28.6e152244.chunk.js",
-      "size": 49079,
+      "name": "static/js/28.eae9173c.chunk.js",
+      "size": 49099,
       "chunks": [
         28
       ],
@@ -639,7 +639,7 @@
       "emitted": false
     },
     {
-      "name": "static/js/28.6e152244.chunk.js.map",
+      "name": "static/js/28.eae9173c.chunk.js.map",
       "size": 107,
       "chunks": [
         28
@@ -651,8 +651,8 @@
       "emitted": false
     },
     {
-      "name": "static/js/29.3311f523.chunk.js",
-      "size": 21872,
+      "name": "static/js/29.f4328573.chunk.js",
+      "size": 21892,
       "chunks": [
         29
       ],
@@ -663,7 +663,7 @@
       "emitted": false
     },
     {
-      "name": "static/js/29.3311f523.chunk.js.map",
+      "name": "static/js/29.f4328573.chunk.js.map",
       "size": 107,
       "chunks": [
         29
@@ -699,8 +699,8 @@
       "emitted": false
     },
     {
-      "name": "static/js/30.5813bed0.chunk.js",
-      "size": 25652,
+      "name": "static/js/30.383aab1d.chunk.js",
+      "size": 25672,
       "chunks": [
         30
       ],
@@ -711,7 +711,7 @@
       "emitted": false
     },
     {
-      "name": "static/js/30.5813bed0.chunk.js.map",
+      "name": "static/js/30.383aab1d.chunk.js.map",
       "size": 107,
       "chunks": [
         30
@@ -723,8 +723,8 @@
       "emitted": false
     },
     {
-      "name": "static/js/31.ea75f89f.chunk.js",
-      "size": 34081,
+      "name": "static/js/31.a7ecaec6.chunk.js",
+      "size": 34101,
       "chunks": [
         31
       ],
@@ -735,7 +735,7 @@
       "emitted": false
     },
     {
-      "name": "static/js/31.ea75f89f.chunk.js.map",
+      "name": "static/js/31.a7ecaec6.chunk.js.map",
       "size": 107,
       "chunks": [
         31
@@ -747,8 +747,8 @@
       "emitted": false
     },
     {
-      "name": "static/js/32.93231c42.chunk.js",
-      "size": 31261,
+      "name": "static/js/32.3985d701.chunk.js",
+      "size": 31281,
       "chunks": [
         32
       ],
@@ -759,7 +759,7 @@
       "emitted": false
     },
     {
-      "name": "static/js/32.93231c42.chunk.js.map",
+      "name": "static/js/32.3985d701.chunk.js.map",
       "size": 107,
       "chunks": [
         32
@@ -1019,8 +1019,8 @@
       "emitted": false
     },
     {
-      "name": "static/js/client.674692a1.chunk.js",
-      "size": 889991,
+      "name": "static/js/client.bd76578e.chunk.js",
+      "size": 891388,
       "chunks": [
         7
       ],
@@ -1033,8 +1033,8 @@
       "emitted": false
     },
     {
-      "name": "static/js/client.674692a1.chunk.js.map",
-      "size": 2330994,
+      "name": "static/js/client.bd76578e.chunk.js.map",
+      "size": 2334525,
       "chunks": [
         7
       ],
@@ -1105,7 +1105,7 @@
       "emitted": false
     },
     {
-      "name": "static/js/plone-volto-components-manage-Widgets-DatetimeWidget.c6a47163.chunk.js",
+      "name": "static/js/plone-volto-components-manage-Widgets-DatetimeWidget.843e0db1.chunk.js",
       "size": 5054,
       "chunks": [
         9
@@ -1119,7 +1119,7 @@
       "emitted": false
     },
     {
-      "name": "static/js/plone-volto-components-manage-Widgets-DatetimeWidget.c6a47163.chunk.js.map",
+      "name": "static/js/plone-volto-components-manage-Widgets-DatetimeWidget.843e0db1.chunk.js.map",
       "size": 12276,
       "chunks": [
         9
@@ -1133,7 +1133,7 @@
       "emitted": false
     },
     {
-      "name": "static/js/plone-volto-components-theme-View-EventView.d0a7e38a.chunk.js",
+      "name": "static/js/plone-volto-components-theme-View-EventView.8826e9d6.chunk.js",
       "size": 2201,
       "chunks": [
         10
@@ -1147,7 +1147,7 @@
       "emitted": false
     },
     {
-      "name": "static/js/plone-volto-components-theme-View-EventView.d0a7e38a.chunk.js.map",
+      "name": "static/js/plone-volto-components-theme-View-EventView.8826e9d6.chunk.js.map",
       "size": 4929,
       "chunks": [
         10
@@ -1191,7 +1191,7 @@
       "emitted": false
     },
     {
-      "name": "static/js/react-select.6ac1d612.chunk.js",
+      "name": "static/js/react-select.c8927c3b.chunk.js",
       "size": 34641,
       "chunks": [
         2
@@ -1205,7 +1205,7 @@
       "emitted": false
     },
     {
-      "name": "static/js/react-select.6ac1d612.chunk.js.map",
+      "name": "static/js/react-select.c8927c3b.chunk.js.map",
       "size": 104690,
       "chunks": [
         2
@@ -1247,7 +1247,7 @@
       "emitted": false
     },
     {
-      "name": "static/js/runtime~client.7d96c65b.js",
+      "name": "static/js/runtime~client.91e1fbb4.js",
       "size": 4671,
       "chunks": [
         13
@@ -1261,7 +1261,7 @@
       "emitted": false
     },
     {
-      "name": "static/js/runtime~client.7d96c65b.js.map",
+      "name": "static/js/runtime~client.91e1fbb4.js.map",
       "size": 18750,
       "chunks": [
         13
@@ -1364,14 +1364,14 @@
         7
       ],
       "assets": [
-        "static/js/runtime~client.7d96c65b.js",
-        "static/js/runtime~client.7d96c65b.js.map",
+        "static/js/runtime~client.91e1fbb4.js",
+        "static/js/runtime~client.91e1fbb4.js.map",
         "static/css/14.28a992d7.chunk.css",
         "static/js/14.28a992d7.chunk.js",
         "static/js/14.28a992d7.chunk.js.map",
-        "static/css/client.674692a1.chunk.css",
-        "static/js/client.674692a1.chunk.js",
-        "static/js/client.674692a1.chunk.js.map"
+        "static/css/client.bd76578e.chunk.css",
+        "static/js/client.bd76578e.chunk.js",
+        "static/js/client.bd76578e.chunk.js.map"
       ],
       "children": {},
       "childAssets": {}
@@ -1385,14 +1385,14 @@
         7
       ],
       "assets": [
-        "static/js/runtime~client.7d96c65b.js",
-        "static/js/runtime~client.7d96c65b.js.map",
+        "static/js/runtime~client.91e1fbb4.js",
+        "static/js/runtime~client.91e1fbb4.js.map",
         "static/css/14.28a992d7.chunk.css",
         "static/js/14.28a992d7.chunk.js",
         "static/js/14.28a992d7.chunk.js.map",
-        "static/css/client.674692a1.chunk.css",
-        "static/js/client.674692a1.chunk.js",
-        "static/js/client.674692a1.chunk.js.map"
+        "static/css/client.bd76578e.chunk.css",
+        "static/js/client.bd76578e.chunk.js",
+        "static/js/client.bd76578e.chunk.js.map"
       ],
       "children": {},
       "childAssets": {}
@@ -1402,9 +1402,9 @@
         9
       ],
       "assets": [
-        "static/css/plone-volto-components-manage-Widgets-DatetimeWidget.c6a47163.chunk.css",
-        "static/js/plone-volto-components-manage-Widgets-DatetimeWidget.c6a47163.chunk.js",
-        "static/js/plone-volto-components-manage-Widgets-DatetimeWidget.c6a47163.chunk.js.map"
+        "static/css/plone-volto-components-manage-Widgets-DatetimeWidget.843e0db1.chunk.css",
+        "static/js/plone-volto-components-manage-Widgets-DatetimeWidget.843e0db1.chunk.js",
+        "static/js/plone-volto-components-manage-Widgets-DatetimeWidget.843e0db1.chunk.js.map"
       ],
       "children": {},
       "childAssets": {}
@@ -1418,8 +1418,8 @@
         "static/css/3.a3490306.chunk.css",
         "static/js/3.a3490306.chunk.js",
         "static/js/3.a3490306.chunk.js.map",
-        "static/js/react-select.6ac1d612.chunk.js",
-        "static/js/react-select.6ac1d612.chunk.js.map"
+        "static/js/react-select.c8927c3b.chunk.js",
+        "static/js/react-select.c8927c3b.chunk.js.map"
       ],
       "children": {},
       "childAssets": {}
@@ -1429,8 +1429,8 @@
         10
       ],
       "assets": [
-        "static/js/plone-volto-components-theme-View-EventView.d0a7e38a.chunk.js",
-        "static/js/plone-volto-components-theme-View-EventView.d0a7e38a.chunk.js.map"
+        "static/js/plone-volto-components-theme-View-EventView.8826e9d6.chunk.js",
+        "static/js/plone-volto-components-theme-View-EventView.8826e9d6.chunk.js.map"
       ],
       "children": {},
       "childAssets": {}
@@ -1530,8 +1530,8 @@
         "static/css/3.a3490306.chunk.css",
         "static/js/3.a3490306.chunk.js",
         "static/js/3.a3490306.chunk.js.map",
-        "static/js/react-select.6ac1d612.chunk.js",
-        "static/js/react-select.6ac1d612.chunk.js.map"
+        "static/js/react-select.c8927c3b.chunk.js",
+        "static/js/react-select.c8927c3b.chunk.js.map"
       ],
       "children": {},
       "childAssets": {}
@@ -1567,8 +1567,8 @@
         "static/css/3.a3490306.chunk.css",
         "static/js/3.a3490306.chunk.js",
         "static/js/3.a3490306.chunk.js.map",
-        "static/js/react-select.6ac1d612.chunk.js",
-        "static/js/react-select.6ac1d612.chunk.js.map"
+        "static/js/react-select.c8927c3b.chunk.js",
+        "static/js/react-select.c8927c3b.chunk.js.map"
       ],
       "children": {},
       "childAssets": {}
@@ -1582,8 +1582,8 @@
         "static/css/3.a3490306.chunk.css",
         "static/js/3.a3490306.chunk.js",
         "static/js/3.a3490306.chunk.js.map",
-        "static/js/react-select.6ac1d612.chunk.js",
-        "static/js/react-select.6ac1d612.chunk.js.map"
+        "static/js/react-select.c8927c3b.chunk.js",
+        "static/js/react-select.c8927c3b.chunk.js.map"
       ],
       "children": {},
       "childAssets": {}
@@ -1597,8 +1597,8 @@
         "static/css/3.a3490306.chunk.css",
         "static/js/3.a3490306.chunk.js",
         "static/js/3.a3490306.chunk.js.map",
-        "static/js/react-select.6ac1d612.chunk.js",
-        "static/js/react-select.6ac1d612.chunk.js.map"
+        "static/js/react-select.c8927c3b.chunk.js",
+        "static/js/react-select.c8927c3b.chunk.js.map"
       ],
       "children": {},
       "childAssets": {}
@@ -1612,8 +1612,8 @@
         "static/css/3.a3490306.chunk.css",
         "static/js/3.a3490306.chunk.js",
         "static/js/3.a3490306.chunk.js.map",
-        "static/js/react-select.6ac1d612.chunk.js",
-        "static/js/react-select.6ac1d612.chunk.js.map"
+        "static/js/react-select.c8927c3b.chunk.js",
+        "static/js/react-select.c8927c3b.chunk.js.map"
       ],
       "children": {},
       "childAssets": {}
