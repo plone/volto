@@ -29,6 +29,7 @@ const Image = ({
   maxSize,
   minSize = 0,
   useOriginal = false,
+  sizes = '100vw',
   ...imageProps
 }) => {
   const { src, srcSet } = getImageAttributes(image, {
@@ -81,21 +82,21 @@ const Image = ({
   }, [srcSet]);
 
   useEffect(() => {
-    if ('IntersectionObserver' in window) {
+    if ('IntersectionObserver' in window && !srcset) {
       const observer = new IntersectionObserver(
         (entries) => {
-          setTimeout(() => {
-            if (
-              entries[0].isIntersecting === true &&
-              imageRef?.current?.complete &&
-              (!srcset || srcset?.split(', ')?.length < 2) &&
-              srcSet?.length > 0
-            ) {
-              applySrcSet();
-            }
-          }, 600);
+          //setTimeout(() => {
+          if (
+            entries[0].isIntersecting === true &&
+            imageRef?.current?.complete &&
+            (!srcset || srcset?.split(', ')?.length < 2) &&
+            srcSet?.length > 0
+          ) {
+            applySrcSet();
+          }
+          //}, 600);
         },
-        { threshold: [0] },
+        { threshold: [0], rootMargin: '100px' },
       );
       observer.observe(imageRef.current);
     } else if (srcSet?.length > 0) {
@@ -106,7 +107,7 @@ const Image = ({
   return (
     <>
       <picture className={pictureClassName}>
-        {srcset?.length > 0 && <source srcSet={srcset} />}
+        {srcset?.length > 0 && <source srcSet={srcset} sizes={sizes} />}
         <img
           src={src}
           alt={alt}
