@@ -901,15 +901,15 @@ msgstr ""
 msgid "Enter your current password."
 msgstr ""
 
-#: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your email address for verification.
-msgid "Enter your email address for verification."
-msgstr ""
-
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your new password. Minimum 5 characters.
 msgid "Enter your new password. Minimum 5 characters."
+msgstr ""
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Enter your username for verification.
+msgid "Enter your username for verification."
 msgstr ""
 
 #: components/manage/Add/Add
@@ -1575,8 +1575,8 @@ msgid "Multiple choices?"
 msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: My email address is
-msgid "My email address is"
+# defaultMessage: My username is
+msgid "My username is"
 msgstr ""
 
 #: components/manage/Sharing/Sharing

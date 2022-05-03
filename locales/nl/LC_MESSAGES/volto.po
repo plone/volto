@@ -920,16 +920,16 @@ msgstr ""
 msgid "Enter your current password."
 msgstr "Voer uw huidige wachtwoord in."
 
-#: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your email address for verification.
-msgid "Enter your email address for verification."
-msgstr ""
-
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your new password. Minimum 5 characters.
 msgid "Enter your new password. Minimum 5 characters."
 msgstr "Geef een nieuw wachtwoord op. Minimaal 5 karakters."
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Enter your username for verification.
+msgid "Enter your username for verification."
+msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1594,9 +1594,9 @@ msgid "Multiple choices?"
 msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: My email address is
-msgid "My email address is"
-msgstr ""
+# defaultMessage: My username is
+msgid "My username is"
+msgstr "Mijn gebruikersnaam is"
 
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm

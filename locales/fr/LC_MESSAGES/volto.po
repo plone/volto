@@ -918,16 +918,16 @@ msgstr "Entrer le code intégré de la carte"
 msgid "Enter your current password."
 msgstr "Entrer votre mot de passe actuel."
 
-#: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your email address for verification.
-msgid "Enter your email address for verification."
-msgstr "Entrer votre adresse e-mail pour la vérification."
-
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your new password. Minimum 5 characters.
 msgid "Enter your new password. Minimum 5 characters."
 msgstr "Entrer votre nouveau mot de passe. Minimum 5 caractères."
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Enter your username for verification.
+msgid "Enter your username for verification."
+msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1592,9 +1592,9 @@ msgid "Multiple choices?"
 msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: My email address is
-msgid "My email address is"
-msgstr "Mon adresse e-mail est"
+# defaultMessage: My username is
+msgid "My username is"
+msgstr "Mon nom d'utilisateur est"
 
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm

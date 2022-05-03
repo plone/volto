@@ -36,13 +36,13 @@ const messages = defineMessages({
     id: 'Enter full name, e.g. John Smith.',
     defaultMessage: 'Enter full name, e.g. John Smith.',
   },
-  emailTitle: {
-    id: 'My email address is',
-    defaultMessage: 'My email address is',
+  usernameTitle: {
+    id: 'My username is',
+    defaultMessage: 'My username is',
   },
-  emailDescription: {
-    id: 'Enter your email address for verification.',
-    defaultMessage: 'Enter your email address for verification.',
+  usernameDescription: {
+    id: 'Enter your username for verification.',
+    defaultMessage: 'Enter your username for verification.',
   },
   passwordTitle: {
     id: 'New password',
@@ -155,7 +155,7 @@ class PasswordReset extends Component {
   onSubmit(data) {
     if (data.password === data.passwordRepeat) {
       this.props.setInitialPassword(
-        data.email,
+        data.username,
         this.props.token,
         data.password,
       );
@@ -229,15 +229,17 @@ class PasswordReset extends Component {
                   {
                     id: 'default',
                     title: this.props.intl.formatMessage(messages.default),
-                    fields: ['email', 'password', 'passwordRepeat'],
+                    fields: ['username', 'password', 'passwordRepeat'],
                   },
                 ],
                 properties: {
-                  email: {
+                  username: {
                     type: 'string',
-                    title: this.props.intl.formatMessage(messages.emailTitle),
+                    title: this.props.intl.formatMessage(
+                      messages.usernameTitle,
+                    ),
                     description: this.props.intl.formatMessage(
-                      messages.emailDescription,
+                      messages.usernameDescription,
                     ),
                   },
                   password: {

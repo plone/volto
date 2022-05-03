@@ -901,16 +901,16 @@ msgstr "Inserisci il codice di incorporamento della mappa"
 msgid "Enter your current password."
 msgstr "Inserisci la tua password attuale."
 
-#: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your email address for verification.
-msgid "Enter your email address for verification."
-msgstr "Inserisci la tua mail per verifica."
-
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your new password. Minimum 5 characters.
 msgid "Enter your new password. Minimum 5 characters."
 msgstr "Inserisci la tua nuova password. Minimo 5 caratteri."
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Enter your username for verification.
+msgid "Enter your username for verification."
+msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1575,9 +1575,9 @@ msgid "Multiple choices?"
 msgstr "Scelta multipla"
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: My email address is
-msgid "My email address is"
-msgstr "Il mio indirizzo email è"
+# defaultMessage: My username is
+msgid "My username is"
+msgstr "Il mio nome utente è"
 
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm

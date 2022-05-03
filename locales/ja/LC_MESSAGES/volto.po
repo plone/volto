@@ -909,16 +909,16 @@ msgstr "地図のEmbedコードを入力"
 msgid "Enter your current password."
 msgstr "現在のパスワードを入力"
 
-#: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your email address for verification.
-msgid "Enter your email address for verification."
-msgstr "確認するためにあなたのメールアドレスを入力してください"
-
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your new password. Minimum 5 characters.
 msgid "Enter your new password. Minimum 5 characters."
 msgstr "新しいパスワードを入力。（5文字以上）"
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Enter your username for verification.
+msgid "Enter your username for verification."
+msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1583,9 +1583,9 @@ msgid "Multiple choices?"
 msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: My email address is
-msgid "My email address is"
-msgstr "私のメールアドレスは、"
+# defaultMessage: My username is
+msgid "My username is"
+msgstr "私のユーザー名は"
 
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm

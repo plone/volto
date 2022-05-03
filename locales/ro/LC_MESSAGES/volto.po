@@ -901,16 +901,16 @@ msgstr "Introduceți codul de integrare a hărții"
 msgid "Enter your current password."
 msgstr "Introduceți parola curentă."
 
-#: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your email address for verification.
-msgid "Enter your email address for verification."
-msgstr "Introduceți adresa dvs. de e-mail pentru verificare."
-
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your new password. Minimum 5 characters.
 msgid "Enter your new password. Minimum 5 characters."
 msgstr "Introduceți noua parolă. Minim 5 caractere."
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Enter your username for verification.
+msgid "Enter your username for verification."
+msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1575,9 +1575,9 @@ msgid "Multiple choices?"
 msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: My email address is
-msgid "My email address is"
-msgstr "Adresa mea de e-mail este"
+# defaultMessage: My username is
+msgid "My username is"
+msgstr "Numele meu de utilizator este"
 
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm

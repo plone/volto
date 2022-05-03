@@ -910,16 +910,16 @@ msgstr "Introduïu el codi d'inserció del mapa"
 msgid "Enter your current password."
 msgstr "Introduïu la vostra contrasenya actual."
 
-#: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your email address for verification.
-msgid "Enter your email address for verification."
-msgstr "Introduïu la vostra adreça de correu electrònic per a la verificació."
-
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your new password. Minimum 5 characters.
 msgid "Enter your new password. Minimum 5 characters."
 msgstr "Introduïu la vostra nova contrasenya. Mínim 5 caràcters."
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Enter your username for verification.
+msgid "Enter your username for verification."
+msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1584,9 +1584,9 @@ msgid "Multiple choices?"
 msgstr "Múltiples opcions?"
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: My email address is
-msgid "My email address is"
-msgstr "La meva adreça de correu electrònic és"
+# defaultMessage: My username is
+msgid "My username is"
+msgstr "El meu nom d'usuari és"
 
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm

@@ -911,16 +911,16 @@ msgstr "Introduzca el código de un mapa"
 msgid "Enter your current password."
 msgstr "Ingrese su contraseña actual."
 
-#: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your email address for verification.
-msgid "Enter your email address for verification."
-msgstr "Ingrese su dirección de correo electrónico para verificar."
-
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your new password. Minimum 5 characters.
 msgid "Enter your new password. Minimum 5 characters."
 msgstr "Ingrese su nueva contraseña. Mínimo 5 caracteres."
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Enter your username for verification.
+msgid "Enter your username for verification."
+msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1585,9 +1585,9 @@ msgid "Multiple choices?"
 msgstr "¿Múltiples opciones?"
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: My email address is
-msgid "My email address is"
-msgstr "Mi dirección de correo electrónico es"
+# defaultMessage: My username is
+msgid "My username is"
+msgstr "Mi nombre de usuario es"
 
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
