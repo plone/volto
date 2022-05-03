@@ -85,16 +85,16 @@ const Image = ({
     if ('IntersectionObserver' in window && !srcset) {
       const observer = new IntersectionObserver(
         (entries) => {
-          //setTimeout(() => {
-          if (
-            entries[0].isIntersecting === true &&
-            imageRef?.current?.complete &&
-            (!srcset || srcset?.split(', ')?.length < 2) &&
-            srcSet?.length > 0
-          ) {
-            applySrcSet();
-          }
-          //}, 600);
+          setTimeout(() => {
+            if (
+              entries[0].isIntersecting === true &&
+              imageRef?.current?.complete &&
+              (!srcset || srcset?.split(', ')?.length < 2) &&
+              srcSet?.length > 0
+            ) {
+              applySrcSet();
+            }
+          }, 10);
         },
         { threshold: [0], rootMargin: '100px' },
       );
@@ -146,7 +146,7 @@ Image.propTypes = {
   className: PropTypes.string,
   containerClassName: PropTypes.string,
   floated: PropTypes.oneOf(['left', 'right']),
-  size: PropTypes.oneOf(['thumb', 'small', 'medium', 'large']),
+  size: PropTypes.string,
   role: PropTypes.string,
   critical: PropTypes.bool,
   maxSize: PropTypes.number,
