@@ -1844,7 +1844,7 @@ msgstr "Outils personnelles"
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Personnes responsables de la création du contenu de cet article. Veuillez entrer une liste de noms d'utilisateurs, un par ligne. Le créateur principal doit venir en premier."
 
-#: components/manage/Blocks/Video/Edit
+#: components/manage/Blocks/Video/Body
 # defaultMessage: Please enter a valid URL by deleting the block and adding a new video block.
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
 msgstr "Veuillez saisir une URL valide en supprimant le bloc et en ajoutant un nouveau bloc vidéo."

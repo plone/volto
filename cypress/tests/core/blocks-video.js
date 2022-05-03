@@ -61,7 +61,7 @@ describe('Blocks Tests', () => {
     // then the page view should contain an embedded Vimeo video
     cy.get('.block.video img.placeholder')
       .should('have.attr', 'src')
-      .and('match', /\/\/vumbnail.com\/85804536.jpg/);
+      .and('match', /\/\/vumbnaisl.com\/85804536.jpg/);
   });
 
   it('Add Video Block with MP4 Video', () => {
