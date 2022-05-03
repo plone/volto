@@ -3087,11 +3087,6 @@ msgstr "You can view the history of your item below. (未翻訳)"
 msgid "You can't paste this content here"
 msgstr "このコンテンツをここに貼り付けることはできません"
 
-#: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: Your email is required for reset your password.
-msgid "Your email is required for reset your password."
-msgstr "Your email is required for reset your password. (未翻訳)"
-
 #: components/manage/Preferences/PersonalInformation
 # defaultMessage: Your location - either city and country - or in a company setting, where your office is located.
 msgid "Your location - either city and country - or in a company setting, where your office is located."
@@ -3106,6 +3101,11 @@ msgstr "Your password has been set successfully. You may now {link} with your ne
 # defaultMessage: Your preferred language
 msgid "Your preferred language"
 msgstr "優先する言語"
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Your username is required for reset your password.
+msgid "Your usernaame is required for reset your password."
+msgstr ""
 
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -3229,9 +3229,9 @@ msgid "intranet"
 msgstr "イントラネット"
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: My email address is
-msgid "label_my_email_address_is"
-msgstr "私のメールアドレスは"
+# defaultMessage: My username is
+msgid "label_my_username_is"
+msgstr "私のユーザー名は"
 
 #: config/Blocks
 # defaultMessage: Lead Image Field

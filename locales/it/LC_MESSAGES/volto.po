@@ -3079,11 +3079,6 @@ msgstr "Puoi visualizzare la cronologia del tuo articolo qui sotto."
 msgid "You can't paste this content here"
 msgstr "Non puoi incollare questo contenuto qui."
 
-#: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: Your email is required for reset your password.
-msgid "Your email is required for reset your password."
-msgstr "La tua email è necessaria per reimpostare la tua password."
-
 #: components/manage/Preferences/PersonalInformation
 # defaultMessage: Your location - either city and country - or in a company setting, where your office is located.
 msgid "Your location - either city and country - or in a company setting, where your office is located."
@@ -3098,6 +3093,11 @@ msgstr "La tua password è stata reimpostata correttamente. Ora puoi {link} usan
 # defaultMessage: Your preferred language
 msgid "Your preferred language"
 msgstr "La tua lingua preferita."
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Your username is required for reset your password.
+msgid "Your usernaame is required for reset your password."
+msgstr ""
 
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -3221,9 +3221,9 @@ msgid "intranet"
 msgstr "Pubbliato internamente"
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: My email address is
-msgid "label_my_email_address_is"
-msgstr "Il mio indirizzo email è"
+# defaultMessage: My username is
+msgid "label_my_username_is"
+msgstr "Il mio nome utente è"
 
 #: config/Blocks
 # defaultMessage: Lead Image Field

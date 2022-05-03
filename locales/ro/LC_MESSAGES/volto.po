@@ -3079,11 +3079,6 @@ msgstr "Puteți vedea istoricul articolului dvs. mai jos."
 msgid "You can't paste this content here"
 msgstr ""
 
-#: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: Your email is required for reset your password.
-msgid "Your email is required for reset your password."
-msgstr "E-mailul dvs. este necesar pentru resetarea parolei."
-
 #: components/manage/Preferences/PersonalInformation
 # defaultMessage: Your location - either city and country - or in a company setting, where your office is located.
 msgid "Your location - either city and country - or in a company setting, where your office is located."
@@ -3098,6 +3093,11 @@ msgstr "Parola dvs. a fost setată cu succes. Acum puteți {link} cu noua dvs. p
 # defaultMessage: Your preferred language
 msgid "Your preferred language"
 msgstr "Limba dvs. preferată"
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Your username is required for reset your password.
+msgid "Your usernaame is required for reset your password."
+msgstr ""
 
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -3221,9 +3221,9 @@ msgid "intranet"
 msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: My email address is
-msgid "label_my_email_address_is"
-msgstr "Adresa e-mail"
+# defaultMessage: My username is
+msgid "label_my_username_is"
+msgstr "Numele meu de utilizator este"
 
 #: config/Blocks
 # defaultMessage: Lead Image Field

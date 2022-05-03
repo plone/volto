@@ -29,17 +29,17 @@ const messages = defineMessages({
     id: 'Default',
     defaultMessage: 'Default',
   },
-  emailTitle: {
-    id: 'label_my_email_address_is',
-    defaultMessage: 'My email address is',
+  usernameTitle: {
+    id: 'label_my_username_is',
+    defaultMessage: 'My username is',
   },
   sendEmail: {
     id: 'Start password reset',
     defaultMessage: 'Start password reset',
   },
-  emailrequired: {
-    id: 'Your email is required for reset your password.',
-    defaultMessage: 'Your email is required for reset your password.',
+  usernameRequired: {
+    id: 'Your usernaame is required for reset your password.',
+    defaultMessage: 'Your username is required for reset your password.',
   },
   passwordReset: {
     id: 'Password reset',
@@ -110,15 +110,15 @@ class RequestPasswordReset extends Component {
    * @returns {undefined}
    */
   onSubmit(data) {
-    if (data.email) {
-      this.props.resetPassword(data.email);
+    if (data.username) {
+      this.props.resetPassword(data.username);
       this.setState({
         error: null,
       });
     } else {
       this.setState({
         error: {
-          message: this.props.intl.formatMessage(messages.emailrequired),
+          message: this.props.intl.formatMessage(messages.usernameRequired),
         },
       });
     }
@@ -173,17 +173,17 @@ class RequestPasswordReset extends Component {
                 {
                   id: 'default',
                   title: this.props.intl.formatMessage(messages.default),
-                  fields: ['email'],
+                  fields: ['username'],
                 },
               ],
               properties: {
-                email: {
+                username: {
                   type: 'string',
-                  title: this.props.intl.formatMessage(messages.emailTitle),
+                  title: this.props.intl.formatMessage(messages.usernameTitle),
                 },
               },
               submitLabel: this.props.intl.formatMessage(messages.sendEmail),
-              required: ['email'],
+              required: ['username'],
             }}
           />
         </Container>

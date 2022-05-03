@@ -3079,11 +3079,6 @@ msgstr ""
 msgid "You can't paste this content here"
 msgstr ""
 
-#: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: Your email is required for reset your password.
-msgid "Your email is required for reset your password."
-msgstr ""
-
 #: components/manage/Preferences/PersonalInformation
 # defaultMessage: Your location - either city and country - or in a company setting, where your office is located.
 msgid "Your location - either city and country - or in a company setting, where your office is located."
@@ -3097,6 +3092,11 @@ msgstr ""
 #: components/manage/Preferences/PersonalPreferences
 # defaultMessage: Your preferred language
 msgid "Your preferred language"
+msgstr ""
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Your username is required for reset your password.
+msgid "Your usernaame is required for reset your password."
 msgstr ""
 
 #: components/theme/Login/Login
@@ -3221,8 +3221,8 @@ msgid "intranet"
 msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: My email address is
-msgid "label_my_email_address_is"
+# defaultMessage: My username is
+msgid "label_my_username_is"
 msgstr ""
 
 #: config/Blocks

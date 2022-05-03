@@ -3086,11 +3086,6 @@ msgstr "Zure elementuaren historia ikusi dezakezu."
 msgid "You can't paste this content here"
 msgstr "Ezin duzu elementua hemen itsatsi"
 
-#: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: Your email is required for reset your password.
-msgid "Your email is required for reset your password."
-msgstr "Eposta derrigorrezkoa da zure pasahitza berrezartzeko."
-
 #: components/manage/Preferences/PersonalInformation
 # defaultMessage: Your location - either city and country - or in a company setting, where your office is located.
 msgid "Your location - either city and country - or in a company setting, where your office is located."
@@ -3105,6 +3100,11 @@ msgstr "Zure pasahitza ondo berrezarri da. Orain zure pasahitz berriarekin {link
 # defaultMessage: Your preferred language
 msgid "Your preferred language"
 msgstr "Zure hizkuntza"
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Your username is required for reset your password.
+msgid "Your usernaame is required for reset your password."
+msgstr ""
 
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -3228,9 +3228,9 @@ msgid "intranet"
 msgstr "Intraneta"
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: My email address is
-msgid "label_my_email_address_is"
-msgstr "Nire helbidea hauxe da: "
+# defaultMessage: My username is
+msgid "label_my_username_is"
+msgstr "Nire erabiltzaile izena da"
 
 #: config/Blocks
 # defaultMessage: Lead Image Field
