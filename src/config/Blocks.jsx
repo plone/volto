@@ -12,6 +12,7 @@ import ViewHeroImageLeftBlock from '@plone/volto/components/manage/Blocks/HeroIm
 import ViewMapBlock from '@plone/volto/components/manage/Blocks/Maps/View';
 import ViewHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/View';
 import ViewTableBlock from '@plone/volto/components/manage/Blocks/Table/View';
+import ViewRedirectBlock from '@plone/volto/components/manage/Blocks/Redirect/View';
 
 import EditTitleBlock from '@plone/volto/components/manage/Blocks/Title/Edit';
 import EditDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/Edit';
@@ -27,6 +28,7 @@ import EditHeroImageLeftBlock from '@plone/volto/components/manage/Blocks/HeroIm
 import EditMapBlock from '@plone/volto/components/manage/Blocks/Maps/Edit';
 import EditHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/Edit';
 import EditTableBlock from '@plone/volto/components/manage/Blocks/Table/Edit';
+import EditRedirectBlock from '@plone/volto/components/manage/Blocks/Redirect/Edit';
 
 import descriptionSVG from '@plone/volto/icons/description.svg';
 import titleSVG from '@plone/volto/icons/text.svg';
@@ -478,6 +480,23 @@ const blocksConfig = {
           },
         ],
       },
+    },
+  },
+  redirect: {
+    id: 'redirect',
+    title: 'Redirect',
+    icon: tableSVG,
+    group: 'common',
+    view: ViewRedirectBlock,
+    edit: EditRedirectBlock,
+    schema: BlockSettingsSchema,
+    restricted: false,
+    mostUsed: false,
+    blockHasOwnFocusManagement: true,
+    sidebarTab: 1,
+    security: {
+      addPermission: [],
+      view: [],
     },
   },
 };
