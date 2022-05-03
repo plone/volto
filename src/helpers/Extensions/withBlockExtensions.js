@@ -5,6 +5,10 @@
 import React from 'react';
 import config from '@plone/volto/registry';
 
+/**
+ * Retrieves the extension (variation) settings from the provided
+ * configuration, based on incoming data.
+ */
 export function resolveExtension(name, extensions, data) {
   const selectedExtension = data[name];
 

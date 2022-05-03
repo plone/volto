@@ -3,7 +3,7 @@
  * @module components/theme/App/App
  */
 
-import React, { Component } from 'react';
+import { Component } from 'react';
 import jwtDecode from 'jwt-decode';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -42,9 +42,9 @@ import {
 } from '@plone/volto/actions';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
-import MultilingualRedirector from '../MultilingualRedirector/MultilingualRedirector';
-import WorkingCopyToastsFactory from '../../manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory';
-import LockingToastsFactory from '../../manage/LockingToastsFactory/LockingToastsFactory';
+import MultilingualRedirector from '@plone/volto/components/theme/MultilingualRedirector/MultilingualRedirector';
+import WorkingCopyToastsFactory from '@plone/volto/components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory';
+import LockingToastsFactory from '@plone/volto/components/manage/LockingToastsFactory/LockingToastsFactory';
 
 import * as Sentry from '@sentry/browser';
 
@@ -146,7 +146,10 @@ class App extends Component {
         <SkipLinks />
         <Header pathname={path} />
         <Breadcrumbs pathname={path} />
-        <MultilingualRedirector pathname={this.props.pathname}>
+        <MultilingualRedirector
+          pathname={this.props.pathname}
+          contentLanguage={this.props.content?.language?.token}
+        >
           <Segment basic className="content-area">
             <main>
               <OutdatedBrowser />

@@ -272,6 +272,7 @@ class Login extends Component {
                 <Button
                   basic
                   primary
+                  icon
                   floated="right"
                   type="submit"
                   id="login-form-submit"
@@ -285,12 +286,13 @@ class Login extends Component {
                 <Button
                   basic
                   secondary
+                  icon
+                  floated="right"
                   id="login-form-cancel"
                   as={Link}
                   to="/"
                   aria-label={this.props.intl.formatMessage(messages.cancel)}
                   title={this.props.intl.formatMessage(messages.cancel)}
-                  floated="right"
                 >
                   <Icon className="circled" name={clearSVG} size="30px" />
                 </Button>

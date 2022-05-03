@@ -12,11 +12,11 @@ import {
   addAppURL,
   isInternalURL,
   flattenToAppURL,
+  URLUtils,
 } from '@plone/volto/helpers';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
-import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
 
 /** Widget to edit urls
  *
@@ -31,7 +31,16 @@ import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils
  * ```
  */
 export const UrlWidget = (props) => {
-  const { id, onChange, onBlur, onClick, minLength, maxLength } = props;
+  const {
+    id,
+    onChange,
+    onBlur,
+    onClick,
+    minLength,
+    maxLength,
+    placeholder,
+    isDisabled,
+  } = props;
   const inputId = `field-${id}`;
 
   const [value, setValue] = useState(flattenToAppURL(props.value));
@@ -64,15 +73,10 @@ export const UrlWidget = (props) => {
     newValue = isInternalURL(newValue) ? addAppURL(newValue) : newValue;
 
     if (!isInternalURL(newValue) && newValue.length > 0) {
-      if (URLUtils.isMail(URLUtils.normaliseMail(newValue))) {
-        newValue = URLUtils.normaliseMail(newValue);
-      } else if (URLUtils.isTelephone(newValue)) {
-        newValue = URLUtils.normalizeTelephone(newValue);
-      } else {
-        newValue = URLUtils.normalizeUrl(newValue);
-        if (!URLUtils.isUrl(newValue)) {
-          setIsInvalid(true);
-        }
+      const checkedURL = URLUtils.checkAndNormalizeUrl(newValue);
+      newValue = checkedURL.url;
+      if (!checkedURL.isValid) {
+        setIsInvalid(true);
       }
     }
 
@@ -87,6 +91,8 @@ export const UrlWidget = (props) => {
           name={id}
           type="url"
           value={value || ''}
+          disabled={isDisabled}
+          placeholder={placeholder}
           onChange={({ target }) => onChangeValue(target.value)}
           onBlur={({ target }) =>
             onBlur(id, target.value === '' ? undefined : target.value)
@@ -101,6 +107,7 @@ export const UrlWidget = (props) => {
             <Button
               basic
               className="cancel"
+              aria-label="clearUrlBrowser"
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -115,6 +122,7 @@ export const UrlWidget = (props) => {
             <Button
               basic
               icon
+              aria-label="openUrlBrowser"
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -154,6 +162,7 @@ UrlWidget.propTypes = {
   minLength: PropTypes.number,
   maxLength: PropTypes.number,
   openObjectBrowser: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
 };
 
 /**

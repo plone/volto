@@ -13,13 +13,12 @@ import {
   addAppURL,
   isInternalURL,
   flattenToAppURL,
+  URLUtils,
 } from '@plone/volto/helpers';
 
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import { Input, Form, Button } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
-
-import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
@@ -199,19 +198,11 @@ class AddLinkForm extends Component {
   onSubmit() {
     let { value: url } = this.state;
 
-    if (URLUtils.isMail(URLUtils.normaliseMail(url))) {
-      //Mail
-      url = URLUtils.normaliseMail(url);
-    } else if (URLUtils.isTelephone(url)) {
-      //Phone
-      url = URLUtils.normalizeTelephone(url);
-    } else {
-      //url
-      url = URLUtils.normalizeUrl(url);
-      if (!URLUtils.isUrl(url) && !url.startsWith('/')) {
-        this.setState({ isInvalid: true });
-        return;
-      }
+    const checkedURL = URLUtils.checkAndNormalizeUrl(url);
+    url = checkedURL.url;
+    if (!checkedURL.isValid) {
+      this.setState({ isInvalid: true });
+      return;
     }
 
     const editorStateUrl = isInternalURL(url) ? addAppURL(url) : url;

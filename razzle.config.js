@@ -5,8 +5,9 @@ const nodeExternals = require('webpack-node-externals');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const fs = require('fs');
-const RootResolverPlugin = require('./webpack-root-resolver');
-const RelativeResolverPlugin = require('./webpack-relative-resolver');
+const { pickBy } = require('lodash');
+const RootResolverPlugin = require('./webpack-plugins/webpack-root-resolver');
+const RelativeResolverPlugin = require('./webpack-plugins/webpack-relative-resolver');
 const createAddonsLoader = require('./create-addons-loader');
 const AddonConfigurationRegistry = require('./addon-registry');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
@@ -181,15 +182,15 @@ const defaultModify = ({
   // Disabling the ESlint pre loader
   config.module.rules.splice(0, 1);
 
-  let testingAddons = [];
-  if (process.env.RAZZLE_TESTING_ADDONS) {
-    testingAddons = process.env.RAZZLE_TESTING_ADDONS.split(',');
+  let addonsFromEnvVar = [];
+  if (process.env.ADDONS) {
+    addonsFromEnvVar = process.env.ADDONS.split(';');
   }
 
-  const addonsLoaderPath = createAddonsLoader([
-    ...registry.getAddonDependencies(),
-    ...testingAddons,
-  ]);
+  const addonsLoaderPath = createAddonsLoader(
+    registry.getAddonDependencies(),
+    registry.getAddons(),
+  );
 
   config.resolve.plugins = [
     new RelativeResolverPlugin(registry),
@@ -197,8 +198,8 @@ const defaultModify = ({
   ];
 
   config.resolve.alias = {
-    ...registry.getTestingAddonCustomizationPaths(),
     ...registry.getAddonCustomizationPaths(),
+    ...registry.getAddonsFromEnvVarCustomizationPaths(),
     ...registry.getProjectCustomizationPaths(),
     ...config.resolve.alias,
     '../../theme.config$': `${projectRootPath}/theme/theme.config`,
@@ -210,8 +211,12 @@ const defaultModify = ({
     '@plone/volto-original': `${registry.voltoPath}/src`,
     // be able to reference current package from customized package
     '@package': `${projectRootPath}/src`,
+    '@root': `${projectRootPath}/src`,
     // we're incorporating redux-connect
     'redux-connect': `${registry.voltoPath}/src/helpers/AsyncConnect`,
+    // avoids including lodash multiple times.
+    // semantic-ui-react uses lodash-es, everything else uses lodash
+    'lodash-es': path.dirname(require.resolve('lodash')),
   };
 
   config.performance = {
@@ -226,19 +231,21 @@ const defaultModify = ({
   if (packageJson.name !== '@plone/volto') {
     include.push(fs.realpathSync(`${registry.voltoPath}/src`));
   }
+
   // Add babel support external (ie. node_modules npm published packages)
-  if (packageJson.addons) {
-    registry.addonNames.forEach((addon) => {
+  const packagesNames = Object.keys(registry.packages);
+  if (registry.packages && packagesNames.length > 0) {
+    packagesNames.forEach((addon) => {
       const p = fs.realpathSync(registry.packages[addon].modulePath);
       if (include.indexOf(p) === -1) {
         include.push(p);
       }
     });
-    addonsAsExternals = registry.addonNames.map((addon) => new RegExp(addon));
+    addonsAsExternals = packagesNames.map((addon) => new RegExp(addon));
   }
 
-  if (process.env.RAZZLE_TESTING_ADDONS) {
-    testingAddons.forEach((addon) => {
+  if (process.env.ADDONS) {
+    addonsFromEnvVar.forEach((addon) => {
       const normalizedAddonName = addon.split(':')[0];
       const p = fs.realpathSync(
         registry.packages[normalizedAddonName].modulePath,
@@ -246,9 +253,12 @@ const defaultModify = ({
       if (include.indexOf(p) === -1) {
         include.push(p);
       }
-      addonsAsExternals = registry.addonNames.map(
-        (normalizedAddonName) => new RegExp(normalizedAddonName),
-      );
+      addonsAsExternals = [
+        ...addonsAsExternals,
+        ...packagesNames.map(
+          (normalizedAddonName) => new RegExp(normalizedAddonName),
+        ),
+      ];
     });
   }
 
@@ -275,10 +285,10 @@ const defaultModify = ({
 const addonExtenders = registry.getAddonExtenders().map((m) => require(m));
 
 const defaultPlugins = [
-  { object: require('./webpack-less-plugin')({ registry }) },
-  { object: require('./webpack-sentry-plugin') },
-  { object: require('./webpack-svg-plugin') },
-  { object: require('./webpack-bundle-analyze-plugin') },
+  { object: require('./webpack-plugins/webpack-less-plugin')({ registry }) },
+  { object: require('./webpack-plugins/webpack-sentry-plugin') },
+  { object: require('./webpack-plugins/webpack-svg-plugin') },
+  { object: require('./webpack-plugins/webpack-bundle-analyze-plugin') },
   { object: require('./jest-extender-plugin') },
 ];
 

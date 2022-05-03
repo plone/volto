@@ -4,12 +4,11 @@
  */
 
 import React, { Component } from 'react';
-import { Map } from 'immutable';
+import { compose } from 'redux';
 import PropTypes from 'prop-types';
-import { stateFromHTML } from 'draft-js-import-html';
 import { isEqual } from 'lodash';
-import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { defineMessages, injectIntl } from 'react-intl';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import config from '@plone/volto/registry';
 
 const messages = defineMessages({
@@ -18,14 +17,6 @@ const messages = defineMessages({
     defaultMessage: 'Type the title…',
   },
 });
-
-const blockRenderMap = Map({
-  unstyled: {
-    element: 'h1',
-  },
-});
-
-const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMap);
 
 /**
  * Edit title block class.
@@ -71,6 +62,19 @@ class Edit extends Component {
     super(props);
 
     if (!__SERVER__) {
+      const { Map } = props.immutableLib;
+      const { DefaultDraftBlockRenderMap, EditorState } = props.draftJs;
+      const { stateFromHTML } = props.draftJsImportHtml;
+
+      const blockRenderMap = Map({
+        unstyled: {
+          element: 'h1',
+        },
+      });
+
+      this.extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(
+        blockRenderMap,
+      );
       let editorState;
       if (props.properties && props.properties.title) {
         const contentState = stateFromHTML(props.properties.title);
@@ -117,6 +121,9 @@ class Edit extends Component {
       this.props.properties.title !== nextProps.properties.title &&
       !this.state.focus
     ) {
+      const { stateFromHTML } = this.props.draftJsImportHtml;
+      const { EditorState } = this.props.draftJs;
+
       const contentState = stateFromHTML(nextProps.properties.title);
       this.setState({
         editorState: nextProps.properties.title
@@ -156,6 +163,8 @@ class Edit extends Component {
       return <div />;
     }
 
+    const { Editor } = this.props.draftJs;
+
     const placeholder =
       this.props.data.placeholder ||
       this.props.intl.formatMessage(messages.title);
@@ -165,7 +174,7 @@ class Edit extends Component {
         readOnly={!this.props.editable}
         onChange={this.onChange}
         editorState={this.state.editorState}
-        blockRenderMap={extendedBlockRenderMap}
+        blockRenderMap={this.extendedBlockRenderMap}
         handleReturn={() => {
           if (this.props.data.disableNewBlocks) {
             return 'handled';
@@ -208,4 +217,7 @@ class Edit extends Component {
   }
 }
 
-export default injectIntl(Edit);
+export default compose(
+  injectLazyLibs(['draftJs', 'immutableLib', 'draftJsImportHtml']),
+  injectIntl,
+)(Edit);

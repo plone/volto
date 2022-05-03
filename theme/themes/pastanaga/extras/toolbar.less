@@ -4,18 +4,24 @@
 @silver: #c7d5d8;
 @darkHotPink: #e40166;
 @toolbar-text: #252525;
+// transitions
+@opacity-transition: opacity 0.1s 0.2s;
+@cubic-transition: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+@height-transition: height 0.3s @cubic-transition;
+@max-height-transition: max-height 0.3s @cubic-transition;
+@width-transition: width 0.3s @cubic-transition;
 
 .has-toolbar {
   .pusher {
     height: 100px;
-    transition: height 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    transition: @height-transition;
   }
 }
 
 .has-toolbar-collapsed {
   .pusher {
     height: 20px;
-    transition: height 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    transition: @height-transition;
   }
 }
 
@@ -93,18 +99,18 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
     flex-direction: column;
     background-color: #fff;
     box-shadow: 0 1px 2px 0 #c7d5d8;
-    transition: height 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    transition: @height-transition;
 
     &.expanded {
       height: 100px;
 
       .toolbar-actions {
         opacity: 1;
-        transition: opacity 0.1s 0.2s;
+        transition: @opacity-transition;
 
         &.hidden {
           opacity: 0;
-          transition: opacity 0.1s 0.2s;
+          transition: @opacity-transition;
         }
       }
 
@@ -113,17 +119,8 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
       }
 
       .toolbar-bottom {
-        a {
-          opacity: 1;
-        }
-      }
-
-      .toolbar-bottom {
-        .minipastanaga {
-          bottom: 10px;
-          opacity: 0;
-          transition: bottom 0.3s 0.3s, opacity 0.3s;
-        }
+        opacity: 1;
+        transition: @opacity-transition;
       }
 
       .toolbar-button-spacer {
@@ -154,14 +151,12 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
       opacity: 0;
       // Removing this because is causing grey scroll appears
       // overflow-y: scroll;
-      transition: max-height 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
-        opacity 0.3s 0.3s;
+      transition: @max-height-transition, opacity 0.3s 0.3s;
 
       &.show {
         max-height: 900px;
         opacity: 1;
-        transition: max-height 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
-          opacity 0.3s 0.3s;
+        transition: @max-height-transition, opacity 0.3s 0.3s;
       }
     }
 
@@ -169,7 +164,7 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
       display: flex;
       height: 0;
       flex-direction: row-reverse;
-      transition: height 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+      transition: @height-transition;
 
       a,
       button {
@@ -207,7 +202,7 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
       align-items: center;
       padding: 0 20px;
       opacity: 0;
-      transition: opacity 0.1s 0.2s;
+      transition: @opacity-transition;
 
       .contents {
         color: @teal-blue;
@@ -269,10 +264,8 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
       flex-direction: row-reverse;
       // flex: 1;
       align-items: center;
-
-      a {
-        opacity: 0;
-      }
+      opacity: 0;
+      transition: @opacity-transition;
 
       .user {
         display: none;
@@ -280,19 +273,6 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
 
       .divider {
         display: none;
-      }
-
-      .pastanagalogo {
-        display: none;
-      }
-
-      .minipastanaga {
-        position: absolute;
-        bottom: 2px;
-        height: 14px;
-        padding: 0 6px;
-        opacity: 1;
-        transition: bottom 0.3s 0.3s, opacity 0.3s 0.3s;
       }
     }
   }
@@ -346,11 +326,11 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
       height: 100%;
       flex-direction: row;
       justify-content: flex-end;
-      transition: width 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+      transition: @width-transition;
 
       & + .pusher {
         margin-right: @toolbarWidthMin;
-        transition: margin-right 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+        transition: margin-right 0.3s @cubic-transition;
       }
 
       &.expanded {
@@ -359,7 +339,7 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
 
         & + .pusher {
           margin-right: @toolbarWidth;
-          transition: margin-right 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+          transition: margin-right 0.3s @cubic-transition;
         }
 
         .toolbar-body {
@@ -378,11 +358,7 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
         .toolbar-bottom {
           .user {
             opacity: 1;
-            transition: opacity 0.1s 0.2s;
-          }
-
-          .pastanagalogo {
-            display: block;
+            transition: @opacity-transition;
           }
 
           .divider {
@@ -390,7 +366,7 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
             height: 20px;
             border-top: 1px solid #c7d5d8;
             opacity: 1;
-            transition: opacity 0.1s 0.2s;
+            transition: @opacity-transition;
           }
         }
       }
@@ -406,7 +382,7 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
         width: 100%;
         height: 100%;
         flex-direction: column;
-        transition: width 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+        transition: @width-transition;
 
         a,
         button {
@@ -438,21 +414,6 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
         .divider {
           display: block;
           opacity: 0;
-        }
-
-        .minipastanaga {
-          bottom: 10px;
-        }
-
-        .pastanagalogo {
-          display: block;
-          padding-right: 6px;
-          padding-left: 6px;
-          margin-bottom: 10px;
-
-          img {
-            width: 100%;
-          }
         }
       }
 

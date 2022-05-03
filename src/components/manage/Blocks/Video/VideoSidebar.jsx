@@ -5,7 +5,7 @@ import { Accordion, Grid, Segment } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import { CheckboxWidget, Icon, TextWidget } from '@plone/volto/components';
 import AlignBlock from '@plone/volto/components/manage/Sidebar/AlignBlock';
-
+import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
 import videoSVG from '@plone/volto/icons/videocamera.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
@@ -92,7 +92,14 @@ const VideoSidebar = ({
                   id="video-preview-image"
                   title={intl.formatMessage(messages.Preview_image)}
                   required={false}
-                  value={data.preview_image?.split('/').slice(-1)[0]}
+                  value={
+                    isInternalURL(data.preview_image)
+                      ? data.preview_image
+                          ?.replace(/\/$/, '')
+                          .split('/')
+                          .slice(-1)[0]
+                      : data.preview_image
+                  }
                   icon={data.preview_image ? clearSVG : navTreeSVG}
                   iconAction={
                     data.preview_image
@@ -161,7 +168,7 @@ const VideoSidebar = ({
                   id="link"
                   title={intl.formatMessage(messages.LinkTo)}
                   required={false}
-                  value={data.href}
+                  value={flattenToAppURL(data.href)}
                   icon={data.href ? clearSVG : navTreeSVG}
                   iconAction={
                     data.href
@@ -176,7 +183,7 @@ const VideoSidebar = ({
                   onChange={(name, value) => {
                     onChangeBlock(block, {
                       ...data,
-                      href: value,
+                      href: flattenToAppURL(value),
                     });
                   }}
                 />

@@ -30,7 +30,8 @@ describe('Basic multilingual Tests', () => {
     cy.visit('/it');
 
     cy.findByText('Mappa del sito');
-    cy.getCookie('lang').should('have.property', 'value', 'it');
+    cy.get('.language-selector .selected').contains('Italiano');
+    cy.getCookie('I18N_LANGUAGE').should('have.property', 'value', 'it');
   });
 
   it('Language selector in content', function () {
@@ -59,26 +60,59 @@ describe('Basic multilingual Tests', () => {
     cy.findByLabelText('Vai a english').click();
 
     // The english doc should be shown
+    cy.waitForResourceToLoad('@navigation');
+    cy.waitForResourceToLoad('@breadcrumbs');
+    cy.waitForResourceToLoad('@actions');
+    cy.waitForResourceToLoad('@types');
+    cy.waitForResourceToLoad('document');
+
     cy.get('#page-document').findByText('Test document');
     cy.url().should('eq', Cypress.config().baseUrl + '/en/document');
   });
 
   it('Manage translations menu', function () {
-    cy.navigate('/en');
+    // Create translation
+    cy.get('#toolbar-add').click();
+    cy.findByText('Translate to italiano').click();
+    cy.findByText('Test document');
+    cy.findByText('Traduci in Italiano');
+    cy.get(
+      '.new-translation .documentFirstHeading > .public-DraftStyleDefault-block',
+    ).type('My IT page');
+    cy.get('.new-translation .block.inner.text .public-DraftEditor-content')
+      .type('This is the italian text')
+      .get('span[data-text]')
+      .contains('This is the italian text')
+      .type('{enter}');
+    cy.get('.new-translation .ui.basic.icon.button.block-add-button').click();
+    cy.get('.ui.basic.icon.button.image').contains('Immagine').click();
+    cy.get('#toolbar-save').click();
+    cy.waitForResourceToLoad('@navigation');
+    cy.waitForResourceToLoad('@breadcrumbs');
+    cy.waitForResourceToLoad('@actions');
+    cy.waitForResourceToLoad('@types');
+    cy.waitForResourceToLoad('my-it-page');
+
+    cy.findByLabelText('Vai a english').click();
+
+    // The english doc should be shown
+    cy.get('#page-document').findByText('Test document');
+
     cy.findByLabelText('More').click();
     cy.findByText('Manage Translations').click();
     cy.findByText('Manage translations for');
-    cy.findByText('/en');
-    cy.findByText('/it');
+    cy.findByText('/en/document');
+    cy.findByText('/it/my-it-page');
 
     // Unlink translation for italian
     cy.findByLabelText('Unlink translation for italiano').click();
-    cy.contains('/it').should('not.exist');
+    cy.contains('/it/my-it-page').should('not.exist');
 
     // Link it again
     cy.findByLabelText('Link translation for italiano').click();
     cy.findByLabelText('Back').click();
-    cy.findByLabelText('Select Italiano').dblclick();
-    cy.findByText('/it');
+    cy.findByLabelText('Browse Italiano').click();
+    cy.findByLabelText('Select My IT page').dblclick();
+    cy.findByText('/it/my-it-page');
   });
 });

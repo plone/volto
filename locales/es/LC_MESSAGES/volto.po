@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-03 03:20-0400\n"
-"PO-Revision-Date: 2021-06-18 08:57+0200\n"
+"PO-Revision-Date: 2022-03-04 22:47+0100\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language: es\n"
 "Language-Team: ES <LL@li.org>\n"
@@ -68,6 +68,11 @@ msgstr "Activar y desactivar"
 msgid "Add"
 msgstr "Agregar"
 
+#: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Add
+msgid "Add (object list)"
+msgstr "Añadir"
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
 msgid "Add Addons"
@@ -96,7 +101,7 @@ msgstr "Agregar una descripción…"
 #: components/manage/BlockChooser/BlockChooserButton
 # defaultMessage: Add block
 msgid "Add block"
-msgstr ""
+msgstr "Añadir bloque"
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add block…
@@ -151,7 +156,7 @@ msgstr "Agregar a Grupos"
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Add term
 msgid "Add vocabulary term"
-msgstr ""
+msgstr "Añadir término del vocabulario"
 
 #: components/manage/Add/Add
 # defaultMessage: Add {type}
@@ -195,17 +200,17 @@ msgstr "Texto alternativo"
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: Leave empty if the image is purely decorative.
 msgid "Alt text hint"
-msgstr ""
+msgstr "Dejar vacío si la imagen es puramente decorativa"
 
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: Describe the purpose of the image.
 msgid "Alt text hint link text"
-msgstr ""
+msgstr "Describir el objeto de la imagen"
 
 #: components/manage/Toolbar/More
 # defaultMessage: Apply working copy
 msgid "Apply working copy"
-msgstr ""
+msgstr "Aplicar copia de trabajo"
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Are you sure you want to delete this field?
@@ -261,7 +266,7 @@ msgstr "Base"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Base search query
 msgid "Base search query"
-msgstr ""
+msgstr "Consulta base de la búsqueda"
 
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Block
@@ -361,7 +366,7 @@ msgstr "Cambiar el estado del flujo de trabajo recursivamente"
 #: components/manage/Toolbar/More
 # defaultMessage: Changes applied
 msgid "Changes applied."
-msgstr ""
+msgstr "Cambios aplicados."
 
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
@@ -411,7 +416,7 @@ msgstr "Limpiar"
 #: components/manage/Blocks/Search/components/FilterList
 # defaultMessage: Clear filters
 msgid "Clear filters"
-msgstr ""
+msgstr "Limpiar filtros"
 
 #: components/theme/View/ImageView
 # defaultMessage: Click to download full sized image
@@ -510,7 +515,7 @@ msgstr "Contenidos"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Controls
 msgid "Controls"
-msgstr ""
+msgstr "Controles"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -537,12 +542,12 @@ msgstr "Información del copyright o otros derechos en este elemento."
 #: components/manage/Toolbar/More
 # defaultMessage: Create working copy
 msgid "Create working copy"
-msgstr ""
+msgstr "Crear copia de trabajo"
 
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: Created by {creator} on {date}
 msgid "Created by {creator} on {date}"
-msgstr ""
+msgstr "Creado por {creator} el {date}"
 
 #: components/manage/Contents/Contents
 # defaultMessage: Created on
@@ -568,7 +573,7 @@ msgstr "Criterios"
 #: components/manage/Blocks/Search/components/FilterList
 # defaultMessage: Current filters applied
 msgid "Current filters applied"
-msgstr ""
+msgstr "Filtros aplicados"
 
 #: components/manage/Preferences/ChangePassword
 # defaultMessage: Current password
@@ -761,6 +766,11 @@ msgstr "¿Usted realmente quiere eliminar este elemento?"
 msgid "Document"
 msgstr "Documento"
 
+#: components/theme/EventDetails/EventDetails
+# defaultMessage: Download Event
+msgid "Download Event"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Drag and drop files from your computer onto this area or click the “Browse” button.
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
@@ -863,6 +873,7 @@ msgstr "Lista de objetos vacía"
 msgid "Enable editable Blocks"
 msgstr "Activar bloques editables"
 
+#: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 # defaultMessage: End Date
 msgid "End Date"
@@ -967,37 +978,37 @@ msgstr "Dirección URL externa"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Facet
 msgid "Facet"
-msgstr ""
+msgstr "Faceta"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Facet widget
 msgid "Facet widget"
-msgstr ""
+msgstr "Widget de la faceta"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Facets
 msgid "Facets"
-msgstr ""
+msgstr "Facetas"
 
 #: config/Blocks
 # defaultMessage: Facets on left side
 msgid "Facets on left side"
-msgstr ""
+msgstr "Facetas en la izquierda"
 
 #: config/Blocks
 # defaultMessage: Facets on right side
 msgid "Facets on right side"
-msgstr ""
+msgstr "Facetas en la derecha"
 
 #: config/Blocks
 # defaultMessage: Facets on top
 msgid "Facets on top"
-msgstr ""
+msgstr "Facetas arriba"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Field
 msgid "Field"
-msgstr ""
+msgstr "Campo"
 
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: File
@@ -1100,7 +1111,7 @@ msgstr "Grupo creado"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Group roles updated
 msgid "Group roles updated"
-msgstr ""
+msgstr "Roles de grupo actualizados"
 
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: helpers/MessageLabels/MessageLabels
@@ -1118,7 +1129,7 @@ msgstr "Grupos"
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 # defaultMessage: Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group.
 msgid "Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group."
-msgstr ""
+msgstr "Los grupos son colecciones lógicas de usuarios, como departamentos o unidades de negocio. Los grupos no están asociados a permisos, para ello se utilizan los roles y algunos grupos tienen un rol determinado. El símbolo {plone_svg} indica que el rol se adquiere por ser miembro de otro grupo."
 
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Header cell
@@ -1128,12 +1139,12 @@ msgstr "Celda de cabecera"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
 msgid "Headline"
-msgstr ""
+msgstr "Cabecera"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hidden facets will still filter the results if proper parameters are passed in URLs
 msgid "Hidden facets will still filter the results if proper parameters are passed in URLs"
-msgstr ""
+msgstr "Las facetas ocultas aplicarán los filtros si los parámetros adecuados se pasan en la URL"
 
 #: components/theme/Comments/Comments
 # defaultMessage: Hide Replies
@@ -1143,7 +1154,7 @@ msgstr "Ocultar respuestas"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hide facet?
 msgid "Hide facet?"
-msgstr ""
+msgstr "¿Esconder la faceta?"
 
 #: components/manage/History/History
 #: components/manage/Toolbar/More
@@ -1154,7 +1165,7 @@ msgstr "Historial"
 #: components/manage/History/History
 # defaultMessage: #
 msgid "History Version Number"
-msgstr ""
+msgstr "#"
 
 #: components/manage/History/History
 # defaultMessage: History of {title}
@@ -1191,7 +1202,7 @@ msgstr "Si esta fecha es en el futuro, el contenido no se mostrará en los lista
 #: components/manage/LockingToastsFactory/LockingToastsFactory
 # defaultMessage: If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it.
 msgid "If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it."
-msgstr ""
+msgstr "Si está seguro de que el usuario ha dejado de editar el elemento puedes desbloquear el elemento. Después de ello la podrá editar."
 
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
@@ -1209,7 +1220,7 @@ msgstr "Imagen"
 #: config/Blocks
 # defaultMessage: Image gallery
 msgid "Image gallery"
-msgstr ""
+msgstr "Galería de imágenes"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Include this occurence
@@ -1339,12 +1350,17 @@ msgstr "Los elementos deben ser únicos."
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Label
 msgid "Label"
-msgstr ""
+msgstr "Etiqueta"
 
 #: components/manage/Preferences/PersonalPreferences
 # defaultMessage: Language
 msgid "Language"
 msgstr "Idioma"
+
+#: components/manage/Widgets/FormFieldWrapper
+# defaultMessage: Language independent field.
+msgid "Language independent field."
+msgstr "Campo independiente de idioma"
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Last
@@ -1464,12 +1480,12 @@ msgstr "Nombre de usuario"
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: Logout
 msgid "Logout"
-msgstr ""
+msgstr "Salir"
 
 #: components/manage/Toolbar/More
 # defaultMessage: Made by {creator} on {date}. This is not a working copy anymore, but the main content.
 msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
-msgstr ""
+msgstr "Hecho por {creator} el {date}. Esta no es una copia de trabajo, sino el contenido principal."
 
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Reduce cell padding
@@ -1566,7 +1582,7 @@ msgstr "Mover encima de la carpeta"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Multiple choices?
 msgid "Multiple choices?"
-msgstr ""
+msgstr "¿Múltiples opciones?"
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: My email address is
@@ -1606,6 +1622,11 @@ msgstr "Noticia"
 msgid "No"
 msgstr "No"
 
+#: components/manage/Controlpanels/VersionOverview
+# defaultMessage: No addons found
+msgid "No addons found"
+msgstr "No se han encontrado complementos"
+
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected
 msgid "No image selected"
@@ -1642,6 +1663,7 @@ msgid "No occurences set"
 msgstr "No hay repeticiones"
 
 #: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectAutoComplete
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TokenWidget
 # defaultMessage: No options
@@ -1698,7 +1720,7 @@ msgstr "Ninguno"
 #: components/manage/Controlpanels/Users/UsersControlpanel
 # defaultMessage: Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group.
 msgid "Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group."
-msgstr ""
+msgstr "Estos roles se aplican al usuario. El símbolo {plone_svg} indica que el rol se adquiere por ser miembro de un grupo."
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Number of active objects
@@ -1719,6 +1741,11 @@ msgstr "Apariciones"
 # defaultMessage: Ok
 msgid "Ok"
 msgstr "Ok"
+
+#: components/manage/Widgets/IdWidget
+# defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed.
+msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed."
+msgstr "Solo se permiten letras minúsculas (a-z) sin tildes, números (0-9) y los caracteres "-" y "_"."
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1939,6 +1966,11 @@ msgstr "La repetición finaliza después de"
 msgid "Recurrence ends on"
 msgstr "La repetición finaliza el"
 
+#: components/manage/Form/UndoToolbar
+# defaultMessage: Redo
+msgid "Redo"
+msgstr "Rehacer"
+
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Minimalistic table design
 msgid "Reduce complexity"
@@ -1974,12 +2006,12 @@ msgstr "Eliminar repetición"
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Remove term
 msgid "Remove term"
-msgstr ""
+msgstr "Eliminar término"
 
 #: components/manage/Toolbar/More
 # defaultMessage: Remove working copy
 msgid "Remove working copy"
-msgstr ""
+msgstr "Eliminar copia de trabajo"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -2038,7 +2070,7 @@ msgstr "Un campo requerido esta sin tomar en cuenta."
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Reset title
 msgid "Reset term title"
-msgstr ""
+msgstr "Limpiar el título del término"
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Results limit
@@ -2053,7 +2085,7 @@ msgstr "Vista previa de resultados"
 #: components/manage/Blocks/Search/SearchBlockEdit
 # defaultMessage: Results template
 msgid "Results template"
-msgstr ""
+msgstr "Plantilla de resultados"
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Reversed order
@@ -2138,7 +2170,7 @@ msgstr "Búsqueda"
 #: components/manage/Sidebar/ObjectBrowserBody
 # defaultMessage: Search SVG
 msgid "Search SVG"
-msgstr ""
+msgstr "Buscar SVG"
 
 #: components/theme/SearchWidget/SearchWidget
 # defaultMessage: Search Site
@@ -2148,12 +2180,12 @@ msgstr "Buscar en el sitio"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Search block
 msgid "Search block"
-msgstr ""
+msgstr "Bloque de búsqueda"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Search button label
 msgid "Search button label"
-msgstr ""
+msgstr "Etiqueta del botón de búsqueda"
 
 #: components/manage/Sidebar/ObjectBrowserBody
 # defaultMessage: Search content
@@ -2173,7 +2205,7 @@ msgstr "Buscar grupo..."
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Search input label
 msgid "Search input label"
-msgstr ""
+msgstr "Etiqueta del campo de búsqueda"
 
 #: components/manage/Blocks/Search/components/SearchDetails
 #: components/theme/Search/Search
@@ -2194,7 +2226,7 @@ msgstr "Buscar usuarios..."
 #: components/manage/Blocks/Search/components/SearchDetails
 # defaultMessage: Searched for
 msgid "Searched for"
-msgstr ""
+msgstr "Búsqueda"
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Second
@@ -2204,7 +2236,7 @@ msgstr "Segundo"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Section title
 msgid "Section title"
-msgstr ""
+msgstr "Título de la sección"
 
 #: components/manage/Sidebar/ObjectBrowserNav
 # defaultMessage: Select
@@ -2248,6 +2280,7 @@ msgstr "Selección"
 
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectAutoComplete
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TokenWidget
 # defaultMessage: Select…
@@ -2320,17 +2353,17 @@ msgstr "Mostrar elemento"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Show search button?
 msgid "Show search button?"
-msgstr ""
+msgstr "¿Mostrar botón de búsqueda?"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Show search input?
 msgid "Show search input?"
-msgstr ""
+msgstr "¿Mostrar campo de búsqueda?"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Show sorting?
 msgid "Show sorting?"
-msgstr ""
+msgstr "¿Mostrar criterios de ordenación?"
 
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Shrink sidebar
@@ -2404,12 +2437,12 @@ msgstr "Ordenar por"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Sort on label
 msgid "Sort on label"
-msgstr ""
+msgstr "Order por etiqueta"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Sort on options
 msgid "Sort on options"
-msgstr ""
+msgstr "Ordenar por opciones"
 
 #: components/manage/Blocks/HTML/Edit
 # defaultMessage: Source
@@ -2426,6 +2459,7 @@ msgstr "Especifica la dirección URL de un vídeo o una lista de reproducción d
 msgid "Split"
 msgstr "División"
 
+#: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 # defaultMessage: Start Date
 msgid "Start Date"
@@ -2485,7 +2519,7 @@ msgstr "Éxito"
 #: config/Blocks
 # defaultMessage: Summary
 msgid "Summary"
-msgstr ""
+msgstr "Resumen"
 
 #: components/theme/LanguageSelector/LanguageSelector
 # defaultMessage: Switch to
@@ -2562,24 +2596,24 @@ msgid "The backend is responding, but the CORS headers are not configured proper
 msgstr "La base de datos responde pero las cabeceras CORS no están configuradas correctamente y el navegador no puede acceder a los datos."
 
 #: components/theme/CorsError/CorsError
-# defaultMessage: The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
-msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
+# defaultMessage: The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
+msgid "The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
 msgstr "La base de datos no responde, disculpe las molestias. Intente cargar la página otra vez. Si el problema continúa póngase en contacto con el administrador del sitio."
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: The button presence disables the live search, the query is issued when you press ENTER
 msgid "The button presence disables the live search, the query is issued when you press ENTER"
-msgstr ""
+msgstr "Si se muestra el botón se desactiva la búsqueda en vivo, la búsqueda se realiza cuando se pulsa ENTER"
 
 #: components/manage/Contents/Contents
 # defaultMessage: The item could not be deleted.
 msgid "The item could not be deleted."
-msgstr ""
+msgstr "El elemento no se ha podido eliminar"
 
 #: components/theme/View/LinkView
 # defaultMessage: The link address is:
 msgid "The link address is:"
-msgstr ""
+msgstr "La dirección del enlace es:"
 
 #: components/theme/Register/Register
 # defaultMessage: The registration process has been successful. Please check your e-mail inbox for information on how activate your account.
@@ -2594,7 +2628,7 @@ msgstr "El retrato/avatar del usuario"
 #: components/manage/Toolbar/More
 # defaultMessage: The working copy was discarded
 msgid "The working copy was discarded"
-msgstr ""
+msgstr "La copia de trabajo se ha descartado"
 
 #: components/theme/Footer/Footer
 # defaultMessage: The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends.
@@ -2625,17 +2659,22 @@ msgstr "Tercero"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This has an ongoing working copy in {title}
 msgid "This has an ongoing working copy in {title}"
-msgstr ""
+msgstr "Tiene una copia de trabajo en {title}"
+
+#: components/manage/Widgets/IdWidget
+# defaultMessage: This is a reserved name and can't be used
+msgid "This is a reserved name and can't be used"
+msgstr "Es un nombre reservado y no se puede utilizar"
 
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This is a working copy of {title}
 msgid "This is a working copy of {title}"
-msgstr ""
+msgstr "Es una copia de trabajo de {title}"
 
 #: components/manage/LockingToastsFactory/LockingToastsFactory
 # defaultMessage: This item was locked by {creator} on {date}
 msgid "This item was locked by {creator} on {date}"
-msgstr ""
+msgstr "El elemento está bloqueado por {creator} el {date}"
 
 #: components/manage/Contents/ContentsRenameModal
 # defaultMessage: This name will be displayed in the URL.
@@ -2718,6 +2757,11 @@ msgstr "Tipo"
 msgid "Type a Video (YouTube, Vimeo or mp4) URL"
 msgstr "Escriba la URL de un vídeo (YouTube, Vimeo o mp4)"
 
+#: components/manage/Widgets/SelectAutoComplete
+# defaultMessage: Type text...
+msgid "Type text..."
+msgstr "Escribir texto..."
+
 #: components/manage/Blocks/Text/Edit
 # defaultMessage: Type text…
 msgid "Type text…"
@@ -2737,6 +2781,11 @@ msgstr "UID"
 # defaultMessage: Unauthorized
 msgid "Unauthorized"
 msgstr "No autorizado"
+
+#: components/manage/Form/UndoToolbar
+# defaultMessage: Undo
+msgid "Undo"
+msgstr "Deshacer"
 
 #: components/manage/BlockChooser/BlockChooser
 # defaultMessage: Unfold
@@ -2768,7 +2817,7 @@ msgstr "Eliminar enlace de traducción de"
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Unlock
 msgid "Unlock"
-msgstr ""
+msgstr "Desbloquear"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update
@@ -2845,7 +2894,7 @@ msgstr "Nombre de usuario"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: User roles updated
 msgid "User roles updated"
-msgstr ""
+msgstr "Roles de usuario actualizados"
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Username
@@ -2902,7 +2951,7 @@ msgstr "Mostrar esta revisión"
 #: components/manage/Toolbar/More
 # defaultMessage: View working copy
 msgid "View working copy"
-msgstr ""
+msgstr "Ver copia de trabajo"
 
 #: components/manage/Display/Display
 # defaultMessage: View
@@ -2912,17 +2961,17 @@ msgstr "Modo Ver"
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Vocabulary term
 msgid "Vocabulary term"
-msgstr ""
+msgstr "Término del vocabulario"
 
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Title
 msgid "Vocabulary term title"
-msgstr ""
+msgstr "Título del término del vocabulario"
 
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Vocabulary terms
 msgid "Vocabulary terms"
-msgstr ""
+msgstr "Términos del vocabulario"
 
 #: components/manage/Controlpanels/VersionOverview
 # defaultMessage: You are running in 'debug mode'. This mode is intended for sites that are under development. This allows many configuration changes to be immediately visible, but will make your site run more slowly. To turn off debug mode, stop the server, set 'debug-mode=off' in your buildout.cfg, re-run bin/buildout and then restart the server process.
@@ -3111,42 +3160,42 @@ msgstr "Borrador"
 msgid "email"
 msgstr "Correo electrónico"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: All dates
 msgid "event_alldates"
 msgstr "Todas las fechas"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Attendees
 msgid "event_attendees"
 msgstr "Asistentes"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Contact Name
 msgid "event_contactname"
 msgstr "Nombre del contacto"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Contact Phone
 msgid "event_contactphone"
 msgstr "Teléfono del contacto"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Website
 msgid "event_website"
 msgstr "Web"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: What
 msgid "event_what"
 msgstr "Qué"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: When
 msgid "event_when"
 msgstr "Cuándo"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Where
 msgid "event_where"
 msgstr "Dónde"
@@ -3241,6 +3290,12 @@ msgstr "Mínimo"
 # defaultMessage: Most used
 msgid "mostUsed"
 msgstr "Más usado"
+
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+# defaultMessage: No
+msgid "no"
+msgstr "no"
 
 #: components/manage/Contents/ContentsItem
 # defaultMessage: No workflow state
@@ -3508,10 +3563,16 @@ msgstr "avatar de usuario"
 msgid "video"
 msgstr "Vídeo"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Visit external website
 msgid "visit_external_website"
 msgstr "Visitar web externa"
+
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+# defaultMessage: Yes
+msgid "yes"
+msgstr "sí"
 
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: {count, plural, one {Upload {count} file} other {Upload {count} files}}

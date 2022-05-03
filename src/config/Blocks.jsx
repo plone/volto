@@ -56,6 +56,11 @@ import TopSideFacets from '@plone/volto/components/manage/Blocks/Search/layout/T
 import {
   SelectFacet,
   CheckboxFacet,
+  DateRangeFacet,
+  ToggleFacet,
+  ToggleFacetFilterListEntry,
+  SelectFacetFilterListEntry,
+  DateRangeFacetFilterListEntry,
 } from '@plone/volto/components/manage/Blocks/Search/components';
 import getListingBlockAsyncData from '@plone/volto/components/manage/Blocks/Listing/getAsyncData';
 
@@ -438,12 +443,38 @@ const blocksConfig = {
             title: 'Select',
             view: SelectFacet,
             isDefault: true,
+            schemaEnhancer: SelectFacet.schemaEnhancer,
+            stateToValue: SelectFacet.stateToValue,
+            valueToQuery: SelectFacet.valueToQuery,
+            filterListComponent: SelectFacetFilterListEntry,
           },
           {
             id: 'checkboxFacet',
             title: 'Checkbox',
             view: CheckboxFacet,
             isDefault: false,
+            schemaEnhancer: CheckboxFacet.schemaEnhancer,
+            stateToValue: CheckboxFacet.stateToValue,
+            valueToQuery: CheckboxFacet.valueToQuery,
+            filterListComponent: SelectFacetFilterListEntry,
+          },
+          {
+            id: 'daterangeFacet',
+            title: 'Date range',
+            view: DateRangeFacet,
+            isDefault: false,
+            stateToValue: DateRangeFacet.stateToValue,
+            valueToQuery: DateRangeFacet.valueToQuery,
+            filterListComponent: DateRangeFacetFilterListEntry,
+          },
+          {
+            id: 'toggleFacet',
+            title: 'Toggle',
+            view: ToggleFacet,
+            isDefault: false,
+            stateToValue: ToggleFacet.stateToValue,
+            valueToQuery: ToggleFacet.valueToQuery,
+            filterListComponent: ToggleFacetFilterListEntry,
           },
         ],
       },
@@ -454,5 +485,12 @@ const blocksConfig = {
 const requiredBlocks = ['title'];
 
 const initialBlocks = {};
+const initialBlocksFocus = {}; //{Document:'title'}
 
-export { groupBlocksOrder, requiredBlocks, blocksConfig, initialBlocks };
+export {
+  groupBlocksOrder,
+  requiredBlocks,
+  blocksConfig,
+  initialBlocks,
+  initialBlocksFocus,
+};

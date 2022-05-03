@@ -1,9 +1,8 @@
 import ObjectBrowserWidgetDefault, {
   ObjectBrowserWidgetComponent as OBC,
 } from './ObjectBrowserWidget';
-import Wrapper from '@plone/volto/storybook';
+import Wrapper, { FormUndoWrapper } from '@plone/volto/storybook';
 import React from 'react';
-import { injectIntl } from 'react-intl';
 import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 
 export const searchResults = {
@@ -148,6 +147,7 @@ const customStore = {
     subrequests: {
       'testBlock-multiple': searchResults,
       'testBlock-link': searchResults,
+      'testBlock-image': searchResults,
     },
   },
   userSession: { token: '1234' },
@@ -157,43 +157,55 @@ const customStore = {
   },
 };
 
-const ObjectBrowserWidgetComponent = (args) => {
-  const IntlWrappedComponent = injectIntl(OBC);
-  return (
-    <Wrapper>
-      <IntlWrappedComponent {...args} search={searchResults} />
-    </Wrapper>
-  );
-};
-
 const ObjectBrowserWidget = (args) => {
-  const [value, setValue] = React.useState([]);
-  const onChange = (block, value) => setValue(value);
-
   return (
     <Wrapper
       location={{ pathname: '/folder2/folder21/doc212' }}
       customStore={customStore}
     >
-      <ObjectBrowserWidgetDefault
-        {...args}
-        id="objectBrowser"
-        title="Object Browser"
-        block="testBlock"
-        value={value}
-        onChange={onChange}
-      />
-      {value?.length > 0 && (
-        <div style={{ marginTop: '40px' }}>
-          <UniversalLink item={value[0]}>{value[0]['@id']}</UniversalLink>
-        </div>
-      )}
+      <FormUndoWrapper initialState={{ value: undefined }} showControls={true}>
+        {({ state, onChange }) => (
+          <>
+            <ObjectBrowserWidgetDefault
+              {...args}
+              id="objectBrowser"
+              title="Object Browser"
+              block="testBlock"
+              value={state.value}
+              onChange={(block, value) => onChange({ value })}
+            />
+            <pre>
+              Value:
+              {state.value?.length > 0 && (
+                <UniversalLink item={state.value[0]}>
+                  {state.value[0]['@id']}
+                </UniversalLink>
+              )}
+            </pre>
+          </>
+        )}
+      </FormUndoWrapper>
     </Wrapper>
   );
 };
 
 export default {
-  title: 'Internal Components/Object Browser',
+  title: 'Widgets/Object Browser',
+  argTypes: {
+    selectableTypes: {
+      name: 'widgetOptions.pattern_options.selectableTypes',
+      description: 'List of content type names that can be selected',
+      table: {
+        type: {
+          summary: 'Something short',
+          detail: 'Something really really long',
+        },
+      },
+      control: {
+        type: null,
+      },
+    },
+  },
   component: OBC,
   decorators: [
     (Story) => (
@@ -206,9 +218,13 @@ export default {
   // subcomponents: { ArgsTable },
 };
 
-export const Renderer = () => (
-  <ObjectBrowserWidgetComponent search={searchResults} />
-);
-
 export const Connected = () => <ObjectBrowserWidget />;
 export const SingleElement = () => <ObjectBrowserWidget mode="link" />;
+export const Image = () => <ObjectBrowserWidget mode="image" return="single" />;
+export const SelectableType = () => (
+  <ObjectBrowserWidget
+    widgetOptions={{
+      pattern_options: { selectableTypes: ['Folder', 'Image', 'Event'] },
+    }}
+  />
+);

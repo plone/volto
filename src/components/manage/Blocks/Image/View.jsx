@@ -5,7 +5,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { UniversalLink } from '@plone/volto/components';
 import cx from 'classnames';
 
 import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
@@ -60,25 +60,14 @@ const View = ({ data, detached }) => (
             />
           );
           if (data.href) {
-            if (!isInternalURL(data.href)) {
-              return (
-                <a
-                  target={data.openLinkInNewTab ? '_blank' : null}
-                  href={data.href}
-                >
-                  {image}
-                </a>
-              );
-            } else {
-              return (
-                <Link
-                  to={flattenToAppURL(data.href)}
-                  target={data.openLinkInNewTab ? '_blank' : null}
-                >
-                  {image}
-                </Link>
-              );
-            }
+            return (
+              <UniversalLink
+                href={data.href}
+                openLinkInNewTab={data.openLinkInNewTab}
+              >
+                {image}
+              </UniversalLink>
+            );
           } else {
             return image;
           }
