@@ -113,7 +113,7 @@ const Image = ({
           alt={alt}
           className={className}
           role={role}
-          loading={critical) ? "eager" : "lazy"}
+          loading={(critical) ? "eager" : "lazy"}
           style={{ width: '100%', objectFit: 'cover' }}
           {...imageProps}
           ref={imageRef}
