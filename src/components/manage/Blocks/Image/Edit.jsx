@@ -266,8 +266,6 @@ class Edit extends Component {
       >
         {data.url ? (
           <>
-            {console.log(data.url)}
-
             <img
               className={cx({
                 'full-width': data.align === 'full',
