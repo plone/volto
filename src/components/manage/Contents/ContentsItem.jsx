@@ -191,7 +191,7 @@ export const ContentsItemComponent = ({
             )}
             {index.type === 'date' && (
               <>
-                {item[index.id] !== 'None' ? (
+                {item[index.id] && item[index.id] !== 'None' ? (
                   <FormattedDate date={item[index.id]} />
                 ) : (
                   intl.formatMessage(messages.none)
