@@ -29,13 +29,13 @@ const messages = defineMessages({
  * @returns {string} Markup of the component.
  */
 const Logo = () => {
-  const { settings } = config;
+  const { isMultilingual, prefixPath } = config.settings;
   const lang = useSelector((state) => state.intl.locale);
   const intl = useIntl();
 
   return (
     <Link
-      to={settings.isMultilingual ? `/${lang}` : '/'}
+      to={isMultilingual ? `${prefixPath}/${lang}` : `${prefixPath}/`}
       title={intl.formatMessage(messages.site)}
     >
       <Image
