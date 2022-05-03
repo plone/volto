@@ -59,9 +59,9 @@ describe('Blocks Tests', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
 
     // then the page view should contain an embedded Vimeo video
-    cy.get('.block.video src')
+    cy.get('.block.video img.placeholder')
       .should('have.attr', 'src')
-      .and('match', /\/\/player.vimeo.com\/video\/85804536/);
+      .and('match', /\/\/vumbnail.com\/85804536.jpg/);
   });
 
   it('Add Video Block with MP4 Video', () => {
