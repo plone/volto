@@ -96,6 +96,10 @@ const messages = defineMessages({
     id: 'Required',
     defaultMessage: 'Required',
   },
+  searchable: {
+    id: 'Searchable',
+    defaultMessage: 'Searchable',
+  },
   minLength: {
     id: 'minLength',
     defaultMessage: 'Minimum Length',
@@ -191,7 +195,7 @@ const schemaField = (factory, intl, fieldsets) => ({
               return ['minLength', 'maxLength'];
           }
         })(factory),
-        ...['required'],
+        ...['required', 'searchable'],
       ],
     },
   ],
@@ -213,6 +217,10 @@ const schemaField = (factory, intl, fieldsets) => ({
     required: {
       type: 'boolean',
       title: intl.formatMessage(messages.required),
+    },
+    searchable: {
+      type: 'boolean',
+      title: intl.formatMessage(messages.searchable),
     },
     ...((factory) => {
       switch (factory) {
