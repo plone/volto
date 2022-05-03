@@ -80,7 +80,10 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
                             pathname: `${pathname}/create-translation`,
                             state: {
                               type: content['@type'],
-                              translationOf: flattenToAppURL(content['@id']),
+                              translationOf: content['UID'],
+                              translationOriginalUrl: flattenToAppURL(
+                                content['@id'],
+                              ),
                               language: lang,
                             },
                           }}

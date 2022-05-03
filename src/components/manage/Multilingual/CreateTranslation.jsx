@@ -11,23 +11,29 @@ import config from '@plone/volto/registry';
 
 const CreateTranslation = (props) => {
   const dispatch = useDispatch();
-  const { language, translationOf } = props.location.state;
+  const {
+    language,
+    translationOf,
+    translationOriginalUrl,
+  } = props.location.state;
   const [translationLocation, setTranslationLocation] = React.useState(null);
   const [translationObject, setTranslationObject] = React.useState(null);
   const languageFrom = useSelector((state) => state.intl.locale);
 
   React.useEffect(() => {
     // Only on mount, we dispatch the locator query
-    dispatch(getTranslationLocator(translationOf, language)).then((resp) => {
-      setTranslationLocation(resp['@id']);
-    });
-
-    //and we load the translationObject
-    dispatch(getContent(translationOf, null, 'translationObject')).then(
+    dispatch(getTranslationLocator(translationOriginalUrl, language)).then(
       (resp) => {
-        setTranslationObject(resp);
+        setTranslationLocation(resp['@id']);
       },
     );
+
+    //and we load the translationObject
+    dispatch(
+      getContent(translationOriginalUrl, null, 'translationObject'),
+    ).then((resp) => {
+      setTranslationObject(resp);
+    });
 
     // On unmount we dispatch the language change
     return () => {
@@ -51,7 +57,8 @@ const CreateTranslation = (props) => {
           pathname: `${flattenToAppURL(translationLocation)}/add`,
           search: `?type=${props.location.state.type}`,
           state: {
-            translationOf: props.location.state.translationOf,
+            translationOf,
+            translationOriginalUrl,
             language: props.location.state.language,
             translationObject: translationObject,
             languageFrom,
