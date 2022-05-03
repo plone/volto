@@ -94,13 +94,21 @@ export function getView(url) {
  */
 export function flattenToAppURL(url) {
   const { settings } = config;
+  if (isMail(url) || isTelephone(url)) {
+    // skip
+    return url;
+  }
   let newUrl =
     url &&
     `${url
       .replace(settings.internalApiPath, '')
       .replace(settings.apiPath, '')
       .replace(settings.publicURL, '')}`;
-  if (settings.prefixPath && !newUrl.startsWith(settings.prefixPath)) {
+  if (
+    newUrl &&
+    settings.prefixPath &&
+    !newUrl.startsWith(settings.prefixPath)
+  ) {
     newUrl = `${settings.prefixPath}${newUrl}`;
   }
   return newUrl;

@@ -62,7 +62,6 @@ const UniversalLink = ({
     )?.length > 0;
   const isExternal = !isInternalURL(url) || isBlacklisted;
   const isDownload = (!isExternal && url.includes('@@download')) || download;
-
   return isExternal ? (
     <a
       href={url}
@@ -88,7 +87,7 @@ const UniversalLink = ({
     </a>
   ) : (
     <Link
-      to={url}
+      to={flattenToAppURL(url)}
       target={openLinkInNewTab ?? false ? '_blank' : null}
       title={title}
       className={className}
