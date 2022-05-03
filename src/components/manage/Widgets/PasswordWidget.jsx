@@ -52,7 +52,6 @@ const PasswordWidget = (props) => {
         minLength={minLength || null}
         maxLength={maxLength || null}
         autoComplete="off"
-        placeholder={placeholder}
       />
     </FormFieldWrapper>
   );

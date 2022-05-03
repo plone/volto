@@ -53,7 +53,6 @@ const NumberWidget = (props) => {
           onBlur(id, target.value === '' ? undefined : target.value)
         }
         onClick={() => onClick()}
-        placeholder={placeholder}
       />
     </FormFieldWrapper>
   );
