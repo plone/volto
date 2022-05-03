@@ -5,10 +5,11 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL } from '@plone/volto/helpers';
 import { Container } from 'semantic-ui-react';
 import { UniversalLink } from '@plone/volto/components';
 import { FormattedMessage } from 'react-intl';
+import { Redirect } from 'react-router-dom';
 
 /**
  * View container class.
@@ -40,17 +41,6 @@ class LinkView extends Component {
     token: null,
   };
 
-  componentDidMount() {
-    if (!this.props.token) {
-      const { remoteUrl } = this.props.content;
-      if (isInternalURL(remoteUrl)) {
-        this.props.history.replace(flattenToAppURL(remoteUrl));
-      } else if (!__SERVER__) {
-        window.location.href = flattenToAppURL(remoteUrl);
-      }
-    }
-  }
-
   /**
    * Render method.
    * @method render
@@ -58,7 +48,9 @@ class LinkView extends Component {
    */
   render() {
     const { remoteUrl } = this.props.content;
-    return (
+    return !this.props.token ? (
+      <Redirect to={remoteUrl} />
+    ) : (
       <Container id="page-document">
         <h1 className="documentFirstHeading">{this.props.content.title}</h1>
         {this.props.content.description && (
