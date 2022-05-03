@@ -1,7 +1,7 @@
 import config from '@plone/volto/registry';
 
 export const getCookieOptions = (options = {}) => {
-  const { path = '/', secure = false, ...otherOptions } = options;
+  const { path = '/', secure, ...otherOptions } = options;
   let secureOption = secure;
 
   try {
@@ -11,6 +11,7 @@ export const getCookieOptions = (options = {}) => {
     }
   } catch (e) {
     //window is not defined. It's ssr and we use 'secure' option passed from param
+    secureOption = false;
   }
 
   return {
