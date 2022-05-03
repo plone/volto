@@ -93,7 +93,7 @@ class Edit extends Component {
       this.props.onChangeBlock(this.props.block, {
         ...this.props.data,
         url: nextProps.content['@id'],
-        alt: nextProps.properties.title,
+        alt: '',
       });
     }
   }
@@ -176,7 +176,7 @@ class Edit extends Component {
   onSubmitUrl = () => {
     this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
-      url: this.state.url,
+      url: flattenToAppURL(this.state.url),
     });
   };
 

@@ -1,6 +1,129 @@
 # Change Log
 
-## 4.3.2 (unreleased)
+## 5.6.4 (unreleased)
+
+### Breaking
+
+### Feature
+
+- Deprecate NodeJS 12 from package generators since it's out of LTS since April 30, 2022. @sneridagh
+
+### Bugfix
+
+- Changed Cypress command generation to use the Cypress Commands from Volto core @JeffersonBledsoe #3271
+
+### Internal
+
+## 5.6.3 (2022-04-29)
+
+### Bugfix
+
+- Fix `omelette` yarn script to avoid creating a bogus symlink inside the Volto sources convinience facility @sneridagh
+
+## 5.6.2 (2022-04-25)
+
+### Bugfix
+
+- Fix `yarn lint` in Volto project generator scripts wasn't enforcing `--max-warnings=0` @sneridagh
+
+## 5.6.1 (2022-04-21)
+
+### Bugfix
+
+- Fix build for the docker image 6.0.0a4 in the `Makefile` command @sneridagh
+
+## 5.6.0 (2022-04-21)
+
+### Feature
+
+- Use `plone/plone-backend:6.0.0a4` in `Makefile` for new projects template for starting test backend @sneridagh
+
+## 5.5.1 (2022-04-21)
+
+### Bugfix
+
+- Fix webpack-less-plugin import in storybook @nileshgulia1
+- Remove useless import in storybook `main.js` @sneridagh
+
+## 5.5.0 (2022-02-03)
+
+### Added
+
+- Add mrs-developer.json in template
+- Fix app template Makefile @avoinea
+
+## 5.4.0 (2021-12-29)
+
+### Added
+
+- Add further CI cypress commands and complimentary Makefile for app template @sneridagh
+
+## 5.3.0 (2021-12-28)
+
+### Added
+
+- Add missing stylelint check script in project @sneridagh
+
+## 5.2.0 (2021-12-28)
+
+### Added
+
+- Add Cypress testing infrastructure to addon generator @sneridagh
+- Add `jest-addon.config.js` default in addon generator @sneridagh
+
+## 5.1.0 (2021-12-24)
+
+### Added
+
+- Add Cypress testing infrastructure to app generator @sneridagh
+
+### Changes
+
+- Missing new stylelint config in app template @sneridagh
+
+## 5.0.2 (2021-12-23)
+
+### Changes
+
+- Add missing public files from Volto 14 @sneridagh
+
+## 5.0.1 (2021-12-22)
+
+### Internal
+
+- Refresh app generator template `yarn.lock` to match latest upgrades @sneridagh
+- Fix Volto project template devDependencies @avoinea
+
+## 5.0.0 (2021-12-20)
+
+### Breaking
+
+- Added new configuration for i18n using the new package `@plone/scripts`. 5.0.0 and onwards is supposed to work on Volto 14 and above. @sneridagh
+
+### Added
+
+- Support Node 16 @sneridagh
+- Add prettier and lint scripts to generator @tisto
+
+### Internal
+
+- Add more exceptions to .gitignore @avoinea
+- Addon add prompt now accept fallacy choices @nileshgulia1
+
+## 5.0.0-alpha.2 (2021-12-20)
+
+### Internal
+
+- Add more exceptions to .gitignore @avoinea
+- Addon add prompt now accept fallacy choices @nileshgulia1
+
+## 5.0.0-alpha.1 (2021-10-29)
+
+### Added
+
+- Support Node 16 @sneridagh
+
+## 5.0.0-alpha.0 (2021-09-26)
 
 ### Breaking
 
@@ -59,7 +182,7 @@
 ## 4.0.0-alpha.1 (2021-02-17)
 
 - Released another major alpha accidentally, continuing with this major then :/
-(Volto 12.0.0 and above compatible)
+  (Volto 12.0.0 and above compatible)
 
 ### Added
 

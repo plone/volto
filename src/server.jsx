@@ -9,16 +9,16 @@ import { renderToString } from 'react-dom/server';
 import { createMemoryHistory } from 'history';
 import { parse as parseUrl } from 'url';
 import { keys } from 'lodash';
-import cookie, { plugToRequest } from 'react-cookie';
 import locale from 'locale';
 import { detect } from 'detect-browser';
 import path from 'path';
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
-import { createProxyMiddleware } from 'http-proxy-middleware';
 import { resetServerContext } from 'react-beautiful-dnd';
-import querystring from 'querystring';
+import { CookiesProvider } from 'react-cookie';
+import cookiesMiddleware from 'universal-cookie-express';
+import debug from 'debug';
 
-import routes from '~/routes';
+import routes from '@root/routes';
 import config from '@plone/volto/registry';
 
 import {
@@ -44,116 +44,97 @@ let locales = {};
 if (config.settings) {
   config.settings.supportedLanguages.forEach((lang) => {
     const langFileName = normalizeLanguageName(lang);
-    import('~/../locales/' + langFileName + '.json').then((locale) => {
+    import('@root/../locales/' + langFileName + '.json').then((locale) => {
       locales = { ...locales, [lang]: locale.default };
     });
   });
 }
 
-const supported = new locale.Locales(keys(languages), 'en');
+function reactIntlErrorHandler(error) {
+  debug('i18n')(error);
+}
 
-const expressMiddleware = (config.settings.expressMiddleware || []).filter(
-  (m) => typeof m !== 'undefined',
-);
+const supported = new locale.Locales(keys(languages), 'en');
 
 const server = express()
   .disable('x-powered-by')
-  .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
+  .use(
+    express.static(
+      process.env.BUILD_DIR
+        ? path.join(process.env.BUILD_DIR, 'public')
+        : process.env.RAZZLE_PUBLIC_DIR,
+    ),
+  )
   .head('/*', function (req, res) {
     // Support for HEAD requests. Required by start-test utility in CI.
     res.send('');
-  });
+  })
+  .use(cookiesMiddleware());
 
-if (expressMiddleware.length) server.use('/', expressMiddleware);
-
-// Internal proxy to bypass CORS while developing.
-if (__DEVELOPMENT__ && config.settings.devProxyToApiPath) {
-  // This is the proxy to the API in case the accept header is 'application/json'
-  const filter = function (pathname, req) {
-    return req.headers.accept === 'application/json';
-  };
-  const apiPathURL = parseUrl(config.settings.apiPath);
-  const proxyURL = parseUrl(config.settings.devProxyToApiPath);
-  const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
-  const instancePath = proxyURL.pathname;
-
-  const proxyMiddleware = createProxyMiddleware(filter, {
-    onProxyReq: (proxyReq, req, res) => {
-      // Fixes https://github.com/chimurai/http-proxy-middleware/issues/320
-      if (!req.body || !Object.keys(req.body).length) {
-        return;
-      }
-
-      const contentType = proxyReq.getHeader('Content-Type');
-      const writeBody = (bodyData) => {
-        proxyReq.setHeader('Content-Length', Buffer.byteLength(bodyData));
-        proxyReq.write(bodyData);
-      };
-
-      if (contentType.includes('application/json')) {
-        writeBody(JSON.stringify(req.body));
-      }
-
-      if (contentType.includes('application/x-www-form-urlencoded')) {
-        writeBody(querystring.stringify(req.body));
-      }
-    },
-    target: serverURL,
-    pathRewrite: {
-      '^/':
-        config.settings.proxyRewriteTarget ||
-        `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/`,
-    },
-    logLevel: 'silent', // change to 'debug' to see all requests
-    ...(config.settings?.proxyRewriteTarget?.startsWith('https') && {
-      changeOrigin: true,
-      secure: false,
-    }),
-  });
-  server.use(proxyMiddleware);
-}
+const middleware = (config.settings.expressMiddleware || []).filter((m) => m);
 
 server.all('*', setupServer);
+if (middleware.length) server.use('/', middleware);
+
+server.use(function (err, req, res, next) {
+  if (err) {
+    const { store } = res.locals;
+    const errorPage = (
+      <Provider store={store} onError={reactIntlErrorHandler}>
+        <StaticRouter context={{}} location={req.url}>
+          <ErrorPage message={err.message} />
+        </StaticRouter>
+      </Provider>
+    );
+
+    res.set({
+      'Cache-Control': 'public, max-age=60, no-transform',
+    });
+
+    /* Displays error in console
+     * TODO:
+     * - get ignored codes from Plone error_log
+     */
+    const ignoredErrors = [301, 302, 401, 404];
+    if (!ignoredErrors.includes(err.status)) console.error(err);
+
+    res
+      .status(err.status || 500) // If error happens in Volto code itself error status is undefined
+      .send(`<!doctype html> ${renderToString(errorPage)}`);
+  }
+});
 
 function setupServer(req, res, next) {
-  plugToRequest(req, res);
-
   const api = new Api(req);
 
-  const browserdetect = detect(req.headers['user-agent']);
-
   const lang = new locale.Locales(
-    cookie.load('I18N_LANGUAGE') ||
+    req.universalCookies.get('I18N_LANGUAGE') ||
       config.settings.defaultLanguage ||
       req.headers['accept-language'],
   )
     .best(supported)
     .toString();
 
-  const authToken = cookie.load('auth_token');
+  // Minimum initial state for the fake Redux store instance
   const initialState = {
-    userSession: { ...userSession(), token: authToken },
-    form: req.body,
     intl: {
       defaultLocale: 'en',
       locale: lang,
       messages: locales[lang],
     },
-    browserdetect,
   };
 
   const history = createMemoryHistory({
     initialEntries: [req.url],
   });
 
-  // Create a new Redux store instance
+  // Create a fake Redux store instance for the `errorHandler` to render
+  // and for being used by the rest of the middlewares, if required
   const store = configureStore(initialState, history, api);
-
-  persistAuthToken(store);
 
   function errorHandler(error) {
     const errorPage = (
-      <Provider store={store}>
+      <Provider store={store} onError={reactIntlErrorHandler}>
         <StaticRouter context={{}} location={req.url}>
           <ErrorPage message={error.message} />
         </StaticRouter>
@@ -176,8 +157,16 @@ function setupServer(req, res, next) {
       .send(`<!doctype html> ${renderToString(errorPage)}`);
   }
 
-  req.app.locals = {
-    ...req.app.locals,
+  if (!process.env.RAZZLE_API_PATH && req.headers.host) {
+    res.locals.detectedHost = `${
+      req.headers['x-forwarded-proto'] || req.protocol
+    }://${req.headers.host}`;
+    config.settings.apiPath = res.locals.detectedHost;
+    config.settings.publicURL = res.locals.detectedHost;
+  }
+
+  res.locals = {
+    ...res.locals,
     store,
     api,
     errorHandler,
@@ -187,47 +176,80 @@ function setupServer(req, res, next) {
 }
 
 server.get('/*', (req, res) => {
-  const { store, api, errorHandler } = req.app.locals;
+  const { errorHandler } = res.locals;
+
+  const api = new Api(req);
+
+  const browserdetect = detect(req.headers['user-agent']);
+
+  const lang = new locale.Locales(
+    req.universalCookies.get('I18N_LANGUAGE') ||
+      config.settings.defaultLanguage ||
+      req.headers['accept-language'],
+  )
+    .best(supported)
+    .toString();
+
+  const authToken = req.universalCookies.get('auth_token');
+  const initialState = {
+    userSession: { ...userSession(), token: authToken },
+    form: req.body,
+    intl: {
+      defaultLocale: 'en',
+      locale: lang,
+      messages: locales[lang],
+    },
+    browserdetect,
+  };
+
+  const history = createMemoryHistory({
+    initialEntries: [req.url],
+  });
+
+  // Create a new Redux store instance
+  const store = configureStore(initialState, history, api);
+
+  persistAuthToken(store, req);
 
   // @loadable/server extractor
+  const buildDir = process.env.BUILD_DIR || 'build';
   const extractor = new ChunkExtractor({
-    statsFile: path.resolve('build/loadable-stats.json'),
+    statsFile: path.resolve(path.join(buildDir, 'loadable-stats.json')),
     entrypoints: ['client'],
   });
 
   const url = req.originalUrl || req.url;
   const location = parseUrl(url);
 
-  let apiPathFromHostHeader;
-  // Get the Host header as apiPath just in case that the apiPath is not set
-  if (!config.settings.apiPath && req.headers.host) {
-    apiPathFromHostHeader = `${
-      req.headers['x-forwarded-proto'] || req.protocol
-    }://${req.headers.host}`;
-    config.settings.apiPath = apiPathFromHostHeader;
-    config.settings.publicURL = apiPathFromHostHeader;
-  }
-
   loadOnServer({ store, location, routes, api })
     .then(() => {
       // The content info is in the store at this point thanks to the asynconnect
       // features, then we can force the current language info into the store when
       // coming from an SSR request
-      const updatedLang =
+      const contentLang =
         store.getState().content.data?.language?.token ||
         config.settings.defaultLanguage;
 
-      store.dispatch(changeLanguage(updatedLang, locales[updatedLang]));
+      const cookie_lang =
+        req.universalCookies.get('I18N_LANGUAGE') ||
+        config.settings.defaultLanguage ||
+        req.headers['accept-language'];
+
+      if (cookie_lang !== contentLang) {
+        store.dispatch(changeLanguage(contentLang, locales[contentLang], req));
+      }
 
       const context = {};
       resetServerContext();
       const markup = renderToString(
         <ChunkExtractorManager extractor={extractor}>
-          <Provider store={store}>
-            <StaticRouter context={context} location={req.url}>
-              <ReduxAsyncConnect routes={routes} helpers={api} />
-            </StaticRouter>
-          </Provider>
+          <CookiesProvider cookies={req.universalCookies}>
+            <Provider store={store} onError={reactIntlErrorHandler}>
+              <StaticRouter context={context} location={req.url}>
+                <ReduxAsyncConnect routes={routes} helpers={api} />
+              </StaticRouter>
+            </Provider>
+          </CookiesProvider>
         </ChunkExtractorManager>,
       );
 
@@ -253,8 +275,10 @@ server.get('/*', (req, res) => {
                     process.env.NODE_ENV !== 'production'
                   }
                   criticalCss={readCriticalCss(req)}
-                  apiPath={apiPathFromHostHeader || config.settings.apiPath}
-                  publicURL={apiPathFromHostHeader || config.settings.publicURL}
+                  apiPath={res.locals.detectedHost || config.settings.apiPath}
+                  publicURL={
+                    res.locals.detectedHost || config.settings.publicURL
+                  }
                 />,
               )}
             `,
@@ -268,8 +292,10 @@ server.get('/*', (req, res) => {
                   markup={markup}
                   store={store}
                   criticalCss={readCriticalCss(req)}
-                  apiPath={apiPathFromHostHeader || config.settings.apiPath}
-                  publicURL={apiPathFromHostHeader || config.settings.publicURL}
+                  apiPath={res.locals.detectedHost || config.settings.apiPath}
+                  publicURL={
+                    res.locals.detectedHost || config.settings.publicURL
+                  }
                 />,
               )}
             `,

@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.4.1",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -34,15 +34,16 @@
   },
   "bin": {
     "i18n": "./i18n.js",
-    "changelogupdater": "./changelogupdater.js"
+    "changelogupdater": "./changelogupdater.js",
+    "addon": "./addon.js"
   },
   "release-it": {
     "hooks": {
-      "after:bump": "changelogupdater bump ${version}",
-      "after:release": "changelogupdater back ${version} && git commit -am 'Back to development (@plone/scripts)' && git push"
+      "after:bump": "node ./changelogupdater.js bump ${version}",
+      "after:release": "node ./changelogupdater.js back ${version} && git commit -am 'Back to development (@plone/scripts)' && git push"
     },
     "git": {
-      "changelog": "changelogupdater excerpt",
+      "changelog": "node ./changelogupdater.js excerpt",
       "requireUpstream": false,
       "requireCleanWorkingDir": false,
       "commitMessage": "Release @plone/scripts ${version}",
@@ -52,10 +53,7 @@
     "github": {
       "release": true,
       "releaseName": "@plone/scripts ${version}",
-      "releaseNotes": "changelogupdater excerpt",
-      "assets": [
-        "*.tgz"
-      ]
+      "releaseNotes": "node ./changelogupdater.js excerpt"
     }
   },
   "publishConfig": {
@@ -65,7 +63,11 @@
     "babel-plugin-react-intl": "5.1.17",
     "babel-preset-razzle": "3.4.5",
     "commander": "8.2.0",
-    "razzle": "3.4.5"
+    "git-url-parse": "^11.6.0",
+    "mrs-developer": "*",
+    "pofile": "1.0.10",
+    "razzle": "3.4.5",
+    "simple-git": "3.5.0"
   },
   "devDependencies": {
     "release-it": "14.2.1"

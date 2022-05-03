@@ -61,7 +61,7 @@ const widgetValidation = {
   },
   url: {
     isValidURL: (urlValue, urlObj, intlFunc) => {
-      const urlRegex = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/gm;
+      const urlRegex = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?|^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([_.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?|^((http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/gm;
       const isValid = urlRegex.test(urlValue);
       return !isValid ? intlFunc(messages.isValidURL) : null;
     },
@@ -208,8 +208,10 @@ const validateRequiredFields = (
       !schema.properties[requiredField].readonly &&
       isEmpty
     ) {
-      errors[requiredField] = [];
-      errors[requiredField].push(formatMessage(messages.required));
+      const requiredFieldName =
+        schema.properties[requiredField].title || requiredField;
+      errors[requiredFieldName] = [];
+      errors[requiredFieldName].push(formatMessage(messages.required));
     }
   });
 

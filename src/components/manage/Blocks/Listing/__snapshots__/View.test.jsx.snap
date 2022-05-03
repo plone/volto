@@ -2,7 +2,7 @@
 
 exports[`renders a view image component for the listing block 1`] = `
 <div
-  className="block listing"
+  className="block listing default"
 >
   <div
     className="theblock"

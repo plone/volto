@@ -1,3 +1,12 @@
+// Grids introduce a negative vertical margin that we can't allow inside blocks
+// otherwise, it breaks the block engine flow.
+.block {
+  .ui.grid {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
 [data-rbd-draggable-context-id] {
   margin-bottom: 2rem;
 }
@@ -91,10 +100,20 @@
 }
 
 .block.maps {
+  position: relative;
+
   iframe {
     width: 100%;
     height: 45vh;
   }
+}
+
+.map-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 .block.video video {
@@ -382,8 +401,12 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
   }
 
   .hero-body {
+    display: flex;
+
     max-height: 400px;
     flex: 1 1;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 30px;
     background-color: @tealBackground;
     overflow-y: hidden;
@@ -397,6 +420,10 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
       margin: 0;
       overflow-y: hidden;
       word-break: break-word;
+    }
+
+    .link-more {
+      text-align: right;
     }
   }
 
@@ -489,7 +516,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 
 .drag.handle.wrapper {
   position: absolute;
-  z-index: 1;
+  z-index: 10;
   // top: 1px;
   left: 0;
   color: #b8c6c8;
@@ -500,6 +527,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
   }
 
   &:hover {
+    background-color: #edf1f2;
     color: @brown;
   }
 }
@@ -876,4 +904,186 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 
 .block.image .no-image-wrapper {
   width: ~'min(100%, 450px)';
+}
+
+// Search block
+.block.search {
+  .search-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .search-input {
+      position: relative;
+      width: 100%;
+
+      & + .button {
+        margin-left: 1.5em;
+      }
+    }
+
+    .ui.input > input {
+      padding-left: 10px;
+    }
+  }
+
+  .search-block-prompt {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .facets {
+    > .facet:first-child {
+      padding-top: 0 !important;
+    }
+
+    .segment.facet {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+
+  .items {
+    padding: 1.5em 0;
+  }
+
+  .ui.accordion.filter-listing {
+    flex: 1 0 auto;
+    margin: 1em 0;
+
+    .filter-list-header {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem;
+      background-color: #faf8f8;
+      border-radius: 0.3rem;
+    }
+
+    .active.title .filter-list-title svg {
+      transform: rotate(90deg);
+    }
+
+    .ui.basic.button:hover {
+      background: transparent !important;
+    }
+
+    .filter-list-title {
+      display: flex;
+      align-items: center;
+    }
+
+    .filter-list-content {
+      padding-top: 0 !important;
+    }
+
+    .filter-list-group {
+      display: flex;
+      align-items: center;
+      margin: 0.5rem 0;
+
+      .ui.labels {
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        margin-right: 1.2em;
+      }
+
+      .ui.label {
+        border: 1px solid #f3f3f3;
+        margin-left: 0.8em;
+        background-color: transparent;
+        font-weight: bold;
+      }
+
+      .label-title {
+        font-size: small;
+      }
+    }
+  }
+
+  .search-sort-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 1em 0 1em 1em;
+
+    .ui.basic.button {
+      padding: 3px !important;
+    }
+  }
+
+  .search-sort-on {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 0.5em;
+  }
+
+  .sort-label {
+    margin-right: 0.7em;
+  }
+
+  .search-details {
+    color: @lightTextColor;
+  }
+
+  .search-filters-sort {
+    display: flex;
+    align-items: flex-start;
+
+    .search-sort-wrapper {
+      padding-top: 4px;
+    }
+  }
+
+  .search-results-count-sort {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .search-details {
+      margin: 1em 0;
+    }
+  }
+
+  .search-input-live-icon-button {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+
+    svg {
+      width: 28px !important;
+      height: 28px !important;
+    }
+  }
+
+  .daterange-facet {
+    .ui.date-input input {
+      height: auto;
+    }
+
+    .ui-button {
+      margin: 0;
+    }
+
+    .DateInput {
+      width: 40%;
+      min-width: 75px;
+    }
+
+    .DateRangePickerInput_arrow_svg {
+      margin: 0 6px;
+    }
+
+    .DateRangePicker_picker {
+      z-index: 10;
+    }
+
+    .radio {
+      display: flex;
+      min-height: 37px;
+      align-items: center;
+    }
+  }
 }

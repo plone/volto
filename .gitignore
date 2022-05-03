@@ -5,7 +5,6 @@ jsdoc
 webpack-assets.json
 webpack-stats.json
 npm-debug.log
-dist
 junit.xml
 eslint.xml
 yarn-error.log
@@ -20,28 +19,30 @@ lighthouse-report.html
 *~
 
 # Python
-/api/eggs/
-/api/develop-eggs/
 /api/.installed.cfg
 /api/.mr.developer.cfg
-/api/var/
 /api/bin/
+/api/develop-eggs/
+/api/eggs/
+/api/include/
+/api/lib/
+/api/lib64/
+/api/notebook/env/
 /api/parts/
 /api/share/python-wheels/
 /api/src/
+/api/test/
+/api/var/
 /api/venv/
-/api/notebook/env/
-api/.Python
-api/pyvenv.cfg
-api/include
-api/lib
-api/lib64
-api/pip-selfcheck.json
-/bin
-/lib
-include
-share
+/bin/
+/lib/
 .Python
+include
+pip-selfcheck.json
+pyvenv.cfg
+share
+/api/lib64
+lib64
 
 # locales
 locales/*.json
@@ -63,5 +64,7 @@ cypress/screenshots
 
 # Local environment setup
 .env
-.vscode
 public/critical.css
+
+# Sphinx and MyST
+docs/_build/

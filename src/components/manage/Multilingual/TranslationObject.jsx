@@ -56,7 +56,7 @@ const TranslationObject = ({
       let lang =
         config.settings.supportedLanguages[Object.keys(locales).length];
       const langFileName = normalizeLanguageName(lang);
-      import('~/../locales/' + langFileName + '.json').then((locale) => {
+      import('@root/../locales/' + langFileName + '.json').then((locale) => {
         setLocales({ ...locales, [lang]: locale.default });
         setLoadingLocale(false);
       });
@@ -106,6 +106,7 @@ const TranslationObject = ({
             key="translation-object-form"
             schema={schema}
             formData={translationObject}
+            type={translationObject['@type']}
             onSubmit={() => {
               /*do nothing*/
             }}
