@@ -6,7 +6,7 @@
 
 ### Feature
 
-- Complete Romanian translation @sboghy
+- Completed Romanian translation @sboghy
 
 ### Bugfix
 
