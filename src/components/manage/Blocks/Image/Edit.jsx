@@ -8,20 +8,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { readAsDataURL } from 'promise-file-reader';
-import {
-  Button,
-  Dimmer,
-  Input,
-  Loader,
-  Message,
-  Image,
-} from 'semantic-ui-react';
+import { Dimmer, Loader, Message } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import loadable from '@loadable/component';
 import cx from 'classnames';
-import { isEmpty, isEqual, isArray } from 'lodash';
+import { isEqual } from 'lodash';
 
-import { Icon, ImageSidebar, SidebarPortal } from '@plone/volto/components';
+import { ImageSidebar, SidebarPortal } from '@plone/volto/components';
 import { withBlockExtensions } from '@plone/volto/helpers';
 import { createContent } from '@plone/volto/actions';
 import {
@@ -31,7 +24,6 @@ import {
 } from '@plone/volto/helpers';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
-import uploadSVG from '@plone/volto/icons/upload.svg';
 
 const Dropzone = loadable(() => import('react-dropzone'));
 
@@ -98,7 +90,8 @@ class Edit extends Component {
       });
       this.props.onChangeBlock(this.props.block, {
         ...this.props.data,
-        url: [
+        url: flattenToAppURL(this.props.content['@id']),
+        source: [
           {
             '@id': flattenToAppURL(this.props.content['@id']),
             title: this.props.content.title,
@@ -201,10 +194,7 @@ class Edit extends Component {
     const placeholder =
       this.props.data.placeholder ||
       this.props.intl.formatMessage(messages.ImageBlockInputPlaceholder);
-    const url =
-      data?.url && isArray(data.url) && !isEmpty(data.url)
-        ? data.url[0]['@id']
-        : null;
+    const url = data?.source?.[0]?.['@id'] || data.url;
     return (
       <div
         className={cx(

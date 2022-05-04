@@ -65,13 +65,11 @@ export function ImageSchema({ formData, intl }) {
         id: 'default',
         title: 'Default',
         fields: [
-          'url',
-          ...(formData.url && !isEmpty(formData.url)
-            ? ['alt', 'align', 'size']
-            : []),
+          'source',
+          ...(!isEmpty(formData.source) ? ['alt', 'align', 'size'] : []),
         ],
       },
-      ...(formData.url && !isEmpty(formData.url)
+      ...(!isEmpty(formData.source)
         ? [
             {
               id: 'link_settings',
@@ -82,7 +80,7 @@ export function ImageSchema({ formData, intl }) {
         : []),
     ],
     properties: {
-      url: {
+      source: {
         title: intl.formatMessage(messages.Source),
         widget: 'object_browser',
         mode: 'image',
