@@ -9,6 +9,8 @@
 
 ### Feature
 
+- Added link integrity potential breakage warning message when deleting a referenced page
+
 ### Bugfix
 
 - Fix sidebar full size bottom opacity on edit page when sidebar is collapsed @ichim-david
