@@ -38,15 +38,8 @@ Array [
   >
     <img
       alt="Item title"
-      loading="lazy"
       role="img"
       src="http://localhost:3000/something"
-      style={
-        Object {
-          "objectFit": "cover",
-          "width": "100%",
-        }
-      }
     />
   </picture>,
   <noscript
@@ -59,8 +52,9 @@ Array [
                 alt=\\"Item title\\"
                 class=\\"\\"
                 role=\\"img\\"
-                loading=\\"lazy\\"
-                style=\\"width: 100%; object-fit: cover;\\"
+                
+                                         
+                loading=\\"lazy\\"               
             ",
       }
     }
@@ -75,15 +69,8 @@ Array [
   >
     <img
       alt="Item title"
-      loading="lazy"
       role="img"
       src="http://localhost:3000/something"
-      style={
-        Object {
-          "objectFit": "cover",
-          "width": "100%",
-        }
-      }
     />
   </picture>,
   <noscript
@@ -96,8 +83,9 @@ Array [
                 alt=\\"Item title\\"
                 class=\\"\\"
                 role=\\"img\\"
-                loading=\\"lazy\\"
-                style=\\"width: 100%; object-fit: cover;\\"
+                
+                                         
+                loading=\\"lazy\\"               
             ",
       }
     }
@@ -113,15 +101,8 @@ Array [
     <img
       alt="Item title"
       className="extra"
-      loading="lazy"
       role="img"
       src="http://localhost:3000/something"
-      style={
-        Object {
-          "objectFit": "cover",
-          "width": "100%",
-        }
-      }
     />
   </picture>,
   <noscript
@@ -134,8 +115,9 @@ Array [
                 alt=\\"Item title\\"
                 class=\\"extra\\"
                 role=\\"img\\"
-                loading=\\"lazy\\"
-                style=\\"width: 100%; object-fit: cover;\\"
+                
+                                         
+                loading=\\"lazy\\"               
             ",
       }
     }

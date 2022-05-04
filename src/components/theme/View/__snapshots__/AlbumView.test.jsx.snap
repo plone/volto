@@ -42,16 +42,9 @@ exports[`renders an gallery view component 1`] = `
               <img
                 alt=""
                 className="ui middle aligned image"
-                loading="lazy"
                 onClick={[Function]}
                 role="img"
                 src="http://localhost:3000/news"
-                style={
-                  Object {
-                    "objectFit": "cover",
-                    "width": "100%",
-                  }
-                }
               />
             </picture>
             <noscript
@@ -64,8 +57,9 @@ exports[`renders an gallery view component 1`] = `
                 alt=\\"\\"
                 class=\\"ui middle aligned image\\"
                 role=\\"img\\"
-                loading=\\"lazy\\"
-                style=\\"width: 100%; object-fit: cover;\\"
+                
+                                         
+                loading=\\"lazy\\"               
             ",
                 }
               }
@@ -89,16 +83,9 @@ exports[`renders an gallery view component 1`] = `
               <img
                 alt=""
                 className="ui middle aligned image"
-                loading="lazy"
                 onClick={[Function]}
                 role="img"
                 src="http://localhost:3000/events"
-                style={
-                  Object {
-                    "objectFit": "cover",
-                    "width": "100%",
-                  }
-                }
               />
             </picture>
             <noscript
@@ -111,8 +98,9 @@ exports[`renders an gallery view component 1`] = `
                 alt=\\"\\"
                 class=\\"ui middle aligned image\\"
                 role=\\"img\\"
-                loading=\\"lazy\\"
-                style=\\"width: 100%; object-fit: cover;\\"
+                
+                                         
+                loading=\\"lazy\\"               
             ",
                 }
               }

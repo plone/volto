@@ -10,15 +10,8 @@ exports[`renders a view image component 1`] = `
     <img
       alt=""
       className=""
-      loading="lazy"
       role="img"
       src="http://localhost:8080/Plone/test-images/@@images/image/listing"
-      style={
-        Object {
-          "objectFit": "cover",
-          "width": "100%",
-        }
-      }
     />
   </picture>
   <noscript
@@ -31,8 +24,9 @@ exports[`renders a view image component 1`] = `
                 alt=\\"\\"
                 class=\\"\\"
                 role=\\"img\\"
-                loading=\\"lazy\\"
-                style=\\"width: 100%; object-fit: cover;\\"
+                
+                                         
+                loading=\\"lazy\\"               
             ",
       }
     }
