@@ -52,8 +52,9 @@ Array [
                 alt=\\"Item title\\"
                 class=\\"\\"
                 role=\\"img\\"
-                loading=\\"lazy\\"
-                style=\\"width: 100%; object-fit: cover;\\"
+                
+                                         
+                loading=\\"lazy\\"               
             ",
       }
     }
@@ -82,8 +83,9 @@ Array [
                 alt=\\"Item title\\"
                 class=\\"\\"
                 role=\\"img\\"
-                loading=\\"lazy\\"
-                style=\\"width: 100%; object-fit: cover;\\"
+                
+                                         
+                loading=\\"lazy\\"               
             ",
       }
     }
@@ -113,8 +115,9 @@ Array [
                 alt=\\"Item title\\"
                 class=\\"extra\\"
                 role=\\"img\\"
-                loading=\\"lazy\\"
-                style=\\"width: 100%; object-fit: cover;\\"
+                
+                                         
+                loading=\\"lazy\\"               
             ",
       }
     }

@@ -57,8 +57,9 @@ exports[`renders an gallery view component 1`] = `
                 alt=\\"\\"
                 class=\\"\\"
                 role=\\"img\\"
-                loading=\\"lazy\\"
-                style=\\"width: 100%; object-fit: cover;\\"
+                
+                                         
+                loading=\\"lazy\\"               
             ",
                 }
               }
@@ -97,8 +98,9 @@ exports[`renders an gallery view component 1`] = `
                 alt=\\"\\"
                 class=\\"\\"
                 role=\\"img\\"
-                loading=\\"lazy\\"
-                style=\\"width: 100%; object-fit: cover;\\"
+                
+                                         
+                loading=\\"lazy\\"               
             ",
                 }
               }

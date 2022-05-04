@@ -131,8 +131,9 @@ const Image = ({
                 alt="${alt}"
                 class="${className || ''}"
                 role="${role}"
-                loading="${critical ? 'eager' : 'lazy'}"
-                style="width: 100%; object-fit: cover;"
+                ${width ? `width="${width}` : ''}
+                ${height ? `height="${height}` : ''}                         
+                loading="lazy"               
             `,
           }}
         />

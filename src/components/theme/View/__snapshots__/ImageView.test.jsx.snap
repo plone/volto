@@ -36,8 +36,9 @@ exports[`renders an image view component 1`] = `
                 alt=\\"Hello World!\\"
                 class=\\"\\"
                 role=\\"img\\"
-                loading=\\"lazy\\"
-                style=\\"width: 100%; object-fit: cover;\\"
+                
+                                         
+                loading=\\"lazy\\"               
             ",
         }
       }

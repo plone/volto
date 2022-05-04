@@ -21,8 +21,9 @@ Array [
                 alt=\\"\\"
                 class=\\"\\"
                 role=\\"img\\"
-                loading=\\"lazy\\"
-                style=\\"width: 100%; object-fit: cover;\\"
+                
+                                         
+                loading=\\"lazy\\"               
             ",
       }
     }
@@ -51,8 +52,9 @@ Array [
                 alt=\\"External picsum photo\\"
                 class=\\"\\"
                 role=\\"img\\"
-                loading=\\"lazy\\"
-                style=\\"width: 100%; object-fit: cover;\\"
+                
+                                         
+                loading=\\"lazy\\"               
             ",
       }
     }
@@ -82,8 +84,9 @@ Array [
                 alt=\\"Photo\\"
                 class=\\"photo-image\\"
                 role=\\"presentation\\"
-                loading=\\"lazy\\"
-                style=\\"width: 100%; object-fit: cover;\\"
+                
+                                         
+                loading=\\"lazy\\"               
             ",
       }
     }
@@ -113,8 +116,9 @@ Array [
                 alt=\\"Photo\\"
                 class=\\"photo-image\\"
                 role=\\"img\\"
-                loading=\\"lazy\\"
-                style=\\"width: 100%; object-fit: cover;\\"
+                
+                                         
+                loading=\\"lazy\\"               
             ",
       }
     }
@@ -144,8 +148,9 @@ Array [
                 alt=\\"Photo\\"
                 class=\\"photo-image\\"
                 role=\\"presentation\\"
-                loading=\\"lazy\\"
-                style=\\"width: 100%; object-fit: cover;\\"
+                
+                                         
+                loading=\\"lazy\\"               
             ",
       }
     }
@@ -175,8 +180,9 @@ Array [
                 alt=\\"Photo\\"
                 class=\\"photo-image\\"
                 role=\\"presentation\\"
-                loading=\\"lazy\\"
-                style=\\"width: 100%; object-fit: cover;\\"
+                
+                                         
+                loading=\\"lazy\\"               
             ",
       }
     }
@@ -206,8 +212,9 @@ Array [
                 alt=\\"Photo\\"
                 class=\\"photo-image\\"
                 role=\\"img\\"
-                loading=\\"lazy\\"
-                style=\\"width: 100%; object-fit: cover;\\"
+                
+                                         
+                loading=\\"lazy\\"               
             ",
       }
     }
@@ -237,8 +244,9 @@ Array [
                 alt=\\"Photo\\"
                 class=\\"photo-image\\"
                 role=\\"presentation\\"
-                loading=\\"lazy\\"
-                style=\\"width: 100%; object-fit: cover;\\"
+                
+                                         
+                loading=\\"lazy\\"               
             ",
       }
     }
