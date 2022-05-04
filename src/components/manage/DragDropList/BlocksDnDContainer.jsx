@@ -1,5 +1,19 @@
 import React, { useRef } from 'react';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import {
+  DndContext,
+  closestCenter,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
+} from '@dnd-kit/core';
+import {
+  arrayMove,
+  SortableContext,
+  sortableKeyboardCoordinates,
+  verticalListSortingStrategy,
+} from '@dnd-kit/sortable';
 
 const getPlaceholder = (draggedDOM, sourceIndex, destinationIndex) => {
   // Because of the margin rendering rules, there is no easy
@@ -69,6 +83,7 @@ const BlocksDnDContainer = (props) => {
 
   const onDragEnd = React.useCallback(
     (result) => {
+      console.log('BlocksDnDContainer onDragEnd');
       clearTimeout(timer.current);
       onMoveItem(result);
       setPlaceholderProps({});
@@ -102,14 +117,31 @@ const BlocksDnDContainer = (props) => {
     );
   }, []);
 
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    }),
+  );
+  console.log(children);
   return (
-    <DragDropContext
-      onDragStart={onDragStart}
-      onDragUpdate={onDragUpdate}
+    <DndContext
+      sensors={sensors}
+      collisionDetection={closestCenter}
       onDragEnd={onDragEnd}
     >
-      {children}
-    </DragDropContext>
+      BlocksDnDContainer /*
+      <DragDropContext
+        onDragStart={onDragStart}
+        onDragUpdate={onDragUpdate}
+        onDragEnd={onDragEnd}
+      >
+        */
+        {children}
+        /*
+      </DragDropContext>
+      */
+    </DndContext>
   );
 };
 

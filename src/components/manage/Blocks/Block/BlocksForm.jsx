@@ -155,6 +155,7 @@ const BlocksForm = (props) => {
   return (
     <div className="blocks-form" ref={ref}>
       <fieldset className="invisible" disabled={!editable}>
+        BlocksDnDList
         <BlocksDnDList
           droppableId={blocksFormId}
           childList={blockList}
