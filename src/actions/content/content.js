@@ -245,12 +245,9 @@ export function fcDelete(selection) {
     mode: 'serial',
     request: {
       op: 'post',
-      path: '/@@fc-delete',
-      type: 'application/x-www-form-urlencoded',
+      path: '@linkintegrity',
       data: {
-        selection,
-        transitions: 'true',
-        render: 'yes',
+        uids: selection,
       },
     },
   };

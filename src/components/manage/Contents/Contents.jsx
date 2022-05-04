@@ -414,7 +414,7 @@ class Contents extends Component {
       sort_on: this.props.sort?.on || 'getObjPositionInParent',
       sort_order: this.props.sort?.order || 'ascending',
       isClient: false,
-      linkIntegrityHTML: '',
+      linkIntegrityBreakages: '',
     };
     this.filterTimeout = null;
   }
@@ -430,13 +430,14 @@ class Contents extends Component {
   }
 
   async componentDidUpdate(_, prevState) {
-    if (this.state.itemsToDelete !== prevState.itemsToDelete) {
+    if (
+      this.state.itemsToDelete !== prevState.itemsToDelete &&
+      this.state.itemsToDelete.length > 0
+    ) {
       this.setState({
-        linkIntegrityHTML: await this.props.fcDelete(
-          JSON.stringify(
-            map(this.state.itemsToDelete, (item) =>
-              this.getFieldById(item, 'UID'),
-            ),
+        linkIntegrityBreakages: await this.props.fcDelete(
+          map(this.state.itemsToDelete, (item) =>
+            this.getFieldById(item, 'UID'),
           ),
         ),
       });
@@ -1151,11 +1152,6 @@ class Contents extends Component {
                     )}
                     content={
                       <div className="content">
-                        <div
-                          dangerouslySetInnerHTML={{
-                            __html: this.state.linkIntegrityHTML.html,
-                          }}
-                        ></div>
                         <ul className="content">
                           {map(this.state.itemsToDelete, (item) => (
                             <li key={item}>
@@ -1163,6 +1159,42 @@ class Contents extends Component {
                             </li>
                           ))}
                         </ul>
+                        {this.state.linkIntegrityBreakages.length > 0 ? (
+                          <div>
+                            <h3>Potential link breakage</h3>
+                            <p>
+                              By deleting this item, you will break links that
+                              exist in the items listed below. If this is indeed
+                              what you want to do, we recommend that you remove
+                              these references first.
+                            </p>
+                            <ul className="content">
+                              {map(
+                                this.state.linkIntegrityBreakages,
+                                (item) => (
+                                  <li key={item['@id']}>
+                                    <a href={item['@id']}>{item.title}</a>
+                                    <p>
+                                      This Page is referenced by the following
+                                      items:
+                                    </p>
+                                    <ul className="content">
+                                      {map(item.breaches, (breach) => (
+                                        <li key={breach['@id']}>
+                                          <a href={breach['@id']}>
+                                            {breach.title}
+                                          </a>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </li>
+                                ),
+                              )}
+                            </ul>
+                          </div>
+                        ) : (
+                          <div></div>
+                        )}
                       </div>
                     }
                     onCancel={this.onDeleteCancel}
