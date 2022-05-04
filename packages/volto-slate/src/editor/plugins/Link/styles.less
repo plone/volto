@@ -1,0 +1,22 @@
+@type: 'extra';
+@element: 'custom';
+
+@import (multiple, reference, optional) '../../theme.config';
+
+.slate-editor-link {
+  color: @linkColor;
+}
+
+button.hash-link {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: @linkColor;
+  cursor: pointer;
+  text-decoration: @linkUnderline;
+}
+
+button.hash-link:hover {
+  color: @linkHoverColor;
+  text-decoration: @linkHoverUnderline;
+}

@@ -1,0 +1,206 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Plone\n"
+"POT-Creation-Date: 2021-12-07T09:17:22.447Z\n"
+"Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
+"Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: volto\n"
+
+#: blocks/Title/TitleBlockEdit
+# defaultMessage: Add a description…
+msgid "Add a description…"
+msgstr ""
+
+#: editor/plugins/SimpleLink/index
+# defaultMessage: Add link
+msgid "Add link"
+msgstr ""
+
+#: editor/plugins/StyleMenu/StyleMenu
+# defaultMessage: All Styles Applied
+msgid "All Styles Applied"
+msgstr ""
+
+#: widgets/HtmlSlateWidget
+# defaultMessage: An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator.
+msgid "An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator."
+msgstr ""
+
+#: widgets/RichTextWidgetView
+# defaultMessage: An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator.
+msgid "An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator."
+msgstr ""
+
+#: widgets/BlocksBrowser/BlocksBrowserNav
+# defaultMessage: Back
+msgid "Back"
+msgstr ""
+
+#: widgets/BlocksBrowser/BlocksBrowserNav
+# defaultMessage: Browse
+msgid "Browse"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+# defaultMessage: Cell
+msgid "Cell"
+msgstr ""
+
+#: widgets/BlocksBrowser/BlocksBrowserBody
+# defaultMessage: Choose Target
+msgid "Choose Target"
+msgstr ""
+
+#: widgets/BlocksBrowser/BlocksBrowserWidget
+# defaultMessage: Delete
+msgid "Delete"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+# defaultMessage: Delete col
+msgid "Delete col"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+# defaultMessage: Delete row
+msgid "Delete row"
+msgstr ""
+
+#: editor/plugins/Table/index
+# defaultMessage: Delete table
+msgid "Delete table"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+# defaultMessage: Divide each row into separate cells
+msgid "Divide each row into separate cells"
+msgstr ""
+
+#: widgets/BlocksBrowser/BlocksBrowserWidget
+# defaultMessage: Edit
+msgid "Edit"
+msgstr ""
+
+#: components/ElementEditor/messages
+# defaultMessage: Edit element
+msgid "Edit element"
+msgstr ""
+
+#: editor/plugins/Link/index
+#: editor/plugins/SimpleLink/index
+# defaultMessage: Edit link
+msgid "Edit link"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+# defaultMessage: Fixed width table cells
+msgid "Fixed width table cells"
+msgstr ""
+
+#: editor/plugins/StyleMenu/StyleMenu
+# defaultMessage: Font Style
+msgid "Font Style"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+# defaultMessage: Insert col after
+msgid "Insert col after"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+# defaultMessage: Insert col before
+msgid "Insert col before"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+# defaultMessage: Insert row after
+msgid "Insert row after"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+# defaultMessage: Insert row before
+msgid "Insert row before"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+# defaultMessage: Make the table compact
+msgid "Make the table compact"
+msgstr ""
+
+#: editor/plugins/StyleMenu/StyleMenu
+# defaultMessage: No Style
+msgid "No Style"
+msgstr ""
+
+#: widgets/BlocksBrowser/BlocksBrowserWidget
+# defaultMessage: No items selected
+msgid "No items selected"
+msgstr ""
+
+#: widgets/BlocksBrowser/BlocksBrowserWidget
+# defaultMessage: Open object browser
+msgid "Open object browser"
+msgstr ""
+
+#: editor/plugins/StyleMenu/StyleMenu
+# defaultMessage: Paragraph Style
+msgid "Paragraph Style"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+# defaultMessage: Reduce complexity
+msgid "Reduce complexity"
+msgstr ""
+
+#: components/ElementEditor/messages
+# defaultMessage: Remove element
+msgid "Remove element"
+msgstr ""
+
+#: editor/plugins/Link/index
+# defaultMessage: Remove link
+msgid "Remove link"
+msgstr ""
+
+#: widgets/BlocksBrowser/BlocksBrowserNav
+# defaultMessage: Select
+msgid "Select"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+# defaultMessage: Stripe alternate rows with color
+msgid "Stripe alternate rows with color"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+# defaultMessage: Table
+msgid "Table"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+# defaultMessage: Table color inverted
+msgid "Table color inverted"
+msgstr ""
+
+#: blocks/Text/DefaultTextBlockEditor
+#: blocks/Text/DetachedTextBlockEditor
+# defaultMessage: Type text…
+msgid "Type text…"
+msgstr ""
+
+#: blocks/Title/TitleBlockEdit
+# defaultMessage: Type the title…
+msgid "Type the title…"
+msgstr ""
+
+#: components/themes/View/DefaultSlateView
+# defaultMessage: Unknown Block {block}
+msgid "Unknown Block"
+msgstr ""

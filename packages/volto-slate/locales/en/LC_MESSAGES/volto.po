@@ -1,0 +1,166 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language: \n"
+"Language-Team: \n"
+"Content-Type: \n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#: blocks/Title/TitleBlockEdit
+msgid "Add a description…"
+msgstr ""
+
+#: editor/plugins/SimpleLink/index
+msgid "Add link"
+msgstr ""
+
+#: editor/plugins/StyleMenu/StyleMenu
+msgid "All Styles Applied"
+msgstr ""
+
+#: widgets/HtmlSlateWidget
+msgid "An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator."
+msgstr ""
+
+#: widgets/RichTextWidgetView
+msgid "An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator."
+msgstr ""
+
+#: widgets/BlocksBrowser/BlocksBrowserNav
+msgid "Back"
+msgstr ""
+
+#: widgets/BlocksBrowser/BlocksBrowserNav
+msgid "Browse"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+msgid "Cell"
+msgstr ""
+
+#: widgets/BlocksBrowser/BlocksBrowserBody
+msgid "Choose Target"
+msgstr ""
+
+#: widgets/BlocksBrowser/BlocksBrowserWidget
+msgid "Delete"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+msgid "Delete col"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+msgid "Delete row"
+msgstr ""
+
+#: editor/plugins/Table/index
+msgid "Delete table"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+msgid "Divide each row into separate cells"
+msgstr ""
+
+#: widgets/BlocksBrowser/BlocksBrowserWidget
+msgid "Edit"
+msgstr ""
+
+#: components/ElementEditor/messages
+msgid "Edit element"
+msgstr ""
+
+#: editor/plugins/Link/index
+#: editor/plugins/SimpleLink/index
+msgid "Edit link"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+msgid "Fixed width table cells"
+msgstr ""
+
+#: editor/plugins/StyleMenu/StyleMenu
+msgid "Font Style"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+msgid "Insert col after"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+msgid "Insert col before"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+msgid "Insert row after"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+msgid "Insert row before"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+msgid "Make the table compact"
+msgstr ""
+
+#: editor/plugins/StyleMenu/StyleMenu
+msgid "No Style"
+msgstr ""
+
+#: widgets/BlocksBrowser/BlocksBrowserWidget
+msgid "No items selected"
+msgstr ""
+
+#: widgets/BlocksBrowser/BlocksBrowserWidget
+msgid "Open object browser"
+msgstr ""
+
+#: editor/plugins/StyleMenu/StyleMenu
+msgid "Paragraph Style"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+msgid "Reduce complexity"
+msgstr ""
+
+#: components/ElementEditor/messages
+msgid "Remove element"
+msgstr ""
+
+#: editor/plugins/Link/index
+msgid "Remove link"
+msgstr ""
+
+#: widgets/BlocksBrowser/BlocksBrowserNav
+msgid "Select"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+msgid "Stripe alternate rows with color"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+msgid "Table"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+msgid "Table color inverted"
+msgstr ""
+
+#: blocks/Text/DefaultTextBlockEditor
+#: blocks/Text/DetachedTextBlockEditor
+msgid "Type text…"
+msgstr ""
+
+#: blocks/Title/TitleBlockEdit
+msgid "Type the title…"
+msgstr ""
+
+#: components/themes/View/DefaultSlateView
+msgid "Unknown Block"
+msgstr ""

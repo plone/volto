@@ -1,0 +1,42 @@
+site_name: Volto Slate
+docs_dir: ./source
+site_dir: ./build
+repo_url: 'https://github.com/eea/volto-slate'
+copyright: 'All code owned by the European Environment Agency'
+theme:
+  name: 'material'
+  custom_dir: 'theme'
+  logo: 'images/editing.svg'
+  favicon: 'images/favicon.ico'
+  palette:
+    primary: '#004B87'
+    accent: '#cd7'
+  font:
+    text: 'Poppins'
+    code: 'Source Code Pro'
+extra_css:
+  - 'stylesheets/extra.css'
+
+nav:
+  - The Plugin: 'index.md'
+  - Directory Structure: 'directory-structure.md'
+  - Volto Slate Plugins: 'volto-slate-plugins.md'
+  - Building the Docs: 'building-the-docs.md'
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - pymdownx.superfences
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.details
+  - pymdownx.tasklist
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - toc:
+      permalink: '#'
+

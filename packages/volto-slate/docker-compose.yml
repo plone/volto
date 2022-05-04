@@ -1,0 +1,40 @@
+version: "3"
+services:
+
+  volto:
+    image: plone/volto-addon-ci
+    environment:
+      - GIT_NAME=volto-slate
+      - RAZZLE_JEST_CONFIG=jest-addon.config.js
+    volumes:
+      - .:/opt/frontend/my-volto-project/src/addons/volto-slate
+    # - ./project/package.json:/opt/frontend/my-volto-project/package.json
+    # - ./jest-addon.config.js:/opt/frontend/my-volto-project/jest-addon.config.js
+    command: cat
+    stdin_open: true
+    tty: true
+    working_dir: /opt/frontend/my-volto-project
+
+    # user: root
+    # entrypoint: sh -c 'tail -f /dev/null'
+
+  ci:
+    image: plone/volto-addon-ci
+    environment:
+      - GIT_NAME=volto-slate
+      - RAZZLE_JEST_CONFIG=jest-addon.config.js
+      - RAZZLE_API_PATH="http://plone:55001/plone"
+      - CYPRESS_BACKEND_HOST="plone"
+      - GIT_BRANCH=i18n
+    entrypoint: sh -c "tail -f /dev/null"
+    # command: cypress
+    # command: cat
+    # stdin_open: true
+    # tty: true
+    # working_dir: /opt/frontend/my-volto-project
+
+# project/node_modules/.bin/start-test ci:test-acceptance-server http-get://localhost:55001/plone 'docker run -i -e RAZZLE_API_PATH="http://plone:55001/plone" -e CYPRESS_BACKEND_HOST="plone" --name="cypress" -e DEPENDENCIES="" -e GI
+# T_NAME=volto-slate plone/volto-addon-ci cypress'
+
+# docker run -it --rm -e GIT_NAME=volto-slate -e RAZZLE_JEST_CONFIG=jest-addon.config.js
+# -v "$$(pwd):/opt/frontend/my-volto-project/src/addons/volto-slate" plone/volto-addon-ci yarn test --watchAll=false
