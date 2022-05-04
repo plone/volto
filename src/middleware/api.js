@@ -19,6 +19,12 @@ import {
 } from '@plone/volto/constants/ActionTypes';
 import { changeLanguage } from '@plone/volto/actions';
 import { normalizeLanguageName, getCookieOptions } from '@plone/volto/helpers';
+import {
+  deletePendingPromise,
+  getPendingPromise,
+  setPendingPromise,
+} from './dedupeRequests';
+
 let socket = null;
 
 /**
@@ -121,6 +127,11 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
     return next(action);
   }
 
+  // Avoid processing the action if the same request is already pending
+  const pendingPromiseKey = JSON.stringify(action);
+  const pendingPromise = getPendingPromise(pendingPromiseKey);
+  if (pendingPromise !== null) return pendingPromise;
+
   next({ ...rest, type: `${type}_PENDING` });
 
   if (socket) {
@@ -177,84 +188,63 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
           params: request.params,
           checkUrl: settings.actions_raising_api_errors.includes(action.type),
         });
-    actionPromise.then(
-      (result) => {
-        const { settings } = config;
-        if (getState().apierror.connectionRefused) {
-          next({
-            ...rest,
-            type: RESET_APIERROR,
-          });
-        }
-        if (type === GET_CONTENT) {
-          const lang = result?.language?.token;
-          if (lang && getState().intl.language !== lang && !subrequest) {
-            const langFileName = normalizeLanguageName(lang);
-            import('~/../locales/' + langFileName + '.json').then((locale) => {
-              dispatch(changeLanguage(lang, locale.default));
+    actionPromise
+      .then(
+        (result) => {
+          const { settings } = config;
+          if (getState().apierror.connectionRefused) {
+            next({
+              ...rest,
+              type: RESET_APIERROR,
             });
           }
-        }
-        if (type === LOGIN && settings.websockets) {
-          const cookies = new Cookies();
-          cookies.set(
-            'auth_token',
-            result.token,
-            getCookieOptions({
-              expires: new Date(jwtDecode(result.token).exp * 1000),
-            }),
-          );
-          api.get('/@wstoken').then((res) => {
-            socket = new WebSocket(
-              `${settings.apiPath.replace('http', 'ws')}/@ws?ws_token=${
-                res.token
-              }`,
+          if (type === GET_CONTENT) {
+            const lang = result?.language?.token;
+            if (lang && getState().intl.language !== lang && !subrequest) {
+              const langFileName = normalizeLanguageName(lang);
+              import('~/../locales/' + langFileName + '.json').then(
+                (locale) => {
+                  dispatch(changeLanguage(lang, locale.default));
+                },
+              );
+            }
+          }
+          if (type === LOGIN && settings.websockets) {
+            const cookies = new Cookies();
+            cookies.set(
+              'auth_token',
+              result.token,
+              getCookieOptions({
+                expires: new Date(jwtDecode(result.token).exp * 1000),
+              }),
             );
-            socket.onmessage = (message) => {
-              const packet = JSON.parse(message.data);
-              if (packet.error) {
-                dispatch({
-                  type: `${packet.id}_FAIL`,
-                  error: packet.error,
-                });
-              } else {
-                dispatch({
-                  type: `${packet.id}_SUCCESS`,
-                  result: JSON.parse(packet.data),
-                });
-              }
-            };
-          });
-        }
-        return next({ ...rest, result, type: `${type}_SUCCESS` });
-      },
-      (error) => {
-        // Only SRR can set ECONNREFUSED
-        if (error.code === 'ECONNREFUSED') {
-          next({
-            ...rest,
-            error,
-            statusCode: error.code,
-            connectionRefused: true,
-            type: SET_APIERROR,
-          });
-        }
-
-        // Response error is marked crossDomain if CORS error happen
-        else if (error.crossDomain) {
-          next({
-            ...rest,
-            error,
-            statusCode: 'CORSERROR',
-            connectionRefused: false,
-            type: SET_APIERROR,
-          });
-        }
-
-        // Check for actions who can raise api errors
-        if (settings.actions_raising_api_errors.includes(action.type)) {
-          // Gateway timeout
-          if (error?.response?.statusCode === 504) {
+            api.get('/@wstoken').then((res) => {
+              socket = new WebSocket(
+                `${settings.apiPath.replace('http', 'ws')}/@ws?ws_token=${
+                  res.token
+                }`,
+              );
+              socket.onmessage = (message) => {
+                const packet = JSON.parse(message.data);
+                if (packet.error) {
+                  dispatch({
+                    type: `${packet.id}_FAIL`,
+                    error: packet.error,
+                  });
+                } else {
+                  dispatch({
+                    type: `${packet.id}_SUCCESS`,
+                    result: JSON.parse(packet.data),
+                  });
+                }
+              };
+            });
+          }
+          return next({ ...rest, result, type: `${type}_SUCCESS` });
+        },
+        (error) => {
+          // Only SRR can set ECONNREFUSED
+          if (error.code === 'ECONNREFUSED') {
             next({
               ...rest,
               error,
@@ -264,33 +254,59 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
             });
           }
 
-          // Redirect
-          else if (error?.code === 301) {
+          // Response error is marked crossDomain if CORS error happen
+          else if (error.crossDomain) {
             next({
               ...rest,
               error,
-              statusCode: error.code,
+              statusCode: 'CORSERROR',
               connectionRefused: false,
               type: SET_APIERROR,
             });
           }
 
-          // Unauthorized
-          else if (error?.response?.statusCode === 401) {
-            next({
-              ...rest,
-              error,
-              statusCode: error.response,
-              message: error.response.body.message,
-              connectionRefused: false,
-              type: SET_APIERROR,
-            });
+          // Check for actions who can raise api errors
+          if (settings.actions_raising_api_errors.includes(action.type)) {
+            // Gateway timeout
+            if (error?.response?.statusCode === 504) {
+              next({
+                ...rest,
+                error,
+                statusCode: error.code,
+                connectionRefused: true,
+                type: SET_APIERROR,
+              });
+            }
+
+            // Redirect
+            else if (error?.code === 301) {
+              next({
+                ...rest,
+                error,
+                statusCode: error.code,
+                connectionRefused: false,
+                type: SET_APIERROR,
+              });
+            }
+
+            // Unauthorized
+            else if (error?.response?.statusCode === 401) {
+              next({
+                ...rest,
+                error,
+                statusCode: error.response,
+                message: error.response.body.message,
+                connectionRefused: false,
+                type: SET_APIERROR,
+              });
+            }
           }
-        }
-        return next({ ...rest, error, type: `${type}_FAIL` });
-      },
-    );
+          return next({ ...rest, error, type: `${type}_FAIL` });
+        },
+      )
+      .then(() => deletePendingPromise(pendingPromiseKey));
   }
 
+  setPendingPromise(pendingPromiseKey, actionPromise);
   return actionPromise;
 };

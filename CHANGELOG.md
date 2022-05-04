@@ -363,6 +363,7 @@
 
 ### Bugfix
 
+- Remove duplicated requests to the backend when the first one is still pending @pnicolli
 - Fix redirect bug with URLs containing querystrings @robgietema
 
 ## 15.0.0-alpha.8 (2022-02-22)
