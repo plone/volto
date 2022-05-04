@@ -85,6 +85,7 @@
     },
     "moduleNameMapper": {
       "@plone/volto/(.*)$": "<rootDir>/src/$1",
+      "volto-slate": "<rootDir>/packages/volto-slate/src",
       "~/config": "<rootDir>/src/config",
       "~/../locales/${lang}.json": "<rootDir>/locales/en.json",
       "(.*)/locales/(.*)": "<rootDir>/locales/$2",
@@ -93,7 +94,6 @@
       "@root/config": "<rootDir>/jest-addons-loader.js",
       "@root/(.*)$": "<rootDir>/src/$1",
       "@voltoconfig": "<rootDir>/jest-addons-loader.js",
-      "volto-slate": "<rootDir>/packages/volto-slate/src",
       "\\.(css|less|scss|sass)$": "identity-obj-proxy"
     },
     "coverageThreshold": {
@@ -295,6 +295,8 @@
     "http-proxy-middleware": "2.0.1",
     "husky": "4.2.5",
     "identity-obj-proxy": "3.0.0",
+    "image-extensions": "1.1.0",
+    "is-url": "1.2.4",
     "jest-css-modules": "1.1.0",
     "jest-environment-jsdom-sixteen": "1.0.3",
     "jest-file": "1.0.0",

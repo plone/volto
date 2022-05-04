@@ -1,6 +1,6 @@
 import installBlockQuotePlugin from './Blockquote';
 import installImage from './Image';
-import installLinkPlugin from './Link';
+// import installLinkPlugin from './Link';
 import installMarkdown from './Markdown';
 import installTable from './Table';
 import installStyleMenu from './StyleMenu';
@@ -8,7 +8,7 @@ import installStyleMenu from './StyleMenu';
 export default function install(config) {
   return [
     installBlockQuotePlugin,
-    installLinkPlugin,
+    // installLinkPlugin,
     installMarkdown,
     installImage,
     installTable,

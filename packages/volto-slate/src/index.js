@@ -8,7 +8,7 @@ import installDescriptionBlock from './blocks/Description';
 import RichTextWidget from './widgets/RichTextWidget';
 import RichTextWidgetView from './widgets/RichTextWidgetView';
 import { BlocksBrowserWidget } from './widgets/BlocksBrowser';
-import HashLink from './editor/plugins/Link/AppExtras/HashLink';
+// import HashLink from './editor/plugins/Link/AppExtras/HashLink';
 import installCallout from './editor/plugins/Callout';
 import { installTableButton } from './editor/plugins/Table';
 import installSimpleLink from './editor/plugins/SimpleLink';
@@ -21,13 +21,13 @@ export default (config) => {
     config,
   );
 
-  config.settings.appExtras = [
-    ...(config.settings.appExtras || []),
-    {
-      match: '',
-      component: HashLink,
-    },
-  ];
+  // config.settings.appExtras = [
+  //   ...(config.settings.appExtras || []),
+  //   {
+  //     match: '',
+  //     component: HashLink,
+  //   },
+  // ];
 
   config.addonReducers = {
     ...config.addonReducers,

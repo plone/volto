@@ -207,7 +207,6 @@ const defaultModify = ({
     'load-volto-addons': addonsLoaderPath,
     ...registry.getResolveAliases(),
     '@plone/volto': `${registry.voltoPath}/src`,
-    'volto-slate': `${registry.voltoPath}/packages/volto-slate/src`,
     // to be able to reference path uncustomized by webpack
     '@plone/volto-original': `${registry.voltoPath}/src`,
     // be able to reference current package from customized package
@@ -280,6 +279,7 @@ const defaultModify = ({
           }),
         ]
       : [];
+
   return config;
 };
 
@@ -310,6 +310,7 @@ module.exports = {
       webpackConfig,
       webpackObject,
     });
+
     const res = addonExtenders.reduce(
       (acc, extender) => extender.modify(acc, { target, dev }, webpackConfig),
       defaultConfig,

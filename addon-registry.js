@@ -184,6 +184,31 @@ class AddonConfigurationRegistry {
         this.packages[name] = Object.assign(this.packages[name] || {}, pkg);
       });
     }
+    this.initSlate();
+  }
+
+  initSlate() {
+    if (this.packages['volto-slate']) return;
+
+    const slatePath = path.normalize(
+      `${this.voltoPath}/packages/volto-slate/src`,
+    );
+    const slatePackageJsonPath = path.normalize(
+      `${this.voltoPath}/packages/volto-slate/package.json`,
+    );
+
+    // some tests set the root in a location that doesn't have the packages
+    if (!fs.existsSync(slatePath)) return;
+
+    this.packages['volto-slate'] = {
+      modulePath: slatePath,
+      packageJson: slatePackageJsonPath,
+      version: require(slatePackageJsonPath).version,
+      isPublishedPackage: false,
+      isRegisteredAddon: false,
+      name: 'volto-slate',
+      addons: [],
+    };
   }
 
   /**
@@ -297,10 +322,13 @@ class AddonConfigurationRegistry {
    * Returns a mapping name:diskpath to be uses in webpack's resolve aliases
    */
   getResolveAliases() {
-    const pairs = Object.keys(this.packages).map((o) => [
-      o,
-      this.packages[o].modulePath,
-    ]);
+    const pairs = [
+      ...Object.keys(this.packages).map((o) => [
+        o,
+        this.packages[o].modulePath,
+      ]),
+    ];
+
     return fromEntries(pairs);
   }
 
