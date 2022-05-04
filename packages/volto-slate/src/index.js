@@ -7,8 +7,6 @@ import installTitleBlock from './blocks/Title';
 import installDescriptionBlock from './blocks/Description';
 import RichTextWidget from './widgets/RichTextWidget';
 import RichTextWidgetView from './widgets/RichTextWidgetView';
-import { BlocksBrowserWidget } from './widgets/BlocksBrowser';
-// import HashLink from './editor/plugins/Link/AppExtras/HashLink';
 import installCallout from './editor/plugins/Callout';
 import { installTableButton } from './editor/plugins/Table';
 import installSimpleLink from './editor/plugins/SimpleLink';
@@ -21,14 +19,6 @@ export default (config) => {
     config,
   );
 
-  // config.settings.appExtras = [
-  //   ...(config.settings.appExtras || []),
-  //   {
-  //     match: '',
-  //     component: HashLink,
-  //   },
-  // ];
-
   config.addonReducers = {
     ...config.addonReducers,
     ...slateReducers,
@@ -38,7 +28,6 @@ export default (config) => {
     ...config.views,
   };
 
-  config.widgets.widget.blocks_browser = BlocksBrowserWidget;
   config.widgets.widget.slate = RichTextWidget;
   config.widgets.widget.slate_richtext = RichTextWidget; // BBB
   config.widgets.widget.slate_html = HtmlSlateWidget;

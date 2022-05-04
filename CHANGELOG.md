@@ -2,6 +2,8 @@
 
 ## 15.8.1 (unreleased)
 
+- Ship Volto with volto-slate included. @tiberiuichim @razvanmiu @eea
+
 ### Breaking
 
 - Deprecate NodeJS 12 since it's out of LTS since April 30, 2022 @sneridagh
