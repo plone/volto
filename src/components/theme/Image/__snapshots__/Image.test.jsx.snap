@@ -7,15 +7,8 @@ Array [
   >
     <img
       alt=""
-      loading="lazy"
       role="img"
       src="/photo.png/@@images/image/listing"
-      style={
-        Object {
-          "objectFit": "cover",
-          "width": "100%",
-        }
-      }
     />
   </picture>,
   <noscript
@@ -44,15 +37,8 @@ Array [
   >
     <img
       alt="External picsum photo"
-      loading="lazy"
       role="img"
       src="https://picsum.photos/200/300"
-      style={
-        Object {
-          "objectFit": "cover",
-          "width": "100%",
-        }
-      }
     />
   </picture>,
   <noscript
@@ -82,15 +68,8 @@ Array [
     <img
       alt="Photo"
       className="photo-image"
-      loading="lazy"
       role="presentation"
       src="http://localhost:8080/Plone/test-images/@@images/image/listing"
-      style={
-        Object {
-          "objectFit": "cover",
-          "width": "100%",
-        }
-      }
     />
   </picture>,
   <noscript
@@ -120,15 +99,8 @@ Array [
     <img
       alt="Photo"
       className="photo-image"
-      loading="lazy"
       role="img"
       src="http://localhost:8080/Plone/test-images/@@images/image/listing"
-      style={
-        Object {
-          "objectFit": "cover",
-          "width": "100%",
-        }
-      }
     />
   </picture>,
   <noscript
@@ -158,15 +130,8 @@ Array [
     <img
       alt="Photo"
       className="photo-image"
-      loading="lazy"
       role="presentation"
       src="http://localhost:8080/Plone/test-images/@@images/image/listing"
-      style={
-        Object {
-          "objectFit": "cover",
-          "width": "100%",
-        }
-      }
     />
   </picture>,
   <noscript
@@ -196,15 +161,8 @@ Array [
     <img
       alt="Photo"
       className="photo-image"
-      loading="lazy"
       role="presentation"
       src="http://localhost:8080/Plone/test-images/@@images/image/listing"
-      style={
-        Object {
-          "objectFit": "cover",
-          "width": "100%",
-        }
-      }
     />
   </picture>,
   <noscript
@@ -234,15 +192,8 @@ Array [
     <img
       alt="Photo"
       className="photo-image"
-      loading="lazy"
       role="img"
       src="http://localhost:8080/Plone/test-images/@@images/image/listing"
-      style={
-        Object {
-          "objectFit": "cover",
-          "width": "100%",
-        }
-      }
     />
   </picture>,
   <noscript
@@ -272,15 +223,8 @@ Array [
     <img
       alt="Photo"
       className="photo-image"
-      loading="lazy"
       role="presentation"
       src="/photo.png/@@images/image/listing"
-      style={
-        Object {
-          "objectFit": "cover",
-          "width": "100%",
-        }
-      }
     />
   </picture>,
   <noscript

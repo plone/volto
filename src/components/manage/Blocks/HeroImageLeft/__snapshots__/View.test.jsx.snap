@@ -13,15 +13,8 @@ exports[`renders a view hero component 1`] = `
       <img
         alt=""
         className="hero-image"
-        loading="lazy"
         role="img"
         src="/heroimage.jpg/@@images/image/listing"
-        style={
-          Object {
-            "objectFit": "cover",
-            "width": "100%",
-          }
-        }
       />
     </picture>
     <noscript

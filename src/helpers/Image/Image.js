@@ -1,6 +1,22 @@
 import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
+const getImageType = (image) => {
+  let imageType = 'external';
+  if (image['content-type'] === 'image/svg+xml') {
+    imageType = 'svg';
+  } else if (
+    Object.prototype.toString.call(image) === '[object Object]' &&
+    image.scales &&
+    Object.keys(image.scales).length > 0
+  ) {
+    imageType = 'imageObject';
+  } else if (typeof image === 'string' && isInternalURL(image)) {
+    imageType = 'internalUrl';
+  }
+  return imageType;
+};
+
 /**
  * Get src-set list from image
  * @param {object | string} image - Image content object or url
@@ -20,21 +36,11 @@ export const getImageAttributes = (
     if (!minSize || imageScales[scale] < imageScales[minSize]) {
       return scale;
     }
-
     return minSize;
   }, null);
 
   let attrs = {};
-  let imageType = 'external';
-  if (image['content-type'] === 'image/svg+xml') imageType = 'svg';
-  else if (
-    Object.prototype.toString.call(image) === '[object Object]' &&
-    image.scales &&
-    Object.keys(image.scales).length > 0
-  )
-    imageType = 'imageObject';
-  else if (typeof image === 'string' && isInternalURL(image))
-    imageType = 'internalUrl';
+  let imageType = getImageType(image);
 
   switch (imageType) {
     case 'svg':
@@ -57,7 +63,10 @@ export const getImageAttributes = (
           else return 0;
         });
 
-      attrs.src = sortedScales[0]?.download ?? image.download;
+      const scale = sortedScales[0];
+      attrs.src = scale?.download ?? image.download;
+      // attrs.width = scale.width ?? image.width;
+      // attrs.height = scale.height ?? image.height;
       attrs.srcSet = sortedScales.map(
         (scale) => `${flattenToAppURL(scale.download)} ${scale.width}w`,
       );

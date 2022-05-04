@@ -41,16 +41,9 @@ exports[`renders an gallery view component 1`] = `
             >
               <img
                 alt=""
-                loading="lazy"
                 onClick={[Function]}
                 role="img"
                 src="http://localhost:3000/news"
-                style={
-                  Object {
-                    "objectFit": "cover",
-                    "width": "100%",
-                  }
-                }
                 verticalAlign="middle"
               />
             </picture>
@@ -88,16 +81,9 @@ exports[`renders an gallery view component 1`] = `
             >
               <img
                 alt=""
-                loading="lazy"
                 onClick={[Function]}
                 role="img"
                 src="http://localhost:3000/events"
-                style={
-                  Object {
-                    "objectFit": "cover",
-                    "width": "100%",
-                  }
-                }
                 verticalAlign="middle"
               />
             </picture>

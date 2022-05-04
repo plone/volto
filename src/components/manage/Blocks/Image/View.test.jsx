@@ -21,7 +21,6 @@ describe('Image View Component', () => {
     const { getByRole } = render(<View data={{ url: '/image.jpg' }} />);
     const img = getByRole('img');
     expect(img).toHaveAttribute('src', '/image.jpg/@@images/image/listing');
-    expect(img).toHaveAttribute('loading', 'lazy');
   });
   test('renders a view image component with a local image with a link', () => {
     const { container, getByRole } = render(

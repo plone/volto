@@ -32,7 +32,7 @@ const Image = ({
   sizes = '100vw',
   ...imageProps
 }) => {
-  const { src, srcSet } = getImageAttributes(image, {
+  const { src, srcSet, width, height } = getImageAttributes(image, {
     imageField,
     maxSize,
     useOriginal,
@@ -113,8 +113,10 @@ const Image = ({
           alt={alt}
           className={className}
           role={role}
-          loading={critical ? 'eager' : 'lazy'}
-          style={{ width: '100%', objectFit: 'cover' }}
+          //loading={critical ? 'eager' : 'lazy'} //removed because this is for the placeholder.Lazy loading is made from intersectionObserver
+          //style={{ width: '100%', objectFit: 'cover' }} //moved to blocks.less
+          width={width}
+          height={height}
           {...imageProps}
           ref={imageRef}
         />

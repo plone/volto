@@ -38,15 +38,8 @@ Array [
   >
     <img
       alt="Item title"
-      loading="lazy"
       role="img"
       src="http://localhost:3000/something"
-      style={
-        Object {
-          "objectFit": "cover",
-          "width": "100%",
-        }
-      }
     />
   </picture>,
   <noscript
@@ -75,15 +68,8 @@ Array [
   >
     <img
       alt="Item title"
-      loading="lazy"
       role="img"
       src="http://localhost:3000/something"
-      style={
-        Object {
-          "objectFit": "cover",
-          "width": "100%",
-        }
-      }
     />
   </picture>,
   <noscript
@@ -113,15 +99,8 @@ Array [
     <img
       alt="Item title"
       className="extra"
-      loading="lazy"
       role="img"
       src="http://localhost:3000/something"
-      style={
-        Object {
-          "objectFit": "cover",
-          "width": "100%",
-        }
-      }
     />
   </picture>,
   <noscript
