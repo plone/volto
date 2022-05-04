@@ -209,6 +209,7 @@ class AddonConfigurationRegistry {
       name: 'volto-slate',
       addons: [],
     };
+    this.addonNames.push('volto-slate');
   }
 
   /**
