@@ -18,6 +18,7 @@
 
 - Handle @@display-file api endpoint like @@download @cekk
 - Add calendar link to @ics_view @iFlameing
+- Fixed secure cookie option. @giuliaghisini
 
 ## 15.7.0 (2022-04-29)
 
