@@ -2,15 +2,9 @@
 
 ## 15.8.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
-### Internal
-
-### Documentation
+- Fixed secure cookie option. @giuliaghisini
 
 ## 15.8.0 (2022-04-30)
 
@@ -18,7 +12,6 @@
 
 - Handle @@display-file api endpoint like @@download @cekk
 - Add calendar link to @ics_view @iFlameing
-- Fixed secure cookie option. @giuliaghisini
 
 ## 15.7.0 (2022-04-29)
 
