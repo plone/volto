@@ -32,14 +32,19 @@
   "settings": {
     "import/resolver": {
       "alias": {
-        "map": [["@plone/volto", "./src"], ["@package", "./src"], ["@root", "./src"]],
+        "map": [
+          ["@plone/volto", "./src"],
+          ["@package", "./src"],
+          ["@root", "./src"],
+          ["volto-slate", "./packages/volto-slate/src"]
+        ],
         "extensions": [".js", ".jsx", ".json"]
       },
       "babel-plugin-root-import": {
         "rootPathSuffix": "src"
       }
     },
-    "import/core-modules": [ "load-volto-addons" ]
+    "import/core-modules": ["load-volto-addons"]
   },
   "globals": {
     "root": true,
