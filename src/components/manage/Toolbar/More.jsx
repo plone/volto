@@ -41,6 +41,10 @@ const messages = defineMessages({
     id: 'Sharing',
     defaultMessage: 'Sharing',
   },
+  urlManagement: {
+    id: 'UrlManagement',
+    defaultMessage: 'Url Management',
+  },
   ManageTranslations: {
     id: 'Manage Translations',
     defaultMessage: 'Manage Translations',
@@ -134,6 +138,9 @@ class More extends Component {
     const sharingAction = find(this.props.actions.object, {
       id: 'local_roles',
     });
+    const urlManagementAction = find(this.props.actions.object, {
+      id: 'url_management',
+    });
     const { content, intl, lang } = this.props;
     const dateOptions = {
       year: 'numeric',
@@ -208,6 +215,16 @@ class More extends Component {
                 <li>
                   <Link to={`${path}/sharing`}>
                     {this.props.intl.formatMessage(messages.sharing)}
+                    <Icon name={rightArrowSVG} size="24px" />
+                  </Link>
+                </li>
+              )}
+            </Plug>
+            <Plug pluggable="toolbar-more-menu-list" id="urlManagement">
+              {urlManagementAction && (
+                <li>
+                  <Link to={`${path}/url-management`}>
+                    {this.props.intl.formatMessage(messages.urlManagement)}
                     <Icon name={rightArrowSVG} size="24px" />
                   </Link>
                 </li>

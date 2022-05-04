@@ -52,6 +52,11 @@ const store = mockStore({
           id: 'local_roles',
           title: 'Sharing',
         },
+        {
+          icon: '',
+          id: 'url_management',
+          title: 'Url management',
+        },
       ],
       object_buttons: [
         {

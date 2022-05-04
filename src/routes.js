@@ -32,6 +32,7 @@ import {
   Sharing,
   Sitemap,
   UsersControlpanel,
+  UrlManagement,
   GroupsControlpanel,
 } from '@plone/volto/components';
 
@@ -174,6 +175,10 @@ export const defaultRoutes = [
     component: Sharing,
   },
   {
+    path: '/url-management',
+    component: UrlManagement,
+  },
+  {
     path: '/**/add',
     component: Add,
   },
@@ -188,6 +193,10 @@ export const defaultRoutes = [
   {
     path: '/**/sharing',
     component: Sharing,
+  },
+  {
+    path: '/**/url-management',
+    component: UrlManagement,
   },
   {
     path: '/**/delete',
@@ -208,6 +217,10 @@ export const defaultRoutes = [
   {
     path: '/**/sharing',
     component: Sharing,
+  },
+  {
+    path: '/**/url-management',
+    component: UrlManagement,
   },
   {
     path: '/**/manage-translations',
