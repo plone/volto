@@ -13,6 +13,7 @@ import {
   UPDATECOLUMNS_CONTENT,
   LOCK_CONTENT,
   UNLOCK_CONTENT,
+  FC_DELETE,
 } from '@plone/volto/constants/ActionTypes';
 import { nestContent } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
@@ -235,5 +236,22 @@ export function unlockContent(urls, force = false) {
             path: `${url}/@lock`,
             data: force ? { force: true } : {},
           })),
+  };
+}
+
+export function fcDelete(selection) {
+  return {
+    type: FC_DELETE,
+    mode: 'serial',
+    request: {
+      op: 'post',
+      path: '/@@fc-delete',
+      type: 'application/x-www-form-urlencoded',
+      data: {
+        selection,
+        transitions: 'true',
+        render: 'yes',
+      },
+    },
   };
 }

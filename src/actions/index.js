@@ -36,6 +36,7 @@ export {
   updateColumnsContent,
   lockContent,
   unlockContent,
+  fcDelete,
 } from '@plone/volto/actions/content/content';
 export {
   getControlpanel,

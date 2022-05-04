@@ -47,6 +47,7 @@ import {
   orderContent,
   sortContent,
   updateColumnsContent,
+  fcDelete,
 } from '@plone/volto/actions';
 import Indexes, { defaultIndexes } from '@plone/volto/constants/Indexes';
 import {
@@ -290,6 +291,7 @@ class Contents extends Component {
     orderContent: PropTypes.func.isRequired,
     sortContent: PropTypes.func.isRequired,
     updateColumnsContent: PropTypes.func.isRequired,
+    fcDelete: PropTypes.func.isRequired,
     clipboardRequest: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
@@ -412,6 +414,7 @@ class Contents extends Component {
       sort_on: this.props.sort?.on || 'getObjPositionInParent',
       sort_order: this.props.sort?.order || 'ascending',
       isClient: false,
+      linkIntegrityHTML: '',
     };
     this.filterTimeout = null;
   }
@@ -424,6 +427,20 @@ class Contents extends Component {
   componentDidMount() {
     this.fetchContents();
     this.setState({ isClient: true });
+  }
+
+  async componentDidUpdate(_, prevState) {
+    if (this.state.itemsToDelete !== prevState.itemsToDelete) {
+      this.setState({
+        linkIntegrityHTML: await this.props.fcDelete(
+          JSON.stringify(
+            map(this.state.itemsToDelete, (item) =>
+              this.getFieldById(item, 'UID'),
+            ),
+          ),
+        ),
+      });
+    }
   }
 
   /**
@@ -1134,6 +1151,11 @@ class Contents extends Component {
                     )}
                     content={
                       <div className="content">
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: this.state.linkIntegrityHTML.html,
+                          }}
+                        ></div>
                         <ul className="content">
                           {map(this.state.itemsToDelete, (item) => (
                             <li key={item}>
@@ -1827,6 +1849,7 @@ export const __test__ = compose(
       orderContent,
       sortContent,
       updateColumnsContent,
+      fcDelete,
     },
   ),
 )(Contents);
@@ -1867,6 +1890,7 @@ export default compose(
       orderContent,
       sortContent,
       updateColumnsContent,
+      fcDelete,
     },
   ),
   asyncConnect([
