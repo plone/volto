@@ -8,7 +8,7 @@ exports[`renders a view hero component 1`] = `
     className="block-inner-wrapper"
   >
     <picture
-      className="volto-image"
+      className="volto-image responsive"
     >
       <img
         alt=""
@@ -28,8 +28,8 @@ exports[`renders a view hero component 1`] = `
                 class=\\"hero-image\\"
                 role=\\"img\\"
                 
-                
-                loading=\\"lazy\\"
+                                         
+                loading=\\"lazy\\"               
             ",
         }
       }

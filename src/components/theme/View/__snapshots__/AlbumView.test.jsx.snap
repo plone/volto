@@ -37,7 +37,7 @@ exports[`renders an gallery view component 1`] = `
             className="ui segment imageborder"
           >
             <picture
-              className="volto-image"
+              className="volto-image responsive"
             >
               <img
                 alt=""
@@ -58,8 +58,8 @@ exports[`renders an gallery view component 1`] = `
                 class=\\"\\"
                 role=\\"img\\"
                 
-                
-                loading=\\"lazy\\"
+                                         
+                loading=\\"lazy\\"               
             ",
                 }
               }
@@ -78,7 +78,7 @@ exports[`renders an gallery view component 1`] = `
             className="ui segment imageborder"
           >
             <picture
-              className="volto-image"
+              className="volto-image responsive"
             >
               <img
                 alt=""
@@ -99,8 +99,8 @@ exports[`renders an gallery view component 1`] = `
                 class=\\"\\"
                 role=\\"img\\"
                 
-                
-                loading=\\"lazy\\"
+                                         
+                loading=\\"lazy\\"               
             ",
                 }
               }

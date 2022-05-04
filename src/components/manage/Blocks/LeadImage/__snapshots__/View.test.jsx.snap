@@ -5,7 +5,7 @@ exports[`renders a view image component 1`] = `
   className="block image align center"
 >
   <picture
-    className="volto-image"
+    className="volto-image responsive"
   >
     <img
       alt=""
@@ -25,8 +25,8 @@ exports[`renders a view image component 1`] = `
                 class=\\"\\"
                 role=\\"img\\"
                 
-                
-                loading=\\"lazy\\"
+                                         
+                loading=\\"lazy\\"               
             ",
       }
     }

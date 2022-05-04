@@ -10,9 +10,10 @@ import { getImageAttributes } from '@plone/volto/helpers';
  * @param {string} className - CSS class attribute
  * @param {string} containerClassName - CSS class attribute for picture element
  * @param {string} floated - float left or right
- * @param {string} size - actual width: thumb, small, medium or large
+ * @param {string} responsive - if the image is responsive
+ * @param {string} size - (css class) actual width: thumb, small, medium or large
  * @param {string} role - img role attribute
- * @param {boolean} critical - whether to lazy load the image
+ * @param {boolean} critical - if critical, do not lazy load the image
  * @param {number} maxSize - maximum size to render
  * @param {boolean} useOriginal - whether to render original size
  */
@@ -24,6 +25,7 @@ const Image = ({
   containerClassName,
   floated,
   size,
+  responsive = true,
   role = 'img',
   critical = false,
   maxSize,
@@ -44,6 +46,7 @@ const Image = ({
   );
   const imageHasLoaded = imageRef?.current?.complete;
 
+  //picture classname
   let pictureClassName = `volto-image${
     containerClassName ? ` ${containerClassName}` : ''
   }`;
@@ -54,13 +57,20 @@ const Image = ({
     pictureClassName = `${pictureClassName} ${size}`;
   }
 
+  if (responsive) {
+    pictureClassName = `${pictureClassName} responsive`;
+  }
+
+  //apply srcset
   const applySrcSet = useCallback(() => {
     setSrcset(
       srcSet
         .filter((s, index) => {
           let addable = (ss) => {
             let devicePixelRatio = window.devicePixelRatio;
+
             let w = ss ? parseInt(ss.split(' ')[1].replace('w', ''), 10) : null;
+
             return w
               ? w <=
                   (imageRef?.current?.width * devicePixelRatio ?? Infinity) ||
@@ -71,25 +81,21 @@ const Image = ({
 
           let add = addable(s);
 
-          // if (!add && addable(srcSet[index - 1])) {
-          //   add = true; //add the next item grather then imageRef width, to avoid less quality
-          // }
-
           return add;
         })
         .join(', '),
     );
   }, [srcSet]);
 
+  //intersection observer
   useEffect(() => {
-    const ref = imageRef?.current;
     if ('IntersectionObserver' in window && !srcset) {
       const observer = new IntersectionObserver(
         (entries) => {
           setTimeout(() => {
             if (
               entries[0].isIntersecting === true &&
-              //ref?.complete && //removed to load images on top of the page.
+              //imageRef?.current?.complete && //removed to load images on top of the page.
               (!srcset || srcset?.split(', ')?.length < 2) &&
               srcSet?.length > 0
             ) {
@@ -99,12 +105,7 @@ const Image = ({
         },
         { threshold: [0], rootMargin: '100px' },
       );
-      if (ref) {
-        observer.observe(ref);
-      }
-      return () => {
-        if (ref) observer.unobserve(ref);
-      };
+      observer.observe(imageRef.current);
     } else if (srcSet?.length > 0) {
       applySrcSet();
     }
@@ -137,8 +138,8 @@ const Image = ({
                 class="${className || ''}"
                 role="${role}"
                 ${width ? `width="${width}` : ''}
-                ${height ? `height="${height}` : ''}
-                loading="lazy"
+                ${height ? `height="${height}` : ''}                         
+                loading="lazy"               
             `,
           }}
         />

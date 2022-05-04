@@ -27,9 +27,15 @@ const getImageType = (image) => {
  * @returns {string} image.src attributes.src
  * @returns {string} image.srcset attributes.srcset
  */
+
+const DEFAULT_MAX_SIZE = 10000;
 export const getImageAttributes = (
   image,
-  { imageField = 'image', maxSize = 10000, useOriginal = false } = {},
+  {
+    imageField = 'image',
+    maxSize = DEFAULT_MAX_SIZE,
+    useOriginal = false,
+  } = {},
 ) => {
   const imageScales = config.settings.imageScales;
   const minSize = Object.keys(imageScales).reduce((minSize, scale) => {
@@ -65,8 +71,13 @@ export const getImageAttributes = (
 
       const scale = sortedScales[0];
       attrs.src = scale?.download ?? image.download;
-      // attrs.width = scale.width ?? image.width;
-      // attrs.height = scale.height ?? image.height;
+
+      if (maxSize !== DEFAULT_MAX_SIZE) {
+        const maxScale = sortedScales[sortedScales.length - 1];
+        attrs.width = maxScale.width;
+        attrs.height = maxScale.height;
+      }
+
       attrs.srcSet = sortedScales.map(
         (scale) => `${flattenToAppURL(scale.download)} ${scale.width}w`,
       );

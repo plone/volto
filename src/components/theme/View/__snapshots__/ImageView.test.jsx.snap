@@ -18,7 +18,7 @@ exports[`renders an image view component 1`] = `
     href="/test-images/@@images/image"
   >
     <picture
-      className="volto-image"
+      className="volto-image responsive"
     >
       <img
         alt="Hello World!"
@@ -37,8 +37,8 @@ exports[`renders an image view component 1`] = `
                 class=\\"\\"
                 role=\\"img\\"
                 
-                
-                loading=\\"lazy\\"
+                                         
+                loading=\\"lazy\\"               
             ",
         }
       }

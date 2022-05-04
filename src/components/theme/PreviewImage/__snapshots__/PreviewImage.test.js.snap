@@ -34,7 +34,7 @@ exports[`PreviewImage renders a fallback image with extra props 1`] = `
 exports[`PreviewImage renders a preview image 1`] = `
 Array [
   <picture
-    className="volto-image preview"
+    className="volto-image preview responsive"
   >
     <img
       alt="Item title"
@@ -53,8 +53,8 @@ Array [
                 class=\\"\\"
                 role=\\"img\\"
                 
-                
-                loading=\\"lazy\\"
+                                         
+                loading=\\"lazy\\"               
             ",
       }
     }
@@ -65,7 +65,7 @@ Array [
 exports[`PreviewImage renders a preview image with custom size 1`] = `
 Array [
   <picture
-    className="volto-image large"
+    className="volto-image large responsive"
   >
     <img
       alt="Item title"
@@ -84,8 +84,8 @@ Array [
                 class=\\"\\"
                 role=\\"img\\"
                 
-                
-                loading=\\"lazy\\"
+                                         
+                loading=\\"lazy\\"               
             ",
       }
     }
@@ -96,7 +96,7 @@ Array [
 exports[`PreviewImage renders a preview image with extra props 1`] = `
 Array [
   <picture
-    className="volto-image preview"
+    className="volto-image preview responsive"
   >
     <img
       alt="Item title"
@@ -116,8 +116,8 @@ Array [
                 class=\\"extra\\"
                 role=\\"img\\"
                 
-                
-                loading=\\"lazy\\"
+                                         
+                loading=\\"lazy\\"               
             ",
       }
     }
