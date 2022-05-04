@@ -555,11 +555,33 @@ body.has-toolbar-collapsed .mobile-menu {
   transition: transform 0.5s cubic-bezier(0.09, 0.11, 0.24, 0.91);
 }
 
+.debug(@var) {
+  &:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 10px;
+    border: 1px solid red;
+    background-color: #fff;
+    border-radius: 5px;
+    color: red;
+    content: '@{var}';
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
+
+body {
+  .debug(@largeMonitorBreakpoint);
+}
+
 // Deprecated as per https://github.com/plone/volto/issues/1265
 // @import 'utils';
+@import 'layout';
 @import 'toolbar';
 @import 'draftjs';
 @import 'blocks';
+@import 'images';
 @import 'sidebar';
 @import 'recurrence-widget.less';
 @import 'react-dates-overrides';

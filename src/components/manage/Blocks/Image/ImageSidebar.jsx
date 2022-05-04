@@ -84,6 +84,21 @@ const ImageSidebar = ({
     setActiveAccIndex(newIndex);
   }
 
+  React.useEffect(() => {
+    if (data.size === undefined || data.align === undefined) {
+      onChangeBlock(block, {
+        ...data,
+        ...(!data.size && {
+          size: 'l',
+        }),
+        ...(!data.align && {
+          align: 'center',
+        }),
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Segment.Group raised>
       <header className="header pulled">
@@ -226,6 +241,11 @@ const ImageSidebar = ({
                 onChangeBlock={onChangeBlock}
                 data={data}
                 block={block}
+                disabled={
+                  data.align === 'full' ||
+                  data.align === 'wide' ||
+                  data.align === 'center'
+                }
               />
             </FormFieldWrapper>
           </Segment>
