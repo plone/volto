@@ -1,6 +1,6 @@
 # Change Log
 
-## 15.8.1 (unreleased)
+## 15.8.1 (2022-05-04)
 
 ### Bugfix
 
