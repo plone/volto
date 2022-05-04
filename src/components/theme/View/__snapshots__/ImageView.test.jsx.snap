@@ -37,8 +37,8 @@ exports[`renders an image view component 1`] = `
                 class=\\"\\"
                 role=\\"img\\"
                 
-                                         
-                loading=\\"lazy\\"               
+                
+                loading=\\"lazy\\"
             ",
         }
       }

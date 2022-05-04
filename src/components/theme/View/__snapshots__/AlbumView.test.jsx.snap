@@ -58,8 +58,8 @@ exports[`renders an gallery view component 1`] = `
                 class=\\"\\"
                 role=\\"img\\"
                 
-                                         
-                loading=\\"lazy\\"               
+                
+                loading=\\"lazy\\"
             ",
                 }
               }
@@ -99,8 +99,8 @@ exports[`renders an gallery view component 1`] = `
                 class=\\"\\"
                 role=\\"img\\"
                 
-                                         
-                loading=\\"lazy\\"               
+                
+                loading=\\"lazy\\"
             ",
                 }
               }

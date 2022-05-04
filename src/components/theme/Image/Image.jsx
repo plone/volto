@@ -82,13 +82,14 @@ const Image = ({
   }, [srcSet]);
 
   useEffect(() => {
+    const ref = imageRef?.current;
     if ('IntersectionObserver' in window && !srcset) {
       const observer = new IntersectionObserver(
         (entries) => {
           setTimeout(() => {
             if (
               entries[0].isIntersecting === true &&
-              //imageRef?.current?.complete && //removed to load images on top of the page.
+              //ref?.complete && //removed to load images on top of the page.
               (!srcset || srcset?.split(', ')?.length < 2) &&
               srcSet?.length > 0
             ) {
@@ -98,7 +99,12 @@ const Image = ({
         },
         { threshold: [0], rootMargin: '100px' },
       );
-      observer.observe(imageRef.current);
+      if (ref) {
+        observer.observe(ref);
+      }
+      return () => {
+        if (ref) observer.unobserve(ref);
+      };
     } else if (srcSet?.length > 0) {
       applySrcSet();
     }
@@ -114,7 +120,6 @@ const Image = ({
           className={className}
           role={role}
           //loading={critical ? 'eager' : 'lazy'} //removed because this is for the placeholder.Lazy loading is made from intersectionObserver
-          //style={{ width: '100%', objectFit: 'cover' }} //moved to blocks.less
           width={width}
           height={height}
           {...imageProps}
@@ -132,8 +137,8 @@ const Image = ({
                 class="${className || ''}"
                 role="${role}"
                 ${width ? `width="${width}` : ''}
-                ${height ? `height="${height}` : ''}                         
-                loading="lazy"               
+                ${height ? `height="${height}` : ''}
+                loading="lazy"
             `,
           }}
         />

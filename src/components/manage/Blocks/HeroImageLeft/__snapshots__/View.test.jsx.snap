@@ -28,8 +28,8 @@ exports[`renders a view hero component 1`] = `
                 class=\\"hero-image\\"
                 role=\\"img\\"
                 
-                                         
-                loading=\\"lazy\\"               
+                
+                loading=\\"lazy\\"
             ",
         }
       }

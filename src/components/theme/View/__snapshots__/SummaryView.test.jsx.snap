@@ -52,8 +52,8 @@ exports[`TabularView renders a summary view component 1`] = `
                 class=\\"\\"
                 role=\\"img\\"
                 
-                                         
-                loading=\\"lazy\\"               
+                
+                loading=\\"lazy\\"
             ",
             }
           }
