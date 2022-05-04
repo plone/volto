@@ -6,34 +6,21 @@ import { FormFieldWrapper } from '@plone/volto/components';
 
 const messages = defineMessages({
   small: {
-    id: 'Left',
-    defaultMessage: 'Left',
+    id: 'Small',
+    defaultMessage: 'Small',
   },
   medium: {
-    id: 'Right',
-    defaultMessage: 'Right',
+    id: 'Medium',
+    defaultMessage: 'Medium',
   },
   large: {
-    id: 'Center',
-    defaultMessage: 'Center',
+    id: 'Large',
+    defaultMessage: 'Large',
   },
 });
 
 const ImageSizeWidget = (props) => {
-  const { onChangeBlock, data = {}, block, disabled, intl } = props;
-
-  /**
-   * Image size handler
-   * @method onImageSize
-   * @param {string} size Size option
-   * @returns {undefined}
-   */
-  function onImageSize(size) {
-    onChangeBlock(block, {
-      ...data,
-      size,
-    });
-  }
+  const { onChange, id, disabled, intl, value } = props;
 
   return (
     <FormFieldWrapper {...props}>
@@ -45,8 +32,8 @@ const ImageSizeWidget = (props) => {
                 icon
                 basic
                 aria-label={intl.formatMessage(messages.small)}
-                onClick={() => onImageSize('s')}
-                active={data?.size === 's'}
+                onClick={() => onChange(id, 's')}
+                active={value === 's'}
                 disabled={disabled}
               >
                 <div className="image-sizes-text">S</div>
@@ -57,8 +44,8 @@ const ImageSizeWidget = (props) => {
                 icon
                 basic
                 aria-label={intl.formatMessage(messages.medium)}
-                onClick={() => onImageSize('m')}
-                active={data?.size === 'm'}
+                onClick={() => onChange(id, 'm')}
+                active={value === 'm'}
                 disabled={disabled}
               >
                 <div className="image-sizes-text">M</div>
@@ -69,8 +56,8 @@ const ImageSizeWidget = (props) => {
                 icon
                 basic
                 aria-label={intl.formatMessage(messages.large)}
-                onClick={() => onImageSize('l')}
-                active={data?.size === 'l' || data?.size === undefined}
+                onClick={() => onChange(id, 'l')}
+                active={value === 'l' || value === undefined}
                 disabled={disabled}
               >
                 <div className="image-sizes-text">L</div>

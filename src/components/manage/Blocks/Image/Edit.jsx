@@ -8,11 +8,18 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { readAsDataURL } from 'promise-file-reader';
-import { Button, Dimmer, Input, Loader, Message } from 'semantic-ui-react';
+import {
+  Button,
+  Dimmer,
+  Input,
+  Loader,
+  Message,
+  Image,
+} from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import loadable from '@loadable/component';
 import cx from 'classnames';
-import { isEqual } from 'lodash';
+import { isEmpty, isEqual, isArray } from 'lodash';
 
 import { Icon, ImageSidebar, SidebarPortal } from '@plone/volto/components';
 import { withBlockExtensions } from '@plone/volto/helpers';
@@ -24,17 +31,16 @@ import {
 } from '@plone/volto/helpers';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
-import clearSVG from '@plone/volto/icons/clear.svg';
-import navTreeSVG from '@plone/volto/icons/nav.svg';
-import aheadSVG from '@plone/volto/icons/ahead.svg';
 import uploadSVG from '@plone/volto/icons/upload.svg';
 
 const Dropzone = loadable(() => import('react-dropzone'));
 
 const messages = defineMessages({
   ImageBlockInputPlaceholder: {
-    id: 'Browse the site, drop an image, or type an URL',
-    defaultMessage: 'Browse the site, drop an image, or type an URL',
+    id:
+      'Click on this area or drop an image. If you have the source url, use the sidebar',
+    defaultMessage:
+      'Click on this area or drop an image. If you have the source url, use the sidebar',
   },
 });
 
@@ -72,20 +78,19 @@ class Edit extends Component {
 
   state = {
     uploading: false,
-    url: '',
     dragging: false,
   };
 
   /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
+   * Component Did Update
+   * @method componentDidUpdate
+   * @param {Object} prevProps Previous properties
    * @returns {undefined}
    */
-  UNSAFE_componentWillReceiveProps(nextProps) {
+  componentDidUpdate(prevProps) {
     if (
-      this.props.request.loading &&
-      nextProps.request.loaded &&
+      prevProps.request.loading &&
+      this.props.request.loaded &&
       this.state.uploading
     ) {
       this.setState({
@@ -93,8 +98,12 @@ class Edit extends Component {
       });
       this.props.onChangeBlock(this.props.block, {
         ...this.props.data,
-        url: nextProps.content['@id'],
-        alt: '',
+        url: [
+          {
+            '@id': flattenToAppURL(this.props.content['@id']),
+            title: this.props.content.title,
+          },
+        ],
       });
     }
   }
@@ -144,50 +153,6 @@ class Edit extends Component {
   };
 
   /**
-   * Align block handler
-   * @method onAlignBlock
-   * @param {string} align Alignment option
-   * @returns {undefined}
-   */
-  onAlignBlock(align) {
-    this.props.onChangeBlock(this.props.block, {
-      ...this.props.data,
-      align,
-    });
-  }
-
-  /**
-   * Change url handler
-   * @method onChangeUrl
-   * @param {Object} target Target object
-   * @returns {undefined}
-   */
-  onChangeUrl = ({ target }) => {
-    this.setState({
-      url: target.value,
-    });
-  };
-
-  /**
-   * Submit url handler
-   * @method onSubmitUrl
-   * @param {object} e Event
-   * @returns {undefined}
-   */
-  onSubmitUrl = () => {
-    this.props.onChangeBlock(this.props.block, {
-      ...this.props.data,
-      url: flattenToAppURL(this.state.url),
-    });
-  };
-
-  resetSubmitUrl = () => {
-    this.setState({
-      url: '',
-    });
-  };
-
-  /**
    * Drop handler
    * @method onDrop
    * @param {array} files File objects
@@ -217,25 +182,6 @@ class Edit extends Component {
     });
   };
 
-  /**
-   * Keydown handler on Variant Menu Form
-   * This is required since the ENTER key is already mapped to a onKeyDown
-   * event and needs to be overriden with a child onKeyDown.
-   * @method onKeyDownVariantMenuForm
-   * @param {Object} e Event object
-   * @returns {undefined}
-   */
-  onKeyDownVariantMenuForm = (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      e.stopPropagation();
-      this.onSubmitUrl();
-    } else if (e.key === 'Escape') {
-      e.preventDefault();
-      e.stopPropagation();
-      // TODO: Do something on ESC key
-    }
-  };
   onDragEnter = () => {
     this.setState({ dragging: true });
   };
@@ -255,6 +201,10 @@ class Edit extends Component {
     const placeholder =
       this.props.data.placeholder ||
       this.props.intl.formatMessage(messages.ImageBlockInputPlaceholder);
+    const url =
+      data?.url && isArray(data.url) && !isEmpty(data.url)
+        ? data.url[0]['@id']
+        : null;
     return (
       <div
         className={cx(
@@ -265,7 +215,7 @@ class Edit extends Component {
           data.align,
         )}
       >
-        {data.url ? (
+        {url ? (
           <>
             <img
               className={cx({
@@ -275,22 +225,18 @@ class Edit extends Component {
                 small: data.size === 's',
               })}
               src={
-                isInternalURL(data.url)
+                isInternalURL(url)
                   ? // Backwards compat in the case that the block is storing the full server URL
                     (() => {
                       if (data.size === 'l')
-                        return `${flattenToAppURL(data.url)}/@@images/image`;
+                        return `${flattenToAppURL(url)}/@@images/image`;
                       if (data.size === 'm')
-                        return `${flattenToAppURL(
-                          data.url,
-                        )}/@@images/image/preview`;
+                        return `${flattenToAppURL(url)}/@@images/image/preview`;
                       if (data.size === 's')
-                        return `${flattenToAppURL(
-                          data.url,
-                        )}/@@images/image/mini`;
-                      return `${flattenToAppURL(data.url)}/@@images/image`;
+                        return `${flattenToAppURL(url)}/@@images/image/mini`;
+                      return `${flattenToAppURL(url)}/@@images/image`;
                     })()
-                  : data.url
+                  : url
               }
               alt={data.alt || ''}
             />
@@ -299,13 +245,12 @@ class Edit extends Component {
           <div>
             {this.props.editable && (
               <Dropzone
-                noClick
                 onDrop={this.onDrop}
                 onDragEnter={this.onDragEnter}
                 onDragLeave={this.onDragLeave}
                 className="dropzone"
               >
-                {({ getRootProps, getInputProps }) => (
+                {({ getRootProps, getInputProps, open }) => (
                   <div {...getRootProps()}>
                     <Message>
                       {this.state.dragging && <Dimmer active></Dimmer>}
@@ -316,72 +261,12 @@ class Edit extends Component {
                       )}
                       <div className="no-image-wrapper">
                         <img src={imageBlockSVG} alt="" />
-                        <div className="toolbar-inner">
-                          <Button.Group>
-                            <Button
-                              basic
-                              icon
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                e.preventDefault();
-                                this.props.openObjectBrowser();
-                              }}
-                            >
-                              <Icon name={navTreeSVG} size="24px" />
-                            </Button>
-                          </Button.Group>
-                          <Button.Group>
-                            <label className="ui button basic icon">
-                              <Icon name={uploadSVG} size="24px" />
-                              <input
-                                {...getInputProps({
-                                  type: 'file',
-                                  onChange: this.onUploadImage,
-                                  style: { display: 'none' },
-                                })}
-                              />
-                            </label>
-                          </Button.Group>
-                          <Input
-                            onKeyDown={this.onKeyDownVariantMenuForm}
-                            onChange={this.onChangeUrl}
-                            placeholder={placeholder}
-                            value={this.state.url}
-                            onClick={(e) => {
-                              e.target.focus();
-                            }}
-                            onFocus={(e) => {
-                              this.props.onSelectBlock(this.props.id);
-                            }}
-                          />
-                          {this.state.url && (
-                            <Button.Group>
-                              <Button
-                                basic
-                                className="cancel"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  this.setState({ url: '' });
-                                }}
-                              >
-                                <Icon name={clearSVG} size="30px" />
-                              </Button>
-                            </Button.Group>
-                          )}
-                          <Button.Group>
-                            <Button
-                              basic
-                              primary
-                              disabled={!this.state.url}
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                this.onSubmitUrl();
-                              }}
-                            >
-                              <Icon name={aheadSVG} size="30px" />
-                            </Button>
-                          </Button.Group>
-                        </div>
+                        <input
+                          {...getInputProps({
+                            onChange: this.onUploadImage,
+                          })}
+                        />
+                        <p>{placeholder}</p>
                       </div>
                     </Message>
                   </div>
@@ -391,7 +276,7 @@ class Edit extends Component {
           </div>
         )}
         <SidebarPortal selected={this.props.selected}>
-          <ImageSidebar {...this.props} resetSubmitUrl={this.resetSubmitUrl} />
+          <ImageSidebar {...this.props} />
         </SidebarPortal>
       </div>
     );
@@ -405,6 +290,7 @@ export default compose(
     (state, ownProps) => ({
       request: state.content.subrequests[ownProps.block] || {},
       content: state.content.subrequests[ownProps.block]?.data,
+      mainContent: state.content.update,
     }),
     { createContent },
   ),

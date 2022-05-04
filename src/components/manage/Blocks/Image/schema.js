@@ -1,5 +1,7 @@
 import { defineMessages } from 'react-intl';
 
+import { isEmpty } from 'lodash';
+
 const messages = defineMessages({
   Source: {
     id: 'Source',
@@ -62,9 +64,14 @@ export function ImageSchema({ formData, intl }) {
       {
         id: 'default',
         title: 'Default',
-        fields: [...(formData.url ? ['url', 'alt', 'alignment', 'size'] : [])],
+        fields: [
+          'url',
+          ...(formData.url && !isEmpty(formData.url)
+            ? ['alt', 'align', 'size']
+            : []),
+        ],
       },
-      ...(formData.url
+      ...(formData.url && !isEmpty(formData.url)
         ? [
             {
               id: 'link_settings',
@@ -77,7 +84,10 @@ export function ImageSchema({ formData, intl }) {
     properties: {
       url: {
         title: intl.formatMessage(messages.Source),
-        widget: 'text',
+        widget: 'object_browser',
+        mode: 'image',
+        legacy: true,
+        allowExternals: true,
       },
       title: {
         title: intl.formatMessage(messages.title),
@@ -98,7 +108,7 @@ export function ImageSchema({ formData, intl }) {
           </>
         ),
       },
-      alignment: {
+      align: {
         title: intl.formatMessage(messages.Align),
         widget: 'align',
       },

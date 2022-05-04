@@ -9,25 +9,15 @@ const ImageSidebar = (props) => {
   const intl = useIntl();
   const schema = ImageSchema({ formData: data, intl });
 
-  const dataAdapter = (data) => {
-    if (data?.url && typeof data.url === 'object' && !Array.isArray(data.url)) {
-      data.url = data.url[0]['@id'];
-    }
-    return data;
-  };
-
   return (
     <BlockDataForm
       schema={schema}
       title={schema.title}
       onChangeField={(id, value) => {
-        onChangeBlock(
-          block,
-          dataAdapter({
-            ...data,
-            [id]: value,
-          }),
-        );
+        onChangeBlock(block, {
+          ...data,
+          [id]: value,
+        });
       }}
       formData={data}
       block={block}
