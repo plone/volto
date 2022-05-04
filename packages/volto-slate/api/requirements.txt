@@ -1,3 +1,0 @@
-# Keep this file in sync with: https://github.com/kitconcept/buildout/edit/master/requirements.txt
-setuptools==42.0.2
-zc.buildout==2.13.3
