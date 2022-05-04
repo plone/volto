@@ -88,7 +88,7 @@ const Image = ({
           setTimeout(() => {
             if (
               entries[0].isIntersecting === true &&
-              imageRef?.current?.complete &&
+              //imageRef?.current?.complete && //removed to load images on top of the page.
               (!srcset || srcset?.split(', ')?.length < 2) &&
               srcSet?.length > 0
             ) {
