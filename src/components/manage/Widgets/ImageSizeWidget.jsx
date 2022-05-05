@@ -76,7 +76,9 @@ const ImageSizeWidget = (props) => {
  * @static
  */
 ImageSizeWidget.propTypes = {
-  onChangeBlock: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string,
+  id: PropTypes.string.isRequired,
 };
 
 /**
@@ -85,9 +87,7 @@ ImageSizeWidget.propTypes = {
  * @static
  */
 ImageSizeWidget.defaultProps = {
-  onChangeBlock: () => {},
-  onBlur: () => {},
-  onClick: () => {},
+  onChange: () => {},
 };
 
 export default injectIntl(ImageSizeWidget);

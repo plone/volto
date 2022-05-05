@@ -238,8 +238,6 @@ const blocksConfig = {
       addPermission: [],
       view: [],
     },
-    extensions: {},
-    variations: [{}],
   },
   leadimage: {
     id: 'leadimage',
