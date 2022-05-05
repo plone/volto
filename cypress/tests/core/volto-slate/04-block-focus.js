@@ -1,8 +1,4 @@
-import {
-  slateBeforeEach,
-  slateAfterEach,
-  selectSlateRange,
-} from '../../../support';
+import { slateBeforeEach, slateAfterEach } from '../../../support';
 
 describe('Block Tests', () => {
   beforeEach(slateBeforeEach);

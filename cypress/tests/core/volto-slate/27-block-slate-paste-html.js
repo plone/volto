@@ -8,7 +8,7 @@ describe('Block Tests: external text containing html contents/tags ', () => {
   beforeEach(slateBeforeEach);
   afterEach(slateAfterEach);
   it('should paste external text containing html', function () {
-    cy.getSlateEditorAndType('Let"s paste external html texts');
+    cy.getSlateEditorAndType("Let's paste external html texts");
     cy.setSlateCursor('texts').type('{enter}');
     createSlateBlock().pasteClipboard(
       '<p>For simplicity, emissions arising (CRF 3B) were presented for all livestock type h CH<sub>4</sub> and N<sub>2</sub>O), e CO<sub>2</sub>e value.single CO<sub>2</sub>e figure.</p>',
@@ -26,7 +26,7 @@ describe('Block Tests: external text containing html contents/tags ', () => {
     // The idea is pasteClipboard should only apply on its attached slate block
     // by not splitting them into blocks.
     createSlateBlock().pasteClipboard(
-      `<p><strong>Lorem Ipsum</strong> 
+      `<p><strong>Lorem Ipsum</strong>
        is simply dummy text of the printing and typesetting industry.
       </p>
       `,

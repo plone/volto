@@ -1,4 +1,4 @@
-import { slateBeforeEach, slateAfterEach } from '../support';
+import { slateBeforeEach, slateAfterEach } from '../../../support';
 
 describe('RichText Tests: format text via slate toolbar', () => {
   beforeEach(() => slateBeforeEach('kitkat'));

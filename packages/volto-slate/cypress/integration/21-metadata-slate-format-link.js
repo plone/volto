@@ -1,4 +1,8 @@
-import { slateBeforeEach, slateAfterEach, selectSlateRange } from '../support';
+import {
+  slateBeforeEach,
+  slateAfterEach,
+  selectSlateRange,
+} from '../../../support';
 
 describe('RichText Tests: Add links', () => {
   beforeEach(() => slateBeforeEach('kitkat'));

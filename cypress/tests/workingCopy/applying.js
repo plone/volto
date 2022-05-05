@@ -27,9 +27,7 @@ describe('Working Copy Tests - Applying', () => {
 
     // When I change the title of the working copy and save it
     cy.findByLabelText('Edit').click();
-    cy.get('.documentFirstHeading > .public-DraftStyleDefault-block')
-      .clear()
-      .type('New title');
+    cy.clearSlateTitle().type('New title');
     cy.get('#toolbar-save').click();
 
     // and I apply the changes of the working copy on the baseline
@@ -59,9 +57,7 @@ describe('Working Copy Tests - Applying', () => {
 
     // When I change the title of the working copy and save it
     cy.findByLabelText('Edit').click();
-    cy.get('.documentFirstHeading > .public-DraftStyleDefault-block')
-      .clear()
-      .type('New title');
+    cy.clearSlateTitle().type('New title');
     cy.get('#toolbar-save').click();
 
     // and I navigate to the baseline and click on the more menu

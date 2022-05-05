@@ -4,9 +4,9 @@ describe('Search Block Tests', () => {
     cy.wait(2000);
     // given a logged in editor and a page in edit mode
     cy.autologin();
-    cy.removeContent({ path: '/news' });
-    cy.removeContent({ path: '/events' });
-    cy.removeContent({ path: '/Members' });
+    cy.removeContent({ path: 'news' });
+    cy.removeContent({ path: 'events' });
+    cy.removeContent({ path: 'Members' });
     cy.visit('/');
 
     cy.createContent({
@@ -40,12 +40,10 @@ describe('Search Block Tests', () => {
     cy.visit('/');
     cy.get('#toolbar-add > .icon').click();
     cy.get('#toolbar-add-document').click();
-    cy.get('.documentFirstHeading > .public-DraftStyleDefault-block')
-      .click()
-      .type('My Search Page');
+    cy.getSlateTitle().focus().click().type('My Search Page');
 
     // Add Search listing block
-    cy.get('.block.text [contenteditable]').click();
+    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('Search').click();

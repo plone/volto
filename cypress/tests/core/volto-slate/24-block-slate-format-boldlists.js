@@ -4,18 +4,18 @@ describe('Block Tests: Bold Bulleted lists', () => {
   beforeEach(slateBeforeEach);
   afterEach(slateAfterEach);
 
-  it('can be queried in all browsers', () => {
-    cy.window()
-      .its('navigator.permissions')
-      .invoke('query', { name: 'clipboard-read' })
-      .its('state')
-      .should('be.oneOf', ['prompt', 'granted', 'denied']);
-    cy.window()
-      .its('navigator.permissions')
-      .invoke('query', { name: 'clipboard-write' })
-      .its('state')
-      .should('be.oneOf', ['prompt', 'granted', 'denied']);
-  });
+  // it('can be queried in all browsers', () => {
+  //   cy.window()
+  //     .its('navigator.permissions')
+  //     .invoke('query', { name: 'clipboard-read' })
+  //     .its('state')
+  //     .should('be.oneOf', ['prompt', 'granted', 'denied']);
+  //   cy.window()
+  //     .its('navigator.permissions')
+  //     .invoke('query', { name: 'clipboard-write' })
+  //     .its('state')
+  //     .should('be.oneOf', ['prompt', 'granted', 'denied']);
+  // });
 
   it('As editor I can add bold bulleted lists', function () {
     // Complete chained commands

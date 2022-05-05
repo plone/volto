@@ -20,7 +20,7 @@ describe('Blocks copy/paste', () => {
     cy.intercept('PATCH', '/**/my-page').as('save');
     cy.intercept('GET', '/**/my-page').as('content');
     // GIVEN: A page with multiple blocks
-    cy.get('.block.inner.text .public-DraftEditor-content').click();
+    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('Maps').click();
@@ -30,29 +30,23 @@ describe('Blocks copy/paste', () => {
       )
       .type('{enter}');
 
-    cy.get('.block.inner.text .public-DraftEditor-content')
+    cy.getSlate()
+      .focus()
       .click()
       .type('Noam Avram Chomsky')
-      .get('span[data-text]')
       .contains('Noam Avram Chomsky');
 
-    cy.get('.block.text [contenteditable]').click();
+    cy.getSlate().click();
 
-    cy.get('#toolbar-save').click();
-    cy.wait('@save');
-    cy.wait('@content');
+    cy.toolbarSave();
     cy.get('a[aria-label="Edit"]').click();
 
     // WHEN: I copy paste them
-    cy.get('.documentFirstHeading > .public-DraftStyleDefault-block')
-      .click()
-      .type('{shift}', { release: false });
+    cy.getSlateTitle().focus().click().type('{shift}', { release: false });
     cy.get('.block-editor-maps').click();
     cy.get('#toolbar-copy-blocks').click();
 
-    cy.get('.block.inner.text .public-DraftEditor-content')
-      .type('{shift}')
-      .click();
+    cy.getSlate().focus().click().type('{shift}').click();
     cy.get('#toolbar-paste-blocks').should('be.visible');
     cy.get('#toolbar-paste-blocks').click();
 
@@ -70,7 +64,7 @@ describe('Blocks copy/paste', () => {
     // GIVEN: A page with multiple blocks
     cy.intercept('PATCH', '/**/my-page').as('save');
     cy.intercept('GET', '/**/my-page').as('content');
-    cy.get('.block.inner.text .public-DraftEditor-content').click();
+    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('Maps').click();
@@ -80,29 +74,23 @@ describe('Blocks copy/paste', () => {
       )
       .type('{enter}');
 
-    cy.get('.block.inner.text .public-DraftEditor-content')
+    cy.getSlate()
+      .focus()
       .click()
       .type('Noam Avram Chomsky')
-      .get('span[data-text]')
       .contains('Noam Avram Chomsky');
 
-    cy.get('.block.text [contenteditable]').click();
+    cy.getSlate().click();
 
-    cy.get('#toolbar-save').click();
-    cy.wait('@save');
-    cy.wait('@content');
+    cy.toolbarSave();
     cy.get('a[aria-label="Edit"]').click();
 
     // WHEN: I cut paste them
-    cy.get('.documentFirstHeading > .public-DraftStyleDefault-block')
-      .click()
-      .type('{shift}', { release: false });
+    cy.getSlateTitle().focus().click().type('{shift}', { release: false });
     cy.get('.block-editor-maps').click();
     cy.get('#toolbar-cut-blocks').click();
 
-    cy.get('.block.inner.text .public-DraftEditor-content')
-      .type('{shift}')
-      .click();
+    cy.getSlate().focus().click().type('{shift}').click();
 
     cy.get('#toolbar-paste-blocks').should('be.visible');
     cy.get('#toolbar-paste-blocks').click();
@@ -121,7 +109,7 @@ describe('Blocks copy/paste', () => {
     cy.intercept('PATCH', '/**/my-page').as('save');
     cy.intercept('GET', '/**/my-page').as('content');
     // GIVEN: A page with multiple blocks
-    cy.get('.block.inner.text .public-DraftEditor-content').click();
+    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('Maps').click();
@@ -131,23 +119,19 @@ describe('Blocks copy/paste', () => {
       )
       .type('{enter}');
 
-    cy.get('.block.inner.text .public-DraftEditor-content')
+    cy.getSlate()
+      .focus()
       .click()
       .type('Noam Avram Chomsky')
-      .get('span[data-text]')
       .contains('Noam Avram Chomsky');
 
-    cy.get('.block.text [contenteditable]').click();
+    cy.getSlate().click();
 
-    cy.get('#toolbar-save').click();
-    cy.wait('@save');
-    cy.wait('@content');
+    cy.toolbarSave();
     cy.get('a[aria-label="Edit"]').click();
 
     // WHEN: I delete them
-    cy.get('.documentFirstHeading > .public-DraftStyleDefault-block')
-      .click()
-      .type('{shift}', { release: false });
+    cy.getSlateTitle().focus().type('{shift}', { release: false });
     cy.get('.block-editor-maps').click();
     cy.get('#toolbar-delete-blocks').should('be.visible');
     cy.get('#toolbar-delete-blocks').click();

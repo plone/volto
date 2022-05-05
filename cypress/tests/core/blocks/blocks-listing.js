@@ -9,10 +9,10 @@ describe('Listing Block Tests', () => {
       contentId: 'my-page',
       contentTitle: 'My Page',
     });
-    cy.removeContent({ path: '/front-page' });
-    cy.removeContent({ path: '/news' });
-    cy.removeContent({ path: '/events' });
-    cy.removeContent({ path: '/Members' });
+    cy.removeContent({ path: 'front-page' });
+    cy.removeContent({ path: 'news' });
+    cy.removeContent({ path: 'events' });
+    cy.removeContent({ path: 'Members' });
 
     cy.visit('/my-page');
     cy.waitForResourceToLoad('@navigation');
@@ -21,7 +21,6 @@ describe('Listing Block Tests', () => {
     cy.waitForResourceToLoad('@types');
     cy.waitForResourceToLoad('my-page');
     cy.navigate('/my-page/edit');
-    cy.get(`.block.title [data-contents]`);
   });
 
   it('Add Listing block', () => {
@@ -53,10 +52,10 @@ describe('Listing Block Tests', () => {
     cy.waitForResourceToLoad('my-page');
     cy.navigate('/my-page/edit');
 
-    cy.get(`.block.title [data-contents]`).clear().type('My title');
+    cy.clearSlateTitle().type('My title');
 
     //add listing block
-    cy.get('.block.text [contenteditable]').click();
+    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('Listing').click();
@@ -113,10 +112,10 @@ describe('Listing Block Tests', () => {
     cy.waitForResourceToLoad('my-page');
     cy.navigate('/my-page/edit');
 
-    cy.get(`.block.title [data-contents]`).clear().type('My title');
+    cy.clearSlateTitle().type('My title');
 
     //add listing block
-    cy.get('.block.text [contenteditable]').click();
+    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('Listing').click();
@@ -174,13 +173,12 @@ describe('Listing Block Tests', () => {
     cy.waitForResourceToLoad('');
     cy.navigate('/edit');
 
-    cy.get(`.block.title [data-contents]`)
-      .clear()
-      .type('Listing block - Test Root with Criteria: Type Page');
+    cy.clearSlateTitle().type(
+      'Listing block - Test Root with Criteria: Type Page',
+    );
 
     //add listing block
-    cy.get('.block.text [contenteditable]').first().clear();
-    cy.get('.block.text [contenteditable]').first().click();
+    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('Listing').click();
@@ -259,12 +257,10 @@ describe('Listing Block Tests', () => {
     cy.waitForResourceToLoad('my-page');
     cy.navigate('/my-page/edit');
 
-    cy.get(`.block.title [data-contents]`)
-      .clear()
-      .type('Listing block - Test Criteria: short-name');
+    cy.clearSlateTitle().type('Listing block - Test Criteria: short-name');
 
     //add listing block
-    cy.get('.block.text [contenteditable]').click();
+    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('Listing').click();
@@ -348,12 +344,12 @@ describe('Listing Block Tests', () => {
     cy.waitForResourceToLoad('my-folder');
     cy.navigate('/my-page/my-folder/edit');
 
-    cy.get(`.block.title [data-contents]`)
-      .clear()
-      .type('Listing block - Test Criteria: Location relative');
+    cy.clearSlateTitle().type(
+      'Listing block - Test Criteria: Location relative',
+    );
 
     //add listing block
-    cy.get('.block.text [contenteditable]').click();
+    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('Listing').click();
@@ -436,12 +432,12 @@ describe('Listing Block Tests', () => {
     cy.waitForResourceToLoad('my-folder');
     cy.navigate('/my-page/my-folder/edit');
 
-    cy.get(`.block.title [data-contents]`)
-      .clear()
-      .type('Listing block - Test Criteria: Location absolute');
+    cy.clearSlateTitle().type(
+      'Listing block - Test Criteria: Location absolute',
+    );
 
     //add listing block
-    cy.get('.block.text [contenteditable]').click();
+    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('Listing').click();
@@ -523,7 +519,7 @@ describe('Listing Block Tests', () => {
     });
 
     //add listing block
-    cy.get('.block.text [contenteditable]').click();
+    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('Listing').click();
@@ -602,12 +598,10 @@ describe('Listing Block Tests', () => {
     cy.waitForResourceToLoad('my-page');
     cy.navigate('/my-page/edit');
 
-    cy.get(`.block.title [data-contents]`)
-      .clear()
-      .type('Listing block - respect batching and limits');
+    cy.clearSlateTitle().type('Listing block - respect batching and limits');
 
     //add listing block
-    cy.get('.block.text [contenteditable]').click();
+    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('Listing').click();
@@ -661,7 +655,7 @@ describe('Listing Block Tests', () => {
     cy.get('.listing-item h4').first().contains('My Folder 3');
   });
 
-  it('Listing block - Test Criteria: Location Navigation', () => {
-    /*not implemented because Navigation ui is not yet developed in Listing Block sidebar*/
-  });
+  // it('Listing block - Test Criteria: Location Navigation', () => {
+  //   /*not implemented because Navigation ui is not yet developed in Listing Block sidebar*/
+  // });
 });

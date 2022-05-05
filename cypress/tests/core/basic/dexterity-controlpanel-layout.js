@@ -36,10 +36,10 @@ describe('ControlPanel: Dexterity Content-Types Layout', () => {
     cy.get('label[for="field-required"]').click();
     cy.get('label[for="field-fixed"]').click();
 
-    cy.get('.block.inner.text .public-DraftEditor-content').click();
+    cy.getSlate().click();
     cy.get('input[id="field-placeholder"]').click().type('About this book');
     cy.get('label[for="field-fixed"]').click();
-    cy.get('.block.inner.text .public-DraftEditor-content').type('{enter}');
+    cy.getSlate().focus().click().type('{enter}');
 
     cy.get('.ui.basic.icon.button.block-add-button:visible').click();
     cy.get('.ui.basic.icon.button.image').contains('Image').click();
@@ -56,13 +56,14 @@ describe('ControlPanel: Dexterity Content-Types Layout', () => {
     cy.get('button[class="add"]').click();
     cy.get('#toolbar-add-book').click();
     cy.get('.block.title').contains('Book title');
-    cy.get('.block.text').contains('About this book');
+    cy.get('.block.slate').contains('About this book');
     cy.get('.block.image input[type="text"]')
       .should('have.attr', 'placeholder')
       .and('match', /Book cover image/);
-    cy.get('.documentFirstHeading > .public-DraftStyleDefault-block')
+    cy.getSlateTitle()
+      .focus()
+      .click()
       .type('My first book')
-      .get('.documentFirstHeading span[data-text]')
       .contains('My first book');
     cy.get('#toolbar-save').click();
   });

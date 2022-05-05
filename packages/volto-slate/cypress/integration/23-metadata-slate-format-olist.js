@@ -1,4 +1,4 @@
-import { slateBeforeEach, slateAfterEach } from '../support';
+import { slateBeforeEach, slateAfterEach } from '../../../support';
 
 describe('RichText Tests: numbered lists', () => {
   beforeEach(() => slateBeforeEach('kitkat'));

@@ -9,14 +9,8 @@ describe('Block Tests', () => {
   afterEach(slateAfterEach);
   it('should create a block with some text, move the cursor in the middle of the text, insert a line break, and then have 2 blocks with the two parts of the initial text', () => {
     cy.get('.content-area .slate-editor [contenteditable=true]')
-      .focus() // this is necessary for the focusing to work well
-
-      // these 2 lines are necessary for the focusing to work well, since there
-      // is an issue with initial focusing of the Volto-Slate block with mouse
-      // click
+      .focus()
       .click()
-      .click()
-
       .type('hello, world')
       .type('{leftarrow}')
       .type('{leftarrow}')

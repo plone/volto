@@ -17,10 +17,10 @@ describe('Block Indexing Tests', () => {
 
   it('Index Text Block', () => {
     // GIVEN: A page with a text block with the content 'Noam Avram Chomsky'
-    cy.get('.block.inner.text .public-DraftEditor-content')
+    cy.getSlate()
+      .focus()
       .click()
       .type('Noam Avram Chomsky')
-      .get('span[data-text]')
       .contains('Noam Avram Chomsky');
     cy.get('#toolbar-save').click();
 

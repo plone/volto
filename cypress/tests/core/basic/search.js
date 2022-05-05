@@ -22,16 +22,12 @@ describe('Search', () => {
     });
     cy.visit('/colorless/edit');
     cy.url().should('eq', Cypress.config().baseUrl + '/colorless/edit');
-    cy.get('.block.inner.text .public-DraftEditor-content').type(
-      'This is the text.',
-    );
+    cy.getSlate().focus().click().type('This is the text.');
     cy.get('#toolbar-save').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/colorless');
     cy.visit('/color/edit');
     cy.url().should('eq', Cypress.config().baseUrl + '/color/edit');
-    cy.get('.block.inner.text .public-DraftEditor-content').type(
-      'This is the text.',
-    );
+    cy.getSlate().focus().click().type('This is the text.');
     cy.get('#toolbar-save').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/color');
     cy.visit('/');
@@ -62,16 +58,12 @@ describe('Search', () => {
     });
     cy.visit('/acolorless/edit');
     cy.url().should('eq', Cypress.config().baseUrl + '/acolorless/edit');
-    cy.get('.block.inner.text .public-DraftEditor-content').type(
-      'This is the text.',
-    );
+    cy.getSlate().focus().click().type('This is the text.');
     cy.get('#toolbar-save').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/acolorless');
     cy.visit('/bcolor/edit');
     cy.url().should('eq', Cypress.config().baseUrl + '/bcolor/edit');
-    cy.get('.block.inner.text .public-DraftEditor-content').type(
-      'This is the text.',
-    );
+    cy.getSlate().focus().click().type('This is the text.');
     cy.get('#toolbar-save').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/bcolor');
     cy.visit('/');
@@ -112,16 +104,12 @@ describe('Search', () => {
     });
     cy.visit('/colorless/edit');
     cy.url().should('eq', Cypress.config().baseUrl + '/colorless/edit');
-    cy.get('.block.inner.text .public-DraftEditor-content').type(
-      'This is the text.',
-    );
+    cy.getSlate().focus().click().type('This is the text.');
     cy.get('#toolbar-save').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/colorless');
     cy.visit('/color/edit');
     cy.url().should('eq', Cypress.config().baseUrl + '/color/edit');
-    cy.get('.block.inner.text .public-DraftEditor-content').type(
-      'This is the text.',
-    );
+    cy.getSlate().focus().click().type('This is the text.');
     cy.get('#toolbar-save').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/color');
     cy.visit('/');
