@@ -1,0 +1,155 @@
+// Image  Block (FZJ https://github.com/kitconcept/fzj-internet/blob/7043ff8317dde8e5bfe5b0b1e76c5fdd8f331e7e/theme/extras/custom.less#L1814)
+.block.image {
+  margin: 0;
+  margin-bottom: 1rem;
+
+  figure {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+
+    img {
+      width: 100% !important;
+      object-fit: contain;
+    }
+
+    &.right {
+      margin-bottom: 16px;
+      margin-left: 2rem;
+      float: right;
+
+      img {
+        margin-right: 0 !important;
+        margin-bottom: 0px;
+        margin-left: 0 !important;
+        float: none;
+        object-fit: contain;
+        object-position: right;
+      }
+    }
+
+    &.left {
+      margin-right: 2rem;
+      margin-bottom: 16px;
+      float: left;
+
+      img {
+        margin-right: 0 !important;
+        margin-bottom: 0px;
+        float: none;
+        object-fit: contain;
+        object-position: left;
+      }
+    }
+
+    &.left,
+    &.right {
+      &.large {
+        width: 50%;
+
+        @media only screen and (max-width: 768px) {
+          width: 100%;
+        }
+      }
+
+      &.medium {
+        width: 50%;
+        @media only screen and (max-width: 768px) {
+          width: 100%;
+        }
+      }
+
+      &.small {
+        width: 25%;
+        @media only screen and (max-width: 768px) {
+          width: 100%;
+        }
+
+        figcaption {
+          padding: 15px 10px;
+
+          &.rights {
+            padding-top: 5px;
+          }
+        }
+
+        figcaption.copyright {
+          padding-left: 10px;
+        }
+      }
+    }
+
+    &.center {
+      width: 100% !important;
+      margin-right: auto;
+      margin-left: auto;
+      object-fit: cover;
+
+      img {
+        margin-right: initial;
+        margin-left: initial;
+      }
+
+      &.large,
+      &.medium,
+      &.small {
+        width: 100% !important;
+      }
+
+      &.large {
+        figcaption {
+          text-align: start;
+        }
+      }
+
+      &.medium {
+        figcaption {
+          width: 100%;
+          margin-right: auto;
+          margin-left: auto;
+          text-align: start;
+        }
+      }
+    }
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  p {
+    padding-left: 20px;
+    margin-bottom: 0px;
+    color: #666;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: left;
+  }
+
+  figcaption {
+    padding-left: 20px;
+    background: #eee;
+    text-align: left;
+
+    &.description {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      color: #666;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 19px;
+    }
+
+    &.rights {
+      padding-bottom: 20px;
+      color: #666;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 19px;
+    }
+  }
+
+  figcaption.copyright.nodescription {
+    margin-top: 8px;
+  }
+}

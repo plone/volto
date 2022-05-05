@@ -1,0 +1,164 @@
+@toolbarWidth: 80px;
+@sidebarWidth: 375px;
+@collapsedWidth: 20px;
+
+@layoutContainerWidth: 1440px;
+
+@import '~@plone/volto/../theme/themes/default/elements/container.variables';
+
+:root {
+  --layout-container-width: 1440px;
+  --default-container-width: 941px;
+  --narrow-container-width: 620px;
+}
+
+.narrow-text-container() {
+  max-width: var(--narrow-container-width);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.containerBehavior(@offset) {
+}
+
+.addContentWidthStyling(@offset) {
+  .full-width {
+    right: calc(50% + @offset / 2);
+    left: calc(50% + @offset / 2);
+    width: calc(100vw - @offset) !important;
+
+    @media only screen and (max-width: @largestMobileScreen) {
+      right: calc(50%);
+      left: calc(50%);
+      width: calc(100vw) !important;
+    }
+
+    &.figure {
+      position: relative;
+      right: 50%;
+      left: 50%;
+      width: 100vw !important;
+      max-width: none !important;
+      margin-right: -50vw !important;
+      margin-left: -50vw !important;
+    }
+  }
+
+  @media only screen and (min-width: @layoutContainerWidth + @offset) {
+    #page-document.ui.container,
+    #page-document .ui.container,
+    #page-edit.ui.container,
+    #page-edit .ui.container,
+    #page-add.ui.container,
+    #page-add .ui.container,
+    // Breadcrumbs full sized, remove the comment instead in case you want them short
+    .ui.secondary.segment.breadcrumbs .ui.container {
+      width: var(--default-container-width) !important;
+    }
+  }
+
+  /* Support for disable full-width from 1440px */
+  @media only screen and (min-width: @layoutContainerWidth + @offset) {
+    .full-width:not(.figure) {
+      position: static;
+      width: initial !important;
+    }
+
+    // Support for full-width blocks containers
+    .block.snap-to-layout-container,
+    // We used to add the exceptions here, but we need a class like the one above
+    .block.teaserHero,
+    .block.maps.align.full,
+    .block.video.align.full,
+    .block.highlight,
+    .block.highlightSlider,
+    .block.highlightTeaser {
+      display: flex;
+      width: 100% !important;
+      justify-content: center;
+
+      .full-width {
+        width: var(--layout-container-width) !important;
+      }
+    }
+  }
+}
+
+body:not(.has-toolbar):not(.has-sidebar):not(.has-toolbar-collapsed):not(.has-sidebar-collapsed) {
+  .containerBehavior(0px);
+  .addContentWidthStyling(0px);
+}
+
+body.has-toolbar:not(.has-sidebar):not(.has-sidebar-collapsed) {
+  .containerBehavior(@toolbarWidth);
+  .addContentWidthStyling(@toolbarWidth);
+}
+
+body.has-toolbar.has-sidebar {
+  .containerBehavior(@toolbarWidth + @sidebarWidth);
+  .addContentWidthStyling(@toolbarWidth + @sidebarWidth);
+}
+
+body.has-toolbar.has-sidebar-collapsed {
+  .containerBehavior(@toolbarWidth + @collapsedWidth);
+  .addContentWidthStyling(@toolbarWidth + @collapsedWidth);
+}
+
+body.has-toolbar-collapsed:not(.has-sidebar):not(.has-sidebar-collapsed) {
+  .containerBehavior(@collapsedWidth);
+  .addContentWidthStyling(@collapsedWidth);
+}
+
+body.has-toolbar-collapsed.has-sidebar {
+  .containerBehavior(@collapsedWidth + @sidebarWidth);
+  .addContentWidthStyling(@collapsedWidth + @sidebarWidth);
+}
+
+body.has-toolbar-collapsed.has-sidebar-collapsed {
+  .containerBehavior(@collapsedWidth + @collapsedWidth);
+  .addContentWidthStyling(@collapsedWidth + @collapsedWidth);
+}
+
+#page-document {
+  // & > h1.documentFirstHeading,
+  & > h2,
+  & > h3,
+  & > h4,
+  & > h5,
+  & > h6,
+  & > ul,
+  & > ol,
+  & > p,
+  & > span,
+  .block.image.align.center .figure.center,
+  .event-details,
+  .download-event {
+    .narrow-text-container();
+  }
+}
+
+#page-add,
+#page-edit {
+  // .block-editor-title,
+  .block-editor-text,
+  .block-editor-slate,
+  .block-editor-image.left.medium,
+  .block-editor-image.left.small,
+  .block-editor-image.right.medium,
+  .block-editor-image.right.small,
+  .block-editor-image.center {
+    .narrow-text-container();
+  }
+}
+
+// Hack to fix the use of span in the link content type
+.contenttype-link #page-document > span {
+  display: block;
+}
+
+// Exceptions, for the inner text narrow text, inside blocks
+[class='block listing'] .listing-item,
+.block.listing.default .listing-item,
+.block.table-of-contents {
+  .narrow-text-container();
+}
