@@ -16,11 +16,11 @@ Cypress.Commands.add('autologin', (usr, pass) => {
   if (Cypress.env('API') === 'guillotina') {
     api_url = GUILLOTINA_API_URL;
     user = usr || 'admin';
-    password = pass || 'admin';
+    password = pass || 'secret';
   } else {
     api_url = PLONE_API_URL;
     user = usr || 'admin';
-    password = pass || 'admin';
+    password = pass || 'secret';
   }
 
   return cy
@@ -55,7 +55,7 @@ Cypress.Commands.add(
       api_url = PLONE_API_URL;
       auth = {
         user: 'admin',
-        pass: 'admin',
+        pass: 'secret',
       };
     }
     if (contentType === 'File') {
@@ -181,7 +181,7 @@ Cypress.Commands.add('removeContent', ({ path = '' }) => {
     api_url = PLONE_API_URL;
     auth = {
       user: 'admin',
-      pass: 'admin',
+      pass: 'secret',
     };
   }
   cy.request({
@@ -209,7 +209,7 @@ Cypress.Commands.add('addContentType', (name) => {
   api_url = Cypress.env('API_PATH') || 'http://localhost:8080/Plone';
   auth = {
     user: 'admin',
-    pass: 'admin',
+    pass: 'secret',
   };
   return cy
     .request({
@@ -232,7 +232,7 @@ Cypress.Commands.add('removeContentType', (name) => {
   api_url = Cypress.env('API_PATH') || 'http://localhost:8080/Plone';
   auth = {
     user: 'admin',
-    pass: 'admin',
+    pass: 'secret',
   };
   return cy
     .request({
@@ -253,7 +253,7 @@ Cypress.Commands.add('addSlateJSONField', (type, name) => {
   api_url = Cypress.env('API_PATH') || 'http://localhost:8080/Plone';
   auth = {
     user: 'admin',
-    pass: 'admin',
+    pass: 'secret',
   };
   return cy
     .request({
@@ -280,7 +280,7 @@ Cypress.Commands.add('removeSlateJSONField', (type, name) => {
   api_url = Cypress.env('API_PATH') || 'http://localhost:8080/Plone';
   auth = {
     user: 'admin',
-    pass: 'admin',
+    pass: 'secret',
   };
   return cy
     .request({
@@ -319,7 +319,7 @@ Cypress.Commands.add(
       api_url = PLONE_API_URL;
       auth = {
         user: 'admin',
-        pass: 'admin',
+        pass: 'secret',
       };
       path = '@users';
     }
@@ -359,7 +359,7 @@ Cypress.Commands.add('removeUser', (username = 'editor') => {
     api_url = PLONE_API_URL;
     auth = {
       user: 'admin',
-      pass: 'admin',
+      pass: 'secret',
     };
     path = '@users';
   }
@@ -394,7 +394,7 @@ Cypress.Commands.add(
     api_url = PLONE_API_URL;
     auth = {
       user: 'admin',
-      pass: 'admin',
+      pass: 'secret',
     };
     return cy.request({
       method: 'POST',
@@ -460,7 +460,7 @@ Cypress.Commands.add('setRegistry', (record, value) => {
   api_url = PLONE_API_URL;
   auth = {
     user: 'admin',
-    pass: 'admin',
+    pass: 'secret',
   };
 
   return cy.request({
