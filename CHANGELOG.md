@@ -11,6 +11,7 @@
 
 ### Bugfix
 
+- Fix responsive error in the login page, when the width of the screen decreases @dobri1408
 - Fix sidebar full size bottom opacity on edit page when sidebar is collapsed @ichim-david
 - Fix toolbar bottom opacity on edit page when toolbar is collapsed @ichim-david
 - Fixed secure cookie option. @giuliaghisini
