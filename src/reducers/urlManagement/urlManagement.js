@@ -1,27 +1,4 @@
-import { GET_ALIASES } from '@plone/volto/constants/ActionTypes';
-
-/**
- * Alias reducer.
- * @module reducers/urlManagement/urlManagement
- */
-
-// const initialState = {
-//   update: {
-//     loaded: false,
-//     loading: false,
-//     error: null,
-//   },
-//   get: {
-//     loaded: false,
-//     loading: false,
-//     error: null,
-//   },
-//   data: {
-//     available_roles: [],
-//     entries: [],
-//     inherit: null,
-//   },
-// };
+import { GET_ALIASES, ADD_ALIAS } from '@plone/volto/constants/ActionTypes';
 
 /**
  * Aliases reducer.
@@ -44,6 +21,11 @@ export default function aliases(state = {}, action = {}) {
     case `${GET_ALIASES}_FAIL`:
       return {
         ...state,
+      };
+    case `${ADD_ALIAS}_SUCCESS`:
+      return {
+        ...state,
+        data: [...state.data, action.added],
       };
     default:
       return state;

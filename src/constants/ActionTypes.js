@@ -94,3 +94,5 @@ export const REMOVE_WORKING_COPY = 'REMOVE_WORKING_COPY';
 export const LOCK_CONTENT = 'LOCK_CONTENT';
 export const UNLOCK_CONTENT = 'UNLOCK_CONTENT';
 export const GET_ALIASES = 'GET_ALIASES';
+export const ADD_ALIAS = 'ADD_ALIAS';
+export const REMOVE_ALIASES = 'REMOVE_ALIASES';

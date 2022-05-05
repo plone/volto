@@ -8,7 +8,6 @@ import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
-import { find, isEqual, map } from 'lodash';
 import { Portal } from 'react-portal';
 import {
   Button,
@@ -22,11 +21,9 @@ import {
 import jwtDecode from 'jwt-decode';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { getAliases, getContent } from '@plone/volto/actions';
+import { addAlias, getAliases, getContent } from '@plone/volto/actions';
 
-import { getBaseUrl } from '@plone/volto/helpers';
 import { Icon, Toolbar, Toast } from '@plone/volto/components';
-import { toast } from 'react-toastify';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import { getParentUrl } from '@plone/volto/helpers';
@@ -98,22 +95,13 @@ class UrlManagement extends Component {
    * @static
    */
   static propTypes = {
-    getAliases: PropTypes.func.isRequired,
-    updateRequest: PropTypes.shape({
-      loading: PropTypes.bool,
-      loaded: PropTypes.bool,
-    }).isRequired,
+    addAlias: PropTypes.func,
+    getAliases: PropTypes.func,
+    // updateRequest: PropTypes.shape({
+    //   loading: PropTypes.bool,
+    //   loaded: PropTypes.bool,
+    // }).isRequired,
     pathname: PropTypes.string.isRequired,
-    entries: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string,
-        login: PropTypes.string,
-        roles: PropTypes.object,
-        title: PropTypes.string,
-        type: PropTypes.string,
-      }),
-    ).isRequired,
-    available_roles: PropTypes.arrayOf(PropTypes.object).isRequired,
     inherit: PropTypes.bool,
     title: PropTypes.string.isRequired,
     login: PropTypes.string,
@@ -137,14 +125,12 @@ class UrlManagement extends Component {
    */
   constructor(props) {
     super(props);
-    this.onCancel = this.onCancel.bind(this);
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+    this.handleAltChange = this.handleAltChange.bind(this);
+    this.handleSubmitAlias = this.handleSubmitAlias.bind(this);
     this.state = {
-      search: '',
-      inherit: props.inherit,
-      entries: props.entries,
       isClient: false,
+      newAlias: '',
+      isAliasCorrect: false,
     };
   }
 
@@ -159,44 +145,37 @@ class UrlManagement extends Component {
     this.setState({ isClient: true });
   }
 
-  /**
-   * Submit handler
-   * @method onSubmit
-   * @param {object} event Event object.
-   * @returns {undefined}
-   */
-  onSubmit(event) {}
-
-  /**
-   * On change handler
-   * @method onChange
-   * @param {object} event Event object
-   * @param {string} value Entry value
-   * @returns {undefined}
-   */
-  onChange(event, { value }) {
-    const [principal, role] = value.split(':');
-    this.setState({
-      entries: map(this.state.entries, (entry) => ({
-        ...entry,
-        roles:
-          entry.id === principal
-            ? {
-                ...entry.roles,
-                [role]: !entry.roles[role],
-              }
-            : entry.roles,
-      })),
-    });
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.newAlias !== this.state.newAlias) {
+      if (this.state.newAlias.charAt(0) === '/') {
+        this.setState({ isAliasCorrect: true });
+      } else {
+        this.setState({ isAliasCorrect: false });
+      }
+    }
   }
 
   /**
-   * Cancel handler
-   * @method onCancel
+   * Url change handler
+   * @method handleAltChange
    * @returns {undefined}
    */
-  onCancel() {
-    this.props.history.push(getBaseUrl(this.props.pathname));
+  handleAltChange(val) {
+    this.setState({ newAlias: val });
+  }
+
+  /**
+   * New alias submit handler
+   * @method handleSubmitAlias
+   * @returns {undefined}
+   */
+  handleSubmitAlias() {
+    console.log('newalias will be', this.state.newAlias);
+    if (this.state.isAliasCorrect) {
+      this.props.addAlias(getParentUrl(this.props.pathname), {
+        aliases: this.state.newAlias,
+      });
+    }
   }
 
   /**
@@ -222,20 +201,6 @@ class UrlManagement extends Component {
               defaultMessage="Using this form, you can manage alternative urls for an item. This is an easy way to make an item available under two different URLs."
             />
           </Segment>
-          <Segment>
-            {/* <Form onSubmit={this.onSearch}>
-              <Form.Field>
-                <Input
-                  name="SearchableText"
-                  action={{ icon: 'search' }}
-                  placeholder={this.props.intl.formatMessage(
-                    messages.searchForUserOrGroup,
-                  )}
-                  onChange={this.onChangeSearch}
-                />
-              </Form.Field>
-            </Form> */}
-          </Segment>
           <Form>
             <Segment>
               <Header size="medium">Add a new alternative url</Header>
@@ -249,10 +214,24 @@ class UrlManagement extends Component {
                 <Input
                   name="alternative-url"
                   placeholder="/example"
-                  //onChange={(e) => console.log(e.target.value)}
+                  error={!this.state.isAliasCorrect}
+                  onChange={(e) => this.handleAltChange(e.target.value)}
                 />
+                {!this.state.isAliasCorrect && this.state.newAlias !== '' && (
+                  <p style={{ color: 'red' }}>
+                    Alternative url path must start with a slash.
+                  </p>
+                )}
               </Form.Field>
-              <Button primary>Add</Button>
+              <Button
+                primary
+                onClick={this.handleSubmitAlias}
+                disabled={
+                  !this.state.isAliasCorrect || this.state.newAlias === ''
+                }
+              >
+                Add
+              </Button>
             </Segment>
           </Form>
           <Form>
@@ -328,6 +307,6 @@ export default compose(
         ? jwtDecode(state.userSession.token).sub
         : '',
     }),
-    { getAliases, getContent },
+    { addAlias, getAliases, getContent },
   ),
 )(UrlManagement);
