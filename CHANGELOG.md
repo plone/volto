@@ -26,6 +26,7 @@
 
 - Move Cypress documentation from `README.md` to the docs. Improve the docs with the new `Makefile` commands.
 - Improve English grammar and syntax in backend docs. @stevepiercy
+- Fix JSX syntax highlighting. Remove duplicate heading. @stevepiercy
 
 ## 15.8.0 (2022-04-30)
 
