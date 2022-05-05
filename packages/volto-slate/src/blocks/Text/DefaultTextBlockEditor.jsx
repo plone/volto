@@ -9,7 +9,7 @@ import { Dimmer, Loader, Message, Segment } from 'semantic-ui-react';
 import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 import {
-  InlineForm,
+  BlockDataForm,
   SidebarPortal,
   BlockChooserButton,
 } from '@plone/volto/components';
@@ -23,8 +23,8 @@ import {
 } from 'volto-slate/utils';
 import { Transforms } from 'slate';
 
-import ShortcutListing from './ShortcutListing';
-import MarkdownIntroduction from './MarkdownIntroduction';
+// import ShortcutListing from './ShortcutListing';
+// import MarkdownIntroduction from './MarkdownIntroduction';
 import { handleKey } from './keyboard';
 import TextBlockSchema from './schema';
 
@@ -262,9 +262,10 @@ export const DefaultTextBlockEditor = (props) => {
             </Segment>
           ) : (
             <>
-              <ShortcutListing />
-              <MarkdownIntroduction />
-              <InlineForm
+              {/* <ShortcutListing /> */}
+              {/* <MarkdownIntroduction /> */}
+              <BlockDataForm
+                block={block}
                 schema={schema}
                 title={schema.title}
                 onChangeField={(id, value) => {

@@ -19,6 +19,10 @@ msgstr ""
 msgid "Add link"
 msgstr "Link hinzufügen"
 
+#: blocks/Table/TableBlockEdit
+msgid "Align text"
+msgstr ""
+
 #: editor/plugins/StyleMenu/StyleMenu
 msgid "All Styles Applied"
 msgstr "Alle Formatierungen angewendet"
@@ -31,31 +35,21 @@ msgstr ""
 msgid "An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator."
 msgstr ""
 
-#: widgets/BlocksBrowser/BlocksBrowserNav
-msgid "Back"
-msgstr "Zurück"
-
-#: widgets/BlocksBrowser/BlocksBrowserNav
-msgid "Browse"
-msgstr "Durchsuchen"
+#: blocks/Table/TableBlockEdit
+msgid "Bottom"
+msgstr ""
 
 #: blocks/Table/TableBlockEdit
-msgid "Cell"
-msgstr "Zelle"
-
-#: widgets/BlocksBrowser/BlocksBrowserBody
-msgid "Choose Target"
-msgstr "Ziel auswählen"
-
-#: widgets/BlocksBrowser/BlocksBrowserWidget
-msgid "Delete"
-msgstr "Löschen"
+msgid "Center"
+msgstr ""
 
 #: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
 msgid "Delete col"
 msgstr "Spalte löschen"
 
 #: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
 msgid "Delete row"
 msgstr "Zeile löschen"
 
@@ -66,10 +60,6 @@ msgstr ""
 #: blocks/Table/TableBlockEdit
 msgid "Divide each row into separate cells"
 msgstr "Jede Zeile in einzelne Zellen teilen"
-
-#: widgets/BlocksBrowser/BlocksBrowserWidget
-msgid "Edit"
-msgstr "Bearbeiten"
 
 #: components/ElementEditor/messages
 msgid "Edit element"
@@ -89,36 +79,48 @@ msgid "Font Style"
 msgstr "Schriftart"
 
 #: blocks/Table/TableBlockEdit
+msgid "Hide headers"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
 msgid "Insert col after"
 msgstr "Spalte dahinter einfügen"
 
 #: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
 msgid "Insert col before"
 msgstr "Spalte davor einfügen"
 
 #: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
 msgid "Insert row after"
 msgstr "Zeile dahinter einfügen"
 
 #: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
 msgid "Insert row before"
 msgstr "Zeile davor einfügen"
+
+#: blocks/Table/TableBlockEdit
+msgid "Left"
+msgstr ""
 
 #: blocks/Table/TableBlockEdit
 msgid "Make the table compact"
 msgstr "Tabelle komprimieren"
 
+#: blocks/Table/TableBlockEdit
+msgid "Make the table sortable"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+msgid "Middle"
+msgstr ""
+
 #: editor/plugins/StyleMenu/StyleMenu
 msgid "No Style"
 msgstr "Keine Formatierung"
-
-#: widgets/BlocksBrowser/BlocksBrowserWidget
-msgid "No items selected"
-msgstr "Keine Elemente ausgewählt"
-
-#: widgets/BlocksBrowser/BlocksBrowserWidget
-msgid "Open object browser"
-msgstr "Objektsucher öffnen"
 
 #: editor/plugins/StyleMenu/StyleMenu
 msgid "Paragraph Style"
@@ -136,9 +138,9 @@ msgstr "Element entfernen"
 msgid "Remove link"
 msgstr "Link entferenen"
 
-#: widgets/BlocksBrowser/BlocksBrowserNav
-msgid "Select"
-msgstr "Auswählen"
+#: blocks/Table/TableBlockEdit
+msgid "Right"
+msgstr ""
 
 #: blocks/Table/TableBlockEdit
 msgid "Stripe alternate rows with color"
@@ -152,6 +154,10 @@ msgstr "Tabelle"
 msgid "Table color inverted"
 msgstr "Tabellenfarbe invertiert"
 
+#: blocks/Table/TableBlockEdit
+msgid "Top"
+msgstr ""
+
 #: blocks/Text/DefaultTextBlockEditor
 #: blocks/Text/DetachedTextBlockEditor
 msgid "Type text…"
@@ -164,3 +170,11 @@ msgstr ""
 #: components/themes/View/DefaultSlateView
 msgid "Unknown Block"
 msgstr "Unbekannter Block"
+
+#: blocks/Table/TableBlockEdit
+msgid "Vertical align"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+msgid "Visible only in view mode"
+msgstr ""

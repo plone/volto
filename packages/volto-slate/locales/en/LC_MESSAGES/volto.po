@@ -19,6 +19,10 @@ msgstr ""
 msgid "Add link"
 msgstr ""
 
+#: blocks/Table/TableBlockEdit
+msgid "Align text"
+msgstr ""
+
 #: editor/plugins/StyleMenu/StyleMenu
 msgid "All Styles Applied"
 msgstr ""
@@ -31,31 +35,21 @@ msgstr ""
 msgid "An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator."
 msgstr ""
 
-#: widgets/BlocksBrowser/BlocksBrowserNav
-msgid "Back"
-msgstr ""
-
-#: widgets/BlocksBrowser/BlocksBrowserNav
-msgid "Browse"
+#: blocks/Table/TableBlockEdit
+msgid "Bottom"
 msgstr ""
 
 #: blocks/Table/TableBlockEdit
-msgid "Cell"
-msgstr ""
-
-#: widgets/BlocksBrowser/BlocksBrowserBody
-msgid "Choose Target"
-msgstr ""
-
-#: widgets/BlocksBrowser/BlocksBrowserWidget
-msgid "Delete"
+msgid "Center"
 msgstr ""
 
 #: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
 msgid "Delete col"
 msgstr ""
 
 #: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
 msgid "Delete row"
 msgstr ""
 
@@ -65,10 +59,6 @@ msgstr ""
 
 #: blocks/Table/TableBlockEdit
 msgid "Divide each row into separate cells"
-msgstr ""
-
-#: widgets/BlocksBrowser/BlocksBrowserWidget
-msgid "Edit"
 msgstr ""
 
 #: components/ElementEditor/messages
@@ -89,35 +79,47 @@ msgid "Font Style"
 msgstr ""
 
 #: blocks/Table/TableBlockEdit
+msgid "Hide headers"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
 msgid "Insert col after"
 msgstr ""
 
 #: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
 msgid "Insert col before"
 msgstr ""
 
 #: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
 msgid "Insert row after"
 msgstr ""
 
 #: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
 msgid "Insert row before"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+msgid "Left"
 msgstr ""
 
 #: blocks/Table/TableBlockEdit
 msgid "Make the table compact"
 msgstr ""
 
+#: blocks/Table/TableBlockEdit
+msgid "Make the table sortable"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+msgid "Middle"
+msgstr ""
+
 #: editor/plugins/StyleMenu/StyleMenu
 msgid "No Style"
-msgstr ""
-
-#: widgets/BlocksBrowser/BlocksBrowserWidget
-msgid "No items selected"
-msgstr ""
-
-#: widgets/BlocksBrowser/BlocksBrowserWidget
-msgid "Open object browser"
 msgstr ""
 
 #: editor/plugins/StyleMenu/StyleMenu
@@ -136,8 +138,8 @@ msgstr ""
 msgid "Remove link"
 msgstr ""
 
-#: widgets/BlocksBrowser/BlocksBrowserNav
-msgid "Select"
+#: blocks/Table/TableBlockEdit
+msgid "Right"
 msgstr ""
 
 #: blocks/Table/TableBlockEdit
@@ -152,6 +154,10 @@ msgstr ""
 msgid "Table color inverted"
 msgstr ""
 
+#: blocks/Table/TableBlockEdit
+msgid "Top"
+msgstr ""
+
 #: blocks/Text/DefaultTextBlockEditor
 #: blocks/Text/DetachedTextBlockEditor
 msgid "Type text…"
@@ -163,4 +169,12 @@ msgstr ""
 
 #: components/themes/View/DefaultSlateView
 msgid "Unknown Block"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+msgid "Vertical align"
+msgstr ""
+
+#: blocks/Table/TableBlockEdit
+msgid "Visible only in view mode"
 msgstr ""

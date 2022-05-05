@@ -26,7 +26,7 @@ import { contentIcons } from './ContentIcons';
 import { controlPanelsIcons } from './ControlPanels';
 
 import { richtextEditorSettings, richtextViewSettings } from './RichTextEditor';
-import applySlateConfiguration, { asDefault } from 'volto-slate';
+import applySlateConfiguration, { minimalDefault } from 'volto-slate';
 
 import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
 
@@ -183,7 +183,7 @@ let config = {
   components,
 };
 
-config = asDefault(applySlateConfiguration(config));
+config = minimalDefault(applySlateConfiguration(config));
 config = applyAddonConfiguration(config);
 
 ConfigRegistry.settings = config.settings;
