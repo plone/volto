@@ -28,7 +28,7 @@ import {
   getContent,
 } from '@plone/volto/actions';
 
-import { Icon, Toolbar, Toast } from '@plone/volto/components';
+import { Icon, Toolbar } from '@plone/volto/components';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import { getParentUrl } from '@plone/volto/helpers';

@@ -42,6 +42,7 @@ import App from '@plone/volto/components/theme/App/App';
 import View from '@plone/volto/components/theme/View/View';
 
 import config from '@plone/volto/registry';
+import RedirectionPanel from './components/manage/Controlpanels/RedirectionPanel';
 
 /**
  * Default routes array.
@@ -137,6 +138,10 @@ export const defaultRoutes = [
   {
     path: '/controlpanel/database',
     component: DatabaseInformation,
+  },
+  {
+    path: '/controlpanel/redirection-controlpanel',
+    component: RedirectionPanel,
   },
   {
     path: '/controlpanel/moderate-comments',

@@ -29,7 +29,10 @@ export default function aliases(state = {}, action = {}) {
     case `${ADD_ALIAS}_SUCCESS`:
       return {
         ...state,
-        data: [...state.data, action.added],
+        data:
+          action.result.type === 'Error'
+            ? state.data
+            : [...state.data, action.added],
       };
     case `${REMOVE_ALIASES}_SUCCESS`:
       const aliases = state.data;

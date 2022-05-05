@@ -136,6 +136,11 @@ class Controlpanels extends Component {
           title: 'Database',
         },
         {
+          '@id': '/redirection-controlpanel',
+          group: 'General',
+          title: 'URL Management',
+        },
+        {
           '@id': '/moderate-comments',
           group: 'Content',
           title: this.props.intl.formatMessage(messages.moderatecomments),
