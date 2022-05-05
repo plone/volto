@@ -101,6 +101,21 @@ class Edit extends Component {
     }
   }
 
+  componentDidMount() {
+    ///bbb
+    if (this.props.data.url) {
+      this.props.onChangeBlock(this.props.block, {
+        ...this.props.data,
+        source: [
+          {
+            '@id': flattenToAppURL(this.props.data.url),
+            title: flattenToAppURL(this.props.data.url),
+          },
+        ],
+      });
+    }
+  }
+
   /**
    * @param {*} nextProps
    * @returns {boolean}

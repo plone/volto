@@ -66,10 +66,12 @@ export function ImageSchema({ formData, intl }) {
         title: 'Default',
         fields: [
           'source',
-          ...(!isEmpty(formData.source) ? ['alt', 'align', 'size'] : []),
+          ...(!isEmpty(formData.source) || formData.url
+            ? ['alt', 'align', 'size']
+            : []),
         ],
       },
-      ...(!isEmpty(formData.source)
+      ...(!isEmpty(formData.source) || formData.url
         ? [
             {
               id: 'link_settings',
