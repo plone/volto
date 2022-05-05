@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RelationsWidget renders a full vocabulary array view widget component 1`] = `
+<span
+  className="metadata relations widget"
+>
+  <a
+    className="metadata relation widget"
+    href="#"
+    title=""
+  >
+    Foo
+  </a>
+  <a
+    className="metadata relation widget"
+    href="#"
+    title=""
+  >
+    Bar
+  </a>
+</span>
+`;
+
+exports[`RelationsWidget renders a full vocabulary relations view widget component with children 1`] = `
+<span
+  className="metadata relations widget"
+>
+  <a
+    className="metadata relation widget Foo private"
+    href="/foo-page"
+    title="A Foo"
+  >
+    <strong>
+      Foo
+    </strong>
+  </a>
+  <a
+    className="metadata relation widget Bar published"
+    href="/bar-page"
+    title="A Bar"
+  >
+    <strong>
+      Bar
+    </strong>
+  </a>
+</span>
+`;
+
+exports[`RelationsWidget renders a simple relations view widget component 1`] = `
+<span
+  className="metadata relations widget"
+>
+  <a
+    className="metadata relation widget"
+    href="#"
+    title=""
+  >
+    foo
+  </a>
+  <a
+    className="metadata relation widget"
+    href="#"
+    title=""
+  >
+    bar
+  </a>
+</span>
+`;
+
+exports[`RelationsWidget renders a vocabulary relations view widget component 1`] = `
+<span
+  className="metadata relations widget"
+>
+  <a
+    className="metadata relation widget"
+    href="#"
+    title=""
+  >
+    Foo
+  </a>
+  <a
+    className="metadata relation widget"
+    href="#"
+    title=""
+  >
+    Bar
+  </a>
+</span>
+`;
+
+exports[`RelationsWidget renders an empty relations view widget component 1`] = `""`;

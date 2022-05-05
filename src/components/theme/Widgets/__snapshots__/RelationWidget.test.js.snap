@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RelationWidget renders a full relation view widget component 1`] = `
+<a
+  className="metadata relation widget"
+  href="/a-page"
+  title=""
+>
+  Foo Bar
+</a>
+`;
+
+exports[`RelationWidget renders a full relation view widget component with children 1`] = `
+<a
+  className="metadata relation widget Document private"
+  href="/a-page"
+  title="Bar Foo"
+>
+  <strong>
+    Foo Bar
+  </strong>
+</a>
+`;
+
+exports[`RelationWidget renders a relation view widget component 1`] = `
+<a
+  className="metadata relation widget"
+  href="#"
+  title=""
+>
+  Foo Bar
+</a>
+`;
+
+exports[`RelationWidget renders an empty relation view widget component 1`] = `""`;
