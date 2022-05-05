@@ -15,6 +15,7 @@
 - Fix toolbar bottom opacity on edit page when toolbar is collapsed @ichim-david
 - Fixed secure cookie option. @giuliaghisini
 - Changed addon order in addon controlpanel to mimic Classic UI @erral
+- Changed to get intl.locale always from state @ionlizarazu
 
 ### Internal
 
