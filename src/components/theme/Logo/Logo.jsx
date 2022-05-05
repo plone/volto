@@ -3,12 +3,11 @@
  * @module components/theme/Logo/Logo
  */
 
-import { Link } from 'react-router-dom';
 import { defineMessages, useIntl } from 'react-intl';
 import { Image } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
 import config from '@plone/volto/registry';
-
+import { UniversalLink } from '@plone/volto/components';
 import LogoImage from '@plone/volto/components/theme/Logo/Logo.svg';
 
 const messages = defineMessages({
@@ -34,8 +33,8 @@ const Logo = () => {
   const intl = useIntl();
 
   return (
-    <Link
-      to={isMultilingual ? `${prefixPath}/${lang}` : `${prefixPath}/`}
+    <UniversalLink
+      href={isMultilingual ? `${prefixPath}/${lang}` : `${prefixPath}/`}
       title={intl.formatMessage(messages.site)}
     >
       <Image
@@ -43,7 +42,7 @@ const Logo = () => {
         alt={intl.formatMessage(messages.plonesite)}
         title={intl.formatMessage(messages.plonesite)}
       />
-    </Link>
+    </UniversalLink>
   );
 };
 

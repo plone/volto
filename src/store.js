@@ -13,15 +13,22 @@ import {
   blacklistRoutes,
   prefixPathRoot,
 } from '@plone/volto/middleware';
+import {
+  protectLoadStart,
+  protectLoadEnd,
+  loadProtector,
+} from './storeProtectLoadUtils';
 
 const configureStore = (initialState, history, apiHelper) => {
   let stack = [
     blacklistRoutes,
     prefixPathRoot(history),
+    protectLoadStart,
     routerMiddleware(history),
     crashReporter,
     thunk,
     ...(apiHelper ? [api(apiHelper)] : []),
+    protectLoadEnd,
     ...(__CLIENT__
       ? [save({ states: config.settings.persistentReducers, debounce: 500 })]
       : []),
@@ -36,6 +43,7 @@ const configureStore = (initialState, history, apiHelper) => {
       router: connectRouter(history),
       ...reducers,
       ...config.addonReducers,
+      loadProtector,
     }),
     {
       ...initialState,

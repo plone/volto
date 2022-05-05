@@ -1,22 +1,102 @@
 # Change Log
 
-## 15.3.1 (unreleased)
-
-- fixed bug in HTML block edit @giuliaghisini
-- Fix cannot read properties of undefined in Content.jsx @iFlameing
+## 15.8.1 (unreleased)
 
 ### Breaking
+
+- Deprecate NodeJS 12 since it's out of LTS since April 30, 2022 @sneridagh
+- Move all cypress actions to the main `Makefile`, providing better meaningful names. Remove them from `package.json` script section. @sneridagh
 
 ### Feature
 
 - Allow deployment of Volto on a prefixed path (non-root deployment). See Deployment docs for details. @cekk @tiberiuichim
+
+### Bugfix
+
+- Fix sidebar full size bottom opacity on edit page when sidebar is collapsed @ichim-david
+- Fix toolbar bottom opacity on edit page when toolbar is collapsed @ichim-david
+- Fixed secure cookie option. @giuliaghisini
+
+### Internal
+
+- Improve Cypress integration, using Cypress official Github Action. Improve some flaky tests that showed up, and were known as problematic. Refactor and rename all the Github actions giving them meaningful names, and group them by type. Enable Cypress Dashboard for Volto. @sneridagh
+- Stop using `xmlrpc` library for issuing the setup/teardown in core, use a `cy.request` instead. @sneridagh
+- Added Cypress environment variables for adjusting the backend URL of commands @JeffersonBledsoe #3271
+
+### Documentation
+
+- Move Cypress documentation from `README.md` to the docs. Improve the docs with the new `Makefile` commands.
+- Improve English grammar and syntax in backend docs. @stevepiercy
+
+## 15.8.0 (2022-04-30)
+
+### Feature
+
+- Handle @@display-file api endpoint like @@download @cekk
+- Add calendar link to @ics_view @iFlameing
+
+## 15.7.0 (2022-04-29)
+
+### Feature
+
+- added 'secure' cookie option if site is in https. @giuliaghisini
+
+## 15.6.1 (2022-04-29)
+
+### Bugfix
+
+- Overwrite isValidNewOption of ArrayWidget to allow variants @ksuess
+
+## 15.6.0 (2022-04-29)
+
+### Feature
+
+- Added 'checkAndNormalizeUrl' function in URLUtils. @giuliaghisini
+
+### Bugfix
+
+- Used UniversalLink and PreviewImage components where needed, to right handle link and images. @giuliaghisini
+
+## 15.5.0 (2022-04-25)
+
+### Feature
+
+- More Italian translations @giuliaghisini
+
+### Bugfix
+
+- Fixed edit internal link and image url in this blocks: image block, leadimage block, video block, objectBrowser. In objectBrowser, if pasted url was internal, it wasn't flatted and wass handled from Plone as an external. @giuliaghisini
+- Fix folder content layout @SaraBianchi
+
+### Documentation
+
+- Added a `selectableTypes` example to the `ObjectBrowserWidget` storybook @JeffersonBledsoe #3255
+- Add labels for Intersphinx. @stevepiercy
+
+## 15.4.1 (2022-04-11)
+
+### Bugfix
+
+- Fix handling of single reference field in `ObjectBrowser` @robgietema
+- Make the parseDateTime function to handle only date as well @iFlameing
+- Fix ContextNavigation component with Link type objects @UnaiEtxaburu #3232
+
+### Internal
+
+- Upgrade react-image-gallery to latest to fix a11y problem @sneridagh
+- Fixed bug in HTML block edit @giuliaghisini
+- Fix cannot read properties of undefined in Content.jsx @iFlameing
+- Fix fixed `ObjectBrowserBody` to handle data fields based on `ObjectBrowser` mode @giuliaghisini
+
+## 15.4.0 (2022-04-08)
+
+### Feature
+
 - Add package.json scripts documentation @ksuess
 
 ### Bugfix
 
 - Fix/Improve the console logging when the server starts. @sneridagh
-
-### Internal
 
 ### Documentation
 
@@ -171,6 +251,7 @@
 - Overwrite current block on insert new block. @robgietema
 - Fix hot reload on updates related to the config object because of `VersionOverview` component @sneridagh
 - Fix error when lock data is gone after an invariant error. @robgietema
+- Protect against ghost content loading and scroll to top @reebalazs
 
 ### Internal
 
