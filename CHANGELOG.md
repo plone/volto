@@ -14,6 +14,7 @@
 - Fix sidebar full size bottom opacity on edit page when sidebar is collapsed @ichim-david
 - Fix toolbar bottom opacity on edit page when toolbar is collapsed @ichim-david
 - Fix missing criteria in QueryWidget. @giuliaghisini
+- Fixed secure cookie option. @giuliaghisini
 
 ### Internal
 
@@ -249,6 +250,7 @@
 - Overwrite current block on insert new block. @robgietema
 - Fix hot reload on updates related to the config object because of `VersionOverview` component @sneridagh
 - Fix error when lock data is gone after an invariant error. @robgietema
+- Protect against ghost content loading and scroll to top @reebalazs
 
 ### Internal
 
