@@ -15,6 +15,8 @@ import AlbumView from '@plone/volto/components/theme/View/AlbumView';
 import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
 import Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
 
+import * as ItemViews from '@plone/volto/components/theme/View/ItemView';
+
 const EventView = loadable(() =>
   import('@plone/volto/components/theme/View/EventView'),
 );
@@ -46,4 +48,10 @@ export const errorViews = {
   '403': Forbidden,
   ECONNREFUSED: ConnectionRefused,
   corsError: CorsError,
+};
+
+export const itemViews = {
+  Default: ItemViews.DefaultItemView,
+  'News Item': ItemViews.NewsItemItemView,
+  Event: ItemViews.EventItemView,
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ConditionalLink } from '@plone/volto/components';
+import { ConditionalLink, ItemViewSelector } from '@plone/volto/components';
 import { flattenToAppURL } from '@plone/volto/helpers';
 
 import { isInternalURL } from '@plone/volto/helpers/Url/Url';
@@ -23,14 +23,15 @@ const DefaultTemplate = ({ items, linkTitle, linkHref, isEditMode }) => {
     <>
       <div className="items">
         {items.map((item) => (
-          <div className="listing-item" key={item['@id']}>
-            <ConditionalLink item={item} condition={!isEditMode}>
-              <div className="listing-body">
-                <h4>{item.title ? item.title : item.id}</h4>
-                <p>{item.description}</p>
-              </div>
-            </ConditionalLink>
-          </div>
+          // <div className="listing-item" key={item['@id']}>
+          //   <ConditionalLink item={item} condition={!isEditMode}>
+          //     <div className="listing-body">
+          //       <h4>{item.title ? item.title : item.id}</h4>
+          //       <p>{item.description}</p>
+          //     </div>
+          //   </ConditionalLink>
+          // </div>
+          <ItemViewSelector item={item} isEditMode={isEditMode} />
         ))}
       </div>
 

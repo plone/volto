@@ -9,6 +9,7 @@ import {
   contentTypesViews,
   defaultView,
   errorViews,
+  itemViews,
 } from './Views';
 import { nonContentRoutes } from './NonContentRoutes';
 import {
@@ -168,6 +169,7 @@ let config = {
     contentTypesViews,
     defaultView,
     errorViews,
+    itemViews,
   },
   blocks: {
     requiredBlocks,

@@ -3,6 +3,9 @@ import NewsAndEvents from './components/Views/NewsAndEvents';
 import TestBlockView from './components/Blocks/TestBlock/View';
 import TestBlockEdit from './components/Blocks/TestBlock/Edit';
 import codeSVG from '@plone/volto/icons/code.svg';
+import { Item } from 'semantic-ui-react';
+
+import * as itemViews from './components/';
 
 const addonBlocks = {
   testBlock: {
@@ -84,6 +87,11 @@ const applyConfig = (config) => {
       contentTypesViews: {
         ...config.views.contentTypesViews,
         Folder: NewsAndEvents,
+      },
+      itemViews: {
+        ...config.views.itemViews,
+        Default: ItemViews.DefaultItemView,
+        Event: itemViews.EvenItemView,
       },
     },
   };
