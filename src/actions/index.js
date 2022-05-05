@@ -84,6 +84,7 @@ export {
 export {
   getAliases,
   addAlias,
+  removeAliases,
 } from '@plone/volto/actions/urlManagement/urlManagement';
 export { getTypes } from '@plone/volto/actions/types/types';
 export {

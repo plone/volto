@@ -1,4 +1,8 @@
-import { GET_ALIASES, ADD_ALIAS } from '@plone/volto/constants/ActionTypes';
+import {
+  GET_ALIASES,
+  ADD_ALIAS,
+  REMOVE_ALIASES,
+} from '@plone/volto/constants/ActionTypes';
 
 /**
  * Get aliases function.
@@ -20,7 +24,7 @@ export function getAliases(url) {
  * Add alias function.
  * @function addAlias
  * @param {string} url Content url.
- * @param {string} alias Alias.
+ * @param {string} data Alias.
  * @returns {Object} Add alias action.
  */
 export function addAlias(url, data) {
@@ -32,5 +36,24 @@ export function addAlias(url, data) {
       data,
     },
     added: data.aliases,
+  };
+}
+
+/**
+ * Remove aliases function.
+ * @function removeAliases
+ * @param {string} url Content url.
+ * @param {string} data Alias.
+ * @returns {Object} Add alias action.
+ */
+export function removeAliases(url, data) {
+  return {
+    type: REMOVE_ALIASES,
+    request: {
+      op: 'del',
+      path: `${url}/@aliases`,
+      data,
+    },
+    removed: data.aliases,
   };
 }

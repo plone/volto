@@ -21,7 +21,12 @@ import {
 import jwtDecode from 'jwt-decode';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { addAlias, getAliases, getContent } from '@plone/volto/actions';
+import {
+  removeAliases,
+  addAlias,
+  getAliases,
+  getContent,
+} from '@plone/volto/actions';
 
 import { Icon, Toolbar, Toast } from '@plone/volto/components';
 
@@ -95,12 +100,9 @@ class UrlManagement extends Component {
    * @static
    */
   static propTypes = {
+    removeAliases: PropTypes.func,
     addAlias: PropTypes.func,
     getAliases: PropTypes.func,
-    // updateRequest: PropTypes.shape({
-    //   loading: PropTypes.bool,
-    //   loaded: PropTypes.bool,
-    // }).isRequired,
     pathname: PropTypes.string.isRequired,
     inherit: PropTypes.bool,
     title: PropTypes.string.isRequired,
@@ -127,10 +129,14 @@ class UrlManagement extends Component {
     super(props);
     this.handleAltChange = this.handleAltChange.bind(this);
     this.handleSubmitAlias = this.handleSubmitAlias.bind(this);
+    this.handleCheckAlias = this.handleCheckAlias.bind(this);
+    this.handleRemoveAliases = this.handleRemoveAliases.bind(this);
     this.state = {
       isClient: false,
       newAlias: '',
       isAliasCorrect: false,
+      isAliasAlready: false,
+      aliasesToRemove: [],
     };
   }
 
@@ -152,6 +158,11 @@ class UrlManagement extends Component {
       } else {
         this.setState({ isAliasCorrect: false });
       }
+      if (this.props.aliases.includes(this.state.newAlias)) {
+        this.setState({ isAliasAlready: true });
+      } else {
+        this.setState({ isAliasAlready: false });
+      }
     }
   }
 
@@ -170,12 +181,44 @@ class UrlManagement extends Component {
    * @returns {undefined}
    */
   handleSubmitAlias() {
-    console.log('newalias will be', this.state.newAlias);
     if (this.state.isAliasCorrect) {
       this.props.addAlias(getParentUrl(this.props.pathname), {
         aliases: this.state.newAlias,
       });
+      this.setState({ newAlias: '' });
     }
+  }
+
+  /**
+   * Check to-remove aliases handler
+   * @method handleSubmitAlias
+   * @returns {undefined}
+   */
+  handleCheckAlias(alias) {
+    const aliases = this.state.aliasesToRemove;
+    if (aliases.includes(alias)) {
+      const index = aliases.indexOf(alias);
+      if (index > -1) {
+        let newAliasesArr = aliases;
+        newAliasesArr.splice(index, 1);
+        this.setState({ aliasesToRemove: newAliasesArr });
+      }
+    } else {
+      this.setState({
+        aliasesToRemove: [...this.state.aliasesToRemove, alias],
+      });
+    }
+  }
+
+  /**
+   * Remove aliases handler
+   * @method handleRemoveAliases
+   * @returns {undefined}
+   */
+  handleRemoveAliases() {
+    this.props.removeAliases(getParentUrl(this.props.pathname), {
+      aliases: this.state.aliasesToRemove,
+    });
   }
 
   /**
@@ -214,7 +257,7 @@ class UrlManagement extends Component {
                 <Input
                   name="alternative-url"
                   placeholder="/example"
-                  error={!this.state.isAliasCorrect}
+                  value={this.state.newAlias}
                   onChange={(e) => this.handleAltChange(e.target.value)}
                 />
                 {!this.state.isAliasCorrect && this.state.newAlias !== '' && (
@@ -222,12 +265,19 @@ class UrlManagement extends Component {
                     Alternative url path must start with a slash.
                   </p>
                 )}
+                {this.state.isAliasAlready && (
+                  <p style={{ color: 'red' }}>
+                    Alternative url already exists.
+                  </p>
+                )}
               </Form.Field>
               <Button
                 primary
                 onClick={this.handleSubmitAlias}
                 disabled={
-                  !this.state.isAliasCorrect || this.state.newAlias === ''
+                  !this.state.isAliasCorrect ||
+                  this.state.newAlias === '' ||
+                  this.state.isAliasAlready
                 }
               >
                 Add
@@ -244,21 +294,17 @@ class UrlManagement extends Component {
                 this.props.aliases.map((alias, i) => (
                   <Form.Field key={i}>
                     <Checkbox
-                      //onChange={() => console.log('check')}
+                      onChange={(e, { value }) => this.handleCheckAlias(value)}
                       value={alias}
                       label={alias}
-                      checked={false}
+                      checked={this.state.aliasesToRemove.includes(alias)}
                     />
                   </Form.Field>
                 ))}
               <Button
-                // onClick={() =>
-                //   console.log(
-                //     getParentUrl(this.props.pathname),
-                //     'handleremoveselected',
-                //   )
-                // }
+                onClick={this.handleRemoveAliases}
                 primary
+                disabled={this.state.aliasesToRemove.length === 0}
               >
                 Remove
               </Button>
@@ -307,6 +353,6 @@ export default compose(
         ? jwtDecode(state.userSession.token).sub
         : '',
     }),
-    { addAlias, getAliases, getContent },
+    { removeAliases, addAlias, getAliases, getContent },
   ),
 )(UrlManagement);

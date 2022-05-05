@@ -1,4 +1,8 @@
-import { GET_ALIASES, ADD_ALIAS } from '@plone/volto/constants/ActionTypes';
+import {
+  GET_ALIASES,
+  ADD_ALIAS,
+  REMOVE_ALIASES,
+} from '@plone/volto/constants/ActionTypes';
 
 /**
  * Aliases reducer.
@@ -26,6 +30,14 @@ export default function aliases(state = {}, action = {}) {
       return {
         ...state,
         data: [...state.data, action.added],
+      };
+    case `${REMOVE_ALIASES}_SUCCESS`:
+      const aliases = state.data;
+      const aliasesToRemove = action.removed;
+      const newAliases = aliases.filter((el) => !aliasesToRemove.includes(el));
+      return {
+        ...state,
+        data: newAliases,
       };
     default:
       return state;
