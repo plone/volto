@@ -22,12 +22,14 @@ import {
 import jwtDecode from 'jwt-decode';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
+import { getAliases, getContent } from '@plone/volto/actions';
+
 import { getBaseUrl } from '@plone/volto/helpers';
 import { Icon, Toolbar, Toast } from '@plone/volto/components';
 import { toast } from 'react-toastify';
 
 import backSVG from '@plone/volto/icons/back.svg';
-import { getParentUrl } from '../../../helpers/Url/Url';
+import { getParentUrl } from '@plone/volto/helpers';
 
 const messages = defineMessages({
   searchForUserOrGroup: {
@@ -96,8 +98,7 @@ class UrlManagement extends Component {
    * @static
    */
   static propTypes = {
-    updateSharing: PropTypes.func.isRequired,
-    getSharing: PropTypes.func.isRequired,
+    getAliases: PropTypes.func.isRequired,
     updateRequest: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
@@ -138,10 +139,7 @@ class UrlManagement extends Component {
     super(props);
     this.onCancel = this.onCancel.bind(this);
     this.onChange = this.onChange.bind(this);
-    this.onChangeSearch = this.onChangeSearch.bind(this);
-    this.onSearch = this.onSearch.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.onToggleInherit = this.onToggleInherit.bind(this);
     this.state = {
       search: '',
       inherit: props.inherit,
@@ -156,40 +154,9 @@ class UrlManagement extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    // this.props.getSharing(getBaseUrl(this.props.pathname), this.state.search);
+    this.props.getAliases(getParentUrl(this.props.pathname));
+    this.props.getContent(getParentUrl(this.props.pathname));
     this.setState({ isClient: true });
-  }
-
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
-      // this.props.getSharing(getBaseUrl(this.props.pathname), this.state.search);
-      toast.success(
-        <Toast
-          success
-          title={this.props.intl.formatMessage(messages.permissionsUpdated)}
-          content={this.props.intl.formatMessage(
-            messages.permissionsUpdatedSuccessfully,
-          )}
-        />,
-      );
-    }
-    this.setState({
-      inherit:
-        this.props.inherit === null ? nextProps.inherit : this.state.inherit,
-      entries: map(nextProps.entries, (entry) => {
-        const values = find(this.state.entries, { id: entry.id });
-        return {
-          ...entry,
-          roles: values ? values.roles : entry.roles,
-        };
-      }),
-    });
   }
 
   /**
@@ -198,57 +165,7 @@ class UrlManagement extends Component {
    * @param {object} event Event object.
    * @returns {undefined}
    */
-  onSubmit(event) {
-    const data = { entries: [] };
-    event.preventDefault();
-    if (this.props.inherit !== this.state.inherit) {
-      data.inherit = this.state.inherit;
-    }
-    for (let i = 0; i < this.props.entries.length; i += 1) {
-      if (!isEqual(this.props.entries[i].roles, this.state.entries[i].roles)) {
-        data.entries.push({
-          id: this.state.entries[i].id,
-          type: this.state.entries[i].type,
-          roles: this.state.entries[i].roles,
-        });
-      }
-    }
-    this.props.updateSharing(getBaseUrl(this.props.pathname), data);
-  }
-
-  /**
-   * Search handler
-   * @method onSearch
-   * @param {object} event Event object.
-   * @returns {undefined}
-   */
-  onSearch(event) {
-    event.preventDefault();
-    // this.props.getSharing(getBaseUrl(this.props.pathname), this.state.search);
-  }
-
-  /**
-   * On change search handler
-   * @method onChangeSearch
-   * @param {object} event Event object.
-   * @returns {undefined}
-   */
-  onChangeSearch(event) {
-    this.setState({
-      search: event.target.value,
-    });
-  }
-
-  /**
-   * On toggle inherit handler
-   * @method onToggleInherit
-   * @returns {undefined}
-   */
-  onToggleInherit() {
-    this.setState({
-      inherit: !this.state.inherit,
-    });
-  }
+  onSubmit(event) {}
 
   /**
    * On change handler
@@ -343,16 +260,18 @@ class UrlManagement extends Component {
               <Header size="medium">
                 Existing alternative urls for this item
               </Header>
-              {[1, 2, 3].map(() => (
-                <Form.Field>
-                  <Checkbox
-                    //onChange={() => console.log('check')}
-                    value={`firstaltlink`}
-                    label={'firstaltlink'}
-                    checked={false}
-                  />
-                </Form.Field>
-              ))}
+              {this.props.aliases &&
+                this.props.aliases.length > 0 &&
+                this.props.aliases.map((alias, i) => (
+                  <Form.Field key={i}>
+                    <Checkbox
+                      //onChange={() => console.log('check')}
+                      value={alias}
+                      label={alias}
+                      checked={false}
+                    />
+                  </Form.Field>
+                ))}
               <Button
                 // onClick={() =>
                 //   console.log(
@@ -399,16 +318,16 @@ export default compose(
   connect(
     (state, props) => ({
       state: state,
-      entries: state.sharing.data.entries,
-      inherit: state.sharing.data.inherit,
-      available_roles: state.sharing.data.available_roles,
-      updateRequest: state.sharing.update,
+      aliases: state.aliases.data,
       pathname: props.location.pathname,
-      title: state.content.data.title,
+      title:
+        state.content.data !== null && state.content.data.title
+          ? state.content.data.title
+          : '',
       login: state.userSession.token
         ? jwtDecode(state.userSession.token).sub
         : '',
     }),
-    //  { updateSharing, getSharing },
+    { getAliases, getContent },
   ),
 )(UrlManagement);

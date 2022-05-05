@@ -503,6 +503,11 @@ const initialState = () => ({
           id: 'local_roles',
           title: 'Sharing',
         },
+        {
+          icon: '',
+          id: 'url_management',
+          title: 'Url management',
+        },
       ],
       object_buttons: [],
       portal_tabs: [

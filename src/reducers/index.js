@@ -8,6 +8,7 @@ import { intlReducer } from 'react-intl-redux';
 import actions from '@plone/volto/reducers/actions/actions';
 import addons from '@plone/volto/reducers/addons/addons';
 import apierror from '@plone/volto/reducers/apierror/apierror';
+import aliases from '@plone/volto/reducers/urlManagement/urlManagement'
 import breadcrumbs from '@plone/volto/reducers/breadcrumbs/breadcrumbs';
 import browserdetect from '@plone/volto/reducers/browserdetect/browserdetect';
 import comments from '@plone/volto/reducers/comments/comments';
@@ -55,6 +56,7 @@ const reducers = {
   actions,
   addons,
   apierror,
+  aliases,
   breadcrumbs,
   browserdetect,
   comments,

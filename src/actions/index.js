@@ -81,6 +81,7 @@ export {
   updateSharing,
   getSharing,
 } from '@plone/volto/actions/sharing/sharing';
+export { getAliases } from '@plone/volto/actions/urlManagement/urlManagement';
 export { getTypes } from '@plone/volto/actions/types/types';
 export {
   createUser,
