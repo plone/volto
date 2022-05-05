@@ -6,6 +6,7 @@ import { Button } from 'semantic-ui-react';
 import includes from 'lodash/includes';
 import isBoolean from 'lodash/isBoolean';
 import { defineMessages, injectIntl } from 'react-intl';
+import cx from 'classnames';
 import config from '@plone/volto/registry';
 
 import trashSVG from '@plone/volto/icons/delete.svg';
@@ -34,7 +35,9 @@ const EditBlockWrapper = (props) => {
     <div
       ref={draginfo.innerRef}
       {...draginfo.draggableProps}
-      className={`block-editor-${data['@type']}`}
+      className={cx(`block-editor-${data['@type']}`, {
+        [data.align]: data.align,
+      })}
     >
       <div style={{ position: 'relative' }}>
         <div
