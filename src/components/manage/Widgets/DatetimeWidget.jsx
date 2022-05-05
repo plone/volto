@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
+import { connect } from 'react-redux';
 import loadable from '@loadable/component';
 import cx from 'classnames';
 import { Icon, FormFieldWrapper } from '@plone/volto/components';
@@ -178,7 +179,14 @@ export class DatetimeWidgetComponent extends Component {
   onFocusChange = ({ focused }) => this.setState({ focused });
 
   render() {
-    const { id, resettable, intl, reactDates, widgetOptions } = this.props;
+    const {
+      id,
+      resettable,
+      intl,
+      reactDates,
+      widgetOptions,
+      lang,
+    } = this.props;
     const noPastDates =
       this.props.noPastDates || widgetOptions?.pattern_options?.noPastDates;
     const moment = this.props.moment.default;
@@ -203,7 +211,7 @@ export class DatetimeWidgetComponent extends Component {
               {...(noPastDates ? {} : { isOutsideRange: () => false })}
               onFocusChange={this.onFocusChange}
               noBorder
-              displayFormat={moment.localeData(intl.locale).longDateFormat('L')}
+              displayFormat={moment.localeData(lang).longDateFormat('L')}
               navPrev={<PrevIcon />}
               navNext={<NextIcon />}
               id={`${id}-date`}
@@ -223,9 +231,9 @@ export class DatetimeWidgetComponent extends Component {
                 onChange={this.onTimeChange}
                 allowEmpty={false}
                 showSecond={false}
-                use12Hours={intl.locale === 'en'}
+                use12Hours={lang === 'en'}
                 id={`${id}-time`}
-                format={moment.localeData(intl.locale).longDateFormat('LT')}
+                format={moment.localeData(lang).longDateFormat('LT')}
                 placeholder={intl.formatMessage(messages.time)}
                 focusOnOpen
                 placement="bottomRight"
@@ -283,5 +291,8 @@ DatetimeWidgetComponent.defaultProps = {
 
 export default compose(
   injectLazyLibs(['reactDates', 'moment']),
+  connect((state) => ({
+    lang: state.intl.locale,
+  })),
   injectIntl,
 )(DatetimeWidgetComponent);
