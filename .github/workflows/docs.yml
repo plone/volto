@@ -12,6 +12,7 @@ on:
 
 jobs:
   docs:
+    name: Documentation
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -39,7 +40,7 @@ jobs:
         run: pip install -r requirements-docs.txt
 
       - name: Check for broken links
-        run: make docs-linkcheckbroken
+        run: make docs-linkcheck
 
       - name: Build HTML documentation
         run: make docs-html

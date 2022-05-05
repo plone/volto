@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "15.2.2",
+  "version": "15.8.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -55,44 +55,6 @@
     "stylelint:patches": "patch -p0 -N node_modules/stylelint/lib/getPostcssResult.js < patches/fixstylelint.patch || true",
     "patches": "/bin/bash patches/patchit.sh > /dev/null 2>&1 ||true",
     "deduplicate": "yarn-deduplicate yarn.lock",
-    "cypress:open": "NODE_ENV=production CYPRESS_API=plone cypress open",
-    "cypress:open:coresandbox": "NODE_ENV=production CYPRESS_API=plone cypress open --config integrationFolder='cypress/tests/coresandbox'",
-    "cypress:open:multilingual": "NODE_ENV=production CYPRESS_API=plone cypress open --config integrationFolder='cypress/tests/multilingual'",
-    "cypress:open:prefixpath": "NODE_ENV=production CYPRESS_API=plone cypress open --config integrationFolder='cypress/tests/coresandbox'",
-    "cypress:open:workingCopy": "NODE_ENV=production CYPRESS_API=plone cypress open --config integrationFolder='cypress/tests/workingCopy'",
-    "cypress:open:guillotina": "NODE_ENV=production CYPRESS_API=guillotina cypress open --config-file cypress/cypress.guillotina.json",
-    "cypress:run": "NODE_ENV=production CYPRESS_API=plone CYPRESS_RETRIES=2 cypress run",
-    "cypress:run:coresandbox": "NODE_ENV=production CYPRESS_API=plone cypress run --config integrationFolder='cypress/tests/coresandbox'",
-    "cypress:run:multilingual": "NODE_ENV=production CYPRESS_API=plone cypress run --config integrationFolder='cypress/tests/multilingual'",
-    "cypress:run:prefixpath": "NODE_ENV=production CYPRESS_API=plone cypress run --config integrationFolder='cypress/tests/coresandbox'",
-    "cypress:run:workingCopy": "NODE_ENV=production CYPRESS_API=plone cypress run --config integrationFolder='cypress/tests/workingCopy'",
-    "cypress:run:guillotina": "NODE_ENV=production CYPRESS_API=guillotina cypress run --config integrationFolder='cypress/tests/guillotina'",
-    "cypress:start-frontend": "RAZZLE_API_PATH=http://localhost:55001/plone yarn start",
-    "cypress:start-frontend-coresandbox": "ADDONS=coresandbox RAZZLE_API_PATH=http://localhost:55001/plone yarn start",
-    "cypress:start-frontend-multilingual": "ADDONS=coresandbox:multilingualFixture RAZZLE_API_PATH=http://localhost:55001/plone yarn start",
-    "cypress:start-frontend-workingCopy": "ADDONS=coresandbox:workingCopyFixture RAZZLE_API_PATH=http://localhost:55001/plone yarn start",
-    "cy:install": "cypress install",
-    "cy:test:fixture:setup": "node cypress/support/reset-fixture.js",
-    "cy:test:fixture:teardown": "node cypress/support/reset-fixture.js teardown",
-    "ci:start-api-plone": "make test-acceptance-server",
-    "ci:start-api-plone-coresandbox": "make test-acceptance-server-coresandbox",
-    "ci:start-api-plone-multilingual": "make test-acceptance-server-multilingual",
-    "ci:start-api-plone-workingCopy": "make test-acceptance-server-workingcopy",
-    "ci:start-api-guillotina": "make test-acceptance-guillotina",
-    "ci:start-frontend": "RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http://localhost:3000 cypress:run",
-    "ci:start-frontend-coresandbox": "ADDONS=coresandbox RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http://localhost:3000 cypress:run:coresandbox",
-    "ci:start-frontend-multilingual": "ADDONS=coresandbox:multilingualFixture RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http://localhost:3000 cypress:run:multilingual",
-    "ci:start-frontend-workingCopy": "ADDONS=coresandbox:workingCopyFixture RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http://localhost:3000 cypress:run:workingCopy",
-    "ci:start-project-frontend": "cd my-volto-app && RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http://localhost:3000 'cd .. && yarn cypress:run'",
-    "ci:start-frontend-prefixpath": "ADDONS=coresandbox RAZZLE_PREFIX_PATH=http://localhost:55001/plone/prefixed-root RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http://localhost:3000 cypress:run:prefixpath",
-    "ci:start-frontend-guillotina": "ADDONS=volto-guillotina RAZZLE_API_PATH=http://localhost:8081/db/web RAZZLE_LEGACY_TRAVERSE=true yarn build && start-test start:prod http://localhost:3000 cypress:run:guillotina",
-    "ci:cypress:run": "start-test ci:start-api-plone http-get://localhost:55001/plone ci:start-frontend",
-    "ci:cypress:project:run": "start-test ci:start-api-plone http-get://localhost:55001/plone ci:start-project-frontend",
-    "ci:cypress:run:coresandbox": "start-test ci:start-api-plone-coresandbox http-get://localhost:55001/plone ci:start-frontend-coresandbox",
-    "ci:cypress:run:multilingual": "start-test ci:start-api-plone-multilingual http-get://localhost:55001/plone ci:start-frontend-multilingual",
-    "ci:cypress:run:prefixpath": "start-test ci:start-api-plone-coresandbox http-get://localhost:55001/plone ci:start-frontend-prefixpath",
-    "ci:cypress:run:workingCopy": "start-test ci:start-api-plone-workingCopy http-get://localhost:55001/plone ci:start-frontend-workingCopy",
-    "ci:cypress:run:guillotina": "start-test ci:start-api-guillotina http-get://localhost:8081 ci:start-frontend-guillotina",
     "dry-release": "release-it --dry-run",
     "release": "release-it",
     "release-major-alpha": "release-it major --preRelease=alpha",
@@ -263,7 +225,7 @@
     ]
   },
   "engines": {
-    "node": "^12 || ^14 || ^16"
+    "node": "^14 || ^16"
   },
   "dependencies": {
     "@babel/plugin-proposal-export-default-from": "7.10.4",
@@ -377,7 +339,7 @@
     "react-dom": "17.0.2",
     "react-dropzone": "11.1.0",
     "react-fast-compare": "2.0.4",
-    "react-image-gallery": "1.0.7",
+    "react-image-gallery": "1.2.7",
     "react-intl": "3.8.0",
     "react-intl-redux": "2.2.0",
     "react-medium-image-zoom": "3.0.15",
@@ -409,7 +371,7 @@
     "semantic-ui-react": "2.0.3",
     "semver": "5.6.0",
     "serialize-javascript": "3.1.0",
-    "start-server-and-test": "1.10.6",
+    "start-server-and-test": "1.14.0",
     "stylelint": "14.0.1",
     "stylelint-config-idiomatic-order": "8.1.0",
     "stylelint-config-prettier": "8.0.1",
@@ -421,7 +383,7 @@
     "tlds": "1.203.1",
     "undoo": "0.5.0",
     "universal-cookie-express": "4.0.3",
-    "use-deep-compare-effect": "1.6.1",
+    "use-deep-compare-effect": "1.8.1",
     "xmlrpc": "1.3.2",
     "yarn-deduplicate": "3.1.0",
     "yarnhook": "0.5.1"
@@ -440,7 +402,8 @@
     "jest-environment-jsdom-sixteen": "1.0.3",
     "react-is": "^16.13.1",
     "tmp": "0.2.1",
-    "use-trace-update": "1.3.2"
+    "use-trace-update": "1.3.2",
+    "why": "0.6.2"
   },
   "resolutions-comments": {
     "ua-parser-js": "See https://github.com/faisalman/ua-parser-js/issues/536"

@@ -29,6 +29,17 @@ the latest changes, and propose to you to merge the changes, so you can run it o
 
 ## Upgrading to Volto 15.x.x
 
+## Deprecating NodeJS 12
+
+Since April 30, 2022, NodeJS 12 is out of Long Term Support by the NodeJS community.
+NodeJS 12 is deprecated in Volto 13.
+Please update your projects to a NodeJS LTS version, where either 14 or 16 is supported at the moment of this writing.
+Version 16 is recommended.
+
+(volto-upgrade-guide-15.x.x)=
+
+## Upgrading to Volto 15.x.x
+
 ### Updated react-cookie library
 
 This fixes a use case where cookies could potentially be messed up if your site is under heavy load.
@@ -208,7 +219,7 @@ As announced in the deprecation notice in Volto 12 release, from Volto 14 onward
 configuration system based on imports will stop working. Migrate your Volto configuration
 for your projects before upgrading to Volto 14.
 
-More information: https://6.dev-docs.plone.org/volto/upgrade-guide/index.html#volto-configuration-registry
+More information: :ref:`frontend-upgrade-guide-volto-configuration-registry-label`.
 
 ### Content locking
 
@@ -446,6 +457,9 @@ CSS set. Better naming of options and labels in table block (English). Updating 
 messages for the used translations is advisable, but not required.
 
 ## Upgrading to Volto 12.x.x
+
+
+(frontend-upgrade-guide-volto-configuration-registry-label)=
 
 ### Volto Configuration Registry
 
@@ -978,7 +992,7 @@ to be more in line with the rest of the existing files. You should add the
 following value to the `moduleNameMapper` property of the `jest` key in your
 project's package.json:
 
-```
+```json
 "load-volto-addons": "<rootDir>/node_modules/@plone/volto/jest-addons-loader.js",
 ```
 

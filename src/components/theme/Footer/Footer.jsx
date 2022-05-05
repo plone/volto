@@ -5,9 +5,10 @@
 
 import React from 'react';
 import { Container, List, Segment } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { useSelector } from 'react-redux';
+import { UniversalLink } from '@plone/volto/components';
 import config from '@plone/volto/registry';
 
 const messages = defineMessages({
@@ -84,17 +85,17 @@ const Footer = ({ intl }) => {
         <List horizontal inverted>
           {/* wrap in div for a11y reasons: listitem role cannot be on the <a> element directly */}
           <div role="listitem" className="item">
-            <Link
+            <UniversalLink
               className="item"
-              to={settings.isMultilingual ? `/${lang}/sitemap` : '/sitemap'}
+              href={settings.isMultilingual ? `/${lang}/sitemap` : '/sitemap'}
             >
               <FormattedMessage id="Site Map" defaultMessage="Site Map" />
-            </Link>
+            </UniversalLink>
           </div>
           <div role="listitem" className="item">
-            <Link
+            <UniversalLink
               className="item"
-              to={
+              href={
                 settings.isMultilingual
                   ? `/${lang}/accesibility-info`
                   : '/accesibility-info'
@@ -104,19 +105,19 @@ const Footer = ({ intl }) => {
                 id="Accessibility"
                 defaultMessage="Accessibility"
               />
-            </Link>
+            </UniversalLink>
           </div>
           <div role="listitem" className="item">
-            <Link
+            <UniversalLink
               className="item"
-              to={
+              href={
                 settings.isMultilingual
                   ? `/${lang}/contact-form`
                   : '/contact-form'
               }
             >
               <FormattedMessage id="Contact" defaultMessage="Contact" />
-            </Link>
+            </UniversalLink>
           </div>
           <div role="listitem" className="item">
             <a className="item" href="https://plone.org">

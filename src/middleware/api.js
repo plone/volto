@@ -18,7 +18,7 @@ import {
   SET_APIERROR,
 } from '@plone/volto/constants/ActionTypes';
 import { changeLanguage } from '@plone/volto/actions';
-import { normalizeLanguageName } from '@plone/volto/helpers';
+import { normalizeLanguageName, getCookieOptions } from '@plone/volto/helpers';
 let socket = null;
 
 /**
@@ -197,10 +197,13 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
         }
         if (type === LOGIN && settings.websockets) {
           const cookies = new Cookies();
-          cookies.set('auth_token', result.token, {
-            path: '/',
-            expires: new Date(jwtDecode(result.token).exp * 1000),
-          });
+          cookies.set(
+            'auth_token',
+            result.token,
+            getCookieOptions({
+              expires: new Date(jwtDecode(result.token).exp * 1000),
+            }),
+          );
           api.get('/@wstoken').then((res) => {
             socket = new WebSocket(
               `${settings.apiPath.replace('http', 'ws')}/@ws?ws_token=${
@@ -248,31 +251,32 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
           });
         }
 
-        // Gateway timeout
-        else if (error?.response?.statusCode === 504) {
-          next({
-            ...rest,
-            error,
-            statusCode: error.code,
-            connectionRefused: true,
-            type: SET_APIERROR,
-          });
-        }
+        // Check for actions who can raise api errors
+        if (settings.actions_raising_api_errors.includes(action.type)) {
+          // Gateway timeout
+          if (error?.response?.statusCode === 504) {
+            next({
+              ...rest,
+              error,
+              statusCode: error.code,
+              connectionRefused: true,
+              type: SET_APIERROR,
+            });
+          }
 
-        // Redirect
-        else if (error?.code === 301) {
-          next({
-            ...rest,
-            error,
-            statusCode: error.code,
-            connectionRefused: false,
-            type: SET_APIERROR,
-          });
-        }
+          // Redirect
+          else if (error?.code === 301) {
+            next({
+              ...rest,
+              error,
+              statusCode: error.code,
+              connectionRefused: false,
+              type: SET_APIERROR,
+            });
+          }
 
-        // The rest
-        else if (settings.actions_raising_api_errors.includes(action.type)) {
-          if (error?.response?.statusCode === 401) {
+          // Unauthorized
+          else if (error?.response?.statusCode === 401) {
             next({
               ...rest,
               error,

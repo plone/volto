@@ -104,6 +104,36 @@ exports[`renders event details component with all props 1`] = `
       Visit external website
     </a>
   </p>
+  <div
+    className="download-event"
+  >
+    <svg
+      className="icon"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": undefined,
+        }
+      }
+      onClick={null}
+      style={
+        Object {
+          "fill": "currentColor",
+          "height": "36px",
+          "width": "auto",
+        }
+      }
+      viewBox=""
+      xmlns=""
+    />
+    <a
+      className="ics-download"
+      href="http://localhost:8080/Ploneundefined/ics_view"
+      rel="noreferrer"
+      target="_blank"
+    >
+      Download Event
+    </a>
+  </div>
 </aside>
 `;
 
@@ -116,6 +146,36 @@ exports[`renders event details component with only required props 1`] = `
   >
     When
   </div>
+  <div
+    className="download-event"
+  >
+    <svg
+      className="icon"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": undefined,
+        }
+      }
+      onClick={null}
+      style={
+        Object {
+          "fill": "currentColor",
+          "height": "36px",
+          "width": "auto",
+        }
+      }
+      viewBox=""
+      xmlns=""
+    />
+    <a
+      className="ics-download"
+      href="http://localhost:8080/Ploneundefined/ics_view"
+      rel="noreferrer"
+      target="_blank"
+    >
+      Download Event
+    </a>
+  </div>
 </aside>
 `;
 
@@ -127,6 +187,36 @@ exports[`renders event details component without links to api in the text 1`] = 
     className="ui dividing sub header"
   >
     When
+  </div>
+  <div
+    className="download-event"
+  >
+    <svg
+      className="icon"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": undefined,
+        }
+      }
+      onClick={null}
+      style={
+        Object {
+          "fill": "currentColor",
+          "height": "36px",
+          "width": "auto",
+        }
+      }
+      viewBox=""
+      xmlns=""
+    />
+    <a
+      className="ics-download"
+      href="http://localhost:8080/Ploneundefined/ics_view"
+      rel="noreferrer"
+      target="_blank"
+    >
+      Download Event
+    </a>
   </div>
 </aside>
 `;
