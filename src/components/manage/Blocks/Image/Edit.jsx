@@ -15,7 +15,6 @@ import cx from 'classnames';
 import { isEqual } from 'lodash';
 
 import { ImageSidebar, SidebarPortal } from '@plone/volto/components';
-import { withBlockExtensions } from '@plone/volto/helpers';
 import { createContent } from '@plone/volto/actions';
 import {
   flattenToAppURL,
@@ -104,12 +103,13 @@ class Edit extends Component {
   componentDidMount() {
     ///bbb
     if (this.props.data.url) {
+      const sourceUrl = flattenToAppURL(this.props.data.url);
       this.props.onChangeBlock(this.props.block, {
         ...this.props.data,
         source: [
           {
-            '@id': flattenToAppURL(this.props.data.url),
-            title: flattenToAppURL(this.props.data.url),
+            '@id': sourceUrl,
+            title: sourceUrl,
           },
         ],
       });
@@ -290,7 +290,6 @@ class Edit extends Component {
 
 export default compose(
   injectIntl,
-  withBlockExtensions,
   connect(
     (state, ownProps) => ({
       request: state.content.subrequests[ownProps.block] || {},

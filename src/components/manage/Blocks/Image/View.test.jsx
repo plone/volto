@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
-import View from './View';
+import { View } from './View';
 
 const mockStore = configureStore();
 
@@ -15,9 +15,21 @@ const store = mockStore({
   },
 });
 
+jest.mock('../../../../helpers/Extensions/withBlockExtensions', () => {
+  const originalModule = jest.requireActual(
+    '../../../../helpers/Extensions/withBlockExtensions',
+  );
+  return {
+    __esModule: true,
+    ...originalModule,
+  };
+});
+
 describe('Image View Component', () => {
   test('renders a view image component with a local image', () => {
-    const { getByRole } = render(<View data={{ url: '/image.jpg' }} />);
+    const { getByRole } = render(
+      <View data={{ url: '/image.jpg' }} extensions={{}} variation={{}} />,
+    );
     const img = getByRole('img');
     expect(img).toHaveAttribute('src', '/image.jpg/@@images/image');
     expect(img).toHaveAttribute('loading', 'lazy');
@@ -26,7 +38,9 @@ describe('Image View Component', () => {
     const { container, getByRole } = render(
       <Provider store={store}>
         <MemoryRouter>
-          <View data={{ url: '/image.jpg', href: '/front-page' }} />
+          <View
+            data={{ url: '/image.jpg', href: [{ '@id': '/front-page' }] }}
+          />
         </MemoryRouter>
       </Provider>,
     );
@@ -50,7 +64,7 @@ describe('Image View Component', () => {
         <View
           data={{
             url: 'https://plone.org/logo.jpg',
-            href: 'http://front-page',
+            href: [{ '@id': 'http://front-page' }],
           }}
         />
       </Provider>,
