@@ -266,6 +266,27 @@ const messages = defineMessages({
     id: 'All',
     defaultMessage: 'All',
   },
+  linkIntegrityMessageHeader: {
+    id: 'Potential link breakage',
+    defaultMessage: 'Potential link breakage',
+  },
+  linkIntegrityMessageBody: {
+    id:
+      'By deleting this item, you will break ' +
+      'links that exist in the items listed below. ' +
+      'If this is indeed what you want to do, ' +
+      'we recommend that remove these references first.',
+    defaultMessage:
+      'By deleting this item, ' +
+      'you will break links that exist in the items ' +
+      'listed below. If this is indeed what you ' +
+      'want to do, we recommend that remove' +
+      'these references first.',
+  },
+  linkIntegrityMessageExtra: {
+    id: 'This Page is referenced by the following items:',
+    defaultMessage: 'This Page is referenced by the following items:',
+  },
 });
 
 /**
@@ -1161,12 +1182,15 @@ class Contents extends Component {
                         </ul>
                         {this.state.linkIntegrityBreakages.length > 0 ? (
                           <div>
-                            <h3>Potential link breakage</h3>
+                            <h3>
+                              {this.props.intl.formatMessage(
+                                messages.linkIntegrityMessageHeader,
+                              )}
+                            </h3>
                             <p>
-                              By deleting this item, you will break links that
-                              exist in the items listed below. If this is indeed
-                              what you want to do, we recommend that you remove
-                              these references first.
+                              {this.props.intl.formatMessage(
+                                messages.linkIntegrityMessageBody,
+                              )}
                             </p>
                             <ul className="content">
                               {map(
@@ -1175,8 +1199,9 @@ class Contents extends Component {
                                   <li key={item['@id']}>
                                     <a href={item['@id']}>{item.title}</a>
                                     <p>
-                                      This Page is referenced by the following
-                                      items:
+                                      {this.props.intl.formatMessage(
+                                        messages.linkIntegrityMessageExtra,
+                                      )}
                                     </p>
                                     <ul className="content">
                                       {map(item.breaches, (breach) => (
