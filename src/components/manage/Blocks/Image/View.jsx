@@ -16,7 +16,7 @@ import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
  * @extends Component
  */
 const View = ({ data, detached }) => (
-  <p
+  <div
     className={cx(
       'block image align',
       {
@@ -77,7 +77,7 @@ const View = ({ data, detached }) => (
         })()}
       </>
     )}
-  </p>
+  </div>
 );
 
 /**
