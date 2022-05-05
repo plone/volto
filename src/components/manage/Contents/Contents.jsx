@@ -47,7 +47,7 @@ import {
   orderContent,
   sortContent,
   updateColumnsContent,
-  fcDelete,
+  linkIntegrityCheck,
 } from '@plone/volto/actions';
 import Indexes, { defaultIndexes } from '@plone/volto/constants/Indexes';
 import {
@@ -291,7 +291,7 @@ class Contents extends Component {
     orderContent: PropTypes.func.isRequired,
     sortContent: PropTypes.func.isRequired,
     updateColumnsContent: PropTypes.func.isRequired,
-    fcDelete: PropTypes.func.isRequired,
+    linkIntegrityCheck: PropTypes.func.isRequired,
     clipboardRequest: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
@@ -435,7 +435,7 @@ class Contents extends Component {
       this.state.itemsToDelete.length > 0
     ) {
       this.setState({
-        linkIntegrityBreakages: await this.props.fcDelete(
+        linkIntegrityBreakages: await this.props.linkIntegrityCheck(
           map(this.state.itemsToDelete, (item) =>
             this.getFieldById(item, 'UID'),
           ),
@@ -1881,7 +1881,7 @@ export const __test__ = compose(
       orderContent,
       sortContent,
       updateColumnsContent,
-      fcDelete,
+      linkIntegrityCheck,
     },
   ),
 )(Contents);
@@ -1922,7 +1922,7 @@ export default compose(
       orderContent,
       sortContent,
       updateColumnsContent,
-      fcDelete,
+      linkIntegrityCheck,
     },
   ),
   asyncConnect([
