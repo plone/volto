@@ -101,7 +101,7 @@ export class DatetimeWidgetComponent extends Component {
       // if passed value matches the construction time, we guess it's a default
       isDefault:
         parseDateTime(
-          this.props.intl.locale,
+          this.props.lang,
           this.props.value,
           undefined,
           this.moment,
@@ -111,7 +111,7 @@ export class DatetimeWidgetComponent extends Component {
 
   getInternalValue() {
     return parseDateTime(
-      this.props.intl.locale,
+      this.props.lang,
       this.props.value,
       undefined,
       this.moment,

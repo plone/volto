@@ -74,7 +74,7 @@ exports[`Diff renders a diff component 1`] = `
                   datetime="2017-04-19T14:09:35+02:00"
                   title="Wednesday, April 19, 2017 at 12:09 PM"
                 >
-                  04/19/2017
+                  Wednesday, April 19, 2017 at 12:09 PM
                 </time>
                 ,  
                 Web Admin
@@ -101,7 +101,7 @@ exports[`Diff renders a diff component 1`] = `
                     datetime="2017-04-19T14:09:36+02:00"
                     title="Wednesday, April 19, 2017 at 12:09 PM"
                   >
-                    04/19/2017
+                    Wednesday, April 19, 2017 at 12:09 PM
                   </time>
                   ,  
                   Web Admin
@@ -121,7 +121,7 @@ exports[`Diff renders a diff component 1`] = `
                     datetime="2017-04-19T14:09:35+02:00"
                     title="Wednesday, April 19, 2017 at 12:09 PM"
                   >
-                    04/19/2017
+                    Wednesday, April 19, 2017 at 12:09 PM
                   </time>
                   ,  
                   Web Admin
@@ -153,7 +153,7 @@ exports[`Diff renders a diff component 1`] = `
                   datetime="2017-04-19T14:09:36+02:00"
                   title="Wednesday, April 19, 2017 at 12:09 PM"
                 >
-                  04/19/2017
+                  Wednesday, April 19, 2017 at 12:09 PM
                 </time>
                 ,  
                 Web Admin
@@ -180,7 +180,7 @@ exports[`Diff renders a diff component 1`] = `
                     datetime="2017-04-19T14:09:36+02:00"
                     title="Wednesday, April 19, 2017 at 12:09 PM"
                   >
-                    04/19/2017
+                    Wednesday, April 19, 2017 at 12:09 PM
                   </time>
                   ,  
                   Web Admin
@@ -200,7 +200,7 @@ exports[`Diff renders a diff component 1`] = `
                     datetime="2017-04-19T14:09:35+02:00"
                     title="Wednesday, April 19, 2017 at 12:09 PM"
                   >
-                    04/19/2017
+                    Wednesday, April 19, 2017 at 12:09 PM
                   </time>
                   ,  
                   Web Admin
