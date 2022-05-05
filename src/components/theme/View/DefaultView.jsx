@@ -7,9 +7,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
 
-import { Container, Image } from 'semantic-ui-react';
+import { Container, Segment, Grid, Label } from 'semantic-ui-react';
 import { map } from 'lodash';
 import config from '@plone/volto/registry';
+import { getSchema } from '@plone/volto/actions';
+import { getWidget } from '@plone/volto/helpers/Widget/utils';
 
 import {
   getBlocksFieldname,
@@ -17,6 +19,7 @@ import {
   hasBlocksData,
   getBaseUrl,
 } from '@plone/volto/helpers';
+import { useDispatch, useSelector } from 'react-redux';
 
 const messages = defineMessages({
   unknownBlock: {
@@ -32,8 +35,25 @@ const messages = defineMessages({
  * @returns {string} Markup of the component.
  */
 const DefaultView = ({ content, intl, location }) => {
+  const dispatch = useDispatch();
   const blocksFieldname = getBlocksFieldname(content);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
+  const { views } = config.widgets;
+  const contentSchema = useSelector((state) => state.schema?.schema);
+  const fieldsetsToExclude = [
+    'categorization',
+    'dates',
+    'ownership',
+    'settings',
+  ];
+  const fieldsets = contentSchema?.fieldsets.filter(
+    (fs) => !fieldsetsToExclude.includes(fs.id),
+  );
+
+  React.useEffect(() => {
+    dispatch(getSchema(content['@type'], location.pathname));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return hasBlocksData(content) ? (
     <div id="page-document" className="ui container">
@@ -61,30 +81,35 @@ const DefaultView = ({ content, intl, location }) => {
     </div>
   ) : (
     <Container id="page-document">
-      <h1 className="documentFirstHeading">{content.title}</h1>
-      {content.description && (
-        <p className="documentDescription">{content.description}</p>
-      )}
-      {content.image && (
-        <Image
-          className="document-image"
-          src={content.image.scales.thumb.download}
-          floated="right"
-        />
-      )}
-      {content.remoteUrl && (
-        <span>
-          The link address is:
-          <a href={content.remoteUrl}>{content.remoteUrl}</a>
-        </span>
-      )}
-      {content.text && (
-        <div
-          dangerouslySetInnerHTML={{
-            __html: content.text.data,
-          }}
-        />
-      )}
+      {fieldsets?.map((fs) => {
+        return (
+          <>
+            {fs.id !== 'default' && <h2>{fs.title}</h2>}
+            {fs.fields?.map((f, key) => {
+              let field = {
+                ...contentSchema?.properties[f],
+                id: f,
+                widget: getWidget(f, contentSchema?.properties[f]),
+              };
+              let Widget = views?.getWidget(field);
+              return f !== 'title' ? (
+                <Segment basic>
+                  <Grid celled="internally" key={key}>
+                    <Grid.Row>
+                      <Label>{field.title}:</Label>
+                    </Grid.Row>
+                    <Grid.Row>
+                      <Widget value={content[f]} />
+                    </Grid.Row>
+                  </Grid>
+                </Segment>
+              ) : (
+                <Widget key={key} value={content[f]} />
+              );
+            })}
+          </>
+        );
+      })}
     </Container>
   );
 };
