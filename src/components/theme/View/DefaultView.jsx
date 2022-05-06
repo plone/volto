@@ -99,7 +99,9 @@ const DefaultView = ({ content, intl, location }) => {
                       <Label>{field.title}:</Label>
                     </Grid.Row>
                     <Grid.Row>
-                      <Widget value={content[f]} />
+                      <Segment basic>
+                        <Widget value={content[f]} />
+                      </Segment>
                     </Grid.Row>
                   </Grid>
                 </Segment>
