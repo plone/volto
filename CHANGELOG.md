@@ -9,6 +9,8 @@
 
 ### Feature
 
+- added default placeholder for videos to embed them more lightly @giuliaghisini
+
 ### Bugfix
 
 - Fix Search page visit crashes /contents view @dobri1408
