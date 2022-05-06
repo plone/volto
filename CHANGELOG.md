@@ -10,6 +10,7 @@
 ### Feature
 
 - added default placeholder for videos to embed them more lightly @giuliaghisini
+- added widgets for path types in QueryWidget. @giuliaghisini
 
 ### Bugfix
 
