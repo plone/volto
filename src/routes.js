@@ -202,7 +202,7 @@ export const defaultRoutes = [
     component: Edit,
   },
   {
-    path: '/**/history',
+    path: '/**/pageHistory',
     component: History,
   },
   {

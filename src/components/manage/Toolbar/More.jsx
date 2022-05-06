@@ -190,7 +190,7 @@ class More extends Component {
               {this.props.content['@type'] !== 'Plone Site' && (
                 // Plone Site does not have history (yet)
                 <li>
-                  <Link to={`${path}/history`}>
+                  <Link to={`${path}/pageHistory`}>
                     <div>
                       <span className="pastanaga-menu-label">
                         {historyAction?.title ||
