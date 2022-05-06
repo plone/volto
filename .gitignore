@@ -42,6 +42,7 @@ pip-selfcheck.json
 pyvenv.cfg
 share
 /api/lib64
+lib64
 
 # locales
 locales/*.json
@@ -67,3 +68,4 @@ public/critical.css
 
 # Sphinx and MyST
 docs/_build/
+/.python-version

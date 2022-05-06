@@ -59,6 +59,7 @@ export BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 export ScrollToTop from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
 export {
   getBoolean,
+  getVocabName,
   getVocabFromHint,
   getVocabFromField,
   getVocabFromItems,
@@ -78,6 +79,7 @@ export {
   parseDateTime,
   normalizeLanguageName,
   hasApiExpander,
+  replaceItemOfArray,
 } from '@plone/volto/helpers/Utils/Utils';
 export { messages } from './MessageLabels/MessageLabels';
 export {
@@ -94,3 +96,4 @@ export { useDetectClickOutside } from './Utils/useDetectClickOutside';
 export { usePrevious } from './Utils/usePrevious';
 export { usePagination } from './Utils/usePagination';
 export useUndoManager from './UndoManager/useUndoManager';
+export { getCookieOptions } from './Cookies/cookies';

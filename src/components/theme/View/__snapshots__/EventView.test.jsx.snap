@@ -228,6 +228,36 @@ exports[`renders an event view component with all props 1`] = `
             Visit external website
           </a>
         </p>
+        <div
+          className="download-event"
+        >
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "36px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+          <a
+            className="ics-download"
+            href="http://localhost:8080/Ploneundefined/ics_view"
+            rel="noreferrer"
+            target="_blank"
+          >
+            Download Event
+          </a>
+        </div>
       </aside>
     </div>
     <div
@@ -304,6 +334,36 @@ exports[`renders an event view component with only required props 1`] = `
             4:20 PM
           </span>
         </p>
+        <div
+          className="download-event"
+        >
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "36px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+          <a
+            className="ics-download"
+            href="http://localhost:8080/Ploneundefined/ics_view"
+            rel="noreferrer"
+            target="_blank"
+          >
+            Download Event
+          </a>
+        </div>
       </aside>
     </div>
     <div
@@ -375,6 +435,36 @@ exports[`renders an event view component without links to api in the text 1`] = 
             4:20 PM
           </span>
         </p>
+        <div
+          className="download-event"
+        >
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "36px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+          <a
+            className="ics-download"
+            href="http://localhost:8080/Ploneundefined/ics_view"
+            rel="noreferrer"
+            target="_blank"
+          >
+            Download Event
+          </a>
+        </div>
       </aside>
     </div>
     <div
