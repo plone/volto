@@ -4,8 +4,9 @@ exports[`UrlWidget renders an URL view widget component 1`] = `
 <a
   className="metadata url widget"
   href="http://foobar.com"
-  rel="noreferrer"
+  rel="noopener noreferrer"
   target="_blank"
+  title={null}
 >
   http://foobar.com
 </a>
@@ -15,8 +16,9 @@ exports[`UrlWidget renders an URL view widget component with children 1`] = `
 <a
   className="metadata url widget"
   href="http://foobar.com"
-  rel="noreferrer"
+  rel="noopener noreferrer"
   target="_blank"
+  title={null}
 >
   <strong>
     http://foobar.com

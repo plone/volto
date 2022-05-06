@@ -1,16 +1,16 @@
 import React from 'react';
 import cx from 'classnames';
+import { UniversalLink } from '@plone/volto/components';
 
 const UrlWidget = ({ value, children, className }) =>
   value ? (
-    <a
+    <UniversalLink
       href={value}
       className={cx(className, 'url', 'widget')}
-      rel="noreferrer"
-      target="_blank"
+      openLinkInNewTab={true}
     >
       {children ? children(value) : value}
-    </a>
+    </UniversalLink>
   ) : (
     ''
   );
