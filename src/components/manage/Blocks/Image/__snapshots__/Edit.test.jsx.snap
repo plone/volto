@@ -4,10 +4,13 @@ exports[`renders an edit image block component 1`] = `
 <div
   className="block image align center"
 >
-  <img
-    alt=""
-    className=""
-    src="image"
-  />
+  <figure
+    className="figure center medium"
+  >
+    <img
+      alt=""
+      src="image"
+    />
+  </figure>
 </div>
 `;

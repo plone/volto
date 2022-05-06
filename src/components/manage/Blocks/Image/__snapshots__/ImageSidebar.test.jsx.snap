@@ -209,6 +209,96 @@ exports[`renders an Image Block Sidebar component 1`] = `
       </div>
     </div>
     <div
+      className="inline field text field-wrapper-description"
+    >
+      <div
+        className="ui grid"
+      >
+        <div
+          className="stretched row"
+        >
+          <div
+            className="four wide column"
+          >
+            <div
+              className="wrapper"
+            >
+              <label
+                htmlFor="field-description"
+                id="fieldset-undefined-field-label-description"
+              >
+                Description
+              </label>
+            </div>
+          </div>
+          <div
+            className="eight wide column"
+          >
+            <div
+              className="ui input"
+            >
+              <input
+                id="field-description"
+                maxLength={null}
+                minLength={null}
+                name="description"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onClick={[Function]}
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="inline field text field-wrapper-rights"
+    >
+      <div
+        className="ui grid"
+      >
+        <div
+          className="stretched row"
+        >
+          <div
+            className="four wide column"
+          >
+            <div
+              className="wrapper"
+            >
+              <label
+                htmlFor="field-rights"
+                id="fieldset-undefined-field-label-rights"
+              >
+                Rights
+              </label>
+            </div>
+          </div>
+          <div
+            className="eight wide column"
+          >
+            <div
+              className="ui input"
+            >
+              <input
+                id="field-rights"
+                maxLength={null}
+                minLength={null}
+                name="rights"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onClick={[Function]}
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
       className="inline field"
     >
       <div
