@@ -3324,6 +3324,16 @@ msgid "published"
 msgstr "Pubblicato"
 
 #: components/manage/Widgets/QueryWidget
+# defaultMessage: Current path (./)
+msgid "query-widget-currentPath"
+msgstr "Percorso corrente (./)"
+
+#: components/manage/Widgets/QueryWidget
+# defaultMessage: Parent path (../)
+msgid "query-widget-parentPath"
+msgstr "Percorso padre (../)"
+
+#: components/manage/Widgets/QueryWidget
 # defaultMessage: Select…
 msgid "querystring-widget-select"
 msgstr "Seleziona…"

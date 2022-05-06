@@ -347,7 +347,7 @@ export class ObjectBrowserWidgetComponent extends Component {
           >
             {items.map((item) => this.renderLabel(item))}
 
-            {items.length === 0 && this.props.mode === 'multiple' && (
+            {items.length === 0 && (
               <div className="placeholder" ref={this.placeholderRef}>
                 {this.props.intl.formatMessage(messages.placeholder)}
               </div>

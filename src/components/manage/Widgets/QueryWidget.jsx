@@ -11,7 +11,8 @@ import { Button, Form, Grid, Input, Label } from 'semantic-ui-react';
 import { filter, remove, toPairs, groupBy, isEmpty, map } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import { getQuerystring } from '@plone/volto/actions';
-import { Icon } from '@plone/volto/components';
+import { addAppURL, flattenToAppURL } from '@plone/volto/helpers';
+import { Icon, ObjectBrowserWidget } from '@plone/volto/components';
 import { format, parse } from 'date-fns';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import cx from 'classnames';
@@ -37,6 +38,14 @@ const messages = defineMessages({
   select: {
     id: 'querystring-widget-select',
     defaultMessage: 'Select…',
+  },
+  currentPath: {
+    id: 'query-widget-currentPath',
+    defaultMessage: 'Current path (./)',
+  },
+  parentPath: {
+    id: 'query-widget-parentPath',
+    defaultMessage: 'Parent path (../)',
   },
 });
 
@@ -113,7 +122,7 @@ export class QuerystringWidgetComponent extends Component {
    * @param {number} index Row index.
    * @returns {Object} Widget.
    */
-  getWidget(row, index, Select) {
+  getWidget(row, index, Select, intl) {
     const props = {
       fluid: true,
       value: row.v,
@@ -121,6 +130,7 @@ export class QuerystringWidgetComponent extends Component {
     };
     const values = this.props.indexes[row.i].values;
 
+    const operator = this.props.indexes[row.i].operators[row.o];
     switch (this.props.indexes[row.i].operators[row.o].widget) {
       case null:
         return <span />;
@@ -199,13 +209,68 @@ export class QuerystringWidgetComponent extends Component {
           </Form.Field>
         );
       case 'ReferenceWidget':
+        return (
+          <Form.Field style={{ flex: '1 0 auto', maxWidth: '92%' }}>
+            <ObjectBrowserWidget
+              style={{ flex: '1 0 auto' }}
+              onChange={(id, data) => {
+                this.onChangeValue(index, addAppURL(data?.[0]?.['@id']));
+              }}
+              placeholder="No item selected"
+              value={
+                props.value
+                  ? [
+                      {
+                        '@id': flattenToAppURL(props.value),
+                        title: flattenToAppURL(props.value),
+                      },
+                    ]
+                  : []
+              }
+              mode="link"
+              wrapped={false}
+            />
+          </Form.Field>
+        );
+      case 'RelativePathWidget':
+        const relativePathOptions = [
+          {
+            label: intl.formatMessage(messages.currentPath),
+            value: './',
+          },
+          {
+            label: intl.formatMessage(messages.parentPath),
+            value: '../',
+          },
+        ];
+        return (
+          <Form.Field style={{ flex: '1 0 auto', maxWidth: '92%' }}>
+            <Select
+              {...props}
+              className="react-select-container"
+              classNamePrefix="react-select"
+              options={relativePathOptions}
+              styles={customSelectStyles}
+              placeholder={this.props.intl.formatMessage(messages.select)}
+              theme={selectTheme}
+              components={{ DropdownIndicator, Option }}
+              onChange={(data) => {
+                this.onChangeValue(index, data.value);
+              }}
+              isMulti={false}
+              value={
+                relativePathOptions.filter((p) => p.value === props.value)?.[0]
+              }
+            />
+          </Form.Field>
+        );
       default:
         // if (row.o === 'plone.app.querystring.operation.string.relativePath') {
         //   props.onChange = data => this.onChangeValue(index, data.target.value);
         // }
         return (
           <Form.Field style={{ flex: '1 0 auto' }}>
-            <Input {...props} />
+            <Input {...props} description={operator.description} />
           </Form.Field>
         );
     }
@@ -383,7 +448,7 @@ export class QuerystringWidgetComponent extends Component {
                         </Button>
                       )}
                     </div>
-                    {this.getWidget(row, index, Select)}
+                    {this.getWidget(row, index, Select, intl)}
                     {this.props.indexes[row.i].operators[row.o].widget && (
                       <Button
                         onClick={(event) => {

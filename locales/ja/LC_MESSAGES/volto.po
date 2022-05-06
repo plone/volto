@@ -3332,6 +3332,16 @@ msgid "published"
 msgstr "公開中"
 
 #: components/manage/Widgets/QueryWidget
+# defaultMessage: Current path (./)
+msgid "query-widget-currentPath"
+msgstr ""
+
+#: components/manage/Widgets/QueryWidget
+# defaultMessage: Parent path (../)
+msgid "query-widget-parentPath"
+msgstr ""
+
+#: components/manage/Widgets/QueryWidget
 # defaultMessage: Select…
 msgid "querystring-widget-select"
 msgstr "選択してください"

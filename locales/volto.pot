@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-05-03T07:46:48.968Z\n"
+"POT-Creation-Date: 2022-05-06T14:09:28.313Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -3323,6 +3323,16 @@ msgstr ""
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Published
 msgid "published"
+msgstr ""
+
+#: components/manage/Widgets/QueryWidget
+# defaultMessage: Current path (./)
+msgid "query-widget-currentPath"
+msgstr ""
+
+#: components/manage/Widgets/QueryWidget
+# defaultMessage: Parent path (../)
+msgid "query-widget-parentPath"
 msgstr ""
 
 #: components/manage/Widgets/QueryWidget
