@@ -16,7 +16,7 @@ import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
  * @extends Component
  */
 const View = ({ data, detached }) => (
-  <p
+  <div
     className={cx(
       'block image align',
       {
@@ -30,34 +30,64 @@ const View = ({ data, detached }) => (
       <>
         {(() => {
           const image = (
-            <img
-              className={cx({
-                'full-width': data.align === 'full',
-                large: data.size === 'l',
-                medium: data.size === 'm',
-                small: data.size === 's',
-              })}
-              src={
-                isInternalURL(data.url)
-                  ? // Backwards compat in the case that the block is storing the full server URL
-                    (() => {
-                      if (data.size === 'l')
+            <figure
+              className={cx(
+                'figure',
+                {
+                  center: !Boolean(data.align),
+                  detached,
+                },
+                data.align,
+                {
+                  'full-width': data.align === 'full',
+                  large: data.size === 'l',
+                  medium: data.size === 'm' || !data.size,
+                  small: data.size === 's',
+                },
+              )}
+            >
+              <img
+                loading="lazy"
+                src={
+                  isInternalURL(data.url)
+                    ? // Backwards compat in the case that the block is storing the full server URL
+                      (() => {
+                        if (data.size === 'l')
+                          return `${flattenToAppURL(data.url)}/@@images/image`;
+                        if (data.size === 'm')
+                          return `${flattenToAppURL(
+                            data.url,
+                          )}/@@images/image/preview`;
+                        if (data.size === 's')
+                          return `${flattenToAppURL(
+                            data.url,
+                          )}/@@images/image/mini`;
                         return `${flattenToAppURL(data.url)}/@@images/image`;
-                      if (data.size === 'm')
-                        return `${flattenToAppURL(
-                          data.url,
-                        )}/@@images/image/preview`;
-                      if (data.size === 's')
-                        return `${flattenToAppURL(
-                          data.url,
-                        )}/@@images/image/mini`;
-                      return `${flattenToAppURL(data.url)}/@@images/image`;
-                    })()
-                  : data.url
-              }
-              alt={data.alt || ''}
-              loading="lazy"
-            />
+                      })()
+                    : data.url
+                }
+                alt={data.alt || ''}
+              />
+              {data?.description && (
+                <figcaption className="description">
+                  {data?.description}
+                </figcaption>
+              )}
+              {data?.rights && (
+                <>
+                  <figcaption
+                    className={cx('copyright', {
+                      nodescription: !data?.description,
+                    })}
+                  >
+                    <em>Copyright: </em>
+                  </figcaption>
+                  <figcaption className="rights">
+                    <em>&mdash; {data?.rights}</em>
+                  </figcaption>
+                </>
+              )}
+            </figure>
           );
           if (data.href) {
             return (
@@ -74,7 +104,7 @@ const View = ({ data, detached }) => (
         })()}
       </>
     )}
-  </p>
+  </div>
 );
 
 /**

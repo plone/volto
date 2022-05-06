@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { getContent } from '@plone/volto/actions';
 import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
 import { Accordion, Grid, Segment } from 'semantic-ui-react';
@@ -31,6 +33,14 @@ const messages = defineMessages({
   AltText: {
     id: 'Alt text',
     defaultMessage: 'Alt text',
+  },
+  Description: {
+    id: 'Description',
+    defaultMessage: 'Description',
+  },
+  Rights: {
+    id: 'Rights',
+    defaultMessage: 'Rights',
   },
   AltTextHint: {
     id: 'Alt text hint',
@@ -77,13 +87,32 @@ const ImageSidebar = ({
 }) => {
   const [activeAccIndex, setActiveAccIndex] = useState(0);
 
+  const href = flattenToAppURL(data.url);
+
+  const dispatch = useDispatch();
+
   function handleAccClick(e, titleProps) {
     const { index } = titleProps;
     const newIndex = activeAccIndex === index ? -1 : index;
 
     setActiveAccIndex(newIndex);
   }
-
+  React.useEffect(() => {
+    if (href && !data.rights) {
+      dispatch(getContent(flattenToAppURL(href), null, block)).then((resp) => {
+        onChangeBlock(block, {
+          ...data,
+          ...(!data.rights && { rights: resp.rights }),
+        });
+      });
+    }
+    if (!href) {
+      onChangeBlock(block, {
+        ...data,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [href]);
   return (
     <Segment.Group raised>
       <header className="header pulled">
@@ -186,6 +215,44 @@ const ImageSidebar = ({
                 onChangeBlock(block, {
                   ...data,
                   alt: value,
+                });
+              }}
+            />
+            <TextWidget
+              id="description"
+              title={intl.formatMessage(messages.Description)}
+              required={false}
+              value={data.description}
+              icon={data.description ? clearSVG : null}
+              iconAction={() =>
+                onChangeBlock(block, {
+                  ...data,
+                  description: '',
+                })
+              }
+              onChange={(name, value) => {
+                onChangeBlock(block, {
+                  ...data,
+                  description: value,
+                });
+              }}
+            />
+            <TextWidget
+              id="rights"
+              title={intl.formatMessage(messages.Rights)}
+              required={false}
+              value={data.rights}
+              icon={data.rights ? clearSVG : null}
+              iconAction={() =>
+                onChangeBlock(block, {
+                  ...data,
+                  rights: '',
+                })
+              }
+              onChange={(name, value) => {
+                onChangeBlock(block, {
+                  ...data,
+                  rights: value,
                 });
               }}
             />

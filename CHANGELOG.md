@@ -9,6 +9,8 @@
 
 ### Feature
 
+- Add description and rights field to image Block @kindermann #1681
+
 ### Bugfix
 
 - Fix sidebar full size bottom opacity on edit page when sidebar is collapsed @ichim-david
