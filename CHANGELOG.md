@@ -17,6 +17,7 @@
 - Fixed secure cookie option. @giuliaghisini
 - Changed addon order in addon controlpanel to mimic Classic UI @erral
 - Fixed error when loading content in a language for which a Volto translation is not available. @davisagli
+- Fix for clipped dropdown menus when the table has few or no records in Contents view @mihaislobozeanu
 
 ### Internal
 
@@ -253,7 +254,6 @@
 - Overwrite current block on insert new block. @robgietema
 - Fix hot reload on updates related to the config object because of `VersionOverview` component @sneridagh
 - Fix error when lock data is gone after an invariant error. @robgietema
-- Fix for clipped dropdown menus when the table has few or no records in Contents view @mihaislobozeanu
 - Protect against ghost content loading and scroll to top @reebalazs
 
 ### Internal
