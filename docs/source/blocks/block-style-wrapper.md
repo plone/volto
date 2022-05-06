@@ -63,7 +63,7 @@ The signature for a `schemaEnhancer` is `({schema, formData, intl})`.
 
 ## The `styles` field
 
-The `style` field is mapped to an `objectWidget`.
+The `styles` field is mapped to an `objectWidget`.
 The `stylesSchema` adds the fields into this field, creating an object that is the sum of all of the widgets assigned to it and its values.
 
 ```json
