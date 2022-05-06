@@ -821,9 +821,35 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     h4 {
       margin-top: 0;
     }
+
     span {
-      font-size: 0.9em;
       color: rgba(0, 0, 0, 0.87);
+      font-size: 0.9em;
+    }
+  }
+
+  &.event {
+    .listing-body {
+      > div {
+        display: flex;
+
+        > div {
+          padding-right: 40px;
+
+          p {
+            margin: 0;
+          }
+
+          h5 {
+            margin: 0 0 2px 0;
+            color: rgba(0, 0, 0, 0.87);
+          }
+        }
+      }
+
+      h4 {
+        margin-bottom: 10px;
+      }
     }
   }
 }
