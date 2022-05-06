@@ -15,6 +15,11 @@ exports[`renders a view hero component 1`] = `
         className="hero-image"
         role="img"
         src="/heroimage.jpg/@@images/image/listing"
+        style={
+          Object {
+            "aspect-ratio": "undefined",
+          }
+        }
       />
     </picture>
     <noscript

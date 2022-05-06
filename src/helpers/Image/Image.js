@@ -72,6 +72,7 @@ export const getImageAttributes = (
       const scale = sortedScales[0];
       attrs.src = scale?.download ?? image.download;
 
+      attrs.aspectRatio = (image.width / image.height).toFixed(2);
       if (maxSize !== DEFAULT_MAX_SIZE) {
         const maxScale = sortedScales[sortedScales.length - 1];
         attrs.width = maxScale.width;

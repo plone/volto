@@ -9,6 +9,11 @@ Array [
       alt=""
       role="img"
       src="/photo.png/@@images/image/listing"
+      style={
+        Object {
+          "aspect-ratio": "undefined",
+        }
+      }
     />
   </picture>,
   <noscript
@@ -40,6 +45,11 @@ Array [
       alt="External picsum photo"
       role="img"
       src="https://picsum.photos/200/300"
+      style={
+        Object {
+          "aspect-ratio": "undefined",
+        }
+      }
     />
   </picture>,
   <noscript
@@ -72,6 +82,11 @@ Array [
       className="photo-image"
       role="presentation"
       src="http://localhost:8080/Plone/test-images/@@images/image/listing"
+      style={
+        Object {
+          "aspect-ratio": "NaN",
+        }
+      }
     />
   </picture>,
   <noscript
@@ -104,6 +119,11 @@ Array [
       className="photo-image"
       role="img"
       src="http://localhost:8080/Plone/test-images/@@images/image/listing"
+      style={
+        Object {
+          "aspect-ratio": "NaN",
+        }
+      }
     />
   </picture>,
   <noscript
@@ -136,6 +156,11 @@ Array [
       className="photo-image"
       role="presentation"
       src="http://localhost:8080/Plone/test-images/@@images/image/listing"
+      style={
+        Object {
+          "aspect-ratio": "NaN",
+        }
+      }
       width={200}
     />
   </picture>,
@@ -169,6 +194,11 @@ Array [
       className="photo-image"
       role="presentation"
       src="http://localhost:8080/Plone/test-images/@@images/image/listing"
+      style={
+        Object {
+          "aspect-ratio": "NaN",
+        }
+      }
     />
   </picture>,
   <noscript
@@ -201,6 +231,11 @@ Array [
       className="photo-image"
       role="img"
       src="http://localhost:8080/Plone/test-images/@@images/image/listing"
+      style={
+        Object {
+          "aspect-ratio": "NaN",
+        }
+      }
     />
   </picture>,
   <noscript
@@ -233,6 +268,11 @@ Array [
       className="photo-image"
       role="presentation"
       src="/photo.png/@@images/image/listing"
+      style={
+        Object {
+          "aspect-ratio": "undefined",
+        }
+      }
     />
   </picture>,
   <noscript

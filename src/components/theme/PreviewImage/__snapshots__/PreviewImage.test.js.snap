@@ -40,6 +40,11 @@ Array [
       alt="Item title"
       role="img"
       src="http://localhost:3000/something"
+      style={
+        Object {
+          "aspect-ratio": "undefined",
+        }
+      }
     />
   </picture>,
   <noscript
@@ -71,6 +76,11 @@ Array [
       alt="Item title"
       role="img"
       src="http://localhost:3000/something"
+      style={
+        Object {
+          "aspect-ratio": "undefined",
+        }
+      }
     />
   </picture>,
   <noscript
@@ -103,6 +113,11 @@ Array [
       className="extra"
       role="img"
       src="http://localhost:3000/something"
+      style={
+        Object {
+          "aspect-ratio": "undefined",
+        }
+      }
     />
   </picture>,
   <noscript

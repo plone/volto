@@ -34,12 +34,15 @@ const Image = ({
   sizes = '100vw',
   ...imageProps
 }) => {
-  const { src, srcSet, width, height } = getImageAttributes(image, {
-    imageField,
-    maxSize,
-    useOriginal,
-    minSize,
-  });
+  const { src, srcSet, width, height, aspectRatio } = getImageAttributes(
+    image,
+    {
+      imageField,
+      maxSize,
+      useOriginal,
+      minSize,
+    },
+  );
   const imageRef = useRef();
   const [srcset, setSrcset] = useState(
     critical && srcSet ? srcSet.join(', ') : null,
@@ -123,6 +126,7 @@ const Image = ({
           //loading={critical ? 'eager' : 'lazy'} //removed because this is for the placeholder.Lazy loading is made from intersectionObserver
           width={width}
           height={height}
+          style={{ 'aspect-ratio': `${aspectRatio}` }}
           {...imageProps}
           ref={imageRef}
         />

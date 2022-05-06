@@ -89,6 +89,7 @@ describe('Image', () => {
           '/test-images/@@images/image/preview 400w',
           '/test-images/@@images/image/large 768w',
         ],
+        aspectRatio: '2.00',
       });
     });
 
@@ -104,6 +105,7 @@ describe('Image', () => {
         ],
         width: 200,
         height: 100,
+        aspectRatio: '2.00',
       });
     });
 
@@ -120,6 +122,7 @@ describe('Image', () => {
           '/test-images/@@images/image/large 768w',
           '/test-images/@@images/image 1920w',
         ],
+        aspectRatio: '2.00',
       });
     });
   });
