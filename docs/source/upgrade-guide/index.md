@@ -25,20 +25,17 @@ runs if it's outdated. The generator is also able to "update" your project with
 the latest changes, and propose to you to merge the changes, so you can run it on top of your project by answering the prompt.
 ```
 
+
 (volto-upgrade-guide-15.x.x)=
 
 ## Upgrading to Volto 15.x.x
 
-## Deprecating NodeJS 12
+### Deprecating NodeJS 12
 
 Since April 30, 2022, NodeJS 12 is out of Long Term Support by the NodeJS community.
 NodeJS 12 is deprecated in Volto 13.
 Please update your projects to a NodeJS LTS version, where either 14 or 16 is supported at the moment of this writing.
 Version 16 is recommended.
-
-(volto-upgrade-guide-15.x.x)=
-
-## Upgrading to Volto 15.x.x
 
 ### Updated react-cookie library
 
