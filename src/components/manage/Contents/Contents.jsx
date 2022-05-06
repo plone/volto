@@ -619,7 +619,7 @@ class Contents extends Component {
    * @returns {undefined}
    */
   onChangeSelected(event, { value }) {
-    //event.stopPropagation();
+    event.stopPropagation();
     const { items, selected } = this.state;
 
     const filteredItems = filter(selected, (selectedItem) =>
@@ -630,6 +630,7 @@ class Contents extends Component {
 
     this.setState({
       filteredItems,
+      selectedMenuFilter: value,
     });
   }
 
@@ -1652,6 +1653,9 @@ class Contents extends Component {
                                       placeholder={this.props.intl.formatMessage(
                                         messages.filter,
                                       )}
+                                      value={
+                                        this.state.selectedMenuFilter || ''
+                                      }
                                       onChange={this.onChangeSelected}
                                       onClick={(e) => {
                                         e.preventDefault();
