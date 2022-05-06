@@ -21,6 +21,7 @@
 - Changed addon order in addon controlpanel to mimic Classic UI @erral
 - Fixed error when loading content in a language for which a Volto translation is not available. @davisagli
 - Fix field id creation in dexterity control panel to have slugified id @erral
+- Fix for clipped dropdown menus when the table has few or no records in Contents view @mihaislobozeanu
 
 ### Internal
 
