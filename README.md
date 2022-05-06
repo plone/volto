@@ -4,7 +4,8 @@
 <img align="right" width="300" alt="Volto logo png" src="./logos/VoltoLogoEra2-dark-mode.png#gh-dark-mode-only" />
 
 [![NPM](https://img.shields.io/npm/v/@plone/volto.svg)](https://www.npmjs.com/package/@plone/volto)
-[![Build Status Core](https://github.com/plone/volto/actions/workflows/core.yml/badge.svg)](https://github.com/plone/volto/actions)
+[![Unit Tests](https://github.com/plone/volto/actions/workflows/unit.yml/badge.svg)](https://github.com/plone/volto/actions/workflows/unit.yml)
+[![Acceptance Tests](https://github.com/plone/volto/actions/workflows/acceptance.yml/badge.svg)](https://github.com/plone/volto/actions/workflows/acceptance.yml)
 [![Build Status Docs](https://github.com/plone/volto/actions/workflows/docs.yml/badge.svg)](https://github.com/plone/volto/actions)
 
 ## Introduction
@@ -78,7 +79,7 @@ cd myvoltoproject
 You can bootstrap a ready Docker Plone container with all the dependencies and ready for Volto use. We recommend to use the Plone docker builds based in `pip` [plone/plone-backend](https://github.com/plone/plone-backend) image:
 
 ```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.restapi==8.18.0 plone.app.iterate==4.0.2 plone.rest==2.0.0a1 plone.app.vocabularies==4.3.0 plone.volto==3.1.0a7" -e PROFILES="plone.volto:default-homepage" plone/plone-backend
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.restapi==8.22.0 plone.volto==4.0.0a4 plone.rest==2.0.0a5 plone.app.iterate==4.0.2 plone.app.vocabularies==4.3.0" -e PROFILES="plone.volto:default-homepage" plone/plone-backend
 ```
 
 or as an alternative if you have experience with Plone and you have all the
@@ -101,9 +102,9 @@ The following KGS (or above) are also recommended, for any Plone version used.
 
 Volto always works best with latest versions of the "Frontend stack" or at least the recommended ones (in parenthesis) which are:
 
-- plone.restapi (8.21.2)
-- plone.rest (2.0.0a3)
-- plone.volto (4.0.0a3)
+- plone.restapi (8.22.0)
+- plone.rest (2.0.0a5)
+- plone.volto (4.0.0a4)
 
 and the following core packages since some features require up to date versions:
 
@@ -216,7 +217,7 @@ JavaScript-centered trainings.
 
 - Node 16: Supported since Volto 14
 - Node 14: Supported since Volto 8.8.0
-- Node 12: Supported since Volto 4
+- Node 12: Deprecated from Volto 16 onwards. It was supported since Volto 4
 - Node 10: Deprecated from Volto 13 onwards. It was supported since Volto 1 (and its predecessor "plone-react")
 
 ## Browser support
@@ -252,7 +253,7 @@ yarn
 Either using a Docker command:
 
 ```shell
-docker run -it --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS="plone.restapi==8.21.2 plone.app.iterate==4.0.2 plone.rest==2.0.0a3 plone.app.vocabularies==4.3.0 plone.volto==4.0.0a3" -e PROFILES="plone.volto:default-homepage" plone/plone-backend
+docker run -it --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS="plone.restapi==8.22.0 plone.app.iterate==4.0.2 plone.rest==2.0.0a5 plone.app.vocabularies==4.3.0 plone.volto==4.0.0a3" -e PROFILES="plone.volto:default-homepage" plone/plone-backend
 ```
 
 or using the convenience makefile command:
@@ -330,48 +331,11 @@ and alpha release can also be cut using:
 yarn release-alpha
 ```
 
-### Acceptance testing
+## Acceptance testing
 
-Volto uses [Cypress](https://www.cypress.io/) for browser-based acceptance testing.
+Here you can find a guide on how acceptance testing is done in Volto:
 
-There are a number of fixtures available covering all the configuration use cases. These fixtures have both a specific backend and frontend configuration setup and a related set of tests. The CI infrastructure runs them all automatically on every push to a branch or PR.
-
-The tests can be run in headless mode (same as the CI does), or within the Cypress user interface. The latter is the one that you run under development.
-
-### How to run acceptance tests locally (during development)
-
-When writing new acceptance tests, you usually want to minimize the time it takes to run the tests, while also being able to debug or inspect what's going on.
-
-To do so, start three individual terminal sessions for running the Plone backend, the Volto frontend, and the acceptance tests.
-
-1.  Run the backend fixture
-    ```shell
-    make test-acceptance-server
-    ```
-2.  Run the frontend fixture
-    ```shell
-    yarn cypress:start-frontend
-    ```
-3.  Run the Cypress tests for that fixture
-    ```shell
-    yarn cypress:open
-    ```
-
-Available fixtures:
-
-- Core (core or not special naming in the test commands)
-- Multilingual (multilingual)
-- Working Copy (workingCopy)
-- Core Sandbox (coresandbox)
-
-There are convenience commands for each of these fixtures. See `package.json` or `.github` CI setup for more information.
-
-#### Writing new acceptance tests
-
-Go to the `cypress/tests` folder to see existing tests. There is a directory per fixture.
-This directory is hot reloaded with your changes as you write the tests. For more information on how to write Cypress tests:
-
-    https://docs.cypress.io
+https://6.dev-docs.plone.org/volto/developer-guidelines/acceptance-tests.html
 
 ## Translations
 
