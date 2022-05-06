@@ -5,7 +5,7 @@ import React from 'react';
 import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-intl-redux';
 import express from 'express';
-import { renderToString } from 'react-dom/server';
+import { renderToPipeableStream } from 'react-dom/server';
 import { createMemoryHistory } from 'history';
 import { parse as parseUrl } from 'url';
 import { keys } from 'lodash';
@@ -38,6 +38,40 @@ import languages from '@plone/volto/constants/Languages';
 
 import configureStore from '@plone/volto/store';
 import { ReduxAsyncConnect, loadOnServer } from './helpers/AsyncConnect';
+
+function render(component, res) {
+  let didError = false;
+  const stream = renderToPipeableStream(component, {
+    onShellReady() {
+      // The content above all Suspense boundaries is ready.
+      // If something errored before we started streaming, we set the error code appropriately.
+      if (didError) {
+        res.statusCode = 500;
+      }
+      res.setHeader('Content-type', 'text/html');
+      stream.pipe(res);
+    },
+    onShellError(error) {
+      // Something errored before we could complete the shell so we emit an alternative shell.
+      res.statusCode = 500;
+      res.send(
+        '<!doctype html><p>Loading...</p><script src="clientrender.js"></script>',
+      );
+    },
+    onAllReady() {
+      // If you don't want streaming, use this instead of onShellReady.
+      // This will fire after the entire page content is ready.
+      // You can use this for crawlers or static generation.
+      // res.statusCode = didError ? 500 : 200;
+      // res.setHeader('Content-type', 'text/html');
+      // stream.pipe(res);
+    },
+    onError(err) {
+      didError = true;
+      console.error(err);
+    },
+  });
+}
 
 let locales = {};
 
@@ -98,9 +132,7 @@ server.use(function (err, req, res, next) {
     const ignoredErrors = [301, 302, 401, 404];
     if (!ignoredErrors.includes(err.status)) console.error(err);
 
-    res
-      .status(err.status || 500) // If error happens in Volto code itself error status is undefined
-      .send(`<!doctype html> ${renderToString(errorPage)}`);
+    render(errorPage, res.status(err.status || 500)); // If error happens in Volto code itself error status is undefined
   }
 });
 
@@ -158,9 +190,7 @@ function setupServer(req, res, next) {
     const ignoredErrors = [301, 302, 401, 404];
     if (!ignoredErrors.includes(error.status)) console.error(error);
 
-    res
-      .status(error.status || 500) // If error happens in Volto code itself error status is undefined
-      .send(`<!doctype html> ${renderToString(errorPage)}`);
+    render(errorPage, res.status(error.status || 500)); // If error happens in Volto code itself error status is undefined
   }
 
   if (!process.env.RAZZLE_API_PATH && req.headers.host) {
@@ -214,7 +244,7 @@ server.get('/*', (req, res) => {
 
       const context = {};
       resetServerContext();
-      const markup = renderToString(
+      const markup = (
         <ChunkExtractorManager extractor={extractor}>
           <CookiesProvider cookies={req.universalCookies}>
             <Provider store={store} onError={reactIntlErrorHandler}>
@@ -223,7 +253,7 @@ server.get('/*', (req, res) => {
               </StaticRouter>
             </Provider>
           </CookiesProvider>
-        </ChunkExtractorManager>,
+        </ChunkExtractorManager>
       );
 
       const readCriticalCss =
@@ -236,46 +266,32 @@ server.get('/*', (req, res) => {
           'Cache-Control': 'no-cache',
         });
 
-        res.status(context.error_code).send(
-          `<!doctype html>
-              ${renderToString(
-                <Html
-                  extractor={extractor}
-                  markup={markup}
-                  store={store}
-                  extractScripts={
-                    config.settings.serverConfig.extractScripts?.errorPages ||
-                    process.env.NODE_ENV !== 'production'
-                  }
-                  criticalCss={readCriticalCss(req)}
-                  apiPath={
-                    req.app.locals.detectedHost || config.settings.apiPath
-                  }
-                  publicURL={
-                    req.app.locals.detectedHost || config.settings.publicURL
-                  }
-                />,
-              )}
-            `,
+        render(
+          <Html
+            extractor={extractor}
+            markup={markup}
+            store={store}
+            extractScripts={
+              config.settings.serverConfig.extractScripts?.errorPages ||
+              process.env.NODE_ENV !== 'production'
+            }
+            criticalCss={readCriticalCss(req)}
+            apiPath={req.app.locals.detectedHost || config.settings.apiPath}
+            publicURL={req.app.locals.detectedHost || config.settings.publicURL}
+          />,
+          res.status(context.error_code),
         );
       } else {
-        res.status(200).send(
-          `<!doctype html>
-              ${renderToString(
-                <Html
-                  extractor={extractor}
-                  markup={markup}
-                  store={store}
-                  criticalCss={readCriticalCss(req)}
-                  apiPath={
-                    req.app.locals.detectedHost || config.settings.apiPath
-                  }
-                  publicURL={
-                    req.app.locals.detectedHost || config.settings.publicURL
-                  }
-                />,
-              )}
-            `,
+        render(
+          <Html
+            extractor={extractor}
+            markup={markup}
+            store={store}
+            criticalCss={readCriticalCss(req)}
+            apiPath={req.app.locals.detectedHost || config.settings.apiPath}
+            publicURL={req.app.locals.detectedHost || config.settings.publicURL}
+          />,
+          res.status(200),
         );
       }
     }, errorHandler)

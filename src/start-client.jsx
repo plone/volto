@@ -58,7 +58,7 @@ export default () => {
     hydrateRoot(
       document.getElementById('main'),
       <CookiesProvider>
-        <Provider store={store}>
+        <Provider store={store} serverState={window.__data}>
           <IntlProvider onError={reactIntlErrorHandler}>
             <ConnectedRouter history={history}>
               <ScrollToTop>

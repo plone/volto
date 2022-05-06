@@ -180,7 +180,7 @@ class Html extends Component {
         </head>
         <body className={bodyClass}>
           <div role="navigation" aria-label="Toolbar" id="toolbar" />
-          <div id="main" dangerouslySetInnerHTML={{ __html: markup }} />
+          <div id="main">{markup}</div>
           <div id="sidebar" />
           <script
             dangerouslySetInnerHTML={{
