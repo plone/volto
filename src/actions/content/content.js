@@ -244,11 +244,8 @@ export function linkIntegrityCheck(selection) {
     type: LINK_INTEGRITY_CHECK,
     mode: 'serial',
     request: {
-      op: 'post',
-      path: '@linkintegrity',
-      data: {
-        uids: selection,
-      },
+      op: 'get',
+      path: '@linkintegrity?' + selection.map((uid) => `uids=${uid}`).join('&'),
     },
   };
 }
