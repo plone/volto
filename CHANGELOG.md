@@ -9,11 +9,18 @@
 
 ### Feature
 
+- added default placeholder for videos to embed them more lightly @giuliaghisini
+
 ### Bugfix
 
+- Fix Search page visit crashes /contents view @dobri1408
 - Fix sidebar full size bottom opacity on edit page when sidebar is collapsed @ichim-david
 - Fix toolbar bottom opacity on edit page when toolbar is collapsed @ichim-david
 - Change history route name to allow pages to be named 'History'
+- Fix content view regression, height issue @danielamormocea
+- Fixed secure cookie option. @giuliaghisini
+- Changed addon order in addon controlpanel to mimic Classic UI @erral
+- Fixed error when loading content in a language for which a Volto translation is not available. @davisagli
 
 ### Internal
 
@@ -25,6 +32,7 @@
 
 - Move Cypress documentation from `README.md` to the docs. Improve the docs with the new `Makefile` commands.
 - Improve English grammar and syntax in backend docs. @stevepiercy
+- Fix JSX syntax highlighting. Remove duplicate heading. @stevepiercy
 
 ## 15.8.0 (2022-04-30)
 
@@ -249,6 +257,7 @@
 - Overwrite current block on insert new block. @robgietema
 - Fix hot reload on updates related to the config object because of `VersionOverview` component @sneridagh
 - Fix error when lock data is gone after an invariant error. @robgietema
+- Protect against ghost content loading and scroll to top @reebalazs
 
 ### Internal
 
