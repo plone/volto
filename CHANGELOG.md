@@ -9,11 +9,14 @@
 
 ### Feature
 
+- added default placeholder for videos to embed them more lightly @giuliaghisini
+
 ### Bugfix
 
 - Fix Search page visit crashes /contents view @dobri1408
 - Fix sidebar full size bottom opacity on edit page when sidebar is collapsed @ichim-david
 - Fix toolbar bottom opacity on edit page when toolbar is collapsed @ichim-david
+- Fix content view regression, height issue @danielamormocea
 - Fixed secure cookie option. @giuliaghisini
 - Changed addon order in addon controlpanel to mimic Classic UI @erral
 - Fixed error when loading content in a language for which a Volto translation is not available. @davisagli
