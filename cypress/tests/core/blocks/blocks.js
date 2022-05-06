@@ -153,6 +153,7 @@ describe('Blocks Tests', () => {
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Text').click();
     cy.get('.ui.buttons .button.slateTable').click();
+    cy.get(2000);
     cy.get(
       '.celled.fixed.table thead tr th:first-child() [contenteditable="true"]',
     )
