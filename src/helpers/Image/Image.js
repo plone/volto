@@ -71,8 +71,8 @@ export const getImageAttributes = (
 
       const scale = sortedScales[0];
       attrs.src = scale?.download ?? image.download;
-
       attrs.aspectRatio = Math.round((image.width / image.height) * 100) / 100;
+
       if (maxSize !== DEFAULT_MAX_SIZE) {
         const maxScale = sortedScales[sortedScales.length - 1];
         attrs.width = maxScale.width;
@@ -95,11 +95,18 @@ export const getImageAttributes = (
         image.endsWith('/') ? '' : '/'
       }@@images/${imageField}`;
       attrs.src = `${baseUrl}/${minSize}`;
-      attrs.srcSet = Object.keys(imageScales).reduce((srcSet, scale) => {
-        if (imageScales[scale] <= maxSize) {
-          return [...srcSet, `${baseUrl}/${scale} ${imageScales[scale]}w`];
-        } else return srcSet;
-      }, []);
+
+      attrs.srcSet = Object.keys(imageScales)
+        .sort((a, b) => {
+          if (imageScales[a] > imageScales[b]) return 1;
+          else if (imageScales[a] < imageScales[b]) return -1;
+          else return 0;
+        })
+        .reduce((srcSet, scale) => {
+          if (imageScales[scale] <= maxSize) {
+            return [...srcSet, `${baseUrl}/${scale} ${imageScales[scale]}w`];
+          } else return srcSet;
+        }, []);
 
       if (useOriginal) attrs.srcSet = attrs.srcSet.concat(`${baseUrl} 1900w`); // expect that is for desktop screens, I don't have actual size
       break;

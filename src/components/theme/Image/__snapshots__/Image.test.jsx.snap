@@ -9,11 +9,7 @@ Array [
       alt=""
       role="img"
       src="/photo.png/@@images/image/listing"
-      style={
-        Object {
-          "aspect-ratio": "undefined",
-        }
-      }
+      style={null}
     />
   </picture>,
   <noscript
@@ -22,7 +18,7 @@ Array [
         "__html": "
               <img
                 src=\\"/photo.png/@@images/image/listing\\"
-                srcset=\\"/photo.png/@@images/image/large 768w, /photo.png/@@images/image/preview 400w, /photo.png/@@images/image/mini 200w, /photo.png/@@images/image/thumb 128w, /photo.png/@@images/image/tile 64w, /photo.png/@@images/image/icon 32w, /photo.png/@@images/image/listing 16w\\"
+                srcset=\\"/photo.png/@@images/image/listing 16w, /photo.png/@@images/image/icon 32w, /photo.png/@@images/image/tile 64w, /photo.png/@@images/image/thumb 128w, /photo.png/@@images/image/mini 200w, /photo.png/@@images/image/preview 400w, /photo.png/@@images/image/large 768w\\"
                 alt=\\"\\"
                 class=\\"\\"
                 role=\\"img\\"
@@ -45,11 +41,7 @@ Array [
       alt="External picsum photo"
       role="img"
       src="https://picsum.photos/200/300"
-      style={
-        Object {
-          "aspect-ratio": "undefined",
-        }
-      }
+      style={null}
     />
   </picture>,
   <noscript
@@ -82,11 +74,7 @@ Array [
       className="photo-image"
       role="presentation"
       src="http://localhost:8080/Plone/test-images/@@images/image/listing"
-      style={
-        Object {
-          "aspect-ratio": "NaN",
-        }
-      }
+      style={null}
     />
   </picture>,
   <noscript
@@ -119,11 +107,7 @@ Array [
       className="photo-image"
       role="img"
       src="http://localhost:8080/Plone/test-images/@@images/image/listing"
-      style={
-        Object {
-          "aspect-ratio": "NaN",
-        }
-      }
+      style={null}
     />
   </picture>,
   <noscript
@@ -156,11 +140,7 @@ Array [
       className="photo-image"
       role="presentation"
       src="http://localhost:8080/Plone/test-images/@@images/image/listing"
-      style={
-        Object {
-          "aspect-ratio": "NaN",
-        }
-      }
+      style={null}
       width={200}
     />
   </picture>,
@@ -194,11 +174,7 @@ Array [
       className="photo-image"
       role="presentation"
       src="http://localhost:8080/Plone/test-images/@@images/image/listing"
-      style={
-        Object {
-          "aspect-ratio": "NaN",
-        }
-      }
+      style={null}
     />
   </picture>,
   <noscript
@@ -231,11 +207,7 @@ Array [
       className="photo-image"
       role="img"
       src="http://localhost:8080/Plone/test-images/@@images/image/listing"
-      style={
-        Object {
-          "aspect-ratio": "NaN",
-        }
-      }
+      style={null}
     />
   </picture>,
   <noscript
@@ -268,11 +240,7 @@ Array [
       className="photo-image"
       role="presentation"
       src="/photo.png/@@images/image/listing"
-      style={
-        Object {
-          "aspect-ratio": "undefined",
-        }
-      }
+      style={null}
     />
   </picture>,
   <noscript
@@ -281,7 +249,7 @@ Array [
         "__html": "
               <img
                 src=\\"/photo.png/@@images/image/listing\\"
-                srcset=\\"/photo.png/@@images/image/large 768w, /photo.png/@@images/image/preview 400w, /photo.png/@@images/image/mini 200w, /photo.png/@@images/image/thumb 128w, /photo.png/@@images/image/tile 64w, /photo.png/@@images/image/icon 32w, /photo.png/@@images/image/listing 16w\\"
+                srcset=\\"/photo.png/@@images/image/listing 16w, /photo.png/@@images/image/icon 32w, /photo.png/@@images/image/tile 64w, /photo.png/@@images/image/thumb 128w, /photo.png/@@images/image/mini 200w, /photo.png/@@images/image/preview 400w, /photo.png/@@images/image/large 768w\\"
                 alt=\\"Photo\\"
                 class=\\"photo-image\\"
                 role=\\"presentation\\"

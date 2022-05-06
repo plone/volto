@@ -15,11 +15,7 @@ exports[`renders a view hero component 1`] = `
         className="hero-image"
         role="img"
         src="/heroimage.jpg/@@images/image/listing"
-        style={
-          Object {
-            "aspect-ratio": "undefined",
-          }
-        }
+        style={null}
       />
     </picture>
     <noscript
@@ -28,7 +24,7 @@ exports[`renders a view hero component 1`] = `
           "__html": "
               <img
                 src=\\"/heroimage.jpg/@@images/image/listing\\"
-                srcset=\\"/heroimage.jpg/@@images/image/large 768w, /heroimage.jpg/@@images/image/preview 400w, /heroimage.jpg/@@images/image/mini 200w, /heroimage.jpg/@@images/image/thumb 128w, /heroimage.jpg/@@images/image/tile 64w, /heroimage.jpg/@@images/image/icon 32w, /heroimage.jpg/@@images/image/listing 16w\\"
+                srcset=\\"/heroimage.jpg/@@images/image/listing 16w, /heroimage.jpg/@@images/image/icon 32w, /heroimage.jpg/@@images/image/tile 64w, /heroimage.jpg/@@images/image/thumb 128w, /heroimage.jpg/@@images/image/mini 200w, /heroimage.jpg/@@images/image/preview 400w, /heroimage.jpg/@@images/image/large 768w\\"
                 alt=\\"\\"
                 class=\\"hero-image\\"
                 role=\\"img\\"

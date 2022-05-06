@@ -24,11 +24,7 @@ exports[`renders an image view component 1`] = `
         alt="Hello World!"
         role="img"
         src="http://localhost:8080/Plone/test-images/@@images/image/listing"
-        style={
-          Object {
-            "aspect-ratio": "NaN",
-          }
-        }
+        style={null}
       />
     </picture>
     <noscript

@@ -44,11 +44,7 @@ exports[`renders an gallery view component 1`] = `
                 onClick={[Function]}
                 role="img"
                 src="http://localhost:3000/news"
-                style={
-                  Object {
-                    "aspect-ratio": "undefined",
-                  }
-                }
+                style={null}
                 verticalAlign="middle"
               />
             </picture>
@@ -90,11 +86,7 @@ exports[`renders an gallery view component 1`] = `
                 onClick={[Function]}
                 role="img"
                 src="http://localhost:3000/events"
-                style={
-                  Object {
-                    "aspect-ratio": "undefined",
-                  }
-                }
+                style={null}
                 verticalAlign="middle"
               />
             </picture>
