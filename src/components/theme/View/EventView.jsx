@@ -47,7 +47,15 @@ const EventView = (props) => {
       <Grid>
         <Grid.Column width={7} className="mobile hidden">
           {hasBlocksData(content) ? (
-            <RenderBlocks {...props} />
+            <>
+              {content.image && (
+                <Image
+                  className="document-image"
+                  src={content.image.scales.large.download}
+                />
+              )}
+              <RenderBlocks {...props} />
+            </>
           ) : (
             <EventTextfieldView {...props} />
           )}
@@ -58,6 +66,12 @@ const EventView = (props) => {
         <Grid.Column width={12} only="mobile">
           {hasBlocksData(content) ? (
             <>
+              {content.image && (
+                <Image
+                  className="document-image"
+                  src={content.image.scales.small.download}
+                />
+              )}
               <RenderBlocks
                 {...props}
                 content={{
