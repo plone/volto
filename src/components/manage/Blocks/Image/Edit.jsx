@@ -176,7 +176,7 @@ class Edit extends Component {
   onSubmitUrl = () => {
     this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
-      url: this.state.url,
+      url: flattenToAppURL(this.state.url),
     });
   };
 

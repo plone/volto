@@ -12,6 +12,7 @@ on:
 
 jobs:
   docs:
+    name: Documentation
     runs-on: ubuntu-latest
     strategy:
       matrix:

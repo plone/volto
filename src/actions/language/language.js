@@ -1,16 +1,13 @@
 import { updateIntl } from 'react-intl-redux';
-import { normalizeLanguageName } from '@plone/volto/helpers';
+import { normalizeLanguageName, getCookieOptions } from '@plone/volto/helpers';
 import Cookies from 'universal-cookie';
-import config from '@plone/volto/registry';
 
 export function changeLanguageCookies(language, req) {
   const cookies = new Cookies();
-  const cookieOptions = {
-    expires: new Date(
-      new Date().getTime() + config.settings.cookieExpires * 1000,
-    ),
-    path: '/',
-  };
+
+  const cookieOptions = getCookieOptions({
+    secure: req?.protocol?.startsWith('https') ? true : false,
+  });
 
   if (!req) {
     cookies.set(
