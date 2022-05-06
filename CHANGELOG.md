@@ -2,17 +2,9 @@
 
 ## 15.8.2 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - added default placeholder for videos to embed them more lightly. @giuliaghisini
-
-### Bugfix
-
-### Internal
-
-### Documentation
 
 ## 15.8.1 (2022-05-04)
 
