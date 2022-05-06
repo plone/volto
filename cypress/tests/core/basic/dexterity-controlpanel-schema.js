@@ -50,7 +50,7 @@ describe('ControlPanel: Dexterity Content-Types Schema', () => {
 
     // Edit field
     cy.get(
-      '[data-rbd-draggable-id="Color"] .toolbar button[aria-label="Edit"]',
+      '[data-rbd-draggable-id="color"] .toolbar button[aria-label="Edit"]',
     ).click();
     cy.get('.modal .react-select-container')
       .click()
