@@ -18,7 +18,6 @@ import {
   Input,
   Segment,
 } from 'semantic-ui-react';
-import jwtDecode from 'jwt-decode';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import {
@@ -106,7 +105,6 @@ class UrlManagement extends Component {
     pathname: PropTypes.string.isRequired,
     inherit: PropTypes.bool,
     title: PropTypes.string.isRequired,
-    login: PropTypes.string,
   };
 
   /**
@@ -116,7 +114,6 @@ class UrlManagement extends Component {
    */
   static defaultProps = {
     inherit: null,
-    login: '',
   };
 
   /**
@@ -219,6 +216,7 @@ class UrlManagement extends Component {
     this.props.removeAliases(getParentUrl(this.props.pathname), {
       aliases: this.state.aliasesToRemove,
     });
+    this.setState({ aliasesToRemove: [] });
   }
 
   /**
@@ -342,16 +340,12 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
-      state: state,
       aliases: state.aliases.data,
       pathname: props.location.pathname,
       title:
         state.content.data !== null && state.content.data.title
           ? state.content.data.title
           : '',
-      login: state.userSession.token
-        ? jwtDecode(state.userSession.token).sub
-        : '',
     }),
     { removeAliases, addAlias, getAliases, getContent },
   ),

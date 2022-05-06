@@ -22,6 +22,8 @@ import {
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
+import { removeAliases, addAlias, getAliases } from '@plone/volto/actions';
+
 import { Icon, Toolbar } from '@plone/volto/components';
 
 import backSVG from '@plone/volto/icons/back.svg';
@@ -56,25 +58,8 @@ class RedirectionPanel extends Component {
    * @static
    */
   static propTypes = {
-    searchContent: PropTypes.func.isRequired,
-    deleteComment: PropTypes.func.isRequired,
-    items: PropTypes.arrayOf(
-      PropTypes.shape({
-        '@id': PropTypes.string,
-        author_name: PropTypes.string,
-        creation_date: PropTypes.string,
-        text: PropTypes.shape({
-          data: PropTypes.string,
-        }),
-        is_deletable: PropTypes.bool,
-        is_editable: PropTypes.bool,
-      }),
-    ).isRequired,
-    deleteRequest: PropTypes.shape({
-      loading: PropTypes.bool,
-      loaded: PropTypes.bool,
-    }).isRequired,
-    pathname: PropTypes.string.isRequired,
+    getAliases: PropTypes.func,
+    removeAliases: PropTypes.func,
   };
 
   /**
@@ -87,6 +72,10 @@ class RedirectionPanel extends Component {
     super(props);
     this.handleSelectFilterType = this.handleSelectFilterType.bind(this);
     this.handleCreateDate = this.handleCreateDate.bind(this);
+    this.handleSubmitAlias = this.handleSubmitAlias.bind(this);
+    this.handleCheckAlias = this.handleCheckAlias.bind(this);
+    this.handleRemoveAliases = this.handleRemoveAliases.bind(this);
+
     this.state = {
       showEdit: false,
       editId: null,
@@ -94,6 +83,11 @@ class RedirectionPanel extends Component {
       isClient: false,
       filterType: filterChoices[0],
       createdBefore: null,
+      altUrlPath: '',
+      isAltUrlCorrect: false,
+      targetUrlPath: '',
+      isTargetUrlCorrect: false,
+      aliasesToRemove: [],
     };
   }
 
@@ -104,6 +98,7 @@ class RedirectionPanel extends Component {
    */
   componentDidMount() {
     this.setState({ isClient: true });
+    this.props.getAliases('');
   }
 
   /**
@@ -111,8 +106,23 @@ class RedirectionPanel extends Component {
    * @method componentDidUpdate
    * @returns {undefined}
    */
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState) {
     console.log('stateupdated', this.state);
+    if (prevState.altUrlPath !== this.state.altUrlPath) {
+      if (this.state.altUrlPath.charAt(0) === '/') {
+        this.setState({ isAltUrlCorrect: true });
+      } else {
+        this.setState({ isAltUrlCorrect: false });
+      }
+    }
+
+    if (prevState.targetUrlPath !== this.state.targetUrlPath) {
+      if (this.state.targetUrlPath.charAt(0) === '/') {
+        this.setState({ isTargetUrlCorrect: true });
+      } else {
+        this.setState({ isTargetUrlCorrect: false });
+      }
+    }
   }
 
   /**
@@ -151,6 +161,73 @@ class RedirectionPanel extends Component {
   }
 
   /**
+   * Alternative url handler
+   * @method handleAltUrlChange
+   * @returns {undefined}
+   */
+  handleAltUrlChange(url) {
+    this.setState({ altUrlPath: url });
+  }
+
+  /**
+   * Target url handler
+   * @method handleTargetUrlChange
+   * @returns {undefined}
+   */
+  handleTargetUrlChange(url) {
+    this.setState({ targetUrlPath: url });
+  }
+
+  /**
+   * New alias submit handler
+   * @method handleSubmitAlias
+   * @returns {undefined}
+   */
+  handleSubmitAlias() {
+    if (this.state.isAltUrlCorrect && this.state.isTargetUrlCorrect) {
+      console.log('new alias', this.state.altUrlPath, this.state.targetUrlPath);
+      // this.props.addAlias(getParentUrl(this.props.pathname), {
+      //   aliases: this.state.newAlias,
+      // });
+      // this.setState({ newAlias: '' });
+      this.setState({ altUrlPath: '', targetUrlPath: '' });
+    }
+  }
+
+  /**
+   * Check to-remove aliases handler
+   * @method handleSubmitAlias
+   * @returns {undefined}
+   */
+  handleCheckAlias(alias) {
+    const aliases = this.state.aliasesToRemove;
+    if (aliases.includes(alias)) {
+      const index = aliases.indexOf(alias);
+      if (index > -1) {
+        let newAliasesArr = aliases;
+        newAliasesArr.splice(index, 1);
+        this.setState({ aliasesToRemove: newAliasesArr });
+      }
+    } else {
+      this.setState({
+        aliasesToRemove: [...this.state.aliasesToRemove, alias],
+      });
+    }
+  }
+
+  /**
+   * Remove aliases handler
+   * @method handleRemoveAliases
+   * @returns {undefined}
+   */
+  handleRemoveAliases() {
+    this.props.removeAliases('', {
+      aliases: this.state.aliasesToRemove,
+    });
+    this.setState({ aliasesToRemove: [] });
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -181,18 +258,18 @@ class RedirectionPanel extends Component {
                     />
                   </p>
                   <Form.Field>
-                    <Input name="alternative-url-path" placeholder="/example" />
-                    {!this.state.isAliasCorrect &&
-                      this.state.newAlias !== '' && (
+                    <Input
+                      name="alternative-url-path"
+                      placeholder="/example"
+                      value={this.state.altUrlPath}
+                      onChange={(e) => this.handleAltUrlChange(e.target.value)}
+                    />
+                    {!this.state.isAltUrlCorrect &&
+                      this.state.altUrlPath !== '' && (
                         <p style={{ color: 'red' }}>
                           Alternative url path must start with a slash.
                         </p>
                       )}
-                    {this.state.isAliasAlready && (
-                      <p style={{ color: 'red' }}>
-                        Alternative url already exists.
-                      </p>
-                    )}
                   </Form.Field>
                   <Header size="medium">Target Path (Required)</Header>
                   <p className="help">
@@ -202,9 +279,16 @@ class RedirectionPanel extends Component {
                     />
                   </p>
                   <Form.Field>
-                    <Input name="target-url-path" placeholder="/example" />
-                    {!this.state.isAliasCorrect &&
-                      this.state.newAlias !== '' && (
+                    <Input
+                      name="target-url-path"
+                      placeholder="/example"
+                      value={this.state.targetUrlPath}
+                      onChange={(e) =>
+                        this.handleTargetUrlChange(e.target.value)
+                      }
+                    />
+                    {!this.state.isTargetUrlCorrect &&
+                      this.state.targetUrlPath !== '' && (
                         <p style={{ color: 'red' }}>
                           Target url path must start with a slash.
                         </p>
@@ -212,7 +296,13 @@ class RedirectionPanel extends Component {
                   </Form.Field>
                   <Button
                     primary
-                    //   onClick={this.handleSubmitAlias}
+                    onClick={this.handleSubmitAlias}
+                    disabled={
+                      !this.state.isAltUrlCorrect ||
+                      !this.state.isTargetUrlCorrect ||
+                      this.state.altUrlPath === '' ||
+                      this.state.targetUrlPath === ''
+                    }
                   >
                     Add
                   </Button>
@@ -225,11 +315,11 @@ class RedirectionPanel extends Component {
                   </Header>
                   <Header size="small">Filter by prefix</Header>
                   <Form.Field>
-                    <Input name="filter" placeholder="/" />
+                    <Input name="filter" placeholder="/example" />
                   </Form.Field>
                   <Header size="small">Manually or automatically added?</Header>
                   {filterChoices.map((o, i) => (
-                    <Form.Field>
+                    <Form.Field key={i}>
                       <Radio
                         label={o.label}
                         name="radioGroup"
@@ -260,24 +350,23 @@ class RedirectionPanel extends Component {
                     Alternative url path → target url path (date and time of
                     creation, manually created yes/no)
                   </Header>
-                  {/* {this.props.aliases &&
+                  {this.props.aliases &&
                     this.props.aliases.length > 0 &&
                     this.props.aliases.map((alias, i) => (
                       <Form.Field key={i}>
                         <Checkbox
-                          // onChange={(e, { value }) =>
-                          //   this.handleCheckAlias(value)
-                          // }
-                          value={alias}
-                          label={alias}
-                          checked={this.state.aliasesToRemove.includes(alias)}
+                          onChange={(e, { value }) =>
+                            this.handleCheckAlias(value)
+                          }
+                          value={alias.path}
+                          label={`${alias.path} → ${alias['redirect-to']} (${alias.datetime}, ${alias.manual})`}
+                          checked={this.state.aliasesToRemove.includes(
+                            alias.path,
+                          )}
                         />
                       </Form.Field>
-                    ))} */}
-                  <Button
-                    onClick={() => console.log(this.state.createdBefore)}
-                    primary
-                  >
+                    ))}
+                  <Button onClick={this.handleRemoveAliases} primary>
                     Remove selected
                   </Button>
                 </Segment>
@@ -312,10 +401,9 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
-      items: state.search.items,
-      deleteRequest: state.comments.delete,
+      aliases: state.aliases.data,
       pathname: props.location.pathname,
     }),
-    // { deleteComment, searchContent },
+    { removeAliases, getAliases },
   ),
 )(RedirectionPanel);
