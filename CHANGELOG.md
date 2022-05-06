@@ -8,6 +8,7 @@
 - Move all cypress actions to the main `Makefile`, providing better meaningful names. Remove them from `package.json` script section. @sneridagh
 
 ### Feature
+## 15.8.1 (2022-05-04)
 
 - added default placeholder for videos to embed them more lightly @giuliaghisini
 
@@ -20,6 +21,7 @@
 - Added Cypress environment variables for adjusting the backend URL of commands @JeffersonBledsoe #3271
 
 ### Documentation
+- Fixed secure cookie option. @giuliaghisini
 
 - Move Cypress documentation from `README.md` to the docs. Improve the docs with the new `Makefile` commands.
 - Improve English grammar and syntax in backend docs. @stevepiercy
