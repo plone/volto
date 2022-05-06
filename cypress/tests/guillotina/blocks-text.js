@@ -19,7 +19,7 @@ describe('Text Block Tests', () => {
 
   it('As editor I can add a text block', () => {
     // when I add a text block
-    cy.getSlate().click().type('My text').contains('My text');
+    cy.getSlate(true).focus().click().type('My text').contains('My text');
     cy.get('#toolbar-save').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
     cy.waitForResourceToLoad('@navigation');
@@ -37,6 +37,7 @@ describe('Text Block Tests', () => {
   //   // when I create a link
   //   cy.getSlate()
   //     .focus()
+  //     .click()
   //     .type('Colorless green ideas sleep furiously.')
   //     .setSlateSelection('furiously');
   //   cy.get(
@@ -64,6 +65,7 @@ describe('Text Block Tests', () => {
   //   // when I create a mailto link
   //   cy.getSlate()
   //     .focus()
+  //     .click()
   //     .type('Colorless green ideas sleep furiously.')
   //     .setSlateSelection('furiously');
   //   cy.get(
