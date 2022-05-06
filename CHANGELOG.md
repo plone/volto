@@ -10,6 +10,7 @@
 ### Feature
 
 - Added link integrity potential breakage warning message when deleting a referenced page
+- added default placeholder for videos to embed them more lightly @giuliaghisini
 
 ### Bugfix
 
