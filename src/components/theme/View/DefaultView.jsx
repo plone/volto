@@ -51,7 +51,8 @@ const DefaultView = ({ content, intl, location }) => {
   );
 
   React.useEffect(() => {
-    dispatch(getSchema(content['@type'], location.pathname));
+    !hasBlocksData(content) &&
+      dispatch(getSchema(content['@type'], location.pathname));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
