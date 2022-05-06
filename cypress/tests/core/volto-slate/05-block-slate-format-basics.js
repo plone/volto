@@ -50,53 +50,53 @@ describe('Block Tests: Basic text format', () => {
     cy.get('[id="page-document"] em').contains('Colorless');
   });
 
-  it('Underline', function () {
-    // Complete chained commands
-    cy.getSlateEditorAndType('Colorless green ideas sleep furiously.');
+  // it('Underline', function () {
+  //   // Complete chained commands
+  //   cy.getSlateEditorAndType('Colorless green ideas sleep furiously.');
 
-    // cy.pause();
+  //   // cy.pause();
 
-    // Underline
-    cy.setSlateSelection('Colorless', 'green');
-    cy.clickSlateButton('Underline');
+  //   // Underline
+  //   cy.setSlateSelection('Colorless', 'green');
+  //   cy.clickSlateButton('Underline');
 
-    // Un-Underline
-    cy.setSlateSelection('Colorless');
-    cy.clickSlateButton('Underline');
+  //   // Un-Underline
+  //   cy.setSlateSelection('Colorless');
+  //   cy.clickSlateButton('Underline');
 
-    // Underline
-    cy.setSlateSelection('Colorless');
-    cy.clickSlateButton('Underline');
+  //   // Underline
+  //   cy.setSlateSelection('Colorless');
+  //   cy.clickSlateButton('Underline');
 
-    // Save
-    cy.toolbarSave();
+  //   // Save
+  //   cy.toolbarSave();
 
-    // then the page view should contain our changes
-    cy.get('[id="page-document"] u').contains('Colorless');
-  });
+  //   // then the page view should contain our changes
+  //   cy.get('[id="page-document"] u').contains('Colorless');
+  // });
 
-  it('Strikethrough', function () {
-    // Complete chained commands
-    cy.getSlateEditorAndType('Colorless green ideas sleep furiously.');
+  // it('Strikethrough', function () {
+  //   // Complete chained commands
+  //   cy.getSlateEditorAndType('Colorless green ideas sleep furiously.');
 
-    // Strikethrough
-    cy.setSlateSelection('Colorless', 'green');
-    cy.clickSlateButton('Strikethrough');
+  //   // Strikethrough
+  //   cy.setSlateSelection('Colorless', 'green');
+  //   cy.clickSlateButton('Strikethrough');
 
-    // Un-Strikethrough
-    cy.setSlateSelection('Colorless');
-    cy.clickSlateButton('Strikethrough');
+  //   // Un-Strikethrough
+  //   cy.setSlateSelection('Colorless');
+  //   cy.clickSlateButton('Strikethrough');
 
-    // Strikethrough
-    cy.setSlateSelection('Colorless');
-    cy.clickSlateButton('Strikethrough');
+  //   // Strikethrough
+  //   cy.setSlateSelection('Colorless');
+  //   cy.clickSlateButton('Strikethrough');
 
-    // Save
-    cy.toolbarSave();
+  //   // Save
+  //   cy.toolbarSave();
 
-    // then the page view should contain our changes
-    cy.get('[id="page-document"] del').contains('Colorless');
-  });
+  //   // then the page view should contain our changes
+  //   cy.get('[id="page-document"] del').contains('Colorless');
+  // });
 
   it('Title', function () {
     // Complete chained commands
@@ -144,28 +144,28 @@ describe('Block Tests: Basic text format', () => {
     cy.get('[id="page-document"] h3').contains('Colorless');
   });
 
-  it('Heading 4', function () {
-    // Complete chained commands
-    cy.getSlateEditorAndType('Colorless green ideas sleep furiously.');
+  // it('Heading 4', function () {
+  //   // Complete chained commands
+  //   cy.getSlateEditorAndType('Colorless green ideas sleep furiously.');
 
-    // Heading 4
-    cy.setSlateSelection('Colorless', 'green');
-    cy.clickSlateButton('Heading 4');
+  //   // Heading 4
+  //   cy.setSlateSelection('Colorless', 'green');
+  //   cy.clickSlateButton('Heading 4');
 
-    // Un-Heading 4
-    cy.setSlateSelection('Colorless');
-    cy.clickSlateButton('Heading 4');
+  //   // Un-Heading 4
+  //   cy.setSlateSelection('Colorless');
+  //   cy.clickSlateButton('Heading 4');
 
-    // Heading 4
-    cy.setSlateSelection('Colorless');
-    cy.clickSlateButton('Heading 4');
+  //   // Heading 4
+  //   cy.setSlateSelection('Colorless');
+  //   cy.clickSlateButton('Heading 4');
 
-    // Save
-    cy.toolbarSave();
+  //   // Save
+  //   cy.toolbarSave();
 
-    // then the page view should contain our changes
-    cy.get('[id="page-document"] h4').contains('Colorless');
-  });
+  //   // then the page view should contain our changes
+  //   cy.get('[id="page-document"] h4').contains('Colorless');
+  // });
 
   it('Blockquote', function () {
     // Complete chained commands
@@ -190,49 +190,49 @@ describe('Block Tests: Basic text format', () => {
     cy.get('[id="page-document"] blockquote').contains('furiously');
   });
 
-  it('Superscript', function () {
-    // Complete chained commands
-    cy.getSlateEditorAndType('Colorless green ideas sleep furiously.');
+  // it('Superscript', function () {
+  //   // Complete chained commands
+  //   cy.getSlateEditorAndType('Colorless green ideas sleep furiously.');
 
-    // Superscript
-    cy.setSlateSelection('Colorless', 'green');
-    cy.clickSlateButton('Superscript');
+  //   // Superscript
+  //   cy.setSlateSelection('Colorless', 'green');
+  //   cy.clickSlateButton('Superscript');
 
-    // Un-Superscript
-    cy.setSlateSelection('Colorless');
-    cy.clickSlateButton('Superscript');
+  //   // Un-Superscript
+  //   cy.setSlateSelection('Colorless');
+  //   cy.clickSlateButton('Superscript');
 
-    // Superscript
-    cy.setSlateSelection('Colorless');
-    cy.clickSlateButton('Superscript');
+  //   // Superscript
+  //   cy.setSlateSelection('Colorless');
+  //   cy.clickSlateButton('Superscript');
 
-    // Save
-    cy.toolbarSave();
+  //   // Save
+  //   cy.toolbarSave();
 
-    // then the page view should contain our changes
-    cy.get('[id="page-document"] sup').contains('Colorless');
-  });
+  //   // then the page view should contain our changes
+  //   cy.get('[id="page-document"] sup').contains('Colorless');
+  // });
 
-  it('Subscript', function () {
-    // Complete chained commands
-    cy.getSlateEditorAndType('Colorless green ideas sleep furiously.');
+  // it('Subscript', function () {
+  //   // Complete chained commands
+  //   cy.getSlateEditorAndType('Colorless green ideas sleep furiously.');
 
-    // Subscript
-    cy.setSlateSelection('sleep', 'furiously');
-    cy.clickSlateButton('Subscript');
+  //   // Subscript
+  //   cy.setSlateSelection('sleep', 'furiously');
+  //   cy.clickSlateButton('Subscript');
 
-    // Un-Subscript
-    cy.setSlateSelection('furiously');
-    cy.clickSlateButton('Subscript');
+  //   // Un-Subscript
+  //   cy.setSlateSelection('furiously');
+  //   cy.clickSlateButton('Subscript');
 
-    // Subscript
-    cy.setSlateSelection('furiously');
-    cy.clickSlateButton('Subscript');
+  //   // Subscript
+  //   cy.setSlateSelection('furiously');
+  //   cy.clickSlateButton('Subscript');
 
-    // Save
-    cy.toolbarSave();
+  //   // Save
+  //   cy.toolbarSave();
 
-    // then the page view should contain our changes
-    cy.get('[id="page-document"] sub').contains('furiously');
-  });
+  //   // then the page view should contain our changes
+  //   cy.get('[id="page-document"] sub').contains('furiously');
+  // });
 });

@@ -30,11 +30,9 @@ describe('Blocks copy/paste', () => {
       )
       .type('{enter}');
 
-    cy.getSlate()
-      .focus()
-      .click()
-      .type('Noam Avram Chomsky')
-      .contains('Noam Avram Chomsky');
+    cy.getSlateEditorAndType('Noam Avram Chomsky').contains(
+      'Noam Avram Chomsky',
+    );
 
     cy.getSlate().click();
 
@@ -46,7 +44,7 @@ describe('Blocks copy/paste', () => {
     cy.get('.block-editor-maps').click();
     cy.get('#toolbar-copy-blocks').click();
 
-    cy.getSlate().focus().click().type('{shift}').click();
+    cy.getSlateEditorAndType('{shift}').click();
     cy.get('#toolbar-paste-blocks').should('be.visible');
     cy.get('#toolbar-paste-blocks').click();
 
@@ -74,11 +72,9 @@ describe('Blocks copy/paste', () => {
       )
       .type('{enter}');
 
-    cy.getSlate()
-      .focus()
-      .click()
-      .type('Noam Avram Chomsky')
-      .contains('Noam Avram Chomsky');
+    cy.getSlateEditorAndType('Noam Avram Chomsky').contains(
+      'Noam Avram Chomsky',
+    );
 
     cy.getSlate().click();
 
@@ -90,7 +86,7 @@ describe('Blocks copy/paste', () => {
     cy.get('.block-editor-maps').click();
     cy.get('#toolbar-cut-blocks').click();
 
-    cy.getSlate().focus().click().type('{shift}').click();
+    cy.getSlateEditorAndType('{shift}').click();
 
     cy.get('#toolbar-paste-blocks').should('be.visible');
     cy.get('#toolbar-paste-blocks').click();
@@ -119,11 +115,9 @@ describe('Blocks copy/paste', () => {
       )
       .type('{enter}');
 
-    cy.getSlate()
-      .focus()
-      .click()
-      .type('Noam Avram Chomsky')
-      .contains('Noam Avram Chomsky');
+    cy.getSlateEditorAndType('Noam Avram Chomsky').contains(
+      'Noam Avram Chomsky',
+    );
 
     cy.getSlate().click();
 

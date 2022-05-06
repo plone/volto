@@ -26,7 +26,7 @@ context('Listing block tests', () => {
       cy.navigate('/document/newsdoc1/edit');
 
       // Add text block to news document
-      cy.getSlate().focus().click().type('Aenean lacinia bibendum.');
+      cy.getSlateEditorAndType('Aenean lacinia bibendum.');
       cy.get('#toolbar-save').click();
     });
 

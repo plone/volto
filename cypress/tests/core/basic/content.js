@@ -55,11 +55,7 @@ describe('Add Content Tests', () => {
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-document').click();
     cy.getSlateTitle().focus().click().type('My Page').contains('My Page');
-    cy.getSlate()
-      .focus()
-      .click()
-      .type('This is the text.')
-      .contains('This is the text');
+    cy.getSlateEditorAndType('This is the text.').contains('This is the text');
     cy.get('#toolbar-save').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
 

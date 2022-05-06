@@ -551,8 +551,10 @@ Cypress.Commands.add(
 Cypress.Commands.add('toolbarSave', () => {
   // Save
   cy.get('#toolbar-save', { timeout: 10000 }).click();
-  cy.wait('@save');
-  cy.wait('@content');
+  cy.waitForResourceToLoad('@navigation');
+  cy.waitForResourceToLoad('@breadcrumbs');
+  cy.waitForResourceToLoad('@actions');
+  cy.waitForResourceToLoad('@types');
 });
 
 Cypress.Commands.add('clearSlate', (selector) => {
@@ -640,14 +642,7 @@ Cypress.Commands.add('setSlateSelection', (subject, query, endQuery) => {
 });
 
 Cypress.Commands.add('getSlateEditorAndType', (type) => {
-  cy.get('.content-area .slate-editor [contenteditable=true]', {
-    timeout: 10000,
-  }).focus();
-
-  // without this, the first character of `type` is sometimes omitted
-  cy.get('.content-area .slate-editor [contenteditable=true]').click();
-
-  cy.get('.content-area .slate-editor [contenteditable=true]').type(type);
+  cy.getSlate().focus().click().type(type);
 });
 
 Cypress.Commands.add('setSlateCursor', (subject, query, endQuery) => {

@@ -39,7 +39,7 @@ describe('ControlPanel: Dexterity Content-Types Layout', () => {
     cy.getSlate().click();
     cy.get('input[id="field-placeholder"]').click().type('About this book');
     cy.get('label[for="field-fixed"]').click();
-    cy.getSlate().focus().click().type('{enter}');
+    cy.getSlateEditorAndType('{enter}');
 
     cy.get('.ui.basic.icon.button.block-add-button:visible').click();
     cy.get('.ui.basic.icon.button.image').contains('Image').click();

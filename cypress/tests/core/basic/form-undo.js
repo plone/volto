@@ -31,7 +31,7 @@ describe('Form Undo/Redo', () => {
 
   it('Undo/Redo form', () => {
     // when I add a text block
-    cy.getSlate().focus().click().type('My text').contains('My text');
+    cy.getSlateEditorAndType('My text').contains('My text');
 
     clickUndo();
 

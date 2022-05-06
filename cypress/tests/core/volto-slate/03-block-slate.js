@@ -8,7 +8,7 @@ describe('Block Tests', () => {
   beforeEach(slateBeforeEach);
   afterEach(slateAfterEach);
   it('should create a block with some text, move the cursor in the middle of the text, insert a line break, and then have 2 blocks with the two parts of the initial text', () => {
-    cy.get('.content-area .slate-editor [contenteditable=true]')
+    cy.getSlate()
       .focus()
       .click()
       .type('hello, world')

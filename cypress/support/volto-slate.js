@@ -16,7 +16,7 @@ export const slateBeforeEach = (contentType = 'Document') => {
 
 export const slateAfterEach = () => {
   // cy.autologin();
-  // cy.removeContent({ path: 'my-page' });
+  cy.removeContent({ path: 'my-page' });
 };
 
 export const slateJsonBeforeEach = (contentType = 'slate') => {
