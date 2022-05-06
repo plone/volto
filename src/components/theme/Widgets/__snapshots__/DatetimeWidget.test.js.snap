@@ -8,6 +8,14 @@ exports[`DatetimeWidget renders a date view widget component 1`] = `
 </span>
 `;
 
+exports[`DatetimeWidget renders a date view widget component with LLLL format 1`] = `
+<span
+  className="metadata datetime widget"
+>
+  Tuesday, August 4, 2020 9:00 AM
+</span>
+`;
+
 exports[`DatetimeWidget renders a date view widget component with children 1`] = `
 <span
   className="metadata datetime widget"

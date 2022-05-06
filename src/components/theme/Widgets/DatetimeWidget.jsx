@@ -1,15 +1,16 @@
 import React from 'react';
 import cx from 'classnames';
 import moment from 'moment';
-import config from '@plone/volto/registry';
+import { useSelector } from 'react-redux';
 
-const DatetimeWidget = ({ value, children, className }) => {
-  moment.locale(config.settings.dateLocale);
+const DatetimeWidget = ({ value, children, className, format = 'lll' }) => {
+  const lang = useSelector((state) => state.intl.locale);
+  moment.locale(lang);
   return value ? (
     <span className={cx(className, 'datetime', 'widget')}>
       {children
-        ? children(moment(value).format('lll'))
-        : moment(value).format('lll')}
+        ? children(moment(value).format(format))
+        : moment(value).format(format)}
     </span>
   ) : (
     ''
