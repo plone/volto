@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": "Learn to render async-fetched data that doesn't get rendered fully in the server-side rendering phase"
+  "property=og:description": "Learn to render async-fetched data that doesn't get rendered fully in the server-side rendering phase"
+  "property=og:title": "Server-side rendering for async blocks"
+  "keywords": "Volto, Plone, frontend, React, Render, async, block"
+---
+
 # Server-side rendering for async blocks
 
 By default blocks that depend on async-fetched data won't be rendered fully in
@@ -11,7 +19,7 @@ configuration, pointing to a function that returns a list of promises.
 
 For example:
 
-```
+```js
 export default ({ dispatch, data, path }) => {
   return [
     dispatch(

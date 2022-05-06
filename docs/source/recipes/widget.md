@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": "Volto forms and widgets"
+  "property=og:description": "Volto forms and widgets"
+  "property=og:title": "Forms and widgets"
+  "keywords": "Volto, Plone, frontend, React, Blocks, Edit, components, Forms, widgets"
+---
+
 # Forms and widgets
 
 ## Set frontend widget
@@ -6,17 +14,16 @@ If you want to register a frontend widget for your field, you can define your fi
 
 ```python
 directives.widget(
-    'specialfield',
+    "specialfield",
     frontendOptions={
-        "widget": 'specialwidget',
-        "version": 'extra'
+        "widget": "specialwidget"
     })
 specialfield = schema.TextLine(title="Field with special frontend widget")
 ```
 
 Then register your frontend widget in your apps configuration.
 
-```
+```jsx
 import { MySpecialWidget } from './components';
 
 const applyConfig = (config) => {
@@ -24,6 +31,20 @@ const applyConfig = (config) => {
   return config;
 }
 ```
+
+You can also pass additional props to the frontend widget using the `widgetProps` key:
+
+```python
+directives.widget(
+    "specialfield",
+    frontendOptions={
+        "widget": "specialwidget",
+        "widgetProps": {"isLarge": True, "color": "red"}
+    })
+specialfield = schema.TextLine(title="Field with special frontend widget")
+```
+
+The props will be injected into the corresponding widget component, configuring it as specified.
 
 ## Single-choice field with vocabulary
 
@@ -74,7 +95,7 @@ from zope import schema
 
 Then you need to define the `category_vocabulary`:
 
-```
+```python
 from plone.app.vocabularies.catalog import KeywordsVocabulary as BKV
 from zope.interface import implementer
 from zope.schema.interfaces import IVocabularyFactory
@@ -89,7 +110,7 @@ CategoryVocabularyFactory = KeywordsVocabulary("category")
 
 Register your vocabulary in `configure.zcml`:
 
-```
+```xml
   <utility
       name="category_vocabulary"
       component=".vocabulary.CategoryVocabularyFactory"
@@ -111,7 +132,7 @@ a `catalog.xml` GenericSetup file.
 For Volto 13, you need to register the Volto widget for this field. This may
 change in the future:
 
-```
+```js
 import TokenWidget from '@plone/volto/components/manage/Widgets/TokenWidget';
 
 const applyConfig = (config) => {
@@ -123,7 +144,13 @@ const applyConfig = (config) => {
 
 Based on this setup, Volto will render this field with the `TokenWidget`.
 
+
+```{seealso}
+See [storybook](https://6.dev-docs.plone.org/storybook) with available widgets.
+```
+
 ## Write a new widget
 
-!!! note
-    Please contribute to this section!
+```{note}
+Please contribute to this section!
+```

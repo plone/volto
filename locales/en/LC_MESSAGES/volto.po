@@ -58,6 +58,11 @@ msgstr ""
 msgid "Add"
 msgstr ""
 
+#: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Add
+msgid "Add (object list)"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
 msgid "Add Addons"
@@ -751,6 +756,11 @@ msgstr ""
 msgid "Document"
 msgstr ""
 
+#: components/theme/EventDetails/EventDetails
+# defaultMessage: Download Event
+msgid "Download Event"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Drag and drop files from your computer onto this area or click the “Browse” button.
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
@@ -853,6 +863,7 @@ msgstr ""
 msgid "Enable editable Blocks"
 msgstr ""
 
+#: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 # defaultMessage: End Date
 msgid "End Date"
@@ -1336,6 +1347,11 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
+#: components/manage/Widgets/FormFieldWrapper
+# defaultMessage: Language independent field.
+msgid "Language independent field."
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Last
 msgid "Last"
@@ -1598,6 +1614,10 @@ msgstr ""
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: No Video selected
 msgid "No Video selected"
+
+#: components/manage/Controlpanels/VersionOverview
+# defaultMessage: No addons found
+msgid "No addons found"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
@@ -1636,6 +1656,7 @@ msgid "No occurences set"
 msgstr ""
 
 #: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectAutoComplete
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TokenWidget
 # defaultMessage: No options
@@ -1707,6 +1728,11 @@ msgstr ""
 #: components/manage/Delete/Delete
 # defaultMessage: Ok
 msgid "Ok"
+msgstr ""
+
+#: components/manage/Widgets/IdWidget
+# defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed.
+msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed."
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
@@ -1803,7 +1829,7 @@ msgstr ""
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr ""
 
-#: components/manage/Blocks/Video/Edit
+#: components/manage/Blocks/Video/Body
 # defaultMessage: Please enter a valid URL by deleting the block and adding a new video block.
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
 msgstr ""
@@ -1925,6 +1951,11 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/EndField
 # defaultMessage: on
 msgid "Recurrence ends on"
+msgstr ""
+
+#: components/manage/Form/UndoToolbar
+# defaultMessage: Redo
+msgid "Redo"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
@@ -2236,6 +2267,7 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectAutoComplete
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TokenWidget
 # defaultMessage: Select…
@@ -2414,6 +2446,7 @@ msgstr ""
 msgid "Split"
 msgstr ""
 
+#: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 # defaultMessage: Start Date
 msgid "Start Date"
@@ -2550,8 +2583,8 @@ msgid "The backend is responding, but the CORS headers are not configured proper
 msgstr ""
 
 #: components/theme/CorsError/CorsError
-# defaultMessage: The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
-msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
+# defaultMessage: The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
+msgid "The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
 msgstr ""
 
 #: components/manage/Blocks/Search/schema
@@ -2562,6 +2595,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: The item could not be deleted.
 msgid "The item could not be deleted."
+msgstr ""
+
+#: components/theme/View/LinkView
+# defaultMessage: The link address is:
+msgid "The link address is:"
 msgstr ""
 
 #: components/theme/Register/Register
@@ -2608,6 +2646,11 @@ msgstr ""
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This has an ongoing working copy in {title}
 msgid "This has an ongoing working copy in {title}"
+msgstr ""
+
+#: components/manage/Widgets/IdWidget
+# defaultMessage: This is a reserved name and can't be used
+msgid "This is a reserved name and can't be used"
 msgstr ""
 
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
@@ -2701,6 +2744,11 @@ msgstr ""
 msgid "Type a Video (YouTube, Vimeo or mp4) URL"
 msgstr ""
 
+#: components/manage/Widgets/SelectAutoComplete
+# defaultMessage: Type text...
+msgid "Type text..."
+msgstr ""
+
 #: components/manage/Blocks/Text/Edit
 # defaultMessage: Type text…
 msgid "Type text…"
@@ -2719,6 +2767,11 @@ msgstr ""
 #: components/theme/Unauthorized/Unauthorized
 # defaultMessage: Unauthorized
 msgid "Unauthorized"
+msgstr ""
+
+#: components/manage/Form/UndoToolbar
+# defaultMessage: Undo
+msgid "Undo"
 msgstr ""
 
 #: components/manage/BlockChooser/BlockChooser
@@ -3095,42 +3148,42 @@ msgstr ""
 msgid "email"
 msgstr ""
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: All dates
 msgid "event_alldates"
 msgstr ""
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Attendees
 msgid "event_attendees"
 msgstr ""
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Contact Name
 msgid "event_contactname"
 msgstr ""
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Contact Phone
 msgid "event_contactphone"
 msgstr ""
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Website
 msgid "event_website"
 msgstr ""
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: What
 msgid "event_what"
 msgstr ""
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: When
 msgid "event_when"
 msgstr ""
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Where
 msgid "event_where"
 msgstr ""
@@ -3224,6 +3277,12 @@ msgstr ""
 #: config/Blocks
 # defaultMessage: Most used
 msgid "mostUsed"
+msgstr ""
+
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+# defaultMessage: No
+msgid "no"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
@@ -3492,9 +3551,15 @@ msgstr ""
 msgid "video"
 msgstr ""
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Visit external website
 msgid "visit_external_website"
+msgstr ""
+
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+# defaultMessage: Yes
+msgid "yes"
 msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal

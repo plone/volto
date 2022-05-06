@@ -1,4 +1,12 @@
-## Overview
+---
+html_meta:
+  "description": "The Pluggables framework give you insertion points to push components to other components in an 'out of tree' fashion, like React's Portal component, but with vitamins."
+  "property=og:description": "The Pluggables framework give you insertion points to push components to other components in an 'out of tree' fashion, like React's Portal component, but with vitamins."
+  "property=og:title": "Pluggables framework"
+  "keywords": "Pluggables, framework, React, portal"
+---
+
+# Pluggables framework
 
 The Pluggables framework give you insertion points to push components to other
 components in an "out of tree" fashion, like React's `<Portal>` component, but with vitamins.
@@ -48,7 +56,7 @@ Internally, the `<PluggablesProvider>` keeps a record of `Pluggables` and `Plug`
 this is achieved by having the `<Pluggables>` and `<Plug>` components register
 themselves with the Provider via React context.
 
-### Customize the rendering of plugs
+## Customize the rendering of plugs
 
 You can customize the rendering of pluggables. The `<Pluggable>` component can take a function as a child and use that function to describe the rendering of pluggables.
 
@@ -58,7 +66,7 @@ You can customize the rendering of pluggables. The `<Pluggable>` component can t
 </Pluggable>
 ```
 
-### Passing parameters from the Pluggable to the Plugs
+## Passing parameters from the Pluggable to the Plugs
 
 You can also pass options to the `Plugs`, to enable inter-component communication:
 

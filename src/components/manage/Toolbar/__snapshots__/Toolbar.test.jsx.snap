@@ -150,11 +150,6 @@ Array [
       <div
         className="toolbar-bottom"
       >
-        <img
-          alt=""
-          className="minipastanaga"
-          src="pastanaga-small.svg"
-        />
         <button
           aria-label="Personal tools"
           className="user"
@@ -181,17 +176,6 @@ Array [
             xmlns=""
           />
         </button>
-        <div
-          className="divider"
-        />
-        <div
-          className="pastanagalogo"
-        >
-          <img
-            alt=""
-            src="pastanaga.svg"
-          />
-        </div>
       </div>
     </div>
     <div
@@ -360,11 +344,6 @@ Array [
       <div
         className="toolbar-bottom"
       >
-        <img
-          alt=""
-          className="minipastanaga"
-          src="pastanaga-small.svg"
-        />
         <button
           aria-label="Personal tools"
           className="user"
@@ -391,17 +370,6 @@ Array [
             xmlns=""
           />
         </button>
-        <div
-          className="divider"
-        />
-        <div
-          className="pastanagalogo"
-        >
-          <img
-            alt=""
-            src="pastanaga.svg"
-          />
-        </div>
       </div>
     </div>
     <div

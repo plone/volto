@@ -1,14 +1,24 @@
-# Deployment using a node process manager (pm2)
+---
+html_meta:
+  "description": "Using PM2 as a process manager for deployment of Volto."
+  "property=og:description": "Using PM2 as a process manager for deployment of Volto."
+  "property=og:title": "Deployment using a node process manager (PM2)"
+  "keywords": "Volto, Plone, frontend, React, deployment, PM2"
+---
 
-PM2 is a popular and maintained process manager based in node (https://pm2.keymetrics.io/)
+# Deployment using a node process manager (PM2)
 
-!!! info
-    You can use the good'ol known supervisord as well. However, the supervisord project is stalled and in low maintenance mode last years. PM2 is a good alternative, and as you'll see you can manage all kind of processes, not only node ones, including the Plone processes.
+PM2 is a popular and maintained process manager based in node (https://pm2.keymetrics.io/).
 
-Create a file mywebsite.com.pm2.config.js in your repo or on your server.
+```{note}
+You can use the good old known supervisord as well. However, the supervisord project is stalled and in low maintenance mode for many years. PM2 is a good alternative, and as you'll see you can manage all kind of processes, not only node ones, including the Plone processes.
+```
 
-!!! important
-    Make sure your pm2 config file sufix ends in `config.js`, otherwise PM2 will ignore it.
+Create a file `mywebsite.com.pm2.config.js` in your repo or on your server.
+
+```{important}
+Make sure your PM2 config file sufix ends in `config.js`, otherwise PM2 will ignore it.
+```
 
 ```js
 module.exports = {
@@ -43,9 +53,9 @@ module.exports = {
 };
 ```
 
-- "mywebsite.com-volto" starts the Node process that is responsible for Volto server-side-rendering.
-- "mywebsite.com-api-zeo" starts the ZEO server
-- "mywebsite.com-api-instance1" starts the first Zope instance
-- "mywebsite.com-api-instance2" starts the second Zope instance
+- `mywebsite.com-volto` starts the Node process that is responsible for Volto server-side rendering.
+- `mywebsite.com-api-zeo` starts the ZEO server.
+- `mywebsite.com-api-instance1` starts the first Zope instance.
+- `mywebsite.com-api-instance2` starts the second Zope instance.
 
 Add more Zope instances if necessary.

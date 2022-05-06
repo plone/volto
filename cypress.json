@@ -3,5 +3,7 @@
   "viewportWidth": 1280,
   "ignoreTestFiles": ["*~"],
   "integrationFolder": "cypress/tests/core",
-  "chromeWebSecurity": false
+  "chromeWebSecurity": false,
+  "videoCompression": false,
+  "projectId": "hvviu4"
 }

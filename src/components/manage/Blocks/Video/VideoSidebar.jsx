@@ -1,10 +1,10 @@
 import React from 'react';
 import { VideoSchema } from './schema';
 import { BlockDataForm } from '@plone/volto/components';
-import { useIntl, defineMessages } from 'react-intl';
-import videoSVG from '@plone/volto/icons/globe.svg';
-import { Icon } from '@plone/volto/components';
 import { Segment } from 'semantic-ui-react';
+import { defineMessages, useIntl } from 'react-intl';
+import { Icon } from '@plone/volto/components';
+import videoSVG from '@plone/volto/icons/videocamera.svg';
 
 const messages = defineMessages({
   Video: {

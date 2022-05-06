@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": "Using Semantic UI to create responsive layouts in Volto frontend for Plone."
+  "property=og:description": "Using Semantic UI to create responsive layouts in Volto frontend for Plone."
+  "property=og:title": "About Semantic UI"
+  "keywords": "Volto, Plone, frontend, React, Semantic UI, user interface"
+---
+
 # About Semantic UI
 
 Volto uses [Semantic UI](https://semantic-ui.com/) and
@@ -17,7 +25,7 @@ canvas, developers using Semantic UI only need to specify how their components
 should differ from the default theme using CSS variables and other CSS
 overrides (if required).
 
-It sports a sophisticated theming engine built with [LESS](http://lesscss.org/)
+It sports a sophisticated theming engine built with [LESS](https://lesscss.org/)
 CSS preprocessor that allows you to have different layers of defaults/CSS
 variables modifiers/CSS overrides in place, inheriting one from the parent in
 a sensible manner:

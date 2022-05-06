@@ -1,28 +1,32 @@
+---
+html_meta:
+  "description": "This is a summary of all the Volto configuration options and what they control."
+  "property=og:description": "This is a summary of all the Volto configuration options and what they control."
+  "property=og:title": "Settings reference guide"
+  "keywords": "Volto, Plone, frontend, React, configuration, settings, reference"
+---
+
 # Settings reference guide
 
 This is a summary of all the configuration options and what they control.
 
+
+```{note}
+This list is still incomplete, contributions are welcomed!
+```
+
 ## Main settings
 
-!!! note
-    This list is still incomplete, contributions are welcomed!
+```{glossary}
+:sorted:
 
-### navDepth
-
-!!! block ""
-
+navDepth
     Navigation levels depth used in the navigation endpoint calls. Increasing this is useful for implementing fat navigation menus. Defaults to `1`.
 
-### defaultBlockType
-
-!!! block ""
-
+defaultBlockType
     The default block type in Volto is "text", which uses the current DraftJS-based implementation for the rich text editor. Future alternative rich text editors will need to use this setting and replace it with their block type. The block definition should also include the `blockHasValue` function, which is needed to activate the Block Chooser functionality. See this function signature in [Blocks > Settings](../blocks/settings.md).
 
-### sentryOptions
-
-!!! block ""
-
+sentryOptions
     Sentry configuration:
 
     ```js
@@ -53,17 +57,15 @@ This is a summary of all the configuration options and what they control.
       }
     };
     ```
-
+    ```{seealso}
     See more about [Sentry integration](../deploying/sentry.md).
+    ```
 
-### contentIcons
-
-!!! block ""
-
+contentIcons
     With this property you can configure Content Types icons.
     Those are visible in Contents view (ex "Folder contents").  The default
     ones are in
-    [config/ContentIcons.jsx](https://github.com/plone/volto/tree/master/src/config/ContentIcons.jsx)
+    [config/ContentIcons.jsx](https://github.com/plone/volto/blob/master/src/config/ContentIcons.jsx)
     and you can extend them in your project's config for custom content types
     using `settings.contentIcons`.
 
@@ -81,32 +83,24 @@ This is a summary of all the configuration options and what they control.
     };
     ```
 
-### `bbb_getContentFetchesFullobjects`
-
-!!! block ""
-
+bbb_getContentFetchesFullobjects
     Before Volto 10, the main content-grabbing request, triggered as a result of
     `getContent` action, always used the `fullobjects` flag, which fully serialized
     the immediate children of the context request. If your code depends on this
     behavior, set this flag to `true` in the `settings` object.
 
-    !!! note
-        You should probably refactor your code to avoid depending on this
-        behavior. It can cause performance issues when you have large children
-        (for example content with lots of text) and you need to batch requests
-        anyway, if you want to be sure to display all the children.
+    ```{note}
+    You should probably refactor your code to avoid depending on this
+    behavior. It can cause performance issues when you have large children
+    (for example content with lots of text) and you need to batch requests
+    anyway, if you want to be sure to display all the children.
+    ```
 
-### persistentReducers
-
-!!! block ""
-
+persistentReducers
     A list of reducer names that should use the browser's localstorage to
     persist their data.
 
-### maxResponseSize
-
-!!! block ""
-
+maxResponseSize
     The library that we use to get files and images from the backend (superagent)
     has a response size limit of 200 mb, so if you want to get a file bigger than 200 mb
     from Plone, the SSR will throw an error.
@@ -114,10 +108,7 @@ This is a summary of all the configuration options and what they control.
     You can edit this limit in the `settings` object setting a new value in bytes
     (for example, to set 500 mb you need to write 5000000000).
 
-### initialReducersBlacklist
-
-!!! block ""
-
+initialReducersBlacklist
     The initial state passed from server to browser needs to be minimal in order to optimize the resultant html generated. This state gets stored in `window.__data` and received in client.
 
     You can blacklist a few reducers that you don't want to be part of `window.__data`,thus decreasing the initial html size for performance gains.
@@ -134,40 +125,28 @@ This is a summary of all the configuration options and what they control.
     };
     ```
 
-### loadables
-
-!!! block ""
-
+loadables
     A mapping of loadable libraries that can be injected into components using
     the `injectLazyLibs` HOC wrapper. See the [Lazy
     loading](../recipes/lazyload) page for more details.
 
-### lazyBundles
-
-!!! block ""
-
+lazyBundles
     A mapping of bundles to list of lazy library names. Create new bundles (or
     change the already provided `cms` bundle to be able to preload multiple
     lazy libraries (with `preloadLazyLibs`) or quickly load them with
     `injectLazyLibs`.
 
-### storeExtenders
-
-!!! block ""
-
+storeExtenders
     A list of callables with signature `(middlewaresList) => middlewaresList`.
     These callables receive the whole stack of middlewares used in Volto and
     they can add new middleware or tweak this list.
 
-### asyncPropsExtenders
-
-!!! block ""
-
+asyncPropsExtenders
     Per-route customizable `asyncConnect` action dispatcher. These enable
     proper server-side rendering of content that depends on additional async
     props coming from backend calls. It is a list of route-like configuration
     objects (they are matched using
-    [matchRoutes](https://github.com/ReactTraining/react-router/blob/ea44618e68f6a112e48404b2ea0da3e207daf4f0/packages/react-router-config/modules/matchRoutes.js).
+    [matchRoutes](https://github.com/remix-run/react-router/blob/ea44618e68f6a112e48404b2ea0da3e207daf4f0/packages/react-router-config/modules/matchRoutes.js).
     Instead of the `component` key you should provide an `extend`
     method with signature `asyncItems => asyncItems`, so it receives a list of
     asyncConnect "prop" objects and returns a similar list. You can add
@@ -175,45 +154,50 @@ This is a summary of all the configuration options and what they control.
     example, have something like this to exclude the breadcrumbs from being
     requested:
 
-```
-config.settings.asyncPropsExtenders = [
-  ...config.settings.asyncPropsExtenders,
-  {
-    path: '/',
-    extend: (dispatchActions) => dispatchActions.filter(asyncAction=> asyncAction.key !== 'breadcrumb')
-  }
-]
+    ```js
+    config.settings.asyncPropsExtenders = [
+      ...config.settings.asyncPropsExtenders,
+      {
+        path: '/',
+        extend: (dispatchActions) => dispatchActions.filter(asyncAction=> asyncAction.key !== 'breadcrumb')
+      }
+    ]
+    ```
 
-```
+externalRoutes
+    If another application is published under the same top domain as Volto, you could have a route like `/abc` which should be not rendered by Volto.
+    This can be achieved by a rule in the reverse proxy (Apache or Nginx for example) but, when navigating client side, you may have references to that route so Volto is
+    handling that as an internal URL and fetching the content will break.
+    You can disable that path in `config.settings.externalRoutes` so it will be handled as an external link.
 
-### External routes
+    ```js
+    config.settings.externalRoutes = [
+      {
+        match: {
+          path: '/news',
+          exact: false,
+          strict: false,
+        },
+        url(payload) {
+          return payload.location.pathname;
+        },
+      },
+    ];
+    ```
 
-If another application is published under the same top domain as Volto, you could have a route like `/abc` which should be not rendered by Volto.
-This can be achieved by a rule in the reverse proxy (Apache or Nginx for example) but, when navigating client side, you may have references to that route so Volto is
-handling that as an internal URL and fetching the content will break.
-You can disable that path in `config.settings.externalRoutes` so it will be handled as an external link.
+    It can also be simplified as:
+    ```js
+    config.settings.externalRoutes = [
+      { match: "/news" },
+      { match: "/events" },
+    ];
+    ```
 
-```js
-config.settings.externalRoutes = [
-  {
-    match: {
-      path: '/news',
-      exact: false,
-      strict: false,
-    },
-    url(payload) {
-      return payload.location.pathname;
-    },
-  },
-];
-```
+contentMetadataTagsImageField
+    The OpenGraph image that will represent this content item, will be used in the metadata HEAD tag as og:image for SEO purposes. Defaults to image. See the OpenGraph Protocol for more details.
 
-It can also be simplified as:
-```js
-config.settings.externalRoutes = [
-  { match: "/news" },
-  { match: "/events" },
-];
+hasWorkingCopySupport
+    This setting will enable working copy support in your site. You need to install the `plone.app.iterate` add-on in your Plone site in order to make it working.
 ```
 
 ## Server-specific serverConfig
@@ -221,50 +205,24 @@ config.settings.externalRoutes = [
 Settings that are relevant to the Express-powered Volto SSR server are stored
 in the `config.settings.serverConfig` object.
 
-### expressMiddleware
+```{glossary}
+:sorted:
 
-!!! block ""
-
+expressMiddleware
     A list of ExpressJs middleware that can extend the built-in functionality of
     Volto's server. See the [Express](../recipes/express) section for more details.
 
-### criticalCssPath
-
-!!! block ""
-
+criticalCssPath
     A path relative to the project root that points to an optional CSS file. If
     this file exists it is loaded and its content is embedded inline into the
     generated HTML. By default this path is `public/critical.css`. See the
-    [Performance](/deploying/performance) section for more details.
+    {doc}`../deploying/performance` section for more details.
 
-### extractScripts
-
-!!! block ""
-
+extractScripts
     An object that allows you to configure the insertion of scripts on the page
     in some particular cases.
     For the moment it admits only one property: `errorPages` whose value is a Boolean.
 
     If `extractScripts.errorPages` is `true`, the JS will be inserted into the error page.
 
-### contentMetadataTagsImageField
-
-!!! block ""
-
-    The OpenGraph image that will represent this content item, will be used in the metadata HEAD tag as og:image for SEO purposes. Defaults to image. See the OpenGraph Protocol for more details.
-
-### hasWorkingCopySupport
-
-!!! block ""
-
-    This setting will enable working copy support in your site. You need to install the `plone.app.iterate` add-on in your Plone site in order to make it working.
-
-### bbb_listingBlockFetchesFullobjects
-
-!!! block ""
-
-    Before Volto 14, the query used by the listing block always used the `fullobjects` flag, which fully serialized the resultant response items. If your code depends on this behavior, set this flag to `true` in the `settings` object.
-
-    !!! note
-        You should probably refactor your code to avoid depending on this
-        behavior. It can cause performance issues when you have large results changesets
+```

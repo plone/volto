@@ -65,6 +65,11 @@ msgstr "Aktibatu eta desaktibatu"
 msgid "Add"
 msgstr "Gehitu"
 
+#: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Add
+msgid "Add (object list)"
+msgstr "Gehitu"
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
 msgid "Add Addons"
@@ -93,7 +98,7 @@ msgstr "Gehitu deskribapena..."
 #: components/manage/BlockChooser/BlockChooserButton
 # defaultMessage: Add block
 msgid "Add block"
-msgstr ""
+msgstr "Gehitu blokea"
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add block…
@@ -148,7 +153,7 @@ msgstr "Gehitu taldeetara"
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Add term
 msgid "Add vocabulary term"
-msgstr ""
+msgstr "Gehitu terminoa"
 
 #: components/manage/Add/Add
 # defaultMessage: Add {type}
@@ -192,17 +197,17 @@ msgstr "Ordezko testua (alt)"
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: Leave empty if the image is purely decorative.
 msgid "Alt text hint"
-msgstr ""
+msgstr "Utzi hutsik irudia dekoratiboa bada"
 
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: Describe the purpose of the image.
 msgid "Alt text hint link text"
-msgstr ""
+msgstr "Deskribatu irudia zertarako den"
 
 #: components/manage/Toolbar/More
 # defaultMessage: Apply working copy
 msgid "Apply working copy"
-msgstr ""
+msgstr "Aplikatu lan-bertsioa"
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Are you sure you want to delete this field?
@@ -258,7 +263,7 @@ msgstr "Oinarria"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Base search query
 msgid "Base search query"
-msgstr ""
+msgstr "Oinarrizko bilaketa kontsulta"
 
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Block
@@ -358,7 +363,7 @@ msgstr "Lan-fluxuaren egoera errekurtsiboki aldatu"
 #: components/manage/Toolbar/More
 # defaultMessage: Changes applied
 msgid "Changes applied."
-msgstr ""
+msgstr "Aldaketak aplikatuta."
 
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
@@ -398,17 +403,17 @@ msgstr "Aukeratu helburua"
 #: components/manage/Widgets/FileWidget
 # defaultMessage: Choose a file
 msgid "Choose a file"
-msgstr ""
+msgstr "Aukeratu fitxategia"
 
 #: components/manage/Blocks/HTML/Edit
 # defaultMessage: Clear
 msgid "Clear"
-msgstr ""
+msgstr "Garbitu"
 
 #: components/manage/Blocks/Search/components/FilterList
 # defaultMessage: Clear filters
 msgid "Clear filters"
-msgstr ""
+msgstr "Garbitu filtroak"
 
 #: components/theme/View/ImageView
 # defaultMessage: Click to download full sized image
@@ -428,12 +433,12 @@ msgstr "Itxi menua"
 #: components/manage/Blocks/HTML/Edit
 # defaultMessage: Code
 msgid "Code"
-msgstr ""
+msgstr "Kodea"
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Collapse item
 msgid "Collapse item"
-msgstr ""
+msgstr "Batu elementua"
 
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Collection
@@ -455,7 +460,7 @@ msgstr "Erantzuna eman duena"
 #: components/theme/Comments/Comments
 # defaultMessage: Comments
 msgid "Comments"
-msgstr ""
+msgstr "Erantzunak"
 
 #: components/manage/Diff/Diff
 # defaultMessage: Compare
@@ -507,7 +512,7 @@ msgstr "Edukiak"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Controls
 msgid "Controls"
-msgstr ""
+msgstr "Kontrolak"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -519,7 +524,7 @@ msgstr "Kopiatu"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: undefined
 msgid "Copy blocks"
-msgstr ""
+msgstr "Kopiatu blokeak"
 
 #: components/theme/Footer/Footer
 # defaultMessage: Copyright
@@ -534,12 +539,12 @@ msgstr "Elementu honen Copyright adierazpena"
 #: components/manage/Toolbar/More
 # defaultMessage: Create working copy
 msgid "Create working copy"
-msgstr ""
+msgstr "Sortu lan-bertsioa"
 
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: Created by {creator} on {date}
 msgid "Created by {creator} on {date}"
-msgstr ""
+msgstr "Sortzailea: {creator} Data: {data}"
 
 #: components/manage/Contents/Contents
 # defaultMessage: Created on
@@ -565,7 +570,7 @@ msgstr "Irizpidea"
 #: components/manage/Blocks/Search/components/FilterList
 # defaultMessage: Current filters applied
 msgid "Current filters applied"
-msgstr ""
+msgstr "Aplikatutako filtroak"
 
 #: components/manage/Preferences/ChangePassword
 # defaultMessage: Current password
@@ -582,7 +587,7 @@ msgstr "Ebaki"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: undefined
 msgid "Cut blocks"
-msgstr ""
+msgstr "Ebaki blokeak"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: Daily
@@ -673,7 +678,7 @@ msgstr "Ezabatu erabiltzailea"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: undefined
 msgid "Delete blocks"
-msgstr ""
+msgstr "Ezabatu blokeak"
 
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Delete col
@@ -688,7 +693,7 @@ msgstr "Ezabatu errenkada"
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Depth
 msgid "Depth"
-msgstr ""
+msgstr "Sakonera"
 
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
@@ -758,6 +763,11 @@ msgstr "Elementu hau ezabatu egin nahi duzu?"
 msgid "Document"
 msgstr "Dokumentua"
 
+#: components/theme/EventDetails/EventDetails
+# defaultMessage: Download Event
+msgid "Download Event"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Drag and drop files from your computer onto this area or click the “Browse” button.
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
@@ -766,17 +776,17 @@ msgstr "Arrastatu fitxategiak hona edo erabili Arakatu botoia."
 #: components/manage/Widgets/FileWidget
 # defaultMessage: Drop file here to replace the existing file
 msgid "Drop file here to replace the existing file"
-msgstr ""
+msgstr "Arrastatu fitxategia hona orain dagoena ordezkatzeko"
 
 #: components/manage/Widgets/FileWidget
 # defaultMessage: Drop file here to upload a new file
 msgid "Drop file here to upload a new file"
-msgstr ""
+msgstr "Arrastatu fitxategia hona fitxategi berria kargatzeko"
 
 #: components/manage/Widgets/FileWidget
 # defaultMessage: Drop files here ...
 msgid "Drop files here ..."
-msgstr ""
+msgstr "Arrastatu fitxategiak hona..."
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
@@ -853,13 +863,14 @@ msgstr "Itsatsitako Google Maps"
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Empty object list
 msgid "Empty object list"
-msgstr ""
+msgstr "Objektu zerrenda hutsa"
 
 #: components/manage/Controlpanels/ContentTypeLayout
 # defaultMessage: Enable editable Blocks
 msgid "Enable editable Blocks"
 msgstr "Aktibatu editatu daitezkeen blokeak"
 
+#: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 # defaultMessage: End Date
 msgid "End Date"
@@ -873,7 +884,7 @@ msgstr "Sartu URL bat edo aukeratu elementu bat"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Enter a username above to search or click 'Show All'
 msgid "Enter a username above to search or click 'Show All'"
-msgstr ""
+msgstr "Idatzi erabiltzaile-izen bat bilaketa egiteko edo sakatu 'Ikusi guztiak'"
 
 #: components/theme/Register/Register
 # defaultMessage: Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
@@ -964,37 +975,37 @@ msgstr "Kanpoko URLa"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Facet
 msgid "Facet"
-msgstr ""
+msgstr "Fazeta"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Facet widget
 msgid "Facet widget"
-msgstr ""
+msgstr "Fazetaren widgeta"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Facets
 msgid "Facets"
-msgstr ""
+msgstr "Fazetak"
 
 #: config/Blocks
 # defaultMessage: Facets on left side
 msgid "Facets on left side"
-msgstr ""
+msgstr "Fazetak ezkerrean"
 
 #: config/Blocks
 # defaultMessage: Facets on right side
 msgid "Facets on right side"
-msgstr ""
+msgstr "Fazetak eskuman"
 
 #: config/Blocks
 # defaultMessage: Facets on top
 msgid "Facets on top"
-msgstr ""
+msgstr "Fazetak goian"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Field
 msgid "Field"
-msgstr ""
+msgstr "Eremua"
 
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: File
@@ -1029,7 +1040,7 @@ msgstr "Tamaina finkoko taularen zeldak"
 #: components/manage/BlockChooser/BlockChooser
 # defaultMessage: Fold
 msgid "Fold"
-msgstr ""
+msgstr "Tolestu"
 
 #: components/manage/Contents/Contents
 # defaultMessage: Folder
@@ -1097,7 +1108,7 @@ msgstr "Taldea ondo sortu da"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Group roles updated
 msgid "Group roles updated"
-msgstr ""
+msgstr "Taldeen rolak eguneratu dira"
 
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: helpers/MessageLabels/MessageLabels
@@ -1115,32 +1126,32 @@ msgstr "Taldeak"
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 # defaultMessage: Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group.
 msgid "Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group."
-msgstr ""
+msgstr "Taldeak erabiltzaileen multzo logikoak dira. Taldeak ez daude baimenei era orokorrean lotuta, horretarako rolak erabiltzen dira eta taldeei esleitzen zaizkie. {plone_svg} ikurrak, rola beste talde baten kide izateagatik heredatu dela adierazten du."
 
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Header cell
 msgid "Header cell"
-msgstr ""
+msgstr "Goiburuko gelaxka"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
 msgid "Headline"
-msgstr ""
+msgstr "Goiburua"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hidden facets will still filter the results if proper parameters are passed in URLs
 msgid "Hidden facets will still filter the results if proper parameters are passed in URLs"
-msgstr ""
+msgstr "Ezkutatutako fazetek emaitzak filtratzen dituzte parametro egokiak URLan pasatzen badira"
 
 #: components/theme/Comments/Comments
 # defaultMessage: Hide Replies
 msgid "Hide Replies"
-msgstr ""
+msgstr "Ezkutatu erantzunak"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hide facet?
 msgid "Hide facet?"
-msgstr ""
+msgstr "Fazeta ezkutatu?"
 
 #: components/manage/History/History
 #: components/manage/Toolbar/More
@@ -1151,7 +1162,7 @@ msgstr "Historia"
 #: components/manage/History/History
 # defaultMessage: #
 msgid "History Version Number"
-msgstr ""
+msgstr "#"
 
 #: components/manage/History/History
 # defaultMessage: History of {title}
@@ -1188,7 +1199,7 @@ msgstr "Data hau etorkizunekoa bada, edukia ez da agertuko data hori iritsi arte
 #: components/manage/LockingToastsFactory/LockingToastsFactory
 # defaultMessage: If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it.
 msgid "If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it."
-msgstr ""
+msgstr "Erabiltzaileak elementua editatzeari utzi diola ziur bazaude, objektua desblokeatu egin dezakezu. Hori egindakoan editatu ahal izango duzu."
 
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
@@ -1206,7 +1217,7 @@ msgstr "Irudia"
 #: config/Blocks
 # defaultMessage: Image gallery
 msgid "Image gallery"
-msgstr ""
+msgstr "Irudi galeria"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Include this occurence
@@ -1294,7 +1305,7 @@ msgstr "Elementu-multzoaren tamaina"
 #: components/manage/Contents/Contents
 # defaultMessage: Item succesfully moved.
 msgid "Item succesfully moved."
-msgstr ""
+msgstr "Elementua ongi mugitu da."
 
 #: components/manage/Contents/Contents
 # defaultMessage: Item(s) copied.
@@ -1309,7 +1320,7 @@ msgstr "Elementuak ondo ebaki dira."
 #: components/manage/Contents/Contents
 # defaultMessage: Item(s) has been updated.
 msgid "Item(s) has been updated."
-msgstr ""
+msgstr "Elementua(k) eguneratu egin d(ir)a."
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -1320,7 +1331,7 @@ msgstr "Elementuak ondo itsatsi dira."
 #: components/manage/Contents/Contents
 # defaultMessage: Item(s) state has been updated.
 msgid "Item(s) state has been updated."
-msgstr ""
+msgstr "Elementuen egoera eguneratu egin da."
 
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Items
@@ -1336,12 +1347,17 @@ msgstr "Elementuak bakarrak izan behar dira."
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Label
 msgid "Label"
-msgstr ""
+msgstr "Etiketa"
 
 #: components/manage/Preferences/PersonalPreferences
 # defaultMessage: Language
 msgid "Language"
 msgstr "Hizkuntza"
+
+#: components/manage/Widgets/FormFieldWrapper
+# defaultMessage: Language independent field.
+msgid "Language independent field."
+msgstr "Hizkuntzarekiko Independentea den eremua."
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Last
@@ -1389,7 +1405,7 @@ msgstr "Esteka"
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link more
 msgid "Link more"
-msgstr ""Gehiago" estekatu"
+msgstr "Gehiago estekatu"
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
@@ -1409,7 +1425,7 @@ msgstr "Esteka"
 #: components/manage/Multilingual/ManageTranslations
 # defaultMessage: Link translation for
 msgid "Link translation for"
-msgstr ""
+msgstr "Lotu itzulpena"
 
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Listing
@@ -1419,12 +1435,12 @@ msgstr "Zerrenda"
 #: components/theme/Comments/Comments
 # defaultMessage: Load more...
 msgid "Load more"
-msgstr ""
+msgstr "Kargatu gehiago"
 
 #: components/manage/Form/ModalForm
 # defaultMessage: Loading.
 msgid "Loading"
-msgstr ""
+msgstr "Kargatzen"
 
 #: components/manage/Preferences/PersonalInformation
 # defaultMessage: Location
@@ -1460,12 +1476,12 @@ msgstr "Erabiltzaile-izena"
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: Logout
 msgid "Logout"
-msgstr ""
+msgstr "Irten"
 
 #: components/manage/Toolbar/More
 # defaultMessage: Made by {creator} on {date}. This is not a working copy anymore, but the main content.
 msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
-msgstr ""
+msgstr "Sortzailea {creator} Data {date}. Hau ez da lan-bertsioa, ikusgai dagoen edukia baizik."
 
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Reduce cell padding
@@ -1476,12 +1492,12 @@ msgstr "Taula trinkotu"
 #: components/manage/Toolbar/More
 # defaultMessage: Manage Translations
 msgid "Manage Translations"
-msgstr ""
+msgstr "Kudeatu itzulpenak"
 
 #: components/manage/Multilingual/ManageTranslations
 # defaultMessage: Manage translations for {title}
 msgid "Manage translations for {title}"
-msgstr ""
+msgstr "Kudeatu honen itzulpenak {title}"
 
 #: components/manage/Blocks/Maps/MapsSidebar
 # defaultMessage: Map
@@ -1562,7 +1578,7 @@ msgstr "Karpetaren gorengo tokira mugitu"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Multiple choices?
 msgid "Multiple choices?"
-msgstr ""
+msgstr "Aukera anitzak?"
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: My email address is
@@ -1583,7 +1599,7 @@ msgstr "Atzera joan"
 #: components/theme/Navigation/ContextNavigation
 # defaultMessage: Navigation
 msgid "Navigation"
-msgstr ""
+msgstr "Nabigazioa"
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
@@ -1606,6 +1622,11 @@ msgstr "Ez"
 # defaultMessage: No Video selected
 msgid "No Video selected"
 msgstr ""
+
+#: components/manage/Controlpanels/VersionOverview
+# defaultMessage: No addons found
+msgid "No addons found"
+msgstr "Ez da gehigarririk aurkitu"
 
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected
@@ -1643,6 +1664,7 @@ msgid "No occurences set"
 msgstr "Ez da agerpenik ezarri"
 
 #: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectAutoComplete
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TokenWidget
 # defaultMessage: No options
@@ -1694,7 +1716,7 @@ msgstr "Bat ere ez"
 #: components/manage/Controlpanels/Users/UsersControlpanel
 # defaultMessage: Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group.
 msgid "Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group."
-msgstr ""
+msgstr "Oharra: hemen adierazitako rolak erabiltzaileari aplikatzen zaizkio. {plone_svg} ikurrak rola talde baten kide izateagatik lortu dela adierazten du."
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Number of active objects
@@ -1716,6 +1738,11 @@ msgstr "agerpenen ondoren"
 msgid "Ok"
 msgstr "Ados"
 
+#: components/manage/Widgets/IdWidget
+# defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed.
+msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed."
+msgstr "Letra xeheak (a-z), karaktere berezi gabe, zenbakiak (0-9) eta "-" edo "_" ikurrak bakarrik erabili daitezke."
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
@@ -1731,7 +1758,7 @@ msgstr "Menua ireki"
 #: components/manage/Widgets/ObjectBrowserWidget
 # defaultMessage: Open object browser
 msgid "Open object browser"
-msgstr ""
+msgstr "Ireki elementu bilatzailea"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1775,17 +1802,17 @@ msgstr "Itsatsi"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: undefined
 msgid "Paste blocks"
-msgstr ""
+msgstr "Itsatsi blokeak"
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Permissions have been updated successfully
 msgid "Permissions have been updated successfully"
-msgstr ""
+msgstr "Baimenak ondo eguneratu dira"
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Permissions updated
 msgid "Permissions updated"
-msgstr ""
+msgstr "Baimenak eguneratu dira"
 
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
@@ -1810,7 +1837,7 @@ msgstr "Tresna pertsonalak"
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Elementu honen edukia sortzearen arduradunak. Idatzi erabiltzaile-izen bat lerro bakoitzean. Egile nagusia lehenengoa izan beharko litzateke."
 
-#: components/manage/Blocks/Video/Edit
+#: components/manage/Blocks/Video/Body
 # defaultMessage: Please enter a valid URL by deleting the block and adding a new video block.
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
 msgstr "Txertatu URL zuzen bat blokea ezabatu eta bideo bloke berri bat gehituz."
@@ -1863,7 +1890,7 @@ msgstr "Hobespenak"
 #: components/manage/Blocks/HTML/Edit
 # defaultMessage: Prettify your code
 msgid "Prettify your code"
-msgstr ""
+msgstr "Garbitu zure kodea"
 
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
@@ -1874,7 +1901,7 @@ msgstr "Aurreikusi"
 #: components/manage/Blocks/Video/schema
 # defaultMessage: Preview Image URL
 msgid "Preview Image URL"
-msgstr ""
+msgstr "Irudia aurreikusteko helbidea"
 
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: Profile
@@ -1900,7 +1927,7 @@ msgstr "Argitaratze-data"
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Query
 msgid "Query"
-msgstr ""
+msgstr "Kontsulta"
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
@@ -1934,6 +1961,11 @@ msgstr "Amaitu"
 msgid "Recurrence ends on"
 msgstr "Egun honetan amaitu"
 
+#: components/manage/Form/UndoToolbar
+# defaultMessage: Redo
+msgid "Redo"
+msgstr "Berregin"
+
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Minimalistic table design
 msgid "Reduce complexity"
@@ -1959,7 +1991,7 @@ msgstr "Errelebantzia"
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item
 msgid "Remove item"
-msgstr ""
+msgstr "Ezabatu elementua"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: Remove
@@ -1969,12 +2001,12 @@ msgstr "Errepikapena ezabatu"
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Remove term
 msgid "Remove term"
-msgstr ""
+msgstr "Ezabatu terminoa"
 
 #: components/manage/Toolbar/More
 # defaultMessage: Remove working copy
 msgid "Remove working copy"
-msgstr ""
+msgstr "Ezabatu lan-bertsioa"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -1985,7 +2017,7 @@ msgstr "Berrizendatu"
 #: components/manage/Contents/ContentsRenameModal
 # defaultMessage: Renaming items...
 msgid "Rename Items Loading Message"
-msgstr ""
+msgstr "Elementuen izena aldatzen..."
 
 #: components/manage/Contents/ContentsRenameModal
 # defaultMessage: Rename items
@@ -2010,12 +2042,12 @@ msgstr "Egun honetan errepikatu"
 #: components/manage/Widgets/FileWidget
 # defaultMessage: Replace existing file
 msgid "Replace existing file"
-msgstr ""
+msgstr "Ordezkatu fitxategia"
 
 #: components/theme/Comments/Comments
 # defaultMessage: Reply
 msgid "Reply"
-msgstr ""
+msgstr "Erantzun"
 
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -2033,7 +2065,7 @@ msgstr "Beharrezko balioak falta dira"
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Reset title
 msgid "Reset term title"
-msgstr ""
+msgstr "Berrezarri izenburua"
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Results limit
@@ -2048,7 +2080,7 @@ msgstr "Emaitzen aurreikuspena"
 #: components/manage/Blocks/Search/SearchBlockEdit
 # defaultMessage: Results template
 msgid "Results template"
-msgstr ""
+msgstr "Emaitzen txantiloia"
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Reversed order
@@ -2090,7 +2122,7 @@ msgstr "Rolak"
 #: components/manage/Contents/ContentsBreadcrumbs
 # defaultMessage: Root
 msgid "Root"
-msgstr ""
+msgstr "Erroa"
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType
@@ -2133,7 +2165,7 @@ msgstr "Bilatu"
 #: components/manage/Sidebar/ObjectBrowserBody
 # defaultMessage: Search SVG
 msgid "Search SVG"
-msgstr ""
+msgstr "Bilatu SVGa"
 
 #: components/theme/SearchWidget/SearchWidget
 # defaultMessage: Search Site
@@ -2143,12 +2175,12 @@ msgstr "Atarian bilatu"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Search block
 msgid "Search block"
-msgstr ""
+msgstr "Bilaketa blokea"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Search button label
 msgid "Search button label"
-msgstr ""
+msgstr "Bilaketa botoiaren etiketa"
 
 #: components/manage/Sidebar/ObjectBrowserBody
 # defaultMessage: Search content
@@ -2168,7 +2200,7 @@ msgstr "Bilatu taldea..."
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Search input label
 msgid "Search input label"
-msgstr ""
+msgstr "Bilaketa kutxaren etiketa"
 
 #: components/manage/Blocks/Search/components/SearchDetails
 #: components/theme/Search/Search
@@ -2189,7 +2221,7 @@ msgstr "Bilatu erabiltzaileak..."
 #: components/manage/Blocks/Search/components/SearchDetails
 # defaultMessage: Searched for
 msgid "Searched for"
-msgstr ""
+msgstr "Zure bilaketa"
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Second
@@ -2199,12 +2231,12 @@ msgstr "Bigarren"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Section title
 msgid "Section title"
-msgstr ""
+msgstr "Atalaren izenburua"
 
 #: components/manage/Sidebar/ObjectBrowserNav
 # defaultMessage: Select
 msgid "Select"
-msgstr ""
+msgstr "Aukeratu"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: Select a date to add to recurrence
@@ -2243,6 +2275,7 @@ msgstr "Aukeraketa"
 
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectAutoComplete
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TokenWidget
 # defaultMessage: Select…
@@ -2300,32 +2333,32 @@ msgstr "Erakutsi"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Show All
 msgid "Show All"
-msgstr ""
+msgstr "Erakutsi guztiak"
 
 #: components/theme/Comments/Comments
 # defaultMessage: Show Replies
 msgid "Show Replies"
-msgstr ""
+msgstr "Erakutsi erantzunak"
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Show item
 msgid "Show item"
-msgstr ""
+msgstr "Erakutsi elementua"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Show search button?
 msgid "Show search button?"
-msgstr ""
+msgstr "Bilaketa botoia erakutsi?"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Show search input?
 msgid "Show search input?"
-msgstr ""
+msgstr "Bilaketa kutxa erakutsi?"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Show sorting?
 msgid "Show sorting?"
-msgstr ""
+msgstr "Ordenazio irizpideak erakutsi?"
 
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Shrink sidebar
@@ -2399,12 +2432,12 @@ msgstr "Ordenazioa"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Sort on label
 msgid "Sort on label"
-msgstr ""
+msgstr "Ordenatu etiketaren arabera"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Sort on options
 msgid "Sort on options"
-msgstr ""
+msgstr "Ordenatu aukeren arabera"
 
 #: components/manage/Blocks/HTML/Edit
 # defaultMessage: Source
@@ -2421,6 +2454,7 @@ msgstr "YouTubeko bideo edo erreprodukzio-zerrenda baten URLa adierazi"
 msgid "Split"
 msgstr "Banatu"
 
+#: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 # defaultMessage: Start Date
 msgid "Start Date"
@@ -2446,7 +2480,7 @@ msgstr "Egoera"
 #: components/manage/Multilingual/CompareLanguages
 # defaultMessage: Stop compare
 msgid "Stop compare"
-msgstr ""
+msgstr "Gelditu alderaketa"
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: String
@@ -2480,12 +2514,12 @@ msgstr "Arrakasta"
 #: config/Blocks
 # defaultMessage: Summary
 msgid "Summary"
-msgstr ""
+msgstr "Laburpena"
 
 #: components/theme/LanguageSelector/LanguageSelector
 # defaultMessage: Switch to
 msgid "Switch to"
-msgstr ""
+msgstr "Aldatu hona"
 
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Table
@@ -2557,19 +2591,24 @@ msgid "The backend is responding, but the CORS headers are not configured proper
 msgstr "Zerbitzaria ondo dago baina CORS goiburukoak ez dira zuzenak."
 
 #: components/theme/CorsError/CorsError
-# defaultMessage: The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
-msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
+# defaultMessage: The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
+msgid "The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
 msgstr "Zerbitzaria ez dago ondo, barkatu eragozpenak. Saiatu orrialdea freskatzen. Arazoak jarraitzen badu jarri kontaktuan atariaren kudeatzailearekin."
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: The button presence disables the live search, the query is issued when you press ENTER
 msgid "The button presence disables the live search, the query is issued when you press ENTER"
-msgstr ""
+msgstr "Botoia badago bilaketa ez da idatzi ahal egingo, ENTER sakatzean baizik"
 
 #: components/manage/Contents/Contents
 # defaultMessage: The item could not be deleted.
 msgid "The item could not be deleted."
-msgstr ""
+msgstr "Elementua ezin izan da ezabatu."
+
+#: components/theme/View/LinkView
+# defaultMessage: The link address is:
+msgid "The link address is:"
+msgstr "Loturaren helbidea hauxe da:"
 
 #: components/theme/Register/Register
 # defaultMessage: The registration process has been successful. Please check your e-mail inbox for information on how activate your account.
@@ -2584,7 +2623,7 @@ msgstr "Erabiltzailearen argazkia"
 #: components/manage/Toolbar/More
 # defaultMessage: The working copy was discarded
 msgid "The working copy was discarded"
-msgstr ""
+msgstr "Lan-bertsioa baztertu egin da"
 
 #: components/theme/Footer/Footer
 # defaultMessage: The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends.
@@ -2615,17 +2654,22 @@ msgstr "Hirugarren"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This has an ongoing working copy in {title}
 msgid "This has an ongoing working copy in {title}"
-msgstr ""
+msgstr "Honek beste lan-bertsio bat du hemen {title}"
+
+#: components/manage/Widgets/IdWidget
+# defaultMessage: This is a reserved name and can't be used
+msgid "This is a reserved name and can't be used"
+msgstr "Izen hau erreserbatuta dago eta ezin da erabili"
 
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This is a working copy of {title}
 msgid "This is a working copy of {title}"
-msgstr ""
+msgstr "Hau {title} elementuaren lan-bertsioa da"
 
 #: components/manage/LockingToastsFactory/LockingToastsFactory
 # defaultMessage: This item was locked by {creator} on {date}
 msgid "This item was locked by {creator} on {date}"
-msgstr ""
+msgstr "Elementua {creator} erabiltzaileak blokeatu du {date}"
 
 #: components/manage/Contents/ContentsRenameModal
 # defaultMessage: This name will be displayed in the URL.
@@ -2689,12 +2733,12 @@ msgstr "{lang} hizkuntzara itzuli"
 #: components/manage/Multilingual/ManageTranslations
 # defaultMessage: Translation linked
 msgid "Translation linked"
-msgstr ""
+msgstr "Itzulpena ondo lotu da"
 
 #: components/manage/Multilingual/ManageTranslations
 # defaultMessage: Translation linking removed
 msgid "Translation linking removed"
-msgstr ""
+msgstr "Itzulpenaren lotura kendu da"
 
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
@@ -2707,6 +2751,11 @@ msgstr "Elementu mota"
 # defaultMessage: Type a Video (YouTube, Vimeo or mp4) URL
 msgid "Type a Video (YouTube, Vimeo or mp4) URL"
 msgstr "Idatzi bideo baten URLa (YouTube, Vimeo edo mp4)"
+
+#: components/manage/Widgets/SelectAutoComplete
+# defaultMessage: Type text...
+msgid "Type text..."
+msgstr "Idatzi testua..."
 
 #: components/manage/Blocks/Text/Edit
 # defaultMessage: Type text…
@@ -2728,10 +2777,15 @@ msgstr "UID"
 msgid "Unauthorized"
 msgstr "Ez duzu baimenik"
 
+#: components/manage/Form/UndoToolbar
+# defaultMessage: Undo
+msgid "Undo"
+msgstr "Desegin"
+
 #: components/manage/BlockChooser/BlockChooser
 # defaultMessage: Unfold
 msgid "Unfold"
-msgstr ""
+msgstr "Destolestu"
 
 #: components/manage/Diff/Diff
 # defaultMessage: Unified
@@ -2753,12 +2807,12 @@ msgstr "Bloke ezezaguna"
 #: components/manage/Multilingual/ManageTranslations
 # defaultMessage: Unlink translation for
 msgid "Unlink translation for"
-msgstr ""
+msgstr "Kendu itzulpenaren lotura hemendik"
 
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Unlock
 msgid "Unlock"
-msgstr ""
+msgstr "Desblokeatu"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update
@@ -2808,7 +2862,7 @@ msgstr "Fitxategiak kargatzen"
 #: components/manage/Blocks/HeroImageLeft/Edit
 # defaultMessage: Uploading image
 msgid "Uploading image"
-msgstr ""
+msgstr "Irudia kargatzen"
 
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -2835,7 +2889,7 @@ msgstr "Erabiltzaile Izena"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: User roles updated
 msgid "User roles updated"
-msgstr ""
+msgstr "Erabiltzailearen rolak eguneratu egin dira"
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Username
@@ -2857,7 +2911,7 @@ msgstr "Erabiltzaile eta taldeak"
 #: helpers/Extensions/withBlockSchemaEnhancer
 # defaultMessage: Variation
 msgid "Variation"
-msgstr ""
+msgstr "Aldakia"
 
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Version Overview
@@ -2893,7 +2947,7 @@ msgstr "Bertsio hau ikusi"
 #: components/manage/Toolbar/More
 # defaultMessage: View working copy
 msgid "View working copy"
-msgstr ""
+msgstr "Lan-bertsioa ikusi"
 
 #: components/manage/Display/Display
 # defaultMessage: View
@@ -2903,22 +2957,22 @@ msgstr "Bistaratze modua"
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Vocabulary term
 msgid "Vocabulary term"
-msgstr ""
+msgstr "Hiztegiko terminoa"
 
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Title
 msgid "Vocabulary term title"
-msgstr ""
+msgstr "Hiztegiko terminoaren izenburua"
 
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Vocabulary terms
 msgid "Vocabulary terms"
-msgstr ""
+msgstr "Hiztegiaren terminoak"
 
 #: components/manage/Controlpanels/VersionOverview
 # defaultMessage: You are running in 'debug mode'. This mode is intended for sites that are under development. This allows many configuration changes to be immediately visible, but will make your site run more slowly. To turn off debug mode, stop the server, set 'debug-mode=off' in your buildout.cfg, re-run bin/buildout and then restart the server process.
 msgid "Warning Regarding debug mode"
-msgstr ""Debug moduan" diharduzu. Modu hau garapenean dauden atarientzako da"
+msgstr "'Debug moduan' diharduzu. Modu hau garapenean dauden atarientzako da. Honekin aldaketa asko berehala ikusten dira baina zure ataria geldoago joan daiteke. Debug modua kentzeko, gelditu zerbitzaria ezarri "debug-mode=off" aukera zure buildout.cfg fitxategian, exekutatu bin/buildout eta berrabiarazi zerbitzariaren prozesua."
 
 #: components/theme/ConnectionRefused/ConnectionRefused
 # defaultMessage: We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later.
@@ -2978,7 +3032,7 @@ msgstr "Nor"
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Updating workflow states...
 msgid "Workflow Change Loading Message"
-msgstr ""
+msgstr "Lan-fluxuaren egoera aldatzen..."
 
 #: components/manage/Workflow/Workflow
 # defaultMessage: Workflow updated.
@@ -3029,7 +3083,7 @@ msgstr "Zure elementuaren historia ikusi dezakezu."
 #: components/manage/Contents/Contents
 # defaultMessage: You can't paste this content here
 msgid "You can't paste this content here"
-msgstr ""
+msgstr "Ezin duzu elementua hemen itsatsi"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your email is required for reset your password.
@@ -3065,7 +3119,7 @@ msgstr "Ohikoa"
 #: components/manage/Multilingual/CompareLanguages
 # defaultMessage: Compare to language
 msgid "compare_to"
-msgstr ""
+msgstr "Konparatu hizkuntza honekin"
 
 #: components/manage/Blocks/Block/EditBlockWrapper
 # defaultMessage: delete
@@ -3102,42 +3156,42 @@ msgstr "Zirriborroa"
 msgid "email"
 msgstr "Eposta zuzen bat idatzi behar duzu (izena@domeinua.eus)"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: All dates
 msgid "event_alldates"
 msgstr "Data guztiak"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Attendees
 msgid "event_attendees"
 msgstr "Bertaratutakoak"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Contact Name
 msgid "event_contactname"
 msgstr "Kontaktuaren izena"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Contact Phone
 msgid "event_contactphone"
 msgstr "Kontaktuaren telefonoa"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Website
 msgid "event_website"
 msgstr "Hitzorduaren webgunea"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: What
 msgid "event_what"
 msgstr "Zer"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: When
 msgid "event_when"
 msgstr "Noiz"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Where
 msgid "event_where"
 msgstr "Non"
@@ -3191,7 +3245,7 @@ msgstr "Zerrenda"
 #: components/manage/Contents/Contents
 # defaultMessage: Loading
 msgid "loading"
-msgstr ""
+msgstr "kargatzen"
 
 #: components/theme/Unauthorized/Unauthorized
 # defaultMessage: log in
@@ -3233,6 +3287,12 @@ msgstr "Balio minimoa"
 msgid "mostUsed"
 msgstr "Gehien erabilia"
 
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+# defaultMessage: No
+msgid "no"
+msgstr "ez"
+
 #: components/manage/Contents/ContentsItem
 # defaultMessage: No workflow state
 msgid "no workflow state"
@@ -3247,7 +3307,7 @@ msgstr "Zenbakia idatzi behar duzu"
 #: components/manage/Widgets/RecurrenceWidget/ByYearField
 # defaultMessage: of the month
 msgid "of the month"
-msgstr ". egunean"
+msgstr "hilabetekoa"
 
 #: error
 # defaultMessage: or try a different page.
@@ -3287,177 +3347,177 @@ msgstr "Atariaren errora itzuli"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: and
 msgid "rrule_and"
-msgstr ""
+msgstr "eta"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: (~approximate)
 msgid "rrule_approximate"
-msgstr ""
+msgstr "(~gutxi gora behera)"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: at
 msgid "rrule_at"
-msgstr ""
+msgstr " "
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: [month] [day], [year]
 msgid "rrule_dateFormat"
-msgstr ""
+msgstr "[year] [month] [day]"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: day
 msgid "rrule_day"
-msgstr ""
+msgstr "egun"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: days
 msgid "rrule_days"
-msgstr ""
+msgstr "egun"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: every
 msgid "rrule_every"
-msgstr ""
+msgstr " "
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: for
 msgid "rrule_for"
-msgstr ""
+msgstr "-"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: hour
 msgid "rrule_hour"
-msgstr ""
+msgstr "ordu"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: hours
 msgid "rrule_hours"
-msgstr ""
+msgstr "ordu"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: in
 msgid "rrule_in"
-msgstr ""
+msgstr "-"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: last
 msgid "rrule_last"
-msgstr ""
+msgstr "azken"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: minutes
 msgid "rrule_minutes"
-msgstr ""
+msgstr "minutu"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: month
 msgid "rrule_month"
-msgstr ""
+msgstr "hilabete"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: months
 msgid "rrule_months"
-msgstr ""
+msgstr "hilabete"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: nd
 msgid "rrule_nd"
-msgstr ""
+msgstr " "
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: on
 msgid "rrule_on"
-msgstr ""
+msgstr " "
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: on the
 msgid "rrule_on the"
-msgstr ""
+msgstr " "
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: or
 msgid "rrule_or"
-msgstr ""
+msgstr " "
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: rd
 msgid "rrule_rd"
-msgstr ""
+msgstr " "
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: st
 msgid "rrule_st"
-msgstr ""
+msgstr " "
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: th
 msgid "rrule_th"
-msgstr ""
+msgstr " "
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: the
 msgid "rrule_the"
-msgstr ""
+msgstr " "
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: time
 msgid "rrule_time"
-msgstr ""
+msgstr " "
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: times
 msgid "rrule_times"
-msgstr ""
+msgstr " "
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: until
 msgid "rrule_until"
-msgstr ""
+msgstr "arte"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: week
 msgid "rrule_week"
-msgstr ""
+msgstr "aste"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: weekday
 msgid "rrule_weekday"
-msgstr ""
+msgstr "astegun"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: weekdays
 msgid "rrule_weekdays"
-msgstr ""
+msgstr "astegun"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: weeks
 msgid "rrule_weeks"
-msgstr ""
+msgstr "aste"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: year
 msgid "rrule_year"
-msgstr ""
+msgstr "urte"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: years
 msgid "rrule_years"
-msgstr ""
+msgstr "urte"
 
 #: components/theme/SkipLinks/SkipLinks
 # defaultMessage: Skip to footer
 msgid "skiplink-footer"
-msgstr ""
+msgstr "Salto egin orri-oinera"
 
 #: components/theme/SkipLinks/SkipLinks
 # defaultMessage: Skip to main content
 msgid "skiplink-main-content"
-msgstr ""
+msgstr "Salto egin edukira"
 
 #: components/theme/SkipLinks/SkipLinks
 # defaultMessage: Skip to navigation
 msgid "skiplink-navigation"
-msgstr ""
+msgstr "Salto egin nabigaziora"
 
 #: components/manage/Contents/Contents
 # defaultMessage: sort
@@ -3499,15 +3559,21 @@ msgstr "Erabiltzailearen argazkia"
 msgid "video"
 msgstr "Bideoa"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Visit external website
 msgid "visit_external_website"
 msgstr "Webgunea ikusi"
 
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+# defaultMessage: Yes
+msgid "yes"
+msgstr "bai"
+
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: {count, plural, one {Upload {count} file} other {Upload {count} files}}
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
-msgstr ""
+msgstr "{count, plural, one {Kargatu fitxategi {count}} othe"
 
 #: components/manage/Contents/Contents
 # defaultMessage: {count} selected

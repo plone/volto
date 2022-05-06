@@ -91,6 +91,7 @@
   &.collapsed {
     right: -355px;
 
+    .full-size-sidenav-btn,
     .tabs-wrapper {
       opacity: 0;
       transition: opacity 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
@@ -98,10 +99,10 @@
   }
 
   &.full-size {
-    width: calc(100% - @toolbalWidth);
+    width: calc(100% - @toolbarWidth);
 
     &.no-toolbar {
-      width: calc(100% - @toolbalWidthMin);
+      width: calc(100% - @toolbarWidthMin);
     }
   }
 
@@ -417,6 +418,7 @@
   display: flex;
   align-items: flex-end;
   padding: 20px 0;
+  overflow-wrap: anywhere;
 }
 
 .field-image_size,
