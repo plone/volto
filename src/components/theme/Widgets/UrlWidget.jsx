@@ -4,11 +4,7 @@ import { UniversalLink } from '@plone/volto/components';
 
 const UrlWidget = ({ value, children, className }) =>
   value ? (
-    <UniversalLink
-      href={value}
-      className={cx(className, 'url', 'widget')}
-      openLinkInNewTab={true}
-    >
+    <UniversalLink href={value} className={cx(className, 'url', 'widget')}>
       {children ? children(value) : value}
     </UniversalLink>
   ) : (
