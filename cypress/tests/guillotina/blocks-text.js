@@ -34,7 +34,7 @@ describe('Text Block Tests', () => {
 
   it('As editor I can add a link to a text block', function () {
     // when I create a link
-    cy.getSlate()
+    cy.getSlate(true)
       .focus()
       .click()
       .type('Colorless green ideas sleep furiously.')
@@ -62,7 +62,7 @@ describe('Text Block Tests', () => {
     cy.getSlateTitle().focus().click();
 
     // when I create a mailto link
-    cy.getSlate()
+    cy.getSlate(true)
       .focus()
       .click()
       .type('Colorless green ideas sleep furiously.')
