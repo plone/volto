@@ -5,8 +5,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Body from '@plone/volto/components/manage/Blocks/Video/Body.jsx';
 import cx from 'classnames';
+import Body from '@plone/volto/components/manage/Blocks/Video/Body.jsx';
 
 /**
  * View video block class.
@@ -28,7 +28,6 @@ const View = ({ data }) => {
     </div>
   );
 };
-
 /**
  * Property types.
  * @property {Object} propTypes Property types.

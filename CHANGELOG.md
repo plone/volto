@@ -8,6 +8,12 @@
 - Move all cypress actions to the main `Makefile`, providing better meaningful names. Remove them from `package.json` script section. @sneridagh
 
 ### Feature
+## 15.9.0 (2022-05-06)
+
+### Feature
+
+- added default placeholder for videos to embed them more lightly. @giuliaghisini
+
 ## 15.8.1 (2022-05-04)
 
 - added default placeholder for videos to embed them more lightly @giuliaghisini
