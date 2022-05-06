@@ -296,7 +296,7 @@ Cypress.Commands.add(
     username = 'editor',
     fullname = 'editor',
     email = 'editor@local.dev',
-    password = 'admin',
+    password = 'secret',
     roles = ['Member', 'Reader', 'Editor'],
   }) => {
     let api_url, auth, path;
