@@ -85,14 +85,17 @@
 
   .contents-table-wrapper {
     width: 100%;
-    min-height: 14rem;
-    overflow-x: auto;
 
     .ui.attached.table {
       width: 100%;
       max-width: 100%;
 
       border: none;
+    }
+
+    .ui.upward.dropdown > .menu {
+      top: auto;
+      bottom: 100%;
     }
   }
 
@@ -185,4 +188,10 @@
   h1.documentFirstHeading {
     display: flex;
   }
+}
+
+.event-view .download-event {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
 }

@@ -7,7 +7,7 @@
     "start": "razzle start",
     "preinstall": "if [ -f $(pwd)/mrs.developer.json ]; then if [ -f $(pwd)/node_modules/.bin/missdev ]; then yarn develop; else yarn develop:npx; fi; fi",
     "postinstall": "yarn omelette && yarn patches",
-    "omelette": "ln -sf node_modules/@plone/volto/ omelette",
+    "omelette": "if [ ! -d omelette ]; then ln -sf node_modules/@plone/volto omelette; fi",
     "patches": "/bin/bash patches/patchit.sh > /dev/null 2>&1 ||true",
     "build": "razzle build",
     "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx}'",
@@ -135,7 +135,7 @@
     "not dead"
   ],
   "engines": {
-    "node": "^12 || ^14 || ^16"
+    "node": "^14 || ^16"
   },
   "dependencies": <%- dependencies %>,
   "devDependencies": {

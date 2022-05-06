@@ -18,8 +18,7 @@ Semantic Versioning to communicate bugfixes, new features, and breaking changes.
 
 What you can expect from Volto releases and the Volto release management. Volto uses
 Semantic Versioning to communicate bugfixes, new features, and breaking changes. It
-supports Plone 5.2 on Python 3 and LTS versions of Node (10, 12 and 14 as the time of
-writing (Nov'2020)).
+supports Plone 5.2.x on Python 3, Plone 6, and LTS versions of NodeJS.
 
 ## Semantic Versioning
 
