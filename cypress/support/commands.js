@@ -16,7 +16,7 @@ Cypress.Commands.add('autologin', (usr, pass) => {
   if (Cypress.env('API') === 'guillotina') {
     api_url = GUILLOTINA_API_URL;
     user = usr || 'admin';
-    password = pass || 'secret';
+    password = pass || 'admin';
   } else {
     api_url = PLONE_API_URL;
     user = usr || 'admin';
@@ -184,14 +184,6 @@ Cypress.Commands.add('removeContent', ({ path = '' }) => {
       pass: 'secret',
     };
   }
-  cy.request({
-    method: 'DELETE',
-    url: `${api_url}/${path}/@lock`,
-    headers: {
-      Accept: 'application/json',
-    },
-    auth: auth,
-  });
 
   return cy.request({
     method: 'DELETE',
@@ -574,12 +566,23 @@ Cypress.Commands.add('clearSlate', (selector) => {
     .type('{backspace}');
 });
 
-Cypress.Commands.add('getSlate', () => {
-  return cy
-    .get(SLATE_SELECTOR, {
-      timeout: 10000,
-    })
-    .last();
+Cypress.Commands.add('getSlate', (createNewSlate = false) => {
+  let slate;
+  cy.getIfExists(
+    SLATE_SELECTOR,
+    () => {
+      slate = cy.get(SLATE_SELECTOR).last();
+    },
+    () => {
+      if (createNewSlate) {
+        cy.get('.block.inner').last().type('{enter}');
+        slate = cy.get(SLATE_SELECTOR, { timeout: 10000 }).last();
+      } else {
+        slate = cy.get(SLATE_SELECTOR, { timeout: 10000 }).last();
+      }
+    },
+  );
+  return slate;
 });
 
 Cypress.Commands.add('getSlateTitle', () => {
