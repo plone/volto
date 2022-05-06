@@ -45,6 +45,85 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
     <div
       className="ui secondary segment"
     >
+      Available
+      :
+      <div
+        className="ui circular label"
+        onClick={[Function]}
+      >
+        1
+      </div>
+    </div>
+    <div
+      className="ui attached segment"
+    >
+      <div
+        className="accordion ui"
+      >
+        <div
+          className="ui divider"
+        />
+        <div>
+          <div
+            className="title"
+            onClick={[Function]}
+          >
+            Something Else
+            <svg
+              className="icon accordionToggle Something Else"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": undefined,
+                }
+              }
+              onClick={null}
+              style={
+                Object {
+                  "fill": "currentColor",
+                  "height": "23px",
+                  "width": "auto",
+                }
+              }
+              viewBox=""
+              xmlns=""
+            />
+          </div>
+          <div
+            className="content"
+          >
+            <div
+              className="description"
+            >
+              Does other things…
+            </div>
+            <div
+              className="ui right floated buttons"
+            >
+              <button
+                className="ui basic primary button installAction"
+                onClick={[Function]}
+                value="plone.app.somethingelse"
+              >
+                Install
+              </button>
+            </div>
+            <div
+              className="version"
+            >
+              Latest version
+              :  
+              1.0.0
+            </div>
+          </div>
+          <div
+            className="ui divider"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="ui secondary segment"
+    >
       Installed
       :
       <div
@@ -124,85 +203,6 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
             >
               Installed version
               :   
-              1.0.0
-            </div>
-          </div>
-          <div
-            className="ui divider"
-          />
-        </div>
-      </div>
-    </div>
-    <div
-      className="ui secondary segment"
-    >
-      Available
-      :
-      <div
-        className="ui circular label"
-        onClick={[Function]}
-      >
-        1
-      </div>
-    </div>
-    <div
-      className="ui attached segment"
-    >
-      <div
-        className="accordion ui"
-      >
-        <div
-          className="ui divider"
-        />
-        <div>
-          <div
-            className="title"
-            onClick={[Function]}
-          >
-            Something Else
-            <svg
-              className="icon accordionToggle Something Else"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": undefined,
-                }
-              }
-              onClick={null}
-              style={
-                Object {
-                  "fill": "currentColor",
-                  "height": "23px",
-                  "width": "auto",
-                }
-              }
-              viewBox=""
-              xmlns=""
-            />
-          </div>
-          <div
-            className="content"
-          >
-            <div
-              className="description"
-            >
-              Does other things…
-            </div>
-            <div
-              className="ui right floated buttons"
-            >
-              <button
-                className="ui basic primary button installAction"
-                onClick={[Function]}
-                value="plone.app.somethingelse"
-              >
-                Install
-              </button>
-            </div>
-            <div
-              className="version"
-            >
-              Latest version
-              :  
               1.0.0
             </div>
           </div>
