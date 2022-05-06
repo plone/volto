@@ -6,6 +6,8 @@
 
 ### Feature
 
+- added default placeholder for videos to embed them more lightly. @giuliaghisini
+
 ### Bugfix
 
 ### Internal
