@@ -42,7 +42,7 @@ import App from '@plone/volto/components/theme/App/App';
 import View from '@plone/volto/components/theme/View/View';
 
 import config from '@plone/volto/registry';
-import RedirectionPanel from './components/manage/Controlpanels/RedirectionPanel';
+import RedirectionPanel from '@plone/volto/components/manage/Controlpanels/RedirectionPanel';
 
 /**
  * Default routes array.

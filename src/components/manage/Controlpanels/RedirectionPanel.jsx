@@ -13,18 +13,19 @@ import { Portal } from 'react-portal';
 import {
   Container,
   Button,
-  Table,
   Segment,
   Form,
   Checkbox,
   Header,
   Input,
+  Radio,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { FormattedRelativeDate, Icon, Toolbar } from '@plone/volto/components';
+import { Icon, Toolbar } from '@plone/volto/components';
 
 import backSVG from '@plone/volto/icons/back.svg';
+import DatetimeWidget from '@plone/volto/components/manage/Widgets/DatetimeWidget';
 
 const messages = defineMessages({
   back: {
@@ -36,6 +37,12 @@ const messages = defineMessages({
     defaultMessage: 'Moderate comments',
   },
 });
+
+const filterChoices = [
+  { label: 'Both', value: 'both' },
+  { label: 'Automatically', value: 'automatically' },
+  { label: 'Manually', value: 'manually' },
+];
 
 /**
  * RedirectionPanelComponent class.
@@ -78,11 +85,15 @@ class RedirectionPanel extends Component {
    */
   constructor(props) {
     super(props);
+    this.handleSelectFilterType = this.handleSelectFilterType.bind(this);
+    this.handleCreateDate = this.handleCreateDate.bind(this);
     this.state = {
       showEdit: false,
       editId: null,
       editText: null,
       isClient: false,
+      filterType: filterChoices[0],
+      createdBefore: null,
     };
   }
 
@@ -93,6 +104,15 @@ class RedirectionPanel extends Component {
    */
   componentDidMount() {
     this.setState({ isClient: true });
+  }
+
+  /**
+   * Component did mount
+   * @method componentDidUpdate
+   * @returns {undefined}
+   */
+  componentDidUpdate() {
+    console.log('stateupdated', this.state);
   }
 
   /**
@@ -110,6 +130,24 @@ class RedirectionPanel extends Component {
    */
   onCancel() {
     this.props.history.push(getParentUrl(this.props.pathname));
+  }
+
+  /**
+   * Select filter type handler
+   * @method handleSelectFilterType
+   * @returns {undefined}
+   */
+  handleSelectFilterType(type) {
+    this.setState({ filterType: type });
+  }
+
+  /**
+   * Select Creation date handler
+   * @method handleCreateDate
+   * @returns {undefined}
+   */
+  handleCreateDate(date) {
+    this.setState({ createdBefore: date });
   }
 
   /**
@@ -143,12 +181,7 @@ class RedirectionPanel extends Component {
                     />
                   </p>
                   <Form.Field>
-                    <Input
-                      name="alternative-url-path"
-                      placeholder="/example"
-                      // value={this.state.newAlias}
-                      // onChange={(e) => this.handleAltChange(e.target.value)}
-                    />
+                    <Input name="alternative-url-path" placeholder="/example" />
                     {!this.state.isAliasCorrect &&
                       this.state.newAlias !== '' && (
                         <p style={{ color: 'red' }}>
@@ -169,12 +202,7 @@ class RedirectionPanel extends Component {
                     />
                   </p>
                   <Form.Field>
-                    <Input
-                      name="target-url-path"
-                      placeholder="/example"
-                      // value={this.state.newAlias}
-                      // onChange={(e) => this.handleAltChange(e.target.value)}
-                    />
+                    <Input name="target-url-path" placeholder="/example" />
                     {!this.state.isAliasCorrect &&
                       this.state.newAlias !== '' && (
                         <p style={{ color: 'red' }}>
@@ -191,11 +219,48 @@ class RedirectionPanel extends Component {
                 </Segment>
               </Form>
               <Form>
-                <Segment>
+                <Segment className="primary">
                   <Header size="medium">
                     All existing alternative urls for this site
                   </Header>
-                  {this.props.aliases &&
+                  <Header size="small">Filter by prefix</Header>
+                  <Form.Field>
+                    <Input name="filter" placeholder="/" />
+                  </Form.Field>
+                  <Header size="small">Manually or automatically added?</Header>
+                  {filterChoices.map((o, i) => (
+                    <Form.Field>
+                      <Radio
+                        label={o.label}
+                        name="radioGroup"
+                        value={o.value}
+                        checked={this.state.filterType === o}
+                        onChange={() => this.handleSelectFilterType(o)}
+                      />
+                    </Form.Field>
+                  ))}
+                  <Form.Field>
+                    <DatetimeWidget
+                      id="created-before-date"
+                      title={'Created before'}
+                      dateOnly={true}
+                      value={this.state.createdBefore}
+                      onChange={(id, value) => {
+                        this.handleCreateDate(value);
+                      }}
+                    />
+                  </Form.Field>
+                  <Button
+                    onClick={() => console.log(this.state.createdBefore)}
+                    primary
+                  >
+                    Filter
+                  </Button>
+                  <Header size="small">
+                    Alternative url path → target url path (date and time of
+                    creation, manually created yes/no)
+                  </Header>
+                  {/* {this.props.aliases &&
                     this.props.aliases.length > 0 &&
                     this.props.aliases.map((alias, i) => (
                       <Form.Field key={i}>
@@ -208,8 +273,13 @@ class RedirectionPanel extends Component {
                           checked={this.state.aliasesToRemove.includes(alias)}
                         />
                       </Form.Field>
-                    ))}
-                  <Button primary>Remove</Button>
+                    ))} */}
+                  <Button
+                    onClick={() => console.log(this.state.createdBefore)}
+                    primary
+                  >
+                    Remove selected
+                  </Button>
                 </Segment>
               </Form>
             </Segment.Group>
