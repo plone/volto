@@ -371,7 +371,7 @@ export default compose(
         getVocabFromItems(props);
 
       const vocabState =
-        state.vocabularies?.[vocabBaseUrl]?.subrequests?.[props.lang];
+        state.vocabularies?.[vocabBaseUrl]?.subrequests?.[state.intl.locale];
 
       // If the schema already has the choices in it, then do not try to get the vocab,
       // even if there is one
