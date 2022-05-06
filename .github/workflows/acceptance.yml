@@ -131,6 +131,70 @@ jobs:
           name: cypress-videos
           path: cypress/videos
 
+  corevoltoslate:
+    runs-on: ubuntu-latest
+    name: Core Volto Slate
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x]
+    steps:
+      - uses: actions/checkout@v2
+
+      # node setup
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      # node cache
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v1
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      ## node install
+      - run: yarn --frozen-lockfile
+
+      - name: Cypress acceptance tests
+        uses: cypress-io/github-action@v2
+        env:
+          BABEL_ENV: production
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          CYPRESS_RETRIES: 2
+          # Recommended: pass the GitHub token lets this action correctly
+          # determine the unique run id necessary to re-run the checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          record: true
+          parallel: false # Since they run on different node versions, we can't parallel
+          browser: chrome
+          # headless: true
+          group: Core Volto Slate ${{ matrix.node-version }}
+          config: integrationFolder=cypress/tests
+          spec: cypress/tests/core/volto-slate/**/*.js
+          start: |
+            make start-test-acceptance-server
+            make start-test-acceptance-frontend
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+
+      # Upload Cypress screenshots
+      - uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+      # Upload Cypress videos
+      - uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: cypress-videos
+          path: cypress/videos
   # core6:
   #   runs-on: ubuntu-latest
   #   name: Core Basic - Plone 6
@@ -499,7 +563,6 @@ jobs:
             make start-test-acceptance-frontend-workingcopy
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
 
-
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
         if: failure()
@@ -550,7 +613,7 @@ jobs:
 
       # Generator own tests
       - name: Generator tests
-        run:  yarn && yarn test
+        run: yarn && yarn test
         working-directory: ${{env.generator-directory}}
 
       # install Yeoman and the generator
