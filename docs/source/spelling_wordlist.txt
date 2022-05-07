@@ -135,7 +135,7 @@ grep
 Groundwire
 gruntfile
 Gunicorn
-haproxy
+HAProxy
 Herstory
 hg
 homebrew
