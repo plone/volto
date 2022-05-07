@@ -427,9 +427,12 @@ export const buildStyleClassNamesFromData = (styles) => {
     }
   });
   return styleArray.map((item) => {
-    const classname = item.map((item) =>
-      item && item.startsWith('#') ? item.replace('#', '') : item,
-    );
+    const classname = item.map((item) => {
+      const str_item = item.toString();
+      return str_item && str_item.startsWith('#')
+        ? str_item.replace('#', '')
+        : str_item;
+    });
     return `has--${classname[0]}--${classname[1]}${
       classname[2] ? `--${classname[2]}` : ''
     }`;

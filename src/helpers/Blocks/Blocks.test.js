@@ -617,5 +617,16 @@ describe('Blocks', () => {
         'has--nested--bar--000',
       ]);
     });
+
+    it('Sets styles classname array according to style values with int values', () => {
+      const styles = {
+        color: 'red',
+        borderRadius: 8,
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual([
+        'has--color--red',
+        'has--borderRadius--8',
+      ]);
+    });
   });
 });
