@@ -1,10 +1,10 @@
-import React from 'react';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 import { Icon } from '@plone/volto/components';
 import { Button } from 'semantic-ui-react';
 import imageLeftSVG from '@plone/volto/icons/image-left.svg';
 import imageRightSVG from '@plone/volto/icons/image-right.svg';
 import imageFitSVG from '@plone/volto/icons/image-fit.svg';
+import imageWideSVG from '@plone/volto/icons/image-wide.svg';
 import imageFullSVG from '@plone/volto/icons/image-full.svg';
 
 const messages = defineMessages({
@@ -20,19 +20,26 @@ const messages = defineMessages({
     id: 'Center',
     defaultMessage: 'Center',
   },
+  wide: {
+    id: 'Full',
+    defaultMessage: 'Full',
+  },
   full: {
     id: 'Full',
     defaultMessage: 'Full',
   },
 });
 
-const AlignBlock = ({ align, onChangeBlock, data, intl, block }) => {
-  /**
-   * Align block handler
-   * @method onAlignBlock
-   * @param {string} align Alignment option
-   * @returns {undefined}
-   */
+const AlignBlock = ({
+  align,
+  onChangeBlock,
+  data,
+  block,
+  showFloat = true,
+  showWideAlign = false,
+}) => {
+  const intl = useIntl();
+
   function onAlignBlock(align) {
     onChangeBlock(block, {
       ...data,
@@ -41,29 +48,33 @@ const AlignBlock = ({ align, onChangeBlock, data, intl, block }) => {
   }
 
   return (
-    <div>
-      <Button.Group>
-        <Button
-          icon
-          basic
-          aria-label={intl.formatMessage(messages.left)}
-          onClick={() => onAlignBlock('left')}
-          active={data.align === 'left'}
-        >
-          <Icon name={imageLeftSVG} size="24px" />
-        </Button>
-      </Button.Group>
-      <Button.Group>
-        <Button
-          icon
-          basic
-          aria-label={intl.formatMessage(messages.right)}
-          onClick={() => onAlignBlock('right')}
-          active={data.align === 'right'}
-        >
-          <Icon name={imageRightSVG} size="24px" />
-        </Button>
-      </Button.Group>
+    <div className="align-buttons">
+      {showFloat && (
+        <>
+          <Button.Group>
+            <Button
+              icon
+              basic
+              aria-label={intl.formatMessage(messages.left)}
+              onClick={() => onAlignBlock('left')}
+              active={data.align === 'left'}
+            >
+              <Icon name={imageLeftSVG} size="24px" />
+            </Button>
+          </Button.Group>
+          <Button.Group>
+            <Button
+              icon
+              basic
+              aria-label={intl.formatMessage(messages.right)}
+              onClick={() => onAlignBlock('right')}
+              active={data.align === 'right'}
+            >
+              <Icon name={imageRightSVG} size="24px" />
+            </Button>
+          </Button.Group>
+        </>
+      )}
       <Button.Group>
         <Button
           icon
@@ -75,6 +86,19 @@ const AlignBlock = ({ align, onChangeBlock, data, intl, block }) => {
           <Icon name={imageFitSVG} size="24px" />
         </Button>
       </Button.Group>
+      {showWideAlign && (
+        <Button.Group>
+          <Button
+            icon
+            basic
+            aria-label={intl.formatMessage(messages.wide)}
+            onClick={() => onAlignBlock('wide')}
+            active={data.align === 'wide'}
+          >
+            <Icon name={imageWideSVG} size="24px" />
+          </Button>
+        </Button.Group>
+      )}
       <Button.Group>
         <Button
           icon
@@ -90,4 +114,4 @@ const AlignBlock = ({ align, onChangeBlock, data, intl, block }) => {
   );
 };
 
-export default injectIntl(AlignBlock);
+export default AlignBlock;

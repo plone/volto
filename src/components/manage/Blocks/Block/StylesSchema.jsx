@@ -6,6 +6,10 @@ const messages = defineMessages({
     id: 'Color',
     defaultMessage: 'Color',
   },
+  align: {
+    id: 'Alignment',
+    defaultMessage: 'Alignment',
+  },
   backgroundColor: {
     id: 'Background color',
     defaultMessage: 'Background color',
@@ -28,10 +32,16 @@ export const defaultStyleSchema = ({ schema, formData, intl }) => {
       {
         id: 'default',
         title: 'Default',
-        fields: ['backgroundColor'],
+        fields: ['align', 'backgroundColor'],
       },
     ],
     properties: {
+      align: {
+        widget: 'align',
+        title: intl.formatMessage(messages.align),
+        showFloat: false,
+        showWideAlign: true,
+      },
       backgroundColor: {
         widget: 'color_picker',
         title: intl.formatMessage(messages.backgroundColor),

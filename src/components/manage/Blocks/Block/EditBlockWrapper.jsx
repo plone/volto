@@ -35,8 +35,12 @@ const EditBlockWrapper = (props) => {
     <div
       ref={draginfo.innerRef}
       {...draginfo.draggableProps}
+      // Right now, we can have the alignment information in the styles property or in the
+      // block data root, we inject the classname here for having control over the whole
+      // Block Edit wrapper
       className={cx(`block-editor-${data['@type']}`, {
         [data.align]: data.align,
+        [data?.styles?.align]: data?.styles?.align,
       })}
     >
       <div style={{ position: 'relative' }}>
