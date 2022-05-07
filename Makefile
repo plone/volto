@@ -333,3 +333,8 @@ test-acceptance-guillotina-headless: ## Start the Guillotina Cypress Acceptance 
 .PHONY: full-test-acceptance-guillotina
 full-test-acceptance-guillotina: ## Runs the Guillotina Full Acceptance Testing in headless mode
 	$(NODEBIN)/start-test "make start-test-acceptance-server-guillotina" http-get://localhost:8081 "make start-test-acceptance-frontend-guillotina" http://localhost:3000 "make test-acceptance-guillotina-headless"
+
+### Remove:
+.PHONY: start-test-acceptance-server-6-test
+start-test-acceptance-server-6-test:
+	docker run -it --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors plone/plone-backend:robot ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING

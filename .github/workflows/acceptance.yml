@@ -183,7 +183,7 @@ jobs:
           config: integrationFolder=cypress/tests
           spec: cypress/tests/core/basic/**/*.js
           start: |
-            "docker run -it --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors plone/plone-backend:robot ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING"
+            make start-test-acceptance-server-6-test
             make start-test-acceptance-frontend
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
 
