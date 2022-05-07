@@ -100,9 +100,9 @@ let config = {
     listingPreviewImageField: 'image', // deprecated from Volto 14 onwards
     notSupportedBrowsers: ['ie'],
     defaultPageSize: 25,
-    isMultilingual: false,
-    supportedLanguages: ['en'],
-    defaultLanguage: 'en',
+    isMultilingual: true,
+    supportedLanguages: ['it', 'en'],
+    defaultLanguage: 'it',
     navDepth: 1,
     expressMiddleware: serverConfig.expressMiddleware, // BBB
     defaultBlockType: 'text',

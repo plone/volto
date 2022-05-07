@@ -12,14 +12,13 @@ import { FormattedMessage, injectIntl, defineMessages } from 'react-intl';
 import { Icon } from '@plone/volto/components';
 import { getUser } from '@plone/volto/actions';
 import { Pluggable } from '@plone/volto/components/manage/Pluggable';
-import { userHasRoles } from '@plone/volto/helpers';
+import { userHasRoles, URLUtils } from '@plone/volto/helpers';
 
 import logoutSVG from '@plone/volto/icons/log-out.svg';
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import cameraSVG from '@plone/volto/icons/camera.svg';
-import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   back: {
@@ -88,7 +87,6 @@ class PersonalTools extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { prefixPath } = config.settings;
     return (
       <div
         className={cx('personal-tools pastanaga-menu', {
@@ -116,7 +114,7 @@ class PersonalTools extends Component {
               ? this.props.user.fullname
               : this.props.user.username}
           </h2>
-          <Link id="toolbar-logout" to={`${prefixPath}/logout`}>
+          <Link id="toolbar-logout" to={URLUtils.normalizePath('/logout')}>
             <Icon
               className="logout"
               name={logoutSVG}
@@ -166,7 +164,7 @@ class PersonalTools extends Component {
               'Manager',
             ]) && (
               <li>
-                <Link to={`${prefixPath}/controlpanel`}>
+                <Link to={URLUtils.normalizePath('/controlpanel')}>
                   <FormattedMessage
                     id="Site Setup"
                     defaultMessage="Site Setup"

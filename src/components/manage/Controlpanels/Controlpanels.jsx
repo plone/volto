@@ -10,7 +10,7 @@ import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { concat, filter, last, map, uniqBy } from 'lodash';
 import { Portal } from 'react-portal';
-import { Helmet } from '@plone/volto/helpers';
+import { Helmet, URLUtils } from '@plone/volto/helpers';
 import { Container, Grid, Header, Segment } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
@@ -157,7 +157,7 @@ class Controlpanels extends Component {
       }),
     );
     const groups = map(uniqBy(controlpanels, 'group'), 'group');
-    const { controlPanelsIcons: icons, prefixPath } = config.settings;
+    const { controlPanelsIcons: icons } = config.settings;
 
     return (
       <div className="view-wrapper">
@@ -177,7 +177,9 @@ class Controlpanels extends Component {
                     {map(filter(controlpanels, { group }), (controlpanel) => (
                       <Grid.Column key={controlpanel.id}>
                         <Link
-                          to={`${prefixPath}/controlpanel/${controlpanel.id}`}
+                          to={URLUtils.normalizePath(
+                            `/controlpanel/${controlpanel.id}`,
+                          )}
                         >
                           <Header as="h3" icon textAlign="center">
                             <Icon

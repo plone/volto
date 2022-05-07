@@ -13,8 +13,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 
 import { Icon } from '@plone/volto/components';
 import { getBreadcrumbs } from '@plone/volto/actions';
-import { getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
-import config from '@plone/volto/registry';
+import { getBaseUrl, hasApiExpander, URLUtils } from '@plone/volto/helpers';
 
 import homeSVG from '@plone/volto/icons/home.svg';
 
@@ -76,7 +75,6 @@ export class BreadcrumbsComponent extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { prefixPath } = config.settings;
     return (
       <Segment
         role="navigation"
@@ -88,7 +86,7 @@ export class BreadcrumbsComponent extends Component {
         <Container>
           <Breadcrumb>
             <Link
-              to={this.props.root || `${prefixPath}/`}
+              to={this.props.root || URLUtils.normalizePath()}
               className="section"
               title={this.props.intl.formatMessage(messages.home)}
             >

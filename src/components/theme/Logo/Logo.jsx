@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 import config from '@plone/volto/registry';
 import { UniversalLink } from '@plone/volto/components';
 import LogoImage from '@plone/volto/components/theme/Logo/Logo.svg';
+import { URLUtils } from '@plone/volto/helpers';
 
 const messages = defineMessages({
   site: {
@@ -28,15 +29,12 @@ const messages = defineMessages({
  * @returns {string} Markup of the component.
  */
 const Logo = () => {
-  const { isMultilingual, prefixPath } = config.settings;
+  const { isMultilingual } = config.settings;
   const lang = useSelector((state) => state.intl.locale);
   const intl = useIntl();
-
+  const path = URLUtils.normalizePath(isMultilingual ? `/${lang}` : '');
   return (
-    <UniversalLink
-      href={isMultilingual ? `${prefixPath}/${lang}` : `${prefixPath}/`}
-      title={intl.formatMessage(messages.site)}
-    >
+    <UniversalLink href={path} title={intl.formatMessage(messages.site)}>
       <Image
         src={LogoImage}
         alt={intl.formatMessage(messages.plonesite)}

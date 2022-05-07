@@ -7,6 +7,7 @@
  */
 
 import config from '@plone/volto/registry';
+import { URLUtils } from '@plone/volto/helpers';
 
 const prefixPathRoot = (history) => ({ dispatch, getState }) => (next) => (
   action,
@@ -24,7 +25,7 @@ const prefixPathRoot = (history) => ({ dispatch, getState }) => (next) => (
       }
 
       if (!pathname.startsWith(prefixPath)) {
-        const newPathname = `${prefixPath}${pathname === '/' ? '' : pathname}`;
+        const newPathname = URLUtils.normalizePath(pathname);
         action.payload.location.pathname = newPathname;
         history.push(newPathname);
       }

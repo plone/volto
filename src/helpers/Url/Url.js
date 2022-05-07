@@ -285,9 +285,18 @@ export function checkAndNormalizeUrl(url) {
   return res;
 }
 
+export function normalizePath(path) {
+  const { prefixPath } = config.settings;
+  if (prefixPath) {
+    return path ? `${prefixPath}${path}` : prefixPath;
+  }
+  return path || '/';
+}
+
 export const URLUtils = {
   normalizeTelephone,
   normaliseMail,
+  normalizePath,
   normalizeUrl,
   isTelephone,
   isMail,

@@ -41,7 +41,7 @@ import App from '@plone/volto/components/theme/App/App';
 import View from '@plone/volto/components/theme/View/View';
 
 import config from '@plone/volto/registry';
-
+import { URLUtils } from '@plone/volto/helpers';
 /**
  * Default routes array.
  * @array
@@ -248,7 +248,7 @@ export const defaultRoutes = [
  */
 const routes = [
   {
-    path: config.settings.prefixPath || '/',
+    path: URLUtils.normalizePath(),
     component: App,
     routes: [
       // redirect to external links if path is in blacklist
@@ -261,11 +261,9 @@ const routes = [
         ...(config.addonRoutes || []),
         ...((config.settings?.isMultilingual && multilingualRoutes) || []),
         ...defaultRoutes,
-      ].map((route) =>
-        config.settings.prefixPath
-          ? { ...route, path: `${config.settings.prefixPath}${route.path}` }
-          : route,
-      ),
+      ].map((route) => {
+        return { ...route, path: URLUtils.normalizePath(route.path) };
+      }),
     ],
   },
 ];
