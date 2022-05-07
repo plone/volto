@@ -1,0 +1,3 @@
+FROM plone/plone-backend:nightly
+
+RUN bin/pip install "https://github.com/plone/plone.app.robotframework/archive/refs/heads/volto_3294.zip"
