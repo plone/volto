@@ -21,8 +21,8 @@ const messages = defineMessages({
     defaultMessage: 'Center',
   },
   wide: {
-    id: 'Full',
-    defaultMessage: 'Full',
+    id: 'Wide',
+    defaultMessage: 'Wide',
   },
   full: {
     id: 'Full',

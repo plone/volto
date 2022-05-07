@@ -40,7 +40,7 @@ const EditBlockWrapper = (props) => {
       // Block Edit wrapper
       className={cx(`block-editor-${data['@type']}`, {
         [data.align]: data.align,
-        [data?.styles?.align]: data?.styles?.align,
+        [data.styles?.align]: data.styles?.align,
       })}
     >
       <div style={{ position: 'relative' }}>
