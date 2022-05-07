@@ -1,3 +1,3 @@
 FROM plone/plone-backend:nightly
 
-RUN bin/pip install "https://github.com/plone/plone.app.robotframework/archive/7d2e66dc5eafd823364f2988e60cd24f1c6df567.zip"
+RUN bin/pip install "https://github.com/plone/plone.app.robotframework/archive/9299c6a3a1519d5abe86d451136b7447bc599823.zip"
