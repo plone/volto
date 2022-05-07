@@ -39,8 +39,7 @@ This will work if your block uses the `BlocksForm` component to define schema-dr
 ```
 
 This will add a new fieldset `Styling` to your block schema settings.
-By default, this fieldset has two fields.
-A `backgroundColor` field, and the `align` field, both configured by `defaultSchema` in `src/components/manage/Blocks/Block/StylesSchema.jsx`.
+By default, this fieldset has two fields: `backgroundColor` and `align`. They are both configured by `defaultSchema` in `src/components/manage/Blocks/Block/StylesSchema.jsx`.
 
 ## Extending the default styling field
 
@@ -105,9 +104,9 @@ Then it's at your discretion how you define the CSS class names in your theme.
 ## Main edit wrapper class injection
 
 Under the hood, there is yet another class injection happening in the main Block Engine Wrapper.
-This is in place to help positioning properly the block in the current layout.
+This is in place to help properly position the block in the current layout.
 
-Each block in the Block Engine has a main wrapper with an automatic class name `block-editor-<block_id> <block_align>`, as the following:
+Each block in the Block Engine has a main wrapper with an automatic class name `block-editor-<block_id> <block_align>`, as shown in the following example:
 
 ```html
 <div data-rbd-draggable-context-id="0" data-rbd-draggable-id="9949a5fa-5d57-4e0c-a150-71149a31096c" class="block-editor-listing center">
