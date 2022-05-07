@@ -17,7 +17,8 @@ const MultilingualRedirector = (props) => {
     ? currentLanguage
     : settings.defaultLanguage;
   const dispatch = useDispatch();
-  const isRoot = pathname === URLUtils.normalizePath();
+  const isRoot =
+    pathname === '/' || pathname === URLUtils.normalizePath() + '/';
   React.useEffect(() => {
     // ToDo: Add means to support language negotiation (with config)
     // const detectedLang = (navigator.language || navigator.userLanguage).substring(0, 2);
