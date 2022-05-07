@@ -172,6 +172,7 @@ msgstr "Configuració de complements"
 msgid "Additional date"
 msgstr "Data addicional"
 
+#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar

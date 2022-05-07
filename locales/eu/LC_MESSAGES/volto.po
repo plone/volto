@@ -170,6 +170,7 @@ msgstr "Gehigarrien ezarpenak"
 msgid "Additional date"
 msgstr "Data gehigarria"
 
+#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar

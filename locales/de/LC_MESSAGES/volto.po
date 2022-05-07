@@ -178,6 +178,7 @@ msgstr "Einstellungen Add-ons"
 msgid "Additional date"
 msgstr "Zusätzliches Datum"
 
+#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar

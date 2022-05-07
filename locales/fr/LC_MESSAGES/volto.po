@@ -180,6 +180,7 @@ msgstr "Paramètres des modules"
 msgid "Additional date"
 msgstr ""
 
+#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
