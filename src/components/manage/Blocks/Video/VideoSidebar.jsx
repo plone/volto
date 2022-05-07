@@ -1,5 +1,5 @@
 import React from 'react';
-import { VideoSchema } from './schema';
+import { VideoBlockSchema } from './schema';
 import { BlockDataForm } from '@plone/volto/components';
 import { Segment } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
@@ -20,7 +20,7 @@ const messages = defineMessages({
 const VideoSidebar = (props) => {
   const { data, block, onChangeBlock } = props;
   const intl = useIntl();
-  const schema = VideoSchema({ ...props, intl });
+  const schema = VideoBlockSchema({ ...props, intl });
 
   return (
     <>

@@ -140,7 +140,6 @@ class Edit extends Component {
    */
   render() {
     const { data } = this.props;
-    const placeholderImage = data.preview_image && data.preview_image[0];
     const placeholder =
       this.props.data.placeholder ||
       this.props.intl.formatMessage(messages.VideoBlockInputPlaceholder);

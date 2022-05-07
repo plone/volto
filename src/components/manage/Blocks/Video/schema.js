@@ -18,7 +18,7 @@ const messages = defineMessages({
     defaultMessage: 'Alignment',
   },
 });
-export const VideoSchema = (props) => ({
+export const VideoBlockSchema = (props) => ({
   title: props.intl.formatMessage(messages.Video),
   block: 'Video',
   fieldsets: [
@@ -46,3 +46,5 @@ export const VideoSchema = (props) => ({
   },
   required: [],
 });
+
+export default VideoBlockSchema;

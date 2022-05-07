@@ -68,6 +68,7 @@ import getListingBlockAsyncData from '@plone/volto/components/manage/Blocks/List
 import HeroImageLeftBlockSchema from '@plone/volto/components/manage/Blocks/HeroImageLeft/schema';
 import ListingBlockSchema from '@plone/volto/components/manage/Blocks/Listing/schema';
 import SearchBlockSchema from '@plone/volto/components/manage/Blocks/Search/schema';
+import VideoBlockSchema from '@plone/volto/components/manage/Blocks/Video/schema';
 
 defineMessages({
   title: {
@@ -300,6 +301,9 @@ const blocksConfig = {
     view: ViewVideoBlock,
     edit: EditVideoBlock,
     schema: BlockSettingsSchema,
+    blockSchema: VideoBlockSchema,
+    extensions: {},
+    variations: [],
     restricted: false,
     mostUsed: true,
     sidebarTab: 1,
