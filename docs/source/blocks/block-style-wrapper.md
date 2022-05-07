@@ -39,7 +39,8 @@ This will work if your block uses the `BlocksForm` component to define schema-dr
 ```
 
 This will add a new fieldset `Styling` to your block schema settings.
-By default, only a `backgroundColor` property is set, configured by `defaultSchema` in `src/components/manage/Blocks/Block/StylesSchema.jsx`.
+By default, this fieldset has two fields.
+A `backgroundColor` field, and the `align` field, both configured by `defaultSchema` in `src/components/manage/Blocks/Block/StylesSchema.jsx`.
 
 ## Extending the default styling field
 
@@ -96,7 +97,22 @@ Same for the block edit component.
 The resultant HTML would be the following:
 
 ```html
-<div className="has--backgroundColor--ee22ee has--myCustomStyleField--red has--myCustom2StyleField--color--black has--myCustom2StyleField--color--MyGradient">
+<div class="has--backgroundColor--ee22ee has--myCustomStyleField--red has--myCustom2StyleField--color--black has--myCustom2StyleField--color--MyGradient">
 ```
 
 Then it's at your discretion how you define the CSS class names in your theme.
+
+## Main edit wrapper class injection
+
+Under the hood, there is yet another class injection happening in the main Block Engine Wrapper.
+This is in place to help positioning properly the block in the current layout.
+
+Each block in the Block Engine has a main wrapper with an automatic class name `block-editor-<block_id> <block_align>`, as the following:
+
+```html
+<div data-rbd-draggable-context-id="0" data-rbd-draggable-id="9949a5fa-5d57-4e0c-a150-71149a31096c" class="block-editor-listing center">
+  ...
+</div>
+```
+
+You can use it for further control over the positioning and layout of the block.
