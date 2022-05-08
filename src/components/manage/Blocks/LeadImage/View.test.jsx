@@ -8,7 +8,13 @@ test('renders a view image component', () => {
       data={{}}
       properties={{
         image: {
-          download: 'image.png',
+          scales: {
+            preview: {
+              download: 'image.png',
+              width: 400,
+              height: 400,
+            },
+          },
         },
       }}
     />,

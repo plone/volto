@@ -6,7 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Segment, Container } from 'semantic-ui-react';
-import { UniversalLink, PreviewImage } from '@plone/volto/components';
+import { UniversalLink, Component } from '@plone/volto/components';
 
 /**
  * List view component class.
@@ -28,10 +28,10 @@ const ListingView = ({ content }) => (
             {item.description && <p>{item.description}</p>}
           </Container>
           {item.image_field && (
-            <PreviewImage
+            <Component
+              componentName="PreviewImage"
               item={item}
               size="thumb"
-              alt={item.image_caption ? item.image_caption : item.title}
               className="ui image"
             />
           )}

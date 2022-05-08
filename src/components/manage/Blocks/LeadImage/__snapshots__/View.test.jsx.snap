@@ -4,10 +4,25 @@ exports[`renders a view image component 1`] = `
 <p
   className="block image align center"
 >
-  <img
-    alt=""
-    className=""
-    src="image.png"
-  />
+  <picture
+    className="volto-image responsive"
+  >
+    <source
+      sizes="100vw"
+      srcSet={
+        Array [
+          "image.png 400w",
+        ]
+      }
+    />
+    <img
+      alt=""
+      className=""
+      height={400}
+      role="img"
+      src="image.png"
+      width={400}
+    />
+  </picture>
 </p>
 `;

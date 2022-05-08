@@ -20,7 +20,13 @@ test('renders an edit Lead Image block component', () => {
         data={{}}
         properties={{
           image: {
-            download: 'image.png',
+            scales: {
+              preview: {
+                download: 'image.png',
+                width: 400,
+                height: 400,
+              },
+            },
           },
         }}
         selected={false}

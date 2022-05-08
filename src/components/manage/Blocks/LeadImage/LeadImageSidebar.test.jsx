@@ -21,8 +21,10 @@ test('renders a Lead Image block Sidebar component', () => {
         properties={{
           image: {
             scales: {
-              mini: {
+              preview: {
                 download: 'image.png',
+                width: 400,
+                height: 400,
               },
             },
           },

@@ -11,11 +11,32 @@ import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/defau
  */
 function PreviewImage(props) {
   const { item, size = 'preview', alt, ...rest } = props;
-  const src = item.image_field
-    ? flattenToAppURL(`${item['@id']}/@@images/${item.image_field}/${size}`)
-    : DefaultImageSVG;
+  if (item.image_field) {
+    const { width, height } =
+      item.image_scales?.[item.image_field]?.[0]?.scales[size] ?? {};
 
-  return <img src={src} alt={alt ?? item.title} {...rest} />;
+    return (
+      <img
+        src={flattenToAppURL(
+          `${item['@id']}/@@images/${item.image_field}/${size}?modified=${item.modified}`,
+        )}
+        alt={alt ?? item.title}
+        {...rest}
+        width={width}
+        height={height}
+      />
+    );
+  } else {
+    return (
+      <img
+        src={DefaultImageSVG}
+        alt={alt ?? item.title}
+        {...rest}
+        width="400"
+        height="300"
+      />
+    );
+  }
 }
 
 PreviewImage.propTypes = {

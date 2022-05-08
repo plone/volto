@@ -7,6 +7,18 @@ describe('PreviewImage', () => {
   it('renders a preview image', () => {
     const item = {
       image_field: 'image',
+      image_scales: {
+        image: [
+          {
+            scales: {
+              preview: {
+                width: 400,
+                height: 400,
+              },
+            },
+          },
+        ],
+      },
       title: 'Item title',
       '@id': 'http://localhost:3000/something',
     };
@@ -18,6 +30,18 @@ describe('PreviewImage', () => {
   it('renders a preview image with extra props', () => {
     const item = {
       image_field: 'image',
+      image_scales: {
+        image: [
+          {
+            scales: {
+              preview: {
+                width: 400,
+                height: 400,
+              },
+            },
+          },
+        ],
+      },
       title: 'Item title',
       '@id': 'http://localhost:3000/something',
     };
@@ -31,6 +55,18 @@ describe('PreviewImage', () => {
   it('renders a preview image with custom size', () => {
     const item = {
       image_field: 'image',
+      image_scales: {
+        image: [
+          {
+            scales: {
+              large: {
+                width: 800,
+                height: 800,
+              },
+            },
+          },
+        ],
+      },
       title: 'Item title',
       '@id': 'http://localhost:3000/something',
     };

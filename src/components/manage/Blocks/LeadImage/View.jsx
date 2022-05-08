@@ -5,10 +5,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { UniversalLink } from '@plone/volto/components';
+import { Image, UniversalLink } from '@plone/volto/components';
 import cx from 'classnames';
-
-import { flattenToAppURL } from '@plone/volto/helpers';
 
 /**
  * View image block class.
@@ -29,9 +27,9 @@ const View = ({ data, properties }) => (
       <>
         {(() => {
           const image = (
-            <img
+            <Image
               className={cx({ 'full-width': data.align === 'full' })}
-              src={flattenToAppURL(properties.image.download)}
+              image={properties.image}
               alt={properties.image_caption || ''}
             />
           );

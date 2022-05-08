@@ -26,6 +26,8 @@ test('renders an image view component', () => {
             scales: {
               preview: {
                 download: 'file:///preview.jpg',
+                width: 400,
+                height: 400,
               },
             },
           },

@@ -9,6 +9,7 @@ import { Container } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 import prettybytes from 'pretty-bytes';
 
+import { Image } from '@plone/volto/components';
 import { flattenToAppURL } from '@plone/volto/helpers';
 
 /**
@@ -28,10 +29,7 @@ const ImageView = ({ content }) => (
     )}
     {content?.image?.download && (
       <a href={flattenToAppURL(content.image.download)}>
-        <img
-          alt={content.title}
-          src={flattenToAppURL(content.image.scales.preview.download)}
-        />
+        <Image image={content.image} alt={content.title} size="medium" />
         <figcaption>
           <FormattedMessage
             id="Size: {size}"

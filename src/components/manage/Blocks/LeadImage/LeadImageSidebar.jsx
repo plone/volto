@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
 import { Accordion, Grid, Segment } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
-import { CheckboxWidget, Icon, TextWidget } from '@plone/volto/components';
+import {
+  CheckboxWidget,
+  Icon,
+  Image,
+  TextWidget,
+} from '@plone/volto/components';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import AlignBlock from '@plone/volto/components/manage/Sidebar/AlignBlock';
 
@@ -90,13 +95,14 @@ const LeadImageSidebar = ({
         <>
           <Segment className="sidebar-metadata-container" secondary>
             {properties.image.filename}
-            <img
-              src={
+            <Image
+              image={
                 properties.image.data
                   ? `data:${properties.image['content-type']};base64,${properties.image.data}`
-                  : flattenToAppURL(properties.image.scales.mini.download)
+                  : properties.image
               }
-              alt={properties.image_caption || ''}
+              alt={data.image_caption || properties.image_caption || ''}
+              size="small"
             />
           </Segment>
           <Segment className="form sidebar-image-data">

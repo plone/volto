@@ -5,10 +5,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { UniversalLink } from '@plone/volto/components';
+import { UniversalLink, Component } from '@plone/volto/components';
 import { Container } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
-import PreviewImage from '../PreviewImage/PreviewImage';
 
 /**
  * Summary view component class.
@@ -34,9 +33,9 @@ const SummaryView = ({ content }) => (
               </UniversalLink>
             </h2>
             {item.image_field && (
-              <PreviewImage
+              <Component
+                componentName="PreviewImage"
                 item={item}
-                alt={item.image_caption ? item.image_caption : item.title}
                 size="thumb"
                 className="ui image floated right clear"
               />

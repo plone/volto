@@ -3,11 +3,11 @@
  * @module components/theme/View/AlbumView
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, GridColumn, Segment } from 'semantic-ui-react';
 import { Button, Modal, Grid } from 'semantic-ui-react';
-import { Icon, UniversalLink, PreviewImage } from '@plone/volto/components';
+import { Icon, UniversalLink, Component } from '@plone/volto/components';
 
 import openSVG from '@plone/volto/icons/open.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
@@ -19,7 +19,7 @@ import backSVG from '@plone/volto/icons/back.svg';
  * @param {Object} content Content object.
  * @returns {string} Markup of the component.
  */
-class AlbumView extends Component {
+class AlbumView extends React.Component {
   constructor(props) {
     super(props);
 
@@ -78,13 +78,9 @@ class AlbumView extends Component {
                         trigger={
                           <Grid.Column>
                             <Segment className="imageborder">
-                              <PreviewImage
+                              <Component
+                                componentName="PreviewImage"
                                 item={item}
-                                alt={
-                                  item.image_caption
-                                    ? item.image_caption
-                                    : item.title
-                                }
                                 onClick={() => {
                                   this.setState({
                                     openIndex: index,
@@ -131,13 +127,9 @@ class AlbumView extends Component {
                             </Grid.Column>
                             <Grid.Column width={8}>
                               <Modal.Content image>
-                                <PreviewImage
+                                <Component
+                                  componentName="PreviewImage"
                                   item={item}
-                                  alt={
-                                    item.image_caption
-                                      ? item.image_caption
-                                      : item.title
-                                  }
                                   onClick={() => {
                                     this.setState({
                                       openIndex: index,
@@ -146,7 +138,6 @@ class AlbumView extends Component {
                                   size="large"
                                   className="ui image"
                                 />
-
                                 <Modal.Description>
                                   <p>{item.description}</p>
                                 </Modal.Description>

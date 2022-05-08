@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- Added new Image component to render optimized images @nzambello @giuliaghisini @pnicolli
+
 ### Feature
 
 ### Bugfix

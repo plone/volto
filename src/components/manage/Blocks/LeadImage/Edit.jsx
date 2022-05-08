@@ -11,8 +11,11 @@ import cx from 'classnames';
 import { Message } from 'semantic-ui-react';
 import { isEqual } from 'lodash';
 
-import { LeadImageSidebar, SidebarPortal } from '@plone/volto/components';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import {
+  Image,
+  LeadImageSidebar,
+  SidebarPortal,
+} from '@plone/volto/components';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
 
@@ -99,14 +102,14 @@ class Edit extends Component {
           </Message>
         )}
         {properties.image && (
-          <img
+          <Image
             className={cx({ 'full-width': data.align === 'full' })}
-            src={
+            image={
               properties.image.data
                 ? `data:${properties.image['content-type']};base64,${properties.image.data}`
-                : flattenToAppURL(properties.image.download)
+                : properties.image
             }
-            alt={data.image_caption || ''}
+            alt={data.image_caption || properties.image_caption || ''}
           />
         )}
         <SidebarPortal selected={this.props.selected}>
