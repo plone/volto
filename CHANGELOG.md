@@ -1,6 +1,18 @@
 # Change Log
 
-## 15.8.1 (unreleased)
+## 16.0.0 (unreleased)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
+### Documentation
+
+## 16.0.0-alpha.0 (2022-05-06)
 
 ### Breaking
 
@@ -20,6 +32,7 @@
 - Fixed secure cookie option. @giuliaghisini
 - Changed addon order in addon controlpanel to mimic Classic UI @erral
 - Fixed error when loading content in a language for which a Volto translation is not available. @davisagli
+- Fix for clipped dropdown menus when the table has few or no records in Contents view @mihaislobozeanu
 
 ### Internal
 
@@ -32,6 +45,7 @@
 - Move Cypress documentation from `README.md` to the docs. Improve the docs with the new `Makefile` commands.
 - Improve English grammar and syntax in backend docs. @stevepiercy
 - Fix JSX syntax highlighting. Remove duplicate heading. @stevepiercy
+- Proper case HAProxy, nginx, and Docker Compose. @stevepiercy
 
 ## 15.8.0 (2022-04-30)
 
