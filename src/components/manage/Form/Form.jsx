@@ -10,6 +10,8 @@ import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   messages,
+  moveBlock,
+  moveDataAcrossDropables,
 } from '@plone/volto/helpers';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -42,6 +44,7 @@ import { toast } from 'react-toastify';
 import { BlocksToolbar, UndoToolbar } from '@plone/volto/components';
 import { setSidebarTab } from '@plone/volto/actions';
 import { compose } from 'redux';
+import BlocksDnDContainer from '../DragDropList/BlocksDnDContainer';
 import config from '@plone/volto/registry';
 
 /**
@@ -552,27 +555,58 @@ class Form extends Component {
             enableHotKeys
             onUndoRedo={({ state }) => this.setState(state)}
           />
-          <BlocksForm
-            onChangeFormData={(newFormData) =>
+          <BlocksDnDContainer
+            onMoveItem={(result) => {
+              const { source, destination } = result;
+              if (!destination) {
+                return;
+              }
+              let newFormData;
+              if (destination.droppableId !== source.droppableId) {
+                newFormData = moveDataAcrossDropables(
+                  formData,
+                  source,
+                  destination,
+                );
+              } else {
+                newFormData = moveBlock(
+                  formData,
+                  source.index,
+                  destination.index,
+                );
+              }
               this.setState({
                 formData: {
                   ...formData,
                   ...newFormData,
                 },
-              })
-            }
-            onChangeField={this.onChangeField}
-            onSelectBlock={this.onSelectBlock}
-            properties={formData}
-            pathname={this.props.pathname}
-            selectedBlock={this.state.selected}
-            multiSelected={this.state.multiSelected}
-            manage={this.props.isAdminForm}
-            allowedBlocks={this.props.allowedBlocks}
-            showRestricted={this.props.showRestricted}
-            editable={this.props.editable}
-            isMainForm={this.props.editable}
-          />
+              });
+              return true;
+            }}
+          >
+            <BlocksForm
+              blocksFormId="main"
+              onChangeFormData={(newFormData) =>
+                this.setState({
+                  formData: {
+                    ...formData,
+                    ...newFormData,
+                  },
+                })
+              }
+              onChangeField={this.onChangeField}
+              onSelectBlock={this.onSelectBlock}
+              properties={formData}
+              pathname={this.props.pathname}
+              selectedBlock={this.state.selected}
+              multiSelected={this.state.multiSelected}
+              manage={this.props.isAdminForm}
+              allowedBlocks={this.props.allowedBlocks}
+              showRestricted={this.props.showRestricted}
+              editable={this.props.editable}
+              isMainForm={this.props.editable}
+            />
+          </BlocksDnDContainer>
           {this.state.isClient && this.props.editable && (
             <Portal
               node={__CLIENT__ && document.getElementById('sidebar-metadata')}
