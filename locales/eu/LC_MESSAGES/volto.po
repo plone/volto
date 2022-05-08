@@ -3046,6 +3046,11 @@ msgstr "Data hau iristean, elementua ez da erakutsiko bilaketa eta zerrendetan"
 msgid "Who"
 msgstr "Nor"
 
+#: components/manage/Sidebar/AlignBlock
+# defaultMessage: Wide
+msgid "Wide"
+msgstr ""
+
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Updating workflow states...
 msgid "Workflow Change Loading Message"

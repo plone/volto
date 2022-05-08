@@ -3039,6 +3039,11 @@ msgstr "Quando questa data sarà raggiunta, il contenuto non sarà più visibile
 msgid "Who"
 msgstr "Chi"
 
+#: components/manage/Sidebar/AlignBlock
+# defaultMessage: Wide
+msgid "Wide"
+msgstr ""
+
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Updating workflow states...
 msgid "Workflow Change Loading Message"

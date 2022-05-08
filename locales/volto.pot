@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-05-07T09:39:44.810Z\n"
+"POT-Creation-Date: 2022-05-08T07:35:27.666Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -3039,6 +3039,11 @@ msgstr ""
 #: components/manage/History/History
 # defaultMessage: Who
 msgid "Who"
+msgstr ""
+
+#: components/manage/Sidebar/AlignBlock
+# defaultMessage: Wide
+msgid "Wide"
 msgstr ""
 
 #: components/manage/Contents/ContentsWorkflowModal

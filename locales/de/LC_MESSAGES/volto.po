@@ -3054,6 +3054,11 @@ msgstr "Wenn dieses Datum erreicht wird, wird der Inhalt nicht länger in Auflis
 msgid "Who"
 msgstr "Wer"
 
+#: components/manage/Sidebar/AlignBlock
+# defaultMessage: Wide
+msgid "Wide"
+msgstr ""
+
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Updating workflow states...
 msgid "Workflow Change Loading Message"

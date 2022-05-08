@@ -3048,6 +3048,11 @@ msgstr "Quan s'arribi a aquesta data, el contingut ja no serà visible a les lli
 msgid "Who"
 msgstr "OMS"
 
+#: components/manage/Sidebar/AlignBlock
+# defaultMessage: Wide
+msgid "Wide"
+msgstr ""
+
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Updating workflow states...
 msgid "Workflow Change Loading Message"

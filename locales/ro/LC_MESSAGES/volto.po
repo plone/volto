@@ -3039,6 +3039,11 @@ msgstr "Când se ajunge la această dată, conținutul nu va fi mai vizibil în 
 msgid "Who"
 msgstr "Cine"
 
+#: components/manage/Sidebar/AlignBlock
+# defaultMessage: Wide
+msgid "Wide"
+msgstr ""
+
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Updating workflow states...
 msgid "Workflow Change Loading Message"
