@@ -1035,6 +1035,11 @@ msgstr ""
 msgid "Filename"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter by groups
+msgid "Filter by groups"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: Filter…
 msgid "Filter…"
@@ -1725,6 +1730,11 @@ msgstr ""
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: This addon does not provide an uninstall profile.
 msgid "No uninstall profile"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: No user found
+msgid "No user found"
 msgstr ""
 
 #: components/manage/Widgets/ArrayWidget
@@ -2938,6 +2948,7 @@ msgid "Username"
 msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Users/UserGroupMembership
 #: components/manage/Controlpanels/Users/UsersControlpanel
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Users

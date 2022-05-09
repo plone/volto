@@ -1045,6 +1045,11 @@ msgstr "Tamaño del archivo"
 msgid "Filename"
 msgstr "Nombre del archivo"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter by groups
+msgid "Filter by groups"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: Filter…
 msgid "Filter…"
@@ -1736,6 +1741,11 @@ msgstr "No hay selección"
 # defaultMessage: This addon does not provide an uninstall profile.
 msgid "No uninstall profile"
 msgstr "No hay perfil para desinstalar"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: No user found
+msgid "No user found"
+msgstr ""
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
@@ -2948,6 +2958,7 @@ msgid "Username"
 msgstr "Nombre de usuario"
 
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Users/UserGroupMembership
 #: components/manage/Controlpanels/Users/UsersControlpanel
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Users

@@ -1042,6 +1042,11 @@ msgstr "Fitxategiaren tamaina"
 msgid "Filename"
 msgstr "Fitxategi izena"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter by groups
+msgid "Filter by groups"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: Filter…
 msgid "Filter…"
@@ -1733,6 +1738,11 @@ msgstr "Ez da ezer aukeratu"
 # defaultMessage: This addon does not provide an uninstall profile.
 msgid "No uninstall profile"
 msgstr "Ez du desinstalatzeko profilik"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: No user found
+msgid "No user found"
+msgstr ""
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
@@ -2945,6 +2955,7 @@ msgid "Username"
 msgstr "Erabiltzaile izena"
 
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Users/UserGroupMembership
 #: components/manage/Controlpanels/Users/UsersControlpanel
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Users
