@@ -1,6 +1,11 @@
+/**
+ * Aliases actions.
+ * @module actions/aliases/aliases
+ */
+
 import {
   GET_ALIASES,
-  ADD_ALIAS,
+  ADD_ALIASES,
   REMOVE_ALIASES,
 } from '@plone/volto/constants/ActionTypes';
 
@@ -22,14 +27,14 @@ export function getAliases(url) {
 
 /**
  * Add alias function.
- * @function addAlias
+ * @function addAliases
  * @param {string} url Content url.
  * @param {string} data Alias.
  * @returns {Object} Add alias action.
  */
-export function addAlias(url, data) {
+export function addAliases(url, data) {
   return {
-    type: ADD_ALIAS,
+    type: ADD_ALIASES,
     request: {
       op: 'post',
       path: `${url}/@aliases`,

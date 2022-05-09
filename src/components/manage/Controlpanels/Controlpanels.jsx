@@ -136,7 +136,7 @@ class Controlpanels extends Component {
           title: 'Database',
         },
         {
-          '@id': '/redirection-controlpanel',
+          '@id': '/aliases',
           group: 'General',
           title: 'URL Management',
         },

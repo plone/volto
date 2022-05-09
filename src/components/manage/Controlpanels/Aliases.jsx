@@ -1,6 +1,6 @@
 /**
  * Moderate comments component.
- * @module components/manage/Controlpanels/RedirectionPanel
+ * @module components/manage/Controlpanels/Aliases
  */
 
 import React, { Component } from 'react';
@@ -22,7 +22,7 @@ import {
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { removeAliases, addAlias, getAliases } from '@plone/volto/actions';
+import { removeAliases, addAliases, getAliases } from '@plone/volto/actions';
 
 import { Icon, Toolbar } from '@plone/volto/components';
 
@@ -34,9 +34,9 @@ const messages = defineMessages({
     id: 'Back',
     defaultMessage: 'Back',
   },
-  RedirectionPanel: {
-    id: 'Moderate comments',
-    defaultMessage: 'Moderate comments',
+  aliases: {
+    id: 'URL Management',
+    defaultMessage: 'URL Management',
   },
 });
 
@@ -47,11 +47,11 @@ const filterChoices = [
 ];
 
 /**
- * RedirectionPanelComponent class.
- * @class RedirectionPanel
+ * Aliases class.
+ * @class Aliases
  * @extends Component
  */
-class RedirectionPanel extends Component {
+class Aliases extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -107,7 +107,7 @@ class RedirectionPanel extends Component {
    * @returns {undefined}
    */
   componentDidUpdate(prevProps, prevState) {
-    console.log('stateupdated', this.state);
+    // console.log('stateupdated', this.state);
     if (prevState.altUrlPath !== this.state.altUrlPath) {
       if (this.state.altUrlPath.charAt(0) === '/') {
         this.setState({ isAltUrlCorrect: true });
@@ -185,8 +185,8 @@ class RedirectionPanel extends Component {
    */
   handleSubmitAlias() {
     if (this.state.isAltUrlCorrect && this.state.isTargetUrlCorrect) {
-      console.log('new alias', this.state.altUrlPath, this.state.targetUrlPath);
-      // this.props.addAlias(getParentUrl(this.props.pathname), {
+      // console.log('new alias', this.state.altUrlPath, this.state.targetUrlPath);
+      // this.props.addAliases(getParentUrl(this.props.pathname), {
       //   aliases: this.state.newAlias,
       // });
       // this.setState({ newAlias: '' });
@@ -234,10 +234,8 @@ class RedirectionPanel extends Component {
    */
   render() {
     return (
-      <div id="page-url-management">
-        <Helmet
-          title={this.props.intl.formatMessage(messages.RedirectionPanel)}
-        />
+      <div id="page-aliases">
+        <Helmet title={this.props.intl.formatMessage(messages.aliases)} />
         <Container>
           <article id="content">
             <Segment.Group raised>
@@ -341,7 +339,9 @@ class RedirectionPanel extends Component {
                     />
                   </Form.Field>
                   <Button
-                    onClick={() => console.log(this.state.createdBefore)}
+                    onClick={() => {
+                      // console.log(this.state.createdBefore);
+                    }}
                     primary
                   >
                     Filter
@@ -404,6 +404,6 @@ export default compose(
       aliases: state.aliases.data,
       pathname: props.location.pathname,
     }),
-    { removeAliases, getAliases },
+    { addAliases, getAliases, removeAliases },
   ),
-)(RedirectionPanel);
+)(Aliases);

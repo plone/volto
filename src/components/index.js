@@ -79,6 +79,7 @@ export Circle from '@plone/volto/components/manage/Contents/circle';
 export DatabaseInformation from '@plone/volto/components/manage/Controlpanels/DatabaseInformation';
 export Controlpanel from '@plone/volto/components/manage/Controlpanels/Controlpanel';
 export Controlpanels from '@plone/volto/components/manage/Controlpanels/Controlpanels';
+export AliasesControlpanel from '@plone/volto/components/manage/Controlpanels/Aliases';
 export ContentTypes from '@plone/volto/components/manage/Controlpanels/ContentTypes';
 export ContentType from '@plone/volto/components/manage/Controlpanels/ContentType';
 export ContentTypeLayout from '@plone/volto/components/manage/Controlpanels/ContentTypeLayout';
@@ -95,7 +96,7 @@ export Edit from '@plone/volto/components/manage/Edit/Edit';
 export ModalForm from '@plone/volto/components/manage/Form/ModalForm';
 export History from '@plone/volto/components/manage/History/History';
 export Sharing from '@plone/volto/components/manage/Sharing/Sharing';
-export UrlManagement from '@plone/volto/components/manage/UrlManagement/UrlManagement';
+export Aliases from '@plone/volto/components/manage/Aliases/Aliases';
 
 export Workflow from '@plone/volto/components/manage/Workflow/Workflow';
 export Messages from '@plone/volto/components/manage/Messages/Messages';

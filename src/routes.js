@@ -5,6 +5,7 @@
 import {
   Add,
   AddonsControlpanel,
+  Aliases,
   ChangePassword,
   ContactForm,
   Contents,
@@ -31,8 +32,8 @@ import {
   Search,
   Sharing,
   Sitemap,
+  AliasesControlpanel,
   UsersControlpanel,
-  UrlManagement,
   GroupsControlpanel,
 } from '@plone/volto/components';
 
@@ -42,7 +43,6 @@ import App from '@plone/volto/components/theme/App/App';
 import View from '@plone/volto/components/theme/View/View';
 
 import config from '@plone/volto/registry';
-import RedirectionPanel from '@plone/volto/components/manage/Controlpanels/RedirectionPanel';
 
 /**
  * Default routes array.
@@ -140,8 +140,8 @@ export const defaultRoutes = [
     component: DatabaseInformation,
   },
   {
-    path: '/controlpanel/redirection-controlpanel',
-    component: RedirectionPanel,
+    path: '/controlpanel/aliases',
+    component: AliasesControlpanel,
   },
   {
     path: '/controlpanel/moderate-comments',
@@ -180,8 +180,8 @@ export const defaultRoutes = [
     component: Sharing,
   },
   {
-    path: '/url-management',
-    component: UrlManagement,
+    path: '/aliases',
+    component: Aliases,
   },
   {
     path: '/**/add',
@@ -200,8 +200,8 @@ export const defaultRoutes = [
     component: Sharing,
   },
   {
-    path: '/**/url-management',
-    component: UrlManagement,
+    path: '/**/aliases',
+    component: Aliases,
   },
   {
     path: '/**/delete',
@@ -224,8 +224,8 @@ export const defaultRoutes = [
     component: Sharing,
   },
   {
-    path: '/**/url-management',
-    component: UrlManagement,
+    path: '/**/aliases',
+    component: Aliases,
   },
   {
     path: '/**/manage-translations',

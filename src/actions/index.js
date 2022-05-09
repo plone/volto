@@ -83,9 +83,9 @@ export {
 } from '@plone/volto/actions/sharing/sharing';
 export {
   getAliases,
-  addAlias,
+  addAliases,
   removeAliases,
-} from '@plone/volto/actions/urlManagement/urlManagement';
+} from '@plone/volto/actions/aliases/aliases';
 export { getTypes } from '@plone/volto/actions/types/types';
 export {
   createUser,

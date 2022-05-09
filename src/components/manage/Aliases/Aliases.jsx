@@ -1,13 +1,13 @@
 /**
- * UrlManagement container.
- * @module components/manage/UrlManagement/UrlManagement
+ * Aliases container.
+ * @module components/manage/Aliases/Aliases
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Portal } from 'react-portal';
 import {
   Button,
@@ -20,100 +20,41 @@ import {
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import {
-  removeAliases,
-  addAlias,
-  getAliases,
-  getContent,
-} from '@plone/volto/actions';
+import { removeAliases, addAliases, getAliases } from '@plone/volto/actions';
 
 import { Icon, Toolbar } from '@plone/volto/components';
 
 import backSVG from '@plone/volto/icons/back.svg';
-import { getParentUrl } from '@plone/volto/helpers';
+import { getBaseUrl } from '@plone/volto/helpers';
 
 const messages = defineMessages({
-  searchForUserOrGroup: {
-    id: 'Search for user or group',
-    defaultMessage: 'Search for user or group',
-  },
-  inherit: {
-    id: 'Inherit permissions from higher levels',
-    defaultMessage: 'Inherit permissions from higher levels',
-  },
-  save: {
-    id: 'Save',
-    defaultMessage: 'Save',
-  },
-  cancel: {
-    id: 'Cancel',
-    defaultMessage: 'Cancel',
-  },
   back: {
     id: 'Back',
     defaultMessage: 'Back',
   },
-  sharing: {
-    id: 'Sharing',
-    defaultMessage: 'Sharing',
-  },
-  urlManagement: {
-    id: 'Url management',
-    defaultMessage: 'Url management',
-  },
-  user: {
-    id: 'User',
-    defaultMessage: 'User',
-  },
-  group: {
-    id: 'Group',
-    defaultMessage: 'Group',
-  },
-  globalRole: {
-    id: 'Global role',
-    defaultMessage: 'Global role',
-  },
-  inheritedValue: {
-    id: 'Inherited value',
-    defaultMessage: 'Inherited value',
-  },
-  permissionsUpdated: {
-    id: 'Permissions updated',
-    defaultMessage: 'Permissions updated',
-  },
-  permissionsUpdatedSuccessfully: {
-    id: 'Permissions have been updated successfully',
-    defaultMessage: 'Permissions have been updated successfully',
+  aliases: {
+    id: 'URL Management',
+    defaultMessage: 'URL Management',
   },
 });
 
 /**
- * UrlManagement class.
- * @class UrlManagement
+ * Aliases class.
+ * @class Aliases
  * @extends Component
  */
-class UrlManagement extends Component {
+class Aliases extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
    * @static
    */
   static propTypes = {
-    removeAliases: PropTypes.func,
-    addAlias: PropTypes.func,
-    getAliases: PropTypes.func,
+    removeAliases: PropTypes.func.isRequired,
+    addAliases: PropTypes.func.isRequired,
+    getAliases: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
-    inherit: PropTypes.bool,
     title: PropTypes.string.isRequired,
-  };
-
-  /**
-   * Default properties
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    inherit: null,
   };
 
   /**
@@ -124,10 +65,6 @@ class UrlManagement extends Component {
    */
   constructor(props) {
     super(props);
-    this.handleAltChange = this.handleAltChange.bind(this);
-    this.handleSubmitAlias = this.handleSubmitAlias.bind(this);
-    this.handleCheckAlias = this.handleCheckAlias.bind(this);
-    this.handleRemoveAliases = this.handleRemoveAliases.bind(this);
     this.state = {
       isClient: false,
       newAlias: '',
@@ -143,8 +80,7 @@ class UrlManagement extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    this.props.getAliases(getParentUrl(this.props.pathname));
-    this.props.getContent(getParentUrl(this.props.pathname));
+    this.props.getAliases(getBaseUrl(this.props.pathname));
     this.setState({ isClient: true });
   }
 
@@ -155,7 +91,11 @@ class UrlManagement extends Component {
       } else {
         this.setState({ isAliasCorrect: false });
       }
-      if (this.props.aliases.includes(this.state.newAlias)) {
+      if (
+        this.props.aliases?.items.find(
+          (item) => item.path === this.state.newAlias,
+        )
+      ) {
         this.setState({ isAliasAlready: true });
       } else {
         this.setState({ isAliasAlready: false });
@@ -164,34 +104,49 @@ class UrlManagement extends Component {
   }
 
   /**
+   * Component will receive props
+   * @method componentWillReceiveProps
+   * @param {Object} nextProps Next properties
+   * @returns {undefined}
+   */
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (this.props.aliases.add.loading && nextProps.aliases.add.loaded) {
+      this.props.getAliases(getBaseUrl(this.props.pathname));
+    }
+    if (this.props.aliases.remove.loading && nextProps.aliases.remove.loaded) {
+      this.props.getAliases(getBaseUrl(this.props.pathname));
+    }
+  }
+
+  /**
    * Url change handler
    * @method handleAltChange
    * @returns {undefined}
    */
-  handleAltChange(val) {
+  handleAltChange = (val) => {
     this.setState({ newAlias: val });
-  }
+  };
 
   /**
    * New alias submit handler
    * @method handleSubmitAlias
    * @returns {undefined}
    */
-  handleSubmitAlias() {
+  handleSubmitAlias = () => {
     if (this.state.isAliasCorrect) {
-      this.props.addAlias(getParentUrl(this.props.pathname), {
-        aliases: this.state.newAlias,
+      this.props.addAliases(getBaseUrl(this.props.pathname), {
+        items: this.state.newAlias,
       });
       this.setState({ newAlias: '' });
     }
-  }
+  };
 
   /**
    * Check to-remove aliases handler
    * @method handleSubmitAlias
    * @returns {undefined}
    */
-  handleCheckAlias(alias) {
+  handleCheckAlias = (alias) => {
     const aliases = this.state.aliasesToRemove;
     if (aliases.includes(alias)) {
       const index = aliases.indexOf(alias);
@@ -205,19 +160,19 @@ class UrlManagement extends Component {
         aliasesToRemove: [...this.state.aliasesToRemove, alias],
       });
     }
-  }
+  };
 
   /**
    * Remove aliases handler
    * @method handleRemoveAliases
    * @returns {undefined}
    */
-  handleRemoveAliases() {
-    this.props.removeAliases(getParentUrl(this.props.pathname), {
-      aliases: this.state.aliasesToRemove,
+  handleRemoveAliases = () => {
+    this.props.removeAliases(getBaseUrl(this.props.pathname), {
+      items: this.state.aliasesToRemove,
     });
     this.setState({ aliasesToRemove: [] });
-  }
+  };
 
   /**
    * Render method.
@@ -226,13 +181,13 @@ class UrlManagement extends Component {
    */
   render() {
     return (
-      <Container id="url-management">
-        <Helmet title={this.props.intl.formatMessage(messages.urlManagement)} />
+      <Container id="aliases">
+        <Helmet title={this.props.intl.formatMessage(messages.aliases)} />
         <Segment.Group raised>
           <Segment className="primary">
             <FormattedMessage
-              id="Url management for {title}"
-              defaultMessage="Url management for {title}"
+              id="URL Management for {title}"
+              defaultMessage="URL Management for {title}"
               values={{ title: <q>{this.props.title}</q> }}
             />
           </Segment>
@@ -244,7 +199,12 @@ class UrlManagement extends Component {
           </Segment>
           <Form>
             <Segment>
-              <Header size="medium">Add a new alternative url</Header>
+              <Header size="medium">
+                <FormattedMessage
+                  id="Add a new alternative url"
+                  defaultMessage="Add a new alternative url"
+                />
+              </Header>
               <p className="help">
                 <FormattedMessage
                   id="Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
@@ -260,12 +220,18 @@ class UrlManagement extends Component {
                 />
                 {!this.state.isAliasCorrect && this.state.newAlias !== '' && (
                   <p style={{ color: 'red' }}>
-                    Alternative url path must start with a slash.
+                    <FormattedMessage
+                      id="Alternative url path must start with a slash."
+                      defaultMessage="Alternative url path must start with a slash."
+                    />
                   </p>
                 )}
                 {this.state.isAliasAlready && (
                   <p style={{ color: 'red' }}>
-                    Alternative url already exists.
+                    <FormattedMessage
+                      id="Alternative url already exists."
+                      defaultMessage="Alternative url already exists."
+                    />
                   </p>
                 )}
               </Form.Field>
@@ -278,33 +244,34 @@ class UrlManagement extends Component {
                   this.state.isAliasAlready
                 }
               >
-                Add
+                <FormattedMessage id="Add" defaultMessage="Add" />
               </Button>
             </Segment>
           </Form>
           <Form>
             <Segment>
               <Header size="medium">
-                Existing alternative urls for this item
+                <FormattedMessage
+                  id="Existing alternative urls for this item"
+                  defaultMessage="Existing alternative urls for this item"
+                />
               </Header>
-              {this.props.aliases &&
-                this.props.aliases.length > 0 &&
-                this.props.aliases.map((alias, i) => (
-                  <Form.Field key={i}>
-                    <Checkbox
-                      onChange={(e, { value }) => this.handleCheckAlias(value)}
-                      value={alias}
-                      label={alias}
-                      checked={this.state.aliasesToRemove.includes(alias)}
-                    />
-                  </Form.Field>
-                ))}
+              {this.props.aliases?.items.map((alias, i) => (
+                <Form.Field key={i}>
+                  <Checkbox
+                    onChange={(e, { value }) => this.handleCheckAlias(value)}
+                    value={alias.path}
+                    label={alias.path}
+                    checked={this.state.aliasesToRemove.includes(alias.path)}
+                  />
+                </Form.Field>
+              ))}
               <Button
                 onClick={this.handleRemoveAliases}
                 primary
                 disabled={this.state.aliasesToRemove.length === 0}
               >
-                Remove
+                <FormattedMessage id="Remove" defaultMessage="Remove" />
               </Button>
             </Segment>
           </Form>
@@ -316,7 +283,7 @@ class UrlManagement extends Component {
               hideDefaultViewButtons
               inner={
                 <Link
-                  to={`${getParentUrl(this.props.pathname)}`}
+                  to={`${getBaseUrl(this.props.pathname)}`}
                   className="item"
                 >
                   <Icon
@@ -336,17 +303,13 @@ class UrlManagement extends Component {
 }
 
 export default compose(
-  withRouter,
   injectIntl,
   connect(
     (state, props) => ({
-      aliases: state.aliases.data,
+      aliases: state.aliases,
       pathname: props.location.pathname,
-      title:
-        state.content.data !== null && state.content.data.title
-          ? state.content.data.title
-          : '',
+      title: state.content.data?.title || '',
     }),
-    { removeAliases, addAlias, getAliases, getContent },
+    { removeAliases, addAliases, getAliases },
   ),
-)(UrlManagement);
+)(Aliases);
