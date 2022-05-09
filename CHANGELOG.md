@@ -12,6 +12,8 @@
 
 ### Documentation
 
+- fix make task `docs-linkcheckbroken` if grep has exit code 1 (no lines found)
+
 ## 16.0.0-alpha.0 (2022-05-06)
 
 ### Breaking
