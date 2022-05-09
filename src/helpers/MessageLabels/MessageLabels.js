@@ -70,6 +70,10 @@ export const messages = defineMessages({
     id: 'Search group…',
     defaultMessage: 'Search group…',
   },
+  filterByGroups: {
+    id: 'Filter by groups',
+    defaultMessage: 'Filter by groups',
+  },
   back: {
     id: 'Back',
     defaultMessage: 'Back',
@@ -169,6 +173,10 @@ export const messages = defineMessages({
   users: {
     id: 'Users',
     defaultMessage: 'Users',
+  },
+  nouserfound: {
+    id: 'No user found',
+    defaultMessage: 'No user found',
   },
   groups: {
     id: 'Groups',

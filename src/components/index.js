@@ -85,6 +85,7 @@ export ContentTypeLayout from '@plone/volto/components/manage/Controlpanels/Cont
 export ContentTypeSchema from '@plone/volto/components/manage/Controlpanels/ContentTypeSchema';
 export ContentTypesActions from '@plone/volto/components/manage/Controlpanels/ContentTypesActions';
 export UsersControlpanel from '@plone/volto/components/manage/Controlpanels/Users/UsersControlpanel';
+export UserGroupMembership from '@plone/volto/components/manage/Controlpanels/Users/UserGroupMembership';
 export GroupsControlpanel from '@plone/volto/components/manage/Controlpanels/Groups/GroupsControlpanel';
 export ModerateComments from '@plone/volto/components/manage/Controlpanels/ModerateComments';
 export VersionOverview from '@plone/volto/components/manage/Controlpanels/VersionOverview';

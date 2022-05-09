@@ -168,6 +168,11 @@ class Controlpanels extends Component {
           title: this.props.intl.formatMessage(messages.users),
         },
         {
+          '@id': '/usergroupmembership',
+          group: 'Users and Groups',
+          title: 'User Group Membership', // this.props.intl.formatMessage(messages.users),
+        },
+        {
           '@id': '/groups',
           group: this.props.intl.formatMessage(messages.usersandgroups),
           title: this.props.intl.formatMessage(messages.groups),
