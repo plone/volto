@@ -55,3 +55,17 @@ exports[`UniversalLink renders a UniversalLink component with internal link 1`] 
   </h1>
 </a>
 `;
+
+exports[`renders a UniversalLink component when url ends with @@display-file 1`] = `
+<a
+  className={null}
+  href="http://localhost:3000/en/welcome-to-volto/@@display-file"
+  rel="noopener noreferrer"
+  target="_blank"
+  title={null}
+>
+  <h1>
+    Title
+  </h1>
+</a>
+`;

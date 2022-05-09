@@ -58,6 +58,11 @@ msgstr "Activare și dezactivare"
 msgid "Add"
 msgstr "Adăugare"
 
+#: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Add
+msgid "Add (object list)"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
 msgid "Add Addons"
@@ -158,6 +163,7 @@ msgstr "Setări add-on-uri"
 msgid "Additional date"
 msgstr ""
 
+#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
@@ -242,6 +248,11 @@ msgstr "Disponibil"
 # defaultMessage: Back
 msgid "Back"
 msgstr "Înapoi"
+
+#: components/manage/Blocks/Block/StylesSchema
+# defaultMessage: Background color
+msgid "Background color"
+msgstr ""
 
 #: components/manage/Diff/Diff
 # defaultMessage: Base
@@ -432,6 +443,12 @@ msgstr ""
 # defaultMessage: Collection
 msgid "Collection"
 msgstr "Colecție"
+
+#: components/manage/Blocks/Block/StylesSchema
+#: components/manage/Widgets/ColorPicker
+# defaultMessage: Color
+msgid "Color"
+msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
 #: components/theme/Comments/CommentEditModal
@@ -751,6 +768,11 @@ msgstr "Doriți cu adevărat să ștergeți acest articol?"
 msgid "Document"
 msgstr "Document"
 
+#: components/theme/EventDetails/EventDetails
+# defaultMessage: Download Event
+msgid "Download Event"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Drag and drop files from your computer onto this area or click the “Browse” button.
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
@@ -853,6 +875,7 @@ msgstr ""
 msgid "Enable editable Blocks"
 msgstr ""
 
+#: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 # defaultMessage: End Date
 msgid "End Date"
@@ -1336,6 +1359,11 @@ msgstr ""
 msgid "Language"
 msgstr "Limba"
 
+#: components/manage/Widgets/FormFieldWrapper
+# defaultMessage: Language independent field.
+msgid "Language independent field."
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Last
 msgid "Last"
@@ -1378,16 +1406,19 @@ msgstr "Stânga"
 msgid "Link"
 msgstr "Legătură"
 
+#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link more
 msgid "Link more"
 msgstr "Legătură către mai multe"
 
+#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link Title
 msgid "Link title"
 msgstr "Legătură la titlu"
 
+#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
@@ -1593,6 +1624,11 @@ msgstr "Articol de știri"
 msgid "No"
 msgstr "Nu"
 
+#: components/manage/Controlpanels/VersionOverview
+# defaultMessage: No addons found
+msgid "No addons found"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected
 msgid "No image selected"
@@ -1629,6 +1665,7 @@ msgid "No occurences set"
 msgstr ""
 
 #: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectAutoComplete
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TokenWidget
 # defaultMessage: No options
@@ -1706,6 +1743,11 @@ msgstr ""
 # defaultMessage: Ok
 msgid "Ok"
 msgstr "Ok"
+
+#: components/manage/Widgets/IdWidget
+# defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed.
+msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed."
+msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1801,7 +1843,7 @@ msgstr "Instrumente personale"
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Persoane responsabile de crearea conținutului acestui articol. Vă rugăm să introduceți o listă cu numele de utilizator, unul pe fiecare linie. Creatorul principal ar trebui să vină pe primul loc."
 
-#: components/manage/Blocks/Video/Edit
+#: components/manage/Blocks/Video/Body
 # defaultMessage: Please enter a valid URL by deleting the block and adding a new video block.
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
 msgstr "Vă rugăm să introduceți o adresă URL validă ștergând blocul și adăugând un nou bloc video."
@@ -1923,6 +1965,11 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/EndField
 # defaultMessage: on
 msgid "Recurrence ends on"
+msgstr ""
+
+#: components/manage/Form/UndoToolbar
+# defaultMessage: Redo
+msgid "Redo"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
@@ -2234,6 +2281,7 @@ msgstr "Selecție"
 
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectAutoComplete
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TokenWidget
 # defaultMessage: Select…
@@ -2412,6 +2460,7 @@ msgstr "Specificați un URL YouTube sau url de playlist"
 msgid "Split"
 msgstr "Împărțire"
 
+#: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 # defaultMessage: Start Date
 msgid "Start Date"
@@ -2448,6 +2497,11 @@ msgstr "String"
 # defaultMessage: Alternate row background color
 msgid "Stripe alternate rows with color"
 msgstr "Colorati randurile alternativ"
+
+#: helpers/Extensions/withBlockSchemaEnhancer
+# defaultMessage: Styling
+msgid "Styling"
+msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Subject
@@ -2548,8 +2602,8 @@ msgid "The backend is responding, but the CORS headers are not configured proper
 msgstr "Backendul răspunde, dar anteturile CORS nu sunt configurate corect și browserul a refuzat accesul la resursele de backend."
 
 #: components/theme/CorsError/CorsError
-# defaultMessage: The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
-msgid "The backend server of your website is not anwering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
+# defaultMessage: The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
+msgid "The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
 msgstr ""
 
 #: components/manage/Blocks/Search/schema
@@ -2560,6 +2614,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: The item could not be deleted.
 msgid "The item could not be deleted."
+msgstr ""
+
+#: components/theme/View/LinkView
+# defaultMessage: The link address is:
+msgid "The link address is:"
 msgstr ""
 
 #: components/theme/Register/Register
@@ -2606,6 +2665,11 @@ msgstr ""
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This has an ongoing working copy in {title}
 msgid "This has an ongoing working copy in {title}"
+msgstr ""
+
+#: components/manage/Widgets/IdWidget
+# defaultMessage: This is a reserved name and can't be used
+msgid "This is a reserved name and can't be used"
 msgstr ""
 
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
@@ -2699,6 +2763,11 @@ msgstr "Tip"
 msgid "Type a Video (YouTube, Vimeo or mp4) URL"
 msgstr "Introduceți un URL video (YouTube, Vimeo sau mp4)"
 
+#: components/manage/Widgets/SelectAutoComplete
+# defaultMessage: Type text...
+msgid "Type text..."
+msgstr ""
+
 #: components/manage/Blocks/Text/Edit
 # defaultMessage: Type text…
 msgid "Type text…"
@@ -2719,6 +2788,11 @@ msgstr "UID"
 msgid "Unauthorized"
 msgstr "Neautorizat"
 
+#: components/manage/Form/UndoToolbar
+# defaultMessage: Undo
+msgid "Undo"
+msgstr ""
+
 #: components/manage/BlockChooser/BlockChooser
 # defaultMessage: Unfold
 msgid "Unfold"
@@ -2735,7 +2809,6 @@ msgid "Uninstall"
 msgstr "Dezinstalare"
 
 #: components/manage/Blocks/Block/Edit
-#: components/theme/View/DefaultView
 #: components/theme/View/RenderBlocks
 # defaultMessage: Unknown Block {block}
 msgid "Unknown Block"
@@ -2965,6 +3038,11 @@ msgstr "Când se ajunge la această dată, conținutul nu va fi mai vizibil în 
 msgid "Who"
 msgstr "Cine"
 
+#: components/manage/Sidebar/AlignBlock
+# defaultMessage: Wide
+msgid "Wide"
+msgstr ""
+
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Updating workflow states...
 msgid "Workflow Change Loading Message"
@@ -3092,42 +3170,42 @@ msgstr ""
 msgid "email"
 msgstr ""
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: All dates
 msgid "event_alldates"
 msgstr "Toate"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Attendees
 msgid "event_attendees"
 msgstr "Participanți"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Contact Name
 msgid "event_contactname"
 msgstr "Nume"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Contact Phone
 msgid "event_contactphone"
 msgstr "Telefon"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Website
 msgid "event_website"
 msgstr "Website"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: What
 msgid "event_what"
 msgstr "Despre"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: When
 msgid "event_when"
 msgstr "Data"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Where
 msgid "event_where"
 msgstr "Locație"
@@ -3222,6 +3300,12 @@ msgstr ""
 # defaultMessage: Most used
 msgid "mostUsed"
 msgstr "Cele mai utilizate"
+
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+# defaultMessage: No
+msgid "no"
+msgstr ""
 
 #: components/manage/Contents/ContentsItem
 # defaultMessage: No workflow state
@@ -3489,10 +3573,16 @@ msgstr "avatarul utilizatorului"
 msgid "video"
 msgstr "Video"
 
-#: components/theme/View/EventView
+#: components/theme/EventDetails/EventDetails
 # defaultMessage: Visit external website
 msgid "visit_external_website"
 msgstr "Vizitează site extern"
+
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+# defaultMessage: Yes
+msgid "yes"
+msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: {count, plural, one {Upload {count} file} other {Upload {count} files}}

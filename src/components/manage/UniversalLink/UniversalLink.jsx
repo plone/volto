@@ -7,8 +7,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers/Url/Url';
-import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
+import {
+  flattenToAppURL,
+  isInternalURL,
+  URLUtils,
+} from '@plone/volto/helpers/Url/Url';
 import { matchPath } from 'react-router';
 
 import config from '@plone/volto/registry';
@@ -37,9 +40,21 @@ const UniversalLink = ({
       );
       url = '#';
     } else {
+      //case: generic item
       url = flattenToAppURL(item['@id']);
-      if (!token && item.remoteUrl) {
-        url = item.remoteUrl;
+
+      //case: item like a Link
+      let remoteUrl = item.remoteUrl || item.getRemoteUrl;
+      if (!token && remoteUrl) {
+        url = remoteUrl;
+      }
+
+      //case: item of type 'File'
+      if (
+        !token &&
+        config.settings.downloadableObjects.includes(item['@type'])
+      ) {
+        url = `${url}/@@download/file`;
       }
     }
   }
@@ -50,31 +65,14 @@ const UniversalLink = ({
     )?.length > 0;
   const isExternal = !isInternalURL(url) || isBlacklisted;
   const isDownload = (!isExternal && url.includes('@@download')) || download;
+  const isDisplayFile =
+    (!isExternal && url.includes('@@display-file')) || false;
 
-  return isExternal ? (
-    <a
-      href={url}
-      title={title}
-      target={
-        !URLUtils.isMail(url) && !(openLinkInNewTab === false) ? '_blank' : null
-      }
-      rel="noopener noreferrer"
-      className={className}
-      {...props}
-    >
-      {children}
-    </a>
-  ) : isDownload ? (
-    <a
-      href={flattenToAppURL(url)}
-      download
-      title={title}
-      className={className}
-      {...props}
-    >
-      {children}
-    </a>
-  ) : (
+  const checkedURL = URLUtils.checkAndNormalizeUrl(url);
+
+  url = checkedURL.url;
+
+  let tag = (
     <Link
       to={flattenToAppURL(url)}
       target={openLinkInNewTab ?? false ? '_blank' : null}
@@ -85,6 +83,53 @@ const UniversalLink = ({
       {children}
     </Link>
   );
+
+  if (isExternal) {
+    tag = (
+      <a
+        href={url}
+        title={title}
+        target={
+          !checkedURL.isMail &&
+          !checkedURL.isTelephone &&
+          !(openLinkInNewTab === false)
+            ? '_blank'
+            : null
+        }
+        rel="noopener noreferrer"
+        className={className}
+        {...props}
+      >
+        {children}
+      </a>
+    );
+  } else if (isDownload) {
+    tag = (
+      <a
+        href={flattenToAppURL(url)}
+        download
+        title={title}
+        className={className}
+        {...props}
+      >
+        {children}
+      </a>
+    );
+  } else if (isDisplayFile) {
+    tag = (
+      <a
+        href={flattenToAppURL(url)}
+        title={title}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={className}
+        {...props}
+      >
+        {children}
+      </a>
+    );
+  }
+  return tag;
 };
 
 UniversalLink.propTypes = {

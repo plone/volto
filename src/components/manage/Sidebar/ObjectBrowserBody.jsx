@@ -101,26 +101,26 @@ class ObjectBrowserBody extends Component {
       currentImageFolder:
         this.props.mode === 'multiple'
           ? '/'
-          : this.props.data?.url
+          : this.props.mode === 'image' && this.props.data?.url
           ? getParentURL(this.props.data.url)
           : '/',
       currentLinkFolder:
         this.props.mode === 'multiple'
           ? '/'
-          : this.props.data?.href
+          : this.props.mode === 'link' && this.props.data?.href
           ? getParentURL(this.props.data.href)
           : '/',
       parentFolder: '',
       selectedImage:
         this.props.mode === 'multiple'
           ? ''
-          : this.props.data?.url
+          : this.props.mode === 'image' && this.props.data?.url
           ? flattenToAppURL(this.props.data.url)
           : '',
       selectedHref:
         this.props.mode === 'multiple'
           ? ''
-          : this.props.data?.href
+          : this.props.mode === 'link' && this.props.data?.href
           ? flattenToAppURL(this.props.data.href)
           : '',
       showSearchInput: false,
@@ -302,12 +302,19 @@ class ObjectBrowserBody extends Component {
       if (this.isSelectable(item)) {
         if (
           !this.props.maximumSelectionSize ||
+          this.props.mode === 'multiple' ||
           !this.props.data ||
           this.props.data.length < this.props.maximumSelectionSize
         ) {
           this.onSelectItem(item);
           let length = this.props.data ? this.props.data.length : 0;
-          if (length + 1 >= this.props.maximumSelectionSize) {
+
+          let stopSelecting =
+            this.props.mode !== 'multiple' ||
+            (this.props.maximumSelectionSize > 0 &&
+              length + 1 >= this.props.maximumSelectionSize);
+
+          if (stopSelecting) {
             this.props.closeObjectBrowser();
           }
         } else {
@@ -441,7 +448,7 @@ class ObjectBrowserBody extends Component {
           <Segment className="infos">
             {this.props.intl.formatMessage(messages.SelectedItems)}:{' '}
             {this.props.data?.length}
-            {this.props.maximumSelectionSize && (
+            {this.props.maximumSelectionSize > 0 && (
               <>
                 {' '}
                 {this.props.intl.formatMessage(messages.of)}{' '}

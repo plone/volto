@@ -3,10 +3,11 @@
  * @module helpers/Blocks
  */
 
-import { omit, without, endsWith, find, keys } from 'lodash';
+import { omit, without, endsWith, find, isObject, keys, toPairs } from 'lodash';
 import move from 'lodash-move';
 import { v4 as uuid } from 'uuid';
 import config from '@plone/volto/registry';
+import { applySchemaEnhancer } from '@plone/volto/helpers';
 
 /**
  * Get blocks field.
@@ -232,7 +233,7 @@ export function mutateBlock(formData, id, value) {
  * @param {number} value New block's value
  * @return {Array} New block id, New form data
  */
-export function insertBlock(formData, id, value) {
+export function insertBlock(formData, id, value, current = {}) {
   const blocksFieldname = getBlocksFieldname(formData);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
   const index = formData[blocksLayoutFieldname].items.indexOf(id);
@@ -245,6 +246,10 @@ export function insertBlock(formData, id, value) {
       [blocksFieldname]: {
         ...formData[blocksFieldname],
         [newBlockId]: value || null,
+        [id]: {
+          ...formData[blocksFieldname][id],
+          ...current,
+        },
       },
       [blocksLayoutFieldname]: {
         items: [
@@ -323,7 +328,7 @@ export function previousBlockId(formData, currentBlock) {
  * Generate empty block form
  * @function emptyBlocksForm
  * @param {Object} formData Form data
- * @return {Object} Emptry blocks form with one defaultBlockType block
+ * @return {Object} Empty blocks form with one defaultBlockType block
  */
 export function emptyBlocksForm() {
   const { settings } = config;
@@ -340,6 +345,9 @@ export function emptyBlocksForm() {
 
 /**
  * Recursively discover blocks in data and call the provided callback
+ * @function visitBlocks
+ * @param {Object} content A content data structure (an object with blocks and blocks_layout)
+ * @param {Function} callback A function to call on each discovered block
  */
 export function visitBlocks(content, callback) {
   const queue = getBlocks(content);
@@ -351,11 +359,82 @@ export function visitBlocks(content, callback) {
     // { data: {blocks, blocks_layout}}
     if (Object.keys(blockdata || {}).indexOf('blocks') > -1) {
       queue.push(...getBlocks(blockdata));
-      // getBlocks(blockdata).forEach((tuple) => queue.push(tuple));
     }
     if (Object.keys(blockdata?.data || {}).indexOf('blocks') > -1) {
       queue.push(...getBlocks(blockdata.data));
-      // getBlocks(blockdata.data).forEach((tuple) => queue.push(tuple));
     }
   }
 }
+
+/**
+ * Initializes data with the default values coming from schema
+ */
+export function applySchemaDefaults({ data = {}, schema }) {
+  const derivedData = {
+    ...Object.keys(schema.properties).reduce((accumulator, currentField) => {
+      return schema.properties[currentField].default
+        ? {
+            ...accumulator,
+            [currentField]: schema.properties[currentField].default,
+          }
+        : accumulator;
+    }, {}),
+    ...data,
+  };
+  return derivedData;
+}
+
+/**
+ * Apply the block's default (as defined in schema) to the block data.
+ *
+ * @function applyBlockDefaults
+ * @param {Object} params An object with data, intl and anything else
+ * @return {Object} Derived data, with the defaults extracted from the schema
+ */
+export function applyBlockDefaults({ data, intl, ...rest }, blocksConfig) {
+  const block_type = data['@type'];
+  const { blockSchema } =
+    (blocksConfig || config.blocks.blocksConfig)[block_type] || {};
+  if (!blockSchema) return data;
+
+  let schema =
+    typeof blockSchema === 'function'
+      ? blockSchema({ data, intl, ...rest })
+      : blockSchema;
+  schema = applySchemaEnhancer({ schema, formData: data, intl });
+
+  return applySchemaDefaults({ data, schema });
+}
+
+export const buildStyleClassNamesFromData = (styles) => {
+  // styles has the form
+  // const styles = {
+  // color: 'red',
+  // backgroundColor: '#AABBCC',
+  // }
+  // Returns: ['has--color--red', 'has--backgroundColor--AABBCC']
+  let styleArray = [];
+  const pairedStyles = toPairs(styles);
+  pairedStyles.forEach((item) => {
+    if (isObject(item[1])) {
+      const flattenedNestedStyles = toPairs(item[1]).map((nested) => [
+        item[0],
+        ...nested,
+      ]);
+      flattenedNestedStyles.forEach((sub) => styleArray.push(sub));
+    } else {
+      styleArray.push(item);
+    }
+  });
+  return styleArray.map((item) => {
+    const classname = item.map((item) => {
+      const str_item = item.toString();
+      return str_item && str_item.startsWith('#')
+        ? str_item.replace('#', '')
+        : str_item;
+    });
+    return `has--${classname[0]}--${classname[1]}${
+      classname[2] ? `--${classname[2]}` : ''
+    }`;
+  });
+};

@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.0.4 (unreleased)
+## 1.4.2 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,36 @@
 ### Bugfix
 
 ### Internal
+
+## 1.4.1 (2022-02-24)
+
+### Bugfix
+
+- Fix `branch` option not getting into the `getAddonInfo` function @sneridagh
+
+## 1.4.0 (2021-12-29)
+
+### Feature
+
+- Add custom `cypress:run` script for starting the right Cypress suite (in addon test environment) @sneridagh
+
+## 1.3.0 (2021-12-28)
+
+### Feature
+
+- Add custom `test` script for getting the right `RAZZLE_JEST_CONFIG` (in addon test environment) @sneridagh
+
+## 1.2.0 (2021-12-28)
+
+### Feature
+
+- Improved CLI for creating addon testing environments @sneridagh
+
+## 1.1.0 (2021-12-24)
+
+### Feature
+
+- Initial version of the CLI for addon testing @sneridagh
 
 ## 1.0.3 (2021-10-01)
 

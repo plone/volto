@@ -1,5 +1,5 @@
 import React from 'react';
-import { getBaseUrl } from '@plone/volto/helpers';
+import { getBaseUrl, applyBlockDefaults } from '@plone/volto/helpers';
 import { defineMessages, injectIntl } from 'react-intl';
 import { map } from 'lodash';
 import {
@@ -7,6 +7,7 @@ import {
   getBlocksLayoutFieldname,
   hasBlocksData,
 } from '@plone/volto/helpers';
+import StyleWrapper from '@plone/volto/components/manage/Blocks/Block/StyleWrapper';
 import config from '@plone/volto/registry';
 
 const messages = defineMessages({
@@ -28,16 +29,25 @@ const RenderBlocks = (props) => {
       {map(content[blocksLayoutFieldname].items, (block) => {
         const Block =
           blocksConfig[content[blocksFieldname]?.[block]?.['@type']]?.view;
+
+        const blockData = applyBlockDefaults({
+          data: content[blocksFieldname][block],
+          intl,
+          metadata,
+          properties: content,
+        });
+
         return Block ? (
-          <Block
-            key={block}
-            id={block}
-            metadata={metadata}
-            properties={content}
-            data={content[blocksFieldname][block]}
-            path={getBaseUrl(path || '')}
-            blocksConfig={blocksConfig}
-          />
+          <StyleWrapper key={block} {...props} data={blockData}>
+            <Block
+              id={block}
+              metadata={metadata}
+              properties={content}
+              data={blockData}
+              path={getBaseUrl(path || '')}
+              blocksConfig={blocksConfig}
+            />
+          </StyleWrapper>
         ) : (
           <div key={block}>
             {intl.formatMessage(messages.unknownBlock, {
