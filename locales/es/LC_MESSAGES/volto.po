@@ -60,6 +60,7 @@ msgstr "Acciones"
 msgid "Activate and deactivate"
 msgstr "Activar y desactivar"
 
+#: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
@@ -97,6 +98,11 @@ msgstr "Agregar Usuario"
 # defaultMessage: Add a description…
 msgid "Add a description…"
 msgstr "Agregar una descripción…"
+
+#: components/manage/Aliases/Aliases
+# defaultMessage: Add a new alternative url
+msgid "Add a new alternative url"
+msgstr ""
 
 #: components/manage/BlockChooser/BlockChooserButton
 # defaultMessage: Add block
@@ -208,6 +214,11 @@ msgstr "Dejar vacío si la imagen es puramente decorativa"
 msgid "Alt text hint link text"
 msgstr "Describir el objeto de la imagen"
 
+#: components/manage/Aliases/Aliases
+# defaultMessage: Alternative url path must start with a slash.
+msgid "Alternative url path must start with a slash."
+msgstr ""
+
 #: components/manage/Toolbar/More
 # defaultMessage: Apply working copy
 msgid "Apply working copy"
@@ -234,8 +245,10 @@ msgstr "Ascendente"
 msgid "Available"
 msgstr "Disponible"
 
+#: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypes
@@ -918,6 +931,17 @@ msgstr "Ingrese el nombre completo, por ejemplo Leonardo Caballero."
 msgid "Enter map Embed Code"
 msgstr "Introduzca el código de un mapa"
 
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target.
+msgid "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
+msgstr ""
+
+#: components/manage/Aliases/Aliases
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring.
+msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 # defaultMessage: Enter your current password.
 msgid "Enter your current password."
@@ -960,6 +984,11 @@ msgstr "Excluir esta repetición"
 # defaultMessage: Excluded from navigation
 msgid "Excluded from navigation"
 msgstr "Exluido de la navegación"
+
+#: components/manage/Aliases/Aliases
+# defaultMessage: Existing alternative urls for this item
+msgid "Existing alternative urls for this item"
+msgstr ""
 
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Expand sidebar
@@ -2005,6 +2034,11 @@ msgstr "Formulario de registro"
 msgid "Relevance"
 msgstr "Relevancia"
 
+#: components/manage/Aliases/Aliases
+# defaultMessage: Remove
+msgid "Remove"
+msgstr ""
+
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item
 msgid "Remove item"
@@ -2632,6 +2666,11 @@ msgstr "El elemento no se ha podido eliminar"
 msgid "The link address is:"
 msgstr "La dirección del enlace es:"
 
+#: components/manage/Aliases/Aliases
+# defaultMessage: The provided alternative url already exists!
+msgid "The provided alternative url already exists!"
+msgstr ""
+
 #: components/theme/Register/Register
 # defaultMessage: The registration process has been successful. Please check your e-mail inbox for information on how activate your account.
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
@@ -2794,6 +2833,18 @@ msgstr "Ingrese el título…"
 msgid "UID"
 msgstr "UID"
 
+#: components/manage/Aliases/Aliases
+#: components/manage/Controlpanels/Aliases
+#: components/manage/Toolbar/More
+# defaultMessage: URL Management
+msgid "URL Management"
+msgstr ""
+
+#: components/manage/Aliases/Aliases
+# defaultMessage: URL Management for {title}
+msgid "URL Management for {title}"
+msgstr ""
+
 #: components/theme/Unauthorized/Unauthorized
 # defaultMessage: Unauthorized
 msgid "Unauthorized"
@@ -2928,6 +2979,11 @@ msgstr "Usuarios"
 # defaultMessage: Users and Groups
 msgid "Users and Groups"
 msgstr "Usuarios y Grupos"
+
+#: components/manage/Aliases/Aliases
+# defaultMessage: Using this form, you can manage alternative urls for an item. This is an easy way to make an item available under two different URLs.
+msgid "Using this form, you can manage alternative urls for an item. This is an easy way to make an item available under two different URLs."
+msgstr ""
 
 #: helpers/Extensions/withBlockSchemaEnhancer
 # defaultMessage: Variation
