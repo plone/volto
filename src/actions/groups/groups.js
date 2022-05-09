@@ -8,6 +8,7 @@ import {
   DELETE_GROUP,
   GET_GROUP,
   LIST_GROUPS,
+  LIST_FILTER_GROUPS,
   UPDATE_GROUP,
 } from '@plone/volto/constants/ActionTypes';
 
@@ -65,19 +66,32 @@ export function getGroup(id) {
  * @function listGroups
  * @returns {Object} List groups action
  */
-export function listGroups(query) {
-  return {
-    type: LIST_GROUPS,
-    request: query
-      ? {
-          op: 'get',
-          path: `/@groups?query=${query}`,
-        }
-      : {
-          op: 'get',
-          path: '/@groups',
-        },
-  };
+export function listGroups(query, query_group_filter) {
+  return query_group_filter !== undefined
+    ? {
+        type: LIST_FILTER_GROUPS,
+        request: query_group_filter
+          ? {
+              op: 'get',
+              path: `/@groups?query=${query_group_filter}`,
+            }
+          : {
+              op: 'get',
+              path: `/@groups`,
+            },
+      }
+    : {
+        type: LIST_GROUPS,
+        request: query
+          ? {
+              op: 'get',
+              path: `/@groups?query=${query}`,
+            }
+          : {
+              op: 'get',
+              path: '/@groups',
+            },
+      };
 }
 
 /**
