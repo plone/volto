@@ -171,7 +171,7 @@ msgid "Additional date"
 msgstr "Data gehigarria"
 
 #: components/manage/Blocks/Block/StylesSchema
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
@@ -189,18 +189,18 @@ msgstr "Guztiak"
 msgid "Alphabetically"
 msgstr "Alfabetikoki"
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Alt text
 msgid "Alt text"
 msgstr "Ordezko testua (alt)"
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 # defaultMessage: Leave empty if the image is purely decorative.
 msgid "Alt text hint"
 msgstr "Utzi hutsik irudia dekoratiboa bada"
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 # defaultMessage: Describe the purpose of the image.
 msgid "Alt text hint link text"
 msgstr "Deskribatu irudia zertarako den"
@@ -339,7 +339,6 @@ msgstr "Utzi"
 msgid "Cell"
 msgstr "Zelda"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Center
@@ -978,7 +977,6 @@ msgstr "Iraungitze-data"
 msgid "Expired"
 msgstr "Iraungita"
 
-#: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: External URL
 msgid "External URL"
@@ -1220,7 +1218,7 @@ msgid "If you are certain you have the correct web address but are encountering 
 msgstr "Ziurtatu helbide zuzenean zaudena, hala ere errorea baduzu jarri kontaktuan {site_admin}."
 
 #: components/manage/Blocks/HeroImageLeft/Edit
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Image
 msgid "Image"
@@ -1230,6 +1228,11 @@ msgstr "Irudia"
 # defaultMessage: Image gallery
 msgid "Image gallery"
 msgstr "Irudi galeria"
+
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Image size
+msgid "Image size"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Include this occurence
@@ -1371,6 +1374,11 @@ msgstr "Hizkuntza"
 msgid "Language independent field."
 msgstr "Hizkuntzarekiko Independentea den eremua."
 
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Large
+msgid "Large"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Last
 msgid "Last"
@@ -1401,7 +1409,6 @@ msgstr "Itxura"
 msgid "Lead Image"
 msgstr "Irudia"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Left
@@ -1426,7 +1433,7 @@ msgid "Link title"
 msgstr "Izenburua estekatu"
 
 #: components/manage/Blocks/HeroImageLeft/schema
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Maps/MapsSidebar
@@ -1532,6 +1539,11 @@ msgstr "Gehienezko luzera {len} da."
 msgid "Maximum value is {len}."
 msgstr "Balio handiena {len} da."
 
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Medium
+msgid "Medium"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Message
 msgid "Message"
@@ -1635,11 +1647,6 @@ msgstr "Ez"
 # defaultMessage: No addons found
 msgid "No addons found"
 msgstr "Ez da gehigarririk aurkitu"
-
-#: components/manage/Blocks/Image/ImageSidebar
-# defaultMessage: No image selected
-msgid "No image selected"
-msgstr "Ez da irudirik aukeratu"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: No image set in Lead Image content field
@@ -1756,7 +1763,7 @@ msgstr "Ados"
 msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed."
 msgstr "Letra xeheak (a-z), karaktere berezi gabe, zenbakiak (0-9) eta "-" edo "_" ikurrak bakarrik erabili daitezke."
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
@@ -1774,7 +1781,6 @@ msgstr "Menua ireki"
 msgid "Open object browser"
 msgstr "Ireki elementu bilatzailea"
 
-#: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
 msgid "Origin"
@@ -2116,7 +2122,6 @@ msgstr "Egoera"
 msgid "Richtext"
 msgstr "Testu aberatsa"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Right
@@ -2416,15 +2421,15 @@ msgstr "Atariaren konfigurazioa"
 msgid "Sitemap"
 msgstr "Web mapa"
 
-#: components/manage/Blocks/Image/ImageSidebar
-# defaultMessage: Size
-msgid "Size"
-msgstr "Tamaina"
-
 #: components/theme/View/ImageView
 # defaultMessage: Size: {size}
 msgid "Size: {size}"
 msgstr "Tamaina: {size}"
+
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Small
+msgid "Small"
+msgstr ""
 
 #: error
 # defaultMessage: Sorry, something went wrong with your request
@@ -2454,6 +2459,7 @@ msgid "Sort on options"
 msgstr "Ordenatu aukeren arabera"
 
 #: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Image/schema
 # defaultMessage: Source
 msgid "Source"
 msgstr "Iturburua"
