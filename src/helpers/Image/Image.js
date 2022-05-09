@@ -27,16 +27,27 @@ const getImageType = (image) => {
  * @returns {string} image.src attributes.src
  * @returns {string} image.srcset attributes.srcset
  */
+
+const DEFAULT_MAX_SIZE = 10000;
 export const getImageAttributes = (
   image,
-  { imageField = 'image', maxSize = 10000, useOriginal = false } = {},
+  {
+    imageField = 'image',
+    maxSize = DEFAULT_MAX_SIZE,
+    useOriginal = false,
+    minSize = 0,
+  } = {},
 ) => {
   const imageScales = config.settings.imageScales;
-  const minSize = Object.keys(imageScales).reduce((minSize, scale) => {
-    if (!minSize || imageScales[scale] < imageScales[minSize]) {
+
+  const minScale = Object.keys(imageScales).reduce((minScale, scale) => {
+    if (!minScale || imageScales[scale] < imageScales[minScale]) {
+      if (minSize > 0 && minSize > imageScales[scale]) {
+        return minScale;
+      }
       return scale;
     }
-    return minSize;
+    return minScale;
   }, null);
 
   let attrs = {};
@@ -65,8 +76,14 @@ export const getImageAttributes = (
 
       const scale = sortedScales[0];
       attrs.src = scale?.download ?? image.download;
-      // attrs.width = scale.width ?? image.width;
-      // attrs.height = scale.height ?? image.height;
+      attrs.aspectRatio = Math.round((image.width / image.height) * 100) / 100;
+
+      if (maxSize !== DEFAULT_MAX_SIZE) {
+        const maxScale = sortedScales[sortedScales.length - 1];
+        attrs.width = maxScale.width;
+        attrs.height = maxScale.height;
+      }
+
       attrs.srcSet = sortedScales.map(
         (scale) => `${flattenToAppURL(scale.download)} ${scale.width}w`,
       );
@@ -82,12 +99,19 @@ export const getImageAttributes = (
       let baseUrl = `${flattenToAppURL(image.split('/@@images')[0])}${
         image.endsWith('/') ? '' : '/'
       }@@images/${imageField}`;
-      attrs.src = `${baseUrl}/${minSize}`;
-      attrs.srcSet = Object.keys(imageScales).reduce((srcSet, scale) => {
-        if (imageScales[scale] <= maxSize) {
-          return [...srcSet, `${baseUrl}/${scale} ${imageScales[scale]}w`];
-        } else return srcSet;
-      }, []);
+      attrs.src = `${baseUrl}/${minScale}`;
+
+      attrs.srcSet = Object.keys(imageScales)
+        .sort((a, b) => {
+          if (imageScales[a] > imageScales[b]) return 1;
+          else if (imageScales[a] < imageScales[b]) return -1;
+          else return 0;
+        })
+        .reduce((srcSet, scale) => {
+          if (imageScales[scale] <= maxSize) {
+            return [...srcSet, `${baseUrl}/${scale} ${imageScales[scale]}w`];
+          } else return srcSet;
+        }, []);
 
       if (useOriginal) attrs.srcSet = attrs.srcSet.concat(`${baseUrl} 1900w`); // expect that is for desktop screens, I don't have actual size
       break;

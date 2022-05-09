@@ -35,12 +35,13 @@ exports[`TabularView renders a summary view component 1`] = `
           </a>
         </h2>
         <picture
-          className="volto-image floated right thumb"
+          className="volto-image floated right thumb responsive"
         >
           <img
             alt=""
             role="img"
             src="http://localhost:3000/my-item"
+            style={null}
           />
         </picture>
         <noscript

@@ -18,12 +18,13 @@ exports[`renders an image view component 1`] = `
     href="/test-images/@@images/image"
   >
     <picture
-      className="volto-image"
+      className="volto-image responsive"
     >
       <img
         alt="Hello World!"
         role="img"
         src="http://localhost:8080/Plone/test-images/@@images/image/listing"
+        style={null}
       />
     </picture>
     <noscript

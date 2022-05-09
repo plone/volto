@@ -37,7 +37,7 @@ exports[`renders an gallery view component 1`] = `
             className="ui segment imageborder"
           >
             <picture
-              className="volto-image"
+              className="volto-image responsive"
             >
               <img
                 alt=""
@@ -45,6 +45,7 @@ exports[`renders an gallery view component 1`] = `
                 onClick={[Function]}
                 role="img"
                 src="http://localhost:3000/news"
+                style={null}
               />
             </picture>
             <noscript
@@ -78,7 +79,7 @@ exports[`renders an gallery view component 1`] = `
             className="ui segment imageborder"
           >
             <picture
-              className="volto-image"
+              className="volto-image responsive"
             >
               <img
                 alt=""
@@ -86,6 +87,7 @@ exports[`renders an gallery view component 1`] = `
                 onClick={[Function]}
                 role="img"
                 src="http://localhost:3000/events"
+                style={null}
               />
             </picture>
             <noscript

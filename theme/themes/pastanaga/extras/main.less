@@ -570,20 +570,27 @@ body.has-toolbar-collapsed .mobile-menu {
   }
 
   &.large {
-    max-width: 50%;
+    width: 50%;
   }
 
   &.medium {
-    max-width: 25%;
+    width: 25%;
   }
 
   &.small {
-    max-width: 15%;
+    width: 15%;
   }
 
   &.thumb {
-    max-width: 128px;
+    width: 128px;
     max-height: 128px;
+  }
+
+  &.responsive {
+    img {
+      width: 100%;
+      height: auto;
+    }
   }
 }
 

@@ -5,13 +5,14 @@ exports[`renders a view image component 1`] = `
   className="block image align center"
 >
   <picture
-    className="volto-image"
+    className="volto-image responsive"
   >
     <img
       alt=""
       className=""
       role="img"
       src="http://localhost:8080/Plone/test-images/@@images/image/listing"
+      style={null}
     />
   </picture>
   <noscript

@@ -3,12 +3,13 @@
 exports[`Image renders image with default values and image url 1`] = `
 Array [
   <picture
-    className="volto-image"
+    className="volto-image responsive"
   >
     <img
       alt=""
       role="img"
       src="/photo.png/@@images/image/listing"
+      style={null}
     />
   </picture>,
   <noscript
@@ -17,7 +18,7 @@ Array [
         "__html": "
               <img
                 src=\\"/photo.png/@@images/image/listing\\"
-                srcset=\\"/photo.png/@@images/image/large 768w, /photo.png/@@images/image/preview 400w, /photo.png/@@images/image/mini 200w, /photo.png/@@images/image/thumb 128w, /photo.png/@@images/image/tile 64w, /photo.png/@@images/image/icon 32w, /photo.png/@@images/image/listing 16w\\"
+                srcset=\\"/photo.png/@@images/image/listing 16w, /photo.png/@@images/image/icon 32w, /photo.png/@@images/image/tile 64w, /photo.png/@@images/image/thumb 128w, /photo.png/@@images/image/mini 200w, /photo.png/@@images/image/preview 400w, /photo.png/@@images/image/large 768w\\"
                 alt=\\"\\"
                 class=\\"\\"
                 role=\\"img\\"
@@ -34,12 +35,13 @@ Array [
 exports[`Image renders image with external url 1`] = `
 Array [
   <picture
-    className="volto-image"
+    className="volto-image responsive"
   >
     <img
       alt="External picsum photo"
       role="img"
       src="https://picsum.photos/200/300"
+      style={null}
     />
   </picture>,
   <noscript
@@ -65,13 +67,14 @@ Array [
 exports[`Image renders image with plone image object 1`] = `
 Array [
   <picture
-    className="volto-image"
+    className="volto-image responsive"
   >
     <img
       alt="Photo"
       className="photo-image"
       role="presentation"
       src="http://localhost:8080/Plone/test-images/@@images/image/listing"
+      style={null}
     />
   </picture>,
   <noscript
@@ -97,13 +100,14 @@ Array [
 exports[`Image renders image with plone image object and floated prop 1`] = `
 Array [
   <picture
-    className="volto-image floated right"
+    className="volto-image floated right responsive"
   >
     <img
       alt="Photo"
       className="photo-image"
       role="img"
       src="http://localhost:8080/Plone/test-images/@@images/image/listing"
+      style={null}
     />
   </picture>,
   <noscript
@@ -129,13 +133,15 @@ Array [
 exports[`Image renders image with plone image object and opt props 1`] = `
 Array [
   <picture
-    className="volto-image"
+    className="volto-image responsive"
   >
     <img
       alt="Photo"
       className="photo-image"
       role="presentation"
       src="http://localhost:8080/Plone/test-images/@@images/image/listing"
+      style={null}
+      width={200}
     />
   </picture>,
   <noscript
@@ -148,7 +154,7 @@ Array [
                 alt=\\"Photo\\"
                 class=\\"photo-image\\"
                 role=\\"presentation\\"
-                
+                width=\\"200
                                          
                 loading=\\"lazy\\"               
             ",
@@ -161,13 +167,14 @@ Array [
 exports[`Image renders image with plone image object and original 1`] = `
 Array [
   <picture
-    className="volto-image"
+    className="volto-image responsive"
   >
     <img
       alt="Photo"
       className="photo-image"
       role="presentation"
       src="http://localhost:8080/Plone/test-images/@@images/image/listing"
+      style={null}
     />
   </picture>,
   <noscript
@@ -193,13 +200,14 @@ Array [
 exports[`Image renders image with plone image object and size prop 1`] = `
 Array [
   <picture
-    className="volto-image medium"
+    className="volto-image medium responsive"
   >
     <img
       alt="Photo"
       className="photo-image"
       role="img"
       src="http://localhost:8080/Plone/test-images/@@images/image/listing"
+      style={null}
     />
   </picture>,
   <noscript
@@ -225,13 +233,14 @@ Array [
 exports[`Image renders image with props and image url 1`] = `
 Array [
   <picture
-    className="volto-image"
+    className="volto-image responsive"
   >
     <img
       alt="Photo"
       className="photo-image"
       role="presentation"
       src="/photo.png/@@images/image/listing"
+      style={null}
     />
   </picture>,
   <noscript
@@ -240,7 +249,7 @@ Array [
         "__html": "
               <img
                 src=\\"/photo.png/@@images/image/listing\\"
-                srcset=\\"/photo.png/@@images/image/large 768w, /photo.png/@@images/image/preview 400w, /photo.png/@@images/image/mini 200w, /photo.png/@@images/image/thumb 128w, /photo.png/@@images/image/tile 64w, /photo.png/@@images/image/icon 32w, /photo.png/@@images/image/listing 16w\\"
+                srcset=\\"/photo.png/@@images/image/listing 16w, /photo.png/@@images/image/icon 32w, /photo.png/@@images/image/tile 64w, /photo.png/@@images/image/thumb 128w, /photo.png/@@images/image/mini 200w, /photo.png/@@images/image/preview 400w, /photo.png/@@images/image/large 768w\\"
                 alt=\\"Photo\\"
                 class=\\"photo-image\\"
                 role=\\"presentation\\"

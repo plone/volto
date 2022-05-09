@@ -10,9 +10,10 @@ import { getImageAttributes } from '@plone/volto/helpers';
  * @param {string} className - CSS class attribute
  * @param {string} containerClassName - CSS class attribute for picture element
  * @param {string} floated - float left or right
- * @param {string} size - actual width: thumb, small, medium or large
+ * @param {string} responsive - if the image is responsive
+ * @param {string} size - (css class) actual width: thumb, small, medium or large
  * @param {string} role - img role attribute
- * @param {boolean} critical - whether to lazy load the image
+ * @param {boolean} critical - if critical, do not lazy load the image
  * @param {number} maxSize - maximum size to render
  * @param {boolean} useOriginal - whether to render original size
  */
@@ -24,6 +25,7 @@ const Image = ({
   containerClassName,
   floated,
   size,
+  responsive = true,
   role = 'img',
   critical = false,
   maxSize,
@@ -32,18 +34,22 @@ const Image = ({
   sizes = '100vw',
   ...imageProps
 }) => {
-  const { src, srcSet, width, height } = getImageAttributes(image, {
-    imageField,
-    maxSize,
-    useOriginal,
-    minSize,
-  });
+  const { src, srcSet, width, height, aspectRatio } = getImageAttributes(
+    image,
+    {
+      imageField,
+      maxSize,
+      useOriginal,
+      minSize,
+    },
+  );
   const imageRef = useRef();
   const [srcset, setSrcset] = useState(
     critical && srcSet ? srcSet.join(', ') : null,
   );
   const imageHasLoaded = imageRef?.current?.complete;
 
+  //picture classname
   let pictureClassName = `volto-image${
     containerClassName ? ` ${containerClassName}` : ''
   }`;
@@ -54,13 +60,20 @@ const Image = ({
     pictureClassName = `${pictureClassName} ${size}`;
   }
 
+  if (responsive) {
+    pictureClassName = `${pictureClassName} responsive`;
+  }
+
+  //apply srcset
   const applySrcSet = useCallback(() => {
     setSrcset(
       srcSet
         .filter((s, index) => {
           let addable = (ss) => {
             let devicePixelRatio = window.devicePixelRatio;
+
             let w = ss ? parseInt(ss.split(' ')[1].replace('w', ''), 10) : null;
+
             return w
               ? w <=
                   (imageRef?.current?.width * devicePixelRatio ?? Infinity) ||
@@ -71,9 +84,9 @@ const Image = ({
 
           let add = addable(s);
 
-          // if (!add && addable(srcSet[index - 1])) {
-          //   add = true; //add the next item grather then imageRef width, to avoid less quality
-          // }
+          if (!add && addable(srcSet[index - 1])) {
+            add = true; //add the next item grather then imageRef width, to avoid less quality
+          }
 
           return add;
         })
@@ -81,6 +94,7 @@ const Image = ({
     );
   }, [srcSet]);
 
+  //intersection observer
   useEffect(() => {
     if ('IntersectionObserver' in window && !srcset) {
       const observer = new IntersectionObserver(
@@ -114,9 +128,9 @@ const Image = ({
           className={className}
           role={role}
           //loading={critical ? 'eager' : 'lazy'} //removed because this is for the placeholder.Lazy loading is made from intersectionObserver
-          //style={{ width: '100%', objectFit: 'cover' }} //moved to blocks.less
           width={width}
           height={height}
+          style={aspectRatio ? { 'aspect-ratio': `${aspectRatio}` } : null}
           {...imageProps}
           ref={imageRef}
         />
