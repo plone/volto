@@ -52,11 +52,6 @@ const store = mockStore({
           id: 'local_roles',
           title: 'Sharing',
         },
-        {
-          icon: '',
-          id: 'url_management',
-          title: 'Url management',
-        },
       ],
       object_buttons: [
         {
@@ -83,6 +78,11 @@ const store = mockStore({
           icon: '',
           id: 'ical_import_enable',
           title: 'Enable icalendar import',
+        },
+        {
+          icon: 'plone-redirection',
+          id: 'redirection',
+          title: 'URL Management',
         },
       ],
       portal_tabs: [],
