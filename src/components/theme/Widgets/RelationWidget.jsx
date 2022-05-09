@@ -3,6 +3,7 @@ import cx from 'classnames';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { getContentIcon } from '@plone/volto/helpers';
 import { Icon } from '@plone/volto/components';
+import { UniversalLink } from '@plone/volto/components';
 
 const RelationWidget = ({ value, children, className }) => {
   if (!value) {
@@ -15,7 +16,7 @@ const RelationWidget = ({ value, children, className }) => {
   const type = value['@type'] || '';
 
   return (
-    <a
+    <UniversalLink
       href={url}
       className={cx(className, 'relation', 'widget', type, state)}
       title={description}
@@ -30,7 +31,7 @@ const RelationWidget = ({ value, children, className }) => {
       {children
         ? children(value?.title || value?.token || value)
         : value?.title || value?.token || value}
-    </a>
+    </UniversalLink>
   );
 };
 

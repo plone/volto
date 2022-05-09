@@ -6,7 +6,7 @@ const RelationsWidget = ({ value, children, className }) =>
   value ? (
     <ul className={cx(className, 'relations', 'widget')}>
       {value.map((item, key) => (
-        <li>
+        <li key={key}>
           <RelationWidget
             value={item}
             className={className}

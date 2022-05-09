@@ -1,16 +1,15 @@
 import React from 'react';
 import cx from 'classnames';
+import { UniversalLink } from '@plone/volto/components';
 
 const EmailWidget = ({ value, children, className }) =>
   value ? (
-    <a
+    <UniversalLink
       href={'mailto:' + value}
       className={cx(className, 'email', 'widget')}
-      rel="noreferrer"
-      target="_blank"
     >
       {children ? children(value) : value}
-    </a>
+    </UniversalLink>
   ) : (
     ''
   );

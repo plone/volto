@@ -7,7 +7,9 @@ exports[`RelationsWidget renders a full vocabulary array view widget component 1
   <li>
     <a
       className="metadata relation widget"
-      href="#"
+      href="/"
+      onClick={[Function]}
+      target={null}
       title=""
     >
       <svg
@@ -34,7 +36,9 @@ exports[`RelationsWidget renders a full vocabulary array view widget component 1
   <li>
     <a
       className="metadata relation widget"
-      href="#"
+      href="/"
+      onClick={[Function]}
+      target={null}
       title=""
     >
       <svg
@@ -69,6 +73,8 @@ exports[`RelationsWidget renders a full vocabulary relations view widget compone
     <a
       className="metadata relation widget Foo private"
       href="/foo-page"
+      onClick={[Function]}
+      target={null}
       title="A Foo"
     >
       <svg
@@ -98,6 +104,8 @@ exports[`RelationsWidget renders a full vocabulary relations view widget compone
     <a
       className="metadata relation widget Bar published"
       href="/bar-page"
+      onClick={[Function]}
+      target={null}
       title="A Bar"
     >
       <svg
@@ -133,7 +141,9 @@ exports[`RelationsWidget renders a simple relations view widget component 1`] = 
   <li>
     <a
       className="metadata relation widget"
-      href="#"
+      href="/"
+      onClick={[Function]}
+      target={null}
       title=""
     >
       <svg
@@ -160,7 +170,9 @@ exports[`RelationsWidget renders a simple relations view widget component 1`] = 
   <li>
     <a
       className="metadata relation widget"
-      href="#"
+      href="/"
+      onClick={[Function]}
+      target={null}
       title=""
     >
       <svg
@@ -194,7 +206,9 @@ exports[`RelationsWidget renders a vocabulary relations view widget component 1`
   <li>
     <a
       className="metadata relation widget"
-      href="#"
+      href="/"
+      onClick={[Function]}
+      target={null}
       title=""
     >
       <svg
@@ -221,7 +235,9 @@ exports[`RelationsWidget renders a vocabulary relations view widget component 1`
   <li>
     <a
       className="metadata relation widget"
-      href="#"
+      href="/"
+      onClick={[Function]}
+      target={null}
       title=""
     >
       <svg

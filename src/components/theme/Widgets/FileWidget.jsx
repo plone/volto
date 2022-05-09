@@ -1,6 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import { flattenToAppURL } from '@plone/volto/helpers';
+import { UniversalLink } from '@plone/volto/components';
 
 const niceBytes = (bytes) => {
   bytes = Number(bytes);
@@ -25,7 +26,7 @@ const FileWidget = ({ value, children, className }) => {
   const size = value.data ? value.data.length * 0.75 : value.size || 0;
   const ctype = value['content-type'] || '';
   return (
-    <a
+    <UniversalLink
       title={ctype || filename}
       href={url}
       className={cx(className, 'file', 'widget')}
@@ -34,7 +35,7 @@ const FileWidget = ({ value, children, className }) => {
       data-content-type={ctype}
     >
       {children ? children(filename) : filename}
-    </a>
+    </UniversalLink>
   );
 };
 
