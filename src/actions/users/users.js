@@ -69,12 +69,18 @@ export function getUser(id) {
  * @param {string} query Query
  * @returns {Object} List users action
  */
-export function listUsers(query) {
+export function listUsers(query, groups_filter) {
+  groups_filter = groups_filter || [];
+  let path = '/@users';
+  if (query) {
+    path += `?query=${query}`;
+  }
+  if (groups_filter.length > 0) {
+    path += `?groups_filter=${groups_filter.join(',')}`;
+  }
   return {
     type: LIST_USERS,
-    request: query
-      ? { op: 'get', path: `/@users?query=${query}` }
-      : { op: 'get', path: '/@users' },
+    request: { op: 'get', path: path },
   };
 }
 
