@@ -13,7 +13,7 @@ import { Helmet, messages } from '@plone/volto/helpers';
 import { listActions } from '@plone/volto/actions';
 import { Icon, Toolbar } from '@plone/volto/components';
 import { getParentUrl } from '@plone/volto/helpers';
-import UserGroupMembershipMatrix from '@plone/volto/components/manage/ControlPanels/Users/UserGroupMembershipMatrix';
+import UserGroupMembershipMatrix from '@plone/volto/components/manage/Controlpanels/Users/UserGroupMembershipMatrix';
 import backSVG from '@plone/volto/icons/back.svg';
 
 const UserControlPanel = () => {
