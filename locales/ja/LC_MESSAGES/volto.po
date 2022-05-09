@@ -171,6 +171,7 @@ msgstr "アドオン設定"
 msgid "Additional date"
 msgstr "追加日"
 
+#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
@@ -255,6 +256,11 @@ msgstr "利用可能"
 # defaultMessage: Back
 msgid "Back"
 msgstr "戻る"
+
+#: components/manage/Blocks/Block/StylesSchema
+# defaultMessage: Background color
+msgid "Background color"
+msgstr ""
 
 #: components/manage/Diff/Diff
 # defaultMessage: Base
@@ -445,6 +451,12 @@ msgstr ""
 # defaultMessage: Collection
 msgid "Collection"
 msgstr "コレクション"
+
+#: components/manage/Blocks/Block/StylesSchema
+#: components/manage/Widgets/ColorPicker
+# defaultMessage: Color
+msgid "Color"
+msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
 #: components/theme/Comments/CommentEditModal
@@ -2495,6 +2507,11 @@ msgstr "String (未翻訳)"
 msgid "Stripe alternate rows with color"
 msgstr "一行おきに背景色を付加"
 
+#: helpers/Extensions/withBlockSchemaEnhancer
+# defaultMessage: Styling
+msgid "Styling"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Subject
 msgid "Subject"
@@ -2801,7 +2818,6 @@ msgid "Uninstall"
 msgstr "アンインストール"
 
 #: components/manage/Blocks/Block/Edit
-#: components/theme/View/DefaultView
 #: components/theme/View/RenderBlocks
 # defaultMessage: Unknown Block {block}
 msgid "Unknown Block"
@@ -3030,6 +3046,11 @@ msgstr "When this date is reached, the content will nolonger be visible in listi
 # defaultMessage: Who
 msgid "Who"
 msgstr "誰が"
+
+#: components/manage/Sidebar/AlignBlock
+# defaultMessage: Wide
+msgid "Wide"
+msgstr ""
 
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Updating workflow states...
