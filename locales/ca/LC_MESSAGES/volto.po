@@ -172,6 +172,7 @@ msgstr "Configuració de complements"
 msgid "Additional date"
 msgstr "Data addicional"
 
+#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
@@ -256,6 +257,11 @@ msgstr "Disponible"
 # defaultMessage: Back
 msgid "Back"
 msgstr "Enrere"
+
+#: components/manage/Blocks/Block/StylesSchema
+# defaultMessage: Background color
+msgid "Background color"
+msgstr ""
 
 #: components/manage/Diff/Diff
 # defaultMessage: Base
@@ -446,6 +452,12 @@ msgstr "Replega l'element"
 # defaultMessage: Collection
 msgid "Collection"
 msgstr "Col·lecció"
+
+#: components/manage/Blocks/Block/StylesSchema
+#: components/manage/Widgets/ColorPicker
+# defaultMessage: Color
+msgid "Color"
+msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
 #: components/theme/Comments/CommentEditModal
@@ -2496,6 +2508,11 @@ msgstr "Cadena"
 msgid "Stripe alternate rows with color"
 msgstr "Color de fons alternatiu de la fila"
 
+#: helpers/Extensions/withBlockSchemaEnhancer
+# defaultMessage: Styling
+msgid "Styling"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Subject
 msgid "Subject"
@@ -2802,7 +2819,6 @@ msgid "Uninstall"
 msgstr "Desinstal·lar"
 
 #: components/manage/Blocks/Block/Edit
-#: components/theme/View/DefaultView
 #: components/theme/View/RenderBlocks
 # defaultMessage: Unknown Block {block}
 msgid "Unknown Block"
@@ -3031,6 +3047,11 @@ msgstr "Quan s'arribi a aquesta data, el contingut ja no serà visible a les lli
 # defaultMessage: Who
 msgid "Who"
 msgstr "OMS"
+
+#: components/manage/Sidebar/AlignBlock
+# defaultMessage: Wide
+msgid "Wide"
+msgstr ""
 
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Updating workflow states...
