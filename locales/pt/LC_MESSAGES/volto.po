@@ -171,6 +171,7 @@ msgstr ""
 msgid "Additional date"
 msgstr ""
 
+#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
@@ -255,6 +256,11 @@ msgstr ""
 # defaultMessage: Back
 msgid "Back"
 msgstr "Voltar"
+
+#: components/manage/Blocks/Block/StylesSchema
+# defaultMessage: Background color
+msgid "Background color"
+msgstr ""
 
 #: components/manage/Diff/Diff
 # defaultMessage: Base
@@ -444,6 +450,12 @@ msgstr ""
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Collection
 msgid "Collection"
+msgstr ""
+
+#: components/manage/Blocks/Block/StylesSchema
+#: components/manage/Widgets/ColorPicker
+# defaultMessage: Color
+msgid "Color"
 msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
@@ -1622,6 +1634,7 @@ msgstr ""
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: No Video selected
 msgid "No Video selected"
+msgstr ""
 
 #: components/manage/Controlpanels/VersionOverview
 # defaultMessage: No addons found
@@ -2492,6 +2505,11 @@ msgstr "Texto"
 msgid "Stripe alternate rows with color"
 msgstr "Alternar cores das linhas"
 
+#: helpers/Extensions/withBlockSchemaEnhancer
+# defaultMessage: Styling
+msgid "Styling"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Subject
 msgid "Subject"
@@ -2798,7 +2816,6 @@ msgid "Uninstall"
 msgstr ""
 
 #: components/manage/Blocks/Block/Edit
-#: components/theme/View/DefaultView
 #: components/theme/View/RenderBlocks
 # defaultMessage: Unknown Block {block}
 msgid "Unknown Block"
@@ -3028,6 +3045,11 @@ msgstr "Quando chegar a esta data, o conteúdo deixará de ficar visível nas li
 # defaultMessage: Who
 msgid "Who"
 msgstr "Quem"
+
+#: components/manage/Sidebar/AlignBlock
+# defaultMessage: Wide
+msgid "Wide"
+msgstr ""
 
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Updating workflow states...

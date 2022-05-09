@@ -163,6 +163,7 @@ msgstr "Impostazioni Add-ons"
 msgid "Additional date"
 msgstr "Data aggiuntiva"
 
+#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
@@ -247,6 +248,11 @@ msgstr "Disponibile"
 # defaultMessage: Back
 msgid "Back"
 msgstr "Indietro"
+
+#: components/manage/Blocks/Block/StylesSchema
+# defaultMessage: Background color
+msgid "Background color"
+msgstr ""
 
 #: components/manage/Diff/Diff
 # defaultMessage: Base
@@ -437,6 +443,12 @@ msgstr "Collassa elemento"
 # defaultMessage: Collection
 msgid "Collection"
 msgstr "Collezione"
+
+#: components/manage/Blocks/Block/StylesSchema
+#: components/manage/Widgets/ColorPicker
+# defaultMessage: Color
+msgid "Color"
+msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
 #: components/theme/Comments/CommentEditModal
@@ -2485,6 +2497,11 @@ msgstr "Stringa"
 msgid "Stripe alternate rows with color"
 msgstr "Colore delle righe alternato"
 
+#: helpers/Extensions/withBlockSchemaEnhancer
+# defaultMessage: Styling
+msgid "Styling"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Subject
 msgid "Subject"
@@ -2791,7 +2808,6 @@ msgid "Uninstall"
 msgstr "Disinstalla"
 
 #: components/manage/Blocks/Block/Edit
-#: components/theme/View/DefaultView
 #: components/theme/View/RenderBlocks
 # defaultMessage: Unknown Block {block}
 msgid "Unknown Block"
@@ -3021,6 +3037,11 @@ msgstr "Quando questa data sarà raggiunta, il contenuto non sarà più visibile
 # defaultMessage: Who
 msgid "Who"
 msgstr "Chi"
+
+#: components/manage/Sidebar/AlignBlock
+# defaultMessage: Wide
+msgid "Wide"
+msgstr ""
 
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Updating workflow states...

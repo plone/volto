@@ -12,6 +12,14 @@
 
 ### Documentation
 
+- fix make task `docs-linkcheckbroken` if grep has exit code 1 (no lines found)
+
+## 16.0.0-alpha.1 (2022-05-09)
+
+### Feature
+
+- Added new Block Style Wrapper. This implementation is marked as **experimental** during Volto 16 alpha period. The components, API and the styling are subject to change **without issuing a breaking change**. You can start using it in your projects and add-ons, but taking this into account. See documentation for more information. @sneridagh
+
 ## 16.0.0-alpha.0 (2022-05-06)
 
 ### Breaking
@@ -45,6 +53,7 @@
 - Move Cypress documentation from `README.md` to the docs. Improve the docs with the new `Makefile` commands.
 - Improve English grammar and syntax in backend docs. @stevepiercy
 - Fix JSX syntax highlighting. Remove duplicate heading. @stevepiercy
+- Proper case HAProxy, nginx, and Docker Compose. @stevepiercy
 
 ## 15.8.0 (2022-04-30)
 
