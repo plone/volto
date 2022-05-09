@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useIntl } from 'react-intl';
 import { Checkbox, Form, Input } from 'semantic-ui-react';
 
-import { find, isEqual, pull } from 'lodash';
+import { isEqual, pull } from 'lodash';
 
 import { messages } from '@plone/volto/helpers';
 import { listGroups } from '@plone/volto/actions';
@@ -16,10 +16,6 @@ const UserGroupMembershipMatrix = (props) => {
   const [query_group, setQuery_group] = useState('');
   const [query_group_filter, setQuery_group_filter] = useState('');
   const [groups_filter, setGroups_filter] = useState([]); // Show users which are in these groups.
-
-  // Check if logged in user is site administrator
-  let useractions = useSelector((state) => state.actions.actions.user);
-  let isAdmin = find(useractions, { id: 'plone_setup' }) ? true : false;
 
   let filter_options = useSelector((state) => state.groups.filter_groups);
   if (filter_options) {

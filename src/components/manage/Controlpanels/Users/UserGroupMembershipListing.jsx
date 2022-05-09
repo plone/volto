@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
-import { useIntl, defineMessages } from 'react-intl';
+import { useIntl } from 'react-intl';
 import { useSelector, useDispatch } from 'react-redux';
-import { find, get, isEqual } from 'lodash';
 import { toast } from 'react-toastify';
-import { Checkbox, Table } from 'semantic-ui-react';
+import { Checkbox } from 'semantic-ui-react';
 import { messages } from '@plone/volto/helpers';
 import { listGroups } from '@plone/volto/actions';
-import { ConditionalLink, Toast, UniversalLink } from '@plone/volto/components';
+import { Toast } from '@plone/volto/components';
 import { updateGroup, listUsers } from '@plone/volto/actions';
 
 const ListingTemplate = ({ query_user, query_group, groups_filter }) => {
@@ -74,9 +73,6 @@ const ListingTemplate = ({ query_user, query_group, groups_filter }) => {
             content="Membership updated"
           />,
         );
-      })
-      .catch((error) => {
-        console.error(error);
       });
   };
 
