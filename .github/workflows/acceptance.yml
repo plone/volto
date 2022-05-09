@@ -4,6 +4,7 @@ jobs:
   core:
     runs-on: ubuntu-latest
     name: Core Basic
+    timeout-minutes: 45
     strategy:
       matrix:
         node-version: [14.x, 16.x]
@@ -69,6 +70,7 @@ jobs:
   coreblocks:
     runs-on: ubuntu-latest
     name: Core Blocks
+    timeout-minutes: 35
     strategy:
       matrix:
         node-version: [14.x, 16.x]
@@ -199,6 +201,7 @@ jobs:
   coresandbox:
     runs-on: ubuntu-latest
     name: Coresandbox
+    timeout-minutes: 35
     strategy:
       matrix:
         node-version: [16.x]
@@ -291,6 +294,7 @@ jobs:
   guillotina:
     name: Guillotina
     runs-on: ubuntu-latest
+    timeout-minutes: 35
     strategy:
       matrix:
         node-version: [16.x]
@@ -357,6 +361,7 @@ jobs:
   multilingual:
     name: Multilingual
     runs-on: ubuntu-latest
+    timeout-minutes: 35
     strategy:
       matrix:
         node-version: [16.x]
@@ -425,6 +430,7 @@ jobs:
   workingcopy:
     name: Working Copy
     runs-on: ubuntu-latest
+    timeout-minutes: 35
     strategy:
       matrix:
         node-version: [16.x]
@@ -516,6 +522,7 @@ jobs:
   generator:
     name: Project Generator
     runs-on: ubuntu-latest
+    timeout-minutes: 35
     strategy:
       matrix:
         node-version: [16.x]
@@ -618,6 +625,7 @@ jobs:
   seamless:
     name: Seamless Mode
     runs-on: ubuntu-latest
+    timeout-minutes: 35
     strategy:
       matrix:
         node-version: [16.x]
