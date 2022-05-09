@@ -149,6 +149,11 @@ msgid "Add new user"
 msgstr "Adicionar novo usuário"
 
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add or remove all shown users to group
+msgid "Add or remove all shown users to group"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add to Groups
 msgid "Add to Groups"
 msgstr "Adicionar a grupos"

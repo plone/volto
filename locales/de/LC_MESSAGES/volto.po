@@ -154,6 +154,11 @@ msgid "Add new user"
 msgstr "Neuen Benutzer hinzufügen"
 
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add or remove all shown users to group
+msgid "Add or remove all shown users to group"
+msgstr "Füge alle angezeigten Benutzer zur Gruppe hinzu oder entferne diese von der Gruppe"
+
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add to Groups
 msgid "Add to Groups"
 msgstr "Zu Gruppe hinzufügen"
@@ -1053,7 +1058,7 @@ msgstr "Dateiname"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Filter by groups
 msgid "Filter by groups"
-msgstr ""
+msgstr "Filtere nach Gruppen"
 
 #: components/manage/Contents/Contents
 # defaultMessage: Filter…
@@ -1750,7 +1755,7 @@ msgstr "Kein Deinstallationsprofil"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: No user found
 msgid "No user found"
-msgstr ""
+msgstr "Kein Benutzer gefunden"
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
