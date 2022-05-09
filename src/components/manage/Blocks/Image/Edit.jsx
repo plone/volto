@@ -168,12 +168,6 @@ class Edit extends Component {
     });
   };
 
-  resetSubmitUrl = () => {
-    this.setState({
-      url: '',
-    });
-  };
-
   /**
    * Drop handler
    * @method onDrop
@@ -374,7 +368,7 @@ class Edit extends Component {
           </div>
         )}
         <SidebarPortal selected={this.props.selected}>
-          <ImageSidebar {...this.props} resetSubmitUrl={this.resetSubmitUrl} />
+          <ImageSidebar {...this.props} />
         </SidebarPortal>
       </div>
     );
