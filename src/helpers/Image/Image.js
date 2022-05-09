@@ -35,14 +35,19 @@ export const getImageAttributes = (
     imageField = 'image',
     maxSize = DEFAULT_MAX_SIZE,
     useOriginal = false,
+    minSize = 0,
   } = {},
 ) => {
   const imageScales = config.settings.imageScales;
-  const minSize = Object.keys(imageScales).reduce((minSize, scale) => {
-    if (!minSize || imageScales[scale] < imageScales[minSize]) {
+
+  const minScale = Object.keys(imageScales).reduce((minScale, scale) => {
+    if (!minScale || imageScales[scale] < imageScales[minScale]) {
+      if (minSize > 0 && minSize > imageScales[scale]) {
+        return minScale;
+      }
       return scale;
     }
-    return minSize;
+    return minScale;
   }, null);
 
   let attrs = {};
@@ -94,7 +99,7 @@ export const getImageAttributes = (
       let baseUrl = `${flattenToAppURL(image.split('/@@images')[0])}${
         image.endsWith('/') ? '' : '/'
       }@@images/${imageField}`;
-      attrs.src = `${baseUrl}/${minSize}`;
+      attrs.src = `${baseUrl}/${minScale}`;
 
       attrs.srcSet = Object.keys(imageScales)
         .sort((a, b) => {
