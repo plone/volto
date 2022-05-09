@@ -14,6 +14,7 @@ import {
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
+import BlocksDnDItem from './BlocksDnDItem';
 
 const BlocksDnDList = (props) => {
   const {
@@ -25,7 +26,6 @@ const BlocksDnDList = (props) => {
     placeholderProps,
     reactBeautifulDnd,
   } = props; //renderChild
-  const { Draggable, Droppable } = reactBeautifulDnd;
 
   const AsDomComponent = as;
   const sensors = useSensors(
@@ -35,50 +35,13 @@ const BlocksDnDList = (props) => {
     }),
   );
   return (
-    <Droppable droppableId="main">
-      {(provided, snapshot) => (
-        <SortableContext
-          items={childList}
-          strategy={verticalListSortingStrategy}
-        >
-          <AsDomComponent
-            ref={provided.innerRef}
-            {...provided.droppableProps}
-            style={{ ...style, position: 'relative' }}
-            aria-labelledby={forwardedAriaLabelledBy}
-          >
-            {childList
-              .filter(([id, child]) => id && child) // beware numbers!
-              .map(([childId, child], index) => (
-                <Draggable
-                  draggableId={childId.toString()}
-                  index={index}
-                  key={childId}
-                  style={{
-                    userSelect: 'none',
-                  }}
-                >
-                  {(draginfo) => children({ child, childId, index, draginfo })}
-                </Draggable>
-              ))}
-            {provided.placeholder}
-            {!isEmpty(placeholderProps) && snapshot.isDraggingOver && (
-              <div
-                style={{
-                  position: 'absolute',
-                  top: placeholderProps.clientY,
-                  left: placeholderProps.clientX,
-                  height: placeholderProps.clientHeight,
-                  background: '#eee',
-                  width: placeholderProps.clientWidth,
-                  borderRadius: '3px',
-                }}
-              />
-            )}
-          </AsDomComponent>
-        </SortableContext>
-      )}
-    </Droppable>
+    <SortableContext items={childList} strategy={verticalListSortingStrategy}>
+      {childList
+        .filter(([id, child]) => id && child) // beware numbers!
+        .map(([childId, child], index) => (
+          <BlocksDnDItem id={childId.toString()} index={index} key={childId} />
+        ))}
+    </SortableContext>
   );
 };
 

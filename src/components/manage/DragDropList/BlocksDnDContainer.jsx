@@ -16,6 +16,7 @@ import {
 } from '@dnd-kit/sortable';
 
 const getPlaceholder = (draggedDOM, sourceIndex, destinationIndex) => {
+  console.log('getPlaceholder should never run');
   // Because of the margin rendering rules, there is no easy
   // way to calculate the offset of the placeholder.
   //
@@ -69,6 +70,7 @@ const BlocksDnDContainer = (props) => {
   const timer = useRef(null);
 
   const onDragStart = React.useCallback((event) => {
+    console.log('onDragStart should never run');
     clearTimeout(timer.current);
     const queryAttr = 'data-rbd-draggable-id';
     const domQuery = `[${queryAttr}='${event.draggableId}']`;
@@ -92,6 +94,7 @@ const BlocksDnDContainer = (props) => {
   );
 
   const onDragUpdate = React.useCallback((update) => {
+    console.log('onDragUpdate should never run');
     clearTimeout(timer.current);
     setPlaceholderProps({});
     if (!update.destination) {
@@ -123,24 +126,20 @@ const BlocksDnDContainer = (props) => {
       coordinateGetter: sortableKeyboardCoordinates,
     }),
   );
-  console.log(children);
   return (
     <DndContext
       sensors={sensors}
       collisionDetection={closestCenter}
       onDragEnd={onDragEnd}
     >
-      BlocksDnDContainer /*
-      <DragDropContext
+      BlocksDnDContainer
+      {/*  <DragDropContext
         onDragStart={onDragStart}
         onDragUpdate={onDragUpdate}
         onDragEnd={onDragEnd}
-      >
-        */
-        {children}
-        /*
-      </DragDropContext>
-      */
+      > */}
+      {children}
+      {/*  </DragDropContext> */}
     </DndContext>
   );
 };
