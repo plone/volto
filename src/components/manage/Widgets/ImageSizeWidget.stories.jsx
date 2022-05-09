@@ -1,15 +1,15 @@
 import React from 'react';
-import IdWidget from './IdWidget';
+import ImageSizeWidget from './ImageSizeWidget';
 import WidgetStory from './story';
 
 export const Text = WidgetStory.bind({
-  props: { id: 'text', title: 'Text' },
-  widget: IdWidget,
+  props: { id: 'image_size', title: 'Image Sizes' },
+  widget: ImageSizeWidget,
 });
 
 export default {
-  title: 'Widgets/Id',
-  component: IdWidget,
+  title: 'Widgets/Image Sizes',
+  component: ImageSizeWidget,
   decorators: [
     (Story) => (
       <div className="ui segment form attached" style={{ width: '400px' }}>
