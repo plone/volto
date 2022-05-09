@@ -12,6 +12,12 @@
 
 ### Documentation
 
+## 16.0.0-alpha.1 (2022-05-09)
+
+### Feature
+
+- Added new Block Style Wrapper. This implementation is marked as **experimental** during Volto 16 alpha period. The components, API and the styling are subject to change **without issuing a breaking change**. You can start using it in your projects and add-ons, but taking this into account. See documentation for more information. @sneridagh
+
 ## 16.0.0-alpha.0 (2022-05-06)
 
 ### Breaking
