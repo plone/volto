@@ -16,7 +16,7 @@
 
 ## 16.0.0-alpha.1 (2022-05-09)
 
-- Refactor image block: make it schema extensible @nileshgulia1
+- Refactor image block: make it schema extensible @nileshgulia1 @sneridagh
 
 ### Feature
 
