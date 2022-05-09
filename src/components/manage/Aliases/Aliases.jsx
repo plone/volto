@@ -111,6 +111,11 @@ class Aliases extends Component {
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.aliases.add.loading && nextProps.aliases.add.loaded) {
+      if (nextProps.aliases.add.error) {
+        this.setState({ isAliasAlready: true });
+      } else {
+        this.setState({ isAliasAlready: false });
+      }
       this.props.getAliases(getBaseUrl(this.props.pathname));
     }
     if (this.props.aliases.remove.loading && nextProps.aliases.remove.loaded) {
@@ -229,8 +234,8 @@ class Aliases extends Component {
                 {this.state.isAliasAlready && (
                   <p style={{ color: 'red' }}>
                     <FormattedMessage
-                      id="Alternative url already exists."
-                      defaultMessage="Alternative url already exists."
+                      id="The provided alternative url already exists!"
+                      defaultMessage="The provided alternative url already exists!"
                     />
                   </p>
                 )}
@@ -310,6 +315,6 @@ export default compose(
       pathname: props.location.pathname,
       title: state.content.data?.title || '',
     }),
-    { removeAliases, addAliases, getAliases },
+    { addAliases, getAliases, removeAliases },
   ),
 )(Aliases);

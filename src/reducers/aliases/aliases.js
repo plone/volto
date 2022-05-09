@@ -70,7 +70,7 @@ export default function aliases(state = initialState, action = {}) {
         [getRequestKey(action.type)]: {
           loading: false,
           loaded: true,
-          error: null,
+          error: action.result.failed,
         },
       };
     case `${GET_ALIASES}_FAIL`:

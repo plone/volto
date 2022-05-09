@@ -180,10 +180,6 @@ export const defaultRoutes = [
     component: Sharing,
   },
   {
-    path: '/aliases',
-    component: Aliases,
-  },
-  {
     path: '/**/add',
     component: Add,
   },
@@ -218,14 +214,6 @@ export const defaultRoutes = [
   {
     path: '/**/history',
     component: History,
-  },
-  {
-    path: '/**/sharing',
-    component: Sharing,
-  },
-  {
-    path: '/**/aliases',
-    component: Aliases,
   },
   {
     path: '/**/manage-translations',
