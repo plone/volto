@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { getParentUrl, Helmet } from '@plone/volto/helpers';
+import { getBaseUrl, getParentUrl, Helmet } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
 import {
   Container,
@@ -58,8 +58,9 @@ class Aliases extends Component {
    * @static
    */
   static propTypes = {
-    getAliases: PropTypes.func,
-    removeAliases: PropTypes.func,
+    addAliases: PropTypes.func.isRequired,
+    getAliases: PropTypes.func.isRequired,
+    removeAliases: PropTypes.func.isRequired,
   };
 
   /**
@@ -70,16 +71,7 @@ class Aliases extends Component {
    */
   constructor(props) {
     super(props);
-    this.handleSelectFilterType = this.handleSelectFilterType.bind(this);
-    this.handleCreateDate = this.handleCreateDate.bind(this);
-    this.handleSubmitAlias = this.handleSubmitAlias.bind(this);
-    this.handleCheckAlias = this.handleCheckAlias.bind(this);
-    this.handleRemoveAliases = this.handleRemoveAliases.bind(this);
-
     this.state = {
-      showEdit: false,
-      editId: null,
-      editText: null,
       isClient: false,
       filterType: filterChoices[0],
       createdBefore: null,
@@ -98,7 +90,7 @@ class Aliases extends Component {
    */
   componentDidMount() {
     this.setState({ isClient: true });
-    this.props.getAliases('');
+    this.props.getAliases(getBaseUrl(this.props.pathname));
   }
 
   /**
@@ -107,7 +99,6 @@ class Aliases extends Component {
    * @returns {undefined}
    */
   componentDidUpdate(prevProps, prevState) {
-    // console.log('stateupdated', this.state);
     if (prevState.altUrlPath !== this.state.altUrlPath) {
       if (this.state.altUrlPath.charAt(0) === '/') {
         this.setState({ isAltUrlCorrect: true });
@@ -147,18 +138,18 @@ class Aliases extends Component {
    * @method handleSelectFilterType
    * @returns {undefined}
    */
-  handleSelectFilterType(type) {
+  handleSelectFilterType = (type) => {
     this.setState({ filterType: type });
-  }
+  };
 
   /**
    * Select Creation date handler
    * @method handleCreateDate
    * @returns {undefined}
    */
-  handleCreateDate(date) {
+  handleCreateDate = (date) => {
     this.setState({ createdBefore: date });
-  }
+  };
 
   /**
    * Alternative url handler
@@ -183,7 +174,7 @@ class Aliases extends Component {
    * @method handleSubmitAlias
    * @returns {undefined}
    */
-  handleSubmitAlias() {
+  handleSubmitAlias = () => {
     if (this.state.isAltUrlCorrect && this.state.isTargetUrlCorrect) {
       // console.log('new alias', this.state.altUrlPath, this.state.targetUrlPath);
       // this.props.addAliases(getParentUrl(this.props.pathname), {
@@ -192,14 +183,14 @@ class Aliases extends Component {
       // this.setState({ newAlias: '' });
       this.setState({ altUrlPath: '', targetUrlPath: '' });
     }
-  }
+  };
 
   /**
    * Check to-remove aliases handler
    * @method handleSubmitAlias
    * @returns {undefined}
    */
-  handleCheckAlias(alias) {
+  handleCheckAlias = (alias) => {
     const aliases = this.state.aliasesToRemove;
     if (aliases.includes(alias)) {
       const index = aliases.indexOf(alias);
@@ -213,19 +204,19 @@ class Aliases extends Component {
         aliasesToRemove: [...this.state.aliasesToRemove, alias],
       });
     }
-  }
+  };
 
   /**
    * Remove aliases handler
    * @method handleRemoveAliases
    * @returns {undefined}
    */
-  handleRemoveAliases() {
+  handleRemoveAliases = () => {
     this.props.removeAliases('', {
       aliases: this.state.aliasesToRemove,
     });
     this.setState({ aliasesToRemove: [] });
-  }
+  };
 
   /**
    * Render method.
@@ -248,7 +239,12 @@ class Aliases extends Component {
               </Segment>
               <Form>
                 <Segment>
-                  <Header size="medium">Alternative url path (Required)</Header>
+                  <Header size="medium">
+                    <FormattedMessage
+                      id="Alternative url path (Required)"
+                      defaultMessage="Alternative url path (Required)"
+                    />
+                  </Header>
                   <p className="help">
                     <FormattedMessage
                       id="Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
@@ -265,11 +261,19 @@ class Aliases extends Component {
                     {!this.state.isAltUrlCorrect &&
                       this.state.altUrlPath !== '' && (
                         <p style={{ color: 'red' }}>
-                          Alternative url path must start with a slash.
+                          <FormattedMessage
+                            id="Alternative url path must start with a slash."
+                            defaultMessage="Alternative url path must start with a slash."
+                          />
                         </p>
                       )}
                   </Form.Field>
-                  <Header size="medium">Target Path (Required)</Header>
+                  <Header size="medium">
+                    <FormattedMessage
+                      id="Target Path (Required)"
+                      defaultMessage="Target Path (Required)"
+                    />
+                  </Header>
                   <p className="help">
                     <FormattedMessage
                       id="Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
@@ -288,7 +292,10 @@ class Aliases extends Component {
                     {!this.state.isTargetUrlCorrect &&
                       this.state.targetUrlPath !== '' && (
                         <p style={{ color: 'red' }}>
-                          Target url path must start with a slash.
+                          <FormattedMessage
+                            id="Target url path must start with a slash."
+                            defaultMessage="Target url path must start with a slash."
+                          />
                         </p>
                       )}
                   </Form.Field>
@@ -302,20 +309,33 @@ class Aliases extends Component {
                       this.state.targetUrlPath === ''
                     }
                   >
-                    Add
+                    <FormattedMessage id="Add" defaultMessage="Add" />
                   </Button>
                 </Segment>
               </Form>
               <Form>
                 <Segment className="primary">
                   <Header size="medium">
-                    All existing alternative urls for this site
+                    <FormattedMessage
+                      id="All existing alternative urls for this site"
+                      defaultMessage="All existing alternative urls for this site"
+                    />
                   </Header>
-                  <Header size="small">Filter by prefix</Header>
+                  <Header size="small">
+                    <FormattedMessage
+                      id="Filter by prefix"
+                      defaultMessage="Filter by prefix"
+                    />
+                  </Header>
                   <Form.Field>
                     <Input name="filter" placeholder="/example" />
                   </Form.Field>
-                  <Header size="small">Manually or automatically added?</Header>
+                  <Header size="small">
+                    <FormattedMessage
+                      id="Manually or automatically added?"
+                      defaultMessage="Manually or automatically added?"
+                    />
+                  </Header>
                   {filterChoices.map((o, i) => (
                     <Form.Field key={i}>
                       <Radio
@@ -347,27 +367,30 @@ class Aliases extends Component {
                     Filter
                   </Button>
                   <Header size="small">
-                    Alternative url path → target url path (date and time of
-                    creation, manually created yes/no)
+                    <FormattedMessage
+                      id="Alternative url path → target url path (date and time of creation, manually created yes/no)"
+                      defaultMessage="Alternative url path → target url path (date and time of creation, manually created yes/no)"
+                    />
                   </Header>
-                  {this.props.aliases &&
-                    this.props.aliases.length > 0 &&
-                    this.props.aliases.map((alias, i) => (
-                      <Form.Field key={i}>
-                        <Checkbox
-                          onChange={(e, { value }) =>
-                            this.handleCheckAlias(value)
-                          }
-                          value={alias.path}
-                          label={`${alias.path} → ${alias['redirect-to']} (${alias.datetime}, ${alias.manual})`}
-                          checked={this.state.aliasesToRemove.includes(
-                            alias.path,
-                          )}
-                        />
-                      </Form.Field>
-                    ))}
+                  {this.props.aliases?.items?.map((alias, i) => (
+                    <Form.Field key={i}>
+                      <Checkbox
+                        onChange={(e, { value }) =>
+                          this.handleCheckAlias(value)
+                        }
+                        value={alias.path}
+                        label={`${alias.path} → ${alias['redirect-to']} (${alias.datetime}, ${alias.manual})`}
+                        checked={this.state.aliasesToRemove.includes(
+                          alias.path,
+                        )}
+                      />
+                    </Form.Field>
+                  ))}
                   <Button onClick={this.handleRemoveAliases} primary>
-                    Remove selected
+                    <FormattedMessage
+                      id="Remove selected"
+                      defaultMessage="Remove selected"
+                    />
                   </Button>
                 </Segment>
               </Form>
@@ -401,7 +424,7 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
-      aliases: state.aliases.data,
+      aliases: state.aliases,
       pathname: props.location.pathname,
     }),
     { addAliases, getAliases, removeAliases },
