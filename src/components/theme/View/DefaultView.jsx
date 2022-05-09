@@ -5,25 +5,11 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { defineMessages, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 
 import { Container, Image } from 'semantic-ui-react';
-import { map } from 'lodash';
-import config from '@plone/volto/registry';
-
-import {
-  getBlocksFieldname,
-  getBlocksLayoutFieldname,
-  hasBlocksData,
-  getBaseUrl,
-} from '@plone/volto/helpers';
-
-const messages = defineMessages({
-  unknownBlock: {
-    id: 'Unknown Block',
-    defaultMessage: 'Unknown Block {block}',
-  },
-});
+import { hasBlocksData, getBaseUrl } from '@plone/volto/helpers';
+import RenderBlocks from './RenderBlocks';
 
 /**
  * Component to display the default view.
@@ -31,33 +17,13 @@ const messages = defineMessages({
  * @param {Object} content Content object.
  * @returns {string} Markup of the component.
  */
-const DefaultView = ({ content, intl, location }) => {
-  const blocksFieldname = getBlocksFieldname(content);
-  const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
+const DefaultView = (props) => {
+  const { content, location } = props;
+  const path = getBaseUrl(location?.pathname || '');
 
   return hasBlocksData(content) ? (
     <div id="page-document" className="ui container">
-      {map(content[blocksLayoutFieldname].items, (block) => {
-        const Block =
-          config.blocks.blocksConfig[
-            content[blocksFieldname]?.[block]?.['@type']
-          ]?.['view'] || null;
-        return Block !== null ? (
-          <Block
-            key={block}
-            id={block}
-            properties={content}
-            data={content[blocksFieldname][block]}
-            path={getBaseUrl(location?.pathname || '')}
-          />
-        ) : (
-          <div key={block}>
-            {intl.formatMessage(messages.unknownBlock, {
-              block: content[blocksFieldname]?.[block]?.['@type'],
-            })}
-          </div>
-        );
-      })}
+      <RenderBlocks {...props} path={path} />
     </div>
   ) : (
     <Container id="page-document">

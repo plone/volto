@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "15.8.0",
+  "version": "16.0.0-alpha.1",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -417,7 +417,7 @@
     "ua-parser-js": "0.7.28"
   },
   "volta": {
-    "node": "16.13.2",
-    "yarn": "1.22.17"
+    "node": "16.15.0",
+    "yarn": "1.22.18"
   }
 }

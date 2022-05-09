@@ -1,6 +1,26 @@
 # Change Log
 
-## 15.8.1 (unreleased)
+## 16.0.0 (unreleased)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
+### Documentation
+
+- fix make task `docs-linkcheckbroken` if grep has exit code 1 (no lines found)
+
+## 16.0.0-alpha.1 (2022-05-09)
+
+### Feature
+
+- Added new Block Style Wrapper. This implementation is marked as **experimental** during Volto 16 alpha period. The components, API and the styling are subject to change **without issuing a breaking change**. You can start using it in your projects and add-ons, but taking this into account. See documentation for more information. @sneridagh
+
+## 16.0.0-alpha.0 (2022-05-06)
 
 ### Breaking
 
@@ -9,7 +29,18 @@
 
 ### Feature
 
+- added default placeholder for videos to embed them more lightly @giuliaghisini
+
 ### Bugfix
+
+- Fix Search page visit crashes /contents view @dobri1408
+- Fix sidebar full size bottom opacity on edit page when sidebar is collapsed @ichim-david
+- Fix toolbar bottom opacity on edit page when toolbar is collapsed @ichim-david
+- Fix content view regression, height issue @danielamormocea
+- Fixed secure cookie option. @giuliaghisini
+- Changed addon order in addon controlpanel to mimic Classic UI @erral
+- Fixed error when loading content in a language for which a Volto translation is not available. @davisagli
+- Fix for clipped dropdown menus when the table has few or no records in Contents view @mihaislobozeanu
 
 ### Internal
 
@@ -21,6 +52,8 @@
 
 - Move Cypress documentation from `README.md` to the docs. Improve the docs with the new `Makefile` commands.
 - Improve English grammar and syntax in backend docs. @stevepiercy
+- Fix JSX syntax highlighting. Remove duplicate heading. @stevepiercy
+- Proper case HAProxy, nginx, and Docker Compose. @stevepiercy
 
 ## 15.8.0 (2022-04-30)
 
@@ -245,6 +278,7 @@
 - Overwrite current block on insert new block. @robgietema
 - Fix hot reload on updates related to the config object because of `VersionOverview` component @sneridagh
 - Fix error when lock data is gone after an invariant error. @robgietema
+- Protect against ghost content loading and scroll to top @reebalazs
 
 ### Internal
 

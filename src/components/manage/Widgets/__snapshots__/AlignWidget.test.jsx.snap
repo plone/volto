@@ -28,8 +28,92 @@ exports[`renders an align widget component 1`] = `
         className="eight wide column"
       >
         <div
-          className="ui grid"
+          className="align-buttons"
         >
+          <div
+            className="ui buttons"
+          >
+            <button
+              aria-label="Left"
+              className="ui basic icon button"
+              onClick={[Function]}
+            >
+              <svg
+                className="icon"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
+                }
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "24px",
+                    "width": "auto",
+                  }
+                }
+                viewBox=""
+                xmlns=""
+              />
+            </button>
+          </div>
+          <div
+            className="ui buttons"
+          >
+            <button
+              aria-label="Right"
+              className="ui basic icon button"
+              onClick={[Function]}
+            >
+              <svg
+                className="icon"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
+                }
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "24px",
+                    "width": "auto",
+                  }
+                }
+                viewBox=""
+                xmlns=""
+              />
+            </button>
+          </div>
+          <div
+            className="ui buttons"
+          >
+            <button
+              aria-label="Center"
+              className="ui active basic icon button"
+              onClick={[Function]}
+            >
+              <svg
+                className="icon"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
+                }
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "24px",
+                    "width": "auto",
+                  }
+                }
+                viewBox=""
+                xmlns=""
+              />
+            </button>
+          </div>
           <div
             className="row"
           >
