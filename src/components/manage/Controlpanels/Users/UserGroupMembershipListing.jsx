@@ -76,6 +76,22 @@ const ListingTemplate = ({ query_user, query_group, groups_filter }) => {
       });
   };
 
+  const onSelectAllHandler = (mtxoption, checked) => {
+    let elements = document.querySelectorAll(`div.checkbox_${mtxoption} input`);
+    let identifier;
+    elements.forEach((element) => {
+      element.checked = checked;
+      identifier = element.name.split('_-_');
+      dispatch(
+        updateGroup(identifier[2], {
+          users: {
+            [identifier[1]]: checked ? true : false,
+          },
+        }),
+      );
+    });
+  };
+
   return (
     <div className="administration_matrix">
       <div className="label-options">
@@ -92,9 +108,34 @@ const ListingTemplate = ({ query_user, query_group, groups_filter }) => {
       </div>
 
       <div className="items">
-        <div>
-          {items.length > 0 ? (
-            items.map((item) => (
+        {items.length > 0 ? (
+          <>
+            <div className="listing-row selectall" key="selectall">
+              <div className="listing-item">
+                <div />
+                <div className="matrix_options">
+                  {matrix_options?.map((matrix_option) => (
+                    <div
+                      title={
+                        intl.formatMessage(messages.addUsersToGroup) +
+                        ` ${matrix_option.label}`
+                      }
+                    >
+                      <Checkbox
+                        name={`member_selectall_${matrix_option.value}`}
+                        key={matrix_option.value}
+                        title={matrix_option.label}
+                        defaultChecked={false}
+                        onChange={(event, { checked }) => {
+                          onSelectAllHandler(matrix_option.value, checked);
+                        }}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            {items.map((item) => (
               <div className="listing-row" key={item.id}>
                 <div className="listing-item" key={item['@id']}>
                   <div>
@@ -105,7 +146,8 @@ const ListingTemplate = ({ query_user, query_group, groups_filter }) => {
                   <div className="matrix_options">
                     {matrix_options?.map((matrix_option) => (
                       <Checkbox
-                        name={`field-channel_${item['UID']}_${matrix_option.value}`}
+                        name={`member_-_${item.id}_-_${matrix_option.value}`}
+                        className={`checkbox_${matrix_option.value}`}
                         key={matrix_option.value}
                         title={matrix_option.title}
                         defaultChecked={item.groups?.items?.includes(
@@ -123,11 +165,11 @@ const ListingTemplate = ({ query_user, query_group, groups_filter }) => {
                   </div>
                 </div>
               </div>
-            ))
-          ) : (
-            <div>{intl.formatMessage(messages.nouserfound)}</div>
-          )}
-        </div>
+            ))}
+          </>
+        ) : (
+          <div>{intl.formatMessage(messages.nouserfound)}</div>
+        )}
       </div>
     </div>
   );

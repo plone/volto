@@ -178,6 +178,10 @@ export const messages = defineMessages({
     id: 'No user found',
     defaultMessage: 'No user found',
   },
+  addUsersToGroup: {
+    id: 'Add or remove all shown users to group',
+    defaultMessage: 'Add or remove all shown users to group',
+  },
   groups: {
     id: 'Groups',
     defaultMessage: 'Groups',
