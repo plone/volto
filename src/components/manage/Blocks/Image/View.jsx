@@ -7,7 +7,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { UniversalLink } from '@plone/volto/components';
 import cx from 'classnames';
-import { isEmpty } from 'lodash';
 import { withBlockExtensions } from '@plone/volto/helpers';
 import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
 
@@ -17,7 +16,7 @@ import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
  * @extends Component
  */
 export const View = ({ data, detached }) => {
-  const href = data?.href && !isEmpty(data.href) ? data.href[0]['@id'] : '';
+  const href = data?.href?.[0]?.['@id'] || '';
   return (
     <p
       className={cx(

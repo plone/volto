@@ -15,21 +15,9 @@ const store = mockStore({
   },
 });
 
-jest.mock('../../../../helpers/Extensions/withBlockExtensions', () => {
-  const originalModule = jest.requireActual(
-    '../../../../helpers/Extensions/withBlockExtensions',
-  );
-  return {
-    __esModule: true,
-    ...originalModule,
-  };
-});
-
 describe('Image View Component', () => {
   test('renders a view image component with a local image', () => {
-    const { getByRole } = render(
-      <View data={{ url: '/image.jpg' }} extensions={{}} variation={{}} />,
-    );
+    const { getByRole } = render(<View data={{ url: '/image.jpg' }} />);
     const img = getByRole('img');
     expect(img).toHaveAttribute('src', '/image.jpg/@@images/image');
     expect(img).toHaveAttribute('loading', 'lazy');

@@ -1,7 +1,5 @@
 import { defineMessages } from 'react-intl';
 
-import { isEmpty } from 'lodash';
-
 const messages = defineMessages({
   Source: {
     id: 'Source',
@@ -11,10 +9,6 @@ const messages = defineMessages({
     id: 'Image',
     defaultMessage: 'Image',
   },
-  Origin: {
-    id: 'Origin',
-    defaultMessage: 'Origin',
-  },
   AltText: {
     id: 'Alt text',
     defaultMessage: 'Alt text',
@@ -22,10 +16,6 @@ const messages = defineMessages({
   Align: {
     id: 'Alignment',
     defaultMessage: 'Alignment',
-  },
-  title: {
-    id: 'Title',
-    defaultMessage: 'Title',
   },
   size: {
     id: 'Image size',
@@ -38,14 +28,6 @@ const messages = defineMessages({
   openLinkInNewTab: {
     id: 'Open in a new tab',
     defaultMessage: 'Open in a new tab',
-  },
-  NoImageSelected: {
-    id: 'No image selected',
-    defaultMessage: 'No image selected',
-  },
-  externalURL: {
-    id: 'External URL',
-    defaultMessage: 'External URL',
   },
   AltTextHint: {
     id: 'Alt text hint',
@@ -64,14 +46,9 @@ export function ImageSchema({ formData, intl }) {
       {
         id: 'default',
         title: 'Default',
-        fields: [
-          'source',
-          ...(!isEmpty(formData.source) || formData.url
-            ? ['alt', 'align', 'size']
-            : []),
-        ],
+        fields: [...(formData.url ? ['url', 'alt', 'align', 'size'] : [])],
       },
-      ...(!isEmpty(formData.source) || formData.url
+      ...(formData.url
         ? [
             {
               id: 'link_settings',
@@ -82,15 +59,9 @@ export function ImageSchema({ formData, intl }) {
         : []),
     ],
     properties: {
-      source: {
+      url: {
         title: intl.formatMessage(messages.Source),
-        widget: 'object_browser',
-        mode: 'image',
-        legacy: true,
-        allowExternals: true,
-      },
-      title: {
-        title: intl.formatMessage(messages.title),
+        widget: 'url',
       },
       alt: {
         title: intl.formatMessage(messages.AltText),
