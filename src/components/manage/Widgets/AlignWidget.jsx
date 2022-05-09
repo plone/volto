@@ -16,7 +16,7 @@ import AlignBlock from '@plone/volto/components/manage/Sidebar/AlignBlock';
  * ```
  */
 const AlignWidget = (props) => {
-  const { id, onChange, value, showFloat, showWideAlign } = props;
+  const { id, onChange, value, actions } = props;
   return (
     <FormFieldWrapper {...props} className="align-widget">
       <AlignBlock
@@ -24,8 +24,7 @@ const AlignWidget = (props) => {
         onChangeBlock={(block, { align }) => onChange(id, align)}
         data={{ align: value }}
         block={id}
-        showFloat={showFloat}
-        showWideAlign={showWideAlign}
+        actions={actions}
       />
     </FormFieldWrapper>
   );

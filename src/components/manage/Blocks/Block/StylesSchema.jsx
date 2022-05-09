@@ -32,15 +32,15 @@ export const defaultStyleSchema = ({ schema, formData, intl }) => {
       {
         id: 'default',
         title: 'Default',
-        fields: ['align', 'backgroundColor'],
+        // fields: ['align', 'backgroundColor'],
+        fields: ['align'],
       },
     ],
     properties: {
       align: {
         widget: 'align',
         title: intl.formatMessage(messages.align),
-        showFloat: false,
-        showWideAlign: true,
+        actions: ['center', 'wide', 'full'],
       },
       backgroundColor: {
         widget: 'color_picker',

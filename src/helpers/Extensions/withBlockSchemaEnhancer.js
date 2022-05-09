@@ -265,9 +265,9 @@ export const withStylingSchemaEnhancer = (FormComponent) => (props) => {
   const { blocks } = config;
 
   const blockType = formData['@type'];
-  const stylesEnabled = blocks?.blocksConfig[blockType]?.stylesEnabled;
+  const enableStyling = blocks?.blocksConfig[blockType]?.enableStyling;
 
-  if (stylesEnabled) {
+  if (enableStyling) {
     const stylesSchema =
       blocks?.blocksConfig[blockType]?.stylesSchema || defaultStyleSchema;
 
