@@ -6,6 +6,8 @@
 
 ### Feature
 
+User group membership management @ksuess
+
 ### Bugfix
 
 ### Internal
