@@ -176,11 +176,14 @@ class Aliases extends Component {
    */
   handleSubmitAlias = () => {
     if (this.state.isAltUrlCorrect && this.state.isTargetUrlCorrect) {
-      // console.log('new alias', this.state.altUrlPath, this.state.targetUrlPath);
-      // this.props.addAliases(getParentUrl(this.props.pathname), {
-      //   aliases: this.state.newAlias,
-      // });
-      // this.setState({ newAlias: '' });
+      this.props.addAliases({
+        items: [
+          {
+            path: this.state.altUrlPath,
+            'redirect-to': this.state.targetUrlPath,
+          },
+        ],
+      });
       this.setState({ altUrlPath: '', targetUrlPath: '' });
     }
   };
