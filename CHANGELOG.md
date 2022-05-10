@@ -1,8 +1,6 @@
 # Change Log
 
-## 15.8.1 (unreleased)
-
-### Breaking
+## 15.9.0 (2022-05-06)
 
 - Deprecate NodeJS 12 since it's out of LTS since April 30, 2022 @sneridagh
 - Move all cypress actions to the main `Makefile`, providing better meaningful names. Remove them from `package.json` script section. @sneridagh
@@ -24,6 +22,13 @@
 - Added Cypress environment variables for adjusting the backend URL of commands @JeffersonBledsoe #3271
 
 ### Documentation
+- added default placeholder for videos to embed them more lightly. @giuliaghisini
+
+## 15.8.1 (2022-05-04)
+
+### Bugfix
+
+- Fixed secure cookie option. @giuliaghisini
 
 - Move Cypress documentation from `README.md` to the docs. Improve the docs with the new `Makefile` commands.
 - Improve English grammar and syntax in backend docs. @stevepiercy
