@@ -11,6 +11,7 @@ import apierror from '@plone/volto/reducers/apierror/apierror';
 import breadcrumbs from '@plone/volto/reducers/breadcrumbs/breadcrumbs';
 import browserdetect from '@plone/volto/reducers/browserdetect/browserdetect';
 import comments from '@plone/volto/reducers/comments/comments';
+import configurationregistry from '@plone/volto/reducers/configurationregistry/configurationregistry';
 import content from '@plone/volto/reducers/content/content';
 import controlpanels from '@plone/volto/reducers/controlpanels/controlpanels';
 import clipboard from '@plone/volto/reducers/clipboard/clipboard';
@@ -58,6 +59,7 @@ const reducers = {
   breadcrumbs,
   browserdetect,
   comments,
+  configurationregistry,
   content,
   controlpanels,
   clipboard,

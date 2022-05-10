@@ -25,6 +25,7 @@ export {
   listMoreComments,
   updateComment,
 } from '@plone/volto/actions/comments/comments';
+export { getRegistry } from '@plone/volto/actions/configurationregistry/configurationregistry';
 export {
   createContent,
   deleteContent,
