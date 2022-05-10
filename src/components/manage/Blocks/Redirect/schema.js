@@ -28,7 +28,7 @@ export const redirectBlockSchema = (props) => {
         title: intl.formatMessage(messages.remoteUrl),
         widget: 'object_browser',
         mode: 'link',
-        llowExternals: true,
+        allowExternals: true,
       },
     },
     required: [],
