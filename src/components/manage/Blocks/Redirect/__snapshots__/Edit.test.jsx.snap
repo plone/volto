@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders an edit redirect block component 1`] = `
+<div
+  className="ui container"
+>
+  <p>
+    The link address is:
+     
+    <a
+      className={null}
+      href="https://www.google.com/"
+      rel="noopener noreferrer"
+      target="_blank"
+      title={null}
+    >
+      https://www.google.com/
+    </a>
+  </p>
+</div>
+`;

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withBlockExtensions } from '@plone/volto/helpers';
 import { Container } from 'semantic-ui-react';
 import { UniversalLink } from '@plone/volto/components';
 import { FormattedMessage } from 'react-intl';
@@ -33,8 +32,6 @@ const View = (props) => {
 
 View.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
-  properties: PropTypes.objectOf(PropTypes.any).isRequired,
-  block: PropTypes.string,
 };
 
-export default withBlockExtensions(View);
+export default View;

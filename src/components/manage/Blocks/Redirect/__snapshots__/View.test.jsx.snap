@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a redirect block component for an anonymous user 1`] = `null`;
+
+exports[`renders a redirect block component for an authenticated user 1`] = `
+<div
+  className="ui container"
+>
+  <p>
+    The link address is:
+     
+    <a
+      className={null}
+      href="https://www.google.com"
+      rel="noopener noreferrer"
+      target="_blank"
+      title={null}
+    >
+      https://www.google.com
+    </a>
+  </p>
+</div>
+`;
