@@ -29,7 +29,8 @@
 
 ### Feature
 
-- added default placeholder for videos to embed them more lightly @giuliaghisini
+- Added default placeholder for videos to embed them more lightly @giuliaghisini
+- Completed Romanian translation @sboghy
 
 ### Bugfix
 
