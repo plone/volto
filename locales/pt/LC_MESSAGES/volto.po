@@ -453,7 +453,7 @@ msgid "Collection"
 msgstr ""
 
 #: components/manage/Blocks/Block/StylesSchema
-#: components/manage/Widgets/ColorPicker
+#: components/manage/Widgets/ColorPickerWidget
 # defaultMessage: Color
 msgid "Color"
 msgstr ""
@@ -905,7 +905,6 @@ msgid "Enter an email address. This will be your login name. We respect your pri
 msgstr "Escreva um endereço de email. Este será o seu nome de sessão. Respeitamos a sua privacidade e nunca iremos ceder o seu endereço a terceiros ou expô-lo onde quer que seja."
 
 #: components/manage/Preferences/PersonalInformation
-#: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 # defaultMessage: Enter full name, e.g. John Smith.
 msgid "Enter full name, e.g. John Smith."
@@ -922,15 +921,20 @@ msgid "Enter your current password."
 msgstr "Escreva a senha actual."
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your email address for verification.
-msgid "Enter your email address for verification."
-msgstr "Escreva o seu endereço de email para verificação."
+# defaultMessage: Enter your email for verification.
+msgid "Enter your email for verification."
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your new password. Minimum 5 characters.
 msgid "Enter your new password. Minimum 5 characters."
 msgstr "Escreva uma senha nova. Mínimo de 5 caracteres."
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Enter your username for verification.
+msgid "Enter your username for verification."
+msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1082,7 +1086,6 @@ msgid "Full"
 msgstr "Cheio"
 
 #: components/manage/Preferences/PersonalInformation
-#: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 # defaultMessage: Full Name
 msgid "Full Name"
@@ -1595,9 +1598,14 @@ msgid "Multiple choices?"
 msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: My email address is
-msgid "My email address is"
-msgstr "O meu endereço de email é"
+# defaultMessage: My email is
+msgid "My email is"
+msgstr ""
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: My username is
+msgid "My username is"
+msgstr "Meu nome de usuário é"
 
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
@@ -3110,7 +3118,7 @@ msgstr ""
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your email is required for reset your password.
 msgid "Your email is required for reset your password."
-msgstr "O seu email é necessário para reiniciar a sua senha."
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 # defaultMessage: Your location - either city and country - or in a company setting, where your office is located.
@@ -3126,6 +3134,11 @@ msgstr "A sua senha foi definida com sucesso. Pode agora {link} com a sua nova s
 # defaultMessage: Your preferred language
 msgid "Your preferred language"
 msgstr "O seu idioma preferido"
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Your username is required for reset your password.
+msgid "Your usernaame is required for reset your password."
+msgstr ""
 
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -3249,9 +3262,14 @@ msgid "intranet"
 msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: My email address is
-msgid "label_my_email_address_is"
-msgstr "etiqueta_meu_email_é"
+# defaultMessage: My email is
+msgid "label_my_email_is"
+msgstr ""
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: My username is
+msgid "label_my_username_is"
+msgstr "Meu nome de usuário é"
 
 #: config/Blocks
 # defaultMessage: Lead Image Field
@@ -3311,6 +3329,7 @@ msgstr "maisUsado"
 
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+#: components/theme/Widgets/BooleanWidget
 # defaultMessage: No
 msgid "no"
 msgstr ""
@@ -3588,6 +3607,7 @@ msgstr ""
 
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+#: components/theme/Widgets/BooleanWidget
 # defaultMessage: Yes
 msgid "yes"
 msgstr ""
