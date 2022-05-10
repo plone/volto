@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add action getRegistry to get configuration registry record. @ksuess
+
 ### Bugfix
 
 ### Internal
