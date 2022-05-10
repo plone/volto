@@ -178,6 +178,7 @@ msgstr "Einstellungen Add-ons"
 msgid "Additional date"
 msgstr "Zusätzliches Datum"
 
+#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
@@ -262,6 +263,11 @@ msgstr "Verfügbar"
 # defaultMessage: Back
 msgid "Back"
 msgstr "Zurück"
+
+#: components/manage/Blocks/Block/StylesSchema
+# defaultMessage: Background color
+msgid "Background color"
+msgstr ""
 
 #: components/manage/Diff/Diff
 # defaultMessage: Base
@@ -452,6 +458,12 @@ msgstr "Element einklappen"
 # defaultMessage: Collection
 msgid "Collection"
 msgstr "Kollektion"
+
+#: components/manage/Blocks/Block/StylesSchema
+#: components/manage/Widgets/ColorPicker
+# defaultMessage: Color
+msgid "Color"
+msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
 #: components/theme/Comments/CommentEditModal
@@ -900,7 +912,6 @@ msgid "Enter an email address. This will be your login name. We respect your pri
 msgstr "Tragen Sie Ihre E-Mail-Adresse ein, mit der Sie sich künftig anmelden müssen. Wir respektieren den Datenschutz und werden die E-Mail-Adresse nicht an Dritte weitergeben und auch nirgends anzeigen."
 
 #: components/manage/Preferences/PersonalInformation
-#: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 # defaultMessage: Enter full name, e.g. John Smith.
 msgid "Enter full name, e.g. John Smith."
@@ -915,6 +926,11 @@ msgstr "Karten-Einbettungscode eingeben"
 # defaultMessage: Enter your current password.
 msgid "Enter your current password."
 msgstr "Geben Sie Ihr aktuelles Passwort ein."
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Enter your email for verification.
+msgid "Enter your email for verification."
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
@@ -1077,7 +1093,6 @@ msgid "Full"
 msgstr "Volle Breite"
 
 #: components/manage/Preferences/PersonalInformation
-#: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 # defaultMessage: Full Name
 msgid "Full Name"
@@ -1590,6 +1605,11 @@ msgid "Multiple choices?"
 msgstr "Mehrfachauswahl"
 
 #: components/theme/PasswordReset/PasswordReset
+# defaultMessage: My email is
+msgid "My email is"
+msgstr ""
+
+#: components/theme/PasswordReset/PasswordReset
 # defaultMessage: My username is
 msgid "My username is"
 msgstr "Mein Benutzername ist"
@@ -1847,7 +1867,7 @@ msgstr "Persönliche Einstellungen"
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Eine Liste von Personen, die an der Erstellung dieses Artikels beteiligt waren. Bitte geben Sie einen Benutzernamen pro Zeile ein. Der Hauptverantwortliche sollte zuerst genannt werden."
 
-#: components/manage/Blocks/Video/Edit
+#: components/manage/Blocks/Video/Body
 # defaultMessage: Please enter a valid URL by deleting the block and adding a new video block.
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
 msgstr "Geben Sie eine gültige URL "
@@ -2502,6 +2522,11 @@ msgstr "Text"
 msgid "Stripe alternate rows with color"
 msgstr "Zeilen abwechselnd einfärben"
 
+#: helpers/Extensions/withBlockSchemaEnhancer
+# defaultMessage: Styling
+msgid "Styling"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Subject
 msgid "Subject"
@@ -2808,7 +2833,6 @@ msgid "Uninstall"
 msgstr "Deinstallieren"
 
 #: components/manage/Blocks/Block/Edit
-#: components/theme/View/DefaultView
 #: components/theme/View/RenderBlocks
 # defaultMessage: Unknown Block {block}
 msgid "Unknown Block"
@@ -3038,6 +3062,11 @@ msgstr "Wenn dieses Datum erreicht wird, wird der Inhalt nicht länger in Auflis
 msgid "Who"
 msgstr "Wer"
 
+#: components/manage/Sidebar/AlignBlock
+# defaultMessage: Wide
+msgid "Wide"
+msgstr ""
+
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Updating workflow states...
 msgid "Workflow Change Loading Message"
@@ -3093,6 +3122,11 @@ msgstr "Sie können die Historie des Inhalts unten einsehen."
 # defaultMessage: You can't paste this content here
 msgid "You can't paste this content here"
 msgstr "Sie können diese(s) Objekt(e) hier nicht einfügen"
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Your email is required for reset your password.
+msgid "Your email is required for reset your password."
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 # defaultMessage: Your location - either city and country - or in a company setting, where your office is located.
@@ -3234,6 +3268,11 @@ msgstr "Ganzzahl"
 # defaultMessage: Intranet
 msgid "intranet"
 msgstr "Intranet"
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: My email is
+msgid "label_my_email_is"
+msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: My username is

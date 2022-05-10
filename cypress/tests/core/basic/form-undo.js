@@ -24,6 +24,9 @@ describe('Form Undo/Redo', () => {
     cy.waitForResourceToLoad('@types');
     cy.waitForResourceToLoad('my-page');
     cy.navigate('/my-page/edit');
+
+    // // Waiting for the lazy loading draftJS to happen
+    cy.get('.block.inner.text .public-DraftEditor-content').should('exist');
   });
 
   it('Undo/Redo form', () => {
