@@ -6,6 +6,8 @@
 
 ### Feature
 
+- added configurable identifier field for password reset in config.js. @giuliaghisini
+
 ### Bugfix
 
 - Fix missing criteria in QueryWidget. @giuliaghisini
