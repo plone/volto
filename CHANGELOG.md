@@ -1,8 +1,6 @@
 # Change Log
 
-## 15.9.1 (unreleased)
-
-### Breaking
+## 15.10.0 (2022-05-11)
 
 ### Feature
 
@@ -11,10 +9,6 @@
 ### Bugfix
 
 - Fix missing criteria in QueryWidget. @giuliaghisini
-
-### Internal
-
-### Documentation
 
 ## 15.9.0 (2022-05-06)
 
