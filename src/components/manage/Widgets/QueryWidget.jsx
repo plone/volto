@@ -300,6 +300,9 @@ export class QuerystringWidgetComponent extends Component {
                                 (field) => ({
                                   label: field[1].title,
                                   value: field[0],
+                                  isDisabled: (value || []).some(
+                                    (v) => v['i'] === field[0],
+                                  ),
                                 }),
                               ),
                             }),
@@ -428,6 +431,9 @@ export class QuerystringWidgetComponent extends Component {
                           (field) => ({
                             label: field[1].title,
                             value: field[0],
+                            isDisabled: (value || []).some(
+                              (v) => v['i'] === field[0],
+                            ),
                           }),
                         ),
                       }),

@@ -10,6 +10,7 @@
 ### Feature
 
 - added default placeholder for videos to embed them more lightly @giuliaghisini
+- Disable already chosen criteria in querystring widget @kreafox
 
 ### Bugfix
 

@@ -149,6 +149,8 @@ export const customSelectStyles = {
       ? '#007bc1'
       : state.isFocused
       ? '#4a4a4a'
+      : state.isDisabled
+      ? '#b5b5b5'
       : 'inherit',
     ':active': {
       backgroundColor: null,
