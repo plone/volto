@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix missing criteria in QueryWidget. @giuliaghisini
+
 ### Internal
 
 ### Documentation
