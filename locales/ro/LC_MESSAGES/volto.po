@@ -897,7 +897,6 @@ msgid "Enter an email address. This will be your login name. We respect your pri
 msgstr "Introduceți o adresă de e-mail. Acesta va fi numele dvs. de autentificare. Respectăm confidențialitatea dvs. și nu vom oferi adresa niciunui terț și nu o vom expune nicăieri."
 
 #: components/manage/Preferences/PersonalInformation
-#: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 # defaultMessage: Enter full name, e.g. John Smith.
 msgid "Enter full name, e.g. John Smith."
@@ -914,15 +913,20 @@ msgid "Enter your current password."
 msgstr "Introduceți parola curentă."
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your email address for verification.
-msgid "Enter your email address for verification."
-msgstr "Introduceți adresa dvs. de e-mail pentru verificare."
+# defaultMessage: Enter your email for verification.
+msgid "Enter your email for verification."
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your new password. Minimum 5 characters.
 msgid "Enter your new password. Minimum 5 characters."
 msgstr "Introduceți noua parolă. Minim 5 caractere."
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Enter your username for verification.
+msgid "Enter your username for verification."
+msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1074,7 +1078,6 @@ msgid "Full"
 msgstr "Complet"
 
 #: components/manage/Preferences/PersonalInformation
-#: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 # defaultMessage: Full Name
 msgid "Full Name"
@@ -1587,9 +1590,14 @@ msgid "Multiple choices?"
 msgstr "Alegeri multiple?"
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: My email address is
-msgid "My email address is"
-msgstr "Adresa mea de e-mail este"
+# defaultMessage: My email is
+msgid "My email is"
+msgstr ""
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: My username is
+msgid "My username is"
+msgstr "Numele meu de utilizator este"
 
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
@@ -3103,7 +3111,7 @@ msgstr "Nu puteți lipi acest conținut aici"
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your email is required for reset your password.
 msgid "Your email is required for reset your password."
-msgstr "E-mailul dvs. este necesar pentru resetarea parolei."
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 # defaultMessage: Your location - either city and country - or in a company setting, where your office is located.
@@ -3119,6 +3127,11 @@ msgstr "Parola dvs. a fost setată cu succes. Acum puteți {link} cu noua dvs. p
 # defaultMessage: Your preferred language
 msgid "Your preferred language"
 msgstr "Limba dvs. preferată"
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Your username is required for reset your password.
+msgid "Your usernaame is required for reset your password."
+msgstr ""
 
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -3242,9 +3255,14 @@ msgid "intranet"
 msgstr "intranet"
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: My email address is
-msgid "label_my_email_address_is"
-msgstr "Adresa e-mail"
+# defaultMessage: My email is
+msgid "label_my_email_is"
+msgstr ""
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: My username is
+msgid "label_my_username_is"
+msgstr "Numele meu de utilizator este"
 
 #: config/Blocks
 # defaultMessage: Lead Image Field

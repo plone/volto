@@ -6,6 +6,7 @@
 
 ### Feature
 
+- added configurable identifier field for password reset in config.js. @giuliaghisini
 - Add action getRegistry to get configuration registry record. @ksuess
 
 ### Bugfix
@@ -39,6 +40,7 @@
 - Fix Search page visit crashes /contents view @dobri1408
 - Fix sidebar full size bottom opacity on edit page when sidebar is collapsed @ichim-david
 - Fix toolbar bottom opacity on edit page when toolbar is collapsed @ichim-david
+- Fix missing criteria in QueryWidget. @giuliaghisini
 - Fix content view regression, height issue @danielamormocea
 - Fixed secure cookie option. @giuliaghisini
 - Changed addon order in addon controlpanel to mimic Classic UI @erral
