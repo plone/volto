@@ -8,6 +8,16 @@
 - Move all cypress actions to the main `Makefile`, providing better meaningful names. Remove them from `package.json` script section. @sneridagh
 
 ### Feature
+## 15.10.0 (2022-05-11)
+
+### Feature
+
+- added configurable identifier field for password reset in config.js. @giuliaghisini
+
+### Bugfix
+
+- Fix missing criteria in QueryWidget. @giuliaghisini
+
 ## 15.9.0 (2022-05-06)
 
 ### Feature
