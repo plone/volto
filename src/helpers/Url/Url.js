@@ -102,6 +102,15 @@ export function flattenToAppURL(url) {
       .replace(settings.publicURL, '')
   );
 }
+/**
+ * Given a URL it remove the querystring from the URL.
+ * @method stripQuerystring
+ * @param {string} url URL of the object
+ * @returns {string} URL without querystring
+ */
+export function stripQuerystring(url) {
+  return url.replace(/\?.*$/, '');
+}
 
 /**
  * Given a URL if it starts with the API server URL
@@ -237,6 +246,33 @@ export function normalizeTelephone(tel) {
   return `tel:${tel}`;
 }
 
+export function checkAndNormalizeUrl(url) {
+  let res = {
+    isMail: false,
+    isTelephone: false,
+    url: url,
+    isValid: true,
+  };
+  if (URLUtils.isMail(URLUtils.normaliseMail(url))) {
+    //Mail
+    res.isMail = true;
+    res.url = URLUtils.normaliseMail(url);
+  } else if (URLUtils.isTelephone(url)) {
+    //Phone
+    res.isTelephone = true;
+    res.url = URLUtils.normalizeTelephone(url);
+  } else {
+    //url
+    if (!res.url.startsWith('/') && !res.url.startsWith('#')) {
+      res.url = URLUtils.normalizeUrl(url);
+      if (!URLUtils.isUrl(res.url)) {
+        res.isValid = false;
+      }
+    }
+  }
+  return res;
+}
+
 export const URLUtils = {
   normalizeTelephone,
   normaliseMail,
@@ -244,4 +280,5 @@ export const URLUtils = {
   isTelephone,
   isMail,
   isUrl,
+  checkAndNormalizeUrl,
 };

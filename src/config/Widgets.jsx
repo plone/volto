@@ -7,6 +7,7 @@ import AlignWidget from '@plone/volto/components/manage/Widgets/AlignWidget';
 import ArrayWidget from '@plone/volto/components/manage/Widgets/ArrayWidget';
 import CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidget';
 import FileWidget from '@plone/volto/components/manage/Widgets/FileWidget';
+import IdWidget from '@plone/volto/components/manage/Widgets/IdWidget';
 import PasswordWidget from '@plone/volto/components/manage/Widgets/PasswordWidget';
 import QueryWidget from '@plone/volto/components/manage/Widgets/QueryWidget';
 import QuerySortOnWidget from '@plone/volto/components/manage/Widgets/QuerySortOnWidget';
@@ -29,6 +30,7 @@ import ObjectListWidget from '@plone/volto/components/manage/Widgets/ObjectListW
 import VocabularyTermsWidget from '@plone/volto/components/manage/Widgets/VocabularyTermsWidget';
 import SelectMetadataWidget from '@plone/volto/components/manage/Blocks/Search/widgets/SelectMetadataField';
 import SelectAutoComplete from '@plone/volto/components/manage/Widgets/SelectAutoComplete';
+import ColorPickerWidget from '@plone/volto/components/manage/Widgets/ColorPicker';
 
 export const DatetimeWidget = loadable(() =>
   import('@plone/volto/components/manage/Widgets/DatetimeWidget'),
@@ -47,6 +49,7 @@ export const widgetMapping = {
     query: QuerystringWidget,
     recurrence: RecurrenceWidget,
     remoteUrl: UrlWidget,
+    id: IdWidget,
   },
   widget: {
     richtext: WysiwygWidget,
@@ -69,6 +72,7 @@ export const widgetMapping = {
     vocabularyterms: VocabularyTermsWidget,
     select_querystring_field: SelectMetadataWidget,
     autocomplete: SelectAutoComplete,
+    color_picker: ColorPickerWidget,
   },
   vocabulary: {
     'plone.app.vocabularies.Catalog': ObjectBrowserWidget,
@@ -87,6 +91,7 @@ export const widgetMapping = {
     password: PasswordWidget,
     number: NumberWidget,
     integer: NumberWidget,
+    id: IdWidget,
   },
 };
 

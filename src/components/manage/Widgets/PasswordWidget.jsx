@@ -22,7 +22,16 @@ import { injectIntl } from 'react-intl';
  * ```
  */
 const PasswordWidget = (props) => {
-  const { id, value, onChange, onBlur, onClick, minLength, maxLength } = props;
+  const {
+    id,
+    value,
+    onChange,
+    onBlur,
+    onClick,
+    minLength,
+    maxLength,
+    placeholder,
+  } = props;
 
   return (
     <FormFieldWrapper {...props}>
@@ -32,6 +41,7 @@ const PasswordWidget = (props) => {
         type="password"
         disabled={props.isDisabled}
         value={value || ''}
+        placeholder={placeholder}
         onChange={({ target }) =>
           onChange(id, target.value === '' ? undefined : target.value)
         }
@@ -64,6 +74,7 @@ PasswordWidget.propTypes = {
   minLength: PropTypes.number,
   maxLength: PropTypes.number,
   wrapped: PropTypes.bool,
+  placeholder: PropTypes.string,
 };
 
 /**

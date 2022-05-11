@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": "Volto is based on React, Redux, and React-Router and follows its convention of resource location."
+  "property=og:description": "Volto is based on React, Redux, and React-Router and follows its convention of resource location."
+  "property=og:title": "Folder structure"
+  "keywords": "Volto, Plone, frontend, React, folder structure"
+---
+
 # Folder structure
 
 Volto is based on React, Redux, and React-Router. All of the

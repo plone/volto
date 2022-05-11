@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": "Seamless' mode main challenge is to achieve zero configuration, avoiding hardcoded API_PATH or other environment variables, and establishing good sensible defaults when setting up deployments (and also in development)."
+  "property=og:description": "Seamless' mode main challenge is to achieve zero configuration, avoiding hardcoded API_PATH or other environment variables, and establishing good sensible defaults when setting up deployments (and also in development)."
+  "property=og:title": "Seamless mode"
+  "keywords": "Volto, Plone, frontend, React, Seamless, mode"
+---
+
 # Seamless mode
 
 ## Feature history
@@ -12,8 +20,9 @@ The first implementation wanted to unify both backend and frontend under the sam
 
 For all these reasons, we have reconsidered and adjusted the feature a bit to overcome all the issues found in the past.
 
-!!! note
+```{note}
 Seamless mode will no longer try to unify both frontend and backend servers, differentiating them using the `Accept` header. However, we are sticking to the name since it also depicts the intention of the feature: to ease the setup of Volto deployments.
+```
 
 ## Challenges and goals
 
@@ -34,18 +43,19 @@ Seamless mode is a set of features in itself. Here is a brief introduction of th
 
 All the environment variables that are configurable now work at runtime, not at build time. This works since Volto 13.
 
-!!! info
+````{note}
 Before Volto 13, you'd do:
 
-    ```bash
-    RAZZLE_API_PATH=https://plone.org yarn build && yarn start:prod
-    ```
+```bash
+RAZZLE_API_PATH=https://plone.org yarn build && yarn start:prod
+```
 
-    From Volto 13 onwards, you can now do:
+From Volto 13 onwards, you can now do:
 
-    ```bash
-    yarn build && RAZZLE_API_PATH=https://plone.org yarn start:prod
-    ```
+```bash
+yarn build && RAZZLE_API_PATH=https://plone.org yarn start:prod
+```
+````
 
 This brings you a lot of power since you don't have to rebuild on every config change. You can also generate builds on your CI, then deploy them anywhere.
 
@@ -66,7 +76,7 @@ Delegating to the web server the responsibility of configuring how the component
 Theoretically, you could deploy several sites using the same Volto SSR server without
 recompiling (just using the `Host` header in the reverse proxy). Before seamless mode, you would've had to have a Volto build for every site domain.
 
-Opens the door for http://servername/sitename deployments as well, so several sites
+Opens the door for `http://servername/sitename` deployments as well, so several sites
 hosted by the same Volto SSR server.
 
 All internal links are app ones (thanks to the ``++api++`` traversal), so a link to a page /my-page will be returned by the API as is. So `flattenToAppURL` will still be required (for old deployments) but if seamless is adopted, it won't be required anymore in the mid-term.
@@ -99,9 +109,9 @@ If you are using the official Docker Plone image, use the `VERSIONS` environment
 
 `VERSIONS="plone.restapi=8.12.1 plone.rest=2.0.0a1"`
 
-## Nginx example config for seamless mode deployments
+## nginx example config for seamless mode deployments
 
-```conf
+```nginx
 upstream backend {
     server host.docker.internal:8080;
 }

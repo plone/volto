@@ -3,7 +3,7 @@
  * @module helpers/Blocks
  */
 
-import { omit, without, endsWith, find, keys } from 'lodash';
+import { omit, without, endsWith, find, isObject, keys, toPairs } from 'lodash';
 import move from 'lodash-move';
 import { v4 as uuid } from 'uuid';
 import config from '@plone/volto/registry';
@@ -233,7 +233,7 @@ export function mutateBlock(formData, id, value) {
  * @param {number} value New block's value
  * @return {Array} New block id, New form data
  */
-export function insertBlock(formData, id, value) {
+export function insertBlock(formData, id, value, current = {}) {
   const blocksFieldname = getBlocksFieldname(formData);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
   const index = formData[blocksLayoutFieldname].items.indexOf(id);
@@ -246,6 +246,10 @@ export function insertBlock(formData, id, value) {
       [blocksFieldname]: {
         ...formData[blocksFieldname],
         [newBlockId]: value || null,
+        [id]: {
+          ...formData[blocksFieldname][id],
+          ...current,
+        },
       },
       [blocksLayoutFieldname]: {
         items: [
@@ -401,3 +405,36 @@ export function applyBlockDefaults({ data, intl, ...rest }, blocksConfig) {
 
   return applySchemaDefaults({ data, schema });
 }
+
+export const buildStyleClassNamesFromData = (styles) => {
+  // styles has the form
+  // const styles = {
+  // color: 'red',
+  // backgroundColor: '#AABBCC',
+  // }
+  // Returns: ['has--color--red', 'has--backgroundColor--AABBCC']
+  let styleArray = [];
+  const pairedStyles = toPairs(styles);
+  pairedStyles.forEach((item) => {
+    if (isObject(item[1])) {
+      const flattenedNestedStyles = toPairs(item[1]).map((nested) => [
+        item[0],
+        ...nested,
+      ]);
+      flattenedNestedStyles.forEach((sub) => styleArray.push(sub));
+    } else {
+      styleArray.push(item);
+    }
+  });
+  return styleArray.map((item) => {
+    const classname = item.map((item) => {
+      const str_item = item.toString();
+      return str_item && str_item.startsWith('#')
+        ? str_item.replace('#', '')
+        : str_item;
+    });
+    return `has--${classname[0]}--${classname[1]}${
+      classname[2] ? `--${classname[2]}` : ''
+    }`;
+  });
+};

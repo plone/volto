@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": "Environment variables allow configuration of your Volto application at runtime."
+  "property=og:description": "Environment variables allow configuration of your Volto application at runtime."
+  "property=og:title": "Environment variables"
+  "keywords": "Volto, React, Plone, Environment variables, Razzle,"
+---
+
 # Environment variables
 
 All the environment variables defined at runtime that have the "RAZZLE_" prefix, are available in the browser under window.env
@@ -19,18 +27,19 @@ window.env.RAZZLE_MY_VARIABLE
 
 All the environment variables that are configurable work at runtime, not only at build time. This works since Volto 13 onwards.
 
-!!! info
+````{note}
 Before Volto 13, you'd do:
 
-    ```bash
-    RAZZLE_API_PATH=https://plone.org yarn build && yarn start:prod
-    ```
+```bash
+RAZZLE_API_PATH=https://plone.org yarn build && yarn start:prod
+```
 
-    From Volto 13 onwards, you can now do:
+From Volto 13 onwards, you can now do:
 
-    ```bash
-    yarn build && RAZZLE_API_PATH=https://plone.org yarn start:prod
-    ```
+```bash
+yarn build && RAZZLE_API_PATH=https://plone.org yarn start:prod
+```
+````
 
 This brings you a lot of power since you don't have to rebuild on every config change. You can also generate builds on your CI, then deploy them anywhere.
 
@@ -58,9 +67,10 @@ $ VOLTO_ROBOTSTXT="User-agent: *
 Disallow: /" yarn start
 ```
 
-!!! note
-    If you want to use the `VOLTO_ROBOTSTXT` environment variable, make sure to
-    delete the file `public/robots.txt` from your project.
+```{note}
+If you want to use the `VOLTO_ROBOTSTXT` environment variable, make sure to
+delete the file `public/robots.txt` from your project.
+```
 
 ### DEBUG
 
@@ -155,11 +165,35 @@ yarn add volto-slate
 ADDONS=volto-slate:asDefault yarn start
 ```
 
+If you need to specify several add-ons, separate them with a semicolon (`;`):
+
+```bash
+yarn add volto-slate
+ADDONS="volto-slate:asDefault;@kitconcept/volto-blocks-grid" yarn start
+```
+
 As a result, your app will load the add-ons in the following order:
 
 - `@kitconcept/volto-blocks-grid`
 - `@eeacms/volto-accordion-block`
 - `volto-slate`
 
-!!! important
-    `ADDONS` does *not* work for development packages, which are *always* enabled if defined in your `jsconfig.json` or via `mrs.developer.json`.
+```{important}
+The `ADDONS` key is a Volto specific configuration. Simply setting `ADDONS` doesn't download the javascript package. This has to be covered by another way, either installing the addon package (with yarn add) or loading it as a development package with mrs-developer.
+```
+
+## BUILD_DIR
+
+This is a runtime-only environment variable that directs the build to run Volto from an especific location, other than the default folder `build`.
+
+```bash
+yarn
+BUILD_DIR=dist node dist/server.js
+```
+
+or
+
+```bash
+yarn
+yarn start:dist
+```

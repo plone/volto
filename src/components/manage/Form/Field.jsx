@@ -92,10 +92,7 @@ const getWidgetPropsFromTaggedValues = (widgetOptions) =>
 const getWidgetByVocabulary = (vocabulary) =>
   vocabulary && vocabulary['@id']
     ? config.widgets.vocabulary[
-        vocabulary['@id'].replace(
-          `${config.settings.apiPath}/@vocabularies/`,
-          '',
-        )
+        vocabulary['@id'].replace(/^.*\/@vocabularies\//, '')
       ]
     : null;
 
@@ -109,7 +106,7 @@ const getWidgetByVocabularyFromHint = (props) =>
   props.widgetOptions && props.widgetOptions.vocabulary
     ? config.widgets.vocabulary[
         props.widgetOptions.vocabulary['@id'].replace(
-          `${config.settings.apiPath}/@vocabularies/`,
+          /^.*\/@vocabularies\//,
           '',
         )
       ]

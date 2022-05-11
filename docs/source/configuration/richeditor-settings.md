@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": "How to change settings for the rich text editor."
+  "property=og:description": "How to change settings for the rich text editor."
+  "property=og:title": "RichEditor Settings"
+  "keywords": "Volto, Plone, frontend, React, rich text editor"
+---
+
 # RichEditor Settings
 
 You can customize how the Rich Text Editor behaves and its features. These are

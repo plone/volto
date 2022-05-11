@@ -37,6 +37,7 @@ module.exports = {
           ['@plone/volto', '@plone/volto/src'],
           ...addonAliases,
           ['@package', `${__dirname}/src`],
+          ['@root', `${__dirname}/src`],
           ['~', `${__dirname}/src`],
         ],
         extensions: ['.js', '.jsx', '.json'],

@@ -18,7 +18,7 @@ import { CookiesProvider } from 'react-cookie';
 import cookiesMiddleware from 'universal-cookie-express';
 import debug from 'debug';
 
-import routes from '~/routes';
+import routes from '@root/routes';
 import config from '@plone/volto/registry';
 
 import {
@@ -44,7 +44,7 @@ let locales = {};
 if (config.settings) {
   config.settings.supportedLanguages.forEach((lang) => {
     const langFileName = normalizeLanguageName(lang);
-    import('~/../locales/' + langFileName + '.json').then((locale) => {
+    import('@root/../locales/' + langFileName + '.json').then((locale) => {
       locales = { ...locales, [lang]: locale.default };
     });
   });
@@ -58,7 +58,13 @@ const supported = new locale.Locales(keys(languages), 'en');
 
 const server = express()
   .disable('x-powered-by')
-  .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
+  .use(
+    express.static(
+      process.env.BUILD_DIR
+        ? path.join(process.env.BUILD_DIR, 'public')
+        : process.env.RAZZLE_PUBLIC_DIR,
+    ),
+  )
   .head('/*', function (req, res) {
     // Support for HEAD requests. Required by start-test utility in CI.
     res.send('');
@@ -72,7 +78,7 @@ if (middleware.length) server.use('/', middleware);
 
 server.use(function (err, req, res, next) {
   if (err) {
-    const { store } = req.app.locals;
+    const { store } = res.locals;
     const errorPage = (
       <Provider store={store} onError={reactIntlErrorHandler}>
         <StaticRouter context={{}} location={req.url}>
@@ -99,6 +105,79 @@ server.use(function (err, req, res, next) {
 });
 
 function setupServer(req, res, next) {
+  const api = new Api(req);
+
+  const lang = new locale.Locales(
+    req.universalCookies.get('I18N_LANGUAGE') ||
+      config.settings.defaultLanguage ||
+      req.headers['accept-language'],
+  )
+    .best(supported)
+    .toString();
+
+  // Minimum initial state for the fake Redux store instance
+  const initialState = {
+    intl: {
+      defaultLocale: 'en',
+      locale: lang,
+      messages: locales[lang],
+    },
+  };
+
+  const history = createMemoryHistory({
+    initialEntries: [req.url],
+  });
+
+  // Create a fake Redux store instance for the `errorHandler` to render
+  // and for being used by the rest of the middlewares, if required
+  const store = configureStore(initialState, history, api);
+
+  function errorHandler(error) {
+    const errorPage = (
+      <Provider store={store} onError={reactIntlErrorHandler}>
+        <StaticRouter context={{}} location={req.url}>
+          <ErrorPage message={error.message} />
+        </StaticRouter>
+      </Provider>
+    );
+
+    res.set({
+      'Cache-Control': 'public, max-age=60, no-transform',
+    });
+
+    /* Displays error in console
+     * TODO:
+     * - get ignored codes from Plone error_log
+     */
+    const ignoredErrors = [301, 302, 401, 404];
+    if (!ignoredErrors.includes(error.status)) console.error(error);
+
+    res
+      .status(error.status || 500) // If error happens in Volto code itself error status is undefined
+      .send(`<!doctype html> ${renderToString(errorPage)}`);
+  }
+
+  if (!process.env.RAZZLE_API_PATH && req.headers.host) {
+    res.locals.detectedHost = `${
+      req.headers['x-forwarded-proto'] || req.protocol
+    }://${req.headers.host}`;
+    config.settings.apiPath = res.locals.detectedHost;
+    config.settings.publicURL = res.locals.detectedHost;
+  }
+
+  res.locals = {
+    ...res.locals,
+    store,
+    api,
+    errorHandler,
+  };
+
+  next();
+}
+
+server.get('/*', (req, res) => {
+  const { errorHandler } = res.locals;
+
   const api = new Api(req);
 
   const browserdetect = detect(req.headers['user-agent']);
@@ -132,55 +211,10 @@ function setupServer(req, res, next) {
 
   persistAuthToken(store, req);
 
-  function errorHandler(error) {
-    const errorPage = (
-      <Provider store={store} onError={reactIntlErrorHandler}>
-        <StaticRouter context={{}} location={req.url}>
-          <ErrorPage message={error.message} />
-        </StaticRouter>
-      </Provider>
-    );
-
-    res.set({
-      'Cache-Control': 'public, max-age=60, no-transform',
-    });
-
-    /* Displays error in console
-     * TODO:
-     * - get ignored codes from Plone error_log
-     */
-    const ignoredErrors = [301, 302, 401, 404];
-    if (!ignoredErrors.includes(error.status)) console.error(error);
-
-    res
-      .status(error.status || 500) // If error happens in Volto code itself error status is undefined
-      .send(`<!doctype html> ${renderToString(errorPage)}`);
-  }
-
-  if (!process.env.RAZZLE_API_PATH && req.headers.host) {
-    req.app.locals.detectedHost = `${
-      req.headers['x-forwarded-proto'] || req.protocol
-    }://${req.headers.host}`;
-    config.settings.apiPath = req.app.locals.detectedHost;
-    config.settings.publicURL = req.app.locals.detectedHost;
-  }
-
-  req.app.locals = {
-    ...req.app.locals,
-    store,
-    api,
-    errorHandler,
-  };
-
-  next();
-}
-
-server.get('/*', (req, res) => {
-  const { store, api, errorHandler } = req.app.locals;
-
   // @loadable/server extractor
+  const buildDir = process.env.BUILD_DIR || 'build';
   const extractor = new ChunkExtractor({
-    statsFile: path.resolve('build/loadable-stats.json'),
+    statsFile: path.resolve(path.join(buildDir, 'loadable-stats.json')),
     entrypoints: ['client'],
   });
 
@@ -192,11 +226,21 @@ server.get('/*', (req, res) => {
       // The content info is in the store at this point thanks to the asynconnect
       // features, then we can force the current language info into the store when
       // coming from an SSR request
-      const updatedLang =
+      const contentLang =
         store.getState().content.data?.language?.token ||
         config.settings.defaultLanguage;
 
-      store.dispatch(changeLanguage(updatedLang, locales[updatedLang]));
+      const cookie_lang =
+        req.universalCookies.get('I18N_LANGUAGE') ||
+        config.settings.defaultLanguage ||
+        req.headers['accept-language'];
+
+      if (cookie_lang !== contentLang) {
+        const newLocale = new locale.Locales(contentLang)
+          .best(supported)
+          .toString();
+        store.dispatch(changeLanguage(newLocale, locales[newLocale], req));
+      }
 
       const context = {};
       resetServerContext();
@@ -234,11 +278,9 @@ server.get('/*', (req, res) => {
                     process.env.NODE_ENV !== 'production'
                   }
                   criticalCss={readCriticalCss(req)}
-                  apiPath={
-                    req.app.locals.detectedHost || config.settings.apiPath
-                  }
+                  apiPath={res.locals.detectedHost || config.settings.apiPath}
                   publicURL={
-                    req.app.locals.detectedHost || config.settings.publicURL
+                    res.locals.detectedHost || config.settings.publicURL
                   }
                 />,
               )}
@@ -253,11 +295,9 @@ server.get('/*', (req, res) => {
                   markup={markup}
                   store={store}
                   criticalCss={readCriticalCss(req)}
-                  apiPath={
-                    req.app.locals.detectedHost || config.settings.apiPath
-                  }
+                  apiPath={res.locals.detectedHost || config.settings.apiPath}
                   publicURL={
-                    req.app.locals.detectedHost || config.settings.publicURL
+                    res.locals.detectedHost || config.settings.publicURL
                   }
                 />,
               )}

@@ -1,14 +1,20 @@
 import '@testing-library/cypress/add-commands';
 import { getIfExists } from '../helpers';
+
+const HOSTNAME = Cypress.env('BACKEND_HOST') || 'localhost';
+const GUILLOTINA_API_URL = `http://${HOSTNAME}:8081/db/web`;
+const PLONE_SITE_ID = Cypress.env('SITE_ID') || 'plone';
+const PLONE_API_URL = Cypress.env('API_PATH') || `http://${HOSTNAME}:55001/${PLONE_SITE_ID}`;
+
 // --- AUTOLOGIN -------------------------------------------------------------
 Cypress.Commands.add('autologin', (usr, pass) => {
   let api_url, user, password;
   if (Cypress.env('API') === 'guillotina') {
-    api_url = 'http://localhost:8081/db/web';
+    api_url = GUILLOTINA_API_URL;
     user = usr || 'admin';
     password = pass || 'admin';
   } else {
-    api_url = 'http://localhost:55001/plone';
+    api_url = PLONE_API_URL;
     user = usr || 'admin';
     password = pass || 'secret';
   }
@@ -32,16 +38,17 @@ Cypress.Commands.add(
     contentTitle,
     path = '',
     allow_discussion = false,
+    transition = '',
   }) => {
     let api_url, auth;
     if (Cypress.env('API') === 'guillotina') {
-      api_url = 'http://localhost:8081/db/web';
+      api_url = GUILLOTINA_API_URL;
       auth = {
         user: 'root',
         pass: 'root',
       };
     } else {
-      api_url = 'http://localhost:55001/plone';
+      api_url = PLONE_API_URL;
       auth = {
         user: 'admin',
         pass: 'secret',
@@ -91,7 +98,9 @@ Cypress.Commands.add(
         },
       });
     }
-    if (['Document', 'Folder', 'CMSFolder'].includes(contentType)) {
+    if (
+      ['Document', 'News Item', 'Folder', 'CMSFolder'].includes(contentType)
+    ) {
       return cy
         .request({
           method: 'POST',
@@ -117,7 +126,15 @@ Cypress.Commands.add(
             allow_discussion: allow_discussion,
           },
         })
-        .then(() => console.log(`${contentType} created`));
+        .then(() => {
+          if (transition) {
+            cy.setWorkflow({
+              path: path || contentId,
+              review_state: transition,
+            });
+          }
+          console.log(`${contentType} created`);
+        });
     } else {
       return cy
         .request({
@@ -134,7 +151,15 @@ Cypress.Commands.add(
             allow_discussion: allow_discussion,
           },
         })
-        .then(() => console.log(`${contentType} created`));
+        .then(() => {
+          if (transition) {
+            cy.setWorkflow({
+              path: path || contentId,
+              review_state: transition,
+            });
+          }
+          console.log(`${contentType} created`);
+        });
     }
   },
 );
@@ -142,13 +167,13 @@ Cypress.Commands.add(
 Cypress.Commands.add('removeContent', ({ path = '' }) => {
   let api_url, auth;
   if (Cypress.env('API') === 'guillotina') {
-    api_url = 'http://localhost:8081/db/web';
+    api_url = GUILLOTINA_API_URL;
     auth = {
       user: 'root',
       pass: 'root',
     };
   } else {
-    api_url = 'http://localhost:55001/plone';
+    api_url = PLONE_API_URL;
     auth = {
       user: 'admin',
       pass: 'secret',
@@ -172,18 +197,18 @@ Cypress.Commands.add(
     fullname = 'editor',
     email = 'editor@local.dev',
     password = 'secret',
-    roles = ['Editor'],
+    roles = ['Member', 'Reader', 'Editor'],
   }) => {
     let api_url, auth, path;
     if (Cypress.env('API') === 'guillotina') {
-      api_url = 'http://localhost:8081/db/web';
+      api_url = GUILLOTINA_API_URL;
       auth = {
         user: 'root',
         pass: 'root',
       };
       path = 'users';
     } else {
-      api_url = 'http://localhost:55001/plone';
+      api_url = PLONE_API_URL;
       auth = {
         user: 'admin',
         pass: 'secret',
@@ -216,14 +241,14 @@ Cypress.Commands.add(
 Cypress.Commands.add('removeUser', (username = 'editor') => {
   let api_url, auth, path;
   if (Cypress.env('API') === 'guillotina') {
-    api_url = 'http://localhost:8081/db/web';
+    api_url = GUILLOTINA_API_URL;
     auth = {
       user: 'root',
       pass: 'root',
     };
     path = 'users';
   } else {
-    api_url = 'http://localhost:55001/plone';
+    api_url = PLONE_API_URL;
     auth = {
       user: 'admin',
       pass: 'secret',
@@ -258,7 +283,7 @@ Cypress.Commands.add(
     include_children = true,
   }) => {
     let api_url, auth;
-    api_url = 'http://localhost:55001/plone';
+    api_url = PLONE_API_URL;
     auth = {
       user: 'admin',
       pass: 'secret',
@@ -324,7 +349,7 @@ Cypress.Commands.add('waitForResourceToLoad', (fileName, type) => {
 // --- CREATE CONTENT --------------------------------------------------------
 Cypress.Commands.add('setRegistry', (record, value) => {
   let api_url, auth;
-  api_url = 'http://localhost:55001/plone';
+  api_url = PLONE_API_URL;
   auth = {
     user: 'admin',
     pass: 'secret',
