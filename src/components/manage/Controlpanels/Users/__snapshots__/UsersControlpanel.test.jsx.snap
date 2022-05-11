@@ -29,7 +29,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
         onClick={null}
         style={
           Object {
-            "fill": "#007EB1",
+            "fill": "currentColor",
             "height": "20px",
             "width": "auto",
           }

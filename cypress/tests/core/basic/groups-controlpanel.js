@@ -83,11 +83,13 @@ describe('Groups Control Panel Test', () => {
 
     cy.wait('@editGroup');
     cy.reload();
-    cy.get('td:nth-child(3) > .checkbox');
     cy.waitForResourceToLoad('@groups');
-
-    cy.get('[data-group="groups"] div.checkbox')
+    cy.get('td:nth-child(3) > .checkbox')
       .first()
       .should('have.class', 'checked');
+
+    // cy.get('[data-group="groups"] div.checkbox')
+    //   .first()
+    //   .should('have.class', 'checked');
   });
 });

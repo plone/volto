@@ -72,7 +72,7 @@ class RenderGroups extends Component {
     const { groups, group } = this.props;
     const childMembers = groups.some(
       (item) =>
-        item.members.items.includes(group.id) && item.roles.includes(role),
+        item?.members?.items?.includes(group.id) && item.roles.includes(role),
     );
 
     if (childMembers) {

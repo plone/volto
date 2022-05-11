@@ -66,8 +66,8 @@ class RenderUsers extends Component {
 
   renderIcon(role) {
     const { user, groups } = this.props;
-    const isMember = user.groups.items.some((group) => {
-      const inheritedGroup = groups.find((item) => item.id === group);
+    const isMember = user?.groups?.items?.some((group) => {
+      const inheritedGroup = groups.find((item) => item?.id === group);
       return inheritedGroup?.roles.includes(role);
     });
     if (isMember) {
