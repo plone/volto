@@ -293,6 +293,13 @@ export function normalizePath(path) {
   return path || '/';
 }
 
+export function removePrefixPath(path) {
+  const { prefixPath } = config.settings;
+  if (prefixPath) {
+    return path ? path.replace(prefixPath, '') : '';
+  }
+}
+
 export const URLUtils = {
   normalizeTelephone,
   normaliseMail,
