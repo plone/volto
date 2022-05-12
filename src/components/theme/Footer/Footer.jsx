@@ -17,10 +17,6 @@ const messages = defineMessages({
     id: 'Copyright',
     defaultMessage: 'Copyright',
   },
-  siteActions: {
-    id: '{id}',
-    defaultMessage: '{title}',
-  },
 });
 
 /**
@@ -105,10 +101,7 @@ const Footer = ({ intl }) => {
                     : flattenToAppURL(item.url)
                 }
               >
-                {intl.formatMessage(messages.siteActions, {
-                  title: item.title,
-                  id: item.id,
-                })}
+                {item?.title}
               </UniversalLink>
             </div>
           ))}
