@@ -19,7 +19,9 @@ import { Api, persistAuthToken, ScrollToTop } from '@plone/volto/helpers';
 import * as Sentry from '@sentry/browser';
 import initSentry from '@plone/volto/sentry';
 
-export const history = createBrowserHistory();
+export const history = createBrowserHistory({
+  basename: config.settings.prefixPath,
+});
 
 initSentry(Sentry);
 

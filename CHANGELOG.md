@@ -7,6 +7,7 @@
 ### Feature
 
 - added configurable identifier field for password reset in config.js. @giuliaghisini
+- added prefixPath for site. @giuliaghisini
 
 ### Bugfix
 
