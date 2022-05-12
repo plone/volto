@@ -74,8 +74,10 @@ export function listUsers(query, groups_filter) {
   let path = '/@users';
   if (query) {
     path += `?query=${query}`;
-  }
-  if (groups_filter.length > 0) {
+    if (groups_filter.length > 0) {
+      path += `&groups_filter=${groups_filter.join(',')}`;
+    }
+  } else if (groups_filter.length > 0) {
     path += `?groups_filter=${groups_filter.join(',')}`;
   }
   return {
