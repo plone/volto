@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- fixed view video list from youtube in Video block. @giuliaghisini
+
 ### Internal
 
 ### Documentation
