@@ -3568,11 +3568,6 @@ msgstr "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 msgid "{count} selected"
 msgstr "{count} seleccionat"
 
-#: components/theme/Footer/Footer
-# defaultMessage: {title}
-msgid "{id}"
-msgstr ""
-
 #: components/manage/Controlpanels/ContentType
 # defaultMessage: {id} Content Type
 msgid "{id} Content Type"

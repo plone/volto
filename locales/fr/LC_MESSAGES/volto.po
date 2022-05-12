@@ -3576,11 +3576,6 @@ msgstr ""
 msgid "{count} selected"
 msgstr "{count} sélectionné"
 
-#: components/theme/Footer/Footer
-# defaultMessage: {title}
-msgid "{id}"
-msgstr ""
-
 #: components/manage/Controlpanels/ContentType
 # defaultMessage: {id} Content Type
 msgid "{id} Content Type"

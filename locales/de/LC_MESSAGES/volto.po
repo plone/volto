@@ -3574,11 +3574,6 @@ msgstr "Lade {count, plural, one {# Datei} other {# Dateien}} hoch"
 msgid "{count} selected"
 msgstr "{count} ausgewählt"
 
-#: components/theme/Footer/Footer
-# defaultMessage: {title}
-msgid "{id}"
-msgstr ""
-
 #: components/manage/Controlpanels/ContentType
 # defaultMessage: {id} Content Type
 msgid "{id} Content Type"
