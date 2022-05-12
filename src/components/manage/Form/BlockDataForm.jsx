@@ -1,6 +1,13 @@
+import { compose } from 'redux';
 import { InlineForm } from '@plone/volto/components';
-import { withVariationSchemaEnhancer } from '@plone/volto/helpers';
+import {
+  withVariationSchemaEnhancer,
+  withStylingSchemaEnhancer,
+} from '@plone/volto/helpers';
 
-const BlockDataForm = withVariationSchemaEnhancer(InlineForm);
+const BlockDataForm = compose(
+  withVariationSchemaEnhancer,
+  withStylingSchemaEnhancer,
+)(InlineForm);
 
 export default BlockDataForm;

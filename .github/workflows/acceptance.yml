@@ -4,6 +4,7 @@ jobs:
   core:
     runs-on: ubuntu-latest
     name: Core Basic
+    timeout-minutes: 45
     strategy:
       matrix:
         node-version: [14.x, 16.x]
@@ -69,6 +70,7 @@ jobs:
   coreblocks:
     runs-on: ubuntu-latest
     name: Core Blocks
+    timeout-minutes: 35
     strategy:
       matrix:
         node-version: [14.x, 16.x]
@@ -131,74 +133,75 @@ jobs:
           name: cypress-videos
           path: cypress/videos
 
-  core6:
-    runs-on: ubuntu-latest
-    name: Core Basic - Plone 6
-    strategy:
-      matrix:
-        node-version: [16.x]
-    steps:
-      - uses: actions/checkout@v2
+  # core6:
+  #   runs-on: ubuntu-latest
+  #   name: Core Basic - Plone 6
+  #   strategy:
+  #     matrix:
+  #       node-version: [16.x]
+  #   steps:
+  #     - uses: actions/checkout@v2
 
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
+  #     # node setup
+  #     - name: Use Node.js ${{ matrix.node-version }}
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: ${{ matrix.node-version }}
 
-      # node cache
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+  #     # node cache
+  #     - name: Get yarn cache directory path
+  #       id: yarn-cache-dir-path
+  #       run: echo "::set-output name=dir::$(yarn cache dir)"
+  #     - uses: actions/cache@v1
+  #       id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+  #       with:
+  #         path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+  #         key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+  #         restore-keys: |
+  #           ${{ runner.os }}-yarn-
 
-      ## node install
-      - run: yarn --frozen-lockfile
+  #     ## node install
+  #     - run: yarn --frozen-lockfile
 
-      - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v2
-        env:
-          BABEL_ENV: production
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          CYPRESS_RETRIES: 2
-          # Recommended: pass the GitHub token lets this action correctly
-          # determine the unique run id necessary to re-run the checks
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          record: true
-          parallel: false # Since they run on different node versions, we can't parallel
-          browser: chrome
-          # headless: true
-          group: Core Basic - Plone 6
-          config: integrationFolder=cypress/tests
-          spec: cypress/tests/core/basic/**/*.js
-          start: |
-            make start-test-acceptance-server DOCKER_IMAGE=plone/plone-backend:6.0.0a4
-            make start-test-acceptance-frontend
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+  #     - name: Cypress acceptance tests
+  #       uses: cypress-io/github-action@v2
+  #       env:
+  #         BABEL_ENV: production
+  #         CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+  #         CYPRESS_RETRIES: 2
+  #         # Recommended: pass the GitHub token lets this action correctly
+  #         # determine the unique run id necessary to re-run the checks
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #       with:
+  #         record: true
+  #         parallel: false # Since they run on different node versions, we can't parallel
+  #         browser: chrome
+  #         # headless: true
+  #         group: Core Basic - Plone 6
+  #         config: integrationFolder=cypress/tests
+  #         spec: cypress/tests/core/basic/**/*.js
+  #         start: |
+  #           make start-test-acceptance-server DOCKER_IMAGE=plone/plone-backend:6.0.0a4
+  #           make start-test-acceptance-frontend
+  #         wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
 
-      # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
-        if: failure()
-        with:
-          name: cypress-screenshots
-          path: cypress/screenshots
-      # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
-        if: failure()
-        with:
-          name: cypress-videos
-          path: cypress/videos
+  #     # Upload Cypress screenshots
+  #     - uses: actions/upload-artifact@v1
+  #       if: failure()
+  #       with:
+  #         name: cypress-screenshots
+  #         path: cypress/screenshots
+  #     # Upload Cypress videos
+  #     - uses: actions/upload-artifact@v1
+  #       if: failure()
+  #       with:
+  #         name: cypress-videos
+  #         path: cypress/videos
 
   coresandbox:
     runs-on: ubuntu-latest
     name: Coresandbox
+    timeout-minutes: 35
     strategy:
       matrix:
         node-version: [16.x]
@@ -291,6 +294,7 @@ jobs:
   guillotina:
     name: Guillotina
     runs-on: ubuntu-latest
+    timeout-minutes: 35
     strategy:
       matrix:
         node-version: [16.x]
@@ -357,6 +361,7 @@ jobs:
   multilingual:
     name: Multilingual
     runs-on: ubuntu-latest
+    timeout-minutes: 35
     strategy:
       matrix:
         node-version: [16.x]
@@ -425,6 +430,7 @@ jobs:
   workingcopy:
     name: Working Copy
     runs-on: ubuntu-latest
+    timeout-minutes: 35
     strategy:
       matrix:
         node-version: [16.x]
@@ -516,6 +522,7 @@ jobs:
   generator:
     name: Project Generator
     runs-on: ubuntu-latest
+    timeout-minutes: 35
     strategy:
       matrix:
         node-version: [16.x]
@@ -618,6 +625,7 @@ jobs:
   seamless:
     name: Seamless Mode
     runs-on: ubuntu-latest
+    timeout-minutes: 35
     strategy:
       matrix:
         node-version: [16.x]

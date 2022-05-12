@@ -93,6 +93,8 @@ describe('Document locking', () => {
   it('As editor, I can unlock a locked page', function () {
     // As an editor I can add a document
     cy.intercept('/**/@logout').as('logout');
+    cy.intercept('GET', '/**/document').as('getDoc');
+    cy.intercept('PATCH', '/**/document').as('saveDoc');
 
     cy.autologin('editor1');
     cy.visit('/document');
@@ -135,9 +137,15 @@ describe('Document locking', () => {
       .clear()
       .type('New title by Editor 2');
     cy.get('#toolbar-save').click();
-    cy.waitForResourceToLoad('document');
+    // cy.waitForResourceToLoad('document');
+    cy.wait('@saveDoc');
+    cy.wait('@getDoc');
+
+    // cy.pause();
 
     cy.url().should('eq', Cypress.config().baseUrl + '/document');
+    cy.contains('New title by Editor 2');
+    cy.get('h1.documentFirstHeading').should('not.be.empty');
     cy.get('h1.documentFirstHeading').contains('New title by Editor 2');
   });
 });

@@ -118,7 +118,9 @@ exports[`renders an Image Block Sidebar component 1`] = `
           <div
             className="eight wide column align-tools"
           >
-            <div>
+            <div
+              className="align-buttons"
+            >
               <div
                 className="ui buttons"
               >

@@ -333,7 +333,7 @@ export class QuerystringWidgetComponent extends Component {
                           className="react-select-container"
                           classNamePrefix="react-select"
                           options={map(
-                            indexes[row.i].operations,
+                            indexes[row.i]?.operations ?? [],
                             (operation) => ({
                               value: operation,
                               label: indexes[row.i].operators[operation].title,
