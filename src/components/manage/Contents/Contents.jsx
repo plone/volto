@@ -287,6 +287,10 @@ const messages = defineMessages({
     id: 'This Page is referenced by the following items:',
     defaultMessage: 'This Page is referenced by the following items:',
   },
+  deleteItemMessage: {
+    id: 'Items to be deleted:',
+    defaultMessage: 'Items to be deleted:',
+  },
 });
 
 /**
@@ -1168,11 +1172,17 @@ class Contents extends Component {
                 <article id="content">
                   <Confirm
                     open={this.state.showDelete}
+                    confirmButton="Delete"
                     header={this.props.intl.formatMessage(
                       messages.deleteConfirm,
                     )}
                     content={
                       <div className="content">
+                        <h3>
+                          {this.props.intl.formatMessage(
+                            messages.deleteItemMessage,
+                          )}
+                        </h3>
                         <ul className="content">
                           {map(this.state.itemsToDelete, (item) => (
                             <li key={item}>

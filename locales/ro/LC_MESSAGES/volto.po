@@ -1373,7 +1373,7 @@ msgid "Potential link breakage"
 msgstr "Posibila rupere a legaturii."
 
 #: components/manage/Contents/Contents
-# defaultMessage "By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first."
+# defaultMessage: By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first.
 msgid "By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first."
 msgstr "Prin stergerea acestui item, vei rupe legatura existenta dintre articolele de mai jos. Daca asta e ceea ce iti doresti sa faci, iti recomandam sa stergi mai intai referintele."
 
