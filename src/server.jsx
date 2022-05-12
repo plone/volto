@@ -66,6 +66,17 @@ const server = express()
   })
   .use(cookiesMiddleware());
 
+if (process.env.RAZZLE_PREFIX_PATH) {
+  server.use(
+    process.env.RAZZLE_PREFIX_PATH,
+    express.static(
+      process.env.BUILD_DIR
+        ? path.join(process.env.BUILD_DIR, 'public')
+        : process.env.RAZZLE_PUBLIC_DIR,
+    ),
+  );
+}
+
 const middleware = (config.settings.expressMiddleware || []).filter((m) => m);
 
 server.all('*', setupServer);
@@ -252,7 +263,11 @@ server.get('/*', (req, res) => {
         <ChunkExtractorManager extractor={extractor}>
           <CookiesProvider cookies={req.universalCookies}>
             <Provider store={store} onError={reactIntlErrorHandler}>
-              <StaticRouter context={context} location={req.url}>
+              <StaticRouter
+                context={context}
+                location={req.url}
+                basename={config.settings.prefixPath}
+              >
                 <ReduxAsyncConnect routes={routes} helpers={api} />
               </StaticRouter>
             </Provider>
