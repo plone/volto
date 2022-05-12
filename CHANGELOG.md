@@ -2,17 +2,9 @@
 
 ## 15.10.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - fixed view video list from youtube in Video block. @giuliaghisini
-
-### Internal
-
-### Documentation
 
 ## 15.10.0 (2022-05-11)
 
