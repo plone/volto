@@ -2,7 +2,7 @@
   "errors": [],
   "warnings": [],
   "version": "4.43.0",
-  "hash": "e938d91c37cef04f6bf3",
+  "hash": "9d2b9b24850c73203ec6",
   "publicPath": "/",
   "outputPath": "/Users/sneridagh/Development/plone/volto/build/public",
   "assetsByChunkName": {
@@ -15,9 +15,9 @@
       "static/js/moment.dfd83abb.chunk.js.map"
     ],
     "client": [
-      "static/css/client.5c251139.chunk.css",
-      "static/js/client.5c251139.chunk.js",
-      "static/js/client.5c251139.chunk.js.map"
+      "static/css/client.1ebb2c68.chunk.css",
+      "static/js/client.1ebb2c68.chunk.js",
+      "static/js/client.1ebb2c68.chunk.js.map"
     ],
     "draft-js-lib-isSoftNewlineEvent": [
       "static/js/draft-js-lib-isSoftNewlineEvent.ad4b1307.chunk.js",
@@ -167,7 +167,7 @@
       "emitted": false
     },
     {
-      "name": "static/css/client.5c251139.chunk.css",
+      "name": "static/css/client.1ebb2c68.chunk.css",
       "size": 128135,
       "chunks": [
         7
@@ -181,7 +181,7 @@
       "emitted": false
     },
     {
-      "name": "static/css/client.5c251139.chunk.css.map",
+      "name": "static/css/client.1ebb2c68.chunk.css.map",
       "size": 228346,
       "chunks": [],
       "chunkNames": [],
@@ -1019,8 +1019,8 @@
       "emitted": false
     },
     {
-      "name": "static/js/client.5c251139.chunk.js",
-      "size": 891155,
+      "name": "static/js/client.1ebb2c68.chunk.js",
+      "size": 891122,
       "chunks": [
         7
       ],
@@ -1033,8 +1033,8 @@
       "emitted": false
     },
     {
-      "name": "static/js/client.5c251139.chunk.js.map",
-      "size": 2330637,
+      "name": "static/js/client.1ebb2c68.chunk.js.map",
+      "size": 2330651,
       "chunks": [
         7
       ],
@@ -1369,9 +1369,9 @@
         "static/css/14.28a992d7.chunk.css",
         "static/js/14.28a992d7.chunk.js",
         "static/js/14.28a992d7.chunk.js.map",
-        "static/css/client.5c251139.chunk.css",
-        "static/js/client.5c251139.chunk.js",
-        "static/js/client.5c251139.chunk.js.map"
+        "static/css/client.1ebb2c68.chunk.css",
+        "static/js/client.1ebb2c68.chunk.js",
+        "static/js/client.1ebb2c68.chunk.js.map"
       ],
       "children": {},
       "childAssets": {}
@@ -1390,9 +1390,9 @@
         "static/css/14.28a992d7.chunk.css",
         "static/js/14.28a992d7.chunk.js",
         "static/js/14.28a992d7.chunk.js.map",
-        "static/css/client.5c251139.chunk.css",
-        "static/js/client.5c251139.chunk.js",
-        "static/js/client.5c251139.chunk.js.map"
+        "static/css/client.1ebb2c68.chunk.css",
+        "static/js/client.1ebb2c68.chunk.js",
+        "static/js/client.1ebb2c68.chunk.js.map"
       ],
       "children": {},
       "childAssets": {}

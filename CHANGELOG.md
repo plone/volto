@@ -8,6 +8,12 @@
 - Move all cypress actions to the main `Makefile`, providing better meaningful names. Remove them from `package.json` script section. @sneridagh
 
 ### Feature
+## 15.10.1 (2022-05-12)
+
+### Bugfix
+
+- fixed view video list from youtube in Video block. @giuliaghisini
+
 ## 15.10.0 (2022-05-11)
 
 ### Feature
