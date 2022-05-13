@@ -10,6 +10,7 @@ import { FormattedMessage } from 'react-intl';
 import prettybytes from 'pretty-bytes';
 
 import { flattenToAppURL } from '@plone/volto/helpers';
+import { Image } from '@plone/volto/components';
 
 /**
  * Image view component class.
@@ -28,7 +29,7 @@ const ImageView = ({ content }) => (
     )}
     {content?.image?.download && (
       <a href={flattenToAppURL(content.image.download)}>
-        <img
+        <Image
           alt={content.title}
           src={flattenToAppURL(content.image.scales.preview.download)}
         />

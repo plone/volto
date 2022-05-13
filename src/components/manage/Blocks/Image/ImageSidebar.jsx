@@ -8,6 +8,7 @@ import {
   Icon,
   FormFieldWrapper,
   TextWidget,
+  Image,
 } from '@plone/volto/components';
 import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
 import AlignBlock from '@plone/volto/components/manage/Sidebar/AlignBlock';
@@ -108,7 +109,7 @@ const ImageSidebar = ({
           <Segment className="sidebar-metadata-container" secondary>
             {data.url.split('/').slice(-1)[0]}
             {isInternalURL(data.url) && (
-              <img
+              <Image
                 src={`${flattenToAppURL(data.url)}/@@images/image/mini`}
                 alt={data.alt}
               />
