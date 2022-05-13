@@ -6,7 +6,11 @@
 
 ### Feature
 
+- Add `expandToBackendURL` helper @sneridagh
+
 ### Bugfix
+
+- Fixed ICS URL in event view in seamless mode @sneridagh
 
 ### Internal
 
@@ -27,6 +31,7 @@
 ### Bugfix
 
 - Fix missing criteria in QueryWidget. @giuliaghisini
+- fixed view video list from youtube in Video block. @giuliaghisini
 
 ## 15.9.0 (2022-05-06)
 
