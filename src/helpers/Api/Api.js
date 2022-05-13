@@ -23,12 +23,20 @@ function formatUrl(path) {
 
   if (path.startsWith('http://') || path.startsWith('https://')) return path;
 
-  const adjustedPath = path[0] !== '/' ? `/${path}` : path;
   let apiPath = '';
   if (settings.internalApiPath && __SERVER__) {
     apiPath = settings.internalApiPath;
   } else if (settings.apiPath) {
     apiPath = settings.apiPath;
+  }
+
+  let adjustedPath = path[0] !== '/' ? `/${path}` : path;
+  if (
+    config.settings.prefixPath &&
+    adjustedPath.startsWith(config.settings.prefixPath)
+  ) {
+    adjustedPath = adjustedPath.replace(config.settings.prefixPath, '');
+    adjustedPath = adjustedPath[0] !== '/' ? `/${adjustedPath}` : adjustedPath;
   }
 
   return `${apiPath}${APISUFIX}${adjustedPath}`;
