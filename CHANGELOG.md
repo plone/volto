@@ -2,8 +2,6 @@
 
 ## 15.10.2 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Add `expandToBackendURL` helper @sneridagh
@@ -11,10 +9,6 @@
 ### Bugfix
 
 - Fixed ICS URL in event view in seamless mode @sneridagh
-
-### Internal
-
-### Documentation
 
 ## 15.10.1 (2022-05-12)
 
