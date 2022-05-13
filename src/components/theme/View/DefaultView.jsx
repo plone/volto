@@ -94,18 +94,16 @@ const DefaultView = ({ content, intl, location }) => {
               };
               let Widget = views?.getWidget(field);
               return f !== 'title' ? (
-                <Segment basic>
-                  <Grid celled="internally" key={key}>
-                    <Grid.Row>
-                      <Label>{field.title}:</Label>
-                    </Grid.Row>
-                    <Grid.Row>
-                      <Segment basic>
-                        <Widget value={content[f]} />
-                      </Segment>
-                    </Grid.Row>
-                  </Grid>
-                </Segment>
+                <Grid celled="internally" key={key}>
+                  <Grid.Row>
+                    <Label>{field.title}:</Label>
+                  </Grid.Row>
+                  <Grid.Row>
+                    <Segment basic>
+                      <Widget value={content[f]} />
+                    </Segment>
+                  </Grid.Row>
+                </Grid>
               ) : (
                 <Widget key={key} value={content[f]} />
               );
