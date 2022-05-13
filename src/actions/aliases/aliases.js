@@ -40,7 +40,6 @@ export function addAliases(url, data) {
       path: `${url}/@aliases`,
       data,
     },
-    added: data.aliases,
   };
 }
 
@@ -59,6 +58,5 @@ export function removeAliases(url, data) {
       path: `${url}/@aliases`,
       data,
     },
-    removed: data.aliases,
   };
 }

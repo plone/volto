@@ -19,6 +19,7 @@ import {
   Header,
   Input,
   Radio,
+  Message,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
@@ -80,6 +81,7 @@ class Aliases extends Component {
       targetUrlPath: '',
       isTargetUrlCorrect: false,
       aliasesToRemove: [],
+      errorMessageAdd: '',
     };
   }
 
@@ -122,7 +124,28 @@ class Aliases extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  UNSAFE_componentWillReceiveProps(nextProps) {}
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    // console.log('aliases', this.props.aliases);
+    // console.log('nextaliases', nextProps.aliases);
+    if (this.props.aliases.add.loading && !nextProps.aliases.add.loaded) {
+      if (nextProps.aliases.add.error) {
+        this.setState({
+          errorMessageAdd: nextProps.aliases.add.error.response.body.message,
+        });
+      }
+    }
+    if (this.props.aliases.add.loading && nextProps.aliases.add.loaded) {
+      this.props.getAliases(getBaseUrl(this.props.pathname));
+      if (!nextProps.aliases.add.error) {
+        this.setState({
+          errorMessageAdd: '',
+        });
+      }
+    }
+    if (this.props.aliases.remove.loading && nextProps.aliases.remove.loaded) {
+      this.props.getAliases(getBaseUrl(this.props.pathname));
+    }
+  }
 
   /**
    * Back/Cancel handler
@@ -176,7 +199,7 @@ class Aliases extends Component {
    */
   handleSubmitAlias = () => {
     if (this.state.isAltUrlCorrect && this.state.isTargetUrlCorrect) {
-      this.props.addAliases({
+      this.props.addAliases('', {
         items: [
           {
             path: this.state.altUrlPath,
@@ -215,8 +238,13 @@ class Aliases extends Component {
    * @returns {undefined}
    */
   handleRemoveAliases = () => {
+    const items = this.state.aliasesToRemove.map((a) => {
+      return {
+        path: a,
+      };
+    });
     this.props.removeAliases('', {
-      aliases: this.state.aliasesToRemove,
+      items,
     });
     this.setState({ aliasesToRemove: [] });
   };
@@ -314,6 +342,17 @@ class Aliases extends Component {
                   >
                     <FormattedMessage id="Add" defaultMessage="Add" />
                   </Button>
+                  {this.state.errorMessageAdd && (
+                    <Message color="red">
+                      <Message.Header>
+                        <FormattedMessage
+                          id="ErrorHeader"
+                          defaultMessage="Error"
+                        />
+                      </Message.Header>
+                      <p>{this.state.errorMessageAdd}</p>
+                    </Message>
+                  )}
                 </Segment>
               </Form>
               <Form>
