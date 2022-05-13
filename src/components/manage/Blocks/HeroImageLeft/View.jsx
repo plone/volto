@@ -6,7 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { flattenToAppURL } from '@plone/volto/helpers';
-import { LinkMore } from '@plone/volto/components';
+import { LinkMore, Image } from '@plone/volto/components';
 
 /**
  * View image block class.
@@ -17,7 +17,7 @@ const View = ({ data }) => (
   <div className="block hero">
     <div className="block-inner-wrapper">
       {data.url && (
-        <img
+        <Image
           src={`${flattenToAppURL(data.url)}/@@images/image`}
           alt=""
           className="hero-image"

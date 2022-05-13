@@ -14,7 +14,12 @@ import loadable from '@loadable/component';
 import cx from 'classnames';
 import { isEqual } from 'lodash';
 
-import { Icon, ImageSidebar, SidebarPortal } from '@plone/volto/components';
+import {
+  Icon,
+  ImageSidebar,
+  SidebarPortal,
+  Image,
+} from '@plone/volto/components';
 import { withBlockExtensions } from '@plone/volto/helpers';
 import { createContent } from '@plone/volto/actions';
 import {
@@ -255,7 +260,7 @@ class Edit extends Component {
         )}
       >
         {data.url ? (
-          <img
+          <Image
             className={cx({
               'full-width': data.align === 'full',
               large: data.size === 'l',

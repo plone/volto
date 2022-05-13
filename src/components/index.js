@@ -28,6 +28,7 @@ export RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
 export SkipLinks from '@plone/volto/components/theme/SkipLinks/SkipLinks';
 export EventDetails from '@plone/volto/components/theme/EventDetails/EventDetails';
 export PreviewImage from '@plone/volto/components/theme/PreviewImage/PreviewImage';
+export Image from '@plone/volto/components/theme/Image/Image';
 
 export Error from '@plone/volto/components/theme/Error/Error';
 export ErrorBoundary from '@plone/volto/components/theme/Error/ErrorBoundary';

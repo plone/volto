@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Segment } from 'semantic-ui-react';
 import { useIntl, FormattedMessage } from 'react-intl';
-import { BlockDataForm, Icon } from '@plone/volto/components';
+import { BlockDataForm, Icon, Image } from '@plone/volto/components';
 import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
 import { ImageSchema } from './schema';
 import imageSVG from '@plone/volto/icons/image.svg';
@@ -24,7 +24,7 @@ const ImageSidebar = (props) => {
           <>
             {data.url.split('/').slice(-1)[0]}
             {isInternalURL(data.url) && (
-              <img
+              <Image
                 src={`${flattenToAppURL(data.url)}/@@images/image/mini`}
                 alt={data.alt}
               />

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { isEmpty } from 'lodash';
 import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
+import { Image } from '@plone/volto/components';
 
 const styles = {
   code: {
@@ -242,7 +243,7 @@ const entities = {
   ),
 
   IMAGE: (children, entity, { key }) => (
-    <img key={key} src={entity.src} alt={entity.alt} />
+    <Image key={key} src={entity.src} alt={entity.alt} />
   ),
 };
 
