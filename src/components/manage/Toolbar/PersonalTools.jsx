@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import cx from 'classnames';
 import { FormattedMessage, injectIntl, defineMessages } from 'react-intl';
-import { Icon } from '@plone/volto/components';
+import { Icon, Image } from '@plone/volto/components';
 import { getUser } from '@plone/volto/actions';
 import { Pluggable } from '@plone/volto/components/manage/Pluggable';
 import {
@@ -134,7 +134,7 @@ class PersonalTools extends Component {
         </header>
         <div className={cx('avatar', { default: !this.props.user.portrait })}>
           {this.props.user.portrait ? (
-            <img
+            <Image
               src={flattenToAppURL(this.props.user.portrait)}
               alt={this.props.intl.formatMessage(messages.userAvatar)}
             />

@@ -20,7 +20,7 @@ import {
   validateFileUploadSize,
 } from '@plone/volto/helpers';
 import { createContent } from '@plone/volto/actions';
-import { Icon, SidebarPortal, LinkMore } from '@plone/volto/components';
+import { Icon, SidebarPortal, LinkMore, Image } from '@plone/volto/components';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 
@@ -341,7 +341,7 @@ class EditComponent extends Component {
         )}
         <div className="block-inner-wrapper">
           {this.props.data.url ? (
-            <img
+            <Image
               className="hero-image"
               src={`${flattenToAppURL(this.props.data.url)}/@@images/image`}
               alt=""

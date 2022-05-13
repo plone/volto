@@ -11,7 +11,11 @@ import cx from 'classnames';
 import { Message } from 'semantic-ui-react';
 import { isEqual } from 'lodash';
 
-import { LeadImageSidebar, SidebarPortal } from '@plone/volto/components';
+import {
+  LeadImageSidebar,
+  SidebarPortal,
+  Image,
+} from '@plone/volto/components';
 import { flattenToAppURL } from '@plone/volto/helpers';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
@@ -103,7 +107,7 @@ class Edit extends Component {
           </Message>
         )}
         {properties.image && (
-          <img
+          <Image
             className={cx({ 'full-width': data.align === 'full' })}
             src={
               properties.image.data
@@ -113,6 +117,7 @@ class Edit extends Component {
             alt={data.image_caption || ''}
           />
         )}
+
         <SidebarPortal selected={this.props.selected}>
           <LeadImageSidebar {...this.props} />
         </SidebarPortal>
