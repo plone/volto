@@ -8,7 +8,7 @@ export const Email = WidgetStory.bind({
 });
 
 export default {
-  title: 'Widgets/Email',
+  title: 'Edit Widgets/Email',
   component: EmailWidget,
   decorators: [
     (Story) => (
