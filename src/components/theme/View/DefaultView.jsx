@@ -5,28 +5,16 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { defineMessages, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 
 import { Container, Segment, Grid, Label } from 'semantic-ui-react';
-import { map } from 'lodash';
 import config from '@plone/volto/registry';
 import { getSchema } from '@plone/volto/actions';
 import { getWidget } from '@plone/volto/helpers/Widget/utils';
+import RenderBlocks from './RenderBlocks';
 
-import {
-  getBlocksFieldname,
-  getBlocksLayoutFieldname,
-  hasBlocksData,
-  getBaseUrl,
-} from '@plone/volto/helpers';
+import { hasBlocksData, getBaseUrl } from '@plone/volto/helpers';
 import { useDispatch, useSelector } from 'react-redux';
-
-const messages = defineMessages({
-  unknownBlock: {
-    id: 'Unknown Block',
-    defaultMessage: 'Unknown Block {block}',
-  },
-});
 
 /**
  * Component to display the default view.
@@ -34,10 +22,10 @@ const messages = defineMessages({
  * @param {Object} content Content object.
  * @returns {string} Markup of the component.
  */
-const DefaultView = ({ content, intl, location }) => {
+const DefaultView = (props) => {
+  const { content, location } = props;
+  const path = getBaseUrl(location?.pathname || '');
   const dispatch = useDispatch();
-  const blocksFieldname = getBlocksFieldname(content);
-  const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
   const { views } = config.widgets;
   const contentSchema = useSelector((state) => state.schema?.schema);
   const fieldsetsToExclude = [
@@ -58,27 +46,7 @@ const DefaultView = ({ content, intl, location }) => {
 
   return hasBlocksData(content) ? (
     <div id="page-document" className="ui container">
-      {map(content[blocksLayoutFieldname].items, (block) => {
-        const Block =
-          config.blocks.blocksConfig[
-            content[blocksFieldname]?.[block]?.['@type']
-          ]?.['view'] || null;
-        return Block !== null ? (
-          <Block
-            key={block}
-            id={block}
-            properties={content}
-            data={content[blocksFieldname][block]}
-            path={getBaseUrl(location?.pathname || '')}
-          />
-        ) : (
-          <div key={block}>
-            {intl.formatMessage(messages.unknownBlock, {
-              block: content[blocksFieldname]?.[block]?.['@type'],
-            })}
-          </div>
-        );
-      })}
+      <RenderBlocks {...props} path={path} />
     </div>
   ) : (
     <Container id="page-document">

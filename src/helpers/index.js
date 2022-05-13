@@ -14,6 +14,7 @@ export {
 } from '@plone/volto/helpers/AuthToken/AuthToken';
 export {
   addAppURL,
+  expandToBackendURL,
   flattenHTMLToAppURL,
   flattenToAppURL,
   stripQuerystring,
@@ -54,6 +55,7 @@ export {
   previousBlockId,
   applyBlockDefaults,
   applySchemaDefaults,
+  buildStyleClassNamesFromData,
 } from '@plone/volto/helpers/Blocks/Blocks';
 export BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 export ScrollToTop from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
@@ -85,6 +87,7 @@ export { messages } from './MessageLabels/MessageLabels';
 export {
   withBlockSchemaEnhancer,
   withVariationSchemaEnhancer,
+  withStylingSchemaEnhancer,
   withBlockExtensions,
   applySchemaEnhancer,
   resolveExtension,
