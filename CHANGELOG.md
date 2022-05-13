@@ -7,10 +7,12 @@
 ### Feature
 
 - added configurable identifier field for password reset in config.js. @giuliaghisini
+- Add `expandToBackendURL` helper @sneridagh
 
 ### Bugfix
 
 - fixed view video list from youtube in Video block. @giuliaghisini
+- Fixed ICS URL in event view in seamless mode @sneridagh
 
 ### Internal
 
