@@ -44,7 +44,7 @@ You need to make available to your users both Volto and the API in public URLs. 
 Avoid dealing with CORS in production at all costs. Period.
 ```
 
-For SSL support is recommended to use a reverse proxy of your choice that points to Volto port and an API rewrite eg. `/api` in your server. This is the Nginx configuration:
+For SSL support is recommended to use a reverse proxy of your choice that points to Volto port and an API rewrite eg. `/api` in your server. This is the nginx configuration:
 
 ```nginx
 upstream volto {
