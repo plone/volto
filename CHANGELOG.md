@@ -6,7 +6,11 @@
 
 ### Feature
 
+- Add `expandToBackendURL` helper @sneridagh
+
 ### Bugfix
+
+- Fixed ICS URL in event view in seamless mode @sneridagh
 
 ### Internal
 
@@ -23,13 +27,11 @@
 ### Feature
 
 - added configurable identifier field for password reset in config.js. @giuliaghisini
-- Add `expandToBackendURL` helper @sneridagh
 
 ### Bugfix
 
 - Fix missing criteria in QueryWidget. @giuliaghisini
 - fixed view video list from youtube in Video block. @giuliaghisini
-- Fixed ICS URL in event view in seamless mode @sneridagh
 
 ## 15.9.0 (2022-05-06)
 
