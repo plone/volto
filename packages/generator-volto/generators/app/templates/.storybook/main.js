@@ -5,7 +5,6 @@ const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
 const fileLoaderFinder = makeLoaderFinder('file-loader');
 
 const projectRootPath = path.resolve('.');
-const createAddonsLoader = require('@plone/volto/create-addons-loader');
 const lessPlugin = require('@plone/volto/webpack-plugins/webpack-less-plugin');
 
 const createConfig = require('../node_modules/razzle/config/createConfigAsync.js');
