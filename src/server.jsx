@@ -226,7 +226,8 @@ server.get('/*', (req, res) => {
   const extractor = new ChunkExtractor({
     statsFile: path.resolve(path.join(buildDir, 'loadable-stats.json')),
     entrypoints: ['client'],
-    namespace: config.settings.prefixPath,
+    publicPath:
+      process.env.NODE_ENV == 'production' ? config.settings.prefixPath : null,
   });
 
   const url = req.originalUrl || req.url;
