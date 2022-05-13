@@ -26,8 +26,17 @@ export const getAPIResourceWithAuth = (req) =>
     } else {
       apiPath = settings.apiPath;
     }
+
+    let path = req.path;
+    if (
+      config.settings.prefixPath &&
+      path.startsWith(config.settings.prefixPath)
+    ) {
+      path = path.replace(config.settings.prefixPath, '');
+    }
+
     const request = superagent
-      .get(`${apiPath}${APISUFIX}${req.path}`)
+      .get(`${apiPath}${APISUFIX}${path}`)
       .maxResponseSize(settings.maxResponseSize)
       .responseType('blob');
     const authToken = req.universalCookies.get('auth_token');
