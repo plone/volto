@@ -53,6 +53,7 @@
 - Improve Cypress integration, using Cypress official Github Action. Improve some flaky tests that showed up, and were known as problematic. Refactor and rename all the Github actions giving them meaningful names, and group them by type. Enable Cypress Dashboard for Volto. @sneridagh
 - Stop using `xmlrpc` library for issuing the setup/teardown in core, use a `cy.request` instead. @sneridagh
 - Added Cypress environment variables for adjusting the backend URL of commands @JeffersonBledsoe #3271
+- Fixed Storybook configuration for add-ons @pnicolli
 
 ### Documentation
 
