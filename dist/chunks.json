@@ -263,8 +263,8 @@
     "js": [
       "/static/js/3.a3490306.chunk.js",
       "/static/js/3.a3490306.chunk.js.map",
-      "/static/js/react-select.c8927c3b.chunk.js",
-      "/static/js/react-select.c8927c3b.chunk.js.map"
+      "/static/js/react-select.43b5407c.chunk.js",
+      "/static/js/react-select.43b5407c.chunk.js.map"
     ],
     "chunks": [
       3,
@@ -278,8 +278,8 @@
     "js": [
       "/static/js/3.a3490306.chunk.js",
       "/static/js/3.a3490306.chunk.js.map",
-      "/static/js/react-select.c8927c3b.chunk.js",
-      "/static/js/react-select.c8927c3b.chunk.js.map"
+      "/static/js/react-select.43b5407c.chunk.js",
+      "/static/js/react-select.43b5407c.chunk.js.map"
     ],
     "chunks": [
       3,
@@ -293,8 +293,8 @@
     "js": [
       "/static/js/3.a3490306.chunk.js",
       "/static/js/3.a3490306.chunk.js.map",
-      "/static/js/react-select.c8927c3b.chunk.js",
-      "/static/js/react-select.c8927c3b.chunk.js.map"
+      "/static/js/react-select.43b5407c.chunk.js",
+      "/static/js/react-select.43b5407c.chunk.js.map"
     ],
     "chunks": [
       3,
@@ -308,8 +308,8 @@
     "js": [
       "/static/js/3.a3490306.chunk.js",
       "/static/js/3.a3490306.chunk.js.map",
-      "/static/js/react-select.c8927c3b.chunk.js",
-      "/static/js/react-select.c8927c3b.chunk.js.map"
+      "/static/js/react-select.43b5407c.chunk.js",
+      "/static/js/react-select.43b5407c.chunk.js.map"
     ],
     "chunks": [
       3,
@@ -323,8 +323,8 @@
     "js": [
       "/static/js/3.a3490306.chunk.js",
       "/static/js/3.a3490306.chunk.js.map",
-      "/static/js/react-select.c8927c3b.chunk.js",
-      "/static/js/react-select.c8927c3b.chunk.js.map"
+      "/static/js/react-select.43b5407c.chunk.js",
+      "/static/js/react-select.43b5407c.chunk.js.map"
     ],
     "chunks": [
       3,
@@ -338,8 +338,8 @@
     "js": [
       "/static/js/3.a3490306.chunk.js",
       "/static/js/3.a3490306.chunk.js.map",
-      "/static/js/react-select.c8927c3b.chunk.js",
-      "/static/js/react-select.c8927c3b.chunk.js.map"
+      "/static/js/react-select.43b5407c.chunk.js",
+      "/static/js/react-select.43b5407c.chunk.js.map"
     ],
     "chunks": [
       3,
@@ -400,15 +400,15 @@
   "client": {
     "css": [
       "/static/css/14.28a992d7.chunk.css",
-      "/static/css/client.1ebb2c68.chunk.css"
+      "/static/css/client.7a684119.chunk.css"
     ],
     "js": [
-      "/static/js/runtime~client.6d8007e3.js",
-      "/static/js/runtime~client.6d8007e3.js.map",
+      "/static/js/runtime~client.f90e8aab.js",
+      "/static/js/runtime~client.f90e8aab.js.map",
       "/static/js/14.28a992d7.chunk.js",
       "/static/js/14.28a992d7.chunk.js.map",
-      "/static/js/client.1ebb2c68.chunk.js",
-      "/static/js/client.1ebb2c68.chunk.js.map"
+      "/static/js/client.7a684119.chunk.js",
+      "/static/js/client.7a684119.chunk.js.map"
     ],
     "chunks": [
       13,
@@ -428,11 +428,11 @@
   },
   "plone-volto-components-manage-Widgets-DatetimeWidget": {
     "css": [
-      "/static/css/plone-volto-components-manage-Widgets-DatetimeWidget.843e0db1.chunk.css"
+      "/static/css/plone-volto-components-manage-Widgets-DatetimeWidget.b91b7bf1.chunk.css"
     ],
     "js": [
-      "/static/js/plone-volto-components-manage-Widgets-DatetimeWidget.843e0db1.chunk.js",
-      "/static/js/plone-volto-components-manage-Widgets-DatetimeWidget.843e0db1.chunk.js.map"
+      "/static/js/plone-volto-components-manage-Widgets-DatetimeWidget.b91b7bf1.chunk.js",
+      "/static/js/plone-volto-components-manage-Widgets-DatetimeWidget.b91b7bf1.chunk.js.map"
     ],
     "chunks": [
       9
@@ -441,8 +441,8 @@
   "plone-volto-components-theme-View-EventView": {
     "css": [],
     "js": [
-      "/static/js/plone-volto-components-theme-View-EventView.8826e9d6.chunk.js",
-      "/static/js/plone-volto-components-theme-View-EventView.8826e9d6.chunk.js.map"
+      "/static/js/plone-volto-components-theme-View-EventView.cd9d3490.chunk.js",
+      "/static/js/plone-volto-components-theme-View-EventView.cd9d3490.chunk.js.map"
     ],
     "chunks": [
       10
