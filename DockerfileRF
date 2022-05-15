@@ -1,3 +1,0 @@
-FROM plone/plone-backend:nightly-20220506
-
-RUN bin/pip install --upgrade --pre "https://github.com/plone/plone.app.robotframework/archive/refs/heads/volto_3294.zip"

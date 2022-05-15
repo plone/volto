@@ -163,8 +163,6 @@ jobs:
       ## node install
       - run: yarn --frozen-lockfile
 
-      - run: docker build -f DockerfileRF -t plone/plone-backend:robot .
-
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v2
         env:
@@ -183,7 +181,7 @@ jobs:
           config: integrationFolder=cypress/tests
           spec: cypress/tests/core/basic/**/*.js
           start: |
-            make start-test-acceptance-server-6-test
+            make start-test-acceptance-server DOCKER_IMAGE=plone/plone-backend:6.0.0a4
             make start-test-acceptance-frontend
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
 
