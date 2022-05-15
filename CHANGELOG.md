@@ -16,6 +16,9 @@
 
 ### Internal
 
+- Reintroduce Plone 6 acceptance tests using the latests `plone.app.robotframework` 2.0.0a6 specific Volto fixture. @datakurre @ericof @sneridagh
+- Upgrade all tests to use `plone.app.robotframework` 2.0.0a6 @sneridagh
+
 ### Documentation
 
 - fix make task `docs-linkcheckbroken` if grep has exit code 1 (no lines found)
