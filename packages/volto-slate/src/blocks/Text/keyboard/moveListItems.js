@@ -1,5 +1,5 @@
 import { Editor, Path, Transforms, Node } from 'slate';
-import { isCursorInList, getCurrentListItem } from 'volto-slate/utils';
+import { isCursorInList, getCurrentListItem } from '@plone/volto-slate/utils';
 import config from '@plone/volto/registry';
 
 /**

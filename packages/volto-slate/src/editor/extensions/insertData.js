@@ -1,10 +1,10 @@
 import { Editor, Text, Transforms } from 'slate';
-import { deserialize } from 'volto-slate/editor/deserialize';
+import { deserialize } from '@plone/volto-slate/editor/deserialize';
 import {
   createDefaultBlock,
   MIMETypeName,
   normalizeExternalData,
-} from 'volto-slate/utils';
+} from '@plone/volto-slate/utils';
 
 export const insertData = (editor) => {
   editor.dataTransferHandlers = {

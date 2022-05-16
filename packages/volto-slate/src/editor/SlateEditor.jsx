@@ -17,7 +17,7 @@ import {
   toggleInlineFormat,
   toggleMark,
   parseDefaultSelection,
-} from 'volto-slate/utils';
+} from '@plone/volto-slate/utils';
 import { InlineToolbar } from './ui';
 import EditorContext from './EditorContext';
 

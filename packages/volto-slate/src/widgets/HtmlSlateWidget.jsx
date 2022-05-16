@@ -10,12 +10,15 @@ import { Provider, useSelector } from 'react-redux';
 import { defineMessages, injectIntl } from 'react-intl';
 
 import { FormFieldWrapper } from '@plone/volto/components';
-import SlateEditor from 'volto-slate/editor/SlateEditor';
-import { serializeNodes } from 'volto-slate/editor/render';
-import { makeEditor } from 'volto-slate/utils';
-import deserialize from 'volto-slate/editor/deserialize';
+import SlateEditor from '@plone/volto-slate/editor/SlateEditor';
+import { serializeNodes } from '@plone/volto-slate/editor/render';
+import { makeEditor } from '@plone/volto-slate/utils';
+import deserialize from '@plone/volto-slate/editor/deserialize';
 
-import { createEmptyParagraph, normalizeExternalData } from 'volto-slate/utils';
+import {
+  createEmptyParagraph,
+  normalizeExternalData,
+} from '@plone/volto-slate/utils';
 import { ErrorBoundary } from './ErrorBoundary';
 
 import './style.css';

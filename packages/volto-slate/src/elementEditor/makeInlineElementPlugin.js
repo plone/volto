@@ -10,9 +10,10 @@ import {
 } from './utils';
 import messages from './messages';
 import ToolbarButton from './ToolbarButton';
-import tagSVG from '@plone/volto/icons/tag.svg';
 import SchemaProvider from './SchemaProvider';
 import { omit } from 'lodash';
+
+import tagSVG from '@plone/volto/icons/tag.svg';
 
 export const makeInlineElementPlugin = (options) => {
   const { elementType, isInlineElement, pluginId, title = 'Element' } = options;

@@ -1,6 +1,6 @@
 import { toggleList, unwrapList } from './utils';
-import { isBlockActive } from 'volto-slate/utils';
-import { UL, OL, LI } from 'volto-slate/constants';
+import { isBlockActive } from '@plone/volto-slate/utils';
+import { UL, OL, LI } from '@plone/volto-slate/constants';
 
 /**
  * Uses the old toggleList function to toggle lists on or off or from a type to another.

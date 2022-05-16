@@ -1,5 +1,5 @@
 import { nestContent } from '@plone/volto/helpers';
-import { UPLOAD_CONTENT } from 'volto-slate/constants';
+import { UPLOAD_CONTENT } from '@plone/volto-slate/constants';
 
 // TODO: the PR has been merged into Volto, so this should be cleaned up
 

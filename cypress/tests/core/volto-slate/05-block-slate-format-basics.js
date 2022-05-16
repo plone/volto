@@ -1,8 +1,7 @@
-import { slateBeforeEach, slateAfterEach } from '../../../support';
+import { slateBeforeEach } from '../../../support';
 
 describe('Block Tests: Basic text format', () => {
   beforeEach(slateBeforeEach);
-  afterEach(slateAfterEach);
 
   it('Bold', function () {
     // Complete chained commands

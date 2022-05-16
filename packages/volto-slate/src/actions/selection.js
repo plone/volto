@@ -1,4 +1,4 @@
-import { SAVE_SLATE_BLOCK_SELECTION } from 'volto-slate/constants';
+import { SAVE_SLATE_BLOCK_SELECTION } from '@plone/volto-slate/constants';
 
 /**
  * Action creator for the action to save the selection of a Slate block. The

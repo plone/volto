@@ -134,6 +134,7 @@ jobs:
   corevoltoslate:
     runs-on: ubuntu-latest
     name: Core Volto Slate
+    timeout-minutes: 45
     strategy:
       matrix:
         node-version: [14.x, 16.x]

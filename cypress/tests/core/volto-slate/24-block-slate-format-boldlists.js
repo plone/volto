@@ -1,8 +1,7 @@
-import { slateBeforeEach, slateAfterEach } from '../../../support';
+import { slateBeforeEach } from '../../../support';
 
 describe('Block Tests: Bold Bulleted lists', () => {
   beforeEach(slateBeforeEach);
-  afterEach(slateAfterEach);
 
   // it('can be queried in all browsers', () => {
   //   cy.window()

@@ -7,7 +7,7 @@ import {
   createAndSelectNewBlockAfter,
   getCurrentListItem,
   createEmptyParagraph,
-} from 'volto-slate/utils';
+} from '@plone/volto-slate/utils';
 
 /**
  * Handles `Enter` key on empty and non-empty list items.

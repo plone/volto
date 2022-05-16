@@ -1,11 +1,11 @@
 import isUrl from 'is-url';
 import imageExtensions from 'image-extensions';
-import { blockTagDeserializer } from 'volto-slate/editor/deserialize';
+import { blockTagDeserializer } from '@plone/volto-slate/editor/deserialize';
 import { getBaseUrl } from '@plone/volto/helpers';
 import { v4 as uuid } from 'uuid';
 import { Transforms } from 'slate';
 
-import { IMAGE } from 'volto-slate/constants';
+import { IMAGE } from '@plone/volto-slate/constants';
 
 export const insertImage = (editor, url, { typeImg = IMAGE } = {}) => {
   const image = { type: typeImg, url, children: [{ text: '' }] };

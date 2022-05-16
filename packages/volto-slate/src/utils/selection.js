@@ -1,8 +1,8 @@
 import { castArray } from 'lodash';
 import { Editor, Transforms, Range, Node } from 'slate';
 import { ReactEditor } from 'slate-react';
-import { isCursorInList } from 'volto-slate/utils';
-import { LI } from 'volto-slate/constants';
+import { isCursorInList } from '@plone/volto-slate/utils';
+import { LI } from '@plone/volto-slate/constants';
 import config from '@plone/volto/registry';
 
 /**

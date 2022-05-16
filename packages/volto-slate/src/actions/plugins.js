@@ -1,4 +1,4 @@
-import { SLATE_PLUGINS } from 'volto-slate/constants';
+import { SLATE_PLUGINS } from '@plone/volto-slate/constants';
 
 export function setPluginOptions(pluginId, values = {}) {
   return {

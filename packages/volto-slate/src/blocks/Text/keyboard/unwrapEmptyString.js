@@ -2,7 +2,7 @@ import { Node } from 'slate';
 import {
   _unwrapElement,
   _getActiveElement,
-} from 'volto-slate/components/ElementEditor/utils';
+} from '@plone/volto-slate/elementEditor/utils';
 import config from '@plone/volto/registry';
 
 /**

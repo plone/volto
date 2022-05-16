@@ -1,11 +1,10 @@
 {
-  "name": "volto-slate",
+  "name": "@plone/volto-slate",
   "version": "5.4.1",
   "description": "Slate.js integration with Volto",
   "main": "src/index.js",
   "author": "European Environment Agency: IDM2 A-Team",
   "license": "MIT",
-  "homepage": "https://github.com/eea/volto-slate",
   "keywords": [
     "volto-addon",
     "volto-slate",
@@ -14,58 +13,31 @@
     "plone",
     "react"
   ],
-  "addons": [
-    "@eeacms/volto-object-widget"
-  ],
   "dependencies": {
-    "@eeacms/volto-object-widget": "*",
-    "classnames": "2.2.6",
     "image-extensions": "1.1.0",
     "is-url": "1.2.4",
     "jsdom": "^16.6.0",
     "react-intersection-observer": "^8.32.0",
-    "react-visibility-sensor": "5.1.1",
     "slate": "^0.71.0",
     "slate-history": "^0.66.0",
     "slate-hyperscript": "^0.67.0",
     "slate-react": "^0.71.0",
     "weak-key": "^1.0.2"
   },
-  "peerDependencies": {
-    "@plone/volto": ">=12.1.2"
-  },
   "devDependencies": {
-    "@cypress/code-coverage": "^3.9.5",
     "@testing-library/react": "9.5.0",
-    "@types/jest": "^25.2.3",
     "babel-plugin-transform-class-properties": "^6.24.1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:eea/volto-slate.git"
-  },
   "scripts": {
-    "release": "release-it",
-    "release-major-beta": "release-it major --preRelease=beta",
-    "release-beta": "release-it --preRelease=beta",
-    "bootstrap": "npm install -g ejs; npm link ejs; node bootstrap",
     "test": "make test",
     "test:fix": "make test-update",
-    "stylelint": "../../../node_modules/stylelint/bin/stylelint.js --allow-empty-input 'src/**/*.{css,less}'",
-    "stylelint:overrides": "../../../node_modules/.bin/stylelint --syntax less --allow-empty-input 'theme/**/*.overrides' 'src/**/*.overrides'",
+    "stylelint": "../node_modules/stylelint/bin/stylelint.js --allow-empty-input 'src/**/*.{css,less}'",
+    "stylelint:overrides": "../node_modules/.bin/stylelint --syntax less --allow-empty-input 'theme/**/*.overrides' 'src/**/*.overrides'",
     "stylelint:fix": "yarn stylelint --fix && yarn stylelint:overrides --fix",
-    "prettier": "../../../node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,json,css,less,md}'",
-    "prettier:fix": "../../../node_modules/.bin/prettier --single-quote --write 'src/**/*.{js,jsx,json,css,less,md}'",
-    "lint": "../../../node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx}'",
-    "lint:fix": "../../../node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx}'",
-    "cypress:run": "if [ -d ./project ]; then ./project/node_modules/cypress/bin/cypress run; else ../../../node_modules/cypress/bin/cypress run; fi",
-    "cypress:open": "if [ -d ./project ]; then ./project/node_modules/cypress/bin/cypress open; else ../../../node_modules/cypress/bin/cypress open; fi",
-    "i18n": "mv .i18n.babel.config.js babel.config.js; rm -rf build/messages && NODE_ENV=production node src/i18n.js; mv babel.config.js .i18n.babel.config.js",
-    "cypress:start-frontend": "cd ../../../ && RAZZLE_API_PATH=http://localhost:55001/plone yarn start",
-    "ci:cypress:run": "make cypress",
-    "ci:cypress": "start-test ci:test-acceptance-server http-get://localhost:55001/plone ci:cypress:run",
-    "ci:test-acceptance-server": "make test-acceptance-server",
-    "cy:test:fixture:setup": "node cypress/support/reset-fixture.js",
-    "cy:test:fixture:teardown": "node cypress/support/reset-fixture.js teardown"
+    "prettier": "../node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,json,css,less,md}'",
+    "prettier:fix": "../node_modules/.bin/prettier --single-quote --write 'src/**/*.{js,jsx,json,css,less,md}'",
+    "lint": "../node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx}'",
+    "lint:fix": "../node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx}'",
+    "i18n": "mv .i18n.babel.config.js babel.config.js; rm -rf build/messages && NODE_ENV=production node src/i18n.js; mv babel.config.js .i18n.babel.config.js"
   }
 }

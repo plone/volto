@@ -7,7 +7,7 @@
 
 import config from '@plone/volto/registry';
 
-import { UPLOAD_CONTENT } from 'volto-slate/constants';
+import { UPLOAD_CONTENT } from '@plone/volto-slate/constants';
 
 const initialState = {};
 

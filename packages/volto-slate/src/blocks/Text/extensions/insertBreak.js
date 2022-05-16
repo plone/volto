@@ -7,7 +7,7 @@ import {
   createAndSelectNewBlockAfter,
   rangeIsInSplittableNode,
   // deconstructToVoltoBlocks,
-} from 'volto-slate/utils';
+} from '@plone/volto-slate/utils';
 
 /**
  * @param {Editor} editor The Slate editor object to extend.

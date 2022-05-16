@@ -1,8 +1,9 @@
-import codeSVG from '@plone/volto/icons/code.svg';
 import TableBlockEdit from './TableBlockEdit';
 import TableBlockView from './TableBlockView';
 import { extractTables } from './deconstruct';
 import { normalizeTable } from './extensions/normalizeTable';
+
+import tableSVG from '@plone/volto/icons/table.svg';
 
 /**
  * @summary Called from Volto to configure new or existing Volto block types.
@@ -27,11 +28,11 @@ export default function install(config) {
     ],
   };
 
-  config.blocks.blocksConfig.slateTable = {
-    id: 'slateTable',
-    title: 'Slate Table',
-    icon: codeSVG,
-    group: 'text',
+  const tableBlockConfig = {
+    id: 'table',
+    title: 'Table',
+    icon: tableSVG,
+    group: 'common',
     view: TableBlockView,
     edit: TableBlockEdit,
     restricted: false,
@@ -46,5 +47,13 @@ export default function install(config) {
     //   return true;
     // },
   };
+
+  config.blocks.blocksConfig.table = tableBlockConfig;
+  config.blocks.blocksConfig.slateTable = {
+    ...tableBlockConfig,
+    id: 'slateTable',
+    restricted: true,
+  };
+
   return config;
 }

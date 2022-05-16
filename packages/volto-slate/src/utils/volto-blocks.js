@@ -7,7 +7,7 @@ import {
   getBlocksLayoutFieldname,
 } from '@plone/volto/helpers';
 import { Transforms, Editor, Node, Text, Path } from 'slate';
-import { serializeNodesToText } from 'volto-slate/editor/render';
+import { serializeNodesToText } from '@plone/volto-slate/editor/render';
 import { omit } from 'lodash';
 import config from '@plone/volto/registry';
 

@@ -14,13 +14,13 @@ import {
   BlockChooserButton,
 } from '@plone/volto/components';
 
-import { SlateEditor } from 'volto-slate/editor';
-import { serializeNodesToText } from 'volto-slate/editor/render';
+import { SlateEditor } from '@plone/volto-slate/editor';
+import { serializeNodesToText } from '@plone/volto-slate/editor/render';
 import {
   createImageBlock,
   parseDefaultSelection,
   deconstructToVoltoBlocks,
-} from 'volto-slate/utils';
+} from '@plone/volto-slate/utils';
 import { Transforms } from 'slate';
 
 // import ShortcutListing from './ShortcutListing';

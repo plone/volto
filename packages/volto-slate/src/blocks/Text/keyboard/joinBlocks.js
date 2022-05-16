@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
-import { serializeNodesToText } from 'volto-slate/editor/render';
+import { serializeNodesToText } from '@plone/volto-slate/editor/render';
 import { Editor } from 'slate';
 import {
   getPreviousVoltoBlock,
@@ -8,7 +8,7 @@ import {
   isCursorAtBlockEnd,
   mergeSlateWithBlockBackward,
   mergeSlateWithBlockForward,
-} from 'volto-slate/utils';
+} from '@plone/volto-slate/utils';
 import {
   changeBlock,
   deleteBlock,

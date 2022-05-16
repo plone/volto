@@ -1,8 +1,7 @@
-import { slateBeforeEach, slateAfterEach } from '../../../support';
+import { slateBeforeEach } from '../../../support';
 
 describe('Block Tests', () => {
   beforeEach(slateBeforeEach);
-  afterEach(slateAfterEach);
 
   it('As editor I can add text and select parts of it and see the Slate Toolbar', function () {
     // Complete chained commands

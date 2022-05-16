@@ -4,9 +4,9 @@
  * a variable number of hooks in a component
  */
 import React from 'react';
-import { SidebarPopup } from '@plone/volto/components';
 import { useSelector, useDispatch } from 'react-redux';
-import { setPluginOptions } from 'volto-slate/actions';
+import { SidebarPopup } from '@plone/volto/components';
+import { setPluginOptions } from '@plone/volto-slate/actions';
 
 const SidebarEditor = (props) => {
   const { editor, pluginId, getActiveElement, pluginEditor } = props;

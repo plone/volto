@@ -1,8 +1,8 @@
 import { defineMessages } from 'react-intl'; // , defineMessages
 import linkSVG from '@plone/volto/icons/link.svg';
-import { makeInlineElementPlugin } from 'volto-slate/components/ElementEditor';
+import { makeInlineElementPlugin } from '@plone/volto-slate/elementEditor';
 
-import { LINK } from 'volto-slate/constants';
+import { LINK } from '@plone/volto-slate/constants';
 import { LinkElement } from './render';
 import { withLink } from './extensions';
 import { linkDeserializer } from './deserialize';

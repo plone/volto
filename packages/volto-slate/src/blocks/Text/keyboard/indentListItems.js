@@ -5,7 +5,7 @@ import {
   getCurrentListItem,
   mergeWithNextList,
   mergeWithPreviousList,
-} from 'volto-slate/utils';
+} from '@plone/volto-slate/utils';
 import config from '@plone/volto/registry';
 
 /**

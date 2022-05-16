@@ -1,8 +1,7 @@
-import { slateBeforeEach, slateAfterEach } from '../../../support';
+import { slateBeforeEach } from '../../../support';
 
 describe('Block Tests', () => {
   beforeEach(slateBeforeEach);
-  afterEach(slateAfterEach);
 
   it('see the initial Title block, type in it, see the updated title in the sidebar, add a Description block, type in it, see the updated description in the sidebar, save the page, see the correct page view, delete the Description block, then see the correct page view', function () {
     // cy.get('.documentFirstHeading').contains('My Page');

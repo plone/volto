@@ -10,7 +10,7 @@ import { map } from 'lodash';
 import {
   serializeNodes,
   serializeNodesToText,
-} from 'volto-slate/editor/render';
+} from '@plone/volto-slate/editor/render';
 import { Node } from 'slate';
 
 // TODO: loading LESS files with `volto-slate/...` paths does not work currently

@@ -1,7 +1,6 @@
 import externalSVG from '@plone/volto/icons/link.svg';
 import internalSVG from '@plone/volto/icons/nav.svg';
 import emailSVG from '@plone/volto/icons/email.svg';
-import hashlinkSVG from 'volto-slate/icons/hashlink.svg';
 // import pageLinkSVG from '@plone/volto/icons/show-blocks.svg';
 
 export const EmailLinkSchema = {
@@ -40,26 +39,6 @@ export const InternalLinkSchema = {
       title: 'Internal link',
       multiple: false,
       mode: 'link',
-      selectedItemAttrs: [],
-    },
-  },
-  required: [],
-};
-
-export const InternalHashSchema = {
-  title: 'Internal hash link',
-  fieldsets: [
-    {
-      id: 'hash',
-      title: 'Hash link',
-      fields: ['internal_hash'],
-    },
-  ],
-  properties: {
-    internal_hash: {
-      widget: 'blocks_browser',
-      title: 'Hash link',
-      multiple: false,
       selectedItemAttrs: [],
     },
   },
@@ -115,11 +94,6 @@ const LinkEditSchema = {
           id: 'internal',
           icon: internalSVG,
           schema: InternalLinkSchema,
-        },
-        {
-          id: 'hash',
-          icon: hashlinkSVG,
-          schema: InternalHashSchema,
         },
         {
           id: 'external',

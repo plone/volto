@@ -61,7 +61,7 @@ msgstr ""
 msgid "Divide each row into separate cells"
 msgstr ""
 
-#: components/ElementEditor/messages
+#: elementEditor/messages
 msgid "Edit element"
 msgstr ""
 
@@ -130,7 +130,7 @@ msgstr ""
 msgid "Reduce complexity"
 msgstr ""
 
-#: components/ElementEditor/messages
+#: elementEditor/messages
 msgid "Remove element"
 msgstr ""
 

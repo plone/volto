@@ -1,14 +1,15 @@
 /* eslint no-console: ["error", { allow: ["error"] }] */
-import { Icon as VoltoIcon, InlineForm } from '@plone/volto/components';
-import briefcaseSVG from '@plone/volto/icons/briefcase.svg';
-import checkSVG from '@plone/volto/icons/check.svg';
-import clearSVG from '@plone/volto/icons/clear.svg';
 import { isEqual } from 'lodash';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { ReactEditor } from 'slate-react';
-import { setPluginOptions } from 'volto-slate/actions';
+import { Icon as VoltoIcon, InlineForm } from '@plone/volto/components';
+import { setPluginOptions } from '@plone/volto-slate/actions';
 import BaseSchemaProvider from './SchemaProvider';
+
+import briefcaseSVG from '@plone/volto/icons/briefcase.svg';
+import checkSVG from '@plone/volto/icons/check.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const PluginEditor = (props) => {
   const {

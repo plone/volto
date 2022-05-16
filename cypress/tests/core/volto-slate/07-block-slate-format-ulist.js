@@ -1,8 +1,7 @@
-import { slateBeforeEach, slateAfterEach } from '../../../support';
+import { slateBeforeEach } from '../../../support';
 
 describe('Block Tests: Bulleted lists', () => {
   beforeEach(slateBeforeEach);
-  afterEach(slateAfterEach);
 
   it('As editor I can add bulleted lists', function () {
     // Complete chained commands

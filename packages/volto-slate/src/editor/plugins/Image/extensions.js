@@ -2,7 +2,7 @@
 // The TextBlockEdit extensions will come and then split the images into
 // separate dedicated Volto image blocks.
 
-import { IMAGE } from 'volto-slate/constants';
+import { IMAGE } from '@plone/volto-slate/constants';
 import { jsx } from 'slate-hyperscript';
 
 export const deserializeImageTag = (editor, el) => {

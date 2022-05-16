@@ -1,5 +1,13 @@
 import React from 'react';
-import { TABLE, THEAD, TFOOT, TBODY, TR, TD, TH } from 'volto-slate/constants';
+import {
+  TABLE,
+  THEAD,
+  TFOOT,
+  TBODY,
+  TR,
+  TD,
+  TH,
+} from '@plone/volto-slate/constants';
 
 export const tableElements = {
   [TABLE]: ({ attributes, children }) => (

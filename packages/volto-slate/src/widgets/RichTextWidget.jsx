@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { FormFieldWrapper } from '@plone/volto/components';
-import SlateEditor from 'volto-slate/editor/SlateEditor';
+import SlateEditor from '@plone/volto-slate/editor/SlateEditor';
 
 import { createEmptyParagraph } from '../utils/blocks';
 

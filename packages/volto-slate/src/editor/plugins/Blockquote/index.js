@@ -1,17 +1,13 @@
 import React from 'react';
-import { BlockButton } from 'volto-slate/editor/ui';
+import { BlockButton } from '@plone/volto-slate/editor/ui';
 import quoteIcon from '@plone/volto/icons/quote.svg';
 
 // TODO: this needs to use constants for el type
 
-export const BlockquoteElement = ({ attributes, children, element }) => {
+export const BlockquoteElement = ({ attributes, children }) => {
   // the 'callout' class is defined in file 'blocks.less'
   // TODO: move the style out of it into a `blockquote` tag name selector
-  return (
-    <blockquote {...attributes} className="callout">
-      {children}
-    </blockquote>
-  );
+  return <blockquote {...attributes}>{children}</blockquote>;
 };
 
 export default function install(config) {

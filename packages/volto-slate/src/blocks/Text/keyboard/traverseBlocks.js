@@ -5,7 +5,7 @@ import {
   getNextVoltoBlock,
   getPreviousVoltoBlock,
   createDefaultBlock,
-} from 'volto-slate/utils';
+} from '@plone/volto-slate/utils';
 
 /**
  * goUp.

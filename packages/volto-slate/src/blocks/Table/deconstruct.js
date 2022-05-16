@@ -1,17 +1,25 @@
 import { v4 as uuid } from 'uuid';
 import { Editor, Transforms } from 'slate';
-import { TABLE, THEAD, TBODY, TFOOT, TD, TH, TR } from 'volto-slate/constants';
+import {
+  TABLE,
+  THEAD,
+  TBODY,
+  TFOOT,
+  TD,
+  TH,
+  TR,
+} from '@plone/volto-slate/constants';
 
 /**
  * @param {Array} rows The array of rows that almost completely defines a
- * `slateTable`-typed block.
+ * `table`-typed block.
  * @returns {Array} A tuple `[id, block]` where `id` is the new block's ID and
  * the `block` is all the block's data.
  */
 export function syncCreateTableBlock(rows) {
   const id = uuid();
   const block = {
-    '@type': 'slateTable',
+    '@type': 'table',
     table: {
       rows,
     },
@@ -24,7 +32,7 @@ export function syncCreateTableBlock(rows) {
  * @param {PathRef} pathRef Has the current value a `Path` so that the search is
  * done just inside nodes in that `Path`.
  * @returns Extracts tables from a Slate `Editor` into an array of detached
- * `slateTable` blocks.
+ * `table` blocks.
  */
 export const extractTables = (editor, pathRef) => {
   const tableNodes = Array.from(
@@ -45,7 +53,7 @@ export const extractTables = (editor, pathRef) => {
 
 /**
  * @param {Node[]} fragment A Slate document fragment.
- * @returns {Array} An array of rows in the format requested by `slateTable`
+ * @returns {Array} An array of rows in the format requested by `table`
  * blocks.
  */
 function collectRowsFrom(fragment) {
@@ -80,7 +88,7 @@ function collectRowsFrom(fragment) {
 /**
  * @param {HTMLElement} el The <table> element from which to extract rows.
  * @returns {Array} A rows array that contains rows in the format required by
- * `slateTable` blocks.
+ * `table` blocks.
  */
 function extractVoltoTable(el) {
   let thead = [],

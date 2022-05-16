@@ -1,4 +1,4 @@
-import { serializeNodes } from 'volto-slate/editor/render';
+import { serializeNodes } from '@plone/volto-slate/editor/render';
 import config from '@plone/volto/registry';
 
 const TextBlockView = (props) => {

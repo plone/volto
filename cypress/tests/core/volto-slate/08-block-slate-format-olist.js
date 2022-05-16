@@ -1,8 +1,7 @@
-import { slateBeforeEach, slateAfterEach } from '../../../support';
+import { slateBeforeEach } from '../../../support';
 
 describe('Block Tests: Numbered lists', () => {
   beforeEach(slateBeforeEach);
-  afterEach(slateAfterEach);
 
   it('As editor I can add numbered lists', function () {
     // Complete chained commands

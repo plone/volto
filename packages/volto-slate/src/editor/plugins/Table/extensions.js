@@ -1,5 +1,13 @@
-import { blockTagDeserializer } from 'volto-slate/editor/deserialize';
-import { TABLE, TR, TD, TFOOT, THEAD, TBODY, TH } from 'volto-slate/constants';
+import { blockTagDeserializer } from '@plone/volto-slate/editor/deserialize';
+import {
+  TABLE,
+  TR,
+  TD,
+  TFOOT,
+  THEAD,
+  TBODY,
+  TH,
+} from '@plone/volto-slate/constants';
 import { Editor, Point, Range } from 'slate';
 
 export const withTable = (editor) => {

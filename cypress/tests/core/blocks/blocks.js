@@ -151,7 +151,7 @@ describe('Blocks Tests', () => {
     // Edit
     cy.getSlate().click();
     cy.get('button.block-add-button').click();
-    cy.get('.blocks-chooser .title').contains('Text').click();
+    cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.ui.buttons .button.slateTable').click();
     cy.wait(2000);
     cy.get(

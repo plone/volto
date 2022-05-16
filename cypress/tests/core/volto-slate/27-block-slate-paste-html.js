@@ -1,12 +1,8 @@
-import {
-  slateBeforeEach,
-  slateAfterEach,
-  createSlateBlock,
-} from '../../../support';
+import { slateBeforeEach, createSlateBlock } from '../../../support';
 
 describe('Block Tests: external text containing html contents/tags ', () => {
   beforeEach(slateBeforeEach);
-  afterEach(slateAfterEach);
+
   it('should paste external text containing html', function () {
     cy.getSlateEditorAndType("Let's paste external html texts");
     cy.setSlateCursor('texts').type('{enter}');

@@ -2,7 +2,7 @@
 
 ## 15.8.1 (unreleased)
 
-- Ship Volto with volto-slate included. @tiberiuichim @razvanmiu @eea
+- Integrate volto-state add-on. @tiberiuichim @razvanmiu @eea
 
 ### Breaking
 

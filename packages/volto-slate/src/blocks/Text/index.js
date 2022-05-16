@@ -1,5 +1,4 @@
 import React from 'react';
-import codeSVG from '@plone/volto/icons/code.svg';
 import TextBlockView from './TextBlockView';
 import TextBlockEdit from './TextBlockEdit';
 import TextBlockSchema from './TextBlockSchema';
@@ -17,7 +16,7 @@ import {
   traverseBlocks,
   unwrapEmptyString,
 } from './keyboard';
-import { withDeleteSelectionOnEnter } from 'volto-slate/editor/extensions';
+import { withDeleteSelectionOnEnter } from '@plone/volto-slate/editor/extensions';
 import {
   breakList,
   withDeserializers,
@@ -25,12 +24,14 @@ import {
   withSplitBlocksOnBreak,
   withIsSelected,
 } from './extensions';
-import { extractImages } from 'volto-slate/editor/plugins/Image/deconstruct';
-import { extractTables } from 'volto-slate/blocks/Table/deconstruct';
+import { extractImages } from '@plone/volto-slate/editor/plugins/Image/deconstruct';
+import { extractTables } from '@plone/volto-slate/blocks/Table/deconstruct';
 
 export TextBlockView from './TextBlockView';
 export TextBlockEdit from './TextBlockEdit';
 export TextBlockSchema from './TextBlockSchema';
+
+import textSVG from '@plone/volto/icons/subtext.svg';
 
 export default (config) => {
   config.settings.slate = {
@@ -99,10 +100,10 @@ export default (config) => {
     'slate',
   ];
 
-  config.blocks.blocksConfig.slate = {
+  const slateBlockConfig = {
     id: 'slate',
-    title: 'Slate',
-    icon: codeSVG,
+    title: 'Text',
+    icon: textSVG,
     group: 'text',
     view: TextBlockView,
     edit: TextBlockEdit,
@@ -131,6 +132,8 @@ export default (config) => {
     },
   };
 
+  config.blocks.blocksConfig.text = slateBlockConfig;
+  config.blocks.blocksConfig.slate = { ...slateBlockConfig, restricted: true };
   config.blocks.blocksConfig.detachedSlate = {
     ...config.blocks.blocksConfig.slate,
     id: 'detachedSlate',

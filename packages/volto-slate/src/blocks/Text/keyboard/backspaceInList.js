@@ -4,7 +4,7 @@ import {
   isCursorInList,
   isCursorAtListBlockStart,
   deconstructToVoltoBlocks,
-} from 'volto-slate/utils';
+} from '@plone/volto-slate/utils';
 
 /**
  * Handle the new Volto blocks created by `deconstructToVoltoBlocks`.

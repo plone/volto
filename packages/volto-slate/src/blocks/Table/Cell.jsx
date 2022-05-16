@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { EditorReference, SlateEditor } from 'volto-slate/editor';
+import { EditorReference, SlateEditor } from '@plone/volto-slate/editor';
 import { ReactEditor } from 'slate-react';
 import config from '@plone/volto/registry';
 

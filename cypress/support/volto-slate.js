@@ -14,24 +14,6 @@ export const slateBeforeEach = (contentType = 'Document') => {
   cy.navigate('/my-page/edit');
 };
 
-export const slateAfterEach = () => {
-  // cy.autologin();
-  cy.removeContent({ path: 'my-page' });
-};
-
-export const slateJsonBeforeEach = (contentType = 'slate') => {
-  cy.autologin();
-  cy.addContentType(contentType);
-  cy.addSlateJSONField(contentType, 'slate');
-  slateBeforeEach(contentType);
-};
-
-export const slateJsonAfterEach = (contentType = 'slate') => {
-  cy.autologin();
-  cy.removeContentType(contentType);
-  slateAfterEach();
-};
-
 export const getSelectedSlateEditor = () => {
   return cy.get('.slate-editor.selected [contenteditable=true]').click();
 };

@@ -1,8 +1,7 @@
-import { slateBeforeEach, slateAfterEach } from '../../../support';
+import { slateBeforeEach } from '../../../support';
 
 describe('Block Tests: Links', () => {
   beforeEach(slateBeforeEach);
-  afterEach(slateAfterEach);
 
   // it('As editor I can add links', function () {
   //   // Complete chained commands

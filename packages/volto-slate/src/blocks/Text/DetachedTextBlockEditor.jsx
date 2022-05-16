@@ -1,8 +1,8 @@
 import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useInView } from 'react-intersection-observer';
-import { SlateEditor } from 'volto-slate/editor';
-import { serializeNodesToText } from 'volto-slate/editor/render';
+import { SlateEditor } from '@plone/volto-slate/editor';
+import { serializeNodesToText } from '@plone/volto-slate/editor/render';
 import { handleKeyDetached } from './keyboard';
 
 const DEBUG = false;

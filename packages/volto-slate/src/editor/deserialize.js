@@ -1,6 +1,6 @@
 import { jsx } from 'slate-hyperscript';
 import { Text } from 'slate';
-import { isWhitespace } from 'volto-slate/utils';
+import { isWhitespace } from '@plone/volto-slate/utils';
 import {
   TD,
   TH,

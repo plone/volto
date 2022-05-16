@@ -85,7 +85,7 @@
     },
     "moduleNameMapper": {
       "@plone/volto/(.*)$": "<rootDir>/src/$1",
-      "volto-slate": "<rootDir>/packages/volto-slate/src",
+      "@plone/volto-slate": "<rootDir>/packages/volto-slate/src",
       "~/config": "<rootDir>/src/config",
       "~/../locales/${lang}.json": "<rootDir>/locales/en.json",
       "(.*)/locales/(.*)": "<rootDir>/locales/$2",

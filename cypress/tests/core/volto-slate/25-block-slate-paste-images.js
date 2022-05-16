@@ -1,8 +1,7 @@
-import { slateBeforeEach, slateAfterEach } from '../../../support';
+import { slateBeforeEach } from '../../../support';
 
 describe('Block Tests: paste external images', () => {
   beforeEach(slateBeforeEach);
-  afterEach(slateAfterEach);
   it('should paste external images', function () {
     cy.getSlateEditorAndType('Let"s paste external images');
     cy.setSlateCursor('images')

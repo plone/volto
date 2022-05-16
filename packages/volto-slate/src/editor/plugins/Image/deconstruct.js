@@ -1,6 +1,6 @@
 import { v4 as uuid } from 'uuid';
 import { Editor, Transforms } from 'slate';
-import { IMAGE } from 'volto-slate/constants';
+import { IMAGE } from '@plone/volto-slate/constants';
 
 export function syncCreateImageBlock(url) {
   const id = uuid();

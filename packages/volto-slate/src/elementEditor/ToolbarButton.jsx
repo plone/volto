@@ -6,9 +6,9 @@ import { useSlate } from 'slate-react';
 import { useDispatch } from 'react-redux';
 import { omit } from 'lodash';
 
-import { ToolbarButton } from 'volto-slate/editor/ui';
-import { hasRangeSelection } from 'volto-slate/utils';
-import { setPluginOptions } from 'volto-slate/actions';
+import { ToolbarButton } from '@plone/volto-slate/editor/ui';
+import { hasRangeSelection } from '@plone/volto-slate/utils';
+import { setPluginOptions } from '@plone/volto-slate/actions';
 
 const ElementToolbarButton = (props) => {
   const { isActiveElement, insertElement, pluginId, toolbarButtonIcon } = props;
