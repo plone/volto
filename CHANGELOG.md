@@ -18,6 +18,7 @@
 
 - Reintroduce Plone 6 acceptance tests using the latests `plone.app.robotframework` 2.0.0a6 specific Volto fixture. @datakurre @ericof @sneridagh
 - Upgrade all tests to use `plone.app.robotframework` 2.0.0a6 @sneridagh
+- Upgrade Sentry to latest version because of [#3346](https://github.com/plone/volto/issues/3346) @sneridagh
 
 ### Documentation
 
