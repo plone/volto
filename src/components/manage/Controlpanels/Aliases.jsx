@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { getBaseUrl, getParentUrl, Helmet } from '@plone/volto/helpers';
+import { removeAliases, addAliases, getAliases } from '@plone/volto/actions';
 import { Portal } from 'react-portal';
 import {
   Container,
@@ -20,15 +21,13 @@ import {
   Input,
   Radio,
   Message,
+  Table,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-
-import { removeAliases, addAliases, getAliases } from '@plone/volto/actions';
-
+import DatetimeWidget from '@plone/volto/components/manage/Widgets/DatetimeWidget';
 import { Icon, Toolbar } from '@plone/volto/components';
 
 import backSVG from '@plone/volto/icons/back.svg';
-import DatetimeWidget from '@plone/volto/components/manage/Widgets/DatetimeWidget';
 
 const messages = defineMessages({
   back: {
@@ -42,9 +41,9 @@ const messages = defineMessages({
 });
 
 const filterChoices = [
-  { label: 'Both', value: 'both' },
-  { label: 'Automatically', value: 'automatically' },
-  { label: 'Manually', value: 'manually' },
+  { label: 'Both', value: '' },
+  { label: 'Automatically', value: 'no' },
+  { label: 'Manually', value: 'yes' },
 ];
 
 /**
@@ -82,6 +81,7 @@ class Aliases extends Component {
       isTargetUrlCorrect: false,
       aliasesToRemove: [],
       errorMessageAdd: '',
+      filterQuery: '',
     };
   }
 
@@ -125,8 +125,6 @@ class Aliases extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
-    // console.log('aliases', this.props.aliases);
-    // console.log('nextaliases', nextProps.aliases);
     if (this.props.aliases.add.loading && !nextProps.aliases.add.loaded) {
       if (nextProps.aliases.add.error) {
         this.setState({
@@ -152,9 +150,9 @@ class Aliases extends Component {
    * @method onCancel
    * @returns {undefined}
    */
-  onCancel() {
+  onCancel = () => {
     this.props.history.push(getParentUrl(this.props.pathname));
-  }
+  };
 
   /**
    * Select filter type handler
@@ -163,6 +161,15 @@ class Aliases extends Component {
    */
   handleSelectFilterType = (type) => {
     this.setState({ filterType: type });
+  };
+
+  /**
+   * Select filter type handler
+   * @method handleFilterQueryChange
+   * @returns {undefined}
+   */
+  handleFilterQueryChange = (query) => {
+    this.setState({ filterQuery: query });
   };
 
   /**
@@ -175,22 +182,37 @@ class Aliases extends Component {
   };
 
   /**
+   * Select Creation date handler
+   * @method handleSubmitFilter
+   * @returns {undefined}
+   */
+  handleSubmitFilter = () => {
+    const { filterQuery, filterType, createdBefore } = this.state;
+    this.props.getAliases(
+      getBaseUrl(this.props.pathname),
+      filterQuery,
+      filterType.value,
+      createdBefore,
+    );
+  };
+
+  /**
    * Alternative url handler
    * @method handleAltUrlChange
    * @returns {undefined}
    */
-  handleAltUrlChange(url) {
+  handleAltUrlChange = (url) => {
     this.setState({ altUrlPath: url });
-  }
+  };
 
   /**
    * Target url handler
    * @method handleTargetUrlChange
    * @returns {undefined}
    */
-  handleTargetUrlChange(url) {
+  handleTargetUrlChange = (url) => {
     this.setState({ targetUrlPath: url });
-  }
+  };
 
   /**
    * New alias submit handler
@@ -370,7 +392,14 @@ class Aliases extends Component {
                     />
                   </Header>
                   <Form.Field>
-                    <Input name="filter" placeholder="/example" />
+                    <Input
+                      name="filter"
+                      placeholder="/example"
+                      value={this.state.filterQuery}
+                      onChange={(e) =>
+                        this.handleFilterQueryChange(e.target.value)
+                      }
+                    />
                   </Form.Field>
                   <Header size="small">
                     <FormattedMessage
@@ -400,12 +429,7 @@ class Aliases extends Component {
                       }}
                     />
                   </Form.Field>
-                  <Button
-                    onClick={() => {
-                      // console.log(this.state.createdBefore);
-                    }}
-                    primary
-                  >
+                  <Button onClick={this.handleSubmitFilter} primary>
                     Filter
                   </Button>
                   <Header size="small">
@@ -414,20 +438,60 @@ class Aliases extends Component {
                       defaultMessage="Alternative url path → target url path (date and time of creation, manually created yes/no)"
                     />
                   </Header>
-                  {this.props.aliases?.items?.map((alias, i) => (
-                    <Form.Field key={i}>
-                      <Checkbox
-                        onChange={(e, { value }) =>
-                          this.handleCheckAlias(value)
-                        }
-                        value={alias.path}
-                        label={`${alias.path} → ${alias['redirect-to']} (${alias.datetime}, ${alias.manual})`}
-                        checked={this.state.aliasesToRemove.includes(
-                          alias.path,
-                        )}
-                      />
-                    </Form.Field>
-                  ))}
+                  <Table unstackable>
+                    <Table.Body>
+                      <Table.Row>
+                        <Table.HeaderCell>
+                          <FormattedMessage
+                            id="Select"
+                            defaultMessage="Select"
+                          />
+                        </Table.HeaderCell>
+                        <Table.HeaderCell>
+                          <FormattedMessage id="Alias" defaultMessage="Alias" />
+                        </Table.HeaderCell>
+                        <Table.HeaderCell>
+                          <FormattedMessage
+                            id="Target"
+                            defaultMessage="Target"
+                          />
+                        </Table.HeaderCell>
+                        <Table.HeaderCell>
+                          <FormattedMessage id="Date" defaultMessage="Date" />
+                        </Table.HeaderCell>
+                        <Table.HeaderCell>
+                          <FormattedMessage
+                            id="Manual"
+                            defaultMessage="Manual"
+                          />
+                        </Table.HeaderCell>
+                      </Table.Row>
+                      {this.props.aliases?.items?.map((alias, i) => (
+                        <Table.Row key={i}>
+                          <Table.Cell>
+                            <Checkbox
+                              onChange={(e, { value }) =>
+                                this.handleCheckAlias(value)
+                              }
+                              value={alias.path}
+                            />
+                          </Table.Cell>
+                          <Table.Cell>
+                            <p>{alias.path}</p>
+                          </Table.Cell>
+                          <Table.Cell>
+                            <p>{alias['redirect-to']}</p>
+                          </Table.Cell>
+                          <Table.Cell>
+                            <p>{alias.datetime}</p>
+                          </Table.Cell>
+                          <Table.Cell>
+                            <p>{`${alias.manual}`}</p>
+                          </Table.Cell>
+                        </Table.Row>
+                      ))}
+                    </Table.Body>
+                  </Table>
                   <Button onClick={this.handleRemoveAliases} primary>
                     <FormattedMessage
                       id="Remove selected"

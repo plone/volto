@@ -15,12 +15,14 @@ import {
  * @param {string} url Content url.
  * @returns {Object} Get aliases action.
  */
-export function getAliases(url) {
+export function getAliases(url, query, manual, datetime) {
   return {
     type: GET_ALIASES,
     request: {
       op: 'get',
-      path: `${url}/@aliases`,
+      path: `${url}/@aliases?q=${query ? query : ''}&manual=${
+        manual ? manual : ''
+      }&datetime=${datetime !== null ? datetime : ''}`,
     },
   };
 }
