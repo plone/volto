@@ -8,12 +8,17 @@
 
 - added configurable identifier field for password reset in config.js. @giuliaghisini
 - Added link integrity potential breakage warning message when deleting a referenced page
+- Add `expandToBackendURL` helper @sneridagh
 
 ### Bugfix
 
 - fixed view video list from youtube in Video block. @giuliaghisini
+- Fixed ICS URL in event view in seamless mode @sneridagh
 
 ### Internal
+
+- Reintroduce Plone 6 acceptance tests using the latests `plone.app.robotframework` 2.0.0a6 specific Volto fixture. @datakurre @ericof @sneridagh
+- Upgrade all tests to use `plone.app.robotframework` 2.0.0a6 @sneridagh
 
 ### Documentation
 
