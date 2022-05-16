@@ -11,10 +11,10 @@ import config from '@plone/volto/registry';
 const Image = (props) => {
   const { src, alt = '', ...rest } = props;
   let url = src;
-  if (isInternalURL(src)) {
-    url = (config.settings.prefixPath ?? '') + src; //add prefixPath to src if it's an internal url
+  const { prefixPath } = config.settings;
+  if (isInternalURL(src) && prefixPath && !src.startsWith(prefixPath)) {
+    url = prefixPath + src; //add prefixPath to src if it's an internal url and not a static resource.
   }
-
   return <img src={url} {...rest} alt={alt} />;
 };
 
