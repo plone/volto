@@ -20,8 +20,9 @@ import {
   setExpandedToolbar,
   unlockContent,
 } from '@plone/volto/actions';
-import { BodyClass, getBaseUrl } from '@plone/volto/helpers';
 import { Bottom } from '@plone/volto/components/manage/Toolbar/ToolbarComponents';
+import { Icon } from '@plone/volto/components';
+import { BodyClass, getBaseUrl, getCookieOptions } from '@plone/volto/helpers';
 import { Pluggable } from '@plone/volto/components/manage/Pluggable';
 import config from '@plone/volto/registry';
 
@@ -150,12 +151,7 @@ export class BasicToolbarComponent extends Component {
 
   handleShrink = () => {
     const { cookies } = this.props;
-    cookies.set('toolbar_expanded', !this.state.expanded, {
-      expires: new Date(
-        new Date().getTime() + config.settings.cookieExpires * 1000,
-      ),
-      path: '/',
-    });
+    cookies.set('toolbar_expanded', !this.state.expanded, getCookieOptions());
     this.setState(
       (state) => ({ expanded: !state.expanded }),
       () => this.props.setExpandedToolbar(this.state.expanded),

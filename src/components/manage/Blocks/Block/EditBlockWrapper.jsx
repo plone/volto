@@ -12,6 +12,7 @@ import config from '@plone/volto/registry';
 import { Button } from 'semantic-ui-react';
 import includes from 'lodash/includes';
 import isBoolean from 'lodash/isBoolean';
+import cx from 'classnames';
 import trashSVG from '@plone/volto/icons/delete.svg';
 
 const messages = defineMessages({
@@ -38,7 +39,13 @@ const EditBlockWrapper = (props) => {
     <div
       ref={draginfo.innerRef}
       {...draginfo.draggableProps}
-      className={`block-editor-${data['@type']}`}
+      // Right now, we can have the alignment information in the styles property or in the
+      // block data root, we inject the classname here for having control over the whole
+      // Block Edit wrapper
+      className={cx(`block-editor-${data['@type']}`, {
+        [data.align]: data.align,
+        [data.styles?.align]: data.styles?.align,
+      })}
     >
       <div style={{ position: 'relative' }}>
         <div

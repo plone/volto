@@ -628,6 +628,7 @@ class Contents extends Component {
 
     this.setState({
       filteredItems,
+      selectedMenuFilter: value,
     });
   }
 
@@ -1650,6 +1651,9 @@ class Contents extends Component {
                                       placeholder={this.props.intl.formatMessage(
                                         messages.filter,
                                       )}
+                                      value={
+                                        this.state.selectedMenuFilter || ''
+                                      }
                                       onChange={this.onChangeSelected}
                                       onClick={(e) => {
                                         e.preventDefault();

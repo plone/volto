@@ -8,14 +8,12 @@
   }
 }
 
-
 .dropdown-popup-trigger {
   cursor: pointer;
 }
 
 .dropdown-popup {
   z-index: 2000 !important;
-
 
   .ui.popup {
     margin: 0;
@@ -44,13 +42,12 @@
 
       & > .dropdown {
         &.item {
-
           display: flex !important;
           align-items: center;
           margin: 0;
 
           > .icon.left {
-            order:0;
+            order: 0;
             margin-left: 0;
             margin-right: 1rem;
           }
@@ -60,7 +57,7 @@
           }
 
           > .menu {
-            top:0 !important;
+            top: 0 !important;
           }
         }
 
