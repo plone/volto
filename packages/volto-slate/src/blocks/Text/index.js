@@ -1,4 +1,5 @@
 import React from 'react';
+import redraft from 'redraft';
 import TextBlockView from './TextBlockView';
 import TextBlockEdit from './TextBlockEdit';
 import TextBlockSchema from './TextBlockSchema';
@@ -120,8 +121,7 @@ export default (config) => {
       // TODO: this should be handled better
       return data && !!data.plaintext?.trim();
     },
-    tocEntry: (block = {}, tocData) => {
-      // integration with volto-block-toc
+    tocEntry: (block = {}) => {
       const { value, override_toc, entry_text, level, plaintext } = block;
       const type = value?.[0]?.type;
       return override_toc && level
@@ -132,8 +132,25 @@ export default (config) => {
     },
   };
 
-  config.blocks.blocksConfig.text = slateBlockConfig;
-  config.blocks.blocksConfig.slate = { ...slateBlockConfig, restricted: true };
+  // Make draft js compatible with ToC
+  config.blocks.blocksConfig.text = {
+    ...config.blocks.blocksConfig.text,
+    restricted: false,
+    tocEntry: (block = {}) => {
+      const draft = redraft(
+        block.text,
+        config.settings.richtextViewSettings.ToHTMLRenderers,
+        config.settings.richtextViewSettings.ToHTMLOptions,
+      );
+      const type = draft?.[0]?.[0]?.type;
+
+      return config.settings.slate.topLevelTargetElements.includes(type)
+        ? [parseInt(type.slice(1)), block.text.blocks[0].text]
+        : null;
+    },
+  };
+
+  config.blocks.blocksConfig.slate = slateBlockConfig;
   config.blocks.blocksConfig.detachedSlate = {
     ...config.blocks.blocksConfig.slate,
     id: 'detachedSlate',

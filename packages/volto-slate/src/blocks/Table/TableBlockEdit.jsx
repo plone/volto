@@ -166,14 +166,6 @@ const messages = defineMessages({
     id: 'Stripe alternate rows with color',
     defaultMessage: 'Stripe alternate rows with color',
   },
-  textAlign: {
-    id: 'Align text',
-    defaultMessage: 'Align text',
-  },
-  verticalAlign: {
-    id: 'Vertical align',
-    defaultMessage: 'Vertical align',
-  },
   left: {
     id: 'Left',
     defaultMessage: 'Left',
@@ -734,11 +726,11 @@ class Edit extends Component {
           >
             {!this.props.data.table.hideHeaders ? (
               <Table.Header>
-                <Table.Row textAlign="center">
+                <Table.Row textAlign="left">
                   {headers.map((cell, cellIndex) => (
                     <Table.HeaderCell
                       key={cell.key}
-                      textAlign="center"
+                      textAlign="left"
                       verticalAlign="middle"
                     >
                       <Cell
@@ -772,10 +764,8 @@ class Edit extends Component {
                   {map(row.cells, (cell, cellIndex) => (
                     <Table.Cell
                       key={cell.key}
-                      textAlign={this.props.data.table.textAlign || 'center'}
-                      verticalAlign={
-                        this.props.data.table.verticalAlign || 'middle'
-                      }
+                      textAlign="left"
+                      verticalAlign="middle"
                       className={
                         this.props.selected &&
                         this.state.selected &&
@@ -882,28 +872,6 @@ class Edit extends Component {
                     this.props.data.table && this.props.data.table.inverted
                   }
                   onChange={this.toggleInverted}
-                />
-                <Field
-                  id="textAlign"
-                  title={this.props.intl.formatMessage(messages.textAlign)}
-                  widget="align"
-                  value={
-                    this.props.data.table && this.props.data.table.textAlign
-                  }
-                  onChange={this.onChange}
-                />
-                <Field
-                  id="verticalAlign"
-                  title={this.props.intl.formatMessage(messages.verticalAlign)}
-                  choices={[
-                    ['bottom', this.props.intl.formatMessage(messages.bottom)],
-                    ['middle', this.props.intl.formatMessage(messages.middle)],
-                    ['top', this.props.intl.formatMessage(messages.top)],
-                  ]}
-                  value={
-                    this.props.data.table && this.props.data.table.verticalAlign
-                  }
-                  onChange={this.onChange}
                 />
               </Segment>
             </Form>

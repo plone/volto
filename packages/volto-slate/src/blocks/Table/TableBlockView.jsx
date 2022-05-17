@@ -90,7 +90,7 @@ const View = ({ data }) => {
                 {headers.map((cell, index) => (
                   <Table.HeaderCell
                     key={cell.key}
-                    textAlign="center"
+                    textAlign="left"
                     verticalAlign="middle"
                     sorted={state.column === index ? state.direction : null}
                     onClick={() => {
@@ -123,8 +123,8 @@ const View = ({ data }) => {
                 {map(rows[row], (cell) => (
                   <Table.Cell
                     key={cell.key}
-                    textAlign={data.table.textAlign || 'center'}
-                    verticalAlign={data.table.verticalAlign || 'middle'}
+                    textAlign="left"
+                    verticalAlign="middle"
                   >
                     {cell.value}
                   </Table.Cell>

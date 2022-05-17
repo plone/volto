@@ -1,14 +1,14 @@
-// import isUrl from 'is-url';
-// import { wrapLink } from './utils';
-import { LINK } from '@plone/volto-slate/constants';
+import { SIMPLELINK } from '@plone/volto-slate/constants';
+import { jsx } from 'slate-hyperscript';
+import { deserialize } from '@plone/volto-slate/editor/deserialize';
 
-export const withLink = (editor) => {
+export const withSimpleLink = (editor) => {
   // const { insertData, insertText, isInline } = editor;
 
   const { isInline } = editor;
 
   editor.isInline = (element) => {
-    return element && element.type === LINK ? true : isInline(element);
+    return element && element.type === SIMPLELINK ? true : isInline(element);
   };
 
   // editor.insertText = (text) => {
@@ -30,3 +30,24 @@ export const withLink = (editor) => {
   // };
   return editor;
 };
+
+export const simpleLinkDeserializer = (editor, el) => {
+  let parent = el;
+
+  let children = Array.from(parent.childNodes)
+    .map((el) => deserialize(editor, el))
+    .flat();
+
+  if (!children.length) children = [{ text: '' }];
+
+  const attrs = {
+    type: SIMPLELINK,
+    data: {
+      url: el.getAttribute('href'),
+    },
+  };
+
+  return jsx('element', attrs, children);
+};
+
+simpleLinkDeserializer.id = 'simpleLinkDeserializer';

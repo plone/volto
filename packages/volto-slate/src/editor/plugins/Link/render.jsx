@@ -1,37 +1,46 @@
 import React from 'react';
 import { UniversalLink } from '@plone/volto/components';
-import './styles.less';
 
-export const LinkElement = ({ attributes, children, element, mode }) => {
-  // TODO: handle title on internal links
-  let url = element.url;
-  const { link } = element.data || {};
+const ViewLink = ({ url, target, download, children }) => {
+  return (
+    <UniversalLink
+      href={url}
+      openLinkInNewTab={target === '_blank'}
+      download={download}
+    >
+      {children}
+    </UniversalLink>
+  );
+};
 
-  const internal_link = link?.internal?.internal_link?.[0]?.['@id'];
-  const external_link = link?.external?.external_link;
-  const email = link?.email;
-
-  const href = email
-    ? `mailto:${email.email_address}${
-        email.email_subject ? `?subject=${email.email_subject}` : ''
-      }`
-    : external_link || internal_link || url;
-
-  const { title } = element?.data || {};
+export const LinkElement = (props) => {
+  const { attributes, children, element, mode = 'edit' } = props;
 
   return mode === 'view' ? (
-    <>
-      <UniversalLink
-        href={href || '#'}
-        openLinkInNewTab={link?.external?.target === '_blank'}
-        title={title}
-      >
-        {children}
-      </UniversalLink>
-    </>
+    <ViewLink {...(element.data || {})}>{children}</ViewLink>
   ) : (
-    <span {...attributes} className="slate-editor-link">
-      {children}
-    </span>
+    <a
+      {...attributes}
+      className="slate-editor-link"
+      href={element.data?.url}
+      onClick={(e) => e.preventDefault()}
+    >
+      {Array.isArray(children)
+        ? children.map((child, i) => {
+            if (child?.props?.decorations) {
+              const isSelection =
+                child.props.decorations.findIndex((deco) => deco.isSelection) >
+                -1;
+              if (isSelection)
+                return (
+                  <span className="highlight-selection" key={`${i}-sel`}>
+                    {child}
+                  </span>
+                );
+            }
+            return child;
+          })
+        : children}
+    </a>
   );
 };

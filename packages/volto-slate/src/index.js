@@ -9,7 +9,7 @@ import HtmlSlateWidget from './widgets/HtmlSlateWidget';
 import ObjectByTypeWidget from './widgets/ObjectByTypeWidget';
 
 export default (config) => {
-  config = [installSlate, installTableBlock, installTextBlock].reduce(
+  config = [installSlate, installTextBlock, installTableBlock].reduce(
     (acc, apply) => apply(acc),
     config,
   );
@@ -20,7 +20,7 @@ export default (config) => {
     'bold',
     'italic',
     'strikethrough',
-    'a',
+    'link',
     'separator',
     'heading-two',
     'heading-three',

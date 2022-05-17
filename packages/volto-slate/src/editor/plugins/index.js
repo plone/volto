@@ -2,6 +2,7 @@ import installBlockQuotePlugin from './Blockquote';
 import installCallout from './Callout';
 import installImage from './Image';
 import installLinkPlugin from './Link';
+import installAdvancedLinkPlugin from './Link';
 import installMarkdown from './Markdown';
 import installTable from './Table';
 
@@ -10,6 +11,7 @@ export default function install(config) {
     installBlockQuotePlugin,
     installCallout,
     installLinkPlugin,
+    installAdvancedLinkPlugin,
     installMarkdown,
     installImage,
     installTable,
