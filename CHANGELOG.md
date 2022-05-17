@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix the video block for anonymous user @iFlameing
+
 ### Internal
 
 ### Documentation
