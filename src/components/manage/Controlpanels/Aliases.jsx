@@ -22,6 +22,8 @@ import {
   Radio,
   Message,
   Table,
+  Pagination,
+  Select,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import DatetimeWidget from '@plone/volto/components/manage/Widgets/DatetimeWidget';
@@ -45,6 +47,24 @@ const filterChoices = [
   { label: 'Automatically', value: 'no' },
   { label: 'Manually', value: 'yes' },
 ];
+
+const itemsPerPageChoices = [
+  { key: '5', value: '5', text: '5' },
+  { key: '10', value: '10', text: '10' },
+  { key: '25', value: '25', text: '25' },
+  { key: '50', value: '50', text: '50' },
+  { key: '100', value: '100', text: '100' },
+  { key: 'all', value: 'all', text: 'All' },
+];
+
+const getPaginatedData = (items, currentPage, limit) => {
+  if (limit === 'all') {
+    return items;
+  }
+  const startIndex = currentPage * limit - limit;
+  const endIndex = startIndex + limit;
+  return items.slice(startIndex, endIndex);
+};
 
 /**
  * Aliases class.
@@ -82,6 +102,10 @@ class Aliases extends Component {
       aliasesToRemove: [],
       errorMessageAdd: '',
       filterQuery: '',
+      aliases: [],
+      activePage: 1,
+      pages: '',
+      itemsPerPage: 5,
     };
   }
 
@@ -101,6 +125,31 @@ class Aliases extends Component {
    * @returns {undefined}
    */
   componentDidUpdate(prevProps, prevState) {
+    if (
+      prevProps.aliases !== this.props.aliases ||
+      prevState.itemsPerPage !== this.state.itemsPerPage
+    ) {
+      const pages = Math.round(
+        this.props.aliases.items.length / this.state.itemsPerPage,
+      );
+      if (pages === 0 || isNaN(pages)) {
+        this.setState({ pages: '' });
+      } else {
+        this.setState({ pages });
+      }
+    }
+    if (
+      prevProps.aliases !== this.props.aliases ||
+      prevState.activePage !== this.state.activePage ||
+      prevState.itemsPerPage !== this.state.itemsPerPage
+    ) {
+      const paginatedAliases = getPaginatedData(
+        this.props.aliases.items,
+        this.state.activePage,
+        this.state.itemsPerPage,
+      );
+      this.setState({ aliases: paginatedAliases });
+    }
     if (prevState.altUrlPath !== this.state.altUrlPath) {
       if (this.state.altUrlPath.charAt(0) === '/') {
         this.setState({ isAltUrlCorrect: true });
@@ -272,6 +321,24 @@ class Aliases extends Component {
   };
 
   /**
+   * Pagination change handler
+   * @method handlePaginationChange
+   * @returns {undefined}
+   */
+  handlePaginationChange = (e, { activePage }) => {
+    this.setState({ activePage });
+  };
+
+  /**
+   * Items per page change handler
+   * @method handleItemsPerPage
+   * @returns {undefined}
+   */
+  handleItemsPerPage = (e, { value }) => {
+    this.setState({ itemsPerPage: value });
+  };
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -438,6 +505,11 @@ class Aliases extends Component {
                       defaultMessage="Alternative url path → target url path (date and time of creation, manually created yes/no)"
                     />
                   </Header>
+                  <Select
+                    placeholder="Per page"
+                    options={itemsPerPageChoices}
+                    onChange={this.handleItemsPerPage}
+                  />
                   <Table unstackable>
                     <Table.Body>
                       <Table.Row>
@@ -466,33 +538,59 @@ class Aliases extends Component {
                           />
                         </Table.HeaderCell>
                       </Table.Row>
-                      {this.props.aliases?.items?.map((alias, i) => (
-                        <Table.Row key={i}>
-                          <Table.Cell>
-                            <Checkbox
-                              onChange={(e, { value }) =>
-                                this.handleCheckAlias(value)
-                              }
-                              value={alias.path}
-                            />
-                          </Table.Cell>
-                          <Table.Cell>
-                            <p>{alias.path}</p>
-                          </Table.Cell>
-                          <Table.Cell>
-                            <p>{alias['redirect-to']}</p>
-                          </Table.Cell>
-                          <Table.Cell>
-                            <p>{alias.datetime}</p>
-                          </Table.Cell>
-                          <Table.Cell>
-                            <p>{`${alias.manual}`}</p>
-                          </Table.Cell>
-                        </Table.Row>
-                      ))}
+                      {this.state.aliases.length > 0 &&
+                        this.state.aliases.map((alias, i) => (
+                          <Table.Row key={i}>
+                            <Table.Cell>
+                              <Checkbox
+                                onChange={(e, { value }) =>
+                                  this.handleCheckAlias(value)
+                                }
+                                checked={this.state.aliasesToRemove.includes(
+                                  alias.path,
+                                )}
+                                value={alias.path}
+                              />
+                            </Table.Cell>
+                            <Table.Cell>
+                              <p>{alias.path}</p>
+                            </Table.Cell>
+                            <Table.Cell>
+                              <p>{alias['redirect-to']}</p>
+                            </Table.Cell>
+                            <Table.Cell>
+                              <p>{alias.datetime}</p>
+                            </Table.Cell>
+                            <Table.Cell>
+                              <p>{`${alias.manual}`}</p>
+                            </Table.Cell>
+                          </Table.Row>
+                        ))}
                     </Table.Body>
+                    {this.state.pages && (
+                      <Table.Footer>
+                        <Table.Row>
+                          <Table.HeaderCell colSpan={5} textAlign="center">
+                            <Pagination
+                              boundaryRange={0}
+                              activePage={this.state.activePage}
+                              ellipsisItem={null}
+                              firstItem={null}
+                              lastItem={null}
+                              siblingRange={1}
+                              totalPages={this.state.pages}
+                              onPageChange={this.handlePaginationChange}
+                            />
+                          </Table.HeaderCell>
+                        </Table.Row>
+                      </Table.Footer>
+                    )}
                   </Table>
-                  <Button onClick={this.handleRemoveAliases} primary>
+                  <Button
+                    disabled={this.state.aliasesToRemove.length === 0}
+                    onClick={this.handleRemoveAliases}
+                    primary
+                  >
                     <FormattedMessage
                       id="Remove selected"
                       defaultMessage="Remove selected"
