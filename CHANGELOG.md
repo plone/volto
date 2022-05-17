@@ -6,6 +6,22 @@
 
 ### Feature
 
+### Bugfix
+
+### Internal
+
+### Documentation
+
+## 16.0.0-alpha.3 (2022-05-16)
+
+### Breaking
+
+- Remove `div` as default if `as` prop from `RenderBlocks`. Now the default is a `React.Fragment` instead. This could lead to CSS inconsistencies if taken this div into account, specially if used in custom add-ons without. In order to avoid them, set the `as` property always in your add-ons. @sneridagh
+
+## 16.0.0-alpha.2 (2022-05-16)
+
+### Feature
+
 - added configurable identifier field for password reset in config.js. @giuliaghisini
 - Add `expandToBackendURL` helper @sneridagh
 
@@ -15,6 +31,10 @@
 - Fixed ICS URL in event view in seamless mode @sneridagh
 
 ### Internal
+
+- Reintroduce Plone 6 acceptance tests using the latests `plone.app.robotframework` 2.0.0a6 specific Volto fixture. @datakurre @ericof @sneridagh
+- Upgrade all tests to use `plone.app.robotframework` 2.0.0a6 @sneridagh
+- Upgrade Sentry to latest version because of [#3346](https://github.com/plone/volto/issues/3346) @sneridagh
 
 ### Documentation
 
