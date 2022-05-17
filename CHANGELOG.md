@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Add correct query parameters to the redirect @robgietema
+
 ### Internal
 
 ### Documentation
