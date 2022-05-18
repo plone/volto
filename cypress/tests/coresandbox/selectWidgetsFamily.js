@@ -22,7 +22,13 @@ context('Select widgets family Acceptance Tests', () => {
       //     values=[u"One", u"Two", u"Three"],
       //     required=True
       //     )
+
       cy.findAllByText('Choice and Multiple Choice fields').click();
+      cy.wait(500); // We allow the Select component to lazy load
+
+      cy.get('.react-select__placeholder')
+        .should('be.visible')
+        .contains('Select');
 
       // We select the choice 'One' of the field
       cy.get('#field-choice_field').click();
@@ -67,6 +73,11 @@ context('Select widgets family Acceptance Tests', () => {
       //     required=False,
       // )
       cy.findByText('Choice and Multiple Choice fields').click();
+      cy.wait(500); // We allow the Select component to lazy load
+
+      cy.get('.react-select__placeholder')
+        .should('be.visible')
+        .contains('Select');
 
       // We select the choice 'Folder' of the field
       cy.get('#field-choice_field_select').click();
@@ -132,6 +143,11 @@ context('Select widgets family Acceptance Tests', () => {
       //     },
       // )
       cy.findByText('Choice and Multiple Choice fields').click();
+      cy.wait(500); // We allow the Select component to lazy load
+
+      cy.get('.react-select__placeholder')
+        .should('be.visible')
+        .contains('Select');
 
       // We select the choice 'Folder' of the field
       cy.get('#field-list_field_voc_unconstrained').click();
@@ -210,6 +226,11 @@ context('Select widgets family Acceptance Tests', () => {
       //     frontendOptions={"widget": "autocomplete"},
       // )
       cy.findByText('Choice and Multiple Choice fields').click();
+      cy.wait(500); // We allow the Select component to lazy load
+
+      cy.get('.react-select__placeholder')
+        .should('be.visible')
+        .contains('Select');
 
       // We select the field and no query is sent
       cy.get('#field-list_field_voc_huge').click();

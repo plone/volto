@@ -5,9 +5,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { Container, Image } from 'semantic-ui-react';
+import { UniversalLink } from '@plone/volto/components';
+import { Container } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
+import PreviewImage from '../PreviewImage/PreviewImage';
 
 /**
  * Summary view component class.
@@ -16,7 +17,7 @@ import { FormattedMessage } from 'react-intl';
  * @returns {string} Markup of the component.
  */
 const SummaryView = ({ content }) => (
-  <Container className="view-wrapper">
+  <Container className="view-wrapper summary-view">
     <article id="content">
       <header>
         <h1 className="documentFirstHeading">{content.title}</h1>
@@ -28,23 +29,23 @@ const SummaryView = ({ content }) => (
         {content.items.map((item) => (
           <article key={item.url}>
             <h2>
-              <Link to={item.url} title={item['@type']}>
+              <UniversalLink item={item} title={item['@type']}>
                 {item.title}
-              </Link>
+              </UniversalLink>
             </h2>
-            {item.image && (
-              <Image
-                clearing
-                floated="right"
+            {item.image_field && (
+              <PreviewImage
+                item={item}
                 alt={item.image_caption ? item.image_caption : item.title}
-                src={item.image.scales.thumb.download}
+                size="thumb"
+                className="ui image floated right clear"
               />
             )}
             {item.description && <p>{item.description}</p>}
             <p>
-              <Link to={item.url}>
+              <UniversalLink item={item}>
                 <FormattedMessage id="Read More…" defaultMessage="Read More…" />
-              </Link>
+              </UniversalLink>
             </p>
           </article>
         ))}
