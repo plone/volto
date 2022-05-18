@@ -7,6 +7,7 @@ import {
   getBlocksLayoutFieldname,
   hasBlocksData,
 } from '@plone/volto/helpers';
+import StyleWrapper from '@plone/volto/components/manage/Blocks/Block/StyleWrapper';
 import config from '@plone/volto/registry';
 
 const messages = defineMessages({
@@ -21,7 +22,7 @@ const RenderBlocks = (props) => {
   const blocksFieldname = getBlocksFieldname(content);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
   const blocksConfig = props.blocksConfig || config.blocks.blocksConfig;
-  const CustomTag = `${props.as || 'div'}`;
+  const CustomTag = props.as || React.Fragment;
 
   return hasBlocksData(content) ? (
     <CustomTag>
@@ -37,15 +38,16 @@ const RenderBlocks = (props) => {
         });
 
         return Block ? (
-          <Block
-            key={block}
-            id={block}
-            metadata={metadata}
-            properties={content}
-            data={blockData}
-            path={getBaseUrl(path || '')}
-            blocksConfig={blocksConfig}
-          />
+          <StyleWrapper key={block} {...props} data={blockData}>
+            <Block
+              id={block}
+              metadata={metadata}
+              properties={content}
+              data={blockData}
+              path={getBaseUrl(path || '')}
+              blocksConfig={blocksConfig}
+            />
+          </StyleWrapper>
         ) : (
           <div key={block}>
             {intl.formatMessage(messages.unknownBlock, {

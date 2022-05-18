@@ -1,9 +1,9 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "Use a pattern called component shadowing to customize volto components."
+  "property=og:description": "Use a pattern called component shadowing to customize volto components."
+  "property=og:title": "Customizing Components"
+  "keywords": "Volto, Plone, frontend, React, customizing component"
 ---
 
 # Customizing Components
@@ -52,61 +52,65 @@ amendments required.
 
 Locate the `Tags.jsx` file and override this file so that there is a label in front of the tags with: `Tags:`.
 
-```jsx hl_lines="20"
-    /**
-    * Tags component.
-    * @module components/theme/Tags/Tags
-    */
+```{code-block} jsx
+:emphasize-lines: 20
+/**
+ * Tags component.
+ * @module components/theme/Tags/Tags
+ */
 
-    import React from 'react';
-    import { Link } from 'react-router-dom';
-    import PropTypes from 'prop-types';
-    import { Container } from 'semantic-ui-react';
+import React from 'react';
+import { UniversalLink } from '@plone/volto/components';
+import PropTypes from 'prop-types';
+import { Container } from 'semantic-ui-react';
 
-    /**
-        * Tags component class.
-        * @function Tags
-        * @param {array} tags Array of tags.
-        * @returns {string} Markup of the component.
-        */
-    const Tags = ({ tags }) =>
-        tags && tags.length > 0 ? (
-        <Container>
-            Tags:
-            {tags.map(tag => (
-            <Link className="ui label" to={`/search?Subject=${tag}`} key={tag}>
-                {tag}
-            </Link>
-            ))}
-        </Container>
-        ) : (
-        <span />
-        );
+/**
+ * Tags component class.
+ * @function Tags
+ * @param {array} tags Array of tags.
+ * @returns {string} Markup of the component.
+ */
+const Tags = ({ tags }) =>
+  tags && tags.length > 0 ? (
+    <Container>
+      Tags:
+      {tags.map((tag) => (
+        <UniversalLink
+          className="ui label"
+          href={`/search?Subject=${tag}`}
+          key={tag}
+        >
+          {tag}
+        </UniversalLink>
+      ))}
+    </Container>
+  ) : (
+    <span />
+  );
 
-    /**
-        * Property types.
-        * @property {Object} propTypes Property types.
-        * @static
-        */
-    Tags.propTypes = {
-        tags: PropTypes.arrayOf(PropTypes.string),
-    };
+/**
+ * Property types.
+ * @property {Object} propTypes Property types.
+ * @static
+ */
+Tags.propTypes = {
+  tags: PropTypes.arrayOf(PropTypes.string),
+};
 
-    /**
-        * Default properties.
-        * @property {Object} defaultProps Default properties.
-        * @static
-        */
-    Tags.defaultProps = {
-        tags: null,
-    };
+/**
+ * Default properties.
+ * @property {Object} defaultProps Default properties.
+ * @static
+ */
+Tags.defaultProps = {
+  tags: null,
+};
 
-    export default Tags;
+export default Tags;
 ```
 
 The final path of the overrided component will be
 `customizations/components/theme/Tags/Tags.jsx`.
-
 
 (advanced-customization-scenarios-label)=
 
