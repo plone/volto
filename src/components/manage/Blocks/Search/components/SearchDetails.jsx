@@ -12,13 +12,18 @@ const messages = defineMessages({
   },
 });
 
-const SearchDetails = ({ total, text, as = 'h4' }) => {
+const SearchDetails = ({ total, text, as = 'h4', data }) => {
   const El = as;
   const intl = useIntl();
   return (
     <El className="search-details">
       {text ? `${intl.formatMessage(messages.searchedFor)}: ${text}. ` : ''}
-      {intl.formatMessage(messages.searchResults)}: {total}
+      {data.showTotalResults && (
+        <>
+          {' '}
+          {intl.formatMessage(messages.searchResults)}: {total}
+        </>
+      )}
     </El>
   );
 };

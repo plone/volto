@@ -2392,6 +2392,11 @@ msgstr ""
 msgid "Show sorting?"
 msgstr ""
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Show total results
+msgid "Show total results"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Shrink sidebar
 msgid "Shrink sidebar"

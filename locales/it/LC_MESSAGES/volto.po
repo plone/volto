@@ -2375,6 +2375,11 @@ msgstr "Mostrare il campo di ricerca?"
 msgid "Show sorting?"
 msgstr "Mostrare l'ordinamento?"
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Show total results
+msgid "Show total results"
+msgstr "Mostra il numero totale dei risultati"
+
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Shrink sidebar
 msgid "Shrink sidebar"

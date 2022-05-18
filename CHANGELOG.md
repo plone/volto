@@ -6,6 +6,8 @@
 
 ### Feature
 
+- added 'show total results' option in Search block configuration. @giuliaghisini
+
 ### Bugfix
 
 ### Internal

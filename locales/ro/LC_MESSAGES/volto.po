@@ -2375,6 +2375,11 @@ msgstr "Afișați intrarea de căutare?"
 msgid "Show sorting?"
 msgstr "Afișează sortarea?"
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Show total results
+msgid "Show total results"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Shrink sidebar
 msgid "Shrink sidebar"

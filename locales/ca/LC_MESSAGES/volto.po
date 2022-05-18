@@ -2384,6 +2384,11 @@ msgstr "Mostra l'entrada de cerca?"
 msgid "Show sorting?"
 msgstr "Mostra l'ordenació?"
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Show total results
+msgid "Show total results"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Shrink sidebar
 msgid "Shrink sidebar"

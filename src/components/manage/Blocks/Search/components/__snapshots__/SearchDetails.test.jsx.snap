@@ -5,6 +5,7 @@ exports[`SearchDetails renders search detail component 1`] = `
   className="search-details"
 >
   Searched for: test. 
+   
   Search results
   : 
   10
