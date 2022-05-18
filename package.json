@@ -243,7 +243,7 @@
     "@sentry/webpack-plugin": "1.18.9",
     "@testing-library/cypress": "8.0.2",
     "@testing-library/jest-dom": "5.16.4",
-    "@testing-library/react": "13.2.0",
+    "@testing-library/react": "12.1.5",
     "autoprefixer": "9.7.6",
     "axe-core": "4.4.2",
     "babel-7-plugin-root-import": "5.4.0",
