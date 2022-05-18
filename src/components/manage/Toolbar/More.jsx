@@ -139,6 +139,11 @@ class More extends Component {
       id: 'local_roles',
     });
     const { content, intl } = this.props;
+    const dateOptions = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    };
 
     return (
       <div
@@ -294,7 +299,7 @@ class More extends Component {
                                     date: (
                                       <FormattedDate
                                         date={content.working_copy?.created}
-                                        includeTime
+                                        format={dateOptions}
                                       />
                                     ),
                                   },

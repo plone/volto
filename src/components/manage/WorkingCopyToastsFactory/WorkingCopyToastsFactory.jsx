@@ -70,7 +70,10 @@ const WorkingCopyToastsFactory = (props) => {
                 content={intl.formatMessage(messages.workingCopyCreatedBy, {
                   creator: working_copy?.creator_name,
                   date: (
-                    <FormattedDate date={working_copy?.created} includeTime />
+                    <FormattedDate
+                      date={working_copy?.created}
+                      format={dateOptions}
+                    />
                   ),
                 })}
               />
@@ -86,7 +89,10 @@ const WorkingCopyToastsFactory = (props) => {
               content={intl.formatMessage(messages.workingCopyCreatedBy, {
                 creator: working_copy?.creator_name,
                 date: (
-                  <FormattedDate date={working_copy?.created} includeTime />
+                  <FormattedDate
+                    date={working_copy?.created}
+                    format={dateOptions}
+                  />
                 ),
               })}
             />,
