@@ -22,7 +22,7 @@ const RenderBlocks = (props) => {
   const blocksFieldname = getBlocksFieldname(content);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
   const blocksConfig = props.blocksConfig || config.blocks.blocksConfig;
-  const CustomTag = `${props.as || 'div'}`;
+  const CustomTag = props.as || React.Fragment;
 
   return hasBlocksData(content) ? (
     <CustomTag>

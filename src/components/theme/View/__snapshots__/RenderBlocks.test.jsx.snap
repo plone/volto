@@ -3,16 +3,14 @@
 exports[`Allows override of blocksConfig 1`] = `
 <div>
   <div>
-    <div>
-      a
-       - 
-      a
-    </div>
-    <div>
-      b
-       - 
-      b
-    </div>
+    a
+     - 
+    a
+  </div>
+  <div>
+    b
+     - 
+    b
   </div>
 </div>
 `;
@@ -20,14 +18,12 @@ exports[`Allows override of blocksConfig 1`] = `
 exports[`Provides path to blocks 1`] = `
 <div>
   <div>
-    <div>
-      id: 
-      a
-       - text: 
-      bar
-       - path: 
-      /foo
-    </div>
+    id: 
+    a
+     - text: 
+    bar
+     - path: 
+    /foo
   </div>
 </div>
 `;
