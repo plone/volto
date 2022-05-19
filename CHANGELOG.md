@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix `withStylingSchemaEnhancer` enhancer mechanism @sneridagh
+
 ### Internal
 
 ### Documentation
