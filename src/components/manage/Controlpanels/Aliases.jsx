@@ -23,13 +23,14 @@ import {
   Message,
   Table,
   Pagination,
-  Select,
+  Menu,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import DatetimeWidget from '@plone/volto/components/manage/Widgets/DatetimeWidget';
 import { Icon, Toolbar } from '@plone/volto/components';
 
 import backSVG from '@plone/volto/icons/back.svg';
+import { map } from 'lodash';
 
 const messages = defineMessages({
   back: {
@@ -48,17 +49,10 @@ const filterChoices = [
   { label: 'Manually', value: 'yes' },
 ];
 
-const itemsPerPageChoices = [
-  { key: '5', value: '5', text: '5' },
-  { key: '10', value: '10', text: '10' },
-  { key: '25', value: '25', text: '25' },
-  { key: '50', value: '50', text: '50' },
-  { key: '100', value: '100', text: '100' },
-  { key: 'all', value: 'all', text: 'All' },
-];
+const itemsPerPageChoices = [10, 25, 50, 'All'];
 
 const getPaginatedData = (items, currentPage, limit) => {
-  if (limit === 'all') {
+  if (limit === 'All') {
     return items;
   }
   const startIndex = currentPage * limit - limit;
@@ -105,7 +99,7 @@ class Aliases extends Component {
       aliases: [],
       activePage: 1,
       pages: '',
-      itemsPerPage: 5,
+      itemsPerPage: 10,
     };
   }
 
@@ -505,12 +499,8 @@ class Aliases extends Component {
                       defaultMessage="Alternative url path → target url path (date and time of creation, manually created yes/no)"
                     />
                   </Header>
-                  <Select
-                    placeholder="Per page"
-                    options={itemsPerPageChoices}
-                    onChange={this.handleItemsPerPage}
-                  />
-                  <Table unstackable>
+
+                  <Table>
                     <Table.Body>
                       <Table.Row>
                         <Table.HeaderCell>
@@ -567,25 +557,51 @@ class Aliases extends Component {
                           </Table.Row>
                         ))}
                     </Table.Body>
-                    {this.state.pages && (
-                      <Table.Footer>
-                        <Table.Row>
-                          <Table.HeaderCell colSpan={5} textAlign="center">
-                            <Pagination
-                              boundaryRange={0}
-                              activePage={this.state.activePage}
-                              ellipsisItem={null}
-                              firstItem={null}
-                              lastItem={null}
-                              siblingRange={1}
-                              totalPages={this.state.pages}
-                              onPageChange={this.handlePaginationChange}
-                            />
-                          </Table.HeaderCell>
-                        </Table.Row>
-                      </Table.Footer>
-                    )}
                   </Table>
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexWrap: 'wrap',
+                      alignItems: 'center',
+                      marginBottom: '20px',
+                    }}
+                  >
+                    {this.state.pages && (
+                      <Pagination
+                        boundaryRange={0}
+                        activePage={this.state.activePage}
+                        ellipsisItem={null}
+                        firstItem={null}
+                        lastItem={null}
+                        siblingRange={1}
+                        totalPages={this.state.pages}
+                        onPageChange={this.handlePaginationChange}
+                      />
+                    )}
+                    <Menu.Menu
+                      position="right"
+                      style={{ display: 'flex', marginLeft: 'auto' }}
+                    >
+                      <Menu.Item style={{ color: 'grey' }}>
+                        <FormattedMessage id="Show" defaultMessage="Show" />:
+                      </Menu.Item>
+                      {map(itemsPerPageChoices, (size) => (
+                        <Menu.Item
+                          style={{
+                            padding: '0 0.4em',
+                            margin: '0em 0.357em',
+                            cursor: 'pointer',
+                          }}
+                          key={size}
+                          value={size}
+                          active={size === this.state.itemsPerPage}
+                          onClick={this.handleItemsPerPage}
+                        >
+                          {size}
+                        </Menu.Item>
+                      ))}
+                    </Menu.Menu>
+                  </div>
                   <Button
                     disabled={this.state.aliasesToRemove.length === 0}
                     onClick={this.handleRemoveAliases}
