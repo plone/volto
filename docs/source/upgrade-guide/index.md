@@ -26,9 +26,9 @@ the latest changes, and propose to you to merge the changes, so you can run it o
 ```
 
 
-(volto-upgrade-guide-15.x.x)=
+(volto-upgrade-guide-16.x.x)=
 
-## Upgrading to Volto 15.x.x
+## Upgrading to Volto 16.x.x
 
 ### Deprecating NodeJS 12
 
@@ -36,6 +36,23 @@ Since April 30, 2022, NodeJS 12 is out of Long Term Support by the NodeJS commun
 NodeJS 12 is deprecated in Volto 13.
 Please update your projects to a NodeJS LTS version, where either 14 or 16 is supported at the moment of this writing.
 Version 16 is recommended.
+
+### Removed `date-fns` from build
+
+The `date-fns` library has been removed from Volto's dependencies.
+It was in the build because `Cypress` depended on it.
+After the `Cypress` upgrade it no longer depends on it.
+If your project still depends on it, add it as a dependency of your project.
+
+```{warning}
+The `date-fns` version present in the build was quite an old one (1.x.x series). Beware to use an updated version (2.x.x), since it may contain quite some breaking changes. Also take a look at: https://dockyard.com/blog/2020/02/14/you-probably-don-t-need-moment-js-anymore
+
+and the new `FormattedDate` component in Volto core.
+```
+
+(volto-upgrade-guide-15.x.x)=
+
+## Upgrading to Volto 15.x.x
 
 ### Updated react-cookie library
 
