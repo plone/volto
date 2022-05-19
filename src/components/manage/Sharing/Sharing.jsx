@@ -4,6 +4,7 @@
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Plug, Pluggable } from '@plone/volto/components/manage/Pluggable';
 import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -291,144 +292,159 @@ class SharingComponent extends Component {
       <Container id="page-sharing">
         <Helmet title={this.props.intl.formatMessage(messages.sharing)} />
         <Segment.Group raised>
-          <Segment className="primary">
-            <FormattedMessage
-              id="Sharing for {title}"
-              defaultMessage="Sharing for {title}"
-              values={{ title: <q>{this.props.title}</q> }}
-            />
-          </Segment>
-          <Segment secondary>
-            <FormattedMessage
-              id="You can control who can view and edit your item using the list below."
-              defaultMessage="You can control who can view and edit your item using the list below."
-            />
-          </Segment>
-          <Segment>
-            <Form onSubmit={this.onSearch}>
-              <Form.Field>
-                <Input
-                  name="SearchableText"
-                  action={{ icon: 'search' }}
-                  placeholder={this.props.intl.formatMessage(
-                    messages.searchForUserOrGroup,
-                  )}
-                  onChange={this.onChangeSearch}
-                />
-              </Form.Field>
-            </Form>
-          </Segment>
-          <Form onSubmit={this.onSubmit}>
-            <Table celled padded striped attached>
-              <Table.Header>
-                <Table.Row>
-                  <Table.HeaderCell>
-                    <FormattedMessage id="Name" defaultMessage="Name" />
-                  </Table.HeaderCell>
-                  {this.props.available_roles?.map((role) => (
-                    <Table.HeaderCell key={role.id}>
-                      {role.title}
+          <Pluggable name="sharing-component" />
+          <Plug
+            pluggable="sharing-component"
+            id="sharing-component-title"
+          >
+            <Segment className="primary">
+              <FormattedMessage
+                id="Sharing for {title}"
+                defaultMessage="Sharing for {title}"
+                values={{ title: <q>{this.props.title}</q> }}
+              />
+            </Segment>
+          </Plug>
+          <Plug
+            pluggable="sharing-component"
+            id="sharing-component-description"
+          >
+            <Segment secondary>
+              <FormattedMessage
+                id="You can control who can view and edit your item using the list below."
+                defaultMessage="You can control who can view and edit your item using the list below."
+              />
+            </Segment>
+          </Plug>
+          <Plug pluggable="sharing-component" id="sharing-component-search">
+            <Segment>
+              <Form onSubmit={this.onSearch}>
+                <Form.Field>
+                  <Input
+                    name="SearchableText"
+                    action={{ icon: 'search' }}
+                    placeholder={this.props.intl.formatMessage(
+                      messages.searchForUserOrGroup,
+                    )}
+                    onChange={this.onChangeSearch}
+                  />
+                </Form.Field>
+              </Form>
+            </Segment>
+          </Plug>
+          <Plug pluggable="sharing-component" id="sharing-component-form">
+            <Form onSubmit={this.onSubmit}>
+              <Table celled padded striped attached>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>
+                      <FormattedMessage id="Name" defaultMessage="Name" />
                     </Table.HeaderCell>
-                  ))}
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                {this.state.entries?.map((entry) => (
-                  <Table.Row key={entry.id}>
-                    <Table.Cell>
-                      <IconOld
-                        name={entry.type === 'user' ? 'user' : 'users'}
-                        title={
-                          entry.type === 'user'
-                            ? this.props.intl.formatMessage(messages.user)
-                            : this.props.intl.formatMessage(messages.group)
-                        }
-                      />{' '}
-                      {entry.title}
-                      {entry.login && ` (${entry.login})`}
-                    </Table.Cell>
                     {this.props.available_roles?.map((role) => (
-                      <Table.Cell key={role.id}>
-                        {entry.roles[role.id] === 'global' && (
-                          <IconOld
-                            name="check circle outline"
-                            title={this.props.intl.formatMessage(
-                              messages.globalRole,
-                            )}
-                            color="blue"
-                          />
-                        )}
-                        {entry.roles[role.id] === 'acquired' && (
-                          <IconOld
-                            name="check circle outline"
-                            color="green"
-                            title={this.props.intl.formatMessage(
-                              messages.inheritedValue,
-                            )}
-                          />
-                        )}
-                        {typeof entry.roles[role.id] === 'boolean' && (
-                          <Checkbox
-                            onChange={this.onChange}
-                            value={`${entry.id}:${role.id}`}
-                            checked={entry.roles[role.id]}
-                            disabled={entry.login === this.props.login}
-                          />
-                        )}
-                      </Table.Cell>
+                      <Table.HeaderCell key={role.id}>
+                        {role.title}
+                      </Table.HeaderCell>
                     ))}
                   </Table.Row>
-                ))}
-              </Table.Body>
-            </Table>
-            <Segment attached>
-              <Form.Field>
-                <Checkbox
-                  checked={this.state.inherit}
-                  onChange={this.onToggleInherit}
-                  label={this.props.intl.formatMessage(messages.inherit)}
-                />
-              </Form.Field>
-              <p className="help">
-                <FormattedMessage
-                  id="By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-                  defaultMessage="By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-                  values={{
-                    inherited: (
-                      <IconOld name="check circle outline" color="green" />
-                    ),
-                    global: (
-                      <IconOld name="check circle outline" color="blue" />
-                    ),
-                  }}
-                />
-              </p>
-            </Segment>
-            <Segment className="actions" attached clearing>
-              <Button
-                basic
-                primary
-                floated="right"
-                type="submit"
-                aria-label={this.props.intl.formatMessage(messages.save)}
-                title={this.props.intl.formatMessage(messages.save)}
-                loading={this.props.updateRequest.loading}
-                onClick={this.onSubmit}
-              >
-                <Icon className="circled" name={aheadSVG} size="30px" />
-              </Button>
-              <Button
-                basic
-                secondary
-                aria-label={this.props.intl.formatMessage(messages.cancel)}
-                title={this.props.intl.formatMessage(messages.cancel)}
-                floated="right"
-                onClick={this.onCancel}
-              >
-                <Icon className="circled" name={clearSVG} size="30px" />
-              </Button>
-            </Segment>
-          </Form>
+                </Table.Header>
+                <Table.Body>
+                  {this.state.entries?.map((entry) => (
+                    <Table.Row key={entry.id}>
+                      <Table.Cell>
+                        <IconOld
+                          name={entry.type === 'user' ? 'user' : 'users'}
+                          title={
+                            entry.type === 'user'
+                              ? this.props.intl.formatMessage(messages.user)
+                              : this.props.intl.formatMessage(messages.group)
+                          }
+                        />{' '}
+                        {entry.title}
+                        {entry.login && ` (${entry.login})`}
+                      </Table.Cell>
+                      {this.props.available_roles?.map((role) => (
+                        <Table.Cell key={role.id}>
+                          {entry.roles[role.id] === 'global' && (
+                            <IconOld
+                              name="check circle outline"
+                              title={this.props.intl.formatMessage(
+                                messages.globalRole,
+                              )}
+                              color="blue"
+                            />
+                          )}
+                          {entry.roles[role.id] === 'acquired' && (
+                            <IconOld
+                              name="check circle outline"
+                              color="green"
+                              title={this.props.intl.formatMessage(
+                                messages.inheritedValue,
+                              )}
+                            />
+                          )}
+                          {typeof entry.roles[role.id] === 'boolean' && (
+                            <Checkbox
+                              onChange={this.onChange}
+                              value={`${entry.id}:${role.id}`}
+                              checked={entry.roles[role.id]}
+                              disabled={entry.login === this.props.login}
+                            />
+                          )}
+                        </Table.Cell>
+                      ))}
+                    </Table.Row>
+                  ))}
+                </Table.Body>
+              </Table>
+              <Segment attached>
+                <Form.Field>
+                  <Checkbox
+                    checked={this.state.inherit}
+                    onChange={this.onToggleInherit}
+                    label={this.props.intl.formatMessage(messages.inherit)}
+                  />
+                </Form.Field>
+                <p className="help">
+                  <FormattedMessage
+                    id="By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+                    defaultMessage="By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+                    values={{
+                      inherited: (
+                        <IconOld name="check circle outline" color="green" />
+                      ),
+                      global: (
+                        <IconOld name="check circle outline" color="blue" />
+                      ),
+                    }}
+                  />
+                </p>
+              </Segment>
+              <Segment className="actions" attached clearing>
+                <Button
+                  basic
+                  primary
+                  floated="right"
+                  type="submit"
+                  aria-label={this.props.intl.formatMessage(messages.save)}
+                  title={this.props.intl.formatMessage(messages.save)}
+                  loading={this.props.updateRequest.loading}
+                  onClick={this.onSubmit}
+                >
+                  <Icon className="circled" name={aheadSVG} size="30px" />
+                </Button>
+                <Button
+                  basic
+                  secondary
+                  aria-label={this.props.intl.formatMessage(messages.cancel)}
+                  title={this.props.intl.formatMessage(messages.cancel)}
+                  floated="right"
+                  onClick={this.onCancel}
+                >
+                  <Icon className="circled" name={clearSVG} size="30px" />
+                </Button>
+              </Segment>
+            </Form>
+          </Plug>
         </Segment.Group>
         {this.state.isClient && (
           <Portal node={document.getElementById('toolbar')}>
