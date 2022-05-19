@@ -293,10 +293,7 @@ class SharingComponent extends Component {
         <Helmet title={this.props.intl.formatMessage(messages.sharing)} />
         <Segment.Group raised>
           <Pluggable name="sharing-component" />
-          <Plug
-            pluggable="sharing-component"
-            id="sharing-component-title"
-          >
+          <Plug pluggable="sharing-component" id="sharing-component-title">
             <Segment className="primary">
               <FormattedMessage
                 id="Sharing for {title}"
