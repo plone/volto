@@ -24,6 +24,7 @@
 
 - added configurable identifier field for password reset in config.js. @giuliaghisini
 - Add `expandToBackendURL` helper @sneridagh
+- Add a Pluggable to the sharing page @JeffersonBledsoe #3372
 
 ### Bugfix
 
