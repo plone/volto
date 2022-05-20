@@ -41,11 +41,13 @@ Version 16 is recommended.
 
 The `date-fns` library has been removed from Volto's dependencies.
 It was in the build because `Cypress` depended on it.
-After the `Cypress` upgrade it no longer depends on it.
-If your project still depends on it, add it as a dependency of your project.
+After `Cypress` was upgraded, it no longer depends on `date-fns`.
+If your project still depends on `date-fns`, add it as a dependency of your project.
 
 ```{warning}
-The `date-fns` version present in the build was quite an old one (1.x.x series). Beware to use an updated version (2.x.x), since it may contain quite some breaking changes. Also take a look at: https://dockyard.com/blog/2020/02/14/you-probably-don-t-need-moment-js-anymore
+The `date-fns` version present in the build was quite old (1.x.x series).
+Beware when using an updated version (2.x.x), as it may contain some breaking changes.
+Also take a look at: https://dockyard.com/blog/2020/02/14/you-probably-don-t-need-moment-js-anymore
 
 and the new `FormattedDate` component in Volto core.
 ```
