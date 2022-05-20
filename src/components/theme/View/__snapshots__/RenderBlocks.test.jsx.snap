@@ -26,7 +26,7 @@ exports[`Provides path to blocks 1`] = `
        - text: 
       bar
        - path: 
-      /foo
+      
     </div>
   </div>
 </div>
