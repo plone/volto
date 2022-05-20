@@ -49,8 +49,8 @@ The `date-fns` version present in the build was quite old (1.x.x series).
 Beware when using an updated version (2.x.x), as it may contain some breaking changes.
 Also take a look at: https://dockyard.com/blog/2020/02/14/you-probably-don-t-need-moment-js-anymore
 
-If you need to format dates in Volto it's recommended to use the `FormattedDate` component present already in Volto core.
-It already uses the modern recommendations for date formatting in the web.
+If you need to format dates in Volto, it's recommended to use the `FormattedDate` component in Volto core.
+It uses modern recommendations for date formatting on the web.
 ```
 
 (volto-upgrade-guide-15.x.x)=
