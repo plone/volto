@@ -21,7 +21,7 @@ const DEFAULT_COLORS = [
   { name: 'grey', label: 'Grey' },
 ];
 
-export const defaultStyleSchema = ({ schema, formData, intl }) => {
+export const defaultStyleSchema = ({ formData, intl }) => {
   const colors =
     config.blocks?.blocksConfig?.[formData['@type']]?.colors || DEFAULT_COLORS;
   const defaultColor =
