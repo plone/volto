@@ -4,6 +4,9 @@
 
 ### Breaking
 
+- Removed `date-fns` from dependencies, this was in the build because `Cypress` depended on it. After the `Cypress` upgrade it no longer depends on it. If your project still depends on it, add it as a dependency of your project. @sneridagh
+- Removed all usage of `date-fns` from core. @sneridagh
+
 ### Feature
 
 ### Bugfix
@@ -12,6 +15,8 @@
 - Add correct query parameters to the redirect @robgietema
 
 ### Internal
+
+- Update `Cypress` to version 9.6.1 @sneridagh
 
 ### Documentation
 
