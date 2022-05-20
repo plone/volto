@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Fix `withStylingSchemaEnhancer` enhancer mechanism @sneridagh
+- Add correct query parameters to the redirect @robgietema
 
 ### Internal
 
