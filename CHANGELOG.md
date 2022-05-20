@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix RenderBlocks: path @ksuess
+
 ### Internal
 
 ### Documentation
