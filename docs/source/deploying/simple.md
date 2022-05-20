@@ -61,11 +61,11 @@ location ~ /api($|/.*) {
 
 location ~ / {
 # Default set to 1m - this is mainly to make PSI happy, adjust to your needs
-location ~* \.(ico|jpg|jpeg|png|gif|svg|js|jsx|css|less|swf|eot|ttf|otf|woff|woff2)$ {
-add_header Cache-Control "public";
-expires +1m;
-proxy_pass http://volto;
-}
+  location ~* \.(ico|jpg|jpeg|png|gif|svg|js|jsx|css|less|swf|eot|ttf|otf|woff|woff2)$ {
+    add_header Cache-Control "public";
+    expires +1m;
+    proxy_pass http://volto;
+  }
 }
 ```
 
