@@ -4,6 +4,7 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
 import Aliases from './Aliases';
+import { MemoryRouter } from 'react-router';
 
 const mockStore = configureStore();
 
@@ -11,8 +12,8 @@ jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),
 }));
 
-describe('AddonsControlpanel', () => {
-  it('renders an addon control component', () => {
+describe('Aliases', () => {
+  it('renders an aliases control component', () => {
     const store = mockStore({
       aliases: {
         add: {
@@ -51,10 +52,16 @@ describe('AddonsControlpanel', () => {
           },
         ],
       },
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Aliases location={{ pathname: '/blog' }} />
+        <MemoryRouter>
+          <Aliases location={{ pathname: '/blog' }} />
+        </MemoryRouter>
       </Provider>,
     );
     const json = component.toJSON();
