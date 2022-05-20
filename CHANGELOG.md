@@ -1,17 +1,23 @@
 # Change Log
 
-## 16.0.0 (unreleased)
-
-### Breaking
+## 16.0.0-alpha.2 (2022-05-16)
 
 ### Feature
 
 - added configurable identifier field for password reset in config.js. @giuliaghisini
 - added prefixPath for site. @giuliaghisini
+- Add `expandToBackendURL` helper @sneridagh
 
 ### Bugfix
 
+- fixed view video list from youtube in Video block. @giuliaghisini
+- Fixed ICS URL in event view in seamless mode @sneridagh
+
 ### Internal
+
+- Reintroduce Plone 6 acceptance tests using the latests `plone.app.robotframework` 2.0.0a6 specific Volto fixture. @datakurre @ericof @sneridagh
+- Upgrade all tests to use `plone.app.robotframework` 2.0.0a6 @sneridagh
+- Upgrade Sentry to latest version because of [#3346](https://github.com/plone/volto/issues/3346) @sneridagh
 
 ### Documentation
 

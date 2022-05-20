@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "16.0.0-alpha.1",
+  "version": "16.0.0-alpha.2",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -237,10 +237,10 @@
     "@loadable/server": "5.14.0",
     "@loadable/webpack-plugin": "5.14.0",
     "@plone/scripts": "1.0.3",
-    "@sentry/browser": "5.12.1",
-    "@sentry/integrations": "5.27.3",
-    "@sentry/node": "5.12.3",
-    "@sentry/webpack-plugin": "1.12.1",
+    "@sentry/browser": "6.19.7",
+    "@sentry/integrations": "6.19.7",
+    "@sentry/node": "6.19.7",
+    "@sentry/webpack-plugin": "1.18.9",
     "@testing-library/cypress": "7.0.3",
     "@testing-library/jest-dom": "4.2.4",
     "@testing-library/react": "11.2.2",
