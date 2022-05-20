@@ -13,6 +13,9 @@
 ### Documentation
 
 ## 16.0.0-alpha.3 (2022-05-16)
+### Feature
+
+- Added new components `Aliases` for aliases control in Volto. Alias management in both controlpanel and object view. 
 
 ### Breaking
 
