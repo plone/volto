@@ -2,17 +2,9 @@
 
 ## 15.11.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Add correct query parameters to the redirect @robgietema
-
-### Internal
-
-### Documentation
 
 ## 15.11.0 (2022-05-13)
 
