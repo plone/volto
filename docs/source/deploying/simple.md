@@ -64,7 +64,7 @@ location ~ / {
     location ~* \.(ico|jpg|jpeg|png|gif|svg|js|jsx|css|less|swf|eot|ttf|otf|woff|woff2)$ {
         add_header Cache-Control "public";
         expires +1m;
-    proxy_pass http://volto;
+        proxy_pass http://volto;
   }
 }
 ```
