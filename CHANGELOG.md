@@ -2,8 +2,6 @@
 
 ## 16.0.0 (unreleased)
 
-- Updated simple.md @MdSahil-oss
-
 ### Breaking
 
 ### Feature
@@ -16,6 +14,8 @@
 ### Internal
 
 ### Documentation
+
+- Updated simple.md @MdSahil-oss
 
 ## 16.0.0-alpha.3 (2022-05-16)
 
