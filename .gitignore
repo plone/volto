@@ -69,3 +69,6 @@ public/critical.css
 # Sphinx and MyST
 docs/_build/
 /.python-version
+
+# gitpod
+.gitpod.yml
