@@ -21,6 +21,7 @@
 ### Documentation
 
 - Updated simple.md @MdSahil-oss
+- Fix indentation in nginx configuration in simple.md @stevepiercy
 
 ## 16.0.0-alpha.3 (2022-05-16)
 
