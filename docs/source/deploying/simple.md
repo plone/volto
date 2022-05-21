@@ -65,7 +65,7 @@ location ~ / {
         add_header Cache-Control "public";
         expires +1m;
         proxy_pass http://volto;
-  }
+    }
 }
 ```
 
