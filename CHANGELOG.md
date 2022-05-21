@@ -2,17 +2,9 @@
 
 ## 15.11.2 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fix RenderBlocks: path @ksuess
-
-### Internal
-
-### Documentation
 
 ## 15.11.1 (2022-05-20)
 
