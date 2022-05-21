@@ -55,8 +55,8 @@ upstream ploneapi {
 }
 
 location ~ /api($|/.*) {
-  rewrite ^/api($|/.*) /VirtualHostBase/https/mywebsite.com:443/Plone/VirtualHostRoot/_vh_api$1 break;
-  proxy_pass http://ploneapi;
+    rewrite ^/api($|/.*) /VirtualHostBase/https/mywebsite.com:443/Plone/VirtualHostRoot/_vh_api$1 break;
+    proxy_pass http://ploneapi;
 }
 
 location ~ / {
