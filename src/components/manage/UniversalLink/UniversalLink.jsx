@@ -56,6 +56,13 @@ const UniversalLink = ({
       ) {
         url = `${url}/@@download/file`;
       }
+
+      if (
+        !token &&
+        config.settings.viewableInBrowserObjects.includes(item['@type'])
+      ) {
+        url = `${url}/@@display-file/file`;
+      }
     }
   }
 
