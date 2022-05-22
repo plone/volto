@@ -250,3 +250,15 @@ export const reorderArray = (array, origin, target) => {
 
   return result;
 };
+
+/**
+ * Slugify a string: remove whitespaces, special chars and replace with _
+ * @param {string} string String to be slugified
+ * @returns {string} Slugified string
+ */
+export const slugify = (string) => {
+  return string
+    .toLowerCase()
+    .replace(/[\s-]+/g, '_')
+    .replace(/[^\w]+/g, '');
+};

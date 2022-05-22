@@ -17,6 +17,8 @@ describe('Working Copy Tests - Applying', () => {
   });
 
   it('Basic apply operation', function () {
+    cy.intercept('GET', '/**/document').as('content');
+    cy.intercept('PATCH', '*').as('save');
     // As a user I create a working copy from a document
     cy.get('#toolbar-more').click();
     cy.findByLabelText('Create working copy').click();
@@ -31,11 +33,13 @@ describe('Working Copy Tests - Applying', () => {
       .clear()
       .type('New title');
     cy.get('#toolbar-save').click();
+    cy.wait('@save');
 
     // and I apply the changes of the working copy on the baseline
     cy.get('#toolbar-more').click();
     cy.findByLabelText('Apply working copy').click();
 
+    cy.wait('@content');
     // Then rhe URL is the one of the baseline
     cy.url().should('eq', Cypress.config().baseUrl + '/document');
 
@@ -49,6 +53,8 @@ describe('Working Copy Tests - Applying', () => {
   });
 
   it('Apply operation from baseline is not possible', function () {
+    cy.intercept('GET', '/**/document').as('content');
+    cy.intercept('PATCH', '*').as('save');
     // As a user I create a working copy from a document
     cy.get('#toolbar-more').click();
     cy.findByLabelText('Create working copy').click();
@@ -63,13 +69,15 @@ describe('Working Copy Tests - Applying', () => {
       .clear()
       .type('New title');
     cy.get('#toolbar-save').click();
+    cy.wait('@save');
 
     // and I navigate to the baseline and click on the more menu
     cy.navigate('/document');
+    cy.wait('@content');
     cy.get('#toolbar-more').click();
 
     // Then the Apply menu should not be there
-    cy.get('.menu-more').contains('Apply working copy').should('not.exist');
     cy.get('.menu-more').contains('View working copy').should('exist');
+    cy.get('.menu-more').contains('Apply working copy').should('not.exist');
   });
 });
