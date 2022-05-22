@@ -12,7 +12,6 @@ import { filter, remove, toPairs, groupBy, isEmpty, map } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import { getQuerystring } from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
-import { format, parse } from 'date-fns';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import cx from 'classnames';
 
@@ -127,11 +126,7 @@ export class QuerystringWidgetComponent extends Component {
       case 'DateWidget':
         return (
           <Form.Field style={{ flex: '1 0 auto' }}>
-            <Input
-              type="date"
-              {...props}
-              value={format(parse(row.v), 'YYYY-MM-DD')}
-            />
+            <Input type="date" {...props} value={row.v} />
           </Form.Field>
         );
       case 'DateRangeWidget': // 2 date inputs
@@ -141,7 +136,7 @@ export class QuerystringWidgetComponent extends Component {
               <Input
                 type="date"
                 {...props}
-                value={format(parse(row.v[0]), 'YYYY-MM-DD')}
+                value={row.v[0]}
                 onChange={(data) =>
                   this.onChangeValue(index, [data.target.value, row.v[1]])
                 }
@@ -151,7 +146,7 @@ export class QuerystringWidgetComponent extends Component {
               <Input
                 type="date"
                 {...props}
-                value={format(parse(row.v[1]), 'YYYY-MM-DD')}
+                value={row.v[1]}
                 onChange={(data) =>
                   this.onChangeValue(index, [row.v[0], data.target.value])
                 }
@@ -339,7 +334,7 @@ export class QuerystringWidgetComponent extends Component {
                           className="react-select-container"
                           classNamePrefix="react-select"
                           options={map(
-                            indexes[row.i].operations,
+                            indexes[row.i]?.operations ?? [],
                             (operation) => ({
                               value: operation,
                               label: indexes[row.i].operators[operation].title,
