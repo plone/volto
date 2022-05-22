@@ -236,7 +236,10 @@ server.get('/*', (req, res) => {
         req.headers['accept-language'];
 
       if (cookie_lang !== contentLang) {
-        store.dispatch(changeLanguage(contentLang, locales[contentLang], req));
+        const newLocale = new locale.Locales(contentLang)
+          .best(supported)
+          .toString();
+        store.dispatch(changeLanguage(newLocale, locales[newLocale], req));
       }
 
       const context = {};

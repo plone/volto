@@ -9,8 +9,7 @@ html_meta:
 # Developer Guidelines
 
 ```{toctree}
-:maxdepth: 3
-:hidden: true
+:maxdepth: 1
 
 design-principles
 style-guide

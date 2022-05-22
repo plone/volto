@@ -108,6 +108,22 @@ function normalizeChoices(choices) {
 }
 
 /**
+ * Compare values and return true if equal.
+ * Consider upper and lower case.
+ * @method compareOption
+ * @param {*} inputValue
+ * @param {*} option
+ * @param {*} accessors
+ * @returns {boolean}
+ */
+const compareOption = (inputValue = '', option, accessors) => {
+  const candidate = String(inputValue);
+  const optionValue = String(accessors.getOptionValue(option));
+  const optionLabel = String(accessors.getOptionLabel(option));
+  return optionValue === candidate || optionLabel === candidate;
+};
+
+/**
  * ArrayWidget component class.
  * @class ArrayWidget
  * @extends Component
@@ -206,7 +222,7 @@ class ArrayWidget extends Component {
       this.props.getVocabulary({
         vocabNameOrURL: this.props.vocabBaseUrl,
         size: -1,
-        subrequest: this.props.intl.locale,
+        subrequest: this.props.lang,
       });
     }
   }
@@ -318,6 +334,22 @@ class ArrayWidget extends Component {
           value={selectedOption || []}
           placeholder={this.props.intl.formatMessage(messages.select)}
           onChange={this.handleChange}
+          isValidNewOption={(
+            inputValue,
+            selectValue,
+            selectOptions,
+            accessors,
+          ) =>
+            !(
+              !inputValue ||
+              selectValue.some((option) =>
+                compareOption(inputValue, option, accessors),
+              ) ||
+              selectOptions.some((option) =>
+                compareOption(inputValue, option, accessors),
+              )
+            )
+          }
           isClearable
           isMulti
         />
@@ -339,21 +371,23 @@ export default compose(
         getVocabFromItems(props);
 
       const vocabState =
-        state.vocabularies?.[vocabBaseUrl]?.subrequests?.[props.intl.locale];
+        state.vocabularies?.[vocabBaseUrl]?.subrequests?.[state.intl.locale];
 
       // If the schema already has the choices in it, then do not try to get the vocab,
       // even if there is one
       if (props.items?.choices) {
         return {
           choices: props.items.choices,
+          lang: state.intl.locale,
         };
       } else if (vocabState) {
         return {
           choices: vocabState.items,
           vocabBaseUrl,
+          lang: state.intl.locale,
         };
       }
-      return { vocabBaseUrl };
+      return { vocabBaseUrl, lang: state.intl.locale };
     },
     { getVocabulary },
   ),

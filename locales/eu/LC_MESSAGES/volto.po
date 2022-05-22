@@ -170,6 +170,7 @@ msgstr "Gehigarrien ezarpenak"
 msgid "Additional date"
 msgstr "Data gehigarria"
 
+#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
@@ -254,6 +255,11 @@ msgstr "Aukerak"
 # defaultMessage: Back
 msgid "Back"
 msgstr "Atzera"
+
+#: components/manage/Blocks/Block/StylesSchema
+# defaultMessage: Background color
+msgid "Background color"
+msgstr ""
 
 #: components/manage/Diff/Diff
 # defaultMessage: Base
@@ -444,6 +450,12 @@ msgstr "Batu elementua"
 # defaultMessage: Collection
 msgid "Collection"
 msgstr "Bilduma"
+
+#: components/manage/Blocks/Block/StylesSchema
+#: components/manage/Widgets/ColorPicker
+# defaultMessage: Color
+msgid "Color"
+msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
 #: components/theme/Comments/CommentEditModal
@@ -763,6 +775,11 @@ msgstr "Elementu hau ezabatu egin nahi duzu?"
 msgid "Document"
 msgstr "Dokumentua"
 
+#: components/theme/EventDetails/EventDetails
+# defaultMessage: Download Event
+msgid "Download Event"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Drag and drop files from your computer onto this area or click the “Browse” button.
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
@@ -887,7 +904,6 @@ msgid "Enter an email address. This will be your login name. We respect your pri
 msgstr "Idatzi eposta helbidea. Hau zure erabiltzaile-izena izango da. Zure pribatutasuna errespetatzen dugu eta ez dugu helbidea argitaratu edo inori emango."
 
 #: components/manage/Preferences/PersonalInformation
-#: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 # defaultMessage: Enter full name, e.g. John Smith.
 msgid "Enter full name, e.g. John Smith."
@@ -904,15 +920,20 @@ msgid "Enter your current password."
 msgstr "Idatzi zure pasahitza."
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your email address for verification.
-msgid "Enter your email address for verification."
-msgstr "Idatzi zure eposta helbidea egiaztatu dezagun."
+# defaultMessage: Enter your email for verification.
+msgid "Enter your email for verification."
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your new password. Minimum 5 characters.
 msgid "Enter your new password. Minimum 5 characters."
 msgstr "Idatzi zure pasahitz berria. Gutxienez 5 karaktere."
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Enter your username for verification.
+msgid "Enter your username for verification."
+msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1064,7 +1085,6 @@ msgid "Full"
 msgstr "Osoa"
 
 #: components/manage/Preferences/PersonalInformation
-#: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 # defaultMessage: Full Name
 msgid "Full Name"
@@ -1577,9 +1597,14 @@ msgid "Multiple choices?"
 msgstr "Aukera anitzak?"
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: My email address is
-msgid "My email address is"
-msgstr "Nire helbidea hauxe da: "
+# defaultMessage: My email is
+msgid "My email is"
+msgstr ""
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: My username is
+msgid "My username is"
+msgstr "Nire erabiltzaile izena da"
 
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
@@ -1834,7 +1859,7 @@ msgstr "Tresna pertsonalak"
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Elementu honen edukia sortzearen arduradunak. Idatzi erabiltzaile-izen bat lerro bakoitzean. Egile nagusia lehenengoa izan beharko litzateke."
 
-#: components/manage/Blocks/Video/Edit
+#: components/manage/Blocks/Video/Body
 # defaultMessage: Please enter a valid URL by deleting the block and adding a new video block.
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
 msgstr "Txertatu URL zuzen bat blokea ezabatu eta bideo bloke berri bat gehituz."
@@ -2489,6 +2514,11 @@ msgstr "Karaktere-katea"
 msgid "Stripe alternate rows with color"
 msgstr "Errenkaden koloreak aldatzen joan"
 
+#: helpers/Extensions/withBlockSchemaEnhancer
+# defaultMessage: Styling
+msgid "Styling"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Subject
 msgid "Subject"
@@ -2795,7 +2825,6 @@ msgid "Uninstall"
 msgstr "Desinstalatu"
 
 #: components/manage/Blocks/Block/Edit
-#: components/theme/View/DefaultView
 #: components/theme/View/RenderBlocks
 # defaultMessage: Unknown Block {block}
 msgid "Unknown Block"
@@ -3025,6 +3054,11 @@ msgstr "Data hau iristean, elementua ez da erakutsiko bilaketa eta zerrendetan"
 msgid "Who"
 msgstr "Nor"
 
+#: components/manage/Sidebar/AlignBlock
+# defaultMessage: Wide
+msgid "Wide"
+msgstr ""
+
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Updating workflow states...
 msgid "Workflow Change Loading Message"
@@ -3084,7 +3118,7 @@ msgstr "Ezin duzu elementua hemen itsatsi"
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your email is required for reset your password.
 msgid "Your email is required for reset your password."
-msgstr "Eposta derrigorrezkoa da zure pasahitza berrezartzeko."
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 # defaultMessage: Your location - either city and country - or in a company setting, where your office is located.
@@ -3100,6 +3134,11 @@ msgstr "Zure pasahitza ondo berrezarri da. Orain zure pasahitz berriarekin {link
 # defaultMessage: Your preferred language
 msgid "Your preferred language"
 msgstr "Zure hizkuntza"
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Your username is required for reset your password.
+msgid "Your usernaame is required for reset your password."
+msgstr ""
 
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -3223,9 +3262,14 @@ msgid "intranet"
 msgstr "Intraneta"
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: My email address is
-msgid "label_my_email_address_is"
-msgstr "Nire helbidea hauxe da: "
+# defaultMessage: My email is
+msgid "label_my_email_is"
+msgstr ""
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: My username is
+msgid "label_my_username_is"
+msgstr "Nire erabiltzaile izena da"
 
 #: config/Blocks
 # defaultMessage: Lead Image Field

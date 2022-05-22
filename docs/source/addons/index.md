@@ -9,12 +9,10 @@ html_meta:
 # Volto add-ons
 
 ```{toctree}
-:maxdepth: 3
-:hidden: true
+:maxdepth: 1
 
 i18n
 best-practices
-
 ```
 
 There are several advanced scenarios where we might want to have more control

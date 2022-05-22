@@ -18,7 +18,7 @@ import {
   SET_APIERROR,
 } from '@plone/volto/constants/ActionTypes';
 import { changeLanguage } from '@plone/volto/actions';
-import { normalizeLanguageName } from '@plone/volto/helpers';
+import { normalizeLanguageName, getCookieOptions } from '@plone/volto/helpers';
 let socket = null;
 
 /**
@@ -188,7 +188,12 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
         }
         if (type === GET_CONTENT) {
           const lang = result?.language?.token;
-          if (lang && getState().intl.language !== lang && !subrequest) {
+          if (
+            lang &&
+            getState().intl.language !== lang &&
+            !subrequest &&
+            config.settings.supportedLanguages.includes(lang)
+          ) {
             const langFileName = normalizeLanguageName(lang);
             import('~/../locales/' + langFileName + '.json').then((locale) => {
               dispatch(changeLanguage(lang, locale.default));
@@ -197,10 +202,13 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
         }
         if (type === LOGIN && settings.websockets) {
           const cookies = new Cookies();
-          cookies.set('auth_token', result.token, {
-            path: '/',
-            expires: new Date(jwtDecode(result.token).exp * 1000),
-          });
+          cookies.set(
+            'auth_token',
+            result.token,
+            getCookieOptions({
+              expires: new Date(jwtDecode(result.token).exp * 1000),
+            }),
+          );
           api.get('/@wstoken').then((res) => {
             socket = new WebSocket(
               `${settings.apiPath.replace('http', 'ws')}/@ws?ws_token=${
