@@ -4,6 +4,35 @@
 
 ### Breaking
 
+- Removed `date-fns` from dependencies, this was in the build because `Cypress` depended on it. After the `Cypress` upgrade it no longer depends on it. If your project still depends on it, add it as a dependency of your project. @sneridagh
+- Removed all usage of `date-fns` from core. @sneridagh
+
+### Feature
+
+- Disable already chosen criteria in querystring widget @kreafox
+
+### Bugfix
+
+- Fix `withStylingSchemaEnhancer` enhancer mechanism @sneridagh
+- Add correct query parameters to the redirect @robgietema
+
+### Internal
+
+- Update `Cypress` to version 9.6.1 @sneridagh
+
+### Documentation
+
+- Updated simple.md @MdSahil-oss
+- Fix indentation in nginx configuration in simple.md @stevepiercy
+
+## 16.0.0-alpha.3 (2022-05-16)
+
+### Breaking
+
+- Remove `div` as default if `as` prop from `RenderBlocks`. Now the default is a `React.Fragment` instead. This could lead to CSS inconsistencies if taken this div into account, specially if used in custom add-ons without. In order to avoid them, set the `as` property always in your add-ons. @sneridagh
+
+## 16.0.0-alpha.2 (2022-05-16)
+
 ### Feature
 
 - Add default widget views for all type of fields and improve the DefaultView @ionlizarazu
@@ -16,6 +45,10 @@
 - Fixed ICS URL in event view in seamless mode @sneridagh
 
 ### Internal
+
+- Reintroduce Plone 6 acceptance tests using the latests `plone.app.robotframework` 2.0.0a6 specific Volto fixture. @datakurre @ericof @sneridagh
+- Upgrade all tests to use `plone.app.robotframework` 2.0.0a6 @sneridagh
+- Upgrade Sentry to latest version because of [#3346](https://github.com/plone/volto/issues/3346) @sneridagh
 
 ### Documentation
 
@@ -50,6 +83,7 @@
 - Fixed secure cookie option. @giuliaghisini
 - Changed addon order in addon controlpanel to mimic Classic UI @erral
 - Fixed error when loading content in a language for which a Volto translation is not available. @davisagli
+- Fix different querystring filters in the querystring widget @kreafox
 - Fix for clipped dropdown menus when the table has few or no records in Contents view @mihaislobozeanu
 
 ### Internal
