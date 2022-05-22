@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { List } from 'semantic-ui-react';
-import { useIntl } from 'react-intl';
 import cx from 'classnames';
 import { RRule, rrulestr } from 'rrule';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import { useSelector } from 'react-redux';
 
 export const datesForDisplay = (start, end, moment) => {
   const mStart = moment(start);
@@ -25,10 +25,10 @@ export const datesForDisplay = (start, end, moment) => {
 };
 
 const When_ = ({ start, end, whole_day, open_end, moment: momentlib }) => {
-  const intl = useIntl();
+  const lang = useSelector((state) => state.intl.locale);
 
   const moment = momentlib.default;
-  moment.locale(intl.locale);
+  moment.locale(lang);
 
   const datesInfo = datesForDisplay(start, end, moment);
   if (!datesInfo) {

@@ -83,6 +83,7 @@
 - Fix content view regression, height issue @danielamormocea
 - Fixed secure cookie option. @giuliaghisini
 - Changed addon order in addon controlpanel to mimic Classic UI @erral
+- Changed to get intl.locale always from state @ionlizarazu
 - Fixed error when loading content in a language for which a Volto translation is not available. @davisagli
 - Fix different querystring filters in the querystring widget @kreafox
 - Fix for clipped dropdown menus when the table has few or no records in Contents view @mihaislobozeanu
