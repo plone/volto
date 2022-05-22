@@ -9,6 +9,8 @@
 
 ### Feature
 
+- Disable already chosen criteria in querystring widget @kreafox
+
 ### Bugfix
 
 - Fix `withStylingSchemaEnhancer` enhancer mechanism @sneridagh
@@ -66,6 +68,7 @@
 
 ### Feature
 
+- added default placeholder for videos to embed them more lightly @giuliaghisini
 - Added default placeholder for videos to embed them more lightly @giuliaghisini
 - Completed Romanian translation @sboghy
 
@@ -79,6 +82,7 @@
 - Fixed secure cookie option. @giuliaghisini
 - Changed addon order in addon controlpanel to mimic Classic UI @erral
 - Fixed error when loading content in a language for which a Volto translation is not available. @davisagli
+- Fix different querystring filters in the querystring widget @kreafox
 - Fix for clipped dropdown menus when the table has few or no records in Contents view @mihaislobozeanu
 
 ### Internal

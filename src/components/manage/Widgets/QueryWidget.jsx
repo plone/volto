@@ -290,10 +290,16 @@ export class QuerystringWidgetComponent extends Component {
                             ),
                             (group) => ({
                               label: group[0],
-                              options: map(group[1], (field) => ({
-                                label: field[1].title,
-                                value: field[0],
-                              })),
+                              options: map(
+                                filter(group[1], (item) => item[1].enabled),
+                                (field) => ({
+                                  label: field[1].title,
+                                  value: field[0],
+                                  isDisabled: (value || []).some(
+                                    (v) => v['i'] === field[0],
+                                  ),
+                                }),
+                              ),
                             }),
                           )}
                           styles={customSelectStyles}
@@ -420,6 +426,9 @@ export class QuerystringWidgetComponent extends Component {
                           (field) => ({
                             label: field[1].title,
                             value: field[0],
+                            isDisabled: (value || []).some(
+                              (v) => v['i'] === field[0],
+                            ),
                           }),
                         ),
                       }),
