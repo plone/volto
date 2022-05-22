@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Disable already chosen criteria in querystring widget @kreafox
+
 ### Bugfix
 
 ### Internal
