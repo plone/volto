@@ -182,6 +182,7 @@ msgstr ""
 msgid "Additional date"
 msgstr ""
 
+#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
@@ -265,6 +266,11 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Back
 msgid "Back"
+msgstr ""
+
+#: components/manage/Blocks/Block/StylesSchema
+# defaultMessage: Background color
+msgid "Background color"
 msgstr ""
 
 #: components/manage/Diff/Diff
@@ -455,6 +461,12 @@ msgstr ""
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Collection
 msgid "Collection"
+msgstr ""
+
+#: components/manage/Blocks/Block/StylesSchema
+#: components/manage/Widgets/ColorPicker
+# defaultMessage: Color
+msgid "Color"
 msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
@@ -904,7 +916,6 @@ msgid "Enter an email address. This will be your login name. We respect your pri
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
-#: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 # defaultMessage: Enter full name, e.g. John Smith.
 msgid "Enter full name, e.g. John Smith."
@@ -921,8 +932,8 @@ msgid "Enter your current password."
 msgstr "Voer uw huidige wachtwoord in."
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your email address for verification.
-msgid "Enter your email address for verification."
+# defaultMessage: Enter your email for verification.
+msgid "Enter your email for verification."
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
@@ -930,6 +941,11 @@ msgstr ""
 # defaultMessage: Enter your new password. Minimum 5 characters.
 msgid "Enter your new password. Minimum 5 characters."
 msgstr "Geef een nieuw wachtwoord op. Minimaal 5 karakters."
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Enter your username for verification.
+msgid "Enter your username for verification."
+msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1081,7 +1097,6 @@ msgid "Full"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
-#: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 # defaultMessage: Full Name
 msgid "Full Name"
@@ -1594,9 +1609,14 @@ msgid "Multiple choices?"
 msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: My email address is
-msgid "My email address is"
+# defaultMessage: My email is
+msgid "My email is"
 msgstr ""
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: My username is
+msgid "My username is"
+msgstr "Mijn gebruikersnaam is"
 
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
@@ -1851,7 +1871,7 @@ msgstr ""
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Gebruikers die verantwoordelijk zijn voor de inhoud van dit item. De eindverantwoordelijke vermeldt u als eerste."
 
-#: components/manage/Blocks/Video/Edit
+#: components/manage/Blocks/Video/Body
 # defaultMessage: Please enter a valid URL by deleting the block and adding a new video block.
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
 msgstr ""
@@ -2506,6 +2526,11 @@ msgstr ""
 msgid "Stripe alternate rows with color"
 msgstr ""
 
+#: helpers/Extensions/withBlockSchemaEnhancer
+# defaultMessage: Styling
+msgid "Styling"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Subject
 msgid "Subject"
@@ -2812,7 +2837,6 @@ msgid "Uninstall"
 msgstr ""
 
 #: components/manage/Blocks/Block/Edit
-#: components/theme/View/DefaultView
 #: components/theme/View/RenderBlocks
 # defaultMessage: Unknown Block {block}
 msgid "Unknown Block"
@@ -3042,6 +3066,11 @@ msgstr "Wanneer deze datum bereikt is zal de inhoud niet langer zichtbaar zijn i
 msgid "Who"
 msgstr "Wie"
 
+#: components/manage/Sidebar/AlignBlock
+# defaultMessage: Wide
+msgid "Wide"
+msgstr ""
+
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Updating workflow states...
 msgid "Workflow Change Loading Message"
@@ -3117,6 +3146,11 @@ msgstr ""
 # defaultMessage: Your preferred language
 msgid "Your preferred language"
 msgstr "De taal van uw voorkeur"
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Your username is required for reset your password.
+msgid "Your usernaame is required for reset your password."
+msgstr ""
 
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -3240,9 +3274,14 @@ msgid "intranet"
 msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: My email address is
-msgid "label_my_email_address_is"
+# defaultMessage: My email is
+msgid "label_my_email_is"
 msgstr ""
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: My username is
+msgid "label_my_username_is"
+msgstr "Mijn gebruikersnaam is"
 
 #: config/Blocks
 # defaultMessage: Lead Image Field

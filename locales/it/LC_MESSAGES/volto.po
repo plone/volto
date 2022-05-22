@@ -163,6 +163,7 @@ msgstr "Impostazioni Add-ons"
 msgid "Additional date"
 msgstr "Data aggiuntiva"
 
+#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
@@ -247,6 +248,11 @@ msgstr "Disponibile"
 # defaultMessage: Back
 msgid "Back"
 msgstr "Indietro"
+
+#: components/manage/Blocks/Block/StylesSchema
+# defaultMessage: Background color
+msgid "Background color"
+msgstr ""
 
 #: components/manage/Diff/Diff
 # defaultMessage: Base
@@ -437,6 +443,12 @@ msgstr "Collassa elemento"
 # defaultMessage: Collection
 msgid "Collection"
 msgstr "Collezione"
+
+#: components/manage/Blocks/Block/StylesSchema
+#: components/manage/Widgets/ColorPicker
+# defaultMessage: Color
+msgid "Color"
+msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
 #: components/theme/Comments/CommentEditModal
@@ -885,7 +897,6 @@ msgid "Enter an email address. This will be your login name. We respect your pri
 msgstr "Inserisci un indirizzo e-mail. Esso sarà il tuo nome utente. Rispettiamo la tua privacy: non daremo l'indirizzo a terzi, né verrà esposto nel portale."
 
 #: components/manage/Preferences/PersonalInformation
-#: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 # defaultMessage: Enter full name, e.g. John Smith.
 msgid "Enter full name, e.g. John Smith."
@@ -902,15 +913,20 @@ msgid "Enter your current password."
 msgstr "Inserisci la tua password attuale."
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your email address for verification.
-msgid "Enter your email address for verification."
-msgstr "Inserisci la tua mail per verifica."
+# defaultMessage: Enter your email for verification.
+msgid "Enter your email for verification."
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your new password. Minimum 5 characters.
 msgid "Enter your new password. Minimum 5 characters."
 msgstr "Inserisci la tua nuova password. Minimo 5 caratteri."
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Enter your username for verification.
+msgid "Enter your username for verification."
+msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1062,7 +1078,6 @@ msgid "Full"
 msgstr "A tutta larghezza"
 
 #: components/manage/Preferences/PersonalInformation
-#: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 # defaultMessage: Full Name
 msgid "Full Name"
@@ -1575,9 +1590,14 @@ msgid "Multiple choices?"
 msgstr "Scelta multipla"
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: My email address is
-msgid "My email address is"
-msgstr "Il mio indirizzo email è"
+# defaultMessage: My email is
+msgid "My email is"
+msgstr ""
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: My username is
+msgid "My username is"
+msgstr "Il mio nome utente è"
 
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
@@ -1832,7 +1852,7 @@ msgstr "Strumenti"
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Persone responsabili della creazione del contenuto di questo elemento. Inserisci un elenco di nomi, uno per riga. L'autore principale dovrebbe essere messo al primo posto."
 
-#: components/manage/Blocks/Video/Edit
+#: components/manage/Blocks/Video/Body
 # defaultMessage: Please enter a valid URL by deleting the block and adding a new video block.
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
 msgstr "Inserisci un URL valido eliminando il blocco e aggiungendo un nuovo blocco di tipo video."
@@ -2487,6 +2507,11 @@ msgstr "Stringa"
 msgid "Stripe alternate rows with color"
 msgstr "Colore delle righe alternato"
 
+#: helpers/Extensions/withBlockSchemaEnhancer
+# defaultMessage: Styling
+msgid "Styling"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Subject
 msgid "Subject"
@@ -2793,7 +2818,6 @@ msgid "Uninstall"
 msgstr "Disinstalla"
 
 #: components/manage/Blocks/Block/Edit
-#: components/theme/View/DefaultView
 #: components/theme/View/RenderBlocks
 # defaultMessage: Unknown Block {block}
 msgid "Unknown Block"
@@ -3023,6 +3047,11 @@ msgstr "Quando questa data sarà raggiunta, il contenuto non sarà più visibile
 msgid "Who"
 msgstr "Chi"
 
+#: components/manage/Sidebar/AlignBlock
+# defaultMessage: Wide
+msgid "Wide"
+msgstr ""
+
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Updating workflow states...
 msgid "Workflow Change Loading Message"
@@ -3082,7 +3111,7 @@ msgstr "Non puoi incollare questo contenuto qui."
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your email is required for reset your password.
 msgid "Your email is required for reset your password."
-msgstr "La tua email è necessaria per reimpostare la tua password."
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 # defaultMessage: Your location - either city and country - or in a company setting, where your office is located.
@@ -3098,6 +3127,11 @@ msgstr "La tua password è stata reimpostata correttamente. Ora puoi {link} usan
 # defaultMessage: Your preferred language
 msgid "Your preferred language"
 msgstr "La tua lingua preferita."
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Your username is required for reset your password.
+msgid "Your usernaame is required for reset your password."
+msgstr ""
 
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -3221,9 +3255,14 @@ msgid "intranet"
 msgstr "Pubbliato internamente"
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: My email address is
-msgid "label_my_email_address_is"
-msgstr "Il mio indirizzo email è"
+# defaultMessage: My email is
+msgid "label_my_email_is"
+msgstr ""
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: My username is
+msgid "label_my_username_is"
+msgstr "Il mio nome utente è"
 
 #: config/Blocks
 # defaultMessage: Lead Image Field
