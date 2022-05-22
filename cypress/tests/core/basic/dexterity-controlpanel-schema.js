@@ -50,7 +50,7 @@ describe('ControlPanel: Dexterity Content-Types Schema', () => {
 
     // Edit field
     cy.get(
-      '[data-rbd-draggable-id="Color"] .toolbar button[aria-label="Edit"]',
+      '[data-rbd-draggable-id="color"] .toolbar button[aria-label="Edit"]',
     ).click();
     cy.get('.modal .react-select-container')
       .click()
@@ -61,7 +61,7 @@ describe('ControlPanel: Dexterity Content-Types Schema', () => {
     cy.get('.modal label[for="field-required"]').click();
     cy.get('.modal .actions button[aria-label="Save"]').click();
     cy.get('[data-rbd-draggable-id="Specifications"]').click();
-    cy.get('.react-select-container[id="field-Color"]')
+    cy.get('.react-select-container[id="field-color"]')
       .click()
       .type('Red{enter}');
 
@@ -79,7 +79,7 @@ describe('ControlPanel: Dexterity Content-Types Schema', () => {
     cy.get('#toolbar-add-bike').click();
     cy.get('input[name="title"]').type('Kona').should('have.value', 'Kona');
     cy.get('.formtabs a').contains('Specifications').click();
-    cy.get('.react-select-container[id="field-Color"]')
+    cy.get('.react-select-container[id="field-color"]')
       .click()
       .type('Green{enter}');
 
