@@ -16,6 +16,7 @@
 
 - Fix `withStylingSchemaEnhancer` enhancer mechanism @sneridagh
 - Add correct query parameters to the redirect @robgietema
+- Fix RenderBlocks: path @ksuess
 - Fix field id creation in dexterity control panel to have slugified id @erral
 
 ### Internal
