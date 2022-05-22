@@ -1043,6 +1043,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Object browser: image search should only show images @reebalazs
 - Updated spanish translation @macagua
 - Add Dutch translation @spereverde
+- Add control panel for relations. @ksuess
 
 ### Bugfix
 

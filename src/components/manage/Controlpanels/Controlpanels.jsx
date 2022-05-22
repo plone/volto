@@ -90,6 +90,10 @@ const messages = defineMessages({
     id: 'Content Rules',
     defaultMessage: 'Content Rules',
   },
+  relations: {
+    id: 'Relations',
+    defaultMessage: 'Relations',
+  },
 });
 
 /**
@@ -203,6 +207,11 @@ class Controlpanels extends Component {
             '@id': '/aliases',
             group: this.props.intl.formatMessage(messages.general),
             title: this.props.intl.formatMessage(messages.urlmanagement),
+          },
+          {
+            '@id': '/relations',
+            group: 'Content',
+            title: this.props.intl.formatMessage(messages.relations),
           },
           {
             '@id': '/moderate-comments',

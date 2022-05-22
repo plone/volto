@@ -781,6 +781,11 @@ msgstr "著作権"
 msgid "Copyright statement or other rights information on this item."
 msgstr "このアイテムの著作権宣言文または他の権利情報"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Create relations to target
+msgid "Create relations to target"
+msgstr ""
+
 #: components/manage/Toolbar/More
 # defaultMessage: Create working copy
 msgid "Create working copy"
@@ -1408,6 +1413,21 @@ msgstr ""
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Filter by prefix
 msgid "Filter by prefix"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter relations by search in source
+msgid "Filter relations by search in source"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter relations by target
+msgid "Filter relations by target"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter targets by search
+msgid "Filter targets by search"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
@@ -2223,6 +2243,11 @@ msgstr "未設定"
 msgid "No options"
 msgstr "選択肢無し"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: No relation found
+msgid "No relation found"
+msgstr ""
+
 #: components/manage/BlockChooser/BlockChooser
 #: components/theme/Search/Search
 # defaultMessage: No results found
@@ -2579,6 +2604,12 @@ msgstr "登録"
 msgid "Registration form"
 msgstr "登録フォーム"
 
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Relations/Relations
+# defaultMessage: Relations
+msgid "Relations"
+msgstr ""
+
 #: components/theme/Search/Search
 # defaultMessage: Relevance
 msgid "Relevance"
@@ -2896,6 +2927,11 @@ msgstr "繰り返しに追加する日を選択"
 # defaultMessage: Select columns to show
 msgid "Select columns to show"
 msgstr "表示する列を選択"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Select relation
+msgid "Select relation"
+msgstr ""
 
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Select the transition to be used for modifying the items state.

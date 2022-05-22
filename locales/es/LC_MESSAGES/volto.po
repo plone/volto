@@ -784,6 +784,11 @@ msgstr "Copyright"
 msgid "Copyright statement or other rights information on this item."
 msgstr "Información del copyright o otros derechos en este elemento."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Create relations to target
+msgid "Create relations to target"
+msgstr ""
+
 #: components/manage/Toolbar/More
 # defaultMessage: Create working copy
 msgid "Create working copy"
@@ -1412,6 +1417,21 @@ msgstr "Reglas de filtrado:"
 # defaultMessage: Filter by prefix
 msgid "Filter by prefix"
 msgstr "Filtrar por prefijo"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter relations by search in source
+msgid "Filter relations by search in source"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter relations by target
+msgid "Filter relations by target"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter targets by search
+msgid "Filter targets by search"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Filter users by groups
@@ -2226,6 +2246,11 @@ msgstr "No hay repeticiones"
 msgid "No options"
 msgstr "No hay opciones"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: No relation found
+msgid "No relation found"
+msgstr ""
+
 #: components/manage/BlockChooser/BlockChooser
 #: components/theme/Search/Search
 # defaultMessage: No results found
@@ -2582,6 +2607,12 @@ msgstr "Registro"
 msgid "Registration form"
 msgstr "Formulario de registro"
 
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Relations/Relations
+# defaultMessage: Relations
+msgid "Relations"
+msgstr ""
+
 #: components/theme/Search/Search
 # defaultMessage: Relevance
 msgid "Relevance"
@@ -2899,6 +2930,11 @@ msgstr "Seleccione una fecha para añadirla a la repetición"
 # defaultMessage: Select columns to show
 msgid "Select columns to show"
 msgstr "Seleccionar columnas a mostrar"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Select relation
+msgid "Select relation"
+msgstr ""
 
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Select the transition to be used for modifying the items state.

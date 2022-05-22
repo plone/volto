@@ -71,6 +71,11 @@ export {
   purgeMessages,
 } from '@plone/volto/actions/messages/messages';
 export { getNavigation } from '@plone/volto/actions/navigation/navigation';
+export {
+  createRelations,
+  deleteRelations,
+  listRelations,
+} from '@plone/volto/actions/relations/relations';
 export { listRoles } from '@plone/volto/actions/roles/roles';
 export {
   getSchema,

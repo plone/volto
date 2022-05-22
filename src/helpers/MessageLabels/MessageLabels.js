@@ -260,4 +260,28 @@ export const messages = defineMessages({
     id: 'Show groups of users below',
     defaultMessage: 'Show groups of users below',
   },
+  searchRelationSource: {
+    id: 'Filter relations by search in source',
+    defaultMessage: 'Filter relations by search in source',
+  },
+  searchRelationTarget: {
+    id: 'Filter targets by search',
+    defaultMessage: 'Filter targets by search',
+  },
+  createRelationsToTarget: {
+    id: 'Create relations to target',
+    defaultMessage: 'Create relations to target',
+  },
+  filterByTarget: {
+    id: 'Filter relations by target',
+    defaultMessage: 'Filter relations by target',
+  },
+  selectRelation: {
+    id: 'Select relation',
+    defaultMessage: 'Select relation',
+  },
+  norelationfound: {
+    id: 'No relation found',
+    defaultMessage: 'No relation found',
+  },
 });
