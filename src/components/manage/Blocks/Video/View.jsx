@@ -14,7 +14,8 @@ import cx from 'classnames';
  * @class View
  * @extends Component
  */
-const View = ({ data }) => {
+const View = (props) => {
+  const { data, className } = props;
   return (
     <div
       className={cx(
@@ -23,6 +24,7 @@ const View = ({ data }) => {
           center: !Boolean(data.align),
         },
         data.align,
+        className,
       )}
     >
       <Body data={data} />
