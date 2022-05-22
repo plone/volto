@@ -4,6 +4,5 @@
   "ignoreTestFiles": ["*~"],
   "integrationFolder": "cypress/tests/core",
   "chromeWebSecurity": false,
-  "videoCompression": false,
   "projectId": "hvviu4"
 }
