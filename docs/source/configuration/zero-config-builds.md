@@ -33,7 +33,7 @@ Volto is able to look into the request and infer the API path to be used. This o
 happens in seamless mode, since it assumes that the backend will be hosted in the same
 path (the root) of the request that is getting. This feature relies in the `Host` header.
 You can set this header in the webserver that you are using in front of Volto. This
-configuration is for Nginx:
+configuration is for nginx:
 
 
 ```{code-block} nginx
