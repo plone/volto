@@ -12,6 +12,7 @@ import move from 'lodash-move';
 import { Confirm, Form, Grid, Icon, Message, Segment } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import { slugify } from '@plone/volto/helpers/Utils/Utils';
 
 import {
   Field,
@@ -488,7 +489,7 @@ class SchemaWidget extends Component {
    * @returns {undefined}
    */
   onAddField(values) {
-    const fieldId = values.title.trim().replace(' ', '_');
+    const fieldId = slugify(values.title);
     const currentFieldsetFields = this.props.value.fieldsets[
       this.state.currentFieldset
     ].fields;
