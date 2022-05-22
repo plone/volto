@@ -39,6 +39,10 @@ exports[`Html renders a html component 1`] = `
       href="/site.webmanifest"
       rel="manifest"
     />
+    <link
+      href="https://fonts.gstatic.com"
+      rel="preconnect"
+    />
     <meta
       content="Plone 6 - https://plone.org"
       name="generator"
@@ -133,6 +137,10 @@ exports[`Html renders a html component with apiPath present 1`] = `
     <link
       href="/site.webmanifest"
       rel="manifest"
+    />
+    <link
+      href="https://fonts.gstatic.com"
+      rel="preconnect"
     />
     <meta
       content="Plone 6 - https://plone.org"

@@ -131,6 +131,7 @@ class Html extends Component {
             href="/apple-touch-icon.png"
           />
           <link rel="manifest" href="/site.webmanifest" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
           <meta name="generator" content="Plone 6 - https://plone.org" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
