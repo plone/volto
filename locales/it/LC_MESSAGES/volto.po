@@ -165,7 +165,7 @@ msgstr "Data aggiuntiva"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Maps/schema
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Alignment
 msgid "Alignment"
@@ -1410,7 +1410,7 @@ msgstr "Link al resto"
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
-#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Maps/schema
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Link to
 msgid "Link to"
@@ -1493,12 +1493,12 @@ msgstr "Gestisci traduzioni"
 msgid "Manage translations for {title}"
 msgstr "Gestisci le traduzioni per {title}"
 
-#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Maps/schema
 # defaultMessage: Map
 msgid "Map"
 msgstr "Mappa"
 
-#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Maps/schema
 # defaultMessage: Maps URL
 msgid "Maps URL"
 msgstr "URL di Maps"
@@ -1642,7 +1642,7 @@ msgstr "Nessun elemento trovato in questo contenitore."
 msgid "No items selected"
 msgstr "Nessun elemento selezionato"
 
-#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Maps/schema
 # defaultMessage: No map selected
 msgid "No map selected"
 msgstr "Nessuna mappa selezionata"
@@ -1739,7 +1739,7 @@ msgstr "Solo lettere minuscole (a-z) senza accenti, numeri (0-9), e i due caratt
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Maps/schema
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"

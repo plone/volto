@@ -160,12 +160,6 @@ class Edit extends Component {
     return iframe[0].src;
   }
 
-  resetSubmitUrl = () => {
-    this.setState({
-      url: '',
-    });
-  };
-
   /**
    * Render method.
    * @method render
@@ -261,7 +255,7 @@ class Edit extends Component {
         )}
         {!this.props.selected && <div className="map-overlay" />}
         <SidebarPortal selected={this.props.selected}>
-          <MapsSidebar {...this.props} resetSubmitUrl={this.resetSubmitUrl} />
+          <MapsSidebar {...this.props} />
         </SidebarPortal>
       </div>
     );

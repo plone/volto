@@ -2,6 +2,7 @@
 
 ## 15.8.1 (unreleased)
 
+- Refactor maps block:  make it schema extensible
 ### Breaking
 
 - Deprecate NodeJS 12 since it's out of LTS since April 30, 2022 @sneridagh
