@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Cleanup dangling dist folder @pnicolli
+
 ### Documentation
 
 ## 16.0.0-alpha.4 (2022-05-22)
