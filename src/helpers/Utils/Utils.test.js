@@ -11,6 +11,7 @@ import {
   reorderArray,
   replaceItemOfArray,
   safeWrapper,
+  slugify,
 } from './Utils';
 import moment from 'moment';
 import deepFreeze from 'deep-freeze';
@@ -380,6 +381,21 @@ describe('Utils tests', () => {
       deepFreeze(array);
       const result = reorderArray(array, 2, 0);
       expect(result).toEqual(['c', 'a', 'b']);
+    });
+  });
+
+  describe('slugify', () => {
+    it('slugifies a standard string', () => {
+      expect(slugify('Content Type')).toBe('content_type');
+    });
+    it('slugifies a standard string with several whitespaces', () => {
+      expect(slugify('This is a test')).toBe('this_is_a_test');
+    });
+    it('slugifies a standard string with strange chars', () => {
+      expect(slugify('This is a test?')).toBe('this_is_a_test');
+    });
+    it('slugifies a standard string with dashes', () => {
+      expect(slugify('This is a-test')).toBe('this_is_a_test');
     });
   });
 });

@@ -4,15 +4,29 @@
 
 ### Breaking
 
+- Removed `date-fns` from dependencies, this was in the build because `Cypress` depended on it. After the `Cypress` upgrade it no longer depends on it. If your project still depends on it, add it as a dependency of your project. @sneridagh
+- Removed all usage of `date-fns` from core. @sneridagh
+
 ### Feature
 
 - added 'show total results' option in Search block configuration. @giuliaghisini
+- Added viewableInBrowserObjects setting to use in alternative to downloadableObjects, if you want to view file in browser intstead downloading. @giuliaghisini
+- Disable already chosen criteria in querystring widget @kreafox
 
 ### Bugfix
 
+- Fix `withStylingSchemaEnhancer` enhancer mechanism @sneridagh
+- Add correct query parameters to the redirect @robgietema
+- Fix field id creation in dexterity control panel to have slugified id @erral
+
 ### Internal
 
+- Update `Cypress` to version 9.6.1 @sneridagh
+
 ### Documentation
+
+- Updated simple.md @MdSahil-oss
+- Fix indentation in nginx configuration in simple.md @stevepiercy
 
 ## 16.0.0-alpha.3 (2022-05-16)
 
@@ -57,6 +71,7 @@
 
 ### Feature
 
+- added default placeholder for videos to embed them more lightly @giuliaghisini
 - Added default placeholder for videos to embed them more lightly @giuliaghisini
 - Completed Romanian translation @sboghy
 
@@ -69,7 +84,9 @@
 - Fix content view regression, height issue @danielamormocea
 - Fixed secure cookie option. @giuliaghisini
 - Changed addon order in addon controlpanel to mimic Classic UI @erral
+- Changed to get intl.locale always from state @ionlizarazu
 - Fixed error when loading content in a language for which a Volto translation is not available. @davisagli
+- Fix different querystring filters in the querystring widget @kreafox
 - Fix for clipped dropdown menus when the table has few or no records in Contents view @mihaislobozeanu
 
 ### Internal

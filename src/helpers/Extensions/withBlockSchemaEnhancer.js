@@ -280,7 +280,11 @@ export const withStylingSchemaEnhancer = (FormComponent) => (props) => {
     schema.properties.styles = {
       widget: 'object',
       title: intl.formatMessage(messages.styling),
-      schema: stylesSchema({ defaultStyleSchema, formData, intl }),
+      schema: stylesSchema({
+        schema: defaultStyleSchema({ formData, intl }),
+        formData,
+        intl,
+      }),
     };
   }
   return <FormComponent {...props} schema={schema} />;
