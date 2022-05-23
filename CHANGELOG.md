@@ -52,6 +52,7 @@
 
 ### Feature
 
+- Add default widget views for all type of fields and improve the DefaultView @ionlizarazu
 - added configurable identifier field for password reset in config.js. @giuliaghisini
 - Add `expandToBackendURL` helper @sneridagh
 
