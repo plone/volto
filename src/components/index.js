@@ -203,6 +203,7 @@ export MaybeWrap from '@plone/volto/components/manage/MaybeWrap/MaybeWrap';
 export ContentMetadataTags from '@plone/volto/components/theme/ContentMetadataTags/ContentMetadataTags';
 export FormattedDate from '@plone/volto/components/theme/FormattedDate/FormattedDate';
 export FormattedRelativeDate from '@plone/volto/components/theme/FormattedDate/FormattedRelativeDate';
+export Popup from '@plone/volto/components/theme/Popup/Popup';
 export Component from '@plone/volto/components/theme/Component/Component';
 
 export App from '@plone/volto/components/theme/App/App';
