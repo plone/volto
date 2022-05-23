@@ -148,7 +148,8 @@ export class ObjectBrowserWidgetComponent extends Component {
   };
 
   onChange = (item) => {
-    let value = this.props.mode === 'multiple' ? [...this.props.value] : [];
+    let value =
+      this.props.mode === 'multiple' ? [...(this.props.value || [])] : [];
     value = value.filter((item) => item != null);
     const maxSize =
       this.props.widgetOptions?.pattern_options?.maximumSelectionSize || -1;

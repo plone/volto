@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix ObjectBrowserWidget for RelationList field. @ksuess
+
 ### Internal
 
 ### Documentation
