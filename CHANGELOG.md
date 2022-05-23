@@ -2,6 +2,7 @@
 
 ## 15.8.1 (unreleased)
 
+- hero block: blockExtensions support
 ### Breaking
 
 - Deprecate NodeJS 12 since it's out of LTS since April 30, 2022 @sneridagh
