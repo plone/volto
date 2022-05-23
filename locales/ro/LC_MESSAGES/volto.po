@@ -1342,6 +1342,11 @@ msgstr "Obiecte"
 msgid "Items must be unique."
 msgstr "Obiectele trebuie să fie unice."
 
+#: components/manage/Contents/Contents
+# defaultMessage: Items to be deleted:
+msgid "Items to be deleted:"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Label
 msgid "Label"
@@ -1366,22 +1371,6 @@ msgstr ""
 # defaultMessage: Last comment date
 msgid "Last comment date"
 msgstr "Data ultimului comentariu"
-
-#: components/manage/Contents/Contents
-# defaultMessage: Potential link breakage
-msgid "Potential link breakage"
-msgstr "Posibila rupere a legaturii."
-
-#: components/manage/Contents/Contents
-# defaultMessage: By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first.
-msgid "By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first."
-msgstr "Prin stergerea acestui item, vei rupe legatura existenta dintre articolele de mai jos. Daca asta e ceea ce iti doresti sa faci, iti recomandam sa stergi mai intai referintele."
-
-#: components/manage/Contents/Contents
-# defaultMessage: This Page is referenced by the following items:
-msgid "This Page is referenced by the following items:"
-msgstr "Aceasta pagina e referita de urmatoarele articole:"
-
 
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Last modified
@@ -1896,7 +1885,7 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: Potential link breakage
 msgid "Potential link breakage"
-msgstr ""
+msgstr "Posibila rupere a legaturii."
 
 #: components/theme/Footer/Footer
 # defaultMessage: Powered by Plone & Python
@@ -2675,7 +2664,7 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: This Page is referenced by the following items:
 msgid "This Page is referenced by the following items:"
-msgstr ""
+msgstr "Aceasta pagina e referita de urmatoarele articole:"
 
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This has an ongoing working copy in {title}

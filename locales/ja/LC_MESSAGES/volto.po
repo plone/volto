@@ -1350,6 +1350,11 @@ msgstr "アイテム数"
 msgid "Items must be unique."
 msgstr "アイテムはユニークである必要があります。"
 
+#: components/manage/Contents/Contents
+# defaultMessage: Items to be deleted:
+msgid "Items to be deleted:"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Label
 msgid "Label"
@@ -1374,21 +1379,6 @@ msgstr "最終"
 # defaultMessage: Last comment date
 msgid "Last comment date"
 msgstr "最終コメント日付"
-
-#: components/manage/Contents/Contents
-# defaultMessage: Potential link breakage
-msgid "Potential link breakage"
-msgstr ""
-
-#: components/manage/Contents/Contents
-# defaultMessage: By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first.
-msgid "By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first."
-msgstr ""
-
-#: components/manage/Contents/Contents
-# defaultMessage: This Page is referenced by the following items:
-msgid "This Page is referenced by the following items:"
-msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Last modified
