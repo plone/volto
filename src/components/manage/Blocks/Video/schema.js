@@ -32,12 +32,11 @@ export const VideoBlockSchema = (props) => ({
   properties: {
     url: {
       title: props.intl.formatMessage(messages.VideoURL),
+      widget: 'url',
     },
     preview_image: {
       title: props.intl.formatMessage(messages.Preview_image),
-      widget: 'object_browser',
-      mode: 'image',
-      allowExternals: true,
+      widget: 'url',
     },
     align: {
       title: props.intl.formatMessage(messages.Alignment),
