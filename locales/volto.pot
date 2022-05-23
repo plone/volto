@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-05-22T09:33:42.265Z\n"
+"POT-Creation-Date: 2022-05-23T16:12:46.915Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -934,6 +934,7 @@ msgstr ""
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
+#: components/manage/Toolbar/More
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
@@ -1503,6 +1504,11 @@ msgstr ""
 #: components/manage/Toolbar/More
 # defaultMessage: Manage Translations
 msgid "Manage Translations"
+msgstr ""
+
+#: components/manage/Toolbar/More
+# defaultMessage: Manage content…
+msgid "Manage content…"
 msgstr ""
 
 #: components/manage/Multilingual/ManageTranslations
@@ -2794,6 +2800,7 @@ msgstr ""
 msgid "UID"
 msgstr ""
 
+#: components/manage/Toolbar/More
 #: components/theme/Unauthorized/Unauthorized
 # defaultMessage: Unauthorized
 msgid "Unauthorized"
@@ -3598,6 +3605,16 @@ msgstr ""
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Visit external website
 msgid "visit_external_website"
+msgstr ""
+
+#: components/manage/Toolbar/More
+# defaultMessage: You are not authorized to perform this operation.
+msgid "workingCopyErrorUnauthorized"
+msgstr ""
+
+#: components/manage/Toolbar/More
+# defaultMessage: An error occurred while performing this operation.
+msgid "workingCopyGenericError"
 msgstr ""
 
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry

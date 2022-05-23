@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Working copy actions now render errors if they fail @pnicolli
+
 ### Bugfix
 
 ### Internal
