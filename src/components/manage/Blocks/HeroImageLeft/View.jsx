@@ -7,13 +7,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { LinkMore } from '@plone/volto/components';
+import { withBlockExtensions } from '@plone/volto/helpers';
 
 /**
  * View image block class.
  * @class View
  * @extends Component
  */
-const View = ({ data }) => (
+export const View = ({ data }) => (
   <div className="block hero">
     <div className="block-inner-wrapper">
       {data.url && (
@@ -44,4 +45,4 @@ View.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-export default View;
+export default withBlockExtensions(View);

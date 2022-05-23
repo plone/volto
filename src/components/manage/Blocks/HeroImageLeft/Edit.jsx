@@ -17,6 +17,7 @@ import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
 import { createContent } from '@plone/volto/actions';
 import { Icon, SidebarPortal, LinkMore } from '@plone/volto/components';
+import { withBlockExtensions } from '@plone/volto/helpers';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 
@@ -473,6 +474,7 @@ const Edit = injectLazyLibs(['draftJs', 'immutableLib', 'draftJsImportHtml'])(
 
 export default compose(
   injectIntl,
+  withBlockExtensions,
   connect(
     (state, ownProps) => ({
       request: state.content.subrequests[ownProps.block] || {},
