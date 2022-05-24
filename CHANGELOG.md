@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- fix TokenWidget choices when editing a recently created content. @giuliaghisini
+
 ### Internal
 
 ### Documentation
