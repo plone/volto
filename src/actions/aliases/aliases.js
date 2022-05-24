@@ -22,7 +22,7 @@ export function getAliases(url, query, manual, datetime) {
       op: 'get',
       path: `${url}/@aliases?q=${query ? query : ''}&manual=${
         manual ? manual : ''
-      }&datetime=${datetime !== null ? datetime : ''}`,
+      }&datetime=${datetime !== null ? datetime : ''}&b_size=25&b_start=0`,
     },
   };
 }
