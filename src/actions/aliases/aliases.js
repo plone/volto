@@ -15,14 +15,26 @@ import {
  * @param {string} url Content url.
  * @returns {Object} Get aliases action.
  */
-export function getAliases(url, query, manual, datetime) {
+export function getAliases(
+  url,
+  query,
+  manual,
+  datetime,
+  batchSize,
+  batchStart,
+) {
+  console.log('bsize', batchSize);
+  console.log('bstart', batchStart);
+
   return {
     type: GET_ALIASES,
     request: {
       op: 'get',
       path: `${url}/@aliases?q=${query ? query : ''}&manual=${
         manual ? manual : ''
-      }&datetime=${datetime !== null ? datetime : ''}&b_size=25&b_start=0`,
+      }&datetime=${datetime !== null ? datetime : ''}&b_size=${
+        batchSize ? batchSize : 99999999999
+      }&b_start=${batchStart ? batchStart : 0}`,
     },
   };
 }

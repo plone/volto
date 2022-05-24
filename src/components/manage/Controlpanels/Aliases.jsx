@@ -109,8 +109,15 @@ class Aliases extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
+    const { filterQuery, filterType, createdBefore, itemsPerPage } = this.state;
     this.setState({ isClient: true });
-    this.props.getAliases(getBaseUrl(this.props.pathname));
+    this.props.getAliases(
+      getBaseUrl(this.props.pathname),
+      filterQuery,
+      filterType.value,
+      createdBefore,
+      itemsPerPage,
+    );
   }
 
   /**
@@ -137,12 +144,12 @@ class Aliases extends Component {
       prevState.activePage !== this.state.activePage ||
       prevState.itemsPerPage !== this.state.itemsPerPage
     ) {
-      const paginatedAliases = getPaginatedData(
-        this.props.aliases.items,
-        this.state.activePage,
-        this.state.itemsPerPage,
-      );
-      this.setState({ aliases: paginatedAliases });
+      // const paginatedAliases = getPaginatedData(
+      //   this.props.aliases.items,
+      //   this.state.activePage,
+      //   this.state.itemsPerPage,
+      // );
+      this.setState({ aliases: this.props.aliases.items });
     }
     if (prevState.altUrlPath !== this.state.altUrlPath) {
       if (this.state.altUrlPath.charAt(0) === '/') {
@@ -176,7 +183,20 @@ class Aliases extends Component {
       }
     }
     if (this.props.aliases.add.loading && nextProps.aliases.add.loaded) {
-      this.props.getAliases(getBaseUrl(this.props.pathname));
+      const {
+        filterQuery,
+        filterType,
+        createdBefore,
+        itemsPerPage,
+      } = this.state;
+
+      this.props.getAliases(
+        getBaseUrl(this.props.pathname),
+        filterQuery,
+        filterType.value,
+        createdBefore,
+        itemsPerPage,
+      );
       if (!nextProps.aliases.add.error) {
         this.setState({
           errorMessageAdd: '',
@@ -184,7 +204,20 @@ class Aliases extends Component {
       }
     }
     if (this.props.aliases.remove.loading && nextProps.aliases.remove.loaded) {
-      this.props.getAliases(getBaseUrl(this.props.pathname));
+      const {
+        filterQuery,
+        filterType,
+        createdBefore,
+        itemsPerPage,
+      } = this.state;
+
+      this.props.getAliases(
+        getBaseUrl(this.props.pathname),
+        filterQuery,
+        filterType.value,
+        createdBefore,
+        itemsPerPage,
+      );
     }
   }
 
@@ -230,12 +263,13 @@ class Aliases extends Component {
    * @returns {undefined}
    */
   handleSubmitFilter = () => {
-    const { filterQuery, filterType, createdBefore } = this.state;
+    const { filterQuery, filterType, createdBefore, itemsPerPage } = this.state;
     this.props.getAliases(
       getBaseUrl(this.props.pathname),
       filterQuery,
       filterType.value,
       createdBefore,
+      itemsPerPage,
     );
   };
 
@@ -528,8 +562,8 @@ class Aliases extends Component {
                           />
                         </Table.HeaderCell>
                       </Table.Row>
-                      {this.state.aliases.length > 0 &&
-                        this.state.aliases.map((alias, i) => (
+                      {this.props.aliases.items.length > 0 &&
+                        this.props.aliases.items.map((alias, i) => (
                           <Table.Row key={i}>
                             <Table.Cell>
                               <Checkbox
