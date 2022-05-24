@@ -1912,6 +1912,11 @@ msgstr ""
 msgid "Please fill out the form below to set your password."
 msgstr "Por favor preencha o formulário abaixo para definir a sua senha."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Please search for users or use the filters on the side.
+msgid "Please search for users or use the filters on the side."
+msgstr ""
+
 #: components/theme/Footer/Footer
 # defaultMessage: Plone Foundation
 msgid "Plone Foundation"
@@ -2397,6 +2402,11 @@ msgstr ""
 #: components/theme/Comments/Comments
 # defaultMessage: Show Replies
 msgid "Show Replies"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Show groups of users shown
+msgid "Show groups of users shown"
 msgstr ""
 
 #: components/manage/Widgets/ObjectListWidget

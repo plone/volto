@@ -1914,6 +1914,11 @@ msgstr "Por favor introduzca el código de encapsulamiento de Google Maps que se
 msgid "Please fill out the form below to set your password."
 msgstr "Por favor, complete el siguiente formulario para establecer su contraseña."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Please search for users or use the filters on the side.
+msgid "Please search for users or use the filters on the side."
+msgstr ""
+
 #: components/theme/Footer/Footer
 # defaultMessage: Plone Foundation
 msgid "Plone Foundation"
@@ -2400,6 +2405,11 @@ msgstr "Mostrar todos"
 # defaultMessage: Show Replies
 msgid "Show Replies"
 msgstr "Mostrar respuestas"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Show groups of users shown
+msgid "Show groups of users shown"
+msgstr ""
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Show item

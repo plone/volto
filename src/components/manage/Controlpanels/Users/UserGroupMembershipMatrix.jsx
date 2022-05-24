@@ -3,11 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useIntl } from 'react-intl';
 import { Checkbox, Form, Input } from 'semantic-ui-react';
 
-import { isEqual, pull } from 'lodash';
+import { isEqual } from 'lodash';
 
 import { messages } from '@plone/volto/helpers';
-import { listGroups } from '@plone/volto/actions';
+import { listGroups } from '@plone/volto/actions'; // getRegistry
 import UserGroupMembershipListing from './UserGroupMembershipListing';
+import { getControlpanel } from '../../../../actions/controlpanels/controlpanels';
 
 const UserGroupMembershipMatrix = (props) => {
   const intl = useIntl();
@@ -16,6 +17,7 @@ const UserGroupMembershipMatrix = (props) => {
   const [query_group, setQuery_group] = useState('');
   const [query_group_filter, setQuery_group_filter] = useState('');
   const [groups_filter, setGroups_filter] = useState([]); // Show users which are in these groups.
+  const [add_joined_groups, setAdd_joined_groups] = useState(false);
 
   let filter_options = useSelector((state) => state.groups.filter_groups);
   if (filter_options) {
@@ -36,9 +38,22 @@ const UserGroupMembershipMatrix = (props) => {
     });
   }
 
+  let many_users = useSelector(
+    (state) => state.controlpanels.controlpanel?.data?.many_users || false,
+  );
+  let many_groups = useSelector(
+    (state) => state.controlpanels.controlpanel?.data?.many_groups || false,
+  );
+
   useEffect(() => {
     dispatch(listGroups('', query_group_filter));
   }, [dispatch, query_group_filter, props]);
+
+  useEffect(() => {
+    // dispatch(getRegistry('plone.many_users'));
+    // dispatch(getRegistry('plone.many_groups'));
+    dispatch(getControlpanel('usergroup'));
+  }, [dispatch]);
 
   const onReset = (event) => {
     // event.preventDefault();
@@ -72,13 +87,18 @@ const UserGroupMembershipMatrix = (props) => {
   const onSelectOptionHandler = (filter_option, checked) => {
     let groups_filter_set_new = [];
     if (checked) {
-      groups_filter_set_new = new Set([...groups_filter, filter_option.value]);
+      groups_filter_set_new = new Set([...groups_filter, filter_option]);
     } else {
-      groups_filter_set_new = pull(groups_filter, filter_option.value);
+      groups_filter_set_new = groups_filter.filter(
+        (el) => el.value !== filter_option.value,
+      );
     }
     if (!isEqual(groups_filter_set_new, new Set(groups_filter))) {
       setGroups_filter([...groups_filter_set_new]);
     }
+  };
+  const onToggleJoinedGroups = (checked) => {
+    setAdd_joined_groups(checked);
   };
 
   const onChangeSearchGroupsFilter = (event) => {
@@ -86,8 +106,8 @@ const UserGroupMembershipMatrix = (props) => {
   };
 
   return (
-    <div className="usergroupmembership_matrix">
-      <div className="usergroupmembership_search_user">
+    <div className="controlpanel_matrix">
+      <div className="controlpanel_search_y">
         <Form className="search_users" onSubmit={onReset}>
           <Form.Field>
             <Input
@@ -100,7 +120,7 @@ const UserGroupMembershipMatrix = (props) => {
           </Form.Field>
         </Form>
       </div>
-      <div className="usergroupmembership_search_group">
+      <div className="controlpanel_search_x">
         <Form className="search_groups" onSubmit={onReset}>
           <Form.Field>
             <Input
@@ -111,9 +131,20 @@ const UserGroupMembershipMatrix = (props) => {
               id="group-search-input"
             />
           </Form.Field>
+          <Form.Field>
+            <Checkbox
+              name="addJoinedGroups"
+              label={intl.formatMessage(messages.addJoinedGroups)}
+              title={intl.formatMessage(messages.addJoinedGroups)}
+              defaultChecked={false}
+              onChange={(event, { checked }) => {
+                onToggleJoinedGroups(checked);
+              }}
+            />
+          </Form.Field>
         </Form>
       </div>
-      <div className="usergroupmembership_filter">
+      <div className="controlpanel_filter">
         <h3>{intl.formatMessage(messages.filterByGroups)}</h3>
 
         <Form className="search_filter_groups" onSubmit={onReset}>
@@ -145,6 +176,9 @@ const UserGroupMembershipMatrix = (props) => {
         query_user={query_user}
         query_group={query_group}
         groups_filter={groups_filter}
+        many_users={many_users}
+        many_groups={many_groups}
+        add_joined_groups={add_joined_groups}
       />
     </div>
   );

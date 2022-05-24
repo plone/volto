@@ -1904,6 +1904,11 @@ msgstr "Vă rugăm să introduceți codul de integrare furnizat de Google Maps -
 msgid "Please fill out the form below to set your password."
 msgstr "Vă rugăm să completați formularul de mai jos pentru a seta parola."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Please search for users or use the filters on the side.
+msgid "Please search for users or use the filters on the side."
+msgstr ""
+
 #: components/theme/Footer/Footer
 # defaultMessage: Plone Foundation
 msgid "Plone Foundation"
@@ -2390,6 +2395,11 @@ msgstr "Afișează tot"
 # defaultMessage: Show Replies
 msgid "Show Replies"
 msgstr "Afișați răspunsurile"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Show groups of users shown
+msgid "Show groups of users shown"
+msgstr ""
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Show item

@@ -19,40 +19,45 @@
   color: #878f93;
 }
 
-.usergroupmembership_matrix {
+.controlpanel_matrix {
   display: grid;
-  grid-template-columns: 5fr 5fr 2fr;
   grid-gap: 2rem;
+  grid-template-columns: 5fr 5fr 2fr;
 
-  .usergroupmembership_search_user {
+  .controlpanel_select_relation {
     grid-column: 1;
     grid-row: 1;
   }
 
-  .usergroupmembership_search_group {
-    grid-column: 2;
-    grid-row: 1;
+  .controlpanel_search_y {
+    grid-column: 1;
+    grid-row: 2;
   }
 
-  .usergroupmembership_filter {
-    grid-column: 3;
-    grid-row-start: 1;
-    grid-row-end: 3;
+  .controlpanel_search_x {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .controlpanel_filter {
     display: flex;
     flex-direction: column;
+    grid-column: 3;
+    grid-row-end: 4;
+    grid-row-start: 2;
 
     .ui.checkbox {
-      margin-top: .5rem;
+      margin-top: 0.5rem;
     }
   }
 
   .administration_matrix {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    grid-row: 2;
-    overflow-x: scroll;
     display: grid;
     padding-right: 2rem;
+    grid-column-end: 3;
+    grid-column-start: 1;
+    grid-row: 3;
+    overflow-x: scroll;
   }
 }
 
@@ -71,13 +76,12 @@
       align-items: flex-end;
 
       &.inclined {
-        height: 13rem;
         width: 3.5rem;
+        height: 13rem;
         white-space: nowrap;
 
         div {
-          transform:
-            rotate(315deg);
+          transform: rotate(315deg);
           transform-origin: top left;
         }
       }
@@ -85,7 +89,7 @@
   }
 
   .items {
-    padding-top: .5rem;
+    padding-top: 0.5rem;
 
     .listing-row {
       &:nth-child(2n) {
@@ -98,21 +102,20 @@
 
       .listing-item {
         display: flex;
-        justify-content: space-between;
-        align-items: baseline;
         width: 100%;
+        align-items: baseline;
+        justify-content: space-between;
         padding: 0.5rem 0.1rem;
         margin: 0.2rem 0;
-        ;
 
         .matrix_options {
           display: flex;
           flex-direction: row;
 
-          &>div {
+          & > div {
             width: 3rem;
-            margin-left: 0.5rem;
             padding: 0.3rem 0.1rem;
+            margin-left: 0.5rem;
 
             .ui.checkbox {
               margin: auto;

@@ -1913,6 +1913,11 @@ msgstr "Introduïu el codi d'inserció proporcionat per Google Maps -> Compartei
 msgid "Please fill out the form below to set your password."
 msgstr "Si us plau, omple el formulari següent per configurar la teva contrasenya."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Please search for users or use the filters on the side.
+msgid "Please search for users or use the filters on the side."
+msgstr ""
+
 #: components/theme/Footer/Footer
 # defaultMessage: Plone Foundation
 msgid "Plone Foundation"
@@ -2399,6 +2404,11 @@ msgstr "Mostrar tots"
 # defaultMessage: Show Replies
 msgid "Show Replies"
 msgstr "Mostra les respostes"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Show groups of users shown
+msgid "Show groups of users shown"
+msgstr ""
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Show item

@@ -1914,6 +1914,11 @@ msgstr "Digite o código Embed fornecido pelo google maps -> compartilhar -> map
 msgid "Please fill out the form below to set your password."
 msgstr "Preencha o formulário abaixo para definir sua senha."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Please search for users or use the filters on the side.
+msgid "Please search for users or use the filters on the side."
+msgstr ""
+
 #: components/theme/Footer/Footer
 # defaultMessage: Plone Foundation
 msgid "Plone Foundation"
@@ -2400,6 +2405,11 @@ msgstr "Mostrar tudo"
 # defaultMessage: Show Replies
 msgid "Show Replies"
 msgstr "Mostrar respostas"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Show groups of users shown
+msgid "Show groups of users shown"
+msgstr ""
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Show item

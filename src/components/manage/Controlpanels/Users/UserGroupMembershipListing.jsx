@@ -7,49 +7,105 @@ import { messages } from '@plone/volto/helpers';
 import { listGroups } from '@plone/volto/actions';
 import { Toast } from '@plone/volto/components';
 import { updateGroup, listUsers } from '@plone/volto/actions';
+import { uniqBy } from 'lodash';
 
-const ListingTemplate = ({ query_user, query_group, groups_filter }) => {
+const ListingTemplate = ({
+  query_user,
+  query_group,
+  groups_filter,
+  many_users,
+  many_groups,
+  add_joined_groups,
+}) => {
   const intl = useIntl();
   const dispatch = useDispatch();
 
-  let groups = useSelector((state) => state.groups.groups);
-  let matrix_options = groups.map((group) => ({
-    value: group.id,
-    label: group.title || `${group.id}`,
-  }));
-  matrix_options.sort(function (a, b) {
-    var labelA = a.label.toUpperCase();
-    var labelB = b.label.toUpperCase();
-    if (labelA < labelB) {
-      return -1;
-    }
-    if (labelA > labelB) {
-      return 1;
-    }
-    return 0;
-  });
+  // y axis
   let items = useSelector((state) => state.users.users);
-  items.sort(function (a, b) {
-    var labelA = a.fullname.split(' ').reverse().join(' ');
-    var labelB = b.fullname.split(' ').reverse().join(' ');
-    if (labelA < labelB) {
-      return -1;
+  let show_users =
+    !many_users || query_user.length > 0 || groups_filter.length > 0;
+  if (show_users) {
+    items.sort(function (a, b) {
+      var labelA = a.fullname.split(' ').reverse().join(' ');
+      var labelB = b.fullname.split(' ').reverse().join(' ');
+      if (labelA < labelB) {
+        return -1;
+      }
+      if (labelA > labelB) {
+        return 1;
+      }
+      return 0;
+    });
+  } else {
+    items = [];
+  }
+
+  // x axis
+  let groups = useSelector((state) => state.groups.groups);
+  let show_matrix_options =
+    !many_groups ||
+    query_group.length > 0 ||
+    groups_filter.length > 0 ||
+    add_joined_groups;
+  let matrix_options; // list of Objects (value, label)
+  if (show_matrix_options) {
+    matrix_options = !many_groups || query_group.length > 0 ? groups : [];
+    if (add_joined_groups) {
+      items.map((item) => {
+        matrix_options.push(...item.groups.items);
+        return item.groups.items;
+      });
     }
-    if (labelA > labelB) {
-      return 1;
+    matrix_options = matrix_options.map((group) => ({
+      value: group.id,
+      label: group.title || `${group.id}`,
+    }));
+    if (groups_filter.length > 0) {
+      matrix_options = groups_filter.concat(matrix_options);
     }
-    return 0;
-  });
+    matrix_options = uniqBy(matrix_options, (x) => x.value);
+    matrix_options = matrix_options.filter((group) => {
+      return group.value !== 'AuthenticatedUsers';
+    });
+    matrix_options.sort(function (a, b) {
+      var labelA = a.label.toUpperCase();
+      var labelB = b.label.toUpperCase();
+      if (labelA < labelB) {
+        return -1;
+      }
+      if (labelA > labelB) {
+        return 1;
+      }
+      return 0;
+    });
+  } else {
+    matrix_options = [];
+  }
 
   useEffect(() => {
     // Get users.
-    dispatch(listUsers(query_user, groups_filter));
-  }, [dispatch, query_user, groups_filter]);
+    if (show_users) {
+      dispatch(
+        listUsers(
+          query_user,
+          groups_filter.map((el) => el.value),
+        ),
+      );
+    }
+  }, [dispatch, query_user, groups_filter, show_users]);
 
   useEffect(() => {
     // Get matrix groups.
-    dispatch(listGroups(query_group));
-  }, [dispatch, query_group]);
+    if (show_matrix_options) {
+      dispatch(listGroups(query_group));
+    }
+  }, [
+    dispatch,
+    query_group,
+    show_matrix_options,
+    groups_filter,
+    add_joined_groups,
+  ]);
 
   const onSelectOptionHandler = (item, selectedvalue, checked) => {
     let group = selectedvalue.y;
@@ -63,7 +119,12 @@ const ListingTemplate = ({ query_user, query_group, groups_filter }) => {
       }),
     )
       .then((resp) => {
-        dispatch(listUsers(query_user, groups_filter));
+        dispatch(
+          listUsers(
+            query_user,
+            groups_filter.map((el) => el.value),
+          ),
+        );
       })
       .then(() => {
         toast.success(
@@ -90,6 +151,13 @@ const ListingTemplate = ({ query_user, query_group, groups_filter }) => {
         }),
       );
     });
+    toast.success(
+      <Toast
+        success
+        title={intl.formatMessage(messages.success)}
+        content="Membership updated"
+      />,
+    );
   };
 
   return (
@@ -150,9 +218,9 @@ const ListingTemplate = ({ query_user, query_group, groups_filter }) => {
                         className={`checkbox_${matrix_option.value}`}
                         key={matrix_option.value}
                         title={matrix_option.title}
-                        defaultChecked={item.groups?.items?.includes(
-                          matrix_option.value,
-                        )}
+                        defaultChecked={item.groups?.items
+                          ?.map((el) => el.id)
+                          .includes(matrix_option.value)}
                         onChange={(event, { checked }) => {
                           onSelectOptionHandler(
                             item,
@@ -168,7 +236,15 @@ const ListingTemplate = ({ query_user, query_group, groups_filter }) => {
             ))}
           </>
         ) : (
-          <div>{intl.formatMessage(messages.nouserfound)}</div>
+          <div>
+            {intl.formatMessage(
+              show_users
+                ? query_user
+                  ? messages.noUserFound
+                  : messages.pleaseSearchOrFilterUsers
+                : messages.pleaseSearchOrFilterUsers,
+            )}
+          </div>
         )}
       </div>
     </div>

@@ -1919,6 +1919,11 @@ msgstr "Bitte geben sie den Einbettungscode von Google Maps ein. Klicken Sie auf
 msgid "Please fill out the form below to set your password."
 msgstr "Bitte füllen Sie das unten stehende Formular aus, um Ihr Passwort neu zu setzen."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Please search for users or use the filters on the side.
+msgid "Please search for users or use the filters on the side."
+msgstr "Bitte verwenden Sie das Suchfeld oder die Filter um Benutzer anzuzeigen."
+
 #: components/theme/Footer/Footer
 # defaultMessage: Plone Foundation
 msgid "Plone Foundation"
@@ -2405,6 +2410,11 @@ msgstr "Alle anzeigen"
 # defaultMessage: Show Replies
 msgid "Show Replies"
 msgstr "Antworten anzeigen"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Show groups of users shown
+msgid "Show groups of users shown"
+msgstr ""
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Show item
