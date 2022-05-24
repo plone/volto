@@ -1,6 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a link view component 1`] = `
+exports[`LinkView renders a link view component for anonymous users 1`] = `null`;
+
+exports[`LinkView renders a link view component for logged users 1`] = `
 <div
   className="ui container"
   id="page-document"

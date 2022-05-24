@@ -7,31 +7,54 @@ import LinkView from './LinkView';
 
 const mockStore = configureStore();
 
-const store = mockStore({
-  userSession: {
-    token: null,
-  },
-  intl: {
-    locale: 'en',
-    messages: {},
-  },
-});
+describe('LinkView', () => {
+  it('renders a link view component for logged users', () => {
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
 
-test('renders a link view component', () => {
-  const component = renderer.create(
-    <Provider store={store}>
-      <MemoryRouter>
-        <LinkView
-          token="1234"
-          content={{
-            title: 'Hello World!',
-            description: 'Hi',
-            remoteUrl: '/news',
-          }}
-        />
-      </MemoryRouter>
-    </Provider>,
-  );
-  const json = component.toJSON();
-  expect(json).toMatchSnapshot();
+    const component = renderer.create(
+      <Provider store={store}>
+        <MemoryRouter>
+          <LinkView
+            token="1234"
+            content={{
+              title: 'Hello World!',
+              description: 'Hi',
+              remoteUrl: '/news',
+            }}
+          />
+        </MemoryRouter>
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
+  it('renders a link view component for anonymous users', () => {
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+
+    const component = renderer.create(
+      <Provider store={store}>
+        <MemoryRouter>
+          <LinkView
+            content={{
+              title: 'Hello World!',
+              description: 'Hi',
+              remoteUrl: '/news',
+            }}
+          />
+        </MemoryRouter>
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
 });
