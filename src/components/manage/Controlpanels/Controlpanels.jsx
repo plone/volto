@@ -50,6 +50,10 @@ const messages = defineMessages({
     id: 'Groups',
     defaultMessage: 'Groups',
   },
+  usergroup: {
+    id: 'User and Group Settings',
+    defaultMessage: 'User and Group Settings',
+  },
 });
 
 /**
@@ -149,6 +153,11 @@ class Controlpanels extends Component {
           '@id': '/groups',
           group: 'Users and Groups',
           title: this.props.intl.formatMessage(messages.groups),
+        },
+        {
+          '@id': '/usergroup',
+          group: 'Users and Groups',
+          title: this.props.intl.formatMessage(messages.usergroup),
         },
       ]),
       (controlpanel) => ({
