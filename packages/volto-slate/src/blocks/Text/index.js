@@ -30,11 +30,9 @@ import {
 import { extractImages } from '@plone/volto-slate/editor/plugins/Image/deconstruct';
 import { extractTables } from '@plone/volto-slate/blocks/Table/deconstruct';
 
-export TextBlockView from './TextBlockView';
-export TextBlockEdit from './TextBlockEdit';
-export TextBlockSchema from './TextBlockSchema';
-
 import textSVG from '@plone/volto/icons/subtext.svg';
+
+export { TextBlockView, TextBlockEdit, TextBlockSchema };
 
 export default (config) => {
   config.settings.slate = {
