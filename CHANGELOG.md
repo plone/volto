@@ -7,6 +7,7 @@
 ### Feature
 
 - Disable already chosen criteria in querystring widget @kreafox
+- Working copy actions now render errors if they fail @pnicolli
 
 ### Bugfix
 

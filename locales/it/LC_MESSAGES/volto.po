@@ -920,6 +920,7 @@ msgstr ""
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
+#: components/manage/Toolbar/More
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
@@ -1490,6 +1491,11 @@ msgstr "Rendi la tabella compatta"
 # defaultMessage: Manage Translations
 msgid "Manage Translations"
 msgstr "Gestisci traduzioni"
+
+#: components/manage/Toolbar/More
+# defaultMessage: Manage content…
+msgid "Manage content…"
+msgstr "Gestione del contenuto…"
 
 #: components/manage/Multilingual/ManageTranslations
 # defaultMessage: Manage translations for {title}
@@ -2775,6 +2781,7 @@ msgstr "Digita il titolo…"
 msgid "UID"
 msgstr "UID"
 
+#: components/manage/Toolbar/More
 #: components/theme/Unauthorized/Unauthorized
 # defaultMessage: Unauthorized
 msgid "Unauthorized"
@@ -3575,6 +3582,16 @@ msgstr "Video"
 # defaultMessage: Visit external website
 msgid "visit_external_website"
 msgstr "Visita il sito web"
+
+#: components/manage/Toolbar/More
+# defaultMessage: You are not authorized to perform this operation.
+msgid "workingCopyErrorUnauthorized"
+msgstr "Non sei autorizzato ad compiere questa operazione."
+
+#: components/manage/Toolbar/More
+# defaultMessage: An error occurred while performing this operation.
+msgid "workingCopyGenericError"
+msgstr "Si è verificato un errore durante l'operazione."
 
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
