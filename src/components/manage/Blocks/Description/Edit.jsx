@@ -42,20 +42,21 @@ function usePrevious(value) {
  */
 export const TitleBlockEdit = (props) => {
   const {
-    onDeleteBlock,
-    selected,
-    index,
-    onChangeField,
-    onSelectBlock,
-    onAddBlock,
-    onFocusPreviousBlock,
-    onFocusNextBlock,
     block,
     blockNode,
-    properties,
-    metadata,
+    data,
     detached,
     editable,
+    index,
+    metadata,
+    onAddBlock,
+    onChangeField,
+    onDeleteBlock,
+    onFocusNextBlock,
+    onFocusPreviousBlock,
+    onSelectBlock,
+    properties,
+    selected,
   } = props;
 
   const [editor] = useState(withReact(createEditor()));
@@ -80,8 +81,8 @@ export const TitleBlockEdit = (props) => {
   );
 
   const placeholder = useMemo(
-    () => intl.formatMessage(messages['description']),
-    [intl],
+    () => data.placeholder || intl.formatMessage(messages['description']),
+    [data.placeholder, intl],
   );
   const disableNewBlocks = useMemo(() => detached, [detached]);
 
