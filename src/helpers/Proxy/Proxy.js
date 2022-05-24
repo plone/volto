@@ -5,7 +5,7 @@
  * @return {function} Superagent request function
  */
 
-const HEADERS = ["range", "if-range"];
+const HEADERS = ['range', 'if-range'];
 
 export const addHeadersFactory = (orig) => {
   return (request) => {
