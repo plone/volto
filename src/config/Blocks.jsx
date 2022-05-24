@@ -193,7 +193,7 @@ const blocksConfig = {
     view: ViewDescriptionBlock,
     edit: EditDescriptionBlock,
     schema: BlockSettingsSchema,
-    restricted: true,
+    restricted: false,
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 0,

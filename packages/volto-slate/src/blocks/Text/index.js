@@ -115,7 +115,7 @@ export default (config) => {
     view: TextBlockView,
     edit: TextBlockEdit,
     schema: TextBlockSchema,
-    restricted: false,
+    restricted: true,
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 0,

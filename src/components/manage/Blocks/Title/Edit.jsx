@@ -3,8 +3,14 @@
  * @module volto-slate/blocks/Title/TitleBlockEdit
  */
 
-import React, { useCallback, useEffect, useMemo, useRef } from 'react';
-import { Editor, createEditor, Transforms, Node, Range } from 'slate';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
+import { Editor, Node, Transforms, Range, createEditor } from 'slate';
 import { ReactEditor, Editable, Slate, withReact } from 'slate-react';
 import PropTypes from 'prop-types';
 import { defineMessages, useIntl } from 'react-intl';
@@ -46,46 +52,31 @@ export const TitleBlockEdit = (props) => {
     blockNode,
     properties,
     metadata,
-    data,
     detached,
     editable,
   } = props;
 
-  const text = metadata?.['title'] || properties?.['title'] || '';
-  const initialValue = useMemo(() => {
-    return [
-      {
-        type: P,
-        children: [{ text }],
-      },
-    ];
-  }, [text]);
+  const [editor] = useState(withReact(createEditor()));
+  const [initialValue] = useState([
+    {
+      type: P,
+      children: [{ text: metadata?.['title'] || properties?.['title'] || '' }],
+    },
+  ]);
 
-  const editor = withReact(createEditor());
-  editor.children = initialValue;
-  console.log('data', initialValue);
-
-  // const editor = useMemo(() => {
-  //   console.log('create editor');
-  //   const editor = withReact(createEditor());
-  //   editor.children = initialValue;
-  //   return editor;
-  // }, [initialValue]);
   const intl = useIntl();
 
-  const disableNewBlocks = data.disableNewBlocks || detached;
+  const prevSelected = usePrevious(selected);
 
-  const handleChange = useCallback(
-    (value) => {
-      const newText = Node.string(editor);
-      if (newText !== text) {
-        onChangeField('title', newText);
-      }
-    },
-    [editor, onChangeField, text],
+  const text = useMemo(
+    () => metadata?.['title'] || properties?.['title'] || '',
+    [metadata, properties],
   );
 
-  const prevSelected = usePrevious(selected);
+  const placeholder = useMemo(() => intl.formatMessage(messages['title']), [
+    intl,
+  ]);
+  const disableNewBlocks = useMemo(() => detached, [detached]);
 
   useEffect(() => {
     if (!prevSelected && selected) {
@@ -94,16 +85,28 @@ export const TitleBlockEdit = (props) => {
         ReactEditor.focus(editor);
       } else {
         // nothing is selected, move focus to end
-        // with this setTimeout uncommented, the focusing of other Volto-Slate
-        // blocks breaks, not sure what was its initial role, but maybe we can
-        // delete it one day
-        // setTimeout(() => {
         ReactEditor.focus(editor);
         Transforms.select(editor, Editor.end(editor, []));
-        // });
       }
     }
   }, [prevSelected, selected, editor]);
+
+  useEffect(() => {
+    // undo/redo handlerr
+    const oldText = Node.string(editor);
+    if (oldText !== text) {
+      Transforms.insertText(editor, text, {
+        at: [0, 0],
+      });
+    }
+  }, [editor, text]);
+
+  const handleChange = useCallback(() => {
+    const newText = Node.string(editor);
+    if (newText !== text) {
+      onChangeField('title', newText);
+    }
+  }, [editor, onChangeField, text]);
 
   const handleKeyDown = useCallback(
     (ev) => {
@@ -149,9 +152,6 @@ export const TitleBlockEdit = (props) => {
   if (typeof window.__SERVER__ !== 'undefined') {
     return <div />;
   }
-
-  const placeholder = data.placeholder || intl.formatMessage(messages['title']);
-
   return (
     <Slate editor={editor} onChange={handleChange} value={initialValue}>
       <Editable

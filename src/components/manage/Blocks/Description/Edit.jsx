@@ -3,8 +3,14 @@
  * @module volto-slate/blocks/Title/TitleBlockEdit
  */
 
-import React, { useCallback, useEffect, useMemo, useRef } from 'react';
-import { Editor, createEditor, Transforms, Node, Range } from 'slate';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
+import { Editor, Node, Transforms, Range, createEditor } from 'slate';
 import { ReactEditor, Editable, Slate, withReact } from 'slate-react';
 import PropTypes from 'prop-types';
 import { defineMessages, useIntl } from 'react-intl';
@@ -48,26 +54,36 @@ export const TitleBlockEdit = (props) => {
     blockNode,
     properties,
     metadata,
-    data,
     detached,
     editable,
   } = props;
 
-  const editor = useMemo(() => withReact(createEditor()), []);
+  const [editor] = useState(withReact(createEditor()));
+  const [initialValue] = useState([
+    {
+      type: P,
+      children: [
+        {
+          text: metadata?.['description'] || properties?.['description'] || '',
+        },
+      ],
+    },
+  ]);
+
   const intl = useIntl();
 
-  const disableNewBlocks = data.disableNewBlocks || detached;
-
-  const text = metadata?.['description'] || properties?.['description'] || '';
-
-  const handleChange = useCallback(() => {
-    const newText = Node.string(editor);
-    if (newText !== text) {
-      onChangeField('description', newText);
-    }
-  }, [editor, onChangeField, text]);
-
   const prevSelected = usePrevious(selected);
+
+  const text = useMemo(
+    () => metadata?.['description'] || properties?.['description'] || '',
+    [metadata, properties],
+  );
+
+  const placeholder = useMemo(
+    () => intl.formatMessage(messages['description']),
+    [intl],
+  );
+  const disableNewBlocks = useMemo(() => detached, [detached]);
 
   useEffect(() => {
     if (!prevSelected && selected) {
@@ -76,16 +92,28 @@ export const TitleBlockEdit = (props) => {
         ReactEditor.focus(editor);
       } else {
         // nothing is selected, move focus to end
-        // with this setTimeout uncommented, the focusing of other Volto-Slate
-        // blocks breaks, not sure what was its initial role, but maybe we can
-        // delete it one day
-        // setTimeout(() => {
         ReactEditor.focus(editor);
         Transforms.select(editor, Editor.end(editor, []));
-        // });
       }
     }
   }, [prevSelected, selected, editor]);
+
+  useEffect(() => {
+    // undo/redo handlerr
+    const oldText = Node.string(editor);
+    if (oldText !== text) {
+      Transforms.insertText(editor, text, {
+        at: [0, 0],
+      });
+    }
+  }, [editor, text]);
+
+  const handleChange = useCallback(() => {
+    const newText = Node.string(editor);
+    if (newText !== text) {
+      onChangeField('description', newText);
+    }
+  }, [editor, onChangeField, text]);
 
   const handleKeyDown = useCallback(
     (ev) => {
@@ -121,15 +149,6 @@ export const TitleBlockEdit = (props) => {
     ],
   );
 
-  const val = useMemo(() => {
-    return [
-      {
-        type: P,
-        children: [{ text }],
-      },
-    ];
-  }, [text]);
-
   const handleFocus = useCallback(() => {
     onSelectBlock(block);
   }, [block, onSelectBlock]);
@@ -142,20 +161,15 @@ export const TitleBlockEdit = (props) => {
     );
   }, []);
 
-  editor.children = val;
-
   if (typeof window.__SERVER__ !== 'undefined') {
     return <div />;
   }
-
-  const placeholder =
-    data.placeholder || intl.formatMessage(messages['description']);
 
   return (
     <Slate
       editor={editor}
       onChange={handleChange}
-      value={val}
+      value={initialValue}
       className={cx('block description', {
         selected: selected,
       })}
