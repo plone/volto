@@ -17,6 +17,7 @@ function fileMiddleware(req, res, next) {
           res.set(header, resource.headers[header]);
         }
       });
+      res.status(resource.statusCode);
       res.send(resource.body);
     })
     .catch(next);
