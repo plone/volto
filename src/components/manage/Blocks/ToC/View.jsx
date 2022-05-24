@@ -23,9 +23,7 @@ import {
  */
 const View = (props) => {
   const { properties, data } = props;
-  const extension = props.extensions.filter(
-    (extension) => extension.id === (data.block_extension || 'default'),
-  )[0];
+  const { variation } = props;
   const blocksFieldname = getBlocksFieldname(properties);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
   const levels = React.useMemo(
@@ -95,9 +93,9 @@ const View = (props) => {
     return entries;
   }, [data, levels, properties, blocksFieldname, blocksLayoutFieldname]);
 
-  const Renderer = extension?.view;
+  const Renderer = variation?.view;
   return (
-    <div className={cx('table-of-contents', extension.id)}>
+    <div className={cx('table-of-contents', variation?.id)}>
       {props.mode === 'edit' && !data.title && !tocEntries.length && (
         <Message>Table of content</Message>
       )}

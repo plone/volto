@@ -23,8 +23,9 @@ import {
 } from '@plone/volto-slate/utils';
 import { Transforms } from 'slate';
 
-// import ShortcutListing from './ShortcutListing';
-// import MarkdownIntroduction from './MarkdownIntroduction';
+import PersistentSlashMenu from './SlashMenu';
+import ShortcutListing from './ShortcutListing';
+import MarkdownIntroduction from './MarkdownIntroduction';
 import { handleKey } from './keyboard';
 import TextBlockSchema from './schema';
 
@@ -84,6 +85,17 @@ export const DefaultTextBlockEditor = (props) => {
       return editor;
     },
     [props],
+  );
+
+  const slateSettings = React.useMemo(
+    () => ({
+      ...config.settings.slate,
+      persistentHelpers: [
+        ...config.settings.slate.persistentHelpers,
+        PersistentSlashMenu,
+      ],
+    }),
+    [],
   );
 
   const onDrop = React.useCallback(
@@ -231,6 +243,7 @@ export const DefaultTextBlockEditor = (props) => {
                   onKeyDown={handleKey}
                   selected={selected}
                   placeholder={placeholder}
+                  slateSettings={slateSettings}
                 />
                 {DEBUG ? <div>{block}</div> : ''}
               </>
@@ -262,8 +275,8 @@ export const DefaultTextBlockEditor = (props) => {
             </Segment>
           ) : (
             <>
-              {/* <ShortcutListing /> */}
-              {/* <MarkdownIntroduction /> */}
+              <ShortcutListing />
+              <MarkdownIntroduction />
               <BlockDataForm
                 block={block}
                 schema={schema}

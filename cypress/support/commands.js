@@ -654,7 +654,9 @@ Cypress.Commands.add('setSlateCursor', (subject, query, endQuery) => {
 });
 
 Cypress.Commands.add('clickSlateButton', (button) => {
-  cy.get(`.slate-inline-toolbar .button-wrapper a[title="${button}"]`).click();
+  cy.get(`.slate-inline-toolbar .button-wrapper a[title="${button}"]`, {
+    timeout: 10000,
+  }).click();
 });
 
 // Helper functions

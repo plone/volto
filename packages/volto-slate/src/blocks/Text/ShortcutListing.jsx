@@ -12,6 +12,9 @@ const ShortcutListing = (props) => {
 
       <Segment secondary attached>
         <List>
+          <List.Item>
+            Type a slash (<em>/</em>) to change block type
+          </List.Item>
           {Object.entries(hotkeys || {}).map(([shortcut, { format, type }]) => (
             <List.Item key={shortcut}>{`${shortcut}: ${format}`}</List.Item>
           ))}

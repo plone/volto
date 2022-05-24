@@ -3,7 +3,7 @@ import { isEqual } from 'lodash';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { ReactEditor } from 'slate-react';
-import { Icon as VoltoIcon, InlineForm } from '@plone/volto/components';
+import { Icon as VoltoIcon, BlockDataForm } from '@plone/volto/components';
 import { setPluginOptions } from '@plone/volto-slate/actions';
 import BaseSchemaProvider from './SchemaProvider';
 
@@ -69,7 +69,7 @@ const PluginEditor = (props) => {
   return (
     <SchemaProvider {...props} data={formData}>
       {(schema) => (
-        <InlineForm
+        <BlockDataForm
           schema={schema}
           title={schema.title}
           icon={<VoltoIcon size="24px" name={briefcaseSVG} />}

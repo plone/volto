@@ -8,6 +8,8 @@ export * from './moveListItems';
 export * from './softBreak';
 export * from './traverseBlocks';
 export * from './unwrapEmptyString';
+export * from './slashMenu';
+export * from './cancelEsc';
 
 /**
  * Takes all the handlers from `slate.textblockKeyboardHandlers` that are

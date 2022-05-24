@@ -6,12 +6,11 @@ export default [
     id: 'default',
     title: 'Listing (default)',
     view: DefaultTocRenderer,
-    schemaExtender: null,
+    isDefault: true,
   },
   {
     id: 'horizontalMenu',
     title: 'Horizontal Menu',
     view: HorizontalMenu,
-    schemaExtender: null,
   },
 ];

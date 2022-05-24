@@ -69,7 +69,7 @@ import HeroImageLeftBlockSchema from '@plone/volto/components/manage/Blocks/Hero
 import ListingBlockSchema from '@plone/volto/components/manage/Blocks/Listing/schema';
 import SearchBlockSchema from '@plone/volto/components/manage/Blocks/Search/schema';
 
-import ToCExtensions from '@plone/volto/components/manage/Blocks/ToC/extensions';
+import ToCVariations from '@plone/volto/components/manage/Blocks/ToC/variations';
 
 defineMessages({
   title: {
@@ -318,7 +318,7 @@ const blocksConfig = {
     view: ViewToCBlock,
     edit: EditToCBlock,
     schema: ToCSettingsSchema,
-    extensions: ToCExtensions,
+    variations: ToCVariations,
     restricted: false,
     mostUsed: false,
     sidebarTab: 0,

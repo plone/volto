@@ -1,8 +1,5 @@
-import config from '@plone/volto/registry';
-
 const TableOfContentsSchema = ({ data }) => {
-  const { block_extension = 'default' } = data;
-  const extensions = config.blocks.blocksConfig.toc.extensions;
+  const { variation = 'default' } = data;
 
   return {
     title: 'Table of Contents',
@@ -13,9 +10,8 @@ const TableOfContentsSchema = ({ data }) => {
         fields: [
           'title',
           'hide_title',
-          ...(block_extension === 'default' ? ['ordered'] : []),
+          ...(variation === 'default' ? ['ordered'] : []),
           'levels',
-          'block_extension',
         ],
       },
     ],
@@ -38,11 +34,6 @@ const TableOfContentsSchema = ({ data }) => {
           ['h5', 'h5'],
           ['h6', 'h6'],
         ],
-      },
-      block_extension: {
-        title: 'Extension',
-        choices: extensions.map((extension) => [extension.id, extension.title]),
-        defaultValue: 'default',
       },
       ordered: {
         title: 'Ordered',

@@ -16,6 +16,8 @@ import {
   moveListItemUp,
   traverseBlocks,
   unwrapEmptyString,
+  slashMenu,
+  cancelEsc,
 } from './keyboard';
 import { withDeleteSelectionOnEnter } from '@plone/volto-slate/editor/extensions';
 import {
@@ -60,14 +62,17 @@ export default (config) => {
         joinWithNextBlock, // Delete at end of block joins with next block
       ],
       Enter: [
+        slashMenu,
         unwrapEmptyString,
         softBreak, // Handles shift+Enter as a newline (<br/>)
       ],
       ArrowUp: [
+        slashMenu,
         moveListItemUp, // Move up a list with with Ctrl+up
         goUp, // Select previous block
       ],
       ArrowDown: [
+        slashMenu,
         moveListItemDown, // Move down a list item with Ctrl+down
         goDown, // Select next block
       ],
@@ -75,6 +80,7 @@ export default (config) => {
         indentListItems, // <tab> and <c-tab> behaviour for list items
         traverseBlocks,
       ],
+      Escape: [cancelEsc],
     },
     textblockDetachedKeyboardHandlers: {
       Enter: [

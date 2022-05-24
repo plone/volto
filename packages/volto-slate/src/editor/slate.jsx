@@ -17,7 +17,7 @@ import {
   toggleInlineFormat,
   toggleMark,
   parseDefaultSelection,
-} from '@plone/volto-slate/utils';
+} from 'volto-slate/utils';
 import { InlineToolbar } from './ui';
 import EditorContext from './EditorContext';
 
@@ -68,7 +68,7 @@ class SlateEditor extends Component {
 
     this.state = {
       editor: this.createEditor(uid),
-      showExpandedToolbar: config.settings.slate.showExpandedToolbar,
+      showExpandedToolbar: this.slateSettings.showExpandedToolbar,
       internalValue: this.props.value || this.slateSettings.defaultValue(),
       uid,
     };
