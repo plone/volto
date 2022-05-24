@@ -51,12 +51,29 @@ export const TitleBlockEdit = (props) => {
     editable,
   } = props;
 
-  const editor = useMemo(() => withReact(createEditor()), []);
+  const text = metadata?.['title'] || properties?.['title'] || '';
+  const initialValue = useMemo(() => {
+    return [
+      {
+        type: P,
+        children: [{ text }],
+      },
+    ];
+  }, [text]);
+
+  const editor = withReact(createEditor());
+  editor.children = initialValue;
+  console.log('data', initialValue);
+
+  // const editor = useMemo(() => {
+  //   console.log('create editor');
+  //   const editor = withReact(createEditor());
+  //   editor.children = initialValue;
+  //   return editor;
+  // }, [initialValue]);
   const intl = useIntl();
 
   const disableNewBlocks = data.disableNewBlocks || detached;
-
-  const text = metadata?.['title'] || properties?.['title'] || '';
 
   const handleChange = useCallback(
     (value) => {
@@ -117,15 +134,6 @@ export const TitleBlockEdit = (props) => {
     ],
   );
 
-  const val = useMemo(() => {
-    return [
-      {
-        type: P,
-        children: [{ text }],
-      },
-    ];
-  }, [text]);
-
   const handleFocus = useCallback(() => {
     onSelectBlock(block);
   }, [block, onSelectBlock]);
@@ -138,8 +146,6 @@ export const TitleBlockEdit = (props) => {
     );
   }, []);
 
-  editor.children = val;
-
   if (typeof window.__SERVER__ !== 'undefined') {
     return <div />;
   }
@@ -147,7 +153,7 @@ export const TitleBlockEdit = (props) => {
   const placeholder = data.placeholder || intl.formatMessage(messages['title']);
 
   return (
-    <Slate editor={editor} onChange={handleChange} value={val}>
+    <Slate editor={editor} onChange={handleChange} value={initialValue}>
       <Editable
         readOnly={!editable}
         onKeyDown={handleKeyDown}
