@@ -6,8 +6,6 @@
 
 ### Feature
 
-- Add control panel 'User and Group Settings'. @ksuess
-
 ### Bugfix
 
 ### Internal

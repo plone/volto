@@ -2904,11 +2904,6 @@ msgstr "S'utilitza per a l'accés programàtic al conjunt de camps."
 msgid "User"
 msgstr "Usuari"
 
-#: components/manage/Controlpanels/Controlpanels
-# defaultMessage: User and Group Settings
-msgid "User and Group Settings"
-msgstr ""
-
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: User created
 msgid "User created"

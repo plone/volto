@@ -2902,11 +2902,6 @@ msgstr "Eremu-multzoa programaziotik atzitzeko izena"
 msgid "User"
 msgstr "Erabiltzailea"
 
-#: components/manage/Controlpanels/Controlpanels
-# defaultMessage: User and Group Settings
-msgid "User and Group Settings"
-msgstr ""
-
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: User created
 msgid "User created"
