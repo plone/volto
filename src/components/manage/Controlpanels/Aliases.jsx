@@ -99,7 +99,7 @@ class Aliases extends Component {
       aliases: [],
       activePage: 1,
       pages: '',
-      itemsPerPage: 10,
+      itemsPerPage: 25,
     };
   }
 
@@ -130,6 +130,7 @@ class Aliases extends Component {
       prevProps.aliases !== this.props.aliases ||
       prevState.itemsPerPage !== this.state.itemsPerPage
     ) {
+      console.log('items', this.props.aliases);
       const pages = Math.round(
         this.props.aliases.items.length / this.state.itemsPerPage,
       );

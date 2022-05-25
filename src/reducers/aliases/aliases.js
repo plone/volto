@@ -54,9 +54,11 @@ export default function aliases(state = initialState, action = {}) {
         },
       };
     case `${GET_ALIASES}_SUCCESS`:
+      console.log('itemsinredu', action.result);
       return {
         ...state,
         items: action.result.items,
+        items_total: action.result.items_total,
         [getRequestKey(action.type)]: {
           loading: false,
           loaded: true,
