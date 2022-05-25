@@ -113,6 +113,8 @@ class Aliases extends Component {
     };
   }
 
+  // query, manual, datetime, batchSize, batchStart
+
   /**
    * Component did mount
    * @method componentDidMount
@@ -121,13 +123,12 @@ class Aliases extends Component {
   componentDidMount() {
     const { filterQuery, filterType, createdBefore, itemsPerPage } = this.state;
     this.setState({ isClient: true });
-    this.props.getAliases(
-      getBaseUrl(this.props.pathname),
-      filterQuery,
-      filterType.value,
-      createdBefore,
-      itemsPerPage,
-    );
+    this.props.getAliases(getBaseUrl(this.props.pathname), {
+      query: filterQuery,
+      manual: filterType.value,
+      datetime: createdBefore,
+      batchSize: itemsPerPage,
+    });
   }
 
   /**
@@ -159,7 +160,6 @@ class Aliases extends Component {
       //   this.state.activePage,
       //   this.state.itemsPerPage,
       // );
-      this.setState({ aliases: this.props.aliases.items });
     }
     if (prevState.altUrlPath !== this.state.altUrlPath) {
       if (this.state.altUrlPath.charAt(0) === '/') {
@@ -200,13 +200,12 @@ class Aliases extends Component {
         itemsPerPage,
       } = this.state;
 
-      this.props.getAliases(
-        getBaseUrl(this.props.pathname),
-        filterQuery,
-        filterType.value,
-        createdBefore,
-        itemsPerPage,
-      );
+      this.props.getAliases(getBaseUrl(this.props.pathname), {
+        query: filterQuery,
+        manual: filterType.value,
+        datetime: createdBefore,
+        batchSize: itemsPerPage,
+      });
       toast.success(
         <Toast
           success
@@ -228,13 +227,12 @@ class Aliases extends Component {
         itemsPerPage,
       } = this.state;
 
-      this.props.getAliases(
-        getBaseUrl(this.props.pathname),
-        filterQuery,
-        filterType.value,
-        createdBefore,
-        itemsPerPage,
-      );
+      this.props.getAliases(getBaseUrl(this.props.pathname), {
+        query: filterQuery,
+        manual: filterType.value,
+        datetime: createdBefore,
+        batchSize: itemsPerPage,
+      });
     }
   }
 
@@ -281,13 +279,12 @@ class Aliases extends Component {
    */
   handleSubmitFilter = () => {
     const { filterQuery, filterType, createdBefore, itemsPerPage } = this.state;
-    this.props.getAliases(
-      getBaseUrl(this.props.pathname),
-      filterQuery,
-      filterType.value,
-      createdBefore,
-      itemsPerPage,
-    );
+    this.props.getAliases(getBaseUrl(this.props.pathname), {
+      query: filterQuery,
+      manual: filterType.value,
+      datetime: createdBefore,
+      batchSize: itemsPerPage,
+    });
   };
 
   /**

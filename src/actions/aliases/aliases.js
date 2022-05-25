@@ -15,14 +15,8 @@ import {
  * @param {string} url Content url.
  * @returns {Object} Get aliases action.
  */
-export function getAliases(
-  url,
-  query,
-  manual,
-  datetime,
-  batchSize,
-  batchStart,
-) {
+export function getAliases(url, options) {
+  const { query, manual, datetime, batchSize, batchStart } = options || {};
   return {
     type: GET_ALIASES,
     request: {

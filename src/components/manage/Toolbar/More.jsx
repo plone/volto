@@ -146,7 +146,7 @@ class More extends Component {
     const aliasesAction = find(this.props.actions.object_buttons, {
       id: 'redirection',
     });
-    const { content, intl, lang } = this.props;
+    const { content, intl } = this.props;
 
     const dateOptions = {
       year: 'numeric',
