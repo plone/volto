@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": "Volto design principles"
+  "property=og:description": "Volto design principles"
+  "property=og:title": "Design principles"
+  "keywords": "Volto, Plone, frontend, React, design principles"
+---
+
 # Design principles
 
 Since the very beginning, Volto has been developed with a set of principles in mind,

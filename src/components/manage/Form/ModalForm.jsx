@@ -282,9 +282,6 @@ class ModalForm extends Component {
             circular
             primary
             floated="right"
-            icon={
-              <Icon name={aheadSVG} className="contents circled" size="30px" />
-            }
             aria-label={
               this.props.submitLabel
                 ? this.props.submitLabel
@@ -295,22 +292,23 @@ class ModalForm extends Component {
                 ? this.props.submitLabel
                 : this.props.intl.formatMessage(messages.save)
             }
-            size="big"
             onClick={this.onSubmit}
             loading={this.props.loading}
-          />
+          >
+            <Icon name={aheadSVG} className="contents circled" size="30px" />
+          </Button>
           {onCancel && (
             <Button
               basic
               circular
               secondary
-              icon={<Icon name={clearSVG} className="circled" size="30px" />}
               aria-label={this.props.intl.formatMessage(messages.cancel)}
               title={this.props.intl.formatMessage(messages.cancel)}
               floated="right"
-              size="big"
               onClick={onCancel}
-            />
+            >
+              <Icon name={clearSVG} className="circled" size="30px" />
+            </Button>
           )}
         </Modal.Actions>
       </Modal>

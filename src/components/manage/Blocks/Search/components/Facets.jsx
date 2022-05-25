@@ -1,12 +1,13 @@
 import React from 'react';
 import { resolveExtension } from '@plone/volto/helpers/Extensions/withBlockExtensions';
 import config from '@plone/volto/registry';
-import { hasNonValueOperation } from '../utils';
+import { hasNonValueOperation, hasDateOperation } from '../utils';
 
 const showFacet = (index) => {
   const { values } = index;
   return index
-    ? hasNonValueOperation(index.operations || [])
+    ? hasNonValueOperation(index.operations || []) ||
+      hasDateOperation(index.operations || [])
       ? true
       : values && Object.keys(values).length > 0
     : values && Object.keys(values).length > 0;
@@ -38,7 +39,7 @@ const Facets = (props) => {
           const index = querystring.indexes[field] || {};
           const { values = {} } = index;
 
-          const choices = Object.keys(values)
+          let choices = Object.keys(values)
             .map((name) => ({
               value: name,
               label: values[name].title,
@@ -50,6 +51,10 @@ const Facets = (props) => {
                 ? query_to_values[field].includes(value)
                 : true,
             );
+
+          choices = choices.sort((a, b) =>
+            a.label.localeCompare(b.label, 'en', { sensitivity: 'base' }),
+          );
 
           const isMulti = facetSettings.multiple;
           const selectedValue = facets[facetSettings?.field?.value];

@@ -1,6 +1,15 @@
-# Semantic Theming
+---
+html_meta:
+  "description": "Layers and components in Semantic UI theming."
+  "property=og:description": "Layers and components in Semantic UI theming."
+  "property=og:title": "Semantic UI Theming"
+  "keywords": "Volto, Plone, frontend, React, Semantic UI, Theming"
+---
 
-As we hinted previously, Semantic UI theming happens in several stages using several layers of inheritance, let's discover each of these layers.
+# Semantic UI Theming
+
+As we hinted previously, Semantic UI theming happens in several stages using several layers of inheritance.
+Let's discover each of these layers.
 
 ## Default definitions
 

@@ -7,12 +7,12 @@
     "start": "razzle start",
     "preinstall": "if [ -f $(pwd)/mrs.developer.json ]; then if [ -f $(pwd)/node_modules/.bin/missdev ]; then yarn develop; else yarn develop:npx; fi; fi",
     "postinstall": "yarn omelette && yarn patches",
-    "omelette": "ln -sf node_modules/@plone/volto/ omelette",
+    "omelette": "if [ ! -d omelette ]; then ln -sf node_modules/@plone/volto omelette; fi",
     "patches": "/bin/bash patches/patchit.sh > /dev/null 2>&1 ||true",
     "build": "razzle build",
-    "lint": "./node_modules/eslint/bin/eslint.js 'src/**/*.{js,jsx}'",
-    "lint:fix": "./node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx}'",
-    "lint:ci": "./node_modules/eslint/bin/eslint.js -f checkstyle 'src/**/*.{js,jsx}' > eslint.xml",
+    "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx}'",
+    "lint:fix": "./node_modules/eslint/bin/eslint.js --max-warnings=0 --fix 'src/**/*.{js,jsx}'",
+    "lint:ci": "./node_modules/eslint/bin/eslint.js --max-warnings=0 -f checkstyle 'src/**/*.{js,jsx}' > eslint.xml",
     "prettier": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
     "prettier:fix": "./node_modules/.bin/prettier --single-quote --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
     "prettier:ci": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
@@ -59,6 +59,7 @@
       "@plone/volto/(.*)$": "<rootDir>/node_modules/@plone/volto/src/$1",
       "load-volto-addons": "<rootDir>/node_modules/@plone/volto/jest-addons-loader.js",
       "@package/(.*)$": "<rootDir>/src/$1",
+      "@root/(.*)$": "<rootDir>/src/$1",
       "~/(.*)$": "<rootDir>/src/$1"
     },
     "coverageThreshold": {
@@ -134,7 +135,7 @@
     "not dead"
   ],
   "engines": {
-    "node": "^12 || ^14 || ^16"
+    "node": "^14 || ^16"
   },
   "dependencies": <%- dependencies %>,
   "devDependencies": {

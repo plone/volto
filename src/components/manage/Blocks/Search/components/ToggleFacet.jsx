@@ -7,7 +7,7 @@ const ToggleFacet = (props) => {
   return (
     <div className="checkbox-facet">
       <Header as="h4">{facet?.title ?? facet?.field?.label}</Header>
-      <div className="entries">
+      <div className="radio">
         <Radio
           toggle
           checked={value || typeof value === 'string'}
