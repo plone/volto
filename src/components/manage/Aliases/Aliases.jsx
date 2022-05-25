@@ -26,6 +26,8 @@ import { Icon, Toolbar } from '@plone/volto/components';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import { getBaseUrl } from '@plone/volto/helpers';
+import { toast } from 'react-toastify';
+import { Toast } from '@plone/volto/components';
 
 const messages = defineMessages({
   back: {
@@ -35,6 +37,14 @@ const messages = defineMessages({
   aliases: {
     id: 'URL Management',
     defaultMessage: 'URL Management',
+  },
+  success: {
+    id: 'Success',
+    defaultMessage: 'Success',
+  },
+  successAdd: {
+    id: 'Alias has been added',
+    defaultMessage: 'Alias has been added',
   },
 });
 
@@ -115,6 +125,13 @@ class Aliases extends Component {
         this.setState({ isAliasAlready: true });
       } else {
         this.setState({ isAliasAlready: false });
+        toast.success(
+          <Toast
+            success
+            title={this.props.intl.formatMessage(messages.success)}
+            content={this.props.intl.formatMessage(messages.successAdd)}
+          />,
+        );
       }
       this.props.getAliases(getBaseUrl(this.props.pathname));
     }

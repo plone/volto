@@ -23,9 +23,6 @@ export function getAliases(
   batchSize,
   batchStart,
 ) {
-  console.log('bsize', batchSize);
-  console.log('bstart', batchStart);
-
   return {
     type: GET_ALIASES,
     request: {

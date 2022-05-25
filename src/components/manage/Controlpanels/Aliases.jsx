@@ -31,6 +31,8 @@ import { Icon, Toolbar } from '@plone/volto/components';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import { map } from 'lodash';
+import { toast } from 'react-toastify';
+import { Toast } from '@plone/volto/components';
 
 const messages = defineMessages({
   back: {
@@ -40,6 +42,14 @@ const messages = defineMessages({
   aliases: {
     id: 'URL Management',
     defaultMessage: 'URL Management',
+  },
+  success: {
+    id: 'Success',
+    defaultMessage: 'Success',
+  },
+  successAdd: {
+    id: 'Alias has been added',
+    defaultMessage: 'Alias has been added',
   },
 });
 
@@ -51,14 +61,14 @@ const filterChoices = [
 
 const itemsPerPageChoices = [10, 25, 50, 'All'];
 
-const getPaginatedData = (items, currentPage, limit) => {
-  if (limit === 'All') {
-    return items;
-  }
-  const startIndex = currentPage * limit - limit;
-  const endIndex = startIndex + limit;
-  return items.slice(startIndex, endIndex);
-};
+// const getPaginatedData = (items, currentPage, limit) => {
+//   if (limit === 'All') {
+//     return items;
+//   }
+//   const startIndex = currentPage * limit - limit;
+//   const endIndex = startIndex + limit;
+//   return items.slice(startIndex, endIndex);
+// };
 
 /**
  * Aliases class.
@@ -130,7 +140,6 @@ class Aliases extends Component {
       prevProps.aliases !== this.props.aliases ||
       prevState.itemsPerPage !== this.state.itemsPerPage
     ) {
-      console.log('items', this.props.aliases);
       const pages = Math.round(
         this.props.aliases.items.length / this.state.itemsPerPage,
       );
@@ -197,6 +206,13 @@ class Aliases extends Component {
         filterType.value,
         createdBefore,
         itemsPerPage,
+      );
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.successAdd)}
+        />,
       );
       if (!nextProps.aliases.add.error) {
         this.setState({
