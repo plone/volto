@@ -2,17 +2,9 @@
 
 ## 16.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fix regression, compound lang names (eg. `pt-BR`) no longer working @sneridagh
-
-### Internal
-
-### Documentation
 
 ## 16.0.0-alpha.4 (2022-05-22)
 
