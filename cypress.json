@@ -1,5 +1,8 @@
 {
   "baseUrl": "http://localhost:3000",
   "viewportWidth": 1280,
-  "ignoreTestFiles": ["*~"]
+  "ignoreTestFiles": ["*~"],
+  "integrationFolder": "cypress/tests/core",
+  "chromeWebSecurity": false,
+  "projectId": "hvviu4"
 }

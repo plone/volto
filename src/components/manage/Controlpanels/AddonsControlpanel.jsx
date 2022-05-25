@@ -166,20 +166,12 @@ class AddonsControlpanel extends Component {
   }
 
   /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
-  componentWillMount() {
-    this.props.listAddons();
-  }
-
-  /**
    * Component did mount
    * @method componentDidMount
    * @returns {undefined}
    */
   componentDidMount() {
+    this.props.listAddons();
     this.setState({ isClient: true });
   }
 
@@ -285,6 +277,76 @@ class AddonsControlpanel extends Component {
             .
           </Segment>
 
+          <Segment key="header-available" secondary>
+            <FormattedMessage id="Available" defaultMessage="Available" />:
+            <Label circular>{this.props.availableAddons.length}</Label>
+          </Segment>
+
+          <Segment key="body-available" attached>
+            <Accordion>
+              <Divider />
+              {this.props.availableAddons.map((item) => (
+                <div key={item.id}>
+                  <Accordion.Title
+                    active={this.state.activeIndex === item.id}
+                    index={item.id}
+                    onClick={this.onAccordionClick}
+                  >
+                    {item.title}
+                    <Icon
+                      name={
+                        this.state.activeIndex === item.id
+                          ? circleTopSVG
+                          : circleBottomSVG
+                      }
+                      size="23px"
+                      className={`accordionToggle ${item.title}`}
+                    />
+                  </Accordion.Title>
+                  <Accordion.Content
+                    active={this.state.activeIndex === item.id}
+                  >
+                    <div className="description">{item.description}</div>
+                    {item.uninstall_profile_id === '' && (
+                      <div>
+                        <Message icon="warning" warning>
+                          <FormattedMessage
+                            id="No uninstall profile"
+                            defaultMessage="This addon does not provide an uninstall profile."
+                          />
+                        </Message>
+                      </div>
+                    )}
+                    <Button.Group floated="right">
+                      <Button
+                        primary
+                        basic
+                        onClick={this.onInstall}
+                        value={item.id}
+                        className="installAction"
+                      >
+                        <FormattedMessage
+                          id="Install"
+                          defaultMessage="Install"
+                          className="button-label"
+                        />
+                      </Button>
+                    </Button.Group>
+                    <div className="version">
+                      <FormattedMessage
+                        id="Latest version"
+                        defaultMessage="Latest version"
+                      />
+                      : &nbsp;
+                      {item.version}
+                    </div>
+                  </Accordion.Content>
+                  <Divider />
+                </div>
+              ))}
+            </Accordion>
+          </Segment>
+
           <Segment key="header-installed" secondary>
             <FormattedMessage id="Installed" defaultMessage="Installed" />:
             <Label circular>{this.props.installedAddons.length}</Label>
@@ -360,76 +422,6 @@ class AddonsControlpanel extends Component {
                         defaultMessage="Installed version"
                       />
                       : &nbsp; {item.version}
-                    </div>
-                  </Accordion.Content>
-                  <Divider />
-                </div>
-              ))}
-            </Accordion>
-          </Segment>
-
-          <Segment key="header-available" secondary>
-            <FormattedMessage id="Available" defaultMessage="Available" />:
-            <Label circular>{this.props.availableAddons.length}</Label>
-          </Segment>
-
-          <Segment key="body-available" attached>
-            <Accordion>
-              <Divider />
-              {this.props.availableAddons.map((item) => (
-                <div key={item.id}>
-                  <Accordion.Title
-                    active={this.state.activeIndex === item.id}
-                    index={item.id}
-                    onClick={this.onAccordionClick}
-                  >
-                    {item.title}
-                    <Icon
-                      name={
-                        this.state.activeIndex === item.id
-                          ? circleTopSVG
-                          : circleBottomSVG
-                      }
-                      size="23px"
-                      className={`accordionToggle ${item.title}`}
-                    />
-                  </Accordion.Title>
-                  <Accordion.Content
-                    active={this.state.activeIndex === item.id}
-                  >
-                    <div className="description">{item.description}</div>
-                    {item.uninstall_profile_id === '' && (
-                      <div>
-                        <Message icon="warning" warning>
-                          <FormattedMessage
-                            id="No uninstall profile"
-                            defaultMessage="This addon does not provide an uninstall profile."
-                          />
-                        </Message>
-                      </div>
-                    )}
-                    <Button.Group floated="right">
-                      <Button
-                        primary
-                        basic
-                        onClick={this.onInstall}
-                        value={item.id}
-                        className="installAction"
-                      >
-                        <FormattedMessage
-                          id="Install"
-                          defaultMessage="Install"
-                          className="button-label"
-                        />
-                      </Button>
-                    </Button.Group>
-                    <div className="version">
-                      <FormattedMessage
-                        id="Latest version"
-                        defaultMessage="Latest version"
-                      />
-                      : &nbsp;
-                      {item.version}
                     </div>
                   </Accordion.Content>
                   <Divider />

@@ -14,14 +14,21 @@ export {
 } from '@plone/volto/helpers/AuthToken/AuthToken';
 export {
   addAppURL,
+  expandToBackendURL,
   flattenHTMLToAppURL,
   flattenToAppURL,
+  stripQuerystring,
+  toPublicURL,
   isInternalURL,
   getParentUrl,
   getBaseUrl,
   getView,
   isCmsUi,
   getId,
+  isUrl,
+  normalizeUrl,
+  removeProtocol,
+  URLUtils,
 } from '@plone/volto/helpers/Url/Url';
 export { generateSitemap } from '@plone/volto/helpers/Sitemap/Sitemap';
 export { generateRobots } from '@plone/volto/helpers/Robots/Robots';
@@ -29,9 +36,11 @@ export {
   nestContent,
   getLayoutFieldname,
   getContentIcon,
+  getLanguageIndependentFields,
 } from '@plone/volto/helpers/Content/Content';
 export {
   addBlock,
+  insertBlock,
   blockHasValue,
   changeBlock,
   deleteBlock,
@@ -44,25 +53,51 @@ export {
   mutateBlock,
   nextBlockId,
   previousBlockId,
+  applyBlockDefaults,
+  applySchemaDefaults,
+  buildStyleClassNamesFromData,
 } from '@plone/volto/helpers/Blocks/Blocks';
 export BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 export ScrollToTop from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
 export {
   getBoolean,
+  getVocabName,
   getVocabFromHint,
   getVocabFromField,
   getVocabFromItems,
   getFieldsVocabulary,
 } from '@plone/volto/helpers/Vocabularies/Vocabularies';
 
+export langmap from './LanguageMap/LanguageMap';
 export Helmet from './Helmet/Helmet';
 export FormValidation from './FormValidation/FormValidation';
 export {
   difference,
+  getColor,
+  getInitials,
   safeWrapper,
   applyConfig,
   withServerErrorCode,
+  parseDateTime,
+  normalizeLanguageName,
+  hasApiExpander,
+  replaceItemOfArray,
 } from '@plone/volto/helpers/Utils/Utils';
 export { messages } from './MessageLabels/MessageLabels';
+export {
+  withBlockSchemaEnhancer,
+  withVariationSchemaEnhancer,
+  withStylingSchemaEnhancer,
+  withBlockExtensions,
+  applySchemaEnhancer,
+  resolveExtension,
+} from './Extensions';
 export { asyncConnect } from './AsyncConnect';
+export { userHasRoles } from './User/User';
 // export { injectLazyLibs } from './Loadable/Loadable';
+export { useDetectClickOutside } from './Utils/useDetectClickOutside';
+export { usePrevious } from './Utils/usePrevious';
+export { usePagination } from './Utils/usePagination';
+export useUndoManager from './UndoManager/useUndoManager';
+export { getCookieOptions } from './Cookies/cookies';
+export { getWidgetView } from './Widget/widget';

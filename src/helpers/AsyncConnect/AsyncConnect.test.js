@@ -117,6 +117,7 @@ describe('<ReduxAsyncConnect />', () => {
     }),
   )(App);
 
+  let serial = 0;
   const WrappedAppA = asyncConnect(
     [
       {
@@ -126,6 +127,18 @@ describe('<ReduxAsyncConnect />', () => {
       {
         key: 'action',
         promise: ({ helpers }) => Promise.resolve(helpers.eat('breakfast')),
+      },
+      {
+        key: 'multitest',
+        promise: () => serial++,
+      },
+      {
+        key: 'multitest',
+        promise: () => serial++,
+      },
+      {
+        key: 'multitest',
+        promise: () => serial++,
       },
     ],
     (state) => ({
@@ -454,6 +467,36 @@ describe('<ReduxAsyncConnect />', () => {
 
       endGlobalLoadSpy.mockClear();
       beginGlobalLoadSpy.mockClear();
+    });
+  });
+
+  it('Doesnt call same extender twice', function test() {
+    const store = createStore(reducers);
+    const promiseOrder = [];
+    const eat = jest.fn((meal) => {
+      promiseOrder.push(meal);
+      return `yammi ${meal}`;
+    });
+    const location = { pathname: '/multi' };
+    const helpers = { eat };
+    serial = 0;
+
+    return loadOnServer({
+      store,
+      routes,
+      location,
+      helpers,
+    }).then(() => {
+      const context = {};
+
+      render(
+        <Provider store={store} key="provider">
+          <StaticRouter location={location} context={context}>
+            <ReduxAsyncConnect routes={routes} helpers={helpers} />
+          </StaticRouter>
+        </Provider>,
+      );
+      expect(serial).toBe(1);
     });
   });
 });

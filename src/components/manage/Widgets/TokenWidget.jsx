@@ -1,13 +1,12 @@
 /**
- * ArrayWidget component.
- * @module components/manage/Widgets/ArrayWidget
+ * TokenWidget component.
+ * @module components/manage/Widgets/TokenWidget
  */
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import loadable from '@loadable/component';
 import { defineMessages, injectIntl } from 'react-intl';
 import {
   getVocabFromHint,
@@ -19,15 +18,13 @@ import { getVocabulary } from '@plone/volto/actions';
 import {
   Option,
   DropdownIndicator,
+  ClearIndicator,
   selectTheme,
   customSelectStyles,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 
 import { FormFieldWrapper } from '@plone/volto/components';
-
-const AsyncCreatable = loadable.lib(() =>
-  import('react-select/async-creatable'),
-);
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 const messages = defineMessages({
   select: {
@@ -42,6 +39,11 @@ const messages = defineMessages({
 
 /**
  * TokenWidget component class.
+ *
+ * Because new terms are created through the web by using the widget, the token
+ * widget conflates the meaning of token, label and value and assumes they can
+ * be used interchangeably.
+ *
  * @class TokenWidget
  * @extends Component
  */
@@ -59,7 +61,6 @@ class TokenWidget extends Component {
     error: PropTypes.arrayOf(PropTypes.string),
     getVocabulary: PropTypes.func.isRequired,
     choices: PropTypes.arrayOf(PropTypes.object),
-    loading: PropTypes.bool,
     items: PropTypes.shape({
       vocabulary: PropTypes.object,
     }),
@@ -68,7 +69,6 @@ class TokenWidget extends Component {
     }),
     value: PropTypes.arrayOf(PropTypes.string),
     onChange: PropTypes.func.isRequired,
-    itemsTotal: PropTypes.number,
     wrapped: PropTypes.bool,
   };
 
@@ -88,7 +88,6 @@ class TokenWidget extends Component {
     },
     error: [],
     choices: [],
-    loading: false,
     value: null,
   };
 
@@ -100,18 +99,7 @@ class TokenWidget extends Component {
    */
   constructor(props) {
     super(props);
-    this.search = this.search.bind(this);
-    this.loadOptions = this.loadOptions.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.vocabBaseUrl =
-      getVocabFromHint(props) ||
-      getVocabFromField(props) ||
-      getVocabFromItems(props);
-    this.state = {
-      selectedOption: props.value
-        ? props.value.map((item) => ({ label: item, value: item }))
-        : [],
-    };
   }
 
   /**
@@ -120,35 +108,13 @@ class TokenWidget extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    this.props.getVocabulary(this.vocabBaseUrl);
-  }
-
-  /**
-   * Initiate search with new query
-   * @param {string} query Search query.
-   * @returns {undefined}
-   */
-  search(query) {
-    if (query.length > 1) {
-      this.props.getVocabulary(this.vocabBaseUrl, query);
+    if (!this.props.choices?.length) {
+      this.props.getVocabulary({
+        vocabNameOrURL: this.props.vocabBaseUrl,
+        size: -1,
+        subrequest: this.props.lang,
+      });
     }
-  }
-
-  /**
-   * Load options from the vocabulary endpoint
-   * @method loadOptions
-   * @param {string} search Search query.
-   * @param {string} previousOptions The previous options rendered.
-   * @param {string} additional Additional arguments to pass to the next loadOptions.
-   * @returns {undefined}
-   */
-  loadOptions(search) {
-    return this.props.getVocabulary(this.vocabBaseUrl, search).then((resolve) =>
-      this.props.choices.map((item) => ({
-        label: item.value,
-        value: item.value,
-      })),
-    );
   }
 
   /**
@@ -159,10 +125,9 @@ class TokenWidget extends Component {
    * @returns {undefined}
    */
   handleChange(selectedOption) {
-    this.setState({ selectedOption });
     this.props.onChange(
       this.props.id,
-      selectedOption ? selectedOption.map((item) => item.value) : null,
+      selectedOption ? selectedOption.map((item) => item.label) : null,
     );
   }
 
@@ -172,30 +137,41 @@ class TokenWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { selectedOption } = this.state;
+    const selectedOption = this.props.value
+      ? this.props.value.map((item) => ({ label: item, value: item }))
+      : [];
+
+    const defaultOptions = (this.props.choices || [])
+      .filter(
+        (item) => !selectedOption.find(({ label }) => label === item.label),
+      )
+      .map((item) => ({
+        label: item.label || item.value,
+        value: item.value,
+      }));
+    const CreatableSelect = this.props.reactSelectCreateable.default;
+
     return (
       <FormFieldWrapper {...this.props}>
-        <AsyncCreatable>
-          {({ default: AsyncCreatableSelect }) => (
-            <AsyncCreatableSelect
-              isDisabled={this.props.isDisabled}
-              className="react-select-container"
-              classNamePrefix="react-select"
-              defaultOptions={this.props.choices || []}
-              styles={customSelectStyles}
-              theme={selectTheme}
-              components={{ DropdownIndicator, Option }}
-              isMulti
-              value={selectedOption || []}
-              loadOptions={this.loadOptions}
-              onChange={this.handleChange}
-              placeholder={this.props.intl.formatMessage(messages.select)}
-              noOptionsMessage={() =>
-                this.props.intl.formatMessage(messages.no_options)
-              }
-            />
-          )}
-        </AsyncCreatable>
+        <CreatableSelect
+          id={`field-${this.props.id}`}
+          key={this.props.id}
+          isDisabled={this.props.isDisabled}
+          className="react-select-container"
+          classNamePrefix="react-select"
+          defaultOptions={defaultOptions}
+          options={defaultOptions}
+          styles={customSelectStyles}
+          theme={selectTheme}
+          components={{ ClearIndicator, DropdownIndicator, Option }}
+          isMulti
+          value={selectedOption || []}
+          onChange={this.handleChange}
+          placeholder={this.props.intl.formatMessage(messages.select)}
+          noOptionsMessage={() =>
+            this.props.intl.formatMessage(messages.no_options)
+          }
+        />
       </FormFieldWrapper>
     );
   }
@@ -203,26 +179,30 @@ class TokenWidget extends Component {
 
 export default compose(
   injectIntl,
+  injectLazyLibs(['reactSelectCreateable']),
   connect(
     (state, props) => {
       const vocabBaseUrl =
         getVocabFromHint(props) ||
         getVocabFromField(props) ||
         getVocabFromItems(props);
-      const vocabState = state.vocabularies[vocabBaseUrl];
+
+      const vocabState =
+        state.vocabularies?.[vocabBaseUrl]?.subrequests?.[state.intl.locale];
+
       if (vocabState) {
         return {
           choices: vocabState.items
             ? vocabState.items.map((item) => ({
-                label: item.value,
+                label: item.label || item.value,
                 value: item.value,
               }))
             : [],
-          itemsTotal: vocabState.itemsTotal,
-          loading: Boolean(vocabState.loading),
+          vocabBaseUrl,
+          lang: state.intl.locale,
         };
       }
-      return {};
+      return { vocabBaseUrl, lang: state.intl.locale };
     },
     { getVocabulary },
   ),

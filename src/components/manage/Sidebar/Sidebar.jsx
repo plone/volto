@@ -8,10 +8,10 @@ import PropTypes from 'prop-types';
 import { Button, Tab } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import cookie from 'react-cookie';
+import { withCookies } from 'react-cookie';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
-import { BodyClass } from '@plone/volto/helpers';
+import { BodyClass, getCookieOptions } from '@plone/volto/helpers';
 import { Icon } from '@plone/volto/components';
 import forbiddenSVG from '@plone/volto/icons/forbidden.svg';
 import { setSidebarTab } from '@plone/volto/actions';
@@ -77,11 +77,12 @@ class Sidebar extends Component {
    */
   constructor(props) {
     super(props);
+    const { cookies } = props;
     this.onToggleExpanded = this.onToggleExpanded.bind(this);
     this.onToggleFullSize = this.onToggleFullSize.bind(this);
     this.onTabChange = this.onTabChange.bind(this);
     this.state = {
-      expanded: cookie.load('sidebar_expanded') !== 'false',
+      expanded: cookies.get('sidebar_expanded') !== 'false',
       size: 0,
       showFull: true,
       showFullToolbarExpanded: true,
@@ -95,10 +96,8 @@ class Sidebar extends Component {
    * @returns {undefined}
    */
   onToggleExpanded() {
-    cookie.save('sidebar_expanded', !this.state.expanded, {
-      expires: new Date((2 ** 31 - 1) * 1000),
-      path: '/',
-    });
+    const { cookies } = this.props;
+    cookies.set('sidebar_expanded', !this.state.expanded, getCookieOptions());
     this.setState({
       expanded: !this.state.expanded,
     });
@@ -159,6 +158,7 @@ class Sidebar extends Component {
    * @returns {undefined}
    */
   onTabChange(event, data) {
+    event.nativeEvent.stopImmediatePropagation();
     this.props.setSidebarTab(data.activeIndex);
   }
 
@@ -268,6 +268,7 @@ class Sidebar extends Component {
 
 export default compose(
   injectIntl,
+  withCookies,
   connect(
     (state) => ({
       tab: state.sidebar.tab,

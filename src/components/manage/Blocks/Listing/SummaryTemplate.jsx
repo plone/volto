@@ -1,27 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ConditionalLink } from '@plone/volto/components';
+import { ConditionalLink, Component } from '@plone/volto/components';
 import { flattenToAppURL } from '@plone/volto/helpers';
-import config from '@plone/volto/registry';
 
-import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/default-image.svg';
 import { isInternalURL } from '@plone/volto/helpers/Url/Url';
 
-const SummaryTemplate = ({ items, linkMore, isEditMode }) => {
+const SummaryTemplate = ({ items, linkTitle, linkHref, isEditMode }) => {
   let link = null;
-  let href = linkMore?.href || '';
+  let href = linkHref?.[0]?.['@id'] || '';
 
   if (isInternalURL(href)) {
     link = (
       <ConditionalLink to={flattenToAppURL(href)} condition={!isEditMode}>
-        {linkMore?.title || href}
+        {linkTitle || href}
       </ConditionalLink>
     );
   } else if (href) {
-    link = <a href={href}>{linkMore?.title || href}</a>;
+    link = <a href={href}>{linkTitle || href}</a>;
   }
-
-  const { settings } = config;
 
   return (
     <>
@@ -29,18 +25,7 @@ const SummaryTemplate = ({ items, linkMore, isEditMode }) => {
         {items.map((item) => (
           <div className="listing-item" key={item['@id']}>
             <ConditionalLink item={item} condition={!isEditMode}>
-              {!item[settings.listingPreviewImageField] && (
-                <img src={DefaultImageSVG} alt="" />
-              )}
-              {item[settings.listingPreviewImageField] && (
-                <img
-                  src={flattenToAppURL(
-                    item[settings.listingPreviewImageField].scales.preview
-                      .download,
-                  )}
-                  alt={item.title}
-                />
-              )}
+              <Component componentName="PreviewImage" item={item} alt="" />
               <div className="listing-body">
                 <h3>{item.title ? item.title : item.id}</h3>
                 <p>{item.description}</p>

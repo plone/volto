@@ -22,6 +22,7 @@ export {
   addComment,
   deleteComment,
   listComments,
+  listMoreComments,
   updateComment,
 } from '@plone/volto/actions/comments/comments';
 export {
@@ -33,6 +34,8 @@ export {
   sortContent,
   resetContent,
   updateColumnsContent,
+  lockContent,
+  unlockContent,
 } from '@plone/volto/actions/content/content';
 export {
   getControlpanel,
@@ -88,7 +91,6 @@ export {
   resetPassword,
   updatePassword,
   updateUser,
-  showAllUsers,
 } from '@plone/volto/actions/users/users';
 export {
   login,
@@ -117,4 +119,11 @@ export {
 } from '@plone/volto/actions/blocksClipboard/blocksClipboard';
 export { loadLazyLibrary } from '@plone/volto/actions/lazyLibraries/lazyLibraries';
 export { getContextNavigation } from '@plone/volto/actions/contextNavigation/contextNavigation';
+export { authenticatedRole } from '@plone/volto/actions/authRole/authRole';
 export * from './asyncConnect/asyncConnect';
+export { changeLanguage, changeLanguageCookies } from './language/language';
+export {
+  applyWorkingCopy,
+  createWorkingCopy,
+  removeWorkingCopy,
+} from './workingcopy/workingcopy';

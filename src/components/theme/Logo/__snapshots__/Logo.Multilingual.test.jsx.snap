@@ -2,14 +2,15 @@
 
 exports[`Multilingual Logo renders a logo component with multilingual 1`] = `
 <a
+  className={null}
   href="/en"
   onClick={[Function]}
+  target={null}
   title="Site"
 >
   <img
     alt="Plone Site"
     className="ui image"
-    height={64}
     src="Logo.svg"
     title="Plone Site"
   />

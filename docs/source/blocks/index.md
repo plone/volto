@@ -1,9 +1,21 @@
+---
+html_meta:
+  "description": "Volto features the Pastanaga Editor Engine, allowing you to visually compose a page using blocks."
+  "property=og:description": "Volto features the Pastanaga Editor Engine, allowing you to visually compose a page using blocks."
+  "property=og:title": "Blocks"
+  "keywords": "Volto, Plone, frontend, React, blocks"
+---
+
 # Blocks
 
-- [Introduction](introduction.md)
+```{toctree}
+:maxdepth: 1
 
-- [Anatomy](anatomy.md)
-
-- [Settings](settings.md)
-
-- [Edit Components](editcomponent.md)
+introduction
+anatomy
+settings
+editcomponent
+block-style-wrapper
+extensions
+ssr
+```

@@ -4,14 +4,12 @@
  */
 
 import React from 'react';
-import { Button, Dropdown, Table } from 'semantic-ui-react';
+import { Button, Table, Menu, Divider } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { map } from 'lodash';
-import moment from 'moment';
-import { DragSource, DropTarget } from 'react-dnd';
 import { useIntl, defineMessages, FormattedMessage } from 'react-intl';
-import { Icon, Circle } from '@plone/volto/components';
+import { Circle, FormattedDate, Icon, Popup } from '@plone/volto/components';
 import { getContentIcon } from '@plone/volto/helpers';
 import moreSVG from '@plone/volto/icons/more.svg';
 import checkboxUncheckedSVG from '@plone/volto/icons/checkbox-unchecked.svg';
@@ -25,6 +23,8 @@ import moveDownSVG from '@plone/volto/icons/move-down.svg';
 import editingSVG from '@plone/volto/icons/editing.svg';
 import dragSVG from '@plone/volto/icons/drag.svg';
 import cx from 'classnames';
+
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 const messages = defineMessages({
   private: {
@@ -46,6 +46,10 @@ const messages = defineMessages({
   no_workflow_state: {
     id: 'no workflow state',
     defaultMessage: 'No workflow state',
+  },
+  none: {
+    id: 'None',
+    defaultMessage: 'None',
   },
 });
 
@@ -139,7 +143,6 @@ export const ContentsItemComponent = ({
           <Link
             className="icon-align-name"
             to={`${item['@id']}${item.is_folderish ? '/contents' : ''}`}
-            title={item['@type']}
           >
             <div className="expire-align">
               <Icon
@@ -147,8 +150,9 @@ export const ContentsItemComponent = ({
                 size="20px"
                 className="icon-margin"
                 color="#878f93"
+                title={item['@type']}
               />{' '}
-              <span> {item.title}</span>
+              <span title={item.title}> {item.title}</span>
             </div>
             {item.ExpirationDate !== 'None' &&
               new Date(item.ExpirationDate).getTime() <
@@ -180,25 +184,22 @@ export const ContentsItemComponent = ({
                 </span>
                 {messages[item[index.id]]
                   ? intl.formatMessage(messages[item[index.id]])
-                  : intl.formatMessage(messages.no_workflow_state)}
+                  : item['review_title'] ||
+                    item['review_state'] ||
+                    intl.formatMessage(messages.no_workflow_state)}
               </div>
             )}
             {index.type === 'date' && (
-              <span
-                title={
-                  item[index.id] !== 'None' ? (
-                    moment(item[index.id]).format('LLLL')
-                  ) : (
-                    <FormattedMessage id="None" defaultMessage="None" />
-                  )
-                }
-              >
-                {item[index.id] !== 'None' ? (
-                  moment(item[index.id]).format('L')
+              <>
+                {item[index?.id] && item[index.id] !== 'None' ? (
+                  <FormattedDate date={item[index.id]} />
                 ) : (
-                  <FormattedMessage id="None" defaultMessage="None" />
+                  intl.formatMessage(messages.none)
                 )}
-              </span>
+              </>
+            )}
+            {index.type === 'array' && (
+              <span>{item[index.id]?.join(', ')}</span>
             )}
           </Table.Cell>
         ))}
@@ -206,11 +207,25 @@ export const ContentsItemComponent = ({
           className={cx('', { 'dragging-cell': isDragging })}
           textAlign="right"
         >
-          <Dropdown
-            className="row-actions"
-            icon={<Icon name={moreSVG} size="24px" color="#007eb1" />}
+          <Popup
+            menu={true}
+            position="bottom right"
+            flowing={true}
+            basic={true}
+            on="click"
+            popper={{
+              className: 'dropdown-popup',
+            }}
+            trigger={
+              <Icon
+                name={moreSVG}
+                className="dropdown-popup-trigger"
+                size="24px"
+                color="#007eb1"
+              />
+            }
           >
-            <Dropdown.Menu className="left">
+            <Menu vertical borderless fluid>
               <Link className="item icon-align" to={`${item['@id']}/edit`}>
                 <Icon name={editingSVG} color="#007eb1" size="24px" />{' '}
                 <FormattedMessage id="Edit" defaultMessage="Edit" />
@@ -219,33 +234,33 @@ export const ContentsItemComponent = ({
                 <Icon name={showSVG} color="#007eb1" size="24px" />{' '}
                 <FormattedMessage id="View" defaultMessage="View" />
               </Link>
-              <Dropdown.Divider />
-              <Dropdown.Item
+              <Divider />
+              <Menu.Item
                 onClick={onCut}
                 value={item['@id']}
                 className="right-dropdown icon-align"
               >
                 <Icon name={cutSVG} color="#007eb1" size="24px" />{' '}
                 <FormattedMessage id="Cut" defaultMessage="Cut" />
-              </Dropdown.Item>
-              <Dropdown.Item
+              </Menu.Item>
+              <Menu.Item
                 onClick={onCopy}
                 value={item['@id']}
                 className="right-dropdown icon-align"
               >
                 <Icon name={copySVG} color="#007eb1" size="24px" />{' '}
                 <FormattedMessage id="Copy" defaultMessage="Copy" />
-              </Dropdown.Item>
-              <Dropdown.Item
+              </Menu.Item>
+              <Menu.Item
                 onClick={onDelete}
                 value={item['@id']}
                 className="right-dropdown icon-align"
               >
                 <Icon name={deleteSVG} color="#e40166" size="24px" />{' '}
                 <FormattedMessage id="Delete" defaultMessage="Delete" />
-              </Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item
+              </Menu.Item>
+              <Divider />
+              <Menu.Item
                 onClick={onMoveToTop}
                 value={order}
                 className="right-dropdown icon-align"
@@ -255,8 +270,8 @@ export const ContentsItemComponent = ({
                   id="Move to top of folder"
                   defaultMessage="Move to top of folder"
                 />
-              </Dropdown.Item>
-              <Dropdown.Item
+              </Menu.Item>
+              <Menu.Item
                 onClick={onMoveToBottom}
                 value={order}
                 className="right-dropdown icon-align"
@@ -266,9 +281,9 @@ export const ContentsItemComponent = ({
                   id="Move to bottom of folder"
                   defaultMessage="Move to bottom of folder"
                 />
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+              </Menu.Item>
+            </Menu>
+          </Popup>
         </Table.Cell>
       </tr>,
     ),
@@ -308,55 +323,67 @@ ContentsItemComponent.propTypes = {
   onOrderItem: PropTypes.func.isRequired,
 };
 
-export default DropTarget(
-  'item',
-  {
-    hover(props, monitor) {
-      const id = monitor.getItem().id;
-      const dragOrder = monitor.getItem().order;
-      const hoverOrder = props.order;
+const DragDropConnector = (props) => {
+  const { DropTarget, DragSource } = props.reactDnd;
 
-      if (dragOrder === hoverOrder) {
-        return;
-      }
+  const DndConnectedContentsItem = React.useMemo(
+    () =>
+      DropTarget(
+        'item',
+        {
+          hover(props, monitor) {
+            const id = monitor.getItem().id;
+            const dragOrder = monitor.getItem().order;
+            const hoverOrder = props.order;
 
-      props.onOrderItem(id, dragOrder, hoverOrder - dragOrder, false);
+            if (dragOrder === hoverOrder) {
+              return;
+            }
 
-      monitor.getItem().order = hoverOrder;
-    },
-    drop(props, monitor) {
-      const id = monitor.getItem().id;
-      const dragOrder = monitor.getItem().startOrder;
-      const dropOrder = props.order;
+            props.onOrderItem(id, dragOrder, hoverOrder - dragOrder, false);
 
-      if (dragOrder === dropOrder) {
-        return;
-      }
+            monitor.getItem().order = hoverOrder;
+          },
+          drop(props, monitor) {
+            const id = monitor.getItem().id;
+            const dragOrder = monitor.getItem().startOrder;
+            const dropOrder = props.order;
 
-      props.onOrderItem(id, dragOrder, dropOrder - dragOrder, true);
+            if (dragOrder === dropOrder) {
+              return;
+            }
 
-      monitor.getItem().order = dropOrder;
-    },
-  },
-  (connect) => ({
-    connectDropTarget: connect.dropTarget(),
-  }),
-)(
-  DragSource(
-    'item',
-    {
-      beginDrag(props) {
-        return {
-          id: props.item['@id'],
-          order: props.order,
-          startOrder: props.order,
-        };
-      },
-    },
-    (connect, monitor) => ({
-      connectDragSource: connect.dragSource(),
-      connectDragPreview: connect.dragPreview(),
-      isDragging: monitor.isDragging(),
-    }),
-  )(ContentsItemComponent),
-);
+            props.onOrderItem(id, dragOrder, dropOrder - dragOrder, true);
+
+            monitor.getItem().order = dropOrder;
+          },
+        },
+        (connect) => ({
+          connectDropTarget: connect.dropTarget(),
+        }),
+      )(
+        DragSource(
+          'item',
+          {
+            beginDrag(props) {
+              return {
+                id: props.item['@id'],
+                order: props.order,
+                startOrder: props.order,
+              };
+            },
+          },
+          (connect, monitor) => ({
+            connectDragSource: connect.dragSource(),
+            connectDragPreview: connect.dragPreview(),
+            isDragging: monitor.isDragging(),
+          }),
+        )(ContentsItemComponent),
+      ),
+    [DragSource, DropTarget],
+  );
+
+  return <DndConnectedContentsItem {...props} />;
+};
+
+export default injectLazyLibs('reactDnd')(DragDropConnector);

@@ -6,18 +6,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Grid, Button } from 'semantic-ui-react';
-import moment from 'moment';
 import { Days } from './Utils';
-import { useIntl } from 'react-intl';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import { useSelector } from 'react-redux';
 
 /**
  * ByDayField component class.
  * @function ByDayField
  * @returns {string} Markup of the component.
  */
-const ByDayField = ({ label, value, onChange }) => {
-  const intl = useIntl();
-  moment.locale(intl.locale);
+const ByDayField = ({ label, value, onChange, moment: momentlib }) => {
+  const lang = useSelector((state) => state.intl.locale);
+  const moment = momentlib.default;
+  moment.locale(lang);
 
   const toggleWeekDay = (dayName) => {
     var day = Days[dayName];
@@ -84,4 +85,4 @@ ByDayField.defaultProps = {
   onChange: null,
 };
 
-export default ByDayField;
+export default injectLazyLibs(['moment'])(ByDayField);

@@ -2,7 +2,7 @@
 
 exports[`renders an align widget component 1`] = `
 <div
-  className="inline field align-widget"
+  className="inline field align-widget field-wrapper-align"
 >
   <div
     className="ui grid"
@@ -27,7 +27,9 @@ exports[`renders an align widget component 1`] = `
       <div
         className="eight wide column"
       >
-        <div>
+        <div
+          className="align-buttons"
+        >
           <div
             className="ui buttons"
           >

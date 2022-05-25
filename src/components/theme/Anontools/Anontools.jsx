@@ -13,8 +13,6 @@ import config from '@plone/volto/registry';
 
 /**
  * Anontools container class.
- * @class Anontools
- * @extends Component
  */
 export class Anontools extends Component {
   /**
@@ -55,7 +53,7 @@ export class Anontools extends Component {
             <Link
               aria-label="login"
               to={`/login${
-                this.props.content
+                this.props.content?.['@id']
                   ? `?return_url=${this.props.content['@id'].replace(
                       settings.apiPath,
                       '',
@@ -66,11 +64,13 @@ export class Anontools extends Component {
               <FormattedMessage id="Log in" defaultMessage="Log in" />
             </Link>
           </Menu.Item>
-          <Menu.Item>
-            <Link aria-label="register" to="/register">
-              <FormattedMessage id="Register" defaultMessage="Register" />
-            </Link>
-          </Menu.Item>
+          {settings.showSelfRegistration && (
+            <Menu.Item>
+              <Link aria-label="register" to="/register">
+                <FormattedMessage id="Register" defaultMessage="Register" />
+              </Link>
+            </Menu.Item>
+          )}
         </Menu>
       )
     );

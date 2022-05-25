@@ -3,7 +3,7 @@
 exports[`renders a select widget component 1`] = `
 <div>
   <div
-    class="inline field"
+    class="inline field field-wrapper-my-field"
   >
     <div
       class="ui grid"
@@ -32,6 +32,12 @@ exports[`renders a select widget component 1`] = `
             class="react-select-container css-2b097c-container"
             id="field-my-field"
           >
+            <span
+              aria-atomic="false"
+              aria-live="polite"
+              aria-relevant="additions text"
+              class="css-1f43avz-a11yText-A11yText"
+            />
             <div
               class="react-select__control css-1ard45z-control"
             >
@@ -41,7 +47,7 @@ exports[`renders a select widget component 1`] = `
                 <div
                   class="react-select__placeholder css-1wa3eu0-placeholder"
                 >
-                  Select...
+                  Select…
                 </div>
                 <div
                   class="css-b8ldur-Input"

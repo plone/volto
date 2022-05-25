@@ -1,5 +1,5 @@
 import React from 'react';
-import { getBaseUrl } from '@plone/volto/helpers';
+import { getBaseUrl, applyBlockDefaults } from '@plone/volto/helpers';
 import { defineMessages, injectIntl } from 'react-intl';
 import { map } from 'lodash';
 import {
@@ -7,6 +7,7 @@ import {
   getBlocksLayoutFieldname,
   hasBlocksData,
 } from '@plone/volto/helpers';
+import StyleWrapper from '@plone/volto/components/manage/Blocks/Block/StyleWrapper';
 import config from '@plone/volto/registry';
 
 const messages = defineMessages({
@@ -17,27 +18,36 @@ const messages = defineMessages({
 });
 
 const RenderBlocks = (props) => {
-  const { location, intl, content, metadata } = props;
+  const { content, intl, location, metadata } = props;
   const blocksFieldname = getBlocksFieldname(content);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
-  const CustomTag = `${props.as || 'div'}`;
+  const blocksConfig = props.blocksConfig || config.blocks.blocksConfig;
+  const CustomTag = props.as || React.Fragment;
 
   return hasBlocksData(content) ? (
     <CustomTag>
       {map(content[blocksLayoutFieldname].items, (block) => {
         const Block =
-          config.blocks.blocksConfig[
-            content[blocksFieldname]?.[block]?.['@type']
-          ]?.['view'] || null;
-        return Block !== null ? (
-          <Block
-            key={block}
-            id={block}
-            metadata={metadata}
-            properties={content}
-            data={content[blocksFieldname][block]}
-            path={getBaseUrl(location?.pathname || '')}
-          />
+          blocksConfig[content[blocksFieldname]?.[block]?.['@type']]?.view;
+
+        const blockData = applyBlockDefaults({
+          data: content[blocksFieldname][block],
+          intl,
+          metadata,
+          properties: content,
+        });
+
+        return Block ? (
+          <StyleWrapper key={block} {...props} data={blockData}>
+            <Block
+              id={block}
+              metadata={metadata}
+              properties={content}
+              data={blockData}
+              path={getBaseUrl(location?.pathname || '')}
+              blocksConfig={blocksConfig}
+            />
+          </StyleWrapper>
         ) : (
           <div key={block}>
             {intl.formatMessage(messages.unknownBlock, {

@@ -18,22 +18,39 @@ import {
   blockStyleFn,
   listBlockTypes,
 } from '@plone/volto/config/RichTextEditor/Blocks';
+import FromHTMLCustomBlockFn from '@plone/volto/config/RichTextEditor/FromHTML';
 import { contentIcons } from '@plone/volto/config/ContentIcons';
 
-import FromHTMLCustomBlockFn from '@plone/volto/config/RichTextEditor/FromHTML';
+import { controlPanelsIcons } from '@plone/volto/config/ControlPanels';
+
+// we need to do a redefinition here because of circular import issues
+// because draftjs-based components are not really tested, this is basically
+// dummy code.
+const richtextEditorSettings = (props) => {
+  return {
+    extendedBlockRenderMap,
+    blockStyleFn,
+    listBlockTypes,
+    FromHTMLCustomBlockFn,
+    // richTextEditorPlugins: plugins,
+    // richTextEditorInlineToolbarButtons: inlineToolbarButtons,
+  };
+};
+
+const richtextViewSettings = {
+  ToHTMLRenderers,
+  ToHTMLOptions,
+};
 
 config.set('settings', {
   apiPath: 'http://localhost:8080/Plone',
+  defaultLanguage: 'en',
   supportedLanguages: ['en'],
   defaultPageSize: 25,
   isMultilingual: false,
   nonContentRoutes,
-  extendedBlockRenderMap,
-  blockStyleFn,
-  listBlockTypes,
-  FromHTMLCustomBlockFn,
-  ToHTMLRenderers,
-  ToHTMLOptions,
+  richtextEditorSettings,
+  richtextViewSettings,
   contentIcons: contentIcons,
   loadables,
   lazyBundles: {
@@ -43,31 +60,40 @@ config.set('settings', {
       'prismCore',
       'toastify',
       'reactSelect',
+      'reactSortableHOC',
       // 'diffLib',
     ],
   },
+  controlPanelsIcons,
+  apiExpanders: [],
+  downloadableObjects: ['File'],
+  viewableInBrowserObjects: [],
 });
 config.set('blocks', {
   blocksConfig: {
     listing: {
-      templates: {
-        default: {
-          label: 'Default',
+      variations: [
+        {
+          id: 'default',
+          isDefault: true,
+          title: 'Default',
           template: () => (
             <div className="mocked-default-listing-template"></div>
           ),
         },
-        imageGallery: {
-          label: 'Image gallery',
+        {
+          id: 'imageGallery',
+          title: 'Image gallery',
           template: () => <div className="mocked-image-listing-template"></div>,
         },
-        summary: {
-          label: 'Summary',
+        {
+          id: 'summary',
+          title: 'Summary',
           template: () => (
             <div className="mocked-summary-listing-template"></div>
           ),
         },
-      },
+      ],
     },
   },
   requiredBlocks: [],

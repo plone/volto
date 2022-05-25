@@ -13,7 +13,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 
 import { Icon } from '@plone/volto/components';
 import { getBreadcrumbs } from '@plone/volto/actions';
-import { getBaseUrl } from '@plone/volto/helpers';
+import { getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
 
 import homeSVG from '@plone/volto/icons/home.svg';
 
@@ -30,10 +30,8 @@ const messages = defineMessages({
 
 /**
  * Breadcrumbs container class.
- * @class Breadcrumbs
- * @extends Component
  */
-class Breadcrumbs extends Component {
+export class BreadcrumbsComponent extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -51,13 +49,10 @@ class Breadcrumbs extends Component {
     ).isRequired,
   };
 
-  /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillMount() {
-    this.props.getBreadcrumbs(getBaseUrl(this.props.pathname));
+  componentDidMount() {
+    if (!hasApiExpander('breadcrumbs', getBaseUrl(this.props.pathname))) {
+      this.props.getBreadcrumbs(getBaseUrl(this.props.pathname));
+    }
   }
 
   /**
@@ -68,7 +63,9 @@ class Breadcrumbs extends Component {
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
-      this.props.getBreadcrumbs(getBaseUrl(nextProps.pathname));
+      if (!hasApiExpander('breadcrumbs', getBaseUrl(this.props.pathname))) {
+        this.props.getBreadcrumbs(getBaseUrl(nextProps.pathname));
+      }
     }
   }
 
@@ -114,7 +111,6 @@ class Breadcrumbs extends Component {
   }
 }
 
-export const BreadcrumbsComponent = Breadcrumbs;
 export default compose(
   injectIntl,
   connect(
@@ -124,4 +120,4 @@ export default compose(
     }),
     { getBreadcrumbs },
   ),
-)(Breadcrumbs);
+)(BreadcrumbsComponent);

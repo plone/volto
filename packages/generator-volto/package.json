@@ -10,7 +10,7 @@
     }
   ],
   "license": "MIT",
-  "version": "4.0.0",
+  "version": "5.6.3",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/plone/generator-volto.git"
@@ -61,11 +61,11 @@
   },
   "release-it": {
     "hooks": {
-      "after:bump": "node changelogupdater.js bump ${version}",
-      "after:release": "node changelogupdater.js back ${version} && git commit -am 'Back to development (generator-volto)' && git push"
+      "after:bump": "node ../scripts/changelogupdater.js bump ${version}",
+      "after:release": "node ../scripts/changelogupdater.js back ${version} && git commit -am 'Back to development (generator-volto)' && git push"
     },
     "git": {
-      "changelog": "node changelogupdater.js excerpt",
+      "changelog": "node ../scripts/changelogupdater.js excerpt",
       "requireUpstream": false,
       "requireCleanWorkingDir": false,
       "commitMessage": "Release generate-volto ${version}",
@@ -75,7 +75,7 @@
     "github": {
       "release": true,
       "releaseName": "@plone/generator-volto ${version}",
-      "releaseNotes": "node changelogupdater.js excerpt",
+      "releaseNotes": "node ../scripts/changelogupdater.js excerpt",
       "assets": [
         "*.tgz"
       ]
@@ -100,7 +100,7 @@
     }
   },
   "engines": {
-    "node": "^10 || ^12 || ^14"
+    "node": "^12 || ^14 || ^16"
   },
   "dependencies": {
     "ansi-escapes": "2.0.0",
@@ -110,6 +110,7 @@
     "eslint-config-standard": "^16.0.2",
     "execa": "0.6.3",
     "fs-extra": "3.0.0",
+    "gitly": "2.0.3",
     "mkdirp-then": "1.2.0",
     "ms": "1.0.0",
     "mz": "2.6.0",
@@ -128,8 +129,8 @@
     "jest": "^24.8.0",
     "lint-staged": "^9.4.3",
     "prettier": "2.0.5",
-    "release-it": "^14.2.2",
+    "release-it": "^14.9.0",
     "yeoman-assert": "^3.1.0",
-    "yeoman-test": "^1.7.0"
+    "yeoman-test": "^6.1.0"
   }
 }

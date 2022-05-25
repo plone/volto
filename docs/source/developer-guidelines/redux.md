@@ -1,8 +1,17 @@
+---
+html_meta:
+  "description": "How to access global state in Volto using Redux"
+  "property=og:description": "How to access global state in Volto using Redux"
+  "property=og:title": "Redux"
+  "keywords": "Volto, Plone, frontend, React, Redux, global state"
+---
+
 # Redux
 
-!!! note
-    This documentation is a work in progress. Any help is welcome to fill in the
-    gaps!
+```{note}
+This documentation is a work in progress. Any help is welcome to fill in the
+gaps!
+```
 
 As with any other complex React project, the way global state is handled
 across all components has a big impact on the overall architecture. Basic
@@ -13,7 +22,7 @@ To access the global state, a component needs to be connected with `connect`.
 A simple example of such component is the
 `src/theme/ContactForm/ContactForm.jsx`, which is exported connected as:
 
-```
+```jsx
 export default compose(
   withRouter,
   injectIntl,
@@ -48,14 +57,15 @@ enable proper server-side rendering of components. Using it makes sure that the
 component will be constructed with the proper data already fetched from the
 backend and available as props.
 
-!!! note
-    Beware! The `asyncConnect` is available only to components that are
-    attached directly to the router or its children. There are some components
-    that decide their "rendering path" at render time, so this prohibits the
-    use of asyncConnect in that component tree. The biggest example of this is
-    `src/theme/View/View.jsx` which decides on the render component based
-    inspecting the content, so it is not possible to use asyncConnect in any
-    view/layout component!
+```{note}
+Beware! The `asyncConnect` is available only to components that are
+attached directly to the router or its children. There are some components
+that decide their "rendering path" at render time, so this prohibits the
+use of asyncConnect in that component tree. The biggest example of this is
+`src/theme/View/View.jsx` which decides on the render component based
+inspecting the content, so it is not possible to use asyncConnect in any
+view/layout component!
+```
 
 Notice the `emailNotification` action being passed to `connect` in the above
 example. All action (which trigger global state updates) need to be passed as
@@ -109,7 +119,7 @@ middleware by using the `config.settings.storeExtender` configuration option.
 If you have Redux middleware that you want to insert as the first middleware to
 be used, for example, you could configure your project with:
 
-```
+```js
 import logAllMiddleware from './example';
 
 export default applyConfig(config) => {
@@ -120,3 +130,4 @@ export default applyConfig(config) => {
 
   return config;
 }
+```

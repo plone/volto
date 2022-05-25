@@ -4,7 +4,6 @@ import { getAPIResourceWithAuth } from '@plone/volto/helpers';
 const HEADERS = ['content-type', 'content-disposition', 'cache-control'];
 
 function imageMiddleware(req, res, next) {
-  const { errorHandler } = req.app.locals;
   getAPIResourceWithAuth(req)
     .then((resource) => {
       // Just forward the headers that we need
@@ -13,10 +12,9 @@ function imageMiddleware(req, res, next) {
           res.set(header, resource.headers[header]);
         }
       });
-
       res.send(resource.body);
-    }, errorHandler)
-    .catch(errorHandler);
+    })
+    .catch(next);
 }
 
 export default function () {

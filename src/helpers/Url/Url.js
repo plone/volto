@@ -4,6 +4,8 @@
  */
 
 import { last, memoize } from 'lodash';
+import { urlRegex, telRegex, mailRegex } from './urlRegex';
+import prependHttp from 'prepend-http';
 import config from '@plone/volto/registry';
 
 /**
@@ -14,6 +16,8 @@ import config from '@plone/volto/registry';
  */
 export const getBaseUrl = memoize((url) => {
   const { settings } = config;
+  if (url === undefined) return;
+
   // We allow settings.nonContentRoutes to have strings (that are supposed to match
   // ending strings of pathnames, so we are converting them to RegEx to match also
   const normalized_nonContentRoutes = settings.nonContentRoutes.map((item) => {
@@ -90,9 +94,34 @@ export function getView(url) {
  */
 export function flattenToAppURL(url) {
   const { settings } = config;
-  return url
-    .replace(settings.internalApiPath, '')
-    .replace(settings.apiPath, '');
+  return (
+    url &&
+    url
+      .replace(settings.internalApiPath, '')
+      .replace(settings.apiPath, '')
+      .replace(settings.publicURL, '')
+  );
+}
+/**
+ * Given a URL it remove the querystring from the URL.
+ * @method stripQuerystring
+ * @param {string} url URL of the object
+ * @returns {string} URL without querystring
+ */
+export function stripQuerystring(url) {
+  return url.replace(/\?.*$/, '');
+}
+
+/**
+ * Given a URL if it starts with the API server URL
+ * this method removes the /api or the /Plone part.
+ * @method toPublicURL
+ * @param {string} url URL of the object
+ * @returns {string} public URL
+ */
+export function toPublicURL(url) {
+  const { settings } = config;
+  return settings.publicURL.concat(flattenToAppURL(url));
 }
 
 /**
@@ -146,6 +175,37 @@ export function addAppURL(url) {
 }
 
 /**
+ * Given a URL expands it to the backend URL
+ * Useful when you have to actually call the backend from the
+ * frontend code (eg. ICS calendar download)
+ * It is seamless mode aware
+ * @method expandToBackendURL
+ * @param {string} url URL or path of the object
+ * @returns {string} New URL with the backend URL
+ */
+export function expandToBackendURL(path) {
+  const { settings } = config;
+  const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
+  let adjustedPath;
+  if (path.startsWith('http://') || path.startsWith('https://')) {
+    // flattenToAppURL first if we get a full URL
+    adjustedPath = flattenToAppURL(path);
+  } else {
+    // Next adds a / in front if not a full URL to make sure it's a valid relative path
+    adjustedPath = path[0] !== '/' ? `/${path}` : path;
+  }
+
+  let apiPath = '';
+  if (settings.internalApiPath && __SERVER__) {
+    apiPath = settings.internalApiPath;
+  } else if (settings.apiPath) {
+    apiPath = settings.apiPath;
+  }
+
+  return `${apiPath}${APISUFIX}${adjustedPath}`;
+}
+
+/**
  * Check if internal url
  * @method isInternalURL
  * @param {string} url URL of the object
@@ -154,10 +214,102 @@ export function addAppURL(url) {
 export function isInternalURL(url) {
   const { settings } = config;
   return (
-    url.indexOf(settings.internalApiPath) !== -1 ||
-    url.indexOf(settings.apiPath) !== -1 ||
-    url.charAt(0) === '/' ||
-    url.charAt(0) === '.' ||
-    url.startsWith('#')
+    url &&
+    (url.indexOf(settings.publicURL) !== -1 ||
+      (settings.internalApiPath &&
+        url.indexOf(settings.internalApiPath) !== -1) ||
+      url.indexOf(settings.apiPath) !== -1 ||
+      url.charAt(0) === '/' ||
+      url.charAt(0) === '.' ||
+      url.startsWith('#'))
   );
 }
+
+/**
+ * Check if it's a valid url
+ * @method isUrl
+ * @param {string} url URL of the object
+ * @returns {boolean} True if is a valid url
+ */
+export function isUrl(url) {
+  return urlRegex().test(url);
+}
+
+/**
+ * Normalize URL, adds protocol (if required eg. user has not entered the protocol)
+ * @method normalizeUrl
+ * @param {string} url URL of the object
+ * @returns {boolean} URL with the protocol
+ */
+export function normalizeUrl(url) {
+  return prependHttp(url);
+}
+
+/**
+ * Removes protocol from URL (for display)
+ * @method removeProtocol
+ * @param {string} url URL of the object
+ * @returns {string} URL without the protocol part
+ */
+export function removeProtocol(url) {
+  return url.replace('https://', '').replace('http://', '');
+}
+
+export function isMail(text) {
+  return mailRegex().test(text);
+}
+
+export function isTelephone(text) {
+  return telRegex().test(text);
+}
+
+export function normaliseMail(email) {
+  if (email.toLowerCase().startsWith('mailto:')) {
+    return email;
+  }
+  return `mailto:${email}`;
+}
+
+export function normalizeTelephone(tel) {
+  if (tel.toLowerCase().startsWith('tel:')) {
+    return tel;
+  }
+  return `tel:${tel}`;
+}
+
+export function checkAndNormalizeUrl(url) {
+  let res = {
+    isMail: false,
+    isTelephone: false,
+    url: url,
+    isValid: true,
+  };
+  if (URLUtils.isMail(URLUtils.normaliseMail(url))) {
+    //Mail
+    res.isMail = true;
+    res.url = URLUtils.normaliseMail(url);
+  } else if (URLUtils.isTelephone(url)) {
+    //Phone
+    res.isTelephone = true;
+    res.url = URLUtils.normalizeTelephone(url);
+  } else {
+    //url
+    if (!res.url.startsWith('/') && !res.url.startsWith('#')) {
+      res.url = URLUtils.normalizeUrl(url);
+      if (!URLUtils.isUrl(res.url)) {
+        res.isValid = false;
+      }
+    }
+  }
+  return res;
+}
+
+export const URLUtils = {
+  normalizeTelephone,
+  normaliseMail,
+  normalizeUrl,
+  isTelephone,
+  isMail,
+  isUrl,
+  checkAndNormalizeUrl,
+};

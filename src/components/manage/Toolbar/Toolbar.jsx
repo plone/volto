@@ -7,10 +7,11 @@ import React, { Component } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import jwtDecode from 'jwt-decode';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
-import cookie from 'react-cookie';
+import { withCookies } from 'react-cookie';
 import { filter, find } from 'lodash';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
@@ -25,13 +26,14 @@ import {
   getTypes,
   listActions,
   setExpandedToolbar,
+  unlockContent,
 } from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
-import { BodyClass, getBaseUrl } from '@plone/volto/helpers';
+import { BodyClass, getBaseUrl, getCookieOptions } from '@plone/volto/helpers';
+import { Pluggable } from '@plone/volto/components/manage/Pluggable';
 
-import pastanagaSmall from '@plone/volto/components/manage/Toolbar/pastanaga-small.svg';
-import pastanagalogo from '@plone/volto/components/manage/Toolbar/pastanaga.svg';
 import penSVG from '@plone/volto/icons/pen.svg';
+import unlockSVG from '@plone/volto/icons/unlock.svg';
 import folderSVG from '@plone/volto/icons/folder.svg';
 import addSVG from '@plone/volto/icons/add-document.svg';
 import moreSVG from '@plone/volto/icons/more.svg';
@@ -95,6 +97,10 @@ const messages = defineMessages({
     id: 'Back',
     defaultMessage: 'Back',
   },
+  unlock: {
+    id: 'Unlock',
+    defaultMessage: 'Unlock',
+  },
 });
 
 const toolbarComponents = {
@@ -133,6 +139,7 @@ class Toolbar extends Component {
       user: PropTypes.arrayOf(PropTypes.object),
     }),
     token: PropTypes.string,
+    userId: PropTypes.string,
     pathname: PropTypes.string.isRequired,
     content: PropTypes.shape({
       '@type': PropTypes.string,
@@ -148,6 +155,8 @@ class Toolbar extends Component {
       }),
     ),
     listActions: PropTypes.func.isRequired,
+    unlockContent: PropTypes.func,
+    unlockRequest: PropTypes.objectOf(PropTypes.any),
     inner: PropTypes.element.isRequired,
     hideDefaultViewButtons: PropTypes.bool,
   };
@@ -160,21 +169,26 @@ class Toolbar extends Component {
   static defaultProps = {
     actions: null,
     token: null,
+    userId: null,
     content: null,
     hideDefaultViewButtons: false,
     types: [],
   };
 
-  state = {
-    expanded: cookie.load('toolbar_expanded') !== 'false',
-    showMenu: false,
-    menuStyle: {},
-    menuComponents: [],
-    loadedComponents: [],
-    hideToolbarBody: false,
-  };
-
   toolbarWindow = React.createRef();
+
+  constructor(props) {
+    super(props);
+    const { cookies } = props;
+    this.state = {
+      expanded: cookies.get('toolbar_expanded') !== 'false',
+      showMenu: false,
+      menuStyle: {},
+      menuComponents: [],
+      loadedComponents: [],
+      hideToolbarBody: false,
+    };
+  }
 
   /**
    * Component will mount
@@ -199,6 +213,11 @@ class Toolbar extends Component {
       this.props.listActions(getBaseUrl(nextProps.pathname));
       this.props.getTypes(getBaseUrl(nextProps.pathname));
     }
+
+    // Unlock
+    if (this.props.unlockRequest.loading && nextProps.unlockRequest.loaded) {
+      this.props.listActions(getBaseUrl(nextProps.pathname));
+    }
   }
 
   /**
@@ -211,10 +230,8 @@ class Toolbar extends Component {
   }
 
   handleShrink = () => {
-    cookie.save('toolbar_expanded', !this.state.expanded, {
-      expires: new Date((2 ** 31 - 1) * 1000),
-      path: '/',
-    });
+    const { cookies } = this.props;
+    cookies.set('toolbar_expanded', !this.state.expanded, getCookieOptions());
     this.setState(
       (state) => ({ expanded: !state.expanded }),
       () => this.props.setExpandedToolbar(this.state.expanded),
@@ -258,7 +275,7 @@ class Toolbar extends Component {
     } else {
       this.setState((state) => ({
         showMenu: !state.showMenu,
-        menuStyle: { top: 0, overflow: 'initial' },
+        menuStyle: { top: 0 },
       }));
     }
     this.loadComponent(selector);
@@ -269,6 +286,10 @@ class Toolbar extends Component {
     this.closeMenu();
   };
 
+  unlock = (e) => {
+    this.props.unlockContent(getBaseUrl(this.props.pathname), true);
+  };
+
   /**
    * Render method.
    * @method render
@@ -276,7 +297,11 @@ class Toolbar extends Component {
    */
   render() {
     const path = getBaseUrl(this.props.pathname);
-    const editAction = find(this.props.actions.object, { id: 'edit' });
+    const lock = this.props.content?.lock;
+    const unlockAction =
+      lock?.locked && lock?.stealable && lock?.creator !== this.props.userId;
+    const editAction =
+      !unlockAction && find(this.props.actions.object, { id: 'edit' });
     const folderContentsAction = find(this.props.actions.object, {
       id: 'folderContents',
     });
@@ -378,6 +403,24 @@ class Toolbar extends Component {
                 )}
                 {!this.props.hideDefaultViewButtons && (
                   <>
+                    {unlockAction && (
+                      <button
+                        aria-label={this.props.intl.formatMessage(
+                          messages.unlock,
+                        )}
+                        className="unlock"
+                        onClick={(e) => this.unlock(e)}
+                        tabIndex={0}
+                      >
+                        <Icon
+                          name={unlockSVG}
+                          size="30px"
+                          className="unlock"
+                          title={this.props.intl.formatMessage(messages.unlock)}
+                        />
+                      </button>
+                    )}
+
                     {editAction && (
                       <Link
                         aria-label={this.props.intl.formatMessage(
@@ -386,7 +429,12 @@ class Toolbar extends Component {
                         className="edit"
                         to={`${path}/edit`}
                       >
-                        <Icon name={penSVG} size="30px" className="circled" />
+                        <Icon
+                          name={penSVG}
+                          size="30px"
+                          className="circled"
+                          title={this.props.intl.formatMessage(messages.edit)}
+                        />
                       </Link>
                     )}
                     {this.props.content &&
@@ -399,7 +447,13 @@ class Toolbar extends Component {
                           )}
                           to={`${path}/contents`}
                         >
-                          <Icon name={folderSVG} size="30px" />
+                          <Icon
+                            name={folderSVG}
+                            size="30px"
+                            title={this.props.intl.formatMessage(
+                              messages.contents,
+                            )}
+                          />
                         </Link>
                       )}
                     {this.props.content &&
@@ -434,7 +488,11 @@ class Toolbar extends Component {
                           tabIndex={0}
                           id="toolbar-add"
                         >
-                          <Icon name={addSVG} size="30px" />
+                          <Icon
+                            name={addSVG}
+                            size="30px"
+                            title={this.props.intl.formatMessage(messages.add)}
+                          />
                         </button>
                       )}
                     <div className="toolbar-button-spacer" />
@@ -449,6 +507,7 @@ class Toolbar extends Component {
                         className="mobile hidden"
                         name={moreSVG}
                         size="30px"
+                        title={this.props.intl.formatMessage(messages.more)}
                       />
                       {this.state.showMenu ? (
                         <Icon
@@ -468,7 +527,7 @@ class Toolbar extends Component {
                 )}
               </div>
               <div className="toolbar-bottom">
-                <img className="minipastanaga" src={pastanagaSmall} alt="" />
+                <Pluggable name="main.toolbar.bottom" />
                 {!this.props.hideDefaultViewButtons && (
                   <button
                     className="user"
@@ -479,13 +538,15 @@ class Toolbar extends Component {
                     tabIndex={0}
                     id="toolbar-personal"
                   >
-                    <Icon name={userSVG} size="30px" />
+                    <Icon
+                      name={userSVG}
+                      size="30px"
+                      title={this.props.intl.formatMessage(
+                        messages.personalTools,
+                      )}
+                    />
                   </button>
                 )}
-                <div className="divider" />
-                <div className="pastanagalogo">
-                  <img src={pastanagalogo} alt="" />
-                </div>
               </div>
             </div>
             <div className="toolbar-handler">
@@ -510,14 +571,19 @@ class Toolbar extends Component {
 
 export default compose(
   injectIntl,
+  withCookies,
   connect(
     (state, props) => ({
       actions: state.actions.actions,
       token: state.userSession.token,
+      userId: state.userSession.token
+        ? jwtDecode(state.userSession.token).sub
+        : '',
       content: state.content.data,
       pathname: props.pathname,
       types: filter(state.types.types, 'addable'),
+      unlockRequest: state.content.unlock,
     }),
-    { getTypes, listActions, setExpandedToolbar },
+    { getTypes, listActions, setExpandedToolbar, unlockContent },
   ),
 )(Toolbar);

@@ -8,7 +8,7 @@ import { withRouter } from 'react-router';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { flattenToAppURL } from '@plone/volto/helpers';
-import { Icon } from '@plone/volto/components';
+import { Icon, UniversalLink } from '@plone/volto/components';
 import { withContentNavigation } from './withContentNavigation';
 
 import leftIcon from '@plone/volto/icons/left-key.svg';
@@ -20,30 +20,42 @@ const messages = defineMessages({
   },
 });
 
-function renderNode(node, level) {
+function renderNode(node, parentLevel) {
+  const level = parentLevel + 1;
   return (
-    <List.Item key={node['@id']} active={node.is_current}>
+    <List.Item
+      key={node['@id']}
+      active={node.is_current}
+      className={`level-${level}`}
+    >
       <List.Content>
-        <RouterLink
-          to={flattenToAppURL(node.href)}
-          title={node.description}
-          className={cx(`contenttype-${node.type}`, {
-            in_path: node.is_in_path,
-          })}
-        >
-          {node.thumb ? <Image src={flattenToAppURL(node.thumb)} /> : ''}
-          {node.title}
-          {node.is_current ? (
-            <List.Content className="active-indicator">
-              <Icon name={leftIcon} size="30px" />
-            </List.Content>
-          ) : (
-            ''
-          )}
-        </RouterLink>
-
+        {node.type !== 'link' ? (
+          <RouterLink
+            to={flattenToAppURL(node.href)}
+            title={node.description}
+            className={cx(`contenttype-${node.type}`, {
+              in_path: node.is_in_path,
+            })}
+          >
+            {node.thumb ? <Image src={flattenToAppURL(node.thumb)} /> : ''}
+            {node.title}
+            {node.is_current ? (
+              <List.Content className="active-indicator">
+                <Icon name={leftIcon} size="30px" />
+              </List.Content>
+            ) : (
+              ''
+            )}
+          </RouterLink>
+        ) : (
+          <UniversalLink href={flattenToAppURL(node.href)}>
+            {node.title}
+          </UniversalLink>
+        )}
         {(node.items?.length && (
-          <List.List>{node.items.map(renderNode)}</List.List>
+          <List.List>
+            {node.items.map((node) => renderNode(node, level))}
+          </List.List>
         )) ||
           ''}
       </List.Content>
@@ -62,7 +74,7 @@ export function ContextNavigationComponent(props) {
   const intl = useIntl();
 
   return items.length ? (
-    <div className="context-navigation">
+    <nav className="context-navigation">
       {navigation.has_custom_name ? (
         <div className="context-navigation-header">
           <RouterLink to={flattenToAppURL(navigation.url || '')}>
@@ -74,8 +86,8 @@ export function ContextNavigationComponent(props) {
           {intl.formatMessage(messages.navigation)}
         </div>
       )}
-      <List>{items.map(renderNode)}</List>
-    </div>
+      <List>{items.map((node) => renderNode(node, 0))}</List>
+    </nav>
   ) : (
     ''
   );

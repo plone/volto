@@ -7,19 +7,26 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import { Redirect } from 'react-router-dom';
 import { Portal } from 'react-portal';
 import { injectIntl } from 'react-intl';
-import { Helmet } from '@plone/volto/helpers';
 import qs from 'query-string';
-import config from '@plone/volto/registry';
 
-import { Comments, Tags, Toolbar } from '@plone/volto/components';
+import {
+  ContentMetadataTags,
+  Comments,
+  Tags,
+  Toolbar,
+} from '@plone/volto/components';
 import { listActions, getContent } from '@plone/volto/actions';
 import {
   BodyClass,
   getBaseUrl,
+  flattenToAppURL,
   getLayoutFieldname,
 } from '@plone/volto/helpers';
+
+import config from '@plone/volto/registry';
 
 /**
  * View container class.
@@ -110,20 +117,12 @@ class View extends Component {
     isClient: false,
   };
 
-  /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     this.props.listActions(getBaseUrl(this.props.pathname));
     this.props.getContent(
       getBaseUrl(this.props.pathname),
       this.props.versionId,
     );
-  }
-
-  componentDidMount() {
     this.setState({ isClient: true });
   }
 
@@ -197,7 +196,10 @@ class View extends Component {
    */
   render() {
     const { views } = config;
-    if (this.props.error && !this.props.connectionRefused) {
+    if (this.props.error && this.props.error.code === 301) {
+      const redirect = flattenToAppURL(this.props.error.url).split('?')[0];
+      return <Redirect to={`${redirect}${this.props.location.search}`} />;
+    } else if (this.props.error && !this.props.connectionRefused) {
       let FoundView;
       if (this.props.error.status === undefined) {
         // For some reason, while development and if CORS is in place and the
@@ -224,13 +226,7 @@ class View extends Component {
 
     return (
       <div id="view">
-        <Helmet>
-          {this.props.content.language && (
-            <html lang={this.props.content.language.token} />
-          )}
-          <title>{this.props.content.title}</title>
-          <meta name="description" content={this.props.content.description} />
-        </Helmet>
+        <ContentMetadataTags content={this.props.content} />
         {/* Body class if displayName in component is set */}
         <BodyClass
           className={
@@ -245,7 +241,8 @@ class View extends Component {
           token={this.props.token}
           history={this.props.history}
         />
-        {this.props.content.subjects &&
+        {config.settings.showTags &&
+          this.props.content.subjects &&
           this.props.content.subjects.length > 0 && (
             <Tags tags={this.props.content.subjects} />
           )}
@@ -282,7 +279,7 @@ export default compose(
       pathname: props.location.pathname,
       versionId:
         qs.parse(props.location.search) &&
-        qs.parse(props.location.search).version_id,
+        qs.parse(props.location.search).version,
     }),
     {
       listActions,

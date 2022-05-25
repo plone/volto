@@ -5,9 +5,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { UniversalLink } from '@plone/volto/components';
 import cx from 'classnames';
-import config from '@plone/volto/registry';
 
 import { flattenToAppURL } from '@plone/volto/helpers';
 
@@ -37,28 +36,14 @@ const View = ({ data, properties }) => (
             />
           );
           if (data.href) {
-            if (
-              (data.href.startsWith('http') || data.href.startsWith('https')) &&
-              !data.href.includes(config.settings.apiPath)
-            ) {
-              return (
-                <a
-                  target={data.openLinkInNewTab ? '_blank' : null}
-                  href={data.href}
-                >
-                  {image}
-                </a>
-              );
-            } else {
-              return (
-                <Link
-                  to={data.href.replace(config.settings.apiPath, '')}
-                  target={data.openLinkInNewTab ? '_blank' : null}
-                >
-                  {image}
-                </Link>
-              );
-            }
+            return (
+              <UniversalLink
+                href={data.href}
+                openLinkInNewTab={data.openLinkInNewTab}
+              >
+                {image}
+              </UniversalLink>
+            );
           } else {
             return image;
           }

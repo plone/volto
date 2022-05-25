@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": "How to configure custom blocks"
+  "property=og:description": "How to configure custom blocks"
+  "property=og:title": "Blocks settings"
+  "keywords": "Volto, Plone, frontend, React, Block settings"
+---
+
 # Blocks settings
 
 You should make Volto aware of your custom blocks.
@@ -12,6 +20,15 @@ import MainSliderViewBlock from '@package/components/Blocks/MainSlider/View';
 import MainSliderEditBlock from '@package/components/Blocks/MainSlider/Edit';
 import sliderSVG from '@plone/volto/icons/slider.svg';
 
+import SimpleTeaserView from '@package/components/Blocks/SimpleTeaserView';
+import CardTeaserView from '@package/components/Blocks/CardTeaserView';
+import DefaultColumnRenderer from '@package/components/Blocks/DefaultColumnRenderer';
+import NumberColumnRenderer from '@package/components/Blocks/NumberColumnRenderer';
+import ColoredColumnRenderer from '@package/components/Blocks/ColoredColumnRenderer';
+import CardTeaserView from '@package/components/Blocks/CardTeaserView';
+
+import CustomSchemaEnhancer from '@package/components/Blocks/CustomSchemaEnhancer';
+
 [...]
 
 const customBlocks = {
@@ -22,7 +39,7 @@ const customBlocks = {
     group: 'common', // The group (blocks can be grouped, displayed in the chooser)
     view: MainSliderViewBlock, // The view mode component
     edit: MainSliderEditBlock, // The edit mode component
-    restricted: false, // If the block is restricted, it won't show in the chooser
+    restricted: false, // {Boolean|function} If the block is restricted, it won't show in the chooser. The function signature is `({properties, block})` where `properties` is the current object data and `block` is the block being evaluated in `BlockChooser`.
     mostUsed: true, // A meta group `most used`, appearing at the top of the chooser
     blockHasOwnFocusManagement: false, // Set this to true if the block manages its own focus
     sidebarTab: 0, // The sidebar tab you want to be selected when selecting the block
@@ -31,10 +48,64 @@ const customBlocks = {
       view: [], // Future proof (not implemented yet) view user role(s)
     },
     blockHasValue: (data) => {
-      // Returns true if the provided block data represents a value for the current block. 
-      // Required for alternate default block types implementations. 
+      // Returns true if the provided block data represents a value for the current block.
+      // Required for alternate default block types implementations.
       // See also [Settings reference](/configuration/settings-reference)
     },
+    // A block can have an schema enhancer function with the signature: (schema) => schema
+    // It can be either be at block level (it's applied always), at a variation level
+    // or both. It's up to the developer to make them work nicely (not conflict) between them
+    schemaEnhancer: CustomSchemaEnhancer,
+    // A block can define variations (it should include the stock, default one)
+    variations: [
+      {
+        id: 'default',
+        title: 'Default',
+        isDefault: true,
+        render: SimpleTeaserView
+      },
+      {
+        id: 'card',
+        label: 'Card',
+        render: CardTeaserView,
+        schemaEnhancer: ({schema, formData, intl}) => {
+          schema.properties.cardSize = '...'; // fill in your implementation
+          return schema;
+        }
+      }
+    ],
+    // A block can define extensions that enhance the default stock block behavior
+    extensions: {
+      columnRenderers: {
+        title: messages.title,
+        items: [
+          {
+            id: 'default',
+            title: 'Default',
+            isDefault: true,
+            render: DefaultColumnRenderer
+          },
+          {
+            id: 'number',
+            title: 'Number',
+            render: NumberColumnRenderer,
+          },
+          {
+            id: 'colored',
+            title: 'Colored',
+            renderer: ColoredColumnRenderer,
+            schemaEnhancer: ({formData, schema, intl}) => {
+              schema.properties.color = {
+                widget: 'color',
+                title: 'Color',
+              };
+              schema.fieldsets[0].fields.push('color');
+              return schema;
+            }
+          }
+        ]
+      }
+    }
   },
 };
 
@@ -46,9 +117,10 @@ export const blocks = {
 
 We start by importing both view and edit components of our recently created custom block.
 
-!!! note
-    Notice the `@package` alias.
-    You can use it when importing modules/components from your own project.
+```{note}
+Notice the `@package` alias.
+You can use it when importing modules/components from your own project.
+```
 
 Then you define the block, using the object described in the example.
 
@@ -107,3 +179,34 @@ const initialBlocks = {
     Document: ['leadimage', 'title', 'text', 'listing' ]
 };
 ```
+
+## Search block configuration
+
+The search block provides several extensibility options.
+
+### Variations
+
+The search block uses the variations to provide alternate layout.
+
+### FacetWidgets rewriteOptions extension
+
+Sometimes the labels provided by a field are not directly usable in UI. You can
+override the `rewriteOptions` function. Don't be alarmed by the facet that's
+already filled in to handle `review_state`. You can save a reference to the
+current function and define a new function that handles another field, that
+also calls the old saved function.
+
+### FacetWidgets types
+
+This allows definition of new facet filtering widgets. In addition to the
+`view` field, which defines the component to be used to render the facet
+widget, you need to also set:
+
+- `schemaEnhancer`: a schema extender for the object list widget that's used to
+  edit each facet setting
+- `stateToValue`: a function to convert the state (extracted from URL) to
+  a value that can be used in the facet widget
+- `valueToQuery`: a function that converts the value of the widget to state,
+  something that can be used to compose the querystring query
+- `filterListComponent`: component to be used in the filter list display of
+  that facet.

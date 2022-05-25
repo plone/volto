@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
+import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
 import config from '@plone/volto/registry';
 
@@ -43,6 +43,10 @@ describe('App', () => {
       },
       content: { data: { id: 'content', '@type': 'Document' } },
       apierror: {},
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
     });
     const component = renderer.create(
       <Provider store={store}>

@@ -5,8 +5,9 @@ const nodeExternals = require('webpack-node-externals');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const fs = require('fs');
-const RootResolverPlugin = require('./webpack-root-resolver');
-const RelativeResolverPlugin = require('./webpack-relative-resolver');
+const { pickBy } = require('lodash');
+const RootResolverPlugin = require('./webpack-plugins/webpack-root-resolver');
+const RelativeResolverPlugin = require('./webpack-plugins/webpack-relative-resolver');
 const createAddonsLoader = require('./create-addons-loader');
 const AddonConfigurationRegistry = require('./addon-registry');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
@@ -16,6 +17,7 @@ const babelLoaderFinder = makeLoaderFinder('babel-loader');
 
 const projectRootPath = path.resolve('.');
 const languages = require('./src/constants/Languages');
+const { poToJson } = require('@plone/scripts/i18n');
 
 const packageJson = require(path.join(projectRootPath, 'package.json'));
 
@@ -26,6 +28,9 @@ const defaultModify = ({
   webpackConfig: config,
   webpackObject: webpack,
 }) => {
+  // Compile language JSON files from po files
+  poToJson({ registry, addonMode: false });
+
   if (dev) {
     config.plugins.unshift(
       new webpack.DefinePlugin({
@@ -132,6 +137,37 @@ const defaultModify = ({
         __SERVER__: true,
       }),
     );
+
+    // Razzle sets some of its basic env vars in the default config injecting them (for
+    // the client use, mainly) in a `DefinePlugin` instance. However, this also ends in
+    // the server build, removing the ability of the server node process to read from
+    // the system's (or process') env vars. In this case, in the server build, we hunt
+    // down the instance of the `DefinePlugin` defined by Razzle and remove the
+    // `process.env.PORT` so it can be overridable in runtime
+    const idxArr = config.plugins
+      .map((plugin, idx) =>
+        plugin.constructor.name === 'DefinePlugin' ? idx : '',
+      )
+      .filter(String);
+    idxArr.forEach((index) => {
+      const { definitions } = config.plugins[index];
+      if (definitions['process.env.PORT']) {
+        const newDefs = Object.assign({}, definitions);
+        // Transforms the stock RAZZLE_PUBLIC_DIR into relative path,
+        // so one can move the build around
+        newDefs['process.env.RAZZLE_PUBLIC_DIR'] = newDefs[
+          'process.env.RAZZLE_PUBLIC_DIR'
+        ].replace(projectRootPath, '.');
+        // Handles the PORT, so it takes the real PORT from the runtime enviroment var,
+        // but keeps the one from build time, if different from 3000 (by not deleting it)
+        // So build time one takes precedence, do not set it in build time if you want
+        // to control it always via runtime (assumming 3000 === not set in build time)
+        if (newDefs['process.env.PORT'] === '3000') {
+          delete newDefs['process.env.PORT'];
+        }
+        config.plugins[index] = new webpack.DefinePlugin(newDefs);
+      }
+    });
   }
 
   // Don't load config|variables|overrides) files with file-loader
@@ -146,7 +182,15 @@ const defaultModify = ({
   // Disabling the ESlint pre loader
   config.module.rules.splice(0, 1);
 
-  const addonsLoaderPath = createAddonsLoader(packageJson.addons || []);
+  let addonsFromEnvVar = [];
+  if (process.env.ADDONS) {
+    addonsFromEnvVar = process.env.ADDONS.split(';');
+  }
+
+  const addonsLoaderPath = createAddonsLoader(
+    registry.getAddonDependencies(),
+    registry.getAddons(),
+  );
 
   config.resolve.plugins = [
     new RelativeResolverPlugin(registry),
@@ -155,6 +199,7 @@ const defaultModify = ({
 
   config.resolve.alias = {
     ...registry.getAddonCustomizationPaths(),
+    ...registry.getAddonsFromEnvVarCustomizationPaths(),
     ...registry.getProjectCustomizationPaths(),
     ...config.resolve.alias,
     '../../theme.config$': `${projectRootPath}/theme/theme.config`,
@@ -166,8 +211,12 @@ const defaultModify = ({
     '@plone/volto-original': `${registry.voltoPath}/src`,
     // be able to reference current package from customized package
     '@package': `${projectRootPath}/src`,
+    '@root': `${projectRootPath}/src`,
     // we're incorporating redux-connect
     'redux-connect': `${registry.voltoPath}/src/helpers/AsyncConnect`,
+    // avoids including lodash multiple times.
+    // semantic-ui-react uses lodash-es, everything else uses lodash
+    'lodash-es': path.dirname(require.resolve('lodash')),
   };
 
   config.performance = {
@@ -175,21 +224,42 @@ const defaultModify = ({
     maxEntrypointSize: 10000000,
   };
 
+  let addonsAsExternals = [];
+
   const babelLoader = config.module.rules.find(babelLoaderFinder);
   const { include } = babelLoader;
   if (packageJson.name !== '@plone/volto') {
     include.push(fs.realpathSync(`${registry.voltoPath}/src`));
   }
+
   // Add babel support external (ie. node_modules npm published packages)
-  if (packageJson.addons) {
-    registry.addonNames.forEach((addon) =>
-      include.push(fs.realpathSync(registry.packages[addon].modulePath)),
-    );
+  const packagesNames = Object.keys(registry.packages);
+  if (registry.packages && packagesNames.length > 0) {
+    packagesNames.forEach((addon) => {
+      const p = fs.realpathSync(registry.packages[addon].modulePath);
+      if (include.indexOf(p) === -1) {
+        include.push(p);
+      }
+    });
+    addonsAsExternals = packagesNames.map((addon) => new RegExp(addon));
   }
 
-  let addonsAsExternals = [];
-  if (packageJson.addons) {
-    addonsAsExternals = registry.addonNames.map((addon) => new RegExp(addon));
+  if (process.env.ADDONS) {
+    addonsFromEnvVar.forEach((addon) => {
+      const normalizedAddonName = addon.split(':')[0];
+      const p = fs.realpathSync(
+        registry.packages[normalizedAddonName].modulePath,
+      );
+      if (include.indexOf(p) === -1) {
+        include.push(p);
+      }
+      addonsAsExternals = [
+        ...addonsAsExternals,
+        ...packagesNames.map(
+          (normalizedAddonName) => new RegExp(normalizedAddonName),
+        ),
+      ];
+    });
   }
 
   config.externals =
@@ -215,10 +285,10 @@ const defaultModify = ({
 const addonExtenders = registry.getAddonExtenders().map((m) => require(m));
 
 const defaultPlugins = [
-  { object: require('./webpack-less-plugin')({ registry }) },
-  { object: require('./webpack-sentry-plugin') },
-  { object: require('./webpack-svg-plugin') },
-  { object: require('./webpack-bundle-analyze-plugin') },
+  { object: require('./webpack-plugins/webpack-less-plugin')({ registry }) },
+  { object: require('./webpack-plugins/webpack-sentry-plugin') },
+  { object: require('./webpack-plugins/webpack-svg-plugin') },
+  { object: require('./webpack-plugins/webpack-bundle-analyze-plugin') },
   { object: require('./jest-extender-plugin') },
 ];
 

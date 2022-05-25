@@ -14,6 +14,15 @@ import { FormFieldWrapper } from '@plone/volto/components';
  * CheckboxWidget component class.
  * @function CheckboxWidget
  * @returns {string} Markup of the component.
+ *
+ * To use it, in schema properties, declare a field like:
+ *
+ * ```jsx
+ * {
+ *  title: "Active",
+ *  type: 'boolean',
+ * }
+ * ```
  */
 const CheckboxWidget = (props) => {
   const { id, title, value, onChange, isDisabled } = props;
@@ -23,9 +32,11 @@ const CheckboxWidget = (props) => {
       <div className="wrapper">
         <Checkbox
           name={`field-${id}`}
-          checked={value}
+          checked={value || false}
           disabled={isDisabled}
-          onChange={(event, { checked }) => onChange(id, checked)}
+          onChange={(event, { checked }) => {
+            onChange(id, checked);
+          }}
           label={<label htmlFor={`field-${id}`}>{title}</label>}
         />
       </div>

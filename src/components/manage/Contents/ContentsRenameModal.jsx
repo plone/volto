@@ -34,6 +34,10 @@ const messages = defineMessages({
     id: 'This name will be displayed in the URL.',
     defaultMessage: 'This name will be displayed in the URL.',
   },
+  loadingMessage: {
+    id: 'Rename Items Loading Message',
+    defaultMessage: 'Renaming items...',
+  },
 });
 
 /**
@@ -114,6 +118,10 @@ class ContentsRenameModal extends Component {
       this.props.open && (
         <ModalForm
           open={this.props.open}
+          loading={this.props.request.loading}
+          loadingMessage={this.props.intl.formatMessage(
+            messages.loadingMessage,
+          )}
           onSubmit={this.onSubmit}
           onCancel={this.props.onCancel}
           formData={merge(
@@ -145,7 +153,7 @@ class ContentsRenameModal extends Component {
                 },
                 [`${index}_id`]: {
                   title: this.props.intl.formatMessage(messages.shortName),
-                  type: 'string',
+                  type: 'id',
                   description: this.props.intl.formatMessage(
                     messages.shortNameDescription,
                   ),

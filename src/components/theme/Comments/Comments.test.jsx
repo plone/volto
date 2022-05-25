@@ -14,6 +14,12 @@ jest.mock('moment', () =>
   })),
 );
 
+jest.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(
+  async () =>
+    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
+);
+
 describe('Comments', () => {
   it('renders a comments component', () => {
     const store = mockStore({
@@ -21,6 +27,7 @@ describe('Comments', () => {
         items: [
           {
             '@id': 'someurl',
+            comment_id: '1614094601171408',
             author_name: 'admin',
             creation_date: '2017-11-06T19:36:01',
             text: { data: 'Some comment' },

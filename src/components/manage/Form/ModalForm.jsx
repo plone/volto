@@ -13,6 +13,8 @@ import {
   Menu,
   Message,
   Modal,
+  Dimmer,
+  Loader,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { FormValidation } from '@plone/volto/helpers';
@@ -74,6 +76,7 @@ class ModalForm extends Component {
     open: PropTypes.bool,
     submitLabel: PropTypes.string,
     loading: PropTypes.bool,
+    loadingMessage: PropTypes.string,
     className: PropTypes.string,
   };
 
@@ -88,6 +91,7 @@ class ModalForm extends Component {
     formData: {},
     open: true,
     loading: null,
+    loadingMessage: null,
     submitError: null,
     className: null,
   };
@@ -151,6 +155,7 @@ class ModalForm extends Component {
         schema: this.props.schema,
         formData: this.state.formData,
         formatMessage: this.props.intl.formatMessage,
+        touchedField: { [id]: value },
       });
 
       this.setState({
@@ -221,7 +226,14 @@ class ModalForm extends Component {
     return (
       <Modal open={this.props.open} className={this.props.className}>
         <Header>{this.props.title}</Header>
-        <Modal.Content>
+        <Dimmer active={this.props.loading}>
+          <Loader>
+            {this.props.loadingMessage || (
+              <FormattedMessage id="Loading" defaultMessage="Loading." />
+            )}
+          </Loader>
+        </Dimmer>
+        <Modal.Content scrolling>
           <UiForm
             method="post"
             onSubmit={this.onSubmit}
@@ -270,9 +282,6 @@ class ModalForm extends Component {
             circular
             primary
             floated="right"
-            icon={
-              <Icon name={aheadSVG} className="contents circled" size="30px" />
-            }
             aria-label={
               this.props.submitLabel
                 ? this.props.submitLabel
@@ -283,22 +292,23 @@ class ModalForm extends Component {
                 ? this.props.submitLabel
                 : this.props.intl.formatMessage(messages.save)
             }
-            size="big"
             onClick={this.onSubmit}
             loading={this.props.loading}
-          />
+          >
+            <Icon name={aheadSVG} className="contents circled" size="30px" />
+          </Button>
           {onCancel && (
             <Button
               basic
               circular
               secondary
-              icon={<Icon name={clearSVG} className="circled" size="30px" />}
               aria-label={this.props.intl.formatMessage(messages.cancel)}
               title={this.props.intl.formatMessage(messages.cancel)}
               floated="right"
-              size="big"
               onClick={onCancel}
-            />
+            >
+              <Icon name={clearSVG} className="circled" size="30px" />
+            </Button>
           )}
         </Modal.Actions>
       </Modal>

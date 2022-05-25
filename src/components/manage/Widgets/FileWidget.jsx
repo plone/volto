@@ -51,6 +51,24 @@ const messages = defineMessages({
  * FileWidget component class.
  * @function FileWidget
  * @returns {string} Markup of the component.
+ *
+ * To use it, in schema properties, declare a field like:
+ *
+ * ```jsx
+ * {
+ *  title: "File",
+ *  widget: 'file',
+ * }
+ * ```
+ * or:
+ *
+ * ```jsx
+ * {
+ *  title: "File",
+ *  type: 'object',
+ * }
+ * ```
+ *
  */
 const FileWidget = (props) => {
   const { id, value, onChange } = props;
@@ -62,6 +80,12 @@ const FileWidget = (props) => {
       setFileType(true);
     }
   }, [value]);
+
+  const imgsrc = value?.download
+    ? `${flattenToAppURL(value?.download)}?id=${Date.now()}`
+    : null || value?.data
+    ? `data:${value['content-type']};${value.encoding},${value.data}`
+    : null;
 
   /**
    * Drop handler
@@ -106,11 +130,7 @@ const FileWidget = (props) => {
                 className="image-preview"
                 id={`field-${id}-image`}
                 size="small"
-                src={
-                  value?.download
-                    ? `${flattenToAppURL(value.download)}?id=${Date.now()}`
-                    : null
-                }
+                src={imgsrc}
               />
             ) : (
               <div className="dropzone-placeholder">

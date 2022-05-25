@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { filter, find, isEmpty, map } from 'lodash';
 import { FormattedMessage } from 'react-intl';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL, langmap } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 const Types = ({ types, pathname, content, currentLanguage }) => {
@@ -74,7 +74,7 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
                 <div className="pastanaga-menu-list">
                   <ul>
                     {map(translationsLeft, (lang) => (
-                      <li>
+                      <li key={lang}>
                         <Link
                           to={{
                             pathname: `${pathname}/create-translation`,
@@ -90,7 +90,7 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
                             id="Translate to {lang}"
                             defaultMessage="Translate to {lang}"
                             values={{
-                              lang,
+                              lang: langmap[lang].nativeName.toLowerCase(),
                             }}
                           />
                         </Link>

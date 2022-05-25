@@ -5,15 +5,16 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { compose } from 'redux';
 import { map, remove } from 'lodash';
 import { Button, Segment, Table, Form } from 'semantic-ui-react';
-import { convertToRaw } from 'draft-js';
 import { Portal } from 'react-portal';
 import cx from 'classnames';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import Cell from '@plone/volto/components/manage/Blocks/Table/Cell';
 import { Field, Icon } from '@plone/volto/components';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import rowBeforeSVG from '@plone/volto/icons/row-before.svg';
 import rowAfterSVG from '@plone/volto/icons/row-after.svg';
@@ -118,27 +119,23 @@ const messages = defineMessages({
   },
   fixed: {
     id: 'Fixed width table cells',
-    defaultMessage: 'Fixed width table cells',
+    defaultMessage: 'Fixed width columns',
   },
   compact: {
     id: 'Make the table compact',
-    defaultMessage: 'Make the table compact',
+    defaultMessage: 'Reduce cell padding',
   },
   basic: {
     id: 'Reduce complexity',
-    defaultMessage: 'Reduce complexity',
+    defaultMessage: 'Minimalistic table design',
   },
   celled: {
     id: 'Divide each row into separate cells',
-    defaultMessage: 'Divide each row into separate cells',
-  },
-  inverted: {
-    id: 'Table color inverted',
-    defaultMessage: 'Table color inverted',
+    defaultMessage: 'Add border to inner columns',
   },
   striped: {
     id: 'Stripe alternate rows with color',
-    defaultMessage: 'Stripe alternate rows with color',
+    defaultMessage: 'Alternate row background color',
   },
   headerCell: {
     id: 'Header cell',
@@ -164,6 +161,7 @@ class Edit extends Component {
     selected: PropTypes.bool.isRequired,
     block: PropTypes.string.isRequired,
     onAddBlock: PropTypes.func.isRequired,
+    onInsertBlock: PropTypes.func.isRequired,
     onChangeBlock: PropTypes.func.isRequired,
     onDeleteBlock: PropTypes.func.isRequired,
     onMutateBlock: PropTypes.func.isRequired,
@@ -210,8 +208,10 @@ class Edit extends Component {
     this.toggleCompact = this.toggleCompact.bind(this);
     this.toggleBasic = this.toggleBasic.bind(this);
     this.toggleCelled = this.toggleCelled.bind(this);
-    this.toggleInverted = this.toggleInverted.bind(this);
     this.toggleStriped = this.toggleStriped.bind(this);
+
+    const { convertToRaw } = props.draftJs;
+    this.convertToRaw = convertToRaw;
   }
 
   /**
@@ -265,7 +265,7 @@ class Edit extends Component {
    */
   onChangeCell(row, cell, editorState) {
     const table = { ...this.props.data.table };
-    table.rows[row].cells[cell].value = convertToRaw(
+    table.rows[row].cells[cell].value = this.convertToRaw(
       editorState.getCurrentContent(),
     );
     this.props.onChangeBlock(this.props.block, {
@@ -516,15 +516,6 @@ class Edit extends Component {
   }
 
   /**
-   * Toggle inverted
-   * @method toggleInverted
-   * @returns {undefined}
-   */
-  toggleInverted() {
-    this.toggleBool('inverted');
-  }
-
-  /**
    * Toggle striped
    * @method toggleStriped
    * @returns {undefined}
@@ -656,6 +647,7 @@ class Edit extends Component {
                       }
                     >
                       <Cell
+                        editable={this.props.editable}
                         value={cell.value}
                         row={rowIndex}
                         cell={cellIndex}
@@ -726,15 +718,6 @@ class Edit extends Component {
                   value={this.props.data.table && this.props.data.table.basic}
                   onChange={this.toggleBasic}
                 />
-                <Field
-                  id="inverted"
-                  title={this.props.intl.formatMessage(messages.inverted)}
-                  type="boolean"
-                  value={
-                    this.props.data.table && this.props.data.table.inverted
-                  }
-                  onChange={this.toggleInverted}
-                />
               </Segment>
               <Segment secondary attached>
                 <FormattedMessage id="Cell" defaultMessage="Cell" />
@@ -761,4 +744,4 @@ class Edit extends Component {
   }
 }
 
-export default injectIntl(Edit);
+export default compose(injectLazyLibs(['draftJs']), injectIntl)(Edit);

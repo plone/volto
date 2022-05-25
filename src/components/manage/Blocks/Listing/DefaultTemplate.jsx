@@ -5,18 +5,18 @@ import { flattenToAppURL } from '@plone/volto/helpers';
 
 import { isInternalURL } from '@plone/volto/helpers/Url/Url';
 
-const DefaultTemplate = ({ items, linkMore, isEditMode }) => {
+const DefaultTemplate = ({ items, linkTitle, linkHref, isEditMode }) => {
   let link = null;
-  let href = linkMore?.href || '';
+  let href = linkHref?.[0]?.['@id'] || '';
 
   if (isInternalURL(href)) {
     link = (
       <ConditionalLink to={flattenToAppURL(href)} condition={!isEditMode}>
-        {linkMore?.title || href}
+        {linkTitle || href}
       </ConditionalLink>
     );
   } else if (href) {
-    link = <a href={href}>{linkMore?.title || href}</a>;
+    link = <a href={href}>{linkTitle || href}</a>;
   }
 
   return (

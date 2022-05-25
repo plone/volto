@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { asyncConnect } from '@plone/volto/helpers';
 import { defineMessages, injectIntl } from 'react-intl';
-import { Button } from 'semantic-ui-react';
+import { Button, Grid, Menu } from 'semantic-ui-react';
 import { Portal } from 'react-portal';
 import qs from 'query-string';
 import { find } from 'lodash';
@@ -24,10 +24,14 @@ import {
   Toast,
   Toolbar,
   Unauthorized,
+  CompareLanguages,
+  TranslationObject,
 } from '@plone/volto/components';
 import {
   updateContent,
   getContent,
+  lockContent,
+  unlockContent,
   getSchema,
   listActions,
 } from '@plone/volto/actions';
@@ -36,6 +40,8 @@ import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   edit: {
@@ -71,6 +77,8 @@ class Edit extends Component {
     updateContent: PropTypes.func.isRequired,
     getContent: PropTypes.func.isRequired,
     getSchema: PropTypes.func.isRequired,
+    lockContent: PropTypes.func.isRequired,
+    unlockContent: PropTypes.func.isRequired,
     updateRequest: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
@@ -115,6 +123,7 @@ class Edit extends Component {
       visual: true,
       isClient: false,
       error: null,
+      formSelected: 'editForm',
     };
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -127,9 +136,15 @@ class Edit extends Component {
    */
   componentDidMount() {
     if (this.props.getRequest.loaded && this.props.content?.['@type']) {
-      this.props.getSchema(this.props.content['@type']);
+      this.props.getSchema(
+        this.props.content['@type'],
+        getBaseUrl(this.props.pathname),
+      );
     }
-    this.setState({ isClient: true });
+    this.setState({
+      isClient: true,
+      comparingLanguage: null,
+    });
   }
 
   /**
@@ -160,6 +175,7 @@ class Edit extends Component {
 
     if (this.props.updateRequest.loading && nextProps.updateRequest.error) {
       const message =
+        nextProps.updateRequest.error?.response?.body?.error?.message ||
         nextProps.updateRequest.error?.response?.body?.message ||
         nextProps.updateRequest.error?.response?.text ||
         '';
@@ -178,6 +194,26 @@ class Edit extends Component {
         />,
       );
     }
+
+    if (
+      nextProps.compare_to &&
+      ((this.state.compareTo &&
+        nextProps.compare_to['@id'] !== this.state.compareTo['@id']) ||
+        !this.state.compareTo)
+    ) {
+      this.setState({ compareTo: nextProps.compare_to });
+    }
+  }
+
+  /**
+   * Component will unmount
+   * @method componentWillUnmount
+   * @returns {undefined}
+   */
+  componentWillUnmount() {
+    if (this.props.content?.lock?.locked) {
+      this.props.unlockContent(getBaseUrl(this.props.pathname));
+    }
   }
 
   /**
@@ -187,7 +223,9 @@ class Edit extends Component {
    * @returns {undefined}
    */
   onSubmit(data) {
-    this.props.updateContent(getBaseUrl(this.props.pathname), data);
+    const lock_token = this.props.content?.lock?.token;
+    const headers = lock_token ? { 'Lock-Token': lock_token } : {};
+    this.props.updateContent(getBaseUrl(this.props.pathname), data, headers);
   }
 
   /**
@@ -201,8 +239,13 @@ class Edit extends Component {
     );
   }
 
-  form = React.createRef();
+  setComparingLanguage(lang, content_id) {
+    this.setState({ comparingLanguage: lang });
+    this.props.getContent(content_id, null, 'compare_to', null);
+  }
 
+  form = React.createRef();
+  toolbarRef = React.createRef;
   /**
    * Render method.
    * @method render
@@ -210,6 +253,33 @@ class Edit extends Component {
    */
   render() {
     const editPermission = find(this.props.objectActions, { id: 'edit' });
+
+    const pageEdit = (
+      <Form
+        isEditForm
+        ref={this.form}
+        schema={this.props.schema}
+        type={this.props.content?.['@type']}
+        formData={this.props.content}
+        requestError={this.state.error}
+        onSubmit={this.onSubmit}
+        hideActions
+        pathname={this.props.pathname}
+        visual={this.state.visual}
+        title={
+          this.props?.schema?.title
+            ? this.props.intl.formatMessage(messages.edit, {
+                title: this.props.schema.title,
+              })
+            : null
+        }
+        loading={this.props.updateRequest.loading}
+        isFormSelected={this.state.formSelected === 'editForm'}
+        onSelectForm={() => {
+          this.setState({ formSelected: 'editForm' });
+        }}
+      />
+    );
 
     return (
       <div id="page-edit">
@@ -225,26 +295,53 @@ class Edit extends Component {
                         })
                       : null
                   }
-                />
-                <Form
-                  isEditForm
-                  ref={this.form}
-                  schema={this.props.schema}
-                  formData={this.props.content}
-                  requestError={this.state.error}
-                  onSubmit={this.onSubmit}
-                  hideActions
-                  pathname={this.props.pathname}
-                  visual={this.state.visual}
-                  title={
-                    this.props?.schema?.title
-                      ? this.props.intl.formatMessage(messages.edit, {
-                          title: this.props.schema.title,
-                        })
-                      : null
-                  }
-                  loading={this.props.updateRequest.loading}
-                />
+                >
+                  {this.props.content?.language && (
+                    <html lang={this.props.content.language.token} />
+                  )}
+                </Helmet>
+
+                {this.state.comparingLanguage && this.state.compareTo ? (
+                  <Grid
+                    celled="internally"
+                    stackable
+                    columns={2}
+                    id="page-compare-translation"
+                  >
+                    <Grid.Column className="source-object">
+                      <TranslationObject
+                        translationObject={this.state.compareTo}
+                        schema={this.props.schema}
+                        pathname={this.props.pathname}
+                        visual={this.state.visual}
+                        isFormSelected={
+                          this.state.formSelected === 'translationObjectForm'
+                        }
+                        onSelectForm={() => {
+                          this.setState({
+                            formSelected: 'translationObjectForm',
+                          });
+                        }}
+                      />
+                    </Grid.Column>
+                    <Grid.Column>
+                      <div className="new-translation">
+                        <Menu pointing secondary attached tabular>
+                          <Menu.Item
+                            name={this.props.content.language?.token.toUpperCase()}
+                            active={true}
+                          >
+                            {this.props.content.language?.token.toUpperCase()}
+                          </Menu.Item>
+                        </Menu>
+
+                        {pageEdit}
+                      </div>
+                    </Grid.Column>
+                  </Grid>
+                ) : (
+                  pageEdit
+                )}
               </>
             )}
 
@@ -304,6 +401,19 @@ class Edit extends Component {
                       title={this.props.intl.formatMessage(messages.cancel)}
                     />
                   </Button>
+
+                  {config.settings.isMultilingual && (
+                    <CompareLanguages
+                      content={this.props.content}
+                      visual={this.state.visual}
+                      setComparingLanguage={(lang, id) => {
+                        this.setComparingLanguage(lang, id);
+                      }}
+                      comparingLanguage={this.state.comparingLanguage}
+                      pathname={this.props.location.pathname}
+                      toolbarRef={this.toolbarRef}
+                    />
+                  )}
                 </>
               }
             />
@@ -321,6 +431,7 @@ export const __test__ = compose(
       objectActions: state.actions.actions.object,
       token: state.userSession.token,
       content: state.content.data,
+      compare_to: state.content.subrequests?.compare_to?.data,
       schema: state.schema.schema,
       getRequest: state.content.get,
       schemaRequest: state.schema,
@@ -333,6 +444,8 @@ export const __test__ = compose(
       updateContent,
       getContent,
       getSchema,
+      lockContent,
+      unlockContent,
     },
   ),
 )(Edit);
@@ -348,8 +461,15 @@ export default compose(
     },
     {
       key: 'content',
-      promise: async ({ location, store: { dispatch } }) =>
-        await dispatch(getContent(getBaseUrl(location.pathname))),
+      promise: async ({ location, store: { dispatch } }) => {
+        const content = await dispatch(
+          getContent(getBaseUrl(location.pathname)),
+        );
+        if (content?.lock !== undefined) {
+          await dispatch(lockContent(getBaseUrl(location.pathname)));
+        }
+        return content;
+      },
     },
   ]),
   connect(
@@ -357,6 +477,7 @@ export default compose(
       objectActions: state.actions.actions.object,
       token: state.userSession.token,
       content: state.content.data,
+      compare_to: state.content.subrequests?.compare_to?.data,
       schema: state.schema.schema,
       getRequest: state.content.get,
       schemaRequest: state.schema,
@@ -368,6 +489,8 @@ export default compose(
       updateContent,
       getContent,
       getSchema,
+      lockContent,
+      unlockContent,
     },
   ),
   preloadLazyLibs('cms'),

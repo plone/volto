@@ -14,6 +14,7 @@ $ npm install -g @plone/generator-volto
 ## Usage
 
 ### Creating a new Volto project using `npm init`
+
 ```
 npm init yo @plone/volto
 ```
@@ -23,6 +24,7 @@ This is the shortcut for using `npm init` command. It uses Yeoman (`yo`) and `@p
 Answer the prompt questions to complete the generation process.
 
 ### Creating a new Volto project
+
 ```
 $ yo @plone/volto
 ```
@@ -91,14 +93,16 @@ Usage:
   yo @plone/volto:addon [<addonName>] [options]
 
 Options:
-  -h,   --help          # Print the generator's options and usage
-        --skip-cache    # Do not remember prompt answers             Default: false
-        --skip-install  # Do not automatically install dependencies  Default: false
-        --interactive   # Enable/disable interactive prompt          Default: true
+  -h,   --help           # Print the generator's options and usage
+        --skip-cache     # Do not remember prompt answers                            Default: false
+        --skip-install   # Do not automatically install dependencies                 Default: false
+        --force-install  # Fail on install dependencies error                        Default: false
+        --ask-answered   # Show prompts for already configured options               Default: false
+        --interactive    # Enable/disable interactive prompt                         Default: true
+        --template       # Use github repo template, e.g.: eea/volto-addon-template
 
 Arguments:
-  addonName  # Addon name, e.g.: @corp/volto-custom-block  Type: String  Required: false
-
+  addonName  # Addon name, e.g.: @plone-collective/volto-custom-block  Type: String  Required: false
 ```
 
 ### Start Volto with `yarn start`
@@ -119,7 +123,7 @@ Please note that you have to run a Plone backend as well.
 E.g. with docker:
 
 ```
-$ docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.volto" -e ZCML="kitconcept.volto.cors" -e PROFILES="kitconcept.volto:default-homepage" plone
+$ docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.volto" -e ZCML="plone.volto.cors" -e PROFILES="plone.volto:default-homepage" plone
 ```
 
 Consult the Volto docs for further details:

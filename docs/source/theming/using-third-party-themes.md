@@ -1,7 +1,15 @@
-# Using third party libraries/themes different from semantic-ui
+---
+html_meta:
+  "description": "Use Volto with third party libraries or themes written in SASS and avoid applying `semantic-ui` on public facing views."
+  "property=og:description": "Use Volto with third party libraries or themes written in SASS and avoid applying `semantic-ui` on public facing views."
+  "property=og:title": "Using third party libraries and themes other than `semantic-ui`"
+  "keywords": "Volto, Plone, frontend, React, Semantic UI, semantic-ui, third, party, libraries, themes"
+---
 
-You can use Volto with third party libraries or themes written in sass and avoid applying semantic-ui on public facing views.
-This is made possible by code splitting, where interfaces have a marker CSS class to incapsulate styles and avoid conflicts between semantic-ui and the custom theme you would use.
+# Using third party libraries and themes other than `semantic-ui`
+
+You can use Volto with third party libraries or themes written in SASS and avoid applying `semantic-ui` on public facing views.
+This is made possible by code splitting, where interfaces have a marker CSS class to encapsulate styles and avoid conflicts between `semantic-ui` and the custom theme you would use.
 
 ## The problem
 
@@ -99,9 +107,10 @@ body.cms-ui {
 
 to avoid troubles on basic stuff: this is useful to have the correct font in the public-ui component showed while in a cms-view.
 
-!!! tip
-    Consider adding `public-ui` CSS class as a wrapper for your components, so they will be using your public theme. A good example of this is for the blocks, that need the public-ui styles both while viewing the object and while editing it.
-    On the other hand, many Volto components are using `cms-ui`.
+```{tip}
+Consider adding `public-ui` CSS class as a wrapper for your components, so they will be using your public theme. A good example of this is for the blocks, that need the public-ui styles both while viewing the object and while editing it.
+On the other hand, many Volto components are using `cms-ui`.
+```
 
 For any other customization, you can put styles in your site theme and override stuff taking advantage of semantic composition engine.
 

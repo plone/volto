@@ -7,19 +7,18 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 
-import unionClassNames from 'union-class-names';
+// import unionClassNames from 'union-class-names';
+import cx from 'classnames';
 import {
   addAppURL,
   isInternalURL,
   flattenToAppURL,
+  URLUtils,
 } from '@plone/volto/helpers';
-import EditorUtils from 'draft-js-plugins-utils';
 
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import { Input, Form, Button } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
-
-import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
@@ -44,8 +43,8 @@ const messages = defineMessages({
  */
 class AddLinkForm extends Component {
   static propTypes = {
-    getEditorState: PropTypes.func.isRequired,
-    setEditorState: PropTypes.func.isRequired,
+    onChangeValue: PropTypes.func.isRequired,
+    onClear: PropTypes.func.isRequired,
     onOverrideContent: PropTypes.func.isRequired,
     theme: PropTypes.objectOf(PropTypes.any).isRequired,
     openObjectBrowser: PropTypes.func.isRequired,
@@ -82,7 +81,7 @@ class AddLinkForm extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    this.input.focus();
+    setTimeout(() => this.input.focus(), 50);
     document.addEventListener('mousedown', this.handleClickOutside, false);
   }
 
@@ -135,11 +134,7 @@ class AddLinkForm extends Component {
     }
     this.setState(nextState);
 
-    if (clear) {
-      this.props.setEditorState(
-        EditorUtils.removeLinkAtSelection(this.props.getEditorState()),
-      );
-    }
+    if (clear) this.props.onClear();
   }
 
   /**
@@ -155,12 +150,7 @@ class AddLinkForm extends Component {
       value: url,
       isInvalid: false,
     });
-    this.props.setEditorState(
-      EditorUtils.createLinkAtSelection(
-        this.props.getEditorState(),
-        addAppURL(url),
-      ),
-    );
+    this.props.onChangeValue(addAppURL(url));
   };
 
   /**
@@ -173,9 +163,7 @@ class AddLinkForm extends Component {
     const nextState = { value: '' };
     this.setState(nextState);
 
-    this.props.setEditorState(
-      EditorUtils.removeLinkAtSelection(this.props.getEditorState()),
-    );
+    this.props.onClear();
   }
 
   /**
@@ -208,29 +196,18 @@ class AddLinkForm extends Component {
    * @returns {undefined}
    */
   onSubmit() {
-    const { getEditorState, setEditorState } = this.props;
     let { value: url } = this.state;
 
-    if (URLUtils.isMail(URLUtils.normaliseMail(url))) {
-      //Mail
-      url = URLUtils.normaliseMail(url);
-    } else if (URLUtils.isTelephone(url)) {
-      //Phone
-      url = URLUtils.normalizeTelephone(url);
-    } else {
-      //url
-      url = URLUtils.normalizeUrl(url);
-      if (!URLUtils.isUrl(url) && !url.startsWith('/')) {
-        this.setState({ isInvalid: true });
-        return;
-      }
+    const checkedURL = URLUtils.checkAndNormalizeUrl(url);
+    url = checkedURL.url;
+    if (!checkedURL.isValid) {
+      this.setState({ isInvalid: true });
+      return;
     }
 
     const editorStateUrl = isInternalURL(url) ? addAppURL(url) : url;
 
-    setEditorState(
-      EditorUtils.createLinkAtSelection(getEditorState(), editorStateUrl),
-    );
+    this.props.onChangeValue(editorStateUrl);
     this.onClose();
   }
 
@@ -242,12 +219,12 @@ class AddLinkForm extends Component {
   render() {
     const { value, isInvalid } = this.state;
     const className = isInvalid
-      ? unionClassNames(
+      ? cx(
           'ui input editor-link',
           'input-anchorlink-theme',
           'input-anchorlink-theme-Invalid',
         )
-      : unionClassNames('ui input editor-link', 'input-anchorlink-theme');
+      : cx('ui input editor-link', 'input-anchorlink-theme');
 
     return (
       <div className="link-form-container" ref={this.linkFormContainer}>

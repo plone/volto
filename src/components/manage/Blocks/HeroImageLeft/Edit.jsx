@@ -7,20 +7,20 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Map } from 'immutable';
 import { readAsDataURL } from 'promise-file-reader';
 import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
-import { stateFromHTML } from 'draft-js-import-html';
-import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { isEqual } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
 import { createContent } from '@plone/volto/actions';
-import { Icon } from '@plone/volto/components';
+import { Icon, SidebarPortal, LinkMore } from '@plone/volto/components';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
+
+import Data from './Data';
 
 const messages = defineMessages({
   title: {
@@ -35,34 +35,26 @@ const messages = defineMessages({
     id: 'Upload a new image',
     defaultMessage: 'Upload a new image',
   },
-});
-
-const blockTitleRenderMap = Map({
-  unstyled: {
-    element: 'h1',
+  image: {
+    id: 'Image',
+    defaultMessage: 'Image',
+  },
+  browse: {
+    id: 'Browse',
+    defaultMessage: 'Browse',
+  },
+  uploading: {
+    id: 'Uploading image',
+    defaultMessage: 'Uploading image',
   },
 });
-
-const blockDescriptionRenderMap = Map({
-  unstyled: {
-    element: 'div',
-  },
-});
-
-const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(
-  blockTitleRenderMap,
-);
-
-const extendedDescripBlockRenderMap = DefaultDraftBlockRenderMap.merge(
-  blockDescriptionRenderMap,
-);
 
 /**
  * Edit image block class.
  * @class Edit
  * @extends Component
  */
-class Edit extends Component {
+class EditComponent extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -73,7 +65,7 @@ class Edit extends Component {
     block: PropTypes.string.isRequired,
     index: PropTypes.number.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
-    content: PropTypes.objectOf(PropTypes.any).isRequired,
+    content: PropTypes.objectOf(PropTypes.any),
     request: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
@@ -86,6 +78,16 @@ class Edit extends Component {
     onFocusNextBlock: PropTypes.func.isRequired,
     handleKeyDown: PropTypes.func.isRequired,
     createContent: PropTypes.func.isRequired,
+    editable: PropTypes.bool,
+  };
+
+  /**
+   * Default properties
+   * @property {Object} defaultProps Default properties.
+   * @static
+   */
+  static defaultProps = {
+    editable: true,
   };
 
   /**
@@ -102,7 +104,32 @@ class Edit extends Component {
       uploading: false,
     };
 
+    const { Map } = this.props.immutableLib;
+
     if (!__SERVER__) {
+      const { DefaultDraftBlockRenderMap, EditorState } = props.draftJs;
+      const { stateFromHTML } = props.draftJsImportHtml;
+
+      const blockTitleRenderMap = Map({
+        unstyled: {
+          element: 'h1',
+        },
+      });
+
+      const blockDescriptionRenderMap = Map({
+        unstyled: {
+          element: 'div',
+        },
+      });
+
+      this.extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(
+        blockTitleRenderMap,
+      );
+
+      this.extendedDescripBlockRenderMap = DefaultDraftBlockRenderMap.merge(
+        blockDescriptionRenderMap,
+      );
+
       let titleEditorState;
       let descriptionEditorState;
       if (props.data && props.data.title) {
@@ -162,6 +189,9 @@ class Edit extends Component {
         url: nextProps.content['@id'],
       });
     }
+
+    const { EditorState } = this.props.draftJs;
+    const { stateFromHTML } = this.props.draftJsImportHtml;
 
     if (
       nextProps.data.title &&
@@ -250,15 +280,19 @@ class Edit extends Component {
     });
     readAsDataURL(file).then((data) => {
       const fields = data.match(/^data:(.*);(.*),(.*)$/);
-      this.props.createContent(getBaseUrl(this.props.pathname), {
-        '@type': 'Image',
-        image: {
-          data: fields[3],
-          encoding: fields[2],
-          'content-type': fields[1],
-          filename: file.name,
+      this.props.createContent(
+        getBaseUrl(this.props.pathname),
+        {
+          '@type': 'Image',
+          image: {
+            data: fields[3],
+            encoding: fields[2],
+            'content-type': fields[1],
+            filename: file.name,
+          },
         },
-      });
+        this.props.block,
+      );
     });
   }
 
@@ -271,16 +305,18 @@ class Edit extends Component {
     if (__SERVER__) {
       return <div />;
     }
+    const { Editor } = this.props.draftJs;
     const placeholder =
       this.props.data.placeholder ||
       this.props.intl.formatMessage(messages.placeholder);
+
     return (
       <div
         className={cx('block hero', {
           selected: this.props.selected,
         })}
       >
-        {this.props.selected && !!this.props.data.url && (
+        {this.props.selected && this.props.editable && !!this.props.data.url && (
           <div className="toolbar">
             <Button.Group>
               <Button
@@ -310,117 +346,137 @@ class Edit extends Component {
               <Message className="image-message">
                 {this.state.uploading && (
                   <Dimmer active>
-                    <Loader indeterminate>Uploading image</Loader>
+                    <Loader indeterminate>
+                      {this.props.intl.formatMessage(messages.uploading)}
+                    </Loader>
                   </Dimmer>
                 )}
                 <center>
-                  <h4>Image</h4>
-                  <p>{placeholder}</p>
-                  <p>
-                    <label className="ui button file">
-                      Browse
-                      <input
-                        type="file"
-                        onChange={this.onUploadImage}
-                        style={{ display: 'none' }}
-                      />
-                    </label>
-                  </p>
+                  <h4>{this.props.intl.formatMessage(messages.image)}</h4>
+                  {this.props.editable && (
+                    <>
+                      <p>{placeholder}</p>
+                      <p>
+                        <label className="ui button file">
+                          {this.props.intl.formatMessage(messages.browse)}
+                          <input
+                            type="file"
+                            onChange={this.onUploadImage}
+                            style={{ display: 'none' }}
+                          />
+                        </label>
+                      </p>
+                    </>
+                  )}
                 </center>
               </Message>
             </div>
           )}
           <div className="hero-body">
-            <Editor
-              ref={(node) => {
-                this.titleEditor = node;
-              }}
-              onChange={this.onChangeTitle}
-              editorState={this.state.titleEditorState}
-              blockRenderMap={extendedBlockRenderMap}
-              handleReturn={() => true}
-              placeholder={this.props.intl.formatMessage(messages.title)}
-              blockStyleFn={() => 'title-editor'}
-              onUpArrow={() => {
-                const selectionState = this.state.titleEditorState.getSelection();
-                const { titleEditorState } = this.state;
-                if (
-                  titleEditorState
-                    .getCurrentContent()
-                    .getBlockMap()
-                    .first()
-                    .getKey() === selectionState.getFocusKey()
-                ) {
-                  this.props.onFocusPreviousBlock(
-                    this.props.block,
-                    this.props.blockNode.current,
-                  );
-                }
-              }}
-              onDownArrow={() => {
-                const selectionState = this.state.titleEditorState.getSelection();
-                const { titleEditorState } = this.state;
-                if (
-                  titleEditorState
-                    .getCurrentContent()
-                    .getBlockMap()
-                    .last()
-                    .getKey() === selectionState.getFocusKey()
-                ) {
-                  this.setState(() => ({ currentFocused: 'description' }));
-                  this.descriptionEditor.focus();
-                }
-              }}
-            />
-            <Editor
-              ref={(node) => {
-                this.descriptionEditor = node;
-              }}
-              onChange={this.onChangeDescription}
-              editorState={this.state.descriptionEditorState}
-              blockRenderMap={extendedDescripBlockRenderMap}
-              handleReturn={() => true}
-              placeholder={this.props.intl.formatMessage(messages.description)}
-              blockStyleFn={() => 'description-editor'}
-              onUpArrow={() => {
-                const selectionState = this.state.descriptionEditorState.getSelection();
-                const currentCursorPosition = selectionState.getStartOffset();
+            <div className="hero-text">
+              <Editor
+                ref={(node) => {
+                  this.titleEditor = node;
+                }}
+                readOnly={!this.props.editable}
+                onChange={this.onChangeTitle}
+                editorState={this.state.titleEditorState}
+                blockRenderMap={this.extendedBlockRenderMap}
+                handleReturn={() => true}
+                placeholder={this.props.intl.formatMessage(messages.title)}
+                blockStyleFn={() => 'title-editor'}
+                onUpArrow={() => {
+                  const selectionState = this.state.titleEditorState.getSelection();
+                  const { titleEditorState } = this.state;
+                  if (
+                    titleEditorState
+                      .getCurrentContent()
+                      .getBlockMap()
+                      .first()
+                      .getKey() === selectionState.getFocusKey()
+                  ) {
+                    this.props.onFocusPreviousBlock(
+                      this.props.block,
+                      this.props.blockNode.current,
+                    );
+                  }
+                }}
+                onDownArrow={() => {
+                  const selectionState = this.state.titleEditorState.getSelection();
+                  const { titleEditorState } = this.state;
+                  if (
+                    titleEditorState
+                      .getCurrentContent()
+                      .getBlockMap()
+                      .last()
+                      .getKey() === selectionState.getFocusKey()
+                  ) {
+                    this.setState(() => ({ currentFocused: 'description' }));
+                    this.descriptionEditor.focus();
+                  }
+                }}
+              />
+              <Editor
+                ref={(node) => {
+                  this.descriptionEditor = node;
+                }}
+                readOnly={!this.props.editable}
+                onChange={this.onChangeDescription}
+                editorState={this.state.descriptionEditorState}
+                blockRenderMap={this.extendedDescripBlockRenderMap}
+                handleReturn={() => true}
+                placeholder={this.props.intl.formatMessage(
+                  messages.description,
+                )}
+                blockStyleFn={() => 'description-editor'}
+                onUpArrow={() => {
+                  const selectionState = this.state.descriptionEditorState.getSelection();
+                  const currentCursorPosition = selectionState.getStartOffset();
 
-                if (currentCursorPosition === 0) {
-                  this.setState(() => ({ currentFocused: 'title' }));
-                  this.titleEditor.focus();
-                }
-              }}
-              onDownArrow={() => {
-                const selectionState = this.state.descriptionEditorState.getSelection();
-                const { descriptionEditorState } = this.state;
-                const currentCursorPosition = selectionState.getStartOffset();
-                const blockLength = descriptionEditorState
-                  .getCurrentContent()
-                  .getFirstBlock()
-                  .getLength();
+                  if (currentCursorPosition === 0) {
+                    this.setState(() => ({ currentFocused: 'title' }));
+                    this.titleEditor.focus();
+                  }
+                }}
+                onDownArrow={() => {
+                  const selectionState = this.state.descriptionEditorState.getSelection();
+                  const { descriptionEditorState } = this.state;
+                  const currentCursorPosition = selectionState.getStartOffset();
+                  const blockLength = descriptionEditorState
+                    .getCurrentContent()
+                    .getFirstBlock()
+                    .getLength();
 
-                if (currentCursorPosition === blockLength) {
-                  this.props.onFocusNextBlock(
-                    this.props.block,
-                    this.props.blockNode.current,
-                  );
-                }
-              }}
-            />
+                  if (currentCursorPosition === blockLength) {
+                    this.props.onFocusNextBlock(
+                      this.props.block,
+                      this.props.blockNode.current,
+                    );
+                  }
+                }}
+              />
+            </div>
+            <LinkMore data={this.props.data} isEditMode={true} />
           </div>
         </div>
+        <SidebarPortal selected={this.props.selected}>
+          <Data {...this.props} />
+        </SidebarPortal>
       </div>
     );
   }
 }
 
+const Edit = injectLazyLibs(['draftJs', 'immutableLib', 'draftJsImportHtml'])(
+  EditComponent,
+);
+
 export default compose(
   injectIntl,
   connect(
-    (state) => ({
-      request: state.content.create,
-      content: state.content.data,
+    (state, ownProps) => ({
+      request: state.content.subrequests[ownProps.block] || {},
+      content: state.content.subrequests[ownProps.block]?.data,
     }),
     { createContent },
   ),

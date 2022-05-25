@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": "The edit component part of a block anatomy is specially different to the view component because they have to support the UX for editing the block."
+  "property=og:description": "The edit component part of a block anatomy is specially different to the view component because they have to support the UX for editing the block."
+  "property=og:title": "Blocks - Edit components"
+  "keywords": "Volto, Plone, frontend, React, Blocks, Edit, components"
+---
+
 # Blocks - Edit components
 
 The edit component part of a block anatomy is specially different to the view component because they have to support the UX for editing the block.
@@ -5,7 +13,7 @@ This UX can be very complex depending on the kind of block and the feature that 
 The project requirements will tell how far you should go with the UX story of each tile, and how complex it will become.
 You can use all the props that the edit component is receiving to model the UX for the block and how it will render.
 
-See the [complete list of props](anatomy.md#block-edit-component-props).
+See the complete list of {ref}`block-edit-component-props-label`.
 
 We have several UI/UX artifacts in order to model our block edit component UX.
 The sidebar and the object browser are the main ones.
@@ -22,15 +30,30 @@ import { SidebarPortal } from '@plone/volto/components';
 [...]
 
 <SidebarPortal selected={this.props.selected}>
-  ...
+  // ...
 </SidebarPortal>
 ```
 
-Everything that's inside the `SidebarPortal` component will be rendered in the sidebar.
+Everything that's inside the `SidebarPortal` component will be rendered in the sidebar. If you need an extra layer of configuration within `SidebarPortal`, you can use `SidebarPopup`.
 
-## Automated block editing forms
+```jsx
 
-To simplify the task of defining the edit component for a block, the `InlineForm` component can be used. The block edit component needs to be described by a schema that matches the format used to serialize the content type definitions. The widgets that will be used in rendering the form follow the same algorithm that is used for the regular metadata fields for the content types. As an example of schema, it could look like this:
+import { SidebarPopup } from '@plone/volto/components';
+
+<SidebarPopup open={this.props.sidebarOpen}>
+  ...
+</SidebarPopup>
+```
+
+## Schema driven automated block settings forms
+
+A helper component is available in core in order to simplify the task of defining and rendering the settings for a block: the `BlockDataForm` component.
+
+```{note}
+`BlockDataForm` is a convenience component around the already available in core `InlineForm` that takes care of some aspects exclusively for Volto Blocks, like Variants and schemaExtenders. You can still use `InlineForm` across Volto, but using `BlockDataForm` is recommeneded for the blocks settings use case.
+```
+
+The edit block settings component needs to be described by a schema that matches the format used to serialize the content type definitions. The widgets that will be used in rendering the form follow the same algorithm that is used for the regular metadata fields for the content types. As an example of schema, it could look like this:
 
 ```js
 const IframeSchema = {
@@ -89,7 +112,7 @@ import { Icon } from '@plone/volto/components';
     schema={schema}
     title={schema.title}
     headerActions={<button onClick={() => {}}>Action</button>}
-    footer={<div>I'm footer</div>}
+    footer={<div>I am footer</div>}
     onChangeField={(id, value) => {
       this.props.onChangeBlock(this.props.block, {
         ...this.props.data,
@@ -123,8 +146,11 @@ The HOC component `withObjectBrowser` wraps your component by making available t
 By default, it's enabled for all the component tree under the Blocks Editor, so it's available already for all the blocks in edit mode.
 However, if you need to instantiate it somewhere else, you can do it anyways by wrapping your component with it.
 
-!!! note
-    The default image block in Volto features both the Sidebar and the object browser, take a look at its source code in case you need more context on how they work.
+```{note}
+The default image block in Volto features both the Sidebar and the object browser, take a look at its source code in case you need more context on how they work.
+```
+
+(openobjectbrowser-handler-api-label)=
 
 ### openObjectBrowser handler API
 
@@ -176,6 +202,18 @@ It works in 3 different mode:
   The path of selected item is saved in 'href' property of value object. (fieldName: {href:''})
 - **multiple**: The field value is an array of objects.
 
+#### `return` prop
+
+The object widget returns always an array, even if it's meant to have only one object in return. In order to fix that situation and do not issue a breaking change, a `return` prop is being introduced, so if it's value is `single`, then it returns a single value:
+
+```js
+export const Image = () => <ObjectBrowserWidget mode="image" return="single" />;
+```
+
+```{note}
+This situation will be fixed in subsequent Volto releases.
+```
+
 #### PropDataName vs dataName
 
 - **dataName** is the prop inside _data_ object, used for _link_ and _image_ mode.
@@ -223,6 +261,13 @@ You can select the attributes from the object (coming from the metadata brain fr
 @search endpoint used in the browser) using the `selectedItemAttrs` prop as shown in the
 last example.
 
+#### allowExternals
+
+You can allow users to type manually an URL (internal or external). Once validated, it
+will tokenize the value. As a feature, you can paste an internal URL (eg. the user copy
+the URL from the browser, and paste it in the widget) and will be converted to a
+tokenized value, as if it was selected via the Object Browser widget.
+
 #### ObjectBrowserWidgetMode()
 
 Returns the component widget with _mode_ passed as argument.
@@ -245,7 +290,7 @@ export const widgets = {
 
 #### Selectable types
 
-If **selectableTypes** is set in _widgetOptions.pattern_options_, widget allows to select only items that matches types defined in _widgetOptions.pattern_options.selectableTypes_.
+If `selectableTypes` is set in `widgetOptions.pattern_options`, then only items whose content type has a name that is defined in `widgetOptions.pattern_options.selectableTypes` will be selectable.
 
 ```jsx
 <ObjectBrowserWidget ... widgetOptions={{pattern_options:{selectableTypes:['News Item','Event']}}}>
@@ -304,6 +349,7 @@ You can render a blocks engine form with the `BlocksForm` component.
 import { isEmpty } from 'lodash';
 import BlocksForm from '@plone/volto/components/manage/Blocks/BlocksForm';
 import { emptyBlocksForm } from '@plone/volto/helpers/Blocks/Blocks';
+import config from '@plone/volto/registry';
 
 
 class Example extends Component {
@@ -328,6 +374,8 @@ class Example extends Component {
     } = this.props;
     const formData = this.state.formData;
     const metadata = this.props.metadata || this.props.properties;
+    const {blocksConfig} = config.blocks;
+    const titleBlock = blocksConfig.title;
 
     return (
       <BlocksForm
@@ -349,6 +397,13 @@ class Example extends Component {
             },
           });
         }}
+        blocksConfig={{
+          ...blocksConfig,
+          title: {
+            ...titleBlock,
+            edit: (props) => <div>Title editing is not allowed (as example)</div>
+          }
+        }}
         onChangeField={(id, value) => {
           if (['blocks', 'blocks_layout'].indexOf(id) > -1) {
             this.blockState[id] = value;
@@ -369,12 +424,12 @@ class Example extends Component {
 }
 ```
 
-The current block engine, available as the separate `BlocksForm` component is
-a replication of the block engine from the `Form.jsx` component. It has been
-previously exposed as the
-[@eeacms/volto-blocks-form](https://github.com/eea/volto-blocks-form) addon and
-reused in several other addons, so you can find integration examples in addons
-such as [volto-columns-block](https://github.com/eea/volto-columns-block),
+The current block engine is available as the separate `BlocksForm` component,
+used to be a part of the `Form.jsx` component. It has been previously exposed
+as the [@eeacms/volto-blocks-form](https://github.com/eea/volto-blocks-form)
+addon and reused in several other addons, so you can find integration examples
+in addons such as
+[volto-columns-block](https://github.com/eea/volto-columns-block),
 [volto-accordion-block](https://github.com/rohberg/volto-accordion-block),
 [@eeacms/volto-accordion-block](https://github.com/eea/volto-accordion-block),
 [@eeacms/volto-grid-block](https://github.com/eea/volto-accordion-block), but
@@ -382,7 +437,10 @@ probably the simplest implementation to follow is in the
 [@eeacms/volto-group-block](https://github.com/eea/volto-group-block)
 
 Notice that the `BlocksForm` component allows overriding the edit block
-wrapper. You can also reuse the DragDropList component as a separate component:
+wrapper and allows passing a custom `blocksConfig` configuration object, for
+example to filter or add new blocks.
+
+You can also reuse the DragDropList component as a separate component:
 
 ```jsx
   <DragDropList
