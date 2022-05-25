@@ -1056,9 +1056,9 @@ msgid "Filename"
 msgstr "Dateiname"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Filter by groups
-msgid "Filter by groups"
-msgstr "Filtere nach Gruppen"
+# defaultMessage: Filter users by groups
+msgid "Filter users by groups"
+msgstr ""
 
 #: components/manage/Contents/Contents
 # defaultMessage: Filter…
