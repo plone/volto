@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix regression, compound lang names (eg. `pt-BR`) no longer working @sneridagh
+
 ### Internal
 
 ### Documentation
