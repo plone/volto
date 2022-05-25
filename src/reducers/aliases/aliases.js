@@ -54,7 +54,6 @@ export default function aliases(state = initialState, action = {}) {
         },
       };
     case `${GET_ALIASES}_SUCCESS`:
-      console.log('itemsinredu', action.result);
       return {
         ...state,
         items: action.result.items,
