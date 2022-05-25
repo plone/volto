@@ -59,6 +59,7 @@ msgid "Activate and deactivate"
 msgstr "以下のリストにあるアドオンを有効にしたり無効にしたりできます。"
 
 #: components/manage/Aliases/Aliases
+#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
@@ -177,6 +178,17 @@ msgstr "アドオン設定"
 msgid "Additional date"
 msgstr "追加日"
 
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Alias
+msgid "Alias"
+msgstr ""
+
+#: components/manage/Aliases/Aliases
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Alias has been added
+msgid "Alias has been added"
+msgstr ""
+
 #: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -190,6 +202,11 @@ msgstr "配置"
 # defaultMessage: All
 msgid "All"
 msgstr "すべて"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: All existing alternative urls for this site
+msgid "All existing alternative urls for this site"
+msgstr ""
 
 #: components/theme/Search/Search
 # defaultMessage: Alphabetically
@@ -212,9 +229,20 @@ msgstr ""
 msgid "Alt text hint link text"
 msgstr ""
 
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Alternative url path (Required)
+msgid "Alternative url path (Required)"
+msgstr ""
+
 #: components/manage/Aliases/Aliases
+#: components/manage/Controlpanels/Aliases
 # defaultMessage: Alternative url path must start with a slash.
 msgid "Alternative url path must start with a slash."
+msgstr ""
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Alternative url path → target url path (date and time of creation, manually created yes/no)
+msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
 msgstr ""
 
 #: components/manage/Toolbar/More
@@ -640,6 +668,7 @@ msgstr "データベースサイズ"
 msgid "Database main"
 msgstr "主なデータベース情報"
 
+#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Widgets/DatetimeWidget
 # defaultMessage: Date
@@ -972,6 +1001,11 @@ msgstr ""
 msgid "Error"
 msgstr "エラー"
 
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Error
+msgid "ErrorHeader"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Exclude from navigation
 msgid "Exclude from navigation"
@@ -1067,6 +1101,11 @@ msgstr "ファイルサイズ"
 # defaultMessage: Filename
 msgid "Filename"
 msgstr "ファイル名"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Filter by prefix
+msgid "Filter by prefix"
+msgstr ""
 
 #: components/manage/Contents/Contents
 # defaultMessage: Filter…
@@ -1544,6 +1583,16 @@ msgstr "翻訳の管理"
 # defaultMessage: Manage translations for {title}
 msgid "Manage translations for {title}"
 msgstr "{title}の翻訳を管理する"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Manual
+msgid "Manual"
+msgstr ""
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Manually or automatically added?
+msgid "Manually or automatically added?"
+msgstr ""
 
 #: components/manage/Blocks/Maps/MapsSidebar
 # defaultMessage: Map
@@ -2055,6 +2104,11 @@ msgstr ""
 msgid "Remove recurrence"
 msgstr "繰り返しを削除"
 
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Remove selected
+msgid "Remove selected"
+msgstr ""
+
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Remove term
 msgid "Remove term"
@@ -2290,6 +2344,7 @@ msgstr "第2"
 msgid "Section title"
 msgstr ""
 
+#: components/manage/Controlpanels/Aliases
 #: components/manage/Sidebar/ObjectBrowserNav
 # defaultMessage: Select
 msgid "Select"
@@ -2382,6 +2437,7 @@ msgstr "ショートネーム"
 msgid "Short name"
 msgstr "ショートネーム"
 
+#: components/manage/Controlpanels/Aliases
 #: components/theme/Pagination/Pagination
 # defaultMessage: Show
 msgid "Show"
@@ -2560,7 +2616,9 @@ msgid "Subject"
 msgstr "件名"
 
 #: components/manage/Actions/Actions
+#: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Multilingual/ManageTranslations
@@ -2609,6 +2667,16 @@ msgstr "追加するタグ"
 msgid "Tags to remove"
 msgstr "削除をするタグ"
 
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Target
+msgid "Target"
+msgstr ""
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Target Path (Required)
+msgid "Target Path (Required)"
+msgstr ""
+
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Target memory size per cache in bytes
 msgid "Target memory size per cache in bytes"
@@ -2618,6 +2686,11 @@ msgstr "キャッシュごとの最大容量(byte単位)"
 # defaultMessage: Target number of objects in memory per cache
 msgid "Target number of objects in memory per cache"
 msgstr "キャッシュごとのメモリー上の最大オブジェクト数"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Target url path must start with a slash.
+msgid "Target url path must start with a slash."
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Text

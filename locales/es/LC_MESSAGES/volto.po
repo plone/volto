@@ -61,6 +61,7 @@ msgid "Activate and deactivate"
 msgstr "Activar y desactivar"
 
 #: components/manage/Aliases/Aliases
+#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
@@ -179,6 +180,17 @@ msgstr "Configuración de complementos"
 msgid "Additional date"
 msgstr "Fecha adicional"
 
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Alias
+msgid "Alias"
+msgstr ""
+
+#: components/manage/Aliases/Aliases
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Alias has been added
+msgid "Alias has been added"
+msgstr ""
+
 #: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -192,6 +204,11 @@ msgstr "Alineamiento"
 # defaultMessage: All
 msgid "All"
 msgstr "Todo"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: All existing alternative urls for this site
+msgid "All existing alternative urls for this site"
+msgstr ""
 
 #: components/theme/Search/Search
 # defaultMessage: Alphabetically
@@ -214,9 +231,20 @@ msgstr "Dejar vacío si la imagen es puramente decorativa"
 msgid "Alt text hint link text"
 msgstr "Describir el objeto de la imagen"
 
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Alternative url path (Required)
+msgid "Alternative url path (Required)"
+msgstr ""
+
 #: components/manage/Aliases/Aliases
+#: components/manage/Controlpanels/Aliases
 # defaultMessage: Alternative url path must start with a slash.
 msgid "Alternative url path must start with a slash."
+msgstr ""
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Alternative url path → target url path (date and time of creation, manually created yes/no)
+msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
 msgstr ""
 
 #: components/manage/Toolbar/More
@@ -642,6 +670,7 @@ msgstr "Tamaño de la base de datos"
 msgid "Database main"
 msgstr "Base de datos principal"
 
+#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Widgets/DatetimeWidget
 # defaultMessage: Date
@@ -974,6 +1003,11 @@ msgstr ""
 msgid "Error"
 msgstr "Error"
 
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Error
+msgid "ErrorHeader"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Exclude from navigation
 msgid "Exclude from navigation"
@@ -1069,6 +1103,11 @@ msgstr "Tamaño del archivo"
 # defaultMessage: Filename
 msgid "Filename"
 msgstr "Nombre del archivo"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Filter by prefix
+msgid "Filter by prefix"
+msgstr ""
 
 #: components/manage/Contents/Contents
 # defaultMessage: Filter…
@@ -1546,6 +1585,16 @@ msgstr "Administrar traducciones"
 # defaultMessage: Manage translations for {title}
 msgid "Manage translations for {title}"
 msgstr "Administrar traducciones de {title}"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Manual
+msgid "Manual"
+msgstr ""
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Manually or automatically added?
+msgid "Manually or automatically added?"
+msgstr ""
 
 #: components/manage/Blocks/Maps/MapsSidebar
 # defaultMessage: Map
@@ -2057,6 +2106,11 @@ msgstr "Eliminar elemento"
 msgid "Remove recurrence"
 msgstr "Eliminar repetición"
 
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Remove selected
+msgid "Remove selected"
+msgstr ""
+
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Remove term
 msgid "Remove term"
@@ -2292,6 +2346,7 @@ msgstr "Segundo"
 msgid "Section title"
 msgstr "Título de la sección"
 
+#: components/manage/Controlpanels/Aliases
 #: components/manage/Sidebar/ObjectBrowserNav
 # defaultMessage: Select
 msgid "Select"
@@ -2384,6 +2439,7 @@ msgstr "Nombre Corto"
 msgid "Short name"
 msgstr "Nombre corto"
 
+#: components/manage/Controlpanels/Aliases
 #: components/theme/Pagination/Pagination
 # defaultMessage: Show
 msgid "Show"
@@ -2562,7 +2618,9 @@ msgid "Subject"
 msgstr "Asunto"
 
 #: components/manage/Actions/Actions
+#: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Multilingual/ManageTranslations
@@ -2611,6 +2669,16 @@ msgstr "Categoría a agregar"
 msgid "Tags to remove"
 msgstr "Categoría a remover"
 
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Target
+msgid "Target"
+msgstr ""
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Target Path (Required)
+msgid "Target Path (Required)"
+msgstr ""
+
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Target memory size per cache in bytes
 msgid "Target memory size per cache in bytes"
@@ -2620,6 +2688,11 @@ msgstr "Número objetivo del tamaño de la memoria por caché en bytes"
 # defaultMessage: Target number of objects in memory per cache
 msgid "Target number of objects in memory per cache"
 msgstr "Número objetivo de elementos en la memoria por caché"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Target url path must start with a slash.
+msgid "Target url path must start with a slash."
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Text
