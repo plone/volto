@@ -71,8 +71,8 @@ export const messages = defineMessages({
     defaultMessage: 'Search group…',
   },
   filterByGroups: {
-    id: 'Filter by groups',
-    defaultMessage: 'Filter by groups',
+    id: 'Filter users by groups',
+    defaultMessage: 'Filter users by groups',
   },
   back: {
     id: 'Back',

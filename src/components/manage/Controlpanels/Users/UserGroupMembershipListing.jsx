@@ -203,6 +203,8 @@ const ListingTemplate = ({
                 </div>
               </div>
             </div>
+
+            <h3>{items.length} users </h3>
             {items.map((item) => (
               <div className="listing-row" key={item.id}>
                 <div className="listing-item" key={item['@id']}>

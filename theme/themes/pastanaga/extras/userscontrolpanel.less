@@ -31,20 +31,19 @@
 
   .controlpanel_search_y {
     grid-column: 1;
-    grid-row: 2;
+    grid-row: 1;
   }
 
   .controlpanel_search_x {
     grid-column: 2;
-    grid-row: 2;
+    grid-row: 1;
   }
 
   .controlpanel_filter {
     display: flex;
     flex-direction: column;
     grid-column: 3;
-    grid-row-end: 4;
-    grid-row-start: 2;
+    grid-row: 2;
 
     .ui.checkbox {
       margin-top: 0.5rem;
@@ -53,10 +52,12 @@
 
   .administration_matrix {
     display: grid;
-    padding-right: 2rem;
+    height: 60rem;
+    padding-right: 0;
     grid-column-end: 3;
     grid-column-start: 1;
-    grid-row: 3;
+    grid-row: 2;
+    grid-template-rows: 14rem 1fr;
     overflow-x: scroll;
   }
 }
@@ -67,9 +68,17 @@
   }
 
   .label-options {
+    position: sticky;
+    z-index: 1000;
+    top: 0;
+    left: 0;
     display: flex;
+    height: 14rem;
     align-items: baseline;
     justify-content: flex-end;
+    padding-right: 2rem;
+    // background-color: #d1f2a7c9;
+    background-color: #edf1f2dd;
 
     .label-options-label {
       display: flex;
@@ -92,6 +101,8 @@
     padding-top: 0.5rem;
 
     .listing-row {
+      padding-right: 2rem;
+
       &:nth-child(2n) {
         background-color: rgba(0, 0, 50, 0.05);
       }
