@@ -7,14 +7,16 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { map, remove } from 'lodash';
-import { Button, Segment, Table, Form } from 'semantic-ui-react';
-import { Portal } from 'react-portal';
+import { Button, Table } from 'semantic-ui-react';
 import cx from 'classnames';
-import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
+import TableSidebar from './TableSidebar';
+import CellSidebar from './CellSidebar';
 
 import Cell from '@plone/volto/components/manage/Blocks/Table/Cell';
-import { Field, Icon } from '@plone/volto/components';
+import { Icon, SidebarPortal } from '@plone/volto/components';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import { withBlockExtensions } from '@plone/volto/helpers';
 
 import rowBeforeSVG from '@plone/volto/icons/row-before.svg';
 import rowAfterSVG from '@plone/volto/icons/row-after.svg';
@@ -670,78 +672,20 @@ class Edit extends Component {
             </Table.Body>
           </Table>
         )}
-        {this.props.selected && this.state.isClient && (
-          <Portal node={document.getElementById('sidebar-properties')}>
-            <Form
-              method="post"
-              onSubmit={(event) => {
-                event.preventDefault();
-                event.stopPropagation();
-              }}
-            >
-              <Segment secondary attached>
-                <FormattedMessage id="Table" defaultMessage="Table" />
-              </Segment>
-              <Segment attached>
-                <Field
-                  id="fixed"
-                  title={this.props.intl.formatMessage(messages.fixed)}
-                  type="boolean"
-                  value={this.props.data.table && this.props.data.table.fixed}
-                  onChange={() => this.toggleFixed()}
-                />
-                <Field
-                  id="celled"
-                  title={this.props.intl.formatMessage(messages.celled)}
-                  type="boolean"
-                  value={this.props.data.table && this.props.data.table.celled}
-                  onChange={this.toggleCelled}
-                />
-                <Field
-                  id="striped"
-                  title={this.props.intl.formatMessage(messages.striped)}
-                  type="boolean"
-                  value={this.props.data.table && this.props.data.table.striped}
-                  onChange={this.toggleStriped}
-                />
-                <Field
-                  id="compact"
-                  title={this.props.intl.formatMessage(messages.compact)}
-                  type="boolean"
-                  value={this.props.data.table && this.props.data.table.compact}
-                  onChange={() => this.toggleCompact()}
-                />
-                <Field
-                  id="basic"
-                  title={this.props.intl.formatMessage(messages.basic)}
-                  type="boolean"
-                  value={this.props.data.table && this.props.data.table.basic}
-                  onChange={this.toggleBasic}
-                />
-              </Segment>
-              <Segment secondary attached>
-                <FormattedMessage id="Cell" defaultMessage="Cell" />
-              </Segment>
-              <Segment attached>
-                <Field
-                  id="celltype"
-                  title={this.props.intl.formatMessage(messages.headerCell)}
-                  type="boolean"
-                  value={
-                    this.props.data.table &&
-                    this.props.data.table.rows[this.state.selected.row].cells[
-                      this.state.selected.cell
-                    ].type === 'header'
-                  }
-                  onChange={this.toggleCellType}
-                />
-              </Segment>
-            </Form>
-          </Portal>
-        )}
+        <SidebarPortal selected={this.props.selected && this.state.isClient}>
+          <TableSidebar {...this.props}> </TableSidebar>
+          <CellSidebar
+            {...this.props}
+            selectedCell={this.state.selected}
+          ></CellSidebar>
+        </SidebarPortal>
       </div>
     );
   }
 }
 
-export default compose(injectLazyLibs(['draftJs']), injectIntl)(Edit);
+export default compose(
+  injectLazyLibs(['draftJs']),
+  withBlockExtensions,
+  injectIntl,
+)(Edit);

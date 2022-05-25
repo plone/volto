@@ -9,13 +9,13 @@ import { Table } from 'semantic-ui-react';
 import { map } from 'lodash';
 import redraft from 'redraft';
 import config from '@plone/volto/registry';
-
+import { withBlockExtensions } from '@plone/volto/helpers';
 /**
  * View table block class.
  * @class View
  * @extends Component
  */
-const View = ({ data }) =>
+export const View = ({ data }) =>
   data &&
   data.table && (
     <Table
@@ -58,4 +58,4 @@ View.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-export default View;
+export default withBlockExtensions(View);
