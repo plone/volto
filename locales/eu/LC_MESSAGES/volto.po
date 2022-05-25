@@ -3385,6 +3385,7 @@ msgstr "Gehien erabilia"
 
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+#: components/theme/Widgets/BooleanWidget
 # defaultMessage: No
 msgid "no"
 msgstr "ez"
@@ -3662,6 +3663,7 @@ msgstr "Webgunea ikusi"
 
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+#: components/theme/Widgets/BooleanWidget
 # defaultMessage: Yes
 msgid "yes"
 msgstr "bai"

@@ -11,10 +11,14 @@ import { compose } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
 import { find } from 'lodash';
 import { toast } from 'react-toastify';
-import { parse } from 'date-fns';
 import { Toast } from '@plone/volto/components';
 import { Pluggable, Plug } from '@plone/volto/components/manage/Pluggable';
-import { Icon, Display, Workflow } from '@plone/volto/components';
+import {
+  FormattedDate,
+  Icon,
+  Display,
+  Workflow,
+} from '@plone/volto/components';
 import {
   applyWorkingCopy,
   createWorkingCopy,
@@ -138,10 +142,12 @@ class More extends Component {
     const sharingAction = find(this.props.actions.object, {
       id: 'local_roles',
     });
+
     const aliasesAction = find(this.props.actions.object_buttons, {
       id: 'redirection',
     });
     const { content, intl, lang } = this.props;
+
     const dateOptions = {
       year: 'numeric',
       month: 'long',
@@ -309,11 +315,11 @@ class More extends Component {
                                   messages.workingCopyAppliedBy,
                                   {
                                     creator: content.working_copy?.creator_name,
-                                    date: new Intl.DateTimeFormat(
-                                      lang,
-                                      dateOptions,
-                                    ).format(
-                                      parse(content.working_copy?.created),
+                                    date: (
+                                      <FormattedDate
+                                        date={content.working_copy?.created}
+                                        format={dateOptions}
+                                      />
                                     ),
                                   },
                                 )}

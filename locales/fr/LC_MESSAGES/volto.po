@@ -3395,6 +3395,7 @@ msgstr "souvent utilisé"
 
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+#: components/theme/Widgets/BooleanWidget
 # defaultMessage: No
 msgid "no"
 msgstr ""
@@ -3672,6 +3673,7 @@ msgstr ""
 
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+#: components/theme/Widgets/BooleanWidget
 # defaultMessage: Yes
 msgid "yes"
 msgstr ""
