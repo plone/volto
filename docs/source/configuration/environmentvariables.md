@@ -190,10 +190,3 @@ This is a runtime-only environment variable that directs the build to run Volto 
 yarn
 BUILD_DIR=dist node dist/server.js
 ```
-
-or
-
-```bash
-yarn
-yarn start:dist
-```
