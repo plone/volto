@@ -2,8 +2,6 @@
 
 ## 15.11.3 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Disable already chosen criteria in querystring widget @kreafox
@@ -13,10 +11,6 @@
 ### Bugfix
 
 - fix TokenWidget choices when editing a recently created content. @giuliaghisini
-
-### Internal
-
-### Documentation
 
 ## 15.11.2 (2022-05-21)
 
