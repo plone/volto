@@ -166,7 +166,8 @@ class More extends Component {
     }
 
     if (erroredAction) {
-      if (this.props.workingCopy[erroredAction].error.status === 401) {
+      const errorStatus = this.props.workingCopy[erroredAction].error.status;
+      if (errorStatus === 401 || errorStatus === 403) {
         toast.error(
           <Toast
             error
