@@ -2680,7 +2680,7 @@ msgstr "Terzo"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This has an ongoing working copy in {title}
 msgid "This has an ongoing working copy in {title}"
-msgstr "Questa è una copia di lavoro in corso di {title}"
+msgstr "Questo oggetto ha una copia di lavoro in corso qui: {title}"
 
 #: components/manage/Widgets/IdWidget
 # defaultMessage: This is a reserved name and can't be used
