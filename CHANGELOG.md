@@ -8,8 +8,11 @@
 
 - Disable already chosen criteria in querystring widget @kreafox
 - Working copy actions now render errors if they fail @pnicolli
+- Added viewableInBrowserObjects setting to use in alternative to downloadableObjects, if you want to view file in browser intstead downloading. @giuliaghisini
 
 ### Bugfix
+
+- fix TokenWidget choices when editing a recently created content. @giuliaghisini
 
 ### Internal
 
