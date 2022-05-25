@@ -7,6 +7,7 @@
 ### Feature
 
 - Disable already chosen criteria in querystring widget @kreafox
+- Added viewableInBrowserObjects setting to use in alternative to downloadableObjects, if you want to view file in browser intstead downloading. @giuliaghisini
 
 ### Bugfix
 
