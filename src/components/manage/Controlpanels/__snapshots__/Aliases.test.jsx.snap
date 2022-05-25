@@ -244,6 +244,165 @@ exports[`Aliases renders an aliases control component 1`] = `
                     Manual
                   </th>
                 </tr>
+                <tr
+                  className=""
+                >
+                  <td
+                    className=""
+                  >
+                    <div
+                      className="ui fitted checkbox"
+                      onChange={[Function]}
+                      onClick={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseUp={[Function]}
+                    >
+                      <input
+                        checked={false}
+                        className="hidden"
+                        readOnly={true}
+                        tabIndex={0}
+                        type="checkbox"
+                        value="/eventsalias"
+                      />
+                      <label />
+                    </div>
+                  </td>
+                  <td
+                    className=""
+                  >
+                    <p>
+                      /eventsalias
+                    </p>
+                  </td>
+                  <td
+                    className=""
+                  >
+                    <p>
+                      /events
+                    </p>
+                  </td>
+                  <td
+                    className=""
+                  >
+                    <p>
+                      2022-05-16T11:52:35+00:00
+                    </p>
+                  </td>
+                  <td
+                    className=""
+                  >
+                    <p>
+                      true
+                    </p>
+                  </td>
+                </tr>
+                <tr
+                  className=""
+                >
+                  <td
+                    className=""
+                  >
+                    <div
+                      className="ui fitted checkbox"
+                      onChange={[Function]}
+                      onClick={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseUp={[Function]}
+                    >
+                      <input
+                        checked={false}
+                        className="hidden"
+                        readOnly={true}
+                        tabIndex={0}
+                        type="checkbox"
+                        value="/eventsgreatalias"
+                      />
+                      <label />
+                    </div>
+                  </td>
+                  <td
+                    className=""
+                  >
+                    <p>
+                      /eventsgreatalias
+                    </p>
+                  </td>
+                  <td
+                    className=""
+                  >
+                    <p>
+                      /events
+                    </p>
+                  </td>
+                  <td
+                    className=""
+                  >
+                    <p>
+                      2022-05-17T09:38:19+00:00
+                    </p>
+                  </td>
+                  <td
+                    className=""
+                  >
+                    <p>
+                      true
+                    </p>
+                  </td>
+                </tr>
+                <tr
+                  className=""
+                >
+                  <td
+                    className=""
+                  >
+                    <div
+                      className="ui fitted checkbox"
+                      onChange={[Function]}
+                      onClick={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseUp={[Function]}
+                    >
+                      <input
+                        checked={false}
+                        className="hidden"
+                        readOnly={true}
+                        tabIndex={0}
+                        type="checkbox"
+                        value="/eventsincredible"
+                      />
+                      <label />
+                    </div>
+                  </td>
+                  <td
+                    className=""
+                  >
+                    <p>
+                      /eventsincredible
+                    </p>
+                  </td>
+                  <td
+                    className=""
+                  >
+                    <p>
+                      /events
+                    </p>
+                  </td>
+                  <td
+                    className=""
+                  >
+                    <p>
+                      2022-05-17T09:38:35+00:00
+                    </p>
+                  </td>
+                  <td
+                    className=""
+                  >
+                    <p>
+                      true
+                    </p>
+                  </td>
+                </tr>
               </tbody>
             </table>
             <div
@@ -279,7 +438,7 @@ exports[`Aliases renders an aliases control component 1`] = `
                   :
                 </div>
                 <a
-                  className="active item"
+                  className="item"
                   onClick={[Function]}
                   style={
                     Object {
@@ -293,7 +452,7 @@ exports[`Aliases renders an aliases control component 1`] = `
                   10
                 </a>
                 <a
-                  className="item"
+                  className="active item"
                   onClick={[Function]}
                   style={
                     Object {
