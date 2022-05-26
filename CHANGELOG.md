@@ -6,6 +6,7 @@
 
 ### Feature
 
+- Updated Brazilian Portuguese translation @ericof
 - Forward `HTTP Range` headers to the backend. @mamico
 
 ### Bugfix
