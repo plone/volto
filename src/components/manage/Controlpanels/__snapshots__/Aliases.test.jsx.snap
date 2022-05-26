@@ -438,7 +438,7 @@ exports[`Aliases renders an aliases control component 1`] = `
                   :
                 </div>
                 <a
-                  className="item"
+                  className="active item"
                   onClick={[Function]}
                   style={
                     Object {
@@ -452,7 +452,7 @@ exports[`Aliases renders an aliases control component 1`] = `
                   10
                 </a>
                 <a
-                  className="active item"
+                  className="item"
                   onClick={[Function]}
                   style={
                     Object {

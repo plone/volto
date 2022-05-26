@@ -61,15 +61,6 @@ const filterChoices = [
 
 const itemsPerPageChoices = [10, 25, 50, 'All'];
 
-// const getPaginatedData = (items, currentPage, limit) => {
-//   if (limit === 'All') {
-//     return items;
-//   }
-//   const startIndex = currentPage * limit - limit;
-//   const endIndex = startIndex + limit;
-//   return items.slice(startIndex, endIndex);
-// };
-
 /**
  * Aliases class.
  * @class Aliases
@@ -109,7 +100,7 @@ class Aliases extends Component {
       aliases: [],
       activePage: 1,
       pages: '',
-      itemsPerPage: 25,
+      itemsPerPage: 10,
     };
   }
 
@@ -137,13 +128,15 @@ class Aliases extends Component {
    * @returns {undefined}
    */
   componentDidUpdate(prevProps, prevState) {
+    const { filterQuery, filterType, createdBefore, itemsPerPage } = this.state;
     if (
-      prevProps.aliases !== this.props.aliases ||
+      prevProps.aliases.items_total !== this.props.aliases.items_total ||
       prevState.itemsPerPage !== this.state.itemsPerPage
     ) {
-      const pages = Math.round(
-        this.props.aliases.items.length / this.state.itemsPerPage,
+      const pages = Math.ceil(
+        this.props.aliases.items_total / this.state.itemsPerPage,
       );
+
       if (pages === 0 || isNaN(pages)) {
         this.setState({ pages: '' });
       } else {
@@ -151,15 +144,16 @@ class Aliases extends Component {
       }
     }
     if (
-      prevProps.aliases !== this.props.aliases ||
       prevState.activePage !== this.state.activePage ||
       prevState.itemsPerPage !== this.state.itemsPerPage
     ) {
-      // const paginatedAliases = getPaginatedData(
-      //   this.props.aliases.items,
-      //   this.state.activePage,
-      //   this.state.itemsPerPage,
-      // );
+      this.props.getAliases(getBaseUrl(this.props.pathname), {
+        query: filterQuery,
+        manual: filterType.value,
+        datetime: createdBefore,
+        batchSize: itemsPerPage === 'All' ? 999999999999 : itemsPerPage,
+        batchStart: (this.state.activePage - 1) * this.state.itemsPerPage,
+      });
     }
     if (prevState.altUrlPath !== this.state.altUrlPath) {
       if (this.state.altUrlPath.charAt(0) === '/') {
@@ -364,10 +358,10 @@ class Aliases extends Component {
 
   /**
    * Pagination change handler
-   * @method handlePaginationChange
+   * @method handlePageChange
    * @returns {undefined}
    */
-  handlePaginationChange = (e, { activePage }) => {
+  handlePageChange = (e, { activePage }) => {
     this.setState({ activePage });
   };
 
@@ -377,7 +371,7 @@ class Aliases extends Component {
    * @returns {undefined}
    */
   handleItemsPerPage = (e, { value }) => {
-    this.setState({ itemsPerPage: value });
+    this.setState({ itemsPerPage: value, activePage: 1 });
   };
 
   /**
@@ -623,7 +617,7 @@ class Aliases extends Component {
                         lastItem={null}
                         siblingRange={1}
                         totalPages={this.state.pages}
-                        onPageChange={this.handlePaginationChange}
+                        onPageChange={this.handlePageChange}
                       />
                     )}
                     <Menu.Menu
