@@ -327,11 +327,6 @@ msgstr "Non è possibile modificare il Layout per il tipo <strong>{type}</strong
 msgid "Cancel"
 msgstr "Annulla"
 
-#: components/manage/Blocks/Table/Edit
-# defaultMessage: Cell
-msgid "Cell"
-msgstr "Cella"
-
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
@@ -733,6 +728,7 @@ msgid "Distributed under the {license}."
 msgstr "Distribuito sotto {license}"
 
 #: components/manage/Blocks/Table/Edit
+#: components/manage/Blocks/Table/schema
 # defaultMessage: Add border to inner columns
 msgid "Divide each row into separate cells"
 msgstr "Dividi ogni fila in celle separate"
@@ -1042,6 +1038,7 @@ msgid "First"
 msgstr "Primo"
 
 #: components/manage/Blocks/Table/Edit
+#: components/manage/Blocks/Table/schema
 # defaultMessage: Fixed width columns
 msgid "Fixed width table cells"
 msgstr "Celle della tabella a larghezza fissata"
@@ -1137,6 +1134,7 @@ msgid "Groups are logical collections of users, such as departments and business
 msgstr "I gruppi sono raggruppamenti di utenti, come dipartimenti e unità organizzative. I gruppi non sono direttamente collegati a permessi a livello globale, per quello usiamo i ruoli e applichiamo specifici ruoli a certi gruppi. Il simbolo {plong_svg} indica che un ruolo è ereditato dall'appartenenza ad un gruppo."
 
 #: components/manage/Blocks/Table/Edit
+#: components/manage/Blocks/Table/schema
 # defaultMessage: Header cell
 msgid "Header cell"
 msgstr "Cella d'intestazione"
@@ -1493,6 +1491,7 @@ msgid "Made by {creator} on {date}. This is not a working copy anymore, but the 
 msgstr "Creato da {creator} il {date}. Questa non è più una copia di lavoro, ma il contenuto principale."
 
 #: components/manage/Blocks/Table/Edit
+#: components/manage/Blocks/Table/schema
 # defaultMessage: Reduce cell padding
 msgid "Make the table compact"
 msgstr "Rendi la tabella compatta"
@@ -1982,6 +1981,7 @@ msgid "Redo"
 msgstr "Ripeti"
 
 #: components/manage/Blocks/Table/Edit
+#: components/manage/Blocks/Table/schema
 # defaultMessage: Minimalistic table design
 msgid "Reduce complexity"
 msgstr "Riduci complessità"
@@ -2503,6 +2503,7 @@ msgid "String"
 msgstr "Stringa"
 
 #: components/manage/Blocks/Table/Edit
+#: components/manage/Blocks/Table/schema
 # defaultMessage: Alternate row background color
 msgid "Stripe alternate rows with color"
 msgstr "Colore delle righe alternato"
@@ -2540,11 +2541,6 @@ msgstr "Sommario"
 # defaultMessage: Switch to
 msgid "Switch to"
 msgstr "Vai a"
-
-#: components/manage/Blocks/Table/Edit
-# defaultMessage: Table
-msgid "Table"
-msgstr "Tabella"
 
 #: components/manage/Blocks/ToC/View
 # defaultMessage: Table of Contents

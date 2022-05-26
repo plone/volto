@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-05-22T09:33:42.265Z\n"
+"POT-Creation-Date: 2022-05-26T15:29:41.679Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -327,11 +327,6 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Cancel
 msgid "Cancel"
-msgstr ""
-
-#: components/manage/Blocks/Table/Edit
-# defaultMessage: Cell
-msgid "Cell"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSizeWidget
@@ -735,6 +730,7 @@ msgid "Distributed under the {license}."
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
+#: components/manage/Blocks/Table/schema
 # defaultMessage: Add border to inner columns
 msgid "Divide each row into separate cells"
 msgstr ""
@@ -1044,6 +1040,7 @@ msgid "First"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
+#: components/manage/Blocks/Table/schema
 # defaultMessage: Fixed width columns
 msgid "Fixed width table cells"
 msgstr ""
@@ -1139,6 +1136,7 @@ msgid "Groups are logical collections of users, such as departments and business
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
+#: components/manage/Blocks/Table/schema
 # defaultMessage: Header cell
 msgid "Header cell"
 msgstr ""
@@ -1495,6 +1493,7 @@ msgid "Made by {creator} on {date}. This is not a working copy anymore, but the 
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
+#: components/manage/Blocks/Table/schema
 # defaultMessage: Reduce cell padding
 msgid "Make the table compact"
 msgstr ""
@@ -1984,6 +1983,7 @@ msgid "Redo"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
+#: components/manage/Blocks/Table/schema
 # defaultMessage: Minimalistic table design
 msgid "Reduce complexity"
 msgstr ""
@@ -2505,6 +2505,7 @@ msgid "String"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
+#: components/manage/Blocks/Table/schema
 # defaultMessage: Alternate row background color
 msgid "Stripe alternate rows with color"
 msgstr ""
@@ -2541,11 +2542,6 @@ msgstr ""
 #: components/theme/LanguageSelector/LanguageSelector
 # defaultMessage: Switch to
 msgid "Switch to"
-msgstr ""
-
-#: components/manage/Blocks/Table/Edit
-# defaultMessage: Table
-msgid "Table"
 msgstr ""
 
 #: components/manage/Blocks/ToC/View

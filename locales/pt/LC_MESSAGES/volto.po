@@ -335,11 +335,6 @@ msgstr ""
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: components/manage/Blocks/Table/Edit
-# defaultMessage: Cell
-msgid "Cell"
-msgstr "Célula"
-
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
@@ -741,6 +736,7 @@ msgid "Distributed under the {license}."
 msgstr "Distribuído sob a licença {license}."
 
 #: components/manage/Blocks/Table/Edit
+#: components/manage/Blocks/Table/schema
 # defaultMessage: Add border to inner columns
 msgid "Divide each row into separate cells"
 msgstr "Dividir cada linha em células separadas"
@@ -1050,6 +1046,7 @@ msgid "First"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
+#: components/manage/Blocks/Table/schema
 # defaultMessage: Fixed width columns
 msgid "Fixed width table cells"
 msgstr "Células de tabela de tamanho fixo."
@@ -1145,6 +1142,7 @@ msgid "Groups are logical collections of users, such as departments and business
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
+#: components/manage/Blocks/Table/schema
 # defaultMessage: Header cell
 msgid "Header cell"
 msgstr ""
@@ -1501,6 +1499,7 @@ msgid "Made by {creator} on {date}. This is not a working copy anymore, but the 
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
+#: components/manage/Blocks/Table/schema
 # defaultMessage: Reduce cell padding
 msgid "Make the table compact"
 msgstr "Compactar a tabela"
@@ -1990,6 +1989,7 @@ msgid "Redo"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
+#: components/manage/Blocks/Table/schema
 # defaultMessage: Minimalistic table design
 msgid "Reduce complexity"
 msgstr "Reduzir complexidade"
@@ -2511,6 +2511,7 @@ msgid "String"
 msgstr "Texto"
 
 #: components/manage/Blocks/Table/Edit
+#: components/manage/Blocks/Table/schema
 # defaultMessage: Alternate row background color
 msgid "Stripe alternate rows with color"
 msgstr "Alternar cores das linhas"
@@ -2548,11 +2549,6 @@ msgstr ""
 # defaultMessage: Switch to
 msgid "Switch to"
 msgstr ""
-
-#: components/manage/Blocks/Table/Edit
-# defaultMessage: Table
-msgid "Table"
-msgstr "Tabela"
 
 #: components/manage/Blocks/ToC/View
 # defaultMessage: Table of Contents

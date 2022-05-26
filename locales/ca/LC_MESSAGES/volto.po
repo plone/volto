@@ -336,11 +336,6 @@ msgstr "No es pot editar el disseny per al tipus de contingut <strong>{type}</st
 msgid "Cancel"
 msgstr "Cancel·lar"
 
-#: components/manage/Blocks/Table/Edit
-# defaultMessage: Cell
-msgid "Cell"
-msgstr "Cèl·lula"
-
 #: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
@@ -742,6 +737,7 @@ msgid "Distributed under the {license}."
 msgstr "Distribuït sota la {license}."
 
 #: components/manage/Blocks/Table/Edit
+#: components/manage/Blocks/Table/schema
 # defaultMessage: Add border to inner columns
 msgid "Divide each row into separate cells"
 msgstr "Afegeix una vora a les columnes interiors"
@@ -1051,6 +1047,7 @@ msgid "First"
 msgstr "Primer"
 
 #: components/manage/Blocks/Table/Edit
+#: components/manage/Blocks/Table/schema
 # defaultMessage: Fixed width columns
 msgid "Fixed width table cells"
 msgstr "Columnes d'amplada fixa"
@@ -1146,6 +1143,7 @@ msgid "Groups are logical collections of users, such as departments and business
 msgstr "Els grups són col·leccions lògiques d'usuaris, com ara departaments i unitats de negoci. Els grups no estan directament relacionats amb els permisos a nivell global, normalment feu servir Rols per a això, i deixeu que determinats Grups tinguin un paper determinat. El símbol{plone_svg}indica un rol heretat de la pertinença a un altre grup."
 
 #: components/manage/Blocks/Table/Edit
+#: components/manage/Blocks/Table/schema
 # defaultMessage: Header cell
 msgid "Header cell"
 msgstr "Cel·la de capçalera"
@@ -1502,6 +1500,7 @@ msgid "Made by {creator} on {date}. This is not a working copy anymore, but the 
 msgstr "Fet per {creator} el {date}. Aquesta ja no és una còpia de treball, sinó el contingut principal."
 
 #: components/manage/Blocks/Table/Edit
+#: components/manage/Blocks/Table/schema
 # defaultMessage: Reduce cell padding
 msgid "Make the table compact"
 msgstr "Redueix el farciment cel·lular"
@@ -1991,6 +1990,7 @@ msgid "Redo"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
+#: components/manage/Blocks/Table/schema
 # defaultMessage: Minimalistic table design
 msgid "Reduce complexity"
 msgstr "Disseny de taula minimalista"
@@ -2512,6 +2512,7 @@ msgid "String"
 msgstr "Cadena"
 
 #: components/manage/Blocks/Table/Edit
+#: components/manage/Blocks/Table/schema
 # defaultMessage: Alternate row background color
 msgid "Stripe alternate rows with color"
 msgstr "Color de fons alternatiu de la fila"
@@ -2549,11 +2550,6 @@ msgstr "Resum"
 # defaultMessage: Switch to
 msgid "Switch to"
 msgstr "Canvia a"
-
-#: components/manage/Blocks/Table/Edit
-# defaultMessage: Table
-msgid "Table"
-msgstr "Taula"
 
 #: components/manage/Blocks/ToC/View
 # defaultMessage: Table of Contents
