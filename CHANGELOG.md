@@ -7,12 +7,19 @@
 ### Feature
 
 - Updated Brazilian Portuguese translation @ericof
+- Forward `HTTP Range` headers to the backend. @mamico
 
 ### Bugfix
 
 ### Internal
 
 ### Documentation
+
+## 16.0.0-alpha.5 (2022-05-25)
+
+### Bugfix
+
+- Fix regression, compound lang names (eg. `pt-BR`) no longer working @sneridagh
 
 ## 16.0.0-alpha.4 (2022-05-22)
 
