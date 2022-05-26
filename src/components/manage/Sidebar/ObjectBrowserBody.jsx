@@ -233,7 +233,13 @@ class ObjectBrowserBody extends Component {
   };
 
   onSelectItem = (item) => {
-    const url = item['@id'];
+    let url = item['@id'];
+    if (config.settings.downloadableObjects.includes(item['@type'])) {
+      url = `${url}/@@download/file`;
+    }
+    if (config.settings.viewableInBrowserObjects.includes(item['@type'])) {
+      url = `${url}/@@display-file/file`;
+    }
     const { block, data, mode, dataName, onChangeBlock } = this.props;
 
     const updateState = (mode) => {

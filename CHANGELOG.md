@@ -8,6 +8,7 @@
 
 - Updated Brazilian Portuguese translation @ericof
 - Forward `HTTP Range` headers to the backend. @mamico
+- Handle downloadableObjects and viewableInBrowserObjects in links with objectBrowser. @giuliaghisini
 
 ### Bugfix
 
@@ -32,7 +33,7 @@
 
 - Added viewableInBrowserObjects setting to use in alternative to downloadableObjects, if you want to view file in browser intstead downloading. @giuliaghisini
 - Disable already chosen criteria in querystring widget @kreafox
-- Added X-Forwarded-* headers to superagent requests. @mamico
+- Added X-Forwarded-\* headers to superagent requests. @mamico
 
 ### Bugfix
 
