@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Forward `HTTP Range` headers to the backend. @mamico
+
 ### Bugfix
 
 ### Internal
