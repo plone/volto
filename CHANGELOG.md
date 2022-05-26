@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- fixed TokenWidget getVocabulary subrequest. @giuliaghisini
+
 ### Internal
 
 ### Documentation

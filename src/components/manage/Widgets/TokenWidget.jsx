@@ -128,7 +128,7 @@ class TokenWidget extends Component {
       this.props.getVocabulary({
         vocabNameOrURL: this.props.vocabBaseUrl,
         size: -1,
-        subrequest: this.props.lang,
+        subrequest: this.props.intl.locale,
       });
     }
   }
