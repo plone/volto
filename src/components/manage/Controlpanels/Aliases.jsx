@@ -82,7 +82,7 @@ class Aliases extends Component {
    * Constructor
    * @method constructor
    * @param {Object} props Component properties
-   * @constructs Comments
+   * @constructs Aliases
    */
   constructor(props) {
     super(props);
@@ -103,8 +103,6 @@ class Aliases extends Component {
       itemsPerPage: 10,
     };
   }
-
-  // query, manual, datetime, batchSize, batchStart
 
   /**
    * Component did mount
@@ -235,43 +233,43 @@ class Aliases extends Component {
    * @method onCancel
    * @returns {undefined}
    */
-  onCancel = () => {
+  onCancel() {
     this.props.history.push(getParentUrl(this.props.pathname));
-  };
+  }
 
   /**
    * Select filter type handler
    * @method handleSelectFilterType
    * @returns {undefined}
    */
-  handleSelectFilterType = (type) => {
+  handleSelectFilterType(type) {
     this.setState({ filterType: type });
-  };
+  }
 
   /**
    * Select filter type handler
    * @method handleFilterQueryChange
    * @returns {undefined}
    */
-  handleFilterQueryChange = (query) => {
+  handleFilterQueryChange(query) {
     this.setState({ filterQuery: query });
-  };
+  }
 
   /**
    * Select Creation date handler
    * @method handleCreateDate
    * @returns {undefined}
    */
-  handleCreateDate = (date) => {
+  handleCreateDate(date) {
     this.setState({ createdBefore: date });
-  };
+  }
 
   /**
    * Select Creation date handler
    * @method handleSubmitFilter
    * @returns {undefined}
    */
-  handleSubmitFilter = () => {
+  handleSubmitFilter() {
     const { filterQuery, filterType, createdBefore, itemsPerPage } = this.state;
     this.props.getAliases(getBaseUrl(this.props.pathname), {
       query: filterQuery,
@@ -279,32 +277,32 @@ class Aliases extends Component {
       datetime: createdBefore,
       batchSize: itemsPerPage,
     });
-  };
+  }
 
   /**
    * Alternative url handler
    * @method handleAltUrlChange
    * @returns {undefined}
    */
-  handleAltUrlChange = (url) => {
+  handleAltUrlChange(url) {
     this.setState({ altUrlPath: url });
-  };
+  }
 
   /**
    * Target url handler
    * @method handleTargetUrlChange
    * @returns {undefined}
    */
-  handleTargetUrlChange = (url) => {
+  handleTargetUrlChange(url) {
     this.setState({ targetUrlPath: url });
-  };
+  }
 
   /**
    * New alias submit handler
    * @method handleSubmitAlias
    * @returns {undefined}
    */
-  handleSubmitAlias = () => {
+  handleSubmitAlias() {
     if (this.state.isAltUrlCorrect && this.state.isTargetUrlCorrect) {
       this.props.addAliases('', {
         items: [
@@ -316,14 +314,14 @@ class Aliases extends Component {
       });
       this.setState({ altUrlPath: '', targetUrlPath: '' });
     }
-  };
+  }
 
   /**
    * Check to-remove aliases handler
    * @method handleSubmitAlias
    * @returns {undefined}
    */
-  handleCheckAlias = (alias) => {
+  handleCheckAlias(alias) {
     const aliases = this.state.aliasesToRemove;
     if (aliases.includes(alias)) {
       const index = aliases.indexOf(alias);
@@ -337,7 +335,7 @@ class Aliases extends Component {
         aliasesToRemove: [...this.state.aliasesToRemove, alias],
       });
     }
-  };
+  }
 
   /**
    * Remove aliases handler
@@ -361,18 +359,18 @@ class Aliases extends Component {
    * @method handlePageChange
    * @returns {undefined}
    */
-  handlePageChange = (e, { activePage }) => {
+  handlePageChange(e, { activePage }) {
     this.setState({ activePage });
-  };
+  }
 
   /**
    * Items per page change handler
    * @method handleItemsPerPage
    * @returns {undefined}
    */
-  handleItemsPerPage = (e, { value }) => {
+  handleItemsPerPage(e, { value }) {
     this.setState({ itemsPerPage: value, activePage: 1 });
-  };
+  }
 
   /**
    * Render method.
@@ -457,7 +455,7 @@ class Aliases extends Component {
                   </Form.Field>
                   <Button
                     primary
-                    onClick={this.handleSubmitAlias}
+                    onClick={() => this.handleSubmitAlias()}
                     disabled={
                       !this.state.isAltUrlCorrect ||
                       !this.state.isTargetUrlCorrect ||
@@ -532,7 +530,7 @@ class Aliases extends Component {
                       }}
                     />
                   </Form.Field>
-                  <Button onClick={this.handleSubmitFilter} primary>
+                  <Button onClick={() => this.handleSubmitFilter()} primary>
                     Filter
                   </Button>
                   <Header size="small">
@@ -617,7 +615,7 @@ class Aliases extends Component {
                         lastItem={null}
                         siblingRange={1}
                         totalPages={this.state.pages}
-                        onPageChange={this.handlePageChange}
+                        onPageChange={(e, o) => this.handlePageChange(e, o)}
                       />
                     )}
                     <Menu.Menu
@@ -637,7 +635,7 @@ class Aliases extends Component {
                           key={size}
                           value={size}
                           active={size === this.state.itemsPerPage}
-                          onClick={this.handleItemsPerPage}
+                          onClick={(e, o) => this.handleItemsPerPage(e, o)}
                         >
                           {size}
                         </Menu.Item>

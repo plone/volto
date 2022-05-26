@@ -71,7 +71,7 @@ class Aliases extends Component {
    * Constructor
    * @method constructor
    * @param {Object} props Component properties
-   * @constructs Sharing
+   * @constructs Aliases
    */
   constructor(props) {
     super(props);
@@ -145,30 +145,30 @@ class Aliases extends Component {
    * @method handleAltChange
    * @returns {undefined}
    */
-  handleAltChange = (val) => {
+  handleAltChange(val) {
     this.setState({ newAlias: val });
-  };
+  }
 
   /**
    * New alias submit handler
    * @method handleSubmitAlias
    * @returns {undefined}
    */
-  handleSubmitAlias = () => {
+  handleSubmitAlias() {
     if (this.state.isAliasCorrect) {
       this.props.addAliases(getBaseUrl(this.props.pathname), {
         items: this.state.newAlias,
       });
       this.setState({ newAlias: '' });
     }
-  };
+  }
 
   /**
    * Check to-remove aliases handler
    * @method handleSubmitAlias
    * @returns {undefined}
    */
-  handleCheckAlias = (alias) => {
+  handleCheckAlias(alias) {
     const aliases = this.state.aliasesToRemove;
     if (aliases.includes(alias)) {
       const index = aliases.indexOf(alias);
@@ -182,19 +182,19 @@ class Aliases extends Component {
         aliasesToRemove: [...this.state.aliasesToRemove, alias],
       });
     }
-  };
+  }
 
   /**
    * Remove aliases handler
    * @method handleRemoveAliases
    * @returns {undefined}
    */
-  handleRemoveAliases = () => {
+  handleRemoveAliases() {
     this.props.removeAliases(getBaseUrl(this.props.pathname), {
       items: this.state.aliasesToRemove,
     });
     this.setState({ aliasesToRemove: [] });
-  };
+  }
 
   /**
    * Render method.
@@ -259,7 +259,7 @@ class Aliases extends Component {
               </Form.Field>
               <Button
                 primary
-                onClick={this.handleSubmitAlias}
+                onClick={() => this.handleSubmitAlias()}
                 disabled={
                   !this.state.isAliasCorrect ||
                   this.state.newAlias === '' ||
@@ -289,7 +289,7 @@ class Aliases extends Component {
                 </Form.Field>
               ))}
               <Button
-                onClick={this.handleRemoveAliases}
+                onClick={() => this.handleRemoveAliases()}
                 primary
                 disabled={this.state.aliasesToRemove.length === 0}
               >

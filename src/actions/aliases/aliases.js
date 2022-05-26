@@ -13,6 +13,7 @@ import {
  * Get aliases function.
  * @function getAliases
  * @param {string} url Content url.
+ * @param {Object} options Options data.
  * @returns {Object} Get aliases action.
  */
 export function getAliases(url, options) {
@@ -34,7 +35,7 @@ export function getAliases(url, options) {
  * Add alias function.
  * @function addAliases
  * @param {string} url Content url.
- * @param {string} data Alias.
+ * @param {Object} data Aliases to add data object.
  * @returns {Object} Add alias action.
  */
 export function addAliases(url, data) {
@@ -52,8 +53,8 @@ export function addAliases(url, data) {
  * Remove aliases function.
  * @function removeAliases
  * @param {string} url Content url.
- * @param {string} data Alias.
- * @returns {Object} Add alias action.
+ * @param {Object} data Aliases to remove data object.
+ * @returns {Object} Remove alias action.
  */
 export function removeAliases(url, data) {
   return {
