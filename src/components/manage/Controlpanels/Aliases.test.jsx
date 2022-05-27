@@ -1,12 +1,14 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import configureStore from 'redux-mock-store';
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 import { Provider } from 'react-intl-redux';
 
 import Aliases from './Aliases';
 import { MemoryRouter } from 'react-router';
 
-const mockStore = configureStore();
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
 
 jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),
