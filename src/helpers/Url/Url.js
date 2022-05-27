@@ -155,11 +155,12 @@ export const isCmsUi = memoize((currentPathname) => {
  */
 export function flattenHTMLToAppURL(html) {
   const { settings } = config;
+  const replacer = config.settings.prefixPath ?? '';
   return settings.internalApiPath
     ? html
-        .replace(new RegExp(settings.internalApiPath, 'g'), '')
-        .replace(new RegExp(settings.apiPath, 'g'), '')
-    : html.replace(new RegExp(settings.apiPath, 'g'), '');
+        .replace(new RegExp(settings.internalApiPath, 'g'), replacer)
+        .replace(new RegExp(settings.apiPath, 'g'), replacer)
+    : html.replace(new RegExp(settings.apiPath, 'g'), replacer);
 }
 
 /**
