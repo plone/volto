@@ -56,8 +56,8 @@ export default function aliases(state = initialState, action = {}) {
     case `${GET_ALIASES}_SUCCESS`:
       return {
         ...state,
-        items: action.result.items,
-        items_total: action.result.items_total,
+        items: action.result?.items,
+        items_total: action.result?.items_total,
         [getRequestKey(action.type)]: {
           loading: false,
           loaded: true,
@@ -71,7 +71,7 @@ export default function aliases(state = initialState, action = {}) {
         [getRequestKey(action.type)]: {
           loading: false,
           loaded: true,
-          error: action.result.failed,
+          error: action.result?.failed,
         },
       };
     case `${GET_ALIASES}_FAIL`:
