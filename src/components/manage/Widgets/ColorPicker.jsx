@@ -15,6 +15,10 @@ const ColorPickerWidget = (props) => {
 
   const intl = useIntl();
 
+  if (!props.value && props.default) {
+    props.onChange(props.id, props.default);
+  }
+
   return colors.length > 0 ? (
     <Form.Field
       inline
