@@ -576,25 +576,29 @@ describe('Blocks', () => {
   });
   describe('buildStyleClassNamesFromData', () => {
     it('Sets styles classname array according to style values', () => {
-      const styles = {
-        color: 'red',
-        backgroundColor: '#AABBCC',
+      const data = {
+        styles: {
+          color: 'red',
+          backgroundColor: '#AABBCC',
+        },
       };
-      expect(buildStyleClassNamesFromData(styles)).toEqual([
+      expect(buildStyleClassNamesFromData(data)).toEqual([
         'has--color--red',
         'has--backgroundColor--AABBCC',
       ]);
     });
     it('Sets styles classname array according to style values with nested', () => {
-      const styles = {
-        color: 'red',
-        backgroundColor: '#AABBCC',
-        nested: {
-          foo: 'white',
-          bar: 'black',
+      const data = {
+        styles: {
+          color: 'red',
+          backgroundColor: '#AABBCC',
+          nested: {
+            foo: 'white',
+            bar: 'black',
+          },
         },
       };
-      expect(buildStyleClassNamesFromData(styles)).toEqual([
+      expect(buildStyleClassNamesFromData(data)).toEqual([
         'has--color--red',
         'has--backgroundColor--AABBCC',
         'has--nested--foo--white',
@@ -602,15 +606,17 @@ describe('Blocks', () => {
       ]);
     });
     it('Sets styles classname array according to style values with nested and colors', () => {
-      const styles = {
-        color: 'red',
-        backgroundColor: '#AABBCC',
-        nested: {
-          foo: '#fff',
-          bar: '#000',
+      const data = {
+        styles: {
+          color: 'red',
+          backgroundColor: '#AABBCC',
+          nested: {
+            foo: '#fff',
+            bar: '#000',
+          },
         },
       };
-      expect(buildStyleClassNamesFromData(styles)).toEqual([
+      expect(buildStyleClassNamesFromData(data)).toEqual([
         'has--color--red',
         'has--backgroundColor--AABBCC',
         'has--nested--foo--fff',
@@ -619,13 +625,38 @@ describe('Blocks', () => {
     });
 
     it('Sets styles classname array according to style values with int values', () => {
-      const styles = {
-        color: 'red',
-        borderRadius: 8,
+      const data = {
+        styles: {
+          color: 'red',
+          borderRadius: 8,
+        },
       };
-      expect(buildStyleClassNamesFromData(styles)).toEqual([
+      expect(buildStyleClassNamesFromData(data)).toEqual([
         'has--color--red',
         'has--borderRadius--8',
+      ]);
+    });
+
+    it('Sets styles classname array according to style with nested values and align present', () => {
+      const data = {
+        align: 'wide',
+        size: 'l',
+        styles: {
+          color: 'red',
+          backgroundColor: '#AABBCC',
+          nested: {
+            foo: '#fff',
+            bar: '#000',
+          },
+        },
+      };
+      expect(buildStyleClassNamesFromData(data)).toEqual([
+        'has--align--wide',
+        'has--size--l',
+        'has--color--red',
+        'has--backgroundColor--AABBCC',
+        'has--nested--foo--fff',
+        'has--nested--bar--000',
       ]);
     });
   });
