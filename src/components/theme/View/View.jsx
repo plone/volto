@@ -11,6 +11,7 @@ import { Redirect } from 'react-router-dom';
 import { Portal } from 'react-portal';
 import { injectIntl } from 'react-intl';
 import qs from 'query-string';
+import withContent from '../App/withContent';
 
 import {
   ContentMetadataTags,
@@ -268,11 +269,12 @@ class View extends Component {
 
 export default compose(
   injectIntl,
+  withContent,
   connect(
     (state, props) => ({
       actions: state.actions.actions,
       token: state.userSession.token,
-      content: state.content.data,
+      // content: state.content.data,
       error: state.content.get.error,
       apiError: state.apierror.error,
       connectionRefused: state.apierror.connectionRefused,

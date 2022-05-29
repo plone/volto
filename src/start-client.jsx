@@ -6,7 +6,6 @@ import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
-import { ReduxAsyncConnect } from '@plone/volto/helpers/AsyncConnect';
 import { loadableReady } from '@loadable/component';
 import { CookiesProvider } from 'react-cookie';
 import debug from 'debug';
@@ -18,6 +17,8 @@ import { Api, persistAuthToken, ScrollToTop } from '@plone/volto/helpers';
 
 import * as Sentry from '@sentry/browser';
 import initSentry from '@plone/volto/sentry';
+import { renderRoutes } from 'react-router-config';
+import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 
 export const history = createBrowserHistory();
 
@@ -55,14 +56,19 @@ export default () => {
   }
 
   loadableReady(() => {
+    const dehydratedState = window.__REACT_QUERY_STATE__;
+    const queryClient = new QueryClient();
+
     hydrate(
       <CookiesProvider>
         <Provider store={store}>
           <IntlProvider onError={reactIntlErrorHandler}>
             <ConnectedRouter history={history}>
-              <ScrollToTop>
-                <ReduxAsyncConnect routes={routes} helpers={api} />
-              </ScrollToTop>
+              <QueryClientProvider client={queryClient}>
+                <Hydrate state={dehydratedState}>
+                  <ScrollToTop>{renderRoutes(routes)}</ScrollToTop>
+                </Hydrate>
+              </QueryClientProvider>
             </ConnectedRouter>
           </IntlProvider>
         </Provider>

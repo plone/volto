@@ -339,6 +339,7 @@
     "react-intl-redux": "2.2.0",
     "react-medium-image-zoom": "3.0.15",
     "react-portal": "4.2.1",
+    "react-query": "3.39.0",
     "react-redux": "7.2.4",
     "react-router": "5.2.0",
     "react-router-config": "5.1.1",

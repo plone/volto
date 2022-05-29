@@ -20,6 +20,7 @@ import config from '@plone/volto/registry';
 import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
 import { visitBlocks } from '@plone/volto/helpers/Blocks/Blocks';
 import { injectIntl } from 'react-intl';
+import withContent from './withContent';
 
 import Error from '@plone/volto/error';
 
@@ -47,6 +48,7 @@ import WorkingCopyToastsFactory from '@plone/volto/components/manage/WorkingCopy
 import LockingToastsFactory from '@plone/volto/components/manage/LockingToastsFactory/LockingToastsFactory';
 
 import * as Sentry from '@sentry/browser';
+import { withRouter } from 'react-router';
 
 /**
  * @export
@@ -144,6 +146,7 @@ class App extends Component {
           })}
         />
         <SkipLinks />
+        {/* <h1>{this.props.content?.title}</h1> */}
         <Header pathname={path} />
         <Breadcrumbs pathname={path} />
         <MultilingualRedirector
@@ -241,40 +244,42 @@ export const fetchContent = async ({ store, location }) => {
 };
 
 export default compose(
-  asyncConnect([
-    {
-      key: 'breadcrumbs',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ && dispatch(getBreadcrumbs(getBaseUrl(location.pathname))),
-    },
-    {
-      key: 'content',
-      promise: ({ location, store }) =>
-        __SERVER__ && fetchContent({ store, location }),
-    },
-    {
-      key: 'navigation',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ &&
-        dispatch(
-          getNavigation(
-            getBaseUrl(location.pathname),
-            config.settings.navDepth,
-          ),
-        ),
-    },
-    {
-      key: 'types',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ && dispatch(getTypes(getBaseUrl(location.pathname))),
-    },
-    {
-      key: 'workflow',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
-    },
-  ]),
+  // asyncConnect([
+  //   {
+  //     key: 'breadcrumbs',
+  //     promise: ({ location, store: { dispatch } }) =>
+  //       __SERVER__ && dispatch(getBreadcrumbs(getBaseUrl(location.pathname))),
+  //   },
+  //   {
+  //     key: 'content',
+  //     promise: ({ location, store }) =>
+  //       __SERVER__ && fetchContent({ store, location }),
+  //   },
+  //   {
+  //     key: 'navigation',
+  //     promise: ({ location, store: { dispatch } }) =>
+  //       __SERVER__ &&
+  //       dispatch(
+  //         getNavigation(
+  //           getBaseUrl(location.pathname),
+  //           config.settings.navDepth,
+  //         ),
+  //       ),
+  //   },
+  //   {
+  //     key: 'types',
+  //     promise: ({ location, store: { dispatch } }) =>
+  //       __SERVER__ && dispatch(getTypes(getBaseUrl(location.pathname))),
+  //   },
+  //   {
+  //     key: 'workflow',
+  //     promise: ({ location, store: { dispatch } }) =>
+  //       __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
+  //   },
+  // ]),
   injectIntl,
+  withRouter,
+  withContent,
   connect(
     (state, props) => ({
       pathname: props.location.pathname,
@@ -282,7 +287,7 @@ export default compose(
       userId: state.userSession.token
         ? jwtDecode(state.userSession.token).sub
         : '',
-      content: state.content.data,
+      // content: state.content.data,
       apiError: state.apierror.error,
       connectionRefused: state.apierror.connectionRefused,
     }),
