@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- Rename `src/components/manage/Widgets/ColorPicker.jsx` component to `src/components/manage/Widgets/ColorPickerWidget.jsx` @sneridagh
+
 ### Feature
 
 - Updated Brazilian Portuguese translation @ericof
