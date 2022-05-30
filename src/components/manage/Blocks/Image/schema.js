@@ -46,7 +46,10 @@ export function ImageSchema({ formData, intl }) {
       {
         id: 'default',
         title: 'Default',
-        fields: [...(formData.url ? ['url', 'alt', 'align', 'size'] : [])],
+        fields: [
+          'preview',
+          ...(formData.url ? ['url', 'alt', 'align', 'size'] : []),
+        ],
       },
       ...(formData.url
         ? [
@@ -59,6 +62,11 @@ export function ImageSchema({ formData, intl }) {
         : []),
     ],
     properties: {
+      preview: {
+        widget: 'preview_image',
+        previewField: 'url',
+        formData,
+      },
       url: {
         title: intl.formatMessage(messages.Source),
         widget: 'url',

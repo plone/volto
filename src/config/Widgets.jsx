@@ -6,6 +6,7 @@ import loadable from '@loadable/component';
 import AlignWidget from '@plone/volto/components/manage/Widgets/AlignWidget';
 import ArrayWidget from '@plone/volto/components/manage/Widgets/ArrayWidget';
 import CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidget';
+import PreviewImageWidget from '@plone/volto/components/manage/Widgets/PreviewImageWidget';
 import FileWidget from '@plone/volto/components/manage/Widgets/FileWidget';
 import IdWidget from '@plone/volto/components/manage/Widgets/IdWidget';
 import PasswordWidget from '@plone/volto/components/manage/Widgets/PasswordWidget';
@@ -72,6 +73,7 @@ export const widgetMapping = {
     object_list: ObjectListWidget,
     vocabularyterms: VocabularyTermsWidget,
     image_size: ImageSizeWidget,
+    preview_image: PreviewImageWidget,
     select_querystring_field: SelectMetadataWidget,
     autocomplete: SelectAutoComplete,
     color_picker: ColorPickerWidget,
