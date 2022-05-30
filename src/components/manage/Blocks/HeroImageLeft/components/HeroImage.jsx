@@ -34,7 +34,7 @@ const HeroImage = ({
           className="hero-image"
           src={`${flattenToAppURL(data.url)}/@@images/image`}
           alt=""
-          loading="lazy"
+          loading={isEditMode ? 'eager' : 'lazy'}
         />
       ) : (
         isEditMode && (
