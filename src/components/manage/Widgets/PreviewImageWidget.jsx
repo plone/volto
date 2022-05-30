@@ -18,52 +18,6 @@ import { FormFieldWrapper, Icon } from '@plone/volto/components';
 import UrlWidget from '@plone/volto/components/manage/Widgets/UrlWidget';
 import { stubTrue } from 'lodash';
 
-const messages = defineMessages({
-  Image: {
-    id: 'Image',
-    defaultMessage: 'Image',
-  },
-  Origin: {
-    id: 'Origin',
-    defaultMessage: 'Origin',
-  },
-  AltText: {
-    id: 'Alt text',
-    defaultMessage: 'Alt text',
-  },
-  AltTextHint: {
-    id: 'Alt text hint',
-    defaultMessage: 'Leave empty if the image is purely decorative.',
-  },
-  AltTextHintLinkText: {
-    id: 'Alt text hint link text',
-    defaultMessage: 'Describe the purpose of the image.',
-  },
-  Align: {
-    id: 'Alignment',
-    defaultMessage: 'Alignment',
-  },
-  LinkTo: {
-    id: 'Link to',
-    defaultMessage: 'Link to',
-  },
-  openLinkInNewTab: {
-    id: 'Open in a new tab',
-    defaultMessage: 'Open in a new tab',
-  },
-  NoImageSelected: {
-    id: 'No image selected',
-    defaultMessage: 'No image selected',
-  },
-  externalURL: {
-    id: 'External URL',
-    defaultMessage: 'External URL',
-  },
-  size: {
-    id: 'Size',
-    defaultMessage: 'Size',
-  },
-});
 const thumbUrl = (url, preview_size) =>
   `${flattenToAppURL(url)}/@@images/image/${preview_size}`;
 
@@ -77,10 +31,21 @@ const previewPlaceholderSVG = (type) => {
       return imageSVG;
   }
 };
-const PreviewImageWidget = (props) => {
-  // Can show a preview of uploaded image.
-  // If there's no uploaded image, shows a placeholder
 
+/** Widget to show preview of images/block
+ *
+ *  Can show a preview of uploaded image in the sidebar
+ *  If there's no previewField image, it shows a placeholder
+ *
+ * ```jsx
+ * {
+ *  previewField: 'url',
+ *  widget: 'preview_image',
+ * formData: formData // current BlockData
+ * }
+ * ```
+ */
+const PreviewImageWidget = (props) => {
   const {
     preview_size = 'mini',
     formData: blockData = {},
