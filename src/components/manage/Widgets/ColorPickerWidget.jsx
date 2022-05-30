@@ -20,9 +20,8 @@ const ColorPickerWidget = (props) => {
     if (!props.value && props.default) {
       props.onChange(props.id, props.default);
     }
-    // I really only want it on "component mount"
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    // Yes, this is correct.
+  });
 
   return colors.length > 0 ? (
     <Form.Field
