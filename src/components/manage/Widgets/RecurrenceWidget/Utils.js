@@ -42,8 +42,8 @@ export const toISOString = (date) => {
   return date.toISOString().split('T')[0];
 };
 
-export const rrulei18n = (intl, moment) => {
-  moment.locale(intl.locale);
+export const rrulei18n = (intl, moment, lang) => {
+  moment.locale(lang);
 
   const messages = defineMessages({
     every: { id: 'rrule_every', defaultMessage: 'every' },

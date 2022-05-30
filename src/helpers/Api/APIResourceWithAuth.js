@@ -5,6 +5,7 @@
 
 import superagent from 'superagent';
 import config from '@plone/volto/registry';
+import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
 
 /**
  * Get a resource image/file with authenticated (if token exist) API headers
@@ -33,5 +34,6 @@ export const getAPIResourceWithAuth = (req) =>
     if (authToken) {
       request.set('Authorization', `Bearer ${authToken}`);
     }
+    request.use(addHeadersFactory(req));
     request.then(resolve).catch(reject);
   });
