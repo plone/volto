@@ -53,6 +53,10 @@ import SearchBlockEdit from '@plone/volto/components/manage/Blocks/Search/Search
 import RightColumnFacets from '@plone/volto/components/manage/Blocks/Search/layout/RightColumnFacets';
 import LeftColumnFacets from '@plone/volto/components/manage/Blocks/Search/layout/LeftColumnFacets';
 import TopSideFacets from '@plone/volto/components/manage/Blocks/Search/layout/TopSideFacets';
+
+import HeroImageLeftTemplate from '@plone/volto/components/manage/Blocks/HeroImageLeft/layout/HeroImageLeftTemplate';
+import HeroImageRightTemplate from '@plone/volto/components/manage/Blocks/HeroImageLeft/layout/HeroImageRightTemplate';
+
 import {
   SelectFacet,
   CheckboxFacet,
@@ -152,6 +156,15 @@ defineMessages({
   facetsTopSide: {
     id: 'Facets on top',
     defaultMessage: 'Facets on top',
+  },
+  // Hero block variations
+  heroImageLeft: {
+    id: 'Image on left side',
+    defaultMessage: 'Image on left side',
+  },
+  heroImageRight: {
+    id: 'Image on right side',
+    defaultMessage: 'Image on right side',
   },
 });
 
@@ -341,8 +354,21 @@ const blocksConfig = {
       addPermission: [],
       view: [],
     },
+    variations: [
+      {
+        id: 'heroImageLeft',
+        title: 'Image on left side',
+        view: HeroImageLeftTemplate,
+        isDefault: true,
+      },
+      {
+        id: 'hereImageRight',
+        title: 'Image on right side',
+        view: HeroImageRightTemplate,
+        isDefault: false,
+      },
+    ],
   },
-
   maps: {
     id: 'maps',
     title: 'Maps',

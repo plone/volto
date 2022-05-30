@@ -5,36 +5,21 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { flattenToAppURL } from '@plone/volto/helpers';
-import { LinkMore } from '@plone/volto/components';
 import { withBlockExtensions } from '@plone/volto/helpers';
+import { Hero } from '@plone/volto/components';
 
 /**
  * View image block class.
  * @class View
  * @extends Component
  */
-export const View = ({ data }) => (
-  <div className="block hero">
-    <div className="block-inner-wrapper">
-      {data.url && (
-        <img
-          src={`${flattenToAppURL(data.url)}/@@images/image`}
-          alt=""
-          className="hero-image"
-          loading="lazy"
-        />
-      )}
-      <div className="hero-body">
-        <div className="hero-text">
-          {data.title && <h1>{data.title}</h1>}
-          {data.description && <p>{data.description}</p>}
-        </div>
-        <LinkMore data={data} />
-      </div>
+export const View = (props) => {
+  return (
+    <div className="block hero">
+      <Hero {...props}></Hero>
     </div>
-  </div>
-);
+  );
+};
 
 /**
  * Property types.
@@ -43,6 +28,8 @@ export const View = ({ data }) => (
  */
 View.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
+  isEditMode: PropTypes.bool,
+  variation: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default withBlockExtensions(View);
