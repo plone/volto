@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
 import { Grid, Button } from 'semantic-ui-react';
@@ -14,6 +15,14 @@ const ColorPickerWidget = (props) => {
   const { id, title, required, value, onChange, colors, className } = props;
 
   const intl = useIntl();
+
+  React.useEffect(() => {
+    if (!props.value && props.default) {
+      props.onChange(props.id, props.default);
+    }
+    // I really only want it on "component mount"
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return colors.length > 0 ? (
     <Form.Field

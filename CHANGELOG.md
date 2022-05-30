@@ -4,10 +4,13 @@
 
 ### Breaking
 
+- Rename `src/components/manage/Widgets/ColorPicker.jsx` component to `src/components/manage/Widgets/ColorPickerWidget.jsx` @sneridagh
+
 ### Feature
 
 - Updated Brazilian Portuguese translation @ericof
 - Forward `HTTP Range` headers to the backend. @mamico
+- Add default value to color picker, if `default` is present in the widget schema. @sneridagh
 
 ### Bugfix
 
