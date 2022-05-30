@@ -14,6 +14,8 @@
 
 ### Bugfix
 
+- fix TokenWidget choices when editing a recently created content. @giuliaghisini
+
 ### Internal
 
 ### Documentation
@@ -35,7 +37,7 @@
 
 - Added viewableInBrowserObjects setting to use in alternative to downloadableObjects, if you want to view file in browser intstead downloading. @giuliaghisini
 - Disable already chosen criteria in querystring widget @kreafox
-- Added X-Forwarded-* headers to superagent requests. @mamico
+- Added X-Forwarded-\* headers to superagent requests. @mamico
 
 ### Bugfix
 
