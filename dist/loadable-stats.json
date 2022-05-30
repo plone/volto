@@ -2,9 +2,9 @@
   "errors": [],
   "warnings": [],
   "version": "4.43.0",
-  "hash": "cca629120e94bd4406e0",
+  "hash": "21f3d2eef0c7077c4cdf",
   "publicPath": "/",
-  "outputPath": "/Users/sneridagh/Development/plone/volto/build/public",
+  "outputPath": "/Users/sneridagh/Development/plone/volto2/build/public",
   "assetsByChunkName": {
     "react-select": [
       "static/js/react-select.43b5407c.chunk.js",
@@ -15,9 +15,9 @@
       "static/js/moment.dfd83abb.chunk.js.map"
     ],
     "client": [
-      "static/css/client.c4606ce0.chunk.css",
-      "static/js/client.c4606ce0.chunk.js",
-      "static/js/client.c4606ce0.chunk.js.map"
+      "static/css/client.ad7c8e0b.chunk.css",
+      "static/js/client.ad7c8e0b.chunk.js",
+      "static/js/client.ad7c8e0b.chunk.js.map"
     ],
     "draft-js-lib-isSoftNewlineEvent": [
       "static/js/draft-js-lib-isSoftNewlineEvent.ad4b1307.chunk.js",
@@ -167,7 +167,7 @@
       "emitted": false
     },
     {
-      "name": "static/css/client.c4606ce0.chunk.css",
+      "name": "static/css/client.ad7c8e0b.chunk.css",
       "size": 128135,
       "chunks": [
         7
@@ -181,7 +181,7 @@
       "emitted": false
     },
     {
-      "name": "static/css/client.c4606ce0.chunk.css.map",
+      "name": "static/css/client.ad7c8e0b.chunk.css.map",
       "size": 228346,
       "chunks": [],
       "chunkNames": [],
@@ -1019,8 +1019,8 @@
       "emitted": false
     },
     {
-      "name": "static/js/client.c4606ce0.chunk.js",
-      "size": 893165,
+      "name": "static/js/client.ad7c8e0b.chunk.js",
+      "size": 893174,
       "chunks": [
         7
       ],
@@ -1033,8 +1033,8 @@
       "emitted": false
     },
     {
-      "name": "static/js/client.c4606ce0.chunk.js.map",
-      "size": 2336794,
+      "name": "static/js/client.ad7c8e0b.chunk.js.map",
+      "size": 2336818,
       "chunks": [
         7
       ],
@@ -1369,9 +1369,9 @@
         "static/css/14.28a992d7.chunk.css",
         "static/js/14.28a992d7.chunk.js",
         "static/js/14.28a992d7.chunk.js.map",
-        "static/css/client.c4606ce0.chunk.css",
-        "static/js/client.c4606ce0.chunk.js",
-        "static/js/client.c4606ce0.chunk.js.map"
+        "static/css/client.ad7c8e0b.chunk.css",
+        "static/js/client.ad7c8e0b.chunk.js",
+        "static/js/client.ad7c8e0b.chunk.js.map"
       ],
       "children": {},
       "childAssets": {}
@@ -1390,9 +1390,9 @@
         "static/css/14.28a992d7.chunk.css",
         "static/js/14.28a992d7.chunk.js",
         "static/js/14.28a992d7.chunk.js.map",
-        "static/css/client.c4606ce0.chunk.css",
-        "static/js/client.c4606ce0.chunk.js",
-        "static/js/client.c4606ce0.chunk.js.map"
+        "static/css/client.ad7c8e0b.chunk.css",
+        "static/js/client.ad7c8e0b.chunk.js",
+        "static/js/client.ad7c8e0b.chunk.js.map"
       ],
       "children": {},
       "childAssets": {}
@@ -1860,7 +1860,7 @@
       "errors": [],
       "warnings": [],
       "publicPath": "/",
-      "outputPath": "/Users/sneridagh/Development/plone/volto/build/public",
+      "outputPath": "/Users/sneridagh/Development/plone/volto2/build/public",
       "assetsByChunkName": {},
       "assets": [],
       "filteredAssets": 0,
@@ -1902,7 +1902,7 @@
       "errors": [],
       "warnings": [],
       "publicPath": "/",
-      "outputPath": "/Users/sneridagh/Development/plone/volto/build/public",
+      "outputPath": "/Users/sneridagh/Development/plone/volto2/build/public",
       "assetsByChunkName": {},
       "assets": [],
       "filteredAssets": 0,
@@ -1944,7 +1944,7 @@
       "errors": [],
       "warnings": [],
       "publicPath": "/",
-      "outputPath": "/Users/sneridagh/Development/plone/volto/build/public",
+      "outputPath": "/Users/sneridagh/Development/plone/volto2/build/public",
       "assetsByChunkName": {},
       "assets": [],
       "filteredAssets": 0,
@@ -1986,7 +1986,7 @@
       "errors": [],
       "warnings": [],
       "publicPath": "/",
-      "outputPath": "/Users/sneridagh/Development/plone/volto/build/public",
+      "outputPath": "/Users/sneridagh/Development/plone/volto2/build/public",
       "assetsByChunkName": {},
       "assets": [],
       "filteredAssets": 0,
@@ -2028,7 +2028,7 @@
       "errors": [],
       "warnings": [],
       "publicPath": "/",
-      "outputPath": "/Users/sneridagh/Development/plone/volto/build/public",
+      "outputPath": "/Users/sneridagh/Development/plone/volto2/build/public",
       "assetsByChunkName": {},
       "assets": [],
       "filteredAssets": 0,
