@@ -1,22 +1,14 @@
 import { Segment } from 'semantic-ui-react';
 
-import { defineMessages, FormattedMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import React from 'react';
-import { useSelector } from 'react-redux';
-import {
-  flattenToAppURL,
-  isInternalURL,
-  blockHasValue,
-  getBlocksFieldname,
-  getBlocksLayoutFieldname,
-} from '@plone/volto/helpers';
+import PropTypes from 'prop-types';
 
-import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
+import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
+
 import imageSVG from '@plone/volto/icons/image.svg';
 import videoSVG from '@plone/volto/icons/videocamera.svg';
 import { FormFieldWrapper, Icon } from '@plone/volto/components';
-import UrlWidget from '@plone/volto/components/manage/Widgets/UrlWidget';
-import { stubTrue } from 'lodash';
 
 const thumbUrl = (url, preview_size) =>
   `${flattenToAppURL(url)}/@@images/image/${preview_size}`;
@@ -32,9 +24,9 @@ const previewPlaceholderSVG = (type) => {
   }
 };
 
-/** Widget to show preview of images/block
+/** Widget to show preview of images/block in the sidebar
  *
- *  Can show a preview of uploaded image in the sidebar
+ *  Can show preview of an image pertaining to a field
  *  If there's no previewField image, it shows a placeholder
  *
  * ```jsx
@@ -49,7 +41,7 @@ const PreviewImageWidget = (props) => {
   const {
     preview_size = 'mini',
     formData: blockData = {},
-    previewField = 'url',
+    previewField,
   } = props;
   const widgetProps = { wrapped: false, noForInFieldLabel: true };
   return (
@@ -91,6 +83,12 @@ const PreviewImageWidget = (props) => {
       )}
     </FormFieldWrapper>
   );
+};
+
+PreviewImageWidget.propTypes = {
+  preview_size: PropTypes.string,
+  formData: PropTypes.object.isRequired,
+  previewField: PropTypes.string,
 };
 
 export default PreviewImageWidget;

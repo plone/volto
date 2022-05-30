@@ -18,6 +18,14 @@ exports[`renders an Image Block Sidebar component 1`] = `
       className="ui segment form attached"
     >
       <div
+        className="mocked-default-widget"
+        id="mocked-field-preview"
+      >
+        No title
+         - 
+        No description
+      </div>
+      <div
         className="mocked-url-widget"
         id="mocked-field-url"
       >
