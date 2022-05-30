@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ColorPickerWidget renders a color picker widget component 1`] = `
+<DocumentFragment>
+  <div
+    class="inline field"
+    id="field-my-field"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="row"
+      >
+        <div
+          class="middle aligned twelve wide column color-picker-widget"
+        >
+          <div
+            class="wrapper"
+          >
+            <label
+              for="field-my-field"
+            >
+              My color widget field
+            </label>
+            <div
+              class="buttons"
+            >
+              <button
+                aria-label="Transparent"
+                class="ui circular button transparent"
+                title="Transparent"
+              />
+              <button
+                aria-label="Grey"
+                class="ui circular button grey"
+                title="Grey"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`ColorPickerWidget renders a color picker widget component with a default 1`] = `
+<DocumentFragment>
+  <div
+    class="inline field"
+    id="field-my-field"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="row"
+      >
+        <div
+          class="middle aligned twelve wide column color-picker-widget"
+        >
+          <div
+            class="wrapper"
+          >
+            <label
+              for="field-my-field"
+            >
+              My color widget field
+            </label>
+            <div
+              class="buttons"
+            >
+              <button
+                aria-label="Transparent"
+                class="ui circular button transparent"
+                title="Transparent"
+              />
+              <button
+                aria-label="Grey"
+                class="ui active circular button grey"
+                title="Grey"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
