@@ -15,6 +15,7 @@
 ### Bugfix
 
 - fix TokenWidget choices when editing a recently created content. @giuliaghisini
+- Fix color picker defaults implementation #2 @sneridagh
 
 ### Internal
 
