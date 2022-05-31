@@ -14,7 +14,7 @@ import { Icon, SidebarPortal, VideoSidebar } from '@plone/volto/components';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import videoBlockSVG from '@plone/volto/components/manage/Blocks/Video/block-video.svg';
-import Body from '@plone/volto/components/manage/Blocks/Video/Body.jsx';
+import Body from '@plone/volto/components/manage/Blocks/Video/Body';
 
 const messages = defineMessages({
   VideoFormDescription: {

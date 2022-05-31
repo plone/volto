@@ -160,7 +160,7 @@ class SelectWidget extends Component {
       this.props.getVocabulary({
         vocabNameOrURL: this.props.vocabBaseUrl,
         size: -1,
-        subrequest: this.props.intl.locale,
+        subrequest: this.props.lang,
       });
     }
   }
@@ -263,27 +263,30 @@ export default compose(
         : '';
 
       const vocabState =
-        state.vocabularies?.[vocabBaseUrl]?.subrequests?.[props.intl.locale];
+        state.vocabularies?.[vocabBaseUrl]?.subrequests?.[state.intl.locale];
 
       // If the schema already has the choices in it, then do not try to get the vocab,
       // even if there is one
       if (props.choices) {
         return {
           choices: props.choices,
+          lang: state.intl.locale,
         };
       } else if (vocabState) {
         return {
           vocabBaseUrl,
           choices: vocabState?.items ?? [],
+          lang: state.intl.locale,
         };
         // There is a moment that vocabState is not there yet, so we need to pass the
         // vocabBaseUrl to the component.
       } else if (vocabBaseUrl) {
         return {
           vocabBaseUrl,
+          lang: state.intl.locale,
         };
       }
-      return {};
+      return { lang: state.intl.locale };
     },
     { getVocabulary, getVocabularyTokenTitle },
   ),

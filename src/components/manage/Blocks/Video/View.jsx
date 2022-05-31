@@ -5,7 +5,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Body from '@plone/volto/components/manage/Blocks/Video/Body.jsx';
+import Body from '@plone/volto/components/manage/Blocks/Video/Body';
 import cx from 'classnames';
 
 /**
