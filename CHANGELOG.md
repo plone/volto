@@ -18,6 +18,7 @@
 
 - fix TokenWidget choices when editing a recently created content. @giuliaghisini
 - Fix color picker defaults implementation #2 @sneridagh
+- Enable default color in `backgroundColor` default StyleWrapper field which wasn't sync with the default value setting @sneridagh
 - Fix Block style wrapper: Cannot read properties of undefined (reading 'toString') @avoinea #3410
 
 ### Internal
