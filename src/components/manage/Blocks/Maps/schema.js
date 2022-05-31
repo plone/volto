@@ -28,6 +28,7 @@ export const MapsSchema = (props) => ({
   properties: {
     url: {
       title: props.intl.formatMessage(messages.MapsURL),
+      widget: 'url',
     },
     align: {
       title: props.intl.formatMessage(messages.Alignment),
