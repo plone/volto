@@ -4,13 +4,28 @@
 
 ### Breaking
 
+- Rename `src/components/manage/Widgets/ColorPicker.jsx` component to `src/components/manage/Widgets/ColorPickerWidget.jsx` @sneridagh
+
 ### Feature
 
+- Updated Brazilian Portuguese translation @ericof
+- Forward `HTTP Range` headers to the backend. @mamico
+- Add default value to color picker, if `default` is present in the widget schema. @sneridagh
+
 ### Bugfix
+
+- fix TokenWidget choices when editing a recently created content. @giuliaghisini
+- Fix color picker defaults implementation #2 @sneridagh
 
 ### Internal
 
 ### Documentation
+
+## 16.0.0-alpha.5 (2022-05-25)
+
+### Bugfix
+
+- Fix regression, compound lang names (eg. `pt-BR`) no longer working @sneridagh
 
 ## 16.0.0-alpha.4 (2022-05-22)
 
@@ -23,7 +38,7 @@
 
 - Added viewableInBrowserObjects setting to use in alternative to downloadableObjects, if you want to view file in browser intstead downloading. @giuliaghisini
 - Disable already chosen criteria in querystring widget @kreafox
-- Added X-Forwarded-* headers to superagent requests. @mamico
+- Added X-Forwarded-\* headers to superagent requests. @mamico
 
 ### Bugfix
 
