@@ -17,11 +17,11 @@ import {
   Header,
   Input,
   Segment,
+  Table,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-//actions should be like this
-//import { removeRules, addRules, getRules } from '@plone/volto/actions';
+import { getRules } from '@plone/volto/actions';
 
 import { Icon, Toolbar } from '@plone/volto/components';
 
@@ -59,6 +59,7 @@ class Rules extends Component {
    * @static
    */
   static propTypes = {
+    getRules: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
   };
@@ -82,12 +83,11 @@ class Rules extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
+    this.props.getRules(getBaseUrl(this.props.pathname));
     this.setState({ isClient: true });
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    console.log('state', this.props.state.content.data);
-  }
+  componentDidUpdate(prevProps, prevState) {}
 
   /**
    * Component will receive props
@@ -121,6 +121,36 @@ class Rules extends Component {
             />
           </Segment>
         </Segment.Group>
+        <Table>
+          <Table.Body>
+            <Table.Row>
+              <Table.HeaderCell>
+                <FormattedMessage id="Select" defaultMessage="Select" />
+              </Table.HeaderCell>
+              <Table.HeaderCell>
+                <FormattedMessage
+                  id="Active content rules in this Page"
+                  defaultMessage="Active content rules in this Page"
+                />
+              </Table.HeaderCell>
+              <Table.HeaderCell>
+                <FormattedMessage
+                  id="Applies to subfolders?"
+                  defaultMessage="Applies to subfolders?"
+                />
+              </Table.HeaderCell>
+              <Table.HeaderCell>
+                <FormattedMessage
+                  id="Enabled here?"
+                  defaultMessage="Enabled here?"
+                />
+              </Table.HeaderCell>
+              <Table.HeaderCell>
+                <FormattedMessage id="Enabled?" defaultMessage="Enabled?" />
+              </Table.HeaderCell>
+            </Table.Row>
+          </Table.Body>
+        </Table>
         {this.state.isClient && (
           <Portal node={document.getElementById('toolbar')}>
             <Toolbar
@@ -151,10 +181,11 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
-      state,
+      acquired_rules: state.rules?.acquired_rules,
+      assigned_rules: state.rules?.assigned_rules,
       pathname: props.location.pathname,
       title: state.content.data?.title || '',
     }),
-    {},
+    { getRules },
   ),
 )(Rules);
