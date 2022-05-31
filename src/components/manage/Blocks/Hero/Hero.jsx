@@ -19,11 +19,7 @@ export const Hero = (props) => {
   const defaultVariation = variations.filter((item) => item.isDefault)?.[0];
   const Layout = variation.view || defaultVariation.view;
 
-  return (
-    <div className="block-inner-wrapper">
-      <Layout {...props}></Layout>
-    </div>
-  );
+  return <Layout {...props}></Layout>;
 };
 
 /**

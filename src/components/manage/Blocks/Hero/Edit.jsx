@@ -316,9 +316,16 @@ class EditComponent extends Component {
 
     return (
       <div
-        className={cx('block hero', {
-          selected: this.props.selected,
-        })}
+        className={cx(
+          'block hero align',
+          {
+            selected: this.props.selected,
+          },
+          {
+            center: !Boolean(this.props.data.align),
+          },
+          this.props.data.align,
+        )}
       >
         <Hero
           {...this.props}

@@ -170,6 +170,7 @@ msgstr "Gehigarrien ezarpenak"
 msgid "Additional date"
 msgstr "Data gehigarria"
 
+#: components/manage/Blocks/Hero/schema
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
@@ -280,7 +281,8 @@ msgstr "Bai e-posta helbideak eta bai pasahitzak maiuskula eta minuskulak bereiz
 msgid "Breadcrumbs"
 msgstr "Nabigazio arrastoa"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroImage
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 # defaultMessage: Browse
@@ -701,7 +703,8 @@ msgstr "Sakonera"
 msgid "Descending"
 msgstr "Beheraka"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroText
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1207,7 +1210,8 @@ msgstr "Erabiltzaileak elementua editatzeari utzi diola ziur bazaude, objektua d
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Ziurtatu helbide zuzenean zaudena, hala ere errorea baduzu jarri kontaktuan {site_admin}."
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroImage
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Image
@@ -1218,6 +1222,21 @@ msgstr "Irudia"
 # defaultMessage: Image gallery
 msgid "Image gallery"
 msgstr "Irudi galeria"
+
+#: config/Blocks
+# defaultMessage: Image on left side
+msgid "Image on left side"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Image on right side
+msgid "Image on right side"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Image on the background
+msgid "Image on the background"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Include this occurence
@@ -1401,19 +1420,19 @@ msgstr "Ezkerrean"
 msgid "Link"
 msgstr "Esteka"
 
-#: components/manage/Blocks/HeroImageLeft/schema
+#: components/manage/Blocks/Hero/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link more
 msgid "Link more"
 msgstr "Gehiago estekatu"
 
-#: components/manage/Blocks/HeroImageLeft/schema
+#: components/manage/Blocks/Hero/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link Title
 msgid "Link title"
 msgstr "Izenburua estekatu"
 
-#: components/manage/Blocks/HeroImageLeft/schema
+#: components/manage/Blocks/Hero/schema
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
@@ -2688,7 +2707,8 @@ msgstr "Orrialde hau ez da existitzen..."
 msgid "Time"
 msgstr "Ordua"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroText
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -2846,7 +2866,7 @@ msgstr "Kargatu"
 msgid "Upload a lead image in the 'Lead Image' content field."
 msgstr "Kargatu irudia"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/Edit
 # defaultMessage: Upload a new image
 msgid "Upload a new image"
 msgstr "Kargatu irudi berria"
@@ -2861,7 +2881,8 @@ msgstr "Kargatu fitxategiak"
 msgid "Uploading files"
 msgstr "Fitxategiak kargatzen"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroImage
+#: components/manage/Blocks/Hero/Edit
 # defaultMessage: Uploading image
 msgid "Uploading image"
 msgstr "Irudia kargatzen"

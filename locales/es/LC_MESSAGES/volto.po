@@ -173,6 +173,7 @@ msgstr "Configuración de complementos"
 msgid "Additional date"
 msgstr "Fecha adicional"
 
+#: components/manage/Blocks/Hero/schema
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
@@ -283,7 +284,8 @@ msgstr "Tanto la dirección de correo electrónico y la contraseña son sensible
 msgid "Breadcrumbs"
 msgstr "Barra de ruta"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroImage
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 # defaultMessage: Browse
@@ -704,7 +706,8 @@ msgstr "Profundidad"
 msgid "Descending"
 msgstr "Descendente"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroText
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1210,7 +1213,8 @@ msgstr "Si está seguro de que el usuario ha dejado de editar el elemento puedes
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Si usted esta seguro de haber ingresado la dirección web correcta pero mas obtiene un, por favor, contante al {site_admin}."
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroImage
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Image
@@ -1221,6 +1225,21 @@ msgstr "Imagen"
 # defaultMessage: Image gallery
 msgid "Image gallery"
 msgstr "Galería de imágenes"
+
+#: config/Blocks
+# defaultMessage: Image on left side
+msgid "Image on left side"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Image on right side
+msgid "Image on right side"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Image on the background
+msgid "Image on the background"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Include this occurence
@@ -1404,19 +1423,19 @@ msgstr "Izquierda"
 msgid "Link"
 msgstr "Enlace"
 
-#: components/manage/Blocks/HeroImageLeft/schema
+#: components/manage/Blocks/Hero/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link more
 msgid "Link more"
 msgstr "Enlazar "más""
 
-#: components/manage/Blocks/HeroImageLeft/schema
+#: components/manage/Blocks/Hero/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link Title
 msgid "Link title"
 msgstr "Enlazar título"
 
-#: components/manage/Blocks/HeroImageLeft/schema
+#: components/manage/Blocks/Hero/schema
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
@@ -2691,7 +2710,8 @@ msgstr "Esta página no existe…"
 msgid "Time"
 msgstr "Hora"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroText
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -2849,7 +2869,7 @@ msgstr "Cargar"
 msgid "Upload a lead image in the 'Lead Image' content field."
 msgstr "Cargar una imagen principal en el campo 'Imagen Principal'"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/Edit
 # defaultMessage: Upload a new image
 msgid "Upload a new image"
 msgstr "Cargar nueva imagen"
@@ -2864,7 +2884,8 @@ msgstr "Cargar archivos"
 msgid "Uploading files"
 msgstr "Cargando archivos"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroImage
+#: components/manage/Blocks/Hero/Edit
 # defaultMessage: Uploading image
 msgid "Uploading image"
 msgstr "Cargando imagen"

@@ -13,9 +13,13 @@ const messages = defineMessages({
     id: 'Link to',
     defaultMessage: 'Link to',
   },
+  Align: {
+    id: 'Alignment',
+    defaultMessage: 'Alignment',
+  },
 });
 
-const schemaHero = ({ intl }) => {
+const schemaHero = ({ intl, variation }) => {
   return {
     title: 'Block settings',
     required: [],
@@ -23,7 +27,11 @@ const schemaHero = ({ intl }) => {
       {
         id: 'default',
         title: intl.formatMessage(messages.more),
-        fields: ['linkTitle', 'linkHref'],
+        fields: [
+          'linkTitle',
+          'linkHref',
+          ...(variation?.id === 'heroImageBackground' ? ['align'] : []),
+        ],
       },
     ],
     properties: {
@@ -36,6 +44,10 @@ const schemaHero = ({ intl }) => {
         mode: 'link',
         selectedItemAttrs: ['Title', 'Description'],
         allowExternals: true,
+      },
+      align: {
+        title: intl.formatMessage(messages.Align),
+        widget: 'align',
       },
     },
   };

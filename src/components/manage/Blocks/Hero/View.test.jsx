@@ -6,8 +6,8 @@ import { MemoryRouter } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 import config from '@plone/volto/registry';
 
-import HeroImageLeftTemplate from '@plone/volto/components/manage/Blocks/HeroImageLeft/layout/HeroImageLeftTemplate';
-import HeroImageRightTemplate from '@plone/volto/components/manage/Blocks/HeroImageLeft/layout/HeroImageRightTemplate';
+import HeroImageLeftTemplate from '@plone/volto/components/manage/Blocks/Hero/layout/HeroImageLeftTemplate';
+import HeroImageRightTemplate from '@plone/volto/components/manage/Blocks/Hero/layout/HeroImageRightTemplate';
 
 const mockStore = configureStore();
 

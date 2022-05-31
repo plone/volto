@@ -172,6 +172,7 @@ msgstr "Configuració de complements"
 msgid "Additional date"
 msgstr "Data addicional"
 
+#: components/manage/Blocks/Hero/schema
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
@@ -282,7 +283,8 @@ msgstr "Tant l'adreça de correu electrònic com la contrasenya són sensibles a
 msgid "Breadcrumbs"
 msgstr "Barra de ruta"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroImage
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 # defaultMessage: Browse
@@ -703,7 +705,8 @@ msgstr "Profunditat"
 msgid "Descending"
 msgstr "Descendent"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroText
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1209,7 +1212,8 @@ msgstr "Si esteu segur que aquest usuari ha abandonat l'objecte, podeu desbloque
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Si esteu segur que teniu l'adreça web correcta però trobeu un error, poseu-vos en contacte amb el {site_admin}."
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroImage
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Image
@@ -1220,6 +1224,21 @@ msgstr "imatge"
 # defaultMessage: Image gallery
 msgid "Image gallery"
 msgstr "Galeria d'imatges"
+
+#: config/Blocks
+# defaultMessage: Image on left side
+msgid "Image on left side"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Image on right side
+msgid "Image on right side"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Image on the background
+msgid "Image on the background"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Include this occurence
@@ -1403,19 +1422,19 @@ msgstr "A l'esquerra"
 msgid "Link"
 msgstr "Enllaç"
 
-#: components/manage/Blocks/HeroImageLeft/schema
+#: components/manage/Blocks/Hero/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link more
 msgid "Link more"
 msgstr "Enllaça més"
 
-#: components/manage/Blocks/HeroImageLeft/schema
+#: components/manage/Blocks/Hero/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link Title
 msgid "Link title"
 msgstr "Títol de l'enllaç"
 
-#: components/manage/Blocks/HeroImageLeft/schema
+#: components/manage/Blocks/Hero/schema
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
@@ -2690,7 +2709,8 @@ msgstr "Sembla que aquesta pàgina no existeix..."
 msgid "Time"
 msgstr "Hora"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroText
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -2848,7 +2868,7 @@ msgstr "Pujar"
 msgid "Upload a lead image in the 'Lead Image' content field."
 msgstr "Pengeu una imatge principal al camp de contingut 'Imatge principal'."
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/Edit
 # defaultMessage: Upload a new image
 msgid "Upload a new image"
 msgstr "Carregueu una imatge nova"
@@ -2863,7 +2883,8 @@ msgstr "Carregueu fitxers"
 msgid "Uploading files"
 msgstr "Carregant fitxers"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroImage
+#: components/manage/Blocks/Hero/Edit
 # defaultMessage: Uploading image
 msgid "Uploading image"
 msgstr "S'està carregant la imatge"

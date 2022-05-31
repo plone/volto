@@ -8,7 +8,7 @@ import ViewImageBlock from '@plone/volto/components/manage/Blocks/Image/View';
 import ViewLeadImageBlock from '@plone/volto/components/manage/Blocks/LeadImage/View';
 import ViewListingBlock from '@plone/volto/components/manage/Blocks/Listing/View';
 import ViewVideoBlock from '@plone/volto/components/manage/Blocks/Video/View';
-import ViewHeroImageLeftBlock from '@plone/volto/components/manage/Blocks/HeroImageLeft/View';
+import ViewHeroBlock from '@plone/volto/components/manage/Blocks/Hero/View';
 import ViewMapBlock from '@plone/volto/components/manage/Blocks/Maps/View';
 import ViewHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/View';
 import ViewTableBlock from '@plone/volto/components/manage/Blocks/Table/View';
@@ -23,7 +23,7 @@ import EditListingBlock from '@plone/volto/components/manage/Blocks/Listing/Edit
 import DefaultListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/DefaultTemplate';
 import SummaryListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/SummaryTemplate';
 import EditVideoBlock from '@plone/volto/components/manage/Blocks/Video/Edit';
-import EditHeroImageLeftBlock from '@plone/volto/components/manage/Blocks/HeroImageLeft/Edit';
+import EditHeroBlock from '@plone/volto/components/manage/Blocks/Hero/Edit';
 import EditMapBlock from '@plone/volto/components/manage/Blocks/Maps/Edit';
 import EditHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/Edit';
 import EditTableBlock from '@plone/volto/components/manage/Blocks/Table/Edit';
@@ -54,8 +54,9 @@ import RightColumnFacets from '@plone/volto/components/manage/Blocks/Search/layo
 import LeftColumnFacets from '@plone/volto/components/manage/Blocks/Search/layout/LeftColumnFacets';
 import TopSideFacets from '@plone/volto/components/manage/Blocks/Search/layout/TopSideFacets';
 
-import HeroImageLeftTemplate from '@plone/volto/components/manage/Blocks/HeroImageLeft/layout/HeroImageLeftTemplate';
-import HeroImageRightTemplate from '@plone/volto/components/manage/Blocks/HeroImageLeft/layout/HeroImageRightTemplate';
+import HeroImageLeftTemplate from '@plone/volto/components/manage/Blocks/Hero/layout/HeroImageLeftTemplate';
+import HeroImageRightTemplate from '@plone/volto/components/manage/Blocks/Hero/layout/HeroImageRightTemplate';
+import HeroImageBackgroundTemplate from '@plone/volto/components/manage/Blocks/Hero/layout/HeroImageBackgroundTemplate';
 
 import {
   SelectFacet,
@@ -69,7 +70,7 @@ import {
 import getListingBlockAsyncData from '@plone/volto/components/manage/Blocks/Listing/getAsyncData';
 
 // block sidebar schemas (not the Dexterity Layout block settings schemas)
-import HeroImageLeftBlockSchema from '@plone/volto/components/manage/Blocks/HeroImageLeft/schema';
+import HeroBlockSchema from '@plone/volto/components/manage/Blocks/Hero/schema';
 import ListingBlockSchema from '@plone/volto/components/manage/Blocks/Listing/schema';
 import SearchBlockSchema from '@plone/volto/components/manage/Blocks/Search/schema';
 
@@ -165,6 +166,10 @@ defineMessages({
   heroImageRight: {
     id: 'Image on right side',
     defaultMessage: 'Image on right side',
+  },
+  heroImageBackground: {
+    id: 'Image on the background',
+    defaultMessage: 'Image on the background',
   },
 });
 
@@ -342,10 +347,10 @@ const blocksConfig = {
     title: 'Hero',
     icon: heroSVG,
     group: 'common',
-    view: ViewHeroImageLeftBlock,
-    edit: EditHeroImageLeftBlock,
+    view: ViewHeroBlock,
+    edit: EditHeroBlock,
     schema: BlockSettingsSchema,
-    blockSchema: HeroImageLeftBlockSchema,
+    blockSchema: HeroBlockSchema,
     restricted: false,
     mostUsed: false,
     blockHasOwnFocusManagement: true,
@@ -366,6 +371,12 @@ const blocksConfig = {
         title: 'Image on right side',
         view: HeroImageRightTemplate,
         isDefault: false,
+      },
+      {
+        id: 'heroImageBackground',
+        title: 'Image on the background',
+        view: HeroImageBackgroundTemplate,
+        isDefault: true,
       },
     ],
   },

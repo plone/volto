@@ -182,6 +182,7 @@ msgstr ""
 msgid "Additional date"
 msgstr ""
 
+#: components/manage/Blocks/Hero/schema
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
@@ -292,7 +293,8 @@ msgstr ""
 msgid "Breadcrumbs"
 msgstr ""
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroImage
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 # defaultMessage: Browse
@@ -713,7 +715,8 @@ msgstr ""
 msgid "Descending"
 msgstr "Aflopend"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroText
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1219,7 +1222,8 @@ msgstr ""
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Indien u er zeker van bent dat u het webadres goed heeft, maar toch een foutmelding krijgt, neem dan contact op met {site_admin}."
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroImage
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Image
@@ -1229,6 +1233,21 @@ msgstr ""
 #: config/Blocks
 # defaultMessage: Image gallery
 msgid "Image gallery"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Image on left side
+msgid "Image on left side"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Image on right side
+msgid "Image on right side"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Image on the background
+msgid "Image on the background"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
@@ -1413,19 +1432,19 @@ msgstr ""
 msgid "Link"
 msgstr ""
 
-#: components/manage/Blocks/HeroImageLeft/schema
+#: components/manage/Blocks/Hero/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link more
 msgid "Link more"
 msgstr ""
 
-#: components/manage/Blocks/HeroImageLeft/schema
+#: components/manage/Blocks/Hero/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link Title
 msgid "Link title"
 msgstr ""
 
-#: components/manage/Blocks/HeroImageLeft/schema
+#: components/manage/Blocks/Hero/schema
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
@@ -2700,7 +2719,8 @@ msgstr "Het spijt ons, maar deze pagina bestaat niet…"
 msgid "Time"
 msgstr ""
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroText
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -2858,7 +2878,7 @@ msgstr "Upload"
 msgid "Upload a lead image in the 'Lead Image' content field."
 msgstr ""
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/Edit
 # defaultMessage: Upload a new image
 msgid "Upload a new image"
 msgstr ""
@@ -2873,7 +2893,8 @@ msgstr "Bestanden uploaden"
 msgid "Uploading files"
 msgstr "Bestanden uploaden"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroImage
+#: components/manage/Blocks/Hero/Edit
 # defaultMessage: Uploading image
 msgid "Uploading image"
 msgstr ""

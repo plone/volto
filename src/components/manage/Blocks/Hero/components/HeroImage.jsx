@@ -25,6 +25,7 @@ const HeroImage = ({
   onUploadImage,
   placeholder,
   uploading,
+  withBackgroundImage,
 }) => {
   const intl = useIntl();
   return (

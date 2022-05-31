@@ -416,7 +416,16 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     left: 75%;
   }
 
+  .toolbar-middle {
+    left: 50%;
+  }
+
   .hero-body {
+    &.withBackgroundImage {
+      position: absolute;
+      background: none;
+    }
+
     display: flex;
 
     max-height: 400px;
@@ -463,6 +472,21 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     position: relative;
     z-index: 1;
     display: flex;
+
+    &.withBackroundImage {
+      &.right {
+        flex-direction: row-reverse;
+      }
+
+      &.left {
+        flex-direction: row;
+      }
+
+      &.center {
+        flex-direction: row;
+        justify-content: center;
+      }
+    }
   }
 
   .title-editor,
