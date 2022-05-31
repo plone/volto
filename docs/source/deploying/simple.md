@@ -1,9 +1,9 @@
 ---
 html_meta:
-  'description': 'Simple deployment of a Volto application'
-  'property=og:description': 'Simple deployment of a Volto application'
-  'property=og:title': 'Simple deployment'
-  'keywords': 'Volto, Plone, frontend, React, deployment'
+  "description": "Simple deployment of a Volto application"
+  "property=og:description": "Simple deployment of a Volto application"
+  "property=og:title": "Simple deployment"
+  "keywords": "Volto, Plone, frontend, React, deployment"
 ---
 
 # Simple deployment
@@ -27,9 +27,7 @@ After the build, the bundle is created in `/build` folder, then in order to laun
 ```bash
 $ yarn start:prod
 ```
-
 or
-
 ```bash
 $ NODE_ENV=production node build/server.js
 ```
