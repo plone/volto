@@ -16,6 +16,7 @@ export const nonContentRoutes = [
   '/logout',
   '/sitemap',
   '/register',
+  '/rules',
   '/sharing',
   '/search',
   '/change-password',

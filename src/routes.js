@@ -27,6 +27,7 @@ import {
   NotFound,
   PasswordReset,
   Register,
+  Rules,
   RequestPasswordReset,
   Search,
   Sharing,
@@ -174,6 +175,10 @@ export const defaultRoutes = [
     component: Sharing,
   },
   {
+    path: '/rules',
+    component: Rules,
+  },
+  {
     path: '/**/add',
     component: Add,
   },
@@ -188,6 +193,10 @@ export const defaultRoutes = [
   {
     path: '/**/sharing',
     component: Sharing,
+  },
+  {
+    path: '/**/rules',
+    component: Rules,
   },
   {
     path: '/**/delete',
