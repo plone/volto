@@ -16,6 +16,7 @@
 
 - fix TokenWidget choices when editing a recently created content. @giuliaghisini
 - Fix color picker defaults implementation #2 @sneridagh
+- Fix Block style wrapper: Cannot read properties of undefined (reading 'toString') @avoinea #3410
 
 ### Internal
 
