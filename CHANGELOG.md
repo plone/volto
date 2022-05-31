@@ -21,10 +21,6 @@
 - Enable default color in `backgroundColor` default StyleWrapper field which wasn't sync with the default value setting @sneridagh
 - Fix Block style wrapper: Cannot read properties of undefined (reading 'toString') @avoinea #3410
 
-### Internal
-
-### Documentation
-
 ## 16.0.0-alpha.5 (2022-05-25)
 
 ### Bugfix
