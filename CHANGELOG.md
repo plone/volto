@@ -14,6 +14,7 @@
 - Add default value to color picker, if `default` is present in the widget schema. @sneridagh
 - Inject the classnames of the StyleWrapper into the main edit wrapper (it was wrapping directly the Edit component before). This way, the flexibility is bigger and you can act upon the whole edit container and artifacts (handlers, etc) @sneridagh
 - Include the align, size block settings properties into the classname builder function @sneridagh
+- Enable default color in `backgroundColor` default StyleWrapper field @sneridagh
 
 ### Bugfix
 
