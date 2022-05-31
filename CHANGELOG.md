@@ -5,18 +5,21 @@
 ### Breaking
 
 - Rename `src/components/manage/Widgets/ColorPicker.jsx` component to `src/components/manage/Widgets/ColorPickerWidget.jsx` @sneridagh
+- Remove the style wrapper around the `<Block />` component in Edit mode, moved to the main edit wrapper @sneridagh
 
 ### Feature
 
 - Updated Brazilian Portuguese translation @ericof
 - Forward `HTTP Range` headers to the backend. @mamico
 - Add default value to color picker, if `default` is present in the widget schema. @sneridagh
+- Inject the classnames of the StyleWrapper into the main edit wrapper (it was wrapping directly the Edit component before). This way, the flexibility is bigger and you can act upon the whole edit container and artifacts (handlers, etc) @sneridagh
 
 ### Bugfix
 
 - fix TokenWidget choices when editing a recently created content. @giuliaghisini
 - Fix color picker defaults implementation #2 @sneridagh
 - Enable default color in `backgroundColor` default StyleWrapper field which wasn't sync with the default value setting @sneridagh
+- Fix Block style wrapper: Cannot read properties of undefined (reading 'toString') @avoinea #3410
 
 ### Internal
 

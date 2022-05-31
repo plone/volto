@@ -13,7 +13,6 @@ import { setSidebarTab } from '@plone/volto/actions';
 import config from '@plone/volto/registry';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import { applyBlockDefaults } from '@plone/volto/helpers';
-import StyleWrapper from './StyleWrapper';
 
 import {
   SidebarPortal,
@@ -167,13 +166,11 @@ export class Edit extends Component {
             /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
             tabIndex={!blockHasOwnFocusManagement ? -1 : null}
           >
-            <StyleWrapper {...this.props}>
-              <Block
-                {...this.props}
-                blockNode={this.blockNode}
-                data={applyBlockDefaults(this.props)}
-              />
-            </StyleWrapper>
+            <Block
+              {...this.props}
+              blockNode={this.blockNode}
+              data={applyBlockDefaults(this.props)}
+            />
             {this.props.manage && (
               <SidebarPortal
                 selected={this.props.selected}
