@@ -135,6 +135,12 @@ class Controlpanels extends Component {
           group: 'General',
           title: 'Database',
         },
+        // This is the icon place in UndoControlPanel
+        {
+          '@id': '/undo-control-panel',
+          group: 'General',
+          title: 'Undo Control Panel',
+        },
         {
           '@id': '/moderate-comments',
           group: 'Content',
