@@ -41,7 +41,6 @@ const messages = defineMessages({
 
 export function ImageSchema({ formData, intl }) {
   return {
-    title: intl.formatMessage(messages.Image),
     fieldsets: [
       {
         id: 'default',
