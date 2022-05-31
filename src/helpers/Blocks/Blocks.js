@@ -406,15 +406,23 @@ export function applyBlockDefaults({ data, intl, ...rest }, blocksConfig) {
   return applySchemaDefaults({ data, schema });
 }
 
-export const buildStyleClassNamesFromData = (styles) => {
+export const buildStyleClassNamesFromData = (data) => {
+  const { styles, align, size } = data;
   // styles has the form
   // const styles = {
   // color: 'red',
   // backgroundColor: '#AABBCC',
   // }
   // Returns: ['has--color--red', 'has--backgroundColor--AABBCC']
+
   let styleArray = [];
-  const pairedStyles = toPairs(styles);
+  // We assume that no align, nor size will be present in the style object
+  // Otherwise, wins the styles defined ones
+  const pairedStyles = toPairs({
+    ...(align && { align }),
+    ...(size && { size }),
+    ...styles,
+  });
   pairedStyles.forEach((item) => {
     if (isObject(item[1])) {
       const flattenedNestedStyles = toPairs(item[1]).map((nested) => [

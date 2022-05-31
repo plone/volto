@@ -34,7 +34,7 @@ const EditBlockWrapper = (props) => {
     ? data.required
     : includes(config.blocks.requiredBlocks, type);
 
-  const styles = buildStyleClassNamesFromData(data.styles);
+  const styles = buildStyleClassNamesFromData(data);
 
   return (
     <div
@@ -43,9 +43,7 @@ const EditBlockWrapper = (props) => {
       // Right now, we can have the alignment information in the styles property or in the
       // block data root, we inject the classname here for having control over the whole
       // Block Edit wrapper
-      className={cx(`block-editor-${data['@type']}`, styles, {
-        [data.align]: data.align,
-      })}
+      className={cx(`block-editor-${data['@type']}`, styles)}
     >
       <div style={{ position: 'relative' }}>
         <div
