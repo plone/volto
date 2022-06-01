@@ -2,17 +2,13 @@
 
 ## 16.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
+
+- fix schema when content contains lock informations. @giuliaghisini
 
 ### Internal
 
 - Missing change from the last breaking change (Remove the style wrapper around the `<Block />` component in Edit mode, moved to the main edit wrapper). Now, really move it to the main edit wrapper @sneridagh
-
-### Documentation
 
 ## 16.0.0-alpha.6 (2022-05-31)
 
@@ -30,7 +26,6 @@
 
 ### Bugfix
 
-- fix schema when content contains lock informations. @giuliaghisini
 - fix TokenWidget choices when editing a recently created content. @giuliaghisini
 - Fix color picker defaults implementation #2 @sneridagh
 - Enable default color in `backgroundColor` default StyleWrapper field which wasn't sync with the default value setting @sneridagh
