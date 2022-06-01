@@ -97,6 +97,8 @@ const defaultModify = ({
     config.optimization = Object.assign({}, config.optimization, {
       runtimeChunk: true,
       splitChunks: {
+        chunks: 'all',
+        name: dev,
         cacheGroups: {
           vendors: false,
           styles: {
