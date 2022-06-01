@@ -39,7 +39,8 @@ const DefaultView = (props) => {
   );
 
   React.useEffect(() => {
-    !hasBlocksData(content) &&
+    content?.['@type'] &&
+      !hasBlocksData(content) &&
       dispatch(getSchema(content['@type'], location.pathname));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -52,7 +53,7 @@ const DefaultView = (props) => {
     <Container id="page-document">
       {fieldsets?.map((fs) => {
         return (
-          <>
+          <div className="fieldset" key={fs.id}>
             {fs.id !== 'default' && <h2>{fs.title}</h2>}
             {fs.fields?.map((f, key) => {
               let field = {
@@ -76,7 +77,7 @@ const DefaultView = (props) => {
                 <Widget key={key} value={content[f]} />
               );
             })}
-          </>
+          </div>
         );
       })}
     </Container>
