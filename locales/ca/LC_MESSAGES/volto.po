@@ -454,7 +454,7 @@ msgid "Collection"
 msgstr "Col·lecció"
 
 #: components/manage/Blocks/Block/StylesSchema
-#: components/manage/Widgets/ColorPicker
+#: components/manage/Widgets/ColorPickerWidget
 # defaultMessage: Color
 msgid "Color"
 msgstr ""

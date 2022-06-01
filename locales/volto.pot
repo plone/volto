@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-05-23T16:12:46.915Z\n"
+"POT-Creation-Date: 2022-05-29T14:40:31.856Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -447,7 +447,7 @@ msgid "Collection"
 msgstr ""
 
 #: components/manage/Blocks/Block/StylesSchema
-#: components/manage/Widgets/ColorPicker
+#: components/manage/Widgets/ColorPickerWidget
 # defaultMessage: Color
 msgid "Color"
 msgstr ""
