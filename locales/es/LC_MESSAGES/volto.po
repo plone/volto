@@ -2905,6 +2905,11 @@ msgstr "Usado para acceso programático al conjunto de campos."
 msgid "User"
 msgstr "Usuario"
 
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: User and Group Settings
+msgid "User and Group Settings"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: User created
 msgid "User created"

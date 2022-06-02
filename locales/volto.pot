@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-05-29T14:40:31.856Z\n"
+"POT-Creation-Date: 2022-05-24T18:45:22.003Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -2895,6 +2895,11 @@ msgstr ""
 #: components/manage/Sharing/Sharing
 # defaultMessage: User
 msgid "User"
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: User and Group Settings
+msgid "User and Group Settings"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
