@@ -1,4 +1,8 @@
-import { GET_RULES } from '@plone/volto/constants/ActionTypes';
+import {
+  GET_RULES,
+  ENABLE_RULES,
+  DISABLE_RULES,
+} from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
   add: {
@@ -39,6 +43,8 @@ function getRequestKey(actionType) {
 export default function rules(state = initialState, action = {}) {
   switch (action.type) {
     case `${GET_RULES}_PENDING`:
+    case `${ENABLE_RULES}_PENDING`:
+    case `${DISABLE_RULES}_PENDING`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
@@ -48,7 +54,6 @@ export default function rules(state = initialState, action = {}) {
         },
       };
     case `${GET_RULES}_SUCCESS`:
-      console.log('action', action.result.rules);
       return {
         ...state,
         rules: action.result?.rules,
@@ -56,6 +61,17 @@ export default function rules(state = initialState, action = {}) {
           loading: false,
           loaded: true,
           error: null,
+        },
+      };
+    case `${ENABLE_RULES}_SUCCESS`:
+    case `${DISABLE_RULES}_SUCCESS`:
+      console.log('action enable/dis succ', action.result);
+      return {
+        ...state,
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: true,
+          error: action.result?.failed,
         },
       };
     case `${GET_RULES}_FAIL`:

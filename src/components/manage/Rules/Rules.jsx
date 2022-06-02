@@ -21,12 +21,13 @@ import {
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { getRules } from '@plone/volto/actions';
+import { getBaseUrl } from '@plone/volto/helpers';
+import { getRules, enableRules, disableRules } from '@plone/volto/actions';
 
 import { Icon, Toolbar } from '@plone/volto/components';
 
 import backSVG from '@plone/volto/icons/back.svg';
-import { getBaseUrl } from '@plone/volto/helpers';
+import checkSVG from '@plone/volto/icons/check.svg';
 
 //toast notifications
 // import { toast } from 'react-toastify';
@@ -74,6 +75,7 @@ class Rules extends Component {
     super(props);
     this.state = {
       isClient: false,
+      checkedRules: [],
     };
   }
 
@@ -98,11 +100,62 @@ class Rules extends Component {
   UNSAFE_componentWillReceiveProps(nextProps) {}
 
   /**
+   * Rule check handler
+   * @method handleCheckRule
+   * @returns {undefined}
+   */
+  handleCheckRule = (rule) => {
+    const rules = this.state.checkedRules;
+    if (rules.includes(rule)) {
+      const index = rules.indexOf(rule);
+      if (index > -1) {
+        let newRules = rules;
+        newRules.splice(index, 1);
+        this.setState({ checkedRules: newRules });
+      }
+    } else {
+      this.setState({
+        checkedRules: [...this.state.checkedRules, rule],
+      });
+    }
+  };
+
+  /**
+   * Disable rules handler
+   * @method handleDisableRules
+   * @returns {undefined}
+   */
+  handleDisableRules = () => {
+    console.log('will disable', this.state.checkedRules);
+    this.props.disableRules(
+      getBaseUrl(this.props.pathname),
+      this.state.checkedRules,
+    );
+  };
+
+  /**
+   * Enable rules handler
+   * @method handleEnableRules
+   * @returns {undefined}
+   */
+  handleEnableRules = () => {
+    console.log('will enable', this.state.checkedRules);
+    this.props.enableRules(
+      getBaseUrl(this.props.pathname),
+      this.state.checkedRules,
+    );
+  };
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
+    const { acquired_rules, assigned_rules } = this.props.rules?.rules || {};
+    // console.log('acquired_rules', acquired_rules);
+    // console.log('assigned_rules', assigned_rules);
+
     return (
       <Container id="rules">
         <Helmet title={this.props.intl.formatMessage(messages.rules)} />
@@ -121,36 +174,145 @@ class Rules extends Component {
             />
           </Segment>
         </Segment.Group>
-        <Table>
-          <Table.Body>
-            <Table.Row>
-              <Table.HeaderCell>
-                <FormattedMessage id="Select" defaultMessage="Select" />
-              </Table.HeaderCell>
-              <Table.HeaderCell>
-                <FormattedMessage
-                  id="Active content rules in this Page"
-                  defaultMessage="Active content rules in this Page"
-                />
-              </Table.HeaderCell>
-              <Table.HeaderCell>
-                <FormattedMessage
-                  id="Applies to subfolders?"
-                  defaultMessage="Applies to subfolders?"
-                />
-              </Table.HeaderCell>
-              <Table.HeaderCell>
-                <FormattedMessage
-                  id="Enabled here?"
-                  defaultMessage="Enabled here?"
-                />
-              </Table.HeaderCell>
-              <Table.HeaderCell>
-                <FormattedMessage id="Enabled?" defaultMessage="Enabled?" />
-              </Table.HeaderCell>
-            </Table.Row>
-          </Table.Body>
-        </Table>
+        {acquired_rules && acquired_rules.length > 0 && (
+          <Table>
+            <Table.Body>
+              <Table.Row>
+                <Table.HeaderCell>
+                  <FormattedMessage
+                    id="Content rules from parent folders"
+                    defaultMessage="Content rules from parent folders"
+                  />
+                </Table.HeaderCell>
+                <Table.HeaderCell>
+                  <FormattedMessage id="Active" defaultMessage="Active" />
+                </Table.HeaderCell>
+              </Table.Row>
+              {acquired_rules.map((rule, i) => (
+                <Table.Row key={i}>
+                  <Table.Cell>
+                    {/* this can be a link to the control panel */}
+                    {rule.title}({rule.trigger})
+                  </Table.Cell>
+                  <Table.Cell>
+                    {rule.enabled && (
+                      <span style={{ color: 'green' }}>
+                        <Icon
+                          name={checkSVG}
+                          className="contents circled"
+                          size="10px"
+                        />
+                      </span>
+                    )}
+                  </Table.Cell>
+                </Table.Row>
+              ))}
+            </Table.Body>
+          </Table>
+        )}
+        {assigned_rules && assigned_rules.length > 0 && (
+          <Table>
+            <Table.Body>
+              <Table.Row>
+                <Table.HeaderCell>
+                  <FormattedMessage id="Select" defaultMessage="Select" />
+                </Table.HeaderCell>
+                <Table.HeaderCell>
+                  <FormattedMessage
+                    id="Active content rules in this Page"
+                    defaultMessage="Active content rules in this Page"
+                  />
+                </Table.HeaderCell>
+                <Table.HeaderCell>
+                  <FormattedMessage
+                    id="Applies to subfolders?"
+                    defaultMessage="Applies to subfolders?"
+                  />
+                </Table.HeaderCell>
+                <Table.HeaderCell>
+                  <FormattedMessage
+                    id="Enabled here?"
+                    defaultMessage="Enabled here?"
+                  />
+                </Table.HeaderCell>
+                <Table.HeaderCell>
+                  <FormattedMessage id="Enabled?" defaultMessage="Enabled?" />
+                </Table.HeaderCell>
+              </Table.Row>
+              {assigned_rules.map((rule, i) => (
+                <Table.Row key={i}>
+                  <Table.Cell>
+                    <Checkbox
+                      onChange={(o, { value }) => this.handleCheckRule(value)}
+                      value={rule.id}
+                      checked={this.state.checkedRules.includes(rule.id)}
+                    />
+                  </Table.Cell>
+                  <Table.Cell>
+                    {rule.title}({rule.trigger})
+                  </Table.Cell>
+                  <Table.Cell>
+                    {rule.bubbles && (
+                      <span style={{ color: 'green' }}>
+                        <Icon
+                          name={checkSVG}
+                          className="contents circled"
+                          size="10px"
+                        />
+                      </span>
+                    )}
+                  </Table.Cell>
+                  <Table.Cell>
+                    {rule.enabled && (
+                      <span style={{ color: 'green' }}>
+                        <Icon
+                          name={checkSVG}
+                          className="contents circled"
+                          size="10px"
+                        />
+                      </span>
+                    )}
+                  </Table.Cell>
+                  <Table.Cell>
+                    {rule.global_enabled && (
+                      <span style={{ color: 'green' }}>
+                        <Icon
+                          name={checkSVG}
+                          className="contents circled"
+                          size="10px"
+                        />
+                      </span>
+                    )}
+                  </Table.Cell>
+                </Table.Row>
+              ))}
+            </Table.Body>
+          </Table>
+        )}
+        <Button onClick={this.handleEnableRules} primary>
+          <FormattedMessage id="Enable" defaultMessage="Enable" />
+        </Button>
+        <Button onClick={this.handleDisableRules} primary>
+          <FormattedMessage id="Disable" defaultMessage="Disable" />
+        </Button>
+        <Button onClick={() => console.log('Apply to subfolders')} primary>
+          <FormattedMessage
+            id="Apply to subfolders"
+            defaultMessage="Apply to subfolders"
+          />
+        </Button>
+        <Button
+          onClick={() => console.log('Disable apply to subfolders')}
+          primary
+        >
+          <FormattedMessage
+            id="Disable apply to subfolders"
+            defaultMessage="Disable apply to subfolders"
+          />
+        </Button>
+        <Button color="youtube" onClick={() => console.log('Unassign')}>
+          <FormattedMessage id="Unassign" defaultMessage="Unassign" />
+        </Button>
         {this.state.isClient && (
           <Portal node={document.getElementById('toolbar')}>
             <Toolbar
@@ -181,11 +343,10 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
-      acquired_rules: state.rules?.acquired_rules,
-      assigned_rules: state.rules?.assigned_rules,
+      rules: state.rules,
       pathname: props.location.pathname,
       title: state.content.data?.title || '',
     }),
-    { getRules },
+    { getRules, enableRules, disableRules },
   ),
 )(Rules);

@@ -73,7 +73,11 @@ export {
   putSchema,
   updateSchema,
 } from '@plone/volto/actions/schema/schema';
-export { getRules } from '@plone/volto/actions/rules/rules';
+export {
+  getRules,
+  enableRules,
+  disableRules,
+} from '@plone/volto/actions/rules/rules';
 export {
   resetSearchContent,
   searchContent,
