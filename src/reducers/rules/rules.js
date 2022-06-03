@@ -10,6 +10,26 @@ const initialState = {
     loading: false,
     error: null,
   },
+  enable: {
+    loaded: false,
+    loading: false,
+    error: null,
+  },
+  disable: {
+    loaded: false,
+    loading: false,
+    error: null,
+  },
+  apply: {
+    loaded: false,
+    loading: false,
+    error: null,
+  },
+  unapply: {
+    loaded: false,
+    loading: false,
+    error: null,
+  },
   remove: {
     loaded: false,
     loading: false,
@@ -65,7 +85,6 @@ export default function rules(state = initialState, action = {}) {
       };
     case `${ENABLE_RULES}_SUCCESS`:
     case `${DISABLE_RULES}_SUCCESS`:
-      console.log('action enable/dis succ', action.result);
       return {
         ...state,
         [getRequestKey(action.type)]: {

@@ -31,7 +31,7 @@ export function enableRules(url, rules) {
   return {
     type: ENABLE_RULES,
     request: {
-      op: 'post',
+      op: 'patch',
       path: `${url}/@rules`,
       data: {
         'form.button.Enable': true,
@@ -52,7 +52,7 @@ export function disableRules(url, rules) {
   return {
     type: DISABLE_RULES,
     request: {
-      op: 'post',
+      op: 'patch',
       path: `${url}/@rules`,
       data: {
         'form.button.Disable': true,

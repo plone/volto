@@ -97,7 +97,16 @@ class Rules extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  UNSAFE_componentWillReceiveProps(nextProps) {}
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (this.props.rules.disable.loading && nextProps.rules.disable.loaded) {
+      this.props.getRules(getBaseUrl(this.props.pathname));
+      this.setState({ checkedRules: [] });
+    }
+    if (this.props.rules.enable.loading && nextProps.rules.enable.loaded) {
+      this.props.getRules(getBaseUrl(this.props.pathname));
+      this.setState({ checkedRules: [] });
+    }
+  }
 
   /**
    * Rule check handler
@@ -126,7 +135,6 @@ class Rules extends Component {
    * @returns {undefined}
    */
   handleDisableRules = () => {
-    console.log('will disable', this.state.checkedRules);
     this.props.disableRules(
       getBaseUrl(this.props.pathname),
       this.state.checkedRules,
@@ -139,7 +147,6 @@ class Rules extends Component {
    * @returns {undefined}
    */
   handleEnableRules = () => {
-    console.log('will enable', this.state.checkedRules);
     this.props.enableRules(
       getBaseUrl(this.props.pathname),
       this.state.checkedRules,
@@ -153,8 +160,6 @@ class Rules extends Component {
    */
   render() {
     const { acquired_rules, assigned_rules } = this.props.rules?.rules || {};
-    // console.log('acquired_rules', acquired_rules);
-    // console.log('assigned_rules', assigned_rules);
 
     return (
       <Container id="rules">
