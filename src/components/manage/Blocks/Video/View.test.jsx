@@ -32,3 +32,18 @@ test('renders a view video component', () => {
   const json = component.toJSON();
   expect(json).toMatchSnapshot();
 });
+
+test('renders a view video component with placeholder', () => {
+  const component = renderer.create(
+    <View
+      data={{
+        '@type': 'video',
+        url: 'https://youtu.be/KqjeO_ekW3g',
+        preview_image:
+          'https://github.com/plone/volto/raw/master/logos/volto-colorful.png',
+      }}
+    />,
+  );
+  const json = component.toJSON();
+  expect(json).toMatchSnapshot();
+});
