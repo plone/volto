@@ -96,3 +96,6 @@ export const UNLOCK_CONTENT = 'UNLOCK_CONTENT';
 export const GET_RULES = 'GET_RULES';
 export const ENABLE_RULES = 'ENABLE_RULES';
 export const DISABLE_RULES = 'DISABLE_RULES';
+export const APPLY_SUB_RULES = 'APPLY_SUB_RULES';
+export const UNAPPLY_SUB_RULES = 'UNAPPLY_SUB_RULES';
+export const REMOVE_RULES = 'REMOVE_RULES';

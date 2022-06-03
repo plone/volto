@@ -22,12 +22,22 @@ import {
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import { getBaseUrl } from '@plone/volto/helpers';
-import { getRules, enableRules, disableRules } from '@plone/volto/actions';
+import {
+  getRules,
+  enableRules,
+  disableRules,
+  applyRulesToSubfolders,
+  unapplyRulesToSubfolders,
+  removeRules,
+} from '@plone/volto/actions';
 
 import { Icon, Toolbar } from '@plone/volto/components';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import checkSVG from '@plone/volto/icons/check.svg';
+
+import { toast } from 'react-toastify';
+import { Toast } from '@plone/volto/components';
 
 //toast notifications
 // import { toast } from 'react-toastify';
@@ -45,6 +55,26 @@ const messages = defineMessages({
   success: {
     id: 'Success',
     defaultMessage: 'Success',
+  },
+  enable: {
+    id: 'Enabled',
+    defaultMessage: 'Enabled',
+  },
+  disable: {
+    id: 'Disabled',
+    defaultMessage: 'Disabled',
+  },
+  apply: {
+    id: 'Applied to subfolders',
+    defaultMessage: 'Applied to subfolders',
+  },
+  unapply: {
+    id: 'Disabled apply to subfolders',
+    defaultMessage: 'Disabled apply to subfolders',
+  },
+  remove: {
+    id: 'Unassigned',
+    defaultMessage: 'Unassigned',
   },
 });
 
@@ -101,10 +131,58 @@ class Rules extends Component {
     if (this.props.rules.disable.loading && nextProps.rules.disable.loaded) {
       this.props.getRules(getBaseUrl(this.props.pathname));
       this.setState({ checkedRules: [] });
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.disable)}
+        />,
+      );
     }
     if (this.props.rules.enable.loading && nextProps.rules.enable.loaded) {
       this.props.getRules(getBaseUrl(this.props.pathname));
       this.setState({ checkedRules: [] });
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.enable)}
+        />,
+      );
+    }
+    if (this.props.rules.apply.loading && nextProps.rules.apply.loaded) {
+      this.props.getRules(getBaseUrl(this.props.pathname));
+      this.setState({ checkedRules: [] });
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.apply)}
+        />,
+      );
+    }
+    if (this.props.rules.unapply.loading && nextProps.rules.unapply.loaded) {
+      this.props.getRules(getBaseUrl(this.props.pathname));
+      this.setState({ checkedRules: [] });
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.unapply)}
+        />,
+      );
+    }
+
+    if (this.props.rules.remove.loading && nextProps.rules.remove.loaded) {
+      this.props.getRules(getBaseUrl(this.props.pathname));
+      this.setState({ checkedRules: [] });
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.remove)}
+        />,
+      );
     }
   }
 
@@ -148,6 +226,42 @@ class Rules extends Component {
    */
   handleEnableRules = () => {
     this.props.enableRules(
+      getBaseUrl(this.props.pathname),
+      this.state.checkedRules,
+    );
+  };
+
+  /**
+   * Apply rules to subfolder handler
+   * @method handleApplyToSubfolder
+   * @returns {undefined}
+   */
+  handleApplyToSubfolder = () => {
+    this.props.applyRulesToSubfolders(
+      getBaseUrl(this.props.pathname),
+      this.state.checkedRules,
+    );
+  };
+
+  /**
+   * Unapply rules to subfolder handler
+   * @method handleUnapplyToSubfolder
+   * @returns {undefined}
+   */
+  handleUnapplyToSubfolder = () => {
+    this.props.unapplyRulesToSubfolders(
+      getBaseUrl(this.props.pathname),
+      this.state.checkedRules,
+    );
+  };
+
+  /**
+   * Remove rules handler
+   * @method handleUnapplyToSubfolder
+   * @returns {undefined}
+   */
+  handleRemoveRules = () => {
+    this.props.removeRules(
       getBaseUrl(this.props.pathname),
       this.state.checkedRules,
     );
@@ -216,108 +330,107 @@ class Rules extends Component {
           </Table>
         )}
         {assigned_rules && assigned_rules.length > 0 && (
-          <Table>
-            <Table.Body>
-              <Table.Row>
-                <Table.HeaderCell>
-                  <FormattedMessage id="Select" defaultMessage="Select" />
-                </Table.HeaderCell>
-                <Table.HeaderCell>
-                  <FormattedMessage
-                    id="Active content rules in this Page"
-                    defaultMessage="Active content rules in this Page"
-                  />
-                </Table.HeaderCell>
-                <Table.HeaderCell>
-                  <FormattedMessage
-                    id="Applies to subfolders?"
-                    defaultMessage="Applies to subfolders?"
-                  />
-                </Table.HeaderCell>
-                <Table.HeaderCell>
-                  <FormattedMessage
-                    id="Enabled here?"
-                    defaultMessage="Enabled here?"
-                  />
-                </Table.HeaderCell>
-                <Table.HeaderCell>
-                  <FormattedMessage id="Enabled?" defaultMessage="Enabled?" />
-                </Table.HeaderCell>
-              </Table.Row>
-              {assigned_rules.map((rule, i) => (
-                <Table.Row key={i}>
-                  <Table.Cell>
-                    <Checkbox
-                      onChange={(o, { value }) => this.handleCheckRule(value)}
-                      value={rule.id}
-                      checked={this.state.checkedRules.includes(rule.id)}
+          <React.Fragment>
+            <Table>
+              <Table.Body>
+                <Table.Row>
+                  <Table.HeaderCell>
+                    <FormattedMessage id="Select" defaultMessage="Select" />
+                  </Table.HeaderCell>
+                  <Table.HeaderCell>
+                    <FormattedMessage
+                      id="Active content rules in this Page"
+                      defaultMessage="Active content rules in this Page"
                     />
-                  </Table.Cell>
-                  <Table.Cell>
-                    {rule.title}({rule.trigger})
-                  </Table.Cell>
-                  <Table.Cell>
-                    {rule.bubbles && (
-                      <span style={{ color: 'green' }}>
-                        <Icon
-                          name={checkSVG}
-                          className="contents circled"
-                          size="10px"
-                        />
-                      </span>
-                    )}
-                  </Table.Cell>
-                  <Table.Cell>
-                    {rule.enabled && (
-                      <span style={{ color: 'green' }}>
-                        <Icon
-                          name={checkSVG}
-                          className="contents circled"
-                          size="10px"
-                        />
-                      </span>
-                    )}
-                  </Table.Cell>
-                  <Table.Cell>
-                    {rule.global_enabled && (
-                      <span style={{ color: 'green' }}>
-                        <Icon
-                          name={checkSVG}
-                          className="contents circled"
-                          size="10px"
-                        />
-                      </span>
-                    )}
-                  </Table.Cell>
+                  </Table.HeaderCell>
+                  <Table.HeaderCell>
+                    <FormattedMessage
+                      id="Applies to subfolders?"
+                      defaultMessage="Applies to subfolders?"
+                    />
+                  </Table.HeaderCell>
+                  <Table.HeaderCell>
+                    <FormattedMessage
+                      id="Enabled here?"
+                      defaultMessage="Enabled here?"
+                    />
+                  </Table.HeaderCell>
+                  <Table.HeaderCell>
+                    <FormattedMessage id="Enabled?" defaultMessage="Enabled?" />
+                  </Table.HeaderCell>
                 </Table.Row>
-              ))}
-            </Table.Body>
-          </Table>
+                {assigned_rules.map((rule, i) => (
+                  <Table.Row key={i}>
+                    <Table.Cell>
+                      <Checkbox
+                        onChange={(o, { value }) => this.handleCheckRule(value)}
+                        value={rule.id}
+                        checked={this.state.checkedRules.includes(rule.id)}
+                      />
+                    </Table.Cell>
+                    <Table.Cell>
+                      {rule.title}({rule.trigger})
+                    </Table.Cell>
+                    <Table.Cell>
+                      {rule.bubbles && (
+                        <span style={{ color: 'green' }}>
+                          <Icon
+                            name={checkSVG}
+                            className="contents circled"
+                            size="10px"
+                          />
+                        </span>
+                      )}
+                    </Table.Cell>
+                    <Table.Cell>
+                      {rule.enabled && (
+                        <span style={{ color: 'green' }}>
+                          <Icon
+                            name={checkSVG}
+                            className="contents circled"
+                            size="10px"
+                          />
+                        </span>
+                      )}
+                    </Table.Cell>
+                    <Table.Cell>
+                      {rule.global_enabled && (
+                        <span style={{ color: 'green' }}>
+                          <Icon
+                            name={checkSVG}
+                            className="contents circled"
+                            size="10px"
+                          />
+                        </span>
+                      )}
+                    </Table.Cell>
+                  </Table.Row>
+                ))}
+              </Table.Body>
+            </Table>
+            <Button onClick={this.handleEnableRules} primary>
+              <FormattedMessage id="Enable" defaultMessage="Enable" />
+            </Button>
+            <Button onClick={this.handleDisableRules} primary>
+              <FormattedMessage id="Disable" defaultMessage="Disable" />
+            </Button>
+            <Button onClick={this.handleApplyToSubfolder} primary>
+              <FormattedMessage
+                id="Apply to subfolders"
+                defaultMessage="Apply to subfolders"
+              />
+            </Button>
+            <Button onClick={this.handleUnapplyToSubfolder} primary>
+              <FormattedMessage
+                id="Disable apply to subfolders"
+                defaultMessage="Disable apply to subfolders"
+              />
+            </Button>
+            <Button color="youtube" onClick={this.handleRemoveRules}>
+              <FormattedMessage id="Unassign" defaultMessage="Unassign" />
+            </Button>
+          </React.Fragment>
         )}
-        <Button onClick={this.handleEnableRules} primary>
-          <FormattedMessage id="Enable" defaultMessage="Enable" />
-        </Button>
-        <Button onClick={this.handleDisableRules} primary>
-          <FormattedMessage id="Disable" defaultMessage="Disable" />
-        </Button>
-        <Button onClick={() => console.log('Apply to subfolders')} primary>
-          <FormattedMessage
-            id="Apply to subfolders"
-            defaultMessage="Apply to subfolders"
-          />
-        </Button>
-        <Button
-          onClick={() => console.log('Disable apply to subfolders')}
-          primary
-        >
-          <FormattedMessage
-            id="Disable apply to subfolders"
-            defaultMessage="Disable apply to subfolders"
-          />
-        </Button>
-        <Button color="youtube" onClick={() => console.log('Unassign')}>
-          <FormattedMessage id="Unassign" defaultMessage="Unassign" />
-        </Button>
         {this.state.isClient && (
           <Portal node={document.getElementById('toolbar')}>
             <Toolbar
@@ -352,6 +465,13 @@ export default compose(
       pathname: props.location.pathname,
       title: state.content.data?.title || '',
     }),
-    { getRules, enableRules, disableRules },
+    {
+      getRules,
+      enableRules,
+      disableRules,
+      applyRulesToSubfolders,
+      unapplyRulesToSubfolders,
+      removeRules,
+    },
   ),
 )(Rules);

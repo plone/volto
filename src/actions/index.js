@@ -77,6 +77,9 @@ export {
   getRules,
   enableRules,
   disableRules,
+  applyRulesToSubfolders,
+  unapplyRulesToSubfolders,
+  removeRules,
 } from '@plone/volto/actions/rules/rules';
 export {
   resetSearchContent,

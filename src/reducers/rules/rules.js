@@ -2,6 +2,9 @@ import {
   GET_RULES,
   ENABLE_RULES,
   DISABLE_RULES,
+  APPLY_SUB_RULES,
+  UNAPPLY_SUB_RULES,
+  REMOVE_RULES,
 } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
@@ -65,6 +68,9 @@ export default function rules(state = initialState, action = {}) {
     case `${GET_RULES}_PENDING`:
     case `${ENABLE_RULES}_PENDING`:
     case `${DISABLE_RULES}_PENDING`:
+    case `${APPLY_SUB_RULES}_PENDING`:
+    case `${UNAPPLY_SUB_RULES}_PENDING`:
+    case `${REMOVE_RULES}_PENDING`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
@@ -85,6 +91,9 @@ export default function rules(state = initialState, action = {}) {
       };
     case `${ENABLE_RULES}_SUCCESS`:
     case `${DISABLE_RULES}_SUCCESS`:
+    case `${APPLY_SUB_RULES}_SUCCESS`:
+    case `${UNAPPLY_SUB_RULES}_SUCCESS`:
+    case `${REMOVE_RULES}_SUCCESS`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
@@ -94,6 +103,11 @@ export default function rules(state = initialState, action = {}) {
         },
       };
     case `${GET_RULES}_FAIL`:
+    case `${ENABLE_RULES}_FAIL`:
+    case `${DISABLE_RULES}_FAIL`:
+    case `${APPLY_SUB_RULES}_FAIL`:
+    case `${UNAPPLY_SUB_RULES}_FAIL`:
+    case `${REMOVE_RULES}_FAIL`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
