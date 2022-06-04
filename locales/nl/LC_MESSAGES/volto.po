@@ -2232,6 +2232,11 @@ msgstr "Zoekresultaten voor ${term}"
 msgid "Search users…"
 msgstr ""
 
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Searchable
+msgid "Searchable"
+msgstr ""
+
 #: components/manage/Blocks/Search/components/SearchDetails
 # defaultMessage: Searched for
 msgid "Searched for"
