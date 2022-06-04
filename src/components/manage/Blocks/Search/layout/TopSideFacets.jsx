@@ -111,7 +111,7 @@ const TopSideFacets = (props) => {
               />
             )}
           </div>
-          {data.facets?.length > 0 ? (
+          {data.facets?.length > 0 && (
             <div className="facets">
               {data.facetsTitle && <h3>{data.facetsTitle}</h3>}
               <Grid verticalAlign="bottom" columns={12}>
@@ -129,8 +129,6 @@ const TopSideFacets = (props) => {
                 />
               </Grid>
             </div>
-          ) : (
-            ''
           )}
           <SearchDetails text={searchedText} total={totalItems} as="h5" />
         </Grid.Column>
