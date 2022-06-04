@@ -124,7 +124,7 @@ class Controlpanels extends Component {
     }
 
     const controlpanels = map(
-      concat(this.props.controlpanels, [
+      concat(this.props.controlpanels, config.settings.controlpanels || [], [
         {
           '@id': '/addons',
           group: 'General',
