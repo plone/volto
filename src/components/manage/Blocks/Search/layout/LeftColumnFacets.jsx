@@ -57,7 +57,7 @@ const LeftColumnFacets = (props) => {
       </Grid.Row>
 
       <Grid.Row>
-        {data.facets?.length && (
+        {data.facets?.length ? (
           <Grid.Column mobile={12} tablet={4} computer={3}>
             <div className="facets">
               {data.facetsTitle && <h3>{data.facetsTitle}</h3>}
@@ -75,6 +75,8 @@ const LeftColumnFacets = (props) => {
               />
             </div>
           </Grid.Column>
+        ) : (
+          ''
         )}
 
         <Grid.Column

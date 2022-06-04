@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Don't render junk when no facets are added to the search block @tiberiuichim
+
 ### Internal
 
 ### Documentation
