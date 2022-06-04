@@ -37,7 +37,7 @@ describe('Accessibility Tests', () => {
     cy.get('tbody > :nth-child(2) > :nth-child(3)').click().type('content');
     cy.get('tbody > :nth-child(3) > :nth-child(1)').click().type('content');
     cy.get('tbody > :nth-child(3) > :nth-child(2)').click().type('Headline 4');
-    cy.get('input[name="field-celltype"]').click({ force: true });
+    cy.get('input[name="field-type"]').click({ force: true });
     cy.get('tbody > :nth-child(3) > :nth-child(3)').click().type('content');
     cy.get('tbody > :nth-child(4) > :nth-child(1)').click().type('content');
     cy.get('tbody > :nth-child(4) > :nth-child(2)').click().type('content');
