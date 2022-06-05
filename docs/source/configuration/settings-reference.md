@@ -198,6 +198,30 @@ contentMetadataTagsImageField
 
 hasWorkingCopySupport
     This setting will enable working copy support in your site. You need to install the `plone.app.iterate` add-on in your Plone site in order to make it working.
+
+controlpanels
+    Register a component as control panel.
+
+    Example configuration in `config.js` of your project or add-on:
+
+    ```
+    config.settings.controlpanels = [
+      ...config.settings.controlpanels,
+      {
+        '@id': '/manage-myaddon-subscriptions',
+        group: 'Add-on Configuration',
+        title: 'Breaking News Manage Subscriptions',
+      },
+    ];
+
+    config.addonRoutes = [
+      ...config.addonRoutes,
+      {
+        path: '/controlpanel/manage-myaddon-subscriptions',
+        component: ManageSubscriptions,
+      },
+    ];
+    ```
 ```
 
 ## Server-specific serverConfig
