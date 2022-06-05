@@ -506,6 +506,11 @@ msgstr "お問い合わせフォーム"
 msgid "Contained items"
 msgstr "含まれるアイテム"
 
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Content
+msgid "Content"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Content type created
 msgid "Content type created"
@@ -1100,6 +1105,11 @@ msgstr "氏名"
 # defaultMessage: GNU GPL license
 msgid "GNU GPL license"
 msgstr "GNU GPL license"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: General
+msgid "General"
+msgstr ""
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Global role

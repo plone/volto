@@ -34,6 +34,14 @@ const messages = defineMessages({
     id: 'Version Overview',
     defaultMessage: 'Version Overview',
   },
+  general: {
+    id: 'General',
+    defaultMessage: 'General',
+  },
+  content: {
+    id: 'Content',
+    defaultMessage: 'Content',
+  },
   moderatecomments: {
     id: 'Moderate Comments',
     defaultMessage: 'Moderate Comments',
@@ -127,27 +135,27 @@ class Controlpanels extends Component {
       concat(this.props.controlpanels, config.settings.controlpanels || [], [
         {
           '@id': '/addons',
-          group: 'General',
+          group: this.props.intl.formatMessage(messages.general),
           title: 'Add-Ons',
         },
         {
           '@id': '/database',
-          group: 'General',
+          group: this.props.intl.formatMessage(messages.general),
           title: 'Database',
         },
         {
           '@id': '/moderate-comments',
-          group: 'Content',
+          group: this.props.intl.formatMessage(messages.content),
           title: this.props.intl.formatMessage(messages.moderatecomments),
         },
         {
           '@id': '/users',
-          group: 'Users and Groups',
+          group: this.props.intl.formatMessage(messages.usersandgroups),
           title: this.props.intl.formatMessage(messages.users),
         },
         {
           '@id': '/groups',
-          group: 'Users and Groups',
+          group: this.props.intl.formatMessage(messages.usersandgroups),
           title: this.props.intl.formatMessage(messages.groups),
         },
       ]),
