@@ -38,6 +38,10 @@ const messages = defineMessages({
     id: 'General',
     defaultMessage: 'General',
   },
+  addonconfiguration: {
+    id: 'Add-on Configuration',
+    defaultMessage: 'Add-on Configuration',
+  },
   content: {
     id: 'Content',
     defaultMessage: 'Content',
@@ -131,8 +135,18 @@ class Controlpanels extends Component {
       return <Error error={this.state.error} />;
     }
 
+    let customcontrolpanels = config.settings.controlpanels
+      ? config.settings.controlpanels.map((el) => {
+          el.group =
+            this.props.intl.formatMessage({
+              id: el.group,
+              defaultMessage: el.group,
+            }) || el.group;
+          return el;
+        })
+      : [];
     const controlpanels = map(
-      concat(this.props.controlpanels, config.settings.controlpanels || [], [
+      concat(this.props.controlpanels, customcontrolpanels, [
         {
           '@id': '/addons',
           group: this.props.intl.formatMessage(messages.general),

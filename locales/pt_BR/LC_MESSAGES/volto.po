@@ -163,6 +163,11 @@ msgstr "Adicionar termo de vocabulário"
 msgid "Add {type}"
 msgstr "Adicionar {type}"
 
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Add-on Configuration
+msgid "Add-on Configuration"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Add-ons Settings
 msgid "Add-ons Settings"

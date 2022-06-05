@@ -222,6 +222,8 @@ controlpanels
       },
     ];
     ```
+
+    The group can be one of the default groups 'General', 'Content', 'Security', 'Add-on Configuration', 'Users and Groups' or a custom group.
 ```
 
 ## Server-specific serverConfig
