@@ -74,6 +74,7 @@ export AlbumView from '@plone/volto/components/theme/View/AlbumView';
 export Actions from '@plone/volto/components/manage/Actions/Actions';
 export Add from '@plone/volto/components/manage/Add/Add';
 export AddonsControlpanel from '@plone/volto/components/manage/Controlpanels/AddonsControlpanel';
+export UndoControlPanel from '@plone/volto/components/manage/Controlpanels/UndoControlPanel';
 export Contents from '@plone/volto/components/manage/Contents/Contents';
 export Circle from '@plone/volto/components/manage/Contents/circle';
 export DatabaseInformation from '@plone/volto/components/manage/Controlpanels/DatabaseInformation';

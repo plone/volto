@@ -35,5 +35,5 @@ export const controlPanelsIcons = {
   users: userSVG,
   groups: groupSVG,
   addons: addonSVG,
-  'undo-control-panel': undoControlPanelSVG
+  undo: undoControlPanelSVG,
 };

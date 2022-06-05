@@ -137,7 +137,7 @@ class Controlpanels extends Component {
         },
         // This is the icon place in UndoControlPanel
         {
-          '@id': '/undo-control-panel',
+          '@id': '/undo',
           group: 'General',
           title: 'Undo Control Panel',
         },
