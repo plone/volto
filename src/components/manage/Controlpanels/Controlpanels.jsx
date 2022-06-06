@@ -136,6 +136,11 @@ class Controlpanels extends Component {
           title: 'Database',
         },
         {
+          '@id': '/rules',
+          group: 'Content',
+          title: 'Content Rules',
+        },
+        {
           '@id': '/moderate-comments',
           group: 'Content',
           title: this.props.intl.formatMessage(messages.moderatecomments),

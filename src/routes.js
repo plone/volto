@@ -34,6 +34,7 @@ import {
   Sitemap,
   UsersControlpanel,
   GroupsControlpanel,
+  RulesControlpanel,
 } from '@plone/volto/components';
 
 // Deliberatelly use of absolute path of these components, since we do not want them
@@ -149,6 +150,10 @@ export const defaultRoutes = [
   {
     path: '/controlpanel/groups',
     component: GroupsControlpanel,
+  },
+  {
+    path: '/controlpanel/rules',
+    component: RulesControlpanel,
   },
   {
     path: '/controlpanel/:id',
