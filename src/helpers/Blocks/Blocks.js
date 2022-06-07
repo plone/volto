@@ -428,7 +428,7 @@ export const buildStyleClassNamesFromData = (styles) => {
   });
   return styleArray.map((item) => {
     const classname = item.map((item) => {
-      const str_item = item.toString();
+      const str_item = item ? item.toString() : '';
       return str_item && str_item.startsWith('#')
         ? str_item.replace('#', '')
         : str_item;
