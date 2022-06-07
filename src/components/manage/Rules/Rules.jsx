@@ -13,16 +13,15 @@ import {
   Button,
   Checkbox,
   Container,
-  Form,
-  Header,
-  Input,
   Segment,
+  Select,
   Table,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import { getBaseUrl } from '@plone/volto/helpers';
 import {
+  addRule,
   getRules,
   enableRules,
   disableRules,
@@ -39,10 +38,6 @@ import checkSVG from '@plone/volto/icons/check.svg';
 import { toast } from 'react-toastify';
 import { Toast } from '@plone/volto/components';
 
-//toast notifications
-// import { toast } from 'react-toastify';
-// import { Toast } from '@plone/volto/components';
-
 const messages = defineMessages({
   back: {
     id: 'Back',
@@ -55,6 +50,10 @@ const messages = defineMessages({
   success: {
     id: 'Success',
     defaultMessage: 'Success',
+  },
+  add: {
+    id: 'Added',
+    defaultMessage: 'Added',
   },
   enable: {
     id: 'Enabled',
@@ -91,6 +90,12 @@ class Rules extends Component {
    */
   static propTypes = {
     getRules: PropTypes.func.isRequired,
+    addRule: PropTypes.func.isRequired,
+    enableRules: PropTypes.func.isRequired,
+    disableRules: PropTypes.func.isRequired,
+    applyRulesToSubfolders: PropTypes.func.isRequired,
+    unapplyRulesToSubfolders: PropTypes.func.isRequired,
+    removeRules: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
   };
@@ -106,6 +111,7 @@ class Rules extends Component {
     this.state = {
       isClient: false,
       checkedRules: [],
+      newRule: '',
     };
   }
 
@@ -128,6 +134,17 @@ class Rules extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
+    if (this.props.rules.add.loading && nextProps.rules.add.loaded) {
+      this.props.getRules(getBaseUrl(this.props.pathname));
+      this.setState({ newRule: '' });
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.add)}
+        />,
+      );
+    }
     if (this.props.rules.disable.loading && nextProps.rules.disable.loaded) {
       this.props.getRules(getBaseUrl(this.props.pathname));
       this.setState({ checkedRules: [] });
@@ -257,7 +274,7 @@ class Rules extends Component {
 
   /**
    * Remove rules handler
-   * @method handleUnapplyToSubfolder
+   * @method handleRemoveRules
    * @returns {undefined}
    */
   handleRemoveRules = () => {
@@ -268,13 +285,22 @@ class Rules extends Component {
   };
 
   /**
+   * Remove rules handler
+   * @method handleAddRule
+   * @returns {undefined}
+   */
+  handleAddRule = () => {
+    this.props.addRule(getBaseUrl(this.props.pathname), this.state.newRule);
+  };
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
-    const { acquired_rules, assigned_rules } = this.props.rules?.rules || {};
-
+    const { acquired_rules, assigned_rules, assignable_rules } =
+      this.props.rules?.rules || {};
     return (
       <Container id="rules">
         <Helmet title={this.props.intl.formatMessage(messages.rules)} />
@@ -293,6 +319,7 @@ class Rules extends Component {
             />
           </Segment>
         </Segment.Group>
+
         {acquired_rules && acquired_rules.length > 0 && (
           <Table>
             <Table.Body>
@@ -307,6 +334,7 @@ class Rules extends Component {
                   <FormattedMessage id="Active" defaultMessage="Active" />
                 </Table.HeaderCell>
               </Table.Row>
+
               {acquired_rules.map((rule, i) => (
                 <Table.Row key={i}>
                   <Table.Cell>
@@ -328,6 +356,31 @@ class Rules extends Component {
               ))}
             </Table.Body>
           </Table>
+        )}
+        {assignable_rules && assignable_rules.length > 0 && (
+          <Segment>
+            <FormattedMessage
+              id="Available content rules:"
+              defaultMessage="Available content rules:"
+            />
+            <div style={{ display: 'flex' }}>
+              <Select
+                placeholder="Select rule"
+                value={this.state.newRule}
+                onChange={(e, { value }) => this.setState({ newRule: value })}
+                options={assignable_rules.map((rule, i) => {
+                  return { key: rule.id, value: rule.id, text: rule.title };
+                })}
+              />
+              <Button
+                onClick={this.handleAddRule}
+                primary
+                style={{ marginLeft: '10px' }}
+              >
+                <FormattedMessage id="Add" defaultMessage="Add" />
+              </Button>
+            </div>
+          </Segment>
         )}
         {assigned_rules && assigned_rules.length > 0 && (
           <React.Fragment>
@@ -466,6 +519,7 @@ export default compose(
       title: state.content.data?.title || '',
     }),
     {
+      addRule,
       getRules,
       enableRules,
       disableRules,

@@ -1,4 +1,5 @@
 import {
+  ADD_RULE,
   GET_RULES,
   ENABLE_RULES,
   DISABLE_RULES,
@@ -65,6 +66,7 @@ function getRequestKey(actionType) {
  */
 export default function rules(state = initialState, action = {}) {
   switch (action.type) {
+    case `${ADD_RULE}_PENDING`:
     case `${GET_RULES}_PENDING`:
     case `${ENABLE_RULES}_PENDING`:
     case `${DISABLE_RULES}_PENDING`:
@@ -82,13 +84,14 @@ export default function rules(state = initialState, action = {}) {
     case `${GET_RULES}_SUCCESS`:
       return {
         ...state,
-        rules: action.result?.rules,
+        rules: action.result?.[`content-rules`],
         [getRequestKey(action.type)]: {
           loading: false,
           loaded: true,
           error: null,
         },
       };
+    case `${ADD_RULE}_SUCCESS`:
     case `${ENABLE_RULES}_SUCCESS`:
     case `${DISABLE_RULES}_SUCCESS`:
     case `${APPLY_SUB_RULES}_SUCCESS`:
@@ -102,6 +105,7 @@ export default function rules(state = initialState, action = {}) {
           error: action.result?.failed,
         },
       };
+    case `${ADD_RULE}_FAIL`:
     case `${GET_RULES}_FAIL`:
     case `${ENABLE_RULES}_FAIL`:
     case `${DISABLE_RULES}_FAIL`:

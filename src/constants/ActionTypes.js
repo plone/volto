@@ -93,6 +93,7 @@ export const APPLY_WORKING_COPY = 'APPLY_WORKING_COPY';
 export const REMOVE_WORKING_COPY = 'REMOVE_WORKING_COPY';
 export const LOCK_CONTENT = 'LOCK_CONTENT';
 export const UNLOCK_CONTENT = 'UNLOCK_CONTENT';
+export const ADD_RULE = 'ADD_RULE';
 export const GET_RULES = 'GET_RULES';
 export const ENABLE_RULES = 'ENABLE_RULES';
 export const DISABLE_RULES = 'DISABLE_RULES';
