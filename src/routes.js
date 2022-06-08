@@ -32,7 +32,7 @@ import {
   Sharing,
   Sitemap,
   UsersControlpanel,
-  UserGroupMembership,
+  UserGroupMembershipControlPanel,
   GroupsControlpanel,
 } from '@plone/volto/components';
 
@@ -148,7 +148,7 @@ export const defaultRoutes = [
   },
   {
     path: '/controlpanel/usergroupmembership',
-    component: UserGroupMembership,
+    component: UserGroupMembershipControlPanel,
   },
   {
     path: '/controlpanel/groups',

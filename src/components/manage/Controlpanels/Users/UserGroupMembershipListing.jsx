@@ -26,8 +26,10 @@ const ListingTemplate = ({
     !many_users || query_user.length > 0 || groups_filter.length > 0;
   if (show_users) {
     items.sort(function (a, b) {
-      var labelA = a.fullname.split(' ').reverse().join(' ');
-      var labelB = b.fullname.split(' ').reverse().join(' ');
+      var labelA =
+        (a.fullname && a.fullname.split(' ').reverse().join(' ')) || a.id;
+      var labelB =
+        (b.fullname && b.fullname.split(' ').reverse().join(' ')) || b.id;
       if (labelA < labelB) {
         return -1;
       }

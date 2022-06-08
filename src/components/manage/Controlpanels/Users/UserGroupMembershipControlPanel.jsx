@@ -16,10 +16,10 @@ import { getParentUrl } from '@plone/volto/helpers';
 import UserGroupMembershipMatrix from '@plone/volto/components/manage/Controlpanels/Users/UserGroupMembershipMatrix';
 import backSVG from '@plone/volto/icons/back.svg';
 
-const UserControlPanel = () => {
+const UserGroupMembershipPanel = () => {
   const intl = useIntl();
   const history = useHistory();
-  const location = useLocation();
+  const pathname = useLocation().pathname;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -43,14 +43,14 @@ const UserControlPanel = () => {
       {__CLIENT__ && (
         <Portal node={document.getElementById('toolbar')}>
           <Toolbar
-            pathname={location.pathname}
+            pathname={pathname}
             hideDefaultViewButtons
             inner={
               <Link
                 className="item"
                 to="#"
                 onClick={() => {
-                  history.push(getParentUrl(location.pathname));
+                  history.push(getParentUrl(pathname));
                 }}
               >
                 <Icon name={backSVG} className="contents circled" size="30px" />
@@ -63,4 +63,4 @@ const UserControlPanel = () => {
   );
 };
 
-export default UserControlPanel;
+export default UserGroupMembershipPanel;
