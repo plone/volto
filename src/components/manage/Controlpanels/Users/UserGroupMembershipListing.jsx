@@ -188,10 +188,10 @@ const ListingTemplate = ({
                         intl.formatMessage(messages.addUsersToGroup) +
                         ` ${matrix_option.label}`
                       }
+                      key={matrix_option.value}
                     >
                       <Checkbox
                         name={`member_selectall_${matrix_option.value}`}
-                        key={matrix_option.value}
                         title={matrix_option.label}
                         defaultChecked={false}
                         onChange={(event, { checked }) => {
