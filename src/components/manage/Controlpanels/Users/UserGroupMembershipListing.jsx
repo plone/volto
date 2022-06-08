@@ -10,12 +10,12 @@ import { updateGroup, listUsers } from '@plone/volto/actions';
 import { uniqBy } from 'lodash';
 
 const ListingTemplate = ({
-  query_user,
-  query_group,
-  groups_filter,
+  query_user, // Show users on y-axis that match
+  query_group, // Show groups on y-axis that match
+  groups_filter, // show members of these groups
   many_users,
   many_groups,
-  add_joined_groups,
+  add_joined_groups, // Toggle: show also groups that the below users join
 }) => {
   const intl = useIntl();
   const dispatch = useDispatch();
@@ -23,7 +23,9 @@ const ListingTemplate = ({
   // y axis
   let items = useSelector((state) => state.users.users);
   let show_users =
-    !many_users || query_user.length > 0 || groups_filter.length > 0;
+    !many_users ||
+    (many_users && query_user.length > 1) ||
+    (many_users && groups_filter.length > 0); // Stay with '> 0', as these are already groups, not querystring to search for groups.
   if (show_users) {
     items.sort(function (a, b) {
       var labelA =
@@ -46,12 +48,13 @@ const ListingTemplate = ({
   let groups = useSelector((state) => state.groups.groups);
   let show_matrix_options =
     !many_groups ||
-    query_group.length > 0 ||
+    (many_groups && query_group.length > 1) ||
     groups_filter.length > 0 ||
     add_joined_groups;
   let matrix_options; // list of Objects (value, label)
   if (show_matrix_options) {
-    matrix_options = !many_groups || query_group.length > 0 ? groups : [];
+    matrix_options =
+      !many_groups || (many_groups && query_group.length > 1) ? groups : [];
     if (add_joined_groups) {
       items.map((item) => {
         matrix_options.push(...item.groups.items);

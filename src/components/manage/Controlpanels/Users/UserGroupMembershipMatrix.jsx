@@ -39,19 +39,20 @@ const UserGroupMembershipMatrix = (props) => {
   }
 
   let many_users = useSelector(
-    (state) => state.controlpanels.controlpanel?.data?.many_users || false,
+    (state) => state.controlpanels.controlpanel?.data?.many_users ?? true,
   );
   let many_groups = useSelector(
-    (state) => state.controlpanels.controlpanel?.data?.many_groups || false,
+    (state) => state.controlpanels.controlpanel?.data?.many_groups ?? true,
   );
 
   useEffect(() => {
-    dispatch(listGroups('', query_group_filter));
-  }, [dispatch, query_group_filter, props]);
+    // TODO fetch group for at least query_group_filter.length > 1?
+    if (!many_groups || (many_groups && query_group_filter.length > 1)) {
+      dispatch(listGroups('', query_group_filter));
+    }
+  }, [dispatch, many_groups, query_group_filter, props]);
 
   useEffect(() => {
-    // dispatch(getRegistry('plone.many_users'));
-    // dispatch(getRegistry('plone.many_groups'));
     dispatch(getControlpanel('usergroup'));
   }, [dispatch]);
 
@@ -70,6 +71,7 @@ const UserGroupMembershipMatrix = (props) => {
         break;
       case 'SearchGroupFilter':
         setQuery_group_filter('');
+        setGroups_filter([]);
         break;
       default:
         break;
@@ -159,18 +161,19 @@ const UserGroupMembershipMatrix = (props) => {
           </Form.Field>
         </Form>
 
-        {filter_options?.map((filter_option) => (
-          <Checkbox
-            name={`filter_option_${filter_option.value}`}
-            key={filter_option.value}
-            title={filter_option.label}
-            label={filter_option.label}
-            defaultChecked={false}
-            onChange={(event, { checked }) => {
-              onSelectOptionHandler(filter_option, checked);
-            }}
-          />
-        ))}
+        {(!many_groups || query_group_filter.length > 1) &&
+          filter_options?.map((filter_option) => (
+            <Checkbox
+              name={`filter_option_${filter_option.value}`}
+              key={filter_option.value}
+              title={filter_option.label}
+              label={filter_option.label}
+              defaultChecked={false}
+              onChange={(event, { checked }) => {
+                onSelectOptionHandler(filter_option, checked);
+              }}
+            />
+          ))}
       </div>
       <UserGroupMembershipListing
         query_user={query_user}
