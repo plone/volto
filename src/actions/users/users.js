@@ -3,6 +3,8 @@
  * @module actions/users/users
  */
 
+import { stringify } from 'query-string';
+
 import {
   CREATE_USER,
   DELETE_USER,
@@ -75,10 +77,16 @@ export function listUsers(query, groups_filter) {
   if (query) {
     path += `?query=${query}`;
     if (groups_filter.length > 0) {
-      path += `&groups-filter=${groups_filter.join(',')}`;
+      path += `&${stringify(
+        { 'groups-filter': groups_filter },
+        { arrayFormat: 'colon-list-separator' },
+      )}`;
     }
   } else if (groups_filter.length > 0) {
-    path += `?groups-filter=${groups_filter.join(',')}`;
+    path += `?${stringify(
+      { 'groups-filter': groups_filter },
+      { arrayFormat: 'colon-list-separator' },
+    )}`;
   }
   return {
     type: LIST_USERS,
