@@ -2980,7 +2980,7 @@ msgid "Username"
 msgstr "Nom d'utilisateur"
 
 #: components/manage/Controlpanels/Controlpanels
-#: components/manage/Controlpanels/Users/UserGroupMembership
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
 #: components/manage/Controlpanels/Users/UsersControlpanel
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Users
