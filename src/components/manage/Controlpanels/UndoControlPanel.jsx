@@ -12,6 +12,7 @@ import {
   Container,
   // Header,
   Segment,
+  Table,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { Icon, Toolbar } from '@plone/volto/components';
@@ -23,7 +24,7 @@ import { Form } from '@plone/volto/components';
 const messages = defineMessages({
   undoControlPanel: {
     id: 'Undo Control Panel',
-    defaultMessage: 'Undo Control Panel.',
+    defaultMessage: 'Undo Control Panel',
   },
   back: {
     id: 'Back',
@@ -32,6 +33,14 @@ const messages = defineMessages({
   default: {
     id: 'Default',
     defaultMessage: 'Default',
+  },
+  sortBy: {
+    id: 'Sort by',
+    defaultMessage: 'Sort by',
+  },
+  sortByDescription: {
+    id: 'Sort transactions by Name, User-Name or Email',
+    defaultMessage: 'Sort transactions by Name, User-Name or Email',
   },
 });
 
@@ -128,9 +137,10 @@ class UndoControlPanel extends Component {
                   ],
                   properties: {
                     sortBy: {
-                      description:
-                        'Sort transactions by Name, User-Name or Email',
-                      title: 'Sort by',
+                      title: this.props.intl.formatMessage(messages.sortBy),
+                      description: this.props.intl.formatMessage(
+                        messages.sortByDescription,
+                      ),
                       type: 'string',
                       choices: map(['Name', 'User Name', 'Email'], (type) => [
                         type,
@@ -161,9 +171,10 @@ class UndoControlPanel extends Component {
                   ],
                   properties: {
                     sortBy: {
-                      description:
-                        'Sort transactions by Name, User-Name or Email',
-                      title: 'Sort by',
+                      title: this.props.intl.formatMessage(messages.sortBy),
+                      description: this.props.intl.formatMessage(
+                        messages.sortByDescription,
+                      ),
                       type: 'string',
                       choices: map(['Name', 'User Name', 'Email'], (type) => [
                         type,
@@ -178,10 +189,45 @@ class UndoControlPanel extends Component {
                   required: [],
                 }}
                 onSubmit={this.onSubmit}
-                // onCancel={this.onCancel}
               />
             )}
           </Segment>
+        </Segment.Group>
+        <Segment.Group raised>
+          <Segment className="primary">
+            <FormattedMessage id="Transactions" defaultMessage="Transactions" />
+          </Segment>
+          <Table selectable compact singleLine attached>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell width={1}>
+                  <FormattedMessage
+                    id="History Version Number"
+                    defaultMessage="#"
+                  />
+                </Table.HeaderCell>
+                <Table.HeaderCell width={3}>
+                  <FormattedMessage id="What" defaultMessage="What" />
+                </Table.HeaderCell>
+                <Table.HeaderCell width={3}>
+                  <FormattedMessage id="Who" defaultMessage="Who" />
+                </Table.HeaderCell>
+                <Table.HeaderCell width={3}>
+                  <FormattedMessage id="When" defaultMessage="When" />
+                </Table.HeaderCell>
+                <Table.HeaderCell width={3}>
+                  <FormattedMessage id="path" defaultMessage="path" />
+                </Table.HeaderCell>
+                <Table.HeaderCell width={3}>
+                  <FormattedMessage
+                    id="Change Note"
+                    defaultMessage="Change Note"
+                  />
+                </Table.HeaderCell>
+                <Table.HeaderCell />
+              </Table.Row>
+            </Table.Header>
+          </Table>
         </Segment.Group>
         {this.state.isClient && (
           <Portal node={document.getElementById('toolbar')}>

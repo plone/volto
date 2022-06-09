@@ -60,6 +60,7 @@ export {
   getHistory,
   revertHistory,
 } from '@plone/volto/actions/history/history';
+export { getTransaction } from '@plone/volto/actions/undoControlPanel/undoControlPanel';
 export {
   addMessage,
   removeMessage,
