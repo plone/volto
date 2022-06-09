@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add noindex metadata tag @steffenri
+
 ### Bugfix
 
 ### Internal
