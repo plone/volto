@@ -1,6 +1,6 @@
 /**
  * Moderate content rules component.
- * @module components/manage/Controlpanels/Rules
+ * @module components/manage/Controlpanels/Rules/Rules
  */
 
 import React, { Component } from 'react';
@@ -123,6 +123,15 @@ class Rules extends Component {
   }
 
   /**
+   * Add Rule handler
+   * @method handleAddRule
+   * @returns {undefined}
+   */
+  handleAddRule() {
+    this.props.history.push(`${this.props.pathname}/add`);
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -201,7 +210,7 @@ class Rules extends Component {
                     </Table.Row>
                   </Table.Body>
                 </Table>
-                <Button onClick={() => console.log('handleadd')} primary>
+                <Button onClick={() => this.handleAddRule()} primary>
                   <FormattedMessage
                     id="Add content rule"
                     defaultMessage="Add content rule"
