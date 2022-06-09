@@ -1,17 +1,202 @@
 # Change Log
 
-## 15.4.2 (unreleased)
+## 16.0.0 (unreleased)
 
 ### Breaking
 
 ### Feature
 
 ### Bugfix
-- Fixed edit internal link and image url in this blocks: image block, leadimage block, video block, objectBrowser. In objectBrowser, if pasted url was internal, it wasn't flatted and wass handled from Plone as an external. @giuliaghisini
 
 ### Internal
 
 ### Documentation
+
+## 16.0.0-alpha.7 (2022-06-01)
+
+### Bugfix
+
+- fix schema when content contains lock informations. @giuliaghisini
+
+### Internal
+
+- Missing change from the last breaking change (Remove the style wrapper around the `<Block />` component in Edit mode, moved to the main edit wrapper). Now, really move it to the main edit wrapper @sneridagh
+
+## 16.0.0-alpha.6 (2022-05-31)
+
+### Breaking
+
+- Rename `src/components/manage/Widgets/ColorPicker.jsx` component to `src/components/manage/Widgets/ColorPickerWidget.jsx` @sneridagh
+- Remove the style wrapper around the `<Block />` component in Edit mode, moved to the main edit wrapper @sneridagh
+
+### Feature
+
+- Updated Brazilian Portuguese translation @ericof
+- Forward `HTTP Range` headers to the backend. @mamico
+- Add default value to color picker, if `default` is present in the widget schema. @sneridagh
+- Inject the classnames of the StyleWrapper into the main edit wrapper (it was wrapping directly the Edit component before). This way, the flexibility is bigger and you can act upon the whole edit container and artifacts (handlers, etc) @sneridagh
+
+### Bugfix
+
+- fix TokenWidget choices when editing a recently created content. @giuliaghisini
+- Fix color picker defaults implementation #2 @sneridagh
+- Enable default color in `backgroundColor` default StyleWrapper field which wasn't sync with the default value setting @sneridagh
+- Fix Block style wrapper: Cannot read properties of undefined (reading 'toString') @avoinea #3410
+
+## 16.0.0-alpha.5 (2022-05-25)
+
+### Bugfix
+
+- Fix regression, compound lang names (eg. `pt-BR`) no longer working @sneridagh
+
+## 16.0.0-alpha.4 (2022-05-22)
+
+### Breaking
+
+- Removed `date-fns` from dependencies, this was in the build because `Cypress` depended on it. After the `Cypress` upgrade it no longer depends on it. If your project still depends on it, add it as a dependency of your project. @sneridagh
+- Removed all usage of `date-fns` from core. @sneridagh
+
+### Feature
+
+- Added viewableInBrowserObjects setting to use in alternative to downloadableObjects, if you want to view file in browser intstead downloading. @giuliaghisini
+- Disable already chosen criteria in querystring widget @kreafox
+- Added X-Forwarded-\* headers to superagent requests. @mamico
+
+### Bugfix
+
+- Fix `withStylingSchemaEnhancer` enhancer mechanism @sneridagh
+- Add correct query parameters to the redirect @robgietema
+- Fix RenderBlocks: path @ksuess
+- Fix field id creation in dexterity control panel to have slugified id @erral
+- Changed to get intl.locale always from state @ionlizarazu
+
+### Internal
+
+- Update `Cypress` to version 9.6.1 @sneridagh
+
+### Documentation
+
+- Updated simple.md @MdSahil-oss
+- Fix indentation in nginx configuration in simple.md @stevepiercy
+
+## 16.0.0-alpha.3 (2022-05-16)
+
+### Breaking
+
+- Remove `div` as default if `as` prop from `RenderBlocks`. Now the default is a `React.Fragment` instead. This could lead to CSS inconsistencies if taken this div into account, specially if used in custom add-ons without. In order to avoid them, set the `as` property always in your add-ons. @sneridagh
+
+## 16.0.0-alpha.2 (2022-05-16)
+
+### Feature
+
+- Add default widget views for all type of fields and improve the DefaultView @ionlizarazu
+- added configurable identifier field for password reset in config.js. @giuliaghisini
+- Add `expandToBackendURL` helper @sneridagh
+
+### Bugfix
+
+- fixed view video list from youtube in Video block. @giuliaghisini
+- Fixed ICS URL in event view in seamless mode @sneridagh
+
+### Internal
+
+- Reintroduce Plone 6 acceptance tests using the latests `plone.app.robotframework` 2.0.0a6 specific Volto fixture. @datakurre @ericof @sneridagh
+- Upgrade all tests to use `plone.app.robotframework` 2.0.0a6 @sneridagh
+- Upgrade Sentry to latest version because of [#3346](https://github.com/plone/volto/issues/3346) @sneridagh
+
+### Documentation
+
+- fix make task `docs-linkcheckbroken` if grep has exit code 1 (no lines found)
+
+## 16.0.0-alpha.1 (2022-05-09)
+
+### Feature
+
+- Added new Block Style Wrapper. This implementation is marked as **experimental** during Volto 16 alpha period. The components, API and the styling are subject to change **without issuing a breaking change**. You can start using it in your projects and add-ons, but taking this into account. See documentation for more information. @sneridagh
+
+## 16.0.0-alpha.0 (2022-05-06)
+
+### Breaking
+
+- Deprecate NodeJS 12 since it's out of LTS since April 30, 2022 @sneridagh
+- Move all cypress actions to the main `Makefile`, providing better meaningful names. Remove them from `package.json` script section. @sneridagh
+
+### Feature
+
+- added default placeholder for videos to embed them more lightly @giuliaghisini
+- Added default placeholder for videos to embed them more lightly @giuliaghisini
+- Completed Romanian translation @sboghy
+
+### Bugfix
+
+- Fix Search page visit crashes /contents view @dobri1408
+- Fix sidebar full size bottom opacity on edit page when sidebar is collapsed @ichim-david
+- Fix toolbar bottom opacity on edit page when toolbar is collapsed @ichim-david
+- Fix missing criteria in QueryWidget. @giuliaghisini
+- Fix content view regression, height issue @danielamormocea
+- Fixed secure cookie option. @giuliaghisini
+- Changed addon order in addon controlpanel to mimic Classic UI @erral
+- Fixed error when loading content in a language for which a Volto translation is not available. @davisagli
+- Fix different querystring filters in the querystring widget @kreafox
+- Fix for clipped dropdown menus when the table has few or no records in Contents view @mihaislobozeanu
+
+### Internal
+
+- Improve Cypress integration, using Cypress official Github Action. Improve some flaky tests that showed up, and were known as problematic. Refactor and rename all the Github actions giving them meaningful names, and group them by type. Enable Cypress Dashboard for Volto. @sneridagh
+- Stop using `xmlrpc` library for issuing the setup/teardown in core, use a `cy.request` instead. @sneridagh
+- Added Cypress environment variables for adjusting the backend URL of commands @JeffersonBledsoe #3271
+
+### Documentation
+
+- Move Cypress documentation from `README.md` to the docs. Improve the docs with the new `Makefile` commands.
+- Improve English grammar and syntax in backend docs. @stevepiercy
+- Fix JSX syntax highlighting. Remove duplicate heading. @stevepiercy
+- Proper case HAProxy, nginx, and Docker Compose. @stevepiercy
+
+## 15.8.0 (2022-04-30)
+
+### Feature
+
+- Handle @@display-file api endpoint like @@download @cekk
+- Add calendar link to @ics_view @iFlameing
+
+## 15.7.0 (2022-04-29)
+
+### Feature
+
+- added 'secure' cookie option if site is in https. @giuliaghisini
+
+## 15.6.1 (2022-04-29)
+
+### Bugfix
+
+- Overwrite isValidNewOption of ArrayWidget to allow variants @ksuess
+
+## 15.6.0 (2022-04-29)
+
+### Feature
+
+- Added 'checkAndNormalizeUrl' function in URLUtils. @giuliaghisini
+
+### Bugfix
+
+- Used UniversalLink and PreviewImage components where needed, to right handle link and images. @giuliaghisini
+
+## 15.5.0 (2022-04-25)
+
+### Feature
+
+- More Italian translations @giuliaghisini
+
+### Bugfix
+
+- Fixed edit internal link and image url in this blocks: image block, leadimage block, video block, objectBrowser. In objectBrowser, if pasted url was internal, it wasn't flatted and wass handled from Plone as an external. @giuliaghisini
+- Fix folder content layout @SaraBianchi
+
+### Documentation
+
+- Added a `selectableTypes` example to the `ObjectBrowserWidget` storybook @JeffersonBledsoe #3255
+- Add labels for Intersphinx. @stevepiercy
 
 ## 15.4.1 (2022-04-11)
 
@@ -20,10 +205,6 @@
 - Fix handling of single reference field in `ObjectBrowser` @robgietema
 - Make the parseDateTime function to handle only date as well @iFlameing
 - Fix ContextNavigation component with Link type objects @UnaiEtxaburu #3232
-
-### Documentation
-
-- Added a `selectableTypes` example to the `ObjectBrowserWidget` storybook @JeffersonBledsoe #3255
 
 ### Internal
 
@@ -195,6 +376,7 @@
 - Overwrite current block on insert new block. @robgietema
 - Fix hot reload on updates related to the config object because of `VersionOverview` component @sneridagh
 - Fix error when lock data is gone after an invariant error. @robgietema
+- Protect against ghost content loading and scroll to top @reebalazs
 
 ### Internal
 

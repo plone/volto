@@ -1,6 +1,6 @@
 import React from 'react';
 import { getBaseUrl, applyBlockDefaults } from '@plone/volto/helpers';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 import { map } from 'lodash';
 import { MaybeWrap } from '@plone/volto/components';
 import {
@@ -8,6 +8,7 @@ import {
   getBlocksLayoutFieldname,
   hasBlocksData,
 } from '@plone/volto/helpers';
+import StyleWrapper from '@plone/volto/components/manage/Blocks/Block/StyleWrapper';
 import config from '@plone/volto/registry';
 
 const messages = defineMessages({
@@ -18,13 +19,15 @@ const messages = defineMessages({
 });
 
 const RenderBlocks = (props) => {
-  const { path, intl, content, metadata, as, blockWrapperTag } = props;
+  const { content, location, metadata, blockWrapperTag } = props;
+  const intl = useIntl();
   const blocksFieldname = getBlocksFieldname(content);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
   const blocksConfig = props.blocksConfig || config.blocks.blocksConfig;
+  const CustomTag = props.as || React.Fragment;
 
   return hasBlocksData(content) ? (
-    <MaybeWrap condition={as} as={as}>
+    <MaybeWrap condition={CustomTag} as={CustomTag}>
       {map(content[blocksLayoutFieldname].items, (block) => {
         const Block =
           blocksConfig[content[blocksFieldname]?.[block]?.['@type']]?.view;
@@ -38,15 +41,17 @@ const RenderBlocks = (props) => {
 
         return Block ? (
           <MaybeWrap condition={blockWrapperTag} as={blockWrapperTag}>
-            <Block
-              key={block}
-              id={block}
-              metadata={metadata}
-              properties={content}
-              data={blockData}
-              path={getBaseUrl(path || '')}
-              blocksConfig={blocksConfig}
-            />
+            <StyleWrapper key={block} {...props} data={blockData}>
+              <Block
+                key={block}
+                id={block}
+                metadata={metadata}
+                properties={content}
+                data={blockData}
+                path={getBaseUrl(location?.pathname || '')}
+                blocksConfig={blocksConfig}
+              />
+            </StyleWrapper>
           </MaybeWrap>
         ) : (
           <div key={block}>
@@ -62,4 +67,4 @@ const RenderBlocks = (props) => {
   );
 };
 
-export default injectIntl(RenderBlocks);
+export default RenderBlocks;

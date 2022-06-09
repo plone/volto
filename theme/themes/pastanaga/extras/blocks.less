@@ -116,8 +116,20 @@
   left: 0;
 }
 
-.block.video video {
-  width: 100%;
+.block.video {
+  .ui.embed > .placeholder {
+    top: 50%;
+    width: unset;
+    min-width: 100%;
+    height: unset;
+    min-height: 100%;
+    object-fit: cover;
+    transform: translateY(-50%);
+  }
+
+  video {
+    width: 100%;
+  }
 }
 
 .block.align.left {

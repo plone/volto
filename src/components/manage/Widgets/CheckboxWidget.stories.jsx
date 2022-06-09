@@ -8,7 +8,7 @@ export const Checkbox = WidgetStory.bind({
 });
 
 export default {
-  title: 'Widgets/Checkbox',
+  title: 'Edit Widgets/Checkbox',
   component: CheckboxWidget,
   decorators: [
     (Story) => (

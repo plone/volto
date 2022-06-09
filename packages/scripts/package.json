@@ -67,7 +67,7 @@
     "mrs-developer": "*",
     "pofile": "1.0.10",
     "razzle": "3.4.5",
-    "simple-git": "2.48.0"
+    "simple-git": "3.5.0"
   },
   "devDependencies": {
     "release-it": "14.2.1"

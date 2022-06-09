@@ -56,6 +56,13 @@ const UniversalLink = ({
       ) {
         url = `${url}/@@download/file`;
       }
+
+      if (
+        !token &&
+        config.settings.viewableInBrowserObjects.includes(item['@type'])
+      ) {
+        url = `${url}/@@display-file/file`;
+      }
     }
   }
 
@@ -65,31 +72,14 @@ const UniversalLink = ({
     )?.length > 0;
   const isExternal = !isInternalURL(url) || isBlacklisted;
   const isDownload = (!isExternal && url.includes('@@download')) || download;
+  const isDisplayFile =
+    (!isExternal && url.includes('@@display-file')) || false;
 
-  return isExternal ? (
-    <a
-      href={url}
-      title={title}
-      target={
-        !URLUtils.isMail(url) && !(openLinkInNewTab === false) ? '_blank' : null
-      }
-      rel="noopener noreferrer"
-      className={className}
-      {...props}
-    >
-      {children}
-    </a>
-  ) : isDownload ? (
-    <a
-      href={flattenToAppURL(url)}
-      download
-      title={title}
-      className={className}
-      {...props}
-    >
-      {children}
-    </a>
-  ) : (
+  const checkedURL = URLUtils.checkAndNormalizeUrl(url);
+
+  url = checkedURL.url;
+
+  let tag = (
     <Link
       to={flattenToAppURL(url)}
       target={openLinkInNewTab ?? false ? '_blank' : null}
@@ -100,6 +90,53 @@ const UniversalLink = ({
       {children}
     </Link>
   );
+
+  if (isExternal) {
+    tag = (
+      <a
+        href={url}
+        title={title}
+        target={
+          !checkedURL.isMail &&
+          !checkedURL.isTelephone &&
+          !(openLinkInNewTab === false)
+            ? '_blank'
+            : null
+        }
+        rel="noopener noreferrer"
+        className={className}
+        {...props}
+      >
+        {children}
+      </a>
+    );
+  } else if (isDownload) {
+    tag = (
+      <a
+        href={flattenToAppURL(url)}
+        download
+        title={title}
+        className={className}
+        {...props}
+      >
+        {children}
+      </a>
+    );
+  } else if (isDisplayFile) {
+    tag = (
+      <a
+        href={flattenToAppURL(url)}
+        title={title}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={className}
+        {...props}
+      >
+        {children}
+      </a>
+    );
+  }
+  return tag;
 };
 
 UniversalLink.propTypes = {

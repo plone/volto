@@ -25,6 +25,34 @@ runs if it's outdated. The generator is also able to "update" your project with
 the latest changes, and propose to you to merge the changes, so you can run it on top of your project by answering the prompt.
 ```
 
+
+(volto-upgrade-guide-16.x.x)=
+
+## Upgrading to Volto 16.x.x
+
+### Deprecating NodeJS 12
+
+Since April 30, 2022, NodeJS 12 is out of Long Term Support by the NodeJS community.
+NodeJS 12 is deprecated in Volto 13.
+Please update your projects to a NodeJS LTS version, where either 14 or 16 is supported at the moment of this writing.
+Version 16 is recommended.
+
+### Removed `date-fns` from build
+
+The `date-fns` library has been removed from Volto's dependencies.
+It was in the build because `Cypress` depended on it.
+After `Cypress` was upgraded, it no longer depends on `date-fns`.
+If your project still depends on `date-fns`, add it as a dependency of your project.
+
+```{warning}
+The `date-fns` version present in the build was quite old (1.x.x series).
+Beware when using an updated version (2.x.x), as it may contain some breaking changes.
+Also take a look at: https://dockyard.com/blog/2020/02/14/you-probably-don-t-need-moment-js-anymore
+
+If you need to format dates in Volto, it's recommended to use the `FormattedDate` component in Volto core.
+It uses modern recommendations for date formatting on the web.
+```
+
 (volto-upgrade-guide-15.x.x)=
 
 ## Upgrading to Volto 15.x.x
@@ -208,7 +236,7 @@ As announced in the deprecation notice in Volto 12 release, from Volto 14 onward
 configuration system based on imports will stop working. Migrate your Volto configuration
 for your projects before upgrading to Volto 14.
 
-More information: https://6.dev-docs.plone.org/volto/upgrade-guide/index.html#volto-configuration-registry
+More information: :ref:`frontend-upgrade-guide-volto-configuration-registry-label`.
 
 ### Content locking
 
@@ -446,6 +474,9 @@ CSS set. Better naming of options and labels in table block (English). Updating 
 messages for the used translations is advisable, but not required.
 
 ## Upgrading to Volto 12.x.x
+
+
+(frontend-upgrade-guide-volto-configuration-registry-label)=
 
 ### Volto Configuration Registry
 

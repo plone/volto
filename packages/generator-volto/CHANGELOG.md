@@ -1,14 +1,30 @@
 # Change Log
 
-## 5.6.2 (unreleased)
+## 5.6.4 (unreleased)
 
 ### Breaking
 
 ### Feature
 
+- Deprecate NodeJS 12 from package generators since it's out of LTS since April 30, 2022. @sneridagh
+
 ### Bugfix
 
+- Changed Cypress command generation to use the Cypress Commands from Volto core @JeffersonBledsoe #3271
+
 ### Internal
+
+## 5.6.3 (2022-04-29)
+
+### Bugfix
+
+- Fix `omelette` yarn script to avoid creating a bogus symlink inside the Volto sources convinience facility @sneridagh
+
+## 5.6.2 (2022-04-25)
+
+### Bugfix
+
+- Fix `yarn lint` in Volto project generator scripts wasn't enforcing `--max-warnings=0` @sneridagh
 
 ## 5.6.1 (2022-04-21)
 
