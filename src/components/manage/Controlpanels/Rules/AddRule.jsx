@@ -15,14 +15,20 @@ import {
   Checkbox,
   Container,
   Form,
+  Grid,
   Header,
+  Input,
+  Label,
   Segment,
   Table,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { Icon, Toolbar } from '@plone/volto/components';
-
-import { getRules } from '@plone/volto/actions';
+import {
+  Icon,
+  Toolbar,
+  FormFieldWrapper,
+  Field,
+} from '@plone/volto/components';
 
 import backSVG from '@plone/volto/icons/back.svg';
 
@@ -121,13 +127,110 @@ class AddRule extends Component {
                   defaultMessage="Use the form below to define the new content rule"
                 />
               </Segment>
-
-              <Button onClick={() => console.log('handleadd')} primary>
-                <FormattedMessage id="Save" defaultMessage="Save" />
-              </Button>
-              <Button onClick={() => this.onCancel()} secondary>
-                <FormattedMessage id="Cancel" defaultMessage="Cancel" />
-              </Button>
+              <Segment>
+                <Form>
+                  <Grid>
+                    <Grid.Row stretched>
+                      <Grid.Column>
+                        <Field
+                          title={'Title'}
+                          description="Please set a descriptive title for the rule."
+                          value={''}
+                          required={true}
+                          onChange={() => console.log('coco')}
+                        />
+                      </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row stretched>
+                      <Grid.Column>
+                        <Field
+                          title={'Description'}
+                          description="Enter a short description of the rule and its purpose."
+                          value={''}
+                          onChange={() => console.log('description handle')}
+                        />
+                      </Grid.Column>
+                    </Grid.Row>
+                  </Grid>
+                </Form>
+              </Segment>
+              <Segment>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <Checkbox
+                    onChange={(e, { value }) => console.log(value)}
+                    value={''}
+                    label={'Enabled'}
+                    //checked={}
+                  />
+                  <p
+                    style={{
+                      color: '#878f93',
+                      paddingTop: '0.7rem',
+                      paddingBottom: '0.7rem',
+                      fontSize: '0.9rem',
+                    }}
+                  >
+                    <FormattedMessage
+                      id="Whether or not the rule is currently enabled"
+                      defaultMessage="Whether or not the rule is currently enabled"
+                    />
+                  </p>
+                </div>
+              </Segment>
+              <Segment>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <Checkbox
+                    onChange={(e, { value }) => console.log(value)}
+                    value={''}
+                    label={'Stop Executing rules'}
+                    //checked={}
+                  />
+                  <p
+                    style={{
+                      color: '#878f93',
+                      paddingTop: '0.7rem',
+                      paddingBottom: '0.7rem',
+                      fontSize: '0.9rem',
+                    }}
+                  >
+                    <FormattedMessage
+                      id="Whether or not execution of further rules should stop after this rule is executed"
+                      defaultMessage="Whether or not execution of further rules should stop after this rule is executed"
+                    />
+                  </p>
+                </div>
+              </Segment>
+              <Segment>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <Checkbox
+                    onChange={(e, { value }) => console.log(value)}
+                    value={''}
+                    label={'Cascading rule'}
+                    //checked={}
+                  />
+                  <p
+                    style={{
+                      color: '#878f93',
+                      paddingTop: '0.7rem',
+                      paddingBottom: '0.7rem',
+                      fontSize: '0.9rem',
+                    }}
+                  >
+                    <FormattedMessage
+                      id="Whether or not other rules should be triggered by the actions launched by this rule. Activate this only if you are sure this won't create infinite loops"
+                      defaultMessage="Whether or not other rules should be triggered by the actions launched by this rule. Activate this only if you are sure this won't create infinite loops"
+                    />
+                  </p>
+                </div>
+              </Segment>
+              <Segment>
+                <Button onClick={() => console.log('handleadd')} primary>
+                  <FormattedMessage id="Save" defaultMessage="Save" />
+                </Button>
+                <Button onClick={() => this.onCancel()} secondary>
+                  <FormattedMessage id="Cancel" defaultMessage="Cancel" />
+                </Button>
+              </Segment>
             </Segment.Group>
           </article>
         </Container>
