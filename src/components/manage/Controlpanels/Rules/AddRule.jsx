@@ -136,7 +136,7 @@ class AddRule extends Component {
                           title={'Title'}
                           description="Please set a descriptive title for the rule."
                           value={''}
-                          required={true}
+                          required
                           onChange={() => console.log('coco')}
                         />
                       </Grid.Column>
@@ -148,6 +148,17 @@ class AddRule extends Component {
                           description="Enter a short description of the rule and its purpose."
                           value={''}
                           onChange={() => console.log('description handle')}
+                        />
+                      </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row stretched>
+                      <Grid.Column>
+                        <Field
+                          required
+                          title={'Triggering event'}
+                          description="The rule will execute when the following event occurs."
+                          choices={[['value', 'label']]}
+                          onChange={(e, v) => console.log('event handle', v)}
                         />
                       </Grid.Column>
                     </Grid.Row>
