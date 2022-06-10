@@ -1,6 +1,6 @@
 /**
- * Add content rule component.
- * @module components/manage/Controlpanels/Rules/AddRule
+ * Edit content rule component.
+ * @module components/manage/Controlpanels/Rules/EditRule
  */
 
 import React, { Component } from 'react';
@@ -37,9 +37,9 @@ const messages = defineMessages({
     id: 'Back',
     defaultMessage: 'Back',
   },
-  addRule: {
-    id: 'Add Content Rule',
-    defaultMessage: 'Add Content Rule',
+  configRule: {
+    id: 'Configure Content Rule',
+    defaultMessage: 'Configure Content Rule',
   },
   success: {
     id: 'Success',
@@ -48,11 +48,11 @@ const messages = defineMessages({
 });
 
 /**
- * AddRule class.
- * @class AddRule
+ * EditRule class.
+ * @class EditRule
  * @extends Component
  */
-class AddRule extends Component {
+class EditRule extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -113,8 +113,8 @@ class AddRule extends Component {
    */
   render() {
     return (
-      <div id="page-rule-add">
-        <Helmet title={this.props.intl.formatMessage(messages.addRule)} />
+      <div id="page-rule-edit">
+        <Helmet title={this.props.intl.formatMessage(messages.configRule)} />
         <Container>
           <article id="content">
             <Segment.Group raised>
@@ -276,4 +276,4 @@ export default compose(
     }),
     {},
   ),
-)(AddRule);
+)(EditRule);

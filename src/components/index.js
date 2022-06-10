@@ -88,6 +88,8 @@ export UsersControlpanel from '@plone/volto/components/manage/Controlpanels/User
 export GroupsControlpanel from '@plone/volto/components/manage/Controlpanels/Groups/GroupsControlpanel';
 export RulesControlpanel from '@plone/volto/components/manage/Controlpanels/Rules/Rules';
 export AddRuleControlpanel from '@plone/volto/components/manage/Controlpanels/Rules/AddRule';
+export EditRuleControlpanel from '@plone/volto/components/manage/Controlpanels/Rules/EditRule';
+export ConfigureRuleControlpanel from '@plone/volto/components/manage/Controlpanels/Rules/ConfigureRule';
 
 export ModerateComments from '@plone/volto/components/manage/Controlpanels/ModerateComments';
 export VersionOverview from '@plone/volto/components/manage/Controlpanels/VersionOverview';
