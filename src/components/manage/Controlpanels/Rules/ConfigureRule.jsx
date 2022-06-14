@@ -14,6 +14,7 @@ import {
   Button,
   Checkbox,
   Container,
+  Dropdown,
   Form,
   Grid,
   Header,
@@ -46,6 +47,42 @@ const messages = defineMessages({
     defaultMessage: 'Success',
   },
 });
+
+const conditionOptions = [
+  {
+    key: 'Content Type',
+    text: 'Content Type',
+    value: 'Content Type',
+  },
+  {
+    key: 'File Extension',
+    text: 'File Extension',
+    value: 'File Extension',
+  },
+  {
+    key: 'Workflow state',
+    text: 'Workflow state',
+    value: 'Workflow state',
+  },
+];
+
+const actionOptions = [
+  {
+    key: 'Logger',
+    text: 'Logger',
+    value: 'Logger',
+  },
+  {
+    key: 'Notify user',
+    text: 'Notify user',
+    value: 'Notify user',
+  },
+  {
+    key: 'Copy to folder',
+    text: 'Copy to folder',
+    value: 'Copy to folder',
+  },
+];
 
 /**
  * ConfigureRule class.
@@ -120,8 +157,9 @@ class ConfigureRule extends Component {
             <Segment.Group raised>
               <Segment className="primary">
                 <FormattedMessage
-                  id="Configure Content Rule"
-                  defaultMessage="Configure Content Rule"
+                  id="Configure Content Rule: {title}"
+                  defaultMessage="Configure Content Rule: {title}"
+                  values={{ title: <q>{this.props.title}</q> }}
                 />
               </Segment>
               <Segment className="secondary">
@@ -129,6 +167,104 @@ class ConfigureRule extends Component {
                   id="Rules execute when a triggering event occurs. Rule actions will only be invoked if all the rule's conditions are met. You can add new actions and conditions using the buttons below."
                   defaultMessage="Rules execute when a triggering event occurs. Rule actions will only be invoked if all the rule's conditions are met. You can add new actions and conditions using the buttons below."
                 />
+              </Segment>
+              <Segment>
+                <Grid>
+                  <Grid.Row stretched>
+                    <Grid.Column
+                      style={{ margin: '5px 0' }}
+                      mobile={16}
+                      tablet={16}
+                      computer={6}
+                      largeScreen={6}
+                    >
+                      <h4>
+                        <FormattedMessage
+                          id="If all of the following conditions are met:"
+                          defaultMessage="If all of the following conditions are met:"
+                        />
+                      </h4>
+                      <div style={{ display: 'flex', alignContent: 'center' }}>
+                        <Label size="medium">
+                          <p>
+                            <FormattedMessage
+                              id="Condition: "
+                              defaultMessage="Condition: "
+                            />
+                          </p>
+                        </Label>
+                        <Dropdown
+                          style={{ margin: '0 5px' }}
+                          placeholder="Select condition"
+                          fluid
+                          selection
+                          additionLabel="llaalal"
+                          options={conditionOptions}
+                        />
+                        <Button
+                          compact
+                          onClick={() => console.log('handleadd')}
+                          primary
+                        >
+                          <FormattedMessage id="Add" defaultMessage="Add" />
+                        </Button>
+                      </div>
+                    </Grid.Column>
+                    <Grid.Column
+                      style={{ margin: '5px 0' }}
+                      mobile={16}
+                      tablet={16}
+                      computer={6}
+                      largeScreen={6}
+                    >
+                      <h4>
+                        <FormattedMessage
+                          id="Perform the following actions:"
+                          defaultMessage="Perform the following actions:"
+                        />
+                      </h4>
+                      <div style={{ display: 'flex', alignContent: 'center' }}>
+                        <Label size="medium">
+                          <p>
+                            <FormattedMessage
+                              id="Action: "
+                              defaultMessage="Action: "
+                            />
+                          </p>
+                        </Label>
+                        <Dropdown
+                          style={{ margin: '0 5px' }}
+                          placeholder="Select action"
+                          fluid
+                          selection
+                          additionLabel="llaalal"
+                          options={actionOptions}
+                        />
+                        <Button
+                          compact
+                          onClick={() => console.log('handleadd')}
+                          primary
+                        >
+                          <FormattedMessage id="Add" defaultMessage="Add" />
+                        </Button>
+                      </div>
+                    </Grid.Column>
+                  </Grid.Row>
+                  <Grid.Row stretched>
+                    <Grid.Column width={6} largeScreen={6}>
+                      <h4>
+                        <FormattedMessage
+                          id="Assignments"
+                          defaultMessage="Assignments"
+                        />
+                      </h4>
+                      <FormattedMessage
+                        id="This rule is assigned to the following locations:"
+                        defaultMessage="This rule is assigned to the following locations:"
+                      />
+                    </Grid.Column>
+                  </Grid.Row>
+                </Grid>
               </Segment>
             </Segment.Group>
           </article>
@@ -161,6 +297,7 @@ export default compose(
   connect(
     (state, props) => ({
       pathname: props.location.pathname,
+      title: 'Example rule',
     }),
     {},
   ),
