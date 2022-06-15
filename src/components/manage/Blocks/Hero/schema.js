@@ -17,6 +17,10 @@ const messages = defineMessages({
     id: 'Alignment',
     defaultMessage: 'Alignment',
   },
+  Opacity: {
+    id: 'Opacity',
+    defaultMessage: 'Opacity',
+  },
 });
 
 const schemaHero = ({ intl, variation }) => {
@@ -30,7 +34,9 @@ const schemaHero = ({ intl, variation }) => {
         fields: [
           'linkTitle',
           'linkHref',
-          ...(variation?.id === 'heroImageBackground' ? ['align'] : []),
+          ...(variation?.id === 'heroImageBackground'
+            ? ['align', 'opacity']
+            : []),
         ],
       },
     ],
@@ -48,6 +54,14 @@ const schemaHero = ({ intl, variation }) => {
       align: {
         title: intl.formatMessage(messages.Align),
         widget: 'align',
+      },
+      opacity: {
+        title: intl.formatMessage(messages.Opacity),
+        type: 'number',
+        minimum: 0.1,
+        maximum: 1,
+        defaultValue: 1,
+        step: 0.1,
       },
     },
   };

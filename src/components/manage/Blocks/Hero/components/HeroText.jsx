@@ -123,7 +123,7 @@ const HeroText = ({
           </>
         )}
       </div>
-      <LinkMore data={data} isEditMode />
+      <LinkMore data={data} isEditMode={isEditMode} />
     </div>
   );
 };

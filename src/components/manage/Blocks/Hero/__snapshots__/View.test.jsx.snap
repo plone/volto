@@ -12,6 +12,11 @@ exports[`renders a view hero component 1`] = `
       className="hero-image"
       loading="lazy"
       src="heroimage.jpg/@@images/image"
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
     />
     <div
       className="hero-body"

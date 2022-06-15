@@ -35,6 +35,7 @@ const HeroImage = ({
           className="hero-image"
           src={`${flattenToAppURL(data.url)}/@@images/image`}
           alt=""
+          style={{ opacity: data.opacity || 1 }}
           loading={isEditMode ? 'eager' : 'lazy'}
         />
       ) : (
