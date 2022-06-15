@@ -35,6 +35,11 @@ export function TableSchema({ formData, intl }) {
         title: 'Table',
         fields: ['fixed', 'celled', 'striped', 'compact', 'basic'],
       },
+      {
+        id: 'cell',
+        title: 'Cell',
+        fields: ['cellType'],
+      },
     ],
 
     properties: {
@@ -58,29 +63,12 @@ export function TableSchema({ formData, intl }) {
         title: intl.formatMessage(messages.basic),
         type: 'boolean',
       },
+      cellType: {
+        type: 'boolean',
+        title: intl.formatMessage(messages.headerCell),
+      },
     },
     title: 'Table',
     required: [],
-  };
-}
-
-export function CellSchema({ formData, intl }) {
-  return {
-    fieldsets: [
-      {
-        id: 'default',
-        title: 'Cell',
-        fields: ['type'],
-      },
-    ],
-
-    properties: {
-      type: {
-        title: intl.formatMessage(messages.headerCell),
-        type: 'boolean',
-      },
-    },
-    required: [],
-    title: 'Cell',
   };
 }

@@ -11,7 +11,6 @@ import { Button, Table } from 'semantic-ui-react';
 import cx from 'classnames';
 import { defineMessages, injectIntl } from 'react-intl';
 import TableSidebar from './TableSidebar';
-import CellSidebar from './CellSidebar';
 
 import Cell from '@plone/volto/components/manage/Blocks/Table/Cell';
 import { Icon, SidebarPortal } from '@plone/volto/components';
@@ -673,11 +672,9 @@ class Edit extends Component {
           </Table>
         )}
         <SidebarPortal selected={this.props.selected && this.state.isClient}>
-          <TableSidebar {...this.props}> </TableSidebar>
-          <CellSidebar
-            {...this.props}
-            selectedCell={this.state.selected}
-          ></CellSidebar>
+          <TableSidebar {...this.props} selectedCell={this.state.selected}>
+            {' '}
+          </TableSidebar>
         </SidebarPortal>
       </div>
     );

@@ -5,25 +5,32 @@ import { TableSchema } from './schema';
 import { useIntl } from 'react-intl';
 
 const TableSidebar = (props) => {
-  const { data, block, onChangeBlock } = props;
+  const { data, block, onChangeBlock, selectedCell } = props;
   const intl = useIntl();
-  const schema = TableSchema({ formData: data.table, intl });
   const table = data.table;
+  const cell = table.rows[selectedCell.row].cells[selectedCell.cell];
+  const formData = {
+    cellType: cell.type === 'header',
+    ...table,
+  };
+  const schema = TableSchema({ formData, intl });
 
   return (
     <BlockDataForm
       schema={schema}
       title={schema.title}
       onChangeField={(id, value) => {
+        if (id !== 'cellType') {
+          table[id] = value;
+        } else {
+          cell.type = value === true ? 'header' : 'data';
+        }
         onChangeBlock(block, {
           ...data,
-          table: {
-            ...table,
-            [id]: value,
-          },
+          table,
         });
       }}
-      formData={data.table}
+      formData={formData}
       block={block}
     />
   );
