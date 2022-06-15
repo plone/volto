@@ -80,6 +80,7 @@ export {
   withServerErrorCode,
   parseDateTime,
   normalizeLanguageName,
+  toLangUnderscoreRegion,
   hasApiExpander,
   replaceItemOfArray,
 } from '@plone/volto/helpers/Utils/Utils';
