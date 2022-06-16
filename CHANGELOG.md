@@ -3,6 +3,7 @@
 ## 15.8.1 (unreleased)
 
 - Integrate volto-state add-on. @tiberiuichim @razvanmiu @eea
+- volto-slate documentation @nileshgulia1
 
 ### Breaking
 

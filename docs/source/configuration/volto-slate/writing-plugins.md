@@ -97,11 +97,11 @@ export const TooltipEditorSchema = {
     {
       id: 'default',
       title: 'Default',
-      fields: ['label_pointing'],
+      fields: ['tooltip_pointing'],
     },
   ],
   properties: {
-    label_pointing: {
+    tooltip_pointing: {
       title: 'Pointing',
       type: 'string',
       factory: 'Choice',
