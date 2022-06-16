@@ -6,9 +6,13 @@
 
 ### Feature
 
+- add control panel via config.settings @ksuess https://github.com/plone/volto/issues/3426
+- Add noindex metadata tag @steffenri
+
 ### Bugfix
 
 - Don't render junk when no facets are added to the search block @tiberiuichim
+- Fix visibility of toolbar workflow dropdown for more states as fitting in .toolbar-content. @ksuess
 
 ### Internal
 
