@@ -119,7 +119,7 @@ class EditRule extends Component {
           <article id="content">
             <Segment.Group raised>
               <Segment className="primary">
-                <FormattedMessage id="Add Rule" defaultMessage="Add Rule" />
+                <FormattedMessage id="Edit Rule" defaultMessage="Edit Rule" />
               </Segment>
               <Segment className="secondary">
                 <FormattedMessage
@@ -235,7 +235,7 @@ class EditRule extends Component {
                 </div>
               </Segment>
               <Segment>
-                <Button onClick={() => console.log('handleadd')} primary>
+                <Button onClick={() => console.log('handleasave')} primary>
                   <FormattedMessage id="Save" defaultMessage="Save" />
                 </Button>
                 <Button onClick={() => this.onCancel()} secondary>

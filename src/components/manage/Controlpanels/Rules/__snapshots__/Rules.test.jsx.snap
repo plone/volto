@@ -1,0 +1,246 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rules renders rules control panel control 1`] = `
+<div
+  id="page-rules"
+>
+  <div
+    className="ui container"
+  >
+    <article
+      id="content"
+    >
+      <div
+        className="ui raised segments"
+      >
+        <div
+          className="ui segment primary"
+        >
+          Content Rules
+        </div>
+        <div
+          className="ui segment secondary"
+        >
+          Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu.
+        </div>
+        <div
+          className="ui segment"
+        >
+          <div
+            className="ui checkbox"
+            onChange={[Function]}
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
+          >
+            <input
+              checked={false}
+              className="hidden"
+              readOnly={true}
+              tabIndex={0}
+              type="checkbox"
+              value="disable-globally"
+            />
+            <label>
+              Disable globally
+            </label>
+          </div>
+        </div>
+        <div
+          className="ui segment secondary"
+        >
+          Whether or not content rules should be disabled globally. If this is selected, no rules will be executed anywhere in the portal.
+        </div>
+        <div
+          className="ui segment"
+        >
+          <div
+            className="ui small header"
+          >
+            Filter Rules:
+          </div>
+          <div
+            className="field"
+          >
+            <div
+              className="ui checkbox"
+              onChange={[Function]}
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
+            >
+              <input
+                checked={false}
+                className="hidden"
+                readOnly={true}
+                tabIndex={0}
+                type="checkbox"
+                value="comment-added"
+              />
+              <label>
+                Comment Added
+              </label>
+            </div>
+          </div>
+          <div
+            className="field"
+          >
+            <div
+              className="ui checkbox"
+              onChange={[Function]}
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
+            >
+              <input
+                checked={false}
+                className="hidden"
+                readOnly={true}
+                tabIndex={0}
+                type="checkbox"
+                value="comment-removed"
+              />
+              <label>
+                Comment removed
+              </label>
+            </div>
+          </div>
+          <div
+            className="field"
+          >
+            <div
+              className="ui checkbox"
+              onChange={[Function]}
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
+            >
+              <input
+                checked={false}
+                className="hidden"
+                readOnly={true}
+                tabIndex={0}
+                type="checkbox"
+                value="comment-reply-added"
+              />
+              <label>
+                Comment reply added
+              </label>
+            </div>
+          </div>
+          <div
+            className="field"
+          >
+            <div
+              className="ui checkbox"
+              onChange={[Function]}
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
+            >
+              <input
+                checked={false}
+                className="hidden"
+                readOnly={true}
+                tabIndex={0}
+                type="checkbox"
+                value="user-created"
+              />
+              <label>
+                User Created
+              </label>
+            </div>
+          </div>
+          <div
+            className="field"
+          >
+            <div
+              className="ui checkbox"
+              onChange={[Function]}
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
+            >
+              <input
+                checked={false}
+                className="hidden"
+                readOnly={true}
+                tabIndex={0}
+                type="checkbox"
+                value="enabled"
+              />
+              <label>
+                Enabled
+              </label>
+            </div>
+          </div>
+          <div
+            className="field"
+          >
+            <div
+              className="ui checkbox"
+              onChange={[Function]}
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
+            >
+              <input
+                checked={false}
+                className="hidden"
+                readOnly={true}
+                tabIndex={0}
+                type="checkbox"
+                value="disabled"
+              />
+              <label>
+                Disabled
+              </label>
+            </div>
+          </div>
+          <table
+            className="ui table"
+          >
+            <tbody
+              className=""
+            >
+              <tr
+                className=""
+              >
+                <th
+                  className=""
+                >
+                  Content Rule
+                </th>
+                <th
+                  className=""
+                >
+                  Event
+                </th>
+                <th
+                  className=""
+                >
+                  Status
+                </th>
+                <th
+                  className=""
+                >
+                  Actions
+                </th>
+              </tr>
+            </tbody>
+          </table>
+          <button
+            className="ui primary button"
+            onClick={[Function]}
+          >
+            Add content rule
+          </button>
+        </div>
+      </div>
+    </article>
+  </div>
+  <div
+    id="Portal"
+  />
+</div>
+`;

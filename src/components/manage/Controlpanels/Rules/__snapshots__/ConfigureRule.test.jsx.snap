@@ -1,0 +1,308 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfigureRule renders rules configure interface 1`] = `
+<div
+  id="page-rule-configure"
+>
+  <div
+    className="ui container"
+  >
+    <article
+      id="content"
+    >
+      <div
+        className="ui raised segments"
+      >
+        <div
+          className="ui segment primary"
+        >
+          Configure Content Rule: 
+          <q>
+            Example rule
+          </q>
+        </div>
+        <div
+          className="ui segment secondary"
+        >
+          Rules execute when a triggering event occurs. Rule actions will only be invoked if all the rule's conditions are met. You can add new actions and conditions using the buttons below.
+        </div>
+        <div
+          className="ui segment"
+        >
+          <div
+            className="ui grid"
+          >
+            <div
+              className="stretched row"
+            >
+              <div
+                className="six wide computer six wide large screen sixteen wide mobile sixteen wide tablet column"
+                style={
+                  Object {
+                    "margin": "5px 0",
+                  }
+                }
+              >
+                <h4>
+                  If all of the following conditions are met:
+                </h4>
+                <div
+                  style={
+                    Object {
+                      "alignContent": "center",
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <div
+                    className="ui medium label"
+                    onClick={[Function]}
+                  >
+                    <p>
+                      Condition: 
+                    </p>
+                  </div>
+                  <div
+                    aria-expanded={false}
+                    className="ui fluid selection dropdown"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    onMouseDown={[Function]}
+                    role="listbox"
+                    style={
+                      Object {
+                        "margin": "0 5px",
+                      }
+                    }
+                    tabIndex={0}
+                  >
+                    <div
+                      aria-atomic={true}
+                      aria-live="polite"
+                      className="divider default text"
+                      role="alert"
+                    >
+                      Select condition
+                    </div>
+                    <i
+                      aria-hidden="true"
+                      className="dropdown icon"
+                      onClick={[Function]}
+                    />
+                    <div
+                      className="menu transition"
+                    >
+                      <div
+                        aria-checked={false}
+                        aria-selected={true}
+                        className="selected item"
+                        onClick={[Function]}
+                        role="option"
+                        style={
+                          Object {
+                            "pointerEvents": "all",
+                          }
+                        }
+                      >
+                        <span
+                          className="text"
+                        >
+                          Content Type
+                        </span>
+                      </div>
+                      <div
+                        aria-checked={false}
+                        aria-selected={false}
+                        className="item"
+                        onClick={[Function]}
+                        role="option"
+                        style={
+                          Object {
+                            "pointerEvents": "all",
+                          }
+                        }
+                      >
+                        <span
+                          className="text"
+                        >
+                          File Extension
+                        </span>
+                      </div>
+                      <div
+                        aria-checked={false}
+                        aria-selected={false}
+                        className="item"
+                        onClick={[Function]}
+                        role="option"
+                        style={
+                          Object {
+                            "pointerEvents": "all",
+                          }
+                        }
+                      >
+                        <span
+                          className="text"
+                        >
+                          Workflow state
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    className="ui compact primary button"
+                    onClick={[Function]}
+                  >
+                    Add
+                  </button>
+                </div>
+              </div>
+              <div
+                className="six wide computer six wide large screen sixteen wide mobile sixteen wide tablet column"
+                style={
+                  Object {
+                    "margin": "5px 0",
+                  }
+                }
+              >
+                <h4>
+                  Perform the following actions:
+                </h4>
+                <div
+                  style={
+                    Object {
+                      "alignContent": "center",
+                      "display": "flex",
+                    }
+                  }
+                >
+                  <div
+                    className="ui medium label"
+                    onClick={[Function]}
+                  >
+                    <p>
+                      Action: 
+                    </p>
+                  </div>
+                  <div
+                    aria-expanded={false}
+                    className="ui fluid selection dropdown"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    onMouseDown={[Function]}
+                    role="listbox"
+                    style={
+                      Object {
+                        "margin": "0 5px",
+                      }
+                    }
+                    tabIndex={0}
+                  >
+                    <div
+                      aria-atomic={true}
+                      aria-live="polite"
+                      className="divider default text"
+                      role="alert"
+                    >
+                      Select action
+                    </div>
+                    <i
+                      aria-hidden="true"
+                      className="dropdown icon"
+                      onClick={[Function]}
+                    />
+                    <div
+                      className="menu transition"
+                    >
+                      <div
+                        aria-checked={false}
+                        aria-selected={true}
+                        className="selected item"
+                        onClick={[Function]}
+                        role="option"
+                        style={
+                          Object {
+                            "pointerEvents": "all",
+                          }
+                        }
+                      >
+                        <span
+                          className="text"
+                        >
+                          Logger
+                        </span>
+                      </div>
+                      <div
+                        aria-checked={false}
+                        aria-selected={false}
+                        className="item"
+                        onClick={[Function]}
+                        role="option"
+                        style={
+                          Object {
+                            "pointerEvents": "all",
+                          }
+                        }
+                      >
+                        <span
+                          className="text"
+                        >
+                          Notify user
+                        </span>
+                      </div>
+                      <div
+                        aria-checked={false}
+                        aria-selected={false}
+                        className="item"
+                        onClick={[Function]}
+                        role="option"
+                        style={
+                          Object {
+                            "pointerEvents": "all",
+                          }
+                        }
+                      >
+                        <span
+                          className="text"
+                        >
+                          Copy to folder
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    className="ui compact primary button"
+                    onClick={[Function]}
+                  >
+                    Add
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              className="stretched row"
+            >
+              <div
+                className="six wide large screen six wide column"
+              >
+                <h4>
+                  Assignments
+                </h4>
+                This rule is assigned to the following locations:
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+  <div
+    id="Portal"
+  />
+</div>
+`;
