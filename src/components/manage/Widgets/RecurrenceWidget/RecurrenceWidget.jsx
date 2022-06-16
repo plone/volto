@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { RRule, RRuleSet, rrulestr } from 'rrule';
+import { connect } from 'react-redux';
 
 import cx from 'classnames';
 import { isEqual, map, find, concat, remove } from 'lodash';
@@ -181,7 +182,7 @@ class RecurrenceWidget extends Component {
     super(props);
 
     this.moment = this.props.moment.default;
-    this.moment.locale(this.props.intl.locale);
+    this.moment.locale(this.props.lang);
 
     let rruleSet = this.props.value
       ? rrulestr(props.value, {
@@ -199,7 +200,7 @@ class RecurrenceWidget extends Component {
       open: false,
       rruleSet: rruleSet,
       formValues: this.getFormValues(rruleSet),
-      RRULE_LANGUAGE: rrulei18n(this.props.intl, this.moment),
+      RRULE_LANGUAGE: rrulei18n(this.props.intl, this.moment, this.props.lang),
     };
   }
 
@@ -964,5 +965,8 @@ class RecurrenceWidget extends Component {
 
 export default compose(
   injectLazyLibs(['moment']),
+  connect((state) => ({
+    lang: state.intl.locale,
+  })),
   injectIntl,
 )(RecurrenceWidget);

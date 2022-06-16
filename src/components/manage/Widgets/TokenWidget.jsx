@@ -114,7 +114,7 @@ class TokenWidget extends Component {
       this.props.getVocabulary({
         vocabNameOrURL: this.props.vocabBaseUrl,
         size: -1,
-        subrequest: this.props.intl.locale,
+        subrequest: this.props.lang,
       });
     }
   }
@@ -128,7 +128,7 @@ class TokenWidget extends Component {
       this.props.getVocabulary({
         vocabNameOrURL: this.props.vocabBaseUrl,
         size: -1,
-        subrequest: this.props.intl.locale,
+        subrequest: this.props.lang,
       });
     }
   }
@@ -204,7 +204,7 @@ export default compose(
         getVocabFromItems(props);
 
       const vocabState =
-        state.vocabularies?.[vocabBaseUrl]?.subrequests?.[props.intl.locale];
+        state.vocabularies?.[vocabBaseUrl]?.subrequests?.[state.intl.locale];
 
       if (vocabState) {
         return {
@@ -217,9 +217,10 @@ export default compose(
           vocabLoading: vocabState.loading,
           vocabLoaded: vocabState.loaded,
           vocabBaseUrl,
+          lang: state.intl.locale,
         };
       }
-      return { vocabBaseUrl };
+      return { vocabBaseUrl, lang: state.intl.locale };
     },
     { getVocabulary },
   ),

@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- get locale always from state. Backport from #3331 @erral
+
 ### Internal
 
 ### Documentation
