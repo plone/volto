@@ -163,6 +163,7 @@ msgstr "Impostazioni Add-ons"
 msgid "Additional date"
 msgstr "Data aggiuntiva"
 
+#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Hero/schema
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar

@@ -171,6 +171,7 @@ msgstr "アドオン設定"
 msgid "Additional date"
 msgstr "追加日"
 
+#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Hero/schema
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
