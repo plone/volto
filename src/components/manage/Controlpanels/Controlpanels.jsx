@@ -34,6 +34,18 @@ const messages = defineMessages({
     id: 'Version Overview',
     defaultMessage: 'Version Overview',
   },
+  general: {
+    id: 'General',
+    defaultMessage: 'General',
+  },
+  addonconfiguration: {
+    id: 'Add-on Configuration',
+    defaultMessage: 'Add-on Configuration',
+  },
+  content: {
+    id: 'Content',
+    defaultMessage: 'Content',
+  },
   moderatecomments: {
     id: 'Moderate Comments',
     defaultMessage: 'Moderate Comments',
@@ -123,31 +135,41 @@ class Controlpanels extends Component {
       return <Error error={this.state.error} />;
     }
 
+    let customcontrolpanels = config.settings.controlpanels
+      ? config.settings.controlpanels.map((el) => {
+          el.group =
+            this.props.intl.formatMessage({
+              id: el.group,
+              defaultMessage: el.group,
+            }) || el.group;
+          return el;
+        })
+      : [];
     const controlpanels = map(
-      concat(this.props.controlpanels, [
+      concat(this.props.controlpanels, customcontrolpanels, [
         {
           '@id': '/addons',
-          group: 'General',
+          group: this.props.intl.formatMessage(messages.general),
           title: 'Add-Ons',
         },
         {
           '@id': '/database',
-          group: 'General',
+          group: this.props.intl.formatMessage(messages.general),
           title: 'Database',
         },
         {
           '@id': '/moderate-comments',
-          group: 'Content',
+          group: this.props.intl.formatMessage(messages.content),
           title: this.props.intl.formatMessage(messages.moderatecomments),
         },
         {
           '@id': '/users',
-          group: 'Users and Groups',
+          group: this.props.intl.formatMessage(messages.usersandgroups),
           title: this.props.intl.formatMessage(messages.users),
         },
         {
           '@id': '/groups',
-          group: 'Users and Groups',
+          group: this.props.intl.formatMessage(messages.usersandgroups),
           title: this.props.intl.formatMessage(messages.groups),
         },
       ]),
