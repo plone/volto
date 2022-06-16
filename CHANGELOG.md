@@ -6,6 +6,7 @@
 
 ### Feature
 
+- add control panel via config.settings @ksuess https://github.com/plone/volto/issues/3426
 - Add noindex metadata tag @steffenri
 
 ### Bugfix
