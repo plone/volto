@@ -30,14 +30,14 @@ export const isInline = (editor) => {
 
 Plugins are the way to extend the capabilites of volto-slate by adding extra features to Element Editor.
 
-`See default Plugins`: https://github.com/plone/volto/tree/slate-integration/packages/volto-slate/src/editor/plugins
+See [`default Plugins`](https://github.com/plone/volto/tree/slate-integration/packages/volto-slate/src/editor/plugins)
 
-{ref}`For info on how to write your own plugin`
+Refer {ref}`writing-plugins-label` for info on how to write your own plugin.
 
 ## Slate Editor
 
 A Top level slate Editor component. It can be directly used in widgets to create a `slateJSON` field.<br/>
-See `RichTextSlate Widget`: https://github.com/plone/volto/blob/slate-integration/packages/volto-slate/src/widgets/RichTextWidget.jsx
+See [`RichTextSlate Widget`](https://github.com/plone/volto/blob/slate-integration/packages/volto-slate/src/widgets/RichTextWidget.jsx)
 
 ## Element Editor
 
@@ -48,7 +48,7 @@ A top wrapper of all plugins used in volto-slate which exposes plugins API in th
 - <b>Toolbar Button</b>: Custom Plugin ToolbarButton.
 
 ```{note}
-You will get to know more about Element Editor in "writing your own plugins section"
+You will get to know more about Element Editor in {ref}`writing-plugins-label`
 ```
 
 ## Serializing
@@ -59,7 +59,7 @@ Conversion of slate JSON data into common formats like Text, HTML and Markdown. 
 
 Transforming of aribitrary input into a Slate-compatible JSON structure. Volto-slate uses slate's own mechanism of deserialization using `slate-hyperscript` package. Deserialization helps control what data comes into slate per element. Its called before editor Element for a plugin.
 
-See `simpleLinkDeserializer`: https://github.com/plone/volto/blob/slate-integration/packages/volto-slate/src/editor/plugins/Link/extensions.js#L34
+See [`simpleLinkDeserializer`](https://github.com/plone/volto/blob/slate-integration/packages/volto-slate/src/editor/plugins/Link/extensions.js#L34)
 
 ## Normalization
 
@@ -69,7 +69,7 @@ Slate's data model should adhere to contraints provided in [slate documentation]
 
 However, we can customize the functionality to add our own set of conditions by extending the `normalizeNode` method of slate editor.
 
-For example, Remove all img nodes inside paragraphs node.
+For example, Remove all `img` nodes inside paragraphs node.
 
 ```js
 const removeImgChild = (editor) => {
