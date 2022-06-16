@@ -44,8 +44,6 @@ enhancing Volto's draftjs implementation:
   final rendered output is very clean. Note: The Slate editor value is a JSON
   object, similar to the Draftjs based implementation.
 
-Refer to Volto-slate [Readme](https://github.com/eea/volto-slate/blob/master/README.md#features) for more information about its out of the box features.
-
 # Concepts
 
 ```{toctree}
