@@ -97,6 +97,7 @@ let config = {
     imageObjects: ['Image'],
     reservedIds: ['login', 'layout', 'plone', 'zip', 'properties'],
     downloadableObjects: ['File'], //list of content-types for which the direct download of the file will be carried out if the user is not authenticated
+    viewableInBrowserObjects: [], //ex: ['File']. List of content-types for which the file will be displayed in browser if the user is not authenticated
     listingPreviewImageField: 'image', // deprecated from Volto 14 onwards
     notSupportedBrowsers: ['ie'],
     defaultPageSize: 25,
@@ -107,6 +108,7 @@ let config = {
     expressMiddleware: serverConfig.expressMiddleware, // BBB
     defaultBlockType: 'text',
     verticalFormTabs: false,
+    useEmailAsLogin: false,
     persistentReducers: ['blocksClipboard'],
     initialReducersBlacklist: [], // reducers in this list won't be hydrated in windows.__data
     asyncPropsExtenders: [], // per route asyncConnect customizers

@@ -109,7 +109,7 @@ If you are using the official Docker Plone image, use the `VERSIONS` environment
 
 `VERSIONS="plone.restapi=8.12.1 plone.rest=2.0.0a1"`
 
-## Nginx example config for seamless mode deployments
+## nginx example config for seamless mode deployments
 
 ```nginx
 upstream backend {
