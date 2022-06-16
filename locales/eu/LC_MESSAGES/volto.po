@@ -1763,6 +1763,11 @@ msgstr "Ados"
 msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed."
 msgstr "Letra xeheak (a-z), karaktere berezi gabe, zenbakiak (0-9) eta "-" edo "_" ikurrak bakarrik erabili daitezke."
 
+#: components/manage/Blocks/Hero/schema
+# defaultMessage: Opacity
+msgid "Opacity"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar

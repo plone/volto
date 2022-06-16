@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-05-31T13:41:42.504Z\n"
+"POT-Creation-Date: 2022-06-16T09:12:42.807Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1756,6 +1756,11 @@ msgstr ""
 #: components/manage/Widgets/IdWidget
 # defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed.
 msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed."
+msgstr ""
+
+#: components/manage/Blocks/Hero/schema
+# defaultMessage: Opacity
+msgid "Opacity"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
