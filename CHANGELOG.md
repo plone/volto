@@ -8,6 +8,7 @@
 
 - add control panel via config.settings @ksuess https://github.com/plone/volto/issues/3426
 - Add noindex metadata tag @steffenri
+- Add listing variation schemaEnhancer to the search block schema @ionlizarazu
 
 ### Bugfix
 
