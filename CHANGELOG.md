@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Fix visibility of toolbar workflow dropdown for more states as fitting in .toolbar-content. @ksuess
+
 ### Internal
 
 ### Documentation
