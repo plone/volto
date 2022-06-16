@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-05-29T14:40:31.856Z\n"
+"POT-Creation-Date: 2022-06-05T16:36:36.523Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -153,6 +153,11 @@ msgstr ""
 #: components/manage/Add/Add
 # defaultMessage: Add {type}
 msgid "Add {type}"
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Add-on Configuration
+msgid "Add-on Configuration"
 msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -498,6 +503,11 @@ msgstr ""
 #: components/manage/Blocks/Listing/Edit
 # defaultMessage: Contained items
 msgid "Contained items"
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Content
+msgid "Content"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
@@ -1094,6 +1104,11 @@ msgstr ""
 #: components/theme/Footer/Footer
 # defaultMessage: GNU GPL license
 msgid "GNU GPL license"
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: General
+msgid "General"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
