@@ -4,6 +4,7 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import jwt from 'jsonwebtoken';
 import { MemoryRouter } from 'react-router-dom';
+import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
 
 import Sharing from './Sharing';
 
@@ -58,9 +59,11 @@ describe('Sharing', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <MemoryRouter>
-          <Sharing location={{ pathname: '/blog' }} />
-        </MemoryRouter>
+        <PluggablesProvider>
+          <MemoryRouter>
+            <Sharing location={{ pathname: '/blog' }} />
+          </MemoryRouter>
+        </PluggablesProvider>
       </Provider>,
     );
     const json = component.toJSON();
