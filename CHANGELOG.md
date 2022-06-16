@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add noindex metadata tag @steffenri
+
 ### Bugfix
 
 - Fix CSS bundling in production mode to be consistent with the current policy in the client bundle. Right now the order of the CSS resources matches this chain: Loading of `import my-less.less` in add-ons (following the add-on order) -> Loading of the Semantic UI defaults -> Loading of the local theme (either project or add-on based). We are forcing now the bundling of all the CSS in one chunk, so it behaves the same than in dev mode (using the style-loader). @sneridagh
