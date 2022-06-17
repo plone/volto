@@ -80,6 +80,7 @@ export {
   withServerErrorCode,
   parseDateTime,
   normalizeLanguageName,
+  toLangUnderscoreRegion,
   hasApiExpander,
   replaceItemOfArray,
 } from '@plone/volto/helpers/Utils/Utils';
@@ -100,3 +101,4 @@ export { usePrevious } from './Utils/usePrevious';
 export { usePagination } from './Utils/usePagination';
 export useUndoManager from './UndoManager/useUndoManager';
 export { getCookieOptions } from './Cookies/cookies';
+export { getWidgetView } from './Widget/widget';

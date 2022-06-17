@@ -8,7 +8,7 @@ export const Number = WidgetStory.bind({
 });
 
 export default {
-  title: 'Widgets/Number',
+  title: 'Edit Widgets/Number',
   component: NumberWidget,
   decorators: [
     (Story) => (

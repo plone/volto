@@ -237,6 +237,8 @@ describe('Blocks Tests', () => {
   });
 
   it('Add Table of Contents block', () => {
+    cy.intercept('PATCH', '*').as('save');
+    cy.intercept('GET', '/**/my-page').as('content');
     // given a text block with a H2 headline
     cy.get('.block.inner.text .public-DraftEditor-content')
       .type('This is a H2 Headline')
@@ -253,12 +255,10 @@ describe('Blocks Tests', () => {
     cy.get('.title').contains('Common').click();
     cy.get('.ui.basic.icon.button.toc').contains('Table of Contents').click();
     cy.get('#toolbar-save').click();
+    cy.wait('@save');
+    cy.wait('@content');
+
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('');
 
     // then the ToC block should contain the H2 headline
     cy.get('.block.table-of-contents .ui.list a').contains(
