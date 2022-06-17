@@ -9,6 +9,7 @@
 ### Bugfix
 
 - get locale always from state. Backport from #3331 @erral
+- Add listing variation schemaEnhancer to the search block schema @ionlizarazu
 
 ### Internal
 
