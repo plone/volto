@@ -1436,6 +1436,7 @@ msgstr "Enlazar título"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Link to
 msgid "Link to"
 msgstr "Enlazar a"
@@ -1769,6 +1770,7 @@ msgstr "Solo se permiten letras minúsculas (a-z) sin tildes, números (0-9) y l
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr "Abrir en un nueva pestaña"

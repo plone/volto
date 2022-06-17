@@ -1426,6 +1426,7 @@ msgstr "Link al resto"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Link to
 msgid "Link to"
 msgstr "Link a"
@@ -1759,6 +1760,7 @@ msgstr "Solo lettere minuscole (a-z) senza accenti, numeri (0-9), e i due caratt
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr "Apri in un nuovo tab"

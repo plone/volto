@@ -17,6 +17,14 @@ const messages = defineMessages({
     id: 'Alignment',
     defaultMessage: 'Alignment',
   },
+  LinkTo: {
+    id: 'Link to',
+    defaultMessage: 'Link to',
+  },
+  OpenLinkInNewTab: {
+    id: 'Open in a new tab',
+    defaultMessage: 'Open in a new tab',
+  },
 });
 export const VideoBlockSchema = (props) => ({
   title: props.intl.formatMessage(messages.Video),
@@ -26,6 +34,13 @@ export const VideoBlockSchema = (props) => ({
       id: 'default',
       title: 'Default',
       fields: ['url', 'preview_image', 'align'],
+    },
+    {
+      id: 'linkSettings',
+      title: 'Link Settings',
+      fields: props.data.url?.match('.mp4')
+        ? ['linkTo', 'OpenLinkInNewTab']
+        : [],
     },
   ],
 
@@ -41,6 +56,14 @@ export const VideoBlockSchema = (props) => ({
     align: {
       title: props.intl.formatMessage(messages.Alignment),
       widget: 'align',
+    },
+    linkTo: {
+      title: props.intl.formatMessage(messages.LinkTo),
+      widget: 'url',
+    },
+    OpenLinkInNewTab: {
+      title: props.intl.formatMessage(messages.OpenLinkInNewTab),
+      type: 'boolean',
     },
   },
   required: [],
