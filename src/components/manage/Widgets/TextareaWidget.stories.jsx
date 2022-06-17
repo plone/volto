@@ -8,7 +8,7 @@ export const Textarea = WidgetStory.bind({
 });
 
 export default {
-  title: 'Widgets/Textarea',
+  title: 'Edit Widgets/Textarea',
   component: TextareaWidget,
   decorators: [
     (Story) => (
