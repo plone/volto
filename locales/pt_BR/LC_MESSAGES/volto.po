@@ -181,7 +181,7 @@ msgstr "Outra data"
 #: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Maps/schema
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Alignment
 msgid "Alignment"
@@ -1458,7 +1458,6 @@ msgstr "Título do link"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
-#: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Link to
 msgid "Link to"
@@ -1542,11 +1541,12 @@ msgid "Manage translations for {title}"
 msgstr "Gerenciar traduções para {title}"
 
 #: components/manage/Blocks/Maps/MapsSidebar
-# defaultMessage: Map
-msgid "Map"
-msgstr "Mapa"
+#: components/manage/Blocks/Maps/schema
+# defaultMessage: Maps
+msgid "Maps"
+msgstr ""
 
-#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Maps/schema
 # defaultMessage: Maps URL
 msgid "Maps URL"
 msgstr "Url do Mapa"
@@ -1797,7 +1797,6 @@ msgstr "Apenas letras minúsculas (a-z) sem acentos, números (0-9) e os dois ca
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
@@ -3299,7 +3298,7 @@ msgstr "Meu endereço de e-mail é"
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: My username is
 msgid "label_my_username_is"
-msgstr "Meu nome de usuário é"
+msgstr "Meu nome de usuário é<<<<<<< HEAD"
 
 #: config/Blocks
 # defaultMessage: Lead Image Field
