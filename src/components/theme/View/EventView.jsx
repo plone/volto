@@ -16,10 +16,11 @@ const EventTextfieldView = ({ content }) => (
     {content.description && (
       <p className="documentDescription">{content.description}</p>
     )}
-    {content.image && (
+    {content.preview_image && (
       <Image
         className="document-image"
-        src={content.image.scales.thumb.download}
+        alt={content.preview_caption}
+        src={content.preview_image.scales.thumb.download}
         floated="right"
       />
     )}
@@ -41,17 +42,17 @@ const EventTextfieldView = ({ content }) => (
  */
 const EventView = (props) => {
   const { content } = props;
-
   return (
     <div id="page-document" className="ui container viewwrapper event-view">
       <Grid>
         <Grid.Column width={7} className="mobile hidden">
           {hasBlocksData(content) ? (
             <>
-              {content.image && (
+              {content.preview_image && (
                 <Image
                   className="document-image"
-                  src={content.image.scales.large.download}
+                  alt={content.preview_caption}
+                  src={content.preview_image.scales.large.download}
                 />
               )}
               <RenderBlocks {...props} />
@@ -66,10 +67,11 @@ const EventView = (props) => {
         <Grid.Column width={12} only="mobile">
           {hasBlocksData(content) ? (
             <>
-              {content.image && (
+              {content.preview_image && (
                 <Image
                   className="document-image"
-                  src={content.image.scales.small.download}
+                  alt={content.preview_caption}
+                  src={content.preview_image.scales.mini.download}
                 />
               )}
               <RenderBlocks
