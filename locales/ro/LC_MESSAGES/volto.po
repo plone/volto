@@ -1229,6 +1229,7 @@ msgid "If you are certain you have the correct web address but are encountering 
 msgstr "Dacă sunteți sigur că aveți adresa web corectă, dar întâmpinați o eroare, vă rugăm să contactați {site_admin}."
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Image
@@ -1663,6 +1664,11 @@ msgstr "Nu"
 # defaultMessage: No addons found
 msgid "No addons found"
 msgstr "Nu s-au găsit addons"
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: No image selected
+msgid "No image selected"
+msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: No image set in Lead Image content field

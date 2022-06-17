@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-06-05T16:36:36.523Z\n"
+"POT-Creation-Date: 2022-06-17T07:47:08.199Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1231,6 +1231,7 @@ msgid "If you are certain you have the correct web address but are encountering 
 msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Image
@@ -1664,6 +1665,11 @@ msgstr ""
 #: components/manage/Controlpanels/VersionOverview
 # defaultMessage: No addons found
 msgid "No addons found"
+msgstr ""
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: No image selected
+msgid "No image selected"
 msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar

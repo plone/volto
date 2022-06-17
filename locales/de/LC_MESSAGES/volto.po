@@ -1244,6 +1244,7 @@ msgid "If you are certain you have the correct web address but are encountering 
 msgstr "Wenn Sie sicher sind, dass Sie die richtige Adresse eingegeben haben, kontaktieren Sie bitte den {site_admin}."
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Image
@@ -1678,6 +1679,11 @@ msgstr "Nein"
 # defaultMessage: No addons found
 msgid "No addons found"
 msgstr "Keine Add-ons installiert."
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: No image selected
+msgid "No image selected"
+msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: No image set in Lead Image content field
