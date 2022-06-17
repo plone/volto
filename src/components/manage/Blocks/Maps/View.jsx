@@ -7,7 +7,8 @@ import React from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-
+import { compose } from 'redux';
+import { withBlockExtensions } from '@plone/volto/helpers';
 const messages = defineMessages({
   EmbededGoogleMaps: {
     id: 'Embeded Google Maps',
@@ -56,4 +57,4 @@ View.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-export default injectIntl(View);
+export default compose(injectIntl, withBlockExtensions)(View);
