@@ -95,7 +95,9 @@ const Body = ({ data, isEditMode }) => {
                     <video
                       src={
                         isInternalURL(data.url)
-                          ? `${flattenToAppURL(data.url)}/@@download/file`
+                          ? data.url.includes('@@download')
+                            ? data.url
+                            : `${flattenToAppURL(data.url)}/@@download/file`
                           : data.url
                       }
                       controls

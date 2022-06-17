@@ -13,6 +13,7 @@
 
 - Don't render junk when no facets are added to the search block @tiberiuichim
 - Fix visibility of toolbar workflow dropdown for more states as fitting in .toolbar-content. @ksuess
+- Fix the video block for anonymous user @iFlameing
 
 ### Internal
 
