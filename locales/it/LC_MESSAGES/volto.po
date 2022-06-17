@@ -153,6 +153,11 @@ msgstr "Aggiungi termine"
 msgid "Add {type}"
 msgstr "Aggiungi {type}"
 
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Add-on Configuration
+msgid "Add-on Configuration"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Add-ons Settings
 msgid "Add-ons Settings"
@@ -496,6 +501,11 @@ msgstr "Form di contatto"
 # defaultMessage: Contained items
 msgid "Contained items"
 msgstr "Elementi contenuti"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Content
+msgid "Content"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Content type created
@@ -1090,6 +1100,11 @@ msgstr "Nome completo"
 # defaultMessage: GNU GPL license
 msgid "GNU GPL license"
 msgstr "licenza GNU GPL"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: General
+msgid "General"
+msgstr ""
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Global role
