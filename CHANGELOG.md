@@ -14,7 +14,7 @@
 
 ### Bugfix
 
-- Use `cloneDeepSchema` helper for schema cloning operations, this fixes the error thrown in the use case of having JSX in the schema while cloning the schema operaion  @sneridagh
+- Use `cloneDeepSchema` helper for schema cloning operations, this fixes the error thrown in the use case of having JSX in the schema while cloning schema operations @sneridagh
 
 ## 16.0.0-alpha.8 (2022-06-17)
 
