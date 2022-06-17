@@ -57,6 +57,8 @@ import TopSideFacets from '@plone/volto/components/manage/Blocks/Search/layout/T
 import HeroImageLeftTemplate from '@plone/volto/components/manage/Blocks/Hero/layout/HeroImageLeftTemplate';
 import HeroImageRightTemplate from '@plone/volto/components/manage/Blocks/Hero/layout/HeroImageRightTemplate';
 import HeroImageBackgroundTemplate from '@plone/volto/components/manage/Blocks/Hero/layout/HeroImageBackgroundTemplate';
+import HeroImageTopTemplate from '@plone/volto/components/manage/Blocks/Hero/layout/HeroImageTopTemplate';
+import HeroImageBottomTemplate from '@plone/volto/components/manage/Blocks/Hero/layout/HeroImageBottomTemplate';
 
 import {
   SelectFacet,
@@ -367,7 +369,7 @@ const blocksConfig = {
         isDefault: true,
       },
       {
-        id: 'hereImageRight',
+        id: 'heroImageRight',
         title: 'Image on right side',
         view: HeroImageRightTemplate,
         isDefault: false,
@@ -377,6 +379,18 @@ const blocksConfig = {
         title: 'Image on the background',
         view: HeroImageBackgroundTemplate,
         isDefault: true,
+      },
+      {
+        id: 'heroImageBottom',
+        title: 'Image on bottom',
+        view: HeroImageBottomTemplate,
+        isDefault: false,
+      },
+      {
+        id: 'heroImageTop',
+        title: 'Image on top',
+        view: HeroImageTopTemplate,
+        isDefault: false,
       },
     ],
   },

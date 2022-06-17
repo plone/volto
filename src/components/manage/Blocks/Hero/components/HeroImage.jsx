@@ -25,7 +25,7 @@ const HeroImage = ({
   onUploadImage,
   placeholder,
   uploading,
-  withBackgroundImage,
+  variation,
 }) => {
   const intl = useIntl();
   return (
@@ -35,7 +35,10 @@ const HeroImage = ({
           className="hero-image"
           src={`${flattenToAppURL(data.url)}/@@images/image`}
           alt=""
-          style={{ opacity: data.opacity || 1 }}
+          style={{
+            opacity:
+              variation.id === 'heroImageBackground' ? data.opacity || 1 : 1,
+          }}
           loading={isEditMode ? 'eager' : 'lazy'}
         />
       ) : (

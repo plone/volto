@@ -8,6 +8,8 @@ import config from '@plone/volto/registry';
 
 import HeroImageLeftTemplate from '@plone/volto/components/manage/Blocks/Hero/layout/HeroImageLeftTemplate';
 import HeroImageRightTemplate from '@plone/volto/components/manage/Blocks/Hero/layout/HeroImageRightTemplate';
+import HeroImageTopTemplate from '@plone/volto/components/manage/Blocks/Hero/layout/HeroImageTopTemplate';
+import HeroImageBottomTemplate from '@plone/volto/components/manage/Blocks/Hero/layout/HeroImageBottomTemplate';
 
 const mockStore = configureStore();
 
@@ -34,9 +36,21 @@ config.blocks.blocksConfig = {
         isDefault: true,
       },
       {
-        id: 'hereImageRight',
+        id: 'heroImageRight',
         title: 'Image on right side',
         view: HeroImageRightTemplate,
+        isDefault: false,
+      },
+      {
+        id: 'heroImageTop',
+        title: 'Image on top',
+        view: HeroImageTopTemplate,
+        isDefault: false,
+      },
+      {
+        id: 'heroImageBottom',
+        title: 'Image on bottom',
+        view: HeroImageBottomTemplate,
         isDefault: false,
       },
     ],
