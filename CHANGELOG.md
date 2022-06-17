@@ -6,7 +6,11 @@
 
 ### Feature
 
+- New `cloneDeepSchema` helper @sneridagh
+
 ### Bugfix
+
+- Use `cloneDeepSchema` helper for schema cloning operations, this fixes the error thrown in the use case of having JSX in the schema while cloning the schema operaion  @sneridagh
 
 ### Internal
 
