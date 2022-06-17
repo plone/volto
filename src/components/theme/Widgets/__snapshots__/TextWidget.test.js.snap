@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextWidget renders a text view widget component 1`] = `
+<span
+  className="metadata text widget"
+  style={
+    Object {
+      "whiteSpace": "pre-wrap",
+    }
+  }
+>
+  Foo bar
+</span>
+`;
+
+exports[`TextWidget renders a text view widget component with children 1`] = `
+<span
+  className="metadata text widget"
+  style={
+    Object {
+      "whiteSpace": "pre-wrap",
+    }
+  }
+>
+  <strong>
+    Foo bar
+  </strong>
+</span>
+`;
+
+exports[`TextWidget renders an empty text view widget component 1`] = `""`;

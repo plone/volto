@@ -6,11 +6,54 @@
 
 ### Feature
 
+- add control panel via config.settings @ksuess https://github.com/plone/volto/issues/3426
+- Add noindex metadata tag @steffenri
+
 ### Bugfix
+
+- Don't render junk when no facets are added to the search block @tiberiuichim
+- Fix visibility of toolbar workflow dropdown for more states as fitting in .toolbar-content. @ksuess
 
 ### Internal
 
 ### Documentation
+
+## 16.0.0-alpha.7 (2022-06-01)
+
+### Bugfix
+
+- fix schema when content contains lock informations. @giuliaghisini
+
+### Internal
+
+- Missing change from the last breaking change (Remove the style wrapper around the `<Block />` component in Edit mode, moved to the main edit wrapper). Now, really move it to the main edit wrapper @sneridagh
+
+## 16.0.0-alpha.6 (2022-05-31)
+
+### Breaking
+
+- Rename `src/components/manage/Widgets/ColorPicker.jsx` component to `src/components/manage/Widgets/ColorPickerWidget.jsx` @sneridagh
+- Remove the style wrapper around the `<Block />` component in Edit mode, moved to the main edit wrapper @sneridagh
+
+### Feature
+
+- Updated Brazilian Portuguese translation @ericof
+- Forward `HTTP Range` headers to the backend. @mamico
+- Add default value to color picker, if `default` is present in the widget schema. @sneridagh
+- Inject the classnames of the StyleWrapper into the main edit wrapper (it was wrapping directly the Edit component before). This way, the flexibility is bigger and you can act upon the whole edit container and artifacts (handlers, etc) @sneridagh
+
+### Bugfix
+
+- fix TokenWidget choices when editing a recently created content. @giuliaghisini
+- Fix color picker defaults implementation #2 @sneridagh
+- Enable default color in `backgroundColor` default StyleWrapper field which wasn't sync with the default value setting @sneridagh
+- Fix Block style wrapper: Cannot read properties of undefined (reading 'toString') @avoinea #3410
+
+## 16.0.0-alpha.5 (2022-05-25)
+
+### Bugfix
+
+- Fix regression, compound lang names (eg. `pt-BR`) no longer working @sneridagh
 
 ## 16.0.0-alpha.4 (2022-05-22)
 
@@ -23,7 +66,7 @@
 
 - Added viewableInBrowserObjects setting to use in alternative to downloadableObjects, if you want to view file in browser intstead downloading. @giuliaghisini
 - Disable already chosen criteria in querystring widget @kreafox
-- Added X-Forwarded-* headers to superagent requests. @mamico
+- Added X-Forwarded-\* headers to superagent requests. @mamico
 
 ### Bugfix
 
@@ -52,8 +95,10 @@
 
 ### Feature
 
+- Add default widget views for all type of fields and improve the DefaultView @ionlizarazu
 - added configurable identifier field for password reset in config.js. @giuliaghisini
 - Add `expandToBackendURL` helper @sneridagh
+- Add a Pluggable to the sharing page @JeffersonBledsoe #3372
 
 ### Bugfix
 

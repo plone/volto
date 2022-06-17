@@ -168,6 +168,11 @@ msgstr "Füge neuen Term hinzu"
 msgid "Add {type}"
 msgstr "{type} hinzufügen"
 
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Add-on Configuration
+msgid "Add-on Configuration"
+msgstr "Konfiguration von Erweiterungen"
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Add-ons Settings
 msgid "Add-ons Settings"
@@ -460,7 +465,7 @@ msgid "Collection"
 msgstr "Kollektion"
 
 #: components/manage/Blocks/Block/StylesSchema
-#: components/manage/Widgets/ColorPicker
+#: components/manage/Widgets/ColorPickerWidget
 # defaultMessage: Color
 msgid "Color"
 msgstr ""
@@ -512,6 +517,11 @@ msgstr "Kontaktformular"
 # defaultMessage: Contained items
 msgid "Contained items"
 msgstr "Enthaltene Elemente"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Content
+msgid "Content"
+msgstr "Inhalt"
 
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Content type created
@@ -1107,6 +1117,11 @@ msgstr "Name"
 # defaultMessage: GNU GPL license
 msgid "GNU GPL license"
 msgstr "GNU-GPL-Lizenz"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: General
+msgid "General"
+msgstr "Allgemein"
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Global role
@@ -3336,6 +3351,7 @@ msgstr "Häufig genutzt"
 
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+#: components/theme/Widgets/BooleanWidget
 # defaultMessage: No
 msgid "no"
 msgstr ""
@@ -3613,6 +3629,7 @@ msgstr "Externe Webseite besuchen"
 
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+#: components/theme/Widgets/BooleanWidget
 # defaultMessage: Yes
 msgid "yes"
 msgstr ""
