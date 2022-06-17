@@ -1159,6 +1159,11 @@ msgstr "Celda de cabecera"
 msgid "Headline"
 msgstr "Cabecera"
 
+#: components/manage/Blocks/Hero/schema
+# defaultMessage: Hero
+msgid "Hero"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hidden facets will still filter the results if proper parameters are passed in URLs
 msgid "Hidden facets will still filter the results if proper parameters are passed in URLs"

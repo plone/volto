@@ -5,6 +5,10 @@ const messages = defineMessages({
     id: 'Link more',
     defaultMessage: 'Link more',
   },
+  blockTitle: {
+    id: 'Hero',
+    defaultMessage: 'Hero',
+  },
   LinkTitle: {
     id: 'Link title',
     defaultMessage: 'Link Title',
@@ -25,7 +29,7 @@ const messages = defineMessages({
 
 const schemaHero = ({ intl, variation }) => {
   return {
-    title: 'Block settings',
+    title: intl.formatMessage(messages.blockTitle),
     required: [],
     fieldsets: [
       {
