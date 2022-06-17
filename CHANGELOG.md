@@ -2,22 +2,19 @@
 
 ## 16.0.0 (unreleased)
 
-### Breaking
-
 ### Feature
 
-- add control panel via config.settings @ksuess https://github.com/plone/volto/issues/3426
+- Refactor image block: make it schema extensible @nileshgulia1 @sneridagh
+- Add control panel via config.settings @ksuess https://github.com/plone/volto/issues/3426
 - Add noindex metadata tag @steffenri
+- Adding Schema for Maps Block in Sidebar @iRohitSingh
+- Add a Pluggable to the sharing page @JeffersonBledsoe #3372
 
 ### Bugfix
 
 - Don't render junk when no facets are added to the search block @tiberiuichim
 - Fix visibility of toolbar workflow dropdown for more states as fitting in .toolbar-content. @ksuess
 - Fix the video block for anonymous user @iFlameing
-
-### Internal
-
-### Documentation
 
 ## 16.0.0-alpha.7 (2022-06-01)
 
@@ -238,7 +235,6 @@
 - Add default widget views for all type of fields and improve the DefaultView @ionlizarazu
 - added configurable identifier field for password reset in config.js. @giuliaghisini
 - Add `expandToBackendURL` helper @sneridagh
-- Add a Pluggable to the sharing page @JeffersonBledsoe #3372
 
 ### Bugfix
 
@@ -256,8 +252,6 @@
 - fix make task `docs-linkcheckbroken` if grep has exit code 1 (no lines found)
 
 ## 16.0.0-alpha.1 (2022-05-09)
-
-- Refactor image block: make it schema extensible @nileshgulia1 @sneridagh
 
 ### Feature
 
@@ -775,7 +769,6 @@
 
 ### Internal
 
-- Adding Schema for Maps Block in Sidebar @iRohitSingh
 - Cleanup redundant buildout install run.
 
 ## 14.8.0 (2022-02-03)
