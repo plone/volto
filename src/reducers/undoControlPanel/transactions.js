@@ -1,6 +1,6 @@
 /**
  * Trancsaction reducer.
- * @module reducers/history/history
+ * @module reducers/undoControlPanel/transactions
  */
 import { GET_TRANSACTION } from '../../constants/ActionTypes';
 
@@ -30,12 +30,12 @@ function getRequestKey(actionType) {
 
 /**
  * Transaction reducer.
- * @function undoControlPanel
+ * @function transactions
  * @param {Object} state Current state.
  * @param {Object} action Action to be handled.
  * @returns {Object} New state.
  */
-export default function undoControlPanel(state = initialState, action = {}) {
+export default function transactions(state = initialState, action = {}) {
   switch (action.type) {
     // case `${REVERT_HISTORY}_PENDING`:
     case `${GET_TRANSACTION}_PENDING`:
@@ -50,7 +50,7 @@ export default function undoControlPanel(state = initialState, action = {}) {
     case `${GET_TRANSACTION}_SUCCESS`:
       return {
         ...state,
-        entries: action.result,
+        transactions_recieved: action.result,
         [getRequestKey(action.type)]: {
           loading: false,
           loaded: true,
@@ -72,7 +72,7 @@ export default function undoControlPanel(state = initialState, action = {}) {
     case `${GET_TRANSACTION}_FAIL`:
       return {
         ...state,
-        entries: [],
+        transactions_recieved: [],
         [getRequestKey(action.type)]: {
           loading: false,
           loaded: false,

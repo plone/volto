@@ -3,7 +3,7 @@
  * @module components/manage/Controlpanels/UndoControlPanel
  */
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
@@ -12,7 +12,6 @@ import {
   Container,
   // Header,
   Segment,
-  Table,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { Icon, Toolbar } from '@plone/volto/components';
@@ -20,6 +19,8 @@ import backSVG from '@plone/volto/icons/back.svg';
 import { map } from 'lodash';
 import { Helmet } from '@plone/volto/helpers';
 import { Form } from '@plone/volto/components';
+import TransactionsTable from './TransactionsTable';
+import { getTransactions } from '@plone/volto/actions';
 
 const messages = defineMessages({
   undoControlPanel: {
@@ -55,7 +56,18 @@ class UndoControlPanel extends Component {
    * @property {Object} propTypes Property types.
    * @static
    */
-  static propTypes = {};
+  static propTypes = {
+    getTransactions: PropTypes.func.isRequired,
+    transactions: PropTypes.arrayOf(
+      PropTypes.shape({
+        description: PropTypes.string,
+        id: PropTypes.string,
+        size: PropTypes.number,
+        time: PropTypes.string,
+        user_name: PropTypes.string,
+      }),
+    ),
+  };
 
   /**
    * Constructor
@@ -80,6 +92,7 @@ class UndoControlPanel extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
+    this.props.getTransactions();
     this.setState({ isClient: true });
   }
 
@@ -112,6 +125,7 @@ class UndoControlPanel extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const transactions = this.props.transactions;
     return (
       <Container id="page-undo" className="controlpanel-undo">
         <Helmet title="Undo" />
@@ -192,42 +206,15 @@ class UndoControlPanel extends Component {
               />
             )}
           </Segment>
-        </Segment.Group>
-        <Segment.Group raised>
-          <Segment className="primary">
-            <FormattedMessage id="Transactions" defaultMessage="Transactions" />
-          </Segment>
-          <Table selectable compact singleLine attached>
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell width={1}>
-                  <FormattedMessage
-                    id="History Version Number"
-                    defaultMessage="#"
-                  />
-                </Table.HeaderCell>
-                <Table.HeaderCell width={3}>
-                  <FormattedMessage id="What" defaultMessage="What" />
-                </Table.HeaderCell>
-                <Table.HeaderCell width={3}>
-                  <FormattedMessage id="Who" defaultMessage="Who" />
-                </Table.HeaderCell>
-                <Table.HeaderCell width={3}>
-                  <FormattedMessage id="When" defaultMessage="When" />
-                </Table.HeaderCell>
-                <Table.HeaderCell width={3}>
-                  <FormattedMessage id="path" defaultMessage="path" />
-                </Table.HeaderCell>
-                <Table.HeaderCell width={3}>
-                  <FormattedMessage
-                    id="Change Note"
-                    defaultMessage="Change Note"
-                  />
-                </Table.HeaderCell>
-                <Table.HeaderCell />
-              </Table.Row>
-            </Table.Header>
-          </Table>
+          <Segment.Group raised>
+            <Segment className="primary">
+              <FormattedMessage
+                id="Transactions"
+                defaultMessage="Transactions"
+              />
+            </Segment>
+            <TransactionsTable transactions={transactions} />
+          </Segment.Group>
         </Segment.Group>
         {this.state.isClient && (
           <Portal node={document.getElementById('toolbar')}>
@@ -260,7 +247,8 @@ export default compose(
   connect(
     (state, props) => ({
       pathname: props.location.pathname,
+      transactions: state.transactions.transactions_recieved,
     }),
-    // { installAddon, listAddons, uninstallAddon, upgradeAddon },
+    { getTransactions },
   ),
 )(UndoControlPanel);

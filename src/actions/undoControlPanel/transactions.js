@@ -1,6 +1,6 @@
 /**
- * Undo-Cotrol-Panel actions.
- * @module actions/undoControlPanel/undoControlPanel
+ * Transactions actions.
+ * @module actions/undoControlPanel/transactions
  */
 import { GET_TRANSACTION } from '@plone/volto/constants/ActionTypes';
 
@@ -10,12 +10,12 @@ import { GET_TRANSACTION } from '@plone/volto/constants/ActionTypes';
  * @param {string} url Content url.
  * @returns {Object} Get transaction action.
  */
-export function getTransaction(url) {
+export function getTransactions() {
   return {
     type: GET_TRANSACTION,
     request: {
       op: 'get',
-      path: `${url}/@undo`,
+      path: `/@transactions`,
     },
   };
 }
