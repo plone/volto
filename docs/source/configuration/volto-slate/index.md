@@ -56,7 +56,7 @@ enhancing Volto's Draft.js implementation, include the following:
 ```{toctree}
 :maxdepth: 2
 
-api-documentation
+api
 configuration-settings
 writing-plugins
 ```
