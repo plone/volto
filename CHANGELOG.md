@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Fix warning because missing key in `VersionOverview` component @sneridagh
+
 ### Documentation
 
 ## 16.0.0-alpha.10 (2022-06-17)
