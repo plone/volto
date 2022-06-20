@@ -2,7 +2,7 @@ import { defineMessages } from 'react-intl';
 import React from 'react';
 import { useIntl } from 'react-intl';
 import config from '@plone/volto/registry';
-import { cloneDeep } from 'lodash';
+import { cloneDeepSchema } from '@plone/volto/helpers/Utils/Utils';
 import { defaultStyleSchema } from '@plone/volto/components/manage/Blocks/Block/StylesSchema';
 
 const messages = defineMessages({
@@ -129,8 +129,12 @@ export const withBlockSchemaEnhancer = (
       blocks.blocksConfig?.[blockType]?.schemaEnhancer);
 
   let schema = schemaEnhancer
-    ? schemaEnhancer({ schema: cloneDeep(originalSchema), formData, intl })
-    : cloneDeep(originalSchema);
+    ? schemaEnhancer({
+        schema: cloneDeepSchema(originalSchema),
+        formData,
+        intl,
+      })
+    : cloneDeepSchema(originalSchema);
 
   const { title = messages.variation, description } = extensionConfig;
 
@@ -196,7 +200,7 @@ export const applySchemaEnhancer = ({
     schemaEnhancer = blocks.blocksConfig?.[blockType]?.schemaEnhancer;
     if (schemaEnhancer)
       schema = schemaEnhancer({
-        schema: cloneDeep(originalSchema),
+        schema: cloneDeepSchema(originalSchema),
         formData,
         intl,
       });
@@ -210,8 +214,12 @@ export const applySchemaEnhancer = ({
   schemaEnhancer = activeItem?.['schemaEnhancer'];
 
   schema = schemaEnhancer
-    ? schemaEnhancer({ schema: cloneDeep(originalSchema), formData, intl })
-    : cloneDeep(originalSchema);
+    ? schemaEnhancer({
+        schema: cloneDeepSchema(originalSchema),
+        formData,
+        intl,
+      })
+    : cloneDeepSchema(originalSchema);
 
   // Finalize the schema with a schemaEnhancer in the block config;
   schemaEnhancer = blocks.blocksConfig?.[blockType]?.schemaEnhancer;
