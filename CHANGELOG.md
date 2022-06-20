@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Use the local blocksConfig for extensions, fallback to the config object one. This allows to override local blocks config in nested blocks (blocks in a block, eg. accordion, grid, row) @sneridagh
+
 ### Bugfix
 
 ### Internal
