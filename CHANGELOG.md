@@ -6,17 +6,45 @@
 
 ### Feature
 
-- add control panel via config.settings @ksuess https://github.com/plone/volto/issues/3426
+### Bugfix
+
+### Internal
+
+- Fix warning because missing key in `VersionOverview` component @sneridagh
+
+### Documentation
+
+## 16.0.0-alpha.10 (2022-06-17)
+
+### Bugfix
+
+- Fix CSS bundling in production mode to be consistent with the current policy in the client bundle. Right now the order of the CSS resources matches this chain: Loading of `import my-less.less` in add-ons (following the add-on order) -> Loading of the Semantic UI defaults -> Loading of the local theme (either project or add-on based). We are forcing now the bundling of all the CSS in one chunk, so it behaves the same than in dev mode (using the style-loader). @sneridagh
+
+## 16.0.0-alpha.9 (2022-06-17)
+
+### Feature
+
+- New `cloneDeepSchema` helper @sneridagh
+
+### Bugfix
+
+- Use `cloneDeepSchema` helper for schema cloning operations, this fixes the error thrown in the use case of having JSX in the schema while cloning schema operations @sneridagh
+
+## 16.0.0-alpha.8 (2022-06-17)
+
+### Feature
+
+- Refactor image block: make it schema extensible @nileshgulia1 @sneridagh
+- Add control panel via config.settings @ksuess https://github.com/plone/volto/issues/3426
 - Add noindex metadata tag @steffenri
+- Adding Schema for Maps Block in Sidebar @iRohitSingh
+- Add a Pluggable to the sharing page @JeffersonBledsoe #3372
 
 ### Bugfix
 
 - Don't render junk when no facets are added to the search block @tiberiuichim
 - Fix visibility of toolbar workflow dropdown for more states as fitting in .toolbar-content. @ksuess
-
-### Internal
-
-### Documentation
+- Fix the video block for anonymous user @iFlameing
 
 ## 16.0.0-alpha.7 (2022-06-01)
 
@@ -237,7 +265,6 @@
 - Add default widget views for all type of fields and improve the DefaultView @ionlizarazu
 - added configurable identifier field for password reset in config.js. @giuliaghisini
 - Add `expandToBackendURL` helper @sneridagh
-- Add a Pluggable to the sharing page @JeffersonBledsoe #3372
 
 ### Bugfix
 
@@ -255,8 +282,6 @@
 - fix make task `docs-linkcheckbroken` if grep has exit code 1 (no lines found)
 
 ## 16.0.0-alpha.1 (2022-05-09)
-
-- Refactor image block: make it schema extensible @nileshgulia1 @sneridagh
 
 ### Feature
 
@@ -774,7 +799,6 @@
 
 ### Internal
 
-- Adding Schema for Maps Block in Sidebar @iRohitSingh
 - Cleanup redundant buildout install run.
 
 ## 14.8.0 (2022-02-03)
