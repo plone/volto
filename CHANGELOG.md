@@ -2,6 +2,7 @@
 
 ## 16.0.0 (unreleased)
 
+- Display style schema as accordion not tabs
 ### Breaking
 
 ### Feature
