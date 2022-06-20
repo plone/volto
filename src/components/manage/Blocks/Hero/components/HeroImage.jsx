@@ -2,6 +2,7 @@ import React from 'react';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { Dimmer, Loader, Message } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
+import cx from 'classnames';
 
 const messages = defineMessages({
   image: {
@@ -32,7 +33,13 @@ const HeroImage = ({
     <>
       {data.url ? (
         <img
-          className="hero-image"
+          className={cx(
+            {
+              'full-width':
+                data.align === 'full' && variation.id === 'heroImageBackground',
+            },
+            'hero-image',
+          )}
           src={`${flattenToAppURL(data.url)}/@@images/image`}
           alt=""
           style={{
