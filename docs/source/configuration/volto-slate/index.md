@@ -8,41 +8,48 @@ html_meta:
 
 # Volto slate
 
-An interactive default text editor for Volto, developed on top of [slate](https://docs.slatejs.org/) which offers enhanced WYSIWYG functionality and behavior. See a brief elevator pitch for volto-slate: https://youtu.be/SOz-rk5e4_w
+`volto-slate` is an interactive default text editor for Volto, developed on top of [Slate](https://docs.slatejs.org/).
+It offers enhanced WYSIWYG functionality and behavior.
+See a [brief elevator pitch for `volto-slate`](https://youtu.be/SOz-rk5e4_w).
 
-We believe that, Volto's richtext form editor (the Volto
+We believe that Volto's rich text form editor (the Volto
 Composite Page editor) needs strong integration between the rich text
 capabilities and the rest of the Volto blocks. Some examples of the kind of
 strong integration we have in mind:
 
-- Pasting complex documents inside a volto-slate text block will create
+- Pasting complex documents inside a `volto-slate` text block will create
   multiple Volto blocks: images will be converted to Volto Image blocks, tables
-  will be converted to Volto Table blocks, etc.
-- The text block accepts drag&drop images and it will upload them as Volto Image blocks.
-- volto-slate has a Table button with the familiar size input, but it create a Table block
+  will be converted to Volto Table blocks, and so on.
+- The text block accepts drag-and-drop images, and it will upload them as Volto Image blocks.
+- `volto-slate` has a {guilabel}`Table` button with the familiar size input, but it create a Table block.
 
-While this addon is still in an early alpha stage, we've solved most of the big
-issues, the API starts to stabilize and we've already started several addons
-based on it: https://github.com/eea/volto-slate-metadata-mentions/ and
-https://github.com/eea/volto-slate-zotero
+Although this add-on is in an early alpha stage, we have solved most of the big
+issues.
+The API has stabilized, and we have already started several add-ons
+based on it, including [`volto-slate-metadata-mentions`](https://github.com/eea/volto-slate-metadata-mentions/) and
+[`volto-slate-zotero`](https://github.com/eea/volto-slate-zotero).
 
-## Why
+## Why another WYSIWYG editor?
 
-Some of the main reasons that drove us to create volto-slate instead of
-enhancing Volto's draftjs implementation:
+Some of the main reasons that drove us to create `volto-slate`, instead of
+enhancing Volto's Draft.js implementation, include the following:
 
-- Volto's draftjs implementation depends on draft-js-plugins, a third-party
-  project that introduces its own set of bugs and maintanance issues
-- Slate has a modern, developer-friendly api that makes developing plugins
-  something easy to do. Getting the editor in a plugin is as easy as `const editor = useSlate()`, overriding core functionality is something that's built
+- Volto's Draft.js implementation depends on `draft-js-plugins`, a third-party
+  project that introduces its own set of bugs and maintenance issues.
+- Slate has a modern, developer-friendly API that makes developing plugins
+  easier.
+  Getting the editor in a plugin is as easy as `const editor = useSlate()`.
+  We can override core functionality, something that is built
   in as pluggable, directly in Slate.
 
-- Volto's draft based implementation depends on Redraft for its final output,
-  which comes with its own bugs and issues. While it is nice to have view-mode
-  components, this is something that volto-slate implements just as well.
+- Volto's Draft.js-based implementation depends on Redraft for its final output,
+  which comes with its own bugs and issues.
+  While it is nice to have view-mode
+  components, this is something that `volto-slate` implements just as well.
 - Because Slate's internal storage uses a tree modeled on the DOM pattern, its
-  final rendered output is very clean. Note: The Slate editor value is a JSON
-  object, similar to the Draftjs based implementation.
+  final rendered output is very clean.
+  Note: the Slate editor value is a JSON
+  object, similar to the Draft.js-based implementation.
 
 # Concepts
 

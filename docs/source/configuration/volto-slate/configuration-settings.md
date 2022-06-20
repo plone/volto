@@ -8,20 +8,20 @@ html_meta:
 
 # Editor Configuration
 
-You can customize how volto-slate Editor behaves and its features. These are
-controlled from the `config.js` settings.
+You can customize how `volto-slate` editor behaves and its features.
+These are controlled from the `config.js` settings.
 
-## defaultBlockType
+## `defaultBlockType`
 
-The default block type for a website
+The default block type for a website.
 
-```
+```js
 config.settings.defaultBlockType = 'slate';
 ```
 
-## slate.toolbarButtons
+## `slate.toolbarButtons`
 
-This setting contains the default enabled slate inlineToolbar buttons.
+This setting contains the default enabled Slate `inlineToolbar` buttons.
 
 ```js
 config.settings.slate.toolbarButtons = [
@@ -33,9 +33,9 @@ config.settings.slate.toolbarButtons = [
   ];
 ```
 
-## slate.buttons
+## `slate.buttons`
 
-The slate toolbar button components.
+The Slate toolbar button components.
 
 ```js
 settings.slate.buttons = [
@@ -44,18 +44,18 @@ settings.slate.buttons = [
   ];
 ```
 
-## slate.expandedToolbarButtons
+## `slate.expandedToolbarButtons`
 
-The toolbar buttons rendererd in ExpandedToolbar.
+The toolbar buttons rendererd in `ExpandedToolbar`.
 
 ```js
 slate.expandedToolbarButtons = [...(slate.expandedToolbarButtons || []), LINK];
 ```
 
-## slate.contextToolbarButtons
+## `slate.contextToolbarButtons`
 
-These components are rendered in the toolbar on demand, as configured by
-plugins for a given context/value. By default it takes the value of `toolbarButtonIcon`.
+These components are rendered in the toolbar on demand, as configured by plugins for a given context or value.
+By default it takes the value of `toolbarButtonIcon`.
 
 ```js
 slate.contextToolbarButtons = [
@@ -64,11 +64,9 @@ slate.contextToolbarButtons = [
 ];
 ```
 
-## slate.elementToolbarButtons
+## `slate.elementToolbarButtons`
 
-Each Element node type available in the editor can be configured to have
-specific toolbar buttons shown above the element of that type when it
-contains the selection.
+Each `Element` node type available in the editor can be configured to have specific toolbar buttons shown above the element of that type when it contains the selection.
 
 ```js
 slate.elementToolbarButtons = [
@@ -79,7 +77,7 @@ slate.elementToolbarButtons = [
 
 (persistent-helpers-label)=
 
-## slate.persistentHelpers
+## `slate.persistentHelpers`
 
 A set of components that are always rendered, unlike the button variety.
 They make it possible to orchestrate form-based editing of components.
@@ -91,9 +89,9 @@ slate.persistentHelpers = [
 ];
 ```
 
-## slate.extensions
+## `slate.extensions`
 
-The slate editor is "decorated" with the capabilities from this list.
+The Slate editor is "decorated" with the capabilities from this list.
 
 ```js
 slate.extensions = [
@@ -104,9 +102,9 @@ slate.extensions = [
 ];
 ```
 
-## slate.hotkeys
+## `slate.hotkeys`
 
-Shortcut keys pertaining to a feature from a plugin or behaviour.
+Shortcut keys pertaining to a feature from a plugin or behavior.
 
 ```js
 slate.hotkeys = {
@@ -116,17 +114,17 @@ slate.hotkeys = {
 };
 ```
 
-## slate.keyDownHandlers
+## `slate.keyDownHandlers`
 
-Handle keyDown events for slate editor.
+Handle `keyDown` events for the Slate editor.
 
 ```js
 slate.keyDownHandlers = { 'mod+b': () => {} };
 ```
 
-## slate.elements
+## `slate.elements`
 
-Render View and Edit component for a particular slate element that consumes deserialized/normalized data.
+Render `View` and `Edit` components for a particular Slate element that consumes deserialized or normalized data.
 
 ```js
 slate.elements = {
@@ -136,9 +134,9 @@ slate.elements = {
 };
 ```
 
-## slate.htmlTagsToSlate
+## `slate.htmlTagsToSlate`
 
-Transform html element tags to Slate compatible json structure.
+Transform HTML element tags to a Slate-compatible JSON structure.
 
 ```js
 slate.htmlTagsToSlate = {
@@ -149,19 +147,20 @@ slate.htmlTagsToSlate = {
 };
 ```
 
-## slate.nodeTypesToHighlight
+## `slate.nodeTypesToHighlight`
 
-Adds "highlight" decoration in the editor. Used by `highlightByType` method.
+Adds "highlight" decoration in the editor.
+Used by the `highlightByType` method.
 
 ```js
 slate.nodeTypesToHighlight.push(elementType);
 ```
 
-## slate.runtimeDecorators
+## `slate.runtimeDecorators`
 
-These are "Runtime" decorator functions. These are transient decorations that are
-applied in the editor. They are not persisted in the final value, so they
-are useful for example to highlight search results or a certain type of node.
+These are "runtime" decorator functions.
+These are transient decorations that are applied in the editor.
+They are not persisted in the final value, so they are useful, for example, to highlight search results or a certain type of node.
 
 ```js
 slate.runtimeDecorators = [([node, path], ranges) => ranges];

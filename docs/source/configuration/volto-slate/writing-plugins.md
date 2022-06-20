@@ -8,15 +8,15 @@ html_meta:
 
 (writing-plugins-label)=
 
-# How to write custom plugin
+# How to write custom plugins
 
-This section will guide through registering a custom plugin for volto-slate.
+This section will guide you through registering a custom plugin for `volto-slate`.
 
 ## Adding a tooltip to a text section
 
-A plugin that will create a tooltip on selecting a text element in slate editor.
+You will add a plugin that will create a tooltip when selecting a text element in a Slate editor.
 
-We'll start by creating a `index.js` file which will instantiate Element Editor.
+Start by creating a file named `index.js`, which will instantiate `Element Editor`.
 
 ```js
 export default function install(config) {
@@ -38,15 +38,16 @@ export default function install(config) {
 }
 ```
 
-The `makeInlineElementPlugin` builds the schema based plugin Editor with the given properties.
+The `makeInlineElementPlugin` builds the schem-based plugin `Editor` with the given properties.
 
 ```{note}
-For non-schema based plugins, you can build your own set of persistantHelpers which will render when the plugin is selected. See {ref}`persistent-helpers-label`. Eg: `simpleLinkPlugin`
+For non-schema based plugins, you can build your own set of `persistentHelper`s, which will render when the plugin is selected.
+For example see `simpleLinkPlugin` in {ref}`persistent-helpers-label`.
 ```
 
 ### Add tooltip button
 
-Register slate toolbar button for tooltip.
+Register the Slate toolbar button for the tooltip.
 
 ```js
 const { slate } = config.settings;
@@ -57,9 +58,11 @@ slate.expandedToolbarButtons = [
 ];
 ```
 
-### View and Edit component for Element
+### `View` and `Edit` components for `Element`
 
-Next step is to add a React component for Element, we will name it as `TooltipElement`. This will serve as a edit/view for our plugin element.
+Next add a React component for `Element`
+Name it as `TooltipElement`.
+This will serve as an edit and view mode for our plugin element.
 
 ```js
 import React from 'react';
@@ -86,9 +89,9 @@ const TooltipElement = (props) => {
 export default TooltipElement;
 ```
 
-### Element editor schema
+### `Element` editor schema
 
-The `makeInlineElementPlugin` takes a Schema for edit component of Element and saves the data in the editor.
+The `makeInlineElementPlugin` takes a schema for an edit component of `Element`, and saves the data in the editor.
 
 ```js
 export const TooltipEditorSchema = {
@@ -117,9 +120,9 @@ export const TooltipEditorSchema = {
 };
 ```
 
-### Create a withTooltip extension
+### Create a `withTooltip` extension
 
-Define Tooltip element as an inline node.
+Define a `Tooltip` element as an inline node.
 
 ```js
 export const withTooltip = (editor) => {
@@ -135,7 +138,7 @@ export const withTooltip = (editor) => {
 
 ### Volto configuration registry
 
-Finally register the plugin in volto configuration.
+Finally register the plugin in Volto's configuration.
 
 ```js
 import installEditor from './editor';
