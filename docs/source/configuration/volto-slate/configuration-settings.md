@@ -1,9 +1,9 @@
 ---
 html_meta:
-  'description': 'Slate Editor configuration settings'
-  'property=og:description': 'Slate Editor configuration settings'
-  'property=og:title': 'Editor Configuration'
-  'keywords': 'Volto, Plone, frontend, React, slate, slate-react, volto-slate'
+  "description": "Slate Editor configuration settings"
+  "property=og:description": "Slate Editor configuration settings"
+  "property=og:title": "Editor Configuration"
+  "keywords": "Volto, Plone, frontend, React, Slate, Slate-React, volto-slate"
 ---
 
 # Editor Configuration

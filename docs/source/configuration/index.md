@@ -1,9 +1,9 @@
 ---
 html_meta:
-  'description': 'Main configuration file'
-  'property=og:description': 'Main configuration file'
-  'property=og:title': 'Configuration'
-  'keywords': 'Volto, Plone, frontend, React, configuration'
+  "description": "Main configuration file"
+  "property=og:description": "Main configuration file"
+  "property=og:title": "Configuration"
+  "keywords": "Volto, Plone, frontend, React, configuration"
 ---
 
 # Configuration

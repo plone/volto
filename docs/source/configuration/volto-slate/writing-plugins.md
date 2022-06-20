@@ -1,9 +1,9 @@
 ---
 html_meta:
-  'description': 'How to write a volto-slate plugin'
-  'property=og:description': 'How to write a volto-slate plugin'
-  'property=og:title': 'Write a Volto-slate Plugin'
-  'keywords': 'Volto, Plone, frontend, React, slate, slate-react, volto-slate, plugins'
+  "description": "How to write a volto-slate plugin"
+  "property=og:description": "How to write a volto-slate plugin"
+  "property=og:title": "Write a Volto-slate Plugin"
+  "keywords": "Volto, Plone, frontend, React, Slate, Slate-React, volto-slate, plugins"
 ---
 
 (writing-plugins-label)=

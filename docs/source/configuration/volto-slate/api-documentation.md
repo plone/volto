@@ -1,9 +1,9 @@
 ---
 html_meta:
-  'description': 'Volto slate API documentation'
-  'property=og:description': 'Volto slate API documentation.'
-  'property=og:title': 'Volto slate API'
-  'keywords': 'Volto, Plone, frontend, React, Volto slate, Editor,slate,API'
+  "description": "Volto slate API"
+  "property=og:description": "Volto slate API"
+  "property=og:title": "Volto slate API"
+  "keywords": "Volto, Plone, frontend, React, volto-slate, Editor, Slate, API"
 ---
 
 # API documentation
