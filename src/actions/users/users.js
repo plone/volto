@@ -75,7 +75,7 @@ export function listUsers(query, groups_filter) {
   groups_filter = groups_filter || [];
   let path = '/@users';
   if (query) {
-    path += `?query=${query}`;
+    path += `?search=${query}`;
     if (groups_filter.length > 0) {
       path += `&${stringify(
         { 'groups-filter': groups_filter },
