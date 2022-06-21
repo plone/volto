@@ -22,7 +22,7 @@ import {
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { Icon, Toolbar } from '@plone/volto/components';
 
-import { getRules } from '@plone/volto/actions';
+import { getControlPanelRules } from '@plone/volto/actions';
 
 import backSVG from '@plone/volto/icons/back.svg';
 
@@ -62,7 +62,7 @@ class Rules extends Component {
    * @static
    */
   static propTypes = {
-    getRules: PropTypes.func.isRequired,
+    getControlPanelRules: PropTypes.func.isRequired,
   };
 
   /**
@@ -84,7 +84,7 @@ class Rules extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    this.props.getRules(getBaseUrl(this.props.pathname));
+    this.props.getControlPanelRules(getBaseUrl(this.props.pathname));
 
     this.setState({ isClient: true });
   }
@@ -94,7 +94,11 @@ class Rules extends Component {
    * @method componentDidUpdate
    * @returns {undefined}
    */
-  componentDidUpdate(prevProps, prevState) {}
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.rules !== this.props.rules) {
+      console.log('rules', this.props.rules.items);
+    }
+  }
 
   /**
    * Component will receive props
@@ -247,11 +251,11 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
-      rules: state.rules,
+      rules: state.controlpanelrules,
       pathname: props.location.pathname,
     }),
     {
-      getRules,
+      getControlPanelRules,
     },
   ),
 )(Rules);

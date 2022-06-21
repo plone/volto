@@ -6,6 +6,7 @@ import {
   APPLY_SUB_RULES,
   UNAPPLY_SUB_RULES,
   REMOVE_RULES,
+  GET_CONTROLPANEL_RULES,
 } from '@plone/volto/constants/ActionTypes';
 
 /**
@@ -20,6 +21,22 @@ export function getRules(url) {
     request: {
       op: 'get',
       path: `${url}/@content-rules`,
+    },
+  };
+}
+
+/**
+ * Get rules for control panel function.
+ * @function getControlPanelRules
+ * @param {string} url Content url.
+ * @returns {Object} Get rules action.
+ */
+export function getControlPanelRules(url) {
+  return {
+    type: GET_CONTROLPANEL_RULES,
+    request: {
+      op: 'get',
+      path: `${url}/@controlpanels/content-rules`,
     },
   };
 }
