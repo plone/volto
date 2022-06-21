@@ -21,6 +21,7 @@ import WysiwygWidget from '@plone/volto/components/manage/Widgets/WysiwygWidget'
 import UrlWidget from '@plone/volto/components/manage/Widgets/UrlWidget';
 import EmailWidget from '@plone/volto/components/manage/Widgets/EmailWidget';
 import NumberWidget from '@plone/volto/components/manage/Widgets/NumberWidget';
+import ImageSizeWidget from '@plone/volto/components/manage/Widgets/ImageSizeWidget';
 
 import ReferenceWidget from '@plone/volto/components/manage/Widgets/ReferenceWidget';
 import ObjectBrowserWidget from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
@@ -30,7 +31,7 @@ import ObjectListWidget from '@plone/volto/components/manage/Widgets/ObjectListW
 import VocabularyTermsWidget from '@plone/volto/components/manage/Widgets/VocabularyTermsWidget';
 import SelectMetadataWidget from '@plone/volto/components/manage/Blocks/Search/widgets/SelectMetadataField';
 import SelectAutoComplete from '@plone/volto/components/manage/Widgets/SelectAutoComplete';
-import ColorPickerWidget from '@plone/volto/components/manage/Widgets/ColorPicker';
+import ColorPickerWidget from '@plone/volto/components/manage/Widgets/ColorPickerWidget';
 
 import ArrayViewWidget from '@plone/volto/components/theme/Widgets/ArrayWidget';
 import BooleanViewWidget from '@plone/volto/components/theme/Widgets/BooleanWidget';
@@ -89,6 +90,7 @@ export const widgetMapping = {
     object: ObjectWidget,
     object_list: ObjectListWidget,
     vocabularyterms: VocabularyTermsWidget,
+    image_size: ImageSizeWidget,
     select_querystring_field: SelectMetadataWidget,
     autocomplete: SelectAutoComplete,
     color_picker: ColorPickerWidget,

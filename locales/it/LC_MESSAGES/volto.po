@@ -153,6 +153,11 @@ msgstr "Aggiungi termine"
 msgid "Add {type}"
 msgstr "Aggiungi {type}"
 
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Add-on Configuration
+msgid "Add-on Configuration"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Add-ons Settings
 msgid "Add-ons Settings"
@@ -164,9 +169,9 @@ msgid "Additional date"
 msgstr "Data aggiuntiva"
 
 #: components/manage/Blocks/Block/StylesSchema
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Maps/schema
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Alignment
 msgid "Alignment"
@@ -182,18 +187,18 @@ msgstr "Tutti"
 msgid "Alphabetically"
 msgstr "Alfabetico"
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Alt text
 msgid "Alt text"
 msgstr "Testo alternativo"
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 # defaultMessage: Leave empty if the image is purely decorative.
 msgid "Alt text hint"
 msgstr "Lascia vuoto se l'immagine è decorativa."
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 # defaultMessage: Describe the purpose of the image.
 msgid "Alt text hint link text"
 msgstr "Descrivi lo scopo dell'immagine."
@@ -332,7 +337,6 @@ msgstr "Annulla"
 msgid "Cell"
 msgstr "Cella"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Center
@@ -445,7 +449,7 @@ msgid "Collection"
 msgstr "Collezione"
 
 #: components/manage/Blocks/Block/StylesSchema
-#: components/manage/Widgets/ColorPicker
+#: components/manage/Widgets/ColorPickerWidget
 # defaultMessage: Color
 msgid "Color"
 msgstr ""
@@ -497,6 +501,11 @@ msgstr "Form di contatto"
 # defaultMessage: Contained items
 msgid "Contained items"
 msgstr "Elementi contenuti"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Content
+msgid "Content"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Content type created
@@ -975,7 +984,6 @@ msgstr "Data di scadenza"
 msgid "Expired"
 msgstr "Scaduto"
 
-#: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: External URL
 msgid "External URL"
@@ -1092,6 +1100,11 @@ msgstr "Nome completo"
 # defaultMessage: GNU GPL license
 msgid "GNU GPL license"
 msgstr "licenza GNU GPL"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: General
+msgid "General"
+msgstr ""
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Global role
@@ -1217,6 +1230,7 @@ msgstr "Se sei sicuro di aver inserito l'indirizzo corretto ma ottieni comunque 
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Image
 msgid "Image"
@@ -1226,6 +1240,11 @@ msgstr "Immagine"
 # defaultMessage: Image gallery
 msgid "Image gallery"
 msgstr "Galleria di immagini"
+
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Image size
+msgid "Image size"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Include this occurence
@@ -1367,6 +1386,11 @@ msgstr "Lingua"
 msgid "Language independent field."
 msgstr "Campo indipendete dalla lingua"
 
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Large
+msgid "Large"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Last
 msgid "Last"
@@ -1397,7 +1421,6 @@ msgstr "Layout"
 msgid "Lead Image"
 msgstr "Immagine di testata"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Left
@@ -1422,10 +1445,9 @@ msgid "Link title"
 msgstr "Link al resto"
 
 #: components/manage/Blocks/HeroImageLeft/schema
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
-#: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Link to
 msgid "Link to"
@@ -1509,11 +1531,12 @@ msgid "Manage translations for {title}"
 msgstr "Gestisci le traduzioni per {title}"
 
 #: components/manage/Blocks/Maps/MapsSidebar
-# defaultMessage: Map
-msgid "Map"
-msgstr "Mappa"
+#: components/manage/Blocks/Maps/schema
+# defaultMessage: Maps
+msgid "Maps"
+msgstr ""
 
-#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Maps/schema
 # defaultMessage: Maps URL
 msgid "Maps URL"
 msgstr "URL di Maps"
@@ -1527,6 +1550,11 @@ msgstr "La lunghezza massima è {len}."
 # defaultMessage: Maximum value is {len}.
 msgid "Maximum value is {len}."
 msgstr "Il valore massimo è {len}."
+
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Medium
+msgid "Medium"
+msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Message
@@ -1640,7 +1668,7 @@ msgstr "Nesssun addon trovato"
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected
 msgid "No image selected"
-msgstr "Nessuna immagine selezionata"
+msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: No image set in Lead Image content field
@@ -1757,9 +1785,8 @@ msgstr "Ok"
 msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed."
 msgstr "Solo lettere minuscole (a-z) senza accenti, numeri (0-9), e i due caratteri '-' e '_' sono ammesssi"
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
@@ -1775,7 +1802,6 @@ msgstr "Apri menu"
 msgid "Open object browser"
 msgstr "Apri object browser"
 
-#: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
 msgid "Origin"
@@ -2117,7 +2143,6 @@ msgstr "Stato del workflow"
 msgid "Richtext"
 msgstr "Testo formattato"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Right
@@ -2417,15 +2442,15 @@ msgstr "Configurazione del sito"
 msgid "Sitemap"
 msgstr "Mappa del sito"
 
-#: components/manage/Blocks/Image/ImageSidebar
-# defaultMessage: Size
-msgid "Size"
-msgstr "Dimensione"
-
 #: components/theme/View/ImageView
 # defaultMessage: Size: {size}
 msgid "Size: {size}"
 msgstr "Dimensione: {size}"
+
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Small
+msgid "Small"
+msgstr ""
 
 #: error
 # defaultMessage: Sorry, something went wrong with your request
@@ -2455,6 +2480,7 @@ msgid "Sort on options"
 msgstr "Opzioni di ordinamento"
 
 #: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Image/schema
 # defaultMessage: Source
 msgid "Source"
 msgstr "Sorgente"
