@@ -8,7 +8,6 @@ import { isEqual } from 'lodash';
 import { messages } from '@plone/volto/helpers';
 import { listGroups } from '@plone/volto/actions'; // getRegistry
 import UserGroupMembershipListing from './UserGroupMembershipListing';
-import { getControlpanel } from '../../../../actions/controlpanels/controlpanels';
 
 const UserGroupMembershipMatrix = (props) => {
   const intl = useIntl();
@@ -51,10 +50,6 @@ const UserGroupMembershipMatrix = (props) => {
       dispatch(listGroups('', query_group_filter));
     }
   }, [dispatch, many_groups, query_group_filter, props]);
-
-  useEffect(() => {
-    dispatch(getControlpanel('usergroup'));
-  }, [dispatch]);
 
   const onReset = (event) => {
     // event.preventDefault();

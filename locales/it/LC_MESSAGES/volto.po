@@ -139,14 +139,14 @@ msgid "Add new user"
 msgstr "Aggiungi nuovo utente"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Add or remove all shown users to group
-msgid "Add or remove all shown users to group"
-msgstr ""
-
-#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add to Groups
 msgid "Add to Groups"
 msgstr "Aggiungi ai gruppi"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add users to group
+msgid "Add users to group"
+msgstr ""
 
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Add term
@@ -1265,6 +1265,11 @@ msgstr "Includi questa data"
 msgid "Info"
 msgstr "Info"
 
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+# defaultMessage: You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to user group settings. See the button on the left.
+msgid "InfoUserGroupSettings"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: Inherit permissions from higher levels
 msgid "Inherit permissions from higher levels"
@@ -2060,6 +2065,11 @@ msgstr "Rimuovi"
 msgid "Remove term"
 msgstr "Rimuovi termine"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Remove users from group
+msgid "Remove users from group"
+msgstr ""
+
 #: components/manage/Toolbar/More
 # defaultMessage: Remove working copy
 msgid "Remove working copy"
@@ -2397,8 +2407,8 @@ msgid "Show Replies"
 msgstr "Mostra risposte"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Show groups of users shown
-msgid "Show groups of users shown"
+# defaultMessage: Show groups of users below
+msgid "Show groups of users below"
 msgstr ""
 
 #: components/manage/Widgets/ObjectListWidget
@@ -2941,6 +2951,11 @@ msgstr "Usato per l'accesso programmatico al set di campi."
 # defaultMessage: User
 msgid "User"
 msgstr "Utente"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Settings
+msgid "User Group Settings"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: User created

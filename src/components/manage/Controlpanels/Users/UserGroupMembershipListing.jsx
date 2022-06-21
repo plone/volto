@@ -1,13 +1,16 @@
 import React, { useEffect } from 'react';
+import { uniqBy } from 'lodash';
 import { useIntl } from 'react-intl';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { Checkbox } from 'semantic-ui-react';
+import { Button, Checkbox } from 'semantic-ui-react';
 import { messages } from '@plone/volto/helpers';
 import { listGroups } from '@plone/volto/actions';
-import { Toast } from '@plone/volto/components';
+import { Icon, Toast } from '@plone/volto/components';
 import { updateGroup, listUsers } from '@plone/volto/actions';
-import { uniqBy } from 'lodash';
+
+import add from '@plone/volto/icons/add.svg';
+import remove from '@plone/volto/icons/remove.svg';
 
 const ListingTemplate = ({
   query_user, // Show users on y-axis that match
@@ -112,7 +115,8 @@ const ListingTemplate = ({
     add_joined_groups,
   ]);
 
-  const onSelectOptionHandler = (item, selectedvalue, checked) => {
+  const onSelectOptionHandler = (item, selectedvalue, checked, singleClick) => {
+    singleClick = singleClick ?? false;
     let group = selectedvalue.y;
     let username = selectedvalue.x;
 
@@ -124,6 +128,41 @@ const ListingTemplate = ({
       }),
     )
       .then((resp) => {
+        singleClick &&
+          dispatch(
+            listUsers(
+              query_user,
+              groups_filter.map((el) => el.value),
+            ),
+          );
+      })
+      .then(() => {
+        singleClick &&
+          toast.success(
+            <Toast
+              success
+              title={intl.formatMessage(messages.success)}
+              content="Membership updated"
+            />,
+          );
+      });
+  };
+
+  const onSelectAllHandler = (mtxoption, checked) => {
+    let elements = document.querySelectorAll(`div.checkbox_${mtxoption} input`);
+    let identifier;
+    let usersgroupmapping = {};
+    elements.forEach((element) => {
+      identifier = element.name.split('_-_');
+      usersgroupmapping[identifier[1]] = checked ? true : false;
+    });
+
+    dispatch(
+      updateGroup(identifier[2], {
+        users: usersgroupmapping,
+      }),
+    )
+      .then(() => {
         dispatch(
           listUsers(
             query_user,
@@ -142,44 +181,24 @@ const ListingTemplate = ({
       });
   };
 
-  const onSelectAllHandler = (mtxoption, checked) => {
-    let elements = document.querySelectorAll(`div.checkbox_${mtxoption} input`);
-    let identifier;
-    elements.forEach((element) => {
-      element.checked = checked;
-      identifier = element.name.split('_-_');
-      dispatch(
-        updateGroup(identifier[2], {
-          users: {
-            [identifier[1]]: checked ? true : false,
-          },
-        }),
-      );
-    });
-    toast.success(
-      <Toast
-        success
-        title={intl.formatMessage(messages.success)}
-        content="Membership updated"
-      />,
-    );
-  };
-
   return (
     <div className="administration_matrix">
-      <div className="label-options">
-        {matrix_options?.map((matrix_option) => (
-          <div
-            className="label-options-label inclined"
-            key={matrix_option.value}
-          >
-            <div>
-              <span className="label">{matrix_option.label}</span>
+      {matrix_options && matrix_options?.length > 0 && (
+        <div className="label-options">
+          {matrix_options?.map((matrix_option) => (
+            <div
+              className="label-options-label inclined"
+              key={matrix_option.value}
+            >
+              <div>
+                <span className="label">{matrix_option.label}</span>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
 
+      {/* <div>DEBUG trigger: {trigger}</div> */}
       <div className="items">
         {items.length > 0 ? (
           <>
@@ -188,21 +207,53 @@ const ListingTemplate = ({
                 <div />
                 <div className="matrix_options">
                   {matrix_options?.map((matrix_option) => (
-                    <div
-                      title={
-                        intl.formatMessage(messages.addUsersToGroup) +
-                        ` ${matrix_option.label}`
-                      }
-                      key={matrix_option.value}
-                    >
-                      <Checkbox
-                        name={`member_selectall_${matrix_option.value}`}
-                        title={matrix_option.label}
-                        defaultChecked={false}
-                        onChange={(event, { checked }) => {
-                          onSelectAllHandler(matrix_option.value, checked);
-                        }}
-                      />
+                    <div key={matrix_option.value}>
+                      <Button
+                        icon
+                        basic
+                        onClick={() =>
+                          onSelectAllHandler(matrix_option.value, true)
+                        }
+                        className="add-button"
+                        aria-label={
+                          intl.formatMessage(messages.addUsersToGroup) +
+                          ` ${matrix_option.label}`
+                        }
+                        title={
+                          intl.formatMessage(messages.addUsersToGroup) +
+                          ` ${matrix_option.label}`
+                        }
+                      >
+                        <Icon
+                          name={add}
+                          size="10px"
+                          className="circled"
+                          color="unset"
+                        />
+                      </Button>
+                      <Button
+                        icon
+                        basic
+                        onClick={() =>
+                          onSelectAllHandler(matrix_option.value, false)
+                        }
+                        className="remove-button"
+                        aria-label={
+                          intl.formatMessage(messages.removeUsersFromGroup) +
+                          ` ${matrix_option.label}`
+                        }
+                        title={
+                          intl.formatMessage(messages.removeUsersFromGroup) +
+                          ` ${matrix_option.label}`
+                        }
+                      >
+                        <Icon
+                          name={remove}
+                          size="10px"
+                          className="circled"
+                          color="unset"
+                        />
+                      </Button>
                     </div>
                   ))}
                 </div>
@@ -225,7 +276,7 @@ const ListingTemplate = ({
                         className={`checkbox_${matrix_option.value}`}
                         key={matrix_option.value}
                         title={matrix_option.title}
-                        defaultChecked={item.groups?.items
+                        checked={item.groups?.items
                           ?.map((el) => el.id)
                           .includes(matrix_option.value)}
                         onChange={(event, { checked }) => {
@@ -233,6 +284,7 @@ const ListingTemplate = ({
                             item,
                             { y: matrix_option.value, x: item.id },
                             checked,
+                            true,
                           );
                         }}
                       />

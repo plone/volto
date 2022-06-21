@@ -1,278 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`UserGroupMembershipControlPanel renders a user group membership control component 1`] = `
-Array [
-  <div
-    className="ui container users-control-panel"
+<div
+  className="ui container view-wrapper"
+>
+  <h1>
+    Unauthorized
+  </h1>
+  <h3>
+    foo di du
+  </h3>
+  <p
+    className="description"
   >
-    <div
-      className="ui raised segments"
+    You are trying to access a protected resource, please 
+    <a
+      href="/login"
+      onClick={[Function]}
     >
-      <div
-        className="ui segment primary"
-      >
-        Users
-      </div>
-      <div
-        className="ui segment"
-      >
-        <div
-          className="controlpanel_matrix"
-        >
-          <div
-            className="controlpanel_search_y"
-          >
-            <form
-              className="ui form search_users"
-              onSubmit={[Function]}
-            >
-              <div
-                className="field"
-              >
-                <div
-                  className="ui action input"
-                >
-                  <input
-                    id="user-search-input"
-                    name="SearchUser"
-                    onChange={[Function]}
-                    placeholder="Search users…"
-                    type="text"
-                  />
-                  <button
-                    className="ui icon button"
-                    onClick={[Function]}
-                  >
-                    <i
-                      aria-hidden="true"
-                      className="delete icon"
-                      onClick={[Function]}
-                    />
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-          <div
-            className="controlpanel_search_x"
-          >
-            <form
-              className="ui form search_groups"
-              onSubmit={[Function]}
-            >
-              <div
-                className="field"
-              >
-                <div
-                  className="ui action input"
-                >
-                  <input
-                    id="group-search-input"
-                    name="SearchGroup"
-                    onChange={[Function]}
-                    placeholder="Search group…"
-                    type="text"
-                  />
-                  <button
-                    className="ui icon button"
-                    onClick={[Function]}
-                  >
-                    <i
-                      aria-hidden="true"
-                      className="delete icon"
-                      onClick={[Function]}
-                    />
-                  </button>
-                </div>
-              </div>
-              <div
-                className="field"
-              >
-                <div
-                  className="ui checkbox"
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseUp={[Function]}
-                >
-                  <input
-                    checked={false}
-                    className="hidden"
-                    name="addJoinedGroups"
-                    readOnly={true}
-                    tabIndex={0}
-                    title="Show groups of users shown"
-                    type="checkbox"
-                  />
-                  <label>
-                    Show groups of users shown
-                  </label>
-                </div>
-              </div>
-            </form>
-          </div>
-          <div
-            className="controlpanel_filter"
-          >
-            <h3>
-              Filter users by groups
-            </h3>
-            <form
-              className="ui form search_filter_groups"
-              onSubmit={[Function]}
-            >
-              <div
-                className="field"
-              >
-                <div
-                  className="ui action input"
-                >
-                  <input
-                    id="groupfilter-search-input"
-                    name="SearchGroupFilter"
-                    onChange={[Function]}
-                    placeholder="Search group…"
-                    type="text"
-                  />
-                  <button
-                    className="ui icon button"
-                    onClick={[Function]}
-                  >
-                    <i
-                      aria-hidden="true"
-                      className="delete icon"
-                      onClick={[Function]}
-                    />
-                  </button>
-                </div>
-              </div>
-            </form>
-            <div
-              className="ui checkbox"
-              onChange={[Function]}
-              onClick={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                name="filter_option_bern"
-                readOnly={true}
-                tabIndex={0}
-                title="Group Bern"
-                type="checkbox"
-              />
-              <label>
-                Group Bern
-              </label>
-            </div>
-          </div>
-          <div
-            className="administration_matrix"
-          >
-            <div
-              className="label-options"
-            >
-              <div
-                className="label-options-label inclined"
-              >
-                <div>
-                  <span
-                    className="label"
-                  >
-                    Group Bern
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div
-              className="items"
-            >
-              <div
-                className="listing-row selectall"
-              >
-                <div
-                  className="listing-item"
-                >
-                  <div />
-                  <div
-                    className="matrix_options"
-                  >
-                    <div
-                      title="Add or remove all shown users to group Group Bern"
-                    >
-                      <div
-                        className="ui fitted checkbox"
-                        onChange={[Function]}
-                        onClick={[Function]}
-                        onMouseDown={[Function]}
-                        onMouseUp={[Function]}
-                      >
-                        <input
-                          checked={false}
-                          className="hidden"
-                          name="member_selectall_bern"
-                          readOnly={true}
-                          tabIndex={0}
-                          title="Group Bern"
-                          type="checkbox"
-                        />
-                        <label />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <h3>
-                1
-                 users 
-              </h3>
-              <div
-                className="listing-row"
-              >
-                <div
-                  className="listing-item"
-                >
-                  <div>
-                    <h4>
-                      Bob Dabolina
-                       (
-                      bob-dabolina
-                      )
-                    </h4>
-                  </div>
-                  <div
-                    className="matrix_options"
-                  >
-                    <div
-                      className="ui fitted checkbox checkbox_bern"
-                      onChange={[Function]}
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseUp={[Function]}
-                    >
-                      <input
-                        checked={false}
-                        className="hidden"
-                        name="member_-_bob-dabolina_-_bern"
-                        readOnly={true}
-                        tabIndex={0}
-                        type="checkbox"
-                      />
-                      <label />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>,
-  <div
-    id="Portal"
-  />,
-]
+      log in
+    </a>
+     first.
+  </p>
+  <p>
+    If you are certain you have the correct web address but are encountering an error, please contact the 
+    <a
+      href="/contact-form"
+      onClick={[Function]}
+    >
+      Site Administration
+    </a>
+    .
+  </p>
+  <p>
+    Thank you.
+  </p>
+</div>
 `;

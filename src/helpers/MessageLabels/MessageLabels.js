@@ -174,6 +174,10 @@ export const messages = defineMessages({
     id: 'Users',
     defaultMessage: 'Users',
   },
+  usergroup: {
+    id: 'User Group Settings',
+    defaultMessage: 'User Group Settings',
+  },
   noUserFound: {
     id: 'No user found',
     defaultMessage: 'No user found',
@@ -183,8 +187,12 @@ export const messages = defineMessages({
     defaultMessage: 'Please search for users or use the filters on the side.',
   },
   addUsersToGroup: {
-    id: 'Add or remove all shown users to group',
-    defaultMessage: 'Add or remove all shown users to group',
+    id: 'Add users to group',
+    defaultMessage: 'Add users to group',
+  },
+  removeUsersFromGroup: {
+    id: 'Remove users from group',
+    defaultMessage: 'Remove users from group',
   },
   groups: {
     id: 'Groups',
@@ -215,7 +223,7 @@ export const messages = defineMessages({
     defaultMessage: "Enter a username above to search or click 'Show All'",
   },
   addJoinedGroups: {
-    id: 'Show groups of users shown',
-    defaultMessage: 'Show groups of users shown',
+    id: 'Show groups of users below',
+    defaultMessage: 'Show groups of users below',
   },
 });
