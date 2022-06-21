@@ -4,9 +4,11 @@
 
 ### Breaking
 
+- action `listUsers`: Search for fullname, email, username. Was searching for username only. @ksuess
+
 ### Feature
 
-User group membership management @ksuess
+- User group membership management @ksuess
 
 ### Bugfix
 
