@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { Portal } from 'react-portal';
+import { Button } from 'semantic-ui-react';
 import {
   Container,
   // Header,
@@ -16,6 +17,7 @@ import {
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { Icon, Toolbar } from '@plone/volto/components';
 import backSVG from '@plone/volto/icons/back.svg';
+import undoSVG from '@plone/volto/icons/undo.svg';
 import { map } from 'lodash';
 import { Helmet } from '@plone/volto/helpers';
 import { Form } from '@plone/volto/components';
@@ -42,6 +44,10 @@ const messages = defineMessages({
   sortByDescription: {
     id: 'Sort transactions by Name, User-Name or Email',
     defaultMessage: 'Sort transactions by Name, User-Name or Email',
+  },
+  undo: {
+    id: 'Undo',
+    defaultMessage: 'Undo',
   },
 });
 
@@ -84,6 +90,7 @@ class UndoControlPanel extends Component {
     };
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.undoTransactions = this.undoTransactions.bind(this);
   }
 
   /**
@@ -112,6 +119,16 @@ class UndoControlPanel extends Component {
       this.setState({ isSorted: false });
       // Free all the sorted transactions
     }
+  }
+
+  undoTransactions() {
+    // let undoTransactionId = map(this.props.transactions, (transaction) => {
+    //   if(document.getElementById(transaction.id).firstElementChild.firstElementChild.checked === true){
+    //     return transaction.id;
+    //   }
+    //   return "";
+    // })
+    //Uncomment above code and Write additional code to perform transactions Patching here
   }
 
   onCancel() {
@@ -214,6 +231,24 @@ class UndoControlPanel extends Component {
               />
             </Segment>
             <TransactionsTable transactions={transactions} />
+            <Segment>
+              <Button
+                basic
+                id="transactions-undo"
+                className="undo"
+                aria-label={this.props.intl.formatMessage(messages.undo)}
+                onClick={this.undoTransactions}
+                // disabled={}
+                // loading={}
+              >
+                <Icon
+                  name={undoSVG}
+                  className="circled"
+                  size="30px"
+                  title={this.props.intl.formatMessage(messages.undo)}
+                />
+              </Button>
+            </Segment>
           </Segment.Group>
         </Segment.Group>
         {this.state.isClient && (

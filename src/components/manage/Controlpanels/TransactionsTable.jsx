@@ -4,14 +4,14 @@ import { map } from 'lodash';
 
 const TransactionsTable = ({ transactions }) => {
   return (
-    <Table selectable compact singleLine attached>
+    <Table selectable fixed celled compact singleLine attached>
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell width={1}>
             <FormattedMessage id="Transactions Checkbox" defaultMessage="#" />
           </Table.HeaderCell>
           <Table.HeaderCell width={3}>
-            <FormattedMessage id="Path" defaultMessage="Path" />
+            <FormattedMessage id="What" defaultMessage="What" />
           </Table.HeaderCell>
           <Table.HeaderCell width={3}>
             <FormattedMessage id="Who" defaultMessage="Who" />
@@ -27,16 +27,18 @@ const TransactionsTable = ({ transactions }) => {
       </Table.Header>
       <Table.Body>
         {map(transactions, (transaction) => (
-          <Table.Row>
-            <Table.Cell>
-              <input type="checkbox" />
+          <Table.Row id={transaction.id} key={transaction.id}>
+            <Table.Cell width={1}>
+              <input value={false} type="checkbox" />
             </Table.Cell>
-            <Table.Cell>{transaction.description}</Table.Cell>
-            <Table.Cell>
+            <Table.Cell width={3} title={[transaction.description].join(' ')}>
+              {transaction.description}
+            </Table.Cell>
+            <Table.Cell width={3}>
               {transaction.user_name ? transaction.user_name : 'Zope'}
             </Table.Cell>
-            <Table.Cell>{transaction.time}</Table.Cell>
-            <Table.Cell>Note</Table.Cell>
+            <Table.Cell width={3}>{transaction.time}</Table.Cell>
+            <Table.Cell width={3}>Note</Table.Cell>
           </Table.Row>
         ))}
       </Table.Body>
