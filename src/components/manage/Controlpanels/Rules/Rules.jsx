@@ -136,6 +136,26 @@ class Rules extends Component {
   }
 
   /**
+   * Configure Rule handler
+   * @method handleConfigure
+   * @returns {undefined}
+   */
+  handleConfigure(rule) {
+    console.log(rule);
+    // this.props.history.push(`${this.props.pathname}/add`);
+  }
+
+  /**
+   * Edit Rule handler
+   * @method handleEdit
+   * @returns {undefined}
+   */
+  handleEdit(rule) {
+    console.log(rule);
+    // this.props.history.push(`${this.props.pathname}/add`);
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -212,6 +232,70 @@ class Rules extends Component {
                         />
                       </Table.HeaderCell>
                     </Table.Row>
+                    {this.props.rules.items &&
+                      this.props.rules.items.length > 0 &&
+                      this.props.rules.items.map((rule, i) => (
+                        <Table.Row key={i}>
+                          <Table.Cell>
+                            <p style={{ fontSize: '16px' }}>{rule.title}</p>
+                            <p style={{ fontSize: '14px' }}>
+                              {rule.description}
+                            </p>
+                          </Table.Cell>
+                          <Table.Cell>
+                            <p>{rule.trigger}</p>
+                          </Table.Cell>
+                          <Table.Cell>
+                            <div
+                              style={{ display: 'flex', alignItems: 'center' }}
+                            >
+                              <Checkbox
+                                onChange={(e, { value }) =>
+                                  console.log('handle enable/disable', !value)
+                                }
+                                checked={rule.enabled}
+                                value={rule.enabled}
+                                label="enabled"
+                              />
+                              {!rule.assigned && (
+                                <p
+                                  style={{
+                                    marginLeft: '5px',
+                                    padding: '3px',
+                                    backgroundColor: '#ffc106',
+                                    borderRadius: '5px',
+                                    fontSize: '10px',
+                                    fontWeight: 'bold',
+                                  }}
+                                >
+                                  not assigned
+                                </p>
+                              )}
+                            </div>
+                          </Table.Cell>
+                          <Table.Cell>
+                            <div style={{ display: 'flex' }}>
+                              <Button
+                                size="mini"
+                                primary
+                                onClick={() => this.handleConfigure(rule)}
+                              >
+                                Configure
+                              </Button>
+                              <Button
+                                size="mini"
+                                secondary
+                                onClick={() => this.handleEdit(rule)}
+                              >
+                                Edit
+                              </Button>
+                              <Button size="mini" color="youtube">
+                                Delete
+                              </Button>
+                            </div>
+                          </Table.Cell>
+                        </Table.Row>
+                      ))}
                   </Table.Body>
                 </Table>
                 <Button onClick={() => this.handleAddRule()} primary>
