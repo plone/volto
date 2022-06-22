@@ -74,11 +74,27 @@ const UserGroupMembershipMatrix = (props) => {
   };
 
   const onChangeSearchUsers = (event) => {
-    setQuery_user(event.target.value);
+    if (many_users || many_groups) {
+      // search only on hitting return key
+      if (event.keyCode === 13) {
+        setQuery_user(event.target.value);
+        event.preventDefault();
+      }
+    } else {
+      setQuery_user(event.target.value);
+    }
   };
 
   const onChangeSearchGroups = (event) => {
-    setQuery_group(event.target.value);
+    if (many_users || many_groups) {
+      // search only on hitting return key
+      if (event.keyCode === 13) {
+        setQuery_group(event.target.value);
+        event.preventDefault();
+      }
+    } else {
+      setQuery_group(event.target.value);
+    }
   };
 
   const onSelectOptionHandler = (filter_option, checked) => {
@@ -99,7 +115,15 @@ const UserGroupMembershipMatrix = (props) => {
   };
 
   const onChangeSearchGroupsFilter = (event) => {
-    setQuery_group_filter(event.target.value);
+    if (many_users || many_groups) {
+      // search only on hitting return key
+      if (event.keyCode === 13) {
+        setQuery_group_filter(event.target.value);
+        event.preventDefault();
+      }
+    } else {
+      setQuery_group_filter(event.target.value);
+    }
   };
 
   return (
@@ -112,6 +136,7 @@ const UserGroupMembershipMatrix = (props) => {
               action={{ icon: 'delete' }}
               placeholder={intl.formatMessage(messages.searchUsers)}
               onChange={onChangeSearchUsers}
+              onKeyDown={onChangeSearchUsers}
               id="user-search-input"
             />
           </Form.Field>
@@ -125,6 +150,7 @@ const UserGroupMembershipMatrix = (props) => {
               action={{ icon: 'delete' }}
               placeholder={intl.formatMessage(messages.searchGroups)}
               onChange={onChangeSearchGroups}
+              onKeyDown={onChangeSearchGroups}
               id="group-search-input"
             />
           </Form.Field>
@@ -151,6 +177,7 @@ const UserGroupMembershipMatrix = (props) => {
               action={{ icon: 'delete' }}
               placeholder={intl.formatMessage(messages.searchGroups)}
               onChange={onChangeSearchGroupsFilter}
+              onKeyDown={onChangeSearchGroupsFilter}
               id="groupfilter-search-input"
             />
           </Form.Field>
