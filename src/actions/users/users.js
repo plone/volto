@@ -71,26 +71,38 @@ export function getUser(id) {
  * @param {string} query Query
  * @returns {Object} List users action
  */
-export function listUsers(query, groups_filter) {
+export function listUsers(query, groups_filter, limit) {
   groups_filter = groups_filter || [];
   let path = '/@users';
+
+  var searchParams = new URLSearchParams();
   if (query) {
-    path += `?search=${query}`;
-    if (groups_filter.length > 0) {
-      path += `&${stringify(
-        { 'groups-filter': groups_filter },
-        { arrayFormat: 'colon-list-separator' },
-      )}`;
-    }
-  } else if (groups_filter.length > 0) {
-    path += `?${stringify(
-      { 'groups-filter': groups_filter },
-      { arrayFormat: 'colon-list-separator' },
-    )}`;
+    searchParams.append('search', query);
+  }
+  limit && searchParams.append('limit', limit);
+  const searchParamsToString = searchParams.toString();
+
+  let filterarg =
+    groups_filter.length > 0
+      ? stringify(
+          { 'groups-filter': groups_filter },
+          { arrayFormat: 'colon-list-separator' },
+        )
+      : '';
+
+  if (searchParamsToString) {
+    path += `?${searchParamsToString}`;
+  }
+  if (filterarg) {
+    path += searchParamsToString ? '&' : '?';
+    path += filterarg;
   }
   return {
     type: LIST_USERS,
-    request: { op: 'get', path: path },
+    request: {
+      op: 'get',
+      path: path,
+    },
   };
 }
 
