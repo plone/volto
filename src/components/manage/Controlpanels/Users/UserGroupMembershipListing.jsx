@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { uniqBy } from 'lodash';
 import { useIntl } from 'react-intl';
 import { useSelector, useDispatch } from 'react-redux';
@@ -11,6 +11,7 @@ import { updateGroup, listUsers } from '@plone/volto/actions';
 
 import add from '@plone/volto/icons/add.svg';
 import remove from '@plone/volto/icons/remove.svg';
+import down_key from '@plone/volto/icons/down-key.svg';
 
 const ListingTemplate = ({
   query_user, // Show users on y-axis that match
@@ -22,6 +23,9 @@ const ListingTemplate = ({
 }) => {
   const intl = useIntl();
   const dispatch = useDispatch();
+
+  const pageSize = 25;
+  const [userLimit, setUserLimit] = useState(pageSize);
 
   // y axis
   let items = useSelector((state) => state.users.users);
@@ -97,10 +101,11 @@ const ListingTemplate = ({
         listUsers(
           query_user,
           groups_filter.map((el) => el.value),
+          userLimit,
         ),
       );
     }
-  }, [dispatch, query_user, groups_filter, show_users]);
+  }, [dispatch, query_user, groups_filter, show_users, userLimit]);
 
   useEffect(() => {
     // Get matrix groups.
@@ -133,6 +138,7 @@ const ListingTemplate = ({
             listUsers(
               query_user,
               groups_filter.map((el) => el.value),
+              userLimit,
             ),
           );
       })
@@ -167,6 +173,7 @@ const ListingTemplate = ({
           listUsers(
             query_user,
             groups_filter.map((el) => el.value),
+            userLimit,
           ),
         );
       })
@@ -293,6 +300,18 @@ const ListingTemplate = ({
                 </div>
               </div>
             ))}
+            {!(items.length < pageSize) ? (
+              <div className="show-more">
+                <Button
+                  icon
+                  basic
+                  onClick={() => setUserLimit(userLimit + pageSize)}
+                  className="show-more-button"
+                >
+                  <Icon name={down_key} size="30px" />
+                </Button>
+              </div>
+            ) : null}
           </>
         ) : (
           <div>
