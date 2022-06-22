@@ -75,7 +75,7 @@ export const getImageAttributes = (
         });
 
       const scale = sortedScales[0];
-      attrs.src = scale?.download ?? image.download;
+      attrs.src = flattenToAppURL(scale?.download ?? image.download);
       attrs.aspectRatio = Math.round((image.width / image.height) * 100) / 100;
 
       if (maxSize !== DEFAULT_MAX_SIZE) {

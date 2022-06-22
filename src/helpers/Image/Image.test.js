@@ -79,7 +79,7 @@ describe('Image', () => {
 
     it('returns srcset from object', () => {
       expect(getImageAttributes(ploneImage)).toEqual({
-        src: 'http://localhost:8080/Plone/test-images/@@images/image/listing',
+        src: '/test-images/@@images/image/listing',
         srcSet: [
           '/test-images/@@images/image/listing 16w',
           '/test-images/@@images/image/icon 32w',
@@ -95,7 +95,7 @@ describe('Image', () => {
 
     it('returns srcset from object with maxSize', () => {
       expect(getImageAttributes(ploneImage, { maxSize: 200 })).toEqual({
-        src: 'http://localhost:8080/Plone/test-images/@@images/image/listing',
+        src: '/test-images/@@images/image/listing',
         srcSet: [
           '/test-images/@@images/image/listing 16w',
           '/test-images/@@images/image/icon 32w',
@@ -111,7 +111,7 @@ describe('Image', () => {
 
     it('returns srcset from url with original included', () => {
       expect(getImageAttributes(ploneImage, { useOriginal: true })).toEqual({
-        src: 'http://localhost:8080/Plone/test-images/@@images/image/listing',
+        src: '/test-images/@@images/image/listing',
         srcSet: [
           '/test-images/@@images/image/listing 16w',
           '/test-images/@@images/image/icon 32w',
