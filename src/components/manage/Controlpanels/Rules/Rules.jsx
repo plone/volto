@@ -140,9 +140,8 @@ class Rules extends Component {
    * @method handleConfigure
    * @returns {undefined}
    */
-  handleConfigure(rule) {
-    console.log(rule);
-    // this.props.history.push(`${this.props.pathname}/add`);
+  handleConfigure(ruleId) {
+    this.props.history.push(`${this.props.pathname}/${ruleId}/configure`);
   }
 
   /**
@@ -150,9 +149,8 @@ class Rules extends Component {
    * @method handleEdit
    * @returns {undefined}
    */
-  handleEdit(rule) {
-    console.log(rule);
-    // this.props.history.push(`${this.props.pathname}/add`);
+  handleEdit(ruleId) {
+    this.props.history.push(`${this.props.pathname}/${ruleId}/edit`);
   }
 
   /**
@@ -278,14 +276,14 @@ class Rules extends Component {
                               <Button
                                 size="mini"
                                 primary
-                                onClick={() => this.handleConfigure(rule)}
+                                onClick={() => this.handleConfigure(rule.id)}
                               >
                                 Configure
                               </Button>
                               <Button
                                 size="mini"
                                 secondary
-                                onClick={() => this.handleEdit(rule)}
+                                onClick={() => this.handleEdit(rule.id)}
                               >
                                 Edit
                               </Button>

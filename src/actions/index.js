@@ -81,6 +81,7 @@ export {
   applyRulesToSubfolders,
   unapplyRulesToSubfolders,
   removeRules,
+  getControlPanelRule,
   getControlPanelRules,
 } from '@plone/volto/actions/rules/rules';
 export {

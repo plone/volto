@@ -140,7 +140,7 @@ class ConfigureRule extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    this.props.history.push(getParentUrl(this.props.pathname));
+    this.props.history.push(getParentUrl(getParentUrl(this.props.pathname)));
   }
 
   /**

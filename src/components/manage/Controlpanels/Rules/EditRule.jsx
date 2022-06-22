@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { getBaseUrl, getParentUrl, Helmet } from '@plone/volto/helpers';
+import { getParentUrl, Helmet, getBaseUrl } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
 import {
   Button,
@@ -16,19 +16,12 @@ import {
   Container,
   Form,
   Grid,
-  Header,
-  Input,
-  Label,
   Segment,
-  Table,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import {
-  Icon,
-  Toolbar,
-  FormFieldWrapper,
-  Field,
-} from '@plone/volto/components';
+
+import { Icon, Toolbar, Field } from '@plone/volto/components';
+import { getControlPanelRule } from '@plone/volto/actions';
 
 import backSVG from '@plone/volto/icons/back.svg';
 
@@ -80,6 +73,10 @@ class EditRule extends Component {
    */
   componentDidMount() {
     this.setState({ isClient: true });
+    this.props.getControlPanelRule(
+      getBaseUrl(this.props.pathname),
+      this.props.match.params.id,
+    );
   }
 
   /**
@@ -87,7 +84,11 @@ class EditRule extends Component {
    * @method componentDidUpdate
    * @returns {undefined}
    */
-  componentDidUpdate(prevProps, prevState) {}
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.rule !== this.props.rule) {
+      console.log('therule', this.props.rule);
+    }
+  }
 
   /**
    * Component will receive props
@@ -103,7 +104,7 @@ class EditRule extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    this.props.history.push(getParentUrl(this.props.pathname));
+    this.props.history.push(getParentUrl(getParentUrl(this.props.pathname)));
   }
 
   /**
@@ -112,6 +113,9 @@ class EditRule extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    console.log(this.props.rule.item, 'state rule');
+
+    const { title, description } = this.props.rule || {};
     return (
       <div id="page-rule-edit">
         <Helmet title={this.props.intl.formatMessage(messages.configRule)} />
@@ -272,8 +276,9 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
+      rule: state.controlpanelrule,
       pathname: props.location.pathname,
     }),
-    {},
+    { getControlPanelRule },
   ),
 )(EditRule);
