@@ -17,9 +17,7 @@ import { getBaseUrl } from '@plone/volto/helpers';
  * @returns {string} Markup of the unauthorized page.
  */
 const Unauthorized = () => {
-  const error_message = useSelector(
-    (state) => state.apierror?.message || 'foo di du',
-  );
+  const error_message = useSelector((state) => state.apierror?.message);
   let location = useLocation();
 
   return (

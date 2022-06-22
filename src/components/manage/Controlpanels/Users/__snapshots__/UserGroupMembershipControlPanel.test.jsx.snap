@@ -7,9 +7,7 @@ exports[`UserGroupMembershipControlPanel renders a user group membership control
   <h1>
     Unauthorized
   </h1>
-  <h3>
-    foo di du
-  </h3>
+  <h3 />
   <p
     className="description"
   >
