@@ -29,6 +29,7 @@ import {
   FormFieldWrapper,
   Field,
 } from '@plone/volto/components';
+import { eventTriggers } from './constants';
 
 import backSVG from '@plone/volto/icons/back.svg';
 
@@ -70,6 +71,12 @@ class AddRule extends Component {
     super(props);
     this.state = {
       isClient: false,
+      title: '',
+      description: '',
+      event: '',
+      cascading: false,
+      stop: false,
+      enabled: false,
     };
   }
 
@@ -112,6 +119,8 @@ class AddRule extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { title, description, event, cascading, stop, enabled } = this.state;
+
     return (
       <div id="page-rule-add">
         <Helmet title={this.props.intl.formatMessage(messages.addRule)} />
@@ -135,9 +144,9 @@ class AddRule extends Component {
                         <Field
                           title={'Title'}
                           description="Please set a descriptive title for the rule."
-                          value={''}
+                          value={title}
                           required
-                          onChange={() => console.log('coco')}
+                          onChange={(e, t) => this.setState({ title: t })}
                         />
                       </Grid.Column>
                     </Grid.Row>
@@ -146,8 +155,8 @@ class AddRule extends Component {
                         <Field
                           title={'Description'}
                           description="Enter a short description of the rule and its purpose."
-                          value={''}
-                          onChange={() => console.log('description handle')}
+                          value={description}
+                          onChange={(e, d) => this.setState({ title: d })}
                         />
                       </Grid.Column>
                     </Grid.Row>
@@ -157,8 +166,9 @@ class AddRule extends Component {
                           required
                           title={'Triggering event'}
                           description="The rule will execute when the following event occurs."
-                          choices={[['value', 'label']]}
-                          onChange={(e, v) => console.log('event handle', v)}
+                          choices={eventTriggers}
+                          value={event}
+                          onChange={(e, v) => this.setState({ event: v })}
                         />
                       </Grid.Column>
                     </Grid.Row>
@@ -168,10 +178,11 @@ class AddRule extends Component {
               <Segment>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                   <Checkbox
-                    onChange={(e, { value }) => console.log(value)}
-                    value={''}
+                    onChange={(e, { checked }) =>
+                      this.setState({ enabled: checked })
+                    }
                     label={'Enabled'}
-                    //checked={}
+                    checked={enabled}
                   />
                   <p
                     style={{
@@ -191,10 +202,11 @@ class AddRule extends Component {
               <Segment>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                   <Checkbox
-                    onChange={(e, { value }) => console.log(value)}
-                    value={''}
+                    onChange={(e, { checked }) =>
+                      this.setState({ stop: checked })
+                    }
                     label={'Stop Executing rules'}
-                    //checked={}
+                    checked={stop}
                   />
                   <p
                     style={{
@@ -214,10 +226,11 @@ class AddRule extends Component {
               <Segment>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                   <Checkbox
-                    onChange={(e, { value }) => console.log(value)}
-                    value={''}
+                    onChange={(e, { checked }) =>
+                      this.setState({ cascading: checked })
+                    }
                     label={'Cascading rule'}
-                    //checked={}
+                    checked={cascading}
                   />
                   <p
                     style={{
