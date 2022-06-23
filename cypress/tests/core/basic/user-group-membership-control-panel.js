@@ -113,7 +113,7 @@ RUNTESTS.many &&
       cy.waitForResourceToLoad('@types');
 
       // Show user
-      cy.get('#user-search-input').type('fröhlich');
+      cy.get('#user-search-input').type('fröhlich').type('{enter}');
       cy.contains('Max');
 
       cy.get('input[name="addJoinedGroups"]').check({
@@ -123,7 +123,7 @@ RUNTESTS.many &&
 
       // Show users of group "Editors"
       cy.get('form.search_users button').click();
-      cy.get('#groupfilter-search-input').type('edit');
+      cy.get('#groupfilter-search-input').type('edit').type('{enter}');
       cy.waitForResourceToLoad('@groups');
       cy.get('input[name="filter_option_editors"]').check({
         force: true,
