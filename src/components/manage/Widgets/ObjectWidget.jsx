@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { Accordion, Segment } from 'semantic-ui-react';
 import { Field, Icon } from '@plone/volto/components';
 import AnimateHeight from 'react-animate-height';
+import { Tab } from 'semantic-ui-react';
 
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
@@ -73,6 +74,7 @@ const ObjectWidget = ({
   onChange,
   errors = {},
   id,
+  tabsView,
   ...props
 }) => {
   const [currentActiveFieldset, setCurrentActiveFieldset] = React.useState(0);
@@ -82,6 +84,30 @@ const ObjectWidget = ({
 
     setCurrentActiveFieldset(newIndex);
   }
+
+  const createTab = React.useCallback(
+    (fieldset, index) => {
+      return {
+        menuItem: fieldset.title,
+        render: () => (
+          <Tab.Pane>
+            <FieldSet
+              block={block}
+              data={fieldset}
+              index={index}
+              schema={schema}
+              errors={errors}
+              value={value}
+              onChange={onChange}
+              id={id}
+            />
+          </Tab.Pane>
+        ),
+      };
+    },
+    [block, errors, id, onChange, schema, value],
+  );
+
   return schema.fieldsets.length === 1 ? (
     <>
       <FieldSet
@@ -95,6 +121,8 @@ const ObjectWidget = ({
         id={id}
       />
     </>
+  ) : tabsView ? (
+    <Tab panes={schema.fieldsets.map(createTab)} />
   ) : (
     schema.fieldsets.map((fieldset, index) => (
       <Accordion fluid styled className="form" key={fieldset.id}>

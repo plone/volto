@@ -134,48 +134,73 @@ const InlineForm = (props) => {
         </Segment>
       </div>
 
-      {other.map((fieldset, index) => (
-        <Accordion fluid styled className="form" key={fieldset.id}>
-          <div key={fieldset.id} id={`blockform-fieldset-${fieldset.id}`}>
-            <Accordion.Title
-              active={currentActiveFieldset === index}
-              index={index}
-              onClick={handleCurrentActiveFieldset}
-            >
-              {fieldset.title && <>{fieldset.title}</>}
-              {currentActiveFieldset === index ? (
-                <Icon name={upSVG} size="20px" />
-              ) : (
-                <Icon name={downSVG} size="20px" />
-              )}
-            </Accordion.Title>
-            <Accordion.Content active={currentActiveFieldset === index}>
-              <AnimateHeight
-                animateOpacity
-                duration={500}
-                height={currentActiveFieldset === index ? 'auto' : 0}
+      {other.map((fieldset, index) =>
+        fieldset.id === 'styling' ? (
+          <>
+            <header className="header pulled">
+              {icon}
+              <h2>{fieldset.title || _(messages.editValues)}</h2>
+            </header>
+            <Segment className="attached">
+              {map(fieldset.fields, (field) => (
+                <Field
+                  {...schema.properties[field]}
+                  id={field}
+                  value={formData[field]}
+                  required={schema.required.indexOf(field) !== -1}
+                  onChange={(id, value) => {
+                    onChangeField(id, value);
+                  }}
+                  key={field}
+                  error={errors[field]}
+                  block={block}
+                />
+              ))}
+            </Segment>
+          </>
+        ) : (
+          <Accordion fluid styled className="form" key={fieldset.id}>
+            <div key={fieldset.id} id={`blockform-fieldset-${fieldset.id}`}>
+              <Accordion.Title
+                active={currentActiveFieldset === index}
+                index={index}
+                onClick={handleCurrentActiveFieldset}
               >
-                <Segment className="attached">
-                  {map(fieldset.fields, (field) => (
-                    <Field
-                      {...schema.properties[field]}
-                      id={field}
-                      value={formData[field]}
-                      required={schema.required.indexOf(field) !== -1}
-                      onChange={(id, value) => {
-                        onChangeField(id, value);
-                      }}
-                      key={field}
-                      error={errors[field]}
-                      block={block}
-                    />
-                  ))}
-                </Segment>
-              </AnimateHeight>
-            </Accordion.Content>
-          </div>
-        </Accordion>
-      ))}
+                {fieldset.title && <>{fieldset.title}</>}
+                {currentActiveFieldset === index ? (
+                  <Icon name={upSVG} size="20px" />
+                ) : (
+                  <Icon name={downSVG} size="20px" />
+                )}
+              </Accordion.Title>
+              <Accordion.Content active={currentActiveFieldset === index}>
+                <AnimateHeight
+                  animateOpacity
+                  duration={500}
+                  height={currentActiveFieldset === index ? 'auto' : 0}
+                >
+                  <Segment className="attached">
+                    {map(fieldset.fields, (field) => (
+                      <Field
+                        {...schema.properties[field]}
+                        id={field}
+                        value={formData[field]}
+                        required={schema.required.indexOf(field) !== -1}
+                        onChange={(id, value) => {
+                          onChangeField(id, value);
+                        }}
+                        key={field}
+                        error={errors[field]}
+                        block={block}
+                      />
+                    ))}
+                  </Segment>
+                </AnimateHeight>
+              </Accordion.Content>
+            </div>
+          </Accordion>
+        ),
+      )}
       {footer}
     </div>
   );

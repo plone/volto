@@ -278,6 +278,8 @@ export const withStylingSchemaEnhancer = (FormComponent) => (props) => {
   if (enableStyling) {
     const stylesSchema =
       blocks?.blocksConfig[blockType]?.stylesSchema || defaultStyleSchema;
+    const tabsView =
+      blocks?.blocksConfig[blockType]?.stylesSchemaTabsView || false;
 
     schema.fieldsets.push({
       id: 'styling',
@@ -288,6 +290,7 @@ export const withStylingSchemaEnhancer = (FormComponent) => (props) => {
     schema.properties.styles = {
       widget: 'object',
       title: intl.formatMessage(messages.styling),
+      tabsView,
       schema: stylesSchema({
         schema: defaultStyleSchema({ formData, intl }),
         formData,
