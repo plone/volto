@@ -6,7 +6,7 @@ html_meta:
   "keywords": "Volto, Plone, frontend, React, Slate, volto-slate"
 ---
 
-# Volto slate
+# volto-slate
 
 `volto-slate` is an interactive default text editor for Volto, developed on top of [Slate](https://docs.slatejs.org/).
 It offers enhanced WYSIWYG functionality and behavior.

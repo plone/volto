@@ -91,7 +91,7 @@ slate.persistentHelpers = [
 
 ## `slate.extensions`
 
-The Slate editor is "decorated" with the capabilities from this list.
+The slate editor is "decorated" with the capabilities from this list.
 
 ```js
 slate.extensions = [
@@ -116,7 +116,7 @@ slate.hotkeys = {
 
 ## `slate.keyDownHandlers`
 
-Handle `keyDown` events for the Slate editor.
+Handle `keyDown` events for the slate editor.
 
 ```js
 slate.keyDownHandlers = { 'mod+b': () => {} };
@@ -124,7 +124,7 @@ slate.keyDownHandlers = { 'mod+b': () => {} };
 
 ## `slate.elements`
 
-Render `View` and `Edit` components for a particular Slate element that consumes deserialized or normalized data.
+Render `View` and `Edit` components for a particular slate element that consumes deserialized or normalized data.
 
 ```js
 slate.elements = {

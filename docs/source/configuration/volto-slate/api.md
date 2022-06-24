@@ -1,8 +1,8 @@
 ---
 html_meta:
-  "description": "Volto slate API"
-  "property=og:description": "Volto slate API"
-  "property=og:title": "Volto slate API"
+  "description": "volto-slate API"
+  "property=og:description": "volto-slate API"
+  "property=og:title": "volto-slate API"
   "keywords": "Volto, Plone, frontend, React, volto-slate, Editor, Slate, API"
 ---
 
@@ -35,28 +35,51 @@ Refer to {ref}`writing-plugins-label` for how to write your own plugin.
 
 ## Slate Editor
 
-A Top level slate Editor component. It can be directly used in widgets to create a `slateJSON` field.<br/>
-See [`RichTextSlate Widget`](https://github.com/plone/volto/blob/slate-integration/packages/volto-slate/src/widgets/RichTextWidget.jsx) for an example.
+A Top level slate Editor component. It can be directly used in widgets to create a `slateJSON` field.
 
-## Element Editor
+For example:
 
-A top wrapper of all plugins used in volto-slate which exposes plugins API in the form of `makeInlineElementPlugin`. It consists of various modules:
-
-- <b>makeInlineElementPlugin</b>: Used to build and install a custom schema based plugin from Volto-slate API. It expects a set of options passed as a property to your plugin.
-- <b>PluginEditor</b>: Editor component for your Plugin.
-  `makeInlineElementPlugin`
-  Used to build and install a custom schema-based plugin from the `volto-slate` API.
-  It expects a set of options passed as a property to your plugin.
-  `PluginEditor`
-  Editor component for your plugin.
-  `ToolbarButton`
-  Custom plugin `ToolbarButton`.
-
-```{note}
-You will get to know more about Element Editor in {ref}`writing-plugins-label`
+```js
+<FormFieldWrapper {...props} draggable={false} className="slate_wysiwyg">
+  <div
+    className="slate_wysiwyg_box"
+    role="textbox"
+    tabIndex="-1"
+    onClick={() => {}}
+    onKeyDown={() => {}}
+  >
+    <SlateEditor
+      className={className}
+      readOnly={readOnly}
+      id={id}
+      name={id}
+      value={value}
+      onChange={(newValue) => {
+        onChange(id, newValue);
+      }}
+      block={block}
+      selected={selected}
+      properties={properties}
+      placeholder={placeholder}
+    />
+  </div>
+</FormFieldWrapper>
 ```
 
-## Serializing
+## elementEditor
+
+{term}`elementEditor` is a top wrapper of all plugins used in `volto-slate` which exposes plugins API in the form of `makeInlineElementPlugin`. It consists of various modules:
+
+- **makeInlineElementPlugin**: Used to build and install a custom schema based plugin from volto-slate API. It expects a set of options passed as a property to your plugin.
+- **PluginEditor**: Editor component for your Plugin.
+
+- **ToolbarButton**: Custom plugin `ToolbarButton`.
+
+```{note}
+You will get to know more about `elementEditor` in {ref}`writing-plugins-label`
+```
+
+## Serialization
 
 Conversion of slate JSON data into common formats like Text, HTML and Markdown. Common serializers used in volto-slate are `serializeNodes`, `serializeNodesToText` and `serializeNodesToHtml`.
 
@@ -67,7 +90,28 @@ Deserialization is the transformation of arbitrary inputs into a Slate-compatibl
 Deserialization helps control what data comes into Slate per element.
 It is called before the editor's `Element` object for a plugin.
 
-See [`simpleLinkDeserializer`](https://github.com/plone/volto/blob/slate-integration/packages/volto-slate/src/editor/plugins/Link/extensions.js#L34)
+For example:
+
+```js
+export const simpleLinkDeserializer = (editor, el) => {
+  let parent = el;
+
+  let children = Array.from(parent.childNodes)
+    .map((el) => deserialize(editor, el))
+    .flat();
+
+  if (!children.length) children = [{ text: '' }];
+
+  const attrs = {
+    type: SIMPLELINK,
+    data: {
+      url: el.getAttribute('href'),
+    },
+  };
+
+  return jsx('element', attrs, children);
+};
+```
 
 ## Normalization
 

@@ -2,7 +2,7 @@
 html_meta:
   "description": "How to write a volto-slate plugin"
   "property=og:description": "How to write a volto-slate plugin"
-  "property=og:title": "Write a Volto-slate Plugin"
+  "property=og:title": "Write a volto-slate plugin"
   "keywords": "Volto, Plone, frontend, React, Slate, Slate-React, volto-slate, plugins"
 ---
 
@@ -16,7 +16,7 @@ This section will guide you through registering a custom plugin for `volto-slate
 
 You will add a plugin that will create a tooltip when selecting a text element in a Slate editor.
 
-Start by creating a file named `index.js`, which will instantiate `Element Editor`.
+Start by creating a file named `index.js`, which will instantiate {term}`elementEditor`.
 
 ```js
 export default function install(config) {
@@ -41,8 +41,8 @@ export default function install(config) {
 The `makeInlineElementPlugin` builds the schem-based plugin `Editor` with the given properties.
 
 ```{note}
-For non-schema based plugins, you can build your own set of `persistentHelper`s, which will render when the plugin is selected.
-For example see `simpleLinkPlugin` in {ref}`persistent-helpers-label`.
+For non-schema based plugins, you can build your own set of `persistentHelpers`, which will render when the plugin is selected.
+For example refer {ref}`persistent-helpers-label`.
 ```
 
 ### Add tooltip button
@@ -89,7 +89,7 @@ const TooltipElement = (props) => {
 export default TooltipElement;
 ```
 
-### `Element` editor schema
+### `elementEditor` schema
 
 The `makeInlineElementPlugin` takes a schema for an edit component of `Element`, and saves the data in the editor.
 
