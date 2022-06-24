@@ -91,7 +91,7 @@ slate.persistentHelpers = [
 
 ## `slate.extensions`
 
-The slate editor is "decorated" with the capabilities from this list.
+The Slate editor is "decorated" with the capabilities from this list.
 
 ```js
 slate.extensions = [
