@@ -17,7 +17,6 @@ zero-config-builds
 internalproxy
 backend
 volto-config-js
-richeditor-settings
 volto-slate/index
 multilingual
 workingcopy

@@ -8,7 +8,7 @@ html_meta:
 
 # volto-slate
 
-`volto-slate` is an interactive default text editor for Volto, developed on top of [Slate](https://docs.slatejs.org/).
+`volto-slate` is an interactive default text editor for Volto, developed on top of {term}`Slate`.
 It offers enhanced WYSIWYG functionality and behavior.
 See a [brief elevator pitch for `volto-slate`](https://youtu.be/SOz-rk5e4_w).
 
