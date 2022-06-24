@@ -39,7 +39,7 @@ A Top level slate Editor component. It can be directly used in widgets to create
 
 For example:
 
-```js
+```jsx
 <FormFieldWrapper {...props} draggable={false} className="slate_wysiwyg">
   <div
     className="slate_wysiwyg_box"

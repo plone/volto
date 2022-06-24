@@ -126,7 +126,7 @@ slate.keyDownHandlers = { 'mod+b': () => {} };
 
 Render `View` and `Edit` components for a particular slate element that consumes deserialized or normalized data.
 
-```js
+```jsx
 slate.elements = {
   ...(slate.elements || {}),
   h1: ({ attributes, children }) => <h1 {...attributes}>{children}</h1>,

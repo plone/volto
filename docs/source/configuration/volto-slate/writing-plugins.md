@@ -64,7 +64,7 @@ Next add a React component for `Element`
 Name it as `TooltipElement`.
 This will serve as an edit and view mode for our plugin element.
 
-```js
+```jsx
 import React from 'react';
 import { Popup } from 'semantic-ui-react';
 
