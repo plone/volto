@@ -38,11 +38,11 @@ export default function install(config) {
 }
 ```
 
-The `makeInlineElementPlugin` builds the schem-based plugin `Editor` with the given properties.
+The `makeInlineElementPlugin` builds the schema-based plugin `Editor` with the given properties.
 
 ```{note}
 For non-schema based plugins, you can build your own set of `persistentHelpers`, which will render when the plugin is selected.
-For example refer {ref}`editor-configuration-slate-persistenthelpers-label`.
+For an example, see {ref}`editor-configuration-slate-persistenthelpers-label`.
 ```
 
 ### Add tooltip button
@@ -58,11 +58,11 @@ slate.expandedToolbarButtons = [
 ];
 ```
 
-### `View` and `Edit` components for `Element`
+### `View` and `Edit` components
 
-Next add a React component for `Element`
-Name it as `TooltipElement`.
-This will serve as an edit and view mode for our plugin element.
+Next add a React component for the element.
+Name it `TooltipElement`.
+This will serve as edit and view modes for our plugin's element.
 
 ```jsx
 import React from 'react';
@@ -91,7 +91,7 @@ export default TooltipElement;
 
 ### `elementEditor` schema
 
-The `makeInlineElementPlugin` takes a schema for an edit component of `Element`, and saves the data in the editor.
+The `makeInlineElementPlugin` takes a schema for an edit component of the element, and saves the data in the editor.
 
 ```js
 export const TooltipEditorSchema = {
