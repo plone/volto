@@ -60,7 +60,7 @@ settings.slate.buttons = [
 
 ## `slate.expandedToolbarButtons`
 
-The toolbar buttons rendererd in `ExpandedToolbar`.
+The toolbar buttons rendered in `ExpandedToolbar`.
 
 ```js
 slate.expandedToolbarButtons = [...(slate.expandedToolbarButtons || []), LINK];
@@ -72,7 +72,7 @@ slate.expandedToolbarButtons = [...(slate.expandedToolbarButtons || []), LINK];
 ## `slate.contextToolbarButtons`
 
 These components are rendered in the toolbar on demand, as configured by plugins for a given context or value.
-By default it takes the value of `toolbarButtonIcon`.
+By default, it takes the value of `toolbarButtonIcon`.
 
 ```js
 slate.contextToolbarButtons = [
@@ -148,7 +148,7 @@ slate.hotkeys = {
 
 ## `slate.keyDownHandlers`
 
-Handle `keyDown` events for the slate editor.
+Handle `keyDown` events for the Slate editor.
 
 ```js
 slate.keyDownHandlers = { 'mod+b': () => {} };
@@ -159,7 +159,7 @@ slate.keyDownHandlers = { 'mod+b': () => {} };
 
 ## `slate.elements`
 
-Render `View` and `Edit` components for a particular slate element that consumes deserialized or normalized data.
+Render `View` and `Edit` components for a particular Slate element that consumes deserialized or normalized data.
 
 ```jsx
 slate.elements = {
