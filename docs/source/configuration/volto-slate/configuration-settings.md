@@ -6,10 +6,15 @@ html_meta:
   "keywords": "Volto, Plone, frontend, React, Slate, Slate-React, volto-slate"
 ---
 
+(editor-configuration-label)=
+
 # Editor Configuration
 
 You can customize how `volto-slate` editor behaves and its features.
 These are controlled from the `config.js` settings.
+
+
+(editor-configuration-defaultBlockType-label)=
 
 ## `defaultBlockType`
 
@@ -18,6 +23,9 @@ The default block type for a website.
 ```js
 config.settings.defaultBlockType = 'slate';
 ```
+
+
+(editor-configuration-slate-toolbarButtons-label)=
 
 ## `slate.toolbarButtons`
 
@@ -33,6 +41,9 @@ config.settings.slate.toolbarButtons = [
   ];
 ```
 
+
+(editor-configuration-slate-buttons-label)=
+
 ## `slate.buttons`
 
 The Slate toolbar button components.
@@ -44,6 +55,9 @@ settings.slate.buttons = [
   ];
 ```
 
+
+(editor-configuration-slate-expandedtoolbarbuttons-label)=
+
 ## `slate.expandedToolbarButtons`
 
 The toolbar buttons rendererd in `ExpandedToolbar`.
@@ -51,6 +65,9 @@ The toolbar buttons rendererd in `ExpandedToolbar`.
 ```js
 slate.expandedToolbarButtons = [...(slate.expandedToolbarButtons || []), LINK];
 ```
+
+
+(editor-configuration-slate-contexttoolbarbuttons-label)=
 
 ## `slate.contextToolbarButtons`
 
@@ -63,6 +80,9 @@ slate.contextToolbarButtons = [
   (props) => <ToolBarButtonComponent /> || null,
 ];
 ```
+
+
+(editor-configuration-slate-elementtoolbarbuttons-label)=
 
 ## `slate.elementToolbarButtons`
 
@@ -77,6 +97,9 @@ slate.elementToolbarButtons = [
 
 (persistent-helpers-label)=
 
+
+(editor-configuration-slate-persistenthelpers-label)=
+
 ## `slate.persistentHelpers`
 
 A set of components that are always rendered, unlike the button variety.
@@ -88,6 +111,9 @@ slate.persistentHelpers = [
   (props) => <MyPersistantComponent /> || null,
 ];
 ```
+
+
+(editor-configuration-slate-extensions-label)=
 
 ## `slate.extensions`
 
@@ -102,6 +128,9 @@ slate.extensions = [
 ];
 ```
 
+
+(editor-configuration-slate-hotkeys-label)=
+
 ## `slate.hotkeys`
 
 Shortcut keys pertaining to a feature from a plugin or behavior.
@@ -114,6 +143,9 @@ slate.hotkeys = {
 };
 ```
 
+
+(editor-configuration-slate-keydownhandlers-label)=
+
 ## `slate.keyDownHandlers`
 
 Handle `keyDown` events for the slate editor.
@@ -121,6 +153,9 @@ Handle `keyDown` events for the slate editor.
 ```js
 slate.keyDownHandlers = { 'mod+b': () => {} };
 ```
+
+
+(editor-configuration-slate-elements-label)=
 
 ## `slate.elements`
 
@@ -133,6 +168,9 @@ slate.elements = {
   element: (props) => <ElementComponent {...props} mode="edit" />,
 };
 ```
+
+
+(editor-configuration-slate-htmltagstoslate-label)=
 
 ## `slate.htmlTagsToSlate`
 
@@ -147,6 +185,9 @@ slate.htmlTagsToSlate = {
 };
 ```
 
+
+(editor-configuration-slate-nodetypestohighlight-label)=
+
 ## `slate.nodeTypesToHighlight`
 
 Adds "highlight" decoration in the editor.
@@ -155,6 +196,9 @@ Used by the `highlightByType` method.
 ```js
 slate.nodeTypesToHighlight.push(elementType);
 ```
+
+
+(editor-configuration-slate-runtimedecorators-label)=
 
 ## `slate.runtimeDecorators`
 

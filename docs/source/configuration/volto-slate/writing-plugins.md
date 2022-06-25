@@ -42,7 +42,7 @@ The `makeInlineElementPlugin` builds the schem-based plugin `Editor` with the gi
 
 ```{note}
 For non-schema based plugins, you can build your own set of `persistentHelpers`, which will render when the plugin is selected.
-For example refer {ref}`persistent-helpers-label`.
+For example refer {ref}`editor-configuration-slate-persistenthelpers-label`.
 ```
 
 ### Add tooltip button
