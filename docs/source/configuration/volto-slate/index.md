@@ -51,7 +51,7 @@ enhancing Volto's Draft.js implementation, include the following:
   Note: the Slate editor value is a JSON
   object, similar to the Draft.js-based implementation.
 
-# Concepts
+## Concepts
 
 ```{toctree}
 :maxdepth: 2
