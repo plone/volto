@@ -10,9 +10,15 @@ html_meta:
 
 # `volto-slate` API
 
+The `volto-slate` API provides methods to integrate the Slate editor into projects that use Plone's React-based frontend Volto.
+
+
+(volto-slate-api-extensions-label)=
+
 ## Extensions
 
-An extension in `volto-slate` is a function which takes Slate's [`Editor` object](https://docs.slatejs.org/concepts/07-editor) and returns its extended version, allowing a developer to modify and add several functionalities.
+An extension in `volto-slate` is a function which takes Slate's [`Editor` object](https://docs.slatejs.org/concepts/07-editor) and returns its extended version
+This allows a developer to modify and add several functionalities to a Slate `Editor`.
 For example, to define link elements as inline nodes, we override `isInline` from the `Editor` object.
 
 ```js
@@ -32,17 +38,20 @@ export const isInline = (editor) => {
 
 ## Plugins
 
-Plugins are the way to extend the capabilites of volto-slate by adding extra features to Element Editor.
+Plugins are the way to extend the capabilities of `volto-slate` by adding extra features to {term}`elementEditor`.
 
-See the [`default plugins`](https://github.com/plone/volto/tree/slate-integration/packages/volto-slate/src/editor/plugins).
+See the [default plugins](https://github.com/plone/volto/tree/slate-integration/packages/volto-slate/src/editor/plugins).
 
 Refer to {ref}`writing-plugins-label` for how to write your own plugin.
 
-## Slate Editor
 
 (volto-slate-api-SlateEditor-component-label)=
 
-For example:
+## `SlateEditor` component
+
+`SlateEditor` is a top-level React component.
+It can be directly used in widgets to create a `slateJSON` field.
+For example, the following snippet creates a rich text `SlateEditor` component:
 
 ```jsx
 <FormFieldWrapper {...props} draggable={false} className="slate_wysiwyg">
@@ -76,15 +85,21 @@ For example:
 
 ## `elementEditor`
 
-{term}`elementEditor` is a top wrapper of all plugins used in `volto-slate` which exposes plugins API in the form of `makeInlineElementPlugin`. It consists of various modules:
+The {term}`elementEditor` is a top-level wrapper of all plugins used in `volto-slate` that exposes the plugins API in the form of `makeInlineElementPlugin`.
+It consists of various modules:
 
-- **makeInlineElementPlugin**: Used to build and install a custom schema based plugin from volto-slate API. It expects a set of options passed as a property to your plugin.
-- **PluginEditor**: Editor component for your Plugin.
+`makeInlineElementPlugin`
+:   Used to build and install a custom schema based plugin from volto-slate API.
+    It expects a set of options passed as a property to your plugin.
 
-- **ToolbarButton**: Custom plugin `ToolbarButton`.
+`PluginEditor`
+:   Editor component for your Plugin.
+
+`ToolbarButton`
+:   Custom plugin `ToolbarButton`.
 
 ```{note}
-You will get to know more about `elementEditor` in {ref}`writing-plugins-label`
+You will get to know more about `elementEditor` in {ref}`writing-plugins-label`.
 ```
 
 
@@ -92,7 +107,8 @@ You will get to know more about `elementEditor` in {ref}`writing-plugins-label`
 
 ## Serialization
 
-Conversion of slate JSON data into common formats like Text, HTML and Markdown. Common serializers used in volto-slate are `serializeNodes`, `serializeNodesToText` and `serializeNodesToHtml`.
+Serialization is the conversion of Slate JSON data into common formats such as text, HTML, and Markdown.
+Common serializers used in `volto-slate` are `serializeNodes`, `serializeNodesToText`, and `serializeNodesToHtml`.
 
 
 (volto-slate-api-deserialization-label)=
@@ -104,7 +120,11 @@ Deserialization is the transformation of arbitrary inputs into a Slate-compatibl
 Deserialization helps control what data comes into Slate per element.
 It is called before the editor's `Element` object for a plugin.
 
-For example:
+```{todo}
+Replace "SOMETHING"s.
+```
+
+The following example deserializes SOMETHING into SOMETHING.
 
 ```js
 export const simpleLinkDeserializer = (editor, el) => {
@@ -139,7 +159,7 @@ Slate's data model should adhere to constraints provided in [Slate's Normalizing
 
 However, we can customize the functionality to add our own set of conditions by extending the `normalizeNode` method of the Slate editor.
 
-For example, remove all `img` nodes inside paragraph nodes.
+For example, remove all `img` nodes inside `p` nodes.
 
 ```js
 const removeImgChild = (editor) => {
