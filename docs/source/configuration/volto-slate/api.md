@@ -6,6 +6,8 @@ html_meta:
   "keywords": "Volto, Plone, frontend, React, volto-slate, Editor, Slate, API"
 ---
 
+(volto-slate-api-label)=
+
 # `volto-slate` API
 
 ## Extensions
@@ -25,6 +27,9 @@ export const isInline = (editor) => {
 };
 ```
 
+
+(volto-slate-api-plugins-label)=
+
 ## Plugins
 
 Plugins are the way to extend the capabilites of volto-slate by adding extra features to Element Editor.
@@ -35,7 +40,7 @@ Refer to {ref}`writing-plugins-label` for how to write your own plugin.
 
 ## Slate Editor
 
-A Top level slate Editor component. It can be directly used in widgets to create a `slateJSON` field.
+(volto-slate-api-SlateEditor-component-label)=
 
 For example:
 
@@ -66,7 +71,10 @@ For example:
 </FormFieldWrapper>
 ```
 
-## elementEditor
+
+(volto-slate-api-elementEditor-label)=
+
+## `elementEditor`
 
 {term}`elementEditor` is a top wrapper of all plugins used in `volto-slate` which exposes plugins API in the form of `makeInlineElementPlugin`. It consists of various modules:
 
@@ -79,9 +87,15 @@ For example:
 You will get to know more about `elementEditor` in {ref}`writing-plugins-label`
 ```
 
+
+(volto-slate-api-serialization-label)=
+
 ## Serialization
 
 Conversion of slate JSON data into common formats like Text, HTML and Markdown. Common serializers used in volto-slate are `serializeNodes`, `serializeNodesToText` and `serializeNodesToHtml`.
+
+
+(volto-slate-api-deserialization-label)=
 
 ## Deserialization
 
@@ -112,6 +126,9 @@ export const simpleLinkDeserializer = (editor, el) => {
   return jsx('element', attrs, children);
 };
 ```
+
+
+(volto-slate-api-normalization-label)=
 
 ## Normalization
 
