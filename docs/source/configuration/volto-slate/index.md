@@ -6,6 +6,8 @@ html_meta:
   "keywords": "Volto, Plone, frontend, React, Slate, volto-slate"
 ---
 
+(volto-slate-label)=
+
 # `volto-slate`
 
 `volto-slate` is an interactive default text editor for Volto, developed on top of {term}`Slate`.
@@ -23,6 +25,9 @@ Some examples of the kind of strong integration we have in mind:
 Although this add-on is in an early alpha stage, we have solved most of the big issues.
 The API has stabilized, and we have already started several add-ons based on it, including [`volto-slate-metadata-mentions`](https://github.com/eea/volto-slate-metadata-mentions/) and [`volto-slate-zotero`](https://github.com/eea/volto-slate-zotero).
 
+
+(volto-slate-why-another-wysiywg-editor-label)=
+
 ## Why another WYSIWYG editor?
 
 Some of the main reasons that drove us to create `volto-slate`, instead of enhancing Volto's Draft.js implementation, include the following:
@@ -36,7 +41,10 @@ Some of the main reasons that drove us to create `volto-slate`, instead of enhan
 -   Because Slate's internal storage uses a tree modeled on the DOM pattern, its final rendered output is very clean.
     Note: the Slate editor value is a JSON object, similar to the Draft.js-based implementation.
 
-## Concepts
+
+(volto-slate-contents-label)=
+
+## Contents
 
 ```{toctree}
 :maxdepth: 2
