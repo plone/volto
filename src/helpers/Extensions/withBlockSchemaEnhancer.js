@@ -292,8 +292,7 @@ export const withStylingSchemaEnhancer = (FormComponent) => (props) => {
   if (enableStyling) {
     const stylesSchema =
       blocksConfig[blockType]?.stylesSchema || defaultStyleSchema;
-    const tabsView =
-      blocksConfig[blockType]?.stylesSchemaTabsView || false;
+    const tabsView = blocksConfig[blockType]?.stylesSchemaTabsView || false;
 
     schema.fieldsets.push({
       id: 'styling',
