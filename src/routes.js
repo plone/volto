@@ -222,12 +222,12 @@ export const defaultRoutes = [
     component: Register,
   },
   {
-    path: '/password-reset',
+    path: '/passwordreset',
     component: RequestPasswordReset,
     exact: true,
   },
   {
-    path: '/password-reset/:token',
+    path: '/passwordreset/:token',
     component: PasswordReset,
     exact: true,
   },
