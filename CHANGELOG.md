@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- change password-reset url to be consistent with Plone configuration @erral
+
 ### Feature
 
 ### Bugfix
