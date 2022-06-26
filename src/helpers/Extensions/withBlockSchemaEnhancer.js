@@ -26,6 +26,19 @@ function _addField(schema, name) {
 }
 
 /**
+ * Gets the blocksConfig from the props or from the global config object
+ */
+function getBlocksConfig(props) {
+  const { blocks } = config;
+
+  if (props.blocksConfig) {
+    return props.blocksConfig;
+  }
+
+  return blocks?.blocksConfig;
+}
+
+/**
  * Utility function that adds the Select dropdown field to a schema
  */
 export const addExtensionFieldToSchema = ({
@@ -105,11 +118,11 @@ export const withBlockSchemaEnhancer = (
   const { formData, schema: originalSchema } = props;
   const intl = useIntl();
 
-  const { blocks } = config;
+  const blocksConfig = getBlocksConfig(props);
 
   const blockType = formData['@type'];
   const extensionConfig =
-    blocks?.blocksConfig[blockType]?.extensions?.[extensionName];
+    blocksConfig?.[blockType]?.extensions?.[extensionName];
 
   if (!extensionConfig)
     return <FormComponent {...props} schema={originalSchema} />;
@@ -126,7 +139,7 @@ export const withBlockSchemaEnhancer = (
     // schemaEnhancer in the block configuration
     activeItem?.['schemaEnhancer'] ||
     (extensionName === 'variation' &&
-      blocks.blocksConfig?.[blockType]?.schemaEnhancer);
+      blocksConfig?.[blockType]?.schemaEnhancer);
 
   let schema = schemaEnhancer
     ? schemaEnhancer({
@@ -187,17 +200,18 @@ export const applySchemaEnhancer = ({
   schema: originalSchema,
   formData,
   intl,
+  blocksConfig = config.blocks.blocksConfig,
 }) => {
   let schema, schemaEnhancer;
-  const { blocks } = config;
 
   const blockType = formData['@type'];
-  const variations = blocks?.blocksConfig[blockType]?.variations || [];
+  const variations = blocksConfig?.[blockType]?.variations || [];
 
   if (variations.length === 0) {
     // No variations present but we finalize the schema with a schemaEnhancer
     // in the block config (if present)
-    schemaEnhancer = blocks.blocksConfig?.[blockType]?.schemaEnhancer;
+    schemaEnhancer = blocksConfig?.[blockType]?.schemaEnhancer;
+
     if (schemaEnhancer)
       schema = schemaEnhancer({
         schema: cloneDeepSchema(originalSchema),
@@ -222,7 +236,7 @@ export const applySchemaEnhancer = ({
     : cloneDeepSchema(originalSchema);
 
   // Finalize the schema with a schemaEnhancer in the block config;
-  schemaEnhancer = blocks.blocksConfig?.[blockType]?.schemaEnhancer;
+  schemaEnhancer = blocksConfig?.[blockType]?.schemaEnhancer;
   if (schemaEnhancer) schema = schemaEnhancer({ schema, formData, intl });
 
   return schema || originalSchema;
@@ -239,10 +253,10 @@ export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
   const { formData, schema: originalSchema } = props;
   const intl = useIntl();
 
-  const { blocks } = config;
+  const blocksConfig = getBlocksConfig(props);
 
   const blockType = formData['@type'];
-  const variations = blocks?.blocksConfig[blockType]?.variations || [];
+  const variations = blocksConfig[blockType]?.variations || [];
 
   let schema = applySchemaEnhancer({ schema: originalSchema, formData, intl });
 
@@ -270,16 +284,16 @@ export const withStylingSchemaEnhancer = (FormComponent) => (props) => {
   const { formData, schema } = props;
   const intl = useIntl();
 
-  const { blocks } = config;
+  const blocksConfig = getBlocksConfig(props);
 
   const blockType = formData['@type'];
-  const enableStyling = blocks?.blocksConfig[blockType]?.enableStyling;
+  const enableStyling = blocksConfig[blockType]?.enableStyling;
 
   if (enableStyling) {
     const stylesSchema =
-      blocks?.blocksConfig[blockType]?.stylesSchema || defaultStyleSchema;
+      blocksConfig[blockType]?.stylesSchema || defaultStyleSchema;
     const tabsView =
-      blocks?.blocksConfig[blockType]?.stylesSchemaTabsView || false;
+      blocksConfig[blockType]?.stylesSchemaTabsView || false;
 
     schema.fieldsets.push({
       id: 'styling',
