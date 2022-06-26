@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- Change password-reset route to be consistent with the one in Plone @erral
+
 ### Feature
 
 ### Bugfix
