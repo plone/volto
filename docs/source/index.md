@@ -47,6 +47,7 @@ blocks/index
 addons/index
 backend/index
 deploying/index
+translations/index
 upgrade-guide/index
 developer-guidelines/index
 contributing/index
