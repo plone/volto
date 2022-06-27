@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Remove transifex configuration for Volto translations @erral
+
 ### Bugfix
 
 ### Internal
