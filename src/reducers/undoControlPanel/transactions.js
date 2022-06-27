@@ -2,20 +2,23 @@
  * Trancsaction reducer.
  * @module reducers/undoControlPanel/transactions
  */
-import { GET_TRANSACTION } from '../../constants/ActionTypes';
+import {
+  GET_TRANSACTIONS,
+  REVERT_TRANSACTIONS,
+} from '../../constants/ActionTypes';
 
 const initialState = {
-  transactions: [],
+  transactions_recieved: [],
   get: {
     error: null,
     loaded: false,
     loading: false,
   },
-  // revert: {
-  //     error: null,
-  //     loaded: false,
-  //     loading: false,
-  // },
+  revert: {
+    error: null,
+    loaded: false,
+    loading: false,
+  },
 };
 
 /**
@@ -37,8 +40,8 @@ function getRequestKey(actionType) {
  */
 export default function transactions(state = initialState, action = {}) {
   switch (action.type) {
-    // case `${REVERT_HISTORY}_PENDING`:
-    case `${GET_TRANSACTION}_PENDING`:
+    case `${REVERT_TRANSACTIONS}_PENDING`:
+    case `${GET_TRANSACTIONS}_PENDING`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
@@ -47,7 +50,7 @@ export default function transactions(state = initialState, action = {}) {
           error: null,
         },
       };
-    case `${GET_TRANSACTION}_SUCCESS`:
+    case `${GET_TRANSACTIONS}_SUCCESS`:
       return {
         ...state,
         transactions_recieved: action.result,
@@ -58,18 +61,18 @@ export default function transactions(state = initialState, action = {}) {
         },
       };
 
-    // case `${REVERT_HISTORY}_SUCCESS`:
-    //     return {
-    //         ...state,
-    //         [getRequestKey(action.type)]: {
-    //             loading: false,
-    //             loaded: true,
-    //             error: null,
-    //         },
-    //     };
+    case `${REVERT_TRANSACTIONS}_SUCCESS`:
+      return {
+        ...state,
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: true,
+          error: null,
+        },
+      };
 
-    // case `${REVERT_HISTORY}_FAIL`:
-    case `${GET_TRANSACTION}_FAIL`:
+    case `${REVERT_TRANSACTIONS}_FAIL`:
+    case `${GET_TRANSACTIONS}_FAIL`:
       return {
         ...state,
         transactions_recieved: [],

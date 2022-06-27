@@ -3,12 +3,11 @@
  * @module components/manage/Controlpanels/UndoControlPanel
  */
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { Portal } from 'react-portal';
-import { Button } from 'semantic-ui-react';
 import {
   Container,
   // Header,
@@ -17,12 +16,10 @@ import {
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { Icon, Toolbar } from '@plone/volto/components';
 import backSVG from '@plone/volto/icons/back.svg';
-import undoSVG from '@plone/volto/icons/undo.svg';
 import { map } from 'lodash';
 import { Helmet } from '@plone/volto/helpers';
 import { Form } from '@plone/volto/components';
 import TransactionsTable from './TransactionsTable';
-import { getTransactions } from '@plone/volto/actions';
 
 const messages = defineMessages({
   undoControlPanel: {
@@ -42,12 +39,8 @@ const messages = defineMessages({
     defaultMessage: 'Sort by',
   },
   sortByDescription: {
-    id: 'Sort transactions by Name, User-Name or Email',
-    defaultMessage: 'Sort transactions by Name, User-Name or Email',
-  },
-  undo: {
-    id: 'Undo',
-    defaultMessage: 'Undo',
+    id: 'Sort transactions by User-Name or Date',
+    defaultMessage: 'Sort transactions by User-Name or Date',
   },
 });
 
@@ -57,24 +50,6 @@ const messages = defineMessages({
  * @extends Component
  */
 class UndoControlPanel extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    getTransactions: PropTypes.func.isRequired,
-    transactions: PropTypes.arrayOf(
-      PropTypes.shape({
-        description: PropTypes.string,
-        id: PropTypes.string,
-        size: PropTypes.number,
-        time: PropTypes.string,
-        user_name: PropTypes.string,
-      }),
-    ),
-  };
-
   /**
    * Constructor
    * @method constructor
@@ -90,7 +65,6 @@ class UndoControlPanel extends Component {
     };
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.undoTransactions = this.undoTransactions.bind(this);
   }
 
   /**
@@ -99,41 +73,40 @@ class UndoControlPanel extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    this.props.getTransactions();
     this.setState({ isClient: true });
   }
 
+  /**
+   * On Cancel
+   * @method onCancel
+   * @returns {undefined}
+   */
+  onCancel() {
+    this.setState({ isSorted: false });
+    // Free all the sorted transactions
+  }
+
+  /**
+   * On Submit
+   * @method onSubmit
+   * @param {object} data
+   * @returns {undefined}
+   */
   onSubmit(data) {
     let sortBy = data.sortBy || 'no value';
     let value = data.enteredValue || undefined;
 
     if (sortBy.toLowerCase() !== 'no value' && value !== undefined) {
-      // console.log(data)
+      // Sort Transactions here
     } else if (sortBy.toLowerCase() !== 'no value') {
       this.setState({ isSorted: true });
-      sortBy.toLowerCase() === 'name' && this.setState({ sortBy: 'name' });
       sortBy.toLowerCase() === 'user name' &&
         this.setState({ sortBy: 'user name' });
-      sortBy.toLowerCase() === 'email' && this.setState({ sortBy: 'email' });
+      sortBy.toLowerCase() === 'date' && this.setState({ sortBy: 'date' });
     } else {
       this.setState({ isSorted: false });
       // Free all the sorted transactions
     }
-  }
-
-  undoTransactions() {
-    // let undoTransactionId = map(this.props.transactions, (transaction) => {
-    //   if(document.getElementById(transaction.id).firstElementChild.firstElementChild.checked === true){
-    //     return transaction.id;
-    //   }
-    //   return "";
-    // })
-    //Uncomment above code and Write additional code to perform transactions Patching here
-  }
-
-  onCancel() {
-    this.setState({ isSorted: false });
-    // Free all the sorted transactions
   }
 
   /**
@@ -142,7 +115,6 @@ class UndoControlPanel extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const transactions = this.props.transactions;
     return (
       <Container id="page-undo" className="controlpanel-undo">
         <Helmet title="Undo" />
@@ -173,7 +145,7 @@ class UndoControlPanel extends Component {
                         messages.sortByDescription,
                       ),
                       type: 'string',
-                      choices: map(['Name', 'User Name', 'Email'], (type) => [
+                      choices: map(['User Name', 'Date'], (type) => [
                         type,
                         type,
                       ]),
@@ -207,7 +179,7 @@ class UndoControlPanel extends Component {
                         messages.sortByDescription,
                       ),
                       type: 'string',
-                      choices: map(['Name', 'User Name', 'Email'], (type) => [
+                      choices: map(['User Name', 'Date'], (type) => [
                         type,
                         type,
                       ]),
@@ -230,25 +202,7 @@ class UndoControlPanel extends Component {
                 defaultMessage="Transactions"
               />
             </Segment>
-            <TransactionsTable transactions={transactions} />
-            <Segment>
-              <Button
-                basic
-                id="transactions-undo"
-                className="undo"
-                aria-label={this.props.intl.formatMessage(messages.undo)}
-                onClick={this.undoTransactions}
-                // disabled={}
-                // loading={}
-              >
-                <Icon
-                  name={undoSVG}
-                  className="circled"
-                  size="30px"
-                  title={this.props.intl.formatMessage(messages.undo)}
-                />
-              </Button>
-            </Segment>
+            <TransactionsTable />
           </Segment.Group>
         </Segment.Group>
         {this.state.isClient && (
@@ -279,11 +233,7 @@ class UndoControlPanel extends Component {
 
 export default compose(
   injectIntl,
-  connect(
-    (state, props) => ({
-      pathname: props.location.pathname,
-      transactions: state.transactions.transactions_recieved,
-    }),
-    { getTransactions },
-  ),
+  connect((state, props) => ({
+    pathname: props.location.pathname,
+  })),
 )(UndoControlPanel);
