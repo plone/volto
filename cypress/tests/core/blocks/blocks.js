@@ -202,7 +202,9 @@ describe('Blocks Tests', () => {
 
     cy.get('#toolbar-save').should('be.visible');
 
-    cy.get('.celled.fixed.table tr:first-child() th:nth-child(2)').click();
+    cy.get('.celled.fixed.table tr:first-child() th:nth-child(2)').click({
+      waitForAnimations: false,
+    });
 
     // without the second click the test fails. so this makes the test green.
     cy.get('.celled.fixed.table tr:first-child() th:nth-child(2)').click();
