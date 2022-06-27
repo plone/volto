@@ -48,7 +48,7 @@ config.settings.slate.toolbarButtons = [
 
 The Slate toolbar button components.
 
-```js
+```jsx
 settings.slate.buttons = [
     ...settings.slate.buttons,
     'block-quote': <BlockButton ... />
@@ -74,7 +74,7 @@ slate.expandedToolbarButtons = [...(slate.expandedToolbarButtons || []), LINK];
 These components are rendered in the toolbar on demand, as configured by plugins for a given context or value.
 By default, it takes the value of `toolbarButtonIcon`.
 
-```js
+```jsx
 slate.contextToolbarButtons = [
   ...(state.contextToolbarButtons || []),
   (props) => <ToolBarButtonComponent /> || null,
@@ -88,7 +88,7 @@ slate.contextToolbarButtons = [
 
 Each `Element` node type available in the editor can be configured to have specific toolbar buttons shown above the element of that type when it contains the selection.
 
-```js
+```jsx
 slate.elementToolbarButtons = [
   ...(slate.elementToolbarButtons || []),
   (props) => <ElementButtonComponent /> || null,
@@ -105,7 +105,7 @@ slate.elementToolbarButtons = [
 A set of components that are always rendered, unlike the button variety.
 They make it possible to orchestrate form-based editing of components.
 
-```js
+```jsx
 slate.persistentHelpers = [
   ...(slate.persistentHelpers || []),
   (props) => <MyPersistantComponent /> || null,

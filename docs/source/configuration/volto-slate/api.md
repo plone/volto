@@ -120,11 +120,7 @@ Deserialization is the transformation of arbitrary inputs into a Slate-compatibl
 Deserialization helps control what data comes into Slate per element.
 It is called before the `editorElement` component for a plugin.
 
-```{todo}
-Replace "SOMETHING"s.
-```
-
-The following example deserializes SOMETHING into SOMETHING.
+Following is the deserialization method for `simpleLink` plugin:
 
 ```js
 export const simpleLinkDeserializer = (editor, el) => {
