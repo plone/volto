@@ -12,10 +12,10 @@ import UserGroupMembershipListing from './UserGroupMembershipListing';
 const UserGroupMembershipMatrix = (props) => {
   const intl = useIntl();
   const dispatch = useDispatch();
-  const [query_user, setQuery_user] = useState('');
-  const [query_group, setQuery_group] = useState('');
-  const [query_group_filter, setQuery_group_filter] = useState('');
-  const [groups_filter, setGroups_filter] = useState([]); // Show users which are in these groups.
+  const [query_user, setQuery_user] = useState(''); // Show users matching the search string
+  const [query_group, setQuery_group] = useState(''); // Show groups matching the search string
+  const [query_group_filter, setQuery_group_filter] = useState(''); // Offer groups matching the search string to filter users
+  const [groups_filter, setGroups_filter] = useState([]); // Show users joining these groups.
   const [add_joined_groups, setAdd_joined_groups] = useState(false);
 
   let filter_options = useSelector((state) => state.groups.filter_groups);
@@ -47,6 +47,10 @@ const UserGroupMembershipMatrix = (props) => {
   useEffect(() => {
     // TODO fetch group for at least query_group_filter.length > 1?
     if (!many_groups || (many_groups && query_group_filter.length > 1)) {
+      console.debug(
+        'listGroups in matrix. query_group_filter',
+        query_group_filter,
+      );
       dispatch(listGroups('', query_group_filter));
     }
   }, [dispatch, many_groups, query_group_filter, props]);
