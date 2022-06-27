@@ -118,7 +118,7 @@ Common serializers used in `volto-slate` are `serializeNodes`, `serializeNodesTo
 Deserialization is the transformation of arbitrary inputs into a Slate-compatible JSON structure.
 `volto-slate` uses Slate's own mechanism of deserialization using `slate-hyperscript` package.
 Deserialization helps control what data comes into Slate per element.
-It is called before the editor's `Element` object for a plugin.
+It is called before the `editorElement` component for a plugin.
 
 ```{todo}
 Replace "SOMETHING"s.
