@@ -47,10 +47,6 @@ const UserGroupMembershipMatrix = (props) => {
   useEffect(() => {
     // TODO fetch group for at least query_group_filter.length > 1?
     if (!many_groups || (many_groups && query_group_filter.length > 1)) {
-      console.debug(
-        'listGroups in matrix. query_group_filter',
-        query_group_filter,
-      );
       dispatch(listGroups('', query_group_filter));
     }
   }, [dispatch, many_groups, query_group_filter, props]);
