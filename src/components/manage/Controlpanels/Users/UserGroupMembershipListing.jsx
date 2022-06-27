@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { uniqBy } from 'lodash';
+import { cloneDeep, uniqBy } from 'lodash';
 import { useIntl } from 'react-intl';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -19,7 +19,7 @@ const ListingTemplate = ({
   groups_filter, // show members of these groups
   many_users,
   many_groups,
-  add_joined_groups, // Toggle: show also groups that the below users join
+  add_joined_groups, // Toggle: show also groups joined by users below
 }) => {
   const intl = useIntl();
   const dispatch = useDispatch();
@@ -61,7 +61,9 @@ const ListingTemplate = ({
   let matrix_options; // list of Objects (value, label)
   if (show_matrix_options) {
     matrix_options =
-      !many_groups || (many_groups && query_group.length > 1) ? groups : [];
+      !many_groups || (many_groups && query_group.length > 1)
+        ? cloneDeep(groups)
+        : [];
     if (add_joined_groups) {
       items.map((item) => {
         matrix_options.push(...item.groups.items);
@@ -112,13 +114,7 @@ const ListingTemplate = ({
     if (show_matrix_options) {
       dispatch(listGroups(query_group));
     }
-  }, [
-    dispatch,
-    query_group,
-    show_matrix_options,
-    groups_filter,
-    add_joined_groups,
-  ]);
+  }, [dispatch, query_group, show_matrix_options, groups_filter]);
 
   const onSelectOptionHandler = (item, selectedvalue, checked, singleClick) => {
     singleClick = singleClick ?? false;
