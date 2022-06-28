@@ -12,6 +12,9 @@
 
 ### Documentation
 
+- Remove sphinx_sitemap configuration because Volto's docs are now imported into the main docs, making this setting unnecessary. @stevepiercy
+- Set the ogp_site_url to main docs, instead of training. @stevepiercy
+
 ## 16.0.0-alpha.11 (2022-06-21)
 
 ### Feature
