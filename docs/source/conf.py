@@ -59,7 +59,6 @@ extensions = [
     "sphinx.ext.intersphinx",
     "sphinx.ext.todo",
     "sphinx_copybutton",
-    "sphinx_sitemap",
     "sphinxcontrib.spelling",
     "sphinxext.opengraph",
 ]
@@ -226,9 +225,6 @@ html_title = "%(project)s v%(release)s" % {"project": project, "release": releas
 
 # If false, no index is generated.
 html_use_index = True
-
-# Used by sphinx_sitemap to generate a sitemap
-html_baseurl = "https://docs.voltocms.com/"
 
 # -- Options for HTML help output -------------------------------------------------
 
