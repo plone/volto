@@ -164,7 +164,7 @@ graphviz_output_format = "svg"
 
 # -- OpenGraph configuration ----------------------------------
 
-ogp_site_url = "https://training.plone.org/5/"
+ogp_site_url = "https://6.dev-docs.plone.org/"
 ogp_description_length = 200
 ogp_image = "https://docs.plone.org/_static/Plone_logo_square.png"
 ogp_site_name = "Plone Documentation"
