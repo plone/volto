@@ -51,7 +51,6 @@ const EmailWidget = (props) => {
         onClick={() => onClick()}
         minLength={minLength || null}
         maxLength={maxLength || null}
-        placeholder={props.placeholder}
       />
     </FormFieldWrapper>
   );
