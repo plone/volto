@@ -8,6 +8,7 @@ import {
   REMOVE_RULES,
   GET_CONTROLPANEL_RULES,
   GET_CONTROLPANEL_RULE,
+  DELETE_CONTROLPANEL_RULE,
 } from '@plone/volto/constants/ActionTypes';
 
 /**
@@ -176,6 +177,23 @@ export function addRule(url, rule) {
     request: {
       op: 'post',
       path: `${url}/@content-rules/${rule}`,
+    },
+  };
+}
+
+/**
+ * Delete rule function.
+ * @function deleteControlPanelRule
+ * @param {string} url Content url.
+ * @param {string} rule String with rule id.
+ * @returns {Object} delete rule action.
+ */
+export function deleteControlPanelRule(url, rule) {
+  return {
+    type: DELETE_CONTROLPANEL_RULE,
+    request: {
+      op: 'del',
+      path: `${url}/@controlpanels/content-rules/${rule}`,
     },
   };
 }

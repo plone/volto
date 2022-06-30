@@ -21,8 +21,13 @@ import {
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { Icon, Toolbar } from '@plone/volto/components';
+import { toast } from 'react-toastify';
+import { Toast } from '@plone/volto/components';
 
-import { getControlPanelRules } from '@plone/volto/actions';
+import {
+  getControlPanelRules,
+  deleteControlPanelRule,
+} from '@plone/volto/actions';
 
 import backSVG from '@plone/volto/icons/back.svg';
 
@@ -38,6 +43,10 @@ const messages = defineMessages({
   success: {
     id: 'Success',
     defaultMessage: 'Success',
+  },
+  delete: {
+    id: 'Deleted',
+    defaultMessage: 'Deleted',
   },
 });
 
@@ -63,6 +72,7 @@ class Rules extends Component {
    */
   static propTypes = {
     getControlPanelRules: PropTypes.func.isRequired,
+    deleteControlPanelRule: PropTypes.func.isRequired,
   };
 
   /**
@@ -95,9 +105,9 @@ class Rules extends Component {
    * @returns {undefined}
    */
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.rules !== this.props.rules) {
-      console.log('rules', this.props.rules.items);
-    }
+    // if (prevProps.rules !== this.props.rules) {
+    //   console.log('rules', this.props.rules.items);
+    // }
   }
 
   /**
@@ -106,7 +116,22 @@ class Rules extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  UNSAFE_componentWillReceiveProps(nextProps) {}
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (
+      this.props.indivRule.delete.loading &&
+      nextProps.indivRule.delete.loaded
+    ) {
+      this.props.getControlPanelRules(getBaseUrl(this.props.pathname));
+
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.delete)}
+        />,
+      );
+    }
+  }
 
   /**
    * Back/Cancel handler
@@ -151,6 +176,15 @@ class Rules extends Component {
    */
   handleEdit(ruleId) {
     this.props.history.push(`${this.props.pathname}/${ruleId}/edit`);
+  }
+
+  /**
+   * Delete Rule handler
+   * @method handleEdit
+   * @returns {undefined}
+   */
+  handleDelete(ruleId) {
+    this.props.deleteControlPanelRule(getBaseUrl(this.props.pathname), ruleId);
   }
 
   /**
@@ -287,7 +321,11 @@ class Rules extends Component {
                               >
                                 Edit
                               </Button>
-                              <Button size="mini" color="youtube">
+                              <Button
+                                size="mini"
+                                color="youtube"
+                                onClick={() => this.handleDelete(rule.id)}
+                              >
                                 Delete
                               </Button>
                             </div>
@@ -333,11 +371,13 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
+      indivRule: state.controlpanelrule,
       rules: state.controlpanelrules,
       pathname: props.location.pathname,
     }),
     {
       getControlPanelRules,
+      deleteControlPanelRule,
     },
   ),
 )(Rules);
