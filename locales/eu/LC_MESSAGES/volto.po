@@ -339,11 +339,6 @@ msgstr "Ezin da <strong>{type}</strong> elementu-motaren itxura aldatu, <strong>
 msgid "Cancel"
 msgstr "Utzi"
 
-#: components/manage/Blocks/Table/Edit
-# defaultMessage: Cell
-msgid "Cell"
-msgstr "Zelda"
-
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Center
@@ -749,6 +744,7 @@ msgid "Distributed under the {license}."
 msgstr "{license} lizentziapean banatuta."
 
 #: components/manage/Blocks/Table/Edit
+#: components/manage/Blocks/Table/schema
 # defaultMessage: Add border to inner columns
 msgid "Divide each row into separate cells"
 msgstr "Errenkada bakoitza zeldatan banatu"
@@ -1057,6 +1053,7 @@ msgid "First"
 msgstr "Lehenengo"
 
 #: components/manage/Blocks/Table/Edit
+#: components/manage/Blocks/Table/schema
 # defaultMessage: Fixed width columns
 msgid "Fixed width table cells"
 msgstr "Tamaina finkoko taularen zeldak"
@@ -1157,6 +1154,7 @@ msgid "Groups are logical collections of users, such as departments and business
 msgstr "Taldeak erabiltzaileen multzo logikoak dira. Taldeak ez daude baimenei era orokorrean lotuta, horretarako rolak erabiltzen dira eta taldeei esleitzen zaizkie. {plone_svg} ikurrak, rola beste talde baten kide izateagatik heredatu dela adierazten du."
 
 #: components/manage/Blocks/Table/Edit
+#: components/manage/Blocks/Table/schema
 # defaultMessage: Header cell
 msgid "Header cell"
 msgstr "Goiburuko gelaxka"
@@ -1522,6 +1520,7 @@ msgid "Made by {creator} on {date}. This is not a working copy anymore, but the 
 msgstr "Sortzailea {creator} Data {date}. Hau ez da lan-bertsioa, ikusgai dagoen edukia baizik."
 
 #: components/manage/Blocks/Table/Edit
+#: components/manage/Blocks/Table/schema
 # defaultMessage: Reduce cell padding
 msgid "Make the table compact"
 msgstr "Taula trinkotu"
@@ -2015,6 +2014,7 @@ msgid "Redo"
 msgstr "Berregin"
 
 #: components/manage/Blocks/Table/Edit
+#: components/manage/Blocks/Table/schema
 # defaultMessage: Minimalistic table design
 msgid "Reduce complexity"
 msgstr "Konplexutasuna gutxitu"
@@ -2536,6 +2536,7 @@ msgid "String"
 msgstr "Karaktere-katea"
 
 #: components/manage/Blocks/Table/Edit
+#: components/manage/Blocks/Table/schema
 # defaultMessage: Alternate row background color
 msgid "Stripe alternate rows with color"
 msgstr "Errenkaden koloreak aldatzen joan"
@@ -2573,11 +2574,6 @@ msgstr "Laburpena"
 # defaultMessage: Switch to
 msgid "Switch to"
 msgstr "Aldatu hona"
-
-#: components/manage/Blocks/Table/Edit
-# defaultMessage: Table
-msgid "Table"
-msgstr "Taula"
 
 #: components/manage/Blocks/ToC/View
 # defaultMessage: Table of Contents

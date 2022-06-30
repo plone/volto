@@ -2,6 +2,7 @@
 
 ## 16.0.0 (unreleased)
 
+- Refactor table block using schema and blockextension
 ### Breaking
 
 ### Feature
