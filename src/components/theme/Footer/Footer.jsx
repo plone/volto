@@ -5,12 +5,12 @@
 
 import React from 'react';
 import { Container, List, Segment } from 'semantic-ui-react';
-
+import { map } from 'lodash';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { useSelector, shallowEqual } from 'react-redux';
 import { UniversalLink } from '@plone/volto/components';
 import config from '@plone/volto/registry';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL, addAppURL } from '@plone/volto/helpers';
 
 const messages = defineMessages({
   copyright: {
@@ -91,20 +91,28 @@ const Footer = ({ intl }) => {
           />
         </Segment>
         <List horizontal inverted>
-          {siteActions?.map((item) => (
-            <div role="listitem" className="item">
-              <UniversalLink
-                className="item"
-                href={
-                  settings.isMultilingual
-                    ? `/${lang}/${flattenToAppURL(item.url)}`
-                    : flattenToAppURL(item.url)
-                }
-              >
-                {item?.title}
-              </UniversalLink>
-            </div>
-          ))}
+          {siteActions?.length
+            ? map(siteActions, (item) => (
+                <div role="listitem" className="item" key={item.id}>
+                  <UniversalLink
+                    className="item"
+                    href={
+                      settings.isMultilingual
+                        ? `/${lang}/${
+                            item.url
+                              ? flattenToAppURL(item.url)
+                              : addAppURL(item.id)
+                          }`
+                        : item.url
+                        ? flattenToAppURL(item.url)
+                        : addAppURL(item.id)
+                    }
+                  >
+                    {item?.title}
+                  </UniversalLink>
+                </div>
+              ))
+            : null}
           <div role="listitem" className="item">
             <a className="item" href="https://plone.org">
               <FormattedMessage
