@@ -339,12 +339,6 @@ msgstr "Ezin da <strong>{type}</strong> elementu-motaren itxura aldatu, <strong>
 msgid "Cancel"
 msgstr "Utzi"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
-#: components/manage/Blocks/Table/Edit
-# defaultMessage: Cell
-msgid "Cell"
-msgstr "Zelda"
-
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Center

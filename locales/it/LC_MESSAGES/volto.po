@@ -332,12 +332,6 @@ msgstr "Non è possibile modificare il Layout per il tipo <strong>{type}</strong
 msgid "Cancel"
 msgstr "Annulla"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
-#: components/manage/Blocks/Table/Edit
-# defaultMessage: Cell
-msgid "Cell"
-msgstr "Cella"
-
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Center
