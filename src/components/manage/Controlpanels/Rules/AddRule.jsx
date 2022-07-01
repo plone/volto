@@ -20,8 +20,10 @@ import {
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { Icon, Toolbar, Field } from '@plone/volto/components';
+import { toast } from 'react-toastify';
+import { Toast } from '@plone/volto/components';
 
-import { getContentRulesEvents } from '@plone/volto/actions';
+import { getContentRulesEvents, addNewRule } from '@plone/volto/actions';
 
 import backSVG from '@plone/volto/icons/back.svg';
 
@@ -38,6 +40,10 @@ const messages = defineMessages({
     id: 'Success',
     defaultMessage: 'Success',
   },
+  add: {
+    id: 'Rule added',
+    defaultMessage: 'Rule added',
+  },
 });
 
 /**
@@ -53,6 +59,7 @@ class AddRule extends Component {
    */
   static propTypes = {
     getContentRulesEvents: PropTypes.func.isRequired,
+    addNewRule: PropTypes.func.isRequired,
   };
 
   /**
@@ -71,6 +78,9 @@ class AddRule extends Component {
       cascading: false,
       stop: false,
       enabled: false,
+      invalidForm: true,
+      invalidTitle: false,
+      invalidEvent: false,
     };
   }
 
@@ -89,7 +99,27 @@ class AddRule extends Component {
    * @method componentDidUpdate
    * @returns {undefined}
    */
-  componentDidUpdate(prevProps, prevState) {}
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      prevState.title !== this.state.title ||
+      prevState.event !== this.state.event
+    ) {
+      if (this.state.title && this.state.event) {
+        this.setState({
+          invalidForm: false,
+          invalidTitle: false,
+          invalidEvent: false,
+        });
+      } else {
+        if (!this.state.title) {
+          this.setState({ invalidForm: true, invalidTitle: true });
+        }
+        if (!this.state.event) {
+          this.setState({ invalidForm: true, invalidEvent: true });
+        }
+      }
+    }
+  }
 
   /**
    * Component will receive props
@@ -97,7 +127,18 @@ class AddRule extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  UNSAFE_componentWillReceiveProps(nextProps) {}
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (this.props.rules.add.loading && nextProps.rules.add.loaded) {
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.add)}
+        />,
+      );
+      this.props.history.push(getParentUrl(this.props.pathname));
+    }
+  }
 
   /**
    * Back/Cancel handler
@@ -106,6 +147,27 @@ class AddRule extends Component {
    */
   onCancel() {
     this.props.history.push(getParentUrl(this.props.pathname));
+  }
+
+  /**
+   * Add rule handler
+   * @method handleAdd
+   * @returns {undefined}
+   */
+  handleAdd() {
+    const {
+      title,
+      description,
+      event,
+      cascading,
+      stop,
+      enabled,
+      invalidForm,
+    } = this.state;
+    const data = { title, description, event, cascading, enabled, stop };
+    if (!invalidForm) {
+      this.props.addNewRule(getBaseUrl(this.props.pathname), data);
+    }
   }
 
   /**
@@ -141,6 +203,7 @@ class AddRule extends Component {
                     <Grid.Row stretched>
                       <Grid.Column>
                         <Field
+                          className={'title-field'}
                           title={'Title'}
                           description="Please set a descriptive title for the rule."
                           value={title}
@@ -155,7 +218,7 @@ class AddRule extends Component {
                           title={'Description'}
                           description="Enter a short description of the rule and its purpose."
                           value={description}
-                          onChange={(e, d) => this.setState({ title: d })}
+                          onChange={(e, d) => this.setState({ description: d })}
                         />
                       </Grid.Column>
                     </Grid.Row>
@@ -247,12 +310,30 @@ class AddRule extends Component {
                 </div>
               </Segment>
               <Segment>
-                <Button onClick={() => console.log('handleadd')} primary>
+                <Button onClick={() => this.handleAdd()} primary>
                   <FormattedMessage id="Save" defaultMessage="Save" />
                 </Button>
                 <Button onClick={() => this.onCancel()} secondary>
                   <FormattedMessage id="Cancel" defaultMessage="Cancel" />
                 </Button>
+              </Segment>
+              <Segment>
+                {this.state.invalidTitle && (
+                  <p style={{ color: 'red' }}>
+                    <FormattedMessage
+                      id="Title field error. Value not provided or already existing."
+                      defaultMessage="Title field error. Value not provided or already existing."
+                    />
+                  </p>
+                )}
+                {this.state.invalidEvent && (
+                  <p style={{ color: 'red' }}>
+                    <FormattedMessage
+                      id="Triggering event field error. Please select a value"
+                      defaultMessage="Triggering event field error. Please select a value"
+                    />
+                  </p>
+                )}
               </Segment>
             </Segment.Group>
           </article>
@@ -284,9 +365,10 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
-      events: state.contentRulesEvents,
+      rules: state.controlpanelrules,
+      events: state.contentrulesevents,
       pathname: props.location.pathname,
     }),
-    { getContentRulesEvents },
+    { getContentRulesEvents, addNewRule },
   ),
 )(AddRule);

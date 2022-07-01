@@ -85,6 +85,7 @@ export {
   getControlPanelRules,
   deleteControlPanelRule,
   getContentRulesEvents,
+  addNewRule,
 } from '@plone/volto/actions/rules/rules';
 export {
   resetSearchContent,

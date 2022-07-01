@@ -10,6 +10,7 @@ import {
   GET_CONTROLPANEL_RULE,
   DELETE_CONTROLPANEL_RULE,
   GET_CONTENT_RULES_EVENTS,
+  ADD_NEW_CONTENT_RULE,
 } from '@plone/volto/constants/ActionTypes';
 
 /**
@@ -211,6 +212,23 @@ export function getContentRulesEvents(url) {
     request: {
       op: 'get',
       path: `${url}/@vocabularies/plone.contentrules.events`,
+    },
+  };
+}
+
+/**
+ * Add new rule function.
+ * @function addNewRule
+ * @param {string} url Content url.
+ * @returns {Object} Add new rule action.
+ */
+export function addNewRule(url, data) {
+  return {
+    type: ADD_NEW_CONTENT_RULE,
+    request: {
+      op: 'post',
+      path: `${url}/@controlpanels/content-rules`,
+      data,
     },
   };
 }
