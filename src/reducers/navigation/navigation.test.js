@@ -1,6 +1,6 @@
+import { GET_NAVIGATION } from '@plone/volto/constants/ActionTypes';
 import config from '@plone/volto/registry';
 import navigation from './navigation';
-import { GET_NAVIGATION } from '@plone/volto/constants/ActionTypes';
 
 const { settings } = config;
 
@@ -35,7 +35,8 @@ describe('Navigation reducer', () => {
           items: [
             {
               title: 'Welcome to Plone!',
-              description: 'Congratulations! You have successfully installed Plone.',
+              description:
+                'Congratulations! You have successfully installed Plone.',
               '@id': `${settings.apiPath}/front-page`,
             },
           ],
@@ -46,7 +47,8 @@ describe('Navigation reducer', () => {
       items: [
         {
           title: 'Welcome to Plone!',
-          description: 'Congratulations! You have successfully installed Plone.',
+          description:
+            'Congratulations! You have successfully installed Plone.',
           url: '/front-page',
         },
       ],
@@ -63,7 +65,8 @@ describe('Navigation reducer', () => {
           items: [
             {
               title: 'Welcome to Plone!',
-              description: 'Congratulations! You have successfully installed Plone.',
+              description:
+                'Congratulations! You have successfully installed Plone.',
               '@id': `${settings.apiPath}/front-page`,
             },
             {
@@ -86,7 +89,8 @@ describe('Navigation reducer', () => {
       items: [
         {
           title: 'Welcome to Plone!',
-          description: 'Congratulations! You have successfully installed Plone.',
+          description:
+            'Congratulations! You have successfully installed Plone.',
           url: '/front-page',
         },
         {
