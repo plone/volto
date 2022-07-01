@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fixed the description field not being included in the navigation action/ reducer @JeffersonBledsoe #3454
+
 ### Internal
 
 ### Documentation
