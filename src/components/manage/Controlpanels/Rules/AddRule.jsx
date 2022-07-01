@@ -16,20 +16,12 @@ import {
   Container,
   Form,
   Grid,
-  Header,
-  Input,
-  Label,
   Segment,
-  Table,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import {
-  Icon,
-  Toolbar,
-  FormFieldWrapper,
-  Field,
-} from '@plone/volto/components';
-import { eventTriggers } from './constants';
+import { Icon, Toolbar, Field } from '@plone/volto/components';
+
+import { getContentRulesEvents } from '@plone/volto/actions';
 
 import backSVG from '@plone/volto/icons/back.svg';
 
@@ -59,7 +51,9 @@ class AddRule extends Component {
    * @property {Object} propTypes Property types.
    * @static
    */
-  static propTypes = {};
+  static propTypes = {
+    getContentRulesEvents: PropTypes.func.isRequired,
+  };
 
   /**
    * Constructor
@@ -87,6 +81,7 @@ class AddRule extends Component {
    */
   componentDidMount() {
     this.setState({ isClient: true });
+    this.props.getContentRulesEvents(getBaseUrl(this.props.pathname));
   }
 
   /**
@@ -120,6 +115,10 @@ class AddRule extends Component {
    */
   render() {
     const { title, description, event, cascading, stop, enabled } = this.state;
+    const triggeringEvents =
+      this.props.events?.items && this.props.events?.items.length > 0
+        ? this.props.events?.items.map((event) => [event.title, event.token])
+        : '';
 
     return (
       <div id="page-rule-add">
@@ -166,7 +165,7 @@ class AddRule extends Component {
                           required
                           title={'Triggering event'}
                           description="The rule will execute when the following event occurs."
-                          choices={eventTriggers}
+                          choices={triggeringEvents}
                           value={event}
                           onChange={(e, v) => this.setState({ event: v })}
                         />
@@ -285,8 +284,9 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
+      events: state.contentRulesEvents,
       pathname: props.location.pathname,
     }),
-    {},
+    { getContentRulesEvents },
   ),
 )(AddRule);

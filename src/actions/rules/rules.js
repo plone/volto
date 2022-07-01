@@ -9,6 +9,7 @@ import {
   GET_CONTROLPANEL_RULES,
   GET_CONTROLPANEL_RULE,
   DELETE_CONTROLPANEL_RULE,
+  GET_CONTENT_RULES_EVENTS,
 } from '@plone/volto/constants/ActionTypes';
 
 /**
@@ -194,6 +195,22 @@ export function deleteControlPanelRule(url, rule) {
     request: {
       op: 'del',
       path: `${url}/@controlpanels/content-rules/${rule}`,
+    },
+  };
+}
+
+/**
+ * Get content rules events function.
+ * @function getContentRulesEvents
+ * @param {string} url Content url.
+ * @returns {Object} Get content rules events action.
+ */
+export function getContentRulesEvents(url) {
+  return {
+    type: GET_CONTENT_RULES_EVENTS,
+    request: {
+      op: 'get',
+      path: `${url}/@vocabularies/plone.contentrules.events`,
     },
   };
 }

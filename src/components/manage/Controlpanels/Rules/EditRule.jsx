@@ -22,7 +22,8 @@ import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import { Icon, Toolbar, Field } from '@plone/volto/components';
 import { getControlPanelRule } from '@plone/volto/actions';
-import { eventTriggers } from './constants';
+
+import { getContentRulesEvents } from '@plone/volto/actions';
 
 import backSVG from '@plone/volto/icons/back.svg';
 
@@ -84,6 +85,7 @@ class EditRule extends Component {
       getBaseUrl(this.props.pathname),
       this.props.match.params.id,
     );
+    this.props.getContentRulesEvents(getBaseUrl(this.props.pathname));
   }
 
   /**
@@ -132,7 +134,10 @@ class EditRule extends Component {
   render() {
     const { title, description, event, cascading, stop, enabled } = this.state;
 
-    console.log('therule', this.props.rule.item);
+    const triggeringEvents =
+      this.props.events?.items && this.props.events?.items.length > 0
+        ? this.props.events?.items.map((event) => [event.title, event.token])
+        : '';
     return (
       <div id="page-rule-edit">
         <Helmet title={this.props.intl.formatMessage(messages.configRule)} />
@@ -178,7 +183,7 @@ class EditRule extends Component {
                           required
                           title={'Triggering event'}
                           description="The rule will execute when the following event occurs."
-                          choices={eventTriggers}
+                          choices={triggeringEvents}
                           value={event}
                           onChange={(e, v) => this.setState({ event: [v, v] })}
                         />
@@ -297,9 +302,10 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
+      events: state.contentRulesEvents,
       rule: state.controlpanelrule,
       pathname: props.location.pathname,
     }),
-    { getControlPanelRule },
+    { getControlPanelRule, getContentRulesEvents },
   ),
 )(EditRule);
