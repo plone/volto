@@ -310,6 +310,7 @@
 
 ### Feature
 
+- Add description and rights field to image Block @kindermann #1681
 - added default placeholder for videos to embed them more lightly @giuliaghisini
 - Added default placeholder for videos to embed them more lightly @giuliaghisini
 - Completed Romanian translation @sboghy

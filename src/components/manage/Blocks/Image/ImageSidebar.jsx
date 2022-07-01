@@ -1,4 +1,6 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { getContent } from '@plone/volto/actions';
 import PropTypes from 'prop-types';
 import { Segment } from 'semantic-ui-react';
 import { useIntl, FormattedMessage } from 'react-intl';
@@ -11,6 +13,24 @@ const ImageSidebar = (props) => {
   const { data, block, onChangeBlock } = props;
   const intl = useIntl();
   const schema = ImageSchema({ formData: data, intl });
+  const href = flattenToAppURL(data.url);
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    if (href && !data.rights) {
+      dispatch(getContent(flattenToAppURL(href), null, block)).then((resp) => {
+        onChangeBlock(block, {
+          ...data,
+          ...(!data.rights && { rights: resp.rights }),
+        });
+      });
+    }
+    if (!href) {
+      onChangeBlock(block, {
+        ...data,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [href]);
   return (
     <>
       <header className="header pulled">

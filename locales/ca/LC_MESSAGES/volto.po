@@ -725,6 +725,7 @@ msgid "Descending"
 msgstr "Descendent"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Image/schema
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -2158,6 +2159,7 @@ msgstr "Text enriquit"
 msgid "Right"
 msgstr "Dret"
 
+#: components/manage/Blocks/Image/schema
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Rights
 msgid "Rights"

@@ -73,6 +73,22 @@ Array [
            - 
           No description
         </div>
+        <div
+          className="mocked-default-widget"
+          id="mocked-field-description"
+        >
+          Description
+           - 
+          No description
+        </div>
+        <div
+          className="mocked-default-widget"
+          id="mocked-field-rights"
+        >
+          Rights
+           - 
+          No description
+        </div>
       </div>
     </div>
     <div

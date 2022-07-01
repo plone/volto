@@ -37,6 +37,14 @@ const messages = defineMessages({
     id: 'Alt text hint link text',
     defaultMessage: 'Describe the purpose of the image.',
   },
+  Description: {
+    id: 'Description',
+    defaultMessage: 'Description',
+  },
+  Rights: {
+    id: 'Rights',
+    defaultMessage: 'Rights',
+  },
 });
 
 export function ImageSchema({ formData, intl }) {
@@ -45,7 +53,11 @@ export function ImageSchema({ formData, intl }) {
       {
         id: 'default',
         title: 'Default',
-        fields: [...(formData.url ? ['url', 'alt', 'align', 'size'] : [])],
+        fields: [
+          ...(formData.url
+            ? ['url', 'alt', 'align', 'size', 'description', 'rights']
+            : []),
+        ],
       },
       ...(formData.url
         ? [
@@ -92,6 +104,14 @@ export function ImageSchema({ formData, intl }) {
         mode: 'link',
         selectedItemAttrs: ['Title', 'Description', 'hasPreviewImage'],
         allowExternals: true,
+      },
+      description: {
+        title: intl.formatMessage(messages.Description),
+        widget: 'text',
+      },
+      rights: {
+        title: intl.formatMessage(messages.Rights),
+        widget: 'text',
       },
       openLinkInNewTab: {
         title: intl.formatMessage(messages.openLinkInNewTab),

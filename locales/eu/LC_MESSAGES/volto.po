@@ -723,6 +723,7 @@ msgid "Descending"
 msgstr "Beheraka"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Image/schema
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -2156,6 +2157,7 @@ msgstr "Testu aberatsa"
 msgid "Right"
 msgstr "Eskuman"
 
+#: components/manage/Blocks/Image/schema
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Rights
 msgid "Rights"
