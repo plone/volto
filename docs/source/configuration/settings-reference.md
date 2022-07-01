@@ -166,7 +166,7 @@ asyncPropsExtenders
 
 externalRoutes
     If another application is published under the same top domain as Volto, you could have a route like `/abc` which should be not rendered by Volto.
-    This can be achieved by a rule in the reverse proxy (Apache or Nginx for example) but, when navigating client side, you may have references to that route so Volto is
+    This can be achieved by a rule in the reverse proxy (Apache or nginx for example) but, when navigating client side, you may have references to that route so Volto is
     handling that as an internal URL and fetching the content will break.
     You can disable that path in `config.settings.externalRoutes` so it will be handled as an external link.
 
@@ -198,6 +198,32 @@ contentMetadataTagsImageField
 
 hasWorkingCopySupport
     This setting will enable working copy support in your site. You need to install the `plone.app.iterate` add-on in your Plone site in order to make it working.
+
+controlpanels
+    Register a component as control panel.
+
+    Example configuration in `config.js` of your project or add-on:
+
+    ```
+    config.settings.controlpanels = [
+      ...config.settings.controlpanels,
+      {
+        '@id': '/manage-myaddon-subscriptions',
+        group: 'Add-on Configuration',
+        title: 'Breaking News Manage Subscriptions',
+      },
+    ];
+
+    config.addonRoutes = [
+      ...config.addonRoutes,
+      {
+        path: '/controlpanel/manage-myaddon-subscriptions',
+        component: ManageSubscriptions,
+      },
+    ];
+    ```
+
+    The group can be one of the default groups 'General', 'Content', 'Security', 'Add-on Configuration', 'Users and Groups' or a custom group.
 ```
 
 ## Server-specific serverConfig

@@ -31,8 +31,7 @@ const Body = ({ data, isEditMode }) => {
         //load video preview image from youtube
 
         if (data.url.match('list')) {
-          listID = data.url.match(/^.*\?list=|^.*&list=(.*)$/)[1];
-          videoID = data.url.match(/^.*\?v=(.*)&(.*)$/)[1];
+          listID = data.url.match(/^.*\?list=(.*)|^.*&list=(.*)$/)[1];
         } else {
           videoID = data.url.match(/.be\//)
             ? data.url.match(/^.*\.be\/(.*)/)[1]
@@ -96,7 +95,9 @@ const Body = ({ data, isEditMode }) => {
                     <video
                       src={
                         isInternalURL(data.url)
-                          ? `${flattenToAppURL(data.url)}/@@download/file`
+                          ? data.url.includes('@@download')
+                            ? data.url
+                            : `${flattenToAppURL(data.url)}/@@download/file`
                           : data.url
                       }
                       controls
