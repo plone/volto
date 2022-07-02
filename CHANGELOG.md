@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Use type info instead of id type as icon title in the folder contents. @mamico
+
 ### Bugfix
 
 ### Internal
