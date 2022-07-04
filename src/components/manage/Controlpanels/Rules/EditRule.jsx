@@ -21,9 +21,11 @@ import {
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import { Icon, Toolbar, Field } from '@plone/volto/components';
-import { getControlPanelRule } from '@plone/volto/actions';
-
-import { getContentRulesEvents } from '@plone/volto/actions';
+import {
+  getControlPanelRule,
+  editRule,
+  getContentRulesEvents,
+} from '@plone/volto/actions';
 
 import backSVG from '@plone/volto/icons/back.svg';
 
@@ -53,7 +55,11 @@ class EditRule extends Component {
    * @property {Object} propTypes Property types.
    * @static
    */
-  static propTypes = {};
+  static propTypes = {
+    getContentRulesEvents: PropTypes.func.isRequired,
+    editRule: PropTypes.func.isRequired,
+    getControlPanelRule: PropTypes.func.isRequired,
+  };
 
   /**
    * Constructor
@@ -64,6 +70,7 @@ class EditRule extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: '',
       isClient: false,
       title: '',
       description: '',
@@ -71,6 +78,9 @@ class EditRule extends Component {
       cascading: false,
       stop: false,
       enabled: false,
+      invalidForm: true,
+      invalidTitle: false,
+      invalidEvent: false,
     };
   }
 
@@ -95,17 +105,37 @@ class EditRule extends Component {
    */
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.rule !== this.props.rule) {
-      const { title, description, event, cascading, stop, enabled } =
+      const { title, description, event, cascading, stop, enabled, id } =
         this.props.rule.item || {};
-
       this.setState({
-        title: title,
-        description: description,
-        event: [event, event],
+        id,
+        title,
+        description,
+        event,
         cascading,
         stop,
         enabled,
       });
+    }
+
+    if (
+      prevState.title !== this.state.title ||
+      prevState.event !== this.state.event
+    ) {
+      if (this.state.title && this.state.event) {
+        this.setState({
+          invalidForm: false,
+          invalidTitle: false,
+          invalidEvent: false,
+        });
+      } else {
+        if (!this.state.title) {
+          this.setState({ invalidForm: true, invalidTitle: true });
+        }
+        if (!this.state.event) {
+          this.setState({ invalidForm: true, invalidEvent: true });
+        }
+      }
     }
   }
 
@@ -127,6 +157,29 @@ class EditRule extends Component {
   }
 
   /**
+   * Update rule handler
+   * @method handleUpdate
+   * @returns {undefined}
+   */
+  handleUpdate() {
+    const {
+      id,
+      title,
+      description,
+      event,
+      cascading,
+      stop,
+      enabled,
+      invalidForm,
+    } = this.state;
+    const data = { title, description, event, cascading, enabled, stop };
+
+    if (!invalidForm) {
+      this.props.editRule(getBaseUrl(this.props.pathname), data, id);
+    }
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -138,6 +191,7 @@ class EditRule extends Component {
       this.props.events?.items && this.props.events?.items.length > 0
         ? this.props.events?.items.map((event) => [event.title, event.token])
         : '';
+
     return (
       <div id="page-rule-edit">
         <Helmet title={this.props.intl.formatMessage(messages.configRule)} />
@@ -185,7 +239,7 @@ class EditRule extends Component {
                           description="The rule will execute when the following event occurs."
                           choices={triggeringEvents}
                           value={event}
-                          onChange={(e, v) => this.setState({ event: [v, v] })}
+                          onChange={(e, v) => this.setState({ event: v })}
                         />
                       </Grid.Column>
                     </Grid.Row>
@@ -265,12 +319,30 @@ class EditRule extends Component {
                 </div>
               </Segment>
               <Segment>
-                <Button onClick={() => console.log('handleasave')} primary>
+                <Button onClick={() => this.handleUpdate()} primary>
                   <FormattedMessage id="Save" defaultMessage="Save" />
                 </Button>
                 <Button onClick={() => this.onCancel()} secondary>
                   <FormattedMessage id="Cancel" defaultMessage="Cancel" />
                 </Button>
+              </Segment>
+              <Segment>
+                {this.state.invalidTitle && (
+                  <p style={{ color: 'red' }}>
+                    <FormattedMessage
+                      id="Title field error. Value not provided or already existing."
+                      defaultMessage="Title field error. Value not provided or already existing."
+                    />
+                  </p>
+                )}
+                {this.state.invalidEvent && (
+                  <p style={{ color: 'red' }}>
+                    <FormattedMessage
+                      id="Triggering event field error. Please select a value"
+                      defaultMessage="Triggering event field error. Please select a value"
+                    />
+                  </p>
+                )}
               </Segment>
             </Segment.Group>
           </article>
@@ -302,10 +374,10 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
-      events: state.contentRulesEvents,
+      events: state.contentrulesevents,
       rule: state.controlpanelrule,
       pathname: props.location.pathname,
     }),
-    { getControlPanelRule, getContentRulesEvents },
+    { getControlPanelRule, getContentRulesEvents, editRule },
   ),
 )(EditRule);

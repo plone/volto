@@ -11,6 +11,7 @@ import {
   DELETE_CONTROLPANEL_RULE,
   GET_CONTENT_RULES_EVENTS,
   ADD_NEW_CONTENT_RULE,
+  EDIT_CONTROLPANEL_RULE,
 } from '@plone/volto/constants/ActionTypes';
 
 /**
@@ -228,6 +229,23 @@ export function addNewRule(url, data) {
     request: {
       op: 'post',
       path: `${url}/@controlpanels/content-rules`,
+      data,
+    },
+  };
+}
+
+/**
+ * Edit rule function.
+ * @function editRule
+ * @param {string} url Content url.
+ * @returns {Object} Edit rule action.
+ */
+export function editRule(url, data, rule) {
+  return {
+    type: EDIT_CONTROLPANEL_RULE,
+    request: {
+      op: 'patch',
+      path: `${url}/@controlpanels/content-rules/${rule}`,
       data,
     },
   };

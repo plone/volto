@@ -1,6 +1,7 @@
 import {
   GET_CONTROLPANEL_RULE,
   DELETE_CONTROLPANEL_RULE,
+  EDIT_CONTROLPANEL_RULE,
 } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
@@ -10,6 +11,11 @@ const initialState = {
     error: null,
   },
   delete: {
+    loaded: false,
+    loading: false,
+    error: null,
+  },
+  edit: {
     loaded: false,
     loading: false,
     error: null,
@@ -38,6 +44,7 @@ export default function controlPanelRule(state = initialState, action = {}) {
   switch (action.type) {
     case `${GET_CONTROLPANEL_RULE}_PENDING`:
     case `${DELETE_CONTROLPANEL_RULE}_PENDING`:
+    case `${EDIT_CONTROLPANEL_RULE}_PENDING`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
@@ -57,6 +64,7 @@ export default function controlPanelRule(state = initialState, action = {}) {
         },
       };
     case `${DELETE_CONTROLPANEL_RULE}_SUCCESS`:
+    case `${EDIT_CONTROLPANEL_RULE}_SUCCESS`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
@@ -67,6 +75,7 @@ export default function controlPanelRule(state = initialState, action = {}) {
       };
     case `${GET_CONTROLPANEL_RULE}_FAIL`:
     case `${DELETE_CONTROLPANEL_RULE}_FAIL`:
+    case `${EDIT_CONTROLPANEL_RULE}_FAIL`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
