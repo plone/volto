@@ -9,6 +9,7 @@ const ContentMetadataTags = (props) => {
     seo_title,
     seo_description,
     seo_canonical_url,
+    seo_noindex,
     title,
     description,
   } = props.content;
@@ -57,6 +58,7 @@ const ContentMetadataTags = (props) => {
           property="og:url"
           content={seo_canonical_url || toPublicURL(props.content['@id'])}
         />
+        {seo_noindex && <meta name="robots" content="noindex" />}
         {contentImageInfo.contentHasImage && (
           <meta
             property="og:image"

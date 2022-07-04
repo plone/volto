@@ -161,6 +161,11 @@ msgstr ""
 msgid "Add {type}"
 msgstr "{type} を追加"
 
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Add-on Configuration
+msgid "Add-on Configuration"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Add-ons Settings
 msgid "Add-ons Settings"
@@ -172,9 +177,9 @@ msgid "Additional date"
 msgstr "追加日"
 
 #: components/manage/Blocks/Block/StylesSchema
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Maps/schema
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Alignment
 msgid "Alignment"
@@ -190,18 +195,18 @@ msgstr "すべて"
 msgid "Alphabetically"
 msgstr "アルファベット順"
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Alt text
 msgid "Alt text"
 msgstr "代替テキスト"
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 # defaultMessage: Leave empty if the image is purely decorative.
 msgid "Alt text hint"
 msgstr ""
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 # defaultMessage: Describe the purpose of the image.
 msgid "Alt text hint link text"
 msgstr ""
@@ -340,7 +345,6 @@ msgstr "キャンセル"
 msgid "Cell"
 msgstr "セル"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Center
@@ -505,6 +509,11 @@ msgstr "お問い合わせフォーム"
 # defaultMessage: Contained items
 msgid "Contained items"
 msgstr "含まれるアイテム"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Content
+msgid "Content"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Content type created
@@ -983,7 +992,6 @@ msgstr "満了日付"
 msgid "Expired"
 msgstr "期間満了"
 
-#: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: External URL
 msgid "External URL"
@@ -1100,6 +1108,11 @@ msgstr "氏名"
 # defaultMessage: GNU GPL license
 msgid "GNU GPL license"
 msgstr "GNU GPL license"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: General
+msgid "General"
+msgstr ""
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Global role
@@ -1225,6 +1238,7 @@ msgstr "確かに正しいURLを入力したのにエラーになってしまう
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Image
 msgid "Image"
@@ -1233,6 +1247,11 @@ msgstr "画像"
 #: config/Blocks
 # defaultMessage: Image gallery
 msgid "Image gallery"
+msgstr ""
+
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Image size
+msgid "Image size"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
@@ -1375,6 +1394,11 @@ msgstr "言語"
 msgid "Language independent field."
 msgstr ""
 
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Large
+msgid "Large"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Last
 msgid "Last"
@@ -1405,7 +1429,6 @@ msgstr "レイアウト"
 msgid "Lead Image"
 msgstr "リード画像"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Left
@@ -1430,10 +1453,9 @@ msgid "Link title"
 msgstr "リンクタイトル"
 
 #: components/manage/Blocks/HeroImageLeft/schema
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
-#: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Link to
 msgid "Link to"
@@ -1517,11 +1539,12 @@ msgid "Manage translations for {title}"
 msgstr "{title}の翻訳を管理する"
 
 #: components/manage/Blocks/Maps/MapsSidebar
-# defaultMessage: Map
-msgid "Map"
-msgstr "地図"
+#: components/manage/Blocks/Maps/schema
+# defaultMessage: Maps
+msgid "Maps"
+msgstr ""
 
-#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Maps/schema
 # defaultMessage: Maps URL
 msgid "Maps URL"
 msgstr "地図URL"
@@ -1535,6 +1558,11 @@ msgstr "最大の長さは {len} です。"
 # defaultMessage: Maximum value is {len}.
 msgid "Maximum value is {len}."
 msgstr "最大の値は {len} です。"
+
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Medium
+msgid "Medium"
+msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Message
@@ -1648,7 +1676,7 @@ msgstr ""
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected
 msgid "No image selected"
-msgstr "画像が選択されていません"
+msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: No image set in Lead Image content field
@@ -1765,9 +1793,8 @@ msgstr "OK"
 msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed."
 msgstr ""
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
@@ -1783,7 +1810,6 @@ msgstr "Open menu (未翻訳)"
 msgid "Open object browser"
 msgstr "オブジェクトブラウザを開く"
 
-#: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
 msgid "Origin"
@@ -2125,7 +2151,6 @@ msgstr "審査状態"
 msgid "Richtext"
 msgstr "Richtext"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Right
@@ -2425,15 +2450,15 @@ msgstr "サイト設定"
 msgid "Sitemap"
 msgstr "サイトマップ"
 
-#: components/manage/Blocks/Image/ImageSidebar
-# defaultMessage: Size
-msgid "Size"
-msgstr "サイズ"
-
 #: components/theme/View/ImageView
 # defaultMessage: Size: {size}
 msgid "Size: {size}"
 msgstr "サイズ: {size}"
+
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Small
+msgid "Small"
+msgstr ""
 
 #: error
 # defaultMessage: Sorry, something went wrong with your request
@@ -2463,6 +2488,7 @@ msgid "Sort on options"
 msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Image/schema
 # defaultMessage: Source
 msgid "Source"
 msgstr "ソース"
