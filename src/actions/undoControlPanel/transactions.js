@@ -29,13 +29,13 @@ export function getTransactions() {
  * @returns {Object} Revert transactions action.
  */
 
-export function revertTransactions(Transactions_IDs) {
+export function revertTransactions(transaction_ids) {
   return {
     type: REVERT_TRANSACTIONS,
     request: {
       op: 'patch',
       path: '/@transactions',
-      data: { Transactions_IDs },
+      data: { transaction_ids },
     },
   };
 }
