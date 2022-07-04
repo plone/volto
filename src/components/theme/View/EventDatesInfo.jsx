@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { List } from 'semantic-ui-react';
 import cx from 'classnames';
@@ -58,7 +59,7 @@ const When_ = ({ start, end, whole_day, open_end, moment: momentlib }) => {
           </span>
           {!open_end && (
             <>
-              &nbsp;to&nbsp;
+              &nbsp;<FormattedMessage id="to" defaultMessage="to" />&nbsp;
               <span className="end">
                 <span className="end-date">{datesInfo.endDate}</span>
                 {!whole_day && (
@@ -80,16 +81,16 @@ const When_ = ({ start, end, whole_day, open_end, moment: momentlib }) => {
           {open_end && !whole_day && (
             <>
               <span className="start-date">{datesInfo.startDate}</span>
-              &nbsp;from&nbsp;
+              &nbsp;<FormattedMessage id="from" defaultMessage="from" />&nbsp;
               <span className="start-time">{datesInfo.startTime}</span>
             </>
           )}
           {!(whole_day || open_end) && (
             <>
               <span className="start-date">{datesInfo.startDate}</span>
-              &nbsp;from&nbsp;
+              &nbsp;<FormattedMessage id="from" defaultMessage="from" />&nbsp;
               <span className="start-time">{datesInfo.startTime}</span>
-              &nbsp;to&nbsp;
+              &nbsp;<FormattedMessage id="to" defaultMessage="to" />&nbsp;
               <span className="end-time">{datesInfo.endTime}</span>
             </>
           )}
