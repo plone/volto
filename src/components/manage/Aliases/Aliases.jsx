@@ -250,6 +250,7 @@ class Aliases extends Component {
               </p>
               <Form.Field>
                 <Input
+                  id="alternative-url-input"
                   name="alternative-url"
                   placeholder="/example"
                   value={this.state.newAlias}
@@ -273,6 +274,7 @@ class Aliases extends Component {
                 )}
               </Form.Field>
               <Button
+                id="submit-alias"
                 primary
                 onClick={() => this.handleSubmitAlias()}
                 disabled={
@@ -296,6 +298,7 @@ class Aliases extends Component {
               {this.props.aliases?.items.map((alias, i) => (
                 <Form.Field key={i}>
                   <Checkbox
+                    id={`alias-check-${i}`}
                     onChange={(e, { value }) => this.handleCheckAlias(value)}
                     value={alias.path}
                     label={alias.path}
@@ -304,6 +307,7 @@ class Aliases extends Component {
                 </Form.Field>
               ))}
               <Button
+                id="remove-alias"
                 onClick={() => this.handleRemoveAliases()}
                 primary
                 disabled={this.state.aliasesToRemove.length === 0}

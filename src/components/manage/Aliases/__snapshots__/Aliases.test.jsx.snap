@@ -45,6 +45,7 @@ exports[`Aliases renders aliases object control 1`] = `
             className="ui input"
           >
             <input
+              id="alternative-url-input"
               name="alternative-url"
               onChange={[Function]}
               placeholder="/example"
@@ -56,6 +57,7 @@ exports[`Aliases renders aliases object control 1`] = `
         <button
           className="ui primary disabled button"
           disabled={true}
+          id="submit-alias"
           onClick={[Function]}
           tabIndex={-1}
         >
@@ -78,6 +80,7 @@ exports[`Aliases renders aliases object control 1`] = `
         <button
           className="ui primary disabled button"
           disabled={true}
+          id="remove-alias"
           onClick={[Function]}
           tabIndex={-1}
         >
