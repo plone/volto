@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Complete spanish translation @erral
+
 ### Internal
 
 ### Documentation
