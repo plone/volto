@@ -407,6 +407,7 @@ class Aliases extends Component {
                   </p>
                   <Form.Field>
                     <Input
+                      id="alternative-url-input"
                       name="alternative-url-path"
                       placeholder="/example"
                       value={this.state.altUrlPath}
@@ -436,6 +437,7 @@ class Aliases extends Component {
                   </p>
                   <Form.Field>
                     <Input
+                      id="target-url-input"
                       name="target-url-path"
                       placeholder="/example"
                       value={this.state.targetUrlPath}
@@ -454,6 +456,7 @@ class Aliases extends Component {
                       )}
                   </Form.Field>
                   <Button
+                    id="submit-alias"
                     primary
                     onClick={() => this.handleSubmitAlias()}
                     disabled={

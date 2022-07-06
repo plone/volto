@@ -1,4 +1,4 @@
-describe('Add new alias for object test', () => {
+describe('Add a new alias from control panel interface', () => {
   beforeEach(() => {
     cy.autologin();
     cy.createContent({
@@ -14,8 +14,9 @@ describe('Add new alias for object test', () => {
     cy.waitForResourceToLoad('my-page');
   });
   it('adds a new alias', () => {
-    cy.visit('/my-page/aliases');
+    cy.visit('/controlpanel/aliases');
     cy.get('#alternative-url-input').type('/alturl');
+    cy.get('#target-url-input').type('/my-page');
     cy.get('#submit-alias').click();
   });
 });

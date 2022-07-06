@@ -42,6 +42,7 @@ exports[`Aliases renders an aliases control component 1`] = `
                 className="ui input"
               >
                 <input
+                  id="alternative-url-input"
                   name="alternative-url-path"
                   onChange={[Function]}
                   placeholder="/example"
@@ -67,6 +68,7 @@ exports[`Aliases renders an aliases control component 1`] = `
                 className="ui input"
               >
                 <input
+                  id="target-url-input"
                   name="target-url-path"
                   onChange={[Function]}
                   placeholder="/example"
@@ -78,6 +80,7 @@ exports[`Aliases renders an aliases control component 1`] = `
             <button
               className="ui primary disabled button"
               disabled={true}
+              id="submit-alias"
               onClick={[Function]}
               tabIndex={-1}
             >
