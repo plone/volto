@@ -141,6 +141,7 @@ let config = {
     serverConfig,
     storeExtenders: [],
     showTags: true,
+    controlpanels: [],
     controlPanelsIcons,
     externalRoutes: [
       // URL to be considered as external
