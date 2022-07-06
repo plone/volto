@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Complete basque translation @erral
+
 ### Bugfix
 
 ### Internal
