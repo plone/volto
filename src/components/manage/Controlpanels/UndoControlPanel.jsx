@@ -92,7 +92,7 @@ class UndoControlPanel extends Component {
       lowerIndex: 0,
       upperIndex: 20,
       defaultTransactionsLenInTable: 20,
-      sortedTransactions: null,
+      sortedTransactions: [],
     };
     this.onCancel = this.onCancel.bind(this);
     this.onSort = this.onSort.bind(this);
@@ -125,6 +125,18 @@ class UndoControlPanel extends Component {
     }
   }
 
+  setSortedTransactions(sortedTransactions) {
+    if (sortedTransactions.length > 0) {
+      this.setState({
+        lowerIndex: 0,
+        upperIndex: 20,
+        sortedTransactions: sortedTransactions,
+      });
+    } else {
+      // console.log("No Transactions found")
+    }
+  }
+
   /**
    * On Cancel
    * @method onCancel
@@ -134,7 +146,9 @@ class UndoControlPanel extends Component {
     this.setState({
       isSortingTypeSelected: false,
       sortType: 'no value',
-      sortedTransactions: null,
+      sortedTransactions: [],
+      lowerIndex: 0,
+      upperIndex: 20,
     });
     // Free all the sorted transactions
   }
@@ -189,9 +203,7 @@ class UndoControlPanel extends Component {
             sortedTransactions.push(element);
           }
         });
-        this.setState({
-          sortedTransactions: sortedTransactions,
-        });
+        this.setSortedTransactions(sortedTransactions);
       } else if (sortType.toLowerCase() === 'path') {
         this.props.transactions.forEach((element) => {
           if (
@@ -203,21 +215,24 @@ class UndoControlPanel extends Component {
             sortedTransactions.push(element);
           }
         });
-        this.setState({
-          sortedTransactions: sortedTransactions,
-        });
+        this.setSortedTransactions(sortedTransactions);
       } else {
+        let milliSecsInADay = 86400000;
+        let currentSetTimeMilliSecs = Date.parse(value);
         this.props.transactions.forEach((element) => {
           if (
-            Date.parse(value) >= Date.parse(element.time) &&
-            Date.parse(element.time) >= Date.parse(value) - 86400000
+            currentSetTimeMilliSecs -
+              (currentSetTimeMilliSecs % milliSecsInADay) +
+              milliSecsInADay >
+              Date.parse(element.time) &&
+            Date.parse(element.time) >=
+              currentSetTimeMilliSecs -
+                (currentSetTimeMilliSecs % milliSecsInADay)
           ) {
             sortedTransactions.push(element);
           }
         });
-        this.setState({
-          sortedTransactions: sortedTransactions,
-        });
+        this.setSortedTransactions(sortedTransactions);
       }
     } else {
       // console.log("Nothing got entered to sort");
@@ -291,25 +306,49 @@ class UndoControlPanel extends Component {
    * @returns {undefined}
    */
   setTableVisiblity() {
-    this.props.transactions.length &&
-      this.state.upperIndex >= this.props.transactions.length &&
-      (document.getElementById('next-button').style.visibility = 'hidden');
+    if (this.state.sortedTransactions.length > 0) {
+      // console.log("Transactions are sorted");
+      this.state.sortedTransactions.length &&
+        this.state.upperIndex >= this.state.sortedTransactions.length &&
+        (document.getElementById('next-button').style.visibility = 'hidden');
 
-    this.props.transactions.length &&
-      this.state.upperIndex < this.props.transactions.length &&
-      (document.getElementById('next-button').style.visibility = 'visible');
+      this.state.sortedTransactions.length &&
+        this.state.upperIndex < this.state.sortedTransactions.length &&
+        (document.getElementById('next-button').style.visibility = 'visible');
 
-    this.props.transactions &&
+      this.state.sortedTransactions &&
+        this.state.sortedTransactions.length &&
+        document.getElementById('prev-button') !== null &&
+        this.state.lowerIndex <= 0 &&
+        (document.getElementById('prev-button').style.visibility = 'hidden');
+
+      this.state.sortedTransactions &&
+        this.state.sortedTransactions.length &&
+        document.getElementById('prev-button') !== null &&
+        this.state.lowerIndex > 0 &&
+        (document.getElementById('prev-button').style.visibility = 'visible');
+    } else {
+      // console.log("Transactions not got Sorted")
       this.props.transactions.length &&
-      document.getElementById('prev-button') !== null &&
-      this.state.lowerIndex <= 0 &&
-      (document.getElementById('prev-button').style.visibility = 'hidden');
+        this.state.upperIndex >= this.props.transactions.length &&
+        (document.getElementById('next-button').style.visibility = 'hidden');
 
-    this.props.transactions &&
       this.props.transactions.length &&
-      document.getElementById('prev-button') !== null &&
-      this.state.lowerIndex > 0 &&
-      (document.getElementById('prev-button').style.visibility = 'visible');
+        this.state.upperIndex < this.props.transactions.length &&
+        (document.getElementById('next-button').style.visibility = 'visible');
+
+      this.props.transactions &&
+        this.props.transactions.length &&
+        document.getElementById('prev-button') !== null &&
+        this.state.lowerIndex <= 0 &&
+        (document.getElementById('prev-button').style.visibility = 'hidden');
+
+      this.props.transactions &&
+        this.props.transactions.length &&
+        document.getElementById('prev-button') !== null &&
+        this.state.lowerIndex > 0 &&
+        (document.getElementById('prev-button').style.visibility = 'visible');
+    }
   }
 
   /**
@@ -319,12 +358,17 @@ class UndoControlPanel extends Component {
    */
   render() {
     const transactionsRange =
-      this.state.sortedTransactions ||
+      (this.state.sortedTransactions.length > 0 &&
+        this.state.sortedTransactions.slice(
+          this.state.lowerIndex,
+          this.state.upperIndex,
+        )) ||
       this.props.transactions.slice(
         this.state.lowerIndex,
         this.state.upperIndex,
       );
     this.setTableVisiblity();
+    // console.log("Refreshed")
 
     return (
       <Container id="page-undo" className="controlpanel-undo">
