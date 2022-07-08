@@ -8,7 +8,7 @@ describe('Block Tests', () => {
     cy.getSlateEditorAndType('Colorless green ideas sleep furiously.');
 
     // select 'furiously'
-    cy.setSlateSelection('furiously');
+    cy.setSlateSelection('furiously.');
 
     cy.get('.slate-inline-toolbar').should('be.visible');
 
