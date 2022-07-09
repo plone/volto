@@ -187,7 +187,11 @@ class UndoControlPanel extends Component {
    */
   onSort(data) {
     let sortType = data.sortingTypes || 'no value';
-    let value = data.sortingValue || undefined;
+    let value;
+    (sortType.toLowerCase() === 'user name' && (value = data.sortByUsername)) ||
+      (sortType.toLowerCase() === 'path' && (value = data.sortByPath)) ||
+      (sortType.toLowerCase() === 'date' && (value = data.sortByDate)) ||
+      (value = undefined);
 
     if (sortType.toLowerCase() !== 'no value' && value !== undefined) {
       let sortedTransactions = [];
@@ -207,10 +211,7 @@ class UndoControlPanel extends Component {
       } else if (sortType.toLowerCase() === 'path') {
         this.props.transactions.forEach((element) => {
           if (
-            element.description
-              .trim()
-              .toLowerCase()
-              .includes(value.trim().toLowerCase())
+            element.id.trim().toLowerCase().includes(value.trim().toLowerCase())
           ) {
             sortedTransactions.push(element);
           }
@@ -384,16 +385,22 @@ class UndoControlPanel extends Component {
             {this.state.isSortingTypeSelected ? (
               <Form
                 formData={{
-                  sortingValue: '',
+                  sortingValue: 'Value Insertion',
                 }}
                 schema={{
                   fieldsets: [
                     {
                       id: 'default',
                       title: this.props.intl.formatMessage(messages.default),
-                      fields: this.state.isSortingTypeSelected
-                        ? ['sortingTypes', 'sortingValue']
-                        : ['sortingTypes'],
+                      fields: [
+                        'sortingTypes',
+                        (this.state.sortType.toLowerCase() === 'user name' &&
+                          'sortByUsername') ||
+                          (this.state.sortType.toLowerCase() === 'path' &&
+                            'sortByPath') ||
+                          (this.state.sortType.toLowerCase() === 'date' &&
+                            'sortByDate'),
+                      ],
                     },
                   ],
                   properties: {
@@ -408,9 +415,17 @@ class UndoControlPanel extends Component {
                         type,
                       ]),
                     },
-                    sortingValue: {
-                      title: `Enter ${this.state.sortType}`,
-                      type: this.state.sortType === 'date' ? 'date' : 'string',
+                    sortByUsername: {
+                      title: `Enter Username`,
+                      type: 'string',
+                    },
+                    sortByPath: {
+                      title: `Enter Path`,
+                      type: 'string',
+                    },
+                    sortByDate: {
+                      title: `Enter Date and Time`,
+                      type: 'date',
                     },
                   },
                   required: [],
@@ -426,9 +441,7 @@ class UndoControlPanel extends Component {
                     {
                       id: 'default',
                       title: this.props.intl.formatMessage(messages.default),
-                      fields: this.state.isSortingTypeSelected
-                        ? ['sortingTypes', 'sortingValue']
-                        : ['sortingTypes'],
+                      fields: ['sortingTypes'],
                     },
                   ],
                   properties: {
@@ -442,10 +455,6 @@ class UndoControlPanel extends Component {
                         type,
                         type,
                       ]),
-                    },
-                    sortingValue: {
-                      title: `Enter ${this.state.sortType}`,
-                      type: this.state.sortType === 'date' ? 'date' : 'string',
                     },
                   },
                   required: [],
