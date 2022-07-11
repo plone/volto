@@ -11,8 +11,8 @@ import { compose } from 'redux';
 import { withBlockExtensions } from '@plone/volto/helpers';
 const messages = defineMessages({
   EmbededGoogleMaps: {
-    id: 'Embeded Google Maps',
-    defaultMessage: 'Embeded Google Maps',
+    id: 'Embeded Google Maps Of',
+    defaultMessage: 'Embeded Google Maps Of',
   },
 });
 
@@ -38,7 +38,9 @@ const View = ({ data, intl }) => (
       })}
     >
       <iframe
-        title={intl.formatMessage(messages.EmbededGoogleMaps)}
+        title={`${intl.formatMessage(messages.EmbededGoogleMaps)} ${
+          data.title
+        }`}
         src={data.url}
         className="google-map"
         frameBorder="0"
