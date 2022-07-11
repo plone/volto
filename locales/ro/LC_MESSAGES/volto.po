@@ -870,11 +870,6 @@ msgstr "E-mail trimis"
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "Eroare de cod integrat, urmați instrucțiunile și încercați din nou."
 
-#: components/manage/Blocks/Maps/View
-# defaultMessage: Embeded Google Maps Of
-msgid "Embeded Google Maps Of"
-msgstr ""
-
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Empty object list
 msgid "Empty object list"

@@ -880,11 +880,6 @@ msgstr "Correo electrónico enviado"
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "Ha habido un error el código de encapsulación, siga las instrucciones e inténtelo de nuevo."
 
-#: components/manage/Blocks/Maps/View
-# defaultMessage: Embeded Google Maps Of
-msgid "Embeded Google Maps Of"
-msgstr ""
-
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Empty object list
 msgid "Empty object list"

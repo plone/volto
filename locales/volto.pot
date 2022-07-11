@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-07-11T10:19:17.826Z\n"
+"POT-Creation-Date: 2022-07-11T16:43:32.082Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -870,11 +870,6 @@ msgstr ""
 #: components/manage/Blocks/Maps/Edit
 # defaultMessage: Embed code error, please follow the instructions and try again.
 msgid "Embed code error, please follow the instructions and try again."
-msgstr ""
-
-#: components/manage/Blocks/Maps/View
-# defaultMessage: Embeded Google Maps Of
-msgid "Embeded Google Maps Of"
 msgstr ""
 
 #: components/manage/Widgets/ObjectListWidget
