@@ -206,6 +206,7 @@ msgstr ""
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/schema
 # defaultMessage: Alt text
 msgid "Alt text"
 msgstr "Texte pour la balise alt"
@@ -887,9 +888,9 @@ msgid "Embed code error, please follow the instructions and try again."
 msgstr "Erreur dans le code intégré, veuillez suivre les instructions et essayez de nouveau."
 
 #: components/manage/Blocks/Maps/View
-# defaultMessage: Embeded Google Maps
-msgid "Embeded Google Maps"
-msgstr "Carte Google intégrée"
+# defaultMessage: Embeded Google Maps Of
+msgid "Embeded Google Maps Of"
+msgstr ""
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Empty object list
