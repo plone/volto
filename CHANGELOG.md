@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Remove transifex configuration for Volto translations @erral
+
 ### Bugfix
 
 - Fixed a11y of Maps block (#3467) @iRohitSingh
