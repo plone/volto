@@ -194,6 +194,61 @@ export class QuerystringWidgetComponent extends Component {
           </Form.Field>
         );
       case 'ReferenceWidget':
+        if (
+          row.o === 'plone.app.querystring.operation.string.absolutePath' ||
+          row.o === 'plone.app.querystring.operation.string.path'
+        ) {
+          return (
+            <Form.Field style={{ flex: '1 0 auto', display: 'flex' }}>
+              <Input {...props} type="url" style={{ flex: '1' }} />
+              {props.value?.length > 0 ? (
+                <Button.Group>
+                  <Button
+                    basic
+                    className="cancel"
+                    aria-label="clearUrlBrowser"
+                    onClick={e => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      props.value = '';
+                      this.onChangeValue(index, '');
+                    }}
+                  >
+                    <Icon name={clearSVG} size="30px" />
+                  </Button>
+                </Button.Group>
+              ) : (
+                <Button.Group>
+                  <Button
+                    basic
+                    icon
+                    disabled={false}
+                    aria-label="openUrlBrowser"
+                    onClick={e => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      this.props.openObjectBrowser({
+                        mode: 'link',
+                        overlay: true,
+                        onSelectItem: url => {
+                          this.onChangeValue(index, url);
+                        },
+                      });
+                    }}
+                  >
+                    <Icon name={navTreeSVG} size="24px" />
+                  </Button>
+                </Button.Group>
+              )}
+            </Form.Field>
+          );
+        } else {
+          return (
+            <Form.Field style={{ flex: '1 0 auto' }}>
+              <Input {...props} />
+            </Form.Field>
+          );
+        }
       default:
         // if (row.o === 'plone.app.querystring.operation.string.relativePath') {
         //   props.onChange = data => this.onChangeValue(index, data.target.value);
