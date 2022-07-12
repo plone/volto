@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fixed a11y of Maps block (#3467) @iRohitSingh
+
 ### Internal
 
 ### Documentation
