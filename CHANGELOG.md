@@ -8,11 +8,27 @@
 
 ### Bugfix
 
+- Fixed a11y of Maps block (#3467) @iRohitSingh
+
+### Internal
+
+### Documentation
+
+- Remove sphinx_sitemap configuration because Volto's docs are now imported into the main docs, making this setting unnecessary. @stevepiercy
+- Set the ogp_site_url to main docs, instead of training. @stevepiercy
+
+## 16.0.0-alpha.11 (2022-06-21)
+
+### Feature
+
+- add control panel via config.settings @ksuess https://github.com/plone/volto/issues/3426
+- Add noindex metadata tag @steffenri
+- Add listing variation schemaEnhancer to the search block schema @ionlizarazu
+- Use the local blocksConfig for extensions, fallback to the config object one. This allows to override local blocks config in nested blocks (blocks in a block, eg. accordion, grid, row) @sneridagh
+
 ### Internal
 
 - Fix warning because missing key in `VersionOverview` component @sneridagh
-
-### Documentation
 
 ## 16.0.0-alpha.10 (2022-06-17)
 

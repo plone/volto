@@ -189,6 +189,7 @@ msgstr "Alfabetico"
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/schema
 # defaultMessage: Alt text
 msgid "Alt text"
 msgstr "Testo alternativo"
@@ -868,11 +869,6 @@ msgstr "Email inviata"
 # defaultMessage: Embed code error, please follow the instructions and try again.
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "Errore del codice incorporato, per favore segui le istruzioni e riprova."
-
-#: components/manage/Blocks/Maps/View
-# defaultMessage: Embeded Google Maps
-msgid "Embeded Google Maps"
-msgstr "Google Maps incorporata"
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Empty object list

@@ -196,6 +196,7 @@ msgstr "Alfabetikoki"
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/schema
 # defaultMessage: Alt text
 msgid "Alt text"
 msgstr "Ordezko testua (alt)"
@@ -875,11 +876,6 @@ msgstr "Eposta ondo bidali da"
 # defaultMessage: Embed code error, please follow the instructions and try again.
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "Itsatsitako kodearen errorea, jarraitu argibideak eta saiatu berriz."
-
-#: components/manage/Blocks/Maps/View
-# defaultMessage: Embeded Google Maps
-msgid "Embeded Google Maps"
-msgstr "Itsatsitako Google Maps"
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Empty object list
