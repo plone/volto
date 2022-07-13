@@ -14,6 +14,8 @@
 
 ### Internal
 
+-  mock all loadable libraries. @mamico
+
 ### Documentation
 
 - Remove sphinx_sitemap configuration because Volto's docs are now imported into the main docs, making this setting unnecessary. @stevepiercy
