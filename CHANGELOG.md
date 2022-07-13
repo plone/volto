@@ -6,6 +6,7 @@
 
 ### Feature
 
+- Use type info instead of id type as icon title in the folder contents. @mamico
 - Remove transifex configuration for Volto translations @erral
 - Add missing support for inner `blocksConfig` in block extensions resolutions @sneridagh
 
