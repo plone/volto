@@ -7,10 +7,15 @@
 ### Feature
 
 - Use type info instead of id type as icon title in the folder contents. @mamico
+- Remove transifex configuration for Volto translations @erral
 
 ### Bugfix
 
+- Fixed a11y of Maps block (#3467) @iRohitSingh
+
 ### Internal
+
+-  mock all loadable libraries. @mamico
 
 ### Documentation
 

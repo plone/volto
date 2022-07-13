@@ -5,6 +5,10 @@ const messages = defineMessages({
     id: 'Maps',
     defaultMessage: 'Maps',
   },
+  AltText: {
+    id: 'Alt text',
+    defaultMessage: 'Alt text',
+  },
   MapsURL: {
     id: 'Maps URL',
     defaultMessage: 'Maps URL',
@@ -21,7 +25,7 @@ export const MapsSchema = (props) => ({
     {
       id: 'default',
       title: 'Default',
-      fields: ['url', 'align'],
+      fields: ['url', 'title', 'align'],
     },
   ],
 
@@ -29,6 +33,9 @@ export const MapsSchema = (props) => ({
     url: {
       title: props.intl.formatMessage(messages.MapsURL),
       widget: 'url',
+    },
+    title: {
+      title: props.intl.formatMessage(messages.AltText),
     },
     align: {
       title: props.intl.formatMessage(messages.Alignment),
