@@ -161,6 +161,11 @@ msgstr ""
 msgid "Add {type}"
 msgstr "{type} を追加"
 
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Add-on Configuration
+msgid "Add-on Configuration"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Add-ons Settings
 msgid "Add-ons Settings"
@@ -171,9 +176,10 @@ msgstr "アドオン設定"
 msgid "Additional date"
 msgstr "追加日"
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Block/StylesSchema
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Maps/schema
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Alignment
 msgid "Alignment"
@@ -189,18 +195,19 @@ msgstr "すべて"
 msgid "Alphabetically"
 msgstr "アルファベット順"
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/schema
 # defaultMessage: Alt text
 msgid "Alt text"
 msgstr "代替テキスト"
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 # defaultMessage: Leave empty if the image is purely decorative.
 msgid "Alt text hint"
 msgstr ""
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 # defaultMessage: Describe the purpose of the image.
 msgid "Alt text hint link text"
 msgstr ""
@@ -255,6 +262,11 @@ msgstr "利用可能"
 # defaultMessage: Back
 msgid "Back"
 msgstr "戻る"
+
+#: components/manage/Blocks/Block/StylesSchema
+# defaultMessage: Background color
+msgid "Background color"
+msgstr ""
 
 #: components/manage/Diff/Diff
 # defaultMessage: Base
@@ -334,7 +346,6 @@ msgstr "キャンセル"
 msgid "Cell"
 msgstr "セル"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Center
@@ -446,6 +457,12 @@ msgstr ""
 msgid "Collection"
 msgstr "コレクション"
 
+#: components/manage/Blocks/Block/StylesSchema
+#: components/manage/Widgets/ColorPickerWidget
+# defaultMessage: Color
+msgid "Color"
+msgstr ""
+
 #: components/manage/Controlpanels/ModerateComments
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
@@ -493,6 +510,11 @@ msgstr "お問い合わせフォーム"
 # defaultMessage: Contained items
 msgid "Contained items"
 msgstr "含まれるアイテム"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Content
+msgid "Content"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Content type created
@@ -856,11 +878,6 @@ msgstr "メール送信"
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "Embedコードがエラーです。説明を読んで再度実行してください。"
 
-#: components/manage/Blocks/Maps/View
-# defaultMessage: Embeded Google Maps
-msgid "Embeded Google Maps"
-msgstr "埋め込まれたGoogle Maps"
-
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Empty object list
 msgid "Empty object list"
@@ -893,7 +910,6 @@ msgid "Enter an email address. This will be your login name. We respect your pri
 msgstr "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere. (未翻訳)"
 
 #: components/manage/Preferences/PersonalInformation
-#: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 # defaultMessage: Enter full name, e.g. John Smith.
 msgid "Enter full name, e.g. John Smith."
@@ -910,15 +926,20 @@ msgid "Enter your current password."
 msgstr "現在のパスワードを入力"
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your email address for verification.
-msgid "Enter your email address for verification."
-msgstr "確認するためにあなたのメールアドレスを入力してください"
+# defaultMessage: Enter your email for verification.
+msgid "Enter your email for verification."
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your new password. Minimum 5 characters.
 msgid "Enter your new password. Minimum 5 characters."
 msgstr "新しいパスワードを入力。（5文字以上）"
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Enter your username for verification.
+msgid "Enter your username for verification."
+msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -967,7 +988,6 @@ msgstr "満了日付"
 msgid "Expired"
 msgstr "期間満了"
 
-#: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: External URL
 msgid "External URL"
@@ -1070,7 +1090,6 @@ msgid "Full"
 msgstr "フルサイズ"
 
 #: components/manage/Preferences/PersonalInformation
-#: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 # defaultMessage: Full Name
 msgid "Full Name"
@@ -1085,6 +1104,11 @@ msgstr "氏名"
 # defaultMessage: GNU GPL license
 msgid "GNU GPL license"
 msgstr "GNU GPL license"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: General
+msgid "General"
+msgstr ""
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Global role
@@ -1210,6 +1234,7 @@ msgstr "確かに正しいURLを入力したのにエラーになってしまう
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Image
 msgid "Image"
@@ -1218,6 +1243,11 @@ msgstr "画像"
 #: config/Blocks
 # defaultMessage: Image gallery
 msgid "Image gallery"
+msgstr ""
+
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Image size
+msgid "Image size"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
@@ -1360,6 +1390,11 @@ msgstr "言語"
 msgid "Language independent field."
 msgstr ""
 
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Large
+msgid "Large"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Last
 msgid "Last"
@@ -1390,7 +1425,6 @@ msgstr "レイアウト"
 msgid "Lead Image"
 msgstr "リード画像"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Left
@@ -1415,10 +1449,9 @@ msgid "Link title"
 msgstr "リンクタイトル"
 
 #: components/manage/Blocks/HeroImageLeft/schema
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
-#: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Link to
 msgid "Link to"
@@ -1502,11 +1535,12 @@ msgid "Manage translations for {title}"
 msgstr "{title}の翻訳を管理する"
 
 #: components/manage/Blocks/Maps/MapsSidebar
-# defaultMessage: Map
-msgid "Map"
-msgstr "地図"
+#: components/manage/Blocks/Maps/schema
+# defaultMessage: Maps
+msgid "Maps"
+msgstr ""
 
-#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Maps/schema
 # defaultMessage: Maps URL
 msgid "Maps URL"
 msgstr "地図URL"
@@ -1520,6 +1554,11 @@ msgstr "最大の長さは {len} です。"
 # defaultMessage: Maximum value is {len}.
 msgid "Maximum value is {len}."
 msgstr "最大の値は {len} です。"
+
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Medium
+msgid "Medium"
+msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Message
@@ -1583,9 +1622,14 @@ msgid "Multiple choices?"
 msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: My email address is
-msgid "My email address is"
-msgstr "私のメールアドレスは、"
+# defaultMessage: My email is
+msgid "My email is"
+msgstr ""
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: My username is
+msgid "My username is"
+msgstr "私のユーザー名は"
 
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
@@ -1628,7 +1672,7 @@ msgstr ""
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected
 msgid "No image selected"
-msgstr "画像が選択されていません"
+msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: No image set in Lead Image content field
@@ -1745,9 +1789,8 @@ msgstr "OK"
 msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed."
 msgstr ""
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
@@ -1763,7 +1806,6 @@ msgstr "Open menu (未翻訳)"
 msgid "Open object browser"
 msgstr "オブジェクトブラウザを開く"
 
-#: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
 msgid "Origin"
@@ -1840,7 +1882,7 @@ msgstr "個人設定"
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first. (未翻訳)"
 
-#: components/manage/Blocks/Video/Edit
+#: components/manage/Blocks/Video/Body
 # defaultMessage: Please enter a valid URL by deleting the block and adding a new video block.
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
 msgstr "ブロックを削除して新しいビデオブロックを追加して、正しいURLを入力してください。"
@@ -2105,7 +2147,6 @@ msgstr "審査状態"
 msgid "Richtext"
 msgstr "Richtext"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Right
@@ -2405,15 +2446,15 @@ msgstr "サイト設定"
 msgid "Sitemap"
 msgstr "サイトマップ"
 
-#: components/manage/Blocks/Image/ImageSidebar
-# defaultMessage: Size
-msgid "Size"
-msgstr "サイズ"
-
 #: components/theme/View/ImageView
 # defaultMessage: Size: {size}
 msgid "Size: {size}"
 msgstr "サイズ: {size}"
+
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Small
+msgid "Small"
+msgstr ""
 
 #: error
 # defaultMessage: Sorry, something went wrong with your request
@@ -2443,6 +2484,7 @@ msgid "Sort on options"
 msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Image/schema
 # defaultMessage: Source
 msgid "Source"
 msgstr "ソース"
@@ -2494,6 +2536,11 @@ msgstr "String (未翻訳)"
 # defaultMessage: Alternate row background color
 msgid "Stripe alternate rows with color"
 msgstr "一行おきに背景色を付加"
+
+#: helpers/Extensions/withBlockSchemaEnhancer
+# defaultMessage: Styling
+msgid "Styling"
+msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Subject
@@ -2802,7 +2849,6 @@ msgid "Uninstall"
 msgstr "アンインストール"
 
 #: components/manage/Blocks/Block/Edit
-#: components/theme/View/DefaultView
 #: components/theme/View/RenderBlocks
 # defaultMessage: Unknown Block {block}
 msgid "Unknown Block"
@@ -3032,6 +3078,11 @@ msgstr "When this date is reached, the content will nolonger be visible in listi
 msgid "Who"
 msgstr "誰が"
 
+#: components/manage/Sidebar/AlignBlock
+# defaultMessage: Wide
+msgid "Wide"
+msgstr ""
+
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Updating workflow states...
 msgid "Workflow Change Loading Message"
@@ -3091,7 +3142,7 @@ msgstr "このコンテンツをここに貼り付けることはできません
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your email is required for reset your password.
 msgid "Your email is required for reset your password."
-msgstr "Your email is required for reset your password. (未翻訳)"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 # defaultMessage: Your location - either city and country - or in a company setting, where your office is located.
@@ -3107,6 +3158,11 @@ msgstr "Your password has been set successfully. You may now {link} with your ne
 # defaultMessage: Your preferred language
 msgid "Your preferred language"
 msgstr "優先する言語"
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Your username is required for reset your password.
+msgid "Your usernaame is required for reset your password."
+msgstr ""
 
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -3230,9 +3286,14 @@ msgid "intranet"
 msgstr "イントラネット"
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: My email address is
-msgid "label_my_email_address_is"
-msgstr "私のメールアドレスは"
+# defaultMessage: My email is
+msgid "label_my_email_is"
+msgstr ""
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: My username is
+msgid "label_my_username_is"
+msgstr "私のユーザー名は"
 
 #: config/Blocks
 # defaultMessage: Lead Image Field
@@ -3292,6 +3353,7 @@ msgstr "よく使う物"
 
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+#: components/theme/Widgets/BooleanWidget
 # defaultMessage: No
 msgid "no"
 msgstr ""
@@ -3569,6 +3631,7 @@ msgstr "外部サイトを表示"
 
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+#: components/theme/Widgets/BooleanWidget
 # defaultMessage: Yes
 msgid "yes"
 msgstr ""

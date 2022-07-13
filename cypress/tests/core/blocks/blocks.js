@@ -148,6 +148,8 @@ describe('Blocks Tests', () => {
   });
 
   it('Add table block', () => {
+    cy.intercept('PATCH', '*').as('save');
+    cy.intercept('GET', '/**/my-page').as('content');
     // Edit
     cy.getSlate().click();
     cy.get('button.block-add-button').click();
@@ -185,11 +187,8 @@ describe('Blocks Tests', () => {
 
     // Save
     cy.get('#toolbar-save').click();
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('my-page');
+    cy.wait('@save');
+    cy.wait('@content');
 
     // View
     cy.get('.celled.fixed.table thead tr th:first-child()').contains(
@@ -214,10 +213,13 @@ describe('Blocks Tests', () => {
     cy.waitForResourceToLoad('@types');
 
     cy.get('#toolbar-save').should('be.visible');
+    cy.get('.celled.fixed.table tr:first-child() th:nth-child(2)').should(
+      'be.visible',
+    );
 
-    cy.get(
-      '.celled.fixed.table thead tr:first-child() th:nth-child(2)',
-    ).click();
+    cy.get('.celled.fixed.table tr:first-child() th:nth-child(2)').click({
+      waitForAnimations: false,
+    });
 
     // without the second click the test fails. so this makes the test green.
     cy.get(
@@ -240,7 +242,8 @@ describe('Blocks Tests', () => {
 
     // Save
     cy.get('#toolbar-save').click();
-    cy.waitForResourceToLoad('my-page');
+    cy.wait('@save');
+    cy.wait('@content');
 
     // View
     cy.get('.celled.fixed.table thead tr th:first-child()').should(
