@@ -7,6 +7,7 @@
 ### Feature
 
 - Remove transifex configuration for Volto translations @erral
+- Add missing support for inner `blocksConfig` in block extensions resolutions @sneridagh
 
 ### Bugfix
 
