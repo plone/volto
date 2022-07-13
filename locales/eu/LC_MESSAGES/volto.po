@@ -195,6 +195,7 @@ msgstr "Alfabetikoki"
 # defaultMessage: Alt text
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/schema
 msgid "Alt text"
 msgstr "Ordezko testua (alt)"
 

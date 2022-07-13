@@ -7,10 +7,18 @@
 ### Feature
 
 - Complete basque translation @erral
+- Use type info instead of id type as icon title in the folder contents. @mamico
+- Remove transifex configuration for Volto translations @erral
+- Add missing support for inner `blocksConfig` in block extensions resolutions @sneridagh
 
 ### Bugfix
 
+- Fixed the description field not being included in the navigation action/ reducer @JeffersonBledsoe #3454
+- Fixed a11y of Maps block (#3467) @iRohitSingh
+
 ### Internal
+
+-  mock all loadable libraries. @mamico
 
 ### Documentation
 
