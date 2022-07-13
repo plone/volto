@@ -2,8 +2,6 @@
 
 ## 16.0.0 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Use type info instead of id type as icon title in the folder contents. @mamico
@@ -17,7 +15,7 @@
 
 ### Internal
 
--  mock all loadable libraries. @mamico
+- Mock all loadable libraries. @mamico
 
 ### Documentation
 
