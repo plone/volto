@@ -11,6 +11,7 @@
 
 ### Bugfix
 
+- Fixed the description field not being included in the navigation action/ reducer @JeffersonBledsoe #3454
 - Fixed a11y of Maps block (#3467) @iRohitSingh
 
 ### Internal
