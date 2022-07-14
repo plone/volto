@@ -87,12 +87,15 @@ class UndoControlPanel extends Component {
     super(props);
     this.state = {
       isClient: false,
-      isSortingTypeSelected: false,
       sortType: 'no value',
       lowerIndex: 0,
       upperIndex: 20,
       defaultTransactionsLenInTable: 20,
+      isSortingTypeSelected: false,
       sortedTransactions: [],
+      isEmptyInputForSorting: false,
+      isTransactionsNotFound: false,
+      isFormLoading: false,
     };
     this.onCancel = this.onCancel.bind(this);
     this.onSort = this.onSort.bind(this);
@@ -109,7 +112,9 @@ class UndoControlPanel extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    this.setState({ isClient: true });
+    this.setState({
+      isClient: true,
+    });
     this.props.getTransactions();
   }
 
@@ -131,9 +136,11 @@ class UndoControlPanel extends Component {
         lowerIndex: 0,
         upperIndex: 20,
         sortedTransactions: sortedTransactions,
+        isEmptyInputForSorting: false,
+        isTransactionsNotFound: false,
       });
     } else {
-      // console.log("No Transactions found")
+      this.setState({ isTransactionsNotFound: true });
     }
   }
 
@@ -145,6 +152,8 @@ class UndoControlPanel extends Component {
   onCancel() {
     this.setState({
       isSortingTypeSelected: false,
+      isTransactionsNotFound: false,
+      isEmptyInputForSorting: false,
       sortType: 'no value',
       sortedTransactions: [],
       lowerIndex: 0,
@@ -180,7 +189,7 @@ class UndoControlPanel extends Component {
   }
 
   /**
-   * On Submit
+   * On Sort
    * @method onSort
    * @param {object} data
    * @returns {undefined}
@@ -195,7 +204,7 @@ class UndoControlPanel extends Component {
 
     if (sortType.toLowerCase() !== 'no value' && value !== undefined) {
       let sortedTransactions = [];
-
+      this.setState({ isFormLoading: true });
       if (sortType.toLowerCase() === 'user name') {
         this.props.transactions.forEach((element) => {
           if (
@@ -235,8 +244,9 @@ class UndoControlPanel extends Component {
         });
         this.setSortedTransactions(sortedTransactions);
       }
+      this.setState({ isFormLoading: false });
     } else {
-      // console.log("Nothing got entered to sort");
+      this.setState({ isEmptyInputForSorting: true });
     }
   }
 
@@ -308,13 +318,14 @@ class UndoControlPanel extends Component {
    */
   setTableVisiblity() {
     if (this.state.sortedTransactions.length > 0) {
-      // console.log("Transactions are sorted");
       this.state.sortedTransactions.length &&
         this.state.upperIndex >= this.state.sortedTransactions.length &&
+        document.getElementById('next-button') !== null &&
         (document.getElementById('next-button').style.visibility = 'hidden');
 
       this.state.sortedTransactions.length &&
         this.state.upperIndex < this.state.sortedTransactions.length &&
+        document.getElementById('next-button') !== null &&
         (document.getElementById('next-button').style.visibility = 'visible');
 
       this.state.sortedTransactions &&
@@ -329,13 +340,26 @@ class UndoControlPanel extends Component {
         this.state.lowerIndex > 0 &&
         (document.getElementById('prev-button').style.visibility = 'visible');
     } else {
-      // console.log("Transactions not got Sorted")
+      if (
+        this.props.transactions.length > 0 &&
+        this.state.isTransactionsNotFound
+      ) {
+        this.setState({ isTransactionsNotFound: false });
+      } else if (
+        this.props.transactions.length <= 0 &&
+        !this.state.isTransactionsNotFound
+      ) {
+        this.setState({ isTransactionsNotFound: true });
+      }
+
       this.props.transactions.length &&
         this.state.upperIndex >= this.props.transactions.length &&
+        document.getElementById('next-button') !== null &&
         (document.getElementById('next-button').style.visibility = 'hidden');
 
       this.props.transactions.length &&
         this.state.upperIndex < this.props.transactions.length &&
+        document.getElementById('next-button') !== null &&
         (document.getElementById('next-button').style.visibility = 'visible');
 
       this.props.transactions &&
@@ -369,7 +393,6 @@ class UndoControlPanel extends Component {
         this.state.upperIndex,
       );
     this.setTableVisiblity();
-    // console.log("Refreshed")
 
     return (
       <Container id="page-undo" className="controlpanel-undo">
@@ -382,25 +405,25 @@ class UndoControlPanel extends Component {
             />
           </Segment>
           <Segment>
-            {this.state.isSortingTypeSelected ? (
+            {this.props.transactions.length > 0 && (
               <Form
-                formData={{
-                  sortingValue: 'Value Insertion',
-                }}
                 schema={{
                   fieldsets: [
                     {
                       id: 'default',
                       title: this.props.intl.formatMessage(messages.default),
-                      fields: [
-                        'sortingTypes',
-                        (this.state.sortType.toLowerCase() === 'user name' &&
-                          'sortByUsername') ||
-                          (this.state.sortType.toLowerCase() === 'path' &&
-                            'sortByPath') ||
-                          (this.state.sortType.toLowerCase() === 'date' &&
-                            'sortByDate'),
-                      ],
+                      fields: this.state.isSortingTypeSelected
+                        ? [
+                            'sortingTypes',
+                            (this.state.sortType.toLowerCase() ===
+                              'user name' &&
+                              'sortByUsername') ||
+                              (this.state.sortType.toLowerCase() === 'path' &&
+                                'sortByPath') ||
+                              (this.state.sortType.toLowerCase() === 'date' &&
+                                'sortByDate'),
+                          ]
+                        : ['sortingTypes'],
                     },
                   ],
                   properties: {
@@ -430,36 +453,19 @@ class UndoControlPanel extends Component {
                   },
                   required: [],
                 }}
+                error={
+                  this.state.isEmptyInputForSorting
+                    ? { message: 'Please enter any input to perform sorting' }
+                    : undefined
+                }
                 onChangeFormData={this.onSelect}
-                onSubmit={this.onSort}
-                onCancel={this.onCancel}
-              />
-            ) : (
-              <Form
-                schema={{
-                  fieldsets: [
-                    {
-                      id: 'default',
-                      title: this.props.intl.formatMessage(messages.default),
-                      fields: ['sortingTypes'],
-                    },
-                  ],
-                  properties: {
-                    sortingTypes: {
-                      title: this.props.intl.formatMessage(messages.sortBy),
-                      description: this.props.intl.formatMessage(
-                        messages.sortByDescription,
-                      ),
-                      type: 'string',
-                      choices: map(['User Name', 'Path', 'Date'], (type) => [
-                        type,
-                        type,
-                      ]),
-                    },
-                  },
-                  required: [],
-                }}
-                onChangeFormData={this.onSelect}
+                onSubmit={
+                  this.state.isSortingTypeSelected ? this.onSort : undefined
+                }
+                onCancel={
+                  this.state.isSortingTypeSelected ? this.onCancel : undefined
+                }
+                loading={this.state.isFormLoading}
               />
             )}
           </Segment>
@@ -470,86 +476,95 @@ class UndoControlPanel extends Component {
                 defaultMessage="Transactions"
               />
             </Segment>
-            <Table selectable fixed celled compact singleLine attached>
-              <Table.Header>
-                <Table.Row>
-                  <Table.HeaderCell width={1}>
-                    <FormattedMessage
-                      id="Transactions Checkbox"
-                      defaultMessage="#"
-                    />
-                  </Table.HeaderCell>
-                  <Table.HeaderCell width={3}>
-                    <FormattedMessage id="What" defaultMessage="What" />
-                  </Table.HeaderCell>
-                  <Table.HeaderCell width={3}>
-                    <FormattedMessage id="Who" defaultMessage="Who" />
-                  </Table.HeaderCell>
-                  <Table.HeaderCell width={3}>
-                    <FormattedMessage id="When" defaultMessage="When" />
-                  </Table.HeaderCell>
-                  <Table.HeaderCell width={3}>
-                    <FormattedMessage id="Note" defaultMessage="Note" />
-                  </Table.HeaderCell>
-                  <Table.HeaderCell />
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                {map(transactionsRange, (transaction) => (
-                  <Table.Row id={transaction.id} key={transaction.id}>
-                    <Table.Cell width={1}>
-                      <Input
-                        type="checkbox"
-                        className="transactions-checkboxes"
+            {this.state.isTransactionsNotFound ? (
+              <Segment className="primary">
+                <FormattedMessage
+                  id="No transactions found"
+                  defaultMessage="No transactions found"
+                />
+              </Segment>
+            ) : (
+              <Table selectable fixed celled compact singleLine attached>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell width={1}>
+                      <FormattedMessage
+                        id="Transactions Checkbox"
+                        defaultMessage="#"
                       />
-                    </Table.Cell>
-                    <Table.Cell
-                      width={3}
-                      title={[transaction.description].join(' ')}
-                    >
-                      {transaction.description}
-                    </Table.Cell>
-                    <Table.Cell width={3}>
-                      {transaction.user_name ? transaction.user_name : 'Zope'}
-                    </Table.Cell>
-                    <Table.Cell width={3}>{transaction.time}</Table.Cell>
-                    <Table.Cell width={3}>Note</Table.Cell>
+                    </Table.HeaderCell>
+                    <Table.HeaderCell width={3}>
+                      <FormattedMessage id="What" defaultMessage="What" />
+                    </Table.HeaderCell>
+                    <Table.HeaderCell width={3}>
+                      <FormattedMessage id="Who" defaultMessage="Who" />
+                    </Table.HeaderCell>
+                    <Table.HeaderCell width={3}>
+                      <FormattedMessage id="When" defaultMessage="When" />
+                    </Table.HeaderCell>
+                    <Table.HeaderCell width={3}>
+                      <FormattedMessage id="Note" defaultMessage="Note" />
+                    </Table.HeaderCell>
+                    <Table.HeaderCell />
                   </Table.Row>
-                ))}
-              </Table.Body>
-              <Table.Footer>
-                <Table.Row>
-                  <Table.HeaderCell colSpan="3">
-                    <Menu floated="right" pagination>
-                      <Menu.Item as="a" id="prev-button" icon>
-                        <Icon
-                          onClick={this.onPrev}
-                          name={prevIcon}
-                          title="Prev"
+                </Table.Header>
+                <Table.Body>
+                  {map(transactionsRange, (transaction) => (
+                    <Table.Row id={transaction.id} key={transaction.id}>
+                      <Table.Cell width={1}>
+                        <Input
+                          type="checkbox"
+                          className="transactions-checkboxes"
                         />
-                      </Menu.Item>
-                      <Menu.Item as="a" icon>
-                        <Icon
-                          name={undoSVG}
-                          id="undo-button"
-                          className="circled"
-                          size="30px"
-                          title={this.props.intl.formatMessage(messages.undo)}
-                          onClick={this.onUndo}
-                        />
-                      </Menu.Item>
-                      <Menu.Item as="a" id="next-button" icon>
-                        <Icon
-                          onClick={this.onNext}
-                          name={nextIcon}
-                          title="Next"
-                        />
-                      </Menu.Item>
-                    </Menu>
-                  </Table.HeaderCell>
-                </Table.Row>
-              </Table.Footer>
-            </Table>
+                      </Table.Cell>
+                      <Table.Cell
+                        width={3}
+                        title={[transaction.description].join(' ')}
+                      >
+                        {transaction.description}
+                      </Table.Cell>
+                      <Table.Cell width={3}>
+                        {transaction.user_name ? transaction.user_name : 'Zope'}
+                      </Table.Cell>
+                      <Table.Cell width={3}>{transaction.time}</Table.Cell>
+                      <Table.Cell width={3}>Note</Table.Cell>
+                    </Table.Row>
+                  ))}
+                </Table.Body>
+                <Table.Footer>
+                  <Table.Row>
+                    <Table.HeaderCell colSpan="3">
+                      <Menu floated="right" pagination>
+                        <Menu.Item as="a" id="prev-button" icon>
+                          <Icon
+                            onClick={this.onPrev}
+                            name={prevIcon}
+                            title="Prev"
+                          />
+                        </Menu.Item>
+                        <Menu.Item as="a" icon>
+                          <Icon
+                            name={undoSVG}
+                            id="undo-button"
+                            className="circled"
+                            size="30px"
+                            title={this.props.intl.formatMessage(messages.undo)}
+                            onClick={this.onUndo}
+                          />
+                        </Menu.Item>
+                        <Menu.Item as="a" id="next-button" icon>
+                          <Icon
+                            onClick={this.onNext}
+                            name={nextIcon}
+                            title="Next"
+                          />
+                        </Menu.Item>
+                      </Menu>
+                    </Table.HeaderCell>
+                  </Table.Row>
+                </Table.Footer>
+              </Table>
+            )}
           </Segment.Group>
         </Segment.Group>
         {this.state.isClient && (
