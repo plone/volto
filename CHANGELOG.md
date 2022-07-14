@@ -12,6 +12,25 @@
 
 ### Documentation
 
+## 16.0.0-alpha.12 (2022-07-13)
+
+### Feature
+
+- Use type info instead of id type as icon title in the folder contents. @mamico
+- Remove transifex configuration for Volto translations @erral
+- Add missing support for inner `blocksConfig` in block extensions resolutions @sneridagh
+
+### Bugfix
+
+- Fixed the description field not being included in the navigation action/ reducer @JeffersonBledsoe #3454
+- Fixed a11y of Maps block (#3467) @iRohitSingh
+
+### Internal
+
+- Mock all loadable libraries. @mamico
+
+### Documentation
+
 - Remove sphinx_sitemap configuration because Volto's docs are now imported into the main docs, making this setting unnecessary. @stevepiercy
 - Set the ogp_site_url to main docs, instead of training. @stevepiercy
 
