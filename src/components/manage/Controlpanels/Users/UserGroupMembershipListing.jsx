@@ -7,7 +7,11 @@ import { Button, Checkbox } from 'semantic-ui-react';
 import { messages } from '@plone/volto/helpers';
 import { listGroups } from '@plone/volto/actions';
 import { Icon, Toast } from '@plone/volto/components';
-import { updateGroup, listUsers } from '@plone/volto/actions';
+import {
+  getSystemInformation,
+  updateGroup,
+  listUsers,
+} from '@plone/volto/actions';
 
 import add from '@plone/volto/icons/add.svg';
 import remove from '@plone/volto/icons/remove.svg';
@@ -26,6 +30,10 @@ const ListingTemplate = ({
 
   const pageSize = 25;
   const [userLimit, setUserLimit] = useState(pageSize);
+
+  let systeminformation = useSelector(
+    (state) => state.controlpanels.systeminformation,
+  );
 
   // y axis
   let items = useSelector((state) => state.users.users);
@@ -103,7 +111,7 @@ const ListingTemplate = ({
         listUsers(
           query_user,
           groups_filter.map((el) => el.value),
-          userLimit,
+          systeminformation.plone_version[0] < 6 ? null : userLimit,
         ),
       );
     }
@@ -115,6 +123,10 @@ const ListingTemplate = ({
       dispatch(listGroups(query_group));
     }
   }, [dispatch, query_group, show_matrix_options, groups_filter]);
+
+  useEffect(() => {
+    dispatch(getSystemInformation());
+  }, [dispatch]);
 
   const onSelectOptionHandler = (item, selectedvalue, checked, singleClick) => {
     singleClick = singleClick ?? false;
@@ -134,7 +146,7 @@ const ListingTemplate = ({
             listUsers(
               query_user,
               groups_filter.map((el) => el.value),
-              userLimit,
+              systeminformation.plone_version[0] < 6 ? null : userLimit,
             ),
           );
       })
@@ -169,7 +181,7 @@ const ListingTemplate = ({
           listUsers(
             query_user,
             groups_filter.map((el) => el.value),
-            userLimit,
+            systeminformation.plone_version[0] < 6 ? null : userLimit,
           ),
         );
       })
@@ -296,7 +308,8 @@ const ListingTemplate = ({
                 </div>
               </div>
             ))}
-            {!(items.length < pageSize) ? (
+            {systeminformation.plone_version[0] >= 6 &&
+            !(items.length < pageSize) ? (
               <div className="show-more">
                 <Button
                   icon
