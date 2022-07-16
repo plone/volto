@@ -29,16 +29,20 @@ const init = () => {
   });
 };
 
+const waitForPage = () => {
+  cy.waitForResourceToLoad('@navigation');
+  cy.waitForResourceToLoad('@breadcrumbs');
+  cy.waitForResourceToLoad('@actions');
+  cy.waitForResourceToLoad('@types');
+};
+
 describe('User Group Membership Control Panel test for NOT many users and many groups', () => {
   beforeEach(() => {
     init();
   });
   it('Should update group membership for: one user and one group', () => {
     cy.visit('/controlpanel/usergroupmembership');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
+    waitForPage();
 
     cy.get('.usergroupmembership').then(($segmentUsergroupmembership) => {
       if ($segmentUsergroupmembership.hasClass('upgrade-info')) {
@@ -54,10 +58,7 @@ describe('User Group Membership Control Panel test for NOT many users and many g
   });
   it('I can search for a user and show his groups', () => {
     cy.visit('/controlpanel/usergroupmembership');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
+    waitForPage();
 
     cy.get('.usergroupmembership').then(($segmentUsergroupmembership) => {
       if ($segmentUsergroupmembership.hasClass('upgrade-info')) {
@@ -105,10 +106,7 @@ describe('User Group Membership Control Panel test for MANY users and MANY group
 
   it('Should not show users and groups if many of them', () => {
     cy.visit('/controlpanel/usergroupmembership');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
+    waitForPage();
 
     cy.get('.usergroupmembership').then(($segmentUsergroupmembership) => {
       if ($segmentUsergroupmembership.hasClass('upgrade-info')) {
@@ -121,10 +119,7 @@ describe('User Group Membership Control Panel test for MANY users and MANY group
 
   it('I can search for a user and show his groups', () => {
     cy.visit('/controlpanel/usergroupmembership');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
+    waitForPage();
 
     cy.get('.usergroupmembership').then(($segmentUsergroupmembership) => {
       if ($segmentUsergroupmembership.hasClass('upgrade-info')) {
