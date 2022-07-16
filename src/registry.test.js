@@ -3,25 +3,41 @@ import config from './registry';
 config.set('components', {
   Toolbar: { component: 'this is the Toolbar component' },
   'Toolbar.Types': { component: 'this is the Types component' },
+  'Teaser|News Item': { component: 'This is the News Item Teaser component' },
 });
 
 describe('registry', () => {
-  it('resolve components', () => {
-    expect(config.resolve('Toolbar').component).toEqual(
+  it('get components', () => {
+    expect(config.getComponent('Toolbar').component).toEqual(
       'this is the Toolbar component',
     );
   });
-  it('resolve components with dots', () => {
-    expect(config.resolve('Toolbar.Types').component).toEqual(
+  it('get components with context', () => {
+    expect(
+      config.getComponent('Teaser', { context: 'News Item' }).component,
+    ).toEqual('This is the News Item Teaser component');
+  });
+  it('get components with dots', () => {
+    expect(config.getComponent('Toolbar.Types').component).toEqual(
       'this is the Types component',
     );
   });
-  it('resolve unexistent component', () => {
-    expect(config.resolve('Toolbar.Doh').component).toEqual(undefined);
+  it('get components with | and spaces', () => {
+    expect(config.getComponent('Teaser|News Item').component).toEqual(
+      'This is the News Item Teaser component',
+    );
   });
-  it('register component by name', () => {
-    config.register('Toolbar.Bar', { component: 'this is a Bar component' });
-    expect(config.resolve('Toolbar.Bar').component).toEqual(
+  it('resolves unexistent component', () => {
+    expect(config.getComponent('Toolbar.Doh').component).toEqual(undefined);
+    expect(config.getComponent('Toolbar.Doh')).toEqual({});
+  });
+  it('registers a component by name', () => {
+    config.registerComponent('Toolbar.Bar', {
+      component: {
+        component: 'this is a Bar component',
+      },
+    });
+    expect(config.getComponent('Toolbar.Bar').component).toEqual(
       'this is a Bar component',
     );
   });

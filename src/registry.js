@@ -88,12 +88,21 @@ class Config {
     this._data.components = components;
   }
 
-  resolve(component) {
-    return this._data.components[component] || {};
+  getComponent(name, options = {}) {
+    const { context = '' } = options;
+    const componentName = `${name}${context ? `|${context}` : ''}`;
+
+    return this._data.components[componentName] || {};
   }
 
-  register(name, component) {
-    this._data.components[name] = component;
+  registerComponent(name, options = {}) {
+    const { context = '', component } = options;
+    if (!component) {
+      throw new Error('No component provided');
+    } else {
+      const componentName = `${name}${context ? `|${context}` : ''}`;
+      this._data.components[componentName] = component;
+    }
   }
 }
 

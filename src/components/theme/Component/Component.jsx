@@ -5,7 +5,7 @@ import registry from '@plone/volto/registry';
  * registry based on the provided component `componentName`
  */
 const Component = ({ componentName, ...rest }) => {
-  const Component = registry.resolve(componentName)?.component;
+  const Component = registry.getComponent(componentName)?.component;
 
   if (!Component) {
     // eslint-disable-next-line no-console
