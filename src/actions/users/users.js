@@ -67,17 +67,25 @@ export function getUser(id) {
 
 /**
  * List users function
+ * 'query' and 'search' are mutually exclusive parameters. 'search' wins.
+ * Query either for username or search for username, fullname, email.
  * @function listUsers
- * @param {string} query Query
+ * @param {string} query for username
+ * @param {string} search for  username, fullname, email.
+ * @param {list} groups_filter restrict to group membership
+ * @param {int} limit
  * @returns {Object} List users action
  */
-export function listUsers(query, groups_filter, limit) {
+export function listUsers(query, search, groups_filter, limit) {
   groups_filter = groups_filter || [];
   let path = '/@users';
 
   var searchParams = new URLSearchParams();
   if (query) {
-    searchParams.append('search', query);
+    searchParams.append('query', query);
+  }
+  if (search) {
+    searchParams.append('search', search);
   }
   limit && searchParams.append('limit', limit);
   const searchParamsToString = searchParams.toString();

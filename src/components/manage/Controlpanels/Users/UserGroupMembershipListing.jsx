@@ -102,7 +102,7 @@ const ListingTemplate = ({
     if (show_users) {
       dispatch(
         listUsers(
-          // query_user || 'Peter',
+          null,
           query_user,
           groups_filter.map((el) => el.value),
           i_can_use_group_membership_panel ? null : userLimit,
@@ -141,6 +141,7 @@ const ListingTemplate = ({
         singleClick &&
           dispatch(
             listUsers(
+              null,
               query_user,
               groups_filter.map((el) => el.value),
               i_can_use_group_membership_panel ? null : userLimit,
@@ -176,6 +177,7 @@ const ListingTemplate = ({
       .then(() => {
         dispatch(
           listUsers(
+            null,
             query_user,
             groups_filter.map((el) => el.value),
             i_can_use_group_membership_panel ? null : userLimit,

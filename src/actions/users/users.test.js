@@ -69,7 +69,7 @@ describe('Users action', () => {
 
       expect(action.type).toEqual(LIST_USERS);
       expect(action.request.op).toEqual('get');
-      expect(action.request.path).toEqual(`/@users?search=${query}`);
+      expect(action.request.path).toEqual(`/@users?query=${query}`);
     });
   });
 
