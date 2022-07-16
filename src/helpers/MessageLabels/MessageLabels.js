@@ -178,6 +178,10 @@ export const messages = defineMessages({
     id: 'User Group Settings',
     defaultMessage: 'User Group Settings',
   },
+  usergroupmemberbership: {
+    id: 'user group membership',
+    defaultMessage: 'user group membership',
+  },
   noUserFound: {
     id: 'No user found',
     defaultMessage: 'No user found',

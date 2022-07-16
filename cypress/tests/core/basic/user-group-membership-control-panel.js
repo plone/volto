@@ -40,11 +40,17 @@ describe('User Group Membership Control Panel test for NOT many users and many g
     cy.waitForResourceToLoad('@actions');
     cy.waitForResourceToLoad('@types');
 
-    cy.get('input[name="member_-_max_-_cooks"]').check({
-      force: true,
+    cy.get('.usergroupmembership').then(($segmentUsergroupmembership) => {
+      if ($segmentUsergroupmembership.hasClass('upgrade-info')) {
+        // Panel not supported.
+      } else {
+        cy.get('input[name="member_-_max_-_cooks"]').check({
+          force: true,
+        });
+        cy.reload();
+        cy.get('input[name="member_-_max_-_cooks"]').should('be.checked');
+      }
     });
-    cy.reload();
-    cy.get('input[name="member_-_max_-_cooks"]').should('be.checked');
   });
   it('I can search for a user and show his groups', () => {
     cy.visit('/controlpanel/usergroupmembership');
@@ -53,20 +59,26 @@ describe('User Group Membership Control Panel test for NOT many users and many g
     cy.waitForResourceToLoad('@actions');
     cy.waitForResourceToLoad('@types');
 
-    // Show user
-    cy.get('#user-search-input').type('fröhlich');
-    cy.contains('Max');
+    cy.get('.usergroupmembership').then(($segmentUsergroupmembership) => {
+      if ($segmentUsergroupmembership.hasClass('upgrade-info')) {
+        // Panel not supported.
+      } else {
+        // Show user
+        cy.get('#user-search-input').type('fröhlich');
+        cy.contains('Max');
 
-    // Show membership of group "Administrators"
-    cy.get('input[id="group-search-input"]').type('Adm');
-    cy.contains('Administrators');
-    cy.get('.label-options').should('not.contain', 'teachers');
+        // Show membership of group "Administrators"
+        cy.get('input[id="group-search-input"]').type('Adm');
+        cy.contains('Administrators');
+        cy.get('.label-options').should('not.contain', 'teachers');
 
-    // Show also groups membersip of groups of users
-    cy.get('input[name="addJoinedGroups"]').check({
-      force: true,
+        // Show also groups membersip of groups of users
+        cy.get('input[name="addJoinedGroups"]').check({
+          force: true,
+        });
+        cy.get('.label-options').contains('teachers');
+      }
     });
-    cy.get('.label-options').contains('teachers');
   });
 });
 
@@ -77,15 +89,18 @@ describe('User Group Membership Control Panel test for MANY users and MANY group
     cy.visit('/controlpanel/usergroup');
     cy.waitForResourceToLoad('@navigation');
     cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.get('input[name="field-many_groups"]').check({
-      force: true,
+
+    cy.get('.content-area').then(($content_area) => {
+      if ($content_area.text().indexOf('Settings') > -1) {
+        cy.get('input[name="field-many_groups"]').check({
+          force: true,
+        });
+        cy.get('input[name="field-many_users"]').check({
+          force: true,
+        });
+        cy.get('#toolbar-save').click();
+      }
     });
-    cy.get('input[name="field-many_users"]').check({
-      force: true,
-    });
-    cy.get('#toolbar-save').click();
   });
 
   it('Should not show users and groups if many of them', () => {
@@ -95,7 +110,13 @@ describe('User Group Membership Control Panel test for MANY users and MANY group
     cy.waitForResourceToLoad('@actions');
     cy.waitForResourceToLoad('@types');
 
-    cy.contains('Please search for users');
+    cy.get('.usergroupmembership').then(($segmentUsergroupmembership) => {
+      if ($segmentUsergroupmembership.hasClass('upgrade-info')) {
+        // Panel not supported.
+      } else {
+        cy.contains('Please search for users');
+      }
+    });
   });
 
   it('I can search for a user and show his groups', () => {
@@ -105,23 +126,29 @@ describe('User Group Membership Control Panel test for MANY users and MANY group
     cy.waitForResourceToLoad('@actions');
     cy.waitForResourceToLoad('@types');
 
-    // Show user
-    cy.get('#user-search-input').type('fröhlich').type('{enter}');
-    cy.contains('Max');
+    cy.get('.usergroupmembership').then(($segmentUsergroupmembership) => {
+      if ($segmentUsergroupmembership.hasClass('upgrade-info')) {
+        // Panel not supported.
+      } else {
+        // Show user
+        cy.get('#user-search-input').type('fröhlich').type('{enter}');
+        cy.contains('Max');
 
-    cy.get('input[name="addJoinedGroups"]').check({
-      force: true,
-    });
-    cy.get('.label-options').contains('teachers');
+        cy.get('input[name="addJoinedGroups"]').check({
+          force: true,
+        });
+        cy.get('.label-options').contains('teachers');
 
-    // Show users of group "Editors"
-    cy.get('form.search_users button').click();
-    cy.get('#groupfilter-search-input').type('edit').type('{enter}');
-    cy.waitForResourceToLoad('@groups');
-    cy.get('input[name="filter_option_editors"]').check({
-      force: true,
+        // Show users of group "Editors"
+        cy.get('form.search_users button').click();
+        cy.get('#groupfilter-search-input').type('edit').type('{enter}');
+        cy.waitForResourceToLoad('@groups');
+        cy.get('input[name="filter_option_editors"]').check({
+          force: true,
+        });
+        cy.contains('Peet Editor');
+      }
     });
-    cy.contains('Peet Editor');
   });
 
   afterEach(() => {
@@ -129,14 +156,17 @@ describe('User Group Membership Control Panel test for MANY users and MANY group
     cy.visit('/controlpanel/usergroup');
     cy.waitForResourceToLoad('@navigation');
     cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.get('input[name="field-many_groups"]').check({
-      force: true,
+
+    cy.get('.content-area').then(($content_area) => {
+      if ($content_area.text().indexOf('Settings') > -1) {
+        cy.get('input[name="field-many_groups"]').check({
+          force: true,
+        });
+        cy.get('input[name="field-many_users"]').check({
+          force: true,
+        });
+        cy.get('#toolbar-save').click();
+      }
     });
-    cy.get('input[name="field-many_users"]').check({
-      force: true,
-    });
-    cy.get('#toolbar-save').click();
   });
 });

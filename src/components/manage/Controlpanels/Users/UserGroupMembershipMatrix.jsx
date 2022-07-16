@@ -9,9 +9,14 @@ import { messages } from '@plone/volto/helpers';
 import { listGroups } from '@plone/volto/actions'; // getRegistry
 import UserGroupMembershipListing from './UserGroupMembershipListing';
 
-const UserGroupMembershipMatrix = (props) => {
+const UserGroupMembershipMatrix = ({
+  many_users,
+  many_groups,
+  i_can_use_group_membership_panel,
+}) => {
   const intl = useIntl();
   const dispatch = useDispatch();
+
   const [query_user, setQuery_user] = useState(''); // Show users matching the search string
   const [query_group, setQuery_group] = useState(''); // Show groups matching the search string
   const [query_group_filter, setQuery_group_filter] = useState(''); // Offer groups matching the search string to filter users
@@ -37,19 +42,12 @@ const UserGroupMembershipMatrix = (props) => {
     });
   }
 
-  let many_users = useSelector(
-    (state) => state.controlpanels.controlpanel?.data?.many_users ?? true,
-  );
-  let many_groups = useSelector(
-    (state) => state.controlpanels.controlpanel?.data?.many_groups ?? true,
-  );
-
   useEffect(() => {
     // TODO fetch group for at least query_group_filter.length > 1?
     if (!many_groups || (many_groups && query_group_filter.length > 1)) {
       dispatch(listGroups('', query_group_filter));
     }
-  }, [dispatch, many_groups, query_group_filter, props]);
+  }, [dispatch, many_groups, query_group_filter]);
 
   const onReset = (event) => {
     // event.preventDefault();
@@ -201,9 +199,10 @@ const UserGroupMembershipMatrix = (props) => {
         query_user={query_user}
         query_group={query_group}
         groups_filter={groups_filter}
+        add_joined_groups={add_joined_groups}
         many_users={many_users}
         many_groups={many_groups}
-        add_joined_groups={add_joined_groups}
+        i_can_use_group_membership_panel={i_can_use_group_membership_panel}
       />
     </div>
   );

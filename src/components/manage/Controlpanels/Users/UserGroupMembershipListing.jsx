@@ -7,11 +7,7 @@ import { Button, Checkbox } from 'semantic-ui-react';
 import { messages } from '@plone/volto/helpers';
 import { listGroups } from '@plone/volto/actions';
 import { Icon, Toast } from '@plone/volto/components';
-import {
-  getSystemInformation,
-  updateGroup,
-  listUsers,
-} from '@plone/volto/actions';
+import { updateGroup, listUsers } from '@plone/volto/actions';
 
 import add from '@plone/volto/icons/add.svg';
 import remove from '@plone/volto/icons/remove.svg';
@@ -21,19 +17,16 @@ const ListingTemplate = ({
   query_user, // Show users on y-axis that match
   query_group, // Show groups on y-axis that match
   groups_filter, // show members of these groups
+  add_joined_groups, // Toggle: show also groups joined by users below
   many_users,
   many_groups,
-  add_joined_groups, // Toggle: show also groups joined by users below
+  i_can_use_group_membership_panel,
 }) => {
   const intl = useIntl();
   const dispatch = useDispatch();
 
   const pageSize = 25;
   const [userLimit, setUserLimit] = useState(pageSize);
-
-  let systeminformation = useSelector(
-    (state) => state.controlpanels.systeminformation,
-  );
 
   // y axis
   let items = useSelector((state) => state.users.users);
@@ -109,13 +102,21 @@ const ListingTemplate = ({
     if (show_users) {
       dispatch(
         listUsers(
+          // query_user || 'Peter',
           query_user,
           groups_filter.map((el) => el.value),
-          systeminformation.plone_version[0] < 6 ? null : userLimit,
+          i_can_use_group_membership_panel ? null : userLimit,
         ),
       );
     }
-  }, [dispatch, query_user, groups_filter, show_users, userLimit]);
+  }, [
+    dispatch,
+    i_can_use_group_membership_panel,
+    query_user,
+    groups_filter,
+    show_users,
+    userLimit,
+  ]);
 
   useEffect(() => {
     // Get matrix groups.
@@ -123,10 +124,6 @@ const ListingTemplate = ({
       dispatch(listGroups(query_group));
     }
   }, [dispatch, query_group, show_matrix_options, groups_filter]);
-
-  useEffect(() => {
-    dispatch(getSystemInformation());
-  }, [dispatch]);
 
   const onSelectOptionHandler = (item, selectedvalue, checked, singleClick) => {
     singleClick = singleClick ?? false;
@@ -146,7 +143,7 @@ const ListingTemplate = ({
             listUsers(
               query_user,
               groups_filter.map((el) => el.value),
-              systeminformation.plone_version[0] < 6 ? null : userLimit,
+              i_can_use_group_membership_panel ? null : userLimit,
             ),
           );
       })
@@ -181,7 +178,7 @@ const ListingTemplate = ({
           listUsers(
             query_user,
             groups_filter.map((el) => el.value),
-            systeminformation.plone_version[0] < 6 ? null : userLimit,
+            i_can_use_group_membership_panel ? null : userLimit,
           ),
         );
       })
@@ -213,7 +210,6 @@ const ListingTemplate = ({
         </div>
       )}
 
-      {/* <div>DEBUG trigger: {trigger}</div> */}
       <div className="items">
         {items.length > 0 ? (
           <>
@@ -308,8 +304,7 @@ const ListingTemplate = ({
                 </div>
               </div>
             ))}
-            {systeminformation.plone_version[0] >= 6 &&
-            !(items.length < pageSize) ? (
+            {i_can_use_group_membership_panel && !(items.length < pageSize) ? (
               <div className="show-more">
                 <Button
                   icon
