@@ -161,7 +161,7 @@ msgstr "Zu Gruppe hinzufügen"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add users to group
 msgid "Add users to group"
-msgstr ""
+msgstr "Füge Benutzer zu Gruppe hinzu"
 
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Add term
@@ -1283,7 +1283,7 @@ msgstr "Information"
 #: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
 # defaultMessage: You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to user group settings. See the button on the left.
 msgid "InfoUserGroupSettings"
-msgstr ""
+msgstr "Sie haben die Option 'viele Benutzer' oder 'viele Gruppen' gewählt. Deshalb erwartet das Panel die Eingabe eines Suchwerts und die Auswahl eines Gruppen-Filters um Benutzer und Gruppen zu zeigen. Wenn Sie im Panel umgehend alle Benutzer und Gruppen sehen möchten, dann wechseln Sie bitte zu den Benutzer- und Gruppeneinstellungen und ändern die Einstellungen. Links finden Sie einen Link."
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Inherit permissions from higher levels
@@ -1928,6 +1928,11 @@ msgstr "Bitte füllen Sie das unten stehende Formular aus, um Ihr Passwort neu z
 # defaultMessage: Please search for users or use the filters on the side.
 msgid "Please search for users or use the filters on the side."
 msgstr "Bitte verwenden Sie das Suchfeld oder die Filter um Benutzer anzuzeigen."
+
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+# defaultMessage: Please upgrade to Plone 6 and plone.restapi >= 8.24.0.
+msgid "Please upgrade to Plone 6 and plone.restapi >= 8.24.0."
+msgstr "Bitte upgraden Sie auf Plone 6 und plone.restapi >= 8.24.0."
 
 #: components/theme/Footer/Footer
 # defaultMessage: Plone Foundation
@@ -2993,7 +2998,6 @@ msgid "Username"
 msgstr "Benutzername"
 
 #: components/manage/Controlpanels/Controlpanels
-#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
 #: components/manage/Controlpanels/Users/UsersControlpanel
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Users
@@ -3665,6 +3669,11 @@ msgstr "URL"
 # defaultMessage: user avatar
 msgid "user avatar"
 msgstr "Nutzer Avatar"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: user group membership
+msgid "user group membership"
+msgstr "Gruppenmitgliedschaften von Benutzern"
 
 #: config/Blocks
 # defaultMessage: Video

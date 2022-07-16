@@ -1914,6 +1914,11 @@ msgstr ""
 msgid "Please search for users or use the filters on the side."
 msgstr ""
 
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+# defaultMessage: Please upgrade to Plone 6 and plone.restapi >= 8.24.0.
+msgid "Please upgrade to Plone 6 and plone.restapi >= 8.24.0."
+msgstr ""
+
 #: components/theme/Footer/Footer
 # defaultMessage: Plone Foundation
 msgid "Plone Foundation"
@@ -2978,7 +2983,6 @@ msgid "Username"
 msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
-#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
 #: components/manage/Controlpanels/Users/UsersControlpanel
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Users
@@ -3649,6 +3653,11 @@ msgstr ""
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: user avatar
 msgid "user avatar"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: user group membership
+msgid "user group membership"
 msgstr ""
 
 #: config/Blocks
