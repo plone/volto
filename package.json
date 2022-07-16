@@ -329,6 +329,7 @@
     "react-cookie": "4.1.1",
     "react-dates": "21.5.1",
     "react-detect-click-outside": "1.1.1",
+    "react-digraph": "^8.0.0-beta.7",
     "react-dnd": "5.0.0",
     "react-dnd-html5-backend": "5.0.1",
     "react-dom": "17.0.2",

@@ -42,6 +42,7 @@ export LinkMore from '@plone/volto/components/manage/LinkMore/LinkMore';
 
 // Lazy load them, since we want them and its deps to be in its own chunk
 export ContactForm from '@plone/volto/components/theme/ContactForm/ContactForm';
+export Workflow from '@plone/volto/components/theme/workflow/workflow';
 export Login from '@plone/volto/components/theme/Login/Login';
 export Logout from '@plone/volto/components/theme/Logout/Logout';
 export Sitemap from '@plone/volto/components/theme/Sitemap/Sitemap';
@@ -95,7 +96,6 @@ export Edit from '@plone/volto/components/manage/Edit/Edit';
 export ModalForm from '@plone/volto/components/manage/Form/ModalForm';
 export History from '@plone/volto/components/manage/History/History';
 export Sharing from '@plone/volto/components/manage/Sharing/Sharing';
-export Workflow from '@plone/volto/components/manage/Workflow/Workflow';
 export Messages from '@plone/volto/components/manage/Messages/Messages';
 export BlockChooser from '@plone/volto/components/manage/BlockChooser/BlockChooser';
 export BlockChooserButton from '@plone/volto/components/manage/BlockChooser/BlockChooserButton';
