@@ -1461,7 +1461,6 @@ msgstr "Titre du lien"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
-#: components/manage/Blocks/Video/schema
 # defaultMessage: Link to
 msgid "Link to"
 msgstr "Lien vers"
@@ -1800,7 +1799,6 @@ msgstr ""
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Video/schema
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr "Ouvrir dans un nouvel onglet"

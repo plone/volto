@@ -1459,7 +1459,6 @@ msgstr "Linktitel"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
-#: components/manage/Blocks/Video/schema
 # defaultMessage: Link to
 msgid "Link to"
 msgstr "Link auf"
@@ -1798,7 +1797,6 @@ msgstr "Nur Kleinbuchstaben (a-z) ohne Umlaute oder Sonderzeichen, Zahlen (0-9) 
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Video/schema
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr "In neuem Browser-Tab öffnen"
