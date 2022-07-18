@@ -1,34 +1,27 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
-import DefaultView from './DefaultView';
+import { Provider } from 'react-intl-redux';
+
+import ImageSizeWidget from './ImageSizeWidget';
 
 const mockStore = configureStore();
 
-test('renders a document view component', () => {
+test('renders an image sizes widget component', () => {
   const store = mockStore({
     intl: {
       locale: 'en',
       messages: {},
     },
-    content: {
-      get: {
-        loaded: true,
-      },
-    },
   });
 
   const component = renderer.create(
     <Provider store={store}>
-      <DefaultView
-        content={{
-          title: 'Hello World!',
-          description: 'Hi',
-          text: {
-            data: '<p>Hello World!</p>',
-          },
-        }}
+      <ImageSizeWidget
+        id="image_size"
+        title="Image Size"
+        fieldSet="default"
+        onChange={() => {}}
       />
     </Provider>,
   );
