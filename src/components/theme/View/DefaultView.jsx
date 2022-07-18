@@ -27,6 +27,7 @@ const DefaultView = (props) => {
   const path = getBaseUrl(location?.pathname || '');
   const dispatch = useDispatch();
   const { views } = config.widgets;
+  const contentLoaded = useSelector((state) => state.content.get.loaded);
   const contentSchema = useSelector((state) => state.schema?.schema);
   const fieldsetsToExclude = [
     'categorization',
@@ -45,7 +46,7 @@ const DefaultView = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return hasBlocksData(content) ? (
+  return contentLoaded && hasBlocksData(content) ? (
     <div id="page-document" className="ui container">
       <RenderBlocks {...props} path={path} />
     </div>
