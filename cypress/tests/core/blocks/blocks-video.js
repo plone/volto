@@ -21,7 +21,7 @@ describe('Blocks Tests', () => {
     cy.intercept('GET', '/**/my-page').as('content');
 
     // when I create a video block with a YouTube video
-    cy.get('.block.inner.text .public-DraftEditor-content').click();
+    cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.video').contains('Video').click();
     cy.get('.toolbar-inner > .ui > input')
@@ -42,6 +42,9 @@ describe('Blocks Tests', () => {
   });
 
   it('Add Video Block with YouTube Video and Placeholder', () => {
+    cy.intercept('PATCH', '/**/my-page').as('save');
+    cy.intercept('GET', '/**/my-page').as('content');
+
     // when I create a video block with a YouTube video
     cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
@@ -50,22 +53,26 @@ describe('Blocks Tests', () => {
       .click()
       .type('https://youtu.be/T6J3d35oIAY')
       .type('{enter}');
-    cy.get(' #field-preview_image').last()
+    cy.get(' #field-preview_image')
+      .last()
       .click()
-      .type('https://github.com/plone/volto/raw/master/logos/volto-colorful.png')
+      .type(
+        'https://github.com/plone/volto/raw/master/logos/volto-colorful.png',
+      );
     cy.get('#toolbar-save').click();
-    cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
 
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('my-page');
+    cy.wait('@save');
+    cy.wait('@content');
+
+    cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
 
     // then the page view should contain an embedded YouTube video
     cy.get('.block.video img.placeholder')
       .should('have.attr', 'src')
-      .and('match', /https:\/\/github.com\/plone\/volto\/raw\/master\/logos\/volto-colorful.png/);
+      .and(
+        'match',
+        /https:\/\/github.com\/plone\/volto\/raw\/master\/logos\/volto-colorful.png/,
+      );
   });
 
   it('Add Video Block with Vimeo Video', () => {
