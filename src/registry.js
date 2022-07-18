@@ -1,3 +1,5 @@
+import { isArray } from 'lodash';
+
 class Config {
   constructor() {
     if (!Config.instance) {
@@ -88,19 +90,35 @@ class Config {
     this._data.components = components;
   }
 
-  getComponent(name, options = {}) {
-    const { context = '' } = options;
-    const componentName = `${name}${context ? `|${context}` : ''}`;
+  getComponent({ name, dependencies = '' }) {
+    if (typeof arguments[0] === 'object') {
+      let depsString;
+      if (dependencies && isArray(dependencies)) {
+        depsString = dependencies.join('+');
+      } else {
+        depsString = dependencies;
+      }
+      const componentName = `${name}${depsString ? `|${depsString}` : ''}`;
 
-    return this._data.components[componentName] || {};
+      return this._data.components[componentName] || {};
+    } else {
+      // Shortcut notation, accepting a lonely string as argument
+      return this._data.components[arguments[0]] || {};
+    }
   }
 
-  registerComponent(name, options = {}) {
-    const { context = '', component } = options;
+  registerComponent({ name, component, dependencies = '' }) {
+    let depsString;
     if (!component) {
       throw new Error('No component provided');
     } else {
-      const componentName = `${name}${context ? `|${context}` : ''}`;
+      if (dependencies && isArray(dependencies)) {
+        depsString = dependencies.join('+');
+      } else {
+        depsString = dependencies;
+      }
+      const componentName = `${name}${depsString ? `|${depsString}` : ''}`;
+
       this._data.components[componentName] = component;
     }
   }
