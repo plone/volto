@@ -6,15 +6,32 @@
 
 ### Feature
 
+### Bugfix
+
+- Prevent the `defaultView` to show anything if the content is not loaded yet. This fixes showing the non-blocks enabled view for a fraction of a second before showing the blocks-enabled one once the content is loaded. @sneridagh
+
+### Internal
+
+### Documentation
+
+- `aria-*` attributes are now parsed correctly by jsx-lexer 2.0. @stevepiercy
+
+## 16.0.0-alpha.12 (2022-07-13)
+
+### Feature
+
+- Use type info instead of id type as icon title in the folder contents. @mamico
 - Remove transifex configuration for Volto translations @erral
+- Add missing support for inner `blocksConfig` in block extensions resolutions @sneridagh
 
 ### Bugfix
 
+- Fixed the description field not being included in the navigation action/ reducer @JeffersonBledsoe #3454
 - Fixed a11y of Maps block (#3467) @iRohitSingh
 
 ### Internal
 
--  mock all loadable libraries. @mamico
+- Mock all loadable libraries. @mamico
 
 ### Documentation
 
@@ -1161,6 +1178,7 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 - Add missing `App.jsx` full paths @jimbiscuit
 
 ### Internal
+- Add schema to video block sidebar @iRohitSingh @danielamormocea
 
 - Upgrade to react 17.0.2 @nzambello
 - Upgrade caniuse-lite 1.0.30001286 @tiberiuichim
