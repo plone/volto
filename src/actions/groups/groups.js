@@ -63,6 +63,7 @@ export function getGroup(id) {
 
 /**
  * List groups function
+ * Two group lists needed by user group membership control panel: one for joining, one for filtering users.
  * @function listGroups
  * @returns {Object} List groups action
  */
