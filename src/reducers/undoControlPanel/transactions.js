@@ -71,7 +71,6 @@ export default function transactions(state = initialState, action = {}) {
         },
       };
 
-    case `${REVERT_TRANSACTIONS}_FAIL`:
     case `${GET_TRANSACTIONS}_FAIL`:
       return {
         ...state,
@@ -82,6 +81,17 @@ export default function transactions(state = initialState, action = {}) {
           error: action.error,
         },
       };
+
+    case `${REVERT_TRANSACTIONS}_FAIL`:
+      return {
+        ...state,
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: false,
+          error: action.error,
+        },
+      };
+
     default:
       return state;
   }

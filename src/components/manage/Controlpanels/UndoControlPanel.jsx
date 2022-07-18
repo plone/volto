@@ -95,7 +95,9 @@ class UndoControlPanel extends Component {
       sortedTransactions: [],
       isEmptyInputForSorting: false,
       isTransactionsNotFound: false,
-      isFormLoading: false,
+      isTransactionsUndoneFailed: false,
+      showPrevButton: false,
+      showNextButton: false,
     };
     this.onCancel = this.onCancel.bind(this);
     this.onSort = this.onSort.bind(this);
@@ -159,7 +161,6 @@ class UndoControlPanel extends Component {
       lowerIndex: 0,
       upperIndex: 20,
     });
-    // Free all the sorted transactions
   }
 
   /**
@@ -204,7 +205,6 @@ class UndoControlPanel extends Component {
 
     if (sortType.toLowerCase() !== 'no value' && value !== undefined) {
       let sortedTransactions = [];
-      this.setState({ isFormLoading: true });
       if (sortType.toLowerCase() === 'user name') {
         this.props.transactions.forEach((element) => {
           if (
@@ -244,7 +244,6 @@ class UndoControlPanel extends Component {
         });
         this.setSortedTransactions(sortedTransactions);
       }
-      this.setState({ isFormLoading: false });
     } else {
       this.setState({ isEmptyInputForSorting: true });
     }
@@ -273,7 +272,9 @@ class UndoControlPanel extends Component {
         return '';
       },
     );
-    transactionsSelected && this.props.revertTransactions(undoTransactionsIds);
+    if (transactionsSelected) {
+      this.props.revertTransactions(undoTransactionsIds);
+    }
 
     // If transactions reverted successfully then erase all the checkbox from transactions
     Array.from(
@@ -318,28 +319,25 @@ class UndoControlPanel extends Component {
    */
   setTableVisiblity() {
     if (this.state.sortedTransactions.length > 0) {
-      this.state.sortedTransactions.length &&
-        this.state.upperIndex >= this.state.sortedTransactions.length &&
-        document.getElementById('next-button') !== null &&
-        (document.getElementById('next-button').style.visibility = 'hidden');
+      this.state.upperIndex >= this.state.sortedTransactions.length &&
+        this.state.showNextButton &&
+        this.setState({ showNextButton: false });
 
-      this.state.sortedTransactions.length &&
-        this.state.upperIndex < this.state.sortedTransactions.length &&
-        document.getElementById('next-button') !== null &&
-        (document.getElementById('next-button').style.visibility = 'visible');
+      this.state.upperIndex < this.state.sortedTransactions.length &&
+        !this.state.showNextButton &&
+        this.setState({ showNextButton: true });
 
-      this.state.sortedTransactions &&
-        this.state.sortedTransactions.length &&
-        document.getElementById('prev-button') !== null &&
-        this.state.lowerIndex <= 0 &&
-        (document.getElementById('prev-button').style.visibility = 'hidden');
+      this.state.lowerIndex <= 0 &&
+        this.state.showPrevButton &&
+        this.setState({ showPrevButton: false });
 
-      this.state.sortedTransactions &&
-        this.state.sortedTransactions.length &&
-        document.getElementById('prev-button') !== null &&
-        this.state.lowerIndex > 0 &&
-        (document.getElementById('prev-button').style.visibility = 'visible');
-    } else {
+      this.state.lowerIndex > 0 &&
+        !this.state.showPrevButton &&
+        this.setState({ showPrevButton: true });
+    } else if (
+      !this.state.isSortingTypeSelected &&
+      this.props.transactions.length
+    ) {
       if (
         this.props.transactions.length > 0 &&
         this.state.isTransactionsNotFound
@@ -352,27 +350,33 @@ class UndoControlPanel extends Component {
         this.setState({ isTransactionsNotFound: true });
       }
 
-      this.props.transactions.length &&
-        this.state.upperIndex >= this.props.transactions.length &&
-        document.getElementById('next-button') !== null &&
-        (document.getElementById('next-button').style.visibility = 'hidden');
+      this.state.upperIndex >= this.props.transactions.length &&
+        this.state.showNextButton &&
+        this.setState({ showNextButton: false });
 
-      this.props.transactions.length &&
-        this.state.upperIndex < this.props.transactions.length &&
-        document.getElementById('next-button') !== null &&
-        (document.getElementById('next-button').style.visibility = 'visible');
+      this.state.upperIndex < this.props.transactions.length &&
+        !this.state.showNextButton &&
+        this.setState({ showNextButton: true });
 
-      this.props.transactions &&
-        this.props.transactions.length &&
-        document.getElementById('prev-button') !== null &&
-        this.state.lowerIndex <= 0 &&
-        (document.getElementById('prev-button').style.visibility = 'hidden');
+      this.state.lowerIndex <= 0 &&
+        this.state.showPrevButton &&
+        this.setState({ showPrevButton: false });
 
-      this.props.transactions &&
-        this.props.transactions.length &&
-        document.getElementById('prev-button') !== null &&
-        this.state.lowerIndex > 0 &&
-        (document.getElementById('prev-button').style.visibility = 'visible');
+      this.state.lowerIndex > 0 &&
+        !this.state.showPrevButton &&
+        this.setState({ showPrevButton: true });
+    }
+
+    if (
+      this.props.revertRequest.error !== null &&
+      !this.state.isTransactionsUndoneFailed
+    ) {
+      this.setState({ isTransactionsUndoneFailed: true });
+    } else if (
+      this.props.revertRequest.error === null &&
+      this.state.isTransactionsUndoneFailed
+    ) {
+      this.setState({ isTransactionsUndoneFailed: false });
     }
   }
 
@@ -465,7 +469,6 @@ class UndoControlPanel extends Component {
                 onCancel={
                   this.state.isSortingTypeSelected ? this.onCancel : undefined
                 }
-                loading={this.state.isFormLoading}
               />
             )}
           </Segment>
@@ -536,11 +539,15 @@ class UndoControlPanel extends Component {
                     <Table.HeaderCell colSpan="3">
                       <Menu floated="right" pagination>
                         <Menu.Item as="a" id="prev-button" icon>
-                          <Icon
-                            onClick={this.onPrev}
-                            name={prevIcon}
-                            title="Prev"
-                          />
+                          {this.state.showPrevButton ? (
+                            <Icon
+                              onClick={this.onPrev}
+                              name={prevIcon}
+                              title="Prev"
+                            />
+                          ) : (
+                            <div style={{ width: '36px' }}></div>
+                          )}
                         </Menu.Item>
                         <Menu.Item as="a" icon>
                           <Icon
@@ -553,11 +560,15 @@ class UndoControlPanel extends Component {
                           />
                         </Menu.Item>
                         <Menu.Item as="a" id="next-button" icon>
-                          <Icon
-                            onClick={this.onNext}
-                            name={nextIcon}
-                            title="Next"
-                          />
+                          {this.state.showNextButton ? (
+                            <Icon
+                              onClick={this.onNext}
+                              name={nextIcon}
+                              title="Next"
+                            />
+                          ) : (
+                            <div style={{ width: '36px' }}></div>
+                          )}
                         </Menu.Item>
                       </Menu>
                     </Table.HeaderCell>
