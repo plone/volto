@@ -12,6 +12,8 @@
 
 ### Documentation
 
+- `aria-*` attributes are now parsed correctly by jsx-lexer 2.0. @stevepiercy
+
 ## 16.0.0-alpha.12 (2022-07-13)
 
 ### Feature
