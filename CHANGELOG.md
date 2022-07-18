@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Prevent the `defaultView` to show anything if the content is not loaded yet. This fixes showing the non-blocks enabled view for a fraction of a second before showing the blocks-enabled one once the content is loaded. @sneridagh
+
 ### Internal
 
 ### Documentation
@@ -1175,6 +1177,7 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 - Add missing `App.jsx` full paths @jimbiscuit
 
 ### Internal
+- Add schema to video block sidebar @iRohitSingh @danielamormocea
 
 - Upgrade to react 17.0.2 @nzambello
 - Upgrade caniuse-lite 1.0.30001286 @tiberiuichim
