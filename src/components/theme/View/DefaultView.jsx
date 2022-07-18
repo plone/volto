@@ -46,43 +46,46 @@ const DefaultView = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return contentLoaded && hasBlocksData(content) ? (
-    <div id="page-document" className="ui container">
-      <RenderBlocks {...props} path={path} />
-    </div>
-  ) : (
-    <Container id="page-document">
-      {fieldsets?.map((fs) => {
-        return (
-          <div className="fieldset" key={fs.id}>
-            {fs.id !== 'default' && <h2>{fs.title}</h2>}
-            {fs.fields?.map((f, key) => {
-              let field = {
-                ...contentSchema?.properties[f],
-                id: f,
-                widget: getWidget(f, contentSchema?.properties[f]),
-              };
-              let Widget = views?.getWidget(field);
-              return f !== 'title' ? (
-                <Grid celled="internally" key={key}>
-                  <Grid.Row>
-                    <Label>{field.title}:</Label>
-                  </Grid.Row>
-                  <Grid.Row>
-                    <Segment basic>
-                      <Widget value={content[f]} />
-                    </Segment>
-                  </Grid.Row>
-                </Grid>
-              ) : (
-                <Widget key={key} value={content[f]} />
-              );
-            })}
-          </div>
-        );
-      })}
-    </Container>
-  );
+  // If the content is not yet loaded, then do not show anything
+  return contentLoaded ? (
+    hasBlocksData(content) ? (
+      <div id="page-document" className="ui container">
+        <RenderBlocks {...props} path={path} />
+      </div>
+    ) : (
+      <Container id="page-document">
+        {fieldsets?.map((fs) => {
+          return (
+            <div className="fieldset" key={fs.id}>
+              {fs.id !== 'default' && <h2>{fs.title}</h2>}
+              {fs.fields?.map((f, key) => {
+                let field = {
+                  ...contentSchema?.properties[f],
+                  id: f,
+                  widget: getWidget(f, contentSchema?.properties[f]),
+                };
+                let Widget = views?.getWidget(field);
+                return f !== 'title' ? (
+                  <Grid celled="internally" key={key}>
+                    <Grid.Row>
+                      <Label>{field.title}:</Label>
+                    </Grid.Row>
+                    <Grid.Row>
+                      <Segment basic>
+                        <Widget value={content[f]} />
+                      </Segment>
+                    </Grid.Row>
+                  </Grid>
+                ) : (
+                  <Widget key={key} value={content[f]} />
+                );
+              })}
+            </div>
+          );
+        })}
+      </Container>
+    )
+  ) : null;
 };
 
 /**
