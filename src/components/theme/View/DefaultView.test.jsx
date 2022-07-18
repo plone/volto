@@ -26,7 +26,7 @@ test('renders a document view component', () => {
           title: 'Hello World!',
           description: 'Hi',
           text: {
-            data: '<p>Hello World!',
+            data: '<p>Hello World!</p>',
           },
         }}
       />
