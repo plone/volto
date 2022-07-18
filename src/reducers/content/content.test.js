@@ -551,20 +551,6 @@ describe('Content reducer', () => {
     });
   });
 
-  it('should handle UNLOCK_CONTENT_SUCCESS', () => {
-    expect(
-      content(undefined, {
-        type: `${UNLOCK_CONTENT}_SUCCESS`,
-      }),
-    ).toMatchObject({
-      unlock: {
-        loaded: true,
-        loading: false,
-        error: null,
-      },
-    });
-  });
-
   it('should handle UNLOCK_CONTENT_FAIL', () => {
     expect(
       content(undefined, {

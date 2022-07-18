@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Remove `@unlock` endpoint reducer since it was having some bad interactions with the `RESET_CONTENT` action and the new `DefaultView`. The content was appearing for a fraction of a second with the new "block-less" view before changing to the blocks-enabled one. @sneridagh
+
 ### Documentation
 
 - `aria-*` attributes are now parsed correctly by jsx-lexer 2.0. @stevepiercy

@@ -245,21 +245,6 @@ export default function content(state = initialState, action = {}) {
           index: action.index,
         },
       };
-    case `${UNLOCK_CONTENT}_SUCCESS`:
-      return {
-        ...state,
-        [getRequestKey(action.type)]: {
-          loading: false,
-          loaded: true,
-          error: null,
-        },
-        data: {
-          ...state.data,
-          lock: {
-            ...result,
-          },
-        },
-      };
     case `${UPDATE_CONTENT}_SUCCESS`:
       return {
         ...state,
