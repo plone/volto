@@ -12,7 +12,7 @@ import UserGroupMembershipListing from './UserGroupMembershipListing';
 const UserGroupMembershipMatrix = ({
   many_users,
   many_groups,
-  i_can_use_group_membership_panel,
+  can_use_group_membership_panel,
 }) => {
   const intl = useIntl();
   const dispatch = useDispatch();
@@ -202,7 +202,7 @@ const UserGroupMembershipMatrix = ({
         add_joined_groups={add_joined_groups}
         many_users={many_users}
         many_groups={many_groups}
-        i_can_use_group_membership_panel={i_can_use_group_membership_panel}
+        can_use_group_membership_panel={can_use_group_membership_panel}
       />
     </div>
   );

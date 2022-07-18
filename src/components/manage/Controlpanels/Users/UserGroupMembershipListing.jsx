@@ -20,7 +20,7 @@ const ListingTemplate = ({
   add_joined_groups, // Toggle: show also groups joined by users below
   many_users,
   many_groups,
-  i_can_use_group_membership_panel,
+  can_use_group_membership_panel,
 }) => {
   const intl = useIntl();
   const dispatch = useDispatch();
@@ -105,13 +105,13 @@ const ListingTemplate = ({
           null,
           query_user,
           groups_filter.map((el) => el.value),
-          i_can_use_group_membership_panel ? null : userLimit,
+          can_use_group_membership_panel ? null : userLimit,
         ),
       );
     }
   }, [
     dispatch,
-    i_can_use_group_membership_panel,
+    can_use_group_membership_panel,
     query_user,
     groups_filter,
     show_users,
@@ -144,7 +144,7 @@ const ListingTemplate = ({
               null,
               query_user,
               groups_filter.map((el) => el.value),
-              i_can_use_group_membership_panel ? null : userLimit,
+              can_use_group_membership_panel ? null : userLimit,
             ),
           );
       })
@@ -180,7 +180,7 @@ const ListingTemplate = ({
             null,
             query_user,
             groups_filter.map((el) => el.value),
-            i_can_use_group_membership_panel ? null : userLimit,
+            can_use_group_membership_panel ? null : userLimit,
           ),
         );
       })
@@ -306,7 +306,7 @@ const ListingTemplate = ({
                 </div>
               </div>
             ))}
-            {i_can_use_group_membership_panel && !(items.length < pageSize) ? (
+            {can_use_group_membership_panel && !(items.length < pageSize) ? (
               <div className="show-more">
                 <Button
                   icon

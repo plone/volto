@@ -1921,9 +1921,9 @@ msgid "Please search for users or use the filters on the side."
 msgstr "Bitte verwenden Sie das Suchfeld oder die Filter um Benutzer anzuzeigen."
 
 #: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
-# defaultMessage: Please upgrade to Plone 6 and plone.restapi >= 8.24.0.
-msgid "Please upgrade to Plone 6 and plone.restapi >= 8.24.0."
-msgstr "Bitte upgraden Sie auf Plone 6 und plone.restapi >= 8.24.0."
+# defaultMessage: Please upgrade to plone.restapi >= 8.24.0.
+msgid "Please upgrade to plone.restapi >= 8.24.0."
+msgstr "Bitte upgraden auf plone.restapi >= 8.24.0."
 
 #: components/theme/Footer/Footer
 # defaultMessage: Plone Foundation

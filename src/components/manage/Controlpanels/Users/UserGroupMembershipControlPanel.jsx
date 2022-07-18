@@ -37,9 +37,8 @@ const UserGroupMembershipPanel = () => {
   const systeminformation = useSelector(
     (state) => state.controlpanels.systeminformation,
   );
-  const i_can_use_group_membership_panel = systeminformation
-    ? systeminformation.plone_version[0] >= 6 &&
-      toNumber(systeminformation?.plone_restapi_version.slice(0, 4)) >= 8.24
+  const can_use_group_membership_panel = systeminformation
+    ? toNumber(systeminformation?.plone_restapi_version.slice(0, 4)) >= 8.24
     : false;
   const actions = useSelector((state) => state.actions?.actions ?? {});
   const ploneSetupAction = find(actions.user, {
@@ -72,7 +71,7 @@ const UserGroupMembershipPanel = () => {
           <Segment className="primary">
             {startCase(intl.formatMessage(messages.usergroupmemberbership))}
           </Segment>
-          {i_can_use_group_membership_panel &&
+          {can_use_group_membership_panel &&
           many_users !== undefined &&
           many_groups !== undefined ? (
             many_users || many_groups ? (
@@ -87,8 +86,8 @@ const UserGroupMembershipPanel = () => {
                   <UserGroupMembershipMatrix
                     many_users={many_users}
                     many_groups={many_groups}
-                    i_can_use_group_membership_panel={
-                      i_can_use_group_membership_panel
+                    can_use_group_membership_panel={
+                      can_use_group_membership_panel
                     }
                   />
                 </Segment>
@@ -98,8 +97,8 @@ const UserGroupMembershipPanel = () => {
                 <UserGroupMembershipMatrix
                   many_users={many_users}
                   many_groups={many_groups}
-                  i_can_use_group_membership_panel={
-                    i_can_use_group_membership_panel
+                  can_use_group_membership_panel={
+                    can_use_group_membership_panel
                   }
                 />
               </Segment>
@@ -108,8 +107,8 @@ const UserGroupMembershipPanel = () => {
             <Segment secondary className="usergroupmembership upgrade-info">
               <div>
                 <FormattedMessage
-                  id="Please upgrade to Plone 6 and plone.restapi >= 8.24.0."
-                  defaultMessage="Please upgrade to Plone 6 and plone.restapi >= 8.24.0."
+                  id="Please upgrade to plone.restapi >= 8.24.0."
+                  defaultMessage="Please upgrade to plone.restapi >= 8.24.0."
                 />
               </div>
             </Segment>
