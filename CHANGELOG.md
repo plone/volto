@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix typo in de locale @wolbernd
+
 ### Internal
 
 ### Documentation
