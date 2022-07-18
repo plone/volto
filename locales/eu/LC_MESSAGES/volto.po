@@ -179,7 +179,7 @@ msgstr "Data gehigarria"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Alignment
 msgid "Alignment"
 msgstr "Alineazio-estiloak"
@@ -196,6 +196,7 @@ msgstr "Alfabetikoki"
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/schema
 # defaultMessage: Alt text
 msgid "Alt text"
 msgstr "Ordezko testua (alt)"
@@ -876,11 +877,6 @@ msgstr "Eposta ondo bidali da"
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "Itsatsitako kodearen errorea, jarraitu argibideak eta saiatu berriz."
 
-#: components/manage/Blocks/Maps/View
-# defaultMessage: Embeded Google Maps
-msgid "Embeded Google Maps"
-msgstr "Itsatsitako Google Maps"
-
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Empty object list
 msgid "Empty object list"
@@ -1455,7 +1451,6 @@ msgstr "Izenburua estekatu"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Link to
 msgid "Link to"
 msgstr "Esteka"
@@ -1667,6 +1662,11 @@ msgstr "Albistea ikusi"
 msgid "No"
 msgstr "Ez"
 
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: No Video selected
+msgid "No Video selected"
+msgstr ""
+
 #: components/manage/Controlpanels/VersionOverview
 # defaultMessage: No addons found
 msgid "No addons found"
@@ -1746,11 +1746,6 @@ msgstr "Ez du desinstalatzeko profilik"
 msgid "No value"
 msgstr "Ez du baliorik"
 
-#: components/manage/Blocks/Video/VideoSidebar
-# defaultMessage: No video selected
-msgid "No video selected"
-msgstr "Ez da bideorik aukeratu"
-
 #: components/manage/Workflow/Workflow
 # defaultMessage: No workflow
 msgid "No workflow"
@@ -1794,7 +1789,6 @@ msgstr "Letra xeheak (a-z), karaktere berezi gabe, zenbakiak (0-9) eta "-" edo "
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr "Fitxa berrian ireki"
@@ -1946,7 +1940,7 @@ msgstr "Garbitu zure kodea"
 msgid "Preview"
 msgstr "Aurreikusi"
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Preview Image URL
 msgid "Preview Image URL"
 msgstr "Irudia aurreikusteko helbidea"
@@ -2970,12 +2964,13 @@ msgstr "Aldakia"
 msgid "Version Overview"
 msgstr "Bertsioen informazioa"
 
+#: components/manage/Blocks/Video/schema
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Video
 msgid "Video"
 msgstr "Bideoa"
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Video URL
 msgid "Video URL"
 msgstr "Bideoaren URLa"

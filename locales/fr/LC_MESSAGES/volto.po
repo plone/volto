@@ -189,7 +189,7 @@ msgstr ""
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Alignment
 msgid "Alignment"
 msgstr "Allignement"
@@ -206,6 +206,7 @@ msgstr ""
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/schema
 # defaultMessage: Alt text
 msgid "Alt text"
 msgstr "Texte pour la balise alt"
@@ -886,11 +887,6 @@ msgstr "E-mail envoyé"
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "Erreur dans le code intégré, veuillez suivre les instructions et essayez de nouveau."
 
-#: components/manage/Blocks/Maps/View
-# defaultMessage: Embeded Google Maps
-msgid "Embeded Google Maps"
-msgstr "Carte Google intégrée"
-
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Empty object list
 msgid "Empty object list"
@@ -1465,7 +1461,6 @@ msgstr "Titre du lien"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Link to
 msgid "Link to"
 msgstr "Lien vers"
@@ -1677,6 +1672,11 @@ msgstr "Actualité"
 msgid "No"
 msgstr "Non"
 
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: No Video selected
+msgid "No Video selected"
+msgstr ""
+
 #: components/manage/Controlpanels/VersionOverview
 # defaultMessage: No addons found
 msgid "No addons found"
@@ -1756,11 +1756,6 @@ msgstr "Aucun profile de désinstalation"
 msgid "No value"
 msgstr "Aucune valeur"
 
-#: components/manage/Blocks/Video/VideoSidebar
-# defaultMessage: No video selected
-msgid "No video selected"
-msgstr "Aucune vidéo selectionnée"
-
 #: components/manage/Workflow/Workflow
 # defaultMessage: No workflow
 msgid "No workflow"
@@ -1804,7 +1799,6 @@ msgstr ""
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr "Ouvrir dans un nouvel onglet"
@@ -1956,7 +1950,7 @@ msgstr ""
 msgid "Preview"
 msgstr "Aperçu"
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Preview Image URL
 msgid "Preview Image URL"
 msgstr ""
@@ -2980,12 +2974,13 @@ msgstr ""
 msgid "Version Overview"
 msgstr "Présentation de la version"
 
+#: components/manage/Blocks/Video/schema
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Video
 msgid "Video"
 msgstr "Vidéo"
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Video URL
 msgid "Video URL"
 msgstr "URL de la vidéo"

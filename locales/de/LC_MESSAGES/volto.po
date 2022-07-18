@@ -187,7 +187,7 @@ msgstr "Zusätzliches Datum"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Alignment
 msgid "Alignment"
 msgstr "Ausrichtung"
@@ -204,6 +204,7 @@ msgstr "alphabetisch"
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/schema
 # defaultMessage: Alt text
 msgid "Alt text"
 msgstr "Alternative Text"
@@ -884,11 +885,6 @@ msgstr "E-Mail versendet"
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "Fehler beim Einbinden des Google Maps Codes. Bitte lesen Sie die Anweisungen und stellen Sie sicher dass Sie den korrekten Code verwenden."
 
-#: components/manage/Blocks/Maps/View
-# defaultMessage: Embeded Google Maps
-msgid "Embeded Google Maps"
-msgstr "Eingebettete Google Maps Karte"
-
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Empty object list
 msgid "Empty object list"
@@ -1463,7 +1459,6 @@ msgstr "Linktitel"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Link to
 msgid "Link to"
 msgstr "Link auf"
@@ -1675,6 +1670,11 @@ msgstr "Nachricht"
 msgid "No"
 msgstr "Nein"
 
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: No Video selected
+msgid "No Video selected"
+msgstr ""
+
 #: components/manage/Controlpanels/VersionOverview
 # defaultMessage: No addons found
 msgid "No addons found"
@@ -1754,11 +1754,6 @@ msgstr "Kein Deinstallationsprofil"
 msgid "No value"
 msgstr "Kein Wert"
 
-#: components/manage/Blocks/Video/VideoSidebar
-# defaultMessage: No video selected
-msgid "No video selected"
-msgstr "Kein Video ausgewählt"
-
 #: components/manage/Workflow/Workflow
 # defaultMessage: No workflow
 msgid "No workflow"
@@ -1802,7 +1797,6 @@ msgstr "Nur Kleinbuchstaben (a-z) ohne Umlaute oder Sonderzeichen, Zahlen (0-9) 
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr "In neuem Browser-Tab öffnen"
@@ -1954,7 +1948,7 @@ msgstr "Quellcode aufräumen"
 msgid "Preview"
 msgstr "Vorschau"
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Preview Image URL
 msgid "Preview Image URL"
 msgstr "URL Vorschaubild"
@@ -2654,7 +2648,7 @@ msgstr "Das Backend antwortet, allerdings sind ihre CORS HTTP Header nicht korre
 #: components/theme/CorsError/CorsError
 # defaultMessage: The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
 msgid "The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
-msgstr "Der Server antwortet nicht, wir entschuldigen uns für die Unanehmlichkeiten. Bitte versuchen Sie die Seite neu zu laden. Falls das Problem weiterhin besteht kontaktieren Sie bitte den Seitenbetreiber."
+msgstr "Der Server antwortet nicht, wir entschuldigen uns für die Unannehmlichkeiten. Bitte versuchen Sie die Seite neu zu laden. Falls das Problem weiterhin besteht kontaktieren Sie bitte den Seitenbetreiber."
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: The button presence disables the live search, the query is issued when you press ENTER
@@ -2978,12 +2972,13 @@ msgstr "Variante"
 msgid "Version Overview"
 msgstr "Versionsübersicht"
 
+#: components/manage/Blocks/Video/schema
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Video
 msgid "Video"
 msgstr "Video"
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Video URL
 msgid "Video URL"
 msgstr "Video URL"
@@ -3036,7 +3031,7 @@ msgstr "Debug-Modus Warnung"
 #: components/theme/ConnectionRefused/ConnectionRefused
 # defaultMessage: We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later.
 msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
-msgstr "Entschuldigen Sie die Unanehmlichkeiten aber das Backend der Seite antwortet zur Zeit nicht."
+msgstr "Entschuldigen Sie die Unannehmlichkeiten aber das Backend der Seite antwortet zur Zeit nicht."
 
 #: components/theme/NotFound/NotFound
 # defaultMessage: We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for.
@@ -3046,7 +3041,7 @@ msgstr "Entschuldigung, aber die Webseite die Sie versucht haben zu erreichen is
 #: components/theme/Forbidden/Forbidden
 # defaultMessage: We apologize for the inconvenience, but you don't have permissions on this resource.
 msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
-msgstr "Entschuldigen Sie die Unanehmlichkeiten, aber Sie besitzen nicht die erforderlichen Rechte um diese Seite anzuzeigen."
+msgstr "Entschuldigen Sie die Unannehmlichkeiten, aber Sie besitzen nicht die erforderlichen Rechte um diese Seite anzuzeigen."
 
 #: components/manage/Preferences/PersonalInformation
 # defaultMessage: We will use this address if you need to recover your password

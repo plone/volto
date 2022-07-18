@@ -8,7 +8,42 @@
 
 ### Bugfix
 
+- Fix typo in de locale @wolbernd
+
 ### Internal
+
+### Documentation
+
+## 16.0.0-alpha.13 (2022-07-18)
+
+### Feature
+
+- Add schema to video block sidebar @iRohitSingh @danielamormocea
+
+### Bugfix
+
+- Prevent the `defaultView` to show anything if the content is not loaded yet. This fixes showing the non-blocks enabled view for a fraction of a second before showing the blocks-enabled one once the content is loaded. @sneridagh
+
+### Documentation
+
+- `aria-*` attributes are now parsed correctly by jsx-lexer 2.0. @stevepiercy
+
+## 16.0.0-alpha.12 (2022-07-13)
+
+### Feature
+
+- Use type info instead of id type as icon title in the folder contents. @mamico
+- Remove transifex configuration for Volto translations @erral
+- Add missing support for inner `blocksConfig` in block extensions resolutions @sneridagh
+
+### Bugfix
+
+- Fixed the description field not being included in the navigation action/ reducer @JeffersonBledsoe #3454
+- Fixed a11y of Maps block (#3467) @iRohitSingh
+
+### Internal
+
+- Mock all loadable libraries. @mamico
 
 ### Documentation
 
