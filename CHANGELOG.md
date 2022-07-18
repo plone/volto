@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Prevent the `defaultView` to show anything if the content is not loaded yet. This fixes showing the non-blocks enabled view for a fraction of a second before showing the blocks-enabled one once the content is loaded. @sneridagh
+
 ### Internal
 
 ### Documentation
