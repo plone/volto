@@ -1173,6 +1173,7 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 - Add missing `App.jsx` full paths @jimbiscuit
 
 ### Internal
+- Add schema to video block sidebar @iRohitSingh @danielamormocea
 
 - Upgrade to react 17.0.2 @nzambello
 - Upgrade caniuse-lite 1.0.30001286 @tiberiuichim

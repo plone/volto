@@ -172,7 +172,7 @@ msgstr "Dată suplimentară"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Alignment
 msgid "Alignment"
 msgstr "Aliniere"
@@ -1444,7 +1444,6 @@ msgstr "Legătură la titlu"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Link to
 msgid "Link to"
 msgstr "Legătură către"
@@ -1656,6 +1655,11 @@ msgstr "Articol de știri"
 msgid "No"
 msgstr "Nu"
 
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: No Video selected
+msgid "No Video selected"
+msgstr ""
+
 #: components/manage/Controlpanels/VersionOverview
 # defaultMessage: No addons found
 msgid "No addons found"
@@ -1735,11 +1739,6 @@ msgstr "Niciun profil de dezinstalare"
 msgid "No value"
 msgstr "Fără valoare"
 
-#: components/manage/Blocks/Video/VideoSidebar
-# defaultMessage: No video selected
-msgid "No video selected"
-msgstr "Niciun videoclip selectat"
-
 #: components/manage/Workflow/Workflow
 # defaultMessage: No workflow
 msgid "No workflow"
@@ -1783,7 +1782,6 @@ msgstr "Sunt permise doar litere mici (a-z) fără accente, cifre (0-9) și cele
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr "Deschideți într-o fereastra nouă"
@@ -1935,7 +1933,7 @@ msgstr "Îmbunătățiți-vă codul"
 msgid "Preview"
 msgstr "Previzualizare"
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Preview Image URL
 msgid "Preview Image URL"
 msgstr "Adresa URL a imaginii de previzualizare"
@@ -2959,12 +2957,13 @@ msgstr "Variație"
 msgid "Version Overview"
 msgstr "Prezentare generală a versiunii"
 
+#: components/manage/Blocks/Video/schema
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Video
 msgid "Video"
 msgstr "Video"
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Video URL
 msgid "Video URL"
 msgstr "URL-ul video"
