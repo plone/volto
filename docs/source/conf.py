@@ -59,7 +59,6 @@ extensions = [
     "sphinx.ext.intersphinx",
     "sphinx.ext.todo",
     "sphinx_copybutton",
-    "sphinx_sitemap",
     "sphinxcontrib.spelling",
     "sphinxext.opengraph",
 ]
@@ -165,7 +164,7 @@ graphviz_output_format = "svg"
 
 # -- OpenGraph configuration ----------------------------------
 
-ogp_site_url = "https://training.plone.org/5/"
+ogp_site_url = "https://6.dev-docs.plone.org/"
 ogp_description_length = 200
 ogp_image = "https://docs.plone.org/_static/Plone_logo_square.png"
 ogp_site_name = "Plone Documentation"
@@ -226,9 +225,6 @@ html_title = "%(project)s v%(release)s" % {"project": project, "release": releas
 
 # If false, no index is generated.
 html_use_index = True
-
-# Used by sphinx_sitemap to generate a sitemap
-html_baseurl = "https://docs.voltocms.com/"
 
 # -- Options for HTML help output -------------------------------------------------
 
