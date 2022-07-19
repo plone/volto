@@ -9,11 +9,7 @@ import { messages } from '@plone/volto/helpers';
 import { listGroups } from '@plone/volto/actions'; // getRegistry
 import UserGroupMembershipListing from './UserGroupMembershipListing';
 
-const UserGroupMembershipMatrix = ({
-  many_users,
-  many_groups,
-  can_use_group_membership_panel,
-}) => {
+const UserGroupMembershipMatrix = ({ many_users, many_groups }) => {
   const intl = useIntl();
   const dispatch = useDispatch();
 
@@ -202,7 +198,6 @@ const UserGroupMembershipMatrix = ({
         add_joined_groups={add_joined_groups}
         many_users={many_users}
         many_groups={many_groups}
-        can_use_group_membership_panel={can_use_group_membership_panel}
       />
     </div>
   );

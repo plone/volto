@@ -20,7 +20,6 @@ const ListingTemplate = ({
   add_joined_groups, // Toggle: show also groups joined by users below
   many_users,
   many_groups,
-  can_use_group_membership_panel,
 }) => {
   const intl = useIntl();
   const dispatch = useDispatch();
@@ -101,22 +100,14 @@ const ListingTemplate = ({
     // Get users.
     if (show_users) {
       dispatch(
-        listUsers(
-          null,
-          query_user,
-          groups_filter.map((el) => el.value),
-          can_use_group_membership_panel ? null : userLimit,
-        ),
+        listUsers({
+          search: query_user,
+          groups_filter: groups_filter.map((el) => el.value),
+          limit: userLimit,
+        }),
       );
     }
-  }, [
-    dispatch,
-    can_use_group_membership_panel,
-    query_user,
-    groups_filter,
-    show_users,
-    userLimit,
-  ]);
+  }, [dispatch, query_user, groups_filter, show_users, userLimit]);
 
   useEffect(() => {
     // Get matrix groups.
@@ -140,12 +131,11 @@ const ListingTemplate = ({
       .then((resp) => {
         singleClick &&
           dispatch(
-            listUsers(
-              null,
-              query_user,
-              groups_filter.map((el) => el.value),
-              can_use_group_membership_panel ? null : userLimit,
-            ),
+            listUsers({
+              search: query_user,
+              groups_filter: groups_filter.map((el) => el.value),
+              limit: userLimit,
+            }),
           );
       })
       .then(() => {
@@ -176,12 +166,11 @@ const ListingTemplate = ({
     )
       .then(() => {
         dispatch(
-          listUsers(
-            null,
-            query_user,
-            groups_filter.map((el) => el.value),
-            can_use_group_membership_panel ? null : userLimit,
-          ),
+          listUsers({
+            search: query_user,
+            groups_filter: groups_filter.map((el) => el.value),
+            limit: userLimit,
+          }),
         );
       })
       .then(() => {
@@ -306,7 +295,7 @@ const ListingTemplate = ({
                 </div>
               </div>
             ))}
-            {can_use_group_membership_panel && !(items.length < pageSize) ? (
+            {!(items.length < pageSize) ? (
               <div className="show-more">
                 <Button
                   icon

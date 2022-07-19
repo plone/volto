@@ -86,9 +86,6 @@ const UserGroupMembershipPanel = () => {
                   <UserGroupMembershipMatrix
                     many_users={many_users}
                     many_groups={many_groups}
-                    can_use_group_membership_panel={
-                      can_use_group_membership_panel
-                    }
                   />
                 </Segment>
               </>
@@ -97,9 +94,6 @@ const UserGroupMembershipPanel = () => {
                 <UserGroupMembershipMatrix
                   many_users={many_users}
                   many_groups={many_groups}
-                  can_use_group_membership_panel={
-                    can_use_group_membership_panel
-                  }
                 />
               </Segment>
             )
