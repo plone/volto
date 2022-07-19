@@ -90,6 +90,10 @@ const messages = defineMessages({
     id: 'Add-ons',
     defaultMessage: 'Add-ons',
   },
+  installingAnAddon: {
+    id: 'Installing a third party add-on',
+    defaultMessage: 'Installing a third party add-on',
+  },
 });
 
 /**
@@ -276,7 +280,7 @@ class AddonsControlpanel extends Component {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Installing a third party add-on
+              {this.props.intl.formatMessage(messages.installingAnAddon)}
             </a>
             .
           </Segment>
