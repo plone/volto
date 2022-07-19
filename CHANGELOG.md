@@ -327,6 +327,7 @@
 ## 16.0.0-alpha.0 (2022-05-06)
 
 - Integrate volto-state add-on. @tiberiuichim @razvanmiu @eea
+- volto-slate documentation @nileshgulia1
 
 ### Breaking
 
