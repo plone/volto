@@ -200,7 +200,7 @@ msgstr ""
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Alignment
 msgid "Alignment"
 msgstr "Alinhamento"
@@ -222,6 +222,7 @@ msgstr "Alfabeticamente"
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/schema
 # defaultMessage: Alt text
 msgid "Alt text"
 msgstr "Descrição Alt"
@@ -921,11 +922,6 @@ msgstr "E-mail enviado"
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "Erro de código Embed, siga as instruções e tente novamente."
 
-#: components/manage/Blocks/Maps/View
-# defaultMessage: Embeded Google Maps
-msgid "Embeded Google Maps"
-msgstr "Google Maps Embed"
-
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Empty object list
 msgid "Empty object list"
@@ -1526,7 +1522,6 @@ msgstr "Título do link"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Link to
 msgid "Link to"
 msgstr "Link para"
@@ -1748,6 +1743,11 @@ msgstr "Notícia"
 msgid "No"
 msgstr "Não"
 
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: No Video selected
+msgid "No Video selected"
+msgstr ""
+
 #: components/manage/Controlpanels/VersionOverview
 # defaultMessage: No addons found
 msgid "No addons found"
@@ -1827,11 +1827,6 @@ msgstr "Sem perfil de desinstalação"
 msgid "No value"
 msgstr "Sem valor"
 
-#: components/manage/Blocks/Video/VideoSidebar
-# defaultMessage: No video selected
-msgid "No video selected"
-msgstr "Nenhum vídeo selecionado"
-
 #: components/manage/Workflow/Workflow
 # defaultMessage: No workflow
 msgid "No workflow"
@@ -1875,7 +1870,6 @@ msgstr "Apenas letras minúsculas (a-z) sem acentos, números (0-9) e os dois ca
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr "Abrir em uma nova aba"
@@ -2027,7 +2021,7 @@ msgstr "Re-formatar seu código"
 msgid "Preview"
 msgstr "Pré-visualização"
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Preview Image URL
 msgid "Preview Image URL"
 msgstr "Url de imagem de pré-visualização"
@@ -3102,12 +3096,13 @@ msgstr "Variação"
 msgid "Version Overview"
 msgstr "Versões"
 
+#: components/manage/Blocks/Video/schema
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Video
 msgid "Video"
 msgstr "Vídeo"
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Video URL
 msgid "Video URL"
 msgstr "URL do vídeo"

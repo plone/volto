@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-06-17T07:47:08.199Z\n"
+"POT-Creation-Date: 2022-07-17T13:56:51.507Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -192,7 +192,7 @@ msgstr ""
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Alignment
 msgid "Alignment"
 msgstr ""
@@ -214,6 +214,7 @@ msgstr ""
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/schema
 # defaultMessage: Alt text
 msgid "Alt text"
 msgstr ""
@@ -913,11 +914,6 @@ msgstr ""
 msgid "Embed code error, please follow the instructions and try again."
 msgstr ""
 
-#: components/manage/Blocks/Maps/View
-# defaultMessage: Embeded Google Maps
-msgid "Embeded Google Maps"
-msgstr ""
-
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Empty object list
 msgid "Empty object list"
@@ -1518,7 +1514,6 @@ msgstr ""
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Link to
 msgid "Link to"
 msgstr ""
@@ -1740,6 +1735,11 @@ msgstr ""
 msgid "No"
 msgstr ""
 
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: No Video selected
+msgid "No Video selected"
+msgstr ""
+
 #: components/manage/Controlpanels/VersionOverview
 # defaultMessage: No addons found
 msgid "No addons found"
@@ -1819,11 +1819,6 @@ msgstr ""
 msgid "No value"
 msgstr ""
 
-#: components/manage/Blocks/Video/VideoSidebar
-# defaultMessage: No video selected
-msgid "No video selected"
-msgstr ""
-
 #: components/manage/Workflow/Workflow
 # defaultMessage: No workflow
 msgid "No workflow"
@@ -1867,7 +1862,6 @@ msgstr ""
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr ""
@@ -2019,7 +2013,7 @@ msgstr ""
 msgid "Preview"
 msgstr ""
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Preview Image URL
 msgid "Preview Image URL"
 msgstr ""
@@ -3094,12 +3088,13 @@ msgstr ""
 msgid "Version Overview"
 msgstr ""
 
+#: components/manage/Blocks/Video/schema
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Video
 msgid "Video"
 msgstr ""
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Video URL
 msgid "Video URL"
 msgstr ""
