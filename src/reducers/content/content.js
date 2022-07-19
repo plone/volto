@@ -345,6 +345,9 @@ export default function content(state = initialState, action = {}) {
           }
         : {
             ...state,
+            get: {
+              loaded: false,
+            },
             data: null,
           };
     default:

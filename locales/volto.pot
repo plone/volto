@@ -179,7 +179,7 @@ msgstr ""
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Alignment
 msgid "Alignment"
 msgstr ""
@@ -1461,7 +1461,6 @@ msgstr ""
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Link to
 msgid "Link to"
 msgstr ""
@@ -1673,6 +1672,11 @@ msgstr ""
 msgid "No"
 msgstr ""
 
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: No Video selected
+msgid "No Video selected"
+msgstr ""
+
 #: components/manage/Controlpanels/VersionOverview
 # defaultMessage: No addons found
 msgid "No addons found"
@@ -1757,11 +1761,6 @@ msgstr ""
 msgid "No value"
 msgstr ""
 
-#: components/manage/Blocks/Video/VideoSidebar
-# defaultMessage: No video selected
-msgid "No video selected"
-msgstr ""
-
 #: components/manage/Workflow/Workflow
 # defaultMessage: No workflow
 msgid "No workflow"
@@ -1805,7 +1804,6 @@ msgstr ""
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr ""
@@ -1967,7 +1965,7 @@ msgstr ""
 msgid "Preview"
 msgstr ""
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Preview Image URL
 msgid "Preview Image URL"
 msgstr ""
@@ -3006,12 +3004,13 @@ msgstr ""
 msgid "Version Overview"
 msgstr ""
 
+#: components/manage/Blocks/Video/schema
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Video
 msgid "Video"
 msgstr ""
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Video URL
 msgid "Video URL"
 msgstr ""
