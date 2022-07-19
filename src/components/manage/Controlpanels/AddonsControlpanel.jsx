@@ -86,6 +86,10 @@ const messages = defineMessages({
     id: 'Uninstall',
     defaultMessage: 'Uninstall',
   },
+  addOns: {
+    id: 'Add-ons',
+    defaultMessage: 'Add-ons',
+  },
 });
 
 /**
@@ -232,7 +236,7 @@ class AddonsControlpanel extends Component {
   render() {
     return (
       <Container id="page-addons" className="controlpanel-addons">
-        <Helmet title="Addons" />
+        <Helmet title={this.props.intl.formatMessage(messages.addOns)} />
         <Segment.Group raised>
           <Segment className="primary">
             <FormattedMessage
