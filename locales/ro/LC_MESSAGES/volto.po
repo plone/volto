@@ -154,8 +154,18 @@ msgid "Add {type}"
 msgstr "Adăugare {type}"
 
 #: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Add-Ons
+msgid "Add-Ons"
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Add-on Configuration
 msgid "Add-on Configuration"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Add-ons
+msgid "Add-ons"
 msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -608,6 +618,11 @@ msgstr "Taie câmpuri "
 # defaultMessage: Daily
 msgid "Daily"
 msgstr "Zilnic"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Database
+msgid "Database"
+msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Database Information
@@ -1299,6 +1314,11 @@ msgstr "Instalat"
 # defaultMessage: Installed version
 msgid "Installed version"
 msgstr "Versiunea instalată"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Installing a third party add-on
+msgid "Installing a third party add-on"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: days
