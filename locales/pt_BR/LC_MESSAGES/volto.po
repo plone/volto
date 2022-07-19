@@ -2965,6 +2965,12 @@ msgstr "Usado para acesso programático ao conjunto de campos."
 msgid "User"
 msgstr "Usuário"
 
+#: components/manage/Controlpanels/Controlpanels
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Membership
+msgid "User Group Membership"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: User Group Settings
 msgid "User Group Settings"
@@ -3663,12 +3669,6 @@ msgstr "url"
 # defaultMessage: user avatar
 msgid "user avatar"
 msgstr "avatar do usuário"
-
-#: components/manage/Controlpanels/Controlpanels
-#: helpers/MessageLabels/MessageLabels
-# defaultMessage: user group membership
-msgid "user group membership"
-msgstr ""
 
 #: config/Blocks
 # defaultMessage: Video

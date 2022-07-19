@@ -2955,6 +2955,12 @@ msgstr "Folosit pentru acces programatic la setul de câmpuri."
 msgid "User"
 msgstr "Utilizator"
 
+#: components/manage/Controlpanels/Controlpanels
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Membership
+msgid "User Group Membership"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: User Group Settings
 msgid "User Group Settings"
@@ -3653,12 +3659,6 @@ msgstr "url"
 # defaultMessage: user avatar
 msgid "user avatar"
 msgstr "avatarul utilizatorului"
-
-#: components/manage/Controlpanels/Controlpanels
-#: helpers/MessageLabels/MessageLabels
-# defaultMessage: user group membership
-msgid "user group membership"
-msgstr ""
 
 #: config/Blocks
 # defaultMessage: Video

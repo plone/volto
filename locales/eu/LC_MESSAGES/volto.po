@@ -2962,6 +2962,12 @@ msgstr "Eremu-multzoa programaziotik atzitzeko izena"
 msgid "User"
 msgstr "Erabiltzailea"
 
+#: components/manage/Controlpanels/Controlpanels
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Membership
+msgid "User Group Membership"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: User Group Settings
 msgid "User Group Settings"
@@ -3660,12 +3666,6 @@ msgstr "URL zuzen bat izan behar da (www.zerbait.eus) edo http(s)://www.zerbitza
 # defaultMessage: user avatar
 msgid "user avatar"
 msgstr "Erabiltzailearen argazkia"
-
-#: components/manage/Controlpanels/Controlpanels
-#: helpers/MessageLabels/MessageLabels
-# defaultMessage: user group membership
-msgid "user group membership"
-msgstr ""
 
 #: config/Blocks
 # defaultMessage: Video

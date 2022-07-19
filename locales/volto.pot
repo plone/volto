@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-07-19T17:41:34.752Z\n"
+"POT-Creation-Date: 2022-07-19T18:15:23.786Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -2957,6 +2957,12 @@ msgstr ""
 msgid "User"
 msgstr ""
 
+#: components/manage/Controlpanels/Controlpanels
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Membership
+msgid "User Group Membership"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: User Group Settings
 msgid "User Group Settings"
@@ -3654,12 +3660,6 @@ msgstr ""
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: user avatar
 msgid "user avatar"
-msgstr ""
-
-#: components/manage/Controlpanels/Controlpanels
-#: helpers/MessageLabels/MessageLabels
-# defaultMessage: user group membership
-msgid "user group membership"
 msgstr ""
 
 #: config/Blocks

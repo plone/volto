@@ -2961,6 +2961,12 @@ msgstr "Wir für den programmierten Zugriff auf das Fieldset verwendet."
 msgid "User"
 msgstr "Benutzer"
 
+#: components/manage/Controlpanels/Controlpanels
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Membership
+msgid "User Group Membership"
+msgstr "Gruppenmitgliedschaften"
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: User Group Settings
 msgid "User Group Settings"
@@ -3659,12 +3665,6 @@ msgstr "URL"
 # defaultMessage: user avatar
 msgid "user avatar"
 msgstr "Nutzer Avatar"
-
-#: components/manage/Controlpanels/Controlpanels
-#: helpers/MessageLabels/MessageLabels
-# defaultMessage: user group membership
-msgid "user group membership"
-msgstr "Gruppenmitgliedschaften"
 
 #: config/Blocks
 # defaultMessage: Video

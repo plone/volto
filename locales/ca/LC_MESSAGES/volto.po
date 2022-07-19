@@ -2964,6 +2964,12 @@ msgstr "S'utilitza per a l'accés programàtic al conjunt de camps."
 msgid "User"
 msgstr "Usuari"
 
+#: components/manage/Controlpanels/Controlpanels
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Membership
+msgid "User Group Membership"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: User Group Settings
 msgid "User Group Settings"
@@ -3662,12 +3668,6 @@ msgstr "L'entrada ha de ser un URL vàlid (www.something.com o http(s)://www.som
 # defaultMessage: user avatar
 msgid "user avatar"
 msgstr "avatar de l'usuari"
-
-#: components/manage/Controlpanels/Controlpanels
-#: helpers/MessageLabels/MessageLabels
-# defaultMessage: user group membership
-msgid "user group membership"
-msgstr ""
 
 #: config/Blocks
 # defaultMessage: Video
