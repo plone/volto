@@ -3660,10 +3660,11 @@ msgstr "URL"
 msgid "user avatar"
 msgstr "Nutzer Avatar"
 
+#: components/manage/Controlpanels/Controlpanels
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: user group membership
 msgid "user group membership"
-msgstr "Gruppenmitgliedschaften von Benutzern"
+msgstr "Gruppenmitgliedschaften"
 
 #: config/Blocks
 # defaultMessage: Video

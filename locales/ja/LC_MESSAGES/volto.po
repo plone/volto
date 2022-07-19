@@ -3662,6 +3662,7 @@ msgstr "正しいURLを入力してください"
 msgid "user avatar"
 msgstr "ユーザアイコン"
 
+#: components/manage/Controlpanels/Controlpanels
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: user group membership
 msgid "user group membership"

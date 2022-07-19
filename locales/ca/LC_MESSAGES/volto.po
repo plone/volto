@@ -3663,6 +3663,7 @@ msgstr "L'entrada ha de ser un URL vàlid (www.something.com o http(s)://www.som
 msgid "user avatar"
 msgstr "avatar de l'usuari"
 
+#: components/manage/Controlpanels/Controlpanels
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: user group membership
 msgid "user group membership"

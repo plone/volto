@@ -3654,6 +3654,7 @@ msgstr "Il testo inserito deve essere un url valido (www.qualcosa.com oppure htt
 msgid "user avatar"
 msgstr "Avatar dell'utente"
 
+#: components/manage/Controlpanels/Controlpanels
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: user group membership
 msgid "user group membership"

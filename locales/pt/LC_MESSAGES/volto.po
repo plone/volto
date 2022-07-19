@@ -3662,6 +3662,7 @@ msgstr ""
 msgid "user avatar"
 msgstr "avatar do utilizador"
 
+#: components/manage/Controlpanels/Controlpanels
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: user group membership
 msgid "user group membership"

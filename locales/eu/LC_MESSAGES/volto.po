@@ -3661,6 +3661,7 @@ msgstr "URL zuzen bat izan behar da (www.zerbait.eus) edo http(s)://www.zerbitza
 msgid "user avatar"
 msgstr "Erabiltzailearen argazkia"
 
+#: components/manage/Controlpanels/Controlpanels
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: user group membership
 msgid "user group membership"

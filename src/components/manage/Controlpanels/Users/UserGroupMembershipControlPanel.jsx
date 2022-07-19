@@ -3,7 +3,7 @@
  * TODO Enrich with features of user control panel. Then replace user control panel.
  */
 import React, { useEffect } from 'react';
-import { find, startCase, toNumber } from 'lodash';
+import { find, toNumber } from 'lodash';
 import { Portal } from 'react-portal';
 import { useHistory } from 'react-router';
 import { Link, useLocation } from 'react-router-dom';
@@ -64,12 +64,10 @@ const UserGroupMembershipPanel = () => {
   return (
     <>
       <Container className="users-control-panel">
-        <Helmet
-          title={startCase(intl.formatMessage(messages.usergroupmemberbership))}
-        />
+        <Helmet title={intl.formatMessage(messages.usergroupmemberbership)} />
         <Segment.Group raised>
           <Segment className="primary">
-            {startCase(intl.formatMessage(messages.usergroupmemberbership))}
+            {intl.formatMessage(messages.usergroupmemberbership)}
           </Segment>
           {can_use_group_membership_panel &&
           many_users !== undefined &&
