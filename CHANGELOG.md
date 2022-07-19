@@ -7,7 +7,7 @@
 ### Feature
 
 ### Bugfix
-
+- Add some more messages to be able to translate them @erral 
 - Fix typo in de locale @wolbernd
 
 ### Internal
