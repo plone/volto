@@ -2,18 +2,10 @@
 
 ## 15.12.2 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - get locale always from state. Backport from #3331 @erral
 - Add listing variation schemaEnhancer to the search block schema @ionlizarazu
-
-### Internal
-
-### Documentation
 
 ## 15.12.1 (2022-05-30)
 
