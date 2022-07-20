@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Staticize Poppins font to be compliant with EU privacy. @giuliaghisini
+
 ### Bugfix
 
 ### Internal
@@ -165,6 +167,7 @@
 - Fix RenderBlocks: path @ksuess
 - Fix field id creation in dexterity control panel to have slugified id @erral
 - Changed to get intl.locale always from state @ionlizarazu
+
 ### Feature
 
 - Updated Brazilian Portuguese translation @ericof
