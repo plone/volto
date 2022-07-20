@@ -92,13 +92,13 @@ class Search extends Component {
     if (
       JSON.stringify(this.props.search) !== JSON.stringify(nextProps.search)
     ) {
-      //all'apertura della pagina dei risultati di ricerca, sposto il focus sui risultati
+      //on opening results page, move focus on results
       this.focusResults();
     }
   };
 
   focusResults = () => {
-    //all'apertura della pagina dei risultati di ricerca, sposto il focus sui risultati
+    //on opening results page, move focus on results
     setTimeout(function () {
       if (document.querySelector('#page-search #search-results')) {
         document.querySelector('#page-search #search-results').focus();
