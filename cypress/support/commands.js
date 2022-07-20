@@ -298,6 +298,16 @@ Cypress.Commands.add(
     email = 'editor@local.dev',
     password = 'secret',
     roles = ['Member', 'Reader', 'Editor'],
+    groups = {
+      '@id': 'http://localhost:3000/@users',
+      items: [
+        {
+          id: 'AuthenticatedUsers',
+          title: 'AuthenticatedUsers',
+        },
+      ],
+      items_total: 1,
+    },
   }) => {
     let api_url, auth, path;
     if (Cypress.env('API') === 'guillotina') {
@@ -331,6 +341,7 @@ Cypress.Commands.add(
           email: email,
           password: password,
           roles: roles,
+          groups: groups,
         },
       })
       .then(() => console.log(`User ${username} created`));
@@ -367,6 +378,59 @@ Cypress.Commands.add('removeUser', (username = 'editor') => {
     })
     .then(() => console.log(`User ${username} removed`));
 });
+
+// --- GROUP -----------------------------------------------------------------
+
+Cypress.Commands.add(
+  'createGroup',
+  ({
+    groupname = 'teachers',
+    email = 'teachers@local.dev',
+    password = 'secret',
+    roles = ['Member', 'Reader'],
+    users = {
+      '@id': 'http://localhost:3000/@groups',
+      items: [],
+      items_total: 0,
+    },
+  }) => {
+    let api_url, auth, path;
+    if (Cypress.env('API') === 'guillotina') {
+      api_url = GUILLOTINA_API_URL;
+      auth = {
+        user: 'root',
+        pass: 'root',
+      };
+      path = 'groups';
+    } else {
+      api_url = PLONE_API_URL;
+      auth = {
+        user: 'admin',
+        pass: 'secret',
+      };
+      path = '@groups';
+    }
+
+    return cy
+      .request({
+        method: 'POST',
+        url: `${api_url}/${path}`,
+        headers: {
+          Accept: 'application/json',
+        },
+        auth: auth,
+        body: {
+          '@type': 'Group',
+          groupname: groupname,
+          email: email,
+          password: password,
+          roles: roles,
+          users: users,
+        },
+      })
+      .then(() => console.log(`Group ${groupname} created`));
+  },
+);
 
 // --- SET WORKFLOW ----------------------------------------------------------
 Cypress.Commands.add(
