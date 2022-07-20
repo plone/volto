@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-05-05T07:57:15.803Z\n"
+"POT-Creation-Date: 2022-07-20T12:45:09.681Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -13,24 +13,9 @@ msgstr ""
 "Preferred-Encodings: utf-8\n"
 "Domain: volto\n"
 
-#: blocks/Title/TitleBlockEdit
-# defaultMessage: Add a description…
-msgid "Add a description…"
-msgstr ""
-
-#: editor/plugins/SimpleLink/index
+#: editor/plugins/Link/index
 # defaultMessage: Add link
 msgid "Add link"
-msgstr ""
-
-#: blocks/Table/TableBlockEdit
-# defaultMessage: Align text
-msgid "Align text"
-msgstr ""
-
-#: editor/plugins/StyleMenu/StyleMenu
-# defaultMessage: All Styles Applied
-msgid "All Styles Applied"
 msgstr ""
 
 #: widgets/HtmlSlateWidget
@@ -80,8 +65,8 @@ msgstr ""
 msgid "Edit element"
 msgstr ""
 
+#: editor/plugins/AdvancedLink/index
 #: editor/plugins/Link/index
-#: editor/plugins/SimpleLink/index
 # defaultMessage: Edit link
 msgid "Edit link"
 msgstr ""
@@ -89,11 +74,6 @@ msgstr ""
 #: blocks/Table/TableBlockEdit
 # defaultMessage: Fixed width table cells
 msgid "Fixed width table cells"
-msgstr ""
-
-#: editor/plugins/StyleMenu/StyleMenu
-# defaultMessage: Font Style
-msgid "Font Style"
 msgstr ""
 
 #: blocks/Table/TableBlockEdit
@@ -145,14 +125,9 @@ msgstr ""
 msgid "Middle"
 msgstr ""
 
-#: editor/plugins/StyleMenu/StyleMenu
-# defaultMessage: No Style
-msgid "No Style"
-msgstr ""
-
-#: editor/plugins/StyleMenu/StyleMenu
-# defaultMessage: Paragraph Style
-msgid "Paragraph Style"
+#: blocks/Text/SlashMenu
+# defaultMessage: No matching blocks
+msgid "No matching blocks"
 msgstr ""
 
 #: blocks/Table/TableBlockEdit
@@ -165,7 +140,7 @@ msgstr ""
 msgid "Remove element"
 msgstr ""
 
-#: editor/plugins/Link/index
+#: editor/plugins/AdvancedLink/index
 # defaultMessage: Remove link
 msgid "Remove link"
 msgstr ""
@@ -199,21 +174,6 @@ msgstr ""
 #: blocks/Text/DetachedTextBlockEditor
 # defaultMessage: Type text…
 msgid "Type text…"
-msgstr ""
-
-#: blocks/Title/TitleBlockEdit
-# defaultMessage: Type the title…
-msgid "Type the title…"
-msgstr ""
-
-#: components/themes/View/DefaultSlateView
-# defaultMessage: Unknown Block {block}
-msgid "Unknown Block"
-msgstr ""
-
-#: blocks/Table/TableBlockEdit
-# defaultMessage: Vertical align
-msgid "Vertical align"
 msgstr ""
 
 #: blocks/Table/TableBlockEdit

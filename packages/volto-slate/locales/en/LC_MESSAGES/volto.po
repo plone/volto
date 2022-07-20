@@ -11,20 +11,8 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: blocks/Title/TitleBlockEdit
-msgid "Add a description…"
-msgstr ""
-
-#: editor/plugins/SimpleLink/index
+#: editor/plugins/Link/index
 msgid "Add link"
-msgstr ""
-
-#: blocks/Table/TableBlockEdit
-msgid "Align text"
-msgstr ""
-
-#: editor/plugins/StyleMenu/StyleMenu
-msgid "All Styles Applied"
 msgstr ""
 
 #: widgets/HtmlSlateWidget
@@ -65,17 +53,13 @@ msgstr ""
 msgid "Edit element"
 msgstr ""
 
+#: editor/plugins/AdvancedLink/index
 #: editor/plugins/Link/index
-#: editor/plugins/SimpleLink/index
 msgid "Edit link"
 msgstr ""
 
 #: blocks/Table/TableBlockEdit
 msgid "Fixed width table cells"
-msgstr ""
-
-#: editor/plugins/StyleMenu/StyleMenu
-msgid "Font Style"
 msgstr ""
 
 #: blocks/Table/TableBlockEdit
@@ -118,12 +102,8 @@ msgstr ""
 msgid "Middle"
 msgstr ""
 
-#: editor/plugins/StyleMenu/StyleMenu
-msgid "No Style"
-msgstr ""
-
-#: editor/plugins/StyleMenu/StyleMenu
-msgid "Paragraph Style"
+#: blocks/Text/SlashMenu
+msgid "No matching blocks"
 msgstr ""
 
 #: blocks/Table/TableBlockEdit
@@ -134,7 +114,7 @@ msgstr ""
 msgid "Remove element"
 msgstr ""
 
-#: editor/plugins/Link/index
+#: editor/plugins/AdvancedLink/index
 msgid "Remove link"
 msgstr ""
 
@@ -161,18 +141,6 @@ msgstr ""
 #: blocks/Text/DefaultTextBlockEditor
 #: blocks/Text/DetachedTextBlockEditor
 msgid "Type text…"
-msgstr ""
-
-#: blocks/Title/TitleBlockEdit
-msgid "Type the title…"
-msgstr ""
-
-#: components/themes/View/DefaultSlateView
-msgid "Unknown Block"
-msgstr ""
-
-#: blocks/Table/TableBlockEdit
-msgid "Vertical align"
 msgstr ""
 
 #: blocks/Table/TableBlockEdit
