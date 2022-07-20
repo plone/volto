@@ -10,18 +10,29 @@ import { Link } from 'react-router-dom';
 import { Portal } from 'react-portal';
 import { Container, Segment, Table, Menu, Input } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { Icon, Toolbar } from '@plone/volto/components';
+import { Icon, Toolbar, Form, Toast } from '@plone/volto/components';
 import backSVG from '@plone/volto/icons/back.svg';
 import { map } from 'lodash';
 import { Helmet } from '@plone/volto/helpers';
-import { Form } from '@plone/volto/components';
 import nextIcon from '@plone/volto/icons/right-key.svg';
 import prevIcon from '@plone/volto/icons/left-key.svg';
 import undoSVG from '@plone/volto/icons/undo.svg';
 import { getTransactions, revertTransactions } from '@plone/volto/actions';
-// import TransactionsTable from './TransactionsTable';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 const messages = defineMessages({
+  success: {
+    id: 'Success',
+    defaultMessage: 'Success',
+  },
+  error: {
+    id: 'Error',
+    defaultMessage: 'Error',
+  },
+  noTransactionsSelectedToDoUndo: {
+    id: 'No Transactions Selected To Do Undo',
+    defaultMessage: 'No transactions selected to do undo',
+  },
   undoControlPanel: {
     id: 'Undo Control Panel',
     defaultMessage: 'Undo Control Panel',
@@ -45,6 +56,14 @@ const messages = defineMessages({
   sortByDescription: {
     id: 'Sort transactions by User-Name, Path or Date',
     defaultMessage: 'Sort transactions by User-Name, Path or Date',
+  },
+  failedToUndoTransactions: {
+    id: 'Failed To Undo Transactions',
+    defaultMessage: 'Failed to undo transactions',
+  },
+  successfullyUndoneTransactions: {
+    id: 'Successfully Undone Transactions',
+    defaultMessage: 'Successfully undone transactions',
   },
 });
 
@@ -96,6 +115,7 @@ class UndoControlPanel extends Component {
       isEmptyInputForSorting: false,
       isTransactionsNotFound: false,
       isTransactionsUndoneFailed: false,
+      isClickedOnUndoButton: false,
       showPrevButton: false,
       showNextButton: false,
     };
@@ -273,7 +293,21 @@ class UndoControlPanel extends Component {
       },
     );
     if (transactionsSelected) {
+      this.setState({
+        isTransactionsUndoneFailed: false,
+        isClickedOnUndoButton: true,
+      });
       this.props.revertTransactions(undoTransactionsIds);
+    } else {
+      this.props.toastify.toast.error(
+        <Toast
+          error
+          title={this.props.intl.formatMessage(messages.error)}
+          content={this.props.intl.formatMessage(
+            messages.noTransactionsSelectedToDoUndo,
+          )}
+        />,
+      );
     }
 
     // If transactions reverted successfully then erase all the checkbox from transactions
@@ -334,21 +368,14 @@ class UndoControlPanel extends Component {
       this.state.lowerIndex > 0 &&
         !this.state.showPrevButton &&
         this.setState({ showPrevButton: true });
-    } else if (
-      !this.state.isSortingTypeSelected &&
-      this.props.transactions.length
-    ) {
-      if (
-        this.props.transactions.length > 0 &&
-        this.state.isTransactionsNotFound
-      ) {
+    } else if (!this.state.isSortingTypeSelected && this.props.transactions) {
+      this.props.transactions.length > 0 &&
+        this.state.isTransactionsNotFound &&
         this.setState({ isTransactionsNotFound: false });
-      } else if (
-        this.props.transactions.length <= 0 &&
-        !this.state.isTransactionsNotFound
-      ) {
+
+      this.props.transactions.length <= 0 &&
+        !this.state.isTransactionsNotFound &&
         this.setState({ isTransactionsNotFound: true });
-      }
 
       this.state.upperIndex >= this.props.transactions.length &&
         this.state.showNextButton &&
@@ -371,12 +398,37 @@ class UndoControlPanel extends Component {
       this.props.revertRequest.error !== null &&
       !this.state.isTransactionsUndoneFailed
     ) {
-      this.setState({ isTransactionsUndoneFailed: true });
+      this.setState({
+        isTransactionsUndoneFailed: true,
+        isClickedOnUndoButton: false,
+      });
+      this.props.toastify.toast.error(
+        <Toast
+          error
+          title={this.props.intl.formatMessage(messages.error)}
+          content={this.props.intl.formatMessage(
+            messages.failedToUndoTransactions,
+          )}
+        />,
+      );
     } else if (
       this.props.revertRequest.error === null &&
-      this.state.isTransactionsUndoneFailed
+      this.state.isTransactionsUndoneFailed &&
+      this.state.isClickedOnUndoButton
     ) {
-      this.setState({ isTransactionsUndoneFailed: false });
+      this.setState({
+        isTransactionsUndoneFailed: false,
+        isClickedOnUndoButton: false,
+      });
+      this.props.toastify.toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(
+            messages.successfullyUndoneTransactions,
+          )}
+        />,
+      );
     }
   }
 
@@ -606,6 +658,7 @@ class UndoControlPanel extends Component {
 
 export default compose(
   injectIntl,
+  injectLazyLibs(['toastify']),
   connect(
     (state, props) => ({
       pathname: props.location.pathname,
