@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- Staticize Poppins font to be compliant with EU privacy. Import from GoogleFont is disabled in site.variables. @giuliaghisini
+
 ### Feature
 
 ### Bugfix
