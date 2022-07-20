@@ -75,6 +75,7 @@ class Search extends Component {
   componentDidMount() {
     this.doSearch();
     this.setState({ isClient: true });
+    this.focusResults();
   }
 
   /**
@@ -87,6 +88,22 @@ class Search extends Component {
     if (this.props.location.search !== nextProps.location.search) {
       this.doSearch();
     }
+
+    if (
+      JSON.stringify(this.props.search) !== JSON.stringify(nextProps.search)
+    ) {
+      //all'apertura della pagina dei risultati di ricerca, sposto il focus sui risultati
+      this.focusResults();
+    }
+  };
+
+  focusResults = () => {
+    //all'apertura della pagina dei risultati di ricerca, sposto il focus sui risultati
+    setTimeout(function () {
+      if (document.querySelector('#page-search #search-results')) {
+        document.querySelector('#page-search #search-results').focus();
+      }
+    }, 100);
   };
 
   /**
@@ -146,7 +163,13 @@ class Search extends Component {
     return (
       <Container id="page-search">
         <Helmet title="Search" />
-        <div className="container">
+        <div
+          className="container"
+          role="region"
+          aria-live="polite"
+          id="search-results"
+          tabIndex={-1}
+        >
           <article id="content">
             <header>
               <h1 className="documentFirstHeading">

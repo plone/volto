@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- fix a11y search. @giuliaghisini
+
 ### Internal
 
 ### Documentation
@@ -165,6 +167,7 @@
 - Fix RenderBlocks: path @ksuess
 - Fix field id creation in dexterity control panel to have slugified id @erral
 - Changed to get intl.locale always from state @ionlizarazu
+
 ### Feature
 
 - Updated Brazilian Portuguese translation @ericof

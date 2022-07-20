@@ -3,6 +3,7 @@
 exports[`SearchWidget renders a search widget component 1`] = `
 <form
   action="/search"
+  aria-controls="search-results"
   className="ui form"
   onSubmit={[Function]}
 >
@@ -24,6 +25,7 @@ exports[`SearchWidget renders a search widget component 1`] = `
       />
     </div>
     <button
+      aria-controls="search-results"
       aria-label="Search"
     >
       <svg
