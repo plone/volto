@@ -15,10 +15,6 @@
 
 - Fix typo in de locale @wolbernd
 
-### Internal
-
-### Documentation
-
 ## 16.0.0-alpha.13 (2022-07-18)
 
 ### Feature
