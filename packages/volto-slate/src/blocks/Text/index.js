@@ -113,7 +113,7 @@ export default (config) => {
     view: TextBlockView,
     edit: TextBlockEdit,
     schema: TextBlockSchema,
-    restricted: true,
+    restricted: false,
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 0,
@@ -139,7 +139,7 @@ export default (config) => {
   // Make draft js compatible with ToC
   config.blocks.blocksConfig.text = {
     ...config.blocks.blocksConfig.text,
-    restricted: false,
+    restricted: true,
     tocEntry: (block = {}) => {
       const draft = redraft(
         block.text,
