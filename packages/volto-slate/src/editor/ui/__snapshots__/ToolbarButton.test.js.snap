@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToolbarButton renders a toolbar button 1`] = `
+<DocumentFragment>
+  <div
+    class="button-wrapper"
+  >
+    <a
+      aria-pressed="false"
+      class="ui tiny compact toggle button"
+      role="button"
+      title=""
+    />
+  </div>
+</DocumentFragment>
+`;

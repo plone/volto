@@ -26,6 +26,7 @@ import { contentIcons } from './ContentIcons';
 import { controlPanelsIcons } from './ControlPanels';
 
 import { richtextEditorSettings, richtextViewSettings } from './RichTextEditor';
+import applySlateConfiguration from '@plone/volto-slate';
 
 import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
 
@@ -91,11 +92,12 @@ let config = {
     legacyTraverse: process.env.RAZZLE_LEGACY_TRAVERSE || false,
     cookieExpires: 15552000, //in seconds. Default is 6 month (15552000)
     nonContentRoutes,
-    richtextEditorSettings,
-    richtextViewSettings,
+    richtextEditorSettings, // Part of draftjs support, to be removed
+    richtextViewSettings, // Part of draftjs support, to be removed
     imageObjects: ['Image'],
     reservedIds: ['login', 'layout', 'plone', 'zip', 'properties'],
     downloadableObjects: ['File'], //list of content-types for which the direct download of the file will be carried out if the user is not authenticated
+    viewableInBrowserObjects: [], //ex: ['File']. List of content-types for which the file will be displayed in browser if the user is not authenticated
     listingPreviewImageField: 'image', // deprecated from Volto 14 onwards
     notSupportedBrowsers: ['ie'],
     defaultPageSize: 25,
@@ -140,6 +142,7 @@ let config = {
     serverConfig,
     storeExtenders: [],
     showTags: true,
+    controlpanels: [],
     controlPanelsIcons,
     externalRoutes: [
       // URL to be considered as external
@@ -183,6 +186,7 @@ let config = {
   components,
 };
 
+config = applySlateConfiguration(config);
 config = applyAddonConfiguration(config);
 
 ConfigRegistry.settings = config.settings;

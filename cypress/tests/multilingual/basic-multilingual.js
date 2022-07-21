@@ -40,12 +40,14 @@ describe('Basic multilingual Tests', () => {
     cy.findByText('Translate to italiano').click();
     cy.findByText('Test document');
     cy.findByText('Traduci in Italiano');
-    cy.get(
-      '.new-translation .documentFirstHeading > .public-DraftStyleDefault-block',
-    ).type('My IT page');
-    cy.get('.new-translation .block.inner.text .public-DraftEditor-content')
+    cy.get('.new-translation .block.inner.title [contenteditable="true"]')
+      .focus()
+      .click()
+      .type('My IT page');
+    cy.get('.new-translation .slate-editor [contenteditable=true]')
+      .focus()
+      .click()
       .type('This is the italian text')
-      .get('span[data-text]')
       .contains('This is the italian text')
       .type('{enter}');
     cy.get('.new-translation .ui.basic.icon.button.block-add-button').click();
@@ -76,12 +78,14 @@ describe('Basic multilingual Tests', () => {
     cy.findByText('Translate to italiano').click();
     cy.findByText('Test document');
     cy.findByText('Traduci in Italiano');
-    cy.get(
-      '.new-translation .documentFirstHeading > .public-DraftStyleDefault-block',
-    ).type('My IT page');
-    cy.get('.new-translation .block.inner.text .public-DraftEditor-content')
+    cy.get('.new-translation .block.inner.title [contenteditable="true"]')
+      .focus()
+      .click()
+      .type('My IT page');
+    cy.get('.new-translation .slate-editor [contenteditable=true]')
+      .focus()
+      .click()
       .type('This is the italian text')
-      .get('span[data-text]')
       .contains('This is the italian text')
       .type('{enter}');
     cy.get('.new-translation .ui.basic.icon.button.block-add-button').click();
