@@ -4,13 +4,11 @@
 
 ### Breaking
 
-### Feature
-
-### Bugfix
-
-### Internal
+- Integrate volto-state add-on. @tiberiuichim @razvanmiu @eea
 
 ### Documentation
+
+- volto-slate documentation @nileshgulia1
 
 ## 16.0.0-alpha.14 (2022-07-20)
 
@@ -350,9 +348,6 @@
 - Added new Block Style Wrapper. This implementation is marked as **experimental** during Volto 16 alpha period. The components, API and the styling are subject to change **without issuing a breaking change**. You can start using it in your projects and add-ons, but taking this into account. See documentation for more information. @sneridagh
 
 ## 16.0.0-alpha.0 (2022-05-06)
-
-- Integrate volto-state add-on. @tiberiuichim @razvanmiu @eea
-- volto-slate documentation @nileshgulia1
 
 ### Breaking
 
