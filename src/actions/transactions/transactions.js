@@ -1,6 +1,6 @@
 /**
  * Transactions actions.
- * @module actions/undoControlPanel/transactions
+ * @module actions/transactions/transactions
  */
 import {
   GET_TRANSACTIONS,

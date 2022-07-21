@@ -41,7 +41,7 @@ import lazyLibraries from '@plone/volto/reducers/lazyLibraries/lazyLibraries';
 import contextNavigation from '@plone/volto/reducers/contextNavigation/contextNavigation';
 import reduxAsyncConnect from './asyncConnect/asyncConnect';
 import workingCopy from './workingcopy/workingcopy';
-import transactions from './undoControlPanel/transactions';
+import transactions from './transactions/transactions';
 /**
  * Root reducer.
  * @function

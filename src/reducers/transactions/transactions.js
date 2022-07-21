@@ -1,6 +1,6 @@
 /**
  * Trancsaction reducer.
- * @module reducers/undoControlPanel/transactions
+ * @module reducers/transactions/transactions
  */
 import {
   GET_TRANSACTIONS,

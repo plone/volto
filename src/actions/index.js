@@ -63,7 +63,7 @@ export {
 export {
   getTransactions,
   revertTransactions,
-} from '@plone/volto/actions/undoControlPanel/transactions';
+} from '@plone/volto/actions/transactions/transactions';
 export {
   addMessage,
   removeMessage,

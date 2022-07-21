@@ -1,6 +1,6 @@
 /**
  * Users controlpanel container.
- * @module components/manage/Controlpanels/UndoControlPanel
+ * @module components/manage/Controlpanels/UndoControlpanel
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -29,10 +29,6 @@ const messages = defineMessages({
     id: 'Error',
     defaultMessage: 'Error',
   },
-  undoControlPanel: {
-    id: 'Undo Control Panel',
-    defaultMessage: 'Undo Control Panel',
-  },
   undo: {
     id: 'Undo',
     defaultMessage: 'Undo',
@@ -46,7 +42,7 @@ const messages = defineMessages({
     defaultMessage: 'Default',
   },
   sortBy: {
-    id: 'Sort by',
+    id: 'Sort By',
     defaultMessage: 'Sort by',
   },
   sorted: {
@@ -88,11 +84,11 @@ const messages = defineMessages({
 });
 
 /**
- * UndoControlPanel class.
- * @class UndoControlPanel
+ * UndoControlpanel class.
+ * @class UndoControlpanel
  * @extends Component
  */
-class UndoControlPanel extends Component {
+class UndoControlpanel extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -120,7 +116,7 @@ class UndoControlPanel extends Component {
    * Constructor
    * @method constructor
    * @param {Object} props Component properties
-   * @constructs UndoControlPanel
+   * @constructs UndoControlpanel
    */
   constructor(props) {
     super(props);
@@ -500,8 +496,8 @@ class UndoControlPanel extends Component {
         <Segment.Group raised>
           <Segment className="primary">
             <FormattedMessage
-              id="Undo control panel"
-              defaultMessage="Undo Control Panel"
+              id="Undo Controlpanel"
+              defaultMessage="Undo Controlpanel"
             />
           </Segment>
           <Segment>
@@ -578,7 +574,7 @@ class UndoControlPanel extends Component {
             {this.state.isTransactionsNotFound ? (
               <Segment className="primary">
                 <FormattedMessage
-                  id="No transactions found"
+                  id="No Transactions Found"
                   defaultMessage="No transactions found"
                 />
               </Segment>
@@ -711,4 +707,4 @@ export default compose(
     }),
     { getTransactions, revertTransactions },
   ),
-)(UndoControlPanel);
+)(UndoControlpanel);

@@ -66,6 +66,10 @@ const messages = defineMessages({
     id: 'User Group Membership',
     defaultMessage: 'User Group Membership',
   },
+  undo: {
+    id: 'Undo',
+    defaultMessage: 'Undo',
+  },
 });
 
 /**
@@ -164,8 +168,8 @@ class Controlpanels extends Component {
         // This is the icon place in UndoControlPanel
         {
           '@id': '/undo',
-          group: 'General',
-          title: 'Undo Control Panel',
+          group: this.props.intl.formatMessage(messages.general),
+          title: this.props.intl.formatMessage(messages.undo),
         },
         {
           '@id': '/moderate-comments',

@@ -5,7 +5,7 @@
 import {
   Add,
   AddonsControlpanel,
-  UndoControlPanel,
+  UndoControlpanel,
   ChangePassword,
   ContactForm,
   Contents,
@@ -137,7 +137,7 @@ export const defaultRoutes = [
   },
   {
     path: '/controlpanel/undo',
-    component: UndoControlPanel,
+    component: UndoControlpanel,
   },
   {
     path: '/controlpanel/database',
