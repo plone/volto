@@ -29,10 +29,6 @@ const messages = defineMessages({
     id: 'Error',
     defaultMessage: 'Error',
   },
-  noTransactionsSelectedToDoUndo: {
-    id: 'No Transactions Selected To Do Undo',
-    defaultMessage: 'No transactions selected to do undo',
-  },
   undoControlPanel: {
     id: 'Undo Control Panel',
     defaultMessage: 'Undo Control Panel',
@@ -53,6 +49,14 @@ const messages = defineMessages({
     id: 'Sort by',
     defaultMessage: 'Sort by',
   },
+  sorted: {
+    id: 'Sorted',
+    defaultMessage: 'Sorted',
+  },
+  unsorted: {
+    id: 'Unsorted',
+    defaultMessage: 'Unsorted',
+  },
   sortByDescription: {
     id: 'Sort transactions by User-Name, Path or Date',
     defaultMessage: 'Sort transactions by User-Name, Path or Date',
@@ -64,6 +68,22 @@ const messages = defineMessages({
   successfullyUndoneTransactions: {
     id: 'Successfully Undone Transactions',
     defaultMessage: 'Successfully undone transactions',
+  },
+  transactionsHaveBeenSorted: {
+    id: 'Transactions Have Been Sorted',
+    defaultMessage: 'Transactions have been sorted',
+  },
+  transactionsHaveBeenUnsorted: {
+    id: 'Transactions Have Been Unsorted',
+    defaultMessage: 'Transactions have been unsorted',
+  },
+  noTransactionsSelected: {
+    id: 'No Transactions Selected',
+    defaultMessage: 'No transactions selected',
+  },
+  noTransactionsSelectedToDoUndo: {
+    id: 'No Transactions Selected To Do Undo',
+    defaultMessage: 'No transactions selected to do undo',
   },
 });
 
@@ -114,7 +134,6 @@ class UndoControlPanel extends Component {
       sortedTransactions: [],
       isEmptyInputForSorting: false,
       isTransactionsNotFound: false,
-      isTransactionsUndoneFailed: false,
       isClickedOnUndoButton: false,
       showPrevButton: false,
       showNextButton: false,
@@ -126,6 +145,9 @@ class UndoControlPanel extends Component {
     this.onNext = this.onNext.bind(this);
     this.onUndo = this.onUndo.bind(this);
     this.setTableVisiblity = this.setTableVisiblity.bind(this);
+    this.checkTransactionsUndoneStatus = this.checkTransactionsUndoneStatus.bind(
+      this,
+    );
   }
 
   /**
@@ -156,7 +178,7 @@ class UndoControlPanel extends Component {
     if (sortedTransactions.length > 0) {
       this.setState({
         lowerIndex: 0,
-        upperIndex: 20,
+        upperIndex: this.state.defaultTransactionsLenInTable,
         sortedTransactions: sortedTransactions,
         isEmptyInputForSorting: false,
         isTransactionsNotFound: false,
@@ -172,6 +194,17 @@ class UndoControlPanel extends Component {
    * @returns {undefined}
    */
   onCancel() {
+    if (this.state.sortedTransactions.length > 0) {
+      this.props.toastify.toast.info(
+        <Toast
+          info
+          title={this.props.intl.formatMessage(messages.unsorted)}
+          content={this.props.intl.formatMessage(
+            messages.transactionsHaveBeenUnsorted,
+          )}
+        />,
+      );
+    }
     this.setState({
       isSortingTypeSelected: false,
       isTransactionsNotFound: false,
@@ -179,7 +212,7 @@ class UndoControlPanel extends Component {
       sortType: 'no value',
       sortedTransactions: [],
       lowerIndex: 0,
-      upperIndex: 20,
+      upperIndex: this.state.defaultTransactionsLenInTable,
     });
   }
 
@@ -264,6 +297,15 @@ class UndoControlPanel extends Component {
         });
         this.setSortedTransactions(sortedTransactions);
       }
+      this.props.toastify.toast.info(
+        <Toast
+          info
+          title={this.props.intl.formatMessage(messages.sorted)}
+          content={this.props.intl.formatMessage(
+            messages.transactionsHaveBeenSorted,
+          )}
+        />,
+      );
     } else {
       this.setState({ isEmptyInputForSorting: true });
     }
@@ -277,12 +319,10 @@ class UndoControlPanel extends Component {
   onUndo() {
     let transactionsSelected = false;
     let undoTransactionsIds = map(
-      this.props.transactions.slice(
-        this.state.lowerIndex,
-        this.state.upperIndex,
-      ),
+      this.props.transactions.slice(0, this.props.transactions.length),
       (transaction) => {
         if (
+          document.getElementById(transaction.id) !== null &&
           document.getElementById(transaction.id).firstElementChild
             .firstElementChild.firstElementChild.checked
         ) {
@@ -294,7 +334,6 @@ class UndoControlPanel extends Component {
     );
     if (transactionsSelected) {
       this.setState({
-        isTransactionsUndoneFailed: false,
         isClickedOnUndoButton: true,
       });
       this.props.revertTransactions(undoTransactionsIds);
@@ -302,7 +341,7 @@ class UndoControlPanel extends Component {
       this.props.toastify.toast.error(
         <Toast
           error
-          title={this.props.intl.formatMessage(messages.error)}
+          title={this.props.intl.formatMessage(messages.noTransactionsSelected)}
           content={this.props.intl.formatMessage(
             messages.noTransactionsSelectedToDoUndo,
           )}
@@ -310,7 +349,6 @@ class UndoControlPanel extends Component {
       );
     }
 
-    // If transactions reverted successfully then erase all the checkbox from transactions
     Array.from(
       document.getElementsByClassName('transactions-checkboxes'),
     ).forEach((element) => {
@@ -348,7 +386,7 @@ class UndoControlPanel extends Component {
 
   /**
    * Set table footer elements visiblity
-   * @method onNext
+   * @method setTableVisiblity
    * @returns {undefined}
    */
   setTableVisiblity() {
@@ -393,13 +431,20 @@ class UndoControlPanel extends Component {
         !this.state.showPrevButton &&
         this.setState({ showPrevButton: true });
     }
+  }
 
+  /**
+   * Check transactions undone status
+   * @method checkTransactionsUndoneStatus
+   * @returns {undefined}
+   */
+  checkTransactionsUndoneStatus() {
     if (
+      this.props.revertRequest.error &&
       this.props.revertRequest.error !== null &&
-      !this.state.isTransactionsUndoneFailed
+      this.state.isClickedOnUndoButton
     ) {
       this.setState({
-        isTransactionsUndoneFailed: true,
         isClickedOnUndoButton: false,
       });
       this.props.toastify.toast.error(
@@ -413,11 +458,9 @@ class UndoControlPanel extends Component {
       );
     } else if (
       this.props.revertRequest.error === null &&
-      this.state.isTransactionsUndoneFailed &&
       this.state.isClickedOnUndoButton
     ) {
       this.setState({
-        isTransactionsUndoneFailed: false,
         isClickedOnUndoButton: false,
       });
       this.props.toastify.toast.success(
@@ -449,6 +492,7 @@ class UndoControlPanel extends Component {
         this.state.upperIndex,
       );
     this.setTableVisiblity();
+    this.checkTransactionsUndoneStatus();
 
     return (
       <Container id="page-undo" className="controlpanel-undo">

@@ -15,7 +15,7 @@ const initialState = {
     loading: false,
   },
   revert: {
-    error: null,
+    error: undefined,
     loaded: false,
     loading: false,
   },
@@ -41,6 +41,15 @@ function getRequestKey(actionType) {
 export default function transactions(state = initialState, action = {}) {
   switch (action.type) {
     case `${REVERT_TRANSACTIONS}_PENDING`:
+      return {
+        ...state,
+        [getRequestKey(action.type)]: {
+          loading: true,
+          loaded: false,
+          error: undefined,
+        },
+      };
+
     case `${GET_TRANSACTIONS}_PENDING`:
       return {
         ...state,
@@ -50,6 +59,7 @@ export default function transactions(state = initialState, action = {}) {
           error: null,
         },
       };
+
     case `${GET_TRANSACTIONS}_SUCCESS`:
       return {
         ...state,
