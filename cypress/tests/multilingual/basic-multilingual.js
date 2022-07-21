@@ -35,6 +35,10 @@ describe('Basic multilingual Tests', () => {
   });
 
   it('Language selector in content', function () {
+    cy.intercept('POST', '/**/it').as('create');
+    cy.intercept('GET', '/**/en/document?expand*').as('content');
+    cy.intercept('GET', '/**/it/my-it-page?expand*').as('content-it');
+
     // Create translation
     cy.get('#toolbar-add').click();
     cy.findByText('Translate to italiano').click();
@@ -51,26 +55,24 @@ describe('Basic multilingual Tests', () => {
     cy.get('.new-translation .ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.image').contains('Immagine').click();
     cy.get('#toolbar-save').click();
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('my-it-page');
+
+    cy.wait('@create');
+    cy.wait('@content-it');
 
     cy.findByLabelText('Vai a english').click();
 
     // The english doc should be shown
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('document');
+    cy.wait('@content');
 
     cy.get('#page-document').findByText('Test document');
     cy.url().should('eq', Cypress.config().baseUrl + '/en/document');
   });
 
   it('Manage translations menu', function () {
+    cy.intercept('POST', '/**/it').as('create');
+    cy.intercept('GET', '/**/en/document?expand*').as('content');
+    cy.intercept('GET', '/**/it/my-it-page?expand*').as('content-it');
+
     // Create translation
     cy.get('#toolbar-add').click();
     cy.findByText('Translate to italiano').click();
@@ -87,11 +89,9 @@ describe('Basic multilingual Tests', () => {
     cy.get('.new-translation .ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.image').contains('Immagine').click();
     cy.get('#toolbar-save').click();
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('my-it-page');
+
+    cy.wait('@create');
+    cy.wait('@content-it');
 
     cy.findByLabelText('Vai a english').click();
 
