@@ -16,11 +16,11 @@ context('Special fields Acceptance Tests', () => {
       cy.waitForResourceToLoad('@types');
       cy.waitForResourceToLoad('document');
       cy.navigate('/document/edit');
-      cy.get(`.block.title [data-contents]`);
+      cy.getSlateTitle();
     });
 
     it('As editor I can add a block with an objectListWidget and interact with it', function () {
-      cy.get('.block.inner.text .public-DraftEditor-content').click();
+      cy.getSlate().click();
       cy.get('.button .block-add-button').click({ force: true });
       cy.get('.blocks-chooser .mostUsed .button.testBlock').click();
 
@@ -70,11 +70,11 @@ context('Special fields Acceptance Tests', () => {
       cy.waitForResourceToLoad('@types');
       cy.waitForResourceToLoad('document');
       cy.navigate('/document/edit');
-      cy.get(`.block.title [data-contents]`);
+      cy.getSlateTitle();
     });
 
     it('As editor I can change a variation for a block (that has variations)', function () {
-      cy.get('.block.inner.text .public-DraftEditor-content').click();
+      cy.getSlate().click();
       cy.get('.button .block-add-button').click({ force: true });
       cy.get('.blocks-chooser .mostUsed .button.testBlock').click();
 
@@ -106,10 +106,10 @@ context('Special fields Acceptance Tests', () => {
       cy.waitForResourceToLoad('@types');
       cy.waitForResourceToLoad('document');
       cy.navigate('/document/edit');
-      cy.get(`.block.title [data-contents]`);
+      cy.getSlateTitle();
     });
     it('As editor I can add a block with an objetBrowserWidget and the context path is preserved', function () {
-      cy.get('.block.inner.text .public-DraftEditor-content').click();
+      cy.getSlate().click();
       cy.get('.button .block-add-button').click({ force: true });
       cy.get('.blocks-chooser .mostUsed .button.testBlock').click();
 

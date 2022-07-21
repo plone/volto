@@ -351,6 +351,9 @@
 
 ## 16.0.0-alpha.0 (2022-05-06)
 
+- Integrate volto-state add-on. @tiberiuichim @razvanmiu @eea
+- volto-slate documentation @nileshgulia1
+
 ### Breaking
 
 - Deprecate NodeJS 12 since it's out of LTS since April 30, 2022 @sneridagh
