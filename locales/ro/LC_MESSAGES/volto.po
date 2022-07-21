@@ -2606,7 +2606,8 @@ msgstr "Schimbă cu"
 msgid "Table"
 msgstr "Tabel"
 
-#: components/manage/Blocks/ToC/View
+#: components/manage/Blocks/ToC/variations/DefaultTocRenderer
+#: components/manage/Blocks/ToC/variations/HorizontalMenu
 # defaultMessage: Table of Contents
 msgid "Table of Contents"
 msgstr "Cuprins"

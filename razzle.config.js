@@ -288,6 +288,7 @@ const defaultModify = ({
           }),
         ]
       : [];
+
   return config;
 };
 
@@ -318,6 +319,7 @@ module.exports = {
       webpackConfig,
       webpackObject,
     });
+
     const res = addonExtenders.reduce(
       (acc, extender) => extender.modify(acc, { target, dev }, webpackConfig),
       defaultConfig,

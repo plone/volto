@@ -14,6 +14,16 @@
 
 ### Documentation
 
+## 16.0.0-alpha.15 (2022-07-21)
+
+### Breaking
+
+- Integrate volto-state add-on. @tiberiuichim @razvanmiu @eea
+
+### Documentation
+
+- volto-slate documentation @nileshgulia1
+
 ## 16.0.0-alpha.14 (2022-07-20)
 
 ### Breaking
