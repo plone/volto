@@ -141,7 +141,9 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
           <div
             className="eight wide column align-tools"
           >
-            <div>
+            <div
+              className="align-buttons"
+            >
               <div
                 className="ui buttons"
               >

@@ -12,6 +12,11 @@ test('renders a document view component', () => {
       locale: 'en',
       messages: {},
     },
+    content: {
+      get: {
+        loaded: true,
+      },
+    },
   });
 
   const component = renderer.create(
@@ -21,7 +26,7 @@ test('renders a document view component', () => {
           title: 'Hello World!',
           description: 'Hi',
           text: {
-            data: '<p>Hello World!',
+            data: '<p>Hello World!</p>',
           },
         }}
       />
