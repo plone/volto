@@ -12,6 +12,8 @@
 
 ### Documentation
 
+- Migration guide: volto-slate -> @plone/volto-slate @nileshgulia1
+
 ## 16.0.0-alpha.15 (2022-07-21)
 
 ### Breaking
@@ -175,6 +177,7 @@
 - Fix RenderBlocks: path @ksuess
 - Fix field id creation in dexterity control panel to have slugified id @erral
 - Changed to get intl.locale always from state @ionlizarazu
+
 ### Feature
 
 - Updated Brazilian Portuguese translation @ericof

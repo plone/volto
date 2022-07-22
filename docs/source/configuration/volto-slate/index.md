@@ -52,4 +52,5 @@ Some of the main reasons that drove us to create `volto-slate`, instead of enhan
 api
 configuration-settings
 writing-plugins
+upgrade
 ```
