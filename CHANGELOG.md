@@ -15,6 +15,7 @@
 
 - Update json-schema including transitive dependencies @davisagli
 - Update release-it @davisagli
+- Deduplicate dependencies using yarn-deduplicate @davisagli
 
 ### Documentation
 
