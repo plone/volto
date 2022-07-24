@@ -6,6 +6,9 @@
 
 ### Feature
 
+- complete eu translation @erral
+- complete es translation @erral
+
 ### Bugfix
 
 ### Internal
