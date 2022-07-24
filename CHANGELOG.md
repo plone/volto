@@ -8,6 +8,7 @@
 
 - complete eu translation @erral
 - complete es translation @erral
+- Generators: Add .editorconfig and .prettierignore to generated projects and addons. @ericof
 
 ### Bugfix
 
