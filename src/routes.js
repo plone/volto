@@ -7,6 +7,7 @@ import {
   AddonsControlpanel,
   ChangePassword,
   ContactForm,
+  Workflow,
   Contents,
   ContentType,
   ContentTypeLayout,
@@ -62,6 +63,10 @@ export const multilingualRoutes = [
     component: ContactForm,
   },
   {
+    path: `/(${config.settings?.supportedLanguages.join('|')})/workflow`,
+    component: Workflow,
+  },
+  {
     path: `/(${config.settings?.supportedLanguages.join('|')})/change-password`,
     component: ChangePassword,
   },
@@ -108,6 +113,10 @@ export const defaultRoutes = [
   {
     path: '/contact-form',
     component: ContactForm,
+  },
+  {
+    path: '/workflow',
+    component: Workflow,
   },
   {
     path: '/controlpanel',
