@@ -13,6 +13,8 @@
 
 ### Internal
 
+- Update json-schema including transitive dependencies @davisagli
+
 ### Documentation
 
 - Fix redirect on YouTube, broken link after merge and deleted branch. @stevepiercy
