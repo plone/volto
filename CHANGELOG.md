@@ -12,6 +12,46 @@
 
 ### Documentation
 
+- Fix redirect on YouTube, broken link after merge and deleted branch. @stevepiercy
+
+
+## 16.0.0-alpha.15 (2022-07-21)
+
+### Breaking
+
+- Integrate volto-state add-on. @tiberiuichim @razvanmiu @eea
+
+### Documentation
+
+- volto-slate documentation @nileshgulia1
+
+## 16.0.0-alpha.14 (2022-07-20)
+
+### Breaking
+
+- Action `listUsers`to be called with Object. Distinguish between search for id or search for fullname, email, username @ksuess
+
+### Feature
+
+- Add user group membership control panel @ksuess
+- Action `listUsers`: Support search for fullname, email, username. @ksuess
+
+### Bugfix
+
+- Fix typo in de locale @wolbernd
+
+## 16.0.0-alpha.13 (2022-07-18)
+
+### Feature
+
+- Add schema to video block sidebar @iRohitSingh @danielamormocea
+
+### Bugfix
+
+- Prevent the `defaultView` to show anything if the content is not loaded yet. This fixes showing the non-blocks enabled view for a fraction of a second before showing the blocks-enabled one once the content is loaded. @sneridagh
+
+### Documentation
+
 - `aria-*` attributes are now parsed correctly by jsx-lexer 2.0. @stevepiercy
 
 ## 16.0.0-alpha.12 (2022-07-13)
