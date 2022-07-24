@@ -6,11 +6,17 @@
 
 ### Feature
 
+- complete eu translation @erral
+- complete es translation @erral
+
 ### Bugfix
 
 ### Internal
 
 ### Documentation
+
+- Fix redirect on YouTube, broken link after merge and deleted branch. @stevepiercy
+
 
 ## 16.0.0-alpha.15 (2022-07-21)
 
