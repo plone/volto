@@ -18,7 +18,7 @@ import nextIcon from '@plone/volto/icons/right-key.svg';
 import prevIcon from '@plone/volto/icons/left-key.svg';
 import undoSVG from '@plone/volto/icons/undo.svg';
 import { getTransactions, revertTransactions } from '@plone/volto/actions';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import { toast } from 'react-toastify';
 
 const messages = defineMessages({
   success: {
@@ -191,7 +191,7 @@ class UndoControlpanel extends Component {
    */
   onCancel() {
     if (this.state.sortedTransactions.length > 0) {
-      this.props.toastify.toast.info(
+      toast.info(
         <Toast
           info
           title={this.props.intl.formatMessage(messages.unsorted)}
@@ -293,7 +293,7 @@ class UndoControlpanel extends Component {
         });
         this.setSortedTransactions(sortedTransactions);
       }
-      this.props.toastify.toast.info(
+      toast.info(
         <Toast
           info
           title={this.props.intl.formatMessage(messages.sorted)}
@@ -334,7 +334,7 @@ class UndoControlpanel extends Component {
       });
       this.props.revertTransactions(undoTransactionsIds);
     } else {
-      this.props.toastify.toast.error(
+      toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.noTransactionsSelected)}
@@ -443,7 +443,7 @@ class UndoControlpanel extends Component {
       this.setState({
         isClickedOnUndoButton: false,
       });
-      this.props.toastify.toast.error(
+      toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
@@ -459,7 +459,7 @@ class UndoControlpanel extends Component {
       this.setState({
         isClickedOnUndoButton: false,
       });
-      this.props.toastify.toast.success(
+      toast.success(
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
@@ -501,7 +501,7 @@ class UndoControlpanel extends Component {
             />
           </Segment>
           <Segment>
-            {this.props.transactions.length > 0 && (
+            {this.props.transactions && this.props.transactions.length > 0 && (
               <Form
                 schema={{
                   fieldsets: [
@@ -698,7 +698,6 @@ class UndoControlpanel extends Component {
 
 export default compose(
   injectIntl,
-  injectLazyLibs(['toastify']),
   connect(
     (state, props) => ({
       pathname: props.location.pathname,

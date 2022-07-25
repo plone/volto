@@ -165,7 +165,6 @@ class Controlpanels extends Component {
           group: this.props.intl.formatMessage(messages.general),
           title: 'Database',
         },
-        // This is the icon place in UndoControlPanel
         {
           '@id': '/undo',
           group: this.props.intl.formatMessage(messages.general),

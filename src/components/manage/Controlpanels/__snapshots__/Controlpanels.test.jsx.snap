@@ -204,7 +204,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                   <div
                     className="content"
                   >
-                    Undo Control Panel
+                    Undo
                   </div>
                 </h3>
               </a>
@@ -684,7 +684,7 @@ exports[`Controlpanels renders an additional control panel 1`] = `
                   <div
                     className="content"
                   >
-                    Undo Control Panel
+                    Undo
                   </div>
                 </h3>
               </a>
