@@ -4,13 +4,24 @@
 
 ### Breaking
 
+- Staticize Poppins font to be compliant with EU privacy. Import from GoogleFont is disabled in site.variables.  @giuliaghisini
+
 ### Feature
+
+- [generator] Improvements to the addon generator: Now it wires up the addon automatically for immediate local development @sneridagh
+- complete eu translation @erral
+- complete es translation @erral
 
 ### Bugfix
 
 ### Internal
 
+- Update json-schema including transitive dependencies @davisagli
+
 ### Documentation
+
+- Fix redirect on YouTube, broken link after merge and deleted branch. @stevepiercy
+
 
 ## 16.0.0-alpha.15 (2022-07-21)
 
@@ -175,6 +186,7 @@
 - Fix RenderBlocks: path @ksuess
 - Fix field id creation in dexterity control panel to have slugified id @erral
 - Changed to get intl.locale always from state @ionlizarazu
+
 ### Feature
 
 - Updated Brazilian Portuguese translation @ericof
