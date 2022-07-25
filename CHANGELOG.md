@@ -2,17 +2,9 @@
 
 ## 16.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Make `crypto-random-string` a direct dep, fixing a hidden error since some updated dependency was requiring it directly but not anymore. @sneridagh
-
-### Internal
-
-### Documentation
 
 ## 16.0.0-alpha.16 (2022-07-25)
 
