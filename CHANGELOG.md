@@ -4,11 +4,15 @@
 
 ### Breaking
 
+- Remove the "callout" button (the one with the megaphone icon) since they have the same styling. If you need it anyways, you can bring it back in your addon. @sneridagh
+
 ### Feature
 
 ### Bugfix
 
 ### Internal
+
+- Fix `defaultBlockType` entry in default config, set it to slate. @sneridagh
 
 ### Documentation
 
