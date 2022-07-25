@@ -8,6 +8,7 @@
 
 ### Feature
 
+- [generator] Improvements to the addon generator: Now it wires up the addon automatically for immediate local development @sneridagh
 - complete eu translation @erral
 - complete es translation @erral
 
