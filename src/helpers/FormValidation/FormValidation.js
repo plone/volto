@@ -184,8 +184,8 @@ const validateRequiredFields = (
 ) => {
   const errors = {};
   const fields = isEmpty(touchedField)
-    ? schema?.required
-    : intersection(schema?.required, keys(touchedField));
+    ? schema.required
+    : intersection(schema.required, keys(touchedField));
   map(fields, (requiredField) => {
     const type = schema.properties[requiredField]?.type;
     const widget = schema.properties[requiredField]?.widget;
@@ -349,7 +349,7 @@ class FormValidation {
     touchedField = {},
   } = {}) {
     return validateFieldsPerFieldset(
-      schema || {}, // If schema is null for some reason (schema request haven't fulfilled yet) we need to normalize it
+      schema,
       formData,
       formatMessage,
       touchedField,

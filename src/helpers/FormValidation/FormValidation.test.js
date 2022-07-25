@@ -53,12 +53,6 @@ describe('FormValidation', () => {
       expect(FormValidation.validateFieldsPerFieldset()).toEqual({});
     });
 
-    it('does not break if schema is null', () => {
-      expect(
-        FormValidation.validateFieldsPerFieldset({ schema: null }),
-      ).toEqual({});
-    });
-
     it('validates missing required', () => {
       expect(
         FormValidation.validateFieldsPerFieldset({
