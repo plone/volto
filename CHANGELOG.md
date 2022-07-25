@@ -2,17 +2,9 @@
 
 ## 15.12.3 (unreleased)
 
-### Breaking
-
-- Staticize Poppins font to be compliant with EU privacy. Import from GoogleFont is disabled in site.variables. @giuliaghisini
-
-### Feature
-
-### Bugfix
-
 ### Internal
 
-### Documentation
+- Staticize Poppins font to be compliant with EU privacy. Import from GoogleFont is disabled in site.variables. @giuliaghisini
 
 ## 15.12.2 (2022-07-20)
 
