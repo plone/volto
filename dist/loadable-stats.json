@@ -2,7 +2,7 @@
   "errors": [],
   "warnings": [],
   "version": "4.43.0",
-  "hash": "8829cd9ab421d98a7842",
+  "hash": "2fac63b1d6295cfbbcb5",
   "publicPath": "/",
   "outputPath": "/Users/sneridagh/Development/plone/volto/build/public",
   "assetsByChunkName": {
@@ -15,9 +15,9 @@
       "static/js/moment.dfd83abb.chunk.js.map"
     ],
     "client": [
-      "static/css/client.9942f128.chunk.css",
-      "static/js/client.9942f128.chunk.js",
-      "static/js/client.9942f128.chunk.js.map"
+      "static/css/client.aa123c30.chunk.css",
+      "static/js/client.aa123c30.chunk.js",
+      "static/js/client.aa123c30.chunk.js.map"
     ],
     "draft-js-lib-isSoftNewlineEvent": [
       "static/js/draft-js-lib-isSoftNewlineEvent.ad4b1307.chunk.js",
@@ -127,8 +127,8 @@
       "emitted": false
     },
     {
-      "name": "static/css/14.28a992d7.chunk.css",
-      "size": 586837,
+      "name": "static/css/14.95a6fe49.chunk.css",
+      "size": 586714,
       "chunks": [
         14
       ],
@@ -139,8 +139,8 @@
       "emitted": false
     },
     {
-      "name": "static/css/14.28a992d7.chunk.css.map",
-      "size": 3260599,
+      "name": "static/css/14.95a6fe49.chunk.css.map",
+      "size": 1710583,
       "chunks": [],
       "chunkNames": [],
       "info": {},
@@ -167,8 +167,8 @@
       "emitted": false
     },
     {
-      "name": "static/css/client.9942f128.chunk.css",
-      "size": 128135,
+      "name": "static/css/client.aa123c30.chunk.css",
+      "size": 133202,
       "chunks": [
         7
       ],
@@ -181,8 +181,8 @@
       "emitted": false
     },
     {
-      "name": "static/css/client.9942f128.chunk.css.map",
-      "size": 228346,
+      "name": "static/css/client.aa123c30.chunk.css.map",
+      "size": 235897,
       "chunks": [],
       "chunkNames": [],
       "info": {},
@@ -267,7 +267,7 @@
       "emitted": false
     },
     {
-      "name": "static/js/14.28a992d7.chunk.js",
+      "name": "static/js/14.95a6fe49.chunk.js",
       "size": 1114562,
       "chunks": [
         14
@@ -279,7 +279,7 @@
       "emitted": false
     },
     {
-      "name": "static/js/14.28a992d7.chunk.js.LICENSE.txt",
+      "name": "static/js/14.95a6fe49.chunk.js.LICENSE.txt",
       "size": 4250,
       "chunks": [],
       "chunkNames": [],
@@ -287,7 +287,7 @@
       "emitted": false
     },
     {
-      "name": "static/js/14.28a992d7.chunk.js.map",
+      "name": "static/js/14.95a6fe49.chunk.js.map",
       "size": 4924954,
       "chunks": [
         14
@@ -1019,7 +1019,7 @@
       "emitted": false
     },
     {
-      "name": "static/js/client.9942f128.chunk.js",
+      "name": "static/js/client.aa123c30.chunk.js",
       "size": 893683,
       "chunks": [
         7
@@ -1033,8 +1033,8 @@
       "emitted": false
     },
     {
-      "name": "static/js/client.9942f128.chunk.js.map",
-      "size": 2338300,
+      "name": "static/js/client.aa123c30.chunk.js.map",
+      "size": 2338297,
       "chunks": [
         7
       ],
@@ -1283,6 +1283,150 @@
       "emitted": false
     },
     {
+      "name": "static/media/Poppins-Bold-devanagari.7def222d.woff2",
+      "size": 39148,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {},
+      "emitted": false
+    },
+    {
+      "name": "static/media/Poppins-Bold-latin.25b0e113.woff2",
+      "size": 7816,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {},
+      "emitted": false
+    },
+    {
+      "name": "static/media/Poppins-Bold-latinext.96b6d546.woff2",
+      "size": 5384,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {},
+      "emitted": false
+    },
+    {
+      "name": "static/media/Poppins-BoldItalic-devanagari.17352fe0.woff2",
+      "size": 44992,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {},
+      "emitted": false
+    },
+    {
+      "name": "static/media/Poppins-BoldItalic-latin.858549c2.woff2",
+      "size": 8596,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {},
+      "emitted": false
+    },
+    {
+      "name": "static/media/Poppins-BoldItalic-latinext.34ad495c.woff2",
+      "size": 5832,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {},
+      "emitted": false
+    },
+    {
+      "name": "static/media/Poppins-Light-devanagari.dc820d9f.woff2",
+      "size": 39476,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {},
+      "emitted": false
+    },
+    {
+      "name": "static/media/Poppins-Light-latin.8d91ec1c.woff2",
+      "size": 7840,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {},
+      "emitted": false
+    },
+    {
+      "name": "static/media/Poppins-Light-latinext.6731e1ba.woff2",
+      "size": 5428,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {},
+      "emitted": false
+    },
+    {
+      "name": "static/media/Poppins-Regular-devanagari.790d0c8d.woff2",
+      "size": 39564,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {},
+      "emitted": false
+    },
+    {
+      "name": "static/media/Poppins-Regular-latin.9212f6f9.woff2",
+      "size": 7884,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {},
+      "emitted": false
+    },
+    {
+      "name": "static/media/Poppins-Regular-latinext.0ed299a4.woff2",
+      "size": 5544,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {},
+      "emitted": false
+    },
+    {
+      "name": "static/media/Poppins-RegularItalic-devanagari.ba7c820d.woff2",
+      "size": 45816,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {},
+      "emitted": false
+    },
+    {
+      "name": "static/media/Poppins-RegularItalic-latin.a242ba0d.woff2",
+      "size": 8668,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {},
+      "emitted": false
+    },
+    {
+      "name": "static/media/Poppins-RegularItalic-latinext.efd6a6a1.woff2",
+      "size": 5872,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {},
+      "emitted": false
+    },
+    {
+      "name": "static/media/Poppins-Semibold-devanagari.79e6e81d.woff2",
+      "size": 39136,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {},
+      "emitted": false
+    },
+    {
+      "name": "static/media/Poppins-Semibold-latin.a09f2fcc.woff2",
+      "size": 7748,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {},
+      "emitted": false
+    },
+    {
+      "name": "static/media/Poppins-Semibold-latinext.a6ff41d1.woff2",
+      "size": 5452,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {},
+      "emitted": false
+    },
+    {
       "name": "static/media/block-image.8a4a14d5.svg",
       "size": 428,
       "chunks": [],
@@ -1366,12 +1510,12 @@
       "assets": [
         "static/js/runtime~client.084b02ee.js",
         "static/js/runtime~client.084b02ee.js.map",
-        "static/css/14.28a992d7.chunk.css",
-        "static/js/14.28a992d7.chunk.js",
-        "static/js/14.28a992d7.chunk.js.map",
-        "static/css/client.9942f128.chunk.css",
-        "static/js/client.9942f128.chunk.js",
-        "static/js/client.9942f128.chunk.js.map"
+        "static/css/14.95a6fe49.chunk.css",
+        "static/js/14.95a6fe49.chunk.js",
+        "static/js/14.95a6fe49.chunk.js.map",
+        "static/css/client.aa123c30.chunk.css",
+        "static/js/client.aa123c30.chunk.js",
+        "static/js/client.aa123c30.chunk.js.map"
       ],
       "children": {},
       "childAssets": {}
@@ -1387,12 +1531,12 @@
       "assets": [
         "static/js/runtime~client.084b02ee.js",
         "static/js/runtime~client.084b02ee.js.map",
-        "static/css/14.28a992d7.chunk.css",
-        "static/js/14.28a992d7.chunk.js",
-        "static/js/14.28a992d7.chunk.js.map",
-        "static/css/client.9942f128.chunk.css",
-        "static/js/client.9942f128.chunk.js",
-        "static/js/client.9942f128.chunk.js.map"
+        "static/css/14.95a6fe49.chunk.css",
+        "static/js/14.95a6fe49.chunk.js",
+        "static/js/14.95a6fe49.chunk.js.map",
+        "static/css/client.aa123c30.chunk.css",
+        "static/js/client.aa123c30.chunk.js",
+        "static/js/client.aa123c30.chunk.js.map"
       ],
       "children": {},
       "childAssets": {}
