@@ -6,17 +6,14 @@
 
 - Staticize Poppins font to be compliant with EU privacy. Import from GoogleFont is disabled in site.variables.  @giuliaghisini
 
-### Feature
-
 ### Bugfix
-- Add some more messages to be able to translate them @erral 
+
+- Add some more messages to be able to translate them @erral
 - Fix typo in de locale @wolbernd
 - [generator] Improvements to the addon generator: Now it wires up the addon automatically for immediate local development @sneridagh
 - complete eu translation @erral
 - complete es translation @erral
-- Generators: Add .editorconfig and .prettierignore to generated projects and addons. @ericof
-
-### Bugfix
+- [generator] Add .editorconfig and .prettierignore to generated projects and addons. @ericof
 
 ### Internal
 
