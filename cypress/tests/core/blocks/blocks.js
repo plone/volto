@@ -16,12 +16,11 @@ describe('Blocks Tests', () => {
     cy.waitForResourceToLoad('@types');
     cy.waitForResourceToLoad('my-page');
     cy.navigate('/my-page/edit');
-    cy.get(`.block.title [data-contents]`);
   });
 
   it('Add maps block', () => {
     // when I add a maps block
-    cy.get('.block.text [contenteditable]').click();
+    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('Maps').click();
@@ -52,7 +51,7 @@ describe('Blocks Tests', () => {
       'React-based front-end for the Plone and Guillotina';
 
     // Edit
-    cy.get('.block.text [contenteditable]').click();
+    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .hero').contains('Hero').click();
@@ -77,6 +76,7 @@ describe('Blocks Tests', () => {
     cy.get(`.${block}-body h1`).contains(`${expectedTitle}`);
     cy.get(`.${block}-body p`).contains(`${expectedDescription}`);
   });
+
   // it('Add hero block', () => {
   //   // TODO: Implement react dropzone for this block to test the image
 
@@ -87,7 +87,7 @@ describe('Blocks Tests', () => {
   //     'React-based front-end for the Plone and Guillotina';
 
   //   // Edit
-  //   cy.get('.block.text [contenteditable]').click();
+  //   cy.getSlate().click();
   //   cy.get('button.block-add-button').click();
   //   cy.get('button.show-hidden-blocks').click();
   //   cy.get(`button.add-${block}-block`).click();
@@ -126,7 +126,7 @@ describe('Blocks Tests', () => {
 
   it('Add HTML block', () => {
     // when I add a maps block
-    cy.get('.block.text [contenteditable]').click();
+    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('HTML').click();
@@ -151,20 +151,33 @@ describe('Blocks Tests', () => {
     cy.intercept('PATCH', '*').as('save');
     cy.intercept('GET', '/**/my-page').as('content');
     // Edit
-    cy.get('.block.text [contenteditable]').click();
+    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
-    cy.get('.ui.buttons .button.table').click();
-    cy.get('.celled.fixed.table tr th:first-child()')
+    cy.get('.ui.buttons .button.slateTable').click();
+    cy.wait(2000);
+    cy.get(
+      '.celled.fixed.table thead tr th:first-child() [contenteditable="true"]',
+    )
+      .focus()
       .click()
       .type('column 1 / row 1');
-    cy.get('.celled.fixed.table tr th:nth-child(2)')
+    cy.get(
+      '.celled.fixed.table thead tr th:nth-child(2) [contenteditable="true"]',
+    )
+      .focus()
       .click()
       .type('column 2 / row 1');
-    cy.get('.celled.fixed.table tr:nth-child(2) td:first-child()')
+    cy.get(
+      '.celled.fixed.table tbody tr:nth-child(1) td:first-child() [contenteditable="true"]',
+    )
+      .focus()
       .click()
       .type('column 1 / row 2');
-    cy.get('.celled.fixed.table tr:nth-child(2) td:nth-child(2)')
+    cy.get(
+      '.celled.fixed.table tbody tr:nth-child(1) td:nth-child(2) [contenteditable="true"]',
+    )
+      .focus()
       .click()
       .type('column 2 / row 2');
     cy.get('button[title="Insert col after"]').click();
@@ -178,21 +191,21 @@ describe('Blocks Tests', () => {
     cy.wait('@content');
 
     // View
-    cy.get('.celled.fixed.table tr th:first-child()').contains(
+    cy.get('.celled.fixed.table thead tr th:first-child()').contains(
       'column 1 / row 1',
     );
-    cy.get('.celled.fixed.table tr th:nth-child(3)').contains(
+    cy.get('.celled.fixed.table thead tr th:nth-child(3)').contains(
       'column 2 / row 1',
     );
-    cy.get('.celled.fixed.table tr:nth-child(3) td:first-child()').contains(
-      'column 1 / row 2',
-    );
-    cy.get('.celled.fixed.table tr:nth-child(3) td:nth-child(3)').contains(
-      'column 2 / row 2',
-    );
+    cy.get(
+      '.celled.fixed.table tbody tr:nth-child(2) td:first-child()',
+    ).contains('column 1 / row 2');
+    cy.get(
+      '.celled.fixed.table tbody tr:nth-child(2) td:nth-child(3)',
+    ).contains('column 2 / row 2');
 
     // Edit
-    cy.navigate('/my-page/edit');
+    cy.visit('/my-page/edit');
     cy.waitForResourceToLoad('my-page');
     cy.waitForResourceToLoad('@navigation');
     cy.waitForResourceToLoad('@breadcrumbs');
@@ -209,14 +222,22 @@ describe('Blocks Tests', () => {
     });
 
     // without the second click the test fails. so this makes the test green.
-    cy.get('.celled.fixed.table tr:first-child() th:nth-child(2)').click();
+    cy.get(
+      '.celled.fixed.table thead tr:first-child() th:nth-child(2)',
+    ).click();
 
     cy.get('button[title="Delete col"]').click();
-    cy.get('.celled.fixed.table tr:first-child() th:nth-child(3)').click();
+    cy.get(
+      '.celled.fixed.table thead tr:first-child() th:nth-child(3)',
+    ).click();
     cy.get('button[title="Delete col"]').click();
-    cy.get('.celled.fixed.table tr:nth-child(2) td:first-child()').click();
+    cy.get(
+      '.celled.fixed.table tbody tr:first-child() td:first-child()',
+    ).click();
     cy.get('button[title="Delete row"]').click();
-    cy.get('.celled.fixed.table tr:nth-child(3) td:first-child()').click();
+    cy.get(
+      '.celled.fixed.table tbody tr:nth-child(2) td:first-child()',
+    ).click();
     cy.get('button[title="Delete row"]').click();
 
     // Save
@@ -225,50 +246,52 @@ describe('Blocks Tests', () => {
     cy.wait('@content');
 
     // View
-    cy.get('.celled.fixed.table tr th:first-child()').should(
+    cy.get('.celled.fixed.table thead tr th:first-child()').should(
       'contain',
       'column 1 / row 1',
     );
-    cy.get('th:nth-child(2)> p ').should('have.text', 'column 2 / row 1');
-    cy.get('.celled.fixed.table tr:nth-child(2) td:first-child()').contains(
-      'column 1 / row 2',
+    cy.get('.celled.fixed.table thead tr th:nth-child(2)> p ').should(
+      'have.text',
+      'column 2 / row 1',
     );
-    cy.get('.celled.fixed.table tr:nth-child(2) td:nth-child(2)').contains(
-      'column 2 / row 2',
-    );
-  });
-
-  it('Add Table of Contents block', () => {
-    cy.intercept('PATCH', '*').as('save');
-    cy.intercept('GET', '/**/my-page').as('content');
-    // given a text block with a H2 headline
-    cy.get('.block.inner.text .public-DraftEditor-content')
-      .type('This is a H2 Headline')
-      .setSelection('This is a H2 Headline');
     cy.get(
-      '#page-edit .draftJsToolbar__buttonWrapper__1Dmqh:nth-of-type(5)',
-    ).click();
-    cy.get('.block.inner.text .public-DraftEditor-content')
-      .click()
-      .type(' {enter}');
-
-    // when I add a ToC block
-    cy.get('.ui.basic.icon.button.block-add-button').click();
-    cy.get('.title').contains('Common').click();
-    cy.get('.ui.basic.icon.button.toc').contains('Table of Contents').click();
-    cy.get('#toolbar-save').click();
-    cy.wait('@save');
-    cy.wait('@content');
-
-    cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
-
-    // then the ToC block should contain the H2 headline
-    cy.get('.block.table-of-contents .ui.list a').contains(
-      'This is a H2 Headline',
-    );
-    cy.get('.block.table-of-contents .ui.list div').should(
-      'have.class',
-      'header-two',
-    );
+      '.celled.fixed.table tbody tr:first-child() td:first-child()',
+    ).contains('column 1 / row 2');
+    cy.get(
+      '.celled.fixed.table tbody tr:first-child() td:nth-child(2)',
+    ).contains('column 2 / row 2');
   });
+
+  // TODO: use ToC from volto-block-toc
+  // it('Add Table of Contents block', () => {
+  //   // given a text block with a H2 headline
+  //   cy.getSlate()
+  //     .focus()
+  //     .click()
+  //     .type('This is a H2 Headline')
+  //     .setSlateSelection('This is a H2 Headline');
+  //   cy.clickSlateButton('Subtitle');
+  //   cy.getSlate().focus().click().type(' {enter}');
+
+  //   // when I add a ToC block
+  //   cy.get('.ui.basic.icon.button.block-add-button').click();
+  //   cy.get('.title').contains('Common').click();
+  //   cy.get('.ui.basic.icon.button.toc').contains('Table of Contents').click();
+  //   cy.get('#toolbar-save').click();
+  //   cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
+  //   cy.waitForResourceToLoad('@navigation');
+  //   cy.waitForResourceToLoad('@breadcrumbs');
+  //   cy.waitForResourceToLoad('@actions');
+  //   cy.waitForResourceToLoad('@types');
+  //   cy.waitForResourceToLoad('');
+
+  //   // then the ToC block should contain the H2 headline
+  //   cy.get('.block.table-of-contents .ui.list a').contains(
+  //     'This is a H2 Headline',
+  //   );
+  //   cy.get('.block.table-of-contents .ui.list div').should(
+  //     'have.class',
+  //     'header-two',
+  //   );
+  // });
 });

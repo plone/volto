@@ -7,6 +7,9 @@ const PLONE_SITE_ID = Cypress.env('SITE_ID') || 'plone';
 const PLONE_API_URL =
   Cypress.env('API_PATH') || `http://${HOSTNAME}:55001/${PLONE_SITE_ID}`;
 
+const SLATE_SELECTOR = '.content-area .slate-editor [contenteditable=true]';
+const SLATE_TITLE_SELECTOR = '.block.inner.title [contenteditable="true"]';
+
 // --- AUTOLOGIN -------------------------------------------------------------
 Cypress.Commands.add('autologin', (usr, pass) => {
   let api_url, user, password;
@@ -116,7 +119,7 @@ Cypress.Commands.add(
             title: contentTitle,
             blocks: {
               'd3f1c443-583f-4e8e-a682-3bf25752a300': { '@type': 'title' },
-              '7624cf59-05d0-4055-8f55-5fd6597d84b0': { '@type': 'text' },
+              '7624cf59-05d0-4055-8f55-5fd6597d84b0': { '@type': 'slate' },
             },
             blocks_layout: {
               items: [
@@ -164,6 +167,7 @@ Cypress.Commands.add(
     }
   },
 );
+
 // Remove content
 Cypress.Commands.add('removeContent', ({ path = '' }) => {
   let api_url, auth;
@@ -180,6 +184,7 @@ Cypress.Commands.add('removeContent', ({ path = '' }) => {
       pass: 'secret',
     };
   }
+
   return cy.request({
     method: 'DELETE',
     url: `${api_url}/${path}`,
@@ -188,6 +193,100 @@ Cypress.Commands.add('removeContent', ({ path = '' }) => {
     },
     auth: auth,
   });
+});
+
+// --- Add DX Content-Type ----------------------------------------------------------
+Cypress.Commands.add('addContentType', (name) => {
+  let api_url, auth;
+  api_url = Cypress.env('API_PATH') || 'http://localhost:8080/Plone';
+  auth = {
+    user: 'admin',
+    pass: 'secret',
+  };
+  return cy
+    .request({
+      method: 'POST',
+      url: `${api_url}/@controlpanels/dexterity-types/${name}`,
+      headers: {
+        Accept: 'application/json',
+      },
+      auth: auth,
+      body: {
+        title: name,
+      },
+    })
+    .then(() => console.log(`${name} content-type added.`));
+});
+
+// --- Remove DX behavior ----------------------------------------------------------
+Cypress.Commands.add('removeContentType', (name) => {
+  let api_url, auth;
+  api_url = Cypress.env('API_PATH') || 'http://localhost:8080/Plone';
+  auth = {
+    user: 'admin',
+    pass: 'secret',
+  };
+  return cy
+    .request({
+      method: 'DELETE',
+      url: `${api_url}/@controlpanels/dexterity-types/${name}`,
+      headers: {
+        Accept: 'application/json',
+      },
+      auth: auth,
+      body: {},
+    })
+    .then(() => console.log(`${name} content-type removed.`));
+});
+
+// --- Add DX field ----------------------------------------------------------
+Cypress.Commands.add('addSlateJSONField', (type, name) => {
+  let api_url, auth;
+  api_url = Cypress.env('API_PATH') || 'http://localhost:8080/Plone';
+  auth = {
+    user: 'admin',
+    pass: 'secret',
+  };
+  return cy
+    .request({
+      method: 'POST',
+      url: `${api_url}/@types/${type}`,
+      headers: {
+        Accept: 'application/json',
+      },
+      auth: auth,
+      body: {
+        id: name,
+        title: name,
+        description: 'Slate JSON Field',
+        factory: 'SlateJSONField',
+        required: false,
+      },
+    })
+    .then(() => console.log(`${name} SlateJSONField field added to ${type}`));
+});
+
+// --- Remove DX field ----------------------------------------------------------
+Cypress.Commands.add('removeSlateJSONField', (type, name) => {
+  let api_url, auth;
+  api_url = Cypress.env('API_PATH') || 'http://localhost:8080/Plone';
+  auth = {
+    user: 'admin',
+    pass: 'secret',
+  };
+  return cy
+    .request({
+      method: 'DELETE',
+      url: `${api_url}/@types/${type}/${name}`,
+      headers: {
+        Accept: 'application/json',
+      },
+      auth: auth,
+      body: {},
+    })
+    .then(() =>
+      console.log(`${name} SlateJSONField field removed from ${type}`),
+    );
 });
 
 // --- CREATE USER --------------------------------------------------------
@@ -199,6 +298,16 @@ Cypress.Commands.add(
     email = 'editor@local.dev',
     password = 'secret',
     roles = ['Member', 'Reader', 'Editor'],
+    groups = {
+      '@id': 'http://localhost:3000/@users',
+      items: [
+        {
+          id: 'AuthenticatedUsers',
+          title: 'AuthenticatedUsers',
+        },
+      ],
+      items_total: 1,
+    },
   }) => {
     let api_url, auth, path;
     if (Cypress.env('API') === 'guillotina') {
@@ -232,6 +341,7 @@ Cypress.Commands.add(
           email: email,
           password: password,
           roles: roles,
+          groups: groups,
         },
       })
       .then(() => console.log(`User ${username} created`));
@@ -268,6 +378,59 @@ Cypress.Commands.add('removeUser', (username = 'editor') => {
     })
     .then(() => console.log(`User ${username} removed`));
 });
+
+// --- GROUP -----------------------------------------------------------------
+
+Cypress.Commands.add(
+  'createGroup',
+  ({
+    groupname = 'teachers',
+    email = 'teachers@local.dev',
+    password = 'secret',
+    roles = ['Member', 'Reader'],
+    users = {
+      '@id': 'http://localhost:3000/@groups',
+      items: [],
+      items_total: 0,
+    },
+  }) => {
+    let api_url, auth, path;
+    if (Cypress.env('API') === 'guillotina') {
+      api_url = GUILLOTINA_API_URL;
+      auth = {
+        user: 'root',
+        pass: 'root',
+      };
+      path = 'groups';
+    } else {
+      api_url = PLONE_API_URL;
+      auth = {
+        user: 'admin',
+        pass: 'secret',
+      };
+      path = '@groups';
+    }
+
+    return cy
+      .request({
+        method: 'POST',
+        url: `${api_url}/${path}`,
+        headers: {
+          Accept: 'application/json',
+        },
+        auth: auth,
+        body: {
+          '@type': 'Group',
+          groupname: groupname,
+          email: email,
+          password: password,
+          roles: roles,
+          users: users,
+        },
+      })
+      .then(() => console.log(`Group ${groupname} created`));
+  },
+);
 
 // --- SET WORKFLOW ----------------------------------------------------------
 Cypress.Commands.add(
@@ -371,7 +534,12 @@ Cypress.Commands.add('setRegistry', (record, value) => {
 
 // Low level command reused by `setSelection` and low level command `setCursor`
 Cypress.Commands.add('selection', { prevSubject: true }, (subject, fn) => {
-  cy.wrap(subject).trigger('mousedown').then(fn).trigger('mouseup');
+  cy.wrap(subject)
+    .trigger('mousedown')
+    .wait(1000) //multiple waits between selecting the text to ensure toolbar is visible.
+    .then(fn)
+    .wait(1000)
+    .trigger('mouseup');
 
   cy.document().trigger('selectionchange');
   return cy.wrap(subject);
@@ -438,6 +606,128 @@ Cypress.Commands.add(
   },
 );
 
+Cypress.Commands.add(
+  'pasteClipboard',
+  { prevSubject: true },
+  (query, htmlContent) => {
+    return cy
+      .wrap(query)
+      .type(' ')
+      .trigger('paste', createHtmlPasteEvent(htmlContent));
+  },
+);
+
+Cypress.Commands.add('toolbarSave', () => {
+  // Save
+  cy.get('#toolbar-save', { timeout: 10000 }).click();
+  cy.waitForResourceToLoad('@navigation');
+  cy.waitForResourceToLoad('@breadcrumbs');
+  cy.waitForResourceToLoad('@actions');
+  cy.waitForResourceToLoad('@types');
+});
+
+Cypress.Commands.add('clearSlate', (selector) => {
+  return cy
+    .get(selector)
+    .focus()
+    .click()
+    .wait(1000)
+    .type('{selectAll}')
+    .wait(1000)
+    .type('{backspace}');
+});
+
+Cypress.Commands.add('getSlate', (createNewSlate = false) => {
+  let slate;
+  cy.getIfExists(
+    SLATE_SELECTOR,
+    () => {
+      slate = cy.get(SLATE_SELECTOR).last();
+    },
+    () => {
+      if (createNewSlate) {
+        cy.get('.block.inner').last().type('{enter}');
+        slate = cy.get(SLATE_SELECTOR, { timeout: 10000 }).last();
+      } else {
+        slate = cy.get(SLATE_SELECTOR, { timeout: 10000 }).last();
+      }
+    },
+  );
+  return slate;
+});
+
+Cypress.Commands.add('getSlateTitle', () => {
+  return cy.get(SLATE_TITLE_SELECTOR, {
+    timeout: 10000,
+  });
+});
+
+Cypress.Commands.add('clearSlateTitle', () => {
+  return cy.clearSlate(SLATE_TITLE_SELECTOR);
+});
+
+// Slate commands
+Cypress.Commands.add('typeInSlate', { prevSubject: true }, (subject, text) => {
+  return (
+    cy
+      .wrap(subject)
+      .then((subject) => {
+        subject[0].dispatchEvent(
+          new InputEvent('beforeinput', {
+            inputType: 'insertText',
+            data: text,
+          }),
+        );
+        return subject;
+      })
+      // TODO: do this only for Electron-based browser which does not understand instantaneously
+      // that the user inserted some text in the block
+      .wait(1000)
+  );
+});
+
+Cypress.Commands.add('lineBreakInSlate', { prevSubject: true }, (subject) => {
+  return (
+    cy
+      .wrap(subject)
+      .then((subject) => {
+        subject[0].dispatchEvent(
+          new InputEvent('beforeinput', { inputType: 'insertLineBreak' }),
+        );
+        return subject;
+      })
+      // TODO: do this only for Electron-based browser which does not understand instantaneously
+      // that the block was split
+      .wait(1000)
+  );
+});
+
+Cypress.Commands.add('setSlateSelection', (subject, query, endQuery) => {
+  cy.get('.slate-editor.selected [contenteditable=true]')
+    .focus()
+    .click()
+    .setSelection(subject, query, endQuery)
+    .wait(1000); // this wait is needed for the selection change to be detected after
+});
+
+Cypress.Commands.add('getSlateEditorAndType', (type) => {
+  cy.getSlate().focus().click().type(type);
+});
+
+Cypress.Commands.add('setSlateCursor', (subject, query, endQuery) => {
+  cy.get('.slate-editor.selected [contenteditable=true]')
+    .focus()
+    .click()
+    .setCursor(subject, query, endQuery)
+    .wait(1000); // this wait is needed for the selection change to be detected after
+});
+
+Cypress.Commands.add('clickSlateButton', (button) => {
+  cy.get(`.slate-inline-toolbar .button-wrapper a[title="${button}"]`, {
+    timeout: 10000,
+  }).click({ force: true }); //force click is needed to ensure the button in visible in view.
+});
+
 // Helper functions
 function getTextNode(el, match) {
   const walk = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false);
@@ -458,6 +748,18 @@ function setBaseAndExtent(...args) {
   const document = args[0].ownerDocument;
   document.getSelection().removeAllRanges();
   document.getSelection().setBaseAndExtent(...args);
+}
+
+function createHtmlPasteEvent(htmlContent) {
+  return Object.assign(
+    new Event('paste', { bubbles: true, cancelable: true }),
+    {
+      clipboardData: {
+        getData: () => htmlContent,
+        types: ['text/html'],
+      },
+    },
+  );
 }
 
 Cypress.Commands.add('navigate', (route = '') => {
