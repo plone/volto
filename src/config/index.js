@@ -106,7 +106,7 @@ let config = {
     defaultLanguage: 'en',
     navDepth: 1,
     expressMiddleware: serverConfig.expressMiddleware, // BBB
-    defaultBlockType: 'text',
+    defaultBlockType: 'slate',
     verticalFormTabs: false,
     useEmailAsLogin: false,
     persistentReducers: ['blocksClipboard'],
