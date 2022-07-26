@@ -14,6 +14,10 @@
 
 ## 16.0.0-alpha.17 (2022-07-25)
 
+### Feature
+
+- Adding `Undo controlpanel` in the controlpanels, using it undone is possible on the transactions. @MdSahil-oss
+
 ### Bugfix
 
 - Make `crypto-random-string` a direct dep, fixing a hidden error since some updated dependency was requiring it directly but not anymore. @sneridagh
