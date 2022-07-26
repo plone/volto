@@ -10,7 +10,7 @@ describe('AddonConfigurationRegistry', () => {
     const base = path.join(__dirname, '..');
     const reg = new AddonConfigurationRegistry(base);
     expect(reg.projectRootPath).toStrictEqual(base);
-    expect(reg.addonNames).toStrictEqual([]);
+    expect(reg.addonNames).toStrictEqual(['@plone/volto-slate']);
   });
 
   it('works in a mock project directory', () => {

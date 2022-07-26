@@ -12,6 +12,95 @@
 
 ### Documentation
 
+## 16.0.0-alpha.18 (2022-07-26)
+
+### Breaking
+
+- Remove the `callout` button (the one with the megaphone icon) from the slate toolbar since it has the same styling as `blockquote`. If you need it anyway, you can bring it back in your addon. @sneridagh
+
+### Bugfix
+
+- Fix edge cases in Cypress flaky tests when the Edit component was loaded without loading the type schema. @sneridagh & @davisagli
+
+### Internal
+
+- Fix `defaultBlockType` entry in default config, set it to slate. @sneridagh
+
+## 16.0.0-alpha.17 (2022-07-25)
+
+### Bugfix
+
+- Make `crypto-random-string` a direct dep, fixing a hidden error since some updated dependency was requiring it directly but not anymore. @sneridagh
+
+## 16.0.0-alpha.16 (2022-07-25)
+
+### Do not use, this is a brown bag release
+
+See: https://github.com/plone/volto/pull/3505
+Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alpha.17
+
+### Breaking
+
+- Staticize Poppins font to be compliant with EU privacy. Import from GoogleFont is disabled in site.variables.  @giuliaghisini
+
+### Bugfix
+
+- Add some more messages to be able to translate them @erral
+- Fix typo in de locale @wolbernd
+- [generator] Improvements to the addon generator: Now it wires up the addon automatically for immediate local development @sneridagh
+- complete eu translation @erral
+- complete es translation @erral
+- [generator] Add .editorconfig and .prettierignore to generated projects and addons. @ericof
+
+### Internal
+
+- Update json-schema including transitive dependencies @davisagli
+- Update release-it @davisagli
+- Deduplicate dependencies using yarn-deduplicate @davisagli
+
+### Documentation
+
+- Fix redirect on YouTube, broken link after merge and deleted branch. @stevepiercy
+
+## 16.0.0-alpha.15 (2022-07-21)
+
+### Breaking
+
+- Integrate volto-state add-on. @tiberiuichim @razvanmiu @eea
+
+### Documentation
+
+- volto-slate documentation @nileshgulia1
+
+## 16.0.0-alpha.14 (2022-07-20)
+
+### Breaking
+
+- Action `listUsers`to be called with Object. Distinguish between search for id or search for fullname, email, username @ksuess
+
+### Feature
+
+- Add user group membership control panel @ksuess
+- Action `listUsers`: Support search for fullname, email, username. @ksuess
+
+### Bugfix
+
+- Fix typo in de locale @wolbernd
+
+## 16.0.0-alpha.13 (2022-07-18)
+
+### Feature
+
+- Add schema to video block sidebar @iRohitSingh @danielamormocea
+
+### Bugfix
+
+- Prevent the `defaultView` to show anything if the content is not loaded yet. This fixes showing the non-blocks enabled view for a fraction of a second before showing the blocks-enabled one once the content is loaded. @sneridagh
+
+### Documentation
+
+- `aria-*` attributes are now parsed correctly by jsx-lexer 2.0. @stevepiercy
+
 ## 16.0.0-alpha.12 (2022-07-13)
 
 ### Feature
@@ -136,6 +225,7 @@
 - Fix RenderBlocks: path @ksuess
 - Fix field id creation in dexterity control panel to have slugified id @erral
 - Changed to get intl.locale always from state @ionlizarazu
+
 ### Feature
 
 - Updated Brazilian Portuguese translation @ericof

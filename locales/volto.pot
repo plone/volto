@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-07-11T16:43:32.082Z\n"
+"POT-Creation-Date: 2022-07-19T18:15:23.786Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -145,6 +145,11 @@ msgstr ""
 msgid "Add to Groups"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add users to group
+msgid "Add users to group"
+msgstr ""
+
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Add term
 msgid "Add vocabulary term"
@@ -156,8 +161,18 @@ msgid "Add {type}"
 msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Add-Ons
+msgid "Add-Ons"
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Add-on Configuration
 msgid "Add-on Configuration"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Add-ons
+msgid "Add-ons"
 msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -174,7 +189,7 @@ msgstr ""
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Alignment
 msgid "Alignment"
 msgstr ""
@@ -611,6 +626,11 @@ msgstr ""
 msgid "Daily"
 msgstr ""
 
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Database
+msgid "Database"
+msgstr ""
+
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Database Information
 msgid "Database Information"
@@ -1037,6 +1057,11 @@ msgstr ""
 msgid "Filename"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter users by groups
+msgid "Filter users by groups"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: Filter…
 msgid "Filter…"
@@ -1257,6 +1282,11 @@ msgstr ""
 msgid "Info"
 msgstr ""
 
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+# defaultMessage: You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to user group settings. See the button on the left.
+msgid "InfoUserGroupSettings"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: Inherit permissions from higher levels
 msgid "Inherit permissions from higher levels"
@@ -1300,6 +1330,11 @@ msgstr ""
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Installed version
 msgid "Installed version"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Installing a third party add-on
+msgid "Installing a third party add-on"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -1446,7 +1481,6 @@ msgstr ""
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Link to
 msgid "Link to"
 msgstr ""
@@ -1658,6 +1692,11 @@ msgstr ""
 msgid "No"
 msgstr ""
 
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: No Video selected
+msgid "No Video selected"
+msgstr ""
+
 #: components/manage/Controlpanels/VersionOverview
 # defaultMessage: No addons found
 msgid "No addons found"
@@ -1729,17 +1768,17 @@ msgstr ""
 msgid "No uninstall profile"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: No user found
+msgid "No user found"
+msgstr ""
+
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 #: components/manage/Widgets/SelectUtils
 #: components/manage/Widgets/SelectWidget
 # defaultMessage: No value
 msgid "No value"
-msgstr ""
-
-#: components/manage/Blocks/Video/VideoSidebar
-# defaultMessage: No video selected
-msgid "No video selected"
 msgstr ""
 
 #: components/manage/Workflow/Workflow
@@ -1785,7 +1824,6 @@ msgstr ""
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr ""
@@ -1891,6 +1929,16 @@ msgstr ""
 msgid "Please fill out the form below to set your password."
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Please search for users or use the filters on the side.
+msgid "Please search for users or use the filters on the side."
+msgstr ""
+
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+# defaultMessage: Please upgrade to plone.restapi >= 8.24.0.
+msgid "Please upgrade to plone.restapi >= 8.24.0."
+msgstr ""
+
 #: components/theme/Footer/Footer
 # defaultMessage: Plone Foundation
 msgid "Plone Foundation"
@@ -1937,7 +1985,7 @@ msgstr ""
 msgid "Preview"
 msgstr ""
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Preview Image URL
 msgid "Preview Image URL"
 msgstr ""
@@ -2040,6 +2088,11 @@ msgstr ""
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Remove term
 msgid "Remove term"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Remove users from group
+msgid "Remove users from group"
 msgstr ""
 
 #: components/manage/Toolbar/More
@@ -2378,6 +2431,11 @@ msgstr ""
 msgid "Show Replies"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Show groups of users below
+msgid "Show groups of users below"
+msgstr ""
+
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Show item
 msgid "Show item"
@@ -2570,7 +2628,8 @@ msgstr ""
 msgid "Table"
 msgstr ""
 
-#: components/manage/Blocks/ToC/View
+#: components/manage/Blocks/ToC/variations/DefaultTocRenderer
+#: components/manage/Blocks/ToC/variations/HorizontalMenu
 # defaultMessage: Table of Contents
 msgid "Table of Contents"
 msgstr ""
@@ -2919,6 +2978,17 @@ msgstr ""
 msgid "User"
 msgstr ""
 
+#: components/manage/Controlpanels/Controlpanels
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Membership
+msgid "User Group Membership"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Settings
+msgid "User Group Settings"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: User created
 msgid "User created"
@@ -2961,12 +3031,13 @@ msgstr ""
 msgid "Version Overview"
 msgstr ""
 
+#: components/manage/Blocks/Video/schema
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Video
 msgid "Video"
 msgstr ""
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Video URL
 msgid "Video URL"
 msgstr ""
