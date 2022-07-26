@@ -9,250 +9,252 @@ msgstr ""
 "POT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
 "PO-Revision-Date: 2022-07-26 12:55-0300\n"
 "Last-Translator: Érico Andrei <ericof@plone.org>\n"
-"Language-Team: Portuguese (https://www.transifex.com/plone/teams/14552/pt/)\n"
 "Language: pt_BR\n"
-"MIME-Version: 1.0\n"
+"Language-Team: Portuguese (https://www.transifex.com/plone/teams/14552/pt/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
 "Language-Code: pt-br\n"
 "Language-Name: Português do Brasil\n"
 "Preferred-Encodings: utf-8\n"
 "Domain: volto\n"
 "X-Generator: Poedit 3.1.1\n"
 
-# defaultMessage: <p>Add some HTML here</p>
 #: components/manage/Blocks/HTML/Edit
+# defaultMessage: <p>Add some HTML here</p>
 msgid "<p>Add some HTML here</p>"
 msgstr "<p>Adicione o HTML aqui</p>"
 
-# defaultMessage: Accessibility
 #: components/theme/Footer/Footer
+# defaultMessage: Accessibility
 msgid "Accessibility"
 msgstr "Acessibilidade"
 
-# defaultMessage: Account Registration Completed
 #: components/theme/Register/Register
+# defaultMessage: Account Registration Completed
 msgid "Account Registration Completed"
 msgstr "Cadastro de Conta Finalizado"
 
-# defaultMessage: Account activation completed
 #: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Account activation completed
 msgid "Account activation completed"
 msgstr "Ativação completa"
 
-# defaultMessage: Action
 #: components/manage/Controlpanels/ModerateComments
+# defaultMessage: Action
 msgid "Action"
 msgstr "Ação"
 
-# defaultMessage: Actions
-#: components/manage/Actions/Actions components/manage/Contents/Contents
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: components/manage/Controlpanels/Users/UsersControlpanel
+# defaultMessage: Actions
 msgid "Actions"
 msgstr "Ações"
 
-# defaultMessage: Activate and deactivate add-ons in the lists below.
 #: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Activate and deactivate add-ons in the lists below.
 msgid "Activate and deactivate"
 msgstr "Ativar e desativar"
 
-# defaultMessage: Add
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Toolbar/Toolbar components/manage/Widgets/SchemaWidget
+#: components/manage/Toolbar/Toolbar
+#: components/manage/Widgets/SchemaWidget
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add
 msgid "Add"
 msgstr "Adicionar"
 
-# defaultMessage: Add
 #: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Add
 msgid "Add (object list)"
 msgstr "Adicionar"
 
-# defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
 #: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
 msgid "Add Addons"
 msgstr "Adicione complementos"
 
-# defaultMessage: Add Content…
 #: components/manage/Toolbar/Types
+# defaultMessage: Add Content…
 msgid "Add Content"
 msgstr "Adicionar conteúdo"
 
-# defaultMessage: Add Translation…
 #: components/manage/Toolbar/Types
+# defaultMessage: Add Translation…
 msgid "Add Translation…"
 msgstr "Adicionar tradução…"
 
-# defaultMessage: Add User
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add User
 msgid "Add User"
 msgstr "Adicionar usuário"
 
-# defaultMessage: Add a description…
 #: components/manage/Blocks/Description/Edit
+# defaultMessage: Add a description…
 msgid "Add a description…"
 msgstr "Adicionar uma descrição…"
 
-# defaultMessage: Add block
 #: components/manage/BlockChooser/BlockChooserButton
+# defaultMessage: Add block
 msgid "Add block"
 msgstr "Adicionar Bloco"
 
-# defaultMessage: Add block…
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add block…
 msgid "Add block…"
 msgstr "Adicionar bloco…"
 
-# defaultMessage: Add criteria
 #: components/manage/Widgets/QueryWidget
+# defaultMessage: Add criteria
 msgid "Add criteria"
 msgstr "Adicionar critério"
 
-# defaultMessage: Add date
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Add date
 msgid "Add date"
 msgstr "Adicionar data"
 
-# defaultMessage: Add field
 #: components/manage/Widgets/SchemaWidget
+# defaultMessage: Add field
 msgid "Add field"
 msgstr "Adicionar campo"
 
-# defaultMessage: Add fieldset
 #: components/manage/Widgets/SchemaWidget
+# defaultMessage: Add fieldset
 msgid "Add fieldset"
 msgstr "Adicionar conjunto de campos"
 
-# defaultMessage: Add group
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add group
 msgid "Add group"
 msgstr "Adicionar grupo"
 
-# defaultMessage: Add new content type
 #: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Add new content type
 msgid "Add new content type"
 msgstr "Adicionar novo tipo de conteúdo"
 
-# defaultMessage: Add new group
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add new group
 msgid "Add new group"
 msgstr "Adicionar novo grupo"
 
-# defaultMessage: Add new user
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add new user
 msgid "Add new user"
 msgstr "Adicionar novo usuário"
 
-# defaultMessage: Add to Groups
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add to Groups
 msgid "Add to Groups"
 msgstr "Adicionar a grupos"
 
-# defaultMessage: Add users to group
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add users to group
 msgid "Add users to group"
 msgstr "Adicionar usuários ao grupo"
 
-# defaultMessage: Add term
 #: components/manage/Widgets/VocabularyTermsWidget
+# defaultMessage: Add term
 msgid "Add vocabulary term"
 msgstr "Adicionar termo de vocabulário"
 
-# defaultMessage: Add {type}
 #: components/manage/Add/Add
+# defaultMessage: Add {type}
 msgid "Add {type}"
 msgstr "Adicionar {type}"
 
-# defaultMessage: Add-Ons
 #: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Add-Ons
 msgid "Add-Ons"
 msgstr "Complementos"
 
-# defaultMessage: Add-on Configuration
 #: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Add-on Configuration
 msgid "Add-on Configuration"
 msgstr "Configuração de complemento"
 
-# defaultMessage: Add-ons
 #: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Add-ons
 msgid "Add-ons"
 msgstr "Complementos"
 
-# defaultMessage: Add-ons Settings
 #: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Add-ons Settings
 msgid "Add-ons Settings"
 msgstr "Configurações dos complementos"
 
-# defaultMessage: Additional date
 #: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: Additional date
 msgid "Additional date"
 msgstr "Outra data"
 
-# defaultMessage: Alignment
 #: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Maps/schema components/manage/Blocks/Video/schema
+#: components/manage/Blocks/Maps/schema
+#: components/manage/Blocks/Video/schema
+# defaultMessage: Alignment
 msgid "Alignment"
 msgstr "Alinhamento"
 
-# defaultMessage: All
 #: components/manage/Contents/Contents
+# defaultMessage: All
 msgid "All"
 msgstr "Todos"
 
-# defaultMessage: Alphabetically
 #: components/theme/Search/Search
+# defaultMessage: Alphabetically
 msgid "Alphabetically"
 msgstr "Alfabeticamente"
 
-# defaultMessage: Alt text
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
+# defaultMessage: Alt text
 msgid "Alt text"
 msgstr "Descrição Alt"
 
-# defaultMessage: Leave empty if the image is purely decorative.
 #: components/manage/Blocks/Image/schema
+# defaultMessage: Leave empty if the image is purely decorative.
 msgid "Alt text hint"
 msgstr "Deixe em branco se a imagem for puramente decorativa."
 
-# defaultMessage: Describe the purpose of the image.
 #: components/manage/Blocks/Image/schema
+# defaultMessage: Describe the purpose of the image.
 msgid "Alt text hint link text"
 msgstr "Descreve o propósito da imagem."
 
-# defaultMessage: Apply working copy
 #: components/manage/Toolbar/More
+# defaultMessage: Apply working copy
 msgid "Apply working copy"
 msgstr "Aplicar a cópia de trabalho"
 
-# defaultMessage: Are you sure you want to delete this field?
 #: components/manage/Widgets/SchemaWidget
+# defaultMessage: Are you sure you want to delete this field?
 msgid "Are you sure you want to delete this field?"
 msgstr "Você realmente deseja deletar este campo?"
 
-# defaultMessage: Are you sure you want to delete this fieldset including all fields?
 #: components/manage/Widgets/SchemaWidget
+# defaultMessage: Are you sure you want to delete this fieldset including all fields?
 msgid "Are you sure you want to delete this fieldset including all fields?"
 msgstr "Você realmente deseja deletar este fieldset com todos os campos?"
 
-# defaultMessage: Ascending
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
+# defaultMessage: Ascending
 msgid "Ascending"
 msgstr "Ascendente"
 
-# defaultMessage: Available
 #: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Available
 msgid "Available"
 msgstr "Disponível"
 
-# defaultMessage: Back
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentType
@@ -261,7 +263,8 @@ msgstr "Disponível"
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/DatabaseInformation
-#: components/manage/Controlpanels/ModerateComments components/manage/Diff/Diff
+#: components/manage/Controlpanels/ModerateComments
+#: components/manage/Diff/Diff
 #: components/manage/History/History
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
@@ -269,394 +272,404 @@ msgstr "Disponível"
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
-#: components/manage/Toolbar/PersonalTools components/manage/Toolbar/Toolbar
-#: components/theme/ContactForm/ContactForm helpers/MessageLabels/MessageLabels
+#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/Toolbar
+#: components/theme/ContactForm/ContactForm
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Back
 msgid "Back"
 msgstr "Voltar"
 
-# defaultMessage: Background color
 #: components/manage/Blocks/Block/StylesSchema
+# defaultMessage: Background color
 msgid "Background color"
 msgstr "Cor de fundo"
 
-# defaultMessage: Base
 #: components/manage/Diff/Diff
+# defaultMessage: Base
 msgid "Base"
 msgstr "Base"
 
-# defaultMessage: Base search query
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Base search query
 msgid "Base search query"
 msgstr "Base da consulta para busca"
 
-# defaultMessage: Block
 #: components/manage/Sidebar/Sidebar
+# defaultMessage: Block
 msgid "Block"
 msgstr "Bloco"
 
-# defaultMessage: Both email address and password are case sensitive, check that caps lock is not enabled.
 #: components/theme/Login/Login
+# defaultMessage: Both email address and password are case sensitive, check that caps lock is not enabled.
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
 msgstr "O endereço de e-mail e a senha diferenciam maiúsculas de minúsculas. Certifique-se que o caps lock não está ativado."
 
-# defaultMessage: Breadcrumbs
 #: components/theme/Breadcrumbs/Breadcrumbs
+# defaultMessage: Breadcrumbs
 msgid "Breadcrumbs"
 msgstr "Navegação estrutural"
 
-# defaultMessage: Browse
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
+# defaultMessage: Browse
 msgid "Browse"
 msgstr "Procurar"
 
-# defaultMessage: Browse the site, drop an image, or type an URL
 #: components/manage/Blocks/Image/Edit
+# defaultMessage: Browse the site, drop an image, or type an URL
 msgid "Browse the site, drop an image, or type an URL"
 msgstr "Navegue no site, arraste uma imagem ou digite um URL"
 
-# defaultMessage: By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator.
 #: components/manage/Sharing/Sharing
+# defaultMessage: By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator.
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "Por padrão, as permissões do contêiner deste item são herdadas. Se você desabilitar isso, apenas as permissões de compartilhamento definidas explicitamente serão válidas. Na visão geral, o símbolo {inherited} indica um valor herdado. Da mesma forma, o símbolo {global} indica uma função global que é gerenciada pelo administrador do site."
 
-# defaultMessage: Cache Name
 #: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Cache Name
 msgid "Cache Name"
 msgstr "Nome do cache"
 
-# defaultMessage: Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled
 #: components/manage/Controlpanels/ContentTypeLayout
+# defaultMessage: Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled
 msgid "Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
 msgstr "Não é possível editar layout para o tipo de conteúdo <strong>{type}</strong> , pois não tem suporte para <strong>Blocos Volto</strong> ativados"
 
-# defaultMessage: Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>
 #: components/manage/Controlpanels/ContentTypeLayout
+# defaultMessage: Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>
 msgid "Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
 msgstr "Não é possível editar layout para o tipo de conteúdo <strong>{type}</strong>, pois o <strong>comportamento de Blocos</strong> está ativado mas  <strong>somentepara leitura</strong>"
 
-# defaultMessage: Cancel
-#: components/manage/Add/Add components/manage/Contents/ContentsUploadModal
-#: components/manage/Controlpanels/ContentType
-#: components/manage/Controlpanels/ContentTypeLayout
-#: components/manage/Controlpanels/ContentTypeSchema
-#: components/manage/Controlpanels/Controlpanel components/manage/Delete/Delete
-#: components/manage/Edit/Edit components/manage/Form/ModalForm
-#: components/manage/Sharing/Sharing components/theme/Login/Login
-#: helpers/MessageLabels/MessageLabels
-msgid "Cancel"
-msgstr "Cancelar"
-
-# defaultMessage: Cell
-#: components/manage/Blocks/Table/Edit
-msgid "Cell"
-msgstr "Célula"
-
-# defaultMessage: Center
-#: components/manage/Blocks/Maps/Edit components/manage/Sidebar/AlignBlock
-msgid "Center"
-msgstr "Centro"
-
-# defaultMessage: Change Note
-#: components/manage/History/History
-msgid "Change Note"
-msgstr "Alterar Nota"
-
-# defaultMessage: Change Password
-#: components/manage/Preferences/ChangePassword
-msgid "Change Password"
-msgstr "Alterar senha"
-
-# defaultMessage: Change State
-#: components/manage/Contents/ContentsWorkflowModal
-msgid "Change State"
-msgstr "Alterar estado"
-
-# defaultMessage: Change workflow state recursively
-#: components/manage/Contents/ContentsWorkflowModal
-msgid "Change workflow state recursively"
-msgstr "Alterar o estado de workflow recursivamente"
-
-# defaultMessage: Changes applied
-#: components/manage/Toolbar/More
-msgid "Changes applied."
-msgstr "Alterações aplicadas."
-
-# defaultMessage: Changes saved
-#: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
-#: components/manage/Preferences/PersonalPreferences
-msgid "Changes saved"
-msgstr "Alterações salvas"
-
-# defaultMessage: Changes saved.
+#: components/manage/Add/Add
+#: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Delete/Delete
+#: components/manage/Edit/Edit
+#: components/manage/Form/ModalForm
+#: components/manage/Sharing/Sharing
+#: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Cancel
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Cell
+msgid "Cell"
+msgstr "Célula"
+
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Sidebar/AlignBlock
+# defaultMessage: Center
+msgid "Center"
+msgstr "Centro"
+
+#: components/manage/History/History
+# defaultMessage: Change Note
+msgid "Change Note"
+msgstr "Alterar Nota"
+
+#: components/manage/Preferences/ChangePassword
+# defaultMessage: Change Password
+msgid "Change Password"
+msgstr "Alterar senha"
+
+#: components/manage/Contents/ContentsWorkflowModal
+# defaultMessage: Change State
+msgid "Change State"
+msgstr "Alterar estado"
+
+#: components/manage/Contents/ContentsWorkflowModal
+# defaultMessage: Change workflow state recursively
+msgid "Change workflow state recursively"
+msgstr "Alterar o estado de workflow recursivamente"
+
+#: components/manage/Toolbar/More
+# defaultMessage: Changes applied
+msgid "Changes applied."
+msgstr "Alterações aplicadas."
+
+#: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalInformation
+#: components/manage/Preferences/PersonalPreferences
+# defaultMessage: Changes saved
+msgid "Changes saved"
+msgstr "Alterações salvas"
+
+#: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Controlpanel
+# defaultMessage: Changes saved.
 msgid "Changes saved."
 msgstr "Alterações guardadas."
 
-# defaultMessage: Checkbox
 #: components/manage/Widgets/SchemaWidget
+# defaultMessage: Checkbox
 msgid "Checkbox"
 msgstr "Caixa de verificação"
 
-# defaultMessage: Choices
 #: components/manage/Widgets/SelectWidget
+# defaultMessage: Choices
 msgid "Choices"
 msgstr "Escolhas"
 
-# defaultMessage: Choose Image
 #: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: Choose Image
 msgid "Choose Image"
 msgstr "Escolha Imagem"
 
-# defaultMessage: Choose Target
 #: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: Choose Target
 msgid "Choose Target"
 msgstr "Escolha Alvo"
 
-# defaultMessage: Choose a file
 #: components/manage/Widgets/FileWidget
+# defaultMessage: Choose a file
 msgid "Choose a file"
 msgstr "Escolha um arquivo"
 
-# defaultMessage: Clear
 #: components/manage/Blocks/HTML/Edit
+# defaultMessage: Clear
 msgid "Clear"
 msgstr "Limpar"
 
-# defaultMessage: Clear filters
 #: components/manage/Blocks/Search/components/FilterList
+# defaultMessage: Clear filters
 msgid "Clear filters"
 msgstr "Limpar filtros"
 
-# defaultMessage: Click to download full sized image
 #: components/theme/View/ImageView
+# defaultMessage: Click to download full sized image
 msgid "Click to download full sized image"
 msgstr "Clique para baixar a imagem em tamanho original"
 
-# defaultMessage: Close
 #: components/manage/Widgets/SelectWidget
+# defaultMessage: Close
 msgid "Close"
 msgstr "Fechar"
 
-# defaultMessage: Close menu
 #: components/theme/Navigation/Navigation
+# defaultMessage: Close menu
 msgid "Close menu"
 msgstr "Fechar menu"
 
-# defaultMessage: Code
 #: components/manage/Blocks/HTML/Edit
+# defaultMessage: Code
 msgid "Code"
 msgstr "Código"
 
-# defaultMessage: Collapse item
 #: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Collapse item
 msgid "Collapse item"
 msgstr "Colapsar item"
 
-# defaultMessage: Collection
 #: components/manage/Toolbar/Toolbar
+# defaultMessage: Collection
 msgid "Collection"
 msgstr "Coleção"
 
-# defaultMessage: Color
 #: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Widgets/ColorPickerWidget
+# defaultMessage: Color
 msgid "Color"
 msgstr "Cor"
 
-# defaultMessage: Comment
 #: components/manage/Controlpanels/ModerateComments
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
+# defaultMessage: Comment
 msgid "Comment"
 msgstr "Comentar"
 
-# defaultMessage: Commenter
 #: components/manage/Controlpanels/ModerateComments
+# defaultMessage: Commenter
 msgid "Commenter"
 msgstr "Comentador"
 
-# defaultMessage: Comments
 #: components/theme/Comments/Comments
+# defaultMessage: Comments
 msgid "Comments"
 msgstr "Comentários"
 
-# defaultMessage: Compare
 #: components/manage/Diff/Diff
+# defaultMessage: Compare
 msgid "Compare"
 msgstr "Comparar"
 
-# defaultMessage: Confirm password
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Confirm password
 msgid "Confirm password"
 msgstr "Confirmar senha"
 
-# defaultMessage: Connection refused
 #: components/theme/ConnectionRefused/ConnectionRefused
+# defaultMessage: Connection refused
 msgid "Connection refused"
 msgstr "Conexão recusada"
 
-# defaultMessage: Contact
 #: components/theme/Footer/Footer
+# defaultMessage: Contact
 msgid "Contact"
 msgstr "Contato"
 
-# defaultMessage: Contact form
 #: components/theme/ContactForm/ContactForm
+# defaultMessage: Contact form
 msgid "Contact form"
 msgstr "Formulário de contato"
 
-# defaultMessage: Contained items
 #: components/manage/Blocks/Listing/Edit
+# defaultMessage: Contained items
 msgid "Contained items"
 msgstr "Itens contidos"
 
-# defaultMessage: Content
 #: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Content
 msgid "Content"
 msgstr "Conteúdo"
 
-# defaultMessage: Content type created
 #: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Content type created
 msgid "Content type created"
 msgstr "Tipo de conteúdo criado"
 
-# defaultMessage: Content type deleted
 #: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Content type deleted
 msgid "Content type deleted"
 msgstr "Tipo de conteúdo removido"
 
+#: components/manage/Contents/Contents
+#: components/manage/Toolbar/Toolbar
 # defaultMessage: Contents
-#: components/manage/Contents/Contents components/manage/Toolbar/Toolbar
 msgid "Contents"
 msgstr "Conteúdo"
 
-# defaultMessage: Controls
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Controls
 msgid "Controls"
 msgstr "Controles"
 
-# defaultMessage: Copy
-#: components/manage/Actions/Actions components/manage/Contents/Contents
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
+# defaultMessage: Copy
 msgid "Copy"
 msgstr "Copiar"
 
-# defaultMessage: undefined
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: undefined
 msgid "Copy blocks"
 msgstr "Copiar blocos"
 
-# defaultMessage: Copyright
 #: components/theme/Footer/Footer
+# defaultMessage: Copyright
 msgid "Copyright"
 msgstr "Copyright"
 
-# defaultMessage: Copyright statement or other rights information on this item.
 #: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Copyright statement or other rights information on this item.
 msgid "Copyright statement or other rights information on this item."
 msgstr "Declaração de copyright ou outras informações de direitos sobre este item."
 
-# defaultMessage: Create working copy
 #: components/manage/Toolbar/More
+# defaultMessage: Create working copy
 msgid "Create working copy"
 msgstr "Criar cópia de trabalho"
 
-# defaultMessage: Created by {creator} on {date}
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+# defaultMessage: Created by {creator} on {date}
 msgid "Created by {creator} on {date}"
 msgstr "Criado por {creator} em {date}"
 
-# defaultMessage: Created on
 #: components/manage/Contents/Contents
+# defaultMessage: Created on
 msgid "Created on"
 msgstr "Criado em"
 
-# defaultMessage: Creator
 #: components/manage/Contents/Contents
+# defaultMessage: Creator
 msgid "Creator"
 msgstr "Autor"
 
-# defaultMessage: Creators
 #: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Creators
 msgid "Creators"
 msgstr "Autores"
 
-# defaultMessage: Criteria
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/QueryWidget
+# defaultMessage: Criteria
 msgid "Criteria"
 msgstr "Critérios"
 
-# defaultMessage: Current filters applied
 #: components/manage/Blocks/Search/components/FilterList
+# defaultMessage: Current filters applied
 msgid "Current filters applied"
 msgstr "Filtros atualmente aplicados"
 
-# defaultMessage: Current password
 #: components/manage/Preferences/ChangePassword
+# defaultMessage: Current password
 msgid "Current password"
 msgstr "Senha atual"
 
-# defaultMessage: Cut
-#: components/manage/Actions/Actions components/manage/Contents/Contents
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
+# defaultMessage: Cut
 msgid "Cut"
 msgstr "Cortar"
 
-# defaultMessage: undefined
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: undefined
 msgid "Cut blocks"
 msgstr "Recortar blocos"
 
-# defaultMessage: Daily
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Daily
 msgid "Daily"
 msgstr "Diariamente"
 
-# defaultMessage: Database
 #: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Database
 msgid "Database"
 msgstr "Base de dados"
 
-# defaultMessage: Database Information
 #: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Database Information
 msgid "Database Information"
 msgstr "Informações do banco de dados"
 
-# defaultMessage: Database Location
 #: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Database Location
 msgid "Database Location"
 msgstr "Localização do banco de dados"
 
-# defaultMessage: Database Size
 #: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Database Size
 msgid "Database Size"
 msgstr "Tamanho do banco de dados"
 
-# defaultMessage: Database main
 #: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Database main
 msgid "Database main"
 msgstr "Banco de dados principal"
 
-# defaultMessage: Date
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Widgets/DatetimeWidget
+# defaultMessage: Date
 msgid "Date"
 msgstr "Data"
 
-# defaultMessage: Date (newest first)
 #: components/theme/Search/Search
+# defaultMessage: Date (newest first)
 msgid "Date (newest first)"
 msgstr "Data (mais novo primeiro)"
 
-# defaultMessage: Default
 #: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Contents/ContentsTagsModal
@@ -668,3019 +681,3064 @@ msgstr "Data (mais novo primeiro)"
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/CommentEditModal
-#: components/theme/Comments/Comments components/theme/ContactForm/ContactForm
+#: components/theme/Comments/Comments
+#: components/theme/ContactForm/ContactForm
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
 #: components/theme/Register/Register
+# defaultMessage: Default
 msgid "Default"
 msgstr "Padrão"
 
-# defaultMessage: Delete
-#: components/manage/Contents/Contents components/manage/Contents/ContentsItem
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/Groups/RenderGroups
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/Users/RenderUsers
-#: components/manage/Delete/Delete components/manage/Widgets/FormFieldWrapper
+#: components/manage/Delete/Delete
+#: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
-#: components/manage/Widgets/WysiwygWidget components/theme/Comments/Comments
+#: components/manage/Widgets/WysiwygWidget
+#: components/theme/Comments/Comments
+# defaultMessage: Delete
 msgid "Delete"
 msgstr "Excluir"
 
-# defaultMessage: Delete Group
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Delete Group
 msgid "Delete Group"
 msgstr "Excluir Grupo"
 
-# defaultMessage: Delete Type
 #: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Delete Type
 msgid "Delete Type"
 msgstr "Excluir Tipo"
 
-# defaultMessage: Delete User
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Delete User
 msgid "Delete User"
 msgstr "Excluir Usuário"
 
-# defaultMessage: undefined
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: undefined
 msgid "Delete blocks"
 msgstr "Excluir blocos"
 
-# defaultMessage: Delete col
 #: components/manage/Blocks/Table/Edit
+# defaultMessage: Delete col
 msgid "Delete col"
 msgstr "Excluir coluna"
 
-# defaultMessage: Delete row
 #: components/manage/Blocks/Table/Edit
+# defaultMessage: Delete row
 msgid "Delete row"
 msgstr "Excluir linha"
 
-# defaultMessage: Depth
 #: components/manage/Widgets/QuerystringWidget
+# defaultMessage: Depth
 msgid "Depth"
 msgstr "Profundidade"
 
-# defaultMessage: Descending
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
+# defaultMessage: Descending
 msgid "Descending"
 msgstr "Descendente"
 
-# defaultMessage: Description
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget components/theme/View/TabularView
+#: components/manage/Widgets/WysiwygWidget
+#: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Description
 msgid "Description"
 msgstr "Descrição"
 
-# defaultMessage: Diff
 #: components/manage/Diff/Diff
+# defaultMessage: Diff
 msgid "Diff"
 msgstr "Diferenças"
 
-# defaultMessage: Difference between revision {one} and {two} of {title}
 #: components/manage/Diff/Diff
+# defaultMessage: Difference between revision {one} and {two} of {title}
 msgid "Difference between revision {one} and {two} of {title}"
 msgstr "Diferenças entre as revisões {one} e {two} de {title}"
 
-# defaultMessage: Distributed under the {license}.
 #: components/theme/Footer/Footer
+# defaultMessage: Distributed under the {license}.
 msgid "Distributed under the {license}."
 msgstr "Distribuído sob a licença {license}."
 
-# defaultMessage: Add border to inner columns
 #: components/manage/Blocks/Table/Edit
+# defaultMessage: Add border to inner columns
 msgid "Divide each row into separate cells"
 msgstr "Dividir cada linha em células separadas"
 
-# defaultMessage: Do you really want to delete the following items?
 #: components/manage/Contents/Contents
+# defaultMessage: Do you really want to delete the following items?
 msgid "Do you really want to delete the following items?"
 msgstr "Você realmente quer  excluir os itens seguintes?"
 
-# defaultMessage: Do you really want to delete the group {groupname}?
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
+# defaultMessage: Do you really want to delete the group {groupname}?
 msgid "Do you really want to delete the group {groupname}?"
 msgstr "Você realmente quer  excluir o grupo {groupname}?"
 
-# defaultMessage: Do you really want to delete type {typename}?
 #: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Do you really want to delete type {typename}?
 msgid "Do you really want to delete the type {typename}?"
 msgstr "Você realmente quer excluir o tipo {typename}?"
 
-# defaultMessage: Do you really want to delete the user {username}?
 #: components/manage/Controlpanels/Users/UsersControlpanel
+# defaultMessage: Do you really want to delete the user {username}?
 msgid "Do you really want to delete the user {username}?"
 msgstr "Você realmente quer excluir o usuário {username}?"
 
-# defaultMessage: Do you really want to delete this item?
 #: components/manage/Delete/Delete
+# defaultMessage: Do you really want to delete this item?
 msgid "Do you really want to delete this item?"
 msgstr "Você realmente quer excluir este item?"
 
-# defaultMessage: Document
 #: components/manage/Multilingual/TranslationObject
 #: components/manage/Sidebar/Sidebar
+# defaultMessage: Document
 msgid "Document"
 msgstr "Documento"
 
-# defaultMessage: Download Event
 #: components/theme/EventDetails/EventDetails
+# defaultMessage: Download Event
 msgid "Download Event"
 msgstr "Baixar evento"
 
-# defaultMessage: Drag and drop files from your computer onto this area or click the “Browse” button.
 #: components/manage/Contents/ContentsUploadModal
+# defaultMessage: Drag and drop files from your computer onto this area or click the “Browse” button.
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
-msgstr "Arraste e solte arquivos do seu computador para esta área ou clique no botão \"Procurar\"."
+msgstr "Arraste e solte arquivos do seu computador para esta área ou clique no botão "Procurar"."
 
-# defaultMessage: Drop file here to replace the existing file
 #: components/manage/Widgets/FileWidget
+# defaultMessage: Drop file here to replace the existing file
 msgid "Drop file here to replace the existing file"
 msgstr "Solte um arquivo aqui para substituir o arquivo existente"
 
-# defaultMessage: Drop file here to upload a new file
 #: components/manage/Widgets/FileWidget
+# defaultMessage: Drop file here to upload a new file
 msgid "Drop file here to upload a new file"
 msgstr "Solte um arquivo aqui para enviar um novo arquivo"
 
-# defaultMessage: Drop files here ...
 #: components/manage/Widgets/FileWidget
+# defaultMessage: Drop files here ...
 msgid "Drop files here ..."
 msgstr "Soltar aquivos aqui…"
 
-# defaultMessage: E-mail
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
+# defaultMessage: E-mail
 msgid "E-mail"
 msgstr "E-mail"
 
-# defaultMessage: E-mail addresses do not match.
 #: components/theme/PasswordReset/PasswordReset
+# defaultMessage: E-mail addresses do not match.
 msgid "E-mail addresses do not match."
 msgstr "Os endereços de e-mail não coincidem."
 
-# defaultMessage: Edit
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
-#: components/manage/Toolbar/Toolbar components/manage/Widgets/FormFieldWrapper
+#: components/manage/Toolbar/Toolbar
+#: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
 #: components/theme/Comments/Comments
+# defaultMessage: Edit
 msgid "Edit"
 msgstr "Editar"
 
-# defaultMessage: Edit comment
 #: components/theme/Comments/CommentEditModal
+# defaultMessage: Edit comment
 msgid "Edit comment"
 msgstr "Editar comentário"
 
-# defaultMessage: Edit field
 #: components/manage/Widgets/SchemaWidget
+# defaultMessage: Edit field
 msgid "Edit field"
 msgstr "Editar campo"
 
-# defaultMessage: Edit fieldset
 #: components/manage/Widgets/SchemaWidget
+# defaultMessage: Edit fieldset
 msgid "Edit fieldset"
 msgstr "Editar conjunto de campos"
 
-# defaultMessage: Edit recurrence
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Edit recurrence
 msgid "Edit recurrence"
 msgstr "Editar recorrência"
 
-# defaultMessage: Edit values
 #: components/manage/Form/InlineForm
+# defaultMessage: Edit values
 msgid "Edit values"
 msgstr "Editar valores"
 
-# defaultMessage: Edit {title}
 #: components/manage/Edit/Edit
+# defaultMessage: Edit {title}
 msgid "Edit {title}"
 msgstr "Editar {title}"
 
-# defaultMessage: Email
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Email
 msgid "Email"
 msgstr "E-mail"
 
-# defaultMessage: Email sent
 #: components/theme/ContactForm/ContactForm
+# defaultMessage: Email sent
 msgid "Email sent"
 msgstr "E-mail enviado"
 
-# defaultMessage: Embed code error, please follow the instructions and try again.
 #: components/manage/Blocks/Maps/Edit
+# defaultMessage: Embed code error, please follow the instructions and try again.
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "Erro de código Embed, siga as instruções e tente novamente."
 
-# defaultMessage: Empty object list
 #: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Empty object list
 msgid "Empty object list"
 msgstr "Lista de objetos vazia"
 
-# defaultMessage: Enable editable Blocks
 #: components/manage/Controlpanels/ContentTypeLayout
+# defaultMessage: Enable editable Blocks
 msgid "Enable editable Blocks"
 msgstr "Habilitar blocos editáveis"
 
-# defaultMessage: End Date
 #: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
+# defaultMessage: End Date
 msgid "End Date"
 msgstr "Data Final"
 
-# defaultMessage: Enter URL or select an item
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+# defaultMessage: Enter URL or select an item
 msgid "Enter URL or select an item"
 msgstr "Digite URL ou selecione um item"
 
-# defaultMessage: Enter a username above to search or click 'Show All'
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Enter a username above to search or click 'Show All'
 msgid "Enter a username above to search or click 'Show All'"
 msgstr "Digite um nome de usuário acima para pesquisar ou clique em 'Mostrar todos'"
 
-# defaultMessage: Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
 #: components/theme/Register/Register
+# defaultMessage: Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr "Digite um endereço de e-mail. Este será o seu nome de usuário. Respeitamos a sua privacidade e nunca iremos ceder o seu endereço a terceiros ou expô-lo onde quer que seja."
 
-# defaultMessage: Enter full name, e.g. John Smith.
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
+# defaultMessage: Enter full name, e.g. John Smith.
 msgid "Enter full name, e.g. John Smith."
 msgstr "Digite o nome completo. Por exemplo, José da Silva."
 
-# defaultMessage: Enter map Embed Code
 #: components/manage/Blocks/Maps/Edit
+# defaultMessage: Enter map Embed Code
 msgid "Enter map Embed Code"
 msgstr "Informe o código Embed do mapa"
 
-# defaultMessage: Enter your current password.
 #: components/manage/Preferences/ChangePassword
+# defaultMessage: Enter your current password.
 msgid "Enter your current password."
 msgstr "Digite sua senha atual."
 
-# defaultMessage: Enter your email for verification.
 #: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Enter your email for verification.
 msgid "Enter your email for verification."
 msgstr "Informe seu e-mail para verificação."
 
-# defaultMessage: Enter your new password. Minimum 5 characters.
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Enter your new password. Minimum 5 characters.
 msgid "Enter your new password. Minimum 5 characters."
 msgstr "Digite sua nova senha. Mínimo de 5 caracteres."
 
-# defaultMessage: Enter your username for verification.
 #: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Enter your username for verification.
 msgid "Enter your username for verification."
 msgstr "Informe seu nome de usuário para verificação."
 
-# defaultMessage: Error
-#: components/manage/Add/Add components/manage/Controlpanels/ContentTypeSchema
-#: components/manage/Edit/Edit components/manage/Form/InlineForm
+#: components/manage/Add/Add
+#: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Edit/Edit
+#: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
-#: components/theme/ContactForm/ContactForm components/theme/Login/Login
+#: components/theme/ContactForm/ContactForm
+#: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Error
 msgid "Error"
 msgstr "Erro"
 
-# defaultMessage: Exclude from navigation
 #: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Exclude from navigation
 msgid "Exclude from navigation"
 msgstr "Excluir da navegação"
 
-# defaultMessage: Exclude this occurence
 #: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: Exclude this occurence
 msgid "Exclude this occurence"
 msgstr "Exclua essa ocorrência"
 
-# defaultMessage: Excluded from navigation
 #: components/manage/Contents/Contents
+# defaultMessage: Excluded from navigation
 msgid "Excluded from navigation"
 msgstr "Excluído da navegação"
 
-# defaultMessage: Expand sidebar
 #: components/manage/Sidebar/Sidebar
+# defaultMessage: Expand sidebar
 msgid "Expand sidebar"
 msgstr "Expandir barra lateral"
 
-# defaultMessage: Expiration Date
 #: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Expiration Date
 msgid "Expiration Date"
 msgstr "Data de expiração"
 
-# defaultMessage: Expiration date
 #: components/manage/Contents/Contents
+# defaultMessage: Expiration date
 msgid "Expiration date"
 msgstr "Data de validade"
 
-# defaultMessage: Expired
 #: components/manage/Contents/ContentsItem
+# defaultMessage: Expired
 msgid "Expired"
 msgstr "Expirado"
 
-# defaultMessage: External URL
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+# defaultMessage: External URL
 msgid "External URL"
 msgstr "URL externa"
 
-# defaultMessage: Facet
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Facet
 msgid "Facet"
 msgstr "Faceta"
 
-# defaultMessage: Facet widget
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Facet widget
 msgid "Facet widget"
 msgstr "Widget faceta"
 
-# defaultMessage: Facets
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Facets
 msgid "Facets"
 msgstr "Facetas"
 
-# defaultMessage: Facets on left side
 #: config/Blocks
+# defaultMessage: Facets on left side
 msgid "Facets on left side"
 msgstr "Facetas no lado esquerdo"
 
-# defaultMessage: Facets on right side
 #: config/Blocks
+# defaultMessage: Facets on right side
 msgid "Facets on right side"
 msgstr "Facetas no lado direito"
 
-# defaultMessage: Facets on top
 #: config/Blocks
+# defaultMessage: Facets on top
 msgid "Facets on top"
 msgstr "Facetas no topo"
 
-# defaultMessage: Field
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Field
 msgid "Field"
 msgstr "Campo"
 
-# defaultMessage: File
 #: components/manage/Toolbar/Toolbar
+# defaultMessage: File
 msgid "File"
 msgstr "Arquivo"
 
-# defaultMessage: File size
 #: components/manage/Contents/ContentsUploadModal
+# defaultMessage: File size
 msgid "File size"
 msgstr "Tamanho do arquivo"
 
-# defaultMessage: Filename
 #: components/manage/Contents/ContentsUploadModal
+# defaultMessage: Filename
 msgid "Filename"
 msgstr "Nome do arquivo"
 
-# defaultMessage: Filter users by groups
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter users by groups
 msgid "Filter users by groups"
 msgstr "Filtrar usuários por grupos"
 
-# defaultMessage: Filter…
 #: components/manage/Contents/Contents
+# defaultMessage: Filter…
 msgid "Filter…"
 msgstr "Filtrar…"
 
-# defaultMessage: First
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+# defaultMessage: First
 msgid "First"
 msgstr "Primeiro"
 
-# defaultMessage: Fixed width columns
 #: components/manage/Blocks/Table/Edit
+# defaultMessage: Fixed width columns
 msgid "Fixed width table cells"
 msgstr "Células de tabela de largura fixa"
 
-# defaultMessage: Fold
 #: components/manage/BlockChooser/BlockChooser
+# defaultMessage: Fold
 msgid "Fold"
 msgstr "Colapsar"
 
-# defaultMessage: Folder
 #: components/manage/Contents/Contents
+# defaultMessage: Folder
 msgid "Folder"
 msgstr "Pasta"
 
-# defaultMessage: Forbidden
 #: components/theme/Forbidden/Forbidden
+# defaultMessage: Forbidden
 msgid "Forbidden"
 msgstr "Restrito"
 
-# defaultMessage: Fourth
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+# defaultMessage: Fourth
 msgid "Fourth"
 msgstr "Quarto"
 
-# defaultMessage: From
 #: components/theme/ContactForm/ContactForm
+# defaultMessage: From
 msgid "From"
 msgstr "E-mail"
 
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Sidebar/AlignBlock
 # defaultMessage: Full
-#: components/manage/Blocks/Maps/Edit components/manage/Sidebar/AlignBlock
 msgid "Full"
 msgstr "Cheia"
 
-# defaultMessage: Full Name
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
+# defaultMessage: Full Name
 msgid "Full Name"
 msgstr "Nome completo"
 
-# defaultMessage: Fullname
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Fullname
 msgid "Fullname"
 msgstr "Nome completo"
 
-# defaultMessage: GNU GPL license
 #: components/theme/Footer/Footer
+# defaultMessage: GNU GPL license
 msgid "GNU GPL license"
 msgstr "Licença GNU GPL"
 
-# defaultMessage: General
 #: components/manage/Controlpanels/Controlpanels
+# defaultMessage: General
 msgid "General"
 msgstr "Geral"
 
-# defaultMessage: Global role
 #: components/manage/Sharing/Sharing
+# defaultMessage: Global role
 msgid "Global role"
 msgstr "Papel global"
 
-# defaultMessage: Google Maps Embedded Block
 #: components/manage/Blocks/Maps/Edit
+# defaultMessage: Google Maps Embedded Block
 msgid "Google Maps Embedded Block"
 msgstr "Bloco Google Maps"
 
-# defaultMessage: Group
 #: components/manage/Sharing/Sharing
+# defaultMessage: Group
 msgid "Group"
 msgstr "Grupo"
 
-# defaultMessage: Group created
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Group created
 msgid "Group created"
 msgstr "Grupo criado"
 
-# defaultMessage: Group roles updated
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Group roles updated
 msgid "Group roles updated"
 msgstr "Papéis do grupo atualizados"
 
-# defaultMessage: Groupname
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Groupname
 msgid "Groupname"
 msgstr "Nome do grupo"
 
-# defaultMessage: Groups
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Groups
 msgid "Groups"
 msgstr "Grupos"
 
-# defaultMessage: Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group.
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
+# defaultMessage: Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group.
 msgid "Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group."
 msgstr "Grupos são coleções lógicas de usuários, como departamentos e unidades de negócios. Os grupos não estão diretamente relacionados com permissões em nível global, você normalmente usa Funções para isso - e permite que certos Grupos tenham um papel particular. O símbolo{plone_svg}dica um papel herdado da adesão a outro grupo."
 
-# defaultMessage: Header cell
 #: components/manage/Blocks/Table/Edit
+# defaultMessage: Header cell
 msgid "Header cell"
 msgstr "Célula de cabeçalho"
 
-# defaultMessage: Headline
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Headline
 msgid "Headline"
 msgstr "Título"
 
-# defaultMessage: Hidden facets will still filter the results if proper parameters are passed in URLs
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Hidden facets will still filter the results if proper parameters are passed in URLs
 msgid "Hidden facets will still filter the results if proper parameters are passed in URLs"
 msgstr "Facetas ocultas ainda filtrarão os resultados se parâmetros adequados forem passados em URLs"
 
-# defaultMessage: Hide Replies
 #: components/theme/Comments/Comments
+# defaultMessage: Hide Replies
 msgid "Hide Replies"
 msgstr "Ocultar respostas"
 
-# defaultMessage: Hide facet?
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Hide facet?
 msgid "Hide facet?"
 msgstr "Ocultar faceta?"
 
+#: components/manage/History/History
+#: components/manage/Toolbar/More
 # defaultMessage: History
-#: components/manage/History/History components/manage/Toolbar/More
 msgid "History"
 msgstr "Histórico"
 
-# defaultMessage: #
 #: components/manage/History/History
+# defaultMessage: #
 msgid "History Version Number"
 msgstr "Número da versão"
 
-# defaultMessage: History of {title}
 #: components/manage/History/History
+# defaultMessage: History of {title}
 msgid "History of {title}"
 msgstr "Histórico de {title}"
 
-# defaultMessage: Home
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsBreadcrumbs
 #: components/theme/Breadcrumbs/Breadcrumbs
+# defaultMessage: Home
 msgid "Home"
 msgstr "Início"
 
-# defaultMessage: Home page
 #: components/manage/Preferences/PersonalInformation
+# defaultMessage: Home page
 msgid "Home page"
 msgstr "Página inicial"
 
-# defaultMessage: ID
 #: components/manage/Contents/Contents
+# defaultMessage: ID
 msgid "ID"
 msgstr "ID"
 
-# defaultMessage: If selected, this item will not appear in the navigation tree
 #: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: If selected, this item will not appear in the navigation tree
 msgid "If selected, this item will not appear in the navigation tree"
 msgstr "Se selecionado, este item não aparecerá na árvore de navegação"
 
-# defaultMessage: If this date is in the future, the content will not show up in listings and searches until this date.
 #: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: If this date is in the future, the content will not show up in listings and searches until this date.
 msgid "If this date is in the future, the content will not show up in listings and searches until this date."
 msgstr "Se essa data for no futuro, o conteúdo não aparecerá em listagens e pesquisas até esta data."
 
-# defaultMessage: If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it.
 #: components/manage/LockingToastsFactory/LockingToastsFactory
+# defaultMessage: If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it.
 msgid "If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it."
 msgstr "Se você tiver certeza de que este usuário abandonou o objeto, você pode desbloquear o objeto. Em seguida, você poderá editá-lo."
 
-# defaultMessage: If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}.
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
+# defaultMessage: If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}.
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Se você tiver certeza de que tem o endereço web correto, mas está encontrando um erro, entre em contato com o {site_admin}."
 
-# defaultMessage: Image
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+# defaultMessage: Image
 msgid "Image"
 msgstr "Imagem"
 
-# defaultMessage: Image gallery
 #: config/Blocks
+# defaultMessage: Image gallery
 msgid "Image gallery"
 msgstr "Galeria de imagem"
 
-# defaultMessage: Image size
 #: components/manage/Blocks/Image/schema
+# defaultMessage: Image size
 msgid "Image size"
 msgstr "Tamanho da imagem"
 
-# defaultMessage: Include this occurence
 #: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: Include this occurence
 msgid "Include this occurence"
 msgstr "Inclua esta ocorrência"
 
-# defaultMessage: Info
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+# defaultMessage: Info
 msgid "Info"
 msgstr "Informação"
 
-# defaultMessage: You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to user group settings. See the button on the left.
 #: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+# defaultMessage: You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to user group settings. See the button on the left.
 msgid "InfoUserGroupSettings"
-msgstr "Você selecionou a opção \"muitos usuários\" ou \"muitos grupos\".  Por isto, este painel necessita de um filtro para exibir usuários e grupos. Caso queira ver os usuários e grupos imediatamente, vá até configurações de usuários e grupos."
+msgstr "Você selecionou a opção "muitos usuários" ou "muitos grupos".  Por isto, este painel necessita de um filtro para exibir usuários e grupos. Caso queira ver os usuários e grupos imediatamente, vá até configurações de usuários e grupos."
 
-# defaultMessage: Inherit permissions from higher levels
 #: components/manage/Sharing/Sharing
+# defaultMessage: Inherit permissions from higher levels
 msgid "Inherit permissions from higher levels"
 msgstr "Herdar permissões de níveis superiores"
 
-# defaultMessage: Inherited value
 #: components/manage/Sharing/Sharing
+# defaultMessage: Inherited value
 msgid "Inherited value"
 msgstr "Herdar valor"
 
-# defaultMessage: Insert col after
 #: components/manage/Blocks/Table/Edit
+# defaultMessage: Insert col after
 msgid "Insert col after"
 msgstr "Inserir coluna após"
 
-# defaultMessage: Insert col before
 #: components/manage/Blocks/Table/Edit
+# defaultMessage: Insert col before
 msgid "Insert col before"
 msgstr "Inserir coluna antes"
 
-# defaultMessage: Insert row after
 #: components/manage/Blocks/Table/Edit
+# defaultMessage: Insert row after
 msgid "Insert row after"
 msgstr "Inserir linha após"
 
-# defaultMessage: Insert row before
 #: components/manage/Blocks/Table/Edit
+# defaultMessage: Insert row before
 msgid "Insert row before"
 msgstr "Inserir linha antes"
 
-# defaultMessage: Install
 #: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Install
 msgid "Install"
 msgstr "Instalar"
 
-# defaultMessage: Installed
 #: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Installed
 msgid "Installed"
 msgstr "Instalado"
 
-# defaultMessage: Installed version
 #: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Installed version
 msgid "Installed version"
 msgstr "Versão instalada"
 
-# defaultMessage: Installing a third party add-on
 #: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Installing a third party add-on
 msgid "Installing a third party add-on"
 msgstr "Instalando um complemento de terceiros"
 
-# defaultMessage: days
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: days
 msgid "Interval Daily"
 msgstr "Intervalo Diário"
 
-# defaultMessage: Month(s)
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Month(s)
 msgid "Interval Monthly"
 msgstr "Intervalo Mensal"
 
-# defaultMessage: week(s)
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: week(s)
 msgid "Interval Weekly"
 msgstr "Intervalo Semanal"
 
-# defaultMessage: year(s)
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: year(s)
 msgid "Interval Yearly"
 msgstr "Intervalo Anual"
 
-# defaultMessage: Item batch size
 #: components/manage/Widgets/QuerystringWidget
+# defaultMessage: Item batch size
 msgid "Item batch size"
 msgstr "Tamanho do lote de itens"
 
-# defaultMessage: Item succesfully moved.
 #: components/manage/Contents/Contents
+# defaultMessage: Item succesfully moved.
 msgid "Item succesfully moved."
 msgstr "Item movido com sucesso."
 
-# defaultMessage: Item(s) copied.
 #: components/manage/Contents/Contents
+# defaultMessage: Item(s) copied.
 msgid "Item(s) copied."
 msgstr "Itens copiados."
 
-# defaultMessage: Item(s) cut.
 #: components/manage/Contents/Contents
+# defaultMessage: Item(s) cut.
 msgid "Item(s) cut."
 msgstr "Itens cortados."
 
-# defaultMessage: Item(s) has been updated.
 #: components/manage/Contents/Contents
+# defaultMessage: Item(s) has been updated.
 msgid "Item(s) has been updated."
 msgstr "Itens atualizados."
 
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
 # defaultMessage: Item(s) pasted.
-#: components/manage/Actions/Actions components/manage/Contents/Contents
 msgid "Item(s) pasted."
 msgstr "Itens colados."
 
-# defaultMessage: Item(s) state has been updated.
 #: components/manage/Contents/Contents
+# defaultMessage: Item(s) state has been updated.
 msgid "Item(s) state has been updated."
 msgstr "O estado dos itens foi atualizado."
 
-# defaultMessage: Items
 #: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Items
 msgid "Items"
 msgstr "Itens"
 
+#: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Items must be unique.
-#: components/manage/Form/ModalForm helpers/MessageLabels/MessageLabels
 msgid "Items must be unique."
 msgstr "Os itens devem ser únicos."
 
-# defaultMessage: Label
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Label
 msgid "Label"
 msgstr "Rótulo"
 
-# defaultMessage: Language
 #: components/manage/Preferences/PersonalPreferences
+# defaultMessage: Language
 msgid "Language"
 msgstr "Idioma"
 
-# defaultMessage: Language independent field.
 #: components/manage/Widgets/FormFieldWrapper
+# defaultMessage: Language independent field.
 msgid "Language independent field."
 msgstr "Campo independente da linguagem."
 
-# defaultMessage: Large
 #: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Large
 msgid "Large"
 msgstr "Grande"
 
-# defaultMessage: Last
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+# defaultMessage: Last
 msgid "Last"
 msgstr "Último"
 
-# defaultMessage: Last comment date
 #: components/manage/Contents/Contents
+# defaultMessage: Last comment date
 msgid "Last comment date"
 msgstr "Data do último comentário"
 
-# defaultMessage: Last modified
 #: components/manage/Contents/ContentsUploadModal
+# defaultMessage: Last modified
 msgid "Last modified"
 msgstr "Última modificação"
 
-# defaultMessage: Latest version
 #: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Latest version
 msgid "Latest version"
 msgstr "Última versão"
 
-# defaultMessage: Layout
 #: components/manage/Controlpanels/ContentTypesActions
+# defaultMessage: Layout
 msgid "Layout"
 msgstr "Layout"
 
-# defaultMessage: Lead Image
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+# defaultMessage: Lead Image
 msgid "Lead Image"
 msgstr "Imagem principal"
 
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Sidebar/AlignBlock
 # defaultMessage: Left
-#: components/manage/Blocks/Maps/Edit components/manage/Sidebar/AlignBlock
 msgid "Left"
 msgstr "Esquerda"
 
-# defaultMessage: Link
 #: components/manage/Toolbar/Toolbar
+# defaultMessage: Link
 msgid "Link"
 msgstr "Link"
 
-# defaultMessage: Link more
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
+# defaultMessage: Link more
 msgid "Link more"
 msgstr "Mais"
 
-# defaultMessage: Link Title
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
+# defaultMessage: Link Title
 msgid "Link title"
 msgstr "Título do link"
 
-# defaultMessage: Link to
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
+# defaultMessage: Link to
 msgid "Link to"
 msgstr "Link para"
 
-# defaultMessage: Link translation for
 #: components/manage/Multilingual/ManageTranslations
+# defaultMessage: Link translation for
 msgid "Link translation for"
 msgstr "Linkar tradução para"
 
-# defaultMessage: Listing
 #: components/manage/Blocks/Listing/schema
+# defaultMessage: Listing
 msgid "Listing"
 msgstr "Listagem"
 
-# defaultMessage: Load more...
 #: components/theme/Comments/Comments
+# defaultMessage: Load more...
 msgid "Load more"
 msgstr "Carregar mais"
 
-# defaultMessage: Loading.
 #: components/manage/Form/ModalForm
+# defaultMessage: Loading.
 msgid "Loading"
 msgstr "Carregando"
 
-# defaultMessage: Location
 #: components/manage/Preferences/PersonalInformation
+# defaultMessage: Location
 msgid "Location"
 msgstr "Localização"
 
-# defaultMessage: Login
 #: components/theme/Login/Login
+# defaultMessage: Login
 msgid "Log In"
 msgstr "Entrar"
 
+#: components/theme/Anontools/Anontools
+#: components/theme/Login/Login
 # defaultMessage: Log in
-#: components/theme/Anontools/Anontools components/theme/Login/Login
 msgid "Log in"
 msgstr "Entrar"
 
-# defaultMessage: Login
 #: components/theme/Login/Login
+# defaultMessage: Login
 msgid "Login"
 msgstr "Entrar"
 
-# defaultMessage: Login Failed
 #: components/theme/Login/Login
+# defaultMessage: Login Failed
 msgid "Login Failed"
 msgstr "Falha na autenticação"
 
-# defaultMessage: Login Name
 #: components/theme/Login/Login
+# defaultMessage: Login Name
 msgid "Login Name"
 msgstr "Nome de usuário"
 
-# defaultMessage: Logout
 #: components/manage/Toolbar/PersonalTools
+# defaultMessage: Logout
 msgid "Logout"
 msgstr "Sair"
 
-# defaultMessage: Made by {creator} on {date}. This is not a working copy anymore, but the main content.
 #: components/manage/Toolbar/More
+# defaultMessage: Made by {creator} on {date}. This is not a working copy anymore, but the main content.
 msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
 msgstr "Criado por {creator} em {date}. Esta não é mais uma cópia de trabalho, mas sim o conteúdo final."
 
-# defaultMessage: Reduce cell padding
 #: components/manage/Blocks/Table/Edit
+# defaultMessage: Reduce cell padding
 msgid "Make the table compact"
 msgstr "Compactar a tabela"
 
-# defaultMessage: Manage Translations
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Toolbar/More
+# defaultMessage: Manage Translations
 msgid "Manage Translations"
 msgstr "Gerenciar traduções"
 
-# defaultMessage: Manage translations for {title}
 #: components/manage/Multilingual/ManageTranslations
+# defaultMessage: Manage translations for {title}
 msgid "Manage translations for {title}"
 msgstr "Gerenciar traduções para {title}"
 
-# defaultMessage: Maps
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Maps/schema
+# defaultMessage: Maps
 msgid "Maps"
 msgstr "Mapas"
 
-# defaultMessage: Maps URL
 #: components/manage/Blocks/Maps/schema
+# defaultMessage: Maps URL
 msgid "Maps URL"
 msgstr "Url do Mapa"
 
-# defaultMessage: Maximum length is {len}.
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Maximum length is {len}.
 msgid "Maximum length is {len}."
 msgstr "O comprimento máximo é {len}."
 
-# defaultMessage: Maximum value is {len}.
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Maximum value is {len}.
 msgid "Maximum value is {len}."
 msgstr "O valor máximo é {len}."
 
-# defaultMessage: Medium
 #: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Medium
 msgid "Medium"
 msgstr "Médio"
 
-# defaultMessage: Message
 #: components/theme/ContactForm/ContactForm
+# defaultMessage: Message
 msgid "Message"
 msgstr "Mensagem"
 
+#: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Minimum length is {len}.
-#: components/manage/Form/ModalForm helpers/MessageLabels/MessageLabels
 msgid "Minimum length is {len}."
 msgstr "O comprimento mínimo é {len}."
 
-# defaultMessage: Minimum value is {len}.
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Minimum value is {len}.
 msgid "Minimum value is {len}."
 msgstr "O valor mínimo é {len}."
 
-# defaultMessage: Moderate Comments
 #: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Moderate Comments
 msgid "Moderate Comments"
 msgstr "Moderar comentários"
 
-# defaultMessage: Moderate comments
 #: components/manage/Controlpanels/ModerateComments
+# defaultMessage: Moderate comments
 msgid "Moderate comments"
 msgstr "Moderar comentários"
 
-# defaultMessage: Monday and Friday
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Monday and Friday
 msgid "Monday and Friday"
 msgstr "Segunda e sexta-feira"
 
-# defaultMessage: Day
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
+# defaultMessage: Day
 msgid "Month day"
 msgstr "Dia do mês"
 
-# defaultMessage: Monthly
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Monthly
 msgid "Monthly"
 msgstr "Mensalmente"
 
-# defaultMessage: More
 #: components/manage/Toolbar/Toolbar
+# defaultMessage: More
 msgid "More"
 msgstr "Mais"
 
-# defaultMessage: Move to bottom of folder
 #: components/manage/Contents/ContentsItem
+# defaultMessage: Move to bottom of folder
 msgid "Move to bottom of folder"
 msgstr "Mover para o final da pasta"
 
-# defaultMessage: Move to top of folder
 #: components/manage/Contents/ContentsItem
+# defaultMessage: Move to top of folder
 msgid "Move to top of folder"
 msgstr "Mover para o topo da pasta"
 
-# defaultMessage: Multiple choices?
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Multiple choices?
 msgid "Multiple choices?"
 msgstr "Múltipla escolha?"
 
-# defaultMessage: My email is
 #: components/theme/PasswordReset/PasswordReset
+# defaultMessage: My email is
 msgid "My email is"
 msgstr "Meu e-mail é"
 
-# defaultMessage: My username is
 #: components/theme/PasswordReset/PasswordReset
+# defaultMessage: My username is
 msgid "My username is"
 msgstr "Meu nome de usuário é"
 
+#: components/manage/Sharing/Sharing
+#: components/theme/ContactForm/ContactForm
 # defaultMessage: Name
-#: components/manage/Sharing/Sharing components/theme/ContactForm/ContactForm
 msgid "Name"
 msgstr "Nome"
 
-# defaultMessage: Navigate back
 #: error
+# defaultMessage: Navigate back
 msgid "Navigate back"
 msgstr "Voltar"
 
-# defaultMessage: Navigation
 #: components/theme/Navigation/ContextNavigation
+# defaultMessage: Navigation
 msgid "Navigation"
 msgstr "Navegação"
 
-# defaultMessage: New password
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
+# defaultMessage: New password
 msgid "New password"
 msgstr "Nova senha"
 
-# defaultMessage: News Item
 #: components/manage/Toolbar/Toolbar
+# defaultMessage: News Item
 msgid "News Item"
 msgstr "Notícia"
 
-# defaultMessage: No
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypes
+# defaultMessage: No
 msgid "No"
 msgstr "Não"
 
-# defaultMessage: No Video selected
 #: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: No Video selected
 msgid "No Video selected"
 msgstr "Nenhum vídeo selecionado"
 
-# defaultMessage: No addons found
 #: components/manage/Controlpanels/VersionOverview
+# defaultMessage: No addons found
 msgid "No addons found"
 msgstr "Nenhum complemento encontrado"
 
-# defaultMessage: No image selected
 #: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: No image selected
 msgid "No image selected"
 msgstr "Nenhuma imagem selecionada"
 
-# defaultMessage: No image set in Lead Image content field
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+# defaultMessage: No image set in Lead Image content field
 msgid "No image set in Lead Image content field"
 msgstr "Nenhuma imagem definida no campo de imagem principal"
 
-# defaultMessage: No image set in image content field
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+# defaultMessage: No image set in image content field
 msgid "No image set in image content field"
 msgstr "Nenhuma imagem definida no campo de imagem"
 
-# defaultMessage: No items found in this container.
 #: components/manage/Blocks/Listing/ListingBody
+# defaultMessage: No items found in this container.
 msgid "No items found in this container."
 msgstr "Não foram encontrados itens nesta pasta."
 
-# defaultMessage: No items selected
 #: components/manage/Widgets/ObjectBrowserWidget
+# defaultMessage: No items selected
 msgid "No items selected"
 msgstr "Nenhum item selecionado"
 
-# defaultMessage: No map selected
 #: components/manage/Blocks/Maps/MapsSidebar
+# defaultMessage: No map selected
 msgid "No map selected"
 msgstr "Nenhum mapa selecionado"
 
-# defaultMessage: No occurences set
 #: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: No occurences set
 msgid "No occurences set"
 msgstr "Sem ocorrências definidas"
 
-# defaultMessage: No options
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/SelectAutoComplete
-#: components/manage/Widgets/SelectWidget components/manage/Widgets/TokenWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+# defaultMessage: No options
 msgid "No options"
 msgstr "Sem opções"
 
-# defaultMessage: No results found
 #: components/theme/Search/Search
+# defaultMessage: No results found
 msgid "No results found"
 msgstr "Nenhum resultado encontrado"
 
-# defaultMessage: No results found.
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
+# defaultMessage: No results found.
 msgid "No results found."
 msgstr "Nenhum resultado encontrado."
 
-# defaultMessage: No selection
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Widgets/QuerySortOnWidget
 #: components/manage/Widgets/QuerystringWidget
+# defaultMessage: No selection
 msgid "No selection"
 msgstr "Nenhuma seleção"
 
-# defaultMessage: This addon does not provide an uninstall profile.
 #: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: This addon does not provide an uninstall profile.
 msgid "No uninstall profile"
 msgstr "Sem perfil de desinstalação"
 
-# defaultMessage: No user found
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: No user found
 msgid "No user found"
 msgstr "Nenhum usuário encontrado"
 
-# defaultMessage: No value
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
-#: components/manage/Widgets/SelectUtils components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/SelectUtils
+#: components/manage/Widgets/SelectWidget
+# defaultMessage: No value
 msgid "No value"
 msgstr "Sem valor"
 
-# defaultMessage: No workflow
 #: components/manage/Workflow/Workflow
+# defaultMessage: No workflow
 msgid "No workflow"
 msgstr "Sem workflow"
 
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
 # defaultMessage: None
-#: components/manage/Contents/Contents components/manage/Contents/ContentsItem
 msgid "None"
 msgstr "Nenhum"
 
-# defaultMessage: Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group.
 #: components/manage/Controlpanels/Users/UsersControlpanel
+# defaultMessage: Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group.
 msgid "Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group."
 msgstr "Observe que as funções definidas aqui se aplicam diretamente a um usuário. O símbolo{plone_svg}dica um papel herdado da adesão a um grupo."
 
-# defaultMessage: Number of active objects
 #: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Number of active objects
 msgid "Number of active objects"
 msgstr "Número de objetos ativos"
 
-# defaultMessage: Object Size
 #: components/manage/Contents/Contents
+# defaultMessage: Object Size
 msgid "Object Size"
 msgstr "Tamanho do objeto"
 
-# defaultMessage: occurrence(s)
 #: components/manage/Widgets/RecurrenceWidget/EndField
+# defaultMessage: occurrence(s)
 msgid "Occurences"
 msgstr "Ocorrências"
 
-# defaultMessage: Ok
 #: components/manage/Delete/Delete
+# defaultMessage: Ok
 msgid "Ok"
 msgstr "Ok"
 
-# defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed.
 #: components/manage/Widgets/IdWidget
-msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters \"-\" and \"_\" are allowed."
-msgstr "Apenas letras minúsculas (a-z) sem acentos, números (0-9) e os dois caracteres \"-\" e \"_\" são permitidos."
+# defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed.
+msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed."
+msgstr "Apenas letras minúsculas (a-z) sem acentos, números (0-9) e os dois caracteres "-" e "_" são permitidos."
 
-# defaultMessage: Open in a new tab
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+# defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr "Abrir em uma nova aba"
 
-# defaultMessage: Open menu
 #: components/theme/Navigation/Navigation
+# defaultMessage: Open menu
 msgid "Open menu"
 msgstr "Abrir menu"
 
-# defaultMessage: Open object browser
 #: components/manage/Widgets/ObjectBrowserWidget
+# defaultMessage: Open object browser
 msgid "Open object browser"
 msgstr "Abrir navegador de objetos"
 
-# defaultMessage: Origin
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+# defaultMessage: Origin
 msgid "Origin"
 msgstr "Origem"
 
-# defaultMessage: Page
 #: components/manage/Toolbar/Toolbar
+# defaultMessage: Page
 msgid "Page"
 msgstr "Página"
 
-# defaultMessage: Parent fieldset
 #: components/manage/Widgets/SchemaWidget
+# defaultMessage: Parent fieldset
 msgid "Parent fieldset"
 msgstr "Conjunto de campos"
 
+#: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Password
-#: components/theme/Login/Login helpers/MessageLabels/MessageLabels
 msgid "Password"
 msgstr "Senha"
 
-# defaultMessage: Password reset
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Password reset
 msgid "Password reset"
 msgstr "Redefinição de senha"
 
-# defaultMessage: Passwords do not match.
 #: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Passwords do not match.
 msgid "Passwords do not match."
 msgstr "As senhas não coincidem."
 
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
 # defaultMessage: Paste
-#: components/manage/Actions/Actions components/manage/Contents/Contents
 msgid "Paste"
 msgstr "Colar"
 
-# defaultMessage: undefined
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: undefined
 msgid "Paste blocks"
 msgstr "Colar blocos"
 
-# defaultMessage: Permissions have been updated successfully
 #: components/manage/Sharing/Sharing
+# defaultMessage: Permissions have been updated successfully
 msgid "Permissions have been updated successfully"
 msgstr "Permissões atualizadas com sucesso"
 
-# defaultMessage: Permissions updated
 #: components/manage/Sharing/Sharing
+# defaultMessage: Permissions updated
 msgid "Permissions updated"
 msgstr "Permissões atualizadas"
 
-# defaultMessage: Personal Information
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
+# defaultMessage: Personal Information
 msgid "Personal Information"
 msgstr "Informações pessoais"
 
-# defaultMessage: Personal Preferences
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Toolbar/Toolbar
+# defaultMessage: Personal Preferences
 msgid "Personal Preferences"
 msgstr "Preferências pessoais"
 
+#: components/manage/Toolbar/More
+#: components/manage/Toolbar/Toolbar
 # defaultMessage: Personal tools
-#: components/manage/Toolbar/More components/manage/Toolbar/Toolbar
 msgid "Personal tools"
 msgstr "Ferramentas pessoais"
 
-# defaultMessage: Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first.
 #: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first.
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Pessoas responsáveis pela criação do conteúdo deste item. Por favor, insira uma lista de nomes de usuário, um por linha. O autor principal deve vir primeiro."
 
-# defaultMessage: Please enter a valid URL by deleting the block and adding a new video block.
 #: components/manage/Blocks/Video/Body
+# defaultMessage: Please enter a valid URL by deleting the block and adding a new video block.
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
 msgstr "Digite uma URL válida excluindo o bloco e adicionando um novo bloco de vídeo."
 
-# defaultMessage: Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it.
 #: components/manage/Blocks/Maps/Edit
+# defaultMessage: Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it.
 msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
 msgstr "Digite o código Embed fornecido pelo google maps -> compartilhar -> mapa Embed. Deve conter o <iframe> código.</iframe>."
 
-# defaultMessage: Please fill out the form below to set your password.
 #: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Please fill out the form below to set your password.
 msgid "Please fill out the form below to set your password."
 msgstr "Preencha o formulário abaixo para definir sua senha."
 
-# defaultMessage: Please search for users or use the filters on the side.
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Please search for users or use the filters on the side.
 msgid "Please search for users or use the filters on the side."
 msgstr "Procure por usuários ou use os filtros na lateral."
 
-# defaultMessage: Please upgrade to plone.restapi >= 8.24.0.
 #: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+# defaultMessage: Please upgrade to plone.restapi >= 8.24.0.
 msgid "Please upgrade to plone.restapi >= 8.24.0."
 msgstr "Por favor, atualize para plone.restapi >= 8.24.0."
 
-# defaultMessage: Plone Foundation
 #: components/theme/Footer/Footer
+# defaultMessage: Plone Foundation
 msgid "Plone Foundation"
 msgstr "Fundação Plone"
 
-# defaultMessage: Plone Site
 #: components/theme/Logo/Logo
+# defaultMessage: Plone Site
 msgid "Plone Site"
 msgstr "Site Plone"
 
-# defaultMessage: Plone{reg} Open Source CMS/WCM
 #: components/theme/Footer/Footer
+# defaultMessage: Plone{reg} Open Source CMS/WCM
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} Open Source CMS/WCM"
 
-# defaultMessage: Portrait
 #: components/manage/Preferences/PersonalInformation
+# defaultMessage: Portrait
 msgid "Portrait"
 msgstr "Foto"
 
-# defaultMessage: Possible values (Enter allowed choices one per line).
 #: components/manage/Widgets/SchemaWidget
+# defaultMessage: Possible values (Enter allowed choices one per line).
 msgid "Possible values"
 msgstr "Valores possíveis"
 
-# defaultMessage: Powered by Plone & Python
 #: components/theme/Footer/Footer
+# defaultMessage: Powered by Plone & Python
 msgid "Powered by Plone & Python"
 msgstr "Criado com Plone e Python"
 
-# defaultMessage: Preferences
 #: components/manage/Toolbar/PersonalTools
+# defaultMessage: Preferences
 msgid "Preferences"
 msgstr "Preferências"
 
-# defaultMessage: Prettify your code
 #: components/manage/Blocks/HTML/Edit
+# defaultMessage: Prettify your code
 msgid "Prettify your code"
 msgstr "Re-formatar seu código"
 
-# defaultMessage: Preview
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
+# defaultMessage: Preview
 msgid "Preview"
 msgstr "Pré-visualização"
 
-# defaultMessage: Preview Image URL
 #: components/manage/Blocks/Video/schema
+# defaultMessage: Preview Image URL
 msgid "Preview Image URL"
 msgstr "Url de imagem de pré-visualização"
 
-# defaultMessage: Profile
 #: components/manage/Toolbar/PersonalTools
+# defaultMessage: Profile
 msgid "Profile"
 msgstr "Perfil"
 
-# defaultMessage: Properties
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Properties
 msgid "Properties"
 msgstr "Propriedades"
 
-# defaultMessage: Publication date
 #: components/manage/Contents/Contents
+# defaultMessage: Publication date
 msgid "Publication date"
 msgstr "Data de publicação"
 
-# defaultMessage: Publishing Date
 #: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Publishing Date
 msgid "Publishing Date"
 msgstr "Data de publicação"
 
-# defaultMessage: Query
 #: components/manage/Blocks/Listing/schema
+# defaultMessage: Query
 msgid "Query"
 msgstr "Consulta"
 
-# defaultMessage: Re-enter the password. Make sure the passwords are identical.
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Re-enter the password. Make sure the passwords are identical.
 msgid "Re-enter the password. Make sure the passwords are identical."
 msgstr "Reinsira a senha. Certifique-se de que as senhas são idênticas."
 
+#: components/theme/Search/Search
+#: components/theme/View/SummaryView
 # defaultMessage: Read More…
-#: components/theme/Search/Search components/theme/View/SummaryView
 msgid "Read More…"
 msgstr "Leia Mais…"
 
-# defaultMessage: Rearrange items by…
 #: components/manage/Contents/Contents
+# defaultMessage: Rearrange items by…
 msgid "Rearrange items by…"
 msgstr "Reorganize itens por…"
 
-# defaultMessage: Ends
 #: components/manage/Widgets/RecurrenceWidget/EndField
+# defaultMessage: Ends
 msgid "Recurrence ends"
 msgstr "Término da recorrência"
 
-# defaultMessage: after
 #: components/manage/Widgets/RecurrenceWidget/EndField
+# defaultMessage: after
 msgid "Recurrence ends after"
 msgstr "Recorrência se encerra após"
 
-# defaultMessage: on
 #: components/manage/Widgets/RecurrenceWidget/EndField
+# defaultMessage: on
 msgid "Recurrence ends on"
 msgstr "Recorrência se encerra em"
 
-# defaultMessage: Redo
 #: components/manage/Form/UndoToolbar
+# defaultMessage: Redo
 msgid "Redo"
 msgstr "Refazer"
 
-# defaultMessage: Minimalistic table design
 #: components/manage/Blocks/Table/Edit
+# defaultMessage: Minimalistic table design
 msgid "Reduce complexity"
 msgstr "Reduzir complexidade"
 
-# defaultMessage: Register
-#: components/theme/Anontools/Anontools components/theme/Login/Login
+#: components/theme/Anontools/Anontools
+#: components/theme/Login/Login
 #: components/theme/Register/Register
+# defaultMessage: Register
 msgid "Register"
 msgstr "Cadastro"
 
-# defaultMessage: Registration form
 #: components/theme/Register/Register
+# defaultMessage: Registration form
 msgid "Registration form"
 msgstr "Formulário de cadastro"
 
-# defaultMessage: Relevance
 #: components/theme/Search/Search
+# defaultMessage: Relevance
 msgid "Relevance"
 msgstr "Relevância"
 
-# defaultMessage: Remove item
 #: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Remove item
 msgid "Remove item"
 msgstr "Remover Item"
 
-# defaultMessage: Remove
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Remove
 msgid "Remove recurrence"
 msgstr "Remover a recorrência"
 
-# defaultMessage: Remove term
 #: components/manage/Widgets/VocabularyTermsWidget
+# defaultMessage: Remove term
 msgid "Remove term"
 msgstr "Remover o termo"
 
-# defaultMessage: Remove users from group
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Remove users from group
 msgid "Remove users from group"
 msgstr "Remover usuários do grupo"
 
-# defaultMessage: Remove working copy
 #: components/manage/Toolbar/More
+# defaultMessage: Remove working copy
 msgid "Remove working copy"
 msgstr "Remover a cópia de trabalho"
 
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
 # defaultMessage: Rename
-#: components/manage/Actions/Actions components/manage/Contents/Contents
 msgid "Rename"
 msgstr "Renomear"
 
-# defaultMessage: Renaming items...
 #: components/manage/Contents/ContentsRenameModal
+# defaultMessage: Renaming items...
 msgid "Rename Items Loading Message"
 msgstr "Renomeando os items"
 
-# defaultMessage: Rename items
 #: components/manage/Contents/ContentsRenameModal
+# defaultMessage: Rename items
 msgid "Rename items"
 msgstr "Renomear itens"
 
-# defaultMessage: Repeat
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Repeat
 msgid "Repeat"
 msgstr "Repetição"
 
-# defaultMessage: Repeat every
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Repeat every
 msgid "Repeat every"
 msgstr "Repete a cada"
 
-# defaultMessage: Repeat on
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Repeat on
 msgid "Repeat on"
 msgstr "Repete em"
 
-# defaultMessage: Replace existing file
 #: components/manage/Widgets/FileWidget
+# defaultMessage: Replace existing file
 msgid "Replace existing file"
 msgstr "Substituir arquivo existente"
 
-# defaultMessage: Reply
 #: components/theme/Comments/Comments
+# defaultMessage: Reply
 msgid "Reply"
 msgstr "Responder"
 
-# defaultMessage: Required
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
+# defaultMessage: Required
 msgid "Required"
 msgstr "Obrigatório"
 
+#: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Required input is missing.
-#: components/manage/Form/ModalForm helpers/MessageLabels/MessageLabels
 msgid "Required input is missing."
 msgstr "Falta informação obrigatória."
 
-# defaultMessage: Reset title
 #: components/manage/Widgets/VocabularyTermsWidget
+# defaultMessage: Reset title
 msgid "Reset term title"
 msgstr "Redefinir o título do termo"
 
-# defaultMessage: Results limit
 #: components/manage/Widgets/QuerystringWidget
+# defaultMessage: Results limit
 msgid "Results limit"
 msgstr "Limite de resultados"
 
-# defaultMessage: Results preview
 #: components/manage/Blocks/Listing/Edit
+# defaultMessage: Results preview
 msgid "Results preview"
 msgstr "Visualização de resultados"
 
-# defaultMessage: Results template
 #: components/manage/Blocks/Search/SearchBlockEdit
+# defaultMessage: Results template
 msgid "Results template"
 msgstr "Modelo de resultados"
 
-# defaultMessage: Reversed order
 #: components/manage/Widgets/QuerystringWidget
+# defaultMessage: Reversed order
 msgid "Reversed order"
 msgstr "Ordem invertida"
 
-# defaultMessage: Revert to this revision
 #: components/manage/History/History
+# defaultMessage: Revert to this revision
 msgid "Revert to this revision"
 msgstr "Reverter para esta revisão"
 
-# defaultMessage: Review state
 #: components/manage/Contents/Contents
+# defaultMessage: Review state
 msgid "Review state"
 msgstr "Estado"
 
-# defaultMessage: Richtext
 #: components/manage/Widgets/SchemaWidget
+# defaultMessage: Richtext
 msgid "Richtext"
 msgstr "Texto rico"
 
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Sidebar/AlignBlock
 # defaultMessage: Right
-#: components/manage/Blocks/Maps/Edit components/manage/Sidebar/AlignBlock
 msgid "Right"
 msgstr "Direita"
 
-# defaultMessage: Rights
 #: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Rights
 msgid "Rights"
 msgstr "Direitos"
 
-# defaultMessage: Roles
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Roles
 msgid "Roles"
 msgstr "Papéis"
 
-# defaultMessage: Root
 #: components/manage/Contents/ContentsBreadcrumbs
+# defaultMessage: Root
 msgid "Root"
 msgstr "Raiz"
 
-# defaultMessage: Save
-#: components/manage/Add/Add components/manage/Controlpanels/ContentType
+#: components/manage/Add/Add
+#: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
-#: components/manage/Controlpanels/Controlpanel components/manage/Edit/Edit
-#: components/manage/Form/ModalForm components/manage/Sharing/Sharing
+#: components/manage/Controlpanels/Controlpanel
+#: components/manage/Edit/Edit
+#: components/manage/Form/ModalForm
+#: components/manage/Sharing/Sharing
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Save
 msgid "Save"
 msgstr "Salvar"
 
-# defaultMessage: Save
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Save
 msgid "Save recurrence"
 msgstr "Salvar a recorrência"
 
-# defaultMessage: Schema
 #: components/manage/Controlpanels/ContentTypesActions
+# defaultMessage: Schema
 msgid "Schema"
 msgstr "Esquema"
 
-# defaultMessage: Schema updates
 #: components/manage/Controlpanels/ContentTypeSchema
+# defaultMessage: Schema updates
 msgid "Schema updates"
 msgstr "Atualizações do esquema"
 
-# defaultMessage: Search
 #: components/manage/Blocks/Search/components/SearchInput
 #: components/manage/Blocks/Search/layout/LeftColumnFacets
 #: components/manage/Blocks/Search/layout/RightColumnFacets
 #: components/manage/Blocks/Search/layout/TopSideFacets
 #: components/manage/Blocks/Search/schema
 #: components/theme/SearchWidget/SearchWidget
+# defaultMessage: Search
 msgid "Search"
 msgstr "Pesquisar"
 
-# defaultMessage: Search SVG
 #: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: Search SVG
 msgid "Search SVG"
 msgstr "SVG de busca"
 
-# defaultMessage: Search Site
 #: components/theme/SearchWidget/SearchWidget
+# defaultMessage: Search Site
 msgid "Search Site"
 msgstr "Pesquisar no site"
 
-# defaultMessage: Search block
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Search block
 msgid "Search block"
 msgstr "Bloco de busca"
 
-# defaultMessage: Search button label
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Search button label
 msgid "Search button label"
 msgstr "Rótulo do botão de busca"
 
-# defaultMessage: Search content
 #: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: Search content
 msgid "Search content"
 msgstr "Pesquisar conteúdo"
 
-# defaultMessage: Search for user or group
 #: components/manage/Sharing/Sharing
+# defaultMessage: Search for user or group
 msgid "Search for user or group"
 msgstr "Pesquisar por usuário ou grupo"
 
-# defaultMessage: Search group…
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search group…
 msgid "Search group…"
 msgstr "Pesquisar grupo…"
 
-# defaultMessage: Search input label
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Search input label
 msgid "Search input label"
 msgstr "Rótulo da caixa de busca"
 
-# defaultMessage: Search results
 #: components/manage/Blocks/Search/components/SearchDetails
 #: components/theme/Search/Search
+# defaultMessage: Search results
 msgid "Search results"
 msgstr "Resultados da pesquisa"
 
-# defaultMessage: Search results for {term}
 #: components/theme/Search/Search
+# defaultMessage: Search results for {term}
 msgid "Search results for {term}"
 msgstr "Resultados da pesquisa para {term}"
 
-# defaultMessage: Search users…
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search users…
 msgid "Search users…"
 msgstr "Pesquisar usuários…"
 
-# defaultMessage: Searched for
 #: components/manage/Blocks/Search/components/SearchDetails
+# defaultMessage: Searched for
 msgid "Searched for"
 msgstr "Busca por"
 
-# defaultMessage: Second
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+# defaultMessage: Second
 msgid "Second"
 msgstr "Segundo"
 
-# defaultMessage: Section title
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Section title
 msgid "Section title"
 msgstr "Título da Seção"
 
-# defaultMessage: Select
 #: components/manage/Sidebar/ObjectBrowserNav
+# defaultMessage: Select
 msgid "Select"
 msgstr "Selecionar"
 
-# defaultMessage: Select a date to add to recurrence
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Select a date to add to recurrence
 msgid "Select a date to add to recurrence"
 msgstr "Selecione uma data para adicionar à recorrência"
 
-# defaultMessage: Select columns to show
 #: components/manage/Contents/Contents
+# defaultMessage: Select columns to show
 msgid "Select columns to show"
 msgstr "Selecione colunas para mostrar"
 
-# defaultMessage: Select the transition to be used for modifying the items state.
 #: components/manage/Contents/ContentsWorkflowModal
+# defaultMessage: Select the transition to be used for modifying the items state.
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Selecione a transição a ser usada para modificar o estado dos itens."
 
-# defaultMessage: Selected dates
 #: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: Selected dates
 msgid "Selected dates"
 msgstr "Datas selecionadas"
 
-# defaultMessage: Selected items
 #: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: Selected items
 msgid "Selected items"
 msgstr "Itens selecionados"
 
-# defaultMessage: of
 #: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: of
 msgid "Selected items - x of y"
 msgstr "Itens selecionados - x de y"
 
-# defaultMessage: Selection
 #: components/manage/Widgets/SchemaWidget
+# defaultMessage: Selection
 msgid "Selection"
 msgstr "Seleção"
 
-# defaultMessage: Select…
-#: components/manage/Contents/Contents components/manage/Widgets/ArrayWidget
+#: components/manage/Contents/Contents
+#: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/SelectAutoComplete
-#: components/manage/Widgets/SelectWidget components/manage/Widgets/TokenWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+# defaultMessage: Select…
 msgid "Select…"
 msgstr "Selecionar…"
 
-# defaultMessage: Send
 #: components/theme/ContactForm/ContactForm
+# defaultMessage: Send
 msgid "Send"
 msgstr "Enviar"
 
-# defaultMessage: Set my password
 #: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Set my password
 msgid "Set my password"
 msgstr "Defina minha senha"
 
-# defaultMessage: Set your password
 #: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Set your password
 msgid "Set your password"
 msgstr "Defina sua senha"
 
-# defaultMessage: Settings
 #: components/manage/Sidebar/Sidebar
+# defaultMessage: Settings
 msgid "Settings"
 msgstr "Configurações"
 
+#: components/manage/Sharing/Sharing
+#: components/manage/Toolbar/More
 # defaultMessage: Sharing
-#: components/manage/Sharing/Sharing components/manage/Toolbar/More
 msgid "Sharing"
 msgstr "Compartilhamento"
 
-# defaultMessage: Sharing for {title}
 #: components/manage/Sharing/Sharing
+# defaultMessage: Sharing for {title}
 msgid "Sharing for {title}"
 msgstr "Compartilhamento para {title}"
 
-# defaultMessage: Short Name
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
+# defaultMessage: Short Name
 msgid "Short Name"
 msgstr "Nome curto"
 
-# defaultMessage: Short name
 #: components/manage/Contents/ContentsRenameModal
+# defaultMessage: Short name
 msgid "Short name"
 msgstr "Nome curto"
 
-# defaultMessage: Show
 #: components/theme/Pagination/Pagination
+# defaultMessage: Show
 msgid "Show"
 msgstr "Mostrar"
 
-# defaultMessage: Show All
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Show All
 msgid "Show All"
 msgstr "Mostrar tudo"
 
-# defaultMessage: Show Replies
 #: components/theme/Comments/Comments
+# defaultMessage: Show Replies
 msgid "Show Replies"
 msgstr "Mostrar respostas"
 
-# defaultMessage: Show groups of users below
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Show groups of users below
 msgid "Show groups of users below"
 msgstr "Mostrar grupos de usuários abaixo"
 
-# defaultMessage: Show item
 #: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Show item
 msgid "Show item"
 msgstr "Mostrar item"
 
-# defaultMessage: Show search button?
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Show search button?
 msgid "Show search button?"
 msgstr "Mostrar botão de pesquisa?"
 
-# defaultMessage: Show search input?
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Show search input?
 msgid "Show search input?"
 msgstr "Mostrar campo de pesquisa?"
 
-# defaultMessage: Show sorting?
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Show sorting?
 msgid "Show sorting?"
 msgstr "Mostrar ordenação?"
 
-# defaultMessage: Shrink sidebar
 #: components/manage/Sidebar/Sidebar
+# defaultMessage: Shrink sidebar
 msgid "Shrink sidebar"
 msgstr "Recolher barra lateral"
 
-# defaultMessage: Shrink toolbar
 #: components/manage/Toolbar/Toolbar
+# defaultMessage: Shrink toolbar
 msgid "Shrink toolbar"
 msgstr "Recolher barra de ferramentas"
 
-# defaultMessage: Sign in to start session
 #: components/theme/Login/Login
+# defaultMessage: Sign in to start session
 msgid "Sign in to start session"
 msgstr "Faça login para iniciar a sessão"
 
-# defaultMessage: Site
 #: components/theme/Logo/Logo
+# defaultMessage: Site
 msgid "Site"
 msgstr "Site"
 
-# defaultMessage: Site Administration
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
+# defaultMessage: Site Administration
 msgid "Site Administration"
 msgstr "Administração do site"
 
-# defaultMessage: Site Map
 #: components/theme/Footer/Footer
+# defaultMessage: Site Map
 msgid "Site Map"
 msgstr "Mapa do site"
 
-# defaultMessage: Site Setup
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
+# defaultMessage: Site Setup
 msgid "Site Setup"
 msgstr "Configuração do site"
 
-# defaultMessage: Sitemap
 #: components/theme/Sitemap/Sitemap
+# defaultMessage: Sitemap
 msgid "Sitemap"
 msgstr "Mapa do site"
 
-# defaultMessage: Size: {size}
 #: components/theme/View/ImageView
+# defaultMessage: Size: {size}
 msgid "Size: {size}"
 msgstr "Tamanho: {size}"
 
-# defaultMessage: Small
 #: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Small
 msgid "Small"
 msgstr "Pequeno"
 
-# defaultMessage: Sorry, something went wrong with your request
 #: error
+# defaultMessage: Sorry, something went wrong with your request
 msgid "Sorry, something went wrong with your request"
 msgstr "Desculpe, algo deu errado com sua requisição"
 
-# defaultMessage: Sort by:
 #: components/theme/Search/Search
+# defaultMessage: Sort by:
 msgid "Sort By:"
 msgstr "Ordenar por:"
 
-# defaultMessage: Sort on
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Widgets/QuerySortOnWidget
 #: components/manage/Widgets/QuerystringWidget
+# defaultMessage: Sort on
 msgid "Sort on"
 msgstr "Ordenado por"
 
-# defaultMessage: Sort on label
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Sort on label
 msgid "Sort on label"
 msgstr "Rótulo de ordenação"
 
-# defaultMessage: Sort on options
 #: components/manage/Blocks/Search/schema
+# defaultMessage: Sort on options
 msgid "Sort on options"
 msgstr "Opções de ordenação"
 
+#: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Image/schema
 # defaultMessage: Source
-#: components/manage/Blocks/HTML/Edit components/manage/Blocks/Image/schema
 msgid "Source"
 msgstr "Fonte"
 
-# defaultMessage: Specify a youtube video or playlist url
 #: components/manage/Blocks/Video/Edit
+# defaultMessage: Specify a youtube video or playlist url
 msgid "Specify a youtube video or playlist url"
 msgstr "Informe a url para um vídeo ou uma playlist do YouTube"
 
-# defaultMessage: Split
 #: components/manage/Diff/Diff
+# defaultMessage: Split
 msgid "Split"
 msgstr "Dividir"
 
-# defaultMessage: Start Date
 #: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
+# defaultMessage: Start Date
 msgid "Start Date"
 msgstr "Data de Início"
 
-# defaultMessage: Start of the recurrence
 #: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: Start of the recurrence
 msgid "Start of the recurrence"
 msgstr "Início da recorrência"
 
-# defaultMessage: Start password reset
 #: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Start password reset
 msgid "Start password reset"
 msgstr "Redefinir senha"
 
-# defaultMessage: State
-#: components/manage/Contents/Contents components/manage/Workflow/Workflow
+#: components/manage/Contents/Contents
+#: components/manage/Workflow/Workflow
 #: components/theme/View/TabularView
+# defaultMessage: State
 msgid "State"
 msgstr "Estado"
 
-# defaultMessage: Stop compare
 #: components/manage/Multilingual/CompareLanguages
+# defaultMessage: Stop compare
 msgid "Stop compare"
 msgstr "Pare de comparar"
 
-# defaultMessage: String
 #: components/manage/Widgets/SchemaWidget
+# defaultMessage: String
 msgid "String"
 msgstr "Texto"
 
-# defaultMessage: Alternate row background color
 #: components/manage/Blocks/Table/Edit
+# defaultMessage: Alternate row background color
 msgid "Stripe alternate rows with color"
 msgstr "Alternar cores das linhas"
 
-# defaultMessage: Styling
 #: helpers/Extensions/withBlockSchemaEnhancer
+# defaultMessage: Styling
 msgid "Styling"
 msgstr "Estilo"
 
-# defaultMessage: Subject
 #: components/theme/ContactForm/ContactForm
+# defaultMessage: Subject
 msgid "Subject"
 msgstr "Assunto"
 
-# defaultMessage: Success
-#: components/manage/Actions/Actions components/manage/Contents/Contents
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
-#: components/theme/ContactForm/ContactForm helpers/MessageLabels/MessageLabels
+#: components/theme/ContactForm/ContactForm
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Success
 msgid "Success"
 msgstr "Sucesso"
 
-# defaultMessage: Summary
 #: config/Blocks
+# defaultMessage: Summary
 msgid "Summary"
 msgstr "Resumo"
 
-# defaultMessage: Switch to
 #: components/theme/LanguageSelector/LanguageSelector
+# defaultMessage: Switch to
 msgid "Switch to"
 msgstr "Mudar para"
 
-# defaultMessage: Table
 #: components/manage/Blocks/Table/Edit
+# defaultMessage: Table
 msgid "Table"
 msgstr "Tabela"
 
-# defaultMessage: Table of Contents
 #: components/manage/Blocks/ToC/variations/DefaultTocRenderer
 #: components/manage/Blocks/ToC/variations/HorizontalMenu
+# defaultMessage: Table of Contents
 msgid "Table of Contents"
 msgstr "Tabela de conteúdos"
 
-# defaultMessage: Tags
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsTagsModal
+# defaultMessage: Tags
 msgid "Tags"
 msgstr "Tags"
 
-# defaultMessage: Tags to add
 #: components/manage/Contents/ContentsTagsModal
+# defaultMessage: Tags to add
 msgid "Tags to add"
 msgstr "Tags a serem adicionadas"
 
-# defaultMessage: Tags to remove
 #: components/manage/Contents/ContentsTagsModal
+# defaultMessage: Tags to remove
 msgid "Tags to remove"
 msgstr "Tags a serem removidas"
 
-# defaultMessage: Target memory size per cache in bytes
 #: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Target memory size per cache in bytes
 msgid "Target memory size per cache in bytes"
 msgstr "Tamanho de memória destinada para o cache em bytes"
 
-# defaultMessage: Target number of objects in memory per cache
 #: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Target number of objects in memory per cache
 msgid "Target number of objects in memory per cache"
 msgstr "Número de objetos na memória para o cache"
 
-# defaultMessage: Text
 #: components/manage/Widgets/SchemaWidget
+# defaultMessage: Text
 msgid "Text"
 msgstr "Texto"
 
-# defaultMessage: Thank you.
 #: components/theme/ConnectionRefused/ConnectionRefused
-#: components/theme/CorsError/CorsError components/theme/NotFound/NotFound
+#: components/theme/CorsError/CorsError
+#: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
+# defaultMessage: Thank you.
 msgid "Thank you."
 msgstr "Obrigado."
 
-# defaultMessage: The Database Manager allow you to view database status information
 #: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: The Database Manager allow you to view database status information
 msgid "The Database Manager allow you to view database status information"
 msgstr "O Gerenciador de banco de dados permite que você visualize informações de status do banco de dados"
 
-# defaultMessage: The URL for your external home page, if you have one.
 #: components/manage/Preferences/PersonalInformation
+# defaultMessage: The URL for your external home page, if you have one.
 msgid "The URL for your external home page, if you have one."
 msgstr "A URL para seu site, caso tenha um."
 
-# defaultMessage: The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable.
 #: components/theme/ConnectionRefused/ConnectionRefused
+# defaultMessage: The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable.
 msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
 msgstr "O servidor de backend não está respondendo, verifique se você inicializou o Plone, verifique o apiPath de objeto de configuração do seu projeto (ou se você está usando o proxy interno, devProxyToApiPath) ou a variável ambiente RAZZLE_API_PATH Volto."
 
-# defaultMessage: The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources.
 #: components/theme/CorsError/CorsError
+# defaultMessage: The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources.
 msgid "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
 msgstr "O servidor de backend está respondendo, mas os cabeçalhos CORS não estão configurados corretamente e o navegador negou o acesso aos recursos de backend."
 
-# defaultMessage: The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
 #: components/theme/CorsError/CorsError
+# defaultMessage: The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
 msgid "The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
 msgstr "O servidor de backend do seu site não está respondendo, pedimos desculpas pelo inconveniente. Por favor, tente recarregar a página e tente novamente. Se o problema persistir, entre em contato com os administradores do site."
 
-# defaultMessage: The button presence disables the live search, the query is issued when you press ENTER
 #: components/manage/Blocks/Search/schema
+# defaultMessage: The button presence disables the live search, the query is issued when you press ENTER
 msgid "The button presence disables the live search, the query is issued when you press ENTER"
 msgstr "A presença do botão desativa a busca ativa, a consulta é realizada apenas quando você pressiona ENTER"
 
-# defaultMessage: The item could not be deleted.
 #: components/manage/Contents/Contents
+# defaultMessage: The item could not be deleted.
 msgid "The item could not be deleted."
 msgstr "O item não pôde ser excluído."
 
-# defaultMessage: The link address is:
 #: components/theme/View/LinkView
+# defaultMessage: The link address is:
 msgid "The link address is:"
 msgstr "O endereço do link é:"
 
-# defaultMessage: The registration process has been successful. Please check your e-mail inbox for information on how activate your account.
 #: components/theme/Register/Register
+# defaultMessage: The registration process has been successful. Please check your e-mail inbox for information on how activate your account.
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgstr "O processo de registro foi bem sucedido. Verifique sua caixa de entrada de e-mail para obter informações sobre como ativar sua conta."
 
-# defaultMessage: The user portrait/avatar
 #: components/manage/Preferences/PersonalInformation
+# defaultMessage: The user portrait/avatar
 msgid "The user portrait/avatar"
 msgstr "Foto/avatar do usuário"
 
-# defaultMessage: The working copy was discarded
 #: components/manage/Toolbar/More
+# defaultMessage: The working copy was discarded
 msgid "The working copy was discarded"
 msgstr "A cópia de trabalho foi descartada."
 
-# defaultMessage: The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends.
 #: components/theme/Footer/Footer
+# defaultMessage: The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends.
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
 msgstr "O {plonecms} tem {copyright} de 2000-{current_year} pela {plonefoundation} e amigos."
 
-# defaultMessage: There is a configuration problem on the backend
 #: components/theme/CorsError/CorsError
+# defaultMessage: There is a configuration problem on the backend
 msgid "There is a configuration problem on the backend"
 msgstr "Há um problema de configuração no backend"
 
-# defaultMessage: There were some errors
 #: components/manage/Form/InlineForm
+# defaultMessage: There were some errors
 msgid "There were some errors"
 msgstr "Houve alguns erros"
 
+#: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: There were some errors.
-#: components/manage/Form/ModalForm helpers/MessageLabels/MessageLabels
 msgid "There were some errors."
 msgstr "Houve alguns erros."
 
-# defaultMessage: Third
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+# defaultMessage: Third
 msgid "Third"
 msgstr "Terceiro"
 
-# defaultMessage: This has an ongoing working copy in {title}
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+# defaultMessage: This has an ongoing working copy in {title}
 msgid "This has an ongoing working copy in {title}"
 msgstr "Este conteúdo tem uma cópia de trabalho ativa em {title}"
 
-# defaultMessage: This is a reserved name and can't be used
 #: components/manage/Widgets/IdWidget
+# defaultMessage: This is a reserved name and can't be used
 msgid "This is a reserved name and can't be used"
 msgstr "Este é um nome reservado e não pode ser usado"
 
-# defaultMessage: This is a working copy of {title}
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+# defaultMessage: This is a working copy of {title}
 msgid "This is a working copy of {title}"
 msgstr "Esta é uma cópia de trabalho de {title}"
 
-# defaultMessage: This item was locked by {creator} on {date}
 #: components/manage/LockingToastsFactory/LockingToastsFactory
+# defaultMessage: This item was locked by {creator} on {date}
 msgid "This item was locked by {creator} on {date}"
 msgstr "Este item foi bloqueado por {creator} em {date}"
 
-# defaultMessage: This name will be displayed in the URL.
 #: components/manage/Contents/ContentsRenameModal
+# defaultMessage: This name will be displayed in the URL.
 msgid "This name will be displayed in the URL."
 msgstr "Este nome será exibido na URL."
 
-# defaultMessage: This page does not seem to exist…
 #: components/theme/NotFound/NotFound
+# defaultMessage: This page does not seem to exist…
 msgid "This page does not seem to exist…"
 msgstr "Esta página parece não existir…"
 
-# defaultMessage: Time
 #: components/manage/Widgets/DatetimeWidget
+# defaultMessage: Time
 msgid "Time"
 msgstr "Hora"
 
-# defaultMessage: Title
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget components/theme/View/TabularView
+#: components/manage/Widgets/WysiwygWidget
+#: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Title
 msgid "Title"
 msgstr "Título"
 
-# defaultMessage: Total active and non-active objects
 #: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Total active and non-active objects
 msgid "Total active and non-active objects"
 msgstr "Total de objetos ativos e não ativos"
 
-# defaultMessage: Total comments
 #: components/manage/Contents/Contents
+# defaultMessage: Total comments
 msgid "Total comments"
 msgstr "Total de comentários"
 
-# defaultMessage: Total number of objects in each cache
 #: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Total number of objects in each cache
 msgid "Total number of objects in each cache"
 msgstr "Número total de objetos em cada cache"
 
-# defaultMessage: Total number of objects in memory from all caches
 #: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Total number of objects in memory from all caches
 msgid "Total number of objects in memory from all caches"
 msgstr "Número total de objetos na memória de todos os caches"
 
-# defaultMessage: Total number of objects in the database
 #: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Total number of objects in the database
 msgid "Total number of objects in the database"
 msgstr "Número total de objetos no banco de dados"
 
+#: components/manage/Add/Add
+#: components/manage/Toolbar/Types
 # defaultMessage: Translate to {lang}
-#: components/manage/Add/Add components/manage/Toolbar/Types
 msgid "Translate to {lang}"
 msgstr "Traduza para {lang}"
 
-# defaultMessage: Translation linked
 #: components/manage/Multilingual/ManageTranslations
+# defaultMessage: Translation linked
 msgid "Translation linked"
 msgstr "Tradução vinculada"
 
-# defaultMessage: Translation linking removed
 #: components/manage/Multilingual/ManageTranslations
+# defaultMessage: Translation linking removed
 msgid "Translation linking removed"
 msgstr "Vínculo de tradução removido"
 
-# defaultMessage: Type
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Widgets/SchemaWidget components/theme/View/TabularView
+#: components/manage/Widgets/SchemaWidget
+#: components/theme/View/TabularView
+# defaultMessage: Type
 msgid "Type"
 msgstr "Tipo"
 
-# defaultMessage: Type a Video (YouTube, Vimeo or mp4) URL
 #: components/manage/Blocks/Video/Edit
+# defaultMessage: Type a Video (YouTube, Vimeo or mp4) URL
 msgid "Type a Video (YouTube, Vimeo or mp4) URL"
 msgstr "Digite uma URL de vídeo (YouTube, Vimeo ou mp4)"
 
-# defaultMessage: Type text...
 #: components/manage/Widgets/SelectAutoComplete
+# defaultMessage: Type text...
 msgid "Type text..."
 msgstr "Digite texto..."
 
-# defaultMessage: Type text…
 #: components/manage/Blocks/Text/Edit
+# defaultMessage: Type text…
 msgid "Type text…"
 msgstr "Digite texto…"
 
-# defaultMessage: Type the title…
 #: components/manage/Blocks/Title/Edit
+# defaultMessage: Type the title…
 msgid "Type the title…"
 msgstr "Digite o título…"
 
-# defaultMessage: UID
 #: components/manage/Contents/Contents
+# defaultMessage: UID
 msgid "UID"
 msgstr "UID"
 
-# defaultMessage: Unauthorized
 #: components/theme/Unauthorized/Unauthorized
+# defaultMessage: Unauthorized
 msgid "Unauthorized"
 msgstr "Não autorizado"
 
-# defaultMessage: Undo
 #: components/manage/Form/UndoToolbar
+# defaultMessage: Undo
 msgid "Undo"
 msgstr "Desfazer"
 
-# defaultMessage: Unfold
 #: components/manage/BlockChooser/BlockChooser
+# defaultMessage: Unfold
 msgid "Unfold"
 msgstr "Expandir"
 
-# defaultMessage: Unified
 #: components/manage/Diff/Diff
+# defaultMessage: Unified
 msgid "Unified"
 msgstr "Unificado"
 
-# defaultMessage: Uninstall
 #: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Uninstall
 msgid "Uninstall"
 msgstr "Desinstalar"
 
+#: components/manage/Blocks/Block/Edit
+#: components/theme/View/RenderBlocks
 # defaultMessage: Unknown Block {block}
-#: components/manage/Blocks/Block/Edit components/theme/View/RenderBlocks
 msgid "Unknown Block"
 msgstr "Bloco Desconhecido"
 
-# defaultMessage: Unlink translation for
 #: components/manage/Multilingual/ManageTranslations
+# defaultMessage: Unlink translation for
 msgid "Unlink translation for"
 msgstr "Desvincular a tradução para"
 
-# defaultMessage: Unlock
 #: components/manage/Toolbar/Toolbar
+# defaultMessage: Unlock
 msgid "Unlock"
 msgstr "Destravar"
 
-# defaultMessage: Update
 #: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Update
 msgid "Update"
 msgstr "Atualizar"
 
-# defaultMessage: Update installed addons
 #: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Update installed addons
 msgid "Update installed addons"
 msgstr "Atualizar complementos instalados"
 
-# defaultMessage: Update installed addons:
 #: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Update installed addons:
 msgid "Update installed addons:"
 msgstr "Atualização de complementos instalados:"
 
-# defaultMessage: Updates available
 #: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Updates available
 msgid "Updates available"
 msgstr "Atualizações disponíveis"
 
-# defaultMessage: Upload
 #: components/manage/Contents/Contents
+# defaultMessage: Upload
 msgid "Upload"
 msgstr "Enviar"
 
-# defaultMessage: Upload a lead image in the 'Lead Image' content field.
 #: components/manage/Blocks/LeadImage/Edit
+# defaultMessage: Upload a lead image in the 'Lead Image' content field.
 msgid "Upload a lead image in the 'Lead Image' content field."
 msgstr "Enviar uma imagem para o campo de imagem principal."
 
-# defaultMessage: Upload a new image
 #: components/manage/Blocks/HeroImageLeft/Edit
+# defaultMessage: Upload a new image
 msgid "Upload a new image"
 msgstr "Enviar uma nova imagem"
 
-# defaultMessage: Upload files
 #: components/manage/Contents/ContentsUploadModal
+# defaultMessage: Upload files
 msgid "Upload files"
 msgstr "Enviar arquivos"
 
-# defaultMessage: Uploading files
 #: components/manage/Contents/ContentsUploadModal
+# defaultMessage: Uploading files
 msgid "Uploading files"
 msgstr "Enviando arquivos"
 
-# defaultMessage: Uploading image
 #: components/manage/Blocks/HeroImageLeft/Edit
+# defaultMessage: Uploading image
 msgid "Uploading image"
 msgstr "Enviando imagem"
 
-# defaultMessage: Used for programmatic access to the fieldset.
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
+# defaultMessage: Used for programmatic access to the fieldset.
 msgid "Used for programmatic access to the fieldset."
 msgstr "Usado para acesso programático ao conjunto de campos."
 
-# defaultMessage: User
 #: components/manage/Sharing/Sharing
+# defaultMessage: User
 msgid "User"
 msgstr "Usuário"
 
-# defaultMessage: User Group Membership
 #: components/manage/Controlpanels/Controlpanels
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Membership
 msgid "User Group Membership"
 msgstr "Participação de usuário em grupos"
 
-# defaultMessage: User Group Settings
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Settings
 msgid "User Group Settings"
 msgstr "Configurações de usuários e grupos"
 
-# defaultMessage: User created
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: User created
 msgid "User created"
 msgstr "Usuário criado"
 
-# defaultMessage: User name
 #: components/manage/Controlpanels/Users/UsersControlpanel
+# defaultMessage: User name
 msgid "User name"
 msgstr "Nome de usuário"
 
-# defaultMessage: User roles updated
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: User roles updated
 msgid "User roles updated"
 msgstr "Papéis do grupo atualizados"
 
-# defaultMessage: Username
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Username
 msgid "Username"
 msgstr "Nome de usuário"
 
-# defaultMessage: Users
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/Users/UsersControlpanel
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Users
 msgid "Users"
 msgstr "Usuários"
 
-# defaultMessage: Users and Groups
 #: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Users and Groups
 msgid "Users and Groups"
 msgstr "Usuários e Grupos"
 
-# defaultMessage: Variation
 #: helpers/Extensions/withBlockSchemaEnhancer
+# defaultMessage: Variation
 msgid "Variation"
 msgstr "Variação"
 
-# defaultMessage: Version Overview
 #: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Version Overview
 msgid "Version Overview"
 msgstr "Versões"
 
-# defaultMessage: Video
 #: components/manage/Blocks/Video/schema
 #: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: Video
 msgid "Video"
 msgstr "Vídeo"
 
-# defaultMessage: Video URL
 #: components/manage/Blocks/Video/schema
+# defaultMessage: Video URL
 msgid "Video URL"
 msgstr "URL do vídeo"
 
-# defaultMessage: View
 #: components/manage/Contents/ContentsItem
+# defaultMessage: View
 msgid "View"
 msgstr "Visão"
 
-# defaultMessage: View changes
 #: components/manage/History/History
+# defaultMessage: View changes
 msgid "View changes"
 msgstr "Ver mudanças"
 
-# defaultMessage: View this revision
 #: components/manage/History/History
+# defaultMessage: View this revision
 msgid "View this revision"
 msgstr "Ver esta revisão"
 
-# defaultMessage: View working copy
 #: components/manage/Toolbar/More
+# defaultMessage: View working copy
 msgid "View working copy"
 msgstr "Exibir a cópia de trabalho"
 
-# defaultMessage: View
 #: components/manage/Display/Display
+# defaultMessage: View
 msgid "Viewmode"
 msgstr "Visão"
 
-# defaultMessage: Vocabulary term
 #: components/manage/Widgets/VocabularyTermsWidget
+# defaultMessage: Vocabulary term
 msgid "Vocabulary term"
 msgstr "Termo de vocabulário"
 
-# defaultMessage: Title
 #: components/manage/Widgets/VocabularyTermsWidget
+# defaultMessage: Title
 msgid "Vocabulary term title"
 msgstr "Título do termo de vocabulário"
 
-# defaultMessage: Vocabulary terms
 #: components/manage/Widgets/VocabularyTermsWidget
+# defaultMessage: Vocabulary terms
 msgid "Vocabulary terms"
 msgstr "Termos de vocabulário"
 
-# defaultMessage: You are running in 'debug mode'. This mode is intended for sites that are under development. This allows many configuration changes to be immediately visible, but will make your site run more slowly. To turn off debug mode, stop the server, set 'debug-mode=off' in your buildout.cfg, re-run bin/buildout and then restart the server process.
 #: components/manage/Controlpanels/VersionOverview
+# defaultMessage: You are running in 'debug mode'. This mode is intended for sites that are under development. This allows many configuration changes to be immediately visible, but will make your site run more slowly. To turn off debug mode, stop the server, set 'debug-mode=off' in your buildout.cfg, re-run bin/buildout and then restart the server process.
 msgid "Warning Regarding debug mode"
 msgstr "Aviso em relação ao modo de depuração"
 
-# defaultMessage: We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later.
 #: components/theme/ConnectionRefused/ConnectionRefused
+# defaultMessage: We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later.
 msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
 msgstr "Pedimos desculpas pelo inconveniente, mas o backend do site que você está acessando não está disponível agora. Por favor, tente de novo mais tarde."
 
-# defaultMessage: We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for.
 #: components/theme/NotFound/NotFound
+# defaultMessage: We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for.
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr "Pedimos desculpas pelo inconveniente, mas a página que você estava tentando acessar não está neste endereço. Você pode usar os links abaixo para ajudá-lo a encontrar o que você está procurando."
 
-# defaultMessage: We apologize for the inconvenience, but you don't have permissions on this resource.
 #: components/theme/Forbidden/Forbidden
+# defaultMessage: We apologize for the inconvenience, but you don't have permissions on this resource.
 msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
 msgstr "Pedimos desculpas pelo inconveniente, mas você não tem permissões neste recurso."
 
-# defaultMessage: We will use this address if you need to recover your password
 #: components/manage/Preferences/PersonalInformation
+# defaultMessage: We will use this address if you need to recover your password
 msgid "We will use this address if you need to recover your password"
 msgstr "Usaremos este endereço se você precisar recuperar sua senha"
 
-# defaultMessage: The
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+# defaultMessage: The
 msgid "Weeek day of month"
 msgstr "Dia do mês"
 
-# defaultMessage: Weekday
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Weekday
 msgid "Weekday"
 msgstr "Dia da semana"
 
-# defaultMessage: Weekly
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Weekly
 msgid "Weekly"
 msgstr "Semanalmente"
 
-# defaultMessage: What
 #: components/manage/History/History
+# defaultMessage: What
 msgid "What"
 msgstr "O quê"
 
-# defaultMessage: When
 #: components/manage/History/History
+# defaultMessage: When
 msgid "When"
 msgstr "Quando"
 
-# defaultMessage: When this date is reached, the content will nolonger be visible in listings and searches.
 #: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: When this date is reached, the content will nolonger be visible in listings and searches.
 msgid "When this date is reached, the content will nolonger be visible in listings and searches."
 msgstr "Quando chegar a esta data, o conteúdo deixará de ficar visível nas listagens e nas pesquisas."
 
-# defaultMessage: Who
 #: components/manage/History/History
+# defaultMessage: Who
 msgid "Who"
 msgstr "Quem"
 
-# defaultMessage: Wide
 #: components/manage/Sidebar/AlignBlock
+# defaultMessage: Wide
 msgid "Wide"
 msgstr "Largo"
 
-# defaultMessage: Updating workflow states...
 #: components/manage/Contents/ContentsWorkflowModal
+# defaultMessage: Updating workflow states...
 msgid "Workflow Change Loading Message"
 msgstr "Alterando os estados..."
 
-# defaultMessage: Workflow updated.
 #: components/manage/Workflow/Workflow
+# defaultMessage: Workflow updated.
 msgid "Workflow updated."
 msgstr "Workflow atualizado."
 
-# defaultMessage: Yearly
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Yearly
 msgid "Yearly"
 msgstr "Anualmente"
 
-# defaultMessage: Yes
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Yes
 msgid "Yes"
 msgstr "Sim"
 
-# defaultMessage: You are trying to access a protected resource, please {login} first.
 #: components/theme/Unauthorized/Unauthorized
+# defaultMessage: You are trying to access a protected resource, please {login} first.
 msgid "You are trying to access a protected resource, please {login} first."
 msgstr "Você está tentando acessar um recurso protegido, por favor, {login} primeiro."
 
-# defaultMessage: You are using an outdated browser
 #: components/theme/OutdatedBrowser/OutdatedBrowser
+# defaultMessage: You are using an outdated browser
 msgid "You are using an outdated browser"
 msgstr "Você está usando um navegador desatualizado"
 
-# defaultMessage: You can add a comment by filling out the form below. Plain text formatting.
 #: components/theme/Comments/Comments
+# defaultMessage: You can add a comment by filling out the form below. Plain text formatting.
 msgid "You can add a comment by filling out the form below. Plain text formatting."
 msgstr "Você pode adicionar um comentário preenchendo o formulário abaixo. Formatação de texto simples."
 
-# defaultMessage: You can control who can view and edit your item using the list below.
 #: components/manage/Sharing/Sharing
+# defaultMessage: You can control who can view and edit your item using the list below.
 msgid "You can control who can view and edit your item using the list below."
 msgstr "Você pode controlar quem pode visualizar e editar seu item usando a lista abaixo."
 
-# defaultMessage: You can view the difference of the revisions below.
 #: components/manage/Diff/Diff
+# defaultMessage: You can view the difference of the revisions below.
 msgid "You can view the difference of the revisions below."
 msgstr "Você pode ver a diferença das revisões abaixo."
 
-# defaultMessage: You can view the history of your item below.
 #: components/manage/History/History
+# defaultMessage: You can view the history of your item below.
 msgid "You can view the history of your item below."
 msgstr "Você pode ver o histórico do seu item abaixo."
 
-# defaultMessage: You can't paste this content here
 #: components/manage/Contents/Contents
+# defaultMessage: You can't paste this content here
 msgid "You can't paste this content here"
 msgstr "Você não pode colar este conteúdo aqui"
 
-# defaultMessage: Your email is required for reset your password.
 #: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Your email is required for reset your password.
 msgid "Your email is required for reset your password."
 msgstr "Seu e-mail é necessário para redefinir sua senha."
 
-# defaultMessage: Your location - either city and country - or in a company setting, where your office is located.
 #: components/manage/Preferences/PersonalInformation
+# defaultMessage: Your location - either city and country - or in a company setting, where your office is located.
 msgid "Your location - either city and country - or in a company setting, where your office is located."
 msgstr "Sua localização - seja cidade e país - ou em um ambiente de empresa, onde seu escritório está localizado."
 
-# defaultMessage: Your password has been set successfully. You may now {link} with your new password.
 #: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Your password has been set successfully. You may now {link} with your new password.
 msgid "Your password has been set successfully. You may now {link} with your new password."
 msgstr "Sua senha foi definida com sucesso. Agora você pode {link} com sua nova senha."
 
-# defaultMessage: Your preferred language
 #: components/manage/Preferences/PersonalPreferences
+# defaultMessage: Your preferred language
 msgid "Your preferred language"
 msgstr "O seu idioma preferido"
 
-# defaultMessage: Your username is required for reset your password.
 #: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Your username is required for reset your password.
 msgid "Your usernaame is required for reset your password."
 msgstr "Seu nome de usuário é necessário para redefinir sua senha."
 
-# defaultMessage: Forgot your password?
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Forgot your password?
 msgid "box_forgot_password_option"
 msgstr "Esqueceu sua senha?"
 
-# defaultMessage: Common
 #: config/Blocks
+# defaultMessage: Common
 msgid "common"
 msgstr "Padrão"
 
-# defaultMessage: Compare to language
 #: components/manage/Multilingual/CompareLanguages
+# defaultMessage: Compare to language
 msgid "compare_to"
 msgstr "Comparar com"
 
-# defaultMessage: delete
 #: components/manage/Blocks/Block/EditBlockWrapper
+# defaultMessage: delete
 msgid "delete"
 msgstr "excluir"
 
-# defaultMessage: You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser.
 #: components/theme/OutdatedBrowser/OutdatedBrowser
+# defaultMessage: You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser.
 msgid "deprecated_browser_notice_message"
 msgstr "Você está usando {browsername} {browserversion} que está sem suporte pelo seu desenvolvedor. Isto significa que não existem mais atualizações de segurança e que ele não suporta as funcionalidades atuais da web, Por favor, atualize seu navegador"
 
-# defaultMessage: Description
 #: config/Blocks
+# defaultMessage: Description
 msgid "description"
 msgstr "Descrição"
 
-# defaultMessage: For security reasons, we store your password encrypted, and cannot mail it to you. If you would like to reset your password, fill out the form below and we will send you an email at the address you gave when you registered to start the process of resetting your password.
 #: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: For security reasons, we store your password encrypted, and cannot mail it to you. If you would like to reset your password, fill out the form below and we will send you an email at the address you gave when you registered to start the process of resetting your password.
 msgid "description_lost_password"
 msgstr "Por motivos de segurança, armazenamos sua senha criptografada e não podemos enviá-la para você. Se você deseja redefinir sua senha, preencha o formulário abaixo e enviaremos um e-mail para o endereço que você forneceu quando se cadastrou para iniciar o processo de redefinição de sua senha."
 
-# defaultMessage: Your password reset request has been mailed. It should arrive in your mailbox shortly. When you receive the message, visit the address it contains to reset your password.
 #: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Your password reset request has been mailed. It should arrive in your mailbox shortly. When you receive the message, visit the address it contains to reset your password.
 msgid "description_sent_password"
 msgstr "Sua solicitação de redefinição de senha foi enviada. Ele deve chegar em sua caixa de correio em breve. Ao receber a mensagem, visite o endereço que ela contém para redefinir sua senha."
 
-# defaultMessage: Draft
 #: components/manage/Contents/ContentsItem
+# defaultMessage: Draft
 msgid "draft"
 msgstr "Rascunho"
 
-# defaultMessage: Input must be valid email (something@domain.com)
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Input must be valid email (something@domain.com)
 msgid "email"
 msgstr "E-mail"
 
-# defaultMessage: All dates
 #: components/theme/EventDetails/EventDetails
+# defaultMessage: All dates
 msgid "event_alldates"
 msgstr "Todas as datas"
 
-# defaultMessage: Attendees
 #: components/theme/EventDetails/EventDetails
+# defaultMessage: Attendees
 msgid "event_attendees"
 msgstr "Participantes"
 
-# defaultMessage: Contact Name
 #: components/theme/EventDetails/EventDetails
+# defaultMessage: Contact Name
 msgid "event_contactname"
 msgstr "Pessoa de contato"
 
-# defaultMessage: Contact Phone
 #: components/theme/EventDetails/EventDetails
+# defaultMessage: Contact Phone
 msgid "event_contactphone"
 msgstr "Telefone de contato"
 
-# defaultMessage: Website
 #: components/theme/EventDetails/EventDetails
+# defaultMessage: Website
 msgid "event_website"
 msgstr "Site"
 
-# defaultMessage: What
 #: components/theme/EventDetails/EventDetails
+# defaultMessage: What
 msgid "event_what"
 msgstr "O quê"
 
-# defaultMessage: When
 #: components/theme/EventDetails/EventDetails
+# defaultMessage: When
 msgid "event_when"
 msgstr "Quando"
 
-# defaultMessage: Where
 #: components/theme/EventDetails/EventDetails
+# defaultMessage: Where
 msgid "event_where"
 msgstr "Onde"
 
-# defaultMessage: Password reset confirmation sent
 #: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Password reset confirmation sent
 msgid "heading_sent_password"
 msgstr "Sua solicitação de redefinição de senha foi enviada"
 
-# defaultMessage: Hero
 #: config/Blocks
+# defaultMessage: Hero
 msgid "hero"
 msgstr "Herói"
 
-# defaultMessage: HTML
 #: config/Blocks
+# defaultMessage: HTML
 msgid "html"
 msgstr "HTML"
 
-# defaultMessage: Image
 #: config/Blocks
+# defaultMessage: Image
 msgid "image"
 msgstr "Imagem"
 
-# defaultMessage: Input must be integer
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Input must be integer
 msgid "integer"
 msgstr "Valor deve ser um número inteiro"
 
-# defaultMessage: Intranet
 #: components/manage/Contents/ContentsItem
+# defaultMessage: Intranet
 msgid "intranet"
 msgstr "Intranet"
 
-# defaultMessage: My email is
 #: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: My email is
 msgid "label_my_email_is"
 msgstr "Meu endereço de e-mail é"
 
-# defaultMessage: My username is
 #: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: My username is
 msgid "label_my_username_is"
 msgstr "Meu nome de usuário é<<<<<<< HEAD"
 
-# defaultMessage: Lead Image Field
 #: config/Blocks
+# defaultMessage: Lead Image Field
 msgid "leadimage"
 msgstr "Imagem principal"
 
-# defaultMessage: Listing
 #: config/Blocks
+# defaultMessage: Listing
 msgid "listing"
 msgstr "Listagem"
 
-# defaultMessage: Loading
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Contents/Contents
+# defaultMessage: Loading
 msgid "loading"
 msgstr "Carregando"
 
-# defaultMessage: log in
 #: components/theme/Unauthorized/Unauthorized
+# defaultMessage: log in
 msgid "log in"
 msgstr "acessar"
 
-# defaultMessage: Maps
 #: config/Blocks
+# defaultMessage: Maps
 msgid "maps"
 msgstr "mapas"
 
-# defaultMessage: Maximum Length
 #: components/manage/Widgets/SchemaWidget
+# defaultMessage: Maximum Length
 msgid "maxLength"
 msgstr "Comprimento máximo"
 
-# defaultMessage: End of the range (including the value itself)
 #: components/manage/Widgets/SchemaWidget
+# defaultMessage: End of the range (including the value itself)
 msgid "maximum"
 msgstr "Valor máximo"
 
-# defaultMessage: Media
 #: config/Blocks
+# defaultMessage: Media
 msgid "media"
 msgstr "Mídia"
 
-# defaultMessage: Minimum Length
 #: components/manage/Widgets/SchemaWidget
+# defaultMessage: Minimum Length
 msgid "minLength"
 msgstr "Comprimento mínimo"
 
-# defaultMessage: Start of the range
 #: components/manage/Widgets/SchemaWidget
+# defaultMessage: Start of the range
 msgid "minimum"
 msgstr "Valor mínimo"
 
-# defaultMessage: Most used
 #: config/Blocks
+# defaultMessage: Most used
 msgid "mostUsed"
 msgstr "Mais usados"
 
-# defaultMessage: No
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
 #: components/theme/Widgets/BooleanWidget
+# defaultMessage: No
 msgid "no"
 msgstr "Não"
 
-# defaultMessage: No workflow state
 #: components/manage/Contents/ContentsItem
+# defaultMessage: No workflow state
 msgid "no workflow state"
 msgstr "Sem estado de workflow"
 
-# defaultMessage: Input must be number
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Input must be number
 msgid "number"
 msgstr "Valor deve ser numérico"
 
-# defaultMessage: of the month
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
 #: components/manage/Widgets/RecurrenceWidget/ByYearField
+# defaultMessage: of the month
 msgid "of the month"
 msgstr "do mês"
 
-# defaultMessage: or try a different page.
 #: error
+# defaultMessage: or try a different page.
 msgid "or try a different page."
 msgstr "ou tente uma página diferente"
 
-# defaultMessage: others
 #: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: others
 msgid "others"
 msgstr "outros"
 
-# defaultMessage: Private
 #: components/manage/Contents/ContentsItem
+# defaultMessage: Private
 msgid "private"
 msgstr "privado"
 
-# defaultMessage: Published
 #: components/manage/Contents/ContentsItem
+# defaultMessage: Published
 msgid "published"
 msgstr "publicado"
 
-# defaultMessage: Select…
 #: components/manage/Widgets/QueryWidget
+# defaultMessage: Select…
 msgid "querystring-widget-select"
 msgstr "Selecionar"
 
-# defaultMessage: results
 #: components/theme/Search/Search
+# defaultMessage: results
 msgid "results found"
 msgstr "resultados"
 
-# defaultMessage: return to the site root
 #: error
+# defaultMessage: return to the site root
 msgid "return to the site root"
 msgstr "retornar à raiz do site"
 
-# defaultMessage: and
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: and
 msgid "rrule_and"
 msgstr "e"
 
-# defaultMessage: (~approximate)
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: (~approximate)
 msgid "rrule_approximate"
 msgstr "(~aproximadamente)"
 
-# defaultMessage: at
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: at
 msgid "rrule_at"
 msgstr "em"
 
-# defaultMessage: [month] [day], [year]
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: [month] [day], [year]
 msgid "rrule_dateFormat"
 msgstr "[day], [month], [year]"
 
-# defaultMessage: day
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: day
 msgid "rrule_day"
 msgstr "dia"
 
-# defaultMessage: days
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: days
 msgid "rrule_days"
 msgstr "dias"
 
-# defaultMessage: every
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: every
 msgid "rrule_every"
 msgstr "a cada"
 
-# defaultMessage: for
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: for
 msgid "rrule_for"
 msgstr "para"
 
-# defaultMessage: hour
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: hour
 msgid "rrule_hour"
 msgstr "hora"
 
-# defaultMessage: hours
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: hours
 msgid "rrule_hours"
 msgstr "horas"
 
-# defaultMessage: in
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: in
 msgid "rrule_in"
 msgstr "em"
 
-# defaultMessage: last
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: last
 msgid "rrule_last"
 msgstr "última"
 
-# defaultMessage: minutes
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: minutes
 msgid "rrule_minutes"
 msgstr "minutos"
 
-# defaultMessage: month
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: month
 msgid "rrule_month"
 msgstr "mês"
 
-# defaultMessage: months
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: months
 msgid "rrule_months"
 msgstr "meses"
 
-# defaultMessage: nd
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: nd
 msgid "rrule_nd"
 msgstr "nd"
 
-# defaultMessage: on
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: on
 msgid "rrule_on"
 msgstr "em"
 
-# defaultMessage: on the
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: on the
 msgid "rrule_on the"
 msgstr "no"
 
-# defaultMessage: or
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: or
 msgid "rrule_or"
 msgstr "ou"
 
-# defaultMessage: rd
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: rd
 msgid "rrule_rd"
 msgstr "rd"
 
-# defaultMessage: st
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: st
 msgid "rrule_st"
 msgstr "st"
 
-# defaultMessage: th
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: th
 msgid "rrule_th"
 msgstr "th"
 
-# defaultMessage: the
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: the
 msgid "rrule_the"
 msgstr "o"
 
-# defaultMessage: time
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: time
 msgid "rrule_time"
 msgstr "vezz"
 
-# defaultMessage: times
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: times
 msgid "rrule_times"
 msgstr "vezes"
 
-# defaultMessage: until
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: until
 msgid "rrule_until"
 msgstr "até"
 
-# defaultMessage: week
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: week
 msgid "rrule_week"
 msgstr "semana"
 
-# defaultMessage: weekday
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: weekday
 msgid "rrule_weekday"
 msgstr "dia da semana"
 
-# defaultMessage: weekdays
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: weekdays
 msgid "rrule_weekdays"
 msgstr "dias da semana"
 
-# defaultMessage: weeks
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: weeks
 msgid "rrule_weeks"
 msgstr "semanas"
 
-# defaultMessage: year
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: year
 msgid "rrule_year"
 msgstr "ano"
 
-# defaultMessage: years
 #: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: years
 msgid "rrule_years"
 msgstr "anos"
 
-# defaultMessage: Skip to footer
 #: components/theme/SkipLinks/SkipLinks
+# defaultMessage: Skip to footer
 msgid "skiplink-footer"
 msgstr "Ir para o rodapé"
 
-# defaultMessage: Skip to main content
 #: components/theme/SkipLinks/SkipLinks
+# defaultMessage: Skip to main content
 msgid "skiplink-main-content"
 msgstr "Ir para o conteúdo"
 
-# defaultMessage: Skip to navigation
 #: components/theme/SkipLinks/SkipLinks
+# defaultMessage: Skip to navigation
 msgid "skiplink-navigation"
 msgstr "Ir para a navegação"
 
-# defaultMessage: sort
 #: components/manage/Contents/Contents
+# defaultMessage: sort
 msgid "sort"
 msgstr "ordenar"
 
-# defaultMessage: Table
 #: config/Blocks
+# defaultMessage: Table
 msgid "table"
 msgstr "tabela"
 
-# defaultMessage: Text
 #: config/Blocks
+# defaultMessage: Text
 msgid "text"
 msgstr "texto"
 
-# defaultMessage: Title
 #: config/Blocks
+# defaultMessage: Title
 msgid "title"
 msgstr "título"
 
-# defaultMessage: Table of Contents
 #: config/Blocks
+# defaultMessage: Table of Contents
 msgid "toc"
 msgstr "tabela de conteúdos"
 
-# defaultMessage: Input must be valid url (www.something.com or http(s)://www.something.com)
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Input must be valid url (www.something.com or http(s)://www.something.com)
 msgid "url"
 msgstr "url"
 
-# defaultMessage: user avatar
 #: components/manage/Toolbar/PersonalTools
+# defaultMessage: user avatar
 msgid "user avatar"
 msgstr "avatar do usuário"
 
-# defaultMessage: Video
 #: config/Blocks
+# defaultMessage: Video
 msgid "video"
 msgstr "vídeo"
 
-# defaultMessage: Visit external website
 #: components/theme/EventDetails/EventDetails
+# defaultMessage: Visit external website
 msgid "visit_external_website"
 msgstr "Visitar site externo"
 
-# defaultMessage: Yes
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
 #: components/theme/Widgets/BooleanWidget
+# defaultMessage: Yes
 msgid "yes"
 msgstr "Sim"
 
-# defaultMessage: {count, plural, one {Upload {count} file} other {Upload {count} files}}
 #: components/manage/Contents/ContentsUploadModal
+# defaultMessage: {count, plural, one {Upload {count} file} other {Upload {count} files}}
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 msgstr "{count, plural, one {Enviar {count} arquivo} other {Enviar {count} arquivos}}"
 
-# defaultMessage: {count} selected
 #: components/manage/Contents/Contents
+# defaultMessage: {count} selected
 msgid "{count} selected"
 msgstr "{count} selecionados"
 
-# defaultMessage: {id} Content Type
 #: components/manage/Controlpanels/ContentType
+# defaultMessage: {id} Content Type
 msgid "{id} Content Type"
 msgstr "Tipo de conteúdo {id}"
 
-# defaultMessage: {id} Schema
 #: components/manage/Controlpanels/ContentTypeSchema
+# defaultMessage: {id} Schema
 msgid "{id} Schema"
 msgstr "Esquema {id}"
 
-# defaultMessage: {title} copied.
 #: components/manage/Actions/Actions
+# defaultMessage: {title} copied.
 msgid "{title} copied."
 msgstr "{title} copiado."
 
-# defaultMessage: {title} cut.
 #: components/manage/Actions/Actions
+# defaultMessage: {title} cut.
 msgid "{title} cut."
 msgstr "{title} cortado."
 
-# defaultMessage: {title} has been deleted.
 #: components/manage/Actions/Actions
+# defaultMessage: {title} has been deleted.
 msgid "{title} has been deleted."
 msgstr "{title} foi excluído."
