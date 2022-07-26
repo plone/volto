@@ -26,6 +26,11 @@
 
 ## 16.0.0-alpha.16 (2022-07-25)
 
+### Do not use, this is a brown bag release
+
+See: https://github.com/plone/volto/pull/3505
+Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alpha.17
+
 ### Breaking
 
 - Staticize Poppins font to be compliant with EU privacy. Import from GoogleFont is disabled in site.variables.  @giuliaghisini
