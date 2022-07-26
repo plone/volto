@@ -1365,6 +1365,11 @@ msgstr "Llenguatge"
 msgid "Language independent field."
 msgstr ""
 
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Large
+msgid "Large"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Last
 msgid "Last"
@@ -1530,6 +1535,11 @@ msgstr "La longitud màxima és {len}."
 # defaultMessage: Maximum value is {len}.
 msgid "Maximum value is {len}."
 msgstr "El valor màxim és {len}."
+
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Medium
+msgid "Medium"
+msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Message
@@ -2429,6 +2439,11 @@ msgstr "Mida"
 # defaultMessage: Size: {size}
 msgid "Size: {size}"
 msgstr "Mida: {size}"
+
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Small
+msgid "Small"
+msgstr ""
 
 #: error
 # defaultMessage: Sorry, something went wrong with your request

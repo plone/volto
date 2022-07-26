@@ -1364,6 +1364,11 @@ msgstr "Idioma"
 msgid "Language independent field."
 msgstr ""
 
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Large
+msgid "Large"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Last
 msgid "Last"
@@ -1528,6 +1533,11 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Maximum value is {len}.
 msgid "Maximum value is {len}."
+msgstr ""
+
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Medium
+msgid "Medium"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
@@ -2427,6 +2437,11 @@ msgstr ""
 #: components/theme/View/ImageView
 # defaultMessage: Size: {size}
 msgid "Size: {size}"
+msgstr ""
+
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Small
+msgid "Small"
 msgstr ""
 
 #: error

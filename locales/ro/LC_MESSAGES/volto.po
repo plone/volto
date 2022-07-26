@@ -1356,6 +1356,11 @@ msgstr "Limba"
 msgid "Language independent field."
 msgstr "Câmp independent de limbă."
 
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Large
+msgid "Large"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Last
 msgid "Last"
@@ -1521,6 +1526,11 @@ msgstr "Lungimea maximă este {len}."
 # defaultMessage: Maximum value is {len}.
 msgid "Maximum value is {len}."
 msgstr "Valoarea maximă este {len}."
+
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Medium
+msgid "Medium"
+msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Message
@@ -2420,6 +2430,11 @@ msgstr "Dimansiune"
 # defaultMessage: Size: {size}
 msgid "Size: {size}"
 msgstr "Dimansiune: {size}"
+
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Small
+msgid "Small"
+msgstr ""
 
 #: error
 # defaultMessage: Sorry, something went wrong with your request
