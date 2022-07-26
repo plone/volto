@@ -51,10 +51,6 @@ As such you will have the choice to continue using `draftJS` text block in your 
 See below for more information.
 ```
 
-```{important}
-From Volto 16 on, `draftJS` is deprecated and might be removed from core in next major versions.
-```
-
 These are the possible scenarios:
 
 - New projects
