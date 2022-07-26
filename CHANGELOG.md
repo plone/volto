@@ -10,6 +10,12 @@
 
 ### Internal
 
+- Improve move to static fonts to not make it "breaking", but as an opt-in. So if you want your site load the "Poppins" font from local instead from GoogleFont CDN, you must override the `@importGoogleFonts` and set it to false in your project theme:
+
+```less
+@importGoogleFonts: false;
+```
+
 ### Documentation
 
 ## 15.13.0 (2022-07-25)
