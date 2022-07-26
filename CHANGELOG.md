@@ -8,7 +8,7 @@
 
 ### Bugfix
 
-- Fix edge case in Cypress flaky tests "Cannot read properties of null (reading 'required')" when the schema action has not been fulfilled yet (for some reason) and the test tries to save. @sneridagh
+- Fix edge cases in Cypress flaky tests when the Edit component was loaded without loading the type schema. @sneridagh & @davisagli
 
 ### Internal
 
