@@ -4,7 +4,7 @@
 
 ### Breaking
 
-- Remove the "callout" button (the one with the megaphone icon) since they have the same styling. If you need it anyways, you can bring it back in your addon. @sneridagh
+- Remove the `callout` button (the one with the megaphone icon) from the slate toolbar since it has the same styling as `blockquote`. If you need it anyway, you can bring it back in your addon. @sneridagh
 
 ### Feature
 
