@@ -100,7 +100,7 @@ For projects already using `volto-slate`, take the following steps in your proje
 You will have to configure your project to continue using `draftJS`, for example, in your `config.js` or in your add-on:
 
 ```js
-config.settings.defaultBlockType = 'slate'
+config.settings.defaultBlockType = 'text'
 config.blocks.blocksConfig.table.restricted = false;
 config.blocks.blocksConfig.slateTable.restricted = true;
 ```
