@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- complete pt_BR translation @ericof
+
 ### Internal
 
 ### Documentation
