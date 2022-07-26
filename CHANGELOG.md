@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix edge cases in Cypress flaky tests when the Edit component was loaded without loading the type schema. @sneridagh & @davisagli
+
 ### Internal
 
 ### Documentation
