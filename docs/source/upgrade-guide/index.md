@@ -30,6 +30,82 @@ the latest changes, and propose to you to merge the changes, so you can run it o
 
 ## Upgrading to Volto 16.x.x
 
+### `volto-slate` is now core
+
+From Volto 16.0.0-alpha.15 onwards, `volto-slate` is integrated into Volto core and enabled by default. This means that the default text block is now called `slate` and the former/deprecated text block `text` based on `draftJS` is now restricted (hidden) and enforced on Volto bootstrap. This is a major change and should be planned in advance before you install any version of the alphas after 16.0.0-alpha.15.
+
+````{note}
+Volto 16 is intended to be the LTS version used when Plone 6 Final is released. Volto 16 will ensure be compatible with all existing Volto deployments and won't introduce any hard breaking change. So, you'll have the choice to continue using `draftJS` text block in your projects. See below for more information.
+````
+
+```{important}
+From Volto 16 on, `draftJS` is deprecated and might be removed from core in next major versions.
+```
+
+These are the possible scenarios:
+
+- New projects
+- Existing projects, already using `volto-slate` addon
+- Existing projects using core `draftJS`, opting to continue using `draftJS`
+- Existing projects using core `draftJS`, opting to start using `slate` without migrating (possible, but not recommended)
+- Existing projects using core `draftJS`, opting to migrate to `slate`
+
+### New projects
+
+New projects are unaffected, since they will use slate as default text block from the beginning.
+
+### Existing projects, already using `volto-slate` addon
+
+For those projects using already `volto-slate` they should follow these steps in your project configuration:
+
+- Remove `volto-slate` add-on from your project build dependencies
+- Add these lines to the jest config in your project `package.json`:
+
+```diff
+--- a/package.json
++++ b/package.json
+@@ -57,6 +57,7 @@
+       "^.+\\.js(x)?$": "babel-jest",
+       "^.+\\.css$": "jest-css-modules",
+       "^.+\\.scss$": "jest-css-modules",
++      "^.+\\.less$": "jest-css-modules",
+       "^.+\\.(png)$": "jest-file",
+       "^.+\\.(jpg)$": "jest-file",
+       "^.+\\.(svg)$": "./node_modules/@plone/volto/jest-svgsystem-transform.js"
+@@ -67,6 +68,7 @@
+     "moduleNameMapper": {
+       "@plone/volto/babel": "<rootDir>/node_modules/@plone/volto/babel",
+       "@plone/volto/(.*)$": "<rootDir>/node_modules/@plone/volto/src/$1",
++      "@plone/volto-slate": "<rootDir>/node_modules/@plone/volto/packages/volto-slate/src",
+```
+
+- If any of your code depends on `volto-slate` code, update your imports by adding `@plone/` namespace to the original `volto-slate` import.
+
+```diff
+- import { DetachedTextBlockEditor } from 'volto-slate/blocks/Text/DetachedTextBlockEditor';
++ import { DetachedTextBlockEditor } from '@plone/volto-slate/blocks/Text/DetachedTextBlockEditor';
+```
+
+### Existing projects using core `draftJS`, opting to continue using `draftJS`
+
+You will have to configure your project to continue doing so (eg. in your `config.js` or in your add-on):
+
+```js
+config.settings.defaultBlockType = 'slate'
+config.blocks.blocksConfig.table.restricted = false;
+config.blocks.blocksConfig.slateTable.restricted = true;
+```
+
+### Existing projects using core `draftJS`, opting to start using `slate` without migrating (possible, but not recommended)
+
+Still a valid option specially if you don't have budget for it, the old content based on the legacy `text` block will be still be functional. New blocks in new content will be created with new `slate` block.
+
+It is recommended to go the extra mile and migrate the `text` blocks to `slate` blocks for maximum future compatibility.
+
+### Existing projects using core `draftJS`, opting to migrate to `slate`
+
+Using the `blocks-conversion-tool`. See https://github.com/plone/blocks-conversion-tool for more information.
+
 ### Deprecating NodeJS 12
 
 Since April 30, 2022, NodeJS 12 is out of Long Term Support by the NodeJS community.

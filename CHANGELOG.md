@@ -14,6 +14,8 @@
 
 ### Documentation
 
+- Add upgrade guide documentation for dealing with `volto-slate` upgrades in alpha 15. @sneridagh
+
 ## 16.0.0-alpha.17 (2022-07-25)
 
 ### Bugfix
