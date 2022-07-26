@@ -2,13 +2,7 @@
 
 ## 15.13.1 (unreleased)
 
-### Breaking
-
 ### Feature
-
-### Bugfix
-
-### Internal
 
 - Improve move to static fonts to not make it "breaking", but as an opt-in. So if you want your site load the "Poppins" font from local instead from GoogleFont CDN, you must override the `@importGoogleFonts` and set it to false in your project theme:
 
@@ -16,11 +10,13 @@
 @importGoogleFonts: false;
 ```
 
-### Documentation
+### Bugfix
+
+- Include ImageSizeWidget to fix eea/volto-block-style incompatibility @ionlizarazu
 
 ## 15.13.0 (2022-07-25)
 
-### Internal
+### Feature
 
 - Staticize Poppins font to be compliant with EU privacy. Import from GoogleFont is disabled in site.variables. @giuliaghisini
 
