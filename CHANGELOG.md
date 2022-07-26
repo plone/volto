@@ -22,8 +22,6 @@
 @importGoogleFonts: false;
 ```
 
-### Bugfix
-
 - Include ImageSizeWidget to fix eea/volto-block-style incompatibility @ionlizarazu
 
 ## 15.13.0 (2022-07-25)
