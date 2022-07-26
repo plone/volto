@@ -6,8 +6,6 @@
 
 - Remove the `callout` button (the one with the megaphone icon) from the slate toolbar since it has the same styling as `blockquote`. If you need it anyway, you can bring it back in your addon. @sneridagh
 
-### Feature
-
 ### Bugfix
 
 - Fix edge cases in Cypress flaky tests when the Edit component was loaded without loading the type schema. @sneridagh & @davisagli
@@ -15,8 +13,6 @@
 ### Internal
 
 - Fix `defaultBlockType` entry in default config, set it to slate. @sneridagh
-
-### Documentation
 
 ## 16.0.0-alpha.17 (2022-07-25)
 
