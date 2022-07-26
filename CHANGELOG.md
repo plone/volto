@@ -12,6 +12,47 @@
 
 ### Documentation
 
+## 16.0.0-alpha.17 (2022-07-25)
+
+### Bugfix
+
+- Make `crypto-random-string` a direct dep, fixing a hidden error since some updated dependency was requiring it directly but not anymore. @sneridagh
+
+## 16.0.0-alpha.16 (2022-07-25)
+
+### Breaking
+
+- Staticize Poppins font to be compliant with EU privacy. Import from GoogleFont is disabled in site.variables.  @giuliaghisini
+
+### Bugfix
+
+- Add some more messages to be able to translate them @erral
+- Fix typo in de locale @wolbernd
+- [generator] Improvements to the addon generator: Now it wires up the addon automatically for immediate local development @sneridagh
+- complete eu translation @erral
+- complete es translation @erral
+- [generator] Add .editorconfig and .prettierignore to generated projects and addons. @ericof
+
+### Internal
+
+- Update json-schema including transitive dependencies @davisagli
+- Update release-it @davisagli
+- Deduplicate dependencies using yarn-deduplicate @davisagli
+
+### Documentation
+
+- Fix redirect on YouTube, broken link after merge and deleted branch. @stevepiercy
+
+## 16.0.0-alpha.15 (2022-07-21)
+
+### Breaking
+
+- Integrate volto-state add-on. @tiberiuichim @razvanmiu @eea
+
+### Documentation
+
+- volto-slate documentation @nileshgulia1
+
 ## 16.0.0-alpha.14 (2022-07-20)
 
 ### Breaking
@@ -165,6 +206,7 @@
 - Fix RenderBlocks: path @ksuess
 - Fix field id creation in dexterity control panel to have slugified id @erral
 - Changed to get intl.locale always from state @ionlizarazu
+
 ### Feature
 
 - Updated Brazilian Portuguese translation @ericof

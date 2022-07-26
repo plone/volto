@@ -86,6 +86,14 @@ const messages = defineMessages({
     id: 'Uninstall',
     defaultMessage: 'Uninstall',
   },
+  addOns: {
+    id: 'Add-ons',
+    defaultMessage: 'Add-ons',
+  },
+  installingAnAddon: {
+    id: 'Installing a third party add-on',
+    defaultMessage: 'Installing a third party add-on',
+  },
 });
 
 /**
@@ -232,7 +240,7 @@ class AddonsControlpanel extends Component {
   render() {
     return (
       <Container id="page-addons" className="controlpanel-addons">
-        <Helmet title="Addons" />
+        <Helmet title={this.props.intl.formatMessage(messages.addOns)} />
         <Segment.Group raised>
           <Segment className="primary">
             <FormattedMessage
@@ -272,7 +280,7 @@ class AddonsControlpanel extends Component {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Installing a third party add-on
+              {this.props.intl.formatMessage(messages.installingAnAddon)}
             </a>
             .
           </Segment>

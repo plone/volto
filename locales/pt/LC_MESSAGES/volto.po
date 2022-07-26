@@ -167,8 +167,18 @@ msgid "Add {type}"
 msgstr "Adicionar {type}"
 
 #: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Add-Ons
+msgid "Add-Ons"
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Add-on Configuration
 msgid "Add-on Configuration"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Add-ons
+msgid "Add-ons"
 msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -620,6 +630,11 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: Daily
 msgid "Daily"
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Database
+msgid "Database"
 msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
@@ -1321,6 +1336,11 @@ msgstr ""
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Installed version
 msgid "Installed version"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Installing a third party add-on
+msgid "Installing a third party add-on"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -2614,7 +2634,8 @@ msgstr ""
 msgid "Table"
 msgstr "Tabela"
 
-#: components/manage/Blocks/ToC/View
+#: components/manage/Blocks/ToC/variations/DefaultTocRenderer
+#: components/manage/Blocks/ToC/variations/HorizontalMenu
 # defaultMessage: Table of Contents
 msgid "Table of Contents"
 msgstr ""

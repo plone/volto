@@ -165,9 +165,19 @@ msgid "Add {type}"
 msgstr "{type} hinzufügen"
 
 #: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Add-Ons
+msgid "Add-Ons"
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Add-on Configuration
 msgid "Add-on Configuration"
 msgstr "Konfiguration von Erweiterungen"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Add-ons
+msgid "Add-ons"
+msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Add-ons Settings
@@ -619,6 +629,11 @@ msgstr "Blöcke ausschneiden"
 # defaultMessage: Daily
 msgid "Daily"
 msgstr "Täglich"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Database
+msgid "Database"
+msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Database Information
@@ -1320,6 +1335,11 @@ msgstr "Installiert"
 # defaultMessage: Installed version
 msgid "Installed version"
 msgstr "Installierte Version"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Installing a third party add-on
+msgid "Installing a third party add-on"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: days
@@ -2612,7 +2632,8 @@ msgstr "Wechseln zu"
 msgid "Table"
 msgstr "Tabelle"
 
-#: components/manage/Blocks/ToC/View
+#: components/manage/Blocks/ToC/variations/DefaultTocRenderer
+#: components/manage/Blocks/ToC/variations/HorizontalMenu
 # defaultMessage: Table of Contents
 msgid "Table of Contents"
 msgstr "Inhaltsverzeichnis"
