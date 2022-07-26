@@ -56,7 +56,7 @@ describe('Users action', () => {
 
   describe('listUsers', () => {
     it('should create an action to list users', () => {
-      const action = listUsers();
+      const action = listUsers({});
 
       expect(action.type).toEqual(LIST_USERS);
       expect(action.request.op).toEqual('get');
@@ -65,7 +65,7 @@ describe('Users action', () => {
 
     it('should create an action to get users with a query', () => {
       const query = 'john';
-      const action = listUsers(query);
+      const action = listUsers({ query: query });
 
       expect(action.type).toEqual(LIST_USERS);
       expect(action.request.op).toEqual('get');

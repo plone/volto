@@ -141,6 +141,11 @@ msgstr "Adăugare utilizator nou"
 msgid "Add to Groups"
 msgstr "Adăugare la grupuri"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add users to group
+msgid "Add users to group"
+msgstr ""
+
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Add term
 msgid "Add vocabulary term"
@@ -150,6 +155,21 @@ msgstr "Adăugați un termen de vocabular"
 # defaultMessage: Add {type}
 msgid "Add {type}"
 msgstr "Adăugare {type}"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Add-Ons
+msgid "Add-Ons"
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Add-on Configuration
+msgid "Add-on Configuration"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Add-ons
+msgid "Add-ons"
+msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Add-ons Settings
@@ -162,10 +182,10 @@ msgid "Additional date"
 msgstr "Dată suplimentară"
 
 #: components/manage/Blocks/Block/StylesSchema
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Maps/MapsSidebar
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Maps/schema
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Alignment
 msgid "Alignment"
 msgstr "Aliniere"
@@ -180,18 +200,19 @@ msgstr "Toate"
 msgid "Alphabetically"
 msgstr "Alfabetic"
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/schema
 # defaultMessage: Alt text
 msgid "Alt text"
 msgstr "Text alternativ"
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 # defaultMessage: Leave empty if the image is purely decorative.
 msgid "Alt text hint"
 msgstr "Sugestie text alternativ"
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 # defaultMessage: Describe the purpose of the image.
 msgid "Alt text hint link text"
 msgstr "Link sugestie text alternativ"
@@ -330,7 +351,6 @@ msgstr "Anulează"
 msgid "Cell"
 msgstr "Celulă"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Center
@@ -496,6 +516,11 @@ msgstr "Formular de contact"
 msgid "Contained items"
 msgstr "Elemente conținute"
 
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Content
+msgid "Content"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Content type created
 msgid "Content type created"
@@ -596,6 +621,11 @@ msgstr "Taie câmpuri "
 # defaultMessage: Daily
 msgid "Daily"
 msgstr "Zilnic"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Database
+msgid "Database"
+msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Database Information
@@ -857,11 +887,6 @@ msgstr "E-mail trimis"
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "Eroare de cod integrat, urmați instrucțiunile și încercați din nou."
 
-#: components/manage/Blocks/Maps/View
-# defaultMessage: Embeded Google Maps
-msgid "Embeded Google Maps"
-msgstr "Harti Google integrate"
-
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Empty object list
 msgid "Empty object list"
@@ -972,7 +997,6 @@ msgstr "Data de expirare"
 msgid "Expired"
 msgstr "Expirat"
 
-#: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: External URL
 msgid "External URL"
@@ -1027,6 +1051,11 @@ msgstr "Mărimea fișierului"
 # defaultMessage: Filename
 msgid "Filename"
 msgstr "Nume fișier"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter users by groups
+msgid "Filter users by groups"
+msgstr ""
 
 #: components/manage/Contents/Contents
 # defaultMessage: Filter…
@@ -1089,6 +1118,11 @@ msgstr "Numele complet"
 # defaultMessage: GNU GPL license
 msgid "GNU GPL license"
 msgstr "Licența GNU GPL"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: General
+msgid "General"
+msgstr ""
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Global role
@@ -1214,6 +1248,7 @@ msgstr "Dacă sunteți sigur că aveți adresa web corectă, dar întâmpinați 
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Image
 msgid "Image"
@@ -1223,6 +1258,11 @@ msgstr "Imagine"
 # defaultMessage: Image gallery
 msgid "Image gallery"
 msgstr "Galerie de imagini"
+
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Image size
+msgid "Image size"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Include this occurence
@@ -1236,6 +1276,11 @@ msgstr "Includeți această apariție"
 # defaultMessage: Info
 msgid "Info"
 msgstr "Info"
+
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+# defaultMessage: You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to user group settings. See the button on the left.
+msgid "InfoUserGroupSettings"
+msgstr ""
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Inherit permissions from higher levels
@@ -1281,6 +1326,11 @@ msgstr "Instalat"
 # defaultMessage: Installed version
 msgid "Installed version"
 msgstr "Versiunea instalată"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Installing a third party add-on
+msgid "Installing a third party add-on"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: days
@@ -1364,6 +1414,11 @@ msgstr "Limba"
 msgid "Language independent field."
 msgstr "Câmp independent de limbă."
 
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Large
+msgid "Large"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Last
 msgid "Last"
@@ -1394,7 +1449,6 @@ msgstr "Aspect"
 msgid "Lead Image"
 msgstr "Imaginea de start"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Left
@@ -1419,11 +1473,9 @@ msgid "Link title"
 msgstr "Legătură la titlu"
 
 #: components/manage/Blocks/HeroImageLeft/schema
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
-#: components/manage/Blocks/Maps/MapsSidebar
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Link to
 msgid "Link to"
 msgstr "Legătură către"
@@ -1506,11 +1558,12 @@ msgid "Manage translations for {title}"
 msgstr "Gestionați traducerile pentru {title}"
 
 #: components/manage/Blocks/Maps/MapsSidebar
-# defaultMessage: Map
-msgid "Map"
-msgstr "Hartă"
+#: components/manage/Blocks/Maps/schema
+# defaultMessage: Maps
+msgid "Maps"
+msgstr ""
 
-#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Maps/schema
 # defaultMessage: Maps URL
 msgid "Maps URL"
 msgstr "URL Hartă"
@@ -1524,6 +1577,11 @@ msgstr "Lungimea maximă este {len}."
 # defaultMessage: Maximum value is {len}.
 msgid "Maximum value is {len}."
 msgstr "Valoarea maximă este {len}."
+
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Medium
+msgid "Medium"
+msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Message
@@ -1629,6 +1687,11 @@ msgstr "Articol de știri"
 msgid "No"
 msgstr "Nu"
 
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: No Video selected
+msgid "No Video selected"
+msgstr ""
+
 #: components/manage/Controlpanels/VersionOverview
 # defaultMessage: No addons found
 msgid "No addons found"
@@ -1637,7 +1700,7 @@ msgstr "Nu s-au găsit addons"
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected
 msgid "No image selected"
-msgstr "Nici o imagine selectată"
+msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: No image set in Lead Image content field
@@ -1700,6 +1763,11 @@ msgstr "Fără selecție"
 msgid "No uninstall profile"
 msgstr "Niciun profil de dezinstalare"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: No user found
+msgid "No user found"
+msgstr ""
+
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 #: components/manage/Widgets/SelectUtils
@@ -1707,11 +1775,6 @@ msgstr "Niciun profil de dezinstalare"
 # defaultMessage: No value
 msgid "No value"
 msgstr "Fără valoare"
-
-#: components/manage/Blocks/Video/VideoSidebar
-# defaultMessage: No video selected
-msgid "No video selected"
-msgstr "Niciun videoclip selectat"
 
 #: components/manage/Workflow/Workflow
 # defaultMessage: No workflow
@@ -1754,10 +1817,8 @@ msgstr "Ok"
 msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed."
 msgstr "Sunt permise doar litere mici (a-z) fără accente, cifre (0-9) și cele două caractere „-” și „_”."
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Maps/MapsSidebar
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr "Deschideți într-o fereastra nouă"
@@ -1772,7 +1833,6 @@ msgstr "Deschideți meniul"
 msgid "Open object browser"
 msgstr "Deschideți browserul de obiecte"
 
-#: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
 msgid "Origin"
@@ -1864,6 +1924,16 @@ msgstr "Vă rugăm să introduceți codul de integrare furnizat de Google Maps -
 msgid "Please fill out the form below to set your password."
 msgstr "Vă rugăm să completați formularul de mai jos pentru a seta parola."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Please search for users or use the filters on the side.
+msgid "Please search for users or use the filters on the side."
+msgstr ""
+
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+# defaultMessage: Please upgrade to plone.restapi >= 8.24.0.
+msgid "Please upgrade to plone.restapi >= 8.24.0."
+msgstr ""
+
 #: components/theme/Footer/Footer
 # defaultMessage: Plone Foundation
 msgid "Plone Foundation"
@@ -1910,7 +1980,7 @@ msgstr "Îmbunătățiți-vă codul"
 msgid "Preview"
 msgstr "Previzualizare"
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Preview Image URL
 msgid "Preview Image URL"
 msgstr "Adresa URL a imaginii de previzualizare"
@@ -2015,6 +2085,11 @@ msgstr "Eliminați recurența"
 msgid "Remove term"
 msgstr "Eliminați termenul"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Remove users from group
+msgid "Remove users from group"
+msgstr ""
+
 #: components/manage/Toolbar/More
 # defaultMessage: Remove working copy
 msgid "Remove working copy"
@@ -2114,7 +2189,6 @@ msgstr "Stare de revizuire"
 msgid "Richtext"
 msgstr "Richtext"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Right
@@ -2352,6 +2426,11 @@ msgstr "Afișează tot"
 msgid "Show Replies"
 msgstr "Afișați răspunsurile"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Show groups of users below
+msgid "Show groups of users below"
+msgstr ""
+
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Show item
 msgid "Show item"
@@ -2414,15 +2493,15 @@ msgstr "Configurare site"
 msgid "Sitemap"
 msgstr "Sitemap"
 
-#: components/manage/Blocks/Image/ImageSidebar
-# defaultMessage: Size
-msgid "Size"
-msgstr "Dimansiune"
-
 #: components/theme/View/ImageView
 # defaultMessage: Size: {size}
 msgid "Size: {size}"
 msgstr "Dimansiune: {size}"
+
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Small
+msgid "Small"
+msgstr ""
 
 #: error
 # defaultMessage: Sorry, something went wrong with your request
@@ -2452,6 +2531,7 @@ msgid "Sort on options"
 msgstr "Sortare pe opțiuni"
 
 #: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Image/schema
 # defaultMessage: Source
 msgid "Source"
 msgstr "Sursa"
@@ -2543,7 +2623,8 @@ msgstr "Schimbă cu"
 msgid "Table"
 msgstr "Tabel"
 
-#: components/manage/Blocks/ToC/View
+#: components/manage/Blocks/ToC/variations/DefaultTocRenderer
+#: components/manage/Blocks/ToC/variations/HorizontalMenu
 # defaultMessage: Table of Contents
 msgid "Table of Contents"
 msgstr "Cuprins"
@@ -2892,6 +2973,17 @@ msgstr "Folosit pentru acces programatic la setul de câmpuri."
 msgid "User"
 msgstr "Utilizator"
 
+#: components/manage/Controlpanels/Controlpanels
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Membership
+msgid "User Group Membership"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Settings
+msgid "User Group Settings"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: User created
 msgid "User created"
@@ -2934,12 +3026,13 @@ msgstr "Variație"
 msgid "Version Overview"
 msgstr "Prezentare generală a versiunii"
 
+#: components/manage/Blocks/Video/schema
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Video
 msgid "Video"
 msgstr "Video"
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Video URL
 msgid "Video URL"
 msgstr "URL-ul video"

@@ -106,11 +106,12 @@ class UsersControlpanel extends Component {
   fetchData = async () => {
     await this.props.listRoles();
     this.props.listGroups();
-    await this.props.listUsers();
+    await this.props.listUsers({});
     this.setState({
       entries: this.props.users,
     });
   };
+
   /**
    * Component did mount
    * @method componentDidMount
@@ -128,7 +129,9 @@ class UsersControlpanel extends Component {
       (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) ||
       (this.props.createRequest.loading && nextProps.createRequest.loaded)
     ) {
-      this.props.listUsers(this.state.search);
+      this.props.listUsers({
+        query: this.state.search,
+      });
     }
     if (this.props.createRequest.loading && nextProps.createRequest.loaded) {
       this.onAddUserSuccess();
@@ -154,7 +157,9 @@ class UsersControlpanel extends Component {
    */
   onSearch = (event) => {
     event.preventDefault();
-    this.props.listUsers(this.state.search);
+    this.props.listUsers({
+      query: this.state.search,
+    });
   };
 
   /**

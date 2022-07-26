@@ -10,9 +10,6 @@ describe('Groups Control Panel Test', () => {
     cy.intercept('POST', '/plone/++api++/@groups').as('addGroup');
     cy.visit('/controlpanel/groups');
     cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
     cy.waitForResourceToLoad('@groups');
     // when I added a group from controlPanel
     cy.get('Button[id="toolbar-add"]').click();
@@ -27,6 +24,8 @@ describe('Groups Control Panel Test', () => {
     // same with the same groupname
     cy.get('input[id="group-search-input"]').clear().type('uni');
     cy.get('.icon.zoom').click();
+    cy.waitForResourceToLoad('@navigation');
+    cy.waitForResourceToLoad('@groups');
     cy.contains('uniquename');
   });
 

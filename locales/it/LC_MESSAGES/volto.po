@@ -141,6 +141,11 @@ msgstr "Aggiungi nuovo utente"
 msgid "Add to Groups"
 msgstr "Aggiungi ai gruppi"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add users to group
+msgid "Add users to group"
+msgstr ""
+
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Add term
 msgid "Add vocabulary term"
@@ -150,6 +155,21 @@ msgstr "Aggiungi termine"
 # defaultMessage: Add {type}
 msgid "Add {type}"
 msgstr "Aggiungi {type}"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Add-Ons
+msgid "Add-Ons"
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Add-on Configuration
+msgid "Add-on Configuration"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Add-ons
+msgid "Add-ons"
+msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Add-ons Settings
@@ -162,10 +182,10 @@ msgid "Additional date"
 msgstr "Data aggiuntiva"
 
 #: components/manage/Blocks/Block/StylesSchema
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Maps/MapsSidebar
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Maps/schema
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Alignment
 msgid "Alignment"
 msgstr "Allineamento"
@@ -180,18 +200,19 @@ msgstr "Tutti"
 msgid "Alphabetically"
 msgstr "Alfabetico"
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/schema
 # defaultMessage: Alt text
 msgid "Alt text"
 msgstr "Testo alternativo"
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 # defaultMessage: Leave empty if the image is purely decorative.
 msgid "Alt text hint"
 msgstr "Lascia vuoto se l'immagine è decorativa."
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 # defaultMessage: Describe the purpose of the image.
 msgid "Alt text hint link text"
 msgstr "Descrivi lo scopo dell'immagine."
@@ -330,7 +351,6 @@ msgstr "Annulla"
 msgid "Cell"
 msgstr "Cella"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Center
@@ -496,6 +516,11 @@ msgstr "Form di contatto"
 msgid "Contained items"
 msgstr "Elementi contenuti"
 
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Content
+msgid "Content"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Content type created
 msgid "Content type created"
@@ -596,6 +621,11 @@ msgstr "Taglia blocchi"
 # defaultMessage: Daily
 msgid "Daily"
 msgstr "Giornaliera"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Database
+msgid "Database"
+msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Database Information
@@ -857,11 +887,6 @@ msgstr "Email inviata"
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "Errore del codice incorporato, per favore segui le istruzioni e riprova."
 
-#: components/manage/Blocks/Maps/View
-# defaultMessage: Embeded Google Maps
-msgid "Embeded Google Maps"
-msgstr "Google Maps incorporata"
-
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Empty object list
 msgid "Empty object list"
@@ -972,7 +997,6 @@ msgstr "Data di scadenza"
 msgid "Expired"
 msgstr "Scaduto"
 
-#: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: External URL
 msgid "External URL"
@@ -1027,6 +1051,11 @@ msgstr "Dimensione del file"
 # defaultMessage: Filename
 msgid "Filename"
 msgstr "Nome del file"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter users by groups
+msgid "Filter users by groups"
+msgstr ""
 
 #: components/manage/Contents/Contents
 # defaultMessage: Filter…
@@ -1089,6 +1118,11 @@ msgstr "Nome completo"
 # defaultMessage: GNU GPL license
 msgid "GNU GPL license"
 msgstr "licenza GNU GPL"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: General
+msgid "General"
+msgstr ""
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Global role
@@ -1214,6 +1248,7 @@ msgstr "Se sei sicuro di aver inserito l'indirizzo corretto ma ottieni comunque 
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Image
 msgid "Image"
@@ -1223,6 +1258,11 @@ msgstr "Immagine"
 # defaultMessage: Image gallery
 msgid "Image gallery"
 msgstr "Galleria di immagini"
+
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Image size
+msgid "Image size"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Include this occurence
@@ -1236,6 +1276,11 @@ msgstr "Includi questa data"
 # defaultMessage: Info
 msgid "Info"
 msgstr "Info"
+
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+# defaultMessage: You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to user group settings. See the button on the left.
+msgid "InfoUserGroupSettings"
+msgstr ""
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Inherit permissions from higher levels
@@ -1281,6 +1326,11 @@ msgstr "Installato"
 # defaultMessage: Installed version
 msgid "Installed version"
 msgstr "Versione installata"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Installing a third party add-on
+msgid "Installing a third party add-on"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: days
@@ -1364,6 +1414,11 @@ msgstr "Lingua"
 msgid "Language independent field."
 msgstr "Campo indipendete dalla lingua"
 
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Large
+msgid "Large"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Last
 msgid "Last"
@@ -1394,7 +1449,6 @@ msgstr "Layout"
 msgid "Lead Image"
 msgstr "Immagine di testata"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Left
@@ -1419,11 +1473,9 @@ msgid "Link title"
 msgstr "Link al resto"
 
 #: components/manage/Blocks/HeroImageLeft/schema
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
-#: components/manage/Blocks/Maps/MapsSidebar
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Link to
 msgid "Link to"
 msgstr "Link a"
@@ -1506,11 +1558,12 @@ msgid "Manage translations for {title}"
 msgstr "Gestisci le traduzioni per {title}"
 
 #: components/manage/Blocks/Maps/MapsSidebar
-# defaultMessage: Map
-msgid "Map"
-msgstr "Mappa"
+#: components/manage/Blocks/Maps/schema
+# defaultMessage: Maps
+msgid "Maps"
+msgstr ""
 
-#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Maps/schema
 # defaultMessage: Maps URL
 msgid "Maps URL"
 msgstr "URL di Maps"
@@ -1524,6 +1577,11 @@ msgstr "La lunghezza massima è {len}."
 # defaultMessage: Maximum value is {len}.
 msgid "Maximum value is {len}."
 msgstr "Il valore massimo è {len}."
+
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Medium
+msgid "Medium"
+msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Message
@@ -1629,6 +1687,11 @@ msgstr "Notizia"
 msgid "No"
 msgstr "No"
 
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: No Video selected
+msgid "No Video selected"
+msgstr ""
+
 #: components/manage/Controlpanels/VersionOverview
 # defaultMessage: No addons found
 msgid "No addons found"
@@ -1637,7 +1700,7 @@ msgstr "Nesssun addon trovato"
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected
 msgid "No image selected"
-msgstr "Nessuna immagine selezionata"
+msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: No image set in Lead Image content field
@@ -1700,6 +1763,11 @@ msgstr "Nessun elemento selezionato"
 msgid "No uninstall profile"
 msgstr "Nessun profilo di disinstallazione"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: No user found
+msgid "No user found"
+msgstr ""
+
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 #: components/manage/Widgets/SelectUtils
@@ -1707,11 +1775,6 @@ msgstr "Nessun profilo di disinstallazione"
 # defaultMessage: No value
 msgid "No value"
 msgstr "Nessun valore"
-
-#: components/manage/Blocks/Video/VideoSidebar
-# defaultMessage: No video selected
-msgid "No video selected"
-msgstr "Nessun video selezionato"
 
 #: components/manage/Workflow/Workflow
 # defaultMessage: No workflow
@@ -1754,10 +1817,8 @@ msgstr "Ok"
 msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed."
 msgstr "Solo lettere minuscole (a-z) senza accenti, numeri (0-9), e i due caratteri '-' e '_' sono ammesssi"
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Maps/MapsSidebar
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr "Apri in un nuovo tab"
@@ -1772,7 +1833,6 @@ msgstr "Apri menu"
 msgid "Open object browser"
 msgstr "Apri object browser"
 
-#: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
 msgid "Origin"
@@ -1864,6 +1924,16 @@ msgstr "Per favore inserisci il codice di incorporamento fornito da Google Maps.
 msgid "Please fill out the form below to set your password."
 msgstr "Completa il seguente modulo per reimpostare la tua password."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Please search for users or use the filters on the side.
+msgid "Please search for users or use the filters on the side."
+msgstr ""
+
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+# defaultMessage: Please upgrade to plone.restapi >= 8.24.0.
+msgid "Please upgrade to plone.restapi >= 8.24.0."
+msgstr ""
+
 #: components/theme/Footer/Footer
 # defaultMessage: Plone Foundation
 msgid "Plone Foundation"
@@ -1910,7 +1980,7 @@ msgstr "Formatta il tuo codice"
 msgid "Preview"
 msgstr "Anteprima"
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Preview Image URL
 msgid "Preview Image URL"
 msgstr "URL dell'immagine di anteprima"
@@ -2015,6 +2085,11 @@ msgstr "Rimuovi"
 msgid "Remove term"
 msgstr "Rimuovi termine"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Remove users from group
+msgid "Remove users from group"
+msgstr ""
+
 #: components/manage/Toolbar/More
 # defaultMessage: Remove working copy
 msgid "Remove working copy"
@@ -2114,7 +2189,6 @@ msgstr "Stato del workflow"
 msgid "Richtext"
 msgstr "Testo formattato"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Right
@@ -2352,6 +2426,11 @@ msgstr "Mostra tutti"
 msgid "Show Replies"
 msgstr "Mostra risposte"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Show groups of users below
+msgid "Show groups of users below"
+msgstr ""
+
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Show item
 msgid "Show item"
@@ -2414,15 +2493,15 @@ msgstr "Configurazione del sito"
 msgid "Sitemap"
 msgstr "Mappa del sito"
 
-#: components/manage/Blocks/Image/ImageSidebar
-# defaultMessage: Size
-msgid "Size"
-msgstr "Dimensione"
-
 #: components/theme/View/ImageView
 # defaultMessage: Size: {size}
 msgid "Size: {size}"
 msgstr "Dimensione: {size}"
+
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Small
+msgid "Small"
+msgstr ""
 
 #: error
 # defaultMessage: Sorry, something went wrong with your request
@@ -2452,6 +2531,7 @@ msgid "Sort on options"
 msgstr "Opzioni di ordinamento"
 
 #: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Image/schema
 # defaultMessage: Source
 msgid "Source"
 msgstr "Sorgente"
@@ -2543,7 +2623,8 @@ msgstr "Vai a"
 msgid "Table"
 msgstr "Tabella"
 
-#: components/manage/Blocks/ToC/View
+#: components/manage/Blocks/ToC/variations/DefaultTocRenderer
+#: components/manage/Blocks/ToC/variations/HorizontalMenu
 # defaultMessage: Table of Contents
 msgid "Table of Contents"
 msgstr "Indice dei contenuti"
@@ -2892,6 +2973,17 @@ msgstr "Usato per l'accesso programmatico al set di campi."
 msgid "User"
 msgstr "Utente"
 
+#: components/manage/Controlpanels/Controlpanels
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Membership
+msgid "User Group Membership"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Settings
+msgid "User Group Settings"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: User created
 msgid "User created"
@@ -2934,12 +3026,13 @@ msgstr "Variazione"
 msgid "Version Overview"
 msgstr "Panoramica delle versioni"
 
+#: components/manage/Blocks/Video/schema
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Video
 msgid "Video"
 msgstr "Video"
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Video URL
 msgid "Video URL"
 msgstr "URL del video"
