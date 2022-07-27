@@ -1,22 +1,13 @@
 # Translation of plone.pot to German
-# Jan Ulrich Hasecke <jan.ulrich@hasecke.com>, 2003-2010.
-# Simon Eisenmann <simon@struktur.de>, 2003.
-# Hanno Schlichting <plone@hannosch.info>, 2003-2008.
-# Dominik Bittl <dominik@umount.org>, 2005.
-# Christian Ullrich <chris@chrullrich.de>, 2005.
-# Thomas Lotze <tl@gocept.com>, 2005-2008.
-# Sven Deichmann <deichmann@werkbank.com>, 2008-2010.
-# Harald Friessnegger <harald@webmeisterei.com>, 2011.
-# Andreas Jung <info@zopyx.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
 "PO-Revision-Date: 2016-10-22 16:41-0500\n"
-"Last-Translator: German <plone-i18n@lists.sf.net>\n"
+"Last-Translator: German <https://github.com/plone/volto/issues>\n"
 "Language: de\n"
-"Language-Team: German <plone-i18n@lists.sf.net>\n"
+"Language-Team: German <https://github.com/plone/volto/issues>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -157,6 +148,11 @@ msgstr "Neuen Benutzer hinzufügen"
 # defaultMessage: Add to Groups
 msgid "Add to Groups"
 msgstr "Zu Gruppe hinzufügen"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add users to group
+msgid "Add users to group"
+msgstr "Füge Benutzer zu Gruppe hinzu"
 
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Add term
@@ -1035,6 +1031,11 @@ msgstr "Dateigröße"
 msgid "Filename"
 msgstr "Dateiname"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter users by groups
+msgid "Filter users by groups"
+msgstr "Filtere Benutzer via Gruppenmitgliedschaft"
+
 #: components/manage/Contents/Contents
 # defaultMessage: Filter…
 msgid "Filter…"
@@ -1243,6 +1244,11 @@ msgstr "Datum einbeziehen"
 # defaultMessage: Info
 msgid "Info"
 msgstr "Information"
+
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+# defaultMessage: You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to user group settings. See the button on the left.
+msgid "InfoUserGroupSettings"
+msgstr "Sie haben die Option 'viele Benutzer' oder 'viele Gruppen' gewählt. Deshalb erwartet das Panel die Eingabe eines Suchwerts und die Auswahl eines Gruppen-Filters um Benutzer und Gruppen zu zeigen. Wenn Sie im Panel umgehend alle Benutzer und Gruppen sehen möchten, dann wechseln Sie bitte zu den Benutzer- und Gruppeneinstellungen und ändern die Einstellungen. Links finden Sie einen Link."
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Inherit permissions from higher levels
@@ -1722,6 +1728,11 @@ msgstr "Keine Auswahl"
 msgid "No uninstall profile"
 msgstr "Kein Deinstallationsprofil"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: No user found
+msgid "No user found"
+msgstr "Kein Benutzer gefunden"
+
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 #: components/manage/Widgets/SelectUtils
@@ -1886,6 +1897,16 @@ msgstr "Bitte geben sie den Einbettungscode von Google Maps ein. Klicken Sie auf
 msgid "Please fill out the form below to set your password."
 msgstr "Bitte füllen Sie das unten stehende Formular aus, um Ihr Passwort neu zu setzen."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Please search for users or use the filters on the side.
+msgid "Please search for users or use the filters on the side."
+msgstr "Bitte verwenden Sie das Suchfeld oder die Filter um Benutzer anzuzeigen."
+
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+# defaultMessage: Please upgrade to plone.restapi >= 8.24.0.
+msgid "Please upgrade to plone.restapi >= 8.24.0."
+msgstr "Bitte upgraden auf plone.restapi >= 8.24.0."
+
 #: components/theme/Footer/Footer
 # defaultMessage: Plone Foundation
 msgid "Plone Foundation"
@@ -2036,6 +2057,11 @@ msgstr "Wiederkehrende Einstellung entfernen"
 # defaultMessage: Remove term
 msgid "Remove term"
 msgstr "Entferne Term"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Remove users from group
+msgid "Remove users from group"
+msgstr "Trage Benutzer aus Gruppe aus"
 
 #: components/manage/Toolbar/More
 # defaultMessage: Remove working copy
@@ -2373,6 +2399,11 @@ msgstr "Alle anzeigen"
 # defaultMessage: Show Replies
 msgid "Show Replies"
 msgstr "Antworten anzeigen"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Show groups of users below
+msgid "Show groups of users below"
+msgstr "Zeige die Gruppenmitgliedschaften der unten gezeigten Benutzer"
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Show item
@@ -2915,6 +2946,17 @@ msgstr "Wir für den programmierten Zugriff auf das Fieldset verwendet."
 # defaultMessage: User
 msgid "User"
 msgstr "Benutzer"
+
+#: components/manage/Controlpanels/Controlpanels
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Membership
+msgid "User Group Membership"
+msgstr "Gruppenmitgliedschaften"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Settings
+msgid "User Group Settings"
+msgstr "Benutzer- und Gruppeneinstellungen"
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: User created

@@ -4,7 +4,12 @@
 
 ### Breaking
 
+- Action `listUsers`to be called with Object. Distinguish between search for id or search for fullname, email, username @ksuess
+
 ### Feature
+
+- Add user group membership control panel @ksuess
+- Action `listUsers`: Support search for fullname, email, username. @ksuess
 
 ### Bugfix
 
