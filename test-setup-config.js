@@ -66,7 +66,8 @@ config.set('settings', {
   },
   controlPanelsIcons,
   apiExpanders: [],
-  downloadableObjects: ['Link'],
+  downloadableObjects: ['File'],
+  viewableInBrowserObjects: [],
 });
 config.set('blocks', {
   blocksConfig: {

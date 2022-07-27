@@ -6,6 +6,7 @@
 import superagent from 'superagent';
 import Cookies from 'universal-cookie';
 import config from '@plone/volto/registry';
+import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
 import { stripQuerystring } from '@plone/volto/helpers';
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];
@@ -71,6 +72,7 @@ class Api {
           if (req) {
             // We are in SSR
             authToken = req.universalCookies.get('auth_token');
+            request.use(addHeadersFactory(req));
           } else {
             authToken = cookies.get('auth_token');
           }

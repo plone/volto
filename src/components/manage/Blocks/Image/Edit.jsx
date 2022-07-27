@@ -20,6 +20,7 @@ import {
   SidebarPortal,
   Image,
 } from '@plone/volto/components';
+import { withBlockExtensions } from '@plone/volto/helpers';
 import { createContent } from '@plone/volto/actions';
 import {
   flattenToAppURL,
@@ -148,19 +149,6 @@ class Edit extends Component {
   };
 
   /**
-   * Align block handler
-   * @method onAlignBlock
-   * @param {string} align Alignment option
-   * @returns {undefined}
-   */
-  onAlignBlock(align) {
-    this.props.onChangeBlock(this.props.block, {
-      ...this.props.data,
-      align,
-    });
-  }
-
-  /**
    * Change url handler
    * @method onChangeUrl
    * @param {Object} target Target object
@@ -182,12 +170,6 @@ class Edit extends Component {
     this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
       url: flattenToAppURL(this.state.url),
-    });
-  };
-
-  resetSubmitUrl = () => {
-    this.setState({
-      url: '',
     });
   };
 
@@ -391,7 +373,7 @@ class Edit extends Component {
           </div>
         )}
         <SidebarPortal selected={this.props.selected}>
-          <ImageSidebar {...this.props} resetSubmitUrl={this.resetSubmitUrl} />
+          <ImageSidebar {...this.props} />
         </SidebarPortal>
       </div>
     );
@@ -400,6 +382,7 @@ class Edit extends Component {
 
 export default compose(
   injectIntl,
+  withBlockExtensions,
   connect(
     (state, ownProps) => ({
       request: state.content.subrequests[ownProps.block] || {},
