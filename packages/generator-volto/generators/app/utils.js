@@ -54,7 +54,7 @@ async function getLatestVoltoVersion() {
 /*
  * Retrieves latest Volto released version from NPM registry
  */
-async function getLatestAlphaVoltoVersion() {
+async function getLatestCanaryVoltoVersion() {
   // Curl -H "Accept: application/vnd.npm.install-v1+json"
   const url = 'https://registry.npmjs.org/@plone/volto';
   return new Promise((resolve, reject) => {
@@ -81,6 +81,6 @@ async function getLatestAlphaVoltoVersion() {
 
 module.exports = {
   getLatestVoltoVersion,
-  getLatestAlphaVoltoVersion,
+  getLatestCanaryVoltoVersion,
   getVoltoYarnLock,
 };

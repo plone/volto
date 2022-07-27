@@ -26,7 +26,7 @@ describe('generator-create-volto-app:app', () => {
     ]);
   });
 
-  it('default gets latest (non alpha) version', () => {
+  it('default gets latest (non canary) version', () => {
     const packageJSON = JSON.parse(
       fs.readFileSync(path.join(tmpDir, 'test-volto/package.json'), 'utf8'),
     );
@@ -35,7 +35,7 @@ describe('generator-create-volto-app:app', () => {
   });
 });
 
-describe('generator-create-volto-app:app with alpha', () => {
+describe('generator-create-volto-app:app with canary option', () => {
   beforeAll(() => {
     return helpers
       .run(path.join(__dirname, '../generators/app'))
@@ -47,7 +47,7 @@ describe('generator-create-volto-app:app with alpha', () => {
         useAddons: false,
       })
       .withOptions({
-        alpha: true,
+        canary: true,
       });
   });
 
@@ -59,7 +59,7 @@ describe('generator-create-volto-app:app with alpha', () => {
     ]);
   });
 
-  it('alpha option gets alpha version', () => {
+  it('canary option gets alpha version', () => {
     const packageJSON = JSON.parse(
       fs.readFileSync(path.join(tmpDir, 'test-volto/package.json'), 'utf8'),
     );

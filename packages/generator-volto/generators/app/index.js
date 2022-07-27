@@ -51,9 +51,9 @@ module.exports = class extends Generator {
       desc:
         'Desired Volto version, if not provided, the most recent will be used',
     });
-    this.option('alpha', {
+    this.option('canary', {
       type: Boolean,
-      desc: 'Desired Volto version should be an alpha',
+      desc: 'Desired Volto version should be a canary (alpha)',
       default: false,
     });
     this.option('interactive', {
@@ -101,10 +101,10 @@ Run "npm install -g @plone/generator-volto" to update.`,
     });
 
     let voltoVersion;
-    if (this.opts.alpha) {
-      this.log(chalk.red('Getting latest alpha Volto version'));
-      voltoVersion = await utils.getLatestAlphaVoltoVersion();
-      this.log(`Using latest alpha Volto version: ${voltoVersion}`);
+    if (this.opts.canary) {
+      this.log(chalk.red('Getting latest canary (alpha) Volto version'));
+      voltoVersion = await utils.getLatestCanaryVoltoVersion();
+      this.log(`Using latest canary (alpha) Volto version: ${voltoVersion}`);
     } else if (this.opts.volto) {
       voltoVersion = this.opts.volto;
       this.log(`Using chosen Volto version: ${voltoVersion}`);
