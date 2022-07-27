@@ -246,7 +246,25 @@ export function editRule(url, data, rule) {
     request: {
       op: 'patch',
       path: `${url}/@controlpanels/content-rules/${rule}`,
-      data,
+      data: { 'form.button.Save': true, ...data },
     },
   };
 }
+
+// add condition in configure panel ${url}/@controlpanels/content-rules/${idRule}/condition
+// edit condition in configure panel ${url}/@controlpanels/content-rules/${idRule}/condition/${condition-index}
+// delete condition in configure panel ${url}/@controlpanels/content-rules/${idRule}/condition/${condition-index} (del)
+
+// condition-index = index in array of conditions for that rule
+
+// add action in configure panel ${url}/@controlpanels/content-rules/${idRule}/action (post)
+// edit action in configure panel ${url}/@controlpanels/content-rules/${idRule}/action/${action-index} (patch)
+// delete action in configure panel ${url}/@controlpanels/content-rules/${idRule}/action/${action-index} (del)
+
+// ***moveup
+
+// edit action in configure panel ${url}/@controlpanels/content-rules/${idRule}/action/${action-index} (patch) + data = {"form.button.Move": "_move_up"}
+
+// ***vocabulary content types
+//         "@id": "http://localhost:55001/plone/@vocabularies/plone.app.vocabularies.ReallyUserFriendlyTypes",
+//         "title": "plone.app.vocabularies.ReallyUserFriendlyTypes"

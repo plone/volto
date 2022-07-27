@@ -264,7 +264,8 @@ class Rules extends Component {
                         />
                       </Table.HeaderCell>
                     </Table.Row>
-                    {this.props.rules.items &&
+                    {this.props.rules &&
+                      this.props.rules.items &&
                       this.props.rules.items.length > 0 &&
                       this.props.rules.items.map((rule, i) => (
                         <Table.Row key={i}>
@@ -282,9 +283,9 @@ class Rules extends Component {
                               style={{ display: 'flex', alignItems: 'center' }}
                             >
                               <Checkbox
-                                onChange={(e, { value }) =>
-                                  console.log('handle enable/disable', !value)
-                                }
+                                // onChange={(e, { value }) =>
+                                //   console.log('handle enable/disable', !value)
+                                // }
                                 checked={rule.enabled}
                                 value={rule.enabled}
                                 label="enabled"

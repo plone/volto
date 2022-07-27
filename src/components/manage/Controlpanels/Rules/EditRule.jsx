@@ -26,6 +26,8 @@ import {
   editRule,
   getContentRulesEvents,
 } from '@plone/volto/actions';
+import { toast } from 'react-toastify';
+import { Toast } from '@plone/volto/components';
 
 import backSVG from '@plone/volto/icons/back.svg';
 
@@ -41,6 +43,10 @@ const messages = defineMessages({
   success: {
     id: 'Success',
     defaultMessage: 'Success',
+  },
+  edit: {
+    id: 'Edit',
+    defaultMessage: 'Rule edited',
   },
 });
 
@@ -145,7 +151,21 @@ class EditRule extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  UNSAFE_componentWillReceiveProps(nextProps) {}
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (this.props.rule.edit.loading && nextProps.rule.edit.loaded) {
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.edit)}
+        />,
+      );
+      this.props.getControlPanelRule(
+        getBaseUrl(this.props.pathname),
+        this.props.match.params.id,
+      );
+    }
+  }
 
   /**
    * Back/Cancel handler
