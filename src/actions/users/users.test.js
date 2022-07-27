@@ -56,7 +56,7 @@ describe('Users action', () => {
 
   describe('listUsers', () => {
     it('should create an action to list users', () => {
-      const action = listUsers({});
+      const action = listUsers();
 
       expect(action.type).toEqual(LIST_USERS);
       expect(action.request.op).toEqual('get');
