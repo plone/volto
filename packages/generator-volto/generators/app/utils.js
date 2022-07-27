@@ -51,7 +51,36 @@ async function getLatestVoltoVersion() {
   });
 }
 
+/*
+ * Retrieves latest Volto released version from NPM registry
+ */
+async function getLatestAlphaVoltoVersion() {
+  // Curl -H "Accept: application/vnd.npm.install-v1+json"
+  const url = 'https://registry.npmjs.org/@plone/volto';
+  return new Promise((resolve, reject) => {
+    https
+      .get(
+        url,
+        { headers: { Accept: 'application/vnd.npm.install-v1+json' } },
+        (resp) => {
+          let data = [];
+          resp.on('data', (chunk) => {
+            data.push(chunk);
+          });
+          resp.on('end', () => {
+            const res = JSON.parse(data.join(''));
+            resolve(res['dist-tags'].alpha);
+          });
+        },
+      )
+      .on('error', (err) => {
+        reject(err.message);
+      });
+  });
+}
+
 module.exports = {
   getLatestVoltoVersion,
+  getLatestAlphaVoltoVersion,
   getVoltoYarnLock,
 };

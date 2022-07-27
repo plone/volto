@@ -51,6 +51,11 @@ module.exports = class extends Generator {
       desc:
         'Desired Volto version, if not provided, the most recent will be used',
     });
+    this.option('alpha', {
+      type: Boolean,
+      desc: 'Desired Volto version should be an alpha',
+      default: false,
+    });
     this.option('interactive', {
       type: Boolean,
       desc: 'Enable/disable interactive prompt',
@@ -96,7 +101,11 @@ Run "npm install -g @plone/generator-volto" to update.`,
     });
 
     let voltoVersion;
-    if (this.opts.volto) {
+    if (this.opts.alpha) {
+      this.log(chalk.red('Getting latest alpha Volto version'));
+      voltoVersion = await utils.getLatestAlphaVoltoVersion();
+      this.log(`Using latest alpha Volto version: ${voltoVersion}`);
+    } else if (this.opts.volto) {
       voltoVersion = this.opts.volto;
       this.log(`Using chosen Volto version: ${voltoVersion}`);
     } else {
