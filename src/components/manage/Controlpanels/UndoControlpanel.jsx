@@ -256,7 +256,9 @@ class UndoControlpanel extends Component {
       let sortedTransactions = [];
       if (sortType.toLowerCase() === 'user name') {
         this.props.transactions.forEach((element) => {
-          if (
+          if (value.trim().toLowerCase() === 'zope' && !element.user_name) {
+            sortedTransactions.push(element);
+          } else if (
             element.user_name
               .trim()
               .toLowerCase()
@@ -483,7 +485,7 @@ class UndoControlpanel extends Component {
           this.state.lowerIndex,
           this.state.upperIndex,
         )) ||
-      this.props.transactions.slice(
+      this.props.transactions?.slice(
         this.state.lowerIndex,
         this.state.upperIndex,
       );
@@ -501,7 +503,7 @@ class UndoControlpanel extends Component {
             />
           </Segment>
           <Segment>
-            {this.props.transactions && this.props.transactions.length > 0 && (
+            {this.props.transactions?.length > 0 && (
               <Form
                 schema={{
                   fieldsets: [
