@@ -112,7 +112,7 @@ class UsersControlpanel extends Component {
   fetchData = async () => {
     await this.props.listRoles();
     this.props.listGroups();
-    await this.props.listUsers({});
+    await this.props.listUsers();
     this.setState({
       entries: this.props.users,
     });

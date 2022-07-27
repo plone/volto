@@ -9,6 +9,7 @@
 ### Bugfix
 
 - complete pt_BR translation @ericof
+- Fix action `listUsers`. Provide default. @ksuess
 
 ### Internal
 
