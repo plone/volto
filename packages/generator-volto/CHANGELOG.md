@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Adds canary option feature, if `--canary` is specified, then the latest alpha version is used @sneridagh
+
 ### Bugfix
 
 - Remove yarn.lock from the app generator template (the generator fetches it from the latest volto version anyway). @davisagli
