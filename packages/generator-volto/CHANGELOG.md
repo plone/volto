@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Remove yarn.lock from the app generator template (the generator fetches it from the latest volto version anyway). @davisagli
+
 ### Internal
 
 ## 5.7.0 (2022-07-25)
