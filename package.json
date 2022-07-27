@@ -228,6 +228,8 @@
     "@babel/plugin-proposal-export-namespace-from": "7.10.4",
     "@babel/plugin-proposal-json-strings": "7.10.4",
     "@babel/plugin-proposal-throw-expressions": "7.10.4",
+    "@dnd-kit/core": "6.0.5",
+    "@dnd-kit/sortable": "7.0.1",
     "@loadable/babel-plugin": "5.13.2",
     "@loadable/component": "5.14.1",
     "@loadable/server": "5.14.0",

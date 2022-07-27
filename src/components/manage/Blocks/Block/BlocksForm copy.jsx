@@ -18,33 +18,6 @@ import { useDispatch } from 'react-redux';
 import { useDetectClickOutside } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
-import { useDndMonitor, DragOverlay } from '@dnd-kit/core';
-
-import {
-  arrayMove,
-  SortableContext,
-  sortableKeyboardCoordinates,
-  verticalListSortingStrategy,
-} from '@dnd-kit/sortable';
-
-import SortableItem from '../../BlocksDnD/SortableItem';
-
-const Item = React.forwardRef(({ id, ...props }, ref) => {
-  return (
-    <div
-      style={{
-        backgroundColor: 'blue',
-        height: '200px',
-        marginBottom: '20px',
-      }}
-      {...props}
-      ref={ref}
-    >
-      {id}
-    </div>
-  );
-});
-
 const BlocksForm = (props) => {
   const {
     pathname,
@@ -177,34 +150,10 @@ const BlocksForm = (props) => {
 
   const editBlockWrapper = children || defaultBlockWrapper;
 
-  const [activeId, setActiveId] = React.useState(null);
-
-  useDndMonitor({
-    onDragStart(event) {
-      const { active } = event;
-      setActiveId(active.id);
-    },
-  });
-
   return (
     <div className="blocks-form" ref={ref}>
       <fieldset className="invisible" disabled={!editable}>
-        <SortableContext
-          items={properties.blocks_layout.items}
-          strategy={verticalListSortingStrategy}
-        >
-          {blockList
-            .filter(([id, child]) => id && child) // beware numbers!
-            .map(([childId, child], index) => (
-              <SortableItem key={childId} id={childId} />
-            ))}
-
-          {/* {items.map((id) => (
-          <SortableItem key={id} id={id} />
-        ))} */}
-        </SortableContext>
-        <DragOverlay>{activeId ? <Item id={activeId} /> : null}</DragOverlay>
-        {/* <DragDropList
+        <DragDropList
           childList={blockList}
           onMoveItem={(result) => {
             const { source, destination } = result;
@@ -259,7 +208,7 @@ const BlocksForm = (props) => {
               blockProps,
             );
           }}
-        </DragDropList> */}
+        </DragDropList>
       </fieldset>
     </div>
   );
