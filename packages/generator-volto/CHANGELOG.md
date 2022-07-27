@@ -6,7 +6,7 @@
 
 ### Feature
 
-- Adds alpha option feature, if `--alpha` is specified, then the latest alpha version is used @sneridagh
+- Adds canary option feature, if `--canary` is specified, then the latest alpha version is used @sneridagh
 
 ### Bugfix
 
