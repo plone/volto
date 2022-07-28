@@ -153,6 +153,11 @@ msgstr "Adicionar novo usuário"
 msgid "Add to Groups"
 msgstr "Adicionar a grupos"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add users to group
+msgid "Add users to group"
+msgstr ""
+
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Add term
 msgid "Add vocabulary term"
@@ -1030,6 +1035,11 @@ msgstr "Tamanho do arquivo"
 msgid "Filename"
 msgstr "Nome do arquivo"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter users by groups
+msgid "Filter users by groups"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: Filter…
 msgid "Filter…"
@@ -1238,6 +1248,11 @@ msgstr "Inclua esta ocorrência"
 # defaultMessage: Info
 msgid "Info"
 msgstr "Informação"
+
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+# defaultMessage: You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to user group settings. See the button on the left.
+msgid "InfoUserGroupSettings"
+msgstr ""
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Inherit permissions from higher levels
@@ -1717,6 +1732,11 @@ msgstr "Nenhuma seleção"
 msgid "No uninstall profile"
 msgstr "Sem perfil de desinstalação"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: No user found
+msgid "No user found"
+msgstr ""
+
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 #: components/manage/Widgets/SelectUtils
@@ -1881,6 +1901,16 @@ msgstr "Digite o código Embed fornecido pelo google maps -> compartilhar -> map
 msgid "Please fill out the form below to set your password."
 msgstr "Preencha o formulário abaixo para definir sua senha."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Please search for users or use the filters on the side.
+msgid "Please search for users or use the filters on the side."
+msgstr ""
+
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+# defaultMessage: Please upgrade to plone.restapi >= 8.24.0.
+msgid "Please upgrade to plone.restapi >= 8.24.0."
+msgstr ""
+
 #: components/theme/Footer/Footer
 # defaultMessage: Plone Foundation
 msgid "Plone Foundation"
@@ -2031,6 +2061,11 @@ msgstr "Remover a recorrência"
 # defaultMessage: Remove term
 msgid "Remove term"
 msgstr "Remover o termo"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Remove users from group
+msgid "Remove users from group"
+msgstr ""
 
 #: components/manage/Toolbar/More
 # defaultMessage: Remove working copy
@@ -2368,6 +2403,11 @@ msgstr "Mostrar tudo"
 # defaultMessage: Show Replies
 msgid "Show Replies"
 msgstr "Mostrar respostas"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Show groups of users below
+msgid "Show groups of users below"
+msgstr ""
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Show item
@@ -2910,6 +2950,17 @@ msgstr "Usado para acesso programático ao conjunto de campos."
 # defaultMessage: User
 msgid "User"
 msgstr "Usuário"
+
+#: components/manage/Controlpanels/Controlpanels
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Membership
+msgid "User Group Membership"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Settings
+msgid "User Group Settings"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: User created
