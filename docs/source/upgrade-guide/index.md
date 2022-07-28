@@ -30,6 +30,94 @@ the latest changes, and propose to you to merge the changes, so you can run it o
 
 ## Upgrading to Volto 16.x.x
 
+### `volto-slate` is now core
+
+From Volto 16.0.0-alpha.15 onwards, `volto-slate` is integrated into Volto core and enabled as the default text block.
+The previous text block `text` based on `draftJS` is now deprecated and is restricted (hidden) in Volto bootstrap.
+This is a major change and should be planned in advance before you install 16.0.0-alpha.15 or later.
+
+```{versionadded} 16.0.0-alpha.15
+`volto-slate` added to Volto core as the default text block.
+```
+
+```{deprecated} 16.0.0-alpha.15
+`text` text block based on `draftJS` is now deprecated and will be removed from core in Volto 18.
+```
+
+```{note}
+Volto 16 is intended to be the long-term support (LTS) version used when Plone 6 Final is released.
+Volto 16 supports `draftJS` text block deployments but please notice it's deprecated from this version on.
+As such you will have the choice to continue using `draftJS` text block in your projects but developers and integrators are strongly encouraged to migrate existing sites using `draftJS` text blocks to migrate to `Slate` text blocks.
+
+See below for more information.
+```
+
+These are the possible scenarios:
+
+- New projects
+- Existing projects, already using `volto-slate` add-on
+- Existing projects using core `draftJS`, opting to continue using `draftJS`
+- Existing projects using core `draftJS`, opting to start using `slate` without migrating (possible, but not recommended)
+- Existing projects using core `draftJS`, opting to migrate to `slate`
+
+#### New projects
+
+New projects are unaffected, since they will use Slate as the default text block from the beginning.
+
+#### Existing projects, already using `volto-slate` add-on
+
+For projects already using `volto-slate`, take the following steps in your project configuration:
+
+- Remove `volto-slate` add-on from your project build dependencies.
+- Add these lines to the Jest configuration in your project's `package.json`:
+
+```diff
+--- a/package.json
++++ b/package.json
+@@ -57,6 +57,7 @@
+       "^.+\\.js(x)?$": "babel-jest",
+       "^.+\\.css$": "jest-css-modules",
+       "^.+\\.scss$": "jest-css-modules",
++      "^.+\\.less$": "jest-css-modules",
+       "^.+\\.(png)$": "jest-file",
+       "^.+\\.(jpg)$": "jest-file",
+       "^.+\\.(svg)$": "./node_modules/@plone/volto/jest-svgsystem-transform.js"
+@@ -67,6 +68,7 @@
+     "moduleNameMapper": {
+       "@plone/volto/babel": "<rootDir>/node_modules/@plone/volto/babel",
+       "@plone/volto/(.*)$": "<rootDir>/node_modules/@plone/volto/src/$1",
++      "@plone/volto-slate": "<rootDir>/node_modules/@plone/volto/packages/volto-slate/src",
+```
+
+- If any of your code depends on `volto-slate` code, update your imports by adding the namespace `@plone/` to the original `volto-slate` import.
+
+```diff
+- import { DetachedTextBlockEditor } from 'volto-slate/blocks/Text/DetachedTextBlockEditor';
++ import { DetachedTextBlockEditor } from '@plone/volto-slate/blocks/Text/DetachedTextBlockEditor';
+```
+
+### Existing projects using core `draftJS`, opting to continue using `draftJS`
+
+You will have to configure your project to continue using `draftJS`, for example, in your `config.js` or in your add-on:
+
+```js
+config.settings.defaultBlockType = 'text'
+config.blocks.blocksConfig.table.restricted = false;
+config.blocks.blocksConfig.slateTable.restricted = true;
+```
+
+### Existing projects using core `draftJS`, opting to start using `slate` without migrating (possible, but not recommended)
+
+Still a valid option, especially if you don't have the budget for it, the old content based on the legacy `text` block will be still be functional.
+New text blocks in new content will be created with the new `slate` text block.
+
+It is recommended to go the extra mile and migrate the `text` blocks to `slate` blocks for maximum future compatibility.
+
+### Existing projects using core `draftJS`, opting to migrate to `slate`
+
+Use the `blocks-conversion-tool`.
+See https://github.com/plone/blocks-conversion-tool for more information.
+
 ### Deprecating NodeJS 12
 
 Since April 30, 2022, NodeJS 12 is out of Long Term Support by the NodeJS community.
