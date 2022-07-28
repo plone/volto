@@ -41,13 +41,14 @@ This is a major change and should be planned in advance before you install 16.0.
 ```
 
 ```{deprecated} 16.0.0-alpha.15
-`text` text block based on `draftJS` is now deprecated and might be removed from core in a future major version.
+`text` text block based on `draftJS` is now deprecated and will be removed from core in Volto 18.
 ```
 
 ```{note}
 Volto 16 is intended to be the long-term support (LTS) version used when Plone 6 Final is released.
-Volto 16 will ensure compatibility with all existing Volto deployments for versions XXX and won't introduce any hard breaking change.
-As such you will have the choice to continue using `draftJS` text block in your projects.
+Volto 16 supports `draftJS` text block deployments but please notice it's deprecated from this version on.
+As such you will have the choice to continue using `draftJS` text block in your projects but developers and integrators are strongly encouraged to migrate existing sites using `draftJS` text blocks to migrate to `Slate` text blocks.
+
 See below for more information.
 ```
 
