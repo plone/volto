@@ -18,6 +18,7 @@
 ### Internal
 
 - Upgrade to latest `@plone/scripts` @sneridagh
+- Update browserlist definitions @sneridagh
 
 ### Documentation
 
