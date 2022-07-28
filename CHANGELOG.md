@@ -16,9 +16,12 @@
 
 ### Internal
 
+- Upgrade to latest `@plone/scripts` @sneridagh
+
 ### Documentation
 
-- Add upgrade guide documentation for dealing with `volto-slate` upgrades in alpha 15. @sneridagh
+- Add upgrade guide documentation for dealing with `volto-slate` upgrades for Volto 16 alpha 15 onwards. @sneridagh
+
 ## 16.0.0-alpha.18 (2022-07-26)
 
 ### Breaking
