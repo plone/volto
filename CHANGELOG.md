@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- Using volto-slate Headline / Subheadline buttons strips all elements in the selection @tiberiuichim
+
 ### Feature
 
 - Send extra data coming from listing block schemaEnhancer from searchBlock to the listing variation @ionlizarazu
@@ -17,6 +19,7 @@
 
 ### Internal
 
+- Allow passing `allowedChildren` option to the BlockButton, to strip elements in headlines @tiberiuichim
 - Upgrade to latest `@plone/scripts` @sneridagh
 
 ### Documentation
