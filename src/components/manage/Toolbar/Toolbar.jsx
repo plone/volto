@@ -27,6 +27,7 @@ import {
   listActions,
   setExpandedToolbar,
   unlockContent,
+  getContent,
 } from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
 import { BodyClass, getBaseUrl, getCookieOptions } from '@plone/volto/helpers';
@@ -187,6 +188,7 @@ class Toolbar extends Component {
       menuComponents: [],
       loadedComponents: [],
       hideToolbarBody: false,
+      currentPathname: null,
     };
   }
 
@@ -209,9 +211,11 @@ class Toolbar extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.pathname !== this.props.pathname) {
+    if (nextProps.pathname !== this.state.currentPathname) {
+      this.props.getContent(getBaseUrl(nextProps.pathname));
       this.props.listActions(getBaseUrl(nextProps.pathname));
       this.props.getTypes(getBaseUrl(nextProps.pathname));
+      this.setState({ currentPathname: nextProps.pathname });
     }
 
     // Unlock
@@ -584,6 +588,6 @@ export default compose(
       types: filter(state.types.types, 'addable'),
       unlockRequest: state.content.unlock,
     }),
-    { getTypes, listActions, setExpandedToolbar, unlockContent },
+    { getTypes, listActions, setExpandedToolbar, unlockContent, getContent },
   ),
 )(Toolbar);
