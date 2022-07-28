@@ -6,9 +6,8 @@
 
 ### Feature
 
-- add control panel via config.settings @ksuess https://github.com/plone/volto/issues/3426
-- Add noindex metadata tag @steffenri
 - Send extra data coming from listing block schemaEnhancer from searchBlock to the listing variation @ionlizarazu
+
 ### Bugfix
 
 - complete pt_BR translation @ericof
@@ -134,8 +133,6 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 
 ### Feature
 
-- add control panel via config.settings @ksuess https://github.com/plone/volto/issues/3426
-- Add noindex metadata tag @steffenri
 - Add listing variation schemaEnhancer to the search block schema @ionlizarazu
 - Use the local blocksConfig for extensions, fallback to the config object one. This allows to override local blocks config in nested blocks (blocks in a block, eg. accordion, grid, row) @sneridagh
 
