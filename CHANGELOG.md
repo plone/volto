@@ -8,6 +8,7 @@
 
 - add control panel via config.settings @ksuess https://github.com/plone/volto/issues/3426
 - Add noindex metadata tag @steffenri
+- Send extra data coming from listing block schemaEnhancer from searchBlock to the listing variation @ionlizarazu
 
 ### Bugfix
 
