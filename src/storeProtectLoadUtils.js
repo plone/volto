@@ -32,6 +32,7 @@ export const protectLoadStart = ({ dispatch, getState }) => (next) => (
       const { location } = action.payload;
       const { pathname: path } = location;
       const currentPath = getState().router.location.pathname;
+      const result = next(action);
       if (isCmsUi(path)) {
         // Next path: isCmsUI, Non Content. There is no
         // loading here, so skip counting altogether.
@@ -51,7 +52,7 @@ export const protectLoadStart = ({ dispatch, getState }) => (next) => (
           resetBeforeFetch: isCmsUi(currentPath),
         });
       }
-      return next(action);
+      return result;
     default:
       return next(action);
   }

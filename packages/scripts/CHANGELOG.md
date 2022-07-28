@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add `--canary` option to use latest alpha in generator @sneridagh
+
 ### Bugfix
 
 ### Internal

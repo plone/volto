@@ -8,13 +8,28 @@
 
 ### Bugfix
 
-- Fix edge cases in Cypress flaky tests when the Edit component was loaded without loading the type schema. @sneridagh & @davisagli
+- complete pt_BR translation @ericof
+- Fix action `listUsers`. Provide default. @ksuess
 
 ### Internal
 
 ### Documentation
 
 - Add upgrade guide documentation for dealing with `volto-slate` upgrades in alpha 15. @sneridagh
+## 16.0.0-alpha.18 (2022-07-26)
+
+### Breaking
+
+- Remove the `callout` button (the one with the megaphone icon) from the slate toolbar since it has the same styling as `blockquote`. If you need it anyway, you can bring it back in your addon. @sneridagh
+
+### Bugfix
+
+- Fix edge cases in Cypress flaky tests when the Edit component was loaded without loading the type schema. @sneridagh & @davisagli
+- Fix edge cases in Cypress flaky tests when the Edit component was loaded for the wrong content path. @davisagli
+
+### Internal
+
+- Fix `defaultBlockType` entry in default config, set it to slate. @sneridagh
 
 ## 16.0.0-alpha.17 (2022-07-25)
 
@@ -23,6 +38,11 @@
 - Make `crypto-random-string` a direct dep, fixing a hidden error since some updated dependency was requiring it directly but not anymore. @sneridagh
 
 ## 16.0.0-alpha.16 (2022-07-25)
+
+### Do not use, this is a brown bag release
+
+See: https://github.com/plone/volto/pull/3505
+Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alpha.17
 
 ### Breaking
 
