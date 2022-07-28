@@ -24,6 +24,7 @@
 ### Bugfix
 
 - Fix edge cases in Cypress flaky tests when the Edit component was loaded without loading the type schema. @sneridagh & @davisagli
+- Fix edge cases in Cypress flaky tests when the Edit component was loaded for the wrong content path. @davisagli
 
 ### Internal
 
