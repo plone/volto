@@ -10,6 +10,7 @@
 
 - complete pt_BR translation @ericof
 - Fix action `listUsers`. Provide default. @ksuess
+- Provide the correct id to the blocks wrapped by StyleWrapper. @razvanMiu
 
 ### Internal
 
