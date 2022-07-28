@@ -16,9 +16,14 @@
 
 ### Internal
 
+- Remove console deprecation notice for 'host' property usage coming from Express @sneridagh
+- Upgrade to latest `@plone/scripts` @sneridagh
+- Update browserlist definitions @sneridagh
+
 ### Documentation
 
-- Add upgrade guide documentation for dealing with `volto-slate` upgrades in alpha 15. @sneridagh
+- Add upgrade guide documentation for dealing with `volto-slate` upgrades for Volto 16 alpha 15 onwards. @sneridagh
+
 ## 16.0.0-alpha.18 (2022-07-26)
 
 ### Breaking

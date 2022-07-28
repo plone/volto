@@ -9,7 +9,8 @@ const HEADERS = ['range', 'if-range'];
 
 export const addHeadersFactory = (orig) => {
   return (request) => {
-    const x_forwarded_host = orig.headers['x-forwarded-host'] || orig['host'];
+    const x_forwarded_host =
+      orig.headers['x-forwarded-host'] || orig['hostname'];
     const x_forwarded_for = orig.headers['x-forwarded-for'];
     const remote_host = orig.connection.remoteAddress;
     if (x_forwarded_for && remote_host) {
