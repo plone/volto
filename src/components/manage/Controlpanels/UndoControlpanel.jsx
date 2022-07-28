@@ -141,6 +141,10 @@ class UndoControlpanel extends Component {
     this.onNext = this.onNext.bind(this);
     this.onUndo = this.onUndo.bind(this);
     this.setTableVisiblity = this.setTableVisiblity.bind(this);
+    this.setNotSortedNextPrevButtons = this.setNotSortedNextPrevButtons.bind(
+      this,
+    );
+    this.setSortedNextPrevButtons = this.setSortedNextPrevButtons.bind(this);
     this.checkTransactionsUndoneStatus = this.checkTransactionsUndoneStatus.bind(
       this,
     );
@@ -383,51 +387,71 @@ class UndoControlpanel extends Component {
   }
 
   /**
-   * Set table footer elements visiblity
+   * Set next and prev buttons visiblity when transactions are sorted
+   * @method setSortedNextPrevButtons
+   * @returns {undefined}
+   */
+  setSortedNextPrevButtons() {
+    this.state.upperIndex >= this.state.sortedTransactions.length &&
+      this.state.showNextButton &&
+      this.setState({ showNextButton: false });
+
+    this.state.upperIndex < this.state.sortedTransactions.length &&
+      !this.state.showNextButton &&
+      this.setState({ showNextButton: true });
+
+    this.state.lowerIndex <= 0 &&
+      this.state.showPrevButton &&
+      this.setState({ showPrevButton: false });
+
+    this.state.lowerIndex > 0 &&
+      !this.state.showPrevButton &&
+      this.setState({ showPrevButton: true });
+  }
+
+  /**
+   * Set next and prev buttons visiblity when transactions are not sorted
+   * @method setNotSortedNextPrevButtons
+   * @returns {undefined}
+   */
+  setNotSortedNextPrevButtons() {
+    this.state.upperIndex >= this.props.transactions.length &&
+      this.state.showNextButton &&
+      this.setState({ showNextButton: false });
+
+    this.state.upperIndex < this.props.transactions.length &&
+      !this.state.showNextButton &&
+      this.setState({ showNextButton: true });
+
+    this.state.lowerIndex <= 0 &&
+      this.state.showPrevButton &&
+      this.setState({ showPrevButton: false });
+
+    this.state.lowerIndex > 0 &&
+      !this.state.showPrevButton &&
+      this.setState({ showPrevButton: true });
+  }
+
+  /**
+   * Set next, prev buttons and table visiblity
    * @method setTableVisiblity
    * @returns {undefined}
    */
   setTableVisiblity() {
     if (this.state.sortedTransactions.length > 0) {
-      this.state.upperIndex >= this.state.sortedTransactions.length &&
-        this.state.showNextButton &&
-        this.setState({ showNextButton: false });
-
-      this.state.upperIndex < this.state.sortedTransactions.length &&
-        !this.state.showNextButton &&
-        this.setState({ showNextButton: true });
-
-      this.state.lowerIndex <= 0 &&
-        this.state.showPrevButton &&
-        this.setState({ showPrevButton: false });
-
-      this.state.lowerIndex > 0 &&
-        !this.state.showPrevButton &&
-        this.setState({ showPrevButton: true });
-    } else if (!this.state.isSortingTypeSelected && this.props.transactions) {
-      this.props.transactions.length > 0 &&
+      this.setSortedNextPrevButtons();
+    } else if (!this.state.isSortingTypeSelected) {
+      this.props.transactions?.length > 0 &&
         this.state.isTransactionsNotFound &&
         this.setState({ isTransactionsNotFound: false });
 
-      this.props.transactions.length <= 0 &&
+      this.props.transactions?.length <= 0 &&
         !this.state.isTransactionsNotFound &&
         this.setState({ isTransactionsNotFound: true });
 
-      this.state.upperIndex >= this.props.transactions.length &&
-        this.state.showNextButton &&
-        this.setState({ showNextButton: false });
-
-      this.state.upperIndex < this.props.transactions.length &&
-        !this.state.showNextButton &&
-        this.setState({ showNextButton: true });
-
-      this.state.lowerIndex <= 0 &&
-        this.state.showPrevButton &&
-        this.setState({ showPrevButton: false });
-
-      this.state.lowerIndex > 0 &&
-        !this.state.showPrevButton &&
-        this.setState({ showPrevButton: true });
+      this.setNotSortedNextPrevButtons();
+    } else {
+      this.setNotSortedNextPrevButtons();
     }
   }
 
