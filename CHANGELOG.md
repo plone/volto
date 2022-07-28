@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- Using volto-slate Headline / Subheadline buttons strips all elements in the selection @tiberiuichim
+
 ### Feature
 
 ### Bugfix
@@ -12,6 +14,8 @@
 - Fix action `listUsers`. Provide default. @ksuess
 
 ### Internal
+
+- Allow passing `allowedChildren` option to the BlockButton, to strip elements in headlines @tiberiuichim
 
 ### Documentation
 

@@ -94,12 +94,19 @@ export const buttons = {
     <MarkButton title="Code" format="code" icon={codeIcon} {...props} />
   ),
   'heading-two': (props) => (
-    <BlockButton title="Title" format="h2" icon={headingIcon} {...props} />
+    <BlockButton
+      title="Title"
+      format="h2"
+      allowedChildren={['em']}
+      icon={headingIcon}
+      {...props}
+    />
   ),
   'heading-three': (props) => (
     <BlockButton
       title="Subtitle"
       format="h3"
+      allowedChildren={['em']}
       icon={subheadingIcon}
       {...props}
     />
