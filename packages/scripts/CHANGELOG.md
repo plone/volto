@@ -2,15 +2,9 @@
 
 ## 1.4.2 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Add `--canary` option to use latest alpha in generator @sneridagh
-
-### Bugfix
-
-### Internal
 
 ## 1.4.1 (2022-02-24)
 
