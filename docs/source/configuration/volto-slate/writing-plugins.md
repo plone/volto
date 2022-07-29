@@ -11,7 +11,8 @@ html_meta:
 # How to write a Slate editor plugin
 
 This section will guide you through writing and registering a custom plugin for the Slate editor of Volto.
-You will add a plugin that will provide a button to create a tooltip for a selected text  in a Slate editor.
+You will add a plugin that will provide a button to create a tooltip for a selected piece of text in a Slate editor.
+This process can be generalized for any custom Slate plugin.
 
 ```{image} /_static/tooltip_plugin.png
 :alt: Slate toooltip plugin 
