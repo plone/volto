@@ -6,16 +6,16 @@
 
 First, install [Yeoman](http://yeoman.io) and @plone/generator-volto using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
 
-```
-$ npm install -g yo
-$ npm install -g @plone/generator-volto
+```bash
+npm install -g yo
+npm install -g @plone/generator-volto
 ```
 
 ## Usage
 
 ### Creating a new Volto project using `npm init`
 
-```
+```bash
 npm init yo @plone/volto
 ```
 
@@ -25,8 +25,8 @@ Answer the prompt questions to complete the generation process.
 
 ### Creating a new Volto project
 
-```
-$ yo @plone/volto
+```bash
+yo @plone/volto
 ```
 
 This will bootstrap a new Volto project inside the current folder. It will ask
@@ -38,15 +38,18 @@ Usage:
   yo @plone/volto:app [<projectName>] [options]
 
 Options:
-  -h,   --help             # Print the generator's options and usage
-        --skip-cache       # Do not remember prompt answers                                        Default: false
-        --skip-install     # Do not automatically install dependencies                             Default: false
-        --interactive      # Enable/disable interactive prompt                                     Default: true
-        --skip-addons      # Don't ask for addons as part of the scaffolding
-        --addon            # Addon loader string, like: some-volto-addon:loadExtra,loadOtherExtra
-        --skip-workspaces  # Don't ask for workspaces as part of the scaffolding
-        --workspace        # Yarn workspace, like: src/addons/some-volto-addon
-        --description      # Project description
+  -h,   --help           # Print the generator's options and usage
+        --skip-cache     # Do not remember prompt answers                                        Default: false
+        --skip-install   # Do not automatically install dependencies                             Default: false
+        --force-install  # Fail on install dependencies error                                    Default: false
+        --ask-answered   # Show prompts for already configured options                           Default: false
+        --volto          # Desired Volto version, if not provided, the most recent will be used
+        --canary         # Desired Volto version should be a canary (alpha)                      Default: true
+        --interactive    # Enable/disable interactive prompt                                     Default: true
+        --skip-addons    # Don't ask for addons as part of the scaffolding
+        --addon          # Addon loader string, like: some-volto-addon:loadExtra,loadOtherExtra
+        --workspace      # Yarn workspace, like: src/addons/some-volto-addon
+        --description    # Project description
 
 Arguments:
   projectName    Type: String  Required: false
@@ -57,33 +60,39 @@ to see a full list of options and arguments.
 
 You can provide an specific Volto version like:
 
-```
+```bash
 yo @plone/volto --volto=12.0.0-alpha.0
+```
+
+You can force to use the latest canary (alpha) Volto version like:
+
+```bash
+yo @plone/volto --canary
 ```
 
 You can use it in full non-interactive mode by passing something like:
 
-```
+```bash
 yo @plone/volto myvoltoproject --no-interactive
 ```
 
 Or by skipping specific configuration:
 
-```
+```bash
 yo @plone/volto myvoltoproject --description "My Volto project" --skip-addons --skip-install --skip-workspaces
 ```
 
 You can also specify addons to load, like:
 
-```
+```bash
 yo @plone/volto myvoltoproject --description "My Volto project" --addon "volto-formbuilder:x,y" --addon "volto-slate:z,t"
 ```
 
 Change the directory to your project to get started:
 
-```
-$ cd myvoltoproject
-$ yarn
+```bash
+cd myvoltoproject
+yarn
 ```
 
 ### Creating A Volto Add-on
@@ -109,8 +118,8 @@ Arguments:
 
 Start Volto with:
 
-```
-$ yarn start
+```bash
+yarn start
 ```
 
 This runs the project in development mode.
@@ -122,8 +131,8 @@ Please note that you have to run a Plone backend as well.
 
 E.g. with docker:
 
-```
-$ docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.volto" -e ZCML="plone.volto.cors" -e PROFILES="plone.volto:default-homepage" plone
+```bash
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.volto" -e ZCML="plone.volto.cors" -e PROFILES="plone.volto:default-homepage" plone
 ```
 
 Consult the Volto docs for further details:
