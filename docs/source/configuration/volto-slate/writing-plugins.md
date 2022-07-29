@@ -174,7 +174,7 @@ export default applyConfig;
 
 ## Style
 
-You may want to include some styling in `editor/plugins/TooltipPlugin/index.js` with
+You may want to include some styling in `editor/plugins/TooltipPlugin/index.js` by importing a style sheet for the tooltip plugin.
 
 ```js
 import './tooltip.less';
