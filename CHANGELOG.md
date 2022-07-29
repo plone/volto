@@ -8,6 +8,8 @@
 
 ### Feature
 
+- support for many_users and many_groups flag in user controlpanel @nileshgulia1
+
 ### Bugfix
 
 ### Internal
@@ -113,7 +115,7 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 
 ### Breaking
 
-- Staticize Poppins font to be compliant with EU privacy. Import from GoogleFont is disabled in site.variables.  @giuliaghisini
+- Staticize Poppins font to be compliant with EU privacy. Import from GoogleFont is disabled in site.variables. @giuliaghisini
 
 ### Bugfix
 
