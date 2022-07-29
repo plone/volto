@@ -12,26 +12,20 @@ import { getBaseUrl, getParentUrl, Helmet } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
 import {
   Button,
-  Checkbox,
+  Card,
   Container,
   Dropdown,
-  Form,
   Grid,
-  Header,
-  Input,
   Label,
   Segment,
-  Table,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import {
-  Icon,
-  Toolbar,
-  FormFieldWrapper,
-  Field,
-} from '@plone/volto/components';
+import { Icon, Toolbar, UniversalLink } from '@plone/volto/components';
+import { getControlPanelRule } from '@plone/volto/actions';
 
 import backSVG from '@plone/volto/icons/back.svg';
+import upSVG from '@plone/volto/icons/up.svg';
+import downSVG from '@plone/volto/icons/down.svg';
 
 const messages = defineMessages({
   back: {
@@ -39,50 +33,22 @@ const messages = defineMessages({
     defaultMessage: 'Back',
   },
   configRule: {
-    id: 'Configure Content Rule',
-    defaultMessage: 'Configure Content Rule',
+    id: 'Configure content rule',
+    defaultMessage: 'Configure content rule',
   },
   success: {
     id: 'Success',
     defaultMessage: 'Success',
   },
+  moveUp: {
+    id: 'Move up',
+    defaultMessage: 'Move up',
+  },
+  moveDown: {
+    id: 'Move down',
+    defaultMessage: 'Move down',
+  },
 });
-
-const conditionOptions = [
-  {
-    key: 'Content Type',
-    text: 'Content Type',
-    value: 'Content Type',
-  },
-  {
-    key: 'File Extension',
-    text: 'File Extension',
-    value: 'File Extension',
-  },
-  {
-    key: 'Workflow state',
-    text: 'Workflow state',
-    value: 'Workflow state',
-  },
-];
-
-const actionOptions = [
-  {
-    key: 'Logger',
-    text: 'Logger',
-    value: 'Logger',
-  },
-  {
-    key: 'Notify user',
-    text: 'Notify user',
-    value: 'Notify user',
-  },
-  {
-    key: 'Copy to folder',
-    text: 'Copy to folder',
-    value: 'Copy to folder',
-  },
-];
 
 /**
  * ConfigureRule class.
@@ -95,7 +61,9 @@ class ConfigureRule extends Component {
    * @property {Object} propTypes Property types.
    * @static
    */
-  static propTypes = {};
+  static propTypes = {
+    getControlPanelRule: PropTypes.func.isRequired,
+  };
 
   /**
    * Constructor
@@ -117,6 +85,10 @@ class ConfigureRule extends Component {
    */
   componentDidMount() {
     this.setState({ isClient: true });
+    this.props.getControlPanelRule(
+      getBaseUrl(this.props.pathname),
+      this.props.match.params.id,
+    );
   }
 
   /**
@@ -149,6 +121,23 @@ class ConfigureRule extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { item = {} } = this.props.rule || {};
+    const {
+      actions = [],
+      addable_actions = [],
+      addable_conditions = [],
+      assignments = [],
+      conditions = [],
+      title = '',
+    } = item;
+    const conditions_options = addable_conditions.map((cond) => {
+      return { key: cond.title, text: cond.title, value: cond.title };
+    });
+
+    const actions_options = addable_actions.map((act) => {
+      return { key: act.title, text: act.title, value: act.title };
+    });
+
     return (
       <div id="page-rule-configure">
         <Helmet title={this.props.intl.formatMessage(messages.configRule)} />
@@ -159,7 +148,7 @@ class ConfigureRule extends Component {
                 <FormattedMessage
                   id="Configure Content Rule: {title}"
                   defaultMessage="Configure Content Rule: {title}"
-                  values={{ title: <q>{this.props.title}</q> }}
+                  values={{ title: <q>{title}</q> }}
                 />
               </Segment>
               <Segment className="secondary">
@@ -170,9 +159,8 @@ class ConfigureRule extends Component {
               </Segment>
               <Segment>
                 <Grid>
-                  <Grid.Row stretched>
+                  <Grid.Row>
                     <Grid.Column
-                      style={{ margin: '5px 0' }}
                       mobile={16}
                       tablet={16}
                       computer={6}
@@ -184,22 +172,65 @@ class ConfigureRule extends Component {
                           defaultMessage="If all of the following conditions are met:"
                         />
                       </h4>
-                      <div style={{ display: 'flex', alignContent: 'center' }}>
-                        <Label size="medium">
-                          <p>
-                            <FormattedMessage
-                              id="Condition: "
-                              defaultMessage="Condition: "
-                            />
-                          </p>
-                        </Label>
+
+                      {conditions && conditions.length > 0 && (
+                        <Card.Group>
+                          {conditions.map((cond, i) => {
+                            return (
+                              <Card fluid>
+                                <Card.Content>
+                                  <Card.Header>
+                                    <h4>{cond.title}</h4>
+                                  </Card.Header>
+                                  <Card.Description>
+                                    {cond.summary}
+                                  </Card.Description>
+                                </Card.Content>
+                                <Card.Content extra>
+                                  <Button compact size="tiny" primary>
+                                    Edit
+                                  </Button>
+                                  <Button compact size="tiny" color="youtube">
+                                    Remove
+                                  </Button>
+                                  <Button compact size="tiny" primary>
+                                    <Icon
+                                      name={upSVG}
+                                      size="10px"
+                                      title={this.props.intl.formatMessage(
+                                        messages.moveUp,
+                                      )}
+                                    />
+                                  </Button>
+                                  <Button compact size="tiny" primary>
+                                    <Icon
+                                      name={downSVG}
+                                      size="10px"
+                                      title={this.props.intl.formatMessage(
+                                        messages.moveDown,
+                                      )}
+                                    />
+                                  </Button>
+                                </Card.Content>
+                              </Card>
+                            );
+                          })}
+                        </Card.Group>
+                      )}
+                      <Grid.Row>
+                        <h4 style={{ marginTop: '15px' }}>
+                          <FormattedMessage
+                            id="Condition: "
+                            defaultMessage="Condition: "
+                          />
+                        </h4>
                         <Dropdown
-                          style={{ margin: '0 5px' }}
+                          style={{ margin: '5px 0' }}
                           placeholder="Select condition"
                           fluid
                           selection
                           additionLabel="llaalal"
-                          options={conditionOptions}
+                          options={conditions_options}
                         />
                         <Button
                           compact
@@ -208,10 +239,9 @@ class ConfigureRule extends Component {
                         >
                           <FormattedMessage id="Add" defaultMessage="Add" />
                         </Button>
-                      </div>
+                      </Grid.Row>
                     </Grid.Column>
                     <Grid.Column
-                      style={{ margin: '5px 0' }}
                       mobile={16}
                       tablet={16}
                       computer={6}
@@ -223,22 +253,66 @@ class ConfigureRule extends Component {
                           defaultMessage="Perform the following actions:"
                         />
                       </h4>
-                      <div style={{ display: 'flex', alignContent: 'center' }}>
-                        <Label size="medium">
-                          <p>
-                            <FormattedMessage
-                              id="Action: "
-                              defaultMessage="Action: "
-                            />
-                          </p>
-                        </Label>
+
+                      {actions && actions.length > 0 && (
+                        <Card.Group>
+                          {actions.map((cond, i) => {
+                            return (
+                              <Card fluid>
+                                <Card.Content>
+                                  <Card.Header>
+                                    <h4>{cond.title}</h4>
+                                  </Card.Header>
+                                  <Card.Description>
+                                    {cond.summary}
+                                  </Card.Description>
+                                </Card.Content>
+                                <Card.Content extra>
+                                  <Button compact size="tiny" primary>
+                                    Edit
+                                  </Button>
+                                  <Button compact size="tiny" color="youtube">
+                                    Remove
+                                  </Button>
+                                  <Button compact size="tiny" primary>
+                                    <Icon
+                                      name={upSVG}
+                                      size="10px"
+                                      title={this.props.intl.formatMessage(
+                                        messages.moveUp,
+                                      )}
+                                    />
+                                  </Button>
+                                  <Button compact size="tiny" primary>
+                                    <Icon
+                                      name={downSVG}
+                                      size="10px"
+                                      title={this.props.intl.formatMessage(
+                                        messages.moveDown,
+                                      )}
+                                    />
+                                  </Button>
+                                </Card.Content>
+                              </Card>
+                            );
+                          })}
+                        </Card.Group>
+                      )}
+
+                      <Grid.Row>
+                        <h4 style={{ marginTop: '15px' }}>
+                          <FormattedMessage
+                            id="Condition: "
+                            defaultMessage="Condition: "
+                          />
+                        </h4>
                         <Dropdown
-                          style={{ margin: '0 5px' }}
+                          style={{ margin: '5px 0' }}
                           placeholder="Select action"
                           fluid
                           selection
                           additionLabel="llaalal"
-                          options={actionOptions}
+                          options={actions_options}
                         />
                         <Button
                           compact
@@ -247,11 +321,11 @@ class ConfigureRule extends Component {
                         >
                           <FormattedMessage id="Add" defaultMessage="Add" />
                         </Button>
-                      </div>
+                      </Grid.Row>
                     </Grid.Column>
                   </Grid.Row>
                   <Grid.Row stretched>
-                    <Grid.Column width={6} largeScreen={6}>
+                    <Grid.Column>
                       <h4>
                         <FormattedMessage
                           id="Assignments"
@@ -262,6 +336,14 @@ class ConfigureRule extends Component {
                         id="This rule is assigned to the following locations:"
                         defaultMessage="This rule is assigned to the following locations:"
                       />
+                      {assignments.map((assignment, i) => (
+                        <UniversalLink
+                          title={assignment.title}
+                          href={getBaseUrl(assignment.url)}
+                        >
+                          {assignment.title}
+                        </UniversalLink>
+                      ))}
                     </Grid.Column>
                   </Grid.Row>
                 </Grid>
@@ -297,8 +379,9 @@ export default compose(
   connect(
     (state, props) => ({
       pathname: props.location.pathname,
+      rule: state.controlpanelrule,
       title: 'Example rule',
     }),
-    {},
+    { getControlPanelRule },
   ),
 )(ConfigureRule);
