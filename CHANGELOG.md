@@ -12,6 +12,9 @@
 
 ### Documentation
 
+- Minor clean up of volto-slate upgrade guide. @stevepiercy
+
+
 ## 16.0.0-alpha.19 (2022-07-28)
 
 ### Breaking

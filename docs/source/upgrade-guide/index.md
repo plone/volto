@@ -46,8 +46,8 @@ This is a major change and should be planned in advance before you install 16.0.
 
 ```{note}
 Volto 16 is intended to be the long-term support (LTS) version used when Plone 6 Final is released.
-Volto 16 supports `draftJS` text block deployments but please notice it's deprecated from this version on.
-As such you will have the choice to continue using `draftJS` text block in your projects but developers and integrators are strongly encouraged to migrate existing sites using `draftJS` text blocks to migrate to `Slate` text blocks.
+Although `draftJS` text block deployments are now deprecated, they are supported in Volto 16, will be supported in Volto 17, but will be removed in Volto 18.
+As such, you are strongly encouraged to migrate existing sites that use `draftJS` text blocks to `slate` text blocks.
 
 See below for more information.
 ```
@@ -62,7 +62,7 @@ These are the possible scenarios:
 
 #### New projects
 
-New projects are unaffected, since they will use Slate as the default text block from the beginning.
+New projects are unaffected, since they will use `slate` as the default text block from the beginning.
 
 #### Existing projects, already using `volto-slate` add-on
 
