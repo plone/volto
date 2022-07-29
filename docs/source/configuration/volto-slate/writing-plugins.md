@@ -20,7 +20,7 @@ This process can be generalized for any custom Slate plugin.
 
 ## The installer
 
-Start by creating a folder `src/editor/plugins/TooltipPlugin` with a file named `index.js`, which will instantiate {term}`elementEditor`.
+Start by creating a folder `src/editor/plugins/TooltipPlugin` containing a file named `index.js`, which will instantiate {term}`elementEditor`.
 
 ```js
 const messages = defineMessages({
