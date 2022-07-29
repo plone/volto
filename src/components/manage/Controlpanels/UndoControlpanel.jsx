@@ -140,11 +140,13 @@ class UndoControlpanel extends Component {
     this.onPrev = this.onPrev.bind(this);
     this.onNext = this.onNext.bind(this);
     this.onUndo = this.onUndo.bind(this);
-    this.setTableVisiblity = this.setTableVisiblity.bind(this);
-    this.setNotSortedNextPrevButtons = this.setNotSortedNextPrevButtons.bind(
+    this.handleTableVisiblity = this.handleTableVisiblity.bind(this);
+    this.handleNotSortedNextPrevButtons = this.handleNotSortedNextPrevButtons.bind(
       this,
     );
-    this.setSortedNextPrevButtons = this.setSortedNextPrevButtons.bind(this);
+    this.handleSortedNextPrevButtons = this.handleSortedNextPrevButtons.bind(
+      this,
+    );
     this.checkTransactionsUndoneStatus = this.checkTransactionsUndoneStatus.bind(
       this,
     );
@@ -282,17 +284,18 @@ class UndoControlpanel extends Component {
         });
         this.setSortedTransactions(sortedTransactions);
       } else {
-        let milliSecsInADay = 86400000;
-        let currentSetTimeMilliSecs = Date.parse(value);
+        // MS is Milli Seconds
+        let MSInADay = 86400000;
+        let sortingTimeInMS = Date.parse(value);
+        let endTimeOfSortingDateInMS =
+          sortingTimeInMS - (sortingTimeInMS % MSInADay) + MSInADay - 1;
+        let startTimeOfSortingDateInMS =
+          sortingTimeInMS - (sortingTimeInMS % MSInADay);
+
         this.props.transactions.forEach((element) => {
           if (
-            currentSetTimeMilliSecs -
-              (currentSetTimeMilliSecs % milliSecsInADay) +
-              milliSecsInADay >
-              Date.parse(element.time) &&
-            Date.parse(element.time) >=
-              currentSetTimeMilliSecs -
-                (currentSetTimeMilliSecs % milliSecsInADay)
+            endTimeOfSortingDateInMS >= Date.parse(element.time) &&
+            Date.parse(element.time) >= startTimeOfSortingDateInMS
           ) {
             sortedTransactions.push(element);
           }
@@ -387,11 +390,11 @@ class UndoControlpanel extends Component {
   }
 
   /**
-   * Set next and prev buttons visiblity when transactions are sorted
-   * @method setSortedNextPrevButtons
+   * Handle next and prev buttons visiblity when transactions are sorted
+   * @method handleSortedNextPrevButtons
    * @returns {undefined}
    */
-  setSortedNextPrevButtons() {
+  handleSortedNextPrevButtons() {
     this.state.upperIndex >= this.state.sortedTransactions.length &&
       this.state.showNextButton &&
       this.setState({ showNextButton: false });
@@ -410,16 +413,16 @@ class UndoControlpanel extends Component {
   }
 
   /**
-   * Set next and prev buttons visiblity when transactions are not sorted
-   * @method setNotSortedNextPrevButtons
+   * Handle next and prev buttons visiblity when transactions are not sorted
+   * @method handleNotSortedNextPrevButtons
    * @returns {undefined}
    */
-  setNotSortedNextPrevButtons() {
-    this.state.upperIndex >= this.props.transactions.length &&
+  handleNotSortedNextPrevButtons() {
+    this.state.upperIndex >= this.props.transactions?.length &&
       this.state.showNextButton &&
       this.setState({ showNextButton: false });
 
-    this.state.upperIndex < this.props.transactions.length &&
+    this.state.upperIndex < this.props.transactions?.length &&
       !this.state.showNextButton &&
       this.setState({ showNextButton: true });
 
@@ -433,13 +436,13 @@ class UndoControlpanel extends Component {
   }
 
   /**
-   * Set next, prev buttons and table visiblity
-   * @method setTableVisiblity
+   * Handle next, prev buttons and table visiblity
+   * @method handleTableVisiblity
    * @returns {undefined}
    */
-  setTableVisiblity() {
+  handleTableVisiblity() {
     if (this.state.sortedTransactions.length > 0) {
-      this.setSortedNextPrevButtons();
+      this.handleSortedNextPrevButtons();
     } else if (!this.state.isSortingTypeSelected) {
       this.props.transactions?.length > 0 &&
         this.state.isTransactionsNotFound &&
@@ -449,9 +452,9 @@ class UndoControlpanel extends Component {
         !this.state.isTransactionsNotFound &&
         this.setState({ isTransactionsNotFound: true });
 
-      this.setNotSortedNextPrevButtons();
+      this.handleNotSortedNextPrevButtons();
     } else {
-      this.setNotSortedNextPrevButtons();
+      this.handleNotSortedNextPrevButtons();
     }
   }
 
@@ -513,7 +516,7 @@ class UndoControlpanel extends Component {
         this.state.lowerIndex,
         this.state.upperIndex,
       );
-    this.setTableVisiblity();
+    this.handleTableVisiblity();
     this.checkTransactionsUndoneStatus();
 
     return (
@@ -654,8 +657,8 @@ class UndoControlpanel extends Component {
                 </Table.Body>
                 <Table.Footer>
                   <Table.Row>
-                    <Table.HeaderCell colSpan="3">
-                      <Menu floated="right" pagination>
+                    <Table.HeaderCell textAlign="center" colSpan="6">
+                      <Menu pagination>
                         <Menu.Item as="a" id="prev-button" icon>
                           {this.state.showPrevButton ? (
                             <Icon

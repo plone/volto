@@ -390,11 +390,11 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
             className=""
           >
             <th
-              className=""
-              colSpan="3"
+              className="center aligned"
+              colSpan="6"
             >
               <div
-                className="ui pagination right floated menu"
+                className="ui pagination menu"
               >
                 <a
                   className="icon item"
