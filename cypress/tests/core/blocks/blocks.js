@@ -43,40 +43,6 @@ describe('Blocks Tests', () => {
       .and('match', /\/\/www.google.com\/maps\/embed\?pb=/);
   });
 
-  it('Add hero block', () => {
-    const block = 'hero';
-    // const expectedFile = 'broccoli.jpg';
-    const expectedTitle = 'Volto';
-    const expectedDescription =
-      'React-based front-end for the Plone and Guillotina';
-
-    // Edit
-    cy.getSlate().click();
-    cy.get('button.block-add-button').click();
-    cy.get('.blocks-chooser .title').contains('Common').click();
-    cy.get('.blocks-chooser .hero').contains('Hero').click();
-
-    // cy.fixture(expectedFile).then(fileContent => {
-    //   cy.get(`.block.${block} [data-cy="dropzone]`).upload(
-    //     { fileContent, expectedFile, mimeType: 'application/json' },
-    //     { subjectType: 'drag-n-drop' },
-    //   );
-    // });
-    cy.get(
-      `.block.${block} .title-editor > .public-DraftStyleDefault-block`,
-    ).type(`${expectedTitle}`);
-    cy.get(
-      `.block.${block} .description-editor > .public-DraftStyleDefault-block`,
-    ).type(`${expectedDescription}`);
-
-    // Save
-    cy.get('#toolbar-save').click();
-
-    //View
-    cy.get(`.${block}-body h1`).contains(`${expectedTitle}`);
-    cy.get(`.${block}-body p`).contains(`${expectedDescription}`);
-  });
-
   // it('Add hero block', () => {
   //   // TODO: Implement react dropzone for this block to test the image
 

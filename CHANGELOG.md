@@ -12,6 +12,86 @@
 
 ### Documentation
 
+- Minor clean up of volto-slate upgrade guide. @stevepiercy
+
+
+## 16.0.0-alpha.19 (2022-07-28)
+
+### Breaking
+
+- Using volto-slate Headline / Subheadline buttons strips all elements in the selection @tiberiuichim
+
+### Feature
+
+- Send extra data coming from listing block schemaEnhancer from searchBlock to the listing variation @ionlizarazu
+
+### Bugfix
+
+- complete pt_BR translation @ericof
+- Fix action `listUsers`. Provide default. @ksuess
+- Provide the correct id to the blocks wrapped by StyleWrapper. @razvanMiu
+- Remove console deprecation notice for 'host' property usage coming from Express @sneridagh
+
+### Internal
+
+- Allow passing `allowedChildren` option to the BlockButton, to strip elements in headlines @tiberiuichim
+- Upgrade to latest `@plone/scripts` @sneridagh
+
+### Documentation
+
+- Add upgrade guide documentation for dealing with `volto-slate` upgrades for Volto 16 alpha 15 onwards. @sneridagh
+
+## 16.0.0-alpha.18 (2022-07-26)
+
+### Breaking
+
+- Remove the `callout` button (the one with the megaphone icon) from the slate toolbar since it has the same styling as `blockquote`. If you need it anyway, you can bring it back in your addon. @sneridagh
+
+### Bugfix
+
+- Fix edge cases in Cypress flaky tests when the Edit component was loaded without loading the type schema. @sneridagh & @davisagli
+- Fix edge cases in Cypress flaky tests when the Edit component was loaded for the wrong content path. @davisagli
+
+### Internal
+
+- Fix `defaultBlockType` entry in default config, set it to slate. @sneridagh
+
+## 16.0.0-alpha.17 (2022-07-25)
+
+### Bugfix
+
+- Make `crypto-random-string` a direct dep, fixing a hidden error since some updated dependency was requiring it directly but not anymore. @sneridagh
+
+## 16.0.0-alpha.16 (2022-07-25)
+
+### Do not use, this is a brown bag release
+
+See: https://github.com/plone/volto/pull/3505
+Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alpha.17
+
+### Breaking
+
+- Staticize Poppins font to be compliant with EU privacy. Import from GoogleFont is disabled in site.variables.  @giuliaghisini
+
+### Bugfix
+
+- Add some more messages to be able to translate them @erral
+- Fix typo in de locale @wolbernd
+- [generator] Improvements to the addon generator: Now it wires up the addon automatically for immediate local development @sneridagh
+- complete eu translation @erral
+- complete es translation @erral
+- [generator] Add .editorconfig and .prettierignore to generated projects and addons. @ericof
+
+### Internal
+
+- Update json-schema including transitive dependencies @davisagli
+- Update release-it @davisagli
+- Deduplicate dependencies using yarn-deduplicate @davisagli
+
+### Documentation
+
+- Fix redirect on YouTube, broken link after merge and deleted branch. @stevepiercy
+
 ## 16.0.0-alpha.15 (2022-07-21)
 
 ### Breaking
@@ -77,8 +157,6 @@
 
 ### Feature
 
-- add control panel via config.settings @ksuess https://github.com/plone/volto/issues/3426
-- Add noindex metadata tag @steffenri
 - Add listing variation schemaEnhancer to the search block schema @ionlizarazu
 - Use the local blocksConfig for extensions, fallback to the config object one. This allows to override local blocks config in nested blocks (blocks in a block, eg. accordion, grid, row) @sneridagh
 
@@ -175,6 +253,7 @@
 - Fix RenderBlocks: path @ksuess
 - Fix field id creation in dexterity control panel to have slugified id @erral
 - Changed to get intl.locale always from state @ionlizarazu
+
 ### Feature
 
 - Updated Brazilian Portuguese translation @ericof
