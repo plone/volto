@@ -14,6 +14,7 @@
 
 - Minor clean up of volto-slate upgrade guide. @stevepiercy
 
+- Rework documentation on how to write a Slate plugin @ksuess
 
 ## 16.0.0-alpha.19 (2022-07-28)
 
