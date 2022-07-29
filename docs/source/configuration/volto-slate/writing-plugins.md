@@ -143,7 +143,7 @@ export const withTooltip = (editor) => {
 };
 ```
 
-The constant TOOLTIP used throughout the plugin is defined in `editor/plugins/TooltipPlugin/constants.js`.
+The constant `TOOLTIP` used throughout the plugin is defined in `editor/plugins/TooltipPlugin/constants.js`.
 
 ```js
 export const TOOLTIP = 'tooltip';
