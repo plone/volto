@@ -4,6 +4,7 @@ import React from 'react';
 import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl-redux';
+import Cookies from 'universal-cookie';
 import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 import { ReduxAsyncConnect } from '@plone/volto/helpers/AsyncConnect';
@@ -12,7 +13,6 @@ import { CookiesProvider } from 'react-cookie';
 import debug from 'debug';
 import routes from '@root/routes';
 import config from '@plone/volto/registry';
-
 import configureStore from '@plone/volto/store';
 import { Api, persistAuthToken, ScrollToTop } from '@plone/volto/helpers';
 
@@ -22,6 +22,11 @@ import initSentry from '@plone/volto/sentry';
 export const history = createBrowserHistory();
 
 initSentry(Sentry);
+const cookies = new Cookies();
+
+if (process.env.NODE_ENV === 'production' && cookies.get('auth_token')) {
+  import('offline-plugin/runtime').then((plugin) => plugin.install());
+}
 
 function reactIntlErrorHandler(error) {
   debug('i18n')(error);
