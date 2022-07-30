@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Added resetOnCancel functionality in Form component @MdSahil-oss
+
 ### Bugfix
 
 - complete pt_BR translation @ericof
