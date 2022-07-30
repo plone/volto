@@ -226,12 +226,13 @@ class UndoControlpanel extends Component {
    */
   onSelect(data) {
     if (
+      data !== null &&
       data.sortingTypes !== null &&
       this.state.sortType.toLowerCase() === data.sortingTypes.toLowerCase()
     ) {
       return;
     }
-    let sortType = data.sortingTypes || 'no value';
+    let sortType = (data !== null && data.sortingTypes) || 'no value';
 
     if (sortType.toLowerCase() !== 'no value') {
       this.setState({ isSortingTypeSelected: true });
@@ -590,6 +591,7 @@ class UndoControlpanel extends Component {
                 onCancel={
                   this.state.isSortingTypeSelected ? this.onCancel : undefined
                 }
+                resetOnCancel={true}
               />
             )}
           </Segment>
