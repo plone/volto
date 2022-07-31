@@ -1961,11 +1961,6 @@ msgstr ""
 msgid "Plone Foundation"
 msgstr "Plone Foundation"
 
-#: components/theme/Logo/Logo
-# defaultMessage: Plone Site
-msgid "Plone Site"
-msgstr "Plone website"
-
 #: components/theme/Footer/Footer
 # defaultMessage: Plone{reg} Open Source CMS/WCM
 msgid "Plone{reg} Open Source CMS/WCM"
@@ -2487,11 +2482,6 @@ msgstr ""
 # defaultMessage: Sign in to start session
 msgid "Sign in to start session"
 msgstr ""
-
-#: components/theme/Logo/Logo
-# defaultMessage: Site
-msgid "Site"
-msgstr "Website"
 
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized

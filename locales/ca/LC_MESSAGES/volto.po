@@ -1951,11 +1951,6 @@ msgstr ""
 msgid "Plone Foundation"
 msgstr "Fundació Plone"
 
-#: components/theme/Logo/Logo
-# defaultMessage: Plone Site
-msgid "Plone Site"
-msgstr "Lloc de Plone"
-
 #: components/theme/Footer/Footer
 # defaultMessage: Plone{reg} Open Source CMS/WCM
 msgid "Plone{reg} Open Source CMS/WCM"
@@ -2477,11 +2472,6 @@ msgstr "Redueix la barra d'eines"
 # defaultMessage: Sign in to start session
 msgid "Sign in to start session"
 msgstr "Inicieu la sessió per iniciar la sessió"
-
-#: components/theme/Logo/Logo
-# defaultMessage: Site
-msgid "Site"
-msgstr "Lloc"
 
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized

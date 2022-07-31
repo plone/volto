@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-07-19T18:15:23.786Z\n"
+"POT-Creation-Date: 2022-07-31T16:30:09.895Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1944,11 +1944,6 @@ msgstr ""
 msgid "Plone Foundation"
 msgstr ""
 
-#: components/theme/Logo/Logo
-# defaultMessage: Plone Site
-msgid "Plone Site"
-msgstr ""
-
 #: components/theme/Footer/Footer
 # defaultMessage: Plone{reg} Open Source CMS/WCM
 msgid "Plone{reg} Open Source CMS/WCM"
@@ -2469,11 +2464,6 @@ msgstr ""
 #: components/theme/Login/Login
 # defaultMessage: Sign in to start session
 msgid "Sign in to start session"
-msgstr ""
-
-#: components/theme/Logo/Logo
-# defaultMessage: Site
-msgid "Site"
 msgstr ""
 
 #: components/theme/NotFound/NotFound

@@ -1959,11 +1959,6 @@ msgstr ""
 msgid "Plone Foundation"
 msgstr "Fondation Plone"
 
-#: components/theme/Logo/Logo
-# defaultMessage: Plone Site
-msgid "Plone Site"
-msgstr "Site Plone"
-
 #: components/theme/Footer/Footer
 # defaultMessage: Plone{reg} Open Source CMS/WCM
 msgid "Plone{reg} Open Source CMS/WCM"
@@ -2485,11 +2480,6 @@ msgstr "Réduire la barre d'outils"
 # defaultMessage: Sign in to start session
 msgid "Sign in to start session"
 msgstr "Connectez-vous pour démarrer la session"
-
-#: components/theme/Logo/Logo
-# defaultMessage: Site
-msgid "Site"
-msgstr "Site"
 
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized

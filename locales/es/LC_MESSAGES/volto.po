@@ -1952,11 +1952,6 @@ msgstr "Actualice plone.restapi a la versión 8.24.0 o superior."
 msgid "Plone Foundation"
 msgstr "Fundación Plone"
 
-#: components/theme/Logo/Logo
-# defaultMessage: Plone Site
-msgid "Plone Site"
-msgstr "Sitio Plone"
-
 #: components/theme/Footer/Footer
 # defaultMessage: Plone{reg} Open Source CMS/WCM
 msgid "Plone{reg} Open Source CMS/WCM"
@@ -2478,11 +2473,6 @@ msgstr "Contraer barra de herramientas"
 # defaultMessage: Sign in to start session
 msgid "Sign in to start session"
 msgstr "Acceda para iniciar sesión"
-
-#: components/theme/Logo/Logo
-# defaultMessage: Site
-msgid "Site"
-msgstr "Sitio"
 
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized

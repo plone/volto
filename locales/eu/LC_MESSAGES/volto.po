@@ -1949,11 +1949,6 @@ msgstr "Eguneratu plone.restapi bertsioa 8.24.0 edo handiago batera"
 msgid "Plone Foundation"
 msgstr "Plone Fundazioa"
 
-#: components/theme/Logo/Logo
-# defaultMessage: Plone Site
-msgid "Plone Site"
-msgstr "Plone Ataria"
-
 #: components/theme/Footer/Footer
 # defaultMessage: Plone{reg} Open Source CMS/WCM
 msgid "Plone{reg} Open Source CMS/WCM"
@@ -2475,11 +2470,6 @@ msgstr "Txikitu tresna-barra"
 # defaultMessage: Sign in to start session
 msgid "Sign in to start session"
 msgstr "Sartu saioa hasteko"
-
-#: components/theme/Logo/Logo
-# defaultMessage: Site
-msgid "Site"
-msgstr "Ataria"
 
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized

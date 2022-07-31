@@ -1942,11 +1942,6 @@ msgstr ""
 msgid "Plone Foundation"
 msgstr "Fundația Plone"
 
-#: components/theme/Logo/Logo
-# defaultMessage: Plone Site
-msgid "Plone Site"
-msgstr "Site Plone"
-
 #: components/theme/Footer/Footer
 # defaultMessage: Plone{reg} Open Source CMS/WCM
 msgid "Plone{reg} Open Source CMS/WCM"
@@ -2468,11 +2463,6 @@ msgstr "Reduceti bara de instrumente"
 # defaultMessage: Sign in to start session
 msgid "Sign in to start session"
 msgstr "Conectați-vă pentru a începe sesiunea"
-
-#: components/theme/Logo/Logo
-# defaultMessage: Site
-msgid "Site"
-msgstr "Site"
 
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized

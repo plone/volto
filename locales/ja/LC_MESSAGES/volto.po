@@ -1950,11 +1950,6 @@ msgstr ""
 msgid "Plone Foundation"
 msgstr "Plone Foundation"
 
-#: components/theme/Logo/Logo
-# defaultMessage: Plone Site
-msgid "Plone Site"
-msgstr "Ploneサイト"
-
 #: components/theme/Footer/Footer
 # defaultMessage: Plone{reg} Open Source CMS/WCM
 msgid "Plone{reg} Open Source CMS/WCM"
@@ -2476,11 +2471,6 @@ msgstr "ツールバーを閉じる"
 # defaultMessage: Sign in to start session
 msgid "Sign in to start session"
 msgstr "ログインしてセッションを開始"
-
-#: components/theme/Logo/Logo
-# defaultMessage: Site
-msgid "Site"
-msgstr "サイト"
 
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
