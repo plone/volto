@@ -30,6 +30,7 @@ class Header extends Component {
   static propTypes = {
     token: PropTypes.string,
     pathname: PropTypes.string.isRequired,
+    content: PropTypes.object.isRequired,
   };
 
   /**

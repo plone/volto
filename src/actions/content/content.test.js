@@ -157,7 +157,7 @@ describe('Content action', () => {
 
       expect(action.type).toEqual(GET_CONTENT);
       expect(action.request.op).toEqual('get');
-      expect(action.request.path).toEqual(`${url}`);
+      expect(action.request.path).toEqual(`${url}?expand=navroot`);
     });
 
     it('should create an action to get content and full objects', () => {
@@ -166,7 +166,9 @@ describe('Content action', () => {
 
       expect(action.type).toEqual(GET_CONTENT);
       expect(action.request.op).toEqual('get');
-      expect(action.request.path).toEqual(`${url}?fullobjects=true`);
+      expect(action.request.path).toEqual(
+        `${url}?fullobjects=true&expand=navroot`,
+      );
     });
 
     it('should create an action to get content with version', () => {
@@ -176,7 +178,9 @@ describe('Content action', () => {
 
       expect(action.type).toEqual(GET_CONTENT);
       expect(action.request.op).toEqual('get');
-      expect(action.request.path).toEqual(`${url}/@history/${version}`);
+      expect(action.request.path).toEqual(
+        `${url}/@history/${version}?expand=navroot`,
+      );
     });
 
     it('should create an action to get content with version and fullobjects', () => {
@@ -187,7 +191,7 @@ describe('Content action', () => {
       expect(action.type).toEqual(GET_CONTENT);
       expect(action.request.op).toEqual('get');
       expect(action.request.path).toEqual(
-        `${url}/@history/${version}?fullobjects=true`,
+        `${url}/@history/${version}?fullobjects=true&expand=navroot`,
       );
     });
 
@@ -198,7 +202,7 @@ describe('Content action', () => {
       expect(action.type).toEqual(GET_CONTENT);
       expect(action.subrequest).toEqual('my-subrequest');
       expect(action.request.op).toEqual('get');
-      expect(action.request.path).toEqual(`${url}`);
+      expect(action.request.path).toEqual(`${url}?expand=navroot`);
     });
 
     it('should create an action to get content with a pagination page', () => {
@@ -207,7 +211,9 @@ describe('Content action', () => {
 
       expect(action.type).toEqual(GET_CONTENT);
       expect(action.request.op).toEqual('get');
-      expect(action.request.path).toEqual(`${url}?b_start=25&b_size=25`);
+      expect(action.request.path).toEqual(
+        `${url}?b_start=25&b_size=25&expand=navroot`,
+      );
     });
   });
 

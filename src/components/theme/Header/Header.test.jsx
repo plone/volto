@@ -30,10 +30,19 @@ describe('Header', () => {
         messages: {},
       },
     });
-
     const component = renderer.create(
       <Provider store={store}>
-        <Header pathname="/blog" />
+        <Header
+          pathname="/blog"
+          content={{
+            '@components': {
+              navroot: {
+                title: 'Site',
+                url: 'http://localhost:3000',
+              },
+            },
+          }}
+        />
       </Provider>,
     );
     const json = component.toJSON();
