@@ -45,10 +45,16 @@ const ContentMetadataTags = (props) => {
 
   const contentImageInfo = getContentImageInfo();
 
+  let title_tag_content = seo_title || title;
+  let nav_root_title = props.content['@components']['navroot']['title'];
+  title_tag_content =
+    (nav_root_title === title_tag_content && title_tag_content) ||
+    title_tag_content + ' — ' + nav_root_title;
+
   return (
     <>
       <Helmet>
-        <title>{seo_title || title}</title>
+        <title>{title_tag_content}</title>
         <meta name="description" content={seo_description || description} />
         <meta
           property="og:title"
