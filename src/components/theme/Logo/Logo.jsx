@@ -4,8 +4,6 @@
  */
 
 import { Image } from 'semantic-ui-react';
-import { useSelector } from 'react-redux';
-import config from '@plone/volto/registry';
 import { UniversalLink } from '@plone/volto/components';
 import LogoImage from '@plone/volto/components/theme/Logo/Logo.svg';
 
@@ -16,15 +14,10 @@ import LogoImage from '@plone/volto/components/theme/Logo/Logo.svg';
  * @returns {string} Markup of the component.
  */
 const Logo = (props) => {
-  const { settings } = config;
   const { navroot } = props;
-  const lang = useSelector((state) => state.intl.locale);
 
   return (
-    <UniversalLink
-      href={settings.isMultilingual ? `/${lang}` : '/'}
-      title={navroot?.title}
-    >
+    <UniversalLink href={navroot?.url} title={navroot?.title}>
       <Image src={LogoImage} alt={navroot?.title} title={navroot?.title} />
     </UniversalLink>
   );
