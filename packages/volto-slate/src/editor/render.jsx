@@ -2,8 +2,12 @@ import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { Node, Text } from 'slate';
 import cx from 'classnames';
-import { isEmpty, isEqual, omit } from 'lodash';
+import { isEmpty, omit } from 'lodash';
+import Slugger from 'github-slugger';
 import config from '@plone/volto/registry';
+import linkSVG from '@plone/volto/icons/link.svg';
+
+import './less/slate.less';
 
 const OMITTED = ['editor', 'path'];
 
@@ -106,13 +110,7 @@ export const serializeNodes = (nodes, getAttributes, extras = {}) => {
           mode="view"
           key={path}
           data-slate-data={node.data ? serializeData(node) : null}
-          attributes={
-            isEqual(path, [0])
-              ? getAttributes
-                ? getAttributes(node, path)
-                : null
-              : null
-          }
+          attributes={getAttributes ? getAttributes(node, path) : null}
           extras={extras}
         >
           {_serializeNodes(Array.from(Node.children(editor, path)))}
@@ -153,3 +151,28 @@ export const serializeNodesToText = (nodes) => {
 
 export const serializeNodesToHtml = (nodes) =>
   renderToStaticMarkup(serializeNodes(nodes));
+
+export const renderLinkElement = (tagName) => {
+  function LinkElement({ attributes, children, mode = 'edit' }) {
+    const Tag = tagName;
+    const slug = Slugger.slug('hello');
+
+    return (
+      <Tag {...attributes}>
+        {mode === 'view' && (
+          <a id={slug} class="anchor" aria-hidden="true" href={`#${slug}`}>
+            <svg
+              {...linkSVG.attributes}
+              dangerouslySetInnerHTML={{ __html: linkSVG.content }}
+              width="2em"
+              height={null}
+            ></svg>
+          </a>
+        )}
+        {children}
+      </Tag>
+    );
+  }
+  LinkElement.displayName = `${tagName}LinkElement`;
+  return LinkElement;
+};
