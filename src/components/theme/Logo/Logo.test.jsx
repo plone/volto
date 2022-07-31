@@ -19,7 +19,9 @@ describe('Logo', () => {
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
-          <Logo />
+          <Logo
+            navroot={{ title: 'site title', url: 'http://localhost:3000' }}
+          />
         </MemoryRouter>
       </Provider>,
     );
