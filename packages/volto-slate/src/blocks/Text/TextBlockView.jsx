@@ -7,7 +7,7 @@ import { isEqual } from 'lodash';
 import Slugger from 'github-slugger';
 
 const TextBlockView = (props) => {
-  const { data, styling = {} } = props; // id,
+  const { id, data, styling = {} } = props; // id,
   const { value, override_toc } = data;
   const metadata = props.metadata || props.properties;
   const { topLevelTargetElements } = config.settings.slate;
@@ -16,10 +16,9 @@ const TextBlockView = (props) => {
     const res = { ...styling };
     if (node.type && isEqual(path, [0])) {
       if (topLevelTargetElements.includes(node.type) || override_toc) {
-        // console.log('children', children);
         const text = serializeNodesToText(node?.children || []);
         const slug = Slugger.slug(text);
-        res.id = slug;
+        res.id = slug || id;
       }
     }
     return res;
