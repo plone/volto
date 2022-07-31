@@ -97,7 +97,7 @@ describe('Block Tests: Basic text format', () => {
   //   cy.get('[id="page-document"] del').contains('Colorless');
   // });
 
-  it('Title', function () {
+  it('Heading (h2)', function () {
     // Complete chained commands
     cy.getSlateEditorAndType('Colorless green ideas sleep furiously.');
 
@@ -120,7 +120,26 @@ describe('Block Tests: Basic text format', () => {
     cy.get('[id="page-document"] h2').contains('Colorless');
   });
 
-  it('Subtitle', function () {
+  it('Heading (h2) - if previous format is set, it gets removed', function () {
+    // Complete chained commands
+    cy.getSlateEditorAndType('Colorless green ideas sleep furiously.');
+
+    cy.setSlateSelection('Colorless');
+    cy.clickSlateButton('Bold');
+
+    // Title
+    cy.setSlateSelection('Colorless', 'green');
+    cy.clickSlateButton('Title');
+
+    // Save
+    cy.toolbarSave();
+
+    // then the page view should contain our changes
+    cy.get('[id="page-document"] h2').children().should('have.length', 0);
+    cy.get('[id="page-document"] h2').contains('Colorless');
+  });
+
+  it('SubHeading (h3)', function () {
     // Complete chained commands
     cy.getSlateEditorAndType('Colorless green ideas sleep furiously.');
 
@@ -140,6 +159,25 @@ describe('Block Tests: Basic text format', () => {
     cy.toolbarSave();
 
     // then the page view should contain our changes
+    cy.get('[id="page-document"] h3').contains('Colorless');
+  });
+
+  it('SubHeading (h3) - if previous format is set, it gets removed', function () {
+    // Complete chained commands
+    cy.getSlateEditorAndType('Colorless green ideas sleep furiously.');
+
+    cy.setSlateSelection('Colorless');
+    cy.clickSlateButton('Bold');
+
+    // Title
+    cy.setSlateSelection('Colorless', 'green');
+    cy.clickSlateButton('Subtitle');
+
+    // Save
+    cy.toolbarSave();
+
+    // then the page view should contain our changes
+    cy.get('[id="page-document"] h3').children().should('have.length', 0);
     cy.get('[id="page-document"] h3').contains('Colorless');
   });
 
