@@ -7,6 +7,7 @@
 ### Feature
 
 ### Bugfix
+- Make Search page title translatable @erral
 
 ### Internal
 
