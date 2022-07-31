@@ -5,6 +5,7 @@
 ### Breaking
 
 ### Feature
+- use @navroot endpoint to get Logo title and alt @erral
 
 ### Bugfix
 
