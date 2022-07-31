@@ -8,5 +8,7 @@ import { GET_SITE } from '@plone/volto/constants/ActionTypes';
 export function getSite() {
   return {
     type: GET_SITE,
+    op: 'get',
+    request: `/@site`,
   };
 }
