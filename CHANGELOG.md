@@ -9,12 +9,38 @@
 
 ### Bugfix
 
-- complete pt_BR translation @ericof
-- Fix action `listUsers`. Provide default. @ksuess
-
 ### Internal
 
 ### Documentation
+
+- Minor clean up of volto-slate upgrade guide. @stevepiercy
+
+
+## 16.0.0-alpha.19 (2022-07-28)
+
+### Breaking
+
+- Using volto-slate Headline / Subheadline buttons strips all elements in the selection @tiberiuichim
+
+### Feature
+
+- Send extra data coming from listing block schemaEnhancer from searchBlock to the listing variation @ionlizarazu
+
+### Bugfix
+
+- complete pt_BR translation @ericof
+- Fix action `listUsers`. Provide default. @ksuess
+- Provide the correct id to the blocks wrapped by StyleWrapper. @razvanMiu
+- Remove console deprecation notice for 'host' property usage coming from Express @sneridagh
+
+### Internal
+
+- Allow passing `allowedChildren` option to the BlockButton, to strip elements in headlines @tiberiuichim
+- Upgrade to latest `@plone/scripts` @sneridagh
+
+### Documentation
+
+- Add upgrade guide documentation for dealing with `volto-slate` upgrades for Volto 16 alpha 15 onwards. @sneridagh
 
 ## 16.0.0-alpha.18 (2022-07-26)
 
@@ -25,6 +51,7 @@
 ### Bugfix
 
 - Fix edge cases in Cypress flaky tests when the Edit component was loaded without loading the type schema. @sneridagh & @davisagli
+- Fix edge cases in Cypress flaky tests when the Edit component was loaded for the wrong content path. @davisagli
 
 ### Internal
 
@@ -131,8 +158,6 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 
 ### Feature
 
-- add control panel via config.settings @ksuess https://github.com/plone/volto/issues/3426
-- Add noindex metadata tag @steffenri
 - Add listing variation schemaEnhancer to the search block schema @ionlizarazu
 - Use the local blocksConfig for extensions, fallback to the config object one. This allows to override local blocks config in nested blocks (blocks in a block, eg. accordion, grid, row) @sneridagh
 

@@ -1,16 +1,20 @@
 # Change Log
 
-## 1.4.2 (unreleased)
+## 1.5.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
-- Add `--canary` option to use latest alpha in generator @sneridagh
-
 ### Bugfix
 
 ### Internal
+
+## 1.5.0 (2022-07-28)
+
+### Feature
+
+- Add `--canary` option to use latest alpha in generator @sneridagh
 
 ## 1.4.1 (2022-02-24)
 
