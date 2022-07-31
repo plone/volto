@@ -7,7 +7,7 @@ import { isEqual } from 'lodash';
 import Slugger from 'github-slugger';
 
 const TextBlockView = (props) => {
-  const { id, data, styling = {} } = props; // id,
+  const { id, data, styling = {} } = props;
   const { value, override_toc } = data;
   const metadata = props.metadata || props.properties;
   const { topLevelTargetElements } = config.settings.slate;
