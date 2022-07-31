@@ -3,23 +3,11 @@
  * @module components/theme/Logo/Logo
  */
 
-import { defineMessages, useIntl } from 'react-intl';
 import { Image } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
 import config from '@plone/volto/registry';
 import { UniversalLink } from '@plone/volto/components';
 import LogoImage from '@plone/volto/components/theme/Logo/Logo.svg';
-
-const messages = defineMessages({
-  site: {
-    id: 'Site',
-    defaultMessage: 'Site',
-  },
-  plonesite: {
-    id: 'Plone Site',
-    defaultMessage: 'Plone Site',
-  },
-});
 
 /**
  * Logo component class.
@@ -27,21 +15,17 @@ const messages = defineMessages({
  * @param {Object} intl Intl object
  * @returns {string} Markup of the component.
  */
-const Logo = () => {
+const Logo = (props) => {
   const { settings } = config;
+  const { navroot } = props;
   const lang = useSelector((state) => state.intl.locale);
-  const intl = useIntl();
 
   return (
     <UniversalLink
       href={settings.isMultilingual ? `/${lang}` : '/'}
-      title={intl.formatMessage(messages.site)}
+      title={navroot?.title}
     >
-      <Image
-        src={LogoImage}
-        alt={intl.formatMessage(messages.plonesite)}
-        title={intl.formatMessage(messages.plonesite)}
-      />
+      <Image src={LogoImage} alt={navroot?.title} title={navroot?.title} />
     </UniversalLink>
   );
 };

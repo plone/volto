@@ -149,7 +149,9 @@ export function getContent(
           b_size: settings.defaultPageSize,
         }
       : {},
-    settings.isMultilingual ? { expand: 'translations' } : {},
+    settings.isMultilingual
+      ? { expand: 'translations,navroot' }
+      : { expand: 'navroot' },
   );
 
   let qs = Object.keys(query)

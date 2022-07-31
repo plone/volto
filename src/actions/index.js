@@ -127,3 +127,6 @@ export {
   createWorkingCopy,
   removeWorkingCopy,
 } from './workingcopy/workingcopy';
+
+export { getSite } from './site/site';
+export { getNavroot } from './navroot/navroot';

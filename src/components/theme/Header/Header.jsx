@@ -53,7 +53,7 @@ class Header extends Component {
           <div className="header">
             <div className="logo-nav-wrapper">
               <div className="logo">
-                <Logo />
+                <Logo navroot={this.props.content['@components']['navroot']} />
               </div>
               <Navigation pathname={this.props.pathname} />
             </div>
