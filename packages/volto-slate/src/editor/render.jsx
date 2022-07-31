@@ -3,7 +3,6 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { Node, Text } from 'slate';
 import cx from 'classnames';
 import { isEmpty, omit } from 'lodash';
-import Slugger from 'github-slugger';
 import config from '@plone/volto/registry';
 import linkSVG from '@plone/volto/icons/link.svg';
 
@@ -155,12 +154,12 @@ export const serializeNodesToHtml = (nodes) =>
 export const renderLinkElement = (tagName) => {
   function LinkElement({ attributes, children, mode = 'edit' }) {
     const Tag = tagName;
-    const slug = Slugger.slug('hello');
+    const slug = attributes.id || '';
 
     return (
       <Tag {...attributes}>
-        {mode === 'view' && (
-          <a id={slug} class="anchor" aria-hidden="true" href={`#${slug}`}>
+        {mode === 'view' && slug && (
+          <a class="anchor" aria-hidden="true" href={`#${slug}`}>
             <svg
               {...linkSVG.attributes}
               dangerouslySetInnerHTML={{ __html: linkSVG.content }}

@@ -1,9 +1,13 @@
-import { serializeNodes } from '@plone/volto-slate/editor/render';
+import {
+  serializeNodes,
+  serializeNodesToText,
+} from '@plone/volto-slate/editor/render';
 import config from '@plone/volto/registry';
 import { isEqual } from 'lodash';
+import Slugger from 'github-slugger';
 
 const TextBlockView = (props) => {
-  const { id, data, styling = {} } = props;
+  const { data, styling = {} } = props; // id,
   const { value, override_toc } = data;
   const metadata = props.metadata || props.properties;
   const { topLevelTargetElements } = config.settings.slate;
@@ -12,7 +16,10 @@ const TextBlockView = (props) => {
     const res = { ...styling };
     if (node.type && isEqual(path, [0])) {
       if (topLevelTargetElements.includes(node.type) || override_toc) {
-        res.id = id;
+        // console.log('children', children);
+        const text = serializeNodesToText(node?.children || []);
+        const slug = Slugger.slug(text);
+        res.id = slug;
       }
     }
     return res;
