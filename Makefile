@@ -14,7 +14,7 @@ MAKEFLAGS+=--no-builtin-rules
 
 INSTANCE_PORT=8080
 DOCKER_IMAGE=plone/plone-backend:5.2.7
-KGS=plone.restapi==8.22.0 plone.volto==4.0.0a4 plone.rest==2.0.0a5 plone.app.iterate==4.0.2 plone.app.vocabularies==4.3.0
+KGS=plone.restapi==8.24.0 plone.volto==4.0.0a4 plone.rest==2.0.0a5 plone.app.iterate==4.0.2 plone.app.vocabularies==4.3.0
 TESTING_ADDONS=plone.app.robotframework==2.0.0a6 plone.app.testing==7.0.0a3
 NODEBIN = ./node_modules/.bin
 
