@@ -2,13 +2,9 @@
 
 ## 2.0.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
-### Internal
+- Upgrade `cypress-axe` since it was forcing `cypress` < 10 version. @sneridagh
 
 ## 2.0.0 (2022-08-01)
 
