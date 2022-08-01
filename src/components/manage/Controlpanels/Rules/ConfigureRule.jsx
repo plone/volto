@@ -16,12 +16,17 @@ import {
   Container,
   Dropdown,
   Grid,
-  Label,
   Segment,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { Icon, Toolbar, UniversalLink } from '@plone/volto/components';
-import { getControlPanelRule } from '@plone/volto/actions';
+import {
+  getControlPanelRule,
+  removeCondition,
+  removeAction,
+} from '@plone/volto/actions';
+import { toast } from 'react-toastify';
+import { Toast } from '@plone/volto/components';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import upSVG from '@plone/volto/icons/up.svg';
@@ -48,6 +53,14 @@ const messages = defineMessages({
     id: 'Move down',
     defaultMessage: 'Move down',
   },
+  deleteCondition: {
+    id: 'Delete condition',
+    defaultMessage: 'Condition deleted',
+  },
+  deleteAction: {
+    id: 'Delete action',
+    defaultMessage: 'Action deleted',
+  },
 });
 
 /**
@@ -63,6 +76,8 @@ class ConfigureRule extends Component {
    */
   static propTypes = {
     getControlPanelRule: PropTypes.func.isRequired,
+    removeCondition: PropTypes.func.isRequired,
+    removeAction: PropTypes.func.isRequired,
   };
 
   /**
@@ -104,7 +119,40 @@ class ConfigureRule extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  UNSAFE_componentWillReceiveProps(nextProps) {}
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (
+      this.props.rule.deletecondition.loading &&
+      nextProps.rule.deletecondition.loaded
+    ) {
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.deleteCondition)}
+        />,
+      );
+      this.props.getControlPanelRule(
+        getBaseUrl(this.props.pathname),
+        this.props.match.params.id,
+      );
+    }
+    if (
+      this.props.rule.deleteaction.loading &&
+      nextProps.rule.deleteaction.loaded
+    ) {
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.deleteAction)}
+        />,
+      );
+      this.props.getControlPanelRule(
+        getBaseUrl(this.props.pathname),
+        this.props.match.params.id,
+      );
+    }
+  }
 
   /**
    * Back/Cancel handler
@@ -113,6 +161,30 @@ class ConfigureRule extends Component {
    */
   onCancel() {
     this.props.history.push(getParentUrl(getParentUrl(this.props.pathname)));
+  }
+
+  /**
+   * Remove condition handler
+   * @method handleRemoveCondition
+   * @returns {undefined}
+   */
+  handleRemoveCondition(conditionId) {
+    const ruleId = this.props.match.params.id;
+    this.props.removeCondition(
+      getBaseUrl(this.props.pathname),
+      ruleId,
+      conditionId,
+    );
+  }
+
+  /**
+   * Remove action handler
+   * @method handleRemoveAction
+   * @returns {undefined}
+   */
+  handleRemoveAction(actionId) {
+    const ruleId = this.props.match.params.id;
+    this.props.removeAction(getBaseUrl(this.props.pathname), ruleId, actionId);
   }
 
   /**
@@ -190,7 +262,14 @@ class ConfigureRule extends Component {
                                   <Button compact size="tiny" primary>
                                     Edit
                                   </Button>
-                                  <Button compact size="tiny" color="youtube">
+                                  <Button
+                                    onClick={() =>
+                                      this.handleRemoveCondition(cond.idx)
+                                    }
+                                    compact
+                                    size="tiny"
+                                    color="youtube"
+                                  >
                                     Remove
                                   </Button>
                                   <Button compact size="tiny" primary>
@@ -256,22 +335,29 @@ class ConfigureRule extends Component {
 
                       {actions && actions.length > 0 && (
                         <Card.Group>
-                          {actions.map((cond, i) => {
+                          {actions.map((action, i) => {
                             return (
                               <Card fluid>
                                 <Card.Content>
                                   <Card.Header>
-                                    <h4>{cond.title}</h4>
+                                    <h4>{action.title}</h4>
                                   </Card.Header>
                                   <Card.Description>
-                                    {cond.summary}
+                                    {action.summary}
                                   </Card.Description>
                                 </Card.Content>
                                 <Card.Content extra>
                                   <Button compact size="tiny" primary>
                                     Edit
                                   </Button>
-                                  <Button compact size="tiny" color="youtube">
+                                  <Button
+                                    onClick={() =>
+                                      this.handleRemoveAction(action.idx)
+                                    }
+                                    compact
+                                    size="tiny"
+                                    color="youtube"
+                                  >
                                     Remove
                                   </Button>
                                   <Button compact size="tiny" primary>
@@ -302,8 +388,8 @@ class ConfigureRule extends Component {
                       <Grid.Row>
                         <h4 style={{ marginTop: '15px' }}>
                           <FormattedMessage
-                            id="Condition: "
-                            defaultMessage="Condition: "
+                            id="Action: "
+                            defaultMessage="Action: "
                           />
                         </h4>
                         <Dropdown
@@ -382,6 +468,6 @@ export default compose(
       rule: state.controlpanelrule,
       title: 'Example rule',
     }),
-    { getControlPanelRule },
+    { getControlPanelRule, removeCondition, removeAction },
   ),
 )(ConfigureRule);

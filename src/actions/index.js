@@ -87,6 +87,8 @@ export {
   getContentRulesEvents,
   addNewRule,
   editRule,
+  removeCondition,
+  removeAction,
 } from '@plone/volto/actions/rules/rules';
 export {
   resetSearchContent,

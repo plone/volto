@@ -12,6 +12,8 @@ import {
   GET_CONTENT_RULES_EVENTS,
   ADD_NEW_CONTENT_RULE,
   EDIT_CONTROLPANEL_RULE,
+  DELETECONDITION_CONTROLPANEL_RULE,
+  DELETEACTION_CONTROLPANEL_RULE,
 } from '@plone/volto/constants/ActionTypes';
 
 /**
@@ -247,6 +249,38 @@ export function editRule(url, data, rule) {
       op: 'patch',
       path: `${url}/@controlpanels/content-rules/${rule}`,
       data: { 'form.button.Save': true, ...data },
+    },
+  };
+}
+
+/**
+ * Remove rule condition function.
+ * @function removeCondition
+ * @param {string} url Content url.
+ * @returns {Object} Remove rule condition action.
+ */
+export function removeCondition(url, rule, condition) {
+  return {
+    type: DELETECONDITION_CONTROLPANEL_RULE,
+    request: {
+      op: 'del',
+      path: `${url}/@controlpanels/content-rules/${rule}/condition/${condition}`,
+    },
+  };
+}
+
+/**
+ * Remove rule action function.
+ * @function removeAction
+ * @param {string} url Content url.
+ * @returns {Object} Remove rule ction action.
+ */
+export function removeAction(url, rule, action) {
+  return {
+    type: DELETEACTION_CONTROLPANEL_RULE,
+    request: {
+      op: 'del',
+      path: `${url}/@controlpanels/content-rules/${rule}/action/${action}`,
     },
   };
 }

@@ -2,6 +2,14 @@ import {
   GET_CONTROLPANEL_RULE,
   DELETE_CONTROLPANEL_RULE,
   EDIT_CONTROLPANEL_RULE,
+  DELETECONDITION_CONTROLPANEL_RULE,
+  EDITCONDITION_CONTROLPANEL_RULE,
+  UPCONDITION_CONTROLPANEL_RULE,
+  DOWNCONDITION_CONTROLPANEL_RULE,
+  DELETEACTION_CONTROLPANEL_RULE,
+  EDITACTION_CONTROLPANEL_RULE,
+  UPACTION_CONTROLPANEL_RULE,
+  DOWNACTION_CONTROLPANEL_RULE,
 } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
@@ -16,6 +24,21 @@ const initialState = {
     error: null,
   },
   edit: {
+    loaded: false,
+    loading: false,
+    error: null,
+  },
+  deletecondition: {
+    loaded: false,
+    loading: false,
+    error: null,
+  },
+  editcondition: {
+    loaded: false,
+    loading: false,
+    error: null,
+  },
+  deleteaction: {
     loaded: false,
     loading: false,
     error: null,
@@ -45,6 +68,14 @@ export default function controlPanelRule(state = initialState, action = {}) {
     case `${GET_CONTROLPANEL_RULE}_PENDING`:
     case `${DELETE_CONTROLPANEL_RULE}_PENDING`:
     case `${EDIT_CONTROLPANEL_RULE}_PENDING`:
+    case `${DELETECONDITION_CONTROLPANEL_RULE}_PENDING`:
+    case `${EDITCONDITION_CONTROLPANEL_RULE}_PENDING`:
+    case `${UPCONDITION_CONTROLPANEL_RULE}_PENDING`:
+    case `${DOWNCONDITION_CONTROLPANEL_RULE}_PENDING`:
+    case `${DELETEACTION_CONTROLPANEL_RULE}_PENDING`:
+    case `${EDITACTION_CONTROLPANEL_RULE}_PENDING`:
+    case `${UPACTION_CONTROLPANEL_RULE}_PENDING`:
+    case `${DOWNACTION_CONTROLPANEL_RULE}_PENDING`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
@@ -65,6 +96,14 @@ export default function controlPanelRule(state = initialState, action = {}) {
       };
     case `${DELETE_CONTROLPANEL_RULE}_SUCCESS`:
     case `${EDIT_CONTROLPANEL_RULE}_SUCCESS`:
+    case `${DELETECONDITION_CONTROLPANEL_RULE}_SUCCESS`:
+    case `${EDITCONDITION_CONTROLPANEL_RULE}_SUCCESS`:
+    case `${UPCONDITION_CONTROLPANEL_RULE}_SUCCESS`:
+    case `${DOWNCONDITION_CONTROLPANEL_RULE}_SUCCESS`:
+    case `${DELETEACTION_CONTROLPANEL_RULE}_SUCCESS`:
+    case `${EDITACTION_CONTROLPANEL_RULE}_SUCCESS`:
+    case `${UPACTION_CONTROLPANEL_RULE}_SUCCESS`:
+    case `${DOWNACTION_CONTROLPANEL_RULE}_SUCCESS`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
@@ -76,6 +115,14 @@ export default function controlPanelRule(state = initialState, action = {}) {
     case `${GET_CONTROLPANEL_RULE}_FAIL`:
     case `${DELETE_CONTROLPANEL_RULE}_FAIL`:
     case `${EDIT_CONTROLPANEL_RULE}_FAIL`:
+    case `${DELETECONDITION_CONTROLPANEL_RULE}_FAIL`:
+    case `${EDITCONDITION_CONTROLPANEL_RULE}_FAIL`:
+    case `${UPCONDITION_CONTROLPANEL_RULE}_FAIL`:
+    case `${DOWNCONDITION_CONTROLPANEL_RULE}_FAIL`:
+    case `${DELETEACTION_CONTROLPANEL_RULE}_FAIL`:
+    case `${EDITACTION_CONTROLPANEL_RULE}_FAIL`:
+    case `${UPACTION_CONTROLPANEL_RULE}_FAIL`:
+    case `${DOWNACTION_CONTROLPANEL_RULE}_FAIL`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
