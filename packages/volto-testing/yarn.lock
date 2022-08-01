@@ -225,10 +225,10 @@
   dependencies:
     defer-to-connect "^2.0.0"
 
-"@testing-library/cypress@8.0.2":
-  version "8.0.2"
-  resolved "https://registry.yarnpkg.com/@testing-library/cypress/-/cypress-8.0.2.tgz#b13f0ff2424dec4368b6670dfbfb7e43af8eefc9"
-  integrity sha512-KVdm7n37sg/A4e3wKMD4zUl0NpzzVhx06V9Tf0hZHZ7nrZ4yFva6Zwg2EFF1VzHkEfN/ahUzRtT1qiW+vuWnJw==
+"@testing-library/cypress@8.0.3":
+  version "8.0.3"
+  resolved "https://registry.yarnpkg.com/@testing-library/cypress/-/cypress-8.0.3.tgz#24ab34df34d7896866603ade705afbdd186e273c"
+  integrity sha512-nY2YaSbmuPo5k6kL0iLj/pGPPfka3iwb3kpTx8QN/vOCns92Saz9wfACqB8FJzcR7+lfA4d5HUOWqmTddBzczg==
   dependencies:
     "@babel/runtime" "^7.14.6"
     "@testing-library/dom" "^8.1.0"
@@ -865,10 +865,10 @@ csstype@^3.0.2:
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.0.tgz#4ddcac3718d787cf9df0d1b7d15033925c8f29f2"
   integrity sha512-uX1KG+x9h5hIJsaKR9xHUeUraxf8IODOwq9JLNPq6BwB04a/xgpq3rcx47l5BZu5zBPlgD342tdke3Hom/nJRA==
 
-cypress-axe@0.14.0:
-  version "0.14.0"
-  resolved "https://registry.yarnpkg.com/cypress-axe/-/cypress-axe-0.14.0.tgz#5f5e70fb36b8cb3ba73a8ba01e9262ff1268d5e2"
-  integrity sha512-7Rdjnko0MjggCmndc1wECAkvQBIhuy+DRtjF7bd5YPZRFvubfMNvrxfqD8PWQmxm7MZE0ffS4Xr43V6ZmvLopg==
+cypress-axe@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/cypress-axe/-/cypress-axe-1.0.0.tgz#ab4e9486eaa3bb956a90a1ae40d52df42827b4f0"
+  integrity sha512-QBlNMAd5eZoyhG8RGGR/pLtpHGkvgWXm2tkP68scJ+AjYiNNOlJihxoEwH93RT+rWOLrefw4iWwEx8kpEcrvJA==
 
 cypress-file-upload@5.0.8:
   version "5.0.8"
