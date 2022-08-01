@@ -112,7 +112,6 @@ class GroupsControlpanel extends Component {
     await this.props.getControlpanel('usergroup');
     await this.props.listRoles();
     if (!this.props.many_groups) {
-      await this.props.listRoles();
       await this.props.listGroups();
       this.setState({
         groupEntries: this.props.groups,
