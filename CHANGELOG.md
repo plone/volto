@@ -6,12 +6,9 @@
 
 - Use `Cypress` 10.3.0 (migrate from 9.x.x). Cypress 10 has some interesting goodies, being the native support of Apple Silicon Computers the main of it. See https://docs.voltocms.com/upgrade-guide/ for more information.
 
-### Feature
-
 ### Bugfix
-- Make Search page title translatable @erral
 
-### Internal
+- Make Search page title translatable @erral
 
 ### Documentation
 
