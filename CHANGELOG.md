@@ -48,6 +48,7 @@
 
 - Allow passing `allowedChildren` option to the BlockButton, to strip elements in headlines @tiberiuichim
 - Upgrade to latest `@plone/scripts` @sneridagh
+- Update browserlist definitions @sneridagh
 
 ### Documentation
 
