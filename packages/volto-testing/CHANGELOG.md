@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.0.1 (unreleased)
+## 2.0.0 (2022-08-01)
 
 ### Breaking
 
