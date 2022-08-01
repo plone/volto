@@ -4,11 +4,7 @@
 
 ### Breaking
 
-### Feature
-
-### Bugfix
-
-### Internal
+- Use `Cypress` 10.  See https://docs.voltocms.com/upgrade-guide/ for more information. @sneridagh
 
 ## 1.0.0 (2022-05-23)
 
