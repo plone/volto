@@ -7,6 +7,6 @@ module.exports = defineConfig({
   e2e: {
     baseUrl: 'http://localhost:3000',
     excludeSpecPattern: ['*~'],
-    specPattern: 'cypress/tests/core/**/*.{js,jsx,ts,tsx}',
+    specPattern: 'cypress/tests/**/*.{js,jsx,ts,tsx}',
   },
 });
