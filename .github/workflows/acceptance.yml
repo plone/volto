@@ -33,7 +33,7 @@ jobs:
       - run: yarn --frozen-lockfile
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -47,7 +47,6 @@ jobs:
           browser: chrome
           # headless: true
           group: Core ${{ matrix.node-version }}
-          config: integrationFolder=cypress/tests
           spec: cypress/tests/core/basic/**/*.js
           start: |
             make start-test-acceptance-server
