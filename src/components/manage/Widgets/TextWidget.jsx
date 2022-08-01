@@ -122,7 +122,9 @@ class TextWidget extends Component {
           maxLength={maxLength || null}
         />
         {icon && iconAction && (
-          <button className={`field-${id}-action-button`} onClick={iconAction}>
+          <button className={`field-${id}-action-button`} onClick={(e) => {
+            iconAction(e, id, onChange);
+          }}>
             <Icon name={icon} size="18px" />
           </button>
         )}

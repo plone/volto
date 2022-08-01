@@ -36,6 +36,7 @@
 ### Feature
 
 - Send extra data coming from listing block schemaEnhancer from searchBlock to the listing variation @ionlizarazu
+- Pass onChange in iconAction so that implementation of clear action could be possible @MdSahil-oss
 
 ### Bugfix
 
