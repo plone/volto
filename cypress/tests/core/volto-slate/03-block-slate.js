@@ -1,4 +1,4 @@
-import { slateBeforeEach, getSlateBlockValue } from '../../../support';
+import { slateBeforeEach, getSlateBlockValue } from '../../../support/e2e';
 
 describe('Block Tests', () => {
   beforeEach(slateBeforeEach);
