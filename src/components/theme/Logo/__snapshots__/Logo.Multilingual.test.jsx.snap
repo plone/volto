@@ -3,9 +3,9 @@
 exports[`Multilingual Logo renders a logo component with multilingual 1`] = `
 <a
   className={null}
-  href="http://localhost:3000/en"
-  rel="noopener noreferrer"
-  target="_blank"
+  href="/en"
+  onClick={[Function]}
+  target={null}
   title="site title english"
 >
   <img

@@ -3,16 +3,16 @@
 exports[`Logo renders a logo component 1`] = `
 <a
   className={null}
-  href="http://localhost:3000"
-  rel="noopener noreferrer"
-  target="_blank"
-  title="site title"
+  href="/"
+  onClick={[Function]}
+  target={null}
+  title="My site"
 >
   <img
-    alt="site title"
+    alt="My site"
     className="ui image"
     src="Logo.svg"
-    title="site title"
+    title="My site"
   />
 </a>
 `;

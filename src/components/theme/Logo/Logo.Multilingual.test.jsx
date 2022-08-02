@@ -20,6 +20,20 @@ describe('Multilingual Logo', () => {
         locale: 'en',
         messages: {},
       },
+      router: {
+        location: {
+          pathname: '/en',
+        },
+      },
+      site: {
+        data: {},
+      },
+      navroot: {
+        data: {
+          url: '/en',
+          title: 'site title english',
+        },
+      },
     });
     const component = renderer.create(
       <Provider store={store}>
