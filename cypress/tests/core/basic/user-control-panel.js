@@ -1,3 +1,15 @@
+const interceptUsers = () => {
+  cy.intercept({
+    method: 'GET',
+    url: '**/usergroup',
+  }).as('manyUsers');
+  cy.visit('/controlpanel/users');
+  cy.waitForResourceToLoad('@navigation');
+  cy.waitForResourceToLoad('@breadcrumbs');
+  cy.waitForResourceToLoad('@actions');
+  cy.waitForResourceToLoad('@types');
+};
+
 describe('User Control Panel Test', () => {
   beforeEach(() => {
     // given a logged in editor
@@ -139,16 +151,7 @@ describe('User Control Panel test for  many users', () => {
     });
   });
   it('Should not show users if the many_users option in enabled', () => {
-    cy.intercept({
-      method: 'GET',
-      url: '**/usergroup',
-    }).as('manyUsers');
-    cy.visit('/controlpanel/users');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-
+    interceptUsers();
     cy.wait('@manyUsers').then((interception) => {
       if (expect(interception.response.body.data.many_users).to.equal(true)) {
         cy.get('.ui.secondary.attached.menu div.menu').should('be.empty');
@@ -156,16 +159,7 @@ describe('User Control Panel test for  many users', () => {
     });
   });
   it('In the case of many users, It should show a user only when it is searched by a username ', () => {
-    cy.intercept({
-      method: 'GET',
-      url: '**/usergroup',
-    }).as('manyUsers');
-    cy.visit('/controlpanel/users');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-
+    interceptUsers();
     cy.wait('@manyUsers').then((interception) => {
       if (expect(interception.response.body.data.many_users).to.equal(true)) {
         cy.get('input[id="user-search-input"]').clear().type('editor');

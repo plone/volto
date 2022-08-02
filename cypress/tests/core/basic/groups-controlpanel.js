@@ -1,3 +1,15 @@
+const interceptGroups = () => {
+  cy.intercept({
+    method: 'GET',
+    url: '**/usergroup',
+  }).as('manyGroups');
+  cy.visit('/controlpanel/groups');
+  cy.waitForResourceToLoad('@navigation');
+  cy.waitForResourceToLoad('@breadcrumbs');
+  cy.waitForResourceToLoad('@actions');
+  cy.waitForResourceToLoad('@types');
+};
+
 describe('Groups Control Panel Test', () => {
   beforeEach(() => {
     // given a logged in editor
@@ -130,16 +142,7 @@ describe('Groups Control Panel test for  many groups', () => {
     });
   });
   it('Should not show groups if the many_groups option in enabled', () => {
-    cy.intercept({
-      method: 'GET',
-      url: '**/usergroup',
-    }).as('manyGroups');
-    cy.visit('/controlpanel/groups');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-
+    interceptGroups();
     cy.wait('@manyGroups').then((interception) => {
       if (expect(interception.response.body.data.many_groups).to.equal(true)) {
         cy.get('.ui.secondary.attached.menu div.menu').should('be.empty');
@@ -147,16 +150,7 @@ describe('Groups Control Panel test for  many groups', () => {
     });
   });
   it('In the case of many groups, It should show a group only when it is searched by a groupname ', () => {
-    cy.intercept({
-      method: 'GET',
-      url: '**/usergroup',
-    }).as('manyGroups');
-    cy.visit('/controlpanel/groups');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-
+    interceptGroups();
     cy.wait('@manyGroups').then((interception) => {
       if (expect(interception.response.body.data.many_groups).to.equal(true)) {
         cy.get('input[id="group-search-input"]').clear().type('editors');
