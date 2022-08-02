@@ -9,7 +9,7 @@ const initialState = {
   error: null,
   loaded: false,
   loading: false,
-  site: {},
+  data: {},
 };
 
 /**
@@ -27,7 +27,7 @@ export default function site(state = initialState, action = {}) {
         error: null,
         loaded: false,
         loading: true,
-        site: {},
+        data: {},
       };
     case `${GET_SITE}_SUCCESS`:
       return {
@@ -35,15 +35,15 @@ export default function site(state = initialState, action = {}) {
         error: null,
         loaded: true,
         loading: false,
-        site: action.result,
+        data: action.result,
       };
     case `${GET_SITE}_FAIL`:
       return {
         ...state,
-        error: action.result.error,
+        error: action.result,
         loaded: false,
         loading: false,
-        site: {},
+        data: {},
       };
     default:
       return state;

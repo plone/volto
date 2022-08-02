@@ -27,7 +27,7 @@ export default function navroot(state = initialState, action = {}) {
         error: null,
         loaded: false,
         loading: true,
-        navroot: {},
+        data: {},
       };
     case `${GET_NAVROOT}_SUCCESS`:
       return {
@@ -35,15 +35,15 @@ export default function navroot(state = initialState, action = {}) {
         error: null,
         loaded: true,
         loading: false,
-        navroot: action.result,
+        data: action.result,
       };
     case `${GET_NAVROOT}_FAIL`:
       return {
         ...state,
-        error: action.result.error,
+        error: action.result,
         loaded: false,
         loading: false,
-        navroot: {},
+        data: {},
       };
     default:
       return state;

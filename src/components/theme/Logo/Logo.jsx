@@ -2,10 +2,13 @@
  * Logo component.
  * @module components/theme/Logo/Logo
  */
-
+import { useEffect } from 'react';
 import { Image } from 'semantic-ui-react';
-import { UniversalLink } from '@plone/volto/components';
+import { ConditionalLink } from '@plone/volto/components';
 import LogoImage from '@plone/volto/components/theme/Logo/Logo.svg';
+import { useSelector, useDispatch } from 'react-redux';
+import { getNavroot, getSite } from '@plone/volto/actions';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 /**
  * Logo component class.
@@ -13,13 +16,29 @@ import LogoImage from '@plone/volto/components/theme/Logo/Logo.svg';
  * @param {Object} intl Intl object
  * @returns {string} Markup of the component.
  */
-const Logo = (props) => {
-  const { navroot } = props;
-
+const Logo = () => {
+  const pathname = useSelector((state) => state.router.location.pathname);
+  const site = useSelector((state) => state.site.data);
+  const navroot = useSelector((state) => state.navroot.data);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    pathname && dispatch(getNavroot(pathname));
+  }, [dispatch, pathname]);
+  useEffect(() => {
+    dispatch(getSite());
+  }, [dispatch]);
   return (
-    <UniversalLink href={navroot?.url} title={navroot?.title}>
-      <Image src={LogoImage} alt={navroot?.title} title={navroot?.title} />
-    </UniversalLink>
+    <ConditionalLink
+      href={navroot?.url}
+      title={navroot?.title}
+      condition={navroot?.url}
+    >
+      <Image
+        src={site?.logo ? flattenToAppURL(site?.logo) : LogoImage}
+        alt={navroot?.title}
+        title={navroot?.title}
+      />
+    </ConditionalLink>
   );
 };
 
