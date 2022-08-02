@@ -7,7 +7,6 @@ import React, { Component } from 'react';
 import { Container, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-
 import {
   Anontools,
   LanguageSelector,
@@ -30,7 +29,6 @@ class Header extends Component {
   static propTypes = {
     token: PropTypes.string,
     pathname: PropTypes.string.isRequired,
-    content: PropTypes.object.isRequired,
   };
 
   /**
@@ -54,7 +52,7 @@ class Header extends Component {
           <div className="header">
             <div className="logo-nav-wrapper">
               <div className="logo">
-                <Logo navroot={this.props.content['@components']['navroot']} />
+                <Logo />
               </div>
               <Navigation pathname={this.props.pathname} />
             </div>
