@@ -9,7 +9,7 @@ const initialState = {
   error: null,
   loaded: false,
   loading: false,
-  navroot: {},
+  data: {},
 };
 
 /**
