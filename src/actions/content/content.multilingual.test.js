@@ -12,6 +12,6 @@ describe('getContent', () => {
 
     expect(action.type).toEqual(GET_CONTENT);
     expect(action.request.op).toEqual('get');
-    expect(action.request.path).toEqual(`${url}?expand=translations,navroot`);
+    expect(action.request.path).toEqual(`${url}?expand=translations`);
   });
 });

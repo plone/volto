@@ -24,12 +24,7 @@ describe('Multilingual Logo', () => {
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
-          <Logo
-            navroot={{
-              title: 'site title english',
-              url: 'http://localhost:3000/en',
-            }}
-          />
+          <Logo />
         </MemoryRouter>
       </Provider>,
     );
