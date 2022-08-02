@@ -64,7 +64,7 @@ class Header extends Component {
                 </div>
               )}
               <div className="search">
-                <SearchWidget />
+                <SearchWidget pathname={this.props.pathname} />
               </div>
             </div>
           </div>

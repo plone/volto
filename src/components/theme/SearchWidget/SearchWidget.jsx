@@ -9,9 +9,11 @@ import { Form, Input } from 'semantic-ui-react';
 import { compose } from 'redux';
 import { PropTypes } from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
+import { connect } from 'react-redux';
 
 import { Icon } from '@plone/volto/components';
 import zoomSVG from '@plone/volto/icons/zoom.svg';
+import { getNavroot } from '@plone/volto/actions';
 
 const messages = defineMessages({
   search: {
@@ -54,6 +56,10 @@ class SearchWidget extends Component {
     };
   }
 
+  componentDidMount() {
+    this.props.getNavroot(this.props.pathname);
+  }
+
   /**
    * On change text
    * @method onChangeText
@@ -79,7 +85,9 @@ class SearchWidget extends Component {
         ? `&path=${encodeURIComponent(this.props.pathname)}`
         : '';
     this.props.history.push(
-      `/search?SearchableText=${encodeURIComponent(this.state.text)}${path}`,
+      `${this.props.navroot?.url}/search?SearchableText=${encodeURIComponent(
+        this.state.text,
+      )}${path}`,
     );
     event.preventDefault();
   }
@@ -91,7 +99,10 @@ class SearchWidget extends Component {
    */
   render() {
     return (
-      <Form action="/search" onSubmit={this.onSubmit}>
+      <Form
+        action={(this.props.navroot?.url || '') + '/search'}
+        onSubmit={this.onSubmit}
+      >
         <Form.Field className="searchbox">
           <Input
             aria-label={this.props.intl.formatMessage(messages.search)}
@@ -112,4 +123,13 @@ class SearchWidget extends Component {
   }
 }
 
-export default compose(withRouter, injectIntl)(SearchWidget);
+export default compose(
+  withRouter,
+  injectIntl,
+  connect(
+    (state) => ({
+      navroot: state.navroot,
+    }),
+    { getNavroot },
+  ),
+)(SearchWidget);
