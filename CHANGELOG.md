@@ -11,6 +11,7 @@
 ### Internal
 
 - Fix propTypes for Pagination component @davisagli
+- Test against Plone 5.2.9 and 6.0.0b1 @davisagli
 
 ### Documentation
 
