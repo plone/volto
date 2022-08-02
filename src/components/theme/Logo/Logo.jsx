@@ -21,17 +21,20 @@ const Logo = () => {
   const site = useSelector((state) => state.site.data);
   const navroot = useSelector((state) => state.navroot.data);
   const dispatch = useDispatch();
+
   useEffect(() => {
     pathname && dispatch(getNavroot(pathname));
   }, [dispatch, pathname]);
+
   useEffect(() => {
     dispatch(getSite());
   }, [dispatch]);
+
   return (
     <ConditionalLink
       href={navroot?.url}
       title={navroot?.title}
-      condition={navroot?.url}
+      condition={navroot?.url ? true : false}
     >
       <Image
         src={site?.logo ? flattenToAppURL(site?.logo) : LogoImage}
