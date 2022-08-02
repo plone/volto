@@ -273,20 +273,7 @@ const defaultModify = ({
 
   config.externals =
     target === 'node'
-      ? [
-          nodeExternals({
-            whitelist: [
-              dev ? 'webpack/hot/poll?300' : null,
-              /\.(eot|woff|woff2|ttf|otf)$/,
-              /\.(svg|png|jpg|jpeg|gif|ico)$/,
-              /\.(mp4|mp3|ogg|swf|webp)$/,
-              /\.(css|scss|sass|sss|less)$/,
-              // Add support for whitelist external (ie. node_modules npm published packages)
-              ...addonsAsExternals,
-              /^@plone\/volto/,
-            ].filter(Boolean),
-          }),
-        ]
+      ? ['crypto', 'buffer', 'express', 'formidable', 'component-classes']
       : [];
 
   return config;
