@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Fix propTypes for Pagination component @davisagli
+
 ### Documentation
 
 ## 16.0.0-alpha.20 (2022-08-01)
