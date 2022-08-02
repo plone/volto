@@ -16,6 +16,7 @@ import {
   Container,
   Dropdown,
   Grid,
+  Modal,
   Segment,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
@@ -31,6 +32,7 @@ import { Toast } from '@plone/volto/components';
 import backSVG from '@plone/volto/icons/back.svg';
 import upSVG from '@plone/volto/icons/up.svg';
 import downSVG from '@plone/volto/icons/down.svg';
+import AddConfigureModal from './AddConfigureModal';
 
 const messages = defineMessages({
   back: {
@@ -88,8 +90,13 @@ class ConfigureRule extends Component {
    */
   constructor(props) {
     super(props);
+    this.handleAddCondition = this.handleAddCondition.bind(this);
+    this.handleAddAction = this.handleAddAction.bind(this);
+
     this.state = {
       isClient: false,
+      openModal: false,
+      selectedCondition: '',
     };
   }
 
@@ -178,6 +185,37 @@ class ConfigureRule extends Component {
   }
 
   /**
+   * Add condition handler
+   * @method handleAddCondition
+   * @returns {undefined}
+   */
+  handleAddCondition() {
+    if (this.state.selectedCondition) {
+      this.setState({ openModal: true });
+    }
+    // this.props.AddCondition(
+    //   getBaseUrl(this.props.pathname),
+    //   ruleId,
+    //   conditionId,
+    // );
+  }
+
+  /**
+   * Add action handler
+   * @method handleAddAction
+   * @returns {undefined}
+   */
+  handleAddAction() {
+    this.setState({ openModal: true });
+
+    // this.props.AddAction(
+    //   getBaseUrl(this.props.pathname),
+    //   ruleId,
+    //   actionId,
+    // );
+  }
+
+  /**
    * Remove action handler
    * @method handleRemoveAction
    * @returns {undefined}
@@ -203,12 +241,15 @@ class ConfigureRule extends Component {
       title = '',
     } = item;
     const conditions_options = addable_conditions.map((cond) => {
-      return { key: cond.title, text: cond.title, value: cond.title };
+      return { key: cond.title, text: cond.title, value: cond };
     });
 
     const actions_options = addable_actions.map((act) => {
-      return { key: act.title, text: act.title, value: act.title };
+      return { key: act.title, text: act.title, value: act };
     });
+
+    // console.log('zaitem', item);
+    // console.log('sel', this.state.selectedCondition);
 
     return (
       <div id="page-rule-configure">
@@ -249,7 +290,7 @@ class ConfigureRule extends Component {
                         <Card.Group>
                           {conditions.map((cond, i) => {
                             return (
-                              <Card fluid>
+                              <Card fluid key={i}>
                                 <Card.Content>
                                   <Card.Header>
                                     <h4>{cond.title}</h4>
@@ -310,10 +351,13 @@ class ConfigureRule extends Component {
                           selection
                           additionLabel="llaalal"
                           options={conditions_options}
+                          onChange={(e, { value }) =>
+                            this.setState({ selectedCondition: value })
+                          }
                         />
                         <Button
                           compact
-                          onClick={() => console.log('handleadd')}
+                          onClick={this.handleAddCondition}
                           primary
                         >
                           <FormattedMessage id="Add" defaultMessage="Add" />
@@ -337,7 +381,7 @@ class ConfigureRule extends Component {
                         <Card.Group>
                           {actions.map((action, i) => {
                             return (
-                              <Card fluid>
+                              <Card fluid key={i}>
                                 <Card.Content>
                                   <Card.Header>
                                     <h4>{action.title}</h4>
@@ -424,6 +468,7 @@ class ConfigureRule extends Component {
                       />
                       {assignments.map((assignment, i) => (
                         <UniversalLink
+                          key={i}
                           title={assignment.title}
                           href={getBaseUrl(assignment.url)}
                         >
@@ -437,6 +482,15 @@ class ConfigureRule extends Component {
             </Segment.Group>
           </article>
         </Container>
+        {this.state.selectedCondition && (
+          <AddConfigureModal
+            open={this.state.openModal}
+            onClose={() => this.setState({ openModal: false })}
+            onOpen={() => this.setState({ openModal: true })}
+            value={this.state.selectedCondition}
+            type="Condition"
+          />
+        )}
         {this.state.isClient && (
           <Portal node={document.getElementById('toolbar')}>
             <Toolbar
