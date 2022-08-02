@@ -6,9 +6,12 @@ import { GET_NAVROOT } from '@plone/volto/constants/ActionTypes';
  * @returns {Object} Get the Navroot information
  */
 export function getNavroot(url) {
+  console.log('getNavRoot', url);
   return {
     type: GET_NAVROOT,
-    op: 'get',
-    request: `${url}/@navroot`,
+    request: {
+      op: 'get',
+      path: `${url}/@navroot`,
+    },
   };
 }
