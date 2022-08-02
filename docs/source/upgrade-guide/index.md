@@ -141,6 +141,19 @@ If you need to format dates in Volto, it's recommended to use the `FormattedDate
 It uses modern recommendations for date formatting on the web.
 ```
 
+### Upgraded core to use Cypress 10
+
+Cypress has overhauled the testing app and included native support of Apple Silicon Computers from 10.2.0 onwards.
+This improves dramatically the launch and test times in these machines.
+It also includes the new "component" testing feature that might be appealing in the near future.
+The only drawback is that they also overhauled the configuration forcing to migrate from old config based on JSON files to a better JS-based one. They also changed and renamed some of the options.
+Luckily, they provide a good reporting when old configuration is in place and an interactive migration wizard.
+
+Core configuration has been updated, but you will require to update your Cypress configuration if you want to use core's Cypress 10.
+Could be that forcing your project to use older versions might still work with old configurations.
+
+See https://docs.cypress.io/guides/references/migration-guide#Migrating-to-Cypress-version-10-0 for more information.
+
 (volto-upgrade-guide-15.x.x)=
 
 ## Upgrading to Volto 15.x.x
