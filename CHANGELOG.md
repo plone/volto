@@ -7,14 +7,28 @@
 ### Feature
 
 ### Bugfix
-- Make Search page title translatable @erral
 
 ### Internal
+
+- Fix propTypes for Pagination component @davisagli
+
+### Documentation
+
+## 16.0.0-alpha.20 (2022-08-01)
+
+### Breaking
+
+- Use `Cypress` 10.3.0 (migrate from 9.x.x). Cypress 10 has some interesting goodies, being the native support of Apple Silicon Computers the main of it. See https://docs.voltocms.com/upgrade-guide/ for more information.
+
+### Bugfix
+
+- Make Search page title translatable @erral
 
 ### Documentation
 
 - Minor clean up of volto-slate upgrade guide. @stevepiercy
 
+- Rework documentation on how to write a Slate plugin @ksuess
 
 ## 16.0.0-alpha.19 (2022-07-28)
 
@@ -37,6 +51,7 @@
 
 - Allow passing `allowedChildren` option to the BlockButton, to strip elements in headlines @tiberiuichim
 - Upgrade to latest `@plone/scripts` @sneridagh
+- Update browserlist definitions @sneridagh
 
 ### Documentation
 
