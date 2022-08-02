@@ -161,7 +161,7 @@ describe('Groups Control Panel test for  many groups', () => {
       if (expect(interception.response.body.data.many_groups).to.equal(true)) {
         cy.get('input[id="group-search-input"]').clear().type('editors');
         cy.get('.icon.button:first').click();
-        cy.getIfExists('tbody[data-group]="groups" th')
+        cy.get('[data-group="groups"] td')
           .first()
           .should('have.text', 'editors');
       }
