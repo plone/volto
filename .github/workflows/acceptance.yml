@@ -243,7 +243,7 @@ jobs:
           group: Core Basic - Plone 6
           spec: cypress/tests/core/basic/**/*.js
           start: |
-            make start-test-acceptance-server DOCKER_IMAGE=plone/plone-backend:6.0.0b1 KGS=""
+            make start-test-acceptance-server DOCKER_IMAGE=plone/plone-backend:6.0.0b1
             make start-test-acceptance-frontend
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
 
