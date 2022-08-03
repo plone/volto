@@ -2,10 +2,6 @@
 
 ## 16.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fix ArrayWidget choices when editing a recently created content item. @davisagli
@@ -13,8 +9,6 @@
 ### Internal
 
 - Fix propTypes for Pagination component @davisagli
-
-### Documentation
 
 ## 16.0.0-alpha.20 (2022-08-01)
 
