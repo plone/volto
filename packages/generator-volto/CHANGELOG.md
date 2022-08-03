@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Add alias to ESlint config in project generator @sneridagh
+
 ### Internal
 
 ## 5.8.0 (2022-07-28)
