@@ -261,6 +261,7 @@ msgstr "Aukerak"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/DatabaseInformation
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Diff/Diff
 #: components/manage/History/History
 #: components/manage/Multilingual/ManageTranslations
@@ -671,6 +672,7 @@ msgstr "Data (berriena lehenengo)"
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Contents/ContentsTagsModal
 #: components/manage/Contents/ContentsWorkflowModal
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -962,6 +964,7 @@ msgstr "Idatzi zure erabiltzaile-izena egiaztatu dezagun."
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
@@ -1041,6 +1044,11 @@ msgstr "Fazetak eskuman"
 # defaultMessage: Facets on top
 msgid "Facets on top"
 msgstr "Fazetak goian"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Failed to undo transactions
+msgid "Failed To Undo Transactions"
+msgstr ""
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Field
@@ -1697,6 +1705,21 @@ msgstr "Albistea ikusi"
 msgid "No"
 msgstr "Ez"
 
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: No transactions found
+msgid "No Transactions Found"
+msgstr ""
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: No transactions selected
+msgid "No Transactions Selected"
+msgstr ""
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: No transactions selected to do undo
+msgid "No Transactions Selected To Do Undo"
+msgstr ""
+
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: No Video selected
 msgid "No Video selected"
@@ -1796,6 +1819,11 @@ msgstr "Ez du workflowrik"
 # defaultMessage: None
 msgid "None"
 msgstr "Bat ere ez"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Note
+msgid "Note"
+msgstr ""
 
 #: components/manage/Controlpanels/Users/UsersControlpanel
 # defaultMessage: Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group.
@@ -2519,6 +2547,11 @@ msgstr "Txikia"
 msgid "Sorry, something went wrong with your request"
 msgstr "Barkatu, zerbait ez da ondo irten zure eskaeran"
 
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Sort by
+msgid "Sort By"
+msgstr ""
+
 #: components/theme/Search/Search
 # defaultMessage: Sort by:
 msgid "Sort By:"
@@ -2540,6 +2573,16 @@ msgstr "Ordenatu etiketaren arabera"
 # defaultMessage: Sort on options
 msgid "Sort on options"
 msgstr "Ordenatu aukeren arabera"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Sort transactions by User-Name, Path or Date
+msgid "Sort transactions by User-Name, Path or Date"
+msgstr ""
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Sorted
+msgid "Sorted"
+msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Blocks/Image/schema
@@ -2609,6 +2652,7 @@ msgstr "Gaia"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
@@ -2618,6 +2662,11 @@ msgstr "Gaia"
 # defaultMessage: Success
 msgid "Success"
 msgstr "Arrakasta"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Successfully undone transactions
+msgid "Successfully Undone Transactions"
+msgstr ""
 
 #: config/Blocks
 # defaultMessage: Summary
@@ -2833,6 +2882,26 @@ msgstr "Katxe guztietan dagoen elementu kopurua"
 msgid "Total number of objects in the database"
 msgstr "Datu-basean dagoen elementu kopurua"
 
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Transactions
+msgid "Transactions"
+msgstr ""
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: #
+msgid "Transactions Checkbox"
+msgstr ""
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Transactions have been sorted
+msgid "Transactions Have Been Sorted"
+msgstr ""
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Transactions have been unsorted
+msgid "Transactions Have Been Unsorted"
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Toolbar/Types
 # defaultMessage: Translate to {lang}
@@ -2886,10 +2955,17 @@ msgstr "UID"
 msgid "Unauthorized"
 msgstr "Ez duzu baimenik"
 
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Form/UndoToolbar
 # defaultMessage: Undo
 msgid "Undo"
 msgstr "Desegin"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Undo Controlpanel
+msgid "Undo Controlpanel"
+msgstr ""
 
 #: components/manage/BlockChooser/BlockChooser
 # defaultMessage: Unfold
@@ -2921,6 +2997,11 @@ msgstr "Kendu itzulpenaren lotura hemendik"
 # defaultMessage: Unlock
 msgid "Unlock"
 msgstr "Desblokeatu"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Unsorted
+msgid "Unsorted"
+msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update
@@ -3128,11 +3209,13 @@ msgstr "Astegunetan"
 msgid "Weekly"
 msgstr "Astero"
 
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/History/History
 # defaultMessage: What
 msgid "What"
 msgstr "Zer"
 
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/History/History
 # defaultMessage: When
 msgid "When"
@@ -3143,6 +3226,7 @@ msgstr "Noiz"
 msgid "When this date is reached, the content will nolonger be visible in listings and searches."
 msgstr "Data hau iristean, elementua ez da erakutsiko bilaketa eta zerrendetan"
 
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/History/History
 # defaultMessage: Who
 msgid "Who"
