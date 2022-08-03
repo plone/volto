@@ -12,6 +12,8 @@
 
 ### Bugfix
 
+- Backport 3546 from master: Fix ArrayWidget choices when editing a recently created content item. @davisagli
+
 ### Internal
 
 ### Documentation
