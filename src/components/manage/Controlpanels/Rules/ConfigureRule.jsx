@@ -24,6 +24,7 @@ import { Icon, Toolbar, UniversalLink } from '@plone/volto/components';
 import {
   getControlPanelRule,
   removeCondition,
+  addCondition,
   removeAction,
 } from '@plone/volto/actions';
 import { toast } from 'react-toastify';
@@ -59,6 +60,10 @@ const messages = defineMessages({
     id: 'Delete condition',
     defaultMessage: 'Condition deleted',
   },
+  addCondition: {
+    id: 'Add condition',
+    defaultMessage: 'Condition added',
+  },
   deleteAction: {
     id: 'Delete action',
     defaultMessage: 'Action deleted',
@@ -79,6 +84,7 @@ class ConfigureRule extends Component {
   static propTypes = {
     getControlPanelRule: PropTypes.func.isRequired,
     removeCondition: PropTypes.func.isRequired,
+    addCondition: PropTypes.func.isRequired,
     removeAction: PropTypes.func.isRequired,
   };
 
@@ -90,8 +96,9 @@ class ConfigureRule extends Component {
    */
   constructor(props) {
     super(props);
-    this.handleAddCondition = this.handleAddCondition.bind(this);
-    this.handleAddAction = this.handleAddAction.bind(this);
+    this.openConditionAdd = this.openConditionAdd.bind(this);
+    this.openActionModal = this.openActionModal.bind(this);
+    this.handleConditionAdd = this.handleConditionAdd.bind(this);
 
     this.state = {
       isClient: false,
@@ -127,6 +134,7 @@ class ConfigureRule extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
+    console.log('thisrule', this.props.rule);
     if (
       this.props.rule.deletecondition.loading &&
       nextProps.rule.deletecondition.loaded
@@ -136,6 +144,22 @@ class ConfigureRule extends Component {
           success
           title={this.props.intl.formatMessage(messages.success)}
           content={this.props.intl.formatMessage(messages.deleteCondition)}
+        />,
+      );
+      this.props.getControlPanelRule(
+        getBaseUrl(this.props.pathname),
+        this.props.match.params.id,
+      );
+    }
+    if (
+      this.props.rule.addcondition.loading &&
+      nextProps.rule.addcondition.loaded
+    ) {
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.addCondition)}
         />,
       );
       this.props.getControlPanelRule(
@@ -186,10 +210,10 @@ class ConfigureRule extends Component {
 
   /**
    * Add condition handler
-   * @method handleAddCondition
+   * @method openConditionAdd
    * @returns {undefined}
    */
-  handleAddCondition() {
+  openConditionAdd() {
     if (this.state.selectedCondition) {
       this.setState({ openModal: true });
     }
@@ -201,11 +225,21 @@ class ConfigureRule extends Component {
   }
 
   /**
-   * Add action handler
-   * @method handleAddAction
+   * Condition save handler
+   * @method handleConditionAdd
    * @returns {undefined}
    */
-  handleAddAction() {
+  handleConditionAdd(val) {
+    const ruleId = this.props.match.params.id;
+    this.props.addCondition(getBaseUrl(this.props.pathname), ruleId, val);
+  }
+
+  /**
+   * Add action handler
+   * @method openActionModal
+   * @returns {undefined}
+   */
+  openActionModal() {
     this.setState({ openModal: true });
 
     // this.props.AddAction(
@@ -355,11 +389,7 @@ class ConfigureRule extends Component {
                             this.setState({ selectedCondition: value })
                           }
                         />
-                        <Button
-                          compact
-                          onClick={this.handleAddCondition}
-                          primary
-                        >
+                        <Button compact onClick={this.openConditionAdd} primary>
                           <FormattedMessage id="Add" defaultMessage="Add" />
                         </Button>
                       </Grid.Row>
@@ -487,6 +517,7 @@ class ConfigureRule extends Component {
             open={this.state.openModal}
             onClose={() => this.setState({ openModal: false })}
             onOpen={() => this.setState({ openModal: true })}
+            onSave={this.handleConditionAdd}
             value={this.state.selectedCondition}
             type="Condition"
           />
@@ -522,6 +553,6 @@ export default compose(
       rule: state.controlpanelrule,
       title: 'Example rule',
     }),
-    { getControlPanelRule, removeCondition, removeAction },
+    { getControlPanelRule, removeCondition, addCondition, removeAction },
   ),
 )(ConfigureRule);

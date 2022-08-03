@@ -88,6 +88,7 @@ export {
   addNewRule,
   editRule,
   removeCondition,
+  addCondition,
   removeAction,
 } from '@plone/volto/actions/rules/rules';
 export {

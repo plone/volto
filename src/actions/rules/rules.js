@@ -14,6 +14,7 @@ import {
   EDIT_CONTROLPANEL_RULE,
   DELETECONDITION_CONTROLPANEL_RULE,
   DELETEACTION_CONTROLPANEL_RULE,
+  ADDCONDITION_CONTROLPANEL_RULE,
 } from '@plone/volto/constants/ActionTypes';
 
 /**
@@ -265,6 +266,23 @@ export function removeCondition(url, rule, condition) {
     request: {
       op: 'del',
       path: `${url}/@controlpanels/content-rules/${rule}/condition/${condition}`,
+    },
+  };
+}
+
+/**
+ * Remove rule condition function.
+ * @function addCondition
+ * @param {string} url Content url.
+ * @returns {Object} Remove rule condition action.
+ */
+export function addCondition(url, rule, data) {
+  return {
+    type: ADDCONDITION_CONTROLPANEL_RULE,
+    request: {
+      op: 'post',
+      path: `${url}/@controlpanels/content-rules/${rule}/condition`,
+      data,
     },
   };
 }

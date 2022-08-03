@@ -1,52 +1,36 @@
 import React from 'react';
-import { Button, Dropdown, Modal } from 'semantic-ui-react';
+import { FormattedMessage } from 'react-intl';
+import { Button, Modal } from 'semantic-ui-react';
+import VariableInput from './VariableInput';
 
-const VariableInput = ({ value }) => {
-  const [vocabulary, setVocabulary] = React.useState('');
+const AddConfigureModal = ({ value, open, type, onClose, onOpen, onSave }) => {
+  const [inputData, setInputData] = React.useState('');
+  const [formError, setFormError] = React.useState(false);
 
   React.useEffect(() => {
-    detectVocabulary(value.title);
-  }, [value]);
-
-  const setInput = (type) => {
-    switch (type) {
-      case 'Content type':
-        // setVocabulary('plone.app.vocabularies.PortalTypes');
-        return (
-          <Dropdown
-            placeholder="Content Type"
-            fluid
-            multiple
-            selection
-            options={[]}
-          />
-        );
-      default:
-        return <p>Not supported</p>;
-    }
-  };
-
-  const detectVocabulary = (type) => {
-    switch (type) {
-      case 'Content type':
-        return setVocabulary('plone.app.vocabularies.PortalTypes');
-
-      default:
-        return;
-    }
-  };
-
-  const DetectedInput = setInput(value.title);
-
-  return <div>{setInput(value.title)}</div>;
-};
-
-const AddConfigureModal = ({ value, open, type, onClose, onOpen }) => {
-  console.log(value);
+    setFormError(false);
+    setInputData('');
+  }, [open]);
 
   const handleSave = () => {
-    console.log('saving');
+    if (inputData && !inputData.error) {
+      onSave(inputData);
+      setFormError(false);
+      onClose();
+    }
+    if (inputData && inputData.error) {
+      setFormError(true);
+    }
+    if (!inputData) {
+      setFormError(true);
+    }
   };
+
+  const handleInputChange = (v) => {
+    setInputData(v);
+    setFormError(false);
+  };
+
   return (
     <Modal centered={false} open={open} onClose={onClose} onOpen={onOpen}>
       <Modal.Header>
@@ -54,11 +38,22 @@ const AddConfigureModal = ({ value, open, type, onClose, onOpen }) => {
       </Modal.Header>
       <Modal.Content>
         <Modal.Description>
-          <VariableInput value={value} />
+          <VariableInput
+            value={value}
+            onChange={(val) => handleInputChange(val)}
+          />
+          {formError && (
+            <FormattedMessage
+              id="Please fill out fields"
+              defaultMessage="Please fill out fields"
+            />
+          )}
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-        <Button onClick={handleSave}>Save</Button>
+        <Button primary onClick={() => handleSave()}>
+          Save
+        </Button>
 
         <Button onClick={onClose}>Cancel</Button>
       </Modal.Actions>

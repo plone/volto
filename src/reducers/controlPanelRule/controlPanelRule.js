@@ -3,6 +3,7 @@ import {
   DELETE_CONTROLPANEL_RULE,
   EDIT_CONTROLPANEL_RULE,
   DELETECONDITION_CONTROLPANEL_RULE,
+  ADDCONDITION_CONTROLPANEL_RULE,
   EDITCONDITION_CONTROLPANEL_RULE,
   UPCONDITION_CONTROLPANEL_RULE,
   DOWNCONDITION_CONTROLPANEL_RULE,
@@ -29,6 +30,11 @@ const initialState = {
     error: null,
   },
   deletecondition: {
+    loaded: false,
+    loading: false,
+    error: null,
+  },
+  addcondition: {
     loaded: false,
     loading: false,
     error: null,
@@ -69,6 +75,7 @@ export default function controlPanelRule(state = initialState, action = {}) {
     case `${DELETE_CONTROLPANEL_RULE}_PENDING`:
     case `${EDIT_CONTROLPANEL_RULE}_PENDING`:
     case `${DELETECONDITION_CONTROLPANEL_RULE}_PENDING`:
+    case `${ADDCONDITION_CONTROLPANEL_RULE}_PENDING`:
     case `${EDITCONDITION_CONTROLPANEL_RULE}_PENDING`:
     case `${UPCONDITION_CONTROLPANEL_RULE}_PENDING`:
     case `${DOWNCONDITION_CONTROLPANEL_RULE}_PENDING`:
@@ -97,6 +104,7 @@ export default function controlPanelRule(state = initialState, action = {}) {
     case `${DELETE_CONTROLPANEL_RULE}_SUCCESS`:
     case `${EDIT_CONTROLPANEL_RULE}_SUCCESS`:
     case `${DELETECONDITION_CONTROLPANEL_RULE}_SUCCESS`:
+    case `${ADDCONDITION_CONTROLPANEL_RULE}_SUCCESS`:
     case `${EDITCONDITION_CONTROLPANEL_RULE}_SUCCESS`:
     case `${UPCONDITION_CONTROLPANEL_RULE}_SUCCESS`:
     case `${DOWNCONDITION_CONTROLPANEL_RULE}_SUCCESS`:
@@ -116,6 +124,7 @@ export default function controlPanelRule(state = initialState, action = {}) {
     case `${DELETE_CONTROLPANEL_RULE}_FAIL`:
     case `${EDIT_CONTROLPANEL_RULE}_FAIL`:
     case `${DELETECONDITION_CONTROLPANEL_RULE}_FAIL`:
+    case `${ADDCONDITION_CONTROLPANEL_RULE}_FAIL`:
     case `${EDITCONDITION_CONTROLPANEL_RULE}_FAIL`:
     case `${UPCONDITION_CONTROLPANEL_RULE}_FAIL`:
     case `${DOWNCONDITION_CONTROLPANEL_RULE}_FAIL`:
