@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix ArrayWidget choices when editing a recently created content item. @davisagli
+
 ### Internal
 
 - Fix propTypes for Pagination component @davisagli
