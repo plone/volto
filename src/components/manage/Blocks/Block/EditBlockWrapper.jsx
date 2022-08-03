@@ -38,8 +38,8 @@ const EditBlockWrapper = (props) => {
 
   return (
     <div
-      ref={draginfo.innerRef}
-      {...draginfo.draggableProps}
+      // ref={draginfo.innerRef}
+      // {...draginfo.draggableProps}
       // Right now, we can have the alignment information in the styles property or in the
       // block data root, we inject the classname here for having control over the whole
       // Block Edit wrapper
@@ -53,7 +53,7 @@ const EditBlockWrapper = (props) => {
             visibility: visible ? 'visible' : 'hidden',
             display: 'inline-block',
           }}
-          {...draginfo.dragHandleProps}
+          // {...draginfo.dragHandleProps}
           className="drag handle wrapper"
         >
           <Icon name={dragSVG} size="18px" />

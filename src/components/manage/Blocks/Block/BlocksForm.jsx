@@ -196,14 +196,60 @@ const BlocksForm = (props) => {
           {blockList
             .filter(([id, child]) => id && child) // beware numbers!
             .map(([childId, child], index) => (
-              <SortableItem key={childId} id={childId} />
+              <SortableItem
+                key={childId}
+                id={childId}
+                child={child}
+                index={index}
+              >
+                {(dragProps) => {
+                  // debugger;
+                  const { child, childId, index } = dragProps;
+                  const blockProps = {
+                    allowedBlocks,
+                    showRestricted,
+                    block: childId,
+                    data: child,
+                    handleKeyDown,
+                    id: childId,
+                    formTitle: title,
+                    formDescription: description,
+                    index,
+                    manage,
+                    onAddBlock,
+                    onInsertBlock,
+                    onChangeBlock,
+                    onChangeField,
+                    onChangeFormData,
+                    onDeleteBlock,
+                    onFocusNextBlock,
+                    onFocusPreviousBlock,
+                    onMoveBlock,
+                    onMutateBlock,
+                    onSelectBlock,
+                    pathname,
+                    metadata,
+                    properties,
+                    blocksConfig,
+                    selected: selectedBlock === childId,
+                    multiSelected: multiSelected?.includes(childId),
+                    type: child['@type'],
+                    editable,
+                  };
+                  return editBlockWrapper(
+                    dragProps,
+                    <EditBlock key={childId} {...blockProps} />,
+                    blockProps,
+                  );
+                }}
+              </SortableItem>
             ))}
 
           {/* {items.map((id) => (
           <SortableItem key={id} id={id} />
         ))} */}
         </SortableContext>
-        <DragOverlay>{activeId ? <Item id={activeId} /> : null}</DragOverlay>
+        {/* <DragOverlay>{activeId ? <Item id={activeId} /> : null}</DragOverlay> */}
         {/* <DragDropList
           childList={blockList}
           onMoveItem={(result) => {
