@@ -69,14 +69,14 @@ export const multilingualRoutes = [
     component: Register,
   },
   {
-    path: `/(${config.settings?.supportedLanguages.join('|')})/password-reset`,
+    path: `/(${config.settings?.supportedLanguages.join('|')})/passwordreset`,
     component: RequestPasswordReset,
     exact: true,
   },
   {
     path: `/(${config.settings?.supportedLanguages.join(
       '|',
-    )})/password-reset/:token`,
+    )})/passwordreset/:token`,
     component: PasswordReset,
     exact: true,
   },
