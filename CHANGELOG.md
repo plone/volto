@@ -6,7 +6,7 @@
 
 - The complete configuration registry is passed to the add-ons and the project configuration pipeline
 See https://docs.voltocms.com/upgrade-guide/ for more information. @sneridagh
-- Refactor the component registry API in the configuration registry @sneridagh
+- Refactor the component registry API in the configuration registry @sneridagh @tiberiuichim
 
 ### Feature
 
