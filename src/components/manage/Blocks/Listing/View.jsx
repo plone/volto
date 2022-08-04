@@ -12,6 +12,7 @@ const View = (props) => {
     <div
       className={cx('block listing', data.variation || 'default', className)}
     >
+      {data.headline && <h2 className="headline">{data.headline}</h2>}
       <ListingBody {...props} path={path ?? pathname} />
     </div>
   );

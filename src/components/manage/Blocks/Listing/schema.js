@@ -22,6 +22,10 @@ const messages = defineMessages({
     id: 'Link to',
     defaultMessage: 'Link to',
   },
+  headline: {
+    id: 'Headline',
+    defaultMessage: 'Headline',
+  },
 });
 
 export const schemaListing = (props) => {
@@ -33,7 +37,7 @@ export const schemaListing = (props) => {
       {
         id: 'default',
         title: 'Default',
-        fields: ['querystring'],
+        fields: ['headline', 'querystring'],
       },
       ...(config.blocks.blocksConfig.listing.showLinkMore
         ? [
@@ -47,6 +51,9 @@ export const schemaListing = (props) => {
     ],
 
     properties: {
+      headline: {
+        title: intl.formatMessage(messages.headline),
+      },
       querystring: {
         title: intl.formatMessage(messages.querystring),
         widget: 'querystring',
