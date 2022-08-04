@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix content loading in `DefaultView` infinite loop if a listing block with no query is present. @sneridagh
+
 ### Internal
 
 ### Documentation
