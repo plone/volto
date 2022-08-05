@@ -186,9 +186,6 @@ let config = {
   components,
 };
 
-config = applySlateConfiguration(config);
-config = applyAddonConfiguration(config);
-
 ConfigRegistry.settings = config.settings;
 ConfigRegistry.blocks = config.blocks;
 ConfigRegistry.views = config.views;
@@ -197,3 +194,5 @@ ConfigRegistry.addonRoutes = config.addonRoutes;
 ConfigRegistry.addonReducers = config.addonReducers;
 ConfigRegistry.appExtras = config.appExtras;
 ConfigRegistry.components = config.components;
+
+applyAddonConfiguration(applySlateConfiguration(ConfigRegistry));
