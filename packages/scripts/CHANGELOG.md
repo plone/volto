@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add support for recommended structure `frontend` folder using `CHANGELOG.md` in the parent folder. @sneridagh
+
 ### Bugfix
 
 ### Internal
