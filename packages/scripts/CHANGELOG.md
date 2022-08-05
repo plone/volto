@@ -1,5 +1,15 @@
 # Change Log
 
+## 1.6.1 (unreleased)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
 ## 1.6.0 (2022-08-05)
 
 ### Feature
