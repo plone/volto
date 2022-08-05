@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.5.1 (unreleased)
+## 1.6.1 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,12 @@
 ### Bugfix
 
 ### Internal
+
+## 1.6.0 (2022-08-05)
+
+### Feature
+
+- Add support for recommended structure `frontend` folder using `CHANGELOG.md` in the parent folder. @sneridagh
 
 ## 1.5.0 (2022-07-28)
 
