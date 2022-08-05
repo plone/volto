@@ -8,15 +8,13 @@
 See https://docs.voltocms.com/upgrade-guide/ for more information. @sneridagh
 - Refactor the component registry API in the configuration registry @sneridagh @tiberiuichim
 
-### Feature
-
 ### Bugfix
 
 - Fix content loading in `DefaultView` infinite loop if a listing block with no query is present. @sneridagh
 
-### Internal
-
 ### Documentation
+
+- Documentation of the new component registry API @sneridagh
 
 ## 16.0.0-alpha.21 (2022-08-03)
 
