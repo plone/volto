@@ -131,7 +131,8 @@ export class QuerystringWidgetComponent extends Component {
     const values = this.props.indexes[row.i].values;
 
     const operator = this.props.indexes[row.i].operators[row.o];
-    switch (this.props.indexes[row.i].operators[row.o].widget) {
+
+    switch (operator.widget) {
       case null:
         return <span />;
       case 'DateWidget':
