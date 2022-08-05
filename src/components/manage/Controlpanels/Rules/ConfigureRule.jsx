@@ -16,7 +16,6 @@ import {
   Container,
   Dropdown,
   Grid,
-  Modal,
   Segment,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
@@ -26,6 +25,7 @@ import {
   removeCondition,
   addCondition,
   removeAction,
+  addAction,
 } from '@plone/volto/actions';
 import { toast } from 'react-toastify';
 import { Toast } from '@plone/volto/components';
@@ -33,7 +33,7 @@ import { Toast } from '@plone/volto/components';
 import backSVG from '@plone/volto/icons/back.svg';
 import upSVG from '@plone/volto/icons/up.svg';
 import downSVG from '@plone/volto/icons/down.svg';
-import AddConfigureModal from './AddConfigureModal';
+import AddConfigureModal from './components/AddConfigureModal';
 
 const messages = defineMessages({
   back: {
@@ -68,6 +68,10 @@ const messages = defineMessages({
     id: 'Delete action',
     defaultMessage: 'Action deleted',
   },
+  addAction: {
+    id: 'Add action',
+    defaultMessage: 'Action added',
+  },
 });
 
 /**
@@ -86,6 +90,7 @@ class ConfigureRule extends Component {
     removeCondition: PropTypes.func.isRequired,
     addCondition: PropTypes.func.isRequired,
     removeAction: PropTypes.func.isRequired,
+    addAction: PropTypes.func.isRequired,
   };
 
   /**
@@ -96,14 +101,16 @@ class ConfigureRule extends Component {
    */
   constructor(props) {
     super(props);
-    this.openConditionAdd = this.openConditionAdd.bind(this);
+    this.openConditionModal = this.openConditionModal.bind(this);
     this.openActionModal = this.openActionModal.bind(this);
     this.handleConditionAdd = this.handleConditionAdd.bind(this);
+    this.handleActionAdd = this.handleActionAdd.bind(this);
 
     this.state = {
       isClient: false,
       openModal: false,
       selectedCondition: '',
+      selectedAction: '',
     };
   }
 
@@ -134,7 +141,6 @@ class ConfigureRule extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
-    console.log('thisrule', this.props.rule);
     if (
       this.props.rule.deletecondition.loading &&
       nextProps.rule.deletecondition.loaded
@@ -183,6 +189,19 @@ class ConfigureRule extends Component {
         this.props.match.params.id,
       );
     }
+    if (this.props.rule.addaction.loading && nextProps.rule.addaction.loaded) {
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.addAction)}
+        />,
+      );
+      this.props.getControlPanelRule(
+        getBaseUrl(this.props.pathname),
+        this.props.match.params.id,
+      );
+    }
   }
 
   /**
@@ -210,18 +229,13 @@ class ConfigureRule extends Component {
 
   /**
    * Add condition handler
-   * @method openConditionAdd
+   * @method openConditionModal
    * @returns {undefined}
    */
-  openConditionAdd() {
+  openConditionModal() {
     if (this.state.selectedCondition) {
       this.setState({ openModal: true });
     }
-    // this.props.AddCondition(
-    //   getBaseUrl(this.props.pathname),
-    //   ruleId,
-    //   conditionId,
-    // );
   }
 
   /**
@@ -241,12 +255,16 @@ class ConfigureRule extends Component {
    */
   openActionModal() {
     this.setState({ openModal: true });
+  }
 
-    // this.props.AddAction(
-    //   getBaseUrl(this.props.pathname),
-    //   ruleId,
-    //   actionId,
-    // );
+  /**
+   * Action save handler
+   * @method handleActionAdd
+   * @returns {undefined}
+   */
+  handleActionAdd(val) {
+    const ruleId = this.props.match.params.id;
+    this.props.addAction(getBaseUrl(this.props.pathname), ruleId, val);
   }
 
   /**
@@ -383,13 +401,16 @@ class ConfigureRule extends Component {
                           placeholder="Select condition"
                           fluid
                           selection
-                          additionLabel="llaalal"
                           options={conditions_options}
                           onChange={(e, { value }) =>
                             this.setState({ selectedCondition: value })
                           }
                         />
-                        <Button compact onClick={this.openConditionAdd} primary>
+                        <Button
+                          compact
+                          onClick={this.openConditionModal}
+                          primary
+                        >
                           <FormattedMessage id="Add" defaultMessage="Add" />
                         </Button>
                       </Grid.Row>
@@ -471,12 +492,14 @@ class ConfigureRule extends Component {
                           placeholder="Select action"
                           fluid
                           selection
-                          additionLabel="llaalal"
                           options={actions_options}
+                          onChange={(e, { value }) =>
+                            this.setState({ selectedAction: value })
+                          }
                         />
                         <Button
                           compact
-                          onClick={() => console.log('handleadd')}
+                          onClick={() => this.openActionModal()}
                           primary
                         >
                           <FormattedMessage id="Add" defaultMessage="Add" />
@@ -522,6 +545,16 @@ class ConfigureRule extends Component {
             type="Condition"
           />
         )}
+        {this.state.selectedAction && (
+          <AddConfigureModal
+            open={this.state.openModal}
+            onClose={() => this.setState({ openModal: false })}
+            onOpen={() => this.setState({ openModal: true })}
+            onSave={this.handleActionAdd}
+            value={this.state.selectedAction}
+            type="Action"
+          />
+        )}
         {this.state.isClient && (
           <Portal node={document.getElementById('toolbar')}>
             <Toolbar
@@ -553,6 +586,12 @@ export default compose(
       rule: state.controlpanelrule,
       title: 'Example rule',
     }),
-    { getControlPanelRule, removeCondition, addCondition, removeAction },
+    {
+      getControlPanelRule,
+      removeCondition,
+      addCondition,
+      removeAction,
+      addAction,
+    },
   ),
 )(ConfigureRule);

@@ -90,6 +90,7 @@ export {
   removeCondition,
   addCondition,
   removeAction,
+  addAction,
 } from '@plone/volto/actions/rules/rules';
 export {
   resetSearchContent,

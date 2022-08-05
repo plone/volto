@@ -3,8 +3,16 @@ import { FormattedMessage } from 'react-intl';
 import { Button, Modal } from 'semantic-ui-react';
 import VariableInput from './VariableInput';
 
-const AddConfigureModal = ({ value, open, type, onClose, onOpen, onSave }) => {
-  const [inputData, setInputData] = React.useState('');
+const AddConfigureModal = ({
+  value,
+  open,
+  type,
+  onClose,
+  onOpen,
+  onSave,
+  data,
+}) => {
+  const [inputData, setInputData] = React.useState(data);
   const [formError, setFormError] = React.useState(false);
 
   React.useEffect(() => {
@@ -40,6 +48,7 @@ const AddConfigureModal = ({ value, open, type, onClose, onOpen, onSave }) => {
         <Modal.Description>
           <VariableInput
             value={value}
+            data={inputData}
             onChange={(val) => handleInputChange(val)}
           />
           {formError && (

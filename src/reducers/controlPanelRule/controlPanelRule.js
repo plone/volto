@@ -11,6 +11,7 @@ import {
   EDITACTION_CONTROLPANEL_RULE,
   UPACTION_CONTROLPANEL_RULE,
   DOWNACTION_CONTROLPANEL_RULE,
+  ADDACTION_CONTROLPANEL_RULE,
 } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
@@ -49,6 +50,11 @@ const initialState = {
     loading: false,
     error: null,
   },
+  addaction: {
+    loaded: false,
+    loading: false,
+    error: null,
+  },
   item: {},
 };
 
@@ -83,6 +89,7 @@ export default function controlPanelRule(state = initialState, action = {}) {
     case `${EDITACTION_CONTROLPANEL_RULE}_PENDING`:
     case `${UPACTION_CONTROLPANEL_RULE}_PENDING`:
     case `${DOWNACTION_CONTROLPANEL_RULE}_PENDING`:
+    case `${ADDACTION_CONTROLPANEL_RULE}_PENDING`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
@@ -112,6 +119,7 @@ export default function controlPanelRule(state = initialState, action = {}) {
     case `${EDITACTION_CONTROLPANEL_RULE}_SUCCESS`:
     case `${UPACTION_CONTROLPANEL_RULE}_SUCCESS`:
     case `${DOWNACTION_CONTROLPANEL_RULE}_SUCCESS`:
+    case `${ADDACTION_CONTROLPANEL_RULE}_SUCCESS`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
@@ -132,6 +140,7 @@ export default function controlPanelRule(state = initialState, action = {}) {
     case `${EDITACTION_CONTROLPANEL_RULE}_FAIL`:
     case `${UPACTION_CONTROLPANEL_RULE}_FAIL`:
     case `${DOWNACTION_CONTROLPANEL_RULE}_FAIL`:
+    case `${ADDACTION_CONTROLPANEL_RULE}_FAIL`:
       return {
         ...state,
         [getRequestKey(action.type)]: {

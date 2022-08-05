@@ -3,6 +3,9 @@ import { Dropdown, Input } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
 import { getVocabulary } from '@plone/volto/actions';
+import { FormattedMessage } from 'react-intl';
+import LoggerActionInput from './LoggerActionInput';
+import NotifyActionInput from './NotifyActionInput';
 
 const VariableInput = ({
   value,
@@ -10,6 +13,7 @@ const VariableInput = ({
   state,
   getVocabulary,
   onChange,
+  data,
 }) => {
   const [vocabularyName, setVocabularyName] = React.useState('');
 
@@ -35,7 +39,9 @@ const VariableInput = ({
       : [];
 
   const setInput = (type) => {
+    console.log('type', type);
     switch (type) {
+      //conditions
       case 'Content type':
         return (
           <Dropdown
@@ -130,6 +136,24 @@ const VariableInput = ({
                   : { error: 'error' },
               )
             }
+          />
+        );
+      // actions
+      case 'Logger':
+        return (
+          <LoggerActionInput data={data} onChange={onChange} type={addview} />
+        );
+      case 'Notify user':
+        return (
+          <NotifyActionInput
+            data={data}
+            onChange={onChange}
+            type={addview}
+            options={[
+              { key: 'info', text: 'info', value: 'info' },
+              { key: 'warning', text: 'warning', value: 'warning' },
+              { key: 'error', text: 'error', value: 'error' },
+            ]}
           />
         );
       default:
