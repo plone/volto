@@ -2,15 +2,9 @@
 
 ## 1.5.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Add support for recommended structure `frontend` folder using `CHANGELOG.md` in the parent folder. @sneridagh
-
-### Bugfix
-
-### Internal
 
 ## 1.5.0 (2022-07-28)
 
