@@ -13,7 +13,7 @@ import {
   blacklistRoutes,
   protectLoadStart,
   protectLoadEnd,
-  loadProtector
+  loadProtector,
 } from '@plone/volto/middleware';
 
 const configureStore = (initialState, history, apiHelper) => {
