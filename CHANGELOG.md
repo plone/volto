@@ -8,7 +8,7 @@
 
 ### Feature
 
-- support for many_users and many_groups flag in user controlpanel @nileshgulia1
+- support for many_users and many_groups flag in user controlpanel and group controlpanel @nileshgulia1
 
 ### Bugfix
 
