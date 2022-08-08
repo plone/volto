@@ -40,7 +40,13 @@ const AddConfigureModal = ({
   };
 
   return (
-    <Modal centered={false} open={open} onClose={onClose} onOpen={onOpen}>
+    <Modal
+      centered={false}
+      open={open}
+      onClose={onClose}
+      onOpen={onOpen}
+      dimmer={<Modal.Dimmer style={{ zIndex: 99 }} />}
+    >
       <Modal.Header>
         Add {value.title} {type}
       </Modal.Header>

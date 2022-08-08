@@ -2,10 +2,12 @@ import React from 'react';
 import { Dropdown, Input } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
+import { flattenToAppURL } from '@plone/volto/helpers';
 import { getVocabulary } from '@plone/volto/actions';
 import { FormattedMessage } from 'react-intl';
 import LoggerActionInput from './LoggerActionInput';
 import NotifyActionInput from './NotifyActionInput';
+import UrlWidget from '@plone/volto/components/manage/Widgets/UrlWidget';
 
 const VariableInput = ({
   value,
@@ -156,6 +158,33 @@ const VariableInput = ({
             ]}
           />
         );
+      case 'Copy to folder':
+        return (
+          <UrlWidget
+            title="Target folder: "
+            onChange={(id, val) =>
+              onChange(
+                value
+                  ? { target_folder: flattenToAppURL(val), type: addview }
+                  : { error: 'error' },
+              )
+            }
+          />
+        );
+      case 'Move to folder':
+        return (
+          <UrlWidget
+            title="Target folder: "
+            onChange={(id, val) =>
+              onChange(
+                value
+                  ? { target_folder: flattenToAppURL(val), type: addview }
+                  : { error: 'error' },
+              )
+            }
+          />
+        );
+
       default:
         return <p>Not supported</p>;
     }
