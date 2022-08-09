@@ -11,7 +11,6 @@ import { Button, Form, Grid, Input, Label } from 'semantic-ui-react';
 import { filter, remove, toPairs, groupBy, isEmpty, map } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import { getQuerystring } from '@plone/volto/actions';
-import { addAppURL, flattenToAppURL } from '@plone/volto/helpers';
 import { Icon, ObjectBrowserWidget } from '@plone/volto/components';
 import { format, parse } from 'date-fns';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
@@ -38,6 +37,10 @@ const messages = defineMessages({
   select: {
     id: 'querystring-widget-select',
     defaultMessage: 'Select…',
+  },
+  no_items_selected: {
+    id: 'No items selected',
+    defaultMessage: 'No items selected',
   },
   currentPath: {
     id: 'query-widget-currentPath',
@@ -215,19 +218,20 @@ export class QuerystringWidgetComponent extends Component {
             <ObjectBrowserWidget
               style={{ flex: '1 0 auto' }}
               onChange={(id, data) => {
-                this.onChangeValue(index, addAppURL(data?.[0]?.['@id']));
+                this.onChangeValue(
+                  index,
+                  data.map((d) => {
+                    return {
+                      '@id': d['@id'],
+                      UID: d.UID,
+                      title: d.title,
+                      getPath: d.getPath,
+                    };
+                  }),
+                );
               }}
-              placeholder="No item selected"
-              value={
-                props.value
-                  ? [
-                      {
-                        '@id': flattenToAppURL(props.value),
-                        title: flattenToAppURL(props.value),
-                      },
-                    ]
-                  : []
-              }
+              placeholder={intl.formatMessage(messages.no_items_selected)}
+              value={props.value ?? []}
               mode="link"
               wrapped={false}
             />
