@@ -257,7 +257,7 @@ class Login extends Component {
                       )}
                       <Grid.Column stretched width="12">
                         <p className="help">
-                          <Link to="/password-reset">
+                          <Link to="/passwordreset">
                             {this.props.intl.formatMessage(
                               messages.forgotPassword,
                             )}

@@ -4,21 +4,47 @@
 
 ### Breaking
 
+- change password-reset url to be consistent with Plone configuration @erral
+
 ### Feature
 
 ### Bugfix
 
 ### Internal
 
-- Fix propTypes for Pagination component @davisagli
+### Documentation
+
+## 16.0.0-alpha.22 (2022-08-05)
+
+### Breaking
+
+- The complete configuration registry is passed to the add-ons and the project configuration pipeline
+See https://docs.voltocms.com/upgrade-guide/ for more information. @sneridagh
+- Refactor the component registry API in the configuration registry @sneridagh @tiberiuichim
+
+### Bugfix
+
+- Fix content loading in `DefaultView` infinite loop if a listing block with no query is present. @sneridagh
 
 ### Documentation
+
+- Documentation of the new component registry API @sneridagh
+
+## 16.0.0-alpha.21 (2022-08-03)
+
+### Bugfix
+
+- Fix ArrayWidget choices when editing a recently created content item. @davisagli
+
+### Internal
+
+- Fix propTypes for Pagination component @davisagli
 
 ## 16.0.0-alpha.20 (2022-08-01)
 
 ### Breaking
 
-- Use `Cypress` 10.3.0 (migrate from 9.x.x). Cypress 10 has some interesting goodies, being the native support of Apple Silicon Computers the main of it. See https://docs.voltocms.com/upgrade-guide/ for more information.
+- Use `Cypress` 10.3.0 (migrate from 9.x.x). Cypress 10 has some interesting goodies, being the native support of Apple Silicon Computers the main of it. See https://docs.voltocms.com/upgrade-guide/ for more information. @sneridagh
 
 ### Bugfix
 

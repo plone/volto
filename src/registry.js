@@ -1,3 +1,5 @@
+import { isArray } from 'lodash';
+
 class Config {
   constructor() {
     if (!Config.instance) {
@@ -88,12 +90,37 @@ class Config {
     this._data.components = components;
   }
 
-  resolve(component) {
-    return this._data.components[component] || {};
+  getComponent({ name, dependencies = '' }) {
+    if (typeof arguments[0] === 'object') {
+      let depsString;
+      if (dependencies && isArray(dependencies)) {
+        depsString = dependencies.join('+');
+      } else {
+        depsString = dependencies;
+      }
+      const componentName = `${name}${depsString ? `|${depsString}` : ''}`;
+
+      return this._data.components[componentName] || {};
+    } else {
+      // Shortcut notation, accepting a lonely string as argument
+      return this._data.components[arguments[0]] || {};
+    }
   }
 
-  register(name, component) {
-    this._data.components[name] = component;
+  registerComponent({ name, component, dependencies = '' }) {
+    let depsString;
+    if (!component) {
+      throw new Error('No component provided');
+    } else {
+      if (dependencies && isArray(dependencies)) {
+        depsString = dependencies.join('+');
+      } else {
+        depsString = dependencies;
+      }
+      const componentName = `${name}${depsString ? `|${depsString}` : ''}`;
+
+      this._data.components[componentName] = component;
+    }
   }
 }
 
