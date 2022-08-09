@@ -209,7 +209,7 @@ export class QuerystringWidgetComponent extends Component {
             />
           </Form.Field>
         );
-      case 'ReferenceWidget':
+      case 'ObjectBrowserWidget':
         return (
           <Form.Field style={{ flex: '1 0 auto', maxWidth: '92%' }}>
             <ObjectBrowserWidget
