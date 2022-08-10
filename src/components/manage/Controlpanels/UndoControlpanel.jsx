@@ -540,15 +540,15 @@ class UndoControlpanel extends Component {
                       title: this.props.intl.formatMessage(messages.default),
                       fields: this.state.isSortingTypeSelected
                         ? [
-                          'sortingTypes',
-                          (this.state.sortType.toLowerCase() ===
-                            'user name' &&
-                            'sortByUsername') ||
-                          (this.state.sortType.toLowerCase() === 'path' &&
-                            'sortByPath') ||
-                          (this.state.sortType.toLowerCase() === 'date' &&
-                            'sortByDate'),
-                        ]
+                            'sortingTypes',
+                            (this.state.sortType.toLowerCase() ===
+                              'user name' &&
+                              'sortByUsername') ||
+                              (this.state.sortType.toLowerCase() === 'path' &&
+                                'sortByPath') ||
+                              (this.state.sortType.toLowerCase() === 'date' &&
+                                'sortByDate'),
+                          ]
                         : ['sortingTypes'],
                     },
                   ],
@@ -581,7 +581,7 @@ class UndoControlpanel extends Component {
                 }}
                 error={
                   this.state.isEmptyInputForSorting
-                    ? { message: "Please enter any input to perform sorting" }
+                    ? { message: 'Please enter any input to perform sorting' }
                     : undefined
                 }
                 onChangeFormData={this.onSelect}
@@ -650,11 +650,13 @@ class UndoControlpanel extends Component {
                         {transaction.description}
                       </Table.Cell>
                       <Table.Cell width={3}>
-                        {transaction.user_name ? transaction.user_name : "Zope"}
+                        {transaction.user_name ? transaction.user_name : 'Zope'}
                       </Table.Cell>
                       <Table.Cell width={3}>{transaction.time}</Table.Cell>
                       <Table.Cell width={3}>
-                        {transaction.description.includes("Undo") ? "Undone" : ""}
+                        {transaction.description.includes('Undo')
+                          ? 'Undone'
+                          : ''}
                       </Table.Cell>
                     </Table.Row>
                   ))}
