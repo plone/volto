@@ -96,7 +96,7 @@ For projects already using `volto-slate`, take the following steps in your proje
 + import { DetachedTextBlockEditor } from '@plone/volto-slate/blocks/Text/DetachedTextBlockEditor';
 ```
 
-### Existing projects using core `draftJS`, opting to continue using `draftJS`
+#### Existing projects using core `draftJS`, opting to continue using `draftJS`
 
 You will have to configure your project to continue using `draftJS`, for example, in your `config.js` or in your add-on:
 
@@ -106,14 +106,14 @@ config.blocks.blocksConfig.table.restricted = false;
 config.blocks.blocksConfig.slateTable.restricted = true;
 ```
 
-### Existing projects using core `draftJS`, opting to start using `slate` without migrating (possible, but not recommended)
+#### Existing projects using core `draftJS`, opting to start using `slate` without migrating (possible, but not recommended)
 
 Still a valid option, especially if you don't have the budget for it, the old content based on the legacy `text` block will be still be functional.
 New text blocks in new content will be created with the new `slate` text block.
 
 It is recommended to go the extra mile and migrate the `text` blocks to `slate` blocks for maximum future compatibility.
 
-### Existing projects using core `draftJS`, opting to migrate to `slate`
+#### Existing projects using core `draftJS`, opting to migrate to `slate`
 
 Use the `blocks-conversion-tool`.
 See https://github.com/plone/blocks-conversion-tool for more information.
@@ -140,6 +140,81 @@ Also take a look at: https://dockyard.com/blog/2020/02/14/you-probably-don-t-nee
 If you need to format dates in Volto, it's recommended to use the `FormattedDate` component in Volto core.
 It uses modern recommendations for date formatting on the web.
 ```
+
+### Upgraded core to use Cypress 10
+
+Cypress has overhauled the testing app and included native support of Apple Silicon Computers from 10.2.0 onwards.
+This improves dramatically the launch and test times in these machines.
+It also includes the new "component" testing feature that might be appealing in the near future.
+The only drawback is that they also overhauled the configuration forcing to migrate from old config based on JSON files to a better JS-based one. They also changed and renamed some of the options.
+Luckily, they provide a good reporting when old configuration is in place and an interactive migration wizard.
+
+Core configuration has been updated, but you will require to update your Cypress configuration if you want to use core's Cypress 10.
+Could be that forcing your project to use older versions might still work with old configurations.
+
+See https://docs.cypress.io/guides/references/migration-guide#Migrating-to-Cypress-version-10-0 for more information.
+
+### The complete configuration registry is passed to the add-ons and the project configuration pipeline
+
+The core in versions prior Volto 16.0.0-alpha.22 was passing a simplified version of the configuration registry (in fact, a plain object primitive) to the add-on list and project configuration pipeline.
+
+From Volto 16.0.0-alpha.22 onwards, the full configuration registry is passed through the pipeline.
+This allows to have access to the advanced registry features, like the new component registry.
+You may want to update your configuration in case that you were updating the primitive using basic object operators (spread, etc) in the config object itself.
+For example, this won't work anymore:
+
+```js
+  return {
+    ...config,
+    blocks: {
+      ...config.blocks,
+      blocksConfig: {
+        ...config.blocks.blocksConfig,
+        ...addonBlocks,
+        listing: listing(config),
+      },
+    },
+    views: {
+      ...config.views,
+      contentTypesViews: {
+        ...config.views.contentTypesViews,
+        Folder: NewsAndEvents,
+      },
+    },
+  };
+```
+
+Using the spread operator while you mutate the configuration object is not required.
+You can mutate the object properties directly, like:
+
+```js
+const applyConfig = (config) => {
+  config.blocks.blocksConfig.testBlock = testBlock;
+  config.blocks.blocksConfig.listing = listing(config);
+  config.views.contentTypesViews.Folder = NewsAndEvents;
+
+  return config;
+};
+```
+
+The other rules apply, so make sure you return the `config` object after mutating it.
+
+### Refactor the component registry API in the configuration registry
+
+After a period of testing, this experimental feature has been refactored to adequate better to existing requirements.
+
+#### Renamed `registry.resolve` to `registry.getComponent`
+
+```diff
+- registry.resolve(componentName)?.component;
++ registry.getComponent(componentName)?.component;
+```
+
+#### `registry.getComponent` signature changes
+
+It maintains signature compatibility with `registry.resolve` but introduces new arguments for bigger flexibility.
+
+See documentation for more information.
 
 (volto-upgrade-guide-15.x.x)=
 

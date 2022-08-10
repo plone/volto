@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- change password-reset url to be consistent with Plone configuration @erral
+
 ### Feature
 
 ### Bugfix
@@ -12,8 +14,47 @@
 
 ### Documentation
 
+## 16.0.0-alpha.22 (2022-08-05)
+
+### Breaking
+
+- The complete configuration registry is passed to the add-ons and the project configuration pipeline
+See https://docs.voltocms.com/upgrade-guide/ for more information. @sneridagh
+- Refactor the component registry API in the configuration registry @sneridagh @tiberiuichim
+
+### Bugfix
+
+- Fix content loading in `DefaultView` infinite loop if a listing block with no query is present. @sneridagh
+
+### Documentation
+
+- Documentation of the new component registry API @sneridagh
+
+## 16.0.0-alpha.21 (2022-08-03)
+
+### Bugfix
+
+- Fix ArrayWidget choices when editing a recently created content item. @davisagli
+
+### Internal
+
+- Fix propTypes for Pagination component @davisagli
+
+## 16.0.0-alpha.20 (2022-08-01)
+
+### Breaking
+
+- Use `Cypress` 10.3.0 (migrate from 9.x.x). Cypress 10 has some interesting goodies, being the native support of Apple Silicon Computers the main of it. See https://docs.voltocms.com/upgrade-guide/ for more information. @sneridagh
+
+### Bugfix
+
+- Make Search page title translatable @erral
+
+### Documentation
+
 - Minor clean up of volto-slate upgrade guide. @stevepiercy
 
+- Rework documentation on how to write a Slate plugin @ksuess
 
 ## 16.0.0-alpha.19 (2022-07-28)
 
@@ -36,6 +77,7 @@
 
 - Allow passing `allowedChildren` option to the BlockButton, to strip elements in headlines @tiberiuichim
 - Upgrade to latest `@plone/scripts` @sneridagh
+- Update browserlist definitions @sneridagh
 
 ### Documentation
 
@@ -469,6 +511,7 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 - Improve Cypress integration, using Cypress official Github Action. Improve some flaky tests that showed up, and were known as problematic. Refactor and rename all the Github actions giving them meaningful names, and group them by type. Enable Cypress Dashboard for Volto. @sneridagh
 - Stop using `xmlrpc` library for issuing the setup/teardown in core, use a `cy.request` instead. @sneridagh
 - Added Cypress environment variables for adjusting the backend URL of commands @JeffersonBledsoe #3271
+- Fixed Storybook configuration for add-ons @pnicolli
 
 ### Documentation
 
