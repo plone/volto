@@ -8,6 +8,8 @@ import { FormattedMessage } from 'react-intl';
 import LoggerActionInput from './LoggerActionInput';
 import NotifyActionInput from './NotifyActionInput';
 import UrlWidget from '@plone/volto/components/manage/Widgets/UrlWidget';
+import CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidget';
+import SendEmailInput from './SendEmailInput';
 
 const VariableInput = ({
   value,
@@ -184,6 +186,61 @@ const VariableInput = ({
             }
           />
         );
+      case 'Delete object':
+        return (
+          <CheckboxWidget
+            id="Delete object"
+            title="Confirm adding 'Delete object' action"
+            value={data && !data.error}
+            onChange={(name, value) =>
+              onChange(value ? { type: addview } : { error: 'error' })
+            }
+          />
+        );
+      case 'Transition workflow state':
+        return (
+          <Dropdown
+            placeholder="Transition workflow state"
+            fluid
+            selection
+            onChange={(e, { value }) =>
+              onChange(
+                value.length > 0
+                  ? { transition: value, type: addview }
+                  : { error: 'error' },
+              )
+            }
+            options={vocabularyOptions}
+          />
+        );
+      case 'Send email':
+        return (
+          <SendEmailInput type={addview} data={data} onChange={onChange} />
+        );
+      case 'Version object':
+        return (
+          <Input
+            placeholder="The comment added to the history while versioning the content."
+            fluid
+            onChange={(e, { value }) =>
+              onChange(
+                value ? { comment: value, type: addview } : { error: 'error' },
+              )
+            }
+          />
+        );
+      case 'IMSv4: Retract and rename old Indicator':
+        return (
+          <CheckboxWidget
+            id="IMSv4: Retract and rename old Indicator"
+            title="Confirm adding 'IMSv4: Retract and rename old Indicator' action"
+            value={data && !data.error}
+            onChange={
+              (name, value) => console.log('not implemented yet')
+              //onChange(value ? { type: addview } : { error: 'error' })
+            }
+          />
+        );
 
       default:
         return <p>Not supported</p>;
@@ -200,6 +257,8 @@ const VariableInput = ({
         return 'plone.app.vocabularies.Groups';
       case "User's role":
         return 'plone.app.vocabularies.Roles';
+      case 'Transition workflow state':
+        return 'plone.app.vocabularies.WorkflowTransitions';
       default:
         return '';
     }
