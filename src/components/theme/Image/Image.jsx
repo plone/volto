@@ -5,16 +5,13 @@ It needs merge and refactor when this https://github.com/plone/volto/pull/3337 p
 and <source srcSet={srcSet} /> needs to handle prefixPath.
 */
 import React from 'react';
-import { isInternalURL } from '@plone/volto/helpers';
-import config from '@plone/volto/registry';
+import { addPrefixPath } from '@plone/volto/helpers';
 
 const Image = (props) => {
   const { src, alt = '', ...rest } = props;
-  let url = src;
-  const { prefixPath } = config.settings;
-  if (isInternalURL(src) && prefixPath && !src.startsWith(prefixPath)) {
-    url = prefixPath + src; //add prefixPath to src if it's an internal url and not a static resource.
-  }
+
+  let url = addPrefixPath(src);
+
   return <img src={url} {...rest} alt={alt} />;
 };
 

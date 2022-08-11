@@ -8,10 +8,11 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import {
+  addPrefixPath,
   flattenToAppURL,
   isInternalURL,
   URLUtils,
-} from '@plone/volto/helpers/Url/Url';
+} from '@plone/volto/helpers';
 import { matchPath } from 'react-router';
 
 import config from '@plone/volto/registry';
@@ -113,7 +114,7 @@ const UniversalLink = ({
   } else if (isDownload) {
     tag = (
       <a
-        href={flattenToAppURL(url)}
+        href={addPrefixPath(flattenToAppURL(url))}
         download
         title={title}
         className={className}
@@ -125,7 +126,7 @@ const UniversalLink = ({
   } else if (isDisplayFile) {
     tag = (
       <a
-        href={flattenToAppURL(url)}
+        href={addPrefixPath(flattenToAppURL(url))}
         title={title}
         target="_blank"
         rel="noopener noreferrer"
