@@ -8,6 +8,8 @@
 
 ### Feature
 
+- Show the content type of the content object you are adding/editing in the sidebar @robgietema
+
 ### Bugfix
 
 ### Internal
@@ -19,7 +21,7 @@
 ### Breaking
 
 - The complete configuration registry is passed to the add-ons and the project configuration pipeline
-See https://docs.voltocms.com/upgrade-guide/ for more information. @sneridagh
+  See https://docs.voltocms.com/upgrade-guide/ for more information. @sneridagh
 - Refactor the component registry API in the configuration registry @sneridagh @tiberiuichim
 
 ### Bugfix
@@ -113,7 +115,7 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 
 ### Breaking
 
-- Staticize Poppins font to be compliant with EU privacy. Import from GoogleFont is disabled in site.variables.  @giuliaghisini
+- Staticize Poppins font to be compliant with EU privacy. Import from GoogleFont is disabled in site.variables. @giuliaghisini
 
 ### Bugfix
 
