@@ -53,6 +53,7 @@
 ### Bugfix
 
 - Make Search page title translatable @erral
+- Changed storeProtectLoadUtils location from src/storeProtectLoadUtils to src/middleware/storeProtectLoadUtils @MdSahil-oss
 
 ### Documentation
 
