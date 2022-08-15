@@ -9,6 +9,7 @@
 ### Feature
 
 - Show the content type of the content object you are adding/editing in the sidebar @robgietema
+- Remove soft hyphens from the title tag @davisagli
 
 ### Bugfix
 
