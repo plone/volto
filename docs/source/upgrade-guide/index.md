@@ -216,6 +216,17 @@ It maintains signature compatibility with `registry.resolve` but introduces new 
 
 See documentation for more information.
 
+````{note}
+The `component` argument changed in alpha 23. The `component` key has been flattened for simplification and now it's mapped directly to the `component` argument of `registerComponent`:
+
+```js
+config.registerComponent({
+    name: 'Teaser',
+    component: MyTeaserDefaultComponent,
+  });
+```
+````
+
 (volto-upgrade-guide-15.x.x)=
 
 ## Upgrading to Volto 15.x.x
