@@ -21,9 +21,7 @@ describe('Component component :P', () => {
   it('Render a Component in the registry using dependencies array', () => {
     config.registerComponent({
       name: 'Teaser',
-      component: {
-        component: (props) => <div>this is the Teaser component</div>,
-      },
+      component: (props) => <div>this is the Teaser component</div>,
       dependencies: 'News Item',
     });
     const { container } = render(
