@@ -3,7 +3,7 @@ import {
   protectLoadEnd,
   loadProtector,
 } from './storeProtectLoadUtils';
-import * as helpers from './helpers';
+import * as helpers from '../helpers';
 
 const tick = async () => new Promise((resolve) => setTimeout(resolve, 0));
 

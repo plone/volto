@@ -9,10 +9,16 @@
 ### Feature
 
 - support for many_users and many_groups flag in user controlpanel and group controlpanel @nileshgulia1
+- Show the content type of the content object you are adding/editing in the sidebar @robgietema
+- Remove soft hyphens from the title tag @davisagli
 
 ### Bugfix
 
+- Fix login form redirect when it was loaded with a trailing slash @davisagli
+
 ### Internal
+
+- Use latest 1.6.0 `@plone/scripts` @sneridagh
 
 ### Documentation
 
@@ -21,7 +27,7 @@
 ### Breaking
 
 - The complete configuration registry is passed to the add-ons and the project configuration pipeline
-See https://docs.voltocms.com/upgrade-guide/ for more information. @sneridagh
+  See https://docs.voltocms.com/upgrade-guide/ for more information. @sneridagh
 - Refactor the component registry API in the configuration registry @sneridagh @tiberiuichim
 
 ### Bugfix
@@ -51,6 +57,7 @@ See https://docs.voltocms.com/upgrade-guide/ for more information. @sneridagh
 ### Bugfix
 
 - Make Search page title translatable @erral
+- Changed storeProtectLoadUtils location from src/storeProtectLoadUtils to src/middleware/storeProtectLoadUtils @MdSahil-oss
 
 ### Documentation
 
