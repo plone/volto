@@ -1,5 +1,5 @@
 /* eslint no-console: ["error", { allow: ["error", "warn"] }] */
-import { Editor, Transforms } from 'slate'; // Range, RangeRef
+import { Editor, Transforms, Text } from 'slate'; // Range, RangeRef
 import config from '@plone/volto/registry';
 import {
   getBlocksFieldname,
@@ -196,7 +196,7 @@ export const toggleInlineFormat = (editor, format) => {
   Transforms.wrapNodes(editor, block, { split: true });
 };
 
-export const toggleBlock = (editor, format) => {
+export const toggleBlock = (editor, format, allowedChildren) => {
   // We have 6 boolean variables which need to be accounted for.
   // See https://docs.google.com/spreadsheets/d/1mVeMuqSTMABV2BhoHPrPAFjn7zUksbNgZ9AQK_dcd3U/edit?usp=sharing
   const { slate } = config.settings;
@@ -214,7 +214,7 @@ export const toggleBlock = (editor, format) => {
   } else if (!isListItem && wantsList) {
     changeBlockToList(editor, format);
   } else if (!isListItem && !wantsList) {
-    toggleFormat(editor, format);
+    toggleFormat(editor, format, allowedChildren);
   } else if (isListItem && wantsList && isActive) {
     toggleFormatAsListItem(editor, slate.defaultBlockType);
   } else {
@@ -269,13 +269,24 @@ export const changeBlockToList = (editor, format) => {
   Transforms.wrapNodes(editor, block);
 };
 
-export const toggleFormat = (editor, format) => {
+export const toggleFormat = (editor, format, allowedChildren) => {
   const { slate } = config.settings;
   const isActive = isBlockActive(editor, format);
   const type = isActive ? slate.defaultBlockType : format;
   Transforms.setNodes(editor, {
     type,
   });
+  allowedChildren?.length &&
+    Transforms.unwrapNodes(editor, {
+      mode: 'all',
+      at: [0],
+      match: (n, path) => {
+        const isMatch =
+          path.length > 1 && // we don't deal with the parent nodes
+          !(Text.isText(n) || allowedChildren.includes(n?.type));
+        return isMatch;
+      },
+    });
 };
 
 /**

@@ -76,7 +76,7 @@ export function getUser(id) {
  * @param {int} limit
  * @returns {Object} List users action
  */
-export function listUsers(options) {
+export function listUsers(options = {}) {
   const { query = '', search = '', groups_filter = [], limit = null } = options;
   let path = '/@users';
 
