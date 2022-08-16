@@ -41,7 +41,7 @@ describe('Listing Block Tests', () => {
       path: 'my-page',
     });
     cy.createContent({
-      contentType: 'Folder',
+      contentType: 'Document',
       contentId: 'my-folder',
       contentTitle: 'My Folder',
       path: 'my-page',
@@ -247,7 +247,7 @@ describe('Listing Block Tests', () => {
       path: 'my-page',
     });
     cy.createContent({
-      contentType: 'Folder',
+      contentType: 'Document',
       contentId: 'my-folder',
       contentTitle: 'My Folder',
       path: 'my-page',
@@ -600,19 +600,19 @@ describe('Listing Block Tests', () => {
     cy.intercept('GET', '/**/@types/Document').as('schema');
 
     cy.createContent({
-      contentType: 'Folder',
+      contentType: 'Document',
       contentId: 'my-folder',
       contentTitle: 'My Folder',
       path: 'my-page',
     });
     cy.createContent({
-      contentType: 'Folder',
+      contentType: 'Document',
       contentId: 'my-folder2',
       contentTitle: 'My Folder 2',
       path: 'my-page',
     });
     cy.createContent({
-      contentType: 'Folder',
+      contentType: 'Document',
       contentId: 'my-folder3',
       contentTitle: 'My Folder 3',
       path: 'my-page',

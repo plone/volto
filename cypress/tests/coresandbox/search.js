@@ -5,7 +5,7 @@ context('Search action tests', () => {
       cy.visit('/');
       cy.autologin();
       cy.createContent({
-        contentType: 'Folder',
+        contentType: 'Document',
         contentId: 'folder1',
         contentTitle: 'Test folder',
       });
