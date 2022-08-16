@@ -7,7 +7,7 @@
 - change password-reset url to be consistent with Plone configuration @erral
 - Simplify over the existing Component Registry API. The `component` key has been flattened for simplification and now it's mapped directly to the `component` argument of `registerComponent`. @sneridagh
 
-See https://docs.voltocms.com/upgrade-guide/ for more information.
+See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
 
 ### Feature
 
