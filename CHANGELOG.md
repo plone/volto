@@ -12,6 +12,8 @@
 
 ### Bugfix
 
+- Fix login form redirect when it was loaded with a trailing slash @davisagli
+
 ### Internal
 
 - Use latest 1.6.0 `@plone/scripts` @sneridagh
