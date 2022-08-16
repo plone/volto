@@ -5,6 +5,27 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
   className=""
 >
   <td
+    className=""
+  >
+    <div
+      className="ui fitted checkbox"
+      onChange={[Function]}
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+    >
+      <input
+        checked={false}
+        className="hidden"
+        readOnly={true}
+        tabIndex={0}
+        type="checkbox"
+        value="testuser"
+      />
+      <label />
+    </div>
+  </td>
+  <td
     className="fullname"
   >
     Test User
@@ -70,57 +91,6 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
         value="testuser.Manager"
       />
       <label />
-    </div>
-  </td>
-  <td
-    className="right aligned"
-  >
-    <div
-      aria-expanded={false}
-      className="ui dropdown"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onMouseDown={[Function]}
-      role="listbox"
-      tabIndex={0}
-    >
-      <i
-        aria-hidden="true"
-        className="ellipsis horizontal icon"
-        onClick={[Function]}
-      />
-      <div
-        className="menu transition left"
-      >
-        <div
-          className="item"
-          onClick={[Function]}
-          role="option"
-        >
-          <svg
-            className="icon"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-            onClick={null}
-            style={
-              Object {
-                "fill": "currentColor",
-                "height": "15px",
-                "width": "auto",
-              }
-            }
-            viewBox=""
-            xmlns=""
-          />
-          Delete
-        </div>
-      </div>
     </div>
   </td>
 </tr>

@@ -4,11 +4,10 @@
  */
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { FormattedMessage, injectIntl } from 'react-intl';
-import { Dropdown, Table, Checkbox } from 'semantic-ui-react';
-import trashSVG from '@plone/volto/icons/delete.svg';
+import { injectIntl } from 'react-intl';
+import { Table, Checkbox } from 'semantic-ui-react';
 import { Icon } from '@plone/volto/components';
-import ploneSVG from '@plone/volto/icons/plone.svg';
+import groupSVG from '@plone/volto/icons/group.svg';
 
 /**
  * UsersControlpanelUser class.
@@ -33,6 +32,13 @@ class RenderUsers extends Component {
       }),
     ).isRequired,
     onDelete: PropTypes.func.isRequired,
+    groups: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string,
+        roles: PropTypes.arrayOf(PropTypes.string),
+        groupname: PropTypes.string,
+      }),
+    ),
   };
 
   /**
@@ -45,6 +51,7 @@ class RenderUsers extends Component {
     super(props);
     this.state = {};
     this.onChange = this.onChange.bind(this);
+    this.renderIcon = this.renderIcon.bind(this);
   }
   /**
    * @param {*} event
@@ -56,51 +63,53 @@ class RenderUsers extends Component {
     const [user, role] = value.split('.');
     this.props.updateUser(user, role);
   }
+
+  renderIcon(role) {
+    const { user, groups } = this.props;
+    const isMember = user?.groups?.items?.some((group) => {
+      const inheritedGroup = groups.find((item) => item?.id === group.id);
+      return inheritedGroup?.roles.includes(role);
+    });
+    if (isMember) {
+      return (
+        <Icon name={groupSVG} size="20px" title={'inherited from group'} />
+      );
+    }
+    return (
+      <Checkbox
+        checked={user.roles.includes(role)}
+        onChange={this.onChange}
+        value={`${user.id}.${role}`}
+      />
+    );
+  }
+
   /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
+    const { selected, user, onChangeSelect, roles } = this.props;
+    const isSelected = selected.includes(user.id);
     return (
       <Table.Row key={this.props.user.username}>
+        <Table.Cell>
+          <Checkbox
+            checked={isSelected}
+            onChange={(e) => {
+              e.stopPropagation();
+              onChangeSelect(user.id);
+            }}
+            value={`${user.id}`}
+          />
+        </Table.Cell>
         <Table.Cell className="fullname">
-          {this.props.user.fullname
-            ? this.props.user.fullname
-            : this.props.user.username}
+          {user.fullname || user.username}
         </Table.Cell>
-        {this.props.roles.map((role) => (
-          <Table.Cell key={role.id}>
-            {this.props.inheritedRole &&
-            this.props.inheritedRole.includes(role.id) ? (
-              <Icon
-                name={ploneSVG}
-                size="20px"
-                color="#007EB1"
-                title={'plone-svg'}
-              />
-            ) : (
-              <Checkbox
-                checked={this.props.user.roles.includes(role.id)}
-                onChange={this.onChange}
-                value={`${this.props.user.id}.${role.id}`}
-              />
-            )}
-          </Table.Cell>
+        {roles.map((role) => (
+          <Table.Cell key={role.id}>{this.renderIcon(role.id)}</Table.Cell>
         ))}
-        <Table.Cell textAlign="right">
-          <Dropdown icon="ellipsis horizontal">
-            <Dropdown.Menu className="left">
-              <Dropdown.Item
-                onClick={this.props.onDelete}
-                value={this.props.user['@id']}
-              >
-                <Icon name={trashSVG} size="15px" />
-                <FormattedMessage id="Delete" defaultMessage="Delete" />
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-        </Table.Cell>
       </Table.Row>
     );
   }

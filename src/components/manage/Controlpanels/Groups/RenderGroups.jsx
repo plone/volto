@@ -4,11 +4,10 @@
  */
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { FormattedMessage, injectIntl } from 'react-intl';
-import { Dropdown, Table, Checkbox } from 'semantic-ui-react';
-import trashSVG from '@plone/volto/icons/delete.svg';
-import ploneSVG from '@plone/volto/icons/plone.svg';
+import { injectIntl } from 'react-intl';
+import { Table, Checkbox } from 'semantic-ui-react';
 import { Icon } from '@plone/volto/components';
+import groupSVG from '@plone/volto/icons/group.svg';
 
 /**
  * UsersControlpanelGroups class.
@@ -38,6 +37,13 @@ class RenderGroups extends Component {
     ).isRequired,
     inheritedRole: PropTypes.array,
     onDelete: PropTypes.func.isRequired,
+    groups: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string,
+        roles: PropTypes.arrayOf(PropTypes.string),
+        groupname: PropTypes.string,
+      }),
+    ),
   };
 
   /**
@@ -48,7 +54,8 @@ class RenderGroups extends Component {
    */
   constructor(props) {
     super(props);
-    this.onChange = this.onChange.bind(this);
+    this.onChangeRole = this.onChangeRole.bind(this);
+    this.renderIcon = this.renderIcon.bind(this);
   }
 
   /**
@@ -56,65 +63,56 @@ class RenderGroups extends Component {
    * @param {*} { value }
    * @memberof UsersControlpanelUser
    */
-  onChange(event, { value }) {
+  onChangeRole(event, { value }) {
     const [group, role] = value.split('.');
     this.props.updateGroups(group, role);
   }
 
-  /**
-   *@param {*}
-   *@returns {Boolean}
-   *@memberof RenderGroups
-   */
-  isAuthGroup = (roleId) => {
-    return this.props.inheritedRole.includes(roleId);
-  };
+  renderIcon(role) {
+    const { groups, group } = this.props;
+    const childMembers = groups.some(
+      (item) =>
+        item?.members?.items?.includes(group.id) && item.roles.includes(role),
+    );
+
+    if (childMembers) {
+      return (
+        <Icon name={groupSVG} size="20px" title={'inherited from group'} />
+      );
+    }
+    return (
+      <Checkbox
+        checked={group.roles.includes(role)}
+        onChange={this.onChangeRole}
+        value={`${group.id}.${role}`}
+      />
+    );
+  }
+
   /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
+    const { selected, group, onChangeSelect, roles } = this.props;
+    const isSelected = selected.includes(group.id);
     return (
-      <Table.Row key={this.props.group.title}>
-        <Table.Cell>{this.props.group.groupname}</Table.Cell>
-        {this.props.roles.map((role) => (
-          <Table.Cell key={role.id}>
-            {this.props.inheritedRole &&
-            this.props.inheritedRole.includes(role.id) &&
-            this.props.group.roles.includes('Authenticated') ? (
-              <Icon
-                name={ploneSVG}
-                size="20px"
-                color="#007EB1"
-                title={'plone-svg'}
-              />
-            ) : (
-              <Checkbox
-                checked={
-                  this.props.group.id === 'AuthenticatedUsers'
-                    ? this.isAuthGroup(role.id)
-                    : this.props.group.roles.includes(role.id)
-                }
-                onChange={this.onChange}
-                value={`${this.props.group.id}.${role.id}`}
-              />
-            )}
-          </Table.Cell>
-        ))}
-        <Table.Cell textAlign="right">
-          <Dropdown icon="ellipsis horizontal">
-            <Dropdown.Menu className="left">
-              <Dropdown.Item
-                onClick={this.props.onDelete}
-                value={this.props.group['@id']}
-              >
-                <Icon name={trashSVG} size="15px" />
-                <FormattedMessage id="Delete" defaultMessage="Delete" />
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+      <Table.Row key={group.title}>
+        <Table.Cell>
+          <Checkbox
+            checked={isSelected}
+            onChange={(e) => {
+              e.stopPropagation();
+              onChangeSelect(group.id);
+            }}
+            value={`${group.id}`}
+          />
         </Table.Cell>
+        <Table.Cell>{group.groupname}</Table.Cell>
+        {roles.map((role) => (
+          <Table.Cell key={role.id}>{this.renderIcon(role.id)}</Table.Cell>
+        ))}
       </Table.Row>
     );
   }

@@ -16,6 +16,7 @@ const testUser = {
   id: 'testuser',
   location: 'somewhere',
   roles: ['Member'],
+  groups: { '@id': 'http://localhost:8080/Plone/@groups', items: [] },
   username: 'testuser',
 };
 
@@ -47,7 +48,12 @@ describe('UsersControlpanelUser', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <RenderUsers user={testUser} roles={testRoles} onDelete={() => {}} />
+        <RenderUsers
+          user={testUser}
+          roles={testRoles}
+          onDelete={() => {}}
+          selected={[]}
+        />
       </Provider>,
     );
     const json = component.toJSON();
