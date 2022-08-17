@@ -183,6 +183,7 @@ describe('Listing Block Tests', () => {
     );
 
     //add listing block
+    cy.scrollTo('bottom');
     cy.getSlate(true).click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
@@ -650,7 +651,7 @@ describe('Listing Block Tests', () => {
     cy.get(
       '.querystring-widget .fields:first-of-type > .field .react-select__menu .react-select__option',
     )
-      .contains('Document')
+      .contains('Page')
       .click();
 
     cy.get('#field-limit-3-querystring').click().type('2');
@@ -682,7 +683,7 @@ describe('Listing Block Tests', () => {
     cy.get('#field-b_size-4-querystring').click().type('2');
     cy.get('.ui.pagination.menu a[value="2"]').first().click();
 
-    cy.get('.listing-item h4').first().contains('My Folder 2');
+    cy.get('.listing-item h4').first().contains('My Folder 3');
   });
 
   // it('Listing block - Test Criteria: Location Navigation', () => {
