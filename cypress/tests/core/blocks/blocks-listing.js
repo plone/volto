@@ -169,9 +169,9 @@ describe('Listing Block Tests', () => {
     cy.intercept('GET', '/**/@types/*').as('schema');
 
     cy.createContent({
-      contentType: 'Document',
-      contentId: 'my-page-test',
-      contentTitle: 'My Page Test',
+      contentType: 'News Item',
+      contentId: 'my-news',
+      contentTitle: 'My News',
       path: 'my-page',
     });
 
@@ -650,7 +650,7 @@ describe('Listing Block Tests', () => {
     cy.get(
       '.querystring-widget .fields:first-of-type > .field .react-select__menu .react-select__option',
     )
-      .contains('Folder')
+      .contains('Document')
       .click();
 
     cy.get('#field-limit-3-querystring').click().type('2');
@@ -682,7 +682,7 @@ describe('Listing Block Tests', () => {
     cy.get('#field-b_size-4-querystring').click().type('2');
     cy.get('.ui.pagination.menu a[value="2"]').first().click();
 
-    cy.get('.listing-item h4').first().contains('My Folder 3');
+    cy.get('.listing-item h4').first().contains('My Folder 2');
   });
 
   // it('Listing block - Test Criteria: Location Navigation', () => {
