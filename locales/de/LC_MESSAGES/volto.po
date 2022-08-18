@@ -2496,7 +2496,7 @@ msgstr "Übersicht"
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: Site Setup
 msgid "Site Setup"
-msgstr "Seiteneinstellungen"
+msgstr "Systemeinstellungen"
 
 #: components/theme/Sitemap/Sitemap
 # defaultMessage: Sitemap

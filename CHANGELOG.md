@@ -17,6 +17,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 ### Bugfix
 
 - Fix login form redirect when it was loaded with a trailing slash @davisagli
+- Better de translation for Site Setup @davisagli
 
 ### Internal
 
