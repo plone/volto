@@ -151,6 +151,11 @@ msgstr "新しいユーザを追加"
 msgid "Add to Groups"
 msgstr "グループに追加"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add users to group
+msgid "Add users to group"
+msgstr ""
+
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Add term
 msgid "Add vocabulary term"
@@ -160,6 +165,21 @@ msgstr ""
 # defaultMessage: Add {type}
 msgid "Add {type}"
 msgstr "{type} を追加"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Add-Ons
+msgid "Add-Ons"
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Add-on Configuration
+msgid "Add-on Configuration"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Add-ons
+msgid "Add-ons"
+msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Add-ons Settings
@@ -172,10 +192,10 @@ msgid "Additional date"
 msgstr "追加日"
 
 #: components/manage/Blocks/Block/StylesSchema
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Maps/MapsSidebar
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Maps/schema
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Alignment
 msgid "Alignment"
 msgstr "配置"
@@ -190,18 +210,19 @@ msgstr "すべて"
 msgid "Alphabetically"
 msgstr "アルファベット順"
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/schema
 # defaultMessage: Alt text
 msgid "Alt text"
 msgstr "代替テキスト"
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 # defaultMessage: Leave empty if the image is purely decorative.
 msgid "Alt text hint"
 msgstr ""
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 # defaultMessage: Describe the purpose of the image.
 msgid "Alt text hint link text"
 msgstr ""
@@ -340,7 +361,6 @@ msgstr "キャンセル"
 msgid "Cell"
 msgstr "セル"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Center
@@ -453,7 +473,7 @@ msgid "Collection"
 msgstr "コレクション"
 
 #: components/manage/Blocks/Block/StylesSchema
-#: components/manage/Widgets/ColorPicker
+#: components/manage/Widgets/ColorPickerWidget
 # defaultMessage: Color
 msgid "Color"
 msgstr ""
@@ -505,6 +525,11 @@ msgstr "お問い合わせフォーム"
 # defaultMessage: Contained items
 msgid "Contained items"
 msgstr "含まれるアイテム"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Content
+msgid "Content"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Content type created
@@ -606,6 +631,11 @@ msgstr "ブロックをカット"
 # defaultMessage: Daily
 msgid "Daily"
 msgstr "毎日"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Database
+msgid "Database"
+msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Database Information
@@ -868,11 +898,6 @@ msgstr "メール送信"
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "Embedコードがエラーです。説明を読んで再度実行してください。"
 
-#: components/manage/Blocks/Maps/View
-# defaultMessage: Embeded Google Maps
-msgid "Embeded Google Maps"
-msgstr "埋め込まれたGoogle Maps"
-
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Empty object list
 msgid "Empty object list"
@@ -905,7 +930,6 @@ msgid "Enter an email address. This will be your login name. We respect your pri
 msgstr "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere. (未翻訳)"
 
 #: components/manage/Preferences/PersonalInformation
-#: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 # defaultMessage: Enter full name, e.g. John Smith.
 msgid "Enter full name, e.g. John Smith."
@@ -922,15 +946,20 @@ msgid "Enter your current password."
 msgstr "現在のパスワードを入力"
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your email address for verification.
-msgid "Enter your email address for verification."
-msgstr "確認するためにあなたのメールアドレスを入力してください"
+# defaultMessage: Enter your email for verification.
+msgid "Enter your email for verification."
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your new password. Minimum 5 characters.
 msgid "Enter your new password. Minimum 5 characters."
 msgstr "新しいパスワードを入力。（5文字以上）"
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Enter your username for verification.
+msgid "Enter your username for verification."
+msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -979,7 +1008,6 @@ msgstr "満了日付"
 msgid "Expired"
 msgstr "期間満了"
 
-#: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: External URL
 msgid "External URL"
@@ -1035,6 +1063,11 @@ msgstr "ファイルサイズ"
 msgid "Filename"
 msgstr "ファイル名"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter users by groups
+msgid "Filter users by groups"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: Filter…
 msgid "Filter…"
@@ -1082,7 +1115,6 @@ msgid "Full"
 msgstr "フルサイズ"
 
 #: components/manage/Preferences/PersonalInformation
-#: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 # defaultMessage: Full Name
 msgid "Full Name"
@@ -1097,6 +1129,11 @@ msgstr "氏名"
 # defaultMessage: GNU GPL license
 msgid "GNU GPL license"
 msgstr "GNU GPL license"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: General
+msgid "General"
+msgstr ""
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Global role
@@ -1222,6 +1259,7 @@ msgstr "確かに正しいURLを入力したのにエラーになってしまう
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Image
 msgid "Image"
@@ -1230,6 +1268,11 @@ msgstr "画像"
 #: config/Blocks
 # defaultMessage: Image gallery
 msgid "Image gallery"
+msgstr ""
+
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Image size
+msgid "Image size"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
@@ -1244,6 +1287,11 @@ msgstr "この繰り返しを含める"
 # defaultMessage: Info
 msgid "Info"
 msgstr "情報"
+
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+# defaultMessage: You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to user group settings. See the button on the left.
+msgid "InfoUserGroupSettings"
+msgstr ""
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Inherit permissions from higher levels
@@ -1289,6 +1337,11 @@ msgstr "インストール済み"
 # defaultMessage: Installed version
 msgid "Installed version"
 msgstr "インストール済バージョン"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Installing a third party add-on
+msgid "Installing a third party add-on"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: days
@@ -1372,6 +1425,11 @@ msgstr "言語"
 msgid "Language independent field."
 msgstr ""
 
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Large
+msgid "Large"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Last
 msgid "Last"
@@ -1402,7 +1460,6 @@ msgstr "レイアウト"
 msgid "Lead Image"
 msgstr "リード画像"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Left
@@ -1427,11 +1484,9 @@ msgid "Link title"
 msgstr "リンクタイトル"
 
 #: components/manage/Blocks/HeroImageLeft/schema
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
-#: components/manage/Blocks/Maps/MapsSidebar
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Link to
 msgid "Link to"
 msgstr "リンク先"
@@ -1514,11 +1569,12 @@ msgid "Manage translations for {title}"
 msgstr "{title}の翻訳を管理する"
 
 #: components/manage/Blocks/Maps/MapsSidebar
-# defaultMessage: Map
-msgid "Map"
-msgstr "地図"
+#: components/manage/Blocks/Maps/schema
+# defaultMessage: Maps
+msgid "Maps"
+msgstr ""
 
-#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Maps/schema
 # defaultMessage: Maps URL
 msgid "Maps URL"
 msgstr "地図URL"
@@ -1532,6 +1588,11 @@ msgstr "最大の長さは {len} です。"
 # defaultMessage: Maximum value is {len}.
 msgid "Maximum value is {len}."
 msgstr "最大の値は {len} です。"
+
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Medium
+msgid "Medium"
+msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Message
@@ -1595,9 +1656,14 @@ msgid "Multiple choices?"
 msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: My email address is
-msgid "My email address is"
-msgstr "私のメールアドレスは、"
+# defaultMessage: My email is
+msgid "My email is"
+msgstr ""
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: My username is
+msgid "My username is"
+msgstr "私のユーザー名は"
 
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
@@ -1632,6 +1698,11 @@ msgstr "ニュース"
 msgid "No"
 msgstr "No"
 
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: No Video selected
+msgid "No Video selected"
+msgstr ""
+
 #: components/manage/Controlpanels/VersionOverview
 # defaultMessage: No addons found
 msgid "No addons found"
@@ -1640,7 +1711,7 @@ msgstr ""
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected
 msgid "No image selected"
-msgstr "画像が選択されていません"
+msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: No image set in Lead Image content field
@@ -1704,6 +1775,11 @@ msgstr "選択肢無し"
 msgid "No uninstall profile"
 msgstr "アンインストール用のプロファイルがありません"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: No user found
+msgid "No user found"
+msgstr ""
+
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 #: components/manage/Widgets/SelectUtils
@@ -1711,11 +1787,6 @@ msgstr "アンインストール用のプロファイルがありません"
 # defaultMessage: No value
 msgid "No value"
 msgstr "値がありません"
-
-#: components/manage/Blocks/Video/VideoSidebar
-# defaultMessage: No video selected
-msgid "No video selected"
-msgstr "ビデオが選択されていません"
 
 #: components/manage/Workflow/Workflow
 # defaultMessage: No workflow
@@ -1758,10 +1829,8 @@ msgstr "OK"
 msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed."
 msgstr ""
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Maps/MapsSidebar
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr "新しいタブで開く"
@@ -1776,7 +1845,6 @@ msgstr "Open menu (未翻訳)"
 msgid "Open object browser"
 msgstr "オブジェクトブラウザを開く"
 
-#: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
 msgid "Origin"
@@ -1868,6 +1936,16 @@ msgstr "「Google Maps -> 共有 -> 地図を埋め込む」で提供されるEm
 msgid "Please fill out the form below to set your password."
 msgstr "パスワードをフォームに入力してください"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Please search for users or use the filters on the side.
+msgid "Please search for users or use the filters on the side."
+msgstr ""
+
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+# defaultMessage: Please upgrade to plone.restapi >= 8.24.0.
+msgid "Please upgrade to plone.restapi >= 8.24.0."
+msgstr ""
+
 #: components/theme/Footer/Footer
 # defaultMessage: Plone Foundation
 msgid "Plone Foundation"
@@ -1914,7 +1992,7 @@ msgstr "コードの整形"
 msgid "Preview"
 msgstr "プレビュー"
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Preview Image URL
 msgid "Preview Image URL"
 msgstr "プレビュー画像のURL"
@@ -2019,6 +2097,11 @@ msgstr "繰り返しを削除"
 msgid "Remove term"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Remove users from group
+msgid "Remove users from group"
+msgstr ""
+
 #: components/manage/Toolbar/More
 # defaultMessage: Remove working copy
 msgid "Remove working copy"
@@ -2118,7 +2201,6 @@ msgstr "審査状態"
 msgid "Richtext"
 msgstr "Richtext"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Right
@@ -2174,6 +2256,7 @@ msgstr "スキーマの更新"
 #: components/manage/Blocks/Search/layout/RightColumnFacets
 #: components/manage/Blocks/Search/layout/TopSideFacets
 #: components/manage/Blocks/Search/schema
+#: components/theme/Search/Search
 #: components/theme/SearchWidget/SearchWidget
 # defaultMessage: Search
 msgid "Search"
@@ -2357,6 +2440,11 @@ msgstr "すべて表示"
 msgid "Show Replies"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Show groups of users below
+msgid "Show groups of users below"
+msgstr ""
+
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Show item
 msgid "Show item"
@@ -2419,15 +2507,15 @@ msgstr "サイト設定"
 msgid "Sitemap"
 msgstr "サイトマップ"
 
-#: components/manage/Blocks/Image/ImageSidebar
-# defaultMessage: Size
-msgid "Size"
-msgstr "サイズ"
-
 #: components/theme/View/ImageView
 # defaultMessage: Size: {size}
 msgid "Size: {size}"
 msgstr "サイズ: {size}"
+
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Small
+msgid "Small"
+msgstr ""
 
 #: error
 # defaultMessage: Sorry, something went wrong with your request
@@ -2457,6 +2545,7 @@ msgid "Sort on options"
 msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Image/schema
 # defaultMessage: Source
 msgid "Source"
 msgstr "ソース"
@@ -2548,7 +2637,8 @@ msgstr ""
 msgid "Table"
 msgstr "テーブル"
 
-#: components/manage/Blocks/ToC/View
+#: components/manage/Blocks/ToC/variations/DefaultTocRenderer
+#: components/manage/Blocks/ToC/variations/HorizontalMenu
 # defaultMessage: Table of Contents
 msgid "Table of Contents"
 msgstr "目次"
@@ -2897,6 +2987,17 @@ msgstr "Used for programmatic access to the fieldset. (未翻訳)"
 msgid "User"
 msgstr "ユーザ"
 
+#: components/manage/Controlpanels/Controlpanels
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Membership
+msgid "User Group Membership"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Settings
+msgid "User Group Settings"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: User created
 msgid "User created"
@@ -2939,12 +3040,13 @@ msgstr ""
 msgid "Version Overview"
 msgstr "バージョン情報"
 
+#: components/manage/Blocks/Video/schema
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Video
 msgid "Video"
 msgstr "ビデオ"
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Video URL
 msgid "Video URL"
 msgstr "ビデオURL"
@@ -3113,7 +3215,7 @@ msgstr "このコンテンツをここに貼り付けることはできません
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your email is required for reset your password.
 msgid "Your email is required for reset your password."
-msgstr "Your email is required for reset your password. (未翻訳)"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 # defaultMessage: Your location - either city and country - or in a company setting, where your office is located.
@@ -3129,6 +3231,11 @@ msgstr "Your password has been set successfully. You may now {link} with your ne
 # defaultMessage: Your preferred language
 msgid "Your preferred language"
 msgstr "優先する言語"
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Your username is required for reset your password.
+msgid "Your usernaame is required for reset your password."
+msgstr ""
 
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -3252,9 +3359,14 @@ msgid "intranet"
 msgstr "イントラネット"
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: My email address is
-msgid "label_my_email_address_is"
-msgstr "私のメールアドレスは"
+# defaultMessage: My email is
+msgid "label_my_email_is"
+msgstr ""
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: My username is
+msgid "label_my_username_is"
+msgstr "私のユーザー名は"
 
 #: config/Blocks
 # defaultMessage: Lead Image Field
@@ -3314,6 +3426,7 @@ msgstr "よく使う物"
 
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+#: components/theme/Widgets/BooleanWidget
 # defaultMessage: No
 msgid "no"
 msgstr ""
@@ -3591,6 +3704,7 @@ msgstr "外部サイトを表示"
 
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+#: components/theme/Widgets/BooleanWidget
 # defaultMessage: Yes
 msgid "yes"
 msgstr ""

@@ -9,7 +9,7 @@ export const Url = WidgetStory.bind({
 });
 
 export default {
-  title: 'Widgets/Url',
+  title: 'Edit Widgets/Url',
   component: UrlWidget,
   decorators: [
     (Story) => (

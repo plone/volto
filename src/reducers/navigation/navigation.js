@@ -25,6 +25,7 @@ const initialState = {
 function getRecursiveItems(items) {
   return map(items, (item) => ({
     title: item.title,
+    description: item.description,
     url: flattenToAppURL(item['@id']),
     ...(item.items && { items: getRecursiveItems(item.items) }),
   }));

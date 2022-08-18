@@ -152,6 +152,11 @@ msgstr "Afegeix un nou usuari"
 msgid "Add to Groups"
 msgstr "Afegeix a grups"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add users to group
+msgid "Add users to group"
+msgstr ""
+
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Add term
 msgid "Add vocabulary term"
@@ -161,6 +166,21 @@ msgstr "Afegeix un nou terme del vocabulari"
 # defaultMessage: Add {type}
 msgid "Add {type}"
 msgstr "Afegeix {type}"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Add-Ons
+msgid "Add-Ons"
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Add-on Configuration
+msgid "Add-on Configuration"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Add-ons
+msgid "Add-ons"
+msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Add-ons Settings
@@ -173,10 +193,10 @@ msgid "Additional date"
 msgstr "Data addicional"
 
 #: components/manage/Blocks/Block/StylesSchema
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Maps/MapsSidebar
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Maps/schema
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Alignment
 msgid "Alignment"
 msgstr "Posicionament"
@@ -191,18 +211,19 @@ msgstr "Tots"
 msgid "Alphabetically"
 msgstr "Alfabèticament"
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/schema
 # defaultMessage: Alt text
 msgid "Alt text"
 msgstr "Text alternatiu (alt)"
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 # defaultMessage: Leave empty if the image is purely decorative.
 msgid "Alt text hint"
 msgstr "Deixeu el camp buit si la imatge és purament decorativa"
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 # defaultMessage: Describe the purpose of the image.
 msgid "Alt text hint link text"
 msgstr "Descriu el propòsit de la imatge"
@@ -341,7 +362,6 @@ msgstr "Cancel·lar"
 msgid "Cell"
 msgstr "Cèl·lula"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Center
@@ -454,7 +474,7 @@ msgid "Collection"
 msgstr "Col·lecció"
 
 #: components/manage/Blocks/Block/StylesSchema
-#: components/manage/Widgets/ColorPicker
+#: components/manage/Widgets/ColorPickerWidget
 # defaultMessage: Color
 msgid "Color"
 msgstr ""
@@ -506,6 +526,11 @@ msgstr "Formulari de contacte"
 # defaultMessage: Contained items
 msgid "Contained items"
 msgstr "Elements continguts"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Content
+msgid "Content"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Content type created
@@ -607,6 +632,11 @@ msgstr "Talla bloc"
 # defaultMessage: Daily
 msgid "Daily"
 msgstr "Diàriament"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Database
+msgid "Database"
+msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Database Information
@@ -869,11 +899,6 @@ msgstr "Email enviat"
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "Error d'inserció del codi, seguiu les instruccions i torneu-ho a provar."
 
-#: components/manage/Blocks/Maps/View
-# defaultMessage: Embeded Google Maps
-msgid "Embeded Google Maps"
-msgstr "Google Maps incrustat"
-
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Empty object list
 msgid "Empty object list"
@@ -906,7 +931,6 @@ msgid "Enter an email address. This will be your login name. We respect your pri
 msgstr "Introduïu una adreça de correu electrònic. Aquest serà el vostre nom d'inici de sessió. Respectem la vostra privadesa i no donarem l'adreça a tercers ni l'exposarem enlloc."
 
 #: components/manage/Preferences/PersonalInformation
-#: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 # defaultMessage: Enter full name, e.g. John Smith.
 msgid "Enter full name, e.g. John Smith."
@@ -923,15 +947,20 @@ msgid "Enter your current password."
 msgstr "Introduïu la vostra contrasenya actual."
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your email address for verification.
-msgid "Enter your email address for verification."
-msgstr "Introduïu la vostra adreça de correu electrònic per a la verificació."
+# defaultMessage: Enter your email for verification.
+msgid "Enter your email for verification."
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your new password. Minimum 5 characters.
 msgid "Enter your new password. Minimum 5 characters."
 msgstr "Introduïu la vostra nova contrasenya. Mínim 5 caràcters."
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Enter your username for verification.
+msgid "Enter your username for verification."
+msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -980,7 +1009,6 @@ msgstr "Data de caducitat"
 msgid "Expired"
 msgstr "Caducat"
 
-#: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: External URL
 msgid "External URL"
@@ -1036,6 +1064,11 @@ msgstr "Mida de l'arxiu"
 msgid "Filename"
 msgstr "Nom de l'arxiu"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter users by groups
+msgid "Filter users by groups"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: Filter…
 msgid "Filter…"
@@ -1083,7 +1116,6 @@ msgid "Full"
 msgstr "Complet"
 
 #: components/manage/Preferences/PersonalInformation
-#: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 # defaultMessage: Full Name
 msgid "Full Name"
@@ -1098,6 +1130,11 @@ msgstr "Nom complet"
 # defaultMessage: GNU GPL license
 msgid "GNU GPL license"
 msgstr "Llicència GNU GPL"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: General
+msgid "General"
+msgstr ""
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Global role
@@ -1223,6 +1260,7 @@ msgstr "Si esteu segur que teniu l'adreça web correcta però trobeu un error, p
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Image
 msgid "Image"
@@ -1232,6 +1270,11 @@ msgstr "imatge"
 # defaultMessage: Image gallery
 msgid "Image gallery"
 msgstr "Galeria d'imatges"
+
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Image size
+msgid "Image size"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Include this occurence
@@ -1245,6 +1288,11 @@ msgstr "Incloeu aquesta ocurrència"
 # defaultMessage: Info
 msgid "Info"
 msgstr "Informació"
+
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+# defaultMessage: You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to user group settings. See the button on the left.
+msgid "InfoUserGroupSettings"
+msgstr ""
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Inherit permissions from higher levels
@@ -1290,6 +1338,11 @@ msgstr "Instal·lat"
 # defaultMessage: Installed version
 msgid "Installed version"
 msgstr "Versió instal·lada"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Installing a third party add-on
+msgid "Installing a third party add-on"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: days
@@ -1373,6 +1426,11 @@ msgstr "Llenguatge"
 msgid "Language independent field."
 msgstr ""
 
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Large
+msgid "Large"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Last
 msgid "Last"
@@ -1403,7 +1461,6 @@ msgstr "Disseny"
 msgid "Lead Image"
 msgstr "Imatge Principal"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Left
@@ -1428,11 +1485,9 @@ msgid "Link title"
 msgstr "Títol de l'enllaç"
 
 #: components/manage/Blocks/HeroImageLeft/schema
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
-#: components/manage/Blocks/Maps/MapsSidebar
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Link to
 msgid "Link to"
 msgstr "Enllaç a"
@@ -1515,11 +1570,12 @@ msgid "Manage translations for {title}"
 msgstr "Gestiona les traduccions per a {title}"
 
 #: components/manage/Blocks/Maps/MapsSidebar
-# defaultMessage: Map
-msgid "Map"
-msgstr "Mapa"
+#: components/manage/Blocks/Maps/schema
+# defaultMessage: Maps
+msgid "Maps"
+msgstr ""
 
-#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Maps/schema
 # defaultMessage: Maps URL
 msgid "Maps URL"
 msgstr "URL del mapa"
@@ -1533,6 +1589,11 @@ msgstr "La longitud màxima és {len}."
 # defaultMessage: Maximum value is {len}.
 msgid "Maximum value is {len}."
 msgstr "El valor màxim és {len}."
+
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Medium
+msgid "Medium"
+msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Message
@@ -1596,9 +1657,14 @@ msgid "Multiple choices?"
 msgstr "Múltiples opcions?"
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: My email address is
-msgid "My email address is"
-msgstr "La meva adreça de correu electrònic és"
+# defaultMessage: My email is
+msgid "My email is"
+msgstr ""
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: My username is
+msgid "My username is"
+msgstr "El meu nom d'usuari és"
 
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
@@ -1633,6 +1699,11 @@ msgstr "Noticia"
 msgid "No"
 msgstr "No"
 
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: No Video selected
+msgid "No Video selected"
+msgstr ""
+
 #: components/manage/Controlpanels/VersionOverview
 # defaultMessage: No addons found
 msgid "No addons found"
@@ -1641,7 +1712,7 @@ msgstr ""
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected
 msgid "No image selected"
-msgstr "No s'ha seleccionat cap imatge"
+msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: No image set in Lead Image content field
@@ -1705,6 +1776,11 @@ msgstr "Sense selecció"
 msgid "No uninstall profile"
 msgstr "Aquest complement no proporciona un perfil de desinstal·lació."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: No user found
+msgid "No user found"
+msgstr ""
+
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 #: components/manage/Widgets/SelectUtils
@@ -1712,11 +1788,6 @@ msgstr "Aquest complement no proporciona un perfil de desinstal·lació."
 # defaultMessage: No value
 msgid "No value"
 msgstr "Sense valor"
-
-#: components/manage/Blocks/Video/VideoSidebar
-# defaultMessage: No video selected
-msgid "No video selected"
-msgstr "No s'ha seleccionat cap vídeo"
 
 #: components/manage/Workflow/Workflow
 # defaultMessage: No workflow
@@ -1759,10 +1830,8 @@ msgstr "D'acord"
 msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed."
 msgstr ""
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Maps/MapsSidebar
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr "Obre en una pestanya nova"
@@ -1777,7 +1846,6 @@ msgstr "Obre el menú"
 msgid "Open object browser"
 msgstr "Obre el navegador d'objectes"
 
-#: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
 msgid "Origin"
@@ -1869,6 +1937,16 @@ msgstr "Introduïu el codi d'inserció proporcionat per Google Maps -> Compartei
 msgid "Please fill out the form below to set your password."
 msgstr "Si us plau, omple el formulari següent per configurar la teva contrasenya."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Please search for users or use the filters on the side.
+msgid "Please search for users or use the filters on the side."
+msgstr ""
+
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+# defaultMessage: Please upgrade to plone.restapi >= 8.24.0.
+msgid "Please upgrade to plone.restapi >= 8.24.0."
+msgstr ""
+
 #: components/theme/Footer/Footer
 # defaultMessage: Plone Foundation
 msgid "Plone Foundation"
@@ -1915,7 +1993,7 @@ msgstr "Prepareu el vostre codi"
 msgid "Preview"
 msgstr "Vista prèvia"
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Preview Image URL
 msgid "Preview Image URL"
 msgstr "Previsualitza l'URL de la imatge"
@@ -2020,6 +2098,11 @@ msgstr "Elimina"
 msgid "Remove term"
 msgstr "Elimina el terme"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Remove users from group
+msgid "Remove users from group"
+msgstr ""
+
 #: components/manage/Toolbar/More
 # defaultMessage: Remove working copy
 msgid "Remove working copy"
@@ -2119,7 +2202,6 @@ msgstr "Estat de revisió"
 msgid "Richtext"
 msgstr "Text enriquit"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Right
@@ -2175,6 +2257,7 @@ msgstr "Actualitzacions d'esquemes"
 #: components/manage/Blocks/Search/layout/RightColumnFacets
 #: components/manage/Blocks/Search/layout/TopSideFacets
 #: components/manage/Blocks/Search/schema
+#: components/theme/Search/Search
 #: components/theme/SearchWidget/SearchWidget
 # defaultMessage: Search
 msgid "Search"
@@ -2358,6 +2441,11 @@ msgstr "Mostrar tots"
 msgid "Show Replies"
 msgstr "Mostra les respostes"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Show groups of users below
+msgid "Show groups of users below"
+msgstr ""
+
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Show item
 msgid "Show item"
@@ -2420,15 +2508,15 @@ msgstr "Configuració del lloc"
 msgid "Sitemap"
 msgstr "Mapa del lloc"
 
-#: components/manage/Blocks/Image/ImageSidebar
-# defaultMessage: Size
-msgid "Size"
-msgstr "Mida"
-
 #: components/theme/View/ImageView
 # defaultMessage: Size: {size}
 msgid "Size: {size}"
 msgstr "Mida: {size}"
+
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Small
+msgid "Small"
+msgstr ""
 
 #: error
 # defaultMessage: Sorry, something went wrong with your request
@@ -2458,6 +2546,7 @@ msgid "Sort on options"
 msgstr "Ordena les opcions"
 
 #: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Image/schema
 # defaultMessage: Source
 msgid "Source"
 msgstr "Origen"
@@ -2549,7 +2638,8 @@ msgstr "Canvia a"
 msgid "Table"
 msgstr "Taula"
 
-#: components/manage/Blocks/ToC/View
+#: components/manage/Blocks/ToC/variations/DefaultTocRenderer
+#: components/manage/Blocks/ToC/variations/HorizontalMenu
 # defaultMessage: Table of Contents
 msgid "Table of Contents"
 msgstr "Taula de continguts"
@@ -2898,6 +2988,17 @@ msgstr "S'utilitza per a l'accés programàtic al conjunt de camps."
 msgid "User"
 msgstr "Usuari"
 
+#: components/manage/Controlpanels/Controlpanels
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Membership
+msgid "User Group Membership"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Settings
+msgid "User Group Settings"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: User created
 msgid "User created"
@@ -2940,12 +3041,13 @@ msgstr "Variació"
 msgid "Version Overview"
 msgstr "Visió general de la versió"
 
+#: components/manage/Blocks/Video/schema
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Video
 msgid "Video"
 msgstr "Vídeo"
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Video URL
 msgid "Video URL"
 msgstr "URL del vídeo"
@@ -3114,7 +3216,7 @@ msgstr "No podeu enganxar aquest contingut aquí"
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your email is required for reset your password.
 msgid "Your email is required for reset your password."
-msgstr "El vostre correu electrònic és necessari per restablir la contrasenya."
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 # defaultMessage: Your location - either city and country - or in a company setting, where your office is located.
@@ -3130,6 +3232,11 @@ msgstr "La vostra contrasenya s'ha establert correctament. Ara podeu {link} amb 
 # defaultMessage: Your preferred language
 msgid "Your preferred language"
 msgstr "El teu idioma preferit"
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Your username is required for reset your password.
+msgid "Your usernaame is required for reset your password."
+msgstr ""
 
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -3253,9 +3360,14 @@ msgid "intranet"
 msgstr "Intranet"
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: My email address is
-msgid "label_my_email_address_is"
-msgstr "La meva adreça de correu electrònic és"
+# defaultMessage: My email is
+msgid "label_my_email_is"
+msgstr ""
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: My username is
+msgid "label_my_username_is"
+msgstr "El meu nom d'usuari és"
 
 #: config/Blocks
 # defaultMessage: Lead Image Field
@@ -3315,6 +3427,7 @@ msgstr "El més utilitzat"
 
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+#: components/theme/Widgets/BooleanWidget
 # defaultMessage: No
 msgid "no"
 msgstr ""
@@ -3592,6 +3705,7 @@ msgstr "Visiteu el lloc web extern"
 
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+#: components/theme/Widgets/BooleanWidget
 # defaultMessage: Yes
 msgid "yes"
 msgstr ""
