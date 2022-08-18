@@ -21,6 +21,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 ### Internal
 
 - Use latest 1.6.0 `@plone/scripts` @sneridagh
+- Add classname of variation in edit mode @iFlameing
 
 ### Documentation
 
