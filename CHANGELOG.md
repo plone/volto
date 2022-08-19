@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix overlapping for long words in Control Panel titles (added word-wrapping) @sneridagh
+
 ### Internal
 
 ### Documentation
