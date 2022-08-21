@@ -14,6 +14,7 @@ html_meta:
 how-to
 settings-reference
 zero-config-builds
+component-registry
 internalproxy
 backend
 volto-config-js

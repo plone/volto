@@ -50,7 +50,7 @@ const ContentMetadataTags = (props) => {
   title_tag_content =
     (nav_root_title === title_tag_content && title_tag_content) ||
     title_tag_content + ' — ' + nav_root_title;
-
+  title_tag_content = title_tag_content.replace(/\u00AD/g, '');
   return (
     <>
       <Helmet>
