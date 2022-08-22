@@ -12,6 +12,8 @@
 
 ### Internal
 
+- Use component registry for default image, fallback to the local import @sneridagh
+
 ### Documentation
 
 ## 16.0.0-alpha.23 (2022-08-18)
