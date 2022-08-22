@@ -7,6 +7,7 @@
 ### Feature
 
 - Add support for OpenStreet Maps in Maps block @sneridagh
+- handle 'no connection' available error (408 error). @giuliaghisini
 
 ### Bugfix
 
