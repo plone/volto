@@ -7,15 +7,22 @@
 ### Feature
 
 - Add support for OpenStreet Maps in Maps block @sneridagh
+
+### Bugfix
+
+### Internal
+
+### Documentation
+
+## 16.0.0-alpha.24 (2022-08-22)
+
+### Feature
+
 - handle 'no connection' available error (408 error). @giuliaghisini
 
 ### Bugfix
 
 - Fix overlapping for long words in Control Panel titles (added word-wrapping) @sneridagh
-
-### Internal
-
-### Documentation
 
 ## 16.0.0-alpha.23 (2022-08-18)
 
