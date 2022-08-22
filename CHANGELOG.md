@@ -6,6 +6,8 @@
 
 ### Feature
 
+- handle 'no connection' available error (408 error). @giuliaghisini
+
 ### Bugfix
 
 - Fix overlapping for long words in Control Panel titles (added word-wrapping) @sneridagh
