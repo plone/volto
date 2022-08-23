@@ -366,6 +366,7 @@
     "slate-history": "0.66.0",
     "slate-hyperscript": "0.77.0",
     "slate-react": "0.78.1",
+    "start-server-and-test": "1.14.0",
     "stylelint": "14.0.1",
     "stylelint-config-idiomatic-order": "8.1.0",
     "stylelint-config-prettier": "8.0.1",
