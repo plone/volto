@@ -61,12 +61,12 @@
   },
   "dependencies": {
     "babel-plugin-react-intl": "5.1.17",
-    "babel-preset-razzle": "3.4.5",
+    "babel-preset-razzle": "4.2.17",
     "commander": "8.2.0",
     "git-url-parse": "^11.6.0",
     "mrs-developer": "*",
     "pofile": "1.0.10",
-    "razzle": "3.4.5",
+    "razzle": "4.2.17",
     "simple-git": "3.5.0"
   },
   "devDependencies": {
