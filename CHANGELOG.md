@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix sitemap.xml.gz @robgietema
+
 ### Internal
 
 ### Documentation
