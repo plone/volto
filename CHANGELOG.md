@@ -1,6 +1,9 @@
 # Change Log
 
 ## 15.14.1 (unreleased)
+
+- Handle no connection available error (408 error) @giuliaghisini
+
 ## 16.0.0 (unreleased)
 
 ### Breaking
@@ -47,7 +50,7 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 
 ### Breaking
 
-- Staticize Poppins font to be compliant with EU privacy. Import from GoogleFont is disabled in site.variables.  @giuliaghisini
+- Staticize Poppins font to be compliant with EU privacy. Import from GoogleFont is disabled in site.variables. @giuliaghisini
 
 ### Bugfix
 
