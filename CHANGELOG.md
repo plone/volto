@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- Upgrade to Razzle 4 @davisagli
+
 ### Feature
 
 - Added placeholder param to widget, to change default placeholder @giuliaghisini
