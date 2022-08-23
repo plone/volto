@@ -3,7 +3,7 @@ import {
   protectLoadEnd,
   loadProtector,
 } from './storeProtectLoadUtils';
-import * as helpers from '../helpers';
+import * as Url from '../helpers/Url/Url';
 
 const tick = async () => new Promise((resolve) => setTimeout(resolve, 0));
 
@@ -40,7 +40,7 @@ describe('storeProtectLoadUtils', () => {
         type: '@@router/LOCATION_CHANGE',
         payload: { location: { pathname: '/NEW-PATH' } },
       };
-      helpers.isCmsUi = jest.fn((path) => locationMap[path]);
+      Url.isCmsUi = jest.fn((path) => locationMap[path]);
       const result = protectLoadStart({ dispatch, getState })(next)(action);
       expect(dispatch).toBeCalledWith({
         type: '@@loadProtector/START',
@@ -65,7 +65,7 @@ describe('storeProtectLoadUtils', () => {
         type: '@@router/LOCATION_CHANGE',
         payload: { location: { pathname: '/NEW-PATH' } },
       };
-      helpers.isCmsUi = jest.fn((path) => locationMap[path]);
+      Url.isCmsUi = jest.fn((path) => locationMap[path]);
       const result = protectLoadStart({ dispatch, getState })(next)(action);
       expect(dispatch).toBeCalledWith({
         type: '@@loadProtector/SKIPPED',
