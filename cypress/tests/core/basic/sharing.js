@@ -66,6 +66,6 @@ describe('Sharing Tests', () => {
 
     cy.autologin('test-user');
     cy.visit('/my-page');
-    cy.findByText(/my page/i).should('exist');
+    cy.findByRole('heading', { name: /my page/i }).should('exist');
   });
 });
