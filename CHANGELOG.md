@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Change back button in folder contents from cross to back icon. @robgietema
+
 ### Bugfix
 
 - Fix sitemap.xml.gz @robgietema
