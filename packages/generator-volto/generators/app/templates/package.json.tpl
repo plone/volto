@@ -143,6 +143,7 @@
     "mrs-developer": "*",
     "postcss": "8.3.11",
     "prettier": "2.0.5",
+    "razzle": "^4",
     "@storybook/addon-actions": "^6.3.0",
     "@storybook/addon-controls": "6.3.0",
     "@storybook/addon-essentials": "^6.3.0",
