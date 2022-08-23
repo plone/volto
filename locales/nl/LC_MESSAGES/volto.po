@@ -1676,7 +1676,6 @@ msgid "No addons found"
 msgstr ""
 
 #: components/theme/RequestTimeout/RequestTimeout
-#: components/theme/RequestTimeout/RequestTimeout.test
 # defaultMessage: There is no connection to the server, due to a timeout o no network connection.
 msgid "No connection to the server"
 msgstr ""
@@ -2655,7 +2654,6 @@ msgstr ""
 #: components/theme/CorsError/CorsError
 #: components/theme/NotFound/NotFound
 #: components/theme/RequestTimeout/RequestTimeout
-#: components/theme/RequestTimeout/RequestTimeout.test
 #: components/theme/Unauthorized/Unauthorized
 # defaultMessage: Thank you.
 msgid "Thank you."
@@ -2672,7 +2670,6 @@ msgid "The URL for your external home page, if you have one."
 msgstr "Het internet adres van uw externe home page, indien u die heeft."
 
 #: components/theme/RequestTimeout/RequestTimeout
-#: components/theme/RequestTimeout/RequestTimeout.test
 # defaultMessage: The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again.
 msgid "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
 msgstr ""
