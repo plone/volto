@@ -9,17 +9,10 @@ module.exports = function (api) {
     ],
   ];
   const plugins = [
-    [
-      '@babel/plugin-transform-react-jsx',
-      {
-        runtime: 'automatic',
-      },
-    ],
     'lodash',
     '@babel/plugin-proposal-export-default-from', // Stage 1
     '@babel/plugin-syntax-export-namespace-from', // Stage 4
     '@babel/plugin-proposal-throw-expressions', // Stage 2
-    '@babel/plugin-proposal-nullish-coalescing-operator', // Stage 4
     [
       'babel-plugin-root-import', // Required for the ~ imports to work
       {
