@@ -4,9 +4,10 @@
 
 ### Breaking
 
+- This is an UI/UX breaking change. It changes the back button in folder contents from using a cross icon to using a back icon. The rationale behind is because the cross evoque "cancel" when what happens is a change of view. It's also consistent with both PastanagaUI and QuantaUI style guide. @robgietema
+
 ### Feature
 
-- Change back button in folder contents from cross to back icon. @robgietema
 - Add initialPath support to ObjectBrowser widget @robgietema
 
 ### Bugfix
