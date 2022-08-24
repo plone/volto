@@ -14,6 +14,7 @@ export {
 } from '@plone/volto/helpers/AuthToken/AuthToken';
 export {
   addAppURL,
+  expandToBackendURL,
   flattenHTMLToAppURL,
   flattenToAppURL,
   stripQuerystring,

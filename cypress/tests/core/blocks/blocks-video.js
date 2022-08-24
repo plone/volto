@@ -1,5 +1,7 @@
 describe('Blocks Tests', () => {
   beforeEach(() => {
+    cy.intercept('GET', '/**/my-page/@types/*').as('schema');
+
     // given a logged in editor and a page in edit mode
     cy.autologin();
     cy.createContent({
@@ -14,12 +16,7 @@ describe('Blocks Tests', () => {
     cy.waitForResourceToLoad('@types');
     cy.waitForResourceToLoad('my-page');
     cy.navigate('/my-page/edit');
-    cy.get(`.block.title [data-contents]`);
-  });
-
-  afterEach(() => {
-    // Wait a bit to previous teardown to complete correctly because Heisenbug in this point
-    // cy.wait(2000);
+    cy.wait('@schema');
   });
 
   it('Add Video Block with YouTube Video', () => {

@@ -8,6 +8,169 @@
 - Move all cypress actions to the main `Makefile`, providing better meaningful names. Remove them from `package.json` script section. @sneridagh
 
 ### Feature
+## 15.14.1 (unreleased)
+
+- Handle no connection available error (408 error) @giuliaghisini
+
+## 16.0.0 (unreleased)
+
+### Breaking
+
+### Feature
+
+- Send extra data coming from listing block schemaEnhancer from searchBlock to the listing variation @ionlizarazu
+
+### Bugfix
+
+- complete pt_BR translation @ericof
+- Fix action `listUsers`. Provide default. @ksuess
+
+### Internal
+
+### Documentation
+
+## 16.0.0-alpha.18 (2022-07-26)
+
+### Breaking
+
+- Remove the `callout` button (the one with the megaphone icon) from the slate toolbar since it has the same styling as `blockquote`. If you need it anyway, you can bring it back in your addon. @sneridagh
+
+### Bugfix
+
+- Fix edge cases in Cypress flaky tests when the Edit component was loaded without loading the type schema. @sneridagh & @davisagli
+
+### Internal
+
+- Fix `defaultBlockType` entry in default config, set it to slate. @sneridagh
+
+## 16.0.0-alpha.17 (2022-07-25)
+
+### Bugfix
+
+- Make `crypto-random-string` a direct dep, fixing a hidden error since some updated dependency was requiring it directly but not anymore. @sneridagh
+
+## 16.0.0-alpha.16 (2022-07-25)
+
+### Do not use, this is a brown bag release
+
+See: https://github.com/plone/volto/pull/3505
+Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alpha.17
+
+### Breaking
+
+- Staticize Poppins font to be compliant with EU privacy. Import from GoogleFont is disabled in site.variables. @giuliaghisini
+
+### Bugfix
+
+- Add some more messages to be able to translate them @erral
+- Fix typo in de locale @wolbernd
+- [generator] Improvements to the addon generator: Now it wires up the addon automatically for immediate local development @sneridagh
+- complete eu translation @erral
+- complete es translation @erral
+- [generator] Add .editorconfig and .prettierignore to generated projects and addons. @ericof
+
+### Internal
+
+- Update json-schema including transitive dependencies @davisagli
+- Update release-it @davisagli
+- Deduplicate dependencies using yarn-deduplicate @davisagli
+
+### Documentation
+
+- Fix redirect on YouTube, broken link after merge and deleted branch. @stevepiercy
+
+## 16.0.0-alpha.15 (2022-07-21)
+
+### Breaking
+
+- Integrate volto-state add-on. @tiberiuichim @razvanmiu @eea
+
+### Documentation
+
+- volto-slate documentation @nileshgulia1
+
+## 16.0.0-alpha.14 (2022-07-20)
+
+### Breaking
+
+- Action `listUsers`to be called with Object. Distinguish between search for id or search for fullname, email, username @ksuess
+
+### Feature
+
+- Add user group membership control panel @ksuess
+- Action `listUsers`: Support search for fullname, email, username. @ksuess
+
+### Bugfix
+
+### Internal
+
+### Documentation
+
+## 15.14.0 (2022-07-26)
+
+### Feature
+
+- Improve move to static fonts to not make it "breaking", but as an opt-in. So if you want your site load the "Poppins" font from local instead from GoogleFont CDN, you must override the `@importGoogleFonts` and set it to false in your project theme:
+
+```less
+@importGoogleFonts: false;
+```
+
+- Include ImageSizeWidget to fix eea/volto-block-style incompatibility @ionlizarazu
+
+## 15.13.0 (2022-07-25)
+
+### Feature
+
+- Staticize Poppins font to be compliant with EU privacy. Import from GoogleFont is disabled in site.variables. @giuliaghisini
+
+## 15.12.2 (2022-07-20)
+
+### Bugfix
+
+- get locale always from state. Backport from #3331 @erral
+- Add listing variation schemaEnhancer to the search block schema @ionlizarazu
+
+## 15.12.1 (2022-05-30)
+
+### Bugfix
+
+- fixed TokenWidget getVocabulary subrequest. @giuliaghisini
+
+## 15.12.0 (2022-05-25)
+
+### Feature
+
+- Disable already chosen criteria in querystring widget @kreafox
+- Working copy actions now render errors if they fail @pnicolli
+- Added viewableInBrowserObjects setting to use in alternative to downloadableObjects, if you want to view file in browser intstead downloading. @giuliaghisini
+
+### Bugfix
+
+- fix TokenWidget choices when editing a recently created content. @giuliaghisini
+
+## 15.11.2 (2022-05-21)
+
+### Bugfix
+
+- Fix RenderBlocks: path @ksuess
+
+## 15.11.1 (2022-05-20)
+
+### Bugfix
+
+- Add correct query parameters to the redirect @robgietema
+
+## 15.11.0 (2022-05-13)
+
+### Feature
+
+- Add `expandToBackendURL` helper @sneridagh
+
+### Bugfix
+
+- Fixed ICS URL in event view in seamless mode @sneridagh
+
 ## 15.10.1 (2022-05-12)
 
 ### Bugfix
@@ -23,6 +186,7 @@
 ### Bugfix
 
 - Fix missing criteria in QueryWidget. @giuliaghisini
+- fixed view video list from youtube in Video block. @giuliaghisini
 
 ## 15.9.0 (2022-05-06)
 

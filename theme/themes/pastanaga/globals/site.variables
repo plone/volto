@@ -6,9 +6,13 @@
        Fonts
 --------------------*/
 
+// Remove if you want to load the font from local instead from Google Fonts CDN
+// You most likely will do this in your project theme.
+// @importGoogleFonts: false;
 @fontName          : 'Poppins';
+@fontDisplay: swap;
 
-@googleFontSizes   : '300,400,500,700,400italic,700italic&display=swap';
+@googleFontSizes   : '300,400,500,700,400italic,700italic&display='@fontDisplay;
 @toolbarWidth: 80px;
 @toolbarWidthMin: 20px;
 @fullSizeIcon: 36px;

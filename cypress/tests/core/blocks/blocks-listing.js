@@ -1,7 +1,7 @@
 describe('Listing Block Tests', () => {
   beforeEach(() => {
     // Wait a bit to previous teardown to complete correctly because Heisenbug in this point
-    cy.wait(2000);
+    // cy.wait(2000);
     // given a logged in editor and a page in edit mode
     cy.autologin();
     cy.createContent({
@@ -14,17 +14,19 @@ describe('Listing Block Tests', () => {
     cy.removeContent({ path: '/events' });
     cy.removeContent({ path: '/Members' });
 
-    cy.visit('/my-page');
+    cy.visit('/');
     cy.waitForResourceToLoad('@navigation');
     cy.waitForResourceToLoad('@breadcrumbs');
     cy.waitForResourceToLoad('@actions');
     cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('my-page');
-    cy.navigate('/my-page/edit');
-    cy.get(`.block.title [data-contents]`);
+    cy.waitForResourceToLoad('');
   });
 
   it('Add Listing block', () => {
+    cy.intercept('PATCH', '/**/my-page').as('save');
+    cy.intercept('GET', '/**/my-page').as('content');
+    cy.intercept('GET', '/**/@types/Document').as('schema');
+
     // Given One Document My Page Test and One News Item MY News and One Folder My Folder
     cy.createContent({
       contentType: 'Document',
@@ -45,13 +47,11 @@ describe('Listing Block Tests', () => {
       path: 'my-page',
     });
 
-    cy.visit('/my-page');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('my-page');
+    cy.navigate('/my-page');
+    cy.wait('@content');
+
     cy.navigate('/my-page/edit');
+    cy.wait('@schema');
 
     cy.get(`.block.title [data-contents]`).clear().type('My title');
 
@@ -68,6 +68,8 @@ describe('Listing Block Tests', () => {
 
     //save
     cy.get('#toolbar-save').click();
+    cy.wait('@save');
+    cy.wait('@content');
 
     //test after save
     cy.get('#page-document .listing-body:first-of-type').contains(
@@ -81,6 +83,10 @@ describe('Listing Block Tests', () => {
   });
 
   it('Add Listing Block: sort by effective date', () => {
+    cy.intercept('PATCH', '/**/my-page').as('save');
+    cy.intercept('GET', '/**/my-page').as('content');
+    cy.intercept('GET', '/**/@types/Document').as('schema');
+
     // given a page with two pages
     cy.createContent({
       contentType: 'Document',
@@ -105,13 +111,11 @@ describe('Listing Block Tests', () => {
       effective: '2019-01-01T08:00:00',
     });
 
-    cy.visit('/my-page');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('my-page');
+    cy.navigate('/my-page');
+    cy.wait('@content');
+
     cy.navigate('/my-page/edit');
+    cy.wait('@schema');
 
     cy.get(`.block.title [data-contents]`).clear().type('My title');
 
@@ -147,6 +151,8 @@ describe('Listing Block Tests', () => {
 
     //save
     cy.get('#toolbar-save').click();
+    cy.wait('@save');
+    cy.wait('@content');
 
     //test after save
     cy.get('#page-document .listing-body:first-of-type').contains('Page Two');
@@ -158,7 +164,10 @@ describe('Listing Block Tests', () => {
   });
 
   it('Listing block - Test Root with Criteria: Type Page', () => {
-    // Given three Document in My Page i.e My News, My Folder and My Page Test
+    cy.intercept('PATCH', '/**/').as('save');
+    cy.intercept('GET', '/**/').as('content');
+    cy.intercept('GET', '/**/@types/*').as('schema');
+
     cy.createContent({
       contentType: 'Document',
       contentId: 'my-page-test',
@@ -166,13 +175,8 @@ describe('Listing Block Tests', () => {
       path: 'my-page',
     });
 
-    cy.visit('/');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('');
     cy.navigate('/edit');
+    cy.wait('@schema');
 
     cy.get(`.block.title [data-contents]`)
       .clear()
@@ -213,14 +217,9 @@ describe('Listing Block Tests', () => {
 
     //save
     cy.get('#toolbar-save').click();
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('@querystring-search');
-    cy.waitForResourceToLoad('');
 
-    cy.visit('/');
+    cy.wait('@save');
+    cy.wait('@content');
 
     cy.get('#page-document .listing-body:first-of-type').contains('My Page');
     cy.get('#page-document .listing-item:first-of-type a').should(
@@ -231,6 +230,10 @@ describe('Listing Block Tests', () => {
   });
 
   it('Listing block - Test Criteria: short-name', () => {
+    cy.intercept('PATCH', '/**/my-page').as('save');
+    cy.intercept('GET', '/**/my-page').as('content');
+    cy.intercept('GET', '/**/@types/Document').as('schema');
+
     // Given three Document in My Page i.e My News, My Folder and My Page Test
     cy.createContent({
       contentType: 'Document',
@@ -251,13 +254,11 @@ describe('Listing Block Tests', () => {
       path: 'my-page',
     });
 
-    cy.visit('/my-page');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('my-page');
+    cy.navigate('/my-page');
+    cy.wait('@content');
+
     cy.navigate('/my-page/edit');
+    cy.wait('@schema');
 
     cy.get(`.block.title [data-contents]`)
       .clear()
@@ -304,6 +305,8 @@ describe('Listing Block Tests', () => {
 
     //save
     cy.get('#toolbar-save').click();
+    cy.wait('@save');
+    cy.wait('@content');
 
     //test short-name criteria after save
     cy.get('#page-document .listing-body:first-of-type').contains(
@@ -317,6 +320,10 @@ describe('Listing Block Tests', () => {
   });
 
   it('Listing block - Test Criteria: Location relative', () => {
+    cy.intercept('PATCH', '/**/my-page/my-folder').as('save');
+    cy.intercept('GET', '/**/my-page/my-folder').as('content');
+    cy.intercept('GET', '/**/@types/Document').as('schema');
+
     // Given two Document in My Page i.e Document outside Folder and My Folder
     // And One Document in My Folder i.e Document within Folder
     cy.createContent({
@@ -340,13 +347,11 @@ describe('Listing Block Tests', () => {
       path: 'my-page/my-folder',
     });
 
-    cy.visit('/my-page/my-folder');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('my-folder');
+    cy.navigate('/my-page/my-folder');
+    cy.wait('@content');
+
     cy.navigate('/my-page/my-folder/edit');
+    cy.wait('@schema');
 
     cy.get(`.block.title [data-contents]`)
       .clear()
@@ -394,6 +399,8 @@ describe('Listing Block Tests', () => {
 
     //save
     cy.get('#toolbar-save').click();
+    cy.wait('@save');
+    cy.wait('@content');
 
     //test location relative criteria after save
     cy.get('#page-document .listing-body:first-of-type').contains(
@@ -405,6 +412,10 @@ describe('Listing Block Tests', () => {
   });
 
   it('Listing block - Test Criteria: Location absolute', () => {
+    cy.intercept('PATCH', '/**/my-page/my-folder').as('save');
+    cy.intercept('GET', '/**/my-page/my-folder').as('content');
+    cy.intercept('GET', '/**/@types/Document').as('schema');
+
     // Given two Document in My Page i.e Document outside Folder and My Folder
     // And One Document in My Folder i.e Document within Folder
     cy.createContent({
@@ -428,13 +439,11 @@ describe('Listing Block Tests', () => {
       path: 'my-page/my-folder',
     });
 
-    cy.visit('/my-page/my-folder');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('my-folder');
+    cy.navigate('/my-page/my-folder');
+    cy.wait('@content');
+
     cy.navigate('/my-page/my-folder/edit');
+    cy.wait('@schema');
 
     cy.get(`.block.title [data-contents]`)
       .clear()
@@ -482,6 +491,8 @@ describe('Listing Block Tests', () => {
 
     //save
     cy.get('#toolbar-save').click();
+    cy.wait('@save');
+    cy.wait('@content');
 
     //test location absolute criteria after save
     cy.get('#page-document .listing-body:first-of-type').contains(
@@ -493,6 +504,10 @@ describe('Listing Block Tests', () => {
   });
 
   it('Listing block - Test Criteria: Location relative with some outside content', () => {
+    cy.intercept('PATCH', '/**/my-page').as('save');
+    cy.intercept('GET', '/**/my-page').as('content');
+    cy.intercept('GET', '/**/@types/Document').as('schema');
+
     // Given we have two document about us, contact at portal route and two document in My Page
     // i.e News Item One and News Item Two
     cy.createContent({
@@ -521,6 +536,12 @@ describe('Listing Block Tests', () => {
       contentTitle: 'News Item Two',
       path: 'my-page',
     });
+
+    cy.navigate('/my-page');
+    cy.wait('@content');
+
+    cy.navigate('/my-page/edit');
+    cy.wait('@schema');
 
     //add listing block
     cy.get('.block.text [contenteditable]').click();
@@ -564,6 +585,8 @@ describe('Listing Block Tests', () => {
 
     // save;
     cy.get('#toolbar-save').click();
+    cy.wait('@save');
+    cy.wait('@content');
 
     //test location relative criteria after save
     cy.get(`.block.listing .listing-body:first-of-type`).contains(
@@ -575,6 +598,10 @@ describe('Listing Block Tests', () => {
   });
 
   it('Listing block: respect batching and limits', () => {
+    cy.intercept('PATCH', '/**/my-page').as('save');
+    cy.intercept('GET', '/**/my-page').as('content');
+    cy.intercept('GET', '/**/@types/Document').as('schema');
+
     cy.createContent({
       contentType: 'Folder',
       contentId: 'my-folder',
@@ -594,13 +621,11 @@ describe('Listing Block Tests', () => {
       path: 'my-page',
     });
 
-    cy.visit('/my-page');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('my-page');
+    cy.navigate('/my-page');
+    cy.wait('@content');
+
     cy.navigate('/my-page/edit');
+    cy.wait('@schema');
 
     cy.get(`.block.title [data-contents]`)
       .clear()
@@ -637,6 +662,8 @@ describe('Listing Block Tests', () => {
 
     //save
     cy.get('#toolbar-save').click();
+    cy.wait('@save');
+    cy.wait('@content');
 
     //test after save
     cy.get('#page-document .listing-item:first-of-type a').should(
@@ -649,6 +676,8 @@ describe('Listing Block Tests', () => {
     });
 
     cy.navigate('/my-page/edit');
+    cy.wait('@schema');
+
     cy.get('.block-editor-listing').click();
     cy.get('.sidebar-container .tabs-wrapper .menu .item')
       .contains('Block')

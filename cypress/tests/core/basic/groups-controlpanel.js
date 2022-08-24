@@ -7,12 +7,8 @@ describe('Groups Control Panel Test', () => {
     cy.autologin();
   });
   it('Should add a new group to controlPanel', () => {
-    cy.intercept('POST', '/plone/++api++/@groups').as('addGroup');
     cy.visit('/controlpanel/groups');
     cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
     cy.waitForResourceToLoad('@groups');
     // when I added a group from controlPanel
     cy.get('Button[id="toolbar-add"]').click();
@@ -22,12 +18,9 @@ describe('Groups Control Panel Test', () => {
     cy.get('input[id="field-email"]').clear().type('test@gmail.com');
     cy.get('button[title="Save"]').click(-50, -50, { force: true });
 
-    cy.wait('@addGroup');
-    // then the group section must contains a groupname when I searched the
-    // same with the same groupname
-    cy.get('input[id="group-search-input"]').clear().type('uni');
-    cy.get('.icon.button:first').click();
-    cy.get('tr td').first().should('have.text', 'uniquename');
+    cy.waitForResourceToLoad('@navigation');
+    cy.waitForResourceToLoad('@groups');
+    cy.contains('uniquename');
   });
 
   it('Should show error from backend when add Group fails', () => {
@@ -69,9 +62,6 @@ describe('Groups Control Panel Test', () => {
   });
 
   it('Should update group roles', () => {
-    cy.intercept('PATCH', '/plone/++api++/@groups/Administrators').as(
-      'editGroup',
-    );
     cy.visit('/controlpanel/groups');
     cy.waitForResourceToLoad('@navigation');
     cy.waitForResourceToLoad('@breadcrumbs');
@@ -82,11 +72,7 @@ describe('Groups Control Panel Test', () => {
       .first()
       .check({ force: true });
     cy.get('Button[id="toolbar-save"]').click();
-
-    cy.wait('@editGroup');
     cy.reload();
-    cy.waitForResourceToLoad('@groups');
-
     cy.get('[data-group="groups"] div.checkbox')
       .first()
       .should('have.class', 'checked');
