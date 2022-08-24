@@ -10,12 +10,6 @@
 
 - Add initialPath support to ObjectBrowser widget @robgietema
 
-### Bugfix
-
-### Internal
-
-### Documentation
-
 ## 16.0.0-alpha.25 (2022-08-24)
 
 ### Feature
