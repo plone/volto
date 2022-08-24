@@ -65,6 +65,7 @@ export class ObjectBrowserWidgetComponent extends Component {
     description: PropTypes.string,
     mode: PropTypes.string, // link, image, multiple
     return: PropTypes.string, // single, multiple
+    initialPath: PropTypes.string,
     required: PropTypes.bool,
     error: PropTypes.arrayOf(PropTypes.string),
     value: PropTypes.oneOfType([
@@ -88,6 +89,7 @@ export class ObjectBrowserWidgetComponent extends Component {
     value: [],
     mode: 'multiple',
     return: 'multiple',
+    initialPath: '',
     allowExternals: false,
   };
 
@@ -273,7 +275,7 @@ export class ObjectBrowserWidgetComponent extends Component {
     ev.preventDefault();
     this.props.openObjectBrowser({
       mode: this.props.mode,
-      currentPath: this.props.location.pathname,
+      currentPath: this.props.initialPath || this.props.location.pathname,
       propDataName: 'value',
       onSelectItem: (url, item) => {
         this.onChange(item);

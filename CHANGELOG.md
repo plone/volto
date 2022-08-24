@@ -7,6 +7,20 @@
 ### Feature
 
 - Change back button in folder contents from cross to back icon. @robgietema
+- Add initialPath support to ObjectBrowser widget @robgietema
+
+### Bugfix
+
+### Internal
+
+### Documentation
+
+## 16.0.0-alpha.25 (2022-08-24)
+
+### Feature
+
+- Add support for OpenStreet Maps in Maps block @sneridagh
+- Make `internalApiPath` client aware, since there are some corner cases when the client needs to know it to properly handle API server URLs @sneridagh
 
 ### Bugfix
 
@@ -14,7 +28,7 @@
 
 ### Internal
 
-### Documentation
+- Use component registry for default image, fallback to the local import @sneridagh
 
 ## 16.0.0-alpha.24 (2022-08-22)
 

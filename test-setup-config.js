@@ -155,3 +155,5 @@ config.set('widgets', {
   },
   default: BaseWidget('default'),
 });
+
+config.set('components', {});
