@@ -6,6 +6,7 @@
 
 ### Feature
 
+- Add support for OpenStreet Maps in Maps block @sneridagh
 - Make `internalApiPath` client aware, since there are some corner cases when the client needs to know it to properly handle API server URLs @sneridagh
 
 ### Bugfix
