@@ -19,6 +19,7 @@ import TextWidget from '@plone/volto/components/manage/Widgets/TextWidget';
 import TokenWidget from '@plone/volto/components/manage/Widgets/TokenWidget';
 import WysiwygWidget from '@plone/volto/components/manage/Widgets/WysiwygWidget';
 import UrlWidget from '@plone/volto/components/manage/Widgets/UrlWidget';
+import InternalUrlWidget from '@plone/volto/components/manage/Widgets/InternalUrlWidget';
 import EmailWidget from '@plone/volto/components/manage/Widgets/EmailWidget';
 import NumberWidget from '@plone/volto/components/manage/Widgets/NumberWidget';
 
@@ -79,6 +80,7 @@ export const widgetMapping = {
     file: FileWidget,
     align: AlignWidget,
     url: UrlWidget,
+    internal_url: InternalUrlWidget,
     email: EmailWidget,
     array: ArrayWidget,
     token: TokenWidget,
@@ -140,6 +142,7 @@ export const widgetMapping = {
       textarea: TextViewWidget,
       title: TitleViewWidget,
       url: UrlViewWidget,
+      internal_url: InternalUrlWidget,
     },
     vocabulary: {},
     choices: SelectViewWidget,

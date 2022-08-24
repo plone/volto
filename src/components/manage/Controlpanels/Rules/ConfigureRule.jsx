@@ -33,7 +33,7 @@ import { Toast } from '@plone/volto/components';
 import backSVG from '@plone/volto/icons/back.svg';
 import upSVG from '@plone/volto/icons/up.svg';
 import downSVG from '@plone/volto/icons/down.svg';
-import AddConfigureModal from './components/AddConfigureModal';
+import VariableModal from './components/VariableModal';
 
 const messages = defineMessages({
   back: {
@@ -246,6 +246,7 @@ class ConfigureRule extends Component {
   handleConditionAdd(val) {
     const ruleId = this.props.match.params.id;
     this.props.addCondition(getBaseUrl(this.props.pathname), ruleId, val);
+    this.setState({ selectedCondition: '' });
   }
 
   /**
@@ -265,6 +266,7 @@ class ConfigureRule extends Component {
   handleActionAdd(val) {
     const ruleId = this.props.match.params.id;
     this.props.addAction(getBaseUrl(this.props.pathname), ruleId, val);
+    this.setState({ selectedCondition: '' });
   }
 
   /**
@@ -302,7 +304,6 @@ class ConfigureRule extends Component {
 
     // console.log('zaitem', item);
     // console.log('sel', this.state.selectedCondition);
-
     return (
       <div id="page-rule-configure">
         <Helmet title={this.props.intl.formatMessage(messages.configRule)} />
@@ -402,6 +403,7 @@ class ConfigureRule extends Component {
                           fluid
                           selection
                           options={conditions_options}
+                          value={this.state.selectedCondition}
                           onChange={(e, { value }) =>
                             this.setState({ selectedCondition: value })
                           }
@@ -536,7 +538,7 @@ class ConfigureRule extends Component {
           </article>
         </Container>
         {this.state.selectedCondition && (
-          <AddConfigureModal
+          <VariableModal
             open={this.state.openModal}
             onClose={() => this.setState({ openModal: false })}
             onOpen={() => this.setState({ openModal: true })}
@@ -546,7 +548,7 @@ class ConfigureRule extends Component {
           />
         )}
         {this.state.selectedAction && (
-          <AddConfigureModal
+          <VariableModal
             open={this.state.openModal}
             onClose={() => this.setState({ openModal: false })}
             onOpen={() => this.setState({ openModal: true })}
@@ -584,7 +586,6 @@ export default compose(
     (state, props) => ({
       pathname: props.location.pathname,
       rule: state.controlpanelrule,
-      title: 'Example rule',
     }),
     {
       getControlPanelRule,
