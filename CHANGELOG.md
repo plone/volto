@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Make `internalApiPath` client aware, since there are some corner cases when the client needs to know it to properly handle API server URLs @sneridagh
+
 ### Bugfix
 
 - Fix sitemap.xml.gz @robgietema
