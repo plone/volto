@@ -1,13 +1,16 @@
 import React from 'react';
 import { GraphView } from 'react-digraph';
+import NodeData from './Sidebar';
+import { SidebarPortal } from '@plone/volto/components';
 
 const BUTTON_TYPE = 'button';
-
+const CHAT_TYPE = 'chat';
 const TEXT_TYPE = 'text';
 
 const TYPES = {
   [BUTTON_TYPE]: BUTTON_TYPE,
   [TEXT_TYPE]: TEXT_TYPE,
+  [CHAT_TYPE]: CHAT_TYPE,
 };
 
 const EMPTY_EDGE_TYPE = 'emptyEdge';
@@ -75,56 +78,42 @@ export default class Graph extends React.Component {
         nodes: [
           {
             id: '1',
-            title: 'pending',
+            title: '???',
             type: 'text',
             x: -200,
             y: 200,
           },
           {
             id: '2',
-            title: 'published',
+            title: 'Advice',
             type: 'button',
             x: 0,
             y: 300,
           },
           {
             id: '3',
-            title: 'private',
+            title: 'Help',
             type: 'button',
             x: 0,
             y: 100,
           },
+          {
+            id: '4',
+            title: 'To chat!',
+            type: 'chat',
+            x: 200,
+            y: 200,
+          },
         ],
         edges: [
-          {
-            source: '1',
-            target: '2',
-            type: 'empty',
-            label_to: 'pending',
-            label_from: 'published',
-          },
-          {
-            source: '2',
-            target: '3',
-            type: 'empty',
-            label_to: 'published',
-            label_from: 'private',
-          },
-          {
-            source: '3',
-            target: '2',
-            type: 'empty',
-          },
-          {
-            source: '1',
-            target: '3',
-            type: 'empty',
-            label_to: 'pending',
-            label_from: 'private',
-          },
+          { source: '1', target: '2', type: 'empty', title: 'Private' },
+          { source: '2', target: '4', type: 'empty', title: 'Pending' },
+          { source: '1', target: '3', type: 'empty', title: 'Preview' },
+          { source: '3', target: '4', type: 'empty', title: 'Retract' },
         ],
       },
       selected: null,
+      selectionType: null,
     };
   }
 
@@ -150,6 +139,7 @@ export default class Graph extends React.Component {
     if (node && (!selected || selected[NODE_KEY] !== node[NODE_KEY])) {
       this.setState({
         selected: node,
+        selectionType: 'Node',
       });
     } else if (!node && selected) {
       this.setState({
@@ -159,7 +149,7 @@ export default class Graph extends React.Component {
   };
 
   onUpdateNode = (viewNode) => {
-    //  console.log('update node', viewNode);
+    // console.log('update node', viewNode);
     const graph = this.state.graph;
     const i = this.getNodeIndex(viewNode);
 
@@ -168,7 +158,7 @@ export default class Graph extends React.Component {
   };
 
   onDeleteNode = (node, nodeId, nodeArr) => {
-    //  console.log('delete node', node);
+    // console.log('delete node', node);
     const graph = this.state.graph;
     // Delete any connected edges
     const newEdges = graph.edges.filter((edge, i) => {
@@ -181,9 +171,13 @@ export default class Graph extends React.Component {
     this.setState({ graph, selected: null });
   };
 
-  // onSelectEdge = () => {
-  //   console.log('select edge');
-  // };
+  onSelectEdge = (edge) => {
+    // console.log('select edge', edge);
+    this.setState({
+      selected: edge,
+      selectionType: 'Edge',
+    });
+  };
 
   onCreateEdge = (sourceViewNode, targetViewNode) => {
     const graph = this.state.graph;
@@ -244,6 +238,43 @@ export default class Graph extends React.Component {
     });
   };
 
+  onChangeNode = (id, value) => {
+    // console.log('this is from onChagneNOde', id, value);
+    const graph = this.state.graph;
+    const selected = this.state.selected;
+    const title = value;
+    selected.title = title;
+
+    const i = this.getNodeIndex(selected);
+    const node = graph.nodes[i];
+    node[id] = title;
+
+    graph.nodes[i] = node;
+
+    this.setState({
+      graph,
+      selected,
+    });
+  };
+
+  onChangeEdge = (id, value) => {
+    const graph = this.state.graph;
+    const selected = this.state.selected;
+    const title = value;
+    selected.title = title;
+
+    const i = this.getEdgeIndex(selected);
+    const edge = graph.edges[i];
+    edge[id] = value;
+
+    graph.edges[i] = edge;
+
+    this.setState({
+      graph,
+      selected,
+    });
+  };
+
   updateSelectedNodeType = (e) => {
     const graph = this.state.graph;
     const selected = this.state.selected;
@@ -275,8 +306,13 @@ export default class Graph extends React.Component {
     return (
       <div>
         <div>
-          <button>Add node</button>
-          <button>delete node</button>
+          <p>Shift+click creates a new node</p>
+          <p>Shift+click a node and drag to another node creates an edge</p>
+          <p>Click a node and pressing delete deletes the node and its edges</p>
+          <p>
+            Node text and type can be changed after selecting a node by clicking
+            it
+          </p>
         </div>
         <div id="graph">
           <GraphView
@@ -300,19 +336,17 @@ export default class Graph extends React.Component {
         </div>
         {selected && (
           <div>
-            <h4>Update a node</h4>
-            <input
-              type="text"
-              value={selected.title}
-              onChange={this.updateSelectedNodeTitle}
-            />
-            {/* <select
-              value={selected.type}
-              onChange={this.updateSelectedNodeType}
-            >
-              <option value={TEXT_TYPE}>Text</option>
-              <option value={BUTTON_TYPE}>Button</option>
-            </select> */}
+            <SidebarPortal selected={selected}>
+              <NodeData
+                data={selected}
+                onChangeBlock={
+                  this.state.selectionType === 'Node'
+                    ? this.onChangeNode
+                    : this.onChangeEdge
+                }
+                selectionType={this.state.selectionType}
+              />
+            </SidebarPortal>
           </div>
         )}
       </div>

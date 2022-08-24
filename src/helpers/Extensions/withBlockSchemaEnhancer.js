@@ -120,7 +120,7 @@ export const withBlockSchemaEnhancer = (
 
   const blocksConfig = getBlocksConfig(props);
 
-  const blockType = formData['@type'];
+  const blockType = formData && formData['@type'];
   const extensionConfig =
     blocksConfig?.[blockType]?.extensions?.[extensionName];
 
@@ -204,7 +204,7 @@ export const applySchemaEnhancer = ({
 }) => {
   let schema, schemaEnhancer;
 
-  const blockType = formData['@type'];
+  const blockType = formData && formData['@type'];
   const variations = blocksConfig?.[blockType]?.variations || [];
 
   if (variations.length === 0) {
@@ -255,7 +255,7 @@ export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
 
   const blocksConfig = getBlocksConfig(props);
 
-  const blockType = formData['@type'];
+  const blockType = formData && formData['@type'];
   const variations = blocksConfig[blockType]?.variations || [];
 
   let schema = applySchemaEnhancer({ schema: originalSchema, formData, intl });
@@ -286,7 +286,7 @@ export const withStylingSchemaEnhancer = (FormComponent) => (props) => {
 
   const blocksConfig = getBlocksConfig(props);
 
-  const blockType = formData['@type'];
+  const blockType = formData && formData['@type'];
   const enableStyling = blocksConfig[blockType]?.enableStyling;
 
   if (enableStyling) {
