@@ -12,6 +12,41 @@
 
 ### Documentation
 
+## 16.0.0-alpha.26 (2022-08-24)
+
+### Breaking
+
+- This is an UI/UX breaking change. It changes the back button in folder contents from using a cross icon to using a back icon. The rationale behind is because the cross evoque "cancel" when what happens is a change of view. It's also consistent with both PastanagaUI and QuantaUI style guide. @robgietema
+
+### Feature
+
+- Add initialPath support to ObjectBrowser widget @robgietema
+
+## 16.0.0-alpha.25 (2022-08-24)
+
+### Feature
+
+- Add support for OpenStreet Maps in Maps block @sneridagh
+- Make `internalApiPath` client aware, since there are some corner cases when the client needs to know it to properly handle API server URLs @sneridagh
+
+### Bugfix
+
+- Fix sitemap.xml.gz @robgietema
+
+### Internal
+
+- Use component registry for default image, fallback to the local import @sneridagh
+
+## 16.0.0-alpha.24 (2022-08-22)
+
+### Feature
+
+- handle 'no connection' available error (408 error). @giuliaghisini
+
+### Bugfix
+
+- Fix overlapping for long words in Control Panel titles (added word-wrapping) @sneridagh
+
 ## 16.0.0-alpha.23 (2022-08-18)
 
 ### Breaking
