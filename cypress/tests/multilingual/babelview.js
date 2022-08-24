@@ -24,15 +24,15 @@ describe('Babel View Tests', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/it/add?type=Document');
     cy.findByText('Test document');
     cy.findByText('Traduci in Italiano');
-    cy.get(
-      '.new-translation .documentFirstHeading > .public-DraftStyleDefault-block',
-    )
+    cy.get('.new-translation .block.inner.title [contenteditable="true"]')
+      .focus()
+      .click()
       .type('My IT page', { force: true })
-      .get('.documentFirstHeading span[data-text]')
       .contains('My IT page');
-    cy.get('.new-translation .block.inner.text .public-DraftEditor-content')
+    cy.get('.new-translation .slate-editor [contenteditable=true]')
+      .focus()
+      .click()
       .type('This is the italian text')
-      .get('span[data-text]')
       .contains('This is the italian text')
       .type('{enter}');
     cy.get('.new-translation .ui.basic.icon.button.block-add-button').click();
@@ -48,15 +48,15 @@ describe('Babel View Tests', () => {
     cy.findByText('Translate to italiano').click();
     cy.findByText('Test document');
     cy.findByText('Traduci in Italiano');
-    cy.get(
-      '.new-translation .documentFirstHeading > .public-DraftStyleDefault-block',
-    )
+    cy.get('.new-translation .block.inner.title [contenteditable="true"]')
+      .focus()
+      .click()
       .type('My IT page', { force: true })
-      .get('.documentFirstHeading span[data-text]')
       .contains('My IT page');
-    cy.get('.new-translation .block.inner.text .public-DraftEditor-content')
+    cy.get('.new-translation .slate-editor [contenteditable=true]')
+      .focus()
+      .click()
       .type('This is the italian text')
-      .get('span[data-text]')
       .contains('This is the italian text')
       .type('{enter}');
     cy.get('.new-translation .ui.basic.icon.button.block-add-button').click();
@@ -65,9 +65,9 @@ describe('Babel View Tests', () => {
 
     // Edit
     cy.findByLabelText('Modifica').click();
-    cy.get(
-      '.documentFirstHeading > .public-DraftStyleDefault-block',
-    ).findByText('My IT page');
+    cy.get('.block.inner.title [contenteditable="true"]').findByText(
+      'My IT page',
+    );
 
     // Click on the menu
     cy.findByLabelText('Confronta con').click();
@@ -76,13 +76,11 @@ describe('Babel View Tests', () => {
     // The babel view is there
     cy.findByText('Test document');
     cy.get(
-      '.new-translation .documentFirstHeading > .public-DraftStyleDefault-block',
+      '.new-translation .block.inner.title [contenteditable="true"]',
     ).findByText('My IT page');
-    cy.get(
-      '.new-translation .documentFirstHeading > .public-DraftStyleDefault-block',
-    )
-      .clear()
-      .type('My IT page edited');
+    cy.clearSlate(
+      '.new-translation .block.inner.title [contenteditable="true"]',
+    ).type('My IT page edited');
 
     cy.get('#toolbar-save').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/it/my-it-page');

@@ -1,6 +1,535 @@
 # Change Log
 
-## 15.8.1 (unreleased)
+## 16.0.0 (unreleased)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
+### Documentation
+
+## 16.0.0-alpha.25 (2022-08-24)
+
+### Feature
+
+- Add support for OpenStreet Maps in Maps block @sneridagh
+- Make `internalApiPath` client aware, since there are some corner cases when the client needs to know it to properly handle API server URLs @sneridagh
+
+### Bugfix
+
+- Fix sitemap.xml.gz @robgietema
+
+### Internal
+
+- Use component registry for default image, fallback to the local import @sneridagh
+
+## 16.0.0-alpha.24 (2022-08-22)
+
+### Feature
+
+- handle 'no connection' available error (408 error). @giuliaghisini
+
+### Bugfix
+
+- Fix overlapping for long words in Control Panel titles (added word-wrapping) @sneridagh
+
+## 16.0.0-alpha.23 (2022-08-18)
+
+### Breaking
+
+- change password-reset url to be consistent with Plone configuration @erral
+- Simplify over the existing Component Registry API. The `component` key has been flattened for simplification and now it's mapped directly to the `component` argument of `registerComponent`. @sneridagh
+
+See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+
+### Feature
+
+- Show the content type of the content object you are adding/editing in the sidebar @robgietema
+- Remove soft hyphens from the title tag @davisagli
+
+### Bugfix
+
+- Fix login form redirect when it was loaded with a trailing slash @davisagli
+- Better de translation for Site Setup @davisagli
+
+### Internal
+
+- Test against Plone 5.2.9 and 6.0.0b1 @davisagli
+- Use latest 1.6.0 `@plone/scripts` @sneridagh
+- Add classname of variation in edit mode @iFlameing
+
+## 16.0.0-alpha.22 (2022-08-05)
+
+### Breaking
+
+- The complete configuration registry is passed to the add-ons and the project configuration pipeline
+  See https://docs.voltocms.com/upgrade-guide/ for more information. @sneridagh
+- Refactor the component registry API in the configuration registry @sneridagh @tiberiuichim
+
+### Bugfix
+
+- Fix content loading in `DefaultView` infinite loop if a listing block with no query is present. @sneridagh
+
+### Documentation
+
+- Documentation of the new component registry API @sneridagh
+
+## 16.0.0-alpha.21 (2022-08-03)
+
+### Bugfix
+
+- Fix ArrayWidget choices when editing a recently created content item. @davisagli
+
+### Internal
+
+- Fix propTypes for Pagination component @davisagli
+
+## 16.0.0-alpha.20 (2022-08-01)
+
+### Breaking
+
+- Use `Cypress` 10.3.0 (migrate from 9.x.x). Cypress 10 has some interesting goodies, being the native support of Apple Silicon Computers the main of it. See https://docs.voltocms.com/upgrade-guide/ for more information. @sneridagh
+
+### Bugfix
+
+- Make Search page title translatable @erral
+- Changed storeProtectLoadUtils location from src/storeProtectLoadUtils to src/middleware/storeProtectLoadUtils @MdSahil-oss
+
+### Documentation
+
+- Minor clean up of volto-slate upgrade guide. @stevepiercy
+
+- Rework documentation on how to write a Slate plugin @ksuess
+
+## 16.0.0-alpha.19 (2022-07-28)
+
+### Breaking
+
+- Using volto-slate Headline / Subheadline buttons strips all elements in the selection @tiberiuichim
+
+### Feature
+
+- Send extra data coming from listing block schemaEnhancer from searchBlock to the listing variation @ionlizarazu
+
+### Bugfix
+
+- complete pt_BR translation @ericof
+- Fix action `listUsers`. Provide default. @ksuess
+- Provide the correct id to the blocks wrapped by StyleWrapper. @razvanMiu
+- Remove console deprecation notice for 'host' property usage coming from Express @sneridagh
+
+### Internal
+
+- Allow passing `allowedChildren` option to the BlockButton, to strip elements in headlines @tiberiuichim
+- Upgrade to latest `@plone/scripts` @sneridagh
+- Update browserlist definitions @sneridagh
+
+### Documentation
+
+- Add upgrade guide documentation for dealing with `volto-slate` upgrades for Volto 16 alpha 15 onwards. @sneridagh
+
+## 16.0.0-alpha.18 (2022-07-26)
+
+### Breaking
+
+- Remove the `callout` button (the one with the megaphone icon) from the slate toolbar since it has the same styling as `blockquote`. If you need it anyway, you can bring it back in your addon. @sneridagh
+
+### Bugfix
+
+- Fix edge cases in Cypress flaky tests when the Edit component was loaded without loading the type schema. @sneridagh & @davisagli
+- Fix edge cases in Cypress flaky tests when the Edit component was loaded for the wrong content path. @davisagli
+
+### Internal
+
+- Fix `defaultBlockType` entry in default config, set it to slate. @sneridagh
+
+## 16.0.0-alpha.17 (2022-07-25)
+
+### Bugfix
+
+- Make `crypto-random-string` a direct dep, fixing a hidden error since some updated dependency was requiring it directly but not anymore. @sneridagh
+
+## 16.0.0-alpha.16 (2022-07-25)
+
+### Do not use, this is a brown bag release
+
+See: https://github.com/plone/volto/pull/3505
+Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alpha.17
+
+### Breaking
+
+- Staticize Poppins font to be compliant with EU privacy. Import from GoogleFont is disabled in site.variables. @giuliaghisini
+
+### Bugfix
+
+- Add some more messages to be able to translate them @erral
+- Fix typo in de locale @wolbernd
+- [generator] Improvements to the addon generator: Now it wires up the addon automatically for immediate local development @sneridagh
+- complete eu translation @erral
+- complete es translation @erral
+- [generator] Add .editorconfig and .prettierignore to generated projects and addons. @ericof
+
+### Internal
+
+- Update json-schema including transitive dependencies @davisagli
+- Update release-it @davisagli
+- Deduplicate dependencies using yarn-deduplicate @davisagli
+
+### Documentation
+
+- Fix redirect on YouTube, broken link after merge and deleted branch. @stevepiercy
+
+## 16.0.0-alpha.15 (2022-07-21)
+
+### Breaking
+
+- Integrate volto-state add-on. @tiberiuichim @razvanmiu @eea
+
+### Documentation
+
+- volto-slate documentation @nileshgulia1
+
+## 16.0.0-alpha.14 (2022-07-20)
+
+### Breaking
+
+- Action `listUsers`to be called with Object. Distinguish between search for id or search for fullname, email, username @ksuess
+
+### Feature
+
+- Add user group membership control panel @ksuess
+- Action `listUsers`: Support search for fullname, email, username. @ksuess
+
+### Bugfix
+
+- Fix typo in de locale @wolbernd
+
+## 16.0.0-alpha.13 (2022-07-18)
+
+### Feature
+
+- Add schema to video block sidebar @iRohitSingh @danielamormocea
+
+### Bugfix
+
+- Prevent the `defaultView` to show anything if the content is not loaded yet. This fixes showing the non-blocks enabled view for a fraction of a second before showing the blocks-enabled one once the content is loaded. @sneridagh
+
+### Documentation
+
+- `aria-*` attributes are now parsed correctly by jsx-lexer 2.0. @stevepiercy
+
+## 16.0.0-alpha.12 (2022-07-13)
+
+### Feature
+
+- Use type info instead of id type as icon title in the folder contents. @mamico
+- Remove transifex configuration for Volto translations @erral
+- Add missing support for inner `blocksConfig` in block extensions resolutions @sneridagh
+
+### Bugfix
+
+- Fixed the description field not being included in the navigation action/ reducer @JeffersonBledsoe #3454
+- Fixed a11y of Maps block (#3467) @iRohitSingh
+
+### Internal
+
+- Mock all loadable libraries. @mamico
+
+### Documentation
+
+- Remove sphinx_sitemap configuration because Volto's docs are now imported into the main docs, making this setting unnecessary. @stevepiercy
+- Set the ogp_site_url to main docs, instead of training. @stevepiercy
+
+## 16.0.0-alpha.11 (2022-06-21)
+
+### Feature
+
+- Add listing variation schemaEnhancer to the search block schema @ionlizarazu
+- Use the local blocksConfig for extensions, fallback to the config object one. This allows to override local blocks config in nested blocks (blocks in a block, eg. accordion, grid, row) @sneridagh
+
+### Internal
+
+- Fix warning because missing key in `VersionOverview` component @sneridagh
+
+## 16.0.0-alpha.10 (2022-06-17)
+
+### Bugfix
+
+- Fix CSS bundling in production mode to be consistent with the current policy in the client bundle. Right now the order of the CSS resources matches this chain: Loading of `import my-less.less` in add-ons (following the add-on order) -> Loading of the Semantic UI defaults -> Loading of the local theme (either project or add-on based). We are forcing now the bundling of all the CSS in one chunk, so it behaves the same than in dev mode (using the style-loader). @sneridagh
+
+## 16.0.0-alpha.9 (2022-06-17)
+
+### Feature
+
+- New `cloneDeepSchema` helper @sneridagh
+
+### Bugfix
+
+- Use `cloneDeepSchema` helper for schema cloning operations, this fixes the error thrown in the use case of having JSX in the schema while cloning schema operations @sneridagh
+
+## 16.0.0-alpha.8 (2022-06-17)
+
+### Feature
+
+- Refactor image block: make it schema extensible @nileshgulia1 @sneridagh
+- Add control panel via config.settings @ksuess https://github.com/plone/volto/issues/3426
+- Add noindex metadata tag @steffenri
+- Adding Schema for Maps Block in Sidebar @iRohitSingh
+- Add a Pluggable to the sharing page @JeffersonBledsoe #3372
+
+### Bugfix
+
+- Don't render junk when no facets are added to the search block @tiberiuichim
+- Fix visibility of toolbar workflow dropdown for more states as fitting in .toolbar-content. @ksuess
+- Fix the video block for anonymous user @iFlameing
+
+## 16.0.0-alpha.7 (2022-06-01)
+
+### Bugfix
+
+- fix schema when content contains lock informations. @giuliaghisini
+
+### Internal
+
+- Missing change from the last breaking change (Remove the style wrapper around the `<Block />` component in Edit mode, moved to the main edit wrapper). Now, really move it to the main edit wrapper @sneridagh
+
+## 16.0.0-alpha.6 (2022-05-31)
+
+### Breaking
+
+- Rename `src/components/manage/Widgets/ColorPicker.jsx` component to `src/components/manage/Widgets/ColorPickerWidget.jsx` @sneridagh
+- Remove the style wrapper around the `<Block />` component in Edit mode, moved to the main edit wrapper @sneridagh
+
+### Feature
+
+- Updated Brazilian Portuguese translation @ericof
+- Forward `HTTP Range` headers to the backend. @mamico
+- Add default value to color picker, if `default` is present in the widget schema. @sneridagh
+- Inject the classnames of the StyleWrapper into the main edit wrapper (it was wrapping directly the Edit component before). This way, the flexibility is bigger and you can act upon the whole edit container and artifacts (handlers, etc) @sneridagh
+
+### Bugfix
+
+- fix TokenWidget choices when editing a recently created content. @giuliaghisini
+- Fix color picker defaults implementation #2 @sneridagh
+- Enable default color in `backgroundColor` default StyleWrapper field which wasn't sync with the default value setting @sneridagh
+- Fix Block style wrapper: Cannot read properties of undefined (reading 'toString') @avoinea #3410
+
+## 16.0.0-alpha.5 (2022-05-25)
+
+### Bugfix
+
+- Fix regression, compound lang names (eg. `pt-BR`) no longer working @sneridagh
+
+## 16.0.0-alpha.4 (2022-05-22)
+
+### Breaking
+
+- Removed `date-fns` from dependencies, this was in the build because `Cypress` depended on it. After the `Cypress` upgrade it no longer depends on it. If your project still depends on it, add it as a dependency of your project. @sneridagh
+- Removed all usage of `date-fns` from core. @sneridagh
+
+### Feature
+
+- Added viewableInBrowserObjects setting to use in alternative to downloadableObjects, if you want to view file in browser intstead downloading. @giuliaghisini
+- Disable already chosen criteria in querystring widget @kreafox
+- Added X-Forwarded-\* headers to superagent requests. @mamico
+
+### Bugfix
+
+- Fix `withStylingSchemaEnhancer` enhancer mechanism @sneridagh
+- Add correct query parameters to the redirect @robgietema
+- Fix RenderBlocks: path @ksuess
+- Fix field id creation in dexterity control panel to have slugified id @erral
+- Changed to get intl.locale always from state @ionlizarazu
+
+### Feature
+
+- Updated Brazilian Portuguese translation @ericof
+- Forward `HTTP Range` headers to the backend. @mamico
+- Add default value to color picker, if `default` is present in the widget schema. @sneridagh
+
+### Bugfix
+
+- fix TokenWidget choices when editing a recently created content. @giuliaghisini
+- Fix color picker defaults implementation #2 @sneridagh
+
+### Internal
+
+- Update `Cypress` to version 9.6.1 @sneridagh
+
+### Documentation
+
+- Updated simple.md @MdSahil-oss
+- Fix indentation in nginx configuration in simple.md @stevepiercy
+
+## 16.0.0-alpha.3 (2022-05-16)
+
+### Breaking
+
+- Remove `div` as default if `as` prop from `RenderBlocks`. Now the default is a `React.Fragment` instead. This could lead to CSS inconsistencies if taken this div into account, specially if used in custom add-ons without. In order to avoid them, set the `as` property always in your add-ons. @sneridagh
+
+## 16.0.0-alpha.2 (2022-05-16)
+
+- Rename `src/components/manage/Widgets/ColorPicker.jsx` component to `src/components/manage/Widgets/ColorPickerWidget.jsx` @sneridagh
+
+### Feature
+
+- Updated Brazilian Portuguese translation @ericof
+- Forward `HTTP Range` headers to the backend. @mamico
+- Add default value to color picker, if `default` is present in the widget schema. @sneridagh
+- added configurable identifier field for password reset in config.js. @giuliaghisini
+- Add `expandToBackendURL` helper @sneridagh
+
+### Bugfix
+
+- fix TokenWidget choices when editing a recently created content. @giuliaghisini
+
+### Internal
+
+### Documentation
+
+## 16.0.0-alpha.5 (2022-05-25)
+
+### Bugfix
+
+- Fix regression, compound lang names (eg. `pt-BR`) no longer working @sneridagh
+
+## 16.0.0-alpha.4 (2022-05-22)
+
+### Breaking
+
+- Removed `date-fns` from dependencies, this was in the build because `Cypress` depended on it. After the `Cypress` upgrade it no longer depends on it. If your project still depends on it, add it as a dependency of your project. @sneridagh
+- Removed all usage of `date-fns` from core. @sneridagh
+
+### Feature
+
+- Added viewableInBrowserObjects setting to use in alternative to downloadableObjects, if you want to view file in browser intstead downloading. @giuliaghisini
+- Disable already chosen criteria in querystring widget @kreafox
+- Added X-Forwarded-\* headers to superagent requests. @mamico
+
+### Bugfix
+
+- Fix `withStylingSchemaEnhancer` enhancer mechanism @sneridagh
+- Add correct query parameters to the redirect @robgietema
+- Fix RenderBlocks: path @ksuess
+- Fix field id creation in dexterity control panel to have slugified id @erral
+- Changed to get intl.locale always from state @ionlizarazu
+- fixed view video list from youtube in Video block. @giuliaghisini
+- Fixed ICS URL in event view in seamless mode @sneridagh
+
+### Internal
+
+- Update `Cypress` to version 9.6.1 @sneridagh
+
+### Documentation
+
+- Updated simple.md @MdSahil-oss
+- Fix indentation in nginx configuration in simple.md @stevepiercy
+
+## 16.0.0-alpha.3 (2022-05-16)
+
+### Breaking
+
+- Remove `div` as default if `as` prop from `RenderBlocks`. Now the default is a `React.Fragment` instead. This could lead to CSS inconsistencies if taken this div into account, specially if used in custom add-ons without. In order to avoid them, set the `as` property always in your add-ons. @sneridagh
+
+## 16.0.0-alpha.2 (2022-05-16)
+
+### Feature
+
+- Add default widget views for all type of fields and improve the DefaultView @ionlizarazu
+- added configurable identifier field for password reset in config.js. @giuliaghisini
+- Add `expandToBackendURL` helper @sneridagh
+
+### Bugfix
+
+- fixed view video list from youtube in Video block. @giuliaghisini
+- Fixed ICS URL in event view in seamless mode @sneridagh
+
+### Internal
+
+- Reintroduce Plone 6 acceptance tests using the latests `plone.app.robotframework` 2.0.0a6 specific Volto fixture. @datakurre @ericof @sneridagh
+- Upgrade all tests to use `plone.app.robotframework` 2.0.0a6 @sneridagh
+- Upgrade Sentry to latest version because of [#3346](https://github.com/plone/volto/issues/3346) @sneridagh
+- Reintroduce Plone 6 acceptance tests using the latests `plone.app.robotframework` 2.0.0a6 specific Volto fixture. @datakurre @ericof @sneridagh
+- Upgrade all tests to use `plone.app.robotframework` 2.0.0a6 @sneridagh
+
+### Documentation
+
+## 16.0.0-alpha.5 (2022-05-25)
+
+### Bugfix
+
+- Fix regression, compound lang names (eg. `pt-BR`) no longer working @sneridagh
+
+## 16.0.0-alpha.4 (2022-05-22)
+
+### Breaking
+
+- Removed `date-fns` from dependencies, this was in the build because `Cypress` depended on it. After the `Cypress` upgrade it no longer depends on it. If your project still depends on it, add it as a dependency of your project. @sneridagh
+- Removed all usage of `date-fns` from core. @sneridagh
+
+### Feature
+
+- Added viewableInBrowserObjects setting to use in alternative to downloadableObjects, if you want to view file in browser intstead downloading. @giuliaghisini
+- Disable already chosen criteria in querystring widget @kreafox
+- Added X-Forwarded-\* headers to superagent requests. @mamico
+
+### Bugfix
+
+- Fix `withStylingSchemaEnhancer` enhancer mechanism @sneridagh
+- Add correct query parameters to the redirect @robgietema
+- Fix RenderBlocks: path @ksuess
+- Fix field id creation in dexterity control panel to have slugified id @erral
+- Changed to get intl.locale always from state @ionlizarazu
+
+### Internal
+
+- Update `Cypress` to version 9.6.1 @sneridagh
+
+### Documentation
+
+- Updated simple.md @MdSahil-oss
+- Fix indentation in nginx configuration in simple.md @stevepiercy
+
+## 16.0.0-alpha.3 (2022-05-16)
+
+### Breaking
+
+- Remove `div` as default if `as` prop from `RenderBlocks`. Now the default is a `React.Fragment` instead. This could lead to CSS inconsistencies if taken this div into account, specially if used in custom add-ons without. In order to avoid them, set the `as` property always in your add-ons. @sneridagh
+
+## 16.0.0-alpha.2 (2022-05-16)
+
+### Feature
+
+- Add default widget views for all type of fields and improve the DefaultView @ionlizarazu
+- added configurable identifier field for password reset in config.js. @giuliaghisini
+- Add `expandToBackendURL` helper @sneridagh
+
+### Bugfix
+
+- fixed view video list from youtube in Video block. @giuliaghisini
+- Fixed ICS URL in event view in seamless mode @sneridagh
+
+### Internal
+
+- Reintroduce Plone 6 acceptance tests using the latests `plone.app.robotframework` 2.0.0a6 specific Volto fixture. @datakurre @ericof @sneridagh
+- Upgrade all tests to use `plone.app.robotframework` 2.0.0a6 @sneridagh
+- Upgrade Sentry to latest version because of [#3346](https://github.com/plone/volto/issues/3346) @sneridagh
+
+### Documentation
+
+- fix make task `docs-linkcheckbroken` if grep has exit code 1 (no lines found)
+
+## 16.0.0-alpha.1 (2022-05-09)
+
+### Feature
+
+- Added new Block Style Wrapper. This implementation is marked as **experimental** during Volto 16 alpha period. The components, API and the styling are subject to change **without issuing a breaking change**. You can start using it in your projects and add-ons, but taking this into account. See documentation for more information. @sneridagh
+
+## 16.0.0-alpha.0 (2022-05-06)
 
 ### Breaking
 
@@ -9,18 +538,36 @@
 
 ### Feature
 
+- added default placeholder for videos to embed them more lightly @giuliaghisini
+- Added default placeholder for videos to embed them more lightly @giuliaghisini
+- Completed Romanian translation @sboghy
+
 ### Bugfix
+
+- Fix Search page visit crashes /contents view @dobri1408
+- Fix sidebar full size bottom opacity on edit page when sidebar is collapsed @ichim-david
+- Fix toolbar bottom opacity on edit page when toolbar is collapsed @ichim-david
+- Fix missing criteria in QueryWidget. @giuliaghisini
+- Fix content view regression, height issue @danielamormocea
+- Fixed secure cookie option. @giuliaghisini
+- Changed addon order in addon controlpanel to mimic Classic UI @erral
+- Fixed error when loading content in a language for which a Volto translation is not available. @davisagli
+- Fix different querystring filters in the querystring widget @kreafox
+- Fix for clipped dropdown menus when the table has few or no records in Contents view @mihaislobozeanu
 
 ### Internal
 
 - Improve Cypress integration, using Cypress official Github Action. Improve some flaky tests that showed up, and were known as problematic. Refactor and rename all the Github actions giving them meaningful names, and group them by type. Enable Cypress Dashboard for Volto. @sneridagh
 - Stop using `xmlrpc` library for issuing the setup/teardown in core, use a `cy.request` instead. @sneridagh
 - Added Cypress environment variables for adjusting the backend URL of commands @JeffersonBledsoe #3271
+- Fixed Storybook configuration for add-ons @pnicolli
 
 ### Documentation
 
 - Move Cypress documentation from `README.md` to the docs. Improve the docs with the new `Makefile` commands.
 - Improve English grammar and syntax in backend docs. @stevepiercy
+- Fix JSX syntax highlighting. Remove duplicate heading. @stevepiercy
+- Proper case HAProxy, nginx, and Docker Compose. @stevepiercy
 
 ## 15.8.0 (2022-04-30)
 
@@ -245,6 +792,7 @@
 - Overwrite current block on insert new block. @robgietema
 - Fix hot reload on updates related to the config object because of `VersionOverview` component @sneridagh
 - Fix error when lock data is gone after an invariant error. @robgietema
+- Protect against ghost content loading and scroll to top @reebalazs
 
 ### Internal
 

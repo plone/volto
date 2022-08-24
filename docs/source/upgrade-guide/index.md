@@ -25,16 +25,208 @@ runs if it's outdated. The generator is also able to "update" your project with
 the latest changes, and propose to you to merge the changes, so you can run it on top of your project by answering the prompt.
 ```
 
-(volto-upgrade-guide-15.x.x)=
 
-## Upgrading to Volto 15.x.x
+(volto-upgrade-guide-16.x.x)=
 
-## Deprecating NodeJS 12
+## Upgrading to Volto 16.x.x
+
+### `volto-slate` is now core
+
+From Volto 16.0.0-alpha.15 onwards, `volto-slate` is integrated into Volto core and enabled as the default text block.
+The previous text block `text` based on `draftJS` is now deprecated and is restricted (hidden) in Volto bootstrap.
+This is a major change and should be planned in advance before you install 16.0.0-alpha.15 or later.
+
+```{versionadded} 16.0.0-alpha.15
+`volto-slate` added to Volto core as the default text block.
+```
+
+```{deprecated} 16.0.0-alpha.15
+`text` text block based on `draftJS` is now deprecated and will be removed from core in Volto 18.
+```
+
+```{note}
+Volto 16 is intended to be the long-term support (LTS) version used when Plone 6 Final is released.
+Although `draftJS` text block deployments are now deprecated, they are supported in Volto 16, will be supported in Volto 17, but will be removed in Volto 18.
+As such, you are strongly encouraged to migrate existing sites that use `draftJS` text blocks to `slate` text blocks.
+
+See below for more information.
+```
+
+These are the possible scenarios:
+
+- New projects
+- Existing projects, already using `volto-slate` add-on
+- Existing projects using core `draftJS`, opting to continue using `draftJS`
+- Existing projects using core `draftJS`, opting to start using `slate` without migrating (possible, but not recommended)
+- Existing projects using core `draftJS`, opting to migrate to `slate`
+
+#### New projects
+
+New projects are unaffected, since they will use `slate` as the default text block from the beginning.
+
+#### Existing projects, already using `volto-slate` add-on
+
+For projects already using `volto-slate`, take the following steps in your project configuration:
+
+- Remove `volto-slate` add-on from your project build dependencies.
+- Add these lines to the Jest configuration in your project's `package.json`:
+
+```diff
+--- a/package.json
++++ b/package.json
+@@ -57,6 +57,7 @@
+       "^.+\\.js(x)?$": "babel-jest",
+       "^.+\\.css$": "jest-css-modules",
+       "^.+\\.scss$": "jest-css-modules",
++      "^.+\\.less$": "jest-css-modules",
+       "^.+\\.(png)$": "jest-file",
+       "^.+\\.(jpg)$": "jest-file",
+       "^.+\\.(svg)$": "./node_modules/@plone/volto/jest-svgsystem-transform.js"
+@@ -67,6 +68,7 @@
+     "moduleNameMapper": {
+       "@plone/volto/babel": "<rootDir>/node_modules/@plone/volto/babel",
+       "@plone/volto/(.*)$": "<rootDir>/node_modules/@plone/volto/src/$1",
++      "@plone/volto-slate": "<rootDir>/node_modules/@plone/volto/packages/volto-slate/src",
+```
+
+- If any of your code depends on `volto-slate` code, update your imports by adding the namespace `@plone/` to the original `volto-slate` import.
+
+```diff
+- import { DetachedTextBlockEditor } from 'volto-slate/blocks/Text/DetachedTextBlockEditor';
++ import { DetachedTextBlockEditor } from '@plone/volto-slate/blocks/Text/DetachedTextBlockEditor';
+```
+
+#### Existing projects using core `draftJS`, opting to continue using `draftJS`
+
+You will have to configure your project to continue using `draftJS`, for example, in your `config.js` or in your add-on:
+
+```js
+config.settings.defaultBlockType = 'text'
+config.blocks.blocksConfig.table.restricted = false;
+config.blocks.blocksConfig.slateTable.restricted = true;
+```
+
+#### Existing projects using core `draftJS`, opting to start using `slate` without migrating (possible, but not recommended)
+
+Still a valid option, especially if you don't have the budget for it, the old content based on the legacy `text` block will be still be functional.
+New text blocks in new content will be created with the new `slate` text block.
+
+It is recommended to go the extra mile and migrate the `text` blocks to `slate` blocks for maximum future compatibility.
+
+#### Existing projects using core `draftJS`, opting to migrate to `slate`
+
+Use the `blocks-conversion-tool`.
+See https://github.com/plone/blocks-conversion-tool for more information.
+
+### Deprecating NodeJS 12
 
 Since April 30, 2022, NodeJS 12 is out of Long Term Support by the NodeJS community.
 NodeJS 12 is deprecated in Volto 13.
 Please update your projects to a NodeJS LTS version, where either 14 or 16 is supported at the moment of this writing.
 Version 16 is recommended.
+
+### Removed `date-fns` from build
+
+The `date-fns` library has been removed from Volto's dependencies.
+It was in the build because `Cypress` depended on it.
+After `Cypress` was upgraded, it no longer depends on `date-fns`.
+If your project still depends on `date-fns`, add it as a dependency of your project.
+
+```{warning}
+The `date-fns` version present in the build was quite old (1.x.x series).
+Beware when using an updated version (2.x.x), as it may contain some breaking changes.
+Also take a look at: https://dockyard.com/blog/2020/02/14/you-probably-don-t-need-moment-js-anymore
+
+If you need to format dates in Volto, it's recommended to use the `FormattedDate` component in Volto core.
+It uses modern recommendations for date formatting on the web.
+```
+
+### Upgraded core to use Cypress 10
+
+Cypress has overhauled the testing app and included native support of Apple Silicon Computers from 10.2.0 onwards.
+This improves dramatically the launch and test times in these machines.
+It also includes the new "component" testing feature that might be appealing in the near future.
+The only drawback is that they also overhauled the configuration forcing to migrate from old config based on JSON files to a better JS-based one. They also changed and renamed some of the options.
+Luckily, they provide a good reporting when old configuration is in place and an interactive migration wizard.
+
+Core configuration has been updated, but you will require to update your Cypress configuration if you want to use core's Cypress 10.
+Could be that forcing your project to use older versions might still work with old configurations.
+
+See https://docs.cypress.io/guides/references/migration-guide#Migrating-to-Cypress-version-10-0 for more information.
+
+### The complete configuration registry is passed to the add-ons and the project configuration pipeline
+
+The core in versions prior Volto 16.0.0-alpha.22 was passing a simplified version of the configuration registry (in fact, a plain object primitive) to the add-on list and project configuration pipeline.
+
+From Volto 16.0.0-alpha.22 onwards, the full configuration registry is passed through the pipeline.
+This allows to have access to the advanced registry features, like the new component registry.
+You may want to update your configuration in case that you were updating the primitive using basic object operators (spread, etc) in the config object itself.
+For example, this won't work anymore:
+
+```js
+  return {
+    ...config,
+    blocks: {
+      ...config.blocks,
+      blocksConfig: {
+        ...config.blocks.blocksConfig,
+        ...addonBlocks,
+        listing: listing(config),
+      },
+    },
+    views: {
+      ...config.views,
+      contentTypesViews: {
+        ...config.views.contentTypesViews,
+        Folder: NewsAndEvents,
+      },
+    },
+  };
+```
+
+Using the spread operator while you mutate the configuration object is not required.
+You can mutate the object properties directly, like:
+
+```js
+const applyConfig = (config) => {
+  config.blocks.blocksConfig.testBlock = testBlock;
+  config.blocks.blocksConfig.listing = listing(config);
+  config.views.contentTypesViews.Folder = NewsAndEvents;
+
+  return config;
+};
+```
+
+The other rules apply, so make sure you return the `config` object after mutating it.
+
+### Refactor the component registry API in the configuration registry
+
+After a period of testing, this experimental feature has been refactored to adequate better to existing requirements.
+
+#### Renamed `registry.resolve` to `registry.getComponent`
+
+```diff
+- registry.resolve(componentName)?.component;
++ registry.getComponent(componentName)?.component;
+```
+
+#### `registry.getComponent` signature changes
+
+It maintains signature compatibility with `registry.resolve` but introduces new arguments for bigger flexibility.
+
+See documentation for more information.
+
+````{versionchanged} 16.0.0-alpha.23
+The `component` argument changed in 16.0.0-alpha.23.
+The `component` key has been flattened for simplification and now it's mapped directly to the `component` argument of `registerComponent`:
+
+```js
+config.registerComponent({
+    name: 'Teaser',
+    component: MyTeaserDefaultComponent,
+  });
+```
+````
 
 (volto-upgrade-guide-15.x.x)=
 

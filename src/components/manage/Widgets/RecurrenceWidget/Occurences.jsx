@@ -13,6 +13,7 @@ import addSVG from '@plone/volto/icons/circle-plus.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
+import { useSelector } from 'react-redux';
 import { toISOString } from './Utils';
 
 const messages = defineMessages({
@@ -66,7 +67,8 @@ const Occurences_ = ({
   moment: momentlib,
 }) => {
   const moment = momentlib.default;
-  moment.locale(intl.locale);
+  const lang = useSelector((state) => state.intl.locale);
+  moment.locale(lang);
   let all = [];
   const isExcluded = (date) => {
     var dateISO = toISOString(date);

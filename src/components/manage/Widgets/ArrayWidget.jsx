@@ -162,6 +162,8 @@ class ArrayWidget extends Component {
     choices: PropTypes.arrayOf(
       PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
     ),
+    vocabLoading: PropTypes.bool,
+    vocabLoaded: PropTypes.bool,
     items: PropTypes.shape({
       vocabulary: PropTypes.object,
     }),
@@ -223,7 +225,22 @@ class ArrayWidget extends Component {
       this.props.getVocabulary({
         vocabNameOrURL: this.props.vocabBaseUrl,
         size: -1,
-        subrequest: this.props.intl.locale,
+        subrequest: this.props.lang,
+      });
+    }
+  }
+
+  componentDidUpdate() {
+    if (
+      !this.props.items?.choices?.length &&
+      !this.props.choices?.length &&
+      this.props.vocabLoading === undefined &&
+      !this.props.vocabLoaded
+    ) {
+      this.props.getVocabulary({
+        vocabNameOrURL: this.props.vocabBaseUrl,
+        size: -1,
+        subrequest: this.props.lang,
       });
     }
   }
@@ -375,21 +392,25 @@ export default compose(
         getVocabFromItems(props);
 
       const vocabState =
-        state.vocabularies?.[vocabBaseUrl]?.subrequests?.[props.intl.locale];
+        state.vocabularies?.[vocabBaseUrl]?.subrequests?.[state.intl.locale];
 
       // If the schema already has the choices in it, then do not try to get the vocab,
       // even if there is one
       if (props.items?.choices) {
         return {
           choices: props.items.choices,
+          lang: state.intl.locale,
         };
       } else if (vocabState) {
         return {
           choices: vocabState.items,
           vocabBaseUrl,
+          vocabLoading: vocabState.loading,
+          vocabLoaded: vocabState.loaded,
+          lang: state.intl.locale,
         };
       }
-      return { vocabBaseUrl };
+      return { vocabBaseUrl, lang: state.intl.locale };
     },
     { getVocabulary },
   ),

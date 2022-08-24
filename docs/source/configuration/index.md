@@ -8,17 +8,17 @@ html_meta:
 
 # Configuration
 
-
 ```{toctree}
-:maxdepth: 1
+:maxdepth: 2
 
 how-to
 settings-reference
 zero-config-builds
+component-registry
 internalproxy
 backend
 volto-config-js
-richeditor-settings
+volto-slate/index
 multilingual
 workingcopy
 environmentvariables

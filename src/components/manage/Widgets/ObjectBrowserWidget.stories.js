@@ -190,7 +190,7 @@ const ObjectBrowserWidget = (args) => {
 };
 
 export default {
-  title: 'Widgets/Object Browser',
+  title: 'Edit Widgets/Object Browser',
   argTypes: {
     selectableTypes: {
       name: 'widgetOptions.pattern_options.selectableTypes',
