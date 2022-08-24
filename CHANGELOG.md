@@ -7,10 +7,15 @@
 ### Feature
 
 - Add support for OpenStreet Maps in Maps block @sneridagh
+- Make `internalApiPath` client aware, since there are some corner cases when the client needs to know it to properly handle API server URLs @sneridagh
 
 ### Bugfix
 
+- Fix sitemap.xml.gz @robgietema
+
 ### Internal
+
+- Use component registry for default image, fallback to the local import @sneridagh
 
 ### Documentation
 
