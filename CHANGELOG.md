@@ -10,12 +10,6 @@
 - Add user group membership control panel @ksuess
 - Action `listUsers`: Support search for fullname, email, username. @ksuess
 
-### Bugfix
-
-### Internal
-
-### Documentation
-
 ## 15.14.0 (2022-07-26)
 
 ### Feature
