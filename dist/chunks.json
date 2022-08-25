@@ -2,8 +2,8 @@
   "21": {
     "css": [],
     "js": [
-      "/static/js/21.4db4f37a.chunk.js",
-      "/static/js/21.4db4f37a.chunk.js.map"
+      "/static/js/21.ae3ea33e.chunk.js",
+      "/static/js/21.ae3ea33e.chunk.js.map"
     ],
     "chunks": [
       21
@@ -12,8 +12,8 @@
   "22": {
     "css": [],
     "js": [
-      "/static/js/22.53fd876b.chunk.js",
-      "/static/js/22.53fd876b.chunk.js.map"
+      "/static/js/22.bd2c8041.chunk.js",
+      "/static/js/22.bd2c8041.chunk.js.map"
     ],
     "chunks": [
       22
@@ -22,8 +22,8 @@
   "23": {
     "css": [],
     "js": [
-      "/static/js/23.73c953f9.chunk.js",
-      "/static/js/23.73c953f9.chunk.js.map"
+      "/static/js/23.88d06997.chunk.js",
+      "/static/js/23.88d06997.chunk.js.map"
     ],
     "chunks": [
       23
@@ -32,8 +32,8 @@
   "24": {
     "css": [],
     "js": [
-      "/static/js/24.6e26d441.chunk.js",
-      "/static/js/24.6e26d441.chunk.js.map"
+      "/static/js/24.90ba68a7.chunk.js",
+      "/static/js/24.90ba68a7.chunk.js.map"
     ],
     "chunks": [
       24
@@ -42,8 +42,8 @@
   "25": {
     "css": [],
     "js": [
-      "/static/js/25.afe3f898.chunk.js",
-      "/static/js/25.afe3f898.chunk.js.map"
+      "/static/js/25.3eea16eb.chunk.js",
+      "/static/js/25.3eea16eb.chunk.js.map"
     ],
     "chunks": [
       25
@@ -52,8 +52,8 @@
   "26": {
     "css": [],
     "js": [
-      "/static/js/26.d77ee844.chunk.js",
-      "/static/js/26.d77ee844.chunk.js.map"
+      "/static/js/26.4e256489.chunk.js",
+      "/static/js/26.4e256489.chunk.js.map"
     ],
     "chunks": [
       26
@@ -62,8 +62,8 @@
   "27": {
     "css": [],
     "js": [
-      "/static/js/27.88003361.chunk.js",
-      "/static/js/27.88003361.chunk.js.map"
+      "/static/js/27.d36985d8.chunk.js",
+      "/static/js/27.d36985d8.chunk.js.map"
     ],
     "chunks": [
       27
@@ -72,8 +72,8 @@
   "28": {
     "css": [],
     "js": [
-      "/static/js/28.feb3c3f7.chunk.js",
-      "/static/js/28.feb3c3f7.chunk.js.map"
+      "/static/js/28.de61daeb.chunk.js",
+      "/static/js/28.de61daeb.chunk.js.map"
     ],
     "chunks": [
       28
@@ -82,8 +82,8 @@
   "29": {
     "css": [],
     "js": [
-      "/static/js/29.15e60de7.chunk.js",
-      "/static/js/29.15e60de7.chunk.js.map"
+      "/static/js/29.1fb18c15.chunk.js",
+      "/static/js/29.1fb18c15.chunk.js.map"
     ],
     "chunks": [
       29
@@ -92,8 +92,8 @@
   "30": {
     "css": [],
     "js": [
-      "/static/js/30.f4f11f5e.chunk.js",
-      "/static/js/30.f4f11f5e.chunk.js.map"
+      "/static/js/30.2e56f9cb.chunk.js",
+      "/static/js/30.2e56f9cb.chunk.js.map"
     ],
     "chunks": [
       30
@@ -102,8 +102,8 @@
   "31": {
     "css": [],
     "js": [
-      "/static/js/31.0ea958be.chunk.js",
-      "/static/js/31.0ea958be.chunk.js.map"
+      "/static/js/31.0ef199ae.chunk.js",
+      "/static/js/31.0ef199ae.chunk.js.map"
     ],
     "chunks": [
       31
@@ -112,8 +112,8 @@
   "32": {
     "css": [],
     "js": [
-      "/static/js/32.d8a984c8.chunk.js",
-      "/static/js/32.d8a984c8.chunk.js.map"
+      "/static/js/32.609c6378.chunk.js",
+      "/static/js/32.609c6378.chunk.js.map"
     ],
     "chunks": [
       32
@@ -263,8 +263,8 @@
     "js": [
       "/static/js/3.ce36db42.chunk.js",
       "/static/js/3.ce36db42.chunk.js.map",
-      "/static/js/react-select.32a96e2d.chunk.js",
-      "/static/js/react-select.32a96e2d.chunk.js.map"
+      "/static/js/react-select.f4e5e58c.chunk.js",
+      "/static/js/react-select.f4e5e58c.chunk.js.map"
     ],
     "chunks": [
       3,
@@ -278,8 +278,8 @@
     "js": [
       "/static/js/3.ce36db42.chunk.js",
       "/static/js/3.ce36db42.chunk.js.map",
-      "/static/js/react-select.32a96e2d.chunk.js",
-      "/static/js/react-select.32a96e2d.chunk.js.map"
+      "/static/js/react-select.f4e5e58c.chunk.js",
+      "/static/js/react-select.f4e5e58c.chunk.js.map"
     ],
     "chunks": [
       3,
@@ -293,8 +293,8 @@
     "js": [
       "/static/js/3.ce36db42.chunk.js",
       "/static/js/3.ce36db42.chunk.js.map",
-      "/static/js/react-select.32a96e2d.chunk.js",
-      "/static/js/react-select.32a96e2d.chunk.js.map"
+      "/static/js/react-select.f4e5e58c.chunk.js",
+      "/static/js/react-select.f4e5e58c.chunk.js.map"
     ],
     "chunks": [
       3,
@@ -308,8 +308,8 @@
     "js": [
       "/static/js/3.ce36db42.chunk.js",
       "/static/js/3.ce36db42.chunk.js.map",
-      "/static/js/react-select.32a96e2d.chunk.js",
-      "/static/js/react-select.32a96e2d.chunk.js.map"
+      "/static/js/react-select.f4e5e58c.chunk.js",
+      "/static/js/react-select.f4e5e58c.chunk.js.map"
     ],
     "chunks": [
       3,
@@ -323,8 +323,8 @@
     "js": [
       "/static/js/3.ce36db42.chunk.js",
       "/static/js/3.ce36db42.chunk.js.map",
-      "/static/js/react-select.32a96e2d.chunk.js",
-      "/static/js/react-select.32a96e2d.chunk.js.map"
+      "/static/js/react-select.f4e5e58c.chunk.js",
+      "/static/js/react-select.f4e5e58c.chunk.js.map"
     ],
     "chunks": [
       3,
@@ -338,8 +338,8 @@
     "js": [
       "/static/js/3.ce36db42.chunk.js",
       "/static/js/3.ce36db42.chunk.js.map",
-      "/static/js/react-select.32a96e2d.chunk.js",
-      "/static/js/react-select.32a96e2d.chunk.js.map"
+      "/static/js/react-select.f4e5e58c.chunk.js",
+      "/static/js/react-select.f4e5e58c.chunk.js.map"
     ],
     "chunks": [
       3,
@@ -399,16 +399,16 @@
   },
   "client": {
     "css": [
-      "/static/css/14.97c5f0d8.chunk.css",
-      "/static/css/client.2a774e80.chunk.css"
+      "/static/css/14.490226a1.chunk.css",
+      "/static/css/client.f670db89.chunk.css"
     ],
     "js": [
-      "/static/js/runtime~client.31c134ac.js",
-      "/static/js/runtime~client.31c134ac.js.map",
-      "/static/js/14.97c5f0d8.chunk.js",
-      "/static/js/14.97c5f0d8.chunk.js.map",
-      "/static/js/client.2a774e80.chunk.js",
-      "/static/js/client.2a774e80.chunk.js.map"
+      "/static/js/runtime~client.e6d90e6d.js",
+      "/static/js/runtime~client.e6d90e6d.js.map",
+      "/static/js/14.490226a1.chunk.js",
+      "/static/js/14.490226a1.chunk.js.map",
+      "/static/js/client.f670db89.chunk.js",
+      "/static/js/client.f670db89.chunk.js.map"
     ],
     "chunks": [
       13,
@@ -428,11 +428,11 @@
   },
   "plone-volto-components-manage-Widgets-DatetimeWidget": {
     "css": [
-      "/static/css/plone-volto-components-manage-Widgets-DatetimeWidget.b8ddbbab.chunk.css"
+      "/static/css/plone-volto-components-manage-Widgets-DatetimeWidget.ad01246a.chunk.css"
     ],
     "js": [
-      "/static/js/plone-volto-components-manage-Widgets-DatetimeWidget.b8ddbbab.chunk.js",
-      "/static/js/plone-volto-components-manage-Widgets-DatetimeWidget.b8ddbbab.chunk.js.map"
+      "/static/js/plone-volto-components-manage-Widgets-DatetimeWidget.ad01246a.chunk.js",
+      "/static/js/plone-volto-components-manage-Widgets-DatetimeWidget.ad01246a.chunk.js.map"
     ],
     "chunks": [
       9
@@ -441,8 +441,8 @@
   "plone-volto-components-theme-View-EventView": {
     "css": [],
     "js": [
-      "/static/js/plone-volto-components-theme-View-EventView.cd9d3490.chunk.js",
-      "/static/js/plone-volto-components-theme-View-EventView.cd9d3490.chunk.js.map"
+      "/static/js/plone-volto-components-theme-View-EventView.f3160357.chunk.js",
+      "/static/js/plone-volto-components-theme-View-EventView.f3160357.chunk.js.map"
     ],
     "chunks": [
       10
