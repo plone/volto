@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Added placeholder param to widget, to change default placeholder @giuliaghisini
+
 ### Bugfix
 
 ### Internal
@@ -1058,7 +1060,6 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 
 ### Feature
 
-- Added placeholder param to widget, to change default placeholder @giuliaghisini
 - Enable `components` property in Volto's config registry. Does not expose any direct feature but this will open the door to be able to override registered components using the config registry and avoid using shadowing explicitly. @sneridagh
 - Add `resolve` and `register` helper methods for the Volto config. They retrieve and register new components in the registry. @tiberiuichim @sneridagh
 - Add `Component` component, given a `name` of a component registered in the registry, it renders it, passing down the props. @tiberiuichim
