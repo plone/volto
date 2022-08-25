@@ -2,7 +2,10 @@
 
 ## 15.14.1 (unreleased)
 
+### Feature
+
 - Handle no connection available error (408 error) @giuliaghisini
+- Added placeholder param to widget, to change default placeholder @giuliaghisini
 
 ## 16.0.0 (unreleased)
 
