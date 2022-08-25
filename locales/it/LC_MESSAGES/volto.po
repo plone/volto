@@ -1175,6 +1175,7 @@ msgstr "I gruppi sono raggruppamenti di utenti, come dipartimenti e unità organ
 msgid "Header cell"
 msgstr "Cella d'intestazione"
 
+#: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
 msgid "Headline"

@@ -1184,6 +1184,7 @@ msgstr "Els grups són col·leccions lògiques d'usuaris, com ara departaments i
 msgid "Header cell"
 msgstr "Cel·la de capçalera"
 
+#: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
 msgid "Headline"

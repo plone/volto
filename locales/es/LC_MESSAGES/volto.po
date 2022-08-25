@@ -1185,6 +1185,7 @@ msgstr "Los grupos son colecciones lógicas de usuarios, como departamentos o un
 msgid "Header cell"
 msgstr "Celda de cabecera"
 
+#: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
 msgid "Headline"

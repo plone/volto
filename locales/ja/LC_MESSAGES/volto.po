@@ -1183,6 +1183,7 @@ msgstr ""
 msgid "Header cell"
 msgstr "見出しセル"
 
+#: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
 msgid "Headline"

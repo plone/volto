@@ -1182,6 +1182,7 @@ msgstr "Taldeak erabiltzaileen multzo logikoak dira. Taldeak ez daude baimenei e
 msgid "Header cell"
 msgstr "Goiburuko gelaxka"
 
+#: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
 msgid "Headline"

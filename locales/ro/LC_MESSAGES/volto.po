@@ -1175,6 +1175,7 @@ msgstr "Grupurile sunt colec»õii logice de utilizatori, cum ar fi departamente »
 msgid "Header cell"
 msgstr "Celula antet"
 
+#: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
 msgid "Headline"
