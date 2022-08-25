@@ -27,6 +27,14 @@ exports[`renders an Listing Data Sidebar component 1`] = `
       </div>
       <div
         className="mocked-default-widget"
+        id="mocked-field-headline"
+      >
+        Headline
+         - 
+        No description
+      </div>
+      <div
+        className="mocked-default-widget"
         id="mocked-field-querystring"
       >
         Query
