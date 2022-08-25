@@ -18,31 +18,6 @@ describe('Blocks Tests', () => {
     cy.navigate('/my-page/edit');
   });
 
-  it('Add maps block', () => {
-    // when I add a maps block
-    cy.getSlate().click();
-    cy.get('button.block-add-button').click();
-    cy.get('.blocks-chooser .title').contains('Common').click();
-    cy.get('.blocks-chooser .common').contains('Maps').click();
-    cy.get(`.block.maps .toolbar-inner .ui.input input`)
-      .type(
-        '<iframe src="https://www.google.com/maps/embed?pb=" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>',
-      )
-      .type('{enter}');
-    cy.get('#toolbar-save').click();
-    cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('my-page');
-
-    // then the page view should contain the maps block
-    cy.get('#page-document iframe')
-      .should('have.attr', 'src')
-      .and('match', /\/\/www.google.com\/maps\/embed\?pb=/);
-  });
-
   // it('Add hero block', () => {
   //   // TODO: Implement react dropzone for this block to test the image
 

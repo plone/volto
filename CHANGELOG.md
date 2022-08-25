@@ -6,11 +6,89 @@
 
 ### Feature
 
+- Added placeholder param to widget, to change default placeholder @giuliaghisini
+
 ### Bugfix
 
 ### Internal
 
 ### Documentation
+
+## 16.0.0-alpha.26 (2022-08-24)
+
+### Breaking
+
+- This is an UI/UX breaking change. It changes the back button in folder contents from using a cross icon to using a back icon. The rationale behind is because the cross evoque "cancel" when what happens is a change of view. It's also consistent with both PastanagaUI and QuantaUI style guide. @robgietema
+
+### Feature
+
+- Add initialPath support to ObjectBrowser widget @robgietema
+
+## 16.0.0-alpha.25 (2022-08-24)
+
+### Feature
+
+- Add support for OpenStreet Maps in Maps block @sneridagh
+- Make `internalApiPath` client aware, since there are some corner cases when the client needs to know it to properly handle API server URLs @sneridagh
+
+### Bugfix
+
+- Fix sitemap.xml.gz @robgietema
+
+### Internal
+
+- Use component registry for default image, fallback to the local import @sneridagh
+
+## 16.0.0-alpha.24 (2022-08-22)
+
+### Feature
+
+- handle 'no connection' available error (408 error). @giuliaghisini
+
+### Bugfix
+
+- Fix overlapping for long words in Control Panel titles (added word-wrapping) @sneridagh
+
+## 16.0.0-alpha.23 (2022-08-18)
+
+### Breaking
+
+- change password-reset url to be consistent with Plone configuration @erral
+- Simplify over the existing Component Registry API. The `component` key has been flattened for simplification and now it's mapped directly to the `component` argument of `registerComponent`. @sneridagh
+
+See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+
+### Feature
+
+- Show the content type of the content object you are adding/editing in the sidebar @robgietema
+- Remove soft hyphens from the title tag @davisagli
+
+### Bugfix
+
+- Fix login form redirect when it was loaded with a trailing slash @davisagli
+- Better de translation for Site Setup @davisagli
+
+### Internal
+
+- Test against Plone 5.2.9 and 6.0.0b1 @davisagli
+- Use latest 1.6.0 `@plone/scripts` @sneridagh
+- Add classname of variation in edit mode @iFlameing
+
+## 16.0.0-alpha.22 (2022-08-05)
+
+### Breaking
+
+- The complete configuration registry is passed to the add-ons and the project configuration pipeline
+  See https://docs.voltocms.com/upgrade-guide/ for more information. @sneridagh
+- Refactor the component registry API in the configuration registry @sneridagh @tiberiuichim
+
+### Bugfix
+
+- Fix content loading in `DefaultView` infinite loop if a listing block with no query is present. @sneridagh
+
+### Documentation
+
+- Documentation of the new component registry API @sneridagh
 
 ## 16.0.0-alpha.21 (2022-08-03)
 
@@ -26,11 +104,12 @@
 
 ### Breaking
 
-- Use `Cypress` 10.3.0 (migrate from 9.x.x). Cypress 10 has some interesting goodies, being the native support of Apple Silicon Computers the main of it. See https://docs.voltocms.com/upgrade-guide/ for more information.
+- Use `Cypress` 10.3.0 (migrate from 9.x.x). Cypress 10 has some interesting goodies, being the native support of Apple Silicon Computers the main of it. See https://docs.voltocms.com/upgrade-guide/ for more information. @sneridagh
 
 ### Bugfix
 
 - Make Search page title translatable @erral
+- Changed storeProtectLoadUtils location from src/storeProtectLoadUtils to src/middleware/storeProtectLoadUtils @MdSahil-oss
 
 ### Documentation
 
@@ -95,7 +174,7 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 
 ### Breaking
 
-- Staticize Poppins font to be compliant with EU privacy. Import from GoogleFont is disabled in site.variables.  @giuliaghisini
+- Staticize Poppins font to be compliant with EU privacy. Import from GoogleFont is disabled in site.variables. @giuliaghisini
 
 ### Bugfix
 
