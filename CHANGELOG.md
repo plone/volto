@@ -7,8 +7,11 @@
 ### Feature
 
 - Added placeholder param to widget, to change default placeholder @giuliaghisini
+- Add a headline (`headline` field) to the listing block schema by default @sneridagh
 
 ### Bugfix
+
+- Fix literal for the listing block edit mode message telling if the results are contained items (no query) or query results ones (query present) @sneridagh
 
 ### Internal
 
