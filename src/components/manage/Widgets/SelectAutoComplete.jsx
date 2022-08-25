@@ -81,6 +81,7 @@ class SelectAutoComplete extends Component {
     onChange: PropTypes.func.isRequired,
     wrapped: PropTypes.bool,
     isDisabled: PropTypes.bool,
+    placeholder: PropTypes.string,
   };
 
   /**
@@ -240,7 +241,10 @@ class SelectAutoComplete extends Component {
             Option,
           }}
           value={selectedOption || []}
-          placeholder={this.props.intl.formatMessage(messages.select)}
+          placeholder={
+            this.props.placeholder ??
+            this.props.intl.formatMessage(messages.select)
+          }
           onChange={this.handleChange}
           isMulti
         />
