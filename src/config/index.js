@@ -26,6 +26,7 @@ import { contentIcons } from './ContentIcons';
 import { controlPanelsIcons } from './ControlPanels';
 
 import { richtextEditorSettings, richtextViewSettings } from './RichTextEditor';
+import applySlateConfiguration from '@plone/volto-slate';
 
 import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
 
@@ -91,8 +92,8 @@ let config = {
     legacyTraverse: process.env.RAZZLE_LEGACY_TRAVERSE || false,
     cookieExpires: 15552000, //in seconds. Default is 6 month (15552000)
     nonContentRoutes,
-    richtextEditorSettings,
-    richtextViewSettings,
+    richtextEditorSettings, // Part of draftjs support, to be removed
+    richtextViewSettings, // Part of draftjs support, to be removed
     imageObjects: ['Image'],
     reservedIds: ['login', 'layout', 'plone', 'zip', 'properties'],
     downloadableObjects: ['File'], //list of content-types for which the direct download of the file will be carried out if the user is not authenticated
@@ -105,7 +106,7 @@ let config = {
     defaultLanguage: 'en',
     navDepth: 1,
     expressMiddleware: serverConfig.expressMiddleware, // BBB
-    defaultBlockType: 'text',
+    defaultBlockType: 'slate',
     verticalFormTabs: false,
     useEmailAsLogin: false,
     persistentReducers: ['blocksClipboard'],
@@ -185,8 +186,6 @@ let config = {
   components,
 };
 
-config = applyAddonConfiguration(config);
-
 ConfigRegistry.settings = config.settings;
 ConfigRegistry.blocks = config.blocks;
 ConfigRegistry.views = config.views;
@@ -195,3 +194,5 @@ ConfigRegistry.addonRoutes = config.addonRoutes;
 ConfigRegistry.addonReducers = config.addonReducers;
 ConfigRegistry.appExtras = config.appExtras;
 ConfigRegistry.components = config.components;
+
+applyAddonConfiguration(applySlateConfiguration(ConfigRegistry));
