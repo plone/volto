@@ -43,13 +43,14 @@ const Edit = React.memo(
 
     const placeholder =
       data.placeholder ||
-      (data?.query?.length
+      (data?.querystring?.query?.length
         ? intl.formatMessage(messages.results)
         : intl.formatMessage(messages.items));
 
     return (
       <>
         <p className="items-preview">{placeholder}</p>
+        {data.headline && <h2 className="headline">{data.headline}</h2>}
         <ListingBody {...props} path={getBaseUrl(pathname)} isEditMode />
         <SidebarPortal selected={selected}>
           <ListingData
