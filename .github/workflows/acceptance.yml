@@ -624,7 +624,7 @@ jobs:
         working-directory: ${{env.generator-directory}}
 
       # create a project
-      - run: yo @plone/volto my-volto-app --description "test volto project" --no-interactive
+      - run: yo @plone/volto my-volto-app --description "test volto project" --volto . --skip-install --no-interactive
 
       - name: Install yalc
         run: npm -g install yalc
@@ -635,7 +635,7 @@ jobs:
         run: yalc add @plone/volto --no-pure
         working-directory: ${{env.project-directory}}
       - name: Install a yalc'ed version of the current Volto in the project - install
-        run: yarn --force
+        run: yarn
         working-directory: ${{env.project-directory}}
 
       - name: Cypress acceptance tests
