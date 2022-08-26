@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Fix Image gallery listing block variation only gets 25 if no query is set @sneridagh
+
 ### Internal
 
 ### Documentation
