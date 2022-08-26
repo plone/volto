@@ -138,6 +138,7 @@
   },
   "dependencies": <%- dependencies %>,
   "devDependencies": {
+    "babel-preset-razzle": "^4",
     "eslint-plugin-prettier": "3.1.3",
     "jest-junit": "8.0.0",
     "mrs-developer": "*",

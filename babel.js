@@ -4,7 +4,7 @@ module.exports = function (api) {
     [
       'razzle/babel',
       {
-        'preset-react': { runtime: 'automatic' },
+        '@babel/preset-react': { runtime: 'automatic' },
       },
     ],
   ];

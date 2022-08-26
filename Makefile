@@ -243,7 +243,7 @@ full-test-acceptance-seamless: ## Runs Seamless Core Full Acceptance Testing in 
 
 .PHONY: start-test-acceptance-frontend-project
 start-test-acceptance-frontend-project: ## Start the Project Acceptance Frontend Fixture
-	cd my-volto-app && RAZZLE_API_PATH=http://localhost:55001/plone yarn build && yarn start:prod > frontend.logs
+	cd my-volto-app && RAZZLE_API_PATH=http://localhost:55001/plone yarn build && yarn start:prod
 
 ######### CoreSandbox Acceptance tests
 
