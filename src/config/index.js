@@ -124,7 +124,7 @@ let config = {
         'prismCore',
         'toastify',
         'reactSelect',
-        'reactBeautifulDnd',
+        'pangeaDnd',
         // 'diffLib',
       ],
       draftEditor: [

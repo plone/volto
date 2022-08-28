@@ -27,9 +27,9 @@ export const SchemaWidgetFieldsetComponent = ({
   getItemStyle,
   isDraggable,
   isDisabled,
-  reactBeautifulDnd,
+  pangeaDnd,
 }) => (
-  <reactBeautifulDnd.Draggable draggableId={title} index={order} key={title}>
+  <pangeaDnd.Draggable draggableId={title} index={order} key={title}>
     {(provided, snapshot) => (
       <div
         className={`item${active ? ' active' : ''}`}
@@ -73,7 +73,7 @@ export const SchemaWidgetFieldsetComponent = ({
         )}
       </div>
     )}
-  </reactBeautifulDnd.Draggable>
+  </pangeaDnd.Draggable>
 );
 
 /**
@@ -93,6 +93,4 @@ SchemaWidgetFieldsetComponent.propTypes = {
   isDisabled: PropTypes.bool,
 };
 
-export default injectLazyLibs(['reactBeautifulDnd'])(
-  SchemaWidgetFieldsetComponent,
-);
+export default injectLazyLibs(['pangeaDnd'])(SchemaWidgetFieldsetComponent);

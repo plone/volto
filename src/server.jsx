@@ -13,7 +13,7 @@ import locale from 'locale';
 import { detect } from 'detect-browser';
 import path from 'path';
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
-import { resetServerContext } from 'react-beautiful-dnd';
+import { resetServerContext } from '@hello-pangea/dnd';
 import { CookiesProvider } from 'react-cookie';
 import cookiesMiddleware from 'universal-cookie-express';
 import debug from 'debug';

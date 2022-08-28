@@ -31,7 +31,7 @@ export const loadables = {
   reactDates: loadable.lib(() => import('react-dates')),
   reactDnd: loadable.lib(() => import('react-dnd')),
   reactDndHtml5Backend: loadable.lib(() => import('react-dnd-html5-backend')),
-  reactBeautifulDnd: loadable.lib(() => import('react-beautiful-dnd')),
+  pangeaDnd: loadable.lib(() => import('@hello-pangea/dnd')),
 
   // draftjs libs
   immutableLib: loadable.lib(() => import('immutable')),

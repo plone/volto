@@ -55,9 +55,9 @@ const DragDropList = (props) => {
     as = 'div',
     style,
     forwardedAriaLabelledBy,
-    reactBeautifulDnd,
+    pangeaDnd,
   } = props; //renderChild
-  const { DragDropContext, Draggable, Droppable } = reactBeautifulDnd;
+  const { DragDropContext, Draggable, Droppable } = pangeaDnd;
   const [placeholderProps, setPlaceholderProps] = React.useState({});
   const [uid] = React.useState(uuid());
   // queueing timed action
@@ -159,4 +159,4 @@ const DragDropList = (props) => {
   );
 };
 
-export default injectLazyLibs(['reactBeautifulDnd'])(DragDropList);
+export default injectLazyLibs(['pangeaDnd'])(DragDropList);

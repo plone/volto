@@ -524,7 +524,7 @@ class Form extends Component {
     const schema = this.removeBlocksLayoutFields(originalSchema);
 
     return this.props.visual ? (
-      // Removing this from SSR is important, since react-beautiful-dnd supports SSR,
+      // Removing this from SSR is important, since @hello-pangea/dnd supports SSR,
       // but draftJS don't like it much and the hydration gets messed up
       this.state.isClient && (
         <div className="ui container">

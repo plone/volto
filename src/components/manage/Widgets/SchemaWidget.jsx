@@ -1079,8 +1079,8 @@ class SchemaWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { error, reactBeautifulDnd } = this.props;
-    const { Draggable, DragDropContext, Droppable } = reactBeautifulDnd;
+    const { error, pangeaDnd } = this.props;
+    const { Draggable, DragDropContext, Droppable } = pangeaDnd;
     if (!this.props.value) {
       return '';
     }
@@ -1429,7 +1429,7 @@ class SchemaWidget extends Component {
 
 export default compose(
   injectIntl,
-  injectLazyLibs(['reactBeautifulDnd']),
+  injectLazyLibs(['pangeaDnd']),
   connect(
     (state, props) => ({
       value: isString(props.value) ? JSON.parse(props.value) : props.value,
