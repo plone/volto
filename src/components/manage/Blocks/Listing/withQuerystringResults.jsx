@@ -4,7 +4,7 @@ import hoistNonReactStatics from 'hoist-non-react-statics';
 import useDeepCompareEffect from 'use-deep-compare-effect';
 
 import { getContent, getQueryStringResults } from '@plone/volto/actions';
-import { usePagination } from '@plone/volto/helpers';
+import { usePagination, getBaseUrl } from '@plone/volto/helpers';
 
 import config from '@plone/volto/registry';
 
@@ -14,7 +14,7 @@ function getDisplayName(WrappedComponent) {
 
 export default function withQuerystringResults(WrappedComponent) {
   function WithQuerystringResults(props) {
-    const { data = {}, properties: content, path } = props;
+    const { data = {}, properties: content, path, variation } = props;
     const { settings } = config;
     const querystring = data.querystring || data; // For backwards compat with data saved before Blocks schema. Note, this is also how the Search block passes data to ListingBody
 
@@ -22,14 +22,12 @@ export default function withQuerystringResults(WrappedComponent) {
     const { b_size = settings.defaultPageSize } = querystring; // batchsize
 
     // save the path so it won't trigger dispatch on eager router location change
-    const [initialPath] = React.useState(path);
+    const [initialPath] = React.useState(getBaseUrl(path));
 
     const copyFields = ['limit', 'query', 'sort_on', 'sort_order', 'depth'];
 
     const adaptedQuery = Object.assign(
-      config.settings.bbb_listingBlockFetchesFullobjects
-        ? { fullobjects: 1 }
-        : { metadata_fields: '_all' },
+      variation?.fullobjects ? { fullobjects: 1 } : { metadata_fields: '_all' },
       {
         b_size: b_size,
       },
@@ -91,6 +89,7 @@ export default function withQuerystringResults(WrappedComponent) {
             initialPath,
             {
               ...adaptedQuery,
+              b_size: 10000000000,
               query: [
                 {
                   i: 'path',

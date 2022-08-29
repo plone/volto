@@ -3,6 +3,7 @@ import config from '@plone/volto/registry';
 import {
   flattenToAppURL,
   flattenHTMLToAppURL,
+  stripQuerystring,
   toPublicURL,
   getBaseUrl,
   getView,
@@ -11,7 +12,13 @@ import {
   isUrl,
   normalizeUrl,
   removeProtocol,
+  addAppURL,
+  expandToBackendURL,
 } from './Url';
+
+beforeEach(() => {
+  config.settings.legacyTraverse = false;
+});
 
 const { settings } = config;
 
@@ -30,10 +37,10 @@ describe('Url', () => {
       expect(getBaseUrl('/register')).toBe('');
     });
     it('can remove a view name from a relative url', () => {
-      expect(getBaseUrl('/password-reset')).toBe('');
+      expect(getBaseUrl('/passwordreset')).toBe('');
     });
     it('can remove a view name from a relative url', () => {
-      expect(getBaseUrl('/password-reset/token')).toBe('');
+      expect(getBaseUrl('/passwordreset/token')).toBe('');
     });
     it('can remove a view name from a controlpanel url', () => {
       expect(getBaseUrl('/controlpanel/date-time')).toBe('');
@@ -81,6 +88,12 @@ describe('Url', () => {
       settings.internalApiPath = 'http://plone:8080/Plone';
       expect(flattenToAppURL(url)).toBe('/something');
       settings.internalApiPath = saved;
+    });
+  });
+
+  describe('stripQuerystring', () => {
+    it('returns stripped URL given a URL with a querystring', () => {
+      expect(stripQuerystring('/content?search=test')).toBe('/content');
     });
   });
 
@@ -171,6 +184,13 @@ describe('Url', () => {
       expect(isInternalURL(href)).toBe(true);
       settings.internalApiPath = saved;
     });
+    it('tells if an URL is external if settings.internalApiPath is empty', () => {
+      const href = `http://google.com`;
+      const saved = settings.internalApiPath;
+      settings.internalApiPath = '';
+      expect(isInternalURL(href)).toBe(false);
+      settings.internalApiPath = saved;
+    });
     it('tells if an URL is internal if it is an anchor', () => {
       const href = '#anchor';
       expect(isInternalURL(href)).toBe(true);
@@ -228,6 +248,39 @@ describe('Url', () => {
     it('removeProtocol test http', () => {
       const href = `http://www.example.com`;
       expect(removeProtocol(href)).toBe('www.example.com');
+    });
+  });
+  describe('addAppURL', () => {
+    it('addAppURL test https', () => {
+      const href = `/ca/my-page`;
+      expect(addAppURL(href)).toBe('http://localhost:8080/Plone/ca/my-page');
+    });
+  });
+  describe('expandToBackendURL', () => {
+    it('expandToBackendURL test with path', () => {
+      const href = `/ca/my-page`;
+      expect(expandToBackendURL(href)).toBe(
+        'http://localhost:8080/Plone/++api++/ca/my-page',
+      );
+    });
+    it('expandToBackendURL test full URL', () => {
+      const href = `http://localhost:8080/Plone/ca/my-page`;
+      expect(expandToBackendURL(href)).toBe(
+        'http://localhost:8080/Plone/++api++/ca/my-page',
+      );
+    });
+    it('expandToBackendURL test full URL - legacyTraverse true', () => {
+      settings.apiPath = 'https://plone.org/api';
+      settings.legacyTraverse = true;
+      const href = `https://plone.org/api/ca/my-page`;
+      expect(expandToBackendURL(href)).toBe('https://plone.org/api/ca/my-page');
+    });
+    it('expandToBackendURL test full URL - deployed seamless', () => {
+      settings.apiPath = 'https://plone.org';
+      const href = `https://plone.org/ca/my-page`;
+      expect(expandToBackendURL(href)).toBe(
+        'https://plone.org/++api++/ca/my-page',
+      );
     });
   });
 });

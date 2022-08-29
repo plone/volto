@@ -5,17 +5,26 @@ import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { save, load } from 'redux-localstorage-simple';
 
 import config from '@plone/volto/registry';
-import reducers from '~/reducers';
+import reducers from '@root/reducers';
 
-import { api, crashReporter, blacklistRoutes } from '@plone/volto/middleware';
+import {
+  api,
+  crashReporter,
+  blacklistRoutes,
+  protectLoadStart,
+  protectLoadEnd,
+  loadProtector,
+} from '@plone/volto/middleware';
 
 const configureStore = (initialState, history, apiHelper) => {
   let stack = [
     blacklistRoutes,
+    protectLoadStart,
     routerMiddleware(history),
     crashReporter,
     thunk,
-    api(apiHelper),
+    ...(apiHelper ? [api(apiHelper)] : []),
+    protectLoadEnd,
     ...(__CLIENT__
       ? [save({ states: config.settings.persistentReducers, debounce: 500 })]
       : []),
@@ -30,6 +39,7 @@ const configureStore = (initialState, history, apiHelper) => {
       router: connectRouter(history),
       ...reducers,
       ...config.addonReducers,
+      loadProtector,
     }),
     {
       ...initialState,

@@ -5,9 +5,9 @@
 
 import superagent from 'superagent';
 import { map } from 'lodash';
-import cookie from 'react-cookie';
 import zlib from 'zlib';
 import { toPublicURL } from '@plone/volto/helpers';
+import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
 
 import config from '@plone/volto/registry';
 
@@ -20,11 +20,14 @@ import config from '@plone/volto/registry';
 export const generateSitemap = (_req) =>
   new Promise((resolve) => {
     const { settings } = config;
+    const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
+    const apiPath = settings.internalApiPath ?? settings.apiPath;
     const request = superagent.get(
-      `${settings.apiPath}/@search?metadata_fields=modified&b_size=100000000&use_site_search_settings=1`,
+      `${apiPath}${APISUFIX}/@search?metadata_fields=modified&b_size=100000000&use_site_search_settings=1`,
     );
     request.set('Accept', 'application/json');
-    const authToken = cookie.load('auth_token');
+    request.use(addHeadersFactory(_req));
+    const authToken = _req.universalCookies.get('auth_token');
     if (authToken) {
       request.set('Authorization', `Bearer ${authToken}`);
     }
@@ -35,7 +38,7 @@ export const generateSitemap = (_req) =>
         const items = map(
           body.items,
           (item) =>
-            `  <url>\n    <loc>${toPublicURL(item['@id'])}</loc>\n  
+            `  <url>\n    <loc>${toPublicURL(item['@id'])}</loc>\n
             <lastmod>${item.modified}</lastmod>\n  </url>`,
         );
         const result = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">\n${items.join(

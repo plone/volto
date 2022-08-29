@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": "Simple deployment of a Volto application"
+  "property=og:description": "Simple deployment of a Volto application"
+  "property=og:title": "Simple deployment"
+  "keywords": "Volto, Plone, frontend, React, deployment"
+---
+
 # Simple deployment
 
 Volto is a Node application that runs on your machine/server and listens to a port. Once you are ready to deploy it, you should build it running:
@@ -30,12 +38,13 @@ The simplest deployment is to start this node process in your server by any mean
 
 ## Reverse proxies
 
-You need to make available to your users both Volto and the API in public URLs. It's heavily recommended you serve both from the same DNS name, eg. Volto-> https://mywebsite.com and API-> https://mywebsite.com/api in order to avoid any CORS problem.
+You need to make available to your users both Volto and the API in public URLs. It's heavily recommended you serve both from the same DNS name, eg. Volto-> `https://mywebsite.com` and API-> `https://mywebsite.com/api` in order to avoid any CORS problem.
 
-!!! warning
-    Avoid dealing with CORS in production at all costs. Period.
+```{warning}
+Avoid dealing with CORS in production at all costs. Period.
+```
 
-For SSL support is recommended to use a reverse proxy of your choice that points to Volto port and an API rewrite eg. `/api` in your server. This is the Nginx configuration:
+For SSL support is recommended to use a reverse proxy of your choice that points to Volto port and an API rewrite eg. `/api` in your server. This is the nginx configuration:
 
 ```nginx
 upstream volto {
@@ -46,16 +55,17 @@ upstream ploneapi {
 }
 
 location ~ /api($|/.*) {
-  rewrite ^/api($|/.*) /VirtualHostBase/https/mywebsite.com:443/Plone/VirtualHostRoot/_vh_api$1 break;
-  proxy_pass http://ploneapi;
+    rewrite ^/api($|/.*) /VirtualHostBase/https/mywebsite.com:443/Plone/VirtualHostRoot/_vh_api$1 break;
+    proxy_pass http://ploneapi;
 }
 
 location ~ / {
-  # Default set to 1m - this is mainly to make PSI happy, adjust to your needs
-  location ~* \.(ico|jpg|jpeg|png|gif|svg|js|jsx|css|less|swf|eot|ttf|otf|woff|woff2)$ {
-  add_header Cache-Control "public";
-  expires +1m;
-  proxy_pass http://volto;
+    # Default set to 1m - this is mainly to make PSI happy, adjust to your needs
+    location ~* \.(ico|jpg|jpeg|png|gif|svg|js|jsx|css|less|swf|eot|ttf|otf|woff|woff2)$ {
+        add_header Cache-Control "public";
+        expires +1m;
+        proxy_pass http://volto;
+    }
 }
 ```
 

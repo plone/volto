@@ -1,4 +1,5 @@
 import '@plone/volto/config'; // This is the bootstrap for the global config - client side
+import '@root/theme';
 import React from 'react';
 import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
@@ -7,10 +8,10 @@ import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 import { ReduxAsyncConnect } from '@plone/volto/helpers/AsyncConnect';
 import { loadableReady } from '@loadable/component';
+import { CookiesProvider } from 'react-cookie';
 import debug from 'debug';
-import routes from '~/routes';
+import routes from '@root/routes';
 import config from '@plone/volto/registry';
-import '~/theme';
 
 import configureStore from '@plone/volto/store';
 import { Api, persistAuthToken, ScrollToTop } from '@plone/volto/helpers';
@@ -48,6 +49,14 @@ export default () => {
   if (window.env.publicURL) {
     config.settings.publicURL = window.env.publicURL;
   }
+  // There are some cases that the client needs to know the internal server URL
+  // too, as some helpers (isInternalURL and flattenToAppURL) need to be aware of it.
+  // This is specially important when the hydration of the store coming from the first SSR
+  // request happens, since there all the server URLs might be the internalApiPath ones,
+  // and the client should be able to take care of them properly.
+  if (window.env.RAZZLE_INTERNAL_API_PATH) {
+    config.settings.internalApiPath = window.env.RAZZLE_INTERNAL_API_PATH;
+  }
   // TODO: To be removed when the use of the legacy traverse is deprecated.
   if (window.env.RAZZLE_LEGACY_TRAVERSE) {
     config.settings.legacyTraverse = true;
@@ -55,15 +64,17 @@ export default () => {
 
   loadableReady(() => {
     hydrate(
-      <Provider store={store}>
-        <IntlProvider onError={reactIntlErrorHandler}>
-          <ConnectedRouter history={history}>
-            <ScrollToTop>
-              <ReduxAsyncConnect routes={routes} helpers={api} />
-            </ScrollToTop>
-          </ConnectedRouter>
-        </IntlProvider>
-      </Provider>,
+      <CookiesProvider>
+        <Provider store={store}>
+          <IntlProvider onError={reactIntlErrorHandler}>
+            <ConnectedRouter history={history}>
+              <ScrollToTop>
+                <ReduxAsyncConnect routes={routes} helpers={api} />
+              </ScrollToTop>
+            </ConnectedRouter>
+          </IntlProvider>
+        </Provider>
+      </CookiesProvider>,
       document.getElementById('main'),
     );
   });

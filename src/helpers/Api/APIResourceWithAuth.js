@@ -4,8 +4,8 @@
  */
 
 import superagent from 'superagent';
-import cookie from 'react-cookie';
 import config from '@plone/volto/registry';
+import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
 
 /**
  * Get a resource image/file with authenticated (if token exist) API headers
@@ -30,15 +30,10 @@ export const getAPIResourceWithAuth = (req) =>
       .get(`${apiPath}${APISUFIX}${req.path}`)
       .maxResponseSize(settings.maxResponseSize)
       .responseType('blob');
-    const authToken = cookie.load('auth_token');
+    const authToken = req.universalCookies.get('auth_token');
     if (authToken) {
       request.set('Authorization', `Bearer ${authToken}`);
     }
-    request.end((error, res = {}) => {
-      if (error) {
-        reject(error);
-      } else {
-        resolve(res);
-      }
-    });
+    request.use(addHeadersFactory(req));
+    request.then(resolve).catch(reject);
   });

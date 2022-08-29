@@ -14,6 +14,7 @@ import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import { Form } from '@plone/volto/components';
 import { resetPassword } from '@plone/volto/actions';
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   title: {
@@ -29,15 +30,23 @@ const messages = defineMessages({
     id: 'Default',
     defaultMessage: 'Default',
   },
+  usernameTitle: {
+    id: 'label_my_username_is',
+    defaultMessage: 'My username is',
+  },
   emailTitle: {
-    id: 'label_my_email_address_is',
-    defaultMessage: 'My email address is',
+    id: 'label_my_email_is',
+    defaultMessage: 'My email is',
   },
   sendEmail: {
     id: 'Start password reset',
     defaultMessage: 'Start password reset',
   },
-  emailrequired: {
+  usernameRequired: {
+    id: 'Your usernaame is required for reset your password.',
+    defaultMessage: 'Your username is required for reset your password.',
+  },
+  emailRequired: {
     id: 'Your email is required for reset your password.',
     defaultMessage: 'Your email is required for reset your password.',
   },
@@ -84,6 +93,24 @@ class RequestPasswordReset extends Component {
     super(props);
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.identifierField = config.settings.useEmailAsLogin
+      ? 'email'
+      : 'username';
+
+    if (this.identifierField === 'email') {
+      this.identifierTitle = this.props.intl.formatMessage(messages.emailTitle);
+      this.identifierRequiredMessage = this.props.intl.formatMessage(
+        messages.emailRequired,
+      );
+    } else {
+      this.identifierTitle = this.props.intl.formatMessage(
+        messages.usernameTitle,
+      );
+      this.identifierRequiredMessage = this.props.intl.formatMessage(
+        messages.usernameRequired,
+      );
+    }
+
     this.state = {
       error: null,
       isSuccessful: false,
@@ -110,15 +137,15 @@ class RequestPasswordReset extends Component {
    * @returns {undefined}
    */
   onSubmit(data) {
-    if (data.email) {
-      this.props.resetPassword(data.email);
+    if (data[this.identifierField]) {
+      this.props.resetPassword(data[this.identifierField]);
       this.setState({
         error: null,
       });
     } else {
       this.setState({
         error: {
-          message: this.props.intl.formatMessage(messages.emailrequired),
+          message: this.identifierRequiredMessage,
         },
       });
     }
@@ -173,17 +200,17 @@ class RequestPasswordReset extends Component {
                 {
                   id: 'default',
                   title: this.props.intl.formatMessage(messages.default),
-                  fields: ['email'],
+                  fields: [this.identifierField],
                 },
               ],
               properties: {
-                email: {
+                [this.identifierField]: {
                   type: 'string',
-                  title: this.props.intl.formatMessage(messages.emailTitle),
+                  title: this.identifierTitle,
                 },
               },
               submitLabel: this.props.intl.formatMessage(messages.sendEmail),
-              required: ['email'],
+              required: [this.identifierField],
             }}
           />
         </Container>

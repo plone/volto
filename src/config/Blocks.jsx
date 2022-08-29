@@ -44,7 +44,7 @@ import searchSVG from '@plone/volto/icons/zoom.svg';
 import ImageGalleryListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/ImageGallery';
 import BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Schema';
 import TextSettingsSchema from '@plone/volto/components/manage/Blocks/Text/Schema';
-import ImageSettingsSchema from '@plone/volto/components/manage/Blocks/Image/Schema';
+import ImageSettingsSchema from '@plone/volto/components/manage/Blocks/Image/LayoutSchema';
 import ToCSettingsSchema from '@plone/volto/components/manage/Blocks/ToC/Schema';
 
 import SearchBlockView from '@plone/volto/components/manage/Blocks/Search/SearchBlockView';
@@ -56,8 +56,20 @@ import TopSideFacets from '@plone/volto/components/manage/Blocks/Search/layout/T
 import {
   SelectFacet,
   CheckboxFacet,
+  DateRangeFacet,
+  ToggleFacet,
+  ToggleFacetFilterListEntry,
+  SelectFacetFilterListEntry,
+  DateRangeFacetFilterListEntry,
 } from '@plone/volto/components/manage/Blocks/Search/components';
 import getListingBlockAsyncData from '@plone/volto/components/manage/Blocks/Listing/getAsyncData';
+
+// block sidebar schemas (not the Dexterity Layout block settings schemas)
+import HeroImageLeftBlockSchema from '@plone/volto/components/manage/Blocks/HeroImageLeft/schema';
+import ListingBlockSchema from '@plone/volto/components/manage/Blocks/Listing/schema';
+import SearchBlockSchema from '@plone/volto/components/manage/Blocks/Search/schema';
+
+import ToCVariations from '@plone/volto/components/manage/Blocks/ToC/variations';
 
 defineMessages({
   title: {
@@ -181,7 +193,7 @@ const blocksConfig = {
     view: ViewDescriptionBlock,
     edit: EditDescriptionBlock,
     schema: BlockSettingsSchema,
-    restricted: true,
+    restricted: false,
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 0,
@@ -253,6 +265,7 @@ const blocksConfig = {
     view: ViewListingBlock,
     edit: EditListingBlock,
     schema: BlockSettingsSchema,
+    blockSchema: ListingBlockSchema,
     restricted: false,
     mostUsed: true,
     sidebarTab: 1,
@@ -305,6 +318,7 @@ const blocksConfig = {
     view: ViewToCBlock,
     edit: EditToCBlock,
     schema: ToCSettingsSchema,
+    variations: ToCVariations,
     restricted: false,
     mostUsed: false,
     sidebarTab: 0,
@@ -321,6 +335,7 @@ const blocksConfig = {
     view: ViewHeroImageLeftBlock,
     edit: EditHeroImageLeftBlock,
     schema: BlockSettingsSchema,
+    blockSchema: HeroImageLeftBlockSchema,
     restricted: false,
     mostUsed: false,
     blockHasOwnFocusManagement: true,
@@ -387,6 +402,7 @@ const blocksConfig = {
     group: 'common',
     view: SearchBlockView,
     edit: SearchBlockEdit,
+    blockSchema: SearchBlockSchema,
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,
@@ -430,12 +446,38 @@ const blocksConfig = {
             title: 'Select',
             view: SelectFacet,
             isDefault: true,
+            schemaEnhancer: SelectFacet.schemaEnhancer,
+            stateToValue: SelectFacet.stateToValue,
+            valueToQuery: SelectFacet.valueToQuery,
+            filterListComponent: SelectFacetFilterListEntry,
           },
           {
             id: 'checkboxFacet',
             title: 'Checkbox',
             view: CheckboxFacet,
             isDefault: false,
+            schemaEnhancer: CheckboxFacet.schemaEnhancer,
+            stateToValue: CheckboxFacet.stateToValue,
+            valueToQuery: CheckboxFacet.valueToQuery,
+            filterListComponent: SelectFacetFilterListEntry,
+          },
+          {
+            id: 'daterangeFacet',
+            title: 'Date range',
+            view: DateRangeFacet,
+            isDefault: false,
+            stateToValue: DateRangeFacet.stateToValue,
+            valueToQuery: DateRangeFacet.valueToQuery,
+            filterListComponent: DateRangeFacetFilterListEntry,
+          },
+          {
+            id: 'toggleFacet',
+            title: 'Toggle',
+            view: ToggleFacet,
+            isDefault: false,
+            stateToValue: ToggleFacet.stateToValue,
+            valueToQuery: ToggleFacet.valueToQuery,
+            filterListComponent: ToggleFacetFilterListEntry,
           },
         ],
       },
@@ -446,5 +488,12 @@ const blocksConfig = {
 const requiredBlocks = ['title'];
 
 const initialBlocks = {};
+const initialBlocksFocus = {}; //{Document:'title'}
 
-export { groupBlocksOrder, requiredBlocks, blocksConfig, initialBlocks };
+export {
+  groupBlocksOrder,
+  requiredBlocks,
+  blocksConfig,
+  initialBlocks,
+  initialBlocksFocus,
+};

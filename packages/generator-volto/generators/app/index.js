@@ -35,7 +35,7 @@ const addonPrompt = [
     type: 'prompt',
     name: 'useAddons',
     message: 'Would you like to add another addon?',
-    default: false,
+    default: 'false',
   },
 ];
 
@@ -50,6 +50,11 @@ module.exports = class extends Generator {
       type: String,
       desc:
         'Desired Volto version, if not provided, the most recent will be used',
+    });
+    this.option('canary', {
+      type: Boolean,
+      desc: 'Desired Volto version should be a canary (alpha)',
+      default: false,
     });
     this.option('interactive', {
       type: Boolean,
@@ -96,7 +101,11 @@ Run "npm install -g @plone/generator-volto" to update.`,
     });
 
     let voltoVersion;
-    if (this.opts.volto) {
+    if (this.opts.canary) {
+      this.log(chalk.red('Getting latest canary (alpha) Volto version'));
+      voltoVersion = await utils.getLatestCanaryVoltoVersion();
+      this.log(`Using latest canary (alpha) Volto version: ${voltoVersion}`);
+    } else if (this.opts.volto) {
       voltoVersion = this.opts.volto;
       this.log(`Using chosen Volto version: ${voltoVersion}`);
     } else {
@@ -164,15 +173,16 @@ Run "npm install -g @plone/generator-volto" to update.`,
       });
     } else {
       if (this.opts['interactive'] && !this.opts['skip-addons']) {
+        const choices = ['false', 'f', 'no', 'n'];
         props = await this.prompt([
           {
             type: 'prompt',
             name: 'useAddons',
             message: 'Would you like to add addons?',
-            default: false,
+            default: 'false',
           },
         ]);
-        while (props.useAddons !== false) {
+        while (choices.indexOf(props.useAddons) === -1) {
           /* eslint-disable no-await-in-loop */
           props = await this.prompt(addonPrompt);
           this.globals.addons.push(props.addonName);

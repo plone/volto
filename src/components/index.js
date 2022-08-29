@@ -26,6 +26,8 @@ export OutdatedBrowser from '@plone/volto/components/theme/OutdatedBrowser/Outda
 export LanguageSelector from '@plone/volto/components/theme/LanguageSelector/LanguageSelector';
 export RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
 export SkipLinks from '@plone/volto/components/theme/SkipLinks/SkipLinks';
+export EventDetails from '@plone/volto/components/theme/EventDetails/EventDetails';
+export PreviewImage from '@plone/volto/components/theme/PreviewImage/PreviewImage';
 
 export Error from '@plone/volto/components/theme/Error/Error';
 export NotFound from '@plone/volto/components/theme/NotFound/NotFound';
@@ -83,6 +85,7 @@ export ContentTypeLayout from '@plone/volto/components/manage/Controlpanels/Cont
 export ContentTypeSchema from '@plone/volto/components/manage/Controlpanels/ContentTypeSchema';
 export ContentTypesActions from '@plone/volto/components/manage/Controlpanels/ContentTypesActions';
 export UsersControlpanel from '@plone/volto/components/manage/Controlpanels/Users/UsersControlpanel';
+export UserGroupMembershipControlPanel from '@plone/volto/components/manage/Controlpanels/Users/UserGroupMembershipControlPanel';
 export GroupsControlpanel from '@plone/volto/components/manage/Controlpanels/Groups/GroupsControlpanel';
 export ModerateComments from '@plone/volto/components/manage/Controlpanels/ModerateComments';
 export VersionOverview from '@plone/volto/components/manage/Controlpanels/VersionOverview';
@@ -111,9 +114,11 @@ export ManageTranslations from '@plone/volto/components/manage/Multilingual/Mana
 // we don't want them to end up in the main chunk
 export Form from '@plone/volto/components/manage/Form/Form';
 export BlocksToolbar from '@plone/volto/components/manage/Form/BlocksToolbar';
+export UndoToolbar from '@plone/volto/components/manage/Form/UndoToolbar';
 export Field from '@plone/volto/components/manage/Form/Field';
 export SearchTags from '@plone/volto/components/theme/Search/SearchTags';
 export CommentEditModal from '@plone/volto/components/theme/Comments/CommentEditModal';
+export ContentsBreadcrumbs from '@plone/volto/components/manage/Contents/ContentsBreadcrumbs';
 export ContentsIndexHeader from '@plone/volto/components/manage/Contents/ContentsIndexHeader';
 export ContentsItem from '@plone/volto/components/manage/Contents/ContentsItem';
 export ContentsUploadModal from '@plone/volto/components/manage/Contents/ContentsUploadModal';
@@ -143,6 +148,7 @@ export const RecurrenceWidget = loadable(() =>
 );
 
 export FileWidget from '@plone/volto/components/manage/Widgets/FileWidget';
+export IdWidget from '@plone/volto/components/manage/Widgets/IdWidget';
 export PasswordWidget from '@plone/volto/components/manage/Widgets/PasswordWidget';
 export ReferenceWidget from '@plone/volto/components/manage/Widgets/ReferenceWidget';
 export SchemaWidget from '@plone/volto/components/manage/Widgets/SchemaWidget';
@@ -191,10 +197,14 @@ export Style from '@plone/volto/components/manage/Blocks/Block/Style';
 export BlockSettingsSidebar from '@plone/volto/components/manage/Blocks/Block/Settings';
 export BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Schema';
 export TextSettingsSchema from '@plone/volto/components/manage/Blocks/Text/Schema';
-export ImageSettingsSchema from '@plone/volto/components/manage/Blocks/Image/Schema';
+export ImageSettingsSchema from '@plone/volto/components/manage/Blocks/Image/LayoutSchema';
 export ToCSettingsSchema from '@plone/volto/components/manage/Blocks/ToC/Schema';
 
 export MaybeWrap from '@plone/volto/components/manage/MaybeWrap/MaybeWrap';
 export ContentMetadataTags from '@plone/volto/components/theme/ContentMetadataTags/ContentMetadataTags';
+export FormattedDate from '@plone/volto/components/theme/FormattedDate/FormattedDate';
+export FormattedRelativeDate from '@plone/volto/components/theme/FormattedDate/FormattedRelativeDate';
+export Popup from '@plone/volto/components/theme/Popup/Popup';
+export Component from '@plone/volto/components/theme/Component/Component';
 
 export App from '@plone/volto/components/theme/App/App';

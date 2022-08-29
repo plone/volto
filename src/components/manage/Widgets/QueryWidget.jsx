@@ -12,7 +12,6 @@ import { filter, remove, toPairs, groupBy, isEmpty, map } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import { getQuerystring } from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
-import { format, parse } from 'date-fns';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import cx from 'classnames';
 
@@ -41,11 +40,9 @@ const messages = defineMessages({
 });
 
 /**
- * QuerystringWidget component class.
- * @class QuerystringWidget
- * @extends Component
+ * Widget for a querystring value, to define a catalog search criteria.
  */
-class QuerystringWidget extends Component {
+export class QuerystringWidgetComponent extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -129,11 +126,7 @@ class QuerystringWidget extends Component {
       case 'DateWidget':
         return (
           <Form.Field style={{ flex: '1 0 auto' }}>
-            <Input
-              type="date"
-              {...props}
-              value={format(parse(row.v), 'YYYY-MM-DD')}
-            />
+            <Input type="date" {...props} value={row.v} />
           </Form.Field>
         );
       case 'DateRangeWidget': // 2 date inputs
@@ -143,7 +136,7 @@ class QuerystringWidget extends Component {
               <Input
                 type="date"
                 {...props}
-                value={format(parse(row.v[0]), 'YYYY-MM-DD')}
+                value={row.v[0]}
                 onChange={(data) =>
                   this.onChangeValue(index, [data.target.value, row.v[1]])
                 }
@@ -153,7 +146,7 @@ class QuerystringWidget extends Component {
               <Input
                 type="date"
                 {...props}
-                value={format(parse(row.v[1]), 'YYYY-MM-DD')}
+                value={row.v[1]}
                 onChange={(data) =>
                   this.onChangeValue(index, [row.v[0], data.target.value])
                 }
@@ -297,10 +290,16 @@ class QuerystringWidget extends Component {
                             ),
                             (group) => ({
                               label: group[0],
-                              options: map(group[1], (field) => ({
-                                label: field[1].title,
-                                value: field[0],
-                              })),
+                              options: map(
+                                filter(group[1], (item) => item[1].enabled),
+                                (field) => ({
+                                  label: field[1].title,
+                                  value: field[0],
+                                  isDisabled: (value || []).some(
+                                    (v) => v['i'] === field[0],
+                                  ),
+                                }),
+                              ),
                             }),
                           )}
                           styles={customSelectStyles}
@@ -335,7 +334,7 @@ class QuerystringWidget extends Component {
                           className="react-select-container"
                           classNamePrefix="react-select"
                           options={map(
-                            indexes[row.i].operations,
+                            indexes[row.i]?.operations ?? [],
                             (operation) => ({
                               value: operation,
                               label: indexes[row.i].operators[operation].title,
@@ -427,6 +426,9 @@ class QuerystringWidget extends Component {
                           (field) => ({
                             label: field[1].title,
                             value: field[0],
+                            isDisabled: (value || []).some(
+                              (v) => v['i'] === field[0],
+                            ),
                           }),
                         ),
                       }),
@@ -477,4 +479,4 @@ export default compose(
     }),
     { getQuerystring },
   ),
-)(QuerystringWidget);
+)(QuerystringWidgetComponent);

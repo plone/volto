@@ -39,7 +39,7 @@ import {
 } from 'semantic-ui-react';
 import { v4 as uuid } from 'uuid';
 import { toast } from 'react-toastify';
-import { BlocksToolbar } from '@plone/volto/components';
+import { BlocksToolbar, UndoToolbar } from '@plone/volto/components';
 import { setSidebarTab } from '@plone/volto/actions';
 import { compose } from 'redux';
 import config from '@plone/volto/registry';
@@ -172,15 +172,31 @@ class Form extends Component {
         };
       }
     }
+
+    let selectedBlock = null;
+    if (
+      formData.hasOwnProperty(blocksLayoutFieldname) &&
+      formData[blocksLayoutFieldname].items.length > 0
+    ) {
+      selectedBlock = formData[blocksLayoutFieldname].items[0];
+
+      if (config.blocks?.initialBlocksFocus?.[this.props.type]) {
+        //Default selected is not the first block, but the one from config.
+        Object.keys(formData[blocksFieldname]).forEach((b_key) => {
+          if (
+            formData[blocksFieldname][b_key]['@type'] ===
+            config.blocks?.initialBlocksFocus?.[this.props.type]
+          ) {
+            selectedBlock = b_key;
+          }
+        });
+      }
+    }
     this.state = {
       formData,
       initialFormData: cloneDeep(formData),
       errors: {},
-      selected:
-        formData.hasOwnProperty(blocksLayoutFieldname) &&
-        formData[blocksLayoutFieldname].items.length > 0
-          ? formData[blocksLayoutFieldname].items[0]
-          : null,
+      selected: selectedBlock,
       multiSelected: [],
       isClient: false,
     };
@@ -221,6 +237,7 @@ class Form extends Component {
 
     if (this.props.onChangeFormData) {
       if (
+        // TODO: use fast-deep-equal
         JSON.stringify(prevState?.formData) !==
         JSON.stringify(this.state.formData)
       ) {
@@ -401,11 +418,13 @@ class Form extends Component {
       event.preventDefault();
     }
 
-    const errors = FormValidation.validateFieldsPerFieldset({
-      schema: this.props.schema,
-      formData: this.state.formData,
-      formatMessage: this.props.intl.formatMessage,
-    });
+    const errors = this.props.schema
+      ? FormValidation.validateFieldsPerFieldset({
+          schema: this.props.schema,
+          formData: this.state.formData,
+          formatMessage: this.props.intl.formatMessage,
+        })
+      : {};
 
     if (keys(errors).length > 0) {
       const activeIndex = FormValidation.showFirstTabWithErrors({
@@ -525,6 +544,15 @@ class Form extends Component {
               this.setState({ multiSelected: blockIds })
             }
             onSelectBlock={this.onSelectBlock}
+          />
+          <UndoToolbar
+            state={{
+              formData: this.state.formData,
+              selected: this.state.selected,
+              multiSelected: this.state.multiSelected,
+            }}
+            enableHotKeys
+            onUndoRedo={({ state }) => this.setState(state)}
           />
           <BlocksForm
             onChangeFormData={(newFormData) =>

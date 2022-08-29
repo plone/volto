@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
-import { isEmpty, remove } from 'lodash';
+import { compact, isArray, isEmpty, remove } from 'lodash';
 import { connect } from 'react-redux';
 import { Label, Popup, Button } from 'semantic-ui-react';
 import {
@@ -63,7 +63,9 @@ export class ObjectBrowserWidgetComponent extends Component {
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     description: PropTypes.string,
-    mode: PropTypes.string, //link,image,multiple
+    mode: PropTypes.string, // link, image, multiple
+    return: PropTypes.string, // single, multiple
+    initialPath: PropTypes.string,
     required: PropTypes.bool,
     error: PropTypes.arrayOf(PropTypes.string),
     value: PropTypes.oneOfType([
@@ -73,6 +75,7 @@ export class ObjectBrowserWidgetComponent extends Component {
     onChange: PropTypes.func.isRequired,
     openObjectBrowser: PropTypes.func.isRequired,
     allowExternals: PropTypes.bool,
+    placeholder: PropTypes.string,
   };
 
   /**
@@ -86,6 +89,8 @@ export class ObjectBrowserWidgetComponent extends Component {
     error: [],
     value: [],
     mode: 'multiple',
+    return: 'multiple',
+    initialPath: '',
     allowExternals: false,
   };
 
@@ -185,7 +190,11 @@ export class ObjectBrowserWidgetComponent extends Component {
       // Add required @id field, just in case
       resultantItem = { ...resultantItem, '@id': item['@id'] };
       value.push(resultantItem);
-      this.props.onChange(this.props.id, value);
+      if (this.props.return === 'single') {
+        this.props.onChange(this.props.id, value[0]);
+      } else {
+        this.props.onChange(this.props.id, value);
+      }
     } else {
       //remove item
       value.splice(index, 1);
@@ -233,7 +242,7 @@ export class ObjectBrowserWidgetComponent extends Component {
             } else {
               this.props.onChange(this.props.id, [
                 {
-                  '@id': normalizeUrl(link),
+                  '@id': flattenToAppURL(link),
                   title: removeProtocol(link),
                 },
               ]);
@@ -267,7 +276,7 @@ export class ObjectBrowserWidgetComponent extends Component {
     ev.preventDefault();
     this.props.openObjectBrowser({
       mode: this.props.mode,
-      currentPath: this.props.location.pathname,
+      currentPath: this.props.initialPath || this.props.location.pathname,
       propDataName: 'value',
       onSelectItem: (url, item) => {
         this.onChange(item);
@@ -308,17 +317,17 @@ export class ObjectBrowserWidgetComponent extends Component {
       isDisabled,
     } = this.props;
 
+    let items = compact(!isArray(value) && value ? [value] : value || []);
+
     let icon =
-      mode === 'multiple' || value.length === 0 ? navTreeSVG : clearSVG;
+      mode === 'multiple' || items.length === 0 ? navTreeSVG : clearSVG;
     let iconAction =
-      mode === 'multiple' || value.length === 0
+      mode === 'multiple' || items.length === 0
         ? this.showObjectBrowser
         : (e) => {
             e.preventDefault();
-            onChange(id, []);
+            onChange(id, this.props.return === 'single' ? null : []);
           };
-
-    let items = value ? value.filter((item) => item != null) : [];
 
     return (
       <FormFieldWrapper
@@ -343,7 +352,8 @@ export class ObjectBrowserWidgetComponent extends Component {
 
             {items.length === 0 && this.props.mode === 'multiple' && (
               <div className="placeholder" ref={this.placeholderRef}>
-                {this.props.intl.formatMessage(messages.placeholder)}
+                {this.props.placeholder ??
+                  this.props.intl.formatMessage(messages.placeholder)}
               </div>
             )}
             {this.props.allowExternals &&
@@ -353,9 +363,10 @@ export class ObjectBrowserWidgetComponent extends Component {
                   onKeyDown={this.onKeyDownManualLink}
                   onChange={this.onManualLinkInput}
                   value={this.state.manualLinkInput}
-                  placeholder={this.props.intl.formatMessage(
-                    messages.placeholder,
-                  )}
+                  placeholder={
+                    this.props.placeholder ??
+                    this.props.intl.formatMessage(messages.placeholder)
+                  }
                 />
               )}
           </div>

@@ -19,6 +19,7 @@ beforeAll(() => {
       password: () => <div className="PasswordWidget" />,
       file: () => <div className="FileWidget" />,
       vocabularyterms: () => <div className="VocabularyTermsWidget" />,
+      object_browser: () => <div className="ObjectBrowserWidget" />,
     },
     vocabulary: {
       'plone.app.vocabularies.Catalog': () => (
@@ -237,6 +238,32 @@ describe('Field', () => {
           <Field
             widget="textarea"
             widgetOptions={{ frontendOptions: { widget: 'richtext' } }}
+            id="test"
+          />
+        </>
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
+
+  it('renders a widget with the image object browser', () => {
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <>
+          <Field
+            widgetOptions={{
+              frontendOptions: {
+                widget: 'object_browser',
+                widgetProps: { mode: 'image', return: 'single' },
+              },
+            }}
             id="test"
           />
         </>

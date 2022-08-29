@@ -1,3 +1,11 @@
+---
+html_meta:
+  "description": "Volto uses the popular Express server for its server-side rendering implementation and static resource serving."
+  "property=og:description": "Volto uses the popular Express server for its server-side rendering implementation and static resource serving."
+  "property=og:title": "Custom Express middleware"
+  "keywords": "Volto, Plone, frontend, React, custom, express, middleware"
+---
+
 # Custom Express middleware
 
 Volto uses the popular [Express](https://expressjs.com/) server for its
@@ -42,6 +50,7 @@ project's ``config.js`` gets executed by both the server and the client
 
 See [ExpressJS](https://expressjs.com/) website for more documentation.
 
-!!! note
-    Addon authors should add the ``id`` property to the middleware so that it
-    can be identified and manipulated in Volto projects configuration.
+```{note}
+Addon authors should add the ``id`` property to the middleware so that it
+can be identified and manipulated in Volto projects configuration.
+```

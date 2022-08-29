@@ -136,7 +136,10 @@ class Edit extends Component {
    */
   componentDidMount() {
     if (this.props.getRequest.loaded && this.props.content?.['@type']) {
-      this.props.getSchema(this.props.content['@type']);
+      this.props.getSchema(
+        this.props.content['@type'],
+        getBaseUrl(this.props.pathname),
+      );
     }
     this.setState({
       isClient: true,
@@ -151,6 +154,14 @@ class Edit extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
+    if (this.props.getRequest.loading && nextProps.getRequest.loaded) {
+      if (nextProps.content['@type']) {
+        this.props.getSchema(
+          nextProps.content['@type'],
+          getBaseUrl(this.props.pathname),
+        );
+      }
+    }
     if (this.props.schemaRequest.loading && nextProps.schemaRequest.loaded) {
       if (!hasBlocksData(nextProps.schema.properties)) {
         this.setState({
@@ -256,6 +267,7 @@ class Edit extends Component {
         isEditForm
         ref={this.form}
         schema={this.props.schema}
+        type={this.props.content?.['@type']}
         formData={this.props.content}
         requestError={this.state.error}
         onSubmit={this.onSubmit}

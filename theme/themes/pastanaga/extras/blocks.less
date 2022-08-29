@@ -116,8 +116,20 @@
   left: 0;
 }
 
-.block.video video {
-  width: 100%;
+.block.video {
+  .ui.embed > .placeholder {
+    top: 50%;
+    width: unset;
+    min-width: 100%;
+    height: unset;
+    min-height: 100%;
+    object-fit: cover;
+    transform: translateY(-50%);
+  }
+
+  video {
+    width: 100%;
+  }
 }
 
 .block.align.left {
@@ -1055,6 +1067,35 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     svg {
       width: 28px !important;
       height: 28px !important;
+    }
+  }
+
+  .daterange-facet {
+    .ui.date-input input {
+      height: auto;
+    }
+
+    .ui-button {
+      margin: 0;
+    }
+
+    .DateInput {
+      width: 40%;
+      min-width: 75px;
+    }
+
+    .DateRangePickerInput_arrow_svg {
+      margin: 0 6px;
+    }
+
+    .DateRangePicker_picker {
+      z-index: 10;
+    }
+
+    .radio {
+      display: flex;
+      min-height: 37px;
+      align-items: center;
     }
   }
 }
