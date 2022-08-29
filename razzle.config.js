@@ -288,6 +288,7 @@ const defaultModify = ({
           }),
         ]
       : [];
+
   const prefixPath = process.env.RAZZLE_PREFIX_PATH || '';
 
   if (prefixPath) {
@@ -297,6 +298,7 @@ const defaultModify = ({
     const pp = config.output.publicPath;
     config.output.publicPath = `${pp}${prefixPath.slice(1)}/`;
   }
+
   return config;
 };
 
@@ -327,6 +329,7 @@ module.exports = {
       webpackConfig,
       webpackObject,
     });
+
     const res = addonExtenders.reduce(
       (acc, extender) => extender.modify(acc, { target, dev }, webpackConfig),
       defaultConfig,

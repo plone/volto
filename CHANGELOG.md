@@ -1,5 +1,104 @@
 # Change Log
 
+## 16.0.0-alpha.16 (2022-07-25)
+
+### Breaking
+
+- Staticize Poppins font to be compliant with EU privacy. Import from GoogleFont is disabled in site.variables.  @giuliaghisini
+
+### Bugfix
+
+- Add some more messages to be able to translate them @erral
+- Fix typo in de locale @wolbernd
+- [generator] Improvements to the addon generator: Now it wires up the addon automatically for immediate local development @sneridagh
+- complete eu translation @erral
+- complete es translation @erral
+- [generator] Add .editorconfig and .prettierignore to generated projects and addons. @ericof
+
+### Internal
+
+- Update json-schema including transitive dependencies @davisagli
+- Update release-it @davisagli
+- Deduplicate dependencies using yarn-deduplicate @davisagli
+
+### Documentation
+
+- Fix redirect on YouTube, broken link after merge and deleted branch. @stevepiercy
+
+## 16.0.0-alpha.15 (2022-07-21)
+
+### Breaking
+
+- Integrate volto-state add-on. @tiberiuichim @razvanmiu @eea
+
+### Documentation
+
+- volto-slate documentation @nileshgulia1
+
+## 16.0.0-alpha.14 (2022-07-20)
+
+### Breaking
+
+- Action `listUsers`to be called with Object. Distinguish between search for id or search for fullname, email, username @ksuess
+
+### Feature
+
+- Add user group membership control panel @ksuess
+- Action `listUsers`: Support search for fullname, email, username. @ksuess
+
+### Bugfix
+
+- Fix typo in de locale @wolbernd
+
+## 16.0.0-alpha.13 (2022-07-18)
+
+### Feature
+
+- Add schema to video block sidebar @iRohitSingh @danielamormocea
+
+### Bugfix
+
+- Prevent the `defaultView` to show anything if the content is not loaded yet. This fixes showing the non-blocks enabled view for a fraction of a second before showing the blocks-enabled one once the content is loaded. @sneridagh
+
+### Documentation
+
+- `aria-*` attributes are now parsed correctly by jsx-lexer 2.0. @stevepiercy
+
+## 16.0.0-alpha.12 (2022-07-13)
+
+### Feature
+
+- Use type info instead of id type as icon title in the folder contents. @mamico
+- Remove transifex configuration for Volto translations @erral
+- Add missing support for inner `blocksConfig` in block extensions resolutions @sneridagh
+
+### Bugfix
+
+- Fixed the description field not being included in the navigation action/ reducer @JeffersonBledsoe #3454
+- Fixed a11y of Maps block (#3467) @iRohitSingh
+
+### Internal
+
+- Mock all loadable libraries. @mamico
+
+### Documentation
+
+- Remove sphinx_sitemap configuration because Volto's docs are now imported into the main docs, making this setting unnecessary. @stevepiercy
+- Set the ogp_site_url to main docs, instead of training. @stevepiercy
+
+## 16.0.0-alpha.11 (2022-06-21)
+
+### Feature
+
+- add control panel via config.settings @ksuess https://github.com/plone/volto/issues/3426
+- Add noindex metadata tag @steffenri
+- Add listing variation schemaEnhancer to the search block schema @ionlizarazu
+- Use the local blocksConfig for extensions, fallback to the config object one. This allows to override local blocks config in nested blocks (blocks in a block, eg. accordion, grid, row) @sneridagh
+
+### Internal
+
+- Fix warning because missing key in `VersionOverview` component @sneridagh
+
 ## 16.0.0-alpha.10 (2022-06-17)
 
 ### Bugfix
@@ -89,6 +188,7 @@
 - Fix RenderBlocks: path @ksuess
 - Fix field id creation in dexterity control panel to have slugified id @erral
 - Changed to get intl.locale always from state @ionlizarazu
+
 ### Feature
 
 - Updated Brazilian Portuguese translation @ericof

@@ -152,6 +152,11 @@ msgstr "Afegeix un nou usuari"
 msgid "Add to Groups"
 msgstr "Afegeix a grups"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add users to group
+msgid "Add users to group"
+msgstr ""
+
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Add term
 msgid "Add vocabulary term"
@@ -163,8 +168,18 @@ msgid "Add {type}"
 msgstr "Afegeix {type}"
 
 #: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Add-Ons
+msgid "Add-Ons"
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Add-on Configuration
 msgid "Add-on Configuration"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Add-ons
+msgid "Add-ons"
 msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -181,7 +196,7 @@ msgstr "Data addicional"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Alignment
 msgid "Alignment"
 msgstr "Posicionament"
@@ -198,6 +213,7 @@ msgstr "Alfabèticament"
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/schema
 # defaultMessage: Alt text
 msgid "Alt text"
 msgstr "Text alternatiu (alt)"
@@ -617,6 +633,11 @@ msgstr "Talla bloc"
 msgid "Daily"
 msgstr "Diàriament"
 
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Database
+msgid "Database"
+msgstr ""
+
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Database Information
 msgid "Database Information"
@@ -878,11 +899,6 @@ msgstr "Email enviat"
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "Error d'inserció del codi, seguiu les instruccions i torneu-ho a provar."
 
-#: components/manage/Blocks/Maps/View
-# defaultMessage: Embeded Google Maps
-msgid "Embeded Google Maps"
-msgstr "Google Maps incrustat"
-
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Empty object list
 msgid "Empty object list"
@@ -1047,6 +1063,11 @@ msgstr "Mida de l'arxiu"
 # defaultMessage: Filename
 msgid "Filename"
 msgstr "Nom de l'arxiu"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter users by groups
+msgid "Filter users by groups"
+msgstr ""
 
 #: components/manage/Contents/Contents
 # defaultMessage: Filter…
@@ -1268,6 +1289,11 @@ msgstr "Incloeu aquesta ocurrència"
 msgid "Info"
 msgstr "Informació"
 
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+# defaultMessage: You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to user group settings. See the button on the left.
+msgid "InfoUserGroupSettings"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: Inherit permissions from higher levels
 msgid "Inherit permissions from higher levels"
@@ -1312,6 +1338,11 @@ msgstr "Instal·lat"
 # defaultMessage: Installed version
 msgid "Installed version"
 msgstr "Versió instal·lada"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Installing a third party add-on
+msgid "Installing a third party add-on"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: days
@@ -1457,7 +1488,6 @@ msgstr "Títol de l'enllaç"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Link to
 msgid "Link to"
 msgstr "Enllaç a"
@@ -1669,6 +1699,11 @@ msgstr "Noticia"
 msgid "No"
 msgstr "No"
 
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: No Video selected
+msgid "No Video selected"
+msgstr ""
+
 #: components/manage/Controlpanels/VersionOverview
 # defaultMessage: No addons found
 msgid "No addons found"
@@ -1740,6 +1775,11 @@ msgstr "Sense selecció"
 msgid "No uninstall profile"
 msgstr "Aquest complement no proporciona un perfil de desinstal·lació."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: No user found
+msgid "No user found"
+msgstr ""
+
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 #: components/manage/Widgets/SelectUtils
@@ -1747,11 +1787,6 @@ msgstr "Aquest complement no proporciona un perfil de desinstal·lació."
 # defaultMessage: No value
 msgid "No value"
 msgstr "Sense valor"
-
-#: components/manage/Blocks/Video/VideoSidebar
-# defaultMessage: No video selected
-msgid "No video selected"
-msgstr "No s'ha seleccionat cap vídeo"
 
 #: components/manage/Workflow/Workflow
 # defaultMessage: No workflow
@@ -1796,7 +1831,6 @@ msgstr ""
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr "Obre en una pestanya nova"
@@ -1902,6 +1936,16 @@ msgstr "Introduïu el codi d'inserció proporcionat per Google Maps -> Compartei
 msgid "Please fill out the form below to set your password."
 msgstr "Si us plau, omple el formulari següent per configurar la teva contrasenya."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Please search for users or use the filters on the side.
+msgid "Please search for users or use the filters on the side."
+msgstr ""
+
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+# defaultMessage: Please upgrade to plone.restapi >= 8.24.0.
+msgid "Please upgrade to plone.restapi >= 8.24.0."
+msgstr ""
+
 #: components/theme/Footer/Footer
 # defaultMessage: Plone Foundation
 msgid "Plone Foundation"
@@ -1948,7 +1992,7 @@ msgstr "Prepareu el vostre codi"
 msgid "Preview"
 msgstr "Vista prèvia"
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Preview Image URL
 msgid "Preview Image URL"
 msgstr "Previsualitza l'URL de la imatge"
@@ -2052,6 +2096,11 @@ msgstr "Elimina"
 # defaultMessage: Remove term
 msgid "Remove term"
 msgstr "Elimina el terme"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Remove users from group
+msgid "Remove users from group"
+msgstr ""
 
 #: components/manage/Toolbar/More
 # defaultMessage: Remove working copy
@@ -2389,6 +2438,11 @@ msgstr "Mostrar tots"
 msgid "Show Replies"
 msgstr "Mostra les respostes"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Show groups of users below
+msgid "Show groups of users below"
+msgstr ""
+
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Show item
 msgid "Show item"
@@ -2581,7 +2635,8 @@ msgstr "Canvia a"
 msgid "Table"
 msgstr "Taula"
 
-#: components/manage/Blocks/ToC/View
+#: components/manage/Blocks/ToC/variations/DefaultTocRenderer
+#: components/manage/Blocks/ToC/variations/HorizontalMenu
 # defaultMessage: Table of Contents
 msgid "Table of Contents"
 msgstr "Taula de continguts"
@@ -2930,6 +2985,17 @@ msgstr "S'utilitza per a l'accés programàtic al conjunt de camps."
 msgid "User"
 msgstr "Usuari"
 
+#: components/manage/Controlpanels/Controlpanels
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Membership
+msgid "User Group Membership"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Settings
+msgid "User Group Settings"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: User created
 msgid "User created"
@@ -2972,12 +3038,13 @@ msgstr "Variació"
 msgid "Version Overview"
 msgstr "Visió general de la versió"
 
+#: components/manage/Blocks/Video/schema
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Video
 msgid "Video"
 msgstr "Vídeo"
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Video URL
 msgid "Video URL"
 msgstr "URL del vídeo"
