@@ -2,8 +2,6 @@
 
 ## 16.0.0 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Added placeholder param to widget, to change default placeholder @giuliaghisini
@@ -11,10 +9,6 @@
 ### Bugfix
 
 - Fix Image gallery listing block variation only gets 25 if no query is set @sneridagh
-
-### Internal
-
-### Documentation
 
 ## 16.0.0-alpha.26 (2022-08-24)
 
