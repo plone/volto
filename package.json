@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "16.0.0-alpha.16",
+  "version": "16.0.0-alpha.17",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -254,6 +254,7 @@
     "commander": "8.2.0",
     "connected-react-router": "6.8.0",
     "coveralls": "3.0.2",
+    "crypto-random-string": "3.2.0",
     "cypress": "9.6.1",
     "cypress-axe": "0.14.0",
     "cypress-file-upload": "5.0.8",
@@ -397,7 +398,6 @@
     "@storybook/addon-links": "^6.3.0",
     "@storybook/react": "^6.3.0",
     "babel-loader": "^8.1.0",
-    "crypto-random-string": "3.2.0",
     "full-icu": "1.4.0",
     "identity-obj-proxy": "3.0.0",
     "jest": "27.4.5",
