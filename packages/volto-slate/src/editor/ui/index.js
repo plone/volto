@@ -1,5 +1,6 @@
 export BasicToolbar from './BasicToolbar';
 export BlockButton from './BlockButton';
+export ClearFormattingButton from './ClearFormattingButton';
 export ExpandedToolbar from './ExpandedToolbar';
 export Expando from './Expando';
 export MarkButton from './MarkButton';
