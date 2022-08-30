@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix array widget translation @robgietema
+
 ### Internal
 
 ### Documentation
