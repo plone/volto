@@ -213,7 +213,7 @@ class Rules extends Component {
               </Segment>
               <Segment>
                 <Checkbox
-                  onChange={(e, { value }) => console.log(value)}
+                  // onChange={(e, { value }) => console.log(value)}
                   //checked={}
                   value={'disable-globally'}
                   label="Disable globally"
@@ -235,7 +235,7 @@ class Rules extends Component {
                 {filterChoices.map((o, i) => (
                   <Form.Field key={i}>
                     <Checkbox
-                      onChange={(e, { value }) => console.log(value)}
+                      // onChange={(e, { value }) => console.log(value)}
                       //checked={}
                       value={o.value}
                       label={o.label}
