@@ -20,6 +20,7 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
 function formatUrl(path) {
   const { settings } = config;
   const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
+  const prefix = settings.prefixPath;
 
   if (path.startsWith('http://') || path.startsWith('https://')) return path;
 
@@ -31,11 +32,8 @@ function formatUrl(path) {
   }
 
   let adjustedPath = path[0] !== '/' ? `/${path}` : path;
-  if (
-    config.settings.prefixPath &&
-    adjustedPath.startsWith(config.settings.prefixPath)
-  ) {
-    adjustedPath = adjustedPath.replace(config.settings.prefixPath, '');
+  if ( prefix && adjustedPath.match(new RegExp(`^${prefix}(/|$)`))) {
+    adjustedPath = adjustedPath.slice(prefix.length);
     adjustedPath = adjustedPath[0] !== '/' ? `/${adjustedPath}` : adjustedPath;
   }
 
