@@ -46,10 +46,16 @@ msgstr "Activación de cuenta completada"
 msgid "Action"
 msgstr "Acción"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Action:
+msgid "Action: "
+msgstr ""
+
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
+#: components/manage/Controlpanels/Rules/Rules
 #: components/manage/Controlpanels/Users/UsersControlpanel
 # defaultMessage: Actions
 msgid "Actions"
@@ -60,7 +66,19 @@ msgstr "Acciones"
 msgid "Activate and deactivate"
 msgstr "Activar y desactivar"
 
+#: components/manage/Rules/Rules
+# defaultMessage: Active
+msgid "Active"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Active content rules in this Page
+msgid "Active content rules in this Page"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Rules/Rules
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
 #: helpers/MessageLabels/MessageLabels
@@ -83,6 +101,16 @@ msgstr "Añadir complementos"
 msgid "Add Content"
 msgstr "Agregar contenido"
 
+#: components/manage/Controlpanels/Rules/AddRule
+# defaultMessage: Add Content Rule
+msgid "Add Content Rule"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/AddRule
+# defaultMessage: Add Rule
+msgid "Add Rule"
+msgstr ""
+
 #: components/manage/Toolbar/Types
 # defaultMessage: Add Translation…
 msgid "Add Translation…"
@@ -98,6 +126,11 @@ msgstr "Agregar Usuario"
 msgid "Add a description…"
 msgstr "Agregar una descripción…"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Action added
+msgid "Add action"
+msgstr ""
+
 #: components/manage/BlockChooser/BlockChooserButton
 # defaultMessage: Add block
 msgid "Add block"
@@ -107,6 +140,16 @@ msgstr "Añadir bloque"
 # defaultMessage: Add block…
 msgid "Add block…"
 msgstr "Agregar bloque…"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Condition added
+msgid "Add condition"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Add content rule
+msgid "Add content rule"
+msgstr ""
 
 #: components/manage/Widgets/QueryWidget
 # defaultMessage: Add criteria
@@ -188,6 +231,11 @@ msgstr ""
 msgid "Add-ons Settings"
 msgstr "Configuración de complementos"
 
+#: components/manage/Rules/Rules
+# defaultMessage: Added
+msgid "Added"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Additional date
 msgid "Additional date"
@@ -229,6 +277,21 @@ msgstr "Dejar vacío si la imagen es puramente decorativa"
 msgid "Alt text hint link text"
 msgstr "Describir el objeto de la imagen"
 
+#: components/manage/Rules/Rules
+# defaultMessage: Applied to subfolders
+msgid "Applied to subfolders"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Applies to subfolders?
+msgid "Applies to subfolders?"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Apply to subfolders
+msgid "Apply to subfolders"
+msgstr ""
+
 #: components/manage/Toolbar/More
 # defaultMessage: Apply working copy
 msgid "Apply working copy"
@@ -250,10 +313,20 @@ msgstr "¿Esta seguro de querer eliminar este conjunto de campo incluyendo todos
 msgid "Ascending"
 msgstr "Ascendente"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Assignments
+msgid "Assignments"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Available
 msgid "Available"
 msgstr "Disponible"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Available content rules:
+msgid "Available content rules:"
+msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -264,12 +337,17 @@ msgstr "Disponible"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/DatabaseInformation
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Controlpanels/Rules/Rules
 #: components/manage/Diff/Diff
 #: components/manage/History/History
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
+#: components/manage/Rules/Rules
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Toolbar/PersonalTools
@@ -348,6 +426,8 @@ msgstr "No se puede editar la plantilla de <strong>{type}</strong> porque el sop
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Delete/Delete
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
@@ -502,6 +582,26 @@ msgstr "Comentarios"
 msgid "Compare"
 msgstr "Comparar"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Condition:
+msgid "Condition: "
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Configure Content Rule
+msgid "Configure Content Rule"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Configure Content Rule: {title}
+msgid "Configure Content Rule: {title}"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Configure content rule
+msgid "Configure content rule"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Confirm password
@@ -532,6 +632,26 @@ msgstr "Elementos contenidos"
 # defaultMessage: Content
 msgid "Content"
 msgstr "Contenido"
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Content Rule
+msgid "Content Rule"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Content Rules
+msgid "Content Rules"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Content rules for {title}
+msgid "Content rules for {title}"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Content rules from parent folders
+msgid "Content rules from parent folders"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Content type created
@@ -720,6 +840,11 @@ msgstr "Eliminar tipo"
 msgid "Delete User"
 msgstr "Eliminar Usuario"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Action deleted
+msgid "Delete action"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: undefined
 msgid "Delete blocks"
@@ -730,10 +855,20 @@ msgstr "Eliminar bloques"
 msgid "Delete col"
 msgstr "Eliminar columna"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Condition deleted
+msgid "Delete condition"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Delete row
 msgid "Delete row"
 msgstr "Eliminar fila"
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Deleted
+msgid "Deleted"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Depth
@@ -766,6 +901,26 @@ msgstr "Diferencias"
 # defaultMessage: Difference between revision {one} and {two} of {title}
 msgid "Difference between revision {one} and {two} of {title}"
 msgstr "Diferencias entre la revisión {one} y {two} del {title}"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Disable
+msgid "Disable"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Disable apply to subfolders
+msgid "Disable apply to subfolders"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Disabled
+msgid "Disabled"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Disabled apply to subfolders
+msgid "Disabled apply to subfolders"
+msgstr ""
 
 #: components/theme/Footer/Footer
 # defaultMessage: Distributed under the {license}.
@@ -847,6 +1002,7 @@ msgstr "La dirección de correo electrónico no coincide."
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
@@ -854,6 +1010,11 @@ msgstr "La dirección de correo electrónico no coincide."
 # defaultMessage: Edit
 msgid "Edit"
 msgstr "Editar"
+
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Edit Rule
+msgid "Edit Rule"
+msgstr ""
 
 #: components/theme/Comments/CommentEditModal
 # defaultMessage: Edit comment
@@ -905,10 +1066,30 @@ msgstr "Ha habido un error el código de encapsulación, siga las instrucciones 
 msgid "Empty object list"
 msgstr "Lista de objetos vacía"
 
+#: components/manage/Rules/Rules
+# defaultMessage: Enable
+msgid "Enable"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypeLayout
 # defaultMessage: Enable editable Blocks
 msgid "Enable editable Blocks"
 msgstr "Activar bloques editables"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Enabled
+msgid "Enabled"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Enabled here?
+msgid "Enabled here?"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Enabled?
+msgid "Enabled?"
+msgstr ""
 
 #: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
@@ -974,6 +1155,11 @@ msgstr "Introduzca su nombre de usuario para verificar."
 # defaultMessage: Error
 msgid "Error"
 msgstr "Error"
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Event
+msgid "Event"
+msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Exclude from navigation
@@ -1064,6 +1250,11 @@ msgstr "Tamaño del archivo"
 # defaultMessage: Filename
 msgid "Filename"
 msgstr "Nombre del archivo"
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Filter Rules:
+msgid "Filter Rules:"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Filter users by groups
@@ -1237,6 +1428,11 @@ msgstr "Página personal"
 # defaultMessage: ID
 msgid "ID"
 msgstr "ID"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: If all of the following conditions are met:
+msgid "If all of the following conditions are met:"
+msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: If selected, this item will not appear in the navigation tree
@@ -1642,6 +1838,11 @@ msgstr "Mensualmente"
 msgid "More"
 msgstr "Más"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Move down
+msgid "Move down"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Move to bottom of folder
 msgid "Move to bottom of folder"
@@ -1651,6 +1852,11 @@ msgstr "Mover al fondo de la carpeta"
 # defaultMessage: Move to top of folder
 msgid "Move to top of folder"
 msgstr "Mover encima de la carpeta"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Move up
+msgid "Move up"
+msgstr ""
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Multiple choices?
@@ -1894,6 +2100,11 @@ msgstr "Pegar"
 # defaultMessage: undefined
 msgid "Paste blocks"
 msgstr "Pegar bloques"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Perform the following actions:
+msgid "Perform the following actions:"
+msgstr ""
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Permissions have been updated successfully
@@ -2229,11 +2440,29 @@ msgstr "Roles"
 msgid "Root"
 msgstr "Raíz"
 
+#: components/manage/Controlpanels/Rules/AddRule
+# defaultMessage: Rule added
+msgid "Rule added"
+msgstr ""
+
+#: components/manage/Rules/Rules
+#: components/manage/Toolbar/More
+# defaultMessage: Rules
+msgid "Rules"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Rules execute when a triggering event occurs. Rule actions will only be invoked if all the rule's conditions are met. You can add new actions and conditions using the buttons below.
+msgid "Rules execute when a triggering event occurs. Rule actions will only be invoked if all the rule's conditions are met. You can add new actions and conditions using the buttons below."
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
@@ -2339,6 +2568,7 @@ msgstr "Segundo"
 msgid "Section title"
 msgstr "Título de la sección"
 
+#: components/manage/Rules/Rules
 #: components/manage/Sidebar/ObjectBrowserNav
 # defaultMessage: Select
 msgid "Select"
@@ -2589,6 +2819,11 @@ msgstr "Renueve la contraseña"
 msgid "State"
 msgstr "Estado"
 
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Status
+msgid "Status"
+msgstr ""
+
 #: components/manage/Multilingual/CompareLanguages
 # defaultMessage: Stop compare
 msgid "Stop compare"
@@ -2618,10 +2853,15 @@ msgstr "Asunto"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Controlpanels/Rules/Rules
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
+#: components/manage/Rules/Rules
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Success
@@ -2724,6 +2964,11 @@ msgstr "La base de datos no responde, disculpe las molestias. Intente cargar la 
 msgid "The button presence disables the live search, the query is issued when you press ENTER"
 msgstr "Si se muestra el botón se desactiva la búsqueda en vivo, la búsqueda se realiza cuando se pulsa ENTER"
 
+#: components/manage/Rules/Rules
+# defaultMessage: The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones.
+msgid "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: The item could not be deleted.
 msgid "The item could not be deleted."
@@ -2805,6 +3050,11 @@ msgstr "Este nombre se mostrará en la URL."
 msgid "This page does not seem to exist…"
 msgstr "Esta página no existe…"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: This rule is assigned to the following locations:
+msgid "This rule is assigned to the following locations:"
+msgstr ""
+
 #: components/manage/Widgets/DatetimeWidget
 # defaultMessage: Time
 msgid "Time"
@@ -2822,6 +3072,12 @@ msgstr "Hora"
 # defaultMessage: Title
 msgid "Title"
 msgstr "Título"
+
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Title field error. Value not provided or already existing.
+msgid "Title field error. Value not provided or already existing."
+msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Total active and non-active objects
@@ -2864,6 +3120,12 @@ msgstr "Traducción enlazada"
 msgid "Translation linking removed"
 msgstr "Enlace a la traducción eliminado"
 
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Triggering event field error. Please select a value
+msgid "Triggering event field error. Please select a value"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
@@ -2895,6 +3157,16 @@ msgstr "Ingrese el título…"
 # defaultMessage: UID
 msgid "UID"
 msgstr "UID"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Unassign
+msgid "Unassign"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Unassigned
+msgid "Unassigned"
+msgstr ""
 
 #: components/theme/Unauthorized/Unauthorized
 # defaultMessage: Unauthorized
@@ -2986,6 +3258,17 @@ msgstr "Cargando archivos"
 # defaultMessage: Uploading image
 msgid "Uploading image"
 msgstr "Cargando imagen"
+
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Use the form below to define the new content rule
+msgid "Use the form below to define the new content rule"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu.
+msgid "Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu."
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -3157,6 +3440,29 @@ msgstr "Cuando"
 # defaultMessage: When this date is reached, the content will nolonger be visible in listings and searches.
 msgid "When this date is reached, the content will nolonger be visible in listings and searches."
 msgstr "Cuando se alcanza esta fecha, el contenido ya no será visible en listas y búsquedas."
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Whether or not content rules should be disabled globally. If this is selected, no rules will be executed anywhere in the portal.
+msgid "Whether or not content rules should be disabled globally. If this is selected, no rules will be executed anywhere in the portal."
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Whether or not execution of further rules should stop after this rule is executed
+msgid "Whether or not execution of further rules should stop after this rule is executed"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Whether or not other rules should be triggered by the actions launched by this rule. Activate this only if you are sure this won't create infinite loops
+msgid "Whether or not other rules should be triggered by the actions launched by this rule. Activate this only if you are sure this won't create infinite loops"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Whether or not the rule is currently enabled
+msgid "Whether or not the rule is currently enabled"
+msgstr ""
 
 #: components/manage/History/History
 # defaultMessage: Who
