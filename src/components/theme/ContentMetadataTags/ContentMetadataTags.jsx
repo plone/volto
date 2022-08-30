@@ -48,7 +48,7 @@ const ContentMetadataTags = (props) => {
   return (
     <>
       <Helmet>
-        <title>{seo_title || title}</title>
+        <title>{(seo_title || title)?.replace(/\u00AD/g, '')}</title>
         <meta name="description" content={seo_description || description} />
         <meta
           property="og:title"

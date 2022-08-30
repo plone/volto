@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "16.0.0-alpha.22",
+  "version": "16.0.0-alpha.27",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -233,7 +233,7 @@
     "@loadable/component": "5.14.1",
     "@loadable/server": "5.14.0",
     "@loadable/webpack-plugin": "5.14.0",
-    "@plone/scripts": "1.5.0",
+    "@plone/scripts": "1.6.0",
     "@sentry/browser": "6.19.7",
     "@sentry/integrations": "6.19.7",
     "@sentry/node": "6.19.7",

@@ -6,6 +6,7 @@ import {
   createGroup,
   deleteGroup,
   listGroups,
+  getControlpanel,
   listRoles,
   updateGroup,
   authenticatedRole,
@@ -108,11 +109,14 @@ class GroupsControlpanel extends Component {
   }
 
   fetchData = async () => {
+    await this.props.getControlpanel('usergroup');
     await this.props.listRoles();
-    await this.props.listGroups();
-    this.setState({
-      groupEntries: this.props.groups,
-    });
+    if (!this.props.many_groups) {
+      await this.props.listGroups();
+      this.setState({
+        groupEntries: this.props.groups,
+      });
+    }
   };
   /**
    * Component did mount
@@ -609,6 +613,8 @@ export default compose(
       roles: state.roles.roles,
       groups: state.groups.groups,
       description: state.description,
+      many_users: state.controlpanels?.controlpanel?.data?.many_users,
+      many_groups: state.controlpanels?.controlpanel?.data?.many_groups,
       pathname: props.location.pathname,
       deleteGroupRequest: state.groups.delete,
       createGroupRequest: state.groups.create,
@@ -621,6 +627,7 @@ export default compose(
           listRoles,
           listGroups,
           deleteGroup,
+          getControlpanel,
           createGroup,
           updateGroup,
           authenticatedRole,
