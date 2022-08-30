@@ -45,16 +45,10 @@ msgstr "Activació del compte completat"
 msgid "Action"
 msgstr "Acció"
 
-#: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Action:
-msgid "Action: "
-msgstr ""
-
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
-#: components/manage/Controlpanels/Rules/Rules
 #: components/manage/Controlpanels/Users/UsersControlpanel
 # defaultMessage: Actions
 msgid "Actions"
@@ -65,19 +59,7 @@ msgstr "Accions"
 msgid "Activate and deactivate"
 msgstr "Activar i desactivar"
 
-#: components/manage/Rules/Rules
-# defaultMessage: Active
-msgid "Active"
-msgstr ""
-
-#: components/manage/Rules/Rules
-# defaultMessage: Active content rules in this Page
-msgid "Active content rules in this Page"
-msgstr ""
-
 #: components/manage/Controlpanels/ContentTypes
-#: components/manage/Controlpanels/Rules/ConfigureRule
-#: components/manage/Rules/Rules
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
 #: helpers/MessageLabels/MessageLabels
@@ -99,16 +81,6 @@ msgstr "Afegeix complements"
 # defaultMessage: Add Content…
 msgid "Add Content"
 msgstr "Afegeix contingut"
-
-#: components/manage/Controlpanels/Rules/AddRule
-# defaultMessage: Add Content Rule
-msgid "Add Content Rule"
-msgstr ""
-
-#: components/manage/Controlpanels/Rules/AddRule
-# defaultMessage: Add Rule
-msgid "Add Rule"
-msgstr ""
 
 #: components/manage/Toolbar/Types
 # defaultMessage: Add Translation…
@@ -134,11 +106,6 @@ msgstr "Afegeix bloc"
 # defaultMessage: Add block…
 msgid "Add block…"
 msgstr "Afegeix bloc…"
-
-#: components/manage/Controlpanels/Rules/Rules
-# defaultMessage: Add content rule
-msgid "Add content rule"
-msgstr ""
 
 #: components/manage/Widgets/QueryWidget
 # defaultMessage: Add criteria
@@ -185,6 +152,11 @@ msgstr "Afegeix un nou usuari"
 msgid "Add to Groups"
 msgstr "Afegeix a grups"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add users to group
+msgid "Add users to group"
+msgstr ""
+
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Add term
 msgid "Add vocabulary term"
@@ -195,15 +167,25 @@ msgstr "Afegeix un nou terme del vocabulari"
 msgid "Add {type}"
 msgstr "Afegeix {type}"
 
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Add-Ons
+msgid "Add-Ons"
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Add-on Configuration
+msgid "Add-on Configuration"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Add-ons
+msgid "Add-ons"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Add-ons Settings
 msgid "Add-ons Settings"
 msgstr "Configuració de complements"
-
-#: components/manage/Rules/Rules
-# defaultMessage: Added
-msgid "Added"
-msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Additional date
@@ -211,10 +193,10 @@ msgid "Additional date"
 msgstr "Data addicional"
 
 #: components/manage/Blocks/Block/StylesSchema
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Maps/MapsSidebar
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Maps/schema
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Alignment
 msgid "Alignment"
 msgstr "Posicionament"
@@ -229,36 +211,22 @@ msgstr "Tots"
 msgid "Alphabetically"
 msgstr "Alfabèticament"
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/schema
 # defaultMessage: Alt text
 msgid "Alt text"
 msgstr "Text alternatiu (alt)"
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 # defaultMessage: Leave empty if the image is purely decorative.
 msgid "Alt text hint"
 msgstr "Deixeu el camp buit si la imatge és purament decorativa"
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 # defaultMessage: Describe the purpose of the image.
 msgid "Alt text hint link text"
 msgstr "Descriu el propòsit de la imatge"
-
-#: components/manage/Rules/Rules
-# defaultMessage: Applied to subfolders
-msgid "Applied to subfolders"
-msgstr ""
-
-#: components/manage/Rules/Rules
-# defaultMessage: Applies to subfolders?
-msgid "Applies to subfolders?"
-msgstr ""
-
-#: components/manage/Rules/Rules
-# defaultMessage: Apply to subfolders
-msgid "Apply to subfolders"
-msgstr ""
 
 #: components/manage/Toolbar/More
 # defaultMessage: Apply working copy
@@ -281,20 +249,10 @@ msgstr "Esteu segurs que voleu eliminar aquest grup de camps i tots els camps qu
 msgid "Ascending"
 msgstr "Ascendent"
 
-#: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Assignments
-msgid "Assignments"
-msgstr ""
-
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Available
 msgid "Available"
 msgstr "Disponible"
-
-#: components/manage/Rules/Rules
-# defaultMessage: Available content rules:
-msgid "Available content rules:"
-msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -305,17 +263,12 @@ msgstr ""
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/DatabaseInformation
 #: components/manage/Controlpanels/ModerateComments
-#: components/manage/Controlpanels/Rules/AddRule
-#: components/manage/Controlpanels/Rules/ConfigureRule
-#: components/manage/Controlpanels/Rules/EditRule
-#: components/manage/Controlpanels/Rules/Rules
 #: components/manage/Diff/Diff
 #: components/manage/History/History
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
-#: components/manage/Rules/Rules
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Toolbar/PersonalTools
@@ -394,8 +347,6 @@ msgstr "No es pot editar el disseny per al tipus de contingut <strong>{type}</st
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
-#: components/manage/Controlpanels/Rules/AddRule
-#: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Delete/Delete
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
@@ -411,7 +362,6 @@ msgstr "Cancel·lar"
 msgid "Cell"
 msgstr "Cèl·lula"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Center
@@ -551,22 +501,6 @@ msgstr "Comentaris"
 msgid "Compare"
 msgstr "Compara"
 
-#: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Condition:
-msgid "Condition: "
-msgstr ""
-
-#: components/manage/Controlpanels/Rules/ConfigureRule
-#: components/manage/Controlpanels/Rules/EditRule
-# defaultMessage: Configure Content Rule
-msgid "Configure Content Rule"
-msgstr ""
-
-#: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Configure Content Rule: {title}
-msgid "Configure Content Rule: {title}"
-msgstr ""
-
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Confirm password
@@ -593,24 +527,9 @@ msgstr "Formulari de contacte"
 msgid "Contained items"
 msgstr "Elements continguts"
 
-#: components/manage/Controlpanels/Rules/Rules
-# defaultMessage: Content Rule
-msgid "Content Rule"
-msgstr ""
-
-#: components/manage/Controlpanels/Rules/Rules
-# defaultMessage: Content Rules
-msgid "Content Rules"
-msgstr ""
-
-#: components/manage/Rules/Rules
-# defaultMessage: Content rules for {title}
-msgid "Content rules for {title}"
-msgstr ""
-
-#: components/manage/Rules/Rules
-# defaultMessage: Content rules from parent folders
-msgid "Content rules from parent folders"
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Content
+msgid "Content"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
@@ -713,6 +632,11 @@ msgstr "Talla bloc"
 # defaultMessage: Daily
 msgid "Daily"
 msgstr "Diàriament"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Database
+msgid "Database"
+msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Database Information
@@ -842,26 +766,6 @@ msgstr "Diferència"
 msgid "Difference between revision {one} and {two} of {title}"
 msgstr "Diferència entre la revisió {one} i {two} de {title}"
 
-#: components/manage/Rules/Rules
-# defaultMessage: Disable
-msgid "Disable"
-msgstr ""
-
-#: components/manage/Rules/Rules
-# defaultMessage: Disable apply to subfolders
-msgid "Disable apply to subfolders"
-msgstr ""
-
-#: components/manage/Rules/Rules
-# defaultMessage: Disabled
-msgid "Disabled"
-msgstr ""
-
-#: components/manage/Rules/Rules
-# defaultMessage: Disabled apply to subfolders
-msgid "Disabled apply to subfolders"
-msgstr ""
-
 #: components/theme/Footer/Footer
 # defaultMessage: Distributed under the {license}.
 msgid "Distributed under the {license}."
@@ -950,11 +854,6 @@ msgstr "Les adreces de correu electrònic no coincideixen."
 msgid "Edit"
 msgstr "Edita"
 
-#: components/manage/Controlpanels/Rules/EditRule
-# defaultMessage: Edit Rule
-msgid "Edit Rule"
-msgstr ""
-
 #: components/theme/Comments/CommentEditModal
 # defaultMessage: Edit comment
 msgid "Edit comment"
@@ -1000,40 +899,15 @@ msgstr "Email enviat"
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "Error d'inserció del codi, seguiu les instruccions i torneu-ho a provar."
 
-#: components/manage/Blocks/Maps/View
-# defaultMessage: Embeded Google Maps
-msgid "Embeded Google Maps"
-msgstr "Google Maps incrustat"
-
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Empty object list
 msgid "Empty object list"
 msgstr "Llista d'objectes buida"
 
-#: components/manage/Rules/Rules
-# defaultMessage: Enable
-msgid "Enable"
-msgstr ""
-
 #: components/manage/Controlpanels/ContentTypeLayout
 # defaultMessage: Enable editable Blocks
 msgid "Enable editable Blocks"
 msgstr "Activa els blocs editables"
-
-#: components/manage/Rules/Rules
-# defaultMessage: Enabled
-msgid "Enabled"
-msgstr ""
-
-#: components/manage/Rules/Rules
-# defaultMessage: Enabled here?
-msgid "Enabled here?"
-msgstr ""
-
-#: components/manage/Rules/Rules
-# defaultMessage: Enabled?
-msgid "Enabled?"
-msgstr ""
 
 #: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
@@ -1100,11 +974,6 @@ msgstr ""
 msgid "Error"
 msgstr "Error"
 
-#: components/manage/Controlpanels/Rules/Rules
-# defaultMessage: Event
-msgid "Event"
-msgstr ""
-
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Exclude from navigation
 msgid "Exclude from navigation"
@@ -1140,7 +1009,6 @@ msgstr "Data de caducitat"
 msgid "Expired"
 msgstr "Caducat"
 
-#: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: External URL
 msgid "External URL"
@@ -1196,9 +1064,9 @@ msgstr "Mida de l'arxiu"
 msgid "Filename"
 msgstr "Nom de l'arxiu"
 
-#: components/manage/Controlpanels/Rules/Rules
-# defaultMessage: Filter Rules:
-msgid "Filter Rules:"
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter users by groups
+msgid "Filter users by groups"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -1262,6 +1130,11 @@ msgstr "Nom complet"
 # defaultMessage: GNU GPL license
 msgid "GNU GPL license"
 msgstr "Llicència GNU GPL"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: General
+msgid "General"
+msgstr ""
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Global role
@@ -1364,11 +1237,6 @@ msgstr "Pàgina inicial"
 msgid "ID"
 msgstr "Id"
 
-#: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: If all of the following conditions are met:
-msgid "If all of the following conditions are met:"
-msgstr ""
-
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: If selected, this item will not appear in the navigation tree
 msgid "If selected, this item will not appear in the navigation tree"
@@ -1392,6 +1260,7 @@ msgstr "Si esteu segur que teniu l'adreça web correcta però trobeu un error, p
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Image
 msgid "Image"
@@ -1401,6 +1270,11 @@ msgstr "imatge"
 # defaultMessage: Image gallery
 msgid "Image gallery"
 msgstr "Galeria d'imatges"
+
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Image size
+msgid "Image size"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Include this occurence
@@ -1414,6 +1288,11 @@ msgstr "Incloeu aquesta ocurrència"
 # defaultMessage: Info
 msgid "Info"
 msgstr "Informació"
+
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+# defaultMessage: You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to user group settings. See the button on the left.
+msgid "InfoUserGroupSettings"
+msgstr ""
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Inherit permissions from higher levels
@@ -1459,6 +1338,11 @@ msgstr "Instal·lat"
 # defaultMessage: Installed version
 msgid "Installed version"
 msgstr "Versió instal·lada"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Installing a third party add-on
+msgid "Installing a third party add-on"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: days
@@ -1542,6 +1426,11 @@ msgstr "Llenguatge"
 msgid "Language independent field."
 msgstr ""
 
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Large
+msgid "Large"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Last
 msgid "Last"
@@ -1572,7 +1461,6 @@ msgstr "Disseny"
 msgid "Lead Image"
 msgstr "Imatge Principal"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Left
@@ -1597,11 +1485,9 @@ msgid "Link title"
 msgstr "Títol de l'enllaç"
 
 #: components/manage/Blocks/HeroImageLeft/schema
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
-#: components/manage/Blocks/Maps/MapsSidebar
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Link to
 msgid "Link to"
 msgstr "Enllaç a"
@@ -1684,11 +1570,12 @@ msgid "Manage translations for {title}"
 msgstr "Gestiona les traduccions per a {title}"
 
 #: components/manage/Blocks/Maps/MapsSidebar
-# defaultMessage: Map
-msgid "Map"
-msgstr "Mapa"
+#: components/manage/Blocks/Maps/schema
+# defaultMessage: Maps
+msgid "Maps"
+msgstr ""
 
-#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Maps/schema
 # defaultMessage: Maps URL
 msgid "Maps URL"
 msgstr "URL del mapa"
@@ -1702,6 +1589,11 @@ msgstr "La longitud màxima és {len}."
 # defaultMessage: Maximum value is {len}.
 msgid "Maximum value is {len}."
 msgstr "El valor màxim és {len}."
+
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Medium
+msgid "Medium"
+msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Message
@@ -1802,20 +1694,31 @@ msgid "News Item"
 msgstr "Noticia"
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: No
 msgid "No"
 msgstr "No"
+
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: No Video selected
+msgid "No Video selected"
+msgstr ""
 
 #: components/manage/Controlpanels/VersionOverview
 # defaultMessage: No addons found
 msgid "No addons found"
 msgstr ""
 
+#: components/theme/RequestTimeout/RequestTimeout
+# defaultMessage: There is no connection to the server, due to a timeout o no network connection.
+msgid "No connection to the server"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected
 msgid "No image selected"
-msgstr "No s'ha seleccionat cap imatge"
+msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: No image set in Lead Image content field
@@ -1878,6 +1781,11 @@ msgstr "Sense selecció"
 msgid "No uninstall profile"
 msgstr "Aquest complement no proporciona un perfil de desinstal·lació."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: No user found
+msgid "No user found"
+msgstr ""
+
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 #: components/manage/Widgets/SelectUtils
@@ -1885,11 +1793,6 @@ msgstr "Aquest complement no proporciona un perfil de desinstal·lació."
 # defaultMessage: No value
 msgid "No value"
 msgstr "Sense valor"
-
-#: components/manage/Blocks/Video/VideoSidebar
-# defaultMessage: No video selected
-msgid "No video selected"
-msgstr "No s'ha seleccionat cap vídeo"
 
 #: components/manage/Workflow/Workflow
 # defaultMessage: No workflow
@@ -1932,10 +1835,8 @@ msgstr "D'acord"
 msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed."
 msgstr ""
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Maps/MapsSidebar
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr "Obre en una pestanya nova"
@@ -1950,7 +1851,6 @@ msgstr "Obre el menú"
 msgid "Open object browser"
 msgstr "Obre el navegador d'objectes"
 
-#: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
 msgid "Origin"
@@ -1993,11 +1893,6 @@ msgstr "Enganxar"
 # defaultMessage: undefined
 msgid "Paste blocks"
 msgstr "Enganxa blocs"
-
-#: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Perform the following actions:
-msgid "Perform the following actions:"
-msgstr ""
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Permissions have been updated successfully
@@ -2047,6 +1942,16 @@ msgstr "Introduïu el codi d'inserció proporcionat per Google Maps -> Compartei
 msgid "Please fill out the form below to set your password."
 msgstr "Si us plau, omple el formulari següent per configurar la teva contrasenya."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Please search for users or use the filters on the side.
+msgid "Please search for users or use the filters on the side."
+msgstr ""
+
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+# defaultMessage: Please upgrade to plone.restapi >= 8.24.0.
+msgid "Please upgrade to plone.restapi >= 8.24.0."
+msgstr ""
+
 #: components/theme/Footer/Footer
 # defaultMessage: Plone Foundation
 msgid "Plone Foundation"
@@ -2093,7 +1998,7 @@ msgstr "Prepareu el vostre codi"
 msgid "Preview"
 msgstr "Vista prèvia"
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Preview Image URL
 msgid "Preview Image URL"
 msgstr "Previsualitza l'URL de la imatge"
@@ -2198,6 +2103,11 @@ msgstr "Elimina"
 msgid "Remove term"
 msgstr "Elimina el terme"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Remove users from group
+msgid "Remove users from group"
+msgstr ""
+
 #: components/manage/Toolbar/More
 # defaultMessage: Remove working copy
 msgid "Remove working copy"
@@ -2297,7 +2207,6 @@ msgstr "Estat de revisió"
 msgid "Richtext"
 msgstr "Text enriquit"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Right
@@ -2319,24 +2228,11 @@ msgstr "Funcions"
 msgid "Root"
 msgstr "Arrel"
 
-#: components/manage/Rules/Rules
-#: components/manage/Toolbar/More
-# defaultMessage: Rules
-msgid "Rules"
-msgstr ""
-
-#: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Rules execute when a triggering event occurs. Rule actions will only be invoked if all the rule's conditions are met. You can add new actions and conditions using the buttons below.
-msgid "Rules execute when a triggering event occurs. Rule actions will only be invoked if all the rule's conditions are met. You can add new actions and conditions using the buttons below."
-msgstr ""
-
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
-#: components/manage/Controlpanels/Rules/AddRule
-#: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
@@ -2365,6 +2261,7 @@ msgstr "Actualitzacions d'esquemes"
 #: components/manage/Blocks/Search/layout/RightColumnFacets
 #: components/manage/Blocks/Search/layout/TopSideFacets
 #: components/manage/Blocks/Search/schema
+#: components/theme/Search/Search
 #: components/theme/SearchWidget/SearchWidget
 # defaultMessage: Search
 msgid "Search"
@@ -2441,7 +2338,6 @@ msgstr "Segon"
 msgid "Section title"
 msgstr "Títol de la secció"
 
-#: components/manage/Rules/Rules
 #: components/manage/Sidebar/ObjectBrowserNav
 # defaultMessage: Select
 msgid "Select"
@@ -2549,6 +2445,11 @@ msgstr "Mostrar tots"
 msgid "Show Replies"
 msgstr "Mostra les respostes"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Show groups of users below
+msgid "Show groups of users below"
+msgstr ""
+
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Show item
 msgid "Show item"
@@ -2611,15 +2512,15 @@ msgstr "Configuració del lloc"
 msgid "Sitemap"
 msgstr "Mapa del lloc"
 
-#: components/manage/Blocks/Image/ImageSidebar
-# defaultMessage: Size
-msgid "Size"
-msgstr "Mida"
-
 #: components/theme/View/ImageView
 # defaultMessage: Size: {size}
 msgid "Size: {size}"
 msgstr "Mida: {size}"
+
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Small
+msgid "Small"
+msgstr ""
 
 #: error
 # defaultMessage: Sorry, something went wrong with your request
@@ -2649,6 +2550,7 @@ msgid "Sort on options"
 msgstr "Ordena les opcions"
 
 #: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Image/schema
 # defaultMessage: Source
 msgid "Source"
 msgstr "Origen"
@@ -2686,11 +2588,6 @@ msgstr "Inicia el restabliment de la contrasenya"
 msgid "State"
 msgstr "Estat"
 
-#: components/manage/Controlpanels/Rules/Rules
-# defaultMessage: Status
-msgid "Status"
-msgstr ""
-
 #: components/manage/Multilingual/CompareLanguages
 # defaultMessage: Stop compare
 msgid "Stop compare"
@@ -2720,15 +2617,10 @@ msgstr "Assumpte"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
-#: components/manage/Controlpanels/Rules/AddRule
-#: components/manage/Controlpanels/Rules/ConfigureRule
-#: components/manage/Controlpanels/Rules/EditRule
-#: components/manage/Controlpanels/Rules/Rules
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
-#: components/manage/Rules/Rules
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Success
@@ -2750,7 +2642,8 @@ msgstr "Canvia a"
 msgid "Table"
 msgstr "Taula"
 
-#: components/manage/Blocks/ToC/View
+#: components/manage/Blocks/ToC/variations/DefaultTocRenderer
+#: components/manage/Blocks/ToC/variations/HorizontalMenu
 # defaultMessage: Table of Contents
 msgid "Table of Contents"
 msgstr "Taula de continguts"
@@ -2789,6 +2682,7 @@ msgstr "Text"
 #: components/theme/ConnectionRefused/ConnectionRefused
 #: components/theme/CorsError/CorsError
 #: components/theme/NotFound/NotFound
+#: components/theme/RequestTimeout/RequestTimeout
 #: components/theme/Unauthorized/Unauthorized
 # defaultMessage: Thank you.
 msgid "Thank you."
@@ -2803,6 +2697,11 @@ msgstr "El Gestor de bases de dades us permet veure la informació d'estat de la
 # defaultMessage: The URL for your external home page, if you have one.
 msgid "The URL for your external home page, if you have one."
 msgstr "L'URL de la vostra pàgina d'inici externa, si en teniu."
+
+#: components/theme/RequestTimeout/RequestTimeout
+# defaultMessage: The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again.
+msgid "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
+msgstr ""
 
 #: components/theme/ConnectionRefused/ConnectionRefused
 # defaultMessage: The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable.
@@ -2823,11 +2722,6 @@ msgstr "El servidor backend del vostre lloc web no respon, demanem disculpes per
 # defaultMessage: The button presence disables the live search, the query is issued when you press ENTER
 msgid "The button presence disables the live search, the query is issued when you press ENTER"
 msgstr "La presència del botó desactiva la cerca en directe, la consulta s'emet quan premeu INTRO"
-
-#: components/manage/Rules/Rules
-# defaultMessage: The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones.
-msgid "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
-msgstr ""
 
 #: components/manage/Contents/Contents
 # defaultMessage: The item could not be deleted.
@@ -2909,11 +2803,6 @@ msgstr "Aquest nom es mostrarà a l'URL."
 # defaultMessage: This page does not seem to exist…
 msgid "This page does not seem to exist…"
 msgstr "Sembla que aquesta pàgina no existeix..."
-
-#: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: This rule is assigned to the following locations:
-msgid "This rule is assigned to the following locations:"
-msgstr ""
 
 #: components/manage/Widgets/DatetimeWidget
 # defaultMessage: Time
@@ -3006,16 +2895,6 @@ msgstr "Escriu el títol…"
 msgid "UID"
 msgstr "UID"
 
-#: components/manage/Rules/Rules
-# defaultMessage: Unassign
-msgid "Unassign"
-msgstr ""
-
-#: components/manage/Rules/Rules
-# defaultMessage: Unassigned
-msgid "Unassigned"
-msgstr ""
-
 #: components/theme/Unauthorized/Unauthorized
 # defaultMessage: Unauthorized
 msgid "Unauthorized"
@@ -3107,17 +2986,6 @@ msgstr "Carregant fitxers"
 msgid "Uploading image"
 msgstr "S'està carregant la imatge"
 
-#: components/manage/Controlpanels/Rules/AddRule
-#: components/manage/Controlpanels/Rules/EditRule
-# defaultMessage: Use the form below to define the new content rule
-msgid "Use the form below to define the new content rule"
-msgstr ""
-
-#: components/manage/Controlpanels/Rules/Rules
-# defaultMessage: Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu.
-msgid "Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu."
-msgstr ""
-
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
@@ -3129,6 +2997,17 @@ msgstr "S'utilitza per a l'accés programàtic al conjunt de camps."
 # defaultMessage: User
 msgid "User"
 msgstr "Usuari"
+
+#: components/manage/Controlpanels/Controlpanels
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Membership
+msgid "User Group Membership"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Settings
+msgid "User Group Settings"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: User created
@@ -3172,12 +3051,13 @@ msgstr "Variació"
 msgid "Version Overview"
 msgstr "Visió general de la versió"
 
+#: components/manage/Blocks/Video/schema
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Video
 msgid "Video"
 msgstr "Vídeo"
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Video URL
 msgid "Video URL"
 msgstr "URL del vídeo"
@@ -3277,29 +3157,6 @@ msgstr "Quan"
 msgid "When this date is reached, the content will nolonger be visible in listings and searches."
 msgstr "Quan s'arribi a aquesta data, el contingut ja no serà visible a les llistes i cerques."
 
-#: components/manage/Controlpanels/Rules/Rules
-# defaultMessage: Whether or not content rules should be disabled globally. If this is selected, no rules will be executed anywhere in the portal.
-msgid "Whether or not content rules should be disabled globally. If this is selected, no rules will be executed anywhere in the portal."
-msgstr ""
-
-#: components/manage/Controlpanels/Rules/AddRule
-#: components/manage/Controlpanels/Rules/EditRule
-# defaultMessage: Whether or not execution of further rules should stop after this rule is executed
-msgid "Whether or not execution of further rules should stop after this rule is executed"
-msgstr ""
-
-#: components/manage/Controlpanels/Rules/AddRule
-#: components/manage/Controlpanels/Rules/EditRule
-# defaultMessage: Whether or not other rules should be triggered by the actions launched by this rule. Activate this only if you are sure this won't create infinite loops
-msgid "Whether or not other rules should be triggered by the actions launched by this rule. Activate this only if you are sure this won't create infinite loops"
-msgstr ""
-
-#: components/manage/Controlpanels/Rules/AddRule
-#: components/manage/Controlpanels/Rules/EditRule
-# defaultMessage: Whether or not the rule is currently enabled
-msgid "Whether or not the rule is currently enabled"
-msgstr ""
-
 #: components/manage/History/History
 # defaultMessage: Who
 msgid "Who"
@@ -3326,6 +3183,7 @@ msgid "Yearly"
 msgstr "Anualment"
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Yes
 msgid "Yes"

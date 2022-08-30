@@ -1,6 +1,6 @@
+import { GET_NAVIGATION } from '@plone/volto/constants/ActionTypes';
 import config from '@plone/volto/registry';
 import navigation from './navigation';
-import { GET_NAVIGATION } from '@plone/volto/constants/ActionTypes';
 
 const { settings } = config;
 
@@ -35,6 +35,8 @@ describe('Navigation reducer', () => {
           items: [
             {
               title: 'Welcome to Plone!',
+              description:
+                'Congratulations! You have successfully installed Plone.',
               '@id': `${settings.apiPath}/front-page`,
             },
           ],
@@ -45,6 +47,8 @@ describe('Navigation reducer', () => {
       items: [
         {
           title: 'Welcome to Plone!',
+          description:
+            'Congratulations! You have successfully installed Plone.',
           url: '/front-page',
         },
       ],
@@ -61,14 +65,18 @@ describe('Navigation reducer', () => {
           items: [
             {
               title: 'Welcome to Plone!',
+              description:
+                'Congratulations! You have successfully installed Plone.',
               '@id': `${settings.apiPath}/front-page`,
             },
             {
               title: 'Folder1',
+              description: 'Folder description',
               '@id': `${settings.apiPath}/folder1`,
               items: [
                 {
                   title: 'FolderInFolder1',
+                  description: 'Sub-folder description',
                   '@id': `${settings.apiPath}/folderinfolder1`,
                 },
               ],
@@ -81,14 +89,18 @@ describe('Navigation reducer', () => {
       items: [
         {
           title: 'Welcome to Plone!',
+          description:
+            'Congratulations! You have successfully installed Plone.',
           url: '/front-page',
         },
         {
           title: 'Folder1',
+          description: 'Folder description',
           url: '/folder1',
           items: [
             {
               title: 'FolderInFolder1',
+              description: 'Sub-folder description',
               url: '/folderinfolder1',
             },
           ],

@@ -257,7 +257,7 @@ class Login extends Component {
                       )}
                       <Grid.Column stretched width="12">
                         <p className="help">
-                          <Link to="/password-reset">
+                          <Link to="/passwordreset">
                             {this.props.intl.formatMessage(
                               messages.forgotPassword,
                             )}
@@ -316,8 +316,8 @@ export default compose(
       returnUrl:
         qs.parse(props.location.search).return_url ||
         props.location.pathname
-          .replace(/\/login$/, '')
-          .replace(/\/logout$/, '') ||
+          .replace(/\/login\/?$/, '')
+          .replace(/\/logout\/?$/, '') ||
         '/',
     }),
     { login },

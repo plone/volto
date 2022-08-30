@@ -27,9 +27,7 @@ describe('Working Copy Tests - Cancelling', () => {
 
     // When I change the title of the working copy and save it
     cy.findByLabelText('Edit').click();
-    cy.get('.documentFirstHeading > .public-DraftStyleDefault-block')
-      .clear()
-      .type('New title');
+    cy.clearSlateTitle().type('New title');
     cy.get('#toolbar-save').click();
 
     // and I cancel the changes of the working copy

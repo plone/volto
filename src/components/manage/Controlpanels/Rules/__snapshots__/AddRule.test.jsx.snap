@@ -72,7 +72,7 @@ exports[`AddRule renders rules add interface 1`] = `
                   className="column"
                 >
                   <div
-                    className="mocked-choices-widget"
+                    className="mocked-default-widget"
                     id="mocked-field-undefined"
                   >
                     Triggering event
@@ -108,7 +108,6 @@ exports[`AddRule renders rules add interface 1`] = `
                 readOnly={true}
                 tabIndex={0}
                 type="checkbox"
-                value=""
               />
               <label>
                 Enabled
@@ -152,7 +151,6 @@ exports[`AddRule renders rules add interface 1`] = `
                 readOnly={true}
                 tabIndex={0}
                 type="checkbox"
-                value=""
               />
               <label>
                 Stop Executing rules
@@ -196,7 +194,6 @@ exports[`AddRule renders rules add interface 1`] = `
                 readOnly={true}
                 tabIndex={0}
                 type="checkbox"
-                value=""
               />
               <label>
                 Cascading rule
@@ -232,6 +229,9 @@ exports[`AddRule renders rules add interface 1`] = `
             Cancel
           </button>
         </div>
+        <div
+          className="ui segment"
+        />
       </div>
     </article>
   </div>

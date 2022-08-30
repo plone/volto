@@ -34,6 +34,18 @@ const messages = defineMessages({
     id: 'Version Overview',
     defaultMessage: 'Version Overview',
   },
+  general: {
+    id: 'General',
+    defaultMessage: 'General',
+  },
+  addonconfiguration: {
+    id: 'Add-on Configuration',
+    defaultMessage: 'Add-on Configuration',
+  },
+  content: {
+    id: 'Content',
+    defaultMessage: 'Content',
+  },
   moderatecomments: {
     id: 'Moderate Comments',
     defaultMessage: 'Moderate Comments',
@@ -49,6 +61,18 @@ const messages = defineMessages({
   groups: {
     id: 'Groups',
     defaultMessage: 'Groups',
+  },
+  addons: {
+    id: 'Add-Ons',
+    defaultMessage: 'Add-Ons',
+  },
+  database: {
+    id: 'Database',
+    defaultMessage: 'Database',
+  },
+  usergroupmemberbership: {
+    id: 'User Group Membership',
+    defaultMessage: 'User Group Membership',
   },
 });
 
@@ -123,17 +147,27 @@ class Controlpanels extends Component {
       return <Error error={this.state.error} />;
     }
 
+    let customcontrolpanels = config.settings.controlpanels
+      ? config.settings.controlpanels.map((el) => {
+          el.group =
+            this.props.intl.formatMessage({
+              id: el.group,
+              defaultMessage: el.group,
+            }) || el.group;
+          return el;
+        })
+      : [];
     const controlpanels = map(
-      concat(this.props.controlpanels, [
+      concat(this.props.controlpanels, customcontrolpanels, [
         {
           '@id': '/addons',
-          group: 'General',
-          title: 'Add-Ons',
+          group: this.props.intl.formatMessage(messages.general),
+          title: this.props.intl.formatMessage(messages.addons),
         },
         {
           '@id': '/database',
-          group: 'General',
-          title: 'Database',
+          group: this.props.intl.formatMessage(messages.general),
+          title: this.props.intl.formatMessage(messages.database),
         },
         {
           '@id': '/rules',
@@ -142,17 +176,22 @@ class Controlpanels extends Component {
         },
         {
           '@id': '/moderate-comments',
-          group: 'Content',
+          group: this.props.intl.formatMessage(messages.content),
           title: this.props.intl.formatMessage(messages.moderatecomments),
         },
         {
           '@id': '/users',
-          group: 'Users and Groups',
+          group: this.props.intl.formatMessage(messages.usersandgroups),
           title: this.props.intl.formatMessage(messages.users),
         },
         {
+          '@id': '/usergroupmembership',
+          group: this.props.intl.formatMessage(messages.usersandgroups),
+          title: this.props.intl.formatMessage(messages.usergroupmemberbership),
+        },
+        {
           '@id': '/groups',
-          group: 'Users and Groups',
+          group: this.props.intl.formatMessage(messages.usersandgroups),
           title: this.props.intl.formatMessage(messages.groups),
         },
       ]),
