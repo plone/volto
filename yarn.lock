@@ -2346,7 +2346,7 @@
   dependencies:
     "@octokit/openapi-types" "^12.10.0"
 
-"@plone/scripts@1.6.0":
+"@plone/scripts@*":
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/@plone/scripts/-/scripts-1.6.0.tgz#1288e42dd1e5cbbe2feafd72ce31ff95dd2a76a5"
   integrity sha512-Vl7JrvZA6tpD29qKpsrTogcakAq1nQOgYEYj3WJBKBGGRymuZi1Xj8hQOfmpqlDZiORlkYws9jCilwEYb5V7sA==

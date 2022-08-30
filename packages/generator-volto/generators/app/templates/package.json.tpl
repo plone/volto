@@ -138,13 +138,10 @@
   },
   "dependencies": <%- dependencies %>,
   "devDependencies": {
-    "babel-preset-razzle": "^4",
     "eslint-plugin-prettier": "3.1.3",
     "jest-junit": "8.0.0",
     "mrs-developer": "*",
-    "postcss": "8.3.11",
     "prettier": "2.0.5",
-    "razzle": "^4",
     "@storybook/addon-actions": "^6.3.0",
     "@storybook/addon-controls": "6.3.0",
     "@storybook/addon-essentials": "^6.3.0",
