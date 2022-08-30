@@ -102,7 +102,7 @@ See https://docs.voltocms.com/upgrade-guide/ for more information. @sneridagh
 
 ### Feature
 
-- Adding `Undo controlpanel` in the controlpanels, using it undone is possible on the transactions. @MdSahil-oss
+- Added the `Undo controlpanel` to the controlpanels which can be used to undo transactions. @MdSahil-oss
 
 ### Bugfix
 

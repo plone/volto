@@ -603,7 +603,7 @@ class UndoControlpanel extends Component {
               />
             </Segment>
             {this.state.isTransactionsNotFound ? (
-              <Segment className="primary">
+              <Segment>
                 <FormattedMessage
                   id="No Transactions Found"
                   defaultMessage="No transactions found"
