@@ -131,7 +131,6 @@ export default function controlPanelRule(state = initialState, action = {}) {
         },
       };
     case `${GETCONDITION_CONTROLPANEL_RULE}_SUCCESS`:
-      // console.log(action.result, 'get condition result');
       return {
         ...state,
         condition: action.result,

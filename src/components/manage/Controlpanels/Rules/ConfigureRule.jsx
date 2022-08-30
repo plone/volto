@@ -110,7 +110,9 @@ class ConfigureRule extends Component {
     this.handleConditionAdd = this.handleConditionAdd.bind(this);
     this.handleActionAdd = this.handleActionAdd.bind(this);
     this.openEditCondition = this.openEditCondition.bind(this);
-    this.handleEditCondition = this.handleEditCondition(this);
+    this.openEditAction = this.openEditAction.bind(this);
+    this.handleEditCondition = this.handleEditCondition.bind(this);
+    this.handleEditAction = this.handleEditAction.bind(this);
 
     this.state = {
       isClient: false,
@@ -119,6 +121,8 @@ class ConfigureRule extends Component {
       selActionToAdd: '',
       selConditionToEdit: '',
       selActionToEdit: '',
+      conditionFormData: '',
+      actionFormData: '',
     };
   }
 
@@ -142,14 +146,38 @@ class ConfigureRule extends Component {
    */
   componentDidUpdate(prevProps, prevState) {
     if (
-      this.state.selConditionToEdit !== '' &&
+      this.state.selConditionToEdit &&
       prevState.selConditionToEdit !== this.state.selConditionToEdit
     ) {
       this.props.getCondition(
         getBaseUrl(this.props.pathname),
         this.props?.match?.params?.id,
-        this.state.selConditionToEdit,
+        this.state.selConditionToEdit.idx,
       );
+    }
+    if (
+      this.props?.rule?.condition &&
+      this.props?.rule?.condition !== prevProps?.rule.condition
+    ) {
+      const conditionFormData = this.props?.rule?.condition;
+      this.setState({ conditionFormData });
+    }
+    if (
+      this.state.selActionToEdit &&
+      prevState.selActionToEdit !== this.state.selActionToEdit
+    ) {
+      this.props.getAction(
+        getBaseUrl(this.props.pathname),
+        this.props?.match?.params?.id,
+        this.state.selActionToEdit.idx,
+      );
+    }
+    if (
+      this.props?.rule?.action &&
+      this.props?.rule?.action !== prevProps?.rule.action
+    ) {
+      const actionFormData = this.props?.rule?.action;
+      this.setState({ actionFormData });
     }
   }
 
@@ -252,15 +280,32 @@ class ConfigureRule extends Component {
    * @returns {undefined}
    */
   handleEditCondition(val) {
-    //const ruleId = this.props?.match?.params?.id;
-    // if (this.state.selConditionToEdit) {
-    //   this.props.editCondition(
-    //     getBaseUrl(this.props.pathname),
-    //     ruleId,
-    //     val,
-    //     this.state.selConditionToEdit,
-    //   );
-    // }
+    const ruleId = this.props?.match?.params?.id;
+    if (this.state.selConditionToEdit) {
+      this.props.editCondition(
+        getBaseUrl(this.props.pathname),
+        ruleId,
+        val,
+        this.state.selConditionToEdit.idx,
+      );
+    }
+  }
+
+  /**
+   * Edit action handler
+   * @method handleEditAction
+   * @returns {undefined}
+   */
+  handleEditAction(val) {
+    const ruleId = this.props?.match?.params?.id;
+    if (this.state.selActionToEdit) {
+      this.props.editAction(
+        getBaseUrl(this.props.pathname),
+        ruleId,
+        val,
+        this.state.selActionToEdit.idx,
+      );
+    }
   }
 
   /**
@@ -269,8 +314,24 @@ class ConfigureRule extends Component {
    * @returns {undefined}
    */
   openEditCondition(cond_id) {
-    // console.log('shoud edit condition:', cond_id);
-    this.setState({ selConditionToEdit: cond_id });
+    this.setState({
+      selConditionToEdit: cond_id,
+      openModal: true,
+      selActionToEdit: '',
+    });
+  }
+
+  /**
+   * open modal edit action handler
+   * @method openEditAction
+   * @returns {undefined}
+   */
+  openEditAction(action_id) {
+    this.setState({
+      selActionToEdit: action_id,
+      openModal: true,
+      selConditionToEdit: '',
+    });
   }
 
   /**
@@ -347,7 +408,6 @@ class ConfigureRule extends Component {
     const actions_options = addable_actions.map((act) => {
       return { key: act.title, text: act.title, value: act };
     });
-
     return (
       <div id="page-rule-configure">
         <Helmet title={this.props.intl.formatMessage(messages.configRule)} />
@@ -398,9 +458,7 @@ class ConfigureRule extends Component {
                                 </Card.Content>
                                 <Card.Content extra>
                                   <Button
-                                    onClick={() =>
-                                      this.openEditCondition(cond.idx)
-                                    }
+                                    onClick={() => this.openEditCondition(cond)}
                                     compact
                                     size="tiny"
                                     primary
@@ -495,7 +553,12 @@ class ConfigureRule extends Component {
                                   </Card.Description>
                                 </Card.Content>
                                 <Card.Content extra>
-                                  <Button compact size="tiny" primary>
+                                  <Button
+                                    onClick={() => this.openEditAction(action)}
+                                    compact
+                                    size="tiny"
+                                    primary
+                                  >
                                     Edit
                                   </Button>
                                   <Button
@@ -591,33 +654,62 @@ class ConfigureRule extends Component {
         {this.state.selConditionToAdd && (
           <VariableModal
             open={this.state.openModal}
-            onClose={() => this.setState({ openModal: false })}
+            onClose={() =>
+              this.setState({ openModal: false, selConditionToAdd: '' })
+            }
             onOpen={() => this.setState({ openModal: true })}
-            onSave={this.handleConditionAdd}
+            onSave={(v) => this.handleConditionAdd(v)}
             value={this.state.selConditionToAdd}
             type="Condition"
+            action="add"
           />
         )}
         {this.state.selActionToAdd && (
           <VariableModal
             open={this.state.openModal}
-            onClose={() => this.setState({ openModal: false })}
+            onClose={() =>
+              this.setState({ openModal: false, selActionToAdd: '' })
+            }
             onOpen={() => this.setState({ openModal: true })}
-            onSave={this.handleActionAdd}
+            onSave={(v) => this.handleActionAdd(v)}
             value={this.state.selActionToAdd}
             type="Action"
+            action="add"
           />
         )}
-        {this.state.selConditionToEdit !== '' && (
+        {this.state.selConditionToEdit && this.state.conditionFormData && (
           <VariableModal
             open={this.state.openModal}
             onClose={() =>
-              this.setState({ openModal: false, selConditionToEdit: '' })
+              this.setState({
+                openModal: false,
+                selConditionToEdit: '',
+                conditionFormData: '',
+              })
             }
             onOpen={() => this.setState({ openModal: true })}
-            onSave={this.handleEditCondition}
+            onSave={(v) => this.handleEditCondition(v)}
             value={this.state.selConditionToEdit}
+            formData={this.state.conditionFormData}
             type="Condition"
+            action="edit"
+          />
+        )}
+        {this.state.selActionToEdit && this.state.actionFormData && (
+          <VariableModal
+            open={this.state.openModal}
+            onClose={() =>
+              this.setState({
+                openModal: false,
+                selActionToEdit: '',
+                actionFormData: '',
+              })
+            }
+            onOpen={() => this.setState({ openModal: true })}
+            onSave={this.handleEditAction}
+            value={this.state.selActionToEdit}
+            formData={this.state.actionFormData}
+            type="Action"
             action="edit"
           />
         )}
