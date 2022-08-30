@@ -1,22 +1,13 @@
 # Translation of plone.pot to German
-# Jan Ulrich Hasecke <jan.ulrich@hasecke.com>, 2003-2010.
-# Simon Eisenmann <simon@struktur.de>, 2003.
-# Hanno Schlichting <plone@hannosch.info>, 2003-2008.
-# Dominik Bittl <dominik@umount.org>, 2005.
-# Christian Ullrich <chris@chrullrich.de>, 2005.
-# Thomas Lotze <tl@gocept.com>, 2005-2008.
-# Sven Deichmann <deichmann@werkbank.com>, 2008-2010.
-# Harald Friessnegger <harald@webmeisterei.com>, 2011.
-# Andreas Jung <info@zopyx.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
 "PO-Revision-Date: 2016-10-22 16:41-0500\n"
-"Last-Translator: German <plone-i18n@lists.sf.net>\n"
+"Last-Translator: German <https://github.com/plone/volto/issues>\n"
 "Language: de\n"
-"Language-Team: German <plone-i18n@lists.sf.net>\n"
+"Language-Team: German <https://github.com/plone/volto/issues>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -131,6 +122,11 @@ msgstr "Benutzer hinzufügen"
 msgid "Add a description…"
 msgstr "Beschreibung hinzufügen…"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Action added
+msgid "Add action"
+msgstr ""
+
 #: components/manage/BlockChooser/BlockChooserButton
 # defaultMessage: Add block
 msgid "Add block"
@@ -140,6 +136,11 @@ msgstr "Block hinzufügen"
 # defaultMessage: Add block…
 msgid "Add block…"
 msgstr "Block hinzufügen"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Condition added
+msgid "Add condition"
+msgstr ""
 
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Add content rule
@@ -191,6 +192,11 @@ msgstr "Neuen Benutzer hinzufügen"
 msgid "Add to Groups"
 msgstr "Zu Gruppe hinzufügen"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add users to group
+msgid "Add users to group"
+msgstr "Füge Benutzer zu Gruppe hinzu"
+
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Add term
 msgid "Add vocabulary term"
@@ -200,6 +206,21 @@ msgstr "Füge neuen Term hinzu"
 # defaultMessage: Add {type}
 msgid "Add {type}"
 msgstr "{type} hinzufügen"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Add-Ons
+msgid "Add-Ons"
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Add-on Configuration
+msgid "Add-on Configuration"
+msgstr "Konfiguration von Erweiterungen"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Add-ons
+msgid "Add-ons"
+msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Add-ons Settings
@@ -217,10 +238,10 @@ msgid "Additional date"
 msgstr "Zusätzliches Datum"
 
 #: components/manage/Blocks/Block/StylesSchema
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Maps/MapsSidebar
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Maps/schema
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Alignment
 msgid "Alignment"
 msgstr "Ausrichtung"
@@ -235,18 +256,19 @@ msgstr "Alle"
 msgid "Alphabetically"
 msgstr "alphabetisch"
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/schema
 # defaultMessage: Alt text
 msgid "Alt text"
 msgstr "Alternative Text"
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 # defaultMessage: Leave empty if the image is purely decorative.
 msgid "Alt text hint"
 msgstr ""
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 # defaultMessage: Describe the purpose of the image.
 msgid "Alt text hint link text"
 msgstr ""
@@ -417,7 +439,6 @@ msgstr "Abbrechen"
 msgid "Cell"
 msgstr "Zelle"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Center
@@ -562,7 +583,6 @@ msgstr "Vergleichen"
 msgid "Condition: "
 msgstr ""
 
-#: components/manage/Controlpanels/Rules/ConfigureRule
 #: components/manage/Controlpanels/Rules/EditRule
 # defaultMessage: Configure Content Rule
 msgid "Configure Content Rule"
@@ -571,6 +591,11 @@ msgstr ""
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Configure Content Rule: {title}
 msgid "Configure Content Rule: {title}"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Configure content rule
+msgid "Configure content rule"
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
@@ -598,6 +623,11 @@ msgstr "Kontaktformular"
 # defaultMessage: Contained items
 msgid "Contained items"
 msgstr "Enthaltene Elemente"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Content
+msgid "Content"
+msgstr "Inhalt"
 
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Content Rule
@@ -720,6 +750,11 @@ msgstr "Blöcke ausschneiden"
 msgid "Daily"
 msgstr "Täglich"
 
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Database
+msgid "Database"
+msgstr ""
+
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Database Information
 msgid "Database Information"
@@ -801,6 +836,11 @@ msgstr "Inhaltstype löschen"
 msgid "Delete User"
 msgstr "Benutzer löschen"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Action deleted
+msgid "Delete action"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: undefined
 msgid "Delete blocks"
@@ -811,10 +851,20 @@ msgstr "Blöcke löschen"
 msgid "Delete col"
 msgstr "Spalte löschen"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Condition deleted
+msgid "Delete condition"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Delete row
 msgid "Delete row"
 msgstr "Zeile löschen"
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Deleted
+msgid "Deleted"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Depth
@@ -948,6 +998,7 @@ msgstr "E-Mail-Adressen stimmen nicht überein."
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
@@ -1005,11 +1056,6 @@ msgstr "E-Mail versendet"
 # defaultMessage: Embed code error, please follow the instructions and try again.
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "Fehler beim Einbinden des Google Maps Codes. Bitte lesen Sie die Anweisungen und stellen Sie sicher dass Sie den korrekten Code verwenden."
-
-#: components/manage/Blocks/Maps/View
-# defaultMessage: Embeded Google Maps
-msgid "Embeded Google Maps"
-msgstr "Eingebettete Google Maps Karte"
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Empty object list
@@ -1146,7 +1192,6 @@ msgstr "Ablaufdatum"
 msgid "Expired"
 msgstr "Abgelaufen"
 
-#: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: External URL
 msgid "External URL"
@@ -1206,6 +1251,11 @@ msgstr "Dateiname"
 # defaultMessage: Filter Rules:
 msgid "Filter Rules:"
 msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter users by groups
+msgid "Filter users by groups"
+msgstr "Filtere Benutzer via Gruppenmitgliedschaft"
 
 #: components/manage/Contents/Contents
 # defaultMessage: Filter…
@@ -1268,6 +1318,11 @@ msgstr "Name"
 # defaultMessage: GNU GPL license
 msgid "GNU GPL license"
 msgstr "GNU-GPL-Lizenz"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: General
+msgid "General"
+msgstr "Allgemein"
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Global role
@@ -1398,6 +1453,7 @@ msgstr "Wenn Sie sicher sind, dass Sie die richtige Adresse eingegeben haben, ko
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Image
 msgid "Image"
@@ -1407,6 +1463,11 @@ msgstr "Bild"
 # defaultMessage: Image gallery
 msgid "Image gallery"
 msgstr "Bildergalerie"
+
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Image size
+msgid "Image size"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Include this occurence
@@ -1420,6 +1481,11 @@ msgstr "Datum einbeziehen"
 # defaultMessage: Info
 msgid "Info"
 msgstr "Information"
+
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+# defaultMessage: You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to user group settings. See the button on the left.
+msgid "InfoUserGroupSettings"
+msgstr "Sie haben die Option 'viele Benutzer' oder 'viele Gruppen' gewählt. Deshalb erwartet das Panel die Eingabe eines Suchwerts und die Auswahl eines Gruppen-Filters um Benutzer und Gruppen zu zeigen. Wenn Sie im Panel umgehend alle Benutzer und Gruppen sehen möchten, dann wechseln Sie bitte zu den Benutzer- und Gruppeneinstellungen und ändern die Einstellungen. Links finden Sie einen Link."
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Inherit permissions from higher levels
@@ -1465,6 +1531,11 @@ msgstr "Installiert"
 # defaultMessage: Installed version
 msgid "Installed version"
 msgstr "Installierte Version"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Installing a third party add-on
+msgid "Installing a third party add-on"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: days
@@ -1548,6 +1619,11 @@ msgstr "Sprache"
 msgid "Language independent field."
 msgstr ""
 
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Large
+msgid "Large"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Last
 msgid "Last"
@@ -1578,7 +1654,6 @@ msgstr "Layout"
 msgid "Lead Image"
 msgstr "Lead-Bild"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Left
@@ -1603,11 +1678,9 @@ msgid "Link title"
 msgstr "Linktitel"
 
 #: components/manage/Blocks/HeroImageLeft/schema
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
-#: components/manage/Blocks/Maps/MapsSidebar
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Link to
 msgid "Link to"
 msgstr "Link auf"
@@ -1690,11 +1763,12 @@ msgid "Manage translations for {title}"
 msgstr "Übersetzungen für {} verwalten"
 
 #: components/manage/Blocks/Maps/MapsSidebar
-# defaultMessage: Map
-msgid "Map"
-msgstr "Karte"
+#: components/manage/Blocks/Maps/schema
+# defaultMessage: Maps
+msgid "Maps"
+msgstr ""
 
-#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Maps/schema
 # defaultMessage: Maps URL
 msgid "Maps URL"
 msgstr "Karten URL"
@@ -1708,6 +1782,11 @@ msgstr "Maximale Länge ist {len}."
 # defaultMessage: Maximum value is {len}.
 msgid "Maximum value is {len}."
 msgstr "Maximaler Wert ist {len}"
+
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Medium
+msgid "Medium"
+msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Message
@@ -1755,6 +1834,11 @@ msgstr "Monatlich"
 msgid "More"
 msgstr "Mehr"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Move down
+msgid "Move down"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Move to bottom of folder
 msgid "Move to bottom of folder"
@@ -1764,6 +1848,11 @@ msgstr "Ans Ende verschieben"
 # defaultMessage: Move to top of folder
 msgid "Move to top of folder"
 msgstr "An den Anfang verschieben"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Move up
+msgid "Move up"
+msgstr ""
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Multiple choices?
@@ -1808,20 +1897,31 @@ msgid "News Item"
 msgstr "Nachricht"
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: No
 msgid "No"
 msgstr "Nein"
+
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: No Video selected
+msgid "No Video selected"
+msgstr ""
 
 #: components/manage/Controlpanels/VersionOverview
 # defaultMessage: No addons found
 msgid "No addons found"
 msgstr "Keine Add-ons installiert."
 
+#: components/theme/RequestTimeout/RequestTimeout
+# defaultMessage: There is no connection to the server, due to a timeout o no network connection.
+msgid "No connection to the server"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected
 msgid "No image selected"
-msgstr "Kein Bild ausgewählt"
+msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: No image set in Lead Image content field
@@ -1884,6 +1984,11 @@ msgstr "Keine Auswahl"
 msgid "No uninstall profile"
 msgstr "Kein Deinstallationsprofil"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: No user found
+msgid "No user found"
+msgstr "Kein Benutzer gefunden"
+
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 #: components/manage/Widgets/SelectUtils
@@ -1891,11 +1996,6 @@ msgstr "Kein Deinstallationsprofil"
 # defaultMessage: No value
 msgid "No value"
 msgstr "Kein Wert"
-
-#: components/manage/Blocks/Video/VideoSidebar
-# defaultMessage: No video selected
-msgid "No video selected"
-msgstr "Kein Video ausgewählt"
 
 #: components/manage/Workflow/Workflow
 # defaultMessage: No workflow
@@ -1938,10 +2038,8 @@ msgstr "OK"
 msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed."
 msgstr "Nur Kleinbuchstaben (a-z) ohne Umlaute oder Sonderzeichen, Zahlen (0-9) und die beiden Zeichen "-" und "_" sind erlaubt."
 
-#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Maps/MapsSidebar
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr "In neuem Browser-Tab öffnen"
@@ -1956,7 +2054,6 @@ msgstr "Menü öffnen"
 msgid "Open object browser"
 msgstr "Objekt-Browser öffnen"
 
-#: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
 msgid "Origin"
@@ -2053,6 +2150,16 @@ msgstr "Bitte geben sie den Einbettungscode von Google Maps ein. Klicken Sie auf
 msgid "Please fill out the form below to set your password."
 msgstr "Bitte füllen Sie das unten stehende Formular aus, um Ihr Passwort neu zu setzen."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Please search for users or use the filters on the side.
+msgid "Please search for users or use the filters on the side."
+msgstr "Bitte verwenden Sie das Suchfeld oder die Filter um Benutzer anzuzeigen."
+
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+# defaultMessage: Please upgrade to plone.restapi >= 8.24.0.
+msgid "Please upgrade to plone.restapi >= 8.24.0."
+msgstr "Bitte upgraden auf plone.restapi >= 8.24.0."
+
 #: components/theme/Footer/Footer
 # defaultMessage: Plone Foundation
 msgid "Plone Foundation"
@@ -2099,7 +2206,7 @@ msgstr "Quellcode aufräumen"
 msgid "Preview"
 msgstr "Vorschau"
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Preview Image URL
 msgid "Preview Image URL"
 msgstr "URL Vorschaubild"
@@ -2204,6 +2311,11 @@ msgstr "Wiederkehrende Einstellung entfernen"
 msgid "Remove term"
 msgstr "Entferne Term"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Remove users from group
+msgid "Remove users from group"
+msgstr "Trage Benutzer aus Gruppe aus"
+
 #: components/manage/Toolbar/More
 # defaultMessage: Remove working copy
 msgid "Remove working copy"
@@ -2303,7 +2415,6 @@ msgstr "Arbeitsablauf"
 msgid "Richtext"
 msgstr "Richtext"
 
-#: components/manage/Blocks/Image/ImageSizeWidget
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 # defaultMessage: Right
@@ -2324,6 +2435,11 @@ msgstr "Rollen"
 # defaultMessage: Root
 msgid "Root"
 msgstr "Wurzel"
+
+#: components/manage/Controlpanels/Rules/AddRule
+# defaultMessage: Rule added
+msgid "Rule added"
+msgstr ""
 
 #: components/manage/Rules/Rules
 #: components/manage/Toolbar/More
@@ -2371,6 +2487,7 @@ msgstr "Aktualisierungen Schema"
 #: components/manage/Blocks/Search/layout/RightColumnFacets
 #: components/manage/Blocks/Search/layout/TopSideFacets
 #: components/manage/Blocks/Search/schema
+#: components/theme/Search/Search
 #: components/theme/SearchWidget/SearchWidget
 # defaultMessage: Search
 msgid "Search"
@@ -2555,6 +2672,11 @@ msgstr "Alle anzeigen"
 msgid "Show Replies"
 msgstr "Antworten anzeigen"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Show groups of users below
+msgid "Show groups of users below"
+msgstr "Zeige die Gruppenmitgliedschaften der unten gezeigten Benutzer"
+
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Show item
 msgid "Show item"
@@ -2610,22 +2732,22 @@ msgstr "Übersicht"
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: Site Setup
 msgid "Site Setup"
-msgstr "Seiteneinstellungen"
+msgstr "Systemeinstellungen"
 
 #: components/theme/Sitemap/Sitemap
 # defaultMessage: Sitemap
 msgid "Sitemap"
 msgstr "Sitemap"
 
-#: components/manage/Blocks/Image/ImageSidebar
-# defaultMessage: Size
-msgid "Size"
-msgstr "Größe"
-
 #: components/theme/View/ImageView
 # defaultMessage: Size: {size}
 msgid "Size: {size}"
 msgstr "Grösse: {size}"
+
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Small
+msgid "Small"
+msgstr ""
 
 #: error
 # defaultMessage: Sorry, something went wrong with your request
@@ -2655,6 +2777,7 @@ msgid "Sort on options"
 msgstr "Sortieroptionen"
 
 #: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Image/schema
 # defaultMessage: Source
 msgid "Source"
 msgstr "Quelle"
@@ -2756,7 +2879,8 @@ msgstr "Wechseln zu"
 msgid "Table"
 msgstr "Tabelle"
 
-#: components/manage/Blocks/ToC/View
+#: components/manage/Blocks/ToC/variations/DefaultTocRenderer
+#: components/manage/Blocks/ToC/variations/HorizontalMenu
 # defaultMessage: Table of Contents
 msgid "Table of Contents"
 msgstr "Inhaltsverzeichnis"
@@ -2795,6 +2919,7 @@ msgstr "Text"
 #: components/theme/ConnectionRefused/ConnectionRefused
 #: components/theme/CorsError/CorsError
 #: components/theme/NotFound/NotFound
+#: components/theme/RequestTimeout/RequestTimeout
 #: components/theme/Unauthorized/Unauthorized
 # defaultMessage: Thank you.
 msgid "Thank you."
@@ -2810,6 +2935,11 @@ msgstr "Der Datenbank-Manager zeigt Ihnen Status-Informationen zu der Datenbank"
 msgid "The URL for your external home page, if you have one."
 msgstr "Die URL Ihrer externen Homepage, sollten Sie eine besitzen."
 
+#: components/theme/RequestTimeout/RequestTimeout
+# defaultMessage: The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again.
+msgid "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
+msgstr ""
+
 #: components/theme/ConnectionRefused/ConnectionRefused
 # defaultMessage: The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable.
 msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
@@ -2823,7 +2953,7 @@ msgstr "Das Backend antwortet, allerdings sind ihre CORS HTTP Header nicht korre
 #: components/theme/CorsError/CorsError
 # defaultMessage: The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
 msgid "The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
-msgstr "Der Server antwortet nicht, wir entschuldigen uns für die Unanehmlichkeiten. Bitte versuchen Sie die Seite neu zu laden. Falls das Problem weiterhin besteht kontaktieren Sie bitte den Seitenbetreiber."
+msgstr "Der Server antwortet nicht, wir entschuldigen uns für die Unannehmlichkeiten. Bitte versuchen Sie die Seite neu zu laden. Falls das Problem weiterhin besteht kontaktieren Sie bitte den Seitenbetreiber."
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: The button presence disables the live search, the query is issued when you press ENTER
@@ -2939,6 +3069,12 @@ msgstr "Zeit"
 msgid "Title"
 msgstr "Titel"
 
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Title field error. Value not provided or already existing.
+msgid "Title field error. Value not provided or already existing."
+msgstr ""
+
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Total active and non-active objects
 msgid "Total active and non-active objects"
@@ -2979,6 +3115,12 @@ msgstr "Übersetzung verbunden"
 # defaultMessage: Translation linking removed
 msgid "Translation linking removed"
 msgstr "Verbindung zu Übersetzung gelöst"
+
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Triggering event field error. Please select a value
+msgid "Triggering event field error. Please select a value"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
@@ -3136,6 +3278,17 @@ msgstr "Wir für den programmierten Zugriff auf das Fieldset verwendet."
 msgid "User"
 msgstr "Benutzer"
 
+#: components/manage/Controlpanels/Controlpanels
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Membership
+msgid "User Group Membership"
+msgstr "Gruppenmitgliedschaften"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Settings
+msgid "User Group Settings"
+msgstr "Benutzer- und Gruppeneinstellungen"
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: User created
 msgid "User created"
@@ -3178,12 +3331,13 @@ msgstr "Variante"
 msgid "Version Overview"
 msgstr "Versionsübersicht"
 
+#: components/manage/Blocks/Video/schema
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Video
 msgid "Video"
 msgstr "Video"
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Video URL
 msgid "Video URL"
 msgstr "Video URL"
@@ -3236,7 +3390,7 @@ msgstr "Debug-Modus Warnung"
 #: components/theme/ConnectionRefused/ConnectionRefused
 # defaultMessage: We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later.
 msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
-msgstr "Entschuldigen Sie die Unanehmlichkeiten aber das Backend der Seite antwortet zur Zeit nicht."
+msgstr "Entschuldigen Sie die Unannehmlichkeiten aber das Backend der Seite antwortet zur Zeit nicht."
 
 #: components/theme/NotFound/NotFound
 # defaultMessage: We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for.
@@ -3246,7 +3400,7 @@ msgstr "Entschuldigung, aber die Webseite die Sie versucht haben zu erreichen is
 #: components/theme/Forbidden/Forbidden
 # defaultMessage: We apologize for the inconvenience, but you don't have permissions on this resource.
 msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
-msgstr "Entschuldigen Sie die Unanehmlichkeiten, aber Sie besitzen nicht die erforderlichen Rechte um diese Seite anzuzeigen."
+msgstr "Entschuldigen Sie die Unannehmlichkeiten, aber Sie besitzen nicht die erforderlichen Rechte um diese Seite anzuzeigen."
 
 #: components/manage/Preferences/PersonalInformation
 # defaultMessage: We will use this address if you need to recover your password
@@ -3332,6 +3486,7 @@ msgid "Yearly"
 msgstr "jährlich"
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Yes
 msgid "Yes"
@@ -3867,7 +4022,7 @@ msgstr "Externe Webseite besuchen"
 #: components/theme/Widgets/BooleanWidget
 # defaultMessage: Yes
 msgid "yes"
-msgstr ""
+msgstr "Ja"
 
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: {count, plural, one {Upload {count} file} other {Upload {count} files}}

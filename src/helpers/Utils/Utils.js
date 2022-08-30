@@ -1,4 +1,4 @@
-import { flatten, isEqual, isObject, transform } from 'lodash';
+import { cloneDeepWith, flatten, isEqual, isObject, transform } from 'lodash';
 import React from 'react';
 import { matchPath } from 'react-router';
 import config from '@plone/volto/registry';
@@ -280,4 +280,20 @@ export const slugify = (string) => {
     .toLowerCase()
     .replace(/[\s-]+/g, '_')
     .replace(/[^\w]+/g, '');
+};
+
+/**
+ * cloneDeep an object with support for JSX nodes on it
+ * Somehow, in a browser it fails with a "Illegal invocation" error
+ * but in node (Jest test) it doesn't. This does the trick.
+ * @param {object} object object to be cloned
+ * @returns {object} deep cloned object
+ */
+export const cloneDeepSchema = (object) => {
+  return cloneDeepWith(object, (value) => {
+    if (React.isValidElement(value)) {
+      // If a JSX valid element, just return it, do not try to deep clone it
+      return value;
+    }
+  });
 };
