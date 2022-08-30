@@ -125,6 +125,31 @@ NodeJS 12 is deprecated in Volto 13.
 Please update your projects to a NodeJS LTS version, where either 14 or 16 is supported at the moment of this writing.
 Version 16 is recommended.
 
+### Upgraded to Razzle 4
+
+Volto has upgraded from Razzle 3 to Razzle 4.
+
+A few updates may be needed in existing projects:
+
+1. Add the `cache` directory to `.gitignore`.
+2. If `package.json` includes scripts that run `razzle test` with the `--env=jest-environment-jsdom-sixteen` option, update them to use `--env=jsdom` instead.
+3. Update the `jest` configuration in `package.json` to replace the `jest-css-modules` transform:
+
+```diff
+"jest": {
+  "transform": {
+-     "^.+\\.css$": "jest-css-modules",
+-     "^.+\\.scss$": "jest-css-modules"
+  },
+  "moduleNameMapper": {
++     "\\.(css|less|scss|sass)$": "identity-obj-proxy"
+  }
+}
+```
+
+4. If you use custom Razzle plugins, update them to use the new format with multiple functions: https://razzlejs.org/docs/upgrade-guide#plugins (the old format still works, but is deprecated).
+5. If you have customized webpack loader configuration related to CSS, make sure it is updated to be compatible with PostCSS 8.
+
 ### Removed `date-fns` from build
 
 The `date-fns` library has been removed from Volto's dependencies.
