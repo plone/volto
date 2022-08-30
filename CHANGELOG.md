@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add clear formatting button to slate @robgietema
+
 ### Bugfix
 
 - Fix array widget translation @robgietema
