@@ -72,6 +72,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 
 ### Feature
 
+- support for many_users and many_groups flag in user controlpanel and group controlpanel @nileshgulia1
 - Show the content type of the content object you are adding/editing in the sidebar @robgietema
 - Remove soft hyphens from the title tag @davisagli
 
