@@ -290,6 +290,7 @@ class ContentTypeLayout extends Component {
   onDisableBlocksBehavior() {
     this.props.updateControlpanel(this.props.controlpanel['@id'], {
       [this.state.readOnlyBehavior]: false,
+      'volto.blocks.editable.layout': true,
     });
   }
 

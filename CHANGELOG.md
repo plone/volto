@@ -11,6 +11,7 @@
 ### Bugfix
 
 - Fix array widget translation @robgietema
+- Fix: TTW DX Layout disables IBlocks behavior and with it all the indexers and transformers @avoinea
 
 ### Internal
 
