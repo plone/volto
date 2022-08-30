@@ -18,13 +18,13 @@ const VariableModal = ({
   vocabularies,
   getVocabulary,
   onChange,
-  data,
+  action,
 }) => {
   const [vocabularyName, setVocabularyName] = React.useState('');
   const [inputSchema, setInputSchema] = React.useState('');
 
   const { addview = '' } = value;
-
+  // console.log('will edit', value);
   React.useEffect(() => {
     const detectedVocab = detectVocabulary(value.title);
     if (detectedVocab) {
@@ -33,6 +33,7 @@ const VariableModal = ({
       getVocabulary({ vocabNameOrURL: detectedVocab });
     }
     setInputSchema(setSchema(value.title));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value, getVocabulary, open]);
 
   const vocabularyOptions =

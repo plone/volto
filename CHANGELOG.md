@@ -51,6 +51,10 @@
 
 ## 16.0.0-alpha.4 (2022-05-22)
 
+### Feature
+
+- Added new components & interfaces for content-rules `Rules` control in Volto. Rules management in both controlpanel and object view. 
+
 ### Breaking
 
 - Removed `date-fns` from dependencies, this was in the build because `Cypress` depended on it. After the `Cypress` upgrade it no longer depends on it. If your project still depends on it, add it as a dependency of your project. @sneridagh

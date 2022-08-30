@@ -15,7 +15,11 @@ import {
   DELETECONDITION_CONTROLPANEL_RULE,
   DELETEACTION_CONTROLPANEL_RULE,
   ADDCONDITION_CONTROLPANEL_RULE,
+  EDITCONDITION_CONTROLPANEL_RULE,
+  GETCONDITION_CONTROLPANEL_RULE,
   ADDACTION_CONTROLPANEL_RULE,
+  GETACTION_CONTROLPANEL_RULE,
+  EDITACTION_CONTROLPANEL_RULE,
 } from '@plone/volto/constants/ActionTypes';
 
 /**
@@ -289,6 +293,39 @@ export function addCondition(url, rule, data) {
 }
 
 /**
+ * Edit rule condition function.
+ * @function editCondition
+ * @param {string} url Content url.
+ * @returns {Object} Edit rule condition action.
+ */
+export function editCondition(url, rule, data, condition_index) {
+  return {
+    type: EDITCONDITION_CONTROLPANEL_RULE,
+    request: {
+      op: 'post',
+      path: `${url}/@controlpanels/content-rules/${rule}/condition/${condition_index}`,
+      data,
+    },
+  };
+}
+
+/**
+ * Get rule condition function.
+ * @function getCondition
+ * @param {string} url Content url.
+ * @returns {Object} Get rule condition action.
+ */
+export function getCondition(url, rule, condition_index) {
+  return {
+    type: GETCONDITION_CONTROLPANEL_RULE,
+    request: {
+      op: 'get',
+      path: `${url}/@controlpanels/content-rules/${rule}/condition/${condition_index}`,
+    },
+  };
+}
+
+/**
  * Remove rule action function.
  * @function removeAction
  * @param {string} url Content url.
@@ -321,6 +358,39 @@ export function addAction(url, rule, data) {
   };
 }
 
+/**
+ * Edit rule action function.
+ * @function editAction
+ * @param {string} url Content url.
+ * @returns {Object} Edit rule action action.
+ */
+export function editAction(url, rule, data, action_index) {
+  return {
+    type: EDITACTION_CONTROLPANEL_RULE,
+    request: {
+      op: 'post',
+      path: `${url}/@controlpanels/content-rules/${rule}/action/${action_index}`,
+      data,
+    },
+  };
+}
+
+/**
+ * Get rule action function.
+ * @function getAction
+ * @param {string} url Content url.
+ * @returns {Object} Get rule action action.
+ */
+export function getAction(url, rule, action_index) {
+  return {
+    type: GETACTION_CONTROLPANEL_RULE,
+    request: {
+      op: 'get',
+      path: `${url}/@controlpanels/content-rules/${rule}/action/${action_index}`,
+    },
+  };
+}
+
 // add condition in configure panel ${url}/@controlpanels/content-rules/${idRule}/condition
 // edit condition in configure panel ${url}/@controlpanels/content-rules/${idRule}/condition/${condition-index}
 // delete condition in configure panel ${url}/@controlpanels/content-rules/${idRule}/condition/${condition-index} (del)
@@ -334,7 +404,3 @@ export function addAction(url, rule, data) {
 // ***moveup
 
 // edit action in configure panel ${url}/@controlpanels/content-rules/${idRule}/action/${action-index} (patch) + data = {"form.button.Move": "_move_up"}
-
-// ***vocabulary content types
-//         "@id": "http://localhost:55001/plone/@vocabularies/plone.app.vocabularies.ReallyUserFriendlyTypes",
-//         "title": "plone.app.vocabularies.ReallyUserFriendlyTypes"

@@ -12,6 +12,8 @@ import {
   UPACTION_CONTROLPANEL_RULE,
   DOWNACTION_CONTROLPANEL_RULE,
   ADDACTION_CONTROLPANEL_RULE,
+  GETACTION_CONTROLPANEL_RULE,
+  GETCONDITION_CONTROLPANEL_RULE,
 } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
@@ -45,12 +47,27 @@ const initialState = {
     loading: false,
     error: null,
   },
+  getcondition: {
+    loaded: false,
+    loading: false,
+    error: null,
+  },
   deleteaction: {
     loaded: false,
     loading: false,
     error: null,
   },
   addaction: {
+    loaded: false,
+    loading: false,
+    error: null,
+  },
+  getaction: {
+    loaded: false,
+    loading: false,
+    error: null,
+  },
+  editaction: {
     loaded: false,
     loading: false,
     error: null,
@@ -75,6 +92,9 @@ function getRequestKey(actionType) {
  * @param {Object} action Action to be handled.
  * @returns {Object} New state.
  */
+
+//  ,
+//   GETCONDITION_CONTROLPANEL_RULE,
 export default function controlPanelRule(state = initialState, action = {}) {
   switch (action.type) {
     case `${GET_CONTROLPANEL_RULE}_PENDING`:
@@ -90,6 +110,8 @@ export default function controlPanelRule(state = initialState, action = {}) {
     case `${UPACTION_CONTROLPANEL_RULE}_PENDING`:
     case `${DOWNACTION_CONTROLPANEL_RULE}_PENDING`:
     case `${ADDACTION_CONTROLPANEL_RULE}_PENDING`:
+    case `${GETACTION_CONTROLPANEL_RULE}_PENDING`:
+    case `${GETCONDITION_CONTROLPANEL_RULE}_PENDING`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
@@ -102,6 +124,27 @@ export default function controlPanelRule(state = initialState, action = {}) {
       return {
         ...state,
         item: action.result,
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: true,
+          error: null,
+        },
+      };
+    case `${GETCONDITION_CONTROLPANEL_RULE}_SUCCESS`:
+      // console.log(action.result, 'get condition result');
+      return {
+        ...state,
+        condition: action.result,
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: true,
+          error: null,
+        },
+      };
+    case `${GETACTION_CONTROLPANEL_RULE}_SUCCESS`:
+      return {
+        ...state,
+        action: action.result,
         [getRequestKey(action.type)]: {
           loading: false,
           loaded: true,

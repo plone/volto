@@ -99,7 +99,7 @@ class EditRule extends Component {
     this.setState({ isClient: true });
     this.props.getControlPanelRule(
       getBaseUrl(this.props.pathname),
-      this.props.match.params.id,
+      this.props?.match?.params?.id,
     );
     this.props.getContentRulesEvents(getBaseUrl(this.props.pathname));
   }
@@ -162,7 +162,7 @@ class EditRule extends Component {
       );
       this.props.getControlPanelRule(
         getBaseUrl(this.props.pathname),
-        this.props.match.params.id,
+        this.props?.match?.params?.id,
       );
     }
   }

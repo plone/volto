@@ -89,8 +89,12 @@ export {
   editRule,
   removeCondition,
   addCondition,
+  editCondition,
+  getCondition,
   removeAction,
   addAction,
+  editAction,
+  getAction,
 } from '@plone/volto/actions/rules/rules';
 export {
   resetSearchContent,

@@ -24,8 +24,12 @@ import {
   getControlPanelRule,
   removeCondition,
   addCondition,
+  editCondition,
   removeAction,
   addAction,
+  editAction,
+  getCondition,
+  getAction,
 } from '@plone/volto/actions';
 import { toast } from 'react-toastify';
 import { Toast } from '@plone/volto/components';
@@ -105,12 +109,16 @@ class ConfigureRule extends Component {
     this.openActionModal = this.openActionModal.bind(this);
     this.handleConditionAdd = this.handleConditionAdd.bind(this);
     this.handleActionAdd = this.handleActionAdd.bind(this);
+    this.openEditCondition = this.openEditCondition.bind(this);
+    this.handleEditCondition = this.handleEditCondition(this);
 
     this.state = {
       isClient: false,
       openModal: false,
-      selectedCondition: '',
-      selectedAction: '',
+      selConditionToAdd: '',
+      selActionToAdd: '',
+      selConditionToEdit: '',
+      selActionToEdit: '',
     };
   }
 
@@ -123,7 +131,7 @@ class ConfigureRule extends Component {
     this.setState({ isClient: true });
     this.props.getControlPanelRule(
       getBaseUrl(this.props.pathname),
-      this.props.match.params.id,
+      this.props?.match?.params?.id,
     );
   }
 
@@ -132,7 +140,18 @@ class ConfigureRule extends Component {
    * @method componentDidUpdate
    * @returns {undefined}
    */
-  componentDidUpdate(prevProps, prevState) {}
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      this.state.selConditionToEdit !== '' &&
+      prevState.selConditionToEdit !== this.state.selConditionToEdit
+    ) {
+      this.props.getCondition(
+        getBaseUrl(this.props.pathname),
+        this.props?.match?.params?.id,
+        this.state.selConditionToEdit,
+      );
+    }
+  }
 
   /**
    * Component will receive props
@@ -154,7 +173,7 @@ class ConfigureRule extends Component {
       );
       this.props.getControlPanelRule(
         getBaseUrl(this.props.pathname),
-        this.props.match.params.id,
+        this.props?.match?.params?.id,
       );
     }
     if (
@@ -170,7 +189,7 @@ class ConfigureRule extends Component {
       );
       this.props.getControlPanelRule(
         getBaseUrl(this.props.pathname),
-        this.props.match.params.id,
+        this.props?.match?.params?.id,
       );
     }
     if (
@@ -186,7 +205,7 @@ class ConfigureRule extends Component {
       );
       this.props.getControlPanelRule(
         getBaseUrl(this.props.pathname),
-        this.props.match.params.id,
+        this.props?.match?.params?.id,
       );
     }
     if (this.props.rule.addaction.loading && nextProps.rule.addaction.loaded) {
@@ -199,7 +218,7 @@ class ConfigureRule extends Component {
       );
       this.props.getControlPanelRule(
         getBaseUrl(this.props.pathname),
-        this.props.match.params.id,
+        this.props?.match?.params?.id,
       );
     }
   }
@@ -219,7 +238,7 @@ class ConfigureRule extends Component {
    * @returns {undefined}
    */
   handleRemoveCondition(conditionId) {
-    const ruleId = this.props.match.params.id;
+    const ruleId = this.props?.match?.params?.id;
     this.props.removeCondition(
       getBaseUrl(this.props.pathname),
       ruleId,
@@ -228,12 +247,39 @@ class ConfigureRule extends Component {
   }
 
   /**
+   * Edit condition handler
+   * @method handleEditCondition
+   * @returns {undefined}
+   */
+  handleEditCondition(val) {
+    //const ruleId = this.props?.match?.params?.id;
+    // if (this.state.selConditionToEdit) {
+    //   this.props.editCondition(
+    //     getBaseUrl(this.props.pathname),
+    //     ruleId,
+    //     val,
+    //     this.state.selConditionToEdit,
+    //   );
+    // }
+  }
+
+  /**
+   * open modal edit condition handler
+   * @method openEditCondition
+   * @returns {undefined}
+   */
+  openEditCondition(cond_id) {
+    // console.log('shoud edit condition:', cond_id);
+    this.setState({ selConditionToEdit: cond_id });
+  }
+
+  /**
    * Add condition handler
    * @method openConditionModal
    * @returns {undefined}
    */
   openConditionModal() {
-    if (this.state.selectedCondition) {
+    if (this.state.selConditionToAdd) {
       this.setState({ openModal: true });
     }
   }
@@ -244,9 +290,9 @@ class ConfigureRule extends Component {
    * @returns {undefined}
    */
   handleConditionAdd(val) {
-    const ruleId = this.props.match.params.id;
+    const ruleId = this.props?.match?.params?.id;
     this.props.addCondition(getBaseUrl(this.props.pathname), ruleId, val);
-    this.setState({ selectedCondition: '' });
+    this.setState({ selConditionToAdd: '' });
   }
 
   /**
@@ -264,9 +310,9 @@ class ConfigureRule extends Component {
    * @returns {undefined}
    */
   handleActionAdd(val) {
-    const ruleId = this.props.match.params.id;
+    const ruleId = this.props?.match?.params?.id;
     this.props.addAction(getBaseUrl(this.props.pathname), ruleId, val);
-    this.setState({ selectedCondition: '' });
+    this.setState({ selConditionToAdd: '' });
   }
 
   /**
@@ -275,7 +321,7 @@ class ConfigureRule extends Component {
    * @returns {undefined}
    */
   handleRemoveAction(actionId) {
-    const ruleId = this.props.match.params.id;
+    const ruleId = this.props?.match?.params?.id;
     this.props.removeAction(getBaseUrl(this.props.pathname), ruleId, actionId);
   }
 
@@ -302,8 +348,6 @@ class ConfigureRule extends Component {
       return { key: act.title, text: act.title, value: act };
     });
 
-    // console.log('zaitem', item);
-    // console.log('sel', this.state.selectedCondition);
     return (
       <div id="page-rule-configure">
         <Helmet title={this.props.intl.formatMessage(messages.configRule)} />
@@ -353,7 +397,14 @@ class ConfigureRule extends Component {
                                   </Card.Description>
                                 </Card.Content>
                                 <Card.Content extra>
-                                  <Button compact size="tiny" primary>
+                                  <Button
+                                    onClick={() =>
+                                      this.openEditCondition(cond.idx)
+                                    }
+                                    compact
+                                    size="tiny"
+                                    primary
+                                  >
                                     Edit
                                   </Button>
                                   <Button
@@ -403,9 +454,9 @@ class ConfigureRule extends Component {
                           fluid
                           selection
                           options={conditions_options}
-                          value={this.state.selectedCondition}
+                          value={this.state.selConditionToAdd}
                           onChange={(e, { value }) =>
-                            this.setState({ selectedCondition: value })
+                            this.setState({ selConditionToAdd: value })
                           }
                         />
                         <Button
@@ -496,7 +547,7 @@ class ConfigureRule extends Component {
                           selection
                           options={actions_options}
                           onChange={(e, { value }) =>
-                            this.setState({ selectedAction: value })
+                            this.setState({ selActionToAdd: value })
                           }
                         />
                         <Button
@@ -537,24 +588,37 @@ class ConfigureRule extends Component {
             </Segment.Group>
           </article>
         </Container>
-        {this.state.selectedCondition && (
+        {this.state.selConditionToAdd && (
           <VariableModal
             open={this.state.openModal}
             onClose={() => this.setState({ openModal: false })}
             onOpen={() => this.setState({ openModal: true })}
             onSave={this.handleConditionAdd}
-            value={this.state.selectedCondition}
+            value={this.state.selConditionToAdd}
             type="Condition"
           />
         )}
-        {this.state.selectedAction && (
+        {this.state.selActionToAdd && (
           <VariableModal
             open={this.state.openModal}
             onClose={() => this.setState({ openModal: false })}
             onOpen={() => this.setState({ openModal: true })}
             onSave={this.handleActionAdd}
-            value={this.state.selectedAction}
+            value={this.state.selActionToAdd}
             type="Action"
+          />
+        )}
+        {this.state.selConditionToEdit !== '' && (
+          <VariableModal
+            open={this.state.openModal}
+            onClose={() =>
+              this.setState({ openModal: false, selConditionToEdit: '' })
+            }
+            onOpen={() => this.setState({ openModal: true })}
+            onSave={this.handleEditCondition}
+            value={this.state.selConditionToEdit}
+            type="Condition"
+            action="edit"
           />
         )}
         {this.state.isClient && (
@@ -591,8 +655,12 @@ export default compose(
       getControlPanelRule,
       removeCondition,
       addCondition,
+      editCondition,
+      getCondition,
+      getAction,
       removeAction,
       addAction,
+      editAction,
     },
   ),
 )(ConfigureRule);

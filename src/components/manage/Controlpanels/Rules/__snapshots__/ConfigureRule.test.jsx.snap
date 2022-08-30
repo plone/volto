@@ -18,7 +18,7 @@ exports[`ConfigureRule renders rules configure interface 1`] = `
         >
           Configure Content Rule: 
           <q>
-            Example rule
+            
           </q>
         </div>
         <div
@@ -33,35 +33,26 @@ exports[`ConfigureRule renders rules configure interface 1`] = `
             className="ui grid"
           >
             <div
-              className="stretched row"
+              className="row"
             >
               <div
                 className="six wide computer six wide large screen sixteen wide mobile sixteen wide tablet column"
-                style={
-                  Object {
-                    "margin": "5px 0",
-                  }
-                }
               >
                 <h4>
                   If all of the following conditions are met:
                 </h4>
                 <div
-                  style={
-                    Object {
-                      "alignContent": "center",
-                      "display": "flex",
-                    }
-                  }
+                  className="row"
                 >
-                  <div
-                    className="ui medium label"
-                    onClick={[Function]}
+                  <h4
+                    style={
+                      Object {
+                        "marginTop": "15px",
+                      }
+                    }
                   >
-                    <p>
-                      Condition: 
-                    </p>
-                  </div>
+                    Condition: 
+                  </h4>
                   <div
                     aria-expanded={false}
                     className="ui fluid selection dropdown"
@@ -74,7 +65,7 @@ exports[`ConfigureRule renders rules configure interface 1`] = `
                     role="listbox"
                     style={
                       Object {
-                        "margin": "0 5px",
+                        "margin": "5px 0",
                       }
                     }
                     tabIndex={0}
@@ -94,62 +85,7 @@ exports[`ConfigureRule renders rules configure interface 1`] = `
                     />
                     <div
                       className="menu transition"
-                    >
-                      <div
-                        aria-checked={false}
-                        aria-selected={true}
-                        className="selected item"
-                        onClick={[Function]}
-                        role="option"
-                        style={
-                          Object {
-                            "pointerEvents": "all",
-                          }
-                        }
-                      >
-                        <span
-                          className="text"
-                        >
-                          Content Type
-                        </span>
-                      </div>
-                      <div
-                        aria-checked={false}
-                        aria-selected={false}
-                        className="item"
-                        onClick={[Function]}
-                        role="option"
-                        style={
-                          Object {
-                            "pointerEvents": "all",
-                          }
-                        }
-                      >
-                        <span
-                          className="text"
-                        >
-                          File Extension
-                        </span>
-                      </div>
-                      <div
-                        aria-checked={false}
-                        aria-selected={false}
-                        className="item"
-                        onClick={[Function]}
-                        role="option"
-                        style={
-                          Object {
-                            "pointerEvents": "all",
-                          }
-                        }
-                      >
-                        <span
-                          className="text"
-                        >
-                          Workflow state
-                        </span>
-                      </div>
-                    </div>
+                    />
                   </div>
                   <button
                     className="ui compact primary button"
@@ -161,31 +97,22 @@ exports[`ConfigureRule renders rules configure interface 1`] = `
               </div>
               <div
                 className="six wide computer six wide large screen sixteen wide mobile sixteen wide tablet column"
-                style={
-                  Object {
-                    "margin": "5px 0",
-                  }
-                }
               >
                 <h4>
                   Perform the following actions:
                 </h4>
                 <div
-                  style={
-                    Object {
-                      "alignContent": "center",
-                      "display": "flex",
-                    }
-                  }
+                  className="row"
                 >
-                  <div
-                    className="ui medium label"
-                    onClick={[Function]}
+                  <h4
+                    style={
+                      Object {
+                        "marginTop": "15px",
+                      }
+                    }
                   >
-                    <p>
-                      Action: 
-                    </p>
-                  </div>
+                    Action: 
+                  </h4>
                   <div
                     aria-expanded={false}
                     className="ui fluid selection dropdown"
@@ -198,7 +125,7 @@ exports[`ConfigureRule renders rules configure interface 1`] = `
                     role="listbox"
                     style={
                       Object {
-                        "margin": "0 5px",
+                        "margin": "5px 0",
                       }
                     }
                     tabIndex={0}
@@ -218,62 +145,7 @@ exports[`ConfigureRule renders rules configure interface 1`] = `
                     />
                     <div
                       className="menu transition"
-                    >
-                      <div
-                        aria-checked={false}
-                        aria-selected={true}
-                        className="selected item"
-                        onClick={[Function]}
-                        role="option"
-                        style={
-                          Object {
-                            "pointerEvents": "all",
-                          }
-                        }
-                      >
-                        <span
-                          className="text"
-                        >
-                          Logger
-                        </span>
-                      </div>
-                      <div
-                        aria-checked={false}
-                        aria-selected={false}
-                        className="item"
-                        onClick={[Function]}
-                        role="option"
-                        style={
-                          Object {
-                            "pointerEvents": "all",
-                          }
-                        }
-                      >
-                        <span
-                          className="text"
-                        >
-                          Notify user
-                        </span>
-                      </div>
-                      <div
-                        aria-checked={false}
-                        aria-selected={false}
-                        className="item"
-                        onClick={[Function]}
-                        role="option"
-                        style={
-                          Object {
-                            "pointerEvents": "all",
-                          }
-                        }
-                      >
-                        <span
-                          className="text"
-                        >
-                          Copy to folder
-                        </span>
-                      </div>
-                    </div>
+                    />
                   </div>
                   <button
                     className="ui compact primary button"
@@ -288,7 +160,7 @@ exports[`ConfigureRule renders rules configure interface 1`] = `
               className="stretched row"
             >
               <div
-                className="six wide large screen six wide column"
+                className="column"
               >
                 <h4>
                   Assignments
@@ -301,6 +173,8 @@ exports[`ConfigureRule renders rules configure interface 1`] = `
       </div>
     </article>
   </div>
+  
+  
   <div
     id="Portal"
   />
