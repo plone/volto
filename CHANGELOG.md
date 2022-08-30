@@ -6,6 +6,8 @@
 
 - Upgrade to Razzle 4 @davisagli
 
+See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+
 ### Feature
 
 ### Bugfix
