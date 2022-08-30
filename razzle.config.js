@@ -328,9 +328,6 @@ module.exports = {
     return res;
   },
   options: {
-    debug: {
-      nodeExternals: true,
-    },
     enableReactRefresh: true,
   },
 };

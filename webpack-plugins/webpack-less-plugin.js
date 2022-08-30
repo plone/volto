@@ -99,11 +99,13 @@ module.exports = (userOptions = {}) => ({
 
     const postCssLoader = {
       loader: require.resolve('postcss-loader'),
-      options: hasPostCssConfig()
-        ? undefined
-        : Object.assign({}, options.postcss[constantEnv], {
-            plugins: () => options.postcss.plugins,
-          }),
+      options: {
+        postcssOptions: hasPostCssConfig()
+          ? undefined
+          : Object.assign({}, options.postcss[constantEnv], {
+              plugins: options.postcss.plugins,
+            }),
+      },
     };
 
     const lessLoader = {
@@ -128,7 +130,9 @@ module.exports = (userOptions = {}) => ({
               {
                 loader: require.resolve('css-loader'),
                 options: Object.assign({}, options.css[constantEnv], {
-                  onlyLocals: true,
+                  modules: Object.assign({}, options.css[constantEnv].modules, {
+                    exportOnlyLocals: true,
+                  }),
                 }),
               },
               // resolveUrlLoader,
