@@ -35,9 +35,7 @@ describe('registry', () => {
   it('registers and gets a component by name (as string)', () => {
     config.registerComponent({
       name: 'Toolbar.Bar',
-      component: {
-        component: 'this is a Bar component',
-      },
+      component: 'this is a Bar component',
     });
     expect(config.getComponent('Toolbar.Bar').component).toEqual(
       'this is a Bar component',
@@ -46,9 +44,7 @@ describe('registry', () => {
   it('registers and gets a component by name (as an object)', () => {
     config.registerComponent({
       name: 'Toolbar.Bar',
-      component: {
-        component: 'this is a Bar component',
-      },
+      component: 'this is a Bar component',
     });
     expect(config.getComponent({ name: 'Toolbar.Bar' }).component).toEqual(
       'this is a Bar component',
@@ -57,9 +53,7 @@ describe('registry', () => {
   it('registers a component by name with dependencies', () => {
     config.registerComponent({
       name: 'Toolbar.Bar',
-      component: {
-        component: 'this is a Bar component',
-      },
+      component: 'this is a Bar component',
       dependencies: 'News Item',
     });
     expect(
@@ -70,9 +64,7 @@ describe('registry', () => {
   it('registers a component by name with dependencies array', () => {
     config.registerComponent({
       name: 'Toolbar.Bar',
-      component: {
-        component: 'this is a Bar component',
-      },
+      component: 'this is a Bar component',
       dependencies: ['News Item', 'StringFieldWidget'],
     });
     expect(

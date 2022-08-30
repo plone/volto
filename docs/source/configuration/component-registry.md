@@ -17,9 +17,7 @@ import MyToolbarComponent from './MyToolbarComponent'
 
 config.registerComponent({
   name: 'Toolbar',
-  component: {
-    component: MyToolbarComponent,
-  },
+  component: MyToolbarComponent,
 });
 ```
 
@@ -48,9 +46,7 @@ import MyTeaserNewsItemComponent from './MyTeaserNewsItemComponent'
 
 config.registerComponent({
     name: 'Teaser',
-    component: {
-      component: MyTeaserNewsItemComponent,
-    },
+    component: MyTeaserNewsItemComponent,
     dependencies: 'News Item',
   });
 ```
@@ -72,16 +68,12 @@ import MyTeaserNewsItemComponent from './MyTeaserNewsItemComponent'
 
 config.registerComponent({
     name: 'Teaser',
-    component: {
-      component: MyTeaserDefaultComponent,
-    },
+    component: MyTeaserDefaultComponent,
   });
 
 config.registerComponent({
     name: 'Teaser',
-    component: {
-      component: MyTeaserNewsItemComponent,
-    },
+    component: MyTeaserNewsItemComponent,
     dependencies: 'News Item',
   });
 ```

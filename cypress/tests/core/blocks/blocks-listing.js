@@ -41,7 +41,7 @@ describe('Listing Block Tests', () => {
       path: 'my-page',
     });
     cy.createContent({
-      contentType: 'Folder',
+      contentType: 'Document',
       contentId: 'my-folder',
       contentTitle: 'My Folder',
       path: 'my-page',
@@ -169,9 +169,9 @@ describe('Listing Block Tests', () => {
     cy.intercept('GET', '/**/@types/*').as('schema');
 
     cy.createContent({
-      contentType: 'Document',
-      contentId: 'my-page-test',
-      contentTitle: 'My Page Test',
+      contentType: 'News Item',
+      contentId: 'my-news',
+      contentTitle: 'My News',
       path: 'my-page',
     });
 
@@ -183,6 +183,7 @@ describe('Listing Block Tests', () => {
     );
 
     //add listing block
+    cy.scrollTo('bottom');
     cy.getSlate(true).click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
@@ -247,7 +248,7 @@ describe('Listing Block Tests', () => {
       path: 'my-page',
     });
     cy.createContent({
-      contentType: 'Folder',
+      contentType: 'Document',
       contentId: 'my-folder',
       contentTitle: 'My Folder',
       path: 'my-page',
@@ -600,19 +601,19 @@ describe('Listing Block Tests', () => {
     cy.intercept('GET', '/**/@types/Document').as('schema');
 
     cy.createContent({
-      contentType: 'Folder',
+      contentType: 'Document',
       contentId: 'my-folder',
       contentTitle: 'My Folder',
       path: 'my-page',
     });
     cy.createContent({
-      contentType: 'Folder',
+      contentType: 'Document',
       contentId: 'my-folder2',
       contentTitle: 'My Folder 2',
       path: 'my-page',
     });
     cy.createContent({
-      contentType: 'Folder',
+      contentType: 'Document',
       contentId: 'my-folder3',
       contentTitle: 'My Folder 3',
       path: 'my-page',
@@ -650,7 +651,7 @@ describe('Listing Block Tests', () => {
     cy.get(
       '.querystring-widget .fields:first-of-type > .field .react-select__menu .react-select__option',
     )
-      .contains('Folder')
+      .contains('Page')
       .click();
 
     cy.get('#field-limit-3-querystring').click().type('2');
