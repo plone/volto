@@ -2,8 +2,6 @@
 
 ## 16.0.0 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Add clear formatting button to slate @robgietema
@@ -12,10 +10,6 @@
 
 - Fix array widget translation @robgietema
 - Fix copy / paste text in list @robgietema
-
-### Internal
-
-### Documentation
 
 ## 16.0.0-alpha.27 (2022-08-29)
 
