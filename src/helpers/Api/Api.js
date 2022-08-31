@@ -32,7 +32,7 @@ function formatUrl(path) {
   }
 
   let adjustedPath = path[0] !== '/' ? `/${path}` : path;
-  if ( prefix && adjustedPath.match(new RegExp(`^${prefix}(/|$)`))) {
+  if (prefix && adjustedPath.match(new RegExp(`^${prefix}(/|$)`))) {
     adjustedPath = adjustedPath.slice(prefix.length);
     adjustedPath = adjustedPath[0] !== '/' ? `/${adjustedPath}` : adjustedPath;
   }
