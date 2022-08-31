@@ -62,6 +62,18 @@ const messages = defineMessages({
     id: 'Groups',
     defaultMessage: 'Groups',
   },
+  addons: {
+    id: 'Add-Ons',
+    defaultMessage: 'Add-Ons',
+  },
+  database: {
+    id: 'Database',
+    defaultMessage: 'Database',
+  },
+  usergroupmemberbership: {
+    id: 'User Group Membership',
+    defaultMessage: 'User Group Membership',
+  },
 });
 
 /**
@@ -150,12 +162,12 @@ class Controlpanels extends Component {
         {
           '@id': '/addons',
           group: this.props.intl.formatMessage(messages.general),
-          title: 'Add-Ons',
+          title: this.props.intl.formatMessage(messages.addons),
         },
         {
           '@id': '/database',
           group: this.props.intl.formatMessage(messages.general),
-          title: 'Database',
+          title: this.props.intl.formatMessage(messages.database),
         },
         {
           '@id': '/moderate-comments',
@@ -166,6 +178,11 @@ class Controlpanels extends Component {
           '@id': '/users',
           group: this.props.intl.formatMessage(messages.usersandgroups),
           title: this.props.intl.formatMessage(messages.users),
+        },
+        {
+          '@id': '/usergroupmembership',
+          group: this.props.intl.formatMessage(messages.usersandgroups),
+          title: this.props.intl.formatMessage(messages.usergroupmemberbership),
         },
         {
           '@id': '/groups',

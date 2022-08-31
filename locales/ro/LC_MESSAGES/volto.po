@@ -138,6 +138,11 @@ msgstr "Adăugare utilizator nou"
 msgid "Add to Groups"
 msgstr "Adăugare la grupuri"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add users to group
+msgid "Add users to group"
+msgstr ""
+
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Add term
 msgid "Add vocabulary term"
@@ -149,8 +154,18 @@ msgid "Add {type}"
 msgstr "Adăugare {type}"
 
 #: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Add-Ons
+msgid "Add-Ons"
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Add-on Configuration
 msgid "Add-on Configuration"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Add-ons
+msgid "Add-ons"
 msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -167,7 +182,7 @@ msgstr "Dată suplimentară"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Alignment
 msgid "Alignment"
 msgstr "Aliniere"
@@ -184,6 +199,7 @@ msgstr "Alfabetic"
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/schema
 # defaultMessage: Alt text
 msgid "Alt text"
 msgstr "Text alternativ"
@@ -598,6 +614,11 @@ msgstr "Taie câmpuri "
 msgid "Daily"
 msgstr "Zilnic"
 
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Database
+msgid "Database"
+msgstr ""
+
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Database Information
 msgid "Database Information"
@@ -859,11 +880,6 @@ msgstr "E-mail trimis"
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "Eroare de cod integrat, urmați instrucțiunile și încercați din nou."
 
-#: components/manage/Blocks/Maps/View
-# defaultMessage: Embeded Google Maps
-msgid "Embeded Google Maps"
-msgstr "Harti Google integrate"
-
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Empty object list
 msgid "Empty object list"
@@ -1028,6 +1044,11 @@ msgstr "Mărimea fișierului"
 # defaultMessage: Filename
 msgid "Filename"
 msgstr "Nume fișier"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter users by groups
+msgid "Filter users by groups"
+msgstr ""
 
 #: components/manage/Contents/Contents
 # defaultMessage: Filter…
@@ -1249,6 +1270,11 @@ msgstr "Includeți această apariție"
 msgid "Info"
 msgstr "Info"
 
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+# defaultMessage: You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to user group settings. See the button on the left.
+msgid "InfoUserGroupSettings"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: Inherit permissions from higher levels
 msgid "Inherit permissions from higher levels"
@@ -1293,6 +1319,11 @@ msgstr "Instalat"
 # defaultMessage: Installed version
 msgid "Installed version"
 msgstr "Versiunea instalată"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Installing a third party add-on
+msgid "Installing a third party add-on"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: days
@@ -1438,7 +1469,6 @@ msgstr "Legătură la titlu"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Link to
 msgid "Link to"
 msgstr "Legătură către"
@@ -1645,15 +1675,26 @@ msgid "News Item"
 msgstr "Articol de știri"
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: No
 msgid "No"
 msgstr "Nu"
 
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: No Video selected
+msgid "No Video selected"
+msgstr ""
+
 #: components/manage/Controlpanels/VersionOverview
 # defaultMessage: No addons found
 msgid "No addons found"
 msgstr "Nu s-au găsit addons"
+
+#: components/theme/RequestTimeout/RequestTimeout
+# defaultMessage: There is no connection to the server, due to a timeout o no network connection.
+msgid "No connection to the server"
+msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected
@@ -1721,6 +1762,11 @@ msgstr "Fără selecție"
 msgid "No uninstall profile"
 msgstr "Niciun profil de dezinstalare"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: No user found
+msgid "No user found"
+msgstr ""
+
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 #: components/manage/Widgets/SelectUtils
@@ -1728,11 +1774,6 @@ msgstr "Niciun profil de dezinstalare"
 # defaultMessage: No value
 msgid "No value"
 msgstr "Fără valoare"
-
-#: components/manage/Blocks/Video/VideoSidebar
-# defaultMessage: No video selected
-msgid "No video selected"
-msgstr "Niciun videoclip selectat"
 
 #: components/manage/Workflow/Workflow
 # defaultMessage: No workflow
@@ -1777,7 +1818,6 @@ msgstr "Sunt permise doar litere mici (a-z) fără accente, cifre (0-9) și cele
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr "Deschideți într-o fereastra nouă"
@@ -1883,6 +1923,16 @@ msgstr "Vă rugăm să introduceți codul de integrare furnizat de Google Maps -
 msgid "Please fill out the form below to set your password."
 msgstr "Vă rugăm să completați formularul de mai jos pentru a seta parola."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Please search for users or use the filters on the side.
+msgid "Please search for users or use the filters on the side."
+msgstr ""
+
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+# defaultMessage: Please upgrade to plone.restapi >= 8.24.0.
+msgid "Please upgrade to plone.restapi >= 8.24.0."
+msgstr ""
+
 #: components/theme/Footer/Footer
 # defaultMessage: Plone Foundation
 msgid "Plone Foundation"
@@ -1929,7 +1979,7 @@ msgstr "Îmbunătățiți-vă codul"
 msgid "Preview"
 msgstr "Previzualizare"
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Preview Image URL
 msgid "Preview Image URL"
 msgstr "Adresa URL a imaginii de previzualizare"
@@ -2033,6 +2083,11 @@ msgstr "Eliminați recurența"
 # defaultMessage: Remove term
 msgid "Remove term"
 msgstr "Eliminați termenul"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Remove users from group
+msgid "Remove users from group"
+msgstr ""
 
 #: components/manage/Toolbar/More
 # defaultMessage: Remove working copy
@@ -2187,6 +2242,7 @@ msgstr "Actualizări de schemă"
 #: components/manage/Blocks/Search/layout/RightColumnFacets
 #: components/manage/Blocks/Search/layout/TopSideFacets
 #: components/manage/Blocks/Search/schema
+#: components/theme/Search/Search
 #: components/theme/SearchWidget/SearchWidget
 # defaultMessage: Search
 msgid "Search"
@@ -2369,6 +2425,11 @@ msgstr "Afișează tot"
 # defaultMessage: Show Replies
 msgid "Show Replies"
 msgstr "Afișați răspunsurile"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Show groups of users below
+msgid "Show groups of users below"
+msgstr ""
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Show item
@@ -2557,7 +2618,8 @@ msgstr "Schimbă cu"
 msgid "Table"
 msgstr "Tabel"
 
-#: components/manage/Blocks/ToC/View
+#: components/manage/Blocks/ToC/variations/DefaultTocRenderer
+#: components/manage/Blocks/ToC/variations/HorizontalMenu
 # defaultMessage: Table of Contents
 msgid "Table of Contents"
 msgstr "Cuprins"
@@ -2596,6 +2658,7 @@ msgstr "Text"
 #: components/theme/ConnectionRefused/ConnectionRefused
 #: components/theme/CorsError/CorsError
 #: components/theme/NotFound/NotFound
+#: components/theme/RequestTimeout/RequestTimeout
 #: components/theme/Unauthorized/Unauthorized
 # defaultMessage: Thank you.
 msgid "Thank you."
@@ -2610,6 +2673,11 @@ msgstr "Managerul bazei de date vă permite să vizualizați informațiile despr
 # defaultMessage: The URL for your external home page, if you have one.
 msgid "The URL for your external home page, if you have one."
 msgstr "Adresa URL a paginii de start externe, dacă aveți una."
+
+#: components/theme/RequestTimeout/RequestTimeout
+# defaultMessage: The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again.
+msgid "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
+msgstr ""
 
 #: components/theme/ConnectionRefused/ConnectionRefused
 # defaultMessage: The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable.
@@ -2906,6 +2974,17 @@ msgstr "Folosit pentru acces programatic la setul de câmpuri."
 msgid "User"
 msgstr "Utilizator"
 
+#: components/manage/Controlpanels/Controlpanels
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Membership
+msgid "User Group Membership"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Settings
+msgid "User Group Settings"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: User created
 msgid "User created"
@@ -2948,12 +3027,13 @@ msgstr "Variație"
 msgid "Version Overview"
 msgstr "Prezentare generală a versiunii"
 
+#: components/manage/Blocks/Video/schema
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Video
 msgid "Video"
 msgstr "Video"
 
-#: components/manage/Blocks/Video/VideoSidebar
+#: components/manage/Blocks/Video/schema
 # defaultMessage: Video URL
 msgid "Video URL"
 msgstr "URL-ul video"
@@ -3079,6 +3159,7 @@ msgid "Yearly"
 msgstr "Anual"
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Yes
 msgid "Yes"
