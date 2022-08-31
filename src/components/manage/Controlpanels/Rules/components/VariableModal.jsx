@@ -357,7 +357,6 @@ const VariableModal = ({
   const { addview = '', editview = '' } = value || {};
 
   React.useEffect(() => {
-    //setInputSchema('');
     if (value?.title) {
       const detectedVocab = detectVocabulary(value.title);
       if (detectedVocab) {
@@ -365,7 +364,6 @@ const VariableModal = ({
 
         getVocabulary({ vocabNameOrURL: detectedVocab });
       }
-      //setInputSchema(setSchema(value.title));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value, open, formData]);
@@ -382,10 +380,8 @@ const VariableModal = ({
             return [item.value, item.label];
           })
         : [];
-    //setVocabularyChoices(vocabularyOptions);
-    //now set it with the new options from vocabulary
+    //set schema with the new options from vocabulary
     setInputSchema(setSchema(value.title, vocabularyOptions));
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [vocabularies, open, formData, value]);
 

@@ -27,6 +27,7 @@ import { Toast } from '@plone/volto/components';
 import {
   getControlPanelRules,
   deleteControlPanelRule,
+  getContentRulesEvents,
 } from '@plone/volto/actions';
 
 import backSVG from '@plone/volto/icons/back.svg';
@@ -50,15 +51,6 @@ const messages = defineMessages({
   },
 });
 
-const filterChoices = [
-  { label: 'Comment Added', value: 'comment-added' },
-  { label: 'Comment removed', value: 'comment-removed' },
-  { label: 'Comment reply added', value: 'comment-reply-added' },
-  { label: 'User Created', value: 'user-created' },
-  { label: 'Enabled', value: 'enabled' },
-  { label: 'Disabled', value: 'disabled' },
-];
-
 /**
  * Rules class.
  * @class Rules
@@ -73,6 +65,7 @@ class Rules extends Component {
   static propTypes = {
     getControlPanelRules: PropTypes.func.isRequired,
     deleteControlPanelRule: PropTypes.func.isRequired,
+    getContentRulesEvents: PropTypes.func.isRequired,
   };
 
   /**
@@ -85,6 +78,8 @@ class Rules extends Component {
     super(props);
     this.state = {
       isClient: false,
+      selectedFilters: [],
+      selectedRules: [],
     };
   }
 
@@ -95,6 +90,7 @@ class Rules extends Component {
    */
   componentDidMount() {
     this.props.getControlPanelRules(getBaseUrl(this.props.pathname));
+    this.props.getContentRulesEvents(getBaseUrl(this.props.pathname));
 
     this.setState({ isClient: true });
   }
@@ -105,9 +101,24 @@ class Rules extends Component {
    * @returns {undefined}
    */
   componentDidUpdate(prevProps, prevState) {
-    // if (prevProps.rules !== this.props.rules) {
-    //   console.log('rules', this.props.rules.items);
-    // }
+    if (prevProps.rules !== this.props.rules && this.props.rules.items) {
+      this.setState({ selectedRules: this.props.rules.items });
+    }
+    if (
+      prevState.selectedFilters !== this.state.selectedFilters &&
+      this.props.rules.items
+    ) {
+      if (this.state.selectedFilters.length > 0) {
+        let filteredRules = this.props.rules.items.filter((rule) =>
+          this.state.selectedFilters.includes(rule.trigger),
+        );
+        this.setState({
+          selectedRules: filteredRules,
+        });
+      } else {
+        this.setState({ selectedRules: this.props.rules.items });
+      }
+    }
   }
 
   /**
@@ -180,11 +191,28 @@ class Rules extends Component {
 
   /**
    * Delete Rule handler
-   * @method handleEdit
+   * @method handleDelete
    * @returns {undefined}
    */
   handleDelete(ruleId) {
     this.props.deleteControlPanelRule(getBaseUrl(this.props.pathname), ruleId);
+  }
+
+  /**
+   * Set filter handler
+   * @method handleSetFilters
+   * @returns {undefined}
+   */
+  handleSetFilters(value) {
+    if (!this.state.selectedFilters.includes(value)) {
+      this.setState({
+        selectedFilters: [...this.state.selectedFilters, value],
+      });
+    } else {
+      this.setState({
+        selectedFilters: this.state.selectedFilters.filter((f) => f !== value),
+      });
+    }
   }
 
   /**
@@ -232,16 +260,36 @@ class Rules extends Component {
                     defaultMessage="Filter Rules:"
                   />
                 </Header>
-                {filterChoices.map((o, i) => (
-                  <Form.Field key={i}>
-                    <Checkbox
-                      // onChange={(e, { value }) => console.log(value)}
-                      //checked={}
-                      value={o.value}
-                      label={o.label}
-                    />
-                  </Form.Field>
-                ))}
+                <Form>
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexWrap: 'wrap',
+                    }}
+                  >
+                    {this.props.events &&
+                      this.props.events.items &&
+                      this.props.events.items.length > 0 &&
+                      this.props.events.items
+                        .map((event) => {
+                          return { label: event.title, value: event.title };
+                        })
+                        .map((o, i) => (
+                          <Form.Field style={{ marginRight: '15px' }} key={i}>
+                            <Checkbox
+                              onChange={(e, { value }) =>
+                                this.handleSetFilters(value)
+                              }
+                              checked={
+                                this.state.selectedFilters.includes[o.value]
+                              }
+                              value={o.value}
+                              label={o.label}
+                            />
+                          </Form.Field>
+                        ))}
+                  </div>
+                </Form>
                 <Table>
                   <Table.Body>
                     <Table.Row>
@@ -264,10 +312,9 @@ class Rules extends Component {
                         />
                       </Table.HeaderCell>
                     </Table.Row>
-                    {this.props.rules &&
-                      this.props.rules.items &&
-                      this.props.rules.items.length > 0 &&
-                      this.props.rules.items.map((rule, i) => (
+                    {this.state.selectedRules &&
+                      this.state.selectedRules.length > 0 &&
+                      this.state.selectedRules.map((rule, i) => (
                         <Table.Row key={i}>
                           <Table.Cell>
                             <p style={{ fontSize: '16px' }}>{rule.title}</p>
@@ -374,11 +421,14 @@ export default compose(
     (state, props) => ({
       indivRule: state.controlpanelrule,
       rules: state.controlpanelrules,
+      events: state.contentrulesevents,
+
       pathname: props.location.pathname,
     }),
     {
       getControlPanelRules,
       deleteControlPanelRule,
+      getContentRulesEvents,
     },
   ),
 )(Rules);

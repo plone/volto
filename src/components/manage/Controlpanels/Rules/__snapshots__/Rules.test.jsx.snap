@@ -59,144 +59,19 @@ exports[`Rules renders rules control panel control 1`] = `
           >
             Filter Rules:
           </div>
-          <div
-            className="field"
+          <form
+            className="ui form"
+            onSubmit={[Function]}
           >
             <div
-              className="ui checkbox"
-              onChange={[Function]}
-              onClick={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-                value="comment-added"
-              />
-              <label>
-                Comment Added
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onChange={[Function]}
-              onClick={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-                value="comment-removed"
-              />
-              <label>
-                Comment removed
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onChange={[Function]}
-              onClick={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-                value="comment-reply-added"
-              />
-              <label>
-                Comment reply added
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onChange={[Function]}
-              onClick={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-                value="user-created"
-              />
-              <label>
-                User Created
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onChange={[Function]}
-              onClick={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-                value="enabled"
-              />
-              <label>
-                Enabled
-              </label>
-            </div>
-          </div>
-          <div
-            className="field"
-          >
-            <div
-              className="ui checkbox"
-              onChange={[Function]}
-              onClick={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-            >
-              <input
-                checked={false}
-                className="hidden"
-                readOnly={true}
-                tabIndex={0}
-                type="checkbox"
-                value="disabled"
-              />
-              <label>
-                Disabled
-              </label>
-            </div>
-          </div>
+              style={
+                Object {
+                  "display": "flex",
+                  "flexWrap": "wrap",
+                }
+              }
+            />
+          </form>
           <table
             className="ui table"
           >
