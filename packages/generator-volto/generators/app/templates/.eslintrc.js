@@ -34,6 +34,7 @@ module.exports = {
       alias: {
         map: [
           ['@plone/volto', '@plone/volto/src'],
+          ['@plone/volto-slate', '@plone/volto/packages/volto-slate/src'],
           ...addonAliases,
           ['@package', `${__dirname}/src`],
           ['@root', `${__dirname}/src`],

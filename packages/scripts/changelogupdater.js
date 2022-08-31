@@ -13,13 +13,19 @@ if (process.argv.length < 3) {
 const command = process.argv[2];
 const version = process.argv[3];
 
-// function escapeRegExp(string) {
-//   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
-// }
+// Get the right location of the CHANGELOG.md file
+// Covers use case that the file is in the parent folder and the
+// frontend code in `frontend` folder (recommended structure)
+let changelogFile;
+if (fs.existsSync('CHANGELOG.md')) {
+  changelogFile = 'CHANGELOG.md';
+} else if (fs.existsSync('../CHANGELOG.md')) {
+  changelogFile = '../CHANGELOG.md';
+}
 
 try {
   if (command === 'excerpt') {
-    const data = fs.readFileSync('CHANGELOG.md', 'utf8');
+    const data = fs.readFileSync(changelogFile, 'utf8');
     const allReleases = data.match(/##\s(.+)\s\((.+)\)/g);
     // const re = new RegExp(escapeRegExp(allReleases[1]), 'g');
     const index = data.indexOf(allReleases[1]);
@@ -33,7 +39,7 @@ try {
   }
 
   if (command === 'bump') {
-    const data = fs.readFileSync('CHANGELOG.md', 'utf8');
+    const data = fs.readFileSync(changelogFile, 'utf8');
     const [original, origVersion, orig] = data.match(/##\s(.+)\s\((.+)\)/);
     if (orig !== 'unreleased') {
       return console.log('Error, the CHANGELOG file is malformed.');
@@ -53,7 +59,7 @@ try {
     const newChangelog = data.replace(original, newLine);
 
     // Save data to disk if command is bump
-    fs.writeFile('CHANGELOG.md', newChangelog, (err) => {
+    fs.writeFile(changelogFile, newChangelog, (err) => {
       // throws an error, you could also catch it here
       if (err) throw err;
 
@@ -63,7 +69,7 @@ try {
   }
 
   if (command === 'back') {
-    const data = fs.readFileSync('CHANGELOG.md', 'utf8');
+    const data = fs.readFileSync(changelogFile, 'utf8');
     const nextversion = semver.inc(process.argv[3], 'patch');
     const backToDevelTemplate = `\n\n## ${nextversion} (unreleased)\n\n### Breaking\n\n### Feature\n\n### Bugfix\n\n### Internal`;
 
@@ -73,7 +79,7 @@ try {
       insertIndex,
     )}${backToDevelTemplate}${data.slice(insertIndex)}`;
     console.log(back);
-    fs.writeFile('CHANGELOG.md', back, (err) => {
+    fs.writeFile(changelogFile, back, (err) => {
       // throws an error, you could also catch it here
       if (err) throw err;
 

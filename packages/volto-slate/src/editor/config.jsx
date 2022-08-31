@@ -1,4 +1,5 @@
 import React from 'react';
+import config from '@plone/volto/registry';
 
 import boldIcon from '@plone/volto/icons/bold.svg';
 import codeIcon from '@plone/volto/icons/code.svg';
@@ -94,18 +95,31 @@ export const buttons = {
     <MarkButton title="Code" format="code" icon={codeIcon} {...props} />
   ),
   'heading-two': (props) => (
-    <BlockButton title="Title" format="h2" icon={headingIcon} {...props} />
+    <BlockButton
+      title="Title"
+      format="h2"
+      allowedChildren={config.settings.slate.allowedHeadlineElements}
+      icon={headingIcon}
+      {...props}
+    />
   ),
   'heading-three': (props) => (
     <BlockButton
       title="Subtitle"
       format="h3"
+      allowedChildren={config.settings.slate.allowedHeadlineElements}
       icon={subheadingIcon}
       {...props}
     />
   ),
   'heading-four': (props) => (
-    <BlockButton title="Heading 4" format="h4" icon={subTextIcon} {...props} />
+    <BlockButton
+      title="Heading 4"
+      allowedChildren={config.settings.slate.allowedHeadlineElements}
+      format="h4"
+      icon={subTextIcon}
+      {...props}
+    />
   ),
   'numbered-list': (props) => (
     <BlockButton
@@ -311,3 +325,6 @@ export const nodeTypesToHighlight = [];
 // are useful for example to highlight search results or a certain type of node
 // Signature: ([node, path], ranges) => ranges
 export const runtimeDecorators = [highlightSelection]; // , highlightByType
+
+// Only these types of element nodes are allowed in the headlines
+export const allowedHeadlineElements = ['em', 'i'];
