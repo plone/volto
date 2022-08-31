@@ -28,6 +28,7 @@ import {
   getControlPanelRules,
   deleteControlPanelRule,
   getContentRulesEvents,
+  editRule,
 } from '@plone/volto/actions';
 
 import backSVG from '@plone/volto/icons/back.svg';
@@ -49,6 +50,10 @@ const messages = defineMessages({
     id: 'Deleted',
     defaultMessage: 'Deleted',
   },
+  enable: {
+    id: 'Rule enable changed',
+    defaultMessage: 'Rule enable changed',
+  },
 });
 
 /**
@@ -66,6 +71,7 @@ class Rules extends Component {
     getControlPanelRules: PropTypes.func.isRequired,
     deleteControlPanelRule: PropTypes.func.isRequired,
     getContentRulesEvents: PropTypes.func.isRequired,
+    editRule: PropTypes.func.isRequired,
   };
 
   /**
@@ -128,6 +134,16 @@ class Rules extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
+    if (this.props.indivRule.edit.loading && nextProps.indivRule.edit.loaded) {
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.enable)}
+        />,
+      );
+      this.props.getControlPanelRules(getBaseUrl(this.props.pathname));
+    }
     if (
       this.props.indivRule.delete.loading &&
       nextProps.indivRule.delete.loaded
@@ -213,6 +229,20 @@ class Rules extends Component {
         selectedFilters: this.state.selectedFilters.filter((f) => f !== value),
       });
     }
+  }
+
+  /**
+   *Enable rule handler
+   * @method handleEnableRule
+   * @returns {undefined}
+   */
+  handleEnableRule(rule) {
+    const { id, cascading, description, enabled, event, stop, title } = rule;
+    this.props.editRule(
+      getBaseUrl(this.props.pathname),
+      { id, cascading, description, enabled: !enabled, event, stop, title },
+      id,
+    );
   }
 
   /**
@@ -330,9 +360,7 @@ class Rules extends Component {
                               style={{ display: 'flex', alignItems: 'center' }}
                             >
                               <Checkbox
-                                // onChange={(e, { value }) =>
-                                //   console.log('handle enable/disable', !value)
-                                // }
+                                onChange={(e, o) => this.handleEnableRule(rule)}
                                 checked={rule.enabled}
                                 value={rule.enabled}
                                 label="enabled"
@@ -429,6 +457,7 @@ export default compose(
       getControlPanelRules,
       deleteControlPanelRule,
       getContentRulesEvents,
+      editRule,
     },
   ),
 )(Rules);
