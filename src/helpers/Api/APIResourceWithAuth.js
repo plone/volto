@@ -19,7 +19,7 @@ export const getAPIResourceWithAuth = (req) =>
     const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
     const prefix = settings.prefixPath;
     let apiPath = '';
-    
+
     if (settings.internalApiPath && __SERVER__) {
       apiPath = settings.internalApiPath;
     } else if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
@@ -29,8 +29,9 @@ export const getAPIResourceWithAuth = (req) =>
     }
 
     let path = req.path;
-   
-    if ( prefix && path.match(new RegExp(`^${prefix}(/|$)`))) { //if path starts with prefixPath
+
+    if (prefix && path.match(new RegExp(`^${prefix}(/|$)`))) {
+      //if path starts with prefixPath
       path = path.slice(prefix.length);
     }
 
