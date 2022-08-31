@@ -11,6 +11,7 @@
 ### Bugfix
 
 - Fix array widget translation @robgietema
+- Fix copy / paste text in list @robgietema
 
 ### Internal
 
