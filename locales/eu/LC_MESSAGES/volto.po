@@ -1692,6 +1692,7 @@ msgid "News Item"
 msgstr "Albistea ikusi"
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: No
 msgid "No"
@@ -3185,6 +3186,7 @@ msgid "Yearly"
 msgstr "Urtero"
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Yes
 msgid "Yes"
