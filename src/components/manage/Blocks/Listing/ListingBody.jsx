@@ -87,7 +87,9 @@ const ListingBody = withQuerystringResults((props) => {
           defaultMessage="No items found in this container."
         />
       )}
-      {hasLoaded && NoResults && <NoResults />}
+      {hasLoaded && NoResults && (
+        <NoResults isEditMode={isEditMode} {...data} />
+      )}
       <Dimmer active={!hasLoaded} inverted>
         <Loader indeterminate size="small">
           <FormattedMessage id="loading" defaultMessage="Loading" />
@@ -96,7 +98,9 @@ const ListingBody = withQuerystringResults((props) => {
     </div>
   ) : (
     <div>
-      {hasLoaded && NoResults && <NoResults />}
+      {hasLoaded && NoResults && (
+        <NoResults isEditMode={isEditMode} {...data} />
+      )}
       <Dimmer active={!hasLoaded} inverted>
         <Loader indeterminate size="small">
           <FormattedMessage id="loading" defaultMessage="Loading" />
