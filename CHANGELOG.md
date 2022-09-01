@@ -14,6 +14,17 @@
 
 ### Documentation
 
+## 16.0.0-alpha.28 (2022-08-31)
+
+### Feature
+
+- Add clear formatting button to slate @robgietema
+
+### Bugfix
+
+- Fix array widget translation @robgietema
+- Fix copy / paste text in list @robgietema
+
 ## 16.0.0-alpha.27 (2022-08-29)
 
 ### Feature
@@ -70,6 +81,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 
 ### Feature
 
+- support for many_users and many_groups flag in user controlpanel and group controlpanel @nileshgulia1
 - Show the content type of the content object you are adding/editing in the sidebar @robgietema
 - Remove soft hyphens from the title tag @davisagli
 
