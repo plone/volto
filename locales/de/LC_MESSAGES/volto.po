@@ -1726,6 +1726,11 @@ msgstr "Im Feld 'Lead-Bild' wurde kein Bild gesetzt."
 msgid "No image set in image content field"
 msgstr "Im Feld 'Bild' wurde kein Bild gesetzt"
 
+#: components/manage/Blocks/Listing/GalleryNoResultsComponent
+# defaultMessage: No images found.
+msgid "No images found."
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 # defaultMessage: No items found in this container.
 msgid "No items found in this container."
@@ -1759,7 +1764,7 @@ msgstr "Keine Option"
 msgid "No results found"
 msgstr "Keine Ergebnisse gefunden"
 
-#: components/manage/Blocks/Listing/ListingBody
+#: components/manage/Blocks/Listing/DefaultNoResultsComponent
 #: components/manage/Widgets/ReferenceWidget
 # defaultMessage: No results found.
 msgid "No results found."

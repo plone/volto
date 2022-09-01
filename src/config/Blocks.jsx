@@ -20,6 +20,8 @@ import EditTextBlock from '@plone/volto/components/manage/Blocks/Text/Edit';
 import EditImageBlock from '@plone/volto/components/manage/Blocks/Image/Edit';
 import EditLeadImageBlock from '@plone/volto/components/manage/Blocks/LeadImage/Edit';
 import EditListingBlock from '@plone/volto/components/manage/Blocks/Listing/Edit';
+import DefaultNoResultsComponent from '@plone/volto/components/manage/Blocks/Listing/DefaultNoResultsComponent';
+import GalleryNoResultsComponent from '@plone/volto/components/manage/Blocks/Listing/GalleryNoResultsComponent';
 import DefaultListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/DefaultTemplate';
 import SummaryListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/SummaryTemplate';
 import EditVideoBlock from '@plone/volto/components/manage/Blocks/Video/Edit';
@@ -274,6 +276,7 @@ const blocksConfig = {
       addPermission: [],
       view: [],
     },
+    noResultsComponent: DefaultNoResultsComponent,
     variations: [
       {
         id: 'default',
@@ -285,6 +288,7 @@ const blocksConfig = {
         id: 'imageGallery',
         title: 'Image gallery',
         template: ImageGalleryListingBlockTemplate,
+        noResultsTemplate: GalleryNoResultsComponent,
       },
       {
         id: 'summary',

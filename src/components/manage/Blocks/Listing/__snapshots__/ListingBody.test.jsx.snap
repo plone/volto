@@ -2,7 +2,6 @@
 
 exports[`renders a ListingBody component 1`] = `
 <div>
-  No results found.
   <div
     className="ui inverted dimmer"
     onClick={[Function]}

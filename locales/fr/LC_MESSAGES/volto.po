@@ -1737,6 +1737,11 @@ msgstr "Aucune image pour le champ de l'image de garde"
 msgid "No image set in image content field"
 msgstr "Aucune image pour le champ image"
 
+#: components/manage/Blocks/Listing/GalleryNoResultsComponent
+# defaultMessage: No images found.
+msgid "No images found."
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 # defaultMessage: No items found in this container.
 msgid "No items found in this container."
@@ -1770,7 +1775,7 @@ msgstr ""
 msgid "No results found"
 msgstr ""
 
-#: components/manage/Blocks/Listing/ListingBody
+#: components/manage/Blocks/Listing/DefaultNoResultsComponent
 #: components/manage/Widgets/ReferenceWidget
 # defaultMessage: No results found.
 msgid "No results found."

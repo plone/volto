@@ -1720,6 +1720,11 @@ msgstr "Nicio imagine setată în câmpul de conținut imagine de start"
 msgid "No image set in image content field"
 msgstr "Nicio imagine setată în câmpul imagine de continut"
 
+#: components/manage/Blocks/Listing/GalleryNoResultsComponent
+# defaultMessage: No images found.
+msgid "No images found."
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 # defaultMessage: No items found in this container.
 msgid "No items found in this container."
@@ -1753,7 +1758,7 @@ msgstr "Nicio opțiune"
 msgid "No results found"
 msgstr "Nu s-au găsit rezultate"
 
-#: components/manage/Blocks/Listing/ListingBody
+#: components/manage/Blocks/Listing/DefaultNoResultsComponent
 #: components/manage/Widgets/ReferenceWidget
 # defaultMessage: No results found.
 msgid "No results found."

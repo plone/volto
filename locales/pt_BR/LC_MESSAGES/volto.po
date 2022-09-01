@@ -1730,6 +1730,11 @@ msgstr "Nenhuma imagem definida no campo de imagem principal"
 msgid "No image set in image content field"
 msgstr "Nenhuma imagem definida no campo de imagem"
 
+#: components/manage/Blocks/Listing/GalleryNoResultsComponent
+# defaultMessage: No images found.
+msgid "No images found."
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 # defaultMessage: No items found in this container.
 msgid "No items found in this container."
@@ -1763,7 +1768,7 @@ msgstr "Sem opções"
 msgid "No results found"
 msgstr "Nenhum resultado encontrado"
 
-#: components/manage/Blocks/Listing/ListingBody
+#: components/manage/Blocks/Listing/DefaultNoResultsComponent
 #: components/manage/Widgets/ReferenceWidget
 # defaultMessage: No results found.
 msgid "No results found."
