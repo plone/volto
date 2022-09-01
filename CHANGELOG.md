@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix grouping of the "users and groups" control panels (plone-users category) @sneridagh
+
 ### Internal
 
 ### Documentation
