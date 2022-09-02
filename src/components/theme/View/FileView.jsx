@@ -6,7 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container as SemanticContainer } from 'semantic-ui-react';
-import { flattenToAppURL, addPrefixPath } from '@plone/volto/helpers';
+import { UniversalLink } from '@plone/volto/components';
 import config from '@plone/volto/registry';
 
 /**
@@ -29,9 +29,9 @@ const FileView = ({ content }) => {
         <p className="documentDescription">{content.description}</p>
       )}
       {content.file?.download && (
-        <a href={addPrefixPath(flattenToAppURL(content.file.download))}>
+        <UniversalLink href={content.file.download}>
           {content.file.filename}
-        </a>
+        </UniversalLink>
       )}
     </Container>
   );
