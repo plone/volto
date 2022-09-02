@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Support for getting `selectableTypes` and `maximumSelectionSize` from `widgetProps` @sneridagh
+
 ### Bugfix
 
 ### Internal
