@@ -3334,12 +3334,12 @@ msgstr "Benutzername"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Users
 msgid "Users"
-msgstr "Nutzer"
+msgstr "Benutzer"
 
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Users and Groups
 msgid "Users and Groups"
-msgstr "Nutzer und Gruppen"
+msgstr "Benutzer und Gruppen"
 
 #: helpers/Extensions/withBlockSchemaEnhancer
 # defaultMessage: Variation
