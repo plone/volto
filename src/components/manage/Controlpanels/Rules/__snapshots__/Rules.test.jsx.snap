@@ -27,34 +27,6 @@ exports[`Rules renders rules control panel control 1`] = `
           className="ui segment"
         >
           <div
-            className="ui checkbox"
-            onChange={[Function]}
-            onClick={[Function]}
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
-          >
-            <input
-              checked={false}
-              className="hidden"
-              readOnly={true}
-              tabIndex={0}
-              type="checkbox"
-              value="disable-globally"
-            />
-            <label>
-              Disable globally
-            </label>
-          </div>
-        </div>
-        <div
-          className="ui segment secondary"
-        >
-          Whether or not content rules should be disabled globally. If this is selected, no rules will be executed anywhere in the portal.
-        </div>
-        <div
-          className="ui segment"
-        >
-          <div
             className="ui small header"
           >
             Filter Rules:

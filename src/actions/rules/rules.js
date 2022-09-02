@@ -20,6 +20,7 @@ import {
   ADDACTION_CONTROLPANEL_RULE,
   GETACTION_CONTROLPANEL_RULE,
   EDITACTION_CONTROLPANEL_RULE,
+  MOVE_CONTENT_RULE,
 } from '@plone/volto/constants/ActionTypes';
 
 /**
@@ -243,6 +244,40 @@ export function addNewRule(url, data) {
 }
 
 /**
+ * Move rule condition function.
+ * @function moveRuleCondition
+ * @param {string} url Content url.
+ * @returns {Object} Move rule condition action.
+ */
+export function moveRuleCondition(url, data, ruleId, condId) {
+  return {
+    type: MOVE_CONTENT_RULE,
+    request: {
+      op: 'patch',
+      path: `${url}/@controlpanels/content-rules/${ruleId}/condition/${condId}`,
+      data,
+    },
+  };
+}
+
+/**
+ * Move rule action function.
+ * @function moveRuleAction
+ * @param {string} url Content url.
+ * @returns {Object} Move rule action action.
+ */
+export function moveRuleAction(url, data, ruleId, actionId) {
+  return {
+    type: MOVE_CONTENT_RULE,
+    request: {
+      op: 'patch',
+      path: `${url}/@controlpanels/content-rules/${ruleId}/action/${actionId}`,
+      data,
+    },
+  };
+}
+
+/**
  * Edit rule function.
  * @function editRule
  * @param {string} url Content url.
@@ -302,7 +337,7 @@ export function editCondition(url, rule, data, condition_index) {
   return {
     type: EDITCONDITION_CONTROLPANEL_RULE,
     request: {
-      op: 'post',
+      op: 'patch',
       path: `${url}/@controlpanels/content-rules/${rule}/condition/${condition_index}`,
       data,
     },
@@ -368,7 +403,7 @@ export function editAction(url, rule, data, action_index) {
   return {
     type: EDITACTION_CONTROLPANEL_RULE,
     request: {
-      op: 'post',
+      op: 'patch',
       path: `${url}/@controlpanels/content-rules/${rule}/action/${action_index}`,
       data,
     },
@@ -390,17 +425,3 @@ export function getAction(url, rule, action_index) {
     },
   };
 }
-
-// add condition in configure panel ${url}/@controlpanels/content-rules/${idRule}/condition
-// edit condition in configure panel ${url}/@controlpanels/content-rules/${idRule}/condition/${condition-index}
-// delete condition in configure panel ${url}/@controlpanels/content-rules/${idRule}/condition/${condition-index} (del)
-
-// condition-index = index in array of conditions for that rule
-
-// add action in configure panel ${url}/@controlpanels/content-rules/${idRule}/action (post)
-// edit action in configure panel ${url}/@controlpanels/content-rules/${idRule}/action/${action-index} (patch)
-// delete action in configure panel ${url}/@controlpanels/content-rules/${idRule}/action/${action-index} (del)
-
-// ***moveup
-
-// edit action in configure panel ${url}/@controlpanels/content-rules/${idRule}/action/${action-index} (patch) + data = {"form.button.Move": "_move_up"}

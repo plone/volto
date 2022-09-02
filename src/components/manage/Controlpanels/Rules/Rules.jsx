@@ -269,20 +269,20 @@ class Rules extends Component {
                   defaultMessage="Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu."
                 />
               </Segment>
-              <Segment>
+              {/* <Segment>
                 <Checkbox
                   // onChange={(e, { value }) => console.log(value)}
                   //checked={}
                   value={'disable-globally'}
                   label="Disable globally"
                 />
-              </Segment>
-              <Segment className="secondary">
+              </Segment> */}
+              {/* <Segment className="secondary">
                 <FormattedMessage
                   id="Whether or not content rules should be disabled globally. If this is selected, no rules will be executed anywhere in the portal."
                   defaultMessage="Whether or not content rules should be disabled globally. If this is selected, no rules will be executed anywhere in the portal."
                 />
-              </Segment>
+              </Segment> */}
               <Segment>
                 <Header size="small">
                   <FormattedMessage

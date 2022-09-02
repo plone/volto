@@ -30,6 +30,8 @@ import {
   editAction,
   getCondition,
   getAction,
+  moveRuleCondition,
+  moveRuleAction,
 } from '@plone/volto/actions';
 import { toast } from 'react-toastify';
 import { Toast } from '@plone/volto/components';
@@ -52,14 +54,6 @@ const messages = defineMessages({
     id: 'Success',
     defaultMessage: 'Success',
   },
-  moveUp: {
-    id: 'Move up',
-    defaultMessage: 'Move up',
-  },
-  moveDown: {
-    id: 'Move down',
-    defaultMessage: 'Move down',
-  },
   deleteCondition: {
     id: 'Delete condition',
     defaultMessage: 'Condition deleted',
@@ -75,6 +69,26 @@ const messages = defineMessages({
   addAction: {
     id: 'Add action',
     defaultMessage: 'Action added',
+  },
+  editAction: {
+    id: 'Action changed',
+    defaultMessage: 'Action changed',
+  },
+  editCondition: {
+    id: 'Condition changed',
+    defaultMessage: 'Condition changed',
+  },
+  move: {
+    id: 'Position changed',
+    defaultMessage: 'Position changed',
+  },
+  moveUp: {
+    id: 'Move up',
+    defaultMessage: 'Move up',
+  },
+  moveDown: {
+    id: 'Move down',
+    defaultMessage: 'Move down',
   },
 });
 
@@ -95,6 +109,8 @@ class ConfigureRule extends Component {
     addCondition: PropTypes.func.isRequired,
     removeAction: PropTypes.func.isRequired,
     addAction: PropTypes.func.isRequired,
+    moveRuleCondition: PropTypes.func.isRequired,
+    moveRuleAction: PropTypes.func.isRequired,
   };
 
   /**
@@ -188,6 +204,19 @@ class ConfigureRule extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
+    if (this.props.rule.move.loading && nextProps.rule.move.loaded) {
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.move)}
+        />,
+      );
+      this.props.getControlPanelRule(
+        getBaseUrl(this.props.pathname),
+        this.props?.match?.params?.id,
+      );
+    }
     if (
       this.props.rule.deletecondition.loading &&
       nextProps.rule.deletecondition.loaded
@@ -197,6 +226,38 @@ class ConfigureRule extends Component {
           success
           title={this.props.intl.formatMessage(messages.success)}
           content={this.props.intl.formatMessage(messages.deleteCondition)}
+        />,
+      );
+      this.props.getControlPanelRule(
+        getBaseUrl(this.props.pathname),
+        this.props?.match?.params?.id,
+      );
+    }
+    if (
+      this.props.rule.editcondition.loading &&
+      nextProps.rule.editcondition.loaded
+    ) {
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.editCondition)}
+        />,
+      );
+      this.props.getControlPanelRule(
+        getBaseUrl(this.props.pathname),
+        this.props?.match?.params?.id,
+      );
+    }
+    if (
+      this.props.rule.editaction.loading &&
+      nextProps.rule.editaction.loaded
+    ) {
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.editAction)}
         />,
       );
       this.props.getControlPanelRule(
@@ -387,6 +448,39 @@ class ConfigureRule extends Component {
   }
 
   /**
+   * Move action handler
+   * @method handleMoveAction
+   * @returns {undefined}
+   */
+  handleMoveAction(action, direction) {
+    const ruleId = this.props?.match?.params?.id;
+    this.props.moveRuleAction(
+      getBaseUrl(this.props.pathname),
+      {
+        'form.button.Move': direction === 'up' ? '_move_up' : '_move_down',
+      },
+      ruleId,
+      action,
+    );
+  }
+
+  /**
+   * Move action handler
+   * @method handleMoveCondition
+   * @returns {undefined}
+   */
+  handleMoveCondition(condition, direction) {
+    const ruleId = this.props?.match?.params?.id;
+    this.props.moveRuleCondition(
+      getBaseUrl(this.props.pathname),
+      {
+        'form.button.Move': direction === 'up' ? '_move_up' : '_move_down',
+      },
+      ruleId,
+      condition,
+    );
+  }
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -475,23 +569,43 @@ class ConfigureRule extends Component {
                                   >
                                     Remove
                                   </Button>
-                                  <Button compact size="tiny" primary>
-                                    <Icon
-                                      name={upSVG}
-                                      size="10px"
-                                      title={this.props.intl.formatMessage(
-                                        messages.moveUp,
-                                      )}
-                                    />
+                                  <Button
+                                    compact
+                                    size="tiny"
+                                    primary
+                                    disabled={cond?.first}
+                                    onClick={() =>
+                                      this.handleMoveCondition(cond.idx, 'up')
+                                    }
+                                  >
+                                    <Button.Content>
+                                      <Icon
+                                        name={upSVG}
+                                        size="10px"
+                                        title={this.props.intl.formatMessage(
+                                          messages.moveUp,
+                                        )}
+                                      />
+                                    </Button.Content>
                                   </Button>
-                                  <Button compact size="tiny" primary>
-                                    <Icon
-                                      name={downSVG}
-                                      size="10px"
-                                      title={this.props.intl.formatMessage(
-                                        messages.moveDown,
-                                      )}
-                                    />
+                                  <Button
+                                    compact
+                                    size="tiny"
+                                    primary
+                                    disabled={cond?.last}
+                                    onClick={() =>
+                                      this.handleMoveCondition(cond.idx, 'down')
+                                    }
+                                  >
+                                    <Button.Content>
+                                      <Icon
+                                        name={downSVG}
+                                        size="10px"
+                                        title={this.props.intl.formatMessage(
+                                          messages.moveDown,
+                                        )}
+                                      />
+                                    </Button.Content>
                                   </Button>
                                 </Card.Content>
                               </Card>
@@ -571,23 +685,43 @@ class ConfigureRule extends Component {
                                   >
                                     Remove
                                   </Button>
-                                  <Button compact size="tiny" primary>
-                                    <Icon
-                                      name={upSVG}
-                                      size="10px"
-                                      title={this.props.intl.formatMessage(
-                                        messages.moveUp,
-                                      )}
-                                    />
+                                  <Button
+                                    compact
+                                    size="tiny"
+                                    primary
+                                    disabled={action?.first}
+                                    onClick={() =>
+                                      this.handleMoveAction(action.idx, 'up')
+                                    }
+                                  >
+                                    <Button.Content>
+                                      <Icon
+                                        name={upSVG}
+                                        size="10px"
+                                        title={this.props.intl.formatMessage(
+                                          messages.moveUp,
+                                        )}
+                                      />
+                                    </Button.Content>
                                   </Button>
-                                  <Button compact size="tiny" primary>
-                                    <Icon
-                                      name={downSVG}
-                                      size="10px"
-                                      title={this.props.intl.formatMessage(
-                                        messages.moveDown,
-                                      )}
-                                    />
+                                  <Button
+                                    compact
+                                    size="tiny"
+                                    primary
+                                    disabled={action?.last}
+                                    onClick={() =>
+                                      this.handleMoveAction(action.idx, 'down')
+                                    }
+                                  >
+                                    <Button.Content>
+                                      <Icon
+                                        name={downSVG}
+                                        size="10px"
+                                        title={this.props.intl.formatMessage(
+                                          messages.moveDown,
+                                        )}
+                                      />
+                                    </Button.Content>
                                   </Button>
                                 </Card.Content>
                               </Card>
@@ -753,6 +887,8 @@ export default compose(
       removeAction,
       addAction,
       editAction,
+      moveRuleCondition,
+      moveRuleAction,
     },
   ),
 )(ConfigureRule);

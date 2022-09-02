@@ -354,7 +354,7 @@ const VariableModal = ({
   const [vocabularyName, setVocabularyName] = React.useState('');
   const [inputSchema, setInputSchema] = React.useState('');
 
-  const { addview = '', editview = '' } = value || {};
+  const { addview = '' } = value || {};
 
   React.useEffect(() => {
     if (value?.title) {
@@ -386,7 +386,12 @@ const VariableModal = ({
   }, [vocabularies, open, formData, value]);
 
   const handleSave = (v) => {
-    onSave({ ...v, type: action === 'add' ? addview : editview });
+    if (action === 'add') {
+      onSave({ ...v, type: addview });
+    }
+    if (action === 'edit') {
+      onSave(v);
+    }
     setInputSchema('');
     onClose();
   };
@@ -397,7 +402,6 @@ const VariableModal = ({
     onClose();
   };
 
-  // console.log(value, 'val');
   return (
     <div>
       {inputSchema && action === 'add' && (

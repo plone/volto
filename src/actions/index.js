@@ -75,6 +75,8 @@ export {
 } from '@plone/volto/actions/schema/schema';
 export {
   addRule,
+  moveRuleCondition,
+  moveRuleAction,
   getRules,
   enableRules,
   disableRules,
