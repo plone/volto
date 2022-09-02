@@ -45,6 +45,11 @@ msgid "Action"
 msgstr "アクション"
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Action changed
+msgid "Action changed"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Action:
 msgid "Action: "
 msgstr ""
@@ -579,6 +584,11 @@ msgstr ""
 # defaultMessage: Compare
 msgid "Compare"
 msgstr "比較"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Condition changed
+msgid "Condition changed"
+msgstr ""
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Condition:
@@ -2182,6 +2192,11 @@ msgstr "Plone{reg} Open Source CMS/WCM"
 msgid "Portrait"
 msgstr "顔写真"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Position changed
+msgid "Position changed"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Possible values (Enter allowed choices one per line).
 msgid "Possible values"
@@ -2441,6 +2456,11 @@ msgstr "Root"
 #: components/manage/Controlpanels/Rules/AddRule
 # defaultMessage: Rule added
 msgid "Rule added"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Rule enable changed
+msgid "Rule enable changed"
 msgstr ""
 
 #: components/manage/Rules/Rules
@@ -3438,11 +3458,6 @@ msgstr "いつ"
 # defaultMessage: When this date is reached, the content will nolonger be visible in listings and searches.
 msgid "When this date is reached, the content will nolonger be visible in listings and searches."
 msgstr "When this date is reached, the content will nolonger be visible in listings and searches. (未翻訳)"
-
-#: components/manage/Controlpanels/Rules/Rules
-# defaultMessage: Whether or not content rules should be disabled globally. If this is selected, no rules will be executed anywhere in the portal.
-msgid "Whether or not content rules should be disabled globally. If this is selected, no rules will be executed anywhere in the portal."
-msgstr ""
 
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule

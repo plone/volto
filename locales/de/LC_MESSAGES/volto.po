@@ -43,6 +43,11 @@ msgid "Action"
 msgstr "Aktion"
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Action changed
+msgid "Action changed"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Action:
 msgid "Action: "
 msgstr ""
@@ -577,6 +582,11 @@ msgstr "Kommentare"
 # defaultMessage: Compare
 msgid "Compare"
 msgstr "Vergleichen"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Condition changed
+msgid "Condition changed"
+msgstr ""
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Condition:
@@ -2180,6 +2190,11 @@ msgstr "Plone{reg} Open Source Content Management System"
 msgid "Portrait"
 msgstr "Portrait"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Position changed
+msgid "Position changed"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Possible values (Enter allowed choices one per line).
 msgid "Possible values"
@@ -2439,6 +2454,11 @@ msgstr "Wurzel"
 #: components/manage/Controlpanels/Rules/AddRule
 # defaultMessage: Rule added
 msgid "Rule added"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Rule enable changed
+msgid "Rule enable changed"
 msgstr ""
 
 #: components/manage/Rules/Rules
@@ -3436,11 +3456,6 @@ msgstr "Wann"
 # defaultMessage: When this date is reached, the content will nolonger be visible in listings and searches.
 msgid "When this date is reached, the content will nolonger be visible in listings and searches."
 msgstr "Wenn dieses Datum erreicht wird, wird der Inhalt nicht länger in Auflistungen und in der Suche auftauchen."
-
-#: components/manage/Controlpanels/Rules/Rules
-# defaultMessage: Whether or not content rules should be disabled globally. If this is selected, no rules will be executed anywhere in the portal.
-msgid "Whether or not content rules should be disabled globally. If this is selected, no rules will be executed anywhere in the portal."
-msgstr ""
 
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule

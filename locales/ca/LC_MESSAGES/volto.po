@@ -46,6 +46,11 @@ msgid "Action"
 msgstr "Acció"
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Action changed
+msgid "Action changed"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Action:
 msgid "Action: "
 msgstr ""
@@ -580,6 +585,11 @@ msgstr "Comentaris"
 # defaultMessage: Compare
 msgid "Compare"
 msgstr "Compara"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Condition changed
+msgid "Condition changed"
+msgstr ""
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Condition:
@@ -2183,6 +2193,11 @@ msgstr "Plone{reg} CMS/WCM de codi obert"
 msgid "Portrait"
 msgstr "Retrat"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Position changed
+msgid "Position changed"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Possible values (Enter allowed choices one per line).
 msgid "Possible values"
@@ -2442,6 +2457,11 @@ msgstr "Arrel"
 #: components/manage/Controlpanels/Rules/AddRule
 # defaultMessage: Rule added
 msgid "Rule added"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Rule enable changed
+msgid "Rule enable changed"
 msgstr ""
 
 #: components/manage/Rules/Rules
@@ -3439,11 +3459,6 @@ msgstr "Quan"
 # defaultMessage: When this date is reached, the content will nolonger be visible in listings and searches.
 msgid "When this date is reached, the content will nolonger be visible in listings and searches."
 msgstr "Quan s'arribi a aquesta data, el contingut ja no serà visible a les llistes i cerques."
-
-#: components/manage/Controlpanels/Rules/Rules
-# defaultMessage: Whether or not content rules should be disabled globally. If this is selected, no rules will be executed anywhere in the portal.
-msgid "Whether or not content rules should be disabled globally. If this is selected, no rules will be executed anywhere in the portal."
-msgstr ""
 
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
