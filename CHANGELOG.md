@@ -10,9 +10,17 @@
 
 ### Bugfix
 
+- Fix grouping of the "users and groups" control panels (plone-users category) @sneridagh
+
 ### Internal
 
 ### Documentation
+
+## 16.0.0-alpha.29 (2022-09-02)
+
+### Feature
+
+- Support for getting `selectableTypes` and `maximumSelectionSize` from `widgetProps` @sneridagh
 
 ## 16.0.0-alpha.28 (2022-08-31)
 

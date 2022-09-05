@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Enable working copy support in Volto's configuration object"
-  "property=og:description": "Enable working copy support in Volto's configuration object"
-  "property=og:title": "Working copy support"
-  "keywords": "Volto, Plone, frontend, React, working copy, app iterate"
+myst:
+  html_meta:
+    "description": "Enable working copy support in Volto's configuration object"
+    "property=og:description": "Enable working copy support in Volto's configuration object"
+    "property=og:title": "Working copy support"
+    "keywords": "Volto, Plone, frontend, React, working copy, app iterate"
 ---
 
 # Working copy support

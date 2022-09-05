@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "TBD"
-  "property=og:description": "TBD"
-  "property=og:title": "Routing"
-  "keywords": "Volto, Plone, frontend, React, Routing"
+myst:
+  html_meta:
+    "description": "TBD"
+    "property=og:description": "TBD"
+    "property=og:title": "Routing"
+    "keywords": "Volto, Plone, frontend, React, Routing"
 ---
 
 # Routing
