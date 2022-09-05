@@ -7,12 +7,15 @@ import { ListingBlockBody as ListingBody } from '@plone/volto/components';
 
 const View = (props) => {
   const { data, path, pathname, className } = props;
+  const HeadlineTag = data.headlineTag || 'h2';
 
   return (
     <div
       className={cx('block listing', data.variation || 'default', className)}
     >
-      {data.headline && <h2 className="headline">{data.headline}</h2>}
+      {data.headline && (
+        <HeadlineTag className="headline">{data.headline}</HeadlineTag>
+      )}
       <ListingBody {...props} path={path ?? pathname} />
     </div>
   );
