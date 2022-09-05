@@ -32,16 +32,16 @@ const messages = defineMessages({
   },
 });
 
-const DEFAULT_HEADING_LEVELS = [
+const DEFAULT_HEADLINE_LEVELS = [
   ['h2', 'h2'],
   ['h3', 'h3'],
 ];
 
 export const schemaListing = (props) => {
   const { intl } = props;
-  const default_headline_tags =
-    config.blocks?.blocksConfig?.listing?.default_headline_tags ||
-    DEFAULT_HEADING_LEVELS;
+  const allowed_headline_tags =
+    config.blocks?.blocksConfig?.listing?.allowed_headline_tags ||
+    DEFAULT_HEADLINE_LEVELS;
 
   return {
     title: intl.formatMessage(messages.listing),
@@ -49,7 +49,11 @@ export const schemaListing = (props) => {
       {
         id: 'default',
         title: 'Default',
-        fields: ['headline', 'headlineTag', 'querystring'],
+        fields: [
+          'headline',
+          ...(allowed_headline_tags.length > 1 ? ['headlineTag'] : []),
+          'querystring',
+        ],
       },
       ...(config.blocks.blocksConfig.listing.showLinkMore
         ? [
@@ -68,7 +72,7 @@ export const schemaListing = (props) => {
       },
       headlineTag: {
         title: intl.formatMessage(messages.headlineTag),
-        choices: default_headline_tags,
+        choices: allowed_headline_tags,
         default: 'h2',
         noValueOption: false,
       },
