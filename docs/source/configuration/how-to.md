@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Volto has a centralized configuration registry used to parameterize Volto."
-  "property=og:description": "Volto has a centralized configuration registry used to parameterize Volto."
-  "property=og:title": "The configuration registry"
-  "keywords": "Volto, Plone, frontend, React, configuration, registry"
+myst:
+  html_meta:
+    "description": "Volto has a centralized configuration registry used to parameterize Volto."
+    "property=og:description": "Volto has a centralized configuration registry used to parameterize Volto."
+    "property=og:title": "The configuration registry"
+    "keywords": "Volto, Plone, frontend, React, configuration, registry"
 ---
 
 # The configuration registry
@@ -23,7 +24,7 @@ const absoluteUrl = `${config.settings.apiPath}/${content.url}`
 ```
 
 Both the main project and individual add-ons can extend Volto's configuration registry.
-First the add-ons configuration is applied, in the order they are defined in 
+First the add-ons configuration is applied, in the order they are defined in
 `package.json`, then finally the project configuration is applied. Visualized like
 a pipe would be:
 

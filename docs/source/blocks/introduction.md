@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "How to manually enable Blocks on a content type"
-  "property=og:description": "How to manually enable Blocks on a content type"
-  "property=og:title": "Blocks Introduction"
-  "keywords": "Volto, Plone, frontend, React, blocks"
+myst:
+  html_meta:
+    "description": "How to manually enable Blocks on a content type"
+    "property=og:description": "How to manually enable Blocks on a content type"
+    "property=og:title": "Blocks Introduction"
+    "keywords": "Volto, Plone, frontend, React, blocks"
 ---
 
 # Blocks Introduction
