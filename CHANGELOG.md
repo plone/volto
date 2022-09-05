@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Fix grouping of the "users and groups" control panels (plone-users category) @sneridagh
+- Improve `Display` and `Workflow` widgets in `More` menu. Fix alignments. @sneridagh
 
 ### Internal
 
