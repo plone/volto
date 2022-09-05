@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "How to write a volto-slate plugin"
-  "property=og:description": "How to write a volto-slate plugin"
-  "property=og:title": "Write a volto-slate plugin"
-  "keywords": "Volto, Plone, frontend, React, Slate, Slate-React, volto-slate, plugins"
+myst:
+  html_meta:
+    "description": "How to write a volto-slate plugin"
+    "property=og:description": "How to write a volto-slate plugin"
+    "property=og:title": "Write a volto-slate plugin"
+    "keywords": "Volto, Plone, frontend, React, Slate, Slate-React, volto-slate, plugins"
 ---
 
 (writing-plugins-label)=
@@ -15,7 +16,7 @@ You will add a plugin that will provide a button to create a tooltip for a selec
 This process can be generalized for any custom Slate plugin.
 
 ```{image} /_static/tooltip_plugin.png
-:alt: Slate toooltip plugin 
+:alt: Slate toooltip plugin
 ```
 
 ## The installer

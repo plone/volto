@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "This upgrade guide lists all breaking changes in Volto and explains the steps that are necessary to upgrade to the latest version."
-  "property=og:description": "This upgrade guide lists all breaking changes in Volto and explains the steps that are necessary to upgrade to the latest version."
-  "property=og:title": "Upgrade Guide"
-  "keywords": "Volto, Plone, frontend, React, Upgrade, Guide"
+myst:
+  html_meta:
+    "description": "This upgrade guide lists all breaking changes in Volto and explains the steps that are necessary to upgrade to the latest version."
+    "property=og:description": "This upgrade guide lists all breaking changes in Volto and explains the steps that are necessary to upgrade to the latest version."
+    "property=og:title": "Upgrade Guide"
+    "keywords": "Volto, Plone, frontend, React, Upgrade, Guide"
 ---
 
 (volto-upgrade-guide)=

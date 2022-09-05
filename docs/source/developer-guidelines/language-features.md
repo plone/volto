@@ -1,11 +1,10 @@
 ---
-html_meta:
-  "description": "Volto is developed using Babel to transpile modern Javascript to Javascript that
-browsers are able to understand and execute."
-  "property=og:description": "Volto is developed using Babel to transpile modern Javascript to Javascript that
-browsers are able to understand and execute."
-  "property=og:title": "Language features and conventions"
-  "keywords": "Volto, Plone, frontend, React, Babel, translations, language, internationalization, i18n, localization, transpilation"
+myst:
+  html_meta:
+    "description": "Volto is developed using Babel to transpile modern Javascript to Javascript that browsers are able to understand and execute."
+    "property=og:description": "Volto is developed using Babel to transpile modern Javascript to Javascript that browsers are able to understand and execute."
+    "property=og:title": "Language features and conventions"
+    "keywords": "Volto, Plone, frontend, React, Babel, translations, language, internationalization, i18n, localization, transpilation"
 ---
 
 # Language features and conventions
