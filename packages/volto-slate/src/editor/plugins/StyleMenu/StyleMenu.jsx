@@ -79,24 +79,25 @@ const selectStyles = {
       paddingDown: '0px',
     };
   },
-  // control: (provided, state) => {
-  //   return {
-  //     ...provided,
-  //     minHeight: 'auto',
-  //     borderWidth: 'unset',
-  //     cursor: 'pointer',
-  //     marginTop: '0.25rem',
-  //     // borderColor: state.isFocused ? brownColor : '#f3f3f3',
-  //     // boxShadow: 'unset',
-  //   };
-  // container: (provided, state) => {
-  //   return {
-  //     ...provided,
-  //     marginLeft: '3px',
-  //     width: '12rem',
-  //     // backgroundColor: state.isFocused ? '#f3f3f3' : 'unset',
-  //   };
-  // },
+  control: (provided, state) => {
+    return {
+      ...provided,
+      minHeight: 'auto',
+      borderWidth: 'unset',
+      cursor: 'pointer',
+      marginTop: '0.25rem',
+      // borderColor: state.isFocused ? brownColor : '#f3f3f3',
+      // boxShadow: 'unset',
+    };
+  },
+  container: (provided, state) => {
+    return {
+      ...provided,
+      marginLeft: '3px',
+      width: '12rem',
+      // backgroundColor: state.isFocused ? '#f3f3f3' : 'unset',
+    };
+  },
   singleValue: (provided, state) => {
     return {
       paddingLeft: '3px',
@@ -126,18 +127,9 @@ const selectStyles = {
   },
 };
 
-const StyleMenuButton = ({ icon, ...props }) => {
-  const editor = useSlate();
-
-  const handleMouseDown = React.useCallback(
-    (event) => {
-      event.preventDefault();
-    },
-    [editor],
-  );
-
-  return <ToolbarButton {...props} onMouseDown={handleMouseDown} icon={icon} />;
-};
+const StyleMenuButton = ({ icon, ...props }) => (
+  <ToolbarButton {...props} icon={icon} />
+);
 
 const StylingsButton = (props) => {
   const editor = useSlate();
@@ -190,6 +182,7 @@ const StylingsButton = (props) => {
       onBlur={() => {
         setOpen(false);
       }}
+      style={selectStyles}
       isMulti={true}
       hideSelectedOptions={false}
       noOptionsMessage={({ inputValue }) =>
@@ -238,31 +231,35 @@ const StylingsButton = (props) => {
             //     className,
             //   )}
             //   {...innerProps}
-            //   // The only difference from the initial React-Select's Control
-            //   // component:
             //   onClick={() => {
             //     setOpen(!open);
             //   }}
+            //   // The only difference from the initial React-Select's Control
+            //   // component:
             // >
             //   {children}
             // </div>
-            null
+            <StyleMenuButton
+              ref={innerRef}
+              title="styleMenu"
+              icon={paintSVG}
+              className={cx(
+                {
+                  control: true,
+                  'control--is-disabled': isDisabled,
+                  'control--is-focused': isFocused,
+                  'control--menu-is-open': menuIsOpen,
+                },
+                className,
+              )}
+              onClick={() => {
+                setOpen(!open);
+              }}
+              {...innerProps}
+            ></StyleMenuButton>
           );
         },
-        SelectContainer: (props) => {
-          const {
-            children,
-            cx,
-            getStyles,
-            className,
-            isDisabled,
-            isFocused,
-            innerRef,
-            innerProps,
-            menuIsOpen,
-          } = props;
-          return <StyleMenuButton title="styleMenu" icon={paintSVG} />;
-        },
+
         Placeholder: (props) => {
           return null;
         },
