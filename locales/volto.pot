@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-08-30T05:37:45.855Z\n"
+"POT-Creation-Date: 2022-09-05T10:03:24.620Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1181,6 +1181,11 @@ msgstr ""
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
 msgid "Headline"
+msgstr ""
+
+#: components/manage/Blocks/Listing/schema
+# defaultMessage: Headline level
+msgid "Headline level"
 msgstr ""
 
 #: components/manage/Blocks/Search/schema
