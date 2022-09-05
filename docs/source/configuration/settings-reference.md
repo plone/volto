@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "This is a summary of all the Volto configuration options and what they control."
-  "property=og:description": "This is a summary of all the Volto configuration options and what they control."
-  "property=og:title": "Settings reference guide"
-  "keywords": "Volto, Plone, frontend, React, configuration, settings, reference"
+myst:
+  html_meta:
+    "description": "This is a summary of all the Volto configuration options and what they control."
+    "property=og:description": "This is a summary of all the Volto configuration options and what they control."
+    "property=og:title": "Settings reference guide"
+    "keywords": "Volto, Plone, frontend, React, configuration, settings, reference"
 ---
 
 # Settings reference guide

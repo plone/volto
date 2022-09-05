@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Installing Volto"
-  "property=og:description": "Installing Volto"
-  "property=og:title": "Getting Started"
-  "keywords": "Volto, Plone, frontend, React, install, nvm, NodeJS, JavaScript"
+myst:
+  html_meta:
+    "description": "Installing Volto"
+    "property=og:description": "Installing Volto"
+    "property=og:title": "Getting Started"
+    "keywords": "Volto, Plone, frontend, React, install, nvm, NodeJS, JavaScript"
 ---
 
 (frontend-getting-started-label)=

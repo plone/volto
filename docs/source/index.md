@@ -1,11 +1,10 @@
 ---
-html_meta:
-  "description": "Volto is the React-based frontend for the Plone CMS. It is
-the default UI for the Plone 6 release."
-  "property=og:description": "Volto is the React-based frontend for the Plone CMS. It is
-the default UI for the Plone 6 release."
-  "property=og:title": "Frontend"
-  "keywords": "Volto, Plone, frontend, React"
+myst:
+  html_meta:
+    "description": "Volto is the React-based frontend for the Plone CMS. It is the default UI for the Plone 6 release."
+    "property=og:description": "Volto is the React-based frontend for the Plone CMS. It is the default UI for the Plone 6 release."
+    "property=og:title": "Frontend"
+    "keywords": "Volto, Plone, frontend, React"
 ---
 
 (volto-index-label)=

@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Volto Style Guide"
-  "property=og:description": "Volto Style Guide"
-  "property=og:title": "Style Guide"
-  "keywords": "Volto, Plone, frontend, React, Style, Guide, Design, Quanta, Pastanaga"
+myst:
+  html_meta:
+    "description": "Volto Style Guide"
+    "property=og:description": "Volto Style Guide"
+    "property=og:title": "Style Guide"
+    "keywords": "Volto, Plone, frontend, React, Style, Guide, Design, Quanta, Pastanaga"
 ---
 
 # Style Guide
