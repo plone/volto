@@ -10,7 +10,7 @@ import { FormattedMessage } from 'react-intl';
 import prettybytes from 'pretty-bytes';
 
 import { flattenToAppURL, addPrefixPath } from '@plone/volto/helpers';
-import { Image, UniversalLink } from '@plone/volto/components';
+import { Image } from '@plone/volto/components';
 
 /**
  * Image view component class.
@@ -28,7 +28,7 @@ const ImageView = ({ content }) => (
       <p className="documentDescription">{content.description}</p>
     )}
     {content?.image?.download && (
-      <UniversalLink href={content.image.download}>
+      <a href={addPrefixPath(flattenToAppURL(content.image.download))}>
         <Image
           alt={content.title}
           src={addPrefixPath(
@@ -47,7 +47,7 @@ const ImageView = ({ content }) => (
             defaultMessage="Click to download full sized image"
           />
         </figcaption>
-      </UniversalLink>
+      </a>
     )}
   </Container>
 );
