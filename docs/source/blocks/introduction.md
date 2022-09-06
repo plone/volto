@@ -19,7 +19,7 @@ Blocks are composed of two basic (and required) components: the block edit and v
 ## Default blocks
 
 Volto ships with a basic set of blocks, as described in the following list.
-For details of all their options, see {ref}`blocks/settings`.
+For details of all their options, see {ref}`blocks/settings`. Some of the blocks are "restricted", they can't be added by the editors through the block chooser UI, for example the Title and Description blocks.
 
 Title
 : Connected to the `title` content type's metadata field. It renders as the `h1` of the page. Cannot be removed by default, although this can be customized using `config.settings.requiredBlocks`.
@@ -28,28 +28,28 @@ Text
 : The rich text block. This is the default type of block when you add a new block to the page.
 
 Image
-: Allows to insert an existing image or upload a new one. In case of uploading it gets added inside the content type (folderish) element. If the content is not folderish, it gets created side by side.
+: Allows insertion of an existing image or upload of a new one. In case of uploading, it gets added inside the content type (folderish) element. If the content is not folderish, it gets created side by side.
 
 Video
-: Allows to insert an external video to the page (YouTube, Vimeo, etc), or on already uploaded to the site (File content type) by referencing it.
+: Allows insertion of either an external video (YouTube, Vimeo), or a video already uploaded to the site (File content type), into the page by referencing it.
 
 Listing
-: Lists the contents of the content type (in case that it's folderish). It also allows to build a query to the database which results will be shown as items of the list. The listing block has variations defined by default (standard, summary, image gallery) to customize how the listing looks like.
+: Lists the contents of the content type when it is folderish. It also allows building a query to the database the results of which will be shown as items of the list. The listing block has variations defined by default (standard, summary, image gallery) to customize the look of the listing.
 
 Maps
 : Allows you to insert a map from an external source (Google Maps, OpenStreet Maps).
 
 Table of contents
-: Insert the table of contents for the current blocks
+: Insert the table of contents for the current blocks.
 
 Hero
-: Show a customizable "Hero" block with a big image, a title and a description.
+: Show a customizable "Hero" block with a big image, a title, and a description.
 
 HTML
 : Inserts arbitrary HTML.
 
 Search
-: A block that provide a form with a search user interface where you can customize the facets (search handlers) and look and feel of the search form.
+: A block that provides a form with a search user interface where you can customize the facets (search handlers) and the appearance of the search form.
 
 Table
 : Inserts a customizable table.
