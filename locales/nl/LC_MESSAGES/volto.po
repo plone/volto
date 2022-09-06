@@ -1194,9 +1194,15 @@ msgstr ""
 msgid "Header cell"
 msgstr ""
 
+#: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
 msgid "Headline"
+msgstr ""
+
+#: components/manage/Blocks/Listing/schema
+# defaultMessage: Headline level
+msgid "Headline level"
 msgstr ""
 
 #: components/manage/Blocks/Search/schema
