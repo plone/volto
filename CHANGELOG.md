@@ -6,8 +6,12 @@
 
 ### Feature
 
+- Added placeholder param to widget, to change default placeholder @giuliaghisini
+- Add a headline (`headline` field) to the listing block schema by default @sneridagh
+
 ### Bugfix
 
+- Fix literal for the listing block edit mode message telling if the results are contained items (no query) or query results ones (query present) @sneridagh
 - Fix grouping of the "users and groups" control panels (plone-users category) @sneridagh
 - Improve `Display` and `Workflow` widgets in `More` menu. Fix alignments. @sneridagh
 - Fixed searching in the sharing page not showing any results @JeffersonBledsoe #3579
