@@ -141,7 +141,7 @@ To install Docker desktop for Mac, here are the detailed instructions:
 2. Install the package as any other Mac software, if required, follow
    instructions from:
 
-    https://docs.docker.com/docker-for-mac/install/
+    https://docs.docker.com/desktop/install/mac-install/
 
 3. Check that docker is installed correctly, open a new terminal and type:
 
