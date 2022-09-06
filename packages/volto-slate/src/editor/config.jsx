@@ -337,4 +337,4 @@ export const runtimeDecorators = [highlightSelection]; // , highlightByType
 export const allowedHeadlineElements = ['em', 'i'];
 
 // Scroll into view when typing
-export const scrollIntoView = false;
+export const scrollIntoView = true;
