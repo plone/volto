@@ -20,6 +20,9 @@
 
 ### Documentation
 
+- Make links relative to `_static` so that `plone/documentation` can pull them in, and fix broken link. @stevepiercy
+
+
 ## 16.0.0-alpha.29 (2022-09-02)
 
 ### Feature

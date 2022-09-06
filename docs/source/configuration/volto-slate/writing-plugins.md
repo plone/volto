@@ -15,7 +15,7 @@ This section will guide you through writing and registering a custom plugin for 
 You will add a plugin that will provide a button to create a tooltip for a selected piece of text in a Slate editor.
 This process can be generalized for any custom Slate plugin.
 
-```{image} /_static/tooltip_plugin.png
+```{image} ../../_static/tooltip_plugin.png
 :alt: Slate toooltip plugin
 ```
 
