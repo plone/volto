@@ -10,14 +10,6 @@ import paintSVG from '@plone/volto/icons/paint.svg';
 const Select = loadable(() => import('react-select'));
 
 const messages = defineMessages({
-  allStylesApplied: {
-    id: 'All Styles Applied',
-    defaultMessage: 'All Styles Applied',
-  },
-  noStyle: {
-    id: 'No Style',
-    defaultMessage: 'No Style',
-  },
   fontStyle: {
     id: 'Font Style',
     defaultMessage: 'Font Style',
@@ -26,9 +18,11 @@ const messages = defineMessages({
     id: 'Paragraph Style',
     defaultMessage: 'Paragraph Style',
   },
+  additionalStyles: {
+    id: 'Additional Styles',
+    defaultMessage: 'Additional Styles',
+  },
 });
-
-// const brownColor = '#826A6A';
 
 const selectStyles = {
   input: (provided, state) => {
@@ -40,7 +34,7 @@ const selectStyles = {
   menu: (provided, state) => {
     return {
       ...provided,
-      width: '150px',
+      width: '200px',
     };
   },
   option: (provided, state) => {
@@ -48,6 +42,9 @@ const selectStyles = {
       ...provided,
       fontSize: '1rem',
       cursor: 'pointer',
+      display: 'inline-flex',
+      justifyContent: 'flex-start',
+      verticalAlign: 'middle',
       // color: state.isSelected ? 'white' : brownColor,
     };
   },
@@ -77,11 +74,21 @@ const StylingsButton = (props) => {
   // Converting the settings to a format that is required by react-select.
   const rawOpts = [
     ...config.settings.slate.styleMenu.inlineStyles.map((def) => {
-      return { value: def.cssClass, label: def.label, isBlock: false };
+      return {
+        value: def.cssClass,
+        label: def.label,
+        icon: def.icon,
+        isBlock: false,
+      };
     }),
-    // ...config.settings.slate.styleMenu.blockStyles.map((def) => {
-    //   return { value: def.cssClass, label: def.label, isBlock: true };
-    // }),
+    ...config.settings.slate.styleMenu.blockStyles.map((def) => {
+      return {
+        value: def.cssClass,
+        label: def.label,
+        icon: def.icon,
+        isBlock: true,
+      };
+    }),
   ];
 
   const opts = [
@@ -123,25 +130,7 @@ const StylingsButton = (props) => {
       styles={selectStyles}
       isMulti={true}
       hideSelectedOptions={false}
-      noOptionsMessage={({ inputValue }) =>
-        intl.formatMessage(messages.allStylesApplied)
-      }
       components={{
-        // Shows the most relevant part of the selection as a simple string of text.
-        // TODO: show all the styles selected with commas between them and
-        // ellipsis just at the end of the MultiValue right side limit
-        MultiValue: (props) => {
-          const val = props.getValue();
-
-          if (props.index === 0) {
-            const cond = val.length > 1;
-            const lbl = val[props.index].label + '...';
-            const lbl2 = val[props.index].label;
-            return <>{cond ? lbl : lbl2}</>;
-          }
-
-          return '';
-        },
         Control: (props) => {
           const {
             cx,
@@ -155,7 +144,7 @@ const StylingsButton = (props) => {
           return (
             <StyleMenuButton
               ref={innerRef}
-              title="styleMenu"
+              title={intl.formatMessage(messages.additionalStyles)}
               icon={paintSVG}
               active={toSelect.length > 0}
               className={cx(
@@ -194,6 +183,31 @@ const StylingsButton = (props) => {
             </div>
           );
         },
+        Option: (props) => {
+          const {
+            getStyles,
+            className,
+            innerRef,
+            data: { icon = null, label = '' } = {},
+            innerProps,
+          } = props;
+          const OptionIcon = icon;
+          return (
+            <div
+              ref={innerRef}
+              style={getStyles('option', props)}
+              className={className}
+              {...innerProps}
+            >
+              <span style={{ paddingRight: '0.5em' }}>
+                {OptionIcon && <OptionIcon {...props} />}
+              </span>
+              <span style={{ verticalAlign: 'middle', lineHeight: 'normal' }}>
+                {label}
+              </span>
+            </div>
+          );
+        },
         Placeholder: (props) => {
           return null;
         },
@@ -206,10 +220,11 @@ const StylingsButton = (props) => {
           ...theme,
           colors: {
             ...theme.colors,
-            primary: '#826A6AFF', // 100% opaque @brown
+            primary: '#68778D', // 100% opaque @brown
             primary75: '#826A6Abf', // 75% opaque @brown
             primary50: '#826A6A7f', // 50% opaque @brown
             primary25: '#826A6A40', // 25% opaque @brown
+            ...(config.settings.slate?.styleMenu?.themeColors || {}),
           },
         };
       }}

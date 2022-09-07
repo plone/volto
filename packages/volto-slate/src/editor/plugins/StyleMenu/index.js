@@ -9,28 +9,40 @@ export default function install(config) {
 
   slate.toolbarButtons.push('styleMenu');
   slate.expandedToolbarButtons.push('styleMenu');
-  slate.styleMenu = config.settings.slate.styleMenu || {};
-  slate.styleMenu.inlineStyles = [
-    { cssClass: 'cool-inline-text', label: 'Cool Inline Text' },
-    { cssClass: 'red-inline-text', label: 'Red Inline Text' },
-  ];
-  // The style menu definitions are set in the arrays that follow (from any
-  // addon). Examples:
-  // config.settings.slate = config.settings.slate || {};
+
+  /* The slate Menu configuration in an addon */
+
   // slate.styleMenu = config.settings.slate.styleMenu || {};
   // slate.styleMenu.inlineStyles = [
-  //   { cssClass: 'cool-inline-text', label: 'Cool Inline Text' },
-  //   { cssClass: 'red-inline-text', label: 'Red Inline Text' },
+  //   {
+  //     cssClass: 'cool-inline-text',
+  //     label: 'Cool Inline Text',
+  //     icon: (props) => <Icon name={customSVG} size="24px" />,
+  //   },
+  //   {
+  //     cssClass: 'red-inline-text',
+  //     label: 'Red Inline Text',
+  //     icon: (props) => <Icon name={customSVG1} size="24px" />,
+  //   },
   // ];
-  // config.settings.slate.styleMenu.blockStyles = [
-  //   ...config.settings.slate.styleMenu.blockStyles,
-  //   { cssClass: 'green-block-text', label: 'Green Text' },
-  //   { cssClass: 'underline-block-text', label: 'Underline Text' },
+  // slate.styleMenu.blockStyles = [
+  //   {
+  //     cssClass: 'underline-block-text',
+  //     label: 'Cool Block Text',
+  //     icon: (props) => <Icon name={customSVG2} size="24px" />,
+  //   },
+  //   {
+  //     cssClass: 'green-block-text',
+  //     label: 'Green Block Text',
+  //     icon: (props) => <Icon name={customSVG3} size="24px" />,
+  //   },
   // ];
-  // slate.styleMenu = {
-  //   inlineStyles: [],
-  //   blockStyles: [],
-  // };
+
+  slate.styleMenu = {
+    inlineStyles: [],
+    blockStyles: [],
+    //themeColors = { primary: 'red' };
+  };
 
   return config;
 }
