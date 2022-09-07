@@ -229,7 +229,6 @@ const StylingsButton = (props) => {
         };
       }}
       onChange={(selItem, meta) => {
-        // console.log('meta', meta);
         for (const item of rawOpts) {
           const isRequested = selItem.includes(item);
           toggleStyle(editor, {

@@ -6,6 +6,8 @@
 
 ### Feature
 
+- volto-slate: introduce style-menu @nileshgulia1
+
 ### Bugfix
 
 ### Internal
