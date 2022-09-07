@@ -5,5 +5,6 @@ export const workflowMapping = {
   pending: { value: 'pending', color: '#f6a808' },
   send_back: { value: 'private', color: '#ed4033' },
   retract: { value: 'private', color: '#ed4033' },
+  reject: { value: 'private', color: '#ed4033' },
   submit: { value: 'review', color: '#f4e037' },
 };
