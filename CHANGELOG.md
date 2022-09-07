@@ -12,6 +12,7 @@
 
 ### Bugfix
 
+- Fix: Slate Editor: can not delete bullet point after adding it by typing "- " #3597 @dobri1408
 - Fix literal for the listing block edit mode message telling if the results are contained items (no query) or query results ones (query present) @sneridagh
 - Fix grouping of the "users and groups" control panels (plone-users category) @sneridagh
 - Improve `Display` and `Workflow` widgets in `More` menu. Fix alignments. @sneridagh
