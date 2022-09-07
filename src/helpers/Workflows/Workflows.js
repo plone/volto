@@ -23,8 +23,8 @@ export function getCurrentStateMapping(state) {
 
   // Return an option with a neutral color
   return {
-    value: state,
-    label: state,
+    value: state.id,
+    label: state.title,
     color: '#000',
   };
 }

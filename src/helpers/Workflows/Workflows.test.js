@@ -35,4 +35,13 @@ describe('Workflow helpers', () => {
       value: 'published',
     });
   });
+
+  it('getCurrentStateMapping no matching mapping', () => {
+    const currentState = { id: 'foo', title: 'Foo' };
+    expect(getCurrentStateMapping(currentState)).toStrictEqual({
+      color: '#000',
+      label: 'Foo',
+      value: 'foo',
+    });
+  });
 });
