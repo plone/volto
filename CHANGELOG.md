@@ -4,6 +4,9 @@
 
 ### Breaking
 
+- Main workflow change menu changed from Pastanaga UI simplification to classic Plone implementation. @sneridagh
+  See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+
 ### Feature
 
 - Added placeholder param to widget, to change default placeholder @giuliaghisini
