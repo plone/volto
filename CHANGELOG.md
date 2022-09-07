@@ -21,12 +21,9 @@
 - Improve `Display` and `Workflow` widgets in `More` menu. Fix alignments. @sneridagh
 - Fixed searching in the sharing page not showing any results @JeffersonBledsoe #3579
 
-### Internal
-
 ### Documentation
 
 - Make links relative to `_static` so that `plone/documentation` can pull them in, and fix broken link. @stevepiercy
-
 
 ## 16.0.0-alpha.29 (2022-09-02)
 
