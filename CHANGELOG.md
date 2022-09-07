@@ -4,7 +4,7 @@
 
 ### Breaking
 
-- Plone classic-like workflow states and dropdown, i18n aware. @sneridagh
+- Main workflow change menu changed from Pastanaga UI simplification to classic Plone implementation. @sneridagh
   See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
 
 ### Feature
