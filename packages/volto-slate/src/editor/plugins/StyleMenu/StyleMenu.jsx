@@ -31,78 +31,16 @@ const messages = defineMessages({
 // const brownColor = '#826A6A';
 
 const selectStyles = {
-  valueContainer: (provided, state) => {
-    return {
-      ...provided,
-      padding: '0px',
-      paddingLeft: '0px',
-      paddingTop: '0px',
-      paddingRight: '0px',
-      paddingDown: '0px',
-      fontSize: '1rem',
-      position: 'static',
-    };
-  },
   input: (provided, state) => {
     return {
       ...provided,
       display: 'none',
     };
   },
-  dropdownIndicator: (provided, state) => {
+  menu: (provided, state) => {
     return {
       ...provided,
-      padding: '0px',
-      paddingLeft: '0px',
-      paddingTop: '0px',
-      paddingRight: '0px',
-      paddingDown: '0px',
-    };
-  },
-  indicatorsContainer: (provided, state) => {
-    return {
-      ...provided,
-      padding: '0px',
-      paddingLeft: '0px',
-      paddingTop: '0px',
-      paddingRight: '0px',
-      paddingDown: '0px',
-    };
-  },
-  clearIndicator: (provided, state) => {
-    return {
-      ...provided,
-      padding: '0px',
-      paddingLeft: '0px',
-      paddingTop: '0px',
-      paddingRight: '0px',
-      paddingDown: '0px',
-    };
-  },
-  control: (provided, state) => {
-    return {
-      ...provided,
-      minHeight: 'auto',
-      borderWidth: 'unset',
-      cursor: 'pointer',
-      marginTop: '0.25rem',
-      // borderColor: state.isFocused ? brownColor : '#f3f3f3',
-      // boxShadow: 'unset',
-    };
-  },
-  container: (provided, state) => {
-    return {
-      ...provided,
-      marginLeft: '3px',
-      width: '12rem',
-      // backgroundColor: state.isFocused ? '#f3f3f3' : 'unset',
-    };
-  },
-  singleValue: (provided, state) => {
-    return {
-      paddingLeft: '3px',
-      fontSize: '1rem',
-      // color: brownColor,
+      width: '150px',
     };
   },
   option: (provided, state) => {
@@ -127,8 +65,8 @@ const selectStyles = {
   },
 };
 
-const StyleMenuButton = ({ icon, ...props }) => (
-  <ToolbarButton {...props} icon={icon} />
+const StyleMenuButton = ({ icon, active, ...props }) => (
+  <ToolbarButton {...props} icon={icon} active={active} />
 );
 
 const StylingsButton = (props) => {
@@ -182,7 +120,7 @@ const StylingsButton = (props) => {
       onBlur={() => {
         setOpen(false);
       }}
-      style={selectStyles}
+      styles={selectStyles}
       isMulti={true}
       hideSelectedOptions={false}
       noOptionsMessage={({ inputValue }) =>
@@ -206,9 +144,7 @@ const StylingsButton = (props) => {
         },
         Control: (props) => {
           const {
-            children,
             cx,
-            getStyles,
             className,
             isDisabled,
             isFocused,
@@ -217,32 +153,11 @@ const StylingsButton = (props) => {
             menuIsOpen,
           } = props;
           return (
-            // <div
-            //   ref={innerRef}
-            //   role="presentation"
-            //   style={getStyles('control', props)}
-            //   className={cx(
-            //     {
-            //       control: true,
-            //       'control--is-disabled': isDisabled,
-            //       'control--is-focused': isFocused,
-            //       'control--menu-is-open': menuIsOpen,
-            //     },
-            //     className,
-            //   )}
-            //   {...innerProps}
-            //   onClick={() => {
-            //     setOpen(!open);
-            //   }}
-            //   // The only difference from the initial React-Select's Control
-            //   // component:
-            // >
-            //   {children}
-            // </div>
             <StyleMenuButton
               ref={innerRef}
               title="styleMenu"
               icon={paintSVG}
+              active={toSelect.length > 0}
               className={cx(
                 {
                   control: true,
@@ -256,10 +171,29 @@ const StylingsButton = (props) => {
                 setOpen(!open);
               }}
               {...innerProps}
-            ></StyleMenuButton>
+            />
           );
         },
-
+        Menu: (props) => {
+          const {
+            children,
+            getStyles,
+            className,
+            innerRef,
+            innerProps,
+          } = props;
+          return (
+            <div
+              ref={innerRef}
+              role="presentation"
+              style={getStyles('menu', props)}
+              className={className}
+              {...innerProps}
+            >
+              {children}
+            </div>
+          );
+        },
         Placeholder: (props) => {
           return null;
         },
