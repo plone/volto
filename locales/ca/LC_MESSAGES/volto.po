@@ -1192,10 +1192,16 @@ msgstr "Els grups són col·leccions lògiques d'usuaris, com ara departaments i
 msgid "Header cell"
 msgstr "Cel·la de capçalera"
 
+#: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
 msgid "Headline"
 msgstr "Titular"
+
+#: components/manage/Blocks/Listing/schema
+# defaultMessage: Headline level
+msgid "Headline level"
+msgstr ""
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hidden facets will still filter the results if proper parameters are passed in URLs

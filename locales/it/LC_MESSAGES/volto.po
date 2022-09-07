@@ -1183,10 +1183,16 @@ msgstr "I gruppi sono raggruppamenti di utenti, come dipartimenti e unità organ
 msgid "Header cell"
 msgstr "Cella d'intestazione"
 
+#: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
 msgid "Headline"
 msgstr "Intestazione"
+
+#: components/manage/Blocks/Listing/schema
+# defaultMessage: Headline level
+msgid "Headline level"
+msgstr ""
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hidden facets will still filter the results if proper parameters are passed in URLs

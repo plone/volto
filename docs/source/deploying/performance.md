@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "How to improve initial page load performance of above-the-fold content with critical.css."
-  "property=og:description": "How to improve initial page load performance of above-the-fold content with critical.css."
-  "property=og:title": "critical.css (above the fold) optimizations"
-  "keywords": "Volto, Plone, frontend, React, critical.css, optimizations"
+myst:
+  html_meta:
+    "description": "How to improve initial page load performance of above-the-fold content with critical.css."
+    "property=og:description": "How to improve initial page load performance of above-the-fold content with critical.css."
+    "property=og:title": "critical.css (above the fold) optimizations"
+    "keywords": "Volto, Plone, frontend, React, critical.css, optimizations"
 ---
 
 # critical.css (above the fold) optimizations

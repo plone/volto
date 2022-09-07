@@ -357,7 +357,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
       <div
         className="ui secondary segment"
       >
-        Users and Groups
+        Users
       </div>
       <div
         className="ui attached segment"
@@ -748,7 +748,7 @@ exports[`Controlpanels renders an additional control panel 1`] = `
       <div
         className="ui secondary segment"
       >
-        Users and Groups
+        Users
       </div>
       <div
         className="ui attached segment"

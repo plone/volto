@@ -289,6 +289,9 @@ class SlateEditor extends Component {
               renderLeaf={(props) => <Leaf {...props} />}
               decorate={this.multiDecorator}
               spellCheck={false}
+              scrollSelectionIntoView={
+                slateSettings.scrollIntoView ? undefined : () => null
+              }
               onBlur={() => {
                 this.props.onBlur && this.props.onBlur();
                 return null;
