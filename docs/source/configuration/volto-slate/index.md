@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "What is volto-slate"
-  "property=og:description": "What is volto-slate"
-  "property=og:title": "volto-slate"
-  "keywords": "Volto, Plone, frontend, React, Slate, volto-slate"
+myst:
+  html_meta:
+    "description": "What is volto-slate"
+    "property=og:description": "What is volto-slate"
+    "property=og:title": "volto-slate"
+    "keywords": "Volto, Plone, frontend, React, Slate, volto-slate"
 ---
 
 (volto-slate-label)=

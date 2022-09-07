@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Developer Guidelines"
-  "property=og:description": "Developer Guidelines"
-  "property=og:title": "Developer Guidelines"
-  "keywords": "Developer, Guidelines"
+myst:
+  html_meta:
+    "description": "Developer Guidelines"
+    "property=og:description": "Developer Guidelines"
+    "property=og:title": "Developer Guidelines"
+    "keywords": "Developer, Guidelines"
 ---
 
 # Developer Guidelines

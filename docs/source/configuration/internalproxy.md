@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "The server side Volto SSR process (based on Razzle) has an internal proxy to the backend API enabled by default, avoiding issues from CORS and allowing the developer to focus on using Volto."
-  "property=og:description": "The server side Volto SSR process (based on Razzle) has an internal proxy to the backend API enabled by default, avoiding issues from CORS and allowing the developer to focus on using Volto."
-  "property=og:title": "Internal proxy to content backend API"
-  "keywords": "Volto, Plone, frontend, React, internal proxy, backend, API, Razzle, SSR"
+myst:
+  html_meta:
+    "description": "The server side Volto SSR process (based on Razzle) has an internal proxy to the backend API enabled by default, avoiding issues from CORS and allowing the developer to focus on using Volto."
+    "property=og:description": "The server side Volto SSR process (based on Razzle) has an internal proxy to the backend API enabled by default, avoiding issues from CORS and allowing the developer to focus on using Volto."
+    "property=og:title": "Internal proxy to content backend API"
+    "keywords": "Volto, Plone, frontend, React, internal proxy, backend, API, Razzle, SSR"
 ---
 
 # Internal proxy to content backend API

@@ -20,6 +20,7 @@ const initialState = {
     loading: false,
     error: null,
   },
+  currentState: {},
   history: [],
   transitions: [],
   multiple: [],
@@ -59,6 +60,7 @@ export default function content(state = initialState, action = {}) {
     case `${TRANSITION_WORKFLOW}_SUCCESS`:
       return {
         ...state,
+        currentState: action.result.state || state.currentState,
         history: action.result.history ? action.result.history : state.history,
         transitions: action.result.transitions
           ? action.result.transitions
@@ -83,6 +85,7 @@ export default function content(state = initialState, action = {}) {
     case `${TRANSITION_WORKFLOW}_FAIL`:
       return {
         ...state,
+        currentState: {},
         history: [],
         transitions: [],
         [getRequestKey(action.type)]: {

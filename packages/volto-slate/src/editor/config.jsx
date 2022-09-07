@@ -335,3 +335,6 @@ export const runtimeDecorators = [highlightSelection]; // , highlightByType
 
 // Only these types of element nodes are allowed in the headlines
 export const allowedHeadlineElements = ['em', 'i'];
+
+// Scroll into view when typing
+export const scrollIntoView = true;
