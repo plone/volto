@@ -9,9 +9,9 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { uniqBy } from 'lodash';
 import { toast } from 'react-toastify';
-import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import getWorkflowMapping from '@plone/volto/constants/Workflows';
-import { Icon, Toast } from '@plone/volto/components';
+import { FormFieldWrapper, Icon, Toast } from '@plone/volto/components';
 import { flattenToAppURL } from '@plone/volto/helpers';
 
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
@@ -35,11 +35,14 @@ const messages = defineMessages({
     id: 'No workflow',
     defaultMessage: 'No workflow',
   },
+  state: {
+    id: 'State',
+    defaultMessage: 'State',
+  },
 });
 
 const SingleValue = injectLazyLibs('reactSelect')(({ children, ...props }) => {
   const stateDecorator = {
-    marginLeft: '10px',
     marginRight: '10px',
     display: 'inline-block',
     backgroundColor: props.selectProps.value.color || null,
@@ -59,7 +62,6 @@ const SingleValue = injectLazyLibs('reactSelect')(({ children, ...props }) => {
 
 const Option = injectLazyLibs('reactSelect')((props) => {
   const stateDecorator = {
-    marginLeft: '10px',
     marginRight: '10px',
     display: 'inline-block',
     backgroundColor:
@@ -133,6 +135,7 @@ const customSelectStyles = {
   }),
   valueContainer: (styles) => ({
     ...styles,
+    padding: 0,
   }),
   option: (styles, state) => ({
     ...styles,
@@ -287,10 +290,11 @@ class Workflow extends Component {
     const Select = this.props.reactSelect.default;
 
     return (
-      <Fragment>
-        <label htmlFor="state-select">
-          <FormattedMessage id="State" defaultMessage="State" />
-        </label>
+      <FormFieldWrapper
+        id="state-select"
+        title={this.props.intl.formatMessage(messages.state)}
+        {...this.props}
+      >
         <Select
           name="state-select"
           className="react-select-container"
@@ -326,7 +330,7 @@ class Workflow extends Component {
           }
           isSearchable={false}
         />
-      </Fragment>
+      </FormFieldWrapper>
     );
   }
 }

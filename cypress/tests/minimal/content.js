@@ -120,20 +120,6 @@ describe('Add Content Tests', () => {
     cy.get('.navigation .item.active').should('have.text', 'My News Item');
   });
 
-  it('As editor I can add a folder', function () {
-    // when I add a folder
-    cy.get('#toolbar-add').click();
-    cy.get('#toolbar-add-folder').click();
-    cy.get('input[name="title"]')
-      .type('My Folder')
-      .should('have.value', 'My Folder');
-    cy.get('#toolbar-save').click();
-
-    // then a new folder should have been created
-    cy.url().should('eq', Cypress.config().baseUrl + '/my-folder');
-    cy.get('.navigation .item.active').should('have.text', 'My Folder');
-  });
-
   it('As editor I am setting the time in datetimeWidget', function () {
     // when I add a Event
     cy.get('#toolbar-add').click();

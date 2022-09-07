@@ -92,6 +92,13 @@ class Api {
               stripQuerystring(request.url) !==
                 stripQuerystring(request.xhr.responseURL)
             ) {
+              if (request.xhr.responseURL?.length === 0) {
+                return reject({
+                  code: 408,
+                  status: 408,
+                  url: request.xhr.responseURL,
+                });
+              }
               return reject({
                 code: 301,
                 url: request.xhr.responseURL,

@@ -7,14 +7,182 @@
 ### Feature
 
 - Added resetOnCancel functionality in Form component @MdSahil-oss
+- Added placeholder param to widget, to change default placeholder @giuliaghisini
+- Add a headline (`headline` field) to the listing block schema by default @sneridagh
+- Add scroll into view setting to slate @robgietema
 
 ### Bugfix
 
-- complete pt_BR translation @ericof
+- Fix: Slate Editor: can not delete bullet point after adding it by typing "- " #3597 @dobri1408
+- Fix literal for the listing block edit mode message telling if the results are contained items (no query) or query results ones (query present) @sneridagh
+- Fix grouping of the "users and groups" control panels (plone-users category) @sneridagh
+- Improve `Display` and `Workflow` widgets in `More` menu. Fix alignments. @sneridagh
+- Fixed searching in the sharing page not showing any results @JeffersonBledsoe #3579
 
 ### Internal
 
 ### Documentation
+
+- Make links relative to `_static` so that `plone/documentation` can pull them in, and fix broken link. @stevepiercy
+
+
+## 16.0.0-alpha.29 (2022-09-02)
+
+### Feature
+
+- Support for getting `selectableTypes` and `maximumSelectionSize` from `widgetProps` @sneridagh
+
+## 16.0.0-alpha.28 (2022-08-31)
+
+### Feature
+
+- Add clear formatting button to slate @robgietema
+
+### Bugfix
+
+- Fix array widget translation @robgietema
+- Fix copy / paste text in list @robgietema
+
+## 16.0.0-alpha.27 (2022-08-29)
+
+### Feature
+
+- Added placeholder param to widget, to change default placeholder @giuliaghisini
+
+### Bugfix
+
+- Fix Image gallery listing block variation only gets 25 if no query is set @sneridagh
+
+## 16.0.0-alpha.26 (2022-08-24)
+
+### Breaking
+
+- This is an UI/UX breaking change. It changes the back button in folder contents from using a cross icon to using a back icon. The rationale behind is because the cross evoque "cancel" when what happens is a change of view. It's also consistent with both PastanagaUI and QuantaUI style guide. @robgietema
+
+### Feature
+
+- Add initialPath support to ObjectBrowser widget @robgietema
+
+## 16.0.0-alpha.25 (2022-08-24)
+
+### Feature
+
+- Add support for OpenStreet Maps in Maps block @sneridagh
+- Make `internalApiPath` client aware, since there are some corner cases when the client needs to know it to properly handle API server URLs @sneridagh
+
+### Bugfix
+
+- Fix sitemap.xml.gz @robgietema
+
+### Internal
+
+- Use component registry for default image, fallback to the local import @sneridagh
+
+## 16.0.0-alpha.24 (2022-08-22)
+
+### Feature
+
+- handle 'no connection' available error (408 error). @giuliaghisini
+
+### Bugfix
+
+- Fix overlapping for long words in Control Panel titles (added word-wrapping) @sneridagh
+
+## 16.0.0-alpha.23 (2022-08-18)
+
+### Breaking
+
+- change password-reset url to be consistent with Plone configuration @erral
+- Simplify over the existing Component Registry API. The `component` key has been flattened for simplification and now it's mapped directly to the `component` argument of `registerComponent`. @sneridagh
+
+See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+
+### Feature
+
+- support for many_users and many_groups flag in user controlpanel and group controlpanel @nileshgulia1
+- Show the content type of the content object you are adding/editing in the sidebar @robgietema
+- Remove soft hyphens from the title tag @davisagli
+
+### Bugfix
+
+- Fix login form redirect when it was loaded with a trailing slash @davisagli
+- Better de translation for Site Setup @davisagli
+
+### Internal
+
+- Test against Plone 5.2.9 and 6.0.0b1 @davisagli
+- Use latest 1.6.0 `@plone/scripts` @sneridagh
+- Add classname of variation in edit mode @iFlameing
+
+## 16.0.0-alpha.22 (2022-08-05)
+
+### Breaking
+
+- The complete configuration registry is passed to the add-ons and the project configuration pipeline
+  See https://docs.voltocms.com/upgrade-guide/ for more information. @sneridagh
+- Refactor the component registry API in the configuration registry @sneridagh @tiberiuichim
+
+### Bugfix
+
+- Fix content loading in `DefaultView` infinite loop if a listing block with no query is present. @sneridagh
+
+### Documentation
+
+- Documentation of the new component registry API @sneridagh
+
+## 16.0.0-alpha.21 (2022-08-03)
+
+### Bugfix
+
+- Fix ArrayWidget choices when editing a recently created content item. @davisagli
+
+### Internal
+
+- Fix propTypes for Pagination component @davisagli
+
+## 16.0.0-alpha.20 (2022-08-01)
+
+### Breaking
+
+- Use `Cypress` 10.3.0 (migrate from 9.x.x). Cypress 10 has some interesting goodies, being the native support of Apple Silicon Computers the main of it. See https://docs.voltocms.com/upgrade-guide/ for more information. @sneridagh
+
+### Bugfix
+
+- Make Search page title translatable @erral
+- Changed storeProtectLoadUtils location from src/storeProtectLoadUtils to src/middleware/storeProtectLoadUtils @MdSahil-oss
+
+### Documentation
+
+- Minor clean up of volto-slate upgrade guide. @stevepiercy
+
+- Rework documentation on how to write a Slate plugin @ksuess
+
+## 16.0.0-alpha.19 (2022-07-28)
+
+### Breaking
+
+- Using volto-slate Headline / Subheadline buttons strips all elements in the selection @tiberiuichim
+
+### Feature
+
+- Send extra data coming from listing block schemaEnhancer from searchBlock to the listing variation @ionlizarazu
+
+### Bugfix
+
+- complete pt_BR translation @ericof
+- Fix action `listUsers`. Provide default. @ksuess
+- Provide the correct id to the blocks wrapped by StyleWrapper. @razvanMiu
+- Remove console deprecation notice for 'host' property usage coming from Express @sneridagh
+
+### Internal
+
+- Allow passing `allowedChildren` option to the BlockButton, to strip elements in headlines @tiberiuichim
+- Upgrade to latest `@plone/scripts` @sneridagh
+- Update browserlist definitions @sneridagh
+
+### Documentation
+
+- Add upgrade guide documentation for dealing with `volto-slate` upgrades for Volto 16 alpha 15 onwards. @sneridagh
 
 ## 16.0.0-alpha.18 (2022-07-26)
 
@@ -25,6 +193,7 @@
 ### Bugfix
 
 - Fix edge cases in Cypress flaky tests when the Edit component was loaded without loading the type schema. @sneridagh & @davisagli
+- Fix edge cases in Cypress flaky tests when the Edit component was loaded for the wrong content path. @davisagli
 
 ### Internal
 
@@ -45,7 +214,7 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 
 ### Breaking
 
-- Staticize Poppins font to be compliant with EU privacy. Import from GoogleFont is disabled in site.variables.  @giuliaghisini
+- Staticize Poppins font to be compliant with EU privacy. Import from GoogleFont is disabled in site.variables. @giuliaghisini
 
 ### Bugfix
 
@@ -131,8 +300,6 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 
 ### Feature
 
-- add control panel via config.settings @ksuess https://github.com/plone/volto/issues/3426
-- Add noindex metadata tag @steffenri
 - Add listing variation schemaEnhancer to the search block schema @ionlizarazu
 - Use the local blocksConfig for extensions, fallback to the config object one. This allows to override local blocks config in nested blocks (blocks in a block, eg. accordion, grid, row) @sneridagh
 
@@ -445,6 +612,7 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 - Improve Cypress integration, using Cypress official Github Action. Improve some flaky tests that showed up, and were known as problematic. Refactor and rename all the Github actions giving them meaningful names, and group them by type. Enable Cypress Dashboard for Volto. @sneridagh
 - Stop using `xmlrpc` library for issuing the setup/teardown in core, use a `cy.request` instead. @sneridagh
 - Added Cypress environment variables for adjusting the backend URL of commands @JeffersonBledsoe #3271
+- Fixed Storybook configuration for add-ons @pnicolli
 
 ### Documentation
 
