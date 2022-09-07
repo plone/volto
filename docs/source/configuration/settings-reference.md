@@ -243,7 +243,7 @@ workflowMapping
     ```
 
     It's meant to be extended with your own workflows/transitions.
-    It is recommended that you could assign the same color to the transition as the destination state, so the user can have the visual hint to which state are they transitioning to.
+    It is recommended to assign the same color to the transition as the destination state, so the user can have the visual hint to which state are they transitioning to.
 ```
 
 ## Server-specific serverConfig
