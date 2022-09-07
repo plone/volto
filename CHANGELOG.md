@@ -4,6 +4,9 @@
 
 ### Breaking
 
+- Plone classic-like workflow states and dropdown, i18n aware. @sneridagh
+  See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+
 ### Feature
 
 - Added placeholder param to widget, to change default placeholder @giuliaghisini
