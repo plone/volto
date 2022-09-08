@@ -103,7 +103,7 @@ class UndoControlpanel extends Component {
         id: PropTypes.string,
         size: PropTypes.number,
         time: PropTypes.string,
-        user_name: PropTypes.string,
+        username: PropTypes.string,
       }),
     ),
     revertRequest: PropTypes.shape({
@@ -263,10 +263,10 @@ class UndoControlpanel extends Component {
       let sortedTransactions = [];
       if (sortType.toLowerCase() === 'user name') {
         this.props.transactions.forEach((element) => {
-          if (value.trim().toLowerCase() === 'zope' && !element.user_name) {
+          if (value.trim().toLowerCase() === 'zope' && !element.username) {
             sortedTransactions.push(element);
           } else if (
-            element.user_name
+            element.username
               .trim()
               .toLowerCase()
               .includes(value.trim().toLowerCase())
@@ -650,7 +650,7 @@ class UndoControlpanel extends Component {
                         {transaction.description}
                       </Table.Cell>
                       <Table.Cell width={3}>
-                        {transaction.user_name ? transaction.user_name : 'Zope'}
+                        {transaction.username ? transaction.username : 'Zope'}
                       </Table.Cell>
                       <Table.Cell width={3}>{transaction.time}</Table.Cell>
                       <Table.Cell width={3}>
