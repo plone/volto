@@ -10,11 +10,34 @@
 
 ### Bugfix
 
-- Fix grouping of the "users and groups" control panels (plone-users category) @sneridagh
-
 ### Internal
 
 ### Documentation
+
+## 16.0.0-alpha.30 (2022-09-07)
+
+### Breaking
+
+- Main workflow change menu changed from Pastanaga UI simplification to classic Plone implementation. @sneridagh
+  See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+
+### Feature
+
+- Added placeholder param to widget, to change default placeholder @giuliaghisini
+- Add a headline (`headline` field) to the listing block schema by default @sneridagh
+- Add scroll into view setting to slate @robgietema
+
+### Bugfix
+
+- Fix: Slate Editor: can not delete bullet point after adding it by typing "- " #3597 @dobri1408
+- Fix literal for the listing block edit mode message telling if the results are contained items (no query) or query results ones (query present) @sneridagh
+- Fix grouping of the "users and groups" control panels (plone-users category) @sneridagh
+- Improve `Display` and `Workflow` widgets in `More` menu. Fix alignments. @sneridagh
+- Fixed searching in the sharing page not showing any results @JeffersonBledsoe #3579
+
+### Documentation
+
+- Make links relative to `_static` so that `plone/documentation` can pull them in, and fix broken link. @stevepiercy
 
 ## 16.0.0-alpha.29 (2022-09-02)
 
