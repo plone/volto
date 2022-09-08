@@ -75,6 +75,7 @@ export class ObjectBrowserWidgetComponent extends Component {
     onChange: PropTypes.func.isRequired,
     openObjectBrowser: PropTypes.func.isRequired,
     allowExternals: PropTypes.bool,
+    placeholder: PropTypes.string,
   };
 
   /**
@@ -280,10 +281,12 @@ export class ObjectBrowserWidgetComponent extends Component {
       onSelectItem: (url, item) => {
         this.onChange(item);
       },
-      selectableTypes: this.props.widgetOptions?.pattern_options
-        ?.selectableTypes,
-      maximumSelectionSize: this.props.widgetOptions?.pattern_options
-        ?.maximumSelectionSize,
+      selectableTypes:
+        this.props.widgetOptions?.pattern_options?.selectableTypes ||
+        this.props.selectableTypes,
+      maximumSelectionSize:
+        this.props.widgetOptions?.pattern_options?.maximumSelectionSize ||
+        this.props.maximumSelectionSize,
     });
   };
 
@@ -351,7 +354,8 @@ export class ObjectBrowserWidgetComponent extends Component {
 
             {items.length === 0 && this.props.mode === 'multiple' && (
               <div className="placeholder" ref={this.placeholderRef}>
-                {this.props.intl.formatMessage(messages.placeholder)}
+                {this.props.placeholder ??
+                  this.props.intl.formatMessage(messages.placeholder)}
               </div>
             )}
             {this.props.allowExternals &&
@@ -361,9 +365,10 @@ export class ObjectBrowserWidgetComponent extends Component {
                   onKeyDown={this.onKeyDownManualLink}
                   onChange={this.onManualLinkInput}
                   value={this.state.manualLinkInput}
-                  placeholder={this.props.intl.formatMessage(
-                    messages.placeholder,
-                  )}
+                  placeholder={
+                    this.props.placeholder ??
+                    this.props.intl.formatMessage(messages.placeholder)
+                  }
                 />
               )}
           </div>

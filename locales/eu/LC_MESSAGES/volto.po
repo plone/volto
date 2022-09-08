@@ -1182,10 +1182,16 @@ msgstr "Taldeak erabiltzaileen multzo logikoak dira. Taldeak ez daude baimenei e
 msgid "Header cell"
 msgstr "Goiburuko gelaxka"
 
+#: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
 msgid "Headline"
 msgstr "Goiburua"
+
+#: components/manage/Blocks/Listing/schema
+# defaultMessage: Headline level
+msgid "Headline level"
+msgstr ""
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hidden facets will still filter the results if proper parameters are passed in URLs
@@ -1692,6 +1698,7 @@ msgid "News Item"
 msgstr "Albistea ikusi"
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: No
 msgid "No"
@@ -3182,6 +3189,7 @@ msgid "Yearly"
 msgstr "Urtero"
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Yes
 msgid "Yes"
