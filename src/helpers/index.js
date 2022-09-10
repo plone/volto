@@ -104,3 +104,7 @@ export { usePagination } from './Utils/usePagination';
 export useUndoManager from './UndoManager/useUndoManager';
 export { getCookieOptions } from './Cookies/cookies';
 export { getWidgetView } from './Widget/widget';
+export {
+  getCurrentStateMapping,
+  getWorkflowOptions,
+} from './Workflows/Workflows';

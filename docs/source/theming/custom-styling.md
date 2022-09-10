@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Styling a Volto website using Semantic UI."
-  "property=og:description": "Styling a Volto website using Semantic UI."
-  "property=og:title": "Custom Styling"
-  "keywords": "Volto, Plone, frontend, React, Custom, Styling, Semantic UI, LESS, Pastanaga"
+myst:
+  html_meta:
+    "description": "Styling a Volto website using Semantic UI."
+    "property=og:description": "Styling a Volto website using Semantic UI."
+    "property=og:title": "Custom Styling"
+    "keywords": "Volto, Plone, frontend, React, Custom, Styling, Semantic UI, LESS, Pastanaga"
 ---
 
 # Custom Styling

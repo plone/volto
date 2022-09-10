@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Volto Integration with Sentry"
-  "property=og:description": "Volto Integration with Sentry"
-  "property=og:title": "Integration with Sentry"
-  "keywords": "Volto, Plone, frontend, React, Integration, Sentry"
+myst:
+  html_meta:
+    "description": "Volto Integration with Sentry"
+    "property=og:description": "Volto Integration with Sentry"
+    "property=og:title": "Integration with Sentry"
+    "keywords": "Volto, Plone, frontend, React, Integration, Sentry"
 ---
 
 # Integration with Sentry

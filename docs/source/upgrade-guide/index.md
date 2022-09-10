@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "This upgrade guide lists all breaking changes in Volto and explains the steps that are necessary to upgrade to the latest version."
-  "property=og:description": "This upgrade guide lists all breaking changes in Volto and explains the steps that are necessary to upgrade to the latest version."
-  "property=og:title": "Upgrade Guide"
-  "keywords": "Volto, Plone, frontend, React, Upgrade, Guide"
+myst:
+  html_meta:
+    "description": "This upgrade guide lists all breaking changes in Volto and explains the steps that are necessary to upgrade to the latest version."
+    "property=og:description": "This upgrade guide lists all breaking changes in Volto and explains the steps that are necessary to upgrade to the latest version."
+    "property=og:title": "Upgrade Guide"
+    "keywords": "Volto, Plone, frontend, React, Upgrade, Guide"
 ---
 
 (volto-upgrade-guide)=
@@ -227,6 +228,17 @@ config.registerComponent({
   });
 ```
 ````
+
+#### Main workflow change menu changed from Pastanaga UI simplification to classic Plone implementation
+
+Pastanaga UI envisioned a simplification of the classic Plone workflow change dropdown.
+The idea is that for users, the transition names were too cryptic and it was difficult to infer the destination state from them.
+So the simplification was meant to show the destination state as a transition name, simplifying the user experience.
+
+This vision was partially implemented in Volto, bypassing the information coming from Plone, waiting for the next step: introduce this vision in Plone core (thus, change the workflow definitions) including this simplified mode, but maintaining the complete mode, with the full transition names.
+
+Since this never happened, we are going back to the classic mode, so the dropdown will show the transition names.
+When the simplified vision is implemented, we will revisit it.
 
 (volto-upgrade-guide-15.x.x)=
 
