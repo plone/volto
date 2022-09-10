@@ -19,13 +19,8 @@ exports[`Form renders a form component 1`] = `
           className="ui segment"
         >
           <div
-            className="mocked-default-widget"
-            id="mocked-field-title"
-          >
-            No title
-             - 
-            No description
-          </div>
+            className="Field"
+          />
         </div>
         <div
           className="ui clearing segment actions"
