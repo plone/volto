@@ -49,7 +49,7 @@ exports[`Allow override of blocksConfig 1`] = `
               >
                 <div>
                   a
-                   -
+                   - 
                   a
                 </div>
               </div>
@@ -103,7 +103,7 @@ exports[`Allow override of blocksConfig 1`] = `
               >
                 <div>
                   b
-                   -
+                   - 
                   b
                 </div>
               </div>

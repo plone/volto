@@ -91,6 +91,9 @@ exports[`Actions renders an actions component 1`] = `
         Rename
       </span>
     </div>
+    <div
+      className="RenameModal"
+    />
   </div>
 </div>
 `;
