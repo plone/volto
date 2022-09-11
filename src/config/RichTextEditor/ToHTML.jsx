@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { isEmpty } from 'lodash';
-import { UniversalLink, Image } from '@plone/volto/components';
+import { Image, UniversalLink } from '@plone/volto/components';
 
 const styles = {
   code: {
