@@ -10,9 +10,6 @@ import React from 'react';
 import config from '@plone/volto/registry';
 import { loadables } from '@plone/volto/config/Loadables';
 import { nonContentRoutes } from '@plone/volto/config/NonContentRoutes';
-import ToHTMLRenderers, {
-  options as ToHTMLOptions,
-} from '@plone/volto/config/RichTextEditor/ToHTML';
 import {
   extendedBlockRenderMap,
   blockStyleFn,
@@ -37,11 +34,6 @@ const richtextEditorSettings = (props) => {
   };
 };
 
-const richtextViewSettings = {
-  ToHTMLRenderers,
-  ToHTMLOptions,
-};
-
 config.set('settings', {
   apiPath: 'http://localhost:8080/Plone',
   defaultLanguage: 'en',
@@ -50,7 +42,6 @@ config.set('settings', {
   isMultilingual: false,
   nonContentRoutes,
   richtextEditorSettings,
-  richtextViewSettings,
   contentIcons: contentIcons,
   loadables,
   lazyBundles: {
