@@ -128,7 +128,7 @@ Sometimes you'll find that it's difficult to get the lazy loaded libraries
 properly loaded in your jest tests. In that case, add this to the top of your
 test:
 
-```
+```js
 jest.mock('@plone/volto/helpers/Loadable/Loadable');
 beforeAll(
   async () =>

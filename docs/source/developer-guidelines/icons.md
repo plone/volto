@@ -9,8 +9,7 @@ myst:
 
 # Icons
 
-Volto has a pre-defined set of SVG icons from the Pastanaga UI icon system.
-They are available under [Volto icons](https://github.com/plone/volto/tree/master/src/icons).
+Volto has a pre-defined set of SVG icons from the Pastanaga UI icon system. You can find them in the code repo in [here](https://github.com/plone/volto/tree/master/src/icons). They are also browseable in https://pastanaga.io/icons/.
 
 The following example shows how to display one of these icons.
 
@@ -22,6 +21,6 @@ import { Icon } from '@plone/volto/components';
 ```
 
 ```{note}
-These icons are intended to be used only in the "official" Pastanaga UI.
-Please refrain from using them on personal projects unless they are based on the Pastanaga UI.
+These icons are intended to be used only in the "official" Plone Pastanaga UI.
+Please refrain from using them on personal projects unless they are based on Plone.
 ```
