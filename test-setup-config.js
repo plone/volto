@@ -44,6 +44,25 @@ const richtextEditorSettings = (props) => {
   };
 };
 
+// we need to do a redefinition here because of circular import issues
+// because draftjs-based components are not really tested, this is basically
+// dummy code.
+const richtextViewSettings = {
+  ToHTMLRenderers: {
+    inline: null,
+    blocks: {
+      'header-two': (children, { keys }) =>
+        children.map((child, i) => (
+          <h2 id={keys[i]} key={keys[i]}>
+            {child}
+          </h2>
+        )),
+    },
+    entities: null,
+  },
+  // ToHTMLOptions,
+};
+
 config.set('settings', {
   apiPath: 'http://localhost:8080/Plone',
   defaultLanguage: 'en',
@@ -52,6 +71,7 @@ config.set('settings', {
   isMultilingual: false,
   nonContentRoutes,
   richtextEditorSettings,
+  richtextViewSettings,
   contentIcons: contentIcons,
   loadables,
   lazyBundles: {
