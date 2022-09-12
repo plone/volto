@@ -12,7 +12,7 @@
 
 ### Documentation
 
-- Align html_static_path with `plone/documentation` and image path so that images render when docs build in both repos. @stevepiercy
+- Align `html_static_path` with `plone/documentation` and image path so that images render when docs build in both repos. @stevepiercy
 
 
 ## 16.0.0-alpha.30 (2022-09-07)
