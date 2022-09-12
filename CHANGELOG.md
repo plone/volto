@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+Fix types menu on mobile for many types. Specific menuStyle for 'more' menu. @ksuess
+
 ### Internal
 
 ### Documentation
