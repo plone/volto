@@ -24,6 +24,7 @@
 - Added placeholder param to widget, to change default placeholder @giuliaghisini
 - Add a headline (`headline` field) to the listing block schema by default @sneridagh
 - Add scroll into view setting to slate @robgietema
+- Use absolute dates instead of "x hours ago" in History view @steffenri
 
 ### Bugfix
 
