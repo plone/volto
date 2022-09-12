@@ -1,6 +1,6 @@
 # Change Log
 
-## 15.14.1 (unreleased)
+## 15.15.1 (unreleased)
 
 ### Breaking
 
@@ -13,6 +13,16 @@
 ### Internal
 
 ### Documentation
+
+## 15.15.0 (2022-08-25)
+
+### Feature
+
+- Send extra data coming from listing block schemaEnhancer from searchBlock to the listing variation @ionlizarazu
+- Handle no connection available error (408 error) @giuliaghisini
+- Added placeholder param to widget, to change default placeholder @giuliaghisini
+- Add user group membership control panel @ksuess
+- Action `listUsers`: Support search for fullname, email, username. @ksuess
 
 ## 15.14.0 (2022-07-26)
 

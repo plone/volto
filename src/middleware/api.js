@@ -274,7 +274,16 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
               type: SET_APIERROR,
             });
           }
-
+          // Redirect
+          else if (error?.code === 408) {
+            next({
+              ...rest,
+              error,
+              statusCode: error.code,
+              connectionRefused: false,
+              type: SET_APIERROR,
+            });
+          }
           // Unauthorized
           else if (error?.response?.statusCode === 401) {
             next({

@@ -9,9 +9,6 @@ describe('Groups Control Panel Test', () => {
   it('Should add a new group to controlPanel', () => {
     cy.visit('/controlpanel/groups');
     cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
     cy.waitForResourceToLoad('@groups');
     // when I added a group from controlPanel
     cy.get('Button[id="toolbar-add"]').click();
@@ -21,11 +18,9 @@ describe('Groups Control Panel Test', () => {
     cy.get('input[id="field-email"]').clear().type('test@gmail.com');
     cy.get('button[title="Save"]').click(-50, -50, { force: true });
 
-    // then the group section must contains a groupname when I searched the
-    // same with the same groupname
-    cy.get('input[id="group-search-input"]').clear().type('uni');
-    cy.get('.icon.button:first').click();
-    cy.get('tr td').first().should('have.text', 'uniquename');
+    cy.waitForResourceToLoad('@navigation');
+    cy.waitForResourceToLoad('@groups');
+    cy.contains('uniquename');
   });
 
   it('Should show error from backend when add Group fails', () => {
