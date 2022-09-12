@@ -20,6 +20,7 @@ describe('Sharing Tests', () => {
 
     cy.get('.navigation .item.active').should('have.text', 'My Page');
   });
+
   it('As editor I can add a page and access sharing', function () {
     // then I click on the Toolbar > More
     cy.get('#toolbar-more').click();
@@ -30,13 +31,15 @@ describe('Sharing Tests', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page/sharing');
     cy.contains('Sharing for');
   });
+
   it('As editor, I can share a page to another user', function () {
     cy.intercept('/**/@logout').as('logout');
+    cy.intercept('/**/@sharing').as('sharing');
 
     // Click on the Toolbar > More
     cy.findByRole('button', { name: /more/i }).click();
     cy.findByRole('link', { name: /sharing/i }).click();
-    cy.waitForResourceToLoad('@sharing');
+    cy.wait('@sharing');
 
     // TODO: Need a unique label here. Site search name is also 'SearchableText'
     // Search for the test user
@@ -59,7 +62,7 @@ describe('Sharing Tests', () => {
       });
 
     cy.findByRole('button', { name: /save/i }).click();
-    cy.waitForResourceToLoad('@sharing');
+    cy.wait('@sharing');
 
     cy.visit('/logout');
     cy.wait('@logout');
