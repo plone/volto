@@ -2,21 +2,14 @@
 
 ## 16.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fix types menu on mobile for many types. Specific menuStyle for 'more' menu. @ksuess
 - Fix types menu on desktop when menu overflows the viewport, adding scroll to it @sneridagh
 
-### Internal
-
 ### Documentation
 
 - Align `html_static_path` with `plone/documentation` and image path so that images render when docs build in both repos. @stevepiercy
-
 
 ## 16.0.0-alpha.30 (2022-09-07)
 
