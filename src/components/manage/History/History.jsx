@@ -15,7 +15,7 @@ import { Portal } from 'react-portal';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import {
-  FormattedRelativeDate,
+  FormattedDate,
   Icon as IconNext,
   Toolbar,
 } from '@plone/volto/components';
@@ -209,7 +209,7 @@ class History extends Component {
                   </Table.Cell>
                   <Table.Cell>{entry.actor.fullname}</Table.Cell>
                   <Table.Cell>
-                    <FormattedRelativeDate date={entry.time} />
+                    <FormattedDate date={entry.time} includeTime />
                   </Table.Cell>
                   <Table.Cell>{entry.comments}</Table.Cell>
                   <Table.Cell>
