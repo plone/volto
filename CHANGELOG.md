@@ -6,7 +6,7 @@
 
 ### Feature
 
-- Send extra data coming from listing block schemaEnhancer from searchBlock to the listing variation @ionlizarazu
+- Send missing variation data to the listing variation @ionlizarazu
 
 ### Bugfix
 
