@@ -8,6 +8,9 @@
 
 ### Bugfix
 
+- Fix types menu on mobile for many types. Specific menuStyle for 'more' menu. @ksuess
+- Fix types menu on desktop when menu overflows the viewport, adding scroll to it @sneridagh
+
 ### Internal
 
 ### Documentation
