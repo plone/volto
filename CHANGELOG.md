@@ -5,7 +5,7 @@
 ### Breaking
 
 ### Feature
-
+- Complete eu translation @erral
 ### Bugfix
 
 ### Internal
