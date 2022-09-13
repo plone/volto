@@ -329,7 +329,11 @@ class SharingComponent extends Component {
               </Form>
             </Segment>
           </Plug>
-          <Plug pluggable="sharing-component" id="sharing-component-form">
+          <Plug
+            pluggable="sharing-component"
+            id="sharing-component-form"
+            dependencies={[this.state.entries, this.props.available_roles]}
+          >
             <Form onSubmit={this.onSubmit}>
               <Table celled padded striped attached>
                 <Table.Header>

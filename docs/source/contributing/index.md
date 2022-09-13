@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Volto design principles"
-  "property=og:description": "Volto design principles"
-  "property=og:title": "Design principles"
-  "keywords": "Volto, Plone, frontend, React, contributing, design principles"
+myst:
+  html_meta:
+    "description": "Volto design principles"
+    "property=og:description": "Volto design principles"
+    "property=og:title": "Design principles"
+    "keywords": "Volto, Plone, frontend, React, contributing, design principles"
 ---
 
 # Design principles

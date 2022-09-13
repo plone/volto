@@ -1185,10 +1185,16 @@ msgstr "Los grupos son colecciones lógicas de usuarios, como departamentos o un
 msgid "Header cell"
 msgstr "Celda de cabecera"
 
+#: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
 msgid "Headline"
 msgstr "Cabecera"
+
+#: components/manage/Blocks/Listing/schema
+# defaultMessage: Headline level
+msgid "Headline level"
+msgstr ""
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hidden facets will still filter the results if proper parameters are passed in URLs

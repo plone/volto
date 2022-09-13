@@ -20,6 +20,7 @@ import {
 } from './Blocks';
 import { components } from './Components';
 import { loadables } from './Loadables';
+import { workflowMapping } from './Workflows';
 
 import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
@@ -162,6 +163,7 @@ let config = {
     hasWorkingCopySupport: false,
     maxUndoLevels: 200, // undo history size for the main form
     addonsInfo: addonsInfo,
+    workflowMapping,
   },
   widgets: {
     ...widgetMapping,

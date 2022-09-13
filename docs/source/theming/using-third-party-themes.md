@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Use Volto with third party libraries or themes written in SASS and avoid applying `semantic-ui` on public facing views."
-  "property=og:description": "Use Volto with third party libraries or themes written in SASS and avoid applying `semantic-ui` on public facing views."
-  "property=og:title": "Using third party libraries and themes other than `semantic-ui`"
-  "keywords": "Volto, Plone, frontend, React, Semantic UI, semantic-ui, third, party, libraries, themes"
+myst:
+  html_meta:
+    "description": "Use Volto with third party libraries or themes written in SASS and avoid applying `semantic-ui` on public facing views."
+    "property=og:description": "Use Volto with third party libraries or themes written in SASS and avoid applying `semantic-ui` on public facing views."
+    "property=og:title": "Using third party libraries and themes other than `semantic-ui`"
+    "keywords": "Volto, Plone, frontend, React, Semantic UI, semantic-ui, third, party, libraries, themes"
 ---
 
 # Using third party libraries and themes other than `semantic-ui`

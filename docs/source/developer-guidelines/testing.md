@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "We use Jest for unit testing in Volto. The popular @testing-library/react is also available for writing your tests. For every feature or component, a unit test is mandatory in Volto core."
-  "property=og:description": "We use Jest for unit testing in Volto. The popular @testing-library/react is also available for writing your tests. For every feature or component, a unit test is mandatory in Volto core."
-  "property=og:title": "Testing Volto"
-  "keywords": "Volto, Plone, frontend, React, testing, Jest"
+myst:
+  html_meta:
+    "description": "We use Jest for unit testing in Volto. The popular @testing-library/react is also available for writing your tests. For every feature or component, a unit test is mandatory in Volto core."
+    "property=og:description": "We use Jest for unit testing in Volto. The popular @testing-library/react is also available for writing your tests. For every feature or component, a unit test is mandatory in Volto core."
+    "property=og:title": "Testing Volto"
+    "keywords": "Volto, Plone, frontend, React, testing, Jest"
 ---
 
 # Testing
