@@ -8,6 +8,7 @@
 
 ### Bugfix
 
+- Fix "cannot have two html5 backends at the same time" error @davisagli
 ### Internal
 
 ### Documentation
