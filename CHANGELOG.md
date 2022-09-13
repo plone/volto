@@ -12,6 +12,9 @@
 
 ### Documentation
 
+Undo html_static_path configuration in `plone/documentation`, and restore image and its referenced path in `plone/volto`. @stevepiercy
+
+
 ## 16.0.0-alpha.31 (2022-09-12)
 
 ### Bugfix
