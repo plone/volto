@@ -174,7 +174,7 @@ class History extends Component {
             </Table.Header>
             <Table.Body>
               {map(entries, (entry) => (
-                <Table.Row key={entry.time}>
+                <Table.Row key={'version' in entry ? entry.version : -1}>
                   <Table.Cell>
                     {('version' in entry && entry.version > 0 && (
                       <Link
