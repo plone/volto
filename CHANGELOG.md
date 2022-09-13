@@ -5,7 +5,7 @@
 ### Breaking
 
 ### Feature
-
+- Complete es translation. @erral
 ### Bugfix
 
 ### Internal
