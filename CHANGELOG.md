@@ -2,19 +2,17 @@
 
 ## 16.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fix "cannot have two html5 backends at the same time" error @davisagli
+- Reset filter in folder contents when navigating @robgietema
+- Fix bug showing incorrect history after a revert action @robgietema
+
 ### Internal
 
 ### Documentation
 
 Undo html_static_path configuration in `plone/documentation`, and restore image and its referenced path in `plone/volto`. @stevepiercy
-
 
 ## 16.0.0-alpha.31 (2022-09-12)
 
@@ -22,8 +20,6 @@ Undo html_static_path configuration in `plone/documentation`, and restore image 
 
 - Fix types menu on mobile for many types. Specific menuStyle for 'more' menu. @ksuess
 - Fix types menu on desktop when menu overflows the viewport, adding scroll to it @sneridagh
-- Fix bug showing incorrect history after a revert action @robgietema
-- Reset filter in folder contents when navigating @robgietema
 
 ### Documentation
 
