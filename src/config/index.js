@@ -104,8 +104,8 @@ let config = {
     notSupportedBrowsers: ['ie'],
     defaultPageSize: 25,
     isMultilingual: false,
-    supportedLanguages: ['de'],
-    defaultLanguage: 'de',
+    supportedLanguages: ['en'],
+    defaultLanguage: 'en',
     navDepth: 1,
     expressMiddleware: serverConfig.expressMiddleware, // BBB
     defaultBlockType: 'slate',
