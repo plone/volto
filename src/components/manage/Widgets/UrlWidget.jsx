@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { Input, Button } from 'semantic-ui-react';
 import { FormFieldWrapper, Icon } from '@plone/volto/components';
 import {
-  addAppURL,
+  toPublicURL,
   isInternalURL,
   flattenToAppURL,
   URLUtils,
@@ -70,7 +70,7 @@ export const UrlWidget = (props) => {
 
     setValue(newValue);
 
-    newValue = isInternalURL(newValue) ? addAppURL(newValue) : newValue;
+    newValue = isInternalURL(newValue) ? toPublicURL(newValue) : newValue;
 
     if (!isInternalURL(newValue) && newValue.length > 0) {
       const checkedURL = URLUtils.checkAndNormalizeUrl(newValue);
