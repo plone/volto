@@ -16,6 +16,7 @@
 
 ### Bugfix
 
+- Fix wrong link alteration in UrlWidget @dobri1408
 - Fix "cannot have two html5 backends at the same time" error @davisagli
 - Reset filter in folder contents when navigating @robgietema
 - Fix bug showing incorrect history after a revert action @robgietema
