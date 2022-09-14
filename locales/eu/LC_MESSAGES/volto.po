@@ -168,7 +168,7 @@ msgstr "Gehitu {type}"
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Add-Ons
 msgid "Add-Ons"
-msgstr ""
+msgstr "Produktuak"
 
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Add-on Configuration
@@ -178,7 +178,7 @@ msgstr "Produktuen konfigurazioa"
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Add-ons
 msgid "Add-ons"
-msgstr ""
+msgstr "Produktuak"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Add-ons Settings
@@ -644,7 +644,7 @@ msgstr "Egunero"
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Database
 msgid "Database"
-msgstr ""
+msgstr "Datu-basea"
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Database Information
@@ -1231,7 +1231,7 @@ msgstr "Goiburua"
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Headline level
 msgid "Headline level"
-msgstr ""
+msgstr "Goiburukoaren maila"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hidden facets will still filter the results if proper parameters are passed in URLs
@@ -1391,7 +1391,7 @@ msgstr "Instalatutako bertsioa"
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Installing a third party add-on
 msgid "Installing a third party add-on"
-msgstr ""
+msgstr "Hirugarrenen produktu gehigarriak instalatu"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: days
@@ -1782,7 +1782,7 @@ msgstr "Ez da gehigarririk aurkitu"
 #: components/theme/RequestTimeout/RequestTimeout
 # defaultMessage: There is no connection to the server, due to a timeout o no network connection.
 msgid "No connection to the server"
-msgstr ""
+msgstr "Ez dago konexiorik zerbitzariarekin"
 
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected
@@ -2780,7 +2780,7 @@ msgstr "Idatzi zure webgunearen helbidea, bat baldin baduzu."
 #: components/theme/RequestTimeout/RequestTimeout
 # defaultMessage: The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again.
 msgid "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
-msgstr ""
+msgstr "Zerbitzariak ez du erantzunik eman, konexio denbora gainditu delako edo zure gailuak konexio arazoren bat duelako. Egiaztatu zure konexioa ondo dagoela eta saiatu berriz mesedez."
 
 #: components/theme/ConnectionRefused/ConnectionRefused
 # defaultMessage: The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable.
