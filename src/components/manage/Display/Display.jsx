@@ -7,13 +7,20 @@ import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { getSchema, updateContent, getContent } from '@plone/volto/actions';
 import layouts from '@plone/volto/constants/Layouts';
 import { getLayoutFieldname } from '@plone/volto/helpers';
-import { Icon } from '@plone/volto/components';
-import { FormattedMessage } from 'react-intl';
+import { FormFieldWrapper, Icon } from '@plone/volto/components';
+import { defineMessages, injectIntl } from 'react-intl';
 import config from '@plone/volto/registry';
 
 import downSVG from '@plone/volto/icons/down-key.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import checkSVG from '@plone/volto/icons/check.svg';
+
+const messages = defineMessages({
+  Viewmode: {
+    id: 'Viewmode',
+    defaultMessage: 'View',
+  },
+});
 
 const Option = injectLazyLibs('reactSelect')((props) => {
   const { Option } = props.reactSelect.components;
@@ -76,7 +83,7 @@ const customSelectStyles = {
   }),
   valueContainer: (styles) => ({
     ...styles,
-    // paddingLeft: 0,
+    padding: 0,
   }),
   option: (styles, state) => ({
     ...styles,
@@ -186,10 +193,11 @@ class DisplaySelect extends Component {
     const Select = this.props.reactSelect.default;
 
     return (
-      <>
-        <label htmlFor="display-select">
-          <FormattedMessage id="Viewmode" defaultMessage="View" />
-        </label>
+      <FormFieldWrapper
+        id="display-select"
+        title={this.props.intl.formatMessage(messages.Viewmode)}
+        {...this.props}
+      >
         <Select
           name="display-select"
           className="react-select-container"
@@ -211,12 +219,13 @@ class DisplaySelect extends Component {
           defaultValue={selectedOption}
           isSearchable={false}
         />
-      </>
+      </FormFieldWrapper>
     );
   }
 }
 
 export default compose(
+  injectIntl,
   injectLazyLibs('reactSelect'),
   connect(
     (state) => ({

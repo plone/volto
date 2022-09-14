@@ -456,7 +456,10 @@ class Contents extends Component {
         {
           currentPage: 0,
         },
-        () => this.fetchContents(nextProps.pathname),
+        () =>
+          this.setState({ filter: '' }, () =>
+            this.fetchContents(nextProps.pathname),
+          ),
       );
     }
     if (this.props.searchRequest.loading && nextProps.searchRequest.loaded) {

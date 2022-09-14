@@ -110,6 +110,13 @@ export function createDefaultBlock(children) {
   };
 }
 
+export function createBlock(type, children) {
+  return {
+    type,
+    children: children || [{ text: '' }],
+  };
+}
+
 export function createEmptyParagraph() {
   // TODO: rename to createEmptyBlock
   return {
@@ -316,4 +323,16 @@ export const getAllBlocks = (properties, blocks) => {
     });
   }
   return blocks;
+};
+
+export const clearFormatting = (editor) => {
+  const { slate } = config.settings;
+  Transforms.setNodes(editor, {
+    type: slate.defaultBlockType,
+  });
+  Transforms.unwrapNodes(editor, {
+    match: (n) => n.type && n.type !== slate.defaultBlockType,
+    mode: 'all',
+    split: false,
+  });
 };

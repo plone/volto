@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "A guide on how to contribute to the Plone's community"
-  "property=og:description": "A guide on how to contribute to the Plone's community"
-  "property=og:title": "Guidelines"
-  "keywords": "Volto, Plone, frontend, React, guidelines"
+myst:
+  html_meta:
+    "description": "A guide on how to contribute to the Plone's community"
+    "property=og:description": "A guide on how to contribute to the Plone's community"
+    "property=og:title": "Guidelines"
+    "keywords": "Volto, Plone, frontend, React, guidelines"
 ---
 
 # Guidelines
