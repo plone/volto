@@ -92,24 +92,19 @@ make build-backend
 
 #### Recommended Plone version
 
-Volto is Plone 6 default UI, so it will work for all Plone 6 released versions.
+Volto is the default UI for Plone 6, so it will work for all Plone 6 released versions.
 
-For the Plone 5 series latest released version (with Python 3) and above is recommended (at the time of writing 5.2.6).
-
-The following KGS (or above) are also recommended, for any Plone version used.
+For the Plone 5 series, the latest released version of Plone 5 (with Python 3) is recommended (at the time of writing 5.2.9).
 
 #### KGS (known good set of versions) for backend packages
 
-Volto always works best with latest versions of the "Frontend stack" or at least the recommended ones (in parenthesis) which are:
+On Plone 6, we recommend using the known good set (KGS) of package versions that are specified in the Plone release.
 
-- plone.restapi (8.22.0)
-- plone.rest (2.0.0a5)
-- plone.volto (4.0.0a4)
+On Plone 5, Volto is currently tested with the following packages pinned to specific versions, and we recommend using the same versions, which are:
 
-and the following core packages since some features require up to date versions:
-
-- plone.app.iterate (4.0.2)
-- plone.app.vocabularies (4.3.0)
+- plone.restapi 8.24.1
+- plone.rest 2.0.0a5
+- plone.volto 4.0.0a9
 
 ### Start Volto
 

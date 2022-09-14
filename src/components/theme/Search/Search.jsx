@@ -14,7 +14,7 @@ import { Portal } from 'react-portal';
 import { Container, Pagination, Button, Header } from 'semantic-ui-react';
 import qs from 'query-string';
 import classNames from 'classnames';
-
+import { defineMessages, injectIntl } from 'react-intl';
 import config from '@plone/volto/registry';
 import { Helmet } from '@plone/volto/helpers';
 import { searchContent } from '@plone/volto/actions';
@@ -22,6 +22,13 @@ import { SearchTags, Toolbar, Icon } from '@plone/volto/components';
 
 import paginationLeftSVG from '@plone/volto/icons/left-key.svg';
 import paginationRightSVG from '@plone/volto/icons/right-key.svg';
+
+const messages = defineMessages({
+  Search: {
+    id: 'Search',
+    defaultMessage: 'Search',
+  },
+});
 
 /**
  * Search class.
@@ -145,7 +152,7 @@ class Search extends Component {
     const { settings } = config;
     return (
       <Container id="page-search">
-        <Helmet title="Search" />
+        <Helmet title={this.props.intl.formatMessage(messages.Search)} />
         <div className="container">
           <article id="content">
             <header>
@@ -316,16 +323,20 @@ class Search extends Component {
   }
 }
 
-export const __test__ = connect(
-  (state, props) => ({
-    items: state.search.items,
-    searchableText: qs.parse(props.history.location.search).SearchableText,
-    pathname: props.history.location.pathname,
-  }),
-  { searchContent },
+export const __test__ = compose(
+  injectIntl,
+  connect(
+    (state, props) => ({
+      items: state.search.items,
+      searchableText: qs.parse(props.history.location.search).SearchableText,
+      pathname: props.history.location.pathname,
+    }),
+    { searchContent },
+  ),
 )(Search);
 
 export default compose(
+  injectIntl,
   connect(
     (state, props) => ({
       items: state.search.items,

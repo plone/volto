@@ -37,10 +37,10 @@ describe('Url', () => {
       expect(getBaseUrl('/register')).toBe('');
     });
     it('can remove a view name from a relative url', () => {
-      expect(getBaseUrl('/password-reset')).toBe('');
+      expect(getBaseUrl('/passwordreset')).toBe('');
     });
     it('can remove a view name from a relative url', () => {
-      expect(getBaseUrl('/password-reset/token')).toBe('');
+      expect(getBaseUrl('/passwordreset/token')).toBe('');
     });
     it('can remove a view name from a controlpanel url', () => {
       expect(getBaseUrl('/controlpanel/date-time')).toBe('');
