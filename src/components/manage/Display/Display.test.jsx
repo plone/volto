@@ -2,6 +2,7 @@ import React from 'react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { render, waitFor } from '@testing-library/react';
+import config from '@plone/volto/registry';
 
 import Display from './Display';
 
@@ -12,6 +13,12 @@ beforeAll(
   async () =>
     await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
 );
+
+beforeEach(() => {
+  config.views.layoutViewsNamesMapping = {
+    summary_view: 'Summary view',
+  };
+});
 
 describe('Display', () => {
   it('renders an actions component', async () => {

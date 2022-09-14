@@ -9,6 +9,7 @@ import {
   contentTypesViews,
   defaultView,
   errorViews,
+  layoutViewsNamesMapping,
 } from './Views';
 import { nonContentRoutes } from './NonContentRoutes';
 import {
@@ -103,8 +104,8 @@ let config = {
     notSupportedBrowsers: ['ie'],
     defaultPageSize: 25,
     isMultilingual: false,
-    supportedLanguages: ['en'],
-    defaultLanguage: 'en',
+    supportedLanguages: ['de'],
+    defaultLanguage: 'de',
     navDepth: 1,
     expressMiddleware: serverConfig.expressMiddleware, // BBB
     defaultBlockType: 'slate',
@@ -174,6 +175,7 @@ let config = {
     contentTypesViews,
     defaultView,
     errorViews,
+    layoutViewsNamesMapping,
   },
   blocks: {
     requiredBlocks,

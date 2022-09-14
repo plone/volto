@@ -192,6 +192,11 @@ msgstr "Configuració de complements"
 msgid "Additional date"
 msgstr "Data addicional"
 
+#: config/Views
+# defaultMessage: Album view
+msgid "Album view"
+msgstr ""
+
 #: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -205,6 +210,11 @@ msgstr "Posicionament"
 # defaultMessage: All
 msgid "All"
 msgstr "Tots"
+
+#: config/Views
+# defaultMessage: All content
+msgid "All content"
+msgstr ""
 
 #: components/theme/Search/Search
 # defaultMessage: Alphabetically
@@ -689,6 +699,11 @@ msgstr "Data (el més nou primer)"
 msgid "Default"
 msgstr "Per defecte"
 
+#: config/Views
+# defaultMessage: Default view
+msgid "Default view"
+msgstr ""
+
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
@@ -806,6 +821,11 @@ msgstr "Realment voleu suprimir aquest element?"
 # defaultMessage: Document
 msgid "Document"
 msgstr "Document"
+
+#: config/Views
+# defaultMessage: Document view
+msgid "Document view"
+msgstr ""
 
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Download Event
@@ -974,6 +994,16 @@ msgstr ""
 msgid "Error"
 msgstr "Error"
 
+#: config/Views
+# defaultMessage: Event listing
+msgid "Event listing"
+msgstr ""
+
+#: config/Views
+# defaultMessage: Event view
+msgid "Event view"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Exclude from navigation
 msgid "Exclude from navigation"
@@ -1059,6 +1089,11 @@ msgstr "Dossier"
 msgid "File size"
 msgstr "Mida de l'arxiu"
 
+#: config/Views
+# defaultMessage: File view
+msgid "File view"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Filename
 msgid "Filename"
@@ -1093,6 +1128,11 @@ msgstr "Plegar"
 # defaultMessage: Folder
 msgid "Folder"
 msgstr "Carpeta"
+
+#: config/Views
+# defaultMessage: Folder listing
+msgid "Folder listing"
+msgstr ""
 
 #: components/theme/Forbidden/Forbidden
 # defaultMessage: Forbidden
@@ -1280,6 +1320,11 @@ msgstr "Galeria d'imatges"
 #: components/manage/Blocks/Image/schema
 # defaultMessage: Image size
 msgid "Image size"
+msgstr ""
+
+#: config/Views
+# defaultMessage: Image view
+msgid "Image view"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
@@ -1484,6 +1529,11 @@ msgstr "Enllaç"
 msgid "Link more"
 msgstr "Enllaça més"
 
+#: config/Views
+# defaultMessage: Link redirect view
+msgid "Link redirect view"
+msgstr ""
+
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link Title
@@ -1507,6 +1557,11 @@ msgstr "Traducció d'enllaços per"
 # defaultMessage: Listing
 msgid "Listing"
 msgstr "llistat"
+
+#: config/Views
+# defaultMessage: Listing view
+msgid "Listing view"
+msgstr ""
 
 #: components/theme/Comments/Comments
 # defaultMessage: Load more...
@@ -1647,6 +1702,11 @@ msgstr "Mensual"
 msgid "More"
 msgstr "Més"
 
+#: config/Views
+# defaultMessage: Mosaic layout
+msgid "Mosaic layout"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Move to bottom of folder
 msgid "Move to bottom of folder"
@@ -1698,6 +1758,11 @@ msgstr "Nova contrasenya"
 # defaultMessage: News Item
 msgid "News Item"
 msgstr "Noticia"
+
+#: config/Views
+# defaultMessage: News item view
+msgid "News item view"
+msgstr ""
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Contents/ContentsPropertiesModal
@@ -2638,6 +2703,11 @@ msgstr "Èxit"
 msgid "Summary"
 msgstr "Resum"
 
+#: config/Views
+# defaultMessage: Summary view
+msgid "Summary view"
+msgstr ""
+
 #: components/theme/LanguageSelector/LanguageSelector
 # defaultMessage: Switch to
 msgid "Switch to"
@@ -2653,6 +2723,11 @@ msgstr "Taula"
 # defaultMessage: Table of Contents
 msgid "Table of Contents"
 msgstr "Taula de continguts"
+
+#: config/Views
+# defaultMessage: Tabular view
+msgid "Tabular view"
+msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsTagsModal

@@ -190,6 +190,11 @@ msgstr "Gehigarrien ezarpenak"
 msgid "Additional date"
 msgstr "Data gehigarria"
 
+#: config/Views
+# defaultMessage: Album view
+msgid "Album view"
+msgstr ""
+
 #: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -203,6 +208,11 @@ msgstr "Alineazio-estiloak"
 # defaultMessage: All
 msgid "All"
 msgstr "Guztiak"
+
+#: config/Views
+# defaultMessage: All content
+msgid "All content"
+msgstr ""
 
 #: components/theme/Search/Search
 # defaultMessage: Alphabetically
@@ -687,6 +697,11 @@ msgstr "Data (berriena lehenengo)"
 msgid "Default"
 msgstr "Defektuzkoa"
 
+#: config/Views
+# defaultMessage: Default view
+msgid "Default view"
+msgstr ""
+
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
@@ -804,6 +819,11 @@ msgstr "Elementu hau ezabatu egin nahi duzu?"
 # defaultMessage: Document
 msgid "Document"
 msgstr "Dokumentua"
+
+#: config/Views
+# defaultMessage: Document view
+msgid "Document view"
+msgstr ""
 
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Download Event
@@ -972,6 +992,16 @@ msgstr "Idatzi zure erabiltzaile-izena egiaztatu dezagun."
 msgid "Error"
 msgstr "Erroea"
 
+#: config/Views
+# defaultMessage: Event listing
+msgid "Event listing"
+msgstr ""
+
+#: config/Views
+# defaultMessage: Event view
+msgid "Event view"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Exclude from navigation
 msgid "Exclude from navigation"
@@ -1057,6 +1087,11 @@ msgstr "Fitxategia"
 msgid "File size"
 msgstr "Fitxategiaren tamaina"
 
+#: config/Views
+# defaultMessage: File view
+msgid "File view"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Filename
 msgid "Filename"
@@ -1091,6 +1126,11 @@ msgstr "Tolestu"
 # defaultMessage: Folder
 msgid "Folder"
 msgstr "Karpeta"
+
+#: config/Views
+# defaultMessage: Folder listing
+msgid "Folder listing"
+msgstr ""
 
 #: components/theme/Forbidden/Forbidden
 # defaultMessage: Forbidden
@@ -1279,6 +1319,11 @@ msgstr "Irudi galeria"
 # defaultMessage: Image size
 msgid "Image size"
 msgstr "Irudiaren tamaina"
+
+#: config/Views
+# defaultMessage: Image view
+msgid "Image view"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Include this occurence
@@ -1482,6 +1527,11 @@ msgstr "Esteka"
 msgid "Link more"
 msgstr "Gehiago estekatu"
 
+#: config/Views
+# defaultMessage: Link redirect view
+msgid "Link redirect view"
+msgstr ""
+
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link Title
@@ -1505,6 +1555,11 @@ msgstr "Lotu itzulpena"
 # defaultMessage: Listing
 msgid "Listing"
 msgstr "Zerrenda"
+
+#: config/Views
+# defaultMessage: Listing view
+msgid "Listing view"
+msgstr ""
 
 #: components/theme/Comments/Comments
 # defaultMessage: Load more...
@@ -1645,6 +1700,11 @@ msgstr "Hilero"
 msgid "More"
 msgstr "Gehiago"
 
+#: config/Views
+# defaultMessage: Mosaic layout
+msgid "Mosaic layout"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Move to bottom of folder
 msgid "Move to bottom of folder"
@@ -1696,6 +1756,11 @@ msgstr "Pasahitz berria"
 # defaultMessage: News Item
 msgid "News Item"
 msgstr "Albistea ikusi"
+
+#: config/Views
+# defaultMessage: News item view
+msgid "News item view"
+msgstr ""
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Contents/ContentsPropertiesModal
@@ -2636,6 +2701,11 @@ msgstr "Arrakasta"
 msgid "Summary"
 msgstr "Laburpena"
 
+#: config/Views
+# defaultMessage: Summary view
+msgid "Summary view"
+msgstr ""
+
 #: components/theme/LanguageSelector/LanguageSelector
 # defaultMessage: Switch to
 msgid "Switch to"
@@ -2651,6 +2721,11 @@ msgstr "Taula"
 # defaultMessage: Table of Contents
 msgid "Table of Contents"
 msgstr "Edukien taula"
+
+#: config/Views
+# defaultMessage: Tabular view
+msgid "Tabular view"
+msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsTagsModal

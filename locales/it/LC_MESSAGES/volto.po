@@ -183,6 +183,11 @@ msgstr "Impostazioni Add-ons"
 msgid "Additional date"
 msgstr "Data aggiuntiva"
 
+#: config/Views
+# defaultMessage: Album view
+msgid "Album view"
+msgstr ""
+
 #: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -196,6 +201,11 @@ msgstr "Allineamento"
 # defaultMessage: All
 msgid "All"
 msgstr "Tutti"
+
+#: config/Views
+# defaultMessage: All content
+msgid "All content"
+msgstr ""
 
 #: components/theme/Search/Search
 # defaultMessage: Alphabetically
@@ -680,6 +690,11 @@ msgstr "Data (prima i più recenti)"
 msgid "Default"
 msgstr "Default"
 
+#: config/Views
+# defaultMessage: Default view
+msgid "Default view"
+msgstr ""
+
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
@@ -797,6 +812,11 @@ msgstr "Vuoi veramente eliminare questo elemento?"
 # defaultMessage: Document
 msgid "Document"
 msgstr "Pagina"
+
+#: config/Views
+# defaultMessage: Document view
+msgid "Document view"
+msgstr ""
 
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Download Event
@@ -965,6 +985,16 @@ msgstr "Inserisci il tuo username per la verifica."
 msgid "Error"
 msgstr "Errore"
 
+#: config/Views
+# defaultMessage: Event listing
+msgid "Event listing"
+msgstr ""
+
+#: config/Views
+# defaultMessage: Event view
+msgid "Event view"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Exclude from navigation
 msgid "Exclude from navigation"
@@ -1050,6 +1080,11 @@ msgstr "File"
 msgid "File size"
 msgstr "Dimensione del file"
 
+#: config/Views
+# defaultMessage: File view
+msgid "File view"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Filename
 msgid "Filename"
@@ -1084,6 +1119,11 @@ msgstr "Chiudi"
 # defaultMessage: Folder
 msgid "Folder"
 msgstr "Cartella"
+
+#: config/Views
+# defaultMessage: Folder listing
+msgid "Folder listing"
+msgstr ""
 
 #: components/theme/Forbidden/Forbidden
 # defaultMessage: Forbidden
@@ -1272,6 +1312,11 @@ msgstr "Galleria di immagini"
 # defaultMessage: Image size
 msgid "Image size"
 msgstr "Dimensione dell'immagine"
+
+#: config/Views
+# defaultMessage: Image view
+msgid "Image view"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Include this occurence
@@ -1475,6 +1520,11 @@ msgstr "Link"
 msgid "Link more"
 msgstr "Link ad altro"
 
+#: config/Views
+# defaultMessage: Link redirect view
+msgid "Link redirect view"
+msgstr ""
+
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link Title
@@ -1498,6 +1548,11 @@ msgstr "Collega traduzione per"
 # defaultMessage: Listing
 msgid "Listing"
 msgstr "Elenco"
+
+#: config/Views
+# defaultMessage: Listing view
+msgid "Listing view"
+msgstr ""
 
 #: components/theme/Comments/Comments
 # defaultMessage: Load more...
@@ -1638,6 +1693,11 @@ msgstr "Mensile"
 msgid "More"
 msgstr "Altro"
 
+#: config/Views
+# defaultMessage: Mosaic layout
+msgid "Mosaic layout"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Move to bottom of folder
 msgid "Move to bottom of folder"
@@ -1689,6 +1749,11 @@ msgstr "Nuova password"
 # defaultMessage: News Item
 msgid "News Item"
 msgstr "Notizia"
+
+#: config/Views
+# defaultMessage: News item view
+msgid "News item view"
+msgstr ""
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Contents/ContentsPropertiesModal
@@ -2629,6 +2694,11 @@ msgstr "Successo"
 msgid "Summary"
 msgstr "Sommario"
 
+#: config/Views
+# defaultMessage: Summary view
+msgid "Summary view"
+msgstr ""
+
 #: components/theme/LanguageSelector/LanguageSelector
 # defaultMessage: Switch to
 msgid "Switch to"
@@ -2644,6 +2714,11 @@ msgstr "Tabella"
 # defaultMessage: Table of Contents
 msgid "Table of Contents"
 msgstr "Indice dei contenuti"
+
+#: config/Views
+# defaultMessage: Tabular view
+msgid "Tabular view"
+msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsTagsModal

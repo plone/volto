@@ -191,6 +191,11 @@ msgstr "アドオン設定"
 msgid "Additional date"
 msgstr "追加日"
 
+#: config/Views
+# defaultMessage: Album view
+msgid "Album view"
+msgstr ""
+
 #: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -204,6 +209,11 @@ msgstr "配置"
 # defaultMessage: All
 msgid "All"
 msgstr "すべて"
+
+#: config/Views
+# defaultMessage: All content
+msgid "All content"
+msgstr ""
 
 #: components/theme/Search/Search
 # defaultMessage: Alphabetically
@@ -688,6 +698,11 @@ msgstr "日付 (新しい順)"
 msgid "Default"
 msgstr "基本"
 
+#: config/Views
+# defaultMessage: Default view
+msgid "Default view"
+msgstr ""
+
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
@@ -805,6 +820,11 @@ msgstr "このアイテムを削除してよろしいですか?"
 # defaultMessage: Document
 msgid "Document"
 msgstr "文書"
+
+#: config/Views
+# defaultMessage: Document view
+msgid "Document view"
+msgstr ""
 
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Download Event
@@ -973,6 +993,16 @@ msgstr ""
 msgid "Error"
 msgstr "エラー"
 
+#: config/Views
+# defaultMessage: Event listing
+msgid "Event listing"
+msgstr ""
+
+#: config/Views
+# defaultMessage: Event view
+msgid "Event view"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Exclude from navigation
 msgid "Exclude from navigation"
@@ -1058,6 +1088,11 @@ msgstr "ファイル"
 msgid "File size"
 msgstr "ファイルサイズ"
 
+#: config/Views
+# defaultMessage: File view
+msgid "File view"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Filename
 msgid "Filename"
@@ -1092,6 +1127,11 @@ msgstr "折りたたむ"
 # defaultMessage: Folder
 msgid "Folder"
 msgstr "フォルダ"
+
+#: config/Views
+# defaultMessage: Folder listing
+msgid "Folder listing"
+msgstr ""
 
 #: components/theme/Forbidden/Forbidden
 # defaultMessage: Forbidden
@@ -1279,6 +1319,11 @@ msgstr ""
 #: components/manage/Blocks/Image/schema
 # defaultMessage: Image size
 msgid "Image size"
+msgstr ""
+
+#: config/Views
+# defaultMessage: Image view
+msgid "Image view"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
@@ -1483,6 +1528,11 @@ msgstr "リンク"
 msgid "Link more"
 msgstr "「もっと見る」の設定"
 
+#: config/Views
+# defaultMessage: Link redirect view
+msgid "Link redirect view"
+msgstr ""
+
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link Title
@@ -1506,6 +1556,11 @@ msgstr ""
 # defaultMessage: Listing
 msgid "Listing"
 msgstr "リスティング"
+
+#: config/Views
+# defaultMessage: Listing view
+msgid "Listing view"
+msgstr ""
 
 #: components/theme/Comments/Comments
 # defaultMessage: Load more...
@@ -1646,6 +1701,11 @@ msgstr "毎月"
 msgid "More"
 msgstr "もっと見る"
 
+#: config/Views
+# defaultMessage: Mosaic layout
+msgid "Mosaic layout"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Move to bottom of folder
 msgid "Move to bottom of folder"
@@ -1697,6 +1757,11 @@ msgstr "新しいパスワード"
 # defaultMessage: News Item
 msgid "News Item"
 msgstr "ニュース"
+
+#: config/Views
+# defaultMessage: News item view
+msgid "News item view"
+msgstr ""
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Contents/ContentsPropertiesModal
@@ -2637,6 +2702,11 @@ msgstr "成功"
 msgid "Summary"
 msgstr ""
 
+#: config/Views
+# defaultMessage: Summary view
+msgid "Summary view"
+msgstr ""
+
 #: components/theme/LanguageSelector/LanguageSelector
 # defaultMessage: Switch to
 msgid "Switch to"
@@ -2652,6 +2722,11 @@ msgstr "テーブル"
 # defaultMessage: Table of Contents
 msgid "Table of Contents"
 msgstr "目次"
+
+#: config/Views
+# defaultMessage: Tabular view
+msgid "Tabular view"
+msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsTagsModal
