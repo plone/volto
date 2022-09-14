@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-03 03:20-0400\n"
-"PO-Revision-Date: 2022-07-22 08:06+0200\n"
+"PO-Revision-Date: 2022-09-13 09:41+0200\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language: es\n"
 "Language-Team: ES <LL@li.org>\n"
@@ -171,7 +171,7 @@ msgstr "Agregar {type}"
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Add-Ons
 msgid "Add-Ons"
-msgstr ""
+msgstr "Complementos"
 
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Add-on Configuration
@@ -181,7 +181,7 @@ msgstr "Configuración de Complementos"
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Add-ons
 msgid "Add-ons"
-msgstr ""
+msgstr "Complementos"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Add-ons Settings
@@ -637,7 +637,7 @@ msgstr "Diario"
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Database
 msgid "Database"
-msgstr ""
+msgstr "Base de datos"
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Database Information
@@ -1194,7 +1194,7 @@ msgstr "Cabecera"
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Headline level
 msgid "Headline level"
-msgstr ""
+msgstr "Nivel de encabezamiento"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hidden facets will still filter the results if proper parameters are passed in URLs
@@ -1349,7 +1349,7 @@ msgstr "Versión instalada"
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Installing a third party add-on
 msgid "Installing a third party add-on"
-msgstr ""
+msgstr "Instalando un complemento de terceros"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: days
@@ -1720,7 +1720,7 @@ msgstr "No se han encontrado complementos"
 #: components/theme/RequestTimeout/RequestTimeout
 # defaultMessage: There is no connection to the server, due to a timeout o no network connection.
 msgid "No connection to the server"
-msgstr ""
+msgstr "No hay conexión con el servidor"
 
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected
@@ -2708,7 +2708,7 @@ msgstr "La dirección URL de su página personal externa, si tiene una."
 #: components/theme/RequestTimeout/RequestTimeout
 # defaultMessage: The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again.
 msgid "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
-msgstr ""
+msgstr "El servidor no está respondiendo por superar el tiempo de conexión o un problema de conexión de su dispositivo. Por favor verifique que su conexión sea correcta e inténtelo otra vez."
 
 #: components/theme/ConnectionRefused/ConnectionRefused
 # defaultMessage: The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable.

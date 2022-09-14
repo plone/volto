@@ -5,12 +5,32 @@
 ### Breaking
 
 ### Feature
+
 - Complete eu translation @erral
+- Complete es translation. @erral
+
 ### Bugfix
+
+- Fix and edge case, in case a `RelationList` has no default, on empty fields, after the object has been created, it saves an empty (None/null) value. Make sure that internally, if that's the case, it's an empty array always. @sneridagh
+- Fix workflow and display select in toolbar in case that the option spans several lines @sneridagh
 
 ### Internal
 
 ### Documentation
+
+## 16.0.0-alpha.32 (2022-09-14)
+
+### Bugfix
+
+- Fix "cannot have two html5 backends at the same time" error @davisagli
+- Reset filter in folder contents when navigating @robgietema
+- Fix bug showing incorrect history after a revert action @robgietema
+
+### Internal
+
+### Documentation
+
+Undo html_static_path configuration in `plone/documentation`, and restore image and its referenced path in `plone/volto`. @stevepiercy
 
 ## 16.0.0-alpha.31 (2022-09-12)
 
@@ -18,7 +38,6 @@
 
 - Fix types menu on mobile for many types. Specific menuStyle for 'more' menu. @ksuess
 - Fix types menu on desktop when menu overflows the viewport, adding scroll to it @sneridagh
-- Fix bug showing incorrect history after a revert action @robgietema
 
 ### Documentation
 
