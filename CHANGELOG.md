@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix and edge case, in case a `RelationList` has no default, on empty fields, after the object has been created, it saves an empty (None/null) value. Make sure that internally, if that's the case, it's an empty array always. @sneridagh
+
 ### Internal
 
 ### Documentation
