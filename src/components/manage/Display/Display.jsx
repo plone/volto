@@ -27,9 +27,9 @@ const Option = injectLazyLibs('reactSelect')((props) => {
     <Option {...props}>
       <div>{props.label}</div>
       {props.isFocused && !props.isSelected && (
-        <Icon name={checkSVG} size="24px" color="#b8c6c8" />
+        <Icon name={checkSVG} size="18px" color="#b8c6c8" />
       )}
-      {props.isSelected && <Icon name={checkSVG} size="24px" color="#007bc1" />}
+      {props.isSelected && <Icon name={checkSVG} size="18px" color="#007bc1" />}
     </Option>
   );
 });
@@ -87,11 +87,11 @@ const customSelectStyles = {
   option: (styles, state) => ({
     ...styles,
     backgroundColor: null,
-    height: '50px',
+    minHeight: '50px',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '14px 12px',
+    padding: '12px 12px',
     color: state.isSelected
       ? '#007bc1'
       : state.isFocused
@@ -99,6 +99,12 @@ const customSelectStyles = {
       : 'inherit',
     ':active': {
       backgroundColor: null,
+    },
+    span: {
+      flex: '0 0 auto',
+    },
+    svg: {
+      flex: '0 0 auto',
     },
   }),
 };
