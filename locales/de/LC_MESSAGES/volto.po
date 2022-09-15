@@ -192,7 +192,7 @@ msgstr "Zusätzliches Datum"
 #: config/Views
 # defaultMessage: Album view
 msgid "Album view"
-msgstr "Albumansicht"
+msgstr "Album"
 
 #: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
@@ -699,7 +699,7 @@ msgstr "Standard"
 #: config/Views
 # defaultMessage: Default view
 msgid "Default view"
-msgstr "Standardansicht"
+msgstr "Standard"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
@@ -822,7 +822,7 @@ msgstr "Seite"
 #: config/Views
 # defaultMessage: Document view
 msgid "Document view"
-msgstr "Dokumentenansicht"
+msgstr "Seite"
 
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Download Event
@@ -994,12 +994,12 @@ msgstr "Fehler"
 #: config/Views
 # defaultMessage: Event listing
 msgid "Event listing"
-msgstr "Termineliste"
+msgstr "Termine"
 
 #: config/Views
 # defaultMessage: Event view
 msgid "Event view"
-msgstr "Termineansicht"
+msgstr "Termin"
 
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Exclude from navigation
@@ -1089,7 +1089,7 @@ msgstr "Dateigröße"
 #: config/Views
 # defaultMessage: File view
 msgid "File view"
-msgstr "Dateiansicht"
+msgstr "Datei"
 
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Filename
@@ -1129,7 +1129,7 @@ msgstr "Ordner"
 #: config/Views
 # defaultMessage: Folder listing
 msgid "Folder listing"
-msgstr "Ordnerliste"
+msgstr "Ordner"
 
 #: components/theme/Forbidden/Forbidden
 # defaultMessage: Forbidden
@@ -1322,7 +1322,7 @@ msgstr ""
 #: config/Views
 # defaultMessage: Image view
 msgid "Image view"
-msgstr "Bildansicht"
+msgstr "Bild"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Include this occurence
@@ -1529,7 +1529,7 @@ msgstr "'Mehr' Link"
 #: config/Views
 # defaultMessage: Link redirect view
 msgid "Link redirect view"
-msgstr "Link-Umleitungsansicht"
+msgstr "Link"
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
@@ -1558,7 +1558,7 @@ msgstr "Auflistung"
 #: config/Views
 # defaultMessage: Listing view
 msgid "Listing view"
-msgstr "Auflistungansicht"
+msgstr "Auflistung"
 
 #: components/theme/Comments/Comments
 # defaultMessage: Load more...
@@ -1702,7 +1702,7 @@ msgstr "Mehr"
 #: config/Views
 # defaultMessage: Mosaic layout
 msgid "Mosaic layout"
-msgstr ""
+msgstr "Mosaic"
 
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Move to bottom of folder
@@ -1759,7 +1759,7 @@ msgstr "Nachricht"
 #: config/Views
 # defaultMessage: News item view
 msgid "News item view"
-msgstr "Nachrichtansicht"
+msgstr "Nachricht"
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Contents/ContentsPropertiesModal
