@@ -195,7 +195,7 @@ msgstr "Data addicional"
 #: config/Views
 # defaultMessage: Album view
 msgid "Album view"
-msgstr ""
+msgstr "Album"
 
 #: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
@@ -214,7 +214,7 @@ msgstr "Tots"
 #: config/Views
 # defaultMessage: All content
 msgid "All content"
-msgstr ""
+msgstr "Tot el contingut"
 
 #: components/theme/Search/Search
 # defaultMessage: Alphabetically
@@ -702,7 +702,7 @@ msgstr "Per defecte"
 #: config/Views
 # defaultMessage: Default view
 msgid "Default view"
-msgstr ""
+msgstr "Per defecte"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
@@ -825,7 +825,7 @@ msgstr "Document"
 #: config/Views
 # defaultMessage: Document view
 msgid "Document view"
-msgstr ""
+msgstr "Document"
 
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Download Event
@@ -997,12 +997,12 @@ msgstr "Error"
 #: config/Views
 # defaultMessage: Event listing
 msgid "Event listing"
-msgstr ""
+msgstr "Llista d'esdeveniments"
 
 #: config/Views
 # defaultMessage: Event view
 msgid "Event view"
-msgstr ""
+msgstr "Esdeveniment"
 
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Exclude from navigation
@@ -1092,7 +1092,7 @@ msgstr "Mida de l'arxiu"
 #: config/Views
 # defaultMessage: File view
 msgid "File view"
-msgstr ""
+msgstr "Arxiu"
 
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Filename
@@ -1132,7 +1132,7 @@ msgstr "Carpeta"
 #: config/Views
 # defaultMessage: Folder listing
 msgid "Folder listing"
-msgstr ""
+msgstr "Llistat"
 
 #: components/theme/Forbidden/Forbidden
 # defaultMessage: Forbidden
@@ -1325,7 +1325,7 @@ msgstr ""
 #: config/Views
 # defaultMessage: Image view
 msgid "Image view"
-msgstr ""
+msgstr "Imatge"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Include this occurence
@@ -1532,7 +1532,7 @@ msgstr "Enllaça més"
 #: config/Views
 # defaultMessage: Link redirect view
 msgid "Link redirect view"
-msgstr ""
+msgstr "Redirecció d'enllaç"
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
@@ -1561,7 +1561,7 @@ msgstr "llistat"
 #: config/Views
 # defaultMessage: Listing view
 msgid "Listing view"
-msgstr ""
+msgstr "Llistat"
 
 #: components/theme/Comments/Comments
 # defaultMessage: Load more...
@@ -1762,7 +1762,7 @@ msgstr "Noticia"
 #: config/Views
 # defaultMessage: News item view
 msgid "News item view"
-msgstr ""
+msgstr "Notícia"
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Contents/ContentsPropertiesModal
@@ -2706,7 +2706,7 @@ msgstr "Resum"
 #: config/Views
 # defaultMessage: Summary view
 msgid "Summary view"
-msgstr ""
+msgstr "Sumari"
 
 #: components/theme/LanguageSelector/LanguageSelector
 # defaultMessage: Switch to
@@ -2727,7 +2727,7 @@ msgstr "Taula de continguts"
 #: config/Views
 # defaultMessage: Tabular view
 msgid "Tabular view"
-msgstr ""
+msgstr "Taula"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsTagsModal
