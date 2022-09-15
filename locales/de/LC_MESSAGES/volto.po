@@ -192,7 +192,7 @@ msgstr "Zusätzliches Datum"
 #: config/Views
 # defaultMessage: Album view
 msgid "Album view"
-msgstr ""
+msgstr "Albumansicht"
 
 #: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
@@ -211,7 +211,7 @@ msgstr "Alle"
 #: config/Views
 # defaultMessage: All content
 msgid "All content"
-msgstr ""
+msgstr "Alle Inhalte"
 
 #: components/theme/Search/Search
 # defaultMessage: Alphabetically
@@ -699,7 +699,7 @@ msgstr "Standard"
 #: config/Views
 # defaultMessage: Default view
 msgid "Default view"
-msgstr ""
+msgstr "Standardansicht"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
@@ -822,7 +822,7 @@ msgstr "Seite"
 #: config/Views
 # defaultMessage: Document view
 msgid "Document view"
-msgstr ""
+msgstr "Dokumentenansicht"
 
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Download Event
@@ -994,12 +994,12 @@ msgstr "Fehler"
 #: config/Views
 # defaultMessage: Event listing
 msgid "Event listing"
-msgstr ""
+msgstr "Termineliste"
 
 #: config/Views
 # defaultMessage: Event view
 msgid "Event view"
-msgstr ""
+msgstr "Termineansicht"
 
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Exclude from navigation
@@ -1089,7 +1089,7 @@ msgstr "Dateigröße"
 #: config/Views
 # defaultMessage: File view
 msgid "File view"
-msgstr ""
+msgstr "Dateiansicht"
 
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Filename
@@ -1129,7 +1129,7 @@ msgstr "Ordner"
 #: config/Views
 # defaultMessage: Folder listing
 msgid "Folder listing"
-msgstr ""
+msgstr "Ordnerliste"
 
 #: components/theme/Forbidden/Forbidden
 # defaultMessage: Forbidden
@@ -1322,7 +1322,7 @@ msgstr ""
 #: config/Views
 # defaultMessage: Image view
 msgid "Image view"
-msgstr ""
+msgstr "Bildansicht"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Include this occurence
@@ -1529,7 +1529,7 @@ msgstr "'Mehr' Link"
 #: config/Views
 # defaultMessage: Link redirect view
 msgid "Link redirect view"
-msgstr ""
+msgstr "Link-Umleitungsansicht"
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
@@ -1558,7 +1558,7 @@ msgstr "Auflistung"
 #: config/Views
 # defaultMessage: Listing view
 msgid "Listing view"
-msgstr ""
+msgstr "Auflistungansicht"
 
 #: components/theme/Comments/Comments
 # defaultMessage: Load more...
@@ -1759,7 +1759,7 @@ msgstr "Nachricht"
 #: config/Views
 # defaultMessage: News item view
 msgid "News item view"
-msgstr ""
+msgstr "Nachrichtansicht"
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Contents/ContentsPropertiesModal
@@ -2703,7 +2703,7 @@ msgstr "Zusammenfassung"
 #: config/Views
 # defaultMessage: Summary view
 msgid "Summary view"
-msgstr ""
+msgstr "Kurzfassung"
 
 #: components/theme/LanguageSelector/LanguageSelector
 # defaultMessage: Switch to
@@ -2724,7 +2724,7 @@ msgstr "Inhaltsverzeichnis"
 #: config/Views
 # defaultMessage: Tabular view
 msgid "Tabular view"
-msgstr ""
+msgstr "Tabelle"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsTagsModal
