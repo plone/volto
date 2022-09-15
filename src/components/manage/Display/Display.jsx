@@ -202,8 +202,22 @@ class DisplaySelect extends Component {
     const { selectedOption } = this.state;
     const Select = this.props.reactSelect.default;
     const layoutsNames = config.views.layoutViewsNamesMapping;
+    const layoutOptions = this.props.layouts
+      .filter(
+        (layout) =>
+          Object.keys(config.views.contentTypesViews).includes(layout) ||
+          Object.keys(config.views.layoutViews).includes(layout),
+      )
+      .map((item) => ({
+        value: item,
+        label:
+          this.props.intl.formatMessage({
+            id: layoutsNames[item],
+            defaultMessage: layoutsNames[item],
+          }) || item,
+      }));
 
-    return (
+    return layoutOptions?.length > 1 ? (
       <FormFieldWrapper
         id="display-select"
         title={this.props.intl.formatMessage(messages.Viewmode)}
@@ -213,20 +227,7 @@ class DisplaySelect extends Component {
           name="display-select"
           className="react-select-container"
           classNamePrefix="react-select"
-          options={this.props.layouts
-            .filter(
-              (layout) =>
-                Object.keys(config.views.contentTypesViews).includes(layout) ||
-                Object.keys(config.views.layoutViews).includes(layout),
-            )
-            .map((item) => ({
-              value: item,
-              label:
-                this.props.intl.formatMessage({
-                  id: layoutsNames[item],
-                  defaultMessage: layoutsNames[item],
-                }) || item,
-            }))}
+          options={layoutOptions}
           styles={customSelectStyles}
           theme={selectTheme}
           components={{ DropdownIndicator, Option }}
@@ -235,7 +236,7 @@ class DisplaySelect extends Component {
           isSearchable={false}
         />
       </FormFieldWrapper>
-    );
+    ) : null;
   }
 }
 
