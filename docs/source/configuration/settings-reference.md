@@ -256,7 +256,7 @@ They are exposed in `config.views`:
 
 layoutViewsNamesMapping
     Plone's layout views are identified by a simple string. This object maps this string with a nice literal (in English as default).
-    These views names are exposed in the `Display` component in the toolbar's `more` menu.
+    These view names are exposed in the `Display` component in the toolbar's {guilabel}`more` menu.
     The keys are the name of the Plone layout, and the values are the i18n string `id`:
 
     ```js
@@ -279,7 +279,7 @@ layoutViewsNamesMapping
     };
     ```
 
-    You can customize or this object to add or modify the existing entries.
+    You can customize this object to add or modify the existing entries.
     They are i18n aware, so you can add the corresponding i18n message in your project's `src/config.js` or your add-on's `src/index.js`:
 
     ```js
