@@ -244,9 +244,9 @@ When the simplified vision is implemented, we will revisit it.
 
 The `constants` layout module was removed in favor of an object in the Configuration Registry: `config.views.layoutViewsNamesMapping`.
 
-If you have added or modified the Plone layout views literal mapping, you should use now this setting, and you can remove the module shadowing customization.
+If you have added or modified the Plone layout views literal mapping, you should now use this setting, and you can remove the module shadowing customization.
 
-You can now add a i18n id for any layout that you create as well, since the `Display` component is now i18n aware.
+You can now add an i18n `id` for any layout that you create as well, since the `Display` component is now i18n aware.
 
 This is the structure of `config.views.layoutViewsNamesMapping`:
 
