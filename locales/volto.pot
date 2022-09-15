@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-09-05T10:03:24.620Z\n"
+"POT-Creation-Date: 2022-09-14T16:29:48.267Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -185,6 +185,11 @@ msgstr ""
 msgid "Additional date"
 msgstr ""
 
+#: config/Views
+# defaultMessage: Album view
+msgid "Album view"
+msgstr ""
+
 #: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -197,6 +202,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: All
 msgid "All"
+msgstr ""
+
+#: config/Views
+# defaultMessage: All content
+msgid "All content"
 msgstr ""
 
 #: components/theme/Search/Search
@@ -682,6 +692,11 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
+#: config/Views
+# defaultMessage: Default view
+msgid "Default view"
+msgstr ""
+
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
@@ -798,6 +813,11 @@ msgstr ""
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Document
 msgid "Document"
+msgstr ""
+
+#: config/Views
+# defaultMessage: Document view
+msgid "Document view"
 msgstr ""
 
 #: components/theme/EventDetails/EventDetails
@@ -967,6 +987,16 @@ msgstr ""
 msgid "Error"
 msgstr ""
 
+#: config/Views
+# defaultMessage: Event listing
+msgid "Event listing"
+msgstr ""
+
+#: config/Views
+# defaultMessage: Event view
+msgid "Event view"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Exclude from navigation
 msgid "Exclude from navigation"
@@ -1052,6 +1082,11 @@ msgstr ""
 msgid "File size"
 msgstr ""
 
+#: config/Views
+# defaultMessage: File view
+msgid "File view"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Filename
 msgid "Filename"
@@ -1085,6 +1120,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: Folder
 msgid "Folder"
+msgstr ""
+
+#: config/Views
+# defaultMessage: Folder listing
+msgid "Folder listing"
 msgstr ""
 
 #: components/theme/Forbidden/Forbidden
@@ -1273,6 +1313,11 @@ msgstr ""
 #: components/manage/Blocks/Image/schema
 # defaultMessage: Image size
 msgid "Image size"
+msgstr ""
+
+#: config/Views
+# defaultMessage: Image view
+msgid "Image view"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
@@ -1477,6 +1522,11 @@ msgstr ""
 msgid "Link more"
 msgstr ""
 
+#: config/Views
+# defaultMessage: Link redirect view
+msgid "Link redirect view"
+msgstr ""
+
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link Title
@@ -1499,6 +1549,11 @@ msgstr ""
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Listing
 msgid "Listing"
+msgstr ""
+
+#: config/Views
+# defaultMessage: Listing view
+msgid "Listing view"
 msgstr ""
 
 #: components/theme/Comments/Comments
@@ -1640,6 +1695,11 @@ msgstr ""
 msgid "More"
 msgstr ""
 
+#: config/Views
+# defaultMessage: Mosaic layout
+msgid "Mosaic layout"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Move to bottom of folder
 msgid "Move to bottom of folder"
@@ -1690,6 +1750,11 @@ msgstr ""
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: News Item
 msgid "News Item"
+msgstr ""
+
+#: config/Views
+# defaultMessage: News item view
+msgid "News item view"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
@@ -2631,6 +2696,11 @@ msgstr ""
 msgid "Summary"
 msgstr ""
 
+#: config/Views
+# defaultMessage: Summary view
+msgid "Summary view"
+msgstr ""
+
 #: components/theme/LanguageSelector/LanguageSelector
 # defaultMessage: Switch to
 msgid "Switch to"
@@ -2645,6 +2715,11 @@ msgstr ""
 #: components/manage/Blocks/ToC/variations/HorizontalMenu
 # defaultMessage: Table of Contents
 msgid "Table of Contents"
+msgstr ""
+
+#: config/Views
+# defaultMessage: Tabular view
+msgid "Tabular view"
 msgstr ""
 
 #: components/manage/Contents/Contents

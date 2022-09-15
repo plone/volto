@@ -191,6 +191,11 @@ msgstr ""
 msgid "Additional date"
 msgstr ""
 
+#: config/Views
+# defaultMessage: Album view
+msgid "Album view"
+msgstr ""
+
 #: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -204,6 +209,11 @@ msgstr "Alinhamento"
 # defaultMessage: All
 msgid "All"
 msgstr "Tudo"
+
+#: config/Views
+# defaultMessage: All content
+msgid "All content"
+msgstr ""
 
 #: components/theme/Search/Search
 # defaultMessage: Alphabetically
@@ -688,6 +698,11 @@ msgstr ""
 msgid "Default"
 msgstr "Predefinido"
 
+#: config/Views
+# defaultMessage: Default view
+msgid "Default view"
+msgstr ""
+
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
@@ -805,6 +820,11 @@ msgstr "Quer mesmo eliminar este item?"
 # defaultMessage: Document
 msgid "Document"
 msgstr "Documento"
+
+#: config/Views
+# defaultMessage: Document view
+msgid "Document view"
+msgstr ""
 
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Download Event
@@ -973,6 +993,16 @@ msgstr ""
 msgid "Error"
 msgstr "Erro"
 
+#: config/Views
+# defaultMessage: Event listing
+msgid "Event listing"
+msgstr ""
+
+#: config/Views
+# defaultMessage: Event view
+msgid "Event view"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Exclude from navigation
 msgid "Exclude from navigation"
@@ -1058,6 +1088,11 @@ msgstr ""
 msgid "File size"
 msgstr "Tamanho do ficheiro"
 
+#: config/Views
+# defaultMessage: File view
+msgid "File view"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Filename
 msgid "Filename"
@@ -1091,6 +1126,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: Folder
 msgid "Folder"
+msgstr ""
+
+#: config/Views
+# defaultMessage: Folder listing
+msgid "Folder listing"
 msgstr ""
 
 #: components/theme/Forbidden/Forbidden
@@ -1279,6 +1319,11 @@ msgstr ""
 #: components/manage/Blocks/Image/schema
 # defaultMessage: Image size
 msgid "Image size"
+msgstr ""
+
+#: config/Views
+# defaultMessage: Image view
+msgid "Image view"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
@@ -1483,6 +1528,11 @@ msgstr ""
 msgid "Link more"
 msgstr ""
 
+#: config/Views
+# defaultMessage: Link redirect view
+msgid "Link redirect view"
+msgstr ""
+
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link Title
@@ -1505,6 +1555,11 @@ msgstr ""
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Listing
 msgid "Listing"
+msgstr ""
+
+#: config/Views
+# defaultMessage: Listing view
+msgid "Listing view"
 msgstr ""
 
 #: components/theme/Comments/Comments
@@ -1646,6 +1701,11 @@ msgstr ""
 msgid "More"
 msgstr ""
 
+#: config/Views
+# defaultMessage: Mosaic layout
+msgid "Mosaic layout"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Move to bottom of folder
 msgid "Move to bottom of folder"
@@ -1696,6 +1756,11 @@ msgstr "Nova senha"
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: News Item
 msgid "News Item"
+msgstr ""
+
+#: config/Views
+# defaultMessage: News item view
+msgid "News item view"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
@@ -2637,6 +2702,11 @@ msgstr "Sucesso"
 msgid "Summary"
 msgstr ""
 
+#: config/Views
+# defaultMessage: Summary view
+msgid "Summary view"
+msgstr ""
+
 #: components/theme/LanguageSelector/LanguageSelector
 # defaultMessage: Switch to
 msgid "Switch to"
@@ -2651,6 +2721,11 @@ msgstr "Tabela"
 #: components/manage/Blocks/ToC/variations/HorizontalMenu
 # defaultMessage: Table of Contents
 msgid "Table of Contents"
+msgstr ""
+
+#: config/Views
+# defaultMessage: Tabular view
+msgid "Tabular view"
 msgstr ""
 
 #: components/manage/Contents/Contents

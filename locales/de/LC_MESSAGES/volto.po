@@ -189,6 +189,11 @@ msgstr "Einstellungen Add-ons"
 msgid "Additional date"
 msgstr "Zusätzliches Datum"
 
+#: config/Views
+# defaultMessage: Album view
+msgid "Album view"
+msgstr "Album"
+
 #: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -202,6 +207,11 @@ msgstr "Ausrichtung"
 # defaultMessage: All
 msgid "All"
 msgstr "Alle"
+
+#: config/Views
+# defaultMessage: All content
+msgid "All content"
+msgstr "Alle Inhalte"
 
 #: components/theme/Search/Search
 # defaultMessage: Alphabetically
@@ -686,6 +696,11 @@ msgstr "Datum (neustes zuerst)"
 msgid "Default"
 msgstr "Standard"
 
+#: config/Views
+# defaultMessage: Default view
+msgid "Default view"
+msgstr "Standard"
+
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
@@ -802,6 +817,11 @@ msgstr "Möchten Sie den Artikel wirklich löschen?"
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Document
 msgid "Document"
+msgstr "Seite"
+
+#: config/Views
+# defaultMessage: Document view
+msgid "Document view"
 msgstr "Seite"
 
 #: components/theme/EventDetails/EventDetails
@@ -971,6 +991,16 @@ msgstr ""
 msgid "Error"
 msgstr "Fehler"
 
+#: config/Views
+# defaultMessage: Event listing
+msgid "Event listing"
+msgstr "Termine"
+
+#: config/Views
+# defaultMessage: Event view
+msgid "Event view"
+msgstr "Termin"
+
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Exclude from navigation
 msgid "Exclude from navigation"
@@ -1056,6 +1086,11 @@ msgstr "Datei"
 msgid "File size"
 msgstr "Dateigröße"
 
+#: config/Views
+# defaultMessage: File view
+msgid "File view"
+msgstr "Datei"
+
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Filename
 msgid "Filename"
@@ -1089,6 +1124,11 @@ msgstr "Einklappen"
 #: components/manage/Contents/Contents
 # defaultMessage: Folder
 msgid "Folder"
+msgstr "Ordner"
+
+#: config/Views
+# defaultMessage: Folder listing
+msgid "Folder listing"
 msgstr "Ordner"
 
 #: components/theme/Forbidden/Forbidden
@@ -1278,6 +1318,11 @@ msgstr "Bildergalerie"
 # defaultMessage: Image size
 msgid "Image size"
 msgstr ""
+
+#: config/Views
+# defaultMessage: Image view
+msgid "Image view"
+msgstr "Bild"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Include this occurence
@@ -1481,6 +1526,11 @@ msgstr "Link"
 msgid "Link more"
 msgstr "'Mehr' Link"
 
+#: config/Views
+# defaultMessage: Link redirect view
+msgid "Link redirect view"
+msgstr "Link"
+
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link Title
@@ -1503,6 +1553,11 @@ msgstr "Übersetzung verbinden"
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Listing
 msgid "Listing"
+msgstr "Auflistung"
+
+#: config/Views
+# defaultMessage: Listing view
+msgid "Listing view"
 msgstr "Auflistung"
 
 #: components/theme/Comments/Comments
@@ -1644,6 +1699,11 @@ msgstr "Monatlich"
 msgid "More"
 msgstr "Mehr"
 
+#: config/Views
+# defaultMessage: Mosaic layout
+msgid "Mosaic layout"
+msgstr "Mosaic"
+
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Move to bottom of folder
 msgid "Move to bottom of folder"
@@ -1694,6 +1754,11 @@ msgstr "Neues Passwort"
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: News Item
 msgid "News Item"
+msgstr "Nachricht"
+
+#: config/Views
+# defaultMessage: News item view
+msgid "News item view"
 msgstr "Nachricht"
 
 #: components/manage/Contents/ContentsItem
@@ -2635,6 +2700,11 @@ msgstr "Erfolgreich"
 msgid "Summary"
 msgstr "Zusammenfassung"
 
+#: config/Views
+# defaultMessage: Summary view
+msgid "Summary view"
+msgstr "Kurzfassung"
+
 #: components/theme/LanguageSelector/LanguageSelector
 # defaultMessage: Switch to
 msgid "Switch to"
@@ -2650,6 +2720,11 @@ msgstr "Tabelle"
 # defaultMessage: Table of Contents
 msgid "Table of Contents"
 msgstr "Inhaltsverzeichnis"
+
+#: config/Views
+# defaultMessage: Tabular view
+msgid "Tabular view"
+msgstr "Tabelle"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsTagsModal

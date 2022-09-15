@@ -5,7 +5,6 @@ import { compose } from 'redux';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import { getSchema, updateContent, getContent } from '@plone/volto/actions';
-import layouts from '@plone/volto/constants/Layouts';
 import { getLayoutFieldname } from '@plone/volto/helpers';
 import { FormFieldWrapper, Icon } from '@plone/volto/components';
 import { defineMessages, injectIntl } from 'react-intl';
@@ -145,7 +144,12 @@ class DisplaySelect extends Component {
   state = {
     selectedOption: {
       value: this.props.layout,
-      label: layouts[this.props.layout] || this.props.layout,
+      label:
+        this.props.intl.formatMessage({
+          id: config.views.layoutViewsNamesMapping?.[this.props.layout],
+          defaultMessage:
+            config.views.layoutViewsNamesMapping?.[this.props.layout],
+        }) || this.props.layout,
     },
   };
 
@@ -197,8 +201,23 @@ class DisplaySelect extends Component {
   render() {
     const { selectedOption } = this.state;
     const Select = this.props.reactSelect.default;
+    const layoutsNames = config.views.layoutViewsNamesMapping;
+    const layoutOptions = this.props.layouts
+      .filter(
+        (layout) =>
+          Object.keys(config.views.contentTypesViews).includes(layout) ||
+          Object.keys(config.views.layoutViews).includes(layout),
+      )
+      .map((item) => ({
+        value: item,
+        label:
+          this.props.intl.formatMessage({
+            id: layoutsNames[item],
+            defaultMessage: layoutsNames[item],
+          }) || item,
+      }));
 
-    return (
+    return layoutOptions?.length > 1 ? (
       <FormFieldWrapper
         id="display-select"
         title={this.props.intl.formatMessage(messages.Viewmode)}
@@ -208,16 +227,7 @@ class DisplaySelect extends Component {
           name="display-select"
           className="react-select-container"
           classNamePrefix="react-select"
-          options={this.props.layouts
-            .filter(
-              (layout) =>
-                Object.keys(config.views.contentTypesViews).includes(layout) ||
-                Object.keys(config.views.layoutViews).includes(layout),
-            )
-            .map((item) => ({
-              value: item,
-              label: layouts[item] || item,
-            }))}
+          options={layoutOptions}
           styles={customSelectStyles}
           theme={selectTheme}
           components={{ DropdownIndicator, Option }}
@@ -226,7 +236,7 @@ class DisplaySelect extends Component {
           isSearchable={false}
         />
       </FormFieldWrapper>
-    );
+    ) : null;
   }
 }
 

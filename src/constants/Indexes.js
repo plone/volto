@@ -1,6 +1,6 @@
 /**
  * Layouts.
- * @module constants/Layouts
+ * @module constants/indexes
  */
 
 export default {
