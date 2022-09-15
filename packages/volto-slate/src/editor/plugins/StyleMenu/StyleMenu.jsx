@@ -11,8 +11,8 @@ const Select = loadable(() => import('react-select'));
 
 const messages = defineMessages({
   fontStyle: {
-    id: 'Font Style',
-    defaultMessage: 'Font Style',
+    id: 'Inline Style',
+    defaultMessage: 'Inline Style',
   },
   paragraphStyle: {
     id: 'Paragraph Style',
@@ -45,7 +45,9 @@ const selectStyles = {
       display: 'inline-flex',
       justifyContent: 'flex-start',
       verticalAlign: 'middle',
-      // color: state.isSelected ? 'white' : brownColor,
+      ':not:hover': {
+        backgroundColor: null,
+      },
     };
   },
   noOptionsMessage: (provided, state) => {

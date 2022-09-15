@@ -126,12 +126,6 @@ export const internalToggleInlineStyle = (editor, style) => {
  * block
  */
 export const toggleBlockStyleAsListItem = (editor, style) => {
-  const { slate } = config.settings;
-  Transforms.unwrapNodes(editor, {
-    match: (n) => slate.listTypes.includes(n.type),
-    split: true,
-  });
-
   toggleBlockStyleInSelection(editor, style);
 };
 
