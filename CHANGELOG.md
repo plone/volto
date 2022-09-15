@@ -18,6 +18,8 @@
 
 ### Documentation
 
+- Clean up "design principles" and "contributing"
+
 ## 16.0.0-alpha.32 (2022-09-14)
 
 ### Bugfix
