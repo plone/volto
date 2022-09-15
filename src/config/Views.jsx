@@ -82,6 +82,10 @@ defineMessages({
     id: 'Default view',
     defaultMessage: 'Default view',
   },
+  default: {
+    id: 'Default view',
+    defaultMessage: 'Default view',
+  },
 });
 
 // Layout View Registry
@@ -130,4 +134,5 @@ export const layoutViewsNamesMapping = {
   image_view: 'Image view',
   event_view: 'Event view',
   view: 'Default view',
+  default: 'Default view',
 };
