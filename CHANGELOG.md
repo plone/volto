@@ -14,6 +14,8 @@
 
 ### Documentation
 
+- Bring back "Guidelines for Contributing"
+
 ## 16.0.0-alpha.33 (2022-09-15)
 
 ### Breaking
