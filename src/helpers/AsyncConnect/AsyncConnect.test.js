@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider, connect } from 'react-redux';
 import { withRouter, StaticRouter, MemoryRouter } from 'react-router';
-import { renderRoutes } from 'react-router-config';
+import { matchRoutes, renderRoutes } from 'react-router-config';
 import { createStore, combineReducers } from 'redux';
 import { render } from '@testing-library/react';
 
@@ -498,5 +498,21 @@ describe('<ReduxAsyncConnect />', () => {
       );
       expect(serial).toBe(1);
     });
+  });
+
+  it('Matches multiple asyncPropExtenders', function () {
+    //
+    const routes = [
+      {
+        key: 'nav',
+        path: '/',
+      },
+      {
+        key: 'footer',
+        path: '/',
+      },
+    ];
+    const match = matchRoutes(routes, '/en');
+    expect(match.length).toBe(2);
   });
 });
