@@ -1,8 +1,5 @@
 const interceptGroups = () => {
-  cy.intercept({
-    method: 'GET',
-    url: '**/usergroup',
-  }).as('manyGroups');
+  cy.intercept('/**/usergroup').as('manyGroups');
   cy.visit('/controlpanel/groups');
   cy.waitForResourceToLoad('@navigation');
   cy.waitForResourceToLoad('@breadcrumbs');
@@ -98,7 +95,8 @@ describe('Groups Control Panel Test', () => {
       .should('have.class', 'checked');
   });
 });
-describe('Groups Control Panel test for  many groups', () => {
+
+describe('Groups Control Panel test for many groups', () => {
   beforeEach(() => {
     cy.visit('/');
     cy.autologin();

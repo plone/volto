@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix acceptence test groups controlpanel @ksuess
+
 ### Internal
 
 ### Documentation
