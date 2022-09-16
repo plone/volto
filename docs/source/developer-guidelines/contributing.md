@@ -41,17 +41,21 @@ If the feature includes a breaking change, you must include instructions for how
 All text that can be shown in a browser must be translatable. Please mark all such
 strings as translatable as defined in the [i18n guide](../recipes/i18n.md).
 
-Code formatting and linting are already enforced in Volto.  Note that this project uses
-a GitHub PR check that enforces all changes must include an entry in `./CHANGELOG.md`.
-If a PR is missing such an entry [the details
-link](https://jenkins.plone.org/roboto/missing-changelog) indicates that entries should
-be added as files in `./news/`.  This is true for the Plone projects that use
-[towncrier](https://pypi.org/project/towncrier/) but not for this project.  Simply add
-an entry directly to `./CHANGELOG.md` as a part of the commit the makes the described
-change.
 
-See if you can use git to squash multiple commits into one where this makes sense.
-If you are not comfortable with git, never mind.
+## Code Quality
 
-If after reading this you become hesitant: don’t worry.
-You can always create a pull request, mark it as WIP (work in progress), and improve the above points later.
+All pull requests must pass tests, documentation builds, and other code quality checks.
+Contributors are strongly encouraged to run these checks locally before creating a pull request.
+These checks are enforced automatically on every pull request, so you might as well save time and frustration by doing these checks locally first.
+
+Specifically:
+
+-   {doc}`./linting`
+-   {doc}`./testing`
+-   {doc}`./acceptance-tests`
+
+
+If after reading this you become hesitant, don't worry.
+You can always create a pull request, mark it as "Draft", and improve the above points later, requesting help from the community.
+
+Welcome to the Plone community, and thank you for contributing!
