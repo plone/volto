@@ -1,3 +1,4 @@
+import { matchRoutes } from 'react-router-config';
 export function isPromise(obj) {
   return typeof obj === 'object' && obj && obj.then instanceof Function;
 }
@@ -29,3 +30,11 @@ let immutableStateFunc = identity;
 let mutableStateFunc = identity;
 export const getImmutableState = (state) => immutableStateFunc(state);
 export const getMutableState = (state) => mutableStateFunc(state);
+
+export const matchAllRoutes = (routes, pathname) => {
+  const matching = routes.reduce(
+    (acc, route) => [...acc, ...matchRoutes([route], pathname)],
+    [],
+  );
+  return matching;
+};

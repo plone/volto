@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider, connect } from 'react-redux';
 import { withRouter, StaticRouter, MemoryRouter } from 'react-router';
-import { matchRoutes, renderRoutes } from 'react-router-config';
+import { renderRoutes } from 'react-router-config';
 import { createStore, combineReducers } from 'redux';
 import { render } from '@testing-library/react';
 
@@ -10,6 +10,7 @@ import reduxAsyncConnect from '@plone/volto/reducers/asyncConnect/asyncConnect';
 
 import { AsyncConnectWithContext, AsyncConnect } from './AsyncConnect'; // , AsyncConnect
 import { asyncConnect, loadOnServer } from './';
+import { matchAllRoutes } from './utils';
 
 import '@testing-library/jest-dom/extend-expect';
 
@@ -501,7 +502,6 @@ describe('<ReduxAsyncConnect />', () => {
   });
 
   it('Matches multiple asyncPropExtenders', function () {
-    //
     const routes = [
       {
         key: 'nav',
@@ -511,8 +511,16 @@ describe('<ReduxAsyncConnect />', () => {
         key: 'footer',
         path: '/',
       },
+      {
+        key: 'breads',
+        path: '/something',
+      },
     ];
-    const match = matchRoutes(routes, '/en');
+    const match = matchAllRoutes(routes, '/en');
     expect(match.length).toBe(2);
+    expect(match.map(({ route }) => route.key)).toStrictEqual([
+      'nav',
+      'footer',
+    ]);
   });
 });
