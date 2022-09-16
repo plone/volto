@@ -6,6 +6,21 @@
 
 ### Feature
 
+### Bugfix
+
+### Internal
+
+### Documentation
+
+## 16.0.0-alpha.33 (2022-09-15)
+
+### Breaking
+
+- Move Layout constants to `config.views.layoutViewsNamesMapping`. Complete the list. i18n the list. Improve Display component. @sneridagh
+  See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+
+### Feature
+
 - Complete eu translation @erral
 - Complete es translation. @erral
 
@@ -14,9 +29,9 @@
 - Fix and edge case, in case a `RelationList` has no default, on empty fields, after the object has been created, it saves an empty (None/null) value. Make sure that internally, if that's the case, it's an empty array always. @sneridagh
 - Fix workflow and display select in toolbar in case that the option spans several lines @sneridagh
 
-### Internal
-
 ### Documentation
+
+- Clean up "design principles" and "contributing"
 
 ## 16.0.0-alpha.32 (2022-09-14)
 
