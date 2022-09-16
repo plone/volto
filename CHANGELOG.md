@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Add `matchAllRoutes` to AsyncConnect so that it matches all configured `asyncPropsExtenders` @tiberiuichim
+
 ### Internal
 
 ### Documentation
