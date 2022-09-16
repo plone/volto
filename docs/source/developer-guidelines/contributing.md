@@ -18,7 +18,7 @@ contributing.
 
 ## Create an issue
 
-If you know the issue is for a specific package, you can add an issue there.
+If you know the issue is for Volto, you can add an issue in [Volto issue tracker](https://github.com/plone/volto/issues).
 When in doubt, create one in the [CMFPlone issue tracker](https://github.com/plone/Products.CMFPlone/issues "CMFPlone issue tracker").
 
 Please specify a few things:
