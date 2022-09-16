@@ -12,6 +12,7 @@ myst:
 ```{toctree}
 :maxdepth: 1
 
+contributing
 design-principles
 style-guide
 language-features
