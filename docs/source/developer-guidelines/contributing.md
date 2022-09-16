@@ -1,48 +1,45 @@
 ---
 myst:
   html_meta:
-    "description": "A guide on how to contribute to the Plone's community"
-    "property=og:description": "A guide on how to contribute to the Plone's community"
-    "property=og:title": "Guidelines"
+    "description": "A guide on how to contribute to Volto, the frontend for Plone."
+    "property=og:description": "A guide on how to contribute to Volto, the frontend for Plone."
+    "property=og:title": "Contributing to Volto"
     "keywords": "Volto, Plone, frontend, React, guidelines"
 ---
 
-# Guidelines for Contributing
+# Contributing to Volto
 
-You probably came here by clicking one of the ‘guidelines for contributing’ links on
-GitHub.
-You probably have an issue to report or you want to create a pull request.
+You may have an issue to report, make a feature request, report a security vulnerability, or you want to create a pull request.
+You have come to the right place to learn how to do so.
 
-Thanks a lot! Let’s bring you up to speed with the minimum you need to know to start
-contributing.
 
-## Create an issue
+## Reporting an issue or making a feature request
 
-If you know the issue is for Volto, you can add an issue in [Volto issue tracker](https://github.com/plone/volto/issues).
-When in doubt, create one in the [CMFPlone issue tracker](https://github.com/plone/Products.CMFPlone/issues "CMFPlone issue tracker").
+If you know the issue or feature request is for Volto, first search for an existing item in the [Volto issue tracker](https://github.com/plone/volto/issues).
 
-Please specify a few things:
+If an issue does not already exist for your item, then you can [create a new issue or feature request in Volto](https://github.com/plone/volto/issues/new/choose).
+When in doubt, create one in the [CMFPlone issue tracker](https://github.com/plone/Products.CMFPlone/issues).
 
-- What steps reproduce the problem?
-- What do you expect when you do that?
-- What happens instead?
+In your report, please specify a few things:
+
+- What are the steps to reproduce the problem?
+- What do you expect when you follow those steps?
+- What do you observe?
 - Which Plone version are you using?
-
-If it is a visual issue, can you add a screenshot?
+- Include relevant screenshots, error messages, and stack traces.
 
 ## Create a pull request
 
-Legally, you can NOT contribute code unless you have signed the contributor agreement.
-This means that we can NOT accept pull requests from you unless this is done, so please
-don’t put the code reviewers at risk and do it anyways.
+You must sign the [Plone Contributor Agreement](https://plone.org/foundation/contributors-agreement) to contribute code and documentation to any Plone project.
+This means that we can NOT accept pull requests from you until you do this.
 
-For new features, an addition to documentation is probably needed.
+All pull requests must include a note under the `(unreleased)` version under the appropriate subheading of [CHANGELOG.md](https://github.com/plone/volto/blob/master/CHANGELOG.md).
+Do not edit already released versions.
 
-If the feature includes a breaking change, you should also add the breaking and how to
-upgrade in the [upgrade guide](../upgrade-guide/index.md).
+If the feature includes a breaking change, you must include instructions for how to upgrade in the [upgrade guide](../upgrade-guide/index.md).
 
 All text that can be shown in a browser must be translatable. Please mark all such
-strings as translatable as defined in the [i18n guide](../recipes/i18n.md)
+strings as translatable as defined in the [i18n guide](../recipes/i18n.md).
 
 Code formatting and linting are already enforced in Volto.  Note that this project uses
 a GitHub PR check that enforces all changes must include an entry in `./CHANGELOG.md`.
