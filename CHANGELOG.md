@@ -12,6 +12,8 @@
 
 ### Documentation
 
+- Fix Sphinx warning `WARNING: glossary terms must not be separated by empty lines` by closing unclosed glossary directive's triple backticks. @stevepiercy
+
 ## 16.0.0-alpha.34 (2022-09-17)
 
 ### Breaking
