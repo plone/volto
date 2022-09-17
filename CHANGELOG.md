@@ -1018,6 +1018,7 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 ### Feature
 
 - Show addons installed in control panel @sneridagh
+- Added a search input in the block chooser @bipoza
 
 ### Bugfix
 

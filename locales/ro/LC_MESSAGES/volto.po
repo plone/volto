@@ -1898,6 +1898,7 @@ msgstr "Nu s-au setat apariții"
 msgid "No options"
 msgstr "Nicio opțiune"
 
+#: components/manage/BlockChooser/BlockChooser
 #: components/theme/Search/Search
 # defaultMessage: No results found
 msgid "No results found"
@@ -2406,6 +2407,7 @@ msgstr "Schemă"
 msgid "Schema updates"
 msgstr "Actualizări de schemă"
 
+#: components/manage/BlockChooser/BlockChooserSearch
 #: components/manage/Blocks/Search/components/SearchInput
 #: components/manage/Blocks/Search/layout/LeftColumnFacets
 #: components/manage/Blocks/Search/layout/RightColumnFacets

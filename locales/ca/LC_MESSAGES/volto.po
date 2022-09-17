@@ -1907,6 +1907,7 @@ msgstr "No s'ha establert cap ocurrència"
 msgid "No options"
 msgstr "Sense opcions"
 
+#: components/manage/BlockChooser/BlockChooser
 #: components/theme/Search/Search
 # defaultMessage: No results found
 msgid "No results found"
@@ -2415,6 +2416,7 @@ msgstr "Esquema"
 msgid "Schema updates"
 msgstr "Actualitzacions d'esquemes"
 
+#: components/manage/BlockChooser/BlockChooserSearch
 #: components/manage/Blocks/Search/components/SearchInput
 #: components/manage/Blocks/Search/layout/LeftColumnFacets
 #: components/manage/Blocks/Search/layout/RightColumnFacets
