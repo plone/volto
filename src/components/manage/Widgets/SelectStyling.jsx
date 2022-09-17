@@ -6,8 +6,38 @@ import downSVG from '@plone/volto/icons/down-key.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import checkSVG from '@plone/volto/icons/check.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+import useDimensions from './useDimensions';
 
 const height = 50; // The height of each option
+
+// // List data as an array of strings
+// const list = [
+//   'Brian Vaughn',
+//   // And so on...
+// ];
+
+// function rowRenderer({ key, index, style }) {
+//   debugger;
+//   return (
+//     <div key={key} style={style}>
+//       {list[index]}
+//     </div>
+//   );
+// }
+
+// export const MenuList = (props) => (
+//   <AutoSizer>
+//     {({ height, width }) => (
+//       <List
+//         height={height}
+//         rowCount={props.children.length}
+//         rowHeight={20}
+//         rowRenderer={rowRenderer}
+//         width={width}
+//       />
+//     )}
+//   </AutoSizer>
+// );
 
 export const MenuList = injectLazyLibs('reactWindow')((props) => {
   const { FixedSizeList: List } = props.reactWindow;
@@ -22,7 +52,20 @@ export const MenuList = injectLazyLibs('reactWindow')((props) => {
       itemSize={height}
       initialScrollOffset={initialOffset}
     >
-      {({ index, style }) => <div style={style}>{children[index]}</div>}
+      {({ index, style }) => {
+        const [ref, { x, y, height, width }] = useDimensions();
+        console.log(height);
+        const { height: oldHeight, ...newStyle } = style;
+        return (
+          <div
+            ref={ref}
+            className="hey"
+            style={{ ...newStyle, height: height + oldHeight }}
+          >
+            {children[index]}
+          </div>
+        );
+      }}
     </List>
   );
 });
