@@ -9,10 +9,13 @@
 ### Bugfix
 
 - Add `matchAllRoutes` to AsyncConnect so that it matches all configured `asyncPropsExtenders` @tiberiuichim
+- Fix acceptence test groups controlpanel @ksuess
 
 ### Internal
 
 ### Documentation
+
+- Bring back "Guidelines for Contributing"
 
 ## 16.0.0-alpha.33 (2022-09-15)
 
