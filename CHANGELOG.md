@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Added new components `Aliases` for aliases control in Volto. Alias management in both controlpanel and object view. @andreiggr @avoinea
+
 ### Bugfix
 
 - Add `matchAllRoutes` to AsyncConnect so that it matches all configured `asyncPropsExtenders` @tiberiuichim
@@ -470,9 +472,6 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 - Fix indentation in nginx configuration in simple.md @stevepiercy
 
 ## 16.0.0-alpha.3 (2022-05-16)
-### Feature
-
-- Added new components `Aliases` for aliases control in Volto. Alias management in both controlpanel and object view. 
 
 ### Breaking
 
