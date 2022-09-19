@@ -210,3 +210,26 @@ They are not persisted in the final value, so they are useful, for example, to h
 ```js
 slate.runtimeDecorators = [([node, path], ranges) => ranges];
 ```
+
+## `slate.styleMenu`
+
+An out of the box `volto-slate` plugin that provides rich-text styling for volto. The main purpose of the style menu is exposing custom css classes to the selected texts in the editor.
+
+The plugin can be useful for those who don't have time and resources for writing a new `volto-slate` plugin as the style menu works with just "css classes".
+
+```js
+slate.styleMenu.inlineStyles = [
+    {
+      cssClass: 'cool-inline-text',
+      label: 'Cool Inline Text',
+      icon: (props) => <Icon name={iconSVG} size="24px" />,
+    },
+  ];
+  slate.styleMenu.blockStyles = [
+    {
+      cssClass: 'underline-block-text',
+      label: 'Cool Block Text',
+      icon: (props) => <Icon name={iconSVG} size="24px" />,
+    },
+  ];
+```
