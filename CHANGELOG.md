@@ -12,6 +12,7 @@
 - Fix the typo in change workflow status dialog in "de" @iRohitSingh
 
 - Fix selection error when pressing backspace @robgietema
+- Fix sidebarTab in Toc Block @iRohitSingh
 
 ### Internal
 
