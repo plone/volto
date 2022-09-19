@@ -1,6 +1,6 @@
 import React from 'react';
 import StyleMenu from './StyleMenu';
-import './style.css';
+import './style.less';
 import { Icon } from '@plone/volto/components';
 import paintSVG from '@plone/volto/icons/paint.svg';
 
