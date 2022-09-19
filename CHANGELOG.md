@@ -9,6 +9,8 @@
 ### Bugfix
 - Fix the typo in change workflow status dialog in "de" @iRohitSingh
 
+- Fix selection error when pressing backspace @robgietema
+
 ### Internal
 
 ### Documentation
