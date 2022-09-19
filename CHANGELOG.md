@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix selection error when pressing backspace @robgietema
+
 ### Internal
 
 ### Documentation
