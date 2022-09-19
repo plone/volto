@@ -12,26 +12,10 @@ import config from '@plone/volto/registry';
  * is not requested.
  */
 export const toggleStyle = (editor, { cssClass, isBlock, isRequested }) => {
-  const isActive =
-    isBlockStyleActive(editor, cssClass) ||
-    isInlineStyleActive(editor, cssClass);
-
-  if (isRequested && isActive) {
-    // nothing to do
-  } else if (isRequested && !isActive) {
-    if (isBlock && !isBlockStyleActive(editor, cssClass)) {
-      toggleBlockStyle(editor, cssClass);
-    } else if (!isBlock && !isInlineStyleActive(editor, cssClass)) {
-      toggleInlineStyle(editor, cssClass);
-    }
-  } else if (!isRequested && isActive) {
-    if (isBlock && isBlockStyleActive(editor, cssClass)) {
-      toggleBlockStyle(editor, cssClass);
-    } else if (!isBlock && isInlineStyleActive(editor, cssClass)) {
-      toggleInlineStyle(editor, cssClass);
-    }
-  } else if (!isRequested && !isActive) {
-    // nothing to do
+  if (isBlock) {
+    toggleBlockStyle(editor, cssClass);
+  } else {
+    toggleInlineStyle(editor, cssClass);
   }
 };
 

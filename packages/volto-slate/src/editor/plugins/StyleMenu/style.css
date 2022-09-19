@@ -16,3 +16,15 @@
 .red-inline-text {
   color: red;
 }
+
+.style-menu.ui.dropdown .menu .item {
+  user-select: none !important;
+}
+
+.style-menu.ui.dropdown .menu .active {
+  z-index: 1;
+  background: #68778d !important;
+  box-shadow: none;
+  color: #ffffff !important;
+  font-weight: 300 !important;
+}
