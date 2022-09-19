@@ -9,10 +9,80 @@
 - volto-slate: introduce style-menu @nileshgulia1
 
 ### Bugfix
+- Fix the typo in change workflow status dialog in "de" @iRohitSingh
+
+- Fix selection error when pressing backspace @robgietema
 
 ### Internal
 
 ### Documentation
+
+- Fix Sphinx warning `WARNING: glossary terms must not be separated by empty lines` by closing unclosed glossary directive's triple backticks. @stevepiercy
+
+## 16.0.0-alpha.34 (2022-09-17)
+
+### Breaking
+
+### Feature
+
+- Added new components `Aliases` for aliases control in Volto. Alias management in both controlpanel and object view. @andreiggr @avoinea
+
+### Bugfix
+
+- Add `matchAllRoutes` to AsyncConnect so that it matches all configured `asyncPropsExtenders` @tiberiuichim
+- Fix acceptence test groups controlpanel @ksuess
+
+### Internal
+
+### Documentation
+
+- Bring back "Guidelines for Contributing"
+
+## 16.0.0-alpha.33 (2022-09-15)
+
+### Breaking
+
+- Move Layout constants to `config.views.layoutViewsNamesMapping`. Complete the list. i18n the list. Improve Display component. @sneridagh
+  See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+
+### Feature
+
+- Complete eu translation @erral
+- Complete es translation. @erral
+
+### Bugfix
+
+- Fix and edge case, in case a `RelationList` has no default, on empty fields, after the object has been created, it saves an empty (None/null) value. Make sure that internally, if that's the case, it's an empty array always. @sneridagh
+- Fix workflow and display select in toolbar in case that the option spans several lines @sneridagh
+
+### Documentation
+
+- Clean up "design principles" and "contributing"
+
+## 16.0.0-alpha.32 (2022-09-14)
+
+### Bugfix
+
+- Fix "cannot have two html5 backends at the same time" error @davisagli
+- Reset filter in folder contents when navigating @robgietema
+- Fix bug showing incorrect history after a revert action @robgietema
+
+### Internal
+
+### Documentation
+
+Undo html_static_path configuration in `plone/documentation`, and restore image and its referenced path in `plone/volto`. @stevepiercy
+
+## 16.0.0-alpha.31 (2022-09-12)
+
+### Bugfix
+
+- Fix types menu on mobile for many types. Specific menuStyle for 'more' menu. @ksuess
+- Fix types menu on desktop when menu overflows the viewport, adding scroll to it @sneridagh
+
+### Documentation
+
+- Align `html_static_path` with `plone/documentation` and image path so that images render when docs build in both repos. @stevepiercy
 
 ## 16.0.0-alpha.30 (2022-09-07)
 
@@ -26,6 +96,7 @@
 - Added placeholder param to widget, to change default placeholder @giuliaghisini
 - Add a headline (`headline` field) to the listing block schema by default @sneridagh
 - Add scroll into view setting to slate @robgietema
+- Use absolute dates instead of "x hours ago" in History view @steffenri
 
 ### Bugfix
 
@@ -954,6 +1025,7 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 ### Feature
 
 - Show addons installed in control panel @sneridagh
+- Added a search input in the block chooser @bipoza
 
 ### Bugfix
 

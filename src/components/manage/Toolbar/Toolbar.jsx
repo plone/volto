@@ -273,6 +273,14 @@ class Toolbar extends Component {
         showMenu: !state.showMenu,
         menuStyle: { bottom: 0 },
       }));
+    } else if (selector === 'more') {
+      this.setState((state) => ({
+        showMenu: !state.showMenu,
+        menuStyle: {
+          overflow: 'visible',
+          top: 0,
+        },
+      }));
     } else {
       this.setState((state) => ({
         showMenu: !state.showMenu,

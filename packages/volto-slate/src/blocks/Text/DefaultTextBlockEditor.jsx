@@ -152,13 +152,8 @@ export const DefaultTextBlockEditor = (props) => {
       if (defaultSelection) {
         const selection = parseDefaultSelection(editor, defaultSelection);
         if (selection) {
-          setTimeout(() => {
-            Transforms.select(editor, selection);
-            saveSlateBlockSelection(block, null);
-          }, 120);
-          // TODO: use React sync render API
-          // without setTimeout, the join is not correct. Slate uses internally
-          // a 100ms throttle, so setting to a bigger value seems to help
+          Transforms.select(editor, selection);
+          saveSlateBlockSelection(block, null);
         }
       }
     },
