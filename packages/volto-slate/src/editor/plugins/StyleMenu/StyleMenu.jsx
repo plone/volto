@@ -27,6 +27,25 @@ const StyleMenuButton = ({ icon, active, ...props }) => (
   <ToolbarButton {...props} icon={icon} active={active} />
 );
 
+const MenuOpts = ({ editor, toSelect, option }) => {
+  const isActive = toSelect.includes(option);
+  return (
+    <Dropdown.Item
+      as="span"
+      active={isActive}
+      className={cx({ active: isActive })}
+      {...option}
+      onClick={(event, selItem) => {
+        event.stopPropagation();
+        toggleStyle(editor, {
+          cssClass: selItem.value,
+          isBlock: selItem.isBlock,
+        });
+      }}
+    />
+  );
+};
+
 const StylingsButton = (props) => {
   const editor = useSlate();
   const intl = useIntl();
@@ -80,7 +99,11 @@ const StylingsButton = (props) => {
     }
   }
 
-  const showMenu = inlineOpts.length || blockOpts.length;
+  const menuItemProps = {
+    toSelect,
+    editor,
+  };
+  const showMenu = inlineOpts.length > 1 || blockOpts.length > 1;
   return showMenu ? (
     <Dropdown
       className="style-menu"
@@ -97,42 +120,15 @@ const StylingsButton = (props) => {
       }
     >
       <Dropdown.Menu>
-        {inlineOpts.map((option) => {
-          const isActive = toSelect.includes(option);
-          return (
-            <Dropdown.Item
-              as="span"
-              active={isActive}
-              className={cx({ active: isActive })}
-              {...option}
-              onClick={(event, selItem) => {
-                event.stopPropagation();
-                toggleStyle(editor, {
-                  cssClass: selItem.value,
-                  isBlock: selItem.isBlock,
-                });
-              }}
-            />
-          );
-        })}
-        {blockOpts.map((option) => {
-          const isActive = toSelect.includes(option);
-          return (
-            <Dropdown.Item
-              as="span"
-              active={isActive}
-              className={cx({ active: isActive })}
-              {...option}
-              onClick={(event, selItem) => {
-                event.stopPropagation();
-                toggleStyle(editor, {
-                  cssClass: selItem.value,
-                  isBlock: selItem.isBlock,
-                });
-              }}
-            />
-          );
-        })}
+        {inlineOpts.length > 1 &&
+          inlineOpts.map((option) => (
+            <MenuOpts {...menuItemProps} option={option} />
+          ))}
+
+        {blockOpts.length > 1 &&
+          blockOpts.map((option) => (
+            <MenuOpts {...menuItemProps} option={option} />
+          ))}
       </Dropdown.Menu>
     </Dropdown>
   ) : (
