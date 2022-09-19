@@ -7,6 +7,7 @@
 ### Feature
 
 ### Bugfix
+- Fix the typo in change workflow status dialog in "de" @iRohitSingh
 
 ### Internal
 

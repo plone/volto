@@ -434,7 +434,7 @@ msgstr "Arbeitsablauf-Status ändern"
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Change workflow state recursively
 msgid "Change workflow state recursively"
-msgstr "Arbeitlauf-Status für alle Unterobjekte ebenfalls ändern"
+msgstr "Arbeitsablauf-Status für alle Unterobjekte ebenfalls ändern"
 
 #: components/manage/Toolbar/More
 # defaultMessage: Changes applied
