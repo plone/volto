@@ -24,6 +24,7 @@
 
 ### Bugfix
 
+- Fix Press Enter in some blocks does not focus on the text block below #3647 @dobri1408
 - Add `matchAllRoutes` to AsyncConnect so that it matches all configured `asyncPropsExtenders` @tiberiuichim
 - Fix acceptence test groups controlpanel @ksuess
 
