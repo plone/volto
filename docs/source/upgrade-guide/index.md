@@ -1292,7 +1292,7 @@ This release includes a number of changes to the internal dependencies. If you h
 ### Upgrade to Node 12
 
 We have now dependencies that requires `node >=10.19.0`. Although Node 10 has still LTS
-"maintenance" treatment (see https://nodejs.org/en/about/releases/) the recommended path
+"maintenance" treatment (see https://github.com/nodejs/release#release-schedule) the recommended path
 is that you use from now on node 12 which is LTS since last October.
 
 ### New Razzle version and related development dependencies
