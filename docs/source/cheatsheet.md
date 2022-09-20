@@ -109,18 +109,3 @@ Click the reference {ref}`volto-demo-label` to jump to the target.
   def asdas:
   """ """
 ```
-
-## Toggle paragraph (Exercises / FAQ)
-
-````{admonition} This is a title
-:class: toggle
-
-```{code-block} python
-:linenos:
-:emphasize-lines: 1, 3
-
-a = 2
-print("my 1st line")
-print(f"my {a}nd line")
-```
-````
