@@ -1107,7 +1107,6 @@ class Contents extends Component {
     const folderContentsAction = find(this.props.objectActions, {
       id: 'folderContents',
     });
-
     const loading =
       (this.props.clipboardRequest?.loading &&
         !this.props.clipboardRequest?.error) ||

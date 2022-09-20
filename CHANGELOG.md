@@ -7,12 +7,40 @@
 ### Feature
 
 ### Bugfix
+- Fix the typo in change workflow status dialog in "de" @iRohitSingh
+
+- Fix selection error when pressing backspace @robgietema
+- Fix sidebarTab in Toc Block @iRohitSingh
 
 - Fix virtualization (windowing) when displaying options with long titles for select widgets. (The virtualization happen when the number of options is greater than 25). Add dynamic height aware options using `react-virtualized`. @sneridagh
 
 ### Internal
 
 ### Documentation
+
+- Fix Sphinx warning `WARNING: glossary terms must not be separated by empty lines` by closing unclosed glossary directive's triple backticks. @stevepiercy
+- Fix broken links to nvm releases. @stevepiercy
+- Ignore redirect that requires login to GitHub. @stevepiercy
+
+
+## 16.0.0-alpha.34 (2022-09-17)
+
+### Breaking
+
+### Feature
+
+- Added new components `Aliases` for aliases control in Volto. Alias management in both controlpanel and object view. @andreiggr @avoinea
+
+### Bugfix
+
+- Add `matchAllRoutes` to AsyncConnect so that it matches all configured `asyncPropsExtenders` @tiberiuichim
+- Fix acceptence test groups controlpanel @ksuess
+
+### Internal
+
+### Documentation
+
+- Bring back "Guidelines for Contributing"
 
 ## 16.0.0-alpha.33 (2022-09-15)
 
@@ -1001,6 +1029,7 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 ### Feature
 
 - Show addons installed in control panel @sneridagh
+- Added a search input in the block chooser @bipoza
 
 ### Bugfix
 
