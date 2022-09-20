@@ -106,7 +106,7 @@ const StylingsButton = (props) => {
   const showMenu = inlineOpts.length > 1 || blockOpts.length > 1;
   return showMenu ? (
     <Dropdown
-      className="style-menu"
+      id="style-menu"
       multiple
       value={toSelect}
       disabled={config.settings.slate.styleMenu.disabled ?? false}
