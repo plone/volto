@@ -1,73 +1,19 @@
 import React from 'react';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { Icon } from '@plone/volto/components';
+import DynamicHeightList from '@plone/volto/components/manage/ReactVirtualized/DynamicRowHeightList';
 
 import downSVG from '@plone/volto/icons/down-key.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import checkSVG from '@plone/volto/icons/check.svg';
+import checkBlankSVG from '@plone/volto/icons/check-blank.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
-import useDimensions from './useDimensions';
-
-const height = 50; // The height of each option
-
-// // List data as an array of strings
-// const list = [
-//   'Brian Vaughn',
-//   // And so on...
-// ];
-
-// function rowRenderer({ key, index, style }) {
-//   debugger;
-//   return (
-//     <div key={key} style={style}>
-//       {list[index]}
-//     </div>
-//   );
-// }
-
-// export const MenuList = (props) => (
-//   <AutoSizer>
-//     {({ height, width }) => (
-//       <List
-//         height={height}
-//         rowCount={props.children.length}
-//         rowHeight={20}
-//         rowRenderer={rowRenderer}
-//         width={width}
-//       />
-//     )}
-//   </AutoSizer>
-// );
 
 export const MenuList = injectLazyLibs('reactWindow')((props) => {
   const { FixedSizeList: List } = props.reactWindow;
-  const { options, children, maxHeight, getValue } = props;
-  const [value] = getValue();
-  const initialOffset = options.indexOf(value) * height;
+  const { children } = props;
 
-  return (
-    <List
-      height={maxHeight}
-      itemCount={children.length}
-      itemSize={height}
-      initialScrollOffset={initialOffset}
-    >
-      {({ index, style }) => {
-        const [ref, { x, y, height, width }] = useDimensions();
-        console.log(height);
-        const { height: oldHeight, ...newStyle } = style;
-        return (
-          <div
-            ref={ref}
-            className="hey"
-            style={{ ...newStyle, height: height + oldHeight }}
-          >
-            {children[index]}
-          </div>
-        );
-      }}
-    </List>
-  );
+  return <DynamicHeightList>{children}</DynamicHeightList>;
 });
 
 export const SortableMultiValue = injectLazyLibs([
@@ -101,13 +47,14 @@ export const SortableMultiValueLabel = injectLazyLibs([
 
 export const Option = injectLazyLibs('reactSelect')((props) => {
   const { Option } = props.reactSelect.components;
+  const color = props.isFocused && !props.isSelected ? '#b8c6c8' : '#007bc1';
+  const svgIcon =
+    props.isFocused || props.isSelected ? checkSVG : checkBlankSVG;
+
   return (
     <Option {...props}>
       <div>{props.label}</div>
-      {props.isFocused && !props.isSelected && (
-        <Icon name={checkSVG} size="24px" color="#b8c6c8" />
-      )}
-      {props.isSelected && <Icon name={checkSVG} size="24px" color="#007bc1" />}
+      <Icon name={svgIcon} size="20px" color={color} />
     </Option>
   );
 });
