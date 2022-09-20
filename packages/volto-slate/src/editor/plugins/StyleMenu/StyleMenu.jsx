@@ -52,11 +52,6 @@ const StylingsButton = (props) => {
 
   // Converting the settings to a format that is required by dropdowns.
   const inlineOpts = [
-    {
-      text: intl.formatMessage(messages.inlineStyle),
-      disabled: true,
-      selected: false,
-    },
     ...config.settings.slate.styleMenu.inlineStyles.map((def) => {
       return {
         value: def.cssClass,
@@ -67,11 +62,6 @@ const StylingsButton = (props) => {
     }),
   ];
   const blockOpts = [
-    {
-      text: intl.formatMessage(messages.paragraphStyle),
-      disabled: true,
-      selected: false,
-    },
     ...config.settings.slate.styleMenu.blockStyles.map((def) => {
       return {
         value: def.cssClass,
@@ -103,7 +93,7 @@ const StylingsButton = (props) => {
     toSelect,
     editor,
   };
-  const showMenu = inlineOpts.length > 1 || blockOpts.length > 1;
+  const showMenu = inlineOpts.length || blockOpts.length;
   return showMenu ? (
     <Dropdown
       id="style-menu"
@@ -120,15 +110,27 @@ const StylingsButton = (props) => {
       }
     >
       <Dropdown.Menu>
-        {inlineOpts.length > 1 &&
-          inlineOpts.map((option) => (
-            <MenuOpts {...menuItemProps} option={option} />
-          ))}
+        {inlineOpts.length && (
+          <>
+            <Dropdown.Header
+              content={intl.formatMessage(messages.inlineStyle)}
+            />
+            {inlineOpts.map((option) => (
+              <MenuOpts {...menuItemProps} option={option} />
+            ))}
+          </>
+        )}
 
-        {blockOpts.length > 1 &&
-          blockOpts.map((option) => (
-            <MenuOpts {...menuItemProps} option={option} />
-          ))}
+        {blockOpts.length && (
+          <>
+            <Dropdown.Header
+              content={intl.formatMessage(messages.paragraphStyle)}
+            />
+            {blockOpts.map((option) => (
+              <MenuOpts {...menuItemProps} option={option} />
+            ))}
+          </>
+        )}
       </Dropdown.Menu>
     </Dropdown>
   ) : (
