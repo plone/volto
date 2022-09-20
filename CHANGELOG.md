@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix virtualization (windowing) when displaying options with long titles for select widgets. (The virtualization happen when the number of options is greater than 25). Add dynamic height aware options using `react-virtualized`. @sneridagh
+
 ### Internal
 
 ### Documentation
