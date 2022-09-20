@@ -18,6 +18,8 @@
 
 - Fix Sphinx warning `WARNING: glossary terms must not be separated by empty lines` by closing unclosed glossary directive's triple backticks. @stevepiercy
 - Fix broken links to nvm releases. @stevepiercy
+- Ignore redirect that requires login to GitHub. @stevepiercy
+
 
 ## 16.0.0-alpha.34 (2022-09-17)
 
