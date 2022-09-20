@@ -27,11 +27,7 @@ class DynamicHeightList extends React.PureComponent {
         rowIndex={index}
         parent={parent}
       >
-        {({ measure }) => (
-          <div style={style}>
-            <div className="item">{this.props.children[index]}</div>
-          </div>
-        )}
+        {({ measure }) => <div style={style}>{this.props.children[index]}</div>}
       </CellMeasurer>
     );
   }
