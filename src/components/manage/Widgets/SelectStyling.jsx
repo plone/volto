@@ -9,12 +9,9 @@ import checkSVG from '@plone/volto/icons/check.svg';
 import checkBlankSVG from '@plone/volto/icons/check-blank.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 
-export const MenuList = injectLazyLibs('reactWindow')((props) => {
-  const { FixedSizeList: List } = props.reactWindow;
-  const { children } = props;
-
+export const MenuList = ({ children }) => {
   return <DynamicHeightList>{children}</DynamicHeightList>;
-});
+};
 
 export const SortableMultiValue = injectLazyLibs([
   'reactSelect',

@@ -7,6 +7,9 @@ export const loadables = {
   toastify: loadable.lib(() => import('react-toastify')),
   reactSelect: loadable.lib(() => import('react-select'), { ssr: false }),
   reactWindow: loadable.lib(() => import('react-window'), { ssr: false }),
+  reactVirtualized: loadable.lib(() => import('react-virtualized'), {
+    ssr: false,
+  }),
   reactSortableHOC: loadable.lib(() => import('react-sortable-hoc'), {
     ssr: false,
   }),

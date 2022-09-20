@@ -1,7 +1,7 @@
 import React from 'react';
-import { CellMeasurerCache, List, CellMeasurer } from 'react-virtualized';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
-export default class DynamicHeightList extends React.PureComponent {
+class DynamicHeightList extends React.PureComponent {
   // As per `react-virtualized` docs, one should use a PureComponent
   // to avoid performance issues
   // We could have used a React.memo + functional component instead,
@@ -9,7 +9,7 @@ export default class DynamicHeightList extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this._cache = new CellMeasurerCache({
+    this._cache = new props.reactVirtualized.CellMeasurerCache({
       fixedWidth: true,
       minHeight: 50,
     });
@@ -18,6 +18,7 @@ export default class DynamicHeightList extends React.PureComponent {
   }
 
   _rowRenderer({ index, key, parent, style }) {
+    const CellMeasurer = this.props.reactVirtualized.CellMeasurer;
     return (
       <CellMeasurer
         cache={this._cache}
@@ -36,6 +37,8 @@ export default class DynamicHeightList extends React.PureComponent {
   }
 
   render() {
+    const List = this.props.reactVirtualized.List;
+
     return (
       <List
         {...this.props}
@@ -53,3 +56,5 @@ export default class DynamicHeightList extends React.PureComponent {
     );
   }
 }
+
+export default injectLazyLibs('reactVirtualized')(DynamicHeightList);
