@@ -4,6 +4,9 @@
 
 ### Breaking
 
+- `react-window` no longer a Volto dependency @sneridagh
+  See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+
 ### Feature
 
 ### Bugfix
