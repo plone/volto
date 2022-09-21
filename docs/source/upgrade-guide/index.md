@@ -229,7 +229,7 @@ config.registerComponent({
 ```
 ````
 
-#### Main workflow change menu changed from Pastanaga UI simplification to classic Plone implementation
+### Main workflow change menu changed from Pastanaga UI simplification to classic Plone implementation
 
 Pastanaga UI envisioned a simplification of the classic Plone workflow change dropdown.
 The idea is that for users, the transition names were too cryptic and it was difficult to infer the destination state from them.
@@ -283,6 +283,12 @@ defineMessages({
   },
 })
 ```
+
+### `react-window` no longer a Volto dependency
+
+Volto used this library to generate dynamic "windowed/virtualized" select widget options.
+It moved to use `react-virtualized` instead of `react-window` because it provides a more broad set of features that Volto required.
+If you were using it in your project, you'll have to include it as a direct dependency of it from now on.
 
 (volto-upgrade-guide-15.x.x)=
 
