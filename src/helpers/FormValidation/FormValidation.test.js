@@ -76,5 +76,16 @@ describe('FormValidation', () => {
         email: [messages.isValidEmail.defaultMessage],
       });
     });
+
+    it('validates correct email', () => {
+      formData.email = 'test@domain.name'
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema,
+          formData,
+          formatMessage,
+        }),
+      ).toEqual({})
+    })
   });
 });
