@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Add nulish coalescence operator in Number widget @iRohitSingh
+
 ### Documentation
 
 ## 16.0.0-alpha.35 (2022-09-21)
