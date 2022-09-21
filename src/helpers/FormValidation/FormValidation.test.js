@@ -78,14 +78,14 @@ describe('FormValidation', () => {
     });
 
     it('validates correct email', () => {
-      formData.email = 'test@domain.name'
+      formData.email = 'test@domain.name';
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema,
           formData,
           formatMessage,
         }),
-      ).toEqual({})
-    })
+      ).toEqual({});
+    });
   });
 });
