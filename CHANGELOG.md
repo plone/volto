@@ -25,6 +25,7 @@
 - Fix selection error when pressing backspace @robgietema
 - Fix sidebarTab in Toc Block @iRohitSingh
 - Fix virtualization (windowing) when displaying options with long titles for select widgets. (The virtualization happen when the number of options is greater than 25). Add dynamic height aware options using `react-virtualized`. @sneridagh
+- Fix email validation to ensure all addresses are correctly validated @instification
 
 ### Documentation
 
