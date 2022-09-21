@@ -40,7 +40,7 @@ const isMinPropertyValid = (value, valueToCompare, maxCriterion, intlFunc) => {
 const widgetValidation = {
   email: {
     isValidEmail: (emailValue, emailObj, intlFunc) => {
-      const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+      const emailRegex = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
       const isValid = emailRegex.test(emailValue);
       return !isValid ? intlFunc(messages.isValidEmail) : null;
     },
