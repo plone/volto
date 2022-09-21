@@ -7,24 +7,18 @@
 - `react-window` no longer a Volto dependency @sneridagh
   See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
 
-### Feature
-
 ### Bugfix
-- Fix the typo in change workflow status dialog in "de" @iRohitSingh
 
+- Fix the typo in change workflow status dialog in "de" @iRohitSingh
 - Fix selection error when pressing backspace @robgietema
 - Fix sidebarTab in Toc Block @iRohitSingh
-
 - Fix virtualization (windowing) when displaying options with long titles for select widgets. (The virtualization happen when the number of options is greater than 25). Add dynamic height aware options using `react-virtualized`. @sneridagh
-
-### Internal
 
 ### Documentation
 
 - Fix Sphinx warning `WARNING: glossary terms must not be separated by empty lines` by closing unclosed glossary directive's triple backticks. @stevepiercy
 - Fix broken links to nvm releases. @stevepiercy
 - Ignore redirect that requires login to GitHub. @stevepiercy
-
 
 ## 16.0.0-alpha.34 (2022-09-17)
 
