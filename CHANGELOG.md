@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Fix number widget when the value is 0 @iRohitSingh
+- Show unauthorized message when accessing the diff view without permission @robgietema
 
 ### Internal
 
