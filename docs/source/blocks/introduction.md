@@ -19,7 +19,7 @@ Blocks are composed of two basic (and required) components: the block edit and v
 ## Default blocks
 
 Volto ships with a basic set of blocks, as described in the following list.
-For details of all their options, see {ref}`blocks/settings`. Some of the blocks are "restricted", they can't be added by the editors through the block chooser UI, for example the Title and Description blocks.
+For details of all their options, see {doc}`settings`. Some of the blocks are "restricted", they can't be added by the editors through the block chooser UI, for example the Title and Description blocks.
 
 Title
 : Connected to the `title` content type's metadata field. It renders as the `h1` of the page. Cannot be removed by default, although this can be customized using `config.settings.requiredBlocks`.

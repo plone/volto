@@ -91,7 +91,7 @@ The `views` registry allows configuration of the components that will be used
 to render the content. There are 4 types of views:
 
 - layout views, which are used based on the `layout` field of the incoming
-  content
+  content. See {doc}`./settings-reference` for more information.
 - content type views, registered view components per Plone content type
 - the default view, which can render the composite page Volto blocks
 - and the error views, to be used for regular error pages (Forbidden, Not
@@ -136,6 +136,7 @@ config.addonRoutes.push({ path: '/**/chat', component: Chat });
 ```
 
 ## cookieExpires
+
 According to the EU law on the management of the GDPR privacy and cookies, technical cookies must have a maximum expiration of 6 months.
 For sites outside the European Union, the expiration could be different.
 Expiration time is configurable in `config`, expressed in seconds:

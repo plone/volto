@@ -6,6 +6,7 @@ import {
   Add,
   AddonsControlpanel,
   UndoControlpanel,
+  Aliases,
   ChangePassword,
   ContactForm,
   Contents,
@@ -32,6 +33,7 @@ import {
   Search,
   Sharing,
   Sitemap,
+  AliasesControlpanel,
   UsersControlpanel,
   UserGroupMembershipControlPanel,
   GroupsControlpanel,
@@ -144,6 +146,10 @@ export const defaultRoutes = [
     component: DatabaseInformation,
   },
   {
+    path: '/controlpanel/aliases',
+    component: AliasesControlpanel,
+  },
+  {
     path: '/controlpanel/moderate-comments',
     component: ModerateComments,
   },
@@ -200,6 +206,10 @@ export const defaultRoutes = [
     component: Sharing,
   },
   {
+    path: '/**/aliases',
+    component: Aliases,
+  },
+  {
     path: '/**/delete',
     component: Delete,
   },
@@ -214,10 +224,6 @@ export const defaultRoutes = [
   {
     path: '/**/history',
     component: History,
-  },
-  {
-    path: '/**/sharing',
-    component: Sharing,
   },
   {
     path: '/**/manage-translations',
