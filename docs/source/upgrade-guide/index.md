@@ -254,7 +254,7 @@ config.registerComponent({
 ```
 ````
 
-#### Main workflow change menu changed from Pastanaga UI simplification to classic Plone implementation
+### Main workflow change menu changed from Pastanaga UI simplification to classic Plone implementation
 
 Pastanaga UI envisioned a simplification of the classic Plone workflow change dropdown.
 The idea is that for users, the transition names were too cryptic and it was difficult to infer the destination state from them.
@@ -264,6 +264,56 @@ This vision was partially implemented in Volto, bypassing the information coming
 
 Since this never happened, we are going back to the classic mode, so the dropdown will show the transition names.
 When the simplified vision is implemented, we will revisit it.
+
+#### Move Layout constants to `config.views.layoutViewsNamesMapping`.
+
+The `constants` layout module was removed in favor of an object in the Configuration Registry: `config.views.layoutViewsNamesMapping`.
+
+If you have added or modified the Plone layout views literal mapping, you should now use this setting, and you can remove the module shadowing customization.
+
+You can now add an i18n `id` for any layout that you create as well, since the `Display` component is now i18n aware.
+
+This is the structure of `config.views.layoutViewsNamesMapping`:
+
+```js
+export const layoutViewsNamesMapping = {
+  album_view: 'Album view',
+  event_listing: 'Event listing',
+  full_view: 'All content',
+  listing_view: 'Listing view',
+  summary_view: 'Summary view',
+  tabular_view: 'Tabular view',
+  layout_view: 'Mosaic layout',
+  document_view: 'Document view',
+  folder_listing: 'Folder listing',
+  newsitem_view: 'News item view',
+  link_redirect_view: 'Link redirect view',
+  file_view: 'File view',
+  image_view: 'Image view',
+  event_view: 'Event view',
+  view: 'Default view',
+};
+```
+
+The keys are the name of the Plone layout, and the values are the i18n `id` (English as default message).
+
+Then you can add the i18n message in your project's `src/config.js` or your add-on's `src/index.js`:
+
+```js
+import { defineMessages } from 'react-intl';
+defineMessages({
+  album_view: {
+    id: 'Album view',
+    defaultMessage: 'Album view',
+  },
+})
+```
+
+### `react-window` no longer a Volto dependency
+
+Volto used this library to generate dynamic "windowed/virtualized" select widget options.
+It moved to use `react-virtualized` instead of `react-window` because it provides a more broad set of features that Volto required.
+If you were using it in your project, you'll have to include it as a direct dependency of it from now on.
 
 (volto-upgrade-guide-15.x.x)=
 
@@ -1273,7 +1323,7 @@ This release includes a number of changes to the internal dependencies. If you h
 ### Upgrade to Node 12
 
 We have now dependencies that requires `node >=10.19.0`. Although Node 10 has still LTS
-"maintenance" treatment (see https://nodejs.org/en/about/releases/) the recommended path
+"maintenance" treatment (see https://github.com/nodejs/release#release-schedule) the recommended path
 is that you use from now on node 12 which is LTS since last October.
 
 ### New Razzle version and related development dependencies

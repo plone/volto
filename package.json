@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "16.0.0-alpha.31",
+  "version": "16.0.0-alpha.35",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -60,7 +60,7 @@
     "files": [
       {
         "path": "build/public/static/js/*.js",
-        "maxSize": "680kB"
+        "maxSize": "700kB"
       }
     ]
   },
@@ -351,7 +351,7 @@
     "react-sortable-hoc": "2.0.0",
     "react-test-renderer": "17.0.2",
     "react-toastify": "5.4.1",
-    "react-window": "1.8.6",
+    "react-virtualized": "9.22.3",
     "redraft": "0.10.2",
     "redux": "4.1.0",
     "redux-actions": "2.6.5",
