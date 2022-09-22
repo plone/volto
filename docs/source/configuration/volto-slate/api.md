@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "volto-slate API"
-  "property=og:description": "volto-slate API"
-  "property=og:title": "volto-slate API"
-  "keywords": "Volto, Plone, frontend, React, volto-slate, Editor, Slate, API"
+myst:
+  html_meta:
+    "description": "volto-slate API"
+    "property=og:description": "volto-slate API"
+    "property=og:title": "volto-slate API"
+    "keywords": "Volto, Plone, frontend, React, volto-slate, Editor, Slate, API"
 ---
 
 (volto-slate-api-label)=

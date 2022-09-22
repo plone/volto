@@ -27,7 +27,10 @@ export const normalizeNode = (editor) => {
     if (isElementNode && isListTypeNode) {
       // lift all child nodes of ul/ol that are not ul/ol/li
       for (const [child, childPath] of Node.children(editor, path)) {
-        if (!validListElements.includes(child.type)) {
+        if (
+          !validListElements.includes(child.type) &&
+          !validListElements.includes(node.type)
+        ) {
           Transforms.liftNodes(editor, { at: childPath, split: true });
 
           // Alternate strategy, need to investigate

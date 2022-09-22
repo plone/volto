@@ -110,6 +110,13 @@ export function createDefaultBlock(children) {
   };
 }
 
+export function createBlock(type, children) {
+  return {
+    type,
+    children: children || [{ text: '' }],
+  };
+}
+
 export function createEmptyParagraph() {
   // TODO: rename to createEmptyBlock
   return {
