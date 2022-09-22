@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Content edit locking prevents simultaneous conflicting edits of the same content."
-  "property=og:description": "Content edit locking prevents simultaneous conflicting edits of the same content."
-  "property=og:title": "Locking support"
-  "keywords": "Volto, Plone, frontend, React, locking support"
+myst:
+  html_meta:
+    "description": "Content edit locking prevents simultaneous conflicting edits of the same content."
+    "property=og:description": "Content edit locking prevents simultaneous conflicting edits of the same content."
+    "property=og:title": "Locking support"
+    "keywords": "Volto, Plone, frontend, React, locking support"
 ---
 
 # Locking support

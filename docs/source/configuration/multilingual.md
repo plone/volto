@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Install multilingual support to use Plone's multilingual feature"
-  "property=og:description": "Install multilingual support to use Plone's multilingual feature"
-  "property=og:title": "Multilingual"
-  "keywords": "Volto, Plone, frontend, React, multilingual"
+myst:
+  html_meta:
+    "description": "Install multilingual support to use Plone's multilingual feature"
+    "property=og:description": "Install multilingual support to use Plone's multilingual feature"
+    "property=og:title": "Multilingual"
+    "keywords": "Volto, Plone, frontend, React, multilingual"
 ---
 
 # Multilingual

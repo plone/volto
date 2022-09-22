@@ -80,6 +80,11 @@ const store = mockStore({
           title: 'Enable icalendar import',
         },
         {
+          icon: 'plone-redirection',
+          id: 'redirection',
+          title: 'URL Management',
+        },
+        {
           icon: '',
           id: 'rules',
           title: 'Rules',

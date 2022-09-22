@@ -1,31 +1,17 @@
 import React from 'react';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { Icon } from '@plone/volto/components';
+import DynamicHeightList from '@plone/volto/components/manage/ReactVirtualized/DynamicRowHeightList';
 
 import downSVG from '@plone/volto/icons/down-key.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import checkSVG from '@plone/volto/icons/check.svg';
+import checkBlankSVG from '@plone/volto/icons/check-blank.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 
-const height = 50; // The height of each option
-
-export const MenuList = injectLazyLibs('reactWindow')((props) => {
-  const { FixedSizeList: List } = props.reactWindow;
-  const { options, children, maxHeight, getValue } = props;
-  const [value] = getValue();
-  const initialOffset = options.indexOf(value) * height;
-
-  return (
-    <List
-      height={maxHeight}
-      itemCount={children.length}
-      itemSize={height}
-      initialScrollOffset={initialOffset}
-    >
-      {({ index, style }) => <div style={style}>{children[index]}</div>}
-    </List>
-  );
-});
+export const MenuList = ({ children }) => {
+  return <DynamicHeightList>{children}</DynamicHeightList>;
+};
 
 export const SortableMultiValue = injectLazyLibs([
   'reactSelect',
@@ -58,13 +44,14 @@ export const SortableMultiValueLabel = injectLazyLibs([
 
 export const Option = injectLazyLibs('reactSelect')((props) => {
   const { Option } = props.reactSelect.components;
+  const color = props.isFocused && !props.isSelected ? '#b8c6c8' : '#007bc1';
+  const svgIcon =
+    props.isFocused || props.isSelected ? checkSVG : checkBlankSVG;
+
   return (
     <Option {...props}>
       <div>{props.label}</div>
-      {props.isFocused && !props.isSelected && (
-        <Icon name={checkSVG} size="24px" color="#b8c6c8" />
-      )}
-      {props.isSelected && <Icon name={checkSVG} size="24px" color="#007bc1" />}
+      <Icon name={svgIcon} size="20px" color={color} />
     </Option>
   );
 });
