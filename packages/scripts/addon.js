@@ -94,6 +94,7 @@ async function runGenerator({
   destination = 'addon-testing-project',
   isPrivate = false,
   branch = 'main',
+  isCanary = false,
 }) {
   if (isPrivate) {
     console.log(
@@ -129,7 +130,7 @@ async function runGenerator({
 
   const GENERATOR_CLI = `yo --force --no-insight @plone/volto ${destination} --no-interactive --skip-install --workspace src/addons/${name} --addon ${
     fullname || name
-  }`;
+  } ${isCanary ? '--canary' : ''}`;
 
   execSync(GENERATOR_CLI, (error, stdout, stderr) => {
     if (error) {
@@ -183,6 +184,7 @@ function cloneAddon({
   destination = 'addon-testing-project',
   branch = 'main',
   isPrivate,
+  isCanary = false,
 }) {
   console.log(
     chalk.green(
@@ -191,7 +193,7 @@ function cloneAddon({
       )} and creating a testing environment in ${chalk.yellow(destination)}`,
     ),
   );
-  runGenerator({ source, destination, branch, isPrivate }).then();
+  runGenerator({ source, destination, branch, isPrivate, isCanary }).then();
 }
 
 // This is the equivalent of `if __name__ == '__main__'` in Python :)
@@ -204,11 +206,13 @@ if (require.main === module) {
       'set if the repo is private, then GITHUB_TOKEN is used',
     )
     .option('-b, --branch <branch>', 'set the repo branch, defaults to main')
+    .option('-c, --canary', 'downloads latest Volto canary (alpha) version')
     .action((source, destination, options) => {
       cloneAddon({
         source,
         destination,
         isPrivate: options.private,
+        isCanary: options.canary,
         branch: options.branch,
       });
     });

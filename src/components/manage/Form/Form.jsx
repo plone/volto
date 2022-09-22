@@ -418,11 +418,13 @@ class Form extends Component {
       event.preventDefault();
     }
 
-    const errors = FormValidation.validateFieldsPerFieldset({
-      schema: this.props.schema,
-      formData: this.state.formData,
-      formatMessage: this.props.intl.formatMessage,
-    });
+    const errors = this.props.schema
+      ? FormValidation.validateFieldsPerFieldset({
+          schema: this.props.schema,
+          formData: this.state.formData,
+          formatMessage: this.props.intl.formatMessage,
+        })
+      : {};
 
     if (keys(errors).length > 0) {
       const activeIndex = FormValidation.showFirstTabWithErrors({

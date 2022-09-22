@@ -8,6 +8,7 @@ import {
   DELETE_GROUP,
   GET_GROUP,
   LIST_GROUPS,
+  LIST_FILTER_GROUPS,
   UPDATE_GROUP,
 } from '@plone/volto/constants/ActionTypes';
 
@@ -64,6 +65,7 @@ export default function groups(state = initialState, action = {}) {
     case `${DELETE_GROUP}_PENDING`:
     case `${GET_GROUP}_PENDING`:
     case `${LIST_GROUPS}_PENDING`:
+    case `${LIST_FILTER_GROUPS}_PENDING`:
     case `${UPDATE_GROUP}_PENDING`:
       return {
         ...state,
@@ -87,6 +89,16 @@ export default function groups(state = initialState, action = {}) {
       return {
         ...state,
         groups: action.result,
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: true,
+          error: null,
+        },
+      };
+    case `${LIST_FILTER_GROUPS}_SUCCESS`:
+      return {
+        ...state,
+        filter_groups: action.result,
         [getRequestKey(action.type)]: {
           loading: false,
           loaded: true,
@@ -129,6 +141,16 @@ export default function groups(state = initialState, action = {}) {
       return {
         ...state,
         groups: [],
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: false,
+          error: action.error,
+        },
+      };
+    case `${LIST_FILTER_GROUPS}_FAIL`:
+      return {
+        ...state,
+        filter_groups: [],
         [getRequestKey(action.type)]: {
           loading: false,
           loaded: false,

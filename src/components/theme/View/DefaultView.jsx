@@ -16,6 +16,8 @@ import RenderBlocks from './RenderBlocks';
 import { hasBlocksData, getBaseUrl } from '@plone/volto/helpers';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { isEqual } from 'lodash';
+
 /**
  * Component to display the default view.
  * @function DefaultView
@@ -38,6 +40,16 @@ const DefaultView = (props) => {
     (fs) => !fieldsetsToExclude.includes(fs.id),
   );
 
+  // TL;DR: There is a flash of the non block-based view because of the reset
+  // of the content on route change. Subscribing to the content change at this
+  // level has nasty implications, so we can't watch the Redux state for loaded
+  // content flag here (because it forces an additional component update)
+  // Instead, we can watch if the content is "empty", but this has a drawback
+  // since the locking mechanism inserts a `lock` key before the content is there.
+  // So "empty" means `content` is present, but only with a `lock` key, thus the next
+  // ugly condition comes to life
+  const contentLoaded = content && !isEqual(Object.keys(content), ['lock']);
+
   React.useEffect(() => {
     content?.['@type'] &&
       !hasBlocksData(content) &&
@@ -45,43 +57,46 @@ const DefaultView = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return hasBlocksData(content) ? (
-    <div id="page-document" className="ui container">
-      <RenderBlocks {...props} path={path} />
-    </div>
-  ) : (
-    <Container id="page-document">
-      {fieldsets?.map((fs) => {
-        return (
-          <div className="fieldset" key={fs.id}>
-            {fs.id !== 'default' && <h2>{fs.title}</h2>}
-            {fs.fields?.map((f, key) => {
-              let field = {
-                ...contentSchema?.properties[f],
-                id: f,
-                widget: getWidget(f, contentSchema?.properties[f]),
-              };
-              let Widget = views?.getWidget(field);
-              return f !== 'title' ? (
-                <Grid celled="internally" key={key}>
-                  <Grid.Row>
-                    <Label>{field.title}:</Label>
-                  </Grid.Row>
-                  <Grid.Row>
-                    <Segment basic>
-                      <Widget value={content[f]} />
-                    </Segment>
-                  </Grid.Row>
-                </Grid>
-              ) : (
-                <Widget key={key} value={content[f]} />
-              );
-            })}
-          </div>
-        );
-      })}
-    </Container>
-  );
+  // If the content is not yet loaded, then do not show anything
+  return contentLoaded ? (
+    hasBlocksData(content) ? (
+      <div id="page-document" className="ui container">
+        <RenderBlocks {...props} path={path} />
+      </div>
+    ) : (
+      <Container id="page-document">
+        {fieldsets?.map((fs) => {
+          return (
+            <div className="fieldset" key={fs.id}>
+              {fs.id !== 'default' && <h2>{fs.title}</h2>}
+              {fs.fields?.map((f, key) => {
+                let field = {
+                  ...contentSchema?.properties[f],
+                  id: f,
+                  widget: getWidget(f, contentSchema?.properties[f]),
+                };
+                let Widget = views?.getWidget(field);
+                return f !== 'title' ? (
+                  <Grid celled="internally" key={key}>
+                    <Grid.Row>
+                      <Label>{field.title}:</Label>
+                    </Grid.Row>
+                    <Grid.Row>
+                      <Segment basic>
+                        <Widget value={content[f]} />
+                      </Segment>
+                    </Grid.Row>
+                  </Grid>
+                ) : (
+                  <Widget key={key} value={content[f]} />
+                );
+              })}
+            </div>
+          );
+        })}
+      </Container>
+    )
+  ) : null;
 };
 
 /**
