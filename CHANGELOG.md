@@ -8,9 +8,9 @@
 
 ### Bugfix
 
-### Internal
+- Fix number widget when the value is 0 @iRohitSingh
 
-- Add nulish coalescence operator in Number widget @iRohitSingh
+### Internal
 
 ### Documentation
 
