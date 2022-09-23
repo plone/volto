@@ -89,3 +89,18 @@ npx -p @plone/scripts addon clone .
 ```
 
 This only works if you execute the command from the root of your add-on directory.
+
+### consolidate
+
+It consolidates the changes made in the previously generated project with the `clone` command into the local add-on.
+
+It should be run at the root of the add-on, and it gets a `source` argument in case you have specified a directory other than `addon-testing-project`.
+
+`npx -p @plone/scripts addon consolidate --help`
+
+    Usage: addon consolidate [options] [source]
+
+    Consolidate a cloned project
+
+    Options:
+      -h, --help  display help for command
