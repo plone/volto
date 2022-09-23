@@ -6,7 +6,7 @@
  */
 import { program } from 'commander';
 import chalk from 'chalk';
-import { runGitGenerator } from './generators.js';
+import { runGitGenerator, runLocalGenerator } from './generators.js';
 
 function cloneAddon({
   source,
@@ -14,23 +14,47 @@ function cloneAddon({
   branch = 'main',
   isPrivate,
   isCanary = false,
-  isLocal = false,
 }) {
-  console.log(
-    chalk.green(
-      `Cloning addon from ${chalk.yellow(
-        source,
-      )} and creating a testing environment in ${chalk.yellow(destination)}`,
-    ),
-  );
-  runGitGenerator({
-    source,
-    destination,
-    branch,
-    isPrivate,
-    isCanary,
-    isLocal,
-  }).then();
+  const isLocal = source === '.';
+
+  if (isLocal) {
+    console.log(
+      chalk.yellow(
+        'Using local configuration, remember to run this command at the root of your add-on',
+      ),
+      chalk.green(
+        `Copying current add-on data into the project ${chalk.yellow(
+          destination,
+        )}`,
+      ),
+    );
+
+    runLocalGenerator({
+      source,
+      destination,
+      branch,
+      isPrivate,
+      isCanary,
+      isLocal,
+    }).then();
+  } else {
+    console.log(
+      chalk.green(
+        `Cloning addon from ${chalk.yellow(
+          source,
+        )} and creating a testing environment in ${chalk.yellow(destination)}`,
+      ),
+    );
+
+    runGitGenerator({
+      source,
+      destination,
+      branch,
+      isPrivate,
+      isCanary,
+      isLocal,
+    }).then();
+  }
 }
 
 program
@@ -42,14 +66,12 @@ program
   )
   .option('-b, --branch <branch>', 'set the repo branch, defaults to main')
   .option('-c, --canary', 'downloads latest Volto canary (alpha) version')
-  .option('-l, --local', 'copy the current add-on source into the project')
   .action((source, destination, options) => {
     cloneAddon({
       source,
       destination,
       isPrivate: options.private,
       isCanary: options.canary,
-      isLocal: options.local,
       branch: options.branch,
     });
   });

@@ -1,4 +1,5 @@
 /* eslint no-console: 0 */
+import fs from 'fs';
 import https from 'https';
 import GitUrlParse from 'git-url-parse';
 
@@ -47,4 +48,18 @@ export async function getGitAddonInfo({ source, branch = 'main', isPrivate }) {
         reject(err.message);
       });
   });
+}
+
+export async function getLocalAddonInfo({ source }) {
+  const packageJSON = JSON.parse(
+    fs.readFileSync(`${source}/package.json`, 'utf8'),
+  );
+
+  return {
+    name: packageJSON.name,
+    version: packageJSON.version,
+    ...(packageJSON.name.includes('@')
+      ? { fullname: packageJSON.name, name: packageJSON.name.split('/')[1] }
+      : {}),
+  };
 }

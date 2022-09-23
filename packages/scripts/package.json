@@ -64,6 +64,7 @@
     "babel-plugin-react-intl": "5.1.17",
     "babel-preset-razzle": "3.4.5",
     "commander": "8.2.0",
+    "fs-extra": "10.1.0",
     "git-url-parse": "^11.6.0",
     "mrs-developer": "*",
     "pofile": "1.0.10",

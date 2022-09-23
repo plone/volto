@@ -12,7 +12,7 @@ export function amendPackageJSON(name, destination) {
   };
   fs.writeFileSync(
     `${destination}/package.json`,
-    `${JSON.stringify(packageJSON, null, 4)}`,
+    `${JSON.stringify(packageJSON, null, 2)}`,
   );
 }
 
@@ -26,6 +26,18 @@ export function createMrsDeveloperConfig(config) {
 
   fs.writeFileSync(
     `${config.destination}/mrs.developer.json`,
-    `${JSON.stringify(template, null, 4)}`,
+    `${JSON.stringify(template, null, 2)}`,
+  );
+}
+
+export function createLocalMrsDeveloperConfig(config) {
+  const template = { [config.name]: {} };
+  const packageName = config.fullname || config.name;
+  template[config.name].package = packageName;
+  template[config.name].local = `addons/${config.name}/src`;
+
+  fs.writeFileSync(
+    `${config.destination}/mrs.developer.json`,
+    `${JSON.stringify(template, null, 2)}`,
   );
 }
