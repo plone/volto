@@ -8,6 +8,7 @@
 
 ### Bugfix
 
+- Fix the typo in change workflow status dialog in "de" @iRohitSingh
 - Show unauthorized message when accessing the diff view without permission @robgietema
 - Fix i18n in title of Aliases control panel @sneridagh
 
@@ -45,6 +46,7 @@
 
 ### Bugfix
 
+- Fix Press Enter in some blocks does not focus on the text block below #3647 @dobri1408
 - Add `matchAllRoutes` to AsyncConnect so that it matches all configured `asyncPropsExtenders` @tiberiuichim
 - Fix acceptence test groups controlpanel @ksuess
 
