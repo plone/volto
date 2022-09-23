@@ -3,7 +3,7 @@ import { Portal } from 'react-portal';
 import { useSlate } from 'slate-react';
 import Separator from './Separator';
 import BasicToolbar from './BasicToolbar';
-import { Editor } from 'slate';
+import { Editor, Range } from 'slate';
 import { ReactEditor } from 'slate-react';
 
 const Toolbar = ({
@@ -67,8 +67,11 @@ const Toolbar = ({
         // https://stackoverflow.com/questions/22935320/uncaught-indexsizeerror-failed-to-execute-getrangeat-on-selection-0-is-not
         return;
       }
-      const domRange = domSelection.getRangeAt(0);
-      rect = domRange.getBoundingClientRect();
+      const domRangeFromSlate = ReactEditor.toDOMRange(
+        editor,
+        editor.selection,
+      );
+      rect = domRangeFromSlate.getBoundingClientRect();
     }
 
     el.style.opacity = 1;
