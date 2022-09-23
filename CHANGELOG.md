@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Show unauthorized message when accessing the diff view without permission @robgietema
+
 ### Internal
 
 ### Documentation
