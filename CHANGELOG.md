@@ -16,6 +16,8 @@
 
 ### Documentation
 
+- Added controls for the `actions` property of the `AlignWidget` storybook @JeffersonBledsoe #3671
+
 ## 16.0.0-alpha.35 (2022-09-21)
 
 ### Breaking
