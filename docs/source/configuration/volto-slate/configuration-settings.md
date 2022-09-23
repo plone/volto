@@ -213,9 +213,9 @@ slate.runtimeDecorators = [([node, path], ranges) => ranges];
 
 ## `slate.styleMenu`
 
-An out of the box `volto-slate` plugin that provides rich-text styling for volto. The main purpose of the style menu is exposing custom css classes to the selected texts in the editor.
+Add a menu applying CSS classes to text passages or entire paragraphs.
 
-The plugin can be useful for those who don't have time and resources for writing a new `volto-slate` plugin as the style menu works with just "css classes".
+`slate.styleMenu.inlineStyles` are applied to selected text passages, while `slate.styleMenu.blockStyles` are applied to selected paragraphs.
 
 ```js
 slate.styleMenu.inlineStyles = [
