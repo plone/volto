@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Fix the typo in change workflow status dialog in "de" @iRohitSingh
+- Show unauthorized message when accessing the diff view without permission @robgietema
 
 ### Internal
 
