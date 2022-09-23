@@ -9,7 +9,9 @@
 ### Bugfix
 
 - Fix number widget when the value is 0 @iRohitSingh
+- Fix the typo in change workflow status dialog in "de" @iRohitSingh
 - Show unauthorized message when accessing the diff view without permission @robgietema
+- Fix i18n in title of Aliases control panel @sneridagh
 
 ### Internal
 
@@ -28,6 +30,7 @@
 - Fix selection error when pressing backspace @robgietema
 - Fix sidebarTab in Toc Block @iRohitSingh
 - Fix virtualization (windowing) when displaying options with long titles for select widgets. (The virtualization happen when the number of options is greater than 25). Add dynamic height aware options using `react-virtualized`. @sneridagh
+- Fix email validation to ensure all addresses are correctly validated @instification
 
 ### Documentation
 
@@ -45,6 +48,7 @@
 
 ### Bugfix
 
+- Fix Press Enter in some blocks does not focus on the text block below #3647 @dobri1408
 - Add `matchAllRoutes` to AsyncConnect so that it matches all configured `asyncPropsExtenders` @tiberiuichim
 - Fix acceptence test groups controlpanel @ksuess
 
