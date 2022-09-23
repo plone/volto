@@ -18,6 +18,7 @@
     "url": "https://github.com/plone/volto/issues",
     "email": "plone-developers@lists.sourceforge.net"
   },
+  "type": "module",
   "homepage": "https://plone.org",
   "keywords": [
     "volto",
@@ -35,7 +36,7 @@
   "bin": {
     "i18n": "./i18n.js",
     "changelogupdater": "./changelogupdater.js",
-    "addon": "./addon.js"
+    "addon": "./addon/index.js"
   },
   "release-it": {
     "hooks": {
