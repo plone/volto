@@ -217,6 +217,10 @@ Add a menu applying CSS classes to text passages or entire paragraphs.
 
 `slate.styleMenu.inlineStyles` are applied to selected text passages, while `slate.styleMenu.blockStyles` are applied to selected paragraphs.
 
+```{image} ../../_static/style_menu.png
+:alt: Style Menu
+```
+
 ```js
 slate.styleMenu.inlineStyles = [
     {

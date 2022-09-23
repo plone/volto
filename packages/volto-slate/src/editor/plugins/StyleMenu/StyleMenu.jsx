@@ -97,6 +97,7 @@ const StylingsButton = (props) => {
   return showMenu ? (
     <Dropdown
       id="style-menu"
+      pointing=" top left"
       multiple
       value={toSelect}
       disabled={config.settings.slate.styleMenu.disabled ?? false}
