@@ -7,6 +7,7 @@
 import { program } from 'commander';
 import chalk from 'chalk';
 import { runGitGenerator, runLocalGenerator } from './generators.js';
+import { consolidateAddon } from './consolidate.js';
 
 function cloneAddon({
   source,
@@ -73,6 +74,15 @@ program
       isPrivate: options.private,
       isCanary: options.canary,
       branch: options.branch,
+    });
+  });
+
+program
+  .command('consolidate [source]')
+  .description('Consolidate a cloned project')
+  .action((source = 'addon-testing-project') => {
+    consolidateAddon({
+      source,
     });
   });
 program.parse(process.argv);
