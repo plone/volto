@@ -34,8 +34,8 @@
     "release-alpha": "release-it --preRelease=alpha"
   },
   "bin": {
-    "i18n": "./i18n.js",
-    "changelogupdater": "./changelogupdater.js",
+    "i18n": "./i18n.cjs",
+    "changelogupdater": "./changelogupdater.cjs",
     "addon": "./addon/index.js"
   },
   "release-it": {
