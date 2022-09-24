@@ -6,6 +6,9 @@
 
 ### Feature
 
+- New `clone` to local command @sneridagh
+- New `consolidate` command @sneridagh
+
 ### Bugfix
 
 ### Internal
