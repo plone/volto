@@ -5,6 +5,7 @@
 ### Breaking
 
 - Upgrade to Razzle 4 @davisagli
+- Jest downgraded from 27 to 26 @davisagli
 
 See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
 

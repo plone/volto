@@ -151,6 +151,10 @@ A few updates may be needed in existing projects:
 4. If you use custom Razzle plugins, update them to use the new format with multiple functions: https://razzlejs.org/docs/upgrade-guide#plugins (the old format still works, but is deprecated).
 5. If you have customized webpack loader configuration related to CSS, make sure it is updated to be compatible with PostCSS 8.
 
+### Jest is downgraded from version 27 to 26
+
+Razzle 4 internal API is only compatible with up to Jest 26.
+
 ### Removed `date-fns` from build
 
 The `date-fns` library has been removed from Volto's dependencies.
