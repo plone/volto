@@ -3083,6 +3083,7 @@ msgstr "UID"
 
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/More
 # defaultMessage: URL Management
 msgid "URL Management"
