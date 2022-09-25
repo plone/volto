@@ -36,7 +36,6 @@ const MenuOpts = ({ editor, toSelect, option }) => {
       className={cx({ active: isActive })}
       {...option}
       onClick={(event, selItem) => {
-        event.stopPropagation();
         toggleStyle(editor, {
           cssClass: selItem.value,
           isBlock: selItem.isBlock,
