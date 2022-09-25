@@ -141,6 +141,7 @@
     "eslint-plugin-prettier": "3.1.3",
     "jest-junit": "8.0.0",
     "mrs-developer": "*",
+    "postcss": "8.4.13",
     "prettier": "2.0.5",
     "@storybook/addon-actions": "^6.3.0",
     "@storybook/addon-controls": "6.3.0",
