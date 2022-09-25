@@ -12,6 +12,7 @@
 - Fix the typo in change workflow status dialog in "de" @iRohitSingh
 - Show unauthorized message when accessing the diff view without permission @robgietema
 - Fix i18n in title of Aliases control panel @sneridagh
+- The styling schema is now applied before the block variations schema enhancers, to allow those enhancers a chance to tweak the styling schema @tiberiuichim
 
 ### Internal
 
