@@ -28,6 +28,7 @@ beforeAll(() => {
     },
     testBlock: {
       id: 'testBlock',
+      // enableStyling: true,
       variations: [
         {
           id: 'default',
@@ -142,5 +143,33 @@ describe('BlockDataForm', () => {
 
     // schema is cloned, not mutated in place
     expect(testSchema.fieldsets[0].fields).toStrictEqual([]);
+  });
+
+  it('should add styling field to schema', () => {
+    config.blocks.blocksConfig.testBlock.enableStyling = true;
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const testSchema = {
+      fieldsets: [{ title: 'Default', id: 'default', fields: [] }],
+      properties: {},
+      required: [],
+    };
+    const formData = {
+      '@type': 'testBlock',
+    };
+    const { container } = render(
+      <Provider store={store}>
+        <BlockDataForm
+          formData={formData}
+          schema={testSchema}
+          onChangeField={(id, value) => {}}
+        />
+      </Provider>,
+    );
+    expect(container).toMatchSnapshot();
   });
 });
