@@ -128,7 +128,11 @@ Version 16 is recommended.
 
 ### Upgraded to Razzle 4
 
-Volto has upgraded from Razzle 3 to Razzle 4.
+```{versionadded} 16.0.0-alpha.36
+Volto has upgraded from Razzle 3 to Razzle 4. You should perform these steps in case you are upgrading to this version or above.
+```
+
+#### Steps after upgrade
 
 A few updates may be needed in existing projects:
 
@@ -150,6 +154,46 @@ A few updates may be needed in existing projects:
 
 4. If you use custom Razzle plugins, update them to use the new format with multiple functions: https://razzlejs.org/docs/upgrade-guide#plugins (the old format still works, but is deprecated).
 5. If you have customized webpack loader configuration related to CSS, make sure it is updated to be compatible with PostCSS 8.
+
+#### Upgrade and update add-ons dependency on `@plone/scripts`
+
+Most probably you are using `@plone/scripts` in your add-on, since it's used in i18n messageid generation and has other add-on utilities.
+When upgrading to Volto 16.0.0-alpha.36 or above, you should upgrade `@plone/scripts` to a version 2.0.0 or above.
+It's also recommended you move it from `dependencies` to `devDependencies`.
+
+```diff
+diff --git a/package.json b/package.json
+--- a/package.json
++++ b/package.json
+     }
+   },
+   "devDependencies": {
++    "@plone/scripts": "2.0.0",
+     "release-it": "^14.14.2"
+   },
+-  "dependencies": {
+-    "@plone/scripts": "*"
+-  }
++  "dependencies": {}
+ }
+```
+
+You should also do a final step, and change the `babel.config.js`, removing the preset from `razzle/babel` to `razzle`:
+
+```diff
+diff --git a/babel.config.js b/babel.config.js
+index 2f4e1e8..51bd52b 100644
+--- a/babel.config.js
++++ b/babel.config.js
+@@ -1,6 +1,6 @@
+ module.exports = function (api) {
+   api.cache(true);
+-  const presets = ['razzle/babel'];
++  const presets = ['razzle'];
+   const plugins = [
+     [
+       'react-intl', // React Intl extractor, required for the whole i18n infrastructure to work
+```
 
 ### Jest is downgraded from version 27 to 26
 
