@@ -61,6 +61,7 @@ extensions = [
     "sphinx_copybutton",
     "sphinxcontrib.spelling",
     "sphinxext.opengraph",
+    "sphinx_js",
 ]
 
 
@@ -74,6 +75,9 @@ smartquotes=False
 # The name of the Pygments (syntax highlighting) style to use.
 # pygments_style = "sphinx.pygments_styles.PyramidStyle"
 pygments_style = "sphinx"
+
+js_source_path = "../../src"
+jsdoc_config_path = "../../jsdoc.json"
 
 # Options for the linkcheck builder
 # Ignore localhost
