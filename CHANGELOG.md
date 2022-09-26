@@ -17,6 +17,8 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 
 ### Internal
 
+- Remove Razzle as direct dependency from @plone/scripts @sneridagh
+
 ### Documentation
 
 ## 16.0.0-alpha.35 (2022-09-21)
