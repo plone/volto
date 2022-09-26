@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix `listing` block in SSR, now it's fully variations aware, and the config is passed to the SSR querystring action @sneridagh
+
 ### Internal
 
 ### Documentation
