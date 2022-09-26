@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Remove wrapping ul or ol when deselecting list style @robgietema
+
 ### Internal
 
 ### Documentation
