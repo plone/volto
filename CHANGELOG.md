@@ -18,6 +18,7 @@
 ### Documentation
 
 - Added controls for the `actions` property of the `AlignWidget` storybook @JeffersonBledsoe #3671
+- Generic Setup -> `GenericSetup`. @stevepiercy
 
 ## 16.0.0-alpha.35 (2022-09-21)
 
