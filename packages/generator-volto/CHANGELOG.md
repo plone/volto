@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Move the dependency on `@plone/scripts` of the add-on generator to `devDependencies`. @sneridagh
+
 ### Bugfix
 
 - Add alias to ESlint config in project generator @sneridagh
