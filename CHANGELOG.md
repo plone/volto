@@ -4,15 +4,47 @@
 
 ### Breaking
 
+- Upgrade to Razzle 4 @davisagli
+- Jest downgraded from 27 to 26 @davisagli
+
+See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+
 ### Feature
 
 ### Bugfix
 
-- Show unauthorized message when accessing the diff view without permission @robgietema
-
 ### Internal
 
+- Remove Razzle as direct dependency from @plone/scripts @sneridagh
+
 ### Documentation
+
+## 16.0.0-alpha.37 (2022-09-27)
+
+### Feature
+
+- Added resetOnCancel functionality in Form component @MdSahil-oss
+- volto-slate: introduce style-menu @nileshgulia1
+
+### Bugfix
+
+- Fix `listing` block in SSR, now that it is fully variations aware and the configuration is passed to the SSR `querystring` action. @sneridagh
+- Remove wrapping ul or ol when deselecting list style @robgietema
+
+## 16.0.0-alpha.36 (2022-09-26)
+
+### Bugfix
+
+- Fix number widget when the value is 0 @iRohitSingh
+- Fix the typo in change workflow status dialog in "de" @iRohitSingh
+- Show unauthorized message when accessing the diff view without permission @robgietema
+- Fix i18n in title of Aliases control panel @sneridagh
+- The styling schema is now applied before the block variations schema enhancers, to allow those enhancers a chance to tweak the styling schema @tiberiuichim
+
+### Documentation
+
+- Added controls for the `actions` property of the `AlignWidget` storybook @JeffersonBledsoe #3671
+- Generic Setup -> `GenericSetup`. @stevepiercy
 
 ## 16.0.0-alpha.35 (2022-09-21)
 
@@ -27,6 +59,7 @@
 - Fix selection error when pressing backspace @robgietema
 - Fix sidebarTab in Toc Block @iRohitSingh
 - Fix virtualization (windowing) when displaying options with long titles for select widgets. (The virtualization happen when the number of options is greater than 25). Add dynamic height aware options using `react-virtualized`. @sneridagh
+- Fix email validation to ensure all addresses are correctly validated @instification
 
 ### Documentation
 
@@ -44,6 +77,7 @@
 
 ### Bugfix
 
+- Fix Press Enter in some blocks does not focus on the text block below #3647 @dobri1408
 - Add `matchAllRoutes` to AsyncConnect so that it matches all configured `asyncPropsExtenders` @tiberiuichim
 - Fix acceptence test groups controlpanel @ksuess
 

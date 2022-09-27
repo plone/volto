@@ -78,6 +78,10 @@ const messages = defineMessages({
     id: 'User Group Membership',
     defaultMessage: 'User Group Membership',
   },
+  urlmanagement: {
+    id: 'URL Management',
+    defaultMessage: 'URL Management',
+  },
 });
 
 /**
@@ -175,8 +179,8 @@ class Controlpanels extends Component {
         },
         {
           '@id': '/aliases',
-          group: 'General',
-          title: 'URL Management',
+          group: this.props.intl.formatMessage(messages.general),
+          title: this.props.intl.formatMessage(messages.urlmanagement),
         },
         {
           '@id': '/moderate-comments',

@@ -6,8 +6,8 @@ import {
 } from '@plone/volto/helpers';
 
 const BlockDataForm = compose(
-  withVariationSchemaEnhancer,
   withStylingSchemaEnhancer,
+  withVariationSchemaEnhancer,
 )(InlineForm);
 
 export default BlockDataForm;

@@ -6,9 +6,12 @@
 
 ### Feature
 
+- Move the dependency on `@plone/scripts` of the add-on generator to `devDependencies`. @sneridagh
+
 ### Bugfix
 
 - Add alias to ESlint config in project generator @sneridagh
+- Add missing `moduleNameMapper`s to default app `package.json` jest config @sneridagh
 
 ### Internal
 
