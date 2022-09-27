@@ -6,6 +6,8 @@
 
 ### Feature
 
+- volto-slate: introduce style-menu @nileshgulia1
+
 ### Bugfix
 
 - Fix `listing` block in SSR, now that it is fully variations aware and the configuration is passed to the SSR `querystring` action. @sneridagh
