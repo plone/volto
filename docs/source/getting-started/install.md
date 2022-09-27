@@ -76,7 +76,7 @@ it provides easy access to any NodeJS released version.
     nvm version
     ```
 
-4.  Install any active LTS version of NodeJS (https://nodejs.org/en/about/releases/):
+4.  Install any active LTS version of NodeJS (https://github.com/nodejs/release#release-schedule):
 
     ```bash
     nvm install 16
@@ -95,7 +95,7 @@ it provides easy access to any NodeJS released version.
 
     ```{note}
     Volto supports currently active NodeJS LTS versions based on [NodeJS
-    Releases page](https://nodejs.org/en/about/releases/), starting with Node 12 LTS.
+    Releases page](https://github.com/nodejs/release#release-schedule), starting with Node 12 LTS.
     ```
 
 
