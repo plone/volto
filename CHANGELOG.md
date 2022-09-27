@@ -6,6 +6,7 @@
 
 ### Feature
 
+- Added resetOnCancel functionality in Form component @MdSahil-oss
 - volto-slate: introduce style-menu @nileshgulia1
 
 ### Bugfix
