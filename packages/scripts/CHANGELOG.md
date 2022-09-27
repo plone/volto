@@ -8,12 +8,6 @@
 
   See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
 
-### Feature
-
-### Bugfix
-
-### Internal
-
 ## 1.6.0 (2022-08-05)
 
 ### Feature
