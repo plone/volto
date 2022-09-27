@@ -208,6 +208,7 @@ export default function content(state = initialState, action = {}) {
                       ...item,
                       url: flattenToAppURL(item['@id']),
                     })),
+                  lock: state.subrequests[action.subrequest]?.data?.lock,
                 },
               },
             },
@@ -223,6 +224,7 @@ export default function content(state = initialState, action = {}) {
                   ...item,
                   url: flattenToAppURL(item['@id']),
                 })),
+              lock: state.data?.lock,
             },
             [getRequestKey(action.type)]: {
               loading: false,

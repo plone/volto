@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Remove wrapping ul or ol when deselecting list style @robgietema
+- Fix a race condition in rendering the toolbar in multilingual sites after saving a page @pnicolli
 
 ### Internal
 
