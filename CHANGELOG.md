@@ -2,8 +2,6 @@
 
 ## 16.0.0 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Added resetOnCancel functionality in Form component @MdSahil-oss
@@ -13,10 +11,6 @@
 
 - Fix `listing` block in SSR, now that it is fully variations aware and the configuration is passed to the SSR `querystring` action. @sneridagh
 - Remove wrapping ul or ol when deselecting list style @robgietema
-
-### Internal
-
-### Documentation
 
 ## 16.0.0-alpha.36 (2022-09-26)
 
