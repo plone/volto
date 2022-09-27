@@ -67,4 +67,4 @@ Volto should work on old Plone versions as well since Plone REST API supports Pl
 
 ## NodeJS
 
-Volto always supports only LTS versions of [NodeJS](https://nodejs.org/en/about/releases/).
+Volto always supports only LTS versions of [NodeJS](https://github.com/nodejs/release#release-schedule).

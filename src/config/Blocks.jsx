@@ -321,7 +321,7 @@ const blocksConfig = {
     variations: ToCVariations,
     restricted: false,
     mostUsed: false,
-    sidebarTab: 0,
+    sidebarTab: 1,
     security: {
       addPermission: [],
       view: [],

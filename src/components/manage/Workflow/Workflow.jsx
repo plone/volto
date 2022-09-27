@@ -10,9 +10,12 @@ import { connect } from 'react-redux';
 import { uniqBy } from 'lodash';
 import { toast } from 'react-toastify';
 import { defineMessages, injectIntl } from 'react-intl';
-import getWorkflowMapping from '@plone/volto/constants/Workflows';
 import { FormFieldWrapper, Icon, Toast } from '@plone/volto/components';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import {
+  flattenToAppURL,
+  getCurrentStateMapping,
+  getWorkflowOptions,
+} from '@plone/volto/helpers';
 
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
@@ -84,9 +87,9 @@ const Option = injectLazyLibs('reactSelect')((props) => {
       <span style={stateDecorator} />
       <div style={{ marginRight: 'auto' }}>{props.label}</div>
       {props.isFocused && !props.isSelected && (
-        <Icon name={checkSVG} size="24px" color="#b8c6c8" />
+        <Icon name={checkSVG} size="18px" color="#b8c6c8" />
       )}
-      {props.isSelected && <Icon name={checkSVG} size="24px" color="#007bc1" />}
+      {props.isSelected && <Icon name={checkSVG} size="18px" color="#007bc1" />}
     </Option>
   );
 });
@@ -140,11 +143,11 @@ const customSelectStyles = {
   option: (styles, state) => ({
     ...styles,
     backgroundColor: null,
-    height: '50px',
+    minHeight: '50px',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '14px 12px',
+    padding: '12px 12px',
     color: state.isSelected
       ? '#007bc1'
       : state.isFocused
@@ -152,6 +155,12 @@ const customSelectStyles = {
       : 'inherit',
     ':active': {
       backgroundColor: null,
+    },
+    span: {
+      flex: '0 0 auto',
+    },
+    svg: {
+      flex: '0 0 auto',
     },
   }),
 };
@@ -196,12 +205,6 @@ class Workflow extends Component {
     transitions: [],
   };
 
-  state = {
-    selectedOption: this.props.content.review_state
-      ? getWorkflowMapping(null, this.props.content.review_state)
-      : {},
-  };
-
   componentDidMount() {
     this.props.getWorkflow(this.props.pathname);
   }
@@ -230,11 +233,11 @@ class Workflow extends Component {
    */
   transition = (selectedOption) => {
     this.props.transitionWorkflow(flattenToAppURL(selectedOption.url));
-    this.setState({ selectedOption });
     toast.success(
       <Toast
         success
         title={this.props.intl.formatMessage(messages.messageUpdated)}
+        content=""
       />,
     );
   };
@@ -264,13 +267,15 @@ class Workflow extends Component {
       marginRight: '10px',
       display: 'inline-block',
       backgroundColor:
-        this.state.selectedOption.value === option.value ? option.color : null,
+        this.props.currentStateValue.value === option.value
+          ? option.color
+          : null,
       content: ' ',
       height: '10px',
       width: '10px',
       borderRadius: '50%',
       border:
-        this.state.selectedOption.value !== option.value
+        this.props.currentStateValue.value !== option.value
           ? `1px solid ${option.color}`
           : null,
     };
@@ -285,7 +290,6 @@ class Workflow extends Component {
   };
 
   render() {
-    const { selectedOption } = this.state;
     const { Placeholder } = this.props.reactSelect.components;
     const Select = this.props.reactSelect.default;
 
@@ -305,10 +309,10 @@ class Workflow extends Component {
           }
           options={uniqBy(
             this.props.transitions.map((transition) =>
-              getWorkflowMapping(transition['@id']),
+              getWorkflowOptions(transition),
             ),
             'label',
-          ).concat(selectedOption)}
+          ).concat(this.props.currentStateValue)}
           styles={customSelectStyles}
           theme={selectTheme}
           components={{
@@ -318,9 +322,9 @@ class Workflow extends Component {
             SingleValue,
           }}
           onChange={this.transition}
-          defaultValue={
+          value={
             this.props.content.review_state
-              ? selectedOption
+              ? this.props.currentStateValue
               : {
                   label: this.props.intl.formatMessage(
                     messages.messageNoWorkflow,
@@ -344,6 +348,7 @@ export default compose(
       content: state.content.data,
       history: state.workflow.history,
       transitions: state.workflow.transitions,
+      currentStateValue: getCurrentStateMapping(state.workflow.currentState),
     }),
     { getContent, getWorkflow, transitionWorkflow },
   ),

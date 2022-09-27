@@ -2,6 +2,7 @@ import React from 'react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { waitFor, render, screen } from '@testing-library/react';
+import config from '@plone/volto/registry';
 
 import Workflow from './Workflow';
 
@@ -13,10 +14,27 @@ beforeAll(
     await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
 );
 
+beforeEach(() => {
+  config.settings.workflowMapping = {
+    published: { value: 'published', color: '#007bc1' },
+    publish: { value: 'publish', color: '#007bc1' },
+    private: { value: 'private', color: '#ed4033' },
+    pending: { value: 'pending', color: '#f6a808' },
+    send_back: { value: 'private', color: '#ed4033' },
+    retract: { value: 'private', color: '#ed4033' },
+    submit: { value: 'review', color: '#f4e037' },
+  };
+});
+
 describe('Workflow', () => {
   it('renders an empty workflow component', async () => {
     const store = mockStore({
-      workflow: { history: [], transition: { loaded: true }, transitions: [] },
+      workflow: {
+        currentState: { id: 'published', title: 'Published' },
+        history: [],
+        transition: { loaded: true },
+        transitions: [],
+      },
       intl: {
         locale: 'en',
         messages: {},
@@ -28,13 +46,14 @@ describe('Workflow', () => {
         <Workflow pathname="/test" />
       </Provider>,
     );
-    await waitFor(() => screen.getByText(/Public/));
+    await waitFor(() => screen.getByText(/Published/));
     expect(container).toMatchSnapshot();
   });
 
   it('renders a workflow component', async () => {
     const store = mockStore({
       workflow: {
+        currentState: { id: 'private', title: 'Private' },
         history: [{ review_state: 'private' }],
         transition: { loaded: true },
         transitions: [{ '@id': 'http://publish', title: 'Publish' }],

@@ -141,7 +141,7 @@ exports[`Workflow renders an empty workflow component 1`] = `
                   <span
                     style="margin-right: 10px; display: inline-block; background-color: rgb(0, 123, 193); height: 10px; width: 10px; border-radius: 50%;"
                   />
-                  Public
+                  Published
                 </div>
                 <input
                   aria-autocomplete="list"

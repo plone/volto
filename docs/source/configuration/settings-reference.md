@@ -11,12 +11,13 @@ myst:
 
 This is a summary of all the configuration options and what they control.
 
-
 ```{note}
 This list is still incomplete, contributions are welcomed!
 ```
 
 ## Main settings
+
+They are exposed in `config.settings`:
 
 ```{glossary}
 :sorted:
@@ -225,6 +226,71 @@ controlpanels
     ```
 
     The group can be one of the default groups 'General', 'Content', 'Security', 'Add-on Configuration', 'Users and Groups' or a custom group.
+
+workflowMapping
+    It's an object that defines the mapping between workflow states/transitions and the color that should show in the change Workflow dropdown. This is the default:
+
+    ```js
+    export const workflowMapping = {
+      published: { value: 'published', color: '#007bc1' },
+      publish: { value: 'publish', color: '#007bc1' },
+      private: { value: 'private', color: '#ed4033' },
+      pending: { value: 'pending', color: '#f6a808' },
+      send_back: { value: 'private', color: '#ed4033' },
+      retract: { value: 'private', color: '#ed4033' },
+      reject: { value: 'private', color: '#ed4033' },
+      submit: { value: 'review', color: '#f4e037' },
+    };
+    ```
+
+    It's meant to be extended with your own workflows/transitions.
+    It is recommended to assign the same color to the transition as the destination state, so the user can have the visual hint to which state are they transitioning to.
+```
+
+## Views settings
+
+They are exposed in `config.views`:
+
+```{glossary}
+:sorted:
+
+layoutViewsNamesMapping
+    Plone's layout views are identified by a simple string. This object maps this string with a nice literal (in English as default).
+    These view names are exposed in the `Display` component in the toolbar's {guilabel}`more` menu.
+    The keys are the name of the Plone layout, and the values are the i18n string `id`:
+
+    ```js
+    export const layoutViewsNamesMapping = {
+      album_view: 'Album view',
+      event_listing: 'Event listing',
+      full_view: 'All content',
+      listing_view: 'Listing view',
+      summary_view: 'Summary view',
+      tabular_view: 'Tabular view',
+      layout_view: 'Mosaic layout',
+      document_view: 'Document view',
+      folder_listing: 'Folder listing',
+      newsitem_view: 'News item view',
+      link_redirect_view: 'Link redirect view',
+      file_view: 'File view',
+      image_view: 'Image view',
+      event_view: 'Event view',
+      view: 'Default view',
+    };
+    ```
+
+    You can customize this object to add or modify the existing entries.
+    They are i18n aware, so you can add the corresponding i18n message in your project's `src/config.js` or your add-on's `src/index.js`:
+
+    ```js
+    import { defineMessages } from 'react-intl';
+    defineMessages({
+      album_view: {
+        id: 'Album view',
+        defaultMessage: 'Album view',
+      },
+    })
+    ```
 ```
 
 ## Server-specific serverConfig
