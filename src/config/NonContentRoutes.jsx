@@ -6,6 +6,7 @@ import config from '@plone/volto/registry';
 export const nonContentRoutes = [
   /\?.*$/,
   /\/add$/,
+  '/aliases',
   '/contents',
   '/delete',
   '/diff',

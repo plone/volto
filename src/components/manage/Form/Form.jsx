@@ -74,6 +74,7 @@ class Form extends Component {
     onCancel: PropTypes.func,
     submitLabel: PropTypes.string,
     resetAfterSubmit: PropTypes.bool,
+    resetOnCancel: PropTypes.bool,
     isEditForm: PropTypes.bool,
     isAdminForm: PropTypes.bool,
     title: PropTypes.string,
@@ -105,6 +106,7 @@ class Form extends Component {
     onCancel: null,
     submitLabel: null,
     resetAfterSubmit: false,
+    resetOnCancel: false,
     isEditForm: false,
     isAdminForm: false,
     title: null,
@@ -399,7 +401,7 @@ class Form extends Component {
     if (event) {
       event.preventDefault();
     }
-    if (this.props.resetAfterSubmit) {
+    if (this.props.resetOnCancel || this.props.resetAfterSubmit) {
       this.setState({
         formData: this.props.formData,
       });

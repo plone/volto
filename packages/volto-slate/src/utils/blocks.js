@@ -110,6 +110,13 @@ export function createDefaultBlock(children) {
   };
 }
 
+export function createBlock(type, children) {
+  return {
+    type,
+    children: children || [{ text: '' }],
+  };
+}
+
 export function createEmptyParagraph() {
   // TODO: rename to createEmptyBlock
   return {
@@ -205,7 +212,6 @@ export const toggleBlock = (editor, format, allowedChildren) => {
   const isListItem = isBlockActive(editor, slate.listItemType);
   const isActive = isBlockActive(editor, format);
   const wantsList = listTypes.includes(format);
-  // console.log({ isListItem, isActive, wantsList, format });
 
   if (isListItem && !wantsList) {
     toggleFormatAsListItem(editor, format);
@@ -216,7 +222,7 @@ export const toggleBlock = (editor, format, allowedChildren) => {
   } else if (!isListItem && !wantsList) {
     toggleFormat(editor, format, allowedChildren);
   } else if (isListItem && wantsList && isActive) {
-    toggleFormatAsListItem(editor, slate.defaultBlockType);
+    clearFormatting(editor);
   } else {
     console.warn('toggleBlock case not covered, please examine:', {
       wantsList,
@@ -316,4 +322,16 @@ export const getAllBlocks = (properties, blocks) => {
     });
   }
   return blocks;
+};
+
+export const clearFormatting = (editor) => {
+  const { slate } = config.settings;
+  Transforms.setNodes(editor, {
+    type: slate.defaultBlockType,
+  });
+  Transforms.unwrapNodes(editor, {
+    match: (n) => n.type && n.type !== slate.defaultBlockType,
+    mode: 'all',
+    split: false,
+  });
 };

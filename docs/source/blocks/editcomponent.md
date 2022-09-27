@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "The edit component part of a block anatomy is specially different to the view component because they have to support the UX for editing the block."
-  "property=og:description": "The edit component part of a block anatomy is specially different to the view component because they have to support the UX for editing the block."
-  "property=og:title": "Blocks - Edit components"
-  "keywords": "Volto, Plone, frontend, React, Blocks, Edit, components"
+myst:
+  html_meta:
+    "description": "The edit component part of a block anatomy is specially different to the view component because they have to support the UX for editing the block."
+    "property=og:description": "The edit component part of a block anatomy is specially different to the view component because they have to support the UX for editing the block."
+    "property=og:title": "Blocks - Edit components"
+    "keywords": "Volto, Plone, frontend, React, Blocks, Edit, components"
 ---
 
 # Blocks - Edit components

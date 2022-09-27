@@ -3,6 +3,7 @@ import config from '@plone/volto/registry';
 
 import boldIcon from '@plone/volto/icons/bold.svg';
 import codeIcon from '@plone/volto/icons/code.svg';
+import formatClearIcon from '@plone/volto/icons/format-clear.svg';
 import headingIcon from '@plone/volto/icons/heading.svg';
 import italicIcon from '@plone/volto/icons/italic.svg';
 import listBulletIcon from '@plone/volto/icons/list-bullet.svg';
@@ -20,6 +21,7 @@ import {
   MarkButton,
   MarkElementButton,
   BlockButton,
+  ClearFormattingButton,
   Separator,
   Expando,
 } from './ui';
@@ -121,6 +123,9 @@ export const buttons = {
       {...props}
     />
   ),
+  clearformatting: (props) => (
+    <ClearFormattingButton title="Clear formatting" icon={formatClearIcon} />
+  ),
   'numbered-list': (props) => (
     <BlockButton
       title="Numbered list"
@@ -145,6 +150,8 @@ export const defaultToolbarButtons = [
   'heading-two',
   'heading-three',
   'heading-four',
+  'separator',
+  'clearformatting',
   'separator',
   'sub',
   'sup',
@@ -328,3 +335,6 @@ export const runtimeDecorators = [highlightSelection]; // , highlightByType
 
 // Only these types of element nodes are allowed in the headlines
 export const allowedHeadlineElements = ['em', 'i'];
+
+// Scroll into view when typing
+export const scrollIntoView = true;
