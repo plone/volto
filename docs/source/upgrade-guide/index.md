@@ -128,7 +128,7 @@ Version 16 is recommended.
 
 ### Upgraded to Razzle 4
 
-```{versionadded} 16.0.0-alpha.36
+```{versionadded} 16.0.0-alpha.38
 Volto has upgraded from Razzle 3 to Razzle 4. You should perform these steps in case you are upgrading to this version or above.
 ```
 
@@ -158,7 +158,7 @@ A few updates may be needed in existing projects:
 #### Upgrade and update add-ons dependency on `@plone/scripts`
 
 Most probably you are using `@plone/scripts` in your add-on, since it's used in i18n messageid generation and has other add-on utilities.
-When upgrading to Volto 16.0.0-alpha.36 or above, you should upgrade `@plone/scripts` to a version 2.0.0 or above.
+When upgrading to Volto 16.0.0-alpha.38 or above, you should upgrade `@plone/scripts` to a version 2.0.0 or above.
 It's also recommended you move it from `dependencies` to `devDependencies`.
 
 ```diff
