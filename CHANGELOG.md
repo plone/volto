@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Fix storybook build for Razzle 4 @sneridagh
+
 ### Documentation
 
 ## 16.0.0-alpha.38 (2022-09-27)
