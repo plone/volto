@@ -4,7 +4,7 @@ This package is a library of scripts that are useful to automate certain tasks w
 
 ## i18n
 
-It scans and detects i18n messages from the code and add them to the i18n machinery.
+It scans and detects i18n messages from the code and adds them to the i18n machinery.
 
 See https://6.dev-docs.plone.org/volto/recipes/i18n.html for more information.
 
