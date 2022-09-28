@@ -8,7 +8,7 @@ It scans and detects i18n messages from the code and add them to the i18n machin
 
 See https://6.dev-docs.plone.org/volto/recipes/i18n.html for more information.
 
-This script is installed in the `.bin` directory and can be called via `yarn i18n` or directly in the `scripts` `package.json` part.
+This script is installed in the `node_modules/.bin` directory and can be called via `yarn i18n` or directly in the `scripts` `package.json` part.
 
 ## changelogupdater
 
@@ -71,6 +71,7 @@ Given the add-on remote git repository, it pulls and configures it into the vani
 
 `npx -p @plone/scripts addon clone [options] <source> [destination]`
 
+```console
     Usage: addon clone [options] <source> [destination]
 
     clone a repository into a newly created directory
@@ -80,6 +81,7 @@ Given the add-on remote git repository, it pulls and configures it into the vani
       -b, --branch <branch>  set the repo branch, defaults to main
       -c, --canary           downloads latest Volto canary (alpha) version
       -h, --help             display help for command
+```
 
 This next command downloads the `volto-blocks-grid` add-on from its git repository's `main` branch, and will generate a project with the latest Volto canary (alpha) version.
 
@@ -118,9 +120,11 @@ It should be run at the root of the add-on, and it gets an optional `source` arg
 
 `npx -p @plone/scripts addon consolidate --help`
 
+```console
     Usage: addon consolidate [options] [source]
 
     Consolidate a cloned project
 
     Options:
       -h, --help  display help for command
+```
