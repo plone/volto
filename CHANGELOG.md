@@ -2,10 +2,6 @@
 
 ## 16.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fix call to `@plone/scripts/i18n` (now a commonJS module) @sneridagh
@@ -14,8 +10,6 @@
 
 - Fix storybook build for Razzle 4 @sneridagh
 - Update `@plone/scripts` to 2.1.1 @sneridagh
-
-### Documentation
 
 ## 16.0.0-alpha.38 (2022-09-27)
 
