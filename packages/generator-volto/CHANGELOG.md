@@ -2,8 +2,6 @@
 
 ## 5.8.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Move the dependency on `@plone/scripts` of the add-on generator to `devDependencies`. @sneridagh
@@ -13,8 +11,6 @@
 - Add alias to ESlint config in project generator @sneridagh
 - Add missing `moduleNameMapper`s to default app `package.json` jest config @sneridagh
 - Fix storybook for Razzle 4 @sneridagh
-
-### Internal
 
 ## 5.8.0 (2022-07-28)
 
