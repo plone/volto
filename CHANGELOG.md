@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix history page error for unauthenticated @reebalazs
+
 ### Internal
 
 ### Documentation
