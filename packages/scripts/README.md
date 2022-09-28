@@ -49,9 +49,7 @@ The project is configured to have the current add-on installed and ready to work
 This script is useful to bootstrap an isolated environment that can be used to quickly develop the add-on or for demo purposes.
 It's also useful when testing an add-on in a CI environment.
 
-```{note}
-It's quite similar when you develop a Plone backend add-on in the Python side, and embed a ready to use Plone build (using buildout or pip) in order to develop and test the package.
-```
+**Note:** It's quite similar when you develop a Plone backend add-on in the Python side, and embed a ready to use Plone build (using buildout or pip) in order to develop and test the package.
 
 Unfortunately, the NodeJS tooling does not work well with symlinks or outside the root of the project.
 This script proceeds in the following way:
