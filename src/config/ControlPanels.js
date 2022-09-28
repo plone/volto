@@ -16,6 +16,7 @@ import userSVG from '@plone/volto/icons/user.svg';
 import addonSVG from '@plone/volto/icons/add-on.svg';
 import settingsSVG from '@plone/volto/icons/settings.svg';
 import undoControlPanelSVG from '@plone/volto/icons/undo-control-panel.svg';
+import linkSVG from '@plone/volto/icons/link.svg';
 
 export const controlPanelsIcons = {
   default: settingsSVG,
@@ -36,4 +37,5 @@ export const controlPanelsIcons = {
   groups: groupSVG,
   addons: addonSVG,
   undo: undoControlPanelSVG,
+  aliases: linkSVG,
 };

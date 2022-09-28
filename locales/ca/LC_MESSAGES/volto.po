@@ -59,6 +59,8 @@ msgstr "Accions"
 msgid "Activate and deactivate"
 msgstr "Activar i desactivar"
 
+#: components/manage/Aliases/Aliases
+#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
@@ -96,6 +98,11 @@ msgstr "Afegeix usuari"
 # defaultMessage: Add a description…
 msgid "Add a description…"
 msgstr "Afegeix una descripció"
+
+#: components/manage/Aliases/Aliases
+# defaultMessage: Add a new alternative url
+msgid "Add a new alternative url"
+msgstr ""
 
 #: components/manage/BlockChooser/BlockChooserButton
 # defaultMessage: Add block
@@ -192,6 +199,22 @@ msgstr "Configuració de complements"
 msgid "Additional date"
 msgstr "Data addicional"
 
+#: config/Views
+# defaultMessage: Album view
+msgid "Album view"
+msgstr "Album"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Alias
+msgid "Alias"
+msgstr ""
+
+#: components/manage/Aliases/Aliases
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Alias has been added
+msgid "Alias has been added"
+msgstr ""
+
 #: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -205,6 +228,16 @@ msgstr "Posicionament"
 # defaultMessage: All
 msgid "All"
 msgstr "Tots"
+
+#: config/Views
+# defaultMessage: All content
+msgid "All content"
+msgstr "Tot el contingut"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: All existing alternative urls for this site
+msgid "All existing alternative urls for this site"
+msgstr ""
 
 #: components/theme/Search/Search
 # defaultMessage: Alphabetically
@@ -227,6 +260,22 @@ msgstr "Deixeu el camp buit si la imatge és purament decorativa"
 # defaultMessage: Describe the purpose of the image.
 msgid "Alt text hint link text"
 msgstr "Descriu el propòsit de la imatge"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Alternative url path (Required)
+msgid "Alternative url path (Required)"
+msgstr ""
+
+#: components/manage/Aliases/Aliases
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Alternative url path must start with a slash.
+msgid "Alternative url path must start with a slash."
+msgstr ""
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Alternative url path → target url path (date and time of creation, manually created yes/no)
+msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
+msgstr ""
 
 #: components/manage/Toolbar/More
 # defaultMessage: Apply working copy
@@ -254,8 +303,10 @@ msgstr "Ascendent"
 msgid "Available"
 msgstr "Disponible"
 
+#: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypes
@@ -659,6 +710,7 @@ msgstr "Mida de la base de dades"
 msgid "Database main"
 msgstr "Base de dades principal"
 
+#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Widgets/DatetimeWidget
 # defaultMessage: Date
@@ -689,6 +741,11 @@ msgstr "Data (el més nou primer)"
 #: components/theme/Register/Register
 # defaultMessage: Default
 msgid "Default"
+msgstr "Per defecte"
+
+#: config/Views
+# defaultMessage: Default view
+msgid "Default view"
 msgstr "Per defecte"
 
 #: components/manage/Contents/Contents
@@ -807,6 +864,11 @@ msgstr "Realment voleu suprimir aquest element?"
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Document
 msgid "Document"
+msgstr "Document"
+
+#: config/Views
+# defaultMessage: Document view
+msgid "Document view"
 msgstr "Document"
 
 #: components/theme/EventDetails/EventDetails
@@ -943,6 +1005,17 @@ msgstr "Introduïu el nom complet, per exemple John Smith."
 msgid "Enter map Embed Code"
 msgstr "Introduïu el codi d'inserció del mapa"
 
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target.
+msgid "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
+msgstr ""
+
+#: components/manage/Aliases/Aliases
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring.
+msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 # defaultMessage: Enter your current password.
 msgid "Enter your current password."
@@ -977,6 +1050,21 @@ msgstr ""
 msgid "Error"
 msgstr "Error"
 
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Error
+msgid "ErrorHeader"
+msgstr ""
+
+#: config/Views
+# defaultMessage: Event listing
+msgid "Event listing"
+msgstr "Llista d'esdeveniments"
+
+#: config/Views
+# defaultMessage: Event view
+msgid "Event view"
+msgstr "Esdeveniment"
+
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Exclude from navigation
 msgid "Exclude from navigation"
@@ -991,6 +1079,11 @@ msgstr "Exclou aquesta ocurrència"
 # defaultMessage: Excluded from navigation
 msgid "Excluded from navigation"
 msgstr "Exclòs de la navegació"
+
+#: components/manage/Aliases/Aliases
+# defaultMessage: Existing alternative urls for this item
+msgid "Existing alternative urls for this item"
+msgstr ""
 
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Expand sidebar
@@ -1067,10 +1160,20 @@ msgstr "Dossier"
 msgid "File size"
 msgstr "Mida de l'arxiu"
 
+#: config/Views
+# defaultMessage: File view
+msgid "File view"
+msgstr "Arxiu"
+
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Filename
 msgid "Filename"
 msgstr "Nom de l'arxiu"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Filter by prefix
+msgid "Filter by prefix"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Filter users by groups
@@ -1101,6 +1204,11 @@ msgstr "Plegar"
 # defaultMessage: Folder
 msgid "Folder"
 msgstr "Carpeta"
+
+#: config/Views
+# defaultMessage: Folder listing
+msgid "Folder listing"
+msgstr "Llistat"
 
 #: components/theme/Forbidden/Forbidden
 # defaultMessage: Forbidden
@@ -1289,6 +1397,11 @@ msgstr "Galeria d'imatges"
 # defaultMessage: Image size
 msgid "Image size"
 msgstr ""
+
+#: config/Views
+# defaultMessage: Image view
+msgid "Image view"
+msgstr "Imatge"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Include this occurence
@@ -1492,6 +1605,11 @@ msgstr "Enllaç"
 msgid "Link more"
 msgstr "Enllaça més"
 
+#: config/Views
+# defaultMessage: Link redirect view
+msgid "Link redirect view"
+msgstr "Redirecció d'enllaç"
+
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link Title
@@ -1515,6 +1633,11 @@ msgstr "Traducció d'enllaços per"
 # defaultMessage: Listing
 msgid "Listing"
 msgstr "llistat"
+
+#: config/Views
+# defaultMessage: Listing view
+msgid "Listing view"
+msgstr "Llistat"
 
 #: components/theme/Comments/Comments
 # defaultMessage: Load more...
@@ -1582,6 +1705,16 @@ msgstr "Gestionar les traduccions"
 # defaultMessage: Manage translations for {title}
 msgid "Manage translations for {title}"
 msgstr "Gestiona les traduccions per a {title}"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Manual
+msgid "Manual"
+msgstr ""
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Manually or automatically added?
+msgid "Manually or automatically added?"
+msgstr ""
 
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Maps/schema
@@ -1655,6 +1788,11 @@ msgstr "Mensual"
 msgid "More"
 msgstr "Més"
 
+#: config/Views
+# defaultMessage: Mosaic layout
+msgid "Mosaic layout"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Move to bottom of folder
 msgid "Move to bottom of folder"
@@ -1706,6 +1844,11 @@ msgstr "Nova contrasenya"
 # defaultMessage: News Item
 msgid "News Item"
 msgstr "Noticia"
+
+#: config/Views
+# defaultMessage: News item view
+msgid "News item view"
+msgstr "Notícia"
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Contents/ContentsPropertiesModal
@@ -1787,6 +1930,7 @@ msgstr "No s'ha establert cap ocurrència"
 msgid "No options"
 msgstr "Sense opcions"
 
+#: components/manage/BlockChooser/BlockChooser
 #: components/theme/Search/Search
 # defaultMessage: No results found
 msgid "No results found"
@@ -2122,6 +2266,11 @@ msgstr "Formulari d'inscripció"
 msgid "Relevance"
 msgstr "Pertinència"
 
+#: components/manage/Aliases/Aliases
+# defaultMessage: Remove
+msgid "Remove"
+msgstr ""
+
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item
 msgid "Remove item"
@@ -2131,6 +2280,11 @@ msgstr "Elimina l'element"
 # defaultMessage: Remove
 msgid "Remove recurrence"
 msgstr "Elimina"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Remove selected
+msgid "Remove selected"
+msgstr ""
 
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Remove term
@@ -2290,6 +2444,7 @@ msgstr "Esquema"
 msgid "Schema updates"
 msgstr "Actualitzacions d'esquemes"
 
+#: components/manage/BlockChooser/BlockChooserSearch
 #: components/manage/Blocks/Search/components/SearchInput
 #: components/manage/Blocks/Search/layout/LeftColumnFacets
 #: components/manage/Blocks/Search/layout/RightColumnFacets
@@ -2372,6 +2527,7 @@ msgstr "Segon"
 msgid "Section title"
 msgstr "Títol de la secció"
 
+#: components/manage/Controlpanels/Aliases
 #: components/manage/Sidebar/ObjectBrowserNav
 # defaultMessage: Select
 msgid "Select"
@@ -2464,6 +2620,7 @@ msgstr "Nom curt"
 msgid "Short name"
 msgstr "Nom curt"
 
+#: components/manage/Controlpanels/Aliases
 #: components/theme/Pagination/Pagination
 # defaultMessage: Show
 msgid "Show"
@@ -2663,7 +2820,9 @@ msgid "Subject"
 msgstr "Assumpte"
 
 #: components/manage/Actions/Actions
+#: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/UndoControlpanel
@@ -2687,6 +2846,11 @@ msgstr ""
 msgid "Summary"
 msgstr "Resum"
 
+#: config/Views
+# defaultMessage: Summary view
+msgid "Summary view"
+msgstr "Sumari"
+
 #: components/theme/LanguageSelector/LanguageSelector
 # defaultMessage: Switch to
 msgid "Switch to"
@@ -2702,6 +2866,11 @@ msgstr "Taula"
 # defaultMessage: Table of Contents
 msgid "Table of Contents"
 msgstr "Taula de continguts"
+
+#: config/Views
+# defaultMessage: Tabular view
+msgid "Tabular view"
+msgstr "Taula"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsTagsModal
@@ -2719,6 +2888,16 @@ msgstr "Etiquetes per afegir"
 msgid "Tags to remove"
 msgstr "Etiquetes per eliminar"
 
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Target
+msgid "Target"
+msgstr ""
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Target Path (Required)
+msgid "Target Path (Required)"
+msgstr ""
+
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Target memory size per cache in bytes
 msgid "Target memory size per cache in bytes"
@@ -2728,6 +2907,11 @@ msgstr "Mida de memòria objectiu per memòria cau en bytes"
 # defaultMessage: Target number of objects in memory per cache
 msgid "Target number of objects in memory per cache"
 msgstr "Nombre objectiu d'objectes a la memòria per memòria cau"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Target url path must start with a slash.
+msgid "Target url path must start with a slash."
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Text
@@ -2787,6 +2971,11 @@ msgstr "No s'ha pogut suprimir l'element."
 # defaultMessage: The link address is:
 msgid "The link address is:"
 msgstr "L'adreça de l'enllaç és:"
+
+#: components/manage/Aliases/Aliases
+# defaultMessage: The provided alternative url already exists!
+msgid "The provided alternative url already exists!"
+msgstr ""
 
 #: components/theme/Register/Register
 # defaultMessage: The registration process has been successful. Please check your e-mail inbox for information on how activate your account.
@@ -2970,6 +3159,19 @@ msgstr "Escriu el títol…"
 msgid "UID"
 msgstr "UID"
 
+#: components/manage/Aliases/Aliases
+#: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Toolbar/More
+# defaultMessage: URL Management
+msgid "URL Management"
+msgstr ""
+
+#: components/manage/Aliases/Aliases
+# defaultMessage: URL Management for {title}
+msgid "URL Management for {title}"
+msgstr ""
+
 #: components/theme/Unauthorized/Unauthorized
 # defaultMessage: Unauthorized
 msgid "Unauthorized"
@@ -3127,6 +3329,11 @@ msgstr "usuaris"
 # defaultMessage: Users and Groups
 msgid "Users and Groups"
 msgstr "Usuaris i Grups"
+
+#: components/manage/Aliases/Aliases
+# defaultMessage: Using this form, you can manage alternative urls for an item. This is an easy way to make an item available under two different URLs.
+msgid "Using this form, you can manage alternative urls for an item. This is an easy way to make an item available under two different URLs."
+msgstr ""
 
 #: helpers/Extensions/withBlockSchemaEnhancer
 # defaultMessage: Variation

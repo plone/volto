@@ -82,6 +82,10 @@ const messages = defineMessages({
     id: 'Undo',
     defaultMessage: 'Undo',
   },
+  urlmanagement: {
+    id: 'URL Management',
+    defaultMessage: 'URL Management',
+  },
 });
 
 /**
@@ -181,6 +185,11 @@ class Controlpanels extends Component {
           '@id': '/undo',
           group: this.props.intl.formatMessage(messages.general),
           title: this.props.intl.formatMessage(messages.undo),
+        },
+        {
+          '@id': '/aliases',
+          group: this.props.intl.formatMessage(messages.general),
+          title: this.props.intl.formatMessage(messages.urlmanagement),
         },
         {
           '@id': '/moderate-comments',
