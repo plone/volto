@@ -1,4 +1,4 @@
-import { flatten, isEqual, isObject, transform } from 'lodash';
+import { cloneDeepWith, flatten, isEqual, isObject, transform } from 'lodash';
 import React from 'react';
 import { matchPath } from 'react-router';
 import config from '@plone/volto/registry';
@@ -109,6 +109,7 @@ const safeColors = [
   'Teal',
 ];
 const namedColors = {};
+
 /**
  * Will generate initials from string
  * @param {string} name
@@ -158,11 +159,12 @@ export const parseDateTime = (locale, value, format, moment) => {
 
   if (value) {
     // check if datetime has timezone, otherwise assumes it's UTC
-    datetime = value.match(/T(.)*(-|\+|Z)/g)
-      ? // Since we assume UTC everywhere, then transform to local (momentjs default)
-        moment(value)
-      : // This might happen in old Plone versions dates
-        moment(`${value}Z`);
+    datetime =
+      !value.match(/T/) || value.match(/T(.)*(-|\+|Z)/g)
+        ? // Since we assume UTC everywhere, then transform to local (momentjs default)
+          moment(value)
+        : // This might happen in old Plone versions dates
+          moment(`${value}Z`);
   }
 
   if (format && datetime) {
@@ -172,15 +174,34 @@ export const parseDateTime = (locale, value, format, moment) => {
 };
 
 /**
- * Normalizes a language to match the i18n format from the Plone lang names
- * @param {string} language Language to be normalized
- * @returns {string} Language normalized
+ * Converts a language code to the format `lang_region`
+ * Useful for passing from Plone's i18n lang names to Xnix locale names
+ * eg. LC_MESSAGES/lang_region.po filenames
+ * @param {string} language Language to be converted
+ * @returns {string} Language converted
  */
 export const normalizeLanguageName = (language) => {
   if (language.includes('-')) {
     let normalizedLang = language.split('-');
     normalizedLang = `${normalizedLang[0]}_${normalizedLang[1].toUpperCase()}`;
     return normalizedLang;
+  }
+
+  return language;
+};
+
+/**
+ * Converts a language code to the format `lang-region`
+ * `react-intl` only supports this syntax, so coming from the language
+ * negotiation of the `locale` lib, one need to convert it first
+ * @param {string} language Language to be converted
+ * @returns {string} Language converted
+ */
+export const toLangUnderscoreRegion = (language) => {
+  if (language.includes('_')) {
+    let langCode = language.split('_');
+    langCode = `${langCode[0]}-${langCode[1].toUpperCase()}`;
+    return langCode;
   }
 
   return language;
@@ -197,4 +218,82 @@ export const hasApiExpander = (expander, path = '', type = 'GET_CONTENT') => {
       .filter((expand) => matchPath(path, expand.match) && expand[type])
       .map((expand) => expand[type]),
   ).includes(expander);
+};
+
+/**
+ * Insert element into array at a give index
+ * @param {Array} array Array with data
+ * @param {*} element Element to be inserted
+ * @param {number} index Index of item to be inserted at
+ * @returns {Array} Array with inserted element
+ */
+export const insertInArray = (array, element, index) => [
+  ...array.slice(0, index),
+  element,
+  ...array.slice(index),
+];
+
+/**
+ * Replace element in array at a give index
+ * @param {Array} array Array with data
+ * @param {*} element Element to be replaced
+ * @param {number} index Index of item to be replaced at
+ * @returns {Array} Array with replaced element
+ */
+export const replaceItemOfArray = (array, index, value) =>
+  Object.assign([...array], { [index]: value });
+
+/**
+ * Remove item from array at given index
+ * @param {Array} array Array with data
+ * @param {number} index Index of item to be removed
+ * @returns {Array} Array without deleted element
+ */
+export const removeFromArray = (array, index) => {
+  let newArray = array.slice();
+  newArray.splice(index, 1);
+  return newArray;
+};
+
+/**
+ * Reorder array
+ * @param {Array} array Array with data
+ * @param {number} origin Index of item to be reordered
+ * @param {number} target Index of item to be reordered to
+ * @returns {Array} Array with reordered elements
+ */
+export const reorderArray = (array, origin, target) => {
+  const result = Array.from(array);
+  const [removed] = result.splice(origin, 1);
+  result.splice(target, 0, removed);
+
+  return result;
+};
+
+/**
+ * Slugify a string: remove whitespaces, special chars and replace with _
+ * @param {string} string String to be slugified
+ * @returns {string} Slugified string
+ */
+export const slugify = (string) => {
+  return string
+    .toLowerCase()
+    .replace(/[\s-]+/g, '_')
+    .replace(/[^\w]+/g, '');
+};
+
+/**
+ * cloneDeep an object with support for JSX nodes on it
+ * Somehow, in a browser it fails with a "Illegal invocation" error
+ * but in node (Jest test) it doesn't. This does the trick.
+ * @param {object} object object to be cloned
+ * @returns {object} deep cloned object
+ */
+export const cloneDeepSchema = (object) => {
+  return cloneDeepWith(object, (value) => {
+    if (React.isValidElement(value)) {
+      // If a JSX valid element, just return it, do not try to deep clone it
+      return value;
+    }
+  });
 };

@@ -11,6 +11,7 @@ import config from '@plone/volto/registry';
 import { SearchBlockViewComponent } from './SearchBlockView';
 import Schema from './schema';
 import { withSearch, withQueryString } from './hocs';
+import { cloneDeep } from 'lodash';
 
 const messages = defineMessages({
   template: {
@@ -40,6 +41,17 @@ const SearchBlockEdit = (props) => {
     intl,
     title: { id: intl.formatMessage(messages.template) },
   });
+  const listingVariations = config.blocks.blocksConfig?.listing?.variations;
+  let activeItem = listingVariations.find(
+    (item) => item.id === data.listingBodyTemplate,
+  );
+  const listingSchemaEnhancer = activeItem?.schemaEnhancer;
+  if (listingSchemaEnhancer)
+    schema = listingSchemaEnhancer({
+      schema: cloneDeep(schema),
+      data,
+      intl,
+    });
   schema.properties.sortOnOptions.items = {
     choices: Object.keys(sortable_indexes).map((k) => [
       k,

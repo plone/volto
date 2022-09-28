@@ -2,9 +2,9 @@ import '@plone/volto/config'; // This is the bootstrap for the global config - c
 import React from 'react';
 import { StaticRouter } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
-import enMessages from '~/../locales/en.json';
+import enMessages from '@root/../locales/en.json';
 
-import '~/theme';
+import '@root/theme';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },

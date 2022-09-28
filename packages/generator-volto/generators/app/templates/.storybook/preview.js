@@ -1,23 +1,20 @@
-// import '@plone/volto/config'; // This is the bootstrap for the global config - client side
-
-import '~/config'; // This is the bootstrap for the global config - client side
+import '@plone/volto/config'; // This is the bootstrap for the global config - client side
 import React from 'react';
 import { StaticRouter } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
-import enMessages from '~/../locales/en.json';
+import enMessages from '@root/../locales/en.json';
 
-import '~/theme';
+import '@root/theme';
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
+  actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     matchers: {
       color: /(background|color)$/i,
       date: /Date$/,
     },
   },
-}
-
+};
 
 export const decorators = [
   (Story) => (

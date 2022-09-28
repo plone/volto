@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+myst:
+  html_meta:
+    "description": "Code linting in Volto"
+    "property=og:description": "Code linting in Volto"
+    "property=og:title": "Linting"
+    "keywords": "Volto, Plone, frontend, React, lint"
 ---
 
 # Linting

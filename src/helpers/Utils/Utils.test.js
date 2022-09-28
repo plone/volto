@@ -1,15 +1,22 @@
+import React from 'react';
 import config from '@plone/volto/registry';
 import {
   applyConfig,
   difference,
   getColor,
   getInitials,
-  safeWrapper,
-  normalizeLanguageName,
   hasApiExpander,
+  normalizeLanguageName,
   parseDateTime,
+  removeFromArray,
+  reorderArray,
+  replaceItemOfArray,
+  safeWrapper,
+  slugify,
+  cloneDeepSchema,
 } from './Utils';
 import moment from 'moment';
+import deepFreeze from 'deep-freeze';
 
 describe('Utils tests', () => {
   describe('difference', () => {
@@ -343,6 +350,117 @@ describe('Utils tests', () => {
       expect(
         parseDateTime('de', isoDate, undefined, moment).toISOString(),
       ).toBe(`${isoDate}Z`);
+    });
+    it('Parses the Date only', () => {
+      const isoDate = '2022-01-16';
+      expect(
+        parseDateTime('de', isoDate, undefined, moment).format('YYYY-MM-DD'),
+      ).toBe(isoDate);
+    });
+  });
+
+  describe('replaceItemOfArray', () => {
+    it('replaces the position of an element into an array immutable-ish', () => {
+      const array = ['a', 'b', 'c'];
+      deepFreeze(array);
+      const result = replaceItemOfArray(array, 2, 'v');
+      expect(result).toEqual(['a', 'b', 'v']);
+    });
+  });
+
+  describe('removeFromArray', () => {
+    it('removes an element from the array immutable-ish', () => {
+      const array = ['a', 'b', 'c'];
+      deepFreeze(array);
+      const result = removeFromArray(array, 2);
+      expect(result).toEqual(['a', 'b']);
+    });
+  });
+
+  describe('reorderArray', () => {
+    it('reorders an array immutable-ish', () => {
+      const array = ['a', 'b', 'c'];
+      deepFreeze(array);
+      const result = reorderArray(array, 2, 0);
+      expect(result).toEqual(['c', 'a', 'b']);
+    });
+  });
+
+  describe('slugify', () => {
+    it('slugifies a standard string', () => {
+      expect(slugify('Content Type')).toBe('content_type');
+    });
+    it('slugifies a standard string with several whitespaces', () => {
+      expect(slugify('This is a test')).toBe('this_is_a_test');
+    });
+    it('slugifies a standard string with strange chars', () => {
+      expect(slugify('This is a test?')).toBe('this_is_a_test');
+    });
+    it('slugifies a standard string with dashes', () => {
+      expect(slugify('This is a-test')).toBe('this_is_a_test');
+    });
+  });
+
+  describe('cloneDeepSchema', () => {
+    it('clone an object with JSX on it', () => {
+      const schema = {
+        fieldsets: [
+          {
+            id: 'default',
+            title: 'Default',
+            fields: ['url', 'alt'],
+          },
+        ],
+        properties: {
+          url: {
+            title: 'url',
+            widget: 'url',
+          },
+          alt: {
+            title: 'alt',
+            description: (
+              <>
+                <a
+                  href="https://www.w3.org/WAI/tutorials/images/decision-tree/"
+                  title=""
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Alt text
+                </a>{' '}
+                Alt hint
+              </>
+            ),
+          },
+        },
+        required: [],
+      };
+
+      expect(cloneDeepSchema(schema)).toStrictEqual({
+        fieldsets: [
+          { fields: ['url', 'alt'], id: 'default', title: 'Default' },
+        ],
+        properties: {
+          alt: {
+            description: (
+              <React.Fragment>
+                <a
+                  href="https://www.w3.org/WAI/tutorials/images/decision-tree/"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  title=""
+                >
+                  Alt text
+                </a>{' '}
+                Alt hint
+              </React.Fragment>
+            ),
+            title: 'alt',
+          },
+          url: { title: 'url', widget: 'url' },
+        },
+        required: [],
+      });
     });
   });
 });

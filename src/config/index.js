@@ -9,6 +9,7 @@ import {
   contentTypesViews,
   defaultView,
   errorViews,
+  layoutViewsNamesMapping,
 } from './Views';
 import { nonContentRoutes } from './NonContentRoutes';
 import {
@@ -18,15 +19,18 @@ import {
   initialBlocks,
   initialBlocksFocus,
 } from './Blocks';
+import { components } from './Components';
 import { loadables } from './Loadables';
+import { workflowMapping } from './Workflows';
 
 import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
 import { controlPanelsIcons } from './ControlPanels';
 
 import { richtextEditorSettings, richtextViewSettings } from './RichTextEditor';
+import applySlateConfiguration from '@plone/volto-slate';
 
-import applyAddonConfiguration from 'load-volto-addons';
+import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
 
 import ConfigRegistry from '@plone/volto/registry';
 
@@ -90,13 +94,13 @@ let config = {
     legacyTraverse: process.env.RAZZLE_LEGACY_TRAVERSE || false,
     cookieExpires: 15552000, //in seconds. Default is 6 month (15552000)
     nonContentRoutes,
-    richtextEditorSettings,
-    richtextViewSettings,
+    richtextEditorSettings, // Part of draftjs support, to be removed
+    richtextViewSettings, // Part of draftjs support, to be removed
     imageObjects: ['Image'],
     reservedIds: ['login', 'layout', 'plone', 'zip', 'properties'],
     downloadableObjects: ['File'], //list of content-types for which the direct download of the file will be carried out if the user is not authenticated
+    viewableInBrowserObjects: [], //ex: ['File']. List of content-types for which the file will be displayed in browser if the user is not authenticated
     listingPreviewImageField: 'image', // deprecated from Volto 14 onwards
-    customStyleMap: null,
     notSupportedBrowsers: ['ie'],
     defaultPageSize: 25,
     isMultilingual: false,
@@ -104,8 +108,9 @@ let config = {
     defaultLanguage: 'en',
     navDepth: 1,
     expressMiddleware: serverConfig.expressMiddleware, // BBB
-    defaultBlockType: 'text',
+    defaultBlockType: 'slate',
     verticalFormTabs: false,
+    useEmailAsLogin: false,
     persistentReducers: ['blocksClipboard'],
     initialReducersBlacklist: [], // reducers in this list won't be hydrated in windows.__data
     asyncPropsExtenders: [], // per route asyncConnect customizers
@@ -139,6 +144,7 @@ let config = {
     serverConfig,
     storeExtenders: [],
     showTags: true,
+    controlpanels: [],
     controlPanelsIcons,
     externalRoutes: [
       // URL to be considered as external
@@ -157,6 +163,8 @@ let config = {
     contentMetadataTagsImageField: 'image',
     hasWorkingCopySupport: false,
     maxUndoLevels: 200, // undo history size for the main form
+    addonsInfo: addonsInfo,
+    workflowMapping,
   },
   widgets: {
     ...widgetMapping,
@@ -167,6 +175,7 @@ let config = {
     contentTypesViews,
     defaultView,
     errorViews,
+    layoutViewsNamesMapping,
   },
   blocks: {
     requiredBlocks,
@@ -178,9 +187,8 @@ let config = {
   },
   addonRoutes: [],
   addonReducers: {},
+  components,
 };
-
-config = applyAddonConfiguration(config);
 
 ConfigRegistry.settings = config.settings;
 ConfigRegistry.blocks = config.blocks;
@@ -190,3 +198,5 @@ ConfigRegistry.addonRoutes = config.addonRoutes;
 ConfigRegistry.addonReducers = config.addonReducers;
 ConfigRegistry.appExtras = config.appExtras;
 ConfigRegistry.components = config.components;
+
+applyAddonConfiguration(applySlateConfiguration(ConfigRegistry));

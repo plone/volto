@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.4.2 (unreleased)
+## 2.0.1 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,26 @@
 ### Bugfix
 
 ### Internal
+
+## 2.0.0 (2022-09-27)
+
+### Breaking
+
+- Removed `Razzle` as dependency, leave only the `babel-preset-razzle` one which is enough.
+
+  See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+
+## 1.6.0 (2022-08-05)
+
+### Feature
+
+- Add support for recommended structure `frontend` folder using `CHANGELOG.md` in the parent folder. @sneridagh
+
+## 1.5.0 (2022-07-28)
+
+### Feature
+
+- Add `--canary` option to use latest alpha in generator @sneridagh
 
 ## 1.4.1 (2022-02-24)
 

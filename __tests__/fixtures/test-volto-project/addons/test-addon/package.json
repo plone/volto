@@ -1,5 +1,6 @@
 {
   "name": "test-addon",
+  "version": "0.0.0",
   "customizationPaths": [
     "src/custom-addons"
   ],

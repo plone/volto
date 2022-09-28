@@ -71,6 +71,12 @@ Array [
 ]
 `;
 
+exports[`Field renders a widget with the image object browser 1`] = `
+<div
+  className="ObjectBrowserWidget"
+/>
+`;
+
 exports[`Field renders an \`array\` type field 1`] = `
 <div
   className="ArrayWidget"

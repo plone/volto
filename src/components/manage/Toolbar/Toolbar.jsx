@@ -29,7 +29,7 @@ import {
   unlockContent,
 } from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
-import { BodyClass, getBaseUrl } from '@plone/volto/helpers';
+import { BodyClass, getBaseUrl, getCookieOptions } from '@plone/volto/helpers';
 import { Pluggable } from '@plone/volto/components/manage/Pluggable';
 
 import penSVG from '@plone/volto/icons/pen.svg';
@@ -38,6 +38,7 @@ import folderSVG from '@plone/volto/icons/folder.svg';
 import addSVG from '@plone/volto/icons/add-document.svg';
 import moreSVG from '@plone/volto/icons/more.svg';
 import userSVG from '@plone/volto/icons/user.svg';
+import backSVG from '@plone/volto/icons/back.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
@@ -231,12 +232,7 @@ class Toolbar extends Component {
 
   handleShrink = () => {
     const { cookies } = this.props;
-    cookies.set('toolbar_expanded', !this.state.expanded, {
-      expires: new Date(
-        new Date().getTime() + config.settings.cookieExpires * 1000,
-      ),
-      path: '/',
-    });
+    cookies.set('toolbar_expanded', !this.state.expanded, getCookieOptions());
     this.setState(
       (state) => ({ expanded: !state.expanded }),
       () => this.props.setExpandedToolbar(this.state.expanded),
@@ -277,10 +273,18 @@ class Toolbar extends Component {
         showMenu: !state.showMenu,
         menuStyle: { bottom: 0 },
       }));
+    } else if (selector === 'more') {
+      this.setState((state) => ({
+        showMenu: !state.showMenu,
+        menuStyle: {
+          overflow: 'visible',
+          top: 0,
+        },
+      }));
     } else {
       this.setState((state) => ({
         showMenu: !state.showMenu,
-        menuStyle: { top: 0, overflow: 'initial' },
+        menuStyle: { top: 0 },
       }));
     }
     this.loadComponent(selector);
@@ -472,8 +476,8 @@ class Toolbar extends Component {
                           )}
                         >
                           <Icon
-                            name={clearSVG}
-                            className="contents circled"
+                            name={backSVG}
+                            className="circled"
                             size="30px"
                             title={this.props.intl.formatMessage(messages.back)}
                           />

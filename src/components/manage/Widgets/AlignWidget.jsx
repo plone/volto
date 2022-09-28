@@ -1,6 +1,3 @@
-import React from 'react';
-import { injectIntl } from 'react-intl';
-
 import { FormFieldWrapper } from '@plone/volto/components';
 import AlignBlock from '@plone/volto/components/manage/Sidebar/AlignBlock';
 
@@ -19,7 +16,7 @@ import AlignBlock from '@plone/volto/components/manage/Sidebar/AlignBlock';
  * ```
  */
 const AlignWidget = (props) => {
-  const { id, onChange, value } = props;
+  const { id, onChange, value, actions } = props;
   return (
     <FormFieldWrapper {...props} className="align-widget">
       <AlignBlock
@@ -27,9 +24,10 @@ const AlignWidget = (props) => {
         onChangeBlock={(block, { align }) => onChange(id, align)}
         data={{ align: value }}
         block={id}
+        actions={actions}
       />
     </FormFieldWrapper>
   );
 };
 
-export default injectIntl(AlignWidget);
+export default AlignWidget;

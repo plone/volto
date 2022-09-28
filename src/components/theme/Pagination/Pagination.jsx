@@ -128,7 +128,9 @@ Pagination.propTypes = {
   /**
    * Page sizes to choose from
    */
-  pageSizes: PropTypes.arrayOf(PropTypes.number),
+  pageSizes: PropTypes.arrayOf(
+    PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  ),
   /**
    * Handler called when changing the page
    */

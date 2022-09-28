@@ -81,6 +81,7 @@ class SelectAutoComplete extends Component {
     onChange: PropTypes.func.isRequired,
     wrapped: PropTypes.bool,
     isDisabled: PropTypes.bool,
+    placeholder: PropTypes.string,
   };
 
   /**
@@ -120,7 +121,7 @@ class SelectAutoComplete extends Component {
   }
 
   componentDidMount() {
-    const { id, intl, value, choices } = this.props;
+    const { id, lang, value, choices } = this.props;
     if (value && value?.length > 0) {
       const tokensQuery = convertValueToVocabQuery(
         normalizeValue(choices, value, this.props.intl),
@@ -128,7 +129,7 @@ class SelectAutoComplete extends Component {
 
       this.props.getVocabularyTokenTitle({
         vocabNameOrURL: this.props.vocabBaseUrl,
-        subrequest: `widget-${id}-${intl.locale}`,
+        subrequest: `widget-${id}-${lang}`,
         ...tokensQuery,
       });
     }
@@ -189,7 +190,7 @@ class SelectAutoComplete extends Component {
       vocabNameOrURL: this.props.vocabBaseUrl,
       query,
       size: -1,
-      subrequest: this.props.intl.locale,
+      subrequest: this.props.lang,
     });
 
     return normalizeChoices(resp.items || [], this.props.intl);
@@ -240,7 +241,10 @@ class SelectAutoComplete extends Component {
             Option,
           }}
           value={selectedOption || []}
-          placeholder={this.props.intl.formatMessage(messages.select)}
+          placeholder={
+            this.props.placeholder ??
+            this.props.intl.formatMessage(messages.select)
+          }
           onChange={this.handleChange}
           isMulti
         />
@@ -263,19 +267,20 @@ export default compose(
 
       const vocabState =
         state.vocabularies?.[vocabBaseUrl]?.subrequests?.[
-          `widget-${props.id}-${props.intl.locale}`
+          `widget-${props.id}-${state.intl.locale}`
         ]?.items;
 
       // If the schema already has the choices in it, then do not try to get
       // the vocab, even if there is one
       return props.items?.choices
-        ? { choices: props.items.choices }
+        ? { choices: props.items.choices, lang: state.intl.locale }
         : vocabState
         ? {
             choices: vocabState,
             vocabBaseUrl,
+            lang: state.intl.locale,
           }
-        : { vocabBaseUrl };
+        : { vocabBaseUrl, lang: state.intl.locale };
     },
     { getVocabulary, getVocabularyTokenTitle },
   ),

@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Volto Style Guide"
-  "property=og:description": "Volto Style Guide"
-  "property=og:title": "Style Guide"
-  "keywords": "Volto, Plone, frontend, React, Style, Guide, Design, Quanta, Pastanaga"
+myst:
+  html_meta:
+    "description": "Volto Style Guide"
+    "property=og:description": "Volto Style Guide"
+    "property=og:title": "Style Guide"
+    "keywords": "Volto, Plone, frontend, React, Style, Guide, Design, Quanta, Pastanaga"
 ---
 
 # Style Guide
@@ -26,7 +27,7 @@ Volto adopted some time ago [Storybook](https://storybook.js.org), a tool that i
 
 Not all Volto's visual components are covered yet in Storybook, but it has already a good foundation.
 
-You can find the current Storybook build in: https://docs.voltocms.com/storybook
+You can find the current Storybook build in: https://6.dev-docs.plone.org/storybook
 
 ## Quanta, the design system for Plone 6
 

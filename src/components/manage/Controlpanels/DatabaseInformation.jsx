@@ -21,6 +21,10 @@ const messages = defineMessages({
     id: 'Back',
     defaultMessage: 'Back',
   },
+  databaseInformation: {
+    id: 'Database Information',
+    defaultMessage: 'Database Information',
+  },
 });
 
 /**
@@ -67,7 +71,9 @@ class DatabaseInformation extends Component {
   render() {
     return this.props.databaseInformation ? (
       <Container id="database-page" className="controlpanel-database">
-        <Helmet title="DatabaseInformation" />
+        <Helmet
+          title={this.props.intl.formatMessage(messages.databaseInformation)}
+        />
         <Segment.Group raised>
           <Segment className="primary">
             <FormattedMessage

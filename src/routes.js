@@ -5,6 +5,7 @@
 import {
   Add,
   AddonsControlpanel,
+  Aliases,
   ChangePassword,
   ContactForm,
   Contents,
@@ -31,7 +32,9 @@ import {
   Search,
   Sharing,
   Sitemap,
+  AliasesControlpanel,
   UsersControlpanel,
+  UserGroupMembershipControlPanel,
   GroupsControlpanel,
   PersonalInformation,
 } from '@plone/volto/components';
@@ -70,14 +73,14 @@ export const multilingualRoutes = [
     component: Register,
   },
   {
-    path: `/(${config.settings?.supportedLanguages.join('|')})/password-reset`,
+    path: `/(${config.settings?.supportedLanguages.join('|')})/passwordreset`,
     component: RequestPasswordReset,
     exact: true,
   },
   {
     path: `/(${config.settings?.supportedLanguages.join(
       '|',
-    )})/password-reset/:token`,
+    )})/passwordreset/:token`,
     component: PasswordReset,
     exact: true,
   },
@@ -139,12 +142,20 @@ export const defaultRoutes = [
     component: DatabaseInformation,
   },
   {
+    path: '/controlpanel/aliases',
+    component: AliasesControlpanel,
+  },
+  {
     path: '/controlpanel/moderate-comments',
     component: ModerateComments,
   },
   {
     path: '/controlpanel/users',
     component: UsersControlpanel,
+  },
+  {
+    path: '/controlpanel/usergroupmembership',
+    component: UserGroupMembershipControlPanel,
   },
   {
     path: '/controlpanel/groups',
@@ -191,6 +202,10 @@ export const defaultRoutes = [
     component: Sharing,
   },
   {
+    path: '/**/aliases',
+    component: Aliases,
+  },
+  {
     path: '/**/delete',
     component: Delete,
   },
@@ -207,10 +222,6 @@ export const defaultRoutes = [
     component: History,
   },
   {
-    path: '/**/sharing',
-    component: Sharing,
-  },
-  {
     path: '/**/manage-translations',
     component: ManageTranslations,
   },
@@ -223,12 +234,12 @@ export const defaultRoutes = [
     component: Register,
   },
   {
-    path: '/password-reset',
+    path: '/passwordreset',
     component: RequestPasswordReset,
     exact: true,
   },
   {
-    path: '/password-reset/:token',
+    path: '/passwordreset/:token',
     component: PasswordReset,
     exact: true,
   },

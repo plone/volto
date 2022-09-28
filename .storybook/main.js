@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const fs = require('fs');
 const path = require('path');
 const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
 const fileLoaderFinder = makeLoaderFinder('file-loader');
@@ -83,7 +84,15 @@ module.exports = {
       },
     };
 
-    // console.dir(resultConfig, { depth: null });
+    // Addons have to be loaded with babel
+    const addonPaths = registry.addonNames.map((addon) =>
+      fs.realpathSync(registry.packages[addon].modulePath),
+    );
+    resultConfig.module.rules[1].exclude = (input) =>
+      // exclude every input from node_modules except from @plone/volto
+      /node_modules\/(?!(@plone\/volto)\/)/.test(input) &&
+      // If input is in an addon, DON'T exclude it
+      !addonPaths.some((p) => input.includes(p));
 
     return resultConfig;
   },

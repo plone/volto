@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+myst:
+  html_meta:
+    "description": "How to improve initial page load performance of above-the-fold content with critical.css."
+    "property=og:description": "How to improve initial page load performance of above-the-fold content with critical.css."
+    "property=og:title": "critical.css (above the fold) optimizations"
+    "keywords": "Volto, Plone, frontend, React, critical.css, optimizations"
 ---
 
 # critical.css (above the fold) optimizations
@@ -37,7 +38,7 @@ critical-cli https://example.com/ -o critical.css
 
 You can pass multiple URLs and screen dimmensions and the extracted CSS will be
 optimized (duplicate rules will be eliminated, etc). See the [Advanced preset
-of cssnano](https://cssnano.co/docs/optimisations) for details. One last
+of cssnano](https://cssnano.co/docs/what-are-optimisations/) for details. One last
 optimization applied strips all `@import` declarations from the generated CSS.
 
 After that, copy this file to the `public/critical.css` path (configurable
@@ -45,7 +46,7 @@ through `settings.serverConfig.criticalCssPath`). When this file exists, Volto
 changes the way the CSS files are loaded. By default, the CSS is loaded with
 two elements in the `<head>`:
 
-```
+```html
 <link rel="preload" href="static/1234.chunk.css" as="style"/>
 <link rel="stylesheet" href="1234.chunk.css" />
 ```

@@ -39,7 +39,7 @@ const Facets = (props) => {
           const index = querystring.indexes[field] || {};
           const { values = {} } = index;
 
-          const choices = Object.keys(values)
+          let choices = Object.keys(values)
             .map((name) => ({
               value: name,
               label: values[name].title,
@@ -51,6 +51,10 @@ const Facets = (props) => {
                 ? query_to_values[field].includes(value)
                 : true,
             );
+
+          choices = choices.sort((a, b) =>
+            a.label.localeCompare(b.label, 'en', { sensitivity: 'base' }),
+          );
 
           const isMulti = facetSettings.multiple;
           const selectedValue = facets[facetSettings?.field?.value];

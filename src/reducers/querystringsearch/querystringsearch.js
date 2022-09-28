@@ -35,6 +35,8 @@ export default function querystringsearch(state = initialState, action = {}) {
                   total: 0,
                   batching: {},
                 }),
+                items: [],
+                total: 0,
                 error: null,
                 loaded: false,
                 loading: true,

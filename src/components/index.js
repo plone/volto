@@ -27,6 +27,7 @@ export LanguageSelector from '@plone/volto/components/theme/LanguageSelector/Lan
 export RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
 export SkipLinks from '@plone/volto/components/theme/SkipLinks/SkipLinks';
 export EventDetails from '@plone/volto/components/theme/EventDetails/EventDetails';
+export PreviewImage from '@plone/volto/components/theme/PreviewImage/PreviewImage';
 
 export Error from '@plone/volto/components/theme/Error/Error';
 export NotFound from '@plone/volto/components/theme/NotFound/NotFound';
@@ -78,12 +79,14 @@ export Circle from '@plone/volto/components/manage/Contents/circle';
 export DatabaseInformation from '@plone/volto/components/manage/Controlpanels/DatabaseInformation';
 export Controlpanel from '@plone/volto/components/manage/Controlpanels/Controlpanel';
 export Controlpanels from '@plone/volto/components/manage/Controlpanels/Controlpanels';
+export AliasesControlpanel from '@plone/volto/components/manage/Controlpanels/Aliases';
 export ContentTypes from '@plone/volto/components/manage/Controlpanels/ContentTypes';
 export ContentType from '@plone/volto/components/manage/Controlpanels/ContentType';
 export ContentTypeLayout from '@plone/volto/components/manage/Controlpanels/ContentTypeLayout';
 export ContentTypeSchema from '@plone/volto/components/manage/Controlpanels/ContentTypeSchema';
 export ContentTypesActions from '@plone/volto/components/manage/Controlpanels/ContentTypesActions';
 export UsersControlpanel from '@plone/volto/components/manage/Controlpanels/Users/UsersControlpanel';
+export UserGroupMembershipControlPanel from '@plone/volto/components/manage/Controlpanels/Users/UserGroupMembershipControlPanel';
 export GroupsControlpanel from '@plone/volto/components/manage/Controlpanels/Groups/GroupsControlpanel';
 export ModerateComments from '@plone/volto/components/manage/Controlpanels/ModerateComments';
 export VersionOverview from '@plone/volto/components/manage/Controlpanels/VersionOverview';
@@ -94,6 +97,8 @@ export Edit from '@plone/volto/components/manage/Edit/Edit';
 export ModalForm from '@plone/volto/components/manage/Form/ModalForm';
 export History from '@plone/volto/components/manage/History/History';
 export Sharing from '@plone/volto/components/manage/Sharing/Sharing';
+export Aliases from '@plone/volto/components/manage/Aliases/Aliases';
+
 export Workflow from '@plone/volto/components/manage/Workflow/Workflow';
 export Messages from '@plone/volto/components/manage/Messages/Messages';
 export BlockChooser from '@plone/volto/components/manage/BlockChooser/BlockChooser';
@@ -195,12 +200,14 @@ export Style from '@plone/volto/components/manage/Blocks/Block/Style';
 export BlockSettingsSidebar from '@plone/volto/components/manage/Blocks/Block/Settings';
 export BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Schema';
 export TextSettingsSchema from '@plone/volto/components/manage/Blocks/Text/Schema';
-export ImageSettingsSchema from '@plone/volto/components/manage/Blocks/Image/Schema';
+export ImageSettingsSchema from '@plone/volto/components/manage/Blocks/Image/LayoutSchema';
 export ToCSettingsSchema from '@plone/volto/components/manage/Blocks/ToC/Schema';
 
 export MaybeWrap from '@plone/volto/components/manage/MaybeWrap/MaybeWrap';
 export ContentMetadataTags from '@plone/volto/components/theme/ContentMetadataTags/ContentMetadataTags';
 export FormattedDate from '@plone/volto/components/theme/FormattedDate/FormattedDate';
 export FormattedRelativeDate from '@plone/volto/components/theme/FormattedDate/FormattedRelativeDate';
+export Popup from '@plone/volto/components/theme/Popup/Popup';
+export Component from '@plone/volto/components/theme/Component/Component';
 
 export App from '@plone/volto/components/theme/App/App';

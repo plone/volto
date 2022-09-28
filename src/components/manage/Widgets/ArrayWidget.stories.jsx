@@ -154,7 +154,7 @@ ManyOptions500.args = {
 };
 
 export default {
-  title: 'Widgets/Array',
+  title: 'Edit Widgets/Array',
   component: ArrayWidgetComponent,
   decorators: [
     (Story) => (

@@ -59,7 +59,6 @@ extensions = [
     "sphinx.ext.intersphinx",
     "sphinx.ext.todo",
     "sphinx_copybutton",
-    "sphinx_sitemap",
     "sphinxcontrib.spelling",
     "sphinxext.opengraph",
 ]
@@ -85,9 +84,19 @@ linkcheck_ignore = [
     r"http://127.0.0.1",
     r"https://www.linode.com/",
     r"https://github.com/plone/documentation/issues/new/choose",  # requires auth
+    # Ignore specific anchors
+    r"https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors#Identifying_the_issue",
+    r"https://github.com/browserslist/browserslist#queries",
+    r"https://github.com/nodejs/release#release-schedule",
+    r"https://github.com/plone/plone.docker#for-basic-usage",
+    r"https://github.com/plone/plone.rest#cors",
+    r"https://github.com/plone/plone.volto/blob/6f5382c74f668935527e962490b81cb72bf3bc94/src/kitconcept/volto/upgrades.py#L6-L54",
+    r"https://github.com/plone/volto/issues/new/choose",
+    r"https://github.com/tc39/proposals/blob/HEAD/finished-proposals.md#finished-proposals",
 ]
-linkcheck_anchors = False
+linkcheck_anchors = True
 linkcheck_timeout = 10
+linkcheck_retries = 2
 
 # This is our wordlist with known words, like Github or Plone ...
 spelling_word_list_filename = "spelling_wordlist.txt"
@@ -157,7 +166,7 @@ graphviz_output_format = "svg"
 
 # -- OpenGraph configuration ----------------------------------
 
-ogp_site_url = "https://training.plone.org/5/"
+ogp_site_url = "https://6.dev-docs.plone.org/"
 ogp_description_length = 200
 ogp_image = "https://docs.plone.org/_static/Plone_logo_square.png"
 ogp_site_name = "Plone Documentation"
@@ -218,9 +227,6 @@ html_title = "%(project)s v%(release)s" % {"project": project, "release": releas
 
 # If false, no index is generated.
 html_use_index = True
-
-# Used by sphinx_sitemap to generate a sitemap
-html_baseurl = "https://docs.voltocms.com/"
 
 # -- Options for HTML help output -------------------------------------------------
 

@@ -1,20 +1,19 @@
 ---
-html_meta:
-  "description": "Volto add-ons extend the core functionality of the Plone CMS frontend."
-  "property=og:description": "Volto add-ons extend the core functionality of the Plone CMS frontend."
-  "property=og:title": "Volto add-ons"
-  "keywords": "Volto, add-on, extensions, frontend, Plone"
+myst:
+  html_meta:
+    "description": "Volto add-ons extend the core functionality of the Plone CMS frontend."
+    "property=og:description": "Volto add-ons extend the core functionality of the Plone CMS frontend."
+    "property=og:title": "Volto add-ons"
+    "keywords": "Volto, add-on, extensions, frontend, Plone"
 ---
 
 # Volto add-ons
 
 ```{toctree}
-:maxdepth: 3
-:hidden: true
+:maxdepth: 1
 
 i18n
 best-practices
-
 ```
 
 There are several advanced scenarios where we might want to have more control
@@ -52,13 +51,13 @@ An addon can be almost anything that a Volto project can be. They can:
 
 You can install a Volto addon just like any other JS package:
 
-```
+```shell
 yarn add name-of-addon
 ```
 
 If the addon is not published on NPM, you can retrieve it directly from Github:
 
-```
+```shell
 yarn add collective/volto-dropdownmenu
 ```
 
@@ -137,7 +136,7 @@ export blocks = {
 
 As this is a common operation, Volto provides a helper method for this:
 
-```
+```js
 import { applyConfig } from '@plone/volto/helpers';
 import * as voltoConfig from '@plone/volto/config';
 
@@ -340,14 +339,14 @@ root](https://classic.yarnpkg.com/en/docs/workspaces/).
 
 So you'll need to add, in your Volto project's `package.json`:
 
-```
+```json
 "private": true,
 "workspaces": [],
 ```
 
 Then populate the `workspaces` key with the path to your development addons:
 
-```
+```json
 "workspaces": [
   "src/addons/my-volto-addon"
 ]
@@ -355,7 +354,7 @@ Then populate the `workspaces` key with the path to your development addons:
 You'll have to manage the addon dependencies via the workspace root (your Volto
 project). For example, to add a new dependency:
 
-```
+```shell
 yarn workspace @plone/my-volto-addon add some-third-party-package
 ```
 
@@ -364,7 +363,7 @@ You can run `yarn workspaces info` to see a list of workspaces defined.
 In case you want to add new dependencies to the Volto project, now you'll have
 to run the `yarn add` command with the `-W` switch:
 
-```
+```shell
 yarn add -W some-dependency
 ```
 
@@ -376,7 +375,7 @@ addon root folder. An example of such file where the theme.config alias is
 changed, to enable a custom Semantic theme inside the addon:
 
 
-```
+```js
 const analyzerPlugin = {
   name: 'bundle-analyzer',
   options: {
