@@ -2,16 +2,10 @@
 
 ## 2.0.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - New `clone` to local command @sneridagh
 - New `consolidate` command @sneridagh
-
-### Bugfix
-
-### Internal
 
 ## 2.0.0 (2022-09-27)
 
