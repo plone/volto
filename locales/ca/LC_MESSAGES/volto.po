@@ -3409,11 +3409,6 @@ msgstr "No podeu enganxar aquest contingut aquí"
 msgid "Your email is required for reset your password."
 msgstr ""
 
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Your location - either city and country - or in a company setting, where your office is located.
-msgid "Your location - either city and country - or in a company setting, where your office is located."
-msgstr "La vostra ubicació (ciutat i país) o en un entorn d'empresa, on es troba la vostra oficina."
-
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Your password has been set successfully. You may now {link} with your new password.
 msgid "Your password has been set successfully. You may now {link} with your new password."
