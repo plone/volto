@@ -95,7 +95,7 @@ export async function runGitGenerator({
       `Preparing and amending testing project ${chalk.yellow('package.json')}`,
     ),
   );
-  amendPackageJSON(name, destination);
+  amendPackageJSON(name, destination, isCanary);
 }
 
 export async function runLocalGenerator({
@@ -189,5 +189,5 @@ export async function runLocalGenerator({
       `Preparing and amending testing project ${chalk.yellow('package.json')}`,
     ),
   );
-  amendPackageJSON(name, destination);
+  amendPackageJSON(name, destination, isCanary);
 }

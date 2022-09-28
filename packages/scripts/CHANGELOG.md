@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix if `canary` selected, the tests should not include `--env=jest-environment-jsdom-sixteen` @sneridagh
+
 ### Internal
 
 ## 2.1.0 (2022-09-28)
