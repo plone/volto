@@ -128,7 +128,7 @@ Version 16 is recommended.
 
 ### Upgraded to Razzle 4
 
-```{versionadded} 16.0.0-alpha.36
+```{versionadded} 16.0.0-alpha.38
 Volto has upgraded from Razzle 3 to Razzle 4. You should perform these steps in case you are upgrading to this version or above.
 ```
 
@@ -152,13 +152,32 @@ A few updates may be needed in existing projects:
 }
 ```
 
-4. If you use custom Razzle plugins, update them to use the new format with multiple functions: https://razzlejs.org/docs/upgrade-guide#plugins (the old format still works, but is deprecated).
-5. If you have customized webpack loader configuration related to CSS, make sure it is updated to be compatible with PostCSS 8.
+4. Add `--noninteractive` option to the build script
+
+```diff
+-    "build": "razzle build",
++    "build": "razzle build --noninteractive",
+```
+
+5. If you use custom Razzle plugins, update them to use the new format with multiple functions: https://razzlejs.org/docs/upgrade-guide#plugins (the old format still works, but is deprecated).
+6. If you have customized webpack loader configuration related to CSS, make sure it is updated to be compatible with PostCSS 8.
+7. It's recommended that you remove your existing `node_modules` and start clean.
+8. If the add-ons you are using are not yet updated to latest `@plone/scripts`, it's also recommended that you force the version in your build, setting this in `package.json`:
+
+```json
+  "resolutions": {
+    "**/@plone/scripts": "^2.0.0"
+  }
+```
 
 #### Upgrade and update add-ons dependency on `@plone/scripts`
 
+```{warning}
+This applies only to Volto add-ons.
+```
+
 Most probably you are using `@plone/scripts` in your add-on, since it's used in i18n messageid generation and has other add-on utilities.
-When upgrading to Volto 16.0.0-alpha.36 or above, you should upgrade `@plone/scripts` to a version 2.0.0 or above.
+When upgrading to Volto 16.0.0-alpha.38 or above, you should upgrade `@plone/scripts` to a version 2.0.0 or above.
 It's also recommended you move it from `dependencies` to `devDependencies`.
 
 ```diff
