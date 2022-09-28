@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Run yarn deduplicate on dependencies. @davisagli
+
 ### Documentation
 
 ## 16.0.0-alpha.39 (2022-09-28)
