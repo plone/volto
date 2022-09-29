@@ -166,6 +166,13 @@ function setupServer(req, res, next) {
     config.settings.publicURL = res.locals.detectedHost;
   }
 
+  if (!process.env.RAZZLE_INTERNAL_API_PATH && req.headers['x-internal-host']) {
+    res.locals.detectedInternalHost = `${
+      req.headers['x-forwarded-proto'] || req.protocol
+    }://${req.headers['x-internal-host']}`;
+    config.settings.internalApiPath = res.locals.detectedInternalHost;
+  }
+
   res.locals = {
     ...res.locals,
     store,
