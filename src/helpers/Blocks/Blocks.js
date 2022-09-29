@@ -473,13 +473,13 @@ export const getBlockInitialDataDefaults = (schema) => ({
 });
 
 /**
- * Determines if given a block, it is reseteable (the block is dirty)
+ * Determines if given a block, its data is dirty (the block can be reseted)
  *
- * @function isBlockResetable
+ * @function isBlockDirty
  * @param {Object} data The block data
- * @return {Boolean} Result if the block is reseteable (dirty) or not
+ * @return {Boolean} Result if the block is dirty or not
  */
-export const isBlockResetable = (data, blockProps) => {
+export const isBlockDirty = (data, blockProps) => {
   let schema = config.blocks.blocksConfig?.[data['@type']]?.blockSchema;
   if (typeof schema === 'function') {
     schema = schema(blockProps);

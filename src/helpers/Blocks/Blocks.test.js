@@ -18,7 +18,7 @@ import {
   applySchemaDefaults,
   buildStyleClassNamesFromData,
   getBlockInitialDataDefaults,
-  isBlockResetable,
+  isBlockDirty,
 } from './Blocks';
 
 import config from '@plone/volto/registry';
@@ -667,36 +667,36 @@ describe('Blocks', () => {
     });
   });
 
-  describe('isBlockResetable', () => {
-    it('isBlockResetable 1', () => {
-      expect(isBlockResetable({})).toEqual(false);
+  describe('isBlockDirty', () => {
+    it('isBlockDirty 1', () => {
+      expect(isBlockDirty({})).toEqual(false);
     });
-    it('isBlockResetable 2', () => {
+    it('isBlockDirty 2', () => {
       const item = {
         '@type': 'teaser',
         id: 'id',
         block: 'block',
       };
-      expect(isBlockResetable(item, {})).toEqual(false);
+      expect(isBlockDirty(item, {})).toEqual(false);
     });
-    it('isBlockResetable 3', () => {
+    it('isBlockDirty 3', () => {
       const item = {
         '@type': 'teaser',
         id: 'id',
         block: 'block',
         another: 'another field',
       };
-      expect(isBlockResetable(item, {})).toEqual(true);
+      expect(isBlockDirty(item, {})).toEqual(true);
     });
-    it('isBlockResetable schema', () => {
+    it('isBlockDirty schema', () => {
       const item = {
         '@type': 'enhancedBlockCase2',
         id: 'id',
         block: 'block',
       };
-      expect(isBlockResetable(item, {})).toEqual(false);
+      expect(isBlockDirty(item, {})).toEqual(false);
     });
-    it('isBlockResetable schema 2', () => {
+    it('isBlockDirty schema 2', () => {
       const item = {
         '@type': 'enhancedBlockCase2',
         id: 'id',
@@ -704,9 +704,9 @@ describe('Blocks', () => {
         title: '',
         description: '',
       };
-      expect(isBlockResetable(item, {})).toEqual(true);
+      expect(isBlockDirty(item, {})).toEqual(true);
     });
-    it('isBlockResetable schema 3', () => {
+    it('isBlockDirty schema 3', () => {
       const item = {
         '@type': 'enhancedBlockCase2',
         id: 'id',
@@ -714,9 +714,9 @@ describe('Blocks', () => {
         title: 'Default title',
         description: 'Default description',
       };
-      expect(isBlockResetable(item, {})).toEqual(false);
+      expect(isBlockDirty(item, {})).toEqual(false);
     });
-    it('isBlockResetable schema 3', () => {
+    it('isBlockDirty schema 3', () => {
       const item = {
         '@type': 'enhancedBlockCase2',
         id: 'id',
@@ -725,7 +725,7 @@ describe('Blocks', () => {
         description: 'Default description',
         another: 'field',
       };
-      expect(isBlockResetable(item, {})).toEqual(true);
+      expect(isBlockDirty(item, {})).toEqual(true);
     });
   });
 });
