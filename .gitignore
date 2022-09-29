@@ -20,6 +20,7 @@ build
 !.yarn/versions
 
 # Other
+/cache
 .DS_Store
 .idea
 lighthouse-report.html
@@ -77,3 +78,4 @@ public/critical.css
 
 # Sphinx and MyST
 docs/_build/
+/.python-version

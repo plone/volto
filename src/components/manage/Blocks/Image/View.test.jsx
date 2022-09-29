@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
-import View from './View';
+import { View } from './View';
 
 const mockStore = configureStore();
 
@@ -26,7 +26,9 @@ describe('Image View Component', () => {
     const { container, getByRole } = render(
       <Provider store={store}>
         <MemoryRouter>
-          <View data={{ url: '/image.jpg', href: '/front-page' }} />
+          <View
+            data={{ url: '/image.jpg', href: [{ '@id': '/front-page' }] }}
+          />
         </MemoryRouter>
       </Provider>,
     );
@@ -50,7 +52,7 @@ describe('Image View Component', () => {
         <View
           data={{
             url: 'https://plone.org/logo.jpg',
-            href: 'http://front-page',
+            href: [{ '@id': 'http://front-page' }],
           }}
         />
       </Provider>,

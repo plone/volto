@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 /**
  *
@@ -17,7 +17,7 @@ class ScrollToTop extends React.Component {
   static propTypes = {
     location: PropTypes.shape({
       pathname: PropTypes.string,
-    }).isRequired,
+    }),
     children: PropTypes.node.isRequired,
   };
 
@@ -27,7 +27,7 @@ class ScrollToTop extends React.Component {
    * @memberof ScrollToTop
    */
   componentDidUpdate(prevProps) {
-    if (this.props.location.pathname !== prevProps.location.pathname) {
+    if (this.props.location?.pathname !== prevProps.location?.pathname) {
       window.scrollTo(0, 0);
     }
   }
@@ -41,4 +41,9 @@ class ScrollToTop extends React.Component {
   }
 }
 
-export default withRouter(ScrollToTop);
+export default connect(
+  (state, props) => ({
+    location: state.loadProtector.location,
+  }),
+  {},
+)(ScrollToTop);

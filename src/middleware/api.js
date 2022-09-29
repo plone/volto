@@ -188,7 +188,12 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
         }
         if (type === GET_CONTENT) {
           const lang = result?.language?.token;
-          if (lang && getState().intl.language !== lang && !subrequest) {
+          if (
+            lang &&
+            getState().intl.language !== lang &&
+            !subrequest &&
+            config.settings.supportedLanguages.includes(lang)
+          ) {
             const langFileName = normalizeLanguageName(lang);
             import('~/../locales/' + langFileName + '.json').then((locale) => {
               dispatch(changeLanguage(lang, locale.default));
@@ -266,6 +271,17 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
 
           // Redirect
           else if (error?.code === 301) {
+            next({
+              ...rest,
+              error,
+              statusCode: error.code,
+              connectionRefused: false,
+              type: SET_APIERROR,
+            });
+          }
+
+          // Redirect
+          else if (error?.code === 408) {
             next({
               ...rest,
               error,

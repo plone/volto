@@ -1,5 +1,7 @@
 describe('Blocks Tests', () => {
   beforeEach(() => {
+    cy.intercept('POST', '*').as('saveImage');
+    cy.intercept('GET', '/**/image.png/@@images/image').as('getImage');
     // given a logged in editor and a page in edit mode
     cy.visit('/');
     cy.autologin();
@@ -15,7 +17,6 @@ describe('Blocks Tests', () => {
     cy.waitForResourceToLoad('@types');
     cy.waitForResourceToLoad('my-page');
     cy.navigate('/my-page/edit');
-    cy.get(`.block.title [data-contents]`);
   });
 
   afterEach(() => {
@@ -25,7 +26,7 @@ describe('Blocks Tests', () => {
 
   it('Add image block', () => {
     // when I add an image block
-    cy.get('.block.inner.text .public-DraftEditor-content').click();
+    cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.image').contains('Image').click();
     cy.get('.block.image .ui.input input[type="text"]').type(
@@ -54,7 +55,7 @@ describe('Blocks Tests', () => {
   //   const block = 'image';
 
   //   // Add image Block
-  //   cy.get('.block.text [contenteditable]').click();
+  //   cy.getSlate().click();
   //   cy.get('button.block-add-button').click();
   //   cy.get('.blocks-chooser .title')
   //     .contains('media')
@@ -79,7 +80,7 @@ describe('Blocks Tests', () => {
   // NEW ADD IMAGE VIA DRAG AND DROP
   // it('Add image via drag and drop', () => {
   //   // when I add an image block via drag and drop
-  //   cy.get('.block.inner.text .public-DraftEditor-content').click();
+  //   cy.getSlate().click();
   //   cy.get('.ui.basic.icon.button.block-add-button').click();
   //   cy.get('.ui.basic.icon.button.image')
   //     .contains('Image')
@@ -99,7 +100,7 @@ describe('Blocks Tests', () => {
   // });
   it('Add image via upload', () => {
     // when I add an image block via upload
-    cy.get('.block.inner.text .public-DraftEditor-content').click();
+    cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.image').contains('Image').click();
 
@@ -109,6 +110,9 @@ describe('Blocks Tests', () => {
     });
     cy.waitForResourceToLoad('image.png/@@images/image');
     cy.get('#toolbar-save').click();
+
+    cy.wait('@saveImage');
+    cy.wait('@getImage');
 
     // then image src must be equal to image name
     cy.get('.block img')
@@ -128,7 +132,7 @@ describe('Blocks Tests', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/');
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-document').click();
-    cy.get('.block.inner.text .public-DraftEditor-content').click();
+    cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.image').contains('Image').click();
 
@@ -136,7 +140,10 @@ describe('Blocks Tests', () => {
       subjectType: 'input',
       encoding: 'utf8',
     });
-    cy.waitForResourceToLoad('image.png/@@images/image');
+
+    cy.wait('@saveImage');
+    cy.wait('@getImage');
+
     cy.get('.block img')
       .should('have.attr', 'src')
       .and('eq', '/image.png/@@images/image');
@@ -151,7 +158,9 @@ describe('Blocks Tests', () => {
 
   it('Create an image block and initially alt attr is empty', () => {
     // when I add an image block via upload
-    cy.get('.block.inner.text .public-DraftEditor-content').click();
+    cy.get('.content-area .slate-editor [contenteditable=true]', {
+      timeout: 10000,
+    }).click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.image').contains('Image').click();
 
@@ -159,7 +168,8 @@ describe('Blocks Tests', () => {
       subjectType: 'input',
       encoding: 'utf8',
     });
-    cy.waitForResourceToLoad('image.png/@@images/image');
+    cy.wait('@saveImage');
+    cy.wait('@getImage');
 
     // then in sidebar alt attr should be empty
     cy.get('#sidebar-properties .field-wrapper-alt input#field-alt')

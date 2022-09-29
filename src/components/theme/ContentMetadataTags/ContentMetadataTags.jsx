@@ -9,6 +9,7 @@ const ContentMetadataTags = (props) => {
     seo_title,
     seo_description,
     seo_canonical_url,
+    seo_noindex,
     title,
     description,
   } = props.content;
@@ -47,7 +48,7 @@ const ContentMetadataTags = (props) => {
   return (
     <>
       <Helmet>
-        <title>{seo_title || title}</title>
+        <title>{(seo_title || title)?.replace(/\u00AD/g, '')}</title>
         <meta name="description" content={seo_description || description} />
         <meta
           property="og:title"
@@ -57,6 +58,7 @@ const ContentMetadataTags = (props) => {
           property="og:url"
           content={seo_canonical_url || toPublicURL(props.content['@id'])}
         />
+        {seo_noindex && <meta name="robots" content="noindex" />}
         {contentImageInfo.contentHasImage && (
           <meta
             property="og:image"

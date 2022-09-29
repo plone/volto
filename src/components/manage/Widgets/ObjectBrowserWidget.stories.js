@@ -190,7 +190,7 @@ const ObjectBrowserWidget = (args) => {
 };
 
 export default {
-  title: 'Widgets/Object Browser',
+  title: 'Edit Widgets/Object Browser',
   argTypes: {
     selectableTypes: {
       name: 'widgetOptions.pattern_options.selectableTypes',
@@ -220,7 +220,14 @@ export default {
 
 export const Connected = () => <ObjectBrowserWidget />;
 export const SingleElement = () => <ObjectBrowserWidget mode="link" />;
+export const Placeholder = () => (
+  <ObjectBrowserWidget
+    allowExternals={true}
+    placeholder="This is the placeholder text"
+  />
+);
 export const Image = () => <ObjectBrowserWidget mode="image" return="single" />;
+export const InitalPath = () => <ObjectBrowserWidget initialPath="/" />;
 export const SelectableType = () => (
   <ObjectBrowserWidget
     widgetOptions={{

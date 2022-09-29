@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Use a pattern called component shadowing to customize volto components."
-  "property=og:description": "Use a pattern called component shadowing to customize volto components."
-  "property=og:title": "Customizing Components"
-  "keywords": "Volto, Plone, frontend, React, customizing component"
+myst:
+  html_meta:
+    "description": "Use a pattern called component shadowing to customize volto components."
+    "property=og:description": "Use a pattern called component shadowing to customize volto components."
+    "property=og:title": "Customizing Components"
+    "keywords": "Volto, Plone, frontend, React, customizing component"
 ---
 
 # Customizing Components
@@ -52,7 +53,7 @@ amendments required.
 
 Locate the `Tags.jsx` file and override this file so that there is a label in front of the tags with: `Tags:`.
 
-```{code-block) jsx
+```{code-block} jsx
 :emphasize-lines: 20
 /**
  * Tags component.

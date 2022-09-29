@@ -3,6 +3,8 @@
  * @module actions/users/users
  */
 
+import { stringify } from 'query-string';
+
 import {
   CREATE_USER,
   DELETE_USER,
@@ -65,16 +67,50 @@ export function getUser(id) {
 
 /**
  * List users function
+ * 'query' and 'search' are mutually exclusive parameters. 'search' wins.
+ * Query either for username or search for username, fullname, email.
  * @function listUsers
- * @param {string} query Query
+ * @param {string} query for username
+ * @param {string} search for  username, fullname, email.
+ * @param {list} groups_filter restrict to group membership
+ * @param {int} limit
  * @returns {Object} List users action
  */
-export function listUsers(query) {
+export function listUsers(options = {}) {
+  const { query = '', search = '', groups_filter = [], limit = null } = options;
+  let path = '/@users';
+
+  var searchParams = new URLSearchParams();
+  if (query) {
+    searchParams.append('query', query);
+  }
+  if (search) {
+    searchParams.append('search', search);
+  }
+  limit && searchParams.append('limit', limit);
+  const searchParamsToString = searchParams.toString();
+
+  let filterarg =
+    groups_filter.length > 0
+      ? stringify(
+          { 'groups-filter': groups_filter },
+          { arrayFormat: 'colon-list-separator' },
+        )
+      : '';
+
+  if (searchParamsToString) {
+    path += `?${searchParamsToString}`;
+  }
+  if (filterarg) {
+    path += searchParamsToString ? '&' : '?';
+    path += filterarg;
+  }
   return {
     type: LIST_USERS,
-    request: query
-      ? { op: 'get', path: `/@users?query=${query}` }
-      : { op: 'get', path: '/@users' },
+    request: {
+      op: 'get',
+      path: path,
+    },
   };
 }
 

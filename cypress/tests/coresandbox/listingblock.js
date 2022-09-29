@@ -26,7 +26,7 @@ context('Listing block tests', () => {
       cy.navigate('/document/newsdoc1/edit');
 
       // Add text block to news document
-      cy.get('.block.text [contenteditable]').type('Aenean lacinia bibendum.');
+      cy.getSlateEditorAndType('Aenean lacinia bibendum.');
       cy.get('#toolbar-save').click();
     });
 
@@ -40,7 +40,7 @@ context('Listing block tests', () => {
       cy.navigate('/document/edit');
 
       // Add listing block
-      cy.get('.block.text [contenteditable]').click();
+      cy.getSlate().click();
       cy.get('button.block-add-button').click();
       cy.get('.blocks-chooser .title').contains('Common').click();
       cy.get('.blocks-chooser .common').contains('Listing').click();
@@ -88,7 +88,7 @@ context('Listing block tests', () => {
       cy.navigate('/document/edit');
 
       // Add listing block
-      cy.get('.block.text [contenteditable]').click();
+      cy.getSlate().click();
       cy.get('button.block-add-button').click();
       cy.get('.blocks-chooser .title').contains('Common').click();
       cy.get('.blocks-chooser .common').contains('Listing').click();

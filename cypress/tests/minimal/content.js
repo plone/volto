@@ -22,6 +22,7 @@ describe('Add Content Tests', () => {
     cy.get('input[id="field-file"]').attachFile('file.pdf', {
       subjectType: 'input',
     });
+
     cy.wait(2000);
 
     cy.get('#toolbar-save').focus().click();
@@ -41,10 +42,7 @@ describe('Add Content Tests', () => {
     // when I add a page
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-document').click();
-    cy.get('.documentFirstHeading > .public-DraftStyleDefault-block')
-      .type('My Page')
-      .get('.documentFirstHeading span[data-text]')
-      .contains('My Page');
+    cy.getSlateTitle().focus().click().type('My Page').contains('My Page');
 
     // then I a new page has been created
     cy.get('#toolbar-save').click();
@@ -57,14 +55,9 @@ describe('Add Content Tests', () => {
     // when I add a page with a text block
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-document').click();
-    cy.get('.documentFirstHeading > .public-DraftStyleDefault-block')
-      .type('My Page')
-      .get('.documentFirstHeading span[data-text]')
-      .contains('My Page');
-    cy.get('.block.inner.text .public-DraftEditor-content')
-      .type('This is the text.')
-      .get('span[data-text]')
-      .contains('This is the text');
+
+    cy.getSlateTitle().focus().click().type('My Page').contains('My Page');
+    cy.getSlateEditorAndType('This is the text').contains('This is the text');
     cy.get('#toolbar-save').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
 
@@ -74,6 +67,8 @@ describe('Add Content Tests', () => {
   });
 
   it('As editor I can add an image', function () {
+    cy.intercept('POST', '*').as('saveImage');
+    cy.intercept('GET', '/**/image.png').as('getImage');
     // when I add an image
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-image').click();
@@ -95,9 +90,18 @@ describe('Add Content Tests', () => {
       });
 
     cy.get('#toolbar-save').click();
+    cy.wait('@saveImage');
+    cy.wait('@getImage');
+
     cy.url().should('eq', Cypress.config().baseUrl + '/image.png');
 
     cy.contains('My image');
+    cy.get('.view-wrapper img')
+      .should('be.visible')
+      .and(($img) => {
+        // "naturalWidth" and "naturalHeight" are set when the image loads
+        expect($img[0].naturalWidth).to.be.greaterThan(0);
+      });
   });
 
   it('As editor I can add a news item', function () {
@@ -114,20 +118,6 @@ describe('Add Content Tests', () => {
     // then a new news item should have been created
     cy.url().should('eq', Cypress.config().baseUrl + '/my-news-item');
     cy.get('.navigation .item.active').should('have.text', 'My News Item');
-  });
-
-  it('As editor I can add a folder', function () {
-    // when I add a folder
-    cy.get('#toolbar-add').click();
-    cy.get('#toolbar-add-folder').click();
-    cy.get('input[name="title"]')
-      .type('My Folder')
-      .should('have.value', 'My Folder');
-    cy.get('#toolbar-save').click();
-
-    // then a new folder should have been created
-    cy.url().should('eq', Cypress.config().baseUrl + '/my-folder');
-    cy.get('.navigation .item.active').should('have.text', 'My Folder');
   });
 
   it('As editor I am setting the time in datetimeWidget', function () {
@@ -151,6 +141,8 @@ describe('Add Content Tests', () => {
   });
 
   it('As editor I can add a Link (with an external link)', function () {
+    cy.intercept('POST', '*').as('saveLink');
+    cy.intercept('GET', '/**/my-link').as('getLink');
     // When I add a link
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-link').click();
@@ -164,6 +156,9 @@ describe('Add Content Tests', () => {
       .should('have.value', 'https://google.com');
 
     cy.get('#toolbar-save').click();
+    cy.wait('@saveLink');
+    cy.wait('@getLink');
+
     cy.url().should('eq', Cypress.config().baseUrl + '/my-link');
 
     // Then the link title should show up on the link view
@@ -173,6 +168,8 @@ describe('Add Content Tests', () => {
   });
 
   it('As editor I can add a Link (with an internal link)', function () {
+    cy.intercept('POST', '*').as('saveLink');
+    cy.intercept('GET', '/**/my-link').as('getLink');
     // Given a Document "Link Target"
     cy.createContent({
       contentType: 'Document',
@@ -193,6 +190,9 @@ describe('Add Content Tests', () => {
       .should('have.value', '/link-target');
 
     cy.get('#toolbar-save').click();
+    cy.wait('@saveLink');
+    cy.wait('@getLink');
+
     cy.url().should('eq', Cypress.config().baseUrl + '/my-link');
 
     // Then the link title should show up on the link view
