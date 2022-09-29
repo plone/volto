@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fixed the `description` field not appearing in control panel fieldsets @JeffersonBledsoe #3696
+
 ### Internal
 
 - Run yarn deduplicate on dependencies. @davisagli
