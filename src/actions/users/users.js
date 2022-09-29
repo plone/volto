@@ -22,13 +22,15 @@ import {
  * @param {Object|Array} content User data.
  * @returns {Object} Create user action.
  */
-export function createUser(content) {
+export function createUser(content, sendPasswordReset) {
   return {
     type: CREATE_USER,
     request: {
       op: 'post',
       path: '/@users',
-      data: content,
+      data: sendPasswordReset
+        ? { ...content, sendPasswordReset }
+        : content,
     },
   };
 }
