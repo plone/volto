@@ -9,12 +9,16 @@ in order to ease configuration. These are the defaults:
 
 That means that your backend will be available under `http://localhost:3000/++api++`
 
+```shell
 RAZZLE_DEV_PROXY_API_PATH = 'http://localhost:8080/Plone'
+```
 
 The internal proxy simulates a web server doing reverse proxy with standard Plone VHM config.
 You can configure this if required too:
 
+```shell
 RAZZLE_PROXY_REWRITE_TARGET = '/VirtualHostBase/http/localhost:3000/Plone/++api++/VirtualHostRoot'
+```
 
 (this variable by default is parameterized like this: `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/++api++/VirtualHostRoot`)
 
@@ -24,21 +28,21 @@ Let's assume you have your site in http://localhost:55001/Plone
 
 In order to simulate it, you could launch the backend like:
 
-```
+```shell
 docker run -it --rm -p 55001:8080 -e SITE=Plone -e ADDONS='plone.restapi==8.20.0 plone.app.iterate==4.0.2 plone.rest==2.0.0a1 plone.app.vocabularies==4.3.0 plone.volto==3.1.0a8' plone/plone-backend:6.0.0a2
 ```
 
-```
+```shell
 RAZZLE_DEV_PROXY_API_PATH='http://localhost:55001/Plone' yarn start
 ```
 
 Let's say that you do have it in a customized site id: http://localhost:55001/myplonesite
 
-```
+```shell
 docker run -it --rm -p 55001:8080 -e SITE=myplonesite -e ADDONS='plone.restapi==8.20.0 plone.app.iterate==4.0.2 plone.rest==2.0.0a1 plone.app.vocabularies==4.3.0 plone.volto==3.1.0a8' plone/plone-backend:6.0.0a2
 ```
 
-```
+```shell
 RAZZLE_DEV_PROXY_API_PATH='http://localhost:55001/myplonesite' yarn start
 ```
 

@@ -16,8 +16,10 @@ exports[`ListingView renders a listing_view component 1`] = `
       >
         <h2>
           <a
-            href="/item"
+            className={null}
+            href="/"
             onClick={[Function]}
+            target={null}
             title="Document"
           >
             My item
@@ -36,8 +38,10 @@ exports[`ListingView renders a listing_view component 1`] = `
       >
         <h2>
           <a
-            href="/item2"
+            className={null}
+            href="/"
             onClick={[Function]}
+            target={null}
             title="Document"
           >
             Second item

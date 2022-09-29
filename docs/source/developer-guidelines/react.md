@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+myst:
+  html_meta:
+    "description": "TBD"
+    "property=og:description": "TBD"
+    "property=og:title": "React"
+    "keywords": "Volto, Plone, frontend, React"
 ---
 
 # React

@@ -101,26 +101,26 @@ class ObjectBrowserBody extends Component {
       currentImageFolder:
         this.props.mode === 'multiple'
           ? '/'
-          : this.props.data?.url
+          : this.props.mode === 'image' && this.props.data?.url
           ? getParentURL(this.props.data.url)
           : '/',
       currentLinkFolder:
         this.props.mode === 'multiple'
           ? '/'
-          : this.props.data?.href
+          : this.props.mode === 'link' && this.props.data?.href
           ? getParentURL(this.props.data.href)
           : '/',
       parentFolder: '',
       selectedImage:
         this.props.mode === 'multiple'
           ? ''
-          : this.props.data?.url
+          : this.props.mode === 'image' && this.props.data?.url
           ? flattenToAppURL(this.props.data.url)
           : '',
       selectedHref:
         this.props.mode === 'multiple'
           ? ''
-          : this.props.data?.href
+          : this.props.mode === 'link' && this.props.data?.href
           ? flattenToAppURL(this.props.data.href)
           : '',
       showSearchInput: false,

@@ -78,7 +78,12 @@ const ManageTranslations = (props) => {
     // Only execute the link API call on the final item selected, once the ObjectBrowser
     // is closed
     if (!isObjectBrowserOpen && currentSelectedItem.current) {
-      dispatch(linkTranslation(content['@id'], currentSelectedItem.current))
+      dispatch(
+        linkTranslation(
+          flattenToAppURL(content['@id']),
+          currentSelectedItem.current,
+        ),
+      )
         .then((resp) => {
           toast.success(
             <Toast
@@ -128,7 +133,7 @@ const ManageTranslations = (props) => {
   }
 
   function onDeleteTranslation(lang) {
-    dispatch(deleteLinkTranslation(content['@id'], lang))
+    dispatch(deleteLinkTranslation(flattenToAppURL(content['@id']), lang))
       .then((resp) => {
         toast.success(
           <Toast
