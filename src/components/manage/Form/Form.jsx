@@ -657,6 +657,11 @@ class Form extends Component {
                             {this.props.title}
                           </Segment>
                         ),
+                        item.description && (
+                          <Message attached="bottom">
+                            {item.description}
+                          </Message>
+                        ),
                         ...map(item.fields, (field, index) => (
                           <Field
                             {...schema.properties[field]}
