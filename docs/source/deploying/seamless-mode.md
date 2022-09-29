@@ -167,7 +167,7 @@ server {
       proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
       proxy_set_header        X-Forwarded-Proto $scheme;
 
-      # internal api path example - analgous to RAZZLE_INTERNAL_API_PATH
+      # internal api path example - analagous to RAZZLE_INTERNAL_API_PATH
       proxy_set_header        X-Internal-Api-Path http://backend:8080/Plone;
 
       proxy_redirect http:// https://;
