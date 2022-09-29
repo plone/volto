@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Volto add-ons extend the core functionality of the Plone CMS frontend."
-  "property=og:description": "Volto add-ons extend the core functionality of the Plone CMS frontend."
-  "property=og:title": "Volto add-ons"
-  "keywords": "Volto, add-on, extensions, frontend, Plone"
+myst:
+  html_meta:
+    "description": "Volto add-ons extend the core functionality of the Plone CMS frontend."
+    "property=og:description": "Volto add-ons extend the core functionality of the Plone CMS frontend."
+    "property=og:title": "Volto add-ons"
+    "keywords": "Volto, add-on, extensions, frontend, Plone"
 ---
 
 # Volto add-ons

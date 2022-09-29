@@ -456,7 +456,10 @@ class Contents extends Component {
         {
           currentPage: 0,
         },
-        () => this.fetchContents(nextProps.pathname),
+        () =>
+          this.setState({ filter: '' }, () =>
+            this.fetchContents(nextProps.pathname),
+          ),
       );
     }
     if (this.props.searchRequest.loading && nextProps.searchRequest.loaded) {
@@ -1104,7 +1107,6 @@ class Contents extends Component {
     const folderContentsAction = find(this.props.objectActions, {
       id: 'folderContents',
     });
-
     const loading =
       (this.props.clipboardRequest?.loading &&
         !this.props.clipboardRequest?.error) ||
@@ -1800,14 +1802,18 @@ class Contents extends Component {
   }
 }
 
+let dndContext;
+
 const DragDropConnector = (props) => {
   const { DragDropContext } = props.reactDnd;
   const HTML5Backend = props.reactDndHtml5Backend.default;
 
-  const DndConnectedContents = React.useMemo(
-    () => DragDropContext(HTML5Backend)(Contents),
-    [DragDropContext, HTML5Backend],
-  );
+  const DndConnectedContents = React.useMemo(() => {
+    if (!dndContext) {
+      dndContext = DragDropContext(HTML5Backend);
+    }
+    return dndContext(Contents);
+  }, [DragDropContext, HTML5Backend]);
 
   return <DndConnectedContents {...props} />;
 };

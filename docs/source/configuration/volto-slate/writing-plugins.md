@@ -1,25 +1,41 @@
 ---
-html_meta:
-  "description": "How to write a volto-slate plugin"
-  "property=og:description": "How to write a volto-slate plugin"
-  "property=og:title": "Write a volto-slate plugin"
-  "keywords": "Volto, Plone, frontend, React, Slate, Slate-React, volto-slate, plugins"
+myst:
+  html_meta:
+    "description": "How to write a volto-slate plugin"
+    "property=og:description": "How to write a volto-slate plugin"
+    "property=og:title": "Write a volto-slate plugin"
+    "keywords": "Volto, Plone, frontend, React, Slate, Slate-React, volto-slate, plugins"
 ---
 
 (writing-plugins-label)=
 
-# How to write custom plugins
+# How to write a Slate editor plugin
 
-This section will guide you through registering a custom plugin for `volto-slate`.
+This section will guide you through writing and registering a custom plugin for the Slate editor in Volto.
+You will add a plugin that will provide a button to create a tooltip for a selected piece of text in a Slate editor.
+This process can be generalized for any custom Slate plugin.
 
-## Adding a tooltip to a text section
+```{image} ../../_static/tooltip_plugin.png
+:alt: Slate toooltip plugin
+```
 
-You will add a plugin that will create a tooltip when selecting a text element in a Slate editor.
+## The installer
 
-Start by creating a file named `index.js`, which will instantiate {term}`elementEditor`.
+Start by creating a folder `src/editor/plugins/TooltipPlugin` containing a file named `index.js`, which will instantiate {term}`elementEditor`.
 
 ```js
-export default function install(config) {
+const messages = defineMessages({
+  edit: {
+    id: 'Edit tooltip',
+    defaultMessage: 'Edit tooltip',
+  },
+  delete: {
+    id: 'Remove tooltip',
+    defaultMessage: 'Remove tooltip',
+  },
+});
+
+export default function installTooltipPlugin(config) {
   const opts = {
     title: 'Tooltip',
     pluginId: TOOLTIP,
@@ -30,7 +46,7 @@ export default function install(config) {
     extensions: [withTooltip],
     hasValue: (formData) => !!formData,
     toolbarButtonIcon: tooltipSVG,
-    messages: 'your custom edit/remove i18n messages',
+    messages,
   };
   const [installEditor] = makeInlineElementPlugin(opts);
   config = installEditor(config);
@@ -45,23 +61,9 @@ For non-schema based plugins, you can build your own set of `persistentHelpers`,
 For an example, see {ref}`editor-configuration-slate-persistenthelpers-label`.
 ```
 
-### Add tooltip button
+## `View` and `Edit` components
 
-Register the Slate toolbar button for the tooltip.
-
-```js
-const { slate } = config.settings;
-slate.toolbarButtons = [...(slate.toolbarButtons || []), 'tooltip'];
-slate.expandedToolbarButtons = [
-  ...(slate.expandedToolbarButtons || []),
-  'tooltip',
-];
-```
-
-### `View` and `Edit` components
-
-Next add a React component for the element.
-Name it `TooltipElement`.
+Next add a React component for the element in `editor/plugins/TooltipPlugin/TooltipElement.jsx`.
 This will serve as edit and view modes for our plugin's element.
 
 ```jsx
@@ -74,14 +76,14 @@ const TooltipElement = (props) => {
 
   return (
     <Popup
-      position={'left'}
+      position={data.tooltip_position}
       trigger={
-        <span className={'with-popup'} {...attributes}>
+        <span className={'single-tooltip'} {...attributes}>
           {children}
         </span>
       }
     >
-      My tooltip content
+      {data.tooltip_text}
     </Popup>
   );
 };
@@ -89,42 +91,48 @@ const TooltipElement = (props) => {
 export default TooltipElement;
 ```
 
-### `elementEditor` schema
+## `elementEditor` schema
 
 The `makeInlineElementPlugin` takes a schema for an edit component of the element, and saves the data in the editor.
+Create a file `editor/plugins/TooltipPlugin/schema.js` to provide the plugin's schema.
 
 ```js
 export const TooltipEditorSchema = {
-  title: 'Add Tooltip',
+  title: 'Tooltip',
   fieldsets: [
     {
       id: 'default',
       title: 'Default',
-      fields: ['tooltip_pointing'],
+      fields: ['tooltip_position', 'tooltip_text'],
     },
   ],
   properties: {
-    tooltip_pointing: {
-      title: 'Pointing',
+    tooltip_position: {
+      title: 'Position',
       type: 'string',
       factory: 'Choice',
       choices: [
-        ['pointing', 'Up'],
-        ['right pointing', 'Right'],
-        ['left pointing', 'Left'],
-        ['pointing below', 'Down'],
+        ['right center', 'Right'],
+        ['left center', 'Left'],
       ],
+    },
+    tooltip_text: {
+      title: 'Text',
+      type: 'string',
     },
   },
   required: [],
 };
+
 ```
 
-### Create a `withTooltip` extension
+## Create a `withTooltip` extension
 
-Define a `Tooltip` element as an inline node.
+Define a `Tooltip` element as an inline node in `editor/plugins/TooltipPlugin/extensions.js`.
 
 ```js
+import { TOOLTIP } from './constants';
+
 export const withTooltip = (editor) => {
   const { normalizeNode, isInline } = editor; // we can also normalize plugin data here
 
@@ -136,16 +144,84 @@ export const withTooltip = (editor) => {
 };
 ```
 
-### Volto configuration registry
-
-Finally register the plugin in Volto's configuration.
+The constant `TOOLTIP` used throughout the plugin is defined in `editor/plugins/TooltipPlugin/constants.js`.
 
 ```js
-import installEditor from './editor';
-export default function install(config) {
-  config.settings.tooltip = [...(config.settings.tooltip || []), TOOLTIP];
-  config = installEditor(config);
+export const TOOLTIP = 'tooltip';
+```
 
+## Volto configuration registry
+
+Finally register the plugin and the toolbar button in Volto's configuration.
+
+```js
+
+import installTooltipPlugin from './editor/plugins/TooltipPlugin';
+import { TOOLTIP } from './editor/plugins/TooltipPlugin/constants';
+
+const applyConfig = (config) => {
+  slate.toolbarButtons = [...(slate.toolbarButtons || []), TOOLTIP];
+  slate.expandedToolbarButtons = [
+    ...(slate.expandedToolbarButtons || []),
+    TOOLTIP,
+  ];
+  config = installTooltipPlugin(config);
+
+  return config;
+}
+
+export default applyConfig;
+```
+
+## Style
+
+You may want to include some styling in `editor/plugins/TooltipPlugin/index.js` by importing a style sheet for the tooltip plugin.
+
+```js
+import './tooltip.less';
+```
+
+## Complete installer code
+
+The plugin installer code from above, completed with necessary imports, results in `editor/plugins/TooltipPlugin/index.js`:
+
+```js
+import { defineMessages } from 'react-intl';
+import { makeInlineElementPlugin } from '@plone/volto-slate/elementEditor';
+import TooltipElement from './TooltipElement';
+import { TooltipEditorSchema } from './schema';
+import { TOOLTIP } from './constants';
+import { withTooltip } from './extensions';
+import tooltipSVG from '@plone/volto/icons/help.svg';
+
+import './tooltip.less';
+
+const messages = defineMessages({
+  edit: {
+    id: 'Edit tooltip',
+    defaultMessage: 'Edit tooltip',
+  },
+  delete: {
+    id: 'Remove tooltip',
+    defaultMessage: 'Remove tooltip',
+  },
+});
+
+export default function installTooltipPlugin(config) {
+  const opts = {
+    title: 'Tooltip',
+    pluginId: TOOLTIP,
+    elementType: TOOLTIP,
+    element: TooltipElement,
+    isInlineElement: true,
+    editSchema: TooltipEditorSchema,
+    extensions: [withTooltip],
+    hasValue: (formData) => !!formData,
+    toolbarButtonIcon: tooltipSVG,
+    messages,
+  };
+  const [installEditor] = makeInlineElementPlugin(opts);
+  config = installEditor(config);
   return config;
 }
 ```

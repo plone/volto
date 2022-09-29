@@ -156,7 +156,7 @@ export class Edit extends Component {
                     )
                 : null
             }
-            className={cx(`block ${type}`, {
+            className={cx(`block ${type} ${this.props.data.variation ?? ''}`, {
               selected: this.props.selected || this.props.multiSelected,
               multiSelected: this.props.multiSelected,
             })}

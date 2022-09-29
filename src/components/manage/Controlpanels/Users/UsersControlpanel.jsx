@@ -8,6 +8,7 @@ import {
   listRoles,
   listGroups,
   listUsers,
+  getControlpanel,
   updateUser,
   updateGroup,
 } from '@plone/volto/actions';
@@ -110,12 +111,15 @@ class UsersControlpanel extends Component {
   }
 
   fetchData = async () => {
+    await this.props.getControlpanel('usergroup');
     await this.props.listRoles();
-    this.props.listGroups();
-    await this.props.listUsers({});
-    this.setState({
-      entries: this.props.users,
-    });
+    if (!this.props.many_users) {
+      this.props.listGroups();
+      await this.props.listUsers();
+      this.setState({
+        entries: this.props.users,
+      });
+    }
   };
 
   /**
@@ -643,6 +647,8 @@ export default compose(
       roles: state.roles.roles,
       users: state.users.users,
       groups: state.groups.groups,
+      many_users: state.controlpanels?.controlpanel?.data?.many_users,
+      many_groups: state.controlpanels?.controlpanel?.data?.many_groups,
       description: state.description,
       pathname: props.location.pathname,
       deleteRequest: state.users.delete,
@@ -656,6 +662,7 @@ export default compose(
           listRoles,
           listUsers,
           listGroups,
+          getControlpanel,
           deleteUser,
           createUser,
           updateUser,

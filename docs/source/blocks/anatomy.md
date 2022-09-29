@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Volto blocks are composed of an edit and a view component."
-  "property=og:description": "Volto blocks are composed of an edit and a view component."
-  "property=og:title": "Blocks anatomy"
-  "keywords": "Volto, React, blocks, edit, view, Plone"
+myst:
+  html_meta:
+    "description": "Volto blocks are composed of an edit and a view component."
+    "property=og:description": "Volto blocks are composed of an edit and a view component."
+    "property=og:title": "Blocks anatomy"
+    "keywords": "Volto, React, blocks, edit, view, Plone"
 ---
 
 # Blocks anatomy

@@ -31,6 +31,7 @@ export default (config) => {
     'numbered-list',
     'bulleted-list',
     'blockquote',
+    'styleMenu',
   ];
 
   config.addonReducers = {
