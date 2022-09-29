@@ -6,6 +6,8 @@
 
 ### Feature
 
+- lazyloading of rrule lib. @giuliaghisini
+
 ### Bugfix
 
 - Fixed the `description` field not appearing in control panel fieldsets @JeffersonBledsoe #3696
