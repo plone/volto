@@ -2138,14 +2138,15 @@
   dependencies:
     "@octokit/openapi-types" "^12.10.0"
 
-"@plone/scripts@2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@plone/scripts/-/scripts-2.0.0.tgz#e97913972775fac151b990bc26ef3e7b32a1ef3c"
-  integrity sha512-slG3UwDBuSwSBwtYdn6oG/+QWZhoEg4sK7NTdltWLmS76ihd4kyHw53Tm1o9KwvCE8iqkkYyQGIeKhsiM2gY0A==
+"@plone/scripts@2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@plone/scripts/-/scripts-2.1.1.tgz#ba27c42e7d7eda5e6ba5e19050142d2321715a2e"
+  integrity sha512-Y55H4qS9otguIBM7Iy58hPKzdQBkXuPtIv7snFMdd3zkACxddVQNORnpzoDVxr11bMH7Wjb76rqcFTD8oZnMGA==
   dependencies:
     babel-plugin-react-intl "5.1.17"
     babel-preset-razzle "4.2.17"
     commander "8.2.0"
+    fs-extra "10.1.0"
     git-url-parse "^11.6.0"
     mrs-developer "*"
     pofile "1.0.10"
@@ -8416,6 +8417,15 @@ from@~0:
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/from/-/from-0.1.7.tgz#83c60afc58b9c56997007ed1a768b3ab303a44fe"
   integrity sha1-g8YK/Fi5xWmXAH7Rp2izqzA6RP4=
+
+fs-extra@10.1.0:
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-10.1.0.tgz#02873cfbc4084dde127eaa5f9905eef2325d1abf"
+  integrity sha512-oRXApq54ETRj4eMiFzGnHWGy+zo5raudjuxN0b8H7s/RU2oW0Wvsx9O0ACRN/kRq9E8Vu/ReskGB5o3ji+FzHQ==
+  dependencies:
+    graceful-fs "^4.2.0"
+    jsonfile "^6.0.1"
+    universalify "^2.0.0"
 
 fs-extra@^0.30.0:
   version "0.30.0"

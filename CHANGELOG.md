@@ -10,9 +10,18 @@
 
 ### Internal
 
-- Fix storybook build for Razzle 4 @sneridagh
-
 ### Documentation
+
+## 16.0.0-alpha.39 (2022-09-28)
+
+### Bugfix
+
+- Fix call to `@plone/scripts/i18n` (now a commonJS module) @sneridagh
+
+### Internal
+
+- Fix storybook build for Razzle 4 @sneridagh
+- Update `@plone/scripts` to 2.1.1 @sneridagh
 
 ## 16.0.0-alpha.38 (2022-09-27)
 
