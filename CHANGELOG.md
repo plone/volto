@@ -11,6 +11,7 @@
 ### Bugfix
 
 - Fixed the `description` field not appearing in control panel fieldsets @JeffersonBledsoe #3696
+- Add missing `--noninteractive` in the `build` script in package.json @sneridagh
 
 ### Internal
 
