@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Add some internal block utilities `getBlockInitialDataDefaults` and `isBlockResetable` @sneridagh
+
 ### Documentation
 
 ## 16.0.0-alpha.39 (2022-09-28)

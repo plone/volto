@@ -17,6 +17,8 @@ import {
   applyBlockDefaults,
   applySchemaDefaults,
   buildStyleClassNamesFromData,
+  getBlockInitialDataDefaults,
+  isBlockResetable,
 } from './Blocks';
 
 import config from '@plone/volto/registry';
@@ -574,6 +576,7 @@ describe('Blocks', () => {
       });
     });
   });
+
   describe('buildStyleClassNamesFromData', () => {
     it('Sets styles classname array according to style values', () => {
       const styles = {
@@ -627,6 +630,102 @@ describe('Blocks', () => {
         'has--color--red',
         'has--borderRadius--8',
       ]);
+    });
+  });
+
+  describe('getBlockInitialDataDefaults', () => {
+    it('Given a schema it returns the default values', () => {
+      const schema = {
+        title: 'Grid',
+        block: '__grid',
+        fieldsets: [
+          {
+            id: 'default',
+            title: 'Default',
+            fields: ['headline'],
+          },
+        ],
+        properties: {
+          title: {
+            title: 'Title',
+            default: 'Default title',
+          },
+          headline: {
+            title: 'Headline',
+          },
+          number: {
+            title: 'Number',
+            default: 2,
+          },
+        },
+        required: [],
+      };
+      expect(getBlockInitialDataDefaults(schema)).toEqual({
+        number: 2,
+        title: 'Default title',
+      });
+    });
+  });
+
+  describe('isBlockResetable', () => {
+    it('isBlockResetable 1', () => {
+      expect(isBlockResetable({})).toEqual(false);
+    });
+    it('isBlockResetable 2', () => {
+      const item = {
+        '@type': 'teaser',
+        id: 'id',
+        block: 'block',
+      };
+      expect(isBlockResetable(item, {})).toEqual(false);
+    });
+    it('isBlockResetable 3', () => {
+      const item = {
+        '@type': 'teaser',
+        id: 'id',
+        block: 'block',
+        another: 'another field',
+      };
+      expect(isBlockResetable(item, {})).toEqual(true);
+    });
+    it('isBlockResetable schema', () => {
+      const item = {
+        '@type': 'enhancedBlockCase2',
+        id: 'id',
+        block: 'block',
+      };
+      expect(isBlockResetable(item, {})).toEqual(false);
+    });
+    it('isBlockResetable schema 2', () => {
+      const item = {
+        '@type': 'enhancedBlockCase2',
+        id: 'id',
+        block: 'block',
+        title: '',
+        description: '',
+      };
+      expect(isBlockResetable(item, {})).toEqual(true);
+    });
+    it('isBlockResetable schema 3', () => {
+      const item = {
+        '@type': 'enhancedBlockCase2',
+        id: 'id',
+        block: 'block',
+        title: 'Default title',
+        description: 'Default description',
+      };
+      expect(isBlockResetable(item, {})).toEqual(false);
+    });
+    it('isBlockResetable schema 3', () => {
+      const item = {
+        '@type': 'enhancedBlockCase2',
+        id: 'id',
+        block: 'block',
+        title: 'Default title',
+        description: 'Default description',
+        another: 'field',
+      };
+      expect(isBlockResetable(item, {})).toEqual(true);
     });
   });
 });

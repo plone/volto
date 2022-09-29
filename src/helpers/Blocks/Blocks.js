@@ -3,11 +3,20 @@
  * @module helpers/Blocks
  */
 
-import { omit, without, endsWith, find, isObject, keys, toPairs } from 'lodash';
+import {
+  omit,
+  without,
+  endsWith,
+  find,
+  isObject,
+  keys,
+  toPairs,
+  isEmpty,
+} from 'lodash';
 import move from 'lodash-move';
 import { v4 as uuid } from 'uuid';
 import config from '@plone/volto/registry';
-import { applySchemaEnhancer } from '@plone/volto/helpers';
+import { applySchemaEnhancer, difference } from '@plone/volto/helpers';
 
 /**
  * Get blocks field.
@@ -406,13 +415,19 @@ export function applyBlockDefaults({ data, intl, ...rest }, blocksConfig) {
   return applySchemaDefaults({ data, schema });
 }
 
+/**
+ * Get the block initial data defaults
+ *
+ * @function buildStyleClassNamesFromData
+ * @param {Object} styles The styles object
+ *   const styles = {
+ *     color: 'red',
+ *     backgroundColor: '#AABBCC',
+ *   }
+ * @return {Array} The array of classnames to be applied
+ *   ['has--color--red', 'has--backgroundColor--AABBCC']
+ */
 export const buildStyleClassNamesFromData = (styles) => {
-  // styles has the form
-  // const styles = {
-  // color: 'red',
-  // backgroundColor: '#AABBCC',
-  // }
-  // Returns: ['has--color--red', 'has--backgroundColor--AABBCC']
   let styleArray = [];
   const pairedStyles = toPairs(styles);
   pairedStyles.forEach((item) => {
@@ -437,4 +452,54 @@ export const buildStyleClassNamesFromData = (styles) => {
       classname[2] ? `--${classname[2]}` : ''
     }`;
   });
+};
+
+/**
+ * Get the block initial data defaults
+ *
+ * @function getBlockInitialDataDefaults
+ * @param {Object | function} schema The block schema
+ * @return {Object} The defaults being applied given the schema
+ */
+export const getBlockInitialDataDefaults = (schema) => ({
+  ...Object.keys(schema.properties).reduce((accumulator, currentField) => {
+    return schema.properties[currentField].default
+      ? {
+          ...accumulator,
+          [currentField]: schema.properties[currentField].default,
+        }
+      : accumulator;
+  }, {}),
+});
+
+/**
+ * Determines if given a block, it is reseteable (the block is dirty)
+ *
+ * @function isBlockResetable
+ * @param {Object} data The block data
+ * @return {Boolean} Result if the block is reseteable (dirty) or not
+ */
+export const isBlockResetable = (data, blockProps) => {
+  let schema = config.blocks.blocksConfig?.[data['@type']]?.blockSchema;
+  if (typeof schema === 'function') {
+    schema = schema(blockProps);
+  }
+
+  const itemKeys = Object.keys(data);
+  if (!schema && itemKeys.length > 3) {
+    return true;
+  }
+
+  if (schema && itemKeys.length > 3) {
+    const defaultValues = getBlockInitialDataDefaults(schema);
+    const dataEssential = {
+      '@type': data['@type'],
+      id: data.id,
+      block: data.block,
+    };
+
+    return !isEmpty(difference(data, { ...dataEssential, ...defaultValues }));
+  }
+
+  return false;
 };
