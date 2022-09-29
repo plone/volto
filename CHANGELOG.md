@@ -11,6 +11,7 @@
 ### Internal
 
 - Add some internal block utilities `getBlockInitialDataDefaults` and `isBlockResetable` @sneridagh
+- Run yarn deduplicate on dependencies. @davisagli
 
 ### Documentation
 
