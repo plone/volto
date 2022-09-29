@@ -488,7 +488,7 @@ class UsersControlpanel extends Component {
                     description: '',
                   },
                 },
-                required: ['username', 'fullname', 'email', 'password'],
+                required: ['username', 'email', 'password'],
               }}
             />
           ) : null}
