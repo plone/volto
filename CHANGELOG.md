@@ -7,6 +7,7 @@
 ### Feature
 
 - lazyloading of rrule lib. @giuliaghisini
+- Add support for internal api path in seamless mode @instification
 
 ### Bugfix
 
