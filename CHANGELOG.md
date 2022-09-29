@@ -16,6 +16,8 @@
 ### Internal
 
 - Run yarn deduplicate on dependencies. @davisagli
+- Upgrade to Plone 6 beta 2 @sneridagh
+- Flip testing matrix for acceptance tests, make Plone 6 principal subject, Plone 5 as secondary @sneridagh
 
 ### Documentation
 

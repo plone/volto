@@ -196,9 +196,9 @@ jobs:
           name: cypress-videos
           path: cypress/videos
 
-  core6:
+  core5:
     runs-on: ubuntu-latest
-    name: Core Basic - Plone 6
+    name: Core Basic - Plone 5
     strategy:
       matrix:
         node-version: [16.x]
@@ -243,7 +243,7 @@ jobs:
           group: Core Basic - Plone 6
           spec: cypress/tests/core/basic/**/*.js
           start: |
-            make start-test-acceptance-server DOCKER_IMAGE=plone/plone-backend:6.0.0b1 KGS=
+            make start-test-acceptance-server DOCKER_IMAGE=plone/plone-backend:5.2.9 KGS="plone.restapi==8.27.0 plone.volto==4.0.0a13 plone.rest==2.0.0a5"
             make start-test-acceptance-frontend
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
 
