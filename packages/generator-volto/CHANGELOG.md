@@ -1,8 +1,16 @@
 # Change Log
 
-## 5.8.1 (unreleased)
+## 5.9.1 (unreleased)
 
 ### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
+## 5.9.0 (2022-09-28)
 
 ### Feature
 
@@ -12,8 +20,7 @@
 
 - Add alias to ESlint config in project generator @sneridagh
 - Add missing `moduleNameMapper`s to default app `package.json` jest config @sneridagh
-
-### Internal
+- Fix storybook for Razzle 4 @sneridagh
 
 ## 5.8.0 (2022-07-28)
 

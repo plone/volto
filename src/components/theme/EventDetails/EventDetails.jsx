@@ -60,7 +60,7 @@ const EventDetails = ({ content, display_as = 'aside' }) => {
       as={display_as}
       {...(display_as === 'aside' ? { floated: 'right' } : {})}
     >
-      {content.subjects.length > 0 && (
+      {content.subjects?.length > 0 && (
         <>
           <Header dividing sub>
             {intl.formatMessage(messages.what)}
@@ -117,7 +117,7 @@ const EventDetails = ({ content, display_as = 'aside' }) => {
           <p>{content.contact_phone}</p>
         </>
       )}
-      {content.attendees.length > 0 && (
+      {content.attendees?.length > 0 && (
         <>
           <Header dividing sub>
             {intl.formatMessage(messages.attendees)}
