@@ -85,10 +85,8 @@ export const multilingualRoutes = [
   },
 ];
 
-export const defaultRoutes = (
-  (config.settings?.isMultilingual && multilingualRoutes) ||
-  []
-).concat([
+export const defaultRoutes = [
+  ...((config.settings?.isMultilingual && multilingualRoutes) || []),
   {
     path: '/',
     component: View,
@@ -253,7 +251,7 @@ export const defaultRoutes = (
     path: '*',
     component: NotFound,
   },
-]);
+];
 
 /**
  * Routes array.
