@@ -31,7 +31,7 @@
     "postinstall": "yarn patches",
     "analyze": "BUNDLE_ANALYZE=true razzle build",
     "start": "razzle start",
-    "build": "razzle build",
+    "build": "razzle build --noninteractive",
     "test": "razzle test --maxWorkers=50%",
     "test:ci": "CI=true NODE_ICU_DATA=node_modules/full-icu razzle test",
     "test:husky": "CI=true yarn test --bail --findRelatedTests",

@@ -6,9 +6,16 @@
 
 ### Feature
 
+- lazyloading of rrule lib. @giuliaghisini
+
 ### Bugfix
 
+- Fixed the `description` field not appearing in control panel fieldsets @JeffersonBledsoe #3696
+- Add missing `--noninteractive` in the `build` script in package.json @sneridagh
+
 ### Internal
+
+- Run yarn deduplicate on dependencies. @davisagli
 
 ### Documentation
 
