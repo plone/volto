@@ -235,6 +235,7 @@ jobs:
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          KGS: plone.restapi==8.27.0 plone.volto==4.0.0a13 plone.rest==2.0.0a5
         with:
           record: true
           parallel: false # Since they run on different node versions, we can't parallel
@@ -243,7 +244,7 @@ jobs:
           group: Core Basic - Plone 6
           spec: cypress/tests/core/basic/**/*.js
           start: |
-            make start-test-acceptance-server DOCKER_IMAGE=plone/plone-backend:5.2.9 KGS="plone.restapi==8.27.0 plone.volto==4.0.0a13 plone.rest==2.0.0a5"
+            make start-test-acceptance-server DOCKER_IMAGE=plone/plone-backend:5.2.9 KGS=$KGS
             make start-test-acceptance-frontend
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
 
