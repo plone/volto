@@ -15,6 +15,8 @@
 
 ### Bugfix
 
+- Extend Id widget validation rules to accept a dot "." @reebalazs
+
 ### Internal
 
 - Comment out flaky test for now regarding many users/groups @sneridagh
