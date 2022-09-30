@@ -10,6 +10,7 @@
 
 ### Bugfix
 
+- Concatenate multilingualRoutes (if available) to defaultRoutes @erral #3653
 - Fixed the `description` field not appearing in control panel fieldsets @JeffersonBledsoe #3696
 - Add missing `--noninteractive` in the `build` script in package.json @sneridagh
 

@@ -85,7 +85,10 @@ export const multilingualRoutes = [
   },
 ];
 
-export const defaultRoutes = [
+export const defaultRoutes = (
+  (config.settings?.isMultilingual && multilingualRoutes) ||
+  []
+).concat([
   {
     path: '/',
     component: View,
@@ -250,7 +253,7 @@ export const defaultRoutes = [
     path: '*',
     component: NotFound,
   },
-];
+]);
 
 /**
  * Routes array.
@@ -269,7 +272,6 @@ const routes = [
       })),
       // addon routes have a higher priority then default routes
       ...(config.addonRoutes || []),
-      ...((config.settings?.isMultilingual && multilingualRoutes) || []),
       ...defaultRoutes,
     ],
   },
