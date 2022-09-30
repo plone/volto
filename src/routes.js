@@ -87,7 +87,7 @@ export const multilingualRoutes = [
 
 export const defaultRoutes = [
   // redirect to external links if path is in blacklist
-  (config.settings?.externalRoutes || []).map((route) => ({
+  ...(config.settings?.externalRoutes || []).map((route) => ({
     ...route.match,
     component: NotFound,
   })),
