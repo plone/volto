@@ -157,16 +157,26 @@ class AddonConfigurationRegistry {
       const pathsConfig = jsConfig.paths;
 
       Object.keys(pathsConfig).forEach((name) => {
-        if (!this.addonNames.includes(name)) this.addonNames.push(name);
         const packagePath = `${this.projectRootPath}/${jsConfig.baseUrl}/${pathsConfig[name][0]}`;
         const packageJsonPath = `${getPackageBasePath(
           packagePath,
         )}/package.json`;
+        const innerAddons = require(packageJsonPath).addons || [];
+        const innerAddonsNormalized = innerAddons.map((s) => s.split(':')[0]);
+        if (
+          this.addonNames.includes(name) &&
+          innerAddonsNormalized.length > 0
+        ) {
+          innerAddonsNormalized.forEach((name) => {
+            if (!this.addonNames.includes(name)) this.addonNames.push(name);
+          });
+        }
         const pkg = {
           modulePath: packagePath,
           packageJson: packageJsonPath,
           version: require(packageJsonPath).version,
           isPublishedPackage: false,
+          isRegisteredAddon: this.addonNames.includes(name),
           name,
           addons: require(packageJsonPath).addons || [],
         };
@@ -174,6 +184,32 @@ class AddonConfigurationRegistry {
         this.packages[name] = Object.assign(this.packages[name] || {}, pkg);
       });
     }
+    this.initSlate();
+  }
+
+  initSlate() {
+    if (this.packages['@plone/volto-slate']) return;
+
+    const slatePath = path.normalize(
+      `${this.voltoPath}/packages/volto-slate/src`,
+    );
+    const slatePackageJsonPath = path.normalize(
+      `${this.voltoPath}/packages/volto-slate/package.json`,
+    );
+
+    // some tests set the root in a location that doesn't have the packages
+    if (!fs.existsSync(slatePath)) return;
+
+    this.packages['@plone/volto-slate'] = {
+      modulePath: slatePath,
+      packageJson: slatePackageJsonPath,
+      version: require(slatePackageJsonPath).version,
+      isPublishedPackage: false,
+      isRegisteredAddon: false,
+      name: '@plone/volto-slate',
+      addons: [],
+    };
+    this.addonNames.push('@plone/volto-slate');
   }
 
   /**
@@ -188,17 +224,24 @@ class AddonConfigurationRegistry {
 
   initPublishedPackage(name) {
     if (!Object.keys(this.packages).includes(name)) {
-      if (!this.addonNames.includes(name)) this.addonNames.push(name);
       const resolved = require.resolve(name, { paths: [this.projectRootPath] });
       const basePath = getPackageBasePath(resolved);
       const packageJson = path.join(basePath, 'package.json');
       const pkg = require(packageJson);
       const main = pkg.main || 'src/index.js';
       const modulePath = path.dirname(require.resolve(`${basePath}/${main}`));
+      const innerAddons = pkg.addons || [];
+      const innerAddonsNormalized = innerAddons.map((s) => s.split(':')[0]);
+      if (this.addonNames.includes(name) && innerAddonsNormalized.length > 0) {
+        innerAddonsNormalized.forEach((name) => {
+          if (!this.addonNames.includes(name)) this.addonNames.push(name);
+        });
+      }
       this.packages[name] = {
         name,
         version: pkg.version,
         isPublishedPackage: true,
+        isRegisteredAddon: this.addonNames.includes(name),
         modulePath,
         packageJson,
         addons: pkg.addons || [],
@@ -229,6 +272,7 @@ class AddonConfigurationRegistry {
         version: require(packageJson).version,
         packageJson: packageJson,
         isPublishedPackage: false,
+        isRegisteredAddon: this.addonNames.includes(name),
         name: normalizedAddonName,
         addons: require(packageJson).addons || [],
       };
@@ -279,10 +323,13 @@ class AddonConfigurationRegistry {
    * Returns a mapping name:diskpath to be uses in webpack's resolve aliases
    */
   getResolveAliases() {
-    const pairs = Object.keys(this.packages).map((o) => [
-      o,
-      this.packages[o].modulePath,
-    ]);
+    const pairs = [
+      ...Object.keys(this.packages).map((o) => [
+        o,
+        this.packages[o].modulePath,
+      ]),
+    ];
+
     return fromEntries(pairs);
   }
 

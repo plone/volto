@@ -66,7 +66,8 @@ config.set('settings', {
   },
   controlPanelsIcons,
   apiExpanders: [],
-  downloadableObjects: ['Link'],
+  downloadableObjects: ['File'],
+  viewableInBrowserObjects: [],
 });
 config.set('blocks', {
   blocksConfig: {
@@ -154,3 +155,5 @@ config.set('widgets', {
   },
   default: BaseWidget('default'),
 });
+
+config.set('components', {});

@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "We use Jest for unit testing in Volto. The popular @testing-library/react is also available for writing your tests. For every feature or component, a unit test is mandatory in Volto core."
-  "property=og:description": "We use Jest for unit testing in Volto. The popular @testing-library/react is also available for writing your tests. For every feature or component, a unit test is mandatory in Volto core."
-  "property=og:title": "Testing Volto"
-  "keywords": "Volto, Plone, frontend, React, testing, Jest"
+myst:
+  html_meta:
+    "description": "We use Jest for unit testing in Volto. The popular @testing-library/react is also available for writing your tests. For every feature or component, a unit test is mandatory in Volto core."
+    "property=og:description": "We use Jest for unit testing in Volto. The popular @testing-library/react is also available for writing your tests. For every feature or component, a unit test is mandatory in Volto core."
+    "property=og:title": "Testing Volto"
+    "keywords": "Volto, Plone, frontend, React, testing, Jest"
 ---
 
 # Testing
@@ -54,7 +55,7 @@ test environment.
 
 You can start Cypress by running:
 
-```
+```shell
 make start-test
 ```
 
@@ -68,7 +69,7 @@ Notice that we've started Cypress with a different `API_PATH`. Cypress tests
 need to communicate with Plone through XMLRPC, to do rollbacks and cleanups
 after each test. To start Zope and Plone, run:
 
-```
+```shell
 make test-acceptance-server
 ```
 
@@ -80,13 +81,13 @@ it uses a non-persistent database.
 
 Finally, you can to start Volto with:
 
-```
+```shell
 make start-test-frontend
 ```
 
 If you're developing in parallel the code and the test, you can start Volto in
 development mode by running:
 
-```
+```shell
 RAZZLE_API_PATH=http://localhost:55001/plone yarn start
 ```

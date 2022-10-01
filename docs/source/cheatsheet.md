@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Cheatsheet for MyST and reStructuredText syntax"
-  "property=og:description": "Cheatsheet for MyST and reStructuredText syntax"
-  "property=og:title": "Cheatsheet"
-  "keywords": "Volto, Plone, frontend, React, MyST, reStructuredText, syntax"
+myst:
+  html_meta:
+    "description": "Cheatsheet for MyST and reStructuredText syntax"
+    "property=og:description": "Cheatsheet for MyST and reStructuredText syntax"
+    "property=og:title": "Cheatsheet"
+    "keywords": "Volto, Plone, frontend, React, MyST, reStructuredText, syntax"
 ---
 
 ```{eval-rst}

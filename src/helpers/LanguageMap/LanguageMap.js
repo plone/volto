@@ -80,6 +80,10 @@ const langmap = new Proxy(
       nativeName: 'Brezhoneg',
       englishName: 'Breton',
     },
+    bs: {
+      nativeName: 'Bosanski',
+      englishName: 'Bosnian',
+    },
     'bs-BA': {
       nativeName: 'Bosanski',
       englishName: 'Bosnian',

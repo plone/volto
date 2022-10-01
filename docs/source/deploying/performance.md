@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "How to improve initial page load performance of above-the-fold content with critical.css."
-  "property=og:description": "How to improve initial page load performance of above-the-fold content with critical.css."
-  "property=og:title": "critical.css (above the fold) optimizations"
-  "keywords": "Volto, Plone, frontend, React, critical.css, optimizations"
+myst:
+  html_meta:
+    "description": "How to improve initial page load performance of above-the-fold content with critical.css."
+    "property=og:description": "How to improve initial page load performance of above-the-fold content with critical.css."
+    "property=og:title": "critical.css (above the fold) optimizations"
+    "keywords": "Volto, Plone, frontend, React, critical.css, optimizations"
 ---
 
 # critical.css (above the fold) optimizations
@@ -45,7 +46,7 @@ through `settings.serverConfig.criticalCssPath`). When this file exists, Volto
 changes the way the CSS files are loaded. By default, the CSS is loaded with
 two elements in the `<head>`:
 
-```
+```html
 <link rel="preload" href="static/1234.chunk.css" as="style"/>
 <link rel="stylesheet" href="1234.chunk.css" />
 ```

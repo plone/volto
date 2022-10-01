@@ -60,9 +60,12 @@ export function getVocabFromItems(props) {
  * @returns {string} Vocabulary name
  */
 export function getVocabName(vocabNameOrURL) {
-  return vocabNameOrURL.indexOf('@vocabularies') > -1
-    ? vocabNameOrURL.split('@vocabularies/')[1]
-    : vocabNameOrURL;
+  if (vocabNameOrURL) {
+    return vocabNameOrURL.indexOf('@vocabularies') > -1
+      ? vocabNameOrURL.split('@vocabularies/')[1]
+      : vocabNameOrURL;
+  }
+  return vocabNameOrURL;
 }
 
 /**

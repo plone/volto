@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Volto Integration with Sentry"
-  "property=og:description": "Volto Integration with Sentry"
-  "property=og:title": "Integration with Sentry"
-  "keywords": "Volto, Plone, frontend, React, Integration, Sentry"
+myst:
+  html_meta:
+    "description": "Volto Integration with Sentry"
+    "property=og:description": "Volto Integration with Sentry"
+    "property=og:title": "Integration with Sentry"
+    "keywords": "Volto, Plone, frontend, React, Integration, Sentry"
 ---
 
 # Integration with Sentry
@@ -141,7 +142,7 @@ docker run -p 3000:3000 -p 3001:3001 \
   -e RAZZLE_SENTRY_RELEASE=2.0.0 volto-app:latest
 ```
 
-Or using docker-compose:
+Or using Docker Compose:
 
 ```yaml
 version: '3'
@@ -203,7 +204,7 @@ SENTRY_BACKEND_CONFIG='{"tags":{"site":"www.test.com","app":"test_app"} yarn bui
 node build/server.js
 ```
 
-Example with docker-compose:
+Example with Docker Compose:
 
 ```yaml
 version: '3'

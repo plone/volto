@@ -3,11 +3,16 @@ on:
   push:
     branches:
       - master
-    # Build pull requests
-    pull_request:
+    paths:
+      - 'docs/**'
+  # Build pull requests
+  pull_request:
+    paths:
+      - 'docs/**'
 
 jobs:
   docs:
+    name: Documentation
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -34,8 +39,8 @@ jobs:
       - name: pip install requirements
         run: pip install -r requirements-docs.txt
 
-      # - name: Check for broken links
-      #   run: make docs-linkcheckbroken
+      - name: Check for broken links
+        run: make docs-linkcheckbroken
 
       - name: Build HTML documentation
         run: make docs-html

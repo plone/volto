@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+myst:
+  html_meta:
+    "description": "Customize Volto views."
+    "property=og:description": "Customize Volto views."
+    "property=og:title": "Customizing Volto Views"
+    "keywords": "Volto, Plone, frontend, React, views"
 ---
 
 # Customizing Volto Views
@@ -20,7 +21,7 @@ rich text content.
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { UniversalLink } from '@plone/volto/components';
 import { Container, Image } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 
@@ -40,12 +41,12 @@ const SummaryView = ({ content }) => (
         )}
       </header>
       <section id="content-core">
-        {content.items.map(item => (
+        {content.items.map((item) => (
           <article key={item.url}>
             <h2>
-              <Link to={item.url} title={item['@type']}>
+              <UniversalLink item={ite} title={item['@type']}>
                 {item.title}
-              </Link>
+              </UniversalLink>
             </h2>
             {item.image && (
               <Image

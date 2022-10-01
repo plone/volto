@@ -154,7 +154,7 @@ const LeadImageSidebar = ({
                 id="link"
                 title={intl.formatMessage(messages.LinkTo)}
                 required={false}
-                value={data.href}
+                value={flattenToAppURL(data.href)}
                 icon={data.href ? clearSVG : navTreeSVG}
                 iconAction={
                   data.href
@@ -169,7 +169,7 @@ const LeadImageSidebar = ({
                 onChange={(name, value) => {
                   onChangeBlock(block, {
                     ...data,
-                    href: value,
+                    href: flattenToAppURL(value),
                   });
                 }}
               />
