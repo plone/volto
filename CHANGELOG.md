@@ -6,6 +6,17 @@
 
 ### Feature
 
+### Bugfix
+
+### Internal
+
+### Documentation
+
+## 16.0.0-alpha.40 (2022-10-01)
+
+### Feature
+
+- Working copy actions now render errors if they fail @pnicolli
 - lazyloading of rrule lib. @giuliaghisini
 
 ### Bugfix
@@ -16,8 +27,8 @@
 ### Internal
 
 - Run yarn deduplicate on dependencies. @davisagli
-
-### Documentation
+- Upgrade to Plone 6 beta 2 @sneridagh
+- Flip testing matrix for acceptance tests, make Plone 6 principal subject, Plone 5 as secondary @sneridagh
 
 ## 16.0.0-alpha.39 (2022-09-28)
 
@@ -357,6 +368,10 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Fix `defaultBlockType` entry in default config, set it to slate. @sneridagh
 
 ## 16.0.0-alpha.17 (2022-07-25)
+
+### Feature
+
+- Added the `Undo controlpanel` to the controlpanels which can be used to undo transactions. @MdSahil-oss
 
 ### Bugfix
 

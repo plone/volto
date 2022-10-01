@@ -9,7 +9,6 @@ describe('Listing Block Tests', () => {
       contentId: 'my-page',
       contentTitle: 'My Page',
     });
-    cy.removeContent({ path: 'front-page' });
     cy.removeContent({ path: 'news' });
     cy.removeContent({ path: 'events' });
     cy.removeContent({ path: 'Members' });
