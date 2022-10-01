@@ -639,18 +639,16 @@ Cypress.Commands.add('clearSlate', (selector) => {
 
 Cypress.Commands.add('getSlate', (createNewSlate = false) => {
   let slate;
+  if (createNewSlate) {
+    cy.get('.block.inner').last().type('{moveToEnd}{enter}');
+  }
   cy.getIfExists(
     SLATE_SELECTOR,
     () => {
       slate = cy.get(SLATE_SELECTOR).last();
     },
     () => {
-      if (createNewSlate) {
-        cy.get('.block.inner').last().type('{enter}');
-        slate = cy.get(SLATE_SELECTOR, { timeout: 10000 }).last();
-      } else {
-        slate = cy.get(SLATE_SELECTOR, { timeout: 10000 }).last();
-      }
+      slate = cy.get(SLATE_SELECTOR, { timeout: 10000 }).last();
     },
   );
   return slate;

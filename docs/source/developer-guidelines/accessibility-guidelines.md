@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Accessibility guidelines in Volto"
-  "property=og:description": "Accessibility guidelines in Volto"
-  "property=og:title": "Accessibility guidelines"
-  "keywords": "Volto, Plone, frontend, React, Accessibility, guidelines, a11y"
+myst:
+  html_meta:
+    "description": "Accessibility guidelines in Volto"
+    "property=og:description": "Accessibility guidelines in Volto"
+    "property=og:title": "Accessibility guidelines"
+    "keywords": "Volto, Plone, frontend, React, Accessibility, guidelines, a11y"
 ---
 
 # Accessibility guidelines

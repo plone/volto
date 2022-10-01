@@ -16,6 +16,8 @@ import RenderBlocks from './RenderBlocks';
 import { hasBlocksData, getBaseUrl } from '@plone/volto/helpers';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { isEqual } from 'lodash';
+
 /**
  * Component to display the default view.
  * @function DefaultView
@@ -27,7 +29,6 @@ const DefaultView = (props) => {
   const path = getBaseUrl(location?.pathname || '');
   const dispatch = useDispatch();
   const { views } = config.widgets;
-  const contentLoaded = useSelector((state) => state.content.get.loaded);
   const contentSchema = useSelector((state) => state.schema?.schema);
   const fieldsetsToExclude = [
     'categorization',
@@ -38,6 +39,16 @@ const DefaultView = (props) => {
   const fieldsets = contentSchema?.fieldsets.filter(
     (fs) => !fieldsetsToExclude.includes(fs.id),
   );
+
+  // TL;DR: There is a flash of the non block-based view because of the reset
+  // of the content on route change. Subscribing to the content change at this
+  // level has nasty implications, so we can't watch the Redux state for loaded
+  // content flag here (because it forces an additional component update)
+  // Instead, we can watch if the content is "empty", but this has a drawback
+  // since the locking mechanism inserts a `lock` key before the content is there.
+  // So "empty" means `content` is present, but only with a `lock` key, thus the next
+  // ugly condition comes to life
+  const contentLoaded = content && !isEqual(Object.keys(content), ['lock']);
 
   React.useEffect(() => {
     content?.['@type'] &&

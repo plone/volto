@@ -45,6 +45,10 @@ const messages = defineMessages({
     id: 'Sharing',
     defaultMessage: 'Sharing',
   },
+  aliases: {
+    id: 'URL Management',
+    defaultMessage: 'URL Management',
+  },
   ManageTranslations: {
     id: 'Manage Translations',
     defaultMessage: 'Manage Translations',
@@ -211,7 +215,12 @@ class More extends Component {
     const sharingAction = find(this.props.actions.object, {
       id: 'local_roles',
     });
+
+    const aliasesAction = find(this.props.actions.object_buttons, {
+      id: 'redirection',
+    });
     const { content, intl } = this.props;
+
     const dateOptions = {
       year: 'numeric',
       month: 'long',
@@ -285,6 +294,16 @@ class More extends Component {
                 <li>
                   <Link to={`${path}/sharing`}>
                     {this.props.intl.formatMessage(messages.sharing)}
+                    <Icon name={rightArrowSVG} size="24px" />
+                  </Link>
+                </li>
+              )}
+            </Plug>
+            <Plug pluggable="toolbar-more-menu-list" id="aliases">
+              {aliasesAction && (
+                <li>
+                  <Link to={`${path}/aliases`}>
+                    {this.props.intl.formatMessage(messages.aliases)}
                     <Icon name={rightArrowSVG} size="24px" />
                   </Link>
                 </li>

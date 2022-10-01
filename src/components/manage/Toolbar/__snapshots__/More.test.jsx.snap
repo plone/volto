@@ -79,6 +79,19 @@ exports[`Toolbar More component renders a Toolbar More component 1`] = `
             />
           </a>
         </li>
+        <li>
+          <a
+            href="/blah/aliases"
+          >
+            URL Management
+            <svg
+              class="icon"
+              style="height: 24px; width: auto; fill: currentColor;"
+              viewBox=""
+              xmlns=""
+            />
+          </a>
+        </li>
       </ul>
     </div>
   </div>
@@ -156,6 +169,19 @@ exports[`Toolbar More component renders a Toolbar More component with manage con
             href="/blah/sharing"
           >
             Sharing
+            <svg
+              class="icon"
+              style="height: 24px; width: auto; fill: currentColor;"
+              viewBox=""
+              xmlns=""
+            />
+          </a>
+        </li>
+        <li>
+          <a
+            href="/blah/aliases"
+          >
+            URL Management
             <svg
               class="icon"
               style="height: 24px; width: auto; fill: currentColor;"

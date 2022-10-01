@@ -9,6 +9,7 @@ import {
   contentTypesViews,
   defaultView,
   errorViews,
+  layoutViewsNamesMapping,
 } from './Views';
 import { nonContentRoutes } from './NonContentRoutes';
 import {
@@ -20,6 +21,7 @@ import {
 } from './Blocks';
 import { components } from './Components';
 import { loadables } from './Loadables';
+import { workflowMapping } from './Workflows';
 
 import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
@@ -162,6 +164,7 @@ let config = {
     hasWorkingCopySupport: false,
     maxUndoLevels: 200, // undo history size for the main form
     addonsInfo: addonsInfo,
+    workflowMapping,
   },
   widgets: {
     ...widgetMapping,
@@ -172,6 +175,7 @@ let config = {
     contentTypesViews,
     defaultView,
     errorViews,
+    layoutViewsNamesMapping,
   },
   blocks: {
     requiredBlocks,
@@ -186,9 +190,6 @@ let config = {
   components,
 };
 
-config = applySlateConfiguration(config);
-config = applyAddonConfiguration(config);
-
 ConfigRegistry.settings = config.settings;
 ConfigRegistry.blocks = config.blocks;
 ConfigRegistry.views = config.views;
@@ -197,3 +198,5 @@ ConfigRegistry.addonRoutes = config.addonRoutes;
 ConfigRegistry.addonReducers = config.addonReducers;
 ConfigRegistry.appExtras = config.appExtras;
 ConfigRegistry.components = config.components;
+
+applyAddonConfiguration(applySlateConfiguration(ConfigRegistry));

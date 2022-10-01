@@ -41,7 +41,7 @@ describe('Listing Block Tests', () => {
       path: 'my-page',
     });
     cy.createContent({
-      contentType: 'Folder',
+      contentType: 'Document',
       contentId: 'my-folder',
       contentTitle: 'My Folder',
       path: 'my-page',
@@ -80,6 +80,195 @@ describe('Listing Block Tests', () => {
       'href',
       '/my-page/my-page-test',
     );
+  });
+
+  it('Add Listing block - containing items', () => {
+    cy.intercept('PATCH', '/**/my-page').as('save');
+    cy.intercept('GET', '/**/my-page').as('content');
+    cy.intercept('GET', '/**/@types/Document').as('schema');
+
+    // Given One Document My Page Test and One News Item MY News and One Folder My Folder
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'my-page-test',
+      contentTitle: 'My Page Test',
+      path: 'my-page',
+    });
+    cy.createContent({
+      contentType: 'News Item',
+      contentId: 'my-news',
+      contentTitle: 'My News',
+      path: 'my-page',
+    });
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'my-folder',
+      contentTitle: 'My Folder',
+      path: 'my-page',
+    });
+
+    cy.navigate('/my-page');
+    cy.wait('@content');
+
+    cy.navigate('/my-page/edit');
+    cy.wait('@schema');
+
+    cy.clearSlateTitle().type('My title');
+
+    //add listing block
+    cy.getSlate().click();
+    cy.get('button.block-add-button').click();
+    cy.get('.blocks-chooser .title').contains('Common').click();
+    cy.get('.blocks-chooser .common').contains('Listing').click();
+
+    //verify before save
+    cy.get(`.block.listing .listing-body:first-of-type`).contains(
+      'My Page Test',
+    );
+    cy.get('.items-preview').contains('Contained items');
+
+    //save
+    cy.get('#toolbar-save').click();
+    cy.wait('@save');
+    cy.wait('@content');
+
+    //test after save
+    cy.get('#page-document .listing-body:first-of-type').contains(
+      'My Page Test',
+    );
+  });
+
+  it.only('Add Listing block - results preview', () => {
+    cy.intercept('PATCH', '/**/my-page').as('save');
+    cy.intercept('GET', '/**/my-page').as('content');
+    cy.intercept('GET', '/**/@types/Document').as('schema');
+
+    // Given One Document My Page Test and One News Item MY News and One Folder My Folder
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'my-page-test',
+      contentTitle: 'My Page Test',
+      path: 'my-page',
+    });
+    cy.createContent({
+      contentType: 'News Item',
+      contentId: 'my-news',
+      contentTitle: 'My News',
+      path: 'my-page',
+    });
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'my-folder',
+      contentTitle: 'My Folder',
+      path: 'my-page',
+    });
+
+    cy.navigate('/my-page');
+    cy.wait('@content');
+
+    cy.navigate('/my-page/edit');
+    cy.wait('@schema');
+
+    cy.clearSlateTitle().type('My title');
+
+    //add listing block
+    cy.getSlate().click();
+    cy.get('button.block-add-button').click();
+    cy.get('.blocks-chooser .title').contains('Common').click();
+    cy.get('.blocks-chooser .common').contains('Listing').click();
+
+    cy.get('.sidebar-container .tabs-wrapper .menu .item')
+      .contains('Block')
+      .click();
+    cy.get('.querystring-widget .fields').contains('Add criteria').click();
+    cy.get(
+      '.querystring-widget .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
+    )
+      .contains('Type')
+      .click();
+
+    //insert Page
+    cy.get('.querystring-widget .fields:first-of-type > .field').click();
+    cy.get(
+      '.querystring-widget .fields:first-of-type > .field .react-select__menu .react-select__option',
+    )
+      .contains('Page')
+      .click();
+
+    //verify before save
+    cy.get(`.block.listing .listing-body:first-of-type`).contains(
+      'My Page Test',
+    );
+    cy.get('.items-preview').contains('Results preview');
+
+    //save
+    cy.get('#toolbar-save').click();
+    cy.wait('@save');
+    cy.wait('@content');
+
+    //test after save
+    cy.get('#page-document .listing-body:first-of-type').contains(
+      'My Page Test',
+    );
+    cy.get('#page-document .listing-item:first-of-type a').should(
+      'have.attr',
+      'href',
+      '/my-page/my-page-test',
+    );
+  });
+
+  it('Add Listing block - with a headline', () => {
+    cy.intercept('PATCH', '/**/my-page').as('save');
+    cy.intercept('GET', '/**/my-page').as('content');
+    cy.intercept('GET', '/**/@types/Document').as('schema');
+
+    // Given One Document My Page Test and One News Item MY News and One Folder My Folder
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'my-page-test',
+      contentTitle: 'My Page Test',
+      path: 'my-page',
+    });
+    cy.createContent({
+      contentType: 'News Item',
+      contentId: 'my-news',
+      contentTitle: 'My News',
+      path: 'my-page',
+    });
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'my-folder',
+      contentTitle: 'My Folder',
+      path: 'my-page',
+    });
+
+    cy.navigate('/my-page');
+    cy.wait('@content');
+
+    cy.navigate('/my-page/edit');
+    cy.wait('@schema');
+
+    cy.clearSlateTitle().type('My title');
+
+    //add listing block
+    cy.getSlate().click();
+    cy.get('button.block-add-button').click();
+    cy.get('.blocks-chooser .title').contains('Common').click();
+    cy.get('.blocks-chooser .common').contains('Listing').click();
+
+    //verify before save
+    cy.get(`.block.listing .listing-body:first-of-type`).contains(
+      'My Page Test',
+    );
+    cy.get('#field-headline').type('This is a headline');
+
+    //save
+    cy.get('#toolbar-save').click();
+    cy.wait('@save');
+    cy.wait('@content');
+
+    //test after save
+    cy.get('#page-document h2.headline').contains('This is a headline');
   });
 
   it('Add Listing Block: sort by effective date', () => {
@@ -169,9 +358,9 @@ describe('Listing Block Tests', () => {
     cy.intercept('GET', '/**/@types/*').as('schema');
 
     cy.createContent({
-      contentType: 'Document',
-      contentId: 'my-page-test',
-      contentTitle: 'My Page Test',
+      contentType: 'News Item',
+      contentId: 'my-news',
+      contentTitle: 'My News',
       path: 'my-page',
     });
 
@@ -183,6 +372,7 @@ describe('Listing Block Tests', () => {
     );
 
     //add listing block
+    cy.scrollTo('bottom');
     cy.getSlate(true).click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
@@ -247,7 +437,7 @@ describe('Listing Block Tests', () => {
       path: 'my-page',
     });
     cy.createContent({
-      contentType: 'Folder',
+      contentType: 'Document',
       contentId: 'my-folder',
       contentTitle: 'My Folder',
       path: 'my-page',
@@ -600,19 +790,19 @@ describe('Listing Block Tests', () => {
     cy.intercept('GET', '/**/@types/Document').as('schema');
 
     cy.createContent({
-      contentType: 'Folder',
+      contentType: 'Document',
       contentId: 'my-folder',
       contentTitle: 'My Folder',
       path: 'my-page',
     });
     cy.createContent({
-      contentType: 'Folder',
+      contentType: 'Document',
       contentId: 'my-folder2',
       contentTitle: 'My Folder 2',
       path: 'my-page',
     });
     cy.createContent({
-      contentType: 'Folder',
+      contentType: 'Document',
       contentId: 'my-folder3',
       contentTitle: 'My Folder 3',
       path: 'my-page',
@@ -650,7 +840,7 @@ describe('Listing Block Tests', () => {
     cy.get(
       '.querystring-widget .fields:first-of-type > .field .react-select__menu .react-select__option',
     )
-      .contains('Folder')
+      .contains('Page')
       .click();
 
     cy.get('#field-limit-3-querystring').click().type('2');

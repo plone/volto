@@ -1,3 +1,15 @@
+const interceptUsers = () => {
+  cy.intercept({
+    method: 'GET',
+    url: '**/usergroup',
+  }).as('manyUsers');
+  cy.visit('/controlpanel/users');
+  cy.waitForResourceToLoad('@navigation');
+  cy.waitForResourceToLoad('@breadcrumbs');
+  cy.waitForResourceToLoad('@actions');
+  cy.waitForResourceToLoad('@types');
+};
+
 describe('User Control Panel Test', () => {
   beforeEach(() => {
     // given a logged in editor
@@ -94,5 +106,66 @@ describe('User Control Panel Test', () => {
     cy.get('[data-user="users"] div.checkbox')
       .first()
       .should('have.class', 'checked');
+  });
+});
+describe('User Control Panel test for  many users', () => {
+  beforeEach(() => {
+    cy.visit('/');
+    cy.autologin();
+    cy.createUser({
+      username: 'editor',
+      fullname: 'Peet Editor',
+    });
+    cy.visit('/controlpanel/usergroup');
+    cy.waitForResourceToLoad('@navigation');
+    cy.waitForResourceToLoad('@breadcrumbs');
+
+    cy.get('.content-area').then(($content_area) => {
+      if ($content_area.text().indexOf('Settings') > -1) {
+        cy.get('input[name="field-many_groups"]').check({
+          force: true,
+        });
+        cy.get('input[name="field-many_users"]').check({
+          force: true,
+        });
+        cy.get('#toolbar-save').click();
+      }
+    });
+  });
+  afterEach(() => {
+    // not many users, not many groups
+    cy.visit('/controlpanel/usergroup');
+    cy.waitForResourceToLoad('@navigation');
+    cy.waitForResourceToLoad('@breadcrumbs');
+
+    cy.get('.content-area').then(($content_area) => {
+      if ($content_area.text().indexOf('Settings') > -1) {
+        cy.get('input[name="field-many_groups"]').check({
+          force: true,
+        });
+        cy.get('input[name="field-many_users"]').check({
+          force: true,
+        });
+        cy.get('#toolbar-save').click();
+      }
+    });
+  });
+  it('Should not show users if the many_users option in enabled', () => {
+    interceptUsers();
+    cy.wait('@manyUsers').then((interception) => {
+      if (expect(interception.response.body.data.many_users).to.equal(true)) {
+        cy.get('.ui.secondary.attached.menu div.menu').should('be.empty');
+      }
+    });
+  });
+  it('In the case of many users, It should show a user only when it is searched by a username ', () => {
+    interceptUsers();
+    cy.wait('@manyUsers').then((interception) => {
+      if (expect(interception.response.body.data.many_users).to.equal(true)) {
+        cy.get('input[id="user-search-input"]').clear().type('editor');
+        cy.get('.icon.button:first').click();
+        cy.get('.fullname').should('have.text', 'Peet Editor');
+      }
+    });
   });
 });
