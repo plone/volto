@@ -9,11 +9,11 @@ import {
   CREATE_USER,
   DELETE_USER,
   GET_USER,
-  LIST_USERS,
-  UPDATE_USER,
-  UPDATE_PASSWORD,
   INITIAL_PASSWORD,
+  LIST_USERS,
   RESET_PASSWORD,
+  UPDATE_PASSWORD,
+  UPDATE_USER,
 } from '@plone/volto/constants/ActionTypes';
 
 /**
@@ -28,9 +28,7 @@ export function createUser(content, sendPasswordReset) {
     request: {
       op: 'post',
       path: '/@users',
-      data: sendPasswordReset
-        ? { ...content, sendPasswordReset }
-        : content,
+      data: sendPasswordReset ? { ...content, sendPasswordReset } : content,
     },
   };
 }
