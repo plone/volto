@@ -78,6 +78,10 @@ const messages = defineMessages({
     id: 'User Group Membership',
     defaultMessage: 'User Group Membership',
   },
+  undo: {
+    id: 'Undo',
+    defaultMessage: 'Undo',
+  },
   urlmanagement: {
     id: 'URL Management',
     defaultMessage: 'URL Management',
@@ -176,6 +180,11 @@ class Controlpanels extends Component {
           '@id': '/database',
           group: this.props.intl.formatMessage(messages.general),
           title: this.props.intl.formatMessage(messages.database),
+        },
+        {
+          '@id': '/undo',
+          group: this.props.intl.formatMessage(messages.general),
+          title: this.props.intl.formatMessage(messages.undo),
         },
         {
           '@id': '/aliases',
