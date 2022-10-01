@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Comment out flaky test for now regarding many users/groups @sneridagh
+
 ### Documentation
 
 ## 16.0.0-alpha.40 (2022-10-01)
@@ -27,6 +29,9 @@
 ### Internal
 
 - Run yarn deduplicate on dependencies. @davisagli
+
+### Documentation
+
 - Upgrade to Plone 6 beta 2 @sneridagh
 - Flip testing matrix for acceptance tests, make Plone 6 principal subject, Plone 5 as secondary @sneridagh
 
