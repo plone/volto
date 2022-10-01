@@ -373,10 +373,11 @@ class AddonsControlpanel extends Component {
                     }
                   >
                     {item.title}
+
                     {item.upgrade_info.available && (
-                      <span className="updateText">
+                      <Label>
                         <FormattedMessage id="Update" defaultMessage="Update" />
-                      </span>
+                      </Label>
                     )}
                     <Icon
                       name={
