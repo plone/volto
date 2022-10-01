@@ -6,6 +6,7 @@
 
 ### Feature
 
+- Working copy actions now render errors if they fail @pnicolli
 - lazyloading of rrule lib. @giuliaghisini
 
 ### Bugfix
