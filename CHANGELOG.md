@@ -2,8 +2,6 @@
 
 ## 16.0.0 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Working copy actions now render errors if they fail @pnicolli
@@ -19,8 +17,6 @@
 - Run yarn deduplicate on dependencies. @davisagli
 - Upgrade to Plone 6 beta 2 @sneridagh
 - Flip testing matrix for acceptance tests, make Plone 6 principal subject, Plone 5 as secondary @sneridagh
-
-### Documentation
 
 ## 16.0.0-alpha.39 (2022-09-28)
 
