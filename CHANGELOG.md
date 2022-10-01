@@ -360,6 +360,10 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 
 ## 16.0.0-alpha.17 (2022-07-25)
 
+### Feature
+
+- Added the `Undo controlpanel` to the controlpanels which can be used to undo transactions. @MdSahil-oss
+
 ### Bugfix
 
 - Make `crypto-random-string` a direct dep, fixing a hidden error since some updated dependency was requiring it directly but not anymore. @sneridagh
