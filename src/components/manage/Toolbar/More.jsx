@@ -53,6 +53,10 @@ const messages = defineMessages({
     id: 'Manage Translations',
     defaultMessage: 'Manage Translations',
   },
+  manageContent: {
+    id: 'Manage content…',
+    defaultMessage: 'Manage content…',
+  },
   CreateWorkingCopy: {
     id: 'Create working copy',
     defaultMessage: 'Create working copy',
@@ -82,6 +86,22 @@ const messages = defineMessages({
   workingCopyRemovedTitle: {
     id: 'The working copy was discarded',
     defaultMessage: 'The working copy was discarded',
+  },
+  Unauthorized: {
+    id: 'Unauthorized',
+    defaultMessage: 'Unauthorized',
+  },
+  workingCopyErrorUnauthorized: {
+    id: 'workingCopyErrorUnauthorized',
+    defaultMessage: 'You are not authorized to perform this operation.',
+  },
+  Error: {
+    id: 'Error',
+    defaultMessage: 'Error',
+  },
+  workingCopyGenericError: {
+    id: 'workingCopyGenericError',
+    defaultMessage: 'An error occurred while performing this operation.',
   },
 });
 
@@ -129,6 +149,59 @@ class More extends Component {
     this.props.loadComponent(selector);
     document.removeEventListener('mousedown', this.handleClickOutside, false);
   };
+
+  componentDidUpdate(prevProps, prevState) {
+    let erroredAction = '';
+    if (
+      prevProps.workingCopy.apply.loading &&
+      this.props.workingCopy.apply.error
+    ) {
+      erroredAction = 'apply';
+    } else if (
+      prevProps.workingCopy.create.loading &&
+      this.props.workingCopy.create.error
+    ) {
+      erroredAction = 'create';
+    } else if (
+      prevProps.workingCopy.remove.loading &&
+      this.props.workingCopy.remove.error
+    ) {
+      erroredAction = 'remove';
+    }
+
+    if (erroredAction) {
+      const errorStatus = this.props.workingCopy[erroredAction].error.status;
+      if (errorStatus === 401 || errorStatus === 403) {
+        toast.error(
+          <Toast
+            error
+            title={this.props.intl.formatMessage(messages.Unauthorized)}
+            content={this.props.intl.formatMessage(
+              messages.workingCopyErrorUnauthorized,
+            )}
+          />,
+          {
+            toastId: 'workingCopyErrorUnauthorized',
+            autoClose: 10000,
+          },
+        );
+      } else {
+        toast.error(
+          <Toast
+            error
+            title={this.props.intl.formatMessage(messages.Error)}
+            content={this.props.intl.formatMessage(
+              messages.workingCopyGenericError,
+            )}
+          />,
+          {
+            toastId: 'workingCopyGenericError',
+            autoClose: 10000,
+          },
+        );
+      }
+    }
+  }
 
   /**
    * Render method.
@@ -244,7 +317,9 @@ class More extends Component {
               {pluggables.length > 0 && (
                 <>
                   <header>
-                    <h2>Manage content...</h2>
+                    <h2>
+                      {this.props.intl.formatMessage(messages.manageContent)}
+                    </h2>
                   </header>
                   <div className="pastanaga-menu-list">
                     <ul>
@@ -439,6 +514,7 @@ export default compose(
       pathname: props.pathname,
       content: state.content.data,
       lang: state.intl.locale,
+      workingCopy: state.workingCopy,
     }),
     { applyWorkingCopy, createWorkingCopy, removeWorkingCopy },
   ),
