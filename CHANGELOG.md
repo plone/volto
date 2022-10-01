@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add `Teaser` block @sneridagh
+
 ### Bugfix
 
 ### Internal
