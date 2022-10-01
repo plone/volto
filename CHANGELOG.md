@@ -16,6 +16,7 @@
 ### Internal
 
 - Run yarn deduplicate on dependencies. @davisagli
+- Comment out flaky test for now regarding many users/groups @sneridagh
 
 ### Documentation
 
