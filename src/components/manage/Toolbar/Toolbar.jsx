@@ -189,7 +189,6 @@ class Toolbar extends Component {
       menuComponents: [],
       loadedComponents: [],
       hideToolbarBody: false,
-      currentPathname: null,
     };
   }
 
@@ -199,6 +198,7 @@ class Toolbar extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
+    this.props.getContent(getBaseUrl(this.props.pathname));
     this.props.listActions(getBaseUrl(this.props.pathname));
     this.props.getTypes(getBaseUrl(this.props.pathname));
     this.props.setExpandedToolbar(this.state.expanded);
@@ -212,11 +212,9 @@ class Toolbar extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.pathname !== this.state.currentPathname) {
-      this.props.getContent(getBaseUrl(nextProps.pathname));
+    if (nextProps.pathname !== this.props.pathname) {
       this.props.listActions(getBaseUrl(nextProps.pathname));
       this.props.getTypes(getBaseUrl(nextProps.pathname));
-      this.setState({ currentPathname: nextProps.pathname });
     }
 
     // Unlock
