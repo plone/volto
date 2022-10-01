@@ -7,6 +7,7 @@ import Cookies from 'universal-cookie';
 import jwtDecode from 'jwt-decode';
 
 import { loginRenew } from '@plone/volto/actions';
+import { getCookieOptions } from '@plone/volto/helpers';
 import { push } from 'connected-react-router';
 
 /**
@@ -62,10 +63,13 @@ export function persistAuthToken(store, req) {
         }
       } else {
         if (previousValue !== currentValue) {
-          cookies.set('auth_token', currentValue, {
-            path: '/',
-            expires: new Date(jwtDecode(currentValue).exp * 1000),
-          });
+          cookies.set(
+            'auth_token',
+            currentValue,
+            getCookieOptions({
+              expires: new Date(jwtDecode(currentValue).exp * 1000),
+            }),
+          );
         }
         const exp =
           (jwtDecode(store.getState().userSession.token).exp * 1000 -

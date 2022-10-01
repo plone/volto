@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Environment variables allow configuration of your Volto application at runtime."
-  "property=og:description": "Environment variables allow configuration of your Volto application at runtime."
-  "property=og:title": "Environment variables"
-  "keywords": "Volto, React, Plone, Environment variables, Razzle,"
+myst:
+  html_meta:
+    "description": "Environment variables allow configuration of your Volto application at runtime."
+    "property=og:description": "Environment variables allow configuration of your Volto application at runtime."
+    "property=og:title": "Environment variables"
+    "keywords": "Volto, React, Plone, Environment variables, Razzle,"
 ---
 
 # Environment variables
@@ -189,11 +190,4 @@ This is a runtime-only environment variable that directs the build to run Volto 
 ```bash
 yarn
 BUILD_DIR=dist node dist/server.js
-```
-
-or
-
-```bash
-yarn
-yarn start:dist
 ```

@@ -1640,7 +1640,7 @@ export const Query = WidgetStory.bind({
 });
 
 export default {
-  title: 'Widgets/Query',
+  title: 'Edit Widgets/Query',
   component: QuerystringWidgetComponent,
   decorators: [
     (Story) => (

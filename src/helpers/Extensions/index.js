@@ -1,2 +1,5 @@
 export * from './withBlockSchemaEnhancer';
-export withBlockExtensions, { resolveExtension } from './withBlockExtensions';
+export withBlockExtensions, {
+  resolveExtension,
+  resolveBlockExtensions,
+} from './withBlockExtensions';

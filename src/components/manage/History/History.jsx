@@ -15,7 +15,7 @@ import { Portal } from 'react-portal';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import {
-  FormattedRelativeDate,
+  FormattedDate,
   Icon as IconNext,
   Toolbar,
 } from '@plone/volto/components';
@@ -174,7 +174,7 @@ class History extends Component {
             </Table.Header>
             <Table.Body>
               {map(entries, (entry) => (
-                <Table.Row key={entry.time}>
+                <Table.Row key={'version' in entry ? entry.version : -1}>
                   <Table.Cell>
                     {('version' in entry && entry.version > 0 && (
                       <Link
@@ -209,7 +209,7 @@ class History extends Component {
                   </Table.Cell>
                   <Table.Cell>{entry.actor.fullname}</Table.Cell>
                   <Table.Cell>
-                    <FormattedRelativeDate date={entry.time} />
+                    <FormattedDate date={entry.time} includeTime />
                   </Table.Cell>
                   <Table.Cell>{entry.comments}</Table.Cell>
                   <Table.Cell>

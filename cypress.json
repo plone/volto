@@ -1,8 +1,0 @@
-{
-  "baseUrl": "http://localhost:3000",
-  "viewportWidth": 1280,
-  "ignoreTestFiles": ["*~"],
-  "integrationFolder": "cypress/tests/core",
-  "chromeWebSecurity": false,
-  "projectId": "5iy5e2"
-}

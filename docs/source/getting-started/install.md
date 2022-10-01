@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Installing Volto"
-  "property=og:description": "Installing Volto"
-  "property=og:title": "Getting Started"
-  "keywords": "Volto, Plone, frontend, React, install, nvm, NodeJS, JavaScript"
+myst:
+  html_meta:
+    "description": "Installing Volto"
+    "property=og:description": "Installing Volto"
+    "property=og:title": "Getting Started"
+    "keywords": "Volto, Plone, frontend, React, install, nvm, NodeJS, JavaScript"
 ---
 
 (frontend-getting-started-label)=
@@ -75,7 +76,7 @@ it provides easy access to any NodeJS released version.
     nvm version
     ```
 
-4.  Install any active LTS version of NodeJS (https://nodejs.org/en/about/releases/):
+4.  Install any active LTS version of NodeJS (https://github.com/nodejs/release#release-schedule):
 
     ```bash
     nvm install 16
@@ -94,7 +95,7 @@ it provides easy access to any NodeJS released version.
 
     ```{note}
     Volto supports currently active NodeJS LTS versions based on [NodeJS
-    Releases page](https://nodejs.org/en/about/releases/), starting with Node 12 LTS.
+    Releases page](https://github.com/nodejs/release#release-schedule), starting with Node 12 LTS.
     ```
 
 
@@ -140,7 +141,7 @@ To install Docker desktop for Mac, here are the detailed instructions:
 2. Install the package as any other Mac software, if required, follow
    instructions from:
 
-    https://docs.docker.com/docker-for-mac/install/
+    https://docs.docker.com/desktop/install/mac-install/
 
 3. Check that docker is installed correctly, open a new terminal and type:
 

@@ -1,4 +1,4 @@
-import { flatten, isEqual, isObject, transform } from 'lodash';
+import { cloneDeepWith, flatten, isEqual, isObject, transform } from 'lodash';
 import React from 'react';
 import { matchPath } from 'react-router';
 import config from '@plone/volto/registry';
@@ -174,15 +174,34 @@ export const parseDateTime = (locale, value, format, moment) => {
 };
 
 /**
- * Normalizes a language to match the i18n format from the Plone lang names
- * @param {string} language Language to be normalized
- * @returns {string} Language normalized
+ * Converts a language code to the format `lang_region`
+ * Useful for passing from Plone's i18n lang names to Xnix locale names
+ * eg. LC_MESSAGES/lang_region.po filenames
+ * @param {string} language Language to be converted
+ * @returns {string} Language converted
  */
 export const normalizeLanguageName = (language) => {
   if (language.includes('-')) {
     let normalizedLang = language.split('-');
     normalizedLang = `${normalizedLang[0]}_${normalizedLang[1].toUpperCase()}`;
     return normalizedLang;
+  }
+
+  return language;
+};
+
+/**
+ * Converts a language code to the format `lang-region`
+ * `react-intl` only supports this syntax, so coming from the language
+ * negotiation of the `locale` lib, one need to convert it first
+ * @param {string} language Language to be converted
+ * @returns {string} Language converted
+ */
+export const toLangUnderscoreRegion = (language) => {
+  if (language.includes('_')) {
+    let langCode = language.split('_');
+    langCode = `${langCode[0]}-${langCode[1].toUpperCase()}`;
+    return langCode;
   }
 
   return language;
@@ -249,4 +268,32 @@ export const reorderArray = (array, origin, target) => {
   result.splice(target, 0, removed);
 
   return result;
+};
+
+/**
+ * Slugify a string: remove whitespaces, special chars and replace with _
+ * @param {string} string String to be slugified
+ * @returns {string} Slugified string
+ */
+export const slugify = (string) => {
+  return string
+    .toLowerCase()
+    .replace(/[\s-]+/g, '_')
+    .replace(/[^\w]+/g, '');
+};
+
+/**
+ * cloneDeep an object with support for JSX nodes on it
+ * Somehow, in a browser it fails with a "Illegal invocation" error
+ * but in node (Jest test) it doesn't. This does the trick.
+ * @param {object} object object to be cloned
+ * @returns {object} deep cloned object
+ */
+export const cloneDeepSchema = (object) => {
+  return cloneDeepWith(object, (value) => {
+    if (React.isValidElement(value)) {
+      // If a JSX valid element, just return it, do not try to deep clone it
+      return value;
+    }
+  });
 };
