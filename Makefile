@@ -20,7 +20,7 @@ NODEBIN = ./node_modules/.bin
 
 # Plone 5 legacy
 DOCKER_IMAGE5=plone/plone-backend:5.2.9
-KGS5=plone.restapi==8.27.0 plone.volto==4.0.0a13 plone.rest==2.0.0a5
+KGS5=plone.restapi==8.29.0 plone.volto==4.0.0a13 plone.rest==2.0.0a5
 
 # Sphinx variables
 # You can set these variables from the command line.
