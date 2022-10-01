@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Complete spanish translation @erral
+
 ### Bugfix
 
 ### Internal
