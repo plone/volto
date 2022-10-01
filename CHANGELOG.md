@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Enable the use of yarn 3 in the build by default @sneridagh
+
 ### Documentation
 
 ## 16.0.0-alpha.40 (2022-10-01)
