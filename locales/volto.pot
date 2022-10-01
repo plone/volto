@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-09-23T09:41:15.663Z\n"
+"POT-Creation-Date: 2022-10-01T16:59:15.891Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -798,6 +798,7 @@ msgid "Descending"
 msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1385,6 +1386,11 @@ msgstr ""
 #: config/Blocks
 # defaultMessage: Image gallery
 msgid "Image gallery"
+msgstr ""
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Image override
+msgid "Image override"
 msgstr ""
 
 #: components/manage/Blocks/Image/schema
@@ -2014,6 +2020,7 @@ msgstr ""
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Teaser/schema
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr ""
@@ -2102,6 +2109,11 @@ msgstr ""
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first.
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
+msgstr ""
+
+#: components/manage/Blocks/Teaser/DefaultBody
+# defaultMessage: Please choose an existing content as source for this element
+msgid "Please choose an existing content as source for this element"
 msgstr ""
 
 #: components/manage/Blocks/Video/Body
@@ -2887,6 +2899,7 @@ msgstr ""
 msgid "Tags to remove"
 msgstr ""
 
+#: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Target
 msgid "Target"
@@ -2910,6 +2923,11 @@ msgstr ""
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Target url path must start with a slash.
 msgid "Target url path must start with a slash."
+msgstr ""
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Teaser
+msgid "Teaser"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -3053,6 +3071,7 @@ msgid "Time"
 msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Teaser/schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -3635,6 +3654,11 @@ msgstr ""
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Where
 msgid "event_where"
+msgstr ""
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: head title
+msgid "head_title"
 msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset

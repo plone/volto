@@ -804,6 +804,7 @@ msgid "Descending"
 msgstr "降順"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1391,6 +1392,11 @@ msgstr "画像"
 #: config/Blocks
 # defaultMessage: Image gallery
 msgid "Image gallery"
+msgstr ""
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Image override
+msgid "Image override"
 msgstr ""
 
 #: components/manage/Blocks/Image/schema
@@ -2020,6 +2026,7 @@ msgstr ""
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Teaser/schema
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr "新しいタブで開く"
@@ -2109,6 +2116,11 @@ msgstr "個人設定"
 # defaultMessage: Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first.
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first. (未翻訳)"
+
+#: components/manage/Blocks/Teaser/DefaultBody
+# defaultMessage: Please choose an existing content as source for this element
+msgid "Please choose an existing content as source for this element"
+msgstr ""
 
 #: components/manage/Blocks/Video/Body
 # defaultMessage: Please enter a valid URL by deleting the block and adding a new video block.
@@ -2893,6 +2905,7 @@ msgstr "追加するタグ"
 msgid "Tags to remove"
 msgstr "削除をするタグ"
 
+#: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Target
 msgid "Target"
@@ -2916,6 +2929,11 @@ msgstr "キャッシュごとのメモリー上の最大オブジェクト数"
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Target url path must start with a slash.
 msgid "Target url path must start with a slash."
+msgstr ""
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Teaser
+msgid "Teaser"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -3059,6 +3077,7 @@ msgid "Time"
 msgstr "時刻"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Teaser/schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -3642,6 +3661,11 @@ msgstr "日時"
 # defaultMessage: Where
 msgid "event_where"
 msgstr "場所"
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: head title
+msgid "head_title"
+msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Password reset confirmation sent

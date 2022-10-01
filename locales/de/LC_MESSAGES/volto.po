@@ -802,6 +802,7 @@ msgid "Descending"
 msgstr "Absteigend"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1390,6 +1391,11 @@ msgstr "Bild"
 # defaultMessage: Image gallery
 msgid "Image gallery"
 msgstr "Bildergalerie"
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Image override
+msgid "Image override"
+msgstr ""
 
 #: components/manage/Blocks/Image/schema
 # defaultMessage: Image size
@@ -2018,6 +2024,7 @@ msgstr "Nur Kleinbuchstaben (a-z) ohne Umlaute oder Sonderzeichen, Zahlen (0-9) 
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Teaser/schema
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr "In neuem Browser-Tab öffnen"
@@ -2107,6 +2114,11 @@ msgstr "Persönliche Einstellungen"
 # defaultMessage: Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first.
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Eine Liste von Personen, die an der Erstellung dieses Artikels beteiligt waren. Bitte geben Sie einen Benutzernamen pro Zeile ein. Der Hauptverantwortliche sollte zuerst genannt werden."
+
+#: components/manage/Blocks/Teaser/DefaultBody
+# defaultMessage: Please choose an existing content as source for this element
+msgid "Please choose an existing content as source for this element"
+msgstr ""
 
 #: components/manage/Blocks/Video/Body
 # defaultMessage: Please enter a valid URL by deleting the block and adding a new video block.
@@ -2891,6 +2903,7 @@ msgstr "Hinzuzufügende Tags"
 msgid "Tags to remove"
 msgstr "Zu entfernende Tags"
 
+#: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Target
 msgid "Target"
@@ -2914,6 +2927,11 @@ msgstr "Ziel-Anzahl von Objekten im Speicher pro Cache"
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Target url path must start with a slash.
 msgid "Target url path must start with a slash."
+msgstr ""
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Teaser
+msgid "Teaser"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -3057,6 +3075,7 @@ msgid "Time"
 msgstr "Zeit"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Teaser/schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -3640,6 +3659,11 @@ msgstr "Datum"
 # defaultMessage: Where
 msgid "event_where"
 msgstr "Ort"
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: head title
+msgid "head_title"
+msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Password reset confirmation sent
