@@ -328,7 +328,6 @@ class AddonsControlpanel extends Component {
                     <Button.Group floated="right">
                       <Button
                         primary
-                        basic
                         onClick={this.onInstall}
                         value={item.id}
                         className="installAction"
@@ -398,7 +397,6 @@ class AddonsControlpanel extends Component {
                       {item.upgrade_info.available && (
                         <Button
                           primary
-                          basic
                           onClick={this.onUpgrade}
                           value={item.id}
                         >
@@ -411,7 +409,6 @@ class AddonsControlpanel extends Component {
                       {item.uninstall_profile_id && (
                         <Button
                           negative
-                          basic
                           onClick={this.onUninstall}
                           value={item.id}
                           className="uninstallAction"
