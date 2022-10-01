@@ -647,7 +647,7 @@ jobs:
           yalc add @plone/scripts --no-pure
         working-directory: ${{env.project-directory}}
       - name: Install a yalc'ed version of the current Volto in the project - install
-        run: yarn
+        run: yarn config set -H enableImmutableInstalls false && yarn
         working-directory: ${{env.project-directory}}
 
       - name: Cypress acceptance tests
