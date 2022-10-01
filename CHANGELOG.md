@@ -12,6 +12,7 @@
 
 - Fixed the `description` field not appearing in control panel fieldsets @JeffersonBledsoe #3696
 - Fixed "more" always show root contents @MdSahil-oss #3365
+- Add missing `--noninteractive` in the `build` script in package.json @sneridagh
 
 ### Internal
 
