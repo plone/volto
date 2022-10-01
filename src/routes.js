@@ -33,6 +33,7 @@ import {
   Sharing,
   Sitemap,
   AliasesControlpanel,
+  UndoControlpanel,
   UsersControlpanel,
   UserGroupMembershipControlPanel,
   GroupsControlpanel,
@@ -141,6 +142,10 @@ export const defaultRoutes = [
   {
     path: '/controlpanel/addons',
     component: AddonsControlpanel,
+  },
+  {
+    path: '/controlpanel/undo',
+    component: UndoControlpanel,
   },
   {
     path: '/controlpanel/database',
