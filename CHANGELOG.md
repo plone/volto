@@ -14,6 +14,7 @@
 
 - Comment out flaky test for now regarding many users/groups @sneridagh
 - More disable flaky test regarding many users/groups @sneridagh
+- Remove no longer present option in cypress github action, by default, headless is true @sneridagh
 
 ### Documentation
 
