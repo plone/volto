@@ -22,7 +22,7 @@ import {
  * @param {Object|Array} content User data.
  * @returns {Object} Create user action.
  */
-export function createUser(content, sendPasswordReset) {
+export function createUser(content, sendPasswordReset = null) {
   return {
     type: CREATE_USER,
     request: {
