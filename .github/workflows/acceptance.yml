@@ -33,7 +33,7 @@ jobs:
       - run: yarn --frozen-lockfile
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -45,9 +45,7 @@ jobs:
           record: true
           parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
-          # headless: true
           group: Core ${{ matrix.node-version }}
-          config: integrationFolder=cypress/tests
           spec: cypress/tests/core/basic/**/*.js
           start: |
             make start-test-acceptance-server
@@ -99,7 +97,7 @@ jobs:
       - run: yarn --frozen-lockfile
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -111,9 +109,7 @@ jobs:
           record: true
           parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
-          # headless: true
           group: Core Blocks ${{ matrix.node-version }}
-          config: integrationFolder=cypress/tests
           spec: cypress/tests/core/blocks/**/*.js
           start: |
             make start-test-acceptance-server
@@ -133,9 +129,73 @@ jobs:
           name: cypress-videos
           path: cypress/videos
 
-  core6:
+  corevoltoslate:
     runs-on: ubuntu-latest
-    name: Core Basic - Plone 6
+    name: Core Volto Slate
+    timeout-minutes: 45
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x]
+    steps:
+      - uses: actions/checkout@v2
+
+      # node setup
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      # node cache
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v1
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      ## node install
+      - run: yarn --frozen-lockfile
+
+      - name: Cypress acceptance tests
+        uses: cypress-io/github-action@v4
+        env:
+          BABEL_ENV: production
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          CYPRESS_RETRIES: 2
+          # Recommended: pass the GitHub token lets this action correctly
+          # determine the unique run id necessary to re-run the checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          record: true
+          parallel: false # Since they run on different node versions, we can't parallel
+          browser: chrome
+          group: Core Volto Slate ${{ matrix.node-version }}
+          spec: cypress/tests/core/volto-slate/**/*.js
+          start: |
+            make start-test-acceptance-server
+            make start-test-acceptance-frontend
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+
+      # Upload Cypress screenshots
+      - uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+      # Upload Cypress videos
+      - uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: cypress-videos
+          path: cypress/videos
+
+  core5:
+    runs-on: ubuntu-latest
+    name: Core Basic - Plone 5
     strategy:
       matrix:
         node-version: [16.x]
@@ -164,7 +224,7 @@ jobs:
       - run: yarn --frozen-lockfile
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -176,12 +236,10 @@ jobs:
           record: true
           parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
-          # headless: true
           group: Core Basic - Plone 6
-          config: integrationFolder=cypress/tests
           spec: cypress/tests/core/basic/**/*.js
           start: |
-            make start-test-acceptance-server DOCKER_IMAGE=plone/plone-backend:6.0.0a4
+            make start-test-acceptance-server-5
             make start-test-acceptance-frontend
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
 
@@ -257,7 +315,7 @@ jobs:
       #     CI: true
 
       - name: Cypress Coresandbox Acceptance tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -269,9 +327,7 @@ jobs:
           record: true
           parallel: true
           browser: chrome
-          # headless: true
           group: Coresandbox
-          config: integrationFolder=cypress/tests
           spec: cypress/tests/coresandbox/**/*.js
           start: |
             make start-test-acceptance-server-coresandbox
@@ -323,7 +379,7 @@ jobs:
       - run: yarn --frozen-lockfile
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         env:
           BABEL_ENV: production
           CYPRESS_API: guillotina
@@ -336,9 +392,7 @@ jobs:
           record: true
           parallel: true
           browser: chrome
-          headless: true
           group: Guillotina
-          config: integrationFolder=cypress/tests
           spec: cypress/tests/guillotina/**/*.js
           start: |
             make start-test-acceptance-server-guillotina
@@ -393,7 +447,7 @@ jobs:
       - run: yarn --frozen-lockfile
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -405,9 +459,7 @@ jobs:
           record: true
           parallel: true
           browser: chrome
-          headless: true
           group: Multilingual
-          config: integrationFolder=cypress/tests
           spec: cypress/tests/multilingual/**/*.js
           start: |
             make start-test-acceptance-server-multilingual
@@ -484,7 +536,7 @@ jobs:
       #     CI: true
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -496,15 +548,12 @@ jobs:
           record: true
           parallel: true
           browser: chrome
-          headless: true
           group: Working Copy
-          config: integrationFolder=cypress/tests
           spec: cypress/tests/workingCopy/**/*.js
           start: |
             make start-test-acceptance-server-workingcopy
             make start-test-acceptance-frontend-workingcopy
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
-
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
@@ -557,7 +606,7 @@ jobs:
 
       # Generator own tests
       - name: Generator tests
-        run:  yarn && yarn test
+        run: yarn && yarn test
         working-directory: ${{env.generator-directory}}
 
       # install Yeoman and the generator
@@ -567,22 +616,26 @@ jobs:
         working-directory: ${{env.generator-directory}}
 
       # create a project
-      - run: yo @plone/volto my-volto-app --description "test volto project" --no-interactive
+      - run: yo @plone/volto my-volto-app --description "test volto project" --volto . --skip-install --no-interactive
 
       - name: Install yalc
         run: npm -g install yalc
 
       - name: Install a yalc'ed version of the current Volto in the project - publish
-        run: yalc publish
+        run: |
+          yalc publish
+          yalc publish packages/scripts
       - name: Install a yalc'ed version of the current Volto in the project - add
-        run: yalc add @plone/volto --no-pure
+        run: |
+          yalc add @plone/volto --no-pure
+          yalc add @plone/scripts --no-pure
         working-directory: ${{env.project-directory}}
       - name: Install a yalc'ed version of the current Volto in the project - install
-        run: yarn --force
+        run: yarn
         working-directory: ${{env.project-directory}}
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -594,9 +647,7 @@ jobs:
           record: true
           parallel: true
           browser: chrome
-          headless: true
           group: Project Generator
-          config: integrationFolder=cypress/tests
           spec: cypress/tests/minimal/**/*.js
           start: |
             make start-test-acceptance-server
@@ -654,7 +705,7 @@ jobs:
       - run: yarn --frozen-lockfile
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -666,9 +717,7 @@ jobs:
           record: true
           parallel: true
           browser: chrome
-          headless: true
           group: Seamless
-          config: integrationFolder=cypress/tests
           spec: cypress/tests/minimal/**/*.js
           start: |
             make start-test-acceptance-server

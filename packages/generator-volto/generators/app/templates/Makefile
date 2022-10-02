@@ -10,9 +10,9 @@ SHELL:=bash
 MAKEFLAGS+=--warn-undefined-variables
 MAKEFLAGS+=--no-builtin-rules
 
-# Update the versions depending on your project requirements | Last Updated 2022-04-21
-DOCKER_IMAGE=plone/plone-backend:6.0.0a4
-KGS=plone.restapi==8.22.0 plone.volto==4.0.0a4 plone.rest==2.0.0a5 plone.app.iterate==4.0.2 plone.app.vocabularies==4.3.0
+# Update the versions depending on your project requirements | Last Updated 2022-07-24
+DOCKER_IMAGE=plone/plone-backend:6.0.0b1
+KGS=plone.volto==4.0.0a7
 NODEBIN = ./node_modules/.bin
 
 # Project settings

@@ -148,3 +148,8 @@ body.babel-view .field.language-independent-field {
     opacity: 0.3 !important;
   }
 }
+
+// makes sure that long words (eg. German) get properly broken in selects.
+.react-select__option {
+  .word-break();
+}

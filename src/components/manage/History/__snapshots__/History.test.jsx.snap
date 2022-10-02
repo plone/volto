@@ -91,7 +91,7 @@ exports[`History renders a history component 1`] = `
               dateTime="2017-04-19T14:09:36+02:00"
               title="Wednesday, April 19, 2017 at 12:09 PM"
             >
-              4 days ago
+              4/19/17, 12:09 PM
             </time>
           </td>
           <td
@@ -130,7 +130,7 @@ exports[`History renders a history component 1`] = `
               dateTime="2017-04-19T14:09:35+02:00"
               title="Wednesday, April 19, 2017 at 12:09 PM"
             >
-              4 days ago
+              4/19/17, 12:09 PM
             </time>
           </td>
           <td
@@ -192,7 +192,7 @@ exports[`History renders a history component 1`] = `
               dateTime="2017-04-19T14:09:34+02:00"
               title="Wednesday, April 19, 2017 at 12:09 PM"
             >
-              4 days ago
+              4/19/17, 12:09 PM
             </time>
           </td>
           <td

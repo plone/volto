@@ -133,9 +133,7 @@ describe('Document locking', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/document/edit');
 
     // As another editor I can edit the document
-    cy.get('.documentFirstHeading > .public-DraftStyleDefault-block')
-      .clear()
-      .type('New title by Editor 2');
+    cy.clearSlateTitle().type('New title by Editor 2');
     cy.get('#toolbar-save').click();
     // cy.waitForResourceToLoad('document');
     cy.wait('@saveDoc');

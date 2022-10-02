@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Simple deployment of a Volto application"
-  "property=og:description": "Simple deployment of a Volto application"
-  "property=og:title": "Simple deployment"
-  "keywords": "Volto, Plone, frontend, React, deployment"
+myst:
+  html_meta:
+    "description": "Simple deployment of a Volto application"
+    "property=og:description": "Simple deployment of a Volto application"
+    "property=og:title": "Simple deployment"
+    "keywords": "Volto, Plone, frontend, React, deployment"
 ---
 
 # Simple deployment
@@ -55,16 +56,17 @@ upstream ploneapi {
 }
 
 location ~ /api($|/.*) {
-  rewrite ^/api($|/.*) /VirtualHostBase/https/mywebsite.com:443/Plone/VirtualHostRoot/_vh_api$1 break;
-  proxy_pass http://ploneapi;
+    rewrite ^/api($|/.*) /VirtualHostBase/https/mywebsite.com:443/Plone/VirtualHostRoot/_vh_api$1 break;
+    proxy_pass http://ploneapi;
 }
 
 location ~ / {
-  # Default set to 1m - this is mainly to make PSI happy, adjust to your needs
-  location ~* \.(ico|jpg|jpeg|png|gif|svg|js|jsx|css|less|swf|eot|ttf|otf|woff|woff2)$ {
-  add_header Cache-Control "public";
-  expires +1m;
-  proxy_pass http://volto;
+    # Default set to 1m - this is mainly to make PSI happy, adjust to your needs
+    location ~* \.(ico|jpg|jpeg|png|gif|svg|js|jsx|css|less|swf|eot|ttf|otf|woff|woff2)$ {
+        add_header Cache-Control "public";
+        expires +1m;
+        proxy_pass http://volto;
+    }
 }
 ```
 

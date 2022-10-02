@@ -9,7 +9,8 @@ import { Button, Input, Message } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import { isEqual } from 'lodash';
-
+import { withBlockExtensions } from '@plone/volto/helpers';
+import { compose } from 'redux';
 import { Icon, SidebarPortal, MapsSidebar } from '@plone/volto/components';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
@@ -268,4 +269,4 @@ class Edit extends Component {
   }
 }
 
-export default injectIntl(Edit);
+export default compose(injectIntl, withBlockExtensions)(Edit);

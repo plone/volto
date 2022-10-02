@@ -62,6 +62,10 @@ export {
   revertHistory,
 } from '@plone/volto/actions/history/history';
 export {
+  getTransactions,
+  revertTransactions,
+} from '@plone/volto/actions/transactions/transactions';
+export {
   addMessage,
   removeMessage,
   purgeMessages,
@@ -82,6 +86,11 @@ export {
   updateSharing,
   getSharing,
 } from '@plone/volto/actions/sharing/sharing';
+export {
+  getAliases,
+  addAliases,
+  removeAliases,
+} from '@plone/volto/actions/aliases/aliases';
 export { getTypes } from '@plone/volto/actions/types/types';
 export {
   createUser,
