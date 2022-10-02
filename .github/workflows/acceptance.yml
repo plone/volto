@@ -46,7 +46,6 @@ jobs:
           record: true
           parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
-          # headless: true
           group: Core ${{ matrix.node-version }}
           spec: cypress/tests/core/basic/**/*.js
           start: |
@@ -112,7 +111,6 @@ jobs:
           record: true
           parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
-          # headless: true
           group: Core Blocks ${{ matrix.node-version }}
           spec: cypress/tests/core/blocks/**/*.js
           start: |
@@ -177,7 +175,6 @@ jobs:
           record: true
           parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
-          # headless: true
           group: Core Volto Slate ${{ matrix.node-version }}
           spec: cypress/tests/core/volto-slate/**/*.js
           start: |
@@ -242,7 +239,6 @@ jobs:
           record: true
           parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
-          # headless: true
           group: Core Basic - Plone 6
           spec: cypress/tests/core/basic/**/*.js
           start: |
@@ -335,7 +331,6 @@ jobs:
           record: true
           parallel: true
           browser: chrome
-          # headless: true
           group: Coresandbox
           spec: cypress/tests/coresandbox/**/*.js
           start: |
@@ -402,7 +397,6 @@ jobs:
           record: true
           parallel: true
           browser: chrome
-          headless: true
           group: Guillotina
           spec: cypress/tests/guillotina/**/*.js
           start: |
@@ -471,7 +465,6 @@ jobs:
           record: true
           parallel: true
           browser: chrome
-          headless: true
           group: Multilingual
           spec: cypress/tests/multilingual/**/*.js
           start: |
@@ -562,7 +555,6 @@ jobs:
           record: true
           parallel: true
           browser: chrome
-          headless: true
           group: Working Copy
           spec: cypress/tests/workingCopy/**/*.js
           start: |
@@ -663,7 +655,6 @@ jobs:
           record: true
           parallel: true
           browser: chrome
-          headless: true
           group: Project Generator
           spec: cypress/tests/minimal/**/*.js
           start: |
@@ -735,7 +726,6 @@ jobs:
           record: true
           parallel: true
           browser: chrome
-          headless: true
           group: Seamless
           spec: cypress/tests/minimal/**/*.js
           start: |
