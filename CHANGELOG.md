@@ -13,6 +13,7 @@
 ### Internal
 
 - Comment out flaky test for now regarding many users/groups @sneridagh
+- Add reverse proxy conf with `traefik` to demo compose file @sneridagh
 
 ### Documentation
 
