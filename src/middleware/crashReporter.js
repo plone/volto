@@ -1,6 +1,7 @@
-const Sentry = __CLIENT__
-  ? require('@sentry/browser')
-  : require('@sentry/node');
+import loadable from '@loadable/component';
+
+const SentryBrowser = loadable.lib(() => import('@sentry/browser'));
+const SentryNode = loadable.lib(() => import('@sentry/browser'));
 
 const crashReporter = (store) => (next) => (action) => {
   try {
@@ -11,12 +12,15 @@ const crashReporter = (store) => (next) => (action) => {
       process?.env?.RAZZLE_SENTRY_DSN ||
       window?.env?.RAZZLE_SENTRY_DSN
     ) {
-      Sentry.withScope((scope) => {
-        scope.setExtras({
-          action,
-          state: store.getState(),
+      const loader = __CLIENT__ ? SentryBrowser : SentryNode;
+      loader.load().then((Sentry) => {
+        Sentry.withScope((scope) => {
+          scope.setExtras({
+            action,
+            state: store.getState(),
+          });
+          Sentry.captureException(error);
         });
-        Sentry.captureException(error);
       });
     }
     throw error;

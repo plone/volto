@@ -4,6 +4,7 @@
 
 ### Breaking
 
+- Sentry integration is now lazy-loaded. The `sentryOptions` key from the `settings` registry becomes a callable that passes resolved sentry libraries. @tiberiuichim
 - Enable the use of yarn 3 in the build by default @sneridagh
 
   See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
@@ -13,6 +14,8 @@
 ### Bugfix
 
 ### Internal
+
+- Comment out flaky test for now regarding many users/groups @sneridagh
 
 ### Documentation
 
@@ -31,6 +34,9 @@
 ### Internal
 
 - Run yarn deduplicate on dependencies. @davisagli
+
+### Documentation
+
 - Upgrade to Plone 6 beta 2 @sneridagh
 - Flip testing matrix for acceptance tests, make Plone 6 principal subject, Plone 5 as secondary @sneridagh
 
