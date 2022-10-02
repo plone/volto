@@ -253,6 +253,13 @@ We are updating Volto to be able to use it, however some changes have to be made
 Yarn 3 no longer support inline bash scripts in the `scripts` section.
 We need to move them to the `Makefile` and update the calls.
 
+It doesn't allow to use commands not declared as direct dependencies, so in your projects you should add `razzle` as a dependency:
+
+```diff
+devDependencies: {
++        "razzle": "4.2.17",
+```
+
 ### Removed `date-fns` from build
 
 The `date-fns` library has been removed from Volto's dependencies.
