@@ -7,6 +7,10 @@
 - Sentry integration is now lazy-loaded. The `sentryOptions` key from the `settings` registry becomes a callable that passes resolved sentry libraries. @tiberiuichim
 
 ### Feature
+- Complete eu translation. @erral
+
+
+- Complete spanish translation @erral
 
 - Added an option for users to set their own password through a confirmation email in the Add Users modal within the Users control panel. @JeffersonBledsoe #3710
 
@@ -15,6 +19,8 @@
 ### Internal
 
 - Comment out flaky test for now regarding many users/groups @sneridagh
+- More disable flaky test regarding many users/groups @sneridagh
+- Remove no longer present option in cypress github action, by default, headless is true @sneridagh
 
 ### Documentation
 
