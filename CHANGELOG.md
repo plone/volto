@@ -26,6 +26,7 @@
 
 ### Feature
 
+- Show result of the addon install/uninstall/upgrade actions @erral
 - Working copy actions now render errors if they fail @pnicolli
 - lazyloading of rrule lib. @giuliaghisini
 
