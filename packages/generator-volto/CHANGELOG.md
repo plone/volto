@@ -2,12 +2,6 @@
 
 ## 5.9.1 (unreleased)
 
-### Breaking
-
-### Feature
-
-### Bugfix
-
 ### Internal
 
 - Missing `--noninteractive` for the generator @sneridagh
