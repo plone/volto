@@ -76,41 +76,54 @@ export function getUser(id) {
  * @param {int} limit
  * @returns {Object} List users action
  */
-export function listUsers(options = {}) {
-  const { query = '', search = '', groups_filter = [], limit = null } = options;
-  let path = '/@users';
+export function listUsers(options) {
+  if (typeof options === 'object') {
+    const {
+      query = '',
+      search = '',
+      groups_filter = [],
+      limit = null,
+    } = options;
+    let path = '/@users';
 
-  var searchParams = new URLSearchParams();
-  if (query) {
-    searchParams.append('query', query);
-  }
-  if (search) {
-    searchParams.append('search', search);
-  }
-  limit && searchParams.append('limit', limit);
-  const searchParamsToString = searchParams.toString();
+    var searchParams = new URLSearchParams();
+    if (query) {
+      searchParams.append('query', query);
+    }
+    if (search) {
+      searchParams.append('search', search);
+    }
+    limit && searchParams.append('limit', limit);
+    const searchParamsToString = searchParams.toString();
 
-  let filterarg =
-    groups_filter.length > 0
-      ? stringify(
-          { 'groups-filter': groups_filter },
-          { arrayFormat: 'colon-list-separator' },
-        )
-      : '';
+    let filterarg =
+      groups_filter.length > 0
+        ? stringify(
+            { 'groups-filter': groups_filter },
+            { arrayFormat: 'colon-list-separator' },
+          )
+        : '';
 
-  if (searchParamsToString) {
-    path += `?${searchParamsToString}`;
-  }
-  if (filterarg) {
-    path += searchParamsToString ? '&' : '?';
-    path += filterarg;
+    if (searchParamsToString) {
+      path += `?${searchParamsToString}`;
+    }
+    if (filterarg) {
+      path += searchParamsToString ? '&' : '?';
+      path += filterarg;
+    }
+    return {
+      type: LIST_USERS,
+      request: {
+        op: 'get',
+        path: path,
+      },
+    };
   }
   return {
     type: LIST_USERS,
-    request: {
-      op: 'get',
-      path: path,
-    },
+    request: options
+      ? { op: 'get', path: `/@users?query=${options}` }
+      : { op: 'get', path: '/@users' },
   };
 }
 

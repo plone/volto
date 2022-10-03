@@ -1,6 +1,22 @@
 # Change Log
 
-## 15.14.1 (unreleased)
+## 15.15.1 (unreleased)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+- Backport 3546 from master: Fix ArrayWidget choices when editing a recently created content item. @davisagli
+
+### Internal
+
+- mock all loadable libraries (backport https://github.com/plone/volto/pull/3447). @mamico 
+
+### Documentation
+
+## 15.15.0 (2022-08-25)
 
 ### Feature
 
@@ -9,14 +25,6 @@
 - Added placeholder param to widget, to change default placeholder @giuliaghisini
 - Add user group membership control panel @ksuess
 - Action `listUsers`: Support search for fullname, email, username. @ksuess
-
-### Bugfix
-
-- Backport 3546 from master: Fix ArrayWidget choices when editing a recently created content item. @davisagli
-
-### Internal
-
-### Documentation
 
 ## 15.14.0 (2022-07-26)
 
