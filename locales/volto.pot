@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-10-02T15:00:24.366Z\n"
+"POT-Creation-Date: 2022-10-03T09:27:09.109Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -2610,6 +2610,11 @@ msgstr ""
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Send
 msgid "Send"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Send a confirmation mail with a link to set the password.
+msgid "Send a confirmation mail with a link to set the password."
 msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
