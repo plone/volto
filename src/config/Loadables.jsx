@@ -34,6 +34,7 @@ export const loadables = {
   reactDnd: loadable.lib(() => import('react-dnd')),
   reactDndHtml5Backend: loadable.lib(() => import('react-dnd-html5-backend')),
   reactBeautifulDnd: loadable.lib(() => import('react-beautiful-dnd')),
+  rrule: loadable.lib(() => import('rrule')),
 
   // draftjs libs
   immutableLib: loadable.lib(() => import('immutable')),

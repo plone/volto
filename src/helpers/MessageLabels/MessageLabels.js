@@ -142,6 +142,10 @@ export const messages = defineMessages({
     id: 'Password',
     defaultMessage: 'Password',
   },
+  addUserFormSendPasswordResetTitle: {
+    id: 'Send a confirmation mail with a link to set the password.',
+    defaultMessage: 'Send a confirmation mail with a link to set the password.',
+  },
   addUserFormRolesTitle: {
     id: 'Roles',
     defaultMessage: 'Roles',
