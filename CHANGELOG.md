@@ -10,6 +10,8 @@
 - Complete eu translation. @erral
 
 
+- Complete spanish translation @erral
+
 ### Bugfix
 
 ### Internal
