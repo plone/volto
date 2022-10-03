@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Missing `--noninteractive` for the generator @sneridagh
+
 ## 5.9.0 (2022-09-28)
 
 ### Feature
