@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- Sentry integration is now lazy-loaded. The `sentryOptions` key from the `settings` registry becomes a callable that passes resolved sentry libraries. @tiberiuichim
+
 ### Feature
 
 - Complete spanish translation @erral
@@ -13,6 +15,8 @@
 ### Internal
 
 - Comment out flaky test for now regarding many users/groups @sneridagh
+- More disable flaky test regarding many users/groups @sneridagh
+- Remove no longer present option in cypress github action, by default, headless is true @sneridagh
 
 ### Documentation
 
