@@ -6,6 +6,7 @@ import config from '@plone/volto/registry';
 export const nonContentRoutes = [
   /\?.*$/,
   /\/add$/,
+  '/aliases',
   '/contents',
   '/delete',
   '/diff',
@@ -25,8 +26,8 @@ export const nonContentRoutes = [
   '/personal-information',
   '/personal-preferences',
   '/register',
-  /\/password-reset\/.*$/,
-  '/password-reset',
+  /\/passwordreset\/.*$/,
+  '/passwordreset',
   '/create-translation',
   '/manage-translations',
   ...(config.settings?.externalRoutes?.map((route) => route.match.path) || []),

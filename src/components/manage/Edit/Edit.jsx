@@ -154,6 +154,14 @@ class Edit extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
+    if (this.props.getRequest.loading && nextProps.getRequest.loaded) {
+      if (nextProps.content['@type']) {
+        this.props.getSchema(
+          nextProps.content['@type'],
+          getBaseUrl(this.props.pathname),
+        );
+      }
+    }
     if (this.props.schemaRequest.loading && nextProps.schemaRequest.loaded) {
       if (!hasBlocksData(nextProps.schema.properties)) {
         this.setState({

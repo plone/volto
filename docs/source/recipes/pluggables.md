@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "The Pluggables framework give you insertion points to push components to other components in an 'out of tree' fashion, like React's Portal component, but with vitamins."
-  "property=og:description": "The Pluggables framework give you insertion points to push components to other components in an 'out of tree' fashion, like React's Portal component, but with vitamins."
-  "property=og:title": "Pluggables framework"
-  "keywords": "Pluggables, framework, React, portal"
+myst:
+  html_meta:
+    "description": "The Pluggables framework give you insertion points to push components to other components in an 'out of tree' fashion, like React's Portal component, but with vitamins."
+    "property=og:description": "The Pluggables framework give you insertion points to push components to other components in an 'out of tree' fashion, like React's Portal component, but with vitamins."
+    "property=og:title": "Pluggables framework"
+    "keywords": "Pluggables, framework, React, portal"
 ---
 
 # Pluggables framework

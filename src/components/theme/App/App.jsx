@@ -8,6 +8,7 @@ import jwtDecode from 'jwt-decode';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import loadable from '@loadable/component';
 import { asyncConnect, Helmet } from '@plone/volto/helpers';
 import { Segment } from 'semantic-ui-react';
 import { renderRoutes } from 'react-router-config';
@@ -46,7 +47,7 @@ import MultilingualRedirector from '@plone/volto/components/theme/MultilingualRe
 import WorkingCopyToastsFactory from '@plone/volto/components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory';
 import LockingToastsFactory from '@plone/volto/components/manage/LockingToastsFactory/LockingToastsFactory';
 
-import * as Sentry from '@sentry/browser';
+const Sentry = loadable.lib(() => import('@sentry/browser'));
 
 /**
  * @export
@@ -93,7 +94,7 @@ class App extends Component {
     this.setState({ hasError: true, error, errorInfo: info });
     if (__CLIENT__) {
       if (window?.env?.RAZZLE_SENTRY_DSN || __SENTRY__?.SENTRY_DSN) {
-        Sentry.captureException(error);
+        Sentry.load().then((mod) => mod.captureException(error));
       }
     }
   }
@@ -223,6 +224,7 @@ export const fetchContent = async ({ store, location }) => {
         location,
         id,
         data,
+        blocksConfig,
       });
       if (!p?.length) {
         throw new Error(

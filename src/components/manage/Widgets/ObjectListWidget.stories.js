@@ -206,7 +206,7 @@ SchemaExtender.args = {
 };
 
 export default {
-  title: 'Widgets/Object List (JSON)',
+  title: 'Edit Widgets/Object List (JSON)',
   component: ObjectListWidgetDefault,
   decorators: [
     (Story) => (

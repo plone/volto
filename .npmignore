@@ -96,5 +96,6 @@ typings/
 
 styleguide.config
 .vscode
-packages
+packages/*
+!packages/volto-slate
 .tx

@@ -27,11 +27,10 @@ describe('Object Browser Tests', () => {
     cy.waitForResourceToLoad('@types');
     cy.waitForResourceToLoad('my-page');
     cy.navigate('/my-page/edit');
-    cy.get(`.block.title [data-contents]`);
   });
 
   it('As editor I can add the relative url in search box in sidebar', () => {
-    cy.get('.block.inner.text .public-DraftEditor-content').click();
+    cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.image').contains('Image').click();
     cy.get('.toolbar-inner button.ui.basic.icon.button').click();
@@ -48,7 +47,7 @@ describe('Object Browser Tests', () => {
   });
 
   it('As editor I can add the full url in search box in sidebar', () => {
-    cy.get('.block.inner.text .public-DraftEditor-content').click();
+    cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.image').contains('Image').click();
     cy.get('.toolbar-inner button.ui.basic.icon.button').click();
@@ -65,7 +64,7 @@ describe('Object Browser Tests', () => {
   });
 
   it('As editor I get focus on search box in sidebar when clicking on lens icon', () => {
-    cy.get('.block.inner.text .public-DraftEditor-content').click();
+    cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.image').contains('Image').click();
     cy.get('.toolbar-inner button.ui.basic.icon.button').click();

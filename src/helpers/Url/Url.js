@@ -175,6 +175,37 @@ export function addAppURL(url) {
 }
 
 /**
+ * Given a URL expands it to the backend URL
+ * Useful when you have to actually call the backend from the
+ * frontend code (eg. ICS calendar download)
+ * It is seamless mode aware
+ * @method expandToBackendURL
+ * @param {string} url URL or path of the object
+ * @returns {string} New URL with the backend URL
+ */
+export function expandToBackendURL(path) {
+  const { settings } = config;
+  const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
+  let adjustedPath;
+  if (path.startsWith('http://') || path.startsWith('https://')) {
+    // flattenToAppURL first if we get a full URL
+    adjustedPath = flattenToAppURL(path);
+  } else {
+    // Next adds a / in front if not a full URL to make sure it's a valid relative path
+    adjustedPath = path[0] !== '/' ? `/${path}` : path;
+  }
+
+  let apiPath = '';
+  if (settings.internalApiPath && __SERVER__) {
+    apiPath = settings.internalApiPath;
+  } else if (settings.apiPath) {
+    apiPath = settings.apiPath;
+  }
+
+  return `${apiPath}${APISUFIX}${adjustedPath}`;
+}
+
+/**
  * Check if internal url
  * @method isInternalURL
  * @param {string} url URL of the object

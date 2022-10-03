@@ -13,12 +13,12 @@ import {
   Button,
   Confirm,
   Container,
+  Divider,
   Dropdown,
   Menu,
   Input,
   Segment,
   Table,
-  Popup,
   Loader,
   Dimmer,
 } from 'semantic-ui-react';
@@ -59,6 +59,7 @@ import {
   ContentsTagsModal,
   ContentsPropertiesModal,
   Pagination,
+  Popup,
   Toolbar,
   Toast,
   Icon,
@@ -455,7 +456,10 @@ class Contents extends Component {
         {
           currentPage: 0,
         },
-        () => this.fetchContents(nextProps.pathname),
+        () =>
+          this.setState({ filter: '' }, () =>
+            this.fetchContents(nextProps.pathname),
+          ),
       );
     }
     if (this.props.searchRequest.loading && nextProps.searchRequest.loaded) {
@@ -629,6 +633,7 @@ class Contents extends Component {
 
     this.setState({
       filteredItems,
+      selectedMenuFilter: value,
     });
   }
 
@@ -1102,7 +1107,6 @@ class Contents extends Component {
     const folderContentsAction = find(this.props.objectActions, {
       id: 'folderContents',
     });
-
     const loading =
       (this.props.clipboardRequest?.loading &&
         !this.props.clipboardRequest?.error) ||
@@ -1494,24 +1498,26 @@ class Contents extends Component {
                           <Table.Header>
                             <Table.Row>
                               <Table.HeaderCell>
-                                <Dropdown
-                                  item
-                                  upward={false}
-                                  className="sort-icon"
-                                  aria-label={this.props.intl.formatMessage(
-                                    messages.sort,
-                                  )}
-                                  icon={
+                                <Popup
+                                  menu={true}
+                                  position="bottom left"
+                                  flowing={true}
+                                  basic={true}
+                                  on="click"
+                                  popper={{
+                                    className: 'dropdown-popup',
+                                  }}
+                                  trigger={
                                     <Icon
                                       name={configurationSVG}
                                       size="24px"
                                       color="#826a6a"
-                                      className="configuration-svg"
+                                      className="dropdown-popup-trigger configuration-svg"
                                     />
                                   }
                                 >
-                                  <Dropdown.Menu>
-                                    <Dropdown.Header
+                                  <Menu vertical borderless fluid>
+                                    <Menu.Header
                                       content={this.props.intl.formatMessage(
                                         messages.rearrangeBy,
                                       )}
@@ -1526,14 +1532,22 @@ class Contents extends Component {
                                         'portal_type',
                                       ],
                                       (index) => (
-                                        <Dropdown.Item
+                                        <Dropdown
                                           key={index}
+                                          item
+                                          simple
                                           className={`sort_${index} icon-align`}
+                                          icon={
+                                            <Icon
+                                              name={downKeySVG}
+                                              size="24px"
+                                              className="left"
+                                            />
+                                          }
+                                          text={this.props.intl.formatMessage({
+                                            id: Indexes[index].label,
+                                          })}
                                         >
-                                          <Icon name={downKeySVG} size="24px" />
-                                          <FormattedMessage
-                                            id={Indexes[index].label}
-                                          />
                                           <Dropdown.Menu>
                                             <Dropdown.Item
                                               onClick={this.onSortItems}
@@ -1564,15 +1578,22 @@ class Contents extends Component {
                                               />
                                             </Dropdown.Item>
                                           </Dropdown.Menu>
-                                        </Dropdown.Item>
+                                        </Dropdown>
                                       ),
                                     )}
-                                  </Dropdown.Menu>
-                                </Dropdown>
+                                  </Menu>
+                                </Popup>
                               </Table.HeaderCell>
                               <Table.HeaderCell>
-                                <Dropdown
-                                  upward={false}
+                                <Popup
+                                  menu={true}
+                                  position="bottom left"
+                                  flowing={true}
+                                  basic={true}
+                                  on="click"
+                                  popper={{
+                                    className: 'dropdown-popup',
+                                  }}
                                   trigger={
                                     <Icon
                                       name={
@@ -1588,18 +1609,18 @@ class Contents extends Component {
                                           ? '#007eb1'
                                           : '#826a6a'
                                       }
+                                      className="dropdown-popup-trigger"
                                       size="24px"
                                     />
                                   }
-                                  icon={null}
                                 >
-                                  <Dropdown.Menu>
-                                    <Dropdown.Header
+                                  <Menu vertical borderless fluid>
+                                    <Menu.Header
                                       content={this.props.intl.formatMessage(
                                         messages.select,
                                       )}
                                     />
-                                    <Dropdown.Item onClick={this.onSelectAll}>
+                                    <Menu.Item onClick={this.onSelectAll}>
                                       <Icon
                                         name={checkboxCheckedSVG}
                                         color="#007eb1"
@@ -1609,8 +1630,8 @@ class Contents extends Component {
                                         id="All"
                                         defaultMessage="All"
                                       />
-                                    </Dropdown.Item>
-                                    <Dropdown.Item onClick={this.onSelectNone}>
+                                    </Menu.Item>
+                                    <Menu.Item onClick={this.onSelectNone}>
                                       <Icon
                                         name={checkboxUncheckedSVG}
                                         size="24px"
@@ -1619,9 +1640,9 @@ class Contents extends Component {
                                         id="None"
                                         defaultMessage="None"
                                       />
-                                    </Dropdown.Item>
-                                    <Dropdown.Divider />
-                                    <Dropdown.Header
+                                    </Menu.Item>
+                                    <Divider />
+                                    <Menu.Header
                                       content={this.props.intl.formatMessage(
                                         messages.selected,
                                         { count: this.state.selected.length },
@@ -1630,19 +1651,22 @@ class Contents extends Component {
                                     <Input
                                       icon={<Icon name={zoomSVG} size="24px" />}
                                       iconPosition="left"
-                                      className="search"
+                                      className="item search"
                                       placeholder={this.props.intl.formatMessage(
                                         messages.filter,
                                       )}
+                                      value={
+                                        this.state.selectedMenuFilter || ''
+                                      }
                                       onChange={this.onChangeSelected}
                                       onClick={(e) => {
                                         e.preventDefault();
                                         e.stopPropagation();
                                       }}
                                     />
-                                    <Dropdown.Menu scrolling>
+                                    <Menu.Menu scrolling>
                                       {map(filteredItems, (item) => (
-                                        <Dropdown.Item
+                                        <Menu.Item
                                           key={item}
                                           value={item}
                                           onClick={this.onDeselect}
@@ -1653,11 +1677,11 @@ class Contents extends Component {
                                             size="24px"
                                           />{' '}
                                           {this.getFieldById(item, 'title')}
-                                        </Dropdown.Item>
+                                        </Menu.Item>
                                       ))}
-                                    </Dropdown.Menu>
-                                  </Dropdown.Menu>
-                                </Dropdown>
+                                    </Menu.Menu>
+                                  </Menu>
+                                </Popup>
                               </Table.HeaderCell>
                               <Table.HeaderCell
                                 width={Math.ceil(
@@ -1778,14 +1802,18 @@ class Contents extends Component {
   }
 }
 
+let dndContext;
+
 const DragDropConnector = (props) => {
   const { DragDropContext } = props.reactDnd;
   const HTML5Backend = props.reactDndHtml5Backend.default;
 
-  const DndConnectedContents = React.useMemo(
-    () => DragDropContext(HTML5Backend)(Contents),
-    [DragDropContext, HTML5Backend],
-  );
+  const DndConnectedContents = React.useMemo(() => {
+    if (!dndContext) {
+      dndContext = DragDropContext(HTML5Backend);
+    }
+    return dndContext(Contents);
+  }, [DragDropContext, HTML5Backend]);
 
   return <DndConnectedContents {...props} />;
 };
