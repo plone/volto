@@ -92,7 +92,7 @@ const reducers = {
   contextNavigation,
   workingCopy,
   transactions,
-  userschema,  
+  userschema,
 };
 
 export default reducers;
