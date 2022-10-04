@@ -244,7 +244,7 @@ start-test-acceptance-frontend-seamless: ## Start the Seamless Core Acceptance F
 	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config baseUrl='http://localhost'
 
 .PHONY: start-test-acceptance-webserver-seamless
- start-test-acceptance-webserver-seamless: ## Start the seamless webserver
+start-test-acceptance-webserver-seamless: ## Start the seamless webserver
  	cd cypress/docker && docker-compose -f seamless.yml up
 
 .PHONY: full-test-acceptance-seamless
