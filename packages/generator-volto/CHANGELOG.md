@@ -1,6 +1,6 @@
 # Change Log
 
-## 5.9.1 (unreleased)
+## 5.9.2 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,12 @@
 ### Bugfix
 
 ### Internal
+
+## 5.9.1 (2022-10-03)
+
+### Internal
+
+- Missing `--noninteractive` for the generator @sneridagh
 
 ## 5.9.0 (2022-09-28)
 

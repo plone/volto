@@ -8,12 +8,19 @@
 
 ### Feature
 
+- Send missing variation data to the listing variation @ionlizarazu
+- Complete eu translation. @erral
+- Complete spanish translation @erral
+- Added an option for users to set their own password through a confirmation email in the Add Users modal within the Users control panel. @JeffersonBledsoe #3710
+
 ### Bugfix
 
 ### Internal
 
 - Comment out flaky test for now regarding many users/groups @sneridagh
 - Add reverse proxy conf with `traefik` to demo compose file @sneridagh
+- More disable flaky test regarding many users/groups @sneridagh
+- Remove no longer present option in cypress github action, by default, headless is true @sneridagh
 
 ### Documentation
 
@@ -21,6 +28,7 @@
 
 ### Feature
 
+- Show result of the addon install/uninstall/upgrade actions @erral
 - Working copy actions now render errors if they fail @pnicolli
 - lazyloading of rrule lib. @giuliaghisini
 
@@ -341,6 +349,9 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 
 ### Feature
 
+- add control panel via config.settings @ksuess https://github.com/plone/volto/issues/3426
+- Add noindex metadata tag @steffenri
+- Send extra data coming from listing block schemaEnhancer from searchBlock to the listing variation @ionlizarazu
 - Send extra data coming from listing block schemaEnhancer from searchBlock to the listing variation @ionlizarazu
 
 ### Bugfix
