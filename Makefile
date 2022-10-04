@@ -342,6 +342,20 @@ test-acceptance-workingcopy-headless: ## Start WorkingCopy Cypress Acceptance Te
 full-test-acceptance-workingcopy: ## Runs WorkingCopy Full Acceptance Testing in headless mode
 	$(NODEBIN)/start-test "make start-test-acceptance-server-workingcopy" http-get://127.0.0.1:55001/plone "make start-test-acceptance-frontend-workingcopy" http://127.0.0.1:3000 "make test-acceptance-workingcopy-headless"
 
+######### Prefixed Core Acceptance tests
+
+.PHONY: start-test-acceptance-frontend-prefixed
+start-test-acceptance-frontend-prefixed: ## Start the prefixed Core Acceptance Frontend Fixture
+	RAZZLE_PREFIX_PATH=/foo RAZZLE_API_PATH=http://localhost/foo yarn build && yarn start:prod
+
+.PHONY: full-test-acceptance-prefixed
+full-test-acceptance-prefixed: ## Runs prefixed Core Full Acceptance Testing in headless mode
+	$(NODEBIN)/start-test "make start-test-acceptance-server" http-get://localhost:55001/plone "make start-test-acceptance-frontend-prefixed" http://localhost:3000 "make test-acceptance-headless"
+
+.PHONY: start-test-acceptance-webserver-prefixed
+start-test-acceptance-webserver-prefixed: ## Start the prefixed webserver
+	cd cypress/docker && docker-compose -f prefixed.yml up
+
 ######### Guillotina Acceptance tests
 
 .PHONY: start-test-acceptance-server-guillotina
