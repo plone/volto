@@ -352,6 +352,10 @@ start-test-acceptance-frontend-prefixed: ## Start the prefixed Core Acceptance F
 full-test-acceptance-prefixed: ## Runs prefixed Core Full Acceptance Testing in headless mode
 	$(NODEBIN)/start-test "make start-test-acceptance-server" http-get://localhost:55001/plone "make start-test-acceptance-frontend-prefixed" http://localhost:3000 "make test-acceptance-headless"
 
+.PHONY: test-acceptance-prefixed
+test-acceptance-prefixed: ## Start Prefixed Cypress Acceptance Tests
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config baseUrl='http://localhost/foo'
+
 .PHONY: start-test-acceptance-webserver-prefixed
 start-test-acceptance-webserver-prefixed: ## Start the prefixed webserver
 	cd cypress/docker && docker-compose -f prefixed.yml up

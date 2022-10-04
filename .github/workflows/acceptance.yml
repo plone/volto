@@ -663,7 +663,7 @@ jobs:
           browser: chrome
           group: Seamless
           spec: cypress/tests/minimal/**/*.js
-          config: baseUrl=http://localhost
+          config: baseUrl=http://localhost/foo
           start: |
             make start-test-acceptance-server
             make start-test-acceptance-frontend-prefixed
