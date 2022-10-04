@@ -240,12 +240,12 @@ start-test-acceptance-frontend-seamless: ## Start the Seamless Core Acceptance F
 	yarn build && yarn start:prod
 
 .PHONY: test-acceptance-seamless
- test-acceptance-seamless: ## Start Seamless Cypress Acceptance Tests
+test-acceptance-seamless: ## Start Seamless Cypress Acceptance Tests
 	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config baseUrl='http://localhost'
 
 .PHONY: start-test-acceptance-webserver-seamless
 start-test-acceptance-webserver-seamless: ## Start the seamless webserver
- 	cd cypress/docker && docker-compose -f seamless.yml up
+	cd cypress/docker && docker-compose -f seamless.yml up
 
 .PHONY: full-test-acceptance-seamless
 full-test-acceptance-seamless: ## Runs Seamless Core Full Acceptance Testing in headless mode
