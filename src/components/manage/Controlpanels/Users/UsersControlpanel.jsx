@@ -8,6 +8,7 @@ import {
   listRoles,
   listGroups,
   listUsers,
+  getControlpanel,
   updateUser,
   updateGroup,
 } from '@plone/volto/actions';
@@ -110,12 +111,15 @@ class UsersControlpanel extends Component {
   }
 
   fetchData = async () => {
+    await this.props.getControlpanel('usergroup');
     await this.props.listRoles();
-    this.props.listGroups();
-    await this.props.listUsers();
-    this.setState({
-      entries: this.props.users,
-    });
+    if (!this.props.many_users) {
+      this.props.listGroups();
+      await this.props.listUsers();
+      this.setState({
+        entries: this.props.users,
+      });
+    }
   };
 
   /**
@@ -251,9 +255,9 @@ class UsersControlpanel extends Component {
    * @returns {undefined}
    */
   onAddUserSubmit(data, callback) {
-    const { groups } = data;
+    const { groups, sendPasswordReset } = data;
     if (groups && groups.length > 0) this.addUserToGroup(data);
-    this.props.createUser(data);
+    this.props.createUser(data, sendPasswordReset);
     this.setState({
       addUserSetFormDataCallback: callback,
     });
@@ -423,6 +427,7 @@ class UsersControlpanel extends Component {
                       'fullname',
                       'email',
                       'password',
+                      'sendPasswordReset',
                       'roles',
                       'groups',
                     ],
@@ -462,6 +467,12 @@ class UsersControlpanel extends Component {
                       'Enter your new password. Minimum 5 characters.',
                     widget: 'password',
                   },
+                  sendPasswordReset: {
+                    title: this.props.intl.formatMessage(
+                      messages.addUserFormSendPasswordResetTitle,
+                    ),
+                    type: 'boolean',
+                  },
                   roles: {
                     title: this.props.intl.formatMessage(
                       messages.addUserFormRolesTitle,
@@ -484,7 +495,7 @@ class UsersControlpanel extends Component {
                     description: '',
                   },
                 },
-                required: ['username', 'fullname', 'email', 'password'],
+                required: ['username', 'email'],
               }}
             />
           ) : null}
@@ -643,6 +654,8 @@ export default compose(
       roles: state.roles.roles,
       users: state.users.users,
       groups: state.groups.groups,
+      many_users: state.controlpanels?.controlpanel?.data?.many_users,
+      many_groups: state.controlpanels?.controlpanel?.data?.many_groups,
       description: state.description,
       pathname: props.location.pathname,
       deleteRequest: state.users.delete,
@@ -656,6 +669,7 @@ export default compose(
           listRoles,
           listUsers,
           listGroups,
+          getControlpanel,
           deleteUser,
           createUser,
           updateUser,

@@ -1,8 +1,34 @@
 # Change Log
 
-## 5.7.1 (unreleased)
+## 5.9.2 (unreleased)
 
 ### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
+## 5.9.1 (2022-10-03)
+
+### Internal
+
+- Missing `--noninteractive` for the generator @sneridagh
+
+## 5.9.0 (2022-09-28)
+
+### Feature
+
+- Move the dependency on `@plone/scripts` of the add-on generator to `devDependencies`. @sneridagh
+
+### Bugfix
+
+- Add alias to ESlint config in project generator @sneridagh
+- Add missing `moduleNameMapper`s to default app `package.json` jest config @sneridagh
+- Fix storybook for Razzle 4 @sneridagh
+
+## 5.8.0 (2022-07-28)
 
 ### Feature
 
@@ -11,8 +37,6 @@
 ### Bugfix
 
 - Remove yarn.lock from the app generator template (the generator fetches it from the latest volto version anyway). @davisagli
-
-### Internal
 
 ## 5.7.0 (2022-07-25)
 

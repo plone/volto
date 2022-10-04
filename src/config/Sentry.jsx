@@ -1,7 +1,7 @@
-import { CaptureConsole } from '@sentry/integrations';
-
-export const sentryOptions = {
-  /*
+export const sentryOptions = (libraries) => {
+  const { CaptureConsole } = libraries['SentryIntegrations'];
+  return {
+    /*
 
   dsn: 'https://key@sentry.io/1',
   environment: 'production',
@@ -17,9 +17,10 @@ export const sentryOptions = {
   },
 
   */
-  integrations: [
-    new CaptureConsole({
-      levels: ['error'],
-    }),
-  ],
+    integrations: [
+      new CaptureConsole({
+        levels: ['error'],
+      }),
+    ],
+  };
 };

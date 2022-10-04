@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RequestTimeout renders a request timeout or no connection component 1`] = `
+<div
+  className="ui container view-wrapper"
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "flexDirection": "column",
+      "fontFamily": "Helvetica, sans-serif",
+      "fontSize": "20px",
+      "justifyContent": "center",
+    }
+  }
+>
+  <h1
+    style={
+      Object {
+        "lineHeight": "40px",
+        "textAlign": "center",
+      }
+    }
+  >
+    There is no connection to the server, due to a timeout o no network connection.
+    <br />
+    <a
+      href="http://localhost:8080/Plone"
+    >
+      http://localhost:8080/Plone
+    </a>
+  </h1>
+  <p
+    className="description"
+    style={
+      Object {
+        "margin": "20px auto",
+        "textAlign": "center",
+        "width": "475px",
+      }
+    }
+  >
+    The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again.
+  </p>
+</div>
+`;

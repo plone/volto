@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Using PM2 as a process manager for deployment of Volto."
-  "property=og:description": "Using PM2 as a process manager for deployment of Volto."
-  "property=og:title": "Deployment using a node process manager (PM2)"
-  "keywords": "Volto, Plone, frontend, React, deployment, PM2"
+myst:
+  html_meta:
+    "description": "Using PM2 as a process manager for deployment of Volto."
+    "property=og:description": "Using PM2 as a process manager for deployment of Volto."
+    "property=og:title": "Deployment using a node process manager (PM2)"
+    "keywords": "Volto, Plone, frontend, React, deployment, PM2"
 ---
 
 # Deployment using a node process manager (PM2)

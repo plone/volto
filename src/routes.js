@@ -5,6 +5,7 @@
 import {
   Add,
   AddonsControlpanel,
+  Aliases,
   ChangePassword,
   ContactForm,
   Contents,
@@ -31,6 +32,8 @@ import {
   Search,
   Sharing,
   Sitemap,
+  AliasesControlpanel,
+  UndoControlpanel,
   UsersControlpanel,
   UserGroupMembershipControlPanel,
   GroupsControlpanel,
@@ -70,14 +73,14 @@ export const multilingualRoutes = [
     component: Register,
   },
   {
-    path: `/(${config.settings?.supportedLanguages.join('|')})/password-reset`,
+    path: `/(${config.settings?.supportedLanguages.join('|')})/passwordreset`,
     component: RequestPasswordReset,
     exact: true,
   },
   {
     path: `/(${config.settings?.supportedLanguages.join(
       '|',
-    )})/password-reset/:token`,
+    )})/passwordreset/:token`,
     component: PasswordReset,
     exact: true,
   },
@@ -135,8 +138,16 @@ export const defaultRoutes = [
     component: AddonsControlpanel,
   },
   {
+    path: '/controlpanel/undo',
+    component: UndoControlpanel,
+  },
+  {
     path: '/controlpanel/database',
     component: DatabaseInformation,
+  },
+  {
+    path: '/controlpanel/aliases',
+    component: AliasesControlpanel,
   },
   {
     path: '/controlpanel/moderate-comments',
@@ -195,6 +206,10 @@ export const defaultRoutes = [
     component: Sharing,
   },
   {
+    path: '/**/aliases',
+    component: Aliases,
+  },
+  {
     path: '/**/delete',
     component: Delete,
   },
@@ -211,10 +226,6 @@ export const defaultRoutes = [
     component: History,
   },
   {
-    path: '/**/sharing',
-    component: Sharing,
-  },
-  {
     path: '/**/manage-translations',
     component: ManageTranslations,
   },
@@ -227,12 +238,12 @@ export const defaultRoutes = [
     component: Register,
   },
   {
-    path: '/password-reset',
+    path: '/passwordreset',
     component: RequestPasswordReset,
     exact: true,
   },
   {
-    path: '/password-reset/:token',
+    path: '/passwordreset/:token',
     component: PasswordReset,
     exact: true,
   },
