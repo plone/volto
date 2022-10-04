@@ -13,7 +13,7 @@ http:
     backend:
       replacePathRegex:
         regex: "^/\\+\\+api\\+\\+($|/.*)"
-        replacement: "/VirtualHostBase/http/localhost/plone/++api++/VirtualHostRoot/$1"
+        replacement: "/VirtualHostBase/http/localhost/plone/++api++/VirtualHostRoot$1"
 
   services:
     frontend:
