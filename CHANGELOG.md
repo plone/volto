@@ -12,6 +12,7 @@
 - Complete eu translation. @erral
 - Complete spanish translation @erral
 - Added an option for users to set their own password through a confirmation email in the Add Users modal within the Users control panel. @JeffersonBledsoe #3710
+- Accept a `querystring` object in `apiExpanders` config object settings @sneridagh
 
 ### Bugfix
 
