@@ -12,7 +12,7 @@ services:
       - "--providers.file.filename=/etc/traefik/rules.yml"
       - "--entrypoints.web.address=:80"
       - "--api.insecure=true"
-      - "--accesslog=true"
+      # - "--accesslog=true"
       # - "--log.level=DEBUG"
     ports:
       - 80:80
