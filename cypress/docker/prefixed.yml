@@ -20,3 +20,5 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./prefixed-rules.yml:/etc/traefik/rules.yml
+    extra_hosts:
+      - host.docker.internal:host-gateway

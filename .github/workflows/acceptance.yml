@@ -668,7 +668,7 @@ jobs:
             make start-test-acceptance-server
             make start-test-acceptance-frontend-prefixed
             make start-test-acceptance-webserver-prefixed
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000 http://localhost/foo'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
