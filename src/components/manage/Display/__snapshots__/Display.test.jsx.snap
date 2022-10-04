@@ -1,6 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Display renders an actions component 1`] = `
+exports[`Display renders a Display component empty in case that there is only one option 1`] = `<div />`;
+
+exports[`Display renders a Display component with more than one option 1`] = `
 <div>
   <div
     class="inline field field-wrapper-display-select"
