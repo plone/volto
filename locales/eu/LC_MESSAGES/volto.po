@@ -153,7 +153,7 @@ msgstr "Gehitu taldeetara"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add users to group
 msgid "Add users to group"
-msgstr ""
+msgstr "Gehitu erabiltzaileak taldera"
 
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Add term
@@ -771,7 +771,7 @@ msgstr "Dokumentua"
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Download Event
 msgid "Download Event"
-msgstr ""
+msgstr "Deskargatu ebentua"
 
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Drag and drop files from your computer onto this area or click the “Browse” button.
@@ -915,7 +915,7 @@ msgstr "Idatzi zure pasahitza."
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your email for verification.
 msgid "Enter your email for verification."
-msgstr ""
+msgstr "Idatzi zure eposta egiaztapenerako."
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
@@ -926,7 +926,7 @@ msgstr "Idatzi zure pasahitz berria. Gutxienez 5 karaktere."
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your username for verification.
 msgid "Enter your username for verification."
-msgstr ""
+msgstr "Idatzi zure erabiltzaile izena egiaztapenerako"
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1035,7 +1035,7 @@ msgstr "Fitxategi izena"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Filter users by groups
 msgid "Filter users by groups"
-msgstr ""
+msgstr "Iragazi erabiltzaileak taldearen arabera"
 
 #: components/manage/Contents/Contents
 # defaultMessage: Filter…
@@ -1249,7 +1249,7 @@ msgstr "informazioa"
 #: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
 # defaultMessage: You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to user group settings. See the button on the left.
 msgid "InfoUserGroupSettings"
-msgstr ""
+msgstr "'Erabiltzaile asko' edo 'Talde asko' aukera markatu duzu. Kontrol-panel honek informazioa behar du erabiltzaileak eta taldeak erakusteko. Erabiltzaileak eta taldeak berehala ikusi nahi badituzu, joan zaitez erabiltzaile-taldeen ezarpenetara. Ikusi ezkerreko botoia."
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Inherit permissions from higher levels
@@ -1381,7 +1381,7 @@ msgstr "Hizkuntzarekiko Independentea den eremua."
 #: components/manage/Widgets/ImageSizeWidget
 # defaultMessage: Large
 msgid "Large"
-msgstr ""
+msgstr "Handia"
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Last
@@ -1522,7 +1522,7 @@ msgstr "Kudeatu itzulpenak"
 #: components/manage/Toolbar/More
 # defaultMessage: Manage content…
 msgid "Manage content…"
-msgstr ""
+msgstr "Kudeatu edukia..."
 
 #: components/manage/Multilingual/ManageTranslations
 # defaultMessage: Manage translations for {title}
@@ -1552,7 +1552,7 @@ msgstr "Balio handiena {len} da."
 #: components/manage/Widgets/ImageSizeWidget
 # defaultMessage: Medium
 msgid "Medium"
-msgstr ""
+msgstr "Ertaina"
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Message
@@ -1618,7 +1618,7 @@ msgstr "Aukera anitzak?"
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: My email is
 msgid "My email is"
-msgstr ""
+msgstr "Nire eposta"
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: My username is
@@ -1666,7 +1666,7 @@ msgstr "Ez da gehigarririk aurkitu"
 #: components/theme/RequestTimeout/RequestTimeout
 # defaultMessage: There is no connection to the server, due to a timeout o no network connection.
 msgid "No connection to the server"
-msgstr ""
+msgstr "Ez dago konexiorik zerbitzariarekin, timeout edo sare konexio arazoak medio."
 
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected
@@ -1737,7 +1737,7 @@ msgstr "Ez du desinstalatzeko profilik"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: No user found
 msgid "No user found"
-msgstr ""
+msgstr "Ez da erabiltzailerik aurkitu"
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
@@ -1906,12 +1906,12 @@ msgstr "Bete formulario hau zure pasahitza ezartzeko."
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Please search for users or use the filters on the side.
 msgid "Please search for users or use the filters on the side."
-msgstr ""
+msgstr "Bilatu erabiltzaileak edo erabili alboko iragazkiak."
 
 #: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
 # defaultMessage: Please upgrade to plone.restapi >= 8.24.0.
 msgid "Please upgrade to plone.restapi >= 8.24.0."
-msgstr ""
+msgstr "Mesedez eguneratu plone.restapi >= 8.24.0"
 
 #: components/theme/Footer/Footer
 # defaultMessage: Plone Foundation
@@ -2067,7 +2067,7 @@ msgstr "Ezabatu terminoa"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Remove users from group
 msgid "Remove users from group"
-msgstr ""
+msgstr "Ezabatu erabiltzaileak taldetik"
 
 #: components/manage/Toolbar/More
 # defaultMessage: Remove working copy
@@ -2409,7 +2409,7 @@ msgstr "Erakutsi erantzunak"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Show groups of users below
 msgid "Show groups of users below"
-msgstr ""
+msgstr "Erakutsi erabiltzaile taldeak azpian"
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Show item
@@ -2486,7 +2486,7 @@ msgstr "Tamaina: {size}"
 #: components/manage/Widgets/ImageSizeWidget
 # defaultMessage: Small
 msgid "Small"
-msgstr ""
+msgstr "Txikia"
 
 #: error
 # defaultMessage: Sorry, something went wrong with your request
@@ -2660,7 +2660,7 @@ msgstr "Idatzi zure webgunearen helbidea, bat baldin baduzu."
 #: components/theme/RequestTimeout/RequestTimeout
 # defaultMessage: The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again.
 msgid "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
-msgstr ""
+msgstr "Zerbitzariak ez du erantzuten, zerbitzariaren timeout edo zure gailuaren konexio arazo bat medio. Mesedez egiaztatu zure sare konexioa eta saiatu berriro."
 
 #: components/theme/ConnectionRefused/ConnectionRefused
 # defaultMessage: The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable.
@@ -2963,12 +2963,12 @@ msgstr "Erabiltzailea"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: User Group Membership
 msgid "User Group Membership"
-msgstr ""
+msgstr "Erabiltzaile taldeetako kidetza"
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: User Group Settings
 msgid "User Group Settings"
-msgstr ""
+msgstr "Erabiltzaile taldeetako ezarpenak"
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: User created
@@ -3181,7 +3181,7 @@ msgstr "Ezin duzu elementua hemen itsatsi"
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your email is required for reset your password.
 msgid "Your email is required for reset your password."
-msgstr ""
+msgstr "Zure eposta beharrezkoa da pasahitza berrezartzeko"
 
 #: components/manage/Preferences/PersonalInformation
 # defaultMessage: Your location - either city and country - or in a company setting, where your office is located.
@@ -3201,7 +3201,7 @@ msgstr "Zure hizkuntza"
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your username is required for reset your password.
 msgid "Your usernaame is required for reset your password."
-msgstr ""
+msgstr "Zure erabiltzaile izena beharrezkoa da pasahitza berrezartzeko"
 
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -3327,7 +3327,7 @@ msgstr "Intraneta"
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: My email is
 msgid "label_my_email_is"
-msgstr ""
+msgstr "Nire eposta"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: My username is
@@ -3670,12 +3670,12 @@ msgstr "Webgunea ikusi"
 #: components/manage/Toolbar/More
 # defaultMessage: You are not authorized to perform this operation.
 msgid "workingCopyErrorUnauthorized"
-msgstr ""
+msgstr "Ez daukazu baimenik eragiketa hau gauzatzeko."
 
 #: components/manage/Toolbar/More
 # defaultMessage: An error occurred while performing this operation.
 msgid "workingCopyGenericError"
-msgstr ""
+msgstr "Errore bat gertatu da eragiketa hau gauzatzean"
 
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
