@@ -7,11 +7,10 @@
 - Sentry integration is now lazy-loaded. The `sentryOptions` key from the `settings` registry becomes a callable that passes resolved sentry libraries. @tiberiuichim
 
 ### Feature
+
+- Send missing variation data to the listing variation @ionlizarazu
 - Complete eu translation. @erral
-
-
 - Complete spanish translation @erral
-
 - Added an option for users to set their own password through a confirmation email in the Add Users modal within the Users control panel. @JeffersonBledsoe #3710
 
 ### Bugfix
