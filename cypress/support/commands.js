@@ -20,7 +20,7 @@ Cypress.Commands.add('autologin', (usr, pass) => {
   } else {
     api_url = PLONE_API_URL;
     user = usr || 'admin';
-    password = pass || 'secret';
+    password = pass || 'correct horse battery staple';
   }
 
   return cy
