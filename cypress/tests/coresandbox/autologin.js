@@ -1,4 +1,4 @@
-import { ploneAuth } from '../../../support/constants';
+import { ploneAuth } from '../../support/constants';
 
 describe('Autologin Tests', () => {
   it('Autologin as an standalone test', function () {
