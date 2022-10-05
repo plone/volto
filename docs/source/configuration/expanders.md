@@ -24,6 +24,13 @@ export default function applyConfig (config) {
       {
         match: '/de',
         GET_CONTENT: ['myothercustomexpander'],
+      },
+      {
+        match: '/de',
+        GET_CONTENT: ['navigation'],
+        querystring: {
+          'expand.navigation.depth': 3,
+        },
       }
   ];
 
@@ -32,3 +39,4 @@ export default function applyConfig (config) {
 ```
 
 The config accepts a list of matchers with the ability to filter by request path and action type, for maximum flexibility.
+It also accepts a `querystring` object that allows to configure the expandeders via querystring params (eg. the navigation expander).
