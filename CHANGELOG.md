@@ -8,9 +8,13 @@
 
 ### Bugfix
 
+- Fix unlock after changing the id and saving a page @reebalazs
+
 ### Internal
 
 ### Documentation
+
+- Update README with latest versions, point to Plone 6 as recommended default @sneridagh
 
 ## 16.0.0-alpha.41 (2022-10-05)
 
