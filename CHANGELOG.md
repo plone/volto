@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Upgrade Cypress to latest @sneridagh
+
 ### Documentation
 
 ## 16.0.0-alpha.41 (2022-10-05)
