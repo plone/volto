@@ -1,3 +1,5 @@
+import { getBackendBaseURL } from '../../../support/constants';
+
 // const interceptGroups = () => {
 //   cy.intercept('/**/usergroup').as('manyGroups');
 //   cy.visit('/controlpanel/groups');
@@ -72,7 +74,10 @@ describe('Groups Control Panel Test', () => {
   });
 
   it('Should update group roles', () => {
-    cy.intercept('PATCH', '/++api++/@groups/Administrators').as('editGroup');
+    cy.intercept(
+      'PATCH',
+      `${getBackendBaseURL()}/++api++/@groups/Administrators`,
+    ).as('editGroup');
     cy.visit('/controlpanel/groups');
     cy.waitForResourceToLoad('@navigation');
     cy.waitForResourceToLoad('@breadcrumbs');
