@@ -708,7 +708,7 @@ jobs:
           browser: chrome
           group: Seamless
           spec: cypress/tests/core/basic/**/*.js
-          config: baseUrl=http://localhost
+          config: baseUrl=http://localhost,apiBaseURL=''
           start: |
             make start-test-acceptance-server
             make start-test-acceptance-frontend-seamless
