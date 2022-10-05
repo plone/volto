@@ -52,7 +52,7 @@ describe('Object Browser Tests', () => {
     cy.get('.ui.basic.icon.button.image').contains('Image').click();
     cy.get('.toolbar-inner button.ui.basic.icon.button').click();
     cy.findByLabelText('Search SVG').click();
-    cy.get('.ui.input.search').type('http://localhost:55001/my-page-1');
+    cy.get('.ui.input.search').type(`${Cypress.config().baseUrl}/my-page-1`);
     cy.findByLabelText('Select My Image').dblclick();
     cy.get('#toolbar-save').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
