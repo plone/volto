@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Update to Plone 6 beta3 @sneridagh
+
 ### Documentation
 
 ## 16.0.0-alpha.41 (2022-10-05)
