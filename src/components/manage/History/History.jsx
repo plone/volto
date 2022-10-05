@@ -16,7 +16,7 @@ import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { asyncConnect } from '@plone/volto/helpers';
 
 import {
-  FormattedRelativeDate,
+  FormattedDate,
   Icon as IconNext,
   Toolbar,
   Forbidden,
@@ -229,7 +229,7 @@ class History extends Component {
                   </Table.Cell>
                   <Table.Cell>{entry.actor.fullname}</Table.Cell>
                   <Table.Cell>
-                    <FormattedRelativeDate date={entry.time} />
+                    <FormattedDate date={entry.time} />
                   </Table.Cell>
                   <Table.Cell>{entry.comments}</Table.Cell>
                   <Table.Cell>
