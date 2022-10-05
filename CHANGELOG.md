@@ -12,6 +12,8 @@
 
 ### Documentation
 
+- Update README with latest versions, point to Plone 6 as recommended default @sneridagh
+
 ## 16.0.0-alpha.41 (2022-10-05)
 
 ### Breaking
