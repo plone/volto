@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix unlock after changing the id and saving a page @reebalazs
+
 ### Internal
 
 ### Documentation
