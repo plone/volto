@@ -4,6 +4,18 @@
 
 ### Breaking
 
+### Feature
+
+### Bugfix
+
+### Internal
+
+### Documentation
+
+## 16.0.0-alpha.41 (2022-10-05)
+
+### Breaking
+
 - Sentry integration is now lazy-loaded. The `sentryOptions` key from the `settings` registry becomes a callable that passes resolved sentry libraries. @tiberiuichim
 
 ### Feature
@@ -12,8 +24,11 @@
 - Complete eu translation. @erral
 - Complete spanish translation @erral
 - Added an option for users to set their own password through a confirmation email in the Add Users modal within the Users control panel. @JeffersonBledsoe #3710
+- Accept a `querystring` object in `apiExpanders` config object settings @sneridagh
 
 ### Bugfix
+
+- Extend Id widget validation rules to accept a dot "." @reebalazs
 
 ### Internal
 
@@ -22,8 +37,6 @@
 - More disable flaky test regarding many users/groups @sneridagh
 - Remove no longer present option in cypress github action, by default, headless is true @sneridagh
 - Add proper webserver with reverse proxy with seamless mode @sneridagh
-
-### Documentation
 
 ## 16.0.0-alpha.40 (2022-10-01)
 
