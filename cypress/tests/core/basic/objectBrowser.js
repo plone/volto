@@ -1,5 +1,3 @@
-import { getBackendBaseURL } from '../../../support/constants';
-
 describe('Object Browser Tests', () => {
   beforeEach(() => {
     // Wait a bit to previous teardown to complete correctly because Heisenbug in this point
@@ -48,13 +46,17 @@ describe('Object Browser Tests', () => {
       .and('eq', '/my-page-1/my-image/@@images/image');
   });
 
-  it.only('As editor I can add the full url in search box in sidebar', () => {
+  it('As editor I can add the full url in search box in sidebar', () => {
     cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.image').contains('Image').click();
     cy.get('.toolbar-inner button.ui.basic.icon.button').click();
     cy.findByLabelText('Search SVG').click();
-    cy.get('.ui.input.search').type(`${getBackendBaseURL()}/my-page-1`);
+    cy.window()
+      .its('env.apiPath')
+      .then((apiPath) => {
+        cy.get('.ui.input.search').type(`${apiPath}/my-page-1`);
+      });
     cy.findByLabelText('Select My Image').dblclick();
     cy.get('#toolbar-save').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
