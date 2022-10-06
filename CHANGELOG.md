@@ -603,6 +603,7 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 
 ### Feature
 
+- added 'show total results' option in Search block configuration. @giuliaghisini
 - Added viewableInBrowserObjects setting to use in alternative to downloadableObjects, if you want to view file in browser intstead downloading. @giuliaghisini
 - Disable already chosen criteria in querystring widget @kreafox
 - Added X-Forwarded-\* headers to superagent requests. @mamico
