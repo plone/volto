@@ -10,6 +10,7 @@
 
 - Add a dynamic user form based in @userschema endpoint @erral @nileshgulia1
 - Send missing variation data to the listing variation @ionlizarazu
+- Logout action in personal tools points to the same pathname, now it logout in place, not in the root. @sneridagh
 
 ### Bugfix
 
