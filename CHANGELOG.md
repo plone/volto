@@ -22,6 +22,7 @@
 
 ### Internal
 
+- Update to Plone 6 beta3 @sneridagh
 - Upgrade Cypress to latest @sneridagh
 
 ### Documentation
