@@ -1,5 +1,3 @@
-import { getBackendBaseURL } from '../../../support/constants';
-
 // const interceptGroups = () => {
 //   cy.intercept('/**/usergroup').as('manyGroups');
 //   cy.visit('/controlpanel/groups');
