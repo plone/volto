@@ -13,6 +13,8 @@
 
 ### Internal
 
+- Upgrade Cypress to latest @sneridagh
+
 ### Documentation
 
 - Update README with latest versions, point to Plone 6 as recommended default @sneridagh
