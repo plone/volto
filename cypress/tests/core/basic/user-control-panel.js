@@ -77,9 +77,11 @@ describe('User Control Panel Test', () => {
     cy.get('input[id="field-password"]').clear().type('info@example.com');
     cy.get('button[title="Save"]').click(-50, -50, { force: true });
 
-    // select first user with name, delete it and search if its exists or not!
-    cy.get('tr:nth-of-type(2) > td.fullname').should('have.text', 'Alok Kumar');
-    cy.get('tr:nth-of-type(2) div[role="listbox"]').click();
+    cy.get('tr:nth-of-type(3) > td.fullname').should(
+      'have.text',
+      'Test Example',
+    );
+    cy.get('tr:nth-of-type(3) div[role="listbox"]').click();
     cy.findByRole('option', { text: /view user info/gi }).click();
     cy.waitForResourceToLoad('@users');
     cy.get('input[id="field-fullname"]').should('have.text', 'Test Example');
