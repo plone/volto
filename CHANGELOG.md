@@ -6,6 +6,9 @@
 
 ### Feature
 
+- Add a dynamic user form based in @userschema endpoint @erral @nileshgulia1
+- Send missing variation data to the listing variation @ionlizarazu
+
 ### Bugfix
 
 - Fix history page error for unauthenticated @reebalazs
@@ -29,7 +32,6 @@
 
 ### Feature
 
-- Send missing variation data to the listing variation @ionlizarazu
 - Complete eu translation. @erral
 - Complete spanish translation @erral
 - Added an option for users to set their own password through a confirmation email in the Add Users modal within the Users control panel. @JeffersonBledsoe #3710
@@ -376,9 +378,6 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 
 ### Feature
 
-- add control panel via config.settings @ksuess https://github.com/plone/volto/issues/3426
-- Add noindex metadata tag @steffenri
-- Send extra data coming from listing block schemaEnhancer from searchBlock to the listing variation @ionlizarazu
 - Send extra data coming from listing block schemaEnhancer from searchBlock to the listing variation @ionlizarazu
 
 ### Bugfix
@@ -1547,7 +1546,6 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 - Style checkboxes @nileshgulia1
 - Allow loading .less files also from a Volto project's `src` folder. @tiberiuichim
 - Allow loading .less files also from a Volto project's `src` folder. @tiberiuichim
-- Add a dynamic user form based in @userschema endpoint @erral @nileshgulia1
 
 ### Bugfix
 
