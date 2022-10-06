@@ -12,8 +12,8 @@ import { withRouter } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
 import { messages } from '@plone/volto/helpers';
-import { Form, Toast } from '@plone/volto/components';
 import { getUser, updateUser, getUserSchema } from '@plone/volto/actions';
+import { Form, Toast, Unauthorized } from '@plone/volto/components';
 
 /**
  * PersonalInformation class.
@@ -99,6 +99,10 @@ class PersonalInformation extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    if (this.props.error && this.props.error.status === 401) {
+      return <Unauthorized />;
+    }
+
     return (
       this.props?.userschema?.loaded && (
         <Form
@@ -119,7 +123,10 @@ export default compose(
   connect(
     (state, props) => ({
       user: state.users.user,
-      userId: state.userSession.token
+      error: state.users.get.error,
+      userId: props.match.params.username
+        ? props.match.params.username
+        : state.userSession.token
         ? jwtDecode(state.userSession.token).sub
         : '',
       loaded: state.users.get.loaded,
