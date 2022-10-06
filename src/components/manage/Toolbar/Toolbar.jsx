@@ -38,6 +38,7 @@ import folderSVG from '@plone/volto/icons/folder.svg';
 import addSVG from '@plone/volto/icons/add-document.svg';
 import moreSVG from '@plone/volto/icons/more.svg';
 import userSVG from '@plone/volto/icons/user.svg';
+import backSVG from '@plone/volto/icons/back.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
@@ -272,6 +273,14 @@ class Toolbar extends Component {
         showMenu: !state.showMenu,
         menuStyle: { bottom: 0 },
       }));
+    } else if (selector === 'more') {
+      this.setState((state) => ({
+        showMenu: !state.showMenu,
+        menuStyle: {
+          overflow: 'visible',
+          top: 0,
+        },
+      }));
     } else {
       this.setState((state) => ({
         showMenu: !state.showMenu,
@@ -467,8 +476,8 @@ class Toolbar extends Component {
                           )}
                         >
                           <Icon
-                            name={clearSVG}
-                            className="contents circled"
+                            name={backSVG}
+                            className="circled"
                             size="30px"
                             title={this.props.intl.formatMessage(messages.back)}
                           />

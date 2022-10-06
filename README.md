@@ -79,7 +79,7 @@ cd myvoltoproject
 You can bootstrap a ready Docker Plone container with all the dependencies and ready for Volto use. We recommend to use the Plone docker builds based in `pip` [plone/plone-backend](https://github.com/plone/plone-backend) image:
 
 ```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.restapi==8.22.0 plone.volto==4.0.0a4 plone.rest==2.0.0a5 plone.app.iterate==4.0.2 plone.app.vocabularies==4.3.0" -e PROFILES="plone.volto:default-homepage" plone/plone-backend
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.0b3
 ```
 
 or as an alternative if you have experience with Plone and you have all the
@@ -92,24 +92,25 @@ make build-backend
 
 #### Recommended Plone version
 
-Volto is Plone 6 default UI, so it will work for all Plone 6 released versions.
+Volto is the default UI for Plone 6, so it will work for all Plone 6 released versions.
 
-For the Plone 5 series latest released version (with Python 3) and above is recommended (at the time of writing 5.2.6).
-
-The following KGS (or above) are also recommended, for any Plone version used.
+For the Plone 5 series, the latest released version of Plone 5 (with Python 3) is recommended (at the time of writing 5.2.9).
 
 #### KGS (known good set of versions) for backend packages
 
-Volto always works best with latest versions of the "Frontend stack" or at least the recommended ones (in parenthesis) which are:
+On Plone 6, we recommend using the known good set (KGS) of package versions that are specified in the Plone release.
 
-- plone.restapi (8.22.0)
-- plone.rest (2.0.0a5)
-- plone.volto (4.0.0a4)
+On Plone 5, Volto is currently tested with the following packages pinned to specific versions, and we recommend using the same versions, which are:
 
-and the following core packages since some features require up to date versions:
+- plone.restapi 8.30.0
+- plone.rest 2.0.0a5
+- plone.volto 4.0.0a13
 
-- plone.app.iterate (4.0.2)
-- plone.app.vocabularies (4.3.0)
+This would be the docker command to spawn a Plone 5 container with the right KGS versions:
+
+```shell
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.restapi==8.30.0 plone.volto==4.0.0a13 plone.rest==2.0.0a5 plone.app.iterate==4.0.2 plone.app.vocabularies==4.3.0" -e PROFILES="plone.volto:default-homepage" plone/plone-backend
+```
 
 ### Start Volto
 
@@ -162,6 +163,7 @@ Volto is actively developed since 2017 and used in production since 2018 on the 
 - [Memori](https://memori.ai/en) (Corporate website for Memori, startup specialising in technologies applied to the experience of memory through the development of Artificial Intelligences. Developed by [RawMaterial](https://rawmaterial.it/en), 2021)
 - [TwinCreator](https://twincreator.com/en) (TwinCreator allows you to design and train multiple AI’s through simple conversation through NLP. Developed by [RawMaterial](https://rawmaterial.it/en), 2021)
 - [MemoryTwin](https://memorytwin.com/en) (Product website, MemoryTwin allows you to create your personal artificial intelligence, able to remember and speak. Developed by [RawMaterial](https://rawmaterial.it/en), 2022)
+- [Forschungszentrum Jülich](https://fz-juelich.de) (Website for Forschungzentrum Jülich, which is one of the largest research institutions in Europe, developed by [kitconcept GmbH](https://kitconcept.com), 2022)
 
 Please create a new [issue](https://github.com/plone/volto/issues/new) or [pull request](https://github.com/plone/volto/pulls) to add your Volto-site here!
 
@@ -253,7 +255,7 @@ yarn
 Either using a Docker command:
 
 ```shell
-docker run -it --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS="plone.restapi==8.22.0 plone.app.iterate==4.0.2 plone.rest==2.0.0a5 plone.app.vocabularies==4.3.0 plone.volto==4.0.0a3" -e PROFILES="plone.volto:default-homepage" plone/plone-backend
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.0b3
 ```
 
 or using the convenience makefile command:

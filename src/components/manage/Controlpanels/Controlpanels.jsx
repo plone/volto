@@ -54,6 +54,10 @@ const messages = defineMessages({
     id: 'Users and Groups',
     defaultMessage: 'Users and Groups',
   },
+  usersControlPanelCategory: {
+    id: 'Users',
+    defaultMessage: 'Users',
+  },
   users: {
     id: 'Users',
     defaultMessage: 'Users',
@@ -61,6 +65,26 @@ const messages = defineMessages({
   groups: {
     id: 'Groups',
     defaultMessage: 'Groups',
+  },
+  addons: {
+    id: 'Add-Ons',
+    defaultMessage: 'Add-Ons',
+  },
+  database: {
+    id: 'Database',
+    defaultMessage: 'Database',
+  },
+  usergroupmemberbership: {
+    id: 'User Group Membership',
+    defaultMessage: 'User Group Membership',
+  },
+  undo: {
+    id: 'Undo',
+    defaultMessage: 'Undo',
+  },
+  urlmanagement: {
+    id: 'URL Management',
+    defaultMessage: 'URL Management',
   },
 });
 
@@ -150,12 +174,22 @@ class Controlpanels extends Component {
         {
           '@id': '/addons',
           group: this.props.intl.formatMessage(messages.general),
-          title: 'Add-Ons',
+          title: this.props.intl.formatMessage(messages.addons),
         },
         {
           '@id': '/database',
           group: this.props.intl.formatMessage(messages.general),
-          title: 'Database',
+          title: this.props.intl.formatMessage(messages.database),
+        },
+        {
+          '@id': '/undo',
+          group: this.props.intl.formatMessage(messages.general),
+          title: this.props.intl.formatMessage(messages.undo),
+        },
+        {
+          '@id': '/aliases',
+          group: this.props.intl.formatMessage(messages.general),
+          title: this.props.intl.formatMessage(messages.urlmanagement),
         },
         {
           '@id': '/moderate-comments',
@@ -164,12 +198,23 @@ class Controlpanels extends Component {
         },
         {
           '@id': '/users',
-          group: this.props.intl.formatMessage(messages.usersandgroups),
+          group: this.props.intl.formatMessage(
+            messages.usersControlPanelCategory,
+          ),
           title: this.props.intl.formatMessage(messages.users),
         },
         {
+          '@id': '/usergroupmembership',
+          group: this.props.intl.formatMessage(
+            messages.usersControlPanelCategory,
+          ),
+          title: this.props.intl.formatMessage(messages.usergroupmemberbership),
+        },
+        {
           '@id': '/groups',
-          group: this.props.intl.formatMessage(messages.usersandgroups),
+          group: this.props.intl.formatMessage(
+            messages.usersControlPanelCategory,
+          ),
           title: this.props.intl.formatMessage(messages.groups),
         },
       ]),
