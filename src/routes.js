@@ -197,10 +197,6 @@ export const defaultRoutes = [
     path: '/**/create-translation',
     component: CreateTranslation,
   },
-  // {
-  //   path: '/**/contents',
-  //   component: Contents,
-  // },
   {
     path: '/**/sharing',
     component: Sharing,
