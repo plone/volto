@@ -188,7 +188,7 @@ export const defaultRoutes = [
     component: Edit,
   },
   {
-    path: '/contents',
+    path: ['/contents', '/**/contents'],
     component: Contents,
   },
   {
@@ -202,10 +202,6 @@ export const defaultRoutes = [
   {
     path: '/**/create-translation',
     component: CreateTranslation,
-  },
-  {
-    path: '/**/contents',
-    component: Contents,
   },
   {
     path: '/**/sharing',
