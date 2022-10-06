@@ -103,14 +103,18 @@ class PersonalInformation extends Component {
       return <Unauthorized />;
     }
 
+    const title = this.props.match.params.username
+      ? `Personal Information for ${
+          this.props.user.fullname
+            ? this.props.user.fullname
+            : this.props.user.email
+        } (${this.props.user.username})`
+      : null;
+
     return (
       this.props?.userschema?.loaded && (
         <Form
-          title={`Personal Information for ${
-            this.props.user.fullname
-              ? this.props.user.fullname
-              : this.props.user.email
-          } (${this.props.user.username})`}
+          title={title}
           formData={this.props.user}
           schema={this.props?.userschema.userschema}
           onSubmit={this.onSubmit}
