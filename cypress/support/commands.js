@@ -288,7 +288,7 @@ Cypress.Commands.add(
     username = 'editor',
     fullname = 'editor',
     email = 'editor@local.dev',
-    password = ploneAuth[1],
+    password = 'password',
     roles = ['Member', 'Reader', 'Editor'],
     groups = {
       '@id': 'http://localhost:3000/@users',
