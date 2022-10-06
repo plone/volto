@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- Change history route name to `historyview` (same as classic) in order to allow content to have 'history' as `id` @danielamormocea
+
 ### Feature
 
 - Add a dynamic user form based in @userschema endpoint @erral @nileshgulia1
