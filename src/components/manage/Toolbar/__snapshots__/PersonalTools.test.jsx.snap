@@ -42,7 +42,7 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
       admin
     </h2>
     <a
-      href="/logout"
+      href="//logout"
       id="toolbar-logout"
       onClick={[Function]}
     >
@@ -218,7 +218,7 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
       admin
     </h2>
     <a
-      href="/logout"
+      href="//logout"
       id="toolbar-logout"
       onClick={[Function]}
     >
