@@ -340,7 +340,7 @@ class Diff extends Component {
               hideDefaultViewButtons
               inner={
                 <Link
-                  to={`${getBaseUrl(this.props.pathname)}/pageHistory`}
+                  to={`${getBaseUrl(this.props.pathname)}/historyview`}
                   className="item"
                 >
                   <Icon

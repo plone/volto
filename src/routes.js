@@ -212,7 +212,7 @@ export const defaultRoutes = [
     component: Diff,
   },
   {
-    path: '/**/history',
+    path: '/**/historyview',
     component: History,
   },
   {

@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- Change history route name to `historyview` (same as classic) in order to allow content to have 'history' as `id` @danielamormocea
+
 ### Feature
 
 ### Bugfix
@@ -26,7 +28,6 @@
 ### Breaking
 
 - Sentry integration is now lazy-loaded. The `sentryOptions` key from the `settings` registry becomes a callable that passes resolved sentry libraries. @tiberiuichim
-- Change history route name to allow pages to be named 'History'
 
 ### Feature
 
