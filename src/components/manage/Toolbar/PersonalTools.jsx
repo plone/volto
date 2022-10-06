@@ -138,13 +138,13 @@ class PersonalTools extends Component {
           {/* This (probably also) should be a Component by itself*/}
           <ul>
             <li>
-              <button
-                aria-label={this.props.intl.formatMessage(messages.profile)}
-                onClick={() => this.push('profile')}
+              <Link
+                id={this.props.intl.formatMessage(messages.profile)}
+                to="/personal-information"
               >
                 <FormattedMessage id="Profile" defaultMessage="Profile" />
                 <Icon name={rightArrowSVG} size="24px" />
-              </button>
+              </Link>
             </li>
             <li>
               <button
