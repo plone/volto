@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { concat, filter, last, map, uniqBy } from 'lodash';
+import { concat, filter, last, map, sortBy, uniqBy } from 'lodash';
 import { Portal } from 'react-portal';
 import { Helmet } from '@plone/volto/helpers';
 import { Container, Grid, Header, Segment } from 'semantic-ui-react';
@@ -241,21 +241,27 @@ class Controlpanels extends Component {
               <Segment key={`body-${group}`} attached>
                 <Grid columns={6}>
                   <Grid.Row>
-                    {map(filter(controlpanels, { group }), (controlpanel) => (
-                      <Grid.Column key={controlpanel.id}>
-                        <Link to={`/controlpanel/${controlpanel.id}`}>
-                          <Header as="h3" icon textAlign="center">
-                            <Icon
-                              name={icons?.[controlpanel.id] || icons.default}
-                              size="48px"
-                            />
-                            <Header.Content>
-                              {controlpanel.title}
-                            </Header.Content>
-                          </Header>
-                        </Link>
-                      </Grid.Column>
-                    ))}
+                    {map(
+                      sortBy(
+                        filter(controlpanels, { group }),
+                        (controlpanel) => controlpanel.title,
+                      ),
+                      (controlpanel) => (
+                        <Grid.Column key={controlpanel.id}>
+                          <Link to={`/controlpanel/${controlpanel.id}`}>
+                            <Header as="h3" icon textAlign="center">
+                              <Icon
+                                name={icons?.[controlpanel.id] || icons.default}
+                                size="48px"
+                              />
+                              <Header.Content>
+                                {controlpanel.title}
+                              </Header.Content>
+                            </Header>
+                          </Link>
+                        </Grid.Column>
+                      ),
+                    )}
                   </Grid.Row>
                 </Grid>
               </Segment>,
