@@ -1,11 +1,11 @@
-const interceptGroups = () => {
-  cy.intercept('/**/usergroup').as('manyGroups');
-  cy.visit('/controlpanel/groups');
-  cy.waitForResourceToLoad('@navigation');
-  cy.waitForResourceToLoad('@breadcrumbs');
-  cy.waitForResourceToLoad('@actions');
-  cy.waitForResourceToLoad('@types');
-};
+// const interceptGroups = () => {
+//   cy.intercept('/**/usergroup').as('manyGroups');
+//   cy.visit('/controlpanel/groups');
+//   cy.waitForResourceToLoad('@navigation');
+//   cy.waitForResourceToLoad('@breadcrumbs');
+//   cy.waitForResourceToLoad('@actions');
+//   cy.waitForResourceToLoad('@types');
+// };
 
 describe('Groups Control Panel Test', () => {
   beforeEach(() => {
@@ -72,9 +72,7 @@ describe('Groups Control Panel Test', () => {
   });
 
   it('Should update group roles', () => {
-    cy.intercept('PATCH', '/plone/++api++/@groups/Administrators').as(
-      'editGroup',
-    );
+    cy.intercept('PATCH', `**/++api++/@groups/Administrators`).as('editGroup');
     cy.visit('/controlpanel/groups');
     cy.waitForResourceToLoad('@navigation');
     cy.waitForResourceToLoad('@breadcrumbs');
@@ -139,24 +137,26 @@ describe('Groups Control Panel test for many groups', () => {
       }
     });
   });
-  it('Should not show groups if the many_groups option in enabled', () => {
-    interceptGroups();
-    cy.wait('@manyGroups').then((interception) => {
-      if (expect(interception.response.body.data.many_groups).to.equal(true)) {
-        cy.get('.ui.secondary.attached.menu div.menu').should('be.empty');
-      }
-    });
-  });
-  it('In the case of many groups, It should show a group only when it is searched by a groupname ', () => {
-    interceptGroups();
-    cy.wait('@manyGroups').then((interception) => {
-      if (expect(interception.response.body.data.many_groups).to.equal(true)) {
-        cy.get('input[id="group-search-input"]').clear().type('editors');
-        cy.get('.icon.button:first').click();
-        cy.get('[data-group="groups"] td')
-          .first()
-          .should('have.text', 'editors');
-      }
-    });
-  });
+
+  // it('Should not show groups if the many_groups option in enabled', () => {
+  //   interceptGroups();
+  //   cy.wait('@manyGroups').then((interception) => {
+  //     if (expect(interception.response.body.data.many_groups).to.equal(true)) {
+  //       cy.get('.ui.secondary.attached.menu div.menu').should('be.empty');
+  //     }
+  //   });
+  // });
+
+  // it('In the case of many groups, It should show a group only when it is searched by a groupname ', () => {
+  //   interceptGroups();
+  //   cy.wait('@manyGroups').then((interception) => {
+  //     if (expect(interception.response.body.data.many_groups).to.equal(true)) {
+  //       cy.get('input[id="group-search-input"]').clear().type('editors');
+  //       cy.get('.icon.button:first').click();
+  //       cy.get('[data-group="groups"] td')
+  //         .first()
+  //         .should('have.text', 'editors');
+  //     }
+  //   });
+  // });
 });

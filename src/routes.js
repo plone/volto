@@ -33,6 +33,7 @@ import {
   Sharing,
   Sitemap,
   AliasesControlpanel,
+  UndoControlpanel,
   UsersControlpanel,
   UserGroupMembershipControlPanel,
   GroupsControlpanel,
@@ -86,6 +87,12 @@ export const multilingualRoutes = [
 ];
 
 export const defaultRoutes = [
+  // redirect to external links if path is in blacklist
+  ...(config.settings?.externalRoutes || []).map((route) => ({
+    ...route.match,
+    component: NotFound,
+  })),
+  ...((config.settings?.isMultilingual && multilingualRoutes) || []),
   {
     path: '/',
     component: View,
@@ -137,6 +144,10 @@ export const defaultRoutes = [
     component: AddonsControlpanel,
   },
   {
+    path: '/controlpanel/undo',
+    component: UndoControlpanel,
+  },
+  {
     path: '/controlpanel/database',
     component: DatabaseInformation,
   },
@@ -177,7 +188,7 @@ export const defaultRoutes = [
     component: Edit,
   },
   {
-    path: '/contents',
+    path: ['/contents', '/**/contents'],
     component: Contents,
   },
   {
@@ -191,10 +202,6 @@ export const defaultRoutes = [
   {
     path: '/**/create-translation',
     component: CreateTranslation,
-  },
-  {
-    path: '/**/contents',
-    component: Contents,
   },
   {
     path: '/**/sharing',
@@ -262,14 +269,8 @@ const routes = [
     path: '/',
     component: App,
     routes: [
-      // redirect to external links if path is in blacklist
-      ...(config.settings?.externalRoutes || []).map((route) => ({
-        ...route.match,
-        component: NotFound,
-      })),
       // addon routes have a higher priority then default routes
       ...(config.addonRoutes || []),
-      ...((config.settings?.isMultilingual && multilingualRoutes) || []),
       ...defaultRoutes,
     ],
   },
