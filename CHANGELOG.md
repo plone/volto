@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Fix unlock after changing the id and saving a page @reebalazs
+- Add default to `null` for `token` prop in `Navigation` component. This prevents the component to shoot an extra call when the logout happens @sneridagh
 
 ### Internal
 
