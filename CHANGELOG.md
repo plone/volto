@@ -8,11 +8,79 @@
 
 ### Bugfix
 
+- Fix history page error for unauthenticated @reebalazs
+- Fix unlock after changing the id and saving a page @reebalazs
+- Group routes so React does not see them as a different Route and triggers a full remount. This is specially important in `Contents` @sneridagh
+- Add default to `null` for `token` prop in `Navigation` component. This prevents the component to shoot an extra call when the logout happens @sneridagh
+
+### Internal
+
+- Upgrade Cypress to latest @sneridagh
+
+### Documentation
+
+- Update README with latest versions, point to Plone 6 as recommended default @sneridagh
+
+## 16.0.0-alpha.41 (2022-10-05)
+
+### Breaking
+
+- Sentry integration is now lazy-loaded. The `sentryOptions` key from the `settings` registry becomes a callable that passes resolved sentry libraries. @tiberiuichim
+
+### Feature
+
+- Send missing variation data to the listing variation @ionlizarazu
+- Complete eu translation. @erral
+- Complete spanish translation @erral
+- Added an option for users to set their own password through a confirmation email in the Add Users modal within the Users control panel. @JeffersonBledsoe #3710
+- Accept a `querystring` object in `apiExpanders` config object settings @sneridagh
+
+### Bugfix
+
+- Extend Id widget validation rules to accept a dot "." @reebalazs
+
+### Internal
+
+- Comment out flaky test for now regarding many users/groups @sneridagh
+- Add reverse proxy conf with `traefik` to demo compose file @sneridagh
+- More disable flaky test regarding many users/groups @sneridagh
+- Remove no longer present option in cypress github action, by default, headless is true @sneridagh
+- Add proper webserver with reverse proxy with seamless mode @sneridagh
+
+## 16.0.0-alpha.40 (2022-10-01)
+
+### Feature
+
+- Show result of the addon install/uninstall/upgrade actions @erral
+- Working copy actions now render errors if they fail @pnicolli
+- lazyloading of rrule lib. @giuliaghisini
+
+### Bugfix
+
+- Concatenate multilingualRoutes and externalRoutes (if available) to defaultRoutes @erral #3653
+- Fixed the `description` field not appearing in control panel fieldsets @JeffersonBledsoe #3696
+- Fixed "more" always show root contents @MdSahil-oss #3365
+- Add missing `--noninteractive` in the `build` script in package.json @sneridagh
+
+### Internal
+
+- Run yarn deduplicate on dependencies. @davisagli
+
+### Documentation
+
+- Upgrade to Plone 6 beta 2 @sneridagh
+- Flip testing matrix for acceptance tests, make Plone 6 principal subject, Plone 5 as secondary @sneridagh
+
+## 16.0.0-alpha.39 (2022-09-28)
+
+### Bugfix
+
+- Fix call to `@plone/scripts/i18n` (now a commonJS module) @sneridagh
+
 ### Internal
 
 - Fix storybook build for Razzle 4 @sneridagh
-
-### Documentation
+- Update `@plone/scripts` to 2.1.1 @sneridagh
 
 ## 16.0.0-alpha.38 (2022-09-27)
 
@@ -35,6 +103,8 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - volto-slate: introduce style-menu @nileshgulia1
 
 ### Bugfix
+
+- Fix avatar URL in `PersonalTools`. Now works with the new `portrait` endpoint @sneridagh
 
 - Fix `listing` block in SSR, now that it is fully variations aware and the configuration is passed to the SSR `querystring` action. @sneridagh
 - Remove wrapping ul or ol when deselecting list style @robgietema
@@ -306,6 +376,9 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 
 ### Feature
 
+- add control panel via config.settings @ksuess https://github.com/plone/volto/issues/3426
+- Add noindex metadata tag @steffenri
+- Send extra data coming from listing block schemaEnhancer from searchBlock to the listing variation @ionlizarazu
 - Send extra data coming from listing block schemaEnhancer from searchBlock to the listing variation @ionlizarazu
 
 ### Bugfix
@@ -341,6 +414,10 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Fix `defaultBlockType` entry in default config, set it to slate. @sneridagh
 
 ## 16.0.0-alpha.17 (2022-07-25)
+
+### Feature
+
+- Added the `Undo controlpanel` to the controlpanels which can be used to undo transactions. @MdSahil-oss
 
 ### Bugfix
 
@@ -3473,7 +3550,7 @@ https://docs.voltocms.com/upgrade-guide/
 - Fix bug introduced in 7.9.0, properly return a list of results when dealing with batched api requests @tiberiuichim
 - In folder contents batch upload, use a subrequest to avoid breaking the global `content.data` state @tiberiuichim
 - Fix `null` response issue when passing custom `Accept:` headers to actions #1771 @avoinea
-- Removed all `<<<<<HEAD` artifacts from translations @steffenri
+- Removed all artifacts from translations @steffenri
 - Increase z-index of `block-add-button` @steffenri
 
 ## 7.11.1 (2020-08-27)

@@ -15,7 +15,7 @@ const fileLoaderFinder = makeLoaderFinder('file-loader');
 
 const projectRootPath = path.resolve('.');
 const languages = require('./src/constants/Languages');
-const { poToJson } = require('@plone/scripts/i18n');
+const { poToJson } = require('@plone/scripts/i18n.cjs');
 
 const packageJson = require(path.join(projectRootPath, 'package.json'));
 

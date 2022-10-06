@@ -194,7 +194,7 @@ exports[`Toolbar More component renders a Toolbar More component with manage con
     </div>
     <header>
       <h2>
-        Manage content...
+        Manage content…
       </h2>
     </header>
     <div
