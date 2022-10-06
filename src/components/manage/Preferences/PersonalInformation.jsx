@@ -106,6 +106,11 @@ class PersonalInformation extends Component {
     return (
       this.props?.userschema?.loaded && (
         <Form
+          title={`Personal Information for ${
+            this.props.user.fullname
+              ? this.props.user.fullname
+              : this.props.user.email
+          }`}
           formData={this.props.user}
           schema={this.props?.userschema.userschema}
           onSubmit={this.onSubmit}
