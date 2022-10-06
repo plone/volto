@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Fix unlock after changing the id and saving a page @reebalazs
+- Group routes so React does not see them as a different Route and triggers a full remount. This is specially important in `Contents` @sneridagh
 
 ### Internal
 

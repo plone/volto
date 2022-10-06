@@ -93,11 +93,11 @@ export const defaultRoutes = [
     exact: true,
   },
   {
-    path: '/login',
+    path: ['/login', '/**/login'],
     component: Login,
   },
   {
-    path: '/logout',
+    path: ['/logout', '/**/logout'],
     component: Logout,
   },
   {
@@ -174,36 +174,24 @@ export const defaultRoutes = [
     component: ChangePassword,
   },
   {
-    path: '/add',
+    path: ['/add', '/**/add'],
     component: Add,
   },
   {
-    path: '/edit',
+    path: ['/edit', '/**/edit'],
     component: Edit,
   },
   {
-    path: '/contents',
+    path: ['/contents', '/**/contents'],
     component: Contents,
   },
   {
-    path: '/sharing',
+    path: ['/sharing', '/**/sharing'],
     component: Sharing,
-  },
-  {
-    path: '/**/add',
-    component: Add,
   },
   {
     path: '/**/create-translation',
     component: CreateTranslation,
-  },
-  {
-    path: '/**/contents',
-    component: Contents,
-  },
-  {
-    path: '/**/sharing',
-    component: Sharing,
   },
   {
     path: '/**/aliases',
@@ -218,20 +206,12 @@ export const defaultRoutes = [
     component: Diff,
   },
   {
-    path: '/**/edit',
-    component: Edit,
-  },
-  {
     path: '/**/history',
     component: History,
   },
   {
     path: '/**/manage-translations',
     component: ManageTranslations,
-  },
-  {
-    path: '/**/login',
-    component: Login,
   },
   {
     path: '/register',
