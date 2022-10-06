@@ -101,6 +101,8 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 
 ### Bugfix
 
+- Fix avatar URL in `PersonalTools`. Now works with the new `portrait` endpoint @sneridagh
+
 - Fix `listing` block in SSR, now that it is fully variations aware and the configuration is passed to the SSR `querystring` action. @sneridagh
 - Remove wrapping ul or ol when deselecting list style @robgietema
 
