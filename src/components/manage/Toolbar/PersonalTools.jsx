@@ -13,6 +13,8 @@ import { Icon } from '@plone/volto/components';
 import { getUser } from '@plone/volto/actions';
 import { Pluggable } from '@plone/volto/components/manage/Pluggable';
 import { expandToBackendURL, userHasRoles } from '@plone/volto/helpers';
+import { withRouter } from 'react-router-dom';
+import { compose } from 'redux';
 
 import logoutSVG from '@plone/volto/icons/log-out.svg';
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
@@ -114,7 +116,7 @@ class PersonalTools extends Component {
               ? this.props.user.fullname
               : this.props.user.username}
           </h2>
-          <Link id="toolbar-logout" to="/logout">
+          <Link id="toolbar-logout" to={`${this.props.pathname}/logout`}>
             <Icon
               className="logout"
               name={logoutSVG}
@@ -181,14 +183,17 @@ class PersonalTools extends Component {
   }
 }
 
-export default injectIntl(
+export default compose(
+  injectIntl,
+  withRouter,
   connect(
-    (state) => ({
+    (state, props) => ({
+      pathname: props.location.pathname,
       user: state.users.user,
       userId: state.userSession.token
         ? jwtDecode(state.userSession.token).sub
         : '',
     }),
     { getUser },
-  )(PersonalTools),
-);
+  ),
+)(PersonalTools);
