@@ -9,10 +9,17 @@
 ### Bugfix
 
 - Fix history page error for unauthenticated @reebalazs
+- Fix unlock after changing the id and saving a page @reebalazs
+- Group routes so React does not see them as a different Route and triggers a full remount. This is specially important in `Contents` @sneridagh
+- Add default to `null` for `token` prop in `Navigation` component. This prevents the component to shoot an extra call when the logout happens @sneridagh
 
 ### Internal
 
+- Upgrade Cypress to latest @sneridagh
+
 ### Documentation
+
+- Update README with latest versions, point to Plone 6 as recommended default @sneridagh
 
 ## 16.0.0-alpha.41 (2022-10-05)
 
@@ -38,6 +45,7 @@
 - Add reverse proxy conf with `traefik` to demo compose file @sneridagh
 - More disable flaky test regarding many users/groups @sneridagh
 - Remove no longer present option in cypress github action, by default, headless is true @sneridagh
+- Add proper webserver with reverse proxy with seamless mode @sneridagh
 
 ## 16.0.0-alpha.40 (2022-10-01)
 
@@ -49,7 +57,9 @@
 
 ### Bugfix
 
+- Concatenate multilingualRoutes and externalRoutes (if available) to defaultRoutes @erral #3653
 - Fixed the `description` field not appearing in control panel fieldsets @JeffersonBledsoe #3696
+- Fixed "more" always show root contents @MdSahil-oss #3365
 - Add missing `--noninteractive` in the `build` script in package.json @sneridagh
 
 ### Internal
@@ -93,6 +103,8 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - volto-slate: introduce style-menu @nileshgulia1
 
 ### Bugfix
+
+- Fix avatar URL in `PersonalTools`. Now works with the new `portrait` endpoint @sneridagh
 
 - Fix `listing` block in SSR, now that it is fully variations aware and the configuration is passed to the SSR `querystring` action. @sneridagh
 - Remove wrapping ul or ol when deselecting list style @robgietema
