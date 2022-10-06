@@ -98,6 +98,7 @@ class Edit extends Component {
     }),
     schema: PropTypes.objectOf(PropTypes.any),
     objectActions: PropTypes.array,
+    newId: PropTypes.string,
   };
 
   /**
@@ -124,6 +125,7 @@ class Edit extends Component {
       isClient: false,
       error: null,
       formSelected: 'editForm',
+      newId: null,
     };
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -220,7 +222,12 @@ class Edit extends Component {
    */
   componentWillUnmount() {
     if (this.props.content?.lock?.locked) {
-      this.props.unlockContent(getBaseUrl(this.props.pathname));
+      const baseUrl = getBaseUrl(this.props.pathname);
+      const { newId } = this.state;
+      // Unlock the page, taking a possible id change into account
+      this.props.unlockContent(
+        newId ? baseUrl.replace(/\/[^/]*$/, '/' + newId) : baseUrl,
+      );
     }
   }
 
@@ -233,6 +240,10 @@ class Edit extends Component {
   onSubmit(data) {
     const lock_token = this.props.content?.lock?.token;
     const headers = lock_token ? { 'Lock-Token': lock_token } : {};
+    // if the id has changed, remember it for unlock control
+    if ('id' in data) {
+      this.setState({ newId: data.id });
+    }
     this.props.updateContent(getBaseUrl(this.props.pathname), data, headers);
   }
 

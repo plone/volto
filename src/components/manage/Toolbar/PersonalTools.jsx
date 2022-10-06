@@ -12,7 +12,9 @@ import { FormattedMessage, injectIntl, defineMessages } from 'react-intl';
 import { Icon } from '@plone/volto/components';
 import { getUser } from '@plone/volto/actions';
 import { Pluggable } from '@plone/volto/components/manage/Pluggable';
-import { userHasRoles } from '@plone/volto/helpers';
+import { expandToBackendURL, userHasRoles } from '@plone/volto/helpers';
+import { withRouter } from 'react-router-dom';
+import { compose } from 'redux';
 
 import logoutSVG from '@plone/volto/icons/log-out.svg';
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
@@ -114,7 +116,7 @@ class PersonalTools extends Component {
               ? this.props.user.fullname
               : this.props.user.username}
           </h2>
-          <Link id="toolbar-logout" to="/logout">
+          <Link id="toolbar-logout" to={`${this.props.pathname}/logout`}>
             <Icon
               className="logout"
               name={logoutSVG}
@@ -126,7 +128,7 @@ class PersonalTools extends Component {
         <div className={cx('avatar', { default: !this.props.user.portrait })}>
           {this.props.user.portrait ? (
             <img
-              src={this.props.user.portrait}
+              src={expandToBackendURL(this.props.user.portrait)}
               alt={this.props.intl.formatMessage(messages.userAvatar)}
             />
           ) : (
@@ -138,13 +140,13 @@ class PersonalTools extends Component {
           {/* This (probably also) should be a Component by itself*/}
           <ul>
             <li>
-              <button
-                aria-label={this.props.intl.formatMessage(messages.profile)}
-                onClick={() => this.push('profile')}
+              <Link
+                id={this.props.intl.formatMessage(messages.profile)}
+                to="/personal-information"
               >
                 <FormattedMessage id="Profile" defaultMessage="Profile" />
                 <Icon name={rightArrowSVG} size="24px" />
-              </button>
+              </Link>
             </li>
             <li>
               <button
@@ -181,14 +183,17 @@ class PersonalTools extends Component {
   }
 }
 
-export default injectIntl(
+export default compose(
+  injectIntl,
+  withRouter,
   connect(
-    (state) => ({
+    (state, props) => ({
+      pathname: props.location.pathname,
       user: state.users.user,
       userId: state.userSession.token
         ? jwtDecode(state.userSession.token).sub
         : '',
     }),
     { getUser },
-  )(PersonalTools),
-);
+  ),
+)(PersonalTools);

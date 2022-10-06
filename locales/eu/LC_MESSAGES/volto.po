@@ -347,7 +347,6 @@ msgstr "Aukerak"
 #: components/manage/History/History
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
@@ -474,7 +473,6 @@ msgid "Changes applied."
 msgstr "Aldaketak aplikatuta."
 
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 # defaultMessage: Changes saved
 msgid "Changes saved"
@@ -756,7 +754,6 @@ msgstr "Data (berriena lehenengo)"
 #: components/manage/Contents/ContentsWorkflowModal
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -924,7 +921,6 @@ msgstr "Arrastatu fitxategia hona fitxategi berria kargatzeko"
 msgid "Drop files here ..."
 msgstr "Arrastatu fitxategiak hona..."
 
-#: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
 # defaultMessage: E-mail
 msgid "E-mail"
@@ -1022,7 +1018,6 @@ msgstr "Idatzi erabiltzaile-izen bat bilaketa egiteko edo sakatu 'Ikusi guztiak'
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr "Idatzi eposta helbidea. Hau zure erabiltzaile-izena izango da. Zure pribatutasuna errespetatzen dugu eta ez dugu helbidea argitaratu edo inori emango."
 
-#: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
 # defaultMessage: Enter full name, e.g. John Smith.
 msgid "Enter full name, e.g. John Smith."
@@ -1261,7 +1256,6 @@ msgstr "Nok"
 msgid "Full"
 msgstr "Osoa"
 
-#: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
 # defaultMessage: Full Name
 msgid "Full Name"
@@ -1378,11 +1372,6 @@ msgstr "{title} elementuaren historia"
 # defaultMessage: Home
 msgid "Home"
 msgstr "Hasiera"
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Home page
-msgid "Home page"
-msgstr "Hasiera orrialdea"
 
 #: components/manage/Contents/Contents
 # defaultMessage: ID
@@ -1678,11 +1667,6 @@ msgstr "Kargatu gehiago"
 # defaultMessage: Loading.
 msgid "Loading"
 msgstr "Kargatzen"
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Location
-msgid "Location"
-msgstr "Kokalekua"
 
 #: components/theme/Login/Login
 # defaultMessage: Login
@@ -2117,7 +2101,6 @@ msgstr "Baimenak ondo eguneratu dira"
 msgid "Permissions updated"
 msgstr "Baimenak eguneratu dira"
 
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Personal Information
 msgid "Personal Information"
@@ -2179,11 +2162,6 @@ msgstr "Plone Ataria"
 # defaultMessage: Plone{reg} Open Source CMS/WCM
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} Open Source CMS/WCM"
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Portrait
-msgid "Portrait"
-msgstr "Argazkia"
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Possible values (Enter allowed choices one per line).
@@ -2469,6 +2447,11 @@ msgstr "Gorde"
 msgid "Save recurrence"
 msgstr "Gorde errepikapena"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Saved
+msgid "Saved"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypesActions
 # defaultMessage: Schema
 msgid "Schema"
@@ -2701,6 +2684,11 @@ msgstr "Bilaketa kutxa erakutsi?"
 msgid "Show sorting?"
 msgstr "Ordenazio irizpideak erakutsi?"
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Show total results
+msgid "Show total results"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Shrink sidebar
 msgid "Shrink sidebar"
@@ -2869,7 +2857,6 @@ msgstr "Gaia"
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -2973,11 +2960,6 @@ msgstr "Eskerrik asko."
 msgid "The Database Manager allow you to view database status information"
 msgstr "Datu-basearen kudeatzaileak datu-basearen egoera erakusten ditu"
 
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: The URL for your external home page, if you have one.
-msgid "The URL for your external home page, if you have one."
-msgstr "Idatzi zure webgunearen helbidea, bat baldin baduzu."
-
 #: components/theme/RequestTimeout/RequestTimeout
 # defaultMessage: The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again.
 msgid "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
@@ -3022,11 +3004,6 @@ msgstr "Eman duzun ordezko bidea jada badago!"
 # defaultMessage: The registration process has been successful. Please check your e-mail inbox for information on how activate your account.
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgstr "Izen-emate prozesua ondo egin duzu. Begiratu zure eposta, kontua aktibatzeko informazioa bertara bidali dizugu-eta."
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: The user portrait/avatar
-msgid "The user portrait/avatar"
-msgstr "Erabiltzailearen argazkia"
 
 #: components/manage/Toolbar/More
 # defaultMessage: The working copy was discarded
@@ -3458,11 +3435,6 @@ msgstr "Barkatu eragozpenak baina orrialde horren helbidea ez da zuzena. erabili
 msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
 msgstr "Barkatu eragozpenak baina ez duzu orrialde hau ikusteko baimenik."
 
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: We will use this address if you need to recover your password
-msgid "We will use this address if you need to recover your password"
-msgstr "Helbide hau erabiliko dugu pasahitza berreskuratu behar baduzu"
-
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: The
 msgid "Weeek day of month"
@@ -3567,11 +3539,6 @@ msgstr "Ezin duzu elementua hemen itsatsi"
 # defaultMessage: Your email is required for reset your password.
 msgid "Your email is required for reset your password."
 msgstr "Eposta derrigorrezkoa da zure pasahitza berrezartzeko."
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Your location - either city and country - or in a company setting, where your office is located.
-msgid "Your location - either city and country - or in a company setting, where your office is located."
-msgstr "Zure kokalekua."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Your password has been set successfully. You may now {link} with your new password.

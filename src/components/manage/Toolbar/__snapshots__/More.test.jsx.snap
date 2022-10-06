@@ -46,7 +46,7 @@ exports[`Toolbar More component renders a Toolbar More component 1`] = `
         </li>
         <li>
           <a
-            href="/blah/history"
+            href="/blah/historyview"
           >
             <div>
               <span
@@ -144,7 +144,7 @@ exports[`Toolbar More component renders a Toolbar More component with manage con
         </li>
         <li>
           <a
-            href="/blah/history"
+            href="/blah/historyview"
           >
             <div>
               <span

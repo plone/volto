@@ -43,6 +43,8 @@ import contextNavigation from '@plone/volto/reducers/contextNavigation/contextNa
 import reduxAsyncConnect from './asyncConnect/asyncConnect';
 import workingCopy from './workingcopy/workingcopy';
 import transactions from './transactions/transactions';
+import userschema from './userschema/userschema';
+
 /**
  * Root reducer.
  * @function
@@ -90,6 +92,7 @@ const reducers = {
   contextNavigation,
   workingCopy,
   transactions,
+  userschema,
 };
 
 export default reducers;

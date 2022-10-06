@@ -50,6 +50,10 @@ class Navigation extends Component {
     lang: PropTypes.string.isRequired,
   };
 
+  static defaultProps = {
+    token: null,
+  };
+
   /**
    * Constructor
    * @method constructor
