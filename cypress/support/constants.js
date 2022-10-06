@@ -1,1 +1,1 @@
-export const ploneAuth = ['admin', 'correct horse battery staple'];
+export const ploneAuth = ['admin', 'secret'];
