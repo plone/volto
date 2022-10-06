@@ -6,6 +6,7 @@
 
 ### Feature
 
+- Send missing variation data to the listing variation @ionlizarazu
 - eu translations completion. @ionlizarazu
 
 ### Bugfix
