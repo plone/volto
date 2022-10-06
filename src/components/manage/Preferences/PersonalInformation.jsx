@@ -110,7 +110,7 @@ class PersonalInformation extends Component {
             this.props.user.fullname
               ? this.props.user.fullname
               : this.props.user.email
-          }`}
+          } (${this.props.user.username})`}
           formData={this.props.user}
           schema={this.props?.userschema.userschema}
           onSubmit={this.onSubmit}
