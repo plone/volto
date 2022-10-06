@@ -5,10 +5,13 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
+import { withRouter } from 'react-router-dom';
+import { compose } from 'redux';
 import { Dropdown, Table, Checkbox } from 'semantic-ui-react';
 import trashSVG from '@plone/volto/icons/delete.svg';
 import { Icon } from '@plone/volto/components';
 import ploneSVG from '@plone/volto/icons/plone.svg';
+import showSVG from '@plone/volto/icons/show.svg';
 
 /**
  * UsersControlpanelUser class.
@@ -92,6 +95,20 @@ class RenderUsers extends Component {
           <Dropdown icon="ellipsis horizontal">
             <Dropdown.Menu className="left">
               <Dropdown.Item
+                onClick={() => {
+                  this.props.history.push(
+                    `/personal-information/${this.props.user.username}`,
+                  );
+                }}
+                value={this.props.user['@id']}
+              >
+                <Icon name={showSVG} size="15px" />
+                <FormattedMessage
+                  id="View user info"
+                  defaultMessage="View user info"
+                />
+              </Dropdown.Item>
+              <Dropdown.Item
                 onClick={this.props.onDelete}
                 value={this.props.user['@id']}
               >
@@ -106,4 +123,4 @@ class RenderUsers extends Component {
   }
 }
 
-export default injectIntl(RenderUsers);
+export default compose(injectIntl, withRouter)(RenderUsers);
