@@ -87,6 +87,12 @@ export const multilingualRoutes = [
 ];
 
 export const defaultRoutes = [
+  // redirect to external links if path is in blacklist
+  ...(config.settings?.externalRoutes || []).map((route) => ({
+    ...route.match,
+    component: NotFound,
+  })),
+  ...((config.settings?.isMultilingual && multilingualRoutes) || []),
   {
     path: '/',
     component: View,
@@ -267,14 +273,8 @@ const routes = [
     path: '/',
     component: App,
     routes: [
-      // redirect to external links if path is in blacklist
-      ...(config.settings?.externalRoutes || []).map((route) => ({
-        ...route.match,
-        component: NotFound,
-      })),
       // addon routes have a higher priority then default routes
       ...(config.addonRoutes || []),
-      ...((config.settings?.isMultilingual && multilingualRoutes) || []),
       ...defaultRoutes,
     ],
   },
