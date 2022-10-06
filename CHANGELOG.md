@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Object browser: image search should only show images @reebalazs
+
 ### Bugfix
 
 - Fix unlock after changing the id and saving a page @reebalazs
