@@ -7,10 +7,15 @@
 ### Feature
 
 - Send missing variation data to the listing variation @ionlizarazu
+- eu translations completion. @ionlizarazu
 
 ### Bugfix
 
+- Backport 3546 from master: Fix ArrayWidget choices when editing a recently created content item. @davisagli
+
 ### Internal
+
+- mock all loadable libraries (backport https://github.com/plone/volto/pull/3447). @mamico
 
 ### Documentation
 

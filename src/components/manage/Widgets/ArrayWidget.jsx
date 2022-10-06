@@ -162,6 +162,8 @@ class ArrayWidget extends Component {
     choices: PropTypes.arrayOf(
       PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
     ),
+    vocabLoading: PropTypes.bool,
+    vocabLoaded: PropTypes.bool,
     items: PropTypes.shape({
       vocabulary: PropTypes.object,
     }),
@@ -219,6 +221,21 @@ class ArrayWidget extends Component {
       !this.props.items?.choices?.length &&
       !this.props.choices?.length &&
       this.props.vocabBaseUrl
+    ) {
+      this.props.getVocabulary({
+        vocabNameOrURL: this.props.vocabBaseUrl,
+        size: -1,
+        subrequest: this.props.lang,
+      });
+    }
+  }
+
+  componentDidUpdate() {
+    if (
+      !this.props.items?.choices?.length &&
+      !this.props.choices?.length &&
+      this.props.vocabLoading === undefined &&
+      !this.props.vocabLoaded
     ) {
       this.props.getVocabulary({
         vocabNameOrURL: this.props.vocabBaseUrl,
@@ -388,6 +405,8 @@ export default compose(
         return {
           choices: vocabState.items,
           vocabBaseUrl,
+          vocabLoading: vocabState.loading,
+          vocabLoaded: vocabState.loaded,
           lang: state.intl.locale,
         };
       }
