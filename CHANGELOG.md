@@ -4,30 +4,66 @@
 
 ### Breaking
 
+- Change history route name to `historyview` (same as classic) in order to allow content to have 'history' as `id` @danielamormocea
+
+### Feature
+
+- Add a dynamic user form based in @userschema endpoint @erral @nileshgulia1
+- Send missing variation data to the listing variation @ionlizarazu
+
+### Bugfix
+
+- Fix history page error for unauthenticated @reebalazs
+- Fix unlock after changing the id and saving a page @reebalazs
+- Group routes so React does not see them as a different Route and triggers a full remount. This is specially important in `Contents` @sneridagh
+- Add default to `null` for `token` prop in `Navigation` component. This prevents the component to shoot an extra call when the logout happens @sneridagh
+
+### Internal
+
+- Upgrade Cypress to latest @sneridagh
+
+### Documentation
+
+- Update README with latest versions, point to Plone 6 as recommended default @sneridagh
+
+## 16.0.0-alpha.41 (2022-10-05)
+
+### Breaking
+
 - Sentry integration is now lazy-loaded. The `sentryOptions` key from the `settings` registry becomes a callable that passes resolved sentry libraries. @tiberiuichim
 
 ### Feature
 
+- Complete eu translation. @erral
+- Complete spanish translation @erral
+- Added an option for users to set their own password through a confirmation email in the Add Users modal within the Users control panel. @JeffersonBledsoe #3710
+- Accept a `querystring` object in `apiExpanders` config object settings @sneridagh
+
 ### Bugfix
+
+- Extend Id widget validation rules to accept a dot "." @reebalazs
 
 ### Internal
 
 - Comment out flaky test for now regarding many users/groups @sneridagh
+- Add reverse proxy conf with `traefik` to demo compose file @sneridagh
 - More disable flaky test regarding many users/groups @sneridagh
 - Remove no longer present option in cypress github action, by default, headless is true @sneridagh
-
-### Documentation
+- Add proper webserver with reverse proxy with seamless mode @sneridagh
 
 ## 16.0.0-alpha.40 (2022-10-01)
 
 ### Feature
 
+- Show result of the addon install/uninstall/upgrade actions @erral
 - Working copy actions now render errors if they fail @pnicolli
 - lazyloading of rrule lib. @giuliaghisini
 
 ### Bugfix
 
+- Concatenate multilingualRoutes and externalRoutes (if available) to defaultRoutes @erral #3653
 - Fixed the `description` field not appearing in control panel fieldsets @JeffersonBledsoe #3696
+- Fixed "more" always show root contents @MdSahil-oss #3365
 - Add missing `--noninteractive` in the `build` script in package.json @sneridagh
 
 ### Internal
@@ -71,6 +107,8 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - volto-slate: introduce style-menu @nileshgulia1
 
 ### Bugfix
+
+- Fix avatar URL in `PersonalTools`. Now works with the new `portrait` endpoint @sneridagh
 
 - Fix `listing` block in SSR, now that it is fully variations aware and the configuration is passed to the SSR `querystring` action. @sneridagh
 - Remove wrapping ul or ol when deselecting list style @robgietema
@@ -566,6 +604,7 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 
 ### Feature
 
+- added 'show total results' option in Search block configuration. @giuliaghisini
 - Added viewableInBrowserObjects setting to use in alternative to downloadableObjects, if you want to view file in browser intstead downloading. @giuliaghisini
 - Disable already chosen criteria in querystring widget @kreafox
 - Added X-Forwarded-\* headers to superagent requests. @mamico
@@ -1508,6 +1547,7 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
   and develop addons (in `src/addons` folder).
 - Add new listing block option "fullobjects" per variation @ksuess
 - Style checkboxes @nileshgulia1
+- Allow loading .less files also from a Volto project's `src` folder. @tiberiuichim
 - Allow loading .less files also from a Volto project's `src` folder. @tiberiuichim
 
 ### Bugfix

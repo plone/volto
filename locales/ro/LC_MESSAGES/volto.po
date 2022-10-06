@@ -190,6 +190,36 @@ msgstr "Setări add-on-uri"
 msgid "Additional date"
 msgstr "Dată suplimentară"
 
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon could not be installed
+msgid "Addon could not be installed"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon could not be uninstalled
+msgid "Addon could not be uninstalled"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon could not be upgraded
+msgid "Addon could not be upgraded"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon installed succesfuly
+msgid "Addon installed succesfuly"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon uninstalled succesfuly
+msgid "Addon uninstalled succesfuly"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon upgraded succesfuly
+msgid "Addon upgraded succesfuly"
+msgstr ""
+
 #: config/Views
 # defaultMessage: Album view
 msgid "Album view"
@@ -310,7 +340,6 @@ msgstr "Disponibil"
 #: components/manage/History/History
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
@@ -442,7 +471,6 @@ msgid "Changes applied."
 msgstr "Modificari aplicate"
 
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 # defaultMessage: Changes saved
 msgid "Changes saved"
@@ -724,7 +752,6 @@ msgstr "Data (cea mai recentă mai întâi)"
 #: components/manage/Contents/ContentsWorkflowModal
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -892,7 +919,6 @@ msgstr "Trageți fișierul aici pentru a încărca un fișier nou"
 msgid "Drop files here ..."
 msgstr "Trageți fișierele aici..."
 
-#: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
 # defaultMessage: E-mail
 msgid "E-mail"
@@ -990,7 +1016,6 @@ msgstr "Introduceți un nume de utilizator mai sus pentru a căuta sau faceți c
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr "Introduceți o adresă de e-mail. Acesta va fi numele dvs. de autentificare. Respectăm confidențialitatea dvs. și nu vom oferi adresa niciunui terț și nu o vom expune nicăieri."
 
-#: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
 # defaultMessage: Enter full name, e.g. John Smith.
 msgid "Enter full name, e.g. John Smith."
@@ -1034,6 +1059,7 @@ msgid "Enter your username for verification."
 msgstr ""
 
 #: components/manage/Add/Add
+#: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Edit/Edit
@@ -1228,7 +1254,6 @@ msgstr "Din"
 msgid "Full"
 msgstr "Complet"
 
-#: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
 # defaultMessage: Full Name
 msgid "Full Name"
@@ -1345,11 +1370,6 @@ msgstr "Istoricul {title}"
 # defaultMessage: Home
 msgid "Home"
 msgstr "Acasă"
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Home page
-msgid "Home page"
-msgstr "Pagina de pornire"
 
 #: components/manage/Contents/Contents
 # defaultMessage: ID
@@ -1650,11 +1670,6 @@ msgstr "Incarcă mai mult"
 # defaultMessage: Loading.
 msgid "Loading"
 msgstr "Se încarcă"
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Location
-msgid "Location"
-msgstr "Locație"
 
 #: components/theme/Login/Login
 # defaultMessage: Login
@@ -2016,9 +2031,9 @@ msgid "Ok"
 msgstr "Ok"
 
 #: components/manage/Widgets/IdWidget
-# defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed.
-msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed."
-msgstr "Sunt permise doar litere mici (a-z) fără accente, cifre (0-9) și cele două caractere „-” și „_”."
+# defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.
+msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed."
+msgstr ""
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -2089,7 +2104,6 @@ msgstr "Permisiunile au fost actualizate cu succes"
 msgid "Permissions updated"
 msgstr "Permisiunile au fost actualizate"
 
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Personal Information
 msgid "Personal Information"
@@ -2151,11 +2165,6 @@ msgstr "Site Plone"
 # defaultMessage: Plone{reg} Open Source CMS/WCM
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} CMS/WCM Open Source"
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Portrait
-msgid "Portrait"
-msgstr "Portret"
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Possible values (Enter allowed choices one per line).
@@ -2446,6 +2455,11 @@ msgstr "Salvare"
 msgid "Save recurrence"
 msgstr "Salvați recurența"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Saved
+msgid "Saved"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypesActions
 # defaultMessage: Schema
 msgid "Schema"
@@ -2594,6 +2608,11 @@ msgstr "Selectați …"
 msgid "Send"
 msgstr "Trimite"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Send a confirmation mail with a link to set the password.
+msgid "Send a confirmation mail with a link to set the password."
+msgstr ""
+
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Set my password
 msgid "Set my password"
@@ -2672,6 +2691,11 @@ msgstr "Afișați intrarea de căutare?"
 # defaultMessage: Show sorting?
 msgid "Show sorting?"
 msgstr "Afișează sortarea?"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Show total results
+msgid "Show total results"
+msgstr ""
 
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Shrink sidebar
@@ -2834,13 +2858,13 @@ msgstr "Subiect"
 #: components/manage/Actions/Actions
 #: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -2944,11 +2968,6 @@ msgstr "Mulțumesc."
 msgid "The Database Manager allow you to view database status information"
 msgstr "Managerul bazei de date vă permite să vizualizați informațiile despre starea bazei de date"
 
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: The URL for your external home page, if you have one.
-msgid "The URL for your external home page, if you have one."
-msgstr "Adresa URL a paginii de start externe, dacă aveți una."
-
 #: components/theme/RequestTimeout/RequestTimeout
 # defaultMessage: The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again.
 msgid "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
@@ -2993,11 +3012,6 @@ msgstr ""
 # defaultMessage: The registration process has been successful. Please check your e-mail inbox for information on how activate your account.
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgstr "Procesul de înregistrare a avut succes. Vă rugăm să verificați căsuța de e-mail pentru informații despre modul de activare a contului dvs."
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: The user portrait/avatar
-msgid "The user portrait/avatar"
-msgstr "Portretul / avatarul utilizatorului"
 
 #: components/manage/Toolbar/More
 # defaultMessage: The working copy was discarded
@@ -3434,11 +3448,6 @@ msgstr "Ne cerem scuze pentru neplăceri, dar pagina pe care încercați să o a
 msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
 msgstr "Ne cerem scuze pentru neplăceri, dar nu aveți permisiuni pentru a accesa această resursă."
 
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: We will use this address if you need to recover your password
-msgid "We will use this address if you need to recover your password"
-msgstr "Vom folosi această adresă în cazul în care trebuie să vă recuperați parola"
-
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: The
 msgid "Weeek day of month"
@@ -3543,11 +3552,6 @@ msgstr "Nu puteți lipi acest conținut aici"
 # defaultMessage: Your email is required for reset your password.
 msgid "Your email is required for reset your password."
 msgstr ""
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Your location - either city and country - or in a company setting, where your office is located.
-msgid "Your location - either city and country - or in a company setting, where your office is located."
-msgstr "Locația dvs. - fie orașul, fie țara - fie într-un cadru al companiei, unde se află biroul dvs."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Your password has been set successfully. You may now {link} with your new password.
@@ -4008,6 +4012,11 @@ msgstr "Titlu"
 # defaultMessage: Table of Contents
 msgid "toc"
 msgstr "Cuprins"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Update from version {origin} to {destination}
+msgid "upgradeVersions"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be valid url (www.something.com or http(s)://www.something.com)

@@ -137,3 +137,4 @@ export {
   createWorkingCopy,
   removeWorkingCopy,
 } from './workingcopy/workingcopy';
+export { getUserSchema } from './userschema/userschema';

@@ -237,7 +237,15 @@ full-test-acceptance: ## Runs Core Full Acceptance Testing in headless mode
 
 .PHONY: start-test-acceptance-frontend-seamless
 start-test-acceptance-frontend-seamless: ## Start the Seamless Core Acceptance Frontend Fixture
-	RAZZLE_DEV_PROXY_API_PATH=http://localhost:55001/plone yarn build && yarn start:prod
+	yarn build && yarn start:prod
+
+.PHONY: test-acceptance-seamless
+test-acceptance-seamless: ## Start Seamless Cypress Acceptance Tests
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config baseUrl='http://localhost'
+
+.PHONY: start-test-acceptance-webserver-seamless
+start-test-acceptance-webserver-seamless: ## Start the seamless webserver
+	cd cypress/docker && docker-compose -f seamless.yml up
 
 .PHONY: full-test-acceptance-seamless
 full-test-acceptance-seamless: ## Runs Seamless Core Full Acceptance Testing in headless mode

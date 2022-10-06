@@ -190,6 +190,36 @@ msgstr "Impostazioni Add-ons"
 msgid "Additional date"
 msgstr "Data aggiuntiva"
 
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon could not be installed
+msgid "Addon could not be installed"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon could not be uninstalled
+msgid "Addon could not be uninstalled"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon could not be upgraded
+msgid "Addon could not be upgraded"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon installed succesfuly
+msgid "Addon installed succesfuly"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon uninstalled succesfuly
+msgid "Addon uninstalled succesfuly"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon upgraded succesfuly
+msgid "Addon upgraded succesfuly"
+msgstr ""
+
 #: config/Views
 # defaultMessage: Album view
 msgid "Album view"
@@ -310,7 +340,6 @@ msgstr "Disponibile"
 #: components/manage/History/History
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
@@ -442,7 +471,6 @@ msgid "Changes applied."
 msgstr "Modifiche applicate."
 
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 # defaultMessage: Changes saved
 msgid "Changes saved"
@@ -724,7 +752,6 @@ msgstr "Data (prima i più recenti)"
 #: components/manage/Contents/ContentsWorkflowModal
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -892,7 +919,6 @@ msgstr "Rilascia un file qui per caricare un nuovo file"
 msgid "Drop files here ..."
 msgstr "Rilascia file qui..."
 
-#: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
 # defaultMessage: E-mail
 msgid "E-mail"
@@ -990,7 +1016,6 @@ msgstr "Inserisci uno username da ricercare, oppure clicca su 'Vedi tutto'"
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr "Inserisci un indirizzo e-mail. Esso sarà il tuo nome utente. Rispettiamo la tua privacy: non daremo l'indirizzo a terzi, né verrà esposto nel portale."
 
-#: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
 # defaultMessage: Enter full name, e.g. John Smith.
 msgid "Enter full name, e.g. John Smith."
@@ -1034,6 +1059,7 @@ msgid "Enter your username for verification."
 msgstr "Inserisci il tuo username per la verifica."
 
 #: components/manage/Add/Add
+#: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Edit/Edit
@@ -1228,7 +1254,6 @@ msgstr "Da"
 msgid "Full"
 msgstr "A tutta larghezza"
 
-#: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
 # defaultMessage: Full Name
 msgid "Full Name"
@@ -1345,11 +1370,6 @@ msgstr "Cronologia di {title}"
 # defaultMessage: Home
 msgid "Home"
 msgstr "Home"
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Home page
-msgid "Home page"
-msgstr "Pagina personale"
 
 #: components/manage/Contents/Contents
 # defaultMessage: ID
@@ -1650,11 +1670,6 @@ msgstr "Carica altro"
 # defaultMessage: Loading.
 msgid "Loading"
 msgstr "Caricamento"
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Location
-msgid "Location"
-msgstr "Luogo"
 
 #: components/theme/Login/Login
 # defaultMessage: Login
@@ -2016,9 +2031,9 @@ msgid "Ok"
 msgstr "Ok"
 
 #: components/manage/Widgets/IdWidget
-# defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed.
-msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed."
-msgstr "Solo lettere minuscole (a-z) senza accenti, numeri (0-9), e i due caratteri '-' e '_' sono ammesssi"
+# defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.
+msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed."
+msgstr ""
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -2089,7 +2104,6 @@ msgstr "I permesso sono stati aggiornati con successo"
 msgid "Permissions updated"
 msgstr "Permessi aggiornati"
 
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Personal Information
 msgid "Personal Information"
@@ -2151,11 +2165,6 @@ msgstr "Sito Plone"
 # defaultMessage: Plone{reg} Open Source CMS/WCM
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} Open Source CMS/WCM"
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Portrait
-msgid "Portrait"
-msgstr "Ritratto"
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Possible values (Enter allowed choices one per line).
@@ -2446,6 +2455,11 @@ msgstr "Salva"
 msgid "Save recurrence"
 msgstr "Salva la ricorrenza"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Saved
+msgid "Saved"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypesActions
 # defaultMessage: Schema
 msgid "Schema"
@@ -2594,6 +2608,11 @@ msgstr "Seleziona…"
 msgid "Send"
 msgstr "Invia"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Send a confirmation mail with a link to set the password.
+msgid "Send a confirmation mail with a link to set the password."
+msgstr ""
+
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Set my password
 msgid "Set my password"
@@ -2672,6 +2691,11 @@ msgstr "Mostrare il campo di ricerca?"
 # defaultMessage: Show sorting?
 msgid "Show sorting?"
 msgstr "Mostrare l'ordinamento?"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Show total results
+msgid "Show total results"
+msgstr "Mostra il numero totale dei risultati"
 
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Shrink sidebar
@@ -2834,13 +2858,13 @@ msgstr "Oggetto"
 #: components/manage/Actions/Actions
 #: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -2944,11 +2968,6 @@ msgstr "Grazie."
 msgid "The Database Manager allow you to view database status information"
 msgstr "Il Database Manager ti permette di vedere le informazioni di stato del database"
 
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: The URL for your external home page, if you have one.
-msgid "The URL for your external home page, if you have one."
-msgstr "L'indirizzo della tua pagina personale esterna, se ne hai una."
-
 #: components/theme/RequestTimeout/RequestTimeout
 # defaultMessage: The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again.
 msgid "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
@@ -2993,11 +3012,6 @@ msgstr ""
 # defaultMessage: The registration process has been successful. Please check your e-mail inbox for information on how activate your account.
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgstr "La registrazione è avvenuta correttamente. Per favore controlla la tua casella di posta per informazioni su come attivare il tuo account."
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: The user portrait/avatar
-msgid "The user portrait/avatar"
-msgstr "L'avatar/ritratto utente"
 
 #: components/manage/Toolbar/More
 # defaultMessage: The working copy was discarded
@@ -3434,11 +3448,6 @@ msgstr "Ci scusiamo per l'inconveniente, la pagina cui stai provando ad accedere
 msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
 msgstr "Ci scusiamo per l'inconveniente, ma non hai i permessi per questa risorsa."
 
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: We will use this address if you need to recover your password
-msgid "We will use this address if you need to recover your password"
-msgstr "Useremo questo indirizzo email nel caso dovessi recuperare la tua password"
-
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: The
 msgid "Weeek day of month"
@@ -3543,11 +3552,6 @@ msgstr "Non puoi incollare questo contenuto qui."
 # defaultMessage: Your email is required for reset your password.
 msgid "Your email is required for reset your password."
 msgstr "La tua email è richiesta per reimpostare la tua password."
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Your location - either city and country - or in a company setting, where your office is located.
-msgid "Your location - either city and country - or in a company setting, where your office is located."
-msgstr "La località in cui vivi (paese e città) oppure, in ambito aziendale, il luogo in cui si trova il tuo ufficio."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Your password has been set successfully. You may now {link} with your new password.
@@ -4008,6 +4012,11 @@ msgstr "Titolo"
 # defaultMessage: Table of Contents
 msgid "toc"
 msgstr "Indice dei contenuti"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Update from version {origin} to {destination}
+msgid "upgradeVersions"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be valid url (www.something.com or http(s)://www.something.com)
