@@ -62,6 +62,9 @@ describe('User Control Panel Test', () => {
   });
 
   it('Should view user info from controlPanel', () => {
+    const userFullName = 'Test Example';
+    const userEmail = 'info@example.com';
+
     cy.visit('/controlpanel/users');
     cy.waitForResourceToLoad('@navigation');
     cy.waitForResourceToLoad('@breadcrumbs');
@@ -72,19 +75,21 @@ describe('User Control Panel Test', () => {
     //add a user first
     cy.get('Button[id="toolbar-add"]').click();
     cy.get('input[id="field-username"]').clear().type('example');
-    cy.get('input[id="field-fullname"]').clear().type('Test Example');
-    cy.get('input[id ="field-email"]').clear().type('info@example.com');
-    cy.get('input[id="field-password"]').clear().type('info@example.com');
+    cy.get('input[id="field-fullname"]').clear().type(userFullName);
+    cy.get('input[id ="field-email"]').clear().type(userEmail);
+    cy.get('input[id="field-password"]').clear().type(userEmail);
     cy.get('button[title="Save"]').click(-50, -50, { force: true });
 
-    cy.get('tr:nth-of-type(3) > td.fullname').should(
-      'have.text',
-      'Test Example',
-    );
-    cy.get('tr:nth-of-type(3) div[role="listbox"]').click();
-    cy.findByRole('option', { text: /view user info/gi }).click();
     cy.waitForResourceToLoad('@users');
-    cy.get('input[id="field-fullname"]').should('have.text', 'Test Example');
+    cy.get('tr:nth-of-type(2) > td.fullname').should('have.text', userFullName);
+    cy.get('tr:nth-of-type(2) div[role="listbox"]').click();
+    cy.waitForResourceToLoad('@users');
+    cy.get('.menu.visible').within(() => {
+      cy.findByRole('option', { name: /view user info/gi }).click();
+    });
+    cy.waitForResourceToLoad('@userschema');
+    cy.waitForResourceToLoad('/personal-information/example');
+    cy.findByText(/Test Example/gi).should('be.visible');
   });
 
   it('Should delete User from controlPanel', () => {
