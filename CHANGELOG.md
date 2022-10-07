@@ -2,8 +2,6 @@
 
 ## 15.15.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Send missing variation data to the listing variation @ionlizarazu
@@ -16,8 +14,6 @@
 ### Internal
 
 - mock all loadable libraries (backport https://github.com/plone/volto/pull/3447). @mamico
-
-### Documentation
 
 ## 15.15.0 (2022-08-25)
 
