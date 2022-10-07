@@ -45,6 +45,18 @@ class Logout extends Component {
   }
 
   /**
+   * Component will receive props
+   * @method componentWillReceiveProps
+   * @param {Object} nextProps Next properties
+   * @returns {undefined}
+   */
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (!nextProps.token) {
+      this.props.history.replace(this.props.returnUrl || '/');
+    }
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -57,6 +69,13 @@ class Logout extends Component {
 export default connect(
   (state, props) => ({
     query: qs.parse(props.location.search),
+    token: state.userSession.token,
+    returnUrl:
+      qs.parse(props.location.search).return_url ||
+      props.location.pathname
+        .replace(/\/login\/?$/, '')
+        .replace(/\/logout\/?$/, '') ||
+      '/',
   }),
   { logout, purgeMessages },
 )(Logout);

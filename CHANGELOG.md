@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Fix UniversalLink storybook @tiberiuichim
+- Fix logout to stay on the same page where the user was @reebalazs
 
 ### Internal
 
