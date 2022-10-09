@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- SearchTags uses invalid vocabulary API @silviubogan
+
 ### Internal
 
 ### Documentation
