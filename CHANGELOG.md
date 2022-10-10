@@ -9,6 +9,7 @@
 ### Bugfix
 
 - SearchTags uses invalid vocabulary API @silviubogan
+- Fix UniversalLink storybook @tiberiuichim
 
 ### Internal
 

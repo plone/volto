@@ -1,6 +1,6 @@
 # Change Log
 
-## 5.9.2 (unreleased)
+## 5.9.4 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,18 @@
 ### Bugfix
 
 ### Internal
+
+## 5.9.3 (2022-10-10)
+
+### Internal
+
+- Restrict only to `/cache` in `.gitignore` @sneridagh
+
+## 5.9.2 (2022-10-10)
+
+### Internal
+
+- Add `cache` to `.gitignore` @sneridagh
 
 ## 5.9.1 (2022-10-03)
 
