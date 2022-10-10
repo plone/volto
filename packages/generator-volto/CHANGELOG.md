@@ -1,6 +1,6 @@
 # Change Log
 
-## 5.9.2 (unreleased)
+## 5.9.2 (2022-10-10)
 
 ### Internal
 
