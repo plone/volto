@@ -82,4 +82,4 @@ omelette
 # build
 public/critical.css
 src/addons/*
-cache
+/cache
