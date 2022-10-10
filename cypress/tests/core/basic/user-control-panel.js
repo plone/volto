@@ -90,6 +90,9 @@ describe('User Control Panel Test', () => {
     cy.waitForResourceToLoad('@userschema');
     cy.waitForResourceToLoad('/personal-information/example');
     cy.findByText(/Test Example/gi).should('be.visible');
+
+    cy.visit('/controlpanel/users');
+    cy.findByRole('link', { name: /Test Example/gi }).click();
   });
 
   it('Should delete User from controlPanel', () => {
