@@ -2100,7 +2100,7 @@ msgid "Personal Information"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
-# defaultMessage: Personal Information for ({name})
+# defaultMessage: Personal Information for {fullname} ({username})
 msgid "Personal Information for"
 msgstr ""
 

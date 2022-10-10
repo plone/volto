@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-10-10T15:41:40.390Z\n"
+"POT-Creation-Date: 2022-10-10T15:49:05.152Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -2102,7 +2102,7 @@ msgid "Personal Information"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
-# defaultMessage: Personal Information for ({name})
+# defaultMessage: Personal Information for {fullname} ({username})
 msgid "Personal Information for"
 msgstr ""
 
