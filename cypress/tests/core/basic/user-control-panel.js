@@ -93,6 +93,10 @@ describe('User Control Panel Test', () => {
 
     cy.visit('/controlpanel/users');
     cy.findByRole('link', { name: /Test Example/gi }).click();
+
+    cy.waitForResourceToLoad('@userschema');
+    cy.waitForResourceToLoad('/personal-information/example');
+    cy.findByText(/Test Example/gi).should('be.visible');
   });
 
   it('Should delete User from controlPanel', () => {
@@ -115,7 +119,7 @@ describe('User Control Panel Test', () => {
     cy.get('tr:nth-of-type(2) > td.fullname').should('have.text', 'Alok Kumar');
     cy.get('tr:nth-of-type(2) div[role="listbox"]').click();
     cy.get('.menu.visible').within(() => {
-      cy.findByRole('option', { text: /delete/gi }).click();
+      cy.findByRole('option', { name: 'Delete' }).click();
     });
     cy.contains('Delete User');
     cy.get('button.ui.primary.button').should('have.text', 'OK').click();
