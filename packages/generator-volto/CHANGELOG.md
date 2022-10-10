@@ -10,11 +10,13 @@
 
 ### Internal
 
+- Restrict only to `/cache` in `.gitignore` @sneridagh
+
 ## 5.9.2 (2022-10-10)
 
 ### Internal
 
-- Add cache to gitignore @sneridagh
+- Add `cache` to `.gitignore` @sneridagh
 
 ## 5.9.1 (2022-10-03)
 
