@@ -1682,6 +1682,11 @@ msgstr "Inicio de Sesión"
 msgid "Log in"
 msgstr "Inicio de sesión"
 
+#: components/theme/Logout/Logout
+# defaultMessage: Logged out
+msgid "Logged out"
+msgstr ""
+
 #: components/theme/Login/Login
 # defaultMessage: Login
 msgid "Login"
@@ -3537,6 +3542,11 @@ msgstr "Usted puede ver el historial de su elemento a continuación."
 # defaultMessage: You can't paste this content here
 msgid "You can't paste this content here"
 msgstr "No puede pegar el contenido aquí"
+
+#: components/theme/Logout/Logout
+# defaultMessage: You have been logged out from the site.
+msgid "You have been logged out from the site."
+msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your email is required for reset your password.
