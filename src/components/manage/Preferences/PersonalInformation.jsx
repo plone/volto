@@ -7,13 +7,20 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { injectIntl } from 'react-intl';
+import { injectIntl, defineMessages } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
 import { messages } from '@plone/volto/helpers';
 import { getUser, updateUser, getUserSchema } from '@plone/volto/actions';
 import { Form, Toast, Unauthorized } from '@plone/volto/components';
+
+const personalInformatioNMessages = defineMessages({
+  personalInformationFor: {
+    id: 'Personal Information for',
+    defaultMessage: 'Personal Information for {fullname} ({username})',
+  },
+});
 
 /**
  * PersonalInformation class.
@@ -104,11 +111,15 @@ class PersonalInformation extends Component {
     }
 
     const title = this.props.match.params.username
-      ? `Personal Information for ${
-          this.props.user.fullname
-            ? this.props.user.fullname
-            : this.props.user.email
-        } (${this.props.user.username})`
+      ? this.props.intl.formatMessage(
+          personalInformatioNMessages.personalInformationFor,
+          {
+            username: this.props.user.username,
+            fullname: this.props.user.fullname
+              ? this.props.user.fullname
+              : this.props.user.email,
+          },
+        )
       : null;
 
     return (
