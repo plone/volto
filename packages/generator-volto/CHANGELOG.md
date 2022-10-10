@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Add cache to gitignore @sneridagh
+
 ## 5.9.1 (2022-10-03)
 
 ### Internal
