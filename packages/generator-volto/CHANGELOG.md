@@ -2,12 +2,6 @@
 
 ## 5.9.3 (unreleased)
 
-### Breaking
-
-### Feature
-
-### Bugfix
-
 ### Internal
 
 - Restrict only to `/cache` in `.gitignore` @sneridagh
