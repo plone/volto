@@ -162,16 +162,7 @@ function setupServer(req, res, next) {
     res.locals.detectedHost = `${
       req.headers['x-forwarded-proto'] || req.protocol
     }://${req.headers.host}`;
-    config.settings.apiPath = res.locals.detectedHost;
     config.settings.publicURL = res.locals.detectedHost;
-  }
-
-  if (
-    !process.env.RAZZLE_INTERNAL_API_PATH &&
-    req.headers['x-internal-api-path']
-  ) {
-    res.locals.detectedInternalHost = req.headers['x-internal-api-path'];
-    config.settings.internalApiPath = res.locals.detectedInternalHost;
   }
 
   res.locals = {

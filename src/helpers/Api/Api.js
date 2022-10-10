@@ -15,22 +15,46 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
  * Format the url.
  * @function formatUrl
  * @param {string} path Path (or URL) to be formatted.
+ * @param {Object} req The request object for server side calls.
  * @returns {string} Formatted path.
  */
-function formatUrl(path) {
+function formatUrl(path, req) {
   const { settings } = config;
+
   const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
 
   if (path.startsWith('http://') || path.startsWith('https://')) return path;
 
   const adjustedPath = path[0] !== '/' ? `/${path}` : path;
   let apiPath = '';
-  if (settings.internalApiPath && __SERVER__) {
-    apiPath = settings.internalApiPath;
-  } else if (settings.apiPath) {
-    apiPath = settings.apiPath;
-  }
 
+  if (__SERVER__) {
+    if (
+      (!settings.internalApiPath || settings.internalApiPath === undefined) &&
+      req.headers['x-internal-api-path']
+    ) {
+      apiPath = req.headers['x-internal-api-path'];
+    } else {
+      apiPath =
+        settings.internalApiPath === undefined
+          ? 'http://localhost:8080/Plone'
+          : settings.internalApiPath;
+    }
+  } else {
+    const windowApiPath = window.env?.apiPath;
+    if (
+      (!settings.apiPath || settings.apiPath === undefined) &&
+      windowApiPath
+    ) {
+      apiPath = windowApiPath;
+    } else {
+      apiPath =
+        settings.apiPath === undefined
+          ? 'http://localhost:8080/Plone'
+          : settings.apiPath;
+    }
+  }
+  console.log('Returning apiPath:', `${apiPath}${APISUFIX}${adjustedPath}`);
   return `${apiPath}${APISUFIX}${adjustedPath}`;
 }
 
@@ -42,11 +66,11 @@ class Api {
   /**
    * Constructor
    * @method constructor
+   * @param {Object} req the request object for server side calls.
    * @constructs Api
    */
   constructor(req) {
     const cookies = new Cookies();
-
     methods.forEach((method) => {
       this[method] = (
         path,
@@ -54,7 +78,7 @@ class Api {
       ) => {
         let request;
         let promise = new Promise((resolve, reject) => {
-          request = superagent[method](formatUrl(path));
+          request = superagent[method](formatUrl(path, req));
 
           if (params) {
             request.query(params);

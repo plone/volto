@@ -61,7 +61,7 @@ export default () => {
   // Setup the client registry from the SSR response values, presents in the `window.env`
   // variable. This is key for the Seamless mode to work.
   if (window.env.apiPath) {
-    config.settings.apiPath = window.env.apiPath;
+    //config.settings.apiPath = window.env.apiPath;
   }
   if (window.env.publicURL) {
     config.settings.publicURL = window.env.publicURL;
@@ -72,7 +72,7 @@ export default () => {
   // request happens, since there all the server URLs might be the internalApiPath ones,
   // and the client should be able to take care of them properly.
   if (window.env.RAZZLE_INTERNAL_API_PATH) {
-    config.settings.internalApiPath = window.env.RAZZLE_INTERNAL_API_PATH;
+    //config.settings.internalApiPath = window.env.RAZZLE_INTERNAL_API_PATH;
   }
   // TODO: To be removed when the use of the legacy traverse is deprecated.
   if (window.env.RAZZLE_LEGACY_TRAVERSE) {
