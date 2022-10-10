@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Fix UniversalLink storybook @tiberiuichim
+
 ### Internal
 
 ### Documentation
