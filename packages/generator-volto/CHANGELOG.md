@@ -2,12 +2,6 @@
 
 ## 5.9.2 (unreleased)
 
-### Breaking
-
-### Feature
-
-### Bugfix
-
 ### Internal
 
 - Add cache to gitignore @sneridagh
