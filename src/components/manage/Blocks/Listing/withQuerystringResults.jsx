@@ -89,6 +89,7 @@ export default function withQuerystringResults(WrappedComponent) {
             initialPath,
             {
               ...adaptedQuery,
+              b_size: 10000000000,
               query: [
                 {
                   i: 'path',

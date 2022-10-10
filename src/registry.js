@@ -119,7 +119,7 @@ class Config {
       }
       const componentName = `${name}${depsString ? `|${depsString}` : ''}`;
 
-      this._data.components[componentName] = component;
+      this._data.components[componentName] = { component };
     }
   }
 }

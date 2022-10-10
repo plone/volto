@@ -316,8 +316,8 @@ export default compose(
       returnUrl:
         qs.parse(props.location.search).return_url ||
         props.location.pathname
-          .replace(/\/login$/, '')
-          .replace(/\/logout$/, '') ||
+          .replace(/\/login\/?$/, '')
+          .replace(/\/logout\/?$/, '') ||
         '/',
     }),
     { login },

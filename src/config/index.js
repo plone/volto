@@ -9,6 +9,7 @@ import {
   contentTypesViews,
   defaultView,
   errorViews,
+  layoutViewsNamesMapping,
 } from './Views';
 import { nonContentRoutes } from './NonContentRoutes';
 import {
@@ -20,6 +21,7 @@ import {
 } from './Blocks';
 import { components } from './Components';
 import { loadables } from './Loadables';
+import { workflowMapping } from './Workflows';
 
 import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
@@ -112,9 +114,7 @@ let config = {
     persistentReducers: ['blocksClipboard'],
     initialReducersBlacklist: [], // reducers in this list won't be hydrated in windows.__data
     asyncPropsExtenders: [], // per route asyncConnect customizers
-    sentryOptions: {
-      ...sentryOptions,
-    },
+    sentryOptions,
     contentIcons: contentIcons,
     loadables,
     lazyBundles: {
@@ -162,6 +162,7 @@ let config = {
     hasWorkingCopySupport: false,
     maxUndoLevels: 200, // undo history size for the main form
     addonsInfo: addonsInfo,
+    workflowMapping,
   },
   widgets: {
     ...widgetMapping,
@@ -172,6 +173,7 @@ let config = {
     contentTypesViews,
     defaultView,
     errorViews,
+    layoutViewsNamesMapping,
   },
   blocks: {
     requiredBlocks,

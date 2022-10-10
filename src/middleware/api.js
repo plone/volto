@@ -59,7 +59,13 @@ export function addExpandersToPath(path, type) {
     },
   );
 
-  const stringifiedQuery = qs.stringify(query, {
+  const querystringFromConfig = apiExpanders
+    .filter((expand) => matchPath(url, expand.match) && expand[type])
+    .reduce((acc, expand) => ({ ...acc, ...expand?.['querystring'] }), {});
+
+  const queryMerge = { ...query, ...querystringFromConfig };
+
+  const stringifiedQuery = qs.stringify(queryMerge, {
     encode: false,
   });
 
@@ -271,6 +277,17 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
 
           // Redirect
           else if (error?.code === 301) {
+            next({
+              ...rest,
+              error,
+              statusCode: error.code,
+              connectionRefused: false,
+              type: SET_APIERROR,
+            });
+          }
+
+          // Redirect
+          else if (error?.code === 408) {
             next({
               ...rest,
               error,

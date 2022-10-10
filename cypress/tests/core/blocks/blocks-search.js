@@ -17,7 +17,7 @@ describe('Search Block Tests', () => {
     });
 
     cy.createContent({
-      contentType: 'Folder',
+      contentType: 'Document',
       contentId: 'my-folder',
       contentTitle: 'My Folder',
       path: '/',
