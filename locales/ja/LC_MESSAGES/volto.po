@@ -2107,6 +2107,11 @@ msgstr ""
 msgid "Personal Information"
 msgstr "個人情報"
 
+#: components/manage/Preferences/PersonalInformation
+# defaultMessage: Personal Information for ({name})
+msgid "Personal Information for"
+msgstr ""
+
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Personal Preferences

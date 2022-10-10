@@ -2109,6 +2109,11 @@ msgstr "Permisos actualizados"
 msgid "Personal Information"
 msgstr "Información Personal"
 
+#: components/manage/Preferences/PersonalInformation
+# defaultMessage: Personal Information for ({name})
+msgid "Personal Information for"
+msgstr ""
+
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Personal Preferences
