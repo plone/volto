@@ -116,7 +116,7 @@ function Controlpanels({
   let customcontrolpanels = config.settings.controlpanels
     ? config.settings.controlpanels.map((el) => {
         el.group =
-          this.props.intl.formatMessage({
+          intl.formatMessage({
             id: el.group,
             defaultMessage: el.group,
           }) || el.group;
