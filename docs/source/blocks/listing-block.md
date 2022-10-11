@@ -1,10 +1,10 @@
 ---
 myst:
   html_meta:
-    'description': "A common pattern in blocks is the 'variations' pattern - a slightly different versions of a block that can be toggled on demand by the editors."
-    'property=og:description': "A common pattern in blocks is the 'variations' pattern - a slightly different versions of a block that can be toggled on demand by the editors."
-    'property=og:title': 'Block extensions mechanism'
-    'keywords': 'Volto, Plone, frontend, React, Upgrade, Guide, Block extensions, variations, schema enhancers'
+    'description': "The listing block provides an additional extension letting the developer modify the default 'No results found' message using the configuration of the block"
+    'property=og:description': "The listing block provides an additional extension letting the developer modify the default 'No results found' message using the configuration of the block"
+    'property=og:title': 'Listing block extensions mechanism'
+    'keywords': 'Volto, Plone, frontend, React, Upgrade, Guide, Block extensions, variations, schema enhancers, listing block'
 ---
 
 (extensions-block-extensions-mechanism)=
