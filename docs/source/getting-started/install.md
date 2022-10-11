@@ -16,13 +16,11 @@ myst:
 
 ## Installing Volto
 
-Volto can be installed in any operating system assuming that this requirements
-are met:
+Volto can be installed in any operating system assuming that the following pre-requisites are met:
 
 - [Node.js LTS (16.x)](https://nodejs.org/en/)
-- [Python 3.7.x / 3.8.x](https://www.python.org/) or
-- [Docker](https://www.docker.com/get-started) (if using the Plone/Guillotina
-  docker images)
+- [Python 3.8.x or later](https://www.python.org/)
+- [Docker](https://www.docker.com/get-started) (if using the Plone/Guillotina Docker images)
 
 Depending on the operating system that you are using, some of the following pre-requisites might change.
 They assume you have a macOS/Linux machine.
