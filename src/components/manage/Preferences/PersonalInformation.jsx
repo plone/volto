@@ -11,7 +11,7 @@ import { injectIntl, defineMessages } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
-import { messages } from '@plone/volto/helpers';
+import { messages, asyncConnect } from '@plone/volto/helpers';
 import { getUser, updateUser, getUserSchema } from '@plone/volto/actions';
 import { Form, Toast, Unauthorized } from '@plone/volto/components';
 
@@ -46,7 +46,6 @@ class PersonalInformation extends Component {
     loaded: PropTypes.bool.isRequired,
     loading: PropTypes.bool,
     closeMenu: PropTypes.func,
-    getUserSchema: PropTypes.func.isRequired,
   };
 
   /**
@@ -63,7 +62,6 @@ class PersonalInformation extends Component {
 
   componentDidMount() {
     this.props.getUser(this.props.userId);
-    this.props.getUserSchema();
   }
 
   /**
@@ -140,6 +138,15 @@ class PersonalInformation extends Component {
 export default compose(
   withRouter,
   injectIntl,
+  asyncConnect([
+    {
+      key: 'userschema',
+      // Dispatch async/await to make the operation syncronous, otherwise it returns
+      // before the promise is resolved
+      promise: async ({ store: { dispatch } }) =>
+        await dispatch(getUserSchema()),
+    },
+  ]),
   connect(
     (state, props) => ({
       user: state.users.user,
@@ -153,6 +160,6 @@ export default compose(
       loading: state.users.update.loading,
       userschema: state.userschema,
     }),
-    { getUser, updateUser, getUserSchema },
+    { getUser, updateUser },
   ),
 )(PersonalInformation);
