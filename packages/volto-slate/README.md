@@ -73,79 +73,79 @@ volto-slate provides several optional configuration:
 
 ## Features
 
-#### 1. Hovering (floating) toolbar that shows up on selection
+### 1. Hovering (floating) toolbar that shows up on selection
 
 ![Screen Recording](https://raw.githubusercontent.com/eea/volto-slate/master/docs/source/images/1.gif)
 
-#### 2. Optional expanded (fixed) toolbar
+### 2. Optional expanded (fixed) toolbar
 
 ![Screen Recording](https://raw.githubusercontent.com/eea/volto-slate/master/docs/source/images/2.gif)
 
-#### 3. Working with links (internal, external, email)
+### 3. Working with links (internal, external, email)
 
 ![Screen Recording](https://raw.githubusercontent.com/eea/volto-slate/master/docs/source/images/3.gif)
 
-#### 4. Removing links
+### 4. Removing links
 
 ![Screen Recording](https://raw.githubusercontent.com/eea/volto-slate/master/docs/source/images/4.gif)
 
-#### 5. Editing links
+### 5. Editing links
 
 ![Screen Recording](https://raw.githubusercontent.com/eea/volto-slate/master/docs/source/images/5.gif)
 
-#### 6. Block-quotes
+### 6. Block-quotes
 
 ![Screen Recording](https://raw.githubusercontent.com/eea/volto-slate/master/docs/source/images/6.gif)
 
-#### 7. Split paragraph block in two with `Enter` key and join them back with `Backspace` key
+### 7. Split paragraph block in two with `Enter` key and join them back with `Backspace` key
 
 ![Screen Recording](https://raw.githubusercontent.com/eea/volto-slate/master/docs/source/images/7.gif)
 
-#### 8. Breaking and joining list items
+### 8. Breaking and joining list items
 
 ![Screen Recording](https://raw.githubusercontent.com/eea/volto-slate/master/docs/source/images/8.gif)
 
-#### 9. Breaking (with expanded selection) and joining list items
+### 9. Breaking (with expanded selection) and joining list items
 
 ![Screen Recording](https://raw.githubusercontent.com/eea/volto-slate/master/docs/source/images/9.gif)
 
-#### 10. Inserting a new list item at the end
+### 10. Inserting a new list item at the end
 
 ![Screen Recording](https://raw.githubusercontent.com/eea/volto-slate/master/docs/source/images/10.gif)
 
-#### 11. Two `Enter` key presses in the last empty list item creates a new list
+### 11. Two `Enter` key presses in the last empty list item creates a new list
 
 ![Screen Recording](https://raw.githubusercontent.com/eea/volto-slate/master/docs/source/images/11.gif)
 
-#### 12. Using `Up` and `Down` keys to go through the blocks in both directions
+### 12. Using `Up` and `Down` keys to go through the blocks in both directions
 
 ![Screen Recording](https://raw.githubusercontent.com/eea/volto-slate/master/docs/source/images/12.gif)
 
-#### 13. Changing indent level of list items using `Tab` and `Shift-Tab` keys
+### 13. Changing indent level of list items using `Tab` and `Shift-Tab` keys
 
 ![Screen Recording](https://raw.githubusercontent.com/eea/volto-slate/master/docs/source/images/13.gif)
 
-#### 14. Splitting a list block with `Enter` into two list blocks
+### 14. Splitting a list block with `Enter` into two list blocks
 
 ![Screen Recording](https://raw.githubusercontent.com/eea/volto-slate/master/docs/source/images/14.gif)
 
-#### 15. Support for markdown bulleted lists with `*`, `-` and `+`
+### 15. Support for markdown bulleted lists with `*`, `-` and `+`
 
 ![Screen Recording](https://raw.githubusercontent.com/eea/volto-slate/master/docs/source/images/15.gif)
 
-#### 16. Support for markdown numbered lists with `1.` - `9.`
+### 16. Support for markdown numbered lists with `1.` - `9.`
 
 ![Screen Recording](https://raw.githubusercontent.com/eea/volto-slate/master/docs/source/images/16.gif)
 
-#### 17. `Backspace` with cursor on first position inside a list with just one item converts the list to a paragraph
+### 17. `Backspace` with cursor on first position inside a list with just one item converts the list to a paragraph
 
 ![Screen Recording](https://raw.githubusercontent.com/eea/volto-slate/master/docs/source/images/17.gif)
 
-#### 18. Creating a new text block with `Enter` at the end of a text block and removing it with `Backspace`
+### 18. Creating a new text block with `Enter` at the end of a text block and removing it with `Backspace`
 
 ![Screen Recording](https://raw.githubusercontent.com/eea/volto-slate/master/docs/source/images/18.gif)
 
-#### 19. Switching the list type (numbered list to/from bulleted list)
+### 19. Switching the list type (numbered list to/from bulleted list)
 
 ![Screen Recording](https://raw.githubusercontent.com/eea/volto-slate/master/docs/source/images/19.gif)
 

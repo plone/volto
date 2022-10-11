@@ -8,6 +8,7 @@ import { intlReducer } from 'react-intl-redux';
 import actions from '@plone/volto/reducers/actions/actions';
 import addons from '@plone/volto/reducers/addons/addons';
 import apierror from '@plone/volto/reducers/apierror/apierror';
+import aliases from '@plone/volto/reducers/aliases/aliases';
 import breadcrumbs from '@plone/volto/reducers/breadcrumbs/breadcrumbs';
 import browserdetect from '@plone/volto/reducers/browserdetect/browserdetect';
 import comments from '@plone/volto/reducers/comments/comments';
@@ -41,6 +42,8 @@ import lazyLibraries from '@plone/volto/reducers/lazyLibraries/lazyLibraries';
 import contextNavigation from '@plone/volto/reducers/contextNavigation/contextNavigation';
 import reduxAsyncConnect from './asyncConnect/asyncConnect';
 import workingCopy from './workingcopy/workingcopy';
+import transactions from './transactions/transactions';
+import userschema from './userschema/userschema';
 import site from './site/site';
 import navroot from './navroot/navroot';
 
@@ -57,6 +60,7 @@ const reducers = {
   actions,
   addons,
   apierror,
+  aliases,
   breadcrumbs,
   browserdetect,
   comments,
@@ -89,6 +93,8 @@ const reducers = {
   lazyLibraries,
   contextNavigation,
   workingCopy,
+  transactions,
+  userschema,
   site,
   navroot,
 };

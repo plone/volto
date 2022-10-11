@@ -31,6 +31,30 @@ const SVGLOADER = {
   ],
 };
 
+const defaultRazzleOptions = {
+  verbose: false,
+  debug: {},
+  buildType: 'iso',
+  cssPrefix: 'static/css',
+  jsPrefix: 'static/js',
+  enableSourceMaps: true,
+  enableReactRefresh: true,
+  enableTargetBabelrc: false,
+  enableBabelCache: true,
+  forceRuntimeEnvVars: [],
+  mediaPrefix: 'static/media',
+  staticCssInDev: false,
+  emitOnErrors: false,
+  disableWebpackbar: false,
+  browserslist: [
+    '>1%',
+    'last 4 versions',
+    'Firefox ESR',
+    'not ie 11',
+    'not dead',
+  ],
+};
+
 module.exports = {
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
@@ -50,6 +74,10 @@ module.exports = {
         plugins: razzleConfig.plugins,
       },
       webpack,
+      false,
+      undefined,
+      [],
+      defaultRazzleOptions,
     );
     const AddonConfigurationRegistry = require('../addon-registry');
 

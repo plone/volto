@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Apache configuration for a Plone backend deployed under /api and a Volto frontend deployed under the root."
-  "property=og:description": "Apache configuration for a Plone backend deployed under /api and a Volto frontend deployed under the root."
-  "property=og:title": "Apache"
-  "keywords": "Volto, Plone, frontend, React, backend, apache"
+myst:
+  html_meta:
+    "description": "Apache configuration for a Plone backend deployed under /api and a Volto frontend deployed under the root."
+    "property=og:description": "Apache configuration for a Plone backend deployed under /api and a Volto frontend deployed under the root."
+    "property=og:title": "Apache"
+    "keywords": "Volto, Plone, frontend, React, backend, apache"
 ---
 
 # Apache

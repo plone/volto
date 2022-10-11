@@ -130,7 +130,12 @@ const TopSideFacets = (props) => {
               </Grid>
             </div>
           )}
-          <SearchDetails text={searchedText} total={totalItems} as="h5" />
+          <SearchDetails
+            text={searchedText}
+            total={totalItems}
+            as="h5"
+            data={data}
+          />
         </Grid.Column>
       </Grid.Row>
 
