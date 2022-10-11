@@ -107,7 +107,7 @@ function Controlpanels({
     dispatch(getSystemInformation());
   }, [dispatch]);
 
-  const error = controlpanelsRequest.error;
+  const error = controlpanelsRequest?.error;
 
   if (error) {
     return <Error error={error} />;
