@@ -24,8 +24,8 @@ are met:
 - [Docker](https://www.docker.com/get-started) (if using the Plone/Guillotina
   docker images)
 
-Depending on the OS that you are using some of the following might change, they
-are assuming a MacOS/Linux machine:
+Depending on the operating system that you are using, some of the following pre-requisites might change.
+They assume you have a macOS/Linux machine.
 
 
 (frontend-getting-started-components-processes-running-label)=
@@ -97,6 +97,17 @@ it provides easy access to any NodeJS released version.
     Volto supports currently active NodeJS LTS versions based on [NodeJS
     Releases page](https://github.com/nodejs/release#release-schedule), starting with Node 12 LTS.
     ```
+
+
+(frontend-getting-started-yeoman-label)=
+
+## Yeoman
+
+Install {term}`Yeoman`, a scaffolding tool.
+
+```shell
+npm install -g yo
+```
 
 
 (frontend-getting-started-yarn-label)=
