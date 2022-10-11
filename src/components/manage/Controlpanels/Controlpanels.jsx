@@ -248,7 +248,7 @@ function Controlpanels({
  * @property {Object} propTypes Property types.
  * @static
  */
- Controlpanels.propTypes = {
+Controlpanels.propTypes = {
   listControlpanels: PropTypes.func.isRequired,
   controlpanels: PropTypes.arrayOf(
     PropTypes.shape({
