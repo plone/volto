@@ -1,10 +1,10 @@
 ---
 myst:
   html_meta:
-    "description": "Volto features the Pastanaga Editor Engine, allowing you to visually compose a page using blocks."
-    "property=og:description": "Volto features the Pastanaga Editor Engine, allowing you to visually compose a page using blocks."
-    "property=og:title": "Blocks"
-    "keywords": "Volto, Plone, frontend, React, blocks"
+    'description': 'Volto features the Pastanaga Editor Engine, allowing you to visually compose a page using blocks.'
+    'property=og:description': 'Volto features the Pastanaga Editor Engine, allowing you to visually compose a page using blocks.'
+    'property=og:title': 'Blocks'
+    'keywords': 'Volto, Plone, frontend, React, blocks'
 ---
 
 # Blocks
@@ -18,5 +18,6 @@ settings
 editcomponent
 block-style-wrapper
 extensions
+listing-block
 ssr
 ```
