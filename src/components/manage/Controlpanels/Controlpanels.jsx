@@ -3,13 +3,13 @@
  * @module components/manage/Controlpanels/Controlpanels
  */
 
-import { Helmet } from '@plone/volto/helpers';
+import { asyncConnect, Helmet } from '@plone/volto/helpers';
 import { concat, filter, last, map, uniqBy } from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
 import { Portal } from 'react-portal';
-import { connect, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { compose } from 'redux';
 import { Container, Grid, Header, Segment } from 'semantic-ui-react';
@@ -98,14 +98,11 @@ function Controlpanels({
   pathname,
 }) {
   const intl = useIntl();
-  const dispatch = useDispatch();
   const [isClient, setIsClient] = React.useState(false);
 
   React.useEffect(() => {
     setIsClient(true);
-    dispatch(listControlpanels());
-    dispatch(getSystemInformation());
-  }, [dispatch]);
+  }, []);
 
   const error = controlpanelsRequest?.error;
 
@@ -249,7 +246,6 @@ function Controlpanels({
  * @static
  */
 Controlpanels.propTypes = {
-  listControlpanels: PropTypes.func.isRequired,
   controlpanels: PropTypes.arrayOf(
     PropTypes.shape({
       '@id': PropTypes.string,
@@ -261,13 +257,23 @@ Controlpanels.propTypes = {
 };
 
 export default compose(
-  connect(
-    (state, props) => ({
-      controlpanels: state.controlpanels.controlpanels,
-      controlpanelsRequest: state.controlpanels.list,
-      pathname: props.location.pathname,
-      systemInformation: state.controlpanels.systeminformation,
-    }),
-    { listControlpanels, getSystemInformation },
-  ),
+  connect((state, props) => ({
+    controlpanels: state.controlpanels.controlpanels,
+    controlpanelsRequest: state.controlpanels.list,
+    pathname: props.location.pathname,
+    systemInformation: state.controlpanels.systeminformation,
+  })),
+
+  asyncConnect([
+    {
+      key: 'controlpanels',
+      // Dispatch async/await to make the operation syncronous, otherwise it returns
+      // before the promise is resolved
+      promise: async ({ location, store: { dispatch } }) => {
+        const controlpanels = await dispatch(listControlpanels());
+        await dispatch(getSystemInformation());
+        return controlpanels;
+      },
+    },
+  ]),
 )(Controlpanels);

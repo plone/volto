@@ -40,7 +40,7 @@ describe('Controlpanels', () => {
           {
             '@id': 'http://localhost:8080/Plone/@controlpanels/security',
             group: 'Security',
-            title: 'Security',
+            title: 'test',
           },
         ],
       },
