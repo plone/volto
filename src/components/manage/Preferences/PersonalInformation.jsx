@@ -135,6 +135,26 @@ class PersonalInformation extends Component {
   }
 }
 
+export const __test__ = compose(
+  withRouter,
+  injectIntl,
+  connect(
+    (state, props) => ({
+      user: state.users.user,
+      error: state.users.get.error,
+      userId: props.match.params.username
+        ? props.match.params.username
+        : state.userSession.token
+        ? jwtDecode(state.userSession.token).sub
+        : '',
+      loaded: state.users.get.loaded,
+      loading: state.users.update.loading,
+      userschema: state.userschema,
+    }),
+    { getUser, updateUser },
+  ),
+)(PersonalInformation);
+
 export default compose(
   withRouter,
   injectIntl,
