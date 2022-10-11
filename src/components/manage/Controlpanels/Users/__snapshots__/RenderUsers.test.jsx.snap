@@ -7,7 +7,12 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
   <td
     className="fullname"
   >
-    Test User
+    <a
+      href="/personal-information/testuser"
+      onClick={[Function]}
+    >
+      Test User
+    </a>
   </td>
   <td
     className=""
