@@ -12,7 +12,7 @@ const fields = [
 
 export function contextNavPath(url, params) {
   let qs = Object.keys(params)
-    .filter((name) => fields.indexOf(name) > -1 && (params[name] ?? false))
+    .filter((name) => fields.indexOf(name) > -1 && (params[name] || false))
     .sort()
     .map((key) => `expand.contextnavigation.${key}=${params[key]}`)
     .join('&');

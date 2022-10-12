@@ -12,7 +12,7 @@ export const sitemap = function (req, res, next) {
       // {"errno":-111, "code":"ECONNREFUSED", "host": ...}
       res.status(500);
       // Some data, such as the internal API address, may be sensitive to be published
-      res.send(`Sitemap generation error: ${sitemap.code ?? '-'}`);
+      res.send(`Sitemap generation error: ${sitemap.code || '-'}`);
     }
   });
 };
