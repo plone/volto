@@ -8,6 +8,8 @@ module.exports = function (api) {
         runtime: 'automatic',
       },
     ],
+    ['@babel/plugin-proposal-nullish-coalescing-operator'],
+    ['@babel/plugin-proposal-optional-chaining'],
     'lodash',
     '@babel/plugin-proposal-export-default-from', // Stage 1
     '@babel/plugin-syntax-export-namespace-from', // Stage 4
