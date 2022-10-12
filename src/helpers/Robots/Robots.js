@@ -17,7 +17,7 @@ export const generateRobots = (req) =>
     //const url = `${req.protocol}://${req.get('Host')}`;
     const request = superagent.get(
       `${
-        config.settings.internalApiPath || config.settings.apiPath
+        config.settings.internalApiPath ?? config.settings.apiPath
       }/robots.txt`,
     );
     request.set('Accept', 'text/plain');

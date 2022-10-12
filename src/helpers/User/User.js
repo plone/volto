@@ -10,5 +10,5 @@ import { intersection } from 'lodash';
  * @returns {boolean}
  */
 export function userHasRoles(user, roles = []) {
-  return intersection(user?.roles || [], roles).length > 0;
+  return intersection(user?.roles ?? [], roles).length > 0;
 }
