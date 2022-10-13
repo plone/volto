@@ -115,4 +115,30 @@ describe('Navigation', () => {
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
+
+  it('renders a navigation component including external links', () => {
+    const store = mockStore({
+      navigation: {
+        items: [
+          { title: 'Blog', url: '/blog' },
+          { title: 'Users', url: '/users' },
+          { title: 'Store', url: 'https://store.plone.org' },
+        ],
+      },
+      userSession: { token: '1234' },
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <MemoryRouter>
+          <Navigation pathname="/" />
+        </MemoryRouter>
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
 });

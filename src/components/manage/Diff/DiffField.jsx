@@ -8,11 +8,11 @@ import React from 'react';
 import { join, map } from 'lodash';
 import PropTypes from 'prop-types';
 import { Table } from 'semantic-ui-react';
-import moment from 'moment';
 import ReactDOMServer from 'react-dom/server';
 import { Provider } from 'react-intl-redux';
 import { createBrowserHistory } from 'history';
 import { ConnectedRouter } from 'connected-react-router';
+import { useSelector } from 'react-redux';
 
 import { Api } from '@plone/volto/helpers';
 import configureStore from '@plone/volto/store';
@@ -44,6 +44,11 @@ const DiffField = ({
   schema,
   diffLib,
 }) => {
+  const language = useSelector((state) => state.intl.locale);
+  const readable_date_format = {
+    dateStyle: 'full',
+    timeStyle: 'short',
+  };
   const diffWords = (oneStr, twoStr) => {
     return diffLib.diffWords(String(oneStr), String(twoStr));
   };
@@ -56,8 +61,12 @@ const DiffField = ({
         break;
       case 'datetime':
         parts = diffWords(
-          moment(one).format('LLLL'),
-          moment(two).format('LLLL'),
+          new Intl.DateTimeFormat(language, readable_date_format).format(
+            new Date(one),
+          ),
+          new Intl.DateTimeFormat(language, readable_date_format).format(
+            new Date(two),
+          ),
         );
         break;
       case 'json':

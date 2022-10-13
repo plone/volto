@@ -1,7 +1,17 @@
+---
+myst:
+  html_meta:
+    "description": "Learn how to enable TypeScript support when developing you project with Volto."
+    "property=og:description": "Learn how to enable TypeScript support when developing you project with Volto."
+    "property=og:title": "TypeScript"
+    "keywords": "Volto, Plone, frontend, React, typescript, css"
+---
+
 # TypeScript
 
-!!! note
-    This feature is available since Volto 14. Please note that TypeScript is *not* allowed in Volto core, that's why it's not enabled in the core by default. This feature enables the use of TypeScript (as opt-in) in projects and in add-ons.
+```{note}
+This feature is available since Volto 14. Please note that TypeScript is *not* allowed in Volto core, that's why it's not enabled in the core by default. This feature enables the use of TypeScript (as opt-in) in projects and in add-ons.
+```
 
 It is possible to enable TypeScript support when developing you project with Volto.
 Volto itself is not written in TypeScript, but it is ready to use it if you want.
@@ -61,7 +71,7 @@ Change your scripts in your ``package.json`` like this (inspired by [https://git
   "prettier": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
   "prettier:fix": "./node_modules/.bin/prettier --single-quote --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
   "prettier:ci": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
-  "test": "razzle test --env=jest-environment-jsdom-sixteen --passWithNoTests",
+  "test": "razzle test --passWithNoTests",
   "start:prod": "NODE_ENV=production node build/server.js",
   "i18n": "rm -rf build/messages && NODE_ENV=production i18n",
   "develop": "missdev --output=addons --fetch-https"
@@ -89,6 +99,7 @@ module.exports = {
           ['@plone/volto', '@plone/volto/src'],
           ...addonAliases,
           ['@package', `${__dirname}/src`],
+          ['@root', `${__dirname}/src`],
           ['~', `${__dirname}/src`],
         ],
         extensions: ['.js', '.jsx', '.json'],

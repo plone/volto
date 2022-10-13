@@ -3,12 +3,13 @@
  * @module components/theme/App/App
  */
 
-import React, { Component } from 'react';
+import { Component } from 'react';
 import jwtDecode from 'jwt-decode';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { asyncConnect } from '@plone/volto/helpers';
+import loadable from '@loadable/component';
+import { asyncConnect, Helmet } from '@plone/volto/helpers';
 import { Segment } from 'semantic-ui-react';
 import { renderRoutes } from 'react-router-config';
 import { Slide, ToastContainer, toast } from 'react-toastify';
@@ -19,6 +20,7 @@ import cx from 'classnames';
 import config from '@plone/volto/registry';
 import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
 import { visitBlocks } from '@plone/volto/helpers/Blocks/Blocks';
+import { injectIntl } from 'react-intl';
 
 import Error from '@plone/volto/error';
 
@@ -41,11 +43,11 @@ import {
 } from '@plone/volto/actions';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
-import MultilingualRedirector from '../MultilingualRedirector/MultilingualRedirector';
-import WorkingCopyToastsFactory from '../../manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory';
-import LockingToastsFactory from '../../manage/LockingToastsFactory/LockingToastsFactory';
+import MultilingualRedirector from '@plone/volto/components/theme/MultilingualRedirector/MultilingualRedirector';
+import WorkingCopyToastsFactory from '@plone/volto/components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory';
+import LockingToastsFactory from '@plone/volto/components/manage/LockingToastsFactory/LockingToastsFactory';
 
-import * as Sentry from '@sentry/browser';
+const Sentry = loadable.lib(() => import('@sentry/browser'));
 
 /**
  * @export
@@ -92,7 +94,7 @@ class App extends Component {
     this.setState({ hasError: true, error, errorInfo: info });
     if (__CLIENT__) {
       if (window?.env?.RAZZLE_SENTRY_DSN || __SENTRY__?.SENTRY_DSN) {
-        Sentry.captureException(error);
+        Sentry.load().then((mod) => mod.captureException(error));
       }
     }
   }
@@ -109,8 +111,16 @@ class App extends Component {
     const isCmsUI = isCmsUi(this.props.pathname);
     const ConnectionRefusedView = views.errorViews.ECONNREFUSED;
 
+    const language =
+      this.props.content?.language?.token ?? this.props.intl?.locale;
+
     return (
       <PluggablesProvider>
+        {language && (
+          <Helmet>
+            <html lang={language} />
+          </Helmet>
+        )}
         <BodyClass className={`view-${action}view`} />
 
         {/* Body class depending on content type */}
@@ -137,7 +147,10 @@ class App extends Component {
         <SkipLinks />
         <Header pathname={path} />
         <Breadcrumbs pathname={path} />
-        <MultilingualRedirector pathname={this.props.pathname}>
+        <MultilingualRedirector
+          pathname={this.props.pathname}
+          contentLanguage={this.props.content?.language?.token}
+        >
           <Segment basic className="content-area">
             <main>
               <OutdatedBrowser />
@@ -211,6 +224,7 @@ export const fetchContent = async ({ store, location }) => {
         location,
         id,
         data,
+        blocksConfig,
       });
       if (!p?.length) {
         throw new Error(
@@ -262,6 +276,7 @@ export default compose(
         __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
     },
   ]),
+  injectIntl,
   connect(
     (state, props) => ({
       pathname: props.location.pathname,

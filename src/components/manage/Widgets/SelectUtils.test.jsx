@@ -1,4 +1,4 @@
-import { normalizeValue } from './SelectUtils';
+import { normalizeValue, convertValueToVocabQuery } from './SelectUtils';
 
 describe('normalizeValue', () => {
   it('Given an object/object, p.restapi title/token', () => {
@@ -97,5 +97,80 @@ describe('normalizeValue', () => {
     ];
     const value = undefined;
     expect(normalizeValue(choices, value)).toStrictEqual(null);
+  });
+
+  it('Given an array of tokenized value objects, with no choices', () => {
+    const choices = [];
+    const value = [
+      { title: 'Option 1', value: 'opt1' },
+      { title: 'Option 2', value: 'opt2' },
+    ];
+    expect(normalizeValue(choices, value)).toStrictEqual([
+      { label: 'Option 1', value: 'opt1' },
+      { label: 'Option 2', value: 'opt2' },
+    ]);
+  });
+
+  it('Given an array of strings, with no choices', () => {
+    const choices = [];
+    const value = ['opt1', 'opt2'];
+    expect(normalizeValue(choices, value)).toStrictEqual([
+      { label: 'opt1', value: 'opt1' },
+      { label: 'opt2', value: 'opt2' },
+    ]);
+  });
+});
+
+describe('convertValueToVocabQuery', () => {
+  it('converts an array of token/title to token query', () => {
+    const value = [
+      {
+        title: 'Option 1',
+        token: 'option1',
+      },
+      {
+        title: 'Option 100',
+        token: 'option100',
+      },
+      {
+        title: 'Option 103',
+        token: 'option103',
+      },
+    ];
+    expect(convertValueToVocabQuery(value)).toStrictEqual({
+      tokens: ['option1', 'option100', 'option103'],
+    });
+  });
+
+  it('converts an array of label/value to tokens query', () => {
+    const value = [
+      {
+        label: 'Option 1',
+        value: 'option1',
+      },
+      {
+        label: 'Option 100',
+        value: 'option100',
+      },
+      {
+        label: 'Option 103',
+        value: 'option103',
+      },
+    ];
+    expect(convertValueToVocabQuery(value)).toStrictEqual({
+      tokens: ['option1', 'option100', 'option103'],
+    });
+  });
+
+  it('converts arrays of strings to tokens query', () => {
+    const value = ['option1', 'option100', 'option103'];
+    expect(convertValueToVocabQuery(value)).toStrictEqual({
+      tokens: ['option1', 'option100', 'option103'],
+    });
+  });
+
+  it('converts a string to token query', () => {
+    const value = 'option1';
+    expect(convertValueToVocabQuery(value)).toStrictEqual({ token: 'option1' });
   });
 });

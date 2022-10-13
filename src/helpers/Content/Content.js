@@ -63,3 +63,19 @@ export function getContentIcon(type, isFolderish) {
   if (type in contentIcons) return contentIcons[type];
   return isFolderish ? contentIcons.Folder : contentIcons.File;
 }
+
+/**
+ * Get the language independent fields presents in a schema.
+ * @description Configurable in config
+ * @function getLanguageIndependentFields
+ * @param {string} schema content type JSON Schema serialization
+ * @returns {array} List of language independent fields
+ */
+export function getLanguageIndependentFields(schema) {
+  const { properties } = schema;
+  return Object.keys(properties).filter(
+    (field) =>
+      Object.keys(properties[field]).includes('multilingual_options') &&
+      properties[field]['multilingual_options']?.['language_independent'],
+  );
+}

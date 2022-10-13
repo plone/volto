@@ -64,10 +64,21 @@ exports[`Diff renders a diff component 1`] = `
               <div
                 aria-atomic="true"
                 aria-live="polite"
-                class="text"
+                class="divider text"
                 role="alert"
               >
-                0 (Sunday, April 23, 2017 3:38 AM, Web Admin)
+                0
+                 (
+                <time
+                  class="text"
+                  datetime="2017-04-19T14:09:35+02:00"
+                  title="Wednesday, April 19, 2017 at 12:09 PM"
+                >
+                  Wednesday, April 19, 2017 at 12:09 PM
+                </time>
+                ,  
+                Web Admin
+                )
               </div>
               <i
                 aria-hidden="true"
@@ -83,11 +94,18 @@ exports[`Diff renders a diff component 1`] = `
                   role="option"
                   style="pointer-events: all;"
                 >
-                  <span
+                  Current
+                   (
+                  <time
                     class="text"
+                    datetime="2017-04-19T14:09:36+02:00"
+                    title="Wednesday, April 19, 2017 at 12:09 PM"
                   >
-                    Current (Sunday, April 23, 2017 3:38 AM, Web Admin)
-                  </span>
+                    Wednesday, April 19, 2017 at 12:09 PM
+                  </time>
+                  ,  
+                  Web Admin
+                  )
                 </div>
                 <div
                   aria-checked="true"
@@ -96,11 +114,18 @@ exports[`Diff renders a diff component 1`] = `
                   role="option"
                   style="pointer-events: all;"
                 >
-                  <span
+                  0
+                   (
+                  <time
                     class="text"
+                    datetime="2017-04-19T14:09:35+02:00"
+                    title="Wednesday, April 19, 2017 at 12:09 PM"
                   >
-                    0 (Sunday, April 23, 2017 3:38 AM, Web Admin)
-                  </span>
+                    Wednesday, April 19, 2017 at 12:09 PM
+                  </time>
+                  ,  
+                  Web Admin
+                  )
                 </div>
               </div>
             </div>
@@ -118,10 +143,21 @@ exports[`Diff renders a diff component 1`] = `
               <div
                 aria-atomic="true"
                 aria-live="polite"
-                class="text"
+                class="divider text"
                 role="alert"
               >
-                Current (Sunday, April 23, 2017 3:38 AM, Web Admin)
+                Current
+                 (
+                <time
+                  class="text"
+                  datetime="2017-04-19T14:09:36+02:00"
+                  title="Wednesday, April 19, 2017 at 12:09 PM"
+                >
+                  Wednesday, April 19, 2017 at 12:09 PM
+                </time>
+                ,  
+                Web Admin
+                )
               </div>
               <i
                 aria-hidden="true"
@@ -137,11 +173,18 @@ exports[`Diff renders a diff component 1`] = `
                   role="option"
                   style="pointer-events: all;"
                 >
-                  <span
+                  Current
+                   (
+                  <time
                     class="text"
+                    datetime="2017-04-19T14:09:36+02:00"
+                    title="Wednesday, April 19, 2017 at 12:09 PM"
                   >
-                    Current (Sunday, April 23, 2017 3:38 AM, Web Admin)
-                  </span>
+                    Wednesday, April 19, 2017 at 12:09 PM
+                  </time>
+                  ,  
+                  Web Admin
+                  )
                 </div>
                 <div
                   aria-checked="false"
@@ -150,11 +193,18 @@ exports[`Diff renders a diff component 1`] = `
                   role="option"
                   style="pointer-events: all;"
                 >
-                  <span
+                  0
+                   (
+                  <time
                     class="text"
+                    datetime="2017-04-19T14:09:35+02:00"
+                    title="Wednesday, April 19, 2017 at 12:09 PM"
                   >
-                    0 (Sunday, April 23, 2017 3:38 AM, Web Admin)
-                  </span>
+                    Wednesday, April 19, 2017 at 12:09 PM
+                  </time>
+                  ,  
+                  Web Admin
+                  )
                 </div>
               </div>
             </div>

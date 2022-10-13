@@ -5,15 +5,16 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { compose } from 'redux';
 import { map, remove } from 'lodash';
 import { Button, Segment, Table, Form } from 'semantic-ui-react';
-import { convertToRaw } from 'draft-js';
 import { Portal } from 'react-portal';
 import cx from 'classnames';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import Cell from '@plone/volto/components/manage/Blocks/Table/Cell';
 import { Field, Icon } from '@plone/volto/components';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import rowBeforeSVG from '@plone/volto/icons/row-before.svg';
 import rowAfterSVG from '@plone/volto/icons/row-after.svg';
@@ -208,6 +209,9 @@ class Edit extends Component {
     this.toggleBasic = this.toggleBasic.bind(this);
     this.toggleCelled = this.toggleCelled.bind(this);
     this.toggleStriped = this.toggleStriped.bind(this);
+
+    const { convertToRaw } = props.draftJs;
+    this.convertToRaw = convertToRaw;
   }
 
   /**
@@ -261,7 +265,7 @@ class Edit extends Component {
    */
   onChangeCell(row, cell, editorState) {
     const table = { ...this.props.data.table };
-    table.rows[row].cells[cell].value = convertToRaw(
+    table.rows[row].cells[cell].value = this.convertToRaw(
       editorState.getCurrentContent(),
     );
     this.props.onChangeBlock(this.props.block, {
@@ -740,4 +744,4 @@ class Edit extends Component {
   }
 }
 
-export default injectIntl(Edit);
+export default compose(injectLazyLibs(['draftJs']), injectIntl)(Edit);

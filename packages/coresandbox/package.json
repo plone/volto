@@ -1,0 +1,27 @@
+{
+  "name": "@plone/coresandbox",
+  "description": "Volto Core Sandbox addon - Contains configuration and elements that are not present in vanilla Volto",
+  "maintainers": [
+    {
+      "name": "Plone Foundation",
+      "email": "plone-developers@lists.sourceforge.net",
+      "url": "http://plone.org"
+    }
+  ],
+  "license": "MIT",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:plone/volto.git"
+  },
+  "bugs": {
+    "url": "https://github.com/plone/volto/issues",
+    "email": "plone-developers@lists.sourceforge.net"
+  },
+  "homepage": "https://plone.org",
+  "keywords": [
+    "volto",
+    "plone",
+    "react"
+  ]
+}

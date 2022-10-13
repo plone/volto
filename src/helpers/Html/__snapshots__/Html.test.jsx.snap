@@ -22,10 +22,25 @@ exports[`Html renders a html component 1`] = `
     />
     <link
       href="/favicon.ico"
-      rel="shortcut icon"
+      rel="icon"
+      sizes="any"
+    />
+    <link
+      href="/icon.svg"
+      rel="icon"
+      type="image/svg+xml"
+    />
+    <link
+      href="/apple-touch-icon.png"
+      rel="apple-touch-icon"
+      sizes="180x180"
+    />
+    <link
+      href="/site.webmanifest"
+      rel="manifest"
     />
     <meta
-      content="Volto - http://plone.org"
+      content="Plone 6 - https://plone.org"
       name="generator"
     />
     <meta
@@ -102,10 +117,25 @@ exports[`Html renders a html component with apiPath present 1`] = `
     />
     <link
       href="/favicon.ico"
-      rel="shortcut icon"
+      rel="icon"
+      sizes="any"
+    />
+    <link
+      href="/icon.svg"
+      rel="icon"
+      type="image/svg+xml"
+    />
+    <link
+      href="/apple-touch-icon.png"
+      rel="apple-touch-icon"
+      sizes="180x180"
+    />
+    <link
+      href="/site.webmanifest"
+      rel="manifest"
     />
     <meta
-      content="Volto - http://plone.org"
+      content="Plone 6 - https://plone.org"
       name="generator"
     />
     <meta

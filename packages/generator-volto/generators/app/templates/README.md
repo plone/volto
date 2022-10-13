@@ -36,7 +36,6 @@ By default, runs tests related to files changed since the last commit.
 Runs the test i18n runner which extracts all the translation strings and
 generates the needed files.
 
-
 ### mrs-developer
 
 [mrs-developer](https://github.com/collective/mrs-developer) is a great tool

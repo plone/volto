@@ -199,7 +199,7 @@ class Edit extends Component {
   }
 
   getSelection = (editor) => {
-    if (!editor._input) {
+    if (!editor || !editor._input) {
       return {};
     }
 

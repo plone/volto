@@ -15,7 +15,7 @@ const messages = defineMessages({
   },
 });
 
-const schemaHero = ({ props, intl }) => {
+const schemaHero = ({ intl }) => {
   return {
     title: 'Block settings',
     required: [],

@@ -14,14 +14,16 @@ import {
  * Get schema function.
  * @function getSchema
  * @param {string} type Content type.
+ * @param {string} url Content url.
  * @returns {Object} Get schema action.
  */
-export function getSchema(type) {
+export function getSchema(type, url) {
+  url = typeof url !== 'undefined' ? url : '';
   return {
     type: GET_SCHEMA,
     request: {
       op: 'get',
-      path: `/@types/${type}`,
+      path: `${url}/@types/${type}`,
     },
   };
 }

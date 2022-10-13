@@ -6,13 +6,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
-import moment from 'moment';
 import cx from 'classnames';
 import { List, Button, Header, Label } from 'semantic-ui-react';
 import { Icon } from '@plone/volto/components';
 import addSVG from '@plone/volto/icons/circle-plus.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
+import { useSelector } from 'react-redux';
 import { toISOString } from './Utils';
 
 const messages = defineMessages({
@@ -46,7 +47,7 @@ const messages = defineMessages({
   },
 });
 
-const formatDate = (d) => {
+const formatDate = (d, moment) => {
   const m = moment(d);
   return m.format('dddd') + ', ' + m.format('LL');
 };
@@ -56,15 +57,18 @@ const formatDate = (d) => {
  * @function Occurences
  * @returns {string} Markup of the component.
  */
-const Occurences = ({
+const Occurences_ = ({
   rruleSet,
   exclude,
   undoExclude,
   intl,
   showTitle,
   editOccurences,
+  moment: momentlib,
 }) => {
-  moment.locale(intl.locale);
+  const moment = momentlib.default;
+  const lang = useSelector((state) => state.intl.locale);
+  moment.locale(lang);
   let all = [];
   const isExcluded = (date) => {
     var dateISO = toISOString(date);
@@ -154,7 +158,7 @@ const Occurences = ({
                 </List.Content>
               )}
               <List.Content className={cx({ excluded: excluded })}>
-                {formatDate(date)}
+                {formatDate(date, moment)}
                 {isAdditional(date) && (
                   <Label
                     pointing="left"
@@ -181,6 +185,8 @@ const Occurences = ({
     </div>
   );
 };
+
+export const Occurences = injectLazyLibs(['moment'])(Occurences_);
 
 /**
  * Property types.

@@ -11,5 +11,15 @@ describe('Schema action', () => {
       expect(action.request.op).toEqual('get');
       expect(action.request.path).toEqual(`/@types/${type}`);
     });
+
+    it('should create an action to get the schema if url is passed', () => {
+      const type = 'Document';
+      const url = '/path/to/folder';
+      const action = getSchema(type, url);
+
+      expect(action.type).toEqual(GET_SCHEMA);
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(`${url}/@types/${type}`);
+    });
   });
 });

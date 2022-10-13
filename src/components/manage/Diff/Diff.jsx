@@ -12,7 +12,6 @@ import { filter, isEqual, map } from 'lodash';
 import { Container, Button, Dropdown, Grid, Table } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 import { Portal } from 'react-portal';
-import moment from 'moment';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import qs from 'query-string';
 
@@ -23,7 +22,13 @@ import {
   getBlocksLayoutFieldname,
   hasBlocksData,
 } from '@plone/volto/helpers';
-import { DiffField, Icon, Toolbar } from '@plone/volto/components';
+import {
+  DiffField,
+  FormattedDate,
+  Icon,
+  Toolbar,
+  Unauthorized,
+} from '@plone/volto/components';
 
 import backSVG from '@plone/volto/icons/back.svg';
 
@@ -62,6 +67,7 @@ class Diff extends Component {
     getSchema: PropTypes.func.isRequired,
     getHistory: PropTypes.func.isRequired,
     schema: PropTypes.objectOf(PropTypes.any),
+    error: PropTypes.objectOf(PropTypes.any),
     pathname: PropTypes.string.isRequired,
     one: PropTypes.string.isRequired,
     two: PropTypes.string.isRequired,
@@ -189,15 +195,21 @@ class Diff extends Component {
     const versions = map(
       filter(this.props.historyEntries, (entry) => 'version' in entry),
       (entry, index) => ({
-        text: `${index === 0 ? 'Current' : entry.version} (${moment(
-          entry.time,
-        ).format('LLLL')}, ${entry.actor.fullname})`,
+        text: (
+          <>
+            {index === 0 ? 'Current' : entry.version}&nbsp;(
+            <FormattedDate date={entry.time} long className="text" />, &nbsp;
+            {entry.actor.fullname})
+          </>
+        ),
         value: `${entry.version}`,
         key: `${entry.version}`,
       }),
     );
 
-    return (
+    return this.props.error?.status === 401 ? (
+      <Unauthorized />
+    ) : (
       <Container id="page-diff">
         <Helmet title={this.props.intl.formatMessage(messages.diff)} />
         <h1>
@@ -328,7 +340,7 @@ class Diff extends Component {
               hideDefaultViewButtons
               inner={
                 <Link
-                  to={`${getBaseUrl(this.props.pathname)}/history`}
+                  to={`${getBaseUrl(this.props.pathname)}/historyview`}
                   className="item"
                 >
                   <Icon
@@ -355,12 +367,13 @@ export default compose(
       data: state.diff.data,
       historyEntries: state.history.entries,
       schema: state.schema.schema,
+      error: state.diff.error,
       pathname: props.location.pathname,
       one: qs.parse(props.location.search).one,
       two: qs.parse(props.location.search).two,
       view: qs.parse(props.location.search).view || 'split',
-      title: state.content.data.title,
-      type: state.content.data['@type'],
+      title: state.content.data?.title,
+      type: state.content.data?.['@type'],
     }),
     { getDiff, getSchema, getHistory },
   ),

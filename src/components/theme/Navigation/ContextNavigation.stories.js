@@ -1,6 +1,4 @@
-import ContextNavigationDefault, {
-  ContextNavigationComponent as CNC,
-} from './ContextNavigation';
+import { ContextNavigationComponent as CNC } from './ContextNavigation'; // ContextNavigationDefault,
 import Wrapper from '@plone/volto/storybook';
 import React from 'react';
 
@@ -75,18 +73,18 @@ const navigation = {
   url: 'http://localhost:3000/api/folder2/sitemap',
 };
 
-const customStore = {
-  contextNavigation: {
-    '/folder2/folder21/doc212/@contextnavigation': {
-      data: navigation,
-    },
-  },
-  userSession: { token: '1234' },
-  intl: {
-    locale: 'en',
-    messages: {},
-  },
-};
+// const customStore = {
+//   contextNavigation: {
+//     '/folder2/folder21/doc212/@contextnavigation': {
+//       data: navigation,
+//     },
+//   },
+//   userSession: { token: '1234' },
+//   intl: {
+//     locale: 'en',
+//     messages: {},
+//   },
+// };
 
 const ContextNavigationComponent = (args) => {
   return (
@@ -97,20 +95,20 @@ const ContextNavigationComponent = (args) => {
   );
 };
 
-const ContextNavigation = (args) => {
-  return (
-    <Wrapper
-      location={{ pathname: '/folder2/folder21/doc212' }}
-      customStore={customStore}
-    >
-      <style dangerouslySetInnerHTML={{ __html: style }}></style>
-      <ContextNavigationDefault />
-    </Wrapper>
-  );
-};
+// const ContextNavigationStory = (args) => {
+//   return (
+//     <Wrapper
+//       location={{ pathname: '/folder2/folder21/doc212' }}
+//       customStore={customStore}
+//     >
+//       <style dangerouslySetInnerHTML={{ __html: style }}></style>
+//       <ContextNavigationDefault />
+//     </Wrapper>
+//   );
+// };
 
 export default {
-  title: 'Internal components/Context navigation',
+  title: 'Public components/Context Navigation',
   component: CNC,
   decorators: [
     (Story) => (
@@ -122,11 +120,11 @@ export default {
   // subcomponents: { ArgsTable },
 };
 
-export const Renderer = () => (
+export const ContextNavigation = () => (
   <ContextNavigationComponent navigation={navigation} />
 );
 
-export const Connected = () => <ContextNavigation />;
+// export const Connected = () => <ContextNavigation />;
 
 const style = `
 .list .content .list a {

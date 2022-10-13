@@ -15,7 +15,7 @@ export const customSelectStyles = {
     borderBottom: '1px solid #c7d5d8',
     boxShadow: 'none',
     borderBottomStyle: state.menuIsOpen ? 'dotted' : 'solid',
-    minHeight: '40px',
+    minHeight: '37px',
   }),
   menu: (styles, state) => ({
     ...styles,

@@ -10,13 +10,19 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Container, Dropdown, Icon, Segment, Table } from 'semantic-ui-react';
-import { concat, map, reverse } from 'lodash';
+import { concat, map, reverse, find } from 'lodash';
 import { Portal } from 'react-portal';
-import moment from 'moment';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
+import { asyncConnect } from '@plone/volto/helpers';
 
-import { Icon as IconNext, Toolbar } from '@plone/volto/components';
-import { getHistory, revertHistory } from '@plone/volto/actions';
+import {
+  FormattedDate,
+  Icon as IconNext,
+  Toolbar,
+  Forbidden,
+  Unauthorized,
+} from '@plone/volto/components';
+import { getHistory, revertHistory, listActions } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
 
 import backSVG from '@plone/volto/icons/back.svg';
@@ -123,7 +129,24 @@ class History extends Component {
       title = entries[x].state_title || title;
     }
     reverse(entries);
-    return (
+    const historyAction = find(this.props.objectActions, {
+      id: 'history',
+    });
+    return !historyAction ? (
+      <>
+        {this.props.token ? (
+          <Forbidden
+            pathname={this.props.pathname}
+            staticContext={this.props.staticContext}
+          />
+        ) : (
+          <Unauthorized
+            pathname={this.props.pathname}
+            staticContext={this.props.staticContext}
+          />
+        )}
+      </>
+    ) : (
       <Container id="page-history">
         <Helmet title={this.props.intl.formatMessage(messages.history)} />
         <Segment.Group raised>
@@ -206,9 +229,7 @@ class History extends Component {
                   </Table.Cell>
                   <Table.Cell>{entry.actor.fullname}</Table.Cell>
                   <Table.Cell>
-                    <span title={moment(entry.time).format('LLLL')}>
-                      {moment(entry.time).fromNow()}
-                    </span>
+                    <FormattedDate date={entry.time} />
                   </Table.Cell>
                   <Table.Cell>{entry.comments}</Table.Cell>
                   <Table.Cell>
@@ -294,11 +315,22 @@ class History extends Component {
 
 export default compose(
   injectIntl,
+  asyncConnect([
+    {
+      key: 'actions',
+      // Dispatch async/await to make the operation syncronous, otherwise it returns
+      // before the promise is resolved
+      promise: async ({ location, store: { dispatch } }) =>
+        await dispatch(listActions(getBaseUrl(location.pathname))),
+    },
+  ]),
   connect(
     (state, props) => ({
+      objectActions: state.actions.actions.object,
+      token: state.userSession.token,
       entries: state.history.entries,
       pathname: props.location.pathname,
-      title: state.content.data.title,
+      title: state.content.data?.title,
       revertRequest: state.history.revert,
     }),
     { getHistory, revertHistory },

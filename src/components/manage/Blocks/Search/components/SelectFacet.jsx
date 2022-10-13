@@ -5,6 +5,11 @@ import {
   DropdownIndicator,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 import { selectTheme, customSelectStyles } from './SelectStyling';
+import {
+  selectFacetSchemaEnhancer,
+  selectFacetStateToValue,
+  selectFacetValueToQuery,
+} from './base';
 
 const SelectFacet = (props) => {
   const {
@@ -46,5 +51,9 @@ const SelectFacet = (props) => {
     />
   );
 };
+
+SelectFacet.schemaEnhancer = selectFacetSchemaEnhancer;
+SelectFacet.stateToValue = selectFacetStateToValue;
+SelectFacet.valueToQuery = selectFacetValueToQuery;
 
 export default injectLazyLibs('reactSelect')(SelectFacet);

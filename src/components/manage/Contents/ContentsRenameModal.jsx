@@ -153,7 +153,7 @@ class ContentsRenameModal extends Component {
                 },
                 [`${index}_id`]: {
                   title: this.props.intl.formatMessage(messages.shortName),
-                  type: 'string',
+                  type: 'id',
                   description: this.props.intl.formatMessage(
                     messages.shortNameDescription,
                   ),

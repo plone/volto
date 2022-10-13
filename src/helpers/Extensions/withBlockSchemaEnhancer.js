@@ -2,12 +2,17 @@ import { defineMessages } from 'react-intl';
 import React from 'react';
 import { useIntl } from 'react-intl';
 import config from '@plone/volto/registry';
-import { cloneDeep } from 'lodash';
+import { cloneDeepSchema } from '@plone/volto/helpers/Utils/Utils';
+import { defaultStyleSchema } from '@plone/volto/components/manage/Blocks/Block/StylesSchema';
 
 const messages = defineMessages({
   variation: {
     id: 'Variation',
     defaultMessage: 'Variation',
+  },
+  styling: {
+    id: 'Styling',
+    defaultMessage: 'Styling',
   },
 });
 
@@ -18,6 +23,19 @@ function _addField(schema, name) {
   if (schema.fieldsets[0].fields.indexOf(name) === -1) {
     schema.fieldsets[0].fields.unshift(name);
   }
+}
+
+/**
+ * Gets the blocksConfig from the props or from the global config object
+ */
+function getBlocksConfig(props) {
+  const { blocks } = config;
+
+  if (props.blocksConfig) {
+    return props.blocksConfig;
+  }
+
+  return blocks?.blocksConfig;
 }
 
 /**
@@ -59,6 +77,39 @@ export const addExtensionFieldToSchema = ({
   return schema;
 };
 
+/**
+ * A generic HOC that provides "schema enhancer functionality" for any custom
+ * block extension.
+ *
+ * This enables blocks to have additional "variations", beyond the usual
+ * `variations` field. This function is not directly used by Volto.
+ *
+ * To be used with a block configuration like:
+ *
+ * ```
+ *  {
+ *    id: 'someBlockId',
+ *    extensions: {
+ *      '<someExtensionName>': {
+ *        items: [
+ *          {
+ *            id: 'selectFacet',
+ *            title: 'Select',
+ *            view: SelectFacet,
+ *            isDefault: true,
+ *          },
+ *          {
+ *            id: 'checkboxFacet',
+ *            title: 'Checkbox',
+ *            view: CheckboxFacet,
+ *            isDefault: false,
+ *          },
+ *        ]
+ *      }
+ *     }
+ *  }
+ * ```
+ */
 export const withBlockSchemaEnhancer = (
   FormComponent,
   extensionName = 'vendor',
@@ -67,11 +118,11 @@ export const withBlockSchemaEnhancer = (
   const { formData, schema: originalSchema } = props;
   const intl = useIntl();
 
-  const { blocks } = config;
+  const blocksConfig = getBlocksConfig(props);
 
   const blockType = formData['@type'];
   const extensionConfig =
-    blocks?.blocksConfig[blockType]?.extensions?.[extensionName];
+    blocksConfig?.[blockType]?.extensions?.[extensionName];
 
   if (!extensionConfig)
     return <FormComponent {...props} schema={originalSchema} />;
@@ -88,11 +139,15 @@ export const withBlockSchemaEnhancer = (
     // schemaEnhancer in the block configuration
     activeItem?.['schemaEnhancer'] ||
     (extensionName === 'variation' &&
-      blocks.blocksConfig?.[blockType]?.schemaEnhancer);
+      blocksConfig?.[blockType]?.schemaEnhancer);
 
   let schema = schemaEnhancer
-    ? schemaEnhancer({ schema: cloneDeep(originalSchema), formData, intl })
-    : cloneDeep(originalSchema);
+    ? schemaEnhancer({
+        schema: cloneDeepSchema(originalSchema),
+        formData,
+        intl,
+      })
+    : cloneDeepSchema(originalSchema);
 
   const { title = messages.variation, description } = extensionConfig;
 
@@ -111,23 +166,58 @@ export const withBlockSchemaEnhancer = (
   return <FormComponent {...props} schema={schema} />;
 };
 
+/**
+ * Apply block variation schema enhancers to the provided schema, using block
+ * information from the provided block data (as `formData`).
+ *
+ * Blocks can be enhanced with variations declared like:
+ *
+ * ```
+ *  {
+ *    id: 'searchBlock',
+ *    schemaEnhancer: ({schema, formData, intl}) => schema,
+ *    variations: [
+ *      {
+ *        id: 'facetsRightSide',
+ *        title: 'Facets on right side',
+ *        view: RightColumnFacets,
+ *        isDefault: true,
+ *      },
+ *      {
+ *        id: 'facetsLeftSide',
+ *        title: 'Facets on left side',
+ *        view: LeftColumnFacets,
+ *        isDefault: false,
+ *        schemaEnhancer: ({schema, formData, intl}) => schema,
+ *      },
+ *    ],
+ *
+ * ```
+ * Notice that each variation can declare an option schema enhancer, and each
+ * block supports an optional `schemaEnhancer` function.
+ */
 export const applySchemaEnhancer = ({
   schema: originalSchema,
   formData,
   intl,
+  blocksConfig = config.blocks.blocksConfig,
 }) => {
   let schema, schemaEnhancer;
-  const { blocks } = config;
 
   const blockType = formData['@type'];
-  const variations = blocks?.blocksConfig[blockType]?.variations || [];
+  const variations = blocksConfig?.[blockType]?.variations || [];
 
   if (variations.length === 0) {
-    // No variations present but anyways
-    // finalize the schema with a schemaEnhancer in the block config is present
-    schemaEnhancer = blocks.blocksConfig?.[blockType]?.schemaEnhancer;
+    // No variations present but we finalize the schema with a schemaEnhancer
+    // in the block config (if present)
+    schemaEnhancer = blocksConfig?.[blockType]?.schemaEnhancer;
+
     if (schemaEnhancer)
-      schema = schemaEnhancer({ schema: originalSchema, formData, intl });
+      schema = schemaEnhancer({
+        schema: cloneDeepSchema(originalSchema),
+        formData,
+        intl,
+      });
     return schema || originalSchema;
   }
 
@@ -138,24 +228,35 @@ export const applySchemaEnhancer = ({
   schemaEnhancer = activeItem?.['schemaEnhancer'];
 
   schema = schemaEnhancer
-    ? schemaEnhancer({ schema: cloneDeep(originalSchema), formData, intl })
-    : cloneDeep(originalSchema);
+    ? schemaEnhancer({
+        schema: cloneDeepSchema(originalSchema),
+        formData,
+        intl,
+      })
+    : cloneDeepSchema(originalSchema);
 
   // Finalize the schema with a schemaEnhancer in the block config;
-  schemaEnhancer = blocks.blocksConfig?.[blockType]?.schemaEnhancer;
+  schemaEnhancer = blocksConfig?.[blockType]?.schemaEnhancer;
   if (schemaEnhancer) schema = schemaEnhancer({ schema, formData, intl });
 
   return schema || originalSchema;
 };
 
+/**
+ * A HOC that enhances the incoming schema prop with block variations support
+ * by:
+ *
+ * - applies the selected variation's schema enhancer
+ * - adds the variation selection input (as a choice widget)
+ */
 export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
   const { formData, schema: originalSchema } = props;
   const intl = useIntl();
 
-  const { blocks } = config;
+  const blocksConfig = getBlocksConfig(props);
 
   const blockType = formData['@type'];
-  const variations = blocks?.blocksConfig[blockType]?.variations || [];
+  const variations = blocksConfig[blockType]?.variations || [];
 
   let schema = applySchemaEnhancer({ schema: originalSchema, formData, intl });
 
@@ -170,5 +271,43 @@ export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
     });
   }
 
+  return <FormComponent {...props} schema={schema} />;
+};
+
+/**
+ * A HOC that enhances the incoming schema prop with styling widget support
+ * by:
+ *
+ * - adds the variation selection input (as a choice widget)
+ */
+export const withStylingSchemaEnhancer = (FormComponent) => (props) => {
+  const { formData, schema } = props;
+  const intl = useIntl();
+
+  const blocksConfig = getBlocksConfig(props);
+
+  const blockType = formData['@type'];
+  const enableStyling = blocksConfig[blockType]?.enableStyling;
+
+  if (enableStyling) {
+    const stylesSchema =
+      blocksConfig[blockType]?.stylesSchema || defaultStyleSchema;
+
+    schema.fieldsets.push({
+      id: 'styling',
+      title: intl.formatMessage(messages.styling),
+      fields: ['styles'],
+    });
+
+    schema.properties.styles = {
+      widget: 'object',
+      title: intl.formatMessage(messages.styling),
+      schema: stylesSchema({
+        schema: defaultStyleSchema({ formData, intl }),
+        formData,
+        intl,
+      }),
+    };
+  }
   return <FormComponent {...props} schema={schema} />;
 };

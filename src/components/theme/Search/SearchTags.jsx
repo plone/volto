@@ -33,7 +33,7 @@ class SearchTags extends Component {
   };
 
   componentDidMount() {
-    this.props.getVocabulary(vocabulary);
+    this.props.getVocabulary({ vocabNameOrURL: vocabulary });
   }
 
   /**

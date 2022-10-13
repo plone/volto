@@ -50,6 +50,10 @@ class Navigation extends Component {
     lang: PropTypes.string.isRequired,
   };
 
+  static defaultProps = {
+    token: null,
+  };
+
   /**
    * Constructor
    * @method constructor
@@ -124,7 +128,7 @@ class Navigation extends Component {
    */
   render() {
     return (
-      <nav className="navigation" id="navigation">
+      <nav className="navigation" id="navigation" aria-label="navigation">
         <div className="hamburger-wrapper mobile tablet only">
           <button
             className={cx('hamburger hamburger--spin', {

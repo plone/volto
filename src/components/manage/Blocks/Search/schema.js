@@ -1,6 +1,7 @@
 import config from '@plone/volto/registry';
 import { defineMessages } from 'react-intl';
 import { cloneDeep } from 'lodash';
+import { hasNonValueOperation, hasDateOperation } from './utils';
 
 const messages = defineMessages({
   searchBlock: {
@@ -95,13 +96,17 @@ const messages = defineMessages({
     id: 'Facet widget',
     defaultMessage: 'Facet widget',
   },
+  showTotalResults: {
+    id: 'Show total results',
+    defaultMessage: 'Show total results',
+  },
 });
 
 const enhanceSchema = (originalSchema, formData) => {
   const extensionName = 'facetWidgets';
-  const extensionType = 'type';
+  const extensionType = 'type'; // property name in stored block data
   const variations =
-    config.blocks.blocksConfig.search.extensions[extensionName][extensionType];
+    config.blocks.blocksConfig.search.extensions[extensionName].types;
 
   const activeItemName = formData?.[extensionType];
   let activeItem = variations?.find((item) => item.id === activeItemName);
@@ -122,7 +127,7 @@ const FacetSchema = ({ intl }) => ({
     {
       id: 'default',
       title: 'Default',
-      fields: ['title', 'field', 'type', 'multiple', 'hidden'],
+      fields: ['title', 'field', 'type', 'hidden'],
     },
   ],
   properties: {
@@ -141,7 +146,9 @@ const FacetSchema = ({ intl }) => ({
         return Object.assign(
           {},
           ...Object.keys(options).map((k) =>
-            Object.keys(options[k].values || {}).length
+            Object.keys(options[k].values || {}).length ||
+            hasNonValueOperation(options[k].operations) ||
+            hasDateOperation(options[k].operations)
               ? { [k]: options[k] }
               : {},
           ),
@@ -202,6 +209,7 @@ export default ({ data = {}, intl }) => {
           ...(data.showSearchInput ?? true ? ['showSearchButton'] : []),
           // ...(data.showSearchInput ? ['searchInputPrompt'] : []),
           // ...(data.showSearchButton ? ['searchButtonLabel'] : []),
+          'showTotalResults',
         ],
       },
     ],
@@ -221,6 +229,11 @@ export default ({ data = {}, intl }) => {
         type: 'boolean',
         title: intl.formatMessage(messages.showSearchButtonTitle),
         description: intl.formatMessage(messages.showSearchButtonDescription),
+      },
+      showTotalResults: {
+        type: 'boolean',
+        title: intl.formatMessage(messages.showTotalResults),
+        default: true,
       },
       searchButtonLabel: {
         title: intl.formatMessage(messages.searchButtonLabel),

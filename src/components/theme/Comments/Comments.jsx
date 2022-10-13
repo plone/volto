@@ -11,7 +11,6 @@ import {
 } from '@plone/volto/actions';
 import { Avatar, CommentEditModal, Form } from '@plone/volto/components';
 import { flattenToAppURL, getBaseUrl, getColor } from '@plone/volto/helpers';
-import moment from 'moment';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
@@ -19,6 +18,7 @@ import { Portal } from 'react-portal';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Button, Comment, Container, Icon } from 'semantic-ui-react';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 // import { Button, Grid, Segment, Container } from 'semantic-ui-react';
 
 const messages = defineMessages({
@@ -297,6 +297,7 @@ class Comments extends Component {
    */
   render() {
     const { items } = this.props;
+    const moment = this.props.moment.default;
     const { collapsedComments } = this.state;
     // object with comment ids, to easily verify if any comment has children
     const allCommentsWithCildren = this.addRepliesAsChildrenToComments(items);
@@ -471,6 +472,7 @@ class Comments extends Component {
 
 export default compose(
   injectIntl,
+  injectLazyLibs(['moment']),
   connect(
     (state) => ({
       items: state.comments.items,

@@ -11,6 +11,9 @@
 @import (less) '~hamburgers/dist/hamburgers.css';
 @import (less) '~react-toastify/dist/ReactToastify.css';
 
+// Mixins
+@import 'mixins';
+
 // General Styling
 
 body {
@@ -145,6 +148,56 @@ button {
 
   &:focus {
     outline: none;
+  }
+}
+//checkbox overrides
+/* Unchecked */
+.ui.checkbox {
+  label {
+    &:before {
+      border: @checkboxBorderUnchecked;
+      border-radius: unset;
+      box-shadow: 0 2px 2px 0 #0000001a;
+    }
+
+    &:hover:before {
+      border: @checkboxBorderUnchecked;
+    }
+
+    &:focus:before {
+      border: @checkboxBorderUnchecked;
+    }
+  }
+
+  input:focus ~ label:before {
+    border: @checkboxBorderUnchecked;
+  }
+}
+
+/* Checked */
+.ui.checkbox input:checked {
+  & ~ label:after,
+  .box:after {
+    color: @checkboxColor;
+    content: '\e800';
+  }
+
+  & ~ label:before {
+    border: @checkboxBorderChecked;
+    box-shadow: none;
+  }
+
+  /* Focus */
+  &:focus {
+    & ~ label:before {
+      border: @checkboxBorderChecked;
+    }
+
+    & ~ label:after,
+    .box:after {
+      color: @checkboxColor;
+      content: '\e800';
+    }
   }
 }
 
@@ -346,6 +399,10 @@ button {
 //Controlpanel
 .controlpanel .ui .grid h3 {
   flex-direction: column;
+
+  .content {
+    .word-break();
+  }
 }
 
 //Add translation
@@ -432,7 +489,7 @@ fieldset.invisible {
 
 .hamburger-wrapper {
   position: relative;
-  z-index: 10001;
+  z-index: 5;
 }
 
 .mobile-menu {
@@ -507,6 +564,7 @@ body.has-toolbar-collapsed .mobile-menu {
 
 // Deprecated as per https://github.com/plone/volto/issues/1265
 // @import 'utils';
+@import (multiple) '../extras/fonts';
 @import 'toolbar';
 @import 'draftjs';
 @import 'blocks';
@@ -515,6 +573,7 @@ body.has-toolbar-collapsed .mobile-menu {
 @import 'react-dates-overrides';
 @import 'time-picker-overrides';
 @import 'objectbrowser-widget';
+@import 'color-picker-widget';
 @import 'sitemap';
 @import 'search';
 @import 'contents';
@@ -524,4 +583,5 @@ body.has-toolbar-collapsed .mobile-menu {
 @import 'widgets';
 @import 'login';
 @import 'language-selector';
+@import 'views';
 .loadUIOverrides();

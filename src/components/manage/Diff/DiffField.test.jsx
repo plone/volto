@@ -5,12 +5,6 @@ import { waitFor, render, screen } from '@testing-library/react';
 
 import DiffField from './DiffField';
 
-jest.mock('moment', () =>
-  jest.fn(() => ({
-    format: jest.fn(() => 'Sunday, April 23, 2017 3:38 AM'),
-  })),
-);
-
 jest.mock('@plone/volto/helpers/Loadable/Loadable');
 beforeAll(
   async () =>
