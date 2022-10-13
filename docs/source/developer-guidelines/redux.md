@@ -1,9 +1,9 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "How to access global state in Volto using Redux"
+  "property=og:description": "How to access global state in Volto using Redux"
+  "property=og:title": "Redux"
+  "keywords": "Volto, Plone, frontend, React, Redux, global state"
 ---
 
 # Redux

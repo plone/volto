@@ -21,6 +21,7 @@ import WysiwygWidget from '@plone/volto/components/manage/Widgets/WysiwygWidget'
 import UrlWidget from '@plone/volto/components/manage/Widgets/UrlWidget';
 import EmailWidget from '@plone/volto/components/manage/Widgets/EmailWidget';
 import NumberWidget from '@plone/volto/components/manage/Widgets/NumberWidget';
+import ImageSizeWidget from '@plone/volto/components/manage/Widgets/ImageSizeWidget';
 
 import ReferenceWidget from '@plone/volto/components/manage/Widgets/ReferenceWidget';
 import ObjectBrowserWidget from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
@@ -69,6 +70,7 @@ export const widgetMapping = {
     object: ObjectWidget,
     object_list: ObjectListWidget,
     vocabularyterms: VocabularyTermsWidget,
+    image_size: ImageSizeWidget,
     select_querystring_field: SelectMetadataWidget,
     autocomplete: SelectAutoComplete,
   },

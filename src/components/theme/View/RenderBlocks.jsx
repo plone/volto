@@ -17,7 +17,7 @@ const messages = defineMessages({
 });
 
 const RenderBlocks = (props) => {
-  const { path, intl, content, metadata } = props;
+  const { location, intl, content, metadata } = props;
   const blocksFieldname = getBlocksFieldname(content);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
   const blocksConfig = props.blocksConfig || config.blocks.blocksConfig;
@@ -43,7 +43,7 @@ const RenderBlocks = (props) => {
             metadata={metadata}
             properties={content}
             data={blockData}
-            path={getBaseUrl(path || '')}
+            path={getBaseUrl(location?.pathname || '')}
             blocksConfig={blocksConfig}
           />
         ) : (

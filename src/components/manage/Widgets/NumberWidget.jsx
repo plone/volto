@@ -32,6 +32,7 @@ const NumberWidget = (props) => {
     isDisabled,
     maximum,
     minimum,
+    placeholder,
   } = props;
 
   return (
@@ -44,6 +45,7 @@ const NumberWidget = (props) => {
         min={minimum || null}
         max={maximum || null}
         value={value || defaultValue}
+        placeholder={placeholder}
         onChange={({ target }) =>
           onChange(id, target.value === '' ? undefined : target.value)
         }
@@ -72,6 +74,7 @@ NumberWidget.propTypes = {
   wrapped: PropTypes.bool,
   maximum: PropTypes.number,
   minimum: PropTypes.number,
+  placeholder: PropTypes.string,
 };
 
 /**

@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Link } from 'react-router-dom';
+import { UniversalLink } from '@plone/volto/components';
 import { asyncConnect } from '@plone/volto/helpers';
 import { FormattedMessage } from 'react-intl';
 import { Portal } from 'react-portal';
@@ -245,13 +245,13 @@ class Search extends Component {
               {this.props.items.map((item) => (
                 <article className="tileItem" key={item['@id']}>
                   <h2 className="tileHeadline">
-                    <Link
-                      to={item['@id']}
+                    <UniversalLink
+                      item={item}
                       className="summary url"
                       title={item['@type']}
                     >
                       {item.title}
-                    </Link>
+                    </UniversalLink>
                   </h2>
                   {item.description && (
                     <div className="tileBody">
@@ -259,12 +259,12 @@ class Search extends Component {
                     </div>
                   )}
                   <div className="tileFooter">
-                    <Link to={item['@id']}>
+                    <UniversalLink item={item}>
                       <FormattedMessage
                         id="Read More…"
                         defaultMessage="Read More…"
                       />
-                    </Link>
+                    </UniversalLink>
                   </div>
                   <div className="visualClear" />
                 </article>

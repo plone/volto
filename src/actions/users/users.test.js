@@ -63,9 +63,18 @@ describe('Users action', () => {
       expect(action.request.path).toEqual('/@users');
     });
 
-    it('should create an action to get users with a query', () => {
+    it('should create an action to get users with a query as a string', () => {
       const query = 'john';
       const action = listUsers(query);
+
+      expect(action.type).toEqual(LIST_USERS);
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(`/@users?query=${query}`);
+    });
+
+    it('should create an action to get users with a query as an object', () => {
+      const query = 'john';
+      const action = listUsers({ query: query });
 
       expect(action.type).toEqual(LIST_USERS);
       expect(action.request.op).toEqual('get');

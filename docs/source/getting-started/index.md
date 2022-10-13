@@ -9,8 +9,7 @@ html_meta:
 # Introduction
 
 ```{toctree}
-:maxdepth: 2
-:hidden: true
+:maxdepth: 1
 
 install
 roadmap

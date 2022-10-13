@@ -1,6 +1,6 @@
 # Change Log
 
-## 15.2.3 (unreleased)
+## 15.16.1 (unreleased)
 
 ### Breaking
 
@@ -10,18 +10,238 @@
 
 ### Bugfix
 
+### Internal
+
+### Documentation
+
+## 15.16.0 (2022-10-07)
+
+### Feature
+
+- Send missing variation data to the listing variation @ionlizarazu
+- eu translations completion. @ionlizarazu
+
+### Bugfix
+
+- Backport 3546 from master: Fix ArrayWidget choices when editing a recently created content item. @davisagli
+
+### Internal
+
+- mock all loadable libraries (backport https://github.com/plone/volto/pull/3447). @mamico
+
+## 15.15.0 (2022-08-25)
+
+### Feature
+
+- Send extra data coming from listing block schemaEnhancer from searchBlock to the listing variation @ionlizarazu
+- Handle no connection available error (408 error) @giuliaghisini
+- Added placeholder param to widget, to change default placeholder @giuliaghisini
+- Add user group membership control panel @ksuess
+- Action `listUsers`: Support search for fullname, email, username. @ksuess
+
+## 15.14.0 (2022-07-26)
+
+### Feature
+
+- Improve move to static fonts to not make it "breaking", but as an opt-in. So if you want your site load the "Poppins" font from local instead from GoogleFont CDN, you must override the `@importGoogleFonts` and set it to false in your project theme:
+
+```less
+@importGoogleFonts: false;
+```
+
+- Include ImageSizeWidget to fix eea/volto-block-style incompatibility @ionlizarazu
+
+## 15.13.0 (2022-07-25)
+
+### Feature
+
+- Staticize Poppins font to be compliant with EU privacy. Import from GoogleFont is disabled in site.variables. @giuliaghisini
+
+## 15.12.2 (2022-07-20)
+
+### Bugfix
+
+- get locale always from state. Backport from #3331 @erral
+- Add listing variation schemaEnhancer to the search block schema @ionlizarazu
+
+## 15.12.1 (2022-05-30)
+
+### Bugfix
+
+- fixed TokenWidget getVocabulary subrequest. @giuliaghisini
+
+## 15.12.0 (2022-05-25)
+
+### Feature
+
+- Disable already chosen criteria in querystring widget @kreafox
+- Working copy actions now render errors if they fail @pnicolli
+- Added viewableInBrowserObjects setting to use in alternative to downloadableObjects, if you want to view file in browser intstead downloading. @giuliaghisini
+
+### Bugfix
+
+- fix TokenWidget choices when editing a recently created content. @giuliaghisini
+
+## 15.11.2 (2022-05-21)
+
+### Bugfix
+
+- Fix RenderBlocks: path @ksuess
+
+## 15.11.1 (2022-05-20)
+
+### Bugfix
+
+- Add correct query parameters to the redirect @robgietema
+
+## 15.11.0 (2022-05-13)
+
+### Feature
+
+- Add `expandToBackendURL` helper @sneridagh
+
+### Bugfix
+
+- Fixed ICS URL in event view in seamless mode @sneridagh
+
+## 15.10.1 (2022-05-12)
+
+### Bugfix
+
+- fixed view video list from youtube in Video block. @giuliaghisini
+
+## 15.10.0 (2022-05-11)
+
+### Feature
+
+- added configurable identifier field for password reset in config.js. @giuliaghisini
+
+### Bugfix
+
+- Fix missing criteria in QueryWidget. @giuliaghisini
+- fixed view video list from youtube in Video block. @giuliaghisini
+
+## 15.9.0 (2022-05-06)
+
+### Feature
+
+- added default placeholder for videos to embed them more lightly. @giuliaghisini
+
+## 15.8.1 (2022-05-04)
+
+### Bugfix
+
+- Fixed secure cookie option. @giuliaghisini
+
+## 15.8.0 (2022-04-30)
+
+### Feature
+
+- Handle @@display-file api endpoint like @@download @cekk
+- Add calendar link to @ics_view @iFlameing
+
+## 15.7.0 (2022-04-29)
+
+### Feature
+
+- added 'secure' cookie option if site is in https. @giuliaghisini
+
+## 15.6.1 (2022-04-29)
+
+### Bugfix
+
+- Overwrite isValidNewOption of ArrayWidget to allow variants @ksuess
+
+## 15.6.0 (2022-04-29)
+
+### Feature
+
+- Added 'checkAndNormalizeUrl' function in URLUtils. @giuliaghisini
+
+### Bugfix
+
+- Used UniversalLink and PreviewImage components where needed, to right handle link and images. @giuliaghisini
+
+## 15.5.0 (2022-04-25)
+
+### Feature
+
+- More Italian translations @giuliaghisini
+
+### Bugfix
+
+- Fixed edit internal link and image url in this blocks: image block, leadimage block, video block, objectBrowser. In objectBrowser, if pasted url was internal, it wasn't flatted and wass handled from Plone as an external. @giuliaghisini
+- Fix folder content layout @SaraBianchi
+
+### Documentation
+
+- Added a `selectableTypes` example to the `ObjectBrowserWidget` storybook @JeffersonBledsoe #3255
+- Add labels for Intersphinx. @stevepiercy
+
+## 15.4.1 (2022-04-11)
+
+### Bugfix
+
+- Fix handling of single reference field in `ObjectBrowser` @robgietema
+- Make the parseDateTime function to handle only date as well @iFlameing
+- Fix ContextNavigation component with Link type objects @UnaiEtxaburu #3232
+
+### Internal
+
+- Upgrade react-image-gallery to latest to fix a11y problem @sneridagh
+- Fixed bug in HTML block edit @giuliaghisini
+- Fix cannot read properties of undefined in Content.jsx @iFlameing
+- Fix fixed `ObjectBrowserBody` to handle data fields based on `ObjectBrowser` mode @giuliaghisini
+
+## 15.4.0 (2022-04-08)
+
+### Feature
+
+- Add package.json scripts documentation @ksuess
+
+### Bugfix
+
+- Fix/Improve the console logging when the server starts. @sneridagh
+
+### Documentation
+
+- Added html_meta values to remaining pages. @stevepiercy
+- Remove duplicate toctrees and set maxdepth to appropriate values. @stevepiercy
+
+## 15.3.0 (2022-04-04)
+
+### Feature
+
+- Improve the fix for the "user swap" vulnerability @sneridagh @plone/volto-team
+  Thanks to @ericof and @cekk for their help and efforts at pinpointing the latests culprits!
+
+### Documentation
+
+- Added meta-html values in most of the pages. @ktsrivastava29
+
+## 15.2.3 (2022-04-01)
+
+### Bugfix
+
 - Change which api calls can set specific api errors @robgietema
 - Fix helper import. @robgietema
+- Move `customStyleMap` to `richtextEditorSettings`
+- Pass placeholder and isDisabled properties to EmailWidget and UrlWidget @mihaislobozeanu
+- Pass placeholder property to PasswordWidget and NumberWidget @mihaislobozeanu
+- Fix getVocabName when vocabNameOrURL is false @avoinea #2955, #2919
 
 ### Internal
 
 - Remove offending `Makefile` command that broke on MacOS due to lack of compatibility of the MacOS `make` utility. @tisto
 - Upgraded use-deep-compare-effect to version 1.8.1. @pnicolli
+- chore(icons): add missing pastanaga icons @nileshgulia1
 
 ### Documentation
 
 - Switch from `docs-linkcheckbroken` to `docs-linkcheck` in GitHub Actions because the former is broken. @stevepiercy
 - Set the output for storybook to the correct directory. @stevepiercy
+- Fix typo in Makefile: docs/\_build @ksuess
+- Added language to code-blocks in md files @ktsrivastava29
 
 ## 15.2.2 (2022-03-23)
 
@@ -86,7 +306,6 @@
 ### Documentation
 
 - Updated README.md @ktsrivastava29
-
 - Added language to code-blocks in md files @ktsrivastava29
 - Added html_meta values and labels for Intersphinx cross-references from Trainings. @stevepiercy
 - Replaced `docs.voltocms.com` with MyST references. @stevepiercy

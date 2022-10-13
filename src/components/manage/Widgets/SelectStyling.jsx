@@ -147,6 +147,8 @@ export const customSelectStyles = {
     padding: '12px 12px',
     color: state.isSelected
       ? '#007bc1'
+      : state.isDisabled
+      ? '#b5b5b5'
       : state.isFocused
       ? '#4a4a4a'
       : 'inherit',

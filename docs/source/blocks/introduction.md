@@ -1,12 +1,12 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "How to manually enable Blocks on a content type"
+  "property=og:description": "How to manually enable Blocks on a content type"
+  "property=og:title": "Blocks Introduction"
+  "keywords": "Volto, Plone, frontend, React, blocks"
 ---
 
-# Blocks
+# Blocks Introduction
 
 Volto features the Pastanaga Editor Engine, allowing you to visually compose a page using blocks.
 The editor allows you to add, modify, reorder and delete blocks given your requirements.

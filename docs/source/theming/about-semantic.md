@@ -1,9 +1,9 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "Using Semantic UI to create responsive layouts in Volto frontend for Plone."
+  "property=og:description": "Using Semantic UI to create responsive layouts in Volto frontend for Plone."
+  "property=og:title": "About Semantic UI"
+  "keywords": "Volto, Plone, frontend, React, Semantic UI, user interface"
 ---
 
 # About Semantic UI

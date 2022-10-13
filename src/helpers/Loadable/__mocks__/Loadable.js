@@ -1,5 +1,6 @@
 import React from 'react';
-import { loadables } from '@plone/volto/config/Loadables';
+import config from '@plone/volto/registry';
+const loadables = config.settings.loadables;
 
 let mockAllLoadables = Object.create(null);
 

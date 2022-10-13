@@ -16,6 +16,7 @@ export const richtextEditorSettings = (props) => {
     richTextEditorPlugins: plugins,
     richTextEditorInlineToolbarButtons: inlineToolbarButtons,
     FromHTMLCustomBlockFn,
+    customStyleMap: null,
   };
 };
 

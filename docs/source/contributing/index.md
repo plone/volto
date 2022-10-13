@@ -1,18 +1,17 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "Volto design principles"
+  "property=og:description": "Volto design principles"
+  "property=og:title": "Design principles"
+  "keywords": "Volto, Plone, frontend, React, contributing, design principles"
 ---
 
 # Design principles
 
 ```{toctree}
-:maxdepth: 3
-:hidden: true
+:maxdepth: 1
 
-./guidelines
+guidelines
 
 ```
 

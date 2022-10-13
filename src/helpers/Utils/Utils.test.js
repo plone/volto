@@ -348,6 +348,12 @@ describe('Utils tests', () => {
         parseDateTime('de', isoDate, undefined, moment).toISOString(),
       ).toBe(`${isoDate}Z`);
     });
+    it('Parses the Date only', () => {
+      const isoDate = '2022-01-16';
+      expect(
+        parseDateTime('de', isoDate, undefined, moment).format('YYYY-MM-DD'),
+      ).toBe(isoDate);
+    });
   });
 
   describe('replaceItemOfArray', () => {

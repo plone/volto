@@ -1,15 +1,15 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "Use Volto with third party libraries or themes written in SASS and avoid applying `semantic-ui` on public facing views."
+  "property=og:description": "Use Volto with third party libraries or themes written in SASS and avoid applying `semantic-ui` on public facing views."
+  "property=og:title": "Using third party libraries and themes other than `semantic-ui`"
+  "keywords": "Volto, Plone, frontend, React, Semantic UI, semantic-ui, third, party, libraries, themes"
 ---
 
-# Using third party libraries/themes different from semantic-ui
+# Using third party libraries and themes other than `semantic-ui`
 
-You can use Volto with third party libraries or themes written in sass and avoid applying semantic-ui on public facing views.
-This is made possible by code splitting, where interfaces have a marker CSS class to incapsulate styles and avoid conflicts between semantic-ui and the custom theme you would use.
+You can use Volto with third party libraries or themes written in SASS and avoid applying `semantic-ui` on public facing views.
+This is made possible by code splitting, where interfaces have a marker CSS class to encapsulate styles and avoid conflicts between `semantic-ui` and the custom theme you would use.
 
 ## The problem
 

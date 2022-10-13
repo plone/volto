@@ -1,9 +1,9 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "Simple deployment of a Volto application"
+  "property=og:description": "Simple deployment of a Volto application"
+  "property=og:title": "Simple deployment"
+  "keywords": "Volto, Plone, frontend, React, deployment"
 ---
 
 # Simple deployment

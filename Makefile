@@ -93,7 +93,7 @@ bin/python:
 docs-clean:  ## Clean current and legacy docs build directories, and Python virtual environment
 	cd $(DOCS_DIR) && rm -rf $(BUILDDIR)/
 	rm -rf bin include lib
-	rm -rf docs/build
+	rm -rf docs/_build
 
 .PHONY: docs-html
 docs-html: bin/python  ## Build html

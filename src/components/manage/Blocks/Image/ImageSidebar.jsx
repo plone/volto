@@ -123,7 +123,7 @@ const ImageSidebar = ({
                 id="Origin"
                 title={intl.formatMessage(messages.Origin)}
                 required={false}
-                value={data.url.split('/').slice(-1)[0]}
+                value={data.url.replace(/\/$/, '').split('/').slice(-1)[0]}
                 icon={data.url ? clearSVG : navTreeSVG}
                 iconAction={
                   data.url
@@ -247,7 +247,7 @@ const ImageSidebar = ({
                 id="link"
                 title={intl.formatMessage(messages.LinkTo)}
                 required={false}
-                value={data.href}
+                value={flattenToAppURL(data.href)}
                 icon={data.href ? clearSVG : navTreeSVG}
                 iconAction={
                   data.href
@@ -262,7 +262,7 @@ const ImageSidebar = ({
                 onChange={(name, value) => {
                   onChangeBlock(block, {
                     ...data,
-                    href: value,
+                    href: flattenToAppURL(value),
                   });
                 }}
               />

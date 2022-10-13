@@ -159,11 +159,12 @@ export const parseDateTime = (locale, value, format, moment) => {
 
   if (value) {
     // check if datetime has timezone, otherwise assumes it's UTC
-    datetime = value.match(/T(.)*(-|\+|Z)/g)
-      ? // Since we assume UTC everywhere, then transform to local (momentjs default)
-        moment(value)
-      : // This might happen in old Plone versions dates
-        moment(`${value}Z`);
+    datetime =
+      !value.match(/T/) || value.match(/T(.)*(-|\+|Z)/g)
+        ? // Since we assume UTC everywhere, then transform to local (momentjs default)
+          moment(value)
+        : // This might happen in old Plone versions dates
+          moment(`${value}Z`);
   }
 
   if (format && datetime) {

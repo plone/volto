@@ -1,9 +1,9 @@
 ---
 html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+  "description": "Styling a Volto website using Semantic UI."
+  "property=og:description": "Styling a Volto website using Semantic UI."
+  "property=og:title": "Custom Styling"
+  "keywords": "Volto, Plone, frontend, React, Custom, Styling, Semantic UI, LESS, Pastanaga"
 ---
 
 # Custom Styling
@@ -11,7 +11,7 @@ html_meta:
 ## Semantic UI
 
 For styling our website in Volto we use Semantic UI. It uses LESS as
-the underlaying technology. By default Volto uses the Pastanaga theme but any
+the underlying technology. By default Volto uses the Pastanaga theme but any
 theme can be used. A theme has the following folder structure:
 
  - assets
