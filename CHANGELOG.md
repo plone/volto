@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Fix UniversalLink storybook @tiberiuichim
+- Fix autocomplete widget with an empty search result @reebalazs
 
 ### Internal
 
