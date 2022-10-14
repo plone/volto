@@ -25,7 +25,7 @@ msgstr ""
 #: components/manage/Blocks/HTML/Edit
 # defaultMessage: <p>Add some HTML here</p>
 msgid "<p>Add some HTML here</p>"
-msgstr "<p>Agregue algo de HTML aquí</p>"
+msgstr "<p>Añadir algo de HTML aquí</p>"
 
 #: components/theme/Footer/Footer
 # defaultMessage: Accessibility
@@ -302,7 +302,7 @@ msgstr "Ruta de url alternativa (obligatorio)"
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Alternative url path must start with a slash.
 msgid "Alternative url path must start with a slash."
-msgstr "La url alternativa debe comenzar con un carácter especial slash '/'."
+msgstr "La url alternativa debe comenzar con un carácter especial '/'."
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Alternative url path → target url path (date and time of creation, manually created yes/no)
@@ -1401,7 +1401,7 @@ msgstr "Si está seguro de que el usuario ha dejado de editar el elemento puedes
 #: components/theme/Unauthorized/Unauthorized
 # defaultMessage: If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}.
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
-msgstr "Si usted esta seguro de haber ingresado la dirección web correcta pero más obtiene un, por favor, contante al {site_admin}."
+msgstr "Si está seguro de haber introducido una dirección correcta pero recibe un error, contacte con el {site_admin}."
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
@@ -2034,7 +2034,7 @@ msgstr "Ok"
 #: components/manage/Widgets/IdWidget
 # defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.
 msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed."
-msgstr "Solo letras minúsculas (a-z) sin acentos, números (0-9), y los caracteres "-", "_", y "." están permitidos."
+msgstr "Solo letras minúsculas (a-z) sin tildes, números (0-9), y los caracteres "-", "_", y "." están permitidos."
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -2607,7 +2607,7 @@ msgstr "Enviar"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Send a confirmation mail with a link to set the password.
 msgid "Send a confirmation mail with a link to set the password."
-msgstr "Envíe un correo de confirmación con un enlace para establecer la contraseña."
+msgstr "Enviar un correo de confirmación con un enlace para establecer la contraseña."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Set my password
@@ -3608,7 +3608,7 @@ msgstr "Borrador"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be valid email (something@domain.com)
 msgid "email"
-msgstr "El valor ingresado debe ser un correo electrónico válido (algo@dominio.com)"
+msgstr "El valor introducido debe ser un correo electrónico válido (algo@dominio.com)"
 
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: All dates
@@ -3673,7 +3673,7 @@ msgstr "Imagen"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be integer
 msgid "integer"
-msgstr "El valor ingresado debe ser un número entero"
+msgstr "El valor introducido debe ser un número entero"
 
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Intranet
@@ -3761,7 +3761,7 @@ msgstr "No hay estado del flujo de trabajo"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be number
 msgid "number"
-msgstr "El valor ingresado debe ser un número"
+msgstr "El valor introducido debe ser un número"
 
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
 #: components/manage/Widgets/RecurrenceWidget/ByYearField
@@ -4012,7 +4012,7 @@ msgstr "Actualizar de la versión {origin} a {destination}"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be valid url (www.something.com or http(s)://www.something.com)
 msgid "url"
-msgstr "El valor ingresado debe ser una URL válida (www.algo.com o http(s)://www.algo.com)"
+msgstr "El valor introducido debe ser una URL válida (www.algo.com o http(s)://www.algo.com)"
 
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: user avatar
