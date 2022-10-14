@@ -15,14 +15,14 @@ const filter = function (pathname, req) {
   return config.settings.devProxyToApiPath && pathname.startsWith('/++api++');
 };
 
-let _env = null;
+// let _env = null;
 
 // the config is not available at the middleware creation time, so it needs to
 // read/cache the global configuration on first request.
 function getEnv(req) {
-  if (_env) {
-    return _env;
-  }
+  // if (_env) {
+  //   return _env;
+  // }
 
   //const apiPathURL = parseUrl(config.settings.apiPath);
   const apiPathURL = formatUrl('', req);
@@ -31,7 +31,7 @@ function getEnv(req) {
   const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
   const instancePath = proxyURL.pathname;
 
-  _env = {
+  const _env = {
     apiPathURL,
     serverURL,
     instancePath,
