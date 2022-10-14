@@ -3882,7 +3882,7 @@ msgstr "meses"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: nd
 msgid "rrule_nd"
-msgstr "do"
+msgstr "º"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: on
@@ -3902,17 +3902,17 @@ msgstr "o"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: rd
 msgid "rrule_rd"
-msgstr "ero"
+msgstr "º"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: st
 msgid "rrule_st"
-msgstr "er"
+msgstr "º"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: th
 msgid "rrule_th"
-msgstr "to"
+msgstr "º"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: the
