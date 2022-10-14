@@ -37,6 +37,7 @@ import {
   UsersControlpanel,
   UserGroupMembershipControlPanel,
   GroupsControlpanel,
+  PersonalInformation,
 } from '@plone/volto/components';
 
 // Deliberatelly use of absolute path of these components, since we do not want them
@@ -87,17 +88,23 @@ export const multilingualRoutes = [
 ];
 
 export const defaultRoutes = [
+  // redirect to external links if path is in blacklist
+  ...(config.settings?.externalRoutes || []).map((route) => ({
+    ...route.match,
+    component: NotFound,
+  })),
+  ...((config.settings?.isMultilingual && multilingualRoutes) || []),
   {
     path: '/',
     component: View,
     exact: true,
   },
   {
-    path: '/login',
+    path: ['/login', '/**/login'],
     component: Login,
   },
   {
-    path: '/logout',
+    path: ['/logout', '/**/logout'],
     component: Logout,
   },
   {
@@ -174,36 +181,24 @@ export const defaultRoutes = [
     component: ChangePassword,
   },
   {
-    path: '/add',
+    path: ['/add', '/**/add'],
     component: Add,
   },
   {
-    path: '/edit',
+    path: ['/edit', '/**/edit'],
     component: Edit,
   },
   {
-    path: '/contents',
+    path: ['/contents', '/**/contents'],
     component: Contents,
   },
   {
-    path: '/sharing',
+    path: ['/sharing', '/**/sharing'],
     component: Sharing,
-  },
-  {
-    path: '/**/add',
-    component: Add,
   },
   {
     path: '/**/create-translation',
     component: CreateTranslation,
-  },
-  {
-    path: '/**/contents',
-    component: Contents,
-  },
-  {
-    path: '/**/sharing',
-    component: Sharing,
   },
   {
     path: '/**/aliases',
@@ -218,20 +213,12 @@ export const defaultRoutes = [
     component: Diff,
   },
   {
-    path: '/**/edit',
-    component: Edit,
-  },
-  {
-    path: '/**/history',
+    path: '/**/historyview',
     component: History,
   },
   {
     path: '/**/manage-translations',
     component: ManageTranslations,
-  },
-  {
-    path: '/**/login',
-    component: Login,
   },
   {
     path: '/register',
@@ -245,6 +232,11 @@ export const defaultRoutes = [
   {
     path: '/passwordreset/:token',
     component: PasswordReset,
+    exact: true,
+  },
+  {
+    path: '/personal-information',
+    component: PersonalInformation,
     exact: true,
   },
   {
@@ -267,14 +259,8 @@ const routes = [
     path: '/',
     component: App,
     routes: [
-      // redirect to external links if path is in blacklist
-      ...(config.settings?.externalRoutes || []).map((route) => ({
-        ...route.match,
-        component: NotFound,
-      })),
       // addon routes have a higher priority then default routes
       ...(config.addonRoutes || []),
-      ...((config.settings?.isMultilingual && multilingualRoutes) || []),
       ...defaultRoutes,
     ],
   },

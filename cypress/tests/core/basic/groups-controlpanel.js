@@ -72,9 +72,7 @@ describe('Groups Control Panel Test', () => {
   });
 
   it('Should update group roles', () => {
-    cy.intercept('PATCH', '/plone/++api++/@groups/Administrators').as(
-      'editGroup',
-    );
+    cy.intercept('PATCH', `**/++api++/@groups/Administrators`).as('editGroup');
     cy.visit('/controlpanel/groups');
     cy.waitForResourceToLoad('@navigation');
     cy.waitForResourceToLoad('@breadcrumbs');
