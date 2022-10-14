@@ -104,7 +104,7 @@ const BlocksForm = (props) => {
       e.preventDefault();
     }
     if (e.key === 'Enter' && !disableEnter) {
-      onAddBlock(config.settings.defaultBlockType, index + 1);
+      onSelectBlock(onAddBlock(config.settings.defaultBlockType, index + 1));
       e.preventDefault();
     }
   };

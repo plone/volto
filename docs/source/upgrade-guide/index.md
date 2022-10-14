@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "This upgrade guide lists all breaking changes in Volto and explains the steps that are necessary to upgrade to the latest version."
-  "property=og:description": "This upgrade guide lists all breaking changes in Volto and explains the steps that are necessary to upgrade to the latest version."
-  "property=og:title": "Upgrade Guide"
-  "keywords": "Volto, Plone, frontend, React, Upgrade, Guide"
+myst:
+  html_meta:
+    "description": "This upgrade guide lists all breaking changes in Volto and explains the steps that are necessary to upgrade to the latest version."
+    "property=og:description": "This upgrade guide lists all breaking changes in Volto and explains the steps that are necessary to upgrade to the latest version."
+    "property=og:title": "Upgrade Guide"
+    "keywords": "Volto, Plone, frontend, React, Upgrade, Guide"
 ---
 
 (volto-upgrade-guide)=
@@ -96,7 +97,7 @@ For projects already using `volto-slate`, take the following steps in your proje
 + import { DetachedTextBlockEditor } from '@plone/volto-slate/blocks/Text/DetachedTextBlockEditor';
 ```
 
-### Existing projects using core `draftJS`, opting to continue using `draftJS`
+#### Existing projects using core `draftJS`, opting to continue using `draftJS`
 
 You will have to configure your project to continue using `draftJS`, for example, in your `config.js` or in your add-on:
 
@@ -106,14 +107,14 @@ config.blocks.blocksConfig.table.restricted = false;
 config.blocks.blocksConfig.slateTable.restricted = true;
 ```
 
-### Existing projects using core `draftJS`, opting to start using `slate` without migrating (possible, but not recommended)
+#### Existing projects using core `draftJS`, opting to start using `slate` without migrating (possible, but not recommended)
 
 Still a valid option, especially if you don't have the budget for it, the old content based on the legacy `text` block will be still be functional.
 New text blocks in new content will be created with the new `slate` text block.
 
 It is recommended to go the extra mile and migrate the `text` blocks to `slate` blocks for maximum future compatibility.
 
-### Existing projects using core `draftJS`, opting to migrate to `slate`
+#### Existing projects using core `draftJS`, opting to migrate to `slate`
 
 Use the `blocks-conversion-tool`.
 See https://github.com/plone/blocks-conversion-tool for more information.
@@ -124,6 +125,98 @@ Since April 30, 2022, NodeJS 12 is out of Long Term Support by the NodeJS commun
 NodeJS 12 is deprecated in Volto 13.
 Please update your projects to a NodeJS LTS version, where either 14 or 16 is supported at the moment of this writing.
 Version 16 is recommended.
+
+### Upgraded to Razzle 4
+
+```{versionadded} 16.0.0-alpha.38
+Volto has upgraded from Razzle 3 to Razzle 4. You should perform these steps in case you are upgrading to this version or above.
+```
+
+#### Steps after upgrade
+
+A few updates may be needed in existing projects:
+
+1. Add the `cache` directory to `.gitignore`.
+2. If `package.json` includes scripts that run `razzle test` with the `--env=jest-environment-jsdom-sixteen` option, update them to use `--env=jsdom` instead.
+3. Update the `jest` configuration in `package.json` to replace the `jest-css-modules` transform:
+
+```diff
+"jest": {
+  "transform": {
+-     "^.+\\.css$": "jest-css-modules",
+-     "^.+\\.scss$": "jest-css-modules"
+  },
+  "moduleNameMapper": {
++     "\\.(css|less|scss|sass)$": "identity-obj-proxy"
+  }
+}
+```
+
+4. Add `--noninteractive` option to the build script
+
+```diff
+-    "build": "razzle build",
++    "build": "razzle build --noninteractive",
+```
+
+5. If you use custom Razzle plugins, update them to use the new format with multiple functions: https://razzlejs.org/docs/upgrade-guide#plugins (the old format still works, but is deprecated).
+6. If you have customized webpack loader configuration related to CSS, make sure it is updated to be compatible with PostCSS 8.
+7. It's recommended that you remove your existing `node_modules` and start clean.
+8. If the add-ons you are using are not yet updated to latest `@plone/scripts`, it's also recommended that you force the version in your build, setting this in `package.json`:
+
+```json
+  "resolutions": {
+    "**/@plone/scripts": "^2.0.0"
+  }
+```
+
+#### Upgrade and update add-ons dependency on `@plone/scripts`
+
+```{warning}
+This applies only to Volto add-ons.
+```
+
+Most probably you are using `@plone/scripts` in your add-on, since it's used in i18n messageid generation and has other add-on utilities.
+When upgrading to Volto 16.0.0-alpha.38 or above, you should upgrade `@plone/scripts` to a version 2.0.0 or above.
+It's also recommended you move it from `dependencies` to `devDependencies`.
+
+```diff
+diff --git a/package.json b/package.json
+--- a/package.json
++++ b/package.json
+     }
+   },
+   "devDependencies": {
++    "@plone/scripts": "2.0.0",
+     "release-it": "^14.14.2"
+   },
+-  "dependencies": {
+-    "@plone/scripts": "*"
+-  }
++  "dependencies": {}
+ }
+```
+
+You should also do a final step, and change the `babel.config.js`, removing the preset from `razzle/babel` to `razzle`:
+
+```diff
+diff --git a/babel.config.js b/babel.config.js
+index 2f4e1e8..51bd52b 100644
+--- a/babel.config.js
++++ b/babel.config.js
+@@ -1,6 +1,6 @@
+ module.exports = function (api) {
+   api.cache(true);
+-  const presets = ['razzle/babel'];
++  const presets = ['razzle'];
+   const plugins = [
+     [
+       'react-intl', // React Intl extractor, required for the whole i18n infrastructure to work
+```
+
+### Jest is downgraded from version 27 to 26
+
+Razzle 4 internal API is only compatible with up to Jest 26.
 
 ### Removed `date-fns` from build
 
@@ -153,6 +246,141 @@ Core configuration has been updated, but you will require to update your Cypress
 Could be that forcing your project to use older versions might still work with old configurations.
 
 See https://docs.cypress.io/guides/references/migration-guide#Migrating-to-Cypress-version-10-0 for more information.
+
+### The complete configuration registry is passed to the add-ons and the project configuration pipeline
+
+The core in versions prior Volto 16.0.0-alpha.22 was passing a simplified version of the configuration registry (in fact, a plain object primitive) to the add-on list and project configuration pipeline.
+
+From Volto 16.0.0-alpha.22 onwards, the full configuration registry is passed through the pipeline.
+This allows to have access to the advanced registry features, like the new component registry.
+You may want to update your configuration in case that you were updating the primitive using basic object operators (spread, etc) in the config object itself.
+For example, this won't work anymore:
+
+```js
+  return {
+    ...config,
+    blocks: {
+      ...config.blocks,
+      blocksConfig: {
+        ...config.blocks.blocksConfig,
+        ...addonBlocks,
+        listing: listing(config),
+      },
+    },
+    views: {
+      ...config.views,
+      contentTypesViews: {
+        ...config.views.contentTypesViews,
+        Folder: NewsAndEvents,
+      },
+    },
+  };
+```
+
+Using the spread operator while you mutate the configuration object is not required.
+You can mutate the object properties directly, like:
+
+```js
+const applyConfig = (config) => {
+  config.blocks.blocksConfig.testBlock = testBlock;
+  config.blocks.blocksConfig.listing = listing(config);
+  config.views.contentTypesViews.Folder = NewsAndEvents;
+
+  return config;
+};
+```
+
+The other rules apply, so make sure you return the `config` object after mutating it.
+
+### Refactor the component registry API in the configuration registry
+
+After a period of testing, this experimental feature has been refactored to adequate better to existing requirements.
+
+#### Renamed `registry.resolve` to `registry.getComponent`
+
+```diff
+- registry.resolve(componentName)?.component;
++ registry.getComponent(componentName)?.component;
+```
+
+#### `registry.getComponent` signature changes
+
+It maintains signature compatibility with `registry.resolve` but introduces new arguments for bigger flexibility.
+
+See documentation for more information.
+
+````{versionchanged} 16.0.0-alpha.23
+The `component` argument changed in 16.0.0-alpha.23.
+The `component` key has been flattened for simplification and now it's mapped directly to the `component` argument of `registerComponent`:
+
+```js
+config.registerComponent({
+    name: 'Teaser',
+    component: MyTeaserDefaultComponent,
+  });
+```
+````
+
+### Main workflow change menu changed from Pastanaga UI simplification to classic Plone implementation
+
+Pastanaga UI envisioned a simplification of the classic Plone workflow change dropdown.
+The idea is that for users, the transition names were too cryptic and it was difficult to infer the destination state from them.
+So the simplification was meant to show the destination state as a transition name, simplifying the user experience.
+
+This vision was partially implemented in Volto, bypassing the information coming from Plone, waiting for the next step: introduce this vision in Plone core (thus, change the workflow definitions) including this simplified mode, but maintaining the complete mode, with the full transition names.
+
+Since this never happened, we are going back to the classic mode, so the dropdown will show the transition names.
+When the simplified vision is implemented, we will revisit it.
+
+#### Move Layout constants to `config.views.layoutViewsNamesMapping`.
+
+The `constants` layout module was removed in favor of an object in the Configuration Registry: `config.views.layoutViewsNamesMapping`.
+
+If you have added or modified the Plone layout views literal mapping, you should now use this setting, and you can remove the module shadowing customization.
+
+You can now add an i18n `id` for any layout that you create as well, since the `Display` component is now i18n aware.
+
+This is the structure of `config.views.layoutViewsNamesMapping`:
+
+```js
+export const layoutViewsNamesMapping = {
+  album_view: 'Album view',
+  event_listing: 'Event listing',
+  full_view: 'All content',
+  listing_view: 'Listing view',
+  summary_view: 'Summary view',
+  tabular_view: 'Tabular view',
+  layout_view: 'Mosaic layout',
+  document_view: 'Document view',
+  folder_listing: 'Folder listing',
+  newsitem_view: 'News item view',
+  link_redirect_view: 'Link redirect view',
+  file_view: 'File view',
+  image_view: 'Image view',
+  event_view: 'Event view',
+  view: 'Default view',
+};
+```
+
+The keys are the name of the Plone layout, and the values are the i18n `id` (English as default message).
+
+Then you can add the i18n message in your project's `src/config.js` or your add-on's `src/index.js`:
+
+```js
+import { defineMessages } from 'react-intl';
+defineMessages({
+  album_view: {
+    id: 'Album view',
+    defaultMessage: 'Album view',
+  },
+})
+```
+
+### `react-window` no longer a Volto dependency
+
+Volto used this library to generate dynamic "windowed/virtualized" select widget options.
+It moved to use `react-virtualized` instead of `react-window` because it provides a more broad set of features that Volto required.
+If you were using it in your project, you'll have to include it as a direct dependency of it from now on.
 
 (volto-upgrade-guide-15.x.x)=
 
@@ -1162,7 +1390,7 @@ This release includes a number of changes to the internal dependencies. If you h
 ### Upgrade to Node 12
 
 We have now dependencies that requires `node >=10.19.0`. Although Node 10 has still LTS
-"maintenance" treatment (see https://nodejs.org/en/about/releases/) the recommended path
+"maintenance" treatment (see https://github.com/nodejs/release#release-schedule) the recommended path
 is that you use from now on node 12 which is LTS since last October.
 
 ### New Razzle version and related development dependencies

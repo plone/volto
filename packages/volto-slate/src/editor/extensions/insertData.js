@@ -1,10 +1,12 @@
 import { Editor, Text, Transforms } from 'slate';
 import { deserialize } from '@plone/volto-slate/editor/deserialize';
 import {
+  createBlock,
   createDefaultBlock,
   MIMETypeName,
   normalizeExternalData,
 } from '@plone/volto-slate/utils';
+import { isBlockActive } from '../../utils/blocks';
 
 export const insertData = (editor) => {
   editor.dataTransferHandlers = {
@@ -42,11 +44,20 @@ export const insertData = (editor) => {
       if (!text) return;
 
       const paras = text.split('\n');
-      const fragment = paras.map((p) => createDefaultBlock([{ text: p }]));
-      // return insertData(data);
+
+      // If just 1 line insert text
+      if (paras.length === 1) {
+        Transforms.insertText(editor, paras[0]);
+        return true;
+      }
+
+      // Check if inside a list
+      const fragment =
+        isBlockActive(editor, 'ul') || isBlockActive(editor, 'ol')
+          ? paras.map((p) => createBlock('li', [{ text: p }]))
+          : paras.map((p) => createDefaultBlock([{ text: p }]));
 
       // check if fragment is p with text and insert as fragment if so
-
       const fragmentContainsText = (f) => {
         var trigger = false;
         if (f && f[0]) {

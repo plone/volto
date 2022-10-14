@@ -85,6 +85,7 @@ class Form extends Component {
     onCancel: PropTypes.func,
     submitLabel: PropTypes.string,
     resetAfterSubmit: PropTypes.bool,
+    resetOnCancel: PropTypes.bool,
     isEditForm: PropTypes.bool,
     isAdminForm: PropTypes.bool,
     title: PropTypes.string,
@@ -116,6 +117,7 @@ class Form extends Component {
     onCancel: null,
     submitLabel: null,
     resetAfterSubmit: false,
+    resetOnCancel: false,
     isEditForm: false,
     isAdminForm: false,
     title: null,
@@ -410,7 +412,7 @@ class Form extends Component {
     if (event) {
       event.preventDefault();
     }
-    if (this.props.resetAfterSubmit) {
+    if (this.props.resetOnCancel || this.props.resetAfterSubmit) {
       this.setState({
         formData: this.props.formData,
       });
@@ -684,6 +686,11 @@ class Form extends Component {
                           <Segment secondary attached key={this.props.title}>
                             {this.props.title}
                           </Segment>
+                        ),
+                        item.description && (
+                          <Message attached="bottom">
+                            {item.description}
+                          </Message>
                         ),
                         ...map(item.fields, (field, index) => (
                           <Field
