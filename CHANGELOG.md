@@ -11,6 +11,7 @@
 ### Bugfix
 
 - Fix UniversalLink storybook @tiberiuichim
+- Change sentry chunk name to avoid ad blockers. Only load sentry if env vars exist @tiberiuichim
 
 ### Internal
 
