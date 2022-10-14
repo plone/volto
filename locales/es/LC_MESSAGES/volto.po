@@ -10,7 +10,6 @@ msgstr ""
 "PO-Revision-Date: 2022-10-12 20:28-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language: es\n"
-"MIME-Version: 1.0\n"
 "Language-Team: ES <LL@li.org>\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2034,8 +2033,8 @@ msgstr "Ok"
 
 #: components/manage/Widgets/IdWidget
 # defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.
-msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the characters \"-\", \"_\", and \".\" are allowed."
-msgstr "Solo letras minúsculas (a-z) sin acentos, números (0-9), y los caracteres \"-\", \"_\", y \".\" están permitidos."
+msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed."
+msgstr "Solo letras minúsculas (a-z) sin acentos, números (0-9), y los caracteres "-", "_", y "." están permitidos."
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
