@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Updated spanish translation @macagua
+
 ### Bugfix
 
 - Fix UniversalLink storybook @tiberiuichim
