@@ -67,31 +67,19 @@ function TokenWidget(props) {
   } = props;
 
   React.useEffect(() => {
-    if (!choices?.length) {
+    if (
+      choices &&
+      !choices.length &&
+      vocabLoading === undefined &&
+      !vocabLoaded
+    ) {
       getVocabulary({
         vocabNameOrURL: vocabBaseUrl,
         size: -1,
         subrequest: lang,
       });
     }
-  }, [choices.length, getVocabulary, lang, vocabBaseUrl]);
-
-  React.useEffect(() => {
-    if (!choices?.length && vocabLoading === undefined && !vocabLoaded) {
-      getVocabulary({
-        vocabNameOrURL: vocabBaseUrl,
-        size: -1,
-        subrequest: lang,
-      });
-    }
-  }, [
-    choices.length,
-    getVocabulary,
-    lang,
-    vocabBaseUrl,
-    vocabLoaded,
-    vocabLoading,
-  ]);
+  }, [choices, getVocabulary, lang, vocabBaseUrl, vocabLoaded, vocabLoading]);
 
   /**
    * Handle the field change, store it in the local state and back to simple
