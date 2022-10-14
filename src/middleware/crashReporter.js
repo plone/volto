@@ -1,7 +1,11 @@
 import loadable from '@loadable/component';
 
-const SentryBrowser = loadable.lib(() => import('@sentry/browser'));
-const SentryNode = loadable.lib(() => import('@sentry/browser'));
+const SentryBrowser = loadable.lib(() =>
+  import(/* webpackChunkName: "s_entry-browser" */ '@sentry/browser'),
+);
+const SentryNode = loadable.lib(() =>
+  import(/* webpackChunkName: "s_entry-browser" */ '@sentry/browser'),
+);
 
 const crashReporter = (store) => (next) => (action) => {
   try {
