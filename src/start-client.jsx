@@ -20,7 +20,9 @@ import initSentry from '@plone/volto/sentry';
 export const history = createBrowserHistory();
 
 const sentryLibraries = {
-  Sentry: loadable.lib(() => import('@sentry/browser')),
+  Sentry: loadable.lib(() =>
+    import(/* webpackChunkName: "s_entry-browser" */ '@sentry/browser'),
+  ),
   SentryIntegrations: loadable.lib(() => import('@sentry/integrations')),
 };
 
@@ -38,7 +40,8 @@ const loadSentry = () => {
   });
 };
 
-loadSentry();
+if ((__CLIENT__ && window?.env?.RAZZLE_SENTRY_DSN) || __SENTRY__?.SENTRY_DSN)
+  loadSentry();
 
 function reactIntlErrorHandler(error) {
   debug('i18n')(error);
