@@ -18,7 +18,7 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
  * @param {Object} req The request object for server side calls.
  * @returns {string} Formatted path.
  */
-function formatUrl(path, req) {
+export function formatUrl(path, req) {
   const { settings } = config;
 
   const APISUFIX = settings.legacyTraverse ? '' : '/++api++';

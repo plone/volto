@@ -8,7 +8,7 @@ import {
 } from 'http-proxy-middleware';
 import querystring from 'querystring';
 import { parse as parseUrl } from 'url';
-import formatUrl from '@plone/volto/helpers/Api/Api';
+import { formatUrl } from '@plone/volto/helpers/Api/Api';
 
 const filter = function (pathname, req) {
   // This is the proxy to the API in case the accept header is 'application/json'
