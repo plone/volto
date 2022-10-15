@@ -14,4 +14,4 @@ jobs:
           -H "Authorization: Bearer ${{secrets.DOCUMENTATION_BUILD_APPLICATION_KEY}}" \
           -H "Accept: application/vnd.github.v3+json" \
           https://api.github.com/repos/plone/documentation/actions/workflows/update_submodule.yml/dispatches \
-          -d '{"ref": "master"}'
+          -d '{"ref": "6-dev"}'
