@@ -6,14 +6,19 @@
 
 ### Feature
 
+- Updated spanish translation @macagua
+
 ### Bugfix
 
 - Fix UniversalLink storybook @tiberiuichim
 - Fix autocomplete widget with an empty search result @reebalazs
+- Change sentry chunk name to avoid ad blockers. Only load sentry if env vars exist @tiberiuichim
 
 ### Internal
 
 ### Documentation
+
+- Trigger a new deploy core Plone documentation when Volto documentation is updated @esteele
 
 ## 16.0.0-alpha.42 (2022-10-06)
 
@@ -1681,6 +1686,8 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 
 ### Internal
 
+- Updated i18n link into the README file @macagua
+- Updated Spanish translations @macagua
 - Remove bundlesize @tisto
 - Upgrade plone.restapi from 8.12.1 -> 8.13.0 @tisto
 

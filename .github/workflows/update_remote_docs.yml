@@ -1,0 +1,19 @@
+name: Trigger build and deploy of Plone 6 documentation
+
+on:
+  push:
+    branches:
+      - "master"
+    paths:
+      - "docs/*"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          curl -X POST \
+          -H "Authorization: Bearer ${{secrets.DOCUMENTATION_BUILD_APPLICATION_KEY}}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/plone/documentation/actions/workflows/update_submodule.yml/dispatches \
+          -d '{"ref": "6-dev"}'
