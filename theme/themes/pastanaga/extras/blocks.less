@@ -407,26 +407,46 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 .block.hero {
   clear: both;
 
-  .toolbar-left {
-    left: 25%;
+  &.align.left {
+    .block-inner-wrapper {
+      flex-direction: row;
+
+      .toolbar {
+        left: 25%;
+      }
+    }
+  }
+  &.align.right {
+    .block-inner-wrapper {
+      flex-direction: row-reverse;
+
+      .toolbar {
+        left: 75%;
+      }
+    }
   }
 
-  .toolbar-right {
-    left: 75%;
-  }
+  &.align.center {
+    .block-inner-wrapper {
+      display: block;
 
-  .toolbar-middle {
-    left: 50%;
+      .toolbar {
+        left: 50%;
+      }
+
+      img.hero-image {
+        width: 100%;
+        max-height: unset;
+      }
+
+      .hero-text {
+        text-align: start;
+      }
+    }
   }
 
   .hero-body {
-    &.withBackgroundImage {
-      position: absolute;
-      background: none;
-    }
-
     display: flex;
-
     max-height: 400px;
     flex: 1 1;
     flex-direction: column;
@@ -454,17 +474,8 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
   .hero-image {
     display: block;
     width: auto;
-    max-width: 50%;
     height: auto;
     max-height: 400px;
-  }
-
-  .image-add {
-    min-width: 50%;
-  }
-
-  .image-message {
-    min-height: 400px !important;
   }
 
   .block-inner-wrapper {
@@ -472,28 +483,9 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     z-index: 1;
     display: flex;
 
-    &.flex-column {
-      flex-direction: column;
-    }
-
-    &.withBackroundImage {
-      &.right {
-        flex-direction: row-reverse;
-      }
-
-      &.left {
-        flex-direction: row;
-      }
-
-      &.center {
-        flex-direction: row;
-        justify-content: center;
-      }
-
-      &.full {
-        flex-direction: row;
-        justify-content: center;
-      }
+    img.hero-image {
+      width: 50%;
+      margin: 0 !important;
     }
   }
 
@@ -503,6 +495,10 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     overflow-y: hidden;
     word-break: break-word;
   }
+}
+
+#page-edit .block.hero .block-inner-wrapper > div:not(.hero-body) {
+  min-width: 50%;
 }
 
 .ui.basic.button.block-add-button {

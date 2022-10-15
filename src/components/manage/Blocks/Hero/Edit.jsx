@@ -7,15 +7,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { readAsDataURL } from 'promise-file-reader';
 import { isEqual } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
-import { getBaseUrl } from '@plone/volto/helpers';
 import { createContent } from '@plone/volto/actions';
-import { SidebarPortal, Hero } from '@plone/volto/components';
+import { SidebarPortal, HeroBody } from '@plone/volto/components';
 import { withBlockExtensions } from '@plone/volto/helpers';
 
 import Data from './Data';
@@ -40,10 +38,6 @@ const messages = defineMessages({
   browse: {
     id: 'Browse',
     defaultMessage: 'Browse',
-  },
-  uploading: {
-    id: 'Uploading image',
-    defaultMessage: 'Uploading image',
   },
 });
 
@@ -97,11 +91,6 @@ class EditComponent extends Component {
   constructor(props) {
     super(props);
 
-    this.onUploadImage = this.onUploadImage.bind(this);
-    this.state = {
-      uploading: false,
-    };
-
     const { Map } = this.props.immutableLib;
 
     if (!__SERVER__) {
@@ -148,7 +137,6 @@ class EditComponent extends Component {
         descriptionEditorState = EditorState.createEmpty();
       }
       this.state = {
-        uploading: false,
         titleEditorState,
         descriptionEditorState,
         currentFocused: 'title',
@@ -177,20 +165,6 @@ class EditComponent extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (
-      this.props.request.loading &&
-      nextProps.request.loaded &&
-      this.state.uploading
-    ) {
-      this.setState({
-        uploading: false,
-      });
-      this.props.onChangeBlock(this.props.block, {
-        ...this.props.data,
-        url: nextProps.content['@id'],
-      });
-    }
-
     const { EditorState } = this.props.draftJs;
     const { stateFromHTML } = this.props.draftJsImportHtml;
 
@@ -274,34 +248,6 @@ class EditComponent extends Component {
   }
 
   /**
-   * Upload image handler
-   * @method onUploadImage
-   * @returns {undefined}
-   */
-  onUploadImage({ target }) {
-    const file = target.files[0];
-    this.setState({
-      uploading: true,
-    });
-    readAsDataURL(file).then((data) => {
-      const fields = data.match(/^data:(.*);(.*),(.*)$/);
-      this.props.createContent(
-        getBaseUrl(this.props.pathname),
-        {
-          '@type': 'Image',
-          image: {
-            data: fields[3],
-            encoding: fields[2],
-            'content-type': fields[1],
-            filename: file.name,
-          },
-        },
-        this.props.block,
-      );
-    });
-  }
-
-  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -322,12 +268,13 @@ class EditComponent extends Component {
             selected: this.props.selected,
           },
           {
-            center: !Boolean(this.props.data.align),
+            // add backwards compatibility since the original hero was left aligned
+            left: !Boolean(this.props.data.align),
           },
           this.props.data.align,
         )}
       >
-        <Hero
+        <HeroBody
           {...this.props}
           uploading={this.state.uploading}
           placeholder={placeholder}
@@ -337,7 +284,6 @@ class EditComponent extends Component {
           extendedDescripBlockRenderMap={this.extendedDescripBlockRenderMap}
           onChangeTitle={this.onChangeTitle}
           onChangeDescription={this.onChangeDescription}
-          onUploadImage={this.onUploadImage}
           changeCurrentFocus={this.changeCurrentFocus}
           titleEditor={this.titleEditor}
           descriptionEditor={this.descriptionEditor}

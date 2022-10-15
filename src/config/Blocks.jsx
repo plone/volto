@@ -54,12 +54,6 @@ import RightColumnFacets from '@plone/volto/components/manage/Blocks/Search/layo
 import LeftColumnFacets from '@plone/volto/components/manage/Blocks/Search/layout/LeftColumnFacets';
 import TopSideFacets from '@plone/volto/components/manage/Blocks/Search/layout/TopSideFacets';
 
-import HeroImageLeftTemplate from '@plone/volto/components/manage/Blocks/Hero/layout/HeroImageLeftTemplate';
-import HeroImageRightTemplate from '@plone/volto/components/manage/Blocks/Hero/layout/HeroImageRightTemplate';
-import HeroImageBackgroundTemplate from '@plone/volto/components/manage/Blocks/Hero/layout/HeroImageBackgroundTemplate';
-import HeroImageTopTemplate from '@plone/volto/components/manage/Blocks/Hero/layout/HeroImageTopTemplate';
-import HeroImageBottomTemplate from '@plone/volto/components/manage/Blocks/Hero/layout/HeroImageBottomTemplate';
-
 import {
   SelectFacet,
   CheckboxFacet,
@@ -361,38 +355,34 @@ const blocksConfig = {
       addPermission: [],
       view: [],
     },
-    variations: [
-      {
-        id: 'heroImageLeft',
-        title: 'Image on left side',
-        view: HeroImageLeftTemplate,
-        isDefault: true,
-      },
-      {
-        id: 'heroImageRight',
-        title: 'Image on right side',
-        view: HeroImageRightTemplate,
-        isDefault: false,
-      },
-      {
-        id: 'heroImageBackground',
-        title: 'Image on the background',
-        view: HeroImageBackgroundTemplate,
-        isDefault: true,
-      },
-      {
-        id: 'heroImageBottom',
-        title: 'Image on bottom',
-        view: HeroImageBottomTemplate,
-        isDefault: false,
-      },
-      {
-        id: 'heroImageTop',
-        title: 'Image on top',
-        view: HeroImageTopTemplate,
-        isDefault: false,
-      },
-    ],
+    // variations: [
+    //   {
+    //     id: 'heroImageLeft',
+    //     title: 'Image on left side',
+    //     view: DefaultHeroBlockTemplate,
+    //     isDefault: true,
+    //   },
+    //   {
+    //     id: 'heroImageRight',
+    //     title: 'Image on right side',
+    //     isDefault: false,
+    //   },
+    //   {
+    //     id: 'heroImageBackground',
+    //     title: 'Image on the background',
+    //     isDefault: false,
+    //   },
+    //   {
+    //     id: 'heroImageBottom',
+    //     title: 'Image on bottom',
+    //     isDefault: false,
+    //   },
+    //   {
+    //     id: 'heroImageTop',
+    //     title: 'Image on top',
+    //     isDefault: false,
+    //   },
+    // ],
   },
   maps: {
     id: 'maps',

@@ -1,7 +1,6 @@
 import React from 'react';
 import { LinkMore } from '@plone/volto/components';
 import { defineMessages, useIntl } from 'react-intl';
-import cx from 'classnames';
 
 const messages = defineMessages({
   title: {
@@ -32,7 +31,6 @@ const HeroText = ({
   block,
   blockNode,
   onFocusNextBlock,
-  withBackgroundImage,
 }) => {
   const intl = useIntl();
   let Editor = null;
@@ -40,12 +38,7 @@ const HeroText = ({
     Editor = draftJs.Editor;
   }
   return (
-    <div
-      className={cx(
-        'hero-body',
-        withBackgroundImage && data.url ? 'withBackgroundImage' : '',
-      )}
-    >
+    <div className="hero-body">
       <div className="hero-text">
         {isEditMode ? (
           <>

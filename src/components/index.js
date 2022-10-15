@@ -187,7 +187,7 @@ export ViewHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/View';
 export ListingBlockBody from '@plone/volto/components/manage/Blocks/Listing/ListingBody';
 export ListingBlockData from '@plone/volto/components/manage/Blocks/Listing/ListingData';
 
-export Hero from '@plone/volto/components/manage/Blocks/Hero/Hero';
+export HeroBody from '@plone/volto/components/manage/Blocks/Hero/Body';
 
 export ImageSidebar from '@plone/volto/components/manage/Blocks/Image/ImageSidebar';
 export MapsSidebar from '@plone/volto/components/manage/Blocks/Maps/MapsSidebar';

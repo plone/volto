@@ -6,7 +6,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withBlockExtensions } from '@plone/volto/helpers';
-import { Hero } from '@plone/volto/components';
+import { HeroBody } from '@plone/volto/components';
+import cx from 'classnames';
 
 /**
  * View image block class.
@@ -15,8 +16,8 @@ import { Hero } from '@plone/volto/components';
  */
 export const View = (props) => {
   return (
-    <div className="block hero">
-      <Hero {...props}></Hero>
+    <div className={cx('block hero align', props.data.align)}>
+      <HeroBody {...props}></HeroBody>
     </div>
   );
 };
