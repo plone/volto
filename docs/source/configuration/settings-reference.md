@@ -247,6 +247,10 @@ workflowMapping
     It is recommended to assign the same color to the transition as the destination state, so the user can have the visual hint to which state are they transitioning to.
 ```
 
+errorHandlers
+    A list of unhandled error handlers. Each error handler is a function that
+    receives a single argument, the `error` object.
+
 ## Views settings
 
 They are exposed in `config.views`:

@@ -163,6 +163,7 @@ let config = {
     maxUndoLevels: 200, // undo history size for the main form
     addonsInfo: addonsInfo,
     workflowMapping,
+    errorHandlers: [], // callables for unhandled errors
   },
   widgets: {
     ...widgetMapping,
