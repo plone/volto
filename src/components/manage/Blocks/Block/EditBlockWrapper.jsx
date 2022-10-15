@@ -1,16 +1,18 @@
-import React from 'react';
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 import { Icon } from '@plone/volto/components';
 import {
   blockHasValue,
   buildStyleClassNamesFromData,
 } from '@plone/volto/helpers';
 import dragSVG from '@plone/volto/icons/drag.svg';
-import { Button } from 'semantic-ui-react';
+import config from '@plone/volto/registry';
+import cx from 'classnames';
 import includes from 'lodash/includes';
 import isBoolean from 'lodash/isBoolean';
+import React from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
-import cx from 'classnames';
-import config from '@plone/volto/registry';
+import { Button } from 'semantic-ui-react';
 
 import trashSVG from '@plone/volto/icons/delete.svg';
 
@@ -28,6 +30,19 @@ const EditBlockWrapper = (props) => {
 
   const { intl, blockProps, draginfo, children } = props;
   const { block, selected, type, onDeleteBlock, data, editable } = blockProps;
+
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+  } = useSortable({ id: block });
+  const style = {
+    transform: CSS.Translate.toString(transform),
+    transition,
+  };
+
   const visible = selected && !hideHandler(data);
 
   const required = isBoolean(data.required)
@@ -46,9 +61,13 @@ const EditBlockWrapper = (props) => {
       className={cx(`block-editor-${data['@type']}`, styles, {
         [data.align]: data.align,
       })}
+      ref={setNodeRef}
+      style={style ? style : null}
     >
       <div style={{ position: 'relative' }}>
         <div
+          {...listeners}
+          {...attributes}
           style={{
             visibility: visible ? 'visible' : 'hidden',
             display: 'inline-block',

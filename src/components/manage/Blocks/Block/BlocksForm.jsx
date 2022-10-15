@@ -195,120 +195,115 @@ const BlocksForm = (props) => {
         >
           {blockList
             .filter(([id, child]) => id && child) // beware numbers!
-            .map(([childId, child], index) => (
-              <SortableItem
-                key={childId}
-                id={childId}
-                child={child}
-                index={index}
-              >
-                {(dragProps) => {
-                  // debugger;
-                  const { child, childId, index } = dragProps;
-                  const blockProps = {
-                    allowedBlocks,
-                    showRestricted,
-                    block: childId,
-                    data: child,
-                    handleKeyDown,
-                    id: childId,
-                    formTitle: title,
-                    formDescription: description,
-                    index,
-                    manage,
-                    onAddBlock,
-                    onInsertBlock,
-                    onChangeBlock,
-                    onChangeField,
-                    onChangeFormData,
-                    onDeleteBlock,
-                    onFocusNextBlock,
-                    onFocusPreviousBlock,
-                    onMoveBlock,
-                    onMutateBlock,
-                    onSelectBlock,
-                    pathname,
-                    metadata,
-                    properties,
-                    blocksConfig,
-                    selected: selectedBlock === childId,
-                    multiSelected: multiSelected?.includes(childId),
-                    type: child['@type'],
-                    editable,
-                  };
-                  return editBlockWrapper(
+            .map(([childId, child], index) => {
+              const dragProps = { child, id: childId, index };
+              // console.log('dragProps', dragProps);
+              const blockProps = {
+                allowedBlocks,
+                showRestricted,
+                block: childId,
+                data: child,
+                handleKeyDown,
+                id: childId,
+                formTitle: title,
+                formDescription: description,
+                index,
+                manage,
+                onAddBlock,
+                onInsertBlock,
+                onChangeBlock,
+                onChangeField,
+                onChangeFormData,
+                onDeleteBlock,
+                onFocusNextBlock,
+                onFocusPreviousBlock,
+                onMoveBlock,
+                onMutateBlock,
+                onSelectBlock,
+                pathname,
+                metadata,
+                properties,
+                blocksConfig,
+                selected: selectedBlock === childId,
+                multiSelected: multiSelected?.includes(childId),
+                type: child['@type'],
+                editable,
+              };
+              return (
+                <React.Fragment key={childId}>
+                  {editBlockWrapper(
                     dragProps,
                     <EditBlock key={childId} {...blockProps} />,
                     blockProps,
-                  );
-                }}
-              </SortableItem>
-            ))}
+                  )}
+                </React.Fragment>
+              );
+            })}
+
+          {/* {items.map((id) => (
+          <SortableItem key={id} id={id} />
+        ))} */}
         </SortableContext>
+        {/* <DragOverlay>{activeId ? <Item id={activeId} /> : null}</DragOverlay> */}
+        {/* <DragDropList
+          childList={blockList}
+          onMoveItem={(result) => {
+            const { source, destination } = result;
+            if (!destination) {
+              return;
+            }
+            const newFormData = moveBlock(
+              properties,
+              source.index,
+              destination.index,
+            );
+            onChangeFormData(newFormData);
+            return true;
+          }}
+        >
+          {(dragProps) => {
+            const { child, childId, index } = dragProps;
+            const blockProps = {
+              allowedBlocks,
+              showRestricted,
+              block: childId,
+              data: child,
+              handleKeyDown,
+              id: childId,
+              formTitle: title,
+              formDescription: description,
+              index,
+              manage,
+              onAddBlock,
+              onInsertBlock,
+              onChangeBlock,
+              onChangeField,
+              onChangeFormData,
+              onDeleteBlock,
+              onFocusNextBlock,
+              onFocusPreviousBlock,
+              onMoveBlock,
+              onMutateBlock,
+              onSelectBlock,
+              pathname,
+              metadata,
+              properties,
+              blocksConfig,
+              selected: selectedBlock === childId,
+              multiSelected: multiSelected?.includes(childId),
+              type: child['@type'],
+              editable,
+            };
+            return editBlockWrapper(
+              dragProps,
+              <EditBlock key={childId} {...blockProps} />,
+              blockProps,
+            );
+          }}
+        </DragDropList> */}
       </fieldset>
     </div>
   );
 };
 
 export default BlocksForm;
-
-//        {/* {items.map((id) => (
-//        <SortableItem key={id} id={id} />
-//      ))} */}
-//      {/* <DragOverlay>{activeId ? <Item id={activeId} /> : null}</DragOverlay> */}
-//      {/* <DragDropList
-//        childList={blockList}
-//        onMoveItem={(result) => {
-//          const { source, destination } = result;
-//          if (!destination) {
-//            return;
-//          }
-//          const newFormData = moveBlock(
-//            properties,
-//            source.index,
-//            destination.index,
-//          );
-//          onChangeFormData(newFormData);
-//          return true;
-//        }}
-//      >
-//        {(dragProps) => {
-//          const { child, childId, index } = dragProps;
-//          const blockProps = {
-//            allowedBlocks,
-//            showRestricted,
-//            block: childId,
-//            data: child,
-//            handleKeyDown,
-//            id: childId,
-//            formTitle: title,
-//            formDescription: description,
-//            index,
-//            manage,
-//            onAddBlock,
-//            onInsertBlock,
-//            onChangeBlock,
-//            onChangeField,
-//            onChangeFormData,
-//            onDeleteBlock,
-//            onFocusNextBlock,
-//            onFocusPreviousBlock,
-//            onMoveBlock,
-//            onMutateBlock,
-//            onSelectBlock,
-//            pathname,
-//            metadata,
-//            properties,
-//            blocksConfig,
-//            selected: selectedBlock === childId,
-//            multiSelected: multiSelected?.includes(childId),
-//            type: child['@type'],
-//            editable,
-//          };
-//          return editBlockWrapper(
-//            dragProps,
-//            <EditBlock key={childId} {...blockProps} />,
-//            blockProps,
-//          );
-//        }}
-//      </DragDropList> */}
