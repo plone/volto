@@ -6,6 +6,7 @@
 
 ### Feature
 
+- Add a new RedirectBlock @erral
 - Updated spanish translation @macagua
 - Add Dutch translation @spereverde
 
@@ -696,7 +697,6 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 - added default placeholder for videos to embed them more lightly @giuliaghisini
 - Added default placeholder for videos to embed them more lightly @giuliaghisini
 - Completed Romanian translation @sboghy
-- Add a new RedirectBlock @erral
 
 ### Bugfix
 
