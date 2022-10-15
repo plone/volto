@@ -7,6 +7,7 @@
 ### Feature
 
 - Updated spanish translation @macagua
+- Add Dutch translation @spereverde
 
 ### Bugfix
 
