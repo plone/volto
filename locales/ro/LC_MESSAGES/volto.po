@@ -2277,15 +2277,14 @@ msgstr "Formular de înregistrare"
 msgid "Relevance"
 msgstr "Relevanţă"
 
-<<<<<<< HEAD
 #: components/manage/Blocks/Redirect/schema
 # defaultMessage: Remote URL
 msgid "Remote URL"
-=======
+msgstr ""
+
 #: components/manage/Aliases/Aliases
 # defaultMessage: Remove
 msgid "Remove"
->>>>>>> master
 msgstr ""
 
 #: components/manage/Widgets/ObjectListWidget

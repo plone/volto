@@ -2285,14 +2285,14 @@ msgstr "登録フォーム"
 msgid "Relevance"
 msgstr "関連性"
 
-#: components/manage/Aliases/Aliases
-# defaultMessage: Remove
-msgid "Remove"
-msgstr ""
-
 #: components/manage/Blocks/Redirect/schema
 # defaultMessage: Remote URL
 msgid "Remote URL"
+msgstr ""
+
+#: components/manage/Aliases/Aliases
+# defaultMessage: Remove
+msgid "Remove"
 msgstr ""
 
 #: components/manage/Widgets/ObjectListWidget

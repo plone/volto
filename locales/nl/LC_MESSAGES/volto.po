@@ -2284,15 +2284,15 @@ msgstr "Registratieformulier"
 msgid "Relevance"
 msgstr "Relevantie"
 
-#: components/manage/Aliases/Aliases
-# defaultMessage: Remove
-msgid "Remove"
-msgstr "Verwijderen"
-
 #: components/manage/Blocks/Redirect/schema
 # defaultMessage: Remote URL
 msgid "Remote URL"
 msgstr ""
+
+#: components/manage/Aliases/Aliases
+# defaultMessage: Remove
+msgid "Remove"
+msgstr "Verwijderen"
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item

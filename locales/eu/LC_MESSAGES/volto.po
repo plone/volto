@@ -2288,6 +2288,7 @@ msgstr "Errelebantzia"
 # defaultMessage: Remote URL
 msgid "Remote URL"
 msgstr ""
+
 #: components/manage/Aliases/Aliases
 # defaultMessage: Remove
 msgid "Remove"

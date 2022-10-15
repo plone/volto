@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-10-04T14:56:58.980Z\n"
+"POT-Creation-Date: 2022-10-15T15:55:53.667Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -2282,6 +2282,8 @@ msgstr ""
 #: components/manage/Blocks/Redirect/schema
 # defaultMessage: Remote URL
 msgid "Remote URL"
+msgstr ""
+
 #: components/manage/Aliases/Aliases
 # defaultMessage: Remove
 msgid "Remove"
