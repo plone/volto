@@ -2,6 +2,11 @@ import React from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
+import { Icon } from '@plone/volto/components';
+import { Button } from 'semantic-ui-react';
+
+import dragSVG from '@plone/volto/icons/drag.svg';
+
 export default function SortableItem(props) {
   const {
     attributes,
@@ -23,7 +28,10 @@ export default function SortableItem(props) {
   // debugger;
   console.log(props);
   return (
-    <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
+    <div ref={setNodeRef} style={style ? style : null}>
+      <div {...listeners} {...attributes}>
+        <Icon name={dragSVG} size="19px" />
+      </div>
       <Block {...props} />
     </div>
   );
