@@ -70,6 +70,8 @@ import HeroBlockSchema from '@plone/volto/components/manage/Blocks/Hero/schema';
 import ListingBlockSchema from '@plone/volto/components/manage/Blocks/Listing/schema';
 import SearchBlockSchema from '@plone/volto/components/manage/Blocks/Search/schema';
 
+import ToCVariations from '@plone/volto/components/manage/Blocks/ToC/variations';
+
 defineMessages({
   title: {
     id: 'title',
@@ -205,7 +207,7 @@ const blocksConfig = {
     view: ViewDescriptionBlock,
     edit: EditDescriptionBlock,
     schema: BlockSettingsSchema,
-    restricted: true,
+    restricted: false,
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 0,
@@ -330,9 +332,10 @@ const blocksConfig = {
     view: ViewToCBlock,
     edit: EditToCBlock,
     schema: ToCSettingsSchema,
+    variations: ToCVariations,
     restricted: false,
     mostUsed: false,
-    sidebarTab: 0,
+    sidebarTab: 1,
     security: {
       addPermission: [],
       view: [],

@@ -26,6 +26,14 @@ exports[`renders an Image Block Sidebar component 1`] = `
         No description
       </div>
       <div
+        className="mocked-default-widget"
+        id="mocked-field-title"
+      >
+        Alt text
+         - 
+        No description
+      </div>
+      <div
         className="mocked-align-widget"
         id="mocked-field-align"
       >

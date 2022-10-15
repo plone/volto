@@ -1,36 +1,29 @@
 /**
- * View image block.
+ * View hero block.
  * @module components/manage/Blocks/Hero/View
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withBlockExtensions } from '@plone/volto/helpers';
 import { HeroBody } from '@plone/volto/components';
 import cx from 'classnames';
 
-/**
- * View image block class.
- * @class View
- * @extends Component
- */
 export const View = (props) => {
+  const { data } = props;
   return (
-    <div className={cx('block hero align', props.data.align)}>
+    <div
+      className={cx(
+        'block hero align',
+        {
+          // add backwards compatibility since the original hero was left aligned
+          left: !Boolean(data.align),
+        },
+        data.align,
+      )}
+    >
       <HeroBody {...props}></HeroBody>
     </div>
   );
-};
-
-/**
- * Property types.
- * @property {Object} propTypes Property types.
- * @static
- */
-View.propTypes = {
-  data: PropTypes.objectOf(PropTypes.any).isRequired,
-  isEditMode: PropTypes.bool,
-  variation: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default withBlockExtensions(View);

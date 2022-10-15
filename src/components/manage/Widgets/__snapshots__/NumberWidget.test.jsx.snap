@@ -39,7 +39,6 @@ Array [
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
-              step={1}
               type="number"
             />
           </div>

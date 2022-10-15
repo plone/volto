@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Icons used in Volto"
-  "property=og:description": "Icons used in Volto"
-  "property=og:title": "Icons"
-  "keywords": "Volto, Plone, frontend, React, Icons, svg, pastanaga"
+myst:
+  html_meta:
+    "description": "Icons used in Volto"
+    "property=og:description": "Icons used in Volto"
+    "property=og:title": "Icons"
+    "keywords": "Volto, Plone, frontend, React, Icons, svg, pastanaga"
 ---
 
 # Icons
