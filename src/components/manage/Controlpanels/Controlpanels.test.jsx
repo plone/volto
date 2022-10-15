@@ -1,11 +1,11 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
+import renderer from 'react-test-renderer';
+import configureStore from 'redux-mock-store';
 
-import Controlpanels from './Controlpanels';
 import config from '@plone/volto/registry';
+import Controlpanels from './Controlpanels';
 
 const mockStore = configureStore();
 
@@ -44,6 +44,8 @@ describe('Controlpanels', () => {
           },
         ],
       },
+      reduxAsyncConnect: {},
+      router: { location: '/blog' },
       intl: {
         locale: 'en',
         messages: {},
@@ -63,8 +65,16 @@ describe('Controlpanels', () => {
   it('renders an additional control panel', () => {
     const store = mockStore({
       controlpanels: {
-        controlpanels: [],
+        controlpanels: [
+          {
+            '@id': 'http://localhost:8080/Plone/@controlpanels/security',
+            group: 'Security',
+            title: 'test',
+          },
+        ],
       },
+      reduxAsyncConnect: {},
+      router: { location: '/blog' },
       intl: {
         locale: 'en',
         messages: {},
