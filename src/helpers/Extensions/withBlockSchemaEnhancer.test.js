@@ -69,6 +69,36 @@ describe('applySchemaEnhancer', () => {
       'My new field',
     );
   });
+
+  it('applySchemaEnhancer should add field to schema if an schemaEnhancer is supplied in a local blocksConfig', () => {
+    const testSchema = {
+      fieldsets: [{ fields: [] }],
+      properties: {},
+    };
+    const intl = { formatMessage: () => 'untitled' };
+
+    const blocksConfig = {
+      listing: {
+        schemaEnhancer: ({ schema, formData, intl }) => {
+          schema.properties.newField = {
+            title: 'My new field',
+          };
+          return schema;
+        },
+      },
+    };
+    const schemaEnhanced = applySchemaEnhancer({
+      schema: testSchema,
+      formData: { '@type': 'listing' },
+      intl,
+      blocksConfig,
+    });
+
+    expect(schemaEnhanced.properties.newField.title).toStrictEqual(
+      'My new field',
+    );
+  });
+
   it('applySchemaEnhancer should add field to schema if an schemaEnhancer is supplied in a variation', () => {
     const testSchema = {
       fieldsets: [{ fields: [] }],

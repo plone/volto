@@ -57,7 +57,7 @@ const LeftColumnFacets = (props) => {
       </Grid.Row>
 
       <Grid.Row>
-        {data.facets?.length && (
+        {data.facets?.length > 0 && (
           <Grid.Column mobile={12} tablet={4} computer={3}>
             <div className="facets">
               {data.facetsTitle && <h3>{data.facetsTitle}</h3>}
@@ -110,7 +110,7 @@ const LeftColumnFacets = (props) => {
           </div>
 
           <div className="search-results-count-sort">
-            <SearchDetails text={searchedText} total={totalItems} />
+            <SearchDetails text={searchedText} total={totalItems} data={data} />
 
             {data.showSortOn && (
               <SortOn

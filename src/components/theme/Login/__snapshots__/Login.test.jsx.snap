@@ -126,7 +126,7 @@ exports[`Login renders a login component 1`] = `
                     className="help"
                   >
                     <a
-                      href="/password-reset"
+                      href="/passwordreset"
                       onClick={[Function]}
                     >
                       Forgot your password?

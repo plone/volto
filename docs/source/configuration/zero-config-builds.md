@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Volto 13 has several new features that allows zero configuration on build time, using some sensible defaults and using the current request to know in which domain Volto is being hosted and configuring itself in runtime."
-  "property=og:description": "Volto 13 has several new features that allows zero configuration on build time, using some sensible defaults and using the current request to know in which domain Volto is being hosted and configuring itself in runtime."
-  "property=og:title": "Zero configuration builds"
-  "keywords": "Volto, Plone, frontend, React, Zero, configuration, builds"
+myst:
+  html_meta:
+    "description": "Volto 13 has several new features that allows zero configuration on build time, using some sensible defaults and using the current request to know in which domain Volto is being hosted and configuring itself in runtime."
+    "property=og:description": "Volto 13 has several new features that allows zero configuration on build time, using some sensible defaults and using the current request to know in which domain Volto is being hosted and configuring itself in runtime."
+    "property=og:title": "Zero configuration builds"
+    "keywords": "Volto, Plone, frontend, React, Zero, configuration, builds"
 ---
 
 # Zero configuration builds
