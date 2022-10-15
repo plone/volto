@@ -56,8 +56,8 @@ const AlignBlock = ({
 
   return (
     <div className="align-buttons">
-      {actions.map((action) => (
-        <Button.Group>
+      {actions.map((action, index) => (
+        <Button.Group key={index.toString()}>
           <Button
             icon
             basic

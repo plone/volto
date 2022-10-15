@@ -25,12 +25,14 @@ describe('ListingView', () => {
               description: 'Hi',
               items: [
                 {
+                  '@id': 'my-item',
                   title: 'My item',
                   description: 'My item description',
                   url: '/item',
                   '@type': 'Document',
                 },
                 {
+                  '@id': 'my-second-item',
                   title: 'Second item',
                   description: 'My second item description',
                   url: '/item2',

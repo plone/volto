@@ -5,14 +5,14 @@ const ArrayWidget = ({ value, children, className }) =>
   value ? (
     <span className={cx(className, 'array', 'widget')}>
       {value.map((item, key) => (
-        <>
+        <React.Fragment key={item.token || item.title || item}>
           {key ? ', ' : ''}
-          <span key={item.token || item.title || item}>
+          <span>
             {children
               ? children(item.title || item.token || item)
               : item.title || item.token || item}
           </span>
-        </>
+        </React.Fragment>
       ))}
     </span>
   ) : (
