@@ -1,6 +1,6 @@
 import React from 'react';
 import EditBlock from './Edit';
-import { DragDropList } from '@plone/volto/components';
+// import { DragDropList } from '@plone/volto/components';
 import { getBlocks } from '@plone/volto/helpers';
 import {
   addBlock,
@@ -18,32 +18,32 @@ import { useDispatch } from 'react-redux';
 import { useDetectClickOutside } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
-import { useDndMonitor, DragOverlay } from '@dnd-kit/core';
+// import { useDndMonitor } from '@dnd-kit/core'; // , DragOverlay
 
 import {
-  arrayMove,
+  // arrayMove,
+  // sortableKeyboardCoordinates,
   SortableContext,
-  sortableKeyboardCoordinates,
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 
 import SortableItem from '../../BlocksDnD/SortableItem';
 
-const Item = React.forwardRef(({ id, ...props }, ref) => {
-  return (
-    <div
-      style={{
-        backgroundColor: 'blue',
-        height: '200px',
-        marginBottom: '20px',
-      }}
-      {...props}
-      ref={ref}
-    >
-      {id}
-    </div>
-  );
-});
+// const Item = React.forwardRef(({ id, ...props }, ref) => {
+//   return (
+//     <div
+//       style={{
+//         backgroundColor: 'blue',
+//         height: '200px',
+//         marginBottom: '20px',
+//       }}
+//       {...props}
+//       ref={ref}
+//     >
+//       {id}
+//     </div>
+//   );
+// });
 
 const BlocksForm = (props) => {
   const {
@@ -177,14 +177,14 @@ const BlocksForm = (props) => {
 
   const editBlockWrapper = children || defaultBlockWrapper;
 
-  const [activeId, setActiveId] = React.useState(null);
-
-  useDndMonitor({
-    onDragStart(event) {
-      const { active } = event;
-      setActiveId(active.id);
-    },
-  });
+  // const [, setActiveId] = React.useState(null); // activeId
+  //
+  // useDndMonitor({
+  //   onDragStart(event) {
+  //     const { active } = event;
+  //     setActiveId(active.id);
+  //   },
+  // });
 
   return (
     <div className="blocks-form" ref={ref}>
@@ -244,71 +244,71 @@ const BlocksForm = (props) => {
                 }}
               </SortableItem>
             ))}
-
-          {/* {items.map((id) => (
-          <SortableItem key={id} id={id} />
-        ))} */}
         </SortableContext>
-        {/* <DragOverlay>{activeId ? <Item id={activeId} /> : null}</DragOverlay> */}
-        {/* <DragDropList
-          childList={blockList}
-          onMoveItem={(result) => {
-            const { source, destination } = result;
-            if (!destination) {
-              return;
-            }
-            const newFormData = moveBlock(
-              properties,
-              source.index,
-              destination.index,
-            );
-            onChangeFormData(newFormData);
-            return true;
-          }}
-        >
-          {(dragProps) => {
-            const { child, childId, index } = dragProps;
-            const blockProps = {
-              allowedBlocks,
-              showRestricted,
-              block: childId,
-              data: child,
-              handleKeyDown,
-              id: childId,
-              formTitle: title,
-              formDescription: description,
-              index,
-              manage,
-              onAddBlock,
-              onInsertBlock,
-              onChangeBlock,
-              onChangeField,
-              onChangeFormData,
-              onDeleteBlock,
-              onFocusNextBlock,
-              onFocusPreviousBlock,
-              onMoveBlock,
-              onMutateBlock,
-              onSelectBlock,
-              pathname,
-              metadata,
-              properties,
-              blocksConfig,
-              selected: selectedBlock === childId,
-              multiSelected: multiSelected?.includes(childId),
-              type: child['@type'],
-              editable,
-            };
-            return editBlockWrapper(
-              dragProps,
-              <EditBlock key={childId} {...blockProps} />,
-              blockProps,
-            );
-          }}
-        </DragDropList> */}
       </fieldset>
     </div>
   );
 };
 
 export default BlocksForm;
+
+//        {/* {items.map((id) => (
+//        <SortableItem key={id} id={id} />
+//      ))} */}
+//      {/* <DragOverlay>{activeId ? <Item id={activeId} /> : null}</DragOverlay> */}
+//      {/* <DragDropList
+//        childList={blockList}
+//        onMoveItem={(result) => {
+//          const { source, destination } = result;
+//          if (!destination) {
+//            return;
+//          }
+//          const newFormData = moveBlock(
+//            properties,
+//            source.index,
+//            destination.index,
+//          );
+//          onChangeFormData(newFormData);
+//          return true;
+//        }}
+//      >
+//        {(dragProps) => {
+//          const { child, childId, index } = dragProps;
+//          const blockProps = {
+//            allowedBlocks,
+//            showRestricted,
+//            block: childId,
+//            data: child,
+//            handleKeyDown,
+//            id: childId,
+//            formTitle: title,
+//            formDescription: description,
+//            index,
+//            manage,
+//            onAddBlock,
+//            onInsertBlock,
+//            onChangeBlock,
+//            onChangeField,
+//            onChangeFormData,
+//            onDeleteBlock,
+//            onFocusNextBlock,
+//            onFocusPreviousBlock,
+//            onMoveBlock,
+//            onMutateBlock,
+//            onSelectBlock,
+//            pathname,
+//            metadata,
+//            properties,
+//            blocksConfig,
+//            selected: selectedBlock === childId,
+//            multiSelected: multiSelected?.includes(childId),
+//            type: child['@type'],
+//            editable,
+//          };
+//          return editBlockWrapper(
+//            dragProps,
+//            <EditBlock key={childId} {...blockProps} />,
+//            blockProps,
+//          );
+//        }}
+//      </DragDropList> */}
