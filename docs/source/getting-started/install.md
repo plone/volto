@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Installing Volto"
-  "property=og:description": "Installing Volto"
-  "property=og:title": "Getting Started"
-  "keywords": "Volto, Plone, frontend, React, install, nvm, NodeJS, JavaScript"
+myst:
+  html_meta:
+    "description": "Installing Volto"
+    "property=og:description": "Installing Volto"
+    "property=og:title": "Getting Started"
+    "keywords": "Volto, Plone, frontend, React, install, nvm, NodeJS, JavaScript"
 ---
 
 (frontend-getting-started-label)=
@@ -23,8 +24,8 @@ are met:
 - [Docker](https://www.docker.com/get-started) (if using the Plone/Guillotina
   docker images)
 
-Depending on the OS that you are using some of the following might change, they
-are assuming a MacOS/Linux machine:
+Depending on the operating system that you are using, some of the following pre-requisites might change.
+They assume you have a macOS/Linux machine.
 
 
 (frontend-getting-started-components-processes-running-label)=
@@ -75,7 +76,7 @@ it provides easy access to any NodeJS released version.
     nvm version
     ```
 
-4.  Install any active LTS version of NodeJS (https://nodejs.org/en/about/releases/):
+4.  Install any active LTS version of NodeJS (https://github.com/nodejs/release#release-schedule):
 
     ```bash
     nvm install 16
@@ -94,8 +95,19 @@ it provides easy access to any NodeJS released version.
 
     ```{note}
     Volto supports currently active NodeJS LTS versions based on [NodeJS
-    Releases page](https://nodejs.org/en/about/releases/), starting with Node 12 LTS.
+    Releases page](https://github.com/nodejs/release#release-schedule), starting with Node 12 LTS.
     ```
+
+
+(frontend-getting-started-yeoman-label)=
+
+## Yeoman
+
+Install {term}`Yeoman`, a scaffolding tool.
+
+```shell
+npm install -g yo
+```
 
 
 (frontend-getting-started-yarn-label)=
@@ -140,7 +152,7 @@ To install Docker desktop for Mac, here are the detailed instructions:
 2. Install the package as any other Mac software, if required, follow
    instructions from:
 
-    https://docs.docker.com/docker-for-mac/install/
+    https://docs.docker.com/desktop/install/mac-install/
 
 3. Check that docker is installed correctly, open a new terminal and type:
 

@@ -5,6 +5,7 @@
 import {
   Add,
   AddonsControlpanel,
+  Aliases,
   ChangePassword,
   ContactForm,
   Contents,
@@ -31,8 +32,12 @@ import {
   Search,
   Sharing,
   Sitemap,
+  AliasesControlpanel,
+  UndoControlpanel,
   UsersControlpanel,
+  UserGroupMembershipControlPanel,
   GroupsControlpanel,
+  PersonalInformation,
 } from '@plone/volto/components';
 
 // Deliberatelly use of absolute path of these components, since we do not want them
@@ -69,31 +74,37 @@ export const multilingualRoutes = [
     component: Register,
   },
   {
-    path: `/(${config.settings?.supportedLanguages.join('|')})/password-reset`,
+    path: `/(${config.settings?.supportedLanguages.join('|')})/passwordreset`,
     component: RequestPasswordReset,
     exact: true,
   },
   {
     path: `/(${config.settings?.supportedLanguages.join(
       '|',
-    )})/password-reset/:token`,
+    )})/passwordreset/:token`,
     component: PasswordReset,
     exact: true,
   },
 ];
 
 export const defaultRoutes = [
+  // redirect to external links if path is in blacklist
+  ...(config.settings?.externalRoutes || []).map((route) => ({
+    ...route.match,
+    component: NotFound,
+  })),
+  ...((config.settings?.isMultilingual && multilingualRoutes) || []),
   {
     path: '/',
     component: View,
     exact: true,
   },
   {
-    path: '/login',
+    path: ['/login', '/**/login'],
     component: Login,
   },
   {
-    path: '/logout',
+    path: ['/logout', '/**/logout'],
     component: Logout,
   },
   {
@@ -134,8 +145,16 @@ export const defaultRoutes = [
     component: AddonsControlpanel,
   },
   {
+    path: '/controlpanel/undo',
+    component: UndoControlpanel,
+  },
+  {
     path: '/controlpanel/database',
     component: DatabaseInformation,
+  },
+  {
+    path: '/controlpanel/aliases',
+    component: AliasesControlpanel,
   },
   {
     path: '/controlpanel/moderate-comments',
@@ -144,6 +163,10 @@ export const defaultRoutes = [
   {
     path: '/controlpanel/users',
     component: UsersControlpanel,
+  },
+  {
+    path: '/controlpanel/usergroupmembership',
+    component: UserGroupMembershipControlPanel,
   },
   {
     path: '/controlpanel/groups',
@@ -158,36 +181,28 @@ export const defaultRoutes = [
     component: ChangePassword,
   },
   {
-    path: '/add',
+    path: ['/add', '/**/add'],
     component: Add,
   },
   {
-    path: '/edit',
+    path: ['/edit', '/**/edit'],
     component: Edit,
   },
   {
-    path: '/contents',
+    path: ['/contents', '/**/contents'],
     component: Contents,
   },
   {
-    path: '/sharing',
+    path: ['/sharing', '/**/sharing'],
     component: Sharing,
-  },
-  {
-    path: '/**/add',
-    component: Add,
   },
   {
     path: '/**/create-translation',
     component: CreateTranslation,
   },
   {
-    path: '/**/contents',
-    component: Contents,
-  },
-  {
-    path: '/**/sharing',
-    component: Sharing,
+    path: '/**/aliases',
+    component: Aliases,
   },
   {
     path: '/**/delete',
@@ -198,37 +213,30 @@ export const defaultRoutes = [
     component: Diff,
   },
   {
-    path: '/**/edit',
-    component: Edit,
-  },
-  {
-    path: '/**/history',
+    path: '/**/historyview',
     component: History,
-  },
-  {
-    path: '/**/sharing',
-    component: Sharing,
   },
   {
     path: '/**/manage-translations',
     component: ManageTranslations,
   },
   {
-    path: '/**/login',
-    component: Login,
-  },
-  {
     path: '/register',
     component: Register,
   },
   {
-    path: '/password-reset',
+    path: '/passwordreset',
     component: RequestPasswordReset,
     exact: true,
   },
   {
-    path: '/password-reset/:token',
+    path: '/passwordreset/:token',
     component: PasswordReset,
+    exact: true,
+  },
+  {
+    path: '/personal-information',
+    component: PersonalInformation,
     exact: true,
   },
   {
@@ -251,14 +259,8 @@ const routes = [
     path: '/',
     component: App,
     routes: [
-      // redirect to external links if path is in blacklist
-      ...(config.settings?.externalRoutes || []).map((route) => ({
-        ...route.match,
-        component: NotFound,
-      })),
       // addon routes have a higher priority then default routes
       ...(config.addonRoutes || []),
-      ...((config.settings?.isMultilingual && multilingualRoutes) || []),
       ...defaultRoutes,
     ],
   },

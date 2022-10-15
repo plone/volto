@@ -9,7 +9,7 @@ export const Datetime = WidgetStory.bind({
 });
 
 export default {
-  title: 'Widgets/Datetime',
+  title: 'Edit Widgets/Datetime',
   component: DatetimeWidgetComponent,
   decorators: [
     (Story) => (

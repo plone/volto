@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Seamless' mode main challenge is to achieve zero configuration, avoiding hardcoded API_PATH or other environment variables, and establishing good sensible defaults when setting up deployments (and also in development)."
-  "property=og:description": "Seamless' mode main challenge is to achieve zero configuration, avoiding hardcoded API_PATH or other environment variables, and establishing good sensible defaults when setting up deployments (and also in development)."
-  "property=og:title": "Seamless mode"
-  "keywords": "Volto, Plone, frontend, React, Seamless, mode"
+myst:
+  html_meta:
+    "description": "Seamless' mode main challenge is to achieve zero configuration, avoiding hardcoded API_PATH or other environment variables, and establishing good sensible defaults when setting up deployments (and also in development)."
+    "property=og:description": "Seamless' mode main challenge is to achieve zero configuration, avoiding hardcoded API_PATH or other environment variables, and establishing good sensible defaults when setting up deployments (and also in development)."
+    "property=og:title": "Seamless mode"
+    "keywords": "Volto, Plone, frontend, React, Seamless, mode"
 ---
 
 # Seamless mode

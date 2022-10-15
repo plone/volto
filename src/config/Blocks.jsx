@@ -46,7 +46,7 @@ import searchSVG from '@plone/volto/icons/zoom.svg';
 import ImageGalleryListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/ImageGallery';
 import BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Schema';
 import TextSettingsSchema from '@plone/volto/components/manage/Blocks/Text/Schema';
-import ImageSettingsSchema from '@plone/volto/components/manage/Blocks/Image/Schema';
+import ImageSettingsSchema from '@plone/volto/components/manage/Blocks/Image/LayoutSchema';
 import ToCSettingsSchema from '@plone/volto/components/manage/Blocks/ToC/Schema';
 
 import SearchBlockView from '@plone/volto/components/manage/Blocks/Search/SearchBlockView';
@@ -70,6 +70,8 @@ import getListingBlockAsyncData from '@plone/volto/components/manage/Blocks/List
 import HeroImageLeftBlockSchema from '@plone/volto/components/manage/Blocks/HeroImageLeft/schema';
 import ListingBlockSchema from '@plone/volto/components/manage/Blocks/Listing/schema';
 import SearchBlockSchema from '@plone/volto/components/manage/Blocks/Search/schema';
+
+import ToCVariations from '@plone/volto/components/manage/Blocks/ToC/variations';
 
 defineMessages({
   title: {
@@ -193,7 +195,7 @@ const blocksConfig = {
     view: ViewDescriptionBlock,
     edit: EditDescriptionBlock,
     schema: BlockSettingsSchema,
-    restricted: true,
+    restricted: false,
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 0,
@@ -318,9 +320,10 @@ const blocksConfig = {
     view: ViewToCBlock,
     edit: EditToCBlock,
     schema: ToCSettingsSchema,
+    variations: ToCVariations,
     restricted: false,
     mostUsed: false,
-    sidebarTab: 0,
+    sidebarTab: 1,
     security: {
       addPermission: [],
       view: [],

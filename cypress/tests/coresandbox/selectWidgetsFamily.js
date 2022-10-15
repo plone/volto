@@ -22,6 +22,9 @@ context('Select widgets family Acceptance Tests', () => {
       //     values=[u"One", u"Two", u"Three"],
       //     required=True
       //     )
+      cy.intercept('POST', '/**/').as('create');
+      cy.intercept('GET', '/**/an-example').as('content');
+      cy.intercept('GET', '/**/@types/example').as('schema');
 
       cy.findAllByText('Choice and Multiple Choice fields').click();
       cy.wait(500); // We allow the Select component to lazy load
@@ -47,16 +50,13 @@ context('Select widgets family Acceptance Tests', () => {
 
       // We save, edit again, and the value set is there
       cy.get('#toolbar-save').click();
-      cy.waitForResourceToLoad('@navigation');
-      cy.waitForResourceToLoad('@breadcrumbs');
-      cy.waitForResourceToLoad('@actions');
-      cy.waitForResourceToLoad('an-example');
+
+      cy.wait('@create');
+      cy.wait('@content');
 
       cy.findByLabelText('Edit').click();
-      cy.waitForResourceToLoad('@navigation');
-      cy.waitForResourceToLoad('@breadcrumbs');
-      cy.waitForResourceToLoad('@actions');
-      cy.waitForResourceToLoad('an-example');
+
+      cy.wait('@schema');
 
       cy.wait(1000);
       cy.findByText('Choice and Multiple Choice fields').click();
@@ -72,6 +72,10 @@ context('Select widgets family Acceptance Tests', () => {
       //     vocabulary="plone.app.vocabularies.PortalTypes",
       //     required=False,
       // )
+      cy.intercept('POST', '/**/').as('create');
+      cy.intercept('GET', '/**/an-example').as('content');
+      cy.intercept('GET', '/**/@types/example').as('schema');
+
       cy.findByText('Choice and Multiple Choice fields').click();
       cy.wait(500); // We allow the Select component to lazy load
 
@@ -96,16 +100,13 @@ context('Select widgets family Acceptance Tests', () => {
 
       // We save, edit again, and the value set is there
       cy.get('#toolbar-save').click();
-      cy.waitForResourceToLoad('@navigation');
-      cy.waitForResourceToLoad('@breadcrumbs');
-      cy.waitForResourceToLoad('@actions');
-      cy.waitForResourceToLoad('an-example');
+
+      cy.wait('@create');
+      cy.wait('@content');
 
       cy.findByLabelText('Edit').click();
-      cy.waitForResourceToLoad('@navigation');
-      cy.waitForResourceToLoad('@breadcrumbs');
-      cy.waitForResourceToLoad('@actions');
-      cy.waitForResourceToLoad('an-example');
+
+      cy.wait('@schema');
 
       // On edit, the blocks editor flashes for a moment, fooling Cypress
       // If we solve it and not show it by this moment we would be able to
@@ -126,6 +127,7 @@ context('Select widgets family Acceptance Tests', () => {
         .contains('Folder')
         .should('not.exist');
     });
+
     it('As editor I interact with `list_field_voc_unconstrained` -> Array Createable (vocabulary-based list of choices but not constrained to them)', function () {
       // list_field_voc_unconstrained = schema.List(
       //     title=u"List field with values from vocabulary but not constrained to them.",
@@ -142,6 +144,10 @@ context('Select widgets family Acceptance Tests', () => {
       //         "closeOnSelect": False,  # Select2 option to leave dropdown open for multiple selection
       //     },
       // )
+      cy.intercept('POST', '/**/').as('create');
+      cy.intercept('GET', '/**/an-example').as('content');
+      cy.intercept('GET', '/**/@types/example').as('schema');
+
       cy.findByText('Choice and Multiple Choice fields').click();
       cy.wait(500); // We allow the Select component to lazy load
 
@@ -177,16 +183,13 @@ context('Select widgets family Acceptance Tests', () => {
 
       // We save, edit again, and the value set is there
       cy.get('#toolbar-save').click();
-      cy.waitForResourceToLoad('@navigation');
-      cy.waitForResourceToLoad('@breadcrumbs');
-      cy.waitForResourceToLoad('@actions');
-      cy.waitForResourceToLoad('an-example');
+
+      cy.wait('@create');
+      cy.wait('@content');
 
       cy.findByLabelText('Edit').click();
-      cy.waitForResourceToLoad('@navigation');
-      cy.waitForResourceToLoad('@breadcrumbs');
-      cy.waitForResourceToLoad('@actions');
-      cy.waitForResourceToLoad('an-example');
+
+      cy.wait('@schema');
 
       // On edit, the blocks editor flashes for a moment, fooling Cypress
       // If we solve it and not show it by this moment we would be able to
@@ -211,6 +214,7 @@ context('Select widgets family Acceptance Tests', () => {
         .contains('Folder')
         .should('not.exist');
     });
+
     it('As editor I interact with `list_field_voc_huge` -> Array (huge vocabulary-based list of choices)', function () {
       // list_field_voc_huge = schema.List(
       //     title=u"List field with values from a huge vocabulary",
@@ -225,6 +229,10 @@ context('Select widgets family Acceptance Tests', () => {
       //     "list_field_voc_huge",
       //     frontendOptions={"widget": "autocomplete"},
       // )
+      cy.intercept('POST', '/**/').as('create');
+      cy.intercept('GET', '/**/an-example').as('content');
+      cy.intercept('GET', '/**/@types/example').as('schema');
+
       cy.findByText('Choice and Multiple Choice fields').click();
       cy.wait(500); // We allow the Select component to lazy load
 
@@ -264,16 +272,13 @@ context('Select widgets family Acceptance Tests', () => {
 
       // We save, edit again, and the value set is there
       cy.get('#toolbar-save').click();
-      cy.waitForResourceToLoad('@navigation');
-      cy.waitForResourceToLoad('@breadcrumbs');
-      cy.waitForResourceToLoad('@actions');
-      cy.waitForResourceToLoad('an-example');
+
+      cy.wait('@create');
+      cy.wait('@content');
 
       cy.findByLabelText('Edit').click();
-      cy.waitForResourceToLoad('@navigation');
-      cy.waitForResourceToLoad('@breadcrumbs');
-      cy.waitForResourceToLoad('@actions');
-      cy.waitForResourceToLoad('an-example');
+
+      cy.wait('@schema');
 
       // On edit, the blocks editor flashes for a moment, fooling Cypress
       // If we solve it and not show it by this moment we would be able to
@@ -295,6 +300,7 @@ context('Select widgets family Acceptance Tests', () => {
         .contains('Option 100')
         .should('not.exist');
     });
+
     it('As editor I interact with `available_languages` -> Array (vocabulary-based list of choices)', function () {
       // available_languages = schema.List(
       //     title=_(u'heading_available_languages',

@@ -150,7 +150,7 @@ export const ContentsItemComponent = ({
                 size="20px"
                 className="icon-margin"
                 color="#878f93"
-                title={item['@type']}
+                title={item['Type'] || item['@type']}
               />{' '}
               <span title={item.title}> {item.title}</span>
             </div>

@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "The block style wrapper is part of a block anatomy. It allows you to inject styles from the block schema into the block wrapper in the form of class names."
-  "property=og:description": "The block style wrapper is part of a block anatomy. It allows you to inject styles from the block schema into the block wrapper in the form of class names."
-  "property=og:title": "Blocks - Style Wrapper"
-  "keywords": "Volto, Plone, frontend, React, Blocks, Edit, Style, Wrapper, components"
+myst:
+  html_meta:
+    "description": "The block style wrapper is part of a block anatomy. It allows you to inject styles from the block schema into the block wrapper in the form of class names."
+    "property=og:description": "The block style wrapper is part of a block anatomy. It allows you to inject styles from the block schema into the block wrapper in the form of class names."
+    "property=og:title": "Blocks - Style Wrapper"
+    "keywords": "Volto, Plone, frontend, React, Blocks, Edit, Style, Wrapper, components"
 ---
 
 # Blocks - Style Wrapper
