@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "A contextual navigation component is available in Volto for customization and integration into your project."
-  "property=og:description": "A contextual navigation component is available in Volto for customization and integration into your project."
-  "property=og:title": "Context navigation component"
-  "keywords": "Volto, Plone, frontend, React, Context, navigation, component"
+myst:
+  html_meta:
+    "description": "A contextual navigation component is available in Volto for customization and integration into your project."
+    "property=og:description": "A contextual navigation component is available in Volto for customization and integration into your project."
+    "property=og:title": "Context navigation component"
+    "keywords": "Volto, Plone, frontend, React, Context, navigation, component"
 ---
 
 # Context navigation component

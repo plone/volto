@@ -47,6 +47,7 @@ import {
   orderContent,
   sortContent,
   updateColumnsContent,
+  getContent,
 } from '@plone/volto/actions';
 import Indexes, { defaultIndexes } from '@plone/volto/constants/Indexes';
 import {
@@ -452,11 +453,16 @@ class Contents extends Component {
       );
     }
     if (this.props.pathname !== nextProps.pathname) {
+      // Refetching content to sync the current object in the toolbar
+      this.props.getContent(getBaseUrl(nextProps.pathname));
       this.setState(
         {
           currentPage: 0,
         },
-        () => this.fetchContents(nextProps.pathname),
+        () =>
+          this.setState({ filter: '' }, () =>
+            this.fetchContents(nextProps.pathname),
+          ),
       );
     }
     if (this.props.searchRequest.loading && nextProps.searchRequest.loaded) {
@@ -1104,7 +1110,6 @@ class Contents extends Component {
     const folderContentsAction = find(this.props.objectActions, {
       id: 'folderContents',
     });
-
     const loading =
       (this.props.clipboardRequest?.loading &&
         !this.props.clipboardRequest?.error) ||
@@ -1800,14 +1805,18 @@ class Contents extends Component {
   }
 }
 
+let dndContext;
+
 const DragDropConnector = (props) => {
   const { DragDropContext } = props.reactDnd;
   const HTML5Backend = props.reactDndHtml5Backend.default;
 
-  const DndConnectedContents = React.useMemo(
-    () => DragDropContext(HTML5Backend)(Contents),
-    [DragDropContext, HTML5Backend],
-  );
+  const DndConnectedContents = React.useMemo(() => {
+    if (!dndContext) {
+      dndContext = DragDropContext(HTML5Backend);
+    }
+    return dndContext(Contents);
+  }, [DragDropContext, HTML5Backend]);
 
   return <DndConnectedContents {...props} />;
 };
@@ -1849,6 +1858,7 @@ export const __test__ = compose(
       orderContent,
       sortContent,
       updateColumnsContent,
+      getContent,
     },
   ),
 )(Contents);
@@ -1889,6 +1899,7 @@ export default compose(
       orderContent,
       sortContent,
       updateColumnsContent,
+      getContent,
     },
   ),
   asyncConnect([

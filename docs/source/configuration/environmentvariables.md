@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Environment variables allow configuration of your Volto application at runtime."
-  "property=og:description": "Environment variables allow configuration of your Volto application at runtime."
-  "property=og:title": "Environment variables"
-  "keywords": "Volto, React, Plone, Environment variables, Razzle,"
+myst:
+  html_meta:
+    "description": "Environment variables allow configuration of your Volto application at runtime."
+    "property=og:description": "Environment variables allow configuration of your Volto application at runtime."
+    "property=og:title": "Environment variables"
+    "keywords": "Volto, React, Plone, Environment variables, Razzle,"
 ---
 
 # Environment variables
