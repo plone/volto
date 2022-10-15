@@ -59,7 +59,13 @@ export function addExpandersToPath(path, type) {
     },
   );
 
-  const stringifiedQuery = qs.stringify(query, {
+  const querystringFromConfig = apiExpanders
+    .filter((expand) => matchPath(url, expand.match) && expand[type])
+    .reduce((acc, expand) => ({ ...acc, ...expand?.['querystring'] }), {});
+
+  const queryMerge = { ...query, ...querystringFromConfig };
+
+  const stringifiedQuery = qs.stringify(queryMerge, {
     encode: false,
   });
 

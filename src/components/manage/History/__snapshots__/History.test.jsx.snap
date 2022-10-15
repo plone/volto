@@ -1,5 +1,56 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`History redirects if unassigned 1`] = `
+<div
+  className="ui container view-wrapper"
+>
+  <h1>
+    Forbidden
+  </h1>
+  <p
+    className="description"
+  >
+    We apologize for the inconvenience, but you don't have permissions on this resource.
+  </p>
+</div>
+`;
+
+exports[`History redirects if unassigned, no token gives unauthorized 1`] = `
+<div
+  className="ui container view-wrapper"
+>
+  <h1>
+    Unauthorized
+  </h1>
+  <h3 />
+  <p
+    className="description"
+  >
+    You are trying to access a protected resource, please 
+    <a
+      href="/blog/login"
+      onClick={[Function]}
+    >
+      log in
+    </a>
+     first.
+  </p>
+  <p>
+    If you are certain you have the correct web address but are encountering an error, please contact the 
+    <a
+      href="/contact-form"
+      onClick={[Function]}
+    >
+      Site Administration
+    </a>
+    .
+  </p>
+  <p>
+    Thank you.
+  </p>
+</div>
+`;
+
 exports[`History renders a history component 1`] = `
 <div
   className="ui container"
@@ -91,7 +142,7 @@ exports[`History renders a history component 1`] = `
               dateTime="2017-04-19T14:09:36+02:00"
               title="Wednesday, April 19, 2017 at 12:09 PM"
             >
-              4/19/17, 12:09 PM
+              4/19/2017
             </time>
           </td>
           <td
@@ -130,7 +181,7 @@ exports[`History renders a history component 1`] = `
               dateTime="2017-04-19T14:09:35+02:00"
               title="Wednesday, April 19, 2017 at 12:09 PM"
             >
-              4/19/17, 12:09 PM
+              4/19/2017
             </time>
           </td>
           <td
@@ -192,7 +243,7 @@ exports[`History renders a history component 1`] = `
               dateTime="2017-04-19T14:09:34+02:00"
               title="Wednesday, April 19, 2017 at 12:09 PM"
             >
-              4/19/17, 12:09 PM
+              4/19/2017
             </time>
           </td>
           <td
