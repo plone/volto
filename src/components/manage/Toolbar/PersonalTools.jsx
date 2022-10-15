@@ -12,7 +12,11 @@ import { FormattedMessage, injectIntl, defineMessages } from 'react-intl';
 import { Icon } from '@plone/volto/components';
 import { getUser } from '@plone/volto/actions';
 import { Pluggable } from '@plone/volto/components/manage/Pluggable';
-import { expandToBackendURL, userHasRoles } from '@plone/volto/helpers';
+import {
+  expandToBackendURL,
+  getBaseUrl,
+  userHasRoles,
+} from '@plone/volto/helpers';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 
@@ -116,7 +120,10 @@ class PersonalTools extends Component {
               ? this.props.user.fullname
               : this.props.user.username}
           </h2>
-          <Link id="toolbar-logout" to={`${this.props.pathname}/logout`}>
+          <Link
+            id="toolbar-logout"
+            to={`${getBaseUrl(this.props.pathname)}/logout`}
+          >
             <Icon
               className="logout"
               name={logoutSVG}

@@ -4,6 +4,21 @@
 
 ### Breaking
 
+### Feature
+
+### Bugfix
+
+- Fix UniversalLink storybook @tiberiuichim
+- Change sentry chunk name to avoid ad blockers. Only load sentry if env vars exist @tiberiuichim
+
+### Internal
+
+### Documentation
+
+## 16.0.0-alpha.42 (2022-10-06)
+
+### Breaking
+
 - Change history route name to `historyview` (same as classic) in order to allow content to have 'history' as `id` @danielamormocea
 
 ### Feature
@@ -18,9 +33,11 @@
 - Fix unlock after changing the id and saving a page @reebalazs
 - Group routes so React does not see them as a different Route and triggers a full remount. This is specially important in `Contents` @sneridagh
 - Add default to `null` for `token` prop in `Navigation` component. This prevents the component to shoot an extra call when the logout happens @sneridagh
+- Fix a double slash present in the `PersonalTools` component @sneridagh
 
 ### Internal
 
+- Update to Plone 6 beta3 @sneridagh
 - Upgrade Cypress to latest @sneridagh
 
 ### Documentation

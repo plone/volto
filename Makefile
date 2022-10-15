@@ -13,8 +13,8 @@ MAKEFLAGS+=--no-builtin-rules
 # Project settings
 
 INSTANCE_PORT=8080
-DOCKER_IMAGE=plone/plone-backend:6.0.0b2
-KGS=plone.restapi==8.30.0
+DOCKER_IMAGE=plone/plone-backend:6.0.0b3
+KGS=
 TESTING_ADDONS=plone.app.robotframework==2.0.0b2 plone.app.testing==7.0.0a3
 NODEBIN = ./node_modules/.bin
 
