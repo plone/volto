@@ -16,7 +16,7 @@ export default function SortableItem(props) {
     // cursor: 'move',
     // height: '200px',
     // marginBottom: '20px',
-    transform: CSS.Transform.toString(transform),
+    transform: CSS.Translate.toString(transform),
     transition,
   };
   const Block = props.children;
