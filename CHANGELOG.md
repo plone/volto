@@ -7,6 +7,7 @@
 ### Feature
 
 - Updated spanish translation @macagua
+- Add Dutch translation @spereverde
 
 ### Bugfix
 
@@ -16,6 +17,8 @@
 ### Internal
 
 ### Documentation
+
+- Trigger a new deploy core Plone documentation when Volto documentation is updated @esteele
 
 ## 16.0.0-alpha.42 (2022-10-06)
 
