@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Updated spanish translation @macagua
+
 ### Bugfix
 
 - Fix UniversalLink storybook @tiberiuichim
@@ -1681,6 +1683,8 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 
 ### Internal
 
+- Updated i18n link into the README file @macagua
+- Updated Spanish translations @macagua
 - Remove bundlesize @tisto
 - Upgrade plone.restapi from 8.12.1 -> 8.13.0 @tisto
 
