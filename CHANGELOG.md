@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Changed the control panel listing page to SSR the list of control panels @JefffersonBledsoe #3737
+
 ### Documentation
 
 ## 16.0.0-alpha.42 (2022-10-06)
