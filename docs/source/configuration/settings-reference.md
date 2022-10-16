@@ -248,7 +248,7 @@ workflowMapping
 ```
 
 errorHandlers
-    A list of unhandled error handlers. Each error handler is a function that
+    A list of error handlers that will be called when there is an unhandled exception. Each error handler is a function that
     receives a single argument, the `error` object.
 
 ## Views settings
