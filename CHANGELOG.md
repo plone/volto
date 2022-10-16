@@ -8,9 +8,9 @@
 
 ### Bugfix
 
-### Internal
+- Sort control panels alphabetically within each group @JeffersonBledsoe #3737
 
-- Changed the control panel listing page to SSR the list of control panels @JefffersonBledsoe #3737
+### Internal
 
 ### Documentation
 
