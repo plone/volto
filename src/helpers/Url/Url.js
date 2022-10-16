@@ -8,28 +8,31 @@ import { urlRegex, telRegex, mailRegex } from './urlRegex';
 import prependHttp from 'prepend-http';
 import config from '@plone/volto/registry';
 
-export const _getBaseUrl = (config) => (url) => {
-  const { settings } = config;
-  if (url === undefined) return;
+export const _getBaseUrl = (config) =>
+  memoize((url) => {
+    const { settings } = config;
+    if (url === undefined) return;
 
-  // We allow settings.nonContentRoutes to have strings (that are supposed to match
-  // ending strings of pathnames, so we are converting them to RegEx to match also
-  const normalized_nonContentRoutes = settings.nonContentRoutes.map((item) => {
-    if (item.test) {
-      return item;
-    } else {
-      return new RegExp(item + '$');
-    }
+    // We allow settings.nonContentRoutes to have strings (that are supposed to match
+    // ending strings of pathnames, so we are converting them to RegEx to match also
+    const normalized_nonContentRoutes = settings.nonContentRoutes.map(
+      (item) => {
+        if (item.test) {
+          return item;
+        } else {
+          return new RegExp(item + '$');
+        }
+      },
+    );
+
+    let adjustedUrl = normalized_nonContentRoutes.reduce(
+      (acc, item) => acc.replace(item, ''),
+      url,
+    );
+
+    adjustedUrl = adjustedUrl || '/';
+    return adjustedUrl === '/' ? '' : adjustedUrl;
   });
-
-  let adjustedUrl = normalized_nonContentRoutes.reduce(
-    (acc, item) => acc.replace(item, ''),
-    url,
-  );
-
-  adjustedUrl = adjustedUrl || '/';
-  return adjustedUrl === '/' ? '' : adjustedUrl;
-};
 
 /**
  * Get base url.
@@ -37,7 +40,7 @@ export const _getBaseUrl = (config) => (url) => {
  * @param {string} url Url to be parsed.
  * @return {string} Base url of content object.
  */
-export const getBaseUrl = memoize((url) => _getBaseUrl(config)(url));
+export const getBaseUrl = _getBaseUrl(config);
 
 /**
  * Get parent url.
