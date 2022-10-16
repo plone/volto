@@ -8,13 +8,7 @@ import { urlRegex, telRegex, mailRegex } from './urlRegex';
 import prependHttp from 'prepend-http';
 import config from '@plone/volto/registry';
 
-/**
- * Get base url.
- * @function getBaseUrl
- * @param {string} url Url to be parsed.
- * @return {string} Base url of content object.
- */
-export const getBaseUrl = memoize((url) => {
+const _getBaseUrl = (config) => (url) => {
   const { settings } = config;
   if (url === undefined) return;
 
@@ -35,7 +29,15 @@ export const getBaseUrl = memoize((url) => {
 
   adjustedUrl = adjustedUrl || '/';
   return adjustedUrl === '/' ? '' : adjustedUrl;
-});
+};
+
+/**
+ * Get base url.
+ * @function getBaseUrl
+ * @param {string} url Url to be parsed.
+ * @return {string} Base url of content object.
+ */
+export const getBaseUrl = memoize((url) => _getBaseUrl(config)(url));
 
 /**
  * Get parent url.
