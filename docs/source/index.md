@@ -49,3 +49,10 @@ deploying/index
 upgrade-guide/index
 developer-guidelines/index
 ```
+
+## Glossary
+
+```{toctree}
+
+/glossary
+```
