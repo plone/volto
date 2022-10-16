@@ -8,7 +8,7 @@ import { urlRegex, telRegex, mailRegex } from './urlRegex';
 import prependHttp from 'prepend-http';
 import config from '@plone/volto/registry';
 
-const _getBaseUrl = (config) => (url) => {
+export const _getBaseUrl = (config) => (url) => {
   const { settings } = config;
   if (url === undefined) return;
 
