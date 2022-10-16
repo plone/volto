@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- Moved all sentry-related code from Volto to the `@plone-collective/volto-sentry` package. See the Upgrade Guide  @tiberiuichim
+
 ### Feature
 
 - Updated spanish translation @macagua
