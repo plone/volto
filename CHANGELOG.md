@@ -8,12 +8,31 @@
 
 ### Bugfix
 
+### Internal
+
+### Documentation
+
+## 16.0.0-alpha.43 (2022-10-17)
+
+### Feature
+
+- Object browser: image search should only show images @reebalazs
+- Updated spanish translation @macagua
+- Add Dutch translation @spereverde
+
+### Bugfix
+
 - Fix UniversalLink storybook @tiberiuichim
+- Fix logout to stay on the same page where the user was @reebalazs
 - Change sentry chunk name to avoid ad blockers. Only load sentry if env vars exist @tiberiuichim
 
 ### Internal
 
+- Upgrade dependency rrule (optional dependency luxon removed) @ksuess
+
 ### Documentation
+
+- Trigger a new deploy core Plone documentation when Volto documentation is updated @esteele
 
 ## 16.0.0-alpha.42 (2022-10-06)
 
@@ -1682,6 +1701,8 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 
 ### Internal
 
+- Updated i18n link into the README file @macagua
+- Updated Spanish translations @macagua
 - Remove bundlesize @tisto
 - Upgrade plone.restapi from 8.12.1 -> 8.13.0 @tisto
 
