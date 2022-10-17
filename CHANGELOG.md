@@ -16,6 +16,8 @@
 
 ### Internal
 
+- Upgrade dependency rrule (optional dependency luxon removed) @ksuess
+
 ### Documentation
 
 - Trigger a new deploy core Plone documentation when Volto documentation is updated @esteele
