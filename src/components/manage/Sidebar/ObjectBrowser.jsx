@@ -54,6 +54,7 @@ const withObjectBrowser = (WrappedComponent) =>
       dataName = null,
       overlay = null,
       propDataName = null,
+      searchableTypes,
       selectableTypes,
       maximumSelectionSize,
       currentPath,
@@ -65,6 +66,7 @@ const withObjectBrowser = (WrappedComponent) =>
         dataName,
         overlay,
         propDataName,
+        searchableTypes,
         selectableTypes,
         maximumSelectionSize,
         currentPath,
@@ -105,6 +107,7 @@ const withObjectBrowser = (WrappedComponent) =>
                 mode={this.state.mode}
                 onSelectItem={this.state.onSelectItem}
                 dataName={this.state.dataName}
+                searchableTypes={this.state.searchableTypes}
                 selectableTypes={this.state.selectableTypes}
                 maximumSelectionSize={this.state.maximumSelectionSize}
               />
