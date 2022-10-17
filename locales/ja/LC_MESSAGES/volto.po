@@ -2630,6 +2630,11 @@ msgstr ""
 msgid "Remove recurrence"
 msgstr "繰り返しを削除"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Remove relations to target
+msgid "Remove relations to target"
+msgstr ""
+
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Remove selected
 msgid "Remove selected"

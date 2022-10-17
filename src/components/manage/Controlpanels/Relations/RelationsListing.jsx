@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import { useIntl } from 'react-intl';
 import { useSelector, useDispatch } from 'react-redux';
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { uniq, uniqBy } from 'lodash';
-import { Checkbox } from 'semantic-ui-react';
+import { Button, Checkbox } from 'semantic-ui-react';
 import { messages } from '@plone/volto/helpers';
-// import { Toast } from '@plone/volto/components';
+import { Icon, Toast } from '@plone/volto/components';
 import { listRelations } from '@plone/volto/actions';
+import add from '@plone/volto/icons/add.svg';
+import remove from '@plone/volto/icons/remove.svg';
 
 const ListingTemplate = ({
   query_source,
@@ -58,6 +60,7 @@ const ListingTemplate = ({
   let matrix_options = relations.map((relation) => ({
     value: relation.target.UID,
     label: relation.target.title,
+    url: relation.target['@id'],
   }));
   matrix_options = uniqBy(matrix_options, function (el) {
     return el.value;
@@ -126,9 +129,23 @@ const ListingTemplate = ({
     //       />,
     //     );
     //   });
+    toast.warning(
+      <Toast
+        warning
+        title="Toggle potential targets"
+        content="not yet implemented"
+      />,
+    );
   };
 
   const onSelectAllHandler = (mtxoption, checked) => {
+    toast.warning(
+      <Toast
+        warning
+        title="Create or remove relations for all shown sources"
+        content="not yet implemented"
+      />,
+    );
     let elements = document.querySelectorAll(`div.checkbox_${mtxoption} input`);
     // let identifier;
     elements.forEach((element) => {
@@ -154,7 +171,9 @@ const ListingTemplate = ({
             key={matrix_option.value}
           >
             <div>
-              <span className="label">{matrix_option.label}</span>
+              <a href={matrix_option.url}>
+                <span className="label">{matrix_option.label}</span>
+              </a>
             </div>
           </div>
         ))}
@@ -166,24 +185,56 @@ const ListingTemplate = ({
             <div className="listing-row selectall" key="selectall">
               <div className="listing-item">
                 <div />
+
                 <div className="matrix_options">
                   {matrix_options?.map((matrix_option) => (
-                    <div
-                      title={
-                        intl.formatMessage(messages.createRelationsToTarget) +
-                        ` ${matrix_option.label}`
-                      }
-                      key={matrix_option.value}
-                    >
-                      <Checkbox
-                        name={`member_selectall_${matrix_option.value}`}
-                        key={matrix_option.value}
-                        title={matrix_option.label}
-                        defaultChecked={false}
-                        onChange={(event, { checked }) => {
-                          onSelectAllHandler(matrix_option.value, checked);
-                        }}
-                      />
+                    <div key={matrix_option.value}>
+                      <Button
+                        icon
+                        basic
+                        onClick={() =>
+                          onSelectAllHandler(matrix_option.value, true)
+                        }
+                        className="add-button"
+                        aria-label={
+                          intl.formatMessage(messages.createRelationsToTarget) +
+                          ` '${matrix_option.label}'`
+                        }
+                        title={
+                          intl.formatMessage(messages.createRelationsToTarget) +
+                          ` '${matrix_option.label}'`
+                        }
+                      >
+                        <Icon
+                          name={add}
+                          size="10px"
+                          className="circled"
+                          color="unset"
+                        />
+                      </Button>
+                      <Button
+                        icon
+                        basic
+                        onClick={() =>
+                          onSelectAllHandler(matrix_option.value, false)
+                        }
+                        className="remove-button"
+                        aria-label={
+                          intl.formatMessage(messages.removeRelationsToTarget) +
+                          ` '${matrix_option.label}'`
+                        }
+                        title={
+                          intl.formatMessage(messages.removeRelationsToTarget) +
+                          ` '${matrix_option.label}'`
+                        }
+                      >
+                        <Icon
+                          name={remove}
+                          size="10px"
+                          className="circled"
+                          color="unset"
+                        />
+                      </Button>
                     </div>
                   ))}
                 </div>

@@ -2629,6 +2629,11 @@ msgstr "Ezabatu elementua"
 msgid "Remove recurrence"
 msgstr "Errepikapena ezabatu"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Remove relations to target
+msgid "Remove relations to target"
+msgstr ""
+
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Remove selected
 msgid "Remove selected"

@@ -2632,6 +2632,11 @@ msgstr "Remover Item"
 msgid "Remove recurrence"
 msgstr "Remover a recorrência"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Remove relations to target
+msgid "Remove relations to target"
+msgstr ""
+
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Remove selected
 msgid "Remove selected"

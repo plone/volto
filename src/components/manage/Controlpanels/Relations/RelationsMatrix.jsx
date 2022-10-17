@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useIntl } from 'react-intl';
+import { toast } from 'react-toastify';
 import { Checkbox, Dropdown, Form, Input } from 'semantic-ui-react';
-
-import { isEqual, pull } from 'lodash';
-
+// import { isEqual, pull } from 'lodash';
 import { messages } from '@plone/volto/helpers';
 import { listRelations } from '@plone/volto/actions';
+import { Toast } from '@plone/volto/components';
 import RelationsListing from './RelationsListing';
 
 const RelationsMatrix = (props) => {
@@ -15,7 +15,7 @@ const RelationsMatrix = (props) => {
   const [query_source, setQuery_source] = useState('');
   const [query_target, setQuery_target] = useState('');
   const [query_target_filter, setQuery_target_filter] = useState('');
-  const [target_filter, setTarget_filter] = useState([]); // Show source with these targets.
+  // const [target_filter, setTarget_filter] = useState([]); // Show source with these targets.
   const [relationtype, setRelationtype] = useState(undefined);
   let relationtypes = Object.keys(
     useSelector((state) => state.relations?.stats?.relations) || {},
@@ -77,24 +77,34 @@ const RelationsMatrix = (props) => {
     setQuery_target(event.target.value);
   };
 
-  const onSelectOptionHandler = (filter_option, checked) => {
-    let target_filter_set_new = [];
-    if (checked) {
-      target_filter_set_new = new Set([...target_filter, filter_option.value]);
-    } else {
-      target_filter_set_new = pull(target_filter, filter_option.value);
-    }
-    if (!isEqual(target_filter_set_new, new Set(target_filter))) {
-      setTarget_filter([...target_filter_set_new]);
-    }
-  };
+  // const onSelectOptionHandler = (filter_option, checked) => {
+  //   let target_filter_set_new = [];
+  //   if (checked) {
+  //     target_filter_set_new = new Set([...target_filter, filter_option.value]);
+  //   } else {
+  //     target_filter_set_new = pull(target_filter, filter_option.value);
+  //   }
+  //   if (!isEqual(target_filter_set_new, new Set(target_filter))) {
+  //     setTarget_filter([...target_filter_set_new]);
+  //   }
+  // };
 
-  const onChangeSearchXsFilter = (event) => {
-    setQuery_target_filter(event.target.value);
-  };
+  // const onChangeSearchXsFilter = (event) => {
+  //   setQuery_target_filter(event.target.value);
+  // };
 
   const onChangeRelation = (event, { value }) => {
     setRelationtype(value);
+  };
+
+  const onChangeShowPotentialTargets = () => {
+    toast.warning(
+      <Toast
+        warning
+        title="add or remove relation"
+        content="not yet implemented"
+      />,
+    );
   };
 
   return (
@@ -149,8 +159,23 @@ const RelationsMatrix = (props) => {
               id="x-search-input"
             />
           </Form.Field>
+          <Form.Field>
+            <Checkbox
+              name="showPotentialTargets"
+              label="Show potential targets (not only objects that are target of some relation)"
+              title="Show potential targets"
+              defaultChecked={false}
+              onChange={onChangeShowPotentialTargets}
+            />
+          </Form.Field>
         </Form>
       </div>
+      {/* 
+      Possible filter:
+      - path
+      - content type
+      - review state
+      
       <div className="controlpanel_filter">
         <h3>{intl.formatMessage(messages.filterByTarget)}</h3>
 
@@ -178,12 +203,12 @@ const RelationsMatrix = (props) => {
             }}
           />
         ))}
-      </div>
+      </div> */}
       <RelationsListing
         relationtype={relationtype}
         query_source={query_source}
         query_target={query_target}
-        target_filter={target_filter}
+        // target_filter={target_filter}
       />
     </div>
   );
