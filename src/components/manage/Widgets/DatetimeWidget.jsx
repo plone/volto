@@ -122,6 +122,48 @@ export class DatetimeWidgetComponent extends Component {
     return this.props.dateOnly || this.props.widget === 'date';
   }
 
+  renderMonthElement = ({ month, onMonthSelect, onYearSelect }) => {
+    let i;
+    let years = [];
+    for (i = this.moment().year(); i >= this.moment().year() - 100; i--) {
+      years.push(
+        <option value={i} key={`year-${i}`}>
+          {i}
+        </option>,
+      );
+    }
+    return (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '5px',
+        }}
+      >
+        <div>
+          <select
+            value={month.month()}
+            onChange={(e) => onMonthSelect(month, e.target.value)}
+          >
+            {this.moment.months().map((label, value) => (
+              <option value={value} key={value}>
+                {label}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <select
+            value={month.year()}
+            onChange={(e) => onYearSelect(month, e.target.value)}
+          >
+            {years}
+          </select>
+        </div>
+      </div>
+    );
+  };
+
   /**
    * Update date storage
    * @method onDateChange
@@ -208,6 +250,7 @@ export class DatetimeWidgetComponent extends Component {
               onDateChange={this.onDateChange}
               focused={this.state.focused}
               numberOfMonths={1}
+              renderMonthElement={this.renderMonthElement}
               {...(noPastDates ? {} : { isOutsideRange: () => false })}
               onFocusChange={this.onFocusChange}
               noBorder
