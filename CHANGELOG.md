@@ -2,8 +2,6 @@
 
 ## 16.0.0 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Object browser: image search should only show images @reebalazs
@@ -15,7 +13,6 @@
 - Fix UniversalLink storybook @tiberiuichim
 - Fix logout to stay on the same page where the user was @reebalazs
 - Change sentry chunk name to avoid ad blockers. Only load sentry if env vars exist @tiberiuichim
-
 
 ### Internal
 
