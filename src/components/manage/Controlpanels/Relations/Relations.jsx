@@ -28,7 +28,7 @@ const RelationsControlPanel = () => {
   return (
     <>
       <Container className="users-control-panel">
-        <Helmet title={intl.formatMessage(messages.users)} />
+        <Helmet title={intl.formatMessage(messages.relations)} />
         <Segment.Group raised>
           <Segment className="primary">
             <FormattedMessage id="Relations" defaultMessage="Relations" />

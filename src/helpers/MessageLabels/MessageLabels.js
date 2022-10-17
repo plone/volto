@@ -264,6 +264,10 @@ export const messages = defineMessages({
     id: 'Inspect relations',
     defaultMessage: 'Inspect relations',
   },
+  relations: {
+    id: 'Relations',
+    defaultMessage: 'Relations',
+  },
   fixRelations: {
     id: 'Fix relations',
     defaultMessage: 'Fix relations by rebuild',
