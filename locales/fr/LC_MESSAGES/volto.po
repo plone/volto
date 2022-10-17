@@ -2625,6 +2625,7 @@ msgstr "Formulaire d'enregistrement"
 
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/Relations/Relations
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Relations
 msgid "Relations"
 msgstr ""
