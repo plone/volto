@@ -260,6 +260,14 @@ export const messages = defineMessages({
     id: 'Show groups of users below',
     defaultMessage: 'Show groups of users below',
   },
+  inspectRelations: {
+    id: 'Inspect relations',
+    defaultMessage: 'Inspect relations',
+  },
+  fixRelations: {
+    id: 'Fix relations',
+    defaultMessage: 'Fix relations by rebuild',
+  },
   searchRelationSource: {
     id: 'Filter relations by search in source',
     defaultMessage: 'Filter relations by search in source',

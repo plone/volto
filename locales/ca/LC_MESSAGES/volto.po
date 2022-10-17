@@ -1446,6 +1446,11 @@ msgstr "Filtra..."
 msgid "First"
 msgstr "Primer"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Fix relations by rebuild
+msgid "Fix relations"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Fixed width columns
 msgid "Fixed width table cells"
@@ -1712,6 +1717,11 @@ msgstr "Insereix fila després"
 # defaultMessage: Insert row before
 msgid "Insert row before"
 msgstr "Insereix fila abans"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Inspect relations
+msgid "Inspect relations"
+msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Install

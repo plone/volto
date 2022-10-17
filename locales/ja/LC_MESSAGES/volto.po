@@ -1445,6 +1445,11 @@ msgstr "フィルター…"
 msgid "First"
 msgstr "第1"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Fix relations by rebuild
+msgid "Fix relations"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Fixed width columns
 msgid "Fixed width table cells"
@@ -1711,6 +1716,11 @@ msgstr "下に行を追加"
 # defaultMessage: Insert row before
 msgid "Insert row before"
 msgstr "上に行を追加"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Inspect relations
+msgid "Inspect relations"
+msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Install
