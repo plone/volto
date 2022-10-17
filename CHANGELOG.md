@@ -6,6 +6,7 @@
 
 ### Feature
 
+- Object browser: image search should only show images @reebalazs
 - Updated spanish translation @macagua
 - Add Dutch translation @spereverde
 
