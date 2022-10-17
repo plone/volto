@@ -17,9 +17,8 @@ const RelationsMatrix = (props) => {
   const [query_target_filter, setQuery_target_filter] = useState('');
   // const [target_filter, setTarget_filter] = useState([]); // Show source with these targets.
   const [relationtype, setRelationtype] = useState(undefined);
-  let relationtypes = Object.keys(
-    useSelector((state) => state.relations?.stats?.relations) || {},
-  );
+  let relationtypes =
+    useSelector((state) => state.relations?.stats?.relations) || {};
 
   let filter_options = useSelector((state) => state.groups.filter_groups);
   if (filter_options) {
@@ -119,7 +118,7 @@ const RelationsMatrix = (props) => {
               }
             >
               <Dropdown.Menu className="left">
-                {relationtypes.map((relationtype) => (
+                {Object.keys(relationtypes).map((relationtype) => (
                   <Dropdown.Item
                     onClick={onChangeRelation}
                     value={relationtype}
@@ -127,7 +126,7 @@ const RelationsMatrix = (props) => {
                     className={`select-relation-${relationtype}`}
                     key={relationtype}
                   >
-                    {relationtype}
+                    {`${relationtype} (${relationtypes[relationtype]})`}
                   </Dropdown.Item>
                 ))}
               </Dropdown.Menu>
