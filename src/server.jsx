@@ -193,7 +193,15 @@ server.get('/*', (req, res) => {
 
   const authToken = req.universalCookies.get('auth_token');
   const initialState = {
-    userSession: { ...userSession(), token: authToken },
+    userSession: {
+      ...userSession(),
+      token: authToken,
+      apiHeaders: {
+        protocol: req.protocol,
+        host: req.headers.host,
+        internalApiPath: req.headers['x-internal-api-path']
+      },
+    },
     form: req.body,
     intl: {
       defaultLocale: 'en',

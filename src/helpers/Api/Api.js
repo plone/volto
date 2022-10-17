@@ -8,6 +8,8 @@ import Cookies from 'universal-cookie';
 import config from '@plone/volto/registry';
 import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
 import { stripQuerystring } from '@plone/volto/helpers';
+import { calculateApiPath } from '@plone/volto/helpers/useUrlHelpers';
+import { compose } from 'redux';
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];
 
@@ -20,41 +22,27 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
  */
 export function formatUrl(path, req) {
   const { settings } = config;
-
   const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
 
   if (path.startsWith('http://') || path.startsWith('https://')) return path;
 
   const adjustedPath = path[0] !== '/' ? `/${path}` : path;
-  let apiPath = '';
 
-  if (__SERVER__) {
-    if (
-      (!settings.internalApiPath || settings.internalApiPath === undefined) &&
-      req.headers['x-internal-api-path']
-    ) {
-      apiPath = req.headers['x-internal-api-path'];
-    } else {
-      apiPath =
-        settings.internalApiPath === undefined
-          ? 'http://localhost:8080/Plone'
-          : settings.internalApiPath;
-    }
-  } else {
-    const windowApiPath = window.env?.apiPath;
-    if (
-      (!settings.apiPath || settings.apiPath === undefined) &&
-      windowApiPath
-    ) {
-      apiPath = windowApiPath;
-    } else {
-      apiPath =
-        settings.apiPath === undefined
-          ? 'http://localhost:8080/Plone'
-          : settings.apiPath;
-    }
+  const initialApiVars = {
+    host: null,
+    internalApiPath: null,
+    protocol: null,
   }
-  console.log('Returning apiPath:', `${apiPath}${APISUFIX}${adjustedPath}`);
+  if (__SERVER__) {
+    initialApiVars.host = req.headers.host;
+    initialApiVars.internalApiPath = req.headers['x-internal-api-path'];
+    initialApiVars.protocol = req.protocol;
+  }
+  const apiPath = calculateApiPath(
+    initialApiVars.host,
+    initialApiVars.internalApiPath,
+    initialApiVars.protocol
+  );
   return `${apiPath}${APISUFIX}${adjustedPath}`;
 }
 

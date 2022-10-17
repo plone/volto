@@ -5,11 +5,13 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 import config from '@plone/volto/registry';
+import { injectUrlHelpers } from '@plone/volto/helpers/useUrlHelpers';
 
 /**
  * Anontools container class.
@@ -55,7 +57,7 @@ export class Anontools extends Component {
               to={`/login${
                 this.props.content?.['@id']
                   ? `?return_url=${this.props.content['@id'].replace(
-                      settings.apiPath,
+                      this.props.getApiPath(),
                       '',
                     )}`
                   : ''
@@ -77,7 +79,10 @@ export class Anontools extends Component {
   }
 }
 
-export default connect((state) => ({
-  token: state.userSession.token,
-  content: state.content.data,
-}))(Anontools);
+export default compose(
+  injectUrlHelpers,
+  connect((state) => ({
+    token: state.userSession.token,
+    content: state.content.data,
+  })),
+)(Anontools);
