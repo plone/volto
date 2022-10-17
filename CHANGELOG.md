@@ -13,7 +13,9 @@
 ### Bugfix
 
 - Fix UniversalLink storybook @tiberiuichim
+- Fix logout to stay on the same page where the user was @reebalazs
 - Change sentry chunk name to avoid ad blockers. Only load sentry if env vars exist @tiberiuichim
+
 
 ### Internal
 
