@@ -75,8 +75,11 @@ cypress/screenshots
 .env.test.local
 .env.production.local
 
+# generic
 data
 omelette
 
+# build
 public/critical.css
 src/addons/*
+/cache
