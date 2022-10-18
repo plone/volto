@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- The listing block icon has been improved to avoid confusions with the normal text list @sneridagh
+
 ### Feature
 
 ### Bugfix
