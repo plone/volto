@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix autocomplete widget with an empty search result @reebalazs
+
 ### Internal
 
 ### Documentation
