@@ -1691,6 +1691,11 @@ msgstr "Iniciar Sessió"
 msgid "Log in"
 msgstr "Iniciar Sessió"
 
+#: components/theme/Logout/Logout
+# defaultMessage: Logged out
+msgid "Logged out"
+msgstr ""
+
 #: components/theme/Login/Login
 # defaultMessage: Login
 msgid "Login"
@@ -3556,6 +3561,11 @@ msgstr "Podeu veure l'historial del vostre article a continuació."
 # defaultMessage: You can't paste this content here
 msgid "You can't paste this content here"
 msgstr "No podeu enganxar aquest contingut aquí"
+
+#: components/theme/Logout/Logout
+# defaultMessage: You have been logged out from the site.
+msgid "You have been logged out from the site."
+msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your email is required for reset your password.

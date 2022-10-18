@@ -1688,6 +1688,11 @@ msgstr "Anmelden"
 msgid "Log in"
 msgstr "Anmelden"
 
+#: components/theme/Logout/Logout
+# defaultMessage: Logged out
+msgid "Logged out"
+msgstr "Abgemeldet"
+
 #: components/theme/Login/Login
 # defaultMessage: Login
 msgid "Login"
@@ -3553,6 +3558,11 @@ msgstr "Sie können die Historie des Inhalts unten einsehen."
 # defaultMessage: You can't paste this content here
 msgid "You can't paste this content here"
 msgstr "Sie können diese(s) Objekt(e) hier nicht einfügen"
+
+#: components/theme/Logout/Logout
+# defaultMessage: You have been logged out from the site.
+msgid "You have been logged out from the site."
+msgstr "Sie wurden von der Website abgemeldet."
 
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your email is required for reset your password.
