@@ -1689,6 +1689,11 @@ msgstr "Se connecter"
 msgid "Log in"
 msgstr "Se connecter"
 
+#: components/theme/Logout/Logout
+# defaultMessage: Logged out
+msgid "Logged out"
+msgstr ""
+
 #: components/theme/Login/Login
 # defaultMessage: Login
 msgid "Login"
@@ -3543,6 +3548,11 @@ msgstr "Vous pouvez consulter l'historique de votre élément ci-dessous."
 #: components/manage/Contents/Contents
 # defaultMessage: You can't paste this content here
 msgid "You can't paste this content here"
+msgstr ""
+
+#: components/theme/Logout/Logout
+# defaultMessage: You have been logged out from the site.
+msgid "You have been logged out from the site."
 msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
