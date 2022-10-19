@@ -10,6 +10,7 @@
 
 ### Bugfix
 
+- SearchTags uses invalid vocabulary API @silviubogan
 - Fix autocomplete widget with an empty search result @reebalazs
 
 ### Internal
