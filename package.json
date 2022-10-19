@@ -29,9 +29,9 @@
   ],
   "scripts": {
     "postinstall": "yarn patches",
-    "analyze": "BUNDLE_ANALYZE=true razzle build",
-    "start": "razzle start",
-    "build": "razzle build --noninteractive",
+    "analyze": "NODE_OPTIONS=--openssl-legacy-provider BUNDLE_ANALYZE=true yarn build",
+    "start": "NODE_OPTIONS=--openssl-legacy-provider razzle start",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider razzle build --noninteractive",
     "test": "razzle test --maxWorkers=50%",
     "test:ci": "CI=true NODE_ICU_DATA=node_modules/full-icu razzle test",
     "test:husky": "CI=true yarn test --bail --findRelatedTests",
@@ -53,8 +53,8 @@
     "release": "release-it",
     "release-major-alpha": "release-it major --preRelease=alpha",
     "release-alpha": "release-it --preRelease=alpha",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006",
+    "build-storybook": "NODE_OPTIONS=--openssl-legacy-provider build-storybook"
   },
   "bundlewatch": {
     "files": [
