@@ -47,7 +47,9 @@ import MultilingualRedirector from '@plone/volto/components/theme/MultilingualRe
 import WorkingCopyToastsFactory from '@plone/volto/components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory';
 import LockingToastsFactory from '@plone/volto/components/manage/LockingToastsFactory/LockingToastsFactory';
 
-const Sentry = loadable.lib(() => import('@sentry/browser'));
+const Sentry = loadable.lib(
+  () => import(/* webpackChunkName: "s_entry-browser" */ '@sentry/browser'), // chunk name avoids ad blockers
+);
 
 /**
  * @export

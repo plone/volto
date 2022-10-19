@@ -1680,6 +1680,11 @@ msgstr "ログイン"
 msgid "Log in"
 msgstr "ログイン"
 
+#: components/theme/Logout/Logout
+# defaultMessage: Logged out
+msgid "Logged out"
+msgstr ""
+
 #: components/theme/Login/Login
 # defaultMessage: Login
 msgid "Login"
@@ -3535,6 +3540,11 @@ msgstr "You can view the history of your item below. (未翻訳)"
 # defaultMessage: You can't paste this content here
 msgid "You can't paste this content here"
 msgstr "このコンテンツをここに貼り付けることはできません"
+
+#: components/theme/Logout/Logout
+# defaultMessage: You have been logged out from the site.
+msgid "You have been logged out from the site."
+msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your email is required for reset your password.

@@ -43,7 +43,7 @@ class DynamicHeightList extends React.PureComponent {
         }}
         deferredMeasurementCache={this._cache}
         overscanRowCount={0}
-        rowCount={this.props.children.length}
+        rowCount={this.props.children?.length || 0}
         rowHeight={this._cache.rowHeight}
         rowRenderer={this._rowRenderer}
         width={200}
