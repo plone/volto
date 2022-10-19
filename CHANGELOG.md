@@ -5,18 +5,35 @@
 ### Breaking
 
 - Moved all sentry-related code from Volto to the `@plone-collective/volto-sentry` package. See the Upgrade Guide  @tiberiuichim
+- The listing block icon has been improved to avoid confusions with the normal text list @sneridagh
 
 ### Feature
 
+### Bugfix
+
+- Fix autocomplete widget with an empty search result @reebalazs
+
+### Internal
+
+### Documentation
+
+## 16.0.0-alpha.43 (2022-10-17)
+
+### Feature
+
+- Object browser: image search should only show images @reebalazs
 - Updated spanish translation @macagua
 - Add Dutch translation @spereverde
 
 ### Bugfix
 
 - Fix UniversalLink storybook @tiberiuichim
+- Fix logout to stay on the same page where the user was @reebalazs
 - Change sentry chunk name to avoid ad blockers. Only load sentry if env vars exist @tiberiuichim
 
 ### Internal
+
+- Upgrade dependency rrule (optional dependency luxon removed) @ksuess
 
 ### Documentation
 

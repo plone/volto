@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-10-04T14:56:58.980Z\n"
+"POT-Creation-Date: 2022-10-10T13:08:40.809Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1672,6 +1672,11 @@ msgstr ""
 #: components/theme/Login/Login
 # defaultMessage: Log in
 msgid "Log in"
+msgstr ""
+
+#: components/theme/Logout/Logout
+# defaultMessage: Logged out
+msgid "Logged out"
 msgstr ""
 
 #: components/theme/Login/Login
@@ -3528,6 +3533,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: You can't paste this content here
 msgid "You can't paste this content here"
+msgstr ""
+
+#: components/theme/Logout/Logout
+# defaultMessage: You have been logged out from the site.
+msgid "You have been logged out from the site."
 msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
