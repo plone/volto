@@ -282,7 +282,7 @@ const messages = defineMessages({
       'By deleting this item, ' +
       'you will break links that exist in the items ' +
       'listed below. If this is indeed what you ' +
-      'want to do, we recommend that remove' +
+      'want to do, we recommend that remove ' +
       'these references first.',
   },
   linkIntegrityMessageExtra: {
