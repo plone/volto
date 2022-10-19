@@ -4,8 +4,23 @@
 
 ### Breaking
 
+- The listing block icon has been improved to avoid confusions with the normal text list @sneridagh
+
 ### Feature
 
+### Bugfix
+
+- Fix autocomplete widget with an empty search result @reebalazs
+
+### Internal
+
+### Documentation
+
+## 16.0.0-alpha.43 (2022-10-17)
+
+### Feature
+
+- Object browser: image search should only show images @reebalazs
 - Updated spanish translation @macagua
 - Add Dutch translation @spereverde
 
@@ -13,6 +28,7 @@
 
 - Sort control panels alphabetically within each group @JeffersonBledsoe #3737
 - Fix UniversalLink storybook @tiberiuichim
+- Fix logout to stay on the same page where the user was @reebalazs
 - Change sentry chunk name to avoid ad blockers. Only load sentry if env vars exist @tiberiuichim
 
 ### Internal
