@@ -28,6 +28,7 @@ import {
   NotFound,
   PasswordReset,
   Register,
+  Rules,
   RequestPasswordReset,
   Search,
   Sharing,
@@ -37,6 +38,10 @@ import {
   UsersControlpanel,
   UserGroupMembershipControlPanel,
   GroupsControlpanel,
+  RulesControlpanel,
+  AddRuleControlpanel,
+  EditRuleControlpanel,
+  ConfigureRuleControlpanel,
   PersonalInformation,
 } from '@plone/volto/components';
 
@@ -173,6 +178,22 @@ export const defaultRoutes = [
     component: GroupsControlpanel,
   },
   {
+    path: '/controlpanel/rules/:id/configure',
+    component: ConfigureRuleControlpanel,
+  },
+  {
+    path: '/controlpanel/rules/:id/edit',
+    component: EditRuleControlpanel,
+  },
+  {
+    path: '/controlpanel/rules/add',
+    component: AddRuleControlpanel,
+  },
+  {
+    path: '/controlpanel/rules',
+    component: RulesControlpanel,
+  },
+  {
     path: '/controlpanel/:id',
     component: Controlpanel,
   },
@@ -197,8 +218,16 @@ export const defaultRoutes = [
     component: Sharing,
   },
   {
+    path: '/rules',
+    component: Rules,
+  },
+  {
     path: '/**/create-translation',
     component: CreateTranslation,
+  },
+  {
+    path: '/**/rules',
+    component: Rules,
   },
   {
     path: '/**/aliases',
