@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-10-10T13:08:40.809Z\n"
+"POT-Creation-Date: 2022-10-20T09:16:05.029Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -44,7 +44,7 @@ msgid "Action changed"
 msgstr ""
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Action:
+# defaultMessage: Action: 
 msgid "Action: "
 msgstr ""
 
@@ -415,14 +415,11 @@ msgstr ""
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/DatabaseInformation
 #: components/manage/Controlpanels/ModerateComments
-<<<<<<< HEAD
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/ConfigureRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Controlpanels/Rules/Rules
-=======
 #: components/manage/Controlpanels/UndoControlpanel
->>>>>>> master
 #: components/manage/Diff/Diff
 #: components/manage/History/History
 #: components/manage/Multilingual/ManageTranslations
@@ -668,7 +665,7 @@ msgid "Condition changed"
 msgstr ""
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Condition:
+# defaultMessage: Condition: 
 msgid "Condition: "
 msgstr ""
 
@@ -723,6 +720,7 @@ msgstr ""
 msgid "Content Rule"
 msgstr ""
 
+#: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Content Rules
 msgid "Content Rules"
@@ -2387,19 +2385,11 @@ msgstr ""
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr ""
 
-<<<<<<< HEAD
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Portrait
-msgid "Portrait"
-msgstr ""
-
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Position changed
 msgid "Position changed"
 msgstr ""
 
-=======
->>>>>>> master
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Possible values (Enter allowed choices one per line).
 msgid "Possible values"
@@ -3120,14 +3110,11 @@ msgstr ""
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
-<<<<<<< HEAD
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/ConfigureRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Controlpanels/Rules/Rules
-=======
 #: components/manage/Controlpanels/UndoControlpanel
->>>>>>> master
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
@@ -3486,7 +3473,6 @@ msgstr ""
 msgid "URL Management for {title}"
 msgstr ""
 
-<<<<<<< HEAD
 #: components/manage/Rules/Rules
 # defaultMessage: Unassign
 msgid "Unassign"
@@ -3497,9 +3483,7 @@ msgstr ""
 msgid "Unassigned"
 msgstr ""
 
-=======
 #: components/manage/Toolbar/More
->>>>>>> master
 #: components/theme/Unauthorized/Unauthorized
 # defaultMessage: Unauthorized
 msgid "Unauthorized"
@@ -3787,7 +3771,6 @@ msgstr ""
 msgid "When this date is reached, the content will nolonger be visible in listings and searches."
 msgstr ""
 
-<<<<<<< HEAD
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 # defaultMessage: Whether or not execution of further rules should stop after this rule is executed
@@ -3806,9 +3789,7 @@ msgstr ""
 msgid "Whether or not the rule is currently enabled"
 msgstr ""
 
-=======
 #: components/manage/Controlpanels/UndoControlpanel
->>>>>>> master
 #: components/manage/History/History
 # defaultMessage: Who
 msgid "Who"

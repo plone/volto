@@ -86,6 +86,10 @@ const messages = defineMessages({
     id: 'URL Management',
     defaultMessage: 'URL Management',
   },
+  contentRules: {
+    id: 'Content Rules',
+    defaultMessage: 'Content Rules',
+  },
 });
 
 /**
@@ -183,8 +187,8 @@ class Controlpanels extends Component {
         },
         {
           '@id': '/rules',
-          group: 'Content',
-          title: 'Content Rules',
+          group: this.props.intl.formatMessage(messages.content),
+          title: this.props.intl.formatMessage(messages.contentRules),
         },
         {
           '@id': '/undo',

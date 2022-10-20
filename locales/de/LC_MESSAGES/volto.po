@@ -724,6 +724,7 @@ msgstr "Inhalt"
 msgid "Content Rule"
 msgstr ""
 
+#: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Content Rules
 msgid "Content Rules"
@@ -2387,11 +2388,6 @@ msgstr "Website"
 # defaultMessage: Plone{reg} Open Source CMS/WCM
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} Open Source Content Management System"
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Portrait
-msgid "Portrait"
-msgstr "Portrait"
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Position changed
