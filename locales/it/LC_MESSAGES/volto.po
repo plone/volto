@@ -243,6 +243,36 @@ msgstr ""
 msgid "Additional date"
 msgstr "Data aggiuntiva"
 
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon could not be installed
+msgid "Addon could not be installed"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon could not be uninstalled
+msgid "Addon could not be uninstalled"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon could not be upgraded
+msgid "Addon could not be upgraded"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon installed succesfuly
+msgid "Addon installed succesfuly"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon uninstalled succesfuly
+msgid "Addon uninstalled succesfuly"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon upgraded succesfuly
+msgid "Addon upgraded succesfuly"
+msgstr ""
+
 #: config/Views
 # defaultMessage: Album view
 msgid "Album view"
@@ -387,11 +417,11 @@ msgstr ""
 #: components/manage/Controlpanels/Rules/ConfigureRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Controlpanels/Rules/Rules
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Diff/Diff
 #: components/manage/History/History
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Rules/Rules
 #: components/manage/Sharing/Sharing
@@ -521,7 +551,6 @@ msgid "Changes applied."
 msgstr "Modifiche applicate."
 
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 # defaultMessage: Changes saved
 msgid "Changes saved"
@@ -846,8 +875,8 @@ msgstr "Data (prima i più recenti)"
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Contents/ContentsTagsModal
 #: components/manage/Contents/ContentsWorkflowModal
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1050,7 +1079,6 @@ msgstr "Rilascia un file qui per caricare un nuovo file"
 msgid "Drop files here ..."
 msgstr "Rilascia file qui..."
 
-#: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
 # defaultMessage: E-mail
 msgid "E-mail"
@@ -1174,7 +1202,6 @@ msgstr "Inserisci uno username da ricercare, oppure clicca su 'Vedi tutto'"
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr "Inserisci un indirizzo e-mail. Esso sarà il tuo nome utente. Rispettiamo la tua privacy: non daremo l'indirizzo a terzi, né verrà esposto nel portale."
 
-#: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
 # defaultMessage: Enter full name, e.g. John Smith.
 msgid "Enter full name, e.g. John Smith."
@@ -1218,9 +1245,12 @@ msgid "Enter your username for verification."
 msgstr "Inserisci il tuo username per la verifica."
 
 #: components/manage/Add/Add
+#: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
+#: components/manage/Toolbar/More
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
@@ -1324,6 +1354,11 @@ msgstr "Filtri nel lato destro"
 msgid "Facets on top"
 msgstr "Filtri in alto"
 
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Failed to undo transactions
+msgid "Failed To Undo Transactions"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Field
 msgid "Field"
@@ -1415,7 +1450,6 @@ msgstr "Da"
 msgid "Full"
 msgstr "A tutta larghezza"
 
-#: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
 # defaultMessage: Full Name
 msgid "Full Name"
@@ -1532,11 +1566,6 @@ msgstr "Cronologia di {title}"
 # defaultMessage: Home
 msgid "Home"
 msgstr "Home"
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Home page
-msgid "Home page"
-msgstr "Pagina personale"
 
 #: components/manage/Contents/Contents
 # defaultMessage: ID
@@ -1838,11 +1867,6 @@ msgstr "Carica altro"
 msgid "Loading"
 msgstr "Caricamento"
 
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Location
-msgid "Location"
-msgstr "Luogo"
-
 #: components/theme/Login/Login
 # defaultMessage: Login
 msgid "Log In"
@@ -1853,6 +1877,11 @@ msgstr "Log In"
 # defaultMessage: Log in
 msgid "Log in"
 msgstr "Log in"
+
+#: components/theme/Logout/Logout
+# defaultMessage: Logged out
+msgid "Logged out"
+msgstr ""
 
 #: components/theme/Login/Login
 # defaultMessage: Login
@@ -1889,6 +1918,11 @@ msgstr "Rendi la tabella compatta"
 # defaultMessage: Manage Translations
 msgid "Manage Translations"
 msgstr "Gestisci traduzioni"
+
+#: components/manage/Toolbar/More
+# defaultMessage: Manage content…
+msgid "Manage content…"
+msgstr "Gestione del contenuto…"
 
 #: components/manage/Multilingual/ManageTranslations
 # defaultMessage: Manage translations for {title}
@@ -2056,6 +2090,21 @@ msgstr ""
 msgid "No"
 msgstr "No"
 
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: No transactions found
+msgid "No Transactions Found"
+msgstr ""
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: No transactions selected
+msgid "No Transactions Selected"
+msgstr ""
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: No transactions selected to do undo
+msgid "No Transactions Selected To Do Undo"
+msgstr ""
+
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: No Video selected
 msgid "No Video selected"
@@ -2162,6 +2211,11 @@ msgstr "Nessun flusso"
 msgid "None"
 msgstr "Nessuno"
 
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Note
+msgid "Note"
+msgstr ""
+
 #: components/manage/Controlpanels/Users/UsersControlpanel
 # defaultMessage: Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group.
 msgid "Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group."
@@ -2188,9 +2242,9 @@ msgid "Ok"
 msgstr "Ok"
 
 #: components/manage/Widgets/IdWidget
-# defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed.
-msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed."
-msgstr "Solo lettere minuscole (a-z) senza accenti, numeri (0-9), e i due caratteri '-' e '_' sono ammesssi"
+# defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.
+msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed."
+msgstr ""
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -2266,7 +2320,6 @@ msgstr "I permesso sono stati aggiornati con successo"
 msgid "Permissions updated"
 msgstr "Permessi aggiornati"
 
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Personal Information
 msgid "Personal Information"
@@ -2646,6 +2699,11 @@ msgstr "Salva"
 msgid "Save recurrence"
 msgstr "Salva la ricorrenza"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Saved
+msgid "Saved"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypesActions
 # defaultMessage: Schema
 msgid "Schema"
@@ -2795,6 +2853,11 @@ msgstr "Seleziona…"
 msgid "Send"
 msgstr "Invia"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Send a confirmation mail with a link to set the password.
+msgid "Send a confirmation mail with a link to set the password."
+msgstr ""
+
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Set my password
 msgid "Set my password"
@@ -2874,6 +2937,11 @@ msgstr "Mostrare il campo di ricerca?"
 msgid "Show sorting?"
 msgstr "Mostrare l'ordinamento?"
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Show total results
+msgid "Show total results"
+msgstr "Mostra il numero totale dei risultati"
+
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Shrink sidebar
 msgid "Shrink sidebar"
@@ -2931,6 +2999,11 @@ msgstr "Piccolo"
 msgid "Sorry, something went wrong with your request"
 msgstr "Spiacente, qualcosa è andato storto"
 
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Sort by
+msgid "Sort By"
+msgstr ""
+
 #: components/theme/Search/Search
 # defaultMessage: Sort by:
 msgid "Sort By:"
@@ -2952,6 +3025,16 @@ msgstr "Etichetta dell'ordinamento"
 # defaultMessage: Sort on options
 msgid "Sort on options"
 msgstr "Opzioni di ordinamento"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Sort transactions by User-Name, Path or Date
+msgid "Sort transactions by User-Name, Path or Date"
+msgstr ""
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Sorted
+msgid "Sorted"
+msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Blocks/Image/schema
@@ -3025,6 +3108,7 @@ msgstr "Oggetto"
 #: components/manage/Actions/Actions
 #: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -3032,9 +3116,9 @@ msgstr "Oggetto"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Controlpanels/Rules/Rules
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Rules/Rules
 #: components/theme/ContactForm/ContactForm
@@ -3042,6 +3126,11 @@ msgstr "Oggetto"
 # defaultMessage: Success
 msgid "Success"
 msgstr "Successo"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Successfully undone transactions
+msgid "Successfully Undone Transactions"
+msgstr ""
 
 #: config/Blocks
 # defaultMessage: Summary
@@ -3134,11 +3223,6 @@ msgstr "Grazie."
 msgid "The Database Manager allow you to view database status information"
 msgstr "Il Database Manager ti permette di vedere le informazioni di stato del database"
 
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: The URL for your external home page, if you have one.
-msgid "The URL for your external home page, if you have one."
-msgstr "L'indirizzo della tua pagina personale esterna, se ne hai una."
-
 #: components/theme/RequestTimeout/RequestTimeout
 # defaultMessage: The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again.
 msgid "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
@@ -3189,11 +3273,6 @@ msgstr ""
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgstr "La registrazione è avvenuta correttamente. Per favore controlla la tua casella di posta per informazioni su come attivare il tuo account."
 
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: The user portrait/avatar
-msgid "The user portrait/avatar"
-msgstr "L'avatar/ritratto utente"
-
 #: components/manage/Toolbar/More
 # defaultMessage: The working copy was discarded
 msgid "The working copy was discarded"
@@ -3228,7 +3307,7 @@ msgstr "Terzo"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This has an ongoing working copy in {title}
 msgid "This has an ongoing working copy in {title}"
-msgstr "Questa è una copia di lavoro in corso di {title}"
+msgstr "Questo oggetto ha una copia di lavoro in corso qui: {title}"
 
 #: components/manage/Widgets/IdWidget
 # defaultMessage: This is a reserved name and can't be used
@@ -3309,6 +3388,26 @@ msgstr "Numero totale degli oggetti di tutte le cache"
 msgid "Total number of objects in the database"
 msgstr "Numero totale di oggetti nel database"
 
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Transactions
+msgid "Transactions"
+msgstr ""
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: #
+msgid "Transactions Checkbox"
+msgstr ""
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Transactions have been sorted
+msgid "Transactions Have Been Sorted"
+msgstr ""
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Transactions have been unsorted
+msgid "Transactions Have Been Unsorted"
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Toolbar/Types
 # defaultMessage: Translate to {lang}
@@ -3365,6 +3464,7 @@ msgstr "UID"
 
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/More
 # defaultMessage: URL Management
 msgid "URL Management"
@@ -3385,15 +3485,23 @@ msgstr ""
 msgid "Unassigned"
 msgstr ""
 
+#: components/manage/Toolbar/More
 #: components/theme/Unauthorized/Unauthorized
 # defaultMessage: Unauthorized
 msgid "Unauthorized"
 msgstr "Non autorizzato"
 
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Form/UndoToolbar
 # defaultMessage: Undo
 msgid "Undo"
 msgstr "Annulla"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Undo Controlpanel
+msgid "Undo Controlpanel"
+msgstr ""
 
 #: components/manage/BlockChooser/BlockChooser
 # defaultMessage: Unfold
@@ -3425,6 +3533,11 @@ msgstr "Scollega traduzione per"
 # defaultMessage: Unlock
 msgid "Unlock"
 msgstr "Sblocca"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Unsorted
+msgid "Unsorted"
+msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update
@@ -3628,11 +3741,6 @@ msgstr "Ci scusiamo per l'inconveniente, la pagina cui stai provando ad accedere
 msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
 msgstr "Ci scusiamo per l'inconveniente, ma non hai i permessi per questa risorsa."
 
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: We will use this address if you need to recover your password
-msgid "We will use this address if you need to recover your password"
-msgstr "Useremo questo indirizzo email nel caso dovessi recuperare la tua password"
-
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: The
 msgid "Weeek day of month"
@@ -3648,11 +3756,13 @@ msgstr "giorno feriale (lunedì-venerdì)"
 msgid "Weekly"
 msgstr "Settimanale"
 
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/History/History
 # defaultMessage: What
 msgid "What"
 msgstr "Cosa"
 
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/History/History
 # defaultMessage: When
 msgid "When"
@@ -3681,6 +3791,7 @@ msgstr ""
 msgid "Whether or not the rule is currently enabled"
 msgstr ""
 
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/History/History
 # defaultMessage: Who
 msgid "Who"
@@ -3748,15 +3859,15 @@ msgstr "Puoi visualizzare la cronologia del tuo articolo qui sotto."
 msgid "You can't paste this content here"
 msgstr "Non puoi incollare questo contenuto qui."
 
+#: components/theme/Logout/Logout
+# defaultMessage: You have been logged out from the site.
+msgid "You have been logged out from the site."
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your email is required for reset your password.
 msgid "Your email is required for reset your password."
 msgstr "La tua email è richiesta per reimpostare la tua password."
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Your location - either city and country - or in a company setting, where your office is located.
-msgid "Your location - either city and country - or in a company setting, where your office is located."
-msgstr "La località in cui vivi (paese e città) oppure, in ambito aziendale, il luogo in cui si trova il tuo ufficio."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Your password has been set successfully. You may now {link} with your new password.
@@ -4218,6 +4329,11 @@ msgstr "Titolo"
 msgid "toc"
 msgstr "Indice dei contenuti"
 
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Update from version {origin} to {destination}
+msgid "upgradeVersions"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be valid url (www.something.com or http(s)://www.something.com)
 msgid "url"
@@ -4237,6 +4353,16 @@ msgstr "Video"
 # defaultMessage: Visit external website
 msgid "visit_external_website"
 msgstr "Visita il sito web"
+
+#: components/manage/Toolbar/More
+# defaultMessage: You are not authorized to perform this operation.
+msgid "workingCopyErrorUnauthorized"
+msgstr "Non sei autorizzato ad compiere questa operazione."
+
+#: components/manage/Toolbar/More
+# defaultMessage: An error occurred while performing this operation.
+msgid "workingCopyGenericError"
+msgstr "Si è verificato un errore durante l'operazione."
 
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry

@@ -243,6 +243,36 @@ msgstr ""
 msgid "Additional date"
 msgstr "Dată suplimentară"
 
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon could not be installed
+msgid "Addon could not be installed"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon could not be uninstalled
+msgid "Addon could not be uninstalled"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon could not be upgraded
+msgid "Addon could not be upgraded"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon installed succesfuly
+msgid "Addon installed succesfuly"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon uninstalled succesfuly
+msgid "Addon uninstalled succesfuly"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon upgraded succesfuly
+msgid "Addon upgraded succesfuly"
+msgstr ""
+
 #: config/Views
 # defaultMessage: Album view
 msgid "Album view"
@@ -387,11 +417,11 @@ msgstr ""
 #: components/manage/Controlpanels/Rules/ConfigureRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Controlpanels/Rules/Rules
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Diff/Diff
 #: components/manage/History/History
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Rules/Rules
 #: components/manage/Sharing/Sharing
@@ -521,7 +551,6 @@ msgid "Changes applied."
 msgstr "Modificari aplicate"
 
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 # defaultMessage: Changes saved
 msgid "Changes saved"
@@ -846,8 +875,8 @@ msgstr "Data (cea mai recentă mai întâi)"
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Contents/ContentsTagsModal
 #: components/manage/Contents/ContentsWorkflowModal
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1050,7 +1079,6 @@ msgstr "Trageți fișierul aici pentru a încărca un fișier nou"
 msgid "Drop files here ..."
 msgstr "Trageți fișierele aici..."
 
-#: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
 # defaultMessage: E-mail
 msgid "E-mail"
@@ -1174,7 +1202,6 @@ msgstr "Introduceți un nume de utilizator mai sus pentru a căuta sau faceți c
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr "Introduceți o adresă de e-mail. Acesta va fi numele dvs. de autentificare. Respectăm confidențialitatea dvs. și nu vom oferi adresa niciunui terț și nu o vom expune nicăieri."
 
-#: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
 # defaultMessage: Enter full name, e.g. John Smith.
 msgid "Enter full name, e.g. John Smith."
@@ -1218,9 +1245,12 @@ msgid "Enter your username for verification."
 msgstr ""
 
 #: components/manage/Add/Add
+#: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
+#: components/manage/Toolbar/More
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
@@ -1324,6 +1354,11 @@ msgstr "Fațete pe partea dreaptă"
 msgid "Facets on top"
 msgstr "Fațete deasupra"
 
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Failed to undo transactions
+msgid "Failed To Undo Transactions"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Field
 msgid "Field"
@@ -1415,7 +1450,6 @@ msgstr "Din"
 msgid "Full"
 msgstr "Complet"
 
-#: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
 # defaultMessage: Full Name
 msgid "Full Name"
@@ -1532,11 +1566,6 @@ msgstr "Istoricul {title}"
 # defaultMessage: Home
 msgid "Home"
 msgstr "Acasă"
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Home page
-msgid "Home page"
-msgstr "Pagina de pornire"
 
 #: components/manage/Contents/Contents
 # defaultMessage: ID
@@ -1838,11 +1867,6 @@ msgstr "Incarcă mai mult"
 msgid "Loading"
 msgstr "Se încarcă"
 
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Location
-msgid "Location"
-msgstr "Locație"
-
 #: components/theme/Login/Login
 # defaultMessage: Login
 msgid "Log In"
@@ -1853,6 +1877,11 @@ msgstr "Autentificare"
 # defaultMessage: Log in
 msgid "Log in"
 msgstr "Autentificare"
+
+#: components/theme/Logout/Logout
+# defaultMessage: Logged out
+msgid "Logged out"
+msgstr ""
 
 #: components/theme/Login/Login
 # defaultMessage: Login
@@ -1889,6 +1918,11 @@ msgstr "Compactati tabelul"
 # defaultMessage: Manage Translations
 msgid "Manage Translations"
 msgstr "Gestionați traducerile"
+
+#: components/manage/Toolbar/More
+# defaultMessage: Manage content…
+msgid "Manage content…"
+msgstr ""
 
 #: components/manage/Multilingual/ManageTranslations
 # defaultMessage: Manage translations for {title}
@@ -2056,6 +2090,21 @@ msgstr ""
 msgid "No"
 msgstr "Nu"
 
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: No transactions found
+msgid "No Transactions Found"
+msgstr ""
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: No transactions selected
+msgid "No Transactions Selected"
+msgstr ""
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: No transactions selected to do undo
+msgid "No Transactions Selected To Do Undo"
+msgstr ""
+
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: No Video selected
 msgid "No Video selected"
@@ -2162,6 +2211,11 @@ msgstr "Fără flux de lucru"
 msgid "None"
 msgstr "Niciuna"
 
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Note
+msgid "Note"
+msgstr ""
+
 #: components/manage/Controlpanels/Users/UsersControlpanel
 # defaultMessage: Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group.
 msgid "Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group."
@@ -2188,9 +2242,9 @@ msgid "Ok"
 msgstr "Ok"
 
 #: components/manage/Widgets/IdWidget
-# defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed.
-msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed."
-msgstr "Sunt permise doar litere mici (a-z) fără accente, cifre (0-9) și cele două caractere „-” și „_”."
+# defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.
+msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed."
+msgstr ""
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -2266,7 +2320,6 @@ msgstr "Permisiunile au fost actualizate cu succes"
 msgid "Permissions updated"
 msgstr "Permisiunile au fost actualizate"
 
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Personal Information
 msgid "Personal Information"
@@ -2646,6 +2699,11 @@ msgstr "Salvare"
 msgid "Save recurrence"
 msgstr "Salvați recurența"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Saved
+msgid "Saved"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypesActions
 # defaultMessage: Schema
 msgid "Schema"
@@ -2795,6 +2853,11 @@ msgstr "Selectați …"
 msgid "Send"
 msgstr "Trimite"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Send a confirmation mail with a link to set the password.
+msgid "Send a confirmation mail with a link to set the password."
+msgstr ""
+
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Set my password
 msgid "Set my password"
@@ -2874,6 +2937,11 @@ msgstr "Afișați intrarea de căutare?"
 msgid "Show sorting?"
 msgstr "Afișează sortarea?"
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Show total results
+msgid "Show total results"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Shrink sidebar
 msgid "Shrink sidebar"
@@ -2931,6 +2999,11 @@ msgstr ""
 msgid "Sorry, something went wrong with your request"
 msgstr "Ne pare rău, a apârut o eroare"
 
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Sort by
+msgid "Sort By"
+msgstr ""
+
 #: components/theme/Search/Search
 # defaultMessage: Sort by:
 msgid "Sort By:"
@@ -2952,6 +3025,16 @@ msgstr "Sortare pe etichetă"
 # defaultMessage: Sort on options
 msgid "Sort on options"
 msgstr "Sortare pe opțiuni"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Sort transactions by User-Name, Path or Date
+msgid "Sort transactions by User-Name, Path or Date"
+msgstr ""
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Sorted
+msgid "Sorted"
+msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Blocks/Image/schema
@@ -3025,6 +3108,7 @@ msgstr "Subiect"
 #: components/manage/Actions/Actions
 #: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -3032,9 +3116,9 @@ msgstr "Subiect"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Controlpanels/Rules/Rules
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Rules/Rules
 #: components/theme/ContactForm/ContactForm
@@ -3042,6 +3126,11 @@ msgstr "Subiect"
 # defaultMessage: Success
 msgid "Success"
 msgstr "Succes"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Successfully undone transactions
+msgid "Successfully Undone Transactions"
+msgstr ""
 
 #: config/Blocks
 # defaultMessage: Summary
@@ -3134,11 +3223,6 @@ msgstr "Mulțumesc."
 msgid "The Database Manager allow you to view database status information"
 msgstr "Managerul bazei de date vă permite să vizualizați informațiile despre starea bazei de date"
 
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: The URL for your external home page, if you have one.
-msgid "The URL for your external home page, if you have one."
-msgstr "Adresa URL a paginii de start externe, dacă aveți una."
-
 #: components/theme/RequestTimeout/RequestTimeout
 # defaultMessage: The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again.
 msgid "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
@@ -3188,11 +3272,6 @@ msgstr ""
 # defaultMessage: The registration process has been successful. Please check your e-mail inbox for information on how activate your account.
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgstr "Procesul de înregistrare a avut succes. Vă rugăm să verificați căsuța de e-mail pentru informații despre modul de activare a contului dvs."
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: The user portrait/avatar
-msgid "The user portrait/avatar"
-msgstr "Portretul / avatarul utilizatorului"
 
 #: components/manage/Toolbar/More
 # defaultMessage: The working copy was discarded
@@ -3309,6 +3388,26 @@ msgstr "Numărul total de obiecte din memorie din toate cache-urile"
 msgid "Total number of objects in the database"
 msgstr "Numărul total de obiecte din baza de date"
 
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Transactions
+msgid "Transactions"
+msgstr ""
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: #
+msgid "Transactions Checkbox"
+msgstr ""
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Transactions have been sorted
+msgid "Transactions Have Been Sorted"
+msgstr ""
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Transactions have been unsorted
+msgid "Transactions Have Been Unsorted"
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Toolbar/Types
 # defaultMessage: Translate to {lang}
@@ -3365,6 +3464,7 @@ msgstr "UID"
 
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/More
 # defaultMessage: URL Management
 msgid "URL Management"
@@ -3385,15 +3485,23 @@ msgstr ""
 msgid "Unassigned"
 msgstr ""
 
+#: components/manage/Toolbar/More
 #: components/theme/Unauthorized/Unauthorized
 # defaultMessage: Unauthorized
 msgid "Unauthorized"
 msgstr "Neautorizat"
 
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Form/UndoToolbar
 # defaultMessage: Undo
 msgid "Undo"
 msgstr "Anulați"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Undo Controlpanel
+msgid "Undo Controlpanel"
+msgstr ""
 
 #: components/manage/BlockChooser/BlockChooser
 # defaultMessage: Unfold
@@ -3425,6 +3533,11 @@ msgstr "Deconectați traducerea pentru"
 # defaultMessage: Unlock
 msgid "Unlock"
 msgstr "Deblocați"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Unsorted
+msgid "Unsorted"
+msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update
@@ -3628,11 +3741,6 @@ msgstr "Ne cerem scuze pentru neplăceri, dar pagina pe care încercați să o a
 msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
 msgstr "Ne cerem scuze pentru neplăceri, dar nu aveți permisiuni pentru a accesa această resursă."
 
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: We will use this address if you need to recover your password
-msgid "We will use this address if you need to recover your password"
-msgstr "Vom folosi această adresă în cazul în care trebuie să vă recuperați parola"
-
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: The
 msgid "Weeek day of month"
@@ -3648,11 +3756,13 @@ msgstr "Ziua săptămânii"
 msgid "Weekly"
 msgstr "Săptămânal"
 
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/History/History
 # defaultMessage: What
 msgid "What"
 msgstr "Ce"
 
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/History/History
 # defaultMessage: When
 msgid "When"
@@ -3681,6 +3791,7 @@ msgstr ""
 msgid "Whether or not the rule is currently enabled"
 msgstr ""
 
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/History/History
 # defaultMessage: Who
 msgid "Who"
@@ -3748,15 +3859,15 @@ msgstr "Puteți vedea istoricul articolului dvs. mai jos."
 msgid "You can't paste this content here"
 msgstr "Nu puteți lipi acest conținut aici"
 
+#: components/theme/Logout/Logout
+# defaultMessage: You have been logged out from the site.
+msgid "You have been logged out from the site."
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your email is required for reset your password.
 msgid "Your email is required for reset your password."
 msgstr ""
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Your location - either city and country - or in a company setting, where your office is located.
-msgid "Your location - either city and country - or in a company setting, where your office is located."
-msgstr "Locația dvs. - fie orașul, fie țara - fie într-un cadru al companiei, unde se află biroul dvs."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Your password has been set successfully. You may now {link} with your new password.
@@ -4218,6 +4329,11 @@ msgstr "Titlu"
 msgid "toc"
 msgstr "Cuprins"
 
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Update from version {origin} to {destination}
+msgid "upgradeVersions"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be valid url (www.something.com or http(s)://www.something.com)
 msgid "url"
@@ -4237,6 +4353,16 @@ msgstr "Video"
 # defaultMessage: Visit external website
 msgid "visit_external_website"
 msgstr "Vizitează site extern"
+
+#: components/manage/Toolbar/More
+# defaultMessage: You are not authorized to perform this operation.
+msgid "workingCopyErrorUnauthorized"
+msgstr ""
+
+#: components/manage/Toolbar/More
+# defaultMessage: An error occurred while performing this operation.
+msgid "workingCopyGenericError"
+msgstr ""
 
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry

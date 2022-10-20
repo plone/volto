@@ -61,6 +61,10 @@ export {
   revertHistory,
 } from '@plone/volto/actions/history/history';
 export {
+  getTransactions,
+  revertTransactions,
+} from '@plone/volto/actions/transactions/transactions';
+export {
   addMessage,
   removeMessage,
   purgeMessages,
@@ -157,3 +161,4 @@ export {
   createWorkingCopy,
   removeWorkingCopy,
 } from './workingcopy/workingcopy';
+export { getUserSchema } from './userschema/userschema';

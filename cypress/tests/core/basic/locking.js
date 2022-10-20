@@ -13,15 +13,15 @@ describe('Document locking', () => {
   });
 
   afterEach(() => {
-    cy.removeUser('editor1');
-    cy.removeUser('editor2');
+    cy.removeUser('editor1', 'password');
+    cy.removeUser('editor2', 'password');
   });
 
   it('As editor, a page is locked for other users when I edit that page', function () {
     // As an editor I can add a document
     cy.intercept('/**/@logout').as('logout');
 
-    cy.autologin('editor1');
+    cy.autologin('editor1', 'password');
     cy.visit('/document');
     cy.waitForResourceToLoad('@navigation');
     cy.waitForResourceToLoad('@breadcrumbs');
@@ -40,7 +40,7 @@ describe('Document locking', () => {
     cy.wait('@logout');
 
     // As another editor I can see the locked document
-    cy.autologin('editor2');
+    cy.autologin('editor2', 'password');
     cy.visit('/document');
     cy.waitForResourceToLoad('@navigation');
     cy.waitForResourceToLoad('@breadcrumbs');
@@ -57,7 +57,7 @@ describe('Document locking', () => {
     // As an editor I can add a document
     cy.intercept('/**/@logout').as('logout');
 
-    cy.autologin('editor1');
+    cy.autologin('editor1', 'password');
     cy.visit('/document');
     cy.waitForResourceToLoad('@navigation');
     cy.waitForResourceToLoad('@breadcrumbs');
@@ -76,7 +76,7 @@ describe('Document locking', () => {
     cy.wait('@logout');
 
     // As another editor I can see the locked document
-    cy.autologin('editor2');
+    cy.autologin('editor2', 'password');
     cy.visit('/document');
     cy.waitForResourceToLoad('@navigation');
     cy.waitForResourceToLoad('@breadcrumbs');
@@ -96,7 +96,7 @@ describe('Document locking', () => {
     cy.intercept('GET', '/**/document').as('getDoc');
     cy.intercept('PATCH', '/**/document').as('saveDoc');
 
-    cy.autologin('editor1');
+    cy.autologin('editor1', 'password');
     cy.visit('/document');
     cy.waitForResourceToLoad('@navigation');
     cy.waitForResourceToLoad('@breadcrumbs');
@@ -115,7 +115,7 @@ describe('Document locking', () => {
     cy.wait('@logout');
 
     // As another editor I can see the locked document
-    cy.autologin('editor2');
+    cy.autologin('editor2', 'password');
     cy.visit('/document');
     cy.waitForResourceToLoad('@navigation');
     cy.waitForResourceToLoad('@breadcrumbs');

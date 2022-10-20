@@ -47,6 +47,7 @@ import {
   orderContent,
   sortContent,
   updateColumnsContent,
+  getContent,
 } from '@plone/volto/actions';
 import Indexes, { defaultIndexes } from '@plone/volto/constants/Indexes';
 import {
@@ -452,6 +453,8 @@ class Contents extends Component {
       );
     }
     if (this.props.pathname !== nextProps.pathname) {
+      // Refetching content to sync the current object in the toolbar
+      this.props.getContent(getBaseUrl(nextProps.pathname));
       this.setState(
         {
           currentPage: 0,
@@ -1855,6 +1858,7 @@ export const __test__ = compose(
       orderContent,
       sortContent,
       updateColumnsContent,
+      getContent,
     },
   ),
 )(Contents);
@@ -1895,6 +1899,7 @@ export default compose(
       orderContent,
       sortContent,
       updateColumnsContent,
+      getContent,
     },
   ),
   asyncConnect([

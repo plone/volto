@@ -11,7 +11,7 @@ export const nonContentRoutes = [
   '/delete',
   '/diff',
   /\/edit$/,
-  '/history',
+  '/historyview',
   '/layout',
   '/login',
   '/logout',

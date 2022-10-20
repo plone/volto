@@ -17,6 +17,34 @@ These are controlled from the `config.js` settings.
 
 (editor-configuration-defaultBlockType-label)=
 
+
+## `slate.styleMenu`
+
+Add a menu applying CSS classes to text passages or entire paragraphs.
+
+`slate.styleMenu.inlineStyles` are applied to selected text passages, while `slate.styleMenu.blockStyles` are applied to selected paragraphs.
+
+```{image} ../../_static/style_menu.png
+:alt: Style Menu
+```
+
+```js
+slate.styleMenu.inlineStyles = [
+    {
+      cssClass: 'cool-inline-text',
+      label: 'Cool Inline Text',
+      icon: (props) => <Icon name={iconSVG} size="24px" />,
+    },
+  ];
+  slate.styleMenu.blockStyles = [
+    {
+      cssClass: 'underline-block-text',
+      label: 'Cool Block Text',
+      icon: (props) => <Icon name={iconSVG} size="24px" />,
+    },
+  ];
+```
+
 ## `defaultBlockType`
 
 The default block type for a website.

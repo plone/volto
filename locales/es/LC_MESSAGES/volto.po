@@ -1,13 +1,14 @@
 # Gettext Message File for Plone
 # Translators:
-# Leonardo J. Caballero G. <leonardocaballero@gmail.com>, 2019.
+# Leonardo J. Caballero G. <leonardocaballero@gmail.com>, 2019, 2022.
+# Mikel Larreategi <mlarreategi@codesyntax.com>, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-03 03:20-0400\n"
-"PO-Revision-Date: 2022-09-13 09:41+0200\n"
-"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
+"PO-Revision-Date: 2022-10-12 20:28-0400\n"
+"Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language: es\n"
 "Language-Team: ES <LL@li.org>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -24,7 +25,7 @@ msgstr ""
 #: components/manage/Blocks/HTML/Edit
 # defaultMessage: <p>Add some HTML here</p>
 msgid "<p>Add some HTML here</p>"
-msgstr "<p>Escriba HTML aquí</p>"
+msgstr "<p>Añadir algo de HTML aquí</p>"
 
 #: components/theme/Footer/Footer
 # defaultMessage: Accessibility
@@ -131,12 +132,12 @@ msgstr "Agregar Usuario"
 #: components/manage/Blocks/Description/Edit
 # defaultMessage: Add a description…
 msgid "Add a description…"
-msgstr "Agregar una descripción…"
+msgstr "Agregar una descripción..."
 
 #: components/manage/Aliases/Aliases
 # defaultMessage: Add a new alternative url
 msgid "Add a new alternative url"
-msgstr ""
+msgstr "Añadir url alternativa"
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Action added
@@ -151,7 +152,7 @@ msgstr "Añadir bloque"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add block…
 msgid "Add block…"
-msgstr "Agregar bloque…"
+msgstr "Agregar bloque..."
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Condition added
@@ -253,21 +254,51 @@ msgstr ""
 msgid "Additional date"
 msgstr "Fecha adicional"
 
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon could not be installed
+msgid "Addon could not be installed"
+msgstr "No se pudo instalar el complemento"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon could not be uninstalled
+msgid "Addon could not be uninstalled"
+msgstr "No se pudo desinstalar el complemento"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon could not be upgraded
+msgid "Addon could not be upgraded"
+msgstr "No se pudo actualizar el complemento"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon installed succesfuly
+msgid "Addon installed succesfuly"
+msgstr "Complemento instalado correctamente"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon uninstalled succesfuly
+msgid "Addon uninstalled succesfuly"
+msgstr "Complemento desinstalado con éxito"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon upgraded succesfuly
+msgid "Addon upgraded succesfuly"
+msgstr "Complemento actualizado con éxito"
+
 #: config/Views
 # defaultMessage: Album view
 msgid "Album view"
-msgstr ""
+msgstr "Vista de álbum"
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Alias
 msgid "Alias"
-msgstr ""
+msgstr "Alias"
 
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Alias has been added
 msgid "Alias has been added"
-msgstr ""
+msgstr "Alias añadido correctamente"
 
 #: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
@@ -286,12 +317,12 @@ msgstr "Todo"
 #: config/Views
 # defaultMessage: All content
 msgid "All content"
-msgstr ""
+msgstr "Todo el contenido"
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: All existing alternative urls for this site
 msgid "All existing alternative urls for this site"
-msgstr ""
+msgstr "Todas los alias disponibles para este sitio"
 
 #: components/theme/Search/Search
 # defaultMessage: Alphabetically
@@ -313,23 +344,23 @@ msgstr "Dejar vacío si la imagen es puramente decorativa"
 #: components/manage/Blocks/Image/schema
 # defaultMessage: Describe the purpose of the image.
 msgid "Alt text hint link text"
-msgstr "Describir el objeto de la imagen"
+msgstr "Describir el propósito de la imagen"
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Alternative url path (Required)
 msgid "Alternative url path (Required)"
-msgstr ""
+msgstr "Ruta de url alternativa (obligatorio)"
 
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Alternative url path must start with a slash.
 msgid "Alternative url path must start with a slash."
-msgstr ""
+msgstr "La url alternativa debe comenzar con un carácter especial '/'."
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Alternative url path → target url path (date and time of creation, manually created yes/no)
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
-msgstr ""
+msgstr "Url alternativa → url destino (fecha y hora de creación, creado de forma manual si/no)"
 
 #: components/manage/Rules/Rules
 # defaultMessage: Applied to subfolders
@@ -397,11 +428,11 @@ msgstr ""
 #: components/manage/Controlpanels/Rules/ConfigureRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Controlpanels/Rules/Rules
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Diff/Diff
 #: components/manage/History/History
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Rules/Rules
 #: components/manage/Sharing/Sharing
@@ -531,7 +562,6 @@ msgid "Changes applied."
 msgstr "Cambios aplicados."
 
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 # defaultMessage: Changes saved
 msgid "Changes saved"
@@ -856,8 +886,8 @@ msgstr "Fecha (primero los más recientes)"
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Contents/ContentsTagsModal
 #: components/manage/Contents/ContentsWorkflowModal
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -875,7 +905,7 @@ msgstr "Por defecto"
 #: config/Views
 # defaultMessage: Default view
 msgid "Default view"
-msgstr ""
+msgstr "Vista por defecto"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
@@ -1033,7 +1063,7 @@ msgstr "Documento"
 #: config/Views
 # defaultMessage: Document view
 msgid "Document view"
-msgstr ""
+msgstr "Vista de documento"
 
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Download Event
@@ -1060,7 +1090,6 @@ msgstr "Arrastre aquí el archivo para añadir un nuevo"
 msgid "Drop files here ..."
 msgstr "Arrastrar archivos aquí..."
 
-#: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
 # defaultMessage: E-mail
 msgid "E-mail"
@@ -1131,7 +1160,7 @@ msgstr "Correo electrónico enviado"
 #: components/manage/Blocks/Maps/Edit
 # defaultMessage: Embed code error, please follow the instructions and try again.
 msgid "Embed code error, please follow the instructions and try again."
-msgstr "Ha habido un error el código de encapsulación, siga las instrucciones e inténtelo de nuevo."
+msgstr "Ha habido un error el código embebido, por favor, siga las instrucciones e inténtelo de nuevo."
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Empty object list
@@ -1177,50 +1206,49 @@ msgstr "Introduzca una URL o seleccione un elemento"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Enter a username above to search or click 'Show All'
 msgid "Enter a username above to search or click 'Show All'"
-msgstr "Introduzca un nombre de usuario o haga clic en "Mostrar todos""
+msgstr "Introduzca un nombre de usuario o haga clic en 'Mostrar todos'"
 
 #: components/theme/Register/Register
 # defaultMessage: Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-msgstr "Ingrese una dirección de correo electrónico. Este será el nombre de usuario. Nosotros respetamos su privacidad: y no daremos la dirección de correo electrónico a terceros, o la expondremos de alguna forma en el portal."
+msgstr "Introduzca una dirección de correo electrónico. Este será el nombre de usuario. Nosotros respetamos su privacidad: y no daremos la dirección de correo electrónico a terceros, o la expondremos de alguna forma en el portal."
 
-#: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
 # defaultMessage: Enter full name, e.g. John Smith.
 msgid "Enter full name, e.g. John Smith."
-msgstr "Ingrese el nombre completo, por ejemplo Leonardo Caballero."
+msgstr "Introduzca el nombre completo, por ejemplo Leonardo Caballero."
 
 #: components/manage/Blocks/Maps/Edit
 # defaultMessage: Enter map Embed Code
 msgid "Enter map Embed Code"
-msgstr "Introduzca el código de un mapa"
+msgstr "Introduzca el código embebido de un mapa"
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target.
 msgid "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
-msgstr ""
+msgstr "Introduzca la ruta absoluta del destino. La ruta debe comenzar por '/'. El destino debe existir o ser una url alternativa de otro destino."
 
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring.
 msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
-msgstr ""
+msgstr "Introduzca la ruta de la url alternativa. La ruta debe comenzar por '/'. Solo tendrán redirección aquellas urls que creen errores 404 No encontrado."
 
 #: components/manage/Preferences/ChangePassword
 # defaultMessage: Enter your current password.
 msgid "Enter your current password."
-msgstr "Ingrese su contraseña actual."
+msgstr "Introduzca su contraseña actual."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your email for verification.
 msgid "Enter your email for verification."
-msgstr "Introduzca su dirección de correo electrónico para verificar."
+msgstr "Introduzca su correo electrónico para verificar."
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your new password. Minimum 5 characters.
 msgid "Enter your new password. Minimum 5 characters."
-msgstr "Ingrese su nueva contraseña. Mínimo 5 caracteres."
+msgstr "Introduzca su nueva contraseña. Mínimo 5 caracteres."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your username for verification.
@@ -1228,9 +1256,12 @@ msgid "Enter your username for verification."
 msgstr "Introduzca su nombre de usuario para verificar."
 
 #: components/manage/Add/Add
+#: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
+#: components/manage/Toolbar/More
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
@@ -1242,7 +1273,7 @@ msgstr "Error"
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Error
 msgid "ErrorHeader"
-msgstr ""
+msgstr "Error"
 
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Event
@@ -1252,12 +1283,12 @@ msgstr ""
 #: config/Views
 # defaultMessage: Event listing
 msgid "Event listing"
-msgstr ""
+msgstr "Listado de eventos"
 
 #: config/Views
 # defaultMessage: Event view
 msgid "Event view"
-msgstr ""
+msgstr "Vista de evento"
 
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Exclude from navigation
@@ -1277,7 +1308,7 @@ msgstr "Exluido de la navegación"
 #: components/manage/Aliases/Aliases
 # defaultMessage: Existing alternative urls for this item
 msgid "Existing alternative urls for this item"
-msgstr ""
+msgstr "Alias disponibles para este elemento"
 
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Expand sidebar
@@ -1334,6 +1365,11 @@ msgstr "Facetas en la derecha"
 msgid "Facets on top"
 msgstr "Facetas arriba"
 
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Failed to undo transactions
+msgid "Failed To Undo Transactions"
+msgstr "Ha ocurrido un error al deshacer transacciones"
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Field
 msgid "Field"
@@ -1352,7 +1388,7 @@ msgstr "Tamaño del archivo"
 #: config/Views
 # defaultMessage: File view
 msgid "File view"
-msgstr ""
+msgstr "Vista de archivo"
 
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Filename
@@ -1367,7 +1403,7 @@ msgstr ""
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Filter by prefix
 msgid "Filter by prefix"
-msgstr ""
+msgstr "Filtrar por prefijo"
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Filter users by groups
@@ -1377,7 +1413,7 @@ msgstr "Filtrar usuarios por grupos"
 #: components/manage/Contents/Contents
 # defaultMessage: Filter…
 msgid "Filter…"
-msgstr "Filtrar…"
+msgstr "Filtrar..."
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: First
@@ -1402,7 +1438,7 @@ msgstr "Carpeta"
 #: config/Views
 # defaultMessage: Folder listing
 msgid "Folder listing"
-msgstr ""
+msgstr "Listado de la carpeta"
 
 #: components/theme/Forbidden/Forbidden
 # defaultMessage: Forbidden
@@ -1425,7 +1461,6 @@ msgstr "De"
 msgid "Full"
 msgstr "Completo"
 
-#: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
 # defaultMessage: Full Name
 msgid "Full Name"
@@ -1454,7 +1489,7 @@ msgstr "Rol global"
 #: components/manage/Blocks/Maps/Edit
 # defaultMessage: Google Maps Embedded Block
 msgid "Google Maps Embedded Block"
-msgstr "Bloque incrustado de Google Maps"
+msgstr "Bloque embebido de Google Maps"
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Group
@@ -1518,7 +1553,7 @@ msgstr "Ocultar respuestas"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hide facet?
 msgid "Hide facet?"
-msgstr "¿Esconder la faceta?"
+msgstr "¿Ocultar la faceta?"
 
 #: components/manage/History/History
 #: components/manage/Toolbar/More
@@ -1542,11 +1577,6 @@ msgstr "Historial de {title}"
 # defaultMessage: Home
 msgid "Home"
 msgstr "Inicio"
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Home page
-msgid "Home page"
-msgstr "Página personal"
 
 #: components/manage/Contents/Contents
 # defaultMessage: ID
@@ -1577,7 +1607,7 @@ msgstr "Si está seguro de que el usuario ha dejado de editar el elemento puedes
 #: components/theme/Unauthorized/Unauthorized
 # defaultMessage: If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}.
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
-msgstr "Si usted esta seguro de haber ingresado la dirección web correcta pero mas obtiene un, por favor, contante al {site_admin}."
+msgstr "Si está seguro de haber introducido una dirección correcta pero recibe un error, contacte con el {site_admin}."
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
@@ -1600,7 +1630,7 @@ msgstr "Tamaño de la imagen"
 #: config/Views
 # defaultMessage: Image view
 msgid "Image view"
-msgstr ""
+msgstr "Vista de imagen"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Include this occurence
@@ -1750,7 +1780,7 @@ msgstr "Idioma"
 #: components/manage/Widgets/FormFieldWrapper
 # defaultMessage: Language independent field.
 msgid "Language independent field."
-msgstr "Campo independiente de idioma"
+msgstr "Campo independiente de idioma."
 
 #: components/manage/Widgets/ImageSizeWidget
 # defaultMessage: Large
@@ -1802,12 +1832,12 @@ msgstr "Enlace"
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link more
 msgid "Link more"
-msgstr "Enlazar "más""
+msgstr "Enlace más"
 
 #: config/Views
 # defaultMessage: Link redirect view
 msgid "Link redirect view"
-msgstr ""
+msgstr "Vista de redirección del enlace"
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
@@ -1836,7 +1866,7 @@ msgstr "Listado"
 #: config/Views
 # defaultMessage: Listing view
 msgid "Listing view"
-msgstr ""
+msgstr "Listado"
 
 #: components/theme/Comments/Comments
 # defaultMessage: Load more...
@@ -1848,11 +1878,6 @@ msgstr "Cargar más"
 msgid "Loading"
 msgstr "Cargando"
 
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Location
-msgid "Location"
-msgstr "Ubicación"
-
 #: components/theme/Login/Login
 # defaultMessage: Login
 msgid "Log In"
@@ -1863,6 +1888,11 @@ msgstr "Inicio de Sesión"
 # defaultMessage: Log in
 msgid "Log in"
 msgstr "Inicio de sesión"
+
+#: components/theme/Logout/Logout
+# defaultMessage: Logged out
+msgid "Logged out"
+msgstr ""
 
 #: components/theme/Login/Login
 # defaultMessage: Login
@@ -1900,6 +1930,11 @@ msgstr "Hacer la tabla compacta"
 msgid "Manage Translations"
 msgstr "Administrar traducciones"
 
+#: components/manage/Toolbar/More
+# defaultMessage: Manage content…
+msgid "Manage content…"
+msgstr "Administrar contenido..."
+
 #: components/manage/Multilingual/ManageTranslations
 # defaultMessage: Manage translations for {title}
 msgid "Manage translations for {title}"
@@ -1908,12 +1943,12 @@ msgstr "Administrar traducciones de {title}"
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Manual
 msgid "Manual"
-msgstr ""
+msgstr "Manual"
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Manually or automatically added?
 msgid "Manually or automatically added?"
-msgstr ""
+msgstr "¿Añadidos de forma manual o automática?"
 
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Maps/schema
@@ -1929,7 +1964,7 @@ msgstr "URL del mapa"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Maximum length is {len}.
 msgid "Maximum length is {len}."
-msgstr "La longitud máxima es {len}"
+msgstr "La longitud máxima es {len}."
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Maximum value is {len}.
@@ -1990,7 +2025,7 @@ msgstr "Más"
 #: config/Views
 # defaultMessage: Mosaic layout
 msgid "Mosaic layout"
-msgstr ""
+msgstr "Vista de mosaic"
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Move down
@@ -2057,7 +2092,7 @@ msgstr "Noticia"
 #: config/Views
 # defaultMessage: News item view
 msgid "News item view"
-msgstr ""
+msgstr "Vista de noticia"
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Contents/ContentsPropertiesModal
@@ -2065,6 +2100,21 @@ msgstr ""
 # defaultMessage: No
 msgid "No"
 msgstr "No"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: No transactions found
+msgid "No Transactions Found"
+msgstr "No se han encontrado transacciones"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: No transactions selected
+msgid "No Transactions Selected"
+msgstr "No se han seleccionado transacciones"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: No transactions selected to do undo
+msgid "No Transactions Selected To Do Undo"
+msgstr "No se han seleccionado transacciones a deshacer"
 
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: No Video selected
@@ -2099,7 +2149,7 @@ msgstr "No hay imagen en el campo de imagen"
 #: components/manage/Blocks/Listing/ListingBody
 # defaultMessage: No items found in this container.
 msgid "No items found in this container."
-msgstr "No hay elementos en esta carpeta"
+msgstr "No hay elementos en esta carpeta."
 
 #: components/manage/Widgets/ObjectBrowserWidget
 # defaultMessage: No items selected
@@ -2172,6 +2222,11 @@ msgstr "Sin flujo de trabajo"
 msgid "None"
 msgstr "Ninguno"
 
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Note
+msgid "Note"
+msgstr "Nota"
+
 #: components/manage/Controlpanels/Users/UsersControlpanel
 # defaultMessage: Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group.
 msgid "Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group."
@@ -2198,9 +2253,9 @@ msgid "Ok"
 msgstr "Ok"
 
 #: components/manage/Widgets/IdWidget
-# defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed.
-msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed."
-msgstr "Solo se permiten letras minúsculas (a-z) sin tildes, números (0-9) y los caracteres "-" y "_"."
+# defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.
+msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed."
+msgstr "Solo letras minúsculas (a-z) sin tildes, números (0-9), y los caracteres "-", "_", y "." están permitidos."
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -2276,7 +2331,6 @@ msgstr "Los permisos se han actualizado correctamente"
 msgid "Permissions updated"
 msgstr "Permisos actualizados"
 
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Personal Information
 msgid "Personal Information"
@@ -2297,17 +2351,17 @@ msgstr "Herramientas personales"
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first.
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
-msgstr "Las personas responsables de la creación del contenido de este elemento. Por favor, ingrese una lista de nombres de usuarios, uno por linea. El principal autor debe aparecer de primer lugar."
+msgstr "Las personas responsables de la creación del contenido de este elemento. Por favor, introduzca una lista de nombres de usuarios, uno por linea. El principal autor debe aparecer de primer lugar."
 
 #: components/manage/Blocks/Video/Body
 # defaultMessage: Please enter a valid URL by deleting the block and adding a new video block.
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
-msgstr "Por favor, ingrese una URL válida eliminando el bloque y agregando un nuevo bloque de vídeo."
+msgstr "Por favor, introduzca una URL válida eliminando el bloque y agregando un nuevo bloque de vídeo."
 
 #: components/manage/Blocks/Maps/Edit
 # defaultMessage: Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it.
 msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
-msgstr "Por favor introduzca el código de encapsulamiento de Google Maps que se obtiene en Google Maps -> Compartir -> Compartir mapa. Tiene que contener una etiqueta <iframe>"
+msgstr "Por favor, introduzca el código embebido de Google Maps que se obtiene en Google Maps -> Compartir -> Compartir mapa. Tiene que contener una etiqueta <iframe>."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Please fill out the form below to set your password.
@@ -2317,7 +2371,7 @@ msgstr "Por favor, complete el siguiente formulario para establecer su contrase�
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Please search for users or use the filters on the side.
 msgid "Please search for users or use the filters on the side."
-msgstr "Busque los usuarios o utilice los filtros de un lado"
+msgstr "Busque los usuarios o utilice los filtros de un lado."
 
 #: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
 # defaultMessage: Please upgrade to plone.restapi >= 8.24.0.
@@ -2410,18 +2464,18 @@ msgstr "Consulta"
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Re-enter the password. Make sure the passwords are identical.
 msgid "Re-enter the password. Make sure the passwords are identical."
-msgstr "Ingrese de nuevo su contraseña. Debe asegurarse que las contraseñas sean idénticas."
+msgstr "Introduzca de nuevo su contraseña. Debe asegurarse que las contraseñas sean idénticas."
 
 #: components/theme/Search/Search
 #: components/theme/View/SummaryView
 # defaultMessage: Read More…
 msgid "Read More…"
-msgstr "Leer Más…"
+msgstr "Leer Más..."
 
 #: components/manage/Contents/Contents
 # defaultMessage: Rearrange items by…
 msgid "Rearrange items by…"
-msgstr "Reordenar elementos por…"
+msgstr "Reordenar elementos por..."
 
 #: components/manage/Widgets/RecurrenceWidget/EndField
 # defaultMessage: Ends
@@ -2468,7 +2522,7 @@ msgstr "Relevancia"
 #: components/manage/Aliases/Aliases
 # defaultMessage: Remove
 msgid "Remove"
-msgstr ""
+msgstr "Eliminar"
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item
@@ -2483,7 +2537,7 @@ msgstr "Eliminar repetición"
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Remove selected
 msgid "Remove selected"
-msgstr ""
+msgstr "Eliminar seleccionados"
 
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Remove term
@@ -2509,7 +2563,7 @@ msgstr "Renombrar"
 #: components/manage/Contents/ContentsRenameModal
 # defaultMessage: Renaming items...
 msgid "Rename Items Loading Message"
-msgstr "Renombrar el mensaje "elementos cargando""
+msgstr "Cambiando el nombre de los elementos..."
 
 #: components/manage/Contents/ContentsRenameModal
 # defaultMessage: Rename items
@@ -2656,6 +2710,11 @@ msgstr "Guardar"
 msgid "Save recurrence"
 msgstr "Guardar repetición"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Saved
+msgid "Saved"
+msgstr "Guardado"
+
 #: components/manage/Controlpanels/ContentTypesActions
 # defaultMessage: Schema
 msgid "Schema"
@@ -2754,7 +2813,7 @@ msgstr "Título de la sección"
 #: components/manage/Sidebar/ObjectBrowserNav
 # defaultMessage: Select
 msgid "Select"
-msgstr "Seleccionar"
+msgstr "Seleccione"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: Select a date to add to recurrence
@@ -2764,7 +2823,7 @@ msgstr "Seleccione una fecha para añadirla a la repetición"
 #: components/manage/Contents/Contents
 # defaultMessage: Select columns to show
 msgid "Select columns to show"
-msgstr "Selecciona la columna a mostrar"
+msgstr "Seleccionar columnas a mostrar"
 
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Select the transition to be used for modifying the items state.
@@ -2774,12 +2833,12 @@ msgstr "Seleccione la transición a ser efectuada al cambiar el estado del conte
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Selected dates
 msgid "Selected dates"
-msgstr "Seleccionar fechas"
+msgstr "Fechas seleccionadas"
 
 #: components/manage/Sidebar/ObjectBrowserBody
 # defaultMessage: Selected items
 msgid "Selected items"
-msgstr "Seleccionar elementos"
+msgstr "Elementos seleccionados"
 
 #: components/manage/Sidebar/ObjectBrowserBody
 # defaultMessage: of
@@ -2798,12 +2857,17 @@ msgstr "Selección"
 #: components/manage/Widgets/TokenWidget
 # defaultMessage: Select…
 msgid "Select…"
-msgstr "Selecciona…"
+msgstr "Seleccione..."
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Send
 msgid "Send"
 msgstr "Enviar"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Send a confirmation mail with a link to set the password.
+msgid "Send a confirmation mail with a link to set the password."
+msgstr "Enviar un correo de confirmación con un enlace para establecer la contraseña."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Set my password
@@ -2884,6 +2948,11 @@ msgstr "¿Mostrar campo de búsqueda?"
 msgid "Show sorting?"
 msgstr "¿Mostrar criterios de ordenación?"
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Show total results
+msgid "Show total results"
+msgstr "Mostrar resultados totales"
+
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Shrink sidebar
 msgid "Shrink sidebar"
@@ -2939,7 +3008,12 @@ msgstr "Pequeño"
 #: error
 # defaultMessage: Sorry, something went wrong with your request
 msgid "Sorry, something went wrong with your request"
-msgstr "Lo siento, algo estuvo mal con su solicitud "
+msgstr "Lo siento, algo estuvo mal con su solicitud"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Sort by
+msgid "Sort By"
+msgstr "Ordenar por"
 
 #: components/theme/Search/Search
 # defaultMessage: Sort by:
@@ -2956,12 +3030,22 @@ msgstr "Ordenar por"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Sort on label
 msgid "Sort on label"
-msgstr "Order por etiqueta"
+msgstr "Ordenar por etiqueta"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Sort on options
 msgid "Sort on options"
 msgstr "Ordenar por opciones"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Sort transactions by User-Name, Path or Date
+msgid "Sort transactions by User-Name, Path or Date"
+msgstr "Ordenar transacciones por nombre de usuario, ruta o fecha"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Sorted
+msgid "Sorted"
+msgstr "Ordenado"
 
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Blocks/Image/schema
@@ -3010,7 +3094,7 @@ msgstr ""
 #: components/manage/Multilingual/CompareLanguages
 # defaultMessage: Stop compare
 msgid "Stop compare"
-msgstr "Para la comparación"
+msgstr "Detener la comparación"
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: String
@@ -3035,6 +3119,7 @@ msgstr "Asunto"
 #: components/manage/Actions/Actions
 #: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -3042,9 +3127,9 @@ msgstr "Asunto"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Controlpanels/Rules/Rules
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Rules/Rules
 #: components/theme/ContactForm/ContactForm
@@ -3052,6 +3137,11 @@ msgstr "Asunto"
 # defaultMessage: Success
 msgid "Success"
 msgstr "Éxito"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Successfully undone transactions
+msgid "Successfully Undone Transactions"
+msgstr "Las transacciones se han deshecho correctamente"
 
 #: config/Blocks
 # defaultMessage: Summary
@@ -3061,7 +3151,7 @@ msgstr "Resumen"
 #: config/Views
 # defaultMessage: Summary view
 msgid "Summary view"
-msgstr ""
+msgstr "Vista de resumen"
 
 #: components/theme/LanguageSelector/LanguageSelector
 # defaultMessage: Switch to
@@ -3082,7 +3172,7 @@ msgstr "Tabla de contenidos"
 #: config/Views
 # defaultMessage: Tabular view
 msgid "Tabular view"
-msgstr ""
+msgstr "Vista tabular"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsTagsModal
@@ -3103,12 +3193,12 @@ msgstr "Categoría a remover"
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Target
 msgid "Target"
-msgstr ""
+msgstr "Destino"
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Target Path (Required)
 msgid "Target Path (Required)"
-msgstr ""
+msgstr "Ruta del destino (obligatorio)"
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Target memory size per cache in bytes
@@ -3123,7 +3213,7 @@ msgstr "Número objetivo de elementos en la memoria por caché"
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Target url path must start with a slash.
 msgid "Target url path must start with a slash."
-msgstr ""
+msgstr "El camino de destino debe comenzar con /."
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Text
@@ -3142,12 +3232,7 @@ msgstr "Gracias."
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: The Database Manager allow you to view database status information
 msgid "The Database Manager allow you to view database status information"
-msgstr "El Bestor de la Base de Datos permite ver la infromación del estado de la base de datos"
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: The URL for your external home page, if you have one.
-msgid "The URL for your external home page, if you have one."
-msgstr "La dirección URL de su página personal externa, si tiene una."
+msgstr "El Gestor de la Base de Datos permite ver la información del estado de la base de datos"
 
 #: components/theme/RequestTimeout/RequestTimeout
 # defaultMessage: The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again.
@@ -3157,7 +3242,7 @@ msgstr "El servidor no está respondiendo por superar el tiempo de conexión o u
 #: components/theme/ConnectionRefused/ConnectionRefused
 # defaultMessage: The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable.
 msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
-msgstr "La base de datos no responde, verifique si Plone está en marcha, revise la configuración de su proyecto y el apiPath (o si está utilizando el proxy intero, devProxyToApiPath) o la varialbe RAZZLE_API_PATH de Volto."
+msgstr "La base de datos no responde, por favor, verifique si Plone está en marcha, revise la configuración de su proyecto y el apiPath (o si está utilizando el proxy interno, devProxyToApiPath) o la variable RAZZLE_API_PATH de Volto."
 
 #: components/theme/CorsError/CorsError
 # defaultMessage: The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources.
@@ -3167,7 +3252,7 @@ msgstr "La base de datos responde pero las cabeceras CORS no están configuradas
 #: components/theme/CorsError/CorsError
 # defaultMessage: The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
 msgid "The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
-msgstr "La base de datos no responde, disculpe las molestias. Intente cargar la página otra vez. Si el problema continúa póngase en contacto con el administrador del sitio."
+msgstr "La base de datos no responde, disculpe las molestias. Por favor, intente cargar la página otra vez. Si el problema continúa, por favor, póngase en contacto con el administrador del sitio."
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: The button presence disables the live search, the query is issued when you press ENTER
@@ -3182,7 +3267,7 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: The item could not be deleted.
 msgid "The item could not be deleted."
-msgstr "El elemento no se ha podido eliminar"
+msgstr "El elemento no se ha podido eliminar."
 
 #: components/theme/View/LinkView
 # defaultMessage: The link address is:
@@ -3192,17 +3277,12 @@ msgstr "La dirección del enlace es:"
 #: components/manage/Aliases/Aliases
 # defaultMessage: The provided alternative url already exists!
 msgid "The provided alternative url already exists!"
-msgstr ""
+msgstr "¡La URL alternativa ya existe!"
 
 #: components/theme/Register/Register
 # defaultMessage: The registration process has been successful. Please check your e-mail inbox for information on how activate your account.
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
-msgstr "El registro fue exitoso. Verifique su bandeja de entrada para obtener información sobre cómo activar su cuenta."
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: The user portrait/avatar
-msgid "The user portrait/avatar"
-msgstr "El retrato/avatar del usuario"
+msgstr "El registro fue exitoso. Por favor, verifique su bandeja de entrada para obtener información sobre cómo activar su cuenta."
 
 #: components/manage/Toolbar/More
 # defaultMessage: The working copy was discarded
@@ -3217,7 +3297,7 @@ msgstr "El {plonecms} es {copyright} 2000-{current_year} por la {plonefoundation
 #: components/theme/CorsError/CorsError
 # defaultMessage: There is a configuration problem on the backend
 msgid "There is a configuration problem on the backend"
-msgstr "Hay un error de configuración en el servidor."
+msgstr "Hay un error de configuración en el servidor"
 
 #: components/manage/Form/InlineForm
 # defaultMessage: There were some errors
@@ -3263,7 +3343,7 @@ msgstr "Este nombre se mostrará en la URL."
 #: components/theme/NotFound/NotFound
 # defaultMessage: This page does not seem to exist…
 msgid "This page does not seem to exist…"
-msgstr "Esta página no existe…"
+msgstr "Esta página no existe..."
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: This rule is assigned to the following locations:
@@ -3319,6 +3399,26 @@ msgstr "Número total de objetos en todas las cachés"
 msgid "Total number of objects in the database"
 msgstr "Número total de objetos en la base de datos"
 
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Transactions
+msgid "Transactions"
+msgstr "Transacciones"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: #
+msgid "Transactions Checkbox"
+msgstr "Casilla de comprobación de transacciones"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Transactions have been sorted
+msgid "Transactions Have Been Sorted"
+msgstr "Las transacciones se han ordenado"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Transactions have been unsorted
+msgid "Transactions Have Been Unsorted"
+msgstr "Las transacciones se han desordenado"
+
 #: components/manage/Add/Add
 #: components/manage/Toolbar/Types
 # defaultMessage: Translate to {lang}
@@ -3361,12 +3461,12 @@ msgstr "Escribir texto..."
 #: components/manage/Blocks/Text/Edit
 # defaultMessage: Type text…
 msgid "Type text…"
-msgstr "Ingrese texto…"
+msgstr "Ingrese texto..."
 
 #: components/manage/Blocks/Title/Edit
 # defaultMessage: Type the title…
 msgid "Type the title…"
-msgstr "Ingrese el título…"
+msgstr "Ingrese el título..."
 
 #: components/manage/Contents/Contents
 # defaultMessage: UID
@@ -3375,15 +3475,16 @@ msgstr "UID"
 
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/More
 # defaultMessage: URL Management
 msgid "URL Management"
-msgstr ""
+msgstr "Gestión de URLs"
 
 #: components/manage/Aliases/Aliases
 # defaultMessage: URL Management for {title}
 msgid "URL Management for {title}"
-msgstr ""
+msgstr "Gestión de URLs para {title}"
 
 #: components/manage/Rules/Rules
 # defaultMessage: Unassign
@@ -3395,15 +3496,23 @@ msgstr ""
 msgid "Unassigned"
 msgstr ""
 
+#: components/manage/Toolbar/More
 #: components/theme/Unauthorized/Unauthorized
 # defaultMessage: Unauthorized
 msgid "Unauthorized"
 msgstr "No autorizado"
 
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Form/UndoToolbar
 # defaultMessage: Undo
 msgid "Undo"
 msgstr "Deshacer"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Undo Controlpanel
+msgid "Undo Controlpanel"
+msgstr "Panel de control de deshacer"
 
 #: components/manage/BlockChooser/BlockChooser
 # defaultMessage: Unfold
@@ -3436,6 +3545,11 @@ msgstr "Eliminar enlace de traducción de"
 msgid "Unlock"
 msgstr "Desbloquear"
 
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Unsorted
+msgid "Unsorted"
+msgstr "Desordenadas"
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update
 msgid "Update"
@@ -3464,7 +3578,7 @@ msgstr "Cargar"
 #: components/manage/Blocks/LeadImage/Edit
 # defaultMessage: Upload a lead image in the 'Lead Image' content field.
 msgid "Upload a lead image in the 'Lead Image' content field."
-msgstr "Cargar una imagen principal en el campo 'Imagen Principal'"
+msgstr "Cargar una imagen principal en el campo 'Imagen Principal'."
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 # defaultMessage: Upload a new image
@@ -3555,7 +3669,7 @@ msgstr "Usuarios y Grupos"
 #: components/manage/Aliases/Aliases
 # defaultMessage: Using this form, you can manage alternative urls for an item. This is an easy way to make an item available under two different URLs.
 msgid "Using this form, you can manage alternative urls for an item. This is an easy way to make an item available under two different URLs."
-msgstr ""
+msgstr "Utilizando este formulario puede gestionar las urls alternativas de un elemento. Esta es una forma sencilla de presentar una página con dos URLs diferentes."
 
 #: helpers/Extensions/withBlockSchemaEnhancer
 # defaultMessage: Variation
@@ -3626,7 +3740,7 @@ msgstr "Aviso del modo desarrollo"
 #: components/theme/ConnectionRefused/ConnectionRefused
 # defaultMessage: We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later.
 msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
-msgstr "Disculpe las molestias, pero la base de datos no está disponible en este momento. Inténtelo más tarde."
+msgstr "Disculpe las molestias, pero la base de datos no está disponible en este momento. Por favor, inténtelo más tarde."
 
 #: components/theme/NotFound/NotFound
 # defaultMessage: We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for.
@@ -3637,11 +3751,6 @@ msgstr "Disculpe las molestias, la página a la que está intentando acceder no 
 # defaultMessage: We apologize for the inconvenience, but you don't have permissions on this resource.
 msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
 msgstr "Disculpe las molestias pero no tiene permisos en este elemento."
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: We will use this address if you need to recover your password
-msgid "We will use this address if you need to recover your password"
-msgstr "Usaremos esta dirección de correo electrónico, en el caso si usted necesita recuperar su contraseña"
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: The
@@ -3658,11 +3767,13 @@ msgstr "Día de la semana"
 msgid "Weekly"
 msgstr "Semanalmente"
 
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/History/History
 # defaultMessage: What
 msgid "What"
 msgstr "Que"
 
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/History/History
 # defaultMessage: When
 msgid "When"
@@ -3691,6 +3802,7 @@ msgstr ""
 msgid "Whether or not the rule is currently enabled"
 msgstr ""
 
+#: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/History/History
 # defaultMessage: Who
 msgid "Who"
@@ -3726,7 +3838,7 @@ msgstr "Sí"
 #: components/theme/Unauthorized/Unauthorized
 # defaultMessage: You are trying to access a protected resource, please {login} first.
 msgid "You are trying to access a protected resource, please {login} first."
-msgstr "Está intentando acceder a un elemento protegido, haga {login} primero"
+msgstr "Está intentando acceder a un elemento protegido, por favor, haga {login} primero."
 
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 # defaultMessage: You are using an outdated browser
@@ -3758,15 +3870,15 @@ msgstr "Usted puede ver el historial de su elemento a continuación."
 msgid "You can't paste this content here"
 msgstr "No puede pegar el contenido aquí"
 
+#: components/theme/Logout/Logout
+# defaultMessage: You have been logged out from the site.
+msgid "You have been logged out from the site."
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your email is required for reset your password.
 msgid "Your email is required for reset your password."
 msgstr "La dirección de correo electrónico es necesaria para restablecer su contraseña."
-
-#: components/manage/Preferences/PersonalInformation
-# defaultMessage: Your location - either city and country - or in a company setting, where your office is located.
-msgid "Your location - either city and country - or in a company setting, where your office is located."
-msgstr "Su ubicación, ya sea ciudad y país, o en un entorno de empresa, donde se encuentra su oficina."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Your password has been set successfully. You may now {link} with your new password.
@@ -3797,7 +3909,7 @@ msgstr "Común"
 #: components/manage/Multilingual/CompareLanguages
 # defaultMessage: Compare to language
 msgid "compare_to"
-msgstr "Comparar"
+msgstr "Comparar con el idioma"
 
 #: components/manage/Blocks/Block/EditBlockWrapper
 # defaultMessage: delete
@@ -3807,7 +3919,7 @@ msgstr "eliminar"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 # defaultMessage: You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser.
 msgid "deprecated_browser_notice_message"
-msgstr "Aviso de navegador anticuado"
+msgstr "Está utilizando {browsername} {browserversion}, que está obsoleto por su proveedor. Eso significa que no recibe actualizaciones de seguridad y no está preparado para las funciones web modernas actuales, lo que deteriora la experiencia del usuario. Por favor, actualice a un navegador moderno."
 
 #: config/Blocks
 # defaultMessage: Description
@@ -3817,7 +3929,7 @@ msgstr "Descripción"
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: For security reasons, we store your password encrypted, and cannot mail it to you. If you would like to reset your password, fill out the form below and we will send you an email at the address you gave when you registered to start the process of resetting your password.
 msgid "description_lost_password"
-msgstr "Por razones de seguridad, las contraseñas se almacenan en forma cifrada y, por lo tanto, no se le pueden enviar. Si desea restablecer su contraseña, complete el siguiente formulario: se enviarán más instrucciones para completar el proceso a la dirección de correo electrónico que especificó al registrarse."
+msgstr "Por razones de seguridad, almacenamos su contraseña cifrada y no podemos enviársela por correo. Si desea restablecer su contraseña, complete el formulario a continuación y le enviaremos un correo electrónico a la dirección que proporcionó cuando se registró para iniciar el proceso de restablecimiento de su contraseña."
 
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your password reset request has been mailed. It should arrive in your mailbox shortly. When you receive the message, visit the address it contains to reset your password.
@@ -3832,7 +3944,7 @@ msgstr "Borrador"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be valid email (something@domain.com)
 msgid "email"
-msgstr "Correo electrónico"
+msgstr "El valor introducido debe ser un correo electrónico válido (algo@dominio.com)"
 
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: All dates
@@ -3857,7 +3969,7 @@ msgstr "Teléfono del contacto"
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Website
 msgid "event_website"
-msgstr "Web"
+msgstr "Sitio web"
 
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: What
@@ -3882,7 +3994,7 @@ msgstr "Solicitud de confirmación de restablecimiento de contraseña enviada"
 #: config/Blocks
 # defaultMessage: Hero
 msgid "hero"
-msgstr "Hero"
+msgstr "Héroe"
 
 #: config/Blocks
 # defaultMessage: HTML
@@ -3897,7 +4009,7 @@ msgstr "Imagen"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be integer
 msgid "integer"
-msgstr "Número entero"
+msgstr "El valor introducido debe ser un número entero"
 
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Intranet
@@ -3948,7 +4060,7 @@ msgstr "Tamaño máximo"
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: End of the range (including the value itself)
 msgid "maximum"
-msgstr "Máximo"
+msgstr "Fin del rango (incluido el valor en sí)"
 
 #: config/Blocks
 # defaultMessage: Media
@@ -3963,7 +4075,7 @@ msgstr "Tamaño mínimo"
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Start of the range
 msgid "minimum"
-msgstr "Mínimo"
+msgstr "Comienzo de el rango"
 
 #: config/Blocks
 # defaultMessage: Most used
@@ -3985,7 +4097,7 @@ msgstr "No hay estado del flujo de trabajo"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be number
 msgid "number"
-msgstr "Número"
+msgstr "El valor introducido debe ser un número"
 
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
 #: components/manage/Widgets/RecurrenceWidget/ByYearField
@@ -4016,7 +4128,7 @@ msgstr "Publicado"
 #: components/manage/Widgets/QueryWidget
 # defaultMessage: Select…
 msgid "querystring-widget-select"
-msgstr "Seleccionar la consulta"
+msgstr "Seleccione..."
 
 #: components/theme/Search/Search
 # defaultMessage: results
@@ -4031,12 +4143,12 @@ msgstr "regrese al directorio raíz del sitio"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: and
 msgid "rrule_and"
-msgstr "Y"
+msgstr "y"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: (~approximate)
 msgid "rrule_approximate"
-msgstr "Aproximadamente"
+msgstr "(~aproximadamente)"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: at
@@ -4106,7 +4218,7 @@ msgstr "meses"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: nd
 msgid "rrule_nd"
-msgstr " "
+msgstr "º"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: on
@@ -4116,7 +4228,7 @@ msgstr "el"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: on the
 msgid "rrule_on the"
-msgstr "el "
+msgstr "en el"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: or
@@ -4126,17 +4238,17 @@ msgstr "o"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: rd
 msgid "rrule_rd"
-msgstr " "
+msgstr "º"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: st
 msgid "rrule_st"
-msgstr " "
+msgstr "º"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: th
 msgid "rrule_th"
-msgstr " "
+msgstr "º"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: the
@@ -4228,10 +4340,15 @@ msgstr "Título"
 msgid "toc"
 msgstr "Tabla de contenidos"
 
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Update from version {origin} to {destination}
+msgid "upgradeVersions"
+msgstr "Actualizar de la versión {origin} a {destination}"
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be valid url (www.something.com or http(s)://www.something.com)
 msgid "url"
-msgstr "URL"
+msgstr "El valor introducido debe ser una URL válida (www.algo.com o http(s)://www.algo.com)"
 
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: user avatar
@@ -4247,6 +4364,16 @@ msgstr "Vídeo"
 # defaultMessage: Visit external website
 msgid "visit_external_website"
 msgstr "Visitar web externa"
+
+#: components/manage/Toolbar/More
+# defaultMessage: You are not authorized to perform this operation.
+msgid "workingCopyErrorUnauthorized"
+msgstr "No tiene permisos para realizar esta operación."
+
+#: components/manage/Toolbar/More
+# defaultMessage: An error occurred while performing this operation.
+msgid "workingCopyGenericError"
+msgstr "Ha ocurrido un error al realizar esta operación."
 
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
