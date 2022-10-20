@@ -6,16 +6,10 @@
 
 - The listing block icon has been improved to avoid confusions with the normal text list @sneridagh
 
-### Feature
-
 ### Bugfix
 
 - SearchTags uses invalid vocabulary API @silviubogan
 - Fix autocomplete widget with an empty search result @reebalazs
-
-### Internal
-
-### Documentation
 
 ## 16.0.0-alpha.43 (2022-10-17)
 
