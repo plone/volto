@@ -6,11 +6,15 @@ function StoryComponent(args) {
   const {
     data = {},
     fieldDataName,
-    placeholder,
+    properties,
     renderClassName,
     renderTag,
     locale,
   } = args;
+
+  const [dataState, setData] = React.useState(data);
+  const [propertiesState, setProperties] = React.useState(properties);
+
   return (
     <Wrapper
       customStore={{ intl: { locale } }}
@@ -20,25 +24,39 @@ function StoryComponent(args) {
         renderTag={renderTag}
         renderClassName={renderClassName}
         fieldDataName={fieldDataName}
-        properties={{ title: 'The title' }}
-        placeholder={placeholder}
-        data={data}
+        properties={properties}
+        onChangeBlock={(block, value) => setData(value)}
+        onChangeField={(field, value) =>
+          setProperties({ ...propertiesState, [field]: value })
+        }
+        data={dataState}
       />
-      <pre>Value: {JSON.stringify(data, null, 4)}</pre>
+      {fieldDataName ? (
+        <pre>Block data: {JSON.stringify(dataState, null, 4)}</pre>
+      ) : (
+        <pre>
+          Properties/Metadata: {JSON.stringify(propertiesState, null, 4)}
+        </pre>
+      )}
     </Wrapper>
   );
 }
 
 export const Default = StoryComponent.bind({});
 Default.args = {
+  renderClassName: 'documentFirstHeading',
+};
+
+export const H2 = StoryComponent.bind({});
+H2.args = {
   fieldDataName: 'title',
   renderClassName: '',
   renderTag: 'h2',
-  placeholder: 'Subtitle...',
+  fieldValue: 'The title',
 };
 
 export default {
-  title: 'Internal Components/TextLineEdit',
+  title: 'Edit Widgets/TextLineEdit',
   component: TextLineEdit,
   decorators: [
     (Story) => (

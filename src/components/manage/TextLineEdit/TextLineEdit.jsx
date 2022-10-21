@@ -40,14 +40,22 @@ export const TextLineEdit = (props) => {
     renderTag,
     renderClassName,
     fieldDataName,
-    fieldName,
+    fieldName = 'title',
   } = props;
 
   const [editor] = useState(withReact(createEditor()));
   const [initialValue] = useState([
     {
       type: P,
-      children: [{ text: metadata?.['title'] || properties?.['title'] || '' }],
+      children: [
+        {
+          text:
+            data?.[fieldDataName] ||
+            metadata?.[fieldName] ||
+            properties?.[fieldName] ||
+            '',
+        },
+      ],
     },
   ]);
 
@@ -56,8 +64,12 @@ export const TextLineEdit = (props) => {
   const prevSelected = usePrevious(selected);
 
   const text = useMemo(
-    () => metadata?.['title'] || properties?.['title'] || '',
-    [metadata, properties],
+    () =>
+      data?.[fieldDataName] ||
+      metadata?.['title'] ||
+      properties?.['title'] ||
+      '',
+    [data, fieldDataName, metadata, properties],
   );
 
   const placeholder = useMemo(
