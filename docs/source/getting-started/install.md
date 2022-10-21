@@ -19,8 +19,17 @@ myst:
 Volto can be installed in any operating system assuming that the following pre-requisites are met:
 
 - [Node.js LTS (16.x)](https://nodejs.org/en/)
-- [Python 3.8.x or later](https://www.python.org/)
-- [Docker](https://www.docker.com/get-started) (if using the Plone/Guillotina Docker images)
+- [Python](https://python.org/) - See below for specific versions.
+- [Docker](https://www.docker.com/get-started) (if using the Plone docker images)
+
+The versions of Python that are supported in Volto depend on the version of Plone that you use.
+
+| Plone | Python | Volto |
+|---|---|---|
+| 5.2 | 2.7, 3.6-3.8 | 14.0(? or earlier?)-15.0 |
+| 6.0 (beta) | 3.8-3.10 | 16.0 (alpha) |
+
+At the time of this writing, Volto 16 is still in alpha status, and Plone 6 is in beta status.
 
 Depending on the operating system that you are using, some of the following pre-requisites might change.
 They assume you have a macOS/Linux machine.
