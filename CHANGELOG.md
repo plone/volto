@@ -6,6 +6,9 @@
 
 ### Feature
 
+- Added link integrity potential breakage warning message when deleting a referenced page @danielamormocea
+- Added new components & interfaces for content-rules `Rules` control in Volto. Rules management in both controlpanel and object view. @andreiggr
+
 ### Bugfix
 
 ### Internal
@@ -645,10 +648,6 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 
 ## 16.0.0-alpha.4 (2022-05-22)
 
-### Feature
-
-- Added new components & interfaces for content-rules `Rules` control in Volto. Rules management in both controlpanel and object view. 
-
 ### Breaking
 
 - Removed `date-fns` from dependencies, this was in the build because `Cypress` depended on it. After the `Cypress` upgrade it no longer depends on it. If your project still depends on it, add it as a dependency of your project. @sneridagh
@@ -690,7 +689,6 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 
 - Add default widget views for all type of fields and improve the DefaultView @ionlizarazu
 - added configurable identifier field for password reset in config.js. @giuliaghisini
-- Added link integrity potential breakage warning message when deleting a referenced page
 - Add `expandToBackendURL` helper @sneridagh
 
 ### Bugfix
