@@ -692,6 +692,7 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 
 - Add default widget views for all type of fields and improve the DefaultView @ionlizarazu
 - added configurable identifier field for password reset in config.js. @giuliaghisini
+- Added link integrity potential breakage warning message when deleting a referenced page
 - Add `expandToBackendURL` helper @sneridagh
 
 ### Bugfix
