@@ -13,6 +13,7 @@ import { Icon } from '@plone/volto/components';
 import { getUser } from '@plone/volto/actions';
 import { Pluggable } from '@plone/volto/components/manage/Pluggable';
 import {
+  flattenToAppURL,
   expandToBackendURL,
   getBaseUrl,
   userHasRoles,
@@ -135,7 +136,7 @@ class PersonalTools extends Component {
         <div className={cx('avatar', { default: !this.props.user.portrait })}>
           {this.props.user.portrait ? (
             <img
-              src={expandToBackendURL(this.props.user.portrait)}
+              src={flattenToAppURL(this.props.user.portrait)}
               alt={this.props.intl.formatMessage(messages.userAvatar)}
             />
           ) : (
