@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Make sure that the store is reset on history reducer `PENDING` state @sneridagh
+
 ### Internal
 
 ### Documentation
@@ -647,7 +649,7 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 
 ### Feature
 
-- Added new components & interfaces for content-rules `Rules` control in Volto. Rules management in both controlpanel and object view. 
+- Added new components & interfaces for content-rules `Rules` control in Volto. Rules management in both controlpanel and object view.
 
 ### Breaking
 
