@@ -1,14 +1,9 @@
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Editor, Node, Transforms, Range, createEditor } from 'slate';
 import { ReactEditor, Editable, Slate, withReact } from 'slate-react';
 import PropTypes from 'prop-types';
 import { defineMessages, useIntl } from 'react-intl';
+import { usePrevious } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 import { P } from '@plone/volto-slate/constants';
 import cx from 'classnames';
@@ -19,16 +14,6 @@ const messages = defineMessages({
     defaultMessage: 'Type the heading…',
   },
 });
-
-function usePrevious(value) {
-  const ref = useRef();
-
-  useEffect(() => {
-    ref.current = value;
-  }, [value]);
-
-  return ref.current;
-}
 
 /**
  * TextLine Edit component for inline blocks fields
@@ -204,6 +189,9 @@ TextLineEdit.propTypes = {
   editable: PropTypes.bool,
   detached: PropTypes.bool,
   blockNode: PropTypes.any,
+  renderTag: PropTypes.string,
+  renderClassName: PropTypes.string,
+  fieldDataName: PropTypes.string,
 };
 
 TextLineEdit.defaultProps = {
