@@ -84,10 +84,9 @@ describe('Add Content Tests', () => {
     cy.get('#toolbar-save').click();
     cy.get('#navigation').contains('Home').click();
     cy.get('.toolbar-actions').contains('Contents').click();
-    cy.get('tbody>tr').eq(4).children('td').eq(1).click();
+    cy.get('tbody>tr').eq(3).children('td').eq(1).click();
 
     cy.get('.top-menu-menu .delete').click();
-
     cy.get('.modal.active').contains('Potential link breakage');
     cy.get('.actions').contains('Delete').click();
   });
