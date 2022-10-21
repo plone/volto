@@ -25,9 +25,9 @@ class SearchTags extends Component {
    */
   static propTypes = {
     getVocabulary: PropTypes.func.isRequired,
-    terms: PropTypes.arrayOf(
+    items: PropTypes.arrayOf(
       PropTypes.shape({
-        title: PropTypes.string,
+        label: PropTypes.string,
       }),
     ).isRequired,
   };
@@ -42,15 +42,15 @@ class SearchTags extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    return this.props.terms && this.props.terms.length > 0 ? (
+    return this.props.items && this.props.items.length > 0 ? (
       <div>
-        {this.props.terms.map((term) => (
+        {this.props.items.map((item) => (
           <Link
             className="ui label"
-            to={`/search?Subject=${term.title}`}
-            key={term.title}
+            to={`/search?Subject=${item.label}`}
+            key={item.label}
           >
-            {term.title}
+            {item.label}
           </Link>
         ))}
       </div>
@@ -62,9 +62,9 @@ class SearchTags extends Component {
 
 export default connect(
   (state) => ({
-    terms:
-      state.vocabularies[vocabulary] && state.vocabularies[vocabulary].terms
-        ? state.vocabularies[vocabulary].terms
+    items:
+      state.vocabularies[vocabulary] && state.vocabularies[vocabulary].items
+        ? state.vocabularies[vocabulary].items
         : [],
   }),
   { getVocabulary },
