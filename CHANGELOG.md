@@ -11,6 +11,8 @@
 
 ### Bugfix
 
+- Make sure that the store is reset on history reducer `PENDING` state @sneridagh
+
 ### Internal
 
 ### Documentation
