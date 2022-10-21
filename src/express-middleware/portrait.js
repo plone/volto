@@ -1,9 +1,6 @@
-import express from 'express';
 import { getAPIResourceWithAuth } from '@plone/volto/helpers';
 
-
 const HEADERS = ['content-type', 'content-disposition', 'cache-control'];
-
 
 function portraitMiddleware(req, res, next) {
   getAPIResourceWithAuth(req)

@@ -14,7 +14,6 @@ import { getUser } from '@plone/volto/actions';
 import { Pluggable } from '@plone/volto/components/manage/Pluggable';
 import {
   flattenToAppURL,
-  expandToBackendURL,
   getBaseUrl,
   userHasRoles,
 } from '@plone/volto/helpers';
