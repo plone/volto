@@ -6,6 +6,9 @@
 
 ### Feature
 
+- Added link integrity potential breakage warning message when deleting a referenced page @danielamormocea
+- Added new components & interfaces for content-rules `Rules` control in Volto. Rules management in both controlpanel and object view. @andreiggr
+
 ### Bugfix
 
 ### Internal
@@ -644,10 +647,6 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 - Fix regression, compound lang names (eg. `pt-BR`) no longer working @sneridagh
 
 ## 16.0.0-alpha.4 (2022-05-22)
-
-### Feature
-
-- Added new components & interfaces for content-rules `Rules` control in Volto. Rules management in both controlpanel and object view. 
 
 ### Breaking
 
