@@ -17,6 +17,9 @@
 
 ### Documentation
 
+- Update supported Python versions. @stevepiercy
+
+
 ## 16.0.0-alpha.44 (2022-10-20)
 
 ### Breaking
@@ -48,7 +51,6 @@
 
 ### Documentation
 
-- Update supported Python versions. @stevepiercy
 - Trigger a new deploy core Plone documentation when Volto documentation is updated @esteele
 
 ## 16.0.0-alpha.42 (2022-10-06)
