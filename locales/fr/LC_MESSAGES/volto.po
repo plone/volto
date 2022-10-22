@@ -53,10 +53,21 @@ msgstr "Activation de votre compte terminé"
 msgid "Action"
 msgstr "Action"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Action changed
+msgid "Action changed"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Action:
+msgid "Action: "
+msgstr ""
+
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
+#: components/manage/Controlpanels/Rules/Rules
 #: components/manage/Controlpanels/Users/UsersControlpanel
 # defaultMessage: Actions
 msgid "Actions"
@@ -67,9 +78,21 @@ msgstr "Actions"
 msgid "Activate and deactivate"
 msgstr "Activé et désactivé"
 
+#: components/manage/Rules/Rules
+# defaultMessage: Active
+msgid "Active"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Active content rules in this Page
+msgid "Active content rules in this Page"
+msgstr ""
+
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Rules/Rules
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
 #: helpers/MessageLabels/MessageLabels
@@ -92,6 +115,16 @@ msgstr "Ajouter des modules"
 msgid "Add Content"
 msgstr "Ajouter du contenu"
 
+#: components/manage/Controlpanels/Rules/AddRule
+# defaultMessage: Add Content Rule
+msgid "Add Content Rule"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/AddRule
+# defaultMessage: Add Rule
+msgid "Add Rule"
+msgstr ""
+
 #: components/manage/Toolbar/Types
 # defaultMessage: Add Translation…
 msgid "Add Translation…"
@@ -112,6 +145,11 @@ msgstr "Ajouter une description"
 msgid "Add a new alternative url"
 msgstr ""
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Action added
+msgid "Add action"
+msgstr ""
+
 #: components/manage/BlockChooser/BlockChooserButton
 # defaultMessage: Add block
 msgid "Add block"
@@ -120,6 +158,16 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add block…
 msgid "Add block…"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Condition added
+msgid "Add condition"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Add content rule
+msgid "Add content rule"
 msgstr ""
 
 #: components/manage/Widgets/QueryWidget
@@ -201,6 +249,11 @@ msgstr ""
 # defaultMessage: Add-ons Settings
 msgid "Add-ons Settings"
 msgstr "Paramètres des modules"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Added
+msgid "Added"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Additional date
@@ -315,6 +368,21 @@ msgstr ""
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
 msgstr ""
 
+#: components/manage/Rules/Rules
+# defaultMessage: Applied to subfolders
+msgid "Applied to subfolders"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Applies to subfolders?
+msgid "Applies to subfolders?"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Apply to subfolders
+msgid "Apply to subfolders"
+msgstr ""
+
 #: components/manage/Toolbar/More
 # defaultMessage: Apply working copy
 msgid "Apply working copy"
@@ -336,10 +404,20 @@ msgstr "Voulez-vous vraiment supprimer ce groupe de champs et tous les champs de
 msgid "Ascending"
 msgstr "Ascendant"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Assignments
+msgid "Assignments"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Available
 msgid "Available"
 msgstr "Disponible"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Available content rules:
+msgid "Available content rules:"
+msgstr ""
 
 #: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
@@ -352,12 +430,17 @@ msgstr "Disponible"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/DatabaseInformation
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Controlpanels/Rules/Rules
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Diff/Diff
 #: components/manage/History/History
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
+#: components/manage/Rules/Rules
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Toolbar/PersonalTools
@@ -415,6 +498,11 @@ msgstr "Explorer le site, déposer l'image ou écriver l'URL"
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr ""
 
+#: components/manage/Contents/Contents
+# defaultMessage: By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first.
+msgid "By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first."
+msgstr ""
+
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Cache Name
 msgid "Cache Name"
@@ -436,6 +524,8 @@ msgstr ""
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Delete/Delete
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
@@ -589,6 +679,31 @@ msgstr ""
 msgid "Compare"
 msgstr "Comparer"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Condition changed
+msgid "Condition changed"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Condition:
+msgid "Condition: "
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Configure Content Rule
+msgid "Configure Content Rule"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Configure Content Rule: {title}
+msgid "Configure Content Rule: {title}"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Configure content rule
+msgid "Configure content rule"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Confirm password
@@ -618,6 +733,27 @@ msgstr "Eléments contenants"
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Content
 msgid "Content"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Content Rule
+msgid "Content Rule"
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Content Rules
+msgid "Content Rules"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Content rules for {title}
+msgid "Content rules for {title}"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Content rules from parent folders
+msgid "Content rules from parent folders"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
@@ -813,6 +949,11 @@ msgstr "Supprimer le type"
 msgid "Delete User"
 msgstr "Supprimer l'utilisateur"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Action deleted
+msgid "Delete action"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: undefined
 msgid "Delete blocks"
@@ -823,10 +964,20 @@ msgstr ""
 msgid "Delete col"
 msgstr "Supprimer la colonne"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Condition deleted
+msgid "Delete condition"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Delete row
 msgid "Delete row"
 msgstr "Supprimer la ligne"
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Deleted
+msgid "Deleted"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Depth
@@ -859,6 +1010,26 @@ msgstr "Différence"
 # defaultMessage: Difference between revision {one} and {two} of {title}
 msgid "Difference between revision {one} and {two} of {title}"
 msgstr "Différence entre le révision {one] et {two} de {title}"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Disable
+msgid "Disable"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Disable apply to subfolders
+msgid "Disable apply to subfolders"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Disabled
+msgid "Disabled"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Disabled apply to subfolders
+msgid "Disabled apply to subfolders"
+msgstr ""
 
 #: components/theme/Footer/Footer
 # defaultMessage: Distributed under the {license}.
@@ -944,6 +1115,7 @@ msgstr "Les adresses e-mails ne correspondent pas."
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
@@ -951,6 +1123,11 @@ msgstr "Les adresses e-mails ne correspondent pas."
 # defaultMessage: Edit
 msgid "Edit"
 msgstr "Modifier"
+
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Edit Rule
+msgid "Edit Rule"
+msgstr ""
 
 #: components/theme/Comments/CommentEditModal
 # defaultMessage: Edit comment
@@ -1002,9 +1179,29 @@ msgstr "Erreur dans le code intégré, veuillez suivre les instructions et essay
 msgid "Empty object list"
 msgstr ""
 
+#: components/manage/Rules/Rules
+# defaultMessage: Enable
+msgid "Enable"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypeLayout
 # defaultMessage: Enable editable Blocks
 msgid "Enable editable Blocks"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Enabled
+msgid "Enabled"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Enabled here?
+msgid "Enabled here?"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Enabled?
+msgid "Enabled?"
 msgstr ""
 
 #: components/manage/Blocks/Search/components/DateRangeFacet
@@ -1088,6 +1285,11 @@ msgstr "Erreur"
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Error
 msgid "ErrorHeader"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Event
+msgid "Event"
 msgstr ""
 
 #: config/Views
@@ -1204,6 +1406,11 @@ msgstr ""
 # defaultMessage: Filename
 msgid "Filename"
 msgstr "Nom du fichier"
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Filter Rules:
+msgid "Filter Rules:"
+msgstr ""
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Filter by prefix
@@ -1388,6 +1595,11 @@ msgstr "Accueil"
 msgid "ID"
 msgstr "ID"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: If all of the following conditions are met:
+msgid "If all of the following conditions are met:"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: If selected, this item will not appear in the navigation tree
 msgid "If selected, this item will not appear in the navigation tree"
@@ -1567,6 +1779,11 @@ msgstr "Eléments"
 msgid "Items must be unique."
 msgstr "Les éléments doivent être unique."
 
+#: components/manage/Contents/Contents
+# defaultMessage: Items to be deleted:
+msgid "Items to be deleted:"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Label
 msgid "Label"
@@ -1688,6 +1905,11 @@ msgstr "Se connecter"
 # defaultMessage: Log in
 msgid "Log in"
 msgstr "Se connecter"
+
+#: components/theme/Logout/Logout
+# defaultMessage: Logged out
+msgid "Logged out"
+msgstr ""
 
 #: components/theme/Login/Login
 # defaultMessage: Login
@@ -1822,6 +2044,11 @@ msgstr "Plus"
 msgid "Mosaic layout"
 msgstr ""
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Move down
+msgid "Move down"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Move to bottom of folder
 msgid "Move to bottom of folder"
@@ -1831,6 +2058,11 @@ msgstr "Déplacer à la fin du dossier"
 # defaultMessage: Move to top of folder
 msgid "Move to top of folder"
 msgstr "Déplace au début du dossier"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Move up
+msgid "Move up"
+msgstr ""
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Multiple choices?
@@ -2101,6 +2333,11 @@ msgstr "Coller"
 msgid "Paste blocks"
 msgstr ""
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Perform the following actions:
+msgid "Perform the following actions:"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: Permissions have been updated successfully
 msgid "Permissions have been updated successfully"
@@ -2173,9 +2410,19 @@ msgstr "Site Plone"
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} Open Source CMS/WCM"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Position changed
+msgid "Position changed"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Possible values (Enter allowed choices one per line).
 msgid "Possible values"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Potential link breakage
+msgid "Potential link breakage"
 msgstr ""
 
 #: components/theme/Footer/Footer
@@ -2439,11 +2686,34 @@ msgstr "Rôles"
 msgid "Root"
 msgstr ""
 
+#: components/manage/Controlpanels/Rules/AddRule
+# defaultMessage: Rule added
+msgid "Rule added"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Rule enable changed
+msgid "Rule enable changed"
+msgstr ""
+
+#: components/manage/Rules/Rules
+#: components/manage/Toolbar/More
+# defaultMessage: Rules
+msgid "Rules"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Rules execute when a triggering event occurs. Rule actions will only be invoked if all the rule's conditions are met. You can add new actions and conditions using the buttons below.
+msgid "Rules execute when a triggering event occurs. Rule actions will only be invoked if all the rule's conditions are met. You can add new actions and conditions using the buttons below."
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
@@ -2556,6 +2826,7 @@ msgid "Section title"
 msgstr ""
 
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Rules/Rules
 #: components/manage/Sidebar/ObjectBrowserNav
 # defaultMessage: Select
 msgid "Select"
@@ -2832,6 +3103,11 @@ msgstr "Lancer la réinitialisation du mot de passe"
 msgid "State"
 msgstr "Etat"
 
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Status
+msgid "Status"
+msgstr ""
+
 #: components/manage/Multilingual/CompareLanguages
 # defaultMessage: Stop compare
 msgid "Stop compare"
@@ -2864,10 +3140,15 @@ msgstr "Sujet"
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Controlpanels/Rules/Rules
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
+#: components/manage/Rules/Rules
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Success
@@ -2973,7 +3254,7 @@ msgstr "Le gestionnaire de base de données vous permet d'afficher les informati
 #: components/theme/RequestTimeout/RequestTimeout
 # defaultMessage: The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again.
 msgid "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
-msgstr ">>>>>>> master"
+msgstr ""
 
 #: components/theme/ConnectionRefused/ConnectionRefused
 # defaultMessage: The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable.
@@ -2993,6 +3274,11 @@ msgstr ""
 #: components/manage/Blocks/Search/schema
 # defaultMessage: The button presence disables the live search, the query is issued when you press ENTER
 msgid "The button presence disables the live search, the query is issued when you press ENTER"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones.
+msgid "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -3046,6 +3332,11 @@ msgstr "Il y a eu quelques erreurs."
 msgid "Third"
 msgstr ""
 
+#: components/manage/Contents/Contents
+# defaultMessage: This Page is referenced by the following items:
+msgid "This Page is referenced by the following items:"
+msgstr ""
+
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This has an ongoing working copy in {title}
 msgid "This has an ongoing working copy in {title}"
@@ -3076,6 +3367,11 @@ msgstr "Ce nom sera affiché dans l'URL."
 msgid "This page does not seem to exist…"
 msgstr "Cette page ne semble pas exister…"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: This rule is assigned to the following locations:
+msgid "This rule is assigned to the following locations:"
+msgstr ""
+
 #: components/manage/Widgets/DatetimeWidget
 # defaultMessage: Time
 msgid "Time"
@@ -3093,6 +3389,12 @@ msgstr "Temps"
 # defaultMessage: Title
 msgid "Title"
 msgstr "Titre"
+
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Title field error. Value not provided or already existing.
+msgid "Title field error. Value not provided or already existing."
+msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Total active and non-active objects
@@ -3155,6 +3457,12 @@ msgstr ""
 msgid "Translation linking removed"
 msgstr ""
 
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Triggering event field error. Please select a value
+msgid "Triggering event field error. Please select a value"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
@@ -3198,6 +3506,16 @@ msgstr ""
 #: components/manage/Aliases/Aliases
 # defaultMessage: URL Management for {title}
 msgid "URL Management for {title}"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Unassign
+msgid "Unassign"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Unassigned
+msgid "Unassigned"
 msgstr ""
 
 #: components/manage/Toolbar/More
@@ -3302,6 +3620,17 @@ msgstr "Téléchargement de fichiers"
 #: components/manage/Blocks/HeroImageLeft/Edit
 # defaultMessage: Uploading image
 msgid "Uploading image"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Use the form below to define the new content rule
+msgid "Use the form below to define the new content rule"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu.
+msgid "Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu."
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -3477,6 +3806,24 @@ msgstr "Quand"
 msgid "When this date is reached, the content will nolonger be visible in listings and searches."
 msgstr "Lorsque cette date est atteinte, le contenu ne sera plus visible dans les listes et les recherches."
 
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Whether or not execution of further rules should stop after this rule is executed
+msgid "Whether or not execution of further rules should stop after this rule is executed"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Whether or not other rules should be triggered by the actions launched by this rule. Activate this only if you are sure this won't create infinite loops
+msgid "Whether or not other rules should be triggered by the actions launched by this rule. Activate this only if you are sure this won't create infinite loops"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Whether or not the rule is currently enabled
+msgid "Whether or not the rule is currently enabled"
+msgstr ""
+
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/History/History
 # defaultMessage: Who
@@ -3543,6 +3890,11 @@ msgstr "Vous pouvez consulter l'historique de votre élément ci-dessous."
 #: components/manage/Contents/Contents
 # defaultMessage: You can't paste this content here
 msgid "You can't paste this content here"
+msgstr ""
+
+#: components/theme/Logout/Logout
+# defaultMessage: You have been logged out from the site.
+msgid "You have been logged out from the site."
 msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset

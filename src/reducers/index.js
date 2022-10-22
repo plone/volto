@@ -26,6 +26,10 @@ import navigation from '@plone/volto/reducers/navigation/navigation';
 import querystring from '@plone/volto/reducers/querystring/querystring';
 import querystringsearch from '@plone/volto/reducers/querystringsearch/querystringsearch';
 import roles from '@plone/volto/reducers/roles/roles';
+import rules from '@plone/volto/reducers/rules/rules';
+import controlpanelrule from '@plone/volto/reducers/controlPanelRule/controlPanelRule';
+import controlpanelrules from '@plone/volto/reducers/controlPanelRules/controlPanelRules';
+import contentrulesevents from '@plone/volto/reducers/contentRulesEvents/contentRulesEvents';
 import schema from '@plone/volto/reducers/schema/schema';
 import search from '@plone/volto/reducers/search/search';
 import sharing from '@plone/volto/reducers/sharing/sharing';
@@ -76,6 +80,10 @@ const reducers = {
   querystring,
   querystringsearch,
   roles,
+  rules,
+  controlpanelrule,
+  controlpanelrules,
+  contentrulesevents,
   schema,
   search,
   sharing,

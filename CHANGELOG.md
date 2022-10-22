@@ -6,15 +6,50 @@
 
 ### Feature
 
+- Added link integrity potential breakage warning message when deleting a referenced page @danielamormocea
+- Added new components & interfaces for content-rules `Rules` control in Volto. Rules management in both controlpanel and object view. @andreiggr
+
 ### Bugfix
 
-- Fix UniversalLink storybook @tiberiuichim
+- Make sure that the store is reset on history reducer `PENDING` state @sneridagh
 
 ### Internal
 
 ### Documentation
 
+## 16.0.0-alpha.44 (2022-10-20)
+
+### Breaking
+
+- The listing block icon has been improved to avoid confusions with the normal text list @sneridagh
+
+### Bugfix
+
+- SearchTags uses invalid vocabulary API @silviubogan
+- Fix autocomplete widget with an empty search result @reebalazs
+
+## 16.0.0-alpha.43 (2022-10-17)
+
+### Feature
+
+- Object browser: image search should only show images @reebalazs
+- Updated spanish translation @macagua
+- Add Dutch translation @spereverde
+
+### Bugfix
+
+- Fix UniversalLink storybook @tiberiuichim
+- Fix logout to stay on the same page where the user was @reebalazs
+- Change sentry chunk name to avoid ad blockers. Only load sentry if env vars exist @tiberiuichim
+
+### Internal
+
+- Upgrade dependency rrule (optional dependency luxon removed) @ksuess
+
+### Documentation
+
 - Update supported Python versions. @stevepiercy
+- Trigger a new deploy core Plone documentation when Volto documentation is updated @esteele
 
 ## 16.0.0-alpha.42 (2022-10-06)
 
@@ -1682,6 +1717,8 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 
 ### Internal
 
+- Updated i18n link into the README file @macagua
+- Updated Spanish translations @macagua
 - Remove bundlesize @tisto
 - Upgrade plone.restapi from 8.12.1 -> 8.13.0 @tisto
 
