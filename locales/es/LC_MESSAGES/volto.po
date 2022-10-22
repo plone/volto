@@ -372,7 +372,6 @@ msgstr "Aplicado a subcarpetas"
 msgid "Applies to subfolders?"
 msgstr "¿Se aplica a las subcarpetas?"
 
-# defaultMessage: Apply to subfolders
 #: components/manage/Rules/Rules
 # defaultMessage: Apply to subfolders
 msgid "Apply to subfolders"
