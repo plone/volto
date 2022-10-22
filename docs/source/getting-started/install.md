@@ -26,7 +26,7 @@ The versions of Python that are supported in Volto depend on the version of Plon
 
 | Plone | Python | Volto |
 |---|---|---|
-| 5.2 | 2.7, 3.6-3.8 | 14.0(? or earlier?)-15.0 |
+| 5.2 | 2.7, 3.6-3.8 | 15.0 |
 | 6.0 (beta) | 3.8-3.10 | 16.0 (alpha) |
 
 At the time of this writing, Volto 16 is still in alpha status, and Plone 6 is in beta status.
