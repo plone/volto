@@ -17,6 +17,9 @@
 
 ### Documentation
 
+- Update supported Python versions. @stevepiercy
+
+
 ## 16.0.0-alpha.44 (2022-10-20)
 
 ### Breaking
