@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Added portrait middleware adapter. @instification
+
 ### Bugfix
 
 ### Internal
