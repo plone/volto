@@ -64,6 +64,33 @@ describe('Add Content Tests', () => {
     cy.get('.navigation .item.active').should('have.text', 'My Page');
   });
 
+  it('As editor I can add a reference to a page', function () {
+    // when I add a page with a text block
+    cy.get('#toolbar-add').click();
+    cy.get('#toolbar-add-document').click();
+    cy.getSlateTitle().focus().click().type('My Page').contains('My Page');
+    cy.get('#toolbar-save').click();
+    cy.get('#navigation').contains('Home').click();
+    cy.get('#toolbar-add').click();
+    cy.get('#toolbar-add-document').click();
+    cy.getSlateTitle()
+      .focus()
+      .click()
+      .type('My Second Page')
+      .contains('My Second Page');
+    cy.get('#sidebar-metadata').scrollTo(0, 1000);
+    cy.get('.field-wrapper-relatedItems button').click();
+    cy.get('.sidebar-container .object-listing').contains('My Page').click();
+    cy.get('#toolbar-save').click();
+    cy.get('#navigation').contains('Home').click();
+    cy.get('.toolbar-actions').contains('Contents').click();
+    cy.findByLabelText('/my-page').children('td').eq(1).click();
+
+    cy.get('.top-menu-menu .delete').click();
+    cy.get('.modal.active').contains('Potential link breakage');
+    cy.get('.actions').contains('Delete').click();
+  });
+
   it('As editor I can add an image', function () {
     cy.intercept('POST', '*').as('saveImage');
     cy.intercept('GET', '/**/image.png').as('getImage');

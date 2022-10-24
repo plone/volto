@@ -6,11 +6,41 @@
 
 ### Feature
 
+- Added portrait middleware adapter. @instification
+
 ### Bugfix
 
 ### Internal
 
 ### Documentation
+
+## 16.0.0-alpha.45 (2022-10-24)
+
+### Feature
+
+- Added link integrity potential breakage warning message when deleting a referenced page @danielamormocea
+- Added new components & interfaces for content-rules `Rules` control in Volto. Rules management in both controlpanel and object view. @andreiggr
+- Introduce `TextLineEdit` component @sneridagh
+- Add a popup tooltip for tokenized options in Select widget values @sneridagh
+
+### Bugfix
+
+- Make sure that the store is reset on history reducer `PENDING` state @sneridagh
+
+### Documentation
+
+- Update supported Python versions. @stevepiercy
+
+## 16.0.0-alpha.44 (2022-10-20)
+
+### Breaking
+
+- The listing block icon has been improved to avoid confusions with the normal text list @sneridagh
+
+### Bugfix
+
+- SearchTags uses invalid vocabulary API @silviubogan
+- Fix autocomplete widget with an empty search result @reebalazs
 
 ## 16.0.0-alpha.43 (2022-10-17)
 
@@ -103,6 +133,7 @@
 - Fixed the `description` field not appearing in control panel fieldsets @JeffersonBledsoe #3696
 - Fixed "more" always show root contents @MdSahil-oss #3365
 - Add missing `--noninteractive` in the `build` script in package.json @sneridagh
+- Fix replace `<a>` anchor element with the `UniversalLink` component in `DefaultTemplate.jsx` @Dnouv
 
 ### Internal
 

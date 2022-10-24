@@ -37,7 +37,7 @@ import globeSVG from '@plone/volto/icons/globe.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
 import heroSVG from '@plone/volto/icons/hero.svg';
 import tableSVG from '@plone/volto/icons/table.svg';
-import listBulletSVG from '@plone/volto/icons/list-bullet.svg';
+import listingBlockSVG from '@plone/volto/icons/content-listing.svg';
 import tocSVG from '@plone/volto/icons/list-bullet.svg';
 import searchSVG from '@plone/volto/icons/zoom.svg';
 
@@ -260,7 +260,7 @@ const blocksConfig = {
   listing: {
     id: 'listing',
     title: 'Listing',
-    icon: listBulletSVG,
+    icon: listingBlockSVG,
     group: 'common',
     view: ViewListingBlock,
     edit: EditListingBlock,
