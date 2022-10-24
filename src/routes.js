@@ -28,6 +28,7 @@ import {
   NotFound,
   PasswordReset,
   Register,
+  Rules,
   RequestPasswordReset,
   Search,
   Sharing,
@@ -37,6 +38,11 @@ import {
   UsersControlpanel,
   UserGroupMembershipControlPanel,
   GroupsControlpanel,
+  RulesControlpanel,
+  AddRuleControlpanel,
+  EditRuleControlpanel,
+  ConfigureRuleControlpanel,
+  PersonalInformation,
 } from '@plone/volto/components';
 
 // Deliberatelly use of absolute path of these components, since we do not want them
@@ -87,17 +93,23 @@ export const multilingualRoutes = [
 ];
 
 export const defaultRoutes = [
+  // redirect to external links if path is in blacklist
+  ...(config.settings?.externalRoutes || []).map((route) => ({
+    ...route.match,
+    component: NotFound,
+  })),
+  ...((config.settings?.isMultilingual && multilingualRoutes) || []),
   {
     path: '/',
     component: View,
     exact: true,
   },
   {
-    path: '/login',
+    path: ['/login', '/**/login'],
     component: Login,
   },
   {
-    path: '/logout',
+    path: ['/logout', '/**/logout'],
     component: Logout,
   },
   {
@@ -166,6 +178,22 @@ export const defaultRoutes = [
     component: GroupsControlpanel,
   },
   {
+    path: '/controlpanel/rules/:id/configure',
+    component: ConfigureRuleControlpanel,
+  },
+  {
+    path: '/controlpanel/rules/:id/edit',
+    component: EditRuleControlpanel,
+  },
+  {
+    path: '/controlpanel/rules/add',
+    component: AddRuleControlpanel,
+  },
+  {
+    path: '/controlpanel/rules',
+    component: RulesControlpanel,
+  },
+  {
     path: '/controlpanel/:id',
     component: Controlpanel,
   },
@@ -174,36 +202,32 @@ export const defaultRoutes = [
     component: ChangePassword,
   },
   {
-    path: '/add',
+    path: ['/add', '/**/add'],
     component: Add,
   },
   {
-    path: '/edit',
+    path: ['/edit', '/**/edit'],
     component: Edit,
   },
   {
-    path: '/contents',
+    path: ['/contents', '/**/contents'],
     component: Contents,
   },
   {
-    path: '/sharing',
+    path: ['/sharing', '/**/sharing'],
     component: Sharing,
   },
   {
-    path: '/**/add',
-    component: Add,
+    path: '/rules',
+    component: Rules,
   },
   {
     path: '/**/create-translation',
     component: CreateTranslation,
   },
   {
-    path: '/**/contents',
-    component: Contents,
-  },
-  {
-    path: '/**/sharing',
-    component: Sharing,
+    path: '/**/rules',
+    component: Rules,
   },
   {
     path: '/**/aliases',
@@ -218,20 +242,12 @@ export const defaultRoutes = [
     component: Diff,
   },
   {
-    path: '/**/edit',
-    component: Edit,
-  },
-  {
-    path: '/**/history',
+    path: '/**/historyview',
     component: History,
   },
   {
     path: '/**/manage-translations',
     component: ManageTranslations,
-  },
-  {
-    path: '/**/login',
-    component: Login,
   },
   {
     path: '/register',
@@ -245,6 +261,11 @@ export const defaultRoutes = [
   {
     path: '/passwordreset/:token',
     component: PasswordReset,
+    exact: true,
+  },
+  {
+    path: '/personal-information',
+    component: PersonalInformation,
     exact: true,
   },
   {
@@ -267,14 +288,8 @@ const routes = [
     path: '/',
     component: App,
     routes: [
-      // redirect to external links if path is in blacklist
-      ...(config.settings?.externalRoutes || []).map((route) => ({
-        ...route.match,
-        component: NotFound,
-      })),
       // addon routes have a higher priority then default routes
       ...(config.addonRoutes || []),
-      ...((config.settings?.isMultilingual && multilingualRoutes) || []),
       ...defaultRoutes,
     ],
   },

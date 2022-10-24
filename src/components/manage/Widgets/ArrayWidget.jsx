@@ -27,6 +27,7 @@ import {
   MenuList,
   SortableMultiValue,
   SortableMultiValueLabel,
+  MultiValueContainer,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 
 import { FormFieldWrapper } from '@plone/volto/components';
@@ -343,6 +344,7 @@ class ArrayWidget extends Component {
             ...(this.props.choices?.length > 25 && {
               MenuList,
             }),
+            MultiValueContainer,
             MultiValue: SortableMultiValue,
             MultiValueLabel: SortableMultiValueLabel,
             DropdownIndicator,

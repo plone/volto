@@ -13,6 +13,7 @@ import {
   UPDATECOLUMNS_CONTENT,
   LOCK_CONTENT,
   UNLOCK_CONTENT,
+  LINK_INTEGRITY_CHECK,
 } from '@plone/volto/constants/ActionTypes';
 import { nestContent } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
@@ -235,5 +236,16 @@ export function unlockContent(urls, force = false) {
             path: `${url}/@lock`,
             data: force ? { force: true } : {},
           })),
+  };
+}
+
+export function linkIntegrityCheck(selection) {
+  return {
+    type: LINK_INTEGRITY_CHECK,
+    mode: 'serial',
+    request: {
+      op: 'get',
+      path: '@linkintegrity?' + selection.map((uid) => `uids=${uid}`).join('&'),
+    },
   };
 }
