@@ -3474,6 +3474,11 @@ msgstr ""
 msgid "Type text…"
 msgstr "Text eingeben…"
 
+#: components/manage/TextLineEdit/TextLineEdit
+# defaultMessage: Type the heading…
+msgid "Type the heading…"
+msgstr ""
+
 #: components/manage/Blocks/Title/Edit
 # defaultMessage: Type the title…
 msgid "Type the title…"
