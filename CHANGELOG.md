@@ -11,9 +11,14 @@
 
 ### Bugfix
 
+- Make sure that the store is reset on history reducer `PENDING` state @sneridagh
+
 ### Internal
 
 ### Documentation
+
+- Update supported Python versions. @stevepiercy
+
 
 ## 16.0.0-alpha.44 (2022-10-20)
 
@@ -116,6 +121,7 @@
 - Fixed the `description` field not appearing in control panel fieldsets @JeffersonBledsoe #3696
 - Fixed "more" always show root contents @MdSahil-oss #3365
 - Add missing `--noninteractive` in the `build` script in package.json @sneridagh
+- Fix replace `<a>` anchor element with the `UniversalLink` component in `DefaultTemplate.jsx` @Dnouv
 
 ### Internal
 
