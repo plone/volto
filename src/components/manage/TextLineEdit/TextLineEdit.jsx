@@ -16,9 +16,7 @@ const messages = defineMessages({
 });
 
 /**
- * TextLine Edit component for inline blocks fields
- * @class TextLineEdit
- * @extends Component
+ * A component for inserting an inline textline field for blocks
  */
 export const TextLineEdit = (props) => {
   const {
@@ -41,6 +39,7 @@ export const TextLineEdit = (props) => {
     renderClassName,
     fieldDataName,
     fieldName = 'title',
+    placeholder,
   } = props;
 
   const [editor] = useState(withReact(createEditor()));
@@ -72,9 +71,10 @@ export const TextLineEdit = (props) => {
     [data, fieldDataName, metadata, properties],
   );
 
-  const placeholder = useMemo(
-    () => data.placeholder || intl.formatMessage(messages['title']),
-    [data.placeholder, intl],
+  const resultantPlaceholder = useMemo(
+    () =>
+      placeholder || data.placeholder || intl.formatMessage(messages['title']),
+    [placeholder, data.placeholder, intl],
   );
   const disableNewBlocks = useMemo(() => detached, [detached]);
 
@@ -178,7 +178,7 @@ export const TextLineEdit = (props) => {
       <Editable
         readOnly={!editable}
         onKeyDown={handleKeyDown}
-        placeholder={placeholder}
+        placeholder={resultantPlaceholder}
         renderElement={renderElement}
         onFocus={handleFocus}
       ></Editable>
