@@ -6,8 +6,6 @@
 
 ### Feature
 
-- Added link integrity potential breakage warning message when deleting a referenced page @danielamormocea
-- Added new components & interfaces for content-rules `Rules` control in Volto. Rules management in both controlpanel and object view. @andreiggr
 - Added portrait middleware adapter. @instification
 
 ### Bugfix
