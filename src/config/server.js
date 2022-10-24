@@ -3,7 +3,6 @@ import filesMiddleware from '@plone/volto/express-middleware/files';
 import robotstxtMiddleware from '@plone/volto/express-middleware/robotstxt';
 import sitemapMiddleware from '@plone/volto/express-middleware/sitemap';
 import devProxyMiddleware from '@plone/volto/express-middleware/devproxy';
-import portraitMiddleware from '@plone/volto/express-middleware/portrait';
 
 const settings = {
   expressMiddleware: [
@@ -12,7 +11,6 @@ const settings = {
     imagesMiddleware(),
     robotstxtMiddleware(),
     sitemapMiddleware(),
-    portraitMiddleware(),
   ],
   criticalCssPath: 'public/critical.css',
   readCriticalCss: null, // so it will be defaultReadCriticalCss
