@@ -2,8 +2,6 @@
 
 ## 16.0.0 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Added link integrity potential breakage warning message when deleting a referenced page @danielamormocea
@@ -15,12 +13,9 @@
 
 - Make sure that the store is reset on history reducer `PENDING` state @sneridagh
 
-### Internal
-
 ### Documentation
 
 - Update supported Python versions. @stevepiercy
-
 
 ## 16.0.0-alpha.44 (2022-10-20)
 
