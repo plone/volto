@@ -4,6 +4,10 @@
 
 ### Breaking
 
+- Remove the means to enable the StyleWrapper in favor of defining it through the block schema. @sneridagh
+
+See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+
 ### Feature
 
 - Added portrait middleware adapter. @instification

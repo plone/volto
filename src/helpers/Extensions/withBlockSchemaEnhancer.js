@@ -1,9 +1,8 @@
-import { defineMessages } from 'react-intl';
 import React from 'react';
+import { defineMessages } from 'react-intl';
 import { useIntl } from 'react-intl';
 import config from '@plone/volto/registry';
 import { cloneDeepSchema } from '@plone/volto/helpers/Utils/Utils';
-import { defaultStyleSchema } from '@plone/volto/components/manage/Blocks/Block/StylesSchema';
 
 const messages = defineMessages({
   variation: {
@@ -274,40 +273,29 @@ export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
   return <FormComponent {...props} schema={schema} />;
 };
 
-/**
- * A HOC that enhances the incoming schema prop with styling widget support
- * by:
- *
- * - adds the variation selection input (as a choice widget)
- */
-export const withStylingSchemaEnhancer = (FormComponent) => (props) => {
-  const { formData, schema } = props;
-  const intl = useIntl();
+export const addStyling = ({ schema, formData, intl }) => {
+  const EMPTY_STYLES_SCHEMA = {
+    fieldsets: [
+      {
+        id: 'default',
+        title: 'Default',
+        fields: [],
+      },
+    ],
+    properties: {},
+    required: [],
+  };
 
-  const blocksConfig = getBlocksConfig(props);
+  schema.fieldsets.push({
+    id: 'styling',
+    title: intl.formatMessage(messages.styling),
+    fields: ['styles'],
+  });
 
-  const blockType = formData['@type'];
-  const enableStyling = blocksConfig[blockType]?.enableStyling;
-
-  if (enableStyling) {
-    const stylesSchema =
-      blocksConfig[blockType]?.stylesSchema || defaultStyleSchema;
-
-    schema.fieldsets.push({
-      id: 'styling',
-      title: intl.formatMessage(messages.styling),
-      fields: ['styles'],
-    });
-
-    schema.properties.styles = {
-      widget: 'object',
-      title: intl.formatMessage(messages.styling),
-      schema: stylesSchema({
-        schema: defaultStyleSchema({ formData, intl }),
-        formData,
-        intl,
-      }),
-    };
-  }
-  return <FormComponent {...props} schema={schema} />;
+  schema.properties.styles = {
+    widget: 'object',
+    title: intl.formatMessage(messages.styling),
+    schema: EMPTY_STYLES_SCHEMA,
+  };
+  return schema;
 };

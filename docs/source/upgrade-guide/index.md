@@ -382,6 +382,18 @@ Volto used this library to generate dynamic "windowed/virtualized" select widget
 It moved to use `react-virtualized` instead of `react-window` because it provides a more broad set of features that Volto required.
 If you were using it in your project, you'll have to include it as a direct dependency of it from now on.
 
+### Change the way the Style Wrapper is enabled and how to add the `styles` field
+
+During the feedback we had during the alpha stage, we have determined that it's difficult to deal with a separate way to define (and extend) the styles schema.
+We decided that the best is to deal with it as any other schema fields and enhance it via schema enhancers.
+This improves the developer experience specially when dealing with variations that can provide their own styles and other schema fields.
+
+```{deprecated} 16.0.0-alpha.46
+The options `enableStyling` and `stylesSchema` no longer work. You need to provide them using your own block schema. If you are extending an existing one, you should add it as a normal `schemaEnhancer` modification.
+```
+
+See https://6.dev-docs.plone.org/volto/blocks/block-style-wrapper.html for more documentation.
+
 (volto-upgrade-guide-15.x.x)=
 
 ## Upgrading to Volto 15.x.x
