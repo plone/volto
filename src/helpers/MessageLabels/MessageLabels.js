@@ -33,6 +33,10 @@ export const messages = defineMessages({
     id: 'Save',
     defaultMessage: 'Save',
   },
+  saved: {
+    id: 'Saved',
+    defaultMessage: 'Saved',
+  },
   isNumber: {
     id: 'number',
     defaultMessage: 'Input must be number',
@@ -141,6 +145,10 @@ export const messages = defineMessages({
   addUserFormPasswordTitle: {
     id: 'Password',
     defaultMessage: 'Password',
+  },
+  addUserFormSendPasswordResetTitle: {
+    id: 'Send a confirmation mail with a link to set the password.',
+    defaultMessage: 'Send a confirmation mail with a link to set the password.',
   },
   addUserFormRolesTitle: {
     id: 'Roles',

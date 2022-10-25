@@ -93,6 +93,7 @@ export {
   withBlockExtensions,
   applySchemaEnhancer,
   resolveExtension,
+  resolveBlockExtensions,
 } from './Extensions';
 export { asyncConnect } from './AsyncConnect';
 export { userHasRoles } from './User/User';

@@ -13,10 +13,14 @@ MAKEFLAGS+=--no-builtin-rules
 # Project settings
 
 INSTANCE_PORT=8080
-DOCKER_IMAGE=plone/plone-backend:5.2.9
-KGS=plone.restapi==8.24.1 plone.volto==4.0.0a9 plone.rest==2.0.0a5
-TESTING_ADDONS=plone.app.robotframework==2.0.0b1 plone.app.testing==7.0.0a3
+DOCKER_IMAGE=plone/plone-backend:6.0.0b3
+KGS=plone.restapi==8.31.0
+TESTING_ADDONS=plone.app.robotframework==2.0.0b2 plone.app.testing==7.0.0a3
 NODEBIN = ./node_modules/.bin
+
+# Plone 5 legacy
+DOCKER_IMAGE5=plone/plone-backend:5.2.9
+KGS5=plone.restapi==8.31.0 plone.volto==4.0.0a13 plone.rest==2.0.0
 
 # Sphinx variables
 # You can set these variables from the command line.
@@ -233,7 +237,15 @@ full-test-acceptance: ## Runs Core Full Acceptance Testing in headless mode
 
 .PHONY: start-test-acceptance-frontend-seamless
 start-test-acceptance-frontend-seamless: ## Start the Seamless Core Acceptance Frontend Fixture
-	RAZZLE_DEV_PROXY_API_PATH=http://localhost:55001/plone yarn build && yarn start:prod
+	yarn build && yarn start:prod
+
+.PHONY: test-acceptance-seamless
+test-acceptance-seamless: ## Start Seamless Cypress Acceptance Tests
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config baseUrl='http://localhost'
+
+.PHONY: start-test-acceptance-webserver-seamless
+start-test-acceptance-webserver-seamless: ## Start the seamless webserver
+	cd cypress/docker && docker-compose -f seamless.yml up
 
 .PHONY: full-test-acceptance-seamless
 full-test-acceptance-seamless: ## Runs Seamless Core Full Acceptance Testing in headless mode
@@ -334,3 +346,9 @@ test-acceptance-guillotina-headless: ## Start the Guillotina Cypress Acceptance 
 .PHONY: full-test-acceptance-guillotina
 full-test-acceptance-guillotina: ## Runs the Guillotina Full Acceptance Testing in headless mode
 	$(NODEBIN)/start-test "make start-test-acceptance-server-guillotina" http-get://localhost:8081 "make start-test-acceptance-frontend-guillotina" http://localhost:3000 "make test-acceptance-guillotina-headless"
+
+######### Plone 5 Acceptance tests
+
+.PHONY: start-test-acceptance-server-5
+start-test-acceptance-server-5: ## Start Test Acceptance Server Main Fixture Plone 5 (docker container)
+	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS5) $(TESTING_ADDONS)' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE5) ./bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
