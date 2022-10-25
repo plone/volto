@@ -1,0 +1,119 @@
+#page-document > .block.teaser {
+  padding: 25px 0;
+
+  &.has--align--left,
+  &.has--align--right {
+    .grid-teaser-item.default {
+      display: flex;
+
+      .grid-image-wrapper {
+        align-self: flex-start;
+      }
+
+      @media only screen and (max-width: @largestMobileScreen) {
+        flex-direction: column !important;
+
+        .grid-image-wrapper {
+          margin-right: 0;
+          margin-bottom: 25px;
+          margin-left: 0;
+
+          img {
+            width: 100%;
+            max-width: unset;
+            height: auto;
+          }
+        }
+      }
+    }
+  }
+
+  &.has--align--left {
+    .grid-teaser-item.default {
+      flex-direction: row;
+
+      .grid-image-wrapper {
+        margin-right: 20px;
+        margin-left: 0;
+
+        @media only screen and (max-width: @largestMobileScreen) {
+          margin-right: 0;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+
+  &.has--align--right {
+    a .grid-teaser-item.default {
+      flex-direction: row-reverse;
+
+      .grid-image-wrapper {
+        margin-right: 0;
+        margin-left: 20px;
+
+        @media only screen and (max-width: @largestMobileScreen) {
+          margin-right: 0;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+
+  &.has--align--center {
+    .grid-teaser-item.default {
+      display: block;
+
+      a {
+        display: block;
+      }
+
+      .grid-image-wrapper {
+        margin-bottom: 25px;
+      }
+    }
+  }
+}
+
+.block-editor-teaser.has--align--left .block.teaser,
+.block-editor-teaser.has--align--right .block.teaser {
+  .grid-teaser-item.default {
+    display: flex;
+
+    .grid-image-wrapper {
+      align-self: flex-start;
+    }
+  }
+}
+
+.block-editor-teaser.has--align--left .block.teaser {
+  .grid-teaser-item.default {
+    flex-direction: row;
+
+    .grid-image-wrapper {
+      margin-right: 20px;
+      margin-left: 0;
+    }
+  }
+}
+
+.block-editor-teaser.has--align--right .block.teaser {
+  .grid-teaser-item.default {
+    flex-direction: row-reverse;
+
+    .grid-image-wrapper {
+      margin-right: 0;
+      margin-left: 20px;
+    }
+  }
+}
+
+.block-editor-teaser.has--align--center .block.teaser {
+  .grid-teaser-item.default {
+    display: block;
+
+    .grid-image-wrapper {
+      margin: 0 0 25px 0;
+    }
+  }
+}

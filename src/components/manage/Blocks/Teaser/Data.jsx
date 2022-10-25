@@ -3,7 +3,6 @@ import { useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
 import { getContent } from '@plone/volto/actions';
 import { BlockDataForm } from '@plone/volto/components';
-import { TeaserSchema } from './schema';
 import { isEmpty } from 'lodash';
 
 const TeaserData = (props) => {
@@ -37,7 +36,7 @@ const TeaserData = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [href]);
 
-  const schema = TeaserSchema({ ...props, intl });
+  const schema = blocksConfig[data['@type']].blockSchema({ intl });
 
   return (
     <BlockDataForm

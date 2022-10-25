@@ -311,3 +311,30 @@ export const withStylingSchemaEnhancer = (FormComponent) => (props) => {
   }
   return <FormComponent {...props} schema={schema} />;
 };
+
+export const addStyling = ({ schema, formData, intl }) => {
+  const EMPTY_STYLES_SCHEMA = {
+    fieldsets: [
+      {
+        id: 'default',
+        title: 'Default',
+        fields: [],
+      },
+    ],
+    properties: {},
+    required: [],
+  };
+
+  schema.fieldsets.push({
+    id: 'styling',
+    title: intl.formatMessage(messages.styling),
+    fields: ['styles'],
+  });
+
+  schema.properties.styles = {
+    widget: 'object',
+    title: intl.formatMessage(messages.styling),
+    schema: EMPTY_STYLES_SCHEMA,
+  };
+  return schema;
+};
