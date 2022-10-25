@@ -296,7 +296,6 @@ msgstr "Aliasa"
 msgid "Alias has been added"
 msgstr "Aliasa ondo gehitu da"
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
@@ -440,11 +439,6 @@ msgstr ""
 # defaultMessage: Back
 msgid "Back"
 msgstr "Atzera"
-
-#: components/manage/Blocks/Block/StylesSchema
-# defaultMessage: Background color
-msgid "Background color"
-msgstr "Atzeko planoko kolorea"
 
 #: components/manage/Diff/Diff
 # defaultMessage: Base
@@ -641,7 +635,6 @@ msgstr "Batu elementua"
 msgid "Collection"
 msgstr "Bilduma"
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Widgets/ColorPickerWidget
 # defaultMessage: Color
 msgid "Color"
