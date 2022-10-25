@@ -324,6 +324,11 @@ Undo html_static_path configuration in `plone/documentation`, and restore image 
 ### Bugfix
 
 - Fix array widget translation @robgietema
+- Fix: TTW DX Layout disables IBlocks behavior and with it all the indexers and transformers @avoinea
+
+### Internal
+
+### Documentation
 - Fix copy / paste text in list @robgietema
 
 ## 16.0.0-alpha.27 (2022-08-29)
