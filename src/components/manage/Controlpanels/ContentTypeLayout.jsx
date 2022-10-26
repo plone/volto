@@ -122,10 +122,6 @@ class ContentTypeLayout extends Component {
       isClient: false,
     };
 
-    this.onCancel = this.onCancel.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-    this.onEnableBlocks = this.onEnableBlocks.bind(this);
-    this.onDisableBlocksBehavior = this.onDisableBlocksBehavior.bind(this);
     this.form = React.createRef();
   }
 
@@ -159,11 +155,10 @@ class ContentTypeLayout extends Component {
 
     // Schema GET
     if (this.props.schemaRequest.loading && nextProps.schemaRequest.loaded) {
-      let properties = nextProps.schema?.properties || {};
-      let content = {};
-      let value, key;
-      for (key in properties) {
-        value = properties[key].default;
+      const properties = nextProps.schema?.properties || {};
+      const content = {};
+      for (const key in properties) {
+        const value = properties[key].default;
         if (value) {
           content[key] = value;
         }
@@ -228,31 +223,34 @@ class ContentTypeLayout extends Component {
    * @param {object} data Form data.
    * @returns {undefined}
    */
-  onSubmit(data) {
-    let schema = { properties: {} };
+  onSubmit = (data) => {
+    const schema = { properties: {} };
     Object.keys(data)
       .filter((k) => data[k])
       .forEach((k) => (schema.properties[k] = { default: data[k] }));
     this.props.updateSchema(this.props.id, schema);
-  }
+  };
 
   /**
    * Cancel handler
    * @method onCancel
    * @returns {undefined}
    */
-  onCancel() {
-    let url = getParentUrl(this.props.pathname);
+  onCancel = () => {
+    const url = getParentUrl(this.props.pathname);
     this.props.history.push(getParentUrl(url));
-  }
+  };
 
   /**
    * Enable blocks handler
    * @method onEnableBlocks
    * @returns {undefined}
    */
-  onEnableBlocks() {
-    let schema = {
+  onEnableBlocks = () => {
+    const { properties = {} } = this.props.schema;
+    const blocksFieldName = getBlocksFieldname(properties);
+    const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
+    const schema = {
       fieldsets: [
         {
           id: 'layout',
@@ -266,28 +264,42 @@ class ContentTypeLayout extends Component {
           type: 'dict',
           widget: 'json',
           factory: 'JSONField',
+          default: properties[blocksFieldName]?.default || {},
         },
         blocks_layout: {
           title: 'Blocks Layout',
           type: 'dict',
           widget: 'json',
           factory: 'JSONField',
+          default: properties[blocksLayoutFieldname]?.default || { items: [] },
         },
       },
     };
     this.props.updateSchema(this.props.id, schema);
-  }
+  };
 
   /**
    * Disable Blocks behavior handler
    * @method onDisableBlocksBehavior
    * @returns {undefined}
    */
-  onDisableBlocksBehavior() {
+  onDisableBlocksBehavior = () => {
     this.props.updateControlpanel(this.props.controlpanel['@id'], {
       [this.state.readOnlyBehavior]: false,
+      'volto.blocks.editable.layout': true,
     });
-  }
+  };
+
+  /**
+   * Enable Blocks behavior handler
+   * @method onEnableBlocksBehavior
+   * @returns {undefined}
+   */
+  onEnableBlocksBehavior = () => {
+    this.props.updateControlpanel(this.props.controlpanel['@id'], {
+      'volto.blocks.editable.layout': true,
+    });
+  };
 
   /**
    * Render method.
@@ -327,7 +339,7 @@ class ContentTypeLayout extends Component {
             <div className="ui divider"></div>
             <Button
               primary
-              onClick={this.onEnableBlocks}
+              onClick={this.onEnableBlocksBehavior}
               content={this.props.intl.formatMessage(messages.enable)}
             />
           </Segment>

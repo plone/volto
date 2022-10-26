@@ -1,5 +1,4 @@
 import { RRule } from 'rrule';
-import moment from 'moment';
 import { defineMessages } from 'react-intl';
 
 export const Days = {
@@ -43,8 +42,8 @@ export const toISOString = (date) => {
   return date.toISOString().split('T')[0];
 };
 
-export const rrulei18n = (intl) => {
-  moment.locale(intl.locale);
+export const rrulei18n = (intl, moment, lang) => {
+  moment.locale(lang);
 
   const messages = defineMessages({
     every: { id: 'rrule_every', defaultMessage: 'every' },

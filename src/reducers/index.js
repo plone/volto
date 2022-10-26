@@ -8,6 +8,7 @@ import { intlReducer } from 'react-intl-redux';
 import actions from '@plone/volto/reducers/actions/actions';
 import addons from '@plone/volto/reducers/addons/addons';
 import apierror from '@plone/volto/reducers/apierror/apierror';
+import aliases from '@plone/volto/reducers/aliases/aliases';
 import breadcrumbs from '@plone/volto/reducers/breadcrumbs/breadcrumbs';
 import browserdetect from '@plone/volto/reducers/browserdetect/browserdetect';
 import comments from '@plone/volto/reducers/comments/comments';
@@ -25,12 +26,17 @@ import navigation from '@plone/volto/reducers/navigation/navigation';
 import querystring from '@plone/volto/reducers/querystring/querystring';
 import querystringsearch from '@plone/volto/reducers/querystringsearch/querystringsearch';
 import roles from '@plone/volto/reducers/roles/roles';
+import rules from '@plone/volto/reducers/rules/rules';
+import controlpanelrule from '@plone/volto/reducers/controlPanelRule/controlPanelRule';
+import controlpanelrules from '@plone/volto/reducers/controlPanelRules/controlPanelRules';
+import contentrulesevents from '@plone/volto/reducers/contentRulesEvents/contentRulesEvents';
 import schema from '@plone/volto/reducers/schema/schema';
 import search from '@plone/volto/reducers/search/search';
 import sharing from '@plone/volto/reducers/sharing/sharing';
 import sidebar from '@plone/volto/reducers/sidebar/sidebar';
 import types from '@plone/volto/reducers/types/types';
 import users from '@plone/volto/reducers/users/users';
+import authRole from '@plone/volto/reducers/authRole/authRole';
 import userSession from '@plone/volto/reducers/userSession/userSession';
 import vocabularies from '@plone/volto/reducers/vocabularies/vocabularies';
 import workflow from '@plone/volto/reducers/workflow/workflow';
@@ -40,6 +46,8 @@ import lazyLibraries from '@plone/volto/reducers/lazyLibraries/lazyLibraries';
 import contextNavigation from '@plone/volto/reducers/contextNavigation/contextNavigation';
 import reduxAsyncConnect from './asyncConnect/asyncConnect';
 import workingCopy from './workingcopy/workingcopy';
+import transactions from './transactions/transactions';
+import userschema from './userschema/userschema';
 
 /**
  * Root reducer.
@@ -54,6 +62,7 @@ const reducers = {
   actions,
   addons,
   apierror,
+  aliases,
   breadcrumbs,
   browserdetect,
   comments,
@@ -71,12 +80,17 @@ const reducers = {
   querystring,
   querystringsearch,
   roles,
+  rules,
+  controlpanelrule,
+  controlpanelrules,
+  contentrulesevents,
   schema,
   search,
   sharing,
   sidebar,
   types,
   users,
+  authRole,
   userSession,
   vocabularies,
   workflow,
@@ -85,6 +99,8 @@ const reducers = {
   lazyLibraries,
   contextNavigation,
   workingCopy,
+  transactions,
+  userschema,
 };
 
 export default reducers;

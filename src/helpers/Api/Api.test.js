@@ -18,6 +18,10 @@ jest.mock('superagent', () => ({
   })),
 }));
 
+beforeAll(() => {
+  config.settings.legacyTraverse = true;
+});
+
 const api = new Api();
 const { settings } = config;
 

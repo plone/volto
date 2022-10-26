@@ -5,19 +5,20 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Editor from 'draft-js-plugins-editor';
-import { convertFromRaw, EditorState, RichUtils } from 'draft-js';
-import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
-import isSoftNewlineEvent from 'draft-js/lib/isSoftNewlineEvent';
 import { includes } from 'lodash';
 import config from '@plone/volto/registry';
+
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import loadable from '@loadable/component';
+
+const Editor = loadable(() => import('draft-js-plugins-editor'));
 
 /**
  * Edit text cell class.
  * @class Cell
  * @extends Component
  */
-class Cell extends Component {
+class CellComponent extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -54,12 +55,16 @@ class Cell extends Component {
   constructor(props) {
     super(props);
 
+    const { EditorState, convertFromRaw } = props.draftJs;
+    const createInlineToolbarPlugin = props.draftJsInlineToolbarPlugin.default;
+
     if (!__SERVER__) {
+      this.draftConfig = config.settings.richtextEditorSettings(props);
       let editorState;
       editorState = EditorState.createWithContent(convertFromRaw(props.value));
 
       const inlineToolbarPlugin = createInlineToolbarPlugin({
-        structure: config.settings.richTextEditorInlineToolbarButtons,
+        structure: this.draftConfig.richTextEditorInlineToolbarButtons,
       });
 
       this.state = {
@@ -125,7 +130,8 @@ class Cell extends Component {
     }
 
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
-    const { settings } = config;
+    const isSoftNewlineEvent = this.props.draftJsLibIsSoftNewlineEvent.default;
+    const { RichUtils } = this.props.draftJs;
 
     return (
       <div>
@@ -135,11 +141,11 @@ class Cell extends Component {
           editorState={this.state.editorState}
           plugins={[
             this.state.inlineToolbarPlugin,
-            ...settings.richTextEditorPlugins,
+            ...this.draftConfig.richTextEditorPlugins,
           ]}
-          blockRenderMap={settings.extendedBlockRenderMap}
-          blockStyleFn={settings.blockStyleFn}
-          customStyleMap={settings.customStyleMap}
+          blockRenderMap={this.draftConfig.extendedBlockRenderMap}
+          blockStyleFn={this.draftConfig.blockStyleFn}
+          customStyleMap={this.draftConfig.customStyleMap}
           handleReturn={(e) => {
             if (isSoftNewlineEvent(e)) {
               this.onChange(
@@ -155,10 +161,10 @@ class Cell extends Component {
                 anchorKey,
               );
               const blockType = currentContentBlock.getType();
-              if (!includes(settings.listBlockTypes, blockType)) {
+              if (!includes(this.draftConfig.listBlockTypes, blockType)) {
                 this.props.onSelectBlock(
                   this.props.onAddBlock(
-                    settings.defaultBlockType,
+                    this.draftConfig.defaultBlockType,
                     this.props.index + 1,
                   ),
                 );
@@ -178,4 +184,24 @@ class Cell extends Component {
   }
 }
 
-export default Cell;
+export const Cell = injectLazyLibs([
+  'draftJs',
+  'draftJsBlockBreakoutPlugin',
+  'draftJsCreateBlockStyleButton',
+  'draftJsCreateInlineStyleButton',
+  'draftJsFilters',
+  'draftJsImportHtml',
+  'draftJsInlineToolbarPlugin',
+  'draftJsLibIsSoftNewlineEvent',
+  'immutableLib',
+])(CellComponent);
+
+const Preloader = (props) => {
+  const [loaded, setLoaded] = React.useState(false);
+  React.useEffect(() => {
+    Editor.load().then(() => setLoaded(true));
+  }, []);
+  return loaded ? <Cell {...props} /> : null;
+};
+
+export default Preloader;

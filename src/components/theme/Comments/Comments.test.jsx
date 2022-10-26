@@ -14,6 +14,12 @@ jest.mock('moment', () =>
   })),
 );
 
+jest.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(
+  async () =>
+    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
+);
+
 describe('Comments', () => {
   it('renders a comments component', () => {
     const store = mockStore({

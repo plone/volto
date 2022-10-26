@@ -37,8 +37,8 @@ const View = ({ data }) =>
                 {cell.value && cell.value.blocks && cell.value.blocks[0].text
                   ? redraft(
                       cell.value,
-                      config.settings.ToHTMLRenderers,
-                      config.settings.ToHTMLOptions,
+                      config.settings.richtextViewSettings.ToHTMLRenderers,
+                      config.settings.richtextViewSettings.ToHTMLOptions,
                     )
                   : '\u00A0'}
               </Table.Cell>

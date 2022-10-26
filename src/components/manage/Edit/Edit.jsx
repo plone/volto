@@ -30,6 +30,8 @@ import {
 import {
   updateContent,
   getContent,
+  lockContent,
+  unlockContent,
   getSchema,
   listActions,
 } from '@plone/volto/actions';
@@ -75,6 +77,8 @@ class Edit extends Component {
     updateContent: PropTypes.func.isRequired,
     getContent: PropTypes.func.isRequired,
     getSchema: PropTypes.func.isRequired,
+    lockContent: PropTypes.func.isRequired,
+    unlockContent: PropTypes.func.isRequired,
     updateRequest: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
@@ -94,6 +98,7 @@ class Edit extends Component {
     }),
     schema: PropTypes.objectOf(PropTypes.any),
     objectActions: PropTypes.array,
+    newId: PropTypes.string,
   };
 
   /**
@@ -120,6 +125,7 @@ class Edit extends Component {
       isClient: false,
       error: null,
       formSelected: 'editForm',
+      newId: null,
     };
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -132,7 +138,10 @@ class Edit extends Component {
    */
   componentDidMount() {
     if (this.props.getRequest.loaded && this.props.content?.['@type']) {
-      this.props.getSchema(this.props.content['@type']);
+      this.props.getSchema(
+        this.props.content['@type'],
+        getBaseUrl(this.props.pathname),
+      );
     }
     this.setState({
       isClient: true,
@@ -147,6 +156,14 @@ class Edit extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
+    if (this.props.getRequest.loading && nextProps.getRequest.loaded) {
+      if (nextProps.content['@type']) {
+        this.props.getSchema(
+          nextProps.content['@type'],
+          getBaseUrl(this.props.pathname),
+        );
+      }
+    }
     if (this.props.schemaRequest.loading && nextProps.schemaRequest.loaded) {
       if (!hasBlocksData(nextProps.schema.properties)) {
         this.setState({
@@ -168,6 +185,7 @@ class Edit extends Component {
 
     if (this.props.updateRequest.loading && nextProps.updateRequest.error) {
       const message =
+        nextProps.updateRequest.error?.response?.body?.error?.message ||
         nextProps.updateRequest.error?.response?.body?.message ||
         nextProps.updateRequest.error?.response?.text ||
         '';
@@ -198,13 +216,35 @@ class Edit extends Component {
   }
 
   /**
+   * Component will unmount
+   * @method componentWillUnmount
+   * @returns {undefined}
+   */
+  componentWillUnmount() {
+    if (this.props.content?.lock?.locked) {
+      const baseUrl = getBaseUrl(this.props.pathname);
+      const { newId } = this.state;
+      // Unlock the page, taking a possible id change into account
+      this.props.unlockContent(
+        newId ? baseUrl.replace(/\/[^/]*$/, '/' + newId) : baseUrl,
+      );
+    }
+  }
+
+  /**
    * Submit handler
    * @method onSubmit
    * @param {object} data Form data.
    * @returns {undefined}
    */
   onSubmit(data) {
-    this.props.updateContent(getBaseUrl(this.props.pathname), data);
+    const lock_token = this.props.content?.lock?.token;
+    const headers = lock_token ? { 'Lock-Token': lock_token } : {};
+    // if the id has changed, remember it for unlock control
+    if ('id' in data) {
+      this.setState({ newId: data.id });
+    }
+    this.props.updateContent(getBaseUrl(this.props.pathname), data, headers);
   }
 
   /**
@@ -238,6 +278,7 @@ class Edit extends Component {
         isEditForm
         ref={this.form}
         schema={this.props.schema}
+        type={this.props.content?.['@type']}
         formData={this.props.content}
         requestError={this.state.error}
         onSubmit={this.onSubmit}
@@ -422,6 +463,8 @@ export const __test__ = compose(
       updateContent,
       getContent,
       getSchema,
+      lockContent,
+      unlockContent,
     },
   ),
 )(Edit);
@@ -437,8 +480,15 @@ export default compose(
     },
     {
       key: 'content',
-      promise: async ({ location, store: { dispatch } }) =>
-        await dispatch(getContent(getBaseUrl(location.pathname))),
+      promise: async ({ location, store: { dispatch } }) => {
+        const content = await dispatch(
+          getContent(getBaseUrl(location.pathname)),
+        );
+        if (content?.lock !== undefined) {
+          await dispatch(lockContent(getBaseUrl(location.pathname)));
+        }
+        return content;
+      },
     },
   ]),
   connect(
@@ -458,6 +508,8 @@ export default compose(
       updateContent,
       getContent,
       getSchema,
+      lockContent,
+      unlockContent,
     },
   ),
   preloadLazyLibs('cms'),

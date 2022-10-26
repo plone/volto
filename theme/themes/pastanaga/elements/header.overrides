@@ -14,6 +14,7 @@
   .logo-nav-wrapper {
     display: flex;
     flex-grow: 2;
+    align-items: center;
 
     .logo {
       flex: 0 0 auto;

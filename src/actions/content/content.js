@@ -11,6 +11,9 @@ import {
   ORDER_CONTENT,
   RESET_CONTENT,
   UPDATECOLUMNS_CONTENT,
+  LOCK_CONTENT,
+  UNLOCK_CONTENT,
+  LINK_INTEGRITY_CHECK,
 } from '@plone/volto/constants/ActionTypes';
 import { nestContent } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
@@ -56,18 +59,25 @@ export function deleteContent(urls) {
  * @function updateContent
  * @param {string|Array} urls Content url(s).
  * @param {Object|Array} content Content data.
+ * @param {Object|Array} headers Custom headers.
  * @returns {Object} Update content action.
  */
-export function updateContent(urls, content) {
+export function updateContent(urls, content, headers = {}) {
   return {
     type: UPDATE_CONTENT,
     request:
       typeof urls === 'string'
-        ? { op: 'patch', path: urls, data: nestContent(content) }
+        ? {
+            op: 'patch',
+            path: urls,
+            data: nestContent(content),
+            headers: headers,
+          }
         : urls.map((url, index) => ({
             op: 'patch',
             path: url,
             data: nestContent(content[index]),
+            headers: headers,
           })),
   };
 }
@@ -184,5 +194,58 @@ export function updateColumnsContent(url, index) {
   return {
     type: UPDATECOLUMNS_CONTENT,
     indexcolumns: index,
+  };
+}
+
+/**
+ * Lock content function.
+ * @function lockContent
+ * @param {string} urls Content url(s)
+ * @returns {Object} Lock content action.
+ */
+export function lockContent(urls) {
+  return {
+    type: LOCK_CONTENT,
+    mode: 'serial',
+    request:
+      typeof urls === 'string'
+        ? { op: 'post', path: `${urls}/@lock` }
+        : urls.map((url) => ({ op: 'post', path: `${url}/@lock` })),
+  };
+}
+
+/**
+ * Unlock content function.
+ * @function unlockContent
+ * @param {string|Array} urls Content url(s).
+ * @returns {Object} Unlock content action.
+ */
+export function unlockContent(urls, force = false) {
+  return {
+    type: UNLOCK_CONTENT,
+    mode: 'serial',
+    request:
+      typeof urls === 'string'
+        ? {
+            op: 'del',
+            path: `${urls}/@lock`,
+            data: force ? { force: true } : {},
+          }
+        : urls.map((url) => ({
+            op: 'del',
+            path: `${url}/@lock`,
+            data: force ? { force: true } : {},
+          })),
+  };
+}
+
+export function linkIntegrityCheck(selection) {
+  return {
+    type: LINK_INTEGRITY_CHECK,
+    mode: 'serial',
+    request: {
+      op: 'get',
+      path: '@linkintegrity?' + selection.map((uid) => `uids=${uid}`).join('&'),
+    },
   };
 }

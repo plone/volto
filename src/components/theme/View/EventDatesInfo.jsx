@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { List } from 'semantic-ui-react';
-import moment from 'moment';
-import { useIntl } from 'react-intl';
 import cx from 'classnames';
-import { RRule, rrulestr } from 'rrule';
 
-export const datesForDisplay = (start, end) => {
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import { useSelector } from 'react-redux';
+
+export const datesForDisplay = (start, end, moment) => {
   const mStart = moment(start);
   const mEnd = moment(end);
   if (!mStart.isValid() || !mEnd.isValid()) {
@@ -24,11 +24,13 @@ export const datesForDisplay = (start, end) => {
   };
 };
 
-export const When = ({ start, end, whole_day, open_end }) => {
-  const intl = useIntl();
-  moment.locale(intl.locale);
+const When_ = ({ start, end, whole_day, open_end, moment: momentlib }) => {
+  const lang = useSelector((state) => state.intl.locale);
 
-  const datesInfo = datesForDisplay(start, end);
+  const moment = momentlib.default;
+  moment.locale(lang);
+
+  const datesInfo = datesForDisplay(start, end, moment);
   if (!datesInfo) {
     return;
   }
@@ -97,6 +99,8 @@ export const When = ({ start, end, whole_day, open_end }) => {
   );
 };
 
+export const When = injectLazyLibs(['moment'])(When_);
+
 When.propTypes = {
   start: PropTypes.string.isRequired,
   end: PropTypes.string,
@@ -104,24 +108,32 @@ When.propTypes = {
   open_end: PropTypes.bool,
 };
 
-export const Recurrence = ({ recurrence, start }) => {
+export const Recurrence_ = ({
+  recurrence,
+  start,
+  moment: momentlib,
+  rrule,
+}) => {
+  const moment = momentlib.default;
+  const { RRule, rrulestr } = rrule;
   if (recurrence.indexOf('DTSTART') < 0) {
     var dtstart = RRule.optionsToString({
       dtstart: new Date(start),
     });
     recurrence = dtstart + '\n' + recurrence;
   }
-  const rrule = rrulestr(recurrence, { unfold: true, forceset: true });
+  const rule = rrulestr(recurrence, { unfold: true, forceset: true });
 
   return (
     <List
-      items={rrule
+      items={rule
         .all()
-        .map((date) => datesForDisplay(date))
+        .map((date) => datesForDisplay(date, undefined, moment))
         .map((date) => date.startDate)}
     />
   );
 };
+export const Recurrence = injectLazyLibs(['moment', 'rrule'])(Recurrence_);
 
 Recurrence.propTypes = {
   recurrence: PropTypes.string.isRequired,

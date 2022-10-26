@@ -12,8 +12,12 @@ import codeSVG from '@plone/volto/icons/code.svg';
 import discussionSVG from '@plone/volto/icons/discussion.svg';
 import securitySVG from '@plone/volto/icons/security.svg';
 import groupSVG from '@plone/volto/icons/group.svg';
+import userSVG from '@plone/volto/icons/user.svg';
 import addonSVG from '@plone/volto/icons/add-on.svg';
 import settingsSVG from '@plone/volto/icons/settings.svg';
+import rulesSVG from '@plone/volto/icons/content-existing.svg';
+import undoControlPanelSVG from '@plone/volto/icons/undo-control-panel.svg';
+import linkSVG from '@plone/volto/icons/link.svg';
 
 export const controlPanelsIcons = {
   default: settingsSVG,
@@ -30,6 +34,10 @@ export const controlPanelsIcons = {
   markup: codeSVG,
   'moderate-comments': discussionSVG,
   security: securitySVG,
-  users: groupSVG,
+  users: userSVG,
+  groups: groupSVG,
   addons: addonSVG,
+  rules: rulesSVG,
+  undo: undoControlPanelSVG,
+  aliases: linkSVG,
 };

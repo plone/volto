@@ -6,6 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { flattenToAppURL } from '@plone/volto/helpers';
+import { LinkMore } from '@plone/volto/components';
 
 /**
  * View image block class.
@@ -24,8 +25,11 @@ const View = ({ data }) => (
         />
       )}
       <div className="hero-body">
-        {data.title && <h1>{data.title}</h1>}
-        {data.description && <p>{data.description}</p>}
+        <div className="hero-text">
+          {data.title && <h1>{data.title}</h1>}
+          {data.description && <p>{data.description}</p>}
+        </div>
+        <LinkMore data={data} />
       </div>
     </div>
   </div>

@@ -14,6 +14,12 @@ const store = mockStore({
   },
 });
 
+jest.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(
+  async () =>
+    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
+);
+
 const { settings } = config;
 
 test('renders an event view component with all props', () => {
@@ -21,6 +27,7 @@ test('renders an event view component with all props', () => {
     <Provider store={store}>
       <EventView
         content={{
+          '@id': 'http://localhost:8080/Plone/my-page',
           title: 'Hello World!',
           description: 'Hi',
           text: {
@@ -51,6 +58,7 @@ test('renders an event view component with only required props', () => {
     <Provider store={store}>
       <EventView
         content={{
+          '@id': 'http://localhost:8080/Plone/my-page',
           title: 'Hello World!',
           attendees: [],
           end: '2019-06-23T16:20:00+00:00',
@@ -69,6 +77,7 @@ test('renders an event view component without links to api in the text', () => {
     <Provider store={store}>
       <EventView
         content={{
+          '@id': 'http://localhost:8080/Plone/my-page',
           title: 'Hello World!',
           attendees: [],
           end: '2019-06-23T16:20:00+00:00',

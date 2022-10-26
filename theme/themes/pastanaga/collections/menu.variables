@@ -86,6 +86,7 @@
 
 /* Pointing */
 @secondaryPointingBorderWidth: 4px;
+@secondaryPointingItemTextTransform: uppercase;
 @secondaryPointingItemHorizontalPadding: @relativeMini;
 
 @secondaryPointingActiveBorderColor: @pink;

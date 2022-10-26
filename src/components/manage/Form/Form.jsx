@@ -28,6 +28,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { injectIntl } from 'react-intl';
 import { Portal } from 'react-portal';
+import { connect } from 'react-redux';
 import {
   Button,
   Container,
@@ -38,7 +39,9 @@ import {
 } from 'semantic-ui-react';
 import { v4 as uuid } from 'uuid';
 import { toast } from 'react-toastify';
-import { BlocksToolbar } from '@plone/volto/components';
+import { BlocksToolbar, UndoToolbar } from '@plone/volto/components';
+import { setSidebarTab } from '@plone/volto/actions';
+import { compose } from 'redux';
 import config from '@plone/volto/registry';
 
 /**
@@ -71,6 +74,7 @@ class Form extends Component {
     onCancel: PropTypes.func,
     submitLabel: PropTypes.string,
     resetAfterSubmit: PropTypes.bool,
+    resetOnCancel: PropTypes.bool,
     isEditForm: PropTypes.bool,
     isAdminForm: PropTypes.bool,
     title: PropTypes.string,
@@ -102,6 +106,7 @@ class Form extends Component {
     onCancel: null,
     submitLabel: null,
     resetAfterSubmit: false,
+    resetOnCancel: false,
     isEditForm: false,
     isAdminForm: false,
     title: null,
@@ -169,15 +174,31 @@ class Form extends Component {
         };
       }
     }
+
+    let selectedBlock = null;
+    if (
+      formData.hasOwnProperty(blocksLayoutFieldname) &&
+      formData[blocksLayoutFieldname].items.length > 0
+    ) {
+      selectedBlock = formData[blocksLayoutFieldname].items[0];
+
+      if (config.blocks?.initialBlocksFocus?.[this.props.type]) {
+        //Default selected is not the first block, but the one from config.
+        Object.keys(formData[blocksFieldname]).forEach((b_key) => {
+          if (
+            formData[blocksFieldname][b_key]['@type'] ===
+            config.blocks?.initialBlocksFocus?.[this.props.type]
+          ) {
+            selectedBlock = b_key;
+          }
+        });
+      }
+    }
     this.state = {
       formData,
       initialFormData: cloneDeep(formData),
       errors: {},
-      selected:
-        formData.hasOwnProperty(blocksLayoutFieldname) &&
-        formData[blocksLayoutFieldname].items.length > 0
-          ? formData[blocksLayoutFieldname].items[0]
-          : null,
+      selected: selectedBlock,
       multiSelected: [],
       isClient: false,
     };
@@ -218,6 +239,7 @@ class Form extends Component {
 
     if (this.props.onChangeFormData) {
       if (
+        // TODO: use fast-deep-equal
         JSON.stringify(prevState?.formData) !==
         JSON.stringify(this.state.formData)
       ) {
@@ -255,6 +277,7 @@ class Form extends Component {
         schema: this.props.schema,
         formData: this.state.formData,
         formatMessage: this.props.intl.formatMessage,
+        touchedField: { [id]: value },
       });
 
       this.setState({
@@ -378,7 +401,7 @@ class Form extends Component {
     if (event) {
       event.preventDefault();
     }
-    if (this.props.resetAfterSubmit) {
+    if (this.props.resetOnCancel || this.props.resetAfterSubmit) {
       this.setState({
         formData: this.props.formData,
       });
@@ -397,11 +420,13 @@ class Form extends Component {
       event.preventDefault();
     }
 
-    const errors = FormValidation.validateFieldsPerFieldset({
-      schema: this.props.schema,
-      formData: this.state.formData,
-      formatMessage: this.props.intl.formatMessage,
-    });
+    const errors = this.props.schema
+      ? FormValidation.validateFieldsPerFieldset({
+          schema: this.props.schema,
+          formData: this.state.formData,
+          formatMessage: this.props.intl.formatMessage,
+        })
+      : {};
 
     if (keys(errors).length > 0) {
       const activeIndex = FormValidation.showFirstTabWithErrors({
@@ -421,6 +446,8 @@ class Form extends Component {
           );
         },
       );
+      // Changes the focus to the metadata tab in the sidebar if error
+      this.props.setSidebarTab(0);
     } else {
       // Get only the values that have been modified (Edit forms), send all in case that
       // it's an add form
@@ -520,6 +547,15 @@ class Form extends Component {
             }
             onSelectBlock={this.onSelectBlock}
           />
+          <UndoToolbar
+            state={{
+              formData: this.state.formData,
+              selected: this.state.selected,
+              multiSelected: this.state.multiSelected,
+            }}
+            enableHotKeys
+            onUndoRedo={({ state }) => this.setState(state)}
+          />
           <BlocksForm
             onChangeFormData={(newFormData) =>
               this.setState({
@@ -552,7 +588,12 @@ class Form extends Component {
               >
                 {schema &&
                   map(schema.fieldsets, (item) => [
-                    <Segment secondary attached key={item.title}>
+                    <Segment
+                      secondary
+                      attached
+                      className={`fieldset-${item.id}`}
+                      key={item.title}
+                    >
                       {item.title}
                     </Segment>,
                     <Segment attached key={`fieldset-contents-${item.title}`}>
@@ -615,6 +656,11 @@ class Form extends Component {
                           <Segment secondary attached key={this.props.title}>
                             {this.props.title}
                           </Segment>
+                        ),
+                        item.description && (
+                          <Message attached="bottom">
+                            {item.description}
+                          </Message>
                         ),
                         ...map(item.fields, (field, index) => (
                           <Field
@@ -729,4 +775,8 @@ class Form extends Component {
   }
 }
 
-export default injectIntl(Form, { forwardRef: true });
+const FormIntl = injectIntl(Form, { forwardRef: true });
+
+export default compose(
+  connect(null, { setSidebarTab }, null, { forwardRef: true }),
+)(FormIntl);

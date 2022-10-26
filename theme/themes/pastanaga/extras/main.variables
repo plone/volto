@@ -1,0 +1,18 @@
+
+/* Mobile Menu Nav */
+@mobileMenuNavAlignItems: center;
+@mobileMenuNavJustifyContent: center;
+@mobileMenuNavTextAlign: center;
+
+/* Mobile Menu Nav Menu */
+@mobileMenuNavMenuAlignItems: center;
+@mobileMenuNavMenuFontSize: @24px;
+
+/* Mobile Menu Nav Item */
+@mobileMenuNavItemJustifyContent: center;
+@mobileMenuNavItemLineHeight: 1.25;
+
+/* Checkbox */
+@checkboxBorderUnchecked: 1px solid #826a6a;
+@checkboxBorderChecked: 1px solid #007eb1;
+@checkboxColor: #007eb1;

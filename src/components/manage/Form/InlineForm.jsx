@@ -1,10 +1,11 @@
-import PropTypes from 'prop-types';
-import { defineMessages, injectIntl } from 'react-intl';
 import React from 'react';
-import { keys, map } from 'lodash';
-import { Field, Icon } from '@plone/volto/components';
-import AnimateHeight from 'react-animate-height';
+import PropTypes from 'prop-types';
 import { Accordion, Segment, Message } from 'semantic-ui-react';
+import { defineMessages, injectIntl } from 'react-intl';
+import AnimateHeight from 'react-animate-height';
+import { keys, map, isEqual } from 'lodash';
+
+import { Field, Icon } from '@plone/volto/components';
 
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
@@ -24,24 +25,52 @@ const messages = defineMessages({
   },
 });
 
-const InlineForm = ({
-  block,
-  description,
-  error, // Such as {message: "It's not good"}
-  errors = {},
-  formData,
-  onChangeField,
-  schema,
-  title,
-  icon,
-  headerActions,
-  footer,
-  focusIndex,
-  intl,
-}) => {
+const InlineForm = (props) => {
+  const {
+    block,
+    description,
+    error, // Such as {message: "It's not good"}
+    errors = {},
+    formData,
+    onChangeField,
+    schema,
+    title,
+    icon,
+    headerActions,
+    footer,
+    focusIndex,
+    intl,
+  } = props;
   const _ = intl.formatMessage;
   const defaultFieldset = schema.fieldsets.find((o) => o.id === 'default');
   const other = schema.fieldsets.filter((o) => o.id !== 'default');
+
+  React.useEffect(() => {
+    // Will set field values from schema, by matching the default values
+
+    const objectSchema = typeof schema === 'function' ? schema(props) : schema;
+    const initialData = {
+      ...Object.keys(objectSchema.properties).reduce(
+        (accumulator, currentField) => {
+          return objectSchema.properties[currentField].default
+            ? {
+                ...accumulator,
+                [currentField]: objectSchema.properties[currentField].default,
+              }
+            : accumulator;
+        },
+        {},
+      ),
+      ...formData,
+    };
+
+    Object.keys(initialData).forEach((k) => {
+      if (!isEqual(initialData[k], formData?.[k])) {
+        onChangeField(k, initialData[k]);
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const [currentActiveFieldset, setCurrentActiveFieldset] = React.useState(0);
   function handleCurrentActiveFieldset(e, blockProps) {
@@ -92,11 +121,7 @@ const InlineForm = ({
               id={field}
               fieldSet={defaultFieldset.title.toLowerCase()}
               focus={index === focusIndex}
-              value={
-                'default' in schema.properties[field]
-                  ? formData[field] ?? schema.properties[field].default
-                  : formData[field]
-              }
+              value={formData[field]}
               required={schema.required.indexOf(field) !== -1}
               onChange={(id, value) => {
                 onChangeField(id, value);
@@ -135,11 +160,7 @@ const InlineForm = ({
                     <Field
                       {...schema.properties[field]}
                       id={field}
-                      value={
-                        'default' in schema.properties[field]
-                          ? formData[field] ?? schema.properties[field].default
-                          : formData[field]
-                      }
+                      value={formData[field]}
                       required={schema.required.indexOf(field) !== -1}
                       onChange={(id, value) => {
                         onChangeField(id, value);

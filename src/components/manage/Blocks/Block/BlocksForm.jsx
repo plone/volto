@@ -77,7 +77,7 @@ const BlocksForm = (props) => {
       e.preventDefault();
     }
     if (e.key === 'Enter' && !disableEnter) {
-      onAddBlock(config.settings.defaultBlockType, index + 1);
+      onSelectBlock(onAddBlock(config.settings.defaultBlockType, index + 1));
       e.preventDefault();
     }
   };
@@ -109,8 +109,8 @@ const BlocksForm = (props) => {
     onChangeFormData(newFormData);
   };
 
-  const onInsertBlock = (id, value) => {
-    const [newId, newFormData] = insertBlock(properties, id, value);
+  const onInsertBlock = (id, value, current) => {
+    const [newId, newFormData] = insertBlock(properties, id, value, current);
     onChangeFormData(newFormData);
     return newId;
   };
@@ -186,6 +186,7 @@ const BlocksForm = (props) => {
               onInsertBlock,
               onChangeBlock,
               onChangeField,
+              onChangeFormData,
               onDeleteBlock,
               onFocusNextBlock,
               onFocusPreviousBlock,

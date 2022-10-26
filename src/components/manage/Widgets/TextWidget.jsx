@@ -11,9 +11,10 @@ import { injectIntl } from 'react-intl';
 import { Icon, FormFieldWrapper } from '@plone/volto/components';
 
 /**
- * TextWidget component class.
- * @class TextWidget
- * @extends Component
+ * The simple text widget.
+ *
+ * It is the default fallback widget, so if no other widget is found based on
+ * passed field properties, it will be used.
  */
 class TextWidget extends Component {
   /**

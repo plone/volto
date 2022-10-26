@@ -70,6 +70,14 @@ const messages = defineMessages({
     defaultMessage:
       'If selected, this item will not appear in the navigation tree',
   },
+  yes: {
+    id: 'Yes',
+    defaultMessage: 'Yes',
+  },
+  no: {
+    id: 'No',
+    defaultMessage: 'No',
+  },
 });
 
 /**
@@ -203,8 +211,8 @@ class ContentsPropertiesModal extends Component {
                 ),
                 type: 'array',
                 choices: [
-                  [true, 'Yes'],
-                  [false, 'No'],
+                  [true, this.props.intl.formatMessage(messages.yes)],
+                  [false, this.props.intl.formatMessage(messages.no)],
                 ],
               },
             },

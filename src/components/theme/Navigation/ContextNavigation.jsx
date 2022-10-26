@@ -8,7 +8,7 @@ import { withRouter } from 'react-router';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { flattenToAppURL } from '@plone/volto/helpers';
-import { Icon } from '@plone/volto/components';
+import { Icon, UniversalLink } from '@plone/volto/components';
 import { withContentNavigation } from './withContentNavigation';
 
 import leftIcon from '@plone/volto/icons/left-key.svg';
@@ -29,23 +29,29 @@ function renderNode(node, parentLevel) {
       className={`level-${level}`}
     >
       <List.Content>
-        <RouterLink
-          to={flattenToAppURL(node.href)}
-          title={node.description}
-          className={cx(`contenttype-${node.type}`, {
-            in_path: node.is_in_path,
-          })}
-        >
-          {node.thumb ? <Image src={flattenToAppURL(node.thumb)} /> : ''}
-          {node.title}
-          {node.is_current ? (
-            <List.Content className="active-indicator">
-              <Icon name={leftIcon} size="30px" />
-            </List.Content>
-          ) : (
-            ''
-          )}
-        </RouterLink>
+        {node.type !== 'link' ? (
+          <RouterLink
+            to={flattenToAppURL(node.href)}
+            title={node.description}
+            className={cx(`contenttype-${node.type}`, {
+              in_path: node.is_in_path,
+            })}
+          >
+            {node.thumb ? <Image src={flattenToAppURL(node.thumb)} /> : ''}
+            {node.title}
+            {node.is_current ? (
+              <List.Content className="active-indicator">
+                <Icon name={leftIcon} size="30px" />
+              </List.Content>
+            ) : (
+              ''
+            )}
+          </RouterLink>
+        ) : (
+          <UniversalLink href={flattenToAppURL(node.href)}>
+            {node.title}
+          </UniversalLink>
+        )}
         {(node.items?.length && (
           <List.List>
             {node.items.map((node) => renderNode(node, level))}

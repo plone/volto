@@ -1,11 +1,10 @@
 import decorateComponentWithProps from 'decorate-component-with-props';
-import { EditorState, Modifier } from 'draft-js';
 
 import DefaultLink from './components/Link';
 import LinkButton from './components/LinkButton';
 import linkStrategy, { matchesEntityType } from './linkStrategy';
 
-function removeEntity(editorState) {
+function unboundRemoveEntity(editorState) {
   const contentState = editorState.getCurrentContent();
   const selectionState = editorState.getSelection();
   const startKey = selectionState.getStartKey();
@@ -30,13 +29,13 @@ function removeEntity(editorState) {
     },
   );
 
-  const newContentState = Modifier.applyEntity(
+  const newContentState = this.Modifier.applyEntity(
     contentState,
     entitySelection,
     null,
   );
 
-  const newEditorState = EditorState.push(
+  const newEditorState = this.EditorState.push(
     editorState,
     newContentState,
     'apply-entity',
@@ -49,7 +48,15 @@ export default (config = {}) => {
   // ToDo: Get rif of the remainings of having the original CSS modules
   const defaultTheme = {};
 
-  const { theme = defaultTheme, placeholder, Link, linkTarget } = config;
+  const {
+    theme = defaultTheme,
+    placeholder,
+    Link,
+    linkTarget,
+    libraries,
+  } = config;
+
+  const removeEntity = unboundRemoveEntity.bind(libraries);
 
   return {
     decorators: [

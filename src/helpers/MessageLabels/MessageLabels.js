@@ -33,6 +33,10 @@ export const messages = defineMessages({
     id: 'Save',
     defaultMessage: 'Save',
   },
+  saved: {
+    id: 'Saved',
+    defaultMessage: 'Saved',
+  },
   isNumber: {
     id: 'number',
     defaultMessage: 'Input must be number',
@@ -69,6 +73,10 @@ export const messages = defineMessages({
   searchGroups: {
     id: 'Search group…',
     defaultMessage: 'Search group…',
+  },
+  filterByGroups: {
+    id: 'Filter users by groups',
+    defaultMessage: 'Filter users by groups',
   },
   back: {
     id: 'Back',
@@ -138,9 +146,21 @@ export const messages = defineMessages({
     id: 'Password',
     defaultMessage: 'Password',
   },
+  addUserFormSendPasswordResetTitle: {
+    id: 'Send a confirmation mail with a link to set the password.',
+    defaultMessage: 'Send a confirmation mail with a link to set the password.',
+  },
   addUserFormRolesTitle: {
     id: 'Roles',
     defaultMessage: 'Roles',
+  },
+  updateRoles: {
+    id: 'User roles updated',
+    defaultMessage: 'User roles updated',
+  },
+  updateGroups: {
+    id: 'Group roles updated',
+    defaultMessage: 'Group roles updated',
   },
   addGroupsFormRolesTitle: {
     id: 'Roles',
@@ -158,9 +178,37 @@ export const messages = defineMessages({
     id: 'Group created',
     defaultMessage: 'Group created',
   },
-  usersAndGroups: {
-    id: 'Users and Groups',
-    defaultMessage: 'Users and Groups',
+  users: {
+    id: 'Users',
+    defaultMessage: 'Users',
+  },
+  usergroup: {
+    id: 'User Group Settings',
+    defaultMessage: 'User Group Settings',
+  },
+  usergroupmemberbership: {
+    id: 'User Group Membership',
+    defaultMessage: 'User Group Membership',
+  },
+  noUserFound: {
+    id: 'No user found',
+    defaultMessage: 'No user found',
+  },
+  pleaseSearchOrFilterUsers: {
+    id: 'Please search for users or use the filters on the side.',
+    defaultMessage: 'Please search for users or use the filters on the side.',
+  },
+  addUsersToGroup: {
+    id: 'Add users to group',
+    defaultMessage: 'Add users to group',
+  },
+  removeUsersFromGroup: {
+    id: 'Remove users from group',
+    defaultMessage: 'Remove users from group',
+  },
+  groups: {
+    id: 'Groups',
+    defaultMessage: 'Groups',
   },
   copyBlocks: {
     id: 'Copy blocks',
@@ -185,5 +233,9 @@ export const messages = defineMessages({
   showAllUserText: {
     id: "Enter a username above to search or click 'Show All'",
     defaultMessage: "Enter a username above to search or click 'Show All'",
+  },
+  addJoinedGroups: {
+    id: 'Show groups of users below',
+    defaultMessage: 'Show groups of users below',
   },
 });

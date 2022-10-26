@@ -6,6 +6,12 @@ import { render } from '@testing-library/react';
 
 import config from '@plone/volto/registry';
 
+jest.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(
+  async () =>
+    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
+);
+
 let mockSerial = 0;
 
 jest.mock('uuid', () => {

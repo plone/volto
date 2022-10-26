@@ -1,3 +1,3 @@
-export default function applyConfig(config) {
-  return config;
-}
+module.exports = {
+  addons: [],
+};

@@ -2,6 +2,12 @@
 /* eslint-disable  no-confusing-arrow */
 import tlds from 'tlds';
 
+export const mailRegex = () =>
+  /^((mailto:[^<>()/[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
+
+export const telRegex = () =>
+  /^[tel:]*[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]*$/g;
+
 const v4 =
   '(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])(?:\\.(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])){3}';
 const v6seg = '[0-9a-fA-F]{1,4}';
@@ -31,7 +37,7 @@ ipRegex.v4 = (opts) =>
 ipRegex.v6 = (opts) =>
   opts && opts.exact ? new RegExp(`^${v6}$`) : new RegExp(v6, 'g');
 
-export default (_opts) => {
+export const urlRegex = (_opts) => {
   const opts = Object.assign({ strict: true }, _opts);
   const protocol = `(?:(?:[a-z]+:)?//)${opts.strict ? '' : '?'}`;
   const auth = '(?:\\S+(?::\\S*)?@)?';

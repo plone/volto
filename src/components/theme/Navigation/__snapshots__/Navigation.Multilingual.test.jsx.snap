@@ -2,6 +2,7 @@
 
 exports[`Navigation Multilingual renders a navigation component with an active item 1`] = `
 <nav
+  aria-label="navigation"
   className="navigation"
   id="navigation"
 >
@@ -10,7 +11,7 @@ exports[`Navigation Multilingual renders a navigation component with an active i
   >
     <button
       aria-label="Open menu"
-      className="hamburger hamburger--collapse"
+      className="hamburger hamburger--spin"
       onClick={[Function]}
       title="Open menu"
       type="button"
@@ -59,6 +60,7 @@ exports[`Navigation Multilingual renders a navigation component with an active i
 
 exports[`Navigation Multilingual renders a navigation component with an active item when its subchildren are accessed 1`] = `
 <nav
+  aria-label="navigation"
   className="navigation"
   id="navigation"
 >
@@ -67,7 +69,7 @@ exports[`Navigation Multilingual renders a navigation component with an active i
   >
     <button
       aria-label="Open menu"
-      className="hamburger hamburger--collapse"
+      className="hamburger hamburger--spin"
       onClick={[Function]}
       title="Open menu"
       type="button"
@@ -116,6 +118,7 @@ exports[`Navigation Multilingual renders a navigation component with an active i
 
 exports[`Navigation Multilingual renders a navigation component with only one active item even if there are similar item names 1`] = `
 <nav
+  aria-label="navigation"
   className="navigation"
   id="navigation"
 >
@@ -124,7 +127,7 @@ exports[`Navigation Multilingual renders a navigation component with only one ac
   >
     <button
       aria-label="Open menu"
-      className="hamburger hamburger--collapse"
+      className="hamburger hamburger--spin"
       onClick={[Function]}
       title="Open menu"
       type="button"
@@ -181,6 +184,7 @@ exports[`Navigation Multilingual renders a navigation component with only one ac
 
 exports[`Navigation Multilingual renders a navigation component without active items 1`] = `
 <nav
+  aria-label="navigation"
   className="navigation"
   id="navigation"
 >
@@ -189,7 +193,7 @@ exports[`Navigation Multilingual renders a navigation component without active i
   >
     <button
       aria-label="Open menu"
-      className="hamburger hamburger--collapse"
+      className="hamburger hamburger--spin"
       onClick={[Function]}
       title="Open menu"
       type="button"

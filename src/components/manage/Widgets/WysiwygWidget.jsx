@@ -6,22 +6,22 @@
 import React, { Component } from 'react';
 import ReactDOMServer from 'react-dom/server';
 import PropTypes from 'prop-types';
-import { Provider } from 'react-redux';
-import { connect } from 'react-redux';
+import { connect, Provider } from 'react-redux';
 import { compose } from 'redux';
-import Editor from 'draft-js-plugins-editor';
-import { stateFromHTML } from 'draft-js-import-html';
-import { convertToRaw, EditorState } from 'draft-js';
 import redraft from 'redraft';
 import { Form, Label, TextArea } from 'semantic-ui-react';
 import { map } from 'lodash';
-import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import { defineMessages, injectIntl } from 'react-intl';
 import configureStore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
 import config from '@plone/volto/registry';
 
 import { FormFieldWrapper } from '@plone/volto/components';
+
+import loadable from '@loadable/component';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+
+const Editor = loadable(() => import('draft-js-plugins-editor'));
 
 const messages = defineMessages({
   default: {
@@ -55,11 +55,19 @@ const messages = defineMessages({
 });
 
 /**
- * WysiwygWidget container class.
- * @class WysiwygWidget
- * @extends Component
+ * WysiwygWidget HTML richtext editing widget
+ *
+ * To use it, in schema properties, declare a field like:
+ *
+ * ```jsx
+ * {
+ *  title: "Rich text",
+ *  widget: 'richtext',
+ * }
+ * ```
+ *
  */
-class WysiwygWidget extends Component {
+class WysiwygWidgetComponent extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -99,6 +107,10 @@ class WysiwygWidget extends Component {
        */
       encoding: PropTypes.string,
     }),
+    /**
+     * Placeholder for the editor
+     */
+    placeholder: PropTypes.string,
     /**
      * List of error messages
      */
@@ -149,11 +161,17 @@ class WysiwygWidget extends Component {
   constructor(props) {
     super(props);
 
+    const { stateFromHTML } = props.draftJsImportHtml;
+    const { EditorState } = props.draftJs;
+    const createInlineToolbarPlugin = props.draftJsInlineToolbarPlugin.default;
+
+    this.draftConfig = config.settings.richtextEditorSettings(props);
+
     if (!__SERVER__) {
       let editorState;
       if (props.value && props.value.data) {
         const contentState = stateFromHTML(props.value.data, {
-          customBlockFn: config.settings.FromHTMLCustomBlockFn,
+          customBlockFn: this.draftConfig.FromHTMLCustomBlockFn,
         });
         editorState = EditorState.createWithContent(contentState);
       } else {
@@ -161,7 +179,7 @@ class WysiwygWidget extends Component {
       }
 
       const inlineToolbarPlugin = createInlineToolbarPlugin({
-        structure: config.settings.richTextEditorInlineToolbarButtons,
+        structure: this.draftConfig.richTextEditorInlineToolbarButtons,
       });
 
       this.state = { editorState, inlineToolbarPlugin };
@@ -208,7 +226,7 @@ class WysiwygWidget extends Component {
    * @returns {undefined}
    */
   onChange(editorState) {
-    const { settings } = config;
+    const { convertToRaw } = this.props.draftJs;
     this.setState({ editorState });
     const mockStore = configureStore();
 
@@ -228,8 +246,8 @@ class WysiwygWidget extends Component {
           <MemoryRouter>
             {redraft(
               convertToRaw(editorState.getCurrentContent()),
-              settings.ToHTMLRenderers,
-              settings.ToHTMLOptions,
+              config.settings.richtextViewSettings.ToHTMLRenderers,
+              config.settings.richtextViewSettings.ToHTMLOptions,
             )}
           </MemoryRouter>
         </Provider>,
@@ -276,7 +294,6 @@ class WysiwygWidget extends Component {
       );
     }
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
-    const { settings } = config;
 
     return (
       <FormFieldWrapper {...this.props} className="wysiwyg">
@@ -290,11 +307,12 @@ class WysiwygWidget extends Component {
                 editorState={this.state.editorState}
                 plugins={[
                   this.state.inlineToolbarPlugin,
-                  ...settings.richTextEditorPlugins,
+                  ...this.draftConfig.richTextEditorPlugins,
                 ]}
-                blockRenderMap={settings.extendedBlockRenderMap}
-                blockStyleFn={settings.blockStyleFn}
-                customStyleMap={settings.customStyleMap}
+                placeholder={this.props.placeholder}
+                blockRenderMap={this.draftConfig.extendedBlockRenderMap}
+                blockStyleFn={this.draftConfig.blockStyleFn}
+                customStyleMap={this.draftConfig.customStyleMap}
               />
               {this.props.onChange && <InlineToolbar />}
             </>
@@ -307,12 +325,33 @@ class WysiwygWidget extends Component {
   }
 }
 
-export default compose(
+export const WysiwygWidget = compose(
   injectIntl,
+  injectLazyLibs([
+    'draftJs',
+    'draftJsBlockBreakoutPlugin',
+    'draftJsCreateBlockStyleButton',
+    'draftJsCreateInlineStyleButton',
+    'draftJsFilters',
+    'draftJsImportHtml',
+    'draftJsInlineToolbarPlugin',
+    'draftJsLibIsSoftNewlineEvent',
+    'immutableLib',
+  ]),
   connect(
     (state, props) => ({
       token: state.userSession.token,
     }),
     {},
   ),
-)(WysiwygWidget);
+)(WysiwygWidgetComponent);
+
+const Preloader = (props) => {
+  const [loaded, setLoaded] = React.useState(false);
+  React.useEffect(() => {
+    Editor.load().then(() => setLoaded(true));
+  }, []);
+  return loaded ? <WysiwygWidget {...props} /> : null;
+};
+
+export default Preloader;

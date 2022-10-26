@@ -1,4 +1,4 @@
-import { map, uniq } from 'lodash';
+import { map, uniq, keys, intersection, isEmpty } from 'lodash';
 import { messages } from '../MessageLabels/MessageLabels';
 
 /**
@@ -40,7 +40,9 @@ const isMinPropertyValid = (value, valueToCompare, maxCriterion, intlFunc) => {
 const widgetValidation = {
   email: {
     isValidEmail: (emailValue, emailObj, intlFunc) => {
-      const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+      // Email Regex taken from from WHATWG living standard:
+      // https://html.spec.whatwg.org/multipage/input.html#e-mail-state-(type=email)
+      const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
       const isValid = emailRegex.test(emailValue);
       return !isValid ? intlFunc(messages.isValidEmail) : null;
     },
@@ -61,7 +63,7 @@ const widgetValidation = {
   },
   url: {
     isValidURL: (urlValue, urlObj, intlFunc) => {
-      const urlRegex = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/gm;
+      const urlRegex = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?|^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([_.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?|^((http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/gm;
       const isValid = urlRegex.test(urlValue);
       return !isValid ? intlFunc(messages.isValidURL) : null;
     },
@@ -176,10 +178,17 @@ const hasUniqueItems = (field, fieldData, formatMessage) => {
  * If required fields are undefined, return list of errors
  * @returns {Object[string]} - list of errors
  */
-const validateRequiredFields = (schema, formData, formatMessage) => {
+const validateRequiredFields = (
+  schema,
+  formData,
+  formatMessage,
+  touchedField,
+) => {
   const errors = {};
-
-  map(schema.required, (requiredField) => {
+  const fields = isEmpty(touchedField)
+    ? schema.required
+    : intersection(schema.required, keys(touchedField));
+  map(fields, (requiredField) => {
     const type = schema.properties[requiredField]?.type;
     const widget = schema.properties[requiredField]?.widget;
 
@@ -201,8 +210,10 @@ const validateRequiredFields = (schema, formData, formatMessage) => {
       !schema.properties[requiredField].readonly &&
       isEmpty
     ) {
-      errors[requiredField] = [];
-      errors[requiredField].push(formatMessage(messages.required));
+      const requiredFieldName =
+        schema.properties[requiredField].title || requiredField;
+      errors[requiredFieldName] = [];
+      errors[requiredFieldName].push(formatMessage(messages.required));
     }
   });
 
@@ -215,8 +226,18 @@ const validateRequiredFields = (schema, formData, formatMessage) => {
  * !!ONLY fields with data will be tested (those undefined are ignored here)
  * @returns {Object[string]} - list of errors
  */
-const validateFieldsPerFieldset = (schema, formData, formatMessage) => {
-  const errors = validateRequiredFields(schema, formData, formatMessage);
+const validateFieldsPerFieldset = (
+  schema,
+  formData,
+  formatMessage,
+  touchedField,
+) => {
+  const errors = validateRequiredFields(
+    schema,
+    formData,
+    formatMessage,
+    touchedField,
+  );
 
   map(schema.properties, (field, fieldId) => {
     const fieldWidgetType = field.widget || field.type;
@@ -327,8 +348,14 @@ class FormValidation {
     schema = { properties: {}, fieldsets: [], required: [] },
     formData = {},
     formatMessage = () => {},
+    touchedField = {},
   } = {}) {
-    return validateFieldsPerFieldset(schema, formData, formatMessage);
+    return validateFieldsPerFieldset(
+      schema,
+      formData,
+      formatMessage,
+      touchedField,
+    );
   }
 }
 

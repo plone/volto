@@ -5,8 +5,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { DragSource, DropTarget } from 'react-dnd';
 import { injectIntl } from 'react-intl';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 const widthValues = [
   'one',
@@ -43,7 +43,7 @@ export const ContentsIndexHeaderComponent = ({
   connectDropTarget(
     connectDragSource(
       <th
-        className={`${widthValues[width - 1]} wide`}
+        className={`${widthValues[width - 2]} wide`}
         style={{ opacity: isDragging ? 0.5 : 1, cursor: 'move' }}
       >
         {intl.formatMessage({
@@ -69,39 +69,51 @@ ContentsIndexHeaderComponent.propTypes = {
   onOrderIndex: PropTypes.func.isRequired,
 };
 
-export default DropTarget(
-  'index',
-  {
-    hover(props, monitor) {
-      const dragOrder = monitor.getItem().order;
-      const hoverOrder = props.order;
+const DragDropConnector = (props) => {
+  const { DropTarget, DragSource } = props.reactDnd;
 
-      if (dragOrder === hoverOrder) {
-        return;
-      }
+  const DndConnectedContentsIndexHeader = React.useMemo(
+    () =>
+      DropTarget(
+        'index',
+        {
+          hover(props, monitor) {
+            const dragOrder = monitor.getItem().order;
+            const hoverOrder = props.order;
 
-      props.onOrderIndex(dragOrder, hoverOrder - dragOrder);
+            if (dragOrder === hoverOrder) {
+              return;
+            }
 
-      monitor.getItem().order = hoverOrder;
-    },
-  },
-  (connect) => ({
-    connectDropTarget: connect.dropTarget(),
-  }),
-)(
-  DragSource(
-    'index',
-    {
-      beginDrag(props) {
-        return {
-          id: props.label,
-          order: props.order,
-        };
-      },
-    },
-    (connect, monitor) => ({
-      connectDragSource: connect.dragSource(),
-      isDragging: monitor.isDragging(),
-    }),
-  )(injectIntl(ContentsIndexHeaderComponent)),
-);
+            props.onOrderIndex(dragOrder, hoverOrder - dragOrder);
+
+            monitor.getItem().order = hoverOrder;
+          },
+        },
+        (connect) => ({
+          connectDropTarget: connect.dropTarget(),
+        }),
+      )(
+        DragSource(
+          'index',
+          {
+            beginDrag(props) {
+              return {
+                id: props.label,
+                order: props.order,
+              };
+            },
+          },
+          (connect, monitor) => ({
+            connectDragSource: connect.dragSource(),
+            isDragging: monitor.isDragging(),
+          }),
+        )(injectIntl(ContentsIndexHeaderComponent)),
+      ),
+    [DragSource, DropTarget],
+  );
+
+  return <DndConnectedContentsIndexHeader {...props} />;
+};
+
+export default injectLazyLibs('reactDnd')(DragDropConnector);

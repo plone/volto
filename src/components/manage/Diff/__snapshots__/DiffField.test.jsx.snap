@@ -126,8 +126,31 @@ exports[`DiffField renders a datetime field 1`] = `
           class="top aligned sixteen wide"
         >
           <span>
+            <span
+              class="deletion"
+            >
+              Tuesday
+            </span>
+            <span
+              class="addition"
+            >
+              Monday
+            </span>
             <span>
-              Sunday, April 23, 2017 3:38 AM
+              , April 25, 
+            </span>
+            <span
+              class="deletion"
+            >
+              2017
+            </span>
+            <span
+              class="addition"
+            >
+              2016
+            </span>
+            <span>
+               at 2:14 PM
             </span>
           </span>
         </td>

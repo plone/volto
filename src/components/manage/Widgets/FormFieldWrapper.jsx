@@ -18,6 +18,10 @@ const messages = defineMessages({
     id: 'Delete',
     defaultMessage: 'Delete',
   },
+  language_independent: {
+    id: 'Language independent field.',
+    defaultMessage: 'Language independent field.',
+  },
 });
 /**
  * FormFieldWrapper component class.
@@ -33,7 +37,7 @@ class FormFieldWrapper extends Component {
   static propTypes = {
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    description: PropTypes.string,
+    description: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     required: PropTypes.bool,
     error: PropTypes.arrayOf(PropTypes.string),
     wrapped: PropTypes.bool,
@@ -85,6 +89,7 @@ class FormFieldWrapper extends Component {
       onDelete,
       intl,
       noForInFieldLabel,
+      multilingual_options,
     } = this.props;
     const wdg = (
       <>
@@ -103,7 +108,14 @@ class FormFieldWrapper extends Component {
         inline
         required={required}
         error={error.length > 0}
-        className={cx(description ? 'help' : '', className)}
+        className={cx(
+          description ? 'help' : '',
+          className,
+          `field-wrapper-${id}`,
+          multilingual_options?.language_independent
+            ? 'language-independent-field'
+            : null,
+        )}
       >
         <Grid>
           <Grid.Row stretched>
@@ -156,7 +168,12 @@ class FormFieldWrapper extends Component {
           {description && (
             <Grid.Row stretched>
               <Grid.Column stretched width="12">
-                <p className="help">{description}</p>
+                <p className="help">
+                  {this.props.multilingual_options
+                    ? `${intl.formatMessage(messages.language_independent)} `
+                    : null}
+                  {description}
+                </p>
               </Grid.Column>
             </Grid.Row>
           )}

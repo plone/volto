@@ -15,5 +15,8 @@ exports[`renders an edit map block component 1`] = `
       title="Google Maps Embedded Block"
     />
   </div>
+  <div
+    className="map-overlay"
+  />
 </div>
 `;

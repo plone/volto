@@ -46,5 +46,9 @@ export function loginRenew() {
 export function logout() {
   return {
     type: LOGOUT,
+    request: {
+      op: 'post',
+      path: '@logout',
+    },
   };
 }

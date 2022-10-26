@@ -28,8 +28,38 @@ const messages = defineMessages({
     id: 'Empty object list',
     defaultMessage: 'Empty object list',
   },
+  add: {
+    id: 'Add (object list)',
+    defaultMessage: 'Add',
+  },
 });
 
+/**
+ * This is a DataGridField-equivalent widget for schema-based values.
+ * The shape of the items in the array is defined using a schema.
+ *
+ * ObjectListWidget can receive an optional `schemaExtender` prop which is
+ * a function that can mutate the schema for each individual item in the array.
+ * An example schema definition of the a field that renders with the
+ * ObjectListWidget:
+ *
+ * ```jsx
+ *  columns: {
+ *    title: 'Columns',
+ *    description: 'Leave empty to show all columns',
+ *    schema: SomeItemSchema,
+ *    widget: 'object_list',
+ *    schemaExtender: (schema, data) => {
+ *      const mutated = lodash.cloneDeep(schema);
+ *      mutated.properties.extraField = {
+ *        title: 'Extra field',
+ *      }
+ *      mutated.fieldsets[0].fields.push('extraField');
+ *      return mutated;
+ *    }
+ *  },
+ * ```
+ */
 const ObjectListWidget = (props) => {
   const {
     block,
@@ -62,7 +92,10 @@ const ObjectListWidget = (props) => {
           <Button
             compact
             icon
-            aria-label={objectSchema.addMessage || `Add ${objectSchema.title}`}
+            aria-label={
+              objectSchema.addMessage ||
+              `${intl.formatMessage(messages.add)} ${objectSchema.title}`
+            }
             onClick={(e) => {
               e.preventDefault();
               onChange(id, [
@@ -77,7 +110,8 @@ const ObjectListWidget = (props) => {
             <Icon name={addSVG} size="18px" />
             &nbsp;
             {/* Custom addMessage in schema, else default to english */}
-            {objectSchema.addMessage || `Add ${objectSchema.title}`}
+            {objectSchema.addMessage ||
+              `${intl.formatMessage(messages.add)} ${objectSchema.title}`}
           </Button>
         </div>
         {value.length === 0 && (

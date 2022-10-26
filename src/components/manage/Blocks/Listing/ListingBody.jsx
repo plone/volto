@@ -1,6 +1,6 @@
 import React, { createRef } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { Pagination } from 'semantic-ui-react';
+import { Pagination, Dimmer, Loader } from 'semantic-ui-react';
 import { Icon } from '@plone/volto/components';
 import config from '@plone/volto/registry';
 import withQuerystringResults from './withQuerystringResults';
@@ -46,6 +46,7 @@ const ListingBody = withQuerystringResults((props) => {
         items={listingItems}
         isEditMode={isEditMode}
         {...data}
+        {...variation}
       />
       {totalPages > 1 && (
         <div className="pagination-wrapper">
@@ -89,8 +90,27 @@ const ListingBody = withQuerystringResults((props) => {
           defaultMessage="No results found."
         />
       )}
+      <Dimmer active={!hasLoaded} inverted>
+        <Loader indeterminate size="small">
+          <FormattedMessage id="loading" defaultMessage="Loading" />
+        </Loader>
+      </Dimmer>
     </div>
-  ) : null;
+  ) : (
+    <div>
+      {hasLoaded && (
+        <FormattedMessage
+          id="No results found."
+          defaultMessage="No results found."
+        />
+      )}
+      <Dimmer active={!hasLoaded} inverted>
+        <Loader indeterminate size="small">
+          <FormattedMessage id="loading" defaultMessage="Loading" />
+        </Loader>
+      </Dimmer>
+    </div>
+  );
 });
 
 export default injectIntl(ListingBody);

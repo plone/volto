@@ -7,20 +7,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import cx from 'classnames';
 import { find, map } from 'lodash';
 
-import {
-  Helmet,
-  langmap,
-  flattenToAppURL,
-  normalizeLanguageName,
-} from '@plone/volto/helpers';
+import { Helmet, langmap, flattenToAppURL } from '@plone/volto/helpers';
 
 import config from '@plone/volto/registry';
-
-import { changeLanguage } from '@plone/volto/actions';
 
 import { defineMessages, useIntl } from 'react-intl';
 
@@ -33,7 +26,6 @@ const messages = defineMessages({
 
 const LanguageSelector = (props) => {
   const intl = useIntl();
-  const dispatch = useDispatch();
   const currentLang = useSelector((state) => state.intl.locale);
   const translations = useSelector(
     (state) => state.content.data?.['@components']?.translations?.items,
@@ -55,14 +47,6 @@ const LanguageSelector = (props) => {
             title={langmap[lang].nativeName}
             onClick={() => {
               props.onClickAction();
-              if (config.settings.supportedLanguages.includes(lang)) {
-                const langFileName = normalizeLanguageName(lang);
-                import('~/../locales/' + langFileName + '.json').then(
-                  (locale) => {
-                    dispatch(changeLanguage(lang, locale.default));
-                  },
-                );
-              }
             }}
             key={`language-selector-${lang}`}
           >

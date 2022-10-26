@@ -8,12 +8,29 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Input } from 'semantic-ui-react';
 
-/** EmailWidget function component
- * @function EmailWidget
- * @returns {string} Markup of the component
+/** EmailWidget, a widget for email addresses
+ *
+ * To use it, in schema properties, declare a field like:
+ *
+ * ```jsx
+ * {
+ *  title: "Email",
+ *  widget: 'email',
+ * }
+ * ```
  */
 const EmailWidget = (props) => {
-  const { id, value, onChange, onBlur, onClick, minLength, maxLength } = props;
+  const {
+    id,
+    value,
+    onChange,
+    onBlur,
+    onClick,
+    minLength,
+    maxLength,
+    placeholder,
+    isDisabled,
+  } = props;
   const inputId = `field-${id}`;
 
   return (
@@ -23,6 +40,8 @@ const EmailWidget = (props) => {
         name={id}
         type="email"
         value={value || ''}
+        disabled={isDisabled}
+        placeholder={placeholder}
         onChange={({ target }) =>
           onChange(id, target.value === '' ? undefined : target.value)
         }
@@ -54,6 +73,7 @@ EmailWidget.propTypes = {
   onClick: PropTypes.func,
   minLength: PropTypes.number,
   maxLength: PropTypes.number,
+  placeholder: PropTypes.string,
 };
 
 /**

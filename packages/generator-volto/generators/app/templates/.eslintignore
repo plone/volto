@@ -1,0 +1,3 @@
+src/addons/**/node_modules
+src/addons/**/cypress
+src/addons/**/build

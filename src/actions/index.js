@@ -34,6 +34,9 @@ export {
   sortContent,
   resetContent,
   updateColumnsContent,
+  lockContent,
+  unlockContent,
+  linkIntegrityCheck,
 } from '@plone/volto/actions/content/content';
 export {
   getControlpanel,
@@ -59,6 +62,10 @@ export {
   revertHistory,
 } from '@plone/volto/actions/history/history';
 export {
+  getTransactions,
+  revertTransactions,
+} from '@plone/volto/actions/transactions/transactions';
+export {
   addMessage,
   removeMessage,
   purgeMessages,
@@ -72,6 +79,31 @@ export {
   updateSchema,
 } from '@plone/volto/actions/schema/schema';
 export {
+  addRule,
+  moveRuleCondition,
+  moveRuleAction,
+  getRules,
+  enableRules,
+  disableRules,
+  applyRulesToSubfolders,
+  unapplyRulesToSubfolders,
+  removeRules,
+  getControlPanelRule,
+  getControlPanelRules,
+  deleteControlPanelRule,
+  getContentRulesEvents,
+  addNewRule,
+  editRule,
+  removeCondition,
+  addCondition,
+  editCondition,
+  getCondition,
+  removeAction,
+  addAction,
+  editAction,
+  getAction,
+} from '@plone/volto/actions/rules/rules';
+export {
   resetSearchContent,
   searchContent,
 } from '@plone/volto/actions/search/search';
@@ -79,6 +111,11 @@ export {
   updateSharing,
   getSharing,
 } from '@plone/volto/actions/sharing/sharing';
+export {
+  getAliases,
+  addAliases,
+  removeAliases,
+} from '@plone/volto/actions/aliases/aliases';
 export { getTypes } from '@plone/volto/actions/types/types';
 export {
   createUser,
@@ -89,7 +126,6 @@ export {
   resetPassword,
   updatePassword,
   updateUser,
-  showAllUsers,
 } from '@plone/volto/actions/users/users';
 export {
   login,
@@ -118,6 +154,7 @@ export {
 } from '@plone/volto/actions/blocksClipboard/blocksClipboard';
 export { loadLazyLibrary } from '@plone/volto/actions/lazyLibraries/lazyLibraries';
 export { getContextNavigation } from '@plone/volto/actions/contextNavigation/contextNavigation';
+export { authenticatedRole } from '@plone/volto/actions/authRole/authRole';
 export * from './asyncConnect/asyncConnect';
 export { changeLanguage, changeLanguageCookies } from './language/language';
 export {
@@ -125,3 +162,4 @@ export {
   createWorkingCopy,
   removeWorkingCopy,
 } from './workingcopy/workingcopy';
+export { getUserSchema } from './userschema/userschema';
