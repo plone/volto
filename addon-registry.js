@@ -472,6 +472,37 @@ class AddonConfigurationRegistry {
   getAddonDependencies() {
     return getAddonsLoaderChain(this.dependencyGraph);
   }
+
+  getDotDependencyGraph() {
+    const seen = [];
+    let out = `digraph {
+  layout="fdp"
+  beautify=true
+  sep="+10"
+  splines=curved
+
+  "@package" [color = red fillcolor=yellow style=filled]
+`;
+    let queue = ['@package'];
+    let name;
+
+    while (queue.length > 0) {
+      name = queue.pop();
+
+      const deps = this.dependencyGraph.directDependenciesOf(name);
+      for (let i = 0; i < deps.length; i++) {
+        const dep = deps[i];
+
+        if (seen.indexOf(dep) === -1) {
+          seen.push(dep);
+          queue.push(dep);
+        }
+        out += `    "${name}" -> "${dep}"\n`;
+      }
+    }
+    out += '}';
+    return out;
+  }
 }
 
 module.exports = AddonConfigurationRegistry;
