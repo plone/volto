@@ -12,9 +12,12 @@
 
 ### Internal
 
+- Set `.nvmrc` to not use `lts/*` but a specific one `lts/gallium`
+
 ### Documentation
 
 - Add NodeJS 18 (LTS) usage notice @sneridagh
+- Fix Netlify build @sneridagh
 
 ## 16.0.0-alpha.45 (2022-10-24)
 
