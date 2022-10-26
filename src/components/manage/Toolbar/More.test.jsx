@@ -84,6 +84,11 @@ const store = mockStore({
           id: 'redirection',
           title: 'URL Management',
         },
+        {
+          icon: '',
+          id: 'rules',
+          title: 'Rules',
+        },
       ],
       portal_tabs: [],
       site_actions: [

@@ -45,6 +45,10 @@ const messages = defineMessages({
     id: 'Sharing',
     defaultMessage: 'Sharing',
   },
+  rules: {
+    id: 'Rules',
+    defaultMessage: 'Rules',
+  },
   aliases: {
     id: 'URL Management',
     defaultMessage: 'URL Management',
@@ -216,6 +220,10 @@ class More extends Component {
       id: 'local_roles',
     });
 
+    const rulesAction = find(this.props.actions.object, {
+      id: 'contentrules',
+    });
+
     const aliasesAction = find(this.props.actions.object_buttons, {
       id: 'redirection',
     });
@@ -276,7 +284,7 @@ class More extends Component {
               {this.props.content['@type'] !== 'Plone Site' && (
                 // Plone Site does not have history (yet)
                 <li>
-                  <Link to={`${path}/history`}>
+                  <Link to={`${path}/historyview`}>
                     <div>
                       <span className="pastanaga-menu-label">
                         {historyAction?.title ||
@@ -304,6 +312,16 @@ class More extends Component {
                 <li>
                   <Link to={`${path}/aliases`}>
                     {this.props.intl.formatMessage(messages.aliases)}
+                    <Icon name={rightArrowSVG} size="24px" />
+                  </Link>
+                </li>
+              )}
+            </Plug>
+            <Plug pluggable="toolbar-more-menu-list" id="rules">
+              {rulesAction && (
+                <li>
+                  <Link to={`${path}/rules`}>
+                    {this.props.intl.formatMessage(messages.rules)}
                     <Icon name={rightArrowSVG} size="24px" />
                   </Link>
                 </li>

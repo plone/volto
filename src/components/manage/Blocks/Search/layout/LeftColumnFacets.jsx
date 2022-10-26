@@ -110,7 +110,7 @@ const LeftColumnFacets = (props) => {
           </div>
 
           <div className="search-results-count-sort">
-            <SearchDetails text={searchedText} total={totalItems} />
+            <SearchDetails text={searchedText} total={totalItems} data={data} />
 
             {data.showSortOn && (
               <SortOn

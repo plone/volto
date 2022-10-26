@@ -26,8 +26,8 @@ describe('History Tests', () => {
     cy.get('.menu-more').contains('History');
 
     // and then I click on History
-    cy.get('.menu-more a[href*="/history"]').contains('History').click();
-    cy.url().should('eq', Cypress.config().baseUrl + '/my-page/history');
+    cy.get('.menu-more a[href*="/historyview"]').contains('History').click();
+    cy.url().should('eq', Cypress.config().baseUrl + '/my-page/historyview');
     cy.contains('History of');
   });
 });

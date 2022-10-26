@@ -255,9 +255,9 @@ class UsersControlpanel extends Component {
    * @returns {undefined}
    */
   onAddUserSubmit(data, callback) {
-    const { groups } = data;
+    const { groups, sendPasswordReset } = data;
     if (groups && groups.length > 0) this.addUserToGroup(data);
-    this.props.createUser(data);
+    this.props.createUser(data, sendPasswordReset);
     this.setState({
       addUserSetFormDataCallback: callback,
     });
@@ -427,6 +427,7 @@ class UsersControlpanel extends Component {
                       'fullname',
                       'email',
                       'password',
+                      'sendPasswordReset',
                       'roles',
                       'groups',
                     ],
@@ -466,6 +467,12 @@ class UsersControlpanel extends Component {
                       'Enter your new password. Minimum 5 characters.',
                     widget: 'password',
                   },
+                  sendPasswordReset: {
+                    title: this.props.intl.formatMessage(
+                      messages.addUserFormSendPasswordResetTitle,
+                    ),
+                    type: 'boolean',
+                  },
                   roles: {
                     title: this.props.intl.formatMessage(
                       messages.addUserFormRolesTitle,
@@ -488,7 +495,7 @@ class UsersControlpanel extends Component {
                     description: '',
                   },
                 },
-                required: ['username', 'fullname', 'email', 'password'],
+                required: ['username', 'email'],
               }}
             />
           ) : null}

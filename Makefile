@@ -13,14 +13,14 @@ MAKEFLAGS+=--no-builtin-rules
 # Project settings
 
 INSTANCE_PORT=8080
-DOCKER_IMAGE=plone/plone-backend:6.0.0b2
-KGS=
+DOCKER_IMAGE=plone/plone-backend:6.0.0b3
+KGS=plone.restapi==8.31.0
 TESTING_ADDONS=plone.app.robotframework==2.0.0b2 plone.app.testing==7.0.0a3
 NODEBIN = ./node_modules/.bin
 
 # Plone 5 legacy
 DOCKER_IMAGE5=plone/plone-backend:5.2.9
-KGS5=plone.restapi==8.29.0 plone.volto==4.0.0a13 plone.rest==2.0.0a5
+KGS5=plone.restapi==8.31.0 plone.volto==4.0.0a13 plone.rest==2.0.0
 
 # Sphinx variables
 # You can set these variables from the command line.
@@ -237,7 +237,15 @@ full-test-acceptance: ## Runs Core Full Acceptance Testing in headless mode
 
 .PHONY: start-test-acceptance-frontend-seamless
 start-test-acceptance-frontend-seamless: ## Start the Seamless Core Acceptance Frontend Fixture
-	RAZZLE_DEV_PROXY_API_PATH=http://localhost:55001/plone yarn build && yarn start:prod
+	yarn build && yarn start:prod
+
+.PHONY: test-acceptance-seamless
+test-acceptance-seamless: ## Start Seamless Cypress Acceptance Tests
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config baseUrl='http://localhost'
+
+.PHONY: start-test-acceptance-webserver-seamless
+start-test-acceptance-webserver-seamless: ## Start the seamless webserver
+	cd cypress/docker && docker-compose -f seamless.yml up
 
 .PHONY: full-test-acceptance-seamless
 full-test-acceptance-seamless: ## Runs Seamless Core Full Acceptance Testing in headless mode

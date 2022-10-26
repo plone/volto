@@ -36,6 +36,7 @@ export {
   updateColumnsContent,
   lockContent,
   unlockContent,
+  linkIntegrityCheck,
 } from '@plone/volto/actions/content/content';
 export {
   getControlpanel,
@@ -77,6 +78,31 @@ export {
   putSchema,
   updateSchema,
 } from '@plone/volto/actions/schema/schema';
+export {
+  addRule,
+  moveRuleCondition,
+  moveRuleAction,
+  getRules,
+  enableRules,
+  disableRules,
+  applyRulesToSubfolders,
+  unapplyRulesToSubfolders,
+  removeRules,
+  getControlPanelRule,
+  getControlPanelRules,
+  deleteControlPanelRule,
+  getContentRulesEvents,
+  addNewRule,
+  editRule,
+  removeCondition,
+  addCondition,
+  editCondition,
+  getCondition,
+  removeAction,
+  addAction,
+  editAction,
+  getAction,
+} from '@plone/volto/actions/rules/rules';
 export {
   resetSearchContent,
   searchContent,
@@ -136,3 +162,4 @@ export {
   createWorkingCopy,
   removeWorkingCopy,
 } from './workingcopy/workingcopy';
+export { getUserSchema } from './userschema/userschema';
