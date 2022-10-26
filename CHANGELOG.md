@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Prefer views assigned explicitly with `layout` over views based on the `@type` @iRohitSingh
+
 ### Internal
 
 - Set `.nvmrc` to not use `lts/*` but a specific one `lts/gallium`
