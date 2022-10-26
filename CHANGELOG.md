@@ -13,6 +13,7 @@
 ### Internal
 
 - Set `.nvmrc` to not use `lts/*` but a specific one `lts/gallium`
+- Update to @plone/scripts 2.1.2 @sneridagh
 
 ### Documentation
 
