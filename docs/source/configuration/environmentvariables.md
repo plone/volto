@@ -93,6 +93,14 @@ also
 DEBUG=volto:* yarn start
 ```
 
+#### `DEBUG_ADDONS_LOADER`
+
+Set `DEBUG_ADDONS_LOADER=true` to have Volto generate a file, `addon-dependency-graph.dot` which contains a graph of all the loaded addons. You can convert this file to an image with:
+
+```
+dot addon-dependency-graph.dot -Tsvg -o out.svg
+```
+
 #### Component Shadowing errors (shadowing)
 
 It displays the errors of the non-compliant customizations (in server console) if you are experiencing problems with a customization not working.
