@@ -80,13 +80,13 @@ export const TeaserSchema = ({ intl }) => {
 };
 ```
 
-You can add a set of style fields defining your block styles (eg. alignment, background color, etc...) in your block schema by adding them to the `styles` object field as shown above.
+You can add a set of style fields defining your block styles—such as alignment, background color, and so on—in your block schema by adding them to the `styles` object field as shown above.
 
 ## The `styles` field
 
 The `styles` field is mapped to an `objectWidget`.
-This is the shape of a possible set of styles.
-The Style Wrapper will read them and inject the styles in the edit and view components as is shown in the next sections.
+The following is an example of a possible set of styles.
+The style wrapper will read the styles and inject them into the edit and view components as shown in the next sections.
 
 ```json
 {
@@ -129,10 +129,10 @@ Then it's at your discretion how you define the CSS class names in your theme.
 
 ## Align class injection
 
-There is an automatic class name injection happening at the same time the Style Wrapper class names injection.
+There is an automatic class name injection happening at the same time the style wrapper class names injection.
 The `data.align` is also injected directly.
 This is in place to help properly position the block in the current layout and play well with legacy CSS and block layout.
-This might be replaced in the future by the Style Wrapper class names injection.
+This might be replaced in the future by the style wrapper class names injection.
 
 Each block in the Block Engine has a main wrapper with an automatic class name `block-editor-<block_id> <block_align>`, as shown in the following example:
 
