@@ -30,7 +30,7 @@ Once you add the `styles` field in your block schema, the wrapper will inject th
 ### Using `styles` field in your block
 
 The wrapper builds the class names to be injected by looking up a field called `styles` in your block schema.
-As a schema it has this signature, and it's normally placed in a `Styling` fieldset:
+As a schema it has the following signature, and it's normally placed in a `Styling` fieldset:
 
 ```js
 const stylingSchema = {
