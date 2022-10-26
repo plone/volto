@@ -13,10 +13,7 @@ describe('History Tests', () => {
     // I add a page
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-document').click();
-    cy.get('.documentFirstHeading > .public-DraftStyleDefault-block')
-      .type('My Page')
-      .get('.documentFirstHeading span[data-text]')
-      .contains('My Page');
+    cy.getSlateTitle().focus().click().type('My Page').contains('My Page');
 
     // then a new page has been created
     cy.get('#toolbar-save').click();
@@ -29,8 +26,8 @@ describe('History Tests', () => {
     cy.get('.menu-more').contains('History');
 
     // and then I click on History
-    cy.get('.menu-more a[href*="/history"]').contains('History').click();
-    cy.url().should('eq', Cypress.config().baseUrl + '/my-page/history');
+    cy.get('.menu-more a[href*="/historyview"]').contains('History').click();
+    cy.url().should('eq', Cypress.config().baseUrl + '/my-page/historyview');
     cy.contains('History of');
   });
 });

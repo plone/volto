@@ -1,6 +1,7 @@
 import React from 'react';
 import { searchContent } from '@plone/volto/actions';
 import { useDispatch, useSelector } from 'react-redux';
+import { Container } from 'semantic-ui-react';
 
 const NewsAndEvents = () => {
   const newsandevents = useSelector(
@@ -26,7 +27,7 @@ const NewsAndEvents = () => {
   }, [dispatch]);
 
   return (
-    <>
+    <Container>
       <h1>News And Events</h1>
       {newsandevents &&
         newsandevents.map((item) => (
@@ -36,7 +37,7 @@ const NewsAndEvents = () => {
             <div>{item.subject}</div>
           </div>
         ))}
-    </>
+    </Container>
   );
 };
 

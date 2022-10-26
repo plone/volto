@@ -11,6 +11,9 @@
 @import (less) '~hamburgers/dist/hamburgers.css';
 @import (less) '~react-toastify/dist/ReactToastify.css';
 
+// Mixins
+@import 'mixins';
+
 // General Styling
 
 body {
@@ -396,6 +399,10 @@ button {
 //Controlpanel
 .controlpanel .ui .grid h3 {
   flex-direction: column;
+
+  .content {
+    .word-break();
+  }
 }
 
 //Add translation
@@ -557,6 +564,7 @@ body.has-toolbar-collapsed .mobile-menu {
 
 // Deprecated as per https://github.com/plone/volto/issues/1265
 // @import 'utils';
+@import (multiple) '../extras/fonts';
 @import 'toolbar';
 @import 'draftjs';
 @import 'blocks';
@@ -565,6 +573,7 @@ body.has-toolbar-collapsed .mobile-menu {
 @import 'react-dates-overrides';
 @import 'time-picker-overrides';
 @import 'objectbrowser-widget';
+@import 'color-picker-widget';
 @import 'sitemap';
 @import 'search';
 @import 'contents';

@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Installing Volto"
-  "property=og:description": "Installing Volto"
-  "property=og:title": "Getting Started"
-  "keywords": "Volto, Plone, frontend, React, install, nvm, NodeJS, JavaScript"
+myst:
+  html_meta:
+    "description": "Installing Volto"
+    "property=og:description": "Installing Volto"
+    "property=og:title": "Getting Started"
+    "keywords": "Volto, Plone, frontend, React, install, nvm, NodeJS, JavaScript"
 ---
 
 (frontend-getting-started-label)=
@@ -15,16 +16,23 @@ html_meta:
 
 ## Installing Volto
 
-Volto can be installed in any operating system assuming that this requirements
-are met:
+Volto can be installed in any operating system assuming that the following pre-requisites are met:
 
 - [Node.js LTS (16.x)](https://nodejs.org/en/)
-- [Python 3.7.x / 3.8.x](https://www.python.org/) or
-- [Docker](https://www.docker.com/get-started) (if using the Plone/Guillotina
-  docker images)
+- [Python](https://python.org/) - See below for specific versions.
+- [Docker](https://www.docker.com/get-started) (if using the Plone docker images)
 
-Depending on the OS that you are using some of the following might change, they
-are assuming a MacOS/Linux machine:
+The versions of Python that are supported in Volto depend on the version of Plone that you use.
+
+| Plone | Python | Volto |
+|---|---|---|
+| 5.2 | 2.7, 3.6-3.8 | 15.0 |
+| 6.0 (beta) | 3.8-3.10 | 16.0 (alpha) |
+
+At the time of this writing, Volto 16 is still in alpha status, and Plone 6 is in beta status.
+
+Depending on the operating system that you are using, some of the following pre-requisites might change.
+They assume you have a macOS/Linux machine.
 
 
 (frontend-getting-started-components-processes-running-label)=
@@ -75,7 +83,7 @@ it provides easy access to any NodeJS released version.
     nvm version
     ```
 
-4.  Install any active LTS version of NodeJS (https://nodejs.org/en/about/releases/):
+4.  Install any active LTS version of NodeJS (https://github.com/nodejs/release#release-schedule):
 
     ```bash
     nvm install 16
@@ -94,8 +102,19 @@ it provides easy access to any NodeJS released version.
 
     ```{note}
     Volto supports currently active NodeJS LTS versions based on [NodeJS
-    Releases page](https://nodejs.org/en/about/releases/), starting with Node 12 LTS.
+    Releases page](https://github.com/nodejs/release#release-schedule), starting with Node 12 LTS.
     ```
+
+
+(frontend-getting-started-yeoman-label)=
+
+## Yeoman
+
+Install {term}`Yeoman`, a scaffolding tool.
+
+```shell
+npm install -g yo
+```
 
 
 (frontend-getting-started-yarn-label)=
@@ -140,7 +159,7 @@ To install Docker desktop for Mac, here are the detailed instructions:
 2. Install the package as any other Mac software, if required, follow
    instructions from:
 
-    https://docs.docker.com/docker-for-mac/install/
+    https://docs.docker.com/desktop/install/mac-install/
 
 3. Check that docker is installed correctly, open a new terminal and type:
 

@@ -8,7 +8,7 @@ const messages = defineMessages({
   },
 });
 
-const SearchDetails = ({ total, text, as = 'h4' }) => {
+const SearchDetails = ({ total, text, as = 'h4', data }) => {
   const El = as;
   const intl = useIntl();
   return (
@@ -23,10 +23,15 @@ const SearchDetails = ({ total, text, as = 'h4' }) => {
                 em: (...chunks) => <em>{chunks}</em>,
                 searchedtext: text,
               }}
-            />{' '}
+            />
           </>
         )}
-        {intl.formatMessage(messages.searchResults)}: {total}
+        {data.showTotalResults && (
+          <>
+            {' '}
+            {intl.formatMessage(messages.searchResults)}: {total}
+          </>
+        )}
       </>
     </El>
   );

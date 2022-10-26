@@ -1,11 +1,10 @@
 ---
-html_meta:
-  "description": "Volto release management uses
-Semantic Versioning to communicate bugfixes, new features, and breaking changes."
-  "property=og:description": "Volto release management uses
-Semantic Versioning to communicate bugfixes, new features, and breaking changes."
-  "property=og:title": "Versioning policy"
-  "keywords": "Volto, Plone, frontend, React, Release, Version, Semantic"
+myst:
+  html_meta:
+    "description": "Volto release management uses Semantic Versioning to communicate bugfixes, new features, and breaking changes."
+    "property=og:description": "Volto release management uses Semantic Versioning to communicate bugfixes, new features, and breaking changes."
+    "property=og:title": "Versioning policy"
+    "keywords": "Volto, Plone, frontend, React, Release, Version, Semantic"
 ---
 
 ```{eval-rst}
@@ -68,4 +67,4 @@ Volto should work on old Plone versions as well since Plone REST API supports Pl
 
 ## NodeJS
 
-Volto always supports only LTS versions of [NodeJS](https://nodejs.org/en/about/releases/).
+Volto always supports only LTS versions of [NodeJS](https://github.com/nodejs/release#release-schedule).

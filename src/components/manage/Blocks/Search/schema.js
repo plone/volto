@@ -100,6 +100,10 @@ const messages = defineMessages({
     id: 'availableViews',
     defaultMessage: 'Available views',
   },
+  showTotalResults: {
+    id: 'Show total results',
+    defaultMessage: 'Show total results',
+  },
 });
 
 const enhanceSchema = (originalSchema, formData) => {
@@ -208,6 +212,7 @@ export default ({ data = {}, intl }) => {
           ...(data.showSearchInput ?? true ? ['showSearchButton'] : []),
           // ...(data.showSearchInput ? ['searchInputPrompt'] : []),
           // ...(data.showSearchButton ? ['searchButtonLabel'] : []),
+          'showTotalResults',
         ],
       },
       {
@@ -232,6 +237,11 @@ export default ({ data = {}, intl }) => {
         type: 'boolean',
         title: intl.formatMessage(messages.showSearchButtonTitle),
         description: intl.formatMessage(messages.showSearchButtonDescription),
+        default: true,
+      },
+      showTotalResults: {
+        type: 'boolean',
+        title: intl.formatMessage(messages.showTotalResults),
         default: true,
       },
       searchButtonLabel: {

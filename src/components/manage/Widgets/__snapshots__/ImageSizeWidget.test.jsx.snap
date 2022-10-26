@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders an image sizes widget component 1`] = `
+<div
+  className="inline field field-wrapper-image_size"
+>
+  <div
+    className="ui grid"
+  >
+    <div
+      className="stretched row"
+    >
+      <div
+        className="four wide column"
+      >
+        <div
+          className="wrapper"
+        >
+          <label
+            htmlFor="field-image_size"
+            id="fieldset-default-field-label-image_size"
+          >
+            Image Size
+          </label>
+        </div>
+      </div>
+      <div
+        className="eight wide column"
+      >
+        <div
+          className="ui grid"
+        >
+          <div
+            className="row"
+          >
+            <div
+              className="eight wide column field-image_size"
+            >
+              <div
+                className="ui buttons"
+              >
+                <button
+                  aria-label="Small"
+                  className="ui basic icon button"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="image-sizes-text"
+                  >
+                    S
+                  </div>
+                </button>
+              </div>
+              <div
+                className="ui buttons"
+              >
+                <button
+                  aria-label="Medium"
+                  className="ui basic icon button"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="image-sizes-text"
+                  >
+                    M
+                  </div>
+                </button>
+              </div>
+              <div
+                className="ui buttons"
+              >
+                <button
+                  aria-label="Large"
+                  className="ui active basic icon button"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="image-sizes-text"
+                  >
+                    L
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

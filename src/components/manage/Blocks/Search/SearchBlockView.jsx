@@ -68,6 +68,7 @@ const SearchBlockView = (props) => {
   const listingBodyData = applyDefaults(searchData, root);
 
   const { variations } = config.blocks.blocksConfig.listing;
+  const listingBodyVariation = variations.find(({ id }) => id === selectedView);
 
   return (
     <div className="block search">
@@ -78,7 +79,7 @@ const SearchBlockView = (props) => {
         setSelectedView={setSelectedView}
       >
         <ListingBody
-          variation={variations.find(({ id }) => id === selectedView)}
+          variation={{ ...data, ...listingBodyVariation }}
           data={listingBodyData}
           path={props.path}
           isEditMode={mode === 'edit'}

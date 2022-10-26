@@ -11,6 +11,7 @@ yarn-error.log
 build
 
 # Other
+/cache
 .DS_Store
 .idea
 lighthouse-report.html

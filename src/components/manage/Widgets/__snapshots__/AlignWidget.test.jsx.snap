@@ -27,7 +27,9 @@ exports[`renders an align widget component 1`] = `
       <div
         className="eight wide column"
       >
-        <div>
+        <div
+          className="align-buttons"
+        >
           <div
             className="ui buttons"
           >
