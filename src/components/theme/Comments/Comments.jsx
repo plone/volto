@@ -309,7 +309,7 @@ class Comments extends Component {
     const commentElement = (comment) => (
       <Comment key={comment.comment_id}>
         <Avatar
-          src={comment.author_image}
+          src={flattenToAppURL(comment.author_image)}
           title={comment.author_name || 'Anonymous'}
           color={getColor(comment.author_username)}
         />

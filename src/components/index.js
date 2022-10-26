@@ -74,6 +74,7 @@ export AlbumView from '@plone/volto/components/theme/View/AlbumView';
 export Actions from '@plone/volto/components/manage/Actions/Actions';
 export Add from '@plone/volto/components/manage/Add/Add';
 export AddonsControlpanel from '@plone/volto/components/manage/Controlpanels/AddonsControlpanel';
+export UndoControlpanel from '@plone/volto/components/manage/Controlpanels/UndoControlpanel';
 export Contents from '@plone/volto/components/manage/Contents/Contents';
 export Circle from '@plone/volto/components/manage/Contents/circle';
 export DatabaseInformation from '@plone/volto/components/manage/Controlpanels/DatabaseInformation';
@@ -88,6 +89,11 @@ export ContentTypesActions from '@plone/volto/components/manage/Controlpanels/Co
 export UsersControlpanel from '@plone/volto/components/manage/Controlpanels/Users/UsersControlpanel';
 export UserGroupMembershipControlPanel from '@plone/volto/components/manage/Controlpanels/Users/UserGroupMembershipControlPanel';
 export GroupsControlpanel from '@plone/volto/components/manage/Controlpanels/Groups/GroupsControlpanel';
+export RulesControlpanel from '@plone/volto/components/manage/Controlpanels/Rules/Rules';
+export AddRuleControlpanel from '@plone/volto/components/manage/Controlpanels/Rules/AddRule';
+export EditRuleControlpanel from '@plone/volto/components/manage/Controlpanels/Rules/EditRule';
+export ConfigureRuleControlpanel from '@plone/volto/components/manage/Controlpanels/Rules/ConfigureRule';
+
 export ModerateComments from '@plone/volto/components/manage/Controlpanels/ModerateComments';
 export VersionOverview from '@plone/volto/components/manage/Controlpanels/VersionOverview';
 export Delete from '@plone/volto/components/manage/Delete/Delete';
@@ -97,8 +103,8 @@ export Edit from '@plone/volto/components/manage/Edit/Edit';
 export ModalForm from '@plone/volto/components/manage/Form/ModalForm';
 export History from '@plone/volto/components/manage/History/History';
 export Sharing from '@plone/volto/components/manage/Sharing/Sharing';
+export Rules from '@plone/volto/components/manage/Rules/Rules';
 export Aliases from '@plone/volto/components/manage/Aliases/Aliases';
-
 export Workflow from '@plone/volto/components/manage/Workflow/Workflow';
 export Messages from '@plone/volto/components/manage/Messages/Messages';
 export BlockChooser from '@plone/volto/components/manage/BlockChooser/BlockChooser';
