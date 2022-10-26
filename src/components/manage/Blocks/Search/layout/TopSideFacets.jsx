@@ -113,7 +113,9 @@ const TopSideFacets = (props) => {
                 }}
               />
             )}
-            {data.availableViews && <ViewSwitcher {...props} />}
+            {data.availableViews && data.availableViews.length > 1 && (
+              <ViewSwitcher {...props} />
+            )}
           </div>
           {data.facets?.length > 0 && (
             <div className="facets">

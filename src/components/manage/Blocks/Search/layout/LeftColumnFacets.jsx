@@ -112,34 +112,37 @@ const LeftColumnFacets = (props) => {
 
           <div className="search-results-count-sort">
             <SearchDetails text={searchedText} total={totalItems} data={data} />
-
-            {data.showSortOn && (
-              <SortOn
-                querystring={querystring}
-                data={data}
-                isEditMode={isEditMode}
-                sortOn={sortOn}
-                sortOrder={sortOrder}
-                setSortOn={(sortOn) => {
-                  flushSync(() => {
-                    setSortOn(sortOn);
-                    onTriggerSearch(searchedText || '', facets, sortOn);
-                  });
-                }}
-                setSortOrder={(sortOrder) => {
-                  flushSync(() => {
-                    setSortOrder(sortOrder);
-                    onTriggerSearch(
-                      searchedText || '',
-                      facets,
-                      sortOn,
-                      sortOrder,
-                    );
-                  });
-                }}
-              />
-            )}
-            {data.availableViews && <ViewSwitcher {...props} />}
+            <div className="sort-views-wrapper">
+              {data.showSortOn && (
+                <SortOn
+                  querystring={querystring}
+                  data={data}
+                  isEditMode={isEditMode}
+                  sortOn={sortOn}
+                  sortOrder={sortOrder}
+                  setSortOn={(sortOn) => {
+                    flushSync(() => {
+                      setSortOn(sortOn);
+                      onTriggerSearch(searchedText || '', facets, sortOn);
+                    });
+                  }}
+                  setSortOrder={(sortOrder) => {
+                    flushSync(() => {
+                      setSortOrder(sortOrder);
+                      onTriggerSearch(
+                        searchedText || '',
+                        facets,
+                        sortOn,
+                        sortOrder,
+                      );
+                    });
+                  }}
+                />
+              )}
+              {data.availableViews && data.availableViews.length > 1 && (
+                <ViewSwitcher {...props} />
+              )}
+            </div>
           </div>
           {children}
         </Grid.Column>
