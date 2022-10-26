@@ -2,13 +2,9 @@
 
 ## 2.1.2 (unreleased)
 
-### Breaking
-
-### Feature
-
-### Bugfix
-
 ### Internal
+
+- Add missing dependency @tiberiuichim
 
 ## 2.1.1 (2022-09-28)
 
