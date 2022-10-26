@@ -14,6 +14,8 @@
 
 ### Documentation
 
+- Add NodeJS 18 (LTS) usage notice @sneridagh
+
 ## 16.0.0-alpha.45 (2022-10-24)
 
 ### Feature
