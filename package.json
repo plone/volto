@@ -418,8 +418,7 @@
     "ua-parser-js": "0.7.28"
   },
   "volta": {
-    "node": "16.15.0",
-    "yarn": "1.22.18"
+    "node": "16.17.1"
   },
   "packageManager": "yarn@3.2.3"
 }
