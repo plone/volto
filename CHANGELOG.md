@@ -6,16 +6,23 @@
 
 ### Feature
 
+- Use `View comments` and `Reply to item` permissions in `Comments` component. @razvanMiu
 - Added portrait middleware adapter. @instification
 - Allow dumping the addon dependency graph to a .dot file. Start Volto with `DEBUG_ADDONS_LOADER=true yarn start`, `addon-dependency-graph.dot` will be created in your project folder. @tiberiuichim
 
 ### Bugfix
 
+- Prefer views assigned explicitly with `layout` over views based on the `@type` @iRohitSingh
+
 ### Internal
+
+- Set `.nvmrc` to not use `lts/*` but a specific one `lts/gallium`
+- Update to @plone/scripts 2.1.2 @sneridagh
 
 ### Documentation
 
 - Add NodeJS 18 (LTS) usage notice @sneridagh
+- Fix Netlify build @sneridagh
 
 ## 16.0.0-alpha.45 (2022-10-24)
 
