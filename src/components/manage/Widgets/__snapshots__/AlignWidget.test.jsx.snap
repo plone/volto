@@ -42,7 +42,7 @@ exports[`renders an align widget component 1`] = `
                 className="icon"
                 dangerouslySetInnerHTML={
                   Object {
-                    "__html": undefined,
+                    "__html": "<title>Left</title>undefined",
                   }
                 }
                 onClick={null}
@@ -70,7 +70,7 @@ exports[`renders an align widget component 1`] = `
                 className="icon"
                 dangerouslySetInnerHTML={
                   Object {
-                    "__html": undefined,
+                    "__html": "<title>Right</title>undefined",
                   }
                 }
                 onClick={null}
@@ -98,7 +98,7 @@ exports[`renders an align widget component 1`] = `
                 className="icon"
                 dangerouslySetInnerHTML={
                   Object {
-                    "__html": undefined,
+                    "__html": "<title>Center</title>undefined",
                   }
                 }
                 onClick={null}
@@ -126,7 +126,7 @@ exports[`renders an align widget component 1`] = `
                 className="icon"
                 dangerouslySetInnerHTML={
                   Object {
-                    "__html": undefined,
+                    "__html": "<title>Full</title>undefined",
                   }
                 }
                 onClick={null}

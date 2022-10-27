@@ -37,14 +37,14 @@ const messages = defineMessages({
   },
 });
 
-export const ICON_MAP = {
-  left: imageLeftSVG,
-  right: imageRightSVG,
-  center: imageFitSVG,
-  narrow: imageNarrowSVG,
-  wide: imageWideSVG,
-  full: imageFullSVG,
-};
+export const default_actions_info = ({ intl }) => ({
+  left: [imageLeftSVG, intl.formatMessage(messages.left)],
+  right: [imageRightSVG, intl.formatMessage(messages.right)],
+  center: [imageFitSVG, intl.formatMessage(messages.center)],
+  narrow: [imageNarrowSVG, intl.formatMessage(messages.narrow)],
+  wide: [imageWideSVG, intl.formatMessage(messages.wide)],
+  full: [imageFullSVG, intl.formatMessage(messages.full)],
+});
 
 const AlignWidget = (props) => {
   const intl = useIntl();
@@ -63,7 +63,10 @@ const AlignWidget = (props) => {
     }
   });
 
-  const icons = { ...ICON_MAP, ...actions_icon_map };
+  const actions_info = {
+    ...default_actions_info({ intl }),
+    ...actions_icon_map,
+  };
 
   return (
     <FormFieldWrapper {...props} className="align-widget">
@@ -73,11 +76,15 @@ const AlignWidget = (props) => {
             <Button
               icon
               basic
-              aria-label={intl.formatMessage(messages[action])}
+              aria-label={actions_info[action][1]}
               onClick={() => onChange(id, action)}
               active={(action === 'center' && !value) || value === action}
             >
-              <Icon name={icons[action]} size="24px" />
+              <Icon
+                name={actions_info[action][0]}
+                title={actions_info[action][1] || action}
+                size="24px"
+              />
             </Button>
           </Button.Group>
         ))}
