@@ -31,7 +31,7 @@ describe('renders an align widget component', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('extended with actions and actions_info_map props', () => {
+  it('extended with actions and actionsInfoMap props', () => {
     const store = mockStore({
       intl: {
         locale: 'en',
@@ -47,7 +47,7 @@ describe('renders an align widget component', () => {
           fieldSet="default"
           onChange={() => {}}
           actions={['additional']}
-          actions_info_map={{
+          actionsInfoMap={{
             additional: [imageFullSVG, 'action title'],
           }}
         />

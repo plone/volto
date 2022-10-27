@@ -119,7 +119,7 @@ exports[`renders an align widget component basic 1`] = `
 </DocumentFragment>
 `;
 
-exports[`renders an align widget component extended with actions and actions_info_map props 1`] = `
+exports[`renders an align widget component extended with actions and actionsInfoMap props 1`] = `
 <DocumentFragment>
   <div
     class="inline field align-widget field-wrapper-align"

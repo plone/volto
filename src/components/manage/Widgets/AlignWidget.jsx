@@ -37,7 +37,7 @@ const messages = defineMessages({
   },
 });
 
-export const default_actions_info = ({ intl }) => ({
+export const defaultActionsInfo = ({ intl }) => ({
   left: [imageLeftSVG, intl.formatMessage(messages.left)],
   right: [imageRightSVG, intl.formatMessage(messages.right)],
   center: [imageFitSVG, intl.formatMessage(messages.center)],
@@ -53,7 +53,7 @@ const AlignWidget = (props) => {
     id,
     onChange,
     actions = ['left', 'right', 'center', 'full'],
-    actions_info_map = {},
+    actionsInfoMap = {},
     value,
   } = props;
 
@@ -63,9 +63,9 @@ const AlignWidget = (props) => {
     }
   });
 
-  const actions_info = {
-    ...default_actions_info({ intl }),
-    ...actions_info_map,
+  const actionsInfo = {
+    ...defaultActionsInfo({ intl }),
+    ...actionsInfoMap,
   };
 
   return (
@@ -76,13 +76,13 @@ const AlignWidget = (props) => {
             <Button
               icon
               basic
-              aria-label={actions_info[action][1]}
+              aria-label={actionsInfo[action][1]}
               onClick={() => onChange(id, action)}
               active={(action === 'center' && !value) || value === action}
             >
               <Icon
-                name={actions_info[action][0]}
-                title={actions_info[action][1] || action}
+                name={actionsInfo[action][0]}
+                title={actionsInfo[action][1] || action}
                 size="24px"
               />
             </Button>
