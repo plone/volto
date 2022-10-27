@@ -384,9 +384,10 @@ If you were using it in your project, you'll have to include it as a direct depe
 
 ### Remove Sentry integration from core
 
-The integration with Sentry was implemented in Volto core since back in the day Volto didn't provide a good add-on story.
-Now makes sense that the feature is extracted to its own add-on.
-You can find it in [@collective/volto-sentry](https://github.com/collective/volto-sentry).
+The Sentry integration was implemented in Volto core at a time when Volto did not provide a good add-on story.
+Since then, the add-on story has improved.
+It now makes sense to extract this feature into its own add-on.
+You can find it in [`@collective/volto-sentry`](https://github.com/collective/volto-sentry).
 
 (volto-upgrade-guide-15.x.x)=
 
