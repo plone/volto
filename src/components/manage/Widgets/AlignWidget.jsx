@@ -53,7 +53,7 @@ const AlignWidget = (props) => {
     id,
     onChange,
     actions = ['left', 'right', 'center', 'full'],
-    actions_icon_map = {},
+    actions_info_map = {},
     value,
   } = props;
 
@@ -65,7 +65,7 @@ const AlignWidget = (props) => {
 
   const actions_info = {
     ...default_actions_info({ intl }),
-    ...actions_icon_map,
+    ...actions_info_map,
   };
 
   return (
