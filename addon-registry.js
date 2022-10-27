@@ -474,7 +474,7 @@ class AddonConfigurationRegistry {
   }
 
   getDotDependencyGraph() {
-    const seen = [];
+    const seen = new Set();
     let out = `digraph {
   layout="fdp"
   beautify=true
@@ -493,8 +493,8 @@ class AddonConfigurationRegistry {
       for (let i = 0; i < deps.length; i++) {
         const dep = deps[i];
 
-        if (seen.indexOf(dep) === -1) {
-          seen.push(dep);
+        if (!seen.has(dep)) {
+          seen.add(dep);
           queue.push(dep);
         }
         out += `    "${name}" -> "${dep}"\n`;
