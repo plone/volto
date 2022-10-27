@@ -33,6 +33,18 @@ The wrapper builds the class names to be injected by looking up a field called `
 As a schema it has the following signature, and it's normally placed in a `Styling` fieldset:
 
 ```js
+const EMPTY_STYLES_SCHEMA = {
+  fieldsets: [
+    {
+      id: 'default',
+      title: 'Default',
+      fields: [],
+    },
+  ],
+  properties: {},
+  required: [],
+};
+
 const stylingSchema = {
   fieldsets: [{
     id: 'styling',
@@ -44,17 +56,13 @@ const stylingSchema = {
     styles: {
       widget: 'object',
       title: intl.formatMessage(messages.styling),
-      schema: stylesSchema({
-        schema: defaultStyleSchema({ formData, intl }),
-        formData,
-        intl,
-      }),
+      schema: EMPTY_STYLES_SCHEMA
     }
   }
 }
 ```
 
-The `addStyling` helper adds the fieldset and the `styles` field inside the `Styling` fieldset for you, so when defining your block schema you can do:
+The `addStyling` helper adds the (empty) `styles` field inside the `Styling` fieldset for you, so when defining your block schema you can do:
 
 ```js
 import { addStyling } from '@plone/volto/helpers/Extensions/withBlockSchemaEnhancer';
