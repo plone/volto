@@ -285,6 +285,9 @@ export const EMPTY_STYLES_SCHEMA = {
   required: [],
 };
 
+/**
+ * Creates the `styles` field and fieldset in a schema
+ */
 export const addStyling = ({ schema, formData, intl }) => {
   schema.fieldsets.push({
     id: 'styling',
