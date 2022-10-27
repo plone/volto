@@ -12,6 +12,7 @@
 ### Bugfix
 
 - Prefer views assigned explicitly with `layout` over views based on the `@type` @iRohitSingh
+- Improve collapsing of whitespace when pasting to slate text block @tiberiuichim
 
 ### Internal
 
