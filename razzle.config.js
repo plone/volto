@@ -266,6 +266,17 @@ const defaultModify = ({
     });
   }
 
+  // write a .dot file with the graph
+  // convert it to svg with: `dot addon-dependency-graph.dot -Tsvg -o out.svg`
+  if (process.env.DEBUG_ADDONS_LOADER && target === 'node') {
+    const addonsDepGraphPath = path.join(
+      process.cwd(),
+      'addon-dependency-graph.dot',
+    );
+    const graph = registry.getDotDependencyGraph();
+    fs.writeFileSync(addonsDepGraphPath, new Buffer.from(graph));
+  }
+
   config.externals =
     target === 'node'
       ? [
