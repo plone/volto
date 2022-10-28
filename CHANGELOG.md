@@ -7,6 +7,7 @@
 ### Feature
 
 - Added portrait middleware adapter. @instification
+- consume site_actions from restapi @nileshgulia1
 
 ### Bugfix
 
@@ -744,8 +745,6 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 
 ### Bugfix
 
-- fix hardcoded site_actions,instead consume them from restapi
-  See:https://github.com/plone/plone.restapi/pull/1076 @nileshgulia1
 - Fix Search page visit crashes /contents view @dobri1408
 - Fix sidebar full size bottom opacity on edit page when sidebar is collapsed @ichim-david
 - Fix toolbar bottom opacity on edit page when toolbar is collapsed @ichim-david
