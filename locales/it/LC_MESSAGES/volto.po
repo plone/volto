@@ -284,7 +284,6 @@ msgstr ""
 msgid "Alias has been added"
 msgstr ""
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
@@ -428,11 +427,6 @@ msgstr ""
 # defaultMessage: Back
 msgid "Back"
 msgstr "Indietro"
-
-#: components/manage/Blocks/Block/StylesSchema
-# defaultMessage: Background color
-msgid "Background color"
-msgstr "Colore di sfondo"
 
 #: components/manage/Diff/Diff
 # defaultMessage: Base
@@ -629,7 +623,6 @@ msgstr "Collassa elemento"
 msgid "Collection"
 msgstr "Collezione"
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Widgets/ColorPickerWidget
 # defaultMessage: Color
 msgid "Color"
@@ -2784,9 +2777,9 @@ msgid "Search users…"
 msgstr "Cerca utenti…"
 
 #: components/manage/Blocks/Search/components/SearchDetails
-# defaultMessage: Searched for
-msgid "Searched for"
-msgstr "Hai cercato"
+# defaultMessage: Searched for: <em>{searchedtext}</em>.
+msgid "Searched for: <em>{searchedtext}</em>."
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Second
@@ -3011,11 +3004,6 @@ msgstr "Ordina per:"
 # defaultMessage: Sort on
 msgid "Sort on"
 msgstr "Ordina per"
-
-#: components/manage/Blocks/Search/schema
-# defaultMessage: Sort on label
-msgid "Sort on label"
-msgstr "Etichetta dell'ordinamento"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Sort on options
@@ -3890,6 +3878,11 @@ msgstr "La tua lingua preferita."
 msgid "Your usernaame is required for reset your password."
 msgstr "Il tuo username è richiesto per reimpostare la tua password."
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Available views
+msgid "availableViews"
+msgstr ""
+
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Forgot your password?
@@ -4295,6 +4288,11 @@ msgstr "anno"
 msgid "rrule_years"
 msgstr "anni"
 
+#: components/manage/Blocks/Search/components/ViewSwitcher
+# defaultMessage: Select view
+msgid "selectView"
+msgstr ""
+
 #: components/theme/SkipLinks/SkipLinks
 # defaultMessage: Skip to footer
 msgid "skiplink-footer"
@@ -4354,6 +4352,11 @@ msgstr "Avatar dell'utente"
 # defaultMessage: Video
 msgid "video"
 msgstr "Video"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Views
+msgid "views"
+msgstr ""
 
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Visit external website
