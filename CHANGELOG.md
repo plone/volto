@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix `schemaEnhancer` not being applied if nested `blocksConfig` is present @sneridagh
+
 ### Internal
 
 ### Documentation
