@@ -19,6 +19,7 @@
 
 - Set `.nvmrc` to not use `lts/*` but a specific one `lts/gallium`
 - Update to @plone/scripts 2.1.2 @sneridagh
+- Remove all the useless security bits from blocks configuration definitions @sneridagh
 
 ### Documentation
 

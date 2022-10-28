@@ -1880,10 +1880,6 @@ const defaultBlocks = {
     restricted: false, // If the block is restricted, it won't show in in the chooser
     mostUsed: false, // A meta group `most used`, appearing at the top of the chooser
     blockHasOwnFocusManagement: false, // Set this to true if the block manages its own focus
-    security: {
-      addPermission: [], // Future proof (not implemented yet) add user permission role(s)
-      view: [], // Future proof (not implemented yet) view user role(s)
-    },
   },
   ...
 ```
@@ -1952,10 +1948,6 @@ The focus management is also transferred to the engine, so it's not needed for y
       restricted: false,
       mostUsed: false,
       blockHasOwnFocusManagement: true,
-      security: {
-        addPermission: [],
-        view: [],
-      },
     },
 ```
 
