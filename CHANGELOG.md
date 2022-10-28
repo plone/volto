@@ -6,6 +6,8 @@
 
 ### Feature
 
+- consume site_actions from restapi @nileshgulia1
+
 ### Bugfix
 
 ### Internal
