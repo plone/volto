@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-10-26T07:16:33.191Z\n"
+"POT-Creation-Date: 2022-10-28T07:27:24.460Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -528,6 +528,7 @@ msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Center
 msgid "Center"
 msgstr ""
@@ -1454,6 +1455,7 @@ msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Full
 msgid "Full"
 msgstr ""
@@ -1821,6 +1823,7 @@ msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Left
 msgid "Left"
 msgstr ""
@@ -2068,6 +2071,11 @@ msgstr ""
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Name
 msgid "Name"
+msgstr ""
+
+#: components/manage/Widgets/AlignWidget
+# defaultMessage: Narrow
+msgid "Narrow"
 msgstr ""
 
 #: error
@@ -2652,6 +2660,7 @@ msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Right
 msgid "Right"
 msgstr ""
@@ -3816,6 +3825,7 @@ msgid "Who"
 msgstr ""
 
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Wide
 msgid "Wide"
 msgstr ""

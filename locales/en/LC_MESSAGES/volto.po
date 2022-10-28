@@ -526,6 +526,7 @@ msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Center
 msgid "Center"
 msgstr ""
@@ -1452,6 +1453,7 @@ msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Full
 msgid "Full"
 msgstr ""
@@ -1819,6 +1821,7 @@ msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Left
 msgid "Left"
 msgstr ""
@@ -2066,6 +2069,11 @@ msgstr ""
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Name
 msgid "Name"
+msgstr ""
+
+#: components/manage/Widgets/AlignWidget
+# defaultMessage: Narrow
+msgid "Narrow"
 msgstr ""
 
 #: error
@@ -2650,6 +2658,7 @@ msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Right
 msgid "Right"
 msgstr ""
@@ -3814,6 +3823,7 @@ msgid "Who"
 msgstr ""
 
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Wide
 msgid "Wide"
 msgstr ""

@@ -526,6 +526,7 @@ msgstr "Celulă"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Center
 msgid "Center"
 msgstr "Centrează"
@@ -1452,6 +1453,7 @@ msgstr "Din"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Full
 msgid "Full"
 msgstr "Complet"
@@ -1819,6 +1821,7 @@ msgstr "Imaginea de start"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Left
 msgid "Left"
 msgstr "Stânga"
@@ -2067,6 +2070,11 @@ msgstr "Numele meu de utilizator este"
 # defaultMessage: Name
 msgid "Name"
 msgstr "Nume"
+
+#: components/manage/Widgets/AlignWidget
+# defaultMessage: Narrow
+msgid "Narrow"
+msgstr ""
 
 #: error
 # defaultMessage: Navigate back
@@ -2650,6 +2658,7 @@ msgstr "Richtext"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Right
 msgid "Right"
 msgstr "Dreapta"
@@ -3814,6 +3823,7 @@ msgid "Who"
 msgstr "Cine"
 
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Wide
 msgid "Wide"
 msgstr ""

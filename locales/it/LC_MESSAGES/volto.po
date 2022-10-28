@@ -526,6 +526,7 @@ msgstr "Cella"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Center
 msgid "Center"
 msgstr "Centrato"
@@ -1452,6 +1453,7 @@ msgstr "Da"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Full
 msgid "Full"
 msgstr "A tutta larghezza"
@@ -1819,6 +1821,7 @@ msgstr "Immagine di testata"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Left
 msgid "Left"
 msgstr "Sinistra"
@@ -2067,6 +2070,11 @@ msgstr "Il mio nome utente è"
 # defaultMessage: Name
 msgid "Name"
 msgstr "Nome"
+
+#: components/manage/Widgets/AlignWidget
+# defaultMessage: Narrow
+msgid "Narrow"
+msgstr ""
 
 #: error
 # defaultMessage: Navigate back
@@ -2650,6 +2658,7 @@ msgstr "Testo formattato"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Right
 msgid "Right"
 msgstr "Destra"
@@ -3814,6 +3823,7 @@ msgid "Who"
 msgstr "Chi"
 
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Wide
 msgid "Wide"
 msgstr "Largo"
