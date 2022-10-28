@@ -6,7 +6,6 @@
 
 ### Feature
 
-- Added portrait middleware adapter. @instification
 - consume site_actions from restapi @nileshgulia1
 
 ### Bugfix
