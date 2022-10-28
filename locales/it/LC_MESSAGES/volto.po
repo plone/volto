@@ -289,7 +289,6 @@ msgstr ""
 msgid "Alias has been added"
 msgstr ""
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
@@ -433,11 +432,6 @@ msgstr ""
 # defaultMessage: Back
 msgid "Back"
 msgstr "Indietro"
-
-#: components/manage/Blocks/Block/StylesSchema
-# defaultMessage: Background color
-msgid "Background color"
-msgstr "Colore di sfondo"
 
 #: components/manage/Diff/Diff
 # defaultMessage: Base
@@ -634,7 +628,6 @@ msgstr "Collassa elemento"
 msgid "Collection"
 msgstr "Collezione"
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Widgets/ColorPickerWidget
 # defaultMessage: Color
 msgid "Color"

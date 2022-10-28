@@ -4,6 +4,7 @@
 
 ### Breaking
 
+- Remove the means to enable the StyleWrapper in favor of defining it through the block schema. @sneridagh
 - Moved all sentry-related code from Volto to the `@plone-collective/volto-sentry` package. @tiberiuichim
 - The listing block icon has been improved to avoid confusion with the normal text list. @sneridagh
 
