@@ -4,6 +4,11 @@
 
 ### Breaking
 
+- Moved all sentry-related code from Volto to the `@plone-collective/volto-sentry` package. @tiberiuichim
+- The listing block icon has been improved to avoid confusion with the normal text list. @sneridagh
+
+See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+
 ### Feature
 
 - Add `image-narrow` svg icon useful for align widget actions @ichim-david

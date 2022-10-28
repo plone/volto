@@ -382,6 +382,13 @@ Volto used this library to generate dynamic "windowed/virtualized" select widget
 It moved to use `react-virtualized` instead of `react-window` because it provides a more broad set of features that Volto required.
 If you were using it in your project, you'll have to include it as a direct dependency of it from now on.
 
+### Remove Sentry integration from core
+
+The Sentry integration was implemented in Volto core at a time when Volto did not provide a good add-on story.
+Since then, the add-on story has improved.
+It now makes sense to extract this feature into its own add-on.
+You can find it in [`@collective/volto-sentry`](https://github.com/collective/volto-sentry).
+
 (volto-upgrade-guide-15.x.x)=
 
 ## Upgrading to Volto 15.x.x
