@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add clear button in search field of Folder content view @iFlameing
+
 ### Bugfix
 
 ### Internal
