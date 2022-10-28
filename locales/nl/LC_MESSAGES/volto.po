@@ -2794,9 +2794,9 @@ msgid "Search users…"
 msgstr "Zoek gebruikers…"
 
 #: components/manage/Blocks/Search/components/SearchDetails
-# defaultMessage: Searched for
-msgid "Searched for"
-msgstr "Gezocht naar"
+# defaultMessage: Searched for: <em>{searchedtext}</em>.
+msgid "Searched for: <em>{searchedtext}</em>."
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Second
@@ -3026,11 +3026,6 @@ msgstr "Sorteer op:"
 # defaultMessage: Sort on
 msgid "Sort on"
 msgstr "Sorteer op"
-
-#: components/manage/Blocks/Search/schema
-# defaultMessage: Sort on label
-msgid "Sort on label"
-msgstr "Sorteer op label"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Sort on options
@@ -3905,6 +3900,11 @@ msgstr "Voorkeurstaal"
 msgid "Your usernaame is required for reset your password."
 msgstr "Gebruikersnaam is verplicht om het wachtwoor dte resetten."
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Available views
+msgid "availableViews"
+msgstr ""
+
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Forgot your password?
@@ -4310,6 +4310,11 @@ msgstr "jaar"
 msgid "rrule_years"
 msgstr "jaren"
 
+#: components/manage/Blocks/Search/components/ViewSwitcher
+# defaultMessage: Select view
+msgid "selectView"
+msgstr ""
+
 #: components/theme/SkipLinks/SkipLinks
 # defaultMessage: Skip to footer
 msgid "skiplink-footer"
@@ -4369,6 +4374,11 @@ msgstr "avatar gebruiker"
 # defaultMessage: Video
 msgid "video"
 msgstr "video"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Views
+msgid "views"
+msgstr ""
 
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Visit external website

@@ -266,6 +266,17 @@ const defaultModify = ({
     });
   }
 
+  // write a .dot file with the graph
+  // convert it to svg with: `dot addon-dependency-graph.dot -Tsvg -o out.svg`
+  if (process.env.DEBUG_ADDONS_LOADER && target === 'node') {
+    const addonsDepGraphPath = path.join(
+      process.cwd(),
+      'addon-dependency-graph.dot',
+    );
+    const graph = registry.getDotDependencyGraph();
+    fs.writeFileSync(addonsDepGraphPath, new Buffer.from(graph));
+  }
+
   config.externals =
     target === 'node'
       ? [
@@ -291,7 +302,6 @@ const addonExtenders = registry.getAddonExtenders().map((m) => require(m));
 
 const defaultPlugins = [
   { object: require('./webpack-plugins/webpack-less-plugin')({ registry }) },
-  { object: require('./webpack-plugins/webpack-sentry-plugin') },
   { object: require('./webpack-plugins/webpack-svg-plugin') },
   { object: require('./webpack-plugins/webpack-bundle-analyze-plugin') },
   { object: require('./jest-extender-plugin') },

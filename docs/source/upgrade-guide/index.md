@@ -394,6 +394,13 @@ The options `enableStyling` and `stylesSchema` no longer work. You need to provi
 
 See https://6.dev-docs.plone.org/volto/blocks/block-style-wrapper.html for more documentation.
 
+### Remove Sentry integration from core
+
+The Sentry integration was implemented in Volto core at a time when Volto did not provide a good add-on story.
+Since then, the add-on story has improved.
+It now makes sense to extract this feature into its own add-on.
+You can find it in [`@collective/volto-sentry`](https://github.com/collective/volto-sentry).
+
 (volto-upgrade-guide-15.x.x)=
 
 ## Upgrading to Volto 15.x.x
@@ -1892,10 +1899,6 @@ const defaultBlocks = {
     restricted: false, // If the block is restricted, it won't show in in the chooser
     mostUsed: false, // A meta group `most used`, appearing at the top of the chooser
     blockHasOwnFocusManagement: false, // Set this to true if the block manages its own focus
-    security: {
-      addPermission: [], // Future proof (not implemented yet) add user permission role(s)
-      view: [], // Future proof (not implemented yet) view user role(s)
-    },
   },
   ...
 ```
@@ -1964,10 +1967,6 @@ The focus management is also transferred to the engine, so it's not needed for y
       restricted: false,
       mostUsed: false,
       blockHasOwnFocusManagement: true,
-      security: {
-        addPermission: [],
-        view: [],
-      },
     },
 ```
 
