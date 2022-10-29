@@ -7,6 +7,7 @@
 ### Feature
 
 - consume site_actions from restapi @nileshgulia1
+- Updated Spanish translation @macagua
 
 ### Bugfix
 
