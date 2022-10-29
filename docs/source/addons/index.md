@@ -298,10 +298,6 @@ export default function applyConfig(config) {
     restricted: false,
     mostUsed: true,
     sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   };
   return config;
 }

@@ -24,11 +24,6 @@ msgstr ""
 msgid "<p>Add some HTML here</p>"
 msgstr "<p>ここにHTMLを記述</p>"
 
-#: components/theme/Footer/Footer
-# defaultMessage: Accessibility
-msgid "Accessibility"
-msgstr "アクセシビリティ"
-
 #: components/theme/Register/Register
 # defaultMessage: Account Registration Completed
 msgid "Account Registration Completed"
@@ -297,7 +292,6 @@ msgstr ""
 msgid "Alias has been added"
 msgstr ""
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
@@ -441,11 +435,6 @@ msgstr ""
 # defaultMessage: Back
 msgid "Back"
 msgstr "戻る"
-
-#: components/manage/Blocks/Block/StylesSchema
-# defaultMessage: Background color
-msgid "Background color"
-msgstr ""
 
 #: components/manage/Diff/Diff
 # defaultMessage: Base
@@ -642,7 +631,6 @@ msgstr ""
 msgid "Collection"
 msgstr "コレクション"
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Widgets/ColorPickerWidget
 # defaultMessage: Color
 msgid "Color"
@@ -705,11 +693,6 @@ msgstr "パスワードを確認"
 # defaultMessage: Connection refused
 msgid "Connection refused"
 msgstr "接続が拒否されました"
-
-#: components/theme/Footer/Footer
-# defaultMessage: Contact
-msgid "Contact"
-msgstr "お問い合わせ"
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Contact form
@@ -2802,8 +2785,8 @@ msgid "Search users…"
 msgstr "ユーザーを検索…"
 
 #: components/manage/Blocks/Search/components/SearchDetails
-# defaultMessage: Searched for
-msgid "Searched for"
+# defaultMessage: Searched for: <em>{searchedtext}</em>.
+msgid "Searched for: <em>{searchedtext}</em>."
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
@@ -2987,11 +2970,6 @@ msgstr "サイト"
 msgid "Site Administration"
 msgstr "サイト管理"
 
-#: components/theme/Footer/Footer
-# defaultMessage: Site Map
-msgid "Site Map"
-msgstr "サイトマップ"
-
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: Site Setup
@@ -3034,11 +3012,6 @@ msgstr "並び順:"
 # defaultMessage: Sort on
 msgid "Sort on"
 msgstr "ソート順"
-
-#: components/manage/Blocks/Search/schema
-# defaultMessage: Sort on label
-msgid "Sort on label"
-msgstr ""
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Sort on options
@@ -3476,6 +3449,11 @@ msgstr ""
 msgid "Type text…"
 msgstr "テキストを入力…"
 
+#: components/manage/TextLineEdit/TextLineEdit
+# defaultMessage: Type the heading…
+msgid "Type the heading…"
+msgstr ""
+
 #: components/manage/Blocks/Title/Edit
 # defaultMessage: Type the title…
 msgid "Type the title…"
@@ -3908,6 +3886,11 @@ msgstr "優先する言語"
 msgid "Your usernaame is required for reset your password."
 msgstr ""
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Available views
+msgid "availableViews"
+msgstr ""
+
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Forgot your password?
@@ -4313,6 +4296,11 @@ msgstr "年"
 msgid "rrule_years"
 msgstr "年"
 
+#: components/manage/Blocks/Search/components/ViewSwitcher
+# defaultMessage: Select view
+msgid "selectView"
+msgstr ""
+
 #: components/theme/SkipLinks/SkipLinks
 # defaultMessage: Skip to footer
 msgid "skiplink-footer"
@@ -4372,6 +4360,11 @@ msgstr "ユーザアイコン"
 # defaultMessage: Video
 msgid "video"
 msgstr "ビデオ"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Views
+msgid "views"
+msgstr ""
 
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Visit external website

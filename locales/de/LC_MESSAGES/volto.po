@@ -22,11 +22,6 @@ msgstr ""
 msgid "<p>Add some HTML here</p>"
 msgstr "<p>HTML hier einfügen</p>"
 
-#: components/theme/Footer/Footer
-# defaultMessage: Accessibility
-msgid "Accessibility"
-msgstr "Barrierefreiheit"
-
 #: components/theme/Register/Register
 # defaultMessage: Account Registration Completed
 msgid "Account Registration Completed"
@@ -295,7 +290,6 @@ msgstr ""
 msgid "Alias has been added"
 msgstr ""
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
@@ -439,11 +433,6 @@ msgstr ""
 # defaultMessage: Back
 msgid "Back"
 msgstr "Zurück"
-
-#: components/manage/Blocks/Block/StylesSchema
-# defaultMessage: Background color
-msgid "Background color"
-msgstr ""
 
 #: components/manage/Diff/Diff
 # defaultMessage: Base
@@ -640,7 +629,6 @@ msgstr "Element einklappen"
 msgid "Collection"
 msgstr "Kollektion"
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Widgets/ColorPickerWidget
 # defaultMessage: Color
 msgid "Color"
@@ -703,11 +691,6 @@ msgstr "Passwort bestätigen"
 # defaultMessage: Connection refused
 msgid "Connection refused"
 msgstr "Verbindung abgelehnt"
-
-#: components/theme/Footer/Footer
-# defaultMessage: Contact
-msgid "Contact"
-msgstr "Kontakt"
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Contact form
@@ -2800,9 +2783,9 @@ msgid "Search users…"
 msgstr "Nach Nutzern suchen…"
 
 #: components/manage/Blocks/Search/components/SearchDetails
-# defaultMessage: Searched for
-msgid "Searched for"
-msgstr "Suche nach"
+# defaultMessage: Searched for: <em>{searchedtext}</em>.
+msgid "Searched for: <em>{searchedtext}</em>."
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Second
@@ -2985,11 +2968,6 @@ msgstr "Website"
 msgid "Site Administration"
 msgstr "Website-Administrator"
 
-#: components/theme/Footer/Footer
-# defaultMessage: Site Map
-msgid "Site Map"
-msgstr "Übersicht"
-
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: Site Setup
@@ -3032,11 +3010,6 @@ msgstr "Sortieren nach:"
 # defaultMessage: Sort on
 msgid "Sort on"
 msgstr "Sortieren nach"
-
-#: components/manage/Blocks/Search/schema
-# defaultMessage: Sort on label
-msgid "Sort on label"
-msgstr "Label für Sortieren"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Sort on options
@@ -3474,6 +3447,11 @@ msgstr ""
 msgid "Type text…"
 msgstr "Text eingeben…"
 
+#: components/manage/TextLineEdit/TextLineEdit
+# defaultMessage: Type the heading…
+msgid "Type the heading…"
+msgstr ""
+
 #: components/manage/Blocks/Title/Edit
 # defaultMessage: Type the title…
 msgid "Type the title…"
@@ -3906,6 +3884,11 @@ msgstr "Ihre bevorzugte Sprache"
 msgid "Your usernaame is required for reset your password."
 msgstr ""
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Available views
+msgid "availableViews"
+msgstr ""
+
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Forgot your password?
@@ -4311,6 +4294,11 @@ msgstr "Regel Jahr"
 msgid "rrule_years"
 msgstr "Regel Jahre"
 
+#: components/manage/Blocks/Search/components/ViewSwitcher
+# defaultMessage: Select view
+msgid "selectView"
+msgstr ""
+
 #: components/theme/SkipLinks/SkipLinks
 # defaultMessage: Skip to footer
 msgid "skiplink-footer"
@@ -4370,6 +4358,11 @@ msgstr "Nutzer Avatar"
 # defaultMessage: Video
 msgid "video"
 msgstr "Video"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Views
+msgid "views"
+msgstr ""
 
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Visit external website
