@@ -3521,6 +3521,7 @@ msgstr "Unificat"
 msgid "Uninstall"
 msgstr "Desinstal·lar"
 
+#: components/manage/Blocks/Block/DefaultView
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/RenderBlocks
 # defaultMessage: Unknown Block {block}

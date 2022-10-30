@@ -3518,6 +3518,7 @@ msgstr "Vereinigt"
 msgid "Uninstall"
 msgstr "Deinstallieren"
 
+#: components/manage/Blocks/Block/DefaultView
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/RenderBlocks
 # defaultMessage: Unknown Block {block}
