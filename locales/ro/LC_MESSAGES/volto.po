@@ -16,11 +16,6 @@ msgstr ""
 msgid "<p>Add some HTML here</p>"
 msgstr "Adăugați HTML aici"
 
-#: components/theme/Footer/Footer
-# defaultMessage: Accessibility
-msgid "Accessibility"
-msgstr "Accesibilitate"
-
 #: components/theme/Register/Register
 # defaultMessage: Account Registration Completed
 msgid "Account Registration Completed"
@@ -289,7 +284,6 @@ msgstr ""
 msgid "Alias has been added"
 msgstr ""
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
@@ -433,11 +427,6 @@ msgstr ""
 # defaultMessage: Back
 msgid "Back"
 msgstr "Înapoi"
-
-#: components/manage/Blocks/Block/StylesSchema
-# defaultMessage: Background color
-msgid "Background color"
-msgstr ""
 
 #: components/manage/Diff/Diff
 # defaultMessage: Base
@@ -634,7 +623,6 @@ msgstr "Restrângeți elementul"
 msgid "Collection"
 msgstr "Colecție"
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Widgets/ColorPickerWidget
 # defaultMessage: Color
 msgid "Color"
@@ -697,11 +685,6 @@ msgstr "Confirmă parola"
 # defaultMessage: Connection refused
 msgid "Connection refused"
 msgstr "Conexiune refuzată"
-
-#: components/theme/Footer/Footer
-# defaultMessage: Contact
-msgid "Contact"
-msgstr "Contact"
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Contact form
@@ -2794,9 +2777,9 @@ msgid "Search users…"
 msgstr "Căutare utilizatori..."
 
 #: components/manage/Blocks/Search/components/SearchDetails
-# defaultMessage: Searched for
-msgid "Searched for"
-msgstr "Căutat după"
+# defaultMessage: Searched for: <em>{searchedtext}</em>.
+msgid "Searched for: <em>{searchedtext}</em>."
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Second
@@ -2979,11 +2962,6 @@ msgstr "Site"
 msgid "Site Administration"
 msgstr "Administrare site"
 
-#: components/theme/Footer/Footer
-# defaultMessage: Site Map
-msgid "Site Map"
-msgstr "Harta site-ului"
-
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: Site Setup
@@ -3026,11 +3004,6 @@ msgstr "Sortați după:"
 # defaultMessage: Sort on
 msgid "Sort on"
 msgstr "Sortare pe"
-
-#: components/manage/Blocks/Search/schema
-# defaultMessage: Sort on label
-msgid "Sort on label"
-msgstr "Sortare pe etichetă"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Sort on options
@@ -3905,6 +3878,11 @@ msgstr "Limba dvs. preferată"
 msgid "Your usernaame is required for reset your password."
 msgstr ""
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Available views
+msgid "availableViews"
+msgstr ""
+
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Forgot your password?
@@ -4310,6 +4288,11 @@ msgstr "an"
 msgid "rrule_years"
 msgstr "ani"
 
+#: components/manage/Blocks/Search/components/ViewSwitcher
+# defaultMessage: Select view
+msgid "selectView"
+msgstr ""
+
 #: components/theme/SkipLinks/SkipLinks
 # defaultMessage: Skip to footer
 msgid "skiplink-footer"
@@ -4369,6 +4352,11 @@ msgstr "avatarul utilizatorului"
 # defaultMessage: Video
 msgid "video"
 msgstr "Video"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Views
+msgid "views"
+msgstr ""
 
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Visit external website

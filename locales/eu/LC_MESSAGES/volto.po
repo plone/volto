@@ -23,11 +23,6 @@ msgstr ""
 msgid "<p>Add some HTML here</p>"
 msgstr "<p>HTMLa idatzi hemen</p>"
 
-#: components/theme/Footer/Footer
-# defaultMessage: Accessibility
-msgid "Accessibility"
-msgstr "Irisgarritasuna"
-
 #: components/theme/Register/Register
 # defaultMessage: Account Registration Completed
 msgid "Account Registration Completed"
@@ -296,7 +291,6 @@ msgstr "Aliasa"
 msgid "Alias has been added"
 msgstr "Aliasa ondo gehitu da"
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
@@ -440,11 +434,6 @@ msgstr ""
 # defaultMessage: Back
 msgid "Back"
 msgstr "Atzera"
-
-#: components/manage/Blocks/Block/StylesSchema
-# defaultMessage: Background color
-msgid "Background color"
-msgstr "Atzeko planoko kolorea"
 
 #: components/manage/Diff/Diff
 # defaultMessage: Base
@@ -641,7 +630,6 @@ msgstr "Batu elementua"
 msgid "Collection"
 msgstr "Bilduma"
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Widgets/ColorPickerWidget
 # defaultMessage: Color
 msgid "Color"
@@ -704,11 +692,6 @@ msgstr "Pasahitza berretsi"
 # defaultMessage: Connection refused
 msgid "Connection refused"
 msgstr "Konexioak huts egin du"
-
-#: components/theme/Footer/Footer
-# defaultMessage: Contact
-msgid "Contact"
-msgstr "Kontaktua"
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Contact form
@@ -2801,9 +2784,9 @@ msgid "Search users…"
 msgstr "Bilatu erabiltzaileak..."
 
 #: components/manage/Blocks/Search/components/SearchDetails
-# defaultMessage: Searched for
-msgid "Searched for"
-msgstr "Zure bilaketa"
+# defaultMessage: Searched for: <em>{searchedtext}</em>.
+msgid "Searched for: <em>{searchedtext}</em>."
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Second
@@ -2986,11 +2969,6 @@ msgstr "Ataria"
 msgid "Site Administration"
 msgstr "Atariaren kudeaketa"
 
-#: components/theme/Footer/Footer
-# defaultMessage: Site Map
-msgid "Site Map"
-msgstr "Web mapa"
-
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: Site Setup
@@ -3033,11 +3011,6 @@ msgstr "Ordenazioa:"
 # defaultMessage: Sort on
 msgid "Sort on"
 msgstr "Ordenazioa"
-
-#: components/manage/Blocks/Search/schema
-# defaultMessage: Sort on label
-msgid "Sort on label"
-msgstr "Ordenatu etiketaren arabera"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Sort on options
@@ -3912,6 +3885,11 @@ msgstr "Zure hizkuntza"
 msgid "Your usernaame is required for reset your password."
 msgstr "Erabiltzaile-izena derrigorrezkoa da zure pasahitza berrezartzeko."
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Available views
+msgid "availableViews"
+msgstr ""
+
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Forgot your password?
@@ -4317,6 +4295,11 @@ msgstr "urte"
 msgid "rrule_years"
 msgstr "urte"
 
+#: components/manage/Blocks/Search/components/ViewSwitcher
+# defaultMessage: Select view
+msgid "selectView"
+msgstr ""
+
 #: components/theme/SkipLinks/SkipLinks
 # defaultMessage: Skip to footer
 msgid "skiplink-footer"
@@ -4376,6 +4359,11 @@ msgstr "Erabiltzailearen argazkia"
 # defaultMessage: Video
 msgid "video"
 msgstr "Bideoa"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Views
+msgid "views"
+msgstr ""
 
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Visit external website

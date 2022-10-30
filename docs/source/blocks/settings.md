@@ -44,10 +44,6 @@ const customBlocks = {
     mostUsed: true, // A meta group `most used`, appearing at the top of the chooser
     blockHasOwnFocusManagement: false, // Set this to true if the block manages its own focus
     sidebarTab: 0, // The sidebar tab you want to be selected when selecting the block
-    security: {
-      addPermission: [], // Future proof (not implemented yet) add user permission role(s)
-      view: [], // Future proof (not implemented yet) view user role(s)
-    },
     blockHasValue: (data) => {
       // Returns true if the provided block data represents a value for the current block.
       // Required for alternate default block types implementations.
