@@ -30,6 +30,7 @@ export EventDetails from '@plone/volto/components/theme/EventDetails/EventDetail
 export PreviewImage from '@plone/volto/components/theme/PreviewImage/PreviewImage';
 
 export Error from '@plone/volto/components/theme/Error/Error';
+export ErrorBoundary from '@plone/volto/components/theme/Error/ErrorBoundary';
 export NotFound from '@plone/volto/components/theme/NotFound/NotFound';
 export Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
 export Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';

@@ -1,5 +1,8 @@
 import React from 'react';
-import { defineMessages } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
+import { Container, Segment, Grid, Label } from 'semantic-ui-react';
+import { ErrorBoundary } from '@plone/volto/components';
+import { getWidget } from '@plone/volto/helpers/Widget/utils';
 import config from '@plone/volto/registry';
 
 const messages = defineMessages({
@@ -10,11 +13,51 @@ const messages = defineMessages({
 });
 
 const DefaultBlockView = (props) => {
-  const { data, intl, block } = props;
-  const blocksConfig = props.blocksConfig || config.blocks.blocksConfig;
-  const schema = blocksConfig[data['@type']]?.blockSchema;
+  const { data, block } = props;
+  const intl = useIntl();
+  const { views } = config.widgets;
+  const { blocksConfig = config.blocks.blocksConfig } = props;
+  const blockSchema = blocksConfig?.[data['@type']]?.blockSchema;
+  const schema =
+    typeof blockSchema === 'function'
+      ? blockSchema({ ...props, intl })
+      : blockSchema;
+  const fieldsets = schema.fieldsets || [];
+
   return schema ? (
-    <div>{JSON.stringify(props.data)}</div>
+    <Container className="page-block">
+      {fieldsets?.map((fs) => {
+        return (
+          <div className="fieldset" key={fs.id}>
+            {fs.id !== 'default' && <h2>{fs.title}</h2>}
+            {fs.fields?.map((f, key) => {
+              let field = {
+                ...schema?.properties[f],
+                id: f,
+                widget: getWidget(f, schema?.properties[f]),
+              };
+              let Widget = views?.getWidget(field);
+              return f !== 'title' ? (
+                <Grid celled="internally" key={key}>
+                  <Grid.Row>
+                    <Label>{field.title}:</Label>
+                  </Grid.Row>
+                  <Grid.Row>
+                    <Segment basic>
+                      <ErrorBoundary name={f}>
+                        <Widget value={data[f]} />
+                      </ErrorBoundary>
+                    </Segment>
+                  </Grid.Row>
+                </Grid>
+              ) : (
+                <Widget key={key} value={data[f]} />
+              );
+            })}
+          </div>
+        );
+      })}
+    </Container>
   ) : (
     <div key={block}>
       {intl.formatMessage(messages.unknownBlock, {
