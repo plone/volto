@@ -16,5 +16,32 @@ exports[`SearchInput renders a search input component 1`] = `
       value="hello"
     />
   </div>
+  <div
+    className="search-input-actions"
+  >
+    <button
+      className="ui basic icon button search-input-clear-icon-button"
+      onClick={[Function]}
+    >
+      <svg
+        className="icon"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": undefined,
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "currentColor",
+            "height": "36px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+    </button>
+  </div>
 </div>
 `;

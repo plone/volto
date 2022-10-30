@@ -23,11 +23,6 @@ msgstr ""
 msgid "<p>Add some HTML here</p>"
 msgstr "<p>HTMLa idatzi hemen</p>"
 
-#: components/theme/Footer/Footer
-# defaultMessage: Accessibility
-msgid "Accessibility"
-msgstr "Irisgarritasuna"
-
 #: components/theme/Register/Register
 # defaultMessage: Account Registration Completed
 msgid "Account Registration Completed"
@@ -43,10 +38,21 @@ msgstr "Erabiltzaile kontua ondo sortu da"
 msgid "Action"
 msgstr "Ekintza"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Action changed
+msgid "Action changed"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Action:
+msgid "Action: "
+msgstr ""
+
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
+#: components/manage/Controlpanels/Rules/Rules
 #: components/manage/Controlpanels/Users/UsersControlpanel
 # defaultMessage: Actions
 msgid "Actions"
@@ -57,9 +63,21 @@ msgstr "Ekintzak"
 msgid "Activate and deactivate"
 msgstr "Aktibatu eta desaktibatu"
 
+#: components/manage/Rules/Rules
+# defaultMessage: Active
+msgid "Active"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Active content rules in this Page
+msgid "Active content rules in this Page"
+msgstr ""
+
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Rules/Rules
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
 #: helpers/MessageLabels/MessageLabels
@@ -82,6 +100,16 @@ msgstr "Gehitu gehigarriak"
 msgid "Add Content"
 msgstr "Gehitu edukia"
 
+#: components/manage/Controlpanels/Rules/AddRule
+# defaultMessage: Add Content Rule
+msgid "Add Content Rule"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/AddRule
+# defaultMessage: Add Rule
+msgid "Add Rule"
+msgstr ""
+
 #: components/manage/Toolbar/Types
 # defaultMessage: Add Translation…
 msgid "Add Translation…"
@@ -102,6 +130,11 @@ msgstr "Gehitu deskribapena..."
 msgid "Add a new alternative url"
 msgstr "Gehitu ordezko helbide berria"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Action added
+msgid "Add action"
+msgstr ""
+
 #: components/manage/BlockChooser/BlockChooserButton
 # defaultMessage: Add block
 msgid "Add block"
@@ -111,6 +144,16 @@ msgstr "Gehitu blokea"
 # defaultMessage: Add block…
 msgid "Add block…"
 msgstr "Gehitu blokea..."
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Condition added
+msgid "Add condition"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Add content rule
+msgid "Add content rule"
+msgstr ""
 
 #: components/manage/Widgets/QueryWidget
 # defaultMessage: Add criteria
@@ -192,6 +235,11 @@ msgstr "Produktuak"
 msgid "Add-ons Settings"
 msgstr "Gehigarrien ezarpenak"
 
+#: components/manage/Rules/Rules
+# defaultMessage: Added
+msgid "Added"
+msgstr ""
+
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Additional date
 msgid "Additional date"
@@ -243,7 +291,6 @@ msgstr "Aliasa"
 msgid "Alias has been added"
 msgstr "Aliasa ondo gehitu da"
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
@@ -305,6 +352,21 @@ msgstr "Ordezko helbidearen bidea / karakterearekin hasi behar da"
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
 msgstr "Ordezko helbidearen bidea → helburu helbidearen bidea (sorrera data eta ordua, eskuz sortu den bai/ez)"
 
+#: components/manage/Rules/Rules
+# defaultMessage: Applied to subfolders
+msgid "Applied to subfolders"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Applies to subfolders?
+msgid "Applies to subfolders?"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Apply to subfolders
+msgid "Apply to subfolders"
+msgstr ""
+
 #: components/manage/Toolbar/More
 # defaultMessage: Apply working copy
 msgid "Apply working copy"
@@ -326,10 +388,20 @@ msgstr "Eremu-multzo hau eta bere eremu guztiak ezabatu nahi dituzu?"
 msgid "Ascending"
 msgstr "Goraka"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Assignments
+msgid "Assignments"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Available
 msgid "Available"
 msgstr "Aukerak"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Available content rules:
+msgid "Available content rules:"
+msgstr ""
 
 #: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
@@ -342,12 +414,17 @@ msgstr "Aukerak"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/DatabaseInformation
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Controlpanels/Rules/Rules
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Diff/Diff
 #: components/manage/History/History
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
+#: components/manage/Rules/Rules
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Toolbar/PersonalTools
@@ -357,11 +434,6 @@ msgstr "Aukerak"
 # defaultMessage: Back
 msgid "Back"
 msgstr "Atzera"
-
-#: components/manage/Blocks/Block/StylesSchema
-# defaultMessage: Background color
-msgid "Background color"
-msgstr "Atzeko planoko kolorea"
 
 #: components/manage/Diff/Diff
 # defaultMessage: Base
@@ -405,6 +477,11 @@ msgstr "Atarian bilatu, irudi bat hona arrastatu edo URL bat idatzi"
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "Defektuz, elementu hau barnean duen karpetaren baimenak heredatu egiten dira. Hau desaktibatzen baduzu, hemen zehaztutako baimenak bakarrik aplikatuko dira. {inherited} ikurrak heredatutako balioa adierazten du. Era berean, {global} ikurrak rol globala adierazten du, atariaren kudeatzaileak kudeatzen duen rola."
 
+#: components/manage/Contents/Contents
+# defaultMessage: By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first.
+msgid "By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first."
+msgstr ""
+
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Cache Name
 msgid "Cache Name"
@@ -426,6 +503,8 @@ msgstr "Ezin da <strong>{type}</strong> elementu-motaren itxura aldatu, <strong>
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Delete/Delete
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
@@ -551,7 +630,6 @@ msgstr "Batu elementua"
 msgid "Collection"
 msgstr "Bilduma"
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Widgets/ColorPickerWidget
 # defaultMessage: Color
 msgid "Color"
@@ -579,6 +657,31 @@ msgstr "Erantzunak"
 msgid "Compare"
 msgstr "Alderatu"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Condition changed
+msgid "Condition changed"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Condition:
+msgid "Condition: "
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Configure Content Rule
+msgid "Configure Content Rule"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Configure Content Rule: {title}
+msgid "Configure Content Rule: {title}"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Configure content rule
+msgid "Configure content rule"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Confirm password
@@ -589,11 +692,6 @@ msgstr "Pasahitza berretsi"
 # defaultMessage: Connection refused
 msgid "Connection refused"
 msgstr "Konexioak huts egin du"
-
-#: components/theme/Footer/Footer
-# defaultMessage: Contact
-msgid "Contact"
-msgstr "Kontaktua"
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Contact form
@@ -609,6 +707,27 @@ msgstr "Barneko elementuak"
 # defaultMessage: Content
 msgid "Content"
 msgstr "Edukia"
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Content Rule
+msgid "Content Rule"
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Content Rules
+msgid "Content Rules"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Content rules for {title}
+msgid "Content rules for {title}"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Content rules from parent folders
+msgid "Content rules from parent folders"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Content type created
@@ -803,6 +922,11 @@ msgstr "Ezabatu elementu-mota"
 msgid "Delete User"
 msgstr "Ezabatu erabiltzailea"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Action deleted
+msgid "Delete action"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: undefined
 msgid "Delete blocks"
@@ -813,10 +937,20 @@ msgstr "Ezabatu blokeak"
 msgid "Delete col"
 msgstr "Ezabatu zutabea"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Condition deleted
+msgid "Delete condition"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Delete row
 msgid "Delete row"
 msgstr "Ezabatu errenkada"
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Deleted
+msgid "Deleted"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Depth
@@ -849,6 +983,26 @@ msgstr "Desberdintasunak"
 # defaultMessage: Difference between revision {one} and {two} of {title}
 msgid "Difference between revision {one} and {two} of {title}"
 msgstr "{title} elementuaren {one} eta {two} errebisioen arteko desberdintasunak"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Disable
+msgid "Disable"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Disable apply to subfolders
+msgid "Disable apply to subfolders"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Disabled
+msgid "Disabled"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Disabled apply to subfolders
+msgid "Disabled apply to subfolders"
+msgstr ""
 
 #: components/theme/Footer/Footer
 # defaultMessage: Distributed under the {license}.
@@ -934,6 +1088,7 @@ msgstr "Eposta helbideak ez datoz bat"
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
@@ -941,6 +1096,11 @@ msgstr "Eposta helbideak ez datoz bat"
 # defaultMessage: Edit
 msgid "Edit"
 msgstr "Editatu"
+
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Edit Rule
+msgid "Edit Rule"
+msgstr ""
 
 #: components/theme/Comments/CommentEditModal
 # defaultMessage: Edit comment
@@ -992,10 +1152,30 @@ msgstr "Itsatsitako kodearen errorea, jarraitu argibideak eta saiatu berriz."
 msgid "Empty object list"
 msgstr "Objektu zerrenda hutsa"
 
+#: components/manage/Rules/Rules
+# defaultMessage: Enable
+msgid "Enable"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypeLayout
 # defaultMessage: Enable editable Blocks
 msgid "Enable editable Blocks"
 msgstr "Aktibatu editatu daitezkeen blokeak"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Enabled
+msgid "Enabled"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Enabled here?
+msgid "Enabled here?"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Enabled?
+msgid "Enabled?"
+msgstr ""
 
 #: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
@@ -1079,6 +1259,11 @@ msgstr "Erroea"
 # defaultMessage: Error
 msgid "ErrorHeader"
 msgstr "Errorea"
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Event
+msgid "Event"
+msgstr ""
 
 #: config/Views
 # defaultMessage: Event listing
@@ -1194,6 +1379,11 @@ msgstr "Fitxategiaren bista"
 # defaultMessage: Filename
 msgid "Filename"
 msgstr "Fitxategi izena"
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Filter Rules:
+msgid "Filter Rules:"
+msgstr ""
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Filter by prefix
@@ -1378,6 +1568,11 @@ msgstr "Hasiera"
 msgid "ID"
 msgstr "ID"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: If all of the following conditions are met:
+msgid "If all of the following conditions are met:"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: If selected, this item will not appear in the navigation tree
 msgid "If selected, this item will not appear in the navigation tree"
@@ -1557,6 +1752,11 @@ msgstr "Elementuak"
 msgid "Items must be unique."
 msgstr "Elementuak bakarrak izan behar dira."
 
+#: components/manage/Contents/Contents
+# defaultMessage: Items to be deleted:
+msgid "Items to be deleted:"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Label
 msgid "Label"
@@ -1678,6 +1878,11 @@ msgstr "Sartu"
 # defaultMessage: Log in
 msgid "Log in"
 msgstr "Sartu"
+
+#: components/theme/Logout/Logout
+# defaultMessage: Logged out
+msgid "Logged out"
+msgstr ""
 
 #: components/theme/Login/Login
 # defaultMessage: Login
@@ -1812,6 +2017,11 @@ msgstr "Gehiago"
 msgid "Mosaic layout"
 msgstr "Mosaiko bista"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Move down
+msgid "Move down"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Move to bottom of folder
 msgid "Move to bottom of folder"
@@ -1821,6 +2031,11 @@ msgstr "Karpetaren barrenera mugitu"
 # defaultMessage: Move to top of folder
 msgid "Move to top of folder"
 msgstr "Karpetaren gorengo tokira mugitu"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Move up
+msgid "Move up"
+msgstr ""
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Multiple choices?
@@ -2091,6 +2306,11 @@ msgstr "Itsatsi"
 msgid "Paste blocks"
 msgstr "Itsatsi blokeak"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Perform the following actions:
+msgid "Perform the following actions:"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: Permissions have been updated successfully
 msgid "Permissions have been updated successfully"
@@ -2163,10 +2383,20 @@ msgstr "Plone Ataria"
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} Open Source CMS/WCM"
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Position changed
+msgid "Position changed"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Possible values (Enter allowed choices one per line).
 msgid "Possible values"
 msgstr "Balio posibleak"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Potential link breakage
+msgid "Potential link breakage"
+msgstr ""
 
 #: components/theme/Footer/Footer
 # defaultMessage: Powered by Plone & Python
@@ -2429,11 +2659,34 @@ msgstr "Rolak"
 msgid "Root"
 msgstr "Erroa"
 
+#: components/manage/Controlpanels/Rules/AddRule
+# defaultMessage: Rule added
+msgid "Rule added"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Rule enable changed
+msgid "Rule enable changed"
+msgstr ""
+
+#: components/manage/Rules/Rules
+#: components/manage/Toolbar/More
+# defaultMessage: Rules
+msgid "Rules"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Rules execute when a triggering event occurs. Rule actions will only be invoked if all the rule's conditions are met. You can add new actions and conditions using the buttons below.
+msgid "Rules execute when a triggering event occurs. Rule actions will only be invoked if all the rule's conditions are met. You can add new actions and conditions using the buttons below."
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
@@ -2531,9 +2784,9 @@ msgid "Search users…"
 msgstr "Bilatu erabiltzaileak..."
 
 #: components/manage/Blocks/Search/components/SearchDetails
-# defaultMessage: Searched for
-msgid "Searched for"
-msgstr "Zure bilaketa"
+# defaultMessage: Searched for: <em>{searchedtext}</em>.
+msgid "Searched for: <em>{searchedtext}</em>."
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Second
@@ -2546,6 +2799,7 @@ msgid "Section title"
 msgstr "Atalaren izenburua"
 
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Rules/Rules
 #: components/manage/Sidebar/ObjectBrowserNav
 # defaultMessage: Select
 msgid "Select"
@@ -2715,11 +2969,6 @@ msgstr "Ataria"
 msgid "Site Administration"
 msgstr "Atariaren kudeaketa"
 
-#: components/theme/Footer/Footer
-# defaultMessage: Site Map
-msgid "Site Map"
-msgstr "Web mapa"
-
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: Site Setup
@@ -2762,11 +3011,6 @@ msgstr "Ordenazioa:"
 # defaultMessage: Sort on
 msgid "Sort on"
 msgstr "Ordenazioa"
-
-#: components/manage/Blocks/Search/schema
-# defaultMessage: Sort on label
-msgid "Sort on label"
-msgstr "Ordenatu etiketaren arabera"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Sort on options
@@ -2822,6 +3066,11 @@ msgstr "Pasahitza berrezartzea abiatu"
 msgid "State"
 msgstr "Egoera"
 
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Status
+msgid "Status"
+msgstr ""
+
 #: components/manage/Multilingual/CompareLanguages
 # defaultMessage: Stop compare
 msgid "Stop compare"
@@ -2854,10 +3103,15 @@ msgstr "Gaia"
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Controlpanels/Rules/Rules
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
+#: components/manage/Rules/Rules
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Success
@@ -2985,6 +3239,11 @@ msgstr "Zerbitzaria ez dago ondo, barkatu eragozpenak. Saiatu orrialdea freskatz
 msgid "The button presence disables the live search, the query is issued when you press ENTER"
 msgstr "Botoia badago bilaketa ez da idatzi ahal egingo, ENTER sakatzean baizik"
 
+#: components/manage/Rules/Rules
+# defaultMessage: The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones.
+msgid "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: The item could not be deleted.
 msgid "The item could not be deleted."
@@ -3036,6 +3295,11 @@ msgstr "Errorea gertatu da"
 msgid "Third"
 msgstr "Hirugarren"
 
+#: components/manage/Contents/Contents
+# defaultMessage: This Page is referenced by the following items:
+msgid "This Page is referenced by the following items:"
+msgstr ""
+
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This has an ongoing working copy in {title}
 msgid "This has an ongoing working copy in {title}"
@@ -3066,6 +3330,11 @@ msgstr "Izen hau URLan agertuko da"
 msgid "This page does not seem to exist…"
 msgstr "Orrialde hau ez da existitzen..."
 
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: This rule is assigned to the following locations:
+msgid "This rule is assigned to the following locations:"
+msgstr ""
+
 #: components/manage/Widgets/DatetimeWidget
 # defaultMessage: Time
 msgid "Time"
@@ -3083,6 +3352,12 @@ msgstr "Ordua"
 # defaultMessage: Title
 msgid "Title"
 msgstr "Izenburua"
+
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Title field error. Value not provided or already existing.
+msgid "Title field error. Value not provided or already existing."
+msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Total active and non-active objects
@@ -3145,6 +3420,12 @@ msgstr "Itzulpena ondo lotu da"
 msgid "Translation linking removed"
 msgstr "Itzulpenaren lotura kendu da"
 
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Triggering event field error. Please select a value
+msgid "Triggering event field error. Please select a value"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
@@ -3166,6 +3447,11 @@ msgstr "Idatzi testua..."
 # defaultMessage: Type text…
 msgid "Type text…"
 msgstr "Idatzi testua..."
+
+#: components/manage/TextLineEdit/TextLineEdit
+# defaultMessage: Type the heading…
+msgid "Type the heading…"
+msgstr ""
 
 #: components/manage/Blocks/Title/Edit
 # defaultMessage: Type the title…
@@ -3189,6 +3475,16 @@ msgstr "URLen kudeaketa"
 # defaultMessage: URL Management for {title}
 msgid "URL Management for {title}"
 msgstr "{title} orrialdearen URLen kudeaketa"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Unassign
+msgid "Unassign"
+msgstr ""
+
+#: components/manage/Rules/Rules
+# defaultMessage: Unassigned
+msgid "Unassigned"
+msgstr ""
 
 #: components/manage/Toolbar/More
 #: components/theme/Unauthorized/Unauthorized
@@ -3293,6 +3589,17 @@ msgstr "Fitxategiak kargatzen"
 # defaultMessage: Uploading image
 msgid "Uploading image"
 msgstr "Irudia kargatzen"
+
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Use the form below to define the new content rule
+msgid "Use the form below to define the new content rule"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu.
+msgid "Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu."
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -3467,6 +3774,24 @@ msgstr "Noiz"
 msgid "When this date is reached, the content will nolonger be visible in listings and searches."
 msgstr "Data hau iristean, elementua ez da erakutsiko bilaketa eta zerrendetan"
 
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Whether or not execution of further rules should stop after this rule is executed
+msgid "Whether or not execution of further rules should stop after this rule is executed"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Whether or not other rules should be triggered by the actions launched by this rule. Activate this only if you are sure this won't create infinite loops
+msgid "Whether or not other rules should be triggered by the actions launched by this rule. Activate this only if you are sure this won't create infinite loops"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Whether or not the rule is currently enabled
+msgid "Whether or not the rule is currently enabled"
+msgstr ""
+
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/History/History
 # defaultMessage: Who
@@ -3535,6 +3860,11 @@ msgstr "Zure elementuaren historia ikusi dezakezu."
 msgid "You can't paste this content here"
 msgstr "Ezin duzu elementua hemen itsatsi"
 
+#: components/theme/Logout/Logout
+# defaultMessage: You have been logged out from the site.
+msgid "You have been logged out from the site."
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your email is required for reset your password.
 msgid "Your email is required for reset your password."
@@ -3554,6 +3884,11 @@ msgstr "Zure hizkuntza"
 # defaultMessage: Your username is required for reset your password.
 msgid "Your usernaame is required for reset your password."
 msgstr "Erabiltzaile-izena derrigorrezkoa da zure pasahitza berrezartzeko."
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Available views
+msgid "availableViews"
+msgstr ""
 
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -3960,6 +4295,11 @@ msgstr "urte"
 msgid "rrule_years"
 msgstr "urte"
 
+#: components/manage/Blocks/Search/components/ViewSwitcher
+# defaultMessage: Select view
+msgid "selectView"
+msgstr ""
+
 #: components/theme/SkipLinks/SkipLinks
 # defaultMessage: Skip to footer
 msgid "skiplink-footer"
@@ -4019,6 +4359,11 @@ msgstr "Erabiltzailearen argazkia"
 # defaultMessage: Video
 msgid "video"
 msgstr "Bideoa"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Views
+msgid "views"
+msgstr ""
 
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Visit external website

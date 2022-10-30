@@ -1,6 +1,6 @@
 # Change Log
 
-## 2.1.2 (unreleased)
+## 2.1.3 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,12 @@
 ### Bugfix
 
 ### Internal
+
+## 2.1.2 (2022-10-26)
+
+### Internal
+
+- Add missing dependency @tiberiuichim
 
 ## 2.1.1 (2022-09-28)
 

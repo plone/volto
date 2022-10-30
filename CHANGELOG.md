@@ -6,14 +6,95 @@
 
 ### Feature
 
-### Bugfix
+- consume site_actions from restapi @nileshgulia1
 
-- Fix UniversalLink storybook @tiberiuichim
-- Change sentry chunk name to avoid ad blockers. Only load sentry if env vars exist @tiberiuichim
+### Bugfix
 
 ### Internal
 
 ### Documentation
+
+## 16.0.0-alpha.46 (2022-10-28)
+
+### Breaking
+
+- Remove the means to enable the StyleWrapper in favor of defining it through the block schema. @sneridagh
+- Moved all sentry-related code from Volto to the `@plone-collective/volto-sentry` package. @tiberiuichim
+- The listing block icon has been improved to avoid confusion with the normal text list. @sneridagh
+
+See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+
+### Feature
+
+- Add `image-narrow` svg icon useful for align widget actions @ichim-david
+- Use `View comments` and `Reply to item` permissions in `Comments` component. @razvanMiu
+- Added portrait middleware adapter. @instification
+- Allow dumping the addon dependency graph to a .dot file. Start Volto with `DEBUG_ADDONS_LOADER=true yarn start`, `addon-dependency-graph.dot` will be created in your project folder. @tiberiuichim
+
+### Bugfix
+
+- Prefer views assigned explicitly with `layout` over views based on the `@type` @iRohitSingh
+
+### Internal
+
+- Set `.nvmrc` to not use `lts/*` but a specific one `lts/gallium`
+- Update to @plone/scripts 2.1.2 @sneridagh
+- Remove all the useless security bits from blocks configuration definitions @sneridagh
+
+### Documentation
+
+- Add NodeJS 18 (LTS) usage notice @sneridagh
+- Fix Netlify build @sneridagh
+
+## 16.0.0-alpha.45 (2022-10-24)
+
+### Feature
+
+- Added link integrity potential breakage warning message when deleting a referenced page @danielamormocea
+- Added new components & interfaces for content-rules `Rules` control in Volto. Rules management in both controlpanel and object view. @andreiggr
+- Introduce `TextLineEdit` component @sneridagh
+- Add a popup tooltip for tokenized options in Select widget values @sneridagh
+
+### Bugfix
+
+- Make sure that the store is reset on history reducer `PENDING` state @sneridagh
+
+### Documentation
+
+- Update supported Python versions. @stevepiercy
+
+## 16.0.0-alpha.44 (2022-10-20)
+
+### Breaking
+
+- The listing block icon has been improved to avoid confusions with the normal text list @sneridagh
+
+### Bugfix
+
+- SearchTags uses invalid vocabulary API @silviubogan
+- Fix autocomplete widget with an empty search result @reebalazs
+
+## 16.0.0-alpha.43 (2022-10-17)
+
+### Feature
+
+- Object browser: image search should only show images @reebalazs
+- Updated spanish translation @macagua
+- Add Dutch translation @spereverde
+
+### Bugfix
+
+- Fix UniversalLink storybook @tiberiuichim
+- Fix logout to stay on the same page where the user was @reebalazs
+- Change sentry chunk name to avoid ad blockers. Only load sentry if env vars exist @tiberiuichim
+
+### Internal
+
+- Upgrade dependency rrule (optional dependency luxon removed) @ksuess
+
+### Documentation
+
+- Trigger a new deploy core Plone documentation when Volto documentation is updated @esteele
 
 ## 16.0.0-alpha.42 (2022-10-06)
 
@@ -83,6 +164,7 @@
 - Fixed the `description` field not appearing in control panel fieldsets @JeffersonBledsoe #3696
 - Fixed "more" always show root contents @MdSahil-oss #3365
 - Add missing `--noninteractive` in the `build` script in package.json @sneridagh
+- Fix replace `<a>` anchor element with the `UniversalLink` component in `DefaultTemplate.jsx` @Dnouv
 
 ### Internal
 
@@ -274,6 +356,11 @@ Undo html_static_path configuration in `plone/documentation`, and restore image 
 ### Bugfix
 
 - Fix array widget translation @robgietema
+- Fix: TTW DX Layout disables IBlocks behavior and with it all the indexers and transformers @avoinea
+
+### Internal
+
+### Documentation
 - Fix copy / paste text in list @robgietema
 
 ## 16.0.0-alpha.27 (2022-08-29)
@@ -688,6 +775,11 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 
 ### Feature
 
+- Allow final users to switch between available views in the search block. A "view" is any of available listing block variations. In the search block configuration you can pick the available views for that block. @tiberiuichim
+
+### Bugfix
+
+- Fixes in search block. Disable default live search. Added clear button for search input. Fixed facet dropdown clear button. Removed sort on label customization option. Layout improvements, CSS polishments. @kreafox @tiberiuichim
 - added default placeholder for videos to embed them more lightly @giuliaghisini
 - Added default placeholder for videos to embed them more lightly @giuliaghisini
 - Completed Romanian translation @sboghy
@@ -1681,6 +1773,8 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 
 ### Internal
 
+- Updated i18n link into the README file @macagua
+- Updated Spanish translations @macagua
 - Remove bundlesize @tisto
 - Upgrade plone.restapi from 8.12.1 -> 8.13.0 @tisto
 
