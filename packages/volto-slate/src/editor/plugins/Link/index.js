@@ -1,11 +1,12 @@
 import React from 'react';
 import { defineMessages } from 'react-intl'; // , defineMessages
 import { ReactEditor, useSlate } from 'slate-react';
+import { Editor, Transforms, Node } from 'slate'; // Range,
 import { useSelector, useDispatch } from 'react-redux';
 import AddLinkForm from '@plone/volto/components/manage/AnchorPlugin/components/LinkButton/AddLinkForm';
 import {
   _insertElement,
-  _unwrapElement,
+  // _unwrapElement,
   _isActiveElement,
   _getActiveElement,
 } from '@plone/volto-slate/elementEditor/utils';
@@ -106,9 +107,35 @@ const LinkEditor = (props) => {
         }}
       />
     </PositionedToolbar>
-  ) : (
-    ''
-  );
+  ) : null;
+};
+
+// a better implementation of unwrapElement which identifies the current target
+// element and expands the selection to it
+export const _unwrapElement = (elementType) => (editor) => {
+  const [link] = Editor.nodes(editor, {
+    at: editor.selection,
+    match: (node) => node?.type === elementType,
+  });
+  const [, path] = link;
+  const [start, end] = Editor.edges(editor, path);
+  const range = { anchor: start, focus: end };
+
+  const ref = Editor.rangeRef(editor, range); // selection
+
+  Transforms.select(editor, range); // selection
+  Transforms.unwrapNodes(editor, {
+    match: (n) =>
+      Array.isArray(elementType)
+        ? elementType.includes(n.type)
+        : n.type === elementType,
+    at: range,
+  });
+
+  const current = ref.current;
+  ref.unref();
+
+  return current;
 };
 
 export default (config) => {
