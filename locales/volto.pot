@@ -775,6 +775,11 @@ msgstr ""
 msgid "Copyright statement or other rights information on this item."
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Create relations to target
+msgid "Create relations to target"
+msgstr ""
+
 #: components/manage/Toolbar/More
 # defaultMessage: Create working copy
 msgid "Create working copy"
@@ -1405,6 +1410,21 @@ msgid "Filter by prefix"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter relations by search in source
+msgid "Filter relations by search in source"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter relations by target
+msgid "Filter relations by target"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter targets by search
+msgid "Filter targets by search"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Filter users by groups
 msgid "Filter users by groups"
 msgstr ""
@@ -1417,6 +1437,11 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: First
 msgid "First"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Fix relations by rebuild
+msgid "Fix relations"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
@@ -1684,6 +1709,11 @@ msgstr ""
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Insert row before
 msgid "Insert row before"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Inspect relations
+msgid "Inspect relations"
 msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -2217,6 +2247,11 @@ msgstr ""
 msgid "No options"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: No relation found
+msgid "No relation found"
+msgstr ""
+
 #: components/manage/BlockChooser/BlockChooser
 #: components/theme/Search/Search
 # defaultMessage: No results found
@@ -2573,6 +2608,13 @@ msgstr ""
 msgid "Registration form"
 msgstr ""
 
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Relations/Relations
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Relations
+msgid "Relations"
+msgstr ""
+
 #: components/theme/Search/Search
 # defaultMessage: Relevance
 msgid "Relevance"
@@ -2591,6 +2633,11 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: Remove
 msgid "Remove recurrence"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Remove relations to target
+msgid "Remove relations to target"
 msgstr ""
 
 #: components/manage/Controlpanels/Aliases
@@ -2889,6 +2936,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: Select columns to show
 msgid "Select columns to show"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Select relation
+msgid "Select relation"
 msgstr ""
 
 #: components/manage/Contents/ContentsWorkflowModal
