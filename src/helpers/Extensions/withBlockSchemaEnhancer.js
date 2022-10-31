@@ -257,7 +257,12 @@ export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
   const blockType = formData['@type'];
   const variations = blocksConfig[blockType]?.variations || [];
 
-  let schema = applySchemaEnhancer({ schema: originalSchema, formData, intl });
+  let schema = applySchemaEnhancer({
+    schema: originalSchema,
+    formData,
+    intl,
+    blocksConfig,
+  });
 
   if (variations.length > 1) {
     addExtensionFieldToSchema({
