@@ -14,6 +14,8 @@
 
 ### Internal
 
+- Add translation for `pending` state @iFlameing
+
 ### Documentation
 
 ## 16.0.0-alpha.46 (2022-10-28)

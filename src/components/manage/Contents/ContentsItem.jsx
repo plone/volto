@@ -31,6 +31,10 @@ const messages = defineMessages({
     id: 'private',
     defaultMessage: 'Private',
   },
+  pending: {
+    id: 'pending',
+    defaultMessage: 'Pending',
+  },
   published: {
     id: 'published',
     defaultMessage: 'Published',
