@@ -162,22 +162,22 @@ class Controlpanel extends Component {
         <div id="page-controlpanel">
           <Helmet title={this.props.controlpanel.title} />
           <Container>
-            <div style={{ marginBottom: '10px' }}>
-              <Form
-                ref={this.form}
-                title={this.props.controlpanel.title}
-                schema={this.props.controlpanel.schema}
-                formData={this.props.controlpanel.data}
-                onSubmit={this.onSubmit}
-                onCancel={this.onCancel}
-                hideActions
-                loading={this.props.updateRequest.loading}
-              />
-            </div>
+            <Form
+              ref={this.form}
+              title={this.props.controlpanel.title}
+              schema={this.props.controlpanel.schema}
+              formData={this.props.controlpanel.data}
+              onSubmit={this.onSubmit}
+              onCancel={this.onCancel}
+              hideActions
+              loading={this.props.updateRequest.loading}
+            />
             {this.props.controlpanel?.title.toLowerCase() === 'mail' && (
-              <Button onClick={this.onSaveAndSendTestEmail}>
-                Save and send test e-mail
-              </Button>
+              <div style={{ marginTop: '10px' }}>
+                <Button onClick={this.onSaveAndSendTestEmail}>
+                  Save and send test e-mail
+                </Button>
+              </div>
             )}
           </Container>
           {this.state.isClient && (
