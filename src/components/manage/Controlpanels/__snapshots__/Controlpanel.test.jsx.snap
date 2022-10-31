@@ -8,16 +8,8 @@ exports[`Controlpanel renders a controlpanel component 1`] = `
     className="ui container"
   >
     <div
-      style={
-        Object {
-          "marginBottom": "10px",
-        }
-      }
-    >
-      <div
-        id="form"
-      />
-    </div>
+      id="form"
+    />
   </div>
   <div
     id="Portal"
