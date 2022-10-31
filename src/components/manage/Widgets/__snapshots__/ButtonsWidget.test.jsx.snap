@@ -1,0 +1,179 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders an align widget component basic 1`] = `
+<DocumentFragment>
+  <div
+    class="inline field align-widget field-wrapper-align"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="stretched row"
+      >
+        <div
+          class="four wide column"
+        >
+          <div
+            class="wrapper"
+          >
+            <label
+              for="field-align"
+              id="fieldset-default-field-label-align"
+            >
+              Alignment
+            </label>
+          </div>
+        </div>
+        <div
+          class="eight wide column"
+        >
+          <div
+            class="align-buttons"
+          >
+            <div
+              class="ui buttons"
+            >
+              <button
+                aria-label="Text Left"
+                class="ui basic icon button"
+              >
+                <svg
+                  class="icon"
+                  style="height: 24px; width: auto; fill: currentColor;"
+                  viewBox=""
+                  xmlns=""
+                >
+                  <title>
+                    Text Left
+                  </title>
+                  undefined
+                </svg>
+              </button>
+            </div>
+            <div
+              class="ui buttons"
+            >
+              <button
+                aria-label="Text Right"
+                class="ui basic icon button"
+              >
+                <svg
+                  class="icon"
+                  style="height: 24px; width: auto; fill: currentColor;"
+                  viewBox=""
+                  xmlns=""
+                >
+                  <title>
+                    Text Right
+                  </title>
+                  undefined
+                </svg>
+              </button>
+            </div>
+            <div
+              class="ui buttons"
+            >
+              <button
+                aria-label="Text Centered"
+                class="ui basic icon button"
+              >
+                <svg
+                  class="icon"
+                  style="height: 24px; width: auto; fill: currentColor;"
+                  viewBox=""
+                  xmlns=""
+                >
+                  <title>
+                    Text Centered
+                  </title>
+                  undefined
+                </svg>
+              </button>
+            </div>
+            <div
+              class="ui buttons"
+            >
+              <button
+                aria-label="Text Justified"
+                class="ui basic icon button"
+              >
+                <svg
+                  class="icon"
+                  style="height: 24px; width: auto; fill: currentColor;"
+                  viewBox=""
+                  xmlns=""
+                >
+                  <title>
+                    Text Justified
+                  </title>
+                  undefined
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`renders an align widget component extended with actions and actionsInfoMap props 1`] = `
+<DocumentFragment>
+  <div
+    class="inline field align-widget field-wrapper-align"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="stretched row"
+      >
+        <div
+          class="four wide column"
+        >
+          <div
+            class="wrapper"
+          >
+            <label
+              for="field-align"
+              id="fieldset-default-field-label-align"
+            >
+              Alignment
+            </label>
+          </div>
+        </div>
+        <div
+          class="eight wide column"
+        >
+          <div
+            class="align-buttons"
+          >
+            <div
+              class="ui buttons"
+            >
+              <button
+                aria-label="Additional action title"
+                class="ui basic icon button"
+              >
+                <svg
+                  class="icon"
+                  style="height: 24px; width: auto; fill: currentColor;"
+                  viewBox=""
+                  xmlns=""
+                >
+                  <title>
+                    Additional action title
+                  </title>
+                  undefined
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

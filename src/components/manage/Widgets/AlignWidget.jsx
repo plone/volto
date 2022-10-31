@@ -1,8 +1,6 @@
 import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
-import { FormFieldWrapper } from '@plone/volto/components';
-import { Icon } from '@plone/volto/components';
-import { Button } from 'semantic-ui-react';
+import ButtonsWidget from './ButtonsWidget';
 import imageLeftSVG from '@plone/volto/icons/image-left.svg';
 import imageRightSVG from '@plone/volto/icons/image-right.svg';
 import imageFitSVG from '@plone/volto/icons/image-fit.svg';
@@ -50,43 +48,14 @@ const AlignWidget = (props) => {
   const intl = useIntl();
 
   const {
-    id,
-    onChange,
     actions = ['left', 'right', 'center', 'full'],
     actionsInfoMap,
-    value,
   } = props;
-
-  React.useEffect(() => {
-    if (!props.value && props.default) {
-      props.onChange(props.id, props.default);
-    }
-  });
 
   const actionsInfo = actionsInfoMap || defaultActionsInfo({ intl });
 
   return (
-    <FormFieldWrapper {...props} className="align-widget">
-      <div className="align-buttons">
-        {actions.map((action) => (
-          <Button.Group key={action}>
-            <Button
-              icon
-              basic
-              aria-label={actionsInfo[action][1]}
-              onClick={() => onChange(id, action)}
-              active={(action === 'center' && !value) || value === action}
-            >
-              <Icon
-                name={actionsInfo[action][0]}
-                title={actionsInfo[action][1] || action}
-                size="24px"
-              />
-            </Button>
-          </Button.Group>
-        ))}
-      </div>
-    </FormFieldWrapper>
+    <ButtonsWidget {...props} actions={actions} actionsInfoMap={actionsInfo} />
   );
 };
 
