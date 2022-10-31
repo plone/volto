@@ -154,7 +154,7 @@ exports[`renders an align widget component extended with actions and actionsInfo
               class="ui buttons"
             >
               <button
-                aria-label="action title"
+                aria-label="Additional action title"
                 class="ui basic icon button"
               >
                 <svg
@@ -164,7 +164,7 @@ exports[`renders an align widget component extended with actions and actionsInfo
                   xmlns=""
                 >
                   <title>
-                    action title
+                    Additional action title
                   </title>
                   undefined
                 </svg>

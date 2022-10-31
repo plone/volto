@@ -48,7 +48,7 @@ describe('renders an align widget component', () => {
           onChange={() => {}}
           actions={['additional']}
           actionsInfoMap={{
-            additional: [imageFullSVG, 'action title'],
+            additional: [imageFullSVG, 'Additional action title'],
           }}
         />
       </Provider>,

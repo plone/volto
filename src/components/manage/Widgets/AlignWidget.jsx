@@ -53,7 +53,7 @@ const AlignWidget = (props) => {
     id,
     onChange,
     actions = ['left', 'right', 'center', 'full'],
-    actionsInfoMap = {},
+    actionsInfoMap,
     value,
   } = props;
 
@@ -63,10 +63,7 @@ const AlignWidget = (props) => {
     }
   });
 
-  const actionsInfo = {
-    ...defaultActionsInfo({ intl }),
-    ...actionsInfoMap,
-  };
+  const actionsInfo = actionsInfoMap || defaultActionsInfo({ intl });
 
   return (
     <FormFieldWrapper {...props} className="align-widget">
