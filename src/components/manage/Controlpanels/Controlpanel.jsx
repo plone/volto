@@ -90,6 +90,7 @@ class Controlpanel extends Component {
     super(props);
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onSaveAndSendTestEmail = this.onSaveAndSendTestEmail.bind(this);
     this.state = { isClient: false };
   }
 
@@ -132,6 +133,15 @@ class Controlpanel extends Component {
   }
 
   /**
+   * Save And send test e-mail
+   * @method onSaveAndSendTestEmail
+   * @returns {undefined}
+   */
+  onSaveAndSendTestEmail() {
+    // Have to implement.
+  }
+
+  /**
    * Cancel handler
    * @method onCancel
    * @returns {undefined}
@@ -152,16 +162,23 @@ class Controlpanel extends Component {
         <div id="page-controlpanel">
           <Helmet title={this.props.controlpanel.title} />
           <Container>
-            <Form
-              ref={this.form}
-              title={this.props.controlpanel.title}
-              schema={this.props.controlpanel.schema}
-              formData={this.props.controlpanel.data}
-              onSubmit={this.onSubmit}
-              onCancel={this.onCancel}
-              hideActions
-              loading={this.props.updateRequest.loading}
-            />
+            <div style={{ marginBottom: '10px' }}>
+              <Form
+                ref={this.form}
+                title={this.props.controlpanel.title}
+                schema={this.props.controlpanel.schema}
+                formData={this.props.controlpanel.data}
+                onSubmit={this.onSubmit}
+                onCancel={this.onCancel}
+                hideActions
+                loading={this.props.updateRequest.loading}
+              />
+            </div>
+            {this.props.controlpanel?.title.toLowerCase() === 'mail' && (
+              <Button onClick={this.onSaveAndSendTestEmail}>
+                Save and send test e-mail
+              </Button>
+            )}
           </Container>
           {this.state.isClient && (
             <Portal node={document.getElementById('toolbar')}>
