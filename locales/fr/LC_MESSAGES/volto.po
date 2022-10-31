@@ -33,11 +33,6 @@ msgstr ""
 msgid "<p>Add some HTML here</p>"
 msgstr ""
 
-#: components/theme/Footer/Footer
-# defaultMessage: Accessibility
-msgid "Accessibility"
-msgstr "Accessibilité"
-
 #: components/theme/Register/Register
 # defaultMessage: Account Registration Completed
 msgid "Account Registration Completed"
@@ -306,7 +301,6 @@ msgstr ""
 msgid "Alias has been added"
 msgstr ""
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
@@ -450,11 +444,6 @@ msgstr ""
 # defaultMessage: Back
 msgid "Back"
 msgstr "Retour"
-
-#: components/manage/Blocks/Block/StylesSchema
-# defaultMessage: Background color
-msgid "Background color"
-msgstr ""
 
 #: components/manage/Diff/Diff
 # defaultMessage: Base
@@ -652,7 +641,6 @@ msgstr ""
 msgid "Collection"
 msgstr "Collection"
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Widgets/ColorPickerWidget
 # defaultMessage: Color
 msgid "Color"
@@ -715,11 +703,6 @@ msgstr "Confirmer le mot de passe"
 # defaultMessage: Connection refused
 msgid "Connection refused"
 msgstr "Connexion refusée"
-
-#: components/theme/Footer/Footer
-# defaultMessage: Contact
-msgid "Contact"
-msgstr "Contact"
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Contact form
@@ -3005,11 +2988,6 @@ msgstr "Site"
 msgid "Site Administration"
 msgstr "Administration du site"
 
-#: components/theme/Footer/Footer
-# defaultMessage: Site Map
-msgid "Site Map"
-msgstr "Plan du site"
-
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: Site Setup
@@ -4150,6 +4128,11 @@ msgstr "ou essayez une autre page."
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: others
 msgid "others"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Pending
+msgid "pending"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem

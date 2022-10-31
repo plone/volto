@@ -6,6 +6,30 @@
 
 ### Feature
 
+- consume site_actions from restapi @nileshgulia1
+
+### Bugfix
+
+- Fix `schemaEnhancer` not being applied if nested `blocksConfig` is present @sneridagh
+
+### Internal
+
+- Add translation for `pending` state @iFlameing
+
+### Documentation
+
+## 16.0.0-alpha.46 (2022-10-28)
+
+### Breaking
+
+- Remove the means to enable the StyleWrapper in favor of defining it through the block schema. @sneridagh
+- Moved all sentry-related code from Volto to the `@plone-collective/volto-sentry` package. @tiberiuichim
+- The listing block icon has been improved to avoid confusion with the normal text list. @sneridagh
+
+See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+
+### Feature
+
 - Add `image-narrow` svg icon useful for align widget actions @ichim-david
 - Use `View comments` and `Reply to item` permissions in `Comments` component. @razvanMiu
 - Added portrait middleware adapter. @instification
@@ -20,6 +44,7 @@
 
 - Set `.nvmrc` to not use `lts/*` but a specific one `lts/gallium`
 - Update to @plone/scripts 2.1.2 @sneridagh
+- Remove all the useless security bits from blocks configuration definitions @sneridagh
 
 ### Documentation
 

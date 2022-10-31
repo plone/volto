@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-10-28T07:27:24.460Z\n"
+"POT-Creation-Date: 2022-10-31T12:15:48.236Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -16,11 +16,6 @@ msgstr ""
 #: components/manage/Blocks/HTML/Edit
 # defaultMessage: <p>Add some HTML here</p>
 msgid "<p>Add some HTML here</p>"
-msgstr ""
-
-#: components/theme/Footer/Footer
-# defaultMessage: Accessibility
-msgid "Accessibility"
 msgstr ""
 
 #: components/theme/Register/Register
@@ -44,7 +39,7 @@ msgid "Action changed"
 msgstr ""
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Action: 
+# defaultMessage: Action:
 msgid "Action: "
 msgstr ""
 
@@ -291,7 +286,6 @@ msgstr ""
 msgid "Alias has been added"
 msgstr ""
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
@@ -434,11 +428,6 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Back
 msgid "Back"
-msgstr ""
-
-#: components/manage/Blocks/Block/StylesSchema
-# defaultMessage: Background color
-msgid "Background color"
 msgstr ""
 
 #: components/manage/Diff/Diff
@@ -637,7 +626,6 @@ msgstr ""
 msgid "Collection"
 msgstr ""
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Widgets/ColorPickerWidget
 # defaultMessage: Color
 msgid "Color"
@@ -671,7 +659,7 @@ msgid "Condition changed"
 msgstr ""
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Condition: 
+# defaultMessage: Condition:
 msgid "Condition: "
 msgstr ""
 
@@ -699,11 +687,6 @@ msgstr ""
 #: components/theme/ConnectionRefused/ConnectionRefused
 # defaultMessage: Connection refused
 msgid "Connection refused"
-msgstr ""
-
-#: components/theme/Footer/Footer
-# defaultMessage: Contact
-msgid "Contact"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
@@ -2990,11 +2973,6 @@ msgstr ""
 msgid "Site Administration"
 msgstr ""
 
-#: components/theme/Footer/Footer
-# defaultMessage: Site Map
-msgid "Site Map"
-msgstr ""
-
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: Site Setup
@@ -4135,6 +4113,11 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: others
 msgid "others"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Pending
+msgid "pending"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem

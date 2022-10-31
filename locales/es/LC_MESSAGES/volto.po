@@ -27,11 +27,6 @@ msgstr ""
 msgid "<p>Add some HTML here</p>"
 msgstr "<p>Añadir algo de HTML aquí</p>"
 
-#: components/theme/Footer/Footer
-# defaultMessage: Accessibility
-msgid "Accessibility"
-msgstr "Accesibilidad"
-
 #: components/theme/Register/Register
 # defaultMessage: Account Registration Completed
 msgid "Account Registration Completed"
@@ -300,7 +295,6 @@ msgstr "Alias"
 msgid "Alias has been added"
 msgstr "Alias añadido correctamente"
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
@@ -444,11 +438,6 @@ msgstr ""
 # defaultMessage: Back
 msgid "Back"
 msgstr "Volver"
-
-#: components/manage/Blocks/Block/StylesSchema
-# defaultMessage: Background color
-msgid "Background color"
-msgstr "Color del fondo"
 
 #: components/manage/Diff/Diff
 # defaultMessage: Base
@@ -646,7 +635,6 @@ msgstr "Plegar elemento"
 msgid "Collection"
 msgstr "Colección"
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Widgets/ColorPickerWidget
 # defaultMessage: Color
 msgid "Color"
@@ -709,11 +697,6 @@ msgstr "Confirme contraseña"
 # defaultMessage: Connection refused
 msgid "Connection refused"
 msgstr "Conexión rechazada"
-
-#: components/theme/Footer/Footer
-# defaultMessage: Contact
-msgid "Contact"
-msgstr "Contactos"
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Contact form
@@ -2999,11 +2982,6 @@ msgstr "Sitio"
 msgid "Site Administration"
 msgstr "Administrador del sitio"
 
-#: components/theme/Footer/Footer
-# defaultMessage: Site Map
-msgid "Site Map"
-msgstr "Mapa del sitio"
-
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: Site Setup
@@ -4145,6 +4123,11 @@ msgstr "o intente con una página diferente."
 # defaultMessage: others
 msgid "others"
 msgstr "Otros"
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Pending
+msgid "pending"
+msgstr ""
 
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Private

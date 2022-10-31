@@ -25,11 +25,6 @@ msgstr ""
 msgid "<p>Add some HTML here</p>"
 msgstr "<p>Afegeix codi HTML aquí</p>"
 
-#: components/theme/Footer/Footer
-# defaultMessage: Accessibility
-msgid "Accessibility"
-msgstr "Accessibilitat"
-
 #: components/theme/Register/Register
 # defaultMessage: Account Registration Completed
 msgid "Account Registration Completed"
@@ -298,7 +293,6 @@ msgstr ""
 msgid "Alias has been added"
 msgstr ""
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
@@ -442,11 +436,6 @@ msgstr ""
 # defaultMessage: Back
 msgid "Back"
 msgstr "Enrere"
-
-#: components/manage/Blocks/Block/StylesSchema
-# defaultMessage: Background color
-msgid "Background color"
-msgstr ""
 
 #: components/manage/Diff/Diff
 # defaultMessage: Base
@@ -644,7 +633,6 @@ msgstr "Replega l'element"
 msgid "Collection"
 msgstr "Col·lecció"
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Widgets/ColorPickerWidget
 # defaultMessage: Color
 msgid "Color"
@@ -707,11 +695,6 @@ msgstr "Confirma la contrassenya"
 # defaultMessage: Connection refused
 msgid "Connection refused"
 msgstr "Connexió rebutjada"
-
-#: components/theme/Footer/Footer
-# defaultMessage: Contact
-msgid "Contact"
-msgstr "Contacte"
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Contact form
@@ -2997,11 +2980,6 @@ msgstr "Lloc"
 msgid "Site Administration"
 msgstr "Administració del lloc"
 
-#: components/theme/Footer/Footer
-# defaultMessage: Site Map
-msgid "Site Map"
-msgstr "Mapa del lloc"
-
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: Site Setup
@@ -4143,6 +4121,11 @@ msgstr "o prova una pàgina diferent."
 # defaultMessage: others
 msgid "others"
 msgstr "altres"
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Pending
+msgid "pending"
+msgstr ""
 
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Private

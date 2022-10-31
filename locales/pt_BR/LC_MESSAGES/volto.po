@@ -26,11 +26,6 @@ msgstr ""
 msgid "<p>Add some HTML here</p>"
 msgstr "<p>Adicione o HTML aqui</p>"
 
-#: components/theme/Footer/Footer
-# defaultMessage: Accessibility
-msgid "Accessibility"
-msgstr "Acessibilidade"
-
 #: components/theme/Register/Register
 # defaultMessage: Account Registration Completed
 msgid "Account Registration Completed"
@@ -299,7 +294,6 @@ msgstr ""
 msgid "Alias has been added"
 msgstr ""
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
@@ -443,11 +437,6 @@ msgstr ""
 # defaultMessage: Back
 msgid "Back"
 msgstr "Voltar"
-
-#: components/manage/Blocks/Block/StylesSchema
-# defaultMessage: Background color
-msgid "Background color"
-msgstr "Cor de fundo"
 
 #: components/manage/Diff/Diff
 # defaultMessage: Base
@@ -645,7 +634,6 @@ msgstr "Colapsar item"
 msgid "Collection"
 msgstr "Coleção"
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Widgets/ColorPickerWidget
 # defaultMessage: Color
 msgid "Color"
@@ -708,11 +696,6 @@ msgstr "Confirmar senha"
 # defaultMessage: Connection refused
 msgid "Connection refused"
 msgstr "Conexão recusada"
-
-#: components/theme/Footer/Footer
-# defaultMessage: Contact
-msgid "Contact"
-msgstr "Contato"
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Contact form
@@ -2998,11 +2981,6 @@ msgstr "Site"
 msgid "Site Administration"
 msgstr "Administração do site"
 
-#: components/theme/Footer/Footer
-# defaultMessage: Site Map
-msgid "Site Map"
-msgstr "Mapa do site"
-
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: Site Setup
@@ -4144,6 +4122,11 @@ msgstr "ou tente uma página diferente"
 # defaultMessage: others
 msgid "others"
 msgstr "outros"
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Pending
+msgid "pending"
+msgstr ""
 
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Private

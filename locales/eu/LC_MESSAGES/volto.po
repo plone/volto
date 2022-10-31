@@ -23,11 +23,6 @@ msgstr ""
 msgid "<p>Add some HTML here</p>"
 msgstr "<p>HTMLa idatzi hemen</p>"
 
-#: components/theme/Footer/Footer
-# defaultMessage: Accessibility
-msgid "Accessibility"
-msgstr "Irisgarritasuna"
-
 #: components/theme/Register/Register
 # defaultMessage: Account Registration Completed
 msgid "Account Registration Completed"
@@ -296,7 +291,6 @@ msgstr "Aliasa"
 msgid "Alias has been added"
 msgstr "Aliasa ondo gehitu da"
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
@@ -440,11 +434,6 @@ msgstr ""
 # defaultMessage: Back
 msgid "Back"
 msgstr "Atzera"
-
-#: components/manage/Blocks/Block/StylesSchema
-# defaultMessage: Background color
-msgid "Background color"
-msgstr "Atzeko planoko kolorea"
 
 #: components/manage/Diff/Diff
 # defaultMessage: Base
@@ -642,7 +631,6 @@ msgstr "Batu elementua"
 msgid "Collection"
 msgstr "Bilduma"
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Widgets/ColorPickerWidget
 # defaultMessage: Color
 msgid "Color"
@@ -705,11 +693,6 @@ msgstr "Pasahitza berretsi"
 # defaultMessage: Connection refused
 msgid "Connection refused"
 msgstr "Konexioak huts egin du"
-
-#: components/theme/Footer/Footer
-# defaultMessage: Contact
-msgid "Contact"
-msgstr "Kontaktua"
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Contact form
@@ -2995,11 +2978,6 @@ msgstr "Ataria"
 msgid "Site Administration"
 msgstr "Atariaren kudeaketa"
 
-#: components/theme/Footer/Footer
-# defaultMessage: Site Map
-msgid "Site Map"
-msgstr "Web mapa"
-
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: Site Setup
@@ -4141,6 +4119,11 @@ msgstr "edo beste orrialde bat probatu."
 # defaultMessage: others
 msgid "others"
 msgstr "besteak"
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Pending
+msgid "pending"
+msgstr ""
 
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Private

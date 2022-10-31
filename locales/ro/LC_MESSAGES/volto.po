@@ -16,11 +16,6 @@ msgstr ""
 msgid "<p>Add some HTML here</p>"
 msgstr "Adăugați HTML aici"
 
-#: components/theme/Footer/Footer
-# defaultMessage: Accessibility
-msgid "Accessibility"
-msgstr "Accesibilitate"
-
 #: components/theme/Register/Register
 # defaultMessage: Account Registration Completed
 msgid "Account Registration Completed"
@@ -289,7 +284,6 @@ msgstr ""
 msgid "Alias has been added"
 msgstr ""
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
@@ -433,11 +427,6 @@ msgstr ""
 # defaultMessage: Back
 msgid "Back"
 msgstr "Înapoi"
-
-#: components/manage/Blocks/Block/StylesSchema
-# defaultMessage: Background color
-msgid "Background color"
-msgstr ""
 
 #: components/manage/Diff/Diff
 # defaultMessage: Base
@@ -635,7 +624,6 @@ msgstr "Restrângeți elementul"
 msgid "Collection"
 msgstr "Colecție"
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Widgets/ColorPickerWidget
 # defaultMessage: Color
 msgid "Color"
@@ -698,11 +686,6 @@ msgstr "Confirmă parola"
 # defaultMessage: Connection refused
 msgid "Connection refused"
 msgstr "Conexiune refuzată"
-
-#: components/theme/Footer/Footer
-# defaultMessage: Contact
-msgid "Contact"
-msgstr "Contact"
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Contact form
@@ -2988,11 +2971,6 @@ msgstr "Site"
 msgid "Site Administration"
 msgstr "Administrare site"
 
-#: components/theme/Footer/Footer
-# defaultMessage: Site Map
-msgid "Site Map"
-msgstr "Harta site-ului"
-
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: Site Setup
@@ -4134,6 +4112,11 @@ msgstr "sau încercați o altă pagină."
 # defaultMessage: others
 msgid "others"
 msgstr "altele"
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Pending
+msgid "pending"
+msgstr ""
 
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Private

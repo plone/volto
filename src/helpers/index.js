@@ -89,11 +89,11 @@ export { messages } from './MessageLabels/MessageLabels';
 export {
   withBlockSchemaEnhancer,
   withVariationSchemaEnhancer,
-  withStylingSchemaEnhancer,
   withBlockExtensions,
   applySchemaEnhancer,
   resolveExtension,
   resolveBlockExtensions,
+  addStyling,
 } from './Extensions';
 export { asyncConnect } from './AsyncConnect';
 export { userHasRoles } from './User/User';

@@ -24,11 +24,6 @@ msgstr ""
 msgid "<p>Add some HTML here</p>"
 msgstr "<p>ここにHTMLを記述</p>"
 
-#: components/theme/Footer/Footer
-# defaultMessage: Accessibility
-msgid "Accessibility"
-msgstr "アクセシビリティ"
-
 #: components/theme/Register/Register
 # defaultMessage: Account Registration Completed
 msgid "Account Registration Completed"
@@ -297,7 +292,6 @@ msgstr ""
 msgid "Alias has been added"
 msgstr ""
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
@@ -441,11 +435,6 @@ msgstr ""
 # defaultMessage: Back
 msgid "Back"
 msgstr "戻る"
-
-#: components/manage/Blocks/Block/StylesSchema
-# defaultMessage: Background color
-msgid "Background color"
-msgstr ""
 
 #: components/manage/Diff/Diff
 # defaultMessage: Base
@@ -643,7 +632,6 @@ msgstr ""
 msgid "Collection"
 msgstr "コレクション"
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Widgets/ColorPickerWidget
 # defaultMessage: Color
 msgid "Color"
@@ -706,11 +694,6 @@ msgstr "パスワードを確認"
 # defaultMessage: Connection refused
 msgid "Connection refused"
 msgstr "接続が拒否されました"
-
-#: components/theme/Footer/Footer
-# defaultMessage: Contact
-msgid "Contact"
-msgstr "お問い合わせ"
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Contact form
@@ -2996,11 +2979,6 @@ msgstr "サイト"
 msgid "Site Administration"
 msgstr "サイト管理"
 
-#: components/theme/Footer/Footer
-# defaultMessage: Site Map
-msgid "Site Map"
-msgstr "サイトマップ"
-
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: Site Setup
@@ -4142,6 +4120,11 @@ msgstr "または、他のページを試してください。"
 # defaultMessage: others
 msgid "others"
 msgstr "その他"
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Pending
+msgid "pending"
+msgstr ""
 
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Private

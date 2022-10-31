@@ -23,11 +23,6 @@ msgstr ""
 msgid "<p>Add some HTML here</p>"
 msgstr "<p>Voeg hier wat HTML toe</p>"
 
-#: components/theme/Footer/Footer
-# defaultMessage: Accessibility
-msgid "Accessibility"
-msgstr "Toegankelijkheid"
-
 #: components/theme/Register/Register
 # defaultMessage: Account Registration Completed
 msgid "Account Registration Completed"
@@ -296,7 +291,6 @@ msgstr "Alias"
 msgid "Alias has been added"
 msgstr "Alias toegevoegd"
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
@@ -440,11 +434,6 @@ msgstr ""
 # defaultMessage: Back
 msgid "Back"
 msgstr "Terug"
-
-#: components/manage/Blocks/Block/StylesSchema
-# defaultMessage: Background color
-msgid "Background color"
-msgstr "Achtergrondkleur"
 
 #: components/manage/Diff/Diff
 # defaultMessage: Base
@@ -642,7 +631,6 @@ msgstr "Item inklappen"
 msgid "Collection"
 msgstr "Verzameling"
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Widgets/ColorPickerWidget
 # defaultMessage: Color
 msgid "Color"
@@ -705,11 +693,6 @@ msgstr "Wachtwoord bevestigen"
 # defaultMessage: Connection refused
 msgid "Connection refused"
 msgstr "Verbinding geweigerd"
-
-#: components/theme/Footer/Footer
-# defaultMessage: Contact
-msgid "Contact"
-msgstr "Contact"
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Contact form
@@ -2995,11 +2978,6 @@ msgstr "Website"
 msgid "Site Administration"
 msgstr "Sitebeheerder"
 
-#: components/theme/Footer/Footer
-# defaultMessage: Site Map
-msgid "Site Map"
-msgstr "Sitemap"
-
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: Site Setup
@@ -4141,6 +4119,11 @@ msgstr "of probeer een andere pagina"
 # defaultMessage: others
 msgid "others"
 msgstr "andere"
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Pending
+msgid "pending"
+msgstr ""
 
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Private
