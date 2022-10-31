@@ -7,6 +7,7 @@
 ### Feature
 
 - consume site_actions from restapi @nileshgulia1
+- Provide a default View/Edit component for blocks @avoinea, @tiberiuichim
 
 ### Bugfix
 
