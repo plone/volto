@@ -229,7 +229,7 @@ class History extends Component {
                   </Table.Cell>
                   <Table.Cell>{entry.actor.fullname}</Table.Cell>
                   <Table.Cell>
-                    <FormattedDate date={entry.time} />
+                    <FormattedDate isHistory={true} date={entry.time} />
                   </Table.Cell>
                   <Table.Cell>{entry.comments}</Table.Cell>
                   <Table.Cell>

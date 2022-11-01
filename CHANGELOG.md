@@ -11,6 +11,7 @@
 ### Bugfix
 
 - Fix `schemaEnhancer` not being applied if nested `blocksConfig` is present @sneridagh
+- Fix time zone `UTC` is shown if not local time in `HistoryView` @iRohitSingh
 
 ### Internal
 
