@@ -1,7 +1,6 @@
 import React from 'react';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import addSVG from '@plone/volto/icons/circle-plus.svg';
-import { blockHasValue } from '@plone/volto/helpers';
 import { Icon, BlockChooser } from '@plone/volto/components';
 import { Button } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
@@ -75,7 +74,7 @@ const BlockChooserButton = (props) => {
 
   return (
     <>
-      {!disableNewBlocks && !blockHasValue(data) && (
+      {!disableNewBlocks && (
         <Component
           {...props}
           onShowBlockChooser={() => setAddNewBlockOpened(true)}

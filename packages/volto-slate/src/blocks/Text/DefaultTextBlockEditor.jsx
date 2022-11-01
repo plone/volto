@@ -8,11 +8,7 @@ import { Dimmer, Loader, Message, Segment } from 'semantic-ui-react';
 
 import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
-import {
-  BlockDataForm,
-  SidebarPortal,
-  BlockChooserButton,
-} from '@plone/volto/components';
+import { BlockDataForm, SidebarPortal } from '@plone/volto/components';
 
 import { SlateEditor } from '@plone/volto-slate/editor';
 import { serializeNodesToText } from '@plone/volto-slate/editor/render';
@@ -47,13 +43,9 @@ const DEBUG = false;
 export const DefaultTextBlockEditor = (props) => {
   const {
     block,
-    blocksConfig,
     data,
-    detached = false,
     index,
     onChangeBlock,
-    onInsertBlock,
-    onMutateBlock,
     onSelectBlock,
     pathname,
     properties,
@@ -63,7 +55,6 @@ export const DefaultTextBlockEditor = (props) => {
     uploadedContent,
     defaultSelection,
     saveSlateBlockSelection,
-    allowedBlocks,
     formTitle,
     formDescription,
   } = props;
@@ -72,7 +63,6 @@ export const DefaultTextBlockEditor = (props) => {
   const { textblockExtensions } = slate;
   const { value } = data;
 
-  // const [addNewBlockOpened, setAddNewBlockOpened] = React.useState();
   const [showDropzone, setShowDropzone] = React.useState(false);
   const [uploading, setUploading] = React.useState(false);
   const [newImageId, setNewImageId] = React.useState(null);
@@ -183,7 +173,6 @@ export const DefaultTextBlockEditor = (props) => {
     data.placeholder || formTitle || intl.formatMessage(messages.text);
   const schema = TextBlockSchema(data);
 
-  const disableNewBlocks = data?.disableNewBlocks || detached;
   const { ref, inView } = useInView({
     threshold: 0,
     rootMargin: '0px 0px 200px 0px',
@@ -245,22 +234,6 @@ export const DefaultTextBlockEditor = (props) => {
             );
           }}
         </Dropzone>
-
-        {selected && !data.plaintext?.trim() && !disableNewBlocks && (
-          <BlockChooserButton
-            data={data}
-            block={block}
-            onInsertBlock={(id, value) => {
-              onSelectBlock(onInsertBlock(id, value));
-            }}
-            onMutateBlock={onMutateBlock}
-            allowedBlocks={allowedBlocks}
-            blocksConfig={blocksConfig}
-            size="24px"
-            className="block-add-button"
-            properties={properties}
-          />
-        )}
 
         <SidebarPortal selected={selected}>
           <div id="slate-plugin-sidebar"></div>

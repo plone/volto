@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import EditBlock from './Edit';
 import { DragDropList } from '@plone/volto/components';
 import { getBlocks } from '@plone/volto/helpers';
@@ -17,6 +17,18 @@ import { setSidebarTab } from '@plone/volto/actions';
 import { useDispatch } from 'react-redux';
 import { useDetectClickOutside } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
+
+const useEvent = (event, handler) => {
+  useEffect(() => {
+    // initiate the event handler
+    document.addEventListener(event, handler);
+
+    // this will clean up the event every time the component is re-rendered
+    return function cleanup() {
+      document.removeEventListener(event, handler);
+    };
+  });
+};
 
 const BlocksForm = (props) => {
   const {
@@ -110,7 +122,7 @@ const BlocksForm = (props) => {
   };
 
   const onInsertBlock = (id, value, current) => {
-    const [newId, newFormData] = insertBlock(properties, id, value, current);
+    const [newId, newFormData] = insertBlock(properties, id, value, current, 1);
     onChangeFormData(newFormData);
     return newId;
   };
@@ -160,6 +172,12 @@ const BlocksForm = (props) => {
       onChangeFormData(newFormData);
     }
   }
+
+  useEvent('voltoClickBelowContent', () => {
+    onSelectBlock(
+      onAddBlock(config.settings.defaultBlockType, blockList.length),
+    );
+  });
 
   return (
     <div className="blocks-form" ref={ref}>
@@ -212,6 +230,7 @@ const BlocksForm = (props) => {
               multiSelected: multiSelected?.includes(childId),
               type: child['@type'],
               editable,
+              showBlockChooser: selectedBlock === childId,
             };
             return editBlockWrapper(
               dragProps,

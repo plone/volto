@@ -12,7 +12,6 @@ import { includes, isEqual } from 'lodash';
 import config from '@plone/volto/registry';
 
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
-import { BlockChooserButton } from '@plone/volto/components';
 
 import loadable from '@loadable/component';
 
@@ -329,20 +328,6 @@ export class EditComponent extends Component {
           }}
         />
         <InlineToolbar />
-        {this.props.selected && (
-          <BlockChooserButton
-            data={this.props.data}
-            block={this.props.block}
-            onInsertBlock={(id, value) => {
-              this.props.onSelectBlock(this.props.onInsertBlock(id, value));
-            }}
-            allowedBlocks={this.props.allowedBlocks}
-            blocksConfig={this.props.blocksConfig}
-            size="24px"
-            className="block-add-button"
-            properties={this.props.properties}
-          />
-        )}
       </>
     );
   }

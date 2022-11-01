@@ -64,6 +64,17 @@ exports[`Allow override of blocksConfig 1`] = `
                   xmlns=""
                 />
               </button>
+              <button
+                class="ui basic icon button block-add-button"
+                title="Add block"
+              >
+                <svg
+                  class="icon block-add-button"
+                  style="height: 24px; width: auto; fill: currentColor;"
+                  viewBox=""
+                  xmlns=""
+                />
+              </button>
             </div>
           </div>
         </div>
