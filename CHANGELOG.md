@@ -11,7 +11,11 @@
 
 ### Bugfix
 
+- Fix `schemaEnhancer` not being applied if nested `blocksConfig` is present @sneridagh
+
 ### Internal
+
+- Add translation for `pending` state @iFlameing
 
 ### Documentation
 
