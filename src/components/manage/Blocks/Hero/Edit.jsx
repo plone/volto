@@ -12,7 +12,6 @@ import { isEqual } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { getBaseUrl } from '@plone/volto/helpers';
 import { createContent } from '@plone/volto/actions';
 import { SidebarPortal, Hero } from '@plone/volto/components';
@@ -101,62 +100,6 @@ class EditComponent extends Component {
     this.state = {
       uploading: false,
     };
-
-    const { Map } = this.props.immutableLib;
-
-    if (!__SERVER__) {
-      const { DefaultDraftBlockRenderMap, EditorState } = props.draftJs;
-      const { stateFromHTML } = props.draftJsImportHtml;
-
-      this.titleEditor = React.createRef();
-      this.descriptionEditor = React.createRef();
-
-      const blockTitleRenderMap = Map({
-        unstyled: {
-          element: 'h1',
-        },
-      });
-
-      const blockDescriptionRenderMap = Map({
-        unstyled: {
-          element: 'div',
-        },
-      });
-
-      this.extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(
-        blockTitleRenderMap,
-      );
-
-      this.extendedDescripBlockRenderMap = DefaultDraftBlockRenderMap.merge(
-        blockDescriptionRenderMap,
-      );
-
-      let titleEditorState;
-      let descriptionEditorState;
-      if (props.data && props.data.title) {
-        titleEditorState = EditorState.createWithContent(
-          stateFromHTML(props.data.title),
-        );
-      } else {
-        titleEditorState = EditorState.createEmpty();
-      }
-      if (props.data && props.data.description) {
-        descriptionEditorState = EditorState.createWithContent(
-          stateFromHTML(props.data.description),
-        );
-      } else {
-        descriptionEditorState = EditorState.createEmpty();
-      }
-      this.state = {
-        uploading: false,
-        titleEditorState,
-        descriptionEditorState,
-        currentFocused: 'title',
-      };
-    }
-
-    this.onChangeTitle = this.onChangeTitle.bind(this);
-    this.onChangeDescription = this.onChangeDescription.bind(this);
   }
 
   /**
@@ -190,43 +133,6 @@ class EditComponent extends Component {
         url: nextProps.content['@id'],
       });
     }
-
-    const { EditorState } = this.props.draftJs;
-    const { stateFromHTML } = this.props.draftJsImportHtml;
-
-    if (
-      nextProps.data.title &&
-      this.props.data.title !== nextProps.data.title &&
-      !this.props.selected
-    ) {
-      const contentState = stateFromHTML(nextProps.data.title);
-      this.setState({
-        titleEditorState: nextProps.data.title
-          ? EditorState.createWithContent(contentState)
-          : EditorState.createEmpty(),
-      });
-    }
-
-    if (
-      nextProps.data.description &&
-      this.props.data.description !== nextProps.data.description &&
-      !this.props.selected
-    ) {
-      const contentState = stateFromHTML(nextProps.data.description);
-      this.setState({
-        descriptionEditorState: nextProps.data.description
-          ? EditorState.createWithContent(contentState)
-          : EditorState.createEmpty(),
-      });
-    }
-
-    if (nextProps.selected !== this.props.selected) {
-      if (this.state.currentFocused === 'title') {
-        this.titleEditor.current.focus();
-      } else {
-        this.descriptionEditor.current.focus();
-      }
-    }
   }
 
   /**
@@ -241,36 +147,6 @@ class EditComponent extends Component {
 
   changeCurrentFocus(currentFocused) {
     this.setState(() => ({ currentFocused }));
-  }
-
-  /**
-   * Change Title handler
-   * @method onChangeTitle
-   * @param {object} titleEditorState Editor state.
-   * @returns {undefined}
-   */
-  onChangeTitle(titleEditorState) {
-    this.setState({ titleEditorState }, () => {
-      this.props.onChangeBlock(this.props.block, {
-        ...this.props.data,
-        title: titleEditorState.getCurrentContent().getPlainText(),
-      });
-    });
-  }
-
-  /**
-   * Change Description handler
-   * @method onChangeDescription
-   * @param {object} descriptionEditorState Editor state.
-   * @returns {undefined}
-   */
-  onChangeDescription(descriptionEditorState) {
-    this.setState({ descriptionEditorState }, () => {
-      this.props.onChangeBlock(this.props.block, {
-        ...this.props.data,
-        description: descriptionEditorState.getCurrentContent().getPlainText(),
-      });
-    });
   }
 
   /**
@@ -331,17 +207,9 @@ class EditComponent extends Component {
           {...this.props}
           uploading={this.state.uploading}
           placeholder={placeholder}
-          titleEditorState={this.state.titleEditorState}
-          descriptionEditorState={this.state.descriptionEditorState}
-          extendedBlockRenderMap={this.extendedBlockRenderMap}
-          extendedDescripBlockRenderMap={this.extendedDescripBlockRenderMap}
-          onChangeTitle={this.onChangeTitle}
-          onChangeDescription={this.onChangeDescription}
           onUploadImage={this.onUploadImage}
           changeCurrentFocus={this.changeCurrentFocus}
-          titleEditor={this.titleEditor}
-          descriptionEditor={this.descriptionEditor}
-          isEditMode={true}
+          isEditMode
         />
         <SidebarPortal selected={this.props.selected}>
           <Data {...this.props} />
@@ -350,10 +218,6 @@ class EditComponent extends Component {
     );
   }
 }
-
-const Edit = injectLazyLibs(['draftJs', 'immutableLib', 'draftJsImportHtml'])(
-  EditComponent,
-);
 
 export default compose(
   injectIntl,
@@ -365,4 +229,4 @@ export default compose(
     }),
     { createContent },
   ),
-)(Edit);
+)(EditComponent);
