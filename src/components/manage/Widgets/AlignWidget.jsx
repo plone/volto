@@ -52,7 +52,10 @@ const AlignWidget = (props) => {
     actionsInfoMap,
   } = props;
 
-  const actionsInfo = actionsInfoMap || defaultActionsInfo({ intl });
+  const actionsInfo = {
+    ...defaultActionsInfo({ intl }),
+    ...actionsInfoMap,
+  };
 
   return (
     <ButtonsWidget {...props} actions={actions} actionsInfoMap={actionsInfo} />
