@@ -7,6 +7,7 @@
 ### Feature
 
 - consume site_actions from restapi @nileshgulia1
+- Added "Save and send test email" button in mail controlpanel
 
 ### Bugfix
 

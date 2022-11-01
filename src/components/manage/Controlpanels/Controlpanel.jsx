@@ -90,6 +90,7 @@ class Controlpanel extends Component {
     super(props);
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onSaveAndSendTestEmail = this.onSaveAndSendTestEmail.bind(this);
     this.state = { isClient: false };
   }
 
@@ -132,6 +133,15 @@ class Controlpanel extends Component {
   }
 
   /**
+   * Save And send test e-mail
+   * @method onSaveAndSendTestEmail
+   * @returns {undefined}
+   */
+  onSaveAndSendTestEmail() {
+    // Have to implement.
+  }
+
+  /**
    * Cancel handler
    * @method onCancel
    * @returns {undefined}
@@ -162,6 +172,13 @@ class Controlpanel extends Component {
               hideActions
               loading={this.props.updateRequest.loading}
             />
+            {this.props.controlpanel?.title.toLowerCase() === 'mail' && (
+              <div style={{ marginTop: '10px' }}>
+                <Button onClick={this.onSaveAndSendTestEmail}>
+                  Save and send test e-mail
+                </Button>
+              </div>
+            )}
           </Container>
           {this.state.isClient && (
             <Portal node={document.getElementById('toolbar')}>
