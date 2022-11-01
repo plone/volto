@@ -1,8 +1,10 @@
+import { ploneAuth } from '../../../support/constants';
+
 describe('Autologin Tests', () => {
   it('Autologin as an standalone test', function () {
     const api_url = 'http://localhost:55001/plone';
-    const user = 'admin';
-    const password = 'secret';
+    const user = ploneAuth[0];
+    const password = ploneAuth[1];
 
     cy.request({
       method: 'POST',

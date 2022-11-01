@@ -21,6 +21,7 @@ export default function () {
   const middleware = express.Router();
 
   middleware.all(['**/@@images/*'], imageMiddleware);
+  middleware.all(['/@portrait/*'], imageMiddleware);
   middleware.id = 'imageResourcesProcessor';
   return middleware;
 }

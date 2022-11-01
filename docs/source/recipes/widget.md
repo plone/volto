@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Volto forms and widgets"
-  "property=og:description": "Volto forms and widgets"
-  "property=og:title": "Forms and widgets"
-  "keywords": "Volto, Plone, frontend, React, Blocks, Edit, components, Forms, widgets"
+myst:
+  html_meta:
+    "description": "Volto forms and widgets"
+    "property=og:description": "Volto forms and widgets"
+    "property=og:title": "Forms and widgets"
+    "keywords": "Volto, Plone, frontend, React, Blocks, Edit, components, Forms, widgets"
 ---
 
 # Forms and widgets

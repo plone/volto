@@ -184,6 +184,32 @@ class AddonConfigurationRegistry {
         this.packages[name] = Object.assign(this.packages[name] || {}, pkg);
       });
     }
+    this.initSlate();
+  }
+
+  initSlate() {
+    if (this.packages['@plone/volto-slate']) return;
+
+    const slatePath = path.normalize(
+      `${this.voltoPath}/packages/volto-slate/src`,
+    );
+    const slatePackageJsonPath = path.normalize(
+      `${this.voltoPath}/packages/volto-slate/package.json`,
+    );
+
+    // some tests set the root in a location that doesn't have the packages
+    if (!fs.existsSync(slatePath)) return;
+
+    this.packages['@plone/volto-slate'] = {
+      modulePath: slatePath,
+      packageJson: slatePackageJsonPath,
+      version: require(slatePackageJsonPath).version,
+      isPublishedPackage: false,
+      isRegisteredAddon: false,
+      name: '@plone/volto-slate',
+      addons: [],
+    };
+    this.addonNames.push('@plone/volto-slate');
   }
 
   /**
@@ -297,10 +323,13 @@ class AddonConfigurationRegistry {
    * Returns a mapping name:diskpath to be uses in webpack's resolve aliases
    */
   getResolveAliases() {
-    const pairs = Object.keys(this.packages).map((o) => [
-      o,
-      this.packages[o].modulePath,
-    ]);
+    const pairs = [
+      ...Object.keys(this.packages).map((o) => [
+        o,
+        this.packages[o].modulePath,
+      ]),
+    ];
+
     return fromEntries(pairs);
   }
 
@@ -442,6 +471,37 @@ class AddonConfigurationRegistry {
    */
   getAddonDependencies() {
     return getAddonsLoaderChain(this.dependencyGraph);
+  }
+
+  getDotDependencyGraph() {
+    const seen = new Set();
+    let out = `digraph {
+  layout="fdp"
+  beautify=true
+  sep="+10"
+  splines=curved
+
+  "@package" [color = red fillcolor=yellow style=filled]
+`;
+    let queue = ['@package'];
+    let name;
+
+    while (queue.length > 0) {
+      name = queue.pop();
+
+      const deps = this.dependencyGraph.directDependenciesOf(name);
+      for (let i = 0; i < deps.length; i++) {
+        const dep = deps[i];
+
+        if (!seen.has(dep)) {
+          seen.add(dep);
+          queue.push(dep);
+        }
+        out += `    "${name}" -> "${dep}"\n`;
+      }
+    }
+    out += '}';
+    return out;
   }
 }
 

@@ -11,10 +11,7 @@ describe('Add Content Tests', () => {
     cy.get('#toolbar-add-document').click();
   });
   it('As an editor I can set the effective date of a page', function () {
-    cy.get('.documentFirstHeading > .public-DraftStyleDefault-block')
-      .type('My Page')
-      .get('.documentFirstHeading span[data-text]')
-      .contains('My Page');
+    cy.getSlateTitle().focus().click().type('My Page').contains('My Page');
     cy.get('input#effective-date').click();
     cy.get('input#effective-date').type('{selectall}12/24/2050{esc}');
     cy.get('input#effective-time').type('{downarrow}');
@@ -38,7 +35,7 @@ describe('Add Content Tests', () => {
   });
 
   it('As an editor, given a document with no title or a validation error when I save the sidebar tab switches to the metadata tab', function () {
-    cy.get('.block.inner.text .public-DraftEditor-content').click();
+    cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.image').contains('Image').click();
     cy.get('#toolbar-save').click();
@@ -46,8 +43,6 @@ describe('Add Content Tests', () => {
     cy.findByRole('alert')
       .get('.toast-inner-content')
       .contains('Required input is missing');
-    cy.get('.sidebar-container .tabs-wrapper a.active.item').contains(
-      'Document',
-    );
+    cy.get('.sidebar-container .tabs-wrapper a.active.item').contains('Page');
   });
 });

@@ -45,7 +45,7 @@ const NumberWidget = (props) => {
         disabled={isDisabled}
         min={minimum || null}
         max={maximum || null}
-        value={value || defaultValue}
+        value={value ?? defaultValue}
         placeholder={placeholder}
         step={step || 1}
         onChange={({ target }) =>

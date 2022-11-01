@@ -83,15 +83,17 @@ export {
   toLangUnderscoreRegion,
   hasApiExpander,
   replaceItemOfArray,
+  cloneDeepSchema,
 } from '@plone/volto/helpers/Utils/Utils';
 export { messages } from './MessageLabels/MessageLabels';
 export {
   withBlockSchemaEnhancer,
   withVariationSchemaEnhancer,
-  withStylingSchemaEnhancer,
   withBlockExtensions,
   applySchemaEnhancer,
   resolveExtension,
+  resolveBlockExtensions,
+  addStyling,
 } from './Extensions';
 export { asyncConnect } from './AsyncConnect';
 export { userHasRoles } from './User/User';
@@ -102,3 +104,7 @@ export { usePagination } from './Utils/usePagination';
 export useUndoManager from './UndoManager/useUndoManager';
 export { getCookieOptions } from './Cookies/cookies';
 export { getWidgetView } from './Widget/widget';
+export {
+  getCurrentStateMapping,
+  getWorkflowOptions,
+} from './Workflows/Workflows';

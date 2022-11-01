@@ -39,6 +39,35 @@ module.exports = class extends Generator {
 
     this.args = args;
     this.opts = opts;
+
+    this.addAddonToPackageJSON = async function (pkgJson) {
+      const packageJSON = JSON.parse(fs.readFileSync(pkgJson, 'utf8'));
+
+      // const packageJSON = JSON.parse(fs.readFileSync(pkgJson, 'utf8'));
+      const name = this.globals.name;
+
+      packageJSON.addons = [...(packageJSON.addons || []), name];
+
+      fs.writeFileSync(pkgJson, `${JSON.stringify(packageJSON, null, 2)}`);
+    };
+
+    this.addMrsDeveloperConfig = async function (mrsDeveloperJsonFile) {
+      let mrsDeveloperJson = {};
+      if (fs.existsSync(mrsDeveloperJsonFile)) {
+        mrsDeveloperJson = JSON.parse(
+          fs.readFileSync(mrsDeveloperJsonFile, 'utf8'),
+        );
+      }
+
+      const template = {
+        [this.globals.name]: { local: `addons/${this.globals.name}/src` },
+      };
+
+      fs.writeFileSync(
+        mrsDeveloperJsonFile,
+        `${JSON.stringify({ ...mrsDeveloperJson, ...template }, null, 2)}`,
+      );
+    };
   }
 
   async prompting() {
@@ -102,7 +131,7 @@ Run "npm install -g @plone/generator-volto" to update.`,
     }
   }
 
-  setDestination() {
+  async setDestination() {
     this._debug('namespace', this.options.namespace);
     // if in a Volto project, generate addon in src/addons
 
@@ -113,6 +142,7 @@ Run "npm install -g @plone/generator-volto" to update.`,
     }
 
     const pkgJson = path.join(process.cwd(), 'package.json');
+    const mrsDeveloperJson = path.join(process.cwd(), 'mrs.developer.json');
 
     if (fs.existsSync(pkgJson)) {
       const destination = path.join(
@@ -123,6 +153,12 @@ Run "npm install -g @plone/generator-volto" to update.`,
       if (fs.existsSync(destination)) {
         return;
       }
+
+      // Modifies project package.json and wires the new addon
+      await this.addAddonToPackageJSON(pkgJson);
+      // Modifies project mrs.developer.json and wires the new addon localy
+      await this.addMrsDeveloperConfig(mrsDeveloperJson);
+
       this._debug('set destination to:', destination);
       this.destinationRoot(destination);
     }

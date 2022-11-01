@@ -22,9 +22,9 @@ const messages = defineMessages({
   },
   invalidCharacters: {
     id:
-      'Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed.',
+      'Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.',
     defaultMessage:
-      'Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed.',
+      'Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.',
   },
 });
 
@@ -141,7 +141,7 @@ class IdWidget extends Component {
     }
 
     // Check invalid characters
-    if (!/^[a-z0-9_-]*$/.test(value)) {
+    if (!/^[.a-z0-9_-]*$/.test(value)) {
       error.push(this.props.intl.formatMessage(messages.invalidCharacters));
     }
 

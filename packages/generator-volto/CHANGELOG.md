@@ -1,18 +1,66 @@
 # Change Log
 
-## 5.6.4 (unreleased)
+## 5.9.4 (unreleased)
 
 ### Breaking
 
 ### Feature
 
+### Bugfix
+
+### Internal
+
+## 5.9.3 (2022-10-10)
+
+### Internal
+
+- Restrict only to `/cache` in `.gitignore` @sneridagh
+
+## 5.9.2 (2022-10-10)
+
+### Internal
+
+- Add `cache` to `.gitignore` @sneridagh
+
+## 5.9.1 (2022-10-03)
+
+### Internal
+
+- Missing `--noninteractive` for the generator @sneridagh
+
+## 5.9.0 (2022-09-28)
+
+### Feature
+
+- Move the dependency on `@plone/scripts` of the add-on generator to `devDependencies`. @sneridagh
+
+### Bugfix
+
+- Add alias to ESlint config in project generator @sneridagh
+- Add missing `moduleNameMapper`s to default app `package.json` jest config @sneridagh
+- Fix storybook for Razzle 4 @sneridagh
+
+## 5.8.0 (2022-07-28)
+
+### Feature
+
+- Adds canary option feature, if `--canary` is specified, then the latest alpha version is used @sneridagh
+
+### Bugfix
+
+- Remove yarn.lock from the app generator template (the generator fetches it from the latest volto version anyway). @davisagli
+
+## 5.7.0 (2022-07-25)
+
+### Feature
+
 - Deprecate NodeJS 12 from package generators since it's out of LTS since April 30, 2022. @sneridagh
+- Improvements to the addon generator: Now it wires up the addon automatically for immediate local development @sneridagh
+- Add .editorconfig and .prettierignore to generated projects and addons. @ericof
 
 ### Bugfix
 
 - Changed Cypress command generation to use the Cypress Commands from Volto core @JeffersonBledsoe #3271
-
-### Internal
 
 ## 5.6.3 (2022-04-29)
 
