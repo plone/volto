@@ -7,6 +7,7 @@
 ### Feature
 
 - consume site_actions from restapi @nileshgulia1
+- Updated Spanish translation @macagua
 
 ### Bugfix
 
@@ -60,6 +61,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 
 - Added link integrity potential breakage warning message when deleting a referenced page @danielamormocea
 - Added new components & interfaces for content-rules `Rules` control in Volto. Rules management in both controlpanel and object view. @andreiggr
+- Updated Spanish translation @macagua
 - Introduce `TextLineEdit` component @sneridagh
 - Add a popup tooltip for tokenized options in Select widget values @sneridagh
 
