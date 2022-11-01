@@ -31,6 +31,10 @@ const messages = defineMessages({
     id: 'private',
     defaultMessage: 'Private',
   },
+  pending: {
+    id: 'pending',
+    defaultMessage: 'Pending',
+  },
   published: {
     id: 'published',
     defaultMessage: 'Published',
@@ -93,7 +97,11 @@ export const ContentsItemComponent = ({
 
   return connectDropTarget(
     connectDragPreview(
-      <tr key={item['@id']} className={cx('', { 'dragging-row': isDragging })}>
+      <tr
+        key={item['@id']}
+        className={cx('', { 'dragging-row': isDragging })}
+        aria-label={item['@id']}
+      >
         <Table.Cell className={cx('', { 'dragging-cell': isDragging })}>
           {connectDragSource(
             <div style={{ display: 'inline-block' }}>

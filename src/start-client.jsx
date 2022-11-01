@@ -7,7 +7,7 @@ import { IntlProvider } from 'react-intl-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 import { ReduxAsyncConnect } from '@plone/volto/helpers/AsyncConnect';
-import loadable, { loadableReady } from '@loadable/component';
+import { loadableReady } from '@loadable/component';
 import { CookiesProvider } from 'react-cookie';
 import debug from 'debug';
 import routes from '@root/routes';
@@ -15,30 +15,8 @@ import config from '@plone/volto/registry';
 
 import configureStore from '@plone/volto/store';
 import { Api, persistAuthToken, ScrollToTop } from '@plone/volto/helpers';
-import initSentry from '@plone/volto/sentry';
 
 export const history = createBrowserHistory();
-
-const sentryLibraries = {
-  Sentry: loadable.lib(() => import('@sentry/browser')),
-  SentryIntegrations: loadable.lib(() => import('@sentry/integrations')),
-};
-
-const loadSentry = () => {
-  const loaders = Object.entries(sentryLibraries).map(
-    ([name, Lib]) =>
-      new Promise((resolve) => Lib.load().then((mod) => resolve([name, mod]))),
-  );
-  Promise.all(loaders).then((libs) => {
-    const libraries = Object.assign(
-      {},
-      ...libs.map(([name, lib]) => ({ [name]: lib })),
-    );
-    initSentry(libraries);
-  });
-};
-
-loadSentry();
 
 function reactIntlErrorHandler(error) {
   debug('i18n')(error);

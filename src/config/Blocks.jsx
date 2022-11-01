@@ -39,7 +39,7 @@ import globeSVG from '@plone/volto/icons/globe.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
 import heroSVG from '@plone/volto/icons/hero.svg';
 import tableSVG from '@plone/volto/icons/table.svg';
-import listBulletSVG from '@plone/volto/icons/list-bullet.svg';
+import listingBlockSVG from '@plone/volto/icons/content-listing.svg';
 import tocSVG from '@plone/volto/icons/list-bullet.svg';
 import searchSVG from '@plone/volto/icons/zoom.svg';
 
@@ -182,10 +182,6 @@ const blocksConfig = {
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 0,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
   description: {
     id: 'description',
@@ -199,10 +195,6 @@ const blocksConfig = {
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 0,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
   text: {
     id: 'text',
@@ -216,10 +208,6 @@ const blocksConfig = {
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 0,
-    security: {
-      addPermission: [],
-      view: [],
-    },
     blockHasValue: (data) => {
       const isEmpty =
         !data.text ||
@@ -238,10 +226,6 @@ const blocksConfig = {
     restricted: false,
     mostUsed: true,
     sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
   leadimage: {
     id: 'leadimage',
@@ -254,15 +238,11 @@ const blocksConfig = {
     restricted: ({ properties }) => !properties.hasOwnProperty('image'),
     mostUsed: false,
     sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
   listing: {
     id: 'listing',
     title: 'Listing',
-    icon: listBulletSVG,
+    icon: listingBlockSVG,
     group: 'common',
     view: ViewListingBlock,
     edit: EditListingBlock,
@@ -272,10 +252,6 @@ const blocksConfig = {
     mostUsed: true,
     sidebarTab: 1,
     showLinkMore: false,
-    security: {
-      addPermission: [],
-      view: [],
-    },
     noResultsComponent: DefaultNoResultsComponent,
     variations: [
       {
@@ -309,10 +285,6 @@ const blocksConfig = {
     restricted: false,
     mostUsed: true,
     sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
   toc: {
     id: 'toc',
@@ -326,10 +298,6 @@ const blocksConfig = {
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
   hero: {
     id: 'hero',
@@ -344,10 +312,6 @@ const blocksConfig = {
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
 
   maps: {
@@ -361,10 +325,6 @@ const blocksConfig = {
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
   html: {
     id: 'html',
@@ -377,10 +337,6 @@ const blocksConfig = {
     restricted: false,
     mostUsed: false,
     sidebarTab: 0,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
   table: {
     id: 'table',
@@ -394,10 +350,6 @@ const blocksConfig = {
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
   search: {
     id: 'search',
@@ -410,10 +362,6 @@ const blocksConfig = {
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
     variations: [
       {
         id: 'facetsRightSide',

@@ -9,6 +9,14 @@ import { MemoryRouter } from 'react-router-dom';
 import PersonalInformation from './PersonalInformation';
 
 const mockStore = configureStore();
+const userSchema = {
+  userschema: {
+    fieldsets: [{}],
+    properties: {},
+  },
+  loaded: true,
+  loading: false,
+};
 
 jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),
@@ -29,6 +37,7 @@ describe('PersonalInformation', () => {
           loading: false,
         },
       },
+      userschema: userSchema,
       intl: {
         locale: 'en',
         messages: {},
@@ -62,6 +71,7 @@ describe('PersonalInformation', () => {
           loading: false,
         },
       },
+      userschema: userSchema,
       intl: {
         locale: 'en',
         messages: {},

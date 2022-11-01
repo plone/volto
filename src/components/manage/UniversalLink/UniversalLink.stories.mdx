@@ -38,12 +38,12 @@ export const UniversalLink = (args) => {
   return (
     <Provider store={store}>
       <UniversalLinkComponent
+        {...args}
         href="http://www.google.it"
         item={{
-          '@id': 'localhost:3000/example-link-to-twitter',
+          '@id': 'http://localhost:3000/example-link-to-twitter',
           remoteUrl: 'http://www.twitter.it',
         }}
-        {...args}
       >
         {args.text || 'Example link to google'}
       </UniversalLinkComponent>

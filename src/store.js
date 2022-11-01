@@ -9,7 +9,6 @@ import reducers from '@root/reducers';
 
 import {
   api,
-  crashReporter,
   blacklistRoutes,
   protectLoadStart,
   protectLoadEnd,
@@ -21,7 +20,6 @@ const configureStore = (initialState, history, apiHelper) => {
     blacklistRoutes,
     protectLoadStart,
     routerMiddleware(history),
-    crashReporter,
     thunk,
     ...(apiHelper ? [api(apiHelper)] : []),
     protectLoadEnd,
