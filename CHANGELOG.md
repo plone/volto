@@ -16,6 +16,7 @@
 ### Internal
 
 - Add translation for `pending` state @iFlameing
+- Add `composeSchema`, a helper to compose multiple schemaEnhancers @tiberiuichim
 
 ### Documentation
 
