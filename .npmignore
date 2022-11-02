@@ -95,7 +95,7 @@ typings/
 .yarn
 
 # Razzle cache
-./cache
+cache/
 
 # Github
 .github
