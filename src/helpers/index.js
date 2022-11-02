@@ -94,6 +94,7 @@ export {
   resolveExtension,
   resolveBlockExtensions,
   addStyling,
+  composeSchema,
 } from './Extensions';
 export { asyncConnect } from './AsyncConnect';
 export { userHasRoles } from './User/User';
