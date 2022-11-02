@@ -160,7 +160,7 @@ The `schemaEnhancer` is a generic extension mechanism provided by
 it for the `variation` extension.
 ```
 
-Volto provides a helper to combine multiple `schemaEnhancer` into a single
+Volto provides a helper to combine multiple `schemaEnhancer` functions into a single
 function. This allows creating clean, single purpose, reusable schema enhancers:
 
 ```js
