@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Ensure the view component is always replaced after navigating to a different page. @davisagli
+
 ### Internal
 
 ### Documentation
