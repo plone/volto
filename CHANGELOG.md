@@ -2,8 +2,6 @@
 
 ## 16.0.0 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Add clear button in search field of Folder content view @iFlameing
@@ -24,7 +22,6 @@
 
 - Fix grammar in Theming Strategy. Fixes #954. @stevepiercy
 - Fix wording in About Semantic UI. Fixes #953. @stevepiercy
-
 
 ## 16.0.0-alpha.46 (2022-10-28)
 
