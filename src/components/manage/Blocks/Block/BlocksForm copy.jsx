@@ -1,6 +1,6 @@
 import React from 'react';
 import EditBlock from './Edit';
-// import { DragDropList } from '@plone/volto/components';
+import { DragDropList } from '@plone/volto/components';
 import { getBlocks } from '@plone/volto/helpers';
 import {
   addBlock,
@@ -17,33 +17,6 @@ import { setSidebarTab } from '@plone/volto/actions';
 import { useDispatch } from 'react-redux';
 import { useDetectClickOutside } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
-
-// import { useDndMonitor } from '@dnd-kit/core'; // , DragOverlay
-
-import {
-  // arrayMove,
-  // sortableKeyboardCoordinates,
-  SortableContext,
-  verticalListSortingStrategy,
-} from '@dnd-kit/sortable';
-
-import SortableItem from '../../BlocksDnD/SortableItem';
-
-// const Item = React.forwardRef(({ id, ...props }, ref) => {
-//   return (
-//     <div
-//       style={{
-//         backgroundColor: 'blue',
-//         height: '200px',
-//         marginBottom: '20px',
-//       }}
-//       {...props}
-//       ref={ref}
-//     >
-//       {id}
-//     </div>
-//   );
-// });
 
 const BlocksForm = (props) => {
   const {
@@ -104,7 +77,7 @@ const BlocksForm = (props) => {
       e.preventDefault();
     }
     if (e.key === 'Enter' && !disableEnter) {
-      onSelectBlock(onAddBlock(config.settings.defaultBlockType, index + 1));
+      onAddBlock(config.settings.defaultBlockType, index + 1);
       e.preventDefault();
     }
   };
@@ -177,75 +150,10 @@ const BlocksForm = (props) => {
 
   const editBlockWrapper = children || defaultBlockWrapper;
 
-  // const [, setActiveId] = React.useState(null); // activeId
-  //
-  // useDndMonitor({
-  //   onDragStart(event) {
-  //     const { active } = event;
-  //     setActiveId(active.id);
-  //   },
-  // });
-
   return (
     <div className="blocks-form" ref={ref}>
       <fieldset className="invisible" disabled={!editable}>
-        <SortableContext
-          items={properties.blocks_layout.items}
-          strategy={verticalListSortingStrategy}
-        >
-          {blockList
-            .filter(([id, child]) => id && child) // beware numbers!
-            .map(([childId, child], index) => {
-              const dragProps = { child, id: childId, index };
-              // console.log('dragProps', dragProps);
-              const blockProps = {
-                allowedBlocks,
-                showRestricted,
-                block: childId,
-                data: child,
-                handleKeyDown,
-                id: childId,
-                formTitle: title,
-                formDescription: description,
-                index,
-                manage,
-                onAddBlock,
-                onInsertBlock,
-                onChangeBlock,
-                onChangeField,
-                onChangeFormData,
-                onDeleteBlock,
-                onFocusNextBlock,
-                onFocusPreviousBlock,
-                onMoveBlock,
-                onMutateBlock,
-                onSelectBlock,
-                pathname,
-                metadata,
-                properties,
-                blocksConfig,
-                selected: selectedBlock === childId,
-                multiSelected: multiSelected?.includes(childId),
-                type: child['@type'],
-                editable,
-              };
-              return (
-                <React.Fragment key={childId}>
-                  {editBlockWrapper(
-                    dragProps,
-                    <EditBlock key={childId} {...blockProps} />,
-                    blockProps,
-                  )}
-                </React.Fragment>
-              );
-            })}
-
-          {/* {items.map((id) => (
-          <SortableItem key={id} id={id} />
-        ))} */}
-        </SortableContext>
-        {/* <DragOverlay>{activeId ? <Item id={activeId} /> : null}</DragOverlay> */}
-        {/* <DragDropList
+        <DragDropList
           childList={blockList}
           onMoveItem={(result) => {
             const { source, destination } = result;
@@ -300,7 +208,7 @@ const BlocksForm = (props) => {
               blockProps,
             );
           }}
-        </DragDropList> */}
+        </DragDropList>
       </fieldset>
     </div>
   );
