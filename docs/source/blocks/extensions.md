@@ -160,6 +160,17 @@ The `schemaEnhancer` is a generic extension mechanism provided by
 it for the `variation` extension.
 ```
 
+Volto provides a helper to combine multiple schemaEnhancers into a single
+function, so that multiple schema enhancers can be used. For example:
+
+```
+import { composeSchema } from '@plone/volto/helpers';
+
+const oldEnhancer = blocksConfig.dataTable.schemaEnhancer;
+
+blocksConfig.dataTable.schemaEnhancer = composeSchema(
+  oldEnhancer, addTitleField, addThemeField);
+```
 
 (extensions-consuming-extensions)=
 
