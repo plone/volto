@@ -1,5 +1,17 @@
 # Change Log
 
+## 16.0.0 (unreleased)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
+### Documentation
+
 ## 16.0.0-alpha.47 (2022-11-02)
 
 ### Feature
