@@ -18,6 +18,7 @@
 
 - Add translation for `pending` state @iFlameing
 - Add `composeSchema`, a helper to compose multiple schemaEnhancers @tiberiuichim
+- Upgrade to `plone.voltoa14` @sneridagh
 
 ### Documentation
 
