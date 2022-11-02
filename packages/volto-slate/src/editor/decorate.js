@@ -44,9 +44,11 @@ export const highlightByType = (editor, [node, path], ranges) => {
  */
 export function highlightSelection(editor, [node, path], ranges) {
   let selected = editor.isSelected();
-  const focused = ReactEditor.isFocused(editor);
+  // const focused = ReactEditor.isFocused(editor);
+  // TODO: handle the case when the editor is not focused, then use the
+  // editor.getSavedSelection()
 
-  if (selected && !focused && editor.selection) {
+  if (selected && editor.selection) {
     const selection = editor.selection;
     if (JSON.stringify(path) === JSON.stringify(selection.anchor.path)) {
       const range = {
