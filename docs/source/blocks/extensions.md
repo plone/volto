@@ -161,7 +161,7 @@ it for the `variation` extension.
 ```
 
 Volto provides a helper to combine multiple `schemaEnhancer` into a single
-function, so that multiple schema enhancers can be used. For example:
+function. This allows creating clean, single purpose reusable schema enhancers:
 
 ```js
 import { composeSchema } from '@plone/volto/helpers';
@@ -169,7 +169,7 @@ import { composeSchema } from '@plone/volto/helpers';
 const oldEnhancer = blocksConfig.dataTable.schemaEnhancer;
 
 blocksConfig.dataTable.schemaEnhancer = composeSchema(
-  oldEnhancer, addTitleField, addThemeField);
+  oldEnhancer, addTitleField, addStandardStyling);
 ```
 
 (extensions-consuming-extensions)=
