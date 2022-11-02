@@ -46,15 +46,11 @@ export function highlightSelection(editor, [node, path], ranges) {
   let selected = editor.isSelected();
   const focused = ReactEditor.isFocused(editor);
 
-  if (
-    selected &&
-    (!editor.selection || !focused) &&
-    editor.getSavedSelection()
-  ) {
-    const newSelection = editor.getSavedSelection();
-    if (JSON.stringify(path) === JSON.stringify(newSelection.anchor.path)) {
+  if (selected && !focused && editor.selection) {
+    const selection = editor.selection;
+    if (JSON.stringify(path) === JSON.stringify(selection.anchor.path)) {
       const range = {
-        ...newSelection,
+        ...selection,
         highlight: true,
         isSelection: true,
       };
