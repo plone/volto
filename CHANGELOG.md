@@ -6,6 +6,7 @@
 
 ### Feature
 
+- Add clear button in search field of Folder content view @iFlameing
 - consume site_actions from restapi @nileshgulia1
 - Updated Spanish translation @macagua
 
