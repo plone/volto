@@ -4110,6 +4110,11 @@ msgid "others"
 msgstr "andere"
 
 #: components/manage/Contents/ContentsItem
+# defaultMessage: Pending
+msgid "pending"
+msgstr "Ausstehend"
+
+#: components/manage/Contents/ContentsItem
 # defaultMessage: Private
 msgid "private"
 msgstr "Privat"
