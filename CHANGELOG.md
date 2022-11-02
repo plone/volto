@@ -7,12 +7,22 @@
 ### Feature
 
 - Add clear button in search field of Folder content view @iFlameing
+- consume site_actions from restapi @nileshgulia1
+- Updated Spanish translation @macagua
 
 ### Bugfix
 
+- Fix `schemaEnhancer` not being applied if nested `blocksConfig` is present @sneridagh
+
 ### Internal
 
+- Add translation for `pending` state @iFlameing
+
 ### Documentation
+
+- Fix grammar in Theming Strategy. Fixes #954. @stevepiercy
+- Fix wording in About Semantic UI. Fixes #953. @stevepiercy
+
 
 ## 16.0.0-alpha.46 (2022-10-28)
 
@@ -52,6 +62,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 
 - Added link integrity potential breakage warning message when deleting a referenced page @danielamormocea
 - Added new components & interfaces for content-rules `Rules` control in Volto. Rules management in both controlpanel and object view. @andreiggr
+- Updated Spanish translation @macagua
 - Introduce `TextLineEdit` component @sneridagh
 - Add a popup tooltip for tokenized options in Select widget values @sneridagh
 
