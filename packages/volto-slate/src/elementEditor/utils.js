@@ -69,6 +69,7 @@ export const _insertElement = (elementType) => (editor, data) => {
  * @returns {Object|null} - current node
  */
 export const _unwrapElement = (elementType) => (editor) => {
+  console.log('unwrap');
   const [link] = Editor.nodes(editor, {
     at: editor.selection,
     match: (node) => node?.type === elementType,

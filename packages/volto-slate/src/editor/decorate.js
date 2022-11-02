@@ -1,4 +1,5 @@
 import { Node, Range } from 'slate';
+import { ReactEditor } from 'slate-react';
 
 import config from '@plone/volto/registry';
 
@@ -43,8 +44,13 @@ export const highlightByType = (editor, [node, path], ranges) => {
  */
 export function highlightSelection(editor, [node, path], ranges) {
   let selected = editor.isSelected();
+  const focused = ReactEditor.isFocused(editor);
 
-  if (selected && !editor.selection && editor.getSavedSelection()) {
+  if (
+    selected &&
+    (!editor.selection || !focused) &&
+    editor.getSavedSelection()
+  ) {
     const newSelection = editor.getSavedSelection();
     if (JSON.stringify(path) === JSON.stringify(newSelection.anchor.path)) {
       const range = {
@@ -57,7 +63,5 @@ export function highlightSelection(editor, [node, path], ranges) {
       }
     }
   }
-  // if (ranges.length) console.log('RANGES!', ranges, editor.children);
-  // console.log(node, path, editor.savedSelection);
   return ranges;
 }

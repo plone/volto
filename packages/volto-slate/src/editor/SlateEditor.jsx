@@ -169,7 +169,6 @@ class SlateEditor extends Component {
       }
 
       this.setState({
-        // editor,
         internalValue: this.props.value,
       });
       return;
