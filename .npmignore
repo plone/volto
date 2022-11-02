@@ -88,6 +88,18 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
+# Volto logos
+./logos
+
+# yarn 3
+.yarn
+
+# Razzle cache
+./cache
+
+# Github
+.github
+
 # dotenv environment variables file
 .env
 
