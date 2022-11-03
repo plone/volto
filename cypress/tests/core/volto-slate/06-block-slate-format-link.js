@@ -18,6 +18,7 @@ describe('Block Tests: Links', () => {
     cy.get('.slate-toolbar .link-form-container input').type(
       'https://google.com{enter}',
     );
+    cy.getSlate().should('have.descendants', 'a.slate-editor-link');
     cy.get('#toolbar-save').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
 
@@ -44,7 +45,7 @@ describe('Block Tests: Links', () => {
 
     cy.get('h1.documentFirstHeading').click();
 
-    cy.getSlate().should('not.contain', 'slate-editor-link');
+    cy.getSlate().should('not.have.descendants', 'a.slate-editor-link');
 
     // lshould('have.text', 'Colorless green ideas sleep furiously.').and('not.exist';
 
