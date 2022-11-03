@@ -2,17 +2,9 @@
 
 ## 16.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Ensure the view component is always replaced after navigating to a different page. @davisagli
-
-### Internal
-
-### Documentation
 
 ## 16.0.0-alpha.47 (2022-11-02)
 
