@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix undefined error when there is no block present in a page @iFlameing
+
 ### Internal
 
 ### Documentation

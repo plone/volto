@@ -392,7 +392,7 @@ export function applySchemaDefaults({ data = {}, schema }) {
  * @return {Object} Derived data, with the defaults extracted from the schema
  */
 export function applyBlockDefaults({ data, intl, ...rest }, blocksConfig) {
-  const block_type = data['@type'];
+  const block_type = data ? data['@type'] : null;
   const { blockSchema } =
     (blocksConfig || config.blocks.blocksConfig)[block_type] || {};
   if (!blockSchema) return data;
