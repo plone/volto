@@ -28,6 +28,11 @@ export const Default = StoryComponent.bind({});
 Default.args = {
   date,
 };
+export const WithoutzatEnd = StoryComponent.bind({});
+WithoutzatEnd.args = {
+  date: '2022-11-03T13:00:00',
+  long: true,
+};
 
 export const Localized = StoryComponent.bind({});
 Localized.args = {
