@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Be more robust towards invalid block configuration @reebalazs
+
 ### Internal
 
 ### Documentation

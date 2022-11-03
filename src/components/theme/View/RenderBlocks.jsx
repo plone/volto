@@ -15,6 +15,10 @@ const messages = defineMessages({
     id: 'Unknown Block',
     defaultMessage: 'Unknown Block {block}',
   },
+  invalidBlock: {
+    id: 'Invalid Block',
+    defaultMessage: 'Invalid block - Will be removed on saving',
+  },
 });
 
 const RenderBlocks = (props) => {
@@ -48,12 +52,14 @@ const RenderBlocks = (props) => {
               blocksConfig={blocksConfig}
             />
           </StyleWrapper>
-        ) : (
+        ) : blockData ? (
           <div key={block}>
             {intl.formatMessage(messages.unknownBlock, {
               block: content[blocksFieldname]?.[block]?.['@type'],
             })}
           </div>
+        ) : (
+          <div key={block}>{intl.formatMessage(messages.invalidBlock)}</div>
         );
       })}
     </CustomTag>
