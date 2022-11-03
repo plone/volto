@@ -80,6 +80,27 @@
       display: none !important;
     }
   }
+
+  .drag.handle.wrapper,
+  // need to repeat specific rule to ensure override for width < 1224px
+  body.has-toolbar.has-sidebar .drag.handle.wrapper {
+    margin-left: -34px !important;
+  }
+
+  // need to repeat specific rule to ensure override for width < 1224px
+  @media only screen and (max-width: @largeMonitorBreakpoint + @offset) {
+    .block .delete-button,
+    body.has-toolbar.has-sidebar .block .delete-button {
+      margin-right: -25px !important;
+    }
+  }
+
+  // correction for title
+  .block.title .delete-button,
+  // need to repeat specific rule to ensure override for width < 1224px
+  body.has-toolbar.has-sidebar .block.title .delete-button {
+    margin-right: -42px !important;
+  }
 }
 
 body:not(.has-toolbar):not(.has-sidebar):not(.has-toolbar-collapsed):not(.has-sidebar-collapsed) {
@@ -110,15 +131,7 @@ body.has-toolbar-collapsed.has-sidebar-collapsed {
   .contentWidth(@collapsedWidth + @collapsedWidth);
 }
 
-.drag.handle.wrapper {
-  margin-left: -15px !important;
-}
-
-.block .delete-button {
-  margin-right: -25px !important;
-}
-
-/* Hack for escape the blocks container in blocks full width */
+// Hack for escape the blocks container in blocks full width
 .full-width {
   position: relative;
   right: 50%;

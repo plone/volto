@@ -24,6 +24,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Replace the main client entry point in `start-client.jsx` anonymous function for a named one. @sneridagh
 - Fix updating the listing block when the variation is changed while editing @tiberiuichim
 - fix(warning): StyleMenu dropdown item to use data-attr instead of custom @nileshgulia1
+- Fix drag handler alignment for screen width < largeMonitorBreakpoint @reebalazs
 
 ### Internal
 
