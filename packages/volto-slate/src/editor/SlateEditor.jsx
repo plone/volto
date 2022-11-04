@@ -81,6 +81,7 @@ class SlateEditor extends Component {
     return this.savedSelection;
   }
   setSavedSelection(selection) {
+    console.log('save selection', selection);
     this.savedSelection = selection;
   }
 

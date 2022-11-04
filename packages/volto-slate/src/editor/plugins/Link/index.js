@@ -1,6 +1,7 @@
 import React from 'react';
 import { defineMessages } from 'react-intl'; // , defineMessages
-import { ReactEditor, useSlate } from 'slate-react';
+import { ReactEditor, useSlate, useSlateSelection } from 'slate-react';
+import { Node } from 'slate';
 import { useSelector, useDispatch } from 'react-redux';
 import AddLinkForm from '@plone/volto/components/manage/AnchorPlugin/components/LinkButton/AddLinkForm';
 import {
@@ -32,13 +33,14 @@ const messages = defineMessages({
   },
 });
 
-function getPositionStyle() {
-  const domSelection = window.getSelection();
-  if (domSelection.rangeCount < 1) {
-    return {};
-  }
-  const domRange = domSelection.getRangeAt(0);
-  const rect = domRange.getBoundingClientRect();
+function getPositionStyle(rect) {
+  // const domSelection = window.getSelection();
+  // if (domSelection.rangeCount < 1) {
+  //   return {};
+  // }
+  // console.log('domSelection', domSelection);
+  // const domRange = domSelection.getRangeAt(0);
+  // const rect = domRange.getBoundingClientRect();
 
   return {
     style: {
@@ -48,6 +50,18 @@ function getPositionStyle() {
     },
   };
 }
+
+const useSelectionPosition = () => {
+  const editor = useSlate();
+  const selection = useSlateSelection();
+  let rect = {};
+  if (selection) {
+    const slateNode = Node.get(editor, selection.anchor.path);
+    const domEl = ReactEditor.toDOMNode(editor, slateNode);
+    rect = domEl.getBoundingClientRect();
+  }
+  return rect;
+};
 
 const LinkEditor = (props) => {
   const {
@@ -62,15 +76,16 @@ const LinkEditor = (props) => {
     return state['slate_plugins']?.[pid]?.show_sidebar_editor;
   });
   const savedPosition = React.useRef();
+  const rect = useSelectionPosition();
 
   const dispatch = useDispatch();
 
   const active = getActiveElement(editor);
-  console.log('active', active);
+  // console.log('active', active);
   const [node] = active || [];
 
   if (showEditor && !savedPosition.current) {
-    savedPosition.current = getPositionStyle();
+    savedPosition.current = getPositionStyle(rect);
   }
 
   return showEditor ? (
