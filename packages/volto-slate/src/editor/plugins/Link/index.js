@@ -1,7 +1,6 @@
 import React from 'react';
 import { defineMessages } from 'react-intl'; // , defineMessages
-import { ReactEditor, useSlate, useSlateSelection } from 'slate-react';
-import { Node } from 'slate';
+import { ReactEditor, useSlate } from 'slate-react';
 import { useSelector, useDispatch } from 'react-redux';
 import AddLinkForm from '@plone/volto/components/manage/AnchorPlugin/components/LinkButton/AddLinkForm';
 import {
@@ -18,6 +17,7 @@ import {
   ToolbarButton as UIToolbarButton,
   PositionedToolbar,
 } from '@plone/volto-slate/editor/ui';
+import { useSelectionPosition } from '@plone/volto-slate/hooks';
 
 import linkSVG from '@plone/volto/icons/link.svg';
 import unlinkSVG from '@plone/volto/icons/unlink.svg';
@@ -34,14 +34,6 @@ const messages = defineMessages({
 });
 
 function getPositionStyle(rect) {
-  // const domSelection = window.getSelection();
-  // if (domSelection.rangeCount < 1) {
-  //   return {};
-  // }
-  // console.log('domSelection', domSelection);
-  // const domRange = domSelection.getRangeAt(0);
-  // const rect = domRange.getBoundingClientRect();
-
   return {
     style: {
       opacity: 1,
@@ -50,18 +42,6 @@ function getPositionStyle(rect) {
     },
   };
 }
-
-const useSelectionPosition = () => {
-  const editor = useSlate();
-  const selection = useSlateSelection();
-  let rect = {};
-  if (selection) {
-    const slateNode = Node.get(editor, selection.anchor.path);
-    const domEl = ReactEditor.toDOMNode(editor, slateNode);
-    rect = domEl.getBoundingClientRect();
-  }
-  return rect;
-};
 
 const LinkEditor = (props) => {
   const {

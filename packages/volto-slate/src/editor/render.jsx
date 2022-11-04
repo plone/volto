@@ -32,7 +32,6 @@ export const Element = ({ element, attributes = {}, extras, ...rest }) => {
 };
 
 export const Leaf = ({ children, ...rest }) => {
-  // console.log('rest', rest, children);
   const { attributes, leaf, mode } = rest;
   let { leafs } = config.settings.slate;
 
@@ -43,7 +42,7 @@ export const Leaf = ({ children, ...rest }) => {
   }, children);
 
   const classNames = {
-    [`highlight-${leaf.highlightType}`]: mode !== 'view' && leaf.highlight,
+    [`highlight-${leaf.highlightType}`]: mode !== 'view' && leaf.highlightType,
     'highlight-selection': mode !== 'view' && leaf.isSelection,
   };
 

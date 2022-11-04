@@ -60,21 +60,11 @@ const Toolbar = ({
 
       rect = domEl.getBoundingClientRect();
     } else {
-      // The Link plugin input steals focus and selection
+      // TODO: should we fallback to editor.getSelection()?
+      // TODO: test with third party plugins
       const slateNode = Node.get(editor, selection.anchor.path);
       const domEl = ReactEditor.toDOMNode(editor, slateNode);
       rect = domEl.getBoundingClientRect();
-      // const domSelection = window.getSelection();
-      // if (domSelection.rangeCount < 1) {
-      //   // don't do anything here, this happens when opening a focus-stealing
-      //   // component, in which case we actually want to keep the toolbar open
-      //   // See
-      //   // https://stackoverflow.com/questions/22935320/uncaught-indexsizeerror-failed-to-execute-getrangeat-on-selection-0-is-not
-      //   return;
-      // }
-      // const domRange = domSelection.getRangeAt(0);
-      // rect = domRange.getBoundingClientRect();
-      // console.log('second', selection);
     }
 
     domNode.style.opacity = 1;

@@ -1,5 +1,5 @@
 import { Node, Range } from 'slate';
-import { ReactEditor } from 'slate-react';
+// import { ReactEditor } from 'slate-react';
 
 import config from '@plone/volto/registry';
 
@@ -21,6 +21,8 @@ export const highlightByType = (editor, [node, path], ranges) => {
     const range = {
       anchor: { path, offset: 0 },
       focus: { path, offset: text.length },
+      // we need to differentiate between multiple highlight types, the active
+      // selection and the highlighted node
       highlight: true,
       highlightType: visualSelectionRanges.length === 0 ? node.type : null,
       isSelection: visualSelectionRanges.length > 0,
@@ -54,6 +56,7 @@ export function highlightSelection(editor, [node, path], ranges) {
       const range = {
         ...selection,
         highlight: true,
+        highlightType: 'selection',
         isSelection: true,
       };
       if (Range.isExpanded(range)) {
