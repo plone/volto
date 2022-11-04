@@ -1,5 +1,4 @@
 import { useSlate, ReactEditor, useSlateSelection } from 'slate-react';
-import { Node } from 'slate';
 
 /**
  * Translates the slate selection (text) to window/screen coordinates
@@ -12,10 +11,15 @@ export const useSelectionPosition = () => {
   const editor = useSlate();
 
   const selection = useSlateSelection();
-  if (ReactEditor.isFocused(editor) && selection) {
-    const slateNode = Node.get(editor, selection.anchor.path);
-    const domEl = ReactEditor.toDOMNode(editor, slateNode);
-    rect = domEl.getBoundingClientRect();
+  if (selection && ReactEditor.isFocused(editor)) {
+    try {
+      const [textNode] = ReactEditor.toDOMPoint(editor, selection.anchor);
+      const parentNode = textNode.parentNode;
+      rect = parentNode.getBoundingClientRect();
+    } catch {
+      // This happens when the selection is outdated because the nodes have
+      // been modified? Seems like a bug in slate, then.
+    }
   }
   return rect;
 };
