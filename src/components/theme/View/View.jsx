@@ -236,6 +236,7 @@ class View extends Component {
           }
         />
         <RenderedView
+          key={this.props.content['@id']}
           content={this.props.content}
           location={this.props.location}
           token={this.props.token}
