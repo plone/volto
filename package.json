@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "16.0.0-alpha.48",
+  "version": "16.0.0-alpha.46",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -362,10 +362,10 @@
     "semantic-ui-react": "2.0.3",
     "semver": "5.6.0",
     "serialize-javascript": "3.1.0",
-    "slate": "0.78.0",
-    "slate-history": "0.66.0",
-    "slate-hyperscript": "0.77.0",
-    "slate-react": "0.78.1",
+    "slate": "0.84.0",
+    "slate-history": "0.81.3",
+    "slate-hyperscript": "0.81.3",
+    "slate-react": "0.83.2",
     "start-server-and-test": "1.14.0",
     "stylelint": "14.0.1",
     "stylelint-config-idiomatic-order": "8.1.0",
