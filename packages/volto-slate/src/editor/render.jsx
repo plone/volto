@@ -14,18 +14,19 @@ export const Element = ({ element, attributes = {}, extras, ...rest }) => {
   const { elements } = slate;
   const El = elements[element.type] || elements['default'];
 
-  const out = Object.assign(
+  const attrs = Object.assign(
     element.styleName ? { className: element.styleName } : {},
     ...Object.keys(attributes || {}).map((k) =>
       !isEmpty(attributes[k]) ? { [k]: attributes[k] } : {},
     ),
   );
+  attrs.ref = attributes.ref; // never remove the ref
 
   return (
     <El
       element={element}
       {...omit(rest, OMITTED)}
-      attributes={out}
+      attributes={attrs}
       extras={extras}
     />
   );
