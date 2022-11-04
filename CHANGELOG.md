@@ -10,7 +10,7 @@
 
 ### Internal
 
-- Upgrade dependencies to latest released slate libraries @tiberiuichim
+- Upgrade dependencies to latest released slate libraries. Make sure to pass down `ref` to rendered slate elements, as ref is now a function @tiberiuichim
 
 ### Documentation
 
@@ -19,7 +19,6 @@
 ### Bugfix
 
 - Ensure the view component is always replaced after navigating to a different page. @davisagli
-- Make sure to pass down `ref` to rendered slate elements @tiberiuichim
 
 ## 16.0.0-alpha.47 (2022-11-02)
 
