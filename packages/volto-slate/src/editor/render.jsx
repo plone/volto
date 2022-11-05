@@ -20,7 +20,7 @@ export const Element = ({ element, attributes = {}, extras, ...rest }) => {
       !isEmpty(attributes[k]) ? { [k]: attributes[k] } : {},
     ),
   );
-  attrs.ref = attributes.ref; // never remove the ref
+  attrs.ref = attributes?.ref; // never remove the ref
 
   return (
     <El
