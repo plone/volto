@@ -28,11 +28,10 @@ describe('Text Block Tests', () => {
   });
 
   it('As editor I can add a link to a text block', function () {
-    cy.intercept('GET', '/**/my-page').as('content');
-    cy.intercept('PATCH', '*').as('save');
     cy.get('.block.inner.title .documentFirstHeading');
 
     cy.log('when I create a link');
+
     cy.getSlateEditorAndType(
       'Colorless green ideas sleep furiously.',
     ).setSlateSelection('furiously');
@@ -43,16 +42,13 @@ describe('Text Block Tests', () => {
     cy.toolbarSave();
 
     cy.log('then the page view should contain a link');
+
     cy.get('.ui.container p').contains(
       'Colorless green ideas sleep furiously.',
     );
     cy.get('.ui.container p a')
       .should('have.text', 'furiously')
       .and('have.attr', 'href')
-      .and('include', 'https://google.com');
-
-    cy.get('.ui.container p a')
-      .should('have.attr', 'href')
       .and('include', 'https://google.com');
   });
 
