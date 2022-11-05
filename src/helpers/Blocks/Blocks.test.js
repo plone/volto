@@ -573,6 +573,11 @@ describe('Blocks', () => {
         variation: 'firstVariation',
       });
     });
+
+    it('Tolerates a missing (invalid) block', () => {
+      const data = {};
+      expect(applyBlockDefaults({ data })).toEqual({});
+    });
   });
   describe('buildStyleClassNamesFromData', () => {
     it('Sets styles classname array according to style values', () => {
