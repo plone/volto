@@ -5,7 +5,7 @@ import { Button } from 'semantic-ui-react';
 
 // The ButtonsWidget
 const ButtonsWidget = (props) => {
-  const { id, onChange, actions, actionsInfoMap, value } = props;
+  const { id, onChange, actions, actionsInfoMap, defaultAction, value } = props;
 
   React.useEffect(() => {
     if (!props.value && props.default) {
@@ -23,7 +23,7 @@ const ButtonsWidget = (props) => {
               basic
               aria-label={actionsInfoMap[action][1]}
               onClick={() => onChange(id, action)}
-              active={(action === 'center' && !value) || value === action}
+              active={(action === defaultAction && !value) || value === action}
             >
               <Icon
                 name={actionsInfoMap[action][0]}

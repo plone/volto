@@ -58,7 +58,12 @@ const AlignWidget = (props) => {
   };
 
   return (
-    <ButtonsWidget {...props} actions={actions} actionsInfoMap={actionsInfo} />
+    <ButtonsWidget
+      {...props}
+      actions={actions}
+      actionsInfoMap={actionsInfo}
+      defaultAction={props.defaultAction || 'center'}
+    />
   );
 };
 
