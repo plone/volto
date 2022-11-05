@@ -239,7 +239,7 @@ export const DefaultTextBlockEditor = (props) => {
                   selected={selected}
                   placeholder={placeholder}
                   slateSettings={slateSettings}
-                  editableProps={{ ariaMultiline: false }}
+                  editableProps={{ 'aria-multiline': 'false' }}
                 />
                 {DEBUG ? <div>{block}</div> : ''}
               </>

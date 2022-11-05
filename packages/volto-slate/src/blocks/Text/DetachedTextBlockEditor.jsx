@@ -67,7 +67,7 @@ export const DetachedTextBlockEditor = (props) => {
         selected={selected}
         placeholder={placeholder}
         onKeyDown={handleKeyDetached}
-        editableProps={{ ariaMultiline: true }}
+        editableProps={{ 'aria-multiline': 'true' }}
       />
     </div>
   );
