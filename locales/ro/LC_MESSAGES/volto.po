@@ -1700,6 +1700,11 @@ msgstr "Interval Lunar"
 msgid "Interval Yearly"
 msgstr "Interval Anual"
 
+#: components/theme/View/RenderBlocks
+# defaultMessage: Invalid block - Will be removed on saving
+msgid "Invalid Block"
+msgstr ""
+
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Item batch size
 msgid "Item batch size"
