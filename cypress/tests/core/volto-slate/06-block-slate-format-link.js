@@ -4,14 +4,11 @@ describe('Block Tests: Links', () => {
   beforeEach(slateBeforeEach);
 
   it('As editor I can add links', function () {
-    // Complete chained commands
-    cy.intercept('GET', '/**/my-page').as('content');
-    cy.intercept('PATCH', '*').as('save');
-
     cy.get('#toolbar').click();
-    cy.getSlate().click().type('Colorless green ideas sleep furiously.');
+    cy.getSlate().type('Colorless green ideas sleep furiously.');
 
-    // Create Link
+    cy.log('Create a Link');
+
     cy.setSlateSelection('ideas', 'furiously');
     cy.clickSlateButton('Add link');
 
@@ -19,13 +16,9 @@ describe('Block Tests: Links', () => {
       'https://google.com{enter}',
     );
     cy.getSlate().should('have.descendants', 'a.slate-editor-link');
-    cy.get('#toolbar-save').click();
-    cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
+    cy.toolbarSave();
 
-    cy.wait('@save');
-    cy.wait('@content');
-
-    // then the page view should contain a link
+    cy.log('Then the page view should contain a link');
     cy.get('.ui.container p').contains(
       'Colorless green ideas sleep furiously.',
     );
@@ -34,7 +27,7 @@ describe('Block Tests: Links', () => {
       .and('have.attr', 'href')
       .and('include', 'https://google.com');
 
-    // Remove link by partial selection
+    cy.log('Remove link by partial selection');
     cy.get('#toolbar .toolbar-actions .edit').click();
     cy.wait('@content');
 
@@ -47,26 +40,24 @@ describe('Block Tests: Links', () => {
 
     cy.getSlate().should('not.have.descendants', 'a.slate-editor-link');
 
-    // lshould('have.text', 'Colorless green ideas sleep furiously.').and('not.exist';
+    cy.log('Re-add link');
+    cy.setSlateSelection('green', 'sleep');
+    cy.clickSlateButton('Edit link');
+    cy.get('.slate-toolbar .link-form-container input').type(
+      'https://google.com{enter}',
+    );
 
-    // // Re-add link
-    // cy.setSlateSelection('green', 'sleep');
-    // cy.clickSlateButton('Link');
-    //
-    // cy.get('.sidebar-container a.item:nth-child(3)').click();
-    // cy.get('input[name="external_link-0-external"]')
-    //   .click()
-    //   .type('https://google.com{enter}');
-    // cy.get('.sidebar-container .form .header button:first-of-type').click();
-    //
-    // // Save
-    // cy.toolbarSave();
-    //
-    // // then the page view should contain a link
-    // cy.contains('Colorless green ideas sleep furiously.');
-    // cy.get('[id="page-document"] p a')
-    //   .should('have.attr', 'href')
-    //   .and('include', 'https://google.com');
+    cy.log('Save');
+    cy.toolbarSave();
+
+    cy.log('Then the page view should contain a link');
+    cy.get('.ui.container p').contains(
+      'Colorless green ideas sleep furiously.',
+    );
+    cy.get('.ui.container p a')
+      .should('have.text', 'ideas sleep furiously')
+      .and('have.attr', 'href')
+      .and('include', 'https://google.com');
   });
 
   // it('As editor I can add multiple lines and add links', function () {
