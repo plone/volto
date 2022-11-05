@@ -213,6 +213,7 @@ class SlateEditor extends Component {
       readOnly,
       className,
       renderExtensions = [],
+      editableProps = {},
     } = this.props;
     const slateSettings = this.slateSettings;
 
@@ -327,6 +328,7 @@ class SlateEditor extends Component {
                 if (handled) return;
                 onKeyDown && onKeyDown({ editor, event });
               }}
+              {...editableProps}
             />
             {selected &&
               slateSettings.persistentHelpers.map((Helper, i) => {

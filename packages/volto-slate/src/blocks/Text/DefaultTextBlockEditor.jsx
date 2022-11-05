@@ -42,7 +42,7 @@ const messages = defineMessages({
   },
 });
 
-const DEBUG = false;
+const DEBUG = true;
 
 export const DefaultTextBlockEditor = (props) => {
   const {
@@ -239,6 +239,7 @@ export const DefaultTextBlockEditor = (props) => {
                   selected={selected}
                   placeholder={placeholder}
                   slateSettings={slateSettings}
+                  editableProps={{ ariaMultiline: false }}
                 />
                 {DEBUG ? <div>{block}</div> : ''}
               </>
