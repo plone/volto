@@ -512,11 +512,11 @@ Cypress.Commands.add('setRegistry', (record, value) => {
 // Low level command reused by `setSelection` and low level command `setCursor`
 Cypress.Commands.add('selection', { prevSubject: true }, (subject, fn) => {
   cy.wrap(subject)
-    // .trigger('mousedown')
+    .trigger('mousedown')
     .wait(1000) //multiple waits between selecting the text to ensure toolbar is visible.
     .then(fn)
-    .wait(1000);
-  // .trigger('mouseup');
+    .wait(1000)
+    .trigger('mouseup');
 
   cy.document().trigger('selectionchange');
   return cy.wrap(subject);
