@@ -29,7 +29,6 @@ describe('Block Tests: Links', () => {
 
     cy.log('Remove link by partial selection');
     cy.get('#toolbar .toolbar-actions .edit').click();
-    cy.wait('@content');
 
     cy.getSlate().click();
     cy.setSlateSelection('sleep');
@@ -37,12 +36,13 @@ describe('Block Tests: Links', () => {
     cy.get('.slate-inline-toolbar .cancel').click();
 
     cy.get('h1.documentFirstHeading').click();
+    cy.get('.block-editor-slate .slate-editor').eq(0).click();
 
     cy.getSlate().should('not.have.descendants', 'a.slate-editor-link');
 
     cy.log('Re-add link');
     cy.setSlateSelection('green', 'sleep');
-    cy.clickSlateButton('Edit link');
+    cy.clickSlateButton('Add link');
     cy.get('.slate-toolbar .link-form-container input').type(
       'https://google.com{enter}',
     );
@@ -55,7 +55,7 @@ describe('Block Tests: Links', () => {
       'Colorless green ideas sleep furiously.',
     );
     cy.get('.ui.container p a')
-      .should('have.text', 'ideas sleep furiously')
+      .should('have.text', 'green ideas sleep')
       .and('have.attr', 'href')
       .and('include', 'https://google.com');
   });
