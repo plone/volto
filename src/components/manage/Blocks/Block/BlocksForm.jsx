@@ -150,6 +150,17 @@ const BlocksForm = (props) => {
 
   const editBlockWrapper = children || defaultBlockWrapper;
 
+  // Remove invalid blocks on saving
+  // Note they are alreaady filtered by DragDropList, but we also want them
+  // to be removed when the user saves the page next. Otherwise the invalid
+  // blocks would linger for ever.
+  for (const [n, v] of blockList) {
+    if (!v) {
+      const newFormData = deleteBlock(properties, n);
+      onChangeFormData(newFormData);
+    }
+  }
+
   return (
     <div className="blocks-form" ref={ref}>
       <fieldset className="invisible" disabled={!editable}>

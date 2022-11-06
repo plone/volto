@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Be more robust towards invalid block configuration @reebalazs
+
 ### Internal
 
 - Upgrade dependencies to latest released slate libraries. Make sure to pass down `ref` to rendered slate elements, as ref is now a function @tiberiuichim
