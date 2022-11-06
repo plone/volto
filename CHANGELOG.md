@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Be more robust towards invalid block configuration @reebalazs
+- Replace the main client entry point in `start-client.jsx` anonymous function for a named one. @sneridagh
 
 ### Internal
 
