@@ -4,6 +4,8 @@
 
 ### Breaking
 
+-  restrict css selector for error message (volto-slate) #3838 @mamico
+
 ### Feature
 
 ### Bugfix
