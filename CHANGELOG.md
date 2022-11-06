@@ -19,6 +19,7 @@
 ### Bugfix
 
 - Ensure the view component is always replaced after navigating to a different page. @davisagli
+- Added --canary flag in plone/install.sh. @MdSahil-oss
 
 ## 16.0.0-alpha.47 (2022-11-02)
 
