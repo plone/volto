@@ -4,6 +4,10 @@
 
 ### Breaking
 
+- Upgrade `husky` to latest version @sneridagh
+
+See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+
 ### Feature
 
 ### Bugfix
