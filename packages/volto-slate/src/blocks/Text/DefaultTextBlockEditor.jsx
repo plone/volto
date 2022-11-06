@@ -42,7 +42,7 @@ const messages = defineMessages({
   },
 });
 
-const DEBUG = true;
+const DEBUG = false;
 
 export const DefaultTextBlockEditor = (props) => {
   const {
