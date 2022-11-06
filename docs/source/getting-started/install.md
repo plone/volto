@@ -219,7 +219,7 @@ Use the project generator helper utility.
 
     ```bash
     $ npm install -g yo @plone/generator-volto
-    $ yo @plone/volto
+    $ yo @plone/volto --canary
     ```
 
 2.  Answer to the prompted questions and provide the name of the new app (folder) to be created. For the sake of this documentation, provide `myvoltoproject` as project name then.
