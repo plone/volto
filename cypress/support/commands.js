@@ -680,7 +680,7 @@ Cypress.Commands.add('lineBreakInSlate', { prevSubject: true }, (subject) => {
 Cypress.Commands.add('setSlateSelection', (subject, query, endQuery) => {
   cy.get('.slate-editor.selected [contenteditable=true]')
     .focus()
-    .click()
+    // .click()
     .setSelection(subject, query, endQuery)
     .wait(1000); // this wait is needed for the selection change to be detected after
 });
