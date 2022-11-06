@@ -700,7 +700,7 @@ Cypress.Commands.add('setSlateCursor', (subject, query, endQuery) => {
 Cypress.Commands.add('clickSlateButton', (button) => {
   cy.get(`.slate-inline-toolbar .button-wrapper a[title="${button}"]`, {
     timeout: 1000,
-  }).click(); //{ force: true } force click is needed to ensure the button in visible in view.
+  }).click({ force: true }); // force click is needed to ensure the button in visible in view.
 });
 
 // Helper functions
