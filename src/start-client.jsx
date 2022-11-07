@@ -22,7 +22,7 @@ function reactIntlErrorHandler(error) {
   debug('i18n')(error);
 }
 
-export default () => {
+export default function client() {
   const api = new Api();
 
   const store = configureStore(window.__data, history, api);
@@ -73,4 +73,4 @@ export default () => {
       document.getElementById('main'),
     );
   });
-};
+}

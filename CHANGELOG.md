@@ -4,7 +4,11 @@
 
 ### Breaking
 
--  restrict css selector for error message (volto-slate) #3838 @mamico
+- Restrict css selector for error message (volto-slate) #3838 @mamico
+- Upgrade `husky` to latest version @sneridagh
+
+See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+
 
 ### Feature
 
@@ -14,6 +18,7 @@
 - Fix highlighting of selection when the Slate editor is not DOM-focused. @tiberiuichim
 - Improve the algorithm that calculates the position of the Slate Toolbar @tiberiuichim
 - The `_unwrapElement` of the volto-slate `ElementEditor` will return an updated range (selection) of the unwrapped element.
+- Replace the main client entry point in `start-client.jsx` anonymous function for a named one. @sneridagh
 
 ### Internal
 
@@ -68,6 +73,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Use `View comments` and `Reply to item` permissions in `Comments` component. @razvanMiu
 - Added portrait middleware adapter. @instification
 - Allow dumping the addon dependency graph to a .dot file. Start Volto with `DEBUG_ADDONS_LOADER=true yarn start`, `addon-dependency-graph.dot` will be created in your project folder. @tiberiuichim
+- Improve the `AlignWidget`, add `narrow` fix default support @sneridagh
 
 ### Bugfix
 
