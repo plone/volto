@@ -35,7 +35,7 @@ exports[`renders an align widget component basic 1`] = `
               class="ui buttons"
             >
               <button
-                aria-label="Left"
+                aria-label="Text Left"
                 class="ui basic icon button"
               >
                 <svg
@@ -45,7 +45,7 @@ exports[`renders an align widget component basic 1`] = `
                   xmlns=""
                 >
                   <title>
-                    Left
+                    Text Left
                   </title>
                   undefined
                 </svg>
@@ -55,7 +55,7 @@ exports[`renders an align widget component basic 1`] = `
               class="ui buttons"
             >
               <button
-                aria-label="Right"
+                aria-label="Text Right"
                 class="ui basic icon button"
               >
                 <svg
@@ -65,7 +65,7 @@ exports[`renders an align widget component basic 1`] = `
                   xmlns=""
                 >
                   <title>
-                    Right
+                    Text Right
                   </title>
                   undefined
                 </svg>
@@ -75,27 +75,7 @@ exports[`renders an align widget component basic 1`] = `
               class="ui buttons"
             >
               <button
-                aria-label="Center"
-                class="ui active basic icon button"
-              >
-                <svg
-                  class="icon"
-                  style="height: 24px; width: auto; fill: currentColor;"
-                  viewBox=""
-                  xmlns=""
-                >
-                  <title>
-                    Center
-                  </title>
-                  undefined
-                </svg>
-              </button>
-            </div>
-            <div
-              class="ui buttons"
-            >
-              <button
-                aria-label="Full"
+                aria-label="Text Centered"
                 class="ui basic icon button"
               >
                 <svg
@@ -105,7 +85,27 @@ exports[`renders an align widget component basic 1`] = `
                   xmlns=""
                 >
                   <title>
-                    Full
+                    Text Centered
+                  </title>
+                  undefined
+                </svg>
+              </button>
+            </div>
+            <div
+              class="ui buttons"
+            >
+              <button
+                aria-label="Text Justified"
+                class="ui basic icon button"
+              >
+                <svg
+                  class="icon"
+                  style="height: 24px; width: auto; fill: currentColor;"
+                  viewBox=""
+                  xmlns=""
+                >
+                  <title>
+                    Text Justified
                   </title>
                   undefined
                 </svg>

@@ -66,6 +66,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Use `View comments` and `Reply to item` permissions in `Comments` component. @razvanMiu
 - Added portrait middleware adapter. @instification
 - Allow dumping the addon dependency graph to a .dot file. Start Volto with `DEBUG_ADDONS_LOADER=true yarn start`, `addon-dependency-graph.dot` will be created in your project folder. @tiberiuichim
+- Improve the `AlignWidget`, add `narrow` fix default support @sneridagh
 
 ### Bugfix
 
