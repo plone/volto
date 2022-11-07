@@ -19,6 +19,8 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 
 ### Internal
 
+- Add translation for objectlist `Add` text @iFlameing
+
 ### Documentation
 
 ## 16.0.0-alpha.48 (2022-11-03)
