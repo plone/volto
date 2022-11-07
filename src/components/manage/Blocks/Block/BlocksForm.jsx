@@ -174,6 +174,7 @@ const BlocksForm = (props) => {
   }
 
   useEvent('voltoClickBelowContent', () => {
+    if (!isMainForm) return;
     onSelectBlock(
       onAddBlock(config.settings.defaultBlockType, blockList.length),
     );
