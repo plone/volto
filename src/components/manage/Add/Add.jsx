@@ -309,7 +309,7 @@ class Add extends Component {
       };
 
       // extract type from the query in case there is a type field in the from
-      const {type, ...query} = this.props.query;
+      const { type, ...query } = this.props.query;
 
       const pageAdd = (
         <div id="page-add">
@@ -463,7 +463,7 @@ export default compose(
       pathname: props.location.pathname,
       returnUrl: qs.parse(props.location.search).return_url,
       type: qs.parse(props.location.search).type,
-      query: state.router.location.query,
+      query: state?.router?.location?.query,
     }),
     { createContent, getSchema, changeLanguage },
   ),
