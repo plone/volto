@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-11-03T15:58:59.686Z\n"
+"POT-Creation-Date: 2022-11-07T13:06:47.840Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -2840,6 +2840,7 @@ msgstr ""
 msgid "Selection"
 msgstr ""
 
+#: components/manage/Blocks/Search/widgets/SelectMetadataField
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/SelectAutoComplete
@@ -3897,6 +3898,11 @@ msgid "box_forgot_password_option"
 msgstr ""
 
 #: config/Blocks
+# defaultMessage: Checkbox
+msgid "checkboxFacet"
+msgstr ""
+
+#: config/Blocks
 # defaultMessage: Common
 msgid "common"
 msgstr ""
@@ -3904,6 +3910,11 @@ msgstr ""
 #: components/manage/Multilingual/CompareLanguages
 # defaultMessage: Compare to language
 msgid "compare_to"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Date Range
+msgid "daterangeFacet"
 msgstr ""
 
 #: components/manage/Blocks/Block/EditBlockWrapper
@@ -4300,6 +4311,11 @@ msgstr ""
 msgid "rrule_years"
 msgstr ""
 
+#: config/Blocks
+# defaultMessage: Select
+msgid "selectFacet"
+msgstr ""
+
 #: components/manage/Blocks/Search/components/ViewSwitcher
 # defaultMessage: Select view
 msgid "selectView"
@@ -4343,6 +4359,11 @@ msgstr ""
 #: config/Blocks
 # defaultMessage: Table of Contents
 msgid "toc"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Toogle
+msgid "toggleFacet"
 msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel

@@ -2845,6 +2845,7 @@ msgstr "Geselecteerde items - x van y"
 msgid "Selection"
 msgstr "Selectie"
 
+#: components/manage/Blocks/Search/widgets/SelectMetadataField
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/SelectAutoComplete
@@ -3902,6 +3903,11 @@ msgid "box_forgot_password_option"
 msgstr "Wachtwoord vergeten?"
 
 #: config/Blocks
+# defaultMessage: Checkbox
+msgid "checkboxFacet"
+msgstr ""
+
+#: config/Blocks
 # defaultMessage: Common
 msgid "common"
 msgstr "algemeen"
@@ -3910,6 +3916,11 @@ msgstr "algemeen"
 # defaultMessage: Compare to language
 msgid "compare_to"
 msgstr "Vergelijk met taal"
+
+#: config/Blocks
+# defaultMessage: Date Range
+msgid "daterangeFacet"
+msgstr ""
 
 #: components/manage/Blocks/Block/EditBlockWrapper
 # defaultMessage: delete
@@ -4305,6 +4316,11 @@ msgstr "jaar"
 msgid "rrule_years"
 msgstr "jaren"
 
+#: config/Blocks
+# defaultMessage: Select
+msgid "selectFacet"
+msgstr ""
+
 #: components/manage/Blocks/Search/components/ViewSwitcher
 # defaultMessage: Select view
 msgid "selectView"
@@ -4349,6 +4365,11 @@ msgstr "titel"
 # defaultMessage: Table of Contents
 msgid "toc"
 msgstr "Inhoudsopgave"
+
+#: config/Blocks
+# defaultMessage: Toogle
+msgid "toggleFacet"
+msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update from version {origin} to {destination}

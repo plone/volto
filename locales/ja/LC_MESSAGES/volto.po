@@ -2846,6 +2846,7 @@ msgstr "選択したアイテム-x/y"
 msgid "Selection"
 msgstr "Selection (未翻訳)"
 
+#: components/manage/Blocks/Search/widgets/SelectMetadataField
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/SelectAutoComplete
@@ -3903,6 +3904,11 @@ msgid "box_forgot_password_option"
 msgstr "パスワードを忘れた？"
 
 #: config/Blocks
+# defaultMessage: Checkbox
+msgid "checkboxFacet"
+msgstr ""
+
+#: config/Blocks
 # defaultMessage: Common
 msgid "common"
 msgstr "一般"
@@ -3910,6 +3916,11 @@ msgstr "一般"
 #: components/manage/Multilingual/CompareLanguages
 # defaultMessage: Compare to language
 msgid "compare_to"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Date Range
+msgid "daterangeFacet"
 msgstr ""
 
 #: components/manage/Blocks/Block/EditBlockWrapper
@@ -4306,6 +4317,11 @@ msgstr "年"
 msgid "rrule_years"
 msgstr "年"
 
+#: config/Blocks
+# defaultMessage: Select
+msgid "selectFacet"
+msgstr ""
+
 #: components/manage/Blocks/Search/components/ViewSwitcher
 # defaultMessage: Select view
 msgid "selectView"
@@ -4350,6 +4366,11 @@ msgstr "タイトル"
 # defaultMessage: Table of Contents
 msgid "toc"
 msgstr "目次"
+
+#: config/Blocks
+# defaultMessage: Toogle
+msgid "toggleFacet"
+msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update from version {origin} to {destination}
