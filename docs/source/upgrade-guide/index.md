@@ -401,6 +401,20 @@ Since then, the add-on story has improved.
 It now makes sense to extract this feature into its own add-on.
 You can find it in [`@collective/volto-sentry`](https://github.com/collective/volto-sentry).
 
+### Upgrade `husky` to latest version
+
+In the case that you are using husky in your projects (like Volto does), you will have to adapt to the new way that `husky` has for defining hooks.
+
+You'll have to add a script in your `package.json` file called `prepare`:
+
+```diff
+     "build": "razzle build --noninteractive",
++    "prepare": "husky install",
+     "test": "razzle test --maxWorkers=50%",
+```
+
+After execute it, `husky` will install itself in the `.husky` folder of your project. Then you need to create the default hook scripts in `.husky` that you want to execute. You can copy over the Volto ones (take a look in Volto's `.husky` folder).
+
 (volto-upgrade-guide-15.x.x)=
 
 ## Upgrading to Volto 15.x.x
