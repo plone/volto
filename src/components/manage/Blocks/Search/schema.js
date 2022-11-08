@@ -183,7 +183,7 @@ const FacetSchema = ({ intl }) => ({
   required: ['field'],
 });
 
-export default ({ data = {}, intl }) => {
+const SearchSchema = ({ data = {}, intl }) => {
   return {
     title: intl.formatMessage(messages.searchBlock),
     fieldsets: [
@@ -279,3 +279,5 @@ export default ({ data = {}, intl }) => {
     required: [],
   };
 };
+
+export default SearchSchema;

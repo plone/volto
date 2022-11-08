@@ -26,6 +26,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Upgrade dependencies to latest released slate libraries. Make sure to pass down `ref` to rendered slate elements, as ref is now a function @tiberiuichim
 - Add `editableProps` prop to the `SlateEditor` component, to pass down props to the base Slate `Editable` component. @tiberiuichim
 - Clean, re-enable block-slate-format-link Cypress tests @tiberiuichim
+- Rewrite some anonymous functions as named functions, to remove warning about Hot Reloading. @tiberiuichim
 
 ### Documentation
 
