@@ -522,6 +522,7 @@ msgstr "Cel"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Center
 msgid "Center"
 msgstr "Centreren"
@@ -1442,6 +1443,7 @@ msgstr "Van"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Full
 msgid "Full"
 msgstr "Volledig"
@@ -1814,6 +1816,7 @@ msgstr "Voorbeeldafbeelding"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Left
 msgid "Left"
 msgstr "Links"
@@ -2062,6 +2065,11 @@ msgstr "Mijn gebruikersnaam is"
 # defaultMessage: Name
 msgid "Name"
 msgstr "Naam"
+
+#: components/manage/Widgets/AlignWidget
+# defaultMessage: Narrow
+msgid "Narrow"
+msgstr ""
 
 #: error
 # defaultMessage: Navigate back
@@ -2645,6 +2653,7 @@ msgstr "Tekst"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Right
 msgid "Right"
 msgstr "Rechts"
@@ -3805,6 +3814,7 @@ msgid "Who"
 msgstr "Wie"
 
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Wide
 msgid "Wide"
 msgstr "Breed"
@@ -4367,7 +4377,7 @@ msgid "toc"
 msgstr "Inhoudsopgave"
 
 #: config/Blocks
-# defaultMessage: Toogle
+# defaultMessage: Toggle
 msgid "toggleFacet"
 msgstr ""
 

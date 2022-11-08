@@ -169,7 +169,7 @@ defineMessages({
   },
   toggleFacet: {
     id: 'toggleFacet',
-    defaultMessage: 'Toogle',
+    defaultMessage: 'Toggle',
   },
 });
 
