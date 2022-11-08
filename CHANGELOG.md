@@ -4,16 +4,61 @@
 
 ### Breaking
 
-### Feature
+- Restrict css selector for error message (volto-slate) #3838 @mamico
+- Upgrade `husky` to latest version @sneridagh
 
 - consume site_actions from restapi @nileshgulia1
 - Provide a default View/Edit component for blocks @avoinea, @tiberiuichim
+See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+
+
+### Feature
 
 ### Bugfix
 
+- Be more robust towards invalid block configuration @reebalazs
+- Remove slate's builtin undo support, as it conflicts with Volto's undo manager. This fixes crashes when undoing in text blocks and slate's undo stack is empty and "crosses" into Volto's undo stack. This is a temporary workaround, ideally the two undo managers would be delimited so they each work together. @tiberiuichim
+- Fix highlighting of selection when the Slate editor is not DOM-focused. @tiberiuichim
+- Improve the algorithm that calculates the position of the Slate Toolbar @tiberiuichim
+- The `_unwrapElement` of the volto-slate `ElementEditor` will return an updated range (selection) of the unwrapped element.
+- Replace the main client entry point in `start-client.jsx` anonymous function for a named one. @sneridagh
+
 ### Internal
 
+- Upgrade dependencies to latest released slate libraries. Make sure to pass down `ref` to rendered slate elements, as ref is now a function @tiberiuichim
+- Add `editableProps` prop to the `SlateEditor` component, to pass down props to the base Slate `Editable` component. @tiberiuichim
+- Clean, re-enable block-slate-format-link Cypress tests @tiberiuichim
+
 ### Documentation
+
+## 16.0.0-alpha.48 (2022-11-03)
+
+### Bugfix
+
+- Ensure the view component is always replaced after navigating to a different page. @davisagli
+
+## 16.0.0-alpha.47 (2022-11-02)
+
+### Feature
+
+- Add clear button in search field of Folder content view @iFlameing
+- consume site_actions from restapi @nileshgulia1
+- Updated Spanish translation @macagua
+
+### Bugfix
+
+- Fix `schemaEnhancer` not being applied if nested `blocksConfig` is present @sneridagh
+
+### Internal
+
+- Add translation for `pending` state @iFlameing
+- Add `composeSchema`, a helper to compose multiple schemaEnhancers @tiberiuichim
+- Upgrade to `plone.voltoa14` @sneridagh
+
+### Documentation
+
+- Fix grammar in Theming Strategy. Fixes #954. @stevepiercy
+- Fix wording in About Semantic UI. Fixes #953. @stevepiercy
 
 ## 16.0.0-alpha.46 (2022-10-28)
 
@@ -31,6 +76,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Use `View comments` and `Reply to item` permissions in `Comments` component. @razvanMiu
 - Added portrait middleware adapter. @instification
 - Allow dumping the addon dependency graph to a .dot file. Start Volto with `DEBUG_ADDONS_LOADER=true yarn start`, `addon-dependency-graph.dot` will be created in your project folder. @tiberiuichim
+- Improve the `AlignWidget`, add `narrow` fix default support @sneridagh
 
 ### Bugfix
 
@@ -53,6 +99,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 
 - Added link integrity potential breakage warning message when deleting a referenced page @danielamormocea
 - Added new components & interfaces for content-rules `Rules` control in Volto. Rules management in both controlpanel and object view. @andreiggr
+- Updated Spanish translation @macagua
 - Introduce `TextLineEdit` component @sneridagh
 - Add a popup tooltip for tokenized options in Select widget values @sneridagh
 

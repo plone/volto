@@ -34,7 +34,7 @@ It's recommended to start three individual terminal sessions, one each for runni
 2.  Run the frontend fixture.
 
     ```shell
-    make start-test-acceptance-frontend
+    make start-test-acceptance-frontend-dev
     ```
 
 3.  Run the Cypress tests for that fixture.

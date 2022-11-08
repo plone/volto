@@ -521,6 +521,7 @@ msgstr "Zelle"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Center
 msgid "Center"
 msgstr "Mittig"
@@ -1441,6 +1442,7 @@ msgstr "E-Mail"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Full
 msgid "Full"
 msgstr "Volle Breite"
@@ -1704,6 +1706,11 @@ msgstr "Wöchentlich"
 msgid "Interval Yearly"
 msgstr "Jährliches Intervall"
 
+#: components/theme/View/RenderBlocks
+# defaultMessage: Invalid block - Will be removed on saving
+msgid "Invalid Block"
+msgstr "Ungültiger Block - Wird beim Speichern entfernt"
+
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Item batch size
 msgid "Item batch size"
@@ -1808,6 +1815,7 @@ msgstr "Lead-Bild"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Left
 msgid "Left"
 msgstr "Links"
@@ -2056,6 +2064,11 @@ msgstr "Mein Benutzername ist"
 # defaultMessage: Name
 msgid "Name"
 msgstr "Name"
+
+#: components/manage/Widgets/AlignWidget
+# defaultMessage: Narrow
+msgid "Narrow"
+msgstr ""
 
 #: error
 # defaultMessage: Navigate back
@@ -2639,6 +2652,7 @@ msgstr "Richtext"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Right
 msgid "Right"
 msgstr "Rechte"
@@ -3799,6 +3813,7 @@ msgid "Who"
 msgstr "Wer"
 
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Wide
 msgid "Wide"
 msgstr ""
@@ -4109,6 +4124,11 @@ msgstr "versuchen Sie eine andere Seite."
 # defaultMessage: others
 msgid "others"
 msgstr "andere"
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Pending
+msgid "pending"
+msgstr "Ausstehend"
 
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Private
