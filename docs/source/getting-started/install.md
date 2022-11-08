@@ -218,7 +218,7 @@ Use the project generator helper utility.
 1.  Open a terminal and execute:
 
     ```bash
-    $ npm install -g yo @plone/generator-volto
+    npm install -g yo @plone/generator-volto
     # install latest stable release
     yo @plone/volto
     # or install latest alpha release
