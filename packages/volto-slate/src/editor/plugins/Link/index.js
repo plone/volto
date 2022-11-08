@@ -17,6 +17,7 @@ import {
   ToolbarButton as UIToolbarButton,
   PositionedToolbar,
 } from '@plone/volto-slate/editor/ui';
+import { useSelectionPosition } from '@plone/volto-slate/hooks';
 
 import linkSVG from '@plone/volto/icons/link.svg';
 import unlinkSVG from '@plone/volto/icons/unlink.svg';
@@ -32,14 +33,7 @@ const messages = defineMessages({
   },
 });
 
-function getPositionStyle() {
-  const domSelection = window.getSelection();
-  if (domSelection.rangeCount < 1) {
-    return {};
-  }
-  const domRange = domSelection.getRangeAt(0);
-  const rect = domRange.getBoundingClientRect();
-
+function getPositionStyle(rect) {
   return {
     style: {
       opacity: 1,
@@ -62,14 +56,16 @@ const LinkEditor = (props) => {
     return state['slate_plugins']?.[pid]?.show_sidebar_editor;
   });
   const savedPosition = React.useRef();
+  const rect = useSelectionPosition();
 
   const dispatch = useDispatch();
 
   const active = getActiveElement(editor);
+  // console.log('active', active);
   const [node] = active || [];
 
   if (showEditor && !savedPosition.current) {
-    savedPosition.current = getPositionStyle();
+    savedPosition.current = getPositionStyle(rect);
   }
 
   return showEditor ? (
@@ -106,9 +102,7 @@ const LinkEditor = (props) => {
         }}
       />
     </PositionedToolbar>
-  ) : (
-    ''
-  );
+  ) : null;
 };
 
 export default (config) => {

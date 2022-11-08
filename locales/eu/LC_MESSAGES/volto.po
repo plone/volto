@@ -23,11 +23,6 @@ msgstr ""
 msgid "<p>Add some HTML here</p>"
 msgstr "<p>HTMLa idatzi hemen</p>"
 
-#: components/theme/Footer/Footer
-# defaultMessage: Accessibility
-msgid "Accessibility"
-msgstr "Irisgarritasuna"
-
 #: components/theme/Register/Register
 # defaultMessage: Account Registration Completed
 msgid "Account Registration Completed"
@@ -296,7 +291,6 @@ msgstr "Aliasa"
 msgid "Alias has been added"
 msgstr "Aliasa ondo gehitu da"
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
@@ -441,11 +435,6 @@ msgstr ""
 msgid "Back"
 msgstr "Atzera"
 
-#: components/manage/Blocks/Block/StylesSchema
-# defaultMessage: Background color
-msgid "Background color"
-msgstr "Atzeko planoko kolorea"
-
 #: components/manage/Diff/Diff
 # defaultMessage: Base
 msgid "Base"
@@ -533,6 +522,7 @@ msgstr "Zelda"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Center
 msgid "Center"
 msgstr "Erdiratu"
@@ -641,7 +631,6 @@ msgstr "Batu elementua"
 msgid "Collection"
 msgstr "Bilduma"
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Widgets/ColorPickerWidget
 # defaultMessage: Color
 msgid "Color"
@@ -704,11 +693,6 @@ msgstr "Pasahitza berretsi"
 # defaultMessage: Connection refused
 msgid "Connection refused"
 msgstr "Konexioak huts egin du"
-
-#: components/theme/Footer/Footer
-# defaultMessage: Contact
-msgid "Contact"
-msgstr "Kontaktua"
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Contact form
@@ -1459,6 +1443,7 @@ msgstr "Nok"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Full
 msgid "Full"
 msgstr "Osoa"
@@ -1722,6 +1707,11 @@ msgstr "astean behin"
 msgid "Interval Yearly"
 msgstr "urtean behin"
 
+#: components/theme/View/RenderBlocks
+# defaultMessage: Invalid block - Will be removed on saving
+msgid "Invalid Block"
+msgstr ""
+
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Item batch size
 msgid "Item batch size"
@@ -1826,6 +1816,7 @@ msgstr "Irudia"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Left
 msgid "Left"
 msgstr "Ezkerrean"
@@ -2074,6 +2065,11 @@ msgstr "Nire erabiltzaile izena da"
 # defaultMessage: Name
 msgid "Name"
 msgstr "Izena"
+
+#: components/manage/Widgets/AlignWidget
+# defaultMessage: Narrow
+msgid "Narrow"
+msgstr ""
 
 #: error
 # defaultMessage: Navigate back
@@ -2657,6 +2653,7 @@ msgstr "Testu aberatsa"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Right
 msgid "Right"
 msgstr "Eskuman"
@@ -2801,9 +2798,9 @@ msgid "Search users…"
 msgstr "Bilatu erabiltzaileak..."
 
 #: components/manage/Blocks/Search/components/SearchDetails
-# defaultMessage: Searched for
-msgid "Searched for"
-msgstr "Zure bilaketa"
+# defaultMessage: Searched for: <em>{searchedtext}</em>.
+msgid "Searched for: <em>{searchedtext}</em>."
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Second
@@ -2986,11 +2983,6 @@ msgstr "Ataria"
 msgid "Site Administration"
 msgstr "Atariaren kudeaketa"
 
-#: components/theme/Footer/Footer
-# defaultMessage: Site Map
-msgid "Site Map"
-msgstr "Web mapa"
-
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: Site Setup
@@ -3033,11 +3025,6 @@ msgstr "Ordenazioa:"
 # defaultMessage: Sort on
 msgid "Sort on"
 msgstr "Ordenazioa"
-
-#: components/manage/Blocks/Search/schema
-# defaultMessage: Sort on label
-msgid "Sort on label"
-msgstr "Ordenatu etiketaren arabera"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Sort on options
@@ -3826,6 +3813,7 @@ msgid "Who"
 msgstr "Nor"
 
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Wide
 msgid "Wide"
 msgstr "Zabala"
@@ -3911,6 +3899,11 @@ msgstr "Zure hizkuntza"
 # defaultMessage: Your username is required for reset your password.
 msgid "Your usernaame is required for reset your password."
 msgstr "Erabiltzaile-izena derrigorrezkoa da zure pasahitza berrezartzeko."
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Available views
+msgid "availableViews"
+msgstr ""
 
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -4133,6 +4126,11 @@ msgid "others"
 msgstr "besteak"
 
 #: components/manage/Contents/ContentsItem
+# defaultMessage: Pending
+msgid "pending"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
 # defaultMessage: Private
 msgid "private"
 msgstr "Pribatua"
@@ -4317,6 +4315,11 @@ msgstr "urte"
 msgid "rrule_years"
 msgstr "urte"
 
+#: components/manage/Blocks/Search/components/ViewSwitcher
+# defaultMessage: Select view
+msgid "selectView"
+msgstr ""
+
 #: components/theme/SkipLinks/SkipLinks
 # defaultMessage: Skip to footer
 msgid "skiplink-footer"
@@ -4376,6 +4379,11 @@ msgstr "Erabiltzailearen argazkia"
 # defaultMessage: Video
 msgid "video"
 msgstr "Bideoa"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Views
+msgid "views"
+msgstr ""
 
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Visit external website

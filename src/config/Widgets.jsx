@@ -4,6 +4,7 @@
 import loadable from '@loadable/component';
 
 import AlignWidget from '@plone/volto/components/manage/Widgets/AlignWidget';
+import ButtonsWidget from '@plone/volto/components/manage/Widgets/ButtonsWidget';
 import ArrayWidget from '@plone/volto/components/manage/Widgets/ArrayWidget';
 import CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidget';
 import FileWidget from '@plone/volto/components/manage/Widgets/FileWidget';
@@ -80,6 +81,7 @@ export const widgetMapping = {
     password: PasswordWidget,
     file: FileWidget,
     align: AlignWidget,
+    buttons: ButtonsWidget,
     url: UrlWidget,
     internal_url: InternalUrlWidget,
     email: EmailWidget,

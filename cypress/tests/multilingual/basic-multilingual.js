@@ -66,7 +66,7 @@ describe('Basic multilingual Tests', () => {
     // The english doc should be shown
     cy.wait('@content');
 
-    cy.get('#page-document').findByText('Test document');
+    cy.get('#page-document').should('contain', 'Test document');
     cy.url().should('eq', Cypress.config().baseUrl + '/en/document');
   });
 
@@ -100,7 +100,7 @@ describe('Basic multilingual Tests', () => {
     cy.findByLabelText('Vai a english').click();
 
     // The english doc should be shown
-    cy.get('#page-document').findByText('Test document');
+    cy.get('#page-document').should('contain', 'Test document');
 
     cy.findByLabelText('More').click();
     cy.findByText('Manage Translations').click();

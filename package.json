@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "16.0.0-alpha.45",
+  "version": "16.0.0-alpha.48",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -32,6 +32,7 @@
     "analyze": "BUNDLE_ANALYZE=true razzle build",
     "start": "razzle start",
     "build": "razzle build --noninteractive",
+    "prepare": "husky install",
     "test": "razzle test --maxWorkers=50%",
     "test:ci": "CI=true NODE_ICU_DATA=node_modules/full-icu razzle test",
     "test:husky": "CI=true yarn test --bail --findRelatedTests",
@@ -186,14 +187,6 @@
       "releaseNotes": "node changelogupdater.js excerpt"
     }
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "post-checkout": "yarnhook",
-      "post-merge": "yarnhook",
-      "post-rebase": "yarnhook"
-    }
-  },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json}": [
       "npx eslint --max-warnings=0 --fix",
@@ -231,10 +224,6 @@
     "@loadable/server": "5.14.0",
     "@loadable/webpack-plugin": "5.14.0",
     "@plone/scripts": "2.1.2",
-    "@sentry/browser": "6.19.7",
-    "@sentry/integrations": "6.19.7",
-    "@sentry/node": "6.19.7",
-    "@sentry/webpack-plugin": "1.18.9",
     "@testing-library/cypress": "8.0.3",
     "@testing-library/jest-dom": "5.16.4",
     "@testing-library/react": "12.1.5",
@@ -288,7 +277,7 @@
     "history": "4.10.1",
     "html-webpack-plugin": "4.5.2",
     "http-proxy-middleware": "2.0.1",
-    "husky": "4.2.5",
+    "husky": "8.0.1",
     "identity-obj-proxy": "3.0.0",
     "image-extensions": "1.1.0",
     "is-url": "1.2.4",
@@ -366,10 +355,9 @@
     "semantic-ui-react": "2.0.3",
     "semver": "5.6.0",
     "serialize-javascript": "3.1.0",
-    "slate": "0.78.0",
-    "slate-history": "0.66.0",
-    "slate-hyperscript": "0.77.0",
-    "slate-react": "0.78.1",
+    "slate": "0.84.0",
+    "slate-hyperscript": "0.81.3",
+    "slate-react": "0.83.2",
     "start-server-and-test": "1.14.0",
     "stylelint": "14.0.1",
     "stylelint-config-idiomatic-order": "8.1.0",

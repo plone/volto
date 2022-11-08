@@ -424,6 +424,39 @@ Volto used this library to generate dynamic "windowed/virtualized" select widget
 It moved to use `react-virtualized` instead of `react-window` because it provides a more broad set of features that Volto required.
 If you were using it in your project, you'll have to include it as a direct dependency of it from now on.
 
+### Change the way the style wrapper is enabled and how to add the `styles` field
+
+During the alpha stage, we received feedback and determined that it's too difficult to deal with a separate way to define (and extend) the styles schema.
+We decided it is best to deal with it as any other schema field and enhance it via schema enhancers.
+This improves the developer experience, especially when dealing with variations that can provide their own styles and other schema fields.
+
+```{deprecated} 16.0.0-alpha.46
+The options `enableStyling` and `stylesSchema` no longer work. You need to provide them using your own block schema. If you are extending an existing one, you should add it as a normal `schemaEnhancer` modification.
+```
+
+See https://6.dev-docs.plone.org/volto/blocks/block-style-wrapper.html for more documentation.
+
+### Remove Sentry integration from core
+
+The Sentry integration was implemented in Volto core at a time when Volto did not provide a good add-on story.
+Since then, the add-on story has improved.
+It now makes sense to extract this feature into its own add-on.
+You can find it in [`@collective/volto-sentry`](https://github.com/collective/volto-sentry).
+
+### Upgrade `husky` to latest version
+
+In the case that you are using husky in your projects (like Volto does), you will have to adapt to the new way that `husky` has for defining hooks.
+
+You'll have to add a script in your `package.json` file called `prepare`:
+
+```diff
+     "build": "razzle build --noninteractive",
++    "prepare": "husky install",
+     "test": "razzle test --maxWorkers=50%",
+```
+
+After execute it, `husky` will install itself in the `.husky` folder of your project. Then you need to create the default hook scripts in `.husky` that you want to execute. You can copy over the Volto ones (take a look in Volto's `.husky` folder).
+
 (volto-upgrade-guide-15.x.x)=
 
 ## Upgrading to Volto 15.x.x
@@ -1922,10 +1955,6 @@ const defaultBlocks = {
     restricted: false, // If the block is restricted, it won't show in in the chooser
     mostUsed: false, // A meta group `most used`, appearing at the top of the chooser
     blockHasOwnFocusManagement: false, // Set this to true if the block manages its own focus
-    security: {
-      addPermission: [], // Future proof (not implemented yet) add user permission role(s)
-      view: [], // Future proof (not implemented yet) view user role(s)
-    },
   },
   ...
 ```
@@ -1994,10 +2023,6 @@ The focus management is also transferred to the engine, so it's not needed for y
       restricted: false,
       mostUsed: false,
       blockHasOwnFocusManagement: true,
-      security: {
-        addPermission: [],
-        view: [],
-      },
     },
 ```
 

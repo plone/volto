@@ -90,6 +90,7 @@ import sortDownSVG from '@plone/volto/icons/sort-down.svg';
 import sortUpSVG from '@plone/volto/icons/sort-up.svg';
 import downKeySVG from '@plone/volto/icons/down-key.svg';
 import moreSVG from '@plone/volto/icons/more.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   back: {
@@ -1507,6 +1508,16 @@ class Contents extends Component {
                               value={this.state.filter}
                               onChange={this.onChangeFilter}
                             />
+                            {this.state.filter && (
+                              <Icon
+                                name={clearSVG}
+                                size="30px"
+                                color="#e40166"
+                                onClick={() => {
+                                  this.onChangeFilter('', { value: '' });
+                                }}
+                              />
+                            )}
                             <Icon
                               name={zoomSVG}
                               size="30px"

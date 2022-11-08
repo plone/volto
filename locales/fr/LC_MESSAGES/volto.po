@@ -33,11 +33,6 @@ msgstr ""
 msgid "<p>Add some HTML here</p>"
 msgstr ""
 
-#: components/theme/Footer/Footer
-# defaultMessage: Accessibility
-msgid "Accessibility"
-msgstr "Accessibilité"
-
 #: components/theme/Register/Register
 # defaultMessage: Account Registration Completed
 msgid "Account Registration Completed"
@@ -306,7 +301,6 @@ msgstr ""
 msgid "Alias has been added"
 msgstr ""
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
@@ -451,11 +445,6 @@ msgstr ""
 msgid "Back"
 msgstr "Retour"
 
-#: components/manage/Blocks/Block/StylesSchema
-# defaultMessage: Background color
-msgid "Background color"
-msgstr ""
-
 #: components/manage/Diff/Diff
 # defaultMessage: Base
 msgid "Base"
@@ -543,6 +532,7 @@ msgstr "Cellule"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Center
 msgid "Center"
 msgstr "Centre"
@@ -651,7 +641,6 @@ msgstr ""
 msgid "Collection"
 msgstr "Collection"
 
-#: components/manage/Blocks/Block/StylesSchema
 #: components/manage/Widgets/ColorPickerWidget
 # defaultMessage: Color
 msgid "Color"
@@ -714,11 +703,6 @@ msgstr "Confirmer le mot de passe"
 # defaultMessage: Connection refused
 msgid "Connection refused"
 msgstr "Connexion refusée"
-
-#: components/theme/Footer/Footer
-# defaultMessage: Contact
-msgid "Contact"
-msgstr "Contact"
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Contact form
@@ -1469,6 +1453,7 @@ msgstr "De"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Full
 msgid "Full"
 msgstr "Complet<<<<<<< HEAD"
@@ -1732,6 +1717,11 @@ msgstr ""
 msgid "Interval Yearly"
 msgstr ""
 
+#: components/theme/View/RenderBlocks
+# defaultMessage: Invalid block - Will be removed on saving
+msgid "Invalid Block"
+msgstr ""
+
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Item batch size
 msgid "Item batch size"
@@ -1836,6 +1826,7 @@ msgstr "Image de garde"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Left
 msgid "Left"
 msgstr "Gauche"
@@ -2084,6 +2075,11 @@ msgstr "Mon nom d'utilisateur est"
 # defaultMessage: Name
 msgid "Name"
 msgstr "Nom"
+
+#: components/manage/Widgets/AlignWidget
+# defaultMessage: Narrow
+msgid "Narrow"
+msgstr ""
 
 #: error
 # defaultMessage: Navigate back
@@ -2667,6 +2663,7 @@ msgstr "Texte riche"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Right
 msgid "Right"
 msgstr "Droit"
@@ -2811,8 +2808,8 @@ msgid "Search users…"
 msgstr ""
 
 #: components/manage/Blocks/Search/components/SearchDetails
-# defaultMessage: Searched for
-msgid "Searched for"
+# defaultMessage: Searched for: <em>{searchedtext}</em>.
+msgid "Searched for: <em>{searchedtext}</em>."
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
@@ -2996,11 +2993,6 @@ msgstr "Site"
 msgid "Site Administration"
 msgstr "Administration du site"
 
-#: components/theme/Footer/Footer
-# defaultMessage: Site Map
-msgid "Site Map"
-msgstr "Plan du site"
-
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: Site Setup
@@ -3043,11 +3035,6 @@ msgstr ""
 # defaultMessage: Sort on
 msgid "Sort on"
 msgstr "Trier sur"
-
-#: components/manage/Blocks/Search/schema
-# defaultMessage: Sort on label
-msgid "Sort on label"
-msgstr ""
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Sort on options
@@ -3836,6 +3823,7 @@ msgid "Who"
 msgstr "Qui"
 
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Wide
 msgid "Wide"
 msgstr ""
@@ -3920,6 +3908,11 @@ msgstr "Votre langue préférée"
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your username is required for reset your password.
 msgid "Your usernaame is required for reset your password."
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Available views
+msgid "availableViews"
 msgstr ""
 
 #: components/theme/Login/Login
@@ -4143,6 +4136,11 @@ msgid "others"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
+# defaultMessage: Pending
+msgid "pending"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
 # defaultMessage: Private
 msgid "private"
 msgstr ""
@@ -4327,6 +4325,11 @@ msgstr ""
 msgid "rrule_years"
 msgstr ""
 
+#: components/manage/Blocks/Search/components/ViewSwitcher
+# defaultMessage: Select view
+msgid "selectView"
+msgstr ""
+
 #: components/theme/SkipLinks/SkipLinks
 # defaultMessage: Skip to footer
 msgid "skiplink-footer"
@@ -4386,6 +4389,11 @@ msgstr "Avatar de l'utilisateur"
 # defaultMessage: Video
 msgid "video"
 msgstr "vidéo"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Views
+msgid "views"
+msgstr ""
 
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Visit external website
