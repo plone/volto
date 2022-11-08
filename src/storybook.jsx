@@ -560,6 +560,7 @@ const initialState = () => ({
     loaded: true,
     loading: false,
   },
+  staticDirs: ['./storybook-public'],
   addons: {
     error: null,
     installedAddons: [],
