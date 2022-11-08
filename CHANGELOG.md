@@ -176,6 +176,9 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 ### Breaking
 
 - Sentry integration is now lazy-loaded. The `sentryOptions` key from the `settings` registry becomes a callable that passes resolved sentry libraries. @tiberiuichim
+- Enable the use of yarn 3 in the build by default @sneridagh
+
+  See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
 
 ### Feature
 

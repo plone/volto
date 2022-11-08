@@ -93,6 +93,11 @@ typings/
 
 # yarn 3
 .yarn
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
 
 # Razzle cache
 cache/
