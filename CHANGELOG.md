@@ -15,9 +15,16 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 ### Bugfix
 
 - Be more robust towards invalid block configuration @reebalazs
+- Fix highlighting of selection when the Slate editor is not DOM-focused. @tiberiuichim
+- Improve the algorithm that calculates the position of the Slate Toolbar @tiberiuichim
+- The `_unwrapElement` of the volto-slate `ElementEditor` will return an updated range (selection) of the unwrapped element.
 - Replace the main client entry point in `start-client.jsx` anonymous function for a named one. @sneridagh
 
 ### Internal
+
+- Upgrade dependencies to latest released slate libraries. Make sure to pass down `ref` to rendered slate elements, as ref is now a function @tiberiuichim
+- Add `editableProps` prop to the `SlateEditor` component, to pass down props to the base Slate `Editable` component. @tiberiuichim
+- Clean, re-enable block-slate-format-link Cypress tests @tiberiuichim
 
 ### Documentation
 
