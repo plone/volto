@@ -25,6 +25,7 @@ import {
   Option,
   selectTheme,
   MenuList,
+  MultiValueContainer,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
@@ -221,6 +222,7 @@ class SelectWidget extends Component {
             ...(options?.length > 25 && {
               MenuList,
             }),
+            MultiValueContainer,
             DropdownIndicator,
             ClearIndicator,
             Option: this.props.customOptionStyling || Option,

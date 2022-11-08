@@ -126,6 +126,98 @@ NodeJS 12 is deprecated in Volto 13.
 Please update your projects to a NodeJS LTS version, where either 14 or 16 is supported at the moment of this writing.
 Version 16 is recommended.
 
+### Upgraded to Razzle 4
+
+```{versionadded} 16.0.0-alpha.38
+Volto has upgraded from Razzle 3 to Razzle 4. You should perform these steps in case you are upgrading to this version or above.
+```
+
+#### Steps after upgrade
+
+A few updates may be needed in existing projects:
+
+1. Add the `cache` directory to `.gitignore`.
+2. If `package.json` includes scripts that run `razzle test` with the `--env=jest-environment-jsdom-sixteen` option, update them to use `--env=jsdom` instead.
+3. Update the `jest` configuration in `package.json` to replace the `jest-css-modules` transform:
+
+```diff
+"jest": {
+  "transform": {
+-     "^.+\\.css$": "jest-css-modules",
+-     "^.+\\.scss$": "jest-css-modules"
+  },
+  "moduleNameMapper": {
++     "\\.(css|less|scss|sass)$": "identity-obj-proxy"
+  }
+}
+```
+
+4. Add `--noninteractive` option to the build script
+
+```diff
+-    "build": "razzle build",
++    "build": "razzle build --noninteractive",
+```
+
+5. If you use custom Razzle plugins, update them to use the new format with multiple functions: https://razzlejs.org/docs/upgrade-guide#plugins (the old format still works, but is deprecated).
+6. If you have customized webpack loader configuration related to CSS, make sure it is updated to be compatible with PostCSS 8.
+7. It's recommended that you remove your existing `node_modules` and start clean.
+8. If the add-ons you are using are not yet updated to latest `@plone/scripts`, it's also recommended that you force the version in your build, setting this in `package.json`:
+
+```json
+  "resolutions": {
+    "**/@plone/scripts": "^2.0.0"
+  }
+```
+
+#### Upgrade and update add-ons dependency on `@plone/scripts`
+
+```{warning}
+This applies only to Volto add-ons.
+```
+
+Most probably you are using `@plone/scripts` in your add-on, since it's used in i18n messageid generation and has other add-on utilities.
+When upgrading to Volto 16.0.0-alpha.38 or above, you should upgrade `@plone/scripts` to a version 2.0.0 or above.
+It's also recommended you move it from `dependencies` to `devDependencies`.
+
+```diff
+diff --git a/package.json b/package.json
+--- a/package.json
++++ b/package.json
+     }
+   },
+   "devDependencies": {
++    "@plone/scripts": "2.0.0",
+     "release-it": "^14.14.2"
+   },
+-  "dependencies": {
+-    "@plone/scripts": "*"
+-  }
++  "dependencies": {}
+ }
+```
+
+You should also do a final step, and change the `babel.config.js`, removing the preset from `razzle/babel` to `razzle`:
+
+```diff
+diff --git a/babel.config.js b/babel.config.js
+index 2f4e1e8..51bd52b 100644
+--- a/babel.config.js
++++ b/babel.config.js
+@@ -1,6 +1,6 @@
+ module.exports = function (api) {
+   api.cache(true);
+-  const presets = ['razzle/babel'];
++  const presets = ['razzle'];
+   const plugins = [
+     [
+       'react-intl', // React Intl extractor, required for the whole i18n infrastructure to work
+```
+
+### Jest is downgraded from version 27 to 26
+
+Razzle 4 internal API is only compatible with up to Jest 26.
+
 ### Removed `date-fns` from build
 
 The `date-fns` library has been removed from Volto's dependencies.
@@ -289,6 +381,39 @@ defineMessages({
 Volto used this library to generate dynamic "windowed/virtualized" select widget options.
 It moved to use `react-virtualized` instead of `react-window` because it provides a more broad set of features that Volto required.
 If you were using it in your project, you'll have to include it as a direct dependency of it from now on.
+
+### Change the way the style wrapper is enabled and how to add the `styles` field
+
+During the alpha stage, we received feedback and determined that it's too difficult to deal with a separate way to define (and extend) the styles schema.
+We decided it is best to deal with it as any other schema field and enhance it via schema enhancers.
+This improves the developer experience, especially when dealing with variations that can provide their own styles and other schema fields.
+
+```{deprecated} 16.0.0-alpha.46
+The options `enableStyling` and `stylesSchema` no longer work. You need to provide them using your own block schema. If you are extending an existing one, you should add it as a normal `schemaEnhancer` modification.
+```
+
+See https://6.dev-docs.plone.org/volto/blocks/block-style-wrapper.html for more documentation.
+
+### Remove Sentry integration from core
+
+The Sentry integration was implemented in Volto core at a time when Volto did not provide a good add-on story.
+Since then, the add-on story has improved.
+It now makes sense to extract this feature into its own add-on.
+You can find it in [`@collective/volto-sentry`](https://github.com/collective/volto-sentry).
+
+### Upgrade `husky` to latest version
+
+In the case that you are using husky in your projects (like Volto does), you will have to adapt to the new way that `husky` has for defining hooks.
+
+You'll have to add a script in your `package.json` file called `prepare`:
+
+```diff
+     "build": "razzle build --noninteractive",
++    "prepare": "husky install",
+     "test": "razzle test --maxWorkers=50%",
+```
+
+After execute it, `husky` will install itself in the `.husky` folder of your project. Then you need to create the default hook scripts in `.husky` that you want to execute. You can copy over the Volto ones (take a look in Volto's `.husky` folder).
 
 (volto-upgrade-guide-15.x.x)=
 
@@ -1788,10 +1913,6 @@ const defaultBlocks = {
     restricted: false, // If the block is restricted, it won't show in in the chooser
     mostUsed: false, // A meta group `most used`, appearing at the top of the chooser
     blockHasOwnFocusManagement: false, // Set this to true if the block manages its own focus
-    security: {
-      addPermission: [], // Future proof (not implemented yet) add user permission role(s)
-      view: [], // Future proof (not implemented yet) view user role(s)
-    },
   },
   ...
 ```
@@ -1860,10 +1981,6 @@ The focus management is also transferred to the engine, so it's not needed for y
       restricted: false,
       mostUsed: false,
       blockHasOwnFocusManagement: true,
-      security: {
-        addPermission: [],
-        view: [],
-      },
     },
 ```
 

@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.6.1 (unreleased)
+## 2.1.3 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,33 @@
 ### Bugfix
 
 ### Internal
+
+## 2.1.2 (2022-10-26)
+
+### Internal
+
+- Add missing dependency @tiberiuichim
+
+## 2.1.1 (2022-09-28)
+
+### Bugfix
+
+- Fix if `canary` selected, the tests should not include `--env=jest-environment-jsdom-sixteen` @sneridagh
+
+## 2.1.0 (2022-09-28)
+
+### Feature
+
+- New `clone` to local command @sneridagh
+- New `consolidate` command @sneridagh
+
+## 2.0.0 (2022-09-27)
+
+### Breaking
+
+- Removed `Razzle` as dependency, leave only the `babel-preset-razzle` one which is enough.
+
+  See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
 
 ## 1.6.0 (2022-08-05)
 

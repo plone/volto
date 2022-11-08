@@ -5,6 +5,7 @@ import {
   Facets,
   FilterList,
   SortOn,
+  ViewSwitcher,
 } from '../components';
 import { Grid, Segment } from 'semantic-ui-react';
 import { Button } from 'semantic-ui-react';
@@ -50,11 +51,13 @@ const LeftColumnFacets = (props) => {
 
   return (
     <Grid className="searchBlock-facets left-column-facets" stackable>
-      <Grid.Row>
-        <Grid.Column>
-          {data.headline && <h2 className="headline">{data.headline}</h2>}
-        </Grid.Column>
-      </Grid.Row>
+      {data.headline && (
+        <Grid.Row>
+          <Grid.Column>
+            <h2 className="headline">{data.headline}</h2>
+          </Grid.Column>
+        </Grid.Row>
+      )}
 
       <Grid.Row>
         {data.facets?.length > 0 && (
@@ -96,48 +99,50 @@ const LeftColumnFacets = (props) => {
             </div>
           )}
 
-          <div>
-            <FilterList
-              {...props}
-              isEditMode={isEditMode}
-              setFacets={(f) => {
-                flushSync(() => {
-                  setFacets(f);
-                  onTriggerSearch(searchedText || '', f);
-                });
-              }}
-            />
-          </div>
+          <FilterList
+            {...props}
+            isEditMode={isEditMode}
+            setFacets={(f) => {
+              flushSync(() => {
+                setFacets(f);
+                onTriggerSearch(searchedText || '', f);
+              });
+            }}
+          />
 
           <div className="search-results-count-sort">
-            <SearchDetails text={searchedText} total={totalItems} />
-
-            {data.showSortOn && (
-              <SortOn
-                querystring={querystring}
-                data={data}
-                isEditMode={isEditMode}
-                sortOn={sortOn}
-                sortOrder={sortOrder}
-                setSortOn={(sortOn) => {
-                  flushSync(() => {
-                    setSortOn(sortOn);
-                    onTriggerSearch(searchedText || '', facets, sortOn);
-                  });
-                }}
-                setSortOrder={(sortOrder) => {
-                  flushSync(() => {
-                    setSortOrder(sortOrder);
-                    onTriggerSearch(
-                      searchedText || '',
-                      facets,
-                      sortOn,
-                      sortOrder,
-                    );
-                  });
-                }}
-              />
-            )}
+            <SearchDetails text={searchedText} total={totalItems} data={data} />
+            <div className="sort-views-wrapper">
+              {data.showSortOn && (
+                <SortOn
+                  querystring={querystring}
+                  data={data}
+                  isEditMode={isEditMode}
+                  sortOn={sortOn}
+                  sortOrder={sortOrder}
+                  setSortOn={(sortOn) => {
+                    flushSync(() => {
+                      setSortOn(sortOn);
+                      onTriggerSearch(searchedText || '', facets, sortOn);
+                    });
+                  }}
+                  setSortOrder={(sortOrder) => {
+                    flushSync(() => {
+                      setSortOrder(sortOrder);
+                      onTriggerSearch(
+                        searchedText || '',
+                        facets,
+                        sortOn,
+                        sortOrder,
+                      );
+                    });
+                  }}
+                />
+              )}
+              {data.availableViews && data.availableViews.length > 1 && (
+                <ViewSwitcher {...props} />
+              )}
+            </div>
           </div>
           {children}
         </Grid.Column>

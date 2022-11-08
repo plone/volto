@@ -222,7 +222,7 @@ class View extends Component {
       return <span />;
     }
     const RenderedView =
-      this.getViewByType() || this.getViewByLayout() || this.getViewDefault();
+      this.getViewByLayout() || this.getViewByType() || this.getViewDefault();
 
     return (
       <div id="view">
@@ -236,6 +236,7 @@ class View extends Component {
           }
         />
         <RenderedView
+          key={this.props.content['@id']}
           content={this.props.content}
           location={this.props.location}
           token={this.props.token}

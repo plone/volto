@@ -46,8 +46,6 @@ import MultilingualRedirector from '@plone/volto/components/theme/MultilingualRe
 import WorkingCopyToastsFactory from '@plone/volto/components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory';
 import LockingToastsFactory from '@plone/volto/components/manage/LockingToastsFactory/LockingToastsFactory';
 
-import * as Sentry from '@sentry/browser';
-
 /**
  * @export
  * @class App
@@ -91,11 +89,7 @@ class App extends Component {
    */
   componentDidCatch(error, info) {
     this.setState({ hasError: true, error, errorInfo: info });
-    if (__CLIENT__) {
-      if (window?.env?.RAZZLE_SENTRY_DSN || __SENTRY__?.SENTRY_DSN) {
-        Sentry.captureException(error);
-      }
-    }
+    config.settings.errorHandlers.forEach((handler) => handler(error));
   }
 
   /**
@@ -223,6 +217,7 @@ export const fetchContent = async ({ store, location }) => {
         location,
         id,
         data,
+        blocksConfig,
       });
       if (!p?.length) {
         throw new Error(

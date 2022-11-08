@@ -1,5 +1,4 @@
 import { Transforms, createEditor } from 'slate'; // , Transforms
-import { withHistory } from 'slate-history';
 import { withReact, ReactEditor } from 'slate-react';
 
 import config from '@plone/volto/registry';
@@ -13,7 +12,8 @@ export function makeEditor(options = {}) {
   const { extensions = [] } = options;
   const { slate } = config.settings;
   const defaultExtensions = slate.extensions;
-  const editor = withHistory(withReact(createEditor()));
+
+  const editor = withReact(createEditor());
 
   // TODO: also look for MIME Types in the files case
   editor.dataTransferFormatsOrder = [
