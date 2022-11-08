@@ -70,4 +70,5 @@ const schemaHero = ({ intl, variation }) => {
     },
   };
 };
+
 export default schemaHero;

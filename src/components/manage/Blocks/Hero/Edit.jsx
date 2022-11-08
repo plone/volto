@@ -1,6 +1,5 @@
 /**
  * Edit Hero block.
- * @module components/manage/Blocks/Image/Edit
  */
 
 import React, { Component } from 'react';
@@ -103,17 +102,6 @@ class EditComponent extends Component {
   }
 
   /**
-   * Component did mount
-   * @method componentDidMount
-   * @returns {undefined}
-   */
-  componentDidMount() {
-    if (this.props.selected) {
-      this.titleEditor.current.focus();
-    }
-  }
-
-  /**
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
@@ -143,10 +131,6 @@ class EditComponent extends Component {
    */
   shouldComponentUpdate(nextProps) {
     return this.props.selected || !isEqual(this.props.data, nextProps.data);
-  }
-
-  changeCurrentFocus(currentFocused) {
-    this.setState(() => ({ currentFocused }));
   }
 
   /**
@@ -208,7 +192,6 @@ class EditComponent extends Component {
           uploading={this.state.uploading}
           placeholder={placeholder}
           onUploadImage={this.onUploadImage}
-          changeCurrentFocus={this.changeCurrentFocus}
           isEditMode
         />
         <SidebarPortal selected={this.props.selected}>
