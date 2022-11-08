@@ -525,6 +525,7 @@ msgstr "Zelda"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Center
 msgid "Center"
 msgstr "Erdiratu"
@@ -1446,6 +1447,7 @@ msgstr "Nok"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Full
 msgid "Full"
 msgstr "Osoa"
@@ -1730,6 +1732,11 @@ msgstr "astean behin"
 msgid "Interval Yearly"
 msgstr "urtean behin"
 
+#: components/theme/View/RenderBlocks
+# defaultMessage: Invalid block - Will be removed on saving
+msgid "Invalid Block"
+msgstr ""
+
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Item batch size
 msgid "Item batch size"
@@ -1834,6 +1841,7 @@ msgstr "Irudia"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Left
 msgid "Left"
 msgstr "Ezkerrean"
@@ -2083,6 +2091,11 @@ msgstr "Nire erabiltzaile izena da"
 # defaultMessage: Name
 msgid "Name"
 msgstr "Izena"
+
+#: components/manage/Widgets/AlignWidget
+# defaultMessage: Narrow
+msgid "Narrow"
+msgstr ""
 
 #: error
 # defaultMessage: Navigate back
@@ -2671,6 +2684,7 @@ msgstr "Testu aberatsa"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Right
 msgid "Right"
 msgstr "Eskuman"
@@ -3832,6 +3846,7 @@ msgid "Who"
 msgstr "Nor"
 
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Wide
 msgid "Wide"
 msgstr "Zabala"

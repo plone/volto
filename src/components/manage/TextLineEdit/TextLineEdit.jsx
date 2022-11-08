@@ -181,6 +181,7 @@ export const TextLineEdit = (props) => {
         placeholder={resultantPlaceholder}
         renderElement={renderElement}
         onFocus={handleFocus}
+        aria-multiline="false"
       ></Editable>
     </Slate>
   );

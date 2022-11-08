@@ -307,3 +307,25 @@ export const addStyling = ({ schema, formData, intl }) => {
   };
   return schema;
 };
+
+/**
+ * Allows compose-like declaration of schema enhancers
+ *
+ * Example usage:
+ * const schemaEnhancer = composeSchema(schemaEnhancerA, schemaEnhancerB)
+ *
+ * where each enhancer is a function with signature
+ * ({schema, formData, ...rest}) => schema
+ *
+ */
+export function composeSchema() {
+  const enhancers = Array.from(arguments);
+  const composer = (args) => {
+    const props = enhancers.reduce(
+      (acc, enhancer) => (enhancer ? { ...acc, schema: enhancer(acc) } : acc),
+      { ...args },
+    );
+    return props.schema;
+  };
+  return composer;
+}
