@@ -522,6 +522,7 @@ msgstr "Zelda"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Center
 msgid "Center"
 msgstr "Erdiratu"
@@ -1442,6 +1443,7 @@ msgstr "Nok"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Full
 msgid "Full"
 msgstr "Osoa"
@@ -1814,6 +1816,7 @@ msgstr "Irudia"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Left
 msgid "Left"
 msgstr "Ezkerrean"
@@ -2062,6 +2065,11 @@ msgstr "Nire erabiltzaile izena da"
 # defaultMessage: Name
 msgid "Name"
 msgstr "Izena"
+
+#: components/manage/Widgets/AlignWidget
+# defaultMessage: Narrow
+msgid "Narrow"
+msgstr ""
 
 #: error
 # defaultMessage: Navigate back
@@ -2645,6 +2653,7 @@ msgstr "Testu aberatsa"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Right
 msgid "Right"
 msgstr "Eskuman"
@@ -3804,6 +3813,7 @@ msgid "Who"
 msgstr "Nor"
 
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Wide
 msgid "Wide"
 msgstr "Zabala"

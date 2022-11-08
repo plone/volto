@@ -32,6 +32,7 @@
     "analyze": "BUNDLE_ANALYZE=true razzle build",
     "start": "razzle start",
     "build": "razzle build --noninteractive",
+    "prepare": "husky install",
     "test": "razzle test --maxWorkers=50%",
     "test:ci": "CI=true NODE_ICU_DATA=node_modules/full-icu razzle test",
     "test:husky": "CI=true yarn test --bail --findRelatedTests",
@@ -186,14 +187,6 @@
       "releaseNotes": "node changelogupdater.js excerpt"
     }
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "post-checkout": "yarnhook",
-      "post-merge": "yarnhook",
-      "post-rebase": "yarnhook"
-    }
-  },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json}": [
       "npx eslint --max-warnings=0 --fix",
@@ -284,7 +277,7 @@
     "history": "4.10.1",
     "html-webpack-plugin": "4.5.2",
     "http-proxy-middleware": "2.0.1",
-    "husky": "4.2.5",
+    "husky": "8.0.1",
     "identity-obj-proxy": "3.0.0",
     "image-extensions": "1.1.0",
     "is-url": "1.2.4",
