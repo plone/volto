@@ -15268,13 +15268,6 @@ slash@^4.0.0:
   resolved "https://registry.yarnpkg.com/slash/-/slash-4.0.0.tgz#2422372176c4c6c5addb5e2ada885af984b396a7"
   integrity sha512-3dOsAHXXUkQTpOYcoAxLIorMTp4gIQr5IW3iVb7A7lFIp0VHhnynm9izx6TssdrIcVIESAlVjtnO2K8bg+Coew==
 
-slate-history@0.81.3:
-  version "0.81.3"
-  resolved "https://registry.yarnpkg.com/slate-history/-/slate-history-0.81.3.tgz#4668e447ffb06f30e3d3dc92205ba3850ccc9b64"
-  integrity sha512-imzIVVLwp5hDvWTDawwT6EJrDM3BPKKM9mITDRQGA25qCOVaMborSj9w0IdxkvrNnolID3wXx2gP9XE9EKNw3Q==
-  dependencies:
-    is-plain-object "^5.0.0"
-
 slate-hyperscript@0.81.3:
   version "0.81.3"
   resolved "https://registry.yarnpkg.com/slate-hyperscript/-/slate-hyperscript-0.81.3.tgz#0c8f446d6bef717d2fe855239fb86a000ba2d0d2"

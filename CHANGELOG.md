@@ -11,6 +11,7 @@
 ### Bugfix
 
 - Be more robust towards invalid block configuration @reebalazs
+- Remove slate's builtin undo support, as it conflicts with Volto's undo manager. This fixes crashes when undoing in text blocks and slate's undo stack is empty and "crosses" into Volto's undo stack. This is a temporary workaround, ideally the two undo managers would be delimited so they each work together. @tiberiuichim
 
 ### Internal
 
