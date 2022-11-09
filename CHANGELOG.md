@@ -13,6 +13,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 ### Feature
 
 - Improve the `AlignWidget`, add `narrow` fix default support @sneridagh
+- Implement the Upgrade Control Panel @ericof
 
 ### Bugfix
 
