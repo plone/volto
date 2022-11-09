@@ -66,6 +66,8 @@ const SearchBlockView = (props) => {
     dataListingBodyVariation,
   );
 
+  // in the block edit you can change the used listing block variation,
+  // but it's cached here in the state. So we reset it.
   React.useEffect(() => {
     if (mode !== 'view') {
       setSelectedView(dataListingBodyVariation);
