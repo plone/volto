@@ -669,6 +669,8 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Implement the Upgrade Control Panel @ericof
 - Allow addons to customize modules from the project root, via the `@root` namespace and folder @tiberiuichim
 
+- Provide the `TextLineInput` and `TextLineWidget` (`textline`) components, extracted from `TextLineEdit` @tiberiuichim
+
 ### Bugfix
 
 - Be more robust towards invalid block configuration @reebalazs
@@ -682,6 +684,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Fix updating the listing block when the variation is changed while editing @tiberiuichim
 - fix(warning): StyleMenu dropdown item to use data-attr instead of custom @nileshgulia1
 - Added --canary flag in plone/install.sh. @MdSahil-oss
+- For the `title` field name, the `TextLineEdit` component used the values from the `properties` if the `data` was empty @tiberiuichim
 
 ### Internal
 
