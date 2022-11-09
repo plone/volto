@@ -61,9 +61,17 @@ const SearchBlockView = (props) => {
 
   const Layout = variation.view;
 
+  const dataListingBodyVariation = getListingBodyVariation(data).id;
   const [selectedView, setSelectedView] = React.useState(
-    getListingBodyVariation(data).id,
+    dataListingBodyVariation,
   );
+
+  React.useEffect(() => {
+    if (mode !== 'view') {
+      setSelectedView(dataListingBodyVariation);
+    }
+  }, [dataListingBodyVariation, mode]);
+
   const root = useSelector((state) => state.breadcrumbs.root);
   const listingBodyData = applyDefaults(searchData, root);
 

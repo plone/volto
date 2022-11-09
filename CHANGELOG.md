@@ -18,8 +18,9 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Remove slate's builtin undo support, as it conflicts with Volto's undo manager. This fixes crashes when undoing in text blocks and slate's undo stack is empty and "crosses" into Volto's undo stack. This is a temporary workaround, ideally the two undo managers would be delimited so they each work together. @tiberiuichim
 - Fix highlighting of selection when the Slate editor is not DOM-focused. @tiberiuichim
 - Improve the algorithm that calculates the position of the Slate Toolbar @tiberiuichim
-- The `_unwrapElement` of the volto-slate `ElementEditor` will return an updated range (selection) of the unwrapped element.
+- The `_unwrapElement` of the volto-slate `ElementEditor` will return an updated range (selection) of the unwrapped element.  @tiberiuichim
 - Replace the main client entry point in `start-client.jsx` anonymous function for a named one. @sneridagh
+- Due to the fact that the active listing block variation id was kept in state in SearchBlockView, but you could change it from the edit view, it didn't properly update the view in edit mode @tiberiuichim
 
 ### Internal
 
