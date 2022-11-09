@@ -1,5 +1,6 @@
 import { getQueryStringResults } from '@plone/volto/actions/querystringsearch/querystringsearch';
 import { resolveBlockExtensions } from '@plone/volto/helpers/Extensions';
+import { defaultQuery } from './withQuerystringResults';
 import qs from 'query-string';
 import { slugify } from '@plone/volto/helpers/Utils/Utils';
 
@@ -24,20 +25,14 @@ export default function getListingBlockAsyncData(props) {
   const subrequestID = content?.UID ? `${content?.UID}-${id}` : id;
   const currentPage = getCurrentPage(location, id);
 
-  if (!data.querystring) {
-    return [
-      async () => {
-        return null;
-      },
-    ];
-  }
-
   return [
     dispatch(
       getQueryStringResults(
         path,
         {
-          ...data.querystring,
+          ...(data.querystring
+            ? data.querystring
+            : { query: defaultQuery, sort_on: 'getObjPositionInParent' }),
           ...(resolvedExtensions?.variation?.fullobjects
             ? { fullobjects: 1 }
             : { metadata_fields: '_all' }),
