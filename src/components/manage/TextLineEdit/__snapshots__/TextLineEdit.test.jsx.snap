@@ -50,6 +50,7 @@ exports[`renders TextLineEdit can read its data either from data, metadata or pr
         <span
           data-slate-string={true}
         >
+          Custom title
         </span>
       </span>
     </span>

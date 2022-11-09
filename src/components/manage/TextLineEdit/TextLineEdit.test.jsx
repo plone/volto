@@ -4,9 +4,88 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { JSDOM } from 'jsdom';
 
-import TextLineEdit from './TextLineEdit';
+import TextLineEdit, { getFieldValue } from './TextLineEdit';
 
 const mockStore = configureStore();
+
+describe('getFieldValue', () => {
+  it('Uses data and fieldDataName', () => {
+    const props = {
+      data: {
+        marker: 'hello',
+      },
+      fieldDataName: 'marker',
+    };
+
+    expect(getFieldValue(props)).toBe('hello');
+  });
+
+  it('Favours data and fieldDataName when properties exists', () => {
+    const props = {
+      data: {
+        marker: 'hello',
+      },
+      properties: {
+        title: 'world',
+        description: 'something else',
+      },
+      metadata: {
+        title: 'alternate title',
+        description: 'alternate description',
+      },
+      fieldDataName: 'marker',
+    };
+
+    expect(getFieldValue(props)).toBe('hello');
+  });
+
+  it('Uses fieldname and properties', () => {
+    const props = {
+      data: {
+        marker: 'hello',
+      },
+      properties: {
+        title: 'world',
+        description: 'something else',
+      },
+      fieldName: 'description',
+    };
+
+    expect(getFieldValue(props)).toBe('something else');
+  });
+
+  it('Defaults to title and properties', () => {
+    const props = {
+      data: {
+        marker: 'hello',
+      },
+      properties: {
+        title: 'world',
+        description: 'something else',
+      },
+    };
+
+    expect(getFieldValue(props)).toBe('world');
+  });
+
+  it('Prefers metadata to properties', () => {
+    const props = {
+      data: {
+        marker: 'hello',
+      },
+      properties: {
+        title: 'world',
+        description: 'something else',
+      },
+      metadata: {
+        title: 'alternate title',
+        description: 'alternate description',
+      },
+    };
+
+    expect(getFieldValue(props)).toBe('alternate title');
+  });
+});
 
 describe('renders TextLineEdit', () => {
   beforeEach(() => {
@@ -23,7 +102,7 @@ describe('renders TextLineEdit', () => {
     },
   });
 
-  test('renders an TextLineEdit as h1', () => {
+  it('renders an TextLineEdit as h1', () => {
     const component = renderer.create(
       <Provider store={store}>
         <TextLineEdit
@@ -53,7 +132,7 @@ describe('renders TextLineEdit', () => {
     expect(json).toMatchSnapshot();
   });
 
-  test('renders an TextLineEdit as h2', () => {
+  it('renders an TextLineEdit as h2', () => {
     const component = renderer.create(
       <Provider store={store}>
         <TextLineEdit
@@ -84,7 +163,7 @@ describe('renders TextLineEdit', () => {
     expect(json).toMatchSnapshot();
   });
 
-  test('renders an TextLineEdit as h2 with a classname', () => {
+  it('renders an TextLineEdit as h2 with a classname', () => {
     const component = renderer.create(
       <Provider store={store}>
         <TextLineEdit
@@ -116,7 +195,7 @@ describe('renders TextLineEdit', () => {
     expect(json).toMatchSnapshot();
   });
 
-  test('can read its data either from data, metadata or properties', () => {
+  it('can read its data either from data, metadata or properties', () => {
     const component = renderer.create(
       <Provider store={store}>
         <TextLineEdit
@@ -132,7 +211,7 @@ describe('renders TextLineEdit', () => {
           handleKeyDown={() => {}}
           index={1}
           blockNode={{ current: null }}
-          data={{}}
+          data={{ title: 'Custom title' }}
           fieldDataName="title"
         />
       </Provider>,

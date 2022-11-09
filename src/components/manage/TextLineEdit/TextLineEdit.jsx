@@ -18,7 +18,7 @@ const messages = defineMessages({
 export const getFieldValue = ({
   data,
   fieldDataName,
-  fieldName,
+  fieldName = 'title',
   metadata,
   properties,
 }) => {
