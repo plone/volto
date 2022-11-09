@@ -6,7 +6,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, useIntl } from 'react-intl';
 import config from '@plone/volto/registry';
-import { TextLineInput } from '@plone/volto/components';
+import { TextLineInput } from '@plone/volto/components/manage/Widgets/TextLineWidget';
 
 const messages = defineMessages({
   title: {
@@ -15,7 +15,7 @@ const messages = defineMessages({
   },
 });
 
-const getFieldValue = ({
+export const getFieldValue = ({
   data,
   fieldDataName,
   fieldName,
@@ -38,14 +38,12 @@ export const TextLineEdit = (props) => {
     detached,
     editable,
     index,
-    metadata,
     onAddBlock,
     onChangeBlock,
     onChangeField,
     onFocusNextBlock,
     onFocusPreviousBlock,
     onSelectBlock,
-    properties,
     selected,
     renderTag,
     renderClassName,
@@ -96,20 +94,43 @@ export const TextLineEdit = (props) => {
     onSelectBlock(block);
   }, [block, onSelectBlock]);
 
-  if (typeof window.__SERVER__ !== 'undefined') {
-    return <div />;
-  }
-  return (
+  const handleChange = React.useCallback(
+    (newValue) => {
+      if (newValue !== value) {
+        if (fieldDataName) {
+          onChangeBlock(block, {
+            ...data,
+            [fieldDataName]: newValue,
+          });
+        } else {
+          onChangeField(fieldName, newValue);
+        }
+      }
+    },
+    [
+      data,
+      block,
+      fieldDataName,
+      fieldName,
+      onChangeField,
+      onChangeBlock,
+      value,
+    ],
+  );
+
+  return typeof window.__SERVER__ === 'undefined' ? (
     <TextLineInput
       readOnly={!editable}
       placeholder={derivedPlaceholder}
       value={value}
-      onChange={(value) => onChangeBlock()}
+      onChange={handleChange}
       focus={selected}
       onKeyDown={handleKeyDown}
       onFocus={handleFocus}
+      renderTag={renderTag}
+      renderClassName={renderClassName}
     />
-  );
+  ) : null;
 };
 
 TextLineEdit.propTypes = {
