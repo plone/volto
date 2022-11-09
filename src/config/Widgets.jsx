@@ -99,7 +99,7 @@ export const widgetMapping = {
     select_querystring_field: SelectMetadataWidget,
     autocomplete: SelectAutoComplete,
     color_picker: ColorPickerWidget,
-    text_line: TextLineWidget,
+    textline: TextLineWidget,
   },
   vocabulary: {
     'plone.app.vocabularies.Catalog': ObjectBrowserWidget,
