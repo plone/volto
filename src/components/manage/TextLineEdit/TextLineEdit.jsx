@@ -2,13 +2,11 @@
  * A block-building component that implements a single input based on the Slate
  * Editor. It can render itself as a specified tag.
  */
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Editor, Node, Transforms, Range, createEditor } from 'slate';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, useIntl } from 'react-intl';
-import { usePrevious } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
-import { P } from '@plone/volto-slate/constants';
+import { TextLineInput } from '@plone/volto/components';
 
 const messages = defineMessages({
   title: {
@@ -56,89 +54,62 @@ export const TextLineEdit = (props) => {
     placeholder,
   } = props;
 
-  const derivedValue = getFieldValue(props);
+  const intl = useIntl();
+  const value = getFieldValue(props);
+  const derivedPlaceholder = React.useMemo(
+    () =>
+      placeholder || data.placeholder || intl.formatMessage(messages['title']),
+    [placeholder, data.placeholder, intl],
+  );
 
-  // const intl = useIntl();
-  //
-  // const prevSelected = usePrevious(selected);
+  const disableNewBlocks = React.useMemo(() => detached, [detached]);
+  const handleKeyDown = React.useCallback(
+    (ev) => {
+      if (ev.key === 'Return' || ev.key === 'Enter') {
+        ev.preventDefault();
+        if (!disableNewBlocks) {
+          onSelectBlock(
+            onAddBlock(config.settings.defaultBlockType, index + 1),
+          );
+        }
+      } else if (ev.key === 'ArrowUp') {
+        ev.preventDefault();
+        onFocusPreviousBlock(block, blockNode.current);
+      } else if (ev.key === 'ArrowDown') {
+        ev.preventDefault();
+        onFocusNextBlock(block, blockNode.current);
+      }
+    },
+    [
+      index,
+      blockNode,
+      disableNewBlocks,
+      onSelectBlock,
+      onAddBlock,
+      onFocusPreviousBlock,
+      onFocusNextBlock,
+      block,
+    ],
+  );
 
-  // const text = useMemo(
-  //   () =>
-  //     data?.[fieldDataName] ||
-  //     metadata?.['title'] ||
-  //     properties?.['title'] ||
-  //     '',
-  //   [data, fieldDataName, metadata, properties],
-  // );
-
-  // const resultantPlaceholder = useMemo(
-  //   () =>
-  //     placeholder || data.placeholder || intl.formatMessage(messages['title']),
-  //   [placeholder, data.placeholder, intl],
-  // );
-  // const disableNewBlocks = useMemo(() => detached, [detached]);
-  //
-  // useEffect(() => {
-  //   if (!prevSelected && selected) {
-  //     if (editor.selection && Range.isCollapsed(editor.selection)) {
-  //       // keep selection
-  //       ReactEditor.focus(editor);
-  //     } else {
-  //       // nothing is selected, move focus to end
-  //       ReactEditor.focus(editor);
-  //       Transforms.select(editor, Editor.end(editor, []));
-  //     }
-  //   }
-  // }, [prevSelected, selected, editor]);
-  //
-  // useEffect(() => {
-  //   // undo/redo handler
-  //   const oldText = Node.string(editor);
-  //   if (oldText !== derivedValue) {
-  //     Transforms.insertText(editor, derivedValue, {
-  //       at: [0, 0],
-  //     });
-  //   }
-  // }, [editor, derivedValue]);
-  //
-  //
-  // const handleKeyDown = useCallback(
-  //   (ev) => {
-  //     if (ev.key === 'Return' || ev.key === 'Enter') {
-  //       ev.preventDefault();
-  //       if (!disableNewBlocks) {
-  //         onSelectBlock(
-  //           onAddBlock(config.settings.defaultBlockType, index + 1),
-  //         );
-  //       }
-  //     } else if (ev.key === 'ArrowUp') {
-  //       ev.preventDefault();
-  //       onFocusPreviousBlock(block, blockNode.current);
-  //     } else if (ev.key === 'ArrowDown') {
-  //       ev.preventDefault();
-  //       onFocusNextBlock(block, blockNode.current);
-  //     }
-  //   },
-  //   [
-  //     index,
-  //     blockNode,
-  //     disableNewBlocks,
-  //     onSelectBlock,
-  //     onAddBlock,
-  //     onFocusPreviousBlock,
-  //     onFocusNextBlock,
-  //     block,
-  //   ],
-  // );
-  //
-  // const handleFocus = useCallback(() => {
-  //   onSelectBlock(block);
-  // }, [block, onSelectBlock]);
+  const handleFocus = React.useCallback(() => {
+    onSelectBlock(block);
+  }, [block, onSelectBlock]);
 
   if (typeof window.__SERVER__ !== 'undefined') {
     return <div />;
   }
-  return <TextLineInput onChange={(value) => onChangeBlock()} />;
+  return (
+    <TextLineInput
+      readOnly={!editable}
+      placeholder={derivedPlaceholder}
+      value={value}
+      onChange={(value) => onChangeBlock()}
+      focus={selected}
+      onKeyDown={handleKeyDown}
+      onFocus={handleFocus}
+    />
+  );
 };
 
 TextLineEdit.propTypes = {

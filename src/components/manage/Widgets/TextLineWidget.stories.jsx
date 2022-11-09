@@ -38,6 +38,13 @@ ClickToFocus.args = {
   focus: false,
 };
 
+export const ReadOnly = Default.bind({});
+ReadOnly.args = {
+  ...props,
+  value: 'Hello world',
+  readOnly: true,
+};
+
 export const WithCustomClassname = Default.bind({});
 WithCustomClassname.args = {
   ...props,

@@ -122,7 +122,7 @@ H3.args = {
 };
 
 export default {
-  title: 'Edit Widgets/TextLineEdit',
+  title: 'Internal components/TextLineEdit',
   component: TextLineEdit,
   decorators: [
     (Story) => (

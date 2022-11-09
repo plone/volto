@@ -8,7 +8,7 @@ import cx from 'classnames';
 
 export function TextLineInput(props) {
   const {
-    editable = true,
+    readOnly = false,
     placeholder,
     renderClassName,
     renderTag: RenderTag = 'h1',
@@ -51,8 +51,14 @@ export function TextLineInput(props) {
   React.useEffect(() => {
     // autofocus and move caret to end
     if (focus) {
-      ReactEditor.focus(editor);
-      Transforms.select(editor, Editor.end(editor, []));
+      if (editor.selection && Range.isCollapsed(editor.selection)) {
+        // keep selection
+        ReactEditor.focus(editor);
+      } else {
+        // nothing is selected, move focus to end
+        ReactEditor.focus(editor);
+        Transforms.select(editor, Editor.end(editor, []));
+      }
     }
   }, [focus, editor]);
 
@@ -71,7 +77,7 @@ export function TextLineInput(props) {
   return (
     <Slate editor={editor} onChange={handleChange} value={initialValue}>
       <Editable
-        readOnly={!editable}
+        readOnly={readOnly}
         placeholder={placeholder}
         renderElement={renderElement}
         aria-multiline="false"

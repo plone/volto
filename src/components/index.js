@@ -170,6 +170,9 @@ export ObjectBrowserWidget from '@plone/volto/components/manage/Widgets/ObjectBr
 export ObjectBrowserWidgetMode from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
 export ObjectWidget from '@plone/volto/components/manage/Widgets/ObjectWidget';
 export ObjectListWidget from '@plone/volto/components/manage/Widgets/ObjectListWidget';
+export TextLineWidget, {
+  TextLineInput,
+} from '@plone/volto/components/manage/Widgets/TextareaWidget';
 
 export EditDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/Edit';
 export EditTitleBlock from '@plone/volto/components/manage/Blocks/Title/Edit';
