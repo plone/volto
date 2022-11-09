@@ -15,6 +15,18 @@ const messages = defineMessages({
   },
 });
 
+const getFieldValue = ({
+  data,
+  fieldDataName,
+  fieldName,
+  metadata,
+  properties,
+}) => {
+  return fieldDataName
+    ? data?.[fieldDataName] || ''
+    : (metadata?.[fieldName] ?? properties?.[fieldName] ?? '') || '';
+};
+
 /**
  * A component for inserting an inline textline field for blocks
  */
@@ -26,14 +38,13 @@ export const TextLineEdit = (props) => {
     detached,
     editable,
     index,
-    metadata,
     onAddBlock,
     onChangeBlock,
     onChangeField,
     onFocusNextBlock,
     onFocusPreviousBlock,
     onSelectBlock,
-    properties,
+    // properties,
     selected,
     renderTag,
     renderClassName,
@@ -42,17 +53,14 @@ export const TextLineEdit = (props) => {
     placeholder,
   } = props;
 
+  const derivedValue = getFieldValue(props);
   const [editor] = useState(withReact(createEditor()));
   const [initialValue] = useState([
     {
       type: P,
       children: [
         {
-          text:
-            data?.[fieldDataName] ||
-            metadata?.[fieldName] ||
-            properties?.[fieldName] ||
-            '',
+          text: derivedValue,
         },
       ],
     },
@@ -61,15 +69,6 @@ export const TextLineEdit = (props) => {
   const intl = useIntl();
 
   const prevSelected = usePrevious(selected);
-
-  const text = useMemo(
-    () =>
-      data?.[fieldDataName] ||
-      metadata?.['title'] ||
-      properties?.['title'] ||
-      '',
-    [data, fieldDataName, metadata, properties],
-  );
 
   const resultantPlaceholder = useMemo(
     () =>
@@ -91,19 +90,19 @@ export const TextLineEdit = (props) => {
     }
   }, [prevSelected, selected, editor]);
 
-  useEffect(() => {
-    // undo/redo handler
-    const oldText = Node.string(editor);
-    if (oldText !== text) {
-      Transforms.insertText(editor, text, {
-        at: [0, 0],
-      });
-    }
-  }, [editor, text]);
+  // useEffect(() => {
+  //   // undo/redo handler
+  //   const oldText = Node.string(editor);
+  //   if (oldText !== text) {
+  //     Transforms.insertText(editor, text, {
+  //       at: [0, 0],
+  //     });
+  //   }
+  // }, [editor, text]);
 
   const handleChange = useCallback(() => {
     const newText = Node.string(editor);
-    if (newText !== text) {
+    if (newText !== derivedValue) {
       if (fieldDataName) {
         onChangeBlock(block, {
           ...data,
@@ -121,7 +120,7 @@ export const TextLineEdit = (props) => {
     fieldName,
     onChangeField,
     onChangeBlock,
-    text,
+    derivedValue,
   ]);
 
   const handleKeyDown = useCallback(
