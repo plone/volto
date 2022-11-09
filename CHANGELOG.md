@@ -685,6 +685,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - fix(warning): StyleMenu dropdown item to use data-attr instead of custom @nileshgulia1
 - Added --canary flag in plone/install.sh. @MdSahil-oss
 - For the `title` field name, the `TextLineEdit` component used the values from the `properties` if the `data` was empty @tiberiuichim
+- For the `title` field name, the `TextLineEdit` component used the values from the `properties` if the `data` was empty, even if `fieldDataName` was passed @tiberiuichim
 
 ### Internal
 
