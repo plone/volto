@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Editor, Node, Transforms, Range, createEditor } from 'slate';
+import { Editor, Node, Transforms, createEditor } from 'slate';
 import { ReactEditor, Editable, Slate, withReact } from 'slate-react';
 import { FormFieldWrapper } from '@plone/volto/components';
 import { P } from '@plone/volto-slate/constants';
@@ -17,9 +17,9 @@ export function TextLineInput(props) {
     value,
     onChange,
   } = props;
-  const [editor] = useState(withReact(createEditor()));
+  const [editor] = React.useState(withReact(createEditor()));
 
-  const renderElement = useCallback(
+  const renderElement = React.useCallback(
     ({ attributes, children }) => {
       return (
         <RenderTag {...attributes} className={cx(renderClassName)}>
@@ -30,14 +30,14 @@ export function TextLineInput(props) {
     [renderClassName],
   );
 
-  const handleChange = useCallback(() => {
+  const handleChange = React.useCallback(() => {
     const newText = Node.string(editor);
     if (newText !== value) {
       onChange(newText);
     }
   }, [editor, value, onChange]);
 
-  const [initialValue] = useState([
+  const [initialValue] = React.useState([
     {
       type: P,
       children: [
@@ -55,6 +55,18 @@ export function TextLineInput(props) {
       Transforms.select(editor, Editor.end(editor, []));
     }
   }, [focus, editor]);
+
+  React.useEffect(() => {
+    // Because we keep value in internal state, but want to support undo/redo,
+    // we need to "protect" the Slate editor and use the Slate api to transform
+    // the value
+    const oldText = Node.string(editor);
+    if (oldText !== value) {
+      Transforms.insertText(editor, value, {
+        at: [0, 0],
+      });
+    }
+  }, [editor, value]);
 
   return (
     <Slate editor={editor} onChange={handleChange} value={initialValue}>
