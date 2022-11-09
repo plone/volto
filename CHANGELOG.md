@@ -12,6 +12,8 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 
 ### Feature
 
+- Improve the `AlignWidget`, add `narrow` fix default support @sneridagh
+
 ### Bugfix
 
 - Be more robust towards invalid block configuration @reebalazs
@@ -23,10 +25,11 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 
 ### Internal
 
-- Add translations for facet widget value @iFlameing
 - Upgrade dependencies to latest released slate libraries. Make sure to pass down `ref` to rendered slate elements, as ref is now a function @tiberiuichim
 - Add `editableProps` prop to the `SlateEditor` component, to pass down props to the base Slate `Editable` component. @tiberiuichim
 - Clean, re-enable block-slate-format-link Cypress tests @tiberiuichim
+- Add translation for objectlist `Add` text @iFlameing
+- Add translations for facet widget value @iFlameing
 
 ### Documentation
 
@@ -75,7 +78,6 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Use `View comments` and `Reply to item` permissions in `Comments` component. @razvanMiu
 - Added portrait middleware adapter. @instification
 - Allow dumping the addon dependency graph to a .dot file. Start Volto with `DEBUG_ADDONS_LOADER=true yarn start`, `addon-dependency-graph.dot` will be created in your project folder. @tiberiuichim
-- Improve the `AlignWidget`, add `narrow` fix default support @sneridagh
 
 ### Bugfix
 
