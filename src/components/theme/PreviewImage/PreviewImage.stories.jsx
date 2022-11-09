@@ -1,7 +1,7 @@
 import React from 'react';
 import PreviewImage from './PreviewImage';
 import Wrapper from '@plone/volto/storybook';
-//import preview from '../../../storybook-public/preview.png';
+//import testImage from '../../../static/testImage.png';
 
 const PreviewImageComponent = (props) => {
   const { item, size = 'preview', alt, ...rest } = props;
@@ -9,16 +9,16 @@ const PreviewImageComponent = (props) => {
     <Wrapper location={{ pathname: '/folder2/folder21/doc212' }}>
       <div className="ui segment form attached" style={{ width: '400px' }}>
         <PreviewImage item={item} alt={alt} size={size} {...rest} />
-        <img src="/preview.png" width={100} alt="myTestImage" />
       </div>
     </Wrapper>
   );
 };
 
 const item = {
-  '@id': 'http://localhost:3000/something',
+  '@id': '/static/media/src/static/testImage.png',
   title: 'Item title',
-  //image_field: 'preview_image',
+  image_field: 'preview_image',
+  //imageSrc: '/static/media/src/static/testImage.png',
   // '@@images': {
   //   preview_image: {
   //     'content-type': 'image/png',
@@ -40,6 +40,10 @@ export const Default = PreviewImageComponent.bind({});
 Default.args = {
   item: item,
 };
+
+// export const WithAnImage = () => {
+//   return <img src={testImage} alt="my testo" />;
+// };
 
 export default {
   title: 'Internal Components/PreviewImage',
