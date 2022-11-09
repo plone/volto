@@ -12,6 +12,8 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 
 ### Feature
 
+- Japanese translation updated @terapyon
+
 ### Bugfix
 
 - Be more robust towards invalid block configuration @reebalazs
