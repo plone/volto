@@ -2847,6 +2847,7 @@ msgstr "Elemente selectate - x din y"
 msgid "Selection"
 msgstr "Selecție"
 
+#: components/manage/Blocks/Search/widgets/SelectMetadataField
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/SelectAutoComplete
@@ -3905,6 +3906,11 @@ msgid "box_forgot_password_option"
 msgstr "Ați uitat parola?"
 
 #: config/Blocks
+# defaultMessage: Checkbox
+msgid "checkboxFacet"
+msgstr ""
+
+#: config/Blocks
 # defaultMessage: Common
 msgid "common"
 msgstr "Comun"
@@ -3913,6 +3919,11 @@ msgstr "Comun"
 # defaultMessage: Compare to language
 msgid "compare_to"
 msgstr "Compara cu"
+
+#: config/Blocks
+# defaultMessage: Date Range
+msgid "daterangeFacet"
+msgstr ""
 
 #: components/manage/Blocks/Block/EditBlockWrapper
 # defaultMessage: delete
@@ -4308,6 +4319,11 @@ msgstr "an"
 msgid "rrule_years"
 msgstr "ani"
 
+#: config/Blocks
+# defaultMessage: Select
+msgid "selectFacet"
+msgstr ""
+
 #: components/manage/Blocks/Search/components/ViewSwitcher
 # defaultMessage: Select view
 msgid "selectView"
@@ -4352,6 +4368,11 @@ msgstr "Titlu"
 # defaultMessage: Table of Contents
 msgid "toc"
 msgstr "Cuprins"
+
+#: config/Blocks
+# defaultMessage: Toggle
+msgid "toggleFacet"
+msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update from version {origin} to {destination}
