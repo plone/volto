@@ -63,6 +63,9 @@ ValueAsData.args = {
   fieldDataName: 'title',
   renderClassName: '',
   renderTag: 'h1',
+  properties: {
+    title: 'This is properties title',
+  },
 };
 
 export const InitialPropertiesValue = StoryComponent.bind({});
