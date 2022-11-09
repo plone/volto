@@ -1,14 +1,22 @@
 import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import useDeepCompareEffect from 'use-deep-compare-effect';
 
-import { getContent } from '@plone/volto/actions/content/content';
 import { getQueryStringResults } from '@plone/volto/actions/querystringsearch/querystringsearch';
 import { usePagination } from '@plone/volto/helpers/Utils/usePagination';
 import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
 
 import config from '@plone/volto/registry';
+
+export const defaultQuery = [
+  {
+    i: 'path',
+    o: 'plone.app.querystring.operation.string.relativePath',
+    v: '::1',
+  },
+];
 
 function getDisplayName(WrappedComponent) {
   return WrappedComponent.displayName || WrappedComponent.name || 'Component';
@@ -30,6 +38,7 @@ export default function withQuerystringResults(WrappedComponent) {
 
     // save the path so it won't trigger dispatch on eager router location change
     const [initialPath] = React.useState(getBaseUrl(path));
+    const location = useLocation();
 
     const copyFields = ['limit', 'query', 'sort_on', 'sort_order', 'depth'];
     const { currentPage, setCurrentPage } = usePagination(id, 1);
@@ -47,41 +56,29 @@ export default function withQuerystringResults(WrappedComponent) {
     const adaptedQueryRef = useRef(adaptedQuery);
     const currentPageRef = useRef(currentPage);
 
-    const querystringResults = useSelector(
-      (state) => state.querystringsearch.subrequests,
-    );
+    const querystringResults =
+      useSelector((state) => state.querystringsearch.subrequests) || {};
+
+    const currentResult = querystringResults[subrequestID] || {
+      total: 0,
+      items: [],
+      batching: {},
+      loaded: true,
+    };
+
     const dispatch = useDispatch();
 
-    const folderItems = content?.is_folderish ? content.items : [];
     const hasQuery = querystring?.query?.length > 0;
-    const hasLoaded = hasQuery
-      ? querystringResults?.[subrequestID]?.loaded
-      : true;
+    const hasLoaded = currentResult.loaded;
+    const listingItems = currentResult.items || [];
 
-    const listingItems = hasQuery
-      ? querystringResults?.[subrequestID]?.items || []
-      : folderItems;
-
-    const showAsFolderListing = !hasQuery && content?.items_total > b_size;
-    const showAsQueryListing =
-      hasQuery && querystringResults?.[subrequestID]?.total > b_size;
-
-    const totalPages = showAsFolderListing
-      ? Math.ceil(content.items_total / b_size)
-      : showAsQueryListing
-        ? Math.ceil(querystringResults[subrequestID].total / b_size)
-        : 0;
-
-    const prevBatch = showAsFolderListing
-      ? content.batching?.prev
-      : showAsQueryListing
-        ? querystringResults[subrequestID].batching?.prev
-        : null;
-    const nextBatch = showAsFolderListing
-      ? content.batching?.next
-      : showAsQueryListing
-        ? querystringResults[subrequestID].batching?.next
-        : null;
+    const showAsQueryListing = currentResult.total > b_size;
+    const showAsFolderListing = !hasQuery && showAsQueryListing;
+    const totalPages = showAsQueryListing
+      ? Math.ceil(currentResult.total / b_size)
+      : 0;
+    const prevBatch = showAsQueryListing ? currentResult.batching?.prev : null;
+    const nextBatch = showAsQueryListing ? currentResult.batching?.next : null;
 
     const isImageGallery =
       (!data.variation && data.template === 'imageGallery') ||
@@ -117,7 +114,24 @@ export default function withQuerystringResults(WrappedComponent) {
           ),
         );
       } else {
-        dispatch(getContent(initialPath, null, null, currentPage));
+        // If the URL ends with '/add', it means we are creating new content
+        // and therefore we are not triggering the search.
+        if (location.pathname.endsWith('/add')) {
+          return;
+        }
+
+        dispatch(
+          getQueryStringResults(
+            initialPath,
+            {
+              ...adaptedQuery,
+              sort_on: 'getObjPositionInParent',
+              query: defaultQuery,
+            },
+            subrequestID,
+            currentPage,
+          ),
+        );
       }
       adaptedQueryRef.current = adaptedQuery;
       currentPageRef.current = currentPage;
@@ -129,13 +143,14 @@ export default function withQuerystringResults(WrappedComponent) {
       initialPath,
       dispatch,
       currentPage,
+      location,
     ]);
 
     return (
       <WrappedComponent
         {...props}
         onPaginationChange={(e, { activePage }) => setCurrentPage(activePage)}
-        total={querystringResults?.[subrequestID]?.total}
+        total={currentResult.total}
         batch_size={b_size}
         currentPage={currentPage}
         totalPages={totalPages}
