@@ -12,6 +12,8 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 
 ### Feature
 
+- Provide the `TextLineInput` and `TextLineWidget` (`textline`) components, extracted from `TextLineEdit` @tiberiuichim
+
 ### Bugfix
 
 - Be more robust towards invalid block configuration @reebalazs
@@ -20,6 +22,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Improve the algorithm that calculates the position of the Slate Toolbar @tiberiuichim
 - The `_unwrapElement` of the volto-slate `ElementEditor` will return an updated range (selection) of the unwrapped element.
 - Replace the main client entry point in `start-client.jsx` anonymous function for a named one. @sneridagh
+- For the `title` field name, the `TextLineEdit` component used the values from the `properties` if the `data` was empty @tiberiuichim
 
 ### Internal
 
