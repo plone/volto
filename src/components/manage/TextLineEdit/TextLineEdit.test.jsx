@@ -115,4 +115,35 @@ describe('renders TextLineEdit', () => {
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
+
+  test('can read its data either from data, metadata or properties', () => {
+    const component = renderer.create(
+      <Provider store={store}>
+        <TextLineEdit
+          properties={{ title: 'My Title' }}
+          selected={false}
+          block="1234"
+          onAddBlock={() => {}}
+          onChangeField={() => {}}
+          onSelectBlock={() => {}}
+          onDeleteBlock={() => {}}
+          onFocusPreviousBlock={() => {}}
+          onFocusNextBlock={() => {}}
+          handleKeyDown={() => {}}
+          index={1}
+          blockNode={{ current: null }}
+          data={{}}
+          fieldDataName="title"
+        />
+      </Provider>,
+      {
+        createNodeMock: () => ({
+          ownerDocument: global.document,
+          getRootNode: () => global.document,
+        }),
+      },
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
 });
