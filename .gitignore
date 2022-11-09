@@ -12,6 +12,7 @@ build
 
 # Other
 /cache
+.yarn/
 .DS_Store
 .idea
 lighthouse-report.html
