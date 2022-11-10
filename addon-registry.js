@@ -309,7 +309,7 @@ class AddonConfigurationRegistry {
    */
   getAddons() {
     return this.dependencyGraph
-      .dependenciesOf('@package')
+      .dependenciesOf('@root')
       .map((name) => this.packages[name]);
   }
 
