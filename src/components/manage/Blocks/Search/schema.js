@@ -173,7 +173,10 @@ const FacetSchema = ({ intl }) => ({
     type: {
       title: intl.formatMessage(messages.facetWidget),
       choices: config.blocks.blocksConfig.search.extensions.facetWidgets.types.map(
-        ({ id, title }) => [id, title],
+        ({ id, title }) => [
+          id,
+          `${intl.formatMessage({ id: id, defaultMessage: title })}`,
+        ],
       ),
       defaultValue: config.blocks.blocksConfig.search.extensions.facetWidgets.types.find(
         ({ isDefault }) => isDefault,
