@@ -9,7 +9,6 @@
 
 See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
 
-
 ### Feature
 
 - Improve the `AlignWidget`, add `narrow` fix default support @sneridagh
@@ -22,6 +21,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Improve the algorithm that calculates the position of the Slate Toolbar @tiberiuichim
 - The `_unwrapElement` of the volto-slate `ElementEditor` will return an updated range (selection) of the unwrapped element.
 - Replace the main client entry point in `start-client.jsx` anonymous function for a named one. @sneridagh
+- fix(warning): StyleMenu dropdown item to use data-attr instead of custom @nileshgulia1
 
 ### Internal
 
@@ -413,6 +413,7 @@ Undo html_static_path configuration in `plone/documentation`, and restore image 
 ### Internal
 
 ### Documentation
+
 - Fix copy / paste text in list @robgietema
 
 ## 16.0.0-alpha.27 (2022-08-29)
