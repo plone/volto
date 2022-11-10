@@ -1,7 +1,6 @@
 import React from 'react';
 import PreviewImage from './PreviewImage';
 import Wrapper from '@plone/volto/storybook';
-//import testImage from '../../../static/testImage.png';
 
 const PreviewImageComponent = (props) => {
   const { item, size = 'preview', alt, ...rest } = props;

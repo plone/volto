@@ -31,6 +31,17 @@ const SVGLOADER = {
   ],
 };
 
+// Use the file loader for any file in /static without an extension.
+// This is here so we can serve static image scales from the filesystem,
+// e.g. /static/testImage.png/@@images/preview_image/preview
+const NOEXTFILELOADER = {
+  test: /static(.*)\/([^.]+$)/,
+  use: {
+    loader: 'file-loader',
+    options: { esModule: false, name: 'static/media/[path][name]' },
+  },
+};
+
 const defaultRazzleOptions = {
   verbose: false,
   debug: {},
@@ -96,6 +107,7 @@ module.exports = {
     config.module.rules.unshift(SVGLOADER);
     const fileLoader = config.module.rules.find(fileLoaderFinder);
     fileLoader.exclude = [/\.(config|variables|overrides)$/, /icons\/.*\.svg$/];
+    config.module.rules.unshift(NOEXTFILELOADER);
 
     config.plugins.unshift(
       new webpack.DefinePlugin({
