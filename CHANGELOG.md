@@ -11,6 +11,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 
 ### Feature
 
+- Japanese translation updated @terapyon
 - Improve the `AlignWidget`, add `narrow` fix default support @sneridagh
 
 ### Bugfix
