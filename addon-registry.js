@@ -374,6 +374,8 @@ class AddonConfigurationRegistry {
         }
       });
 
+      // allow customization of modules in the `@root` namespace from addons,
+      // by creating a folder called `@root`.
       const rootBase = path.join(base, '@root');
       if (fs.existsSync(rootBase))
         reg.push({
@@ -382,8 +384,6 @@ class AddonConfigurationRegistry {
           name: '@root',
         });
 
-      // allow customization of modules in the `@root` namespace from addons,
-      // by creating a folder called `@root`.
       reg.push(
         fs.existsSync(path.join(base, 'volto'))
           ? {
