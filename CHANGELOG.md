@@ -9,10 +9,10 @@
 
 See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
 
-
 ### Feature
 
 - Japanese translation updated @terapyon
+- Improve the `AlignWidget`, add `narrow` fix default support @sneridagh
 
 ### Bugfix
 
@@ -22,12 +22,15 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Improve the algorithm that calculates the position of the Slate Toolbar @tiberiuichim
 - The `_unwrapElement` of the volto-slate `ElementEditor` will return an updated range (selection) of the unwrapped element.
 - Replace the main client entry point in `start-client.jsx` anonymous function for a named one. @sneridagh
+- fix(warning): StyleMenu dropdown item to use data-attr instead of custom @nileshgulia1
 
 ### Internal
 
 - Upgrade dependencies to latest released slate libraries. Make sure to pass down `ref` to rendered slate elements, as ref is now a function @tiberiuichim
 - Add `editableProps` prop to the `SlateEditor` component, to pass down props to the base Slate `Editable` component. @tiberiuichim
 - Clean, re-enable block-slate-format-link Cypress tests @tiberiuichim
+- Add translation for objectlist `Add` text @iFlameing
+- Add translations for facet widget value @iFlameing
 
 ### Documentation
 
@@ -36,6 +39,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 ### Bugfix
 
 - Ensure the view component is always replaced after navigating to a different page. @davisagli
+- Added --canary flag in plone/install.sh. @MdSahil-oss
 
 ## 16.0.0-alpha.47 (2022-11-02)
 
@@ -76,7 +80,6 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Use `View comments` and `Reply to item` permissions in `Comments` component. @razvanMiu
 - Added portrait middleware adapter. @instification
 - Allow dumping the addon dependency graph to a .dot file. Start Volto with `DEBUG_ADDONS_LOADER=true yarn start`, `addon-dependency-graph.dot` will be created in your project folder. @tiberiuichim
-- Improve the `AlignWidget`, add `narrow` fix default support @sneridagh
 
 ### Bugfix
 
@@ -412,6 +415,7 @@ Undo html_static_path configuration in `plone/documentation`, and restore image 
 ### Internal
 
 ### Documentation
+
 - Fix copy / paste text in list @robgietema
 
 ## 16.0.0-alpha.27 (2022-08-29)
