@@ -38,6 +38,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 ### Bugfix
 
 - Ensure the view component is always replaced after navigating to a different page. @davisagli
+- Added --canary flag in plone/install.sh. @MdSahil-oss
 
 ## 16.0.0-alpha.47 (2022-11-02)
 
