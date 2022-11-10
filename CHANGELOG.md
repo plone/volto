@@ -13,6 +13,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 
 - Japanese translation updated @terapyon
 - Improve the `AlignWidget`, add `narrow` fix default support @sneridagh
+- Standardize the existence of core `packages` folder. You can define a number of core add-ons present in this folder and they get configured automatically @sneridagh
 
 ### Bugfix
 

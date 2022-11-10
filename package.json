@@ -27,6 +27,11 @@
     "plone",
     "react"
   ],
+  "packagesFolderAddons": {
+    "volto-slate": {
+      "package": "@plone/volto-slate"
+    }
+  },
   "scripts": {
     "postinstall": "yarn patches",
     "analyze": "BUNDLE_ANALYZE=true razzle build",
