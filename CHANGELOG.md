@@ -1256,6 +1256,7 @@ See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information
 - Add support for loading core add-ons from the `packages` folder defined in Volto's `package.json` @sneridagh
 - Implement the Upgrade Control Panel @ericof
 - Allow addons to customize modules from the project root, via the `@root` namespace and folder @tiberiuichim
+- Updated Spanish translation @macagua
 
 ### Bugfix
 
