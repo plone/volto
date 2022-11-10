@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-03 03:20-0400\n"
-"PO-Revision-Date: 2022-10-31 21:42-0400\n"
+"PO-Revision-Date: 2022-11-10 09:53-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language: es\n"
 "Language-Team: ES <LL@li.org>\n"
@@ -1714,7 +1714,7 @@ msgstr "Intervalo anual"
 #: components/theme/View/RenderBlocks
 # defaultMessage: Invalid block - Will be removed on saving
 msgid "Invalid Block"
-msgstr ""
+msgstr "Bloque no válido: se eliminará al guardar"
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Item batch size
@@ -2073,7 +2073,7 @@ msgstr "Nombre"
 #: components/manage/Widgets/AlignWidget
 # defaultMessage: Narrow
 msgid "Narrow"
-msgstr ""
+msgstr "Reducir"
 
 #: error
 # defaultMessage: Navigate back
@@ -3919,7 +3919,7 @@ msgstr "¿Olvidaste tu contraseña?"
 #: config/Blocks
 # defaultMessage: Checkbox
 msgid "checkboxFacet"
-msgstr ""
+msgstr "Casilla de comprobación"
 
 #: config/Blocks
 # defaultMessage: Common
@@ -3934,7 +3934,7 @@ msgstr "Comparar con el idioma"
 #: config/Blocks
 # defaultMessage: Date Range
 msgid "daterangeFacet"
-msgstr ""
+msgstr "Rango de fechas"
 
 #: components/manage/Blocks/Block/EditBlockWrapper
 # defaultMessage: delete
@@ -4333,7 +4333,7 @@ msgstr "años"
 #: config/Blocks
 # defaultMessage: Select
 msgid "selectFacet"
-msgstr ""
+msgstr "Seleccione"
 
 #: components/manage/Blocks/Search/components/ViewSwitcher
 # defaultMessage: Select view
@@ -4383,7 +4383,7 @@ msgstr "Tabla de contenidos"
 #: config/Blocks
 # defaultMessage: Toggle
 msgid "toggleFacet"
-msgstr ""
+msgstr "Cambiar a"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update from version {origin} to {destination}

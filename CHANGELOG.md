@@ -13,6 +13,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 
 - Japanese translation updated @terapyon
 - Improve the `AlignWidget`, add `narrow` fix default support @sneridagh
+- Updated Spanish translation @macagua
 
 ### Bugfix
 
