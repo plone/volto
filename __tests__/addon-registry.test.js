@@ -149,6 +149,7 @@ describe('AddonConfigurationRegistry', () => {
     expect(reg.getAddonCustomizationPaths()).toStrictEqual({
       '@plone/volto/client': `${base}/node_modules/test-released-source-addon/src/customizations/client.js`,
       '@plone/volto/server': `${base}/addons/test-addon/src/custom-addons/volto/server.jsx`,
+      '@root/marker': `${base}/node_modules/test-released-source-addon/src/customizations/@root/marker.js`,
       'test-released-source-addon/index': `${base}/addons/test-addon/src/custom-addons/test-released-source-addon/index.js`,
     });
   });
