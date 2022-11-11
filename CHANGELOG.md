@@ -14,6 +14,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Japanese translation updated @terapyon
 - Improve the `AlignWidget`, add `narrow` fix default support @sneridagh
 - Add support for loading core add-ons from the `packages` folder defined in Volto's `package.json` @sneridagh
+- Implement the Upgrade Control Panel @ericof
 - Allow addons to customize modules from the project root, via the `@root` namespace and folder @tiberiuichim
 
 ### Bugfix

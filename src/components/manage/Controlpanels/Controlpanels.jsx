@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import { concat, filter, last, map, uniqBy } from 'lodash';
 import { Portal } from 'react-portal';
 import { Helmet } from '@plone/volto/helpers';
-import { Container, Grid, Header, Segment } from 'semantic-ui-react';
+import { Container, Grid, Header, Message, Segment } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import { listControlpanels, getSystemInformation } from '@plone/volto/actions';
@@ -243,6 +243,21 @@ class Controlpanels extends Component {
             <Segment className="primary">
               <FormattedMessage id="Site Setup" defaultMessage="Site Setup" />
             </Segment>
+            {this.props.systemInformation &&
+              this.props.systemInformation.upgrade && (
+                <Message attached warning>
+                  <FormattedMessage
+                    id="The site configuration is outdated and needs to be upgraded."
+                    defaultMessage="The site configuration is outdated and needs to be upgraded."
+                  />{' '}
+                  <Link to={`/controlpanel/plone-upgrade`}>
+                    <FormattedMessage
+                      id="Please continue with the upgrade."
+                      defaultMessage="Please continue with the upgrade."
+                    />
+                  </Link>
+                </Message>
+              )}
             {map(groups, (group) => [
               <Segment key={`header-${group}`} secondary>
                 {group}
