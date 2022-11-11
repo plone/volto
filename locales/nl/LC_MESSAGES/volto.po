@@ -522,6 +522,7 @@ msgstr "Cel"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Center
 msgid "Center"
 msgstr "Centreren"
@@ -1442,6 +1443,7 @@ msgstr "Van"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Full
 msgid "Full"
 msgstr "Volledig"
@@ -1705,6 +1707,11 @@ msgstr "Wekelijks interval"
 msgid "Interval Yearly"
 msgstr "Jaarlijsk interval"
 
+#: components/theme/View/RenderBlocks
+# defaultMessage: Invalid block - Will be removed on saving
+msgid "Invalid Block"
+msgstr ""
+
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Item batch size
 msgid "Item batch size"
@@ -1809,6 +1816,7 @@ msgstr "Voorbeeldafbeelding"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Left
 msgid "Left"
 msgstr "Links"
@@ -2057,6 +2065,11 @@ msgstr "Mijn gebruikersnaam is"
 # defaultMessage: Name
 msgid "Name"
 msgstr "Naam"
+
+#: components/manage/Widgets/AlignWidget
+# defaultMessage: Narrow
+msgid "Narrow"
+msgstr ""
 
 #: error
 # defaultMessage: Navigate back
@@ -2640,6 +2653,7 @@ msgstr "Tekst"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Right
 msgid "Right"
 msgstr "Rechts"
@@ -2840,6 +2854,7 @@ msgstr "Geselecteerde items - x van y"
 msgid "Selection"
 msgstr "Selectie"
 
+#: components/manage/Blocks/Search/widgets/SelectMetadataField
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/SelectAutoComplete
@@ -3799,6 +3814,7 @@ msgid "Who"
 msgstr "Wie"
 
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Wide
 msgid "Wide"
 msgstr "Breed"
@@ -3897,6 +3913,11 @@ msgid "box_forgot_password_option"
 msgstr "Wachtwoord vergeten?"
 
 #: config/Blocks
+# defaultMessage: Checkbox
+msgid "checkboxFacet"
+msgstr ""
+
+#: config/Blocks
 # defaultMessage: Common
 msgid "common"
 msgstr "algemeen"
@@ -3905,6 +3926,11 @@ msgstr "algemeen"
 # defaultMessage: Compare to language
 msgid "compare_to"
 msgstr "Vergelijk met taal"
+
+#: config/Blocks
+# defaultMessage: Date Range
+msgid "daterangeFacet"
+msgstr ""
 
 #: components/manage/Blocks/Block/EditBlockWrapper
 # defaultMessage: delete
@@ -4111,6 +4137,11 @@ msgid "others"
 msgstr "andere"
 
 #: components/manage/Contents/ContentsItem
+# defaultMessage: Pending
+msgid "pending"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
 # defaultMessage: Private
 msgid "private"
 msgstr "Privé"
@@ -4295,6 +4326,11 @@ msgstr "jaar"
 msgid "rrule_years"
 msgstr "jaren"
 
+#: config/Blocks
+# defaultMessage: Select
+msgid "selectFacet"
+msgstr ""
+
 #: components/manage/Blocks/Search/components/ViewSwitcher
 # defaultMessage: Select view
 msgid "selectView"
@@ -4339,6 +4375,11 @@ msgstr "titel"
 # defaultMessage: Table of Contents
 msgid "toc"
 msgstr "Inhoudsopgave"
+
+#: config/Blocks
+# defaultMessage: Toggle
+msgid "toggleFacet"
+msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update from version {origin} to {destination}

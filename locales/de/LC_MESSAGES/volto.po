@@ -87,7 +87,7 @@ msgstr "Hinzufügen"
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Add
 msgid "Add (object list)"
-msgstr ""
+msgstr "Hinzufügen"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
@@ -521,6 +521,7 @@ msgstr "Zelle"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Center
 msgid "Center"
 msgstr "Mittig"
@@ -1441,6 +1442,7 @@ msgstr "E-Mail"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Full
 msgid "Full"
 msgstr "Volle Breite"
@@ -1704,6 +1706,11 @@ msgstr "Wöchentlich"
 msgid "Interval Yearly"
 msgstr "Jährliches Intervall"
 
+#: components/theme/View/RenderBlocks
+# defaultMessage: Invalid block - Will be removed on saving
+msgid "Invalid Block"
+msgstr "Ungültiger Block - Wird beim Speichern entfernt"
+
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Item batch size
 msgid "Item batch size"
@@ -1808,6 +1815,7 @@ msgstr "Lead-Bild"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Left
 msgid "Left"
 msgstr "Links"
@@ -2056,6 +2064,11 @@ msgstr "Mein Benutzername ist"
 # defaultMessage: Name
 msgid "Name"
 msgstr "Name"
+
+#: components/manage/Widgets/AlignWidget
+# defaultMessage: Narrow
+msgid "Narrow"
+msgstr ""
 
 #: error
 # defaultMessage: Navigate back
@@ -2639,6 +2652,7 @@ msgstr "Richtext"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Right
 msgid "Right"
 msgstr "Rechte"
@@ -2839,6 +2853,7 @@ msgstr "Ausgewählte Objekte - x von y"
 msgid "Selection"
 msgstr "Auswahl"
 
+#: components/manage/Blocks/Search/widgets/SelectMetadataField
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/SelectAutoComplete
@@ -3798,6 +3813,7 @@ msgid "Who"
 msgstr "Wer"
 
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Wide
 msgid "Wide"
 msgstr ""
@@ -3896,6 +3912,11 @@ msgid "box_forgot_password_option"
 msgstr "Passwort vergessen?"
 
 #: config/Blocks
+# defaultMessage: Checkbox
+msgid "checkboxFacet"
+msgstr "Kontrollkästchen"
+
+#: config/Blocks
 # defaultMessage: Common
 msgid "common"
 msgstr "Allgemein"
@@ -3904,6 +3925,11 @@ msgstr "Allgemein"
 # defaultMessage: Compare to language
 msgid "compare_to"
 msgstr "Vergleichen mit"
+
+#: config/Blocks
+# defaultMessage: Date Range
+msgid "daterangeFacet"
+msgstr "Datumsbereich"
 
 #: components/manage/Blocks/Block/EditBlockWrapper
 # defaultMessage: delete
@@ -4110,6 +4136,11 @@ msgid "others"
 msgstr "andere"
 
 #: components/manage/Contents/ContentsItem
+# defaultMessage: Pending
+msgid "pending"
+msgstr "Ausstehend"
+
+#: components/manage/Contents/ContentsItem
 # defaultMessage: Private
 msgid "private"
 msgstr "Privat"
@@ -4294,6 +4325,11 @@ msgstr "Regel Jahr"
 msgid "rrule_years"
 msgstr "Regel Jahre"
 
+#: config/Blocks
+# defaultMessage: Select
+msgid "selectFacet"
+msgstr "Auswählen"
+
 #: components/manage/Blocks/Search/components/ViewSwitcher
 # defaultMessage: Select view
 msgid "selectView"
@@ -4338,6 +4374,11 @@ msgstr "Titel"
 # defaultMessage: Table of Contents
 msgid "toc"
 msgstr "Inhaltsverzeichnis"
+
+#: config/Blocks
+# defaultMessage: Toggle
+msgid "toggleFacet"
+msgstr "Toogle"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update from version {origin} to {destination}

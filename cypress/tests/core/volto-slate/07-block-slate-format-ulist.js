@@ -10,6 +10,7 @@ describe('Block Tests: Bulleted lists', () => {
     // List
     cy.setSlateSelection('green');
     cy.clickSlateButton('Bulleted list');
+    cy.getSlate().should('have.descendants', 'ul li');
 
     // Split list
     cy.setSlateCursor('ideas').type('{enter}');
@@ -26,6 +27,7 @@ describe('Block Tests: Bulleted lists', () => {
       'sleep furiously.',
     );
   });
+
   it('should transform to new text block on press Enter in empty lists', function () {
     // Complete chained commands
     cy.getSlateEditorAndType('Colorless green ideas sleep furiously.');
@@ -33,6 +35,7 @@ describe('Block Tests: Bulleted lists', () => {
     // List
     cy.setSlateSelection('green');
     cy.clickSlateButton('Bulleted list');
+    cy.setSlateCursor('Colorless');
 
     cy.setSlateSelection('Colorless green ideas sleep furiously.')
       .type('{backspace}')
@@ -42,8 +45,9 @@ describe('Block Tests: Bulleted lists', () => {
     cy.toolbarSave();
     cy.wait(1000);
 
-    // then the page view should contain a link
-    cy.get('[id="page-document"] p').its('length').should('eq', 1);
+    cy.log('then the page view should contain a link');
+    cy.get('#view #page-document p').its('length').should('eq', 1);
+    cy.get('#view #page-document p').should('have.text', "");
   });
 
   it('As editor I can remove bulleted lists', function () {

@@ -4,7 +4,6 @@ import { isEqual } from 'lodash';
 import { Transforms, Editor } from 'slate'; // , Transforms
 import { Slate, Editable, ReactEditor } from 'slate-react';
 import React, { Component } from 'react'; // , useState
-import { connect } from 'react-redux';
 import { v4 as uuid } from 'uuid';
 
 import config from '@plone/volto/registry';
@@ -169,7 +168,6 @@ class SlateEditor extends Component {
       }
 
       this.setState({
-        // editor,
         internalValue: this.props.value,
       });
       return;
@@ -215,6 +213,7 @@ class SlateEditor extends Component {
       readOnly,
       className,
       renderExtensions = [],
+      editableProps = {},
     } = this.props;
     const slateSettings = this.slateSettings;
 
@@ -329,6 +328,7 @@ class SlateEditor extends Component {
                 if (handled) return;
                 onKeyDown && onKeyDown({ editor, event });
               }}
+              {...editableProps}
             />
             {selected &&
               slateSettings.persistentHelpers.map((Helper, i) => {
@@ -363,10 +363,7 @@ SlateEditor.defaultProps = {
   className: '',
 };
 
-export default connect((state, props) => {
-  return {};
-})(
-  __CLIENT__ && window?.Cypress
-    ? withTestingFeatures(SlateEditor)
-    : SlateEditor,
-);
+// May be needed to wrap in React.memo(), it used to be wrapped in connect()
+export default __CLIENT__ && window?.Cypress
+  ? withTestingFeatures(SlateEditor)
+  : SlateEditor;

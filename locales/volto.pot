@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-10-28T09:34:03.763Z\n"
+"POT-Creation-Date: 2022-11-08T05:23:22.338Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -517,6 +517,7 @@ msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Center
 msgid "Center"
 msgstr ""
@@ -1437,6 +1438,7 @@ msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Full
 msgid "Full"
 msgstr ""
@@ -1700,6 +1702,11 @@ msgstr ""
 msgid "Interval Yearly"
 msgstr ""
 
+#: components/theme/View/RenderBlocks
+# defaultMessage: Invalid block - Will be removed on saving
+msgid "Invalid Block"
+msgstr ""
+
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Item batch size
 msgid "Item batch size"
@@ -1804,6 +1811,7 @@ msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Left
 msgid "Left"
 msgstr ""
@@ -2051,6 +2059,11 @@ msgstr ""
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Name
 msgid "Name"
+msgstr ""
+
+#: components/manage/Widgets/AlignWidget
+# defaultMessage: Narrow
+msgid "Narrow"
 msgstr ""
 
 #: error
@@ -2635,6 +2648,7 @@ msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Right
 msgid "Right"
 msgstr ""
@@ -2835,6 +2849,7 @@ msgstr ""
 msgid "Selection"
 msgstr ""
 
+#: components/manage/Blocks/Search/widgets/SelectMetadataField
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/SelectAutoComplete
@@ -3794,6 +3809,7 @@ msgid "Who"
 msgstr ""
 
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Wide
 msgid "Wide"
 msgstr ""
@@ -3892,6 +3908,11 @@ msgid "box_forgot_password_option"
 msgstr ""
 
 #: config/Blocks
+# defaultMessage: Checkbox
+msgid "checkboxFacet"
+msgstr ""
+
+#: config/Blocks
 # defaultMessage: Common
 msgid "common"
 msgstr ""
@@ -3899,6 +3920,11 @@ msgstr ""
 #: components/manage/Multilingual/CompareLanguages
 # defaultMessage: Compare to language
 msgid "compare_to"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Date Range
+msgid "daterangeFacet"
 msgstr ""
 
 #: components/manage/Blocks/Block/EditBlockWrapper
@@ -4106,6 +4132,11 @@ msgid "others"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
+# defaultMessage: Pending
+msgid "pending"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
 # defaultMessage: Private
 msgid "private"
 msgstr ""
@@ -4290,6 +4321,11 @@ msgstr ""
 msgid "rrule_years"
 msgstr ""
 
+#: config/Blocks
+# defaultMessage: Select
+msgid "selectFacet"
+msgstr ""
+
 #: components/manage/Blocks/Search/components/ViewSwitcher
 # defaultMessage: Select view
 msgid "selectView"
@@ -4333,6 +4369,11 @@ msgstr ""
 #: config/Blocks
 # defaultMessage: Table of Contents
 msgid "toc"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Toggle
+msgid "toggleFacet"
 msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel

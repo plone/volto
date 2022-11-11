@@ -2,6 +2,7 @@
 
 exports[`renders TextLineEdit renders an TextLineEdit as h1 1`] = `
 <div
+  aria-multiline="false"
   autoCapitalize="false"
   autoCorrect="false"
   contentEditable={true}
@@ -59,6 +60,7 @@ exports[`renders TextLineEdit renders an TextLineEdit as h1 1`] = `
 
 exports[`renders TextLineEdit renders an TextLineEdit as h2 1`] = `
 <div
+  aria-multiline="false"
   autoCapitalize="false"
   autoCorrect="false"
   contentEditable={true}
@@ -116,6 +118,7 @@ exports[`renders TextLineEdit renders an TextLineEdit as h2 1`] = `
 
 exports[`renders TextLineEdit renders an TextLineEdit as h2 with a classname 1`] = `
 <div
+  aria-multiline="false"
   autoCapitalize="false"
   autoCorrect="false"
   contentEditable={true}

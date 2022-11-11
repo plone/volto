@@ -218,6 +218,48 @@ index 2f4e1e8..51bd52b 100644
 
 Razzle 4 internal API is only compatible with up to Jest 26.
 
+### Upgrade to use yarn 3
+
+Volto was using the old, classic yarn (v1).
+It has become quite obsolete and yarn has evolved a lot during the last years.
+We are updating Volto to be able to use it, however some changes have to be made in your projects configuration:
+
+1. Change your root project `Makefile` to include these commands:
+
+```diff
++.PHONY: preinstall
++preinstall:
++       if [ -f $$(pwd)/mrs.developer.json ]; then if [ -f $$(pwd)/node_modules/.bin/missdev ]; then yarn develop; else yarn develop:npx; fi; fi
++
++.PHONY: omelette
++omelette:
++       if [ ! -d omelette ]; then ln -sf node_modules/@plone/volto omelette; fi
+```
+
+2. Change your `package.json` scripts section:
+
+```diff
+   "version": "1.0.0",
+   "scripts": {
+     "start": "razzle start",
+-    "preinstall": "if [ -f $(pwd)/mrs.developer.json ]; then if [ -f $(pwd)/node_modules/.bin/missdev ]; then yarn develop; else yarn develop:npx; fi; fi",
++    "preinstall": "make preinstall",
+     "postinstall": "yarn omelette && yarn patches",
+-    "omelette": "if [ ! -d omelette ]; then ln -sf node_modules/@plone/volto omelette; fi",
++    "omelette": "make omelette",
+     "patches": "/bin/bash patches/patchit.sh > /dev/null 2>&1 ||true",
+```
+
+Yarn 3 no longer support inline bash scripts in the `scripts` section.
+We need to move them to the `Makefile` and update the calls.
+
+It doesn't allow to use commands not declared as direct dependencies, so in your projects you should add `razzle` as a dependency:
+
+```diff
+devDependencies: {
++        "razzle": "4.2.17",
+```
+
 ### Removed `date-fns` from build
 
 The `date-fns` library has been removed from Volto's dependencies.
@@ -400,6 +442,20 @@ The Sentry integration was implemented in Volto core at a time when Volto did no
 Since then, the add-on story has improved.
 It now makes sense to extract this feature into its own add-on.
 You can find it in [`@collective/volto-sentry`](https://github.com/collective/volto-sentry).
+
+### Upgrade `husky` to latest version
+
+In the case that you are using husky in your projects (like Volto does), you will have to adapt to the new way that `husky` has for defining hooks.
+
+You'll have to add a script in your `package.json` file called `prepare`:
+
+```diff
+     "build": "razzle build --noninteractive",
++    "prepare": "husky install",
+     "test": "razzle test --maxWorkers=50%",
+```
+
+After execute it, `husky` will install itself in the `.husky` folder of your project. Then you need to create the default hook scripts in `.husky` that you want to execute. You can copy over the Volto ones (take a look in Volto's `.husky` folder).
 
 (volto-upgrade-guide-15.x.x)=
 

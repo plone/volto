@@ -523,6 +523,7 @@ msgstr "Célula"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Center
 msgid "Center"
 msgstr "Centro"
@@ -1443,6 +1444,7 @@ msgstr "De"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Full
 msgid "Full"
 msgstr "Cheio"
@@ -1706,6 +1708,11 @@ msgstr ""
 msgid "Interval Yearly"
 msgstr ""
 
+#: components/theme/View/RenderBlocks
+# defaultMessage: Invalid block - Will be removed on saving
+msgid "Invalid Block"
+msgstr ""
+
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Item batch size
 msgid "Item batch size"
@@ -1810,6 +1817,7 @@ msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Left
 msgid "Left"
 msgstr "Esquerda"
@@ -2058,6 +2066,11 @@ msgstr "Meu nome de usuário é"
 # defaultMessage: Name
 msgid "Name"
 msgstr "Nome"
+
+#: components/manage/Widgets/AlignWidget
+# defaultMessage: Narrow
+msgid "Narrow"
+msgstr ""
 
 #: error
 # defaultMessage: Navigate back
@@ -2641,6 +2654,7 @@ msgstr "Richtext"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Right
 msgid "Right"
 msgstr "Direita"
@@ -2841,6 +2855,7 @@ msgstr ""
 msgid "Selection"
 msgstr "Selecção"
 
+#: components/manage/Blocks/Search/widgets/SelectMetadataField
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/SelectAutoComplete
@@ -3800,6 +3815,7 @@ msgid "Who"
 msgstr "Quem"
 
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Wide
 msgid "Wide"
 msgstr ""
@@ -3898,6 +3914,11 @@ msgid "box_forgot_password_option"
 msgstr "box_forgot_password_option"
 
 #: config/Blocks
+# defaultMessage: Checkbox
+msgid "checkboxFacet"
+msgstr ""
+
+#: config/Blocks
 # defaultMessage: Common
 msgid "common"
 msgstr "comum"
@@ -3905,6 +3926,11 @@ msgstr "comum"
 #: components/manage/Multilingual/CompareLanguages
 # defaultMessage: Compare to language
 msgid "compare_to"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Date Range
+msgid "daterangeFacet"
 msgstr ""
 
 #: components/manage/Blocks/Block/EditBlockWrapper
@@ -4112,6 +4138,11 @@ msgid "others"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
+# defaultMessage: Pending
+msgid "pending"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
 # defaultMessage: Private
 msgid "private"
 msgstr ""
@@ -4296,6 +4327,11 @@ msgstr ""
 msgid "rrule_years"
 msgstr ""
 
+#: config/Blocks
+# defaultMessage: Select
+msgid "selectFacet"
+msgstr ""
+
 #: components/manage/Blocks/Search/components/ViewSwitcher
 # defaultMessage: Select view
 msgid "selectView"
@@ -4339,6 +4375,11 @@ msgstr "título"
 #: config/Blocks
 # defaultMessage: Table of Contents
 msgid "toc"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Toggle
+msgid "toggleFacet"
 msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
