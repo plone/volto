@@ -24,6 +24,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Improve the algorithm that calculates the position of the Slate Toolbar @tiberiuichim
 - The `_unwrapElement` of the volto-slate `ElementEditor` will return an updated range (selection) of the unwrapped element.  @tiberiuichim
 - Replace the main client entry point in `start-client.jsx` anonymous function for a named one. @sneridagh
+- Fix `currentPath` option for `openObjectBrowser`. @iFlameing
 - Fix updating the listing block when the variation is changed while editing @tiberiuichim
 - fix(warning): StyleMenu dropdown item to use data-attr instead of custom @nileshgulia1
 
