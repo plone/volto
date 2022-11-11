@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- Upgrade to Yarn 3 @sneridagh
+
 ### Feature
 
 ### Bugfix
