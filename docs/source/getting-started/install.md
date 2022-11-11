@@ -214,12 +214,17 @@ It also has more information on plone.volto.
 ## Install Volto
 
 Use the project generator helper utility.
+The latest stable release of Volto will be installed by default.
+You may choose to install the canary version, which is the latest alpha release, using the `--canary` flag.
 
 1.  Open a terminal and execute:
 
     ```bash
-    $ npm install -g yo @plone/generator-volto
-    $ yo @plone/volto
+    npm install -g yo @plone/generator-volto
+    # install latest stable release
+    yo @plone/volto
+    # or install latest alpha release
+    yo @plone/volto --canary
     ```
 
 2.  Answer to the prompted questions and provide the name of the new app (folder) to be created. For the sake of this documentation, provide `myvoltoproject` as project name then.

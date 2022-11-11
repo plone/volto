@@ -111,7 +111,9 @@ function sendOnSocket(request) {
  * @param {Object} api Api object.
  * @returns {Promise} Action promise.
  */
-export default (api) => ({ dispatch, getState }) => (next) => (action) => {
+const apiMiddlewareFactory = (api) => ({ dispatch, getState }) => (next) => (
+  action,
+) => {
   const { settings } = config;
 
   if (typeof action === 'function') {
@@ -316,3 +318,5 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
 
   return actionPromise;
 };
+
+export default apiMiddlewareFactory;
