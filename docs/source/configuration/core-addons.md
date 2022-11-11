@@ -3,9 +3,9 @@
 Volto has the concept of "core add-ons".
 They are add-ons that are always installed in Volto.
 They are located separately from the main code in the `packages` folder.
-These add-ons can be released as standalone add-ons, and used in projects that are using versions of Volto that does not have them by default.
+These add-ons can be released as standalone add-ons, and used in projects that are using versions of Volto that do not have them by default.
 Another useful use case is the introduction of new or experimental features that need to be developed side-by-side with core Volto, but not enabled by default.
-The idea is that, if needed, you can use these packages released as standalone add-ons installed in your old Volto projects to test them or to have a bleeding edge feature without having to upgrade to the latest Volto version.
+You can use these packages released as standalone add-ons installed in your old Volto projects to test them or to have a bleeding edge feature without having to upgrade to the latest Volto version.
 
 ## Enabling a core add-on
 
@@ -21,4 +21,5 @@ It uses the key `packagesFolderAddons`:
   },
 ```
 
-The structure is similar to `mrs-developer.json` one, so the key is the name of the folder, then an object with at least the key `package` with the name of the package that is going to be used.
+The structure is similar to `mrs-developer.json`.
+The key is the name of the folder, then an object with at least the key `package` with its value as the name of the package that is going to be used.
