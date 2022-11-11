@@ -118,6 +118,13 @@ class AddonConfigurationRegistry {
       packageJson.name === '@plone/volto'
         ? `${projectRootPath}`
         : `${projectRootPath}/node_modules/@plone/volto`;
+
+    this.packagesFolderAddons =
+      packageJson.name === '@plone/volto'
+        ? packageJson.packagesFolderAddons || {}
+        : require(`${getPackageBasePath(this.voltoPath)}/package.json`)
+            .packagesFolderAddons || {};
+
     this.addonNames = this.resultantMergedAddons.map((s) => s.split(':')[0]);
     this.packages = {};
     this.customizations = new Map();
@@ -184,32 +191,42 @@ class AddonConfigurationRegistry {
         this.packages[name] = Object.assign(this.packages[name] || {}, pkg);
       });
     }
-    this.initSlate();
+    this.initPackagesFolder();
   }
 
-  initSlate() {
-    if (this.packages['@plone/volto-slate']) return;
+  initPackagesFolder() {
+    const registerPackageFolder = (packageFolderName, packageInfo) => {
+      const packageName = packageInfo.package;
+      if (this.packages[packageName]) return;
 
-    const slatePath = path.normalize(
-      `${this.voltoPath}/packages/volto-slate/src`,
-    );
-    const slatePackageJsonPath = path.normalize(
-      `${this.voltoPath}/packages/volto-slate/package.json`,
-    );
+      const packagePath = path.normalize(
+        `${this.voltoPath}/packages/${packageFolderName}/src`,
+      );
+      const packageJsonPath = path.normalize(
+        `${this.voltoPath}/packages/${packageFolderName}/package.json`,
+      );
 
-    // some tests set the root in a location that doesn't have the packages
-    if (!fs.existsSync(slatePath)) return;
+      // some tests set the root in a location that doesn't have the packages
+      if (!fs.existsSync(packagePath)) return;
 
-    this.packages['@plone/volto-slate'] = {
-      modulePath: slatePath,
-      packageJson: slatePackageJsonPath,
-      version: require(slatePackageJsonPath).version,
-      isPublishedPackage: false,
-      isRegisteredAddon: false,
-      name: '@plone/volto-slate',
-      addons: [],
+      this.packages[packageName] = {
+        modulePath: packagePath,
+        packageJson: packageJsonPath,
+        version: require(packageJsonPath).version,
+        isPublishedPackage: false,
+        isRegisteredAddon: false,
+        name: packageName,
+        addons: [],
+      };
+      this.addonNames.push(packageName);
     };
-    this.addonNames.push('@plone/volto-slate');
+
+    Object.keys(this.packagesFolderAddons).forEach((packageFolderName) => {
+      registerPackageFolder(
+        packageFolderName,
+        this.packagesFolderAddons[packageFolderName],
+      );
+    });
   }
 
   /**
