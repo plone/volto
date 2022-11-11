@@ -422,6 +422,7 @@ msgstr ""
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Controlpanels/Rules/Rules
 #: components/manage/Controlpanels/UndoControlpanel
+#: components/manage/Controlpanels/UpgradeControlPanel
 #: components/manage/Diff/Diff
 #: components/manage/History/History
 #: components/manage/Multilingual/ManageTranslations
@@ -671,6 +672,11 @@ msgstr ""
 msgid "Condition: "
 msgstr ""
 
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Configuration Versions
+msgid "Configuration Versions"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/EditRule
 # defaultMessage: Configure Content Rule
 msgid "Configure Content Rule"
@@ -806,6 +812,11 @@ msgstr "Autores"
 # defaultMessage: Criteria
 msgid "Criteria"
 msgstr "Critérios"
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Current active configuration
+msgid "Current active configuration"
+msgstr ""
 
 #: components/manage/Blocks/Search/components/FilterList
 # defaultMessage: Current filters applied
@@ -1078,6 +1089,11 @@ msgstr "Solte um arquivo aqui para enviar um novo arquivo"
 # defaultMessage: Drop files here ...
 msgid "Drop files here ..."
 msgstr "Soltar aquivos aqui…"
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Dry run selected, transaction aborted.
+msgid "Dry run selected, transaction aborted."
+msgstr ""
 
 #: components/theme/Register/Register
 # defaultMessage: E-mail
@@ -1802,6 +1818,11 @@ msgstr "Data do último comentário"
 msgid "Last modified"
 msgstr "Última modificação"
 
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Latest available configuration
+msgid "Latest available configuration"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Latest version
 msgid "Latest version"
@@ -2022,6 +2043,11 @@ msgstr "Mensalmente"
 # defaultMessage: More
 msgid "More"
 msgstr "Mais"
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide.
+msgid "More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide."
+msgstr ""
 
 #: config/Views
 # defaultMessage: Mosaic layout
@@ -2358,6 +2384,16 @@ msgstr "Ferramentas pessoais"
 # defaultMessage: Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first.
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Pessoas responsáveis pela criação do conteúdo deste item. Por favor, insira uma lista de nomes de usuário, um por linha. O autor principal deve vir primeiro."
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Please continue with the upgrade.
+msgid "Please continue with the upgrade."
+msgstr ""
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Please ensure you have a backup of your site before performing the upgrade.
+msgid "Please ensure you have a backup of your site before performing the upgrade."
+msgstr ""
 
 #: components/manage/Blocks/Video/Body
 # defaultMessage: Please enter a valid URL by deleting the block and adding a new video block.
@@ -3262,6 +3298,11 @@ msgstr "A presença do botão desativa a busca ativa, a consulta é realizada ap
 msgid "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
 msgstr ""
 
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: The following list shows which upgrade steps are going to be run. Upgrading sometimes performs a catalog/security update, which may take a long time on large sites. Be patient.
+msgid "The following list shows which upgrade steps are going to be run. Upgrading sometimes performs a catalog/security update, which may take a long time on large sites. Be patient."
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: The item could not be deleted.
 msgid "The item could not be deleted."
@@ -3282,6 +3323,12 @@ msgstr ""
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgstr "O processo de registro foi bem sucedido. Verifique sua caixa de entrada de e-mail para obter informações sobre como ativar sua conta."
 
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: The site configuration is outdated and needs to be upgraded.
+msgid "The site configuration is outdated and needs to be upgraded."
+msgstr ""
+
 #: components/manage/Toolbar/More
 # defaultMessage: The working copy was discarded
 msgid "The working copy was discarded"
@@ -3296,6 +3343,11 @@ msgstr "O {plonecms} tem {copyright} de 2000-{current_year} pela {plonefoundatio
 # defaultMessage: There is a configuration problem on the backend
 msgid "There is a configuration problem on the backend"
 msgstr "Há um problema de configuração no backend"
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: There was an error with the upgrade.
+msgid "There was an error with the upgrade."
+msgstr ""
 
 #: components/manage/Form/InlineForm
 # defaultMessage: There were some errors
@@ -3578,6 +3630,26 @@ msgstr "Atualização de complementos instalados:"
 msgid "Updates available"
 msgstr "Atualizações disponíveis"
 
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Upgrade
+msgid "Upgrade"
+msgstr ""
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Upgrade Plone Site
+msgid "Upgrade Plone Site"
+msgstr ""
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Upgrade Report
+msgid "Upgrade Report"
+msgstr ""
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Upgrade Steps
+msgid "Upgrade Steps"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: Upload
 msgid "Upload"
@@ -3685,6 +3757,7 @@ msgid "Variation"
 msgstr "Variação"
 
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: Version Overview
 msgid "Version Overview"
 msgstr "Versões"
@@ -3898,6 +3971,11 @@ msgstr "Sua senha foi definida com sucesso. Agora você pode {link} com sua nova
 # defaultMessage: Your preferred language
 msgid "Your preferred language"
 msgstr "O seu idioma preferido"
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Your site is up to date.
+msgid "Your site is up to date."
+msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your username is required for reset your password.
