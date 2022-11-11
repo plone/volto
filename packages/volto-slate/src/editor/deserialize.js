@@ -20,7 +20,7 @@ const isInline = (node) =>
  * This returns a Slate Node or null.
  */
 export const deserialize = (editor, el) => {
-  // console.log('deserialize el:', el);
+  console.log('deserialize el:', el);
   const { htmlTagsToSlate } = editor;
 
   // console.log('des:', el.nodeType, el);
@@ -55,15 +55,27 @@ export const deserialize = (editor, el) => {
         ? { text: el.textContent } // perceptually multiple whitespace render as a single space
         : null;
     }
+
+    // Convert the text to "browser display". Browsers will collapse
+    // whitespaces to a single space, so let's try to reproduce that behavior
+    let text = el.textContent.replace(/\n(\S)/gm, '$1'); // remove "\n" followed by any non-space character
+
+    // .replace(/^\n(?=\S)/g, '') // remove "\n" followed by any non-space character
+    // .replace(/\n(?=\s)/g, '') // remove \n followed by a space
+    // .replace(/(?<=\s)\n/g, '') // remove \n follows a space
+    // .replace(/\n/g, ' ')
+    // .replace(/\t/g, '');
+    if (isInline(el.previousSibling)) {
+      text = ` ${text}`; // add a space in front if the previous node was inline node
+    }
+    if (!isInline(el.nextSibling)) {
+      text = text.replace('\n', '');
+    }
+
+    console.log({ original: `-${el.textContent}-`, result: `-${text}-` });
+
     return {
-      // Convert the text to "browser display". Browsers will collapse
-      // whitespaces to a single space, so let's try to reproduce that behavior
-      text: el.textContent
-        .replace(/^\n(?=\S)/g, '') // remove "\n" followed by any non-space character
-        .replace(/\n(?=\s)/g, '') // remove \n followed by a space
-        .replace(/(?<=\s)\n/g, '') // remove \n follows a space
-        .replace(/\n/g, ' ')
-        .replace(/\t/g, ''),
+      text,
     };
   } else if (el.nodeType !== ELEMENT_NODE) {
     return null;
@@ -142,6 +154,7 @@ export const inlineTagDeserializer = (attrs) => (editor, el) => {
 export const spanTagDeserializer = (editor, el) => {
   const style = el.getAttribute('style') || '';
   let children = el.childNodes;
+  console.log('span tag');
   if (
     // handle formatting from OpenOffice
     children.length === 1 &&

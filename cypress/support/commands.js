@@ -589,7 +589,7 @@ Cypress.Commands.add(
   (query, htmlContent) => {
     return cy
       .wrap(query)
-      .type(' ')
+      .type(' {backspace}')
       .trigger('paste', createHtmlPasteEvent(htmlContent));
   },
 );
