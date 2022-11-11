@@ -156,5 +156,6 @@
     "stylelint-config-idiomatic-order": "8.1.0",
     "stylelint-config-prettier": "8.0.1",
     "stylelint-prettier": "1.1.2"
-  }
+  },
+  "packageManager": "yarn@3.2.3"
 }

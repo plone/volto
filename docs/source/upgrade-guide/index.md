@@ -224,7 +224,32 @@ Volto was using the old, classic yarn (v1).
 It has become quite obsolete and yarn has evolved a lot during the last years.
 We are updating Volto to be able to use it, however some changes have to be made in your projects configuration:
 
-1. Change your root project `Makefile` to include these commands:
+1. Enable yarn 3 in your projects, adding `yarnrc.yml`:
+
+```yml
+defaultSemverRangePrefix: ""
+
+nodeLinker: node-modules
+```
+
+Then, if you are using Node >=16.10 run:
+
+```shell
+corepack enable
+yarn set version 3.2.3
+```
+
+Corepack isn't included with Node.js in versions before the 16.10; to address that, run:
+
+```shell
+npm i -g corepack
+```
+
+```{note}
+It is highly recommended that you use latest Node 16.
+```
+
+2. Change your root project `Makefile` to include these commands:
 
 ```diff
 +.PHONY: preinstall
@@ -236,7 +261,7 @@ We are updating Volto to be able to use it, however some changes have to be made
 +       if [ ! -d omelette ]; then ln -sf node_modules/@plone/volto omelette; fi
 ```
 
-2. Change your `package.json` scripts section:
+3. Change your `package.json` scripts section:
 
 ```diff
    "version": "1.0.0",
@@ -253,12 +278,14 @@ We are updating Volto to be able to use it, however some changes have to be made
 Yarn 3 no longer support inline bash scripts in the `scripts` section.
 We need to move them to the `Makefile` and update the calls.
 
-It doesn't allow to use commands not declared as direct dependencies, so in your projects you should add `razzle` as a dependency:
+4. It doesn't allow to use commands not declared as direct dependencies, so in your projects you should add `razzle` as a dependency:
 
 ```diff
 devDependencies: {
 +        "razzle": "4.2.17",
 ```
+
+5. Replace your project `yarn.lock` for the Volto's one, then run `yarn` again.
 
 ### Removed `date-fns` from build
 
