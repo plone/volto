@@ -58,16 +58,22 @@ export const deserialize = (editor, el) => {
 
     // Convert the text to "browser display". Browsers will collapse
     // whitespaces to a single space, so let's try to reproduce that behavior
-    let text = el.textContent.replace(/\n(\S)/gm, '$1'); // remove "\n" followed by any non-space character
+
+    let text = el.textContent;
+
+    // remove "\n" followed by any non-space character
+    text = text.replace(/\n(\S)/gm, '$1');
 
     // .replace(/^\n(?=\S)/g, '') // remove "\n" followed by any non-space character
     // .replace(/\n(?=\s)/g, '') // remove \n followed by a space
     // .replace(/(?<=\s)\n/g, '') // remove \n follows a space
     // .replace(/\n/g, ' ')
     // .replace(/\t/g, '');
-    if (isInline(el.previousSibling)) {
+
+    if (isInline(el.previousSibling) && text[0] !== ' ') {
       text = ` ${text}`; // add a space in front if the previous node was inline node
     }
+
     if (!isInline(el.nextSibling)) {
       text = text.replace('\n', '');
     }

@@ -79,7 +79,7 @@
     },
     "moduleNameMapper": {
       "@plone/volto/(.*)$": "<rootDir>/src/$1",
-      "@plone/volto-slate": "<rootDir>/packages/volto-slate/src",
+      "@plone/volto-slate/(.*)$": "<rootDir>/packages/volto-slate/src/$1",
       "~/config": "<rootDir>/src/config",
       "~/../locales/${lang}.json": "<rootDir>/locales/en.json",
       "(.*)/locales/(.*)": "<rootDir>/locales/$2",
@@ -109,7 +109,8 @@
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
       "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}",
-      "<rootDir>/__tests__/**/?(*.)(spec|test).{js,jsx,mjs}"
+      "<rootDir>/__tests__/**/?(*.)(spec|test).{js,jsx,mjs}",
+      "<rootDir>/packages/volto-slate/src/**/?(*.)(spec|test).{js,jsx,mjs}"
     ]
   },
   "prettier": {
