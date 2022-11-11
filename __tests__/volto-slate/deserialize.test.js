@@ -29,16 +29,8 @@ describe('deserialize', () => {
 
   it('accepts a DOM element', () => {
     const html = '<p>Hello world</p>';
-    const parsed = new JSDOM(html);
-    const document = parsed.window.document;
-    const editor = makeEditor();
-    const body =
-      document.getElementsByTagName('google-sheets-html-origin').length > 0
-        ? document.querySelector('google-sheets-html-origin > table')
-        : document.body;
-    const json = deserialize(editor, body);
 
-    expect(tojson(json)).toStrictEqual([
+    expect(tojson(html)).toStrictEqual([
       {
         type: 'p',
         children: [
@@ -46,6 +38,54 @@ describe('deserialize', () => {
             text: 'Hello world',
           },
         ],
+      },
+    ]);
+  });
+
+  it('two root tags', () => {
+    const html = '<p>Hello world</p><p>something</p>';
+
+    expect(tojson(html)).toStrictEqual([
+      {
+        type: 'p',
+        children: [
+          {
+            text: 'Hello world',
+          },
+        ],
+      },
+      {
+        type: 'p',
+        children: [
+          {
+            text: 'something',
+          },
+        ],
+      },
+    ]);
+  });
+
+  it('takes inline elements', () => {
+    const html = '<strong>hello</strong>';
+
+    expect(tojson(html)).toStrictEqual([
+      {
+        type: 'strong',
+        children: [
+          {
+            text: 'hello',
+          },
+        ],
+      },
+    ]);
+  });
+
+  it('strips unknown elements', () => {
+    const html = '<unk>hello</unk>';
+
+    expect(tojson(html)).toStrictEqual([
+      {
+        text: 'hello',
       },
     ]);
   });

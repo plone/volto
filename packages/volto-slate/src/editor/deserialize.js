@@ -20,7 +20,7 @@ const isInline = (node) =>
  * This returns a Slate Node or null.
  */
 export const deserialize = (editor, el) => {
-  console.log('deserialize el:', el);
+  // console.log('deserialize el:', el);
   const { htmlTagsToSlate } = editor;
 
   // console.log('des:', el.nodeType, el);
@@ -78,7 +78,7 @@ export const deserialize = (editor, el) => {
       text = text.replace('\n', '');
     }
 
-    console.log({ original: `-${el.textContent}-`, result: `-${text}-` });
+    // console.log({ original: `-${el.textContent}-`, result: `-${text}-` });
 
     return {
       text,
