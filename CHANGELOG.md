@@ -12,6 +12,8 @@
 
 ### Documentation
 
+- Add missing pieces of the upgrade to use yarn 3 for projects @sneridagh
+
 ## 16.0.0-alpha.49 (2022-11-11)
 
 ### Breaking
