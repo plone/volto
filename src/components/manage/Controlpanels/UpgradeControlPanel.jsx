@@ -270,6 +270,10 @@ class UpgradeControlPanel extends Component {
                 />
                 <br />
                 <Button
+                  aria-label={this.props.intl.formatMessage({
+                    id: 'Upgrade',
+                    defaultMessage: 'Upgrade',
+                  })}
                   onClick={() => this.runUpgrade(this.state.dryRun)}
                   primary
                 >
