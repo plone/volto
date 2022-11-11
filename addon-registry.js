@@ -24,10 +24,10 @@ function fromEntries(pairs) {
 function buildDependencyGraph(addons, extractDependency) {
   // getAddonsLoaderChain
   const graph = new DepGraph({ circular: true });
-  graph.addNode('@package');
+  graph.addNode('@root');
 
-  const seen = ['@package'];
-  const stack = [['@package', addons]];
+  const seen = ['@root'];
+  const stack = [['@root', addons]];
 
   while (stack.length > 0) {
     const [pkgName, addons] = stack.shift();
@@ -70,7 +70,7 @@ function buildDependencyGraph(addons, extractDependency) {
  * a resolved chain of dependencies
  */
 function getAddonsLoaderChain(graph) {
-  return graph.dependenciesOf('@package').map((name) => {
+  return graph.dependenciesOf('@root').map((name) => {
     const extras = graph.getNodeData(name) || [].join(',');
     return extras.length ? `${name}:${extras}` : name;
   });
@@ -327,7 +327,7 @@ class AddonConfigurationRegistry {
    */
   getAddons() {
     return this.dependencyGraph
-      .dependenciesOf('@package')
+      .dependenciesOf('@root')
       .map((name) => this.packages[name]);
   }
 
@@ -391,6 +391,16 @@ class AddonConfigurationRegistry {
           });
         }
       });
+
+      // allow customization of modules in the `@root` namespace from addons,
+      // by creating a folder called `@root`.
+      const rootBase = path.join(base, '@root');
+      if (fs.existsSync(rootBase))
+        reg.push({
+          customPath: rootBase,
+          sourcePath: `${this.projectRootPath}/src`,
+          name: '@root',
+        });
 
       reg.push(
         fs.existsSync(path.join(base, 'volto'))
@@ -499,9 +509,9 @@ class AddonConfigurationRegistry {
   sep="+10"
   splines=curved
 
-  "@package" [color = red fillcolor=yellow style=filled]
+  "@root" [color = red fillcolor=yellow style=filled]
 `;
-    let queue = ['@package'];
+    let queue = ['@root'];
     let name;
 
     while (queue.length > 0) {
