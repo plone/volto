@@ -83,6 +83,7 @@
       "^.+\\.(svg)$": "./jest-svgsystem-transform.js"
     },
     "moduleNameMapper": {
+      "@plone/volto/package.json": "<rootDir>/package.json",
       "@plone/volto/(.*)$": "<rootDir>/src/$1",
       "@plone/volto-slate": "<rootDir>/packages/volto-slate/src",
       "~/config": "<rootDir>/src/config",

@@ -120,10 +120,9 @@ class AddonConfigurationRegistry {
         : `${projectRootPath}/node_modules/@plone/volto`;
 
     this.packagesFolderAddons =
-      // We need this since the nameModuleMapper in tests has the alias set to src ...
       packageJson.name === '@plone/volto'
         ? packageJson.packagesFolderAddons || {}
-        : require(`${getPackageBasePath(this.voltoPath)}/../package.json`)
+        : require(`${getPackageBasePath(this.voltoPath)}/package.json`)
             .packagesFolderAddons || {};
 
     this.addonNames = this.resultantMergedAddons.map((s) => s.split(':')[0]);
