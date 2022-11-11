@@ -19,7 +19,6 @@ component-registry
 internalproxy
 backend
 volto-config-js
-core-addons
 volto-slate/index
 multilingual
 workingcopy

@@ -25,4 +25,5 @@ testing
 acceptance-tests
 accessibility-guidelines
 typescript
+core-addons
 ```
