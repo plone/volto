@@ -239,7 +239,8 @@ corepack enable
 yarn set version 3.2.3
 ```
 
-Corepack isn't included with Node.js in versions before the 16.10; to address that, run:
+Corepack isn't included with Node.js in versions before 16.10.
+To address that, run:
 
 ```shell
 npm i -g corepack
