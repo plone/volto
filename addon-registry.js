@@ -108,10 +108,6 @@ class AddonConfigurationRegistry {
     } else {
       this.voltoConfigJS = [];
     }
-    this.resultantMergedAddons = [
-      ...(packageJson.addons || []),
-      ...(this.voltoConfigJS.addons || []),
-    ];
 
     this.projectRootPath = projectRootPath;
     this.voltoPath =
@@ -124,6 +120,14 @@ class AddonConfigurationRegistry {
         ? packageJson.packagesFolderAddons || {}
         : require(`${getPackageBasePath(this.voltoPath)}/package.json`)
             .packagesFolderAddons || {};
+
+    this.resultantMergedAddons = [
+      ...(Object.keys(this.packagesFolderAddons).map(
+        (key) => this.packagesFolderAddons[key].package,
+      ) || []),
+      ...(packageJson.addons || []),
+      ...(this.voltoConfigJS.addons || []),
+    ];
 
     this.addonNames = this.resultantMergedAddons.map((s) => s.split(':')[0]);
     this.packages = {};
