@@ -42,6 +42,7 @@ import {
   AddRuleControlpanel,
   EditRuleControlpanel,
   ConfigureRuleControlpanel,
+  UpgradeControlPanel,
   PersonalInformation,
 } from '@plone/volto/components';
 
@@ -176,6 +177,10 @@ export const defaultRoutes = [
   {
     path: '/controlpanel/groups',
     component: GroupsControlpanel,
+  },
+  {
+    path: '/controlpanel/plone-upgrade',
+    component: UpgradeControlPanel,
   },
   {
     path: '/controlpanel/rules/:id/configure',

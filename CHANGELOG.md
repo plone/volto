@@ -4,8 +4,23 @@
 
 ### Breaking
 
+### Feature
+
+### Bugfix
+
+### Internal
+
+### Documentation
+
+- Add missing pieces of the upgrade to use yarn 3 for projects @sneridagh
+
+## 16.0.0-alpha.49 (2022-11-11)
+
+### Breaking
+
 - Restrict css selector for error message (volto-slate) #3838 @mamico
 - Upgrade `husky` to latest version @sneridagh
+- Enable the use of yarn 3 in the build by default @sneridagh
 
 See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
 
@@ -13,6 +28,9 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 
 - Japanese translation updated @terapyon
 - Improve the `AlignWidget`, add `narrow` fix default support @sneridagh
+- Add support for loading core add-ons from the `packages` folder defined in Volto's `package.json` @sneridagh
+- Implement the Upgrade Control Panel @ericof
+- Allow addons to customize modules from the project root, via the `@root` namespace and folder @tiberiuichim
 
 ### Bugfix
 
@@ -22,8 +40,10 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Improve the algorithm that calculates the position of the Slate Toolbar @tiberiuichim
 - The `_unwrapElement` of the volto-slate `ElementEditor` will return an updated range (selection) of the unwrapped element.  @tiberiuichim
 - Replace the main client entry point in `start-client.jsx` anonymous function for a named one. @sneridagh
+- Fix `currentPath` option for `openObjectBrowser`. @iFlameing
 - Fix updating the listing block when the variation is changed while editing @tiberiuichim
 - fix(warning): StyleMenu dropdown item to use data-attr instead of custom @nileshgulia1
+- Added --canary flag in plone/install.sh. @MdSahil-oss
 
 ### Internal
 
@@ -41,7 +61,6 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 ### Bugfix
 
 - Ensure the view component is always replaced after navigating to a different page. @davisagli
-- Added --canary flag in plone/install.sh. @MdSahil-oss
 
 ## 16.0.0-alpha.47 (2022-11-02)
 
@@ -184,7 +203,6 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 ### Breaking
 
 - Sentry integration is now lazy-loaded. The `sentryOptions` key from the `settings` registry becomes a callable that passes resolved sentry libraries. @tiberiuichim
-- Enable the use of yarn 3 in the build by default @sneridagh
 
   See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
 

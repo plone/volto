@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "16.0.0-alpha.48",
+  "version": "16.0.0-alpha.49",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -27,6 +27,11 @@
     "plone",
     "react"
   ],
+  "packagesFolderAddons": {
+    "volto-slate": {
+      "package": "@plone/volto-slate"
+    }
+  },
   "scripts": {
     "postinstall": "yarn patches",
     "analyze": "BUNDLE_ANALYZE=true razzle build",
@@ -78,6 +83,7 @@
       "^.+\\.(svg)$": "./jest-svgsystem-transform.js"
     },
     "moduleNameMapper": {
+      "@plone/volto/package.json": "<rootDir>/package.json",
       "@plone/volto/(.*)$": "<rootDir>/src/$1",
       "@plone/volto-slate/(.*)$": "<rootDir>/packages/volto-slate/src/$1",
       "~/config": "<rootDir>/src/config",
