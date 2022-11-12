@@ -14,55 +14,49 @@ const isInline = (node) =>
   node &&
   (node.nodeType === TEXT_NODE || INLINE_ELEMENTS.includes(node.nodeName));
 
+const cleanWhitespace = (text) => {
+  // replace multiple \n with a single \n
+  text = text.replace(/\n+/gm, '\n');
+
+  // replace \n inside text with a space
+  text = text.replace(/(\S)\n(\S)/, '$1 $2');
+
+  // collapse multiple spaces to single space
+  text = text.replace(/\s(\s+)/gm, ' ');
+
+  return text;
+};
+
 /**
- * Deserialize to an object or an Array.
+ * Deserialize to a Slate Node, an Array of Slate Nodes or null
  *
- * This returns a Slate Node or null.
+ * One particularity of this function is that it tries to do
+ * a "perception-based" conversion. For example, in html, multiple whitespaces
+ * display as a single space. A new line character in text is actually rendered
+ * as a space, etc. So we try to meet user's expectations that when they
+ * copy/paste content, we'll preserve the aspect of their text.
+ *
  */
 export const deserialize = (editor, el) => {
-  // console.log('deserialize el:', el);
   const { htmlTagsToSlate } = editor;
 
-  // console.log('des:', el.nodeType, el);
   if (el.nodeType === COMMENT) {
     return null;
   } else if (el.nodeType === TEXT_NODE) {
-    // instead of === '\n' we use isWhitespace for when deserializing tables
-    // from Calc and other similar cases
-
-    // console.log('maybe whitespace', {
-    //   text: `-${el.textContent}-`,
-    //   prev: el.previousSibling,
-    //   next: el.nextSibling,
-    //   isPrev: isInline(el.previousSibling),
-    //   isNext: isInline(el.nextSibling),
-    //   prevName: el.previousSibling && el.previousSibling.nodeName,
-    //   nextName: el.nextSibling && el.nextSibling.nodeName,
-    // });
-
     if (isWhitespace(el.textContent)) {
-      // console.log({
-      //   text: `-${el.textContent}-`,
-      //   prev: el.previousSibling,
-      //   next: el.nextSibling,
-      //   isPrev: isInline(el.previousSibling),
-      //   isNext: isInline(el.nextSibling),
-      //   prevName: el.previousSibling && el.previousSibling.nodeName,
-      //   nextName: el.nextSibling && el.nextSibling.nodeName,
-      // });
       // if it's empty text between 2 tags, it should be ignored
       return isInline(el.previousSibling) || isInline(el.nextSibling)
-        ? { text: el.textContent } // perceptually multiple whitespace render as a single space
+        ? { text: cleanWhitespace(el.textContent) } // perceptually multiple whitespace render as a single space
         : null;
     }
 
-    // Convert the text to "browser display". Browsers will collapse
-    // whitespaces to a single space, so let's try to reproduce that behavior
+    let text = cleanWhitespace(el.textContent);
 
-    let text = el.textContent;
+    if (isInline(el.parentElement.previousSibling)) {
+      text = text.replace(/\n(\S)/gm, ' $1');
+    }
 
-    // remove "\n" followed by any non-space character
-    text = text.replace(/\n(\S)/gm, '$1');
+    // remove all other new lines, they shouldn't exist at this point
 
     // .replace(/^\n(?=\S)/g, '') // remove "\n" followed by any non-space character
     // .replace(/\n(?=\s)/g, '') // remove \n followed by a space
@@ -70,16 +64,20 @@ export const deserialize = (editor, el) => {
     // .replace(/\n/g, ' ')
     // .replace(/\t/g, '');
 
-    if (isInline(el.previousSibling) && text[0] !== ' ') {
-      text = ` ${text}`; // add a space in front if the previous node was inline node
-    }
+    // if (isInline(el.previousSibling) && text[0] !== ' ') {
+    //   text = ` ${text}`; // add a space in front if the previous node was inline node
+    // }
+    //
+    // if (!isInline(el.nextSibling)) {
+    //   text = text.replace('\n', '');
+    // }
 
-    if (!isInline(el.nextSibling)) {
-      text = text.replace('\n', '');
-    }
-
-    // console.log({ original: `-${el.textContent}-`, result: `-${text}-` });
-
+    // console.log({
+    //   original: `-${el.textContent}-`,
+    //   result: `-${text}-`,
+    //   prevInline: el.previousSibling,
+    //   nextInline: el.nextSibling,
+    // });
     return {
       text,
     };
@@ -160,7 +158,7 @@ export const inlineTagDeserializer = (attrs) => (editor, el) => {
 export const spanTagDeserializer = (editor, el) => {
   const style = el.getAttribute('style') || '';
   let children = el.childNodes;
-  console.log('span tag');
+
   if (
     // handle formatting from OpenOffice
     children.length === 1 &&
@@ -194,6 +192,7 @@ export const spanTagDeserializer = (editor, el) => {
   const res = children.find((c) => typeof c !== 'string')
     ? children
     : jsx('text', {}, children);
+
   return res;
 };
 
@@ -224,3 +223,26 @@ export const preTagDeserializer = (editor, el) => {
 };
 
 export default deserialize;
+
+// console.log('maybe whitespace', {
+//   text: `-${el.textContent}-`,
+//   prev: el.previousSibling,
+//   next: el.nextSibling,
+//   isPrev: isInline(el.previousSibling),
+//   isNext: isInline(el.nextSibling),
+//   prevName: el.previousSibling && el.previousSibling.nodeName,
+//   nextName: el.nextSibling && el.nextSibling.nodeName,
+// });
+// instead of === '\n' we use isWhitespace for when deserializing tables
+// from Calc and other similar cases
+// console.log({
+//   text: `-${el.textContent}-`,
+//   prev: el.previousSibling,
+//   next: el.nextSibling,
+//   isPrev: isInline(el.previousSibling),
+//   isNext: isInline(el.nextSibling),
+//   prevName: el.previousSibling && el.previousSibling.nodeName,
+//   nextName: el.nextSibling && el.nextSibling.nodeName,
+// });
+// remove "\n" followed by any non-space character
+// text = text.replace(/\n(\S)/gm, '$1');
