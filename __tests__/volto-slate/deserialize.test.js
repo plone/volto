@@ -186,26 +186,50 @@ world</i>`;
     expect(tojson(html)).toStrictEqual([
       {
         type: 'b',
-        children: [{ text: 'hello' }],
+        children: [{ text: 'hello ' }],
       },
       {
         type: 'i',
-        children: [{ text: ' world' }],
+        children: [{ text: 'world' }],
       },
     ]);
   });
 
-  //   it.only('it removes new lines at beginning of text of block nodes', () => {
-  //     const html = `<p>hello</p><p>
-  // world
-  // </p><i>dot</i>`;
-  //     console.log(JSON.stringify(tojson(html), null, 2));
-  //
-  //     // expect(tojson(html)).toStrictEqual([
-  //     //   {
-  //     //     type: 'p',
-  //     //     children: [{ text: 'hello' }],
-  //     //   },
-  //     // ]);
-  //   });
+  it('it removes new lines at beginning of text of block nodes', () => {
+    const html = `<b>hello</b><p>
+world
+</p><i>dot</i>`;
+    // console.log(JSON.stringify(tojson(html), null, 2));
+
+    expect(tojson(html)).toStrictEqual([
+      {
+        type: 'b',
+        children: [{ text: 'hello' }],
+      },
+      {
+        type: 'p',
+        children: [{ text: 'world' }],
+      },
+      {
+        type: 'i',
+        children: [{ text: 'dot' }],
+      },
+    ]);
+  });
+
+  it('it removes consecutive space in inline nodes', () => {
+    const html = `<b>hello </b><i> world</i>`;
+    // console.log(JSON.stringify(tojson(html), null, 2));
+
+    expect(tojson(html)).toStrictEqual([
+      {
+        type: 'b',
+        children: [{ text: 'hello ' }],
+      },
+      {
+        type: 'i',
+        children: [{ text: 'world' }],
+      },
+    ]);
+  });
 });

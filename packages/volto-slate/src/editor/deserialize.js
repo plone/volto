@@ -53,31 +53,35 @@ export const deserialize = (editor, el) => {
     let text = cleanWhitespace(el.textContent);
 
     if (isInline(el.parentElement.previousSibling)) {
-      text = text.replace(/\n(\S)/gm, ' $1');
+      // if previous element is inline, replace beginning new line with a space
+      text = text.replace(/^\n(\S)/gm, ' $1');
     }
 
-    // remove all other new lines, they shouldn't exist at this point
+    if (
+      (el.parentElement.previousSibling &&
+        !isInline(el.parentElement.previousSibling)) ||
+      !el.parentElement.previousSibling
+    ) {
+      // if previous element is block (or doesn't exist), remove beginning new line
+      text = text.replace(/^\n(\S)/gm, '$1');
+    }
 
-    // .replace(/^\n(?=\S)/g, '') // remove "\n" followed by any non-space character
-    // .replace(/\n(?=\s)/g, '') // remove \n followed by a space
-    // .replace(/(?<=\s)\n/g, '') // remove \n follows a space
-    // .replace(/\n/g, ' ')
-    // .replace(/\t/g, '');
+    // remove trailing newlines
+    text = text.replace(/\n$/gm, '');
 
-    // if (isInline(el.previousSibling) && text[0] !== ' ') {
-    //   text = ` ${text}`; // add a space in front if the previous node was inline node
-    // }
-    //
-    // if (!isInline(el.nextSibling)) {
-    //   text = text.replace('\n', '');
-    // }
+    // trim beginning and end whitespace
+    text = text.replace(/^\s+(\S)/gm, '$1');
+    text = text.replace(/(\S)\s+$/gm, '$1');
 
-    // console.log({
-    //   original: `-${el.textContent}-`,
-    //   result: `-${text}-`,
-    //   prevInline: el.previousSibling,
-    //   nextInline: el.nextSibling,
-    // });
+    if (
+      isInline(el.parentElement) &&
+      isInline(el.parentElement.nextSibling) &&
+      el.parentElement.nextSibling.nodeType !== TEXT_NODE
+    ) {
+      text = `${text} `; // add a space at end if the next node is inline node
+      // This is the behavior of Google Docs
+    }
+
     return {
       text,
     };
@@ -246,3 +250,28 @@ export default deserialize;
 // });
 // remove "\n" followed by any non-space character
 // text = text.replace(/\n(\S)/gm, '$1');
+// if (text.indexOf('\n') > -1) {
+//   console.log(
+//     el.parentElement.nextSibling,
+//     isInline(el.parentElement.nextSibling),
+//   );
+// }
+// remove all other new lines, they shouldn't exist at this point
+
+// .replace(/^\n(?=\S)/g, '') // remove "\n" followed by any non-space character
+// .replace(/\n(?=\s)/g, '') // remove \n followed by a space
+// .replace(/(?<=\s)\n/g, '') // remove \n follows a space
+// .replace(/\n/g, ' ')
+// .replace(/\t/g, '');
+
+//
+// if (!isInline(el.nextSibling)) {
+//   text = text.replace('\n', '');
+// }
+
+// console.log({
+//   original: `-${el.textContent}-`,
+//   result: `-${text}-`,
+//   prevInline: el.previousSibling,
+//   nextInline: el.nextSibling,
+// });
