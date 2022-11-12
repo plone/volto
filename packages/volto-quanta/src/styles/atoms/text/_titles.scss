@@ -1,0 +1,92 @@
+/**
+TITLES
+**/
+:-webkit-any(h1,h2,h3,h4,h5,h6) {
+  margin-top: $rhythm-medium; // 1
+  margin-bottom: $rhythm-medium;// $headings-margin-bottom;
+  font-family: $title; //Metropolis
+  font-style: $normal; //Normal
+  color: $denim; //denim
+}
+
+/*
+Not in use
+.title.large {
+  @extend %title-large;
+}
+*/
+
+h1, .title, .title.medium {
+  @extend %title-medium;
+}
+
+h2, .title.small {
+  @extend %title-small;
+}
+
+h3 {
+  @extend %label-large;
+  font-weight: $bold;
+}
+
+h4 {
+  @extend %label-large;
+}
+
+h5 {
+  @extend %label-medium;
+}
+
+h6 {
+  @extend %label-small;
+}
+
+/*
+:root {
+    //--display-text-size--large: 72px; - 60
+    --display-text-size--large: 72px; //60
+    --display-text-size: 48px; // 42
+    --display-text-size--small: 36px; // 30
+    --display-text-weight--accent: bold;
+  
+    --heading-text-size--large: 30px;
+    --heading-text-size: 24px;
+    --heading-text-size--small: 20px;
+    --heading-text-weight--accent: bold;
+  
+    --text-text-size--large: 18px;
+    --text-text-size: 16px;
+    --text-text-size--small: 14px;
+    --text-text-weight--accent: bold;
+    --text-text-weight--dim: var(--charcoal);
+  
+    --text-text-size--tiny: 12px;
+  }
+  
+  h1 { font-size: var(--heading-text-size--large); }
+  h2 { font-size: var(--heading-text-size); }
+  h3 { font-size: var(--heading-text-size--small); }
+  h4 { font-size: var(--text-text-size--large); }
+  h5 { font-size: var(--text-text-size); }
+  h6 { font-size: var(--text-text-size--small); }
+  
+  :-webkit-any(h1,h2,h3,h4,h5,h6).small {
+    font-size: var(--heading-text-size--small);
+  }
+  :-webkit-any(h1,h2,h3,h4,h5,h6).large {
+    font-size: var(--heading-text-size--large);
+  }
+  :-webkit-any(h1,h2,h3,h4,h5,h6).accent {
+    font-weight: var(--heading-text-weight--accent);
+  }
+  :-webkit-any(h1,h2,h3,h4,h5,h6).display {
+    font-size: var(--display-text-size);
+  }
+  :-webkit-any(h1,h2,h3,h4,h5,h6).display.small {
+    font-size: var(--display-text-size--small);
+  }
+  :-webkit-any(h1,h2,h3,h4,h5,h6).display.large {
+    font-size: var(--display-text-size--large);
+  }
+
+*/

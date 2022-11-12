@@ -1,0 +1,59 @@
+//*// AVATARS
+
+//// USAGE
+/*
+* SIZES: Small, Medium (default)
+* WEIGHTS: —
+* KINDS: —
+* IONS: Optional image
+
+* USAGE: 
+    <div class="avatar" aria-label="Name surname" role="image">
+        <img src="img/avatar2.jpg" alt="">
+        <span class="initials" role="presentation">N</span>
+    </div>
+    <div class="avatar small" aria-label="Name surname" role="image">
+        <span class="initials" role="presentation">N</span>
+    </div>
+*/
+
+
+//// VARIABLES
+$avatar-size: $rhythm-huge;
+$avatar-small-size: $rhythm-medium*2;
+$avatar-radii: $radii-full;
+
+//// AVATAR
+.avatar {
+    display: inline-block;
+    width: $avatar-size;
+    height: $avatar-size;
+    background-color: $dolphin;
+    border-radius: $avatar-radii;
+    overflow: hidden;
+    display: inline-flex;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+    .initials {
+        @extend %label-medium;
+
+    }
+    img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        user-select: none;
+        -webkit-user-drag: none;
+    }
+    img + .initials {
+        display:none;
+    }
+    &.small {
+        width: $avatar-small-size;
+        height: $avatar-small-size;
+        .initials {
+            @extend %label-small;
+        }
+    }
+}

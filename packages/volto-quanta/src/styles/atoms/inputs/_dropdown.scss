@@ -1,0 +1,130 @@
+//https://www.w3.org/TR/2017/WD-wai-aria-practices-1.1-20170628/examples/listbox/listbox.html
+
+.q.dropdown,
+.q .react-select__menu-list {
+  width: 100%;
+  max-height: 240px;
+  padding: 6px 0;
+  background-color: $air;
+  border-radius: 6px;
+  box-shadow: $meso;
+  // This missbehaves in react-select, maybe do we want the scroll thin, always?
+  //  overflow-y: scroll;
+
+  .group {
+    padding-left: 0;
+    margin-bottom: 0;
+  }
+
+  .title {
+    @extend %label-small;
+    position: sticky;
+    z-index: 1;
+    top: -6px;
+    padding: 3px 12px;
+    backdrop-filter: blur(24px);
+    background-color: rgba($air, 0.72);
+    color: $pigeon;
+    @supports not (backdrop-filter: blur(24px)) {
+      background-color: rgba($air, 0.96);
+    }
+  }
+
+  .option,
+  .react-select__option {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: background-color $time-tiny ease-in-out;
+
+    &::before {
+      content: none;
+    }
+
+    > :not(:first-child) {
+      margin-left: 12px;
+    }
+
+    &:hover {
+      background-color: $snow;
+    }
+
+    &:active,
+    &[aria-selected='true'] {
+      background-color: $smoke;
+    }
+
+    &[aria-selected='true'] {
+      background-color: $smoke;
+    }
+  }
+
+  .label {
+    @extend %label-medium;
+    color: $denim;
+
+    small {
+      @extend %text-small;
+      margin-left: 6px;
+      color: $pigeon;
+    }
+  }
+}
+
+.q.dropdown[aria-multiselectable='true'] {
+  .option::before {
+    position: relative;
+    display: block;
+    width: 18px;
+    height: 18px;
+    margin-right: 12px;
+    margin-left: 0;
+    background: $air;
+    border-radius: 3px;
+    box-shadow: inset 0 0 0 1px $dolphin;
+    content: '';
+    transition: box-shadow $time-tiny ease-in-out;
+  }
+
+  .option:hover::before {
+    box-shadow: inset 0 0 0 1px $sapphire;
+  }
+
+  .option:active::before {
+    box-shadow: inset 0 0 0 2px $cobalt;
+  }
+
+  [aria-selected='true'].option::before {
+    box-shadow: inset 0 0 0 9px $sapphire;
+  }
+
+  [aria-selected='true'].option:hover::before {
+    box-shadow: inset 0 0 0 9px $royal;
+  }
+
+  [aria-selected='true'].option:active::before {
+    box-shadow: inset 0 0 0 9px $cobalt;
+  }
+
+  .option::after {
+    position: absolute;
+    left: 12px;
+    width: 18px;
+    height: 18px;
+    content: url($icon-checkbox);
+    opacity: 0;
+    transition: opacity $time-tiny ease-in-out;
+  }
+
+  [aria-selected='true'].option::after {
+    opacity: 1;
+  }
+}
+
+// Amendments
+.q .react-select__menu-list {
+  font-size: 16px;
+  @extend %scroll-small;
+}

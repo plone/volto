@@ -1,0 +1,13 @@
+//// RESET
+p {
+    @extend %separate-block-medium;
+}
+
+
+//// STYLES
+p.small {
+    @extend %text-small;
+}
+p.dim {
+    color: $pigeon;
+}

@@ -1,0 +1,17 @@
+.icon {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    svg {
+        fill: $pigeon;
+        display: block;
+    }
+    &.small {
+        width:18px;
+        height:18px;
+    }
+    &.large {
+        width:48px;
+        height:48px;
+    }
+}

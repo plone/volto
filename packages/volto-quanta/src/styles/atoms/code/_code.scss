@@ -1,0 +1,23 @@
+pre {
+    background-color: $spa;
+    padding: 12px 18px;
+    border-radius: 6px;
+    @extend %text-code;
+    overflow: auto;
+    overflow-x: overlay;
+    min-width: 100%;
+    @extend .scroll.small;
+}
+
+code {
+    @extend %text-code;
+    background-color: $spa;
+    color: $puya;
+    padding: 3px 4px;
+    border-radius: 3px;
+}
+pre > code {
+    font-size: inherit;
+    padding:0;
+    color:inherit;
+}

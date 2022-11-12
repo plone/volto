@@ -1,0 +1,50 @@
+
+.field .toggle {
+    @extend .checkbox;
+}
+
+.field .toggle {
+    right:0;
+    background-color: $silver;
+    border-radius: 12px;
+    width: 30px;
+    height: 12px;
+    top: 3px;
+    transition: background-color $time-tiny ease-in-out;
+    &:checked {
+        background-color: $azure;
+    }
+    & + label {
+        margin-left: 0;
+        display: flex; //prevent white space with icon
+        & .icon {
+            margin: 3px 6px 3px 0;
+        }
+    }
+    & + label::before {
+        right: 0;
+        margin-right:0;
+        border-radius: $radii-full;
+        transform: translate(-12px);
+        transition: box-shadow $time-tiny ease-in-out, transform $time-tiny ease-in-out !important;
+    }
+    & + label::after {
+        right: 0;
+        left: auto;
+        top:0;
+        transform: translate(-12px);
+        content: url($icon-radio);
+        transition: box-shadow $time-tiny ease-in-out, transform $time-tiny ease-in-out !important;
+    }
+    & ~ .hint {
+        margin-left:0;
+    }
+    &:focus {
+        outline:0;
+        border-radius: $radii-full;
+    }
+    &:checked + label::before,
+    &:checked + label::after {
+        transform: translate(0px);
+    }
+}

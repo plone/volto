@@ -1,0 +1,31 @@
+{
+	"extends": [
+		"stylelint-config-sass-guidelines",
+		"stylelint-config-idiomatic-order"
+	],
+
+	"overrides": [
+		{
+			"files": ["**/*.less"],
+			"customSyntax": "postcss-less"
+		},
+		{
+			"files": ["**/*.overrides"],
+			"customSyntax": "postcss-less"
+		},
+		{
+			"files": ["**/*.scss"],
+			"customSyntax": "postcss-scss"
+		}
+	],
+	"rules": {
+		"order/properties-alphabetical-order": null,
+		"rule-empty-line-before": [
+			"always-multi-line",
+			{
+				"except": ["first-nested"],
+				"ignore": ["after-comment"]
+			}
+		]
+	}
+}

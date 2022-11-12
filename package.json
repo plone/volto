@@ -27,9 +27,15 @@
     "plone",
     "react"
   ],
+  "workspaces": [
+    "packages/volto-quanta"
+  ],
   "packagesFolderAddons": {
     "volto-slate": {
       "package": "@plone/volto-slate"
+    },
+    "volto-quanta": {
+      "package": "@plone/volto-quanta"
     }
   },
   "scripts": {

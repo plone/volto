@@ -1,0 +1,49 @@
+.expand {
+    margin-top: 48px;
+    position: relative;
+    &-title {
+        margin: 0;
+        border-top:1px solid $silver;
+        position: relative;
+        & button {
+            width: 100%;
+            text-align: left;
+            padding: 18px 36px 18px 0;
+            border-radius: $radii-null;
+            &:hover, &:active {
+                background-color: $air;
+            }
+            &:focus {
+                @include focus-visible;
+            }
+            &::after {
+                content: none;
+            }
+        }
+        &::after {
+            content: url($icon-chevrondown);
+            position: absolute;
+            right: 0;
+            top:0;
+            margin-top: 18px;
+            width: 24px;
+            height: 24px;
+            padding: 3px;
+            transition: transform $time-tiny ease-in-out;
+        }
+    }
+    &-title[aria-expanded="true"]::after {
+        transform: rotate(180deg);
+    } 
+    &-title[aria-expanded="false"] + &-content {
+        max-height: 0;
+        overflow: hidden;
+        
+    }
+    &-content > div {
+        padding-bottom: 48px;
+    }
+    &-content:last-child {
+        margin-bottom: 60px;
+    }
+}

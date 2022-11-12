@@ -1,0 +1,43 @@
+//// ADDRESS
+address {
+    margin-bottom: $rhythm-large;; //margin-bottom-element
+    font-style: normal;
+    line-height: inherit;
+}
+
+//// BLOCKQUOTE
+blockquote {
+    margin: 0 0 $rhythm-large;
+}
+
+//// QUOTE
+q {
+    quotes: "“" "”" "‘" "’";
+    }
+    q::before {
+    content: open-quote;}
+    q::after {
+    content: close-quote;
+    }
+
+
+//// STRIKEN
+s::before, 
+s::after {
+    @extend %sr;
+}
+
+s::before {
+content: " [start of stricken text] ";
+}
+
+s::after {
+content: " [end of stricken text] ";
+}
+
+//// UNARTICULATED ANNOTATION
+u {
+text-decoration-skip-ink: none; // do not move bottom
+text-decoration: underline;
+text-decoration: $rose wavy underline;
+}
