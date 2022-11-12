@@ -5,9 +5,9 @@
   "version": "1.0.0",
   "scripts": {
     "start": "razzle start",
-    "preinstall": "if [ -f $(pwd)/mrs.developer.json ]; then if [ -f $(pwd)/node_modules/.bin/missdev ]; then yarn develop; else yarn develop:npx; fi; fi",
+    "preinstall": "make preinstall",
     "postinstall": "yarn omelette && yarn patches",
-    "omelette": "if [ ! -d omelette ]; then ln -sf node_modules/@plone/volto omelette; fi",
+    "omelette": "make omelette",
     "patches": "/bin/bash patches/patchit.sh > /dev/null 2>&1 ||true",
     "build": "razzle build --noninteractive",
     "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx}'",
@@ -151,9 +151,11 @@
     "@storybook/addon-essentials": "^6.3.0",
     "@storybook/addon-links": "^6.3.0",
     "@storybook/react": "^6.3.0",
+    "razzle": "4.2.17",
     "stylelint": "14.0.1",
     "stylelint-config-idiomatic-order": "8.1.0",
     "stylelint-config-prettier": "8.0.1",
     "stylelint-prettier": "1.1.2"
-  }
+  },
+  "packageManager": "yarn@3.2.3"
 }

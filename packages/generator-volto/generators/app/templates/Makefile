@@ -48,3 +48,11 @@ start-backend-docker:		## Starts a Docker-based backend
 .PHONY: help
 help:		## Show this help.
 	@echo -e "$$(grep -hE '^\S+:.*##' $(MAKEFILE_LIST) | sed -e 's/:.*##\s*/:/' -e 's/^\(.\+\):\(.*\)/\\x1b[36m\1\\x1b[m:\2/' | column -c2 -t -s :)"
+
+.PHONY: preinstall
+preinstall:
+	if [ -f $$(pwd)/mrs.developer.json ]; then if [ -f $$(pwd)/node_modules/.bin/missdev ]; then yarn develop; else yarn develop:npx; fi; fi
+
+.PHONY: omelette
+omelette:
+	if [ ! -d omelette ]; then ln -sf node_modules/@plone/volto omelette; fi

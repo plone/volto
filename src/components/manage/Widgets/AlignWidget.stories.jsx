@@ -21,7 +21,7 @@ export default {
   argTypes: {
     actions: {
       control: 'check',
-      options: ['left', 'right', 'center', 'wide', 'full'],
+      options: ['left', 'right', 'center', 'narrow', 'wide', 'full'],
     },
   },
 };
