@@ -1,6 +1,6 @@
 # Change Log
 
-## 5.9.4 (unreleased)
+## 6.0.0-alpha.0 (2022-11-12)
 
 ### Breaking
 
