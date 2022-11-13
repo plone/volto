@@ -27,9 +27,9 @@ const cleanWhitespace = (text) => {
   return text;
 };
 
-const trimLineBreaksOnEdges = (text) => {
-  return text.replace(/^\n/, '').replace('\n$', '');
-};
+// const trimLineBreaksOnEdges = (text) => {
+//   return text.replace(/^\n/, '').replace('\n$', '');
+// };
 
 const cleanSpaceBeforeAfterEndLine = (text) => {
   text = text.replace(/\s+\n/gm, '\n'); // space before endline
@@ -61,12 +61,29 @@ const removeSpaceFollowSpace = (text, node) => {
   return text;
 };
 
+const removeElementEdges = (text, node) => {
+  if (
+    text.match(/^\s/) &&
+    !node.previousSibling &&
+    !isInline(node.parentNode)
+  ) {
+    text = text.replace(/^\s+/, '');
+  }
+
+  if (text.match(/\s$/) && !node.nextSibling && !isInline(node.parentNode)) {
+    text = text.replace(/^\s/, '');
+  }
+
+  return text;
+};
+
 export const htmlUtils = {
   cleanWhitespace,
   cleanSpaceBeforeAfterEndLine,
   convertTabsToSpaces,
   convertLineBreaksToSpaces,
   removeSpaceFollowSpace,
+  removeElementEdges,
 };
 
 const collapseInlineSpace = (node) => {
@@ -88,6 +105,9 @@ const collapseInlineSpace = (node) => {
   // (even across two separate inline elements) is ignored
   text = htmlUtils.removeSpaceFollowSpace(text, node);
 
+  // 5. Sequences of spaces at the beginning and end of an element are removed
+  text = htmlUtils.removeElementEdges(text, node);
+
   return text;
 };
 
@@ -100,6 +120,7 @@ const collapseInlineSpace = (node) => {
  * as a space, etc. So we try to meet user's expectations that when they
  * copy/paste content, we'll preserve the aspect of their text.
  *
+ * See https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Whitespace
  */
 export const deserialize = (editor, el) => {
   const { htmlTagsToSlate } = editor;
@@ -107,85 +128,7 @@ export const deserialize = (editor, el) => {
   if (el.nodeType === COMMENT) {
     return null;
   } else if (el.nodeType === TEXT_NODE) {
-    // if (isWhitespace(el.textContent)) {
-    //   // if it's empty text between 2 tags, it should be ignored
-    //   return isInline(el.previousSibling) || isInline(el.nextSibling)
-    //     ? { text: cleanWhitespace(el.textContent) } // perceptually multiple whitespace render as a single space
-    //     : null;
-    // }
-
-    // let text = el.textContent; // cleanWhitespace()
-
     let text = collapseInlineSpace(el);
-
-    // trim line breaks at edges of tag, see https://www.w3.org/TR/html4/appendix/notes.html
-    //
-    // B.3.1 Line breaks
-    // SGML (see [ISO8879], section 7.6.1) specifies that a line break
-    // immediately following a start tag must be ignored, as must a line break
-    // immediately before an end tag. This applies to all HTML elements without
-    // exception.
-
-    // text = trimLineBreaksOnEdges(text);
-
-    // return { text };
-    // console.log('text', { text, tc: el.textContent });
-
-    // if (isInline(el.parentElement.previousSibling)) {
-    //   // if previous element is inline, replace beginning new line with a space
-    //   text = text.replace(/^\n(\S)/gm, ' $1');
-    // }
-    //
-    // if (
-    //   (el.parentElement.previousSibling &&
-    //     !isInline(el.parentElement.previousSibling)) ||
-    //   !el.parentElement.previousSibling
-    // ) {
-    //   // if previous element is block (or doesn't exist), remove beginning new line
-    //   text = text.replace(/^\n(\S)/gm, '$1');
-    // }
-    //
-    // // remove trailing newlines
-    // text = text.replace(/\n$/gm, '');
-    //
-    // // const hadSpaceInFront = text.match(/^ /);
-    // const hadSpaceAtEnd = text.match(/ $/);
-    //
-    // // trim beginning and end whitespace
-    // text = text.replace(/^\s+(\S)/gm, '$1');
-    // text = text.replace(/(\S)\s+$/gm, '$1');
-    //
-    // // TODO: don't be so optimistic about nextSibling, it can be another type
-    // // of node. There should be a smarter version, the traverses siblings until
-    // // it finds a text, element or inline node
-    // if (
-    //   isInline(el.parentElement) &&
-    //   isInline(el.parentElement.nextSibling) &&
-    //   el.parentElement.nextSibling.nodeType !== TEXT_NODE
-    // ) {
-    //   text = `${text} `; // add a space at end if the next node is inline node
-    //   // This is the behavior of Google Docs
-    // }
-    //
-    // // add a space if previous element is an inline node that doesn't end with
-    // // space
-    // if (
-    //   el.previousSibling &&
-    //   isInline(el.previousSibling) &&
-    //   !(el.previousSibling.textContent || '').match(/ $/)
-    // ) {
-    //   text = ` ${text}`;
-    // }
-    //
-    // // add a space if next element is an inline node that doesn't start with
-    // if (
-    //   el.parentElement.nextSibling &&
-    //   isInline(el.parentElement.nextSibling) &&
-    //   !(el.parentElement.nextSibling.textContent || '').match(/^ /) &&
-    //   hadSpaceAtEnd
-    // ) {
-    //   text = `${text} `;
-    // }
 
     return {
       text,
@@ -333,3 +276,79 @@ export const preTagDeserializer = (editor, el) => {
 };
 
 export default deserialize;
+
+// if (isWhitespace(el.textContent)) {
+//   // if it's empty text between 2 tags, it should be ignored
+//   return isInline(el.previousSibling) || isInline(el.nextSibling)
+//     ? { text: cleanWhitespace(el.textContent) } // perceptually multiple whitespace render as a single space
+//     : null;
+// }
+// let text = el.textContent; // cleanWhitespace()
+// trim line breaks at edges of tag, see https://www.w3.org/TR/html4/appendix/notes.html
+//
+// B.3.1 Line breaks
+// SGML (see [ISO8879], section 7.6.1) specifies that a line break
+// immediately following a start tag must be ignored, as must a line break
+// immediately before an end tag. This applies to all HTML elements without
+// exception.
+
+// text = trimLineBreaksOnEdges(text);
+
+// return { text };
+// console.log('text', { text, tc: el.textContent });
+
+// if (isInline(el.parentElement.previousSibling)) {
+//   // if previous element is inline, replace beginning new line with a space
+//   text = text.replace(/^\n(\S)/gm, ' $1');
+// }
+//
+// if (
+//   (el.parentElement.previousSibling &&
+//     !isInline(el.parentElement.previousSibling)) ||
+//   !el.parentElement.previousSibling
+// ) {
+//   // if previous element is block (or doesn't exist), remove beginning new line
+//   text = text.replace(/^\n(\S)/gm, '$1');
+// }
+//
+// // remove trailing newlines
+// text = text.replace(/\n$/gm, '');
+//
+// // const hadSpaceInFront = text.match(/^ /);
+// const hadSpaceAtEnd = text.match(/ $/);
+//
+// // trim beginning and end whitespace
+// text = text.replace(/^\s+(\S)/gm, '$1');
+// text = text.replace(/(\S)\s+$/gm, '$1');
+//
+// // TODO: don't be so optimistic about nextSibling, it can be another type
+// // of node. There should be a smarter version, the traverses siblings until
+// // it finds a text, element or inline node
+// if (
+//   isInline(el.parentElement) &&
+//   isInline(el.parentElement.nextSibling) &&
+//   el.parentElement.nextSibling.nodeType !== TEXT_NODE
+// ) {
+//   text = `${text} `; // add a space at end if the next node is inline node
+//   // This is the behavior of Google Docs
+// }
+//
+// // add a space if previous element is an inline node that doesn't end with
+// // space
+// if (
+//   el.previousSibling &&
+//   isInline(el.previousSibling) &&
+//   !(el.previousSibling.textContent || '').match(/ $/)
+// ) {
+//   text = ` ${text}`;
+// }
+//
+// // add a space if next element is an inline node that doesn't start with
+// if (
+//   el.parentElement.nextSibling &&
+//   isInline(el.parentElement.nextSibling) &&
+//   !(el.parentElement.nextSibling.textContent || '').match(/^ /) &&
+//   hadSpaceAtEnd
+// ) {
+//   text = `${text} `;
+// }

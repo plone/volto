@@ -137,7 +137,7 @@ describe('deserialize', () => {
     expect(htmlUtils.removeSpaceFollowSpace(' World!', span)).toBe('World!');
   });
 
-  it.only('#4: remove space in text node follows space in sibling inline node', () => {
+  it('#4: remove space in text node follows space in sibling inline node', () => {
     const html = '<h1>   <b>Hello </b> World!   </h1>';
 
     const dom = new JSDOM(html);
@@ -150,6 +150,32 @@ describe('deserialize', () => {
     expect(htmlUtils.removeSpaceFollowSpace(' World!    ', textNode)).toBe(
       'World! ',
     );
+  });
+
+  it('#5. Remove space at beginning of element', () => {
+    const html = '<h1> Hello <b>World!</b> </h1>';
+
+    const dom = new JSDOM(html);
+    const body = dom.window.document.body;
+    const h1 = body.querySelector('h1');
+
+    const textNode = h1.firstChild;
+    expect(textNode.textContent).toBe(' Hello ');
+
+    expect(htmlUtils.removeElementEdges(' Hello ', textNode)).toBe('Hello ');
+  });
+
+  it('#5. Remove space at end of element', () => {
+    const html = '<h1> Hello <b>World!</b> </h1>';
+
+    const dom = new JSDOM(html);
+    const body = dom.window.document.body;
+    const h1 = body.querySelector('h1');
+
+    const textNode = h1.lastChild;
+    expect(textNode.textContent).toBe(' ');
+
+    expect(htmlUtils.removeElementEdges(' ', textNode)).toBe('');
   });
 
   //   it('collapses multiple consecutive spaces', () => {
