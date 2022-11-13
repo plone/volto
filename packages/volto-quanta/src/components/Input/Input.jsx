@@ -70,7 +70,11 @@ const Input = React.forwardRef((props, ref) => {
       errorMessageProps={errorMessageProps}
       className="text"
     >
-      <input ref={inputRef} {...mergeProps(localInputProps, inputProps)} />
+      <input
+        ref={inputRef}
+        required={required}
+        {...mergeProps(localInputProps, inputProps)}
+      />
     </FormFieldWrapper>
   );
 });

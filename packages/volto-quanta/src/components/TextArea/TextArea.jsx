@@ -4,50 +4,73 @@ import FormFieldWrapper from '../FormFieldWrapper/FormFieldWrapper';
 import cx from 'classnames';
 import { isNil } from 'lodash';
 import { useForwardedRef } from '../../helpers';
+import { useTextField } from 'react-aria';
+import { mergeProps } from 'react-aria';
 
 const TextArea = React.forwardRef((props, ref) => {
   const {
     disabled,
     error,
     id,
-    minLength,
-    maxLength,
     onChange,
     onClick,
     placeholder,
     readOnly,
     required,
     tabIndex,
+    title,
     value,
   } = props;
 
   const TextAreaRef = useForwardedRef(ref);
+
+  const {
+    labelProps,
+    inputProps,
+    descriptionProps,
+    errorMessageProps,
+  } = useTextField(
+    {
+      ...props,
+      inputElementType: 'textarea',
+      id: `field-${id}`,
+      label: title,
+      isDisabled: disabled,
+      isReadOnly: readOnly,
+      isRequired: required,
+    },
+    TextAreaRef,
+  );
 
   const computeTabIndex = () => {
     if (!isNil(tabIndex)) return tabIndex;
     if (disabled) return -1;
   };
 
+  const localTextAreaProps = {
+    className: cx('q input textarea', { error: error }),
+    placeholder: placeholder || ' ',
+    onChange: ({ target }) =>
+      readOnly
+        ? undefined
+        : onChange(id, target.value === '' ? undefined : target.value),
+    onClick: () => onClick(),
+    tabIndex: computeTabIndex(),
+    value: value || '',
+  };
+
   return (
-    <FormFieldWrapper {...props} className="text">
+    <FormFieldWrapper
+      {...props}
+      labelProps={labelProps}
+      descriptionProps={descriptionProps}
+      errorMessageProps={errorMessageProps}
+      className="text"
+    >
       <textarea
-        aria-labelledby={`field-label-${id}`}
-        aria-describedby={`field-hint-${id}`}
-        className={cx('q input textarea', { error: error })}
-        id={`field-${id}`}
-        disabled={disabled}
-        placeholder={placeholder || ' '}
-        onChange={({ target }) =>
-          readOnly
-            ? undefined
-            : onChange(id, target.value === '' ? undefined : target.value)
-        }
-        onClick={() => onClick()}
-        readOnly={readOnly}
         ref={TextAreaRef}
         required={required}
-        tabIndex={computeTabIndex()}
-        value={value || ''}
+        {...mergeProps(localTextAreaProps, inputProps)}
       />
     </FormFieldWrapper>
   );
