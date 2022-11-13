@@ -29,18 +29,19 @@ export const insertData = (editor) => {
 
       let fragment;
 
-      // console.log('dt', dt);
-      // console.log('body', body);
+      console.log('dt', dt);
+      console.log('body', body);
 
       const val = deserialize(editor, body);
       fragment = Array.isArray(val) ? val : [val];
 
       // external normalization
       fragment = normalizeExternalData(editor, fragment);
+      console.log({ fragment, val });
 
       editor.insertFragment(fragment);
 
-      // console.log(editor.children);
+      console.log(editor.children);
       return true;
     },
     'text/plain': (dt, fullMime) => {

@@ -281,4 +281,18 @@ is simply dummy text of the printing and typesetting industry.`;
       },
     ]);
   });
+
+  it('handles chrome + firefox style copy', () => {
+    const html = `<strong>Lorem Ipsum</strong><span><span> </span>is simply dummy text of the printing and typesetting industry.</span>`;
+
+    expect(tojson(html)).toStrictEqual([
+      {
+        type: 'strong',
+        children: [{ text: 'Lorem Ipsum' }],
+      },
+      {
+        text: ' is simply dummy text of the printing and typesetting industry.',
+      },
+    ]);
+  });
 });
