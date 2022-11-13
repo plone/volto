@@ -282,16 +282,16 @@ is simply dummy text of the printing and typesetting industry.`;
     ]);
   });
 
-  it('handles chrome + firefox style copy', () => {
-    const html = `<strong>Lorem Ipsum</strong><span><span> </span>is simply dummy text of the printing and typesetting industry.</span>`;
+  it.only('handles chrome + firefox style copy', () => {
+    const html = `<strong>Lorem</strong><span><span> </span>is.</span>`;
 
     expect(tojson(html)).toStrictEqual([
       {
         type: 'strong',
-        children: [{ text: 'Lorem Ipsum' }],
+        children: [{ text: 'Lorem' }],
       },
       {
-        text: ' is simply dummy text of the printing and typesetting industry.',
+        text: ' is.',
       },
     ]);
   });

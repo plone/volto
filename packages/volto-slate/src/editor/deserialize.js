@@ -43,14 +43,15 @@ export const deserialize = (editor, el) => {
   if (el.nodeType === COMMENT) {
     return null;
   } else if (el.nodeType === TEXT_NODE) {
-    if (isWhitespace(el.textContent)) {
-      // if it's empty text between 2 tags, it should be ignored
-      return isInline(el.previousSibling) || isInline(el.nextSibling)
-        ? { text: cleanWhitespace(el.textContent) } // perceptually multiple whitespace render as a single space
-        : null;
-    }
+    // if (isWhitespace(el.textContent)) {
+    //   // if it's empty text between 2 tags, it should be ignored
+    //   return isInline(el.previousSibling) || isInline(el.nextSibling)
+    //     ? { text: cleanWhitespace(el.textContent) } // perceptually multiple whitespace render as a single space
+    //     : null;
+    // }
 
     let text = cleanWhitespace(el.textContent);
+    console.log('text', { text, tc: el.textContent });
 
     if (isInline(el.parentElement.previousSibling)) {
       // if previous element is inline, replace beginning new line with a space
