@@ -122,9 +122,6 @@ class AddonConfigurationRegistry {
             .packagesFolderAddons || {};
 
     this.resultantMergedAddons = [
-      ...(Object.keys(this.packagesFolderAddons).map(
-        (key) => this.packagesFolderAddons[key].package,
-      ) || []),
       ...(packageJson.addons || []),
       ...(this.voltoConfigJS.addons || []),
     ];
@@ -139,6 +136,9 @@ class AddonConfigurationRegistry {
 
     this.dependencyGraph = buildDependencyGraph(
       [
+        ...(Object.keys(this.packagesFolderAddons).map(
+          (key) => this.packagesFolderAddons[key].package,
+        ) || []),
         ...this.resultantMergedAddons,
         ...(process.env.ADDONS ? process.env.ADDONS.split(';') : []),
       ],
