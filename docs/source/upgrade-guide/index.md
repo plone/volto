@@ -253,14 +253,32 @@ It is highly recommended that you use latest Node 16.
 2. Change your root project `Makefile` to include these commands:
 
 ```diff
++.PHONY: install
++install: ## Install the frontend
++       @echo "Install frontend"
++       $(MAKE) omelette
++       $(MAKE) preinstall
++       $(MAKE) develop
++       yarn install
++
 +.PHONY: preinstall
 +preinstall:
 +       if [ -f $$(pwd)/mrs.developer.json ]; then if [ -f $$(pwd)/node_modules/.bin/missdev ]; then yarn develop; else yarn develop:npx; fi; fi
 +
++.PHONY: develop
++develop:
++       npx -p mrs-developer missdev --config=jsconfig.json --output=addons --fetch-https
++
 +.PHONY: omelette
 +omelette:
 +       if [ ! -d omelette ]; then ln -sf node_modules/@plone/volto omelette; fi
++
++.PHONY: patches
++patches:
++       /bin/bash patches/patchit.sh > /dev/null 2>&1 ||true
 ```
+
+You can copy the file over to your project if you have not made any amendment to it.
 
 3. Change your `package.json` scripts section:
 
@@ -269,15 +287,28 @@ It is highly recommended that you use latest Node 16.
    "scripts": {
      "start": "razzle start",
 -    "preinstall": "if [ -f $(pwd)/mrs.developer.json ]; then if [ -f $(pwd)/node_modules/.bin/missdev ]; then yarn develop; else yarn develop:npx; fi; fi",
-+    "preinstall": "make preinstall",
-     "postinstall": "yarn omelette && yarn patches",
 -    "omelette": "if [ ! -d omelette ]; then ln -sf node_modules/@plone/volto omelette; fi",
-+    "omelette": "make omelette",
-     "patches": "/bin/bash patches/patchit.sh > /dev/null 2>&1 ||true",
+-    "patches": "/bin/bash patches/patchit.sh > /dev/null 2>&1 ||true",
+-    "postinstall": "yarn omelette && yarn patches",
++    "postinstall": "make omelette && make patches",
+-    "patches": "/bin/bash patches/patchit.sh > /dev/null 2>&1 ||true",
 ```
 
 Yarn 3 no longer support inline bash scripts in the `scripts` section.
-We need to move them to the `Makefile` and update the calls.
+It does not support the `preinstall` lifecycle state, so we cannot trigger things while we run `yarn install` or just `yarn`.
+We need to move all the commands related to `preinstall` actions to `Makefile` and update the calls in both files as shown above.
+
+```{important}
+After making the changes in this step, we will have to modify our development workflow, specially if we are making use of actions that happened during the `preinstall` state, the most relevant one being updating the code `mrs-developer` is managing.
+If you follow the code above, you'll need to call these `Makefile` commands before each `yarn install`.
+It's recommended to use the `make install` command instead of just `yarn` or `yarn install`.
+
+```shell
+make install
+```
+
+Remember to update your CI scripts accordingly.
+```
 
 4. It doesn't allow to use commands not declared as direct dependencies, so in your projects you should add `razzle` as a dependency:
 
