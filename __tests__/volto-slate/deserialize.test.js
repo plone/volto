@@ -266,4 +266,19 @@ world
       },
     ]);
   });
+
+  it('it handles text fragments', () => {
+    const html = `<strong>Lorem Ipsum</strong>
+is simply dummy text of the printing and typesetting industry.`;
+
+    expect(tojson(html)).toStrictEqual([
+      {
+        type: 'b',
+        children: [{ text: 'Lorem Ipsum' }],
+      },
+      {
+        text: 'is simply dummy text of the printing and typesetting industry.',
+      },
+    ]);
+  });
 });

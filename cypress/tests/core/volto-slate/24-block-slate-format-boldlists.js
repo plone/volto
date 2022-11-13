@@ -68,7 +68,7 @@ describe('Block Tests: Bold Bulleted lists', () => {
     );
   });
 
-  it('As editor I can paste external bold(<b>) formatted bulleted lists', function () {
+  it.only('As editor I can paste external bold(<b>) formatted bulleted lists', function () {
     // Complete chained commands
     cy.getSlateEditorAndType('This is slate"s own bold content');
     cy.setSlateSelection('This is slate"s own bold content');
@@ -83,6 +83,7 @@ describe('Block Tests: Bold Bulleted lists', () => {
 
     // Save
     cy.toolbarSave();
+    // cy.pause();
 
     cy.get('[id="page-document"] ul li:nth-child(1) strong').contains(
       'This is slate"s own bold content',
