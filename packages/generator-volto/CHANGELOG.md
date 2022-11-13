@@ -1,16 +1,20 @@
 # Change Log
 
-## 5.9.4 (unreleased)
+## 6.0.0 (unreleased)
 
 ### Breaking
-
-- Upgrade to Yarn 3 @sneridagh
 
 ### Feature
 
 ### Bugfix
 
 ### Internal
+
+## 6.0.0-alpha.0 (2022-11-12)
+
+### Breaking
+
+- Upgrade to Yarn 3 @sneridagh
 
 ## 5.9.3 (2022-10-10)
 
