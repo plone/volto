@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "16.0.0-alpha.46",
+  "version": "16.0.0-alpha.49",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -27,11 +27,17 @@
     "plone",
     "react"
   ],
+  "packagesFolderAddons": {
+    "volto-slate": {
+      "package": "@plone/volto-slate"
+    }
+  },
   "scripts": {
     "postinstall": "yarn patches",
     "analyze": "BUNDLE_ANALYZE=true razzle build",
     "start": "razzle start",
     "build": "razzle build --noninteractive",
+    "prepare": "husky install",
     "test": "razzle test --maxWorkers=50%",
     "test:ci": "CI=true NODE_ICU_DATA=node_modules/full-icu razzle test",
     "test:husky": "CI=true yarn test --bail --findRelatedTests",
@@ -54,7 +60,8 @@
     "release-major-alpha": "release-it major --preRelease=alpha",
     "release-alpha": "release-it --preRelease=alpha",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "cypress:open": "NODE_ENV=production cypress open"
   },
   "bundlewatch": {
     "files": [
@@ -76,6 +83,7 @@
       "^.+\\.(svg)$": "./jest-svgsystem-transform.js"
     },
     "moduleNameMapper": {
+      "@plone/volto/package.json": "<rootDir>/package.json",
       "@plone/volto/(.*)$": "<rootDir>/src/$1",
       "@plone/volto-slate": "<rootDir>/packages/volto-slate/src",
       "~/config": "<rootDir>/src/config",
@@ -186,14 +194,6 @@
       "releaseNotes": "node changelogupdater.js excerpt"
     }
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "post-checkout": "yarnhook",
-      "post-merge": "yarnhook",
-      "post-rebase": "yarnhook"
-    }
-  },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json}": [
       "npx eslint --max-warnings=0 --fix",
@@ -284,7 +284,7 @@
     "history": "4.10.1",
     "html-webpack-plugin": "4.5.2",
     "http-proxy-middleware": "2.0.1",
-    "husky": "4.2.5",
+    "husky": "8.0.1",
     "identity-obj-proxy": "3.0.0",
     "image-extensions": "1.1.0",
     "is-url": "1.2.4",
@@ -362,10 +362,9 @@
     "semantic-ui-react": "2.0.3",
     "semver": "5.6.0",
     "serialize-javascript": "3.1.0",
-    "slate": "0.78.0",
-    "slate-history": "0.66.0",
-    "slate-hyperscript": "0.77.0",
-    "slate-react": "0.78.1",
+    "slate": "0.84.0",
+    "slate-hyperscript": "0.81.3",
+    "slate-react": "0.83.2",
     "start-server-and-test": "1.14.0",
     "stylelint": "14.0.1",
     "stylelint-config-idiomatic-order": "8.1.0",
@@ -383,7 +382,6 @@
     "webpack-dev-server": "3.11.0",
     "webpack-node-externals": "3.0.0",
     "xmlrpc": "1.3.2",
-    "yarn-deduplicate": "3.1.0",
     "yarnhook": "0.5.1"
   },
   "devDependencies": {
@@ -415,7 +413,7 @@
     "ua-parser-js": "0.7.28"
   },
   "volta": {
-    "node": "16.15.0",
-    "yarn": "1.22.18"
-  }
+    "node": "16.17.1"
+  },
+  "packageManager": "yarn@3.2.3"
 }
