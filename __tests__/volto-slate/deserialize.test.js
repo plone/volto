@@ -178,125 +178,119 @@ describe('deserialize', () => {
     expect(htmlUtils.removeElementEdges(' ', textNode)).toBe('');
   });
 
-  //   it('collapses multiple consecutive spaces', () => {
-  //     const html = '<strong>hello  world</strong>';
-  //
-  //     expect(tojson(html)).toStrictEqual([
-  //       {
-  //         type: 'strong',
-  //         children: [{ text: 'hello world' }],
-  //       },
-  //     ]);
-  //   });
-  //
-  //   it('preserves spaces between two inline nodes', () => {
-  //     const html = '<i>hello</i>    <i>world</i>';
-  //
-  //     expect(tojson(html)).toStrictEqual([
-  //       {
-  //         type: 'i',
-  //         children: [{ text: 'hello' }],
-  //       },
-  //       { text: ' ' },
-  //       {
-  //         type: 'i',
-  //         children: [{ text: 'world' }],
-  //       },
-  //     ]);
-  //   });
-  //
-  //   it('preserves spaces between one block and one inline node', () => {
-  //     const html = '<p>hello</p>    <i>world</i>';
-  //
-  //     expect(tojson(html)).toStrictEqual([
-  //       {
-  //         type: 'p',
-  //         children: [{ text: 'hello' }],
-  //       },
-  //       { text: ' ' },
-  //       {
-  //         type: 'i',
-  //         children: [{ text: 'world' }],
-  //       },
-  //     ]);
-  //   });
-  //
-  //   it('preserves spaces between one inline node and one block node', () => {
-  //     const html = '<i>hello</i>    <p>world</p>';
-  //
-  //     expect(tojson(html)).toStrictEqual([
-  //       {
-  //         type: 'i',
-  //         children: [{ text: 'hello' }],
-  //       },
-  //       { text: ' ' },
-  //       {
-  //         type: 'p',
-  //         children: [{ text: 'world' }],
-  //       },
-  //     ]);
-  //   });
-  //
-  //   it('replaces a single newline inside text with a space', () => {
-  //     const html = `<i>hello
-  // world</i>`;
-  //
-  //     expect(tojson(html)).toStrictEqual([
-  //       {
-  //         type: 'i',
-  //         children: [{ text: 'hello world' }],
-  //       },
-  //     ]);
-  //   });
-  //
-  //   it('replaces multiple newlines inside text with a space', () => {
-  //     const html = `<i>hello
-  //
-  //
-  // world</i>`;
-  //
-  //     expect(tojson(html)).toStrictEqual([
-  //       {
-  //         type: 'i',
-  //         children: [{ text: 'hello world' }],
-  //       },
-  //     ]);
-  //   });
+  it('collapses multiple consecutive spaces', () => {
+    const html = '<strong>hello  world</strong>';
 
-  //   it('transforms newlines at beginning of tags to space', () => {
-  //     const html = `<b>hello</b><i>
-  // world</i>`;
-  //
-  //     expect(tojson(html)).toStrictEqual([
-  //       {
-  //         type: 'b',
-  //         children: [{ text: 'hello ' }],
-  //       },
-  //       {
-  //         type: 'i',
-  //         children: [{ text: 'world' }],
-  //       },
-  //     ]);
-  //   });
-  //
-  //   it('transforms newlines after an space', () => {
-  //     const html = `<p><strong>Lorem Ipsum</strong>
-  // is simply dummy text
-  // </p>`;
-  //
-  //     expect(tojson(html)).toStrictEqual([
-  //       {
-  //         type: 'p',
-  //         children: [
-  //           {
-  //             type: 'strong',
-  //             children: [{ text: 'Lorem Ipsum' }],
-  //           },
-  //           { text: ' is simply dummy text' },
-  //         ],
-  //       },
-  //     ]);
-  //   });
+    expect(tojson(html)).toStrictEqual([
+      {
+        type: 'strong',
+        children: [{ text: 'hello world' }],
+      },
+    ]);
+  });
+
+  it('preserves spaces between two inline nodes', () => {
+    const html = '<i>hello</i>    <i>world</i>';
+
+    expect(tojson(html)).toStrictEqual([
+      {
+        type: 'i',
+        children: [{ text: 'hello' }],
+      },
+      { text: ' ' },
+      {
+        type: 'i',
+        children: [{ text: 'world' }],
+      },
+    ]);
+  });
+
+  it('preserves spaces between one block and one inline node', () => {
+    const html = '<p>hello</p>    <i>world</i>';
+
+    expect(tojson(html)).toStrictEqual([
+      {
+        type: 'p',
+        children: [{ text: 'hello' }],
+      },
+      { text: ' ' },
+      {
+        type: 'i',
+        children: [{ text: 'world' }],
+      },
+    ]);
+  });
+
+  it('preserves spaces between one inline node and one block node', () => {
+    const html = '<i>hello</i>    <p>world</p>';
+
+    expect(tojson(html)).toStrictEqual([
+      {
+        type: 'i',
+        children: [{ text: 'hello' }],
+      },
+      { text: ' ' },
+      {
+        type: 'p',
+        children: [{ text: 'world' }],
+      },
+    ]);
+  });
+
+  it('replaces a single newline inside text with a space', () => {
+    const html = '<i>hello\nworld</i>';
+
+    expect(tojson(html)).toStrictEqual([
+      {
+        type: 'i',
+        children: [{ text: 'hello world' }],
+      },
+    ]);
+  });
+
+  it('replaces multiple newlines inside text with a space', () => {
+    const html = '<i>hello\n\n\nworld</i>';
+
+    expect(tojson(html)).toStrictEqual([
+      {
+        type: 'i',
+        children: [{ text: 'hello world' }],
+      },
+    ]);
+  });
+
+  it('transforms newlines at beginning of tags to space', () => {
+    const html = '<b>hello</b><i>\nworld</i>';
+
+    expect(tojson(html)).toStrictEqual([
+      {
+        type: 'b',
+        children: [{ text: 'hello ' }],
+      },
+      {
+        type: 'i',
+        children: [{ text: 'world' }],
+      },
+    ]);
+  });
+
+  it('transforms newlines after an space', () => {
+    const html = '<p><strong>Lorem Ipsum</strong>\nis simply dummy text\n</p>';
+
+    expect(tojson(html)).toStrictEqual([
+      {
+        type: 'p',
+        children: [
+          {
+            type: 'strong',
+            children: [{ text: 'Lorem Ipsum' }],
+          },
+          { text: ' is simply dummy text' },
+        ],
+      },
+    ]);
+  });
+
   //
   //   it('adds a space before text if inline node does not end with space', () => {
   //     const html = `<p><strong>Lorem Ipsum </strong>
