@@ -104,7 +104,6 @@ describe('deserialize', () => {
 
   it('preserves spaces between two inline nodes', () => {
     const html = '<i>hello</i>    <i>world</i>';
-    // console.log(JSON.stringify(tojson(html)));
 
     expect(tojson(html)).toStrictEqual([
       {
@@ -121,7 +120,6 @@ describe('deserialize', () => {
 
   it('preserves spaces between one block and one inline node', () => {
     const html = '<p>hello</p>    <i>world</i>';
-    // console.log(JSON.stringify(tojson(html)));
 
     expect(tojson(html)).toStrictEqual([
       {
@@ -138,7 +136,6 @@ describe('deserialize', () => {
 
   it('preserves spaces between one inline node and one block node', () => {
     const html = '<i>hello</i>    <p>world</p>';
-    // console.log(JSON.stringify(tojson(html)));
 
     expect(tojson(html)).toStrictEqual([
       {
@@ -195,11 +192,48 @@ world</i>`;
     ]);
   });
 
+  it('transforms newlines after an space', () => {
+    const html = `<p><strong>Lorem Ipsum</strong>
+is simply dummy text
+</p>`;
+
+    expect(tojson(html)).toStrictEqual([
+      {
+        type: 'p',
+        children: [
+          {
+            type: 'strong',
+            children: [{ text: 'Lorem Ipsum' }],
+          },
+          { text: ' is simply dummy text' },
+        ],
+      },
+    ]);
+  });
+
+  it('adds a space before text if inline node does not end with space', () => {
+    const html = `<p><strong>Lorem Ipsum </strong>
+is simply dummy text
+</p>`;
+
+    expect(tojson(html)).toStrictEqual([
+      {
+        type: 'p',
+        children: [
+          {
+            type: 'strong',
+            children: [{ text: 'Lorem Ipsum ' }],
+          },
+          { text: 'is simply dummy text' },
+        ],
+      },
+    ]);
+  });
+
   it('it removes new lines at beginning of text of block nodes', () => {
     const html = `<b>hello</b><p>
 world
 </p><i>dot</i>`;
-    // console.log(JSON.stringify(tojson(html), null, 2));
 
     expect(tojson(html)).toStrictEqual([
       {

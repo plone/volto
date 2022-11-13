@@ -69,10 +69,16 @@ export const deserialize = (editor, el) => {
     // remove trailing newlines
     text = text.replace(/\n$/gm, '');
 
+    // const hadSpaceInFront = text.match(/^ /);
+    const hadSpaceAtEnd = text.match(/ $/);
+
     // trim beginning and end whitespace
     text = text.replace(/^\s+(\S)/gm, '$1');
     text = text.replace(/(\S)\s+$/gm, '$1');
 
+    // TODO: don't be so optimistic about nextSibling, it can be another type
+    // of node. There should be a smarter version, the traverses siblings until
+    // it finds a text, element or inline node
     if (
       isInline(el.parentElement) &&
       isInline(el.parentElement.nextSibling) &&
@@ -80,6 +86,26 @@ export const deserialize = (editor, el) => {
     ) {
       text = `${text} `; // add a space at end if the next node is inline node
       // This is the behavior of Google Docs
+    }
+
+    // add a space if previous element is an inline node that doesn't end with
+    // space
+    if (
+      el.previousSibling &&
+      isInline(el.previousSibling) &&
+      !(el.previousSibling.textContent || '').match(/ $/)
+    ) {
+      text = ` ${text}`;
+    }
+
+    // add a space if next element is an inline node that doesn't start with
+    if (
+      el.parentElement.nextSibling &&
+      isInline(el.parentElement.nextSibling) &&
+      !(el.parentElement.nextSibling.textContent || '').match(/^ /) &&
+      hadSpaceAtEnd
+    ) {
+      text = `${text} `;
     }
 
     return {
