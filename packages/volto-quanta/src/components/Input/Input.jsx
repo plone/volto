@@ -4,53 +4,73 @@ import FormFieldWrapper from '../FormFieldWrapper/FormFieldWrapper';
 import cx from 'classnames';
 import { isNil } from 'lodash';
 import { useForwardedRef } from '../../helpers';
+import { useTextField } from 'react-aria';
+import { mergeProps } from 'react-aria';
 
 const Input = React.forwardRef((props, ref) => {
   const {
     disabled,
     error,
     id,
-    minLength,
-    maxLength,
+    minLength = null,
+    maxLength = null,
     onChange,
     onClick,
     placeholder,
     readOnly,
     required,
     tabIndex,
+    title,
     value,
   } = props;
 
   const inputRef = useForwardedRef(ref);
+
+  const {
+    labelProps,
+    inputProps,
+    descriptionProps,
+    errorMessageProps,
+  } = useTextField(
+    {
+      ...props,
+      id: `field-${id}`,
+      label: title,
+      isDisabled: disabled,
+      isReadOnly: readOnly,
+      isRequired: required,
+      minLength,
+      maxLength,
+    },
+    inputRef,
+  );
 
   const computeTabIndex = () => {
     if (!isNil(tabIndex)) return tabIndex;
     if (disabled) return -1;
   };
 
+  const localInputProps = {
+    className: cx('q input', { error: error }),
+    placeholder: placeholder || ' ',
+    onChange: ({ target }) =>
+      readOnly
+        ? undefined
+        : onChange(id, target.value === '' ? undefined : target.value),
+    onClick: () => onClick(),
+    tabIndex: computeTabIndex(),
+    value: value || '',
+  };
+
   return (
-    <FormFieldWrapper {...props} className="text">
-      <input
-        aria-describedby={`field-hint-${id}`}
-        aria-labelledby={`field-label-${id}`}
-        className={cx('q input', { error: error })}
-        id={`field-${id}`}
-        disabled={disabled}
-        minLength={minLength || null}
-        maxLength={maxLength || null}
-        placeholder={placeholder || ' '}
-        onChange={({ target }) =>
-          readOnly
-            ? undefined
-            : onChange(id, target.value === '' ? undefined : target.value)
-        }
-        onClick={() => onClick()}
-        readOnly={readOnly}
-        ref={inputRef}
-        required={required}
-        tabIndex={computeTabIndex()}
-        value={value || ''}
-      />
+    <FormFieldWrapper
+      {...props}
+      labelProps={labelProps}
+      descriptionProps={descriptionProps}
+      errorMessageProps={errorMessageProps}
+      className="text"
+    >
+      <input ref={inputRef} {...mergeProps(localInputProps, inputProps)} />
     </FormFieldWrapper>
   );
 });

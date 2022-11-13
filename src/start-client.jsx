@@ -12,6 +12,7 @@ import { CookiesProvider } from 'react-cookie';
 import debug from 'debug';
 import routes from '@root/routes';
 import config from '@plone/volto/registry';
+import { SSRProvider } from 'react-aria';
 
 import configureStore from '@plone/volto/store';
 import { Api, persistAuthToken, ScrollToTop } from '@plone/volto/helpers';
@@ -59,17 +60,19 @@ export default function client() {
 
   loadableReady(() => {
     hydrate(
-      <CookiesProvider>
-        <Provider store={store}>
-          <IntlProvider onError={reactIntlErrorHandler}>
-            <ConnectedRouter history={history}>
-              <ScrollToTop>
-                <ReduxAsyncConnect routes={routes} helpers={api} />
-              </ScrollToTop>
-            </ConnectedRouter>
-          </IntlProvider>
-        </Provider>
-      </CookiesProvider>,
+      <SSRProvider>
+        <CookiesProvider>
+          <Provider store={store}>
+            <IntlProvider onError={reactIntlErrorHandler}>
+              <ConnectedRouter history={history}>
+                <ScrollToTop>
+                  <ReduxAsyncConnect routes={routes} helpers={api} />
+                </ScrollToTop>
+              </ConnectedRouter>
+            </IntlProvider>
+          </Provider>
+        </CookiesProvider>
+      </SSRProvider>,
       document.getElementById('main'),
     );
   });

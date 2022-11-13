@@ -79,8 +79,7 @@
   },
   "jest": {
     "modulePathIgnorePatterns": [
-      "api",
-      "packages"
+      "api"
     ],
     "transform": {
       "^.+\\.js(x)?$": "babel-jest",
@@ -121,7 +120,8 @@
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
       "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}",
-      "<rootDir>/__tests__/**/?(*.)(spec|test).{js,jsx,mjs}"
+      "<rootDir>/__tests__/**/?(*.)(spec|test).{js,jsx,mjs}",
+      "<rootDir>/packages/volto-quanta/**/?(*.)(spec|test).{js,jsx,mjs}"
     ]
   },
   "prettier": {
