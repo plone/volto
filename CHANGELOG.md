@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Load core add-ons configuration as any other add-on. @sneridagh
+
 ### Internal
 
 ### Documentation
