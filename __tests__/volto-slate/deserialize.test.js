@@ -1,7 +1,8 @@
 import config from '@plone/volto/registry';
 
 import { JSDOM } from 'jsdom';
-import { deserialize, htmlUtils } from '@plone/volto-slate/editor/deserialize';
+import { deserialize } from '@plone/volto-slate/editor/deserialize';
+import * as htmlUtils from '@plone/volto-slate/editor/utils';
 import { makeEditor } from '@plone/volto-slate/utils/editor';
 import installSlate from '@plone/volto-slate/index';
 
@@ -94,7 +95,7 @@ describe('deserialize', () => {
   it('#1: strips all spaces and tabs immediately before and after a line break', () => {
     const html = '<h1>   Hello \n\t\t\t\t<span> World!</span>\t  </h1>';
 
-    expect(htmlUtils.cleanSpaceBeforeAfterEndLine(html)).toBe(
+    expect(htmlUtils.removeSpaceBeforeAfterEndLine(html)).toBe(
       '<h1>   Hello\n<span> World!</span>\t  </h1>',
     );
   });
@@ -259,37 +260,52 @@ describe('deserialize', () => {
     ]);
   });
 
-  it('transforms newlines at beginning of tags to space', () => {
-    const html = '<b>hello</b><i>\nworld</i>';
+  it('removes whitespace between block elements', () => {
+    const html = '<p>hello</p>\n   \n<p>world</p>';
 
     expect(tojson(html)).toStrictEqual([
       {
-        type: 'b',
-        children: [{ text: 'hello ' }],
+        type: 'p',
+        children: [{ text: 'hello' }],
       },
       {
-        type: 'i',
+        type: 'p',
         children: [{ text: 'world' }],
       },
     ]);
   });
 
-  it('transforms newlines after an space', () => {
-    const html = '<p><strong>Lorem Ipsum</strong>\nis simply dummy text\n</p>';
-
-    expect(tojson(html)).toStrictEqual([
-      {
-        type: 'p',
-        children: [
-          {
-            type: 'strong',
-            children: [{ text: 'Lorem Ipsum' }],
-          },
-          { text: ' is simply dummy text' },
-        ],
-      },
-    ]);
-  });
+  // it('transforms newlines at beginning of tags to space', () => {
+  //   const html = '<b>hello</b><i>\nworld</i>';
+  //
+  //   expect(tojson(html)).toStrictEqual([
+  //     {
+  //       type: 'b',
+  //       children: [{ text: 'hello ' }],
+  //     },
+  //     {
+  //       type: 'i',
+  //       children: [{ text: 'world' }],
+  //     },
+  //   ]);
+  // });
+  //
+  // it('transforms newlines after an space', () => {
+  //   const html = '<p><strong>Lorem Ipsum</strong>\nis simply dummy text\n</p>';
+  //
+  //   expect(tojson(html)).toStrictEqual([
+  //     {
+  //       type: 'p',
+  //       children: [
+  //         {
+  //           type: 'strong',
+  //           children: [{ text: 'Lorem Ipsum' }],
+  //         },
+  //         { text: ' is simply dummy text' },
+  //       ],
+  //     },
+  //   ]);
+  // });
 
   //
   //   it('adds a space before text if inline node does not end with space', () => {
