@@ -25,7 +25,7 @@ Default.args = {
 };
 
 export default {
-  title: 'Internal Components/PreviewImage',
+  title: 'Public Components/PreviewImage',
   component: PreviewImageComponent,
   argTypes: {},
 };
