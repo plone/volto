@@ -29,6 +29,7 @@ export const insertData = (editor) => {
 
       let fragment;
 
+      // eslint-disable-next-line no-console
       console.debug('clipboard operation', {
         clipboard: dt,
         parsedBody: body,

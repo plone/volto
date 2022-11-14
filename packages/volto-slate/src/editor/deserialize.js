@@ -118,7 +118,6 @@ export const spanTagDeserializer = (editor, el) => {
   children = deserializeChildren(el, editor);
 
   // whitespace is replaced by deserialize() with null;
-  // TODO: fix this
   children = children.map((c) => (c === null ? '' : c));
 
   // TODO: handle sub/sup as <sub> and <sup>
