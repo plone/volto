@@ -1,6 +1,6 @@
 # Change Log
 
-## 6.0.0 (unreleased)
+## 6.0.0-alpha.1 (2022-11-14)
 
 ### Feature
 
