@@ -54,19 +54,18 @@ install: ## Install the frontend
 	@echo "Install frontend"
 	$(MAKE) omelette
 	$(MAKE) preinstall
-	$(MAKE) develop
 	yarn install
 
 .PHONY: preinstall
-preinstall:
-	if [ -f $$(pwd)/mrs.developer.json ]; then if [ -f $$(pwd)/node_modules/.bin/missdev ]; then yarn develop; else yarn develop:npx; fi; fi
+preinstall: ## Preinstall task, checks if missdev (mrs-developer) is present and runs it
+	if [ -f $$(pwd)/mrs.developer.json ]; then make develop; fi
 
 .PHONY: develop
-develop:
+develop: ## Runs missdev in the local project (mrs.developer.json should be present)
 	npx -p mrs-developer missdev --config=jsconfig.json --output=addons --fetch-https
 
 .PHONY: omelette
-omelette:
+omelette: ## Creates the omelette folder that contains a link to the installed version of Volto (a softlink pointing to node_modules/@plone/volto)
 	if [ ! -d omelette ]; then ln -sf node_modules/@plone/volto omelette; fi
 
 .PHONY: patches
