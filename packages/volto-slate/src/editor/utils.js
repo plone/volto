@@ -185,10 +185,11 @@ export const isInline = (node) =>
   (node.nodeType === TEXT_NODE || INLINE_ELEMENTS.includes(node.nodeName));
 
 export const removeSpaceFollowSpace = (text, node) => {
+  // Any space immediately following another space (even across two separate
+  // inline elements) is ignored (rule 4)
   text = text.replace(/ ( +)/gm, ' ');
   if (!text.startsWith(' ')) return text;
 
-  // previous sibling is a text node
   if (node.previousSibling) {
     if (node.previousSibling.nodeType === TEXT_NODE) {
       if (node.previousSibling.textContent.endsWith(' ')) {
@@ -196,6 +197,15 @@ export const removeSpaceFollowSpace = (text, node) => {
       }
     } else if (isInline(node.previousSibling)) {
       const prevText = collapseInlineSpace(node.previousSibling);
+      if (prevText.endsWith(' ')) {
+        return text.replace(/^ /, '');
+      }
+    }
+  } else {
+    const parent = node.parentNode;
+    if (parent.previousSibling) {
+      //  && isInline(parent.previousSibling)
+      const prevText = collapseInlineSpace(parent.previousSibling);
       if (prevText.endsWith(' ')) {
         return text.replace(/^ /, '');
       }

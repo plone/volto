@@ -359,32 +359,32 @@ describe('deserialize', () => {
     ]);
   });
 
-  //   it('it handles text fragments', () => {
-  //     const html = `<strong>Lorem Ipsum</strong>
-  // is simply dummy text of the printing and typesetting industry.`;
-  //
-  //     expect(tojson(html)).toStrictEqual([
-  //       {
-  //         type: 'strong',
-  //         children: [{ text: 'Lorem Ipsum' }],
-  //       },
-  //       {
-  //         text: ' is simply dummy text of the printing and typesetting industry.',
-  //       },
-  //     ]);
-  //   });
-  //
-  //   it('handles chrome + firefox style copy', () => {
-  //     const html = `<strong>Hello</strong><span><span> </span>world</span>`;
-  //
-  //     expect(tojson(html)).toStrictEqual([
-  //       {
-  //         type: 'strong',
-  //         children: [{ text: 'Hello' }],
-  //       },
-  //       {
-  //         text: ' world.',
-  //       },
-  //     ]);
-  //   });
+  it('it handles text fragments', () => {
+    const html =
+      '<strong>Lorem Ipsum</strong>\nis simply dummy text of the printing and typesetting industry.';
+
+    expect(tojson(html)).toStrictEqual([
+      {
+        type: 'strong',
+        children: [{ text: 'Lorem Ipsum' }],
+      },
+      {
+        text: ' is simply dummy text of the printing and typesetting industry.',
+      },
+    ]);
+  });
+
+  it('handles chrome + firefox style copy', () => {
+    const html = `<strong>Hello</strong><span><span> </span>world</span>`;
+
+    expect(tojson(html)).toStrictEqual([
+      {
+        type: 'strong',
+        children: [{ text: 'Hello' }],
+      },
+      {
+        text: ' world.',
+      },
+    ]);
+  });
 });
