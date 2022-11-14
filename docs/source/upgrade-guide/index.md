@@ -770,20 +770,20 @@ The `getVocabulary` action has changed API. Before, it used separate positional 
 
 ## Upgrading to Volto 13.x.x
 
-## Deprecating NodeJS 10
+### Deprecating NodeJS 10
 
 Since April 30th, 2021 NodeJS 10 is out of Long Term Support by the NodeJS community, so
 we are deprecating it in Volto 13. Please update your projects to a NodeJS LTS version
 (12 or 14 at the moment of this writing).
 
-## Seamless mode is the default in development mode
+### Seamless mode is the default in development mode
 
 Not really a breaking change, but it's worth noting it. By default, Volto 13 in
 development mode uses the internal proxy in seamless mode otherwise configured
 differently. To learn more about the seamless mode read: {doc}`../deploying/seamless-mode`
 and {doc}`../configuration/zero-config-builds`.
 
-## Refactored Listing block using schemas and ObjectWidget
+### Refactored Listing block using schemas and ObjectWidget
 
 The Listing block has been heavily refactored using schema forms and `BlockDataForm`
 as well as the other new internal artifacts to leverage blocks variations and extensions at the same time
@@ -797,7 +797,7 @@ The advantage of this is that now you can use the `QuerystringWidget` with schem
 data forms in a reusable way in your custom blocks. See the Listing block code for
 further references.
 
-### Migrate your existing listing blocks
+#### Migrate your existing listing blocks
 
 **(Updated: 2021/06/12)** If you have an existing Volto installation and you are using
 listing blocks, you must run an upgrade step in order to match the new listing
@@ -880,7 +880,7 @@ When an official integration package exists, these upgrade steps in the backend
 will be provided in there.
 ```
 
-### Update your custom variations (templates) in your project listing blocks
+#### Update your custom variations (templates) in your project listing blocks
 
 In the case that you have custom templates for your listing blocks in your projects, it's required that you update the definitions to match the new core variations syntax.
 
@@ -910,7 +910,7 @@ To this:
   ]
 ```
 
-## Control panel icons are now SVG based instead of font based
+### Control panel icons are now SVG based instead of font based
 
 It was long due, the control panel overview route `/controlpanel` is now using SVG icons
 from the Pastanaga icon set, instead of the deprecated font ones. If you have customized
@@ -924,13 +924,13 @@ import config from '@plone/volto/registry'
 config.settings.controlPanelsIcons.mynewcontrolpanelid = myfancyiconSVG;
 ```
 
-## Login form UI and accessibility updated
+### Login form UI and accessibility updated
 
 Not really a breaking change, but it's worth to note that we changed the look and feel of
 the login form and improved its usability and accessibility. Another move towards the new
 Quanta look and feel.
 
-## Changes in the Table block feature set and messages
+### Changes in the Table block feature set and messages
 
 The "inverted" option in Table Block was removed since it was useless with the current
 CSS set. Better naming of options and labels in table block (English). Updating the i18n
