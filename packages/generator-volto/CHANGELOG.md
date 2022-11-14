@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Last bit and pieces of the yarn 3 upgrade @sneridagh
+
 ### Bugfix
 
 ### Internal

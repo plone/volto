@@ -5,10 +5,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "razzle start",
-    "preinstall": "make preinstall",
-    "postinstall": "yarn omelette && yarn patches",
-    "omelette": "make omelette",
-    "patches": "/bin/bash patches/patchit.sh > /dev/null 2>&1 ||true",
+    "postinstall": "make omelette && make patches",
     "build": "razzle build --noninteractive",
     "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx}'",
     "lint:fix": "./node_modules/eslint/bin/eslint.js --max-warnings=0 --fix 'src/**/*.{js,jsx}'",
