@@ -29,6 +29,11 @@ export const insertData = (editor) => {
 
       let fragment;
 
+      console.debug('clipboard operation', {
+        clipboard: dt,
+        parsedBody: body,
+      });
+
       const val = deserialize(editor, body);
       fragment = Array.isArray(val) ? val : [val];
 
@@ -38,7 +43,7 @@ export const insertData = (editor) => {
       editor.insertFragment(fragment);
 
       // eslint-disable-next-line no-console
-      console.debug('clipboard operation', {
+      console.debug('result clipboard operation', {
         clipboard: dt,
         parsedBody: body,
         deserializedValue: val,

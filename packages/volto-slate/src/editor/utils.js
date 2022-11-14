@@ -206,7 +206,7 @@ export const removeSpaceFollowSpace = (text, node) => {
     if (parent.previousSibling) {
       //  && isInline(parent.previousSibling)
       const prevText = collapseInlineSpace(parent.previousSibling);
-      if (prevText.endsWith(' ')) {
+      if (prevText && prevText.endsWith(' ')) {
         return text.replace(/^ /, '');
       }
     }
