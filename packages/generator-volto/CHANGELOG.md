@@ -10,6 +10,12 @@
 
 ### Internal
 
+## 6.0.0-alpha.1 (2022-11-14)
+
+### Feature
+
+- Last bit and pieces of the yarn 3 upgrade @sneridagh
+
 ## 6.0.0-alpha.0 (2022-11-12)
 
 ### Breaking
