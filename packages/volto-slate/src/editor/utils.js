@@ -207,15 +207,15 @@ export const removeSpaceFollowSpace = (text, node) => {
 
 export const removeElementEdges = (text, node) => {
   if (
-    text.match(/^\s/) &&
+    !isInline(node.parentNode) &&
     !node.previousSibling &&
-    !isInline(node.parentNode)
+    text.match(/^\s/)
   ) {
     text = text.replace(/^\s+/, '');
   }
 
   if (text.match(/\s$/) && !node.nextSibling && !isInline(node.parentNode)) {
-    text = text.replace(/^\s/, '');
+    text = text.replace(/\s$/, '');
   }
 
   return text;

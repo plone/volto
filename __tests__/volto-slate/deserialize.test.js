@@ -275,95 +275,90 @@ describe('deserialize', () => {
     ]);
   });
 
-  // it('transforms newlines at beginning of tags to space', () => {
-  //   const html = '<b>hello</b><i>\nworld</i>';
-  //
-  //   expect(tojson(html)).toStrictEqual([
-  //     {
-  //       type: 'b',
-  //       children: [{ text: 'hello ' }],
-  //     },
-  //     {
-  //       type: 'i',
-  //       children: [{ text: 'world' }],
-  //     },
-  //   ]);
-  // });
-  //
-  // it('transforms newlines after an space', () => {
-  //   const html = '<p><strong>Lorem Ipsum</strong>\nis simply dummy text\n</p>';
-  //
-  //   expect(tojson(html)).toStrictEqual([
-  //     {
-  //       type: 'p',
-  //       children: [
-  //         {
-  //           type: 'strong',
-  //           children: [{ text: 'Lorem Ipsum' }],
-  //         },
-  //         { text: ' is simply dummy text' },
-  //       ],
-  //     },
-  //   ]);
-  // });
+  it('transforms newlines at beginning of tags to space', () => {
+    const html = '<b>hello</b><i>\nworld</i>';
 
-  //
-  //   it('adds a space before text if inline node does not end with space', () => {
-  //     const html = `<p><strong>Lorem Ipsum </strong>
-  // is simply dummy text
-  // </p>`;
-  //
-  //     expect(tojson(html)).toStrictEqual([
-  //       {
-  //         type: 'p',
-  //         children: [
-  //           {
-  //             type: 'strong',
-  //             children: [{ text: 'Lorem Ipsum ' }],
-  //           },
-  //           { text: 'is simply dummy text' },
-  //         ],
-  //       },
-  //     ]);
-  //   });
-  //
-  //   it('it removes new lines at beginning of text of block nodes', () => {
-  //     const html = `<b>hello</b><p>
-  // world
-  // </p><i>dot</i>`;
-  //
-  //     expect(tojson(html)).toStrictEqual([
-  //       {
-  //         type: 'b',
-  //         children: [{ text: 'hello' }],
-  //       },
-  //       {
-  //         type: 'p',
-  //         children: [{ text: 'world' }],
-  //       },
-  //       {
-  //         type: 'i',
-  //         children: [{ text: 'dot' }],
-  //       },
-  //     ]);
-  //   });
-  //
-  //   it('it removes consecutive space in inline nodes', () => {
-  //     const html = `<b>hello </b><i> world</i>`;
-  //     // console.log(JSON.stringify(tojson(html), null, 2));
-  //
-  //     expect(tojson(html)).toStrictEqual([
-  //       {
-  //         type: 'b',
-  //         children: [{ text: 'hello ' }],
-  //       },
-  //       {
-  //         type: 'i',
-  //         children: [{ text: 'world' }],
-  //       },
-  //     ]);
-  //   });
-  //
+    expect(tojson(html)).toStrictEqual([
+      {
+        type: 'b',
+        children: [{ text: 'hello' }],
+      },
+      {
+        type: 'i',
+        children: [{ text: ' world' }],
+      },
+    ]);
+  });
+
+  it('transforms newlines after a space', () => {
+    const html = '<p><strong>Lorem Ipsum</strong>\nis simply dummy text\n</p>';
+
+    expect(tojson(html)).toStrictEqual([
+      {
+        type: 'p',
+        children: [
+          {
+            type: 'strong',
+            children: [{ text: 'Lorem Ipsum' }],
+          },
+          { text: ' is simply dummy text' },
+        ],
+      },
+    ]);
+  });
+
+  it('transforms newlines to space after an inline tag', () => {
+    const html = '<p><strong>Lorem Ipsum</strong>\nis simply dummy text</p>';
+
+    expect(tojson(html)).toStrictEqual([
+      {
+        type: 'p',
+        children: [
+          {
+            type: 'strong',
+            children: [{ text: 'Lorem Ipsum' }],
+          },
+          { text: ' is simply dummy text' },
+        ],
+      },
+    ]);
+  });
+
+  it('it removes new lines at beginning of text of block nodes', () => {
+    const html = '<b>hello</b><p>\n world\n</p><i>dot</i>';
+
+    expect(tojson(html)).toStrictEqual([
+      {
+        type: 'b',
+        children: [{ text: 'hello' }],
+      },
+      {
+        type: 'p',
+        children: [{ text: 'world' }],
+      },
+      {
+        type: 'i',
+        children: [{ text: 'dot' }],
+      },
+    ]);
+  });
+
+  it('it removes consecutive space in inline nodes', () => {
+    const html = `<b>hello </b><i> world</i>`;
+    // console.log(JSON.stringify(tojson(html), null, 2));
+
+    expect(tojson(html)).toStrictEqual([
+      {
+        type: 'b',
+        children: [{ text: 'hello ' }],
+      },
+      {
+        type: 'i',
+        children: [{ text: 'world' }],
+      },
+    ]);
+  });
+
   //   it('it handles text fragments', () => {
   //     const html = `<strong>Lorem Ipsum</strong>
   // is simply dummy text of the printing and typesetting industry.`;
