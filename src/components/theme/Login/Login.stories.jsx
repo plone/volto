@@ -1,5 +1,5 @@
 import React from 'react';
-import Login from '../Login/Login';
+import Login from './Login';
 import Wrapper from '@plone/volto/storybook';
 
 const { Provider } = require('react-intl-redux');
@@ -30,7 +30,7 @@ Default.args = {
 };
 
 export default {
-  title: 'Internal Components/Login',
+  title: 'Public Components/Login',
   component: Default,
   decorators: [
     (Story) => (
