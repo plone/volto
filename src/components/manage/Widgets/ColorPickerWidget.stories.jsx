@@ -7,8 +7,8 @@ export const Default = WidgetStory.bind({
 });
 
 Default.args = {
-  id: 'localhost:3000/something',
-  title: 'Item title',
+  id: 'favoriteColor',
+  title: 'Favorite Color',
   colors: [
     { name: 'red', label: 'red' },
     { name: 'yellow', label: 'yellow' },

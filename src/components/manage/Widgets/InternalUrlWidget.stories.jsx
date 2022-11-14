@@ -6,8 +6,8 @@ export const Default = WidgetStory.bind({
   widget: InternalUrlWidget,
 });
 Default.args = {
-  id: 'localhost:3000/something',
-  title: 'Item title',
+  id: 'internalUrl',
+  title: 'Internal Url',
   description: 'Optional help text',
 };
 
@@ -15,8 +15,8 @@ export const Placeholder = WidgetStory.bind({
   widget: InternalUrlWidget,
 });
 Placeholder.args = {
-  id: 'localhost:3000/something',
-  title: 'Item title',
+  id: 'internalUrl',
+  title: 'Internal Url',
   description: 'Optional help text',
   placeholder: 'Placeholder text',
 };
@@ -25,8 +25,8 @@ export const Required = WidgetStory.bind({
   widget: InternalUrlWidget,
 });
 Required.args = {
-  id: 'localhost:3000/something',
-  title: 'Item title',
+  id: 'internalUrl',
+  title: 'Internal Url',
   description: 'Optional help text',
   required: true,
 };
@@ -35,8 +35,8 @@ export const Errored = WidgetStory.bind({
   widget: InternalUrlWidget,
 });
 Errored.args = {
-  id: 'localhost:3000/something',
-  title: 'Item title',
+  id: 'internalUrl',
+  title: 'Internal Url',
   description: 'Optional help text',
   error: ['this is an error'],
 };
@@ -44,8 +44,8 @@ export const CustomLength = WidgetStory.bind({
   widget: InternalUrlWidget,
 });
 CustomLength.args = {
-  id: 'localhost:3000/something',
-  title: 'Item title',
+  id: 'internalUrl',
+  title: 'Internal Url',
   description: 'Optional help text',
   minLength: 3,
   maxLength: 5,

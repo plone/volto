@@ -14,6 +14,8 @@
 
 - Add missing pieces of the upgrade to use yarn 3 for projects @sneridagh
 
+- Add additional components to storybook @danalvrz
+
 ## 16.0.0-alpha.49 (2022-11-11)
 
 ### Breaking
