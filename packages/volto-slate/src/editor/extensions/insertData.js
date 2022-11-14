@@ -38,7 +38,8 @@ export const insertData = (editor) => {
       fragment = Array.isArray(val) ? val : [val];
 
       // external normalization
-      fragment = normalizeExternalData(editor, fragment);
+      // fragment = normalizeExternalData(editor, fragment);
+      // TODO: for htmlSlateWidget we want to apply the normalizeExternalData
 
       editor.insertFragment(fragment);
 
@@ -130,7 +131,6 @@ export const insertData = (editor) => {
       editor.beforeInsertData(data);
     }
 
-    // debugger;
     for (let i = 0; i < editor.dataTransferFormatsOrder.length; ++i) {
       const dt = editor.dataTransferFormatsOrder[i];
       if (dt === 'files') {

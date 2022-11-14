@@ -1,11 +1,4 @@
-import {
-  // TD,
-  // TH,
-  // COMMENT,
-  // ELEMENT_NODE,
-  INLINE_ELEMENTS,
-  TEXT_NODE,
-} from '../constants';
+import { INLINE_ELEMENTS, TEXT_NODE } from '../constants';
 
 // Original at https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Whitespace
 /**
@@ -29,6 +22,27 @@ import {
  */
 export function is_all_ws(text) {
   return !/[^\t\n\r ]/.test(text);
+}
+
+/**
+ * Version of |data| that doesn't include whitespace at the beginning
+ * and end and normalizes all whitespace to a single space. (Normally
+ * |data| is a property of text nodes that gives the text of the node.)
+ *
+ * @param txt  The text node whose data should be returned
+ * @return     A string giving the contents of the text node with
+ *             whitespace collapsed.
+ */
+export function data_of(txt) {
+  let data = txt.textContent;
+  data = data.replace(/[\t\n\r ]+/g, ' ');
+  if (data[0] === ' ') {
+    data = data.substring(1, data.length);
+  }
+  if (data[data.length - 1] === ' ') {
+    data = data.substring(0, data.length - 1);
+  }
+  return data;
 }
 
 /**
@@ -133,44 +147,6 @@ export function first_child(par) {
   return null;
 }
 
-/**
- * Version of |data| that doesn't include whitespace at the beginning
- * and end and normalizes all whitespace to a single space. (Normally
- * |data| is a property of text nodes that gives the text of the node.)
- *
- * @param txt  The text node whose data should be returned
- * @return     A string giving the contents of the text node with
- *             whitespace collapsed.
- */
-export function data_of(txt) {
-  let data = txt.textContent;
-  data = data.replace(/[\t\n\r ]+/g, ' ');
-  if (data[0] === ' ') {
-    data = data.substring(1, data.length);
-  }
-  if (data[data.length - 1] === ' ') {
-    data = data.substring(0, data.length - 1);
-  }
-  return data;
-}
-
-export const cleanWhitespace = (text) => {
-  // replace multiple \n with a single \n
-  text = text.replace(/\n+/gm, '\n');
-
-  // replace \n inside text with a space
-  text = text.replace(/(\S)\n(\S)/, '$1 $2');
-
-  // collapse multiple spaces to single space
-  text = text.replace(/ ( +)/gm, ' ');
-
-  return text;
-};
-
-// const trimLineBreaksOnEdges = (text) => {
-//   return text.replace(/^\n/, '').replace('\n$', '');
-// };
-
 export const removeSpaceBeforeAfterEndLine = (text) => {
   text = text.replace(/\s+\n/gm, '\n'); // space before endline
   text = text.replace(/\n\s+/gm, '\n'); // space after endline
@@ -255,6 +231,7 @@ export const collapseInlineSpace = (node) => {
 
   // (volto) Return null if the element is not adjacent to an inline node
   // This will cause the element to be ignored in the deserialization
+  // TODO: use the node traverse functions defined here
   if (
     is_all_ws(text) &&
     !(
