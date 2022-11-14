@@ -383,7 +383,10 @@ describe('deserialize', () => {
         children: [{ text: 'Hello' }],
       },
       {
-        text: ' world.',
+        text: ' ',
+      },
+      {
+        text: 'world',
       },
     ]);
   });

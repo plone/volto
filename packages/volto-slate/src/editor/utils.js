@@ -257,7 +257,12 @@ export const collapseInlineSpace = (node) => {
   // This will cause the element to be ignored in the deserialization
   if (
     is_all_ws(text) &&
-    !(isInline(node.previousSibling) || isInline(node.nextSibling))
+    !(
+      isInline(node.previousSibling) ||
+      isInline(node.nextSibling) ||
+      isInline(node.parentNode.nextSibling) ||
+      isInline(node.parentNode.previousSibling)
+    )
   ) {
     return null;
   }
