@@ -138,7 +138,6 @@ class Controlpanels extends Component {
     this.props.listControlpanels();
     this.props.getSystemInformation();
     this.setState({ isClient: true });
-    console.log(config.settings.controlpanels);
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
