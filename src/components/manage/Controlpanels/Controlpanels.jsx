@@ -138,6 +138,7 @@ class Controlpanels extends Component {
     this.props.listControlpanels();
     this.props.getSystemInformation();
     this.setState({ isClient: true });
+    console.log(config.settings.controlpanels);
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -151,6 +152,13 @@ class Controlpanels extends Component {
       });
     }
   }
+
+  filterControlpanels = (controlpanels) => {
+    const notRelevant = ['Markup'];
+    return controlpanels.filter(
+      (item) => notRelevant.indexOf(item.title) === -1,
+    );
+  };
 
   /**
    * Render method.
@@ -174,59 +182,66 @@ class Controlpanels extends Component {
         })
       : [];
     const controlpanels = map(
-      concat(this.props.controlpanels, customcontrolpanels, [
-        {
-          '@id': '/addons',
-          group: this.props.intl.formatMessage(messages.general),
-          title: this.props.intl.formatMessage(messages.addons),
-        },
-        {
-          '@id': '/database',
-          group: this.props.intl.formatMessage(messages.general),
-          title: this.props.intl.formatMessage(messages.database),
-        },
-        {
-          '@id': '/rules',
-          group: this.props.intl.formatMessage(messages.content),
-          title: this.props.intl.formatMessage(messages.contentRules),
-        },
-        {
-          '@id': '/undo',
-          group: this.props.intl.formatMessage(messages.general),
-          title: this.props.intl.formatMessage(messages.undo),
-        },
-        {
-          '@id': '/aliases',
-          group: this.props.intl.formatMessage(messages.general),
-          title: this.props.intl.formatMessage(messages.urlmanagement),
-        },
-        {
-          '@id': '/moderate-comments',
-          group: this.props.intl.formatMessage(messages.content),
-          title: this.props.intl.formatMessage(messages.moderatecomments),
-        },
-        {
-          '@id': '/users',
-          group: this.props.intl.formatMessage(
-            messages.usersControlPanelCategory,
-          ),
-          title: this.props.intl.formatMessage(messages.users),
-        },
-        {
-          '@id': '/usergroupmembership',
-          group: this.props.intl.formatMessage(
-            messages.usersControlPanelCategory,
-          ),
-          title: this.props.intl.formatMessage(messages.usergroupmemberbership),
-        },
-        {
-          '@id': '/groups',
-          group: this.props.intl.formatMessage(
-            messages.usersControlPanelCategory,
-          ),
-          title: this.props.intl.formatMessage(messages.groups),
-        },
-      ]),
+      concat(
+        this.filterControlpanels(this.props.controlpanels),
+        //this.props.controlpanels,
+        customcontrolpanels,
+        [
+          {
+            '@id': '/addons',
+            group: this.props.intl.formatMessage(messages.general),
+            title: this.props.intl.formatMessage(messages.addons),
+          },
+          {
+            '@id': '/database',
+            group: this.props.intl.formatMessage(messages.general),
+            title: this.props.intl.formatMessage(messages.database),
+          },
+          {
+            '@id': '/rules',
+            group: this.props.intl.formatMessage(messages.content),
+            title: this.props.intl.formatMessage(messages.contentRules),
+          },
+          {
+            '@id': '/undo',
+            group: this.props.intl.formatMessage(messages.general),
+            title: this.props.intl.formatMessage(messages.undo),
+          },
+          {
+            '@id': '/aliases',
+            group: this.props.intl.formatMessage(messages.general),
+            title: this.props.intl.formatMessage(messages.urlmanagement),
+          },
+          {
+            '@id': '/moderate-comments',
+            group: this.props.intl.formatMessage(messages.content),
+            title: this.props.intl.formatMessage(messages.moderatecomments),
+          },
+          {
+            '@id': '/users',
+            group: this.props.intl.formatMessage(
+              messages.usersControlPanelCategory,
+            ),
+            title: this.props.intl.formatMessage(messages.users),
+          },
+          {
+            '@id': '/usergroupmembership',
+            group: this.props.intl.formatMessage(
+              messages.usersControlPanelCategory,
+            ),
+            title: this.props.intl.formatMessage(
+              messages.usergroupmemberbership,
+            ),
+          },
+          {
+            '@id': '/groups',
+            group: this.props.intl.formatMessage(
+              messages.usersControlPanelCategory,
+            ),
+            title: this.props.intl.formatMessage(messages.groups),
+          },
+        ],
+      ),
       (controlpanel) => ({
         ...controlpanel,
         id: last(controlpanel['@id'].split('/')),
