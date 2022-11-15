@@ -141,6 +141,35 @@ class Controlpanel extends Component {
   }
   form = React.createRef();
 
+  // Goal would be to replace the Form schema prop in line 182, with this function
+  filterSchema = (controlpanel) => {
+    const panelType = controlpanel['@id'].replace('/@controlpanels/', '');
+    let unwantedSettings = [];
+
+    // Allows to specify fields to remove per controlpanel
+    switch (panelType) {
+      case 'language':
+        unwantedSettings = ['display_flags', 'always_show_selector'];
+        break;
+      default:
+        unwantedSettings = ['none!'];
+    }
+
+    // Creates modified version of properties
+    const newPropertiesObj = Object.keys(controlpanel.schema.properties)
+      .filter((key) => !unwantedSettings.includes(key))
+      .reduce((obj, key) => {
+        return Object.assign(obj, {
+          [key]: controlpanel.schema.properties[key],
+        });
+      }, {});
+
+    //Should return clone of props.controlpanel.schema, with updated properties
+    return { ...controlpanel.schema, properties: newPropertiesObj };
+    //console.log(controlpanel.schema); //original obj
+    //console.log({ ...controlpanel.schema, properties: newPropertiesObj });
+  };
+
   /**
    * Render method.
    * @method render
@@ -155,7 +184,7 @@ class Controlpanel extends Component {
             <Form
               ref={this.form}
               title={this.props.controlpanel.title}
-              schema={this.props.controlpanel.schema}
+              schema={this.filterSchema(this.props.controlpanel)}
               formData={this.props.controlpanel.data}
               onSubmit={this.onSubmit}
               onCancel={this.onCancel}
