@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Brazilian Portuguese translation updated @ericof
+
 ### Bugfix
 
 - Load core add-ons configuration as any other add-on. @sneridagh
