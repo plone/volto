@@ -8,6 +8,7 @@
 
 ### Bugfix
 
+- Fix condition in `applySchemaDefaults` @tiberiuichim @sneridagh
 - Load core add-ons configuration as any other add-on. @sneridagh
 - Fix `FormValidation` error object, use field `id` instead of field `title` @sneridagh
 
