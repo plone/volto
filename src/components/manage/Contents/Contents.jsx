@@ -1513,6 +1513,7 @@ class Contents extends Component {
                                 name={clearSVG}
                                 size="30px"
                                 color="#e40166"
+                                tabIndex="0"
                                 onClick={() => {
                                   this.onChangeFilter('', { value: '' });
                                 }}

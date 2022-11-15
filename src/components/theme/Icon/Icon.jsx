@@ -32,12 +32,13 @@ const defaultSize = '36px';
  *
  * for further reference see {@link https://kitconcept.com/blog/pastanaga-icon-system/ | here}
  */
-const Icon = ({ name, size, color, className, title, onClick }) => (
+const Icon = ({ name, size, color, className, title, onClick, tabIndex }) => (
   <svg
     xmlns={name.attributes && name.attributes.xmlns}
     viewBox={name.attributes && name.attributes.viewBox}
     style={{ height: size, width: 'auto', fill: color || 'currentColor' }}
     className={className ? `icon ${className}` : 'icon'}
+    tabIndex={tabIndex}
     onClick={onClick}
     dangerouslySetInnerHTML={{
       __html: title ? `<title>${title}</title>${name.content}` : name.content,
