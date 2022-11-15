@@ -2,13 +2,9 @@
 
 ## 6.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
-### Internal
+- Missing `.yarnrc.yml` entry for the yarn 3 release @sneridagh
 
 ## 6.0.0-alpha.1 (2022-11-14)
 
