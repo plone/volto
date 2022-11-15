@@ -2,8 +2,6 @@
 
 ## 16.0.0 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Brazilian Portuguese translation updated @ericof
@@ -16,13 +14,10 @@
 - Revert #2828 PR change of the default `showSearchButton` Search block behavior (see [#3883](https://github.com/plone/volto/issues/3883)) @sneridagh
 - Fix `package.json` `postinstall` in core @sneridagh
 
-### Internal
-
 ### Documentation
 
 - Add missing pieces of the upgrade to use yarn 3 for projects @sneridagh
 - Complete docs about the yarn 3 upgrade @sneridagh
-
 - Add additional components to storybook @danalvrz
 
 ## 16.0.0-alpha.49 (2022-11-11)
