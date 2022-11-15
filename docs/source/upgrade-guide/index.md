@@ -224,7 +224,7 @@ Volto was using the old, classic yarn (v1).
 It has become quite obsolete and yarn has evolved a lot during the last years.
 We are updating Volto to be able to use it, however some changes have to be made in your projects configuration:
 
-1. Enable yarn 3 in your projects, adding `yarnrc.yml`:
+1. Enable yarn 3 in your projects, adding `.yarnrc.yml`:
 
     ```yml
     defaultSemverRangePrefix: ""
