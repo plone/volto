@@ -153,9 +153,9 @@ class Controlpanels extends Component {
   }
 
   filterControlpanels = (controlpanels) => {
-    const notRelevant = ['Markup'];
+    const notRelevant = ['markup'];
     return controlpanels.filter(
-      (item) => notRelevant.indexOf(item.title) === -1,
+      (item) => !notRelevant.some((value) => item['@id'].endsWith(value)),
     );
   };
 
