@@ -60,19 +60,22 @@ const filterSchema = (controlpanel) => {
       ([key, val]) => !(unwantedSettings[panelType] || []).includes(key),
     ),
   );
-  // Creates modified version of fields array
-  const newFieldsArr = controlpanel.schema.fieldsets[0].fields.filter(
-    (item) => !(unwantedSettings[panelType] || []).includes(item),
-  );
+  // Filters props.controlpanel.schema.fieldsets.fields to only valid/relevant fields
+  const filterFields = (fields) => {
+    return fields.filter(
+      (field) => !(unwantedSettings[panelType] || []).includes(field),
+    );
+  };
+  // Creates modified version of fieldsets array
+  const newFieldsets = controlpanel.schema.fieldsets.map((fieldset) => {
+    return { ...fieldset, fields: filterFields(fieldset.fields) };
+  });
 
   // Returns clone of props.controlpanel.schema, with updated properties/fieldsets
   return {
     ...controlpanel.schema,
     properties: newPropertiesObj,
-    fieldsets: [
-      { ...controlpanel.schema.fieldsets[0], fields: newFieldsArr },
-      ...controlpanel.schema.fieldsets.slice(1),
-    ],
+    fieldsets: newFieldsets,
   };
 };
 
