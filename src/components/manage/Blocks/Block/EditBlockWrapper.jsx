@@ -24,7 +24,11 @@ const messages = defineMessages({
 
 const EditBlockWrapper = (props) => {
   const hideHandler = (data) => {
-    return !!data.fixed;
+    return (
+      !!data.fixed ||
+      (config.settings.legacyAddButton &&
+        !(blockHasValue(data) && props.blockProps.editable))
+    );
   };
 
   const { intl, blockProps, draginfo, children } = props;
@@ -87,7 +91,7 @@ const EditBlockWrapper = (props) => {
               <Icon name={trashSVG} size="18px" />
             </Button>
           )}
-          {showBlockChooser && (
+          {!config.settings.legacyAddButton && showBlockChooser && (
             <BlockChooserButton
               data={data}
               block={block}
@@ -102,7 +106,6 @@ const EditBlockWrapper = (props) => {
               allowedBlocks={allowedBlocks}
               blocksConfig={blocksConfig}
               size="24px"
-              className="block-add-button"
               properties={properties}
             />
           )}

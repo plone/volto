@@ -122,7 +122,13 @@ const BlocksForm = (props) => {
   };
 
   const onInsertBlock = (id, value, current) => {
-    const [newId, newFormData] = insertBlock(properties, id, value, current, 1);
+    const [newId, newFormData] = insertBlock(
+      properties,
+      id,
+      value,
+      current,
+      config.settings.legacyAddButton ? 0 : 1,
+    );
     onChangeFormData(newFormData);
     return newId;
   };
@@ -174,7 +180,7 @@ const BlocksForm = (props) => {
   }
 
   useEvent('voltoClickBelowContent', () => {
-    if (!isMainForm) return;
+    if (config.settings.legacyAddButton || !isMainForm) return;
     onSelectBlock(
       onAddBlock(config.settings.defaultBlockType, blockList.length),
     );

@@ -1,7 +1,9 @@
 import React from 'react';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import addSVG from '@plone/volto/icons/circle-plus.svg';
+import { blockHasValue } from '@plone/volto/helpers';
 import { Icon, BlockChooser } from '@plone/volto/components';
+import config from '@plone/volto/registry';
 import { Button } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 
@@ -15,7 +17,9 @@ const messages = defineMessages({
 export const ButtonComponent = (props) => {
   const intl = useIntl();
   const {
-    className = 'block-add-button',
+    className = `block-add-button${
+      config.settings.legacyAddButton ? ' legacy' : ''
+    }`,
     size = '19px',
     onShowBlockChooser,
   } = props;
@@ -74,12 +78,13 @@ const BlockChooserButton = (props) => {
 
   return (
     <>
-      {!disableNewBlocks && (
-        <Component
-          {...props}
-          onShowBlockChooser={() => setAddNewBlockOpened(true)}
-        />
-      )}
+      {!disableNewBlocks &&
+        (!config.settings.legacyAddButton || !blockHasValue(data)) && (
+          <Component
+            {...props}
+            onShowBlockChooser={() => setAddNewBlockOpened(true)}
+          />
+        )}
       {addNewBlockOpened && (
         <BlockChooser
           onMutateBlock={

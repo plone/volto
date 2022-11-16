@@ -131,7 +131,12 @@ const BlockChooser = ({
   };
 
   return (
-    <div className="blocks-chooser" ref={blockChooserRef}>
+    <div
+      className={`blocks-chooser${
+        config.settings.legacyAddButton ? ' legacy' : ''
+      }`}
+      ref={blockChooserRef}
+    >
       <BlockChooserSearch
         onChange={(value) => setFilterValue(value)}
         searchValue={filterValue}
