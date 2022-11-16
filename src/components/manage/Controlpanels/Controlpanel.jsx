@@ -19,6 +19,7 @@ import { updateControlpanel, getControlpanel } from '@plone/volto/actions';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+import { rest } from 'lodash';
 
 const messages = defineMessages({
   changesSaved: {
@@ -42,6 +43,45 @@ const messages = defineMessages({
     defaultMessage: 'Info',
   },
 });
+
+// Filters props.controlpanel.schema to only valid/relevant fields
+const filterSchema = (controlpanel) => {
+  const panelType = controlpanel['@id'].substring(
+    controlpanel['@id'].lastIndexOf('/') + 1,
+  );
+
+  let unwantedSettings = [];
+
+  // Allows to specify properties and fields to remove per controlpanel.schema
+  switch (panelType) {
+    case 'language':
+      unwantedSettings = ['display_flags', 'always_show_selector'];
+      break;
+    default:
+      unwantedSettings = ['none!'];
+  }
+
+  // Creates modified version of properties object
+  const newPropertiesObj = Object.fromEntries(
+    Object.entries(controlpanel.schema.properties).filter(
+      ([key, val]) => !unwantedSettings.includes(key),
+    ),
+  );
+  // Creates modified version of fields array
+  const newFieldsArr = controlpanel.schema.fieldsets[0].fields.filter(
+    (item) => !unwantedSettings.includes(item),
+  );
+
+  // Returns clone of props.controlpanel.schema, with updated properties/fieldsets
+  return {
+    ...controlpanel.schema,
+    properties: newPropertiesObj,
+    fieldsets: [
+      { ...controlpanel.schema.fieldsets[0], fields: newFieldsArr },
+      ...controlpanel.schema.fieldsets.slice(1),
+    ],
+  };
+};
 
 /**
  * Controlpanel class.
@@ -141,35 +181,6 @@ class Controlpanel extends Component {
   }
   form = React.createRef();
 
-  // Goal would be to replace the Form schema prop in line 182, with this function
-  filterSchema = (controlpanel) => {
-    const panelType = controlpanel['@id'].replace('/@controlpanels/', '');
-    let unwantedSettings = [];
-
-    // Allows to specify fields to remove per controlpanel
-    switch (panelType) {
-      case 'language':
-        unwantedSettings = ['display_flags', 'always_show_selector'];
-        break;
-      default:
-        unwantedSettings = ['none!'];
-    }
-
-    // Creates modified version of properties
-    const newPropertiesObj = Object.keys(controlpanel.schema.properties)
-      .filter((key) => !unwantedSettings.includes(key))
-      .reduce((obj, key) => {
-        return Object.assign(obj, {
-          [key]: controlpanel.schema.properties[key],
-        });
-      }, {});
-
-    //Should return clone of props.controlpanel.schema, with updated properties
-    return { ...controlpanel.schema, properties: newPropertiesObj };
-    //console.log(controlpanel.schema); //original obj
-    //console.log({ ...controlpanel.schema, properties: newPropertiesObj });
-  };
-
   /**
    * Render method.
    * @method render
@@ -184,7 +195,7 @@ class Controlpanel extends Component {
             <Form
               ref={this.form}
               title={this.props.controlpanel.title}
-              schema={this.filterSchema(this.props.controlpanel)}
+              schema={filterSchema(this.props.controlpanel)}
               formData={this.props.controlpanel.data}
               onSubmit={this.onSubmit}
               onCancel={this.onCancel}
