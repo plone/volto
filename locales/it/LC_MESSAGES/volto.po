@@ -1989,6 +1989,11 @@ msgstr "Il valore massimo è {len}."
 msgid "Medium"
 msgstr "Medio"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Membership updated
+msgid "Membership updated"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Message
 msgid "Message"
