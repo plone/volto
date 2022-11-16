@@ -43,7 +43,6 @@ describe('Search Block Tests', () => {
     cy.getSlateTitle().focus().click().type('My Search Page');
 
     // Add Search listing block
-    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('Search').click();

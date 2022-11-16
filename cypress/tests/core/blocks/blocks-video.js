@@ -24,7 +24,6 @@ describe('Blocks Tests', () => {
     cy.intercept('GET', '/**/my-page').as('content');
 
     // when I create a video block with a YouTube video
-    cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.video').contains('Video').click();
     cy.get('.toolbar-inner > .ui > input')
@@ -49,7 +48,6 @@ describe('Blocks Tests', () => {
     cy.intercept('GET', '/**/my-page').as('content');
 
     // when I create a video block with a YouTube video
-    cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.video').contains('Video').click();
     cy.get('.toolbar-inner > .ui > input')
@@ -83,7 +81,6 @@ describe('Blocks Tests', () => {
     cy.intercept('GET', '/**/my-page').as('content');
 
     // when I create a video block with a Vimeo video
-    cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.video').contains('Video').click();
     cy.get('.toolbar-inner > .ui > input')
@@ -108,7 +105,6 @@ describe('Blocks Tests', () => {
     cy.intercept('GET', '/**/my-page').as('content');
 
     // when I create a video block with an MP4 video
-    cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.video').contains('Video').click();
     cy.get('.toolbar-inner > .ui > input')

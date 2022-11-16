@@ -40,7 +40,6 @@ context('Listing block tests', () => {
       cy.navigate('/document/edit');
 
       // Add listing block
-      cy.getSlate().click();
       cy.get('button.block-add-button').click();
       cy.get('.blocks-chooser .title').contains('Common').click();
       cy.get('.blocks-chooser .common').contains('Listing').click();
@@ -88,7 +87,6 @@ context('Listing block tests', () => {
       cy.navigate('/document/edit');
 
       // Add listing block
-      cy.getSlate().click();
       cy.get('button.block-add-button').click();
       cy.get('.blocks-chooser .title').contains('Common').click();
       cy.get('.blocks-chooser .common').contains('Listing').click();

@@ -29,7 +29,6 @@ describe('Blocks Tests', () => {
     cy.navigate('/my-page/edit');
     cy.wait('@schema');
 
-    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .hero').contains('Hero').click();

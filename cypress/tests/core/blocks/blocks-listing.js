@@ -55,7 +55,6 @@ describe('Listing Block Tests', () => {
     cy.clearSlateTitle().type('My title');
 
     //add listing block
-    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('Listing').click();
@@ -115,7 +114,6 @@ describe('Listing Block Tests', () => {
     cy.clearSlateTitle().type('My title');
 
     //add listing block
-    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('Listing').click();
@@ -171,7 +169,6 @@ describe('Listing Block Tests', () => {
     cy.clearSlateTitle().type('My title');
 
     //add listing block
-    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('Listing').click();
@@ -250,7 +247,6 @@ describe('Listing Block Tests', () => {
     cy.clearSlateTitle().type('My title');
 
     //add listing block
-    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('Listing').click();
@@ -308,7 +304,6 @@ describe('Listing Block Tests', () => {
     cy.clearSlateTitle().type('My title');
 
     //add listing block
-    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('Listing').click();
@@ -451,7 +446,6 @@ describe('Listing Block Tests', () => {
     cy.clearSlateTitle().type('Listing block - Test Criteria: short-name');
 
     //add listing block
-    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('Listing').click();
@@ -544,7 +538,6 @@ describe('Listing Block Tests', () => {
     );
 
     //add listing block
-    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('Listing').click();
@@ -636,7 +629,6 @@ describe('Listing Block Tests', () => {
     );
 
     //add listing block
-    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('Listing').click();
@@ -730,7 +722,6 @@ describe('Listing Block Tests', () => {
     cy.wait('@schema');
 
     //add listing block
-    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('Listing').click();
@@ -816,7 +807,6 @@ describe('Listing Block Tests', () => {
     cy.clearSlateTitle().type('Listing block - respect batching and limits');
 
     //add listing block
-    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('Listing').click();
