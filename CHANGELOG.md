@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Ignore `.tool-versions` file
+
 ### Documentation
 
 - Add `@plone/scripts` as a mandatory devDependency for projects to the upgrade guide @sneridagh
