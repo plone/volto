@@ -202,12 +202,12 @@ msgstr "Zu Gruppe hinzufügen"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add users to group
 msgid "Add users to group"
-msgstr "Füge Benutzer zu Gruppe hinzu"
+msgstr "Benutzer zu Gruppe hinzufügen"
 
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Add term
 msgid "Add vocabulary term"
-msgstr "Füge neuen Term hinzu"
+msgstr "Neuen Term hinzufügen"
 
 #: components/manage/Add/Add
 # defaultMessage: Add {type}
