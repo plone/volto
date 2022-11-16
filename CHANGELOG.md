@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Ignore `.tool-versions` file
+
 ### Documentation
 
 ## 16.0.0-alpha.50 (2022-11-15)
