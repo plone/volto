@@ -372,7 +372,7 @@ export function visitBlocks(content, callback) {
 export function applySchemaDefaults({ data = {}, schema }) {
   const derivedData = {
     ...Object.keys(schema.properties).reduce((accumulator, currentField) => {
-      return schema.properties[currentField].default
+      return typeof schema.properties[currentField].default !== 'undefined'
         ? {
             ...accumulator,
             [currentField]: schema.properties[currentField].default,

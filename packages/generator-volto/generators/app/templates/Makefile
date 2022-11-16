@@ -33,6 +33,10 @@ YELLOW=`tput setaf 3`
 .PHONY: all
 all: project
 
+.PHONY: help
+help:		## Show this help.
+	@echo -e "$$(grep -hE '^\S+:.*##' $(MAKEFILE_LIST) | sed -e 's/:.*##\s*/:/' -e 's/^\(.\+\):\(.*\)/\\x1b[36m\1\\x1b[m:\2/' | column -c2 -t -s :)"
+
 .PHONY: start-test-backend
 start-test-backend: ## Start Test Plone Backend
 	@echo "$(GREEN)==> Start Test Plone Backend$(RESET)"
@@ -45,6 +49,25 @@ start-backend-docker:		## Starts a Docker-based backend
 	@echo "$(GREEN)==> Start Docker-based Plone Backend$(RESET)"
 	docker run -it --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS='$(KGS)' $(DOCKER_IMAGE)
 
-.PHONY: help
-help:		## Show this help.
-	@echo -e "$$(grep -hE '^\S+:.*##' $(MAKEFILE_LIST) | sed -e 's/:.*##\s*/:/' -e 's/^\(.\+\):\(.*\)/\\x1b[36m\1\\x1b[m:\2/' | column -c2 -t -s :)"
+.PHONY: install
+install: ## Install the frontend
+	@echo "Install frontend"
+	$(MAKE) omelette
+	$(MAKE) preinstall
+	yarn install
+
+.PHONY: preinstall
+preinstall: ## Preinstall task, checks if missdev (mrs-developer) is present and runs it
+	if [ -f $$(pwd)/mrs.developer.json ]; then make develop; fi
+
+.PHONY: develop
+develop: ## Runs missdev in the local project (mrs.developer.json should be present)
+	npx -p mrs-developer missdev --config=jsconfig.json --output=addons --fetch-https
+
+.PHONY: omelette
+omelette: ## Creates the omelette folder that contains a link to the installed version of Volto (a softlink pointing to node_modules/@plone/volto)
+	if [ ! -d omelette ]; then ln -sf node_modules/@plone/volto omelette; fi
+
+.PHONY: patches
+patches:
+	/bin/bash patches/patchit.sh > /dev/null 2>&1 ||true

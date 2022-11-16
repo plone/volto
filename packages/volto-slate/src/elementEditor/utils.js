@@ -1,4 +1,4 @@
-import { Editor, Transforms, Node } from 'slate'; // Range,
+import { Editor, Transforms, Node } from 'slate';
 
 /**
  * @description Creates or updates an existing $elementType. It also takes care
@@ -60,21 +60,32 @@ export const _insertElement = (elementType) => (editor, data) => {
 };
 
 /**
- * Will unwrap a node that has as type the one received or one from an array
+ * Will unwrap a node that has as type the one received or one from an array.
+ * It identifies the current target element and expands the selection to it, in
+ * case the selection was just partial. This allows a "clear and reassign"
+ * operation, for example for the Link plugin.
+ *
  * @param {string|Object[]} elementType - this can be a string or an array of strings
  * @returns {Object|null} - current node
  */
 export const _unwrapElement = (elementType) => (editor) => {
-  const selection = editor.selection || editor.getSavedSelection();
-  const ref = Editor.rangeRef(editor, selection);
+  const [link] = Editor.nodes(editor, {
+    at: editor.selection,
+    match: (node) => node?.type === elementType,
+  });
+  const [, path] = link;
+  const [start, end] = Editor.edges(editor, path);
+  const range = { anchor: start, focus: end };
 
-  Transforms.select(editor, selection);
+  const ref = Editor.rangeRef(editor, range);
+
+  Transforms.select(editor, range);
   Transforms.unwrapNodes(editor, {
     match: (n) =>
       Array.isArray(elementType)
         ? elementType.includes(n.type)
         : n.type === elementType,
-    at: selection,
+    at: range,
   });
 
   const current = ref.current;

@@ -27,7 +27,6 @@ import { contentIcons } from './ContentIcons';
 import { controlPanelsIcons } from './ControlPanels';
 
 import { richtextEditorSettings, richtextViewSettings } from './RichTextEditor';
-import applySlateConfiguration from '@plone/volto-slate';
 
 import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
 
@@ -196,4 +195,4 @@ ConfigRegistry.addonReducers = config.addonReducers;
 ConfigRegistry.appExtras = config.appExtras;
 ConfigRegistry.components = config.components;
 
-applyAddonConfiguration(applySlateConfiguration(ConfigRegistry));
+applyAddonConfiguration(ConfigRegistry);
