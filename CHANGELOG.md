@@ -6,6 +6,8 @@
 
 ### Feature
 
+- The button for adding a new block is now shown below any selected block, instead of only on the left of empty text blocks. @davisagli
+
 ### Bugfix
 
 ### Internal
