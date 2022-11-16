@@ -46,7 +46,7 @@ const ContentsBreadcrumbs = (props) => {
           className="section"
           title={intl.formatMessage(messages.home)}
         >
-          {langmap.[lang]?.nativeName ?? lang}
+          {langmap?.[lang]?.nativeName ?? lang}
         </Link>
       )}
       {!settings.isMultilingual && (
