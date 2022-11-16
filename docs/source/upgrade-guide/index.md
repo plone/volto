@@ -310,10 +310,11 @@ We are updating Volto to be able to use it, however some changes have to be made
 
     Remember to update your CI scripts accordingly.
 
-4. It doesn't allow to use commands not declared as direct dependencies, so in your projects you should add `razzle` as a dependency:
+4. It doesn't allow to use commands not declared as direct dependencies, so in your projects you should add `razzle` and `@plone/scripts` as development dependencies:
 
     ```diff
     devDependencies: {
+    +        "@plone/scripts": "^2.1.2",
     +        "razzle": "4.2.17",
     ```
 
