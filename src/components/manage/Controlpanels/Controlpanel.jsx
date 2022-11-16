@@ -50,26 +50,19 @@ const filterSchema = (controlpanel) => {
     controlpanel['@id'].lastIndexOf('/') + 1,
   );
 
-  let unwantedSettings = [];
-
-  // Allows to specify properties and fields to remove per controlpanel.schema
-  switch (panelType) {
-    case 'language':
-      unwantedSettings = ['display_flags', 'always_show_selector'];
-      break;
-    default:
-      unwantedSettings = ['none!'];
-  }
+  const unwantedSettings = {
+    language: ['display_flags', 'always_show_selector'],
+  };
 
   // Creates modified version of properties object
   const newPropertiesObj = Object.fromEntries(
     Object.entries(controlpanel.schema.properties).filter(
-      ([key, val]) => !unwantedSettings.includes(key),
+      ([key, val]) => !(unwantedSettings[panelType] || []).includes(key),
     ),
   );
   // Creates modified version of fields array
   const newFieldsArr = controlpanel.schema.fieldsets[0].fields.filter(
-    (item) => !unwantedSettings.includes(item),
+    (item) => !(unwantedSettings[panelType] || []).includes(item),
   );
 
   // Returns clone of props.controlpanel.schema, with updated properties/fieldsets
