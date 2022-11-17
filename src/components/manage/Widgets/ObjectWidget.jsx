@@ -34,7 +34,7 @@ const FieldSet = ({
   id,
 }) => {
   return data.fields.map((field, idx) => {
-    const v = value?.[field] || schema.properties[field].default;
+    const v = value?.[field] ?? schema.properties[field].default;
     return (
       <Field
         {...schema.properties[field]}
