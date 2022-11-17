@@ -4,7 +4,13 @@
 
 ### Breaking
 
+- The `ContentsBreadcrumbs` component now renders the whole language name of the language root folder (if any) instead of just the `id` (before: `de`, now: `Deutsch`) @sneridagh
+
 ### Feature
+
+- Improvement of the `ContentsBreadcrumbs` component, add child `ContentsBreadcrumbsRootItem` and `ContentsBreadcrumbsHomeItem` for easy customization of these single elements in projects @sneridagh
+- Add german translation for group membership panel. @ksuess
+- Fix general german translations: Address user polite. Correct 'listing template' to 'listing variant'. Add missing translations. @ksuess
 
 ### Bugfix
 
@@ -13,6 +19,8 @@
 ### Internal
 
 - Ignore `.tool-versions` file
+- Minor updates to dependencies
+- Update Cypress 11 @sneridagh
 
 ### Documentation
 

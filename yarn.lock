@@ -2752,7 +2752,7 @@ __metadata:
     "@storybook/addon-essentials": ^6.3.0
     "@storybook/addon-links": ^6.3.0
     "@storybook/react": ^6.3.0
-    "@testing-library/cypress": 8.0.3
+    "@testing-library/cypress": 8.0.7
     "@testing-library/jest-dom": 5.16.4
     "@testing-library/react": 12.1.5
     "@testing-library/react-hooks": 8.0.1
@@ -2772,7 +2772,7 @@ __metadata:
     connected-react-router: 6.8.0
     crypto-random-string: 3.2.0
     css-loader: 5.2.7
-    cypress: 10.9.0
+    cypress: 11.1.0
     cypress-axe: 1.0.0
     cypress-file-upload: 5.0.8
     debug: 4.3.2
@@ -4495,15 +4495,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/cypress@npm:8.0.3":
-  version: 8.0.3
-  resolution: "@testing-library/cypress@npm:8.0.3"
+"@testing-library/cypress@npm:8.0.7":
+  version: 8.0.7
+  resolution: "@testing-library/cypress@npm:8.0.7"
   dependencies:
     "@babel/runtime": ^7.14.6
     "@testing-library/dom": ^8.1.0
   peerDependencies:
-    cypress: ^2.1.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0
-  checksum: 319f6c7297f85e5673882a71009b5d5b576006f986d87a6ca6f2f8c679d96d9779f3ddbc01654b5a943407fa91192814f250835ce01f153e33ef24818cf1bf20
+    cypress: ^2.1.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0
+  checksum: e005bc1a7ec808706c57e95ed312069fb5be39ea7362900dc2a32c09f124d478ade69ebcd7df88c076e3867ab328ae6e6ce13791bdf042621ff66b56552bf74b
   languageName: node
   linkType: hard
 
@@ -9195,9 +9195,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:10.9.0":
-  version: 10.9.0
-  resolution: "cypress@npm:10.9.0"
+"cypress@npm:11.1.0":
+  version: 11.1.0
+  resolution: "cypress@npm:11.1.0"
   dependencies:
     "@cypress/request": ^2.88.10
     "@cypress/xvfb": ^1.2.4
@@ -9243,7 +9243,7 @@ __metadata:
     yauzl: ^2.10.0
   bin:
     cypress: bin/cypress
-  checksum: 79e3dccbb82d0b0c92bb8888682766a9738374f473cf2e9a04825a6b3dbe4420c57948cabaf757af0929192a8e61b7f08b32d7f6ee0c3cddf2736cf4f408edc1
+  checksum: ee0097778cf3cdf3854325cabf19a60a7486d46ae70082034c05b22b203f21ff85a4871c08dadc6641be649a64c739a443dd3f2d6a5ab112fc9ead703e1f1be3
   languageName: node
   linkType: hard
 
@@ -9445,9 +9445,9 @@ __metadata:
   linkType: hard
 
 "deep-object-diff@npm:^1.1.0":
-  version: 1.1.7
-  resolution: "deep-object-diff@npm:1.1.7"
-  checksum: 543fb1ae87b138ad260691e6949e72bf7dc144825084b7ad1886bb725d2ace1c19ed1ef1280f1116243e86bf2c6b942f45c670958b1468f644613f28c5dc97ea
+  version: 1.1.9
+  resolution: "deep-object-diff@npm:1.1.9"
+  checksum: ecd42455e4773f653595d28070295e7aaa8402db5f8ab21d0bec115a7cb4de5e207a5665514767da5f025c96597f1d3a0a4888aeb4dd49e03c996871a3aa05ef
   languageName: node
   linkType: hard
 
@@ -15944,24 +15944,24 @@ __metadata:
   linkType: hard
 
 "loader-utils@npm:^1.0.3, loader-utils@npm:^1.1.0, loader-utils@npm:^1.2.3, loader-utils@npm:^1.4.0":
-  version: 1.4.0
-  resolution: "loader-utils@npm:1.4.0"
+  version: 1.4.2
+  resolution: "loader-utils@npm:1.4.2"
   dependencies:
     big.js: ^5.2.2
     emojis-list: ^3.0.0
     json5: ^1.0.1
-  checksum: d150b15e7a42ac47d935c8b484b79e44ff6ab4c75df7cc4cb9093350cf014ec0b17bdb60c5d6f91a37b8b218bd63b973e263c65944f58ca2573e402b9a27e717
+  checksum: eb6fb622efc0ffd1abdf68a2022f9eac62bef8ec599cf8adb75e94d1d338381780be6278534170e99edc03380a6d29bc7eb1563c89ce17c5fed3a0b17f1ad804
   languageName: node
   linkType: hard
 
 "loader-utils@npm:^2.0.0":
-  version: 2.0.2
-  resolution: "loader-utils@npm:2.0.2"
+  version: 2.0.4
+  resolution: "loader-utils@npm:2.0.4"
   dependencies:
     big.js: ^5.2.2
     emojis-list: ^3.0.0
     json5: ^2.1.2
-  checksum: 9078d1ed47cadc57f4c6ddbdb2add324ee7da544cea41de3b7f1128e8108fcd41cd3443a85b7ee8d7d8ac439148aa221922774efe4cf87506d4fb054d5889303
+  checksum: a5281f5fff1eaa310ad5e1164095689443630f3411e927f95031ab4fb83b4a98f388185bb1fe949e8ab8d4247004336a625e9255c22122b815bb9a4c5d8fc3b7
   languageName: node
   linkType: hard
 
