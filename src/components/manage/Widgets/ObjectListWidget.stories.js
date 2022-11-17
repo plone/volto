@@ -3,6 +3,8 @@ import { RealStoreWrapper, FormUndoWrapper } from '@plone/volto/storybook';
 import React from 'react';
 import { searchResults } from './ObjectBrowserWidget.stories';
 
+import { cloneDeep } from 'lodash';
+
 const defaultSchema = {
   title: 'Item',
   addMessage: 'Add item',
@@ -143,6 +145,19 @@ Default.args = {
 export const MultipleFieldsets = ObjectListWidgetComponent.bind({});
 MultipleFieldsets.args = {
   schema: multiFieldsetSchema,
+};
+
+const addDefaultValues = (schema) => {
+  schema = cloneDeep(schema);
+  schema.properties.title.default = 'Plone release announcement';
+  schema.properties.description.default =
+    'Soon to arrive on your local machine';
+  return schema;
+};
+
+export const DefaultValues = ObjectListWidgetComponent.bind({});
+DefaultValues.args = {
+  schema: addDefaultValues(multiFieldsetSchema),
 };
 
 const defaultSecondarySchema = {

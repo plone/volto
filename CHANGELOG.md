@@ -14,6 +14,8 @@
 
 ### Bugfix
 
+- Fix ObjectWidget handling of `default` values coming from schemas.
+
 ### Internal
 
 - Ignore `.tool-versions` file
