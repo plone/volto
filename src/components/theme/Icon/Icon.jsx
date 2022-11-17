@@ -40,7 +40,8 @@ const Icon = ({
   title,
   onClick,
   style = {},
-  ...props
+  id,
+  ariaHidden,
 }) => (
   <svg
     xmlns={name.attributes && name.attributes.xmlns}
@@ -53,7 +54,8 @@ const Icon = ({
     }}
     className={className ? `icon ${className}` : 'icon'}
     onClick={onClick}
-    {...props}
+    id={id ? id : null}
+    aria-hidden={ariaHidden ? true : null}
     dangerouslySetInnerHTML={{
       __html: title ? `<title>${title}</title>${name.content}` : name.content,
     }}
