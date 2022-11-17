@@ -37,4 +37,18 @@ describe('Block Tests', () => {
     cy.contains('hello, ');
     cy.contains('world');
   });
+  it('should show block chooser btn on adding new text block created from the previous block with the formatted content ', () => {
+    cy.getSlateEditorAndType('Colorless green ideas sleep furiously').type(
+      '{command+a}{command+b}{ctrl+a}{ctrl+b}',
+    );
+    cy.setSlateCursor('furiously').type('{enter}');
+    cy.get('.text-slate-editor-inner button').should('have.length', 1);
+
+    // Save
+    cy.toolbarSave();
+
+    cy.get('#page-document p strong').contains(
+      'Colorless green ideas sleep furiously',
+    );
+  });
 });

@@ -11,7 +11,7 @@
 - Improvement of the `ContentsBreadcrumbs` component, add child `ContentsBreadcrumbsRootItem` and `ContentsBreadcrumbsHomeItem` for easy customization of these single elements in projects @sneridagh
 - Add german translation for group membership panel. @ksuess
 - Fix general german translations: Address user polite. Correct 'listing template' to 'listing variant'. Add missing translations. @ksuess
-- The button for adding a new block is now shown below any selected block, instead of only on the left of empty text blocks. @davisagli
+- There is an experimental setting to move the button for adding a new block to show below any selected block, instead of only on the left of empty text blocks. Set `legacyAddButton: false` in config.settings to enable it. @davisagli
 
 ### Bugfix
 
