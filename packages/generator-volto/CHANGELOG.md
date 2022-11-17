@@ -10,6 +10,12 @@
 
 ### Internal
 
+## 6.0.0-alpha.3 (2022-11-16)
+
+### Bugfix
+
+- Add missing `"@plone/scripts": "^2.1.2"` devDependency to app template @sneridagh
+
 ## 6.0.0-alpha.2 (2022-11-15)
 
 ### Bugfix
