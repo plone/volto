@@ -174,7 +174,7 @@ class Sidebar extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const expanded = this.props.sidebarExpanded;
+    const expanded = this.props.sidebarExpanded ?? true;
 
     return (
       <Fragment>
@@ -275,9 +275,7 @@ class Sidebar extends Component {
             ].filter((tab) => tab)}
           />
         </div>
-        <div
-          className={this.props.sidebarExpanded ? 'pusher expanded' : 'pusher'}
-        />
+        <div className={expanded ? 'pusher expanded' : 'pusher'} />
       </Fragment>
     );
   }
