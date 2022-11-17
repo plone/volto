@@ -101,6 +101,7 @@ describe('New Block Auto Focus Tests', () => {
   });
 
   it('Press Enter on a html block adds new autofocused default block', () => {
+    cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('HTML').click();
     cy.get('.block-editor-html').first().click().type('{enter}');
@@ -112,6 +113,7 @@ describe('New Block Auto Focus Tests', () => {
   });
 
   it('Press Enter on a search block adds new autofocused default block', () => {
+    cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('Search').click();
     cy.get('.block-editor-search').first().click().type('{enter}');

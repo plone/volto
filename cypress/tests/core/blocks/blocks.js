@@ -28,6 +28,7 @@ describe('Blocks Tests', () => {
   //     'React-based front-end for the Plone and Guillotina';
 
   //   // Edit
+  //   cy.getSlate().click();
   //   cy.get('button.block-add-button').click();
   //   cy.get('button.show-hidden-blocks').click();
   //   cy.get(`button.add-${block}-block`).click();
@@ -65,7 +66,8 @@ describe('Blocks Tests', () => {
   // });
 
   it('Add HTML block', () => {
-    // when I add an HTML block
+    // when I add a maps block
+    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('HTML').click();
@@ -90,6 +92,7 @@ describe('Blocks Tests', () => {
     cy.intercept('PATCH', '*').as('save');
     cy.intercept('GET', '/**/my-page').as('content');
     // Edit
+    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.ui.buttons .button.slateTable').click();
@@ -209,6 +212,7 @@ describe('Blocks Tests', () => {
   //     .type('This is a H2 Headline')
   //     .setSlateSelection('This is a H2 Headline');
   //   cy.clickSlateButton('Subtitle');
+  //   cy.getSlate().focus().click().type(' {enter}');
 
   //   // when I add a ToC block
   //   cy.get('.ui.basic.icon.button.block-add-button').click();

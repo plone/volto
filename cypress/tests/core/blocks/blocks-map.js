@@ -18,6 +18,7 @@ describe('Map Block Tests', () => {
 
   it('Add maps block - Google Maps', () => {
     // when I add a maps block
+    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('Maps').click();
@@ -42,6 +43,7 @@ describe('Map Block Tests', () => {
 
   it('Add maps block - OpenStreet Maps', () => {
     // when I add a maps block
+    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.blocks-chooser .common').contains('Maps').click();

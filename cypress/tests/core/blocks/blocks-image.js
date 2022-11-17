@@ -26,6 +26,7 @@ describe('Blocks Tests', () => {
 
   it('Add image block', () => {
     // when I add an image block
+    cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.image').contains('Image').click();
     cy.get('.block.image .ui.input input[type="text"]').type(
@@ -54,6 +55,7 @@ describe('Blocks Tests', () => {
   //   const block = 'image';
 
   //   // Add image Block
+  //   cy.getSlate().click();
   //   cy.get('button.block-add-button').click();
   //   cy.get('.blocks-chooser .title')
   //     .contains('media')
@@ -78,6 +80,7 @@ describe('Blocks Tests', () => {
   // NEW ADD IMAGE VIA DRAG AND DROP
   // it('Add image via drag and drop', () => {
   //   // when I add an image block via drag and drop
+  //   cy.getSlate().click();
   //   cy.get('.ui.basic.icon.button.block-add-button').click();
   //   cy.get('.ui.basic.icon.button.image')
   //     .contains('Image')
@@ -97,6 +100,7 @@ describe('Blocks Tests', () => {
   // });
   it('Add image via upload', () => {
     // when I add an image block via upload
+    cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.image').contains('Image').click();
 
@@ -128,6 +132,7 @@ describe('Blocks Tests', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/');
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-document').click();
+    cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.image').contains('Image').click();
 
@@ -153,6 +158,9 @@ describe('Blocks Tests', () => {
 
   it('Create an image block and initially alt attr is empty', () => {
     // when I add an image block via upload
+    cy.get('.content-area .slate-editor [contenteditable=true]', {
+      timeout: 10000,
+    }).click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.image').contains('Image').click();
 

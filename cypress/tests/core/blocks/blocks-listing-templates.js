@@ -34,6 +34,7 @@ describe('Folder Contents Tests', () => {
 
     cy.visit('/my-folder/my-document');
     cy.get('.edit').click();
+    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get(
       '[style="transition: opacity 500ms ease 0ms;"] > :nth-child(2) > .ui',
@@ -67,6 +68,7 @@ describe('Folder Contents Tests', () => {
 
     cy.visit('/my-folder/my-document');
     cy.get('.edit').click();
+    cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get(
       '[style="transition: opacity 500ms ease 0ms;"] > :nth-child(2) > .ui',
@@ -103,6 +105,7 @@ describe('Folder Contents Tests', () => {
 
     cy.visit('/my-folder/my-document');
     cy.findByLabelText('Edit').click();
+    cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.listing').contains('Listing').click();
     cy.get('#field-variation').click().type('imageGallery{enter}');
