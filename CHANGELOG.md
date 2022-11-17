@@ -9,6 +9,8 @@
 ### Feature
 
 - Improvement of the `ContentsBreadcrumbs` component, add child `ContentsBreadcrumbsRootItem` and `ContentsBreadcrumbsHomeItem` for easy customization of these single elements in projects @sneridagh
+- Add german translation for group membership panel. @ksuess
+- Fix general german translations: Address user polite. Correct 'listing template' to 'listing variant'. Add missing translations. @ksuess
 
 ### Bugfix
 

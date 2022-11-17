@@ -1996,6 +1996,11 @@ msgstr "Balio handiena {len} da."
 msgid "Medium"
 msgstr "Ertaina"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Membership updated
+msgid "Membership updated"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Message
 msgid "Message"

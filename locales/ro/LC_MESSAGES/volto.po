@@ -1989,6 +1989,11 @@ msgstr "Valoarea maximă este {len}."
 msgid "Medium"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Membership updated
+msgid "Membership updated"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Message
 msgid "Message"
