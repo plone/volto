@@ -54,8 +54,8 @@ const Icon = ({
     }}
     className={className ? `icon ${className}` : 'icon'}
     onClick={onClick}
-    id={id ? id : null}
-    aria-hidden={ariaHidden ? true : null}
+    id={id}
+    aria-hidden={ariaHidden}
     dangerouslySetInnerHTML={{
       __html: title ? `<title>${title}</title>${name.content}` : name.content,
     }}
