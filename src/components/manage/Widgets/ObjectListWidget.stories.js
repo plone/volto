@@ -105,7 +105,7 @@ const customStore = {
 const ObjectListWidgetComponent = ({
   children,
   secondarySchema,
-  enableSchemaExtender,
+  schemaExtender,
   ...args
 }) => {
   return (
@@ -124,33 +124,7 @@ const ObjectListWidgetComponent = ({
               block="testBlock"
               value={state.value}
               onChange={(block, value) => onChange({ value })}
-              schemaExtender={
-                enableSchemaExtender &&
-                ((schema, data, intl) => {
-                  const finalSchema =
-                    data?.href?.[0]?.['@id'] === '/image'
-                      ? {
-                          ...schema,
-                          fieldsets: [
-                            {
-                              ...schema.fieldsets[0],
-                              fields: [
-                                ...schema.fieldsets[0].fields,
-                                ...secondarySchema.fieldsets[0].fields,
-                              ],
-                            },
-                            ...schema.fieldsets.slice(1),
-                            ...secondarySchema.fieldsets.slice(1),
-                          ],
-                          properties: {
-                            ...schema.properties,
-                            ...secondarySchema.properties,
-                          },
-                        }
-                      : schema;
-                  return finalSchema;
-                })
-              }
+              schemaExtender={schemaExtender}
             />
             <hr />
             <pre>Value: {JSON.stringify(state.value, null, 4)}</pre>
@@ -189,8 +163,33 @@ const defaultSecondarySchema = {
 };
 
 export const SchemaExtender = (args) => {
+  const { secondarySchema } = args;
+  const schemaExtender = (schema, data, intl) => {
+    const finalSchema =
+      data?.href?.[0]?.['@id'] === '/image'
+        ? {
+            ...schema,
+            fieldsets: [
+              {
+                ...schema.fieldsets[0],
+                fields: [
+                  ...schema.fieldsets[0].fields,
+                  ...secondarySchema.fieldsets[0].fields,
+                ],
+              },
+              ...schema.fieldsets.slice(1),
+              ...secondarySchema.fieldsets.slice(1),
+            ],
+            properties: {
+              ...schema.properties,
+              ...secondarySchema.properties,
+            },
+          }
+        : schema;
+    return finalSchema;
+  };
   return (
-    <ObjectListWidgetComponent enableSchemaExtender={true} {...args}>
+    <ObjectListWidgetComponent schemaExtender={schemaExtender} {...args}>
       <>
         Notice the form changes if you pick "I am an image" for the{' '}
         <em>source</em> field. We're achieving that by passing a custom{' '}
