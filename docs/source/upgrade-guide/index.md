@@ -349,6 +349,10 @@ Could be that forcing your project to use older versions might still work with o
 
 See https://docs.cypress.io/guides/references/migration-guide#Migrating-to-Cypress-version-10-0 for more information.
 
+```{note}
+Later on, the core has been upgraded to Cypress 11, however no changes to be made if you already upgraded to Cypress 10.
+```
+
 ### The complete configuration registry is passed to the add-ons and the project configuration pipeline
 
 The core in versions prior Volto 16.0.0-alpha.22 was passing a simplified version of the configuration registry (in fact, a plain object primitive) to the add-on list and project configuration pipeline.
