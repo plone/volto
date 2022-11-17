@@ -71,6 +71,14 @@ const messages = defineMessages({
     id: 'Translate to {lang}',
     defaultMessage: 'Translate to {lang}',
   },
+  shrinkSidebar: {
+    id: 'Shrink sidebar',
+    defaultMessage: 'Shrink sidebar',
+  },
+  expandSidebar: {
+    id: 'Expand sidebar',
+    defaultMessage: 'Expand sidebar',
+  },
 });
 
 /**
@@ -399,13 +407,21 @@ class Add extends Component {
                       })}
                       // TODO: The below should set `aria-pressed`, but it doesn't for some reason :(
                       active={this.props.sidebarExpanded}
+                      aria-label={
+                        this.props.sidebarExpanded
+                          ? this.props.intl.formatMessage(
+                              messages.shrinkSidebar,
+                            )
+                          : this.props.intl.formatMessage(
+                              messages.expandSidebar,
+                            )
+                      }
                       onClick={() => {
                         this.props.setSidebarExpanded(
                           !this.props.sidebarExpanded,
                         );
                       }}
                     >
-                      <span class="sr-only">Hide sidebar</span>
                       <div aria-hidden="true" focusable="false">
                         <Icon name={configSVG} />
                       </div>

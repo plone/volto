@@ -210,8 +210,11 @@ class Sidebar extends Component {
               name={this.state.showFull ? expandSVG : collapseSVG}
             />
           </Button>
-          <Button className="close-sidenav-btn" onClick={this.onToggleExpanded}>
-            <span className="sr-only">Hide sidebar</span>
+          <Button
+            className="close-sidenav-btn"
+            aria-label={this.props.intl.formatMessage(messages.shrinkSidebar)}
+            onClick={this.onToggleExpanded}
+          >
             <Icon name={clearSVG} />
           </Button>
           <Tab

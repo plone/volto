@@ -63,6 +63,14 @@ const messages = defineMessages({
     id: 'Error',
     defaultMessage: 'Error',
   },
+  shrinkSidebar: {
+    id: 'Shrink sidebar',
+    defaultMessage: 'Shrink sidebar',
+  },
+  expandSidebar: {
+    id: 'Expand sidebar',
+    defaultMessage: 'Expand sidebar',
+  },
 });
 
 /**
@@ -429,13 +437,17 @@ class Edit extends Component {
                     })}
                     // TODO: The below should set `aria-pressed`, but it doesn't for some reason :(
                     active={this.props.sidebarExpanded}
+                    aria-label={
+                      this.props.sidebarExpanded
+                        ? this.props.intl.formatMessage(messages.shrinkSidebar)
+                        : this.props.intl.formatMessage(messages.expandSidebar)
+                    }
                     onClick={() => {
                       this.props.setSidebarExpanded(
                         !this.props.sidebarExpanded,
                       );
                     }}
                   >
-                    <span class="sr-only">Hide sidebar</span>
                     <div aria-hidden="true" focusable="false">
                       <Icon name={configSVG} />
                     </div>
