@@ -83,10 +83,8 @@ class Sidebar extends Component {
     this.onToggleFullSize = this.onToggleFullSize.bind(this);
     this.onTabChange = this.onTabChange.bind(this);
     this.state = {
-      expanded: cookies.get('sidebar_expanded') !== 'false',
       size: 0,
       showFull: true,
-      showFullToolbarExpanded: true,
     };
   }
 
