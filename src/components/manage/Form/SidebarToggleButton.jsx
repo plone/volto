@@ -22,33 +22,37 @@ const messages = defineMessages({
 
 export const SidebarToggleButton = () => {
   const intl = useIntl();
-  const sidebarExpanded = useSelector((state) => state.sidebar.expanded);
   const dispatch = useDispatch();
+  const sidebarExpanded = useSelector(
+    (state) => state.sidebar.expanded ?? true,
+  );
 
   return (
-    <>
-      <Plug pluggable="main.toolbar.bottom" id="sidebar-toggle-button">
-        <Button
-          className={cx('settings', {
-            'sidebar-expanded': sidebarExpanded,
-          })}
-          // TODO: The below should set `aria-pressed`, but it doesn't for some reason :(
-          active={sidebarExpanded}
-          aria-label={
-            sidebarExpanded
-              ? intl.formatMessage(messages.shrinkSidebar)
-              : intl.formatMessage(messages.expandSidebar)
-          }
-          onClick={() => {
-            dispatch(setSidebarExpanded);
-          }}
-        >
-          <div aria-hidden="true" focusable="false">
-            <Icon name={configSVG} />
-          </div>
-        </Button>
-      </Plug>
-    </>
+    <Plug
+      pluggable="main.toolbar.bottom"
+      id="sidebar-toggle-button"
+      dependencies={[sidebarExpanded]}
+    >
+      <Button
+        className={cx('settings', {
+          'sidebar-expanded': sidebarExpanded,
+        })}
+        // TODO: The below should set `aria-pressed`, but it doesn't for some reason :(
+        active={sidebarExpanded}
+        aria-label={
+          sidebarExpanded
+            ? intl.formatMessage(messages.shrinkSidebar)
+            : intl.formatMessage(messages.expandSidebar)
+        }
+        onClick={() => {
+          dispatch(setSidebarExpanded(!sidebarExpanded));
+        }}
+      >
+        <div aria-hidden="true" focusable="false">
+          <Icon name={configSVG} />
+        </div>
+      </Button>
+    </Plug>
   );
 };
 
