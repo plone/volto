@@ -410,7 +410,6 @@ class Add extends Component {
                         <Icon name={configSVG} />
                       </div>
                     </Button>
-
                   </>
                 }
               />
