@@ -19,7 +19,6 @@ import { updateControlpanel, getControlpanel } from '@plone/volto/actions';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
-import { rest } from 'lodash';
 
 const messages = defineMessages({
   changesSaved: {
@@ -46,37 +45,35 @@ const messages = defineMessages({
 
 // Filters props.controlpanel.schema to only valid/relevant fields
 const filterSchema = (controlpanel) => {
-  const panelType = controlpanel['@id'].substring(
-    controlpanel['@id'].lastIndexOf('/') + 1,
-  );
+  const panelType = controlpanel['@id'].split('/').pop();
 
   const unwantedSettings = {
     language: ['display_flags', 'always_show_selector'],
-    // search: ['enable_livesearch'],
-    // site: [
-    //   'display_publication_date_in_byline',
-    //   'icon_visibility',
-    //   'thumb_visibility',
-    //   'no_thumbs_portlet',
-    //   'no_thumbs_lists',
-    //   'no_thumbs_summary',
-    //   'no_thumbs_tables',
-    //   'thumb_scale_portlet',
-    //   'thumb_scale_listing',
-    //   'thumb_scale_table',
-    //   'thumb_scale_summary',
-    //   'toolbar_position',
-    //   'toolbar_logo',
-    //   'default_page',
-    // ],
-    // editing: ['available_editors', 'default_editor', 'ext_editor'],
-    // imaging: [
-    //   'highpixeldensity_scales',
-    //   'quality_2x',
-    //   'quality_3x',
-    //   'picture_variants',
-    //   'image_captioning',
-    // ],
+    search: ['enable_livesearch'],
+    site: [
+      'display_publication_date_in_byline',
+      'icon_visibility',
+      'thumb_visibility',
+      'no_thumbs_portlet',
+      'no_thumbs_lists',
+      'no_thumbs_summary',
+      'no_thumbs_tables',
+      'thumb_scale_portlet',
+      'thumb_scale_listing',
+      'thumb_scale_table',
+      'thumb_scale_summary',
+      'toolbar_position',
+      'toolbar_logo',
+      'default_page',
+    ],
+    editing: ['available_editors', 'default_editor', 'ext_editor'],
+    imaging: [
+      'highpixeldensity_scales',
+      'quality_2x',
+      'quality_3x',
+      'picture_variants',
+      'image_captioning',
+    ],
   };
 
   // Creates modified version of properties object

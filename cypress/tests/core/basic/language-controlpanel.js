@@ -5,7 +5,6 @@ describe('Language control-panel', () => {
     cy.waitForResourceToLoad('@navigation');
     cy.waitForResourceToLoad('@breadcrumbs');
     cy.waitForResourceToLoad('@actions');
-    //cy.waitForResourceToLoad('@types'); // Uncommenting creates error: > Timeout resolving resource: @types (type undefined)
   });
 
   it('Displays all valid fields in language control-panel', () => {
