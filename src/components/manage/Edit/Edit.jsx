@@ -35,7 +35,6 @@ import {
   unlockContent,
   getSchema,
   listActions,
-  setSidebarExpanded,
 } from '@plone/volto/actions';
 import { getBaseUrl, hasBlocksData } from '@plone/volto/helpers';
 import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';
@@ -62,14 +61,6 @@ const messages = defineMessages({
   error: {
     id: 'Error',
     defaultMessage: 'Error',
-  },
-  shrinkSidebar: {
-    id: 'Shrink sidebar',
-    defaultMessage: 'Shrink sidebar',
-  },
-  expandSidebar: {
-    id: 'Expand sidebar',
-    defaultMessage: 'Expand sidebar',
   },
 });
 
@@ -431,27 +422,6 @@ class Edit extends Component {
                       title={this.props.intl.formatMessage(messages.cancel)}
                     />
                   </Button>
-                  <Button
-                    className={cx('settings', {
-                      'sidebar-expanded': this.props.sidebarExpanded,
-                    })}
-                    // TODO: The below should set `aria-pressed`, but it doesn't for some reason :(
-                    active={this.props.sidebarExpanded}
-                    aria-label={
-                      this.props.sidebarExpanded
-                        ? this.props.intl.formatMessage(messages.shrinkSidebar)
-                        : this.props.intl.formatMessage(messages.expandSidebar)
-                    }
-                    onClick={() => {
-                      this.props.setSidebarExpanded(
-                        !this.props.sidebarExpanded,
-                      );
-                    }}
-                  >
-                    <div aria-hidden="true" focusable="false">
-                      <Icon name={configSVG} />
-                    </div>
-                  </Button>
 
                   {config.settings.isMultilingual && (
                     <CompareLanguages
@@ -535,7 +505,6 @@ export default compose(
       updateRequest: state.content.update,
       pathname: props.location.pathname,
       returnUrl: qs.parse(props.location.search).return_url,
-      sidebarExpanded: state.sidebar.expanded,
     }),
     {
       updateContent,
@@ -543,7 +512,6 @@ export default compose(
       getSchema,
       lockContent,
       unlockContent,
-      setSidebarExpanded,
     },
   ),
   preloadLazyLibs('cms'),

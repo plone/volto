@@ -40,6 +40,7 @@ import {
 import { v4 as uuid } from 'uuid';
 import { toast } from 'react-toastify';
 import { BlocksToolbar, UndoToolbar } from '@plone/volto/components';
+import { SidebarToggleButton } from '@plone/volto/components/manage/Form/SidebarToggleButton';
 import { setSidebarTab } from '@plone/volto/actions';
 import { compose } from 'redux';
 import config from '@plone/volto/registry';
@@ -551,6 +552,7 @@ class Form extends Component {
             }
             onSelectBlock={this.onSelectBlock}
           />
+          <SidebarToggleButton />
           <UndoToolbar
             state={{
               formData: this.state.formData,

@@ -15,14 +15,8 @@ import { Portal } from 'react-portal';
 import { v4 as uuid } from 'uuid';
 import qs from 'query-string';
 import { toast } from 'react-toastify';
-import cx from 'classnames';
 
-import {
-  changeLanguage,
-  createContent,
-  getSchema,
-  setSidebarExpanded,
-} from '@plone/volto/actions';
+import { changeLanguage, createContent, getSchema } from '@plone/volto/actions';
 import {
   Form,
   Icon,
@@ -70,14 +64,6 @@ const messages = defineMessages({
   translateTo: {
     id: 'Translate to {lang}',
     defaultMessage: 'Translate to {lang}',
-  },
-  shrinkSidebar: {
-    id: 'Shrink sidebar',
-    defaultMessage: 'Shrink sidebar',
-  },
-  expandSidebar: {
-    id: 'Expand sidebar',
-    defaultMessage: 'Expand sidebar',
   },
 });
 
@@ -401,31 +387,6 @@ class Add extends Component {
                         title={this.props.intl.formatMessage(messages.cancel)}
                       />
                     </Button>
-                    <Button
-                      className={cx('settings', {
-                        'sidebar-expanded': this.props.sidebarExpanded,
-                      })}
-                      // TODO: The below should set `aria-pressed`, but it doesn't for some reason :(
-                      active={this.props.sidebarExpanded}
-                      aria-label={
-                        this.props.sidebarExpanded
-                          ? this.props.intl.formatMessage(
-                              messages.shrinkSidebar,
-                            )
-                          : this.props.intl.formatMessage(
-                              messages.expandSidebar,
-                            )
-                      }
-                      onClick={() => {
-                        this.props.setSidebarExpanded(
-                          !this.props.sidebarExpanded,
-                        );
-                      }}
-                    >
-                      <div aria-hidden="true" focusable="false">
-                        <Icon name={configSVG} />
-                      </div>
-                    </Button>
                   </>
                 }
               />
@@ -497,9 +458,8 @@ export default compose(
       pathname: props.location.pathname,
       returnUrl: qs.parse(props.location.search).return_url,
       type: qs.parse(props.location.search).type,
-      sidebarExpanded: state.sidebar.expanded,
     }),
-    { createContent, getSchema, changeLanguage, setSidebarExpanded },
+    { createContent, getSchema, changeLanguage },
   ),
   preloadLazyLibs('cms'),
 )(Add);
