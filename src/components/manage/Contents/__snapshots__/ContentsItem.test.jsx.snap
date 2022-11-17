@@ -2,6 +2,7 @@
 
 exports[`ContentsItem renders a contents item component 1`] = `
 <tr
+  aria-label="/blog"
   className=""
 >
   <td

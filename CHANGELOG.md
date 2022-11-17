@@ -4,17 +4,176 @@
 
 ### Breaking
 
-- The listing block icon has been improved to avoid confusions with the normal text list @sneridagh
+- The `ContentsBreadcrumbs` component now renders the whole language name of the language root folder (if any) instead of just the `id` (before: `de`, now: `Deutsch`) @sneridagh
 
 ### Feature
 
-### Bugfix
+- Improvement of the `ContentsBreadcrumbs` component, add child `ContentsBreadcrumbsRootItem` and `ContentsBreadcrumbsHomeItem` for easy customization of these single elements in projects @sneridagh
+- Add german translation for group membership panel. @ksuess
+- Fix general german translations: Address user polite. Correct 'listing template' to 'listing variant'. Add missing translations. @ksuess
 
-- Fix autocomplete widget with an empty search result @reebalazs
+### Bugfix
 
 ### Internal
 
+- Ignore `.tool-versions` file
+- Minor updates to dependencies
+
 ### Documentation
+
+- Add `@plone/scripts` as a mandatory devDependency for projects to the upgrade guide @sneridagh
+
+## 16.0.0-alpha.50 (2022-11-15)
+
+### Feature
+
+- Brazilian Portuguese translation updated @ericof
+
+### Bugfix
+
+- Fix condition in `applySchemaDefaults` @tiberiuichim @sneridagh
+- Load core add-ons configuration as any other add-on. @sneridagh
+- Fix `FormValidation` error object, use field `id` instead of field `title` @sneridagh
+- Revert #2828 PR change of the default `showSearchButton` Search block behavior (see [#3883](https://github.com/plone/volto/issues/3883)) @sneridagh
+- Fix `package.json` `postinstall` in core @sneridagh
+
+### Documentation
+
+- Add missing pieces of the upgrade to use yarn 3 for projects @sneridagh
+- Complete docs about the yarn 3 upgrade @sneridagh
+- Add additional components to storybook @danalvrz
+
+## 16.0.0-alpha.49 (2022-11-11)
+
+### Breaking
+
+- Restrict css selector for error message (volto-slate) #3838 @mamico
+- Upgrade `husky` to latest version @sneridagh
+- Enable the use of yarn 3 in the build by default @sneridagh
+
+See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+
+### Feature
+
+- Japanese translation updated @terapyon
+- Improve the `AlignWidget`, add `narrow` fix default support @sneridagh
+- Add support for loading core add-ons from the `packages` folder defined in Volto's `package.json` @sneridagh
+- Implement the Upgrade Control Panel @ericof
+- Allow addons to customize modules from the project root, via the `@root` namespace and folder @tiberiuichim
+
+### Bugfix
+
+- Be more robust towards invalid block configuration @reebalazs
+- Remove slate's builtin undo support, as it conflicts with Volto's undo manager. This fixes crashes when undoing in text blocks and slate's undo stack is empty and "crosses" into Volto's undo stack. This is a temporary workaround, ideally the two undo managers would be delimited so they each work together. @tiberiuichim
+- Fix highlighting of selection when the Slate editor is not DOM-focused. @tiberiuichim
+- Improve the algorithm that calculates the position of the Slate Toolbar @tiberiuichim
+- The `_unwrapElement` of the volto-slate `ElementEditor` will return an updated range (selection) of the unwrapped element.  @tiberiuichim
+- Replace the main client entry point in `start-client.jsx` anonymous function for a named one. @sneridagh
+- Fix `currentPath` option for `openObjectBrowser`. @iFlameing
+- Fix updating the listing block when the variation is changed while editing @tiberiuichim
+- fix(warning): StyleMenu dropdown item to use data-attr instead of custom @nileshgulia1
+- Added --canary flag in plone/install.sh. @MdSahil-oss
+
+### Internal
+
+- Upgrade dependencies to latest released slate libraries. Make sure to pass down `ref` to rendered slate elements, as ref is now a function @tiberiuichim
+- Add `editableProps` prop to the `SlateEditor` component, to pass down props to the base Slate `Editable` component. @tiberiuichim
+- Clean, re-enable block-slate-format-link Cypress tests @tiberiuichim
+- Rewrite some anonymous functions as named functions, to remove warning about Hot Reloading. @tiberiuichim
+- Add translation for objectlist `Add` text @iFlameing
+- Add translations for facet widget value @iFlameing
+
+### Documentation
+
+## 16.0.0-alpha.48 (2022-11-03)
+
+### Bugfix
+
+- Ensure the view component is always replaced after navigating to a different page. @davisagli
+
+## 16.0.0-alpha.47 (2022-11-02)
+
+### Feature
+
+- Add clear button in search field of Folder content view @iFlameing
+- consume site_actions from restapi @nileshgulia1
+- Updated Spanish translation @macagua
+
+### Bugfix
+
+- Fix `schemaEnhancer` not being applied if nested `blocksConfig` is present @sneridagh
+
+### Internal
+
+- Add translation for `pending` state @iFlameing
+- Add `composeSchema`, a helper to compose multiple schemaEnhancers @tiberiuichim
+- Upgrade to `plone.voltoa14` @sneridagh
+
+### Documentation
+
+- Fix grammar in Theming Strategy. Fixes #954. @stevepiercy
+- Fix wording in About Semantic UI. Fixes #953. @stevepiercy
+
+## 16.0.0-alpha.46 (2022-10-28)
+
+### Breaking
+
+- Remove the means to enable the StyleWrapper in favor of defining it through the block schema. @sneridagh
+- Moved all sentry-related code from Volto to the `@plone-collective/volto-sentry` package. @tiberiuichim
+- The listing block icon has been improved to avoid confusion with the normal text list. @sneridagh
+
+See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+
+### Feature
+
+- Add `image-narrow` svg icon useful for align widget actions @ichim-david
+- Use `View comments` and `Reply to item` permissions in `Comments` component. @razvanMiu
+- Added portrait middleware adapter. @instification
+- Allow dumping the addon dependency graph to a .dot file. Start Volto with `DEBUG_ADDONS_LOADER=true yarn start`, `addon-dependency-graph.dot` will be created in your project folder. @tiberiuichim
+
+### Bugfix
+
+- Prefer views assigned explicitly with `layout` over views based on the `@type` @iRohitSingh
+
+### Internal
+
+- Set `.nvmrc` to not use `lts/*` but a specific one `lts/gallium`
+- Update to @plone/scripts 2.1.2 @sneridagh
+- Remove all the useless security bits from blocks configuration definitions @sneridagh
+
+### Documentation
+
+- Add NodeJS 18 (LTS) usage notice @sneridagh
+- Fix Netlify build @sneridagh
+
+## 16.0.0-alpha.45 (2022-10-24)
+
+### Feature
+
+- Added link integrity potential breakage warning message when deleting a referenced page @danielamormocea
+- Added new components & interfaces for content-rules `Rules` control in Volto. Rules management in both controlpanel and object view. @andreiggr
+- Updated Spanish translation @macagua
+- Introduce `TextLineEdit` component @sneridagh
+- Add a popup tooltip for tokenized options in Select widget values @sneridagh
+
+### Bugfix
+
+- Make sure that the store is reset on history reducer `PENDING` state @sneridagh
+
+### Documentation
+
+- Update supported Python versions. @stevepiercy
+
+## 16.0.0-alpha.44 (2022-10-20)
+
+### Breaking
+
+- The listing block icon has been improved to avoid confusions with the normal text list @sneridagh
+
+### Bugfix
+
+- SearchTags uses invalid vocabulary API @silviubogan
+- Fix autocomplete widget with an empty search result @reebalazs
 
 ## 16.0.0-alpha.43 (2022-10-17)
 
@@ -74,6 +233,8 @@
 
 - Sentry integration is now lazy-loaded. The `sentryOptions` key from the `settings` registry becomes a callable that passes resolved sentry libraries. @tiberiuichim
 
+  See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+
 ### Feature
 
 - Complete eu translation. @erral
@@ -107,6 +268,7 @@
 - Fixed the `description` field not appearing in control panel fieldsets @JeffersonBledsoe #3696
 - Fixed "more" always show root contents @MdSahil-oss #3365
 - Add missing `--noninteractive` in the `build` script in package.json @sneridagh
+- Fix replace `<a>` anchor element with the `UniversalLink` component in `DefaultTemplate.jsx` @Dnouv
 
 ### Internal
 
@@ -298,6 +460,12 @@ Undo html_static_path configuration in `plone/documentation`, and restore image 
 ### Bugfix
 
 - Fix array widget translation @robgietema
+- Fix: TTW DX Layout disables IBlocks behavior and with it all the indexers and transformers @avoinea
+
+### Internal
+
+### Documentation
+
 - Fix copy / paste text in list @robgietema
 
 ## 16.0.0-alpha.27 (2022-08-29)
@@ -712,6 +880,11 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 
 ### Feature
 
+- Allow final users to switch between available views in the search block. A "view" is any of available listing block variations. In the search block configuration you can pick the available views for that block. @tiberiuichim
+
+### Bugfix
+
+- Fixes in search block. Disable default live search. Added clear button for search input. Fixed facet dropdown clear button. Removed sort on label customization option. Layout improvements, CSS polishments. @kreafox @tiberiuichim
 - added default placeholder for videos to embed them more lightly @giuliaghisini
 - Added default placeholder for videos to embed them more lightly @giuliaghisini
 - Completed Romanian translation @sboghy

@@ -1,150 +1,179 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders an align widget component 1`] = `
-<div
-  className="inline field align-widget field-wrapper-align"
->
+exports[`renders an align widget component basic 1`] = `
+<DocumentFragment>
   <div
-    className="ui grid"
+    class="inline field align-widget field-wrapper-align"
   >
     <div
-      className="stretched row"
+      class="ui grid"
     >
       <div
-        className="four wide column"
+        class="stretched row"
       >
         <div
-          className="wrapper"
+          class="four wide column"
         >
-          <label
-            htmlFor="field-align"
-            id="fieldset-default-field-label-align"
+          <div
+            class="wrapper"
           >
-            Alignment
-          </label>
+            <label
+              for="field-align"
+              id="fieldset-default-field-label-align"
+            >
+              Alignment
+            </label>
+          </div>
         </div>
-      </div>
-      <div
-        className="eight wide column"
-      >
         <div
-          className="align-buttons"
+          class="eight wide column"
         >
           <div
-            className="ui buttons"
+            class="align-buttons"
           >
-            <button
-              aria-label="Left"
-              className="ui basic icon button"
-              onClick={[Function]}
+            <div
+              class="ui buttons"
             >
-              <svg
-                className="icon"
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": undefined,
-                  }
-                }
-                onClick={null}
-                style={
-                  Object {
-                    "fill": "currentColor",
-                    "height": "24px",
-                    "width": "auto",
-                  }
-                }
-                viewBox=""
-                xmlns=""
-              />
-            </button>
-          </div>
-          <div
-            className="ui buttons"
-          >
-            <button
-              aria-label="Right"
-              className="ui basic icon button"
-              onClick={[Function]}
+              <button
+                aria-label="Left"
+                class="ui basic icon button"
+              >
+                <svg
+                  class="icon"
+                  style="height: 24px; width: auto; fill: currentColor;"
+                  viewBox=""
+                  xmlns=""
+                >
+                  <title>
+                    Left
+                  </title>
+                  undefined
+                </svg>
+              </button>
+            </div>
+            <div
+              class="ui buttons"
             >
-              <svg
-                className="icon"
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": undefined,
-                  }
-                }
-                onClick={null}
-                style={
-                  Object {
-                    "fill": "currentColor",
-                    "height": "24px",
-                    "width": "auto",
-                  }
-                }
-                viewBox=""
-                xmlns=""
-              />
-            </button>
-          </div>
-          <div
-            className="ui buttons"
-          >
-            <button
-              aria-label="Center"
-              className="ui active basic icon button"
-              onClick={[Function]}
+              <button
+                aria-label="Right"
+                class="ui basic icon button"
+              >
+                <svg
+                  class="icon"
+                  style="height: 24px; width: auto; fill: currentColor;"
+                  viewBox=""
+                  xmlns=""
+                >
+                  <title>
+                    Right
+                  </title>
+                  undefined
+                </svg>
+              </button>
+            </div>
+            <div
+              class="ui buttons"
             >
-              <svg
-                className="icon"
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": undefined,
-                  }
-                }
-                onClick={null}
-                style={
-                  Object {
-                    "fill": "currentColor",
-                    "height": "24px",
-                    "width": "auto",
-                  }
-                }
-                viewBox=""
-                xmlns=""
-              />
-            </button>
-          </div>
-          <div
-            className="ui buttons"
-          >
-            <button
-              aria-label="Full"
-              className="ui basic icon button"
-              onClick={[Function]}
+              <button
+                aria-label="Center"
+                class="ui active basic icon button"
+              >
+                <svg
+                  class="icon"
+                  style="height: 24px; width: auto; fill: currentColor;"
+                  viewBox=""
+                  xmlns=""
+                >
+                  <title>
+                    Center
+                  </title>
+                  undefined
+                </svg>
+              </button>
+            </div>
+            <div
+              class="ui buttons"
             >
-              <svg
-                className="icon"
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": undefined,
-                  }
-                }
-                onClick={null}
-                style={
-                  Object {
-                    "fill": "currentColor",
-                    "height": "24px",
-                    "width": "auto",
-                  }
-                }
-                viewBox=""
-                xmlns=""
-              />
-            </button>
+              <button
+                aria-label="Full"
+                class="ui basic icon button"
+              >
+                <svg
+                  class="icon"
+                  style="height: 24px; width: auto; fill: currentColor;"
+                  viewBox=""
+                  xmlns=""
+                >
+                  <title>
+                    Full
+                  </title>
+                  undefined
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</DocumentFragment>
+`;
+
+exports[`renders an align widget component extended with actions and actionsInfoMap props 1`] = `
+<DocumentFragment>
+  <div
+    class="inline field align-widget field-wrapper-align"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="stretched row"
+      >
+        <div
+          class="four wide column"
+        >
+          <div
+            class="wrapper"
+          >
+            <label
+              for="field-align"
+              id="fieldset-default-field-label-align"
+            >
+              Alignment
+            </label>
+          </div>
+        </div>
+        <div
+          class="eight wide column"
+        >
+          <div
+            class="align-buttons"
+          >
+            <div
+              class="ui buttons"
+            >
+              <button
+                aria-label="Additional action title"
+                class="ui basic icon button"
+              >
+                <svg
+                  class="icon"
+                  style="height: 24px; width: auto; fill: currentColor;"
+                  viewBox=""
+                  xmlns=""
+                >
+                  <title>
+                    Additional action title
+                  </title>
+                  undefined
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
 `;

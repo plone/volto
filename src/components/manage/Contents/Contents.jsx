@@ -47,6 +47,7 @@ import {
   orderContent,
   sortContent,
   updateColumnsContent,
+  linkIntegrityCheck,
   getContent,
 } from '@plone/volto/actions';
 import Indexes, { defaultIndexes } from '@plone/volto/constants/Indexes';
@@ -89,6 +90,7 @@ import sortDownSVG from '@plone/volto/icons/sort-down.svg';
 import sortUpSVG from '@plone/volto/icons/sort-up.svg';
 import downKeySVG from '@plone/volto/icons/down-key.svg';
 import moreSVG from '@plone/volto/icons/more.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   back: {
@@ -267,6 +269,31 @@ const messages = defineMessages({
     id: 'All',
     defaultMessage: 'All',
   },
+  linkIntegrityMessageHeader: {
+    id: 'Potential link breakage',
+    defaultMessage: 'Potential link breakage',
+  },
+  linkIntegrityMessageBody: {
+    id:
+      'By deleting this item, you will break ' +
+      'links that exist in the items listed below. ' +
+      'If this is indeed what you want to do, ' +
+      'we recommend that remove these references first.',
+    defaultMessage:
+      'By deleting this item, ' +
+      'you will break links that exist in the items ' +
+      'listed below. If this is indeed what you ' +
+      'want to do, we recommend that remove ' +
+      'these references first.',
+  },
+  linkIntegrityMessageExtra: {
+    id: 'This Page is referenced by the following items:',
+    defaultMessage: 'This Page is referenced by the following items:',
+  },
+  deleteItemMessage: {
+    id: 'Items to be deleted:',
+    defaultMessage: 'Items to be deleted:',
+  },
 });
 
 /**
@@ -292,6 +319,7 @@ class Contents extends Component {
     orderContent: PropTypes.func.isRequired,
     sortContent: PropTypes.func.isRequired,
     updateColumnsContent: PropTypes.func.isRequired,
+    linkIntegrityCheck: PropTypes.func.isRequired,
     clipboardRequest: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
@@ -414,6 +442,7 @@ class Contents extends Component {
       sort_on: this.props.sort?.on || 'getObjPositionInParent',
       sort_order: this.props.sort?.order || 'ascending',
       isClient: false,
+      linkIntegrityBreakages: '',
     };
     this.filterTimeout = null;
   }
@@ -426,6 +455,21 @@ class Contents extends Component {
   componentDidMount() {
     this.fetchContents();
     this.setState({ isClient: true });
+  }
+
+  async componentDidUpdate(_, prevState) {
+    if (
+      this.state.itemsToDelete !== prevState.itemsToDelete &&
+      this.state.itemsToDelete.length > 0
+    ) {
+      this.setState({
+        linkIntegrityBreakages: await this.props.linkIntegrityCheck(
+          map(this.state.itemsToDelete, (item) =>
+            this.getFieldById(item, 'UID'),
+          ),
+        ),
+      });
+    }
   }
 
   /**
@@ -1136,11 +1180,17 @@ class Contents extends Component {
                 <article id="content">
                   <Confirm
                     open={this.state.showDelete}
+                    confirmButton="Delete"
                     header={this.props.intl.formatMessage(
                       messages.deleteConfirm,
                     )}
                     content={
                       <div className="content">
+                        <h3>
+                          {this.props.intl.formatMessage(
+                            messages.deleteItemMessage,
+                          )}
+                        </h3>
                         <ul className="content">
                           {map(this.state.itemsToDelete, (item) => (
                             <li key={item}>
@@ -1148,6 +1198,46 @@ class Contents extends Component {
                             </li>
                           ))}
                         </ul>
+                        {this.state.linkIntegrityBreakages.length > 0 ? (
+                          <div>
+                            <h3>
+                              {this.props.intl.formatMessage(
+                                messages.linkIntegrityMessageHeader,
+                              )}
+                            </h3>
+                            <p>
+                              {this.props.intl.formatMessage(
+                                messages.linkIntegrityMessageBody,
+                              )}
+                            </p>
+                            <ul className="content">
+                              {map(
+                                this.state.linkIntegrityBreakages,
+                                (item) => (
+                                  <li key={item['@id']}>
+                                    <a href={item['@id']}>{item.title}</a>
+                                    <p>
+                                      {this.props.intl.formatMessage(
+                                        messages.linkIntegrityMessageExtra,
+                                      )}
+                                    </p>
+                                    <ul className="content">
+                                      {map(item.breaches, (breach) => (
+                                        <li key={breach['@id']}>
+                                          <a href={breach['@id']}>
+                                            {breach.title}
+                                          </a>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </li>
+                                ),
+                              )}
+                            </ul>
+                          </div>
+                        ) : (
+                          <div></div>
+                        )}
                       </div>
                     }
                     onCancel={this.onDeleteCancel}
@@ -1418,6 +1508,16 @@ class Contents extends Component {
                               value={this.state.filter}
                               onChange={this.onChangeFilter}
                             />
+                            {this.state.filter && (
+                              <Icon
+                                name={clearSVG}
+                                size="30px"
+                                color="#e40166"
+                                onClick={() => {
+                                  this.onChangeFilter('', { value: '' });
+                                }}
+                              />
+                            )}
                             <Icon
                               name={zoomSVG}
                               size="30px"
@@ -1858,6 +1958,7 @@ export const __test__ = compose(
       orderContent,
       sortContent,
       updateColumnsContent,
+      linkIntegrityCheck,
       getContent,
     },
   ),
@@ -1899,6 +2000,7 @@ export default compose(
       orderContent,
       sortContent,
       updateColumnsContent,
+      linkIntegrityCheck,
       getContent,
     },
   ),

@@ -38,7 +38,7 @@ config.blocks.blocksConfig.text = {
     fieldsets: [
       {
         id: 'default',
-        fields: ['title', 'description', 'nonDefault'],
+        fields: ['title', 'description', 'nonDefault', 'booleanField'],
         title: 'Default',
       },
     ],
@@ -51,6 +51,10 @@ config.blocks.blocksConfig.text = {
       },
       nonDefault: {
         title: 'Non default',
+      },
+      booleanField: {
+        title: 'BooleanField',
+        default: false,
       },
     },
   }),
@@ -499,6 +503,7 @@ describe('Blocks', () => {
       const schema = config.blocks.blocksConfig.text.blockSchema({ data });
       expect(applySchemaDefaults({ schema, data })).toEqual({
         '@type': 'text',
+        booleanField: false,
         title: 'Default title',
         description: 'already filled',
       });
@@ -513,6 +518,7 @@ describe('Blocks', () => {
       };
       expect(applyBlockDefaults({ data })).toEqual({
         '@type': 'text',
+        booleanField: false,
         title: 'Default title',
         description: 'already filled',
       });
@@ -572,6 +578,11 @@ describe('Blocks', () => {
         extra: 'Extra value from block schema enhancer',
         variation: 'firstVariation',
       });
+    });
+
+    it('Tolerates a missing (invalid) block', () => {
+      const data = {};
+      expect(applyBlockDefaults({ data })).toEqual({});
     });
   });
   describe('buildStyleClassNamesFromData', () => {

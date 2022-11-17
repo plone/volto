@@ -23,12 +23,10 @@ import { components } from './Components';
 import { loadables } from './Loadables';
 import { workflowMapping } from './Workflows';
 
-import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
 import { controlPanelsIcons } from './ControlPanels';
 
 import { richtextEditorSettings, richtextViewSettings } from './RichTextEditor';
-import applySlateConfiguration from '@plone/volto-slate';
 
 import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
 
@@ -114,7 +112,6 @@ let config = {
     persistentReducers: ['blocksClipboard'],
     initialReducersBlacklist: [], // reducers in this list won't be hydrated in windows.__data
     asyncPropsExtenders: [], // per route asyncConnect customizers
-    sentryOptions,
     contentIcons: contentIcons,
     loadables,
     lazyBundles: {
@@ -163,6 +160,7 @@ let config = {
     maxUndoLevels: 200, // undo history size for the main form
     addonsInfo: addonsInfo,
     workflowMapping,
+    errorHandlers: [], // callables for unhandled errors
   },
   widgets: {
     ...widgetMapping,
@@ -197,4 +195,4 @@ ConfigRegistry.addonReducers = config.addonReducers;
 ConfigRegistry.appExtras = config.appExtras;
 ConfigRegistry.components = config.components;
 
-applyAddonConfiguration(applySlateConfiguration(ConfigRegistry));
+applyAddonConfiguration(ConfigRegistry);

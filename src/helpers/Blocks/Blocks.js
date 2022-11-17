@@ -372,7 +372,7 @@ export function visitBlocks(content, callback) {
 export function applySchemaDefaults({ data = {}, schema }) {
   const derivedData = {
     ...Object.keys(schema.properties).reduce((accumulator, currentField) => {
-      return schema.properties[currentField].default
+      return typeof schema.properties[currentField].default !== 'undefined'
         ? {
             ...accumulator,
             [currentField]: schema.properties[currentField].default,
@@ -392,7 +392,8 @@ export function applySchemaDefaults({ data = {}, schema }) {
  * @return {Object} Derived data, with the defaults extracted from the schema
  */
 export function applyBlockDefaults({ data, intl, ...rest }, blocksConfig) {
-  const block_type = data['@type'];
+  // We pay attention to not break on a missing (invalid) block.
+  const block_type = data?.['@type'];
   const { blockSchema } =
     (blocksConfig || config.blocks.blocksConfig)[block_type] || {};
   if (!blockSchema) return data;
