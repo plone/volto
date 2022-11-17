@@ -15,8 +15,14 @@ import { Portal } from 'react-portal';
 import { v4 as uuid } from 'uuid';
 import qs from 'query-string';
 import { toast } from 'react-toastify';
+import cx from 'classnames';
 
-import { createContent, getSchema, changeLanguage } from '@plone/volto/actions';
+import {
+  changeLanguage,
+  createContent,
+  getSchema,
+  setSidebarExpanded,
+} from '@plone/volto/actions';
 import {
   Form,
   Icon,
@@ -42,6 +48,7 @@ import config from '@plone/volto/registry';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+import configSVG from '@plone/volto/icons/configuration.svg';
 
 const messages = defineMessages({
   add: {
@@ -386,6 +393,24 @@ class Add extends Component {
                         title={this.props.intl.formatMessage(messages.cancel)}
                       />
                     </Button>
+                    <Button
+                      className={cx('settings', {
+                        'sidebar-expanded': this.props.sidebarExpanded,
+                      })}
+                      // TODO: The below should set `aria-pressed`, but it doesn't for some reason :(
+                      active={this.props.sidebarExpanded}
+                      onClick={() => {
+                        this.props.setSidebarExpanded(
+                          !this.props.sidebarExpanded,
+                        );
+                      }}
+                    >
+                      <span class="sr-only">Hide sidebar</span>
+                      <div aria-hidden="true" focusable="false">
+                        <Icon name={configSVG} />
+                      </div>
+                    </Button>
+
                   </>
                 }
               />
@@ -457,8 +482,9 @@ export default compose(
       pathname: props.location.pathname,
       returnUrl: qs.parse(props.location.search).return_url,
       type: qs.parse(props.location.search).type,
+      sidebarExpanded: state.sidebar.expanded,
     }),
-    { createContent, getSchema, changeLanguage },
+    { createContent, getSchema, changeLanguage, setSidebarExpanded },
   ),
   preloadLazyLibs('cms'),
 )(Add);

@@ -14,8 +14,9 @@ import cx from 'classnames';
 import { BodyClass, getCookieOptions } from '@plone/volto/helpers';
 import { Icon } from '@plone/volto/components';
 import forbiddenSVG from '@plone/volto/icons/forbidden.svg';
-import { setSidebarTab } from '@plone/volto/actions';
+import { setSidebarExpanded, setSidebarTab } from '@plone/volto/actions';
 import expandSVG from '@plone/volto/icons/left-key.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 import collapseSVG from '@plone/volto/icons/right-key.svg';
 
 const messages = defineMessages({
@@ -89,6 +90,17 @@ class Sidebar extends Component {
     };
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.sidebarExpanded !== prevProps.sidebarExpanded) {
+      const { cookies } = this.props;
+      cookies.set(
+        'sidebar_expanded',
+        this.props.sidebarExpanded,
+        getCookieOptions(),
+      );
+    }
+  }
+
   /**
    * On toggle expanded handler
    * also reset sidebar since this has mimized it
@@ -96,11 +108,7 @@ class Sidebar extends Component {
    * @returns {undefined}
    */
   onToggleExpanded() {
-    const { cookies } = this.props;
-    cookies.set('sidebar_expanded', !this.state.expanded, getCookieOptions());
-    this.setState({
-      expanded: !this.state.expanded,
-    });
+    this.props.setSidebarExpanded(!this.props.sidebarExpanded);
     this.resetFullSizeSidebar();
   }
 
@@ -109,7 +117,7 @@ class Sidebar extends Component {
    * Reset state
    */
   resetFullSizeSidebar() {
-    if (!this.state.expanded) {
+    if (!this.props.sidebarExpanded) {
       const currentResizer = document.querySelector('#sidebar');
       const sidebarContainer = currentResizer.getElementsByClassName(
         'sidebar-container',
@@ -168,7 +176,7 @@ class Sidebar extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { expanded } = this.state;
+    const expanded = this.props.sidebarExpanded;
 
     return (
       <Fragment>
@@ -201,6 +209,10 @@ class Sidebar extends Component {
               className="full-size-icon"
               name={this.state.showFull ? expandSVG : collapseSVG}
             />
+          </Button>
+          <Button className="close-sidenav-btn" onClick={this.onToggleExpanded}>
+            <span className="sr-only">Hide sidebar</span>
+            <Icon name={clearSVG} />
           </Button>
           <Tab
             menu={{
@@ -262,7 +274,9 @@ class Sidebar extends Component {
             ].filter((tab) => tab)}
           />
         </div>
-        <div className={this.state.expanded ? 'pusher expanded' : 'pusher'} />
+        <div
+          className={this.props.sidebarExpanded ? 'pusher expanded' : 'pusher'}
+        />
       </Fragment>
     );
   }
@@ -274,9 +288,10 @@ export default compose(
   connect(
     (state) => ({
       tab: state.sidebar.tab,
+      sidebarExpanded: state.sidebar.expanded,
       toolbarExpanded: state.toolbar.expanded,
       type: state.schema?.schema?.title,
     }),
-    { setSidebarTab },
+    { setSidebarTab, setSidebarExpanded },
   ),
 )(Sidebar);

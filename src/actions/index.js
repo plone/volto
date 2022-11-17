@@ -142,7 +142,10 @@ export {
 } from '@plone/volto/actions/workflow/workflow';
 export { getQuerystring } from '@plone/volto/actions/querystring/querystring';
 export { getQueryStringResults } from '@plone/volto/actions/querystringsearch/querystringsearch';
-export { setSidebarTab } from '@plone/volto/actions/sidebar/sidebar';
+export {
+  setSidebarExpanded,
+  setSidebarTab,
+} from '@plone/volto/actions/sidebar/sidebar';
 export {
   deleteLinkTranslation,
   getTranslationLocator,
