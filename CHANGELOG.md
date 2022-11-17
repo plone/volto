@@ -4,15 +4,26 @@
 
 ### Breaking
 
+- The `ContentsBreadcrumbs` component now renders the whole language name of the language root folder (if any) instead of just the `id` (before: `de`, now: `Deutsch`) @sneridagh
+
 ### Feature
 
+- Improvement of the `ContentsBreadcrumbs` component, add child `ContentsBreadcrumbsRootItem` and `ContentsBreadcrumbsHomeItem` for easy customization of these single elements in projects @sneridagh
+- Add german translation for group membership panel. @ksuess
+- Fix general german translations: Address user polite. Correct 'listing template' to 'listing variant'. Add missing translations. @ksuess
 - The button for adding a new block is now shown below any selected block, instead of only on the left of empty text blocks. @davisagli
 
 ### Bugfix
 
 ### Internal
 
+- Ignore `.tool-versions` file
+- Minor updates to dependencies
+- Update Cypress 11 @sneridagh
+
 ### Documentation
+
+- Add `@plone/scripts` as a mandatory devDependency for projects to the upgrade guide @sneridagh
 
 ## 16.0.0-alpha.50 (2022-11-15)
 

@@ -202,12 +202,12 @@ msgstr "Zu Gruppe hinzufügen"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add users to group
 msgid "Add users to group"
-msgstr "Füge Benutzer zu Gruppe hinzu"
+msgstr "Benutzer zu Gruppe hinzufügen"
 
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Add term
 msgid "Add vocabulary term"
-msgstr "Füge neuen Term hinzu"
+msgstr "Neuen Term hinzufügen"
 
 #: components/manage/Add/Add
 # defaultMessage: Add {type}
@@ -634,7 +634,7 @@ msgstr "Kollektion"
 #: components/manage/Widgets/ColorPickerWidget
 # defaultMessage: Color
 msgid "Color"
-msgstr ""
+msgstr "Farbe"
 
 #: components/manage/Controlpanels/ModerateComments
 #: components/theme/Comments/CommentEditModal
@@ -1540,7 +1540,7 @@ msgstr "Überschrift"
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Headline level
 msgid "Headline level"
-msgstr ""
+msgstr "Überschrift"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hidden facets will still filter the results if proper parameters are passed in URLs
@@ -1575,6 +1575,7 @@ msgstr "Historie von {title}"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsBreadcrumbs
+#: components/manage/Contents/ContentsBreadcrumbsHomeItem
 #: components/theme/Breadcrumbs/Breadcrumbs
 # defaultMessage: Home
 msgid "Home"
@@ -1994,6 +1995,11 @@ msgstr "Maximaler Wert ist {len}"
 msgid "Medium"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Membership updated
+msgid "Membership updated"
+msgstr "Gruppenmitgliedschaft aktualisiert"
+
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Message
 msgid "Message"
@@ -2073,12 +2079,12 @@ msgstr ""
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Multiple choices?
 msgid "Multiple choices?"
-msgstr "Mehrfachauswahl"
+msgstr "Mehrfachauswahl?"
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: My email is
 msgid "My email is"
-msgstr ""
+msgstr "Meine E-Mail ist"
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: My username is
@@ -2555,7 +2561,7 @@ msgstr "Registrierungsformular"
 #: components/theme/Search/Search
 # defaultMessage: Relevance
 msgid "Relevance"
-msgstr "relevanz"
+msgstr "Relevanz"
 
 #: components/manage/Aliases/Aliases
 # defaultMessage: Remove
@@ -2664,7 +2670,7 @@ msgstr "Ergebnisvorschau"
 #: components/manage/Blocks/Search/SearchBlockEdit
 # defaultMessage: Results template
 msgid "Results template"
-msgstr "Template Suchergebnisliste"
+msgstr "Variante Suchergebnisliste"
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Reversed order
@@ -2704,6 +2710,7 @@ msgid "Roles"
 msgstr "Rollen"
 
 #: components/manage/Contents/ContentsBreadcrumbs
+#: components/manage/Contents/ContentsBreadcrumbsRootItem
 # defaultMessage: Root
 msgid "Root"
 msgstr "Wurzel"
@@ -2897,7 +2904,7 @@ msgstr "Auswahl"
 #: components/manage/Widgets/TokenWidget
 # defaultMessage: Select…
 msgid "Select…"
-msgstr "Wähle…"
+msgstr "Auswahl"
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Send
@@ -3166,7 +3173,7 @@ msgstr "Betreff"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Success
 msgid "Success"
-msgstr "Erfolgreich"
+msgstr "Erfolg"
 
 #: components/manage/Controlpanels/UndoControlpanel
 # defaultMessage: Successfully undone transactions
@@ -3348,7 +3355,7 @@ msgstr ""
 #: components/manage/Form/InlineForm
 # defaultMessage: There were some errors
 msgid "There were some errors"
-msgstr "Es sind Fehler"
+msgstr "Es gibt Fehler"
 
 #: components/manage/Form/ModalForm
 #: helpers/MessageLabels/MessageLabels
@@ -3981,7 +3988,7 @@ msgstr ""
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Available views
 msgid "availableViews"
-msgstr ""
+msgstr "Verfügbare Ansichten"
 
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -4231,7 +4238,7 @@ msgstr "Veröffentlicht"
 #: components/manage/Widgets/QueryWidget
 # defaultMessage: Select…
 msgid "querystring-widget-select"
-msgstr "Select Auswahlfeld"
+msgstr "Auswahl"
 
 #: components/theme/Search/Search
 # defaultMessage: results
@@ -4481,7 +4488,7 @@ msgstr "Video"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Views
 msgid "views"
-msgstr ""
+msgstr "Ansichten"
 
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Visit external website

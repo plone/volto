@@ -143,6 +143,7 @@
     "mrs-developer": "*",
     "postcss": "8.4.13",
     "prettier": "2.0.5",
+    "@plone/scripts": "^2.1.2",
     "@storybook/addon-actions": "^6.3.0",
     "@storybook/addon-controls": "6.3.0",
     "@storybook/addon-essentials": "^6.3.0",

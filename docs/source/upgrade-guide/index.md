@@ -310,10 +310,11 @@ We are updating Volto to be able to use it, however some changes have to be made
 
     Remember to update your CI scripts accordingly.
 
-4. It doesn't allow to use commands not declared as direct dependencies, so in your projects you should add `razzle` as a dependency:
+4. It doesn't allow to use commands not declared as direct dependencies, so in your projects you should add `razzle` and `@plone/scripts` as development dependencies:
 
     ```diff
     devDependencies: {
+    +        "@plone/scripts": "^2.1.2",
     +        "razzle": "4.2.17",
     ```
 
@@ -347,6 +348,10 @@ Core configuration has been updated, but you will require to update your Cypress
 Could be that forcing your project to use older versions might still work with old configurations.
 
 See https://docs.cypress.io/guides/references/migration-guide#Migrating-to-Cypress-version-10-0 for more information.
+
+```{note}
+Later on, the core has been upgraded to Cypress 11, however no changes to be made if you already upgraded to Cypress 10.
+```
 
 ### The complete configuration registry is passed to the add-ons and the project configuration pipeline
 
