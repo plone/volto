@@ -11,6 +11,7 @@
 ### Internal
 
 - Ignore `.tool-versions` file
+- Minor updates to dependencies
 
 ### Documentation
 
