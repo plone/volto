@@ -94,6 +94,7 @@ export RulesControlpanel from '@plone/volto/components/manage/Controlpanels/Rule
 export AddRuleControlpanel from '@plone/volto/components/manage/Controlpanels/Rules/AddRule';
 export EditRuleControlpanel from '@plone/volto/components/manage/Controlpanels/Rules/EditRule';
 export ConfigureRuleControlpanel from '@plone/volto/components/manage/Controlpanels/Rules/ConfigureRule';
+export UpgradeControlPanel from '@plone/volto/components/manage/Controlpanels/UpgradeControlPanel';
 
 export ModerateComments from '@plone/volto/components/manage/Controlpanels/ModerateComments';
 export VersionOverview from '@plone/volto/components/manage/Controlpanels/VersionOverview';

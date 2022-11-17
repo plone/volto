@@ -8,7 +8,7 @@ jobs:
       matrix:
         node-version: [14.x, 16.x]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
@@ -18,7 +18,7 @@ jobs:
           cache: yarn
 
       # node install
-      - run: yarn --frozen-lockfile
+      - run: yarn --immutable
 
       # node test
       - run: yarn i18n && yarn test:ci

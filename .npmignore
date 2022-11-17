@@ -37,6 +37,7 @@ CNAME
 entrypoint.sh
 Jenkinsfile
 Makefile
+.husky
 
 # Logs
 logs
@@ -91,9 +92,6 @@ typings/
 # Volto logos
 ./logos
 
-# yarn 3
-.yarn
-
 # Razzle cache
 cache/
 
@@ -111,3 +109,12 @@ styleguide.config
 packages/*
 !packages/volto-slate
 .tx
+
+# yarn 3
+.yarn
+.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

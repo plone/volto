@@ -5,10 +5,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "razzle start",
-    "preinstall": "if [ -f $(pwd)/mrs.developer.json ]; then if [ -f $(pwd)/node_modules/.bin/missdev ]; then yarn develop; else yarn develop:npx; fi; fi",
-    "postinstall": "yarn omelette && yarn patches",
-    "omelette": "if [ ! -d omelette ]; then ln -sf node_modules/@plone/volto omelette; fi",
-    "patches": "/bin/bash patches/patchit.sh > /dev/null 2>&1 ||true",
+    "postinstall": "make omelette && make patches",
     "build": "razzle build --noninteractive",
     "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx}'",
     "lint:fix": "./node_modules/eslint/bin/eslint.js --max-warnings=0 --fix 'src/**/*.{js,jsx}'",
@@ -146,14 +143,17 @@
     "mrs-developer": "*",
     "postcss": "8.4.13",
     "prettier": "2.0.5",
+    "@plone/scripts": "^2.1.2",
     "@storybook/addon-actions": "^6.3.0",
     "@storybook/addon-controls": "6.3.0",
     "@storybook/addon-essentials": "^6.3.0",
     "@storybook/addon-links": "^6.3.0",
     "@storybook/react": "^6.3.0",
+    "razzle": "4.2.17",
     "stylelint": "14.0.1",
     "stylelint-config-idiomatic-order": "8.1.0",
     "stylelint-config-prettier": "8.0.1",
     "stylelint-prettier": "1.1.2"
-  }
+  },
+  "packageManager": "yarn@3.2.3"
 }

@@ -11,6 +11,7 @@ import { compose } from 'redux';
 
 import { FormFieldWrapper } from '@plone/volto/components';
 import withQueryString from './../hocs/withQueryString';
+import { defineMessages } from 'react-intl';
 
 import {
   Option,
@@ -20,6 +21,13 @@ import {
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 
 const identity = (a) => a;
+
+const messages = defineMessages({
+  select: {
+    id: 'Select…',
+    defaultMessage: 'Select…',
+  },
+});
 
 /**
  * SelectWidget component class.
@@ -149,7 +157,7 @@ class SelectWidget extends Component {
       // choices,
       value,
       onChange,
-      // placeholder,
+      placeholder,
       querystring,
       filterOptions = identity,
     } = this.props;
@@ -163,6 +171,9 @@ class SelectWidget extends Component {
         <Select
           id={`field-${id}`}
           name={id}
+          placeholder={
+            placeholder ?? this.props.intl.formatMessage(messages.select)
+          }
           isDisabled={isDisabled}
           className="react-select-container"
           classNamePrefix="react-select"

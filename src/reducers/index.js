@@ -47,6 +47,7 @@ import contextNavigation from '@plone/volto/reducers/contextNavigation/contextNa
 import reduxAsyncConnect from './asyncConnect/asyncConnect';
 import workingCopy from './workingcopy/workingcopy';
 import transactions from './transactions/transactions';
+import upgrade from './upgrade/upgrade';
 import userschema from './userschema/userschema';
 
 /**
@@ -98,6 +99,7 @@ const reducers = {
   blocksClipboard,
   lazyLibraries,
   contextNavigation,
+  upgrade,
   workingCopy,
   transactions,
   userschema,

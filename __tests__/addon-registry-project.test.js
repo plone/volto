@@ -5,13 +5,19 @@ const {
   getAddonsLoaderChain,
 } = AddonConfigurationRegistry;
 
-describe('AddonConfigurationRegistry', () => {
-  it('works in Volto', () => {
-    const base = path.join(__dirname, '..');
-    const reg = new AddonConfigurationRegistry(base);
-    expect(reg.projectRootPath).toStrictEqual(base);
-    expect(reg.addonNames).toStrictEqual(['@plone/volto-slate']);
-  });
+describe('AddonConfigurationRegistry - Project', () => {
+  jest.mock(
+    `${path.join(
+      __dirname,
+      'fixtures',
+      'test-volto-project',
+    )}/node_modules/@plone/volto/package.json`,
+    () => ({
+      // TODO: mock the packages folder inside the mocked @plone/volto to work with resolves
+      packagesFolderAddons: {},
+    }),
+    { virtual: true },
+  );
 
   it('works in a mock project directory', () => {
     const base = path.join(__dirname, 'fixtures', 'test-volto-project');
@@ -149,6 +155,7 @@ describe('AddonConfigurationRegistry', () => {
     expect(reg.getAddonCustomizationPaths()).toStrictEqual({
       '@plone/volto/client': `${base}/node_modules/test-released-source-addon/src/customizations/client.js`,
       '@plone/volto/server': `${base}/addons/test-addon/src/custom-addons/volto/server.jsx`,
+      '@root/marker': `${base}/node_modules/test-released-source-addon/src/customizations/@root/marker.js`,
       'test-released-source-addon/index': `${base}/addons/test-addon/src/custom-addons/test-released-source-addon/index.js`,
     });
   });
