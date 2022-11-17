@@ -18,6 +18,7 @@
 
 - Ignore `.tool-versions` file
 - Minor updates to dependencies
+- Update Cypress 11 @sneridagh
 
 ### Documentation
 
