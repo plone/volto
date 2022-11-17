@@ -1997,6 +1997,11 @@ msgstr "最大の値は {len} です。"
 msgid "Medium"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Membership updated
+msgid "Membership updated"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Message
 msgid "Message"

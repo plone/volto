@@ -1996,6 +1996,11 @@ msgstr "Maximum waarde is {len}"
 msgid "Medium"
 msgstr "Medium"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Membership updated
+msgid "Membership updated"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Message
 msgid "Message"
