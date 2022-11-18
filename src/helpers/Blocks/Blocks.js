@@ -418,7 +418,7 @@ export function applyBlockDefaults({ data, intl, ...rest }, blocksConfig) {
  * styleToClassName('inverted:bool', true) returns 'inverted'
  * styleToClassName('inverted:bool', false) returns ''
  */
-const styleToClassName = (key, value, prefix = '') => {
+export const styleToClassName = (key, value, prefix = '') => {
   const converters = config.settings.styleClassNameConverters;
   const [name, ...convIds] = key.split(':');
 
