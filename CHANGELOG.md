@@ -12,6 +12,18 @@
 
 ### Documentation
 
+## 16.0.0-rc.1 (2022-11-18)
+
+### Feature
+
+- Releasing RC1 @sneridagh
+
+## 16.0.0-alpha.53 (2022-11-18)
+
+### Feature
+
+- There is an experimental setting to move the button for adding a new block to show below any selected block, instead of only on the left of empty text blocks. Set `config.experimental.addBlockButton.enabled = true` to enable it. @davisagli
+
 ## 16.0.0-alpha.52 (2022-11-18)
 
 ### Bugfix

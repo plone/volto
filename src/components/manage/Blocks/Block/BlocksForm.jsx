@@ -15,7 +15,7 @@ import {
 import EditBlockWrapper from './EditBlockWrapper';
 import { setSidebarTab } from '@plone/volto/actions';
 import { useDispatch } from 'react-redux';
-import { useDetectClickOutside } from '@plone/volto/helpers';
+import { useDetectClickOutside, useEvent } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 const BlocksForm = (props) => {
@@ -110,7 +110,13 @@ const BlocksForm = (props) => {
   };
 
   const onInsertBlock = (id, value, current) => {
-    const [newId, newFormData] = insertBlock(properties, id, value, current);
+    const [newId, newFormData] = insertBlock(
+      properties,
+      id,
+      value,
+      current,
+      config.experimental.addBlockButton.enabled ? 1 : 0,
+    );
     onChangeFormData(newFormData);
     return newId;
   };
@@ -160,6 +166,13 @@ const BlocksForm = (props) => {
       onChangeFormData(newFormData);
     }
   }
+
+  useEvent('voltoClickBelowContent', () => {
+    if (!config.experimental.addBlockButton.enabled || !isMainForm) return;
+    onSelectBlock(
+      onAddBlock(config.settings.defaultBlockType, blockList.length),
+    );
+  });
 
   return (
     <div className="blocks-form" ref={ref}>
@@ -212,6 +225,7 @@ const BlocksForm = (props) => {
               multiSelected: multiSelected?.includes(childId),
               type: child['@type'],
               editable,
+              showBlockChooser: selectedBlock === childId,
             };
             return editBlockWrapper(
               dragProps,
