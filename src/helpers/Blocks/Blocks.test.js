@@ -644,6 +644,27 @@ describe('Blocks', () => {
       ]);
     });
 
+    it('Supports multiple nested level', () => {
+      const styles = {
+        color: 'red',
+        backgroundColor: '#AABBCC',
+        nested: {
+          l1: 'white',
+          level2: {
+            foo: '#fff',
+            bar: '#000',
+          },
+        },
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual([
+        'has--color--red',
+        'has--backgroundColor--AABBCC',
+        'has--nested--l1--white',
+        'has--nested--level2--foo--fff',
+        'has--nested--level2--bar--000',
+      ]);
+    });
+
     it('Sets styles classname array according to style values with int values', () => {
       const styles = {
         color: 'red',
