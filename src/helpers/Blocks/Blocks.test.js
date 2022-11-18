@@ -655,34 +655,37 @@ describe('Blocks', () => {
       ]);
     });
 
-    // it('Understands noprefix converter for style values', () => {
-    //   const styles = {
-    //     color: 'red',
-    //     'theme:noprefix': 'primary',
-    //   };
-    //   expect(buildStyleClassNamesFromData(styles)).toEqual([
-    //     'has--color--red',
-    //     'primary',
-    //   ]);
-    // });
-    //
-    // it('Understands bool converter for trueish value', () => {
-    //   const styles = {
-    //     color: 'red',
-    //     'inverted:bool': true,
-    //   };
-    //   expect(buildStyleClassNamesFromData(styles)).toEqual([
-    //     'has--color--red',
-    //     'inverted',
-    //   ]);
-    // });
-    //
-    // it('Understands bool converter for false value', () => {
-    //   const styles = {
-    //     color: 'red',
-    //     'inverted:bool': false,
-    //   };
-    //   expect(buildStyleClassNamesFromData(styles)).toEqual(['has--color--red']);
-    // });
+    it('Understands noprefix converter for style values', () => {
+      const styles = {
+        color: 'red',
+        'theme:noprefix': 'primary',
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual([
+        'has--color--red',
+        'primary',
+      ]);
+    });
+
+    it('Understands bool converter for trueish value', () => {
+      const styles = {
+        color: 'red',
+        'inverted:bool': true,
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual([
+        'has--color--red',
+        'inverted',
+      ]);
+    });
+
+    it('Understands bool converter for false value', () => {
+      const styles = {
+        color: 'red',
+        'inverted:bool': false,
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual([
+        'has--color--red',
+        '',
+      ]);
+    });
   });
 });
