@@ -28,6 +28,8 @@ lighthouse-report.html
 .vscode/
 .#*
 *~
+/.settings/
+.*project
 
 # Python
 /api/.installed.cfg
