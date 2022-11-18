@@ -26,7 +26,7 @@ const EditBlockWrapper = (props) => {
   const hideHandler = (data) => {
     return (
       !!data.fixed ||
-      (config.settings.legacyAddButton &&
+      (!config.experimental.addBlockButton.enabled &&
         !(blockHasValue(data) && props.blockProps.editable))
     );
   };
@@ -91,7 +91,7 @@ const EditBlockWrapper = (props) => {
               <Icon name={trashSVG} size="18px" />
             </Button>
           )}
-          {!config.settings.legacyAddButton && showBlockChooser && (
+          {config.experimental.addBlockButton.enabled && showBlockChooser && (
             <BlockChooserButton
               data={data}
               block={block}

@@ -18,7 +18,7 @@ export const ButtonComponent = (props) => {
   const intl = useIntl();
   const {
     className = `block-add-button${
-      config.settings.legacyAddButton ? ' legacy' : ''
+      config.experimental.addBlockButton.enabled ? ' new-add-block' : ''
     }`,
     size = '19px',
     onShowBlockChooser,
@@ -79,7 +79,8 @@ const BlockChooserButton = (props) => {
   return (
     <>
       {!disableNewBlocks &&
-        (!config.settings.legacyAddButton || !blockHasValue(data)) && (
+        (config.experimental.addBlockButton.enabled ||
+          !blockHasValue(data)) && (
           <Component
             {...props}
             onShowBlockChooser={() => setAddNewBlockOpened(true)}

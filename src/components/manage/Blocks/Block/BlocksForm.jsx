@@ -115,7 +115,7 @@ const BlocksForm = (props) => {
       id,
       value,
       current,
-      config.settings.legacyAddButton ? 0 : 1,
+      config.experimental.addBlockButton.enabled ? 1 : 0,
     );
     onChangeFormData(newFormData);
     return newId;
@@ -168,7 +168,7 @@ const BlocksForm = (props) => {
   }
 
   useEvent('voltoClickBelowContent', () => {
-    if (config.settings.legacyAddButton || !isMainForm) return;
+    if (!config.experimental.addBlockButton.enabled || !isMainForm) return;
     onSelectBlock(
       onAddBlock(config.settings.defaultBlockType, blockList.length),
     );

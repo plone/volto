@@ -6,7 +6,7 @@
 
 ### Feature
 
-- There is an experimental setting to move the button for adding a new block to show below any selected block, instead of only on the left of empty text blocks. Set `legacyAddButton: false` in config.settings to enable it. @davisagli
+- There is an experimental setting to move the button for adding a new block to show below any selected block, instead of only on the left of empty text blocks. Set `config.experimental.addBlockButton.enabled = true` to enable it. @davisagli
 
 ### Bugfix
 

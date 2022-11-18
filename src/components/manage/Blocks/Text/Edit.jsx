@@ -329,7 +329,7 @@ export class EditComponent extends Component {
           }}
         />
         <InlineToolbar />
-        {config.settings.legacyAddButton && this.props.selected && (
+        {!config.experimental.addBlockButton.enabled && this.props.selected && (
           <BlockChooserButton
             data={this.props.data}
             block={this.props.block}

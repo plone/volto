@@ -475,7 +475,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
   box-shadow: none;
   color: #b8c6c8 !important;
 
-  &:not(.legacy) {
+  &.new-add-block {
     bottom: -26px;
     left: 50%;
     padding: 0 !important;
@@ -485,7 +485,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     transform: translateX(-50%);
   }
 
-  &.legacy {
+  &:not(.new-add-block) {
     top: -2px;
     padding: 0;
     border: none;
@@ -722,11 +722,11 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
   border-radius: 2px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.05);
 
-  &:not(.legacy) {
+  &.new-add-block {
     transform: translate(-50%, 22px);
   }
 
-  &.legacy {
+  &:not(.new-add-block) {
     top: -12px;
     left: -9px;
   }

@@ -94,7 +94,6 @@ let config = {
     websockets: process.env.RAZZLE_WEBSOCKETS || false,
     // TODO: legacyTraverse to be removed when the use of the legacy traverse is deprecated.
     legacyTraverse: process.env.RAZZLE_LEGACY_TRAVERSE || false,
-    legacyAddButton: true,
     cookieExpires: 15552000, //in seconds. Default is 6 month (15552000)
     nonContentRoutes,
     richtextEditorSettings, // Part of draftjs support, to be removed
@@ -169,6 +168,11 @@ let config = {
     workflowMapping,
     errorHandlers: [], // callables for unhandled errors
   },
+  experimental: {
+    addBlockButton: {
+      enabled: true,
+    },
+  },
   widgets: {
     ...widgetMapping,
     default: defaultWidget,
@@ -194,6 +198,7 @@ let config = {
 };
 
 ConfigRegistry.settings = config.settings;
+ConfigRegistry.experimental = config.experimental;
 ConfigRegistry.blocks = config.blocks;
 ConfigRegistry.views = config.views;
 ConfigRegistry.widgets = config.widgets;

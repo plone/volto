@@ -247,7 +247,7 @@ export const DefaultTextBlockEditor = (props) => {
           }}
         </Dropzone>
 
-        {config.settings.legacyAddButton &&
+        {!config.experimental.addBlockButton.enabled &&
           selected &&
           !data.plaintext?.trim() &&
           !disableNewBlocks && (

@@ -133,7 +133,7 @@ const BlockChooser = ({
   return (
     <div
       className={`blocks-chooser${
-        config.settings.legacyAddButton ? ' legacy' : ''
+        config.experimental.addBlockButton.enabled ? ' new-add-block' : ''
       }`}
       ref={blockChooserRef}
     >
