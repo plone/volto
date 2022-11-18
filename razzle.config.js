@@ -21,6 +21,12 @@ const packageJson = require(path.join(projectRootPath, 'package.json'));
 
 const registry = new AddonConfigurationRegistry(projectRootPath);
 
+const addonCustomizationPaths = registry.getAddonCustomizationPaths();
+const addonsFromEnvVarCustomizationPaths = registry.getAddonsFromEnvVarCustomizationPaths();
+const projectCustomizationPaths = registry.getProjectCustomizationPaths();
+const resolveAliases = registry.getResolveAliases();
+
+
 const defaultModify = ({
   env: { target, dev },
   webpackConfig: config,
@@ -203,14 +209,14 @@ const defaultModify = ({
   ];
 
   config.resolve.alias = {
-    ...registry.getAddonCustomizationPaths(),
-    ...registry.getAddonsFromEnvVarCustomizationPaths(),
-    ...registry.getProjectCustomizationPaths(),
+    ...addonCustomizationPaths,
+    ...addonsFromEnvVarCustomizationPaths,
+    ...projectCustomizationPaths,
     ...config.resolve.alias,
     '../../theme.config$': `${projectRootPath}/theme/theme.config`,
     'volto-themes': `${registry.voltoPath}/theme/themes`,
     'load-volto-addons': addonsLoaderPath,
-    ...registry.getResolveAliases(),
+    ...resolveAliases,
     '@plone/volto': `${registry.voltoPath}/src`,
     // to be able to reference path uncustomized by webpack
     '@plone/volto-original': `${registry.voltoPath}/src`,
@@ -316,6 +322,13 @@ module.exports = {
   plugins,
   modifyJestConfig: ({ jestConfig }) => {
     jestConfig.testEnvironment = 'jsdom';
+    jestConfig.moduleNameMapper = {
+      ...addonCustomizationPaths,
+      ...addonsFromEnvVarCustomizationPaths,
+      ...projectCustomizationPaths,
+      ...resolveAliases,
+      ...jestConfig.moduleNameMapper,
+    };
     return jestConfig;
   },
   modifyWebpackConfig: ({
