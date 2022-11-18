@@ -691,10 +691,7 @@ describe('Blocks', () => {
         color: 'red',
         'inverted:bool': false,
       };
-      expect(buildStyleClassNamesFromData(styles)).toEqual([
-        'has--color--red',
-        '',
-      ]);
+      expect(buildStyleClassNamesFromData(styles)).toEqual(['has--color--red']);
     });
 
     it('Ugly edge cases', () => {
@@ -704,7 +701,7 @@ describe('Blocks', () => {
           l1: {},
         },
       };
-      expect(buildStyleClassNamesFromData(styles)).toEqual(['has--color--']);
+      expect(buildStyleClassNamesFromData(styles)).toEqual([]);
     });
   });
 });

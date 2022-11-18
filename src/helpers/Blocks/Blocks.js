@@ -422,11 +422,13 @@ export const styleToClassName = (key, value, prefix = '') => {
   const converters = config.settings.styleClassNameConverters;
   const [name, ...convIds] = key.split(':');
 
-  return `${(convIds.length ? convIds : ['default'])
-    .map((id) => converters[id])
-    .reduce((acc, conv) => {
-      return conv(acc, value, prefix);
-    }, name)}`;
+  return value
+    ? `${(convIds.length ? convIds : ['default'])
+        .map((id) => converters[id])
+        .reduce((acc, conv) => {
+          return conv(acc, value, prefix);
+        }, name)}`
+    : '';
 };
 
 export const buildStyleClassNamesFromData = (obj = {}, prefix = '') => {
@@ -437,12 +439,14 @@ export const buildStyleClassNamesFromData = (obj = {}, prefix = '') => {
   // }
   // Returns: ['has--color--red', 'has--backgroundColor--AABBCC']
 
-  return Object.entries(obj).reduce((acc, [k, v]) => {
-    return [
-      ...acc,
-      ...(isObject(v)
-        ? buildStyleClassNamesFromData(v, `${prefix}${k}--`)
-        : [styleToClassName(k, v, prefix)]),
-    ];
-  }, []);
+  return Object.entries(obj)
+    .reduce((acc, [k, v]) => {
+      return [
+        ...acc,
+        ...(isObject(v)
+          ? buildStyleClassNamesFromData(v, `${prefix}${k}--`)
+          : [styleToClassName(k, v, prefix)]),
+      ];
+    }, [])
+    .filter((v) => !!v);
 };
