@@ -155,7 +155,7 @@ data like:
 ```
 {
   "styles": {
-    "theme:nosuffix": "primary",
+    "theme:noprefix": "primary",
     "inverted:bool": true,
   }
 }

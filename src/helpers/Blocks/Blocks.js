@@ -414,7 +414,7 @@ export function applyBlockDefaults({ data, intl, ...rest }, blocksConfig) {
  * This can be expanded via the style names, by suffixing them with special
  * converters. See config.settings.styleClassNameConverters. Examples:
  *
- * styleToClassName('theme:nosuffix', 'primary') returns "primary"
+ * styleToClassName('theme:noprefix', 'primary') returns "primary"
  * styleToClassName('inverted:bool', true) returns 'inverted'
  * styleToClassName('inverted:bool', false) returns ''
  */
