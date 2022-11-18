@@ -11,6 +11,7 @@
 - Improvement of the `ContentsBreadcrumbs` component, add child `ContentsBreadcrumbsRootItem` and `ContentsBreadcrumbsHomeItem` for easy customization of these single elements in projects @sneridagh
 - Add german translation for group membership panel. @ksuess
 - Fix general german translations: Address user polite. Correct 'listing template' to 'listing variant'. Add missing translations. @ksuess
+- Allow passing ariaHidden, id and style to an Icon's SVG @JeffersonBledsoe #3908
 - All Fields now understand the `default` prop as a fallback value in case their data value is missing. As a convenience, the `defaultValue` is also used as a fallback, but this shouldn't proliferate. @tiberiuichim
 
 ### Bugfix

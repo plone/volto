@@ -412,6 +412,7 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
                         "__html": "<title>Undo</title>undefined",
                       }
                     }
+                    id="undo-button"
                     onClick={[Function]}
                     style={
                       Object {
