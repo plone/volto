@@ -2,15 +2,9 @@
 
 ## 16.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
-### Internal
-
-### Documentation
+- Revert "Configure Jest's moduleNameMapper with AddonConfigurationRegistry" (#3913) due to a regression in projects @sneridagh
 
 ## 16.0.0-alpha.51 (2022-11-18)
 
