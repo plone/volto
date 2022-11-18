@@ -21,6 +21,18 @@ import {
 
 import config from '@plone/volto/registry';
 
+const styleClassNameConverters = {
+  default: (name, value, prefix) => {
+    return `has--${prefix ? prefix : ''}${name}--${(value || '')
+      .toString()
+      .replace(/^#/, '')}`;
+  },
+  noprefix: (name, value) => value,
+  bool: (name, value) => (value ? name : ''),
+};
+
+config.settings.styleClassNameConverters = styleClassNameConverters;
+
 config.blocks.blocksConfig.text = {
   id: 'text',
   title: 'Text',
@@ -585,6 +597,7 @@ describe('Blocks', () => {
       expect(applyBlockDefaults({ data })).toEqual({});
     });
   });
+
   describe('buildStyleClassNamesFromData', () => {
     it('Sets styles classname array according to style values', () => {
       const styles = {
@@ -596,6 +609,7 @@ describe('Blocks', () => {
         'has--backgroundColor--AABBCC',
       ]);
     });
+
     it('Sets styles classname array according to style values with nested', () => {
       const styles = {
         color: 'red',
@@ -612,6 +626,7 @@ describe('Blocks', () => {
         'has--nested--bar--black',
       ]);
     });
+
     it('Sets styles classname array according to style values with nested and colors', () => {
       const styles = {
         color: 'red',
@@ -639,5 +654,35 @@ describe('Blocks', () => {
         'has--borderRadius--8',
       ]);
     });
+
+    // it('Understands noprefix converter for style values', () => {
+    //   const styles = {
+    //     color: 'red',
+    //     'theme:noprefix': 'primary',
+    //   };
+    //   expect(buildStyleClassNamesFromData(styles)).toEqual([
+    //     'has--color--red',
+    //     'primary',
+    //   ]);
+    // });
+    //
+    // it('Understands bool converter for trueish value', () => {
+    //   const styles = {
+    //     color: 'red',
+    //     'inverted:bool': true,
+    //   };
+    //   expect(buildStyleClassNamesFromData(styles)).toEqual([
+    //     'has--color--red',
+    //     'inverted',
+    //   ]);
+    // });
+    //
+    // it('Understands bool converter for false value', () => {
+    //   const styles = {
+    //     color: 'red',
+    //     'inverted:bool': false,
+    //   };
+    //   expect(buildStyleClassNamesFromData(styles)).toEqual(['has--color--red']);
+    // });
   });
 });
