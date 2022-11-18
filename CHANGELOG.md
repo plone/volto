@@ -1,6 +1,6 @@
 # Change Log
 
-## 16.0.0 (unreleased)
+## 16.0.0-rc.1 (2022-11-18)
 
 ### Feature
 
