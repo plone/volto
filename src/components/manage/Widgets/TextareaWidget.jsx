@@ -23,14 +23,7 @@ import { FormFieldWrapper } from '@plone/volto/components';
  * ```
  */
 const TextareaWidget = (props) => {
-  const {
-    id,
-    maxLength,
-    value,
-    onChange,
-    placeholder,
-    default: defaultValue,
-  } = props;
+  const { id, maxLength, value, onChange, placeholder } = props;
   const [lengthError, setlengthError] = useState('');
 
   const onhandleChange = (id, value) => {
@@ -50,7 +43,7 @@ const TextareaWidget = (props) => {
       <TextArea
         id={`field-${id}`}
         name={id}
-        value={value ?? defaultValue ?? ''}
+        value={value || ''}
         disabled={props.isDisabled}
         placeholder={placeholder}
         onChange={({ target }) =>
