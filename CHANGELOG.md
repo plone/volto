@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Update to Plone 6 RC1 @sneridagh
+
 ### Documentation
 
 ## 16.0.0-rc.1 (2022-11-18)
