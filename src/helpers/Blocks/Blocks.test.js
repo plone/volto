@@ -696,5 +696,13 @@ describe('Blocks', () => {
         '',
       ]);
     });
+
+    it('Ugly edge cases', () => {
+      const styles = {
+        color: undefined,
+        nested: {},
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual(['has--color--']);
+    });
   });
 });
