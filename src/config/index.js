@@ -24,6 +24,7 @@ import { loadables } from './Loadables';
 import { workflowMapping } from './Workflows';
 
 import { contentIcons } from './ContentIcons';
+import { styleClassNameConverters } from './Style';
 import {
   controlPanelsIcons,
   filterControlPanels,
@@ -66,16 +67,6 @@ const serverConfig =
   typeof __SERVER__ !== 'undefined' && __SERVER__
     ? require('./server').default
     : {};
-
-const styleClassNameConverters = {
-  default: (name, value, prefix) => {
-    return `has--${prefix ? prefix : ''}${name}--${(value || '')
-      .toString()
-      .replace(/^#/, '')}`;
-  },
-  noprefix: (name, value) => value,
-  bool: (name, value) => (value ? name : ''),
-};
 
 let config = {
   settings: {

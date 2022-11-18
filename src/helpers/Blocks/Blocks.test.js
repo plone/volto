@@ -21,18 +21,6 @@ import {
 
 import config from '@plone/volto/registry';
 
-const styleClassNameConverters = {
-  default: (name, value, prefix) => {
-    return `has--${prefix ? prefix : ''}${name}--${(value || '')
-      .toString()
-      .replace(/^#/, '')}`;
-  },
-  noprefix: (name, value) => value,
-  bool: (name, value) => (value ? name : ''),
-};
-
-config.settings.styleClassNameConverters = styleClassNameConverters;
-
 config.blocks.blocksConfig.text = {
   id: 'text',
   title: 'Text',
