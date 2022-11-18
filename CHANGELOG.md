@@ -12,6 +12,8 @@
 
 ### Documentation
 
+- Add component to storybook @danalvrz
+
 ## 16.0.0-rc.1 (2022-11-18)
 
 ### Feature
