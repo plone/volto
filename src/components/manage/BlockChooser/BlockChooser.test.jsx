@@ -123,7 +123,7 @@ describe('BlocksChooser', () => {
   it('renders a BlockChooser component', () => {
     const { container } = render(
       <Provider store={store}>
-        <BlockChooser onInsertBlock={() => { }} currentBlock="theblockid" />
+        <BlockChooser onInsertBlock={() => {}} currentBlock="theblockid" />
       </Provider>,
     );
     expect(container).toMatchSnapshot();
@@ -131,7 +131,7 @@ describe('BlocksChooser', () => {
   it('Fallback BlockChooser component onMutateBlock', () => {
     const { container } = render(
       <Provider store={store}>
-        <BlockChooser onMutateBlock={() => { }} currentBlock="theblockid" />
+        <BlockChooser onMutateBlock={() => {}} currentBlock="theblockid" />
       </Provider>,
     );
     expect(container).toMatchSnapshot();
@@ -140,7 +140,7 @@ describe('BlocksChooser', () => {
     const { container } = render(
       <Provider store={store}>
         <BlockChooser
-          onInsertBlock={() => { }}
+          onInsertBlock={() => {}}
           currentBlock="theblockid"
           allowedBlocks={['image', 'listing']}
         />
@@ -155,7 +155,7 @@ describe('BlocksChooser', () => {
     const { container } = render(
       <Provider store={store}>
         <BlockChooser
-          onInsertBlock={() => { }}
+          onInsertBlock={() => {}}
           currentBlock="theblockid"
           allowedBlocks={['image', 'listing']}
         />
@@ -167,7 +167,7 @@ describe('BlocksChooser', () => {
     const { container } = render(
       <Provider store={store}>
         <BlockChooser
-          onInsertBlock={() => { }}
+          onInsertBlock={() => {}}
           currentBlock="theblockid"
           allowedBlocks={['image', 'title']}
           showRestricted
@@ -198,7 +198,7 @@ describe('BlocksChooser', () => {
     const { container } = render(
       <Provider store={store}>
         <BlockChooser
-          onInsertBlock={() => { }}
+          onInsertBlock={() => {}}
           currentBlock="theblockid"
           blocksConfig={blocksConfig}
         />
@@ -231,7 +231,7 @@ describe('BlocksChooser', () => {
     const { container } = render(
       <Provider store={store}>
         <BlockChooser
-          onInsertBlock={() => { }}
+          onInsertBlock={() => {}}
           currentBlock="theblockid"
           blocksConfig={blocksConfig}
         />
@@ -250,7 +250,7 @@ describe('BlocksChooser', () => {
     const { container } = render(
       <Provider store={store}>
         <BlockChooser
-          onInsertBlock={() => { }}
+          onInsertBlock={() => {}}
           currentBlock="theblockid"
           properties={{
             blocks: {
@@ -271,7 +271,7 @@ describe('BlocksChooser', () => {
     const { container } = render(
       <Provider store={store}>
         <BlockChooser
-          onInsertBlock={() => { }}
+          onInsertBlock={() => {}}
           currentBlock="theblockid"
           properties={{
             blocks: {
