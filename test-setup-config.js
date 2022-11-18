@@ -21,7 +21,10 @@ import {
 import FromHTMLCustomBlockFn from '@plone/volto/config/RichTextEditor/FromHTML';
 import { contentIcons } from '@plone/volto/config/ContentIcons';
 
-import { controlPanelsIcons } from '@plone/volto/config/ControlPanels';
+import {
+  controlPanelsIcons,
+  filterControlPanelsSchema,
+} from '@plone/volto/config/ControlPanels';
 
 // we need to do a redefinition here because of circular import issues
 // because draftjs-based components are not really tested, this is basically
@@ -65,6 +68,7 @@ config.set('settings', {
     ],
   },
   controlPanelsIcons,
+  filterControlPanelsSchema,
   apiExpanders: [],
   downloadableObjects: ['File'],
   viewableInBrowserObjects: [],

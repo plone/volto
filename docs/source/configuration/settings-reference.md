@@ -227,6 +227,9 @@ controlpanels
 
     The group can be one of the default groups 'General', 'Content', 'Security', 'Add-on Configuration', 'Users and Groups' or a custom group.
 
+filterControlPanelsSchema
+    A schema factory for a control panel. It is used internally, to tweak the schemas provided by the controlpanel endpoint, to make them fit for Volto.
+
 workflowMapping
     It's an object that defines the mapping between workflow states/transitions and the color that should show in the change Workflow dropdown. This is the default:
 
