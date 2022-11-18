@@ -422,13 +422,11 @@ export const styleToClassName = (key, value, prefix = '') => {
   const converters = config.settings.styleClassNameConverters;
   const [name, ...convIds] = key.split(':');
 
-  return value
-    ? `${(convIds.length ? convIds : ['default'])
-        .map((id) => converters[id])
-        .reduce((acc, conv) => {
-          return conv(acc, value, prefix);
-        }, name)}`
-    : '';
+  return (convIds.length ? convIds : ['default'])
+    .map((id) => converters[id])
+    .reduce((acc, conv) => {
+      return conv(acc, value, prefix);
+    }, name);
 };
 
 export const buildStyleClassNamesFromData = (obj = {}, prefix = '') => {
