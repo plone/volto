@@ -132,6 +132,7 @@ export ContentsBreadcrumbs from '@plone/volto/components/manage/Contents/Content
 export ContentsIndexHeader from '@plone/volto/components/manage/Contents/ContentsIndexHeader';
 export ContentsItem from '@plone/volto/components/manage/Contents/ContentsItem';
 export ContentsUploadModal from '@plone/volto/components/manage/Contents/ContentsUploadModal';
+export ContentsUploadPlugin from '@plone/volto/components/manage/Contents/ContentsUploadPlugin';
 export ContentsPropertiesModal from '@plone/volto/components/manage/Contents/ContentsPropertiesModal';
 export ContentsRenameModal from '@plone/volto/components/manage/Contents/ContentsRenameModal';
 export ContentsWorkflowModal from '@plone/volto/components/manage/Contents/ContentsWorkflowModal';

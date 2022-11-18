@@ -289,6 +289,9 @@ const defaultModify = ({
               /\.(css|scss|sass|sss|less)$/,
               // Add support for addons to include externals (ie. node_modules npm published packages)
               ...addonsAsExternals,
+              /^@uppy.*/,
+              /^nanoid/,
+              /^exifr/,
               /^@plone\/volto/,
             ].filter(Boolean),
           }),
