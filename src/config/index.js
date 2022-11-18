@@ -168,6 +168,11 @@ let config = {
     workflowMapping,
     errorHandlers: [], // callables for unhandled errors
   },
+  experimental: {
+    addBlockButton: {
+      enabled: false,
+    },
+  },
   widgets: {
     ...widgetMapping,
     default: defaultWidget,
@@ -193,6 +198,7 @@ let config = {
 };
 
 ConfigRegistry.settings = config.settings;
+ConfigRegistry.experimental = config.experimental;
 ConfigRegistry.blocks = config.blocks;
 ConfigRegistry.views = config.views;
 ConfigRegistry.widgets = config.widgets;

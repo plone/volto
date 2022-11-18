@@ -3,7 +3,7 @@
  * @module components/theme/App/App
  */
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import jwtDecode from 'jwt-decode';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -67,6 +67,11 @@ class App extends Component {
     errorInfo: null,
   };
 
+  constructor(props) {
+    super(props);
+    this.mainRef = React.createRef();
+  }
+
   /**
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
@@ -91,6 +96,15 @@ class App extends Component {
     this.setState({ hasError: true, error, errorInfo: info });
     config.settings.errorHandlers.forEach((handler) => handler(error));
   }
+
+  dispatchContentClick = (event) => {
+    if (event.target === event.currentTarget) {
+      const rect = this.mainRef.current.getBoundingClientRect();
+      if (event.clientY > rect.bottom) {
+        document.dispatchEvent(new Event('voltoClickBelowContent'));
+      }
+    }
+  };
 
   /**
    * Render method.
@@ -144,8 +158,12 @@ class App extends Component {
           pathname={this.props.pathname}
           contentLanguage={this.props.content?.language?.token}
         >
-          <Segment basic className="content-area">
-            <main>
+          <Segment
+            basic
+            className="content-area"
+            onClick={this.dispatchContentClick}
+          >
+            <main ref={this.mainRef}>
               <OutdatedBrowser />
               {this.props.connectionRefused ? (
                 <ConnectionRefusedView />

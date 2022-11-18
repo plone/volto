@@ -26,6 +26,14 @@ class Config {
     this._data.settings = settings;
   }
 
+  get experimental() {
+    return this._data.experimental;
+  }
+
+  set experimental(experimental) {
+    this._data.experimental = experimental;
+  }
+
   get blocks() {
     return this._data.blocks;
   }
