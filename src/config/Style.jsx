@@ -1,6 +1,6 @@
 export const styleClassNameConverters = {
-  default: (name, value, prefix) => {
-    return `has--${prefix ? prefix : ''}${name}--${(value || '')
+  default: (name, value, prefix = '') => {
+    return `has--${prefix}${name}--${(value || '')
       .toString()
       .replace(/^#/, '')}`;
   },
