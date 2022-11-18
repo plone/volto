@@ -232,9 +232,17 @@ const DndConnectedField = injectLazyLibs(['reactDnd'])(UnconnectedField);
 
 const Field = (props) =>
   props.onOrder ? (
-    <DndConnectedField {...props} />
+    <DndConnectedField
+      {...props}
+      defaultValue={undefined}
+      value={props.value ?? props.default ?? props.defaultValue}
+    />
   ) : (
-    <UnconnectedField {...props} />
+    <UnconnectedField
+      {...props}
+      defaultValue={undefined}
+      value={props.value ?? props.default ?? props.defaultValue}
+    />
   );
 
 /**
