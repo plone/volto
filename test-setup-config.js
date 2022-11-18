@@ -23,6 +23,7 @@ import { contentIcons } from '@plone/volto/config/ContentIcons';
 
 import {
   controlPanelsIcons,
+  filterControlPanels,
   filterControlPanelsSchema,
 } from '@plone/volto/config/ControlPanels';
 
@@ -68,6 +69,7 @@ config.set('settings', {
     ],
   },
   controlPanelsIcons,
+  filterControlPanels,
   filterControlPanelsSchema,
   apiExpanders: [],
   downloadableObjects: ['File'],

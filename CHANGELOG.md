@@ -17,6 +17,7 @@
 ### Bugfix
 
 - Hide control panel settings that are not relevant to Volto @danalvrz
+- Hide not relevant for Volto control panels from site setup, further refine not used inner settings for site control panel @sneridagh
 - Fix ObjectWidget handling of `default` values coming from schemas. @tiberiuichim
 
 ### Internal
