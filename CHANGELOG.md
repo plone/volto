@@ -2,15 +2,9 @@
 
 ## 16.0.0 (unreleased)
 
-### Breaking
-
 ### Feature
 
-### Bugfix
-
-### Internal
-
-### Documentation
+- Releasing RC1 @sneridagh
 
 ## 16.0.0-alpha.53 (2022-11-18)
 
