@@ -45,7 +45,13 @@ const itemSchema = (props) => {
       {
         id: 'default',
         title: 'Default',
-        fields: ['href', 'title', 'description', 'preview_image'],
+        fields: [
+          'href',
+          'title',
+          'description',
+          'preview_image',
+          'extraDefault',
+        ],
       },
     ],
 
@@ -74,6 +80,10 @@ const itemSchema = (props) => {
         mode: 'image',
         allowExternals: true,
       },
+      extraDefault: {
+        title: 'Extra',
+        default: 'Extra default',
+      },
     },
     required: [],
   };
@@ -85,7 +95,7 @@ export const SliderSchema = (props) => ({
     {
       id: 'default',
       title: 'Default',
-      fields: ['slides', 'fieldAfterObjectList', 'href'],
+      fields: ['slides', 'fieldAfterObjectList', 'href', 'firstWithDefault'],
     },
   ],
   properties: {
@@ -96,6 +106,10 @@ export const SliderSchema = (props) => ({
     },
     fieldAfterObjectList: {
       title: 'Field after OL',
+    },
+    firstWithDefault: {
+      title: 'Field with default',
+      default: 'Some default value',
     },
     href: {
       title: props.intl.formatMessage(messages.Source),
