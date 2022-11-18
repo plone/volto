@@ -34,7 +34,6 @@
 
 ### Internal
 
-- Configure Jest's `moduleNameMapper` with `AddonConfigurationRegistry`. Fix https://github.com/plone/volto/issues/3870 @wesleybl
 - Ignore `.tool-versions` file
 - Minor updates to dependencies
 - Update Cypress 11 @sneridagh
