@@ -12,7 +12,73 @@
 
 ### Documentation
 
+## 16.0.0-rc.1 (2022-11-18)
+
+### Feature
+
+- Releasing RC1 @sneridagh
+
+## 16.0.0-alpha.53 (2022-11-18)
+
+### Feature
+
+- There is an experimental setting to move the button for adding a new block to show below any selected block, instead of only on the left of empty text blocks. Set `config.experimental.addBlockButton.enabled = true` to enable it. @davisagli
+
+## 16.0.0-alpha.52 (2022-11-18)
+
+### Bugfix
+
+- Revert "Configure Jest's moduleNameMapper with AddonConfigurationRegistry" (#3913) due to a regression in projects @sneridagh
+
+## 16.0.0-alpha.51 (2022-11-18)
+
+### Breaking
+
+- The `ContentsBreadcrumbs` component now renders the whole language name of the language root folder (if any) instead of just the `id` (before: `de`, now: `Deutsch`) @sneridagh
+
+### Feature
+
+- Improvement of the `ContentsBreadcrumbs` component, add child `ContentsBreadcrumbsRootItem` and `ContentsBreadcrumbsHomeItem` for easy customization of these single elements in projects @sneridagh
+- Add german translation for group membership panel. @ksuess
+- Fix general german translations: Address user polite. Correct 'listing template' to 'listing variant'. Add missing translations. @ksuess
+- Allow passing ariaHidden, id and style to an Icon's SVG @JeffersonBledsoe #3908
+- All Fields now understand the `default` prop as a fallback value in case their data value is missing. As a convenience, the `defaultValue` is also used as a fallback, but this shouldn't proliferate. @tiberiuichim
+
+### Bugfix
+
+- Hide control panel settings that are not relevant to Volto @danalvrz
+- Hide not relevant for Volto control panels from site setup, further refine not used inner settings for site control panel @sneridagh
+- Fix ObjectWidget handling of `default` values coming from schemas. @tiberiuichim
+
+### Internal
+
+- Ignore `.tool-versions` file
+- Minor updates to dependencies
+- Update Cypress 11 @sneridagh
+
+### Documentation
+
+- Add `@plone/scripts` as a mandatory devDependency for projects to the upgrade guide @sneridagh
+
+## 16.0.0-alpha.50 (2022-11-15)
+
+### Feature
+
+- Brazilian Portuguese translation updated @ericof
+
+### Bugfix
+
+- Fix condition in `applySchemaDefaults` @tiberiuichim @sneridagh
+- Load core add-ons configuration as any other add-on. @sneridagh
+- Fix `FormValidation` error object, use field `id` instead of field `title` @sneridagh
+- Revert #2828 PR change of the default `showSearchButton` Search block behavior (see [#3883](https://github.com/plone/volto/issues/3883)) @sneridagh
+- Fix `package.json` `postinstall` in core @sneridagh
+
+### Documentation
+
 - Add missing pieces of the upgrade to use yarn 3 for projects @sneridagh
+- Complete docs about the yarn 3 upgrade @sneridagh
+- Add additional components to storybook @danalvrz
 
 ## 16.0.0-alpha.49 (2022-11-11)
 
@@ -38,7 +104,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Remove slate's builtin undo support, as it conflicts with Volto's undo manager. This fixes crashes when undoing in text blocks and slate's undo stack is empty and "crosses" into Volto's undo stack. This is a temporary workaround, ideally the two undo managers would be delimited so they each work together. @tiberiuichim
 - Fix highlighting of selection when the Slate editor is not DOM-focused. @tiberiuichim
 - Improve the algorithm that calculates the position of the Slate Toolbar @tiberiuichim
-- The `_unwrapElement` of the volto-slate `ElementEditor` will return an updated range (selection) of the unwrapped element.  @tiberiuichim
+- The `_unwrapElement` of the volto-slate `ElementEditor` will return an updated range (selection) of the unwrapped element. @tiberiuichim
 - Replace the main client entry point in `start-client.jsx` anonymous function for a named one. @sneridagh
 - Fix `currentPath` option for `openObjectBrowser`. @iFlameing
 - Fix updating the listing block when the variation is changed while editing @tiberiuichim

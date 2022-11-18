@@ -224,67 +224,99 @@ Volto was using the old, classic yarn (v1).
 It has become quite obsolete and yarn has evolved a lot during the last years.
 We are updating Volto to be able to use it, however some changes have to be made in your projects configuration:
 
-1. Enable yarn 3 in your projects, adding `yarnrc.yml`:
+1. Enable yarn 3 in your projects, adding `.yarnrc.yml`:
 
-```yml
-defaultSemverRangePrefix: ""
+    ```yml
+    defaultSemverRangePrefix: ""
 
-nodeLinker: node-modules
-```
+    nodeLinker: node-modules
+    ```
 
-Then, if you are using Node >=16.10 run:
+    Then, if you are using Node >=16.10 run:
 
-```shell
-corepack enable
-yarn set version 3.2.3
-```
+    ```shell
+    corepack enable
+    yarn set version 3.2.3
+    ```
 
-Corepack isn't included with Node.js in versions before 16.10.
-To address that, run:
+    Corepack isn't included with Node.js in versions before 16.10.
+    To address that, run:
 
-```shell
-npm i -g corepack
-```
+    ```shell
+    npm i -g corepack
+    ```
 
-```{note}
-It is highly recommended that you use latest Node 16.
-```
+    ```{note}
+    It is highly recommended that you use latest Node 16.
+    ```
 
 2. Change your root project `Makefile` to include these commands:
 
-```diff
-+.PHONY: preinstall
-+preinstall:
-+       if [ -f $$(pwd)/mrs.developer.json ]; then if [ -f $$(pwd)/node_modules/.bin/missdev ]; then yarn develop; else yarn develop:npx; fi; fi
-+
-+.PHONY: omelette
-+omelette:
-+       if [ ! -d omelette ]; then ln -sf node_modules/@plone/volto omelette; fi
-```
+    ```diff
+    +.PHONY: install
+    +install: ## Install the frontend
+    +       @echo "Install frontend"
+    +       $(MAKE) omelette
+    +       $(MAKE) preinstall
+    +       yarn install
+    +
+    +.PHONY: preinstall
+    +preinstall: ## Preinstall task, checks if missdev (mrs-developer) is present and runs it
+    +       if [ -f $$(pwd)/mrs.developer.json ]; then make develop; fi
+
+    +
+    +.PHONY: develop
+    +develop: ## Runs missdev in the local project (mrs.developer.json should be present)
+    +       npx -p mrs-developer missdev --config=jsconfig.json --output=addons --fetch-https
+    +
+    +.PHONY: omelette
+    +omelette: ## Creates the omelette folder that contains a link to the installed version of Volto (a softlink pointing to node_modules/@plone/volto)
+    +       if [ ! -d omelette ]; then ln -sf node_modules/@plone/volto omelette; fi
+    +
+    +.PHONY: patches
+    +patches:
+    +       /bin/bash patches/patchit.sh > /dev/null 2>&1 ||true
+    ```
+
+    You can copy the file over to your project if you have not made any amendment to it.
 
 3. Change your `package.json` scripts section:
 
-```diff
-   "version": "1.0.0",
-   "scripts": {
-     "start": "razzle start",
--    "preinstall": "if [ -f $(pwd)/mrs.developer.json ]; then if [ -f $(pwd)/node_modules/.bin/missdev ]; then yarn develop; else yarn develop:npx; fi; fi",
-+    "preinstall": "make preinstall",
-     "postinstall": "yarn omelette && yarn patches",
--    "omelette": "if [ ! -d omelette ]; then ln -sf node_modules/@plone/volto omelette; fi",
-+    "omelette": "make omelette",
-     "patches": "/bin/bash patches/patchit.sh > /dev/null 2>&1 ||true",
-```
+    ```diff
+      "version": "1.0.0",
+      "scripts": {
+        "start": "razzle start",
+    -    "preinstall": "if [ -f $(pwd)/mrs.developer.json ]; then if [ -f $(pwd)/node_modules/.bin/missdev ]; then yarn develop; else yarn develop:npx; fi; fi",
+    -    "omelette": "if [ ! -d omelette ]; then ln -sf node_modules/@plone/volto omelette; fi",
+    -    "patches": "/bin/bash patches/patchit.sh > /dev/null 2>&1 ||true",
+    -    "postinstall": "yarn omelette && yarn patches",
+    +    "postinstall": "make omelette && make patches",
+    -    "patches": "/bin/bash patches/patchit.sh > /dev/null 2>&1 ||true",
+    ```
 
-Yarn 3 no longer support inline bash scripts in the `scripts` section.
-We need to move them to the `Makefile` and update the calls.
+    Yarn 3 no longer supports inline bash scripts in the `scripts` section.
+    It does not support the `preinstall` lifecycle state, so we cannot trigger things while we run `yarn install` or just `yarn`.
+    As a result, we moved all the commands related to the `preinstall` actions into `Makefile`, then updated the calls in both files as shown above.
 
-4. It doesn't allow to use commands not declared as direct dependencies, so in your projects you should add `razzle` as a dependency:
+    ```{important}
+    After making the changes in this step, we will have to modify our development workflow, especially if we use actions that happened during the `preinstall` state.
+    The most relevant one is updating the code that is managed by `mrs-developer`.
+    If you follow the code above, you'll need to call these `Makefile` commands before each `yarn install`.
+    It's recommended to use the `make install` command instead of just `yarn` or `yarn install`.
 
-```diff
-devDependencies: {
-+        "razzle": "4.2.17",
-```
+    ```shell
+    make install
+    ```
+
+    Remember to update your CI scripts accordingly.
+
+4. It doesn't allow to use commands not declared as direct dependencies, so in your projects you should add `razzle` and `@plone/scripts` as development dependencies:
+
+    ```diff
+    devDependencies: {
+    +        "@plone/scripts": "^2.1.2",
+    +        "razzle": "4.2.17",
+    ```
 
 5. Replace your project `yarn.lock` for the Volto's one, then run `yarn` again.
 
@@ -316,6 +348,10 @@ Core configuration has been updated, but you will require to update your Cypress
 Could be that forcing your project to use older versions might still work with old configurations.
 
 See https://docs.cypress.io/guides/references/migration-guide#Migrating-to-Cypress-version-10-0 for more information.
+
+```{note}
+Later on, the core has been upgraded to Cypress 11, however no changes to be made if you already upgraded to Cypress 10.
+```
 
 ### The complete configuration registry is passed to the add-ons and the project configuration pipeline
 
@@ -739,20 +775,20 @@ The `getVocabulary` action has changed API. Before, it used separate positional 
 
 ## Upgrading to Volto 13.x.x
 
-## Deprecating NodeJS 10
+### Deprecating NodeJS 10
 
 Since April 30th, 2021 NodeJS 10 is out of Long Term Support by the NodeJS community, so
 we are deprecating it in Volto 13. Please update your projects to a NodeJS LTS version
 (12 or 14 at the moment of this writing).
 
-## Seamless mode is the default in development mode
+### Seamless mode is the default in development mode
 
 Not really a breaking change, but it's worth noting it. By default, Volto 13 in
 development mode uses the internal proxy in seamless mode otherwise configured
 differently. To learn more about the seamless mode read: {doc}`../deploying/seamless-mode`
 and {doc}`../configuration/zero-config-builds`.
 
-## Refactored Listing block using schemas and ObjectWidget
+### Refactored Listing block using schemas and ObjectWidget
 
 The Listing block has been heavily refactored using schema forms and `BlockDataForm`
 as well as the other new internal artifacts to leverage blocks variations and extensions at the same time
@@ -766,7 +802,7 @@ The advantage of this is that now you can use the `QuerystringWidget` with schem
 data forms in a reusable way in your custom blocks. See the Listing block code for
 further references.
 
-### Migrate your existing listing blocks
+#### Migrate your existing listing blocks
 
 **(Updated: 2021/06/12)** If you have an existing Volto installation and you are using
 listing blocks, you must run an upgrade step in order to match the new listing
@@ -849,7 +885,7 @@ When an official integration package exists, these upgrade steps in the backend
 will be provided in there.
 ```
 
-### Update your custom variations (templates) in your project listing blocks
+#### Update your custom variations (templates) in your project listing blocks
 
 In the case that you have custom templates for your listing blocks in your projects, it's required that you update the definitions to match the new core variations syntax.
 
@@ -879,7 +915,7 @@ To this:
   ]
 ```
 
-## Control panel icons are now SVG based instead of font based
+### Control panel icons are now SVG based instead of font based
 
 It was long due, the control panel overview route `/controlpanel` is now using SVG icons
 from the Pastanaga icon set, instead of the deprecated font ones. If you have customized
@@ -893,13 +929,13 @@ import config from '@plone/volto/registry'
 config.settings.controlPanelsIcons.mynewcontrolpanelid = myfancyiconSVG;
 ```
 
-## Login form UI and accessibility updated
+### Login form UI and accessibility updated
 
 Not really a breaking change, but it's worth to note that we changed the look and feel of
 the login form and improved its usability and accessibility. Another move towards the new
 Quanta look and feel.
 
-## Changes in the Table block feature set and messages
+### Changes in the Table block feature set and messages
 
 The "inverted" option in Table Block was removed since it was useless with the current
 CSS set. Better naming of options and labels in table block (English). Updating the i18n

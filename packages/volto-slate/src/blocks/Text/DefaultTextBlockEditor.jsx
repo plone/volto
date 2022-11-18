@@ -247,21 +247,23 @@ export const DefaultTextBlockEditor = (props) => {
           }}
         </Dropzone>
 
-        {selected && !data.plaintext?.trim() && !disableNewBlocks && (
-          <BlockChooserButton
-            data={data}
-            block={block}
-            onInsertBlock={(id, value) => {
-              onSelectBlock(onInsertBlock(id, value));
-            }}
-            onMutateBlock={onMutateBlock}
-            allowedBlocks={allowedBlocks}
-            blocksConfig={blocksConfig}
-            size="24px"
-            className="block-add-button"
-            properties={properties}
-          />
-        )}
+        {!config.experimental.addBlockButton.enabled &&
+          selected &&
+          !data.plaintext?.trim() &&
+          !disableNewBlocks && (
+            <BlockChooserButton
+              data={data}
+              block={block}
+              onInsertBlock={(id, value) => {
+                onSelectBlock(onInsertBlock(id, value));
+              }}
+              onMutateBlock={onMutateBlock}
+              allowedBlocks={allowedBlocks}
+              blocksConfig={blocksConfig}
+              size="24px"
+              properties={properties}
+            />
+          )}
 
         <SidebarPortal selected={selected}>
           <div id="slate-plugin-sidebar"></div>

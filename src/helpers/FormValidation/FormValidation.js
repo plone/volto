@@ -210,10 +210,8 @@ const validateRequiredFields = (
       !schema.properties[requiredField].readonly &&
       isEmpty
     ) {
-      const requiredFieldName =
-        schema.properties[requiredField].title || requiredField;
-      errors[requiredFieldName] = [];
-      errors[requiredFieldName].push(formatMessage(messages.required));
+      errors[requiredField] = [];
+      errors[requiredField].push(formatMessage(messages.required));
     }
   });
 

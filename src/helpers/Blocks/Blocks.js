@@ -233,7 +233,7 @@ export function mutateBlock(formData, id, value) {
  * @param {number} value New block's value
  * @return {Array} New block id, New form data
  */
-export function insertBlock(formData, id, value, current = {}) {
+export function insertBlock(formData, id, value, current = {}, offset = 0) {
   const blocksFieldname = getBlocksFieldname(formData);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
   const index = formData[blocksLayoutFieldname].items.indexOf(id);
@@ -253,9 +253,9 @@ export function insertBlock(formData, id, value, current = {}) {
       },
       [blocksLayoutFieldname]: {
         items: [
-          ...formData[blocksLayoutFieldname].items.slice(0, index),
+          ...formData[blocksLayoutFieldname].items.slice(0, index + offset),
           newBlockId,
-          ...formData[blocksLayoutFieldname].items.slice(index),
+          ...formData[blocksLayoutFieldname].items.slice(index + offset),
         ],
       },
     },
@@ -372,7 +372,7 @@ export function visitBlocks(content, callback) {
 export function applySchemaDefaults({ data = {}, schema }) {
   const derivedData = {
     ...Object.keys(schema.properties).reduce((accumulator, currentField) => {
-      return schema.properties[currentField].default
+      return typeof schema.properties[currentField].default !== 'undefined'
         ? {
             ...accumulator,
             [currentField]: schema.properties[currentField].default,

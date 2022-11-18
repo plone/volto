@@ -7,8 +7,8 @@ export const Default = WidgetStory.bind({
   props: { children: React.createElement('input', { className: 'blue' }) },
 });
 Default.args = {
-  id: 'localhost:3000/something',
-  title: 'Item title',
+  id: 'fieldWrapper',
+  title: 'Field Wrapper',
   description: 'Optional text',
 };
 
@@ -17,8 +17,8 @@ export const Errored = WidgetStory.bind({
   props: { children: React.createElement('input', { className: 'blue' }) },
 });
 Errored.args = {
-  id: 'localhost:3000/something',
-  title: 'Item title',
+  id: 'fieldWrapper',
+  title: 'Field Wrapper',
   description: 'Optional help text',
   error: ['this is an error'],
 };
@@ -28,8 +28,8 @@ export const SingleColumn = WidgetStory.bind({
   props: { children: React.createElement('input', { className: 'blue' }) },
 });
 SingleColumn.args = {
-  id: 'localhost:3000/something',
-  title: 'Item title',
+  id: 'fieldWrapper',
+  title: 'Field Wrapper',
   columns: 1,
   description: 'Optional help text',
 };
@@ -39,8 +39,8 @@ export const Required = WidgetStory.bind({
   props: { children: React.createElement('input', { className: 'blue' }) },
 });
 Required.args = {
-  id: 'localhost:3000/something',
-  title: 'Item title',
+  id: 'fieldWrapper',
+  title: 'Field Wrapper',
   required: true,
   description: 'Optional text',
 };
@@ -50,8 +50,8 @@ export const Unwrapped = WidgetStory.bind({
   props: { children: React.createElement('input', { className: 'blue' }) },
 });
 Unwrapped.args = {
-  id: 'localhost:3000/something',
-  title: 'Item title',
+  id: 'fieldWrapper',
+  title: 'Field Wrapper',
   wrapped: false,
   description: 'Optional text',
 };
@@ -61,8 +61,8 @@ Unwrapped.args = {
 //   props: { children: React.createElement('input', { className: 'blue' }) },
 // });
 // Draggable.args = {
-//   id: 'localhost:3000/something',
-//   title: 'Item title',
+//   id: 'fieldWrapper',
+//  title: 'Field Wrapper',
 //   draggable: true,
 //   onEdit: true,
 //   description: 'Optional text',
@@ -73,8 +73,8 @@ Unwrapped.args = {
 //   props: { children: React.createElement('input', { className: 'blue' }) },
 // });
 // Disabled.args = {
-//   id: 'localhost:3000/something',
-//   title: 'Item title',
+//   id: 'fieldWrapper',
+//  title: 'Field Wrapper',
 //   isDisabled: true,
 //   onEdit: true,
 //   description: 'Optional text',
@@ -85,8 +85,8 @@ export const OnEdit = WidgetStory.bind({
   props: { children: React.createElement('input', { className: 'blue' }) },
 });
 OnEdit.args = {
-  id: 'localhost:3000/something',
-  title: 'Item title',
+  id: 'fieldWrapper',
+  title: 'Field Wrapper',
   onEdit: true,
   draggable: false,
   isDisabled: false,

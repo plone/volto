@@ -44,7 +44,7 @@ for developing multiple packages at the same time.
 mrs-developer should work with this project by running the configured shortcut script:
 
 ```bash
-yarn develop
+make develop
 ```
 
 Volto's latest razzle config will pay attention to your tsconfig.json (or jsconfig.json) file for any customizations.
