@@ -700,7 +700,9 @@ describe('Blocks', () => {
     it('Ugly edge cases', () => {
       const styles = {
         color: undefined,
-        nested: {},
+        nested: {
+          l1: {},
+        },
       };
       expect(buildStyleClassNamesFromData(styles)).toEqual(['has--color--']);
     });
