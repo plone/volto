@@ -29,7 +29,7 @@ const messages = defineMessages({
     defaultMessage: 'Empty object list',
   },
   add: {
-    id: 'Add (object list)',
+    id: 'Add',
     defaultMessage: 'Add',
   },
 });

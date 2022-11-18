@@ -72,15 +72,11 @@ msgstr ""
 #: components/manage/Controlpanels/Rules/ConfigureRule
 #: components/manage/Rules/Rules
 #: components/manage/Toolbar/Toolbar
+#: components/manage/Widgets/ObjectListWidget
 #: components/manage/Widgets/SchemaWidget
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add
 msgid "Add"
-msgstr "Aggiungi"
-
-#: components/manage/Widgets/ObjectListWidget
-# defaultMessage: Add
-msgid "Add (object list)"
 msgstr "Aggiungi"
 
 #: components/manage/Controlpanels/AddonsControlpanel

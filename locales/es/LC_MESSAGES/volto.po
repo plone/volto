@@ -83,16 +83,12 @@ msgstr "Reglas de contenido activas en esta página"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 #: components/manage/Rules/Rules
 #: components/manage/Toolbar/Toolbar
+#: components/manage/Widgets/ObjectListWidget
 #: components/manage/Widgets/SchemaWidget
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add
 msgid "Add"
 msgstr "Agregar"
-
-#: components/manage/Widgets/ObjectListWidget
-# defaultMessage: Add
-msgid "Add (object list)"
-msgstr "Añadir"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see

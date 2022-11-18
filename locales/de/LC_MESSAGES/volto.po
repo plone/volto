@@ -78,15 +78,11 @@ msgstr ""
 #: components/manage/Controlpanels/Rules/ConfigureRule
 #: components/manage/Rules/Rules
 #: components/manage/Toolbar/Toolbar
+#: components/manage/Widgets/ObjectListWidget
 #: components/manage/Widgets/SchemaWidget
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add
 msgid "Add"
-msgstr "Hinzufügen"
-
-#: components/manage/Widgets/ObjectListWidget
-# defaultMessage: Add
-msgid "Add (object list)"
 msgstr "Hinzufügen"
 
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -4463,7 +4459,7 @@ msgstr "Inhaltsverzeichnis"
 #: config/Blocks
 # defaultMessage: Toggle
 msgid "toggleFacet"
-msgstr "Toogle"
+msgstr "Toggle"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update from version {origin} to {destination}

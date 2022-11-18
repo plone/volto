@@ -82,15 +82,11 @@ msgstr "Regras de conteúdo ativas nesta página"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 #: components/manage/Rules/Rules
 #: components/manage/Toolbar/Toolbar
+#: components/manage/Widgets/ObjectListWidget
 #: components/manage/Widgets/SchemaWidget
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add
 msgid "Add"
-msgstr "Adicionar"
-
-#: components/manage/Widgets/ObjectListWidget
-# defaultMessage: Add
-msgid "Add (object list)"
 msgstr "Adicionar"
 
 #: components/manage/Controlpanels/AddonsControlpanel
