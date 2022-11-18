@@ -1,5 +1,5 @@
 context('Special fields Acceptance Tests', () => {
-  describe('Form with default values', () => {
+  describe.only('Form with default values', () => {
     beforeEach(() => {
       // given a logged in editor and a page in edit mode
       cy.visit('/');
@@ -23,6 +23,28 @@ context('Special fields Acceptance Tests', () => {
       cy.getSlate().click();
       cy.get('.button .block-add-button').click({ force: true });
       cy.get('.blocks-chooser .mostUsed .button.testBlock').click();
+
+      cy.findByLabelText('Field with default').click();
+      cy.get('#field-firstWithDefault').should('have.value', 'Some default value');
+
+      cy.findByLabelText('Add item').click();
+      cy.findAllByText('Item #1').should('have.length', 1);
+
+      cy.findByLabelText('Extra').should('have.value', 'Extra default');
+      cy.get('#toolbar-save').click();
+
+      cy.waitForResourceToLoad('@navigation');
+      cy.waitForResourceToLoad('@breadcrumbs');
+      cy.waitForResourceToLoad('@actions');
+      cy.waitForResourceToLoad('@types');
+      cy.waitForResourceToLoad('document');
+
+      cy.navigate('/document/edit');
+      cy.findAllByText('Test Block Edit').click();
+
+      cy.get('#field-firstWithDefault').should('have.value', 'Some default value');
+      cy.findByLabelText('Extra').should('have.value', 'Extra default');
+
     });
   });
 
