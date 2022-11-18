@@ -424,9 +424,7 @@ export const styleToClassName = (key, value, prefix = '') => {
 
   return (convIds.length ? convIds : ['default'])
     .map((id) => converters[id])
-    .reduce((acc, conv) => {
-      return conv(acc, value, prefix);
-    }, name);
+    .reduce((acc, conv) => conv(acc, value, prefix), name);
 };
 
 export const buildStyleClassNamesFromData = (obj = {}, prefix = '') => {
@@ -438,13 +436,14 @@ export const buildStyleClassNamesFromData = (obj = {}, prefix = '') => {
   // Returns: ['has--color--red', 'has--backgroundColor--AABBCC']
 
   return Object.entries(obj)
-    .reduce((acc, [k, v]) => {
-      return [
+    .reduce(
+      (acc, [k, v]) => [
         ...acc,
         ...(isObject(v)
           ? buildStyleClassNamesFromData(v, `${prefix}${k}--`)
           : [styleToClassName(k, v, prefix)]),
-      ];
-    }, [])
+      ],
+      [],
+    )
     .filter((v) => !!v);
 };
