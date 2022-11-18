@@ -24,7 +24,11 @@ import { loadables } from './Loadables';
 import { workflowMapping } from './Workflows';
 
 import { contentIcons } from './ContentIcons';
-import { controlPanelsIcons } from './ControlPanels';
+import {
+  controlPanelsIcons,
+  filterControlPanels,
+  filterControlPanelsSchema,
+} from './ControlPanels';
 
 import { richtextEditorSettings, richtextViewSettings } from './RichTextEditor';
 
@@ -142,6 +146,8 @@ let config = {
     showTags: true,
     controlpanels: [],
     controlPanelsIcons,
+    filterControlPanels,
+    filterControlPanelsSchema,
     externalRoutes: [
       // URL to be considered as external
       // {
