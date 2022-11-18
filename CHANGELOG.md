@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Allow custom style wrapper classnames via fieldname suffixes. Added `config.settings.styleClassNameConverters` to register new suffix converters @tiberiuichim
+
 ### Bugfix
 
 ### Internal
