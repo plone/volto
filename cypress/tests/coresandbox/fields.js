@@ -22,6 +22,7 @@ context('Special fields Acceptance Tests', () => {
     it('As an editor I can add a block that has default values', () => {
       cy.getSlate().click();
       cy.get('.button .block-add-button').click({ force: true });
+      cy.wait(100);
       cy.get('.blocks-chooser .mostUsed .button.testBlock').click();
 
       cy.findByLabelText('Field with default').click();
