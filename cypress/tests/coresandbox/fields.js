@@ -1,4 +1,31 @@
 context('Special fields Acceptance Tests', () => {
+  describe('Form with default values', () => {
+    beforeEach(() => {
+      // given a logged in editor and a page in edit mode
+      cy.visit('/');
+      cy.autologin();
+      cy.createContent({
+        contentType: 'Document',
+        contentId: 'document',
+        contentTitle: 'Test document',
+      });
+      cy.visit('/document');
+      cy.waitForResourceToLoad('@navigation');
+      cy.waitForResourceToLoad('@breadcrumbs');
+      cy.waitForResourceToLoad('@actions');
+      cy.waitForResourceToLoad('@types');
+      cy.waitForResourceToLoad('document');
+      cy.navigate('/document/edit');
+      cy.getSlateTitle();
+    });
+
+    it('As an editor I can add a block that has default values', () => {
+      cy.getSlate().click();
+      cy.get('.button .block-add-button').click({ force: true });
+      cy.get('.blocks-chooser .mostUsed .button.testBlock').click();
+    });
+  });
+
   describe('ObjectListWidget', () => {
     beforeEach(() => {
       // given a logged in editor and a page in edit mode
