@@ -692,6 +692,33 @@ describe('Blocks', () => {
         yetAnotherWithDefault: ['one', 'two'],
       });
     });
+    it('Sets data according to schema default values, keeps existing data', () => {
+      const data = {
+        '@type': 'slider',
+        style: {
+          theme: 'secondary',
+        },
+      };
+      const schema = config.blocks.blocksConfig.slider.blockSchema({ data });
+
+      expect(applySchemaDefaults({ schema, data, intl: {} })).toEqual({
+        '@type': 'slider',
+        anotherWithDefault: 2,
+        slides: [
+          {
+            '@id': 'asdasdasd-qweqwe-zxczxc',
+            extraDefault:
+              'Extra default (Manual in parent slider widget default)',
+          },
+        ],
+        firstWithDefault: 'Some default value',
+        style: {
+          color: 'red',
+          theme: 'secondary',
+        },
+        yetAnotherWithDefault: ['one', 'two'],
+      });
+    });
 
     it('Sets data according to schema default values, keeps existing data', () => {
       const schema = {
