@@ -654,7 +654,23 @@ describe('Blocks', () => {
         '@type': 'slider',
       };
       const schema = config.blocks.blocksConfig.slider.blockSchema({ data });
+
+      // if you don't pass down intl, the ObjectWidget defaults are not applied
       expect(applySchemaDefaults({ schema, data })).toEqual({
+        '@type': 'slider',
+        anotherWithDefault: 2,
+        slides: [
+          {
+            '@id': 'asdasdasd-qweqwe-zxczxc',
+            extraDefault:
+              'Extra default (Manual in parent slider widget default)',
+          },
+        ],
+        firstWithDefault: 'Some default value',
+        yetAnotherWithDefault: ['one', 'two'],
+      });
+
+      expect(applySchemaDefaults({ schema, data, intl: {} })).toEqual({
         '@type': 'slider',
         anotherWithDefault: 2,
         slides: [
