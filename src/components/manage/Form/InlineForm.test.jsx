@@ -32,7 +32,6 @@ const withStateManagement = (Component) => ({ ...props }) => {
       {...props}
       onChangeField={onChangeField}
       onChangeFormData={onChangeFormData}
-      onChangeBlock={(block, data) => onChangeFormData(data)}
       formData={formData}
     />
   );
