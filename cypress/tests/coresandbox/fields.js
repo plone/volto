@@ -1,4 +1,67 @@
 context('Special fields Acceptance Tests', () => {
+  describe.only('Form with default values', () => {
+    beforeEach(() => {
+      // given a logged in editor and a page in edit mode
+      cy.visit('/');
+      cy.autologin();
+      cy.createContent({
+        contentType: 'Document',
+        contentId: 'document',
+        contentTitle: 'Test document',
+      });
+      cy.visit('/document');
+      cy.waitForResourceToLoad('@navigation');
+      cy.waitForResourceToLoad('@breadcrumbs');
+      cy.waitForResourceToLoad('@actions');
+      cy.waitForResourceToLoad('@types');
+      cy.waitForResourceToLoad('document');
+      cy.navigate('/document/edit');
+      cy.getSlateTitle();
+    });
+
+    it('As an editor I can add a block that has default values', () => {
+      cy.intercept('PATCH', '/**/document').as('save');
+      cy.intercept('GET', '/**/@types/Document').as('schema');
+      cy.getSlate().click();
+      cy.get('.button .block-add-button').click({ force: true });
+      cy.wait(100);
+      cy.get('.blocks-chooser .mostUsed .button.testBlock').click();
+
+      cy.findByLabelText('Field with default').click();
+      cy.get('#field-firstWithDefault').should(
+        'have.value',
+        'Some default value',
+      );
+
+      cy.findByLabelText('Add item').click();
+      cy.findAllByText('Item #1').should('have.length', 1);
+
+      cy.findByLabelText('Extra').should('have.value', 'Extra default');
+      cy.get('#toolbar-save').click();
+      cy.wait('@save');
+
+      cy.navigate('/document/edit');
+      cy.wait('@schema');
+
+      cy.findAllByText('Test Block Edit').click();
+
+      cy.get('#field-firstWithDefault').should(
+        'have.value',
+        'Some default value',
+      );
+      cy.findByLabelText('Extra').should('have.value', 'Extra default');
+
+      cy.getContent({ path: '/document' }).should((response) => {
+        const { body } = response;
+        const [, testBlock] = Object.entries(body.blocks).find(
+          ([, block]) => block['@type'] === 'testBlock',
+        );
+        expect(testBlock.style).to.deep.equal({ color: 'red' });
+        expect(testBlock.slides[0].extraDefault).to.deep.equal('Extra default');
+      });
+    });
+  });
+
   describe('ObjectListWidget', () => {
     beforeEach(() => {
       // given a logged in editor and a page in edit mode
