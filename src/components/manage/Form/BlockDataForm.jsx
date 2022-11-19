@@ -8,13 +8,14 @@ export default function BlockDataForm(props) {
   const { onChangeBlock, block } = props;
 
   const onChangeFormData = React.useCallback(
-    (data) => {
-      return onChangeBlock ? (data) => onChangeBlock(block, data) : undefined;
-    },
+    (data) => onChangeBlock(block, data),
     [block, onChangeBlock],
   );
 
   return (
-    <EnhancedBlockDataForm {...props} onChangeFormData={onChangeFormData} />
+    <EnhancedBlockDataForm
+      {...props}
+      onChangeFormData={onChangeBlock ? onChangeFormData : undefined}
+    />
   );
 }
