@@ -46,6 +46,14 @@ context('Special fields Acceptance Tests', () => {
       cy.get('#field-firstWithDefault').should('have.value', 'Some default value');
       cy.findByLabelText('Extra').should('have.value', 'Extra default');
 
+
+      cy.getContent({path: '/document'}).should((response) => {
+        const { body } = response;
+        const [,testBlock] = Object.entries(body.blocks).find(([,block]) => block['@type'] === 'testBlock');
+        expect(testBlock.style).to.deep.equal({color: 'red'});
+        expect(testBlock.slides[0].extraDefault).to.deep.equal('Extra default');
+      });
+
     });
   });
 
