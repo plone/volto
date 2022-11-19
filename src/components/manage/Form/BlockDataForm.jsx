@@ -7,6 +7,13 @@ const EnhancedBlockDataForm = withVariationSchemaEnhancer(InlineForm);
 export default function BlockDataForm(props) {
   const { onChangeBlock, block } = props;
 
+  if (!onChangeBlock) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'BlockDataForm component is used without passing down onChangeBlock as props',
+    );
+  }
+
   const onChangeFormData = React.useCallback(
     (data) => onChangeBlock(block, data),
     [block, onChangeBlock],
