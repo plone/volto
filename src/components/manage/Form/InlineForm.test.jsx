@@ -120,7 +120,7 @@ describe('Form', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('renders a form component with defaults in the schema - Checkboxes', async () => {
+  it('renders a form component with defaults in the schema - Checkboxes', () => {
     const store = mockStore({
       intl: {
         locale: 'en',
