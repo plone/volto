@@ -465,6 +465,9 @@ class Contents extends Component {
       getPathName: this.getPathName,
       createContent: this.props.createContent,
     });
+    this.uppy.on('dashboard:modal-closed', () => {
+      this.onUploadOk();
+    });
   }
 
   /**
@@ -1354,6 +1357,7 @@ class Contents extends Component {
                     closeModalOnClickOutside
                     open={this.state.showUpload}
                     onRequestClose={this.onUploadCancel}
+                    target="body"
                     plugins={[]}
                   />
                   {this.state.showWorkflow && (
