@@ -369,13 +369,30 @@ export function visitBlocks(content, callback) {
 /**
  * Initializes data with the default values coming from schema
  */
-export function applySchemaDefaults({ data = {}, schema }) {
+export function applySchemaDefaults({ data = {}, schema, intl }) {
   const derivedData = {
     ...Object.keys(schema.properties).reduce((accumulator, currentField) => {
       return typeof schema.properties[currentField].default !== 'undefined'
         ? {
             ...accumulator,
             [currentField]: schema.properties[currentField].default,
+          }
+        : schema.properties[currentField].schema &&
+          !(schema.properties[currentField].widget === 'object_list') // TODO: this should be renamed as itemSchema
+        ? {
+            ...accumulator,
+            [currentField]: applySchemaDefaults({
+              data: undefined,
+              schema:
+                typeof schema.properties[currentField].schema === 'function'
+                  ? schema.properties[currentField].schema({
+                      data: undefined,
+                      formData: undefined,
+                      intl,
+                    })
+                  : schema.properties[currentField].schema,
+              intl,
+            }),
           }
         : accumulator;
     }, {}),
@@ -404,7 +421,7 @@ export function applyBlockDefaults({ data, intl, ...rest }, blocksConfig) {
       : blockSchema;
   schema = applySchemaEnhancer({ schema, formData: data, intl });
 
-  return applySchemaDefaults({ data, schema });
+  return applySchemaDefaults({ data, schema, intl });
 }
 
 export const buildStyleClassNamesFromData = (styles) => {

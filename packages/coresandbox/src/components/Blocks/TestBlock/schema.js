@@ -95,7 +95,13 @@ export const SliderSchema = (props) => ({
     {
       id: 'default',
       title: 'Default',
-      fields: ['slides', 'fieldAfterObjectList', 'href', 'firstWithDefault'],
+      fields: [
+        'slides',
+        'fieldAfterObjectList',
+        'href',
+        'firstWithDefault',
+        'style',
+      ],
     },
   ],
   properties: {
@@ -106,10 +112,6 @@ export const SliderSchema = (props) => ({
     },
     fieldAfterObjectList: {
       title: 'Field after OL',
-    },
-    firstWithDefault: {
-      title: 'Field with default',
-      default: 'Some default value',
     },
     href: {
       title: props.intl.formatMessage(messages.Source),
@@ -122,6 +124,30 @@ export const SliderSchema = (props) => ({
         'headtitle',
       ],
       allowExternals: true,
+    },
+    firstWithDefault: {
+      title: 'Field with default',
+      default: 'Some default value',
+    },
+    style: {
+      widget: 'object',
+      schema: {
+        title: 'Style',
+        fieldsets: [
+          {
+            id: 'default',
+            fields: ['color'],
+            title: 'Default',
+          },
+        ],
+        properties: {
+          color: {
+            title: 'Color',
+            default: 'red',
+          },
+        },
+        required: [],
+      },
     },
   },
   required: [],

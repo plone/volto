@@ -55,6 +55,7 @@ const InlineForm = (props) => {
     const initialData = applySchemaDefaults({
       data: formData,
       schema: objectSchema,
+      intl,
     });
 
     if (onChangeFormData) {
