@@ -165,6 +165,147 @@ config.blocks.blocksConfig.enhancedBlockCase2 = {
   }),
 };
 
+const itemSchema = (props) => {
+  return {
+    title: 'Item',
+    addMessage: 'Add',
+    fieldsets: [
+      {
+        id: 'default',
+        title: 'Default',
+        fields: [
+          'href',
+          'title',
+          'description',
+          'preview_image',
+          'extraDefault',
+        ],
+      },
+    ],
+
+    properties: {
+      href: {
+        title: 'Source',
+        widget: 'object_browser',
+        mode: 'link',
+        selectedItemAttrs: [
+          'Title',
+          'Description',
+          'hasPreviewImage',
+          'headtitle',
+        ],
+        allowExternals: true,
+      },
+      title: {
+        title: 'title',
+      },
+      description: {
+        title: 'description',
+      },
+      preview_image: {
+        title: 'Image Override',
+        widget: 'object_browser',
+        mode: 'image',
+        allowExternals: true,
+      },
+      extraDefault: {
+        title: 'Extra',
+        default: 'Extra default',
+      },
+    },
+    required: [],
+  };
+};
+
+config.blocks.blocksConfig.slider = {
+  id: 'slider',
+  title: 'Slider',
+  group: 'Special',
+  restricted: false,
+  mostUsed: false,
+  blockHasOwnFocusManagement: true,
+  blockSchema: (props) => ({
+    title: 'slider',
+    fieldsets: [
+      {
+        id: 'default',
+        title: 'Default',
+        fields: [
+          'slides',
+          'fieldAfterObjectList',
+          'href',
+          'firstWithDefault',
+          'style',
+          'anotherWithDefault',
+          'yetAnotherWithDefault',
+        ],
+      },
+    ],
+    properties: {
+      slides: {
+        widget: 'object_list',
+        schema: itemSchema,
+        default: [
+          {
+            '@id': 'asdasdasd-qweqwe-zxczxc',
+            extraDefault:
+              'Extra default (Manual in parent slider widget default)',
+          },
+        ],
+      },
+      fieldAfterObjectList: {
+        title: 'Field after OL',
+      },
+      href: {
+        widget: 'object_browser',
+        mode: 'link',
+        selectedItemAttrs: [
+          'Title',
+          'Description',
+          'hasPreviewImage',
+          'headtitle',
+        ],
+        allowExternals: true,
+      },
+      firstWithDefault: {
+        title: 'Field with default',
+        default: 'Some default value',
+      },
+      style: {
+        widget: 'object',
+        schema: {
+          title: 'Style',
+          fieldsets: [
+            {
+              id: 'default',
+              fields: ['color'],
+              title: 'Default',
+            },
+          ],
+          properties: {
+            color: {
+              title: 'Color',
+              default: 'red',
+            },
+          },
+          required: [],
+        },
+      },
+      anotherWithDefault: {
+        title: 'Field with default 2',
+        default: 2,
+        type: 'number',
+      },
+      yetAnotherWithDefault: {
+        title: 'Field with default 3',
+        default: ['one', 'two'],
+        type: 'array',
+      },
+    },
+    required: [],
+  }),
+};
+
 config.settings.defaultBlockType = 'text';
 
 describe('Blocks', () => {
@@ -506,6 +647,44 @@ describe('Blocks', () => {
         booleanField: false,
         title: 'Default title',
         description: 'already filled',
+      });
+    });
+    it('Sets data according to schema default values, top level and styling wrapper object field', () => {
+      const data = {
+        '@type': 'slider',
+      };
+      const schema = config.blocks.blocksConfig.slider.blockSchema({ data });
+
+      // if you don't pass down intl, the ObjectWidget defaults are not applied
+      expect(applySchemaDefaults({ schema, data })).toEqual({
+        '@type': 'slider',
+        anotherWithDefault: 2,
+        slides: [
+          {
+            '@id': 'asdasdasd-qweqwe-zxczxc',
+            extraDefault:
+              'Extra default (Manual in parent slider widget default)',
+          },
+        ],
+        firstWithDefault: 'Some default value',
+        yetAnotherWithDefault: ['one', 'two'],
+      });
+
+      expect(applySchemaDefaults({ schema, data, intl: {} })).toEqual({
+        '@type': 'slider',
+        anotherWithDefault: 2,
+        slides: [
+          {
+            '@id': 'asdasdasd-qweqwe-zxczxc',
+            extraDefault:
+              'Extra default (Manual in parent slider widget default)',
+          },
+        ],
+        firstWithDefault: 'Some default value',
+        style: {
+          color: 'red',
+        },
+        yetAnotherWithDefault: ['one', 'two'],
       });
     });
   });

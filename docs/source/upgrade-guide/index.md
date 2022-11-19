@@ -521,6 +521,34 @@ You'll have to add a script in your `package.json` file called `prepare`:
 
 After execute it, `husky` will install itself in the `.husky` folder of your project. Then you need to create the default hook scripts in `.husky` that you want to execute. You can copy over the Volto ones (take a look in Volto's `.husky` folder).
 
+### Better defaults handling
+
+````{versionadded} 16.0.0-alpha.51
+Prior to this version we had a default values handling in schemas for blocks settings that was faulty and buggy. The state inferred was not deterministic and depending on the fields with defaults present.
+
+In order to correct this and allow Volto to handle defaults in a correct way we have to pass down an additional prop to the `BlockDataForm` like this:
+
+  ```{code-block} jsx
+  :linenos:
+  :emphasize-lines: 10
+    <BlockDataForm
+      schema={schema}
+      title={schema.title}
+      onChangeField={(id, value) => {
+        this.props.onChangeBlock(this.props.block, {
+          ...this.props.data,
+          [id]: value,
+        });
+      }}
+      onChangeBlock={onChangeBlock}
+      formData={this.props.data}
+      block={block}
+    />
+  ```
+
+whenever we use it in our custom or add-ons code.
+````
+
 (volto-upgrade-guide-15.x.x)=
 
 ## Upgrading to Volto 15.x.x
@@ -2076,7 +2104,9 @@ The blocks engine now takes care of the keyboard navigation of the blocks, so yo
 
 The focus management is also transferred to the engine, so it's not needed for your block to manage the focus. However, if your block does indeed require to manage its own focus, then you should mark it with the `blockHasOwnFocusManagement` property in the blocks configuration object:
 
-``` js hl_lines="10"
+```{code-block} jsx
+:linenos:
+:emphasize-lines: 10
     text: {
       id: 'text',
       title: 'Text',
