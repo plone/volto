@@ -236,6 +236,8 @@ config.blocks.blocksConfig.slider = {
           'href',
           'firstWithDefault',
           'style',
+          'anotherWithDefault',
+          'yetAnotherWithDefault',
         ],
       },
     ],
@@ -288,6 +290,16 @@ config.blocks.blocksConfig.slider = {
           },
           required: [],
         },
+      },
+      anotherWithDefault: {
+        title: 'Field with default 2',
+        default: 2,
+        type: 'number',
+      },
+      yetAnotherWithDefault: {
+        title: 'Field with default 3',
+        default: ['one', 'two'],
+        type: 'array',
       },
     },
     required: [],
@@ -644,6 +656,7 @@ describe('Blocks', () => {
       const schema = config.blocks.blocksConfig.slider.blockSchema({ data });
       expect(applySchemaDefaults({ schema, data })).toEqual({
         '@type': 'slider',
+        anotherWithDefault: 2,
         slides: [
           {
             '@id': 'asdasdasd-qweqwe-zxczxc',
@@ -655,6 +668,7 @@ describe('Blocks', () => {
         style: {
           color: 'red',
         },
+        yetAnotherWithDefault: ['one', 'two'],
       });
     });
   });
