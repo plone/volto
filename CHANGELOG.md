@@ -14,6 +14,9 @@
 
 ### Documentation
 
+- Remove `sentryOptions` from settings reference. Clean up `deploying/sentry.md`. @stevepiercy
+
+
 ## 16.0.0-rc.1 (2022-11-18)
 
 ### Feature
