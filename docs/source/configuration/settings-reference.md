@@ -30,7 +30,11 @@ defaultBlockType
     
 
 sentryOptions
-    Sentry integration is moved to add-on [`@plone-collective/volto-sentry`](https://www.npmjs.com/package/@plone-collective/volto-sentry). Please see {doc}`../deploying/sentry` for Sentry integration.
+    In Volto 16.0.0.alpha.45, Sentry integration was moved from core to the add-on [`@plone-collective/volto-sentry`](https://www.npmjs.com/package/@plone-collective/volto-sentry).
+
+    ```{seealso}
+    See {doc}`../deploying/sentry` for Sentry integration.
+    ```
 
 contentIcons
     With this property you can configure Content Types icons.
