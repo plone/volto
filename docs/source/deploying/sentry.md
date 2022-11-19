@@ -15,10 +15,10 @@ Sentry is a monitoring platform that can help identify the cause of errors in yo
 
 ## Prerequisities
 
-1.  Install the add-on [`volto-sentry`](https://github.com/collective/volto-sentry).
-1.  In Sentry, create a new organization, and add a project to it.
-1.  On the projects settings page, from {guilabel}`Client Keys (DSN)`, take the `SENTRY_DSN`.
-1.  Create an API Token: in the top-left corner, click on {guilabel}`your name -> API keys`, and create a new token.
+1.  Install the add-on [`@plone-collective/volto-sentry`](https://www.npmjs.com/package/@plone-collective/volto-sentry).
+2.  In Sentry, create a new organization, and add a project to it.
+3.  On the projects settings page, from {guilabel}`Client Keys (DSN)`, take the `SENTRY_DSN`.
+4.  Create an API Token: in the top-left corner, click on {guilabel}`your name -> API keys`, and create a new token.
     {guilabel}`project:write` scope should be selected.
 
 ```{note}
@@ -26,7 +26,7 @@ Instructions tested with Sentry 9.1.2.
 ```
 
 ```{versionchanged} 16.0.0.alpha.45
-Sentry was removed from Volto core and into a separate add-on [`volto-sentry`](https://github.com/collective/volto-sentry) in 16.0.0.alpha.45.
+Sentry was moved from Volto core and into a separate add-on [`volto-sentry`](https://github.com/collective/volto-sentry).
 ```
 
 
