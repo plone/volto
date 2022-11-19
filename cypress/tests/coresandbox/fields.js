@@ -20,6 +20,8 @@ context('Special fields Acceptance Tests', () => {
     });
 
     it('As an editor I can add a block that has default values', () => {
+      cy.intercept('PATCH', '/**/document').as('save');
+      cy.intercept('GET', '/**/@types/Document').as('schema');
       cy.getSlate().click();
       cy.get('.button .block-add-button').click({ force: true });
       cy.wait(100);
@@ -36,14 +38,11 @@ context('Special fields Acceptance Tests', () => {
 
       cy.findByLabelText('Extra').should('have.value', 'Extra default');
       cy.get('#toolbar-save').click();
-
-      cy.waitForResourceToLoad('@navigation');
-      cy.waitForResourceToLoad('@breadcrumbs');
-      cy.waitForResourceToLoad('@actions');
-      cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('document');
+      cy.wait('@save');
 
       cy.navigate('/document/edit');
+      cy.wait('@schema');
+
       cy.findAllByText('Test Block Edit').click();
 
       cy.get('#field-firstWithDefault').should(
