@@ -26,7 +26,10 @@ context('Special fields Acceptance Tests', () => {
       cy.get('.blocks-chooser .mostUsed .button.testBlock').click();
 
       cy.findByLabelText('Field with default').click();
-      cy.get('#field-firstWithDefault').should('have.value', 'Some default value');
+      cy.get('#field-firstWithDefault').should(
+        'have.value',
+        'Some default value',
+      );
 
       cy.findByLabelText('Add item').click();
       cy.findAllByText('Item #1').should('have.length', 1);
@@ -43,17 +46,20 @@ context('Special fields Acceptance Tests', () => {
       cy.navigate('/document/edit');
       cy.findAllByText('Test Block Edit').click();
 
-      cy.get('#field-firstWithDefault').should('have.value', 'Some default value');
+      cy.get('#field-firstWithDefault').should(
+        'have.value',
+        'Some default value',
+      );
       cy.findByLabelText('Extra').should('have.value', 'Extra default');
 
-
-      cy.getContent({path: '/document'}).should((response) => {
+      cy.getContent({ path: '/document' }).should((response) => {
         const { body } = response;
-        const [,testBlock] = Object.entries(body.blocks).find(([,block]) => block['@type'] === 'testBlock');
-        expect(testBlock.style).to.deep.equal({color: 'red'});
+        const [, testBlock] = Object.entries(body.blocks).find(
+          ([, block]) => block['@type'] === 'testBlock',
+        );
+        expect(testBlock.style).to.deep.equal({ color: 'red' });
         expect(testBlock.slides[0].extraDefault).to.deep.equal('Extra default');
       });
-
     });
   });
 
