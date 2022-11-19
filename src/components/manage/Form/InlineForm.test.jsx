@@ -25,11 +25,14 @@ const withStateManagement = (Component) => ({ ...props }) => {
     onChangeFormData({ ...formData, [id]: value });
   };
 
+  // NOTE: onChangeBlock here is not "really" implemented
+
   return (
     <Component
       {...props}
       onChangeField={onChangeField}
       onChangeFormData={onChangeFormData}
+      onChangeBlock={(block, data) => onChangeFormData(data)}
       formData={formData}
     />
   );
