@@ -3,17 +3,7 @@
  * @module helpers/Blocks
  */
 
-import { omit, without, endsWith, find, isObject, keys } from 'lodash';
-import {
-  omit,
-  without,
-  endsWith,
-  find,
-  isObject,
-  keys,
-  toPairs,
-  merge,
-} from 'lodash';
+import { omit, without, endsWith, find, isObject, keys, merge } from 'lodash';
 import move from 'lodash-move';
 import { v4 as uuid } from 'uuid';
 import config from '@plone/volto/registry';
