@@ -742,6 +742,56 @@ describe('Blocks', () => {
         },
       });
     });
+
+    it('Sets data according to schema default values, keeps existing data', () => {
+      const schema = {
+        properties: {
+          style: {
+            widget: 'object',
+            schema: {
+              title: 'Style',
+              fieldsets: [
+                {
+                  id: 'default',
+                  fields: ['color', 'theme'],
+                  title: 'Default',
+                },
+              ],
+              properties: {
+                color: {
+                  title: 'Color',
+                  default: 'red',
+                },
+                theme: {
+                  title: 'Theme',
+                  default: 'primary',
+                },
+              },
+              required: [],
+            },
+          },
+        },
+      };
+
+      expect(
+        applySchemaDefaults({
+          schema,
+          data: {
+            '@type': 'slider',
+            style: {
+              theme: 'secondary',
+            },
+          },
+          intl: {},
+        }),
+      ).toEqual({
+        '@type': 'slider',
+        style: {
+          color: 'red',
+          theme: 'secondary',
+        },
+      });
+    });
   });
 
   describe('applyBlockDefaults', () => {
