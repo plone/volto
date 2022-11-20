@@ -516,12 +516,12 @@ If you are extending an existing one, you should add it as a normal `schemaEnhan
 
 See https://6.dev-docs.plone.org/volto/blocks/block-style-wrapper.html for more documentation.
 
-### Removed Sentry integration from core
+### Sentry integration moved from Volto core to add-on
 
 The Sentry integration was implemented in Volto core at a time when Volto did not provide a good add-on story.
 Since then, the add-on story has improved.
 It now makes sense to extract this feature into its own add-on.
-You can find it in [`@collective/volto-sentry`](https://github.com/collective/volto-sentry).
+Integrate Sentry in your app with [`@plone-collective/volto-sentry`](https://www.npmjs.com/package/@plone-collective/volto-sentry).
 
 ```{versionchanged} 16.0.0.alpha.45
 ```

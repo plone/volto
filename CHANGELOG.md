@@ -14,6 +14,7 @@
 
 ### Documentation
 
+- Document `Sentry` integration move from Volto core to add-on `@plone-collective/volto-sentry` in configuration, upgrade and deployment. @ksuess
 - Remove `sentryOptions` from settings reference. Clean up `deploying/sentry.md`. @stevepiercy
 - Tidy up `upgrade-guide/index.md`. @stevepiercy
 
