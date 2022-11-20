@@ -15,7 +15,7 @@
 ### Documentation
 
 - Remove `sentryOptions` from settings reference. Clean up `deploying/sentry.md`. @stevepiercy
-
+- Backport docs changes from master to 16.x.x. @stevepiercy
 
 ## 16.0.0-rc.1 (2022-11-18)
 
