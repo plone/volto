@@ -279,6 +279,7 @@ export const DefaultTextBlockEditor = (props) => {
                 block={block}
                 schema={schema}
                 title={schema.title}
+                onChangeBlock={onChangeBlock}
                 onChangeField={(id, value) => {
                   onChangeBlock(block, {
                     ...data,

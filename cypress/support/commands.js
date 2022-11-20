@@ -195,6 +195,30 @@ Cypress.Commands.add('removeContent', ({ path = '' }) => {
   });
 });
 
+// Get content
+Cypress.Commands.add('getContent', ({ path = '' }) => {
+  let api_url, auth;
+  if (Cypress.env('API') === 'guillotina') {
+    api_url = GUILLOTINA_API_URL;
+    auth = {
+      user: 'root',
+      pass: 'root',
+    };
+  } else {
+    api_url = PLONE_API_URL;
+    auth = ploneAuthObj;
+  }
+
+  return cy.request({
+    method: 'get',
+    url: `${api_url}/${path}`,
+    headers: {
+      Accept: 'application/json',
+    },
+    auth: auth,
+  });
+});
+
 // --- Add DX Content-Type ----------------------------------------------------------
 Cypress.Commands.add('addContentType', (name) => {
   let api_url, auth;
