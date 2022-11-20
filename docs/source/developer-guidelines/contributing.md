@@ -28,6 +28,11 @@ In your report, please specify a few things:
 - Which Plone version are you using?
 - Include relevant screenshots, error messages, and stack traces.
 
+## Branch policy
+
+```{include} ./branch-policy.md
+```
+
 ## Create a pull request
 
 You must sign the [Plone Contributor Agreement](https://plone.org/foundation/contributors-agreement) to contribute code and documentation to any Plone project.
