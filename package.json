@@ -78,10 +78,16 @@
     ],
     "transform": {
       "^.+\\.js(x)?$": "babel-jest",
+      "^.+\\.mjs(x)?$": "babel-jest",
       "^.+\\.(png)$": "jest-file",
       "^.+\\.(jpg)$": "jest-file",
       "^.+\\.(svg)$": "./jest-svgsystem-transform.js"
     },
+    "transformIgnorePatterns": [
+      "!node_modules/@uppy/",
+      "!node_modules/nanoid/",
+      "!node_modules/exifr/"
+    ],
     "moduleNameMapper": {
       "@plone/volto/package.json": "<rootDir>/package.json",
       "@plone/volto/(.*)$": "<rootDir>/src/$1",
