@@ -12,6 +12,8 @@
 
 ### Internal
 
+- Update to Plone 6 RC1 @sneridagh
+
 ### Documentation
 
 - Document `Sentry` integration move from Volto core to add-on `@plone-collective/volto-sentry` in configuration, upgrade and deployment. @ksuess
