@@ -19,7 +19,7 @@ TESTING_ADDONS=plone.app.robotframework==2.0.0b2 plone.app.testing==7.0.0b2
 NODEBIN = ./node_modules/.bin
 
 # Plone 5 legacy
-DOCKER_IMAGE5=plone/plone-backend:5.2.10
+DOCKER_IMAGE5=plone/plone-backend:5.2.9
 KGS5=plone.restapi==8.32.2 plone.volto==4.0.0 plone.rest==2.0.0
 
 # Sphinx variables
