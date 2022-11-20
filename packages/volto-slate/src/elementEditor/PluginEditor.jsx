@@ -82,6 +82,7 @@ const PluginEditor = (props) => {
             }
             return onChangeValues(id, value, formData, setFormData);
           }}
+          onChangeFormData={setFormData}
           formData={formData}
           headerActions={
             <>

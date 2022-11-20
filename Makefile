@@ -268,6 +268,10 @@ start-test-acceptance-server-coresandbox test-acceptance-server-coresandbox: ## 
 start-test-acceptance-frontend-coresandbox: ## Start the CoreSandbox Acceptance Frontend Fixture
 	ADDONS=coresandbox RAZZLE_API_PATH=http://localhost:55001/plone yarn build && yarn start:prod
 
+.PHONY: start-test-acceptance-frontend-coresandbox-dev
+start-test-acceptance-frontend-coresandbox-dev: ## Start the CoreSandbox Acceptance Frontend Fixture in dev mode
+	ADDONS=coresandbox RAZZLE_API_PATH=http://localhost:55001/plone yarn start
+
 .PHONY: test-acceptance-coresandbox
 test-acceptance-coresandbox: ## Start CoreSandbox Cypress Acceptance Tests
 	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config specPattern='cypress/tests/coresandbox/**/*.{js,jsx,ts,tsx}'
