@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Overhaul how block defaults are computed. See https://github.com/plone/volto/pull/3925 for more details @tiberiuichim
+- Cover an additional edge case for defaults @tiberiuichim
 
 ### Internal
 
