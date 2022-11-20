@@ -1,13 +1,36 @@
-Volto has a branch policy that matches the current releases (stable, canary) development.
+The Volto team enforces the following branch policy when developers contribute to its core.
 
-`master` is the bleeding edge branch. It is the branch upon which future development occurs, and from which future releases shall be cut.
+A numbered release is cut from the corresponding numbered git branch.
+Releases of general packages (`@plone/generator-volto`, `@plone/scripts`, and so on) are cut from the `master` branch.
 
-There is always a current “stable” and “latest” branch of Volto. At the moment of this writting, 15.x.x is the current stable. Upon the final release of 16.0.0, the 15.x.x line will become “legacy”, meaning that it shall become unsupported with no bug fixes.
+stable and latest
+:   The terms _stable_ and _latest_ mean the same thing in this policy.
+    They refer to the stable and latest released version of Volto.
+    They have no branch names in git.
 
-16.x.x is the current actively developed branch, meaning that it may receive new features and bug fixes. Its version is currently at 16.0.0-rc.1 as a release candidate. It will become the “stable” and “latest” version upon the final release of version 16.0.0.
+canary
+:   The term _canary_ refers to the metaphorical canary in a coalmine; if an issue is detected following its release, the damage is limited to only those users who have installed it.
+    It usually includes experimental features for testing.
+    During the development process, a canary release will be cut from the `master` branch.
+    When it becomes worthy of a beta or release candidate version, a new numbered branch should be cut, and non-breaking changes must be merged into it.
 
-Releases happen from the corresponding numbered branch. Releases of general packages (`@plone/generator-volto`, `@plone/scripts`, etc) happen from `master`.
+legacy
+:   A version that it is unsupported and receives no bug fixes.
+    It has no branch name in git.
 
-If there's any "canary" release during the development process this will be released from `master`, bleeding edge branch. The moment it becomes "beta" or "RC" a new numbered branch should be cut, and not breaking changes must be merged into it.
+`master`
+:   This is the bleeding edge branch in git.
+    It is the branch upon which future development occurs, and from which future releases shall be cut.
 
-When opening a PR, the contributor has to target it always to `master`. If it's a feature or a bugfix, the release manager can ask the contributor to backport it to the "stable" branch if the contribution is interesting to be included in there.
+    When opening a pull request, the contributor must open it against `master`.
+    If the pull request is a feature or a bugfix, and if the release manager deems it useful to the latest version's branch, they may ask the contributor to backport it to that branch.
+
+`16.x.x`
+:   This is the current actively developed branch in git, meaning that it may receive new features and bug fixes.
+    Its version is currently at 16.0.0-rc.1 as a release candidate.
+    It will become the stable version upon the final release of version 16.0.0.
+
+`15.x.x`
+:   At the moment of this writing, `15.x.x` is the current stable branch in git.
+    Upon the final release of version 16.0.0, the `15.x.x` branch line will become legacy.
+
