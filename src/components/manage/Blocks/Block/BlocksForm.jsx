@@ -1,7 +1,12 @@
 import React from 'react';
+import { useIntl } from 'react-intl';
 import EditBlock from './Edit';
 import { DragDropList } from '@plone/volto/components';
-import { getBlocks } from '@plone/volto/helpers';
+import {
+  getBlocks,
+  getBlocksFieldname,
+  applyBlockDefaults,
+} from '@plone/volto/helpers';
 import {
   addBlock,
   insertBlock,
@@ -42,6 +47,7 @@ const BlocksForm = (props) => {
   const blockList = getBlocks(properties);
 
   const dispatch = useDispatch();
+  const intl = useIntl();
 
   const ClickOutsideListener = () => {
     onSelectBlock(null);
@@ -117,6 +123,16 @@ const BlocksForm = (props) => {
       current,
       config.experimental.addBlockButton.enabled ? 1 : 0,
     );
+
+    const blocksFieldname = getBlocksFieldname(newFormData);
+    const blockData = newFormData[blocksFieldname][newId];
+    newFormData[blocksFieldname][newId] = applyBlockDefaults({
+      data: blockData,
+      intl,
+      metadata,
+      properties,
+    });
+
     onChangeFormData(newFormData);
     return newId;
   };
@@ -124,6 +140,14 @@ const BlocksForm = (props) => {
   const onAddBlock = (type, index) => {
     if (editable) {
       const [id, newFormData] = addBlock(properties, type, index);
+      const blocksFieldname = getBlocksFieldname(newFormData);
+      const blockData = newFormData[blocksFieldname][id];
+      newFormData[blocksFieldname][id] = applyBlockDefaults({
+        data: blockData,
+        intl,
+        metadata,
+        properties,
+      });
       onChangeFormData(newFormData);
       return id;
     }

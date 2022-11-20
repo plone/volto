@@ -64,6 +64,10 @@ describe('generator-create-volto-app:app with canary option', () => {
       fs.readFileSync(path.join(tmpDir, 'test-volto/package.json'), 'utf8'),
     );
 
-    expect(packageJSON.dependencies['@plone/volto']).toContain('alpha');
+    expect(
+      packageJSON.dependencies['@plone/volto'].includes(['rc']) ||
+        packageJSON.dependencies['@plone/volto'].includes(['beta']) ||
+        packageJSON.dependencies['@plone/volto'].includes(['alpha']),
+    ).toBe(true);
   });
 });
