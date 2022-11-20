@@ -2,15 +2,9 @@
 
 ## 6.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Generator is aware of `rc`, `beta` and `alphas` as possible releases for canary @sneridagh
-
-### Internal
 
 ## 6.0.0-alpha.3 (2022-11-16)
 
