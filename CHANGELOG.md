@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Support for drilled down current state and updater function from schema in `ObjectListWidget`. This allows to sync the current object selected from the UI and the block settings and viceversa @sneridagh
+
 ### Bugfix
 
 ### Internal
