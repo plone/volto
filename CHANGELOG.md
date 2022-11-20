@@ -15,6 +15,7 @@
 ### Documentation
 
 - Remove `sentryOptions` from settings reference. Clean up `deploying/sentry.md`. @stevepiercy
+- Tidy up `upgrade-guide/index.md`. @stevepiercy
 
 
 ## 16.0.0-rc.1 (2022-11-18)
