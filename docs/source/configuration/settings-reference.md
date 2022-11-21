@@ -32,7 +32,7 @@ sentryOptions
     In Volto 16.0.0.alpha.45, Sentry integration was moved from core to the add-on [`@plone-collective/volto-sentry`](https://www.npmjs.com/package/@plone-collective/volto-sentry).
 
     ```{seealso}
-    See {doc}`../deploying/sentry` for Sentry integration.
+    See {doc}`../deploying/sentry`.
     ```
 
 contentIcons
