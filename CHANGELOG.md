@@ -8,6 +8,7 @@
 
 - Allow custom style wrapper classnames via fieldname suffixes. Added `config.settings.styleClassNameConverters` to register new suffix converters @tiberiuichim
 - Support for drilled down current state and updater function from schema in `ObjectListWidget`. This allows to sync the current object selected from the UI and the block settings and viceversa @sneridagh
+- Provide a default View/Edit component for blocks @avoinea, @tiberiuichim
 
 ### Bugfix
 
@@ -102,10 +103,6 @@
 - Restrict css selector for error message (volto-slate) #3838 @mamico
 - Upgrade `husky` to latest version @sneridagh
 - Enable the use of yarn 3 in the build by default @sneridagh
-
-- consume site_actions from restapi @nileshgulia1
-- Provide a default View/Edit component for blocks @avoinea, @tiberiuichim
-See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
 
 ### Feature
 
