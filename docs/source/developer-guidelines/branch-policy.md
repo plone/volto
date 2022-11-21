@@ -10,7 +10,7 @@ stable and latest
 
 canary
 :   The term _canary_ refers to the metaphorical canary in a coalmine; if an issue is detected following its release, the damage is limited to only those users who have installed it.
-    It usually includes experimental features for testing.
+    It usually includes experimental and breaking features for testing.
     During the development process, a canary release will be cut from the `master` branch.
     When it becomes worthy of a beta or release candidate version, a new numbered branch should be cut, and non-breaking changes must be merged into it.
 
