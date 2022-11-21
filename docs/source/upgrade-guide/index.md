@@ -574,6 +574,34 @@ To correct this and allow Volto to handle defaults in a correct way, we have to 
 ````
 
 
+### Better defaults handling
+
+````{versionadded} 16.0.0-alpha.51
+Prior to this version we had a default values handling in schemas for blocks settings that was faulty and buggy. The state inferred was not deterministic and depending on the fields with defaults present.
+
+In order to correct this and allow Volto to handle defaults in a correct way we have to pass down an additional prop to the `BlockDataForm` like this:
+
+  ```{code-block} jsx
+  :linenos:
+  :emphasize-lines: 10
+    <BlockDataForm
+      schema={schema}
+      title={schema.title}
+      onChangeField={(id, value) => {
+        this.props.onChangeBlock(this.props.block, {
+          ...this.props.data,
+          [id]: value,
+        });
+      }}
+      onChangeBlock={onChangeBlock}
+      formData={this.props.data}
+      block={block}
+    />
+  ```
+
+whenever we use it in our custom or add-ons code.
+````
+
 (volto-upgrade-guide-15.x.x)=
 
 ## Upgrading to Volto 15.x.x
