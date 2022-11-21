@@ -67,6 +67,16 @@ const serverConfig =
     ? require('./server').default
     : {};
 
+const styleClassNameConverters = {
+  default: (name, value, prefix) => {
+    return `has--${prefix ? prefix : ''}${name}--${(value || '')
+      .toString()
+      .replace(/^#/, '')}`;
+  },
+  noprefix: (name, value) => value,
+  bool: (name, value) => (value ? name : ''),
+};
+
 let config = {
   settings: {
     host,
@@ -167,6 +177,7 @@ let config = {
     addonsInfo: addonsInfo,
     workflowMapping,
     errorHandlers: [], // callables for unhandled errors
+    styleClassNameConverters,
   },
   experimental: {
     addBlockButton: {
