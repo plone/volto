@@ -23,7 +23,7 @@ legacy
 
     When a release candidate version is cut, we create a new numbered git branch whose name aligns with the release's.
     For example, when we released version 16.0.0-rc.1, we created a git branch `16.x.x`.
-    We also freeze the release candidate, and stop adding bug fixes and features to it.
+    We also freeze the release candidate, and stop adding features to it.
     This allows us to continue development on `master`, which may include both breaking changes that must not be backported, and bug fixes and feature additions that may be backported but only after the release candidate becomes final.
 
     When opening a pull request, the contributor must open it against `master`.
