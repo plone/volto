@@ -12,8 +12,6 @@
 ### Bugfix
 
 - Overhaul how block defaults are computed. See https://github.com/plone/volto/pull/3925 for more details @tiberiuichim
-
-- Overhaul how block defaults are computed. See https://github.com/plone/volto/pull/3925 for more details @tiberiuichim
 - Fix image tag for Plone 5.2.x, use 5.2.9 for now @sneridagh
 - Cover an additional edge case for defaults @tiberiuichim
 
