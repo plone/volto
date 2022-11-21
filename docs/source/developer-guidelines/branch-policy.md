@@ -1,6 +1,5 @@
 The Volto team enforces the following branch policy when developers contribute to its core.
 
-A numbered release is cut from the corresponding numbered git branch.
 Releases of general packages (`@plone/generator-volto`, `@plone/scripts`, and so on) are cut from the `master` branch.
 
 stable and latest
@@ -21,6 +20,11 @@ legacy
 `master`
 :   This is the bleeding edge branch in git.
     It is the branch upon which future development occurs, and from which future releases shall be cut.
+
+    When a release candidate version is cut, we create a new numbered git branch whose name aligns with the release's.
+    For example, when we released version 16.0.0-rc.1, we created a git branch `16.x.x`.
+    We also freeze the release candidate, and stop adding bug fixes and features to it.
+    This allows us to continue development on `master`, which may include both breaking changes that must not be backported, and bug fixes and feature additions that may be backported but only after the release candidate becomes final.
 
     When opening a pull request, the contributor must open it against `master`.
     If the pull request is a feature or a bugfix, and if the release manager deems it useful to the latest version's branch, they may ask the contributor to backport it to that branch.
