@@ -3,6 +3,8 @@
 ## Volto 16
 
 - [x] Integrate Volto Slate (alpha.15) @tiberiuichim @razvanmiu @eea
+- [x] Allow final users to switch between available views in the search block. (alpha.0) @tiberiuichim @kreafox
+- [x] Introduce the components registry alpha.22 @sneridagh 
 - [x] New Block Style Wrapper added @sneridagh
 - [x] Remove unneeded dependencies (e.g. date-fns)
 - [x] Add schema to image and video block to make them extendable
