@@ -4463,7 +4463,7 @@ msgstr "Inhaltsverzeichnis"
 #: config/Blocks
 # defaultMessage: Toggle
 msgid "toggleFacet"
-msgstr "Toogle"
+msgstr "Toggle"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update from version {origin} to {destination}
