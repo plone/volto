@@ -8,13 +8,26 @@
 
 ### Bugfix
 
-- Overhaul how block defaults are computed. See https://github.com/plone/volto/pull/3925 for more details @tiberiuichim
-
 ### Internal
 
 ### Documentation
 
+## 16.0.0-rc.2 (2022-11-20)
+
+### Bugfix
+
+- Overhaul how block defaults are computed. See https://github.com/plone/volto/pull/3925 for more details @tiberiuichim
+- Cover an additional edge case for defaults @tiberiuichim
+
+### Internal
+
+- Update to Plone 6 RC1 @sneridagh
+
+### Documentation
+
+- Document `Sentry` integration move from Volto core to add-on `@plone-collective/volto-sentry` in configuration, upgrade and deployment. @ksuess
 - Remove `sentryOptions` from settings reference. Clean up `deploying/sentry.md`. @stevepiercy
+- Tidy up `upgrade-guide/index.md`. @stevepiercy
 - Backport docs changes from master to 16.x.x. @stevepiercy
 
 ## 16.0.0-rc.1 (2022-11-18)
