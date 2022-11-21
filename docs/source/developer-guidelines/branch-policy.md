@@ -21,8 +21,12 @@ legacy
 :   This is the bleeding edge branch in git.
     It is the branch upon which future development occurs, and from which future releases shall be cut.
 
-    When a release candidate version is cut, we create a new numbered git branch whose name aligns with the release's.
-    For example, when we released version 16.0.0-rc.1, we created a git branch `16.x.x`.
+    When we cut a release candidate, we:
+
+    1.  create a new numbered git branch from master, and
+    2.  cut a release candidate version whose name aligns with the new numbered git branch.
+
+    For example, when we cut the release candidate version 16.0.0-rc.1, we created a git branch `16.x.x`.
     We also freeze the release candidate, and stop adding features to it.
     This allows us to continue development on `master`, which may include both breaking changes that must not be backported, and bug fixes and feature additions that may be backported but only after the release candidate becomes final.
 
