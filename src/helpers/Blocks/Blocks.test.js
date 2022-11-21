@@ -742,6 +742,56 @@ describe('Blocks', () => {
         },
       });
     });
+
+    it('Sets data according to schema default values, keeps existing data', () => {
+      const schema = {
+        properties: {
+          style: {
+            widget: 'object',
+            schema: {
+              title: 'Style',
+              fieldsets: [
+                {
+                  id: 'default',
+                  fields: ['color', 'theme'],
+                  title: 'Default',
+                },
+              ],
+              properties: {
+                color: {
+                  title: 'Color',
+                  default: 'red',
+                },
+                theme: {
+                  title: 'Theme',
+                  default: 'primary',
+                },
+              },
+              required: [],
+            },
+          },
+        },
+      };
+
+      expect(
+        applySchemaDefaults({
+          schema,
+          data: {
+            '@type': 'slider',
+            style: {
+              theme: 'secondary',
+            },
+          },
+          intl: {},
+        }),
+      ).toEqual({
+        '@type': 'slider',
+        style: {
+          color: 'red',
+          theme: 'secondary',
+        },
+      });
+    });
   });
 
   describe('applyBlockDefaults', () => {
@@ -819,6 +869,7 @@ describe('Blocks', () => {
       expect(applyBlockDefaults({ data })).toEqual({});
     });
   });
+
   describe('buildStyleClassNamesFromData', () => {
     it('Sets styles classname array according to style values', () => {
       const styles = {
@@ -830,6 +881,7 @@ describe('Blocks', () => {
         'has--backgroundColor--AABBCC',
       ]);
     });
+
     it('Sets styles classname array according to style values with nested', () => {
       const styles = {
         color: 'red',
@@ -846,6 +898,7 @@ describe('Blocks', () => {
         'has--nested--bar--black',
       ]);
     });
+
     it('Sets styles classname array according to style values with nested and colors', () => {
       const styles = {
         color: 'red',
@@ -863,6 +916,27 @@ describe('Blocks', () => {
       ]);
     });
 
+    it('Supports multiple nested level', () => {
+      const styles = {
+        color: 'red',
+        backgroundColor: '#AABBCC',
+        nested: {
+          l1: 'white',
+          level2: {
+            foo: '#fff',
+            bar: '#000',
+          },
+        },
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual([
+        'has--color--red',
+        'has--backgroundColor--AABBCC',
+        'has--nested--l1--white',
+        'has--nested--level2--foo--fff',
+        'has--nested--level2--bar--000',
+      ]);
+    });
+
     it('Sets styles classname array according to style values with int values', () => {
       const styles = {
         color: 'red',
@@ -872,6 +946,46 @@ describe('Blocks', () => {
         'has--color--red',
         'has--borderRadius--8',
       ]);
+    });
+
+    it('Understands noprefix converter for style values', () => {
+      const styles = {
+        color: 'red',
+        'theme:noprefix': 'primary',
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual([
+        'has--color--red',
+        'primary',
+      ]);
+    });
+
+    it('Understands bool converter for trueish value', () => {
+      const styles = {
+        color: 'red',
+        'inverted:bool': true,
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual([
+        'has--color--red',
+        'inverted',
+      ]);
+    });
+
+    it('Understands bool converter for false value', () => {
+      const styles = {
+        color: 'red',
+        'inverted:bool': false,
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual(['has--color--red']);
+    });
+
+    it('Ugly edge cases', () => {
+      const styles = {
+        color: undefined,
+        nested: {
+          l1: {},
+        },
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual([]);
     });
   });
 });
