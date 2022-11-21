@@ -6,18 +6,26 @@
 
 ### Feature
 
+- Support for drilled down current state and updater function from schema in `ObjectListWidget`. This allows to sync the current object selected from the UI and the block settings and viceversa @sneridagh
+
 ### Bugfix
 
 - Overhaul how block defaults are computed. See https://github.com/plone/volto/pull/3925 for more details @tiberiuichim
+- Fix image tag for Plone 5.2.x, use 5.2.9 for now @sneridagh
+- Cover an additional edge case for defaults @tiberiuichim
 
 ### Internal
+
+- Update to Plone 6 RC1 @sneridagh
 
 ### Documentation
 
 - Document `Sentry` integration move from Volto core to add-on `@plone-collective/volto-sentry` in configuration, upgrade and deployment. @ksuess
 - Remove `sentryOptions` from settings reference. Clean up `deploying/sentry.md`. @stevepiercy
 - Tidy up `upgrade-guide/index.md`. @stevepiercy
+- Fix some MyST syntax and English grammar. @stevepiercy
 - Add contributing branch policy information @sneridagh @stevepiercy
+
 
 ## 16.0.0-rc.1 (2022-11-18)
 
