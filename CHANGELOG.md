@@ -4,6 +4,51 @@
 
 ### Breaking
 
+### Feature
+
+- Allow custom style wrapper classnames via fieldname suffixes. Added `config.settings.styleClassNameConverters` to register new suffix converters @tiberiuichim
+- Support for drilled down current state and updater function from schema in `ObjectListWidget`. This allows to sync the current object selected from the UI and the block settings and viceversa @sneridagh
+
+### Bugfix
+
+- Overhaul how block defaults are computed. See https://github.com/plone/volto/pull/3925 for more details @tiberiuichim
+- Fix image tag for Plone 5.2.x, use 5.2.9 for now @sneridagh
+- Cover an additional edge case for defaults @tiberiuichim
+
+### Internal
+
+- Update to Plone 6 RC1 @sneridagh
+
+### Documentation
+
+- Document `Sentry` integration move from Volto core to add-on `@plone-collective/volto-sentry` in configuration, upgrade and deployment. @ksuess
+- Remove `sentryOptions` from settings reference. Clean up `deploying/sentry.md`. @stevepiercy
+- Tidy up `upgrade-guide/index.md`. @stevepiercy
+- Fix some MyST syntax and English grammar. @stevepiercy
+
+
+## 16.0.0-rc.1 (2022-11-18)
+
+### Feature
+
+- Releasing RC1 @sneridagh
+
+## 16.0.0-alpha.53 (2022-11-18)
+
+### Feature
+
+- There is an experimental setting to move the button for adding a new block to show below any selected block, instead of only on the left of empty text blocks. Set `config.experimental.addBlockButton.enabled = true` to enable it. @davisagli
+
+## 16.0.0-alpha.52 (2022-11-18)
+
+### Bugfix
+
+- Revert "Configure Jest's moduleNameMapper with AddonConfigurationRegistry" (#3913) due to a regression in projects @sneridagh
+
+## 16.0.0-alpha.51 (2022-11-18)
+
+### Breaking
+
 - The `ContentsBreadcrumbs` component now renders the whole language name of the language root folder (if any) instead of just the `id` (before: `de`, now: `Deutsch`) @sneridagh
 
 ### Feature
@@ -11,13 +56,20 @@
 - Improvement of the `ContentsBreadcrumbs` component, add child `ContentsBreadcrumbsRootItem` and `ContentsBreadcrumbsHomeItem` for easy customization of these single elements in projects @sneridagh
 - Add german translation for group membership panel. @ksuess
 - Fix general german translations: Address user polite. Correct 'listing template' to 'listing variant'. Add missing translations. @ksuess
+- Allow passing ariaHidden, id and style to an Icon's SVG @JeffersonBledsoe #3908
+- All Fields now understand the `default` prop as a fallback value in case their data value is missing. As a convenience, the `defaultValue` is also used as a fallback, but this shouldn't proliferate. @tiberiuichim
 
 ### Bugfix
+
+- Hide control panel settings that are not relevant to Volto @danalvrz
+- Hide not relevant for Volto control panels from site setup, further refine not used inner settings for site control panel @sneridagh
+- Fix ObjectWidget handling of `default` values coming from schemas. @tiberiuichim
 
 ### Internal
 
 - Ignore `.tool-versions` file
 - Minor updates to dependencies
+- Update Cypress 11 @sneridagh
 
 ### Documentation
 
@@ -69,7 +121,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Remove slate's builtin undo support, as it conflicts with Volto's undo manager. This fixes crashes when undoing in text blocks and slate's undo stack is empty and "crosses" into Volto's undo stack. This is a temporary workaround, ideally the two undo managers would be delimited so they each work together. @tiberiuichim
 - Fix highlighting of selection when the Slate editor is not DOM-focused. @tiberiuichim
 - Improve the algorithm that calculates the position of the Slate Toolbar @tiberiuichim
-- The `_unwrapElement` of the volto-slate `ElementEditor` will return an updated range (selection) of the unwrapped element.  @tiberiuichim
+- The `_unwrapElement` of the volto-slate `ElementEditor` will return an updated range (selection) of the unwrapped element. @tiberiuichim
 - Replace the main client entry point in `start-client.jsx` anonymous function for a named one. @sneridagh
 - Fix `currentPath` option for `openObjectBrowser`. @iFlameing
 - Fix updating the listing block when the variation is changed while editing @tiberiuichim
