@@ -8,8 +8,6 @@
 
 ### Bugfix
 
-- Generator is aware of `rc`, `beta` and `alphas` as possible releases for canary @sneridagh
-
 ### Internal
 
 ## 6.0.0-alpha.4 (2022-11-20)
