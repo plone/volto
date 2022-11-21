@@ -57,7 +57,9 @@ const messages = defineMessages({
  *      }
  *      mutated.fieldsets[0].fields.push('extraField');
  *      return mutated;
- *    }
+ *    },
+ *    activeObject: 0, // Current active object drilled down from the schema (if present)
+ *    setActiveObject: () => {} // The current active object state updater function drilled down from the schema (if present)
  *  },
  * ```
  */
@@ -71,7 +73,22 @@ const ObjectListWidget = (props) => {
     onChange,
     schemaExtender,
   } = props;
-  const [activeObject, setActiveObject] = React.useState(value.length - 1);
+  const [localActiveObject, setLocalActiveObject] = React.useState(
+    props.activeObject ?? value.length - 1,
+  );
+
+  let activeObject, setActiveObject;
+  if (
+    (props.activeObject || props.activeObject === 0) &&
+    props.setActiveObject
+  ) {
+    activeObject = props.activeObject;
+    setActiveObject = props.setActiveObject;
+  } else {
+    activeObject = localActiveObject;
+    setActiveObject = setLocalActiveObject;
+  }
+
   const intl = useIntl();
 
   function handleChangeActiveObject(e, blockProps) {
