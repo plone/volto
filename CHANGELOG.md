@@ -15,6 +15,7 @@
 - Fix image tag for Plone 5.2.x, use 5.2.9 for now @sneridagh
 - Cover an additional edge case for defaults @tiberiuichim
 - Fix issue when using list markdown when list is already active (volto-slate) @robgietema
+- Fix translation spelling of toggle  @iFlameing
 
 ### Internal
 
