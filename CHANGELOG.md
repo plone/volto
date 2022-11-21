@@ -15,6 +15,7 @@
 - Fix image tag for Plone 5.2.x, use 5.2.9 for now @sneridagh
 - Cover an additional edge case for defaults @tiberiuichim
 - Fix keyboard accessibility issue of Clear button in Folder content view @iFlameing
+- Fix issue when using list markdown when list is already active (volto-slate) @robgietema
 - Fix translation spelling of toggle  @iFlameing
 
 ### Internal
@@ -27,7 +28,6 @@
 - Remove `sentryOptions` from settings reference. Clean up `deploying/sentry.md`. @stevepiercy
 - Tidy up `upgrade-guide/index.md`. @stevepiercy
 - Fix some MyST syntax and English grammar. @stevepiercy
-
 
 ## 16.0.0-rc.1 (2022-11-18)
 
