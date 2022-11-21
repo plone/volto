@@ -3,7 +3,16 @@
  * @module helpers/Blocks
  */
 
-import { omit, without, endsWith, find, isObject, keys, toPairs } from 'lodash';
+import {
+  omit,
+  without,
+  endsWith,
+  find,
+  isObject,
+  keys,
+  toPairs,
+  merge,
+} from 'lodash';
 import move from 'lodash-move';
 import { v4 as uuid } from 'uuid';
 import config from '@plone/volto/registry';
@@ -383,8 +392,8 @@ export function applySchemaDefaults({ data = {}, schema, intl }) {
     _logged = true;
   }
 
-  const derivedData = {
-    ...Object.keys(schema.properties).reduce((accumulator, currentField) => {
+  const derivedData = merge(
+    Object.keys(schema.properties).reduce((accumulator, currentField) => {
       return typeof schema.properties[currentField].default !== 'undefined'
         ? {
             ...accumulator,
@@ -395,23 +404,26 @@ export function applySchemaDefaults({ data = {}, schema, intl }) {
           !(schema.properties[currentField].widget === 'object_list') // TODO: this should be renamed as itemSchema
         ? {
             ...accumulator,
-            [currentField]: applySchemaDefaults({
-              data: undefined,
-              schema:
-                typeof schema.properties[currentField].schema === 'function'
-                  ? schema.properties[currentField].schema({
-                      data: undefined,
-                      formData: undefined,
-                      intl,
-                    })
-                  : schema.properties[currentField].schema,
-              intl,
-            }),
+            [currentField]: {
+              ...applySchemaDefaults({
+                data: { ...data[currentField], ...accumulator[currentField] },
+                schema:
+                  typeof schema.properties[currentField].schema === 'function'
+                    ? schema.properties[currentField].schema({
+                        data: accumulator[currentField],
+                        formData: accumulator[currentField],
+                        intl,
+                      })
+                    : schema.properties[currentField].schema,
+                intl,
+              }),
+            },
           }
         : accumulator;
     }, {}),
-    ...data,
-  };
+    data,
+  );
+
   return derivedData;
 }
 
