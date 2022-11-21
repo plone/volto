@@ -15,6 +15,7 @@
 - Fix image tag for Plone 5.2.x, use 5.2.9 for now @sneridagh
 - Cover an additional edge case for defaults @tiberiuichim
 - Fix keyboard accessibility issue of Clear button in Folder content view @iFlameing
+- Fix translation spelling of toggle  @iFlameing
 
 ### Internal
 
