@@ -88,8 +88,6 @@
 - Load core add-ons configuration as any other add-on. @sneridagh
 - Fix `FormValidation` error object, use field `id` instead of field `title` @sneridagh
 - Revert #2828 PR change of the default `showSearchButton` Search block behavior (see [#3883](https://github.com/plone/volto/issues/3883)) @sneridagh
-
-### Internal
 - Fix `package.json` `postinstall` in core @sneridagh
 
 ### Documentation
