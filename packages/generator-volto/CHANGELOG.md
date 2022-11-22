@@ -1,6 +1,6 @@
 # Change Log
 
-## 6.0.0 (unreleased)
+## 6.0.0 (2022-11-22)
 
 ### Internal
 
