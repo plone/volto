@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix keyboard accessibility issue of Clear button in Folder content view @iFlameing
+
 ### Internal
 
 ### Documentation
