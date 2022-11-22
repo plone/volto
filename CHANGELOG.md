@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Allow custom style wrapper classnames via fieldname suffixes. Added `config.settings.styleClassNameConverters` to register new suffix converters @tiberiuichim
+
 ### Bugfix
 
 ### Internal
@@ -139,8 +141,6 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Allow passing ariaHidden, id and style to an Icon's SVG @JeffersonBledsoe #3908
 - All Fields now understand the `default` prop as a fallback value in case their data value is missing. As a convenience, the `defaultValue` is also used as a fallback, but this shouldn't proliferate. @tiberiuichim
 - There is an experimental setting to move the button for adding a new block to show below any selected block, instead of only on the left of empty text blocks. Set `config.experimental.addBlockButton.enabled = true` to enable it. @davisagli
-- Allow custom style wrapper classnames via fieldname suffixes. Added `config.settings.styleClassNameConverters` to register new suffix converters @tiberiuichim
-- Support for drilled down current state and updater function from schema in `ObjectListWidget`. This allows to sync the current object selected from the UI and the block settings and viceversa @sneridagh
 
 ### Bugfix
 

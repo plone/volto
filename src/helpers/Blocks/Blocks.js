@@ -3,16 +3,7 @@
  * @module helpers/Blocks
  */
 
-import {
-  omit,
-  without,
-  endsWith,
-  find,
-  isObject,
-  keys,
-  toPairs,
-  merge,
-} from 'lodash';
+import { omit, without, endsWith, find, isObject, keys, merge } from 'lodash';
 import move from 'lodash-move';
 import { v4 as uuid } from 'uuid';
 import config from '@plone/volto/registry';
@@ -450,35 +441,43 @@ export function applyBlockDefaults({ data, intl, ...rest }, blocksConfig) {
   return applySchemaDefaults({ data, schema, intl });
 }
 
-export const buildStyleClassNamesFromData = (styles) => {
-  // styles has the form
+/**
+ * Converts a name+value style pair (ex: color/red) to a classname,
+ * such as "has--color--red"
+ *
+ * This can be expanded via the style names, by suffixing them with special
+ * converters. See config.settings.styleClassNameConverters. Examples:
+ *
+ * styleToClassName('theme:noprefix', 'primary') returns "primary"
+ * styleToClassName('inverted:bool', true) returns 'inverted'
+ * styleToClassName('inverted:bool', false) returns ''
+ */
+export const styleToClassName = (key, value, prefix = '') => {
+  const converters = config.settings.styleClassNameConverters;
+  const [name, ...convIds] = key.split(':');
+
+  return (convIds.length ? convIds : ['default'])
+    .map((id) => converters[id])
+    .reduce((acc, conv) => conv(acc, value, prefix), name);
+};
+
+export const buildStyleClassNamesFromData = (obj = {}, prefix = '') => {
+  // styles has the form:
   // const styles = {
-  // color: 'red',
-  // backgroundColor: '#AABBCC',
+  //   color: 'red',
+  //   backgroundColor: '#AABBCC',
   // }
   // Returns: ['has--color--red', 'has--backgroundColor--AABBCC']
-  let styleArray = [];
-  const pairedStyles = toPairs(styles);
-  pairedStyles.forEach((item) => {
-    if (isObject(item[1])) {
-      const flattenedNestedStyles = toPairs(item[1]).map((nested) => [
-        item[0],
-        ...nested,
-      ]);
-      flattenedNestedStyles.forEach((sub) => styleArray.push(sub));
-    } else {
-      styleArray.push(item);
-    }
-  });
-  return styleArray.map((item) => {
-    const classname = item.map((item) => {
-      const str_item = item ? item.toString() : '';
-      return str_item && str_item.startsWith('#')
-        ? str_item.replace('#', '')
-        : str_item;
-    });
-    return `has--${classname[0]}--${classname[1]}${
-      classname[2] ? `--${classname[2]}` : ''
-    }`;
-  });
+
+  return Object.entries(obj)
+    .reduce(
+      (acc, [k, v]) => [
+        ...acc,
+        ...(isObject(v)
+          ? buildStyleClassNamesFromData(v, `${prefix}${k}--`)
+          : [styleToClassName(k, v, prefix)]),
+      ],
+      [],
+    )
+    .filter((v) => !!v);
 };
