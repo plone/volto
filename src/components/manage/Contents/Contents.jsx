@@ -1509,20 +1509,25 @@ class Contents extends Component {
                               onChange={this.onChangeFilter}
                             />
                             {this.state.filter && (
-                              <Icon
-                                name={clearSVG}
-                                size="30px"
-                                color="#e40166"
+                              <Button
+                                className="icon icon-container"
                                 onClick={() => {
                                   this.onChangeFilter('', { value: '' });
                                 }}
-                              />
+                              >
+                                <Icon
+                                  name={clearSVG}
+                                  size="30px"
+                                  color="#e40166"
+                                />
+                              </Button>
                             )}
                             <Icon
                               name={zoomSVG}
                               size="30px"
                               color="#007eb1"
                               className="zoom"
+                              style={{ flexShrink: '0' }}
                             />
                             <div className="results" />
                           </div>
