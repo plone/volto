@@ -2,17 +2,15 @@
 
 ## 16.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fix keyboard accessibility issue of Clear button in Folder content view @iFlameing
-
-### Internal
+- Fix issue when using list markdown when list is already active (volto-slate) @robgietema
+- Fix translation spelling of toggle  @iFlameing
 
 ### Documentation
+
+- Document experimental features @davisagli
 
 ## 16.0.0-rc.2 (2022-11-20)
 
@@ -20,8 +18,6 @@
 
 - Overhaul how block defaults are computed. See https://github.com/plone/volto/pull/3925 for more details @tiberiuichim
 - Cover an additional edge case for defaults @tiberiuichim
-- Fix issue when using list markdown when list is already active (volto-slate) @robgietema
-- Fix translation spelling of toggle  @iFlameing
 
 ### Internal
 
