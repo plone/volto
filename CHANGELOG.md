@@ -1,6 +1,6 @@
 # Change Log
 
-## 16.0.0 (unreleased)
+## 16.0.0 (2022-11-22)
 
 ### Breaking
 
