@@ -2,13 +2,9 @@
 
 ## 6.0.0 (unreleased)
 
-### Breaking
-
-### Feature
-
-### Bugfix
-
 ### Internal
+
+- Releasing final @sneridagh
 
 ## 6.0.0-alpha.4 (2022-11-20)
 
