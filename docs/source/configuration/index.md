@@ -14,6 +14,7 @@ myst:
 
 how-to
 settings-reference
+experimental
 zero-config-builds
 component-registry
 internalproxy
