@@ -11,6 +11,7 @@ myst:
 
 Experimental features are planned for inclusion in a future release of Volto,
 but are not yet considered mature by the community.
+An experimental feature gives users an easy way to install it and see if anything breaks before we make a new stable release that includes it.
 
 ## Volto configuration
 
