@@ -4,7 +4,7 @@ myst:
     "description": "Enable experimental features in Volto's configuration object"
     "property=og:description": "Enable experimental features in Volto's configuration object"
     "property=og:title": "Experimental features"
-    "keywords": "Volto, Plone, frontend, experimental"
+    "keywords": "Volto, Plone, frontend, experimental, features"
 ---
 
 # Experimental features
@@ -14,7 +14,7 @@ but are not yet considered mature by the community.
 
 ## Volto configuration
 
-You need to enable experimental features in Volto's configuration object:
+You can enable an experimental feature—also called a "feature flag"—in Volto's configuration object as shown below.
 
 ```js
 import config from '@plone/volto/registry'
