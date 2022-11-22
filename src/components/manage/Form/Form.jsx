@@ -441,7 +441,11 @@ class Form extends Component {
         () => {
           Object.keys(errors).forEach((err) =>
             toast.error(
-              <Toast error title={err} content={errors[err].join(', ')} />,
+              <Toast
+                error
+                title={this.props.schema.properties[err].title || err}
+                content={errors[err].join(', ')}
+              />,
             ),
           );
         },

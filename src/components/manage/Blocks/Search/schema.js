@@ -173,7 +173,10 @@ const FacetSchema = ({ intl }) => ({
     type: {
       title: intl.formatMessage(messages.facetWidget),
       choices: config.blocks.blocksConfig.search.extensions.facetWidgets.types.map(
-        ({ id, title }) => [id, title],
+        ({ id, title }) => [
+          id,
+          `${intl.formatMessage({ id: id, defaultMessage: title })}`,
+        ],
       ),
       defaultValue: config.blocks.blocksConfig.search.extensions.facetWidgets.types.find(
         ({ isDefault }) => isDefault,
@@ -183,7 +186,7 @@ const FacetSchema = ({ intl }) => ({
   required: ['field'],
 });
 
-export default ({ data = {}, intl }) => {
+const SearchSchema = ({ data = {}, intl }) => {
   return {
     title: intl.formatMessage(messages.searchBlock),
     fieldsets: [
@@ -237,7 +240,6 @@ export default ({ data = {}, intl }) => {
         type: 'boolean',
         title: intl.formatMessage(messages.showSearchButtonTitle),
         description: intl.formatMessage(messages.showSearchButtonDescription),
-        default: true,
       },
       showTotalResults: {
         type: 'boolean',
@@ -279,3 +281,5 @@ export default ({ data = {}, intl }) => {
     required: [],
   };
 };
+
+export default SearchSchema;

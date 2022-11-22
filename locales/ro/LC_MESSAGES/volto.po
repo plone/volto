@@ -412,6 +412,7 @@ msgstr ""
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Controlpanels/Rules/Rules
 #: components/manage/Controlpanels/UndoControlpanel
+#: components/manage/Controlpanels/UpgradeControlPanel
 #: components/manage/Diff/Diff
 #: components/manage/History/History
 #: components/manage/Multilingual/ManageTranslations
@@ -515,6 +516,7 @@ msgstr "Celulă"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Center
 msgid "Center"
 msgstr "Centrează"
@@ -660,6 +662,11 @@ msgstr ""
 msgid "Condition: "
 msgstr ""
 
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Configuration Versions
+msgid "Configuration Versions"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/EditRule
 # defaultMessage: Configure Content Rule
 msgid "Configure Content Rule"
@@ -795,6 +802,11 @@ msgstr "Creatori"
 # defaultMessage: Criteria
 msgid "Criteria"
 msgstr "Criterii"
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Current active configuration
+msgid "Current active configuration"
+msgstr ""
 
 #: components/manage/Blocks/Search/components/FilterList
 # defaultMessage: Current filters applied
@@ -1067,6 +1079,11 @@ msgstr "Trageți fișierul aici pentru a încărca un fișier nou"
 # defaultMessage: Drop files here ...
 msgid "Drop files here ..."
 msgstr "Trageți fișierele aici..."
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Dry run selected, transaction aborted.
+msgid "Dry run selected, transaction aborted."
+msgstr ""
 
 #: components/theme/Register/Register
 # defaultMessage: E-mail
@@ -1435,6 +1452,7 @@ msgstr "Din"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Full
 msgid "Full"
 msgstr "Complet"
@@ -1551,6 +1569,7 @@ msgstr "Istoricul {title}"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsBreadcrumbs
+#: components/manage/Contents/ContentsBreadcrumbsHomeItem
 #: components/theme/Breadcrumbs/Breadcrumbs
 # defaultMessage: Home
 msgid "Home"
@@ -1698,6 +1717,11 @@ msgstr "Interval Lunar"
 msgid "Interval Yearly"
 msgstr "Interval Anual"
 
+#: components/theme/View/RenderBlocks
+# defaultMessage: Invalid block - Will be removed on saving
+msgid "Invalid Block"
+msgstr ""
+
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Item batch size
 msgid "Item batch size"
@@ -1785,6 +1809,11 @@ msgstr "Data ultimului comentariu"
 msgid "Last modified"
 msgstr "Ultima modificare"
 
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Latest available configuration
+msgid "Latest available configuration"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Latest version
 msgid "Latest version"
@@ -1802,6 +1831,7 @@ msgstr "Imaginea de start"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Left
 msgid "Left"
 msgstr "Stânga"
@@ -1959,6 +1989,11 @@ msgstr "Valoarea maximă este {len}."
 msgid "Medium"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Membership updated
+msgid "Membership updated"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Message
 msgid "Message"
@@ -2005,6 +2040,11 @@ msgstr "Lunar"
 msgid "More"
 msgstr "Mai mult"
 
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide.
+msgid "More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide."
+msgstr ""
+
 #: config/Views
 # defaultMessage: Mosaic layout
 msgid "Mosaic layout"
@@ -2050,6 +2090,11 @@ msgstr "Numele meu de utilizator este"
 # defaultMessage: Name
 msgid "Name"
 msgstr "Nume"
+
+#: components/manage/Widgets/AlignWidget
+# defaultMessage: Narrow
+msgid "Narrow"
+msgstr ""
 
 #: error
 # defaultMessage: Navigate back
@@ -2340,6 +2385,16 @@ msgstr "Instrumente personale"
 # defaultMessage: Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first.
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Persoane responsabile de crearea conținutului acestui articol. Vă rugăm să introduceți o listă cu numele de utilizator, unul pe fiecare linie. Creatorul principal ar trebui să vină pe primul loc."
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Please continue with the upgrade.
+msgid "Please continue with the upgrade."
+msgstr ""
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Please ensure you have a backup of your site before performing the upgrade.
+msgid "Please ensure you have a backup of your site before performing the upgrade."
+msgstr ""
 
 #: components/manage/Blocks/Video/Body
 # defaultMessage: Please enter a valid URL by deleting the block and adding a new video block.
@@ -2638,6 +2693,7 @@ msgstr "Richtext"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Right
 msgid "Right"
 msgstr "Dreapta"
@@ -2653,6 +2709,7 @@ msgid "Roles"
 msgstr "Roluri"
 
 #: components/manage/Contents/ContentsBreadcrumbs
+#: components/manage/Contents/ContentsBreadcrumbsRootItem
 # defaultMessage: Root
 msgid "Root"
 msgstr "Root"
@@ -2838,6 +2895,7 @@ msgstr "Elemente selectate - x din y"
 msgid "Selection"
 msgstr "Selecție"
 
+#: components/manage/Blocks/Search/widgets/SelectMetadataField
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/SelectAutoComplete
@@ -3242,6 +3300,11 @@ msgstr "Prezența butonului dezactivează căutarea live, interogarea este emis�
 msgid "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
 msgstr ""
 
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: The following list shows which upgrade steps are going to be run. Upgrading sometimes performs a catalog/security update, which may take a long time on large sites. Be patient.
+msgid "The following list shows which upgrade steps are going to be run. Upgrading sometimes performs a catalog/security update, which may take a long time on large sites. Be patient."
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: The item could not be deleted.
 msgid "The item could not be deleted."
@@ -3262,6 +3325,12 @@ msgstr ""
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgstr "Procesul de înregistrare a avut succes. Vă rugăm să verificați căsuța de e-mail pentru informații despre modul de activare a contului dvs."
 
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: The site configuration is outdated and needs to be upgraded.
+msgid "The site configuration is outdated and needs to be upgraded."
+msgstr ""
+
 #: components/manage/Toolbar/More
 # defaultMessage: The working copy was discarded
 msgid "The working copy was discarded"
@@ -3276,6 +3345,11 @@ msgstr "{plonecms} este {copyright} 2000- {current_year} de {plonefoundation} ș
 # defaultMessage: There is a configuration problem on the backend
 msgid "There is a configuration problem on the backend"
 msgstr "Există o problemă de configurare pe backend"
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: There was an error with the upgrade.
+msgid "There was an error with the upgrade."
+msgstr ""
 
 #: components/manage/Form/InlineForm
 # defaultMessage: There were some errors
@@ -3558,6 +3632,26 @@ msgstr "Actualizați suplimentele instalate:"
 msgid "Updates available"
 msgstr "Actualizări disponibile"
 
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Upgrade
+msgid "Upgrade"
+msgstr ""
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Upgrade Plone Site
+msgid "Upgrade Plone Site"
+msgstr ""
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Upgrade Report
+msgid "Upgrade Report"
+msgstr ""
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Upgrade Steps
+msgid "Upgrade Steps"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: Upload
 msgid "Upload"
@@ -3665,6 +3759,7 @@ msgid "Variation"
 msgstr "Variație"
 
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: Version Overview
 msgid "Version Overview"
 msgstr "Prezentare generală a versiunii"
@@ -3797,6 +3892,7 @@ msgid "Who"
 msgstr "Cine"
 
 #: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
 # defaultMessage: Wide
 msgid "Wide"
 msgstr ""
@@ -3878,6 +3974,11 @@ msgstr "Parola dvs. a fost setată cu succes. Acum puteți {link} cu noua dvs. p
 msgid "Your preferred language"
 msgstr "Limba dvs. preferată"
 
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Your site is up to date.
+msgid "Your site is up to date."
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your username is required for reset your password.
 msgid "Your usernaame is required for reset your password."
@@ -3895,6 +3996,11 @@ msgid "box_forgot_password_option"
 msgstr "Ați uitat parola?"
 
 #: config/Blocks
+# defaultMessage: Checkbox
+msgid "checkboxFacet"
+msgstr ""
+
+#: config/Blocks
 # defaultMessage: Common
 msgid "common"
 msgstr "Comun"
@@ -3903,6 +4009,11 @@ msgstr "Comun"
 # defaultMessage: Compare to language
 msgid "compare_to"
 msgstr "Compara cu"
+
+#: config/Blocks
+# defaultMessage: Date Range
+msgid "daterangeFacet"
+msgstr ""
 
 #: components/manage/Blocks/Block/EditBlockWrapper
 # defaultMessage: delete
@@ -4298,6 +4409,11 @@ msgstr "an"
 msgid "rrule_years"
 msgstr "ani"
 
+#: config/Blocks
+# defaultMessage: Select
+msgid "selectFacet"
+msgstr ""
+
 #: components/manage/Blocks/Search/components/ViewSwitcher
 # defaultMessage: Select view
 msgid "selectView"
@@ -4342,6 +4458,11 @@ msgstr "Titlu"
 # defaultMessage: Table of Contents
 msgid "toc"
 msgstr "Cuprins"
+
+#: config/Blocks
+# defaultMessage: Toggle
+msgid "toggleFacet"
+msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update from version {origin} to {destination}

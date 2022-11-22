@@ -157,6 +157,22 @@ defineMessages({
     id: 'Facets on top',
     defaultMessage: 'Facets on top',
   },
+  selectFacet: {
+    id: 'selectFacet',
+    defaultMessage: 'Select',
+  },
+  checkboxFacet: {
+    id: 'checkboxFacet',
+    defaultMessage: 'Checkbox',
+  },
+  daterangeFacet: {
+    id: 'daterangeFacet',
+    defaultMessage: 'Date Range',
+  },
+  toggleFacet: {
+    id: 'toggleFacet',
+    defaultMessage: 'Toggle',
+  },
 });
 
 const groupBlocksOrder = [
