@@ -11,6 +11,8 @@
 
 ### Bugfix
 
+- Fix jest moduleNameMapper for `@plone/volto/babel` @tiberiuichim
+- Fix addons loader test @tiberiuichim
 - Pass down `onChangeBlock` prop to all stock blocks in core @sneridagh
 
 ### Internal
