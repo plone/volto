@@ -19,6 +19,7 @@ const ListingData = (props) => {
           [id]: value,
         });
       }}
+      onChangeBlock={onChangeBlock}
       formData={data}
       block={block}
     />
