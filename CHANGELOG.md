@@ -12,6 +12,7 @@
 ### Bugfix
 
 - Fix jest moduleNameMapper for `@plone/volto/babel` @tiberiuichim
+- Fix addons loader test @tiberiuichim
 
 ### Internal
 
