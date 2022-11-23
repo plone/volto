@@ -192,7 +192,7 @@ jobs:
           record: true
           parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
-          group: Core Basic - Plone 6
+          group: Core Basic - Plone 5
           spec: cypress/tests/core/basic/**/*.js
           start: |
             make start-test-acceptance-server-5
