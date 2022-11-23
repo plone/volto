@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-11-17T09:21:34.279Z\n"
+"POT-Creation-Date: 2022-11-23T08:32:11.874Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1719,6 +1719,7 @@ msgstr ""
 msgid "Interval Yearly"
 msgstr ""
 
+#: components/manage/Blocks/Block/DefaultView
 #: components/theme/View/RenderBlocks
 # defaultMessage: Invalid block - Will be removed on saving
 msgid "Invalid Block"

@@ -1717,6 +1717,7 @@ msgstr "Interval Lunar"
 msgid "Interval Yearly"
 msgstr "Interval Anual"
 
+#: components/manage/Blocks/Block/DefaultView
 #: components/theme/View/RenderBlocks
 # defaultMessage: Invalid block - Will be removed on saving
 msgid "Invalid Block"
