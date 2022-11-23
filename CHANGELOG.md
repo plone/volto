@@ -2,8 +2,6 @@
 
 ## 16.0.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Support for drilled down current state and updater function from schema in `ObjectListWidget`. This allows to sync the current object selected from the UI and the block settings and viceversa @sneridagh
@@ -15,10 +13,6 @@
 - Fix addons loader test @tiberiuichim
 - Pass down `onChangeBlock` prop to all stock blocks in core @sneridagh
 - Fix user search by full name in users control panel @reebalazs
-
-### Internal
-
-### Documentation
 
 ## 16.0.0 (2022-11-22)
 
