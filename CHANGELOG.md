@@ -11,7 +11,7 @@
 
 ### Bugfix
 
-- Fix jest moduleNameMapper for `@plone/volto/babel` @tiberiuichim
+- Pass down `onChangeBlock` prop to all stock blocks in core @sneridagh
 - Fix user search by full name in users control panel @reebalazs
 
 ### Internal
