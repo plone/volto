@@ -140,7 +140,7 @@ class UsersControlpanel extends Component {
       (this.props.createRequest.loading && nextProps.createRequest.loaded)
     ) {
       this.props.listUsers({
-        query: this.state.search,
+        search: this.state.search,
       });
     }
     if (this.props.createRequest.loading && nextProps.createRequest.loaded) {
@@ -172,7 +172,7 @@ class UsersControlpanel extends Component {
   onSearch(event) {
     event.preventDefault();
     this.props.listUsers({
-      query: this.state.search,
+      search: this.state.search,
     });
   }
 
