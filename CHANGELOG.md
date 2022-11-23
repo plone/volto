@@ -11,6 +11,8 @@
 
 ### Bugfix
 
+- Fix jest moduleNameMapper for `@plone/volto/babel` @tiberiuichim
+
 ### Internal
 
 ### Documentation
