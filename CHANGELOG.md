@@ -14,6 +14,7 @@
 - Fix jest moduleNameMapper for `@plone/volto/babel` @tiberiuichim
 - Fix addons loader test @tiberiuichim
 - Pass down `onChangeBlock` prop to all stock blocks in core @sneridagh
+- Fix user search by full name in users control panel @reebalazs
 
 ### Internal
 
@@ -274,7 +275,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Fix image tag for Plone 5.2.x, use 5.2.9 for now @sneridagh
 - Cover an additional edge case for defaults @tiberiuichim
 - Fix issue when using list markdown when list is already active (volto-slate) @robgietema
-- Fix translation spelling of toggle  @iFlameing
+- Fix translation spelling of toggle @iFlameing
 - Fix keyboard accessibility issue of Clear button in Folder content view @iFlameing
 
 ### Internal
@@ -382,7 +383,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 
 - Fix keyboard accessibility issue of Clear button in Folder content view @iFlameing
 - Fix issue when using list markdown when list is already active (volto-slate) @robgietema
-- Fix translation spelling of toggle  @iFlameing
+- Fix translation spelling of toggle @iFlameing
 
 ### Documentation
 
