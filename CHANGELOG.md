@@ -11,6 +11,8 @@
 
 ### Bugfix
 
+- Pass down `onChangeBlock` prop to all stock blocks in core @sneridagh
+
 ### Internal
 
 ### Documentation

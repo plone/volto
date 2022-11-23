@@ -9,7 +9,6 @@ const HeroImageLeftBlockData = (props) => {
   const schema = schemaHero({ ...props, intl });
   return (
     <BlockDataForm
-      block={block}
       schema={schema}
       title={schema.title}
       onChangeField={(id, value) => {
@@ -18,7 +17,9 @@ const HeroImageLeftBlockData = (props) => {
           [id]: value,
         });
       }}
+      onChangeBlock={onChangeBlock}
       formData={data}
+      block={block}
     />
   );
 };
