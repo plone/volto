@@ -37,10 +37,7 @@ export const insertData = (editor) => {
 
       const val = deserialize(editor, body);
       fragment = Array.isArray(val) ? val : [val];
-
-      // external normalization
-      // fragment = normalizeExternalData(editor, fragment);
-      // TODO: for htmlSlateWidget we want to apply the normalizeExternalData
+      fragment = editor.normalizeExternalData(fragment);
 
       editor.insertFragment(fragment);
 
@@ -110,6 +107,7 @@ export const insertData = (editor) => {
         }
       }
 
+      // always normalize when dealing with plain text
       const nodes = normalizeExternalData(editor, fragment);
       if (!containsText) {
         Transforms.insertNodes(editor, nodes);

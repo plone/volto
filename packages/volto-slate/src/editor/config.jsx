@@ -32,6 +32,7 @@ import {
   withDeleteSelectionOnEnter,
   withDeserializers,
   normalizeNode,
+  normalizeExternalData,
 } from './extensions';
 import {
   // inlineTagDeserializer,
@@ -198,6 +199,7 @@ export const extensions = [
   insertData,
   isInline,
   normalizeNode,
+  normalizeExternalData,
 ];
 
 // Default hotkeys and the format they trigger
