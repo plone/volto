@@ -39,8 +39,8 @@ const VideoSidebar = (props) => {
               [id]: value,
             });
           }}
+          onChangeBlock={onChangeBlock}
           formData={data}
-          fieldIndex={data.index}
           block={block}
         />
       )}
