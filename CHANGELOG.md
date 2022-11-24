@@ -16,6 +16,7 @@
 - Pass down `onChangeBlock` prop to all stock blocks in core @sneridagh
 - Fix user search by full name in users control panel @reebalazs
 - Avoid warning for missing value in NumberWidget @tiberiuichim
+- Fix crash in Slate link editing in a dexterity field @tiberiuichim
 
 ### Internal
 
@@ -569,6 +570,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 ### Bugfix
 
 - Prefer views assigned explicitly with `layout` over views based on the `@type` @iRohitSingh
+- Improve collapsing of whitespace when pasting to slate text block @tiberiuichim
 
 ### Internal
 
