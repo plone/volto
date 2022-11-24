@@ -2,13 +2,9 @@
 
 ## 2.1.3 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
-### Internal
+- Improve `execSync` call in addon script @sneridagh
 
 ## 2.1.2 (2022-10-26)
 

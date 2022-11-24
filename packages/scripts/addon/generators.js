@@ -79,16 +79,20 @@ export async function runGitGenerator({
     output: 'addons',
   });
 
-  execSync(`cd ${destination} && yarn`, (error, stdout, stderr) => {
-    if (error) {
-      console.log(`error: ${error.message}`);
-      return;
-    }
-    if (stderr) {
-      console.log(`stderr: ${stderr}`);
-      return;
-    }
-  });
+  execSync(
+    `cd ${destination} && yarn install`,
+    { stdio: 'inherit' },
+    (error, stdout, stderr) => {
+      if (error) {
+        console.log(`error: ${error.message}`);
+        return;
+      }
+      if (stderr) {
+        console.log(`stderr: ${stderr}`);
+        return;
+      }
+    },
+  );
 
   console.log(
     chalk.green(
