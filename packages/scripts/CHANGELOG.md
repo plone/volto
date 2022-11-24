@@ -2,13 +2,9 @@
 
 ## 2.1.4 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
-### Internal
+- Disable immutable installs in local package once created, so CI does not complain. We REALLY want to install something! @sneridagh
 
 ## 2.1.3 (2022-11-24)
 

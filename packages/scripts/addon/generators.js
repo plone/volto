@@ -80,7 +80,7 @@ export async function runGitGenerator({
   });
 
   execSync(
-    `cd ${destination} && yarn install`,
+    `cd ${destination} && yarn config set enableImmutableInstalls false && yarn install`,
     { stdio: 'inherit' },
     (error, stdout, stderr) => {
       if (error) {
