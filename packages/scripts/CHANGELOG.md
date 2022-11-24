@@ -2,13 +2,9 @@
 
 ## 2.1.6 (unreleased)
 
-### Breaking
-
 ### Feature
 
-### Bugfix
-
-### Internal
+- Match the new layout for the Volto project generator for Cypress tests @sneridagh
 
 ## 2.1.5 (2022-11-24)
 
