@@ -2,13 +2,9 @@
 
 ## 6.1.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
-### Internal
+- Updated reset fixture scripts for generator @sneridagh
 
 ## 6.1.0 (2022-11-24)
 
