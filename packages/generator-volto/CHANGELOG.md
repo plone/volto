@@ -1,6 +1,6 @@
 # Change Log
 
-## 6.0.1 (unreleased)
+## 6.1.2 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,19 @@
 ### Bugfix
 
 ### Internal
+
+## 6.1.1 (2022-11-24)
+
+### Bugfix
+
+- Updated reset fixture scripts for generator @sneridagh
+
+## 6.1.0 (2022-11-24)
+
+### Feature
+
+- Refactor the `package.json` scripts, move all Cypress related to `Makefile` commands, remove the scripts that are obsolete as well. @sneridagh
+- Update the default Plone Versions from the convenience docker images in `Makefile` @sneridagh
 
 ## 6.0.0 (2022-11-22)
 
