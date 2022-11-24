@@ -2,13 +2,10 @@
 
 ## 2.2.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
-### Internal
+- Include `cypress` folder and `cypress.config.js` in the local clone command @sneridagh
+- Fix the local clone command `execSync` @sneridagh
 
 ## 2.2.0 (2022-11-24)
 
