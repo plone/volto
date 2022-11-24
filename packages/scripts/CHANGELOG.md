@@ -2,13 +2,9 @@
 
 ## 2.1.5 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
-### Internal
+- Remove `isCanary` amendment to differentiate 15/16 way of calling the test script @sneridagh
 
 ## 2.1.4 (2022-11-24)
 

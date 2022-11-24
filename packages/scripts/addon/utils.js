@@ -7,9 +7,7 @@ export function amendPackageJSON(name, destination, isCanary) {
   packageJSON.scripts = {
     ...packageJSON.scripts,
     'cypress:open': `cd src/addons/${name} && NODE_ENV=test cypress open`,
-    test: `RAZZLE_JEST_CONFIG=src/addons/${name}/jest-addon.config.js razzle test ${
-      isCanary ? '' : '--env=jest-environment-jsdom-sixteen'
-    } --passWithNoTests`,
+    test: `RAZZLE_JEST_CONFIG=src/addons/${name}/jest-addon.config.js razzle test --passWithNoTests`,
     'cypress:run': `cd src/addons/${name} && NODE_ENV=test cypress run`,
   };
   fs.writeFileSync(
