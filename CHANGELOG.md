@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Internationalization of descriptions of user add form fields. @wesleybl
+
 ### Bugfix
 
 ### Internal
