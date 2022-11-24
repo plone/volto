@@ -1,6 +1,6 @@
 # Change Log
 
-## 2.1.5 (unreleased)
+## 2.1.5 (2022-11-24)
 
 ### Bugfix
 
