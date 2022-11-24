@@ -2,13 +2,10 @@
 
 ## 6.0.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
-### Bugfix
-
-### Internal
+- Refactor the `package.json` scripts, move all Cypress related to `Makefile` commands, remove the scripts that are obsolete as well. @sneridagh
+- Update the default Plone Versions from the convenience docker images in `Makefile` @sneridagh
 
 ## 6.0.0 (2022-11-22)
 
