@@ -1,6 +1,6 @@
 # Change Log
 
-## 6.1.1 (unreleased)
+## 6.1.1 (2022-11-24)
 
 ### Bugfix
 
