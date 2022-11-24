@@ -6,6 +6,7 @@
 
 ### Feature
 
+- Internationalization of descriptions of user add form fields. @wesleybl
 - Allow custom style wrapper classnames via fieldname suffixes. Added `config.settings.styleClassNameConverters` to register new suffix converters @tiberiuichim
 - Support for drilled down current state and updater function from schema in `ObjectListWidget`. This allows to sync the current object selected from the UI and the block settings and viceversa @sneridagh
 

@@ -3989,6 +3989,26 @@ msgstr "Seu site está atualizado."
 msgid "Your usernaame is required for reset your password."
 msgstr "Seu nome de usuário é necessário para redefinir sua senha."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
+msgid "addUserFormEmailDescription"
+msgstr "Informe seu endereço de E-Mail. Isso é necessário caso você esqueça sua senha. Nós respeitamos sua privacidade e não iremos fornecer seu endereço a terceiros ou divulgá-lo em nenhum lugar."
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Enter full name, e.g. John Smith.
+msgid "addUserFormFullnameDescription"
+msgstr "Informe seu nome completo, por exemplo, João da Silva."
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Enter your new password. Minimum 8 characters.
+msgid "addUserFormPasswordDescription"
+msgstr "Informe a sua nova senha. Mínimo de 8 caracteres."
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in.
+msgid "addUserFormUsernameDescription"
+msgstr "Informe o nome do usuário que você deseja, geralmente algo como 'jsilva'. Não use espaços ou caracteres especiais. Nomes de usuários e senhas são sensíveis a letras maiúsculas e minúsculas, certifique-se que a tecla Caps Lock não esteja ativa. Esse é o nome que você usará para acessar."
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Available views
 msgid "availableViews"
