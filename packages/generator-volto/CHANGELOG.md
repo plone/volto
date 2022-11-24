@@ -1,5 +1,15 @@
 # Change Log
 
+## 6.1.2 (unreleased)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
 ## 6.1.1 (2022-11-24)
 
 ### Bugfix
