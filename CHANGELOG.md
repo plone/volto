@@ -7,6 +7,7 @@
 ### Feature
 
 - Internationalization of descriptions of user add form fields. @wesleybl
+- Provide a default View/Edit component for blocks @avoinea, @tiberiuichim
 
 ### Bugfix
 
@@ -31,10 +32,6 @@
 - Fix addons loader test @tiberiuichim
 - Pass down `onChangeBlock` prop to all stock blocks in core @sneridagh
 - Fix user search by full name in users control panel @reebalazs
-
-### Internal
-
-### Documentation
 
 ## 16.0.0 (2022-11-22)
 
@@ -498,8 +495,6 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Restrict css selector for error message (volto-slate) #3838 @mamico
 - Upgrade `husky` to latest version @sneridagh
 - Enable the use of yarn 3 in the build by default @sneridagh
-
-See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
 
 ### Feature
 

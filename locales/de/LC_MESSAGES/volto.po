@@ -1723,6 +1723,7 @@ msgstr "Wöchentlich"
 msgid "Interval Yearly"
 msgstr "Jährliches Intervall"
 
+#: components/manage/Blocks/Block/DefaultView
 #: components/theme/View/RenderBlocks
 # defaultMessage: Invalid block - Will be removed on saving
 msgid "Invalid Block"
@@ -3592,6 +3593,7 @@ msgstr "Vereinigt"
 msgid "Uninstall"
 msgstr "Deinstallieren"
 
+#: components/manage/Blocks/Block/DefaultView
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/RenderBlocks
 # defaultMessage: Unknown Block {block}

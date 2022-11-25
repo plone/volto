@@ -1717,6 +1717,7 @@ msgstr "settimane"
 msgid "Interval Yearly"
 msgstr "anni"
 
+#: components/manage/Blocks/Block/DefaultView
 #: components/theme/View/RenderBlocks
 # defaultMessage: Invalid block - Will be removed on saving
 msgid "Invalid Block"
@@ -3586,6 +3587,7 @@ msgstr "Unificato"
 msgid "Uninstall"
 msgstr "Disinstalla"
 
+#: components/manage/Blocks/Block/DefaultView
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/RenderBlocks
 # defaultMessage: Unknown Block {block}
