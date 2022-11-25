@@ -20,6 +20,7 @@ import {
 } from '@plone/volto/config/RichTextEditor/Blocks';
 import FromHTMLCustomBlockFn from '@plone/volto/config/RichTextEditor/FromHTML';
 import { contentIcons } from '@plone/volto/config/ContentIcons';
+import { styleClassNameConverters } from '@plone/volto/config/Style';
 
 import {
   controlPanelsIcons,
@@ -74,6 +75,7 @@ config.set('settings', {
   apiExpanders: [],
   downloadableObjects: ['File'],
   viewableInBrowserObjects: [],
+  styleClassNameConverters,
 });
 config.set('blocks', {
   blocksConfig: {
@@ -163,3 +165,8 @@ config.set('widgets', {
 });
 
 config.set('components', {});
+config.set('experimental', {
+  addBlockButton: {
+    enabled: false,
+  },
+});

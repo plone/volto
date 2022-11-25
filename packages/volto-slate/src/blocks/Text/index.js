@@ -26,6 +26,7 @@ import {
   withLists,
   withSplitBlocksOnBreak,
   withIsSelected,
+  normalizeExternalData,
 } from './extensions';
 import { extractImages } from '@plone/volto-slate/editor/plugins/Image/deconstruct';
 import { extractTables } from '@plone/volto-slate/blocks/Table/deconstruct';
@@ -44,6 +45,7 @@ export default (config) => {
       withDeserializers,
       withIsSelected,
       breakList,
+      normalizeExternalData,
     ],
 
     // Pluggable handlers for the onKeyDown event of <Editable />

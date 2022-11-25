@@ -140,7 +140,7 @@ class UsersControlpanel extends Component {
       (this.props.createRequest.loading && nextProps.createRequest.loaded)
     ) {
       this.props.listUsers({
-        query: this.state.search,
+        search: this.state.search,
       });
     }
     if (this.props.createRequest.loading && nextProps.createRequest.loaded) {
@@ -172,7 +172,7 @@ class UsersControlpanel extends Component {
   onSearch(event) {
     event.preventDefault();
     this.props.listUsers({
-      query: this.state.search,
+      search: this.state.search,
     });
   }
 
@@ -439,23 +439,27 @@ class UsersControlpanel extends Component {
                       messages.addUserFormUsernameTitle,
                     ),
                     type: 'string',
-                    description:
-                      'Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in.',
+                    description: this.props.intl.formatMessage(
+                      messages.addUserFormUsernameDescription,
+                    ),
                   },
                   fullname: {
                     title: this.props.intl.formatMessage(
                       messages.addUserFormFullnameTitle,
                     ),
                     type: 'string',
-                    description: 'Enter full name, e.g. John Smith.',
+                    description: this.props.intl.formatMessage(
+                      messages.addUserFormFullnameDescription,
+                    ),
                   },
                   email: {
                     title: this.props.intl.formatMessage(
                       messages.addUserFormEmailTitle,
                     ),
                     type: 'string',
-                    description:
-                      'Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.',
+                    description: this.props.intl.formatMessage(
+                      messages.addUserFormEmailDescription,
+                    ),
                     widget: 'email',
                   },
                   password: {
@@ -463,8 +467,9 @@ class UsersControlpanel extends Component {
                       messages.addUserFormPasswordTitle,
                     ),
                     type: 'password',
-                    description:
-                      'Enter your new password. Minimum 5 characters.',
+                    description: this.props.intl.formatMessage(
+                      messages.addUserFormPasswordDescription,
+                    ),
                     widget: 'password',
                   },
                   sendPasswordReset: {
@@ -480,7 +485,6 @@ class UsersControlpanel extends Component {
                     type: 'array',
                     choices: this.props.roles.map((role) => [role.id, role.id]),
                     noValueOption: false,
-                    description: '',
                   },
                   groups: {
                     title: this.props.intl.formatMessage(
@@ -492,7 +496,6 @@ class UsersControlpanel extends Component {
                       group.id,
                     ]),
                     noValueOption: false,
-                    description: '',
                   },
                 },
                 required: ['username', 'email'],

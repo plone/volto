@@ -28,39 +28,12 @@ navDepth
 defaultBlockType
     The default block type in Volto is "text", which uses the current DraftJS-based implementation for the rich text editor. Future alternative rich text editors will need to use this setting and replace it with their block type. The block definition should also include the `blockHasValue` function, which is needed to activate the Block Chooser functionality. See this function signature in [Blocks > Settings](../blocks/settings.md).
 
+
 sentryOptions
-    Sentry configuration:
+    In Volto 16.0.0.alpha.45, Sentry integration was moved from core to the add-on [`@plone-collective/volto-sentry`](https://www.npmjs.com/package/@plone-collective/volto-sentry).
 
-    ```js
-    import {
-      settings as defaultSettings,
-    } from '@plone/volto/config';
-
-    const settings = {
-      ...defaultSettings,
-      sentryOptions: {
-        ...defaultSettings.sentryOptions,
-        dsn: 'https://key@sentry.io/1',
-        environment: 'production',
-        release: '1.2.3',
-        serverName: 'volto',
-        tags: {
-          site: 'foo.bar',
-          app: 'test_app',
-          logger: 'volto',
-        },
-        extras: {
-          key: 'value',
-        },
-        integrations: [
-            ...defaultSettings.sentryOptions.integrations,
-            // new MyAwesomeIntegration()
-        ]
-      }
-    };
-    ```
     ```{seealso}
-    See more about [Sentry integration](../deploying/sentry.md).
+    See {doc}`../deploying/sentry`.
     ```
 
 contentIcons
@@ -230,6 +203,10 @@ controlpanels
 filterControlPanelsSchema
     A schema factory for a control panel. It is used internally, to tweak the schemas provided by the controlpanel endpoint, to make them fit for Volto.
 
+errorHandlers
+    A list of error handlers that will be called when there is an unhandled exception. Each error handler is a function that
+    receives a single argument, the `error` object.
+
 workflowMapping
     It's an object that defines the mapping between workflow states/transitions and the color that should show in the change Workflow dropdown. This is the default:
 
@@ -249,10 +226,12 @@ workflowMapping
     It's meant to be extended with your own workflows/transitions.
     It is recommended to assign the same color to the transition as the destination state, so the user can have the visual hint to which state are they transitioning to.
 
-errorHandlers
-    A list of error handlers that will be called when there is an unhandled exception. Each error handler is a function that
-    receives a single argument, the `error` object.
-```
+
+styleClassNameConverters
+    An object with functions used by the style wrapper helpers to convert style
+    data to actual class names. You can customize the generated classname by
+    registering fieldnames with names such as `<fieldname>:<converterName>`,
+    where the converter is registered here.
 
 ## Views settings
 

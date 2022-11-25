@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "16.0.0-rc.1",
+  "version": "16.0.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -36,6 +36,7 @@
     "postinstall": "make patches",
     "analyze": "BUNDLE_ANALYZE=true razzle build",
     "start": "razzle start",
+    "start:coresandbox": "ADDONS=coresandbox razzle start",
     "build": "razzle build --noninteractive",
     "prepare": "husky install",
     "test": "razzle test --maxWorkers=50%",
@@ -84,8 +85,9 @@
     },
     "moduleNameMapper": {
       "@plone/volto/package.json": "<rootDir>/package.json",
+      "@plone/volto/babel": "<rootDir>/babel.js",
       "@plone/volto/(.*)$": "<rootDir>/src/$1",
-      "@plone/volto-slate": "<rootDir>/packages/volto-slate/src",
+      "@plone/volto-slate/(.*)$": "<rootDir>/packages/volto-slate/src/$1",
       "~/config": "<rootDir>/src/config",
       "~/../locales/${lang}.json": "<rootDir>/locales/en.json",
       "(.*)/locales/(.*)": "<rootDir>/locales/$2",
@@ -115,7 +117,8 @@
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
       "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}",
-      "<rootDir>/__tests__/**/?(*.)(spec|test).{js,jsx,mjs}"
+      "<rootDir>/__tests__/**/?(*.)(spec|test).{js,jsx,mjs}",
+      "<rootDir>/packages/volto-slate/src/**/?(*.)(spec|test).{js,jsx,mjs}"
     ]
   },
   "prettier": {
