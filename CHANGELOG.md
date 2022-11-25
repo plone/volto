@@ -11,6 +11,7 @@
 ### Bugfix
 
 - Improve collapsing of whitespace when pasting to slate text block @tiberiuichim
+- Fix crash in Slate link editing in a dexterity field @tiberiuichim
 
 ### Internal
 
