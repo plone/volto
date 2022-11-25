@@ -7,6 +7,7 @@
 ### Feature
 
 - Internationalization of descriptions of user add form fields. @wesleybl
+- Provide a default View/Edit component for blocks @avoinea, @tiberiuichim
 
 ### Bugfix
 
@@ -24,7 +25,6 @@
 
 - Support for drilled down current state and updater function from schema in `ObjectListWidget`. This allows to sync the current object selected from the UI and the block settings and viceversa @sneridagh
 - Allow custom style wrapper classnames via fieldname suffixes. Added `config.settings.styleClassNameConverters` to register new suffix converters @tiberiuichim
-- Provide a default View/Edit component for blocks @avoinea, @tiberiuichim
 
 ### Bugfix
 
@@ -32,10 +32,6 @@
 - Fix addons loader test @tiberiuichim
 - Pass down `onChangeBlock` prop to all stock blocks in core @sneridagh
 - Fix user search by full name in users control panel @reebalazs
-
-### Internal
-
-### Documentation
 
 ## 16.0.0 (2022-11-22)
 
