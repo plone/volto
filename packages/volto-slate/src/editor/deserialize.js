@@ -1,70 +1,37 @@
 import { jsx } from 'slate-hyperscript';
 import { Text } from 'slate';
-import { isWhitespace } from '@plone/volto-slate/utils';
-import {
-  TD,
-  TH,
-  COMMENT,
-  ELEMENT_NODE,
-  INLINE_ELEMENTS,
-  TEXT_NODE,
-} from '../constants';
+// import { isWhitespace } from '@plone/volto-slate/utils';
+import { TD, TH, COMMENT, ELEMENT_NODE, TEXT_NODE } from '../constants';
 
-const isInline = (node) =>
-  node &&
-  (node.nodeType === TEXT_NODE || INLINE_ELEMENTS.includes(node.nodeName));
+import { collapseInlineSpace } from './utils';
 
 /**
- * Deserialize to an object or an Array.
+ * Deserialize to a Slate Node, an Array of Slate Nodes or null
  *
- * This returns a Slate Node or null.
+ * One particularity of this function is that it tries to do
+ * a "perception-based" conversion. For example, in html, multiple whitespaces
+ * display as a single space. A new line character in text is actually rendered
+ * as a space, etc. So we try to meet user's expectations that when they
+ * copy/paste content, we'll preserve the aspect of their text.
+ *
+ * See https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Whitespace
  */
 export const deserialize = (editor, el) => {
-  // console.log('deserialize el:', el);
   const { htmlTagsToSlate } = editor;
 
-  // console.log('des:', el.nodeType, el);
   if (el.nodeType === COMMENT) {
     return null;
   } else if (el.nodeType === TEXT_NODE) {
-    // instead of === '\n' we use isWhitespace for when deserializing tables
-    // from Calc and other similar cases
-
-    // console.log('maybe whitespace', {
-    //   text: `-${el.textContent}-`,
-    //   prev: el.previousSibling,
-    //   next: el.nextSibling,
-    //   isPrev: isInline(el.previousSibling),
-    //   isNext: isInline(el.nextSibling),
-    //   prevName: el.previousSibling && el.previousSibling.nodeName,
-    //   nextName: el.nextSibling && el.nextSibling.nodeName,
-    // });
-
-    if (isWhitespace(el.textContent)) {
-      // console.log({
-      //   text: `-${el.textContent}-`,
-      //   prev: el.previousSibling,
-      //   next: el.nextSibling,
-      //   isPrev: isInline(el.previousSibling),
-      //   isNext: isInline(el.nextSibling),
-      //   prevName: el.previousSibling && el.previousSibling.nodeName,
-      //   nextName: el.nextSibling && el.nextSibling.nodeName,
-      // });
-      // if it's empty text between 2 tags, it should be ignored
-      return isInline(el.previousSibling) || isInline(el.nextSibling)
-        ? { text: el.textContent } // perceptually multiple whitespace render as a single space
-        : null;
-    }
-    return {
-      text: el.textContent
-        .replace(/\n$/g, ' ')
-        .replace(/\n/g, ' ')
-        .replace(/\t/g, ''),
-    };
+    const text = collapseInlineSpace(el);
+    return text
+      ? {
+          text,
+        }
+      : null;
   } else if (el.nodeType !== ELEMENT_NODE) {
     return null;
   } else if (el.nodeName === 'BR') {
-    // TODO: is handling <br> like this ok in all cases ?
+    // gets merged with sibling text nodes by Slate normalization in insertData
     return { text: '\n' };
   }
 
@@ -78,7 +45,8 @@ export const deserialize = (editor, el) => {
     return htmlTagsToSlate[nodeName](editor, el);
   }
 
-  return deserializeChildren(el, editor); // fallback deserializer
+  // fallback deserializer, all unknown elements are "stripped"
+  return deserializeChildren(el, editor);
 };
 
 export const typeDeserialize = (editor, el) => {
@@ -138,10 +106,11 @@ export const inlineTagDeserializer = (attrs) => (editor, el) => {
 export const spanTagDeserializer = (editor, el) => {
   const style = el.getAttribute('style') || '';
   let children = el.childNodes;
+
   if (
     // handle formatting from OpenOffice
     children.length === 1 &&
-    children[0].nodeType === 3 &&
+    children[0].nodeType === TEXT_NODE &&
     children[0].textContent === '\n'
   ) {
     return jsx('text', {}, ' ');
@@ -149,7 +118,7 @@ export const spanTagDeserializer = (editor, el) => {
   children = deserializeChildren(el, editor);
 
   // whitespace is replaced by deserialize() with null;
-  children = children.map((c) => (c === null ? ' ' : c));
+  children = children.map((c) => (c === null ? '' : c));
 
   // TODO: handle sub/sup as <sub> and <sup>
   // Handle Google Docs' <sub> formatting
@@ -171,6 +140,7 @@ export const spanTagDeserializer = (editor, el) => {
   const res = children.find((c) => typeof c !== 'string')
     ? children
     : jsx('text', {}, children);
+
   return res;
 };
 
