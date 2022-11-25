@@ -30,6 +30,12 @@
 - Fix addons loader test @tiberiuichim
 - Pass down `onChangeBlock` prop to all stock blocks in core @sneridagh
 - Fix user search by full name in users control panel @reebalazs
+- Avoid warning for missing value in NumberWidget @tiberiuichim
+- Fix crash in Slate link editing in a dexterity field @tiberiuichim
+
+### Internal
+
+### Documentation
 
 ## 16.0.0 (2022-11-22)
 
