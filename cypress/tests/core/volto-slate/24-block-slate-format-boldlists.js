@@ -40,31 +40,31 @@ describe('Block Tests: Bold Bulleted lists', () => {
       'sleep furiously.',
     );
   });
+
   it('As editor I can paste internal(slate formatted) <strong> formatted bulleted lists', function () {
     // Complete chained commands
-    cy.getSlateEditorAndType('This is slate"s own bold content');
-    cy.setSlateSelection('This is slate"s own');
+    cy.getSlateEditorAndType("This is slate's own bold content");
+    cy.setSlateSelection("This is slate's own");
 
     //create a bold bullted list
     cy.clickSlateButton('Bulleted list');
     cy.clickSlateButton('Bold');
     //copy content "This is slate"s own"
-    cy.setSlateCursor('content')
-      .type('{enter}')
-      .pasteClipboard(
-        '<strong><span><span>This is slate"s own</span></span></strong>',
-      );
+    cy.setSlateCursor('content').type('{enter}');
+    cy.getSlate().pasteClipboard(
+      "<strong><span><span>This is slate's own</span></span></strong>",
+    );
 
     // Save
     cy.toolbarSave();
 
     cy.get('[id="page-document"] ul li:nth-child(1) strong').contains(
-      'This is slate"s own',
+      "This is slate's own",
     );
 
     //pasted content
     cy.get('[id="page-document"] ul li:nth-child(2) strong').contains(
-      'This is slate"s own',
+      "This is slate's own",
     );
   });
 
@@ -83,6 +83,7 @@ describe('Block Tests: Bold Bulleted lists', () => {
 
     // Save
     cy.toolbarSave();
+    // cy.pause();
 
     cy.get('[id="page-document"] ul li:nth-child(1) strong').contains(
       'This is slate"s own bold content',

@@ -3981,6 +3981,26 @@ msgstr ""
 msgid "Your usernaame is required for reset your password."
 msgstr "Il tuo username è richiesto per reimpostare la tua password."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
+msgid "addUserFormEmailDescription"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Enter full name, e.g. John Smith.
+msgid "addUserFormFullnameDescription"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Enter your new password. Minimum 8 characters.
+msgid "addUserFormPasswordDescription"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in.
+msgid "addUserFormUsernameDescription"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Available views
 msgid "availableViews"

@@ -79,16 +79,20 @@ export async function runGitGenerator({
     output: 'addons',
   });
 
-  execSync(`cd ${destination} && yarn`, (error, stdout, stderr) => {
-    if (error) {
-      console.log(`error: ${error.message}`);
-      return;
-    }
-    if (stderr) {
-      console.log(`stderr: ${stderr}`);
-      return;
-    }
-  });
+  execSync(
+    `cd ${destination} && yarn config set enableImmutableInstalls false && yarn install`,
+    { stdio: 'inherit' },
+    (error, stdout, stderr) => {
+      if (error) {
+        console.log(`error: ${error.message}`);
+        return;
+      }
+      if (stderr) {
+        console.log(`stderr: ${stderr}`);
+        return;
+      }
+    },
+  );
 
   console.log(
     chalk.green(
@@ -155,6 +159,20 @@ export async function runLocalGenerator({
         overwrite: false,
       },
     );
+    fse.copySync(
+      `${source}/cypress`,
+      `${destination}/src/addons/${name}/cypress`,
+      {
+        overwrite: false,
+      },
+    );
+    fse.copySync(
+      `${source}/cypress.config.js`,
+      `${destination}/src/addons/${name}/cypress.config.js`,
+      {
+        overwrite: false,
+      },
+    );
   } catch (err) {
     console.error(err);
   }
@@ -173,16 +191,20 @@ export async function runLocalGenerator({
     output: 'addons',
   });
 
-  execSync(`cd ${destination} && yarn`, (error, stdout, stderr) => {
-    if (error) {
-      console.log(`error: ${error.message}`);
-      return;
-    }
-    if (stderr) {
-      console.log(`stderr: ${stderr}`);
-      return;
-    }
-  });
+  execSync(
+    `cd ${destination} && yarn config set enableImmutableInstalls false && yarn install`,
+    { stdio: 'inherit' },
+    (error, stdout, stderr) => {
+      if (error) {
+        console.log(`error: ${error.message}`);
+        return;
+      }
+      if (stderr) {
+        console.log(`stderr: ${stderr}`);
+        return;
+      }
+    },
+  );
 
   console.log(
     chalk.green(
