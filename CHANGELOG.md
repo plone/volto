@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Improve collapsing of whitespace when pasting to slate text block @tiberiuichim
+
 ### Internal
 
 ### Documentation
@@ -574,7 +576,6 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 ### Bugfix
 
 - Prefer views assigned explicitly with `layout` over views based on the `@type` @iRohitSingh
-- Improve collapsing of whitespace when pasting to slate text block @tiberiuichim
 
 ### Internal
 
