@@ -1725,6 +1725,7 @@ msgstr "週"
 msgid "Interval Yearly"
 msgstr "年"
 
+#: components/manage/Blocks/Block/DefaultView
 #: components/theme/View/RenderBlocks
 # defaultMessage: Invalid block - Will be removed on saving
 msgid "Invalid Block"
@@ -3594,6 +3595,7 @@ msgstr "Unified (未翻訳)"
 msgid "Uninstall"
 msgstr "アンインストール"
 
+#: components/manage/Blocks/Block/DefaultView
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/RenderBlocks
 # defaultMessage: Unknown Block {block}
