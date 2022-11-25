@@ -165,3 +165,8 @@ config.set('widgets', {
 });
 
 config.set('components', {});
+config.set('experimental', {
+  addBlockButton: {
+    enabled: false,
+  },
+});

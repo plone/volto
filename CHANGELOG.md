@@ -6,9 +6,11 @@
 
 ### Feature
 
+- Internationalization of descriptions of user add form fields. @wesleybl
 - Allow custom style wrapper classnames via fieldname suffixes. Added `config.settings.styleClassNameConverters` to register new suffix converters @tiberiuichim
 - Support for drilled down current state and updater function from schema in `ObjectListWidget`. This allows to sync the current object selected from the UI and the block settings and viceversa @sneridagh
 - Add tooltip to multivalue labels in select facet @reebalazs
+- Provide a default View/Edit component for blocks @avoinea, @tiberiuichim
 
 ### Bugfix
 
@@ -16,6 +18,8 @@
 - Fix addons loader test @tiberiuichim
 - Pass down `onChangeBlock` prop to all stock blocks in core @sneridagh
 - Fix user search by full name in users control panel @reebalazs
+- Avoid warning for missing value in NumberWidget @tiberiuichim
+- Fix crash in Slate link editing in a dexterity field @tiberiuichim
 
 ### Internal
 
@@ -486,8 +490,6 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Upgrade `husky` to latest version @sneridagh
 - Enable the use of yarn 3 in the build by default @sneridagh
 
-See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
-
 ### Feature
 
 - Japanese translation updated @terapyon
@@ -569,6 +571,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 ### Bugfix
 
 - Prefer views assigned explicitly with `layout` over views based on the `@type` @iRohitSingh
+- Improve collapsing of whitespace when pasting to slate text block @tiberiuichim
 
 ### Internal
 
