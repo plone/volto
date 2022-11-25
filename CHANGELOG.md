@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Improve collapsing of whitespace when pasting to slate text block @tiberiuichim
+
 ### Internal
 
 ### Documentation
