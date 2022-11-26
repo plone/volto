@@ -1,16 +1,37 @@
 # Change Log
 
-## 16.0.1 (unreleased)
+## 16.2.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
+### Bugfix
+
+### Internal
+
+### Documentation
+
+## 16.2.0 (2022-11-25)
+
+### Feature
+
 - Internationalization of descriptions of user add form fields. @wesleybl
-- Allow custom style wrapper classnames via fieldname suffixes. Added `config.settings.styleClassNameConverters` to register new suffix converters @tiberiuichim
-- Support for drilled down current state and updater function from schema in `ObjectListWidget`. This allows to sync the current object selected from the UI and the block settings and viceversa @sneridagh
 - Add tooltip to multivalue labels in select facet @reebalazs
 - Provide a default View/Edit component for blocks @avoinea, @tiberiuichim
+
+### Bugfix
+
+- Improve collapsing of whitespace when pasting to slate text block @tiberiuichim
+- Avoid warning for missing value in NumberWidget @tiberiuichim
+- Fix crash in Slate link editing in a dexterity field @tiberiuichim
+
+## 16.1.0 (2022-11-23)
+
+### Feature
+
+- Support for drilled down current state and updater function from schema in `ObjectListWidget`. This allows to sync the current object selected from the UI and the block settings and viceversa @sneridagh
+- Allow custom style wrapper classnames via fieldname suffixes. Added `config.settings.styleClassNameConverters` to register new suffix converters @tiberiuichim
 
 ### Bugfix
 
@@ -18,12 +39,6 @@
 - Fix addons loader test @tiberiuichim
 - Pass down `onChangeBlock` prop to all stock blocks in core @sneridagh
 - Fix user search by full name in users control panel @reebalazs
-- Avoid warning for missing value in NumberWidget @tiberiuichim
-- Fix crash in Slate link editing in a dexterity field @tiberiuichim
-
-### Internal
-
-### Documentation
 
 ## 16.0.0 (2022-11-22)
 
