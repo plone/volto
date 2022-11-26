@@ -183,18 +183,17 @@
         "yarn i18n",
         "git add locales"
       ],
-      "after:bump": "node changelogupdater.js bump ${version}",
-      "after:release": "node changelogupdater.js back ${version} && git commit -am 'Back to development' && git push"
+      "after:release": "git commit -am 'Back to development' && git push"
     },
     "git": {
-      "changelog": "node changelogupdater.js excerpt",
+      "changelog": "pipx run towncrier build --draft --yes --version 0.0.0",
       "requireUpstream": false,
       "requireCleanWorkingDir": false
     },
     "github": {
       "release": true,
       "releaseName": "${version}",
-      "releaseNotes": "node changelogupdater.js excerpt"
+      "releaseNotes": "pipx run towncrier build --yes --version ${version}"
     }
   },
   "lint-staged": {
