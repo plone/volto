@@ -12,6 +12,8 @@
 
 ### Documentation
 
+- Rewrite "Upgraded core to use Cypress 11" section. Fixes https://github.com/plone/volto/issues/3979. @stevepiercy
+
 ## 16.2.0 (2022-11-25)
 
 ### Feature
