@@ -183,6 +183,7 @@
         "yarn i18n",
         "git add locales"
       ],
+      "after:bump": "pipx run towncrier build --yes --version ${version}",
       "after:release": "git commit -am 'Back to development' && git push"
     },
     "git": {
@@ -193,7 +194,7 @@
     "github": {
       "release": true,
       "releaseName": "${version}",
-      "releaseNotes": "pipx run towncrier build --yes --version ${version}"
+      "releaseNotes": "pipx run towncrier build --draft --yes --version ${version}"
     }
   },
   "lint-staged": {
