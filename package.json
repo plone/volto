@@ -183,8 +183,7 @@
         "yarn i18n",
         "git add locales"
       ],
-      "after:bump": "pipx run towncrier build --yes --version ${version}",
-      "after:release": "git commit -am 'Back to development' && git push"
+      "after:bump": "pipx run towncrier build --yes --version ${version}"
     },
     "git": {
       "changelog": "pipx run towncrier build --draft --yes --version 0.0.0",
