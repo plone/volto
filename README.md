@@ -316,17 +316,16 @@ yarn test
 
 ### Releasing
 
-For ease the release process, we use `release-it` utility that helps with the process and `towncrier` for creating and maintaining changelogs.
+For ease the release process, we use the utility [`release-it`](https://www.npmjs.com/package/release-it) which helps with the process, and [`towncrier`](https://towncrier.readthedocs.io) for creating and maintaining change logs.
 
-https://www.npmjs.com/package/release-it
-https://towncrier.readthedocs.io/
 
-For using it and start a release you need to fulfill the requirements:
+To start a release, you must fulfill the following requirements:
 
-- Have permissions to push on master branch
+- Have permission to push to `master` branch.
 - Have permissions on the @plone org on npmjs.com
-- Have a environment variable (`GITHUB_TOKEN`) with a GitHub personal token with permissions to write the Volto Release page on GitHub (https://www.npmjs.com/package/release-it#github-releases)
-- Have installed `pipx` (https://pypa.github.io/pipx/) in your system
+- Have an environment variable `GITHUB_TOKEN` with a GitHub personal token with permissions to write to the [Volto Release page on GitHub](https://github.com/plone/volto/releases).
+  See `release-it` documentation of [GitHub releases](https://www.npmjs.com/package/release-it#github-releases) and GitHub documentation [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases).
+- Install [`pipx`](https://pypa.github.io/pipx/) in your system.
 
 Then the command for release:
 

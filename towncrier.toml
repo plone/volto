@@ -28,6 +28,6 @@ name = "Internal"
 showcontent = true
 
 [[tool.towncrier.type]]
-directory = "doc"
+directory = "documentation"
 name = "Documentation"
 showcontent = true
