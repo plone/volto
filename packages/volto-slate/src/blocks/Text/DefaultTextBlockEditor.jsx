@@ -247,7 +247,10 @@ export const DefaultTextBlockEditor = (props) => {
           }}
         </Dropzone>
 
-        {!config.experimental.addBlockButton.enabled &&
+        {!(
+          config.experimental.addBlockButton.enabled ||
+          config.experimental.quantaToolbar.enabled
+        ) &&
           selected &&
           !data.plaintext?.trim() &&
           !disableNewBlocks && (

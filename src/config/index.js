@@ -176,7 +176,7 @@ let config = {
       enabled: false,
     },
     quantaToolbar: {
-      enabled: false,
+      enabled: true,
     },
   },
   widgets: {

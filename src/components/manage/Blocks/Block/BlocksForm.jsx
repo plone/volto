@@ -278,8 +278,8 @@ const BlocksForm = (props) => {
             const editBlockWrapper =
               children ||
               (props.isMainForm &&
-              (config.settings.enableQuantaToolbar ||
-                blocksConfig[child['@type']].enableQuantaToolbar)
+              (config.experimental.quantaToolbar.enabled ||
+                blocksConfig[child['@type']].disableQuantaToolbar)
                 ? topLevelBlockWrapper
                 : defaultBlockWrapper);
 
