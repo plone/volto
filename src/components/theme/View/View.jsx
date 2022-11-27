@@ -197,7 +197,8 @@ class View extends Component {
   render() {
     const { views } = config;
     if (this.props.error && this.props.error.code === 301) {
-      return <Redirect to={flattenToAppURL(this.props.error.url)} />;
+      const redirect = flattenToAppURL(this.props.error.url).split('?')[0];
+      return <Redirect to={`${redirect}${this.props.location.search}`} />;
     } else if (this.props.error && !this.props.connectionRefused) {
       let FoundView;
       if (this.props.error.status === undefined) {
@@ -221,7 +222,7 @@ class View extends Component {
       return <span />;
     }
     const RenderedView =
-      this.getViewByType() || this.getViewByLayout() || this.getViewDefault();
+      this.getViewByLayout() || this.getViewByType() || this.getViewDefault();
 
     return (
       <div id="view">
@@ -235,6 +236,7 @@ class View extends Component {
           }
         />
         <RenderedView
+          key={this.props.content['@id']}
           content={this.props.content}
           location={this.props.location}
           token={this.props.token}

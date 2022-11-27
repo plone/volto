@@ -6,7 +6,9 @@ export const loadables = {
   prismCore: loadable.lib(() => import('prismjs/components/prism-core')),
   toastify: loadable.lib(() => import('react-toastify')),
   reactSelect: loadable.lib(() => import('react-select'), { ssr: false }),
-  reactWindow: loadable.lib(() => import('react-window'), { ssr: false }),
+  reactVirtualized: loadable.lib(() => import('react-virtualized'), {
+    ssr: false,
+  }),
   reactSortableHOC: loadable.lib(() => import('react-sortable-hoc'), {
     ssr: false,
   }),
@@ -32,6 +34,7 @@ export const loadables = {
   reactDnd: loadable.lib(() => import('react-dnd')),
   reactDndHtml5Backend: loadable.lib(() => import('react-dnd-html5-backend')),
   reactBeautifulDnd: loadable.lib(() => import('react-beautiful-dnd')),
+  rrule: loadable.lib(() => import('rrule')),
 
   // draftjs libs
   immutableLib: loadable.lib(() => import('immutable')),

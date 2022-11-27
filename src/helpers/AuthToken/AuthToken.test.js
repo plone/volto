@@ -57,6 +57,7 @@ describe('AuthToken', () => {
       expect(cookies.set).toBeCalledWith('auth_token', token, {
         path: '/',
         expires: new Date(jwtDecode(token).exp * 1000),
+        secure: false,
       });
     });
 

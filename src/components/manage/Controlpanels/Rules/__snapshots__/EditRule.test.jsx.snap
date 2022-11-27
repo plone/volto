@@ -1,0 +1,242 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditRule renders rules edit interface 1`] = `
+<div
+  id="page-rule-edit"
+>
+  <div
+    className="ui container"
+  >
+    <article
+      id="content"
+    >
+      <div
+        className="ui raised segments"
+      >
+        <div
+          className="ui segment primary"
+        >
+          Edit Rule
+        </div>
+        <div
+          className="ui segment secondary"
+        >
+          Use the form below to define the new content rule
+        </div>
+        <div
+          className="ui segment"
+        >
+          <form
+            className="ui form"
+            onSubmit={[Function]}
+          >
+            <div
+              className="ui grid"
+            >
+              <div
+                className="stretched row"
+              >
+                <div
+                  className="column"
+                >
+                  <div
+                    className="mocked-default-widget"
+                    id="mocked-field-undefined"
+                  >
+                    Title
+                     - 
+                    Please set a descriptive title for the rule.
+                  </div>
+                </div>
+              </div>
+              <div
+                className="stretched row"
+              >
+                <div
+                  className="column"
+                >
+                  <div
+                    className="mocked-default-widget"
+                    id="mocked-field-undefined"
+                  >
+                    Description
+                     - 
+                    Enter a short description of the rule and its purpose.
+                  </div>
+                </div>
+              </div>
+              <div
+                className="stretched row"
+              >
+                <div
+                  className="column"
+                >
+                  <div
+                    className="mocked-default-widget"
+                    id="mocked-field-undefined"
+                  >
+                    Triggering event
+                     - 
+                    The rule will execute when the following event occurs.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div
+          className="ui segment"
+        >
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "column",
+              }
+            }
+          >
+            <div
+              className="ui checkbox"
+              onChange={[Function]}
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
+            >
+              <input
+                checked={false}
+                className="hidden"
+                readOnly={true}
+                tabIndex={0}
+                type="checkbox"
+              />
+              <label>
+                Enabled
+              </label>
+            </div>
+            <p
+              style={
+                Object {
+                  "color": "#878f93",
+                  "fontSize": "0.9rem",
+                  "paddingBottom": "0.7rem",
+                  "paddingTop": "0.7rem",
+                }
+              }
+            >
+              Whether or not the rule is currently enabled
+            </p>
+          </div>
+        </div>
+        <div
+          className="ui segment"
+        >
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "column",
+              }
+            }
+          >
+            <div
+              className="ui checkbox"
+              onChange={[Function]}
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
+            >
+              <input
+                checked={false}
+                className="hidden"
+                readOnly={true}
+                tabIndex={0}
+                type="checkbox"
+              />
+              <label>
+                Stop Executing rules
+              </label>
+            </div>
+            <p
+              style={
+                Object {
+                  "color": "#878f93",
+                  "fontSize": "0.9rem",
+                  "paddingBottom": "0.7rem",
+                  "paddingTop": "0.7rem",
+                }
+              }
+            >
+              Whether or not execution of further rules should stop after this rule is executed
+            </p>
+          </div>
+        </div>
+        <div
+          className="ui segment"
+        >
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "column",
+              }
+            }
+          >
+            <div
+              className="ui checkbox"
+              onChange={[Function]}
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
+            >
+              <input
+                checked={false}
+                className="hidden"
+                readOnly={true}
+                tabIndex={0}
+                type="checkbox"
+              />
+              <label>
+                Cascading rule
+              </label>
+            </div>
+            <p
+              style={
+                Object {
+                  "color": "#878f93",
+                  "fontSize": "0.9rem",
+                  "paddingBottom": "0.7rem",
+                  "paddingTop": "0.7rem",
+                }
+              }
+            >
+              Whether or not other rules should be triggered by the actions launched by this rule. Activate this only if you are sure this won't create infinite loops
+            </p>
+          </div>
+        </div>
+        <div
+          className="ui segment"
+        >
+          <button
+            className="ui primary button"
+            onClick={[Function]}
+          >
+            Save
+          </button>
+          <button
+            className="ui secondary button"
+            onClick={[Function]}
+          >
+            Cancel
+          </button>
+        </div>
+        <div
+          className="ui segment"
+        />
+      </div>
+    </article>
+  </div>
+  <div
+    id="Portal"
+  />
+</div>
+`;

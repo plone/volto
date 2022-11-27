@@ -8,7 +8,7 @@ export const Align = WidgetStory.bind({
 });
 
 export default {
-  title: 'Widgets/Align',
+  title: 'Edit Widgets/Align',
   component: AlignWidget,
   decorators: [
     (Story) => (
@@ -18,5 +18,10 @@ export default {
       </div>
     ),
   ],
-  argTypes: {},
+  argTypes: {
+    actions: {
+      control: 'check',
+      options: ['left', 'right', 'center', 'narrow', 'wide', 'full'],
+    },
+  },
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { Accordion, Button, Segment } from 'semantic-ui-react';
 import { DragDropList, FormFieldWrapper, Icon } from '@plone/volto/components';
+import { applySchemaDefaults } from '@plone/volto/helpers';
 import ObjectWidget from '@plone/volto/components/manage/Widgets/ObjectWidget';
 
 import upSVG from '@plone/volto/icons/up-key.svg';
@@ -56,7 +57,9 @@ const messages = defineMessages({
  *      }
  *      mutated.fieldsets[0].fields.push('extraField');
  *      return mutated;
- *    }
+ *    },
+ *    activeObject: 0, // Current active object drilled down from the schema (if present)
+ *    setActiveObject: () => {} // The current active object state updater function drilled down from the schema (if present)
  *  },
  * ```
  */
@@ -70,14 +73,29 @@ const ObjectListWidget = (props) => {
     onChange,
     schemaExtender,
   } = props;
-  const [activeColumn, setActiveColumn] = React.useState(value.length - 1);
+  const [localActiveObject, setLocalActiveObject] = React.useState(
+    props.activeObject ?? value.length - 1,
+  );
+
+  let activeObject, setActiveObject;
+  if (
+    (props.activeObject || props.activeObject === 0) &&
+    props.setActiveObject
+  ) {
+    activeObject = props.activeObject;
+    setActiveObject = props.setActiveObject;
+  } else {
+    activeObject = localActiveObject;
+    setActiveObject = setLocalActiveObject;
+  }
+
   const intl = useIntl();
 
-  function handleChangeColumn(e, blockProps) {
+  function handleChangeActiveObject(e, blockProps) {
     const { index } = blockProps;
-    const newIndex = activeColumn === index ? -1 : index;
+    const newIndex = activeObject === index ? -1 : index;
 
-    setActiveColumn(newIndex);
+    setActiveObject(newIndex);
   }
   const objectSchema = typeof schema === 'function' ? schema(props) : schema;
 
@@ -98,18 +116,25 @@ const ObjectListWidget = (props) => {
             }
             onClick={(e) => {
               e.preventDefault();
-              onChange(id, [
-                ...value,
-                {
-                  '@id': uuid(),
-                },
-              ]);
-              setActiveColumn(value.length);
+              const data = {
+                '@id': uuid(),
+              };
+              const objSchema = schemaExtender
+                ? schemaExtender(schema, data, intl)
+                : objectSchema;
+              const dataWithDefaults = applySchemaDefaults({
+                data,
+                schema: objSchema,
+                intl,
+              });
+
+              onChange(id, [...value, dataWithDefaults]);
+              setActiveObject(value.length);
             }}
           >
             <Icon name={addSVG} size="18px" />
             &nbsp;
-            {/* Custom addMessage in schema, else default to english */}
+            {/* Custom addMessage in schema, else default to English */}
             {objectSchema.addMessage ||
               `${intl.formatMessage(messages.add)} ${objectSchema.title}`}
           </Button>
@@ -158,11 +183,11 @@ const ObjectListWidget = (props) => {
             >
               <Accordion key={index} fluid styled>
                 <Accordion.Title
-                  active={activeColumn === index}
+                  active={activeObject === index}
                   index={index}
-                  onClick={handleChangeColumn}
+                  onClick={handleChangeActiveObject}
                   aria-label={`${
-                    activeColumn === index
+                    activeObject === index
                       ? intl.formatMessage(messages.labelCollapseItem)
                       : intl.formatMessage(messages.labelShowItem)
                   } #${index + 1}`}
@@ -195,14 +220,14 @@ const ObjectListWidget = (props) => {
                     >
                       <Icon name={deleteSVG} size="20px" color="#e40166" />
                     </button>
-                    {activeColumn === index ? (
+                    {activeObject === index ? (
                       <Icon name={upSVG} size="20px" />
                     ) : (
                       <Icon name={downSVG} size="20px" />
                     )}
                   </div>
                 </Accordion.Title>
-                <Accordion.Content active={activeColumn === index}>
+                <Accordion.Content active={activeObject === index}>
                   <Segment>
                     <ObjectWidget
                       id={`${id}-${index}`}

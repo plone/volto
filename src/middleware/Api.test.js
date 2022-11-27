@@ -152,4 +152,80 @@ describe('api middleware helpers', () => {
       '/de/mypage/@navigation?expand=translations,secondexpand,mycustomexpander,mycustomexpander2&expand.navigation.depth=3&someotherquery=1&someotherquery=2',
     );
   });
+  it('addExpandersToPath - navigation expander with querystring - no querystring from original request', () => {
+    config.settings.apiExpanders = [
+      {
+        match: '/',
+        GET_CONTENT: ['navigation'],
+        querystring: {
+          'expand.navigation.depth': 3,
+        },
+      },
+    ];
+
+    const result = addExpandersToPath('/de/mypage', GET_CONTENT);
+    // No need to stringify
+    expect(result).toEqual(
+      '/de/mypage?expand=navigation&expand.navigation.depth=3',
+    );
+  });
+  it('addExpandersToPath - navigation expander with several querystrings - no querystring from original request', () => {
+    config.settings.apiExpanders = [
+      {
+        match: '/',
+        GET_CONTENT: ['navigation'],
+        querystring: {
+          'expand.navigation.depth': 3,
+          'expand.navigation.coolness': 1,
+        },
+      },
+    ];
+
+    const result = addExpandersToPath('/de/mypage', GET_CONTENT);
+    // No need to stringify
+    expect(result).toEqual(
+      '/de/mypage?expand=navigation&expand.navigation.coolness=1&expand.navigation.depth=3',
+    );
+  });
+  it('addExpandersToPath - navigation expander with querystring - querystring present from original request', () => {
+    config.settings.apiExpanders = [
+      {
+        match: '/',
+        GET_CONTENT: ['navigation'],
+        querystring: {
+          'expand.navigation.depth': 3,
+        },
+      },
+    ];
+
+    const result = addExpandersToPath(
+      '/de/mypage?someotherquery=1&someotherquery=2',
+      GET_CONTENT,
+    );
+    // No need to stringify
+    expect(result).toEqual(
+      '/de/mypage?expand=navigation&expand.navigation.depth=3&someotherquery=1&someotherquery=2',
+    );
+  });
+  it('addExpandersToPath - navigation expander with several querystrings - querystring present from original request', () => {
+    config.settings.apiExpanders = [
+      {
+        match: '/',
+        GET_CONTENT: ['navigation'],
+        querystring: {
+          'expand.navigation.depth': 3,
+          'expand.navigation.coolness': 1,
+        },
+      },
+    ];
+
+    const result = addExpandersToPath(
+      '/de/mypage?someotherquery=1&someotherquery=2',
+      GET_CONTENT,
+    );
+    // No need to stringify
+    expect(result).toEqual(
+      '/de/mypage?expand=navigation&expand.navigation.coolness=1&expand.navigation.depth=3&someotherquery=1&someotherquery=2',
+    );
+  });
 });

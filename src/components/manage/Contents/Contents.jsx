@@ -13,12 +13,12 @@ import {
   Button,
   Confirm,
   Container,
+  Divider,
   Dropdown,
   Menu,
   Input,
   Segment,
   Table,
-  Popup,
   Loader,
   Dimmer,
 } from 'semantic-ui-react';
@@ -47,6 +47,8 @@ import {
   orderContent,
   sortContent,
   updateColumnsContent,
+  linkIntegrityCheck,
+  getContent,
 } from '@plone/volto/actions';
 import Indexes, { defaultIndexes } from '@plone/volto/constants/Indexes';
 import {
@@ -59,6 +61,7 @@ import {
   ContentsTagsModal,
   ContentsPropertiesModal,
   Pagination,
+  Popup,
   Toolbar,
   Toast,
   Icon,
@@ -87,6 +90,7 @@ import sortDownSVG from '@plone/volto/icons/sort-down.svg';
 import sortUpSVG from '@plone/volto/icons/sort-up.svg';
 import downKeySVG from '@plone/volto/icons/down-key.svg';
 import moreSVG from '@plone/volto/icons/more.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   back: {
@@ -265,6 +269,31 @@ const messages = defineMessages({
     id: 'All',
     defaultMessage: 'All',
   },
+  linkIntegrityMessageHeader: {
+    id: 'Potential link breakage',
+    defaultMessage: 'Potential link breakage',
+  },
+  linkIntegrityMessageBody: {
+    id:
+      'By deleting this item, you will break ' +
+      'links that exist in the items listed below. ' +
+      'If this is indeed what you want to do, ' +
+      'we recommend that remove these references first.',
+    defaultMessage:
+      'By deleting this item, ' +
+      'you will break links that exist in the items ' +
+      'listed below. If this is indeed what you ' +
+      'want to do, we recommend that remove ' +
+      'these references first.',
+  },
+  linkIntegrityMessageExtra: {
+    id: 'This Page is referenced by the following items:',
+    defaultMessage: 'This Page is referenced by the following items:',
+  },
+  deleteItemMessage: {
+    id: 'Items to be deleted:',
+    defaultMessage: 'Items to be deleted:',
+  },
 });
 
 /**
@@ -290,6 +319,7 @@ class Contents extends Component {
     orderContent: PropTypes.func.isRequired,
     sortContent: PropTypes.func.isRequired,
     updateColumnsContent: PropTypes.func.isRequired,
+    linkIntegrityCheck: PropTypes.func.isRequired,
     clipboardRequest: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
@@ -412,6 +442,7 @@ class Contents extends Component {
       sort_on: this.props.sort?.on || 'getObjPositionInParent',
       sort_order: this.props.sort?.order || 'ascending',
       isClient: false,
+      linkIntegrityBreakages: '',
     };
     this.filterTimeout = null;
   }
@@ -424,6 +455,21 @@ class Contents extends Component {
   componentDidMount() {
     this.fetchContents();
     this.setState({ isClient: true });
+  }
+
+  async componentDidUpdate(_, prevState) {
+    if (
+      this.state.itemsToDelete !== prevState.itemsToDelete &&
+      this.state.itemsToDelete.length > 0
+    ) {
+      this.setState({
+        linkIntegrityBreakages: await this.props.linkIntegrityCheck(
+          map(this.state.itemsToDelete, (item) =>
+            this.getFieldById(item, 'UID'),
+          ),
+        ),
+      });
+    }
   }
 
   /**
@@ -451,11 +497,16 @@ class Contents extends Component {
       );
     }
     if (this.props.pathname !== nextProps.pathname) {
+      // Refetching content to sync the current object in the toolbar
+      this.props.getContent(getBaseUrl(nextProps.pathname));
       this.setState(
         {
           currentPage: 0,
         },
-        () => this.fetchContents(nextProps.pathname),
+        () =>
+          this.setState({ filter: '' }, () =>
+            this.fetchContents(nextProps.pathname),
+          ),
       );
     }
     if (this.props.searchRequest.loading && nextProps.searchRequest.loaded) {
@@ -629,6 +680,7 @@ class Contents extends Component {
 
     this.setState({
       filteredItems,
+      selectedMenuFilter: value,
     });
   }
 
@@ -1102,7 +1154,6 @@ class Contents extends Component {
     const folderContentsAction = find(this.props.objectActions, {
       id: 'folderContents',
     });
-
     const loading =
       (this.props.clipboardRequest?.loading &&
         !this.props.clipboardRequest?.error) ||
@@ -1129,11 +1180,17 @@ class Contents extends Component {
                 <article id="content">
                   <Confirm
                     open={this.state.showDelete}
+                    confirmButton="Delete"
                     header={this.props.intl.formatMessage(
                       messages.deleteConfirm,
                     )}
                     content={
                       <div className="content">
+                        <h3>
+                          {this.props.intl.formatMessage(
+                            messages.deleteItemMessage,
+                          )}
+                        </h3>
                         <ul className="content">
                           {map(this.state.itemsToDelete, (item) => (
                             <li key={item}>
@@ -1141,6 +1198,46 @@ class Contents extends Component {
                             </li>
                           ))}
                         </ul>
+                        {this.state.linkIntegrityBreakages.length > 0 ? (
+                          <div>
+                            <h3>
+                              {this.props.intl.formatMessage(
+                                messages.linkIntegrityMessageHeader,
+                              )}
+                            </h3>
+                            <p>
+                              {this.props.intl.formatMessage(
+                                messages.linkIntegrityMessageBody,
+                              )}
+                            </p>
+                            <ul className="content">
+                              {map(
+                                this.state.linkIntegrityBreakages,
+                                (item) => (
+                                  <li key={item['@id']}>
+                                    <a href={item['@id']}>{item.title}</a>
+                                    <p>
+                                      {this.props.intl.formatMessage(
+                                        messages.linkIntegrityMessageExtra,
+                                      )}
+                                    </p>
+                                    <ul className="content">
+                                      {map(item.breaches, (breach) => (
+                                        <li key={breach['@id']}>
+                                          <a href={breach['@id']}>
+                                            {breach.title}
+                                          </a>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </li>
+                                ),
+                              )}
+                            </ul>
+                          </div>
+                        ) : (
+                          <div></div>
+                        )}
                       </div>
                     }
                     onCancel={this.onDeleteCancel}
@@ -1411,11 +1508,26 @@ class Contents extends Component {
                               value={this.state.filter}
                               onChange={this.onChangeFilter}
                             />
+                            {this.state.filter && (
+                              <Button
+                                className="icon icon-container"
+                                onClick={() => {
+                                  this.onChangeFilter('', { value: '' });
+                                }}
+                              >
+                                <Icon
+                                  name={clearSVG}
+                                  size="30px"
+                                  color="#e40166"
+                                />
+                              </Button>
+                            )}
                             <Icon
                               name={zoomSVG}
                               size="30px"
                               color="#007eb1"
                               className="zoom"
+                              style={{ flexShrink: '0' }}
                             />
                             <div className="results" />
                           </div>
@@ -1494,24 +1606,26 @@ class Contents extends Component {
                           <Table.Header>
                             <Table.Row>
                               <Table.HeaderCell>
-                                <Dropdown
-                                  item
-                                  upward={false}
-                                  className="sort-icon"
-                                  aria-label={this.props.intl.formatMessage(
-                                    messages.sort,
-                                  )}
-                                  icon={
+                                <Popup
+                                  menu={true}
+                                  position="bottom left"
+                                  flowing={true}
+                                  basic={true}
+                                  on="click"
+                                  popper={{
+                                    className: 'dropdown-popup',
+                                  }}
+                                  trigger={
                                     <Icon
                                       name={configurationSVG}
                                       size="24px"
                                       color="#826a6a"
-                                      className="configuration-svg"
+                                      className="dropdown-popup-trigger configuration-svg"
                                     />
                                   }
                                 >
-                                  <Dropdown.Menu>
-                                    <Dropdown.Header
+                                  <Menu vertical borderless fluid>
+                                    <Menu.Header
                                       content={this.props.intl.formatMessage(
                                         messages.rearrangeBy,
                                       )}
@@ -1526,14 +1640,22 @@ class Contents extends Component {
                                         'portal_type',
                                       ],
                                       (index) => (
-                                        <Dropdown.Item
+                                        <Dropdown
                                           key={index}
+                                          item
+                                          simple
                                           className={`sort_${index} icon-align`}
+                                          icon={
+                                            <Icon
+                                              name={downKeySVG}
+                                              size="24px"
+                                              className="left"
+                                            />
+                                          }
+                                          text={this.props.intl.formatMessage({
+                                            id: Indexes[index].label,
+                                          })}
                                         >
-                                          <Icon name={downKeySVG} size="24px" />
-                                          <FormattedMessage
-                                            id={Indexes[index].label}
-                                          />
                                           <Dropdown.Menu>
                                             <Dropdown.Item
                                               onClick={this.onSortItems}
@@ -1564,15 +1686,22 @@ class Contents extends Component {
                                               />
                                             </Dropdown.Item>
                                           </Dropdown.Menu>
-                                        </Dropdown.Item>
+                                        </Dropdown>
                                       ),
                                     )}
-                                  </Dropdown.Menu>
-                                </Dropdown>
+                                  </Menu>
+                                </Popup>
                               </Table.HeaderCell>
                               <Table.HeaderCell>
-                                <Dropdown
-                                  upward={false}
+                                <Popup
+                                  menu={true}
+                                  position="bottom left"
+                                  flowing={true}
+                                  basic={true}
+                                  on="click"
+                                  popper={{
+                                    className: 'dropdown-popup',
+                                  }}
                                   trigger={
                                     <Icon
                                       name={
@@ -1588,18 +1717,18 @@ class Contents extends Component {
                                           ? '#007eb1'
                                           : '#826a6a'
                                       }
+                                      className="dropdown-popup-trigger"
                                       size="24px"
                                     />
                                   }
-                                  icon={null}
                                 >
-                                  <Dropdown.Menu>
-                                    <Dropdown.Header
+                                  <Menu vertical borderless fluid>
+                                    <Menu.Header
                                       content={this.props.intl.formatMessage(
                                         messages.select,
                                       )}
                                     />
-                                    <Dropdown.Item onClick={this.onSelectAll}>
+                                    <Menu.Item onClick={this.onSelectAll}>
                                       <Icon
                                         name={checkboxCheckedSVG}
                                         color="#007eb1"
@@ -1609,8 +1738,8 @@ class Contents extends Component {
                                         id="All"
                                         defaultMessage="All"
                                       />
-                                    </Dropdown.Item>
-                                    <Dropdown.Item onClick={this.onSelectNone}>
+                                    </Menu.Item>
+                                    <Menu.Item onClick={this.onSelectNone}>
                                       <Icon
                                         name={checkboxUncheckedSVG}
                                         size="24px"
@@ -1619,9 +1748,9 @@ class Contents extends Component {
                                         id="None"
                                         defaultMessage="None"
                                       />
-                                    </Dropdown.Item>
-                                    <Dropdown.Divider />
-                                    <Dropdown.Header
+                                    </Menu.Item>
+                                    <Divider />
+                                    <Menu.Header
                                       content={this.props.intl.formatMessage(
                                         messages.selected,
                                         { count: this.state.selected.length },
@@ -1630,19 +1759,22 @@ class Contents extends Component {
                                     <Input
                                       icon={<Icon name={zoomSVG} size="24px" />}
                                       iconPosition="left"
-                                      className="search"
+                                      className="item search"
                                       placeholder={this.props.intl.formatMessage(
                                         messages.filter,
                                       )}
+                                      value={
+                                        this.state.selectedMenuFilter || ''
+                                      }
                                       onChange={this.onChangeSelected}
                                       onClick={(e) => {
                                         e.preventDefault();
                                         e.stopPropagation();
                                       }}
                                     />
-                                    <Dropdown.Menu scrolling>
+                                    <Menu.Menu scrolling>
                                       {map(filteredItems, (item) => (
-                                        <Dropdown.Item
+                                        <Menu.Item
                                           key={item}
                                           value={item}
                                           onClick={this.onDeselect}
@@ -1653,11 +1785,11 @@ class Contents extends Component {
                                             size="24px"
                                           />{' '}
                                           {this.getFieldById(item, 'title')}
-                                        </Dropdown.Item>
+                                        </Menu.Item>
                                       ))}
-                                    </Dropdown.Menu>
-                                  </Dropdown.Menu>
-                                </Dropdown>
+                                    </Menu.Menu>
+                                  </Menu>
+                                </Popup>
                               </Table.HeaderCell>
                               <Table.HeaderCell
                                 width={Math.ceil(
@@ -1778,14 +1910,18 @@ class Contents extends Component {
   }
 }
 
+let dndContext;
+
 const DragDropConnector = (props) => {
   const { DragDropContext } = props.reactDnd;
   const HTML5Backend = props.reactDndHtml5Backend.default;
 
-  const DndConnectedContents = React.useMemo(
-    () => DragDropContext(HTML5Backend)(Contents),
-    [DragDropContext, HTML5Backend],
-  );
+  const DndConnectedContents = React.useMemo(() => {
+    if (!dndContext) {
+      dndContext = DragDropContext(HTML5Backend);
+    }
+    return dndContext(Contents);
+  }, [DragDropContext, HTML5Backend]);
 
   return <DndConnectedContents {...props} />;
 };
@@ -1827,6 +1963,8 @@ export const __test__ = compose(
       orderContent,
       sortContent,
       updateColumnsContent,
+      linkIntegrityCheck,
+      getContent,
     },
   ),
 )(Contents);
@@ -1867,6 +2005,8 @@ export default compose(
       orderContent,
       sortContent,
       updateColumnsContent,
+      linkIntegrityCheck,
+      getContent,
     },
   ),
   asyncConnect([

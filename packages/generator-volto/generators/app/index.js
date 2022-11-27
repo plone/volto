@@ -51,6 +51,11 @@ module.exports = class extends Generator {
       desc:
         'Desired Volto version, if not provided, the most recent will be used',
     });
+    this.option('canary', {
+      type: Boolean,
+      desc: 'Desired Volto version should be a canary (alpha)',
+      default: false,
+    });
     this.option('interactive', {
       type: Boolean,
       desc: 'Enable/disable interactive prompt',
@@ -96,7 +101,14 @@ Run "npm install -g @plone/generator-volto" to update.`,
     });
 
     let voltoVersion;
-    if (this.opts.volto) {
+    if (this.opts.canary) {
+      this.log(chalk.red('Getting latest canary (alpha) Volto version'));
+      voltoVersion = await utils.getLatestCanaryVoltoVersion();
+      this.log(`Using latest canary (alpha) Volto version: ${voltoVersion}`);
+    } else if (this.opts.volto === '.') {
+      voltoVersion = '*';
+      this.voltoYarnLock = this.fs.read('yarn.lock');
+    } else if (this.opts.volto) {
       voltoVersion = this.opts.volto;
       this.log(`Using chosen Volto version: ${voltoVersion}`);
     } else {
@@ -105,8 +117,10 @@ Run "npm install -g @plone/generator-volto" to update.`,
       this.log(`Using latest released Volto version: ${voltoVersion}`);
     }
 
-    this.log(chalk.red("Retrieving Volto's yarn.lock"));
-    this.voltoYarnLock = await utils.getVoltoYarnLock(voltoVersion);
+    if (!this.voltoYarnLock) {
+      this.log(chalk.red("Retrieving Volto's yarn.lock"));
+      this.voltoYarnLock = await utils.getVoltoYarnLock(voltoVersion);
+    }
 
     this.globals = {
       addons: [],

@@ -5,7 +5,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { UniversalLink } from '@plone/volto/components';
 import { Container, Table } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 
@@ -49,13 +49,13 @@ const TabularView = ({ content }) => (
             {content.items.map((item) => (
               <Table.Row key={item.url}>
                 <Table.Cell>
-                  <Link
-                    to={item.url}
+                  <UniversalLink
+                    item={item}
                     className="summary url"
                     title={item['@type']}
                   >
                     {item.title}
-                  </Link>
+                  </UniversalLink>
                 </Table.Cell>
                 <Table.Cell>{item.description}</Table.Cell>
                 <Table.Cell>{item['@type']}</Table.Cell>

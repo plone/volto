@@ -1,25 +1,45 @@
 ---
-html_meta:
-  "description": "Installing Volto"
-  "property=og:description": "Installing Volto"
-  "property=og:title": "Getting Started"
-  "keywords": "Volto, Plone, frontend, React, install, nvm, NodeJS, JavaScript"
+myst:
+  html_meta:
+    "description": "Installing Volto"
+    "property=og:description": "Installing Volto"
+    "property=og:title": "Getting Started"
+    "keywords": "Volto, Plone, frontend, React, install, nvm, NodeJS, JavaScript"
 ---
+
+(frontend-getting-started-label)=
 
 # Getting Started
 
+
+(frontend-getting-started-installing-volto-label)=
+
 ## Installing Volto
 
-Volto can be installed in any operating system assuming that this requirements
-are met:
+Volto can be installed in any operating system assuming that the following pre-requisites are met:
 
 - [Node.js LTS (16.x)](https://nodejs.org/en/)
-- [Python 3.7.x / 3.8.x](https://www.python.org/) or
-- [Docker](https://www.docker.com/get-started) (if using the Plone/Guillotina
-  docker images)
+- [Python](https://python.org/) - See below for specific versions.
+- [Docker](https://www.docker.com/get-started) (if using the Plone docker images)
 
-Depending on the OS that you are using some of the following might change, they
-are assuming a MacOS/Linux machine:
+```{note}
+*UPDATE 2022-10-25*: Since 2022-10-25, NodeJS 18 is in LTS state (https://github.com/nodejs/release#release-schedule). However, due to changes in internal SSL libraries, some Volto dependencies have been deprecated and need to be updated in order to continue working in NodeJS 18, mainly Webpack 4 (see: https://github.com/webpack/webpack/issues/14532#issuecomment-947525539 for further information). You can still use it, but NodeJS should be run under a special flag: `NODE_OPTIONS=--openssl-legacy-provider`. See also Volto's PR: https://github.com/plone/volto/pull/3699 for more information.
+```
+
+The versions of Python that are supported in Volto depend on the version of Plone that you use.
+
+| Plone | Python | Volto |
+|---|---|---|
+| 5.2 | 2.7, 3.6-3.8 | 15.0 |
+| 6.0 (beta) | 3.8-3.10 | 16.0 (alpha) |
+
+At the time of this writing, Volto 16 is still in alpha status, and Plone 6 is in beta status.
+
+Depending on the operating system that you are using, some of the following pre-requisites might change.
+They assume you have a macOS/Linux machine.
+
+
+(frontend-getting-started-components-processes-running-label)=
 
 ## Components / Processes running
 
@@ -36,6 +56,8 @@ ever need to make) are in the JavaScript code used in the browser and Razzle pro
 this getting started chapter will focus on installing a NodeJS/JavaScript environment locally
 and suggest you start the API backend using a container.
 
+
+(frontend-getting-started-install-nvm-label)=
 
 ## Install nvm (NodeJS version manager)
 
@@ -65,7 +87,7 @@ it provides easy access to any NodeJS released version.
     nvm version
     ```
 
-4.  Install any active LTS version of NodeJS (https://nodejs.org/en/about/releases/):
+4.  Install any active LTS version of NodeJS (https://github.com/nodejs/release#release-schedule):
 
     ```bash
     nvm install 16
@@ -84,8 +106,22 @@ it provides easy access to any NodeJS released version.
 
     ```{note}
     Volto supports currently active NodeJS LTS versions based on [NodeJS
-    Releases page](https://nodejs.org/en/about/releases/), starting with Node 12 LTS.
+    Releases page](https://github.com/nodejs/release#release-schedule), starting with Node 12 LTS.
     ```
+
+
+(frontend-getting-started-yeoman-label)=
+
+## Yeoman
+
+Install {term}`Yeoman`, a scaffolding tool.
+
+```shell
+npm install -g yo
+```
+
+
+(frontend-getting-started-yarn-label)=
 
 ## Yarn (NodeJS package manager)
 
@@ -109,6 +145,9 @@ Install the Yarn Classic version (not the 2.x one!), of the popular node package
     [documentation](https://classic.yarnpkg.com/lang/en/) for a list of them.
     ```
 
+
+(frontend-getting-started-use-or-install-docker-label)=
+
 ## Use or Install Docker
 
 In order to run the API backend, it's recommended to start run it in a container.
@@ -124,7 +163,7 @@ To install Docker desktop for Mac, here are the detailed instructions:
 2. Install the package as any other Mac software, if required, follow
    instructions from:
 
-    https://docs.docker.com/docker-for-mac/install/
+    https://docs.docker.com/desktop/install/mac-install/
 
 3. Check that docker is installed correctly, open a new terminal and type:
 
@@ -133,6 +172,9 @@ To install Docker desktop for Mac, here are the detailed instructions:
     ```
 
     should not throw an error and show the current running containers.
+
+
+(frontend-getting-started-run-a-volto-ready-plone-docker-container-label)=
 
 ## Run a Volto ready Plone Docker container
 
@@ -167,15 +209,22 @@ without using Docker. Check the [backend configuration](../configuration/backend
 It also has more information on plone.volto.
 
 
+(frontend-getting-started-install-volto-label)=
+
 ## Install Volto
 
 Use the project generator helper utility.
+The latest stable release of Volto will be installed by default.
+You may choose to install the canary version, which is the latest alpha release, using the `--canary` flag.
 
 1.  Open a terminal and execute:
 
     ```bash
-    $ npm install -g yo @plone/generator-volto
-    $ yo @plone/volto
+    npm install -g yo @plone/generator-volto
+    # install latest stable release
+    yo @plone/volto
+    # or install latest alpha release
+    yo @plone/volto --canary
     ```
 
 2.  Answer to the prompted questions and provide the name of the new app (folder) to be created. For the sake of this documentation, provide `myvoltoproject` as project name then.
@@ -207,6 +256,9 @@ Use the project generator helper utility.
     ```{danger}
     `create-volto-app` was deprecated from January 2021, in favor of [@plone/generator-volto](https://github.com/plone/generator-volto).
     ```
+
+
+(frontend-getting-started-build-the-production-bundle-label)=
 
 ## Build the production bundle
 

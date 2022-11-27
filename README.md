@@ -4,7 +4,8 @@
 <img align="right" width="300" alt="Volto logo png" src="./logos/VoltoLogoEra2-dark-mode.png#gh-dark-mode-only" />
 
 [![NPM](https://img.shields.io/npm/v/@plone/volto.svg)](https://www.npmjs.com/package/@plone/volto)
-[![Build Status Core](https://github.com/plone/volto/actions/workflows/core.yml/badge.svg)](https://github.com/plone/volto/actions)
+[![Unit Tests](https://github.com/plone/volto/actions/workflows/unit.yml/badge.svg)](https://github.com/plone/volto/actions/workflows/unit.yml)
+[![Acceptance Tests](https://github.com/plone/volto/actions/workflows/acceptance.yml/badge.svg)](https://github.com/plone/volto/actions/workflows/acceptance.yml)
 [![Build Status Docs](https://github.com/plone/volto/actions/workflows/docs.yml/badge.svg)](https://github.com/plone/volto/actions)
 
 ## Introduction
@@ -53,8 +54,19 @@ First get all the requirements installed on your system.
 ### Prerequisites
 
 - [Node.js LTS (16.x)](https://nodejs.org/)
-- [Python 3.8.x](https://python.org/) or
+- [Python](https://python.org/) - See below for specific versions.
 - [Docker](https://www.docker.com/get-started) (if using the Plone docker images)
+
+*UPDATE 2022-10-25*: Since 2022-10-25, NodeJS 18 is in LTS state (https://github.com/nodejs/release#release-schedule). However, due to changes in internal SSL libraries, some Volto dependencies have been deprecated and need to be updated in order to continue working in NodeJS 18, mainly Webpack 4 (see: https://github.com/webpack/webpack/issues/14532#issuecomment-947525539 for further information). You can still use it, but NodeJS should be run under a special flag: `NODE_OPTIONS=--openssl-legacy-provider`. See also Volto's PR: https://github.com/plone/volto/pull/3699 for more information.
+
+The versions of Python that are supported in Volto depend on the version of Plone that you use.
+
+| Plone | Python | Volto |
+|---|---|---|
+| 5.2 | 2.7, 3.6-3.8 | 15.0 |
+| 6.0 (beta) | 3.8-3.10 | 16.0 (alpha) |
+
+At the time of this writing, Volto 16 is still in alpha status, and Plone 6 is in beta status.
 
 ### Create a Volto project using the generator
 
@@ -78,7 +90,7 @@ cd myvoltoproject
 You can bootstrap a ready Docker Plone container with all the dependencies and ready for Volto use. We recommend to use the Plone docker builds based in `pip` [plone/plone-backend](https://github.com/plone/plone-backend) image:
 
 ```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.restapi==8.18.0 plone.app.iterate==4.0.2 plone.rest==2.0.0a1 plone.app.vocabularies==4.3.0 plone.volto==3.1.0a7" -e PROFILES="plone.volto:default-homepage" plone/plone-backend
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.0b3
 ```
 
 or as an alternative if you have experience with Plone and you have all the
@@ -91,24 +103,25 @@ make build-backend
 
 #### Recommended Plone version
 
-Volto is Plone 6 default UI, so it will work for all Plone 6 released versions.
+Volto is the default UI for Plone 6, so it will work for all Plone 6 released versions.
 
-For the Plone 5 series latest released version (with Python 3) and above is recommended (at the time of writing 5.2.6).
-
-The following KGS (or above) are also recommended, for any Plone version used.
+For the Plone 5 series, the latest released version of Plone 5 (with Python 3) is recommended (at the time of writing 5.2.9).
 
 #### KGS (known good set of versions) for backend packages
 
-Volto always works best with latest versions of the "Frontend stack" or at least the recommended ones (in parenthesis) which are:
+On Plone 6, we recommend using the known good set (KGS) of package versions that are specified in the Plone release.
 
-- plone.restapi (8.21.2)
-- plone.rest (2.0.0a3)
-- plone.volto (4.0.0a3)
+On Plone 5, Volto is currently tested with the following packages pinned to specific versions, and we recommend using the same versions, which are:
 
-and the following core packages since some features require up to date versions:
+- plone.restapi 8.30.0
+- plone.rest 2.0.0a5
+- plone.volto 4.0.0a13
 
-- plone.app.iterate (4.0.2)
-- plone.app.vocabularies (4.3.0)
+This would be the docker command to spawn a Plone 5 container with the right KGS versions:
+
+```shell
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.restapi==8.30.0 plone.volto==4.0.0a13 plone.rest==2.0.0a5 plone.app.iterate==4.0.2 plone.app.vocabularies==4.3.0" -e PROFILES="plone.volto:default-homepage" plone/plone-backend
+```
 
 ### Start Volto
 
@@ -161,6 +174,8 @@ Volto is actively developed since 2017 and used in production since 2018 on the 
 - [Memori](https://memori.ai/en) (Corporate website for Memori, startup specialising in technologies applied to the experience of memory through the development of Artificial Intelligences. Developed by [RawMaterial](https://rawmaterial.it/en), 2021)
 - [TwinCreator](https://twincreator.com/en) (TwinCreator allows you to design and train multiple AI’s through simple conversation through NLP. Developed by [RawMaterial](https://rawmaterial.it/en), 2021)
 - [MemoryTwin](https://memorytwin.com/en) (Product website, MemoryTwin allows you to create your personal artificial intelligence, able to remember and speak. Developed by [RawMaterial](https://rawmaterial.it/en), 2022)
+- [Forschungszentrum Jülich](https://fz-juelich.de) (Website for Forschungzentrum Jülich, which is one of the largest research institutions in Europe, developed by [kitconcept GmbH](https://kitconcept.com), 2022)
+- [ILPO](https://ilpo.jyu.fi/) (the registration portal of continuous learning at the University of Jyväskylä. Developed by University of Jyväskylä, 2022)
 
 Please create a new [issue](https://github.com/plone/volto/issues/new) or [pull request](https://github.com/plone/volto/pulls) to add your Volto-site here!
 
@@ -216,7 +231,7 @@ JavaScript-centered trainings.
 
 - Node 16: Supported since Volto 14
 - Node 14: Supported since Volto 8.8.0
-- Node 12: Supported since Volto 4
+- Node 12: Deprecated from Volto 16 onwards. It was supported since Volto 4
 - Node 10: Deprecated from Volto 13 onwards. It was supported since Volto 1 (and its predecessor "plone-react")
 
 ## Browser support
@@ -252,7 +267,7 @@ yarn
 Either using a Docker command:
 
 ```shell
-docker run -it --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS="plone.restapi==8.21.2 plone.app.iterate==4.0.2 plone.rest==2.0.0a3 plone.app.vocabularies==4.3.0 plone.volto==4.0.0a3" -e PROFILES="plone.volto:default-homepage" plone/plone-backend
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.0b3
 ```
 
 or using the convenience makefile command:
@@ -299,79 +314,11 @@ Browse to [http://localhost:3000](http://localhost:3000) in your browser.
 yarn test
 ```
 
-### Releasing
+## Acceptance testing
 
-For ease the release process, we use `release-it` utility that helps with the process.
+Here you can find a guide on how acceptance testing is done in Volto:
 
-https://www.npmjs.com/package/release-it
-
-For using it and start a release you need to fulfill the requirements:
-
-- Have permissions to push on master branch
-- Have permissions on the @plone org on npmjs.com
-- Have a environment variable (`GITHUB_TOKEN`) with a GitHub personal token with permissions to
-  write the Volto Release page on GitHub (https://www.npmjs.com/package/release-it#github-releases)
-
-Then the command for release:
-
-```shell
-yarn release
-```
-
-a dry-release command for testing the output is also available:
-
-```shell
-yarn dry-release
-```
-
-and alpha release can also be cut using:
-
-```shell
-yarn release-alpha
-```
-
-### Acceptance testing
-
-Volto uses [Cypress](https://www.cypress.io/) for browser-based acceptance testing.
-
-There are a number of fixtures available covering all the configuration use cases. These fixtures have both a specific backend and frontend configuration setup and a related set of tests. The CI infrastructure runs them all automatically on every push to a branch or PR.
-
-The tests can be run in headless mode (same as the CI does), or within the Cypress user interface. The latter is the one that you run under development.
-
-### How to run acceptance tests locally (during development)
-
-When writing new acceptance tests, you usually want to minimize the time it takes to run the tests, while also being able to debug or inspect what's going on.
-
-To do so, start three individual terminal sessions for running the Plone backend, the Volto frontend, and the acceptance tests.
-
-1.  Run the backend fixture
-    ```shell
-    make test-acceptance-server
-    ```
-2.  Run the frontend fixture
-    ```shell
-    yarn cypress:start-frontend
-    ```
-3.  Run the Cypress tests for that fixture
-    ```shell
-    yarn cypress:open
-    ```
-
-Available fixtures:
-
-- Core (core or not special naming in the test commands)
-- Multilingual (multilingual)
-- Working Copy (workingCopy)
-- Core Sandbox (coresandbox)
-
-There are convenience commands for each of these fixtures. See `package.json` or `.github` CI setup for more information.
-
-#### Writing new acceptance tests
-
-Go to the `cypress/tests` folder to see existing tests. There is a directory per fixture.
-This directory is hot reloaded with your changes as you write the tests. For more information on how to write Cypress tests:
-
-    https://docs.cypress.io
+https://6.dev-docs.plone.org/volto/developer-guidelines/acceptance-tests.html
 
 ## Translations
 

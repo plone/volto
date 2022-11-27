@@ -2,35 +2,87 @@ import ListingBlockVariationTeaserContent from './components/Blocks/Listing/List
 import NewsAndEvents from './components/Views/NewsAndEvents';
 import TestBlockView from './components/Blocks/TestBlock/View';
 import TestBlockEdit from './components/Blocks/TestBlock/Edit';
+import { SliderSchema as TestBlockSchema } from './components/Blocks/TestBlock/schema';
 import codeSVG from '@plone/volto/icons/code.svg';
 
-const addonBlocks = {
-  testBlock: {
-    id: 'testBlock',
-    title: 'testBlock',
-    icon: codeSVG,
-    group: 'common',
-    view: TestBlockView,
-    edit: TestBlockEdit,
-    restricted: false,
-    mostUsed: true,
-    sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
-    variations: [
-      {
-        id: 'default',
-        title: 'Default',
-      },
-      {
-        id: 'custom',
-        title: 'Custom',
-      },
-    ],
-    extensions: {},
+const testBlock = {
+  id: 'testBlock',
+  title: 'testBlock',
+  icon: codeSVG,
+  group: 'common',
+  view: TestBlockView,
+  edit: TestBlockEdit,
+  restricted: false,
+  mostUsed: true,
+  sidebarTab: 1,
+  security: {
+    addPermission: [],
+    view: [],
   },
+  variations: [
+    {
+      id: 'default',
+      title: 'Default',
+    },
+    {
+      id: 'custom',
+      title: 'Custom',
+    },
+  ],
+  extensions: {},
+};
+
+const testBlockDefaultEdit = {
+  id: 'testBlockDefaultEdit',
+  title: 'testBlockDefaultEdit',
+  icon: codeSVG,
+  group: 'common',
+  view: TestBlockView,
+  blockSchema: TestBlockSchema,
+  restricted: false,
+  mostUsed: true,
+  sidebarTab: 1,
+  security: {
+    addPermission: [],
+    view: [],
+  },
+  variations: [
+    {
+      id: 'default',
+      title: 'Default',
+    },
+    {
+      id: 'custom',
+      title: 'Custom',
+    },
+  ],
+  extensions: {},
+};
+
+const testBlockDefaultView = {
+  id: 'testBlockDefaultView',
+  title: 'testBlockDefaultView',
+  icon: codeSVG,
+  group: 'common',
+  blockSchema: TestBlockSchema,
+  restricted: false,
+  mostUsed: true,
+  sidebarTab: 1,
+  security: {
+    addPermission: [],
+    view: [],
+  },
+  variations: [
+    {
+      id: 'default',
+      title: 'Default',
+    },
+    {
+      id: 'custom',
+      title: 'Custom',
+    },
+  ],
+  extensions: {},
 };
 
 const listing = (config) => {
@@ -69,24 +121,13 @@ export const workingCopyFixture = (config) => {
 };
 
 const applyConfig = (config) => {
-  return {
-    ...config,
-    blocks: {
-      ...config.blocks,
-      blocksConfig: {
-        ...config.blocks.blocksConfig,
-        ...addonBlocks,
-        listing: listing(config),
-      },
-    },
-    views: {
-      ...config.views,
-      contentTypesViews: {
-        ...config.views.contentTypesViews,
-        Folder: NewsAndEvents,
-      },
-    },
-  };
+  config.blocks.blocksConfig.testBlock = testBlock;
+  config.blocks.blocksConfig.testBlockDefaultEdit = testBlockDefaultEdit;
+  config.blocks.blocksConfig.testBlockDefaultView = testBlockDefaultView;
+  config.blocks.blocksConfig.listing = listing(config);
+  config.views.contentTypesViews.Folder = NewsAndEvents;
+
+  return config;
 };
 
 export default applyConfig;

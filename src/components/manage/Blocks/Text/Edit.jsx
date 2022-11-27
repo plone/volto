@@ -245,11 +245,6 @@ export class EditComponent extends Component {
     const disableNewBlocks =
       this.props.data?.disableNewBlocks || this.props.detached;
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
-    const { settings } = config;
-    const isQuantaEnabled =
-      settings.enableQuantaToolbar ||
-      this.props.blocksConfig[this.props.type].enableQuantaToolbar; // && !usesClassicWrapper(this.props.data);
-    const { selected } = this.props;
     const isSoftNewlineEvent = this.props.draftJsLibIsSoftNewlineEvent.default;
     const { RichUtils } = this.props.draftJs;
 
@@ -334,20 +329,21 @@ export class EditComponent extends Component {
         />
         <InlineToolbar />
 
-        {selected && !isQuantaEnabled ? (
-          <BlockChooserButton
-            data={this.props.data}
-            block={this.props.block}
-            onInsertBlock={(id, value) => {
-              this.props.onSelectBlock(this.props.onInsertBlock(id, value));
-            }}
-            allowedBlocks={this.props.allowedBlocks}
-            blocksConfig={this.props.blocksConfig}
-            size="24px"
-            className="block-add-button"
-            properties={this.props.properties}
-          />
-        ) : null}
+        {!config.experimental.addBlockButton.enabled &&
+          !config.experimental.quantaToolbar.enabled &&
+          this.props.selected && (
+            <BlockChooserButton
+              data={this.props.data}
+              block={this.props.block}
+              onInsertBlock={(id, value) => {
+                this.props.onSelectBlock(this.props.onInsertBlock(id, value));
+              }}
+              allowedBlocks={this.props.allowedBlocks}
+              blocksConfig={this.props.blocksConfig}
+              size="24px"
+              properties={this.props.properties}
+            />
+          )}
       </>
     );
   }
