@@ -1,6 +1,6 @@
 # Releasing
 
-For ease the release process, we use the utility [`release-it`](https://www.npmjs.com/package/release-it) which helps with the process, and [`towncrier`](https://towncrier.readthedocs.io) for creating and maintaining change logs.
+To ease the release process, we use the utility [`release-it`](https://www.npmjs.com/package/release-it) which helps with the process, and [`towncrier`](https://towncrier.readthedocs.io) for creating and maintaining change logs.
 
 ## Release requirements
 
@@ -11,13 +11,13 @@ To start a release, you must fulfill the following requirements:
 - Have an environment variable `GITHUB_TOKEN` with a GitHub personal token with permissions to write to the [Volto Release page on GitHub](https://github.com/plone/volto/releases).
 - Install [`pipx`](https://pypa.github.io/pipx/) in your system.
 
-You have to ask for these permissions to the members of the `@plone/release-team` via Github or Plone's Discord `release-team` channel.
+To request these permissions, on GitHub tag `@plone/release-team`, or in Discord post to the [`release-team` channel](https://discord.com/channels/786421998426521600/897549410521714760).
 
-### Permission to `master` branch
+### Permission to push to `master` branch
 
 The release process involves pushing directly to the `master` branch.
 Volto's `master` branch is protected, so the releaser needs to have permission for pushing to it.
-At the moment of this writting, the `plone/volto-team` Github group have granted permissions for pushing to `master`.
+At the moment of this writing, members of the GitHub group `@plone/volto-team` have permission to push to `master`.
 
 ### Permission to release Volto to npm registry
 
@@ -28,9 +28,9 @@ Only the current Owners of this organization can grant permissions to the releas
 ### Have a GitHub personal token with permissions to write the Volto's Releases
 
 The `release-it` library takes care of creating and pushing a GitHub Release for each release.
-It requires you to get a have GitHub personal token with permissions to write the Volto's Releases.
+It requires you to get a GitHub personal token with permission to write to the Volto's Releases.
 This can be acquired in your GitHub profile page.
-Once you have it, you need to setup in your system a `GITHUB_TOKEN` environment variable set containing it.
+When making a release, export the environment variable `GITHUB_TOKEN` in your shell session.
 
 ```shell
 export GITHUB_TOKEN="my_looooong_github_token"
@@ -40,32 +40,33 @@ See `release-it` documentation of [GitHub releases](https://www.npmjs.com/packag
 
 ### Install `pipx` in your system
 
-The release process calls at some point at `towncrier` which is a Python library using the Python utility `pipx`.
-This utility allows you to call and execute Python modules without having to have them installed previously in your system.
-It's like the NodeJS `npx` utility and works pretty much in the same way.
-If you are in a MacOS system, you can use:
+The release process calls `towncrier`.
+It is a Python library that uses the Python utility `pipx`.
+This utility allows you to call and execute Python modules without installing them as a prerequisite in your system.
+It works similar to the NodeJS `npx` utility.
+On macOS, you can install `pipx` into your system:
 
 ```shell
 brew install pipx
 ```
 
-or follow more detailed instructions in [`pipx`](https://pypa.github.io/pipx/) documentation page.
+Or follow detailed instructions in the `pipx` documentation for [Installation](https://pypa.github.io/pipx/installation/).
 
 ## Running the release process
 
-These are the commands for release Volto:
+These are the commands to make a Volto release:
 
 ```shell
 yarn release
 ```
 
-a dry-release command for testing the output is also available:
+A dry-release command for testing the output is also available:
 
 ```shell
 yarn dry-release
 ```
 
-and alpha release can also be cut using:
+An alpha release can be cut using:
 
 ```shell
 yarn release-alpha
