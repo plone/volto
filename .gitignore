@@ -9,6 +9,7 @@ junit.xml
 eslint.xml
 yarn-error.log
 build
+.changelog.draft
 
 # yarn 3
 .pnp.*
