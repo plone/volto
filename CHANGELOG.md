@@ -4500,7 +4500,7 @@ https://docs.voltocms.com/upgrade-guide/
 - Added item type as a tooltip in contents @nzambello
 - Added Italian translations and translated array, token and select widget. @giuliaghisini
 - Added uploading image preview in FileWidget @iFlameing
-- Allow custom express middleware declared with `settings.expressMiddleware`. See [Customizing Express](docs/source/customizing/express.md) @tiberiuichim
+- Allow custom express middleware declared with `settings.expressMiddleware`. See [Custom Express middleware](https://6.dev-docs.plone.org/volto/recipes/express.html) @tiberiuichim
 
 ### Bugfix
 
