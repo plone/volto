@@ -100,9 +100,12 @@ For projects already using `volto-slate`, take the following steps in your proje
 You will have to configure your project to continue using `draftJS`, for example, in your `config.js` or in your add-on:
 
 ```js
+import { WysiwygWidget } from '@plone/volto/components';
+
 config.settings.defaultBlockType = 'text'
 config.blocks.blocksConfig.table.restricted = false;
 config.blocks.blocksConfig.slateTable.restricted = true;
+config.widgets.widget.richtext = WysiwygWidget;
 ```
 
 #### Existing projects using core `draftJS`, opting to start using `slate` without migrating (possible, but not recommended)
