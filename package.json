@@ -55,7 +55,6 @@
     "i18n:ci": "yarn i18n && git diff -G'^[^\"POT]' --exit-code",
     "stylelint:patches": "patch -p0 -N node_modules/stylelint/lib/getPostcssResult.js < patches/fixstylelint.patch || true",
     "patches": "/bin/bash patches/patchit.sh > /dev/null 2>&1 ||true",
-    "deduplicate": "yarn-deduplicate yarn.lock",
     "dry-release": "release-it --dry-run",
     "release": "release-it",
     "release-major-alpha": "release-it major --preRelease=alpha",
@@ -317,9 +316,9 @@
     "promise-file-reader": "1.0.2",
     "prop-types": "15.7.2",
     "query-string": "7.1.0",
-    "razzle": "4.2.17",
-    "razzle-dev-utils": "4.2.17",
-    "razzle-plugin-bundle-analyzer": "4.2.17",
+    "razzle": "4.2.18",
+    "razzle-dev-utils": "4.2.18",
+    "razzle-plugin-bundle-analyzer": "4.2.18",
     "rc-time-picker": "3.7.3",
     "react": "17.0.2",
     "react-anchor-link-smooth-scroll": "1.0.12",
@@ -413,6 +412,7 @@
     "draft-js-block-breakout-plugin/immutable": "3.8.2",
     "draft-js-inline-toolbar-plugin/immutable": "3.8.2",
     "draft-js-plugins-editor/immutable": "3.8.2",
+    "react-dev-utils": "^12",
     "ua-parser-js": "0.7.28"
   },
   "volta": {
