@@ -1,0 +1,1 @@
+Clear error message when canceling user add. Fix https://github.com/plone/volto/issues/4006 @wesleybl
