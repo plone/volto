@@ -1724,6 +1724,7 @@ msgstr "astean behin"
 msgid "Interval Yearly"
 msgstr "urtean behin"
 
+#: components/manage/Blocks/Block/DefaultView
 #: components/theme/View/RenderBlocks
 # defaultMessage: Invalid block - Will be removed on saving
 msgid "Invalid Block"
@@ -3598,6 +3599,7 @@ msgstr "Elkartuta"
 msgid "Uninstall"
 msgstr "Desinstalatu"
 
+#: components/manage/Blocks/Block/DefaultView
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/RenderBlocks
 # defaultMessage: Unknown Block {block}

@@ -1,14 +1,33 @@
 # Change Log
 
-## 16.0.1 (unreleased)
+<!-- You should *NOT* be adding new change log entries to this file.
+     You should create a file in the news directory instead.
+     For helpful instructions, please see:
+     https://6.dev-docs.plone.org/volto/developer-guidelines/contributing.html#create-a-pull-request
+-->
 
-### Breaking
+<!-- towncrier release notes start -->
+
+## 16.2.0 (2022-11-25)
 
 ### Feature
 
 - Internationalization of descriptions of user add form fields. @wesleybl
-- Allow custom style wrapper classnames via fieldname suffixes. Added `config.settings.styleClassNameConverters` to register new suffix converters @tiberiuichim
+- Add tooltip to multivalue labels in select facet @reebalazs
+- Provide a default View/Edit component for blocks @avoinea, @tiberiuichim
+
+### Bugfix
+
+- Improve collapsing of whitespace when pasting to slate text block @tiberiuichim
+- Avoid warning for missing value in NumberWidget @tiberiuichim
+- Fix crash in Slate link editing in a dexterity field @tiberiuichim
+
+## 16.1.0 (2022-11-23)
+
+### Feature
+
 - Support for drilled down current state and updater function from schema in `ObjectListWidget`. This allows to sync the current object selected from the UI and the block settings and viceversa @sneridagh
+- Allow custom style wrapper classnames via fieldname suffixes. Added `config.settings.styleClassNameConverters` to register new suffix converters @tiberiuichim
 
 ### Bugfix
 
@@ -16,12 +35,6 @@
 - Fix addons loader test @tiberiuichim
 - Pass down `onChangeBlock` prop to all stock blocks in core @sneridagh
 - Fix user search by full name in users control panel @reebalazs
-- Avoid warning for missing value in NumberWidget @tiberiuichim
-- Fix crash in Slate link editing in a dexterity field @tiberiuichim
-
-### Internal
-
-### Documentation
 
 ## 16.0.0 (2022-11-22)
 
@@ -411,6 +424,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Remove `sentryOptions` from settings reference. Clean up `deploying/sentry.md`. @stevepiercy
 - Tidy up `upgrade-guide/index.md`. @stevepiercy
 - Fix some MyST syntax and English grammar. @stevepiercy
+- Add contributing branch policy information @sneridagh @stevepiercy
 
 ## 16.0.0-rc.1 (2022-11-18)
 
@@ -487,8 +501,6 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Restrict css selector for error message (volto-slate) #3838 @mamico
 - Upgrade `husky` to latest version @sneridagh
 - Enable the use of yarn 3 in the build by default @sneridagh
-
-See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
 
 ### Feature
 
@@ -4490,7 +4502,7 @@ https://docs.voltocms.com/upgrade-guide/
 - Added item type as a tooltip in contents @nzambello
 - Added Italian translations and translated array, token and select widget. @giuliaghisini
 - Added uploading image preview in FileWidget @iFlameing
-- Allow custom express middleware declared with `settings.expressMiddleware`. See [Customizing Express](docs/source/customizing/express.md) @tiberiuichim
+- Allow custom express middleware declared with `settings.expressMiddleware`. See [Custom Express middleware](https://6.dev-docs.plone.org/volto/recipes/express.html) @tiberiuichim
 
 ### Bugfix
 
