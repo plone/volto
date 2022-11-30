@@ -46,6 +46,7 @@ const ListingBody = withQuerystringResults((props) => {
         items={listingItems}
         isEditMode={isEditMode}
         {...data}
+        {...variation}
       />
       {totalPages > 1 && (
         <div className="pagination-wrapper">

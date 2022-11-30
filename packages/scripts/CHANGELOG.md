@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.4.2 (unreleased)
+## 2.2.2 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,76 @@
 ### Bugfix
 
 ### Internal
+
+## 2.2.1 (2022-11-24)
+
+### Bugfix
+
+- Include `cypress` folder and `cypress.config.js` in the local clone command @sneridagh
+- Fix the local clone command `execSync` @sneridagh
+
+## 2.2.0 (2022-11-24)
+
+### Feature
+
+- Match the new layout for the Volto project generator for Cypress tests @sneridagh
+
+## 2.1.5 (2022-11-24)
+
+### Bugfix
+
+- Remove `isCanary` amendment to differentiate 15/16 way of calling the test script @sneridagh
+
+## 2.1.4 (2022-11-24)
+
+### Bugfix
+
+- Disable immutable installs in local package once created, so CI does not complain. We REALLY want to install something! @sneridagh
+
+## 2.1.3 (2022-11-24)
+
+### Bugfix
+
+- Improve `execSync` call in addon script @sneridagh
+
+## 2.1.2 (2022-10-26)
+
+### Internal
+
+- Add missing dependency @tiberiuichim
+
+## 2.1.1 (2022-09-28)
+
+### Bugfix
+
+- Fix if `canary` selected, the tests should not include `--env=jest-environment-jsdom-sixteen` @sneridagh
+
+## 2.1.0 (2022-09-28)
+
+### Feature
+
+- New `clone` to local command @sneridagh
+- New `consolidate` command @sneridagh
+
+## 2.0.0 (2022-09-27)
+
+### Breaking
+
+- Removed `Razzle` as dependency, leave only the `babel-preset-razzle` one which is enough.
+
+  See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+
+## 1.6.0 (2022-08-05)
+
+### Feature
+
+- Add support for recommended structure `frontend` folder using `CHANGELOG.md` in the parent folder. @sneridagh
+
+## 1.5.0 (2022-07-28)
+
+### Feature
+
+- Add `--canary` option to use latest alpha in generator @sneridagh
 
 ## 1.4.1 (2022-02-24)
 

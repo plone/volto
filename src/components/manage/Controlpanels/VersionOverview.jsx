@@ -54,7 +54,7 @@ const VersionOverview = ({
       ) : (
         <ul style={{ fontSize: '16px', fontFamily: 'Monospace' }}>
           {addonsInfo.map((addon) => (
-            <li>{`${addon.name} ${addon.version || ''}`}</li>
+            <li key={addon.name}>{`${addon.name} ${addon.version || ''}`}</li>
           ))}
         </ul>
       )}

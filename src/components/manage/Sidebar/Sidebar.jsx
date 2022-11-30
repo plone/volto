@@ -216,7 +216,9 @@ class Sidebar extends Component {
             onTabChange={this.onTabChange}
             panes={[
               !!this.props.documentTab && {
-                menuItem: this.props.intl.formatMessage(messages.document),
+                menuItem:
+                  this.props.type ||
+                  this.props.intl.formatMessage(messages.document),
                 pane: (
                   <Tab.Pane
                     key="metadata"
@@ -273,6 +275,7 @@ export default compose(
     (state) => ({
       tab: state.sidebar.tab,
       toolbarExpanded: state.toolbar.expanded,
+      type: state.schema?.schema?.title,
     }),
     { setSidebarTab },
   ),

@@ -3,7 +3,7 @@
  * @module components/theme/App/App
  */
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import jwtDecode from 'jwt-decode';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -46,8 +46,6 @@ import MultilingualRedirector from '@plone/volto/components/theme/MultilingualRe
 import WorkingCopyToastsFactory from '@plone/volto/components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory';
 import LockingToastsFactory from '@plone/volto/components/manage/LockingToastsFactory/LockingToastsFactory';
 
-import * as Sentry from '@sentry/browser';
-
 /**
  * @export
  * @class App
@@ -68,6 +66,11 @@ class App extends Component {
     error: null,
     errorInfo: null,
   };
+
+  constructor(props) {
+    super(props);
+    this.mainRef = React.createRef();
+  }
 
   /**
    * @method componentWillReceiveProps
@@ -91,12 +94,17 @@ class App extends Component {
    */
   componentDidCatch(error, info) {
     this.setState({ hasError: true, error, errorInfo: info });
-    if (__CLIENT__) {
-      if (window?.env?.RAZZLE_SENTRY_DSN || __SENTRY__?.SENTRY_DSN) {
-        Sentry.captureException(error);
+    config.settings.errorHandlers.forEach((handler) => handler(error));
+  }
+
+  dispatchContentClick = (event) => {
+    if (event.target === event.currentTarget) {
+      const rect = this.mainRef.current.getBoundingClientRect();
+      if (event.clientY > rect.bottom) {
+        document.dispatchEvent(new Event('voltoClickBelowContent'));
       }
     }
-  }
+  };
 
   /**
    * Render method.
@@ -150,8 +158,12 @@ class App extends Component {
           pathname={this.props.pathname}
           contentLanguage={this.props.content?.language?.token}
         >
-          <Segment basic className="content-area">
-            <main>
+          <Segment
+            basic
+            className="content-area"
+            onClick={this.dispatchContentClick}
+          >
+            <main ref={this.mainRef}>
               <OutdatedBrowser />
               {this.props.connectionRefused ? (
                 <ConnectionRefusedView />
@@ -223,6 +235,7 @@ export const fetchContent = async ({ store, location }) => {
         location,
         id,
         data,
+        blocksConfig,
       });
       if (!p?.length) {
         throw new Error(

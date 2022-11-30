@@ -18,6 +18,7 @@ const TestBlockData = (props) => {
           [id]: value,
         });
       }}
+      onChangeBlock={onChangeBlock}
       formData={data}
     />
   );

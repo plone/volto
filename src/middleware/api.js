@@ -59,7 +59,13 @@ export function addExpandersToPath(path, type) {
     },
   );
 
-  const stringifiedQuery = qs.stringify(query, {
+  const querystringFromConfig = apiExpanders
+    .filter((expand) => matchPath(url, expand.match) && expand[type])
+    .reduce((acc, expand) => ({ ...acc, ...expand?.['querystring'] }), {});
+
+  const queryMerge = { ...query, ...querystringFromConfig };
+
+  const stringifiedQuery = qs.stringify(queryMerge, {
     encode: false,
   });
 
@@ -105,7 +111,9 @@ function sendOnSocket(request) {
  * @param {Object} api Api object.
  * @returns {Promise} Action promise.
  */
-export default (api) => ({ dispatch, getState }) => (next) => (action) => {
+const apiMiddlewareFactory = (api) => ({ dispatch, getState }) => (next) => (
+  action,
+) => {
   const { settings } = config;
 
   if (typeof action === 'function') {
@@ -188,7 +196,12 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
         }
         if (type === GET_CONTENT) {
           const lang = result?.language?.token;
-          if (lang && getState().intl.language !== lang && !subrequest) {
+          if (
+            lang &&
+            getState().intl.language !== lang &&
+            !subrequest &&
+            config.settings.supportedLanguages.includes(lang)
+          ) {
             const langFileName = normalizeLanguageName(lang);
             import('~/../locales/' + langFileName + '.json').then((locale) => {
               dispatch(changeLanguage(lang, locale.default));
@@ -275,6 +288,17 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
             });
           }
 
+          // Redirect
+          else if (error?.code === 408) {
+            next({
+              ...rest,
+              error,
+              statusCode: error.code,
+              connectionRefused: false,
+              type: SET_APIERROR,
+            });
+          }
+
           // Unauthorized
           else if (error?.response?.statusCode === 401) {
             next({
@@ -294,3 +318,5 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
 
   return actionPromise;
 };
+
+export default apiMiddlewareFactory;

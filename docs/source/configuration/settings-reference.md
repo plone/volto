@@ -1,21 +1,23 @@
 ---
-html_meta:
-  "description": "This is a summary of all the Volto configuration options and what they control."
-  "property=og:description": "This is a summary of all the Volto configuration options and what they control."
-  "property=og:title": "Settings reference guide"
-  "keywords": "Volto, Plone, frontend, React, configuration, settings, reference"
+myst:
+  html_meta:
+    "description": "This is a summary of all the Volto configuration options and what they control."
+    "property=og:description": "This is a summary of all the Volto configuration options and what they control."
+    "property=og:title": "Settings reference guide"
+    "keywords": "Volto, Plone, frontend, React, configuration, settings, reference"
 ---
 
 # Settings reference guide
 
 This is a summary of all the configuration options and what they control.
 
-
 ```{note}
 This list is still incomplete, contributions are welcomed!
 ```
 
 ## Main settings
+
+They are exposed in `config.settings`:
 
 ```{glossary}
 :sorted:
@@ -26,39 +28,12 @@ navDepth
 defaultBlockType
     The default block type in Volto is "text", which uses the current DraftJS-based implementation for the rich text editor. Future alternative rich text editors will need to use this setting and replace it with their block type. The block definition should also include the `blockHasValue` function, which is needed to activate the Block Chooser functionality. See this function signature in [Blocks > Settings](../blocks/settings.md).
 
+
 sentryOptions
-    Sentry configuration:
+    In Volto 16.0.0.alpha.45, Sentry integration was moved from core to the add-on [`@plone-collective/volto-sentry`](https://www.npmjs.com/package/@plone-collective/volto-sentry).
 
-    ```js
-    import {
-      settings as defaultSettings,
-    } from '@plone/volto/config';
-
-    const settings = {
-      ...defaultSettings,
-      sentryOptions: {
-        ...defaultSettings.sentryOptions,
-        dsn: 'https://key@sentry.io/1',
-        environment: 'production',
-        release: '1.2.3',
-        serverName: 'volto',
-        tags: {
-          site: 'foo.bar',
-          app: 'test_app',
-          logger: 'volto',
-        },
-        extras: {
-          key: 'value',
-        },
-        integrations: [
-            ...defaultSettings.sentryOptions.integrations,
-            // new MyAwesomeIntegration()
-        ]
-      }
-    };
-    ```
     ```{seealso}
-    See more about [Sentry integration](../deploying/sentry.md).
+    See {doc}`../deploying/sentry`.
     ```
 
 contentIcons
@@ -166,7 +141,7 @@ asyncPropsExtenders
 
 externalRoutes
     If another application is published under the same top domain as Volto, you could have a route like `/abc` which should be not rendered by Volto.
-    This can be achieved by a rule in the reverse proxy (Apache or Nginx for example) but, when navigating client side, you may have references to that route so Volto is
+    This can be achieved by a rule in the reverse proxy (Apache or nginx for example) but, when navigating client side, you may have references to that route so Volto is
     handling that as an internal URL and fetching the content will break.
     You can disable that path in `config.settings.externalRoutes` so it will be handled as an external link.
 
@@ -198,6 +173,112 @@ contentMetadataTagsImageField
 
 hasWorkingCopySupport
     This setting will enable working copy support in your site. You need to install the `plone.app.iterate` add-on in your Plone site in order to make it working.
+
+controlpanels
+    Register a component as control panel.
+
+    Example configuration in `config.js` of your project or add-on:
+
+    ```
+    config.settings.controlpanels = [
+      ...config.settings.controlpanels,
+      {
+        '@id': '/manage-myaddon-subscriptions',
+        group: 'Add-on Configuration',
+        title: 'Breaking News Manage Subscriptions',
+      },
+    ];
+
+    config.addonRoutes = [
+      ...config.addonRoutes,
+      {
+        path: '/controlpanel/manage-myaddon-subscriptions',
+        component: ManageSubscriptions,
+      },
+    ];
+    ```
+
+    The group can be one of the default groups 'General', 'Content', 'Security', 'Add-on Configuration', 'Users and Groups' or a custom group.
+
+filterControlPanelsSchema
+    A schema factory for a control panel. It is used internally, to tweak the schemas provided by the controlpanel endpoint, to make them fit for Volto.
+
+errorHandlers
+    A list of error handlers that will be called when there is an unhandled exception. Each error handler is a function that
+    receives a single argument, the `error` object.
+
+workflowMapping
+    It's an object that defines the mapping between workflow states/transitions and the color that should show in the change Workflow dropdown. This is the default:
+
+    ```js
+    export const workflowMapping = {
+      published: { value: 'published', color: '#007bc1' },
+      publish: { value: 'publish', color: '#007bc1' },
+      private: { value: 'private', color: '#ed4033' },
+      pending: { value: 'pending', color: '#f6a808' },
+      send_back: { value: 'private', color: '#ed4033' },
+      retract: { value: 'private', color: '#ed4033' },
+      reject: { value: 'private', color: '#ed4033' },
+      submit: { value: 'review', color: '#f4e037' },
+    };
+    ```
+
+    It's meant to be extended with your own workflows/transitions.
+    It is recommended to assign the same color to the transition as the destination state, so the user can have the visual hint to which state are they transitioning to.
+
+
+styleClassNameConverters
+    An object with functions used by the style wrapper helpers to convert style
+    data to actual class names. You can customize the generated classname by
+    registering fieldnames with names such as `<fieldname>:<converterName>`,
+    where the converter is registered here.
+```
+
+
+## Views settings
+
+They are exposed in `config.views`:
+
+```{glossary}
+:sorted:
+
+layoutViewsNamesMapping
+    Plone's layout views are identified by a simple string. This object maps this string with a nice literal (in English as default).
+    These view names are exposed in the `Display` component in the toolbar's {guilabel}`more` menu.
+    The keys are the name of the Plone layout, and the values are the i18n string `id`:
+
+    ```js
+    export const layoutViewsNamesMapping = {
+      album_view: 'Album view',
+      event_listing: 'Event listing',
+      full_view: 'All content',
+      listing_view: 'Listing view',
+      summary_view: 'Summary view',
+      tabular_view: 'Tabular view',
+      layout_view: 'Mosaic layout',
+      document_view: 'Document view',
+      folder_listing: 'Folder listing',
+      newsitem_view: 'News item view',
+      link_redirect_view: 'Link redirect view',
+      file_view: 'File view',
+      image_view: 'Image view',
+      event_view: 'Event view',
+      view: 'Default view',
+    };
+    ```
+
+    You can customize this object to add or modify the existing entries.
+    They are i18n aware, so you can add the corresponding i18n message in your project's `src/config.js` or your add-on's `src/index.js`:
+
+    ```js
+    import { defineMessages } from 'react-intl';
+    defineMessages({
+      album_view: {
+        id: 'Album view',
+        defaultMessage: 'Album view',
+      },
+    })
+    ```
 ```
 
 ## Server-specific serverConfig
@@ -224,5 +305,4 @@ extractScripts
     For the moment it admits only one property: `errorPages` whose value is a Boolean.
 
     If `extractScripts.errorPages` is `true`, the JS will be inserted into the error page.
-
 ```

@@ -9,15 +9,13 @@ import reducers from '@root/reducers';
 
 import {
   api,
-  crashReporter,
   blacklistRoutes,
-  prefixPathRoot,
-} from '@plone/volto/middleware';
-import {
   protectLoadStart,
   protectLoadEnd,
+  crashReporter,
+  prefixPathRoot,
   loadProtector,
-} from './storeProtectLoadUtils';
+} from '@plone/volto/middleware';
 
 const configureStore = (initialState, history, apiHelper) => {
   let stack = [
@@ -25,7 +23,6 @@ const configureStore = (initialState, history, apiHelper) => {
     prefixPathRoot(history),
     protectLoadStart,
     routerMiddleware(history),
-    crashReporter,
     thunk,
     ...(apiHelper ? [api(apiHelper)] : []),
     protectLoadEnd,

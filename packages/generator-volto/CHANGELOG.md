@@ -1,18 +1,115 @@
 # Change Log
 
-## 5.6.4 (unreleased)
+## 6.1.2 (unreleased)
 
 ### Breaking
 
 ### Feature
 
+### Bugfix
+
+### Internal
+
+## 6.1.1 (2022-11-24)
+
+### Bugfix
+
+- Updated reset fixture scripts for generator @sneridagh
+
+## 6.1.0 (2022-11-24)
+
+### Feature
+
+- Refactor the `package.json` scripts, move all Cypress related to `Makefile` commands, remove the scripts that are obsolete as well. @sneridagh
+- Update the default Plone Versions from the convenience docker images in `Makefile` @sneridagh
+
+## 6.0.0 (2022-11-22)
+
+### Internal
+
+- Releasing final @sneridagh
+
+## 6.0.0-alpha.4 (2022-11-20)
+
+### Bugfix
+
+- Generator is aware of `rc`, `beta` and `alphas` as possible releases for canary @sneridagh
+
+## 6.0.0-alpha.3 (2022-11-16)
+
+### Bugfix
+
+- Add missing `"@plone/scripts": "^2.1.2"` devDependency to app template @sneridagh
+
+## 6.0.0-alpha.2 (2022-11-15)
+
+### Bugfix
+
+- Missing `.yarnrc.yml` entry for the yarn 3 release @sneridagh
+
+## 6.0.0-alpha.1 (2022-11-14)
+
+### Feature
+
+- Last bit and pieces of the yarn 3 upgrade @sneridagh
+
+## 6.0.0-alpha.0 (2022-11-12)
+
+### Breaking
+
+- Upgrade to Yarn 3 @sneridagh
+
+## 5.9.3 (2022-10-10)
+
+### Internal
+
+- Restrict only to `/cache` in `.gitignore` @sneridagh
+
+## 5.9.2 (2022-10-10)
+
+### Internal
+
+- Add `cache` to `.gitignore` @sneridagh
+
+## 5.9.1 (2022-10-03)
+
+### Internal
+
+- Missing `--noninteractive` for the generator @sneridagh
+
+## 5.9.0 (2022-09-28)
+
+### Feature
+
+- Move the dependency on `@plone/scripts` of the add-on generator to `devDependencies`. @sneridagh
+
+### Bugfix
+
+- Add alias to ESlint config in project generator @sneridagh
+- Add missing `moduleNameMapper`s to default app `package.json` jest config @sneridagh
+- Fix storybook for Razzle 4 @sneridagh
+
+## 5.8.0 (2022-07-28)
+
+### Feature
+
+- Adds canary option feature, if `--canary` is specified, then the latest alpha version is used @sneridagh
+
+### Bugfix
+
+- Remove yarn.lock from the app generator template (the generator fetches it from the latest volto version anyway). @davisagli
+
+## 5.7.0 (2022-07-25)
+
+### Feature
+
 - Deprecate NodeJS 12 from package generators since it's out of LTS since April 30, 2022. @sneridagh
+- Improvements to the addon generator: Now it wires up the addon automatically for immediate local development @sneridagh
+- Add .editorconfig and .prettierignore to generated projects and addons. @ericof
 
 ### Bugfix
 
 - Changed Cypress command generation to use the Cypress Commands from Volto core @JeffersonBledsoe #3271
-
-### Internal
 
 ## 5.6.3 (2022-04-29)
 

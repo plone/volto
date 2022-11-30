@@ -56,10 +56,10 @@ templates_path = ["_templates"]
 extensions = [
     "myst_parser",
     "sphinx.ext.autodoc",
+    "sphinx.ext.ifconfig",
     "sphinx.ext.intersphinx",
     "sphinx.ext.todo",
     "sphinx_copybutton",
-    "sphinx_sitemap",
     "sphinxcontrib.spelling",
     "sphinxext.opengraph",
 ]
@@ -88,9 +88,11 @@ linkcheck_ignore = [
     # Ignore specific anchors
     r"https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors#Identifying_the_issue",
     r"https://github.com/browserslist/browserslist#queries",
+    r"https://github.com/nodejs/release#release-schedule",
     r"https://github.com/plone/plone.docker#for-basic-usage",
     r"https://github.com/plone/plone.rest#cors",
     r"https://github.com/plone/plone.volto/blob/6f5382c74f668935527e962490b81cb72bf3bc94/src/kitconcept/volto/upgrades.py#L6-L54",
+    r"https://github.com/plone/volto/issues/new/choose",
     r"https://github.com/tc39/proposals/blob/HEAD/finished-proposals.md#finished-proposals",
 ]
 linkcheck_anchors = True
@@ -165,7 +167,7 @@ graphviz_output_format = "svg"
 
 # -- OpenGraph configuration ----------------------------------
 
-ogp_site_url = "https://training.plone.org/5/"
+ogp_site_url = "https://6.dev-docs.plone.org/"
 ogp_description_length = 200
 ogp_image = "https://docs.plone.org/_static/Plone_logo_square.png"
 ogp_site_name = "Plone Documentation"
@@ -227,9 +229,6 @@ html_title = "%(project)s v%(release)s" % {"project": project, "release": releas
 # If false, no index is generated.
 html_use_index = True
 
-# Used by sphinx_sitemap to generate a sitemap
-html_baseurl = "https://docs.voltocms.com/"
-
 # -- Options for HTML help output -------------------------------------------------
 
 # Output file base name for HTML help builder.
@@ -248,3 +247,6 @@ latex_documents = [
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
 latex_logo = "_static/logo_2x.png"
+
+def setup(app):
+    app.add_config_value("context", "volto", "env")

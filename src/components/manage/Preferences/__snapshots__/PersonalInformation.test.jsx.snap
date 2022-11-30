@@ -18,48 +18,7 @@ exports[`PersonalInformation renders a personal information component 1`] = `
       >
         <div
           className="ui segment"
-        >
-          <div
-            className="mocked-default-widget"
-            id="mocked-field-fullname"
-          >
-            Full Name
-             - 
-            Enter full name, e.g. John Smith.
-          </div>
-          <div
-            className="mocked-default-widget"
-            id="mocked-field-email"
-          >
-            E-mail
-             - 
-            We will use this address if you need to recover your password
-          </div>
-          <div
-            className="mocked-object-widget"
-            id="mocked-field-portrait"
-          >
-            Portrait
-             - 
-            The user portrait/avatar
-          </div>
-          <div
-            className="mocked-default-widget"
-            id="mocked-field-home_page"
-          >
-            Home page
-             - 
-            The URL for your external home page, if you have one.
-          </div>
-          <div
-            className="mocked-default-widget"
-            id="mocked-field-location"
-          >
-            Location
-             - 
-            Your location - either city and country - or in a company setting, where your office is located.
-          </div>
-        </div>
+        />
         <div
           className="ui clearing segment actions"
         >
@@ -139,48 +98,7 @@ exports[`PersonalInformation renders a personal information component embedded i
       >
         <div
           className="ui segment"
-        >
-          <div
-            className="mocked-default-widget"
-            id="mocked-field-fullname"
-          >
-            Full Name
-             - 
-            Enter full name, e.g. John Smith.
-          </div>
-          <div
-            className="mocked-default-widget"
-            id="mocked-field-email"
-          >
-            E-mail
-             - 
-            We will use this address if you need to recover your password
-          </div>
-          <div
-            className="mocked-object-widget"
-            id="mocked-field-portrait"
-          >
-            Portrait
-             - 
-            The user portrait/avatar
-          </div>
-          <div
-            className="mocked-default-widget"
-            id="mocked-field-home_page"
-          >
-            Home page
-             - 
-            The URL for your external home page, if you have one.
-          </div>
-          <div
-            className="mocked-default-widget"
-            id="mocked-field-location"
-          >
-            Location
-             - 
-            Your location - either city and country - or in a company setting, where your office is located.
-          </div>
-        </div>
+        />
         <div
           className="ui clearing segment actions"
         >

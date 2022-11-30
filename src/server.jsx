@@ -27,6 +27,7 @@ import {
   Api,
   persistAuthToken,
   normalizeLanguageName,
+  toLangUnderscoreRegion,
 } from '@plone/volto/helpers';
 import { changeLanguage } from '@plone/volto/actions';
 
@@ -246,7 +247,10 @@ server.get('/*', (req, res) => {
         req.headers['accept-language'];
 
       if (cookie_lang !== contentLang) {
-        store.dispatch(changeLanguage(contentLang, locales[contentLang], req));
+        const newLocale = toLangUnderscoreRegion(
+          new locale.Locales(contentLang).best(supported).toString(),
+        );
+        store.dispatch(changeLanguage(newLocale, locales[newLocale], req));
       }
 
       const context = {};

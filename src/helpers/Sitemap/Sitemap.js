@@ -8,6 +8,9 @@ import { map } from 'lodash';
 import zlib from 'zlib';
 import { toPublicURL } from '@plone/volto/helpers';
 import { formatApiUrl } from '@plone/volto/helpers/Api/Api';
+import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
+
+import config from '@plone/volto/registry';
 
 /**
  * Generate sitemap
@@ -17,12 +20,14 @@ import { formatApiUrl } from '@plone/volto/helpers/Api/Api';
  */
 export const generateSitemap = (_req) =>
   new Promise((resolve) => {
+    const { settings } = config;
+    const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
+    const apiPath = settings.internalApiPath ?? settings.apiPath;
     const request = superagent.get(
-      formatApiUrl(
-        '/@search?metadata_fields=modified&b_size=100000000&use_site_search_settings=1',
-      ),
+      `${apiPath}${APISUFIX}/@search?metadata_fields=modified&b_size=100000000&use_site_search_settings=1`,
     );
     request.set('Accept', 'application/json');
+    request.use(addHeadersFactory(_req));
     const authToken = _req.universalCookies.get('auth_token');
     if (authToken) {
       request.set('Authorization', `Bearer ${authToken}`);

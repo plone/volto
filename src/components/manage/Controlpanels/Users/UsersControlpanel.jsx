@@ -8,6 +8,7 @@ import {
   listRoles,
   listGroups,
   listUsers,
+  getControlpanel,
   updateUser,
   updateGroup,
 } from '@plone/volto/actions';
@@ -110,13 +111,17 @@ class UsersControlpanel extends Component {
   }
 
   fetchData = async () => {
+    await this.props.getControlpanel('usergroup');
     await this.props.listRoles();
-    this.props.listGroups();
-    await this.props.listUsers();
-    this.setState({
-      entries: this.props.users,
-    });
+    if (!this.props.many_users) {
+      this.props.listGroups();
+      await this.props.listUsers();
+      this.setState({
+        entries: this.props.users,
+      });
+    }
   };
+
   /**
    * Component did mount
    * @method componentDidMount
@@ -134,7 +139,9 @@ class UsersControlpanel extends Component {
       (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) ||
       (this.props.createRequest.loading && nextProps.createRequest.loaded)
     ) {
-      this.props.listUsers(this.state.search);
+      this.props.listUsers({
+        search: this.state.search,
+      });
     }
     if (this.props.createRequest.loading && nextProps.createRequest.loaded) {
       this.onAddUserSuccess();
@@ -164,7 +171,9 @@ class UsersControlpanel extends Component {
    */
   onSearch(event) {
     event.preventDefault();
-    this.props.listUsers(this.state.search);
+    this.props.listUsers({
+      search: this.state.search,
+    });
   }
 
   /**
@@ -246,9 +255,9 @@ class UsersControlpanel extends Component {
    * @returns {undefined}
    */
   onAddUserSubmit(data, callback) {
-    const { groups } = data;
+    const { groups, sendPasswordReset } = data;
     if (groups && groups.length > 0) this.addUserToGroup(data);
-    this.props.createUser(data);
+    this.props.createUser(data, sendPasswordReset);
     this.setState({
       addUserSetFormDataCallback: callback,
     });
@@ -418,6 +427,7 @@ class UsersControlpanel extends Component {
                       'fullname',
                       'email',
                       'password',
+                      'sendPasswordReset',
                       'roles',
                       'groups',
                     ],
@@ -429,23 +439,27 @@ class UsersControlpanel extends Component {
                       messages.addUserFormUsernameTitle,
                     ),
                     type: 'string',
-                    description:
-                      'Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in.',
+                    description: this.props.intl.formatMessage(
+                      messages.addUserFormUsernameDescription,
+                    ),
                   },
                   fullname: {
                     title: this.props.intl.formatMessage(
                       messages.addUserFormFullnameTitle,
                     ),
                     type: 'string',
-                    description: 'Enter full name, e.g. John Smith.',
+                    description: this.props.intl.formatMessage(
+                      messages.addUserFormFullnameDescription,
+                    ),
                   },
                   email: {
                     title: this.props.intl.formatMessage(
                       messages.addUserFormEmailTitle,
                     ),
                     type: 'string',
-                    description:
-                      'Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.',
+                    description: this.props.intl.formatMessage(
+                      messages.addUserFormEmailDescription,
+                    ),
                     widget: 'email',
                   },
                   password: {
@@ -453,9 +467,16 @@ class UsersControlpanel extends Component {
                       messages.addUserFormPasswordTitle,
                     ),
                     type: 'password',
-                    description:
-                      'Enter your new password. Minimum 5 characters.',
+                    description: this.props.intl.formatMessage(
+                      messages.addUserFormPasswordDescription,
+                    ),
                     widget: 'password',
+                  },
+                  sendPasswordReset: {
+                    title: this.props.intl.formatMessage(
+                      messages.addUserFormSendPasswordResetTitle,
+                    ),
+                    type: 'boolean',
                   },
                   roles: {
                     title: this.props.intl.formatMessage(
@@ -464,7 +485,6 @@ class UsersControlpanel extends Component {
                     type: 'array',
                     choices: this.props.roles.map((role) => [role.id, role.id]),
                     noValueOption: false,
-                    description: '',
                   },
                   groups: {
                     title: this.props.intl.formatMessage(
@@ -476,10 +496,9 @@ class UsersControlpanel extends Component {
                       group.id,
                     ]),
                     noValueOption: false,
-                    description: '',
                   },
                 },
-                required: ['username', 'fullname', 'email', 'password'],
+                required: ['username', 'email'],
               }}
             />
           ) : null}
@@ -638,6 +657,8 @@ export default compose(
       roles: state.roles.roles,
       users: state.users.users,
       groups: state.groups.groups,
+      many_users: state.controlpanels?.controlpanel?.data?.many_users,
+      many_groups: state.controlpanels?.controlpanel?.data?.many_groups,
       description: state.description,
       pathname: props.location.pathname,
       deleteRequest: state.users.delete,
@@ -651,6 +672,7 @@ export default compose(
           listRoles,
           listUsers,
           listGroups,
+          getControlpanel,
           deleteUser,
           createUser,
           updateUser,

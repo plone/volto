@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Use a pattern called component shadowing to customize volto components."
-  "property=og:description": "Use a pattern called component shadowing to customize volto components."
-  "property=og:title": "Customizing Components"
-  "keywords": "Volto, Plone, frontend, React, customizing component"
+myst:
+  html_meta:
+    "description": "Use a pattern called component shadowing to customize volto components."
+    "property=og:description": "Use a pattern called component shadowing to customize volto components."
+    "property=og:title": "Customizing Components"
+    "keywords": "Volto, Plone, frontend, React, customizing component"
 ---
 
 # Customizing Components
@@ -52,7 +53,7 @@ amendments required.
 
 Locate the `Tags.jsx` file and override this file so that there is a label in front of the tags with: `Tags:`.
 
-```{code-block) jsx
+```{code-block} jsx
 :emphasize-lines: 20
 /**
  * Tags component.
@@ -147,3 +148,9 @@ In case of conflicts where multiple addons customize the same file, the order
 of addon declaration matters: the last addon declared in the `addons` key in
 the project's `package.json` wins. Further more, the project's customizations
 are applied last, so they "win" in the conflict resolution.
+
+Addons can also customize modules from the Volto project (the root), by
+creating a `@root` folder in their customizations path. This is useful, for
+example, if you prefer a style where the Volto generated project scaffold is
+throw-away and you want to override some modules that are imported from the
+`@root` namespace, such as `src/theme.js` (which is imported as `@root/theme`).

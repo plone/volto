@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "The server side Volto SSR process (based on Razzle) has an internal proxy to the backend API enabled by default, avoiding issues from CORS and allowing the developer to focus on using Volto."
-  "property=og:description": "The server side Volto SSR process (based on Razzle) has an internal proxy to the backend API enabled by default, avoiding issues from CORS and allowing the developer to focus on using Volto."
-  "property=og:title": "Internal proxy to content backend API"
-  "keywords": "Volto, Plone, frontend, React, internal proxy, backend, API, Razzle, SSR"
+myst:
+  html_meta:
+    "description": "The server side Volto SSR process (based on Razzle) has an internal proxy to the backend API enabled by default, avoiding issues from CORS and allowing the developer to focus on using Volto."
+    "property=og:description": "The server side Volto SSR process (based on Razzle) has an internal proxy to the backend API enabled by default, avoiding issues from CORS and allowing the developer to focus on using Volto."
+    "property=og:title": "Internal proxy to content backend API"
+    "keywords": "Volto, Plone, frontend, React, internal proxy, backend, API, Razzle, SSR"
 ---
 
 # Internal proxy to content backend API
@@ -39,7 +40,7 @@ back json to the frontend.
 You could also use the internal proxy for production setups. For convenience and for
 testing/demoing using the stock build, it is also enabled in production mode since
 Volto 14. But it is bad for performance because the server side running Node process
-is also responsable for generating the SSR HTML. With Nginx, Apache or another
+is also responsable for generating the SSR HTML. With nginx, Apache or another
 'reverse proxy' you can also create an internal API mount which is more suited for
 that. For more deployment information see {doc}`../deploying/seamless-mode`.
 ```

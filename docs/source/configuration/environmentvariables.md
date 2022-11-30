@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Environment variables allow configuration of your Volto application at runtime."
-  "property=og:description": "Environment variables allow configuration of your Volto application at runtime."
-  "property=og:title": "Environment variables"
-  "keywords": "Volto, React, Plone, Environment variables, Razzle,"
+myst:
+  html_meta:
+    "description": "Environment variables allow configuration of your Volto application at runtime."
+    "property=og:description": "Environment variables allow configuration of your Volto application at runtime."
+    "property=og:title": "Environment variables"
+    "keywords": "Volto, React, Plone, Environment variables, Razzle,"
 ---
 
 # Environment variables
@@ -90,6 +91,14 @@ also
 
 ```bash
 DEBUG=volto:* yarn start
+```
+
+#### `DEBUG_ADDONS_LOADER`
+
+Set `DEBUG_ADDONS_LOADER=true` to have Volto generate a file, `addon-dependency-graph.dot` which contains a graph of all the loaded addons. You can use [Graphviz](https://graphviz.org/) to convert this file to an image with:
+
+```
+dot addon-dependency-graph.dot -Tsvg -o out.svg
 ```
 
 #### Component Shadowing errors (shadowing)
@@ -189,11 +198,4 @@ This is a runtime-only environment variable that directs the build to run Volto 
 ```bash
 yarn
 BUILD_DIR=dist node dist/server.js
-```
-
-or
-
-```bash
-yarn
-yarn start:dist
 ```

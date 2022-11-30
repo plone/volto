@@ -8,7 +8,7 @@ export const Wysiwyg = WidgetStory.bind({
 });
 
 export default {
-  title: 'Widgets/Wysiwyg',
+  title: 'Edit Widgets/Wysiwyg',
   component: WysiwygWidget,
   decorators: [
     (Story) => (
