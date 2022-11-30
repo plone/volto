@@ -96,9 +96,10 @@ export const TeaserSchema = ({ intl }) => {
     widget: 'align',
     title: intl.formatMessage(messages.align),
     actions: ['left', 'right', 'center'],
+    default: 'left',
   };
 
-  schema.properties.styles.schema.fieldsets[0].fields.push('align');
+  schema.properties.styles.schema.fieldsets[0].fields = ['align'];
 
   return schema;
 };

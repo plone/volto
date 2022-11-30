@@ -1,9 +1,11 @@
 import { isInternalURL } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
-export function getTeaserImageURL(href, image) {
+export function getTeaserImageURL({ href, image, align }) {
   const imageScale =
-    config.blocks.blocksConfig['teaser'].imageScale || 'preview';
+    align === 'center'
+      ? 'great'
+      : config.blocks.blocksConfig['teaser'].imageScale || 'preview';
   if (image) {
     if (isInternalURL(image['@id'])) {
       return `${image['@id']}/@@images/image/${imageScale}`;
