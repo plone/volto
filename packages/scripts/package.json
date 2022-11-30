@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "2.1.1",
+  "version": "2.2.1",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -34,9 +34,9 @@
     "release-alpha": "release-it --preRelease=alpha"
   },
   "bin": {
-    "i18n": "./i18n.cjs",
+    "addon": "./addon/index.js",
     "changelogupdater": "./changelogupdater.cjs",
-    "addon": "./addon/index.js"
+    "i18n": "./i18n.cjs"
   },
   "release-it": {
     "hooks": {
@@ -63,6 +63,7 @@
   "dependencies": {
     "babel-plugin-react-intl": "5.1.17",
     "babel-preset-razzle": "4.2.17",
+    "chalk": "4",
     "commander": "8.2.0",
     "fs-extra": "10.1.0",
     "git-url-parse": "^11.6.0",

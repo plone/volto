@@ -32,6 +32,7 @@ import {
   withDeleteSelectionOnEnter,
   withDeserializers,
   normalizeNode,
+  normalizeExternalData,
 } from './extensions';
 import {
   // inlineTagDeserializer,
@@ -198,6 +199,7 @@ export const extensions = [
   insertData,
   isInline,
   normalizeNode,
+  normalizeExternalData,
 ];
 
 // Default hotkeys and the format they trigger
@@ -244,9 +246,7 @@ export const elements = {
   },
 
   div: ({ attributes, children }) => <div {...attributes}>{children}</div>,
-  p: ({ attributes, children }) => {
-    return <p {...attributes}>{children}</p>;
-  },
+  p: ({ attributes, children, element }) => <p {...attributes}>{children}</p>,
 
   // While usual slate editor consider these to be Leafs, we treat them as
   // inline elements because they can sometimes contain elements (ex:

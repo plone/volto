@@ -161,6 +161,22 @@ defineMessages({
     id: 'Facets on top',
     defaultMessage: 'Facets on top',
   },
+  selectFacet: {
+    id: 'selectFacet',
+    defaultMessage: 'Select',
+  },
+  checkboxFacet: {
+    id: 'checkboxFacet',
+    defaultMessage: 'Checkbox',
+  },
+  daterangeFacet: {
+    id: 'daterangeFacet',
+    defaultMessage: 'Date Range',
+  },
+  toggleFacet: {
+    id: 'toggleFacet',
+    defaultMessage: 'Toggle',
+  },
 });
 
 const groupBlocksOrder = [
@@ -186,10 +202,6 @@ const blocksConfig = {
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 0,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
   description: {
     id: 'description',
@@ -203,10 +215,6 @@ const blocksConfig = {
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 0,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
   text: {
     id: 'text',
@@ -220,10 +228,6 @@ const blocksConfig = {
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 0,
-    security: {
-      addPermission: [],
-      view: [],
-    },
     blockHasValue: (data) => {
       const isEmpty =
         !data.text ||
@@ -242,10 +246,6 @@ const blocksConfig = {
     restricted: false,
     mostUsed: true,
     sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
   leadimage: {
     id: 'leadimage',
@@ -258,10 +258,6 @@ const blocksConfig = {
     restricted: ({ properties }) => !properties.hasOwnProperty('image'),
     mostUsed: false,
     sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
   listing: {
     id: 'listing',
@@ -276,10 +272,6 @@ const blocksConfig = {
     mostUsed: true,
     sidebarTab: 1,
     showLinkMore: false,
-    security: {
-      addPermission: [],
-      view: [],
-    },
     variations: [
       {
         id: 'default',
@@ -311,10 +303,6 @@ const blocksConfig = {
     restricted: false,
     mostUsed: true,
     sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
   toc: {
     id: 'toc',
@@ -328,10 +316,6 @@ const blocksConfig = {
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
   hero: {
     id: 'hero',
@@ -346,10 +330,6 @@ const blocksConfig = {
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
 
   maps: {
@@ -363,10 +343,6 @@ const blocksConfig = {
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
   html: {
     id: 'html',
@@ -379,10 +355,6 @@ const blocksConfig = {
     restricted: false,
     mostUsed: false,
     sidebarTab: 0,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
   table: {
     id: 'table',
@@ -396,10 +368,6 @@ const blocksConfig = {
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
   search: {
     id: 'search',
@@ -412,10 +380,6 @@ const blocksConfig = {
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
     variations: [
       {
         id: 'facetsRightSide',

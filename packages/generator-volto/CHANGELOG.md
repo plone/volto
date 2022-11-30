@@ -1,6 +1,6 @@
 # Change Log
 
-## 5.9.4 (unreleased)
+## 6.1.2 (unreleased)
 
 ### Breaking
 
@@ -9,6 +9,55 @@
 ### Bugfix
 
 ### Internal
+
+## 6.1.1 (2022-11-24)
+
+### Bugfix
+
+- Updated reset fixture scripts for generator @sneridagh
+
+## 6.1.0 (2022-11-24)
+
+### Feature
+
+- Refactor the `package.json` scripts, move all Cypress related to `Makefile` commands, remove the scripts that are obsolete as well. @sneridagh
+- Update the default Plone Versions from the convenience docker images in `Makefile` @sneridagh
+
+## 6.0.0 (2022-11-22)
+
+### Internal
+
+- Releasing final @sneridagh
+
+## 6.0.0-alpha.4 (2022-11-20)
+
+### Bugfix
+
+- Generator is aware of `rc`, `beta` and `alphas` as possible releases for canary @sneridagh
+
+## 6.0.0-alpha.3 (2022-11-16)
+
+### Bugfix
+
+- Add missing `"@plone/scripts": "^2.1.2"` devDependency to app template @sneridagh
+
+## 6.0.0-alpha.2 (2022-11-15)
+
+### Bugfix
+
+- Missing `.yarnrc.yml` entry for the yarn 3 release @sneridagh
+
+## 6.0.0-alpha.1 (2022-11-14)
+
+### Feature
+
+- Last bit and pieces of the yarn 3 upgrade @sneridagh
+
+## 6.0.0-alpha.0 (2022-11-12)
+
+### Breaking
+
+- Upgrade to Yarn 3 @sneridagh
 
 ## 5.9.3 (2022-10-10)
 

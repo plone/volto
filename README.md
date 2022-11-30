@@ -57,6 +57,8 @@ First get all the requirements installed on your system.
 - [Python](https://python.org/) - See below for specific versions.
 - [Docker](https://www.docker.com/get-started) (if using the Plone docker images)
 
+*UPDATE 2022-10-25*: Since 2022-10-25, NodeJS 18 is in LTS state (https://github.com/nodejs/release#release-schedule). However, due to changes in internal SSL libraries, some Volto dependencies have been deprecated and need to be updated in order to continue working in NodeJS 18, mainly Webpack 4 (see: https://github.com/webpack/webpack/issues/14532#issuecomment-947525539 for further information). You can still use it, but NodeJS should be run under a special flag: `NODE_OPTIONS=--openssl-legacy-provider`. See also Volto's PR: https://github.com/plone/volto/pull/3699 for more information.
+
 The versions of Python that are supported in Volto depend on the version of Plone that you use.
 
 | Plone | Python | Volto |
@@ -310,37 +312,6 @@ Browse to [http://localhost:3000](http://localhost:3000) in your browser.
 
 ```shell
 yarn test
-```
-
-### Releasing
-
-For ease the release process, we use `release-it` utility that helps with the process.
-
-https://www.npmjs.com/package/release-it
-
-For using it and start a release you need to fulfill the requirements:
-
-- Have permissions to push on master branch
-- Have permissions on the @plone org on npmjs.com
-- Have a environment variable (`GITHUB_TOKEN`) with a GitHub personal token with permissions to
-  write the Volto Release page on GitHub (https://www.npmjs.com/package/release-it#github-releases)
-
-Then the command for release:
-
-```shell
-yarn release
-```
-
-a dry-release command for testing the output is also available:
-
-```shell
-yarn dry-release
-```
-
-and alpha release can also be cut using:
-
-```shell
-yarn release-alpha
 ```
 
 ## Acceptance testing

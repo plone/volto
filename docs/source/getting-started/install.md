@@ -22,6 +22,10 @@ Volto can be installed in any operating system assuming that the following pre-r
 - [Python](https://python.org/) - See below for specific versions.
 - [Docker](https://www.docker.com/get-started) (if using the Plone docker images)
 
+```{note}
+*UPDATE 2022-10-25*: Since 2022-10-25, NodeJS 18 is in LTS state (https://github.com/nodejs/release#release-schedule). However, due to changes in internal SSL libraries, some Volto dependencies have been deprecated and need to be updated in order to continue working in NodeJS 18, mainly Webpack 4 (see: https://github.com/webpack/webpack/issues/14532#issuecomment-947525539 for further information). You can still use it, but NodeJS should be run under a special flag: `NODE_OPTIONS=--openssl-legacy-provider`. See also Volto's PR: https://github.com/plone/volto/pull/3699 for more information.
+```
+
 The versions of Python that are supported in Volto depend on the version of Plone that you use.
 
 | Plone | Python | Volto |
@@ -210,12 +214,17 @@ It also has more information on plone.volto.
 ## Install Volto
 
 Use the project generator helper utility.
+The latest stable release of Volto will be installed by default.
+You may choose to install the canary version, which is the latest alpha release, using the `--canary` flag.
 
 1.  Open a terminal and execute:
 
     ```bash
-    $ npm install -g yo @plone/generator-volto
-    $ yo @plone/volto
+    npm install -g yo @plone/generator-volto
+    # install latest stable release
+    yo @plone/volto
+    # or install latest alpha release
+    yo @plone/volto --canary
     ```
 
 2.  Answer to the prompted questions and provide the name of the new app (folder) to be created. For the sake of this documentation, provide `myvoltoproject` as project name then.

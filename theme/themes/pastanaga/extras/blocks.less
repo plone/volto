@@ -23,7 +23,6 @@
 .block .block:not(.inner)::before {
   position: absolute;
   z-index: -1;
-  z-index: -1;
   top: -9px;
   left: -9px;
   width: ~'calc(100% + 18px)';
@@ -72,7 +71,6 @@
 
 .ui.drag.block.video,
 .ui.drag.block.image {
-  z-index: 2;
   // This fixes the floating images in Volto Editor! Muahahaha
   display: block;
   // This fixes two left floated items in a row
@@ -470,18 +468,29 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 }
 
 .ui.basic.button.block-add-button {
-  // .ui.basic.button.block-delete-button {
   position: absolute;
   z-index: 2;
-  // margin-top: -21px;
-  top: -2px;
-  padding: 0;
-  border: none;
   margin-bottom: 0;
   -webkit-box-shadow: none;
   box-shadow: none;
   color: #b8c6c8 !important;
-  transform: translateX(-40px);
+
+  &.new-add-block {
+    bottom: -26px;
+    left: 50%;
+    padding: 0 !important;
+    border: none !important;
+    background: white !important;
+    border-radius: 50% !important;
+    transform: translateX(-50%);
+  }
+
+  &:not(.new-add-block) {
+    top: -2px;
+    padding: 0;
+    border: none;
+    transform: translateX(-40px);
+  }
 
   &:hover,
   &:focus {
@@ -705,13 +714,22 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 .blocks-chooser {
   position: absolute;
   z-index: 10;
-  top: -12px;
-  left: -9px;
+  top: 100%;
+  left: 50%;
   width: 310px;
   padding: 4px;
   background-color: rgba(255, 255, 255, 0.975);
   border-radius: 2px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.05);
+
+  &.new-add-block {
+    transform: translate(-50%, 22px);
+  }
+
+  &:not(.new-add-block) {
+    top: -12px;
+    left: -9px;
+  }
 
   .ui.basic.button {
     display: flex;
@@ -938,6 +956,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-bottom: 1.5em;
 
     .search-input {
       position: relative;
@@ -975,7 +994,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 
   .ui.accordion.filter-listing {
     flex: 1 0 auto;
-    margin: 1em 0;
+    margin-bottom: 1.5em;
 
     .filter-list-header {
       display: flex;
@@ -1032,7 +1051,10 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
-    margin: 1em 0 1em 1em;
+
+    @media only screen and (max-width: (@largestMobileScreen)) {
+      margin-bottom: 1.5em;
+    }
 
     .ui.basic.button {
       padding: 3px !important;
@@ -1058,29 +1080,70 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     display: flex;
     align-items: flex-start;
 
-    .search-sort-wrapper {
-      padding-top: 4px;
+    @media only screen and (max-width: (@largestMobileScreen)) {
+      flex-direction: column;
     }
+
+    .filter-listing {
+      padding-right: 1em;
+      margin-bottom: 0 !important;
+
+      @media only screen and (max-width: (@largestMobileScreen)) {
+        width: 100%;
+        padding-right: 0;
+        margin-bottom: 1.5em !important;
+      }
+    }
+
+    // .search-sort-wrapper {
+    //   @media only screen and (min-width: (@largestMobileScreen)) {
+    //     padding-top: 4px;
+    //   }
+    // }
   }
 
   .search-results-count-sort {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 1.5em;
+
+    @media only screen and (max-width: (@largestMobileScreen)) {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+    }
 
     .search-details {
-      margin: 1em 0;
+      margin: 0;
+    }
+
+    .sort-views-wrapper {
+      display: flex;
+      gap: 1em;
     }
   }
 
-  .search-input-live-icon-button {
+  .search-input-actions {
     position: absolute;
-    top: 4px;
-    right: 4px;
+    top: 0;
+    right: 0;
+    display: flex;
+    height: 100%;
+    align-items: center;
 
     svg {
       width: 28px !important;
       height: 28px !important;
+    }
+
+    .ui.button {
+      margin: 0 5px;
+    }
+
+    .divider {
+      width: 1px;
+      height: 60%;
+      border-right: 1px solid #dfe1e5;
     }
   }
 

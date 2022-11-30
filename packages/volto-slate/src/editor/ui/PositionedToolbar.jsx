@@ -4,6 +4,8 @@ import { Portal } from 'react-portal';
 import BasicToolbar from './BasicToolbar';
 
 const PositionedToolbar = ({ toggleButton, className, children, position }) => {
+  // TODO: "position" is actually an object like `{ style: {} }`
+  // To be renamed as "attributes" or "attrs"
   const ref = React.useRef();
 
   React.useEffect(() => {

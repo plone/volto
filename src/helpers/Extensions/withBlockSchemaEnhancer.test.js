@@ -1,6 +1,7 @@
 import {
   addExtensionFieldToSchema,
   applySchemaEnhancer,
+  composeSchema,
 } from './withBlockSchemaEnhancer';
 
 import config from '@plone/volto/registry';
@@ -207,5 +208,41 @@ describe('applySchemaEnhancer', () => {
     expect(schemaEnhanced.properties.newField.title).toStrictEqual(
       'My new field from the main config',
     );
+  });
+});
+
+describe('composeSchema', () => {
+  it('applies multiple schemaEnhancers', () => {
+    const props = { schema: [] };
+    const s1 = ({ schema }) => [...schema, 1];
+    const s2 = ({ schema }) => [...schema, 2];
+
+    const enhancer = composeSchema(s1, s2);
+    const res = enhancer(props);
+
+    expect(res).toStrictEqual([1, 2]);
+  });
+
+  it('can receive formData and other props', () => {
+    const props = { schema: [], formData: { inc: 3 } };
+    const s1 = ({ schema, formData }) => [...schema, formData.inc * 2];
+    const s2 = ({ schema, formData }) => [...schema, formData.inc * 3];
+
+    const enhancer = composeSchema(s1, s2);
+    const res = enhancer(props);
+
+    expect(res).toStrictEqual([6, 9]);
+  });
+
+  it('can be safely passed a non-existing enhancer', () => {
+    const props = { schema: [], formData: { inc: 3 } };
+    const s1 = ({ schema, formData }) => [...schema, formData.inc * 2];
+    const s2 = ({ schema, formData }) => [...schema, formData.inc * 3];
+    const s3 = undefined;
+
+    const enhancer = composeSchema(s1, s3, s2);
+    const res = enhancer(props);
+
+    expect(res).toStrictEqual([6, 9]);
   });
 });

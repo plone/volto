@@ -30,6 +30,7 @@ export EventDetails from '@plone/volto/components/theme/EventDetails/EventDetail
 export PreviewImage from '@plone/volto/components/theme/PreviewImage/PreviewImage';
 
 export Error from '@plone/volto/components/theme/Error/Error';
+export ErrorBoundary from '@plone/volto/components/theme/Error/ErrorBoundary';
 export NotFound from '@plone/volto/components/theme/NotFound/NotFound';
 export Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
 export Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
@@ -93,6 +94,7 @@ export RulesControlpanel from '@plone/volto/components/manage/Controlpanels/Rule
 export AddRuleControlpanel from '@plone/volto/components/manage/Controlpanels/Rules/AddRule';
 export EditRuleControlpanel from '@plone/volto/components/manage/Controlpanels/Rules/EditRule';
 export ConfigureRuleControlpanel from '@plone/volto/components/manage/Controlpanels/Rules/ConfigureRule';
+export UpgradeControlPanel from '@plone/volto/components/manage/Controlpanels/UpgradeControlPanel';
 
 export ModerateComments from '@plone/volto/components/manage/Controlpanels/ModerateComments';
 export VersionOverview from '@plone/volto/components/manage/Controlpanels/VersionOverview';
@@ -171,6 +173,7 @@ export ObjectBrowserWidgetMode from '@plone/volto/components/manage/Widgets/Obje
 export ObjectWidget from '@plone/volto/components/manage/Widgets/ObjectWidget';
 export ObjectListWidget from '@plone/volto/components/manage/Widgets/ObjectListWidget';
 
+export EditDefaultBlock from '@plone/volto/components/manage/Blocks/Block/DefaultEdit';
 export EditDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/Edit';
 export EditTitleBlock from '@plone/volto/components/manage/Blocks/Title/Edit';
 export EditToCBlock from '@plone/volto/components/manage/Blocks/ToC/Edit';
@@ -184,6 +187,7 @@ export ViewHeroImageLeftBlock from '@plone/volto/components/manage/Blocks/HeroIm
 export EditMapBlock from '@plone/volto/components/manage/Blocks/Maps/Edit';
 export EditHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/Edit';
 
+export ViewDefaultBlock from '@plone/volto/components/manage/Blocks/Block/DefaultView';
 export ViewDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/View';
 export ViewTitleBlock from '@plone/volto/components/manage/Blocks/Title/View';
 export ViewToCBlock from '@plone/volto/components/manage/Blocks/ToC/View';
