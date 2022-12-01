@@ -95,7 +95,9 @@ To provide the font with your app, the following steps are necessary:
 1. Get your font and copy the files to `/theme/assets/fonts/<font name with space replaced by _>`.
 
 1. Usually the font provider gives you ready made font-face instructions.
-  Copy these font-face code lines to `/theme/typography.css`.
+  Copy these font-face code lines to `/theme/typography.css`.  
+  There are a lot of font providers.
+  If you are for Google fonts, check [google-webfonts-helper](https://gwfh.mranftl.com/fonts) for generating font-face code.
 
 1. Add to the end of `/theme/theme.config` a function to load your font-faces:
    
