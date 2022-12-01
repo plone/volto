@@ -33,16 +33,6 @@ const NavItem = ({ item, lang }) => {
                 })
             : false;
 
-          // console.log('m', {
-          //   active,
-          //   item,
-          //   match,
-          //   location,
-          //   isMultilingual: settings.isMultilingual,
-          //   isItemUrl: item.url === `${settings.prefixPath}/${lang}`,
-          //   prefixPath: settings.prefixPath,
-          //   isEmpty: item.url === '',
-          // });
           return active;
         }}
       >

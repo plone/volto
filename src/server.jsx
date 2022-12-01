@@ -71,7 +71,6 @@ const server = express()
     res.send('');
   })
   .use(cookiesMiddleware());
-
 if (process.env.RAZZLE_PREFIX_PATH)
   server.use(
     process.env.RAZZLE_PREFIX_PATH,

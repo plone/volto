@@ -26,7 +26,6 @@ export const getAPIResourceWithAuth = (req) =>
     } else {
       apiPath = settings.apiPath;
     }
-
     const path = `${apiPath}${APISUFIX}${req.path.replace(
       settings.prefixPath,
       '',

@@ -76,7 +76,6 @@ export default function () {
       const target =
         config.settings.proxyRewriteTarget ||
         `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/++api++/VirtualHostRoot`;
-
       return `${target}${path
         .replace(config.settings.prefixPath, '')
         .replace('/++api++', '')}`;

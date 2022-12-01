@@ -94,10 +94,11 @@ export function getView(url) {
  */
 export function flattenToAppURL(url) {
   const { settings } = config;
+  const isPrefixPath = url.indexOf(settings.prefixPath) === 0;
 
   return (
     url &&
-    `${settings.prefixPath}${url
+    `${isPrefixPath ? '' : settings.prefixPath}${url
       .replace(settings.internalApiPath, '')
       .replace(settings.apiPath, '')
       .replace(settings.publicURL, '')}`
