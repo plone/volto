@@ -1459,7 +1459,7 @@ msgstr "全局角色"
 # defaultMessage: Google Maps Embedded Block
 #: components/manage/Blocks/Maps/Edit
 msgid "Google Maps Embedded Block"
-msgstr ""
+msgstr "Google 地图嵌入块"
 
 # defaultMessage: Group
 #: components/manage/Sharing/Sharing
