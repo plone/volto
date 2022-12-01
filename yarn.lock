@@ -2893,6 +2893,7 @@ __metadata:
     slate-hyperscript: 0.81.3
     slate-react: 0.83.2
     start-server-and-test: 1.14.0
+    style-loader: 3.3.1
     stylelint: 14.0.1
     stylelint-config-idiomatic-order: 8.1.0
     stylelint-config-prettier: 8.0.1
@@ -23113,6 +23114,15 @@ __metadata:
   version: 2.0.1
   resolution: "strip-json-comments@npm:2.0.1"
   checksum: 1074ccb63270d32ca28edfb0a281c96b94dc679077828135141f27d52a5a398ef5e78bcf22809d23cadc2b81dfbe345eb5fd8699b385c8b1128907dec4a7d1e1
+  languageName: node
+  linkType: hard
+
+"style-loader@npm:3.3.1":
+  version: 3.3.1
+  resolution: "style-loader@npm:3.3.1"
+  peerDependencies:
+    webpack: ^5.0.0
+  checksum: 470feef680f59e2fce4d6601b5c55b88c01ad8d1dd693c528ffd591ff5fd7c01a4eff3bdbe62f26f847d6bd2430c9ab594be23307cfe7a3446ab236683f0d066
   languageName: node
   linkType: hard
 
