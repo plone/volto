@@ -197,6 +197,19 @@ export const toggleInlineFormat = (editor, format) => {
     return;
   }
 
+  const isSub = isBlockActive(editor, 'sub');
+  const isSup = isBlockActive(editor, 'sup');
+  const scriptTag = ['sub', 'sup'];
+  if (scriptTag.includes(format) && (isSub || isSup)) {
+    Transforms.unwrapNodes(editor, {
+      match: (n) => scriptTag.includes(n.type),
+      split: false,
+    });
+    const block = { type: format, children: [] };
+    Transforms.wrapNodes(editor, block, { split: true });
+    return;
+  }
+
   // `children` property is added automatically as an empty array then
   // normalized
   const block = { type: defaultFormat };
