@@ -197,14 +197,20 @@ export const toggleInlineFormat = (editor, format) => {
     return;
   }
 
-  const isSub = isBlockActive(editor, 'sub');
-  const isSup = isBlockActive(editor, 'sup');
-  const scriptTag = ['sub', 'sup'];
-  if (scriptTag.includes(format) && (isSub || isSup)) {
+  const exclusiveElements = config.settings.slate.exclusiveElements;
+  const matchedElements = exclusiveTags(exclusiveElements, format);
+  let alreadyOneIsActive =
+    !!matchedElements &&
+    (matchedElements.indexOf(format) === 0
+      ? isBlockActive(editor, matchedElements[1])
+      : isBlockActive(editor, matchedElements[0]));
+
+  if (!!matchedElements && alreadyOneIsActive) {
     Transforms.unwrapNodes(editor, {
-      match: (n) => scriptTag.includes(n.type),
+      match: (n) => matchedElements.includes(n.type),
       split: false,
     });
+
     const block = { type: format, children: [] };
     Transforms.wrapNodes(editor, block, { split: true });
     return;
@@ -214,6 +220,18 @@ export const toggleInlineFormat = (editor, format) => {
   // normalized
   const block = { type: defaultFormat };
   Transforms.wrapNodes(editor, block, { split: true });
+};
+
+const exclusiveTags = (exclusiveElements, format) => {
+  let elements = null;
+  for (const item of exclusiveElements) {
+    if (item.includes(format)) {
+      elements = item;
+      break;
+    }
+  }
+
+  return elements;
 };
 
 export const toggleBlock = (editor, format, allowedChildren) => {
