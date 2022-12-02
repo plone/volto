@@ -308,9 +308,6 @@ const routes = [
           ? { ...route, path: `${config.settings.prefixPath}${route.path}` }
           : route,
       ),
-      // addon routes have a higher priority then default routes
-      ...(config.addonRoutes || []),
-      ...defaultRoutes,
     ],
   },
 ];
