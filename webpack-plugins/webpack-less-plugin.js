@@ -4,6 +4,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PostCssFlexBugFixes = require('postcss-flexbugs-fixes');
 const postcssLoadConfig = require('postcss-load-config');
 
+let voltPath;
+try {
+  voltoPath = require.resolve('@plone/volto');
+} catch {
+  console.log('in volto!');
+}
+
 const hasPostCssConfig = () => {
   try {
     return !!postcssLoadConfig.sync();
@@ -119,7 +126,7 @@ module.exports = (userOptions = {}) => ({
         test: /\.less$/,
         include: [
           path.resolve('./theme'),
-          path.join(require.resolve('@plone/volto', '../../theme')),
+          // path.join(require.resolve('@plone/volto', '../../theme')),
           path.resolve('./src'),
           /node_modules\/@plone\/volto\/theme/,
           /plone\.volto\/theme/,
