@@ -339,5 +339,5 @@ export const allowedHeadlineElements = ['em', 'i'];
 // Scroll into view when typing
 export const scrollIntoView = true;
 
-// In inline toolbar we want only one tag should be active at a time.
+// In inline toolbar only one tag should be active at a time.
 export const exclusiveElements = [['sup', 'sub']];
