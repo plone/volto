@@ -205,7 +205,7 @@ export const toggleInlineFormat = (editor, format) => {
       ? isBlockActive(editor, matchedElements[1])
       : isBlockActive(editor, matchedElements[0]));
 
-  if (!!matchedElements && alreadyOneIsActive) {
+  if (alreadyOneIsActive) {
     Transforms.unwrapNodes(editor, {
       match: (n) => matchedElements.includes(n.type),
       split: false,
