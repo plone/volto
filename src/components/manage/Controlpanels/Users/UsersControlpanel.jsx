@@ -414,7 +414,9 @@ class UsersControlpanel extends Component {
               className="modal"
               onSubmit={this.onAddUserSubmit}
               submitError={this.state.addUserError}
-              onCancel={() => this.setState({ showAddUser: false })}
+              onCancel={() =>
+                this.setState({ showAddUser: false, addUserError: undefined })
+              }
               title={this.props.intl.formatMessage(messages.addUserFormTitle)}
               loading={this.props.createRequest.loading}
               schema={{
