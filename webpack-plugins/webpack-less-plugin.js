@@ -119,7 +119,6 @@ module.exports = (userOptions = {}) => ({
         test: /\.less$/,
         include: [
           path.resolve('./theme'),
-          // path.join(require.resolve('@plone/volto', '../../theme')),
           path.resolve('./src'),
           /node_modules\/@plone\/volto\/theme/,
           /plone\.volto\/theme/,
