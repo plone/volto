@@ -232,6 +232,8 @@ styleClassNameConverters
     data to actual class names. You can customize the generated classname by
     registering fieldnames with names such as `<fieldname>:<converterName>`,
     where the converter is registered here.
+```
+
 
 ## Views settings
 
@@ -303,5 +305,4 @@ extractScripts
     For the moment it admits only one property: `errorPages` whose value is a Boolean.
 
     If `extractScripts.errorPages` is `true`, the JS will be inserted into the error page.
-
 ```
