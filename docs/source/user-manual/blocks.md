@@ -3,7 +3,7 @@ myst:
   html_meta:
     "description": "User manual for how to edit blocks in Volto, the Plone 6 frontend."
     "property=og:description": "User manual for how to edit blocks in Volto, the Plone 6 frontend."
-    "property=og:title": "Frontend"
+    "property=og:title": "How to edit content using Volto blocks"
     "keywords": "Volto, Plone, frontend, React, User manual"
 ---
 
