@@ -45,7 +45,7 @@ Now with your empty block available, you can select its type in one of two ways.
 
 ## Description Block
 
-Description block provides you blank textarea to write plain text. 
+A description block provides a blank textarea to write plain text.
 
 (user-manual-grid-block-label)=
 
