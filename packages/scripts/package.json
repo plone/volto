@@ -40,11 +40,11 @@
   },
   "release-it": {
     "hooks": {
-      "after:bump": "node ./changelogupdater.cjs bump ${version}",
-      "after:release": "node ./changelogupdater.cjs back ${version} && git commit -am 'Back to development (@plone/scripts)' && git push"
+      "after:bump": "pipx run towncrier build --draft --yes --version ${version} > .changelog.draft && pipx run towncrier build --yes --version ${version}",
+      "after:release": "rm .changelog.draft"
     },
     "git": {
-      "changelog": "node ./changelogupdater.cjs excerpt",
+      "changelog": "pipx run towncrier build --draft --yes --version 0.0.0",
       "requireUpstream": false,
       "requireCleanWorkingDir": false,
       "commitMessage": "Release @plone/scripts ${version}",
@@ -54,7 +54,7 @@
     "github": {
       "release": true,
       "releaseName": "@plone/scripts ${version}",
-      "releaseNotes": "node ./changelogupdater.cjs excerpt"
+      "releaseNotes": "cat .changelog.draft"
     }
   },
   "publishConfig": {
