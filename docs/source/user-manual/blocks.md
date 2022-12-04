@@ -18,7 +18,27 @@ Blocks provide the user the ability to display content in a specific way, althou
 
 ## Types of pre-built Blocks
 
-You can access and choose one block out of different types of pre-built blocks by:
+```{todo}
+Add description of a Volto block.
+```
+
+Volto offers several default block types out of the box.
+You can access and choose a block type to add to your content type when you have an empty block in it.
+
+To create an empty block after an existing block, click in the block, then hit the {kbd}`Enter` key.
+A new empty block appears.
+
+```{todo}
+Add screenshots or video illustrating the steps.
+```
+
+```{note}
+There is a new experimental feature that places a `+` below every block in a content type.
+
+See https://github.com/plone/volto/pull/3815 for details of the feature and how to enable it.
+```
+
+Now with your empty block available, you can select its type in one of two ways.
 1. clicking on the `+` button provide on the left-side of empty block.
 2. typing `/` inside empty block will open blocks menu.
 (user-manual-description-block-label)=
