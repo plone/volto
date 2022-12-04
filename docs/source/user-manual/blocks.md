@@ -11,7 +11,7 @@ myst:
 This page needs content
 ```
 
-# Blocks
+# Edit content using blocks
 Volto features the Pastanaga Editor Engine, allowing you to visually compose a page using blocks. The editor allows you to add, modify, reorder and delete blocks given your requirements. Blocks provide the user the ability to display content in an specific way, although they can also define behavior and have specific features.
 
 ## Types of pre-built Blocks
