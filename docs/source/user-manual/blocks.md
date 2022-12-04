@@ -4,7 +4,7 @@ myst:
     "description": "User manual for how to edit blocks in Volto, the Plone 6 frontend."
     "property=og:description": "User manual for how to edit blocks in Volto, the Plone 6 frontend."
     "property=og:title": "How to edit content using Volto blocks"
-    "keywords": "Volto, Plone, frontend, React, User manual"
+    "keywords": "Volto, Plone, frontend, React, User manual, edit blocks"
 ---
 
 ```{todo}
