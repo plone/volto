@@ -40,12 +40,12 @@ See https://github.com/plone/volto/pull/3815 for details of the feature and how 
 
 Now with your empty block available, you can select its type in one of two ways.
 1.  Click the `+` button on the left-hand side of the empty block.
-```{image} ../_static/block_left_plus_icon.png
+```{image} ../_static/user-manual/blocks/block_left_plus_icon.png
 :alt: screenshot of plus icon 
 :align: center
 ```
 2. Type `/` inside empty block to open the blocks menu.
-```{image} ../_static/blocks_type_menu.png
+```{image} ../_static/user-manual/blocks/blocks_type_menu.png
 :alt: screenshot of types of block menu
 :height: 500px
 :align: center
