@@ -16,7 +16,7 @@ Volto features the [Pastanaga UI](https://github.com/plone/pastanaga), allowing 
 The blocks editor allows you to add, modify, reorder, and delete blocks given your requirements.
 Blocks provide the user the ability to display content in a specific way, although they can also define behavior and have specific features.
 
-## Types of pre-built Blocks
+## Choose a pre-built block type
 
 ```{todo}
 Add description of a Volto block.
