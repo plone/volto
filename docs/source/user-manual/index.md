@@ -7,6 +7,9 @@ myst:
     "keywords": "Volto, Plone, frontend, React, User manual"
 ---
 
+
+(user-manual-label)=
+
 # User Manual
 
 This is the end-User documentation for Plone 6 Volto frontend. You can also directly navigate to the document of the relevant context from Volto frontend by clicking the help `(?)` icon.
