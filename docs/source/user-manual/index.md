@@ -1,7 +1,7 @@
 ---
 myst:
   html_meta:
-    "description": "This is the end-User documentation for Plone 6 Volto frontend."
+    "description": "Volto User Manual for Plone 6"
     "property=og:description": "Volto is the React-based frontend for the Plone CMS. It is the default UI for the Plone 6 release."
     "property=og:title": "Frontend"
     "keywords": "Volto, Plone, frontend, React, User manual"
