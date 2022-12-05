@@ -305,7 +305,14 @@ const routes = [
         ...defaultRoutes,
       ].map((route) =>
         config.settings.prefixPath
-          ? { ...route, path: `${config.settings.prefixPath}${route.path}` }
+          ? {
+              ...route,
+              path: Array.isArray(route.path)
+                ? route.path.map(
+                    (path) => `${config.settings.prefixPath}${path}`,
+                  )
+                : `${config.settings.prefixPath}${route.path}`,
+            }
           : route,
       ),
     ],
