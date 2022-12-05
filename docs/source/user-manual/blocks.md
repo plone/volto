@@ -28,8 +28,9 @@ You can access and choose a block type to add to your content type when you have
 To create an empty block after an existing block, click in the block, then hit the {kbd}`Enter` key.
 A new empty block appears.
 
-```{todo}
-Add screenshots or video illustrating the steps.
+```{image} ../_static/user-manual/blocks/add_new_block.gif
+:alt: add new block
+:align: center
 ```
 
 ```{note}
