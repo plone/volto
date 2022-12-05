@@ -1,4 +1,4 @@
-# Change Log
+# Volto Release Notes
 
 <!-- You should *NOT* be adding new change log entries to this file.
      You should create a file in the news directory instead.
@@ -7,6 +7,39 @@
 -->
 
 <!-- towncrier release notes start -->
+
+## 16.3.0 (2022-12-05)
+
+### Feature
+
+- Add towncrier support. Create RELEASING.md and move and update Releasing section from README.md into it. @sneridagh @stevepiercy [#3985](https://github.com/plone/volto/issues/3985)
+- Translation of roles in user and group control panel. Fix https://github.com/plone/volto/issues/4002 @wesleybl [#4002](https://github.com/plone/volto/issues/4002)
+- Use the component registry for `Container` component in DefaultView @sneridagh [#4032](https://github.com/plone/volto/issues/4032)
+
+### Bugfix
+
+- Fix GitHub release notes in new Towncrier release config @sneridagh [#3989](https://github.com/plone/volto/issues/3989)
+- Clear error message when canceling user add. Fix https://github.com/plone/volto/issues/4006 @wesleybl [#4006](https://github.com/plone/volto/issues/4006)
+- Fix subscript and supscript active at same time. @iFlameing [#4011](https://github.com/plone/volto/issues/4011)
+- Complete eu translation
+  [erral] [#4015](https://github.com/plone/volto/issues/4015)
+- Complete es translation
+  [erral] [#4016](https://github.com/plone/volto/issues/4016)
+- Add `cypress.config.js` to generator templates @sneridagh [#4021](https://github.com/plone/volto/issues/4021)
+- Bump Volto core packages with the current Volto version on Volto release @sneridagh [#4025](https://github.com/plone/volto/issues/4025)
+
+### Internal
+
+- Remove unused dangling root appExtras from configuration registry @sneridagh [#4024](https://github.com/plone/volto/issues/4024)
+
+### Documentation
+
+- Rewrite "Upgraded core to use Cypress 11" section. @stevepiercy [#3979](https://github.com/plone/volto/issues/3979)
+- Include `CHANGELOG.md` at the correct path, depending on context of entire Plone 6 documentation or only Volto documentation. @stevepiercy [#3992](https://github.com/plone/volto/issues/3992)
+- Close the open Glossary list. @stevepiercy [#3995](https://github.com/plone/volto/issues/3995)
+- Added docs for proper usage of draftjs for richtext widgets. @pnicolli [#4001](https://github.com/plone/volto/issues/4001)
+- Document how to change the base font and the font for headings. Describe how to host the font. @ksuess [#4013](https://github.com/plone/volto/issues/4013)
+
 
 ## 16.2.0 (2022-11-25)
 

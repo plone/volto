@@ -17,6 +17,7 @@ DOCKER_IMAGE=plone/plone-backend:6.0.0rc1
 KGS=
 TESTING_ADDONS=plone.app.robotframework==2.0.0b2 plone.app.testing==7.0.0b2
 NODEBIN = ./node_modules/.bin
+SCRIPTSPACKAGE = ./packages/scripts
 
 # Plone 5 legacy
 DOCKER_IMAGE5=plone/plone-backend:5.2.9
@@ -160,6 +161,12 @@ docs-test: docs-clean docs-linkcheckbroken docs-spellcheck  ## Clean docs build,
 .PHONY: storybook-build
 storybook-build:
 	yarn build-storybook -o docs/_build/storybook
+
+##### Release
+
+.PHONY: corepackagebump
+corepackagebump:
+	node $(SCRIPTSPACKAGE)/corepackagebump.js packages/volto-slate $(VERSION)
 
 ##### Docker containers
 
