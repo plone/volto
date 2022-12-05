@@ -17,18 +17,32 @@ const prefixPathRoot = (history) => ({ dispatch, getState }) => (next) => (
 
   switch (action.type) {
     case '@@router/LOCATION_CHANGE':
-      const { pathname } = action.payload.location;
+      const {
+        location: { pathname },
+        isFirstRendering,
+      } = action.payload;
       const { prefixPath } = config.settings;
+      let newPathname = pathname;
       if (!prefixPath) {
         break;
       }
 
-      if (!pathname.startsWith(prefixPath)) {
-        const newPathname = `${prefixPath}${pathname === '/' ? '' : pathname}`;
+      if (action.payload.action === 'POP' && !isFirstRendering) {
+        const portion = pathname.split('/');
+        const spreadPath = portion.slice(0, portion.length - 1);
+        newPathname = spreadPath.join('/') ?? '/';
         action.payload.location.pathname = newPathname;
         history.push(newPathname);
       }
+      if (!newPathname.startsWith(prefixPath)) {
+        const newPrefixedPath = `${prefixPath}${
+          newPathname === '/' ? '' : newPathname
+        }`;
+        action.payload.location.pathname = newPrefixedPath;
+        history.push(newPrefixedPath);
+      }
       return next(action);
+
     default:
       return next(action);
   }
