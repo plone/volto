@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 6.1.2 (2022-12-05)
+
+### Bugfix
+
+- Add `cypress.config.js` to generator templates @sneridagh [#4021](https://github.com/plone/volto/issues/4021)
+
+
 ## 6.1.1 (2022-11-24)
 
 ### Bugfix
