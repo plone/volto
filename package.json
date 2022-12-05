@@ -408,6 +408,7 @@
     "ua-parser-js": "See https://github.com/faisalman/ua-parser-js/issues/536"
   },
   "resolutions": {
+    "clean-css": "5.3.1",
     "http-proxy": "^1.18.1",
     "draft-js/immutable": "3.8.2",
     "draft-js-block-breakout-plugin/immutable": "3.8.2",
