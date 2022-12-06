@@ -25,6 +25,7 @@ describe('prefixPathRoot', () => {
     const next = jest.fn();
     const history = {
       push: jest.fn(),
+      replace: jest.fn(),
     };
     const middleware = prefixPathRoot(history)({})(next);
     const action = {
@@ -38,8 +39,8 @@ describe('prefixPathRoot', () => {
     middleware(action);
 
     expect(next.mock.calls[0][0]).toBe(action);
-    expect(history.push.mock.calls.length).toBe(1);
-    expect(history.push.mock.calls[0][0]).toBe(
+    expect(history.replace.mock.calls.length).toBe(1);
+    expect(history.replace.mock.calls[0][0]).toBe(
       '/my-prefix/second-level/somewhere/else',
     );
     expect(action.payload.location.pathname).toBe(
