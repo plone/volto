@@ -81,6 +81,9 @@ class SearchWidget extends Component {
     this.props.history.push(
       `/search?SearchableText=${encodeURIComponent(this.state.text)}${path}`,
     );
+    this.setState({
+      text: '',
+    });
     event.preventDefault();
   }
 
