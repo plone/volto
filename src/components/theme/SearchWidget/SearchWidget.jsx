@@ -81,7 +81,7 @@ class SearchWidget extends Component {
     this.props.history.push(
       `/search?SearchableText=${encodeURIComponent(this.state.text)}${path}`,
     );
-    // reset input value 
+    // reset input value
     this.setState({
       text: '',
     });
