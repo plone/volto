@@ -1,4 +1,5 @@
 const https = require('https');
+const rcompare = require('semver/functions/rcompare');
 
 /*
  * Retrieves Volto's yarn.lock directly from github
@@ -69,11 +70,9 @@ async function getLatestCanaryVoltoVersion() {
           });
           resp.on('end', () => {
             const res = JSON.parse(data.join(''));
-            resolve(
-              res['dist-tags'].rc ||
-                res['dist-tags'].beta ||
-                res['dist-tags'].alpha,
-            );
+            const versions = Object.values(res['dist-tags']);
+            const latest = versions.sort(rcompare)[0];
+            resolve(latest);
           });
         },
       )
