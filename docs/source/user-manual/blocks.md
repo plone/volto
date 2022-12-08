@@ -7,11 +7,12 @@ myst:
     "keywords": "Volto, Plone, frontend, React, User manual, edit blocks"
 ---
 
+# Edit content using blocks
+
 ```{todo}
 This page needs content
 ```
 
-# Edit content using blocks
 Volto features the [Pastanaga UI](https://github.com/plone/pastanaga), allowing you to visually compose a page using blocks.
 The blocks editor allows you to add, modify, reorder, and delete blocks given your requirements.
 Blocks provide the user the ability to display content in a specific way, although they can also define behavior and have specific features.
@@ -30,7 +31,6 @@ A new empty block appears.
 
 ```{image} ../_static/user-manual/blocks/add_new_block.gif
 :alt: add new block
-:align: center
 ```
 
 ```{note}
@@ -41,16 +41,15 @@ See https://github.com/plone/volto/pull/3815 for details of the feature and how 
 
 Now with your empty block available, you can select its type in one of two ways.
 1.  Click the `+` button on the left-hand side of the empty block.
-```{image} ../_static/user-manual/blocks/block_left_plus_icon.png
-:alt: screenshot of plus icon 
-:align: center
-```
+    ```{image} ../_static/user-manual/blocks/block_left_plus_icon.png
+    :alt: Plus button
+    ```
 2. Type `/` inside empty block to open the blocks menu.
-```{image} ../_static/user-manual/blocks/blocks_type_menu.png
-:alt: screenshot of types of block menu
-:height: 500px
-:align: center
-```
+    ```{image} ../_static/user-manual/blocks/blocks_type_menu.png
+    :alt: Types of blocks menu
+    ```
+
+
 (user-manual-description-block-label)=
 
 ## Description Block
