@@ -2,6 +2,7 @@ const path = require('path');
 const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 const fs = require('fs-extra');
+const { getLatestCanaryVoltoVersion } = require('../generators/app/utils');
 
 let tmpDir;
 
@@ -59,15 +60,13 @@ describe('generator-create-volto-app:app with canary option', () => {
     ]);
   });
 
-  it('canary option gets alpha version', () => {
+  it('canary option gets latest Volto version, including alphas', () => {
     const packageJSON = JSON.parse(
       fs.readFileSync(path.join(tmpDir, 'test-volto/package.json'), 'utf8'),
     );
 
-    expect(
-      packageJSON.dependencies['@plone/volto'].includes(['rc']) ||
-        packageJSON.dependencies['@plone/volto'].includes(['beta']) ||
-        packageJSON.dependencies['@plone/volto'].includes(['alpha']),
-    ).toBe(true);
+    getLatestCanaryVoltoVersion().then((version) => {
+      expect(packageJSON.dependencies['@plone/volto']).toBe(version);
+    });
   });
 });
