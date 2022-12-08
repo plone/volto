@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelected, useFocused } from 'slate-react';
+import { Image } from '@plone/volto/components';
 
 export const ImageElement = (props) => {
   const { attributes, children, element } = props;
@@ -16,7 +17,7 @@ export const ImageElement = (props) => {
   return (
     <span {...attributes} style={{ display: 'inline-block' }}>
       {children}
-      <img alt="" src={element.url} style={style} />
+      <Image alt="" src={element.url} style={style} />
     </span>
   );
 };
