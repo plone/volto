@@ -6,11 +6,6 @@ import { MemoryRouter } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 import config from '@plone/volto/registry';
 
-import HeroImageLeftTemplate from '@plone/volto/components/manage/Blocks/Hero/layout/HeroImageLeftTemplate';
-import HeroImageRightTemplate from '@plone/volto/components/manage/Blocks/Hero/layout/HeroImageRightTemplate';
-import HeroImageTopTemplate from '@plone/volto/components/manage/Blocks/Hero/layout/HeroImageTopTemplate';
-import HeroImageBottomTemplate from '@plone/volto/components/manage/Blocks/Hero/layout/HeroImageBottomTemplate';
-
 const mockStore = configureStore();
 
 const store = mockStore({
@@ -28,39 +23,6 @@ config.blocks.blocksConfig = {
     title: 'Hero',
     group: 'media',
     extensions: {},
-    variations: [
-      {
-        id: 'heroImageLeft',
-        title: 'Image on left side',
-        view: HeroImageLeftTemplate,
-        isDefault: true,
-      },
-      {
-        id: 'heroImageRight',
-        title: 'Image on right side',
-        view: HeroImageRightTemplate,
-        isDefault: false,
-      },
-      {
-        id: 'heroImageTop',
-        title: 'Image on top',
-        view: HeroImageTopTemplate,
-        isDefault: false,
-      },
-      {
-        id: 'heroImageBottom',
-        title: 'Image on bottom',
-        view: HeroImageBottomTemplate,
-        isDefault: false,
-      },
-    ],
-    restricted: false,
-    mostUsed: true,
-    sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
 };
 
@@ -71,7 +33,6 @@ test('renders a view hero component', () => {
         <View
           data={{ url: 'heroimage.jpg', '@type': 'hero' }}
           block={blockId}
-          variation={{}}
         />
       </MemoryRouter>
     </Provider>,

@@ -12,8 +12,6 @@ beforeAll(
     await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
 );
 
-global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
-
 const mockStore = configureStore();
 const blockId = '1234';
 
@@ -23,7 +21,6 @@ config.blocks.blocksConfig = {
     title: 'Hero',
     group: 'media',
     extensions: {},
-    variations: [],
     restricted: false,
     mostUsed: true,
     sidebarTab: 1,

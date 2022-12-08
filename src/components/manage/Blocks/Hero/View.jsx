@@ -15,7 +15,7 @@ export const View = (props) => {
       className={cx(
         'block hero align',
         {
-          // add backwards compatibility since the original hero was left aligned
+          // we keep the default alignment of the original hero block
           left: !Boolean(data.align),
         },
         data.align,
