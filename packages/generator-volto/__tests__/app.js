@@ -71,3 +71,36 @@ describe('generator-create-volto-app:app with canary option', () => {
     ).toBe(true);
   });
 });
+
+describe('generator-create-volto-app:app with volto from Github branch', () => {
+  beforeAll(() => {
+    return helpers
+      .run(path.join(__dirname, '../generators/app'))
+      .inTmpDir(function (dir) {
+        tmpDir = dir;
+      })
+      .withPrompts({
+        projectName: 'test-volto',
+        useAddons: false,
+      })
+      .withOptions({
+        volto: 'plone/volto#16.3.0',
+      });
+  });
+
+  it('creates files', () => {
+    assert.file([
+      'test-volto/package.json',
+      'test-volto/yarn.lock',
+      'test-volto/.gitignore',
+    ]);
+  });
+
+  it('Volto is at custom version', () => {
+    const packageJSON = JSON.parse(
+      fs.readFileSync(path.join(tmpDir, 'test-volto/package.json'), 'utf8'),
+    );
+
+    expect(packageJSON.dependencies['@plone/volto']).toBe('plone/volto#16.3.0');
+  });
+});
