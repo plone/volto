@@ -1632,7 +1632,7 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Include this occurence
 msgid "Include this occurence"
-msgstr ""
+msgstr "Include this occurrence"
 
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
@@ -1731,7 +1731,7 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: Item succesfully moved.
 msgid "Item succesfully moved."
-msgstr ""
+msgstr "Item successfully moved."
 
 #: components/manage/Contents/Contents
 # defaultMessage: Item(s) copied.
