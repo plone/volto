@@ -3990,7 +3990,7 @@ msgstr "Ihr Nutzername wird zum Zurücksetzen Ihres Passworts benötigt."
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
 msgid "addUserFormEmailDescription"
-msgstr "Geben Sie eine E-Mail Adresse ein. Das ist notwendig, falls Sie Ihr Passwort verlieren. Wir respektieren Ihre Privatsphäre, Ihr Passwort wird weder weitergegeben, noch an irendeiner Stelle offengelegt."
+msgstr "Geben Sie eine E-Mail Adresse ein. Das ist notwendig, falls Sie Ihr Passwort verlieren. Wir respektieren Ihre Privatsphäre, Ihr Passwort wird weder weitergegeben, noch an irgendeiner Stelle offengelegt."
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Enter full name, e.g. John Smith.
