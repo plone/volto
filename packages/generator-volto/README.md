@@ -64,7 +64,7 @@ You can provide an specific Volto version like:
 yo @plone/volto --volto=12.0.0-alpha.0
 ```
 
-You can also pass a custom Volto branch:
+You can also pass a Volto branch or tag:
 
 ```bash
 yo @plone/volto --volto=plone/volto#16.3.0
