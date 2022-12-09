@@ -3548,7 +3548,7 @@ msgstr "URL Verwaltung"
 #: components/manage/Aliases/Aliases
 # defaultMessage: URL Management for {title}
 msgid "URL Management for {title}"
-msgstr "URL Verwaltung für {title}"
+msgstr "URL-Verwaltung für {title}"
 
 #: components/manage/Rules/Rules
 # defaultMessage: Unassign
