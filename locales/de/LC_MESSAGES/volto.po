@@ -3251,7 +3251,7 @@ msgstr "Ziel-Anzahl von Objekten im Speicher pro Cache"
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Target url path must start with a slash.
 msgid "Target url path must start with a slash."
-msgstr "Zielpfad URL muss mit einem Schrägstrich beginnen."
+msgstr "Der Zielpfad muss mit einem Schrägstrich beginnen."
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Text
