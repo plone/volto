@@ -1517,7 +1517,7 @@ msgstr "Groupe créé"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Group roles updated
 msgid "Group roles updated"
-msgstr ""
+msgstr "Rôles de groupe mis à jour"
 
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: helpers/MessageLabels/MessageLabels
@@ -1535,38 +1535,38 @@ msgstr "Groupes"
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 # defaultMessage: Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group.
 msgid "Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group."
-msgstr ""
+msgstr "Les groupes sont des ensembles logiques d'utilisateurs, tels que des services et des unités commerciales. Les groupes ne sont pas directement liés aux autorisations au niveau global, vous utilisez normalement des rôles pour cela - et laissez certains groupes avoir un rôle particulier. Le symbole{plone_svg}indique un rôle hérité de l'appartenance à un autre groupe."
 
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Header cell
 msgid "Header cell"
-msgstr ""
+msgstr "Cellule d'en-tête"
 
 #: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
 msgid "Headline"
-msgstr ""
+msgstr "Gros titre"
 
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Headline level
 msgid "Headline level"
-msgstr ""
+msgstr "Niveau du titre"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hidden facets will still filter the results if proper parameters are passed in URLs
 msgid "Hidden facets will still filter the results if proper parameters are passed in URLs"
-msgstr ""
+msgstr "Les facettes masquées filtreront toujours les résultats si les paramètres appropriés sont passés dans les URL"
 
 #: components/theme/Comments/Comments
 # defaultMessage: Hide Replies
 msgid "Hide Replies"
-msgstr ""
+msgstr "Masquer les réponses"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hide facet?
 msgid "Hide facet?"
-msgstr ""
+msgstr "Masquer la facette ?"
 
 #: components/manage/History/History
 #: components/manage/Toolbar/More
@@ -1577,7 +1577,7 @@ msgstr "Historique"
 #: components/manage/History/History
 # defaultMessage: #
 msgid "History Version Number"
-msgstr ""
+msgstr "Numéro de version de l'historique"
 
 #: components/manage/History/History
 # defaultMessage: History of {title}
@@ -1600,7 +1600,7 @@ msgstr "ID"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: If all of the following conditions are met:
 msgid "If all of the following conditions are met:"
-msgstr ""
+msgstr "Si toutes les conditions suivantes sont remplies :"
 
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: If selected, this item will not appear in the navigation tree
@@ -1615,7 +1615,7 @@ msgstr "Si cette date est dans l'avenir, le contenu n'apparaîtera pas dans les 
 #: components/manage/LockingToastsFactory/LockingToastsFactory
 # defaultMessage: If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it.
 msgid "If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it."
-msgstr ""
+msgstr "Si vous êtes certain que cet utilisateur a abandonné l'objet, vous pouvez déverrouiller l'objet. Vous pourrez alors le modifier."
 
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
@@ -1634,22 +1634,22 @@ msgstr "Image"
 #: config/Blocks
 # defaultMessage: Image gallery
 msgid "Image gallery"
-msgstr ""
+msgstr "Galerie d'images"
 
 #: components/manage/Blocks/Image/schema
 # defaultMessage: Image size
 msgid "Image size"
-msgstr ""
+msgstr "Taille de l'image"
 
 #: config/Views
 # defaultMessage: Image view
 msgid "Image view"
-msgstr ""
+msgstr "Vue image"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Include this occurence
 msgid "Include this occurence"
-msgstr ""
+msgstr "Inclure cette occurrence"
 
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
@@ -1662,7 +1662,7 @@ msgstr "Info"
 #: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
 # defaultMessage: You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to user group settings. See the button on the left.
 msgid "InfoUserGroupSettings"
-msgstr ""
+msgstr "Vous avez sélectionné l'option 'plusieurs utilisateurs' ou 'plusieurs groupes'. Ainsi, ce panneau de contrôle demande une entrée pour afficher les utilisateurs et les groupes. Si vous souhaitez voir les utilisateurs et les groupes instantanément, accédez aux paramètres du groupe d'utilisateurs. Voir le bouton à gauche."
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Inherit permissions from higher levels
@@ -1712,33 +1712,33 @@ msgstr "Version instalée"
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Installing a third party add-on
 msgid "Installing a third party add-on"
-msgstr ""
+msgstr "Installation d'un module tiers"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: days
 msgid "Interval Daily"
-msgstr ""
+msgstr "Intervalle Quotidien"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: Month(s)
 msgid "Interval Monthly"
-msgstr ""
+msgstr "Intervalle mensuel"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: week(s)
 msgid "Interval Weekly"
-msgstr ""
+msgstr "Intervalle hebdomadaire"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: year(s)
 msgid "Interval Yearly"
-msgstr ""
+msgstr "Intervalle annuel"
 
 #: components/manage/Blocks/Block/DefaultView
 #: components/theme/View/RenderBlocks
 # defaultMessage: Invalid block - Will be removed on saving
 msgid "Invalid Block"
-msgstr ""
+msgstr "Bloc invalide - Sera supprimé lors de l'enregistrement"
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Item batch size
@@ -1748,7 +1748,7 @@ msgstr "Nombre d'éléments du lot"
 #: components/manage/Contents/Contents
 # defaultMessage: Item succesfully moved.
 msgid "Item succesfully moved."
-msgstr ""
+msgstr "Élément déplacé avec succès."
 
 #: components/manage/Contents/Contents
 # defaultMessage: Item(s) copied.
@@ -1763,7 +1763,7 @@ msgstr "Elément(s) coupé(s)"
 #: components/manage/Contents/Contents
 # defaultMessage: Item(s) has been updated.
 msgid "Item(s) has been updated."
-msgstr ""
+msgstr "Le(s) élément(s) ont été mis à jour."
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -1774,7 +1774,7 @@ msgstr "Elément(s) collé(s)"
 #: components/manage/Contents/Contents
 # defaultMessage: Item(s) state has been updated.
 msgid "Item(s) state has been updated."
-msgstr ""
+msgstr "L'état de(s) (l')élément(s) a été mis à jour."
 
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Items
@@ -1790,12 +1790,12 @@ msgstr "Les éléments doivent être unique."
 #: components/manage/Contents/Contents
 # defaultMessage: Items to be deleted:
 msgid "Items to be deleted:"
-msgstr ""
+msgstr "Éléments à supprimer :"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Label
 msgid "Label"
-msgstr ""
+msgstr "Étiquette"
 
 #: components/manage/Preferences/PersonalPreferences
 # defaultMessage: Language
@@ -1805,17 +1805,17 @@ msgstr "Langage"
 #: components/manage/Widgets/FormFieldWrapper
 # defaultMessage: Language independent field.
 msgid "Language independent field."
-msgstr ""
+msgstr "Champ indépendant de la langue."
 
 #: components/manage/Widgets/ImageSizeWidget
 # defaultMessage: Large
 msgid "Large"
-msgstr ""
+msgstr "Large"
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Last
 msgid "Last"
-msgstr ""
+msgstr "Dernier"
 
 #: components/manage/Contents/Contents
 # defaultMessage: Last comment date
@@ -1830,7 +1830,7 @@ msgstr "Dernier modifié"
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: Latest available configuration
 msgid "Latest available configuration"
-msgstr ""
+msgstr "Dernière configuration disponible"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Latest version
@@ -1840,7 +1840,7 @@ msgstr "Dernière version"
 #: components/manage/Controlpanels/ContentTypesActions
 # defaultMessage: Layout
 msgid "Layout"
-msgstr ""
+msgstr "Disposition"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Lead Image
@@ -1868,7 +1868,7 @@ msgstr "Lier plus"
 #: config/Views
 # defaultMessage: Link redirect view
 msgid "Link redirect view"
-msgstr ""
+msgstr Vue de redirection de lien"
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
@@ -1887,27 +1887,27 @@ msgstr "Lien vers"
 #: components/manage/Multilingual/ManageTranslations
 # defaultMessage: Link translation for
 msgid "Link translation for"
-msgstr ""
+msgstr "Traduction du lien pour"
 
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Listing
 msgid "Listing"
-msgstr "Listing"
+msgstr "Liste"
 
 #: config/Views
 # defaultMessage: Listing view
 msgid "Listing view"
-msgstr ""
+msgstr "Vue de la liste"
 
 #: components/theme/Comments/Comments
 # defaultMessage: Load more...
 msgid "Load more"
-msgstr ""
+msgstr "Charger plus..."
 
 #: components/manage/Form/ModalForm
 # defaultMessage: Loading.
 msgid "Loading"
-msgstr ""
+msgstr "Chargement."
 
 #: components/theme/Login/Login
 # defaultMessage: Login
@@ -1923,7 +1923,7 @@ msgstr "Se connecter"
 #: components/theme/Logout/Logout
 # defaultMessage: Logged out
 msgid "Logged out"
-msgstr ""
+msgstr "Déconnecté"
 
 #: components/theme/Login/Login
 # defaultMessage: Login
@@ -1943,12 +1943,12 @@ msgstr "Identifiant"
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: Logout
 msgid "Logout"
-msgstr ""
+msgstr "Se déconnecter"
 
 #: components/manage/Toolbar/More
 # defaultMessage: Made by {creator} on {date}. This is not a working copy anymore, but the main content.
 msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
-msgstr ""
+msgstr "Réalisé par {creator} le {date}. Ce n'est plus une copie de travail, mais le contenu principal."
 
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Reduce cell padding
@@ -1959,33 +1959,33 @@ msgstr "Faire une table compacte"
 #: components/manage/Toolbar/More
 # defaultMessage: Manage Translations
 msgid "Manage Translations"
-msgstr ""
+msgstr "Gérer les traductions"
 
 #: components/manage/Toolbar/More
 # defaultMessage: Manage content…
 msgid "Manage content…"
-msgstr ""
+msgstr "Gérer le contenu…"
 
 #: components/manage/Multilingual/ManageTranslations
 # defaultMessage: Manage translations for {title}
 msgid "Manage translations for {title}"
-msgstr ""
+msgstr "Gérer les traductions pour {title}"
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Manual
 msgid "Manual"
-msgstr ""
+msgstr "Manuel"
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Manually or automatically added?
 msgid "Manually or automatically added?"
-msgstr ""
+msgstr "Ajouté manuellement ou automatiquement ?"
 
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Maps/schema
 # defaultMessage: Maps
 msgid "Maps"
-msgstr ""
+msgstr "Carte"
 
 #: components/manage/Blocks/Maps/schema
 # defaultMessage: Maps URL
@@ -1995,22 +1995,22 @@ msgstr "URL de la carte"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Maximum length is {len}.
 msgid "Maximum length is {len}."
-msgstr ""
+msgstr "La longueur maximale est {len}."
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Maximum value is {len}.
 msgid "Maximum value is {len}."
-msgstr ""
+msgstr "La valeur maximale est {len}."
 
 #: components/manage/Widgets/ImageSizeWidget
 # defaultMessage: Medium
 msgid "Medium"
-msgstr ""
+msgstr "Moyen"
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Membership updated
 msgid "Membership updated"
-msgstr ""
+msgstr "Adhésion mise à jour"
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Message
@@ -2026,7 +2026,7 @@ msgstr "La longueur minimum est {len}."
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Minimum value is {len}.
 msgid "Minimum value is {len}."
-msgstr ""
+msgstr "La valeur minimale est {len}."
 
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Moderate Comments
@@ -2041,17 +2041,17 @@ msgstr "Modérer les commentaires"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: Monday and Friday
 msgid "Monday and Friday"
-msgstr ""
+msgstr "lundi et vendredi"
 
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
 # defaultMessage: Day
 msgid "Month day"
-msgstr ""
+msgstr "Jour du mois"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: Monthly
 msgid "Monthly"
-msgstr ""
+msgstr "Mensuel"
 
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: More
@@ -2061,17 +2061,17 @@ msgstr "Plus"
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide.
 msgid "More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide."
-msgstr ""
+msgstr "Plus d'informations sur la procédure de mise à jour peuvent être trouvées dans la section documentation de plone.org dans le Guide de mise à jour."
 
 #: config/Views
 # defaultMessage: Mosaic layout
 msgid "Mosaic layout"
-msgstr ""
+msgstr "Disposition en mosaïque"
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Move down
 msgid "Move down"
-msgstr ""
+msgstr "Descendre"
 
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Move to bottom of folder
@@ -2086,17 +2086,17 @@ msgstr "Déplace au début du dossier"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Move up
 msgid "Move up"
-msgstr ""
+msgstr "Déplacer vers le haut"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Multiple choices?
 msgid "Multiple choices?"
-msgstr ""
+msgstr "Choix multiples ?"
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: My email is
 msgid "My email is"
-msgstr ""
+msgstr "Mon email est"
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: My username is
@@ -2112,7 +2112,7 @@ msgstr "Nom"
 #: components/manage/Widgets/AlignWidget
 # defaultMessage: Narrow
 msgid "Narrow"
-msgstr ""
+msgstr "Étroit"
 
 #: error
 # defaultMessage: Navigate back
@@ -2122,7 +2122,7 @@ msgstr "Retour en arrière"
 #: components/theme/Navigation/ContextNavigation
 # defaultMessage: Navigation
 msgid "Navigation"
-msgstr ""
+msgstr "Navigation"
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
@@ -2138,7 +2138,7 @@ msgstr "Actualité"
 #: config/Views
 # defaultMessage: News item view
 msgid "News item view"
-msgstr ""
+msgstr "Affichage des actualités"
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Contents/ContentsPropertiesModal
