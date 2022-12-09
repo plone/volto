@@ -671,7 +671,7 @@ msgstr "Bedingung: "
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: Configuration Versions
 msgid "Configuration Versions"
-msgstr "Konfigurations Versionen"
+msgstr "Konfigurationsversionen"
 
 #: components/manage/Controlpanels/Rules/EditRule
 # defaultMessage: Configure Content Rule
@@ -1064,7 +1064,7 @@ msgstr "Seite"
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Download Event
 msgid "Download Event"
-msgstr "Herunterladen Ereignis"
+msgstr "Termin herunterladen"
 
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Drag and drop files from your computer onto this area or click the “Browse” button.
@@ -1089,7 +1089,7 @@ msgstr "Datei hier ablegen um die bestehende Datei zu ersetzen"
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: Dry run selected, transaction aborted.
 msgid "Dry run selected, transaction aborted."
-msgstr "Problelauf gewählt, Transaktion abgebrochen."
+msgstr "Probelauf gewählt, Transaktion abgebrochen."
 
 #: components/theme/Register/Register
 # defaultMessage: E-mail
@@ -1227,13 +1227,13 @@ msgstr "Karten-Einbettungscode eingeben"
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target.
 msgid "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
-msgstr "Geben Sie den absoluten Pfad des Ziels ein. Der Pfad muss mit '/' starten. Das Ziel muss existieren oder ein existierender, alternative URL Pfad zum Ziel sein."
+msgstr "Geben Sie den absoluten Pfad des Ziels ein. Der Pfad muss mit '/' beginnen. Das Ziel muss existieren oder ein existierender, alternative URL Pfad zum Ziel sein."
 
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring.
 msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
-msgstr "Geben Sie den absoluten Pfad ein, an dem die alternative URL existieren soll. Der Pfad muss mit '/' starten. Es werden nur URLs die in einem '404 Nicht Gefunden' enden, weitergeleitet."
+msgstr "Geben Sie den absoluten Pfad ein, an dem die alternative URL existieren soll. Der Pfad muss mit '/' beginnen. Es werden nur URLs die in einem '404 Nicht Gefunden' enden, weitergeleitet."
 
 #: components/manage/Preferences/ChangePassword
 # defaultMessage: Enter your current password.
@@ -2154,7 +2154,7 @@ msgstr "Keine Transaktionen zum rückgängig machen ausgewählt"
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: No Video selected
 msgid "No Video selected"
-msgstr "Keine Video ausgewählt"
+msgstr "Kein Video ausgewählt"
 
 #: components/manage/Controlpanels/VersionOverview
 # defaultMessage: No addons found
@@ -3995,7 +3995,7 @@ msgstr "Geben Sie eine E-Mail Adresse ein. Das ist notwendig, falls Sie Ihr Pass
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Enter full name, e.g. John Smith.
 msgid "addUserFormFullnameDescription"
-msgstr "Geben Sie Ihren vollen Namen ein, z.B. Max Mustermann."
+msgstr "Geben Sie Ihren vollen Namen ein, z.B. Maxi Muster."
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Enter your new password. Minimum 8 characters.
@@ -4005,7 +4005,7 @@ msgstr "Geben Sie Ihr neues Passwort ein. Das Passwort muss aus mindestens 8 Zei
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in.
 msgid "addUserFormUsernameDescription"
-msgstr "Geben Sie einen Nutzernamen ein, beispielsweise etwas wie "mmustermann". Benutzen Sie keine Leer- oder Sonderzeichen. Bitte beachten Sie Groß- und Kleinschreibung und stellen Sie sicher, dass die Feststelltaste nicht aktiviert ist. Dieser Name wird zum Anmelden genutzt."
+msgstr "Geben Sie einen Nutzernamen ein, beispielsweise etwas wie "m.muster". Benutzen Sie keine Leer- oder Sonderzeichen. Bitte beachten Sie Groß- und Kleinschreibung und stellen Sie sicher, dass die Feststelltaste nicht aktiviert ist. Dieser Name wird zum Anmelden genutzt."
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Available views
