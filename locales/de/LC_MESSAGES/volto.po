@@ -328,12 +328,12 @@ msgstr "Alternative Text"
 #: components/manage/Blocks/Image/schema
 # defaultMessage: Leave empty if the image is purely decorative.
 msgid "Alt text hint"
-msgstr "Alt Text Hinweis"
+msgstr "Alternativtext Hinweis"
 
 #: components/manage/Blocks/Image/schema
 # defaultMessage: Describe the purpose of the image.
 msgid "Alt text hint link text"
-msgstr "Alt Text Hinweis Link Text"
+msgstr "Alternativtext Hinweis Linktext"
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Alternative url path (Required)
