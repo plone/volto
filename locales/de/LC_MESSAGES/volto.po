@@ -4525,7 +4525,7 @@ msgstr "Sie sind nicht berechtigt diese Operation auszuführen."
 #: components/manage/Toolbar/More
 # defaultMessage: An error occurred while performing this operation.
 msgid "workingCopyGenericError"
-msgstr "Ein Fehler ist während des Ausführens dieser Operation aufgetreten."
+msgstr "Während des Ausführens dieser Operation ist ein Fehler aufgetreten."
 
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
