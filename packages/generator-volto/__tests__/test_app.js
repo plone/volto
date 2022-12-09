@@ -2,9 +2,32 @@ const path = require('path');
 const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 const fs = require('fs-extra');
-const { getLatestCanaryVoltoVersion } = require('../generators/app/utils');
 
 let tmpDir;
+
+jest.mock('https', () => ({
+  methodToMock: {},
+}));
+const httpsMock = require('https');
+
+const Stream = require('stream');
+
+httpsMock.get = jest.fn().mockImplementation((url, headers, cb) => {
+  let streamStream = new Stream();
+  cb(streamStream);
+
+  const json = JSON.stringify({
+    name: '@plone/volto',
+    'dist-tags': {
+      latest: '16.3.0',
+      alpha: '16.0.0-alpha.53',
+      rc: '16.0.0-rc.3',
+    },
+  });
+
+  streamStream.emit('data', json);
+  streamStream.emit('end');
+});
 
 describe('generator-create-volto-app:app', () => {
   beforeAll(() => {
@@ -64,9 +87,6 @@ describe('generator-create-volto-app:app with canary option', () => {
     const packageJSON = JSON.parse(
       fs.readFileSync(path.join(tmpDir, 'test-volto/package.json'), 'utf8'),
     );
-
-    getLatestCanaryVoltoVersion().then((version) => {
-      expect(packageJSON.dependencies['@plone/volto']).toBe(version);
-    });
+    expect(packageJSON.dependencies['@plone/volto']).toBe('16.3.0');
   });
 });

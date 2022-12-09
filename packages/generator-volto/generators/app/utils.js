@@ -8,7 +8,7 @@ async function getVoltoYarnLock(version) {
   const url = `https://raw.githubusercontent.com/plone/volto/${version}/yarn.lock`;
   return new Promise((resolve, reject) => {
     https
-      .get(url, (resp) => {
+      .get(url, {}, (resp) => {
         let data = '';
         resp.on('data', (chunk) => {
           data += chunk;
