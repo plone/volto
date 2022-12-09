@@ -31,7 +31,7 @@ msgstr ""
 #: components/manage/Blocks/HTML/Edit
 # defaultMessage: <p>Add some HTML here</p>
 msgid "<p>Add some HTML here</p>"
-msgstr ""
+msgstr "<p>Ajoutez du HTML ici</p>"
 
 #: components/theme/Register/Register
 # defaultMessage: Account Registration Completed
@@ -51,12 +51,12 @@ msgstr "Action"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Action changed
 msgid "Action changed"
-msgstr ""
+msgstr "Action modifiée"
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Action:
 msgid "Action: "
-msgstr ""
+msgstr "Action : "
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -76,12 +76,12 @@ msgstr "Activé et désactivé"
 #: components/manage/Rules/Rules
 # defaultMessage: Active
 msgid "Active"
-msgstr ""
+msgstr "Actif"
 
 #: components/manage/Rules/Rules
 # defaultMessage: Active content rules in this Page
 msgid "Active content rules in this Page"
-msgstr ""
+msgstr "Règles de contenu actives dans cette page"
 
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
@@ -98,7 +98,7 @@ msgstr "Ajouter"
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Add
 msgid "Add (object list)"
-msgstr ""
+msgstr "Ajouter (liste d'objets)"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
@@ -113,17 +113,17 @@ msgstr "Ajouter du contenu"
 #: components/manage/Controlpanels/Rules/AddRule
 # defaultMessage: Add Content Rule
 msgid "Add Content Rule"
-msgstr ""
+msgstr "Ajouter une règle de contenu"
 
 #: components/manage/Controlpanels/Rules/AddRule
 # defaultMessage: Add Rule
 msgid "Add Rule"
-msgstr ""
+msgstr "Ajouter une règle"
 
 #: components/manage/Toolbar/Types
 # defaultMessage: Add Translation…
 msgid "Add Translation…"
-msgstr ""
+msgstr "Ajouter une traduction…"
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add User
@@ -138,32 +138,32 @@ msgstr "Ajouter une description"
 #: components/manage/Aliases/Aliases
 # defaultMessage: Add a new alternative url
 msgid "Add a new alternative url"
-msgstr ""
+msgstr "Ajouter une nouvelle URL alternative"
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Action added
 msgid "Add action"
-msgstr ""
+msgstr "Action ajoutée"
 
 #: components/manage/BlockChooser/BlockChooserButton
 # defaultMessage: Add block
 msgid "Add block"
-msgstr ""
+msgstr "Ajouter un bloc"
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add block…
 msgid "Add block…"
-msgstr ""
+msgstr "Ajouter un bloc ..."
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Condition added
 msgid "Add condition"
-msgstr ""
+msgstr "État ajouté"
 
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Add content rule
 msgid "Add content rule"
-msgstr ""
+msgstr "Ajouter une règle de contenu"
 
 #: components/manage/Widgets/QueryWidget
 # defaultMessage: Add criteria
@@ -173,7 +173,7 @@ msgstr "Ajouter un critère"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: Add date
 msgid "Add date"
-msgstr ""
+msgstr "Ajouter une date"
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Add field
@@ -213,12 +213,12 @@ msgstr "Ajouter aux groupes"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add users to group
 msgid "Add users to group"
-msgstr ""
+msgstr "Ajouter des utilisateurs au groupe"
 
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Add term
 msgid "Add vocabulary term"
-msgstr ""
+msgstr "Ajouter un terme de vocabulaire"
 
 #: components/manage/Add/Add
 # defaultMessage: Add {type}
@@ -228,17 +228,17 @@ msgstr "Ajouter {type}"
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Add-Ons
 msgid "Add-Ons"
-msgstr ""
+msgstr "Modules"
 
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Add-on Configuration
 msgid "Add-on Configuration"
-msgstr ""
+msgstr "Configuration des modules"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Add-ons
 msgid "Add-ons"
-msgstr ""
+msgstr "Modules"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Add-ons Settings
@@ -248,58 +248,58 @@ msgstr "Paramètres des modules"
 #: components/manage/Rules/Rules
 # defaultMessage: Added
 msgid "Added"
-msgstr ""
+msgstr "Ajoutée"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Additional date
 msgid "Additional date"
-msgstr ""
+msgstr "Date supplémentaire"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Addon could not be installed
 msgid "Addon could not be installed"
-msgstr ""
+msgstr "Le module n'a pas pu être installée"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Addon could not be uninstalled
 msgid "Addon could not be uninstalled"
-msgstr ""
+msgstr "Le module n'a pas pu être déinstallée"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Addon could not be upgraded
 msgid "Addon could not be upgraded"
-msgstr ""
+msgstr "Le module n'a pas pu être mise à jour"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Addon installed succesfuly
 msgid "Addon installed succesfuly"
-msgstr ""
+msgstr "Module installé avec succès"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Addon uninstalled succesfuly
 msgid "Addon uninstalled succesfuly"
-msgstr ""
+msgstr "Module déinstallé avec succès"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Addon upgraded succesfuly
 msgid "Addon upgraded succesfuly"
-msgstr ""
+msgstr "Module mise à jour avec succès"
 
 #: config/Views
 # defaultMessage: Album view
 msgid "Album view"
-msgstr ""
+msgstr "Vue d'album"
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Alias
 msgid "Alias"
-msgstr ""
+msgstr "Alias"
 
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Alias has been added
 msgid "Alias has been added"
-msgstr ""
+msgstr "L'alias a été ajouté"
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -317,17 +317,17 @@ msgstr "Tout"
 #: config/Views
 # defaultMessage: All content
 msgid "All content"
-msgstr ""
+msgstr "Tout le contenu"
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: All existing alternative urls for this site
 msgid "All existing alternative urls for this site"
-msgstr ""
+msgstr "Toutes les URL alternatives existantes pour ce site"
 
 #: components/theme/Search/Search
 # defaultMessage: Alphabetically
 msgid "Alphabetically"
-msgstr ""
+msgstr "Alphabétiquement"
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -339,48 +339,48 @@ msgstr "Texte pour la balise alt"
 #: components/manage/Blocks/Image/schema
 # defaultMessage: Leave empty if the image is purely decorative.
 msgid "Alt text hint"
-msgstr ""
+msgstr "Suggestion de texte alternatif"
 
 #: components/manage/Blocks/Image/schema
 # defaultMessage: Describe the purpose of the image.
 msgid "Alt text hint link text"
-msgstr ""
+msgstr "Texte du lien de la suggestion de texte alternatif"
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Alternative url path (Required)
 msgid "Alternative url path (Required)"
-msgstr ""
+msgstr "Autre chemin d'url (obligatoire)"
 
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Alternative url path must start with a slash.
 msgid "Alternative url path must start with a slash."
-msgstr ""
+msgstr "Le chemin d'URL alternatif doit commencer par une barre oblique."
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Alternative url path → target url path (date and time of creation, manually created yes/no)
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
-msgstr ""
+msgstr "Chemin url alternatif → chemin url cible (date et heure de création, créé manuellement oui/non)"
 
 #: components/manage/Rules/Rules
 # defaultMessage: Applied to subfolders
 msgid "Applied to subfolders"
-msgstr ""
+msgstr "Appliqué aux sous-dossiers"
 
 #: components/manage/Rules/Rules
 # defaultMessage: Applies to subfolders?
 msgid "Applies to subfolders?"
-msgstr ""
+msgstr "S'applique aux sous-dossiers ?"
 
 #: components/manage/Rules/Rules
 # defaultMessage: Apply to subfolders
 msgid "Apply to subfolders"
-msgstr ""
+msgstr "Appliquer aux sous-dossiers"
 
 #: components/manage/Toolbar/More
 # defaultMessage: Apply working copy
 msgid "Apply working copy"
-msgstr ""
+msgstr "Appliquer la copie de travail"
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Are you sure you want to delete this field?
@@ -401,7 +401,7 @@ msgstr "Ascendant"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Assignments
 msgid "Assignments"
-msgstr ""
+msgstr "Affectations"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Available
@@ -411,7 +411,7 @@ msgstr "Disponible"
 #: components/manage/Rules/Rules
 # defaultMessage: Available content rules:
 msgid "Available content rules:"
-msgstr ""
+msgstr "Règles de contenu disponibles :"
 
 #: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
@@ -454,7 +454,7 @@ msgstr "Base"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Base search query
 msgid "Base search query"
-msgstr ""
+msgstr "Requête de base de recherche"
 
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Block
@@ -486,12 +486,12 @@ msgstr "Explorer le site, déposer l'image ou écriver l'URL"
 #: components/manage/Sharing/Sharing
 # defaultMessage: By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator.
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr ""
+msgstr "Par défaut, les autorisations du conteneur de cet élément sont héritées. Si vous désactivez cette option, seules les autorisations de partage explicitement définies seront valides. Dans l'aperçu, le symbole {inherited} indique une valeur héritée. De même, le symbole {global} indique un rôle global, qui est géré par l'administrateur du site."
 
 #: components/manage/Contents/Contents
 # defaultMessage: By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first.
 msgid "By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first."
-msgstr ""
+msgstr "En supprimant cet élément, vous rompez les liens qui existent dans les éléments répertoriés ci-dessous. Si c'est bien ce que vous voulez faire, nous vous recommandons de supprimer d'abord ces références."
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Cache Name
@@ -501,12 +501,12 @@ msgstr "Nom du cache"
 #: components/manage/Controlpanels/ContentTypeLayout
 # defaultMessage: Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled
 msgid "Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
-msgstr ""
+msgstr "Impossible de modifier la mise en page pour le type de contenu <strong>{type}</strong> car il ne prend pas en charge les <strong>Volto Blocks</strong> activés"
 
 #: components/manage/Controlpanels/ContentTypeLayout
 # defaultMessage: Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>
 msgid "Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
-msgstr ""
+msgstr "Impossible de modifier la mise en page pour le type de contenu <strong>{type}</strong> car le <strong>comportement de blocage</strong> est activé et <strong>en lecture seule</strong>"
 
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsUploadModal
@@ -561,7 +561,7 @@ msgstr "Modifier le "
 #: components/manage/Toolbar/More
 # defaultMessage: Changes applied
 msgid "Changes applied."
-msgstr ""
+msgstr "Modifications appliquées."
 
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
@@ -600,17 +600,17 @@ msgstr "Choisir une cible"
 #: components/manage/Widgets/FileWidget
 # defaultMessage: Choose a file
 msgid "Choose a file"
-msgstr ""
+msgstr "Choisissez un fichier"
 
 #: components/manage/Blocks/HTML/Edit
 # defaultMessage: Clear
 msgid "Clear"
-msgstr ""
+msgstr "Effacer"
 
 #: components/manage/Blocks/Search/components/FilterList
 # defaultMessage: Clear filters
 msgid "Clear filters"
-msgstr ""
+msgstr "Effacer le filtre"
 
 #: components/theme/View/ImageView
 # defaultMessage: Click to download full sized image
@@ -630,12 +630,12 @@ msgstr "Fermer le menu"
 #: components/manage/Blocks/HTML/Edit
 # defaultMessage: Code
 msgid "Code"
-msgstr ""
+msgstr "Code"
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Collapse item
 msgid "Collapse item"
-msgstr ""
+msgstr "Réduire l'élément"
 
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Collection
@@ -645,7 +645,7 @@ msgstr "Collection"
 #: components/manage/Widgets/ColorPickerWidget
 # defaultMessage: Color
 msgid "Color"
-msgstr ""
+msgstr "Couleur"
 
 #: components/manage/Controlpanels/ModerateComments
 #: components/theme/Comments/CommentEditModal
@@ -662,7 +662,7 @@ msgstr "Commenter"
 #: components/theme/Comments/Comments
 # defaultMessage: Comments
 msgid "Comments"
-msgstr ""
+msgstr "Commentaires"
 
 #: components/manage/Diff/Diff
 # defaultMessage: Compare
@@ -672,32 +672,32 @@ msgstr "Comparer"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Condition changed
 msgid "Condition changed"
-msgstr ""
+msgstr "Condition changée"
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Condition:
 msgid "Condition: "
-msgstr ""
+msgstr "Condition : "
 
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: Configuration Versions
 msgid "Configuration Versions"
-msgstr ""
+msgstr "Configuration des versions"
 
 #: components/manage/Controlpanels/Rules/EditRule
 # defaultMessage: Configure Content Rule
 msgid "Configure Content Rule"
-msgstr ""
+msgstr "Configurer la règle de contenu"
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Configure Content Rule: {title}
 msgid "Configure Content Rule: {title}"
-msgstr ""
+msgstr "Configurer la règle de contenu : {title}"
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Configure content rule
 msgid "Configure content rule"
-msgstr ""
+msgstr "Configurer la règle de contenu"
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
@@ -723,28 +723,28 @@ msgstr "Eléments contenants"
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Content
 msgid "Content"
-msgstr ""
+msgstr "Contenu"
 
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Content Rule
 msgid "Content Rule"
-msgstr ""
+msgstr "Règle de contenu"
 
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Content Rules
 msgid "Content Rules"
-msgstr ""
+msgstr "Règles de contenu"
 
 #: components/manage/Rules/Rules
 # defaultMessage: Content rules for {title}
 msgid "Content rules for {title}"
-msgstr ""
+msgstr "Règles de contenu pour {title}"
 
 #: components/manage/Rules/Rules
 # defaultMessage: Content rules from parent folders
 msgid "Content rules from parent folders"
-msgstr ""
+msgstr "Règles de contenu des dossiers parents"
 
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Content type created
@@ -765,7 +765,7 @@ msgstr "Contenus"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Controls
 msgid "Controls"
-msgstr ""
+msgstr "Contrôles"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -777,7 +777,7 @@ msgstr "Copier"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: undefined
 msgid "Copy blocks"
-msgstr ""
+msgstr "Copier des blocs"
 
 #: components/theme/Footer/Footer
 # defaultMessage: Copyright
@@ -792,12 +792,12 @@ msgstr "Droits d'auteur ou autres informations sur les droits sur cet élément"
 #: components/manage/Toolbar/More
 # defaultMessage: Create working copy
 msgid "Create working copy"
-msgstr ""
+msgstr "Créer une copie de travail"
 
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: Created by {creator} on {date}
 msgid "Created by {creator} on {date}"
-msgstr ""
+msgstr "Créé par {creator} le {date}"
 
 #: components/manage/Contents/Contents
 # defaultMessage: Created on
@@ -823,12 +823,12 @@ msgstr "Critère"
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: Current active configuration
 msgid "Current active configuration"
-msgstr ""
+msgstr "Configuration active actuelle"
 
 #: components/manage/Blocks/Search/components/FilterList
 # defaultMessage: Current filters applied
 msgid "Current filters applied"
-msgstr ""
+msgstr "Filtres actuels appliqués"
 
 #: components/manage/Preferences/ChangePassword
 # defaultMessage: Current password
@@ -845,17 +845,17 @@ msgstr "Couper"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: undefined
 msgid "Cut blocks"
-msgstr ""
+msgstr "Couper des blocs"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: Daily
 msgid "Daily"
-msgstr ""
+msgstr "Quotidien"
 
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Database
 msgid "Database"
-msgstr ""
+msgstr "Base de données"
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Database Information
@@ -887,7 +887,7 @@ msgstr "Date"
 #: components/theme/Search/Search
 # defaultMessage: Date (newest first)
 msgid "Date (newest first)"
-msgstr ""
+msgstr "Date (le plus récent en premier)"
 
 #: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Contents/ContentsRenameModal
@@ -912,7 +912,7 @@ msgstr "Défaut"
 #: config/Views
 # defaultMessage: Default view
 msgid "Default view"
-msgstr ""
+msgstr "Vue par défaut"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
@@ -947,12 +947,12 @@ msgstr "Supprimer l'utilisateur"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Action deleted
 msgid "Delete action"
-msgstr ""
+msgstr "Action de suppression"
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: undefined
 msgid "Delete blocks"
-msgstr ""
+msgstr "Supprimer des blocs"
 
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Delete col
@@ -962,7 +962,7 @@ msgstr "Supprimer la colonne"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Condition deleted
 msgid "Delete condition"
-msgstr ""
+msgstr "Supprimer la condition"
 
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Delete row
@@ -972,12 +972,12 @@ msgstr "Supprimer la ligne"
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Deleted
 msgid "Deleted"
-msgstr ""
+msgstr "Supprimé"
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Depth
 msgid "Depth"
-msgstr ""
+msgstr "Profondeur"
 
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
@@ -1009,22 +1009,22 @@ msgstr "Différence entre le révision {one] et {two} de {title}"
 #: components/manage/Rules/Rules
 # defaultMessage: Disable
 msgid "Disable"
-msgstr ""
+msgstr "Désactiver"
 
 #: components/manage/Rules/Rules
 # defaultMessage: Disable apply to subfolders
 msgid "Disable apply to subfolders"
-msgstr ""
+msgstr "Désactiver l'application aux sous-dossiers"
 
 #: components/manage/Rules/Rules
 # defaultMessage: Disabled
 msgid "Disabled"
-msgstr ""
+msgstr "Désactivé"
 
 #: components/manage/Rules/Rules
 # defaultMessage: Disabled apply to subfolders
 msgid "Disabled apply to subfolders"
-msgstr ""
+msgstr "Désactivé s'applique aux sous-dossiers"
 
 #: components/theme/Footer/Footer
 # defaultMessage: Distributed under the {license}.
@@ -1070,12 +1070,12 @@ msgstr "Document"
 #: config/Views
 # defaultMessage: Document view
 msgid "Document view"
-msgstr ""
+msgstr "Vue de document"
 
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Download Event
 msgid "Download Event"
-msgstr ""
+msgstr "Télécharger l'événement"
 
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Drag and drop files from your computer onto this area or click the “Browse” button.
@@ -1085,22 +1085,22 @@ msgstr "Glisser et déposer les fichiers depuis votre ordinateur dans la zone ou
 #: components/manage/Widgets/FileWidget
 # defaultMessage: Drop file here to replace the existing file
 msgid "Drop file here to replace the existing file"
-msgstr ""
+msgstr "Déposez le fichier ici pour remplacer le fichier existant"
 
 #: components/manage/Widgets/FileWidget
 # defaultMessage: Drop file here to upload a new file
 msgid "Drop file here to upload a new file"
-msgstr ""
+msgstr "Déposez le fichier ici pour télécharger un nouveau fichier"
 
 #: components/manage/Widgets/FileWidget
 # defaultMessage: Drop files here ...
 msgid "Drop files here ..."
-msgstr ""
+msgstr "Déposez les fichiers ici ..."
 
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: Dry run selected, transaction aborted.
 msgid "Dry run selected, transaction aborted."
-msgstr ""
+msgstr "Essai à blanc sélectionné, transaction abandonnée."
 
 #: components/theme/Register/Register
 # defaultMessage: E-mail
@@ -1127,7 +1127,7 @@ msgstr "Modifier"
 #: components/manage/Controlpanels/Rules/EditRule
 # defaultMessage: Edit Rule
 msgid "Edit Rule"
-msgstr ""
+msgstr "Modifier la règle"
 
 #: components/theme/Comments/CommentEditModal
 # defaultMessage: Edit comment
@@ -1147,7 +1147,7 @@ msgstr "Modifier le groupe de champs"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: Edit recurrence
 msgid "Edit recurrence"
-msgstr ""
+msgstr "Modifier la récurrence"
 
 #: components/manage/Form/InlineForm
 # defaultMessage: Edit values
@@ -1177,32 +1177,32 @@ msgstr "Erreur dans le code intégré, veuillez suivre les instructions et essay
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Empty object list
 msgid "Empty object list"
-msgstr ""
+msgstr "Liste d'objets vide"
 
 #: components/manage/Rules/Rules
 # defaultMessage: Enable
 msgid "Enable"
-msgstr ""
+msgstr "Activer"
 
 #: components/manage/Controlpanels/ContentTypeLayout
 # defaultMessage: Enable editable Blocks
 msgid "Enable editable Blocks"
-msgstr ""
+msgstr "Activer les blocs modifiables"
 
 #: components/manage/Rules/Rules
 # defaultMessage: Enabled
 msgid "Enabled"
-msgstr ""
+msgstr "Activé"
 
 #: components/manage/Rules/Rules
 # defaultMessage: Enabled here?
 msgid "Enabled here?"
-msgstr ""
+msgstr "Activé ici ?"
 
 #: components/manage/Rules/Rules
 # defaultMessage: Enabled?
 msgid "Enabled?"
-msgstr ""
+msgstr "Activé ?"
 
 #: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
@@ -1213,12 +1213,12 @@ msgstr "Date de fin"
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 # defaultMessage: Enter URL or select an item
 msgid "Enter URL or select an item"
-msgstr ""
+msgstr "Saisissez l'URL ou sélectionnez un élément"
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Enter a username above to search or click 'Show All'
 msgid "Enter a username above to search or click 'Show All'"
-msgstr ""
+msgstr "Entrez un nom d'utilisateur ci-dessus pour rechercher ou cliquez sur 'Afficher tout'"
 
 #: components/theme/Register/Register
 # defaultMessage: Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
@@ -1238,13 +1238,13 @@ msgstr "Entrer le code intégré de la carte"
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target.
 msgid "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
-msgstr ""
+msgstr "Entrez le chemin absolu de la cible. Le chemin doit commencer par '/'. La cible doit exister ou être un chemin d'URL alternatif existant vers la cible."
 
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring.
 msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
-msgstr ""
+msgstr "Entrez le chemin absolu où l'URL alternative doit exister. Le chemin doit commencer par '/'. Seules les URL qui aboutissent à une page 404 introuvable entraîneront une redirection."
 
 #: components/manage/Preferences/ChangePassword
 # defaultMessage: Enter your current password.
@@ -1254,7 +1254,7 @@ msgstr "Entrer votre mot de passe actuel."
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your email for verification.
 msgid "Enter your email for verification."
-msgstr ""
+msgstr "Entrez votre email pour vérification."
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
@@ -1265,7 +1265,7 @@ msgstr "Entrer votre nouveau mot de passe. Minimum 5 caractères."
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your username for verification.
 msgid "Enter your username for verification."
-msgstr ""
+msgstr "Entrez votre nom d'utilisateur pour vérification."
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -1285,22 +1285,22 @@ msgstr "Erreur"
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Error
 msgid "ErrorHeader"
-msgstr ""
+msgstr "En-tête d'erreur"
 
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Event
 msgid "Event"
-msgstr ""
+msgstr "Événement"
 
 #: config/Views
 # defaultMessage: Event listing
 msgid "Event listing"
-msgstr ""
+msgstr "Liste des événements"
 
 #: config/Views
 # defaultMessage: Event view
 msgid "Event view"
-msgstr ""
+msgstr "Vue d'événement"
 
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Exclude from navigation
@@ -1310,7 +1310,7 @@ msgstr "Exclure de la navigation"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Exclude this occurence
 msgid "Exclude this occurence"
-msgstr ""
+msgstr "Exclure cette occurrence"
 
 #: components/manage/Contents/Contents
 # defaultMessage: Excluded from navigation
@@ -1320,7 +1320,7 @@ msgstr "Exclut de la navigation"
 #: components/manage/Aliases/Aliases
 # defaultMessage: Existing alternative urls for this item
 msgid "Existing alternative urls for this item"
-msgstr ""
+msgstr "URL alternatives existantes pour cet élément"
 
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Expand sidebar
@@ -1350,42 +1350,42 @@ msgstr "URL externe"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Facet
 msgid "Facet"
-msgstr ""
+msgstr "Facette"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Facet widget
 msgid "Facet widget"
-msgstr ""
+msgstr "Widget facette"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Facets
 msgid "Facets"
-msgstr ""
+msgstr "Facettes"
 
 #: config/Blocks
 # defaultMessage: Facets on left side
 msgid "Facets on left side"
-msgstr ""
+msgstr "Facettes sur le côté gauche"
 
 #: config/Blocks
 # defaultMessage: Facets on right side
 msgid "Facets on right side"
-msgstr ""
+msgstr "Facettes sur le côté droit"
 
 #: config/Blocks
 # defaultMessage: Facets on top
 msgid "Facets on top"
-msgstr ""
+msgstr "Facettes sur le dessus"
 
 #: components/manage/Controlpanels/UndoControlpanel
 # defaultMessage: Failed to undo transactions
 msgid "Failed To Undo Transactions"
-msgstr ""
+msgstr "Impossible d'annuler les transactions"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Field
 msgid "Field"
-msgstr ""
+msgstr "Champ"
 
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: File
@@ -1400,7 +1400,7 @@ msgstr "Taille du fichier"
 #: config/Views
 # defaultMessage: File view
 msgid "File view"
-msgstr ""
+msgstr "Vue de fichier"
 
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Filename
@@ -1410,17 +1410,17 @@ msgstr "Nom du fichier"
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Filter Rules:
 msgid "Filter Rules:"
-msgstr ""
+msgstr "Règles de filtrage :"
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Filter by prefix
 msgid "Filter by prefix"
-msgstr ""
+msgstr "Filtrer par préfixe"
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Filter users by groups
 msgid "Filter users by groups"
-msgstr ""
+msgstr "Filtrer les utilisateurs par groupes"
 
 #: components/manage/Contents/Contents
 # defaultMessage: Filter…
@@ -1430,7 +1430,7 @@ msgstr "Filtre..."
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: First
 msgid "First"
-msgstr ""
+msgstr "Première"
 
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Fixed width columns
@@ -1440,7 +1440,7 @@ msgstr "Taille de la cellule de la table fixé"
 #: components/manage/BlockChooser/BlockChooser
 # defaultMessage: Fold
 msgid "Fold"
-msgstr ""
+msgstr "Plier"
 
 #: components/manage/Contents/Contents
 # defaultMessage: Folder
@@ -1450,7 +1450,7 @@ msgstr "Dossier"
 #: config/Views
 # defaultMessage: Folder listing
 msgid "Folder listing"
-msgstr ""
+msgstr "Liste des dossiers"
 
 #: components/theme/Forbidden/Forbidden
 # defaultMessage: Forbidden
@@ -1460,7 +1460,7 @@ msgstr "Interdit"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: Fourth
 msgid "Fourth"
-msgstr ""
+msgstr "Quatrième"
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: From
@@ -1492,7 +1492,7 @@ msgstr "License GNU GPL"
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: General
 msgid "General"
-msgstr ""
+msgstr "Général"
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Global role
