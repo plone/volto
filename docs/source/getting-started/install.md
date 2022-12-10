@@ -221,23 +221,13 @@ You may choose to install the canary version, which is the latest alpha release,
 
     ```bash
     npm install -g yo @plone/generator-volto
-    # install latest stable release
     yo @plone/volto
-    # or install latest alpha release
-    yo @plone/volto --canary
     ```
+
+See the [Creating a project](../recipes/creating-project) page for more
+advanced options that can be passed to the generator.
 
 2.  Answer to the prompted questions and provide the name of the new app (folder) to be created. For the sake of this documentation, provide `myvoltoproject` as project name then.
-
-    ````{note}
-    You can run the generator with parameters to tailor your requirements.
-
-    ```bash
-    yo @plone/volto --help
-    ```
-
-    or take a look at the [README](https://github.com/plone/volto/blob/master/packages/generator-volto/README.md) for more information.
-    ````
 
 3.  Change directory to the newly created folder `myvoltoapp` (or the one you've chosen):
     ```bash
