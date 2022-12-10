@@ -17,7 +17,7 @@ In addition to bootstrapping stand-alone Volto projects, it can also bootstrap V
 
     ```bash
     npm install -g yo @plone/generator-volto
-    # this will install the latest stable release
+    # Install the latest and stable release of Volto with the following command
     yo @plone/volto
     # or you can install the "canary" release, including any alpha release
     yo @plone/volto --canary
