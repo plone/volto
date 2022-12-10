@@ -21,7 +21,6 @@ export const deserialize = (
   el,
   options = { collapseWhitespace: true },
 ) => {
-  console.log('options', options);
   const { htmlTagsToSlate } = editor;
 
   if (el.nodeType === COMMENT) {
