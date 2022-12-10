@@ -158,7 +158,7 @@ msgstr "Ajouter un bloc ..."
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Condition added
 msgid "Add condition"
-msgstr "État ajouté"
+msgstr "Condition ajoutée"
 
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Add content rule
@@ -218,7 +218,7 @@ msgstr "Ajouter des utilisateurs au groupe"
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Add term
 msgid "Add vocabulary term"
-msgstr "Ajouter un terme de vocabulaire"
+msgstr "Ajouter un terme au vocabulaire"
 
 #: components/manage/Add/Add
 # defaultMessage: Add {type}
@@ -258,17 +258,17 @@ msgstr "Date supplémentaire"
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Addon could not be installed
 msgid "Addon could not be installed"
-msgstr "Le module n'a pas pu être installée"
+msgstr "Le module n'a pas pu être installé"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Addon could not be uninstalled
 msgid "Addon could not be uninstalled"
-msgstr "Le module n'a pas pu être déinstallée"
+msgstr "Le module n'a pas pu être désinstallé"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Addon could not be upgraded
 msgid "Addon could not be upgraded"
-msgstr "Le module n'a pas pu être mise à jour"
+msgstr "Le module n'a pas pu être mis à jour"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Addon installed succesfuly
@@ -278,17 +278,17 @@ msgstr "Module installé avec succès"
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Addon uninstalled succesfuly
 msgid "Addon uninstalled succesfuly"
-msgstr "Module déinstallé avec succès"
+msgstr "Module désinstallé avec succès"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Addon upgraded succesfuly
 msgid "Addon upgraded succesfuly"
-msgstr "Module mise à jour avec succès"
+msgstr "Module mis à jour avec succès"
 
 #: config/Views
 # defaultMessage: Album view
 msgid "Album view"
-msgstr "Vue d'album"
+msgstr "Vue Album"
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Alias
@@ -307,7 +307,7 @@ msgstr "L'alias a été ajouté"
 #: components/manage/Blocks/Video/schema
 # defaultMessage: Alignment
 msgid "Alignment"
-msgstr "Allignement"
+msgstr "Alignement"
 
 #: components/manage/Contents/Contents
 # defaultMessage: All
@@ -322,7 +322,7 @@ msgstr "Tout le contenu"
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: All existing alternative urls for this site
 msgid "All existing alternative urls for this site"
-msgstr "Toutes les URL alternatives existantes pour ce site"
+msgstr "Toutes les URLs alternatives existantes pour ce site"
 
 #: components/theme/Search/Search
 # defaultMessage: Alphabetically
@@ -339,7 +339,7 @@ msgstr "Texte pour la balise alt"
 #: components/manage/Blocks/Image/schema
 # defaultMessage: Leave empty if the image is purely decorative.
 msgid "Alt text hint"
-msgstr "Suggestion de texte alternatif"
+msgstr "Laisser vide si l'image est uniquement décorative"
 
 #: components/manage/Blocks/Image/schema
 # defaultMessage: Describe the purpose of the image.
@@ -349,7 +349,7 @@ msgstr "Texte du lien de la suggestion de texte alternatif"
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Alternative url path (Required)
 msgid "Alternative url path (Required)"
-msgstr "Autre chemin d'url (obligatoire)"
+msgstr "Autre chemin d'URL (obligatoire)"
 
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
@@ -360,7 +360,7 @@ msgstr "Le chemin d'URL alternatif doit commencer par une barre oblique."
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Alternative url path → target url path (date and time of creation, manually created yes/no)
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
-msgstr "Chemin url alternatif → chemin url cible (date et heure de création, créé manuellement oui/non)"
+msgstr "Chemin d'URL alternatif → chemin URL cible (date et heure de création, créé manuellement oui/non)"
 
 #: components/manage/Rules/Rules
 # defaultMessage: Applied to subfolders
@@ -454,7 +454,7 @@ msgstr "Base"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Base search query
 msgid "Base search query"
-msgstr "Requête de base de recherche"
+msgstr "Requête de base de la recherche"
 
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Block
@@ -491,7 +491,7 @@ msgstr "Par défaut, les autorisations du conteneur de cet élément sont hérit
 #: components/manage/Contents/Contents
 # defaultMessage: By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first.
 msgid "By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first."
-msgstr "En supprimant cet élément, vous rompez les liens qui existent dans les éléments répertoriés ci-dessous. Si c'est bien ce que vous voulez faire, nous vous recommandons de supprimer d'abord ces références."
+msgstr "En supprimant cet élément, vous rompez les liens qui existent dans les éléments répertoriés ci-dessous. Si c'est ce que vous voulez faire, nous vous recommandons de supprimer d'abord ces références."
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Cache Name
@@ -501,7 +501,7 @@ msgstr "Nom du cache"
 #: components/manage/Controlpanels/ContentTypeLayout
 # defaultMessage: Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled
 msgid "Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
-msgstr "Impossible de modifier la mise en page pour le type de contenu <strong>{type}</strong> car il ne prend pas en charge les <strong>Volto Blocks</strong> activés"
+msgstr "Impossible de modifier la mise en page pour le type de contenu <strong>{type}</strong> car la prise en charge des <strong>Blocs Volto</strong> n'est pas activée"
 
 #: components/manage/Controlpanels/ContentTypeLayout
 # defaultMessage: Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>
@@ -610,7 +610,7 @@ msgstr "Effacer"
 #: components/manage/Blocks/Search/components/FilterList
 # defaultMessage: Clear filters
 msgid "Clear filters"
-msgstr "Effacer le filtre"
+msgstr "Effacer les filtres"
 
 #: components/theme/View/ImageView
 # defaultMessage: Click to download full sized image
@@ -828,7 +828,7 @@ msgstr "Configuration active actuelle"
 #: components/manage/Blocks/Search/components/FilterList
 # defaultMessage: Current filters applied
 msgid "Current filters applied"
-msgstr "Filtres actuels appliqués"
+msgstr "Filtres actuellement appliqués"
 
 #: components/manage/Preferences/ChangePassword
 # defaultMessage: Current password
@@ -947,7 +947,7 @@ msgstr "Supprimer l'utilisateur"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Action deleted
 msgid "Delete action"
-msgstr "Action de suppression"
+msgstr "Action supprimée"
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: undefined
@@ -962,7 +962,7 @@ msgstr "Supprimer la colonne"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Condition deleted
 msgid "Delete condition"
-msgstr "Supprimer la condition"
+msgstr "Condition supprimée"
 
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Delete row
@@ -1014,7 +1014,7 @@ msgstr "Désactiver"
 #: components/manage/Rules/Rules
 # defaultMessage: Disable apply to subfolders
 msgid "Disable apply to subfolders"
-msgstr "Désactiver l'application aux sous-dossiers"
+msgstr "Désactiver pour les sous-dossiers"
 
 #: components/manage/Rules/Rules
 # defaultMessage: Disabled
@@ -1024,7 +1024,7 @@ msgstr "Désactivé"
 #: components/manage/Rules/Rules
 # defaultMessage: Disabled apply to subfolders
 msgid "Disabled apply to subfolders"
-msgstr "Désactivé s'applique aux sous-dossiers"
+msgstr "Désactivé pour les sous-dossiers"
 
 #: components/theme/Footer/Footer
 # defaultMessage: Distributed under the {license}.
@@ -1070,7 +1070,7 @@ msgstr "Document"
 #: config/Views
 # defaultMessage: Document view
 msgid "Document view"
-msgstr "Vue de document"
+msgstr "Vue document"
 
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Download Event
@@ -1100,7 +1100,7 @@ msgstr "Déposez les fichiers ici ..."
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: Dry run selected, transaction aborted.
 msgid "Dry run selected, transaction aborted."
-msgstr "Essai à blanc sélectionné, transaction abandonnée."
+msgstr "Essai sélectionné, transaction abandonnée."
 
 #: components/theme/Register/Register
 # defaultMessage: E-mail
@@ -1218,54 +1218,54 @@ msgstr "Saisissez l'URL ou sélectionnez un élément"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Enter a username above to search or click 'Show All'
 msgid "Enter a username above to search or click 'Show All'"
-msgstr "Entrez un nom d'utilisateur ci-dessus pour rechercher ou cliquez sur 'Afficher tout'"
+msgstr "Saisissez un nom d'utilisateur ci-dessus à rechercher ou cliquez sur 'Afficher tous'"
 
 #: components/theme/Register/Register
 # defaultMessage: Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-msgstr "Entrer votre adresse e-mail. Elle sera votre nom d'utilisateur. Nous respectons votre vie privée, nous ne donnerons pas votre adresse à un tiers et elle ne sera pas exposée.<<<<<<< HEAD"
+msgstr "Saisissez votre adresse e-mail. Elle sera votre nom d'utilisateur. Nous respectons votre vie privée, nous ne donnerons pas votre adresse à un tiers et elle ne sera pas exposée.<<<<<<< HEAD"
 
 #: components/theme/Register/Register
 # defaultMessage: Enter full name, e.g. John Smith.
 msgid "Enter full name, e.g. John Smith."
-msgstr "Entrer votre nom complet (par exemple : John Smith)"
+msgstr "Saisissez votre nom complet (par exemple : John Smith)"
 
 #: components/manage/Blocks/Maps/Edit
 # defaultMessage: Enter map Embed Code
 msgid "Enter map Embed Code"
-msgstr "Entrer le code intégré de la carte"
+msgstr "Saisissez le code intégré de la carte"
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target.
 msgid "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
-msgstr "Entrez le chemin absolu de la cible. Le chemin doit commencer par '/'. La cible doit exister ou être un chemin d'URL alternatif existant vers la cible."
+msgstr "Saisissez le chemin absolu de la cible. Le chemin doit commencer par '/'. La cible doit exister ou être un chemin d'URL alternatif existant vers la cible."
 
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring.
 msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
-msgstr "Entrez le chemin absolu où l'URL alternative doit exister. Le chemin doit commencer par '/'. Seules les URL qui aboutissent à une page 404 introuvable entraîneront une redirection."
+msgstr "Saisissez le chemin absolu où l'URL alternative doit exister. Le chemin doit commencer par '/'. Seules les URL qui aboutissent à une page 404 introuvable entraîneront une redirection."
 
 #: components/manage/Preferences/ChangePassword
 # defaultMessage: Enter your current password.
 msgid "Enter your current password."
-msgstr "Entrer votre mot de passe actuel."
+msgstr "Saisissez votre mot de passe actuel."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your email for verification.
 msgid "Enter your email for verification."
-msgstr "Entrez votre email pour vérification."
+msgstr "Saisissez votre email pour vérification."
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your new password. Minimum 5 characters.
 msgid "Enter your new password. Minimum 5 characters."
-msgstr "Entrer votre nouveau mot de passe. Minimum 5 caractères."
+msgstr "Saisissez votre nouveau mot de passe. Minimum 5 caractères."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your username for verification.
 msgid "Enter your username for verification."
-msgstr "Entrez votre nom d'utilisateur pour vérification."
+msgstr "Saisissez votre nom d'utilisateur pour vérification."
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -1285,7 +1285,7 @@ msgstr "Erreur"
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Error
 msgid "ErrorHeader"
-msgstr "En-tête d'erreur"
+msgstr "Erreur"
 
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Event
@@ -1315,17 +1315,17 @@ msgstr "Exclure cette occurrence"
 #: components/manage/Contents/Contents
 # defaultMessage: Excluded from navigation
 msgid "Excluded from navigation"
-msgstr "Exclut de la navigation"
+msgstr "Exclu de la navigation"
 
 #: components/manage/Aliases/Aliases
 # defaultMessage: Existing alternative urls for this item
 msgid "Existing alternative urls for this item"
-msgstr "URL alternatives existantes pour cet élément"
+msgstr "URLs alternatives existantes pour cet élément"
 
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Expand sidebar
 msgid "Expand sidebar"
-msgstr "Etendre la barre latérale"
+msgstr "Étendre la barre latérale"
 
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Expiration Date
@@ -1400,7 +1400,7 @@ msgstr "Taille du fichier"
 #: config/Views
 # defaultMessage: File view
 msgid "File view"
-msgstr "Vue de fichier"
+msgstr "Vue fichier"
 
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Filename
@@ -1410,7 +1410,7 @@ msgstr "Nom du fichier"
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Filter Rules:
 msgid "Filter Rules:"
-msgstr "Règles de filtrage :"
+msgstr "Règles de filtre :"
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Filter by prefix
@@ -1430,12 +1430,12 @@ msgstr "Filtre..."
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: First
 msgid "First"
-msgstr "Première"
+msgstr "Premier"
 
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Fixed width columns
 msgid "Fixed width table cells"
-msgstr "Taille de la cellule de la table fixé"
+msgstr "Largeur des cellules de la table fixe"
 
 #: components/manage/BlockChooser/BlockChooser
 # defaultMessage: Fold
@@ -2520,7 +2520,7 @@ msgstr ""
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Re-enter the password. Make sure the passwords are identical.
 msgid "Re-enter the password. Make sure the passwords are identical."
-msgstr "Entrez à nouveau le mot de passe. Assurez-vous que les mots de passe sont identiques."
+msgstr "Saisissez à nouveau le mot de passe. Assurez-vous que les mots de passe sont identiques."
 
 #: components/theme/Search/Search
 #: components/theme/View/SummaryView
