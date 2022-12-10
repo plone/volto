@@ -25,7 +25,7 @@ In addition to bootstrapping stand-alone Volto projects, it can also bootstrap V
     yo @plone/volto --volto=15.0.0
     # you can even pass a GitHub repo and specific branch
     yo @plone/volto --volto=plone/volto#16.0.0
-    # you can bootstrap with addons
+    # you can bootstrap with add-ons
     yo @plone/volto --addon=volto-form-block
     ```
 
