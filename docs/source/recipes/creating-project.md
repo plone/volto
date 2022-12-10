@@ -9,7 +9,9 @@ myst:
 
 # Creating a new Volto project
 
-For using Volto for a project (i.e. use Volto as a library), you should use Volto's project generator `@plone/generator-volto`. It's a boilerplate generator based in Yeoman that will provide you with the basic files and folder structure to bootstrap a Volto site. In addition to bootstrapping standalone Volto projects, it can also bootstrap Volto addons.
+For using Volto for a project—in other words, use Volto as a library—you should use Volto's project generator `@plone/generator-volto`.
+It's a boilerplate generator based in Yeoman that will provide you with the basic files and folder structure to bootstrap a Volto site.
+In addition to bootstrapping stand-alone Volto projects, it can also bootstrap Volto add-ons.
 
 1.  Open a terminal and execute:
 
