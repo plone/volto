@@ -18,8 +18,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
 "Domain: volto\n"
-"Language-Code: en\n"
-"Language-Name: English\n"
+"Language-Code: fi\n"
+"Language-Name: Finish\n"
 "Preferred-Encodings: utf-8\n"
 
 #: components/manage/Blocks/HTML/Edit
