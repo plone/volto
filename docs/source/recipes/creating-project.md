@@ -23,7 +23,7 @@ In addition to bootstrapping stand-alone Volto projects, it can also bootstrap V
     yo @plone/volto --canary
     # or you can install any specific released version
     yo @plone/volto --volto=15.0.0
-    # and you can even pass a custom Github repo + branch to be used
+    # you can even pass a GitHub repo and specific branch
     yo @plone/volto --volto=plone/volto#16.0.0
     # you can bootstrap with addons
     yo @plone/volto --addon=volto-form-block
