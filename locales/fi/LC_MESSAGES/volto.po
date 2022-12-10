@@ -19,7 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Domain: volto\n"
 "Language-Code: fi\n"
-"Language-Name: Finish\n"
+"Language-Name: Finnish\n"
 "Preferred-Encodings: utf-8\n"
 
 #: components/manage/Blocks/HTML/Edit
