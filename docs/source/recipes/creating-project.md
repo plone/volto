@@ -21,7 +21,7 @@ In addition to bootstrapping stand-alone Volto projects, it can also bootstrap V
     yo @plone/volto
     # or you can install latest Volto, including any unstable (alpha) release
     yo @plone/volto --canary
-    # or you can install a Volto with a specific released version:
+    # or you can install any specific released version
     yo @plone/volto --volto=15.0.0
     # and you can even pass a custom Github repo + branch to be used
     yo @plone/volto --volto=plone/volto#16.0.0
