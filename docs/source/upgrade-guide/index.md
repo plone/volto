@@ -100,9 +100,12 @@ For projects already using `volto-slate`, take the following steps in your proje
 You will have to configure your project to continue using `draftJS`, for example, in your `config.js` or in your add-on:
 
 ```js
+import { WysiwygWidget } from '@plone/volto/components';
+
 config.settings.defaultBlockType = 'text'
 config.blocks.blocksConfig.table.restricted = false;
 config.blocks.blocksConfig.slateTable.restricted = true;
+config.widgets.widget.richtext = WysiwygWidget;
 ```
 
 #### Existing projects using core `draftJS`, opting to start using `slate` without migrating (possible, but not recommended)
@@ -347,25 +350,24 @@ If you need to format dates in Volto, it's recommended to use the `FormattedDate
 It uses modern recommendations for date formatting on the web.
 ````
 
-### Upgraded core to use Cypress 10
+### Upgraded core to use Cypress 11
 
-Cypress has overhauled the testing app and included native support of Apple Silicon Computers beginning with version 10.2.0.
-This dramatically improves the launch and test times in these machines.
+Cypress has overhauled their testing application, beginning with Cypress 10.
+It now includes native support of Apple silicon chip computers.
+This dramatically improved the launch and test times on those machines.
 It also includes the new "component" testing feature that might be appealing in the near future.
+
 The only drawback is that they also overhauled the configuration, forcing migration from old configuration based on JSON files to a better JavaScript-based one.
 They also changed and renamed some options.
 Luckily, Cypress provides both good reporting when an old configuration is in place, and an interactive migration wizard.
 
-Core configuration has been updated, but you will need to update your Cypress configuration if you want to use core's Cypress 10.
+Core configuration has been updated to use Cypress 11.
+You will need to update your Cypress configuration from versions older than Cypress 10 if you want to use core's Cypress 11.
+If you have already updated your configuration to use Cypress 10 or later in a previous upgrade, your configuration might already work with Cypress 11.
 It is possible that forcing your project to use older versions might still work with old configurations.
 
 ```{seealso}
 See https://docs.cypress.io/guides/references/migration-guide#Migrating-to-Cypress-version-10-0 for more information.
-```
-
-```{note}
-Later on, the core has been upgraded to Cypress 11.
-However no changes need to be made if you already upgraded to Cypress 10.
 ```
 
 ### The complete configuration registry is passed to the add-ons and the project configuration pipeline

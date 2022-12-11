@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-03 03:20-0400\n"
-"PO-Revision-Date: 2022-10-31 21:42-0400\n"
+"PO-Revision-Date: 2022-12-02 11:45+0100\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language: es\n"
 "Language-Team: ES <LL@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.3\n"
 "Language-Code: es\n"
 "Language-Name: Español\n"
 "Preferred-Encodings: utf-8\n"
@@ -676,7 +676,7 @@ msgstr "Condición: "
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: Configuration Versions
 msgid "Configuration Versions"
-msgstr ""
+msgstr "Versiones de la configuración"
 
 #: components/manage/Controlpanels/Rules/EditRule
 # defaultMessage: Configure Content Rule
@@ -817,7 +817,7 @@ msgstr "Criterios"
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: Current active configuration
 msgid "Current active configuration"
-msgstr ""
+msgstr "Configuración activa"
 
 #: components/manage/Blocks/Search/components/FilterList
 # defaultMessage: Current filters applied
@@ -1094,7 +1094,7 @@ msgstr "Arrastrar archivos aquí..."
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: Dry run selected, transaction aborted.
 msgid "Dry run selected, transaction aborted."
-msgstr ""
+msgstr "Se ha seleccionado el modo de prueba, transacción abortada"
 
 #: components/theme/Register/Register
 # defaultMessage: E-mail
@@ -1732,7 +1732,7 @@ msgstr "Intervalo anual"
 #: components/theme/View/RenderBlocks
 # defaultMessage: Invalid block - Will be removed on saving
 msgid "Invalid Block"
-msgstr ""
+msgstr "Bloque no válido"
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Item batch size
@@ -1824,7 +1824,7 @@ msgstr "Última modificación"
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: Latest available configuration
 msgid "Latest available configuration"
-msgstr ""
+msgstr "Última configuración disponible"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Latest version
@@ -2004,7 +2004,7 @@ msgstr "Mediano"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Membership updated
 msgid "Membership updated"
-msgstr ""
+msgstr "Pertenencia actualizada"
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Message
@@ -2055,7 +2055,7 @@ msgstr "Más"
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide.
 msgid "More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide."
-msgstr ""
+msgstr "Puede encontrar más información sobre el procedimiento de actualización en la sección de documentación de plone.org, en la Guía de Actualización."
 
 #: config/Views
 # defaultMessage: Mosaic layout
@@ -2106,7 +2106,7 @@ msgstr "Nombre"
 #: components/manage/Widgets/AlignWidget
 # defaultMessage: Narrow
 msgid "Narrow"
-msgstr ""
+msgstr "Filtrar"
 
 #: error
 # defaultMessage: Navigate back
@@ -2396,12 +2396,12 @@ msgstr "Las personas responsables de la creación del contenido de este elemento
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Please continue with the upgrade.
 msgid "Please continue with the upgrade."
-msgstr ""
+msgstr "Continúe con la actualización"
 
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: Please ensure you have a backup of your site before performing the upgrade.
 msgid "Please ensure you have a backup of your site before performing the upgrade."
-msgstr ""
+msgstr "Por favor, asegúrese de que tiene una copia de seguridad de su sitio antes de realizar la actualización."
 
 #: components/manage/Blocks/Video/Body
 # defaultMessage: Please enter a valid URL by deleting the block and adding a new video block.
@@ -3310,7 +3310,7 @@ msgstr "Las siguientes reglas de contenido están activas en esta página. Utili
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: The following list shows which upgrade steps are going to be run. Upgrading sometimes performs a catalog/security update, which may take a long time on large sites. Be patient.
 msgid "The following list shows which upgrade steps are going to be run. Upgrading sometimes performs a catalog/security update, which may take a long time on large sites. Be patient."
-msgstr ""
+msgstr "La siguiente lista muestra los pasos de actualización que se ejecutarán. Algunos de esos pasos requieren que se ejecute una actualización del catálogo o de seguridad, por lo que puede que tarden mucho en algunos sitios grandes."
 
 #: components/manage/Contents/Contents
 # defaultMessage: The item could not be deleted.
@@ -3336,7 +3336,7 @@ msgstr "El registro fue exitoso. Por favor, verifique su bandeja de entrada para
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: The site configuration is outdated and needs to be upgraded.
 msgid "The site configuration is outdated and needs to be upgraded."
-msgstr ""
+msgstr "La configuración del sitio está anticuada y debe ser actualizada."
 
 #: components/manage/Toolbar/More
 # defaultMessage: The working copy was discarded
@@ -3356,7 +3356,7 @@ msgstr "Hay un error de configuración en el servidor"
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: There was an error with the upgrade.
 msgid "There was an error with the upgrade."
-msgstr ""
+msgstr "Ha ocurrido un error con la actualización"
 
 #: components/manage/Form/InlineForm
 # defaultMessage: There were some errors
@@ -3643,22 +3643,22 @@ msgstr "Actualizaciones disponibles"
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: Upgrade
 msgid "Upgrade"
-msgstr ""
+msgstr "Actualizar"
 
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: Upgrade Plone Site
 msgid "Upgrade Plone Site"
-msgstr ""
+msgstr "Actualizar este sitio"
 
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: Upgrade Report
 msgid "Upgrade Report"
-msgstr ""
+msgstr "Informe de actualización"
 
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: Upgrade Steps
 msgid "Upgrade Steps"
-msgstr ""
+msgstr "Pasos de actualización"
 
 #: components/manage/Contents/Contents
 # defaultMessage: Upload
@@ -3985,7 +3985,7 @@ msgstr "Su idioma preferido"
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: Your site is up to date.
 msgid "Your site is up to date."
-msgstr ""
+msgstr "Su sitio está actualizado."
 
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your username is required for reset your password.
@@ -3995,22 +3995,22 @@ msgstr "El nombre de usuario es necesario para restablecer su contraseña."
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
 msgid "addUserFormEmailDescription"
-msgstr ""
+msgstr "Introduzca su dirección de correo. Esto es necesario en caso de pérdida de su contraseña. Respetaremos su privacidad y no divulgaremos su dirección a terceros ni la expondremos en este sitio."
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Enter full name, e.g. John Smith.
 msgid "addUserFormFullnameDescription"
-msgstr ""
+msgstr "Introduzca su nombre completo, por ejemplo José Pérez."
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Enter your new password. Minimum 8 characters.
 msgid "addUserFormPasswordDescription"
-msgstr ""
+msgstr "Introduzca su nueva contraseña. Mínimo 8 caracteres."
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in.
 msgid "addUserFormUsernameDescription"
-msgstr ""
+msgstr "Introduzca el nombre de usuario que desee utilizar. Generalmente algo como "jperez" o "jose_perez". No están permitidos caracteres especiales o espacios en el nombre de usuario. Los nombres de usuario y las contraseñas son sensibles a mayúsculas y minúsculas, asegúrese que la tecla de bloqueo de mayúsculas no está activada ('caps lock'). Este es el nombre que utilizará para identificarse."
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Available views
@@ -4026,7 +4026,7 @@ msgstr "¿Olvidaste tu contraseña?"
 #: config/Blocks
 # defaultMessage: Checkbox
 msgid "checkboxFacet"
-msgstr ""
+msgstr "Casilla de verificación"
 
 #: config/Blocks
 # defaultMessage: Common
@@ -4041,7 +4041,7 @@ msgstr "Comparar con el idioma"
 #: config/Blocks
 # defaultMessage: Date Range
 msgid "daterangeFacet"
-msgstr ""
+msgstr "Rango de fechas"
 
 #: components/manage/Blocks/Block/EditBlockWrapper
 # defaultMessage: delete
@@ -4440,7 +4440,7 @@ msgstr "años"
 #: config/Blocks
 # defaultMessage: Select
 msgid "selectFacet"
-msgstr ""
+msgstr "Menú de selección"
 
 #: components/manage/Blocks/Search/components/ViewSwitcher
 # defaultMessage: Select view
@@ -4490,7 +4490,7 @@ msgstr "Tabla de contenidos"
 #: config/Blocks
 # defaultMessage: Toggle
 msgid "toggleFacet"
-msgstr ""
+msgstr "Activar/Desactivar"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update from version {origin} to {destination}

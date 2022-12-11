@@ -7,7 +7,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 
-import { Container, Segment, Grid, Label } from 'semantic-ui-react';
+import {
+  Container as SemanticContainer,
+  Segment,
+  Grid,
+  Label,
+} from 'semantic-ui-react';
 import config from '@plone/volto/registry';
 import { getSchema } from '@plone/volto/actions';
 import { getWidget } from '@plone/volto/helpers/Widget/utils';
@@ -57,12 +62,15 @@ const DefaultView = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const Container =
+    config.getComponent({ name: 'Container' }).component || SemanticContainer;
+
   // If the content is not yet loaded, then do not show anything
   return contentLoaded ? (
     hasBlocksData(content) ? (
-      <div id="page-document" className="ui container">
+      <Container id="page-document">
         <RenderBlocks {...props} path={path} />
-      </div>
+      </Container>
     ) : (
       <Container id="page-document">
         {fieldsets?.map((fs) => {
