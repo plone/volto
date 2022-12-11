@@ -97,15 +97,14 @@ const defaultModify = ({
       runtimeChunk: true,
       splitChunks: {
         chunks: 'all',
-        name: dev,
         cacheGroups: {
           // We reset the default values set by webpack
           // So the chunks have all proper names (no random numbers)
           // The CSS gets bundled in one CSS chunk and it's consistent with
           // the `style-loader` load order, so no difference between
           // local (project CSS) and `node_modules` ones.
-          vendors: false,
           default: false,
+          defaultVendors: false,
         },
       },
     });

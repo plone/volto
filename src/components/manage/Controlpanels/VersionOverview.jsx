@@ -7,7 +7,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { isEmpty } from 'lodash';
 
-import { version as voltoVersion } from '../../../../package.json';
+import packageJson from '../../../../package.json';
 
 import { defineMessages, useIntl } from 'react-intl';
 import config from '@plone/volto/registry';
@@ -18,6 +18,8 @@ const messages = defineMessages({
     defaultMessage: 'No addons found',
   },
 });
+
+const { voltoVersion } = packageJson;
 
 const VersionOverview = ({
   cmf_version,
