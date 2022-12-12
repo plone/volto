@@ -55,6 +55,7 @@
 - Improve collapsing of whitespace when pasting to slate text block @tiberiuichim
 - Avoid warning for missing value in NumberWidget @tiberiuichim
 - Fix crash in Slate link editing in a dexterity field @tiberiuichim
+- Fix select widget loosing focus when the value has changed @reebalazs
 
 ## 16.1.0 (2022-11-23)
 
