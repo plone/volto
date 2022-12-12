@@ -311,7 +311,7 @@ msgstr "Alle Inhalte"
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: All existing alternative urls for this site
 msgid "All existing alternative urls for this site"
-msgstr "Alle existierenden, alternativen URLs für diese Seite"
+msgstr "Alle existierenden, alternativen Pfade für diese Seite"
 
 #: components/theme/Search/Search
 # defaultMessage: Alphabetically
@@ -328,43 +328,43 @@ msgstr "Alternative Text"
 #: components/manage/Blocks/Image/schema
 # defaultMessage: Leave empty if the image is purely decorative.
 msgid "Alt text hint"
-msgstr "Alternativtext Hinweis"
+msgstr "Das Feld kann leer bleiben, wenn das Bild rein dekorativ ist."
 
 #: components/manage/Blocks/Image/schema
 # defaultMessage: Describe the purpose of the image.
 msgid "Alt text hint link text"
-msgstr "Alternativtext Hinweis Linktext"
+msgstr "Beschreiben Sie, was auf dem Bild zu sehen ist."
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Alternative url path (Required)
 msgid "Alternative url path (Required)"
-msgstr "Alternativer URL Pfad (notwendig)"
+msgstr "Alternativer Pfad (erforderlich)"
 
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Alternative url path must start with a slash.
 msgid "Alternative url path must start with a slash."
-msgstr "Alternativer URL Pfad muss mit einem Schrägstrich beginnen"
+msgstr "Alternativer Pfad muss mit einem Schrägstrich beginnen"
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Alternative url path → target url path (date and time of creation, manually created yes/no)
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
-msgstr "Alternativer URL Pfad → Ziel URL Pfad (Datum und Zeit der Erstellung, manuell erstellt ja/nein)"
+msgstr "Alternativer URL Pfad → Zielpfad (Datum und Zeit der Erstellung, manuell erstellt ja/nein)"
 
 #: components/manage/Rules/Rules
 # defaultMessage: Applied to subfolders
 msgid "Applied to subfolders"
-msgstr "Auf Unterordner angewendet"
+msgstr "Auf Unterseiten angewendet"
 
 #: components/manage/Rules/Rules
 # defaultMessage: Applies to subfolders?
 msgid "Applies to subfolders?"
-msgstr "Wird auf Unterordner angewendet?"
+msgstr "Wird auf Unterseiten angewendet?"
 
 #: components/manage/Rules/Rules
 # defaultMessage: Apply to subfolders
 msgid "Apply to subfolders"
-msgstr "Auf Unterordner anwenden"
+msgstr "Auf Unterseiten anwenden"
 
 #: components/manage/Toolbar/More
 # defaultMessage: Apply working copy
@@ -480,7 +480,7 @@ msgstr "Standardmäßig werden die Berechtigungen von einem Ordner auf die in ih
 #: components/manage/Contents/Contents
 # defaultMessage: By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first.
 msgid "By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first."
-msgstr "Wenn Sie dieses Element löschen, zerstören Sie Links, welche in den unten gelisteten Elementen vorkommen. Wenn Sie das möchten, empfehlen wir, die Referenzen im Vorhinein zu löschen."
+msgstr "Wenn Sie dieses Element löschen, brechen Sie Links, welche in den unten gelisteten Elementen vorkommen. Wenn Sie das möchten, empfehlen wir, die Referenzen im Vorhinein zu löschen."
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Cache Name
@@ -733,7 +733,7 @@ msgstr "Inhaltsregeln für {title}"
 #: components/manage/Rules/Rules
 # defaultMessage: Content rules from parent folders
 msgid "Content rules from parent folders"
-msgstr "Inhaltsregeln von übergeordneten Ordnern"
+msgstr "Inhaltsregeln von übergeordneten Seiten"
 
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Content type created
@@ -1003,7 +1003,7 @@ msgstr "Deaktivieren"
 #: components/manage/Rules/Rules
 # defaultMessage: Disable apply to subfolders
 msgid "Disable apply to subfolders"
-msgstr "Anwendung auf Unterordner deaktivieren"
+msgstr "Anwendung auf Unterseiten deaktivieren"
 
 #: components/manage/Rules/Rules
 # defaultMessage: Disabled
@@ -1013,7 +1013,7 @@ msgstr "Deaktiviert"
 #: components/manage/Rules/Rules
 # defaultMessage: Disabled apply to subfolders
 msgid "Disabled apply to subfolders"
-msgstr "Anwendung auf Unterordner deaktiviert"
+msgstr "Anwendung auf Unterseiten deaktiviert"
 
 #: components/theme/Footer/Footer
 # defaultMessage: Distributed under the {license}.
@@ -1064,7 +1064,7 @@ msgstr "Seite"
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Download Event
 msgid "Download Event"
-msgstr "Termin herunterladen"
+msgstr "Termindetails herunterladen"
 
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Drag and drop files from your computer onto this area or click the “Browse” button.
@@ -1227,7 +1227,7 @@ msgstr "Karten-Einbettungscode eingeben"
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target.
 msgid "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
-msgstr "Geben Sie den absoluten Pfad des Ziels ein. Der Pfad muss mit '/' beginnen. Das Ziel muss existieren oder ein existierender, alternative URL Pfad zum Ziel sein."
+msgstr "Geben Sie den absoluten Pfad des Ziels ein. Der Pfad muss mit '/' beginnen. Das Ziel muss existieren oder ein existierender, alternativer Pfad zum Ziel sein."
 
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
@@ -1656,7 +1656,7 @@ msgstr "Sie haben die Option 'viele Benutzer' oder 'viele Gruppen' gewählt. Des
 #: components/manage/Sharing/Sharing
 # defaultMessage: Inherit permissions from higher levels
 msgid "Inherit permissions from higher levels"
-msgstr "Berechtigungen von übergeordneten Ordnern übernehmen"
+msgstr "Berechtigungen von übergeordneten Seiten übernehmen"
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Inherited value
@@ -1701,7 +1701,7 @@ msgstr "Installierte Version"
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Installing a third party add-on
 msgid "Installing a third party add-on"
-msgstr "Eine Drittanbieter-Erweiterung installieren"
+msgstr "Eine Erweiterung installieren"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: days
@@ -3305,7 +3305,7 @@ msgstr "Die folgenden Inhaltsregeln sind aktiv auf dieser Seite. Benutzen Sie da
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: The following list shows which upgrade steps are going to be run. Upgrading sometimes performs a catalog/security update, which may take a long time on large sites. Be patient.
 msgid "The following list shows which upgrade steps are going to be run. Upgrading sometimes performs a catalog/security update, which may take a long time on large sites. Be patient."
-msgstr "Die folgende Liste zeigt alle zu laufenden Aktualisierungsschritte. Eine Aktualisierung führt manchmal ein Katalog-/Sicherheitsupdate durch, welches einige Zeit in Anspruch nehmen kann. Bitte haben Sie Geduld."
+msgstr "Die folgende Liste zeigt alle abzulaufenden Aktualisierungsschritte. Eine Aktualisierung führt manchmal ein Katalog-/Sicherheitsupdate durch, welches einige Zeit in Anspruch nehmen kann. Bitte haben Sie Geduld."
 
 #: components/manage/Contents/Contents
 # defaultMessage: The item could not be deleted.
@@ -3315,12 +3315,12 @@ msgstr "Das Objekt kann nicht gelöscht werden."
 #: components/theme/View/LinkView
 # defaultMessage: The link address is:
 msgid "The link address is:"
-msgstr "Die Linkadresse ist:"
+msgstr "Die Linkadresse lautet:"
 
 #: components/manage/Aliases/Aliases
 # defaultMessage: The provided alternative url already exists!
 msgid "The provided alternative url already exists!"
-msgstr "Die angegebene alternative URL existiert bereits!"
+msgstr "Die angegebene alternative URL existiert bereits."
 
 #: components/theme/Register/Register
 # defaultMessage: The registration process has been successful. Please check your e-mail inbox for information on how activate your account.
@@ -3372,7 +3372,7 @@ msgstr "Dritter"
 #: components/manage/Contents/Contents
 # defaultMessage: This Page is referenced by the following items:
 msgid "This Page is referenced by the following items:"
-msgstr "Diese Seite wird von folgenden Elemente referenziert:"
+msgstr "Diese Seite wird von folgenden Elementen referenziert:"
 
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This has an ongoing working copy in {title}
@@ -3431,7 +3431,7 @@ msgstr "Titel"
 #: components/manage/Controlpanels/Rules/EditRule
 # defaultMessage: Title field error. Value not provided or already existing.
 msgid "Title field error. Value not provided or already existing."
-msgstr "Titelfeld Fehler. Kein Wert angegeben oder Wert existiert bereits."
+msgstr "Fehler im Titelfeld. Kein Wert angegeben oder Wert existiert bereits."
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Total active and non-active objects
@@ -3466,7 +3466,7 @@ msgstr "Transaktionen"
 #: components/manage/Controlpanels/UndoControlpanel
 # defaultMessage: #
 msgid "Transactions Checkbox"
-msgstr "Transaktionen Ankreuzfeld"
+msgstr "auswählen"
 
 #: components/manage/Controlpanels/UndoControlpanel
 # defaultMessage: Transactions have been sorted
@@ -3498,7 +3498,7 @@ msgstr "Verbindung zu Übersetzung gelöst"
 #: components/manage/Controlpanels/Rules/EditRule
 # defaultMessage: Triggering event field error. Please select a value
 msgid "Triggering event field error. Please select a value"
-msgstr "Auslösendes Ereignis Feld Fehler. Bitte geben Sie einen Wert ein"
+msgstr "Fehler im auslösenden Ereignis. Bitte geben Sie einen Wert ein"
 
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
@@ -3576,7 +3576,7 @@ msgstr "Rückgängig machen"
 #: components/manage/Controlpanels/UndoControlpanel
 # defaultMessage: Undo Controlpanel
 msgid "Undo Controlpanel"
-msgstr "Bedienfeld zum Rückgängig machen"
+msgstr "Änderungen rückgängig machen"
 
 #: components/manage/BlockChooser/BlockChooser
 # defaultMessage: Unfold
@@ -3643,7 +3643,7 @@ msgstr "Aktualisierung"
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: Upgrade Plone Site
 msgid "Upgrade Plone Site"
-msgstr "Plone Seite aktualisieren"
+msgstr "Plone-Seite aktualisieren"
 
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: Upgrade Report
@@ -3694,7 +3694,7 @@ msgstr "Nutzen Sie das folgende Formular zum Definieren neuer Inhaltsregeln"
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu.
 msgid "Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu."
-msgstr "Nutzen Sie das folgende Formular zum Definieren, Ändern oder Entfernen von Inhaltsregeln. Inhaltsregeln führen automatische Aktionen auf Inhalten aus, wenn bestimmte Auslöser vorhanden sind. Nach dem Definieren von Regeln können Sie diese in einem Ordner zuweisen, indem Sie das "Inhaltsregeln" Bedienelement im Aktionsmenü nutzen."
+msgstr "Nutzen Sie das folgende Formular zum Definieren, Ändern oder Entfernen von Inhaltsregeln. Inhaltsregeln führen automatische Aktionen auf Inhalten aus, wenn bestimmte Auslöser vorhanden sind. Nach dem Definieren von Regeln können Sie diese einer Seite oder einem beliebigen Inhaltselement zuweisen, indem Sie das "Inhaltsregeln" Bedienelement im Aktionsmenü nutzen."
 
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
