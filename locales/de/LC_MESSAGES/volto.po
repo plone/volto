@@ -3543,7 +3543,7 @@ msgstr "UID"
 #: components/manage/Toolbar/More
 # defaultMessage: URL Management
 msgid "URL Management"
-msgstr "URL Verwaltung"
+msgstr "URL-Verwaltung"
 
 #: components/manage/Aliases/Aliases
 # defaultMessage: URL Management for {title}
