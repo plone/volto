@@ -30,7 +30,7 @@ const DefaultBlockView = (props) => {
     typeof blockSchema === 'function'
       ? blockSchema({ ...props, intl })
       : blockSchema;
-  const fieldsets = schema.fieldsets || [];
+  const fieldsets = schema?.fieldsets || [];
 
   return schema ? (
     <Container className="page-block">

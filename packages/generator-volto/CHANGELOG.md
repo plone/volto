@@ -1,14 +1,19 @@
-# Change Log
+# Volto Generator Release Notes
 
-## 6.1.2 (unreleased)
+<!-- You should *NOT* be adding new change log entries to this file.
+     You should create a file in the news directory instead.
+     For helpful instructions, please see:
+     https://6.dev-docs.plone.org/volto/developer-guidelines/contributing.html#create-a-pull-request
+-->
 
-### Breaking
+<!-- towncrier release notes start -->
 
-### Feature
+## 6.1.2 (2022-12-05)
 
 ### Bugfix
 
-### Internal
+- Add `cypress.config.js` to generator templates @sneridagh [#4021](https://github.com/plone/volto/issues/4021)
+
 
 ## 6.1.1 (2022-11-24)
 
