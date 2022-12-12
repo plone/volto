@@ -151,7 +151,7 @@ const messages = defineMessages({
   },
   messageReorder: {
     id: 'Item succesfully moved.',
-    defaultMessage: 'Item succesfully moved.',
+    defaultMessage: 'Item successfully moved.',
   },
   messagePasted: {
     id: 'Item(s) pasted.',
