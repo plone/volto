@@ -456,6 +456,8 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Remove `sentryOptions` from settings reference. Clean up `deploying/sentry.md`. @stevepiercy
 - Tidy up `upgrade-guide/index.md`. @stevepiercy
 - Fix some MyST syntax and English grammar. @stevepiercy
+- Add contributing branch policy information @sneridagh @stevepiercy
+- Add component to storybook @danalvrz
 
 ## 16.0.0-rc.1 (2022-11-18)
 
