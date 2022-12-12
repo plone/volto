@@ -4,7 +4,13 @@ const https = require('https');
  * Retrieves Volto's yarn.lock directly from github
  */
 async function getVoltoYarnLock(version) {
-  const url = `https://raw.githubusercontent.com/plone/volto/${version}/yarn.lock`;
+  let ghPath = 'plone/volto';
+
+  if (version.indexOf('#') > -1) {
+    [ghPath, version] = version.split('#');
+  }
+
+  const url = `https://raw.githubusercontent.com/${ghPath}/${version}/yarn.lock`;
   return new Promise((resolve, reject) => {
     https
       .get(url, (resp) => {
