@@ -42,3 +42,8 @@ legacy
 :   At the moment of this writing, `15.x.x` is the current stable branch in git.
     Upon the final release of version 16.0.0, the `15.x.x` branch line will become legacy.
 
+## Translation contributing policy
+
+Due to the nature of `master` and `16.x.x` branches, some developments that may land in `master` may not be backported to `16.x.x`. This means that many translations that may come with those developments will be useless in the `16.x.x` branch and thus porting them to `16.x.x` makes no sense.
+
+So when contributing translations, please create PRs directly from branches created from `16.x.x` and point your PRs to that exact branch instead of `master`.
