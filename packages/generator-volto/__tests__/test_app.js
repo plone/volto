@@ -5,6 +5,30 @@ const fs = require('fs-extra');
 
 let tmpDir;
 
+jest.mock('https', () => ({
+  methodToMock: {},
+}));
+const httpsMock = require('https');
+
+const Stream = require('stream');
+
+httpsMock.get = jest.fn().mockImplementation((url, headers, cb) => {
+  let streamStream = new Stream();
+  cb(streamStream);
+
+  const json = JSON.stringify({
+    name: '@plone/volto',
+    'dist-tags': {
+      latest: '16.3.0',
+      alpha: '16.0.0-alpha.53',
+      rc: '16.0.0-rc.3',
+    },
+  });
+
+  streamStream.emit('data', json);
+  streamStream.emit('end');
+});
+
 describe('generator-create-volto-app:app', () => {
   beforeAll(() => {
     return helpers
@@ -59,16 +83,11 @@ describe('generator-create-volto-app:app with canary option', () => {
     ]);
   });
 
-  it('canary option gets alpha version', () => {
+  it('canary option gets latest Volto version, including alphas', () => {
     const packageJSON = JSON.parse(
       fs.readFileSync(path.join(tmpDir, 'test-volto/package.json'), 'utf8'),
     );
-
-    expect(
-      packageJSON.dependencies['@plone/volto'].includes(['rc']) ||
-        packageJSON.dependencies['@plone/volto'].includes(['beta']) ||
-        packageJSON.dependencies['@plone/volto'].includes(['alpha']),
-    ).toBe(true);
+    expect(packageJSON.dependencies['@plone/volto']).toBe('16.3.0');
   });
 });
 

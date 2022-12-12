@@ -1,4 +1,5 @@
 const https = require('https');
+const rcompare = require('semver/functions/rcompare');
 
 /*
  * Retrieves Volto's yarn.lock directly from github
@@ -13,7 +14,7 @@ async function getVoltoYarnLock(version) {
   const url = `https://raw.githubusercontent.com/${ghPath}/${version}/yarn.lock`;
   return new Promise((resolve, reject) => {
     https
-      .get(url, (resp) => {
+      .get(url, {}, (resp) => {
         let data = '';
         resp.on('data', (chunk) => {
           data += chunk;
@@ -75,11 +76,9 @@ async function getLatestCanaryVoltoVersion() {
           });
           resp.on('end', () => {
             const res = JSON.parse(data.join(''));
-            resolve(
-              res['dist-tags'].rc ||
-                res['dist-tags'].beta ||
-                res['dist-tags'].alpha,
-            );
+            const versions = Object.values(res['dist-tags']);
+            const latest = versions.sort(rcompare)[0];
+            resolve(latest);
           });
         },
       )
