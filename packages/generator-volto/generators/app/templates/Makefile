@@ -8,8 +8,8 @@ SHELL:=bash
 MAKEFLAGS+=--warn-undefined-variables
 MAKEFLAGS+=--no-builtin-rules
 
-# Update the versions depending on your project requirements | Last Updated 2022-11-24
-DOCKER_IMAGE=plone/plone-backend:6.0.0rc1
+# Update the versions depending on your project requirements | Last Updated 2022-12-09
+DOCKER_IMAGE=plone/plone-backend:6.0.0rc2
 KGS=
 TESTING_ADDONS=plone.app.robotframework==2.0.0b2 plone.app.testing==7.0.0b2
 NODEBIN = ./node_modules/.bin
