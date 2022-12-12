@@ -1636,7 +1636,7 @@ msgid "Image view"
 msgstr "图像视图"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
-# defaultMessage: Include this occurence
+# defaultMessage: Include this occurrence
 msgid "Include this occurence"
 msgstr "包括这个事件"
 
@@ -1735,7 +1735,7 @@ msgid "Item batch size"
 msgstr "条目批量大小"
 
 #: components/manage/Contents/Contents
-# defaultMessage: Item succesfully moved.
+# defaultMessage: Item successfully moved.
 msgid "Item succesfully moved."
 msgstr "成功移除条目。"
 
