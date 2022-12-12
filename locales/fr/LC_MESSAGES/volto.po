@@ -1647,7 +1647,7 @@ msgid "Image view"
 msgstr "Vue image"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
-# defaultMessage: Include this occurence
+# defaultMessage: Include this occurrence
 msgid "Include this occurence"
 msgstr "Inclure cette occurrence"
 
@@ -1746,7 +1746,7 @@ msgid "Item batch size"
 msgstr "Nombre d'éléments du lot"
 
 #: components/manage/Contents/Contents
-# defaultMessage: Item succesfully moved.
+# defaultMessage: Item successfully moved.
 msgid "Item succesfully moved."
 msgstr "Élément déplacé avec succès."
 
@@ -1868,7 +1868,7 @@ msgstr "Lier plus"
 #: config/Views
 # defaultMessage: Link redirect view
 msgid "Link redirect view"
-msgstr Vue de redirection de lien"
+msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema

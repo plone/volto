@@ -1636,7 +1636,7 @@ msgid "Image view"
 msgstr "Bild"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
-# defaultMessage: Include this occurence
+# defaultMessage: Include this occurrence
 msgid "Include this occurence"
 msgstr "Datum einbeziehen"
 
@@ -1735,7 +1735,7 @@ msgid "Item batch size"
 msgstr "Batch-Anzahl"
 
 #: components/manage/Contents/Contents
-# defaultMessage: Item succesfully moved.
+# defaultMessage: Item successfully moved.
 msgid "Item succesfully moved."
 msgstr "Objekt wurde erfolgreich verschoben."
 

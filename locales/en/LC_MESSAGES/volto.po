@@ -1630,9 +1630,9 @@ msgid "Image view"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
-# defaultMessage: Include this occurence
+# defaultMessage: Include this occurrence
 msgid "Include this occurence"
-msgstr "Include this occurrence"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
@@ -1729,9 +1729,9 @@ msgid "Item batch size"
 msgstr ""
 
 #: components/manage/Contents/Contents
-# defaultMessage: Item succesfully moved.
+# defaultMessage: Item successfully moved.
 msgid "Item succesfully moved."
-msgstr "Item successfully moved."
+msgstr ""
 
 #: components/manage/Contents/Contents
 # defaultMessage: Item(s) copied.
