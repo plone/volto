@@ -422,6 +422,7 @@
     "ua-parser-js": "See https://github.com/faisalman/ua-parser-js/issues/536"
   },
   "resolutions": {
+    "clean-css": "5.3.1",
     "http-proxy": "^1.18.1",
     "ua-parser-js": "0.7.28"
   },
