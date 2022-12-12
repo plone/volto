@@ -1639,7 +1639,7 @@ msgid "Image view"
 msgstr "Imatge"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
-# defaultMessage: Include this occurence
+# defaultMessage: Include this occurrence
 msgid "Include this occurence"
 msgstr "Incloeu aquesta ocurrència"
 
@@ -1738,7 +1738,7 @@ msgid "Item batch size"
 msgstr "Mida del lot d'articles"
 
 #: components/manage/Contents/Contents
-# defaultMessage: Item succesfully moved.
+# defaultMessage: Item successfully moved.
 msgid "Item succesfully moved."
 msgstr "L'element s'ha mogut correctament."
 
