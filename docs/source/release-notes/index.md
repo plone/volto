@@ -1,15 +1,11 @@
 ---
 myst:
   html_meta:
-    "description": "Volto Release Notes"
-    "property=og:description": "Volto Release Notes for Plone content management system"
+    "description": "Volto Release Notes for the Plone content management system"
+    "property=og:description": "Volto Release Notes for the Plone content management system"
     "property=og:title": "Volto Release Notes"
-    "keywords": "Volto, Plone, frontend, Release Notes"
+    "keywords": "Volto, Plone, frontend, Release Notes, change log, changelog, change history"
 ---
-
-(release-notes-label)=
-
-# Volto Release Notes
 
 ````{ifconfig} context in ("documentation")
 ```{include} ../../../submodules/volto/CHANGELOG.md
