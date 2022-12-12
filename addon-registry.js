@@ -148,7 +148,7 @@ class AddonConfigurationRegistry {
       },
     );
 
-    this.initRazzleExtenders();
+    this.initAddonExtenders();
   }
 
   /**
@@ -310,17 +310,25 @@ class AddonConfigurationRegistry {
   }
 
   /**
-   * Allow addons to provide razzle.config extenders. These extenders
-   * modules (named razzle.extend.js) need to provide two functions:
+   * Allow addons to provide various extenders.
+   *
+   * The razzle.extend.js modules (named razzle.extend.js) needs to provide
+   * two functions:
    * `plugins(defaultPlugins) => plugins` and
    * `modify(...) => config`
+   *
+   * The eslint.extend.js
    */
-  initRazzleExtenders() {
+  initAddonExtenders() {
     this.getAddons().forEach((addon) => {
       const base = path.dirname(addon.packageJson);
       const razzlePath = path.resolve(`${base}/razzle.extend.js`);
       if (fs.existsSync(razzlePath)) {
         addon.razzleExtender = razzlePath;
+      }
+      const eslintPath = path.resolve(`${base}/eslint.extend.js`);
+      if (fs.existsSync(eslintPath)) {
+        addon.eslintExtender = eslintPath;
       }
     });
   }
@@ -337,6 +345,12 @@ class AddonConfigurationRegistry {
   getAddonExtenders() {
     return this.getAddons()
       .map((o) => o.razzleExtender)
+      .filter((e) => e);
+  }
+
+  getEslintExtenders() {
+    return this.getAddons()
+      .map((o) => o.eslintExtender)
       .filter((e) => e);
   }
 
