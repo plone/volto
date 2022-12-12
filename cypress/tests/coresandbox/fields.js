@@ -1,5 +1,5 @@
 context('Special fields Acceptance Tests', () => {
-  describe.only('Form with default values', () => {
+  describe('Form with default values', () => {
     beforeEach(() => {
       // given a logged in editor and a page in edit mode
       cy.visit('/');
@@ -62,6 +62,45 @@ context('Special fields Acceptance Tests', () => {
     });
   });
 
+  describe('HTML Richtext Widget', () => {
+    beforeEach(() => {
+      // given a logged in editor and a page in edit mode
+      cy.visit('/');
+      cy.autologin();
+      cy.createContent({
+        contentType: 'Document',
+        contentId: 'document',
+        contentTitle: 'Test document',
+      });
+      cy.visit('/document');
+      cy.waitForResourceToLoad('@navigation');
+      cy.waitForResourceToLoad('@breadcrumbs');
+      cy.waitForResourceToLoad('@actions');
+      cy.waitForResourceToLoad('@types');
+      cy.waitForResourceToLoad('document');
+      cy.navigate('/document/edit');
+      cy.getSlateTitle();
+    });
+
+    it('Handles whitespaces properly', () => {
+      cy.intercept('PATCH', '/**/document').as('save');
+      cy.getSlate().click();
+      cy.get('.button .block-add-button').click({ force: true });
+      cy.get('.blocks-chooser .mostUsed .button.testBlock').click();
+      cy.get('#fieldset-default-field-label-html').click();
+      cy.get('.slate_wysiwyg_box [contenteditable=true]').type(
+        '   hello   world   ',
+      );
+      cy.get('#toolbar-save').click();
+      cy.wait('@save');
+
+      cy.get('.test-block').should(
+        'contain.text',
+        '<p>   hello   world   </p>',
+      );
+    });
+  });
+
   describe('ObjectListWidget', () => {
     beforeEach(() => {
       // given a logged in editor and a page in edit mode
@@ -116,6 +155,7 @@ context('Special fields Acceptance Tests', () => {
       cy.findAllByText('Item #3').should('have.length', 0);
     });
   });
+
   describe('Variation field', () => {
     beforeEach(() => {
       // given a logged in editor and a page in edit mode
@@ -146,6 +186,7 @@ context('Special fields Acceptance Tests', () => {
       cy.findByText('Custom');
     });
   });
+
   describe('ObjectBrowserWidget', () => {
     beforeEach(() => {
       // given a logged in editor and a page in edit mode
@@ -171,6 +212,7 @@ context('Special fields Acceptance Tests', () => {
       cy.navigate('/document/edit');
       cy.getSlateTitle();
     });
+
     it('As editor I can add a block with an objetBrowserWidget and the context path is preserved', function () {
       cy.getSlate().click();
       cy.get('.button .block-add-button').click({ force: true });
