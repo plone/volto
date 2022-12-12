@@ -15,6 +15,7 @@
 - Add towncrier support. Create RELEASING.md and move and update Releasing section from README.md into it. @sneridagh @stevepiercy [#3985](https://github.com/plone/volto/issues/3985)
 - Translation of roles in user and group control panel. Fix https://github.com/plone/volto/issues/4002 @wesleybl [#4002](https://github.com/plone/volto/issues/4002)
 - Use the component registry for `Container` component in DefaultView @sneridagh [#4032](https://github.com/plone/volto/issues/4032)
+- Update missing german translations @steffenri
 
 ### Bugfix
 
