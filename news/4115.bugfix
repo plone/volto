@@ -1,0 +1,1 @@
+Remove clean-css from the CSS minimizing step, use css-minimizer-webpack-plugin one instead @sneridagh
