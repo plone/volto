@@ -8,6 +8,14 @@
 
 <!-- towncrier release notes start -->
 
+## 16.4.1 (2022-12-13)
+
+### Bugfix
+
+- For hot reloading purposes when developing code, the Volto package is no longer excluded @tiberiuichim [#4108](https://github.com/plone/volto/issues/4108)
+- Remove clean-css from the CSS minimizing step, use css-minimizer-webpack-plugin one instead @sneridagh [#4115](https://github.com/plone/volto/issues/4115)
+
+
 ## 16.4.0 (2022-12-12)
 
 ### Feature
