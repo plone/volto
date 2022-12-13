@@ -295,6 +295,10 @@ const defaultModify = ({
         ]
       : [];
 
+  if (config.devServer) {
+    config.devServer.watchOptions.ignored = /node_modules\/(?!@plone\/volto)/;
+  }
+
   return config;
 };
 
