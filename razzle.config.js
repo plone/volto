@@ -10,6 +10,8 @@ const RelativeResolverPlugin = require('./webpack-plugins/webpack-relative-resol
 const createAddonsLoader = require('./create-addons-loader');
 const AddonConfigurationRegistry = require('./addon-registry');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 const fileLoaderFinder = makeLoaderFinder('file-loader');
 
@@ -92,9 +94,6 @@ const defaultModify = ({
     config.output.filename = dev
       ? 'static/js/[name].js'
       : 'static/js/[name].[chunkhash:8].js';
-
-    const TerserPlugin = require('terser-webpack-plugin');
-    const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
     config.optimization = Object.assign({}, config.optimization, {
       runtimeChunk: true,
