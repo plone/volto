@@ -101,7 +101,10 @@ const PersistentSlashMenu = ({ editor }) => {
   const [slashMenuSelected, setSlashMenuSelected] = React.useState(0);
 
   const useAllowedBlocks = !isEmpty(allowedBlocks);
-  const slashCommand = data.plaintext?.trim().match(/^\/([a-z]*)$/);
+  const slashCommand = data.plaintext
+    ?.toLowerCase()
+    .trim()
+    .match(/^\/([a-z]*)$/);
 
   const availableBlocks = React.useMemo(
     () =>
