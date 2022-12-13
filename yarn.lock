@@ -2444,39 +2444,39 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@loadable/component@npm:5.14.1":
-  version: 5.14.1
-  resolution: "@loadable/component@npm:5.14.1"
+"@loadable/component@npm:5.15.2":
+  version: 5.15.2
+  resolution: "@loadable/component@npm:5.15.2"
   dependencies:
     "@babel/runtime": ^7.7.7
     hoist-non-react-statics: ^3.3.1
     react-is: ^16.12.0
   peerDependencies:
     react: ">=16.3.0"
-  checksum: ca75390a7b28251017903024d90f6faeefba35c58864d75216c684d726bbcd3626744ecbba08bdfd7e184a561cdb3337e3bb6131a3ceba87540402d66f250f83
+  checksum: dd027f3f9fb684613506fe48dcb656367a13731c139134fb71c2bc1734df4218fdb64e5ca80fa2575fdf52e1be0e0a2ec770f0ca77275706e66d1074d0835401
   languageName: node
   linkType: hard
 
-"@loadable/server@npm:5.14.0":
-  version: 5.14.0
-  resolution: "@loadable/server@npm:5.14.0"
+"@loadable/server@npm:5.15.2":
+  version: 5.15.2
+  resolution: "@loadable/server@npm:5.15.2"
   dependencies:
     lodash: ^4.17.15
   peerDependencies:
     "@loadable/component": ^5.0.1
     react: ">=16.3.0"
-  checksum: a37c9589b2c4fb61681ded7414c3c783688c4f5575074435ada7cdc759090412872cf68b448faa3b799d72fac896611fece53a9fab6a98a4a19680e27d5094e3
+  checksum: 9f7188b4d79717dd058ed9064fcf8454f236dc2165280203110d34e8a7f63cbe8ba9ab77a337174108a150b05715b64b0131295a28b2866b320514299f35db29
   languageName: node
   linkType: hard
 
-"@loadable/webpack-plugin@npm:5.14.0":
-  version: 5.14.0
-  resolution: "@loadable/webpack-plugin@npm:5.14.0"
+"@loadable/webpack-plugin@npm:5.15.2":
+  version: 5.15.2
+  resolution: "@loadable/webpack-plugin@npm:5.15.2"
   dependencies:
     make-dir: ^3.0.2
   peerDependencies:
     webpack: ">=4.6.0"
-  checksum: 83d60d9aa89c6d605724f9c8301a9ca19f0548ce58b23a713030594ef49666efbd9468cc2955ea79ee967a5f04ee6248176d3eaecdfc6a63be82c38c2e585c08
+  checksum: fee31c7f8c158c1cf987dee57e1a8e7b822decd004fd3c00895e30c6780584410d0199e44d10e7bf225ea30bed439404755272396d515d51a65f02e8e3ae1db0
   languageName: node
   linkType: hard
 
@@ -2773,9 +2773,9 @@ __metadata:
     "@babel/runtime": 7.20.6
     "@babel/types": 7.20.5
     "@loadable/babel-plugin": 5.13.2
-    "@loadable/component": 5.14.1
-    "@loadable/server": 5.14.0
-    "@loadable/webpack-plugin": 5.14.0
+    "@loadable/component": 5.15.2
+    "@loadable/server": 5.15.2
+    "@loadable/webpack-plugin": 5.15.2
     "@plone/scripts": 2.1.2
     "@storybook/addon-actions": ^6.3.0
     "@storybook/addon-controls": 6.3.0
@@ -20262,7 +20262,7 @@ __metadata:
   dependencies:
     prop-types: ^15.7.2
   peerDependencies:
-    react-intl: ^2.2.2 || ^3.0.0
+    react-intl: ^2.2.2 || ^3.0.0
     react-redux: ^5.0.1 || ^6.0.0 || ^7.0.0
   checksum: eece9837c7b97581961732168b2e286e771ad4104bdde94caf3ce61ef51d8daa64b4365d4353901029a0cfa91c411a5149ff8bf0a89ac94eebce93982e1cb0f4
   languageName: node

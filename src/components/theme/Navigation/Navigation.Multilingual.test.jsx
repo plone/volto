@@ -66,7 +66,7 @@ describe('Navigation Multilingual', () => {
     expect(json).toMatchSnapshot();
   });
 
-  it('renders a navigation component with an active item when its subchildren are accessed', () => {
+  it.only('renders a navigation component with an active item when its subchildren are accessed', () => {
     const store = mockStore({
       navigation: {
         items: [

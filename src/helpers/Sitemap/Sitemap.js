@@ -7,6 +7,7 @@ import superagent from 'superagent';
 import { map } from 'lodash';
 import zlib from 'zlib';
 import { toPublicURL } from '@plone/volto/helpers';
+import { formatApiUrl } from '@plone/volto/helpers/Api/Api';
 import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
 
 import config from '@plone/volto/registry';

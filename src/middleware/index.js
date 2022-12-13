@@ -6,6 +6,7 @@
 
 export api from '@plone/volto/middleware/api';
 export blacklistRoutes from './blacklistRoutes';
+export prefixPathRoot from './prefixPathRoot';
 export {
   protectLoadStart,
   protectLoadEnd,

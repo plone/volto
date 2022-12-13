@@ -17,13 +17,17 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
  * @param {string} path Path (or URL) to be formatted.
  * @returns {string} Formatted path.
  */
-function formatUrl(path) {
+export function formatApiUrl(path) {
   const { settings } = config;
   const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
 
   if (path.startsWith('http://') || path.startsWith('https://')) return path;
 
-  const adjustedPath = path[0] !== '/' ? `/${path}` : path;
+  let adjustedPath = path[0] !== '/' ? `/${path}` : path;
+  if (adjustedPath.indexOf(settings.prefixPath) === 0) {
+    adjustedPath = adjustedPath.slice(settings.prefixPath.length);
+  }
+
   let apiPath = '';
   if (settings.internalApiPath && __SERVER__) {
     apiPath = settings.internalApiPath;
@@ -31,7 +35,9 @@ function formatUrl(path) {
     apiPath = settings.apiPath;
   }
 
-  return `${apiPath}${APISUFIX}${adjustedPath}`;
+  const res = `${apiPath}${APISUFIX}${adjustedPath}`;
+  // console.log('formatApiUrl', { path, res });
+  return res;
 }
 
 /**
@@ -54,7 +60,7 @@ class Api {
       ) => {
         let request;
         let promise = new Promise((resolve, reject) => {
-          request = superagent[method](formatUrl(path));
+          request = superagent[method](formatApiUrl(path));
 
           if (params) {
             request.query(params);

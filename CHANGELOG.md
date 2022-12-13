@@ -1365,6 +1365,7 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 
 ### Feature
 
+- Allow deployment of Volto on a prefixed path (non-root deployment). See Deployment docs for details. @cekk @tiberiuichim
 - Allow final users to switch between available views in the search block. A "view" is any of available listing block variations. In the search block configuration you can pick the available views for that block. @tiberiuichim
 
 ### Bugfix

@@ -358,6 +358,13 @@ test-acceptance-guillotina-headless: ## Start the Guillotina Cypress Acceptance 
 full-test-acceptance-guillotina: ## Runs the Guillotina Full Acceptance Testing in headless mode
 	$(NODEBIN)/start-test "make start-test-acceptance-server-guillotina" http-get://localhost:8081 "make start-test-acceptance-frontend-guillotina" http://localhost:3000 "make test-acceptance-guillotina-headless"
 
+######### Prefix path Acceptance tests
+
+# need to convert these old tests to the new ones
+# "cypress:run:prefixpath": "NODE_ENV=production CYPRESS_API=plone cypress run --config integrationFolder='cypress/tests/coresandbox'",
+# "cypress:open:prefixpath": "NODE_ENV=production CYPRESS_API=plone cypress open --config integrationFolder='cypress/tests/coresandbox'",
+# "ci:start-frontend-prefixpath": "ADDONS=coresandbox RAZZLE_PREFIX_PATH=http://localhost:55001/plone/prefixed-root RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http://localhost:3000 cypress:run:prefixpath",
+# "ci:cypress:run:prefixpath": "start-test ci:start-api-plone-coresandbox http-get://localhost:55001/plone ci:start-frontend-prefixpath",
 ######### Plone 5 Acceptance tests
 
 .PHONY: start-test-acceptance-server-5

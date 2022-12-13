@@ -290,12 +290,31 @@ export const defaultRoutes = [
  */
 const routes = [
   {
-    path: '/',
+    path: config.settings.prefixPath || '/',
     component: App,
     routes: [
-      // addon routes have a higher priority then default routes
-      ...(config.addonRoutes || []),
-      ...defaultRoutes,
+      // redirect to external links if path is in blacklist
+      ...(config.settings?.externalRoutes || []).map((route) => ({
+        ...route.match,
+        component: NotFound,
+      })),
+      ...[
+        // addon routes have a higher priority then default routes
+        ...(config.addonRoutes || []),
+        ...((config.settings?.isMultilingual && multilingualRoutes) || []),
+        ...defaultRoutes,
+      ].map((route) =>
+        config.settings.prefixPath
+          ? {
+              ...route,
+              path: Array.isArray(route.path)
+                ? route.path.map(
+                    (path) => `${config.settings.prefixPath}${path}`,
+                  )
+                : `${config.settings.prefixPath}${route.path}`,
+            }
+          : route,
+      ),
     ],
   },
 ];
