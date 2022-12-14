@@ -8,6 +8,35 @@
 
 <!-- towncrier release notes start -->
 
+## 16.4.0 (2022-12-12)
+
+### Feature
+
+- Update Traefik version and make volume mount (docker-compose) read-only [#4067](https://github.com/plone/volto/issues/4067)
+- Allow addons to provide an `eslint.extend.js` file that customizez eslint configuration @tiberiuichim [#4072](https://github.com/plone/volto/issues/4072)
+
+### Bugfix
+
+- Update Chinese translation @adam139 [#4009](https://github.com/plone/volto/issues/4009)
+- Reset value of search field after submit. [@MAX-786] [#4028](https://github.com/plone/volto/issues/4028)
+- Don't crash the view page when dealing with unknown blocks @tiberiuichim [#4070](https://github.com/plone/volto/issues/4070)
+- Bump version for plone-backend version used in Makefile @tiberiuichim [#4071](https://github.com/plone/volto/issues/4071)
+- Properly handle whitespace in HTML (richtext) slate-based widget @tiberiuichim [#4082](https://github.com/plone/volto/issues/4082)
+- Add Finnish translation (contributed by @rioksane)
+  [erral] [#4084](https://github.com/plone/volto/issues/4084)
+- Fix typo in english translation and add missing french translation
+  [mpeeters, jchandelle] [#4085](https://github.com/plone/volto/issues/4085)
+
+### Internal
+
+- Make Volto compatible with pnpm as package manager [#4023](https://github.com/plone/volto/issues/4023)
+
+### Documentation
+
+- Add content for user-manual of Volto, Plone 6 frontend. [@MAX-786] [#3827](https://github.com/plone/volto/issues/3827)
+- Remove duplicate `H1`-level page title, and inherit from Volto's `CHANGELOG.md`. @stevepiercy [#4048](https://github.com/plone/volto/issues/4048)
+
+
 ## 16.3.0 (2022-12-05)
 
 ### Feature
