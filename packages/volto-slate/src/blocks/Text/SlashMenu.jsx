@@ -116,7 +116,6 @@ const PersistentSlashMenu = ({ editor }) => {
           : !item.restricted,
       )
         .filter(
-          // TODO: make it work with intl?
           (block) =>
             slashCommand &&
             (block.id.indexOf(slashCommand[1]) === 0 ||
