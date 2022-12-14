@@ -1,5 +1,6 @@
 export const slashMenu = ({ editor, event }) => {
   if (!editor.showSlashMenu) return;
+  event.preventDefault();
 
   const { slashArrowUp, slashArrowDown, slashEnter } = editor;
 
