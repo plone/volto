@@ -52,6 +52,7 @@ export function getLayoutFieldname(props) {
  * Get content icon.
  * @description Configurable in config
  * @function getContentIcon
+ * @function getPreviewImageIcon
  * @param {string} type Content type
  * @param {boolean} isFolderish
  * @returns {Object} Icon component
@@ -64,6 +65,16 @@ export function getContentIcon(type, isFolderish) {
   return isFolderish ? contentIcons.Folder : contentIcons.File;
 }
 
+export function getPreviewImageIcon(item) {
+  if (item['@type'] === 'Image') return `${item?.getURL}/@@images/image`;
+  if (item?.hasPreviewImage === true)
+    return `${item?.getURL}/@@images/preview_image/icon`;
+  if (item?.image_scales?.image[0]?.scales?.thumb?.download.length > 0)
+    return (
+      item?.getURL + '/' + item?.image_scales?.image[0]?.scales?.thumb?.download
+    );
+  return getContentIcon(item['@type'], item.is_folderish);
+}
 /**
  * Get the language independent fields presents in a schema.
  * @description Configurable in config
