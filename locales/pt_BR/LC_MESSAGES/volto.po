@@ -96,7 +96,7 @@ msgstr "Adicionar"
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
 msgid "Add Addons"
-msgstr "Adicione complementos"
+msgstr "Adicionar complementos"
 
 #: components/manage/Toolbar/Types
 # defaultMessage: Add Content…
@@ -131,7 +131,7 @@ msgstr "Adicionar uma descrição…"
 #: components/manage/Aliases/Aliases
 # defaultMessage: Add a new alternative url
 msgid "Add a new alternative url"
-msgstr "Adicionar nova url alternativa"
+msgstr "Adicionar nova URL alternativa"
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Action added
@@ -141,7 +141,7 @@ msgstr "Adicionar ação"
 #: components/manage/BlockChooser/BlockChooserButton
 # defaultMessage: Add block
 msgid "Add block"
-msgstr "Adicionar Bloco"
+msgstr "Adicionar bloco"
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add block…
@@ -315,7 +315,7 @@ msgstr "Todo o conteúdo"
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: All existing alternative urls for this site
 msgid "All existing alternative urls for this site"
-msgstr "Todas as urls alternativas para este site"
+msgstr "Todas as URLs alternativas para este site"
 
 #: components/theme/Search/Search
 # defaultMessage: Alphabetically
@@ -327,7 +327,7 @@ msgstr "Alfabeticamente"
 #: components/manage/Blocks/Maps/schema
 # defaultMessage: Alt text
 msgid "Alt text"
-msgstr "Descrição Alt"
+msgstr "Descrição alt"
 
 #: components/manage/Blocks/Image/schema
 # defaultMessage: Leave empty if the image is purely decorative.
@@ -342,18 +342,18 @@ msgstr "Descreve o propósito da imagem"
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Alternative url path (Required)
 msgid "Alternative url path (Required)"
-msgstr "Caminho url alternativo (Obrigatório)"
+msgstr "Caminho da URL alternativa (Obrigatório)"
 
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Alternative url path must start with a slash.
 msgid "Alternative url path must start with a slash."
-msgstr "Caminho url alternativo deve iniciar com uma barra."
+msgstr "Caminho da URL alternativa deve iniciar com uma barra."
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Alternative url path → target url path (date and time of creation, manually created yes/no)
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
-msgstr "Caminho url alternativo → caminho da url de destino (data e hora da criação, criado manualmente sim/não)"
+msgstr "Caminho da URL alternativa → caminho da URL de destino (data e hora da criação, criado manualmente sim/não)"
 
 #: components/manage/Rules/Rules
 # defaultMessage: Applied to subfolders
@@ -474,12 +474,12 @@ msgstr "Procurar"
 #: components/manage/Blocks/Image/Edit
 # defaultMessage: Browse the site, drop an image, or type an URL
 msgid "Browse the site, drop an image, or type an URL"
-msgstr "Navegue no site, arraste uma imagem ou digite um URL"
+msgstr "Navegue no site, arraste uma imagem ou digite uma URL"
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator.
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr "Por padrão, as permissões do contêiner deste item são herdadas. Se você desabilitar isso, apenas as permissões de compartilhamento definidas explicitamente serão válidas. Na visão geral, o símbolo {inherited} indica um valor herdado. Da mesma forma, o símbolo {global} indica uma função global que é gerenciada pelo administrador do site."
+msgstr "Por padrão, as permissões do container deste item são herdadas. Se você desabilitar isso, apenas as permissões de compartilhamento definidas explicitamente serão válidas. Na visão geral, o símbolo {inherited} indica um valor herdado. Da mesma forma, o símbolo {global} indica uma função global que é gerenciada pelo administrador do site."
 
 #: components/manage/Contents/Contents
 # defaultMessage: By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first.
@@ -1231,13 +1231,13 @@ msgstr "Informe o código Embed do mapa"
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target.
 msgid "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
-msgstr "Informe o caminho absoluto do destino. O caminho deve começar com '/'. O destino deve existir ou ser um caminho de URL alternativo existente para o destino."
+msgstr "Informe o caminho absoluto do destino. O caminho deve começar com '/'. O destino deve existir ou ser um caminho da URL alternativa existente para o destino."
 
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring.
 msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
-msgstr "Informe o caminho absoluto onde a URL alternativa deve existir. O caminho deve começar com '/'. Somente urls que resultam em uma página 404 não encontrada resultarão em um redirecionamento ocorrendo."
+msgstr "Informe o caminho absoluto onde a URL alternativa deve existir. O caminho deve começar com '/'. Somente URLs que resultam em uma página 404 não encontrada resultarão em um redirecionamento ocorrendo."
 
 #: components/manage/Preferences/ChangePassword
 # defaultMessage: Enter your current password.
@@ -1983,7 +1983,7 @@ msgstr "Mapas"
 #: components/manage/Blocks/Maps/schema
 # defaultMessage: Maps URL
 msgid "Maps URL"
-msgstr "Url do Mapa"
+msgstr "URL do Mapa"
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Maximum length is {len}.
@@ -2481,7 +2481,7 @@ msgstr "Pré-visualização"
 #: components/manage/Blocks/Video/schema
 # defaultMessage: Preview Image URL
 msgid "Preview Image URL"
-msgstr "Url de imagem de pré-visualização"
+msgstr "URL de imagem de pré-visualização"
 
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: Profile
@@ -3098,7 +3098,7 @@ msgstr "Fonte"
 #: components/manage/Blocks/Video/Edit
 # defaultMessage: Specify a youtube video or playlist url
 msgid "Specify a youtube video or playlist url"
-msgstr "Informe a url para um vídeo ou uma playlist do YouTube"
+msgstr "Informe a URL para um vídeo ou uma playlist do YouTube"
 
 #: components/manage/Diff/Diff
 # defaultMessage: Split
@@ -3245,12 +3245,12 @@ msgstr "Caminho de destino (obrigatório)"
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Target memory size per cache in bytes
 msgid "Target memory size per cache in bytes"
-msgstr "Tamanho de memória destinada para o cache em bytes"
+msgstr "Tamanho de memória por cache em bytes"
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Target number of objects in memory per cache
 msgid "Target number of objects in memory per cache"
-msgstr "Número de objetos na memória para o cache"
+msgstr "Número de objetos na memória por cache"
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Target url path must start with a slash.
@@ -3284,7 +3284,7 @@ msgstr "O backend não está respondendo, devido a um tempo limite do servidor o
 #: components/theme/ConnectionRefused/ConnectionRefused
 # defaultMessage: The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable.
 msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
-msgstr "O servidor de backend não está respondendo, verifique se você inicializou o Plone, verifique o apiPath de objeto de configuração do seu projeto (ou se você está usando o proxy interno, devProxyToApiPath) ou a variável ambiente RAZZLE_API_PATH Volto."
+msgstr "O servidor de backend não está respondendo, verifique se você inicializou o Plone, verifique o apiPath de objeto de configuração do seu projeto (ou se você está usando o proxy interno, devProxyToApiPath) ou a variável ambiente RAZZLE_API_PATH do Volto."
 
 #: components/theme/CorsError/CorsError
 # defaultMessage: The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources.
@@ -3324,7 +3324,7 @@ msgstr "O endereço do link é:"
 #: components/manage/Aliases/Aliases
 # defaultMessage: The provided alternative url already exists!
 msgid "The provided alternative url already exists!"
-msgstr "A url alternativa já existe!"
+msgstr "A URL alternativa já existe!"
 
 #: components/theme/Register/Register
 # defaultMessage: The registration process has been successful. Please check your e-mail inbox for information on how activate your account.
@@ -3470,7 +3470,7 @@ msgstr "Transações"
 #: components/manage/Controlpanels/UndoControlpanel
 # defaultMessage: #
 msgid "Transactions Checkbox"
-msgstr "Caixa de seleção Transações"
+msgstr "Caixa de seleção de Transações"
 
 #: components/manage/Controlpanels/UndoControlpanel
 # defaultMessage: Transactions have been sorted
@@ -3884,7 +3884,7 @@ msgstr "Se a execução de outras regras deve ou não parar depois que essa regr
 #: components/manage/Controlpanels/Rules/EditRule
 # defaultMessage: Whether or not other rules should be triggered by the actions launched by this rule. Activate this only if you are sure this won't create infinite loops
 msgid "Whether or not other rules should be triggered by the actions launched by this rule. Activate this only if you are sure this won't create infinite loops"
-msgstr "Se outras regras devem ou não ser acionadas pelas ações lançadas por esta regra. Ative isso somente se tiver certeza de que isso não criará loops infinitos"
+msgstr "Se outras regras devem ou não ser acionadas pelas ações lançadas por esta regra. Ative somente se tiver certeza de que isso não criará loops infinitos"
 
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
@@ -3994,7 +3994,7 @@ msgstr "Seu nome de usuário é necessário para redefinir sua senha."
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
 msgid "addUserFormEmailDescription"
-msgstr "Informe seu endereço de E-Mail. Isso é necessário caso você esqueça sua senha. Nós respeitamos sua privacidade e não iremos fornecer seu endereço a terceiros ou divulgá-lo em nenhum lugar."
+msgstr "Informe seu endereço de e-mail. Isso é necessário caso você esqueça sua senha. Nós respeitamos sua privacidade e não iremos fornecer seu endereço a terceiros ou divulgá-lo em nenhum lugar."
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Enter full name, e.g. John Smith.
@@ -4009,7 +4009,7 @@ msgstr "Informe a sua nova senha. Mínimo de 8 caracteres."
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in.
 msgid "addUserFormUsernameDescription"
-msgstr "Informe o nome do usuário que você deseja, geralmente algo como 'jsilva'. Não use espaços ou caracteres especiais. Nomes de usuários e senhas são sensíveis a letras maiúsculas e minúsculas, certifique-se que a tecla Caps Lock não esteja ativa. Esse é o nome que você usará para acessar."
+msgstr "Informe o nome do usuário que você deseja, geralmente algo como 'jsilva'. Não use espaços ou caracteres especiais. Nomes de usuários e senhas são sensíveis a letras maiúsculas e minúsculas, certifique-se que a tecla Caps Lock não esteja ativada. Esse é o nome que você usará para acessar."
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Available views
@@ -4050,7 +4050,7 @@ msgstr "excluir"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 # defaultMessage: You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser.
 msgid "deprecated_browser_notice_message"
-msgstr "Você está usando {browsername} {browserversion} que está sem suporte pelo seu desenvolvedor. Isto significa que não existem mais atualizações de segurança e que ele não suporta as funcionalidades atuais da web, Por favor, atualize seu navegador"
+msgstr "Você está usando {browsername} {browserversion} que está sem suporte pelo seu desenvolvedor. Isto significa que não existem mais atualizações de segurança e que ele não suporta as funcionalidades atuais da web. Por favor, atualize seu navegador."
 
 #: config/Blocks
 # defaultMessage: Description
@@ -4060,12 +4060,12 @@ msgstr "Descrição"
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: For security reasons, we store your password encrypted, and cannot mail it to you. If you would like to reset your password, fill out the form below and we will send you an email at the address you gave when you registered to start the process of resetting your password.
 msgid "description_lost_password"
-msgstr "Por motivos de segurança, armazenamos sua senha criptografada e não podemos enviá-la para você. Se você deseja redefinir sua senha, preencha o formulário abaixo e enviaremos um e-mail para o endereço que você forneceu quando se cadastrou para iniciar o processo de redefinição de sua senha."
+msgstr "Por motivos de segurança, armazenamos sua senha criptografada e não podemos enviá-la para você. Se você deseja redefinir sua senha, preencha o formulário abaixo e enviaremos um e-mail para o endereço que você forneceu quando se cadastrou para iniciar o processo de redefinição de senha."
 
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your password reset request has been mailed. It should arrive in your mailbox shortly. When you receive the message, visit the address it contains to reset your password.
 msgid "description_sent_password"
-msgstr "Sua solicitação de redefinição de senha foi enviada. Ele deve chegar em sua caixa de correio em breve. Ao receber a mensagem, visite o endereço que ela contém para redefinir sua senha."
+msgstr "Sua solicitação de redefinição de senha foi enviada. Ela deve chegar em sua caixa de correio em breve. Ao receber a mensagem, acesse o endereço que ela contém para redefinir sua senha."
 
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Draft
@@ -4181,7 +4181,7 @@ msgstr "acessar"
 #: config/Blocks
 # defaultMessage: Maps
 msgid "maps"
-msgstr "mapas"
+msgstr "Mapas"
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Maximum Length
@@ -4228,7 +4228,7 @@ msgstr "Sem estado de workflow"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be number
 msgid "number"
-msgstr "Valor deve ser numérico"
+msgstr "O valor deve ser numérico"
 
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
 #: components/manage/Widgets/RecurrenceWidget/ByYearField
@@ -4239,7 +4239,7 @@ msgstr "do mês"
 #: error
 # defaultMessage: or try a different page.
 msgid "or try a different page."
-msgstr "ou tente uma página diferente"
+msgstr "ou tente uma página diferente."
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: others
@@ -4249,17 +4249,17 @@ msgstr "outros"
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Pending
 msgid "pending"
-msgstr "pendente"
+msgstr "Pendente"
 
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Private
 msgid "private"
-msgstr "privado"
+msgstr "Privado"
 
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Published
 msgid "published"
-msgstr "publicado"
+msgstr "Publicado"
 
 #: components/manage/Widgets/QueryWidget
 # defaultMessage: Select…
@@ -4394,7 +4394,7 @@ msgstr "o"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: time
 msgid "rrule_time"
-msgstr "vezz"
+msgstr "vez"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: times
@@ -4469,22 +4469,22 @@ msgstr "ordenar"
 #: config/Blocks
 # defaultMessage: Table
 msgid "table"
-msgstr "tabela"
+msgstr "Tabela"
 
 #: config/Blocks
 # defaultMessage: Text
 msgid "text"
-msgstr "texto"
+msgstr "Texto"
 
 #: config/Blocks
 # defaultMessage: Title
 msgid "title"
-msgstr "título"
+msgstr "Título"
 
 #: config/Blocks
 # defaultMessage: Table of Contents
 msgid "toc"
-msgstr "tabela de conteúdos"
+msgstr "Tabela de conteúdos"
 
 #: config/Blocks
 # defaultMessage: Toggle
@@ -4499,7 +4499,7 @@ msgstr "Atualizar da versão {origin} para versão {destination}"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be valid url (www.something.com or http(s)://www.something.com)
 msgid "url"
-msgstr "url"
+msgstr "URL"
 
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: user avatar
@@ -4509,7 +4509,7 @@ msgstr "avatar do usuário"
 #: config/Blocks
 # defaultMessage: Video
 msgid "video"
-msgstr "vídeo"
+msgstr "Vídeo"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Views
@@ -4524,12 +4524,12 @@ msgstr "Visitar site externo"
 #: components/manage/Toolbar/More
 # defaultMessage: You are not authorized to perform this operation.
 msgid "workingCopyErrorUnauthorized"
-msgstr "Você não possui autorização para realizar esta operação"
+msgstr "Você não possui autorização para realizar esta operação."
 
 #: components/manage/Toolbar/More
 # defaultMessage: An error occurred while performing this operation.
 msgid "workingCopyGenericError"
-msgstr "Ocorreu um erro ao realizar esta operação"
+msgstr "Ocorreu um erro ao realizar esta operação."
 
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry

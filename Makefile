@@ -13,15 +13,15 @@ MAKEFLAGS+=--no-builtin-rules
 # Project settings
 
 INSTANCE_PORT=8080
-DOCKER_IMAGE=plone/plone-backend:6.0.0rc2
-KGS=
-TESTING_ADDONS=plone.app.robotframework==2.0.0b2 plone.app.testing==7.0.0b2
+DOCKER_IMAGE=plone/plone-backend:6.0.0
+KGS=plone.volto==4.0.3
+TESTING_ADDONS=plone.app.robotframework==2.0.0 plone.app.testing==7.0.0
 NODEBIN = ./node_modules/.bin
 SCRIPTSPACKAGE = ./packages/scripts
 
 # Plone 5 legacy
 DOCKER_IMAGE5=plone/plone-backend:5.2.9
-KGS5=plone.restapi==8.32.2 plone.volto==4.0.0 plone.rest==2.0.0
+KGS5=plone.restapi==8.32.6 plone.volto==4.0.3 plone.rest==2.0.0
 
 # Sphinx variables
 # You can set these variables from the command line.
