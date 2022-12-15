@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 3.0.0 (2022-12-15)
+
+### Breaking
+
+- Update to latest Cypress used in Volto core @sneridagh [#4128](https://github.com/plone/volto/issues/4128)
+
+
 ## 2.0.1 (2022-08-01)
 
 ### Bugfix
