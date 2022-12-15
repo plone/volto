@@ -192,7 +192,6 @@ describe('Add Content Tests', () => {
     cy.get('#toolbar-save').click();
     cy.wait('@saveLink');
     cy.wait('@getLink');
-
     cy.url().should('eq', Cypress.config().baseUrl + '/my-link');
 
     // Then the link title should show up on the link view
@@ -200,7 +199,10 @@ describe('Add Content Tests', () => {
     // and the link should show up on the link view
     cy.contains('/link-target');
     // and the link redirects to the link target
-    cy.get('main a[href="/link-target"]').click();
+    cy.addBaseUrl('/link-target').then((value) =>
+      cy.get(`main a[href="${value}"]`).click(),
+    );
+
     cy.url().should('eq', Cypress.config().baseUrl + '/link-target');
     cy.get('main').contains('Link Target');
   });

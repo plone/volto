@@ -1,5 +1,11 @@
 import '@testing-library/cypress/add-commands';
-import { getIfExists } from '../helpers';
+import {
+  getIfExists,
+  getTextNode,
+  setBaseAndExtent,
+  createHtmlPasteEvent,
+} from '../helpers';
+
 import { ploneAuth } from './constants';
 
 const HOSTNAME = Cypress.env('BACKEND_HOST') || '127.0.0.1';
@@ -795,39 +801,16 @@ Cypress.Commands.add('clickSlateButton', (button) => {
   }).click({ force: true }); // force click is needed to ensure the button in visible in view.
 });
 
-// Helper functions
-function getTextNode(el, match) {
-  const walk = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false);
-  if (!match) {
-    return walk.nextNode();
-  }
-
-  const nodes = [];
-  let node;
-  while ((node = walk.nextNode())) {
-    if (node.wholeText.includes(match)) {
-      return node;
-    }
-  }
-}
-
-function setBaseAndExtent(...args) {
-  const document = args[0].ownerDocument;
-  document.getSelection().removeAllRanges();
-  document.getSelection().setBaseAndExtent(...args);
-}
-
-function createHtmlPasteEvent(htmlContent) {
-  return Object.assign(
-    new Event('paste', { bubbles: true, cancelable: true }),
-    {
-      clipboardData: {
-        getData: () => htmlContent,
-        types: ['text/html'],
-      },
-    },
-  );
-}
+/* add prefixPath from Cypress.env to supplied path
+ * designed for CI only
+ * for local, add prefixPath to Cypress.env
+ */
+Cypress.Commands.add('addBaseUrl', (url) => {
+  const prefixPath = Cypress.env('prefixPath');
+  if (prefixPath) {
+    return prefixPath + url;
+  } else return url;
+});
 
 Cypress.Commands.add('addNewBlock', (blockName, createNewSlate = false) => {
   let block;
