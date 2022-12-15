@@ -56,10 +56,10 @@
     "access": "public"
   },
   "dependencies": {
-    "@testing-library/cypress": "8.0.3",
+    "@testing-library/cypress": "8.0.7",
     "@testing-library/jest-dom": "5.16.4",
     "@testing-library/react": "12.1.5",
-    "cypress": "10.3.1",
+    "cypress": "11.1.0",
     "cypress-axe": "1.0.0",
     "cypress-file-upload": "5.0.8"
   },
