@@ -807,9 +807,7 @@ Cypress.Commands.add('clickSlateButton', (button) => {
  */
 Cypress.Commands.add('addBaseUrl', (url) => {
   const prefixPath = Cypress.env('prefixPath');
-  if (prefixPath) {
-    return prefixPath + url;
-  } else return url;
+  return prefixPath ? prefixPath + url : url;
 });
 
 Cypress.Commands.add('addNewBlock', (blockName, createNewSlate = false) => {
