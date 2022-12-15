@@ -189,7 +189,7 @@
       Opacities
 --------------------*/
 
-@sidebarToggleButtonNormalOpacity: 0.05;
+@sidebarToggleButtonNormalOpacity: 0.3;
 
 /*******************************
            Power-User
