@@ -472,6 +472,7 @@ msgid "Browse"
 msgstr "Procurar"
 
 #: components/manage/Blocks/Image/Edit
+#: components/manage/Widgets/EmptyImageWidget
 # defaultMessage: Browse the site, drop an image, or type an URL
 msgid "Browse the site, drop an image, or type an URL"
 msgstr "Navegue no site, arraste uma imagem ou digite uma URL"
@@ -3757,8 +3758,8 @@ msgstr "Usuários e Grupos"
 
 #: components/manage/Aliases/Aliases
 # defaultMessage: Using this form, you can manage alternative urls for an item. This is an easy way to make an item available under two different URLs.
-msgid "Using this form, you can manage alternative URLs for an item. This is an easy way to make an item available under two different URLs."
-msgstr "Usando esse formulário, você pode gerenciar URLs alternativas para um item. Essa é uma maneira fácil de disponibilizar um item em duas URLs diferentes."
+msgid "Using this form, you can manage alternative urls for an item. This is an easy way to make an item available under two different URLs."
+msgstr ""
 
 #: helpers/Extensions/withBlockSchemaEnhancer
 # defaultMessage: Variation
