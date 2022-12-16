@@ -2,13 +2,24 @@ import React from 'react';
 import ImageWidget from './ImageWidget';
 import WidgetStory from './story';
 
-export const Text = WidgetStory.bind({
+export const Default = WidgetStory.bind({
   props: { id: 'image_widget', title: 'Image', data: {}, properties: {} },
   widget: ImageWidget,
 });
 
+export const Inline = WidgetStory.bind({
+  props: {
+    id: 'image_widget',
+    title: 'Image',
+    data: {},
+    properties: {},
+    inline: true,
+  },
+  widget: ImageWidget,
+});
+
 export default {
-  title: 'Widgets/Image',
+  title: 'Edit Widgets/Image',
   component: ImageWidget,
   decorators: [
     (Story) => (

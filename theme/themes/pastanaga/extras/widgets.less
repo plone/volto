@@ -212,4 +212,39 @@ body.babel-view .field.language-independent-field {
       }
     }
   }
+
+  @blueArctic: #e2f1fd;
+  @greySnow: #f3f5f7;
+  @greySmoke: #e4e8ec;
+
+  .image-widget-preview-wrapper {
+    position: relative;
+  }
+
+  .ui.basic.button.remove-block-button {
+    position: absolute;
+    z-index: 2;
+    top: 6px;
+    right: 2px;
+    background-color: transparent;
+    box-shadow: none;
+
+    .icon {
+      height: 18px !important;
+    }
+
+    .circled {
+      padding: 8px;
+      border: 1px solid @greySmoke;
+      background: @greySnow;
+
+      &:hover {
+        background-color: @greySmoke;
+      }
+    }
+
+    &:hover {
+      background-color: transparent !important;
+    }
+  }
 }

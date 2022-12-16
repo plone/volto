@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from 'react';
-
-import { getBaseUrl, usePrevious } from '@plone/volto/helpers';
-import { Icon } from '@plone/volto/components';
+import PropTypes from 'prop-types';
+import { useLocation } from 'react-router-dom';
+import {
+  flattenToAppURL,
+  getBaseUrl,
+  isInternalURL,
+  usePrevious,
+} from '@plone/volto/helpers';
+import { FormFieldWrapper, Icon } from '@plone/volto/components';
 import { Button, Dimmer, Input, Loader, Message } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
 import loadable from '@loadable/component';
 import { defineMessages, useIntl } from 'react-intl';
 import { createContent } from '@plone/volto/actions';
 import { readAsDataURL } from 'promise-file-reader';
+import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
+import config from '@plone/volto/registry';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -24,11 +32,21 @@ const messages = defineMessages({
   },
 });
 
-const ImageInput = (props) => {
-  const { id, onChange } = props;
+const ImageWidget = (props) => {
+  const {
+    block,
+    id,
+    inline,
+    onChange,
+    openObjectBrowser,
+    onSelectBlock,
+    value,
+  } = props;
   const intl = useIntl();
+  const pathname = useLocation().pathname;
   const placeholder =
-    props.data.placeholder ||
+    props?.data?.placeholder ||
+    props.placeholder ||
     intl.formatMessage(messages.ImageBlockInputPlaceholder);
 
   const [url, setUrl] = useState('');
@@ -37,9 +55,7 @@ const ImageInput = (props) => {
   let loading = '';
   const dispatch = useDispatch();
 
-  const request = useSelector(
-    (state) => state.content.subrequests[props.block],
-  );
+  const request = useSelector((state) => state.content.subrequests[block]);
   const content = request?.data;
   const urlUploaded = content ? content['@id'] : null;
   const requestLoaded = request ? request.loaded : null;
@@ -69,7 +85,7 @@ const ImageInput = (props) => {
       const fields = data.match(/^data:(.*);(.*),(.*)$/);
       dispatch(
         createContent(
-          getBaseUrl(props.pathname),
+          getBaseUrl(pathname),
           {
             '@type': 'Image',
             title: file.name,
@@ -80,7 +96,7 @@ const ImageInput = (props) => {
               filename: file.name,
             },
           },
-          props.block,
+          block,
         ),
       );
     });
@@ -108,7 +124,7 @@ const ImageInput = (props) => {
       const fields = data.match(/^data:(.*);(.*),(.*)$/);
       dispatch(
         createContent(
-          getBaseUrl(props.pathname),
+          getBaseUrl(pathname),
           {
             '@type': 'Image',
             title: file[0].name,
@@ -119,7 +135,7 @@ const ImageInput = (props) => {
               filename: file[0].name,
             },
           },
-          props.block,
+          block,
         ),
       );
     });
@@ -162,103 +178,147 @@ const ImageInput = (props) => {
       // TODO: Do something on ESC key
     }
   };
+  const Image = ({ src }) => (
+    <>
+      {isInternalURL(src) ? (
+        <img src={`${flattenToAppURL(src)}/@@images/image/mini`} alt="" />
+      ) : (
+        <img src={src} alt="" style={{ width: '50%' }} />
+      )}
+    </>
+  );
+
+  const Img = config.getComponent('Img').component || Image;
 
   return (
     <div className="image-widget">
-      <Dropzone
-        noClick
-        onDrop={onDrop}
-        onDragEnter={onDragEnter}
-        onDragLeave={onDragLeave}
-        className="dropzone"
-      >
-        {({ getRootProps, getInputProps }) => (
-          <div {...getRootProps()}>
-            <Message>
-              {dragging && <Dimmer active></Dimmer>}
-              {uploading && (
-                <Dimmer active>
-                  <Loader indeterminate>Uploading image</Loader>
-                </Dimmer>
-              )}
-              <div className="no-image-wrapper">
-                <img src={imageBlockSVG} alt="" />
-                <div className="toolbar-inner">
-                  <Button.Group>
-                    <Button
-                      basic
-                      icon
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        e.preventDefault();
-                        props.openObjectBrowser({
-                          onSelectItem: (url, item) => onChange(id, url, item),
-                        });
-                      }}
-                    >
-                      <Icon name={navTreeSVG} size="24px" />
-                    </Button>
-                  </Button.Group>
-                  <Button.Group>
-                    <label className="ui button basic icon">
-                      <Icon name={uploadSVG} size="24px" />
-                      <input
-                        {...getInputProps({
-                          type: 'file',
-                          onChange: onUploadImage,
-                          style: { display: 'none' },
-                        })}
-                      />
-                    </label>
-                  </Button.Group>
-                  <Input
-                    onKeyDown={onKeyDownVariantMenuForm}
-                    onChange={onChangeUrl}
-                    placeholder={placeholder}
-                    value={url}
-                    onClick={(e) => {
-                      e.target.focus();
-                    }}
-                    onFocus={(e) => {
-                      props.onSelectBlock(props.id);
-                    }}
-                  />
-                  {url && (
+      {!inline ? (
+        <FormFieldWrapper {...props} noForInFieldLabel className="image" />
+      ) : null}
+      {!value ? (
+        <Dropzone
+          noClick
+          onDrop={onDrop}
+          onDragEnter={onDragEnter}
+          onDragLeave={onDragLeave}
+          className="dropzone"
+        >
+          {({ getRootProps, getInputProps }) => (
+            <div {...getRootProps()}>
+              <Message>
+                {dragging && <Dimmer active></Dimmer>}
+                {uploading && (
+                  <Dimmer active>
+                    <Loader indeterminate>Uploading image</Loader>
+                  </Dimmer>
+                )}
+                <div className="no-image-wrapper">
+                  <img src={imageBlockSVG} alt="" />
+                  <div className="toolbar-inner">
                     <Button.Group>
                       <Button
                         basic
-                        className="cancel"
+                        icon
                         onClick={(e) => {
                           e.stopPropagation();
-                          setUrl('');
-                          onChange(id, '');
+                          e.preventDefault();
+                          openObjectBrowser({
+                            onSelectItem: (url, item) =>
+                              onChange(id, url, item),
+                          });
                         }}
                       >
-                        <Icon name={clearSVG} size="30px" />
+                        <Icon name={navTreeSVG} size="24px" />
                       </Button>
                     </Button.Group>
-                  )}
-                  <Button.Group>
-                    <Button
-                      basic
-                      primary
-                      disabled={!url}
+                    <Button.Group>
+                      <label className="ui button basic icon">
+                        <Icon name={uploadSVG} size="24px" />
+                        <input
+                          {...getInputProps({
+                            type: 'file',
+                            onChange: onUploadImage,
+                            style: { display: 'none' },
+                          })}
+                        />
+                      </label>
+                    </Button.Group>
+                    <Input
+                      onKeyDown={onKeyDownVariantMenuForm}
+                      onChange={onChangeUrl}
+                      placeholder={placeholder}
+                      value={url}
                       onClick={(e) => {
-                        e.stopPropagation();
-                        onSubmitUrl();
+                        e.target.focus();
                       }}
-                    >
-                      <Icon name={aheadSVG} size="30px" />
-                    </Button>
-                  </Button.Group>
+                      onFocus={(e) => {
+                        onSelectBlock(block);
+                      }}
+                    />
+                    {url && (
+                      <Button.Group>
+                        <Button
+                          basic
+                          className="cancel"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setUrl('');
+                            onChange(id, '');
+                          }}
+                        >
+                          <Icon name={clearSVG} size="30px" />
+                        </Button>
+                      </Button.Group>
+                    )}
+                    <Button.Group>
+                      <Button
+                        basic
+                        primary
+                        disabled={!url}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onSubmitUrl();
+                        }}
+                      >
+                        <Icon name={aheadSVG} size="30px" />
+                      </Button>
+                    </Button.Group>
+                  </div>
                 </div>
-              </div>
-            </Message>
-          </div>
-        )}
-      </Dropzone>
+              </Message>
+            </div>
+          )}
+        </Dropzone>
+      ) : (
+        <>
+          {!inline ? (
+            <div className="image-widget-preview-wrapper">
+              <Button
+                aria-label="Remove image"
+                basic
+                icon
+                onClick={(e) => {
+                  setUrl('');
+                  onChange(id, '');
+                }}
+                className="remove-block-button"
+              >
+                <Icon name={clearSVG} className="circled" size="24px" />
+              </Button>
+              <Img loading="lazy" src={value} />
+            </div>
+          ) : null}
+        </>
+      )}
     </div>
   );
 };
 
-export default ImageInput;
+ImageWidget.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  inline: PropTypes.bool,
+};
+
+export default withObjectBrowser(ImageWidget);
