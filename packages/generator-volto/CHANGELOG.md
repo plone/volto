@@ -8,6 +8,18 @@
 
 <!-- towncrier release notes start -->
 
+## 6.2.0 (2022-12-15)
+
+### Feature
+
+- Allow passing a Github branch or tag as Volto version (ex: `--volto=plone/volto#16.3.0`) @tiberiuichim [#4073](https://github.com/plone/volto/issues/4073)
+
+### Bugfix
+
+- Use semver to identify latest package when using the `--canary` flag @tiberiuichim @avoinea [#4074](https://github.com/plone/volto/issues/4074)
+- Fix cypress support filename @sneridagh [#4129](https://github.com/plone/volto/issues/4129)
+
+
 ## 6.1.2 (2022-12-05)
 
 ### Bugfix
