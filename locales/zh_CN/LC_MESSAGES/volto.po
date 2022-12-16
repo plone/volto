@@ -2181,6 +2181,11 @@ msgstr ""
 msgid "No image set in image content field"
 msgstr "在图像内容字段中没有设置图像"
 
+#: components/manage/Blocks/Listing/GalleryNoResultsComponent
+# defaultMessage: No images found.
+msgid "No images found."
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 # defaultMessage: No items found in this container.
 msgid "No items found in this container."
@@ -2215,7 +2220,7 @@ msgstr "没有选项"
 msgid "No results found"
 msgstr "未找到结果"
 
-#: components/manage/Blocks/Listing/ListingBody
+#: components/manage/Blocks/Listing/DefaultNoResultsComponent
 #: components/manage/Widgets/ReferenceWidget
 # defaultMessage: No results found.
 msgid "No results found."
