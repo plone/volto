@@ -235,4 +235,19 @@ describe('Blocks Tests', () => {
   //     'header-two',
   //   );
   // });
+
+  it('Handles unknown blocks', () => {
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'test-doc',
+      contentTitle: 'my test document',
+      bodyModifier(body) {
+        body.blocks['abc'] = { '@type': 'missing' };
+        body.blocks_layout.items.push('abc');
+        return body;
+      },
+    });
+    cy.visit('/test-doc');
+    cy.get('#page-document div').should('have.text', 'Unknown Block missing');
+  });
 });

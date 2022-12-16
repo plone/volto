@@ -13,14 +13,15 @@ MAKEFLAGS+=--no-builtin-rules
 # Project settings
 
 INSTANCE_PORT=8080
-DOCKER_IMAGE=plone/plone-backend:6.0.0b3
-KGS=plone.restapi==8.32.0 plone.volto==4.0.0a14
-TESTING_ADDONS=plone.app.robotframework==2.0.0b2 plone.app.testing==7.0.0a3
+DOCKER_IMAGE=plone/plone-backend:6.0.0
+KGS=plone.volto==4.0.3
+TESTING_ADDONS=plone.app.robotframework==2.0.0 plone.app.testing==7.0.0
 NODEBIN = ./node_modules/.bin
+SCRIPTSPACKAGE = ./packages/scripts
 
 # Plone 5 legacy
 DOCKER_IMAGE5=plone/plone-backend:5.2.9
-KGS5=plone.restapi==8.32.0 plone.volto==4.0.0a14 plone.rest==2.0.0
+KGS5=plone.restapi==8.32.6 plone.volto==4.0.3 plone.rest==2.0.0
 
 # Sphinx variables
 # You can set these variables from the command line.
@@ -161,6 +162,12 @@ docs-test: docs-clean docs-linkcheckbroken docs-spellcheck  ## Clean docs build,
 storybook-build:
 	yarn build-storybook -o docs/_build/storybook
 
+##### Release
+
+.PHONY: corepackagebump
+corepackagebump:
+	node $(SCRIPTSPACKAGE)/corepackagebump.js packages/volto-slate $(VERSION)
+
 ##### Docker containers
 
 .PHONY: start-backend-docker
@@ -267,6 +274,10 @@ start-test-acceptance-server-coresandbox test-acceptance-server-coresandbox: ## 
 .PHONY: start-test-acceptance-frontend-coresandbox
 start-test-acceptance-frontend-coresandbox: ## Start the CoreSandbox Acceptance Frontend Fixture
 	ADDONS=coresandbox RAZZLE_API_PATH=http://localhost:55001/plone yarn build && yarn start:prod
+
+.PHONY: start-test-acceptance-frontend-coresandbox-dev
+start-test-acceptance-frontend-coresandbox-dev: ## Start the CoreSandbox Acceptance Frontend Fixture in dev mode
+	ADDONS=coresandbox RAZZLE_API_PATH=http://localhost:55001/plone yarn start
 
 .PHONY: test-acceptance-coresandbox
 test-acceptance-coresandbox: ## Start CoreSandbox Cypress Acceptance Tests

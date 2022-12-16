@@ -35,11 +35,15 @@ const SlashMenu = ({
   availableBlocks,
 }) => {
   const intl = useIntl();
+  // Filter out slate block
+  const filteredAvailableBlocks = availableBlocks.filter(
+    (block) => block.id !== 'slate',
+  );
 
   return (
     <div className="power-user-menu">
       <Menu vertical fluid borderless>
-        {availableBlocks.map((block, index) => (
+        {filteredAvailableBlocks.map((block, index) => (
           <Menu.Item
             key={block.id}
             className={block.id}
@@ -57,7 +61,7 @@ const SlashMenu = ({
             })}
           </Menu.Item>
         ))}
-        {availableBlocks.length === 0 && (
+        {filteredAvailableBlocks.length === 0 && (
           <Menu.Item>
             <FormattedMessage
               id="No matching blocks"
@@ -97,7 +101,10 @@ const PersistentSlashMenu = ({ editor }) => {
   const [slashMenuSelected, setSlashMenuSelected] = React.useState(0);
 
   const useAllowedBlocks = !isEmpty(allowedBlocks);
-  const slashCommand = data.plaintext?.trim().match(/^\/([a-z]*)$/);
+  const slashCommand = data.plaintext
+    ?.toLowerCase()
+    .trim()
+    .match(/^\/([a-z]*)$/);
 
   const availableBlocks = React.useMemo(
     () =>
@@ -109,8 +116,10 @@ const PersistentSlashMenu = ({ editor }) => {
           : !item.restricted,
       )
         .filter(
-          // TODO: make it work with intl?
-          (block) => slashCommand && block.id.indexOf(slashCommand[1]) === 0,
+          (block) =>
+            slashCommand &&
+            (block.id.indexOf(slashCommand[1]) === 0 ||
+              block.title.toLowerCase().indexOf(slashCommand[1]) === 0),
         )
         .sort((a, b) => (a.title < b.title ? -1 : 1)),
     [allowedBlocks, blocksConfig, properties, slashCommand, useAllowedBlocks],

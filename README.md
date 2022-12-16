@@ -314,37 +314,6 @@ Browse to [http://localhost:3000](http://localhost:3000) in your browser.
 yarn test
 ```
 
-### Releasing
-
-For ease the release process, we use `release-it` utility that helps with the process.
-
-https://www.npmjs.com/package/release-it
-
-For using it and start a release you need to fulfill the requirements:
-
-- Have permissions to push on master branch
-- Have permissions on the @plone org on npmjs.com
-- Have a environment variable (`GITHUB_TOKEN`) with a GitHub personal token with permissions to
-  write the Volto Release page on GitHub (https://www.npmjs.com/package/release-it#github-releases)
-
-Then the command for release:
-
-```shell
-yarn release
-```
-
-a dry-release command for testing the output is also available:
-
-```shell
-yarn dry-release
-```
-
-and alpha release can also be cut using:
-
-```shell
-yarn release-alpha
-```
-
 ## Acceptance testing
 
 Here you can find a guide on how acceptance testing is done in Volto:

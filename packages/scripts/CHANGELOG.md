@@ -1,14 +1,43 @@
-# Change Log
+# Volto Scripts Release Notes
 
-## 2.1.3 (unreleased)
+<!-- You should *NOT* be adding new change log entries to this file.
+     You should create a file in the news directory instead.
+     For helpful instructions, please see:
+     https://6.dev-docs.plone.org/volto/developer-guidelines/contributing.html#create-a-pull-request
+-->
 
-### Breaking
+<!-- towncrier release notes start -->
 
-### Feature
+## 2.2.1 (2022-11-24)
 
 ### Bugfix
 
-### Internal
+- Include `cypress` folder and `cypress.config.js` in the local clone command @sneridagh
+- Fix the local clone command `execSync` @sneridagh
+
+## 2.2.0 (2022-11-24)
+
+### Feature
+
+- Match the new layout for the Volto project generator for Cypress tests @sneridagh
+
+## 2.1.5 (2022-11-24)
+
+### Bugfix
+
+- Remove `isCanary` amendment to differentiate 15/16 way of calling the test script @sneridagh
+
+## 2.1.4 (2022-11-24)
+
+### Bugfix
+
+- Disable immutable installs in local package once created, so CI does not complain. We REALLY want to install something! @sneridagh
+
+## 2.1.3 (2022-11-24)
+
+### Bugfix
+
+- Improve `execSync` call in addon script @sneridagh
 
 ## 2.1.2 (2022-10-26)
 

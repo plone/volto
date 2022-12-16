@@ -28,7 +28,6 @@ const NumberWidget = (props) => {
     onChange,
     onBlur,
     onClick,
-    defaultValue,
     isDisabled,
     maximum,
     minimum,
@@ -44,7 +43,7 @@ const NumberWidget = (props) => {
         disabled={isDisabled}
         min={minimum || null}
         max={maximum || null}
-        value={value ?? defaultValue}
+        value={value ?? ''}
         placeholder={placeholder}
         onChange={({ target }) =>
           onChange(id, target.value === '' ? undefined : target.value)

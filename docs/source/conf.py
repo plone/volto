@@ -56,6 +56,7 @@ templates_path = ["_templates"]
 extensions = [
     "myst_parser",
     "sphinx.ext.autodoc",
+    "sphinx.ext.ifconfig",
     "sphinx.ext.intersphinx",
     "sphinx.ext.todo",
     "sphinx_copybutton",
@@ -246,3 +247,6 @@ latex_documents = [
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
 latex_logo = "_static/logo_2x.png"
+
+def setup(app):
+    app.add_config_value("context", "volto", "env")
