@@ -659,7 +659,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           record: true
-          parallel: true
+          parallel: false
           browser: chrome
           group: Seamless
           spec: cypress/tests/minimal/**/*.js
