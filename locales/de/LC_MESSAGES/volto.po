@@ -468,7 +468,6 @@ msgid "Browse"
 msgstr "Durchsuchen"
 
 #: components/manage/Blocks/Image/Edit
-#: components/manage/Widgets/EmptyImageWidget
 # defaultMessage: Browse the site, drop an image, or type an URL
 msgid "Browse the site, drop an image, or type an URL"
 msgstr "Seite durchsuchen, Bild ablegen oder URL eingeben"

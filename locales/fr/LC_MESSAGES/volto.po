@@ -479,7 +479,6 @@ msgid "Browse"
 msgstr "Explore"
 
 #: components/manage/Blocks/Image/Edit
-#: components/manage/Widgets/EmptyImageWidget
 # defaultMessage: Browse the site, drop an image, or type an URL
 msgid "Browse the site, drop an image, or type an URL"
 msgstr "Explorer le site, déposer l'image ou écriver l'URL"
