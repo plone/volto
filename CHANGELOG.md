@@ -8,6 +8,35 @@
 
 <!-- towncrier release notes start -->
 
+## 16.4.0 (2022-12-12)
+
+### Feature
+
+- Update Traefik version and make volume mount (docker-compose) read-only [#4067](https://github.com/plone/volto/issues/4067)
+- Allow addons to provide an `eslint.extend.js` file that customizez eslint configuration @tiberiuichim [#4072](https://github.com/plone/volto/issues/4072)
+
+### Bugfix
+
+- Update Chinese translation @adam139 [#4009](https://github.com/plone/volto/issues/4009)
+- Reset value of search field after submit. [@MAX-786] [#4028](https://github.com/plone/volto/issues/4028)
+- Don't crash the view page when dealing with unknown blocks @tiberiuichim [#4070](https://github.com/plone/volto/issues/4070)
+- Bump version for plone-backend version used in Makefile @tiberiuichim [#4071](https://github.com/plone/volto/issues/4071)
+- Properly handle whitespace in HTML (richtext) slate-based widget @tiberiuichim [#4082](https://github.com/plone/volto/issues/4082)
+- Add Finnish translation (contributed by @rioksane)
+  [erral] [#4084](https://github.com/plone/volto/issues/4084)
+- Fix typo in english translation and add missing french translation
+  [mpeeters, jchandelle] [#4085](https://github.com/plone/volto/issues/4085)
+
+### Internal
+
+- Make Volto compatible with pnpm as package manager [#4023](https://github.com/plone/volto/issues/4023)
+
+### Documentation
+
+- Add content for user-manual of Volto, Plone 6 frontend. [@MAX-786] [#3827](https://github.com/plone/volto/issues/3827)
+- Remove duplicate `H1`-level page title, and inherit from Volto's `CHANGELOG.md`. @stevepiercy [#4048](https://github.com/plone/volto/issues/4048)
+
+
 ## 16.3.0 (2022-12-05)
 
 ### Feature
@@ -15,6 +44,7 @@
 - Add towncrier support. Create RELEASING.md and move and update Releasing section from README.md into it. @sneridagh @stevepiercy [#3985](https://github.com/plone/volto/issues/3985)
 - Translation of roles in user and group control panel. Fix https://github.com/plone/volto/issues/4002 @wesleybl [#4002](https://github.com/plone/volto/issues/4002)
 - Use the component registry for `Container` component in DefaultView @sneridagh [#4032](https://github.com/plone/volto/issues/4032)
+- Update missing german translations @steffenri
 
 ### Bugfix
 
@@ -54,6 +84,7 @@
 - Improve collapsing of whitespace when pasting to slate text block @tiberiuichim
 - Avoid warning for missing value in NumberWidget @tiberiuichim
 - Fix crash in Slate link editing in a dexterity field @tiberiuichim
+- Fix select widget loosing focus when the value has changed @reebalazs
 
 ## 16.1.0 (2022-11-23)
 

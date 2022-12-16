@@ -1,1 +1,0 @@
-Update Traefik version and make volume mount (docker-compose) read-only
