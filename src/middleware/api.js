@@ -203,9 +203,11 @@ const apiMiddlewareFactory = (api) => ({ dispatch, getState }) => (next) => (
             config.settings.supportedLanguages.includes(lang)
           ) {
             const langFileName = normalizeLanguageName(lang);
-            import('~/../locales/' + langFileName + '.json').then((locale) => {
-              dispatch(changeLanguage(lang, locale.default));
-            });
+            import('~/../locales/' + langFileName + '.json')
+              .then((locale) => {
+                dispatch(changeLanguage(lang, locale.default));
+              })
+              .catch((error) => dispatch(changeLanguage(lang, {})));
           }
         }
         if (type === LOGIN && settings.websockets) {
