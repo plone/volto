@@ -3,22 +3,27 @@
 @keyframes sidebar-toggle-button-before-highlight {
   0% {
     background: @sidebarToggleButtonHighlightColor;
+    transform: scale(1.1) rotateZ(0deg);
   }
 
   25% {
     background: @sidebarToggleButtonHighlightColor;
+    transform: scale(1.1) rotateZ(5deg);
   }
 
   50% {
     background: @sidebarToggleButtonHighlightColor;
+    transform: scale(1.1) rotateZ(0deg);
   }
 
   75% {
     background: @blue;
+    transform: scale(1.1) rotateZ(-5deg);
   }
 
   100% {
     background: @blue;
+    transform: scale(1.1) rotateZ(0deg);
   }
 }
 
@@ -166,6 +171,7 @@
     height: 100%;
     animation: sidebar-toggle-button-before-highlight
       @sidebarToggleButtonAnimationsDuration;
+    animation-timing-function: ease-in-out;
     animation-iteration-count: 3;
     background: @blue;
     content: '';
