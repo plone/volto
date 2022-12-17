@@ -15,7 +15,7 @@ import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
  * @class Body
  * @extends Component
  */
-const Body = ({ data, isEditMode,selected }) => {
+const Body = ({ data, isEditMode, selected }) => {
   let placeholder = data.preview_image
     ? isInternalURL(data.preview_image)
       ? `${flattenToAppURL(data.preview_image)}/@@images/image`
