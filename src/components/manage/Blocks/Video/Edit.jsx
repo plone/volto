@@ -155,7 +155,7 @@ class Edit extends Component {
         )}
       >
         {data.url ? (
-          <Body data={this.props.data} isEditMode={true} />
+          <Body data={this.props.data} isEditMode={true} selected={this.props.selected} />
         ) : (
           <Message>
             <center>
