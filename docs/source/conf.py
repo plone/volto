@@ -118,6 +118,7 @@ exclude_patterns = [
     "spelling_wordlist.txt",
     "**/CHANGES.rst",
     "**/LICENSE.rst",
+    "developer-guidelines/branch-policy.md",
 ]
 
 html_extra_path = [
