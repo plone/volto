@@ -21,7 +21,8 @@ describe('Map Block Tests', () => {
     cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
-    cy.get('.blocks-chooser .common').contains('Maps').click();
+    cy.get('.blocks-chooser .common.active .maps').click({ force: true });
+
     cy.get(`.block.maps .toolbar-inner .ui.input input`)
       .type(
         '<iframe src="https://www.google.com/maps/embed?pb=" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>',
