@@ -32,6 +32,8 @@ const Toolbar = config.getComponent('Toolbar').component
 or by using the convenience component `Component` if you want to use it in JSX directly
 
 ```jsx
+import Component from '@plone/volto/components/theme/Component/Component';
+
 <Component componentName="Toolbar" {...props} />
 ```
 
