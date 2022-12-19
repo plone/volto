@@ -1,0 +1,1 @@
+Don't crash in projects when Volto doesn't have the locale for one of the project's supported languages. @tiberiuichim
