@@ -94,7 +94,7 @@ const BlockChooserButton = (props) => {
       {
         name: 'flip',
         options: {
-          fallbackPlacements: ['top', 'right'],
+          fallbackPlacements: ['right-end', 'top-start'],
         },
       },
     ],

@@ -17,15 +17,10 @@ describe('New Block Auto Focus Tests', () => {
     cy.navigate('/my-page/edit');
     cy.intercept('GET', '/**/my-page').as('content');
     cy.intercept('PATCH', '*').as('save');
-    // when I add a text block
-    //add listing block
-    cy.getSlate().click();
-    cy.get('button.block-add-button').click();
   });
 
   it('Press Enter on a description block adds new autofocused default block', () => {
-    cy.get('.blocks-chooser .title').contains('Text').click();
-    cy.get('.blocks-chooser .text').contains('Description').click();
+    cy.addNewBlock('description');
     cy.get('.documentDescription').first().click().type('{enter}');
     cy.get('*[class^="block-editor"]')
       .eq(2)
@@ -35,8 +30,7 @@ describe('New Block Auto Focus Tests', () => {
   });
 
   it('Press Enter on a text block adds new autofocused default block', () => {
-    cy.get('.blocks-chooser .title').contains('Text').click();
-    cy.get('.blocks-chooser .text').contains('Text').click();
+    cy.addNewBlock('text');
     cy.get('.text-slate-editor-inner').first().click().type('{enter}');
     cy.get('*[class^="block-editor"]')
       .eq(2)
@@ -46,8 +40,7 @@ describe('New Block Auto Focus Tests', () => {
   });
 
   it('Press Enter on a image block adds new autofocused default block', () => {
-    cy.get('.blocks-chooser .title').contains('Media').click();
-    cy.get('.blocks-chooser .media').contains('Image').click();
+    cy.addNewBlock('image');
     cy.get('.block-editor-image').first().click().type('{enter}');
     cy.get('*[class^="block-editor"]')
       .eq(2)
@@ -57,8 +50,7 @@ describe('New Block Auto Focus Tests', () => {
   });
 
   it('Press Enter on a video block adds new autofocused default block', () => {
-    cy.get('.blocks-chooser .title').contains('Media').click();
-    cy.get('.blocks-chooser .media').contains('Video').click();
+    cy.addNewBlock('video');
     cy.get('.block-editor-video').first().click().type('{enter}');
     cy.get('*[class^="block-editor"]')
       .eq(2)
@@ -68,9 +60,7 @@ describe('New Block Auto Focus Tests', () => {
   });
 
   it('Press Enter on a listing block adds new autofocused default block', () => {
-    cy.get('.blocks-chooser .title').contains('Common').click();
-    cy.wait(1000);
-    cy.get('.blocks-chooser .common.active .listing').click({ force: true });
+    cy.addNewBlock('listing');
     cy.get('.block-editor-listing').first().click().type('{enter}');
     cy.get('*[class^="block-editor"]')
       .eq(2)
@@ -80,8 +70,7 @@ describe('New Block Auto Focus Tests', () => {
   });
 
   it('Press Enter on a table of contents block adds new autofocused default block', () => {
-    cy.get('.blocks-chooser .title').contains('Common').click();
-    cy.get('.blocks-chooser .common.active .toc').click({ force: true });
+    cy.addNewBlock('toc');
     cy.get('.block-editor-toc').first().click().type('{enter}');
     cy.get('*[class^="block-editor"]')
       .eq(2)
@@ -91,8 +80,7 @@ describe('New Block Auto Focus Tests', () => {
   });
 
   it('Press Enter on a maps block adds new autofocused default block', () => {
-    cy.get('.blocks-chooser .title').contains('Common').click();
-    cy.get('.blocks-chooser .common.active .maps').click({ force: true });
+    cy.addNewBlock('maps');
     cy.get('.block-editor-maps').first().click().type('{enter}');
     cy.get('*[class^="block-editor"]')
       .eq(2)
@@ -102,9 +90,7 @@ describe('New Block Auto Focus Tests', () => {
   });
 
   it('Press Enter on a html block adds new autofocused default block', () => {
-    cy.get('button.block-add-button').click();
-    cy.get('.blocks-chooser .title').contains('Common').click();
-    cy.get('.blocks-chooser .common.active .html').click({ force: true });
+    cy.addNewBlock('html');
     cy.get('.block-editor-html').first().click().type('{enter}');
     cy.get('*[class^="block-editor"]')
       .eq(2)
@@ -114,9 +100,7 @@ describe('New Block Auto Focus Tests', () => {
   });
 
   it('Press Enter on a search block adds new autofocused default block', () => {
-    cy.get('button.block-add-button').click();
-    cy.get('.blocks-chooser .title').contains('Common').click();
-    cy.get('.blocks-chooser .common.active .search').click({ force: true });
+    cy.addNewBlock('search');
     cy.get('.block-editor-search').first().click().type('{enter}');
     cy.get('*[class^="block-editor"]')
       .eq(2)
