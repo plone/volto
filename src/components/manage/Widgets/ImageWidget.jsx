@@ -15,6 +15,7 @@ import { defineMessages, useIntl } from 'react-intl';
 import { createContent } from '@plone/volto/actions';
 import { readAsDataURL } from 'promise-file-reader';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
+import { UniversalLink } from '@plone/volto/components';
 import config from '@plone/volto/registry';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
@@ -22,6 +23,7 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import uploadSVG from '@plone/volto/icons/upload.svg';
+import openinnewtabSVG from '@plone/volto/icons/openinnewtab.svg';
 
 const Dropzone = loadable(() => import('react-dropzone'));
 
@@ -61,11 +63,9 @@ const ImageWidget = (props) => {
   const requestLoaded = request ? request.loaded : null;
 
   useEffect(() => {
-    if (loading) {
-      if (loading && requestLoaded && uploading) {
-        setUploading(false);
-        onChange(id, urlUploaded);
-      }
+    if (loading && requestLoaded && uploading) {
+      setUploading(false);
+      onChange(id, urlUploaded);
     }
   }, [id, urlUploaded, requestLoaded, loading, uploading, onChange]);
 
@@ -183,7 +183,7 @@ const ImageWidget = (props) => {
       {isInternalURL(src) ? (
         <img src={`${flattenToAppURL(src)}/@@images/image/mini`} alt="" />
       ) : (
-        <img src={src} alt="" style={{ width: '50%' }} />
+        <img src={src} alt="" style={{ width: '100%' }} />
       )}
     </>
   );
@@ -193,7 +193,18 @@ const ImageWidget = (props) => {
   return (
     <div className="image-widget">
       {!inline ? (
-        <FormFieldWrapper {...props} noForInFieldLabel className="image" />
+        <FormFieldWrapper {...props} noForInFieldLabel className="image">
+          {value ? (
+            <div className="image-widget-filepath-preview">
+              {value}&nbsp;
+              {isInternalURL ? (
+                <UniversalLink href={value} openLinkInNewTab>
+                  <Icon name={openinnewtabSVG} size="16px" />
+                </UniversalLink>
+              ) : null}
+            </div>
+          ) : null}
+        </FormFieldWrapper>
       ) : null}
       {!value ? (
         <Dropzone
