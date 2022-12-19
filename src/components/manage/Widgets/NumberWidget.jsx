@@ -75,6 +75,7 @@ NumberWidget.propTypes = {
   wrapped: PropTypes.bool,
   maximum: PropTypes.number,
   minimum: PropTypes.number,
+  step: PropTypes.number,
   placeholder: PropTypes.string,
 };
 
