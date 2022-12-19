@@ -72,13 +72,12 @@ const ObjectBrowserNav = ({
             onClick={() => handleClickOnItem(item)}
             onDoubleClick={() => handleDoubleClickOnItem(item)}
           >
-            {' '}
             <span title={`${item['@id']} (${item['@type']})`}>
               <Popup
                 key={item['@id']}
                 content={
                   <>
-                    <Icon name={homeSVG} size="18px" />{' '}
+                    <Icon name={homeSVG} size="18px" />
                     {flattenToAppURL(item['@id'])} ( {item['@type']})
                   </>
                 }
