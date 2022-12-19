@@ -70,7 +70,7 @@ describe('Blocks Tests', () => {
     cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
-    cy.get('.blocks-chooser .common').contains('HTML').click();
+    cy.get('.blocks-chooser .common.active .html').click({ force: true });
     cy.get(`.block.html .npm__react-simple-code-editor__textarea`).type(
       `<pre>This is HTML</pre>`,
     );
@@ -95,7 +95,7 @@ describe('Blocks Tests', () => {
     cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
-    cy.get('.ui.buttons .button.slateTable').click();
+    cy.get('.ui.buttons .button.slateTable').click({ force: true });
     cy.wait(2000);
     cy.get(
       '.celled.fixed.table thead tr th:first-child() [contenteditable="true"]',
