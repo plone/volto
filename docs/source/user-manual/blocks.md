@@ -105,8 +105,8 @@ You can then use the block editor to configure the various options available for
 Overall, hero blocks are a useful tool for creating visually striking headers or banners for a page in Volto.
 They allow users to highlight important content and create a professional, polished look for their site.
 
-```{image} ../_static/user-manual/blocks/grid_block.png
-:alt: Grid block
+```{image} ../_static/user-manual/blocks/hero_block.png
+:alt: Hero block
 ```
 
 
