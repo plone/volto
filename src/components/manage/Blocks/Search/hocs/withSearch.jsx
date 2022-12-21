@@ -165,7 +165,7 @@ const useHashState = () => {
 
   const setSearchData = React.useCallback(
     (searchData) => {
-      const newParams = qs.parse(location.hash);
+      const newParams = qs.parse(location.search);
 
       let changed = false;
 
@@ -182,11 +182,11 @@ const useHashState = () => {
 
       if (changed) {
         history.push({
-          hash: qs.stringify(newParams),
+          search: qs.stringify(newParams),
         });
       }
     },
-    [history, oldState, location.hash],
+    [history, oldState, location.search],
   );
 
   return [current, setSearchData];
