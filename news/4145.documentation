@@ -1,0 +1,1 @@
+Fix Sphinx warning Document headings start at H2, not H1 [myst.header]. @stevepiercy
