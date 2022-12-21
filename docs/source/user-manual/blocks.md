@@ -220,7 +220,7 @@ It is typically used to provide a way for users to quickly navigate to different
 
 To use a TOC block in Volto, you will need to define the different sections of the page that you want to include in the TOC.
 You can do this by adding headings to the page, which will be used to create the links in the TOC.
-You can then add the TOC block to the page and use the block editor to configure the various options available for the TOC, such as the layout and style of the links.
+You can then add the TOC block to the page and use the block editor to configure the various options available for the TOC.
 
 Overall, TOC blocks are a useful tool for providing a way for users to navigate long or complex pages in Volto.
 They allow users to create professional-looking TOCs with minimal effort, and they are easy to customize to suit the specific needs and goals of a project.
