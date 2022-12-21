@@ -5,16 +5,19 @@ import { useSelector } from 'react-redux';
 import { slugify } from '@plone/volto/helpers/Utils/Utils';
 
 /**
- * Check if are multiple blocks with pagination
+ * @function useCreatePageQueryStringKey
+ * @description A hook that creates a key with an id if there are multiple blocks with pagination.
+ * @returns {string} Example: page || page_012345678
  */
-const useCheckIfMultiplePaginations = () => {
-  const paginationBlocksType = ['search', 'listing'];
+const useCreatePageQueryStringKey = (id) => {
+  const blockTypesWithPagination = ['search', 'listing'];
   const blocks = useSelector((state) => state.content.data.blocks);
-  const checkIfMultiplePaginations =
+  const hasMultiplePaginations =
     Object.values(blocks).filter((item) =>
-      paginationBlocksType.includes(item['@type']),
+      blockTypesWithPagination.includes(item['@type']),
     ).length > 1 || false;
-  return checkIfMultiplePaginations;
+
+  return hasMultiplePaginations ? slugify(`page-${id}`) : 'page';
 };
 
 /**
@@ -24,11 +27,9 @@ const useCheckIfMultiplePaginations = () => {
 export const usePagination = (id = null, defaultPage = 1) => {
   const location = useLocation();
   const history = useHistory();
-  const multiplePagination = useCheckIfMultiplePaginations();
-  const pageSlug = slugify(`page-${id}`);
+  const pageQueryStringKey = useCreatePageQueryStringKey(id);
   const pageQueryParam =
-    qs.parse(location.search)[multiplePagination ? pageSlug : 'page'] ||
-    defaultPage;
+    qs.parse(location.search)[pageQueryStringKey] || defaultPage;
   const [currentPage, setCurrentPage] = React.useState(pageQueryParam);
   const firstUpdate = useRef(true);
 
@@ -36,21 +37,14 @@ export const usePagination = (id = null, defaultPage = 1) => {
     if (!firstUpdate.current) {
       const newParams = {
         ...qs.parse(location.search),
-        [multiplePagination ? pageSlug : 'page']: currentPage,
+        [pageQueryStringKey]: currentPage,
       };
       history.replace({
         search: qs.stringify(newParams),
       });
     }
     firstUpdate.current = false;
-  }, [
-    currentPage,
-    pageSlug,
-    defaultPage,
-    location.search,
-    multiplePagination,
-    history,
-  ]);
+  }, [currentPage, defaultPage, location.search, history, pageQueryStringKey]);
 
   return {
     currentPage,
