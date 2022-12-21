@@ -94,6 +94,7 @@ const TopSideFacets = (props) => {
                 isEditMode={isEditMode}
                 sortOn={sortOn}
                 sortOrder={sortOrder}
+                isSearchable={true}
                 setSortOn={(sortOn) => {
                   flushSync(() => {
                     setSortOn(sortOn);

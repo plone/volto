@@ -44,6 +44,7 @@ const SortOn = (props) => {
     isEditMode,
     querystring = {},
     intl,
+    isSearchable,
   } = props;
   const { sortable_indexes } = querystring;
   const Select = reactSelect.default;
@@ -80,6 +81,7 @@ const SortOn = (props) => {
               label: sortable_indexes[k]?.title || k,
             })),
           ]}
+          isSearchable={isSearchable ?? true}
           value={value}
           onChange={(data) => {
             !isEditMode && setSortOn(data.value);
