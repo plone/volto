@@ -56,7 +56,8 @@ Now with your empty block available, you can select its type in one of two ways.
 
 ## Description Block
 
-These blocks allow users to add text content to a page. They can be configured to display different fonts, sizes, and colors, and they can also include links and formatting options like bold and italic.
+A description block accepts unformatted plain text.
+When displayed, it appears as the description in the page, and for search engine optimization in HTML meta tags as `<meta name="description" content="DESCRIPTION_TEXT" data-react-helmet="true">` and `<meta property="og:description" content="DESCRIPTION_TEXT" data-react-helmet="true">`.
 
 (user-manual-grid-block-label)=
 
