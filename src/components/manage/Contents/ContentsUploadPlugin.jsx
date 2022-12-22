@@ -28,6 +28,7 @@ class ContentsUploadPlugin extends BasePlugin {
             encoding: fields[2],
             'content-type': file.type,
             filename: file.name,
+            path: file.meta.relativePath,
           },
         },
         SUBREQUEST,
