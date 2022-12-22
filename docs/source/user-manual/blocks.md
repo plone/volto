@@ -99,7 +99,7 @@ A hero block is a type of block in Volto that is used to create a full-width ban
 It is typically used to highlight important content or to create a visual impact at the top of a page.
 
 Hero blocks typically include a background image or color, and they can also include text.
-To use a hero block in Volto, you can add it to your page by by choosing from the list of Blocks.
+To use a hero block in Volto, you can add it to your page by choosing from the list of blocks.
 You can then use the block editor to configure the various options available for the hero block, such as the background image or color, the layout of the content, and the text.
 
 Overall, hero blocks are a useful tool for creating visually striking headers or banners for a page in Volto.
