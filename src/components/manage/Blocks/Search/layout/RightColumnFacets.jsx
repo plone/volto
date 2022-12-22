@@ -100,7 +100,6 @@ const RightColumnFacets = (props) => {
                   isEditMode={isEditMode}
                   sortOrder={sortOrder}
                   sortOn={sortOn}
-                  isSearchable={true}
                   setSortOn={(sortOn) => {
                     flushSync(() => {
                       setSortOn(sortOn);
