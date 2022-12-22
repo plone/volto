@@ -22,7 +22,6 @@
 ### Internal
 
 - Upgrade testbed and convenience api folder to Plone 6 final @sneridagh [#4105](https://github.com/plone/volto/issues/4105)
-- Add HI-ERN website to "Volto in Production" section in README @steffenri
 
 
 ## 16.4.1 (2022-12-13)
