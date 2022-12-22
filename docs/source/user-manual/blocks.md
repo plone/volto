@@ -246,3 +246,20 @@ Overall, the teaser block is a useful tool for displaying summary or teaser info
 ```{image} ../_static/user-manual/blocks/teaser_block.png
 :alt: Teaser block
 ```
+
+
+(user-manual-search-block-label)=
+
+## Search Block
+
+A search block is a type of block that provides a search interface for users to search for content on a website.
+The search block typically includes a search field and a search button, and it allows users to enter a search query and search the website for content that matches the query.
+
+To add a search block to a website in the Volto UI, you can choose from the list of blocks into the desired location on the page.
+You can then configure the search block by modifying its settings and options from the Block editor, such as the search field label, sort options, facets, show search button and more.
+
+The search block is a useful tool for helping users find content on a website, and it can be used on the homepage or other pages of a website to provide search functionality.
+
+```{image} ../_static/user-manual/blocks/search_block.png
+:alt: Search block
+```
