@@ -95,9 +95,8 @@ export const multilingualRoutes = [
   },
 ];
 
-export const defaultRoutes = [
-  // redirect to external links if path is in blacklist
-  ...compact(
+export function getExternalRoutes() {
+  return compact(
     (config.settings?.externalRoutes || []).map((route) => {
       const newRoute = {
         component: NotFound,
@@ -120,7 +119,12 @@ export const defaultRoutes = [
         return null;
       }
     }),
-  ),
+  );
+}
+
+export const defaultRoutes = [
+  // redirect to external links if path is in blacklist
+  ...getExternalRoutes(),
   ...((config.settings?.isMultilingual && multilingualRoutes) || []),
   {
     path: '/',
