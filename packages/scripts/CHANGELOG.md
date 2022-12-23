@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 2.2.2 (2022-12-23)
+
+### Internal
+
+- Adjust npmignores, reissue package @sneridagh [#0](https://github.com/plone/volto/issues/0)
+
+
 ## 2.2.1 (2022-11-24)
 
 ### Bugfix
