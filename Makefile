@@ -32,6 +32,7 @@ SPHINXAUTOBUILD = $(realpath bin/sphinx-autobuild)
 DOCS_DIR        = ./docs/source/
 BUILDDIR        = ../_build/
 ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(SPHINXOPTS) .
+VALEFILES       := $(shell find $(DOCS_DIR) -type f -name "*.md" -print)
 
 # Recipe snippets for reuse
 
@@ -144,7 +145,7 @@ docs-linkcheckbroken: bin/python  ## Run linkcheck and show only broken links
 		"or in $(BUILDDIR)/linkcheck/ ."
 
 .PHONY: docs-vale
-docs-vale: deps  ## Run Vale style, grammar, and spell checks
+docs-vale:  ## Run Vale style, grammar, and spell checks
 	vale sync
 	vale --no-wrap $(VALEFILES)
 	@echo
