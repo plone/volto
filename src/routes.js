@@ -2,6 +2,8 @@
  * Routes.
  * @module routes
  */
+import debug from 'debug';
+import { compact } from 'lodash';
 import {
   Add,
   AddonsControlpanel,
@@ -95,10 +97,30 @@ export const multilingualRoutes = [
 
 export const defaultRoutes = [
   // redirect to external links if path is in blacklist
-  ...(config.settings?.externalRoutes || []).map((route) => ({
-    ...route.match,
-    component: NotFound,
-  })),
+  ...compact(
+    (config.settings?.externalRoutes || []).map((route) => {
+      const newRoute = {
+        component: NotFound,
+      };
+      if (typeof route.match === 'string') {
+        newRoute.path = route.match;
+        return newRoute;
+      } else if (
+        typeof route.match === 'object' &&
+        !Array.isArray(route.match)
+      ) {
+        return {
+          ...newRoute,
+          ...route.match,
+        };
+      } else {
+        debug('routes')(
+          'Got invalid externalRoute, please check the configuration.',
+        );
+        return null;
+      }
+    }),
+  ),
   ...((config.settings?.isMultilingual && multilingualRoutes) || []),
   {
     path: '/',
