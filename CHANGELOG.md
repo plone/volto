@@ -8,6 +8,30 @@
 
 <!-- towncrier release notes start -->
 
+## 16.5.0 (2022-12-16)
+
+### Feature
+
+- Update pt_BR translation @rafahela [#4121](https://github.com/plone/volto/issues/4121)
+
+### Bugfix
+
+- Update SlashMenu to include block title in shortcut search; and prevent default on keydown for Arrows and Enter @danalvrz [#4116](https://github.com/plone/volto/issues/4116)
+- Fix removing of toast notification of logout when user login once again. @iFlameing [#4125](https://github.com/plone/volto/issues/4125)
+
+### Internal
+
+- Upgrade testbed and convenience api folder to Plone 6 final @sneridagh [#4105](https://github.com/plone/volto/issues/4105)
+
+
+## 16.4.1 (2022-12-13)
+
+### Bugfix
+
+- For hot reloading purposes when developing code, the Volto package is no longer excluded @tiberiuichim [#4108](https://github.com/plone/volto/issues/4108)
+- Remove clean-css from the CSS minimizing step, use css-minimizer-webpack-plugin one instead @sneridagh [#4115](https://github.com/plone/volto/issues/4115)
+
+
 ## 16.4.0 (2022-12-12)
 
 ### Feature

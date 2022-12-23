@@ -1,14 +1,19 @@
-# Change Log
+# Volto Testing Release Notes
 
-## 2.0.2 (unreleased)
+<!-- You should *NOT* be adding new change log entries to this file.
+     You should create a file in the news directory instead.
+     For helpful instructions, please see:
+     https://6.dev-docs.plone.org/volto/developer-guidelines/contributing.html#create-a-pull-request
+-->
+
+<!-- towncrier release notes start -->
+
+## 3.0.0 (2022-12-15)
 
 ### Breaking
 
-### Feature
+- Update to latest Cypress used in Volto core @sneridagh [#4128](https://github.com/plone/volto/issues/4128)
 
-### Bugfix
-
-### Internal
 
 ## 2.0.1 (2022-08-01)
 
