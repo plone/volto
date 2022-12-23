@@ -19,7 +19,7 @@ myst:
 Volto can be installed in any operating system assuming that the following pre-requisites are met:
 
 - [Node.js LTS (16.x)](https://nodejs.org/en/)
-- [Python](https://python.org/) - See below for specific versions.
+- [Python](https://www.python.org/) - See below for specific versions.
 - [Docker](https://www.docker.com/get-started) (if using the Plone docker images)
 
 ```{note}
