@@ -1,5 +1,6 @@
 news
 towncrier.toml
+.changelog.draft
 node_modules/
 
 # yarn 3
