@@ -433,19 +433,6 @@ Available views
 : Options include {guilabel}`Default`, {guilabel}`Image gallery`, and {guilabel}`Summary`.
 
 
-### System block
-
-(user-manual-system-block-label)=
-
-The system block adds system information to the page.
-It includes versions of core packages, Python, and add-ons.
-It has no configuration options.
-
-```{image} ../_static/user-manual/blocks/system-block.png
-:alt: System block
-```
-
-
 (user-manual-table-block-label)=
 
 ### Table block
