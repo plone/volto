@@ -60,7 +60,6 @@ extensions = [
     "sphinx.ext.intersphinx",
     "sphinx.ext.todo",
     "sphinx_copybutton",
-    "sphinxcontrib.spelling",
     "sphinxext.opengraph",
 ]
 
