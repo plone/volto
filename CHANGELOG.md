@@ -8,6 +8,25 @@
 
 <!-- towncrier release notes start -->
 
+## 16.6.0 (2022-12-23)
+
+### Feature
+
+- Allow passing the `step` prop to NumberWidget @tiberiuichim [#4152](https://github.com/plone/volto/issues/4152)
+
+### Bugfix
+
+- Fix categorization list is not readable when there are longer values or filtering @iFlameing [#4113](https://github.com/plone/volto/issues/4113)
+- Add scroll into view settings @robgietema [#4140](https://github.com/plone/volto/issues/4140)
+- Remove searching capabilities of SortOn component of Search Block @iFlameing [#4162](https://github.com/plone/volto/issues/4162)
+- Fixed externalRoutes short version @pnicolli [#4182](https://github.com/plone/volto/issues/4182)
+
+### Documentation
+
+- Fix URLs to Plone 6 docs. @stevepiercy [#4143](https://github.com/plone/volto/issues/4143)
+- Fix Sphinx warning Document headings start at H2, not H1 [myst.header]. @stevepiercy [#4145](https://github.com/plone/volto/issues/4145)
+
+
 ## 16.5.0 (2022-12-16)
 
 ### Feature
