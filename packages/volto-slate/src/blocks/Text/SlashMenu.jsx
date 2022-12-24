@@ -77,11 +77,25 @@ SlashMenu.propTypes = {
   blocksConfig: PropTypes.arrayOf(PropTypes.any),
 };
 
+const translateBlockTitle = (block, intl) =>
+  intl.formatMessage({
+    id: block.title,
+    defaultMessage: block.title,
+  });
+const scoreBlock = (block, slashCommand, intl) => {
+  if (!slashCommand) return 0;
+  const title = translateBlockTitle(block, intl).toLowerCase();
+  // prefer initial title matches, then title substring matches
+  if (title.indexOf(slashCommand[1]) === 0) return 2;
+  if (title.indexOf(slashCommand[1]) !== -1) return 1;
+};
+
 /**
  * A SlashMenu wrapper implemented as a volto-slate PersistentHelper.
  */
 const PersistentSlashMenu = ({ editor }) => {
   const props = editor.getBlockProps();
+  const intl = useIntl();
   const {
     block,
     blocksConfig,
@@ -102,15 +116,6 @@ const PersistentSlashMenu = ({ editor }) => {
     .trim()
     .match(/^\/([a-z]*)$/);
 
-  const scoreBlock = (block, slashCommand) => {
-    if (!slashCommand) return 0;
-    const title = block.title.toLowerCase();
-    // prefer initial title matches, then title substring matches, then id matches
-    if (title.indexOf(slashCommand[1]) === 0) return 3;
-    if (title.indexOf(slashCommand[1]) !== -1) return 2;
-    if (block.id.indexOf(slashCommand[1]) !== -1) return 1;
-  };
-
   const availableBlocks = React.useMemo(
     () =>
       filter(blocksConfig, (item) =>
@@ -122,21 +127,31 @@ const PersistentSlashMenu = ({ editor }) => {
       )
         .filter((block) => {
           // typed text is a substring of the title or id
+          const title = translateBlockTitle(block, intl).toLowerCase();
           return (
             block.id !== 'slate' &&
             slashCommand &&
-            (block.id.indexOf(slashCommand[1]) !== -1 ||
-              block.title.toLowerCase().indexOf(slashCommand[1]) !== -1)
+            title.indexOf(slashCommand[1]) !== -1
           );
         })
         .sort((a, b) => {
           const scoreDiff =
-            scoreBlock(b, slashCommand) - scoreBlock(a, slashCommand);
+            scoreBlock(b, slashCommand, intl) -
+            scoreBlock(a, slashCommand, intl);
           if (scoreDiff) return scoreDiff;
           // sort equally scored blocks by title
-          return a.title.localeCompare(b.title);
+          return translateBlockTitle(a, intl).localeCompare(
+            translateBlockTitle(b, intl),
+          );
         }),
-    [allowedBlocks, blocksConfig, properties, slashCommand, useAllowedBlocks],
+    [
+      allowedBlocks,
+      blocksConfig,
+      intl,
+      properties,
+      slashCommand,
+      useAllowedBlocks,
+    ],
   );
 
   const slashMenuSize = availableBlocks.length;
