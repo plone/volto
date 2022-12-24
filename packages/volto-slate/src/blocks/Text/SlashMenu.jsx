@@ -35,15 +35,11 @@ const SlashMenu = ({
   availableBlocks,
 }) => {
   const intl = useIntl();
-  // Filter out slate block
-  const filteredAvailableBlocks = availableBlocks.filter(
-    (block) => block.id !== 'slate',
-  );
 
   return (
     <div className="power-user-menu">
       <Menu vertical fluid borderless>
-        {filteredAvailableBlocks.map((block, index) => (
+        {availableBlocks.map((block, index) => (
           <Menu.Item
             key={block.id}
             className={block.id}
@@ -61,7 +57,7 @@ const SlashMenu = ({
             })}
           </Menu.Item>
         ))}
-        {filteredAvailableBlocks.length === 0 && (
+        {availableBlocks.length === 0 && (
           <Menu.Item>
             <FormattedMessage
               id="No matching blocks"
@@ -106,6 +102,15 @@ const PersistentSlashMenu = ({ editor }) => {
     .trim()
     .match(/^\/([a-z]*)$/);
 
+  const scoreBlock = (block, slashCommand) => {
+    if (!slashCommand) return 0;
+    const title = block.title.toLowerCase();
+    // prefer initial title matches, then title substring matches, then id matches
+    if (title.indexOf(slashCommand[1]) === 0) return 3;
+    if (title.indexOf(slashCommand[1]) !== -1) return 2;
+    if (block.id.indexOf(slashCommand[1]) !== -1) return 1;
+  };
+
   const availableBlocks = React.useMemo(
     () =>
       filter(blocksConfig, (item) =>
@@ -115,13 +120,22 @@ const PersistentSlashMenu = ({ editor }) => {
           ? !item.restricted({ properties, block: item })
           : !item.restricted,
       )
-        .filter(
-          (block) =>
+        .filter((block) => {
+          // typed text is a substring of the title or id
+          return (
+            block.id !== 'slate' &&
             slashCommand &&
-            (block.id.indexOf(slashCommand[1]) === 0 ||
-              block.title.toLowerCase().indexOf(slashCommand[1]) === 0),
-        )
-        .sort((a, b) => (a.title < b.title ? -1 : 1)),
+            (block.id.indexOf(slashCommand[1]) !== -1 ||
+              block.title.toLowerCase().indexOf(slashCommand[1]) !== -1)
+          );
+        })
+        .sort((a, b) => {
+          const scoreDiff =
+            scoreBlock(b, slashCommand) - scoreBlock(a, slashCommand);
+          if (scoreDiff) return scoreDiff;
+          // sort equally scored blocks by title
+          return a.title.localeCompare(b.title);
+        }),
     [allowedBlocks, blocksConfig, properties, slashCommand, useAllowedBlocks],
   );
 
