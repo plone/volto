@@ -8,6 +8,20 @@
 
 <!-- towncrier release notes start -->
 
+## 6.2.2 (2022-12-23)
+
+### Bugfix
+
+- Update docker image used in Makefile for addons @sneridagh [#4184](https://github.com/plone/volto/issues/4184)
+
+
+## 6.2.1 (2022-12-23)
+
+### Bugfix
+
+- Update docker image used in Makefile for addons @sneridagh [#4175](https://github.com/plone/volto/issues/4175)
+
+
 ## 6.2.0 (2022-12-15)
 
 ### Feature
