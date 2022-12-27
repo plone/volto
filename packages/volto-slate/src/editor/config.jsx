@@ -32,6 +32,7 @@ import {
   withDeleteSelectionOnEnter,
   withDeserializers,
   normalizeNode,
+  normalizeExternalData,
 } from './extensions';
 import {
   // inlineTagDeserializer,
@@ -198,6 +199,7 @@ export const extensions = [
   insertData,
   isInline,
   normalizeNode,
+  normalizeExternalData,
 ];
 
 // Default hotkeys and the format they trigger
@@ -336,3 +338,6 @@ export const allowedHeadlineElements = ['em', 'i'];
 
 // Scroll into view when typing
 export const scrollIntoView = true;
+
+// In inline toolbar only one tag should be active at a time.
+export const exclusiveElements = [['sup', 'sub']];

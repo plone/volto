@@ -176,6 +176,9 @@ Volto is actively developed since 2017 and used in production since 2018 on the 
 - [MemoryTwin](https://memorytwin.com/en) (Product website, MemoryTwin allows you to create your personal artificial intelligence, able to remember and speak. Developed by [RawMaterial](https://rawmaterial.it/en), 2022)
 - [Forschungszentrum Jülich](https://fz-juelich.de) (Website for Forschungzentrum Jülich, which is one of the largest research institutions in Europe, developed by [kitconcept GmbH](https://kitconcept.com), 2022)
 - [ILPO](https://ilpo.jyu.fi/) (the registration portal of continuous learning at the University of Jyväskylä. Developed by University of Jyväskylä, 2022)
+- [Debabarreneko mankomunitatea](https://debabarrena.eus) (Website of the Commonwealth of Debabarrena, community of municipalities to centralize waste handling services, developed by [CodeSyntax](https://www.codesyntax.com/en), 2022)
+- [Debako Udala / Ayuntamiento de Deba](https://www.deba.eus) (Website of the municipality of Deba, developed by [CodeSyntax](https://www.codesyntax.com/en), 2022)
+- [Helmholtz-Institut Erlangen-Nürnberg für Erneuerbare Energien (HI-ERN)](https://www.hi-ern.de) (Website for HI ERN, a research institution for renewable energies, developed by [kitconcept GmbH](https://kitconcept.com), 2022)
 
 Please create a new [issue](https://github.com/plone/volto/issues/new) or [pull request](https://github.com/plone/volto/pulls) to add your Volto-site here!
 
@@ -312,37 +315,6 @@ Browse to [http://localhost:3000](http://localhost:3000) in your browser.
 
 ```shell
 yarn test
-```
-
-### Releasing
-
-For ease the release process, we use `release-it` utility that helps with the process.
-
-https://www.npmjs.com/package/release-it
-
-For using it and start a release you need to fulfill the requirements:
-
-- Have permissions to push on master branch
-- Have permissions on the @plone org on npmjs.com
-- Have a environment variable (`GITHUB_TOKEN`) with a GitHub personal token with permissions to
-  write the Volto Release page on GitHub (https://www.npmjs.com/package/release-it#github-releases)
-
-Then the command for release:
-
-```shell
-yarn release
-```
-
-a dry-release command for testing the output is also available:
-
-```shell
-yarn dry-release
-```
-
-and alpha release can also be cut using:
-
-```shell
-yarn release-alpha
 ```
 
 ## Acceptance testing

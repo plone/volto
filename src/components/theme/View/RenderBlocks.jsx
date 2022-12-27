@@ -9,6 +9,7 @@ import {
 } from '@plone/volto/helpers';
 import StyleWrapper from '@plone/volto/components/manage/Blocks/Block/StyleWrapper';
 import config from '@plone/volto/registry';
+import { ViewDefaultBlock } from '@plone/volto/components';
 
 const messages = defineMessages({
   unknownBlock: {
@@ -32,7 +33,8 @@ const RenderBlocks = (props) => {
     <CustomTag>
       {map(content[blocksLayoutFieldname].items, (block) => {
         const Block =
-          blocksConfig[content[blocksFieldname]?.[block]?.['@type']]?.view;
+          blocksConfig[content[blocksFieldname]?.[block]?.['@type']]?.view ||
+          ViewDefaultBlock;
 
         const blockData = applyBlockDefaults({
           data: content[blocksFieldname][block],

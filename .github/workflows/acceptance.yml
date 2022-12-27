@@ -9,28 +9,17 @@ jobs:
       matrix:
         node-version: [14.x, 16.x]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-
-      # node cache
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: 'yarn'
 
       ## node install
-      - run: yarn --frozen-lockfile
+      - run: yarn --immutable
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v4
@@ -73,28 +62,17 @@ jobs:
       matrix:
         node-version: [14.x, 16.x]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-
-      # node cache
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: 'yarn'
 
       ## node install
-      - run: yarn --frozen-lockfile
+      - run: yarn --immutable
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v4
@@ -137,25 +115,14 @@ jobs:
       matrix:
         node-version: [14.x, 16.x]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-
-      # node cache
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: 'yarn'
 
       ## node install
       - run: yarn --frozen-lockfile
@@ -200,28 +167,17 @@ jobs:
       matrix:
         node-version: [16.x]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-
-      # node cache
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: 'yarn'
 
       ## node install
-      - run: yarn --frozen-lockfile
+      - run: yarn --immutable
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v4
@@ -236,7 +192,7 @@ jobs:
           record: true
           parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
-          group: Core Basic - Plone 6
+          group: Core Basic - Plone 5
           spec: cypress/tests/core/basic/**/*.js
           start: |
             make start-test-acceptance-server-5
@@ -265,30 +221,16 @@ jobs:
         node-version: [16.x]
         python-version: [3.7]
     steps:
-      - uses: actions/checkout@v2
-      - name: debug
-        working-directory: api
-        run: ls -al
+      - uses: actions/checkout@v3
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
 
-      # node cache
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      - run: yarn --frozen-lockfile
+      - run: yarn --immutable
 
       # python setup (temporary, while p.volto coresandbox changes are in a PR)
       # - name: Set up Python ${{ matrix.python-version }}
@@ -355,28 +297,17 @@ jobs:
       matrix:
         node-version: [16.x]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-
-      # node cache
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: 'yarn'
 
       # node install
-      - run: yarn --frozen-lockfile
+      - run: yarn --immutable
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v4
@@ -420,31 +351,17 @@ jobs:
       matrix:
         node-version: [16.x]
     steps:
-      - uses: actions/checkout@v2
-      - name: debug
-        working-directory: api
-        run: ls -al
+      - uses: actions/checkout@v3
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-
-      # node cache
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: 'yarn'
 
       # node install
-      - run: yarn --frozen-lockfile
+      - run: yarn --immutable
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v4
@@ -488,28 +405,17 @@ jobs:
         node-version: [16.x]
         # python-version: [3.7]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-
-      # node cache
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: 'yarn'
 
       # node install
-      - run: yarn --frozen-lockfile
+      - run: yarn --immutable
 
       # # python setup (temporary, while p.a.iterate changes are in a PR)
       # - name: Set up Python ${{ matrix.python-version }}
@@ -580,29 +486,18 @@ jobs:
       project-directory: ./my-volto-app
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-
-      # node cache
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: 'yarn'
 
       # Build main Volto environment
       - name: Build main Volto environment
-        run: yarn --frozen-lockfile
+        run: yarn --immutable
 
       # Generator own tests
       - name: Generator tests
@@ -631,7 +526,7 @@ jobs:
           yalc add @plone/scripts --no-pure
         working-directory: ${{env.project-directory}}
       - name: Install a yalc'ed version of the current Volto in the project - install
-        run: yarn
+        run: yarn config set -H enableImmutableInstalls false && yarn
         working-directory: ${{env.project-directory}}
 
       - name: Cypress acceptance tests
@@ -681,17 +576,17 @@ jobs:
       matrix:
         node-version: [16.x]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: yarn
+          cache: 'yarn'
 
       # node install
-      - run: yarn --frozen-lockfile
+      - run: yarn --immutable
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v4

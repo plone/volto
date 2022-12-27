@@ -133,7 +133,7 @@ function transpile(fpath) {
   const code = fs.readFileSync(fpath, 'utf-8');
   // console.log('original code', code);
   const output = transform(code, {
-    root: '../',
+    root: '.',
     plugins: ['@babel/plugin-transform-modules-commonjs'],
   });
   fs.writeFileSync(fpath, output.code);

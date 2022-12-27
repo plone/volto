@@ -76,9 +76,9 @@ const withObjectBrowser = (WrappedComponent) =>
 
     render() {
       let contextURL =
+        this.state?.currentPath ||
         this.props.pathname ||
-        this.props.location?.pathname ||
-        this.state?.currentPath;
+        this.props.location?.pathname;
 
       return (
         <>

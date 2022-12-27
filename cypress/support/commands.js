@@ -49,6 +49,7 @@ Cypress.Commands.add(
     path = '',
     allow_discussion = false,
     transition = '',
+    bodyModifier = (body) => body,
   }) => {
     let api_url, auth;
     if (Cypress.env('API') === 'guillotina') {
@@ -69,7 +70,7 @@ Cypress.Commands.add(
           Accept: 'application/json',
         },
         auth: auth,
-        body: {
+        body: bodyModifier({
           '@type': contentType,
           id: contentId,
           title: contentTitle,
@@ -80,7 +81,7 @@ Cypress.Commands.add(
             'content-type': 'text/plain',
           },
           allow_discussion: allow_discussion,
-        },
+        }),
       });
     }
     if (contentType === 'Image') {
@@ -91,7 +92,7 @@ Cypress.Commands.add(
           Accept: 'application/json',
         },
         auth: auth,
-        body: {
+        body: bodyModifier({
           '@type': contentType,
           id: contentId,
           title: contentTitle,
@@ -102,7 +103,7 @@ Cypress.Commands.add(
             filename: 'image.png',
             'content-type': 'image/png',
           },
-        },
+        }),
       });
     }
     if (
@@ -116,7 +117,7 @@ Cypress.Commands.add(
             Accept: 'application/json',
           },
           auth: auth,
-          body: {
+          body: bodyModifier({
             '@type': contentType,
             id: contentId,
             title: contentTitle,
@@ -131,7 +132,7 @@ Cypress.Commands.add(
               ],
             },
             allow_discussion: allow_discussion,
-          },
+          }),
         })
         .then(() => {
           if (transition) {
@@ -151,12 +152,12 @@ Cypress.Commands.add(
             Accept: 'application/json',
           },
           auth: auth,
-          body: {
+          body: bodyModifier({
             '@type': contentType,
             id: contentId,
             title: contentTitle,
             allow_discussion: allow_discussion,
-          },
+          }),
         })
         .then(() => {
           if (transition) {
@@ -187,6 +188,30 @@ Cypress.Commands.add('removeContent', ({ path = '' }) => {
 
   return cy.request({
     method: 'DELETE',
+    url: `${api_url}/${path}`,
+    headers: {
+      Accept: 'application/json',
+    },
+    auth: auth,
+  });
+});
+
+// Get content
+Cypress.Commands.add('getContent', ({ path = '' }) => {
+  let api_url, auth;
+  if (Cypress.env('API') === 'guillotina') {
+    api_url = GUILLOTINA_API_URL;
+    auth = {
+      user: 'root',
+      pass: 'root',
+    };
+  } else {
+    api_url = PLONE_API_URL;
+    auth = ploneAuthObj;
+  }
+
+  return cy.request({
+    method: 'get',
     url: `${api_url}/${path}`,
     headers: {
       Accept: 'application/json',
@@ -589,7 +614,7 @@ Cypress.Commands.add(
   (query, htmlContent) => {
     return cy
       .wrap(query)
-      .type(' ')
+      .type(' {backspace}')
       .trigger('paste', createHtmlPasteEvent(htmlContent));
   },
 );

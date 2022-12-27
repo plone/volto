@@ -55,8 +55,8 @@ both) files (including the matching folder structure) in your theme folder.
 ## Pastanaga UI Theme
 
 Volto implements Pastanaga UI theme, a new theme for Content Management Systems
-created and designed by [Albert Casado](https://twitter.com/albertcasado). For
-more info:
+created and designed by [Albert Casado](https://twitter.com/albertcasado). 
+For more info:
 
 * https://pastanaga.io
 * https://github.com/plone/pastanaga
@@ -75,28 +75,67 @@ https://github.com/plone/volto/tree/master/theme/themes/pastanaga
 Pastanaga Theme is an example on how to customize the default Semantic UI look
 and feel.
 
+
 ## Examples: Changing Base Font
 
-We start by creating the file `theme/globals/site.variables`. In this file we
-can override any value. We do not need to copy the whole file. We can add
-variables we would like to change. When we want to change the base font, we add
-the following:
+We start by creating the file `theme/globals/site.variables`.
+In this file we can override any value.
+We do not need to copy the whole file from Volto core.
+We can add variables we would like to change.
+When we want to change the base font, we add the following:
 
 ```less
 @fontName : 'Comic Sans MS';
 ```
 
-> Make sure you have the 'Comic Sans MS' font installed. This is the
-> 'ttf-mscorefonts-installer' package for the Debian linux distribution.
+The font 'Comic Sans MS' needs to be either installed on you machine or provided with your app.
 
-> If you create a new file, the watcher won't be aware of it, you must restart
-> the `yarn start` Volto process again.
+To provide the font with your app, the following steps are necessary:
 
-You can also point it to any Google Web Font name like:
+1. Get your font and copy the files to `/theme/assets/fonts/<font name with space replaced by _>`.
+
+1. Usually the font provider gives you ready made font-face instructions.
+  Copy these font-face code lines to `/theme/typography.css`.  
+  There are a lot of font providers.
+  If you choose Google fonts, check [google-webfonts-helper](https://gwfh.mranftl.com/fonts) to generate `font-face` CSS code and download font files to include in your project.
+
+1. Add to the end of `/theme/theme.config` a function to load your font-faces:
+   
+    ```less
+    .loadThemeFonts() {
+        @import "./typography.css";
+    }
+    ```
+
+1. Call this load function in `/theme/globals/site.overrides`:
+
+    ```less
+    .loadThemeFonts();
+    ```
+
+1. In `/theme/globals/site.variables` you can now override both, the font for headings (h1, h2, h3, …) and the font for the rest.
+
+    ```less
+    // Do not override @fontName!
+    // @fontName: 'Raleway', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+    @pageFont: 'Raleway', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    @headerFont: 'Rubic Microbe', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    ```
+
+Voilà.
+Start your Volto app if you created new files.
+
+````{tip}
+For testing purpose you can refrain from installing the font and from providing the font with your app if the font is a Google font.
+With the following two lines you tell Volto to load the font "Montserrat" from fonts.google.com.
 
 ```less
 @fontName : 'Montserrat';
+@importGoogleFonts : true;
 ```
+````
+
 
 ## Changing The Breadcrumbs
 
