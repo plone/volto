@@ -13,7 +13,7 @@ const schema = {
   required: ['username'],
 };
 const errors = { email: ['The specified email is not valid.'] };
-const formData = { username: 'test username', email: 'test' };
+const formData = { username: 'test username', email: 'test', url: 'test' };
 const formatMessage = (messageObj) => {
   return messageObj?.defaultMessage;
 };
@@ -79,6 +79,29 @@ describe('FormValidation', () => {
 
     it('validates correct email', () => {
       formData.email = 'test@domain.name';
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema,
+          formData,
+          formatMessage,
+        }),
+      ).toEqual({});
+    });
+
+    it('validates incorrect url', () => {
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema,
+          formData,
+          formatMessage,
+        }),
+      ).toEqual({
+        email: [messages.isValidURL.defaultMessage],
+      });
+    });
+
+    it('validates correct url', () => {
+      formData.url = 'www.something.com';
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema,
