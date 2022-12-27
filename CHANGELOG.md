@@ -8,19 +8,6 @@
 
 <!-- towncrier release notes start -->
 
-## 16.7.0 (unreleased)
-
-### Breaking
-
-### Feature
-
-### Bugfix
-- Fix the URI validation Regex in `widgetValidation` component of `FormValidation.js` to support the relative URLs.
-
-### Internal
-
-### Documentation
-
 ## 16.6.0 (2022-12-23)
 
 ### Feature
