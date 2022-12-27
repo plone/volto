@@ -96,7 +96,7 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({
-        email: [messages.isValidURL.defaultMessage],
+        url: [messages.isValidURL.defaultMessage],
       });
     });
 
