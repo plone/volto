@@ -5,18 +5,21 @@ const schema = {
   properties: {
     username: { title: 'Username', type: 'string', description: '' },
     email: { title: 'Email', type: 'string', widget: 'email', description: '' },
+    url: { title: 'URL', widget: 'url', description: '' },
   },
   fieldsets: [
     { id: 'default', title: 'FIXME: User Data', fields: ['username'] },
     { id: 'second', title: 'Second: User Data', fields: ['email'] },
+    { id: 'third', title: 'Third: User Data', fields: ['url'] },
   ],
   required: ['username'],
 };
 const errors = { email: ['The specified email is not valid.'] };
-const formData = { username: 'test username', email: 'test', url: 'test' };
+const formData = { username: 'test username', email: 'test', url: 'test url' };
 const formatMessage = (messageObj) => {
   return messageObj?.defaultMessage;
 };
+
 const errorJSON =
   "[{'message': 'The specified email is not valid.', 'field': 'email', 'error': 'ValidationError'}]";
 
@@ -66,6 +69,7 @@ describe('FormValidation', () => {
     });
 
     it('validates incorrect email', () => {
+      formData.url = 'www.test.com';
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema,
@@ -79,6 +83,7 @@ describe('FormValidation', () => {
 
     it('validates correct email', () => {
       formData.email = 'test@domain.name';
+      formData.url = 'www.test.com';
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema,
@@ -89,6 +94,7 @@ describe('FormValidation', () => {
     });
 
     it('validates incorrect url', () => {
+      formData.url = 'test url';
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema,
