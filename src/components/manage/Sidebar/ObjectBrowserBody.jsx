@@ -312,9 +312,9 @@ class ObjectBrowserBody extends Component {
     } else {
       if (this.isSelectable(item)) {
         if (
-          !this.props.maximumSelectionSize ||
-          this.props.mode === 'multiple' ||
-          !this.props.data ||
+          this.props.maximumSelectionSize &&
+          this.props.mode === 'multiple' &&
+          this.props.data &&
           this.props.data.length < this.props.maximumSelectionSize
         ) {
           this.onSelectItem(item);
