@@ -15,7 +15,7 @@ Read http://docs.plone.org/develop/coredev/docs/plips.html first!
 
 Set "03 type: feature: plip" as label.
 
-Mention the @plone/framework-team when the PLIP is information complete!
+Mention the @plone/volto-team when the PLIP is information complete!
 
 -->
 
