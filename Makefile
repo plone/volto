@@ -162,6 +162,10 @@ docs-test: docs-clean docs-linkcheckbroken docs-spellcheck  ## Clean docs build,
 storybook-build:
 	yarn build-storybook -o docs/_build/storybook
 
+.PHONY: patches
+patches:
+	/bin/bash patches/patchit.sh > /dev/null 2>&1 ||true
+
 ##### Release
 
 .PHONY: corepackagebump
