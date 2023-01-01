@@ -1,14 +1,45 @@
-# Change Log
+# Volto Generator Release Notes
 
-## 6.1.2 (unreleased)
+<!-- You should *NOT* be adding new change log entries to this file.
+     You should create a file in the news directory instead.
+     For helpful instructions, please see:
+     https://6.dev-docs.plone.org/volto/developer-guidelines/contributing.html#create-a-pull-request
+-->
 
-### Breaking
+<!-- towncrier release notes start -->
 
-### Feature
+## 6.2.2 (2022-12-23)
 
 ### Bugfix
 
-### Internal
+- Update docker image used in Makefile for addons @sneridagh [#4184](https://github.com/plone/volto/issues/4184)
+
+
+## 6.2.1 (2022-12-23)
+
+### Bugfix
+
+- Update docker image used in Makefile for addons @sneridagh [#4175](https://github.com/plone/volto/issues/4175)
+
+
+## 6.2.0 (2022-12-15)
+
+### Feature
+
+- Allow passing a Github branch or tag as Volto version (ex: `--volto=plone/volto#16.3.0`) @tiberiuichim [#4073](https://github.com/plone/volto/issues/4073)
+
+### Bugfix
+
+- Use semver to identify latest package when using the `--canary` flag @tiberiuichim @avoinea [#4074](https://github.com/plone/volto/issues/4074)
+- Fix cypress support filename @sneridagh [#4129](https://github.com/plone/volto/issues/4129)
+
+
+## 6.1.2 (2022-12-05)
+
+### Bugfix
+
+- Add `cypress.config.js` to generator templates @sneridagh [#4021](https://github.com/plone/volto/issues/4021)
+
 
 ## 6.1.1 (2022-11-24)
 

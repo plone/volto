@@ -74,14 +74,6 @@ class Config {
     this._data.addonRoutes = addonRoutes;
   }
 
-  get appExtras() {
-    return this._data.appExtras;
-  }
-
-  set appExtras(appExtras) {
-    this._data.appExtras = appExtras;
-  }
-
   get slots() {
     return this._data.slots;
   }

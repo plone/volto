@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-11-30T14:40:40.606Z\n"
+"POT-Creation-Date: 2023-01-01T18:23:08.571Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1639,7 +1639,7 @@ msgid "Image view"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
-# defaultMessage: Include this occurence
+# defaultMessage: Include this occurrence
 msgid "Include this occurence"
 msgstr ""
 
@@ -1738,7 +1738,7 @@ msgid "Item batch size"
 msgstr ""
 
 #: components/manage/Contents/Contents
-# defaultMessage: Item succesfully moved.
+# defaultMessage: Item successfully moved.
 msgid "Item succesfully moved."
 msgstr ""
 
@@ -2231,6 +2231,11 @@ msgstr ""
 msgid "No selection"
 msgstr ""
 
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: No target selected
+msgid "No target selected"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: This addon does not provide an uninstall profile.
 msgid "No uninstall profile"
@@ -2665,6 +2670,16 @@ msgstr ""
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Reset title
 msgid "Reset term title"
+msgstr ""
+
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Reset the block
+msgid "Reset the block"
+msgstr ""
+
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Resets the target
+msgid "Resets the target"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
@@ -3205,6 +3220,11 @@ msgstr ""
 msgid "Switch to"
 msgstr ""
 
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Sync local data with target
+msgid "Sync local data with target"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Table
 msgid "Table"
@@ -3246,6 +3266,11 @@ msgstr ""
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Target Path (Required)
 msgid "Target Path (Required)"
+msgstr ""
+
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Target Preview
+msgid "Target Preview"
 msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation

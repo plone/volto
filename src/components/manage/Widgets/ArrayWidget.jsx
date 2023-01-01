@@ -314,6 +314,9 @@ class ArrayWidget extends Component {
           isDisabled={this.props.disabled || this.props.isDisabled}
           className="react-select-container"
           classNamePrefix="react-select"
+          /* eslint-disable jsx-a11y/no-autofocus */
+          autoFocus={this.props.focus}
+          /* eslint-enable jsx-a11y/no-autofocus */
           options={
             this.props.vocabBaseUrl
               ? choices

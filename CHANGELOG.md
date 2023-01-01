@@ -1,4 +1,4 @@
-# Change Log
+# Volto Release Notes
 
 <!-- You should *NOT* be adding new change log entries to this file.
      You should create a file in the news directory instead.
@@ -7,6 +7,112 @@
 -->
 
 <!-- towncrier release notes start -->
+
+## 16.6.0 (2022-12-23)
+
+### Feature
+
+- Allow passing the `step` prop to NumberWidget @tiberiuichim [#4152](https://github.com/plone/volto/issues/4152)
+
+### Bugfix
+
+- Fix categorization list is not readable when there are longer values or filtering @iFlameing [#4113](https://github.com/plone/volto/issues/4113)
+- Add scroll into view settings @robgietema [#4140](https://github.com/plone/volto/issues/4140)
+- Remove searching capabilities of SortOn component of Search Block @iFlameing [#4162](https://github.com/plone/volto/issues/4162)
+- Fixed externalRoutes short version @pnicolli [#4182](https://github.com/plone/volto/issues/4182)
+
+### Documentation
+
+- Fix URLs to Plone 6 docs. @stevepiercy [#4143](https://github.com/plone/volto/issues/4143)
+- Fix Sphinx warning Document headings start at H2, not H1 [myst.header]. @stevepiercy [#4145](https://github.com/plone/volto/issues/4145)
+
+
+## 16.5.0 (2022-12-16)
+
+### Feature
+
+- Update pt_BR translation @rafahela [#4121](https://github.com/plone/volto/issues/4121)
+
+### Bugfix
+
+- Update SlashMenu to include block title in shortcut search; and prevent default on keydown for Arrows and Enter @danalvrz [#4116](https://github.com/plone/volto/issues/4116)
+- Fix removing of toast notification of logout when user login once again. @iFlameing [#4125](https://github.com/plone/volto/issues/4125)
+
+### Internal
+
+- Upgrade testbed and convenience api folder to Plone 6 final @sneridagh [#4105](https://github.com/plone/volto/issues/4105)
+
+
+## 16.4.1 (2022-12-13)
+
+### Bugfix
+
+- For hot reloading purposes when developing code, the Volto package is no longer excluded @tiberiuichim [#4108](https://github.com/plone/volto/issues/4108)
+- Remove clean-css from the CSS minimizing step, use css-minimizer-webpack-plugin one instead @sneridagh [#4115](https://github.com/plone/volto/issues/4115)
+
+
+## 16.4.0 (2022-12-12)
+
+### Feature
+
+- Update Traefik version and make volume mount (docker-compose) read-only [#4067](https://github.com/plone/volto/issues/4067)
+- Allow addons to provide an `eslint.extend.js` file that customizez eslint configuration @tiberiuichim [#4072](https://github.com/plone/volto/issues/4072)
+
+### Bugfix
+
+- Update Chinese translation @adam139 [#4009](https://github.com/plone/volto/issues/4009)
+- Reset value of search field after submit. [@MAX-786] [#4028](https://github.com/plone/volto/issues/4028)
+- Don't crash the view page when dealing with unknown blocks @tiberiuichim [#4070](https://github.com/plone/volto/issues/4070)
+- Bump version for plone-backend version used in Makefile @tiberiuichim [#4071](https://github.com/plone/volto/issues/4071)
+- Properly handle whitespace in HTML (richtext) slate-based widget @tiberiuichim [#4082](https://github.com/plone/volto/issues/4082)
+- Add Finnish translation (contributed by @rioksane)
+  [erral] [#4084](https://github.com/plone/volto/issues/4084)
+- Fix typo in english translation and add missing french translation
+  [mpeeters, jchandelle] [#4085](https://github.com/plone/volto/issues/4085)
+
+### Internal
+
+- Make Volto compatible with pnpm as package manager [#4023](https://github.com/plone/volto/issues/4023)
+
+### Documentation
+
+- Add content for user-manual of Volto, Plone 6 frontend. [@MAX-786] [#3827](https://github.com/plone/volto/issues/3827)
+- Remove duplicate `H1`-level page title, and inherit from Volto's `CHANGELOG.md`. @stevepiercy [#4048](https://github.com/plone/volto/issues/4048)
+
+
+## 16.3.0 (2022-12-05)
+
+### Feature
+
+- Add towncrier support. Create `RELEASING.md` and move and update Releasing section from `README.md` into it. @sneridagh @stevepiercy [#3985](https://github.com/plone/volto/issues/3985)
+- Translation of roles in user and group control panel. Fix https://github.com/plone/volto/issues/4002 @wesleybl [#4002](https://github.com/plone/volto/issues/4002)
+- Use the component registry for `Container` component in DefaultView @sneridagh [#4032](https://github.com/plone/volto/issues/4032)
+- Update missing german translations @steffenri
+
+### Bugfix
+
+- Fix GitHub release notes in new Towncrier release config @sneridagh [#3989](https://github.com/plone/volto/issues/3989)
+- Clear error message when canceling user add. Fix https://github.com/plone/volto/issues/4006 @wesleybl [#4006](https://github.com/plone/volto/issues/4006)
+- Fix subscript and supscript active at same time. @iFlameing [#4011](https://github.com/plone/volto/issues/4011)
+- Complete eu translation
+  [erral] [#4015](https://github.com/plone/volto/issues/4015)
+- Complete es translation
+  [erral] [#4016](https://github.com/plone/volto/issues/4016)
+- Add `cypress.config.js` to generator templates @sneridagh [#4021](https://github.com/plone/volto/issues/4021)
+- Bump Volto core packages with the current Volto version on Volto release @sneridagh [#4025](https://github.com/plone/volto/issues/4025)
+
+### Internal
+
+- Remove unused dangling root appExtras from configuration registry @sneridagh [#4024](https://github.com/plone/volto/issues/4024)
+
+### Documentation
+
+- Rewrite "Upgraded core to use Cypress 11" section. @stevepiercy [#3979](https://github.com/plone/volto/issues/3979)
+- Include `CHANGELOG.md` at the correct path, depending on context of entire Plone 6 documentation or only Volto documentation. @stevepiercy [#3992](https://github.com/plone/volto/issues/3992)
+- Close the open Glossary list. @stevepiercy [#3995](https://github.com/plone/volto/issues/3995)
+- Added docs for proper usage of draftjs for richtext widgets. @pnicolli [#4001](https://github.com/plone/volto/issues/4001)
+- Document how to change the base font and the font for headings. Describe how to host the font. @ksuess [#4013](https://github.com/plone/volto/issues/4013)
+
 
 ## 16.2.0 (2022-11-25)
 
@@ -22,6 +128,7 @@
 - Improve collapsing of whitespace when pasting to slate text block @tiberiuichim
 - Avoid warning for missing value in NumberWidget @tiberiuichim
 - Fix crash in Slate link editing in a dexterity field @tiberiuichim
+- Fix select widget loosing focus when the value has changed @reebalazs
 
 ## 16.1.0 (2022-11-23)
 
@@ -54,7 +161,7 @@
 - Staticize Poppins font to be compliant with EU privacy. Import from GoogleFont is disabled in site.variables. @giuliaghisini
 - Remove the `callout` button (the one with the megaphone icon) from the slate toolbar since it has the same styling as `blockquote`. If you need it anyway, you can bring it back in your addon. @sneridagh
 - Using volto-slate Headline / Subheadline buttons strips all elements in the selection @tiberiuichim
-- Use `Cypress` 10.3.0 (migrate from 9.x.x). Cypress 10 has some interesting goodies, being the native support of Apple Silicon Computers the main of it. See https://docs.voltocms.com/upgrade-guide/ for more information. @sneridagh
+- Use `Cypress` 10.3.0 (migrate from 9.x.x). Cypress 10 has some interesting goodies, being the native support of Apple Silicon Computers the main of it. See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information. @sneridagh
 - The complete configuration registry is passed to the add-ons and the project configuration pipeline @sneridagh
 - Refactor the component registry API in the configuration registry @sneridagh @tiberiuichim
 - change password-reset url to be consistent with Plone configuration @erral
@@ -356,8 +463,8 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Improve English grammar and syntax in backend docs. @stevepiercy
 - Fix JSX syntax highlighting. Remove duplicate heading. @stevepiercy
 - fix make task `docs-linkcheckbroken` if grep has exit code 1 (no lines found)
-- Updated simple.md @MdSahil-oss
-- Fix indentation in nginx configuration in simple.md @stevepiercy
+- Updated `simple.md` @MdSahil-oss
+- Fix indentation in nginx configuration in `simple.md` @stevepiercy
 - Remove sphinx_sitemap configuration because Volto's docs are now imported into the main docs, making this setting unnecessary. @stevepiercy
 - Set the ogp_site_url to main docs, instead of training. @stevepiercy
 - `aria-*` attributes are now parsed correctly by jsx-lexer 2.0. @stevepiercy
@@ -426,6 +533,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Tidy up `upgrade-guide/index.md`. @stevepiercy
 - Fix some MyST syntax and English grammar. @stevepiercy
 - Add contributing branch policy information @sneridagh @stevepiercy
+- Add component to storybook @danalvrz
 
 ## 16.0.0-rc.1 (2022-11-18)
 
@@ -994,7 +1102,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 ### Breaking
 
 - The complete configuration registry is passed to the add-ons and the project configuration pipeline
-  See https://docs.voltocms.com/upgrade-guide/ for more information. @sneridagh
+  See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information. @sneridagh
 - Refactor the component registry API in the configuration registry @sneridagh @tiberiuichim
 
 ### Bugfix
@@ -1019,7 +1127,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 
 ### Breaking
 
-- Use `Cypress` 10.3.0 (migrate from 9.x.x). Cypress 10 has some interesting goodies, being the native support of Apple Silicon Computers the main of it. See https://docs.voltocms.com/upgrade-guide/ for more information. @sneridagh
+- Use `Cypress` 10.3.0 (migrate from 9.x.x). Cypress 10 has some interesting goodies, being the native support of Apple Silicon Computers the main of it. See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information. @sneridagh
 
 ### Bugfix
 
@@ -1283,8 +1391,8 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 
 ### Documentation
 
-- Updated simple.md @MdSahil-oss
-- Fix indentation in nginx configuration in simple.md @stevepiercy
+- Updated `simple.md` @MdSahil-oss
+- Fix indentation in nginx configuration in `simple.md` @stevepiercy
 
 ## 16.0.0-alpha.3 (2022-05-16)
 
@@ -1538,7 +1646,7 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 
 ### Documentation
 
-- Updated README.md @ktsrivastava29
+- Updated `README.md` @ktsrivastava29
 - Added language to code-blocks in md files @ktsrivastava29
 - Added html_meta values and labels for Intersphinx cross-references from Trainings. @stevepiercy
 - Replaced `docs.voltocms.com` with MyST references. @stevepiercy
@@ -1754,7 +1862,7 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 ### Breaking
 
 - Lazyload draftjs library. See the upgrade guide on how that impacts you, in case you have extended the rich text editor configuration @tiberiuichim @kreafox
-  See https://docs.voltocms.com/upgrade-guide/ for more information.
+  See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information.
 
 ### Feature
 
@@ -1767,7 +1875,7 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 - Markup change in `LinkView` component.
 - Rename `core-sandbox` to `coresandbox` for sake of consistency @sneridagh
 - Extend the original intent and rename `RAZZLE_TESTING_ADDONS` to `ADDONS`. @sneridagh
-  See https://docs.voltocms.com/upgrade-guide/ for more information.
+  See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information.
 
 ### Internal
 
@@ -1813,7 +1921,7 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 ### Breaking
 
 - Upgrade `react-cookie` to latest version. @sneridagh @robgietema
-  See https://docs.voltocms.com/upgrade-guide/ for more information.
+  See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information.
 
 ## 14.10.0 (2022-02-08)
 
@@ -1942,7 +2050,7 @@ new users/evaluators. @fredvd
 ### Internal
 
 - Fix URL for Climate-Energy, a Volto website @tiberiuichim
-- Fix quirky Cypress test in "DX control panel schema" (see https://github.com/plone/volto/runs/4803206906?check_suite_focus=true) @sneridagh
+- Fix quirky Cypress test in "DX control panel schema" (see https://github.com/plone/volto/actions/runs/1692689792/jobs/2306969715) @sneridagh
 
 ## 14.2.1 (2022-01-12)
 
@@ -2006,11 +2114,11 @@ new users/evaluators. @fredvd
 
 ### Breaking
 
-- Remove compatibility for old configuration (based on imports) system. Migrate your configuration to the new configuration system for your project before upgrading to Volto 14. See https://docs.voltocms.com/upgrade-guide/#volto-configuration-registry @sneridagh
+- Remove compatibility for old configuration (based on imports) system. Migrate your configuration to the new configuration system for your project before upgrading to Volto 14. See https://6.docs.plone.org/volto/upgrade-guide/index.html#volto-configuration-registry @sneridagh
 - Content locking is not a breaking change, but it's worth noting that Volto 14 comes with locking support enabled by default. Latest `plone.restapi` version is required. @avoinea
 - Revisited, rethought and refactored Seamless mode @sneridagh
   For more information, please read the deploying guide
-  https://docs.voltocms.com/deploying/seamless-mode/
+  https://6.docs.plone.org/volto/deploying/seamless-mode.html
 - Listing block no longer use `fullobjects` to retrieve backend data. It uses the catalog data instead. This improves the performance of the listing block. @plone/volto-team
 - Removed pagination in vocabularies widgets (SelectWidget, ArrayWidget, TokenWidget) and introduced subrequest to vocabulary action. @giuliaghisini
 - Use the block's title as the source of the translation instead of using the id of the block. See upgrade guide for more information @sneridagh
@@ -2022,7 +2130,7 @@ new users/evaluators. @fredvd
 - Use title instead of id as a source of translation in "Variation" field in block enhancers @sneridagh
 - Move `theme.js` import to top of the client code, so it take precedence over any other inline imported CSS. This is not an strict breaking change, but it's worth to mention it as might be important and kept in mind. @sneridagh
 
-See https://docs.voltocms.com/upgrade-guide/ for more information about all the breaking changes.
+See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information about all the breaking changes.
 
 ### Feature
 
@@ -2457,10 +2565,10 @@ See https://docs.voltocms.com/upgrade-guide/ for more information about all the 
 
 - Revisited, rethought and refactored Seamless mode @sneridagh
   For more information, please read the deploying guide
-  https://docs.voltocms.com/deploying/seamless-mode/
+  https://6.docs.plone.org/volto/deploying/seamless-mode.html
 
-and the upgrade guide
-https://docs.voltocms.com/upgrade-guide/
+  and the upgrade guide
+  https://6.docs.plone.org/volto/upgrade-guide/index.html
 
 ### Bugfix
 
@@ -2504,7 +2612,7 @@ https://docs.voltocms.com/upgrade-guide/
 - Adjusted main `Logo` component styling @sneridagh
 
 For more information, please read the upgrade guide
-https://docs.voltocms.com/upgrade-guide/
+https://6.docs.plone.org/volto/upgrade-guide/index.html
 
 ### Feature
 
@@ -2515,7 +2623,7 @@ https://docs.voltocms.com/upgrade-guide/
 - Improved developer documentation. Proof read several chapters, most importantly the upgrade guide @ichim-david
 - Use Plone logo (Closes #2632) @ericof
 - Updated Brazilian Portuguese translations @ericof
-- Footer: Point to plone.org instead of plone.com @ericof
+- Footer: Point to `plone.org` instead of `plone.com` @ericof
 - Fix "make start-frontend" @tisto
 - Update all the tests infrastructure for the new `volto-guillotina` addon @sneridagh
 
@@ -2648,8 +2756,8 @@ https://docs.voltocms.com/upgrade-guide/
 
 ### Breaking
 
-- Remove compatibility for old configuration (based on imports) system. Migrate your configuration to the new configuration system for your project before upgrading to Volto 14. See https://docs.voltocms.com/upgrade-guide/#volto-configuration-registry @sneridagh
-- Content locking is not a breaking change, but it's worth noting that Volto 14 comes with locking support enabled by default. Latest `plone.restapi` versions is required. See https://docs.voltocms.com/upgrade-guide/ for more information
+- Remove compatibility for old configuration (based on imports) system. Migrate your configuration to the new configuration system for your project before upgrading to Volto 14. See https://6.docs.plone.org/volto/upgrade-guide/index.html#volto-configuration-registry @sneridagh
+- Content locking is not a breaking change, but it's worth noting that Volto 14 comes with locking support enabled by default. Latest `plone.restapi` versions is required. See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information
 
 ### Feature
 
@@ -2699,7 +2807,7 @@ https://docs.voltocms.com/upgrade-guide/
 
 - Disabled all the other configuration options when user did not choose any criteria in listing block @iFlameing
 - Updated Brazilian Portuguese translations @ericof
-- Footer: Point to plone.org instead of plone.com @ericof
+- Footer: Point to `plone.org` instead of `plone.com` @ericof
 - Array and token widget available as named widget @nzambello
 
 ## 13.12.0 (2021-08-20)
@@ -2972,7 +3080,7 @@ https://docs.voltocms.com/upgrade-guide/
 - Refactored `Listing` block using the new `src/components/manage/Widgets/QuerystringWidget`. Introducing a new `showLinkMore` block option opt-in for the additional feature instead of always-in. Deprecated `ListingSidebar` and `src/components/manage/Blocks/Listing/QuerystringWidget` in favor of the new `src/components/manage/Widgets/QuerystringWidget` @sneridagh
 
 For a more information, please read the upgrade guide
-https://docs.voltocms.com/upgrade-guide/
+https://6.docs.plone.org/volto/upgrade-guide/index.html
 
 ### Feature
 
@@ -3086,7 +3194,7 @@ https://docs.voltocms.com/upgrade-guide/
 - Refactored `Listing` block using the new `src/components/manage/Widgets/QuerystringWidget`. Introducing a new `showLinkMore` block option opt-in for the additional feature instead of always-in. Deprecated `ListingSidebar` and `src/components/manage/Blocks/Listing/QuerystringWidget` in favor of the new `src/components/manage/Widgets/QuerystringWidget` @sneridagh
 
 For a more information, please read the upgrade guide
-https://docs.voltocms.com/upgrade-guide/
+https://6.docs.plone.org/volto/upgrade-guide/index.html
 
 ### Bugfix
 
@@ -3136,7 +3244,7 @@ https://docs.voltocms.com/upgrade-guide/
 - Get rid of the font icons in the control panels overview @sneridagh
 
 For a complete list of actions to follow, please read the upgrade guide
-https://docs.voltocms.com/upgrade-guide/
+https://6.docs.plone.org/volto/upgrade-guide/index.html
 
 ### Feature
 
@@ -3287,7 +3395,7 @@ https://docs.voltocms.com/upgrade-guide/
 
 ### Internal
 
-- Add Storybook to the main docs (docs.voltocms.com/storybook) build @sneridagh
+- Add Storybook to the main docs (https://6.docs.plone.org/storybook/) build @sneridagh
 
 ## 12.5.0 (2021-03-31)
 
@@ -3435,7 +3543,7 @@ https://docs.voltocms.com/upgrade-guide/
 ### Breaking
 
 - Introduction of the new Volto Configuration Registry @sneridagh @tiberiuichim
-  For more information about this breaking change: https://docs.voltocms.com/upgrade-guide/#upgrading-to-volto-12xx
+  For more information about this breaking change: https://6.docs.plone.org/volto/upgrade-guide/index.html#upgrading-to-volto-12-x-x
 
 ### Feature
 
@@ -3450,7 +3558,7 @@ https://docs.voltocms.com/upgrade-guide/
 ### Breaking
 
 - Introduction of the new Volto Configuration Registry @sneridagh @tiberiuichim
-  For more information about this breaking change: https://docs.voltocms.com/upgrade-guide/#upgrading-to-volto-12xx
+  For more information about this breaking change: https://6.docs.plone.org/volto/upgrade-guide/index.html#upgrading-to-volto-12-x-x
 
 ## 11.1.0 (2021-02-08)
 
@@ -3730,7 +3838,7 @@ https://docs.voltocms.com/upgrade-guide/
 ### Breaking
 
 - Removal of the Razzle patch that was introduced in 9.0.0 @sneridagh
-  See https://docs.voltocms.com/upgrade-guide/ for more details.
+  See https://6.docs.plone.org/volto/upgrade-guide/index.html for more details.
 - Fetched content with `getContent` no longer includes fullobjects by default @tiberiuichim
 
 ### Bugfix
@@ -3750,7 +3858,7 @@ https://docs.voltocms.com/upgrade-guide/
 ## 9.2.0 (2020-11-24)
 
 **This is a brown bag release and should not be used, upgrade to Volto 10.x.x instead.**
-See https://docs.voltocms.com/upgrade-guide/ for more information.
+See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information.
 
 ### Feature
 
@@ -3811,7 +3919,7 @@ See https://docs.voltocms.com/upgrade-guide/ for more information.
   - @babel/plugin-proposal-function-sent
 
 For a complete list of actions to follow, please read the upgrade guide
-https://docs.voltocms.com/upgrade-guide/
+https://6.docs.plone.org/volto/upgrade-guide/index.html
 
 ### Feature
 
@@ -3897,7 +4005,7 @@ https://docs.voltocms.com/upgrade-guide/
 
 ### Feature
 
-- Add support for the new active LTS NodeJS version 14. NodeJS 10 eol will happen on 2021-04-30 and Volto will update accordingly. More information on https://nodejs.org/en/about/releases @sneridagh
+- Add support for the new active LTS NodeJS version 14. NodeJS 10 eol will happen on 2021-04-30 and Volto will update accordingly. More information on https://github.com/nodejs/release#release-schedule @sneridagh
 
 ## 8.7.1 (2020-10-29)
 
@@ -4421,7 +4529,7 @@ https://docs.voltocms.com/upgrade-guide/
 
 ### Feature
 
-- Provide a new webpack alias, `volto-themes`, which points to Volto's theme folder. See details in the https://docs.voltocms.com/upgrade-guide/
+- Provide a new webpack alias, `volto-themes`, which points to Volto's theme folder. See details in the https://6.docs.plone.org/volto/upgrade-guide/index.html
 
 ### Internal
 
@@ -4570,7 +4678,7 @@ https://docs.voltocms.com/upgrade-guide/
 ### Breaking
 
 - Removed support for CSS modules, since Razzle 3.1.x do not support them @sneridagh
-- Updated Volto dependencies - See https://docs.voltocms.com/upgrade-guide/ for more information @sneridagh
+- Updated Volto dependencies - See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information @sneridagh
 - By adding `react-beautiful-dnd` in the block editor we are introducing new wrappers
   (belonging to the lib machinery) in the structure. The original structure and class
   names are still in there for maintain maximum backwards compatibility. Those might be
@@ -5040,7 +5148,7 @@ refer to all of them in https://github.com/plone/volto/releases
 
 ### Internal
 
-- Added forest.eea.europa.eu as deployed Volto in production @tiberiuichim
+- Added `forest.eea.europa.eu` as deployed Volto in production @tiberiuichim
 - Add SemanticUI responsive variables to the responsive utils @sneridagh
 - Added `yarnhook` to the build @sneridagh
 
@@ -5087,7 +5195,7 @@ refer to all of them in https://github.com/plone/volto/releases
 
 ### Added
 
-- Lead image behavior block @sneridagh sponsored by CMSCOM.jp @terapyon
+- Lead image behavior block @sneridagh sponsored by `CMSCOM.jp` @terapyon
 
 ### Changes
 
@@ -5399,7 +5507,7 @@ refer to all of them in https://github.com/plone/volto/releases
 ### Internal
 
 - Add complete husky config @sneridagh
-- Add COC.md file @timo
+- Add `COC.md` file @timo
 
 ## 4.0.0-alpha.5 (2019-09-28)
 

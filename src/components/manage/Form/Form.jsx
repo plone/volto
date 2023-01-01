@@ -201,6 +201,8 @@ class Form extends Component {
       selected: selectedBlock,
       multiSelected: [],
       isClient: false,
+      // Ensure focus remain in field after change
+      inFocus: {},
     };
     this.onChangeField = this.onChangeField.bind(this);
     this.onSelectBlock = this.onSelectBlock.bind(this);
@@ -324,6 +326,13 @@ class Form extends Component {
           [id]:
             value || (value !== undefined && isBoolean(value)) ? value : null,
         },
+        // Changing the form data re-renders the select widget which causes the
+        // focus to get lost. To circumvent this, we set the focus back to
+        // the input.
+        // This could fix other widgets too but currently targeted
+        // against the select widget only.
+        // Ensure field to be in focus after the change
+        inFocus: { [id]: true },
       };
     });
   }
@@ -607,7 +616,7 @@ class Form extends Component {
                           id={field}
                           fieldSet={item.title.toLowerCase()}
                           formData={this.state.formData}
-                          focus={false}
+                          focus={this.state.inFocus[field]}
                           value={this.state.formData?.[field]}
                           required={schema.required.indexOf(field) !== -1}
                           onChange={this.onChangeField}

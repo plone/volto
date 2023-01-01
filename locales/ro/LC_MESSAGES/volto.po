@@ -1637,7 +1637,7 @@ msgid "Image view"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
-# defaultMessage: Include this occurence
+# defaultMessage: Include this occurrence
 msgid "Include this occurence"
 msgstr "Includeți această apariție"
 
@@ -1736,7 +1736,7 @@ msgid "Item batch size"
 msgstr "Dimensiunea lotului obiectului"
 
 #: components/manage/Contents/Contents
-# defaultMessage: Item succesfully moved.
+# defaultMessage: Item successfully moved.
 msgid "Item succesfully moved."
 msgstr "Obiectul a fost mutat cu succes."
 
@@ -2229,6 +2229,11 @@ msgstr "Nu s-au găsit rezultate."
 msgid "No selection"
 msgstr "Fără selecție"
 
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: No target selected
+msgid "No target selected"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: This addon does not provide an uninstall profile.
 msgid "No uninstall profile"
@@ -2664,6 +2669,16 @@ msgstr "Câmpul este obligatoriu."
 # defaultMessage: Reset title
 msgid "Reset term title"
 msgstr "Resetați titlul termenului"
+
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Reset the block
+msgid "Reset the block"
+msgstr ""
+
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Resets the target
+msgid "Resets the target"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Results limit
@@ -3203,6 +3218,11 @@ msgstr ""
 msgid "Switch to"
 msgstr "Schimbă cu"
 
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Sync local data with target
+msgid "Sync local data with target"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Table
 msgid "Table"
@@ -3244,6 +3264,11 @@ msgstr ""
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Target Path (Required)
 msgid "Target Path (Required)"
+msgstr ""
+
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Target Preview
+msgid "Target Preview"
 msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
