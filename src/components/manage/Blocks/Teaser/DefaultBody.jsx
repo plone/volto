@@ -8,6 +8,7 @@ import { getTeaserImageURL } from './utils';
 import { MaybeWrap } from '@plone/volto/components';
 import { UniversalLink } from '@plone/volto/components';
 import cx from 'classnames';
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   PleaseChooseContent: {
@@ -23,6 +24,10 @@ const TeaserDefaultTemplate = (props) => {
   const href = data.href?.[0];
   const image = data.preview_image?.[0];
   const align = data?.styles?.align;
+
+  const DefaultImage = (props) => <img {...props} alt={props.alt || ''} />;
+
+  const Image = config.getComponent('Image').component || DefaultImage;
 
   return (
     <div className={cx('block teaser', className)}>
@@ -45,7 +50,7 @@ const TeaserDefaultTemplate = (props) => {
             <div className="grid-teaser-item default">
               {(href.hasPreviewImage || href.image_field || image) && (
                 <div className="grid-image-wrapper">
-                  <img
+                  <Image
                     src={flattenToAppURL(
                       getTeaserImageURL({ href, image, align }),
                     )}
