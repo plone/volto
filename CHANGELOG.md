@@ -118,7 +118,6 @@
 
 ### Feature
 
-- Add `Teaser` block @sneridagh
 - Internationalization of descriptions of user add form fields. @wesleybl
 - Add tooltip to multivalue labels in select facet @reebalazs
 - Provide a default View/Edit component for blocks @avoinea, @tiberiuichim
