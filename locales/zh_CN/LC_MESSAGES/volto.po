@@ -2235,11 +2235,6 @@ msgstr "未找到结果。"
 msgid "No selection"
 msgstr "没有选择"
 
-#: components/manage/Blocks/Teaser/Data
-# defaultMessage: No target selected
-msgid "No target selected"
-msgstr ""
-
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: This addon does not provide an uninstall profile.
 msgid "No uninstall profile"
@@ -2679,11 +2674,6 @@ msgstr "重新设置标题"
 #: components/manage/Blocks/Teaser/Data
 # defaultMessage: Reset the block
 msgid "Reset the block"
-msgstr ""
-
-#: components/manage/Blocks/Teaser/Data
-# defaultMessage: Resets the target
-msgid "Resets the target"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
@@ -3224,11 +3214,6 @@ msgstr "摘要视图"
 msgid "Switch to"
 msgstr "切换到"
 
-#: components/manage/Blocks/Teaser/Data
-# defaultMessage: Sync local data with target
-msgid "Sync local data with target"
-msgstr ""
-
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Table
 msgid "Table"
@@ -3271,11 +3256,6 @@ msgstr "目标"
 # defaultMessage: Target Path (Required)
 msgid "Target Path (Required)"
 msgstr "目标路径（必填）"
-
-#: components/manage/Blocks/Teaser/Data
-# defaultMessage: Target Preview
-msgid "Target Preview"
-msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Target memory size per cache in bytes

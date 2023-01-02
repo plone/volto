@@ -2240,11 +2240,6 @@ msgstr "La búsqueda no produjo resultados."
 msgid "No selection"
 msgstr "No hay selección"
 
-#: components/manage/Blocks/Teaser/Data
-# defaultMessage: No target selected
-msgid "No target selected"
-msgstr ""
-
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: This addon does not provide an uninstall profile.
 msgid "No uninstall profile"
@@ -2684,11 +2679,6 @@ msgstr "Limpiar el título del término"
 #: components/manage/Blocks/Teaser/Data
 # defaultMessage: Reset the block
 msgid "Reset the block"
-msgstr ""
-
-#: components/manage/Blocks/Teaser/Data
-# defaultMessage: Resets the target
-msgid "Resets the target"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
@@ -3229,11 +3219,6 @@ msgstr "Vista de resumen"
 msgid "Switch to"
 msgstr "Cambiar a"
 
-#: components/manage/Blocks/Teaser/Data
-# defaultMessage: Sync local data with target
-msgid "Sync local data with target"
-msgstr ""
-
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Table
 msgid "Table"
@@ -3276,11 +3261,6 @@ msgstr "Destino"
 # defaultMessage: Target Path (Required)
 msgid "Target Path (Required)"
 msgstr "Ruta del destino (obligatorio)"
-
-#: components/manage/Blocks/Teaser/Data
-# defaultMessage: Target Preview
-msgid "Target Preview"
-msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Target memory size per cache in bytes
