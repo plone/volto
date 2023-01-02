@@ -157,7 +157,7 @@ config object, avoiding odd and hard to track errors when developing add-ons.
 
 Volto add-on packages are just CommonJS packages. The only requirement is that
 they point the `main` key of their `package.json` to a module that exports, as
-a default function that acts as a Volto configuration loader.
+a default function that acts as a {term}`Volto configuration loader`.
 
 Although you could simply use `npm init` to generate an add-on initial code,
 we now have a nice

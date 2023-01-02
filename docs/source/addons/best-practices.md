@@ -36,7 +36,7 @@ multiple instances of that color widget with custom color palettes.
 
 ### Provide additional configuration
 
-An add-on can ship with multiple Volto configuration loaders. This makes it
+An add-on can ship with multiple {term}`Volto configuration loader`s. This makes it
 possible to provide configuration methods for demo purposes, for example, or to
 ship with a default "shallow" integration, then provide another separate
 configuration loader for a deeper integration.
