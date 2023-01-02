@@ -1,6 +1,6 @@
 # Component Registry
 
-The configuration registry has a component registry integrated on itself.
+The {term}`configuration registry` has a component registry integrated on itself.
 These registry stores by a given name the components.
 Later you can retrieve them by this name, and use them in your code.
 The idea behind is to provide an alternative and more convenient way to customize components.

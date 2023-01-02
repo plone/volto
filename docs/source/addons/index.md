@@ -28,7 +28,7 @@ benefit from open source collaboration.
 By declaring a JavaScript package as a Volto add-on, Volto provides
 several integration features: language features (so they can be transpiled
 by Babel), whole-process customization via razzle.extend.js and
-integration with Volto's configuration registry.
+integration with Volto's {term}`configuration registry`.
 ```
 
 The add-on can be published to an NPM registry or directly installed from github
@@ -68,7 +68,7 @@ section.
 ### Loading add-on configuration
 
 As a convenience, an add-on can export configuration functions that can mutate,
-in-place, the overall Volto configuration registry. An add-on can export multiple
+in-place, the overall Volto {term}`configuration registry`. An add-on can export multiple
 configurations methods, making it possible to selectively choose which specific
 add-on functionality you want to load.
 
