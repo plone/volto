@@ -1205,7 +1205,7 @@ class Contents extends Component {
           data: dataURItoBlob(dataFiles[i], {}),
           meta: {
             relativePath:
-              files[i].relativepath || files[i].webkitRelativePath || null,
+              files[i].relativepath || files[i].webkitRelativePath || files[i].path || null,
           },
         });
       }
