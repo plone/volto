@@ -38,7 +38,7 @@ context('Blocks Acceptance Tests', () => {
     // THEN I can see the Teaser block
     cy.visit('/document');
     cy.get('.block.teaser').should('have.class', 'has--align--center');
-    cy.get('.block.teaser .grid-image-wrapper img')
+    cy.get('.block.teaser .image-wrapper img')
       .should('have.attr', 'src')
       .and('include', '/document/blue-orchidees/@@images/preview_image/great');
     cy.get('.block.teaser .content h2').contains('Blue Orchidees');
