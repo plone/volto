@@ -34,7 +34,7 @@ const TeaserDefaultTemplate = (props) => {
       <>
         {!href && isEditMode && (
           <Message>
-            <div className="grid-teaser-item placeholder">
+            <div className="teaser-item placeholder">
               <img src={imageBlockSVG} alt="" />
               <p>{intl.formatMessage(messages.PleaseChooseContent)}</p>
             </div>
@@ -47,9 +47,9 @@ const TeaserDefaultTemplate = (props) => {
             href={href['@id']}
             target={data.openLinkInNewTab ? '_blank' : null}
           >
-            <div className="grid-teaser-item default">
+            <div className="teaser-item default">
               {(href.hasPreviewImage || href.image_field || image) && (
-                <div className="grid-image-wrapper">
+                <div className="image-wrapper">
                   <Image
                     src={flattenToAppURL(
                       getTeaserImageURL({ href, image, align }),

@@ -1,19 +1,66 @@
+@teaser-images-aspect-ratio: var(--teaser-images-aspect-ratio, 16/9);
+@teaser-images-object-position: var(--teaser-images-object-position, top left);
+
+.teaser-item {
+  display: flex;
+  color: rgba(0, 0, 0, 0.87);
+
+  &.placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      max-width: 300px;
+      height: auto;
+      align-self: center;
+    }
+  }
+
+  p {
+    margin-bottom: 0;
+    text-align: left;
+  }
+
+  &.default .image-wrapper {
+    margin-right: 25px;
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.teaser-item.default {
+  .content {
+    width: 100%;
+  }
+}
+
+.teaser-item .image-wrapper img {
+  width: 100%;
+  aspect-ratio: @teaser-images-aspect-ratio;
+  object-fit: cover;
+  object-position: @teaser-images-object-position;
+}
+
 #page-document > .block.teaser {
   padding: 25px 0;
 
   &.has--align--left,
   &.has--align--right {
-    .grid-teaser-item.default {
+    .teaser-item.default {
       display: flex;
 
-      .grid-image-wrapper {
+      .image-wrapper {
         align-self: flex-start;
       }
 
       @media only screen and (max-width: @largestMobileScreen) {
         flex-direction: column !important;
 
-        .grid-image-wrapper {
+        .image-wrapper {
           margin-right: 0;
           margin-bottom: 25px;
           margin-left: 0;
@@ -29,10 +76,10 @@
   }
 
   &.has--align--left {
-    .grid-teaser-item.default {
+    .teaser-item.default {
       flex-direction: row;
 
-      .grid-image-wrapper {
+      .image-wrapper {
         margin-right: 20px;
         margin-left: 0;
 
@@ -45,10 +92,10 @@
   }
 
   &.has--align--right {
-    a .grid-teaser-item.default {
+    a .teaser-item.default {
       flex-direction: row-reverse;
 
-      .grid-image-wrapper {
+      .image-wrapper {
         margin-right: 0;
         margin-left: 20px;
 
@@ -61,14 +108,14 @@
   }
 
   &.has--align--center {
-    .grid-teaser-item.default {
+    .teaser-item.default {
       display: block;
 
       a {
         display: block;
       }
 
-      .grid-image-wrapper {
+      .image-wrapper {
         margin-bottom: 25px;
       }
     }
@@ -77,20 +124,20 @@
 
 .block-editor-teaser.has--align--left .block.teaser,
 .block-editor-teaser.has--align--right .block.teaser {
-  .grid-teaser-item.default {
+  .teaser-item.default {
     display: flex;
 
-    .grid-image-wrapper {
+    .image-wrapper {
       align-self: flex-start;
     }
   }
 }
 
 .block-editor-teaser.has--align--left .block.teaser {
-  .grid-teaser-item.default {
+  .teaser-item.default {
     flex-direction: row;
 
-    .grid-image-wrapper {
+    .image-wrapper {
       margin-right: 20px;
       margin-left: 0;
     }
@@ -98,10 +145,10 @@
 }
 
 .block-editor-teaser.has--align--right .block.teaser {
-  .grid-teaser-item.default {
+  .teaser-item.default {
     flex-direction: row-reverse;
 
-    .grid-image-wrapper {
+    .image-wrapper {
       margin-right: 0;
       margin-left: 20px;
     }
@@ -109,10 +156,10 @@
 }
 
 .block-editor-teaser.has--align--center .block.teaser {
-  .grid-teaser-item.default {
+  .teaser-item.default {
     display: block;
 
-    .grid-image-wrapper {
+    .image-wrapper {
       margin: 0 0 25px 0;
     }
   }
