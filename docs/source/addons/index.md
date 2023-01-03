@@ -79,13 +79,13 @@ package names, like:
 ```js
 {
   "name": "my-nice-volto-project",
-  ...
+
   "addons": [
     "acme-volto-foo-add-on",
     "@plone/some-add-on",
     "collective-another-volto-add-on"
   ],
-  ...
+
 }
 ```
 
@@ -131,7 +131,6 @@ const config = enableOptionalBlocks(loadExampleAddon(voltoConfig));
 export blocks = {
   ...config.blocks,
 }
-...
 ```
 
 As this is a common operation, Volto provides a helper method for this:
@@ -464,14 +463,14 @@ resolve them, so in `package.json`:
 ```{code-block} json
 :emphasize-lines: 6
 
-  "jest": {
-    "moduleNameMapper": {
-      "@plone/volto/(.*)$": "<rootDir>/node_modules/@plone/volto/src/$1",
-      "@package/(.*)$": "<rootDir>/src/$1",
-      "@plone/some-volto-add-on/(.*)$": "<rootDir>/src/addons/@plone/some-volto-add-on/src/$1",
-      "my-volto-add-on/(.*)$": "<rootDir>/src/addons/my-volto-add-on/src/$1",
-      "~/(.*)$": "<rootDir>/src/$1"
-    },
+"jest": {
+  "moduleNameMapper": {
+    "@plone/volto/(.*)$": "<rootDir>/node_modules/@plone/volto/src/$1",
+    "@package/(.*)$": "<rootDir>/src/$1",
+    "@plone/some-volto-add-on/(.*)$": "<rootDir>/src/addons/@plone/some-volto-add-on/src/$1",
+    "my-volto-add-on/(.*)$": "<rootDir>/src/addons/my-volto-add-on/src/$1",
+    "~/(.*)$": "<rootDir>/src/$1"
+  },
 ```
 
 ```{tip}
