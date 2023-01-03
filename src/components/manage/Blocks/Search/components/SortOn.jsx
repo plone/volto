@@ -50,6 +50,13 @@ const SortOn = (props) => {
     querystring = {},
     intl,
   } = props;
+  const { sortOnOptions = [] } = data;
+
+  // We don't want to show sorting options if there is only 1 way to sort
+  if (!sortOnOptions || sortOnOptions.length < 1) {
+    return null;
+  }
+
   const { sortable_indexes } = querystring;
   const Select = reactSelect.default;
 
