@@ -42,7 +42,7 @@ export default compose(
 If multiple Higher Order Components need to be used, like in the above example,
 the `compose` can be used to combine all of them in a final component.
 
-If you're writing Function Components, you can use the `useSelector` hook. See
+If you're writing Function Components, you can use the `useSelector` {term}`hook`. See
 `src/components/theme/OutdatedBrowser/OutdatedBrowser.jsx` for an example.
 
 When using the `connect` function, you can `select` parts from the global store

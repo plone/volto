@@ -84,7 +84,7 @@ located**.
 
 ### The useLazyLibs hook
 
-In functional components you can use the `useLazyLibs` hook, which allows
+In functional components you can use the `useLazyLibs` {term}`hook`, which allows
 greater flexibility (the `injectLazyLibs` hook uses `useLazyLibs` internally).
 You can call the hook like:
 
