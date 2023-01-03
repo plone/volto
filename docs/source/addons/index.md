@@ -42,7 +42,7 @@ An add-on can be almost anything that a Volto project can be. They can:
 - override or extend Volto's builtin views, blocks, settings
 - shadow (customize) Volto's (or another add-on's) modules
 - register custom routes
-- provide custom Redux actions and reducers
+- provide custom {term}`Redux` actions and reducers
 - register custom Express middleware for Volto's server process
 - tweak Volto's Webpack configuration, load custom Razzle and Webpack plugins
 - even provide a custom theme, just like a regular Volto project does.

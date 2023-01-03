@@ -584,7 +584,7 @@ To correct this and allow Volto to handle defaults in a correct way, we have to 
 
 This fixes a use case where cookies could potentially be messed up if your site is under heavy load.
 The old `react-cookie` library was not able to handle correctly the {term}`SSR` part, specially the one that
-is shared in "Nobody's land" (not SSR, not under the React tree, actions, Redux middleware).
+is shared in "Nobody's land" (not SSR, not under the React tree, actions, {term}`Redux middleware`).
 Upgrading to the latest version of the `react-cookie` suite (`react-cookie`, `universal-cookie-express` and `universal-cookie`) will fix it.
 
 You have to take action only in case you did some development involving cookies. The `react-cookie`
@@ -633,7 +633,7 @@ export default function applyConfig(config) {
 
 ### Language Switcher no longer takes care of the sync of the language
 
-This responsibility has been transferred in full to the API Redux middleware, if you have shadowed either `LanguageSwitcher` or `MultilingualRedirector` (during the alpha phase) components, please update them.
+This responsibility has been transferred in full to the API {term}`Redux middleware`, if you have shadowed either `LanguageSwitcher` or `MultilingualRedirector` (during the alpha phase) components, please update them.
 Not doing so won't break your project, but they won't get the latest features and bug fixes, and probably will update the language cookie twice.
 
 ### LinkView component markup change
@@ -1449,7 +1449,7 @@ compiling. Migrate your code or if you want to use the proposal anyways, you'll 
 provide the configuration to your own project (babel.config.js) in your project root
 folder.
 
-You might still be using the old-style connecting of your components to the Redux store using
+You might still be using the old-style connecting of your components to the {term}`Redux` store using
 `@connect` decorator, in that case, take a look at any connected component in Volto to
 have a glimpse on how to migrate the code.
 

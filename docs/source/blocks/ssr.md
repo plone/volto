@@ -31,5 +31,5 @@ export default ({ dispatch, data, path }) => {
 ```
 
 All promises returned will be awaited before the rendering of that block, so
-the strategy is to dispatch the data-fetching actions so that the Redux store
+the strategy is to dispatch the data-fetching actions so that the {term}`Redux` store
 gets populated.
