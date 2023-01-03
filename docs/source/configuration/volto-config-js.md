@@ -1,6 +1,6 @@
 # Dynamic Volto Addons Configuration
 
-There are some cases where defining the Volto addons your project is going to use is not enough, and you need more control over it. For example, when you have several builds under the umbrella of the same project that share the core of the code, but each build have special requirements, like other CSS, customizations, shadowing or the features of other addons available.
+There are some cases where defining the Volto addons your project is going to use is not enough, and you need more control over it. For example, when you have several builds under the umbrella of the same project that share the core of the code, but each build have special requirements, like other CSS, customizations, {term}`shadowing` or the features of other addons available.
 
 There is a scapehatch `volto.config.js`. This module exports an object and can have arbitrary code depending on your needs:
 
