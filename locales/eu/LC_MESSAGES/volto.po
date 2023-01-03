@@ -2222,7 +2222,6 @@ msgstr "Ez da emaitzarik aurkitu."
 msgid "No results found."
 msgstr "Ez da emaitzarik aurkitu."
 
-#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Widgets/QuerySortOnWidget
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: No selection
@@ -2560,6 +2559,7 @@ msgstr "Izena eman"
 msgid "Registration form"
 msgstr "Erregistro formularioa"
 
+#: components/manage/Blocks/Search/components/SortOn
 #: components/theme/Search/Search
 # defaultMessage: Relevance
 msgid "Relevance"
@@ -3611,6 +3611,7 @@ msgstr "Kendu itzulpenaren lotura hemendik"
 msgid "Unlock"
 msgstr "Desblokeatu"
 
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Controlpanels/UndoControlpanel
 # defaultMessage: Unsorted
 msgid "Unsorted"

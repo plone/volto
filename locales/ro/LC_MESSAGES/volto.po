@@ -2215,7 +2215,6 @@ msgstr "Nu s-au găsit rezultate"
 msgid "No results found."
 msgstr "Nu s-au găsit rezultate."
 
-#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Widgets/QuerySortOnWidget
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: No selection
@@ -2553,6 +2552,7 @@ msgstr "Înregistrare"
 msgid "Registration form"
 msgstr "Formular de înregistrare"
 
+#: components/manage/Blocks/Search/components/SortOn
 #: components/theme/Search/Search
 # defaultMessage: Relevance
 msgid "Relevance"
@@ -3604,6 +3604,7 @@ msgstr "Deconectați traducerea pentru"
 msgid "Unlock"
 msgstr "Deblocați"
 
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Controlpanels/UndoControlpanel
 # defaultMessage: Unsorted
 msgid "Unsorted"
