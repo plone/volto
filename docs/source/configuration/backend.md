@@ -25,7 +25,7 @@ you don't have to deal with CORS issues. It's enabled by default, pointing to th
 (http://localhost:8080/Plone). See [here](../configuration/internalproxy.md) for more information.
 ```
 
-## Install a Plone backend locally without Docker
+<!-- ## Install a Plone backend locally without Docker
 
 If you have some experience with Python development, you can also install a Plone backend
 from source. The Volto source repository contains an example Plone backend configuration
@@ -68,4 +68,6 @@ in the Plone Database directories.
 * <backend dir>/var/blobstorage
 
 As long as you backup these directories and your `buildout.cfg/requirements.txt`, you
-can rebuild/recreate your backend service on any machine.
+can rebuild/recreate your backend service on any machine. -->
+
+https://6.docs.plone.org/install/install-from-packages.html
