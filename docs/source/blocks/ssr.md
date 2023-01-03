@@ -10,7 +10,7 @@ myst:
 # Server-side rendering for async blocks
 
 By default blocks that depend on async-fetched data won't be rendered fully in
-the server-side rendering phase. For the main "content", Volto provides
+the {term}`server-side rendering` phase. For the main "content", Volto provides
 a mechanism for async rendering in the form of `asyncConnect` and
 `asyncPropExtenders`.
 

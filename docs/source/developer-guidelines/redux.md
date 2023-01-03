@@ -54,7 +54,7 @@ developer extension](https://chrome.google.com/webstore/detail/redux-devtools/lm
 The code that is used to populate this store is in the `src/reducers` folder.
 
 In some parts of Volto you'll see `asyncConnect` being used, which is needed to
-enable proper server-side rendering of components. Using it makes sure that the
+enable proper {term}`server-side rendering` of components. Using it makes sure that the
 component will be constructed with the proper data already fetched from the
 backend and available as props.
 

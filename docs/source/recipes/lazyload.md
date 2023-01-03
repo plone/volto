@@ -14,7 +14,7 @@ using `@loadable/component` library. You can also benefit from it in your own pr
 using it.
 
 ```{note}
-Webpack 4 is already lazy load enabled, using `import()` but @loadable/component makes the process safe since Volto is using Server Side Rendering. The React community is working actively in the React async mode popularly known as Suspense. Suspense will be SSR safe but in the meanwhile it's not ready, `@loadable/component` is the community accepted replacement.
+Webpack 4 is already lazy load enabled, using `import()` but @loadable/component makes the process safe since Volto is using {term}`server-side rendering`. The React community is working actively in the React async mode popularly known as Suspense. Suspense will be SSR safe but in the meanwhile it's not ready, `@loadable/component` is the community accepted replacement.
 ```
 
 ## Lazy load a component

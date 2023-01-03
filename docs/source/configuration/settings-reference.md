@@ -118,7 +118,7 @@ storeExtenders
 
 asyncPropsExtenders
     Per-route customizable `asyncConnect` action dispatcher. These enable
-    proper server-side rendering of content that depends on additional async
+    proper {term}`server-side rendering` of content that depends on additional async
     props coming from backend calls. It is a list of route-like configuration
     objects (they are matched using
     [matchRoutes](https://github.com/remix-run/react-router/blob/ea44618e68f6a112e48404b2ea0da3e207daf4f0/packages/react-router-config/modules/matchRoutes.js).
