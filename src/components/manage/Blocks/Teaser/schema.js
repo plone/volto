@@ -60,9 +60,6 @@ export const TeaserSchema = ({ intl }) => {
           'image_field',
           'image_scales',
           '@type',
-          'effective',
-          'getObjSize',
-          'mime_type',
         ],
         allowExternals: true,
       },
@@ -81,6 +78,7 @@ export const TeaserSchema = ({ intl }) => {
         widget: 'object_browser',
         mode: 'image',
         allowExternals: true,
+        selectedItemAttrs: ['image_field', 'image_scales'],
       },
       openLinkInNewTab: {
         title: intl.formatMessage(messages.openLinkInNewTab),
