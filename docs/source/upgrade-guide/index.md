@@ -1458,7 +1458,7 @@ you are good to go, and you don't have to do anything.
 
 ### Hoisting problems on some setups
 
-Some people were experimenting weird hoisting issues when installing dependencies. This
+Some people were experimenting weird {term}`hoisting` issues when installing dependencies. This
 was caused by Babel deprecated proposals packages and its peer dependencies that
 sometimes conflicted with other installed packages.
 
