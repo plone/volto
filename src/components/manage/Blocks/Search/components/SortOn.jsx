@@ -1,23 +1,27 @@
-import React from 'react';
-import { Button } from 'semantic-ui-react';
-import { defineMessages, injectIntl } from 'react-intl';
-import cx from 'classnames';
-import { compose } from 'redux';
 import { Icon } from '@plone/volto/components';
 import {
-  Option,
   DropdownIndicator,
+  Option,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import cx from 'classnames';
+import React from 'react';
+import { defineMessages, injectIntl } from 'react-intl';
+import { compose } from 'redux';
+import { Button } from 'semantic-ui-react';
 import { selectTheme, sortOnSelectStyles } from './SelectStyling';
 
-import upSVG from '@plone/volto/icons/sort-up.svg';
 import downSVG from '@plone/volto/icons/sort-down.svg';
+import upSVG from '@plone/volto/icons/sort-up.svg';
 
 const messages = defineMessages({
-  noSelection: {
-    id: 'No selection',
-    defaultMessage: 'No selection',
+  unsorted: {
+    id: 'Unsorted',
+    defaultMessage: 'Unsorted',
+  },
+  relevance: {
+    id: 'Relevance',
+    defaultMessage: 'Relevance',
   },
   sortOn: {
     id: 'Sort on',
@@ -36,6 +40,7 @@ const messages = defineMessages({
 const SortOn = (props) => {
   const {
     data = {},
+    searchedText,
     reactSelect,
     sortOn = null,
     sortOrder = null,
@@ -52,12 +57,16 @@ const SortOn = (props) => {
 
   const { sortOnOptions = [] } = data;
   const value = {
-    value: activeSortOn || intl.formatMessage(messages.noSelection),
+    value: activeSortOn,
     label:
       activeSortOn && sortable_indexes
         ? sortable_indexes[activeSortOn]?.title
-        : activeSortOn || intl.formatMessage(messages.noSelection),
+        : activeSortOn || searchedText
+        ? intl.formatMessage(messages.relevance)
+        : intl.formatMessage(messages.unsorted),
   };
+
+  debugger;
 
   return (
     <div className="search-sort-wrapper">
@@ -75,6 +84,7 @@ const SortOn = (props) => {
           theme={selectTheme}
           components={{ DropdownIndicator, Option }}
           options={[
+            { value: '', label: 'Relevance' },
             ...sortOnOptions.map((k) => ({
               value: k,
               label: sortable_indexes[k]?.title || k,
