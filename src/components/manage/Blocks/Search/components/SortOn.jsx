@@ -62,18 +62,17 @@ const SortOn = (props) => {
 
   const activeSortOn = sortOn || data?.query?.sort_on || '';
 
-  const { sortOnOptions = [] } = data;
+  const noValueLabel = searchedText
+    ? intl.formatMessage(messages.relevance)
+    : intl.formatMessage(messages.unsorted);
+
   const value = {
     value: activeSortOn,
     label:
       activeSortOn && sortable_indexes
         ? sortable_indexes[activeSortOn]?.title
-        : activeSortOn || searchedText
-        ? intl.formatMessage(messages.relevance)
-        : intl.formatMessage(messages.unsorted),
+        : noValueLabel,
   };
-
-  debugger;
 
   return (
     <div className="search-sort-wrapper">
@@ -91,10 +90,10 @@ const SortOn = (props) => {
           theme={selectTheme}
           components={{ DropdownIndicator, Option }}
           options={[
-            { value: '', label: 'Relevance' },
+            { value: '', label: noValueLabel },
             ...sortOnOptions.map((k) => ({
               value: k,
-              label: sortable_indexes[k]?.title || k,
+              label: k === '' ? noValueLabel : sortable_indexes[k]?.title || k,
             })),
           ]}
           value={value}
