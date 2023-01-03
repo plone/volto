@@ -533,7 +533,7 @@ Integrate Sentry in your app with [`@plone-collective/volto-sentry`](https://www
 
 ### Upgrade `husky` to latest version
 
-In case you use `husky` in your projects (like Volto does), you must adapt to the new way that `husky` defines hooks.
+In case you use `husky` in your projects (like Volto does), you must adapt to the new way that `husky` defines {term}`hooks`.
 
 You will have to add a script in your `package.json` file called `prepare`:
 
