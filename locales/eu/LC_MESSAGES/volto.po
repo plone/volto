@@ -1637,7 +1637,7 @@ msgid "Image view"
 msgstr "Irudiaren bista"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
-# defaultMessage: Include this occurence
+# defaultMessage: Include this occurrence
 msgid "Include this occurence"
 msgstr "Sartu agerpen hau"
 
@@ -1736,7 +1736,7 @@ msgid "Item batch size"
 msgstr "Elementu-multzoaren tamaina"
 
 #: components/manage/Contents/Contents
-# defaultMessage: Item succesfully moved.
+# defaultMessage: Item successfully moved.
 msgid "Item succesfully moved."
 msgstr "Elementua ongi mugitu da."
 
