@@ -163,10 +163,11 @@ Although you could simply use `npm init` to generate an add-on initial code,
 we now have a nice
 [Yeoman-based generator](https://github.com/plone/generator-volto) that you can use:
 
-```
+```shell
 npm install -g @plone/generator-volto
 yo @plone/volto:addon [<addonName>] [options]
 ```
+
 Volto will automatically provide aliases for your (unreleased) package, so that
 once you've released it, you don't need to change import paths, since you can
 use the final ones from the very beginning. This means that you can use imports
@@ -188,16 +189,17 @@ By doing this, you can develop both the project and the add-on product as if
 they were both part of the current codebase. Once the add-on development is
 done, you can publish the package to an npm repository.
 
-```
-$ yarn add mrs-developer
+```shell
+yarn add mrs-developer
 ```
 
 Then, in `package.json`:
 
-```json hl_lines="2"
-  "scripts": {
-    "develop": "missdev --config=jsconfig.json --output=addons",
-  }
+```{code-block} json
+:emphasize-lines: 2
+"scripts": {
+  "develop": "missdev --config=jsconfig.json --output=addons",
+}
 ```
 
 We can configure `mrs-developer` to use any directory that you want. Here we
@@ -221,7 +223,7 @@ to pull the packages. So, create `mrs.developer.json` and add:
 
 Then run:
 
-```bash
+```shell
 yarn develop
 ```
 
@@ -245,14 +247,14 @@ to use mrs-developer, you'll have to add something like this to your
 
 ```json
 {
-    "compilerOptions": {
-        "paths": {
-            "acme-volto-foo-add-on": [
-                "addons/acme-volto-foo-add-on/src"
-            ]
-        },
-        "baseUrl": "src"
-    }
+  "compilerOptions": {
+    "paths": {
+      "acme-volto-foo-add-on": [
+        "addons/acme-volto-foo-add-on/src"
+      ]
+    },
+    "baseUrl": "src"
+  }
 }
 ```
 
@@ -408,7 +410,7 @@ add-on root folder, which exports a `modify(defaultConfig)` function. For
 example, to host some code outside the regular `src/` folder of your add-on,
 this `eslint.extend.js` file is needed:
 
-```
+```js
 const path = require('path');
 
 module.exports = {
@@ -441,13 +443,13 @@ the configuration being already applied. Another benefit is that you'll have
 to declare only the "top level" add-on in your project, the dependencies will be
 discovered and automatically treated as Volto add-ons. For example, volto-slate
 depends on volto-object-widget's configuration being already applied, so
-volto-slate can declare in its package.json:
+volto-slate can declare in its `package.json`:
 
-```
+```json
 {
   "name": "volto-slate",
-  ...
-  "addons": ['@eeacms/volto-object-widget']
+
+  "addons": ["@eeacms/volto-object-widget"]
 }
 ```
 
