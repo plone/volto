@@ -583,7 +583,7 @@ To correct this and allow Volto to handle defaults in a correct way, we have to 
 ### Updated react-cookie library
 
 This fixes a use case where cookies could potentially be messed up if your site is under heavy load.
-The old `react-cookie` library was not able to handle correctly the SSR part, specially the one that
+The old `react-cookie` library was not able to handle correctly the {term}`SSR` part, specially the one that
 is shared in "Nobody's land" (not SSR, not under the React tree, actions, Redux middleware).
 Upgrading to the latest version of the `react-cookie` suite (`react-cookie`, `universal-cookie-express` and `universal-cookie`) will fix it.
 

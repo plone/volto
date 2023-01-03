@@ -9,7 +9,7 @@ myst:
 
 # Internal proxy to content backend API
 
-The server side Volto SSR process (based on Razzle) has an internal proxy to the backend API
+The server side Volto {term}`SSR` process (based on Razzle) has an internal proxy to the backend API
 enabled by default.
 
 It provides a better developer experience out of the box, so the developer doesn't has to
