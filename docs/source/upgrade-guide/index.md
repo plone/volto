@@ -1015,7 +1015,7 @@ dependency" problems in Volto, due to the very nature of the solution (importing
 us. In fact, circular dependencies are common in NodeJS world, and the very nature of
 how it works make them "workable" thanks to the NodeJS own import resolution algorithm.
 So the "build" always works, although we have the circular dependencies, but that leads to weird problems
-like (just to mention one of them) the HMR (Hot Module Reloader) not working properly.
+like (just to mention one of them) the {term}`hot module replacement` (HMR) not working properly.
 
 That's why in this version we are introducing the new Volto's Configuration Registry.
 It's a centralized singleton that is populated from the core config module and can be
