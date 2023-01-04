@@ -11,6 +11,11 @@ myst:
 
 # Getting Started
 
+```{warning}
+This chapter of the documentation has been superseded by the official Plone 6 Documentation chapter {ref}`install-index-label`.
+This chapter contains some legacy information that may be useful to Plone 5.2 development.
+```
+
 
 (frontend-getting-started-installing-volto-label)=
 
