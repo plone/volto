@@ -236,7 +236,8 @@ class ArrayWidget extends Component {
       !this.props.items?.choices?.length &&
       !this.props.choices?.length &&
       this.props.vocabLoading === undefined &&
-      !this.props.vocabLoaded
+      !this.props.vocabLoaded &&
+      this.props.vocabBaseUrl
     ) {
       this.props.getVocabulary({
         vocabNameOrURL: this.props.vocabBaseUrl,
