@@ -103,38 +103,36 @@ const SortOn = (props) => {
           }}
         />
       </div>
-      {activeSortOn ? (
-        <>
-          <Button
-            icon
-            basic
-            compact
-            title={intl.formatMessage(messages.ascending)}
-            className={cx({
-              active: sortOrder === 'ascending',
-            })}
-            onClick={() => {
-              !isEditMode && setSortOrder('ascending');
-            }}
-          >
-            <Icon name={upSVG} size="25px" />
-          </Button>
-          <Button
-            icon
-            basic
-            compact
-            title={intl.formatMessage(messages.descending)}
-            className={cx({
-              active: sortOrder === 'descending',
-            })}
-            onClick={() => {
-              !isEditMode && setSortOrder('descending');
-            }}
-          >
-            <Icon name={downSVG} size="25px" />
-          </Button>
-        </>
-      ) : null}
+      <Button
+        icon
+        basic
+        compact
+        title={intl.formatMessage(messages.ascending)}
+        className={cx({
+          active: sortOrder === 'ascending',
+        })}
+        onClick={() => {
+          !isEditMode && setSortOrder('ascending');
+        }}
+        disabled={!activeSortOn}
+      >
+        <Icon name={upSVG} size="25px" />
+      </Button>
+      <Button
+        icon
+        basic
+        compact
+        title={intl.formatMessage(messages.descending)}
+        className={cx({
+          active: sortOrder === 'descending',
+        })}
+        onClick={() => {
+          !isEditMode && setSortOrder('descending');
+        }}
+        disabled={!activeSortOn}
+      >
+        <Icon name={downSVG} size="25px" />
+      </Button>
     </div>
   );
 };
