@@ -55,7 +55,7 @@ both) files (including the matching folder structure) in your theme folder.
 ## Pastanaga UI Theme
 
 Volto implements Pastanaga UI theme, a new theme for Content Management Systems
-created and designed by [Albert Casado](https://twitter.com/albertcasado). 
+created and designed by [Albert Casado](https://twitter.com/albertcasado).
 For more info:
 
 * https://pastanaga.io
@@ -95,12 +95,12 @@ To provide the font with your app, the following steps are necessary:
 1. Get your font and copy the files to `/theme/assets/fonts/<font name with space replaced by _>`.
 
 1. Usually the font provider gives you ready made font-face instructions.
-  Copy these font-face code lines to `/theme/typography.css`.  
+  Copy these font-face code lines to `/theme/typography.css`.
   There are a lot of font providers.
   If you choose Google fonts, check [google-webfonts-helper](https://gwfh.mranftl.com/fonts) to generate `font-face` CSS code and download font files to include in your project.
 
 1. Add to the end of `/theme/theme.config` a function to load your font-faces:
-   
+
     ```less
     .loadThemeFonts() {
         @import "./typography.css";
@@ -128,7 +128,7 @@ Start your Volto app if you created new files.
 
 ````{tip}
 For testing purpose you can refrain from installing the font and from providing the font with your app if the font is a Google font.
-With the following two lines you tell Volto to load the font "Montserrat" from fonts.google.com.
+With the following two lines you tell Volto to load the font "Montserrat" from `fonts.google.com`.
 
 ```less
 @fontName : 'Montserrat';
