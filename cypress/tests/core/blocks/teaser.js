@@ -40,7 +40,7 @@ context('Blocks Acceptance Tests', () => {
     cy.get('.block.teaser').should('have.class', 'has--align--center');
     cy.get('.block.teaser .image-wrapper img')
       .should('have.attr', 'src')
-      .and('include', '/document/blue-orchidees/@@images/preview_image/great');
+      .and('include', '/document/blue-orchidees/@@images/preview_image-');
     cy.get('.block.teaser .content h2').contains('Blue Orchidees');
     cy.get('.block.teaser .content p').contains(
       'are growing on the mountain tops',
