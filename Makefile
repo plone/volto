@@ -163,6 +163,10 @@ docs-test: docs-clean docs-linkcheckbroken docs-vale  ## Clean docs build, then 
 storybook-build:
 	yarn build-storybook -o docs/_build/storybook
 
+.PHONY: patches
+patches:
+	/bin/bash patches/patchit.sh > /dev/null 2>&1 ||true
+
 ##### Release
 
 .PHONY: corepackagebump
