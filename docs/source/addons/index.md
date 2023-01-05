@@ -455,13 +455,13 @@ volto-slate can declare in its `package.json`:
 And of course, the dependency add-on can depend, on its turn, on other add-ons
 which will be loaded as well. Circular dependencies should be avoided.
 
-## problems with untranspiled add-on dependencies
+## Problems with untranspiled add-on dependencies
 
 When using external add-ons in your project, sometimes you will run into add-ons
 that are not securely transpiled or haven't been transpiled at all. In that case
 you might see an error like the following:
 
-```js
+```console
 Module parse failed: Unexpected token (10:41) in @react-leaflet/core/esm/path.js
 ...
 const options = props.pathOptions ?? {};
@@ -470,7 +470,7 @@ const options = props.pathOptions ?? {};
 
 Babel automatically transpiles the code in your add-on, but `node_modules` are
 excluded from this process, so we need to include the add-on path in the list of
-modules to be transpiled. This can be accomplished by customizing the Webpack
+modules to be transpiled. This can be accomplished by customizing the webpack
 configuration in the `razzle.config.js` file in your add-on. For example,
 suppose that we want to use react-leaflet, which has a known transpilation
 issue:
@@ -519,8 +519,8 @@ const customModifyWebpackConfig = ({ env, webpackConfig, webpackObject, options 
 module.exports = { modifyWebpackConfig: customModifyWebpackConfig, plugins };
 ```
 
-First we need some setup to get the webpack config from Volto's configuration. Once
-we have that, we just need to resolve the path to the desired add-ons and push it
+First we need some setup to get the webpack configuration from Volto's configuration.
+Once we have that, we need to resolve the path to the desired add-ons and push it
 into the Babel loader include list. After this, the add-ons will load correctly.
 
 ## Testing add-ons
