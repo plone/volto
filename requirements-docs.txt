@@ -1,5 +1,5 @@
 docutils<0.17,>=0.15  # sphinx-book-theme 0.2.0 has requirement docutils<0.17,>=0.15
-Sphinx
+Sphinx<5,>=3  # sphinx-book-theme 0.3.3 has requirement sphinx<5,>=3
 jsx-lexer
 lesscpy
 linkify-it-py
