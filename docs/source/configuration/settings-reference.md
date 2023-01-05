@@ -78,7 +78,7 @@ persistentReducers
 maxResponseSize
     The library that we use to get files and images from the backend (superagent)
     has a response size limit of 200 mb, so if you want to get a file bigger than 200 mb
-    from Plone, the SSR will throw an error.
+    from Plone, the {term}`SSR` will throw an error.
 
     You can edit this limit in the `settings` object setting a new value in bytes
     (for example, to set 500 mb you need to write 5000000000).
@@ -118,7 +118,7 @@ storeExtenders
 
 asyncPropsExtenders
     Per-route customizable `asyncConnect` action dispatcher. These enable
-    proper server-side rendering of content that depends on additional async
+    proper {term}`server-side rendering` of content that depends on additional async
     props coming from backend calls. It is a list of route-like configuration
     objects (they are matched using
     [matchRoutes](https://github.com/remix-run/react-router/blob/ea44618e68f6a112e48404b2ea0da3e207daf4f0/packages/react-router-config/modules/matchRoutes.js).
@@ -283,7 +283,7 @@ layoutViewsNamesMapping
 
 ## Server-specific serverConfig
 
-Settings that are relevant to the Express-powered Volto SSR server are stored
+Settings that are relevant to the Express-powered Volto {term}`SSR` server are stored
 in the `config.settings.serverConfig` object.
 
 ```{glossary}

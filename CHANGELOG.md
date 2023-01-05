@@ -2136,7 +2136,7 @@ See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information
 - Support Node 16 @timo
 - Content locking support for Plone (`plone.locking`) @avoinea
 - Add the new search block @tiberiuichim @kreafox @sneridagh
-- Provide Server-Side Rendering capabilities for blocks with async-based content (such as the listing block). A block needs to provide its own `getAsyncData` implementation, which is similar to an `asyncConnect` wrapper promise. @tiberiuichim @sneridagh
+- Provide server-side rendering capabilities for blocks with async-based content (such as the listing block). A block needs to provide its own `getAsyncData` implementation, which is similar to an `asyncConnect` wrapper promise. @tiberiuichim @sneridagh
 - Defaults are observed in block data if `InlineForm` or `BlockDataForm` are used. @sneridagh @tiberiuichim
 - Apply form defaults from RenderBlocks and block Edit using a new helper, `applyBlockDefaults` @tiberiuichim
 - Now each block config object can declare a schema factory (a function that can produce a schema) and this will be used to derive the default data for the block @tiberiuichim
@@ -2489,7 +2489,7 @@ See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information
 
 ### Feature
 
-- Provide Server-Side Rendering capabilities for blocks with async-based content (such as the listing block). A block needs to provide its own `getAsyncData` implementation, which is similar to an `asyncConnect` wrapper promise. @tiberiuichim @sneridagh
+- Provide server-side rendering capabilities for blocks with async-based content (such as the listing block). A block needs to provide its own `getAsyncData` implementation, which is similar to an `asyncConnect` wrapper promise. @tiberiuichim @sneridagh
 
 ## 14.0.0-alpha.25 (2021-11-01)
 

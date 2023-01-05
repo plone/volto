@@ -1,11 +1,11 @@
 # Component Registry
 
-The configuration registry has a component registry integrated on itself.
+The {term}`configuration registry` has a component registry integrated on itself.
 These registry stores by a given name the components.
 Later you can retrieve them by this name, and use them in your code.
 The idea behind is to provide an alternative and more convenient way to customize components.
-You can override programatically such registrations from your add-on or projects because it's stored in the configuration registry.
-You can customize a component without using shadowing at all, if the code that calls the component retrieves the information of the component to use from the component registry.
+You can override programmatically such registrations from your add-on or projects because it's stored in the configuration registry.
+You can customize a component without using {term}`shadowing` at all, if the code that calls the component retrieves the information of the component to use from the component registry.
 You can even have modifiers to the component registrations: dependencies. So you can "adapt" the call given an array of such dependencies.
 
 ## Registering components by name using `config.registerComponent`
