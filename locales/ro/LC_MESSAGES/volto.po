@@ -3773,6 +3773,7 @@ msgid "Video URL"
 msgstr "URL-ul video"
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Toolbar/Toolbar
 # defaultMessage: View
 msgid "View"
 msgstr "Vizualizare"

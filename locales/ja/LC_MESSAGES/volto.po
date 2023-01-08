@@ -3781,6 +3781,7 @@ msgid "Video URL"
 msgstr "ビデオURL"
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Toolbar/Toolbar
 # defaultMessage: View
 msgid "View"
 msgstr "表示"

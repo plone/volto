@@ -38,13 +38,17 @@ import folderSVG from '@plone/volto/icons/folder.svg';
 import addSVG from '@plone/volto/icons/add-document.svg';
 import moreSVG from '@plone/volto/icons/more.svg';
 import userSVG from '@plone/volto/icons/user.svg';
-import backSVG from '@plone/volto/icons/back.svg';
+import viewSVG from '@plone/volto/icons/show.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   edit: {
     id: 'Edit',
     defaultMessage: 'Edit',
+  },
+  view: {
+    id: 'View',
+    defaultMessage: 'View',
   },
   contents: {
     id: 'Contents',
@@ -476,10 +480,10 @@ class Toolbar extends Component {
                           )}
                         >
                           <Icon
-                            name={backSVG}
+                            name={viewSVG}
                             className="circled"
                             size="30px"
-                            title={this.props.intl.formatMessage(messages.back)}
+                            title={this.props.intl.formatMessage(messages.view)}
                           />
                         </Link>
                       )}
