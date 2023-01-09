@@ -11,6 +11,9 @@ export async function consolidateAddon({ source = 'addon-testing-project' }) {
     fse.copySync(`${source}/src/addons/${name}/src`, `./src`, {
       overwrite: true,
     });
+    fse.copySync(`${source}/src/addons/${name}/cypress`, `./cypress`, {
+      overwrite: true,
+    });
   } catch (err) {
     console.error(err);
   }

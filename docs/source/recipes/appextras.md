@@ -16,7 +16,7 @@ component.
 
 ## How to use it
 
-You can either use it by overriding it via Component Shadowing by placing
+You can either use it by overriding it via {term}`component shadowing` by placing
 a custom `src/customizations/components/theme/AppExtras/AppExtras.jsx`...
 
 Or you can use the new key of `config.settings`, the `appExtras`. This is
