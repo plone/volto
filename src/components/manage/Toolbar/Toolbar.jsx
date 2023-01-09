@@ -476,7 +476,7 @@ class Toolbar extends Component {
                         <Link
                           to={`${path}`}
                           aria-label={this.props.intl.formatMessage(
-                            messages.back,
+                            messages.view,
                           )}
                         >
                           <Icon
