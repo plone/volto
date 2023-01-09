@@ -131,7 +131,12 @@ const BlockChooser = ({
   };
 
   return (
-    <div className="blocks-chooser" ref={blockChooserRef}>
+    <div
+      className={`blocks-chooser${
+        config.experimental.addBlockButton.enabled ? ' new-add-block' : ''
+      }`}
+      ref={blockChooserRef}
+    >
       <BlockChooserSearch
         onChange={(value) => setFilterValue(value)}
         searchValue={filterValue}

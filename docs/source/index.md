@@ -48,4 +48,6 @@ backend/index
 deploying/index
 upgrade-guide/index
 developer-guidelines/index
+user-manual/index
+release-notes/index
 ```

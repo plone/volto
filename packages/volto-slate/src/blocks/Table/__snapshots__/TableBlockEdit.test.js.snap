@@ -11,7 +11,7 @@ exports[`renders an edit table block component 1`] = `
       className=""
     >
       <tr
-        className="center aligned"
+        className="left aligned"
       />
     </thead>
     <tbody

@@ -8,6 +8,8 @@ import config from '@plone/volto/registry';
 
 const blockSVG = {};
 
+config.experimental = { addBlockButton: { enabled: false } };
+
 config.blocks.blocksConfig = {
   title: {
     id: 'title',
