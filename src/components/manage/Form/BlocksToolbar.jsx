@@ -100,7 +100,15 @@ export class BlocksToolbarComponent extends React.Component {
             : [uuid(), blockData]
           : [uuid(), blockData]; // if cut/pasting blocks, we don't clone
       })
-      .filter((info) => !!info); // some blocks may refuse to be copied
+      .filter((info) => !!info) // some blocks may refuse to be copied
+      .map(([id, data]) => {
+        // sync redundant block id in listing block: blocks[blockid].block
+        if (data.block) {
+          let new_data = Object.assign({}, data);
+          new_data.block = id;
+          return [id, new_data];
+        } else return [id, data];
+      });
     const blocksFieldname = getBlocksFieldname(formData);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
     const selectedIndex =
