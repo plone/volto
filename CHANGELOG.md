@@ -6,8 +6,6 @@
 
 ### Feature
 
-- Add possibility to pre-fill add form with data pass in query
-
 ### Bugfix
 
 - Load core add-ons configuration as any other add-on. @sneridagh
