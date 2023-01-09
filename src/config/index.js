@@ -24,7 +24,12 @@ import { loadables } from './Loadables';
 import { workflowMapping } from './Workflows';
 
 import { contentIcons } from './ContentIcons';
-import { controlPanelsIcons, filterControlPanelsSchema } from './ControlPanels';
+import { styleClassNameConverters } from './Style';
+import {
+  controlPanelsIcons,
+  filterControlPanels,
+  filterControlPanelsSchema,
+} from './ControlPanels';
 
 import { richtextEditorSettings, richtextViewSettings } from './RichTextEditor';
 
@@ -141,6 +146,7 @@ let config = {
     showTags: true,
     controlpanels: [],
     controlPanelsIcons,
+    filterControlPanels,
     filterControlPanelsSchema,
     externalRoutes: [
       // URL to be considered as external
@@ -162,6 +168,12 @@ let config = {
     addonsInfo: addonsInfo,
     workflowMapping,
     errorHandlers: [], // callables for unhandled errors
+    styleClassNameConverters,
+  },
+  experimental: {
+    addBlockButton: {
+      enabled: false,
+    },
   },
   widgets: {
     ...widgetMapping,
@@ -188,12 +200,12 @@ let config = {
 };
 
 ConfigRegistry.settings = config.settings;
+ConfigRegistry.experimental = config.experimental;
 ConfigRegistry.blocks = config.blocks;
 ConfigRegistry.views = config.views;
 ConfigRegistry.widgets = config.widgets;
 ConfigRegistry.addonRoutes = config.addonRoutes;
 ConfigRegistry.addonReducers = config.addonReducers;
-ConfigRegistry.appExtras = config.appExtras;
 ConfigRegistry.components = config.components;
 
 applyAddonConfiguration(ConfigRegistry);

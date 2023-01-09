@@ -42,6 +42,15 @@ export const controlPanelsIcons = {
   aliases: linkSVG,
 };
 
+export const filterControlPanels = (controlpanels) => {
+  const HIDDEN_CONTROL_PANELS = ['markup', 'content-rules'];
+
+  return controlpanels.filter(
+    (controlpanel) =>
+      !HIDDEN_CONTROL_PANELS.includes(controlpanel['@id'].split('/').pop()),
+  );
+};
+
 // Filters props.controlpanel.schema to only valid/relevant fields
 export const filterControlPanelsSchema = (controlpanel) => {
   const panelType = controlpanel['@id'].split('/').pop();
@@ -64,6 +73,13 @@ export const filterControlPanelsSchema = (controlpanel) => {
       'toolbar_position',
       'toolbar_logo',
       'default_page',
+      'site_logo',
+      'site_favicon',
+      'site_favicon_mimetype',
+      'exposeDCMetaTags',
+      'enable_sitemap',
+      'robots_txt',
+      'webstats_js',
     ],
     editing: ['available_editors', 'default_editor', 'ext_editor'],
     imaging: [

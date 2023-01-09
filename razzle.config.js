@@ -10,6 +10,8 @@ const RelativeResolverPlugin = require('./webpack-plugins/webpack-relative-resol
 const createAddonsLoader = require('./create-addons-loader');
 const AddonConfigurationRegistry = require('./addon-registry');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 const fileLoaderFinder = makeLoaderFinder('file-loader');
 
@@ -20,12 +22,6 @@ const { poToJson } = require('@plone/scripts/i18n.cjs');
 const packageJson = require(path.join(projectRootPath, 'package.json'));
 
 const registry = new AddonConfigurationRegistry(projectRootPath);
-
-const addonCustomizationPaths = registry.getAddonCustomizationPaths();
-const addonsFromEnvVarCustomizationPaths = registry.getAddonsFromEnvVarCustomizationPaths();
-const projectCustomizationPaths = registry.getProjectCustomizationPaths();
-const resolveAliases = registry.getResolveAliases();
-
 
 const defaultModify = ({
   env: { target, dev },
@@ -115,6 +111,25 @@ const defaultModify = ({
         },
       },
     });
+
+    // This is needed to override Razzle use of the unmaintained CleanCSS
+    // which does not have support for recently CSS features (container queries).
+    // Using the default provided (cssnano) by css-minimizer-webpack-plugin
+    // should be enough see:
+    // (https://github.com/clean-css/clean-css/discussions/1209)
+    if (!dev) {
+      config.optimization = Object.assign({}, config.optimization, {
+        minimizer: [
+          new TerserPlugin(options.webpackOptions.terserPluginOptions),
+          new CssMinimizerPlugin({
+            sourceMap: options.razzleOptions.enableSourceMaps,
+            minimizerOptions: {
+              sourceMap: options.razzleOptions.enableSourceMaps,
+            },
+          }),
+        ],
+      });
+    }
 
     config.plugins.unshift(
       // restrict moment.js locales to en/de
@@ -209,14 +224,14 @@ const defaultModify = ({
   ];
 
   config.resolve.alias = {
-    ...addonCustomizationPaths,
-    ...addonsFromEnvVarCustomizationPaths,
-    ...projectCustomizationPaths,
+    ...registry.getAddonCustomizationPaths(),
+    ...registry.getAddonsFromEnvVarCustomizationPaths(),
+    ...registry.getProjectCustomizationPaths(),
     ...config.resolve.alias,
     '../../theme.config$': `${projectRootPath}/theme/theme.config`,
     'volto-themes': `${registry.voltoPath}/theme/themes`,
     'load-volto-addons': addonsLoaderPath,
-    ...resolveAliases,
+    ...registry.getResolveAliases(),
     '@plone/volto': `${registry.voltoPath}/src`,
     // to be able to reference path uncustomized by webpack
     '@plone/volto-original': `${registry.voltoPath}/src`,
@@ -301,6 +316,10 @@ const defaultModify = ({
         ]
       : [];
 
+  if (config.devServer) {
+    config.devServer.watchOptions.ignored = /node_modules\/(?!@plone\/volto)/;
+  }
+
   return config;
 };
 
@@ -322,13 +341,6 @@ module.exports = {
   plugins,
   modifyJestConfig: ({ jestConfig }) => {
     jestConfig.testEnvironment = 'jsdom';
-    jestConfig.moduleNameMapper = {
-      ...addonCustomizationPaths,
-      ...addonsFromEnvVarCustomizationPaths,
-      ...projectCustomizationPaths,
-      ...resolveAliases,
-      ...jestConfig.moduleNameMapper,
-    };
     return jestConfig;
   },
   modifyWebpackConfig: ({

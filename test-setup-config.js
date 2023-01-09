@@ -20,9 +20,11 @@ import {
 } from '@plone/volto/config/RichTextEditor/Blocks';
 import FromHTMLCustomBlockFn from '@plone/volto/config/RichTextEditor/FromHTML';
 import { contentIcons } from '@plone/volto/config/ContentIcons';
+import { styleClassNameConverters } from '@plone/volto/config/Style';
 
 import {
   controlPanelsIcons,
+  filterControlPanels,
   filterControlPanelsSchema,
 } from '@plone/volto/config/ControlPanels';
 
@@ -68,10 +70,12 @@ config.set('settings', {
     ],
   },
   controlPanelsIcons,
+  filterControlPanels,
   filterControlPanelsSchema,
   apiExpanders: [],
   downloadableObjects: ['File'],
   viewableInBrowserObjects: [],
+  styleClassNameConverters,
 });
 config.set('blocks', {
   blocksConfig: {
@@ -161,3 +165,8 @@ config.set('widgets', {
 });
 
 config.set('components', {});
+config.set('experimental', {
+  addBlockButton: {
+    enabled: false,
+  },
+});
