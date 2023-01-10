@@ -543,7 +543,15 @@ class Form extends Component {
    */
   render() {
     const { settings } = config;
-    const { schema: originalSchema, onCancel, onSubmit } = this.props;
+    const {
+      schema: originalSchema,
+      onCancel,
+      onSubmit,
+      isEditForm,
+      pathname,
+      type,
+    } = this.props;
+    const enableSaveDraft = !!type && isEditForm;
     const { formData } = this.state;
     const schema = this.removeBlocksLayoutFields(originalSchema);
 
@@ -569,15 +577,15 @@ class Form extends Component {
             }
             onSelectBlock={this.onSelectBlock}
           />
-          {!!this.props.type && (
+          {enableSaveDraft && (
             <SaveAsDraft
-              id={getFormId(this.props)}
+              id={`form-edit-${type}-${pathname}`}
               state={this.state.formData}
               onRestore={(state) =>
                 this.setState({
                   formData: state,
-                  selected: null,
-                  multiSelected: null,
+                  selected: [],
+                  multiSelected: [],
                 })
               }
             />

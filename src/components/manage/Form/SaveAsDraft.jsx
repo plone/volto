@@ -15,7 +15,7 @@ export default function SaveAsDraft(props) {
       setChecked(true);
       const saved = sessionStorage.getItem(id);
       console.log('saved', saved);
-      if (saved !== state) {
+      if (saved && saved !== state) {
         // eslint-disable-next-line no-alert
         const load = window.confirm('Autosave found, load it?');
         if (load) {
