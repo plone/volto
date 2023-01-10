@@ -39,10 +39,19 @@ import {
 } from 'semantic-ui-react';
 import { v4 as uuid } from 'uuid';
 import { toast } from 'react-toastify';
-import { BlocksToolbar, UndoToolbar } from '@plone/volto/components';
+import {
+  BlocksToolbar,
+  UndoToolbar,
+  SaveAsDraft,
+} from '@plone/volto/components';
 import { setSidebarTab } from '@plone/volto/actions';
 import { compose } from 'redux';
 import config from '@plone/volto/registry';
+
+export function getFormId(props) {
+  const { isEditForm, pathname, type } = props;
+  return isEditForm ? `form-edit-${pathname}` : `form-other-${type}`;
+}
 
 /**
  * Form container class.
@@ -560,6 +569,19 @@ class Form extends Component {
             }
             onSelectBlock={this.onSelectBlock}
           />
+          {!!this.props.type && (
+            <SaveAsDraft
+              id={getFormId(this.props)}
+              state={this.state.formData}
+              onRestore={(state) =>
+                this.setState({
+                  formData: state,
+                  selected: null,
+                  multiSelected: null,
+                })
+              }
+            />
+          )}
           <UndoToolbar
             state={{
               formData: this.state.formData,
