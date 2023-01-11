@@ -1,6 +1,6 @@
 import React from 'react';
+import WrapperlessBlockEdit from './Edit';
 import { useIntl } from 'react-intl';
-import EditBlock from './Edit';
 import { DragDropList } from '@plone/volto/components';
 import {
   getBlocks,
@@ -10,6 +10,7 @@ import {
 import {
   addBlock,
   insertBlock,
+  insertBlockAfter,
   changeBlock,
   deleteBlock,
   moveBlock,
@@ -21,7 +22,24 @@ import EditBlockWrapper from './EditBlockWrapper';
 import { setSidebarTab } from '@plone/volto/actions';
 import { useDispatch } from 'react-redux';
 import { useDetectClickOutside, useEvent } from '@plone/volto/helpers';
+import QuantaEditBlockWrapper from './QuantaEditBlockWrapper';
 import config from '@plone/volto/registry';
+
+const topLevelBlockWrapper = ({ draginfo }, editBlock, blockProps) => {
+  return (
+    <QuantaEditBlockWrapper draginfo={draginfo} blockProps={blockProps}>
+      {editBlock}
+    </QuantaEditBlockWrapper>
+  );
+};
+
+const defaultBlockWrapper = ({ draginfo }, editBlock, blockProps) => {
+  return (
+    <EditBlockWrapper draginfo={draginfo} blockProps={blockProps}>
+      {editBlock}
+    </EditBlockWrapper>
+  );
+};
 
 const BlocksForm = (props) => {
   const {
@@ -42,6 +60,7 @@ const BlocksForm = (props) => {
     isMainForm = true,
     blocksConfig = config.blocks.blocksConfig,
     editable = true,
+    direction,
   } = props;
 
   const blockList = getBlocks(properties);
@@ -137,6 +156,17 @@ const BlocksForm = (props) => {
     return newId;
   };
 
+  const onInsertBlockAfter = (id, value, current) => {
+    const [newId, newFormData] = insertBlockAfter(
+      properties,
+      id,
+      value,
+      current,
+    );
+    onChangeFormData(newFormData);
+    return newId;
+  };
+
   const onAddBlock = (type, index) => {
     if (editable) {
       const [id, newFormData] = addBlock(properties, type, index);
@@ -172,14 +202,6 @@ const BlocksForm = (props) => {
     onChangeFormData(newFormData);
   };
 
-  const defaultBlockWrapper = ({ draginfo }, editBlock, blockProps) => (
-    <EditBlockWrapper draginfo={draginfo} blockProps={blockProps}>
-      {editBlock}
-    </EditBlockWrapper>
-  );
-
-  const editBlockWrapper = children || defaultBlockWrapper;
-
   // Remove invalid blocks on saving
   // Note they are alreaady filtered by DragDropList, but we also want them
   // to be removed when the user saves the page next. Otherwise the invalid
@@ -203,6 +225,7 @@ const BlocksForm = (props) => {
       <fieldset className="invisible" disabled={!editable}>
         <DragDropList
           childList={blockList}
+          direction={direction}
           onMoveItem={(result) => {
             const { source, destination } = result;
             if (!destination) {
@@ -232,6 +255,7 @@ const BlocksForm = (props) => {
               manage,
               onAddBlock,
               onInsertBlock,
+              onInsertBlockAfter,
               onChangeBlock,
               onChangeField,
               onChangeFormData,
@@ -251,9 +275,17 @@ const BlocksForm = (props) => {
               editable,
               showBlockChooser: selectedBlock === childId,
             };
+            const editBlockWrapper =
+              children ||
+              (props.isMainForm &&
+              (config.experimental.quantaToolbar.enabled ||
+                blocksConfig[child['@type']].disableQuantaToolbar)
+                ? topLevelBlockWrapper
+                : defaultBlockWrapper);
+
             return editBlockWrapper(
               dragProps,
-              <EditBlock key={childId} {...blockProps} />,
+              <WrapperlessBlockEdit key={childId} {...blockProps} />,
               blockProps,
             );
           }}

@@ -41,6 +41,7 @@ export {
 export {
   addBlock,
   insertBlock,
+  insertBlockAfter,
   blockHasValue,
   changeBlock,
   deleteBlock,

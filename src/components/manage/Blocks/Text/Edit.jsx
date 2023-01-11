@@ -9,6 +9,7 @@ import { compose } from 'redux';
 
 import { defineMessages, injectIntl } from 'react-intl';
 import { includes, isEqual } from 'lodash';
+
 import config from '@plone/volto/registry';
 
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
@@ -244,8 +245,6 @@ export class EditComponent extends Component {
     const disableNewBlocks =
       this.props.data?.disableNewBlocks || this.props.detached;
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
-    // const { settings } = config;
-
     const isSoftNewlineEvent = this.props.draftJsLibIsSoftNewlineEvent.default;
     const { RichUtils } = this.props.draftJs;
 
@@ -329,19 +328,22 @@ export class EditComponent extends Component {
           }}
         />
         <InlineToolbar />
-        {!config.experimental.addBlockButton.enabled && this.props.selected && (
-          <BlockChooserButton
-            data={this.props.data}
-            block={this.props.block}
-            onInsertBlock={(id, value) => {
-              this.props.onSelectBlock(this.props.onInsertBlock(id, value));
-            }}
-            allowedBlocks={this.props.allowedBlocks}
-            blocksConfig={this.props.blocksConfig}
-            size="24px"
-            properties={this.props.properties}
-          />
-        )}
+
+        {!config.experimental.addBlockButton.enabled &&
+          !config.experimental.quantaToolbar.enabled &&
+          this.props.selected && (
+            <BlockChooserButton
+              data={this.props.data}
+              block={this.props.block}
+              onInsertBlock={(id, value) => {
+                this.props.onSelectBlock(this.props.onInsertBlock(id, value));
+              }}
+              allowedBlocks={this.props.allowedBlocks}
+              blocksConfig={this.props.blocksConfig}
+              size="24px"
+              properties={this.props.properties}
+            />
+          )}
       </>
     );
   }

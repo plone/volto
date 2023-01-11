@@ -169,4 +169,7 @@ config.set('experimental', {
   addBlockButton: {
     enabled: false,
   },
+  quantaToolbar: {
+    enabled: false,
+  },
 });

@@ -18,6 +18,7 @@ import {
   blocksConfig,
   initialBlocks,
   initialBlocksFocus,
+  toolbarGroups,
 } from './Blocks';
 import { components } from './Components';
 import { loadables } from './Loadables';
@@ -174,6 +175,9 @@ let config = {
     addBlockButton: {
       enabled: false,
     },
+    quantaToolbar: {
+      enabled: true,
+    },
   },
   widgets: {
     ...widgetMapping,
@@ -192,6 +196,7 @@ let config = {
     groupBlocksOrder,
     initialBlocks,
     initialBlocksFocus,
+    toolbarGroups,
     showEditBlocksInBabelView: false,
   },
   addonRoutes: [],

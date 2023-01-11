@@ -9,6 +9,7 @@ import {
   getBlocksLayoutFieldname,
   hasBlocksData,
   insertBlock,
+  insertBlockAfter,
   moveBlock,
   mutateBlock,
   nextBlockId,
@@ -529,6 +530,20 @@ describe('Blocks', () => {
         { value: 3 },
       );
       expect(form.blocks_layout.items).toStrictEqual(['a', newId, 'b']);
+    });
+  });
+
+  describe('insertBlockAfter', () => {
+    it('insert new block within formdata before given block id', () => {
+      const [newId, form] = insertBlockAfter(
+        {
+          blocks: { a: { value: 1 }, b: { value: 2 } },
+          blocks_layout: { items: ['a', 'b'] },
+        },
+        'b',
+        { value: 3 },
+      );
+      expect(form.blocks_layout.items).toStrictEqual(['a', 'b', newId]);
     });
   });
 

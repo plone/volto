@@ -912,8 +912,6 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 
 ## 16.0.0-alpha.34 (2022-09-17)
 
-### Breaking
-
 ### Feature
 
 - Added new components `Aliases` for aliases control in Volto. Alias management in both controlpanel and object view. @andreiggr @avoinea
@@ -923,8 +921,6 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Fix Press Enter in some blocks does not focus on the text block below #3647 @dobri1408
 - Add `matchAllRoutes` to AsyncConnect so that it matches all configured `asyncPropsExtenders` @tiberiuichim
 - Fix acceptence test groups controlpanel @ksuess
-
-### Internal
 
 ### Documentation
 

@@ -1,3 +1,7 @@
+/** This is the classic block wrapper. The BlocksForm uses either this one or
+ * the QuantaEditBlockWrapper
+ */
+
 import React from 'react';
 import { Icon } from '@plone/volto/components';
 import {
@@ -5,12 +9,13 @@ import {
   buildStyleClassNamesFromData,
 } from '@plone/volto/helpers';
 import dragSVG from '@plone/volto/icons/drag.svg';
+import { injectIntl, defineMessages } from 'react-intl';
+
+import config from '@plone/volto/registry';
 import { Button } from 'semantic-ui-react';
 import includes from 'lodash/includes';
 import isBoolean from 'lodash/isBoolean';
-import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
-import config from '@plone/volto/registry';
 import { BlockChooserButton } from '@plone/volto/components';
 
 import trashSVG from '@plone/volto/icons/delete.svg';
