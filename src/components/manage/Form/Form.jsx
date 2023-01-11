@@ -40,19 +40,12 @@ import {
 } from 'semantic-ui-react';
 import { v4 as uuid } from 'uuid';
 import { toast } from 'react-toastify';
-import {
-  BlocksToolbar,
-  UndoToolbar,
-  SaveAsDraft,
-} from '@plone/volto/components';
+import { BlocksToolbar, UndoToolbar } from '@plone/volto/components';
 import { setSidebarTab } from '@plone/volto/actions';
 import { compose } from 'redux';
 import config from '@plone/volto/registry';
 
-export function getFormId(props) {
-  const { isEditForm, pathname, type } = props;
-  return isEditForm ? `form-edit-${pathname}` : `form-other-${type}`;
-}
+import withSaveAsDraft from './SaveAsDraft';
 
 /**
  * Form container class.
@@ -230,6 +223,16 @@ class Form extends Component {
    * @param {Object} prevProps
    */
   async componentDidUpdate(prevProps, prevState) {
+    // schema was just received async and plugged as prop
+    if (!prevProps.schema && this.props.schema) {
+      const oldFormData = this.props.checkSavedDraft(this.state.formData);
+
+      if (oldFormData) {
+        this.setState({ formData: oldFormData });
+      }
+      return;
+    }
+
     let { requestError } = this.props;
     let errors = {};
     let activeIndex = 0;
@@ -255,6 +258,7 @@ class Form extends Component {
     ) {
       this.props.onChangeFormData(this.state.formData);
     }
+    this.props.onSaveDraft(this.state.formData);
   }
 
   /**
@@ -422,6 +426,7 @@ class Form extends Component {
         formData: this.props.formData,
       });
     }
+    // this.props.onCancelDraft();
     this.props.onCancel(event);
   }
 
@@ -471,6 +476,9 @@ class Form extends Component {
     } else {
       // Get only the values that have been modified (Edit forms), send all in case that
       // it's an add form
+
+      this.props.onCancelDraft();
+
       if (this.props.isEditForm) {
         this.props.onSubmit(this.getOnlyFormModifiedValues());
       } else {
@@ -541,15 +549,8 @@ class Form extends Component {
    */
   render() {
     const { settings } = config;
-    const {
-      schema: originalSchema,
-      onCancel,
-      onSubmit,
-      isEditForm,
-      pathname,
-      type,
-    } = this.props;
-    const enableSaveDraft = !!type && isEditForm;
+    const { schema: originalSchema, onCancel, onSubmit } = this.props;
+
     const { formData } = this.state;
     const schema = this.removeBlocksLayoutFields(originalSchema);
 
@@ -575,19 +576,6 @@ class Form extends Component {
             }
             onSelectBlock={this.onSelectBlock}
           />
-          {enableSaveDraft && (
-            <SaveAsDraft
-              id={`form-edit-${type}-${pathname}`}
-              state={this.state.formData}
-              onRestore={(state) =>
-                this.setState({
-                  formData: state,
-                  selected: [],
-                  multiSelected: [],
-                })
-              }
-            />
-          )}
           <UndoToolbar
             state={{
               formData: this.state.formData,
@@ -820,4 +808,5 @@ const FormIntl = injectIntl(Form, { forwardRef: true });
 
 export default compose(
   connect(null, { setSidebarTab }, null, { forwardRef: true }),
+  withSaveAsDraft({ forwardRef: true }),
 )(FormIntl);
