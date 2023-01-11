@@ -33,7 +33,6 @@ export default function withSaveAsDraft(options) {
           if (saved) {
             const formData = mapSchemaToData(schema, state);
             const savedData = JSON.parse(saved);
-            console.log('saved', isEqual(formData, savedData));
             if (!isEqual(formData, savedData)) {
               // eslint-disable-next-line no-alert
               const rewrite = window.confirm('Autosave found, load it?');

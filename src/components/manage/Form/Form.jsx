@@ -258,7 +258,8 @@ class Form extends Component {
     ) {
       this.props.onChangeFormData(this.state.formData);
     }
-    this.props.onSaveDraft(this.state.formData);
+
+    if (prevProps.schema) this.props.onSaveDraft(this.state.formData);
   }
 
   /**
@@ -306,6 +307,16 @@ class Form extends Component {
    */
   componentDidMount() {
     this.setState({ isClient: true });
+
+    // schema was just received async and plugged as prop
+    if (this.props.schema) {
+      const oldFormData = this.props.checkSavedDraft(this.state.formData);
+
+      if (oldFormData) {
+        this.setState({ formData: oldFormData });
+      }
+      return;
+    }
   }
 
   static getDerivedStateFromProps(props, state) {
