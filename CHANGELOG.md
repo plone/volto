@@ -17,6 +17,7 @@
 
 ### Bugfix
 
+- Use Grid instead of Table in Diffview @erral
 - Improve matching in keyboard slash menu. [davisagli] [#4187](https://github.com/plone/volto/issues/4187)
 - (fix): sidebar is not displaying correctly when clicking on a lead image field. @dobri1408 [#4191](https://github.com/plone/volto/issues/4191)
 - Cleanup `package.json` scripts section @sneridagh [#4193](https://github.com/plone/volto/issues/4193)
