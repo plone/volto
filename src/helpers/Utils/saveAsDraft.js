@@ -16,7 +16,7 @@ const mapSchemaToData = (schema, data) => {
   );
 };
 
-export default function withSaveAsDraft(options) {
+export function withSaveAsDraft(options) {
   const { forwardRef } = options;
 
   return (WrappedComponent) => {

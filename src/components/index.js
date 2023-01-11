@@ -126,7 +126,6 @@ export ManageTranslations from '@plone/volto/components/manage/Multilingual/Mana
 export Form from '@plone/volto/components/manage/Form/Form';
 export BlocksToolbar from '@plone/volto/components/manage/Form/BlocksToolbar';
 export UndoToolbar from '@plone/volto/components/manage/Form/UndoToolbar';
-export SaveAsDraft from '@plone/volto/components/manage/Form/SaveAsDraft';
 export Field from '@plone/volto/components/manage/Form/Field';
 export SearchTags from '@plone/volto/components/theme/Search/SearchTags';
 export CommentEditModal from '@plone/volto/components/theme/Comments/CommentEditModal';

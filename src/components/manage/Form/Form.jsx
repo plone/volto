@@ -11,6 +11,7 @@ import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   messages,
+  withSaveAsDraft,
 } from '@plone/volto/helpers';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -44,8 +45,6 @@ import { BlocksToolbar, UndoToolbar } from '@plone/volto/components';
 import { setSidebarTab } from '@plone/volto/actions';
 import { compose } from 'redux';
 import config from '@plone/volto/registry';
-
-import withSaveAsDraft from './SaveAsDraft';
 
 /**
  * Form container class.
