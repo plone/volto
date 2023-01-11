@@ -13,7 +13,7 @@ export default function SaveAsDraft(props) {
     if (!checked) {
       // on mount, we check if saved session exists
       setChecked(true);
-      const saved = sessionStorage.getItem(id);
+      const saved = localStorage.getItem(id);
       console.log('saved', saved);
       if (saved && saved !== state) {
         // eslint-disable-next-line no-alert
@@ -21,19 +21,19 @@ export default function SaveAsDraft(props) {
         if (load) {
           onRestore(JSON.parse(saved));
         } else {
-          sessionStorage.removeItem(id);
+          localStorage.removeItem(id);
         }
       }
     } else {
       ref.current && clearTimeout(ref.current);
       ref.current = setTimeout(() => {
-        sessionStorage.setItem(id, JSON.stringify(state));
+        localStorage.setItem(id, JSON.stringify(state));
       }, 300);
     }
     return () => {
-      const saved = sessionStorage.getItem(id);
+      const saved = localStorage.getItem(id);
       if (saved !== jstate) {
-        sessionStorage.setItem(id, JSON.stringify(state));
+        localStorage.setItem(id, JSON.stringify(state));
       }
       ref.current && clearTimeout(ref.current);
     };

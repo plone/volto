@@ -3,6 +3,7 @@
  * @module components/manage/Form/Form
  */
 
+import isEqual from 'react-fast-compare';
 import { BlocksForm, Field, Icon, Toast } from '@plone/volto/components';
 import {
   difference,
@@ -248,14 +249,11 @@ class Form extends Component {
       });
     }
 
-    if (this.props.onChangeFormData) {
-      if (
-        // TODO: use fast-deep-equal
-        JSON.stringify(prevState?.formData) !==
-        JSON.stringify(this.state.formData)
-      ) {
-        this.props.onChangeFormData(this.state.formData);
-      }
+    if (
+      this.props.onChangeFormData &&
+      !isEqual(prevState?.formData, this.state.formData)
+    ) {
+      this.props.onChangeFormData(this.state.formData);
     }
   }
 
