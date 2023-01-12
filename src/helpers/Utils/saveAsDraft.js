@@ -48,12 +48,8 @@ export function withSaveAsDraft(options) {
             if (!isEqual(formData, savedData)) {
               // eslint-disable-next-line no-alert
               const rewrite = window.confirm('Autosave found, load it?');
-              if (rewrite) {
-                localStorage.removeItem(id);
-                return savedData;
-              } else {
-                localStorage.removeItem(id);
-              }
+              localStorage.removeItem(id);
+              return rewrite ? savedData : null;
             }
           }
         },
