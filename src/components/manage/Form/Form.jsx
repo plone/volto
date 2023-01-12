@@ -227,7 +227,9 @@ class Form extends Component {
       const oldFormData = this.props.checkSavedDraft(this.state.formData);
 
       if (oldFormData) {
-        this.setState({ formData: oldFormData });
+        this.setState((state) => ({
+          formData: { ...state.formData, ...oldFormData },
+        }));
       }
       return;
     }
@@ -312,7 +314,9 @@ class Form extends Component {
       const oldFormData = this.props.checkSavedDraft(this.state.formData);
 
       if (oldFormData) {
-        this.setState({ formData: oldFormData });
+        this.setState((state) => ({
+          formData: { ...state.formData, ...oldFormData },
+        }));
       }
       return;
     }
