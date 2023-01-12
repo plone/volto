@@ -67,12 +67,7 @@ export function withSaveAsDraft(options) {
       const { schema } = props;
       const id = getFormId(props);
       const ref = React.useRef();
-
-      const api = React.useMemo(() => draftApi(id, schema, ref), [
-        id,
-        schema,
-        ref,
-      ]);
+      const api = React.useMemo(() => draftApi(id, schema, ref), [id, schema]);
 
       return (
         <WrappedComponent
