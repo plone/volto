@@ -38,48 +38,43 @@ export function withSaveAsDraft(options) {
 
       const ref = React.useRef();
 
-      const checkSavedDraft = React.useCallback(
-        (state) => {
-          if (!schema) return;
-          const saved = localStorage.getItem(id);
-          if (saved) {
-            const formData = mapSchemaToData(schema, state);
-            const savedData = JSON.parse(saved);
-            if (!isEqual(formData, savedData)) {
-              // eslint-disable-next-line no-alert
-              const rewrite = window.confirm('Autosave found, load it?');
-              localStorage.removeItem(id);
-              return rewrite ? savedData : null;
+      const api = React.useMemo(
+        () => ({
+          checkSavedDraft(state) {
+            if (!schema) return;
+            const saved = localStorage.getItem(id);
+            if (saved) {
+              const formData = mapSchemaToData(schema, state);
+              const savedData = JSON.parse(saved);
+              if (!isEqual(formData, savedData)) {
+                // eslint-disable-next-line no-alert
+                const rewrite = window.confirm('Autosave found, load it?');
+                localStorage.removeItem(id);
+                return rewrite ? savedData : null;
+              }
             }
-          }
-        },
+          },
+          onSaveDraft(state) {
+            if (!schema) return;
+            ref.current && clearTimeout(ref.current);
+            ref.current = setTimeout(() => {
+              const formData = mapSchemaToData(schema, state);
+              localStorage.setItem(id, JSON.stringify(formData));
+            }, 300);
+          },
+          onCancelDraft() {
+            if (!schema) return;
+            localStorage.removeItem(id);
+          },
+        }),
         [id, schema],
       );
-
-      const onSaveDraft = React.useCallback(
-        (state) => {
-          if (!schema) return;
-          ref.current && clearTimeout(ref.current);
-          ref.current = setTimeout(() => {
-            const formData = mapSchemaToData(schema, state);
-            localStorage.setItem(id, JSON.stringify(formData));
-          }, 300);
-        },
-        [id, schema],
-      );
-
-      const onCancelDraft = React.useCallback(() => {
-        if (!schema) return;
-        localStorage.removeItem(id);
-      }, [id, schema]);
 
       return (
         <WrappedComponent
           {...props}
+          {...api}
           ref={forwardRef ? props.forwardedRef : null}
-          checkSavedDraft={checkSavedDraft}
-          onSaveDraft={onSaveDraft}
-          onCancelDraft={onCancelDraft}
         />
       );
     }
