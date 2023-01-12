@@ -16,19 +16,31 @@ const mapSchemaToData = (schema, data) => {
   );
 };
 
+const getFormId = (props) => {
+  const { type, pathname, isEditForm } = props;
+
+  const id = isEditForm
+    ? ['form', type, pathname].join('-')
+    : type
+    ? ['form', 'add', type].join('-')
+    : ['form', pathname].join('-');
+
+  return id;
+};
+
 export function withSaveAsDraft(options) {
   const { forwardRef } = options;
 
   return (WrappedComponent) => {
     function WithSaveAsDraft(props) {
-      const { type, pathname, schema, isEditForm } = props;
+      const { schema } = props;
+      const id = getFormId(props);
 
-      const id = `form-edit-${type}-${pathname}`;
       const ref = React.useRef();
 
       const checkSavedDraft = React.useCallback(
         (state) => {
-          if (!schema && !isEditForm) return;
+          if (!schema) return;
           const saved = localStorage.getItem(id);
           if (saved) {
             const formData = mapSchemaToData(schema, state);
@@ -45,7 +57,7 @@ export function withSaveAsDraft(options) {
             }
           }
         },
-        [id, schema, isEditForm],
+        [id, schema],
       );
 
       const onSaveDraft = React.useCallback(

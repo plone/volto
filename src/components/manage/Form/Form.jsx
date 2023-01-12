@@ -307,7 +307,7 @@ class Form extends Component {
   componentDidMount() {
     this.setState({ isClient: true });
 
-    // schema was just received async and plugged as prop
+    // schema already exists in redux store
     if (this.props.schema) {
       const oldFormData = this.props.checkSavedDraft(this.state.formData);
 
