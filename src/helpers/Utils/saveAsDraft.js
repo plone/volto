@@ -28,6 +28,37 @@ const getFormId = (props) => {
   return id;
 };
 
+const draftApi = (id, schema, timer) => ({
+  checkSavedDraft(state) {
+    if (!schema) return;
+    const saved = localStorage.getItem(id);
+    if (saved) {
+      const formData = mapSchemaToData(schema, state);
+      const savedData = JSON.parse(saved);
+      if (!isEqual(formData, savedData)) {
+        // eslint-disable-next-line no-alert
+        const rewrite = window.confirm('Autosave found, load it?');
+        localStorage.removeItem(id);
+        return rewrite ? savedData : null;
+      }
+    }
+  },
+
+  onSaveDraft(state) {
+    if (!schema) return;
+    timer.current && clearTimeout(timer.current);
+    timer.current = setTimeout(() => {
+      const formData = mapSchemaToData(schema, state);
+      localStorage.setItem(id, JSON.stringify(formData));
+    }, 300);
+  },
+
+  onCancelDraft() {
+    if (!schema) return;
+    localStorage.removeItem(id);
+  },
+});
+
 export function withSaveAsDraft(options) {
   const { forwardRef } = options;
 
@@ -35,40 +66,13 @@ export function withSaveAsDraft(options) {
     function WithSaveAsDraft(props) {
       const { schema } = props;
       const id = getFormId(props);
-
       const ref = React.useRef();
 
-      const api = React.useMemo(
-        () => ({
-          checkSavedDraft(state) {
-            if (!schema) return;
-            const saved = localStorage.getItem(id);
-            if (saved) {
-              const formData = mapSchemaToData(schema, state);
-              const savedData = JSON.parse(saved);
-              if (!isEqual(formData, savedData)) {
-                // eslint-disable-next-line no-alert
-                const rewrite = window.confirm('Autosave found, load it?');
-                localStorage.removeItem(id);
-                return rewrite ? savedData : null;
-              }
-            }
-          },
-          onSaveDraft(state) {
-            if (!schema) return;
-            ref.current && clearTimeout(ref.current);
-            ref.current = setTimeout(() => {
-              const formData = mapSchemaToData(schema, state);
-              localStorage.setItem(id, JSON.stringify(formData));
-            }, 300);
-          },
-          onCancelDraft() {
-            if (!schema) return;
-            localStorage.removeItem(id);
-          },
-        }),
-        [id, schema],
-      );
+      const api = React.useMemo(() => draftApi(id, schema, ref), [
+        id,
+        schema,
+        ref,
+      ]);
 
       return (
         <WrappedComponent
