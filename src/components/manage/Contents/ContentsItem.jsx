@@ -159,30 +159,40 @@ export const ContentsItemComponent = ({
             to={`${item['@id']}${item.is_folderish ? '/contents' : ''}`}
           >
             <div className="expire-align">
-              <SemanticUiPopup
-                trigger={
-                  <div>
-                    <Icon
-                      name={getContentIcon(item['@type'], item.is_folderish)}
-                      size="20px"
-                      className="icon-margin"
-                      color="#878f93"
-                      title={item['Type'] || item['@type']}
-                    />{' '}
-                  </div>
-                }
-              >
-                <SemanticUiPopup.Content>
-                  <div>
-                    <img
-                      style={{ height: '100%', width: '100%' }}
-                      src={`${item['@id']}/@@images/image`}
-                      alt=""
-                    />
-                  </div>
-                </SemanticUiPopup.Content>
-              </SemanticUiPopup>
-
+              {item['@type'] === 'Image' ? (
+                <SemanticUiPopup
+                  trigger={
+                    <div>
+                      <Icon
+                        name={getContentIcon(item['@type'], item.is_folderish)}
+                        size="20px"
+                        className="icon-margin"
+                        color="#878f93"
+                        title={item['Type'] || item['@type']}
+                      />{' '}
+                    </div>
+                  }
+                >
+                  <SemanticUiPopup.Content>
+                    <div>
+                      <img
+                        style={{ height: '100%', width: '100%' }}
+                        className="popup-image"
+                        src={`${item['@id']}/@@images/image`}
+                        alt=""
+                      />
+                    </div>
+                  </SemanticUiPopup.Content>
+                </SemanticUiPopup>
+              ) : (
+                <Icon
+                  name={getContentIcon(item['@type'], item.is_folderish)}
+                  size="20px"
+                  className="icon-margin"
+                  color="#878f93"
+                  title={item['Type'] || item['@type']}
+                />
+              )}
               <span title={item.title}> {item.title}</span>
             </div>
             {item.ExpirationDate !== 'None' &&
