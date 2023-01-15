@@ -17,6 +17,15 @@ class DynamicHeightList extends React.PureComponent {
     this._rowRenderer = this._rowRenderer.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.children.length !== this.props.children.length) {
+      if (this._list && this._list.forceUpdateGrid) {
+        this._list.forceUpdateGrid();
+      }
+      this._cache.clearAll();
+    }
+  }
+
   _rowRenderer({ index, key, parent, style }) {
     const CellMeasurer = this.props.reactVirtualized.CellMeasurer;
     return (
@@ -27,7 +36,11 @@ class DynamicHeightList extends React.PureComponent {
         rowIndex={index}
         parent={parent}
       >
-        {({ measure }) => <div style={style}>{this.props.children[index]}</div>}
+        {({ measure, registerChild }) => (
+          <div style={style} ref={registerChild}>
+            {this.props.children[index]}
+          </div>
+        )}
       </CellMeasurer>
     );
   }

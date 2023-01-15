@@ -1641,7 +1641,7 @@ msgid "Image view"
 msgstr "Vista de imagen"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
-# defaultMessage: Include this occurence
+# defaultMessage: Include this occurrence
 msgid "Include this occurence"
 msgstr "Incluir esta repetición"
 
@@ -1740,7 +1740,7 @@ msgid "Item batch size"
 msgstr "Número de elementos"
 
 #: components/manage/Contents/Contents
-# defaultMessage: Item succesfully moved.
+# defaultMessage: Item successfully moved.
 msgid "Item succesfully moved."
 msgstr "Elemento movido correctamente."
 

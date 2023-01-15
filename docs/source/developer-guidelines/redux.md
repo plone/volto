@@ -16,7 +16,7 @@ gaps!
 
 As with any other complex React project, the way global state is handled
 across all components has a big impact on the overall architecture. Basic
-knowledge of Redux is needed to understand this part, but Volto's use of Redux
+knowledge of {term}`Redux` is needed to understand this part, but Volto's use of Redux
 is "typical" and you can find plenty examples in Volto's code base.
 
 To access the global state, a component needs to be connected with `connect`.
@@ -42,7 +42,7 @@ export default compose(
 If multiple Higher Order Components need to be used, like in the above example,
 the `compose` can be used to combine all of them in a final component.
 
-If you're writing Function Components, you can use the `useSelector` hook. See
+If you're writing Function Components, you can use the `useSelector` {term}`hook`. See
 `src/components/theme/OutdatedBrowser/OutdatedBrowser.jsx` for an example.
 
 When using the `connect` function, you can `select` parts from the global store
@@ -54,7 +54,7 @@ developer extension](https://chrome.google.com/webstore/detail/redux-devtools/lm
 The code that is used to populate this store is in the `src/reducers` folder.
 
 In some parts of Volto you'll see `asyncConnect` being used, which is needed to
-enable proper server-side rendering of components. Using it makes sure that the
+enable proper {term}`server-side rendering` of components. Using it makes sure that the
 component will be constructed with the proper data already fetched from the
 backend and available as props.
 
@@ -77,7 +77,7 @@ Components you can use the `useDispatch` hook.
 Global state update fetches are typically triggered by components in the mount
 lifecycle stage. See for example `src/components/theme/Search/Search.jsx` for
 a component that needs to interact with the backend to show its content. In the
-redux flow of information, actions trigger the asynchronous processes and when
+Redux flow of information, actions trigger the asynchronous processes and when
 that content arrives to the global app, it is pushed as props through the
 `connect` mechanism. So components only deal indirectly with async information:
 they trigger getting that information and it will arrive as a property once it
@@ -115,7 +115,7 @@ special Api middleware, available in `src/middleware/api.js`.
 
 ## Customizing the Redux middleware
 
-It is possible to tweak Volto's Redux middleware, for example to add new
+It is possible to tweak Volto's {term}`Redux middleware`, for example to add new
 middleware by using the `config.settings.storeExtender` configuration option.
 If you have Redux middleware that you want to insert as the first middleware to
 be used, for example, you could configure your project with:

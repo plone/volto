@@ -16,13 +16,19 @@ import { collapseInlineSpace } from './utils';
  *
  * See https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Whitespace
  */
-export const deserialize = (editor, el) => {
+export const deserialize = (
+  editor,
+  el,
+  options = { collapseWhitespace: true },
+) => {
   const { htmlTagsToSlate } = editor;
 
   if (el.nodeType === COMMENT) {
     return null;
   } else if (el.nodeType === TEXT_NODE) {
-    const text = collapseInlineSpace(el);
+    const text = options.collapseWhitespace
+      ? collapseInlineSpace(el)
+      : el.textContent;
     return text
       ? {
           text,
@@ -36,33 +42,39 @@ export const deserialize = (editor, el) => {
   }
 
   if (el.getAttribute('data-slate-data')) {
-    return typeDeserialize(editor, el);
+    return typeDeserialize(editor, el, options);
   }
 
   const { nodeName } = el;
 
   if (htmlTagsToSlate[nodeName]) {
-    return htmlTagsToSlate[nodeName](editor, el);
+    return htmlTagsToSlate[nodeName](editor, el, options);
   }
 
   // fallback deserializer, all unknown elements are "stripped"
-  return deserializeChildren(el, editor);
+  return deserializeChildren(el, editor, options);
 };
 
-export const typeDeserialize = (editor, el) => {
+export const typeDeserialize = (editor, el, options) => {
   const jsData = el.getAttribute('data-slate-data');
   const { type, data } = JSON.parse(jsData);
-  return jsx('element', { type, data }, deserializeChildren(el, editor));
+  return jsx(
+    'element',
+    { type, data },
+    deserializeChildren(el, editor, options),
+  );
 };
 
-export const deserializeChildren = (parent, editor) =>
+export const deserializeChildren = (parent, editor, options) =>
   Array.from(parent.childNodes)
-    .map((el) => deserialize(editor, el))
+    .map((el) => deserialize(editor, el, options))
     .flat();
 
-export const blockTagDeserializer = (tagname) => (editor, el) => {
+export const blockTagDeserializer = (tagname) => (editor, el, options) => {
   // if (tagname === 'h2') debugger;
-  let children = deserializeChildren(el, editor).filter((n) => n !== null);
+  let children = deserializeChildren(el, editor, options).filter(
+    (n) => n !== null,
+  );
 
   if (
     [TD, TH].includes(tagname) &&
@@ -83,15 +95,16 @@ export const blockTagDeserializer = (tagname) => (editor, el) => {
     children = [{ text: '' }];
   }
 
+  console.log('children', children);
   return jsx('element', { type: tagname }, children);
 };
 
-export const bodyTagDeserializer = (editor, el) => {
-  return jsx('fragment', {}, deserializeChildren(el, editor));
+export const bodyTagDeserializer = (editor, el, options) => {
+  return jsx('fragment', {}, deserializeChildren(el, editor, options));
 };
 
-export const inlineTagDeserializer = (attrs) => (editor, el) => {
-  return deserializeChildren(el, editor).map((child) => {
+export const inlineTagDeserializer = (attrs) => (editor, el, options) => {
+  return deserializeChildren(el, editor, options).map((child) => {
     const res =
       Text.isText(child) || typeof child === 'string'
         ? jsx('text', attrs, child)
@@ -103,7 +116,7 @@ export const inlineTagDeserializer = (attrs) => (editor, el) => {
   });
 };
 
-export const spanTagDeserializer = (editor, el) => {
+export const spanTagDeserializer = (editor, el, options) => {
   const style = el.getAttribute('style') || '';
   let children = el.childNodes;
 
@@ -115,7 +128,7 @@ export const spanTagDeserializer = (editor, el) => {
   ) {
     return jsx('text', {}, ' ');
   }
-  children = deserializeChildren(el, editor);
+  children = deserializeChildren(el, editor, options);
 
   // whitespace is replaced by deserialize() with null;
   children = children.map((c) => (c === null ? '' : c));
@@ -144,18 +157,18 @@ export const spanTagDeserializer = (editor, el) => {
   return res;
 };
 
-export const bTagDeserializer = (editor, el) => {
+export const bTagDeserializer = (editor, el, options) => {
   // Google Docs does weird things with <b> tag
   return (el.getAttribute('id') || '').indexOf('docs-internal-guid') > -1
-    ? deserializeChildren(el, editor)
-    : jsx('element', { type: 'b' }, deserializeChildren(el, editor));
+    ? deserializeChildren(el, editor, options)
+    : jsx('element', { type: 'b' }, deserializeChildren(el, editor, options));
 };
 
-export const codeTagDeserializer = (editor, el) => {
+export const codeTagDeserializer = (editor, el, options) => {
   return jsx('element', { type: 'code' }, el.textContent);
 };
 
-export const preTagDeserializer = (editor, el) => {
+export const preTagDeserializer = (editor, el, options) => {
   // Based on Slate example implementation. Replaces <pre> tags with <code>.
   // Comment: I don't know how good of an idea is this. I'd rather have two
   // separate formats: "preserve whitespace" and "code". This feels like a hack
@@ -164,10 +177,10 @@ export const preTagDeserializer = (editor, el) => {
 
   if (el.childNodes[0] && el.childNodes[0].nodeName === 'CODE') {
     parent = el.childNodes[0];
-    return codeTagDeserializer(editor, parent);
+    return codeTagDeserializer(editor, parent, options);
   }
 
-  return blockTagDeserializer(nodeName)(editor, parent);
+  return blockTagDeserializer(nodeName)(editor, parent, options);
 };
 
 export default deserialize;
