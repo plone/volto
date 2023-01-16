@@ -397,11 +397,13 @@
     "yarnhook": "0.5.1"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^6.3.0",
-    "@storybook/addon-controls": "6.3.0",
-    "@storybook/addon-essentials": "^6.3.0",
-    "@storybook/addon-links": "^6.3.0",
-    "@storybook/react": "^6.3.0",
+    "@storybook/addon-actions": "^6.5.15",
+    "@storybook/addon-controls": "6.5.15",
+    "@storybook/addon-essentials": "^6.5.15",
+    "@storybook/addon-links": "^6.5.15",
+    "@storybook/builder-webpack5": "^6.5.15",
+    "@storybook/manager-webpack5": "^6.5.15",
+    "@storybook/react": "^6.5.15",
     "babel-loader": "9.1.0",
     "full-icu": "1.4.0",
     "identity-obj-proxy": "3.0.0",
