@@ -281,7 +281,7 @@ make start-backend-docker
 
 or running Plone on your machine (advanced), additional dependencies might be
 required, only for Plone experienced integrators/developers. Check the [Plone
-Installation Documentation](https://docs.plone.org/manage/installing/installation.html).
+Installation Documentation](https://6.docs.plone.org/install/index.html).
 
 ```shell
 make build-backend
