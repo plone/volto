@@ -233,12 +233,12 @@ styleClassNameConverters
     registering fieldnames with names such as `<fieldname>:<converterName>`,
     where the converter is registered here.
 
-additionalLookAroundClassNames
-    An array containing functions that extends the `buildStyleClassNamesLookAround` helper used to build a list of styles depending on the previous/next blocks. These functions have the signature `({data, nextBlock, previousBlock})=>resultantStyle`:
+styleClassNameExtenders
+    An array containing functions that extends how the StyleWrapper builds a list of styles. These functions have the signature `({ block, content, data })=>resultantStyle`:
 
     ```js
-    config.settings.additionalLookAroundClassNames = [
-      ({ data, nextBlock, previousBlock }) => {
+    config.settings.styleClassNameExtenders = [
+      ({ block, content, data }) => {
         if (nextBlock?.['@type']) {
           return `next--bet--it--is--${nextBlock['@type']}`; // Returns a string
         }

@@ -2,34 +2,23 @@ import React from 'react';
 import cx from 'classnames';
 import {
   buildStyleClassNamesFromData,
-  buildStyleClassNamesLookAround,
+  buildStyleClassNamesExtenders,
 } from '@plone/volto/helpers';
 
 const StyleWrapper = (props) => {
-  const { children, content, data = {}, id } = props;
+  const { children, content, data = {}, block } = props;
   const styles = buildStyleClassNamesFromData(data.styles);
-  const nextBlock =
-    content['blocks'][
-      content['blocks_layout'].items[
-        content['blocks_layout'].items.indexOf(id) + 1
-      ]
-    ];
-  const previousBlock =
-    content['blocks'][
-      content['blocks_layout'].items[
-        content['blocks_layout'].items.indexOf(id) - 1
-      ]
-    ];
-  const lookAroundStyles = buildStyleClassNamesLookAround({
+
+  const styleExtenders = buildStyleClassNamesExtenders({
+    block,
+    content,
     data,
-    nextBlock,
-    previousBlock,
   });
   const rewrittenChildren = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
       const childProps = {
         ...props,
-        className: cx([child.props.className, ...styles, ...lookAroundStyles]),
+        className: cx([child.props.className, ...styles, ...styleExtenders]),
       };
       return React.cloneElement(child, childProps);
     }

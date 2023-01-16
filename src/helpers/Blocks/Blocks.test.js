@@ -17,7 +17,7 @@ import {
   applyBlockDefaults,
   applySchemaDefaults,
   buildStyleClassNamesFromData,
-  buildStyleClassNamesLookAround,
+  buildStyleClassNamesExtenders,
 } from './Blocks';
 
 import config from '@plone/volto/registry';
@@ -990,145 +990,221 @@ describe('Blocks', () => {
     });
   });
 
-  describe('buildStyleClassNamesLookAround', () => {
+  describe('buildStyleClassNamesExtenders', () => {
+    const getPreviousNextBlock = ({ content, block }) => {
+      const previousBlock =
+        content['blocks'][
+          content['blocks_layout'].items[
+            content['blocks_layout'].items.indexOf(block) - 1
+          ]
+        ];
+      const nextBlock =
+        content['blocks'][
+          content['blocks_layout'].items[
+            content['blocks_layout'].items.indexOf(block) + 1
+          ]
+        ];
+
+      return [previousBlock, nextBlock];
+    };
+
+    beforeAll(() => {
+      // Example styleClassNameExtenders
+      config.settings.styleClassNameExtenders = [
+        ({ block, content, data, classNames }) => {
+          let styles = [];
+          const [previousBlock, nextBlock] = getPreviousNextBlock({
+            content,
+            block,
+          });
+
+          if (nextBlock?.['@type']) {
+            styles.push(`next--is--${nextBlock['@type']}`);
+          }
+
+          if (data?.['@type'] === previousBlock?.['@type']) {
+            styles.push('previous--is--same--block-type');
+          }
+
+          if (data?.['@type'] === nextBlock?.['@type']) {
+            styles.push('next--is--same--block-type');
+          }
+
+          if (data?.['@type'] !== previousBlock?.['@type']) {
+            styles.push('is--first--of--block-type');
+          }
+
+          if (data?.['@type'] !== nextBlock?.['@type']) {
+            styles.push('is--last--of--block-type');
+          }
+
+          const previousColor =
+            previousBlock?.styles?.backgroundColor ?? 'transparent';
+          const currentColor = data?.styles?.backgroundColor ?? 'transparent';
+          const nextColor = nextBlock?.styles?.backgroundColor ?? 'transparent';
+
+          if (currentColor === previousColor) {
+            styles.push('previous--has--same--backgroundColor');
+          } else if (currentColor !== previousColor) {
+            styles.push('previous--has--different--backgroundColor');
+          }
+
+          if (currentColor === nextColor) {
+            styles.push('next--has--same--backgroundColor');
+          } else if (currentColor !== nextColor) {
+            styles.push('next--has--different--backgroundColor');
+          }
+
+          return [...classNames, ...styles];
+        },
+      ];
+    });
+
     it('slate grey + slate + slate grey ', () => {
-      const previousBlock = {
-        '@type': 'slate',
-        styles: {
-          backgroundColor: 'grey',
+      const content = {
+        blocks: {
+          1: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+          2: {
+            '@type': 'slate',
+          },
+          3: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+        },
+        blocks_layout: {
+          items: [1, 2, 3],
         },
       };
-      const data = {
-        '@type': 'slate',
-      };
-      const nextBlock = {
-        '@type': 'slate',
-        styles: {
-          backgroundColor: 'grey',
-        },
-      };
+      const block = 2;
+      const data = content['blocks'][2];
+
       expect(
-        buildStyleClassNamesLookAround({ data, nextBlock, previousBlock }),
+        buildStyleClassNamesExtenders({ block, content, data }),
       ).toStrictEqual([
         'next--is--slate',
         'previous--is--same--block-type',
         'next--is--same--block-type',
-        'previous--is--different--backgroundColor',
-        'next--is--different--backgroundColor',
+        'previous--has--different--backgroundColor',
+        'next--has--different--backgroundColor',
       ]);
     });
 
     it('slate grey + slate grey + slate grey ', () => {
-      const previousBlock = {
-        '@type': 'slate',
-        styles: {
-          backgroundColor: 'grey',
+      const content = {
+        blocks: {
+          1: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+          2: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+          3: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+        },
+        blocks_layout: {
+          items: [1, 2, 3],
         },
       };
-      const data = {
-        '@type': 'slate',
-        styles: {
-          backgroundColor: 'grey',
-        },
-      };
-      const nextBlock = {
-        '@type': 'slate',
-        styles: {
-          backgroundColor: 'grey',
-        },
-      };
+      const block = 2;
+      const data = content['blocks'][2];
+
       expect(
-        buildStyleClassNamesLookAround({ data, nextBlock, previousBlock }),
+        buildStyleClassNamesExtenders({ block, content, data }),
       ).toStrictEqual([
         'next--is--slate',
         'previous--is--same--block-type',
         'next--is--same--block-type',
-        'previous--is--same--backgroundColor',
-        'next--is--same--backgroundColor',
+        'previous--has--same--backgroundColor',
+        'next--has--same--backgroundColor',
       ]);
     });
 
     it('grid + slate grey + slate grey ', () => {
-      const previousBlock = {
-        '@type': '__grid',
-      };
-      const data = {
-        '@type': 'slate',
-        styles: {
-          backgroundColor: 'grey',
+      const content = {
+        blocks: {
+          1: {
+            '@type': '__grid',
+          },
+          2: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+          3: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+        },
+        blocks_layout: {
+          items: [1, 2, 3],
         },
       };
-      const nextBlock = {
-        '@type': 'slate',
-        styles: {
-          backgroundColor: 'grey',
-        },
-      };
+      const block = 2;
+      const data = content['blocks'][2];
+
       expect(
-        buildStyleClassNamesLookAround({ data, nextBlock, previousBlock }),
+        buildStyleClassNamesExtenders({ block, content, data }),
       ).toStrictEqual([
         'next--is--slate',
         'next--is--same--block-type',
         'is--first--of--block-type',
-        'previous--is--different--backgroundColor',
-        'next--is--same--backgroundColor',
+        'previous--has--different--backgroundColor',
+        'next--has--same--backgroundColor',
       ]);
     });
 
     it('grid + grid + slate grey ', () => {
-      const previousBlock = {
-        '@type': '__grid',
-      };
-      const data = {
-        '@type': '__grid',
-      };
-      const nextBlock = {
-        '@type': 'slate',
-        styles: {
-          backgroundColor: 'grey',
+      const content = {
+        blocks: {
+          1: {
+            '@type': '__grid',
+          },
+          2: {
+            '@type': '__grid',
+          },
+          3: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+        },
+        blocks_layout: {
+          items: [1, 2, 3],
         },
       };
+      const block = 2;
+      const data = content['blocks'][2];
+
       expect(
-        buildStyleClassNamesLookAround({ data, nextBlock, previousBlock }),
+        buildStyleClassNamesExtenders({ block, content, data }),
       ).toStrictEqual([
         'next--is--slate',
         'previous--is--same--block-type',
         'is--last--of--block-type',
-        'previous--is--same--backgroundColor',
-        'next--is--different--backgroundColor',
-      ]);
-    });
-
-    it('grid + grid + slate grey with additional config.settings.additionalLookAroundClassNames', () => {
-      config.settings.additionalLookAroundClassNames = [
-        ({ data, nextBlock, previousBlock }) => {
-          if (nextBlock?.['@type']) {
-            return `next--bet--it--is--${nextBlock['@type']}`;
-          }
-        },
-      ];
-
-      const previousBlock = {
-        '@type': '__grid',
-      };
-      const data = {
-        '@type': '__grid',
-      };
-      const nextBlock = {
-        '@type': 'slate',
-        styles: {
-          backgroundColor: 'grey',
-        },
-      };
-      expect(
-        buildStyleClassNamesLookAround({ data, nextBlock, previousBlock }),
-      ).toStrictEqual([
-        'next--is--slate',
-        'previous--is--same--block-type',
-        'is--last--of--block-type',
-        'previous--is--same--backgroundColor',
-        'next--is--different--backgroundColor',
-        'next--bet--it--is--slate',
+        'previous--has--same--backgroundColor',
+        'next--has--different--backgroundColor',
       ]);
     });
   });
