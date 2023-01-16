@@ -6,6 +6,7 @@ jobs:
     name: Core Basic
     timeout-minutes: 45
     strategy:
+      fail-fast: false
       matrix:
         node-version: [14.x, 16.x]
     steps:
@@ -59,6 +60,7 @@ jobs:
     name: Core Blocks
     timeout-minutes: 35
     strategy:
+      fail-fast: false
       matrix:
         node-version: [14.x, 16.x]
     steps:
@@ -112,6 +114,7 @@ jobs:
     name: Core Volto Slate
     timeout-minutes: 45
     strategy:
+      fail-fast: false
       matrix:
         node-version: [14.x, 16.x]
     steps:
@@ -164,6 +167,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Core Basic - Plone 5
     strategy:
+      fail-fast: false
       matrix:
         node-version: [16.x]
     steps:
@@ -217,6 +221,7 @@ jobs:
     name: Coresandbox
     timeout-minutes: 35
     strategy:
+      fail-fast: false
       matrix:
         node-version: [16.x]
         python-version: [3.7]
@@ -294,6 +299,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 35
     strategy:
+      fail-fast: false
       matrix:
         node-version: [16.x]
     steps:
@@ -348,6 +354,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 35
     strategy:
+      fail-fast: false
       matrix:
         node-version: [16.x]
     steps:
@@ -401,6 +408,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 35
     strategy:
+      fail-fast: false
       matrix:
         node-version: [16.x]
         # python-version: [3.7]
@@ -479,6 +487,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 35
     strategy:
+      fail-fast: false
       matrix:
         node-version: [16.x]
     env:
@@ -573,6 +582,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 35
     strategy:
+      fail-fast: false
       matrix:
         node-version: [16.x]
     steps:
