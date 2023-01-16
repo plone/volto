@@ -232,6 +232,19 @@ styleClassNameConverters
     data to actual class names. You can customize the generated classname by
     registering fieldnames with names such as `<fieldname>:<converterName>`,
     where the converter is registered here.
+
+additionalLookAroundClassNames
+    An array containing functions that extends the `buildStyleClassNamesLookAround` helper used to build a list of styles depending on the previous/next blocks. These functions have the signature `({data, nextBlock, previousBlock})=>resultantStyle`:
+
+    ```js
+    config.settings.additionalLookAroundClassNames = [
+      ({ data, nextBlock, previousBlock }) => {
+        if (nextBlock?.['@type']) {
+          return `next--bet--it--is--${nextBlock['@type']}`; // Returns a string
+        }
+      },
+    ];
+    ```
 ```
 
 

@@ -17,6 +17,7 @@ import {
   applyBlockDefaults,
   applySchemaDefaults,
   buildStyleClassNamesFromData,
+  buildStyleClassNamesLookAround,
 } from './Blocks';
 
 import config from '@plone/volto/registry';
@@ -986,6 +987,149 @@ describe('Blocks', () => {
         },
       };
       expect(buildStyleClassNamesFromData(styles)).toEqual([]);
+    });
+  });
+
+  describe('buildStyleClassNamesLookAround', () => {
+    it('slate grey + slate + slate grey ', () => {
+      const previousBlock = {
+        '@type': 'slate',
+        styles: {
+          backgroundColor: 'grey',
+        },
+      };
+      const data = {
+        '@type': 'slate',
+      };
+      const nextBlock = {
+        '@type': 'slate',
+        styles: {
+          backgroundColor: 'grey',
+        },
+      };
+      expect(
+        buildStyleClassNamesLookAround({ data, nextBlock, previousBlock }),
+      ).toStrictEqual([
+        'next--is--slate',
+        'previous--is--same--block-type',
+        'next--is--same--block-type',
+        'previous--is--different--backgroundColor',
+        'next--is--different--backgroundColor',
+      ]);
+    });
+
+    it('slate grey + slate grey + slate grey ', () => {
+      const previousBlock = {
+        '@type': 'slate',
+        styles: {
+          backgroundColor: 'grey',
+        },
+      };
+      const data = {
+        '@type': 'slate',
+        styles: {
+          backgroundColor: 'grey',
+        },
+      };
+      const nextBlock = {
+        '@type': 'slate',
+        styles: {
+          backgroundColor: 'grey',
+        },
+      };
+      expect(
+        buildStyleClassNamesLookAround({ data, nextBlock, previousBlock }),
+      ).toStrictEqual([
+        'next--is--slate',
+        'previous--is--same--block-type',
+        'next--is--same--block-type',
+        'previous--is--same--backgroundColor',
+        'next--is--same--backgroundColor',
+      ]);
+    });
+
+    it('grid + slate grey + slate grey ', () => {
+      const previousBlock = {
+        '@type': '__grid',
+      };
+      const data = {
+        '@type': 'slate',
+        styles: {
+          backgroundColor: 'grey',
+        },
+      };
+      const nextBlock = {
+        '@type': 'slate',
+        styles: {
+          backgroundColor: 'grey',
+        },
+      };
+      expect(
+        buildStyleClassNamesLookAround({ data, nextBlock, previousBlock }),
+      ).toStrictEqual([
+        'next--is--slate',
+        'next--is--same--block-type',
+        'is--first--of--block-type',
+        'previous--is--different--backgroundColor',
+        'next--is--same--backgroundColor',
+      ]);
+    });
+
+    it('grid + grid + slate grey ', () => {
+      const previousBlock = {
+        '@type': '__grid',
+      };
+      const data = {
+        '@type': '__grid',
+      };
+      const nextBlock = {
+        '@type': 'slate',
+        styles: {
+          backgroundColor: 'grey',
+        },
+      };
+      expect(
+        buildStyleClassNamesLookAround({ data, nextBlock, previousBlock }),
+      ).toStrictEqual([
+        'next--is--slate',
+        'previous--is--same--block-type',
+        'is--last--of--block-type',
+        'previous--is--same--backgroundColor',
+        'next--is--different--backgroundColor',
+      ]);
+    });
+
+    it('grid + grid + slate grey with additional config.settings.additionalLookAroundClassNames', () => {
+      config.settings.additionalLookAroundClassNames = [
+        ({ data, nextBlock, previousBlock }) => {
+          if (nextBlock?.['@type']) {
+            return `next--bet--it--is--${nextBlock['@type']}`;
+          }
+        },
+      ];
+
+      const previousBlock = {
+        '@type': '__grid',
+      };
+      const data = {
+        '@type': '__grid',
+      };
+      const nextBlock = {
+        '@type': 'slate',
+        styles: {
+          backgroundColor: 'grey',
+        },
+      };
+      expect(
+        buildStyleClassNamesLookAround({ data, nextBlock, previousBlock }),
+      ).toStrictEqual([
+        'next--is--slate',
+        'previous--is--same--block-type',
+        'is--last--of--block-type',
+        'previous--is--same--backgroundColor',
+        'next--is--different--backgroundColor',
+        'next--bet--it--is--slate',
+      ]);
     });
   });
 });

@@ -481,3 +481,90 @@ export const buildStyleClassNamesFromData = (obj = {}, prefix = '') => {
     )
     .filter((v) => !!v);
 };
+
+/**
+ * Generate classNames from looking around (previous/next blocks)
+ *
+ * - Next block type
+ * - Previous is same block type (boolean)
+ * - Next is same block type (boolean)
+ * - Current is the first of this block type (boolean)
+ * - Current is the last of this block type (boolean)
+ * - Current has `headline` as data (the block has heading) or the previous one type is `heading` (boolean)
+ * - Provided the block has a StyleWrapper style called `backgroundColor`, compare between previous/next blocks
+ *   - Previous has the same background color (boolean)
+ *   - Previous has the different background color (boolean)
+ *   - Next has the same background color (boolean)
+ *   - Next has the different background color (boolean)
+ *
+ * @function buildStyleClassNamesLookAround
+ * @param {Object} params An object with data, nextBlock and previousBlock
+ * @return {Array} LookAround classNames resultant array
+ */
+export const buildStyleClassNamesLookAround = ({
+  data,
+  nextBlock,
+  previousBlock,
+}) => {
+  let resultantStyles = [];
+
+  if (nextBlock?.['@type']) {
+    resultantStyles.push(`next--is--${nextBlock['@type']}`);
+  }
+
+  if (data?.['@type'] === previousBlock?.['@type']) {
+    resultantStyles.push('previous--is--same--block-type');
+  }
+
+  if (data?.['@type'] === nextBlock?.['@type']) {
+    resultantStyles.push('next--is--same--block-type');
+  }
+
+  if (data?.['@type'] !== previousBlock?.['@type']) {
+    resultantStyles.push('is--first--of--block-type');
+  }
+
+  if (data?.['@type'] !== nextBlock?.['@type']) {
+    resultantStyles.push('is--last--of--block-type');
+  }
+
+  if (data?.headline || previousBlock?.['@type'] === 'heading') {
+    resultantStyles.push('has--headline');
+  }
+  const previousColor = previousBlock?.styles?.backgroundColor ?? 'transparent';
+  const currentColor = data?.styles?.backgroundColor ?? 'transparent';
+  const nextColor = nextBlock?.styles?.backgroundColor ?? 'transparent';
+
+  if (currentColor === previousColor) {
+    resultantStyles.push('previous--is--same--backgroundColor');
+  } else if (currentColor !== previousColor) {
+    resultantStyles.push('previous--is--different--backgroundColor');
+  }
+
+  if (currentColor === nextColor) {
+    resultantStyles.push('next--is--same--backgroundColor');
+  } else if (currentColor !== nextColor) {
+    resultantStyles.push('next--is--different--backgroundColor');
+  }
+
+  if (config.settings.additionalLookAroundClassNames) {
+    // config.settings.additionalLookAroundClassNames contains
+    // an array of functions with the signature ({data, nextBlock, previousBlock})=>resultantStyle
+    resultantStyles = [
+      ...resultantStyles,
+      ...config.settings.additionalLookAroundClassNames.reduce(
+        (acc, func) => [
+          ...acc,
+          func({
+            data,
+            nextBlock,
+            previousBlock,
+          }),
+        ],
+        [],
+      ),
+    ];
+  }
+
+  return resultantStyles;
+};
