@@ -384,6 +384,7 @@
     "superagent": "3.8.2",
     "svg-loader": "0.0.2",
     "svgo-loader": "3.0.3",
+    "terser-webpack-plugin": "2.3.8",
     "tlds": "1.203.1",
     "undoo": "0.5.0",
     "universal-cookie": "4.0.4",

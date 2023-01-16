@@ -2805,6 +2805,7 @@ __metadata:
     superagent: 3.8.2
     svg-loader: 0.0.2
     svgo-loader: 3.0.3
+    terser-webpack-plugin: 2.3.8
     tlds: 1.203.1
     tmp: 0.2.1
     undoo: 0.5.0
@@ -23037,6 +23038,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"terser-webpack-plugin@npm:2.3.8, terser-webpack-plugin@npm:^2.3.5":
+  version: 2.3.8
+  resolution: "terser-webpack-plugin@npm:2.3.8"
+  dependencies:
+    cacache: ^13.0.1
+    find-cache-dir: ^3.3.1
+    jest-worker: ^25.4.0
+    p-limit: ^2.3.0
+    schema-utils: ^2.6.6
+    serialize-javascript: ^4.0.0
+    source-map: ^0.6.1
+    terser: ^4.6.12
+    webpack-sources: ^1.4.3
+  peerDependencies:
+    webpack: ^4.0.0 || ^5.0.0
+  checksum: a772d7d58a4730b619f71c4a8d7cf1fa90ded0d01b4fb9a094437c3380e3c35ce78caa030c2867a10cdd12527dfc2fb46bee949bd067ee0cd41e9890cbd85263
+  languageName: node
+  linkType: hard
+
 "terser-webpack-plugin@npm:^1.4.3":
   version: 1.4.5
   resolution: "terser-webpack-plugin@npm:1.4.5"
@@ -23053,25 +23073,6 @@ __metadata:
   peerDependencies:
     webpack: ^4.0.0
   checksum: 02aada80927d3c8105d69cb00384d307b73aed67d180db5d20023a8d649149f3803ad50f9cd2ef9eb2622005de87e677198ecc5088f51422bfac5d4d57472d0e
-  languageName: node
-  linkType: hard
-
-"terser-webpack-plugin@npm:^2.3.5":
-  version: 2.3.8
-  resolution: "terser-webpack-plugin@npm:2.3.8"
-  dependencies:
-    cacache: ^13.0.1
-    find-cache-dir: ^3.3.1
-    jest-worker: ^25.4.0
-    p-limit: ^2.3.0
-    schema-utils: ^2.6.6
-    serialize-javascript: ^4.0.0
-    source-map: ^0.6.1
-    terser: ^4.6.12
-    webpack-sources: ^1.4.3
-  peerDependencies:
-    webpack: ^4.0.0 || ^5.0.0
-  checksum: a772d7d58a4730b619f71c4a8d7cf1fa90ded0d01b4fb9a094437c3380e3c35ce78caa030c2867a10cdd12527dfc2fb46bee949bd067ee0cd41e9890cbd85263
   languageName: node
   linkType: hard
 
