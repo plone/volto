@@ -14,7 +14,6 @@
 
 - Show project name and version in control panel @sneridagh [#4176](https://github.com/plone/volto/issues/4176)
 - Enhance Cypress content creation command @sneridagh [#4210](https://github.com/plone/volto/issues/4210)
-- Enable scrolling to ids via hashes in internal links @jackahl [#4164](https://github.com/plone/volto/issues/4164)
 
 ### Bugfix
 
