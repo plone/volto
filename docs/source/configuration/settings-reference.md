@@ -234,7 +234,7 @@ styleClassNameConverters
     where the converter is registered here.
 
 styleClassNameExtenders
-    An array containing functions that extends how the StyleWrapper builds a list of styles. These functions have the signature `({ block, content, data, classNames }) => classNames`. Here some examples of useful ones, for simpliciy, they are compacted in one extender:
+    An array containing functions that extends how the StyleWrapper builds a list of styles. These functions have the signature `({ block, content, data, classNames }) => classNames`. Here some examples of useful ones, for simplicity, they are compacted in one extender:
 
     ```js
       import { getPreviousNextBlock } from '@plone/volto/helpers';
