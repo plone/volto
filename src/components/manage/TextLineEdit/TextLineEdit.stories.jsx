@@ -3,6 +3,7 @@ import Wrapper from '@plone/volto/storybook';
 import TextLineEdit from './TextLineEdit';
 import { BlocksForm } from '@plone/volto/components';
 import { RealStoreWrapper, FormUndoWrapper } from '@plone/volto/storybook';
+import cx from 'classnames';
 
 function StoryComponent(args) {
   const {
@@ -128,6 +129,7 @@ const TextlineBlockEdit = (props) => {
   return (
     <TextLineEdit
       {...props}
+      detached
       fieldName={data.fieldName}
       fieldDataName={data.fieldDataName}
     />
@@ -138,7 +140,7 @@ const blocksConfig = {
   testTextlineBlock: {
     id: 'testTextlineBlock',
     title: 'Textline Block',
-    view: (props) => <TextLineEdit {...props} />,
+    view: (props) => <div>{JSON.stringify(props.data)}</div>,
     edit: TextlineBlockEdit,
     blockHasOwnFocusManagement: true,
   },
@@ -161,7 +163,7 @@ const content = {
 
 export const AsBlockComponent = (props) => {
   const pathname = '/folder2/folder21/doc212';
-  const [selectedBlock, setSelectedBlock] = React.useState();
+  const [selectedBlock, setSelectedBlock] = React.useState('a');
 
   return (
     <RealStoreWrapper location={{ pathname }}>
@@ -179,16 +181,26 @@ export const AsBlockComponent = (props) => {
               onChangeFormData={onChange}
               isMainForm={false}
             >
-              {({ draginfo }, editBlock, blockProps) => (
-                <div
-                  className="edit-block"
-                  ref={draginfo.innerRef}
-                  {...draginfo.draggableProps}
-                >
-                  <div className="draghandle" {...draginfo.dragHandleProps} />
-                  {editBlock}
-                </div>
-              )}
+              {({ draginfo }, editBlock, blockProps) => {
+                // console.log('blockProps', blockProps);
+                return (
+                  <div
+                    className={cx('edit-block', {
+                      selected: blockProps.selected,
+                    })}
+                    ref={draginfo.innerRef}
+                    {...draginfo.draggableProps}
+                    style={{
+                      ...(blockProps.selected
+                        ? { border: '1px solid red' }
+                        : {}),
+                    }}
+                  >
+                    <div className="draghandle" {...draginfo.dragHandleProps} />
+                    {editBlock}
+                  </div>
+                );
+              }}
             </BlocksForm>
             <pre>Value: {JSON.stringify(state, null, 4)}</pre>
           </div>
