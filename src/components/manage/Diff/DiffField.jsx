@@ -7,7 +7,7 @@ import React from 'react';
 // import { diffWords as dWords } from 'diff';
 import { join, map } from 'lodash';
 import PropTypes from 'prop-types';
-import { Table } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import ReactDOMServer from 'react-dom/server';
 import { Provider } from 'react-intl-redux';
 import { createBrowserHistory } from 'history';
@@ -105,75 +105,72 @@ const DiffField = ({
     parts = diffWords(one?.title || one, two?.title || two);
   }
   return (
-    <Table compact data-testid="DiffField">
-      <Table.Header>
-        <Table.Row>
-          <Table.HeaderCell colSpan={2}>{schema.title}</Table.HeaderCell>
-        </Table.Row>
-      </Table.Header>
-      <Table.Body>
-        {view === 'split' && (
-          <Table.Row>
-            <Table.Cell width={8} verticalAlign="top">
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: join(
-                    map(
-                      parts,
-                      (part) =>
-                        (part.removed &&
-                          `<span class="deletion">${part.value}</span>`) ||
-                        (!part.added && `<span>${part.value}</span>`) ||
-                        '',
-                    ),
-                    '',
+    <Grid data-testid="DiffField">
+      <Grid.Row>
+        <Grid.Column width={12}>{schema.title}</Grid.Column>
+      </Grid.Row>
+
+      {view === 'split' && (
+        <Grid.Row>
+          <Grid.Column width={6} verticalAlign="top">
+            <span
+              dangerouslySetInnerHTML={{
+                __html: join(
+                  map(
+                    parts,
+                    (part) =>
+                      (part.removed &&
+                        `<span class="deletion">${part.value}</span>`) ||
+                      (!part.added && `<span>${part.value}</span>`) ||
+                      '',
                   ),
-                }}
-              />
-            </Table.Cell>
-            <Table.Cell width={8} verticalAlign="top">
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: join(
-                    map(
-                      parts,
-                      (part) =>
-                        (part.added &&
-                          `<span class="addition">${part.value}</span>`) ||
-                        (!part.removed && `<span>${part.value}</span>`) ||
-                        '',
-                    ),
-                    '',
+                  '',
+                ),
+              }}
+            />
+          </Grid.Column>
+          <Grid.Column width={6} verticalAlign="top">
+            <span
+              dangerouslySetInnerHTML={{
+                __html: join(
+                  map(
+                    parts,
+                    (part) =>
+                      (part.added &&
+                        `<span class="addition">${part.value}</span>`) ||
+                      (!part.removed && `<span>${part.value}</span>`) ||
+                      '',
                   ),
-                }}
-              />
-            </Table.Cell>
-          </Table.Row>
-        )}
-        {view === 'unified' && (
-          <Table.Row>
-            <Table.Cell width={16} verticalAlign="top">
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: join(
-                    map(
-                      parts,
-                      (part) =>
-                        (part.removed &&
-                          `<span class="deletion">${part.value}</span>`) ||
-                        (part.added &&
-                          `<span class="addition">${part.value}</span>`) ||
-                        (!part.added && `<span>${part.value}</span>`),
-                    ),
-                    '',
+                  '',
+                ),
+              }}
+            />
+          </Grid.Column>
+        </Grid.Row>
+      )}
+      {view === 'unified' && (
+        <Grid.Row>
+          <Grid.Column width={16} verticalAlign="top">
+            <span
+              dangerouslySetInnerHTML={{
+                __html: join(
+                  map(
+                    parts,
+                    (part) =>
+                      (part.removed &&
+                        `<span class="deletion">${part.value}</span>`) ||
+                      (part.added &&
+                        `<span class="addition">${part.value}</span>`) ||
+                      (!part.added && `<span>${part.value}</span>`),
                   ),
-                }}
-              />
-            </Table.Cell>
-          </Table.Row>
-        )}
-      </Table.Body>
-    </Table>
+                  '',
+                ),
+              }}
+            />
+          </Grid.Column>
+        </Grid.Row>
+      )}
+    </Grid>
   );
 };
 
