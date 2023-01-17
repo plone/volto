@@ -8,8 +8,8 @@ function StoryComponent(args) {
     fieldName,
     fieldDataName,
     properties,
-    renderClassName,
-    renderTag,
+    className,
+    as,
     placeholder,
     locale,
   } = args;
@@ -23,8 +23,8 @@ function StoryComponent(args) {
       location={{ pathname: '/folder2/folder21/doc212' }}
     >
       <TextLineEdit
-        renderTag={renderTag}
-        renderClassName={renderClassName}
+        as={as}
+        className={className}
         fieldName={fieldName}
         fieldDataName={fieldDataName}
         placeholder={placeholder}
@@ -48,21 +48,21 @@ function StoryComponent(args) {
 
 export const Default = StoryComponent.bind({});
 Default.args = {
-  renderClassName: 'documentFirstHeading',
+  className: 'documentFirstHeading',
 };
 
 export const Description = StoryComponent.bind({});
 Description.storyName = 'Use other metadata field';
 Description.args = {
-  renderTag: 'h2',
+  as: 'h2',
   fieldName: 'description',
 };
 
 export const ValueAsData = StoryComponent.bind({});
 ValueAsData.args = {
   fieldDataName: 'title',
-  renderClassName: '',
-  renderTag: 'h1',
+  className: '',
+  as: 'h1',
   properties: {
     title: 'This is properties title',
   },
@@ -71,8 +71,8 @@ ValueAsData.args = {
 export const InitialPropertiesValue = StoryComponent.bind({});
 InitialPropertiesValue.storyName = 'Set an initial value';
 InitialPropertiesValue.args = {
-  renderClassName: '',
-  renderTag: 'h2',
+  className: '',
+  as: 'h2',
   properties: {
     title: 'Initial value',
   },
@@ -82,8 +82,8 @@ export const InitialValue = StoryComponent.bind({});
 InitialValue.storyName = 'Set an initial value (as field data)';
 InitialValue.args = {
   fieldDataName: 'title',
-  renderClassName: '',
-  renderTag: 'h2',
+  className: '',
+  as: 'h2',
   data: {
     title: 'Initial value',
   },
@@ -92,8 +92,8 @@ InitialValue.args = {
 export const CustomPlaceholder = StoryComponent.bind({});
 CustomPlaceholder.args = {
   fieldDataName: 'title',
-  renderClassName: '',
-  renderTag: 'h2',
+  className: '',
+  as: 'h2',
   placeholder: 'Custom placeholder',
 };
 
@@ -101,24 +101,24 @@ export const CustomClassName = StoryComponent.bind({});
 CustomClassName.storyName = 'Custom classname (as field data)';
 CustomClassName.args = {
   fieldDataName: 'subtitle',
-  renderClassName: 'documentFirstHeading',
-  renderTag: 'h3',
+  className: 'documentFirstHeading',
+  as: 'h3',
 };
 
 export const H2 = StoryComponent.bind({});
 H2.storyName = 'Tag as h2';
 H2.args = {
   fieldDataName: 'title',
-  renderClassName: '',
-  renderTag: 'h2',
+  className: '',
+  as: 'h2',
 };
 
 export const H3 = StoryComponent.bind({});
 H3.storyName = 'Tag as h3';
 H3.args = {
   fieldDataName: 'subtitle',
-  renderClassName: '',
-  renderTag: 'h3',
+  className: '',
+  as: 'h3',
 };
 
 export default {

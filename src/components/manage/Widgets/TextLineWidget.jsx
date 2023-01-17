@@ -10,8 +10,8 @@ export function TextLineInput(props) {
   const {
     readOnly = false,
     placeholder,
-    renderClassName,
-    renderTag: RenderTag = 'h1',
+    className,
+    as: ViewComponent = 'h1',
     focus,
     getInputProps,
     value,
@@ -22,12 +22,12 @@ export function TextLineInput(props) {
   const renderElement = React.useCallback(
     ({ attributes, children }) => {
       return (
-        <RenderTag {...attributes} className={cx(renderClassName)}>
+        <ViewComponent {...attributes} className={cx(className)}>
           {children}
-        </RenderTag>
+        </ViewComponent>
       );
     },
-    [renderClassName],
+    [className],
   );
 
   const handleChange = React.useCallback(() => {
@@ -105,8 +105,8 @@ export default function TextLineWidget(props) {
 }
 
 TextLineWidget.propTypes = {
-  renderTag: PropTypes.string,
-  renderClassName: PropTypes.string,
+  as: PropTypes.string,
+  className: PropTypes.string,
 
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,

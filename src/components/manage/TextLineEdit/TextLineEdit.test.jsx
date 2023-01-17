@@ -136,7 +136,7 @@ describe('renders TextLineEdit', () => {
     const component = renderer.create(
       <Provider store={store}>
         <TextLineEdit
-          renderTag="h2"
+          as="h2"
           properties={{ title: 'My Title' }}
           selected={false}
           block="1234"
@@ -167,8 +167,8 @@ describe('renders TextLineEdit', () => {
     const component = renderer.create(
       <Provider store={store}>
         <TextLineEdit
-          renderTag="h2"
-          renderClassName="my-custom-h2-classname"
+          as="h2"
+          className="my-custom-h2-classname"
           properties={{ title: 'My Title' }}
           selected={false}
           block="1234"
