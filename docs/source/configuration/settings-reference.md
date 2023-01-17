@@ -234,14 +234,17 @@ styleClassNameConverters
     where the converter is registered here.
 
 styleClassNameExtenders
-    An array containing functions that extends how the StyleWrapper builds a list of styles. These functions have the signature `({ block, content, data })=>resultantStyle`:
+    An array containing functions that extends how the StyleWrapper builds a list of styles. These functions have the signature `({ block, content, data, classNames }) => classNames`:
 
     ```js
     config.settings.styleClassNameExtenders = [
-      ({ block, content, data }) => {
+      ({ block, content, data, classNames }) => {
+        const styles = [];
         if (nextBlock?.['@type']) {
-          return `next--bet--it--is--${nextBlock['@type']}`; // Returns a string
+          styles.push(`next--bet--it--is--${nextBlock['@type']}`);
         }
+
+        return [...classNames, ...styles]; // Return again all resultant classNames plus the additional ones.
       },
     ];
     ```
