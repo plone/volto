@@ -183,7 +183,8 @@ class Form extends Component {
       if (config.blocks?.initialBlocksFocus === null) {
         selectedBlock = null;
       } else if (this.props.type in config.blocks?.initialBlocksFocus) {
-        //Default selected is not the first block, but the one from config.
+        // Default selected is not the first block, but the one from config.
+        // TODO Select first block and not an arbitrary one.
         Object.keys(formData[blocksFieldname]).forEach((b_key) => {
           if (
             formData[blocksFieldname][b_key]['@type'] ===
