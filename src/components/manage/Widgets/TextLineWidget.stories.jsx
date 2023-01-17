@@ -93,7 +93,7 @@ const form = {
   },
 };
 
-export const FormNavigation = (props) => {
+export const MultipleFieldsInForm = (props) => {
   return (
     <Wrapper location={{ pathname: '/folder2/folder21/doc212' }}>
       <FormUndoWrapper initialState={form.value} showControls={true}>
@@ -113,6 +113,7 @@ export const FormNavigation = (props) => {
     </Wrapper>
   );
 };
+MultipleFieldsInForm.args = {};
 
 export default {
   title: 'Edit Widgets/TextLine',
