@@ -18,6 +18,7 @@ import {
   applySchemaDefaults,
   buildStyleClassNamesFromData,
   buildStyleClassNamesExtenders,
+  getPreviousNextBlock,
 } from './Blocks';
 
 import config from '@plone/volto/registry';
@@ -990,24 +991,51 @@ describe('Blocks', () => {
     });
   });
 
+  describe('getPreviousNextBlock', () => {
+    it('basic functionality', () => {
+      const content = {
+        blocks: {
+          1: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+          2: {
+            '@type': 'slate',
+          },
+          3: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+        },
+        blocks_layout: {
+          items: [1, 2, 3],
+        },
+      };
+      const block = 2;
+      const [previousBlock, nextBlock] = getPreviousNextBlock({
+        content,
+        block,
+      });
+      expect(previousBlock).toEqual({
+        '@type': 'slate',
+        styles: {
+          backgroundColor: 'grey',
+        },
+      });
+      expect(nextBlock).toEqual({
+        '@type': 'slate',
+        styles: {
+          backgroundColor: 'grey',
+        },
+      });
+    });
+  });
+
   describe('buildStyleClassNamesExtenders', () => {
-    const getPreviousNextBlock = ({ content, block }) => {
-      const previousBlock =
-        content['blocks'][
-          content['blocks_layout'].items[
-            content['blocks_layout'].items.indexOf(block) - 1
-          ]
-        ];
-      const nextBlock =
-        content['blocks'][
-          content['blocks_layout'].items[
-            content['blocks_layout'].items.indexOf(block) + 1
-          ]
-        ];
-
-      return [previousBlock, nextBlock];
-    };
-
     beforeAll(() => {
       // Example styleClassNameExtenders
       config.settings.styleClassNameExtenders = [

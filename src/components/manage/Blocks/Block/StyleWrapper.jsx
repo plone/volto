@@ -6,19 +6,21 @@ import {
 } from '@plone/volto/helpers';
 
 const StyleWrapper = (props) => {
+  let classNames = [];
   const { children, content, data = {}, block } = props;
-  const styles = buildStyleClassNamesFromData(data.styles);
+  classNames = buildStyleClassNamesFromData(data.styles);
 
-  const styleExtenders = buildStyleClassNamesExtenders({
+  classNames = buildStyleClassNamesExtenders({
     block,
     content,
     data,
+    classNames,
   });
   const rewrittenChildren = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
       const childProps = {
         ...props,
-        className: cx([child.props.className, ...styles, ...styleExtenders]),
+        className: cx([child.props.className, ...classNames]),
       };
       return React.cloneElement(child, childProps);
     }

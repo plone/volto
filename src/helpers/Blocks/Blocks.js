@@ -495,3 +495,27 @@ export const buildStyleClassNamesExtenders = ({ block, content, data }) => {
     [],
   );
 };
+
+/**
+ * Return previous/next blocks given the content object and the current block id
+ *
+ * @function getPreviousNextBlock
+ * @param {Object} params An object with the content object and block (current block id)
+ * @return {Array} An array with the signature [previousBlock, nextBlock]
+ */
+export const getPreviousNextBlock = ({ content, block }) => {
+  const previousBlock =
+    content['blocks'][
+      content['blocks_layout'].items[
+        content['blocks_layout'].items.indexOf(block) - 1
+      ]
+    ];
+  const nextBlock =
+    content['blocks'][
+      content['blocks_layout'].items[
+        content['blocks_layout'].items.indexOf(block) + 1
+      ]
+    ];
+
+  return [previousBlock, nextBlock];
+};
