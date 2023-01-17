@@ -45,8 +45,8 @@ export const TextLineEdit = (props) => {
     onFocusPreviousBlock,
     onSelectBlock,
     selected,
-    as,
-    className,
+    renderTag,
+    renderClassName,
     fieldDataName,
     fieldName = 'title',
     placeholder,
@@ -127,8 +127,8 @@ export const TextLineEdit = (props) => {
       focus={selected}
       onKeyDown={handleKeyDown}
       onFocus={handleFocus}
-      as={as}
-      className={className}
+      as={renderTag}
+      className={renderClassName}
     />
   ) : null;
 };
