@@ -3,7 +3,7 @@
  * @module helpers/Blocks
  */
 
-import { omit, without, endsWith, find, isObject, keys, toPairs } from 'lodash';
+import { omit, without, endsWith, find, isObject, keys, merge } from 'lodash';
 import move from 'lodash-move';
 import { v4 as uuid } from 'uuid';
 import config from '@plone/volto/registry';
@@ -233,7 +233,7 @@ export function mutateBlock(formData, id, value) {
  * @param {number} value New block's value
  * @return {Array} New block id, New form data
  */
-export function insertBlock(formData, id, value, current = {}) {
+export function insertBlock(formData, id, value, current = {}, offset = 0) {
   const blocksFieldname = getBlocksFieldname(formData);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
   const index = formData[blocksLayoutFieldname].items.indexOf(id);
@@ -253,9 +253,9 @@ export function insertBlock(formData, id, value, current = {}) {
       },
       [blocksLayoutFieldname]: {
         items: [
-          ...formData[blocksLayoutFieldname].items.slice(0, index),
+          ...formData[blocksLayoutFieldname].items.slice(0, index + offset),
           newBlockId,
-          ...formData[blocksLayoutFieldname].items.slice(index),
+          ...formData[blocksLayoutFieldname].items.slice(index + offset),
         ],
       },
     },
@@ -366,21 +366,55 @@ export function visitBlocks(content, callback) {
   }
 }
 
+let _logged = false;
+
 /**
  * Initializes data with the default values coming from schema
  */
-export function applySchemaDefaults({ data = {}, schema }) {
-  const derivedData = {
-    ...Object.keys(schema.properties).reduce((accumulator, currentField) => {
-      return schema.properties[currentField].default
+export function applySchemaDefaults({ data = {}, schema, intl }) {
+  if (!intl && !_logged) {
+    // Old code that doesn't pass intl doesn't get ObjectWidget defaults
+    // eslint-disable-next-line no-console
+    console.warn(
+      `You should pass intl to any applySchemaDefaults call. By failing to pass
+      the intl object, your ObjectWidget fields will not get default values
+      extracted from their schema.`,
+    );
+    _logged = true;
+  }
+
+  const derivedData = merge(
+    Object.keys(schema.properties).reduce((accumulator, currentField) => {
+      return typeof schema.properties[currentField].default !== 'undefined'
         ? {
             ...accumulator,
             [currentField]: schema.properties[currentField].default,
           }
+        : intl &&
+          schema.properties[currentField].schema &&
+          !(schema.properties[currentField].widget === 'object_list') // TODO: this should be renamed as itemSchema
+        ? {
+            ...accumulator,
+            [currentField]: {
+              ...applySchemaDefaults({
+                data: { ...data[currentField], ...accumulator[currentField] },
+                schema:
+                  typeof schema.properties[currentField].schema === 'function'
+                    ? schema.properties[currentField].schema({
+                        data: accumulator[currentField],
+                        formData: accumulator[currentField],
+                        intl,
+                      })
+                    : schema.properties[currentField].schema,
+                intl,
+              }),
+            },
+          }
         : accumulator;
     }, {}),
-    ...data,
-  };
+    data,
+  );
+
   return derivedData;
 }
 
@@ -392,7 +426,8 @@ export function applySchemaDefaults({ data = {}, schema }) {
  * @return {Object} Derived data, with the defaults extracted from the schema
  */
 export function applyBlockDefaults({ data, intl, ...rest }, blocksConfig) {
-  const block_type = data['@type'];
+  // We pay attention to not break on a missing (invalid) block.
+  const block_type = data?.['@type'];
   const { blockSchema } =
     (blocksConfig || config.blocks.blocksConfig)[block_type] || {};
   if (!blockSchema) return data;
@@ -403,38 +438,46 @@ export function applyBlockDefaults({ data, intl, ...rest }, blocksConfig) {
       : blockSchema;
   schema = applySchemaEnhancer({ schema, formData: data, intl });
 
-  return applySchemaDefaults({ data, schema });
+  return applySchemaDefaults({ data, schema, intl });
 }
 
-export const buildStyleClassNamesFromData = (styles) => {
-  // styles has the form
+/**
+ * Converts a name+value style pair (ex: color/red) to a classname,
+ * such as "has--color--red"
+ *
+ * This can be expanded via the style names, by suffixing them with special
+ * converters. See config.settings.styleClassNameConverters. Examples:
+ *
+ * styleToClassName('theme:noprefix', 'primary') returns "primary"
+ * styleToClassName('inverted:bool', true) returns 'inverted'
+ * styleToClassName('inverted:bool', false) returns ''
+ */
+export const styleToClassName = (key, value, prefix = '') => {
+  const converters = config.settings.styleClassNameConverters;
+  const [name, ...convIds] = key.split(':');
+
+  return (convIds.length ? convIds : ['default'])
+    .map((id) => converters[id])
+    .reduce((acc, conv) => conv(acc, value, prefix), name);
+};
+
+export const buildStyleClassNamesFromData = (obj = {}, prefix = '') => {
+  // styles has the form:
   // const styles = {
-  // color: 'red',
-  // backgroundColor: '#AABBCC',
+  //   color: 'red',
+  //   backgroundColor: '#AABBCC',
   // }
   // Returns: ['has--color--red', 'has--backgroundColor--AABBCC']
-  let styleArray = [];
-  const pairedStyles = toPairs(styles);
-  pairedStyles.forEach((item) => {
-    if (isObject(item[1])) {
-      const flattenedNestedStyles = toPairs(item[1]).map((nested) => [
-        item[0],
-        ...nested,
-      ]);
-      flattenedNestedStyles.forEach((sub) => styleArray.push(sub));
-    } else {
-      styleArray.push(item);
-    }
-  });
-  return styleArray.map((item) => {
-    const classname = item.map((item) => {
-      const str_item = item ? item.toString() : '';
-      return str_item && str_item.startsWith('#')
-        ? str_item.replace('#', '')
-        : str_item;
-    });
-    return `has--${classname[0]}--${classname[1]}${
-      classname[2] ? `--${classname[2]}` : ''
-    }`;
-  });
+
+  return Object.entries(obj)
+    .reduce(
+      (acc, [k, v]) => [
+        ...acc,
+        ...(isObject(v)
+          ? buildStyleClassNamesFromData(v, `${prefix}${k}--`)
+          : [styleToClassName(k, v, prefix)]),
+      ],
+      [],
+    )
+    .filter((v) => !!v);
 };

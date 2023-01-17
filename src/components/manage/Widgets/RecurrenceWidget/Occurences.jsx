@@ -43,7 +43,7 @@ const messages = defineMessages({
   },
   include: {
     id: 'Include this occurence',
-    defaultMessage: 'Include this occurence',
+    defaultMessage: 'Include this occurrence',
   },
 });
 

@@ -3,6 +3,7 @@ import { useSlate } from 'slate-react';
 import { Dropdown } from 'semantic-ui-react';
 import { useIntl, defineMessages } from 'react-intl';
 import cx from 'classnames';
+import { omit } from 'lodash';
 import { isBlockStyleActive, isInlineStyleActive, toggleStyle } from './utils';
 import config from '@plone/volto/registry';
 import { ToolbarButton } from '@plone/volto-slate/editor/ui';
@@ -27,14 +28,15 @@ const StyleMenuButton = ({ icon, active, ...props }) => (
   <ToolbarButton {...props} icon={icon} active={active} />
 );
 
-const MenuOpts = ({ editor, toSelect, option }) => {
+const MenuOpts = ({ editor, toSelect, option, ...rest }) => {
   const isActive = toSelect.includes(option);
   return (
     <Dropdown.Item
       as="span"
       active={isActive}
       className={cx({ active: isActive })}
-      {...option}
+      {...omit(option, ['isBlock'])}
+      data-isblock={option.isBlock}
       onClick={(event, selItem) => {
         toggleStyle(editor, {
           cssClass: selItem.value,
@@ -96,7 +98,7 @@ const StylingsButton = (props) => {
   return showMenu ? (
     <Dropdown
       id="style-menu"
-      pointing=" top left"
+      pointing="top left"
       multiple
       value={toSelect}
       disabled={config.settings.slate.styleMenu.disabled ?? false}
@@ -115,8 +117,8 @@ const StylingsButton = (props) => {
             <Dropdown.Header
               content={intl.formatMessage(messages.inlineStyle)}
             />
-            {inlineOpts.map((option) => (
-              <MenuOpts {...menuItemProps} option={option} />
+            {inlineOpts.map((option, index) => (
+              <MenuOpts {...menuItemProps} option={option} key={index} />
             ))}
           </>
         )}
@@ -126,8 +128,8 @@ const StylingsButton = (props) => {
             <Dropdown.Header
               content={intl.formatMessage(messages.paragraphStyle)}
             />
-            {blockOpts.map((option) => (
-              <MenuOpts {...menuItemProps} option={option} />
+            {blockOpts.map((option, index) => (
+              <MenuOpts {...menuItemProps} option={option} key={index} />
             ))}
           </>
         )}

@@ -9,11 +9,16 @@ import {
 } from '@plone/volto/helpers';
 import StyleWrapper from '@plone/volto/components/manage/Blocks/Block/StyleWrapper';
 import config from '@plone/volto/registry';
+import { ViewDefaultBlock } from '@plone/volto/components';
 
 const messages = defineMessages({
   unknownBlock: {
     id: 'Unknown Block',
     defaultMessage: 'Unknown Block {block}',
+  },
+  invalidBlock: {
+    id: 'Invalid Block',
+    defaultMessage: 'Invalid block - Will be removed on saving',
   },
 });
 
@@ -28,7 +33,8 @@ const RenderBlocks = (props) => {
     <CustomTag>
       {map(content[blocksLayoutFieldname].items, (block) => {
         const Block =
-          blocksConfig[content[blocksFieldname]?.[block]?.['@type']]?.view;
+          blocksConfig[content[blocksFieldname]?.[block]?.['@type']]?.view ||
+          ViewDefaultBlock;
 
         const blockData = applyBlockDefaults({
           data: content[blocksFieldname][block],
@@ -48,12 +54,14 @@ const RenderBlocks = (props) => {
               blocksConfig={blocksConfig}
             />
           </StyleWrapper>
-        ) : (
+        ) : blockData ? (
           <div key={block}>
             {intl.formatMessage(messages.unknownBlock, {
               block: content[blocksFieldname]?.[block]?.['@type'],
             })}
           </div>
+        ) : (
+          <div key={block}>{intl.formatMessage(messages.invalidBlock)}</div>
         );
       })}
     </CustomTag>

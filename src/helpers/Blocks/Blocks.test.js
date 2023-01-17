@@ -38,7 +38,7 @@ config.blocks.blocksConfig.text = {
     fieldsets: [
       {
         id: 'default',
-        fields: ['title', 'description', 'nonDefault'],
+        fields: ['title', 'description', 'nonDefault', 'booleanField'],
         title: 'Default',
       },
     ],
@@ -51,6 +51,10 @@ config.blocks.blocksConfig.text = {
       },
       nonDefault: {
         title: 'Non default',
+      },
+      booleanField: {
+        title: 'BooleanField',
+        default: false,
       },
     },
   }),
@@ -158,6 +162,151 @@ config.blocks.blocksConfig.enhancedBlockCase2 = {
         title: 'Non default',
       },
     },
+  }),
+};
+
+const itemSchema = (props) => {
+  return {
+    title: 'Item',
+    addMessage: 'Add',
+    fieldsets: [
+      {
+        id: 'default',
+        title: 'Default',
+        fields: [
+          'href',
+          'title',
+          'description',
+          'preview_image',
+          'extraDefault',
+        ],
+      },
+    ],
+
+    properties: {
+      href: {
+        title: 'Source',
+        widget: 'object_browser',
+        mode: 'link',
+        selectedItemAttrs: [
+          'Title',
+          'Description',
+          'hasPreviewImage',
+          'headtitle',
+        ],
+        allowExternals: true,
+      },
+      title: {
+        title: 'title',
+      },
+      description: {
+        title: 'description',
+      },
+      preview_image: {
+        title: 'Image Override',
+        widget: 'object_browser',
+        mode: 'image',
+        allowExternals: true,
+      },
+      extraDefault: {
+        title: 'Extra',
+        default: 'Extra default',
+      },
+    },
+    required: [],
+  };
+};
+
+config.blocks.blocksConfig.slider = {
+  id: 'slider',
+  title: 'Slider',
+  group: 'Special',
+  restricted: false,
+  mostUsed: false,
+  blockHasOwnFocusManagement: true,
+  blockSchema: (props) => ({
+    title: 'slider',
+    fieldsets: [
+      {
+        id: 'default',
+        title: 'Default',
+        fields: [
+          'slides',
+          'fieldAfterObjectList',
+          'href',
+          'firstWithDefault',
+          'style',
+          'anotherWithDefault',
+          'yetAnotherWithDefault',
+        ],
+      },
+    ],
+    properties: {
+      slides: {
+        widget: 'object_list',
+        schema: itemSchema,
+        default: [
+          {
+            '@id': 'asdasdasd-qweqwe-zxczxc',
+            extraDefault:
+              'Extra default (Manual in parent slider widget default)',
+          },
+        ],
+      },
+      fieldAfterObjectList: {
+        title: 'Field after OL',
+      },
+      href: {
+        widget: 'object_browser',
+        mode: 'link',
+        selectedItemAttrs: [
+          'Title',
+          'Description',
+          'hasPreviewImage',
+          'headtitle',
+        ],
+        allowExternals: true,
+      },
+      firstWithDefault: {
+        title: 'Field with default',
+        default: 'Some default value',
+      },
+      style: {
+        widget: 'object',
+        schema: {
+          title: 'Style',
+          fieldsets: [
+            {
+              id: 'default',
+              fields: ['color', 'theme'],
+              title: 'Default',
+            },
+          ],
+          properties: {
+            color: {
+              title: 'Color',
+              default: 'red',
+            },
+            theme: {
+              title: 'Theme',
+              default: 'primary',
+            },
+          },
+          required: [],
+        },
+      },
+      anotherWithDefault: {
+        title: 'Field with default 2',
+        default: 2,
+        type: 'number',
+      },
+      yetAnotherWithDefault: {
+        title: 'Field with default 3',
+        default: ['one', 'two'],
+        type: 'array',
+      },
+    },
+    required: [],
   }),
 };
 
@@ -499,8 +648,148 @@ describe('Blocks', () => {
       const schema = config.blocks.blocksConfig.text.blockSchema({ data });
       expect(applySchemaDefaults({ schema, data })).toEqual({
         '@type': 'text',
+        booleanField: false,
         title: 'Default title',
         description: 'already filled',
+      });
+    });
+    it('Sets data according to schema default values, top level and styling wrapper object field', () => {
+      const data = {
+        '@type': 'slider',
+      };
+      const schema = config.blocks.blocksConfig.slider.blockSchema({ data });
+
+      // if you don't pass down intl, the ObjectWidget defaults are not applied
+      expect(applySchemaDefaults({ schema, data })).toEqual({
+        '@type': 'slider',
+        anotherWithDefault: 2,
+        slides: [
+          {
+            '@id': 'asdasdasd-qweqwe-zxczxc',
+            extraDefault:
+              'Extra default (Manual in parent slider widget default)',
+          },
+        ],
+        firstWithDefault: 'Some default value',
+        yetAnotherWithDefault: ['one', 'two'],
+      });
+
+      expect(applySchemaDefaults({ schema, data, intl: {} })).toEqual({
+        '@type': 'slider',
+        anotherWithDefault: 2,
+        slides: [
+          {
+            '@id': 'asdasdasd-qweqwe-zxczxc',
+            extraDefault:
+              'Extra default (Manual in parent slider widget default)',
+          },
+        ],
+        firstWithDefault: 'Some default value',
+        style: {
+          color: 'red',
+          theme: 'primary',
+        },
+        yetAnotherWithDefault: ['one', 'two'],
+      });
+    });
+
+    it('Sets data according to schema default values, keeps existing data', () => {
+      const schema = {
+        properties: {
+          style: {
+            widget: 'object',
+            schema: {
+              title: 'Style',
+              fieldsets: [
+                {
+                  id: 'default',
+                  fields: ['color', 'theme'],
+                  title: 'Default',
+                },
+              ],
+              properties: {
+                color: {
+                  title: 'Color',
+                  default: 'red',
+                },
+                theme: {
+                  title: 'Theme',
+                  default: 'primary',
+                },
+              },
+              required: [],
+            },
+          },
+        },
+      };
+
+      expect(
+        applySchemaDefaults({
+          schema,
+          data: {
+            '@type': 'slider',
+            style: {
+              theme: 'secondary',
+            },
+          },
+          intl: {},
+        }),
+      ).toEqual({
+        '@type': 'slider',
+        style: {
+          color: 'red',
+          theme: 'secondary',
+        },
+      });
+    });
+
+    it('Sets data according to schema default values, keeps existing data', () => {
+      const schema = {
+        properties: {
+          style: {
+            widget: 'object',
+            schema: {
+              title: 'Style',
+              fieldsets: [
+                {
+                  id: 'default',
+                  fields: ['color', 'theme'],
+                  title: 'Default',
+                },
+              ],
+              properties: {
+                color: {
+                  title: 'Color',
+                  default: 'red',
+                },
+                theme: {
+                  title: 'Theme',
+                  default: 'primary',
+                },
+              },
+              required: [],
+            },
+          },
+        },
+      };
+
+      expect(
+        applySchemaDefaults({
+          schema,
+          data: {
+            '@type': 'slider',
+            style: {
+              theme: 'secondary',
+            },
+          },
+          intl: {},
+        }),
+      ).toEqual({
+        '@type': 'slider',
+        style: {
+          color: 'red',
+          theme: 'secondary',
+        },
       });
     });
   });
@@ -513,6 +802,7 @@ describe('Blocks', () => {
       };
       expect(applyBlockDefaults({ data })).toEqual({
         '@type': 'text',
+        booleanField: false,
         title: 'Default title',
         description: 'already filled',
       });
@@ -573,7 +863,13 @@ describe('Blocks', () => {
         variation: 'firstVariation',
       });
     });
+
+    it('Tolerates a missing (invalid) block', () => {
+      const data = {};
+      expect(applyBlockDefaults({ data })).toEqual({});
+    });
   });
+
   describe('buildStyleClassNamesFromData', () => {
     it('Sets styles classname array according to style values', () => {
       const styles = {
@@ -585,6 +881,7 @@ describe('Blocks', () => {
         'has--backgroundColor--AABBCC',
       ]);
     });
+
     it('Sets styles classname array according to style values with nested', () => {
       const styles = {
         color: 'red',
@@ -601,6 +898,7 @@ describe('Blocks', () => {
         'has--nested--bar--black',
       ]);
     });
+
     it('Sets styles classname array according to style values with nested and colors', () => {
       const styles = {
         color: 'red',
@@ -618,6 +916,27 @@ describe('Blocks', () => {
       ]);
     });
 
+    it('Supports multiple nested level', () => {
+      const styles = {
+        color: 'red',
+        backgroundColor: '#AABBCC',
+        nested: {
+          l1: 'white',
+          level2: {
+            foo: '#fff',
+            bar: '#000',
+          },
+        },
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual([
+        'has--color--red',
+        'has--backgroundColor--AABBCC',
+        'has--nested--l1--white',
+        'has--nested--level2--foo--fff',
+        'has--nested--level2--bar--000',
+      ]);
+    });
+
     it('Sets styles classname array according to style values with int values', () => {
       const styles = {
         color: 'red',
@@ -627,6 +946,46 @@ describe('Blocks', () => {
         'has--color--red',
         'has--borderRadius--8',
       ]);
+    });
+
+    it('Understands noprefix converter for style values', () => {
+      const styles = {
+        color: 'red',
+        'theme:noprefix': 'primary',
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual([
+        'has--color--red',
+        'primary',
+      ]);
+    });
+
+    it('Understands bool converter for trueish value', () => {
+      const styles = {
+        color: 'red',
+        'inverted:bool': true,
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual([
+        'has--color--red',
+        'inverted',
+      ]);
+    });
+
+    it('Understands bool converter for false value', () => {
+      const styles = {
+        color: 'red',
+        'inverted:bool': false,
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual(['has--color--red']);
+    });
+
+    it('Ugly edge cases', () => {
+      const styles = {
+        color: undefined,
+        nested: {
+          l1: {},
+        },
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual([]);
     });
   });
 });

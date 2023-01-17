@@ -61,7 +61,7 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({
-        Username: [messages.required.defaultMessage],
+        username: [messages.required.defaultMessage],
       });
     });
 

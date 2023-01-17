@@ -1,0 +1,4570 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Plone\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language: zh_CN\n"
+"Language-Team: \n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Language-Code: zh_CN\n"
+"Language-Name: Chinese\n"
+"Preferred-Encodings: utf-8\n"
+"X-Is-Fallback-For: zh-cn\n"
+"X-Generator: Poedit 3.2\n"
+
+#: components/manage/Blocks/HTML/Edit
+# defaultMessage: <p>Add some HTML here</p>
+msgid "<p>Add some HTML here</p>"
+msgstr "在此处添加一些HTML"
+
+#: components/theme/Register/Register
+# defaultMessage: Account Registration Completed
+msgid "Account Registration Completed"
+msgstr "账号注册完成"
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Account activation completed
+msgid "Account activation completed"
+msgstr "账号激活完成"
+
+#: components/manage/Controlpanels/ModerateComments
+# defaultMessage: Action
+msgid "Action"
+msgstr "操作"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Action changed
+msgid "Action changed"
+msgstr "操作改变"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Action:
+msgid "Action: "
+msgstr "操作："
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/Groups/GroupsControlpanel
+#: components/manage/Controlpanels/Rules/Rules
+#: components/manage/Controlpanels/Users/UsersControlpanel
+# defaultMessage: Actions
+msgid "Actions"
+msgstr "操作"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Activate and deactivate add-ons in the lists below.
+msgid "Activate and deactivate"
+msgstr "启用或者禁用"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Active
+msgid "Active"
+msgstr "已启用"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Active content rules in this Page
+msgid "Active content rules in this Page"
+msgstr "在此页面中活动的内容规则"
+
+#: components/manage/Aliases/Aliases
+#: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Rules/Rules
+#: components/manage/Toolbar/Toolbar
+#: components/manage/Widgets/SchemaWidget
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add
+msgid "Add"
+msgstr "添加"
+
+#: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Add
+msgid "Add (object list)"
+msgstr "添加（对象列表）"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
+msgid "Add Addons"
+msgstr "添加附件"
+
+#: components/manage/Toolbar/Types
+# defaultMessage: Add Content…
+msgid "Add Content"
+msgstr "添加内容"
+
+#: components/manage/Controlpanels/Rules/AddRule
+# defaultMessage: Add Content Rule
+msgid "Add Content Rule"
+msgstr "添加内容规则"
+
+#: components/manage/Controlpanels/Rules/AddRule
+# defaultMessage: Add Rule
+msgid "Add Rule"
+msgstr "添加规则"
+
+#: components/manage/Toolbar/Types
+# defaultMessage: Add Translation…
+msgid "Add Translation…"
+msgstr "添加翻译"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add User
+msgid "Add User"
+msgstr "添加用户"
+
+#: components/manage/Blocks/Description/Edit
+# defaultMessage: Add a description…
+msgid "Add a description…"
+msgstr "添加描述"
+
+#: components/manage/Aliases/Aliases
+# defaultMessage: Add a new alternative url
+msgid "Add a new alternative url"
+msgstr "添加新的替代 URL"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Action added
+msgid "Add action"
+msgstr "添加操作"
+
+#: components/manage/BlockChooser/BlockChooserButton
+# defaultMessage: Add block
+msgid "Add block"
+msgstr "添加block"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add block…
+msgid "Add block…"
+msgstr "添加块..."
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Condition added
+msgid "Add condition"
+msgstr "添加条件"
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Add content rule
+msgid "Add content rule"
+msgstr "添加内容规则"
+
+#: components/manage/Widgets/QueryWidget
+# defaultMessage: Add criteria
+msgid "Add criteria"
+msgstr "添加标准"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Add date
+msgid "Add date"
+msgstr "添加日期"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Add field
+msgid "Add field"
+msgstr "添加字段"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Add fieldset
+msgid "Add fieldset"
+msgstr "添加字段集"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add group
+msgid "Add group"
+msgstr "添加组"
+
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Add new content type
+msgid "Add new content type"
+msgstr "添加新的内容类型"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add new group
+msgid "Add new group"
+msgstr "添加新组"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add new user
+msgid "Add new user"
+msgstr "添加新用户"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add to Groups
+msgid "Add to Groups"
+msgstr "添加到组"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add users to group
+msgid "Add users to group"
+msgstr "添加用户到组"
+
+#: components/manage/Widgets/VocabularyTermsWidget
+# defaultMessage: Add term
+msgid "Add vocabulary term"
+msgstr "添加词汇"
+
+#: components/manage/Add/Add
+# defaultMessage: Add {type}
+msgid "Add {type}"
+msgstr "添加{type}"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Add-Ons
+msgid "Add-Ons"
+msgstr "附加组件"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Add-on Configuration
+msgid "Add-on Configuration"
+msgstr "附加组件配置"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Add-ons
+msgid "Add-ons"
+msgstr "附加组件"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Add-ons Settings
+msgid "Add-ons Settings"
+msgstr "附加组件设置"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Added
+msgid "Added"
+msgstr "已添加"
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: Additional date
+msgid "Additional date"
+msgstr "附加日期"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon could not be installed
+msgid "Addon could not be installed"
+msgstr "无法安装附件"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon could not be uninstalled
+msgid "Addon could not be uninstalled"
+msgstr "无法卸载附件"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon could not be upgraded
+msgid "Addon could not be upgraded"
+msgstr "无法升级附件"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon installed succesfuly
+msgid "Addon installed succesfuly"
+msgstr "附件安装成功"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon uninstalled succesfuly
+msgid "Addon uninstalled succesfuly"
+msgstr "附件卸载成功"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Addon upgraded succesfuly
+msgid "Addon upgraded succesfuly"
+msgstr "附件升级成功"
+
+#: config/Views
+# defaultMessage: Album view
+msgid "Album view"
+msgstr "相册视图"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Alias
+msgid "Alias"
+msgstr "别名"
+
+#: components/manage/Aliases/Aliases
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Alias has been added
+msgid "Alias has been added"
+msgstr "别名已添加"
+
+#: components/manage/Blocks/Image/schema
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/schema
+#: components/manage/Blocks/Video/schema
+# defaultMessage: Alignment
+msgid "Alignment"
+msgstr "对齐"
+
+#: components/manage/Contents/Contents
+# defaultMessage: All
+msgid "All"
+msgstr "所有"
+
+#: config/Views
+# defaultMessage: All content
+msgid "All content"
+msgstr "所有内容"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: All existing alternative urls for this site
+msgid "All existing alternative urls for this site"
+msgstr "此网站所有的替代 urls"
+
+#: components/theme/Search/Search
+# defaultMessage: Alphabetically
+msgid "Alphabetically"
+msgstr "按字母表顺序"
+
+#: components/manage/Blocks/Image/schema
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/schema
+# defaultMessage: Alt text
+msgid "Alt text"
+msgstr "替换文本"
+
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Leave empty if the image is purely decorative.
+msgid "Alt text hint"
+msgstr "替换文本提示"
+
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Describe the purpose of the image.
+msgid "Alt text hint link text"
+msgstr "替换文本提示链接文本"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Alternative url path (Required)
+msgid "Alternative url path (Required)"
+msgstr "替代 URL 路径（必选）"
+
+#: components/manage/Aliases/Aliases
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Alternative url path must start with a slash.
+msgid "Alternative url path must start with a slash."
+msgstr "替代 URL 路径必须以斜杠开头。"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Alternative url path → target url path (date and time of creation, manually created yes/no)
+msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
+msgstr "替代 URL 路径 → 目标 URL 路径（创建的日期和时间，手动创建 yes/no）"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Applied to subfolders
+msgid "Applied to subfolders"
+msgstr "应用于子文件夹"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Applies to subfolders?
+msgid "Applies to subfolders?"
+msgstr "是否应用于子文件夹？"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Apply to subfolders
+msgid "Apply to subfolders"
+msgstr "应用于子文件夹"
+
+#: components/manage/Toolbar/More
+# defaultMessage: Apply working copy
+msgid "Apply working copy"
+msgstr "申请工作副本"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Are you sure you want to delete this field?
+msgid "Are you sure you want to delete this field?"
+msgstr "确定要删除此字段？"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Are you sure you want to delete this fieldset including all fields?
+msgid "Are you sure you want to delete this fieldset including all fields?"
+msgstr "确定要删除此包括所有字段的字段集？"
+
+#: components/manage/Blocks/Search/components/SortOn
+#: components/manage/Contents/Contents
+# defaultMessage: Ascending
+msgid "Ascending"
+msgstr "上升"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Assignments
+msgid "Assignments"
+msgstr "分配"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Available
+msgid "Available"
+msgstr "可用的"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Available content rules:
+msgid "Available content rules:"
+msgstr "可用的内容规则"
+
+#: components/manage/Aliases/Aliases
+#: components/manage/Contents/Contents
+#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/DatabaseInformation
+#: components/manage/Controlpanels/ModerateComments
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Controlpanels/Rules/Rules
+#: components/manage/Controlpanels/UndoControlpanel
+#: components/manage/Controlpanels/UpgradeControlPanel
+#: components/manage/Diff/Diff
+#: components/manage/History/History
+#: components/manage/Multilingual/ManageTranslations
+#: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalPreferences
+#: components/manage/Rules/Rules
+#: components/manage/Sharing/Sharing
+#: components/manage/Sidebar/ObjectBrowserBody
+#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/Toolbar
+#: components/theme/ContactForm/ContactForm
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Back
+msgid "Back"
+msgstr "返回"
+
+#: components/manage/Diff/Diff
+# defaultMessage: Base
+msgid "Base"
+msgstr "基本"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Base search query
+msgid "Base search query"
+msgstr "基本搜索查询"
+
+#: components/manage/Sidebar/Sidebar
+# defaultMessage: Block
+msgid "Block"
+msgstr "块"
+
+#: components/theme/Login/Login
+# defaultMessage: Both email address and password are case sensitive, check that caps lock is not enabled.
+msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
+msgstr "Email 地址和密码都是区分大小写的，请检查 CapsLock 键。"
+
+#: components/theme/Breadcrumbs/Breadcrumbs
+# defaultMessage: Breadcrumbs
+msgid "Breadcrumbs"
+msgstr "面包屑导航"
+
+#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Contents/ContentsUploadModal
+#: components/manage/Sidebar/ObjectBrowserNav
+# defaultMessage: Browse
+msgid "Browse"
+msgstr "浏览"
+
+#: components/manage/Blocks/Image/Edit
+# defaultMessage: Browse the site, drop an image, or type an URL
+msgid "Browse the site, drop an image, or type an URL"
+msgstr "浏览网站，放入一张图片，或者输入一个URL"
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator.
+msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+msgstr "默认情况下，条目的权限从父文件夹继承，您可以禁用继承，明确设置权限。总体来说，${inherited}符号表示这是一个继承的值，${global}符号表示这是一个由网站管理员管理的全局角色。"
+
+#: components/manage/Contents/Contents
+# defaultMessage: By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first.
+msgid "By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first."
+msgstr "删除这些条目，将会破坏下列条目中的链连引用，如果您确定要这样做，建议您先删除这些引用。"
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Cache Name
+msgid "Cache Name"
+msgstr "缓存名称"
+
+#: components/manage/Controlpanels/ContentTypeLayout
+# defaultMessage: Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled
+msgid "Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypeLayout
+# defaultMessage: Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>
+msgid "Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
+msgstr ""
+
+#: components/manage/Add/Add
+#: components/manage/Contents/ContentsUploadModal
+#: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Delete/Delete
+#: components/manage/Edit/Edit
+#: components/manage/Form/ModalForm
+#: components/manage/Sharing/Sharing
+#: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Cancel
+msgid "Cancel"
+msgstr "取消"
+
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Cell
+msgid "Cell"
+msgstr "单元格"
+
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
+# defaultMessage: Center
+msgid "Center"
+msgstr "中间"
+
+#: components/manage/History/History
+# defaultMessage: Change Note
+msgid "Change Note"
+msgstr "更改注释"
+
+#: components/manage/Preferences/ChangePassword
+# defaultMessage: Change Password
+msgid "Change Password"
+msgstr "更改密码"
+
+#: components/manage/Contents/ContentsWorkflowModal
+# defaultMessage: Change State
+msgid "Change State"
+msgstr "改变状态"
+
+#: components/manage/Contents/ContentsWorkflowModal
+# defaultMessage: Change workflow state recursively
+msgid "Change workflow state recursively"
+msgstr "递归地更改工作流状态"
+
+#: components/manage/Toolbar/More
+# defaultMessage: Changes applied
+msgid "Changes applied."
+msgstr "更改已经生效"
+
+#: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalPreferences
+# defaultMessage: Changes saved
+msgid "Changes saved"
+msgstr "更改已经保存"
+
+#: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Controlpanel
+# defaultMessage: Changes saved.
+msgid "Changes saved."
+msgstr "更改已经保存"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Checkbox
+msgid "Checkbox"
+msgstr "复选框"
+
+#: components/manage/Widgets/SelectWidget
+# defaultMessage: Choices
+msgid "Choices"
+msgstr "选择"
+
+#: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: Choose Image
+msgid "Choose Image"
+msgstr "选择图像"
+
+#: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: Choose Target
+msgid "Choose Target"
+msgstr "选择目标"
+
+#: components/manage/Widgets/FileWidget
+# defaultMessage: Choose a file
+msgid "Choose a file"
+msgstr "选择一个文件"
+
+#: components/manage/Blocks/HTML/Edit
+# defaultMessage: Clear
+msgid "Clear"
+msgstr "清除"
+
+#: components/manage/Blocks/Search/components/FilterList
+# defaultMessage: Clear filters
+msgid "Clear filters"
+msgstr "清除过滤器"
+
+#: components/theme/View/ImageView
+# defaultMessage: Click to download full sized image
+msgid "Click to download full sized image"
+msgstr "点击下载完整大小的图片"
+
+#: components/manage/Widgets/SelectWidget
+# defaultMessage: Close
+msgid "Close"
+msgstr "关闭"
+
+#: components/theme/Navigation/Navigation
+# defaultMessage: Close menu
+msgid "Close menu"
+msgstr "关闭菜单"
+
+#: components/manage/Blocks/HTML/Edit
+# defaultMessage: Code
+msgid "Code"
+msgstr "代码"
+
+#: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Collapse item
+msgid "Collapse item"
+msgstr "崩溃的项目"
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Collection
+msgid "Collection"
+msgstr "查询集"
+
+#: components/manage/Widgets/ColorPickerWidget
+# defaultMessage: Color
+msgid "Color"
+msgstr "颜色"
+
+#: components/manage/Controlpanels/ModerateComments
+#: components/theme/Comments/CommentEditModal
+#: components/theme/Comments/Comments
+# defaultMessage: Comment
+msgid "Comment"
+msgstr "评论"
+
+#: components/manage/Controlpanels/ModerateComments
+# defaultMessage: Commenter
+msgid "Commenter"
+msgstr "评论者"
+
+#: components/theme/Comments/Comments
+# defaultMessage: Comments
+msgid "Comments"
+msgstr "评论"
+
+#: components/manage/Diff/Diff
+# defaultMessage: Compare
+msgid "Compare"
+msgstr "比较"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Condition changed
+msgid "Condition changed"
+msgstr "条件改变"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Condition:
+msgid "Condition: "
+msgstr "条件"
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Configuration Versions
+msgid "Configuration Versions"
+msgstr "配置版本"
+
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Configure Content Rule
+msgid "Configure Content Rule"
+msgstr "配置内容规则"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Configure Content Rule: {title}
+msgid "Configure Content Rule: {title}"
+msgstr "配置内容规则: {title}"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Configure content rule
+msgid "Configure content rule"
+msgstr "配置内容规则"
+
+#: components/manage/Preferences/ChangePassword
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Confirm password
+msgid "Confirm password"
+msgstr "确认密码"
+
+#: components/theme/ConnectionRefused/ConnectionRefused
+# defaultMessage: Connection refused
+msgid "Connection refused"
+msgstr "连接被拒绝"
+
+#: components/theme/ContactForm/ContactForm
+# defaultMessage: Contact form
+msgid "Contact form"
+msgstr "联系表单"
+
+#: components/manage/Blocks/Listing/Edit
+# defaultMessage: Contained items
+msgid "Contained items"
+msgstr "包含的项目"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Content
+msgid "Content"
+msgstr "内容"
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Content Rule
+msgid "Content Rule"
+msgstr "内容规则"
+
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Content Rules
+msgid "Content Rules"
+msgstr "内容规则"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Content rules for {title}
+msgid "Content rules for {title}"
+msgstr "{title}的内容规则"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Content rules from parent folders
+msgid "Content rules from parent folders"
+msgstr "父文件夹的内容规则"
+
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Content type created
+msgid "Content type created"
+msgstr "内容类型已创建"
+
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Content type deleted
+msgid "Content type deleted"
+msgstr "内容类型已删除"
+
+#: components/manage/Contents/Contents
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Contents
+msgid "Contents"
+msgstr "内容"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Controls
+msgid "Controls"
+msgstr "控制"
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Copy
+msgid "Copy"
+msgstr "复制"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: undefined
+msgid "Copy blocks"
+msgstr "复制块"
+
+#: components/theme/Footer/Footer
+# defaultMessage: Copyright
+msgid "Copyright"
+msgstr "版权"
+
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Copyright statement or other rights information on this item.
+msgid "Copyright statement or other rights information on this item."
+msgstr "本内容的版权信息"
+
+#: components/manage/Toolbar/More
+# defaultMessage: Create working copy
+msgid "Create working copy"
+msgstr "创建工作副本"
+
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+# defaultMessage: Created by {creator} on {date}
+msgid "Created by {creator} on {date}"
+msgstr "由{creator}在{date}时创建"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Created on
+msgid "Created on"
+msgstr "创建于"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Creator
+msgid "Creator"
+msgstr "创建者"
+
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Creators
+msgid "Creators"
+msgstr "创建者"
+
+#: components/manage/Widgets/QuerystringWidget
+#: components/manage/Widgets/QueryWidget
+# defaultMessage: Criteria
+msgid "Criteria"
+msgstr "标准"
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Current active configuration
+msgid "Current active configuration"
+msgstr "当前活动的配置"
+
+#: components/manage/Blocks/Search/components/FilterList
+# defaultMessage: Current filters applied
+msgid "Current filters applied"
+msgstr "当前应用的过滤器"
+
+#: components/manage/Preferences/ChangePassword
+# defaultMessage: Current password
+msgid "Current password"
+msgstr "当前的密码"
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Cut
+msgid "Cut"
+msgstr "剪切"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: undefined
+msgid "Cut blocks"
+msgstr "剪切块"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Daily
+msgid "Daily"
+msgstr "每日"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Database
+msgid "Database"
+msgstr "数据库"
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Database Information
+msgid "Database Information"
+msgstr "数据库信息"
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Database Location
+msgid "Database Location"
+msgstr "数据库位置"
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Database Size
+msgid "Database Size"
+msgstr "数据库大小"
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Database main
+msgid "Database main"
+msgstr ""
+
+#: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/ModerateComments
+#: components/manage/Widgets/DatetimeWidget
+# defaultMessage: Date
+msgid "Date"
+msgstr "日期"
+
+#: components/theme/Search/Search
+# defaultMessage: Date (newest first)
+msgid "Date (newest first)"
+msgstr "日期（最新在前）"
+
+#: components/manage/Contents/ContentsPropertiesModal
+#: components/manage/Contents/ContentsRenameModal
+#: components/manage/Contents/ContentsTagsModal
+#: components/manage/Contents/ContentsWorkflowModal
+#: components/manage/Controlpanels/UndoControlpanel
+#: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalPreferences
+#: components/manage/Widgets/SchemaWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/WysiwygWidget
+#: components/theme/Comments/CommentEditModal
+#: components/theme/Comments/Comments
+#: components/theme/ContactForm/ContactForm
+#: components/theme/PasswordReset/PasswordReset
+#: components/theme/PasswordReset/RequestPasswordReset
+#: components/theme/Register/Register
+# defaultMessage: Default
+msgid "Default"
+msgstr "默认"
+
+#: config/Views
+# defaultMessage: Default view
+msgid "Default view"
+msgstr "默认视图"
+
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypesActions
+#: components/manage/Controlpanels/Groups/RenderGroups
+#: components/manage/Controlpanels/ModerateComments
+#: components/manage/Controlpanels/Users/RenderUsers
+#: components/manage/Delete/Delete
+#: components/manage/Widgets/FormFieldWrapper
+#: components/manage/Widgets/ObjectBrowserWidget
+#: components/manage/Widgets/WysiwygWidget
+#: components/theme/Comments/Comments
+# defaultMessage: Delete
+msgid "Delete"
+msgstr "删除"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Delete Group
+msgid "Delete Group"
+msgstr "删除组"
+
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Delete Type
+msgid "Delete Type"
+msgstr "删除类型"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Delete User
+msgid "Delete User"
+msgstr "删除用户"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Action deleted
+msgid "Delete action"
+msgstr "删除操作"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: undefined
+msgid "Delete blocks"
+msgstr "删除块"
+
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Delete col
+msgid "Delete col"
+msgstr "删除 col"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Condition deleted
+msgid "Delete condition"
+msgstr "删除条件"
+
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Delete row
+msgid "Delete row"
+msgstr "删除条件"
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Deleted
+msgid "Deleted"
+msgstr "已删除"
+
+#: components/manage/Widgets/QuerystringWidget
+# defaultMessage: Depth
+msgid "Depth"
+msgstr "深度"
+
+#: components/manage/Blocks/Search/components/SortOn
+#: components/manage/Contents/Contents
+# defaultMessage: Descending
+msgid "Descending"
+msgstr "降序"
+
+#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Widgets/SchemaWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/WysiwygWidget
+#: components/theme/View/TabularView
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Description
+msgid "Description"
+msgstr "描述"
+
+#: components/manage/Diff/Diff
+# defaultMessage: Diff
+msgid "Diff"
+msgstr "不同"
+
+#: components/manage/Diff/Diff
+# defaultMessage: Difference between revision {one} and {two} of {title}
+msgid "Difference between revision {one} and {two} of {title}"
+msgstr "{title}版本 {one} 和 {two} 之间的区别"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Disable
+msgid "Disable"
+msgstr "禁用"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Disable apply to subfolders
+msgid "Disable apply to subfolders"
+msgstr "禁用于子文件夹"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Disabled
+msgid "Disabled"
+msgstr "禁用"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Disabled apply to subfolders
+msgid "Disabled apply to subfolders"
+msgstr "禁用于子文件夹"
+
+#: components/theme/Footer/Footer
+# defaultMessage: Distributed under the {license}.
+msgid "Distributed under the {license}."
+msgstr "使用{license} 发布"
+
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Add border to inner columns
+msgid "Divide each row into separate cells"
+msgstr "将每一行分成独立的单元格"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Do you really want to delete the following items?
+msgid "Do you really want to delete the following items?"
+msgstr "确定要删除这个条目吗？"
+
+#: components/manage/Controlpanels/Groups/GroupsControlpanel
+# defaultMessage: Do you really want to delete the group {groupname}?
+msgid "Do you really want to delete the group {groupname}?"
+msgstr "确定要删除这个组 {groupname}吗？"
+
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Do you really want to delete type {typename}?
+msgid "Do you really want to delete the type {typename}?"
+msgstr "确定要删除这个类型 {typename}吗？"
+
+#: components/manage/Controlpanels/Users/UsersControlpanel
+# defaultMessage: Do you really want to delete the user {username}?
+msgid "Do you really want to delete the user {username}?"
+msgstr "确定要删除这个用户 {username}吗？"
+
+#: components/manage/Delete/Delete
+# defaultMessage: Do you really want to delete this item?
+msgid "Do you really want to delete this item?"
+msgstr "确定要删除这个条目吗"
+
+#: components/manage/Multilingual/TranslationObject
+#: components/manage/Sidebar/Sidebar
+# defaultMessage: Document
+msgid "Document"
+msgstr "文档"
+
+#: config/Views
+# defaultMessage: Document view
+msgid "Document view"
+msgstr "文档视图"
+
+#: components/theme/EventDetails/EventDetails
+# defaultMessage: Download Event
+msgid "Download Event"
+msgstr "下载事件"
+
+#: components/manage/Contents/ContentsUploadModal
+# defaultMessage: Drag and drop files from your computer onto this area or click the “Browse” button.
+msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
+msgstr "从你的电脑中拖放文件到此区域或单击 “浏览” 按钮"
+
+#: components/manage/Widgets/FileWidget
+# defaultMessage: Drop file here to replace the existing file
+msgid "Drop file here to replace the existing file"
+msgstr "在此处放置文件以替换现有文件"
+
+#: components/manage/Widgets/FileWidget
+# defaultMessage: Drop file here to upload a new file
+msgid "Drop file here to upload a new file"
+msgstr "在此处放置文件来上传新文件"
+
+#: components/manage/Widgets/FileWidget
+# defaultMessage: Drop files here ...
+msgid "Drop files here ..."
+msgstr "在此处放置文件 ..."
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Dry run selected, transaction aborted.
+msgid "Dry run selected, transaction aborted."
+msgstr "，事务已被终止。"
+
+#: components/theme/Register/Register
+# defaultMessage: E-mail
+msgid "E-mail"
+msgstr "E-mail"
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: E-mail addresses do not match.
+msgid "E-mail addresses do not match."
+msgstr "邮箱地址不匹配"
+
+#: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypesActions
+#: components/manage/Controlpanels/ModerateComments
+#: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Toolbar/Toolbar
+#: components/manage/Widgets/FormFieldWrapper
+#: components/manage/Widgets/ObjectBrowserWidget
+#: components/theme/Comments/Comments
+# defaultMessage: Edit
+msgid "Edit"
+msgstr "编辑"
+
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Edit Rule
+msgid "Edit Rule"
+msgstr "编辑规则"
+
+#: components/theme/Comments/CommentEditModal
+# defaultMessage: Edit comment
+msgid "Edit comment"
+msgstr "编辑评论"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Edit field
+msgid "Edit field"
+msgstr "编辑字段"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Edit fieldset
+msgid "Edit fieldset"
+msgstr "编辑字段集"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Edit recurrence
+msgid "Edit recurrence"
+msgstr "编辑重现"
+
+#: components/manage/Form/InlineForm
+# defaultMessage: Edit values
+msgid "Edit values"
+msgstr "编辑值"
+
+#: components/manage/Edit/Edit
+# defaultMessage: Edit {title}
+msgid "Edit {title}"
+msgstr "编辑 {title}"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Email
+msgid "Email"
+msgstr "Email"
+
+#: components/theme/ContactForm/ContactForm
+# defaultMessage: Email sent
+msgid "Email sent"
+msgstr "发送邮件"
+
+#: components/manage/Blocks/Maps/Edit
+# defaultMessage: Embed code error, please follow the instructions and try again.
+msgid "Embed code error, please follow the instructions and try again."
+msgstr "嵌入代码错误，请按照说明重试"
+
+#: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Empty object list
+msgid "Empty object list"
+msgstr "空的对象列表"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Enable
+msgid "Enable"
+msgstr "启用"
+
+#: components/manage/Controlpanels/ContentTypeLayout
+# defaultMessage: Enable editable Blocks
+msgid "Enable editable Blocks"
+msgstr "启用可编辑块"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Enabled
+msgid "Enabled"
+msgstr "启用"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Enabled here?
+msgid "Enabled here?"
+msgstr "在这里启用？"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Enabled?
+msgid "Enabled?"
+msgstr "启用？"
+
+#: components/manage/Blocks/Search/components/DateRangeFacet
+#: components/manage/Contents/Contents
+# defaultMessage: End Date
+msgid "End Date"
+msgstr "结束日期"
+
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+# defaultMessage: Enter URL or select an item
+msgid "Enter URL or select an item"
+msgstr "输入 URL 或选择一个项目"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Enter a username above to search or click 'Show All'
+msgid "Enter a username above to search or click 'Show All'"
+msgstr "输入用户名进行搜索或点击显示全部"
+
+#: components/theme/Register/Register
+# defaultMessage: Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
+msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
+msgstr "输入一个 Email 地址。这会成为您的登录名。我们尊重您的隐私，不会向第三方透漏您的个人信息。"
+
+#: components/theme/Register/Register
+# defaultMessage: Enter full name, e.g. John Smith.
+msgid "Enter full name, e.g. John Smith."
+msgstr "输入您的姓名，如：张三"
+
+#: components/manage/Blocks/Maps/Edit
+# defaultMessage: Enter map Embed Code
+msgid "Enter map Embed Code"
+msgstr "输入 map 嵌入代码"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target.
+msgid "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
+msgstr "输入目标的绝对路径。路径必须以‘/’开头。目标必须存在，或者是指向目标的现有可选的url路径。"
+
+#: components/manage/Aliases/Aliases
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring.
+msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
+msgstr "输入已存在替代 URL 的绝对路径。路径必须以 '/' 开头。只有导致404 未找到页面的url才会发生重定向。"
+
+#: components/manage/Preferences/ChangePassword
+# defaultMessage: Enter your current password.
+msgid "Enter your current password."
+msgstr "输入当前密码"
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Enter your email for verification.
+msgid "Enter your email for verification."
+msgstr "输入你的邮箱进行验证"
+
+#: components/manage/Preferences/ChangePassword
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Enter your new password. Minimum 5 characters.
+msgid "Enter your new password. Minimum 5 characters."
+msgstr "输入你的新密码。最少5个字符"
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Enter your username for verification.
+msgid "Enter your username for verification."
+msgstr "输入你的用户名进行验证"
+
+#: components/manage/Add/Add
+#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/UndoControlpanel
+#: components/manage/Edit/Edit
+#: components/manage/Form/InlineForm
+#: components/manage/Toolbar/More
+#: components/manage/Widgets/SchemaWidget
+#: components/theme/ContactForm/ContactForm
+#: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Error
+msgid "Error"
+msgstr "错误"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Error
+msgid "ErrorHeader"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Event
+msgid "Event"
+msgstr "事件"
+
+#: config/Views
+# defaultMessage: Event listing
+msgid "Event listing"
+msgstr "事件列表"
+
+#: config/Views
+# defaultMessage: Event view
+msgid "Event view"
+msgstr "事件视图"
+
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Exclude from navigation
+msgid "Exclude from navigation"
+msgstr "从导航中排除"
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: Exclude this occurence
+msgid "Exclude this occurence"
+msgstr "排除这个事件"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Excluded from navigation
+msgid "Excluded from navigation"
+msgstr "从导航中排除"
+
+#: components/manage/Aliases/Aliases
+# defaultMessage: Existing alternative urls for this item
+msgid "Existing alternative urls for this item"
+msgstr "此项目现有可选的urls"
+
+#: components/manage/Sidebar/Sidebar
+# defaultMessage: Expand sidebar
+msgid "Expand sidebar"
+msgstr "扩大侧边栏"
+
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Expiration Date
+msgid "Expiration Date"
+msgstr "失效日期"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Expiration date
+msgid "Expiration date"
+msgstr "失效日期"
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Expired
+msgid "Expired"
+msgstr "失效"
+
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+# defaultMessage: External URL
+msgid "External URL"
+msgstr "失效的URL"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Facet
+msgid "Facet"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Facet widget
+msgid "Facet widget"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Facets
+msgid "Facets"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Facets on left side
+msgid "Facets on left side"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Facets on right side
+msgid "Facets on right side"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Facets on top
+msgid "Facets on top"
+msgstr ""
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Failed to undo transactions
+msgid "Failed To Undo Transactions"
+msgstr "撤销事务失败"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Field
+msgid "Field"
+msgstr "字段"
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: File
+msgid "File"
+msgstr "文件"
+
+#: components/manage/Contents/ContentsUploadModal
+# defaultMessage: File size
+msgid "File size"
+msgstr "文件大小"
+
+#: config/Views
+# defaultMessage: File view
+msgid "File view"
+msgstr "文件视图"
+
+#: components/manage/Contents/ContentsUploadModal
+# defaultMessage: Filename
+msgid "Filename"
+msgstr "文件名"
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Filter Rules:
+msgid "Filter Rules:"
+msgstr "过滤规则"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Filter by prefix
+msgid "Filter by prefix"
+msgstr "按前缀过滤"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter users by groups
+msgid "Filter users by groups"
+msgstr "按组过滤用户"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Filter…
+msgid "Filter…"
+msgstr "过滤"
+
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+# defaultMessage: First
+msgid "First"
+msgstr "首个"
+
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Fixed width columns
+msgid "Fixed width table cells"
+msgstr "固定表格单元格宽度"
+
+#: components/manage/BlockChooser/BlockChooser
+# defaultMessage: Fold
+msgid "Fold"
+msgstr "折叠"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Folder
+msgid "Folder"
+msgstr "文件夹"
+
+#: config/Views
+# defaultMessage: Folder listing
+msgid "Folder listing"
+msgstr "文件夹列表"
+
+#: components/theme/Forbidden/Forbidden
+# defaultMessage: Forbidden
+msgid "Forbidden"
+msgstr "禁止"
+
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+# defaultMessage: Fourth
+msgid "Fourth"
+msgstr "第四"
+
+#: components/theme/ContactForm/ContactForm
+# defaultMessage: From
+msgid "From"
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
+# defaultMessage: Full
+msgid "Full"
+msgstr ""
+
+#: components/theme/Register/Register
+# defaultMessage: Full Name
+msgid "Full Name"
+msgstr "姓名"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Fullname
+msgid "Fullname"
+msgstr "姓名"
+
+#: components/theme/Footer/Footer
+# defaultMessage: GNU GPL license
+msgid "GNU GPL license"
+msgstr "GNU GPL 许可"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: General
+msgid "General"
+msgstr "常规"
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: Global role
+msgid "Global role"
+msgstr "全局角色"
+
+#: components/manage/Blocks/Maps/Edit
+# defaultMessage: Google Maps Embedded Block
+msgid "Google Maps Embedded Block"
+msgstr "Google 地图嵌入块"
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: Group
+msgid "Group"
+msgstr "组"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Group created
+msgid "Group created"
+msgstr "组已创建"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Group roles updated
+msgid "Group roles updated"
+msgstr "组角色更新"
+
+#: components/manage/Controlpanels/Groups/GroupsControlpanel
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Groupname
+msgid "Groupname"
+msgstr "组名"
+
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Groups/GroupsControlpanel
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Groups
+msgid "Groups"
+msgstr "组"
+
+#: components/manage/Controlpanels/Groups/GroupsControlpanel
+# defaultMessage: Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group.
+msgid "Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group."
+msgstr "组是用户的逻辑集合，如部门和商务小组。他们不直接和某个权限关联，您应该用角色分配权限，然后让组拥有某个角色。符号{plone_svg}表示从另一个组的成员继承的角色"
+
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Header cell
+msgid "Header cell"
+msgstr "标题单元格"
+
+#: components/manage/Blocks/Listing/schema
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Headline
+msgid "Headline"
+msgstr "标题"
+
+#: components/manage/Blocks/Listing/schema
+# defaultMessage: Headline level
+msgid "Headline level"
+msgstr "标题级别"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Hidden facets will still filter the results if proper parameters are passed in URLs
+msgid "Hidden facets will still filter the results if proper parameters are passed in URLs"
+msgstr ""
+
+#: components/theme/Comments/Comments
+# defaultMessage: Hide Replies
+msgid "Hide Replies"
+msgstr "隐藏回复"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Hide facet?
+msgid "Hide facet?"
+msgstr ""
+
+#: components/manage/History/History
+#: components/manage/Toolbar/More
+# defaultMessage: History
+msgid "History"
+msgstr "历史"
+
+#: components/manage/History/History
+# defaultMessage: #
+msgid "History Version Number"
+msgstr "历史版本号"
+
+#: components/manage/History/History
+# defaultMessage: History of {title}
+msgid "History of {title}"
+msgstr "历史{title}"
+
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsBreadcrumbs
+#: components/manage/Contents/ContentsBreadcrumbsHomeItem
+#: components/theme/Breadcrumbs/Breadcrumbs
+# defaultMessage: Home
+msgid "Home"
+msgstr "首页"
+
+#: components/manage/Contents/Contents
+# defaultMessage: ID
+msgid "ID"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: If all of the following conditions are met:
+msgid "If all of the following conditions are met:"
+msgstr "如果满足以下所有条件"
+
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: If selected, this item will not appear in the navigation tree
+msgid "If selected, this item will not appear in the navigation tree"
+msgstr "如果选中，此条目不会在导航树中显示"
+
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: If this date is in the future, the content will not show up in listings and searches until this date.
+msgid "If this date is in the future, the content will not show up in listings and searches until this date."
+msgstr "该条目发布的日期。如果未选择日期，将会立即发布该条目。"
+
+#: components/manage/LockingToastsFactory/LockingToastsFactory
+# defaultMessage: If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it.
+msgid "If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it."
+msgstr "如果您确定该用户已放弃该对象，则可以解锁该对象。然后您就可以编辑它了。"
+
+#: components/theme/NotFound/NotFound
+#: components/theme/Unauthorized/Unauthorized
+# defaultMessage: If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}.
+msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
+msgstr "如果您确定访问的Web地址正确,但是遇到错误，请联系{site_admin}。"
+
+#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+# defaultMessage: Image
+msgid "Image"
+msgstr "图像"
+
+#: config/Blocks
+# defaultMessage: Image gallery
+msgid "Image gallery"
+msgstr "图像库"
+
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Image size
+msgid "Image size"
+msgstr "图像大小"
+
+#: config/Views
+# defaultMessage: Image view
+msgid "Image view"
+msgstr "图像视图"
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: Include this occurrence
+msgid "Include this occurence"
+msgstr "包括这个事件"
+
+#: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Controlpanel
+# defaultMessage: Info
+msgid "Info"
+msgstr "信息"
+
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+# defaultMessage: You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to user group settings. See the button on the left.
+msgid "InfoUserGroupSettings"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: Inherit permissions from higher levels
+msgid "Inherit permissions from higher levels"
+msgstr "从上层继承权限"
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: Inherited value
+msgid "Inherited value"
+msgstr "继承的值"
+
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Insert col after
+msgid "Insert col after"
+msgstr "在后面插入col"
+
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Insert col before
+msgid "Insert col before"
+msgstr "在前面插入col"
+
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Insert row after
+msgid "Insert row after"
+msgstr "在后面插入行"
+
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Insert row before
+msgid "Insert row before"
+msgstr "在前面插入行"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Install
+msgid "Install"
+msgstr "安装"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Installed
+msgid "Installed"
+msgstr "已安装"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Installed version
+msgid "Installed version"
+msgstr "已安装版本"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Installing a third party add-on
+msgid "Installing a third party add-on"
+msgstr "正在安装第三方附加组件"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: days
+msgid "Interval Daily"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Month(s)
+msgid "Interval Monthly"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: week(s)
+msgid "Interval Weekly"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: year(s)
+msgid "Interval Yearly"
+msgstr ""
+
+#: components/manage/Blocks/Block/DefaultView
+#: components/theme/View/RenderBlocks
+# defaultMessage: Invalid block - Will be removed on saving
+msgid "Invalid Block"
+msgstr "无效的块"
+
+#: components/manage/Widgets/QuerystringWidget
+# defaultMessage: Item batch size
+msgid "Item batch size"
+msgstr "条目批量大小"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Item successfully moved.
+msgid "Item succesfully moved."
+msgstr "成功移除条目。"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Item(s) copied.
+msgid "Item(s) copied."
+msgstr "条目已复制"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Item(s) cut.
+msgid "Item(s) cut."
+msgstr "条目已剪切"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Item(s) has been updated.
+msgid "Item(s) has been updated."
+msgstr "条目已更新"
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+# defaultMessage: Item(s) pasted.
+msgid "Item(s) pasted."
+msgstr "条目已粘贴"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Item(s) state has been updated.
+msgid "Item(s) state has been updated."
+msgstr "条目状态已更新"
+
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Items
+msgid "Items"
+msgstr "条目"
+
+#: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Items must be unique.
+msgid "Items must be unique."
+msgstr "条目必须是独特的"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Items to be deleted:
+msgid "Items to be deleted:"
+msgstr "需要删除的条目"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Label
+msgid "Label"
+msgstr "标签"
+
+#: components/manage/Preferences/PersonalPreferences
+# defaultMessage: Language
+msgid "Language"
+msgstr "语言"
+
+#: components/manage/Widgets/FormFieldWrapper
+# defaultMessage: Language independent field.
+msgid "Language independent field."
+msgstr "语言独立字段"
+
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Large
+msgid "Large"
+msgstr "大"
+
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+# defaultMessage: Last
+msgid "Last"
+msgstr "最后"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Last comment date
+msgid "Last comment date"
+msgstr "最后备注日期"
+
+#: components/manage/Contents/ContentsUploadModal
+# defaultMessage: Last modified
+msgid "Last modified"
+msgstr "最后修改日期"
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Latest available configuration
+msgid "Latest available configuration"
+msgstr "最新可用配置"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Latest version
+msgid "Latest version"
+msgstr "最新版本"
+
+#: components/manage/Controlpanels/ContentTypesActions
+# defaultMessage: Layout
+msgid "Layout"
+msgstr "布局"
+
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+# defaultMessage: Lead Image
+msgid "Lead Image"
+msgstr "首图"
+
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
+# defaultMessage: Left
+msgid "Left"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Link
+msgid "Link"
+msgstr "链接"
+
+#: components/manage/Blocks/HeroImageLeft/schema
+#: components/manage/Blocks/Listing/schema
+# defaultMessage: Link more
+msgid "Link more"
+msgstr "链接更多"
+
+#: config/Views
+# defaultMessage: Link redirect view
+msgid "Link redirect view"
+msgstr "链接重定向视图"
+
+#: components/manage/Blocks/HeroImageLeft/schema
+#: components/manage/Blocks/Listing/schema
+# defaultMessage: Link Title
+msgid "Link title"
+msgstr "链接标题"
+
+#: components/manage/Blocks/HeroImageLeft/schema
+#: components/manage/Blocks/Image/schema
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Listing/schema
+# defaultMessage: Link to
+msgid "Link to"
+msgstr "链接至"
+
+#: components/manage/Multilingual/ManageTranslations
+# defaultMessage: Link translation for
+msgid "Link translation for"
+msgstr "链接翻译"
+
+#: components/manage/Blocks/Listing/schema
+# defaultMessage: Listing
+msgid "Listing"
+msgstr "列表"
+
+#: config/Views
+# defaultMessage: Listing view
+msgid "Listing view"
+msgstr "列表视图"
+
+#: components/theme/Comments/Comments
+# defaultMessage: Load more...
+msgid "Load more"
+msgstr "加载更多"
+
+#: components/manage/Form/ModalForm
+# defaultMessage: Loading.
+msgid "Loading"
+msgstr "加载中"
+
+#: components/theme/Login/Login
+# defaultMessage: Login
+msgid "Log In"
+msgstr "登录"
+
+#: components/theme/Anontools/Anontools
+#: components/theme/Login/Login
+# defaultMessage: Log in
+msgid "Log in"
+msgstr "登录"
+
+#: components/theme/Logout/Logout
+# defaultMessage: Logged out
+msgid "Logged out"
+msgstr "退出"
+
+#: components/theme/Login/Login
+# defaultMessage: Login
+msgid "Login"
+msgstr "登录"
+
+#: components/theme/Login/Login
+# defaultMessage: Login Failed
+msgid "Login Failed"
+msgstr "登陆失败"
+
+#: components/theme/Login/Login
+# defaultMessage: Login Name
+msgid "Login Name"
+msgstr "登录名"
+
+#: components/manage/Toolbar/PersonalTools
+# defaultMessage: Logout
+msgid "Logout"
+msgstr "退出"
+
+#: components/manage/Toolbar/More
+# defaultMessage: Made by {creator} on {date}. This is not a working copy anymore, but the main content.
+msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
+msgstr "由{creator}在{date}时创建。这不再是一个工作副本，而是一个主要内容。"
+
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Reduce cell padding
+msgid "Make the table compact"
+msgstr "使表格紧凑"
+
+#: components/manage/Multilingual/ManageTranslations
+#: components/manage/Toolbar/More
+# defaultMessage: Manage Translations
+msgid "Manage Translations"
+msgstr "管理翻译"
+
+#: components/manage/Toolbar/More
+# defaultMessage: Manage content…
+msgid "Manage content…"
+msgstr "管理内容..."
+
+#: components/manage/Multilingual/ManageTranslations
+# defaultMessage: Manage translations for {title}
+msgid "Manage translations for {title}"
+msgstr "管理{title}的翻译"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Manual
+msgid "Manual"
+msgstr ""
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Manually or automatically added?
+msgid "Manually or automatically added?"
+msgstr "手动添加还是自动添加？"
+
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Maps/schema
+# defaultMessage: Maps
+msgid "Maps"
+msgstr "映射"
+
+#: components/manage/Blocks/Maps/schema
+# defaultMessage: Maps URL
+msgid "Maps URL"
+msgstr "映射URL"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Maximum length is {len}.
+msgid "Maximum length is {len}."
+msgstr "最大长度为{len}。"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Maximum value is {len}.
+msgid "Maximum value is {len}."
+msgstr "最大值为{len}。"
+
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Medium
+msgid "Medium"
+msgstr "中等"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Membership updated
+msgid "Membership updated"
+msgstr "成员身份更新"
+
+#: components/theme/ContactForm/ContactForm
+# defaultMessage: Message
+msgid "Message"
+msgstr "消息"
+
+#: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Minimum length is {len}.
+msgid "Minimum length is {len}."
+msgstr "最短长度为{len}。"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Minimum value is {len}.
+msgid "Minimum value is {len}."
+msgstr "最小值是{len}。"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Moderate Comments
+msgid "Moderate Comments"
+msgstr "审核评论"
+
+#: components/manage/Controlpanels/ModerateComments
+# defaultMessage: Moderate comments
+msgid "Moderate comments"
+msgstr "审核评论"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Monday and Friday
+msgid "Monday and Friday"
+msgstr "周一和周五"
+
+#: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
+# defaultMessage: Day
+msgid "Month day"
+msgstr "月日"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Monthly
+msgid "Monthly"
+msgstr "每月"
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: More
+msgid "More"
+msgstr "更多"
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide.
+msgid "More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide."
+msgstr "更多关于升级步骤的信息可以在升级指南中的plone.org文档部分找到。"
+
+#: config/Views
+# defaultMessage: Mosaic layout
+msgid "Mosaic layout"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Move down
+msgid "Move down"
+msgstr "下移"
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Move to bottom of folder
+msgid "Move to bottom of folder"
+msgstr "移动至文件夹底部"
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Move to top of folder
+msgid "Move to top of folder"
+msgstr "移动至文件夹顶部"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Move up
+msgid "Move up"
+msgstr "上移"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Multiple choices?
+msgid "Multiple choices?"
+msgstr "多选？"
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: My email is
+msgid "My email is"
+msgstr "我的邮箱是"
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: My username is
+msgid "My username is"
+msgstr "我的用户名是"
+
+#: components/manage/Sharing/Sharing
+#: components/theme/ContactForm/ContactForm
+# defaultMessage: Name
+msgid "Name"
+msgstr "名字"
+
+#: components/manage/Widgets/AlignWidget
+# defaultMessage: Narrow
+msgid "Narrow"
+msgstr ""
+
+#: error
+# defaultMessage: Navigate back
+msgid "Navigate back"
+msgstr "导航返回"
+
+#: components/theme/Navigation/ContextNavigation
+# defaultMessage: Navigation
+msgid "Navigation"
+msgstr "导航"
+
+#: components/manage/Preferences/ChangePassword
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: New password
+msgid "New password"
+msgstr "新的密码"
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: News Item
+msgid "News Item"
+msgstr "新闻"
+
+#: config/Views
+# defaultMessage: News item view
+msgid "News item view"
+msgstr "新闻视图"
+
+#: components/manage/Contents/ContentsItem
+#: components/manage/Contents/ContentsPropertiesModal
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: No
+msgid "No"
+msgstr "否"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: No transactions found
+msgid "No Transactions Found"
+msgstr ""
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: No transactions selected
+msgid "No Transactions Selected"
+msgstr ""
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: No transactions selected to do undo
+msgid "No Transactions Selected To Do Undo"
+msgstr ""
+
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: No Video selected
+msgid "No Video selected"
+msgstr "未选择视频"
+
+#: components/manage/Controlpanels/VersionOverview
+# defaultMessage: No addons found
+msgid "No addons found"
+msgstr "没有找到附件"
+
+#: components/theme/RequestTimeout/RequestTimeout
+# defaultMessage: There is no connection to the server, due to a timeout o no network connection.
+msgid "No connection to the server"
+msgstr "与服务器无连接"
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: No image selected
+msgid "No image selected"
+msgstr "未选择图像"
+
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+# defaultMessage: No image set in Lead Image content field
+msgid "No image set in Lead Image content field"
+msgstr ""
+
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+# defaultMessage: No image set in image content field
+msgid "No image set in image content field"
+msgstr "在图像内容字段中没有设置图像"
+
+#: components/manage/Blocks/Listing/ListingBody
+# defaultMessage: No items found in this container.
+msgid "No items found in this container."
+msgstr "在此容器中没有发现条目。"
+
+#: components/manage/Widgets/ObjectBrowserWidget
+# defaultMessage: No items selected
+msgid "No items selected"
+msgstr "未选择条目"
+
+#: components/manage/Blocks/Maps/MapsSidebar
+# defaultMessage: No map selected
+msgid "No map selected"
+msgstr "未选择镜像"
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: No occurences set
+msgid "No occurences set"
+msgstr ""
+
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectAutoComplete
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+# defaultMessage: No options
+msgid "No options"
+msgstr "没有选项"
+
+#: components/manage/BlockChooser/BlockChooser
+#: components/theme/Search/Search
+# defaultMessage: No results found
+msgid "No results found"
+msgstr "未找到结果"
+
+#: components/manage/Blocks/Listing/ListingBody
+#: components/manage/Widgets/ReferenceWidget
+# defaultMessage: No results found.
+msgid "No results found."
+msgstr "未找到结果。"
+
+#: components/manage/Blocks/Search/components/SortOn
+#: components/manage/Widgets/QuerySortOnWidget
+#: components/manage/Widgets/QuerystringWidget
+# defaultMessage: No selection
+msgid "No selection"
+msgstr "没有选择"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: This addon does not provide an uninstall profile.
+msgid "No uninstall profile"
+msgstr "没有卸载配置文件"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: No user found
+msgid "No user found"
+msgstr "未找到用户"
+
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/ReferenceWidget
+#: components/manage/Widgets/SelectUtils
+#: components/manage/Widgets/SelectWidget
+# defaultMessage: No value
+msgid "No value"
+msgstr "没有值"
+
+#: components/manage/Workflow/Workflow
+# defaultMessage: No workflow
+msgid "No workflow"
+msgstr "没有工作流"
+
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
+# defaultMessage: None
+msgid "None"
+msgstr ""
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Note
+msgid "Note"
+msgstr ""
+
+#: components/manage/Controlpanels/Users/UsersControlpanel
+# defaultMessage: Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group.
+msgid "Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group."
+msgstr "请注意这里设置的角色将直接应用于用户。符号{plone_svg}表示从组成员继承的角色。"
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Number of active objects
+msgid "Number of active objects"
+msgstr "活动对象的数量"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Object Size
+msgid "Object Size"
+msgstr "对象大小"
+
+#: components/manage/Widgets/RecurrenceWidget/EndField
+# defaultMessage: occurrence(s)
+msgid "Occurences"
+msgstr ""
+
+#: components/manage/Delete/Delete
+# defaultMessage: Ok
+msgid "Ok"
+msgstr ""
+
+#: components/manage/Widgets/IdWidget
+# defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.
+msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed."
+msgstr "只允许不带读音号的小写字母(a-z)，数字(0-9)，和符号：_,-,.。"
+
+#: components/manage/Blocks/Image/schema
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+# defaultMessage: Open in a new tab
+msgid "Open in a new tab"
+msgstr "在新标签中打开"
+
+#: components/theme/Navigation/Navigation
+# defaultMessage: Open menu
+msgid "Open menu"
+msgstr "打开菜单"
+
+#: components/manage/Widgets/ObjectBrowserWidget
+# defaultMessage: Open object browser
+msgid "Open object browser"
+msgstr "打开目标浏览器"
+
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+# defaultMessage: Origin
+msgid "Origin"
+msgstr "原始"
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Page
+msgid "Page"
+msgstr "页面"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Parent fieldset
+msgid "Parent fieldset"
+msgstr "父字段集"
+
+#: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Password
+msgid "Password"
+msgstr "密码"
+
+#: components/theme/PasswordReset/PasswordReset
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Password reset
+msgid "Password reset"
+msgstr "重置密码"
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Passwords do not match.
+msgid "Passwords do not match."
+msgstr "密码不匹配。"
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+# defaultMessage: Paste
+msgid "Paste"
+msgstr "粘贴"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: undefined
+msgid "Paste blocks"
+msgstr "粘贴块"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Perform the following actions:
+msgid "Perform the following actions:"
+msgstr "执行下面的操作："
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: Permissions have been updated successfully
+msgid "Permissions have been updated successfully"
+msgstr "权限更新成功"
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: Permissions updated
+msgid "Permissions updated"
+msgstr "权限更新"
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Personal Information
+msgid "Personal Information"
+msgstr "个人信息"
+
+#: components/manage/Preferences/PersonalPreferences
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Personal Preferences
+msgid "Personal Preferences"
+msgstr "个人偏好"
+
+#: components/manage/Toolbar/More
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Personal tools
+msgid "Personal tools"
+msgstr "个人工具"
+
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first.
+msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
+msgstr "负责创建此条目内容的人员。请输入用户名列表，每行一个。主要创建者应放在首位。"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Please continue with the upgrade.
+msgid "Please continue with the upgrade."
+msgstr "请继续升级。"
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Please ensure you have a backup of your site before performing the upgrade.
+msgid "Please ensure you have a backup of your site before performing the upgrade."
+msgstr "在执行升级前，请确定您已对网站进行备份。"
+
+#: components/manage/Blocks/Video/Body
+# defaultMessage: Please enter a valid URL by deleting the block and adding a new video block.
+msgid "Please enter a valid URL by deleting the block and adding a new video block."
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+# defaultMessage: Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it.
+msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
+msgstr ""
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Please fill out the form below to set your password.
+msgid "Please fill out the form below to set your password."
+msgstr "请填写下表来设置您的密码。"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Please search for users or use the filters on the side.
+msgid "Please search for users or use the filters on the side."
+msgstr "请搜索用户或使用旁边的筛选器。"
+
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+# defaultMessage: Please upgrade to plone.restapi >= 8.24.0.
+msgid "Please upgrade to plone.restapi >= 8.24.0."
+msgstr "请升级到plone.restapi >= 8.24.0。"
+
+#: components/theme/Footer/Footer
+# defaultMessage: Plone Foundation
+msgid "Plone Foundation"
+msgstr ""
+
+#: components/theme/Logo/Logo
+# defaultMessage: Plone Site
+msgid "Plone Site"
+msgstr "Plone站点"
+
+#: components/theme/Footer/Footer
+# defaultMessage: Plone{reg} Open Source CMS/WCM
+msgid "Plone{reg} Open Source CMS/WCM"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Position changed
+msgid "Position changed"
+msgstr "位置已改变"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Possible values (Enter allowed choices one per line).
+msgid "Possible values"
+msgstr "可选值"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Potential link breakage
+msgid "Potential link breakage"
+msgstr "可能产生坏链接"
+
+#: components/theme/Footer/Footer
+# defaultMessage: Powered by Plone & Python
+msgid "Powered by Plone & Python"
+msgstr ""
+
+#: components/manage/Toolbar/PersonalTools
+# defaultMessage: Preferences
+msgid "Preferences"
+msgstr "偏好"
+
+#: components/manage/Blocks/HTML/Edit
+# defaultMessage: Prettify your code
+msgid "Prettify your code"
+msgstr "美化你的代码"
+
+#: components/manage/Blocks/HTML/Edit
+#: components/manage/Contents/ContentsUploadModal
+# defaultMessage: Preview
+msgid "Preview"
+msgstr "预览"
+
+#: components/manage/Blocks/Video/schema
+# defaultMessage: Preview Image URL
+msgid "Preview Image URL"
+msgstr "预览图片网址"
+
+#: components/manage/Toolbar/PersonalTools
+# defaultMessage: Profile
+msgid "Profile"
+msgstr "概述"
+
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Properties
+msgid "Properties"
+msgstr "属性"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Publication date
+msgid "Publication date"
+msgstr "发布日期"
+
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Publishing Date
+msgid "Publishing Date"
+msgstr "发布日期"
+
+#: components/manage/Blocks/Listing/schema
+# defaultMessage: Query
+msgid "Query"
+msgstr ""
+
+#: components/manage/Preferences/ChangePassword
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Re-enter the password. Make sure the passwords are identical.
+msgid "Re-enter the password. Make sure the passwords are identical."
+msgstr "再次输入密码，确保密码是相同的。"
+
+#: components/theme/Search/Search
+#: components/theme/View/SummaryView
+# defaultMessage: Read More…
+msgid "Read More…"
+msgstr "阅读更多..."
+
+#: components/manage/Contents/Contents
+# defaultMessage: Rearrange items by…
+msgid "Rearrange items by…"
+msgstr "重新排列条目通过..."
+
+#: components/manage/Widgets/RecurrenceWidget/EndField
+# defaultMessage: Ends
+msgid "Recurrence ends"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/EndField
+# defaultMessage: after
+msgid "Recurrence ends after"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/EndField
+# defaultMessage: on
+msgid "Recurrence ends on"
+msgstr ""
+
+#: components/manage/Form/UndoToolbar
+# defaultMessage: Redo
+msgid "Redo"
+msgstr "重做"
+
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Minimalistic table design
+msgid "Reduce complexity"
+msgstr "减少复杂性"
+
+#: components/theme/Anontools/Anontools
+#: components/theme/Login/Login
+#: components/theme/Register/Register
+# defaultMessage: Register
+msgid "Register"
+msgstr "注册"
+
+#: components/theme/Register/Register
+# defaultMessage: Registration form
+msgid "Registration form"
+msgstr "注册表单"
+
+#: components/theme/Search/Search
+# defaultMessage: Relevance
+msgid "Relevance"
+msgstr "相关度"
+
+#: components/manage/Aliases/Aliases
+# defaultMessage: Remove
+msgid "Remove"
+msgstr "删除"
+
+#: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Remove item
+msgid "Remove item"
+msgstr "删除条目"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Remove
+msgid "Remove recurrence"
+msgstr ""
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Remove selected
+msgid "Remove selected"
+msgstr "删除已选中"
+
+#: components/manage/Widgets/VocabularyTermsWidget
+# defaultMessage: Remove term
+msgid "Remove term"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Remove users from group
+msgid "Remove users from group"
+msgstr "从组中删除用户"
+
+#: components/manage/Toolbar/More
+# defaultMessage: Remove working copy
+msgid "Remove working copy"
+msgstr "删除工作副本"
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+# defaultMessage: Rename
+msgid "Rename"
+msgstr "重命名"
+
+#: components/manage/Contents/ContentsRenameModal
+# defaultMessage: Renaming items...
+msgid "Rename Items Loading Message"
+msgstr "重命名"
+
+#: components/manage/Contents/ContentsRenameModal
+# defaultMessage: Rename items
+msgid "Rename items"
+msgstr "重命名条目"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Repeat
+msgid "Repeat"
+msgstr "重复"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Repeat every
+msgid "Repeat every"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Repeat on
+msgid "Repeat on"
+msgstr ""
+
+#: components/manage/Widgets/FileWidget
+# defaultMessage: Replace existing file
+msgid "Replace existing file"
+msgstr "替换现有文件"
+
+#: components/theme/Comments/Comments
+# defaultMessage: Reply
+msgid "Reply"
+msgstr "回复"
+
+#: components/manage/Widgets/SchemaWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/WysiwygWidget
+# defaultMessage: Required
+msgid "Required"
+msgstr ""
+
+#: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Required input is missing.
+msgid "Required input is missing."
+msgstr "缺少所需的输出。"
+
+#: components/manage/Widgets/VocabularyTermsWidget
+# defaultMessage: Reset title
+msgid "Reset term title"
+msgstr "重新设置标题"
+
+#: components/manage/Widgets/QuerystringWidget
+# defaultMessage: Results limit
+msgid "Results limit"
+msgstr "结果限制"
+
+#: components/manage/Blocks/Listing/Edit
+# defaultMessage: Results preview
+msgid "Results preview"
+msgstr "预览结果"
+
+#: components/manage/Blocks/Search/SearchBlockEdit
+# defaultMessage: Results template
+msgid "Results template"
+msgstr "结果模板"
+
+#: components/manage/Widgets/QuerystringWidget
+# defaultMessage: Reversed order
+msgid "Reversed order"
+msgstr "相反顺序"
+
+#: components/manage/History/History
+# defaultMessage: Revert to this revision
+msgid "Revert to this revision"
+msgstr "回退到这个版本"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Review state
+msgid "Review state"
+msgstr "审核状态"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Richtext
+msgid "Richtext"
+msgstr "富文本"
+
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
+# defaultMessage: Right
+msgid "Right"
+msgstr ""
+
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Rights
+msgid "Rights"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Roles
+msgid "Roles"
+msgstr "规则"
+
+#: components/manage/Contents/ContentsBreadcrumbs
+#: components/manage/Contents/ContentsBreadcrumbsRootItem
+# defaultMessage: Root
+msgid "Root"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/AddRule
+# defaultMessage: Rule added
+msgid "Rule added"
+msgstr "规则已添加"
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Rule enable changed
+msgid "Rule enable changed"
+msgstr "规则启用已更改"
+
+#: components/manage/Rules/Rules
+#: components/manage/Toolbar/More
+# defaultMessage: Rules
+msgid "Rules"
+msgstr "规则"
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: Rules execute when a triggering event occurs. Rule actions will only be invoked if all the rule's conditions are met. You can add new actions and conditions using the buttons below.
+msgid "Rules execute when a triggering event occurs. Rule actions will only be invoked if all the rule's conditions are met. You can add new actions and conditions using the buttons below."
+msgstr "触发事件发生时执行规则。只有符合规则的所有条件，规则的操作才会被执行。您可以使用下面的按钮添加新的条件和操作。"
+
+#: components/manage/Add/Add
+#: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Edit/Edit
+#: components/manage/Form/ModalForm
+#: components/manage/Sharing/Sharing
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Save
+msgid "Save"
+msgstr "保存"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Save
+msgid "Save recurrence"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Saved
+msgid "Saved"
+msgstr "已保存"
+
+#: components/manage/Controlpanels/ContentTypesActions
+# defaultMessage: Schema
+msgid "Schema"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypeSchema
+# defaultMessage: Schema updates
+msgid "Schema updates"
+msgstr "模式更新"
+
+#: components/manage/BlockChooser/BlockChooserSearch
+#: components/manage/Blocks/Search/components/SearchInput
+#: components/manage/Blocks/Search/layout/LeftColumnFacets
+#: components/manage/Blocks/Search/layout/RightColumnFacets
+#: components/manage/Blocks/Search/layout/TopSideFacets
+#: components/manage/Blocks/Search/schema
+#: components/theme/Search/Search
+#: components/theme/SearchWidget/SearchWidget
+# defaultMessage: Search
+msgid "Search"
+msgstr "搜索"
+
+#: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: Search SVG
+msgid "Search SVG"
+msgstr "搜索SVG"
+
+#: components/theme/SearchWidget/SearchWidget
+# defaultMessage: Search Site
+msgid "Search Site"
+msgstr "搜索站点"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Search block
+msgid "Search block"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Search button label
+msgid "Search button label"
+msgstr "搜索按钮标签"
+
+#: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: Search content
+msgid "Search content"
+msgstr "搜索内容"
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: Search for user or group
+msgid "Search for user or group"
+msgstr "搜索用户或组"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search group…
+msgid "Search group…"
+msgstr "搜索组..."
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Search input label
+msgid "Search input label"
+msgstr "搜索输入标签"
+
+#: components/manage/Blocks/Search/components/SearchDetails
+#: components/theme/Search/Search
+# defaultMessage: Search results
+msgid "Search results"
+msgstr "搜索结果"
+
+#: components/theme/Search/Search
+# defaultMessage: Search results for {term}
+msgid "Search results for {term}"
+msgstr "搜索{term}的结果"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search users…
+msgid "Search users…"
+msgstr "搜索用户..."
+
+#: components/manage/Blocks/Search/components/SearchDetails
+# defaultMessage: Searched for: <em>{searchedtext}</em>.
+msgid "Searched for: <em>{searchedtext}</em>."
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+# defaultMessage: Second
+msgid "Second"
+msgstr "第二"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Section title
+msgid "Section title"
+msgstr "章节标题"
+
+#: components/manage/Controlpanels/Aliases
+#: components/manage/Rules/Rules
+#: components/manage/Sidebar/ObjectBrowserNav
+# defaultMessage: Select
+msgid "Select"
+msgstr "选择"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Select a date to add to recurrence
+msgid "Select a date to add to recurrence"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Select columns to show
+msgid "Select columns to show"
+msgstr "选择要显示的列"
+
+#: components/manage/Contents/ContentsWorkflowModal
+# defaultMessage: Select the transition to be used for modifying the items state.
+msgid "Select the transition to be used for modifying the items state."
+msgstr "选择用于修改条目状态的事务。"
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: Selected dates
+msgid "Selected dates"
+msgstr "选定的日期"
+
+#: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: Selected items
+msgid "Selected items"
+msgstr "选定的条目"
+
+#: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: of
+msgid "Selected items - x of y"
+msgstr "选定的条目 - x of y"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Selection
+msgid "Selection"
+msgstr "选择"
+
+#: components/manage/Blocks/Search/widgets/SelectMetadataField
+#: components/manage/Contents/Contents
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectAutoComplete
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+# defaultMessage: Select…
+msgid "Select…"
+msgstr "选择..."
+
+#: components/theme/ContactForm/ContactForm
+# defaultMessage: Send
+msgid "Send"
+msgstr "发送"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Send a confirmation mail with a link to set the password.
+msgid "Send a confirmation mail with a link to set the password."
+msgstr "发送一条带设置密码链接的确认邮件"
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Set my password
+msgid "Set my password"
+msgstr "设置我的密码"
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Set your password
+msgid "Set your password"
+msgstr "设置你的密码"
+
+#: components/manage/Sidebar/Sidebar
+# defaultMessage: Settings
+msgid "Settings"
+msgstr "设置"
+
+#: components/manage/Sharing/Sharing
+#: components/manage/Toolbar/More
+# defaultMessage: Sharing
+msgid "Sharing"
+msgstr "共享"
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: Sharing for {title}
+msgid "Sharing for {title}"
+msgstr ""
+
+#: components/manage/Widgets/SchemaWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/WysiwygWidget
+# defaultMessage: Short Name
+msgid "Short Name"
+msgstr ""
+
+#: components/manage/Contents/ContentsRenameModal
+# defaultMessage: Short name
+msgid "Short name"
+msgstr ""
+
+#: components/manage/Controlpanels/Aliases
+#: components/theme/Pagination/Pagination
+# defaultMessage: Show
+msgid "Show"
+msgstr "显示"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Show All
+msgid "Show All"
+msgstr "显示全部"
+
+#: components/theme/Comments/Comments
+# defaultMessage: Show Replies
+msgid "Show Replies"
+msgstr "显示回复"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Show groups of users below
+msgid "Show groups of users below"
+msgstr "显示用户的组"
+
+#: components/manage/Widgets/ObjectListWidget
+# defaultMessage: Show item
+msgid "Show item"
+msgstr "显示条目"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Show search button?
+msgid "Show search button?"
+msgstr "显示搜索按钮？"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Show search input?
+msgid "Show search input?"
+msgstr "显示搜索输入？"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Show sorting?
+msgid "Show sorting?"
+msgstr "显示排序？"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Show total results
+msgid "Show total results"
+msgstr "显示全部结果"
+
+#: components/manage/Sidebar/Sidebar
+# defaultMessage: Shrink sidebar
+msgid "Shrink sidebar"
+msgstr "缩小侧边栏"
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Shrink toolbar
+msgid "Shrink toolbar"
+msgstr "缩小工具栏"
+
+#: components/theme/Login/Login
+# defaultMessage: Sign in to start session
+msgid "Sign in to start session"
+msgstr "登录以开始session会话"
+
+#: components/theme/Logo/Logo
+# defaultMessage: Site
+msgid "Site"
+msgstr "网站"
+
+#: components/theme/NotFound/NotFound
+#: components/theme/Unauthorized/Unauthorized
+# defaultMessage: Site Administration
+msgid "Site Administration"
+msgstr "网站管理员"
+
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Toolbar/PersonalTools
+# defaultMessage: Site Setup
+msgid "Site Setup"
+msgstr "网站设置"
+
+#: components/theme/Sitemap/Sitemap
+# defaultMessage: Sitemap
+msgid "Sitemap"
+msgstr ""
+
+#: components/theme/View/ImageView
+# defaultMessage: Size: {size}
+msgid "Size: {size}"
+msgstr "大小：{size}"
+
+#: components/manage/Widgets/ImageSizeWidget
+# defaultMessage: Small
+msgid "Small"
+msgstr "小"
+
+#: error
+# defaultMessage: Sorry, something went wrong with your request
+msgid "Sorry, something went wrong with your request"
+msgstr "对不起，您的请求出现了一些问题"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Sort by
+msgid "Sort By"
+msgstr "排序方式"
+
+#: components/theme/Search/Search
+# defaultMessage: Sort by:
+msgid "Sort By:"
+msgstr "排序方式："
+
+#: components/manage/Blocks/Search/components/SortOn
+#: components/manage/Widgets/QuerySortOnWidget
+#: components/manage/Widgets/QuerystringWidget
+# defaultMessage: Sort on
+msgid "Sort on"
+msgstr "排序"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Sort on options
+msgid "Sort on options"
+msgstr "根据选项排序"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Sort transactions by User-Name, Path or Date
+msgid "Sort transactions by User-Name, Path or Date"
+msgstr "按用户名、路径或日期对事务进行排序"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Sorted
+msgid "Sorted"
+msgstr "排序"
+
+#: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Source
+msgid "Source"
+msgstr ""
+
+#: components/manage/Blocks/Video/Edit
+# defaultMessage: Specify a youtube video or playlist url
+msgid "Specify a youtube video or playlist url"
+msgstr "指定一个youtube视频或播放列表的url"
+
+#: components/manage/Diff/Diff
+# defaultMessage: Split
+msgid "Split"
+msgstr ""
+
+#: components/manage/Blocks/Search/components/DateRangeFacet
+#: components/manage/Contents/Contents
+# defaultMessage: Start Date
+msgid "Start Date"
+msgstr "开始日期"
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: Start of the recurrence
+msgid "Start of the recurrence"
+msgstr "递归的开始"
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Start password reset
+msgid "Start password reset"
+msgstr "开始重置密码"
+
+#: components/manage/Contents/Contents
+#: components/manage/Workflow/Workflow
+#: components/theme/View/TabularView
+# defaultMessage: State
+msgid "State"
+msgstr "状态"
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Status
+msgid "Status"
+msgstr "状态"
+
+#: components/manage/Multilingual/CompareLanguages
+# defaultMessage: Stop compare
+msgid "Stop compare"
+msgstr "停止比较"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: String
+msgid "String"
+msgstr ""
+
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Alternate row background color
+msgid "Stripe alternate rows with color"
+msgstr ""
+
+#: helpers/Extensions/withBlockSchemaEnhancer
+# defaultMessage: Styling
+msgid "Styling"
+msgstr ""
+
+#: components/theme/ContactForm/ContactForm
+# defaultMessage: Subject
+msgid "Subject"
+msgstr "主题"
+
+#: components/manage/Actions/Actions
+#: components/manage/Aliases/Aliases
+#: components/manage/Contents/Contents
+#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Controlpanels/Rules/Rules
+#: components/manage/Controlpanels/UndoControlpanel
+#: components/manage/Multilingual/ManageTranslations
+#: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalPreferences
+#: components/manage/Rules/Rules
+#: components/theme/ContactForm/ContactForm
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Success
+msgid "Success"
+msgstr "成功"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Successfully undone transactions
+msgid "Successfully Undone Transactions"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Summary
+msgid "Summary"
+msgstr "摘要"
+
+#: config/Views
+# defaultMessage: Summary view
+msgid "Summary view"
+msgstr "摘要视图"
+
+#: components/theme/LanguageSelector/LanguageSelector
+# defaultMessage: Switch to
+msgid "Switch to"
+msgstr "切换到"
+
+#: components/manage/Blocks/Table/Edit
+# defaultMessage: Table
+msgid "Table"
+msgstr "表格"
+
+#: components/manage/Blocks/ToC/variations/DefaultTocRenderer
+#: components/manage/Blocks/ToC/variations/HorizontalMenu
+# defaultMessage: Table of Contents
+msgid "Table of Contents"
+msgstr "表格内容"
+
+#: config/Views
+# defaultMessage: Tabular view
+msgid "Tabular view"
+msgstr "表格视图"
+
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsTagsModal
+# defaultMessage: Tags
+msgid "Tags"
+msgstr "标签"
+
+#: components/manage/Contents/ContentsTagsModal
+# defaultMessage: Tags to add
+msgid "Tags to add"
+msgstr "新增关键词"
+
+#: components/manage/Contents/ContentsTagsModal
+# defaultMessage: Tags to remove
+msgid "Tags to remove"
+msgstr "移除关键词"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Target
+msgid "Target"
+msgstr "目标"
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Target Path (Required)
+msgid "Target Path (Required)"
+msgstr "目标路径（必填）"
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Target memory size per cache in bytes
+msgid "Target memory size per cache in bytes"
+msgstr "每个缓存目标以字节为单位的内存大小"
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Target number of objects in memory per cache
+msgid "Target number of objects in memory per cache"
+msgstr ""
+
+#: components/manage/Controlpanels/Aliases
+# defaultMessage: Target url path must start with a slash.
+msgid "Target url path must start with a slash."
+msgstr "目标url路径必须以斜杠开头。"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Text
+msgid "Text"
+msgstr "文本"
+
+#: components/theme/ConnectionRefused/ConnectionRefused
+#: components/theme/CorsError/CorsError
+#: components/theme/NotFound/NotFound
+#: components/theme/RequestTimeout/RequestTimeout
+#: components/theme/Unauthorized/Unauthorized
+# defaultMessage: Thank you.
+msgid "Thank you."
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: The Database Manager allow you to view database status information
+msgid "The Database Manager allow you to view database status information"
+msgstr "数据库管理器允许您查看数据库状态信息"
+
+#: components/theme/RequestTimeout/RequestTimeout
+# defaultMessage: The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again.
+msgid "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
+msgstr "由于服务器超时或您设备的连接问题，后端未响应。请检查你的连接并且重试。"
+
+#: components/theme/ConnectionRefused/ConnectionRefused
+# defaultMessage: The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable.
+msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
+msgstr ""
+
+#: components/theme/CorsError/CorsError
+# defaultMessage: The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources.
+msgid "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
+msgstr "后端正在响应，但是没有正确配置CORS标头，并且浏览器拒绝对后端资源的访问。"
+
+#: components/theme/CorsError/CorsError
+# defaultMessage: The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
+msgid "The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
+msgstr "您网站的后端服务器没有响应，对此我们感到抱歉。请尝试重新加载页面后重试。如果问题仍在，请联系网站管理员。"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: The button presence disables the live search, the query is issued when you press ENTER
+msgid "The button presence disables the live search, the query is issued when you press ENTER"
+msgstr "该按钮不支持动态搜索，查询请求在您按下ENTER时发出"
+
+#: components/manage/Rules/Rules
+# defaultMessage: The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones.
+msgid "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
+msgstr "以下内容规则在本页有效。使用内容规则控制面板可以创建新规则或删除或修改现有规则。"
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: The following list shows which upgrade steps are going to be run. Upgrading sometimes performs a catalog/security update, which may take a long time on large sites. Be patient.
+msgid "The following list shows which upgrade steps are going to be run. Upgrading sometimes performs a catalog/security update, which may take a long time on large sites. Be patient."
+msgstr "如下列表显示了将要运行的升级步骤。有时升级会执行目录/安全方面的更新，这在大型站点中可能会花费较长时间。请耐心等待。"
+
+#: components/manage/Contents/Contents
+# defaultMessage: The item could not be deleted.
+msgid "The item could not be deleted."
+msgstr "此条目无法被删除。"
+
+#: components/theme/View/LinkView
+# defaultMessage: The link address is:
+msgid "The link address is:"
+msgstr "链接地址为："
+
+#: components/manage/Aliases/Aliases
+# defaultMessage: The provided alternative url already exists!
+msgid "The provided alternative url already exists!"
+msgstr "提供的替代url已经存在!"
+
+#: components/theme/Register/Register
+# defaultMessage: The registration process has been successful. Please check your e-mail inbox for information on how activate your account.
+msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
+msgstr "注册过程成功完成。请在您的电子邮箱中查看有关如何激活账户的信息。"
+
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: The site configuration is outdated and needs to be upgraded.
+msgid "The site configuration is outdated and needs to be upgraded."
+msgstr "网站配置已过时，需要升级。"
+
+#: components/manage/Toolbar/More
+# defaultMessage: The working copy was discarded
+msgid "The working copy was discarded"
+msgstr "工作副本被丢弃"
+
+#: components/theme/Footer/Footer
+# defaultMessage: The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends.
+msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
+msgstr ""
+
+#: components/theme/CorsError/CorsError
+# defaultMessage: There is a configuration problem on the backend
+msgid "There is a configuration problem on the backend"
+msgstr "后端出现了一个配置问题"
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: There was an error with the upgrade.
+msgid "There was an error with the upgrade."
+msgstr "升级出现了一个错误。"
+
+#: components/manage/Form/InlineForm
+# defaultMessage: There were some errors
+msgid "There were some errors"
+msgstr "这里出现了一些错误"
+
+#: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: There were some errors.
+msgid "There were some errors."
+msgstr "这里出现了一些错误。"
+
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+# defaultMessage: Third
+msgid "Third"
+msgstr "第三"
+
+#: components/manage/Contents/Contents
+# defaultMessage: This Page is referenced by the following items:
+msgid "This Page is referenced by the following items:"
+msgstr "此页面被下列条目引用："
+
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+# defaultMessage: This has an ongoing working copy in {title}
+msgid "This has an ongoing working copy in {title}"
+msgstr "在{title}中有一个正在进行的工作副本"
+
+#: components/manage/Widgets/IdWidget
+# defaultMessage: This is a reserved name and can't be used
+msgid "This is a reserved name and can't be used"
+msgstr "这是一个保留名字，不能使用"
+
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+# defaultMessage: This is a working copy of {title}
+msgid "This is a working copy of {title}"
+msgstr "这是{title}的一个工作副本"
+
+#: components/manage/LockingToastsFactory/LockingToastsFactory
+# defaultMessage: This item was locked by {creator} on {date}
+msgid "This item was locked by {creator} on {date}"
+msgstr "该条目在{date}时被{creator}锁定"
+
+#: components/manage/Contents/ContentsRenameModal
+# defaultMessage: This name will be displayed in the URL.
+msgid "This name will be displayed in the URL."
+msgstr "该名称将显示在URL中。"
+
+#: components/theme/NotFound/NotFound
+# defaultMessage: This page does not seem to exist…
+msgid "This page does not seem to exist…"
+msgstr "此页面似乎不存在..."
+
+#: components/manage/Controlpanels/Rules/ConfigureRule
+# defaultMessage: This rule is assigned to the following locations:
+msgid "This rule is assigned to the following locations:"
+msgstr "此规则已被分配到下列位置："
+
+#: components/manage/Widgets/DatetimeWidget
+# defaultMessage: Time
+msgid "Time"
+msgstr "时间"
+
+#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsRenameModal
+#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Widgets/SchemaWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/WysiwygWidget
+#: components/theme/View/TabularView
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Title
+msgid "Title"
+msgstr "标题"
+
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Title field error. Value not provided or already existing.
+msgid "Title field error. Value not provided or already existing."
+msgstr "标题字段错误。未提供值或已存在。"
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Total active and non-active objects
+msgid "Total active and non-active objects"
+msgstr "活动和非活动对象的总数"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Total comments
+msgid "Total comments"
+msgstr "全部评论"
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Total number of objects in each cache
+msgid "Total number of objects in each cache"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Total number of objects in memory from all caches
+msgid "Total number of objects in memory from all caches"
+msgstr ""
+
+#: components/manage/Controlpanels/DatabaseInformation
+# defaultMessage: Total number of objects in the database
+msgid "Total number of objects in the database"
+msgstr "数据库中对象的总数"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Transactions
+msgid "Transactions"
+msgstr ""
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: #
+msgid "Transactions Checkbox"
+msgstr ""
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Transactions have been sorted
+msgid "Transactions Have Been Sorted"
+msgstr ""
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Transactions have been unsorted
+msgid "Transactions Have Been Unsorted"
+msgstr ""
+
+#: components/manage/Add/Add
+#: components/manage/Toolbar/Types
+# defaultMessage: Translate to {lang}
+msgid "Translate to {lang}"
+msgstr ""
+
+#: components/manage/Multilingual/ManageTranslations
+# defaultMessage: Translation linked
+msgid "Translation linked"
+msgstr "翻译已链接"
+
+#: components/manage/Multilingual/ManageTranslations
+# defaultMessage: Translation linking removed
+msgid "Translation linking removed"
+msgstr "翻译链接已移除"
+
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Triggering event field error. Please select a value
+msgid "Triggering event field error. Please select a value"
+msgstr "触发了事件字段错误。请选择一个值"
+
+#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Widgets/SchemaWidget
+#: components/theme/View/TabularView
+# defaultMessage: Type
+msgid "Type"
+msgstr ""
+
+#: components/manage/Blocks/Video/Edit
+# defaultMessage: Type a Video (YouTube, Vimeo or mp4) URL
+msgid "Type a Video (YouTube, Vimeo or mp4) URL"
+msgstr "输入一个视频(YouTube, Vimeo or mp4)的URL"
+
+#: components/manage/Widgets/SelectAutoComplete
+# defaultMessage: Type text...
+msgid "Type text..."
+msgstr "输入文本..."
+
+#: components/manage/Blocks/Text/Edit
+# defaultMessage: Type text…
+msgid "Type text…"
+msgstr "输入文本"
+
+#: components/manage/TextLineEdit/TextLineEdit
+# defaultMessage: Type the heading…
+msgid "Type the heading…"
+msgstr "输入标题..."
+
+#: components/manage/Blocks/Title/Edit
+# defaultMessage: Type the title…
+msgid "Type the title…"
+msgstr "输入标题..."
+
+#: components/manage/Contents/Contents
+# defaultMessage: UID
+msgid "UID"
+msgstr ""
+
+#: components/manage/Aliases/Aliases
+#: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Toolbar/More
+# defaultMessage: URL Management
+msgid "URL Management"
+msgstr "URL管理"
+
+#: components/manage/Aliases/Aliases
+# defaultMessage: URL Management for {title}
+msgid "URL Management for {title}"
+msgstr "{title}的URL管理"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Unassign
+msgid "Unassign"
+msgstr "取消分配"
+
+#: components/manage/Rules/Rules
+# defaultMessage: Unassigned
+msgid "Unassigned"
+msgstr "取消分配"
+
+#: components/manage/Toolbar/More
+#: components/theme/Unauthorized/Unauthorized
+# defaultMessage: Unauthorized
+msgid "Unauthorized"
+msgstr "未身份验证"
+
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/UndoControlpanel
+#: components/manage/Form/UndoToolbar
+# defaultMessage: Undo
+msgid "Undo"
+msgstr "撤销"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Undo Controlpanel
+msgid "Undo Controlpanel"
+msgstr ""
+
+#: components/manage/BlockChooser/BlockChooser
+# defaultMessage: Unfold
+msgid "Unfold"
+msgstr "展开"
+
+#: components/manage/Diff/Diff
+# defaultMessage: Unified
+msgid "Unified"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Uninstall
+msgid "Uninstall"
+msgstr "卸载"
+
+#: components/manage/Blocks/Block/DefaultView
+#: components/manage/Blocks/Block/Edit
+#: components/theme/View/RenderBlocks
+# defaultMessage: Unknown Block {block}
+msgid "Unknown Block"
+msgstr "Unknown Block {block}"
+
+#: components/manage/Multilingual/ManageTranslations
+# defaultMessage: Unlink translation for
+msgid "Unlink translation for"
+msgstr "取消翻译链接"
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Unlock
+msgid "Unlock"
+msgstr "解锁"
+
+#: components/manage/Controlpanels/UndoControlpanel
+# defaultMessage: Unsorted
+msgid "Unsorted"
+msgstr "未排序"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Update
+msgid "Update"
+msgstr "更新"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Update installed addons
+msgid "Update installed addons"
+msgstr "更新已安装的插件"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Update installed addons:
+msgid "Update installed addons:"
+msgstr "更新已安装的插件："
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Updates available
+msgid "Updates available"
+msgstr "可用更新"
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Upgrade
+msgid "Upgrade"
+msgstr "升级"
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Upgrade Plone Site
+msgid "Upgrade Plone Site"
+msgstr "升级Plone站点"
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Upgrade Report
+msgid "Upgrade Report"
+msgstr "升级报告"
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Upgrade Steps
+msgid "Upgrade Steps"
+msgstr "升级步骤"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Upload
+msgid "Upload"
+msgstr "上传"
+
+#: components/manage/Blocks/LeadImage/Edit
+# defaultMessage: Upload a lead image in the 'Lead Image' content field.
+msgid "Upload a lead image in the 'Lead Image' content field."
+msgstr ""
+
+#: components/manage/Blocks/HeroImageLeft/Edit
+# defaultMessage: Upload a new image
+msgid "Upload a new image"
+msgstr "上传一个新文件"
+
+#: components/manage/Contents/ContentsUploadModal
+# defaultMessage: Upload files
+msgid "Upload files"
+msgstr "上传文件"
+
+#: components/manage/Contents/ContentsUploadModal
+# defaultMessage: Uploading files
+msgid "Uploading files"
+msgstr "上传文件中"
+
+#: components/manage/Blocks/HeroImageLeft/Edit
+# defaultMessage: Uploading image
+msgid "Uploading image"
+msgstr "上传图像中"
+
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Use the form below to define the new content rule
+msgid "Use the form below to define the new content rule"
+msgstr "使用下面的表来定义新的内容规则"
+
+#: components/manage/Controlpanels/Rules/Rules
+# defaultMessage: Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu.
+msgid "Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu."
+msgstr "使用下面的表单定义、更改或删除内容规则。触发事件发生时，规则将基于内容自动执行操作。在定义规则后，您可以使用文件夹菜单栏中的 ‘规则’ 标签，给文件夹分配规则。"
+
+#: components/manage/Widgets/SchemaWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/WysiwygWidget
+# defaultMessage: Used for programmatic access to the fieldset.
+msgid "Used for programmatic access to the fieldset."
+msgstr "用于对字段集的编程访问。"
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: User
+msgid "User"
+msgstr "用户"
+
+#: components/manage/Controlpanels/Controlpanels
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Membership
+msgid "User Group Membership"
+msgstr "用户组成员"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User Group Settings
+msgid "User Group Settings"
+msgstr "用户组设置"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User created
+msgid "User created"
+msgstr "用户已创建"
+
+#: components/manage/Controlpanels/Users/UsersControlpanel
+# defaultMessage: User name
+msgid "User name"
+msgstr "用户名"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User roles updated
+msgid "User roles updated"
+msgstr "用户角色更新"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Username
+msgid "Username"
+msgstr "用户名"
+
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Users/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Users
+msgid "Users"
+msgstr "用户"
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Users and Groups
+msgid "Users and Groups"
+msgstr "用户和组"
+
+#: components/manage/Aliases/Aliases
+# defaultMessage: Using this form, you can manage alternative urls for an item. This is an easy way to make an item available under two different URLs.
+msgid "Using this form, you can manage alternative urls for an item. This is an easy way to make an item available under two different URLs."
+msgstr "使用这个表单，您可以管理条目中的备选url。这是一种让条目在两个不同的url下可用的简单方法。"
+
+#: helpers/Extensions/withBlockSchemaEnhancer
+# defaultMessage: Variation
+msgid "Variation"
+msgstr "变化"
+
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Version Overview
+msgid "Version Overview"
+msgstr "版本概述"
+
+#: components/manage/Blocks/Video/schema
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: Video
+msgid "Video"
+msgstr "视频"
+
+#: components/manage/Blocks/Video/schema
+# defaultMessage: Video URL
+msgid "Video URL"
+msgstr "视频URL"
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: View
+msgid "View"
+msgstr ""
+
+#: components/manage/History/History
+# defaultMessage: View changes
+msgid "View changes"
+msgstr ""
+
+#: components/manage/History/History
+# defaultMessage: View this revision
+msgid "View this revision"
+msgstr "查看此修改"
+
+#: components/manage/Toolbar/More
+# defaultMessage: View working copy
+msgid "View working copy"
+msgstr "查看工作副本"
+
+#: components/manage/Display/Display
+# defaultMessage: View
+msgid "Viewmode"
+msgstr "视图模式"
+
+#: components/manage/Widgets/VocabularyTermsWidget
+# defaultMessage: Vocabulary term
+msgid "Vocabulary term"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+# defaultMessage: Title
+msgid "Vocabulary term title"
+msgstr ""
+
+#: components/manage/Widgets/VocabularyTermsWidget
+# defaultMessage: Vocabulary terms
+msgid "Vocabulary terms"
+msgstr ""
+
+#: components/manage/Controlpanels/VersionOverview
+# defaultMessage: You are running in 'debug mode'. This mode is intended for sites that are under development. This allows many configuration changes to be immediately visible, but will make your site run more slowly. To turn off debug mode, stop the server, set 'debug-mode=off' in your buildout.cfg, re-run bin/buildout and then restart the server process.
+msgid "Warning Regarding debug mode"
+msgstr "关于调试模式的警告"
+
+#: components/theme/ConnectionRefused/ConnectionRefused
+# defaultMessage: We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later.
+msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
+msgstr "很抱歉，您正在访问的网站后端现在不可用。请稍后重试。"
+
+#: components/theme/NotFound/NotFound
+# defaultMessage: We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for.
+msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
+msgstr "很抱歉，您所尝试访问的地址不存在。您可以使用下面的链接帮助您查找所需内容。"
+
+#: components/theme/Forbidden/Forbidden
+# defaultMessage: We apologize for the inconvenience, but you don't have permissions on this resource.
+msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
+msgstr "很抱歉，您没有访问该资源的权限。"
+
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+# defaultMessage: The
+msgid "Weeek day of month"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Weekday
+msgid "Weekday"
+msgstr "工作日"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Weekly
+msgid "Weekly"
+msgstr "每周"
+
+#: components/manage/Controlpanels/UndoControlpanel
+#: components/manage/History/History
+# defaultMessage: What
+msgid "What"
+msgstr ""
+
+#: components/manage/Controlpanels/UndoControlpanel
+#: components/manage/History/History
+# defaultMessage: When
+msgid "When"
+msgstr ""
+
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: When this date is reached, the content will nolonger be visible in listings and searches.
+msgid "When this date is reached, the content will nolonger be visible in listings and searches."
+msgstr "当到了这个日期，这些内容将不再在列表和搜索中可见。"
+
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Whether or not execution of further rules should stop after this rule is executed
+msgid "Whether or not execution of further rules should stop after this rule is executed"
+msgstr "此规则执行后，停止执行后面的内容规则。"
+
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Whether or not other rules should be triggered by the actions launched by this rule. Activate this only if you are sure this won't create infinite loops
+msgid "Whether or not other rules should be triggered by the actions launched by this rule. Activate this only if you are sure this won't create infinite loops"
+msgstr ""
+
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+# defaultMessage: Whether or not the rule is currently enabled
+msgid "Whether or not the rule is currently enabled"
+msgstr "是否启用当前规则"
+
+#: components/manage/Controlpanels/UndoControlpanel
+#: components/manage/History/History
+# defaultMessage: Who
+msgid "Who"
+msgstr ""
+
+#: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
+# defaultMessage: Wide
+msgid "Wide"
+msgstr ""
+
+#: components/manage/Contents/ContentsWorkflowModal
+# defaultMessage: Updating workflow states...
+msgid "Workflow Change Loading Message"
+msgstr "工作流变更加载信息"
+
+#: components/manage/Workflow/Workflow
+# defaultMessage: Workflow updated.
+msgid "Workflow updated."
+msgstr "工作流已更新"
+
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+# defaultMessage: Yearly
+msgid "Yearly"
+msgstr "每年"
+
+#: components/manage/Contents/ContentsItem
+#: components/manage/Contents/ContentsPropertiesModal
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Yes
+msgid "Yes"
+msgstr ""
+
+#: components/theme/Unauthorized/Unauthorized
+# defaultMessage: You are trying to access a protected resource, please {login} first.
+msgid "You are trying to access a protected resource, please {login} first."
+msgstr "你正在尝试访问受保护的资源，请先{login}"
+
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+# defaultMessage: You are using an outdated browser
+msgid "You are using an outdated browser"
+msgstr "你正在使用一个过时的浏览器"
+
+#: components/theme/Comments/Comments
+# defaultMessage: You can add a comment by filling out the form below. Plain text formatting.
+msgid "You can add a comment by filling out the form below. Plain text formatting."
+msgstr "您可以通过填写以下表单发表评论，使用纯文本格式。"
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: You can control who can view and edit your item using the list below.
+msgid "You can control who can view and edit your item using the list below."
+msgstr "您可以在下面的清单里控制谁可以访问或编辑您的条目。"
+
+#: components/manage/Diff/Diff
+# defaultMessage: You can view the difference of the revisions below.
+msgid "You can view the difference of the revisions below."
+msgstr "您可以查看以下版本的差异。"
+
+#: components/manage/History/History
+# defaultMessage: You can view the history of your item below.
+msgid "You can view the history of your item below."
+msgstr "您可以在下面查看您条目的历史记录。"
+
+#: components/manage/Contents/Contents
+# defaultMessage: You can't paste this content here
+msgid "You can't paste this content here"
+msgstr "您不能将内容粘贴到此处"
+
+#: components/theme/Logout/Logout
+# defaultMessage: You have been logged out from the site.
+msgid "You have been logged out from the site."
+msgstr "您已被此站点注销。"
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Your email is required for reset your password.
+msgid "Your email is required for reset your password."
+msgstr "重置您的密码需要您的邮箱"
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Your password has been set successfully. You may now {link} with your new password.
+msgid "Your password has been set successfully. You may now {link} with your new password."
+msgstr "您的密码设置成功。您现在也许要{link}您的新密码。"
+
+#: components/manage/Preferences/PersonalPreferences
+# defaultMessage: Your preferred language
+msgid "Your preferred language"
+msgstr "您的首选语言"
+
+#: components/manage/Controlpanels/UpgradeControlPanel
+# defaultMessage: Your site is up to date.
+msgid "Your site is up to date."
+msgstr "您的网站是最新的。"
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Your username is required for reset your password.
+msgid "Your usernaame is required for reset your password."
+msgstr "重置密码需要您的用户名。"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
+msgid "addUserFormEmailDescription"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Enter full name, e.g. John Smith.
+msgid "addUserFormFullnameDescription"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Enter your new password. Minimum 8 characters.
+msgid "addUserFormPasswordDescription"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in.
+msgid "addUserFormUsernameDescription"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Available views
+msgid "availableViews"
+msgstr ""
+
+#: components/theme/Login/Login
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Forgot your password?
+msgid "box_forgot_password_option"
+msgstr "忘记了密码？"
+
+#: config/Blocks
+# defaultMessage: Checkbox
+msgid "checkboxFacet"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Common
+msgid "common"
+msgstr ""
+
+#: components/manage/Multilingual/CompareLanguages
+# defaultMessage: Compare to language
+msgid "compare_to"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Date Range
+msgid "daterangeFacet"
+msgstr ""
+
+#: components/manage/Blocks/Block/EditBlockWrapper
+# defaultMessage: delete
+msgid "delete"
+msgstr "删除"
+
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+# defaultMessage: You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser.
+msgid "deprecated_browser_notice_message"
+msgstr "您正在使用的{browsername}{browserversion}已被其供应商弃用。这意味着它没有进行安全更新，也没有为当下现代网络功能做好准备，这降低了用户的体验。请升级到现代浏览器。"
+
+#: config/Blocks
+# defaultMessage: Description
+msgid "description"
+msgstr "描述"
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: For security reasons, we store your password encrypted, and cannot mail it to you. If you would like to reset your password, fill out the form below and we will send you an email at the address you gave when you registered to start the process of resetting your password.
+msgid "description_lost_password"
+msgstr "因为安全方面的原因，我们以加密方式保存密码，所以无法发送给您。如果您希望重置密码，请填写下面的表单，我们将根据您注册时提供的邮件地址发送一封邮件给您，您可以通过它重置密码。"
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Your password reset request has been mailed. It should arrive in your mailbox shortly. When you receive the message, visit the address it contains to reset your password.
+msgid "description_sent_password"
+msgstr "您的密码重置请求邮件已发送。稍后它将到达您的邮箱。当您收到邮件后，请访问它提供的地址，重置密码。"
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Draft
+msgid "draft"
+msgstr "草案"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Input must be valid email (something@domain.com)
+msgid "email"
+msgstr "邮箱"
+
+#: components/theme/EventDetails/EventDetails
+# defaultMessage: All dates
+msgid "event_alldates"
+msgstr "所有日期"
+
+#: components/theme/EventDetails/EventDetails
+# defaultMessage: Attendees
+msgid "event_attendees"
+msgstr "事件参与人"
+
+#: components/theme/EventDetails/EventDetails
+# defaultMessage: Contact Name
+msgid "event_contactname"
+msgstr "联系名字"
+
+#: components/theme/EventDetails/EventDetails
+# defaultMessage: Contact Phone
+msgid "event_contactphone"
+msgstr "联系电话"
+
+#: components/theme/EventDetails/EventDetails
+# defaultMessage: Website
+msgid "event_website"
+msgstr "web站点"
+
+#: components/theme/EventDetails/EventDetails
+# defaultMessage: What
+msgid "event_what"
+msgstr ""
+
+#: components/theme/EventDetails/EventDetails
+# defaultMessage: When
+msgid "event_when"
+msgstr ""
+
+#: components/theme/EventDetails/EventDetails
+# defaultMessage: Where
+msgid "event_where"
+msgstr ""
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Password reset confirmation sent
+msgid "heading_sent_password"
+msgstr "密码重置确认邮件已发送"
+
+#: config/Blocks
+# defaultMessage: Hero
+msgid "hero"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: HTML
+msgid "html"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Image
+msgid "image"
+msgstr "图片"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Input must be integer
+msgid "integer"
+msgstr "整数"
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Intranet
+msgid "intranet"
+msgstr "内部"
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: My email is
+msgid "label_my_email_is"
+msgstr "我的邮箱是"
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: My username is
+msgid "label_my_username_is"
+msgstr "我的用户名是"
+
+#: config/Blocks
+# defaultMessage: Lead Image Field
+msgid "leadimage"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Listing
+msgid "listing"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingBody
+#: components/manage/Contents/Contents
+# defaultMessage: Loading
+msgid "loading"
+msgstr ""
+
+#: components/theme/Unauthorized/Unauthorized
+# defaultMessage: log in
+msgid "log in"
+msgstr "登录"
+
+#: config/Blocks
+# defaultMessage: Maps
+msgid "maps"
+msgstr ""
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Maximum Length
+msgid "maxLength"
+msgstr "最大长度"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: End of the range (including the value itself)
+msgid "maximum"
+msgstr "最大"
+
+#: config/Blocks
+# defaultMessage: Media
+msgid "media"
+msgstr "媒体"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Minimum Length
+msgid "minLength"
+msgstr "最小长度"
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Start of the range
+msgid "minimum"
+msgstr "最小"
+
+#: config/Blocks
+# defaultMessage: Most used
+msgid "mostUsed"
+msgstr ""
+
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+#: components/theme/Widgets/BooleanWidget
+# defaultMessage: No
+msgid "no"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: No workflow state
+msgid "no workflow state"
+msgstr "无工作流状态"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Input must be number
+msgid "number"
+msgstr "数字"
+
+#: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
+#: components/manage/Widgets/RecurrenceWidget/ByYearField
+# defaultMessage: of the month
+msgid "of the month"
+msgstr ""
+
+#: error
+# defaultMessage: or try a different page.
+msgid "or try a different page."
+msgstr "或者尝试一个不同的页面"
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+# defaultMessage: others
+msgid "others"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Pending
+msgid "pending"
+msgstr "待审核"
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Private
+msgid "private"
+msgstr "保密"
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Published
+msgid "published"
+msgstr "已发布"
+
+#: components/manage/Widgets/QueryWidget
+# defaultMessage: Select…
+msgid "querystring-widget-select"
+msgstr ""
+
+#: components/theme/Search/Search
+# defaultMessage: results
+msgid "results found"
+msgstr "找到的结果"
+
+#: error
+# defaultMessage: return to the site root
+msgid "return to the site root"
+msgstr "返回站点root"
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: and
+msgid "rrule_and"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: (~approximate)
+msgid "rrule_approximate"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: at
+msgid "rrule_at"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: [month] [day], [year]
+msgid "rrule_dateFormat"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: day
+msgid "rrule_day"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: days
+msgid "rrule_days"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: every
+msgid "rrule_every"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: for
+msgid "rrule_for"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: hour
+msgid "rrule_hour"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: hours
+msgid "rrule_hours"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: in
+msgid "rrule_in"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: last
+msgid "rrule_last"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: minutes
+msgid "rrule_minutes"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: month
+msgid "rrule_month"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: months
+msgid "rrule_months"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: nd
+msgid "rrule_nd"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: on
+msgid "rrule_on"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: on the
+msgid "rrule_on the"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: or
+msgid "rrule_or"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: rd
+msgid "rrule_rd"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: st
+msgid "rrule_st"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: th
+msgid "rrule_th"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: the
+msgid "rrule_the"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: time
+msgid "rrule_time"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: times
+msgid "rrule_times"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: until
+msgid "rrule_until"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: week
+msgid "rrule_week"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: weekday
+msgid "rrule_weekday"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: weekdays
+msgid "rrule_weekdays"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: weeks
+msgid "rrule_weeks"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: year
+msgid "rrule_year"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Utils
+# defaultMessage: years
+msgid "rrule_years"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Select
+msgid "selectFacet"
+msgstr ""
+
+#: components/manage/Blocks/Search/components/ViewSwitcher
+# defaultMessage: Select view
+msgid "selectView"
+msgstr "选择视图"
+
+#: components/theme/SkipLinks/SkipLinks
+# defaultMessage: Skip to footer
+msgid "skiplink-footer"
+msgstr "跳到页脚"
+
+#: components/theme/SkipLinks/SkipLinks
+# defaultMessage: Skip to main content
+msgid "skiplink-main-content"
+msgstr "跳到主要内容"
+
+#: components/theme/SkipLinks/SkipLinks
+# defaultMessage: Skip to navigation
+msgid "skiplink-navigation"
+msgstr "跳到导航栏"
+
+#: components/manage/Contents/Contents
+# defaultMessage: sort
+msgid "sort"
+msgstr "排序"
+
+#: config/Blocks
+# defaultMessage: Table
+msgid "table"
+msgstr "表格"
+
+#: config/Blocks
+# defaultMessage: Text
+msgid "text"
+msgstr "文本"
+
+#: config/Blocks
+# defaultMessage: Title
+msgid "title"
+msgstr "标题"
+
+#: config/Blocks
+# defaultMessage: Table of Contents
+msgid "toc"
+msgstr "目录"
+
+#: config/Blocks
+# defaultMessage: Toggle
+msgid "toggleFacet"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Update from version {origin} to {destination}
+msgid "upgradeVersions"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Input must be valid url (www.something.com or http(s)://www.something.com)
+msgid "url"
+msgstr ""
+
+#: components/manage/Toolbar/PersonalTools
+# defaultMessage: user avatar
+msgid "user avatar"
+msgstr "用户头像"
+
+#: config/Blocks
+# defaultMessage: Video
+msgid "video"
+msgstr "视频"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Views
+msgid "views"
+msgstr ""
+
+#: components/theme/EventDetails/EventDetails
+# defaultMessage: Visit external website
+msgid "visit_external_website"
+msgstr "访问外部的web站点"
+
+#: components/manage/Toolbar/More
+# defaultMessage: You are not authorized to perform this operation.
+msgid "workingCopyErrorUnauthorized"
+msgstr "您没有权限执行此操作"
+
+#: components/manage/Toolbar/More
+# defaultMessage: An error occurred while performing this operation.
+msgid "workingCopyGenericError"
+msgstr "执行此操作时发生了一个错误"
+
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+#: components/theme/Widgets/BooleanWidget
+# defaultMessage: Yes
+msgid "yes"
+msgstr ""
+
+#: components/manage/Contents/ContentsUploadModal
+# defaultMessage: {count, plural, one {Upload {count} file} other {Upload {count} files}}
+msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: {count} selected
+msgid "{count} selected"
+msgstr "{count}已选择"
+
+#: components/manage/Controlpanels/ContentType
+# defaultMessage: {id} Content Type
+msgid "{id} Content Type"
+msgstr "{id}内容类型"
+
+#: components/manage/Controlpanels/ContentTypeSchema
+# defaultMessage: {id} Schema
+msgid "{id} Schema"
+msgstr ""
+
+#: components/manage/Actions/Actions
+# defaultMessage: {title} copied.
+msgid "{title} copied."
+msgstr "{title}已拷贝。"
+
+#: components/manage/Actions/Actions
+# defaultMessage: {title} cut.
+msgid "{title} cut."
+msgstr "{title}已剪切。"
+
+#: components/manage/Actions/Actions
+# defaultMessage: {title} has been deleted.
+msgid "{title} has been deleted."
+msgstr "{title}已被删除。"

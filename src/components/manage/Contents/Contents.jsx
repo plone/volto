@@ -90,6 +90,7 @@ import sortDownSVG from '@plone/volto/icons/sort-down.svg';
 import sortUpSVG from '@plone/volto/icons/sort-up.svg';
 import downKeySVG from '@plone/volto/icons/down-key.svg';
 import moreSVG from '@plone/volto/icons/more.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   back: {
@@ -150,7 +151,7 @@ const messages = defineMessages({
   },
   messageReorder: {
     id: 'Item succesfully moved.',
-    defaultMessage: 'Item succesfully moved.',
+    defaultMessage: 'Item successfully moved.',
   },
   messagePasted: {
     id: 'Item(s) pasted.',
@@ -1507,11 +1508,26 @@ class Contents extends Component {
                               value={this.state.filter}
                               onChange={this.onChangeFilter}
                             />
+                            {this.state.filter && (
+                              <Button
+                                className="icon icon-container"
+                                onClick={() => {
+                                  this.onChangeFilter('', { value: '' });
+                                }}
+                              >
+                                <Icon
+                                  name={clearSVG}
+                                  size="30px"
+                                  color="#e40166"
+                                />
+                              </Button>
+                            )}
                             <Icon
                               name={zoomSVG}
                               size="30px"
                               color="#007eb1"
                               className="zoom"
+                              style={{ flexShrink: '0' }}
                             />
                             <div className="results" />
                           </div>
