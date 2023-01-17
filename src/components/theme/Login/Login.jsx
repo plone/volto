@@ -9,14 +9,7 @@ import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import {
-  Container,
-  Button,
-  Form,
-  Input,
-  Segment,
-  Grid,
-} from 'semantic-ui-react';
+import {Button,Form,Input,Segment,Grid} from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import qs from 'query-string';
 import { withRouter } from 'react-router-dom';
@@ -182,7 +175,7 @@ class Login extends Component {
     return (
       <div id="page-login">
         <Helmet title={this.props.intl.formatMessage(messages.Login)} />
-        <Container text>
+        <Grid centered>
           <Form method="post" onSubmit={this.onLogin}>
             <Segment.Group raised>
               <Segment className="primary">
@@ -305,7 +298,7 @@ class Login extends Component {
               </Segment>
             </Segment.Group>
           </Form>
-        </Container>
+        </Grid>
       </div>
     );
   }
