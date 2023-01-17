@@ -28,13 +28,25 @@ In your report, please specify a few things:
 - Which Plone version are you using?
 - Include relevant screenshots, error messages, and stack traces.
 
+## Branch policy
+
+```{include} ./branch-policy.md
+```
+
 ## Create a pull request
 
 You must sign the [Plone Contributor Agreement](https://plone.org/foundation/contributors-agreement) to contribute code and documentation to any Plone project.
 This means that we can NOT accept pull requests from you until you do this.
 
-All pull requests must include a note under the `(unreleased)` version under the appropriate subheading of [CHANGELOG.md](https://github.com/plone/volto/blob/master/CHANGELOG.md).
-Do not edit already released versions.
+All pull requests must include a `towncrier` news item.
+This is a file that is placed in the root of the repository directory at `/news`.
+Its format must be `###.type`, where `###` is the referenced GitHub issue or pull request number, `.` is the literal extension delimiter, and `type` is one of the following strings.
+
+- `breaking` for breaking changes
+- `bugfix` for bug fixes
+- `documentation` for documentation
+- `feature` for new features
+- `internal` for internal changes
 
 If the feature includes a breaking change, you must include instructions for how to upgrade in the [upgrade guide](../upgrade-guide/index.md).
 

@@ -23,7 +23,6 @@
 .block .block:not(.inner)::before {
   position: absolute;
   z-index: -1;
-  z-index: -1;
   top: -9px;
   left: -9px;
   width: ~'calc(100% + 18px)';
@@ -72,7 +71,6 @@
 
 .ui.drag.block.video,
 .ui.drag.block.image {
-  z-index: 2;
   // This fixes the floating images in Volto Editor! Muahahaha
   display: block;
   // This fixes two left floated items in a row
@@ -470,18 +468,29 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 }
 
 .ui.basic.button.block-add-button {
-  // .ui.basic.button.block-delete-button {
   position: absolute;
   z-index: 2;
-  // margin-top: -21px;
-  top: -2px;
-  padding: 0;
-  border: none;
   margin-bottom: 0;
   -webkit-box-shadow: none;
   box-shadow: none;
   color: #b8c6c8 !important;
-  transform: translateX(-40px);
+
+  &.new-add-block {
+    bottom: -26px;
+    left: 50%;
+    padding: 0 !important;
+    border: none !important;
+    background: white !important;
+    border-radius: 50% !important;
+    transform: translateX(-50%);
+  }
+
+  &:not(.new-add-block) {
+    top: -2px;
+    padding: 0;
+    border: none;
+    transform: translateX(-40px);
+  }
 
   &:hover,
   &:focus {
@@ -705,13 +714,22 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 .blocks-chooser {
   position: absolute;
   z-index: 10;
-  top: -12px;
-  left: -9px;
+  top: 100%;
+  left: 50%;
   width: 310px;
   padding: 4px;
   background-color: rgba(255, 255, 255, 0.975);
   border-radius: 2px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.05);
+
+  &.new-add-block {
+    transform: translate(-50%, 22px);
+  }
+
+  &:not(.new-add-block) {
+    top: -12px;
+    left: -9px;
+  }
 
   .ui.basic.button {
     display: flex;

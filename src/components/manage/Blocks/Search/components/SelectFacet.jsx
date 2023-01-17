@@ -3,6 +3,7 @@ import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import {
   Option,
   DropdownIndicator,
+  MultiValueContainer,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 import { selectTheme, customSelectStyles } from './SelectStyling';
 import {
@@ -32,7 +33,7 @@ const SelectFacet = (props) => {
       options={choices}
       styles={customSelectStyles}
       theme={selectTheme}
-      components={{ DropdownIndicator, Option }}
+      components={{ DropdownIndicator, Option, MultiValueContainer }}
       isDisabled={isEditMode}
       onChange={(data) => {
         if (data) {

@@ -6,6 +6,8 @@ import { render } from '@testing-library/react';
 
 import config from '@plone/volto/registry';
 
+config.experimental = { addBlockButton: { enabled: false } };
+
 jest.mock('@plone/volto/helpers/Loadable/Loadable');
 beforeAll(
   async () =>

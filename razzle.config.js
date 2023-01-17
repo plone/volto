@@ -10,6 +10,8 @@ const RelativeResolverPlugin = require('./webpack-plugins/webpack-relative-resol
 const createAddonsLoader = require('./create-addons-loader');
 const AddonConfigurationRegistry = require('./addon-registry');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 const fileLoaderFinder = makeLoaderFinder('file-loader');
 
@@ -109,6 +111,25 @@ const defaultModify = ({
         },
       },
     });
+
+    // This is needed to override Razzle use of the unmaintained CleanCSS
+    // which does not have support for recently CSS features (container queries).
+    // Using the default provided (cssnano) by css-minimizer-webpack-plugin
+    // should be enough see:
+    // (https://github.com/clean-css/clean-css/discussions/1209)
+    if (!dev) {
+      config.optimization = Object.assign({}, config.optimization, {
+        minimizer: [
+          new TerserPlugin(options.webpackOptions.terserPluginOptions),
+          new CssMinimizerPlugin({
+            sourceMap: options.razzleOptions.enableSourceMaps,
+            minimizerOptions: {
+              sourceMap: options.razzleOptions.enableSourceMaps,
+            },
+          }),
+        ],
+      });
+    }
 
     config.plugins.unshift(
       // restrict moment.js locales to en/de
@@ -294,6 +315,10 @@ const defaultModify = ({
           }),
         ]
       : [];
+
+  if (config.devServer) {
+    config.devServer.watchOptions.ignored = /node_modules\/(?!@plone\/volto)/;
+  }
 
   return config;
 };
