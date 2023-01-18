@@ -24,7 +24,7 @@ import { loadables } from './Loadables';
 import { workflowMapping } from './Workflows';
 
 import { contentIcons } from './ContentIcons';
-import { styleClassNameConverters } from './Style';
+import { styleClassNameConverters, styleClassNameExtenders } from './Style';
 import {
   controlPanelsIcons,
   filterControlPanels,
@@ -170,6 +170,7 @@ let config = {
     errorHandlers: [], // callables for unhandled errors
     styleClassNameConverters,
     hashLinkSmoothScroll: false,
+    styleClassNameExtenders,
   },
   experimental: {
     addBlockButton: {
