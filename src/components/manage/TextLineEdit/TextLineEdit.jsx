@@ -63,7 +63,6 @@ export const TextLineEdit = (props) => {
   const disableNewBlocks = React.useMemo(() => detached, [detached]);
   const handleKeyDown = React.useCallback(
     (ev) => {
-      // console.log('key', ev);
       if (ev.key === 'Return' || ev.key === 'Enter') {
         ev.preventDefault();
         if (!disableNewBlocks) {
@@ -131,7 +130,7 @@ export const TextLineEdit = (props) => {
       getInputProps={() => ({
         onKeyDown: handleKeyDown,
         onFocus: handleFocus,
-        focus: selected,
+        // focus: selected ? 'true' : undefined,
       })}
     />
   ) : null;
