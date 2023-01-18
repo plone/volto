@@ -1,0 +1,1 @@
+Fix StyleWrapper extenders, the classNames were not being re-fed into the pipe @sneridagh
