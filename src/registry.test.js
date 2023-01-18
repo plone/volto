@@ -1,5 +1,4 @@
 import config from './registry';
-import { Contents } from '@plone/volto/components';
 
 config.set('components', {
   Toolbar: { component: 'this is the Toolbar component' },
@@ -54,10 +53,22 @@ describe('registry', () => {
   it('registers and gets a component by name (as an object) - check displayName', () => {
     config.registerComponent({
       name: 'Toolbar.Bar',
-      component: Contents,
+      component: (props) => <div>Hello</div>,
     });
     expect(config.getComponent('Toolbar.Bar').component.displayName).toEqual(
       'Toolbar.Bar',
+    );
+  });
+  it('registers and gets a component by name (as an object) - check displayName if it has already one, it does not overwrite it', () => {
+    const TestComponent = (props) => <div>Hello</div>;
+    TestComponent.displayName = 'DisplayNameAlreadySet';
+    config.registerComponent({
+      name: 'Toolbar.Bar',
+      component: TestComponent,
+    });
+
+    expect(config.getComponent('Toolbar.Bar').component.displayName).toEqual(
+      'DisplayNameAlreadySet',
     );
   });
   it('registers and gets a component by name (as an object) - check displayName - do not break if it is a normal function', () => {
