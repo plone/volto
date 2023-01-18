@@ -47,7 +47,6 @@ const NumberWidget = (props) => {
         step={step}
         value={value ?? ''}
         placeholder={placeholder}
-        step={step || 1}
         onChange={({ target }) =>
           onChange(id, target.value === '' ? undefined : target.value)
         }
