@@ -489,10 +489,15 @@ export const buildStyleClassNamesFromData = (obj = {}, prefix = '') => {
  * @param {Object} params An object with data, content and block (current block id)
  * @return {Array} Extender classNames resultant array
  */
-export const buildStyleClassNamesExtenders = ({ block, content, data }) => {
+export const buildStyleClassNamesExtenders = ({
+  block,
+  content,
+  data,
+  classNames,
+}) => {
   return config.settings.styleClassNameExtenders.reduce(
     (acc, extender) => extender({ block, content, data, classNames: acc }),
-    [],
+    classNames,
   );
 };
 
