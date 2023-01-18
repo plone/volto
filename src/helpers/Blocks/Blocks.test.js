@@ -1113,9 +1113,9 @@ describe('Blocks', () => {
       };
       const block = 2;
       const data = content['blocks'][2];
-
+      const classNames = [];
       expect(
-        buildStyleClassNamesExtenders({ block, content, data }),
+        buildStyleClassNamesExtenders({ block, content, data, classNames }),
       ).toStrictEqual([
         'next--is--slate',
         'previous--is--same--block-type',
@@ -1153,9 +1153,10 @@ describe('Blocks', () => {
       };
       const block = 2;
       const data = content['blocks'][2];
+      const classNames = [];
 
       expect(
-        buildStyleClassNamesExtenders({ block, content, data }),
+        buildStyleClassNamesExtenders({ block, content, data, classNames }),
       ).toStrictEqual([
         'next--is--slate',
         'previous--is--same--block-type',
@@ -1190,9 +1191,10 @@ describe('Blocks', () => {
       };
       const block = 2;
       const data = content['blocks'][2];
+      const classNames = [];
 
       expect(
-        buildStyleClassNamesExtenders({ block, content, data }),
+        buildStyleClassNamesExtenders({ block, content, data, classNames }),
       ).toStrictEqual([
         'next--is--slate',
         'next--is--same--block-type',
@@ -1224,10 +1226,47 @@ describe('Blocks', () => {
       };
       const block = 2;
       const data = content['blocks'][2];
+      const classNames = [];
 
       expect(
-        buildStyleClassNamesExtenders({ block, content, data }),
+        buildStyleClassNamesExtenders({ block, content, data, classNames }),
       ).toStrictEqual([
+        'next--is--slate',
+        'previous--is--same--block-type',
+        'is--last--of--block-type',
+        'previous--has--same--backgroundColor',
+        'next--has--different--backgroundColor',
+      ]);
+    });
+
+    it('grid + grid + slate grey - with existing classNames list', () => {
+      const content = {
+        blocks: {
+          1: {
+            '@type': '__grid',
+          },
+          2: {
+            '@type': '__grid',
+          },
+          3: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+        },
+        blocks_layout: {
+          items: [1, 2, 3],
+        },
+      };
+      const block = 2;
+      const data = content['blocks'][2];
+      const classNames = ['has--align--center'];
+
+      expect(
+        buildStyleClassNamesExtenders({ block, content, data, classNames }),
+      ).toStrictEqual([
+        'has--align--center',
         'next--is--slate',
         'previous--is--same--block-type',
         'is--last--of--block-type',
