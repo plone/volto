@@ -82,18 +82,11 @@ module.exports = {
       options: {}
     });
 
-    // putting SVG loader on top, fix the fileloader manually (Volto plugin does not
-    // work) since it needs to go first
+    // Put the SVG loader on top and prevent the asset/resource rule
+    // from processing the app's SVGs
     config.module.rules.unshift(SVGLOADER);
-    // TODO
-    // Don't load config|variables|overrides) files with file-loader
-    // Don't load SVGs from ./src/icons with file-loader
-    // const fileLoader = config.module.rules.find(fileLoaderFinder);
-    // fileLoader.exclude = [
-    //   /\.(config|variables|overrides)$/,
-    //   /icons\/.*\.svg$/,
-    //   ...fileLoader.exclude,
-    // ];
+    const fileLoaderRule = config.module.rules.find(rule => rule.test.test('.svg'));
+    fileLoaderRule.exclude = /icons\/.*\.svg$/;
     config.plugins.unshift(new webpack.DefinePlugin({
       __DEVELOPMENT__: true,
       __CLIENT__: true,
