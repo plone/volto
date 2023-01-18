@@ -9,13 +9,13 @@ myst:
 
 # Folder structure
 
-Volto is based on React, Redux, and React-Router. All of the
+Volto is based on React, {term}`Redux`, and React-Router. All of the
 code is located in the `src` folder. The following convention for locating
 resources is used.
 
 ## Actions
 
-`actions` contains all the redux actions for fetching all backend data like
+`actions` contains all the Redux actions for fetching all backend data like
 content, users and external resources that are pulled into our app in general.
 
 ## Components

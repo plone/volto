@@ -11,6 +11,11 @@ myst:
 
 # Getting Started
 
+```{warning}
+This chapter of the documentation has been superseded by the official Plone 6 Documentation chapter {ref}`install-index-label`.
+This chapter contains some legacy information that may be useful to Plone 5.2 development.
+```
+
 
 (frontend-getting-started-installing-volto-label)=
 
@@ -19,7 +24,7 @@ myst:
 Volto can be installed in any operating system assuming that the following pre-requisites are met:
 
 - [Node.js LTS (16.x)](https://nodejs.org/en/)
-- [Python](https://python.org/) - See below for specific versions.
+- [Python](https://www.python.org/) - See below for specific versions.
 - [Docker](https://www.docker.com/get-started) (if using the Plone docker images)
 
 ```{note}
@@ -31,9 +36,7 @@ The versions of Python that are supported in Volto depend on the version of Plon
 | Plone | Python | Volto |
 |---|---|---|
 | 5.2 | 2.7, 3.6-3.8 | 15.0 |
-| 6.0 (beta) | 3.8-3.10 | 16.0 (alpha) |
-
-At the time of this writing, Volto 16 is still in alpha status, and Plone 6 is in beta status.
+| 6.0 | 3.8-3.10 | 16.0 |
 
 Depending on the operating system that you are using, some of the following pre-requisites might change.
 They assume you have a macOS/Linux machine.
@@ -47,7 +50,7 @@ There are three processes continuously running when you have a working Volto web
 
 1. A frontend web application running in your browser (JavaScript)
 2. A Node.js server process that delivers the JavaScript to the client and does
-   Server Side Rendering (SSR) of your pages on first request (JavaScript, the
+   {term}`server-side rendering` (SSR) of your pages on first request (JavaScript, the
    Razzle package is used for SSR)
 3. A Plone server process that stores and delivers all content through a REST API (Python)
 
@@ -214,25 +217,20 @@ It also has more information on plone.volto.
 ## Install Volto
 
 Use the project generator helper utility.
+The latest stable release of Volto will be installed by default.
+You may choose to install the canary version, which is the latest alpha release, using the `--canary` flag.
 
 1.  Open a terminal and execute:
 
     ```bash
-    $ npm install -g yo @plone/generator-volto
-    $ yo @plone/volto
+    npm install -g yo @plone/generator-volto
+    yo @plone/volto
     ```
 
-2.  Answer to the prompted questions and provide the name of the new app (folder) to be created. For the sake of this documentation, provide `myvoltoproject` as project name then.
+See the [Creating a project](../recipes/creating-project) page for more
+advanced options that can be passed to the generator.
 
-    ````{note}
-    You can run the generator with parameters to tailor your requirements.
-
-    ```bash
-    yo @plone/volto --help
-    ```
-
-    or take a look at the [README](https://github.com/plone/volto/blob/master/packages/generator-volto/README.md) for more information.
-    ````
+2.  Answer the questions when prompted, and provide the name of the new app (folder) to be created. For the sake of this documentation, provide `myvoltoproject` as the project name.
 
 3.  Change directory to the newly created folder `myvoltoapp` (or the one you've chosen):
     ```bash
@@ -258,7 +256,7 @@ Use the project generator helper utility.
 ## Build the production bundle
 
 In production environments, you should build an static version of your (Volto) app. The
-app should be run in a node process (because of the server side rendering
+app should be run in a node process (because of the {term}`server-side rendering`
 part), but it also have a client part that is provided and deployed by the server
 side rendering process.
 

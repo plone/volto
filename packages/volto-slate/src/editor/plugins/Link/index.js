@@ -105,7 +105,7 @@ const LinkEditor = (props) => {
   ) : null;
 };
 
-export default (config) => {
+const applyConfig = (config) => {
   const { slate } = config.settings;
 
   const PLUGINID = SIMPLELINK;
@@ -160,3 +160,5 @@ export default (config) => {
 
   return config;
 };
+
+export default applyConfig;

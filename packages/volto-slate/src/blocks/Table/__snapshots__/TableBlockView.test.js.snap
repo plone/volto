@@ -11,7 +11,7 @@ exports[`renders a view table component 1`] = `
       className=""
     >
       <th
-        className="center aligned middle aligned"
+        className="left aligned middle aligned"
         onClick={[Function]}
       >
         <h2>

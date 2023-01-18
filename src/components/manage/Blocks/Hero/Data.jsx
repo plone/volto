@@ -10,7 +10,6 @@ const HeroBlockData = (props) => {
 
   return (
     <BlockDataForm
-      block={block}
       schema={schema}
       title={schema.title}
       onChangeField={(id, value) => {
@@ -19,7 +18,9 @@ const HeroBlockData = (props) => {
           [id]: value,
         });
       }}
+      onChangeBlock={onChangeBlock}
       formData={data}
+      block={block}
     />
   );
 };

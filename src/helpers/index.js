@@ -56,6 +56,8 @@ export {
   applyBlockDefaults,
   applySchemaDefaults,
   buildStyleClassNamesFromData,
+  buildStyleClassNamesExtenders,
+  getPreviousNextBlock,
 } from '@plone/volto/helpers/Blocks/Blocks';
 export BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 export ScrollToTop from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
@@ -100,6 +102,7 @@ export { asyncConnect } from './AsyncConnect';
 export { userHasRoles } from './User/User';
 // export { injectLazyLibs } from './Loadable/Loadable';
 export { useDetectClickOutside } from './Utils/useDetectClickOutside';
+export { useEvent } from './Utils/useEvent';
 export { usePrevious } from './Utils/usePrevious';
 export { usePagination } from './Utils/usePagination';
 export useUndoManager from './UndoManager/useUndoManager';
