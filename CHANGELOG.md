@@ -236,6 +236,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 
 ### Feature
 
+- Provide the `TextLineInput` and `TextLineWidget` (`textline`) components, extracted from `TextLineEdit` @tiberiuichim
 - added default placeholder for videos to embed them more lightly @giuliaghisini
 - Added new Block Style Wrapper. This implementation is marked as **experimental** during Volto 16 alpha period. The components, API and the styling are subject to change **without issuing a breaking change**. You can start using it in your projects and add-ons, but taking this into account. See documentation for more information. @sneridagh
 - Add default widget views for all type of fields and improve the DefaultView @ionlizarazu
@@ -676,6 +677,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Improve the algorithm that calculates the position of the Slate Toolbar @tiberiuichim
 - The `_unwrapElement` of the volto-slate `ElementEditor` will return an updated range (selection) of the unwrapped element. @tiberiuichim
 - Replace the main client entry point in `start-client.jsx` anonymous function for a named one. @sneridagh
+- For the `title` field name, the `TextLineEdit` component used the values from the `properties` if the `data` was empty, even if `fieldDataName` was passed @tiberiuichim
 - Fix `currentPath` option for `openObjectBrowser`. @iFlameing
 - Fix updating the listing block when the variation is changed while editing @tiberiuichim
 - fix(warning): StyleMenu dropdown item to use data-attr instead of custom @nileshgulia1
