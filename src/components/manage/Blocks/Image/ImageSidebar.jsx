@@ -52,6 +52,7 @@ const ImageSidebar = (props) => {
             [id]: value,
           });
         }}
+        onChangeBlock={onChangeBlock}
         formData={data}
         block={block}
       />

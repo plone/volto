@@ -20,7 +20,7 @@ const Toolbar = ({
 
   useEffect(() => {
     const domNode = ref.current;
-    let rect;
+    let rect = { width: 1, top: 0, left: 0 };
 
     if ((children || []).length === 0) {
       domNode.removeAttribute('style');
@@ -63,8 +63,13 @@ const Toolbar = ({
       // TODO: should we fallback to editor.getSelection()?
       // TODO: test with third party plugins
       const slateNode = Node.get(editor, selection.anchor.path);
-      const domEl = ReactEditor.toDOMNode(editor, slateNode);
-      rect = domEl.getBoundingClientRect();
+      try {
+        const domEl = ReactEditor.toDOMNode(editor, slateNode);
+        rect = domEl.getBoundingClientRect();
+      } catch {
+        // ignoring error here is safe, editor is out of sync and the selection
+        // is actually none, so no toolbar should be shown
+      }
     }
 
     domNode.style.opacity = 1;

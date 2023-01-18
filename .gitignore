@@ -9,6 +9,7 @@ junit.xml
 eslint.xml
 yarn-error.log
 build
+.changelog.draft
 
 # yarn 3
 .pnp.*
@@ -21,12 +22,15 @@ build
 
 # Other
 /cache
+.yarn/
 .DS_Store
 .idea
 lighthouse-report.html
 .vscode/
 .#*
 *~
+/.settings/
+.*project
 
 # Python
 /api/.installed.cfg
@@ -79,3 +83,4 @@ public/critical.css
 # Sphinx and MyST
 docs/_build/
 /.python-version
+/.tool-versions

@@ -10,7 +10,7 @@ myst:
 # Customizing Components
 
 You are able to customize the existing Volto components using a pattern called
-`component shadowing` using the `customizations` folder. You have to identify and locate
+{term}`component shadowing` using the `customizations` folder. You have to identify and locate
 the component that you want to customize, let's say the Logo component in [Volto source
 code](https://github.com/plone/volto/tree/master/src).
 
@@ -148,3 +148,9 @@ In case of conflicts where multiple addons customize the same file, the order
 of addon declaration matters: the last addon declared in the `addons` key in
 the project's `package.json` wins. Further more, the project's customizations
 are applied last, so they "win" in the conflict resolution.
+
+Addons can also customize modules from the Volto project (the root), by
+creating a `@root` folder in their customizations path. This is useful, for
+example, if you prefer a style where the Volto generated project scaffold is
+throw-away and you want to override some modules that are imported from the
+`@root` namespace, such as `src/theme.js` (which is imported as `@root/theme`).

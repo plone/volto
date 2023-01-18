@@ -41,6 +41,7 @@ Array [
               onClick={[Function]}
               step={1}
               type="number"
+              value=""
             />
           </div>
         </div>

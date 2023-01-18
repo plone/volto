@@ -2,490 +2,409 @@
 
 exports[`DiffField renders a boolean field 1`] = `
 <div>
-  <table
-    class="ui compact table"
+  <div
+    class="ui grid"
     data-testid="DiffField"
   >
-    <thead
-      class=""
+    <div
+      class="row"
     >
-      <tr
-        class=""
+      <div
+        class="twelve wide column"
       >
-        <th
-          class=""
-          colspan="2"
-        >
-          Text
-        </th>
-      </tr>
-    </thead>
-    <tbody
-      class=""
+        Text
+      </div>
+    </div>
+    <div
+      class="row"
     >
-      <tr
-        class=""
+      <div
+        class="top aligned sixteen wide column"
       >
-        <td
-          class="top aligned sixteen wide"
-        >
-          <span>
-            <span
-              class="deletion"
-            >
-              true
-            </span>
-            <span
-              class="addition"
-            >
-              false
-            </span>
+        <span>
+          <span
+            class="deletion"
+          >
+            true
           </span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+          <span
+            class="addition"
+          >
+            false
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`DiffField renders a boolean field with inverse values 1`] = `
 <div>
-  <table
-    class="ui compact table"
+  <div
+    class="ui grid"
     data-testid="DiffField"
   >
-    <thead
-      class=""
+    <div
+      class="row"
     >
-      <tr
-        class=""
+      <div
+        class="twelve wide column"
       >
-        <th
-          class=""
-          colspan="2"
-        >
-          Text
-        </th>
-      </tr>
-    </thead>
-    <tbody
-      class=""
+        Text
+      </div>
+    </div>
+    <div
+      class="row"
     >
-      <tr
-        class=""
+      <div
+        class="top aligned sixteen wide column"
       >
-        <td
-          class="top aligned sixteen wide"
-        >
-          <span>
-            <span
-              class="deletion"
-            >
-              false
-            </span>
-            <span
-              class="addition"
-            >
-              true
-            </span>
+        <span>
+          <span
+            class="deletion"
+          >
+            false
           </span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+          <span
+            class="addition"
+          >
+            true
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`DiffField renders a datetime field 1`] = `
 <div>
-  <table
-    class="ui compact table"
+  <div
+    class="ui grid"
     data-testid="DiffField"
   >
-    <thead
-      class=""
+    <div
+      class="row"
     >
-      <tr
-        class=""
+      <div
+        class="twelve wide column"
       >
-        <th
-          class=""
-          colspan="2"
-        >
-          Text
-        </th>
-      </tr>
-    </thead>
-    <tbody
-      class=""
+        Text
+      </div>
+    </div>
+    <div
+      class="row"
     >
-      <tr
-        class=""
+      <div
+        class="top aligned sixteen wide column"
       >
-        <td
-          class="top aligned sixteen wide"
-        >
-          <span>
-            <span
-              class="deletion"
-            >
-              Tuesday
-            </span>
-            <span
-              class="addition"
-            >
-              Monday
-            </span>
-            <span>
-              , April 25, 
-            </span>
-            <span
-              class="deletion"
-            >
-              2017
-            </span>
-            <span
-              class="addition"
-            >
-              2016
-            </span>
-            <span>
-               at 2:14 PM
-            </span>
+        <span>
+          <span
+            class="deletion"
+          >
+            Tuesday
           </span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+          <span
+            class="addition"
+          >
+            Monday
+          </span>
+          <span>
+            , April 25, 
+          </span>
+          <span
+            class="deletion"
+          >
+            2017
+          </span>
+          <span
+            class="addition"
+          >
+            2016
+          </span>
+          <span>
+             at 2:14 PM
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`DiffField renders a diff field in split mode 1`] = `
 <div>
-  <table
-    class="ui compact table"
+  <div
+    class="ui grid"
     data-testid="DiffField"
   >
-    <thead
-      class=""
+    <div
+      class="row"
     >
-      <tr
-        class=""
+      <div
+        class="twelve wide column"
       >
-        <th
-          class=""
-          colspan="2"
-        >
-          Title
-        </th>
-      </tr>
-    </thead>
-    <tbody
-      class=""
+        Title
+      </div>
+    </div>
+    <div
+      class="row"
     >
-      <tr
-        class=""
+      <div
+        class="top aligned six wide column"
       >
-        <td
-          class="top aligned eight wide"
-        >
+        <span>
           <span>
-            <span>
-              My 
-            </span>
-            <span
-              class="deletion"
-            >
-              old
-            </span>
-            <span>
-               string
-            </span>
+            My 
           </span>
-        </td>
-        <td
-          class="top aligned eight wide"
-        >
+          <span
+            class="deletion"
+          >
+            old
+          </span>
           <span>
-            <span>
-              My 
-            </span>
-            <span
-              class="addition"
-            >
-              new
-            </span>
-            <span>
-               string
-            </span>
+             string
           </span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+        </span>
+      </div>
+      <div
+        class="top aligned six wide column"
+      >
+        <span>
+          <span>
+            My 
+          </span>
+          <span
+            class="addition"
+          >
+            new
+          </span>
+          <span>
+             string
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`DiffField renders a diff field in unified mode 1`] = `
 <div>
-  <table
-    class="ui compact table"
+  <div
+    class="ui grid"
     data-testid="DiffField"
   >
-    <thead
-      class=""
+    <div
+      class="row"
     >
-      <tr
-        class=""
+      <div
+        class="twelve wide column"
       >
-        <th
-          class=""
-          colspan="2"
-        >
-          Title
-        </th>
-      </tr>
-    </thead>
-    <tbody
-      class=""
+        Title
+      </div>
+    </div>
+    <div
+      class="row"
     >
-      <tr
-        class=""
+      <div
+        class="top aligned sixteen wide column"
       >
-        <td
-          class="top aligned sixteen wide"
-        >
+        <span>
           <span>
-            <span>
-              My 
-            </span>
-            <span
-              class="deletion"
-            >
-              old
-            </span>
-            <span
-              class="addition"
-            >
-              new
-            </span>
-            <span>
-               string
-            </span>
+            My 
           </span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+          <span
+            class="deletion"
+          >
+            old
+          </span>
+          <span
+            class="addition"
+          >
+            new
+          </span>
+          <span>
+             string
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`DiffField renders a richtext field 1`] = `
 <div>
-  <table
-    class="ui compact table"
+  <div
+    class="ui grid"
     data-testid="DiffField"
   >
-    <thead
-      class=""
+    <div
+      class="row"
     >
-      <tr
-        class=""
+      <div
+        class="twelve wide column"
       >
-        <th
-          class=""
-          colspan="2"
-        >
-          Text
-        </th>
-      </tr>
-    </thead>
-    <tbody
-      class=""
+        Text
+      </div>
+    </div>
+    <div
+      class="row"
     >
-      <tr
-        class=""
+      <div
+        class="top aligned sixteen wide column"
       >
-        <td
-          class="top aligned sixteen wide"
-        >
+        <span>
           <span>
-            <span>
-              My 
-            </span>
-            <span
-              class="deletion"
-            >
-              old
-            </span>
-            <span
-              class="addition"
-            >
-              new
-            </span>
-            <span>
-               string
-            </span>
+            My 
           </span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+          <span
+            class="deletion"
+          >
+            old
+          </span>
+          <span
+            class="addition"
+          >
+            new
+          </span>
+          <span>
+             string
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`DiffField renders a textarea field 1`] = `
 <div>
-  <table
-    class="ui compact table"
+  <div
+    class="ui grid"
     data-testid="DiffField"
   >
-    <thead
-      class=""
+    <div
+      class="row"
     >
-      <tr
-        class=""
+      <div
+        class="twelve wide column"
       >
-        <th
-          class=""
-          colspan="2"
-        >
-          Text
-        </th>
-      </tr>
-    </thead>
-    <tbody
-      class=""
+        Text
+      </div>
+    </div>
+    <div
+      class="row"
     >
-      <tr
-        class=""
+      <div
+        class="top aligned sixteen wide column"
       >
-        <td
-          class="top aligned sixteen wide"
-        >
+        <span>
           <span>
-            <span>
-              My 
-            </span>
-            <span
-              class="deletion"
-            >
-              old
-            </span>
-            <span
-              class="addition"
-            >
-              new
-            </span>
-            <span>
-               string
-            </span>
+            My 
           </span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+          <span
+            class="deletion"
+          >
+            old
+          </span>
+          <span
+            class="addition"
+          >
+            new
+          </span>
+          <span>
+             string
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`DiffField renders an array field 1`] = `
 <div>
-  <table
-    class="ui compact table"
+  <div
+    class="ui grid"
     data-testid="DiffField"
   >
-    <thead
-      class=""
+    <div
+      class="row"
     >
-      <tr
-        class=""
+      <div
+        class="twelve wide column"
       >
-        <th
-          class=""
-          colspan="2"
-        >
-          Text
-        </th>
-      </tr>
-    </thead>
-    <tbody
-      class=""
+        Text
+      </div>
+    </div>
+    <div
+      class="row"
     >
-      <tr
-        class=""
+      <div
+        class="top aligned sixteen wide column"
       >
-        <td
-          class="top aligned sixteen wide"
-        >
+        <span>
           <span>
-            <span>
-              one,
-            </span>
-            <span
-              class="deletion"
-            >
-              two
-            </span>
-            <span
-              class="addition"
-            >
-              three
-            </span>
+            one,
           </span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+          <span
+            class="deletion"
+          >
+            two
+          </span>
+          <span
+            class="addition"
+          >
+            three
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`DiffField renders an array of objects field 1`] = `
 <div>
-  <table
-    class="ui compact table"
+  <div
+    class="ui grid"
     data-testid="DiffField"
   >
-    <thead
-      class=""
+    <div
+      class="row"
     >
-      <tr
-        class=""
+      <div
+        class="twelve wide column"
       >
-        <th
-          class=""
-          colspan="2"
-        >
-          Text
-        </th>
-      </tr>
-    </thead>
-    <tbody
-      class=""
+        Text
+      </div>
+    </div>
+    <div
+      class="row"
     >
-      <tr
-        class=""
+      <div
+        class="top aligned sixteen wide column"
       >
-        <td
-          class="top aligned sixteen wide"
-        >
+        <span>
           <span>
-            <span>
-              one,
-            </span>
-            <span
-              class="deletion"
-            >
-              two
-            </span>
-            <span
-              class="addition"
-            >
-              three
-            </span>
+            one,
           </span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+          <span
+            class="deletion"
+          >
+            two
+          </span>
+          <span
+            class="addition"
+          >
+            three
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
 </div>
 `;

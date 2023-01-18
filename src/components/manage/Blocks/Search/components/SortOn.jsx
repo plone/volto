@@ -80,6 +80,7 @@ const SortOn = (props) => {
               label: sortable_indexes[k]?.title || k,
             })),
           ]}
+          isSearchable={false}
           value={value}
           onChange={(data) => {
             !isEditMode && setSortOn(data.value);
