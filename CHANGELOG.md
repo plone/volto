@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 16.8.1 (2023-01-18)
+
+### Bugfix
+
+- Fix StyleWrapper extenders, the classNames were not being re-fed into the pipe @sneridagh [#4275](https://github.com/plone/volto/issues/4275)
+
+
 ## 16.8.0 (2023-01-18)
 
 ### Feature
