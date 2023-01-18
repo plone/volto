@@ -130,7 +130,7 @@ export const TextLineEdit = (props) => {
       getInputProps={() => ({
         onKeyDown: handleKeyDown,
         onFocus: handleFocus,
-        // focus: selected ? 'true' : undefined,
+        focus: selected ? 'true' : undefined,
       })}
     />
   ) : null;
