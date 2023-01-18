@@ -169,6 +169,7 @@ let config = {
     workflowMapping,
     errorHandlers: [], // callables for unhandled errors
     styleClassNameConverters,
+    hashLinkSmoothScroll: false,
   },
   experimental: {
     addBlockButton: {

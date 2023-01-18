@@ -78,13 +78,13 @@ const UniversalLink = ({
   const checkedURL = URLUtils.checkAndNormalizeUrl(url);
 
   url = checkedURL.url;
-
   let tag = (
     <Link
       to={flattenToAppURL(url)}
       target={openLinkInNewTab ?? false ? '_blank' : null}
       title={title}
       className={className}
+      smooth={config.settings.hashLinkSmoothScroll}
       {...props}
     >
       {children}
