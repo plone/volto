@@ -158,7 +158,7 @@ export const TextLineEdit = (props) => {
     if (blockToFocus) {
       onSelectBlock(blockToFocus);
     }
-  }, [block, onSelectBlock]);
+  }, [block, blockToFocus, onSelectBlock]);
 
   const RenderTag = renderTag || 'h1';
 
