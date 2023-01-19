@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Editor, Node, Transforms, createEditor } from 'slate';
+import { Editor, Node, Transforms, Range, createEditor } from 'slate';
 import { ReactEditor, Editable, Slate, withReact } from 'slate-react';
 import { FormFieldWrapper } from '@plone/volto/components';
 import { P } from '@plone/volto-slate/constants';
