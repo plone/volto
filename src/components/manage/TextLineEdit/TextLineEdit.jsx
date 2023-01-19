@@ -155,7 +155,9 @@ export const TextLineEdit = (props) => {
   );
 
   const handleFocus = useCallback(() => {
-    onSelectBlock(blockToFocus);
+    if (blockToFocus) {
+      onSelectBlock(blockToFocus);
+    }
   }, [block, onSelectBlock]);
 
   const RenderTag = renderTag || 'h1';
