@@ -40,6 +40,7 @@ export const TextLineEdit = (props) => {
     fieldDataName,
     fieldName = 'title',
     placeholder,
+    blockToFocus = block,
   } = props;
 
   const [editor] = useState(withReact(createEditor()));
@@ -154,7 +155,7 @@ export const TextLineEdit = (props) => {
   );
 
   const handleFocus = useCallback(() => {
-    onSelectBlock(block);
+    onSelectBlock(blockToFocus);
   }, [block, onSelectBlock]);
 
   const RenderTag = renderTag || 'h1';
