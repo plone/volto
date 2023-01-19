@@ -175,6 +175,7 @@ export ObjectListWidget from '@plone/volto/components/manage/Widgets/ObjectListW
 export TextLineWidget, {
   TextLineInput,
 } from '@plone/volto/components/manage/Widgets/TextLineWidget';
+export ImageUploadWidget from '@plone/volto/components/manage/Widgets/ImageUploadWidget';
 
 export EditDefaultBlock from '@plone/volto/components/manage/Blocks/Block/DefaultEdit';
 export EditDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/Edit';

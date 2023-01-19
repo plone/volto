@@ -12,6 +12,7 @@ import aheadSVG from '@plone/volto/icons/ahead.svg';
 import uploadSVG from '@plone/volto/icons/upload.svg';
 
 import { HeroToolbar } from '@plone/volto/components/manage/Blocks/Hero/components';
+import { ImageUploadWidget } from '@plone/volto/components';
 
 const Dropzone = loadable(() => import('react-dropzone'));
 
@@ -155,113 +156,16 @@ const HeroImage = (props) => {
   };
 
   return (
-    <>
-      {data.url ? (
-        <>
-          <HeroToolbar {...props} />
-          <img
-            className="hero-image"
-            src={`${flattenToAppURL(data.url)}/@@images/image/${
-              data.align === 'center' ? 'great' : 'teaser'
-            }`}
-            alt=""
-            loading={isEditMode ? 'eager' : 'lazy'}
-          />
-        </>
-      ) : (
-        isEditMode && (
-          <Dropzone
-            noClick
-            onDrop={onDrop}
-            onDragEnter={onDragEnter}
-            onDragLeave={onDragLeave}
-            className="dropzone"
-          >
-            {({ getRootProps, getInputProps }) => (
-              <div {...getRootProps()}>
-                <Message>
-                  {dragging && <Dimmer active></Dimmer>}
-                  {uploading && (
-                    <Dimmer active>
-                      <Loader indeterminate>Uploading image</Loader>
-                    </Dimmer>
-                  )}
-                  <div className="no-image-wrapper">
-                    <img src={imageBlockSVG} alt="" />
-                    <div className="toolbar-inner">
-                      <Button.Group>
-                        <Button
-                          basic
-                          icon
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            e.preventDefault();
-                            openObjectBrowser();
-                          }}
-                        >
-                          <Icon name={navTreeSVG} size="24px" />
-                        </Button>
-                      </Button.Group>
-                      <Button.Group>
-                        <label className="ui button basic icon">
-                          <Icon name={uploadSVG} size="24px" />
-                          <input
-                            {...getInputProps({
-                              type: 'file',
-                              onChange: onUploadImage,
-                              style: { display: 'none' },
-                            })}
-                          />
-                        </label>
-                      </Button.Group>
-                      <Input
-                        onKeyDown={onKeyDownVariantMenuForm}
-                        onChange={onChangeUrl}
-                        placeholder={placeholder}
-                        value={url}
-                        onClick={(e) => {
-                          e.target.focus();
-                        }}
-                        onFocus={(e) => {
-                          onSelectBlock(id);
-                        }}
-                      />
-                      {url && (
-                        <Button.Group>
-                          <Button
-                            basic
-                            className="cancel"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setUrl('');
-                            }}
-                          >
-                            <Icon name={clearSVG} size="30px" />
-                          </Button>
-                        </Button.Group>
-                      )}
-                      <Button.Group>
-                        <Button
-                          basic
-                          primary
-                          disabled={!url}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            onSubmitUrl();
-                          }}
-                        >
-                          <Icon name={aheadSVG} size="30px" />
-                        </Button>
-                      </Button.Group>
-                    </div>
-                  </div>
-                </Message>
-              </div>
-            )}
-          </Dropzone>
-        )
-      )}
-    </>
+    <ImageUploadWidget
+      onChange={(id, image) => {
+        const url = image ? image['@id'] : null;
+
+        onChangeBlock(block, {
+          ...data,
+          url,
+        });
+      }}
+    />
   );
 };
 
