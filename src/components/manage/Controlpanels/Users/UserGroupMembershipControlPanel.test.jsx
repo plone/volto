@@ -3,10 +3,12 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
+import thunk from 'redux-thunk';
 
 import UserGroupMembershipControlPanel from './UserGroupMembershipControlPanel';
 
-const mockStore = configureStore();
+const mockStore = configureStore([thunk]);
+
 jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),
 }));

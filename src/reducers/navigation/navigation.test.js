@@ -129,7 +129,7 @@ describe('Navigation reducer', () => {
   });
 });
 
-describe('Navigation reducer', () => {
+describe('Navigation reducer (NAVIGATION)GET_CONTENT', () => {
   beforeEach(() => {
     config.settings.apiExpanders = [
       {

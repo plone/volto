@@ -58,7 +58,7 @@ export default function navigation(state = initialState, action = {}) {
     case `${GET_CONTENT}_SUCCESS`:
       hasExpander = hasApiExpander(
         'navigation',
-        getBaseUrl(action.result['@id']),
+        getBaseUrl(flattenToAppURL(action.result['@id'])),
       );
       if (hasExpander) {
         return {
@@ -75,7 +75,7 @@ export default function navigation(state = initialState, action = {}) {
     case `${GET_NAVIGATION}_SUCCESS`:
       hasExpander = hasApiExpander(
         'navigation',
-        getBaseUrl(action.result['@id']),
+        getBaseUrl(flattenToAppURL(action.result['@id'])),
       );
       if (!hasExpander) {
         return {
