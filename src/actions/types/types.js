@@ -4,7 +4,6 @@
  */
 
 import { GET_TYPES } from '@plone/volto/constants/ActionTypes';
-import { getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
 
 /**
  * Get types function.
@@ -14,10 +13,7 @@ import { getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
  */
 export function getTypes(url) {
   return (dispatch, getState) => {
-    if (
-      getState().userSession.token &&
-      !hasApiExpander('actions', getBaseUrl(url))
-    ) {
+    if (getState().userSession.token) {
       dispatch({
         type: GET_TYPES,
         request: {
