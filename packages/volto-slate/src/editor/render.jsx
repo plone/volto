@@ -154,12 +154,12 @@ export const serializeNodesToHtml = (nodes) =>
 export const renderLinkElement = (tagName) => {
   function LinkElement({ attributes, children, mode = 'edit' }) {
     const Tag = tagName;
-    const slug = attributes.id || '';
+    const id = attributes.id || '';
 
     return (
       <Tag {...attributes}>
-        {mode === 'view' && slug && (
-          <a class="anchor" aria-hidden="true" href={`#${slug}`}>
+        {mode === 'view' && id && (
+          <a class="anchor" aria-hidden="true" href={`#${id}`}>
             <svg
               {...linkSVG.attributes}
               dangerouslySetInnerHTML={{ __html: linkSVG.content }}
