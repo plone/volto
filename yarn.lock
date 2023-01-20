@@ -2899,6 +2899,7 @@ __metadata:
     react-router: 5.2.0
     react-router-config: 5.1.1
     react-router-dom: 5.2.0
+    react-router-hash-link: 2.4.3
     react-select: 4.3.1
     react-select-async-paginate: 0.5.3
     react-share: 2.3.1
@@ -20550,6 +20551,18 @@ __metadata:
   peerDependencies:
     react: ">=15"
   checksum: 98d2d35f9540ac4a3c14dc023623fc8411a6a6338e95d726370e07b27c3bc6e854516537c8e3f9ad2483c4bbd579ba28cce9aff843a19fe8ebff663318886335
+  languageName: node
+  linkType: hard
+
+"react-router-hash-link@npm:2.4.3":
+  version: 2.4.3
+  resolution: "react-router-hash-link@npm:2.4.3"
+  dependencies:
+    prop-types: ^15.7.2
+  peerDependencies:
+    react: ">=15"
+    react-router-dom: ">=4"
+  checksum: 7dad53ebbd726e8a1ab379f4e68bce3a6b406e55af3de8a9c128510a81ad4a681ce9a5e25c0efc3d3c283b276145729b6228d0173d1d0c6e04b9cc6fb10738d4
   languageName: node
   linkType: hard
 
