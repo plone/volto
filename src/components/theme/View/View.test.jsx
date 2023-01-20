@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-import thunk from 'redux-thunk';
 
 import View from './View';
 import config from '@plone/volto/registry';
@@ -24,7 +23,7 @@ beforeAll(() => {
   config.settings.publicURL = 'https://plone.org';
 });
 
-const mockStore = configureStore([thunk]);
+const mockStore = configureStore();
 
 jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),
