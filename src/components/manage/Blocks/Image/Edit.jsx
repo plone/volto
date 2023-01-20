@@ -381,7 +381,7 @@ export default compose(
   connect(
     (state, ownProps) => ({
       request: state.content.subrequests[ownProps.block] || {},
-      content: state.content.subrequests[ownProps.block]?.data,
+      content: state.content.subrequests[ownProps.block]?.data || {},
     }),
     { createContent },
   ),

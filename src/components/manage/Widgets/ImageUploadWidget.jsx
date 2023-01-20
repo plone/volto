@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import cx from 'classnames';
+// import cx from 'classnames';
 import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
-import { Button, Dimmer, Input, Loader, Message } from 'semantic-ui-react';
+import { useLocation } from 'react-router-dom';
+import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
 import loadable from '@loadable/component';
 import { readAsDataURL } from 'promise-file-reader';
 import { Icon } from '@plone/volto/components';
@@ -9,52 +10,48 @@ import { Icon } from '@plone/volto/components';
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
-import aheadSVG from '@plone/volto/icons/ahead.svg';
+import linkSVG from '@plone/volto/icons/link.svg';
 import uploadSVG from '@plone/volto/icons/upload.svg';
 
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 
-export const ImageToolbar = ({
-  className,
-  data,
-  editable,
-  id,
-  isEditMode,
-  onChange,
-  selected,
-}) => (
-  <>
-    {selected && editable && isEditMode && (
-      <div className={cx('toolbar', className)}>
-        <Button.Group>
-          <Button icon basic onClick={() => onChange(id, null)}>
-            <Icon name={clearSVG} size="24px" color="#e40166" />
-          </Button>
-        </Button.Group>
-      </div>
-    )}
-  </>
-);
+export const ImageToolbar = ({ className, data, id, onChange, selected }) =>
+  (selected && (
+    <div className="image-upload-widget-toolbar">
+      <Button.Group>
+        <Button icon basic onClick={() => onChange(id, null)}>
+          <Icon
+            className="circled"
+            name={clearSVG}
+            size="24px"
+            color="#e40166"
+          />
+        </Button>
+      </Button.Group>
+    </div>
+  )) ||
+  null;
 
 const Dropzone = loadable(() => import('react-dropzone'));
+
+const messages = {
+  addImage: 'Browse the site, drop an image, or use an URL',
+};
 
 const ImageUploadWidget = (props) => {
   const {
     id,
-    // data,
-    // block,
     pathname,
-    isEditMode,
-    // onSelectBlock,
-    // onChangeBlock,
     onChange,
     onFocus,
-    placeholder,
+    // placeholder,
     openObjectBrowser,
     createContent,
     value,
     imageSize = 'teaser',
   } = props;
+  const location = useLocation();
+  const contextUrl = pathname ?? location.pathname;
 
   const [uploading, setUploading] = useState(false);
   const [dragging, setDragging] = useState(false);
@@ -74,7 +71,7 @@ const ImageUploadWidget = (props) => {
     readAsDataURL(file[0]).then((fileData) => {
       const fields = fileData.match(/^data:(.*);(.*),(.*)$/);
       createContent(
-        getBaseUrl(pathname),
+        getBaseUrl(contextUrl),
         {
           '@type': 'Image',
           title: file[0].name,
@@ -108,7 +105,7 @@ const ImageUploadWidget = (props) => {
     readAsDataURL(file).then((fileData) => {
       const fields = fileData.match(/^data:(.*);(.*),(.*)$/);
       createContent(
-        getBaseUrl(pathname),
+        getBaseUrl(contextUrl),
         {
           '@type': 'Image',
           title: file.name,
@@ -177,112 +174,138 @@ const ImageUploadWidget = (props) => {
 
   // data.align === 'center' ? 'great' : 'teaser'
 
-  return (
-    <>
-      {value ? (
-        <>
-          <ImageToolbar {...props} />
-          <img
-            className="hero-image"
-            src={`${flattenToAppURL(value)}/@@images/image/${imageSize}`}
-            alt=""
-            loading={isEditMode ? 'eager' : 'lazy'}
-          />
-        </>
-      ) : (
-        isEditMode && (
-          <Dropzone
-            noClick
-            onDrop={onDrop}
-            onDragEnter={onDragEnter}
-            onDragLeave={onDragLeave}
-            className="dropzone"
-          >
-            {({ getRootProps, getInputProps }) => (
-              <div {...getRootProps()}>
-                <Message>
-                  {dragging && <Dimmer active></Dimmer>}
-                  {uploading && (
-                    <Dimmer active>
-                      <Loader indeterminate>Uploading image</Loader>
-                    </Dimmer>
-                  )}
-                  <div className="no-image-wrapper">
-                    <img src={imageBlockSVG} alt="" />
-                    <div className="toolbar-inner">
-                      <Button.Group>
-                        <Button
-                          basic
-                          icon
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            e.preventDefault();
-                            openObjectBrowser();
-                          }}
-                        >
-                          <Icon name={navTreeSVG} size="24px" />
-                        </Button>
-                      </Button.Group>
-                      <Button.Group>
-                        <label className="ui button basic icon">
-                          <Icon name={uploadSVG} size="24px" />
-                          <input
-                            {...getInputProps({
-                              type: 'file',
-                              onChange: onUploadImage,
-                              style: { display: 'none' },
-                            })}
-                          />
-                        </label>
-                      </Button.Group>
-                      <Input
-                        onKeyDown={onKeyDownVariantMenuForm}
-                        onChange={onChangeUrl}
-                        placeholder={placeholder}
-                        value={url}
-                        onClick={(e) => {
-                          e.target.focus();
-                        }}
-                        onFocus={(e) => {
-                          onFocus(id);
-                        }}
+  return value ? (
+    <div className="image-upload-widget-image">
+      <ImageToolbar {...props} />
+      <img
+        className={props.className}
+        src={`${flattenToAppURL(value)}/@@images/image/${imageSize}`}
+        alt=""
+      />
+    </div>
+  ) : (
+    <div
+      className="image-upload-widget"
+      onClick={onFocus}
+      onKeyDown={onFocus}
+      role="toolbar"
+    >
+      <Dropzone
+        noClick
+        onDrop={onDrop}
+        onDragEnter={onDragEnter}
+        onDragLeave={onDragLeave}
+        className="dropzone"
+      >
+        {({ getRootProps, getInputProps }) => (
+          <div {...getRootProps()}>
+            <Message>
+              {dragging && <Dimmer active></Dimmer>}
+              {uploading && (
+                <Dimmer active>
+                  <Loader indeterminate>Uploading image</Loader>
+                </Dimmer>
+              )}
+              <img src={imageBlockSVG} alt="" />
+              <div>{messages.addImage}</div>
+              <div className="toolbar-wrapper">
+                <div className="toolbar-inner">
+                  <Button.Group>
+                    <Button
+                      title="Pick an existing image"
+                      icon
+                      basic
+                      onClick={(e) => {
+                        onFocus && onFocus();
+                        e.preventDefault();
+                        openObjectBrowser({
+                          mode: 'link',
+                          overlay: true,
+                          onSelectItem: onChange,
+                        });
+                      }}
+                    >
+                      <Icon name={navTreeSVG} size="24px" />
+                    </Button>
+                  </Button.Group>
+                  <Button.Group>
+                    <label className="ui button compact basic icon">
+                      <Icon name={uploadSVG} size="24px" />
+                      <input
+                        {...getInputProps({
+                          type: 'file',
+                          onChange: onUploadImage,
+                          style: { display: 'none' },
+                        })}
                       />
-                      {url && (
-                        <Button.Group>
-                          <Button
-                            basic
-                            className="cancel"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setUrl('');
-                            }}
-                          >
-                            <Icon name={clearSVG} size="30px" />
-                          </Button>
-                        </Button.Group>
-                      )}
-                      <Button.Group>
-                        <Button
-                          basic
-                          primary
-                          disabled={!url}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            onSubmitUrl();
-                          }}
-                        >
-                          <Icon name={aheadSVG} size="30px" />
-                        </Button>
-                      </Button.Group>
-                    </div>
-                  </div>
-                </Message>
+                    </label>
+                  </Button.Group>
+                  <Button.Group>
+                    <Button
+                      icon
+                      basic
+                      onClick={(e) => {
+                        onFocus && onFocus();
+                        e.preventDefault();
+                        openObjectBrowser({
+                          mode: 'link',
+                          overlay: true,
+                          onSelectItem: onChange,
+                        });
+                      }}
+                    >
+                      <Icon name={linkSVG} circled size="24px" />
+                    </Button>
+                  </Button.Group>
+                </div>
               </div>
-            )}
-          </Dropzone>
-        )
-      )}
-    </>
+
+              {/* <div>or drop an image</div> */}
+            </Message>
+          </div>
+        )}
+      </Dropzone>
+    </div>
   );
 };
 export default withObjectBrowser(ImageUploadWidget);
+
+//                  <Input
+//                    onKeyDown={onKeyDownVariantMenuForm}
+//                    onChange={onChangeUrl}
+//                    placeholder={placeholder}
+//                    value={url}
+//                    onClick={(e) => {
+//                      e.target.focus();
+//                    }}
+//                    onFocus={(e) => {
+//                      onFocus(id);
+//                    }}
+//                  />
+//                  {url && (
+//                    <Button.Group>
+//                      <Button
+//                        basic
+//                        className="cancel"
+//                        onClick={(e) => {
+//                          e.stopPropagation();
+//                          setUrl('');
+//                        }}
+//                      >
+//                        <Icon name={clearSVG} size="30px" />
+//                      </Button>
+//                    </Button.Group>
+//                  )}
+//                  <Button.Group>
+//                    <Button
+//                      basic
+//                      primary
+//                      disabled={!url}
+//                      onClick={(e) => {
+//                        e.stopPropagation();
+//                        onSubmitUrl();
+//                      }}
+//                    >
+//                      <Icon name={aheadSVG} size="30px" />
+//                    </Button>
+//                  </Button.Group>
