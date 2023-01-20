@@ -75,7 +75,13 @@ let config = {
     // The URL Volto is going to be served (see sensible defaults above)
     publicURL,
     apiPath,
-    apiExpanders: [],
+    apiExpanders: [
+      // Uncomment or add the following expanders for only issuing a single request
+      // {
+      //   match: '',
+      //   GET_CONTENT: ['breadcrumbs', 'navigation', 'actions', 'types'],
+      // },
+    ],
     // Internal proxy to bypass CORS *while developing*. NOT intended for production use.
     // In production is recommended you use a Seamless mode deployment using a web server in
     // front of both the frontend and the backend so you can bypass CORS safely.
