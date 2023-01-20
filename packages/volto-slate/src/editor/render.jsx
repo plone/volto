@@ -3,6 +3,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { Node, Text } from 'slate';
 import cx from 'classnames';
 import { isEmpty, omit } from 'lodash';
+import { UniversalLink } from '@plone/volto/components';
 import config from '@plone/volto/registry';
 import linkSVG from '@plone/volto/icons/link.svg';
 
@@ -159,14 +160,14 @@ export const renderLinkElement = (tagName) => {
     return (
       <Tag {...attributes}>
         {mode === 'view' && id && (
-          <a class="anchor" aria-hidden="true" href={`#${id}`}>
+          <UniversalLink className="anchor" aria-hidden="true" href={`#${id}`}>
             <svg
               {...linkSVG.attributes}
               dangerouslySetInnerHTML={{ __html: linkSVG.content }}
               width="2em"
               height={null}
             ></svg>
-          </a>
+          </UniversalLink>
         )}
         {children}
       </Tag>
