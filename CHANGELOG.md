@@ -8,6 +8,29 @@
 
 <!-- towncrier release notes start -->
 
+## 16.8.1 (2023-01-18)
+
+### Bugfix
+
+- Fix StyleWrapper extenders, the classNames were not being re-fed into the pipe @sneridagh [#4275](https://github.com/plone/volto/issues/4275)
+
+
+## 16.8.0 (2023-01-18)
+
+### Feature
+
+- Autocomplete widget support for QueryStringWidget @sneridagh [#4177](https://github.com/plone/volto/issues/4177)
+- Enhance the StyleWrapper classNames generator by adding look around classNames depending on the sorounding previous/next blocks. @sneridagh [#4260](https://github.com/plone/volto/issues/4260)
+
+### Bugfix
+
+- Fix typo in 4260 @sneridagh [#4268](https://github.com/plone/volto/issues/4268)
+
+### Documentation
+
+- Update links to docs to use correct versions. [stevepiercy] [#4256](https://github.com/plone/volto/issues/4256)
+
+
 ## 16.7.0 (2023-01-11)
 
 ### Feature
