@@ -22,8 +22,7 @@ const HeroImage = (props) => {
       value={data['url']}
       id={id}
       onFocus={() => {
-        console.log('focus');
-        onSelectBlock(id);
+        setTimeout(() => onSelectBlock(id), 10); // too much focus stealing
       }}
       onChange={(id, image) => {
         const url = image ? image['@id'] : '';

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 // import cx from 'classnames';
+import AddLinkForm from '@plone/volto/components/manage/AnchorPlugin/components/LinkButton/AddLinkForm';
+import { PositionedToolbar } from '@plone/volto-slate/editor/ui';
 import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
 import { useLocation } from 'react-router-dom';
 import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
@@ -38,6 +40,68 @@ const messages = {
   addImage: 'Browse the site, drop an image, or use an URL',
 };
 
+function getPositionStyle(el) {
+  const rect = el.getBoundingClientRect();
+
+  return {
+    style: {
+      opacity: 1,
+      top: rect.top + window.pageYOffset - 6,
+      left: rect.left + window.pageXOffset + rect.width / 2,
+    },
+  };
+}
+
+const useLinkEditor = (value, onChange) => {
+  const [showLinkEditor, setShowLinkEditor] = React.useState(false);
+  const show = React.useCallback(() => setShowLinkEditor(true), []);
+  const savedPosition = React.useRef();
+  const anchorNode = React.useRef();
+
+  if (anchorNode.current && !savedPosition.current) {
+    savedPosition.current = getPositionStyle(anchorNode.current);
+  }
+
+  const LinkEditor = React.useCallback(
+    (props) => {
+      return showLinkEditor && anchorNode.current ? (
+        <PositionedToolbar
+          className="add-link"
+          position={savedPosition.current}
+        >
+          <AddLinkForm
+            block="draft-js"
+            placeholder={'Add link'}
+            data={{ url: value || '' }}
+            theme={{}}
+            onChangeValue={(url) => {
+              savedPosition.current = null;
+              onChange(url);
+            }}
+            onClear={() => {
+              // clear button was pressed in the link edit popup
+              onChange(null);
+            }}
+            onOverrideContent={(c) => {
+              // dispatch(setPluginOptions(pid, { show_sidebar_editor: false }));
+              savedPosition.current = null;
+            }}
+          />
+        </PositionedToolbar>
+      ) : (
+        false
+      );
+    },
+    [showLinkEditor, value, onChange],
+  );
+
+  return {
+    anchorNode,
+    show,
+    LinkEditor,
+  };
+};
+
 const ImageUploadWidget = (props) => {
   const {
     id,
@@ -50,6 +114,7 @@ const ImageUploadWidget = (props) => {
     value,
     imageSize = 'teaser',
   } = props;
+  const linkEditor = useLinkEditor(value, onChange);
   const location = useLocation();
   const contextUrl = pathname ?? location.pathname;
 
@@ -173,9 +238,18 @@ const ImageUploadWidget = (props) => {
   };
 
   // data.align === 'center' ? 'great' : 'teaser'
+  //
 
   return value ? (
-    <div className="image-upload-widget-image">
+    <div
+      className="image-upload-widget-image"
+      onClick={() => {
+        onFocus();
+        console.log('click');
+      }}
+      onKeyDown={onFocus}
+      role="toolbar"
+    >
       <ImageToolbar {...props} />
       <img
         className={props.className}
@@ -190,6 +264,7 @@ const ImageUploadWidget = (props) => {
       onKeyDown={onFocus}
       role="toolbar"
     >
+      <linkEditor.LinkEditor />
       <Dropzone
         noClick
         onDrop={onDrop}
@@ -209,7 +284,7 @@ const ImageUploadWidget = (props) => {
               <img src={imageBlockSVG} alt="" />
               <div>{messages.addImage}</div>
               <div className="toolbar-wrapper">
-                <div className="toolbar-inner">
+                <div className="toolbar-inner" ref={linkEditor.anchorNode}>
                   <Button.Group>
                     <Button
                       title="Pick an existing image"
@@ -246,12 +321,7 @@ const ImageUploadWidget = (props) => {
                       basic
                       onClick={(e) => {
                         onFocus && onFocus();
-                        e.preventDefault();
-                        openObjectBrowser({
-                          mode: 'link',
-                          overlay: true,
-                          onSelectItem: onChange,
-                        });
+                        linkEditor.show();
                       }}
                     >
                       <Icon name={linkSVG} circled size="24px" />
