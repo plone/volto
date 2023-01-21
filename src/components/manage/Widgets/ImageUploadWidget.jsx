@@ -62,8 +62,17 @@ const useLinkEditor = (value, onChange) => {
     savedPosition.current = getPositionStyle(anchorNode.current);
   }
 
+  React.useEffect(() => {
+    return () => {
+      console.log('unmount');
+    };
+  }, []);
+
+  console.log('redraw', showLinkEditor, value, onChange);
+
   const LinkEditor = React.useCallback(
     (props) => {
+      console.log('redoc ompponent');
       return showLinkEditor && anchorNode.current ? (
         <PositionedToolbar
           className="add-link"
@@ -264,7 +273,6 @@ const ImageUploadWidget = (props) => {
       onKeyDown={onFocus}
       role="toolbar"
     >
-      <linkEditor.LinkEditor />
       <Dropzone
         noClick
         onDrop={onDrop}
@@ -320,7 +328,7 @@ const ImageUploadWidget = (props) => {
                       icon
                       basic
                       onClick={(e) => {
-                        onFocus && onFocus();
+                        !props.selected && onFocus && onFocus();
                         linkEditor.show();
                       }}
                     >
@@ -328,6 +336,7 @@ const ImageUploadWidget = (props) => {
                     </Button>
                   </Button.Group>
                 </div>
+                <linkEditor.LinkEditor />
               </div>
 
               {/* <div>or drop an image</div> */}

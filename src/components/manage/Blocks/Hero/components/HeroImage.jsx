@@ -14,6 +14,17 @@ const HeroImage = (props) => {
     selected,
   } = props;
 
+  const handleChange = React.useCallback(
+    (id, image) => {
+      const url = image ? image['@id'] : '';
+      onChangeBlock(block, {
+        ...data,
+        url: flattenToAppURL(url),
+      });
+    },
+    [block, onChangeBlock, data],
+  );
+
   return (
     <ImageUploadWidget
       className="hero-image"
@@ -24,13 +35,7 @@ const HeroImage = (props) => {
       onFocus={() => {
         setTimeout(() => onSelectBlock(id), 10); // too much focus stealing
       }}
-      onChange={(id, image) => {
-        const url = image ? image['@id'] : '';
-        onChangeBlock(block, {
-          ...data,
-          url: flattenToAppURL(url),
-        });
-      }}
+      onChange={handleChange}
     />
   );
 };
