@@ -10,7 +10,6 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import {
-  Container,
   Button,
   Form,
   Input,
@@ -182,7 +181,7 @@ class Login extends Component {
     return (
       <div id="page-login">
         <Helmet title={this.props.intl.formatMessage(messages.Login)} />
-        <Container text>
+        <Grid centered>
           <Form method="post" onSubmit={this.onLogin}>
             <Segment.Group raised>
               <Segment className="primary">
@@ -305,7 +304,7 @@ class Login extends Component {
               </Segment>
             </Segment.Group>
           </Form>
-        </Container>
+        </Grid>
       </div>
     );
   }
