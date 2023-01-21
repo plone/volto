@@ -30,7 +30,7 @@ Once blocks are selected, you will have a copy <i class="fas fa-copy"></i> and a
 
 Once you copy/cut the blocks you can paste those blocks on that page or some other page.
 Select an empty block where you want to paste blocks from clipboard.
-You can see the paste option <i class="fas fa-paste"></i> at the botton of Toolbar.
+You can see the paste option <i class="fas fa-clipboard"></i> at the botton of Toolbar.
 
 ```{image} ../_static/user-manual/blocks/block-paste-option.png
 :alt: Paste option
