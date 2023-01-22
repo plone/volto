@@ -9,13 +9,7 @@ import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import {
-  Button,
-  Form,
-  Input,
-  Segment,
-  Grid,
-} from 'semantic-ui-react';
+import {Button, Form, Input, Segment, Grid} from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import qs from 'query-string';
 import { withRouter } from 'react-router-dom';
