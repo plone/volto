@@ -42,7 +42,6 @@ const RenderBlocks = (props) => {
           metadata,
           properties: content,
         });
-        // console.log('rerender', block);
 
         return Block ? (
           <StyleWrapper key={block} {...props} id={block} data={blockData}>

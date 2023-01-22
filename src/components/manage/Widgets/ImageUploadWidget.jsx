@@ -21,22 +21,15 @@ import uploadSVG from '@plone/volto/icons/upload.svg';
 
 const Dropzone = loadable(() => import('react-dropzone'));
 
-export const ImageToolbar = ({ className, data, id, onChange, selected }) =>
-  (selected && (
-    <div className="image-upload-widget-toolbar">
-      <Button.Group>
-        <Button icon basic onClick={() => onChange(id, null)}>
-          <Icon
-            className="circled"
-            name={clearSVG}
-            size="24px"
-            color="#e40166"
-          />
-        </Button>
-      </Button.Group>
-    </div>
-  )) ||
-  null;
+export const ImageToolbar = ({ className, data, id, onChange, selected }) => (
+  <div className="image-upload-widget-toolbar">
+    <Button.Group>
+      <Button icon basic onClick={() => onChange(id, null)}>
+        <Icon className="circled" name={clearSVG} size="24px" color="#e40166" />
+      </Button>
+    </Button.Group>
+  </div>
+);
 
 const messages = defineMessages({
   addImage: {
@@ -55,6 +48,10 @@ const messages = defineMessages({
     id: 'linkAnImage',
     defaultMessage: 'Enter a URL to an image',
   },
+  uploadingImage: {
+    id: 'uploadingImage',
+    defaultMessage: 'Uploading image',
+  },
 });
 
 const ImageUploadWidget = (props) => {
@@ -67,6 +64,7 @@ const ImageUploadWidget = (props) => {
     openObjectBrowser,
     value,
     imageSize = 'teaser',
+    selected = true,
   } = props;
 
   const intl = useIntl();
@@ -127,7 +125,7 @@ const ImageUploadWidget = (props) => {
       onKeyDown={onFocus}
       role="toolbar"
     >
-      <ImageToolbar {...props} />
+      {selected && <ImageToolbar {...props} />}
       <img
         className={props.className}
         src={`${flattenToAppURL(value)}/@@images/image/${imageSize}`}
@@ -154,7 +152,9 @@ const ImageUploadWidget = (props) => {
               {dragging && <Dimmer active></Dimmer>}
               {uploading && (
                 <Dimmer active>
-                  <Loader indeterminate>Uploading image</Loader>
+                  <Loader indeterminate>
+                    {intl.formatMessage(messages.uploadingImage)}
+                  </Loader>
                 </Dimmer>
               )}
               <img src={imageBlockSVG} alt="" />
