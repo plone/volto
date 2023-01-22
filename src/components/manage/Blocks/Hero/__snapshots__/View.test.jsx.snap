@@ -7,12 +7,18 @@ exports[`renders a view hero component 1`] = `
   <div
     className="block-inner-wrapper"
   >
-    <img
-      alt=""
-      className="hero-image"
-      loading="lazy"
-      src="heroimage.jpg/@@images/image/teaser"
-    />
+    <div
+      className="image-upload-widget-image"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="toolbar"
+    >
+      <img
+        alt=""
+        className="hero-image"
+        src="heroimage.jpg/@@images/image/teaser"
+      />
+    </div>
     <div
       className="hero-body"
     >

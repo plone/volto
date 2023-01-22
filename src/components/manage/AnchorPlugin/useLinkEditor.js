@@ -25,7 +25,7 @@ const useLinkEditor = (id, value, onChange) => {
   }
 
   const api = React.useRef();
-  api.current.onChange = onChange; // this avoids too many unmounts because the Blocks form api is not stable
+  if (api.current) api.current.onChange = onChange; // this avoids too many unmounts because the Blocks form api is not stable
 
   const LinkEditor = React.useCallback(
     (props) => {
