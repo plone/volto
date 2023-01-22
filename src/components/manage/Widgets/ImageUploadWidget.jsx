@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import loadable from '@loadable/component';
 
-import { PositionedToolbar } from '@plone/volto-slate/editor/ui';
-import AddLinkForm from '@plone/volto/components/manage/AnchorPlugin/components/LinkButton/AddLinkForm';
+import useLinkEditor from '@plone/volto/components/manage/AnchorPlugin/useLinkEditor';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 
 import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
@@ -21,6 +20,8 @@ import uploadSVG from '@plone/volto/icons/upload.svg';
 
 // import cx from 'classnames';
 // import useWhyDidYouUpdate from '@plone/volto/helpers/Utils/useWhyDidYouUpdate';
+
+const Dropzone = loadable(() => import('react-dropzone'));
 
 export const ImageToolbar = ({ className, data, id, onChange, selected }) =>
   (selected && (
@@ -39,72 +40,8 @@ export const ImageToolbar = ({ className, data, id, onChange, selected }) =>
   )) ||
   null;
 
-const Dropzone = loadable(() => import('react-dropzone'));
-
 const messages = {
   addImage: 'Browse the site, drop an image, or use an URL',
-};
-
-function getPositionStyle(el) {
-  const rect = el.getBoundingClientRect();
-
-  return {
-    style: {
-      opacity: 1,
-      top: rect.top + window.pageYOffset - 6,
-      left: rect.left + window.pageXOffset + rect.width / 2,
-    },
-  };
-}
-
-const useLinkEditor = (id, value, api) => {
-  const [showLinkEditor, setShowLinkEditor] = React.useState(false);
-  const show = React.useCallback(() => setShowLinkEditor(true), []);
-  const savedPosition = React.useRef();
-  const anchorNode = React.useRef();
-
-  if (anchorNode.current && !savedPosition.current) {
-    savedPosition.current = getPositionStyle(anchorNode.current);
-  }
-  // useWhyDidYouUpdate('useLinkEditor', { showLinkEditor, value, api });
-
-  const LinkEditor = React.useCallback(
-    (props) => {
-      return showLinkEditor && anchorNode.current && savedPosition.current ? (
-        <PositionedToolbar
-          className="add-link"
-          position={savedPosition.current}
-        >
-          <AddLinkForm
-            block="draft-js"
-            placeholder={'Add link'}
-            data={{ url: value || '' }}
-            theme={{}}
-            onChangeValue={(url) => {
-              savedPosition.current = null;
-              setShowLinkEditor(false);
-              api.current.onChange(id, url);
-            }}
-            onClear={() => {
-              // clear button was pressed in the link edit popup
-              api.current.onChange(id, null);
-            }}
-            onOverrideContent={(c) => {
-              savedPosition.current = null;
-              setShowLinkEditor(false);
-            }}
-          />
-        </PositionedToolbar>
-      ) : null;
-    },
-    [showLinkEditor, value, api, id],
-  );
-
-  return {
-    anchorNode,
-    show,
-    LinkEditor,
-  };
 };
 
 const ImageUploadWidget = (props) => {
@@ -127,8 +64,8 @@ const ImageUploadWidget = (props) => {
   const dispatch = useDispatch();
   const contextUrl = pathname ?? location.pathname;
 
-  const [uploading, setUploading] = useState(false);
-  const [dragging, setDragging] = useState(false);
+  const [uploading, setUploading] = React.useState(false);
+  const [dragging, setDragging] = React.useState(false);
 
   const requestId = `image-upload-${id}`;
 
