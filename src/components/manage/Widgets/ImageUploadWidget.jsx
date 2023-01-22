@@ -73,11 +73,7 @@ const ImageUploadWidget = (props) => {
   } = props;
 
   const intl = useIntl();
-
-  const api = React.useRef({});
-  api.current.onChange = onChange;
-
-  const linkEditor = useLinkEditor(id, value, api);
+  const linkEditor = useLinkEditor(id, value, onChange);
   const location = useLocation();
   const dispatch = useDispatch();
   const contextUrl = pathname ?? location.pathname;
@@ -114,12 +110,12 @@ const ImageUploadWidget = (props) => {
         ).then((resp) => {
           if (resp) {
             setUploading(false);
-            api.current.onChange(id, resp['@id']);
+            onChange(id, resp['@id']);
           }
         });
       });
     },
-    [dispatch, contextUrl, id, requestId],
+    [dispatch, contextUrl, id, requestId, onChange],
   );
 
   const onDragEnter = React.useCallback(() => setDragging(true), []);

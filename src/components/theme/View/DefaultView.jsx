@@ -58,8 +58,8 @@ const DefaultView = (props) => {
   React.useEffect(() => {
     content?.['@type'] &&
       !hasBlocksData(content) &&
-      dispatch(getSchema(content['@type'], location.pathname));
-  }, [content, dispatch, location.pathname]);
+      dispatch(getSchema(content['@type'], path));
+  }, [content, dispatch, path]);
 
   const Container =
     config.getComponent({ name: 'Container' }).component || SemanticContainer;

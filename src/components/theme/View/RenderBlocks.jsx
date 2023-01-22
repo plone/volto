@@ -9,7 +9,6 @@ import {
 } from '@plone/volto/helpers';
 import StyleWrapper from '@plone/volto/components/manage/Blocks/Block/StyleWrapper';
 import config from '@plone/volto/registry';
-// import useWhyDidYouUpdate from '@plone/volto/helpers/Utils/useWhyDidYouUpdate';
 import { ViewDefaultBlock } from '@plone/volto/components';
 
 const messages = defineMessages({
@@ -29,9 +28,6 @@ const RenderBlocks = (props) => {
   const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
   const blocksConfig = props.blocksConfig || config.blocks.blocksConfig;
   const CustomTag = props.as || React.Fragment;
-  // React.useEffect(() => () => console.log('unmount RenderBlocks'), []);
-  // console.log('renderblocks');
-  // useWhyDidYouUpdate('RenderBlocks', props);
 
   return hasBlocksData(content) ? (
     <CustomTag>

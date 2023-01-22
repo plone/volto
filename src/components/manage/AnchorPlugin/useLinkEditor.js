@@ -14,7 +14,7 @@ function getPositionStyle(el) {
   };
 }
 
-const useLinkEditor = (id, value, api) => {
+const useLinkEditor = (id, value, onChange) => {
   const [showLinkEditor, setShowLinkEditor] = React.useState(false);
   const show = React.useCallback(() => setShowLinkEditor(true), []);
   const savedPosition = React.useRef();
@@ -23,7 +23,9 @@ const useLinkEditor = (id, value, api) => {
   if (anchorNode.current && !savedPosition.current) {
     savedPosition.current = getPositionStyle(anchorNode.current);
   }
-  // useWhyDidYouUpdate('useLinkEditor', { showLinkEditor, value, api });
+
+  const api = React.useRef();
+  api.current.onChange = onChange; // this avoids too many unmounts because the Blocks form api is not stable
 
   const LinkEditor = React.useCallback(
     (props) => {
