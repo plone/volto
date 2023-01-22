@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { View } from './View';
+import View from './View';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
@@ -71,7 +71,6 @@ test('renders a view hero component', () => {
         <View
           data={{ url: 'heroimage.jpg', '@type': 'hero' }}
           block={blockId}
-          variation={{}}
         />
       </MemoryRouter>
     </Provider>,

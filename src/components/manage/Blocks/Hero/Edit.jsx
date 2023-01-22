@@ -2,17 +2,16 @@
  * Edit Hero block.
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { compose } from 'redux';
-import { isEqual } from 'lodash';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
+
 import cx from 'classnames';
 
-import { SidebarPortal, Hero } from '@plone/volto/components';
+import { BlockDataForm, SidebarPortal } from '@plone/volto/components';
 import { withBlockExtensions } from '@plone/volto/helpers';
 
-import Data from './Data';
+import schemaHero from './schema.js';
 
 const messages = defineMessages({
   title: {
@@ -41,84 +40,65 @@ const messages = defineMessages({
   },
 });
 
-/**
- * Edit image block class.
- * @class Edit
- * @extends Component
- */
-class EditComponent extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    selected: PropTypes.bool.isRequired,
-    block: PropTypes.string.isRequired,
-    index: PropTypes.number.isRequired,
-    data: PropTypes.objectOf(PropTypes.any).isRequired,
-    pathname: PropTypes.string.isRequired,
-    onChangeBlock: PropTypes.func.isRequired,
-    onSelectBlock: PropTypes.func.isRequired,
-    onDeleteBlock: PropTypes.func.isRequired,
-    onFocusPreviousBlock: PropTypes.func.isRequired,
-    onFocusNextBlock: PropTypes.func.isRequired,
-    handleKeyDown: PropTypes.func.isRequired,
-    editable: PropTypes.bool,
-  };
+function EditHeroBlock(props) {
+  const { block, data, selected, onChangeBlock, variation } = props;
+  const intl = useIntl();
+  const schema = schemaHero({ ...props, intl });
 
-  /**
-   * Default properties
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    editable: true,
-  };
-
-  /**
-   * @param {*} nextProps
-   * @param {*} nextState
-   * @returns {boolean}
-   * @memberof Edit
-   */
-  shouldComponentUpdate(nextProps) {
-    return this.props.selected || !isEqual(this.props.data, nextProps.data);
+  if (__SERVER__) {
+    return <div />;
   }
+  const placeholder =
+    data.placeholder || intl.formatMessage(messages.placeholder);
 
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
-    if (__SERVER__) {
-      return <div />;
-    }
-    const placeholder =
-      this.props.data.placeholder ||
-      this.props.intl.formatMessage(messages.placeholder);
+  const HeroLayout = variation.view;
 
-    return (
-      <div
-        className={cx(
-          'block hero align',
-          {
-            selected: this.props.selected,
-          },
-          {
-            center: !Boolean(this.props.data.align),
-          },
-          this.props.data.align,
-        )}
-      >
-        <Hero {...this.props} placeholder={placeholder} isEditMode />
-        <SidebarPortal selected={this.props.selected}>
-          <Data {...this.props} />
-        </SidebarPortal>
-      </div>
-    );
-  }
+  return (
+    <div
+      className={cx(
+        'block hero align',
+        {
+          selected,
+        },
+        {
+          center: !Boolean(data.align),
+        },
+        data.align,
+      )}
+    >
+      <HeroLayout {...props} placeholder={placeholder} isEditMode />
+      <SidebarPortal selected={selected}>
+        <BlockDataForm
+          schema={schema}
+          title={schema.title}
+          onChangeField={(id, value) => {
+            onChangeBlock(block, {
+              ...data,
+              [id]: value,
+            });
+          }}
+          onChangeBlock={onChangeBlock}
+          formData={data}
+          block={block}
+        />
+      </SidebarPortal>
+    </div>
+  );
 }
 
-export default compose(injectIntl, withBlockExtensions)(EditComponent);
+EditHeroBlock.propTypes = {
+  selected: PropTypes.bool.isRequired,
+  block: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
+  data: PropTypes.objectOf(PropTypes.any).isRequired,
+  pathname: PropTypes.string.isRequired,
+  onChangeBlock: PropTypes.func.isRequired,
+  onSelectBlock: PropTypes.func.isRequired,
+  onDeleteBlock: PropTypes.func.isRequired,
+  onFocusPreviousBlock: PropTypes.func.isRequired,
+  onFocusNextBlock: PropTypes.func.isRequired,
+  handleKeyDown: PropTypes.func.isRequired,
+  editable: PropTypes.bool,
+};
+
+export default withBlockExtensions(EditHeroBlock);

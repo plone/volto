@@ -7,49 +7,11 @@ exports[`renders a view hero component 1`] = `
   <div
     className="block-inner-wrapper"
   >
-    <div
-      className="image-upload-widget-image"
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      role="toolbar"
-    >
-      <div
-        className="image-upload-widget-toolbar"
-      >
-        <div
-          className="ui buttons"
-        >
-          <button
-            className="ui basic icon button"
-            onClick={[Function]}
-          >
-            <svg
-              className="icon circled"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": undefined,
-                }
-              }
-              onClick={null}
-              style={
-                Object {
-                  "fill": "#e40166",
-                  "height": "24px",
-                  "width": "auto",
-                }
-              }
-              viewBox=""
-              xmlns=""
-            />
-          </button>
-        </div>
-      </div>
-      <img
-        alt=""
-        className="hero-image"
-        src="heroimage.jpg/@@images/image/teaser"
-      />
-    </div>
+    <img
+      alt=""
+      className="hero-image"
+      src="heroimage.jpg/@@images/image/teaser"
+    />
     <div
       className="hero-body"
     >

@@ -60,7 +60,6 @@ const ImageUploadWidget = (props) => {
     pathname,
     onChange,
     onFocus,
-    // placeholder,
     openObjectBrowser,
     value,
     imageSize = 'teaser',
@@ -115,8 +114,6 @@ const ImageUploadWidget = (props) => {
 
   const onDragEnter = React.useCallback(() => setDragging(true), []);
   const onDragLeave = React.useCallback(() => setDragging(false), []);
-
-  // data.align === 'center' ? 'great' : 'teaser'
 
   return value ? (
     <div
