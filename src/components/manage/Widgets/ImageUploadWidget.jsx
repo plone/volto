@@ -206,7 +206,13 @@ const ImageUploadWidget = (props) => {
                     </Button>
                   </Button.Group>
                 </div>
-                {linkEditor.anchorNode && <linkEditor.LinkEditor />}
+                {linkEditor.anchorNode && (
+                  <linkEditor.LinkEditor
+                    value={value}
+                    onChange={onChange}
+                    id={id}
+                  />
+                )}
               </div>
             </Message>
           </div>

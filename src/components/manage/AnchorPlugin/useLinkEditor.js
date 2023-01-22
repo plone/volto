@@ -1,3 +1,17 @@
+/***
+ * A hook that makes it easy to use the AddLinkForm link editing popup.
+ *
+ * To use it, in your component, do something like:
+ *
+ * const linkEditor = useLinkEditor();
+ *
+ * return <>
+ *    <button ref={linkEditor.anchorNode} onClick={() => linkEditor.show()}>btn</button>
+ *    {linkEditor.anchorNode && <linkEditor.LinkEditor value={value} id={id}
+ *                               onChange={onChange} />}
+ * </>
+ */
+
 import React from 'react';
 import { PositionedToolbar } from '@plone/volto-slate/editor/ui';
 import AddLinkForm from '@plone/volto/components/manage/AnchorPlugin/components/LinkButton/AddLinkForm';
@@ -14,7 +28,7 @@ function getPositionStyle(el) {
   };
 }
 
-const useLinkEditor = (id, value, onChange) => {
+const useLinkEditor = () => {
   const [showLinkEditor, setShowLinkEditor] = React.useState(false);
   const show = React.useCallback(() => setShowLinkEditor(true), []);
   const savedPosition = React.useRef();
@@ -24,11 +38,9 @@ const useLinkEditor = (id, value, onChange) => {
     savedPosition.current = getPositionStyle(anchorNode.current);
   }
 
-  const api = React.useRef();
-  if (api.current) api.current.onChange = onChange; // this avoids too many unmounts because the Blocks form api is not stable
-
   const LinkEditor = React.useCallback(
     (props) => {
+      const { id, value, onChange } = props;
       return showLinkEditor && anchorNode.current && savedPosition.current ? (
         <PositionedToolbar
           className="add-link"
@@ -42,11 +54,11 @@ const useLinkEditor = (id, value, onChange) => {
             onChangeValue={(url) => {
               savedPosition.current = null;
               setShowLinkEditor(false);
-              api.current.onChange(id, url);
+              onChange(id, url);
             }}
             onClear={() => {
               // clear button was pressed in the link edit popup
-              api.current.onChange(id, null);
+              onChange(id, null);
             }}
             onOverrideContent={(c) => {
               savedPosition.current = null;
@@ -56,7 +68,7 @@ const useLinkEditor = (id, value, onChange) => {
         </PositionedToolbar>
       ) : null;
     },
-    [showLinkEditor, value, api, id],
+    [showLinkEditor],
   );
 
   return {
