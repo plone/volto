@@ -3,6 +3,7 @@
  * @module reducers/content/content
  */
 
+import isEqual from 'react-fast-compare';
 import { map, mapKeys, omit } from 'lodash';
 
 import { flattenToAppURL } from '@plone/volto/helpers';
@@ -190,6 +191,16 @@ export default function content(state = initialState, action = {}) {
           };
         });
       }
+      const newData = {
+        ...result,
+        items:
+          action.result &&
+          action.result.items &&
+          action.result.items.map((item) => ({
+            ...item,
+            url: flattenToAppURL(item['@id']),
+          })),
+      };
       return action.subrequest
         ? {
             ...state,
@@ -214,16 +225,7 @@ export default function content(state = initialState, action = {}) {
           }
         : {
             ...state,
-            data: {
-              ...result,
-              items:
-                action.result &&
-                action.result.items &&
-                action.result.items.map((item) => ({
-                  ...item,
-                  url: flattenToAppURL(item['@id']),
-                })),
-            },
+            data: isEqual(newData, state.data) ? state.data : newData,
             [getRequestKey(action.type)]: {
               loading: false,
               loaded: true,

@@ -62,17 +62,17 @@ const useLinkEditor = (value, onChange) => {
     savedPosition.current = getPositionStyle(anchorNode.current);
   }
 
-  React.useEffect(() => {
-    return () => {
-      console.log('unmount');
-    };
-  }, []);
-
-  console.log('redraw', showLinkEditor, value, onChange);
+  // React.useEffect(() => {
+  //   return () => {
+  //     console.log('unmount');
+  //   };
+  // }, []);
+  //
+  // console.log('redraw', showLinkEditor, value);
 
   const LinkEditor = React.useCallback(
     (props) => {
-      console.log('redoc ompponent');
+      // console.log('redoc ompponent');
       return showLinkEditor && anchorNode.current ? (
         <PositionedToolbar
           className="add-link"
