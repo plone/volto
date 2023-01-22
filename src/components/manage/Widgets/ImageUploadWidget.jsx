@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
-// import cx from 'classnames';
-import AddLinkForm from '@plone/volto/components/manage/AnchorPlugin/components/LinkButton/AddLinkForm';
-import { PositionedToolbar } from '@plone/volto-slate/editor/ui';
-import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
-import { useLocation } from 'react-router-dom';
 import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
+import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import loadable from '@loadable/component';
+
+import { PositionedToolbar } from '@plone/volto-slate/editor/ui';
+import AddLinkForm from '@plone/volto/components/manage/AnchorPlugin/components/LinkButton/AddLinkForm';
+import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
+
+import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
+import { createContent } from '@plone/volto/actions';
 import { readAsDataURL } from 'promise-file-reader';
 import { Icon } from '@plone/volto/components';
 
@@ -14,9 +18,9 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
 import uploadSVG from '@plone/volto/icons/upload.svg';
-import useWhyDidYouUpdate from '@plone/volto/helpers/Utils/useWhyDidYouUpdate';
 
-import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
+// import cx from 'classnames';
+// import useWhyDidYouUpdate from '@plone/volto/helpers/Utils/useWhyDidYouUpdate';
 
 export const ImageToolbar = ({ className, data, id, onChange, selected }) =>
   (selected && (
@@ -62,7 +66,7 @@ const useLinkEditor = (id, value, api) => {
   if (anchorNode.current && !savedPosition.current) {
     savedPosition.current = getPositionStyle(anchorNode.current);
   }
-  useWhyDidYouUpdate('useLinkEditor', { showLinkEditor, value, api });
+  // useWhyDidYouUpdate('useLinkEditor', { showLinkEditor, value, api });
 
   const LinkEditor = React.useCallback(
     (props) => {
@@ -86,7 +90,6 @@ const useLinkEditor = (id, value, api) => {
               api.current.onChange(id, null);
             }}
             onOverrideContent={(c) => {
-              // dispatch(setPluginOptions(pid, { show_sidebar_editor: false }));
               savedPosition.current = null;
               setShowLinkEditor(false);
             }}
@@ -112,7 +115,6 @@ const ImageUploadWidget = (props) => {
     onFocus,
     // placeholder,
     openObjectBrowser,
-    createContent,
     value,
     imageSize = 'teaser',
   } = props;
@@ -122,80 +124,48 @@ const ImageUploadWidget = (props) => {
 
   const linkEditor = useLinkEditor(id, value, api);
   const location = useLocation();
+  const dispatch = useDispatch();
   const contextUrl = pathname ?? location.pathname;
 
   const [uploading, setUploading] = useState(false);
   const [dragging, setDragging] = useState(false);
 
-  const [url, setUrl] = useState(value || ''); // This is to support typing the image URL in the input
-
   const requestId = `image-upload-${id}`;
 
-  /**
-   * Drop handler
-   * @method onDrop
-   * @param {array} files File objects
-   * @returns {undefined}
-   */
-  const onDrop = (file) => {
-    setUploading(true);
-    readAsDataURL(file[0]).then((fileData) => {
-      const fields = fileData.match(/^data:(.*);(.*),(.*)$/);
-      createContent(
-        getBaseUrl(contextUrl),
-        {
-          '@type': 'Image',
-          title: file[0].name,
-          image: {
-            data: fields[3],
-            encoding: fields[2],
-            'content-type': fields[1],
-            filename: file[0].name,
-          },
-        },
-        requestId,
-      ).then((resp) => {
-        if (resp) {
-          onChange(id, resp['@id']);
-          setUploading(false);
-        }
+  const handleUpload = React.useCallback(
+    (eventOrFile) => {
+      eventOrFile.target && eventOrFile.stopPropagation();
+      setUploading(true);
+      const file = eventOrFile.target
+        ? eventOrFile.target.files[0]
+        : eventOrFile[0];
+      readAsDataURL(file).then((fileData) => {
+        const fields = fileData.match(/^data:(.*);(.*),(.*)$/);
+        dispatch(
+          createContent(
+            getBaseUrl(contextUrl),
+            {
+              '@type': 'Image',
+              title: file.name,
+              image: {
+                data: fields[3],
+                encoding: fields[2],
+                'content-type': fields[1],
+                filename: file.name,
+              },
+            },
+            requestId,
+          ),
+        ).then((resp) => {
+          if (resp) {
+            setUploading(false);
+            api.current.onChange(id, resp['@id']);
+          }
+        });
       });
-    });
-  };
-
-  /**
-   * Upload image handler (not used), but useful in case that we want a button
-   * not powered by react-dropzone
-   * @method onUploadImage
-   * @returns {undefined}
-   */
-  const onUploadImage = (e) => {
-    e.stopPropagation();
-    const file = e.target.files[0];
-    setUploading(true);
-    readAsDataURL(file).then((fileData) => {
-      const fields = fileData.match(/^data:(.*);(.*),(.*)$/);
-      createContent(
-        getBaseUrl(contextUrl),
-        {
-          '@type': 'Image',
-          title: file.name,
-          image: {
-            data: fields[3],
-            encoding: fields[2],
-            'content-type': fields[1],
-            filename: file.name,
-          },
-        },
-        requestId,
-      ).then((resp) => {
-        if (resp) {
-          setUploading(false);
-          onChange(id, resp['@id']);
-        }
-      });
-    });
-  };
+    },
+    [dispatch, contextUrl, id, requestId],
+  );
 
   const onDragEnter = React.useCallback(() => setDragging(true), []);
   const onDragLeave = React.useCallback(() => setDragging(false), []);
@@ -225,7 +195,7 @@ const ImageUploadWidget = (props) => {
     >
       <Dropzone
         noClick
-        onDrop={onDrop}
+        onDrop={handleUpload}
         onDragEnter={onDragEnter}
         onDragLeave={onDragLeave}
         className="dropzone"
@@ -267,7 +237,7 @@ const ImageUploadWidget = (props) => {
                       <input
                         {...getInputProps({
                           type: 'file',
-                          onChange: onUploadImage,
+                          onChange: handleUpload,
                           style: { display: 'none' },
                         })}
                       />
@@ -295,4 +265,5 @@ const ImageUploadWidget = (props) => {
     </div>
   );
 };
+
 export default withObjectBrowser(ImageUploadWidget);
