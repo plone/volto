@@ -1,15 +1,13 @@
 /***
- * A hook that makes it easy to use the AddLinkForm link editing popup.
+ * A hook that makes it easy to use the AddLinkForm link editing component.
  *
  * To use it, in your component, do something like:
  *
  * const linkEditor = useLinkEditor();
  *
- * return <>
- *    <button ref={linkEditor.anchorNode} onClick={() => linkEditor.show()}>btn</button>
- *    {linkEditor.anchorNode && <linkEditor.LinkEditor value={value} id={id}
- *                               onChange={onChange} />}
- * </>
+ * return <> <button ref={linkEditor.anchorNode} onClick={() => linkEditor.show()}>btn</button>
+ *    {linkEditor.anchorNode && <linkEditor.LinkEditor value={value} id={id} onChange={onChange} />} </>
+ *
  */
 
 import React from 'react';
