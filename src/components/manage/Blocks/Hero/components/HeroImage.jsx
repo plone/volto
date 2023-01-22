@@ -1,8 +1,7 @@
 import React from 'react';
-import { flattenToAppURL } from '@plone/volto/helpers';
 
+import { flattenToAppURL } from '@plone/volto/helpers';
 import { ImageUploadWidget } from '@plone/volto/components';
-// import useWhyDidYouUpdate from '@plone/volto/helpers/Utils/useWhyDidYouUpdate';
 
 const HeroImage = (props) => {
   const {
@@ -25,8 +24,6 @@ const HeroImage = (props) => {
     },
     [block, onChangeBlock, data],
   );
-
-  // useWhyDidYouUpdate('HeroImage', { block, onChangeBlock, data });
 
   return (
     <ImageUploadWidget

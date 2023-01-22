@@ -19,9 +19,6 @@ import navTreeSVG from '@plone/volto/icons/nav.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
 import uploadSVG from '@plone/volto/icons/upload.svg';
 
-// import cx from 'classnames';
-// import useWhyDidYouUpdate from '@plone/volto/helpers/Utils/useWhyDidYouUpdate';
-
 const Dropzone = loadable(() => import('react-dropzone'));
 
 export const ImageToolbar = ({ className, data, id, onChange, selected }) =>
