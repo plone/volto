@@ -5,8 +5,10 @@
  *
  * const linkEditor = useLinkEditor();
  *
- * return <> <button ref={linkEditor.anchorNode} onClick={() => linkEditor.show()}>btn</button>
- *    {linkEditor.anchorNode && <linkEditor.LinkEditor value={value} id={id} onChange={onChange} />} </>
+ * return (<>
+ * <button ref={linkEditor.anchorNode} onClick={() => linkEditor.show()}>btn</button>
+ * {linkEditor.anchorNode && <linkEditor.LinkEditor value={value} id={id} onChange={onChange} />}
+ * </>);
  *
  */
 
@@ -45,8 +47,6 @@ const useLinkEditor = () => {
           position={savedPosition.current}
         >
           <AddLinkForm
-            block="draft-js"
-            placeholder={'Add link'}
             data={{ url: value || '' }}
             theme={{}}
             onChangeValue={(url) => {
@@ -54,10 +54,7 @@ const useLinkEditor = () => {
               setShowLinkEditor(false);
               onChange(id, url);
             }}
-            onClear={() => {
-              // clear button was pressed in the link edit popup
-              onChange(id, null);
-            }}
+            onClear={() => {}}
             onOverrideContent={(c) => {
               savedPosition.current = null;
               setShowLinkEditor(false);
