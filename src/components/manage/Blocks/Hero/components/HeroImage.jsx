@@ -2,7 +2,7 @@ import React from 'react';
 import { flattenToAppURL } from '@plone/volto/helpers';
 
 import { ImageUploadWidget } from '@plone/volto/components';
-import useWhyDidYouUpdate from '@plone/volto/helpers/Utils/useWhyDidYouUpdate';
+// import useWhyDidYouUpdate from '@plone/volto/helpers/Utils/useWhyDidYouUpdate';
 
 const HeroImage = (props) => {
   const {
@@ -17,7 +17,7 @@ const HeroImage = (props) => {
 
   const handleChange = React.useCallback(
     (id, image) => {
-      const url = image ? image['@id'] : '';
+      const url = image ? image['@id'] || image : '';
       onChangeBlock(block, {
         ...data,
         url: flattenToAppURL(url),

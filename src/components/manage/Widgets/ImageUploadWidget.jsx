@@ -53,7 +53,7 @@ function getPositionStyle(el) {
   };
 }
 
-const useLinkEditor = (value, api) => {
+const useLinkEditor = (id, value, api) => {
   const [showLinkEditor, setShowLinkEditor] = React.useState(false);
   const show = React.useCallback(() => setShowLinkEditor(true), []);
   const savedPosition = React.useRef();
@@ -62,14 +62,6 @@ const useLinkEditor = (value, api) => {
   if (anchorNode.current && !savedPosition.current) {
     savedPosition.current = getPositionStyle(anchorNode.current);
   }
-
-  // React.useEffect(() => {
-  //   return () => {
-  //     console.log('unmount');
-  //   };
-  // }, []);
-  //
-  // console.log('redraw', showLinkEditor, value);
   useWhyDidYouUpdate('useLinkEditor', { showLinkEditor, value, api });
 
   const LinkEditor = React.useCallback(
@@ -86,11 +78,12 @@ const useLinkEditor = (value, api) => {
             theme={{}}
             onChangeValue={(url) => {
               savedPosition.current = null;
-              api.current.onChange(url);
+              setShowLinkEditor(false);
+              api.current.onChange(id, url);
             }}
             onClear={() => {
               // clear button was pressed in the link edit popup
-              api.current.onChange(null);
+              api.current.onChange(id, null);
             }}
             onOverrideContent={(c) => {
               // dispatch(setPluginOptions(pid, { show_sidebar_editor: false }));
@@ -101,7 +94,7 @@ const useLinkEditor = (value, api) => {
         </PositionedToolbar>
       ) : null;
     },
-    [showLinkEditor, value, api],
+    [showLinkEditor, value, api, id],
   );
 
   return {
@@ -127,7 +120,7 @@ const ImageUploadWidget = (props) => {
   const api = React.useRef({});
   api.current.onChange = onChange;
 
-  const linkEditor = useLinkEditor(value, api);
+  const linkEditor = useLinkEditor(id, value, api);
   const location = useLocation();
   const contextUrl = pathname ?? location.pathname;
 
@@ -198,68 +191,21 @@ const ImageUploadWidget = (props) => {
       ).then((resp) => {
         if (resp) {
           setUploading(false);
-          onChange(id, resp);
+          onChange(id, resp['@id']);
         }
       });
     });
   };
 
-  /**
-   * Change url handler
-   * @method onChangeUrl
-   * @param {Object} target Target object
-   * @returns {undefined}
-   */
-  const onChangeUrl = ({ target }) => {
-    setUrl(target.value);
-  };
-
-  /**
-   * Submit url handler
-   * @method onSubmitUrl
-   * @param {object} e Event
-   * @returns {undefined}
-   */
-  const onSubmitUrl = () => {
-    onChange(id, flattenToAppURL(url));
-  };
-
-  /**
-   * Keydown handler on Variant Menu Form
-   * This is required since the ENTER key is already mapped to a onKeyDown
-   * event and needs to be overriden with a child onKeyDown.
-   * @method onKeyDownVariantMenuForm
-   * @param {Object} e Event object
-   * @returns {undefined}
-   */
-  const onKeyDownVariantMenuForm = (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      e.stopPropagation();
-      onSubmitUrl();
-    } else if (e.key === 'Escape') {
-      e.preventDefault();
-      e.stopPropagation();
-      // TODO: Do something on ESC key
-    }
-  };
-  const onDragEnter = () => {
-    setDragging(true);
-  };
-  const onDragLeave = () => {
-    setDragging(false);
-  };
+  const onDragEnter = React.useCallback(() => setDragging(true), []);
+  const onDragLeave = React.useCallback(() => setDragging(false), []);
 
   // data.align === 'center' ? 'great' : 'teaser'
-  //
 
   return value ? (
     <div
       className="image-upload-widget-image"
-      onClick={() => {
-        onFocus();
-        console.log('click');
-      }}
+      onClick={onFocus}
       onKeyDown={onFocus}
       role="toolbar"
     >
@@ -342,8 +288,6 @@ const ImageUploadWidget = (props) => {
                 </div>
                 {linkEditor.anchorNode && <linkEditor.LinkEditor />}
               </div>
-
-              {/* <div>or drop an image</div> */}
             </Message>
           </div>
         )}
@@ -352,43 +296,3 @@ const ImageUploadWidget = (props) => {
   );
 };
 export default withObjectBrowser(ImageUploadWidget);
-
-//                  <Input
-//                    onKeyDown={onKeyDownVariantMenuForm}
-//                    onChange={onChangeUrl}
-//                    placeholder={placeholder}
-//                    value={url}
-//                    onClick={(e) => {
-//                      e.target.focus();
-//                    }}
-//                    onFocus={(e) => {
-//                      onFocus(id);
-//                    }}
-//                  />
-//                  {url && (
-//                    <Button.Group>
-//                      <Button
-//                        basic
-//                        className="cancel"
-//                        onClick={(e) => {
-//                          e.stopPropagation();
-//                          setUrl('');
-//                        }}
-//                      >
-//                        <Icon name={clearSVG} size="30px" />
-//                      </Button>
-//                    </Button.Group>
-//                  )}
-//                  <Button.Group>
-//                    <Button
-//                      basic
-//                      primary
-//                      disabled={!url}
-//                      onClick={(e) => {
-//                        e.stopPropagation();
-//                        onSubmitUrl();
-//                      }}
-//                    >
-//                      <Icon name={aheadSVG} size="30px" />
-//                    </Button>
-//                  </Button.Group>
