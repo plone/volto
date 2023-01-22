@@ -6,7 +6,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
-import useWhyDidYouUpdate from '@plone/volto/helpers/Utils/useWhyDidYouUpdate';
 
 import {
   Container as SemanticContainer,
@@ -60,12 +59,7 @@ const DefaultView = (props) => {
     content?.['@type'] &&
       !hasBlocksData(content) &&
       dispatch(getSchema(content['@type'], location.pathname));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // React.useEffect(() => () => console.log('unmount DefaultView'), []);
-  // useWhyDidYouUpdate('DefaultView', props);
-  // console.log('rerender DefaultView');
+  }, [content, dispatch, location.pathname]);
 
   const Container =
     config.getComponent({ name: 'Container' }).component || SemanticContainer;

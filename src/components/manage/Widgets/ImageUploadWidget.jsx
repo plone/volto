@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
+import { useIntl, defineMessages } from 'react-intl';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import loadable from '@loadable/component';
@@ -40,9 +41,24 @@ export const ImageToolbar = ({ className, data, id, onChange, selected }) =>
   )) ||
   null;
 
-const messages = {
-  addImage: 'Browse the site, drop an image, or use an URL',
-};
+const messages = defineMessages({
+  addImage: {
+    id: 'addImage',
+    defaultMessage: 'Browse the site, drop an image, or use an URL',
+  },
+  pickAnImage: {
+    id: 'pickAnImage',
+    defaultMessage: 'Pick an existing image',
+  },
+  uploadAnImage: {
+    id: 'uploadAnImage',
+    defaultMessage: 'Upload an image from your computer',
+  },
+  linkAnImage: {
+    id: 'linkAnImage',
+    defaultMessage: 'Enter a URL to an image',
+  },
+});
 
 const ImageUploadWidget = (props) => {
   const {
@@ -55,6 +71,8 @@ const ImageUploadWidget = (props) => {
     value,
     imageSize = 'teaser',
   } = props;
+
+  const intl = useIntl();
 
   const api = React.useRef({});
   api.current.onChange = onChange;
@@ -147,12 +165,12 @@ const ImageUploadWidget = (props) => {
                 </Dimmer>
               )}
               <img src={imageBlockSVG} alt="" />
-              <div>{messages.addImage}</div>
+              <div>{intl.formatMessage(messages.addImage)}</div>
               <div className="toolbar-wrapper">
                 <div className="toolbar-inner" ref={linkEditor.anchorNode}>
                   <Button.Group>
                     <Button
-                      title="Pick an existing image"
+                      title={intl.formatMessage(messages.pickAnImage)}
                       icon
                       basic
                       onClick={(e) => {
@@ -177,6 +195,7 @@ const ImageUploadWidget = (props) => {
                           onChange: handleUpload,
                           style: { display: 'none' },
                         })}
+                        title={intl.formatMessage(messages.uploadAnImage)}
                       />
                     </label>
                   </Button.Group>
@@ -184,6 +203,7 @@ const ImageUploadWidget = (props) => {
                     <Button
                       icon
                       basic
+                      title={intl.formatMessage(messages.linkAnImage)}
                       onClick={(e) => {
                         !props.selected && onFocus && onFocus();
                         linkEditor.show();
