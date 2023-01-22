@@ -14,6 +14,7 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
 import uploadSVG from '@plone/volto/icons/upload.svg';
+import useWhyDidYouUpdate from '@plone/volto/helpers/Utils/useWhyDidYouUpdate';
 
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 
@@ -52,7 +53,7 @@ function getPositionStyle(el) {
   };
 }
 
-const useLinkEditor = (value, onChange) => {
+const useLinkEditor = (value, api) => {
   const [showLinkEditor, setShowLinkEditor] = React.useState(false);
   const show = React.useCallback(() => setShowLinkEditor(true), []);
   const savedPosition = React.useRef();
@@ -69,11 +70,11 @@ const useLinkEditor = (value, onChange) => {
   // }, []);
   //
   // console.log('redraw', showLinkEditor, value);
+  useWhyDidYouUpdate('useLinkEditor', { showLinkEditor, value, api });
 
   const LinkEditor = React.useCallback(
     (props) => {
-      // console.log('redoc ompponent');
-      return showLinkEditor && anchorNode.current ? (
+      return showLinkEditor && anchorNode.current && savedPosition.current ? (
         <PositionedToolbar
           className="add-link"
           position={savedPosition.current}
@@ -85,23 +86,22 @@ const useLinkEditor = (value, onChange) => {
             theme={{}}
             onChangeValue={(url) => {
               savedPosition.current = null;
-              onChange(url);
+              api.current.onChange(url);
             }}
             onClear={() => {
               // clear button was pressed in the link edit popup
-              onChange(null);
+              api.current.onChange(null);
             }}
             onOverrideContent={(c) => {
               // dispatch(setPluginOptions(pid, { show_sidebar_editor: false }));
               savedPosition.current = null;
+              setShowLinkEditor(false);
             }}
           />
         </PositionedToolbar>
-      ) : (
-        false
-      );
+      ) : null;
     },
-    [showLinkEditor, value, onChange],
+    [showLinkEditor, value, api],
   );
 
   return {
@@ -123,7 +123,11 @@ const ImageUploadWidget = (props) => {
     value,
     imageSize = 'teaser',
   } = props;
-  const linkEditor = useLinkEditor(value, onChange);
+
+  const api = React.useRef({});
+  api.current.onChange = onChange;
+
+  const linkEditor = useLinkEditor(value, api);
   const location = useLocation();
   const contextUrl = pathname ?? location.pathname;
 
@@ -336,7 +340,7 @@ const ImageUploadWidget = (props) => {
                     </Button>
                   </Button.Group>
                 </div>
-                <linkEditor.LinkEditor />
+                {linkEditor.anchorNode && <linkEditor.LinkEditor />}
               </div>
 
               {/* <div>or drop an image</div> */}

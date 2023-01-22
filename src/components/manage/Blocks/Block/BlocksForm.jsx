@@ -154,13 +154,17 @@ const BlocksForm = (props) => {
     }
   };
 
-  const onChangeBlock = useDeepCompareMemoize(() => {
-    console.log('redo onChangeBlock');
-    return (id, value) => {
-      const newFormData = changeBlock(properties, id, value);
-      onChangeFormData(newFormData);
-    };
-  }, [properties]);
+  // const onChangeBlock = useDeepCompareMemoize(() => {
+  //   console.log('redo onChangeBlock');
+  //   return (id, value) => {
+  //     const newFormData = changeBlock(properties, id, value);
+  //     onChangeFormData(newFormData);
+  //   };
+  // }, [properties]);
+  const onChangeBlock = (id, value) => {
+    const newFormData = changeBlock(properties, id, value);
+    onChangeFormData(newFormData);
+  };
 
   const onDeleteBlock = (id, selectPrev) => {
     const previous = previousBlockId(properties, id);

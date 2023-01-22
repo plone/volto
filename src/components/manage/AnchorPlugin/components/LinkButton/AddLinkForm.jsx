@@ -90,6 +90,7 @@ class AddLinkForm extends Component {
   }
 
   handleClickOutside = (e) => {
+    console.log('handle click outside', this.linkFormContainer.current);
     if (
       this.linkFormContainer.current &&
       doesNodeContainClick(this.linkFormContainer.current, e)
