@@ -11,7 +11,7 @@ import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrow
 import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
 import { createContent } from '@plone/volto/actions';
 import { readAsDataURL } from 'promise-file-reader';
-import { Icon } from '@plone/volto/components';
+import { FormFieldWrapper, Icon } from '@plone/volto/components';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -54,7 +54,7 @@ const messages = defineMessages({
   },
 });
 
-const ImageUploadWidget = (props) => {
+const UnconnectedImageUploadInput = (props) => {
   const {
     id,
     pathname,
@@ -67,7 +67,7 @@ const ImageUploadWidget = (props) => {
   } = props;
 
   const intl = useIntl();
-  const linkEditor = useLinkEditor(id, value, onChange);
+  const linkEditor = useLinkEditor();
   const location = useLocation();
   const dispatch = useDispatch();
   const contextUrl = pathname ?? location.pathname;
@@ -219,4 +219,14 @@ const ImageUploadWidget = (props) => {
   );
 };
 
-export default withObjectBrowser(ImageUploadWidget);
+const ImageUploadInput = withObjectBrowser(UnconnectedImageUploadInput);
+export default ImageUploadInput;
+
+// const ImageUploadWidget = (props) => (
+//   <FormFieldWrapper
+//     {...props}
+//     className="image-upload-widget"
+//   ></FormFieldWrapper>
+// );
+//
+// export default ImageUploadWidget;

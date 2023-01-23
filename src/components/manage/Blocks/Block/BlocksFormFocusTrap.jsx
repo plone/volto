@@ -42,10 +42,10 @@ const handleUpArrow = ({ ev, setActive, active, fields, blockProps }) => {
 
 const keyHandlers = [handleEnter, handleDownArrow, handleUpArrow];
 
-const BlocksFormFocusTrap = (props) => {
+export const useFormFocusTrap = (fields, blockProps) => {
   // a component that handles focus and traversing for a list of fields
   // it enables a deep integration with the blocks form
-  const { fields, selected, onSelectBlock, block } = props;
+  const { selected, onSelectBlock, block } = blockProps;
   const [active, setActive] = React.useState(0);
 
   const previousSelected = usePrevious(selected);
@@ -66,7 +66,7 @@ const BlocksFormFocusTrap = (props) => {
           },
           onKeyDown(ev) {
             const handled = keyHandlers.find((handler) =>
-              handler({ ev, setActive, active, fields, blockProps: props }),
+              handler({ ev, setActive, active, fields, blockProps }),
             );
             if (handled) {
               ev.preventDefault();
@@ -78,6 +78,12 @@ const BlocksFormFocusTrap = (props) => {
     };
   };
 
+  return getFocusTrapProps;
+};
+
+const BlocksFormFocusTrap = (props) => {
+  const { fields, ...blockProps } = props;
+  const getFocusTrapProps = useFormFocusTrap(fields, blockProps);
   return props.children({ getFocusTrapProps });
 };
 
