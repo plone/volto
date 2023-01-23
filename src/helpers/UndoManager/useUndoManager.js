@@ -1,8 +1,15 @@
 import React from 'react';
 import Undoo from 'undoo';
 
+import { setBlocksClipboard } from '@plone/volto/actions';
+
 // Code based on Apache-2.0 License
 // https://github.com/reaviz/reaflow/blob/78d60aa04f514947a17097c906efdbbd6bae5080/src/helpers/useUndo.ts
+
+let store;
+export const injectStore = (_store) => {
+  store = _store
+}
 
 const useUndoManager = (
   state,
@@ -25,6 +32,15 @@ const useUndoManager = (
       const nextRedo = manager.current.canRedo();
       setCanUndo(nextUndo);
       setCanRedo(nextRedo);
+      
+      console.log(state);
+      if (Object.keys(state.blocksClipboard).length !== 0) {
+        console.log("Undo Clipboard!");
+        const actionType = Object.keys(state.blocksClipboard)[0];
+
+        const blocksData = state.blocksClipboard?.copy ? state.blocksClipboard.copy : state.blocksClipboard.cut;
+        store.dispatch(setBlocksClipboard({ [actionType]: blocksData }));
+      }
 
       callbackRef.current({
         state,

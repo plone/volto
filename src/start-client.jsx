@@ -15,6 +15,7 @@ import config from '@plone/volto/registry';
 
 import configureStore from '@plone/volto/store';
 import { Api, persistAuthToken, ScrollToTop } from '@plone/volto/helpers';
+import {injectStore} from './helpers/UndoManager/useUndoManager.js'
 
 export const history = createBrowserHistory();
 
@@ -56,6 +57,8 @@ export default function client() {
   if (window.env.RAZZLE_LEGACY_TRAVERSE) {
     config.settings.legacyTraverse = true;
   }
+  
+  injectStore(store);
 
   loadableReady(() => {
     hydrate(

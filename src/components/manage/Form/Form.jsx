@@ -565,6 +565,7 @@ class Form extends Component {
               formData: this.state.formData,
               selected: this.state.selected,
               multiSelected: this.state.multiSelected,
+              blocksClipboard: this.props.blocksClipboard,
             }}
             enableHotKeys
             onUndoRedo={({ state }) => this.setState(state)}
@@ -790,6 +791,10 @@ class Form extends Component {
 
 const FormIntl = injectIntl(Form, { forwardRef: true });
 
+const mapBlocksClipboardToProps = state => ({
+  blocksClipboard: state.blocksClipboard,
+})
+
 export default compose(
-  connect(null, { setSidebarTab }, null, { forwardRef: true }),
+  connect(mapBlocksClipboardToProps, { setSidebarTab }, null, { forwardRef: true }),
 )(FormIntl);
