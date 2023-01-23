@@ -29,13 +29,13 @@ const useUndoManager = (
       const nextRedo = manager.current.canRedo();
       setCanUndo(nextUndo);
       setCanRedo(nextRedo);
-      
-      console.log(state);
+
       if (Object.keys(state.blocksClipboard).length !== 0) {
-        console.log("Undo Clipboard!");
         const actionType = Object.keys(state.blocksClipboard)[0];
 
-        const blocksData = state.blocksClipboard?.copy ? state.blocksClipboard.copy : state.blocksClipboard.cut;
+        const blocksData = state.blocksClipboard?.copy
+          ? state.blocksClipboard.copy
+          : state.blocksClipboard.cut;
         dispatch(setBlocksClipboard({ [actionType]: blocksData }));
       }
 
@@ -46,6 +46,7 @@ const useUndoManager = (
         canRedo: nextRedo,
       });
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   React.useEffect(() => {

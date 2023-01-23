@@ -791,10 +791,12 @@ class Form extends Component {
 
 const FormIntl = injectIntl(Form, { forwardRef: true });
 
-const mapBlocksClipboardToProps = state => ({
+const mapBlocksClipboardToProps = (state) => ({
   blocksClipboard: state.blocksClipboard,
-})
+});
 
 export default compose(
-  connect(mapBlocksClipboardToProps, { setSidebarTab }, null, { forwardRef: true }),
+  connect(mapBlocksClipboardToProps, { setSidebarTab }, null, {
+    forwardRef: true,
+  }),
 )(FormIntl);
