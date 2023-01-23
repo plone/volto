@@ -8,6 +8,56 @@
 
 <!-- towncrier release notes start -->
 
+## 16.8.1 (2023-01-18)
+
+### Bugfix
+
+- Fix StyleWrapper extenders, the classNames were not being re-fed into the pipe @sneridagh [#4275](https://github.com/plone/volto/issues/4275)
+
+
+## 16.8.0 (2023-01-18)
+
+### Feature
+
+- Autocomplete widget support for QueryStringWidget @sneridagh [#4177](https://github.com/plone/volto/issues/4177)
+- Enhance the StyleWrapper classNames generator by adding look around classNames depending on the sorounding previous/next blocks. @sneridagh [#4260](https://github.com/plone/volto/issues/4260)
+
+### Bugfix
+
+- Fix typo in 4260 @sneridagh [#4268](https://github.com/plone/volto/issues/4268)
+
+### Documentation
+
+- Update links to docs to use correct versions. [stevepiercy] [#4256](https://github.com/plone/volto/issues/4256)
+
+
+## 16.7.0 (2023-01-11)
+
+### Feature
+
+- Show project name and version in control panel @sneridagh [#4176](https://github.com/plone/volto/issues/4176)
+- Enhance Cypress content creation command @sneridagh [#4210](https://github.com/plone/volto/issues/4210)
+
+### Bugfix
+
+- Use Grid instead of Table in Diffview @erral
+- Improve matching in keyboard slash menu. [davisagli] [#4187](https://github.com/plone/volto/issues/4187)
+- (fix): sidebar is not displaying correctly when clicking on a lead image field. @dobri1408 [#4191](https://github.com/plone/volto/issues/4191)
+- Cleanup `package.json` scripts section @sneridagh [#4193](https://github.com/plone/volto/issues/4193)
+- Fixed condition to select without vocabulary @SaraBianchi [#4200](https://github.com/plone/volto/issues/4200)
+- fix iframe covering the page due to a react-error-overlay bug @reebalazs [#4242](https://github.com/plone/volto/issues/4242)
+
+### Documentation
+
+- Add description for different types of blocks. @MAX-786 [#3827](https://github.com/plone/volto/issues/3827)
+- Update makefile to use Vale for spell, grammar, and style checking. Fix linkcheckbroken to return the correct exit code for broken links. Fix broken links. [stevepiercy] [#4181](https://github.com/plone/volto/issues/4181)
+- Add todo regarding management of Plone's backend. Update versions. [stevepiercy] [#4198](https://github.com/plone/volto/issues/4198)
+- Pin Sphinx<5,>=3 due to sphinx-book-theme 0.3.3 requirement. [stevepiercy] [#4199](https://github.com/plone/volto/issues/4199)
+- Add message about the status of Volto and Plone 6 Installation docs, directing the reader to the main Plone 6 docs. [stevepiercy] [#4209](https://github.com/plone/volto/issues/4209)
+- Clean up Glossary and integrate with main docs. See https://github.com/plone/documentation/issues/1415. [stevepiercy] [#4211](https://github.com/plone/volto/issues/4211)
+- Add some instructions for dealing with untranspiled add-ons and a lazy loading example for functional components. [cguardia] [#4233](https://github.com/plone/volto/issues/4233)
+
+
 ## 16.6.0 (2022-12-23)
 
 ### Feature
