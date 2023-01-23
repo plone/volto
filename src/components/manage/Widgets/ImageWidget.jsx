@@ -54,7 +54,7 @@ const messages = defineMessages({
   },
 });
 
-const UnconnectedImageUploadInput = (props) => {
+const UnconnectedImageInput = (props) => {
   const {
     id,
     pathname,
@@ -219,14 +219,12 @@ const UnconnectedImageUploadInput = (props) => {
   );
 };
 
-const ImageUploadInput = withObjectBrowser(UnconnectedImageUploadInput);
-export default ImageUploadInput;
+export const ImageInput = withObjectBrowser(UnconnectedImageInput);
 
-// const ImageUploadWidget = (props) => (
-//   <FormFieldWrapper
-//     {...props}
-//     className="image-upload-widget"
-//   ></FormFieldWrapper>
-// );
-//
-// export default ImageUploadWidget;
+const ImageUploadWidget = (props) => (
+  <FormFieldWrapper {...props} className="image-upload-widget">
+    <ImageInput {...props} />
+  </FormFieldWrapper>
+);
+
+export default ImageUploadWidget;

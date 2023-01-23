@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 
 import { flattenToAppURL } from '@plone/volto/helpers';
-import { ImageWidget } from '@plone/volto/components';
+import { ImageInput } from '@plone/volto/components';
 
 const HeroImage = (props) => {
   const {
@@ -36,8 +36,7 @@ const HeroImage = (props) => {
       alt=""
     />
   ) : (
-    <ImageWidget
-      columns={1}
+    <ImageInput
       className="hero-image"
       selected={selected}
       pathname={pathname}
