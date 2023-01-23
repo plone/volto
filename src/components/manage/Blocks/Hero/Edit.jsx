@@ -14,29 +14,9 @@ import { withBlockExtensions } from '@plone/volto/helpers';
 import schemaHero from './schema.js';
 
 const messages = defineMessages({
-  title: {
-    id: 'Title',
-    defaultMessage: 'Title',
-  },
-  description: {
-    id: 'Description',
-    defaultMessage: 'Description',
-  },
   placeholder: {
     id: 'Upload a new image',
     defaultMessage: 'Upload a new image',
-  },
-  image: {
-    id: 'Image',
-    defaultMessage: 'Image',
-  },
-  browse: {
-    id: 'Browse',
-    defaultMessage: 'Browse',
-  },
-  uploading: {
-    id: 'Uploading image',
-    defaultMessage: 'Uploading image',
   },
 });
 
@@ -51,8 +31,6 @@ function EditHeroBlock(props) {
   const placeholder =
     data.placeholder || intl.formatMessage(messages.placeholder);
 
-  const HeroLayout = variation.view;
-
   return (
     <div
       className={cx(
@@ -66,7 +44,7 @@ function EditHeroBlock(props) {
         data.align,
       )}
     >
-      <HeroLayout {...props} placeholder={placeholder} isEditMode />
+      <variation.view {...props} placeholder={placeholder} isEditMode />
       <SidebarPortal selected={selected}>
         <BlockDataForm
           schema={schema}

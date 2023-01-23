@@ -1,6 +1,9 @@
 /**
  * A block-building component that implements a single input based on the Slate
  * Editor. It can render itself as a specified tag.
+ *
+ * Note: this component is only suited when it's the only editable control on
+ * that block area, such as the Title block.
  */
 import React from 'react';
 import PropTypes from 'prop-types';
