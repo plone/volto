@@ -58,9 +58,8 @@ const DefaultView = (props) => {
   React.useEffect(() => {
     content?.['@type'] &&
       !hasBlocksData(content) &&
-      dispatch(getSchema(content['@type'], location.pathname));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+      dispatch(getSchema(content['@type'], path));
+  }, [content, dispatch, path]);
 
   const Container =
     config.getComponent({ name: 'Container' }).component || SemanticContainer;

@@ -143,6 +143,9 @@ export DiffField from '@plone/volto/components/manage/Diff/DiffField';
 export DragDropList from '@plone/volto/components/manage/DragDropList/DragDropList';
 export InlineForm from '@plone/volto/components/manage/Form/InlineForm';
 export BlocksForm from '@plone/volto/components/manage/Blocks/Block/BlocksForm';
+export BlocksFormFocusTrap, {
+  useFormFocusTrap,
+} from '@plone/volto/components/manage/Blocks/Block/BlocksFormFocusTrap';
 export BlockDataForm from '@plone/volto/components/manage/Form/BlockDataForm';
 
 export FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
@@ -175,6 +178,9 @@ export ObjectListWidget from '@plone/volto/components/manage/Widgets/ObjectListW
 export TextLineWidget, {
   TextLineInput,
 } from '@plone/volto/components/manage/Widgets/TextLineWidget';
+export ImageWidget, {
+  ImageInput,
+} from '@plone/volto/components/manage/Widgets/ImageWidget';
 
 export EditDefaultBlock from '@plone/volto/components/manage/Blocks/Block/DefaultEdit';
 export EditDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/Edit';
@@ -203,8 +209,6 @@ export ViewHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/View';
 
 export ListingBlockBody from '@plone/volto/components/manage/Blocks/Listing/ListingBody';
 export ListingBlockData from '@plone/volto/components/manage/Blocks/Listing/ListingData';
-
-export Hero from '@plone/volto/components/manage/Blocks/Hero/Hero';
 
 export ImageSidebar from '@plone/volto/components/manage/Blocks/Image/ImageSidebar';
 export MapsSidebar from '@plone/volto/components/manage/Blocks/Maps/MapsSidebar';

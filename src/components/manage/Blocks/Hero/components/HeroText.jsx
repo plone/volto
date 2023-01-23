@@ -1,8 +1,12 @@
 import React from 'react';
-import { LinkMore } from '@plone/volto/components';
-import { defineMessages, useIntl } from 'react-intl';
 import cx from 'classnames';
-import TextLineEdit from '@plone/volto/components/manage/TextLineEdit/TextLineEdit';
+import { defineMessages, useIntl } from 'react-intl';
+
+import {
+  useFormFocusTrap,
+  TextLineInput,
+  LinkMore,
+} from '@plone/volto/components';
 
 const messages = defineMessages({
   title: {
@@ -18,7 +22,10 @@ const messages = defineMessages({
 const HeroText = (props) => {
   const { data, isEditMode, withBackgroundImage, properties } = props;
 
+  const fields = ['title', 'description'];
+
   const intl = useIntl();
+  const getFocusTrapProps = useFormFocusTrap(fields, props);
 
   return (
     <div
@@ -30,23 +37,23 @@ const HeroText = (props) => {
       <div className="hero-text">
         {isEditMode ? (
           <>
-            <TextLineEdit
-              {...props}
-              renderTag="h2"
-              renderClassName="title-editor"
+            <TextLineInput
+              id="title"
+              as="h2"
+              className="title-editor"
               fieldDataName="title"
               placeholder={intl.formatMessage(messages.title)}
               properties={properties}
-              data={data}
+              value={data.title}
+              {...getFocusTrapProps(0)}
             />
-            <TextLineEdit
-              {...props}
-              renderTag="p"
-              renderClassName="description-editor"
-              fieldDataName="description"
+            <TextLineInput
+              id="description"
+              as="p"
+              className="description-editor"
+              value={data.description}
               placeholder={intl.formatMessage(messages.description)}
-              properties={properties}
-              data={data}
+              {...getFocusTrapProps(1)}
             />
           </>
         ) : (
