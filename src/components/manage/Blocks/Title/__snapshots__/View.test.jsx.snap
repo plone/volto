@@ -3,7 +3,29 @@
 exports[`renders a view title component 1`] = `
 <h1
   className="documentFirstHeading"
+  id="a123"
 >
+  <a
+    aria-hidden="true"
+    className="anchor"
+    href="/#a123"
+    onClick={[Function]}
+    tabIndex={-1}
+    target={null}
+    title={null}
+  >
+    <svg
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": undefined,
+        }
+      }
+      height={null}
+      viewBox=""
+      width="2em"
+      xmlns=""
+    />
+  </a>
   My Title
 </h1>
 `;
