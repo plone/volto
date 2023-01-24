@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import config from '@plone/volto/registry';
 
 /**
  *
@@ -27,8 +28,13 @@ class ScrollToTop extends React.Component {
    * @memberof ScrollToTop
    */
   componentDidUpdate(prevProps) {
+    const noInitialBlocksFocus = // Do not scroll on /edit
+      config.blocks?.initialBlocksFocus === null
+        ? this.props.location?.pathname.slice(-5) !== '/edit'
+        : true;
     if (
       !this.props.location?.pathname.hash &&
+      noInitialBlocksFocus &&
       this.props.location?.pathname !== prevProps.location?.pathname
     ) {
       window.scrollTo(0, 0);
