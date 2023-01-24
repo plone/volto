@@ -153,12 +153,17 @@ export const serializeNodesToHtml = (nodes) =>
   renderToStaticMarkup(serializeNodes(nodes));
 
 export const renderLinkElement = (tagName) => {
-  function LinkElement({ attributes, children, mode = 'edit', ...rest }) {
+  function LinkElement({
+    attributes,
+    children,
+    mode = 'edit',
+    className = null,
+  }) {
     const Tag = tagName;
     const id = attributes.id || '';
 
     return (
-      <Tag {...attributes} {...rest}>
+      <Tag {...attributes} className={className}>
         {mode === 'view' && id && (
           <UniversalLink
             className="anchor"
