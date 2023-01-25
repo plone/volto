@@ -238,8 +238,9 @@ class Login extends Component {
                       <Grid.Column stretched width="8">
                         <Input
                           type="password"
-                          id="password"
+                          id="current-password"
                           name="password"
+                          autocomplete="current-password"
                           placeholder={this.props.intl.formatMessage(
                             messages.password,
                           )}

@@ -1,0 +1,8 @@
+Apply suggestion from browser for password field @lord2anil
+{
+<Input
+id="current-password"
+autocomplete="current-password"
+<Input/>
+}
+    
