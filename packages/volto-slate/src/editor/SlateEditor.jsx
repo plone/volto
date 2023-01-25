@@ -262,7 +262,11 @@ class SlateEditor extends Component {
           >
             {selected ? (
               <>
-                <InlineToolbar editor={editor} className={className} />
+                <InlineToolbar
+                  editor={editor}
+                  className={className}
+                  slateSettings={this.props.slateSettings}
+                />
                 {Object.keys(slateSettings.elementToolbarButtons).map(
                   (t, i) => {
                     return (
