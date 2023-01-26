@@ -195,7 +195,7 @@ class SelectWidget extends Component {
           styles={customSelectStyles}
           theme={selectTheme}
           components={{ DropdownIndicator, Option }}
-          value={value}
+          value={{ value: value?.value, label: indexes[value?.value]?.title }}
           onChange={(data) => {
             let dataValue = [];
             if (Array.isArray(data)) {
