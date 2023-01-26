@@ -1,4 +1,6 @@
 /* eslint no-console: 0 */
+import fs from 'fs';
+import fse from 'fs-extra';
 import { execSync } from 'child_process';
 import { develop } from 'mrs-developer';
 import chalk from 'chalk';
@@ -8,7 +10,6 @@ import {
   createLocalMrsDeveloperConfig,
   createMrsDeveloperConfig,
 } from './utils.js';
-import fse from 'fs-extra';
 
 export async function runGitGenerator({
   source,
@@ -135,44 +136,21 @@ export async function runLocalGenerator({
   });
 
   try {
-    fse.copySync(`${source}/src`, `${destination}/src/addons/${name}/src`, {
-      overwrite: false,
+    const filterFunc = (filenames) => {
+      const IGNORE_FILES = ['node_modules', '.git', destination];
+      return filenames.filter((item) => !IGNORE_FILES.includes(item));
+    };
+    const filenames = filterFunc(fs.readdirSync(source));
+
+    filenames.forEach((filename) => {
+      fse.copySync(
+        `${source}/${filename}`,
+        `${destination}/src/addons/${name}/${filename}`,
+        {
+          overwrite: false,
+        },
+      );
     });
-    fse.copySync(
-      `${source}/jest-addon.config.js`,
-      `${destination}/src/addons/${name}/jest-addon.config.js`,
-      {
-        overwrite: false,
-      },
-    );
-    fse.copySync(
-      `${source}/package.json`,
-      `${destination}/src/addons/${name}/package.json`,
-      {
-        overwrite: false,
-      },
-    );
-    fse.copySync(
-      `${source}/yarn.lock`,
-      `${destination}/src/addons/${name}/yarn.lock`,
-      {
-        overwrite: false,
-      },
-    );
-    fse.copySync(
-      `${source}/cypress`,
-      `${destination}/src/addons/${name}/cypress`,
-      {
-        overwrite: false,
-      },
-    );
-    fse.copySync(
-      `${source}/cypress.config.js`,
-      `${destination}/src/addons/${name}/cypress.config.js`,
-      {
-        overwrite: false,
-      },
-    );
   } catch (err) {
     console.error(err);
   }

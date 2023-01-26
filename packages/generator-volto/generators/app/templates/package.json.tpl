@@ -13,7 +13,7 @@
     "prettier": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,css,scss}'",
     "prettier:fix": "./node_modules/.bin/prettier --single-quote --write 'src/**/*.{js,jsx,ts,tsx,css,scss}'",
     "prettier:ci": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,css,scss}'",
-    "stylelint": "stylelint 'theme/**/*.{css,less}' 'src/**/*.{css,less}'",
+    "stylelint": "stylelint 'theme/**/*.{css,scss,less}' 'src/**/*.{css,scss,less}'",
     "stylelint:overrides": "stylelint 'theme/**/*.overrides' 'src/**/*.overrides'",
     "stylelint:fix": "yarn stylelint --fix && yarn stylelint:overrides --fix",
     "test": "razzle test --passWithNoTests",

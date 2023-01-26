@@ -39,7 +39,7 @@ Some of the main reasons that drove us to create `volto-slate`, instead of enhan
     We can override core functionality, something that is built in as pluggable, directly in Slate.
 -   Volto's Draft.js-based implementation depends on Redraft for its final output, which comes with its own bugs and issues.
     While it is nice to have view-mode components, this is something that `volto-slate` implements just as well.
--   Because Slate's internal storage uses a tree modeled on the DOM pattern, its final rendered output is very clean.
+-   Because Slate's internal storage uses a tree modeled on the {term}`DOM` pattern, its final rendered output is very clean.
     Note: the Slate editor value is a JSON object, similar to the Draft.js-based implementation.
 
 
