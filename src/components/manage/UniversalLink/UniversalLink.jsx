@@ -30,7 +30,10 @@ const UniversalLink = ({
 
   let url = href;
   if (!href && item) {
-    if (!item['@id']) {
+    if (item['@id'] === '') {
+      url = '/';
+    }
+    else if (!item['@id']) {
       // eslint-disable-next-line no-console
       console.error(
         'Invalid item passed to UniversalLink',
