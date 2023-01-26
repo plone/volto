@@ -13,6 +13,7 @@
 ### Bugfix
 
 - Fix StyleWrapper extenders, the classNames were not being re-fed into the pipe @sneridagh [#4275](https://github.com/plone/volto/issues/4275)
+- Fix bug where label of search facet wasn't translated when the content object is being translated @robgietema
 
 
 ## 16.8.0 (2023-01-18)
