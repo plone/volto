@@ -174,7 +174,7 @@ function poToJson({ registry, addonMode }) {
 
     // Write the corresponding language JSON, cover the special EN use case for including
     // defaults if not present
-    items = [...items].filter((item) => item.msgstr[0] !== ''); // Remove entries with msgstr = “”
+    items = items.filter((item) => item.msgstr[0] !== ''); // Remove entries with msgstr = “”
     fs.writeFileSync(
       `locales/${lang}.json`,
       JSON.stringify(

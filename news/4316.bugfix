@@ -1,1 +1,1 @@
-Added filter to function poToJson() to remove entries with empty msgstr @danalvrz
+Fixed i18n script to avoid overwriting translations with an empty msgstr @danalvrz
