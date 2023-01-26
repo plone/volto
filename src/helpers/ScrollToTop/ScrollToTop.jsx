@@ -29,7 +29,11 @@ class ScrollToTop extends React.Component {
   componentDidUpdate(prevProps) {
     const { location } = this.props;
     const isHash = location?.hash || location?.pathname.hash;
-    if (!isHash && location?.pathname !== prevProps.location?.pathname) {
+    if (
+      __SERVER__ &&
+      !isHash &&
+      location?.pathname !== prevProps.location?.pathname
+    ) {
       window.scrollTo(0, 0);
     }
   }
