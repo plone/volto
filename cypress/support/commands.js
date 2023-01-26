@@ -806,6 +806,12 @@ function createHtmlPasteEvent(htmlContent) {
   );
 }
 
+Cypress.Commands.add('addNewBlock', (blockName, createNewSlate = false) => {
+  let block;
+  block = cy.getSlate(createNewSlate).type(`/${blockName}{enter}`);
+  return block;
+});
+
 Cypress.Commands.add('navigate', (route = '') => {
   return cy.window().its('appHistory').invoke('push', route);
 });

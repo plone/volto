@@ -141,7 +141,7 @@ export async function runLocalGenerator({
       return filenames.filter((item) => !IGNORE_FILES.includes(item));
     };
     const filenames = filterFunc(fs.readdirSync(source));
-    console.log(filenames);
+
     filenames.forEach((filename) => {
       fse.copySync(
         `${source}/${filename}`,
