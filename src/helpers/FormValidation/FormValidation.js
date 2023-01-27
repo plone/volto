@@ -40,7 +40,9 @@ const isMinPropertyValid = (value, valueToCompare, maxCriterion, intlFunc) => {
 const widgetValidation = {
   email: {
     isValidEmail: (emailValue, emailObj, intlFunc) => {
-      const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+      // Email Regex taken from from WHATWG living standard:
+      // https://html.spec.whatwg.org/multipage/input.html#e-mail-state-(type=email)
+      const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
       const isValid = emailRegex.test(emailValue);
       return !isValid ? intlFunc(messages.isValidEmail) : null;
     },
@@ -208,10 +210,8 @@ const validateRequiredFields = (
       !schema.properties[requiredField].readonly &&
       isEmpty
     ) {
-      const requiredFieldName =
-        schema.properties[requiredField].title || requiredField;
-      errors[requiredFieldName] = [];
-      errors[requiredFieldName].push(formatMessage(messages.required));
+      errors[requiredField] = [];
+      errors[requiredField].push(formatMessage(messages.required));
     }
   });
 

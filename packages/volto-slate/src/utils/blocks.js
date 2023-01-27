@@ -1,5 +1,5 @@
 /* eslint no-console: ["error", { allow: ["error", "warn"] }] */
-import { Editor, Transforms } from 'slate'; // Range, RangeRef
+import { Editor, Transforms, Text } from 'slate'; // Range, RangeRef
 import config from '@plone/volto/registry';
 import {
   getBlocksFieldname,
@@ -110,6 +110,13 @@ export function createDefaultBlock(children) {
   };
 }
 
+export function createBlock(type, children) {
+  return {
+    type,
+    children: children || [{ text: '' }],
+  };
+}
+
 export function createEmptyParagraph() {
   // TODO: rename to createEmptyBlock
   return {
@@ -190,13 +197,44 @@ export const toggleInlineFormat = (editor, format) => {
     return;
   }
 
+  const exclusiveElements = config.settings.slate.exclusiveElements;
+  const matchedElements = exclusiveTags(exclusiveElements, format);
+  let alreadyOneIsActive =
+    !!matchedElements &&
+    (matchedElements.indexOf(format) === 0
+      ? isBlockActive(editor, matchedElements[1])
+      : isBlockActive(editor, matchedElements[0]));
+
+  if (alreadyOneIsActive) {
+    Transforms.unwrapNodes(editor, {
+      match: (n) => matchedElements.includes(n.type),
+      split: false,
+    });
+
+    const block = { type: format, children: [] };
+    Transforms.wrapNodes(editor, block, { split: true });
+    return;
+  }
+
   // `children` property is added automatically as an empty array then
   // normalized
   const block = { type: defaultFormat };
   Transforms.wrapNodes(editor, block, { split: true });
 };
 
-export const toggleBlock = (editor, format) => {
+const exclusiveTags = (exclusiveElements, format) => {
+  let elements = null;
+  for (const item of exclusiveElements) {
+    if (item.includes(format)) {
+      elements = item;
+      break;
+    }
+  }
+
+  return elements;
+};
+
+export const toggleBlock = (editor, format, allowedChildren) => {
   // We have 6 boolean variables which need to be accounted for.
   // See https://docs.google.com/spreadsheets/d/1mVeMuqSTMABV2BhoHPrPAFjn7zUksbNgZ9AQK_dcd3U/edit?usp=sharing
   const { slate } = config.settings;
@@ -205,7 +243,6 @@ export const toggleBlock = (editor, format) => {
   const isListItem = isBlockActive(editor, slate.listItemType);
   const isActive = isBlockActive(editor, format);
   const wantsList = listTypes.includes(format);
-  // console.log({ isListItem, isActive, wantsList, format });
 
   if (isListItem && !wantsList) {
     toggleFormatAsListItem(editor, format);
@@ -214,9 +251,9 @@ export const toggleBlock = (editor, format) => {
   } else if (!isListItem && wantsList) {
     changeBlockToList(editor, format);
   } else if (!isListItem && !wantsList) {
-    toggleFormat(editor, format);
+    toggleFormat(editor, format, allowedChildren);
   } else if (isListItem && wantsList && isActive) {
-    toggleFormatAsListItem(editor, slate.defaultBlockType);
+    clearFormatting(editor);
   } else {
     console.warn('toggleBlock case not covered, please examine:', {
       wantsList,
@@ -269,13 +306,24 @@ export const changeBlockToList = (editor, format) => {
   Transforms.wrapNodes(editor, block);
 };
 
-export const toggleFormat = (editor, format) => {
+export const toggleFormat = (editor, format, allowedChildren) => {
   const { slate } = config.settings;
   const isActive = isBlockActive(editor, format);
   const type = isActive ? slate.defaultBlockType : format;
   Transforms.setNodes(editor, {
     type,
   });
+  allowedChildren?.length &&
+    Transforms.unwrapNodes(editor, {
+      mode: 'all',
+      at: [0],
+      match: (n, path) => {
+        const isMatch =
+          path.length > 1 && // we don't deal with the parent nodes
+          !(Text.isText(n) || allowedChildren.includes(n?.type));
+        return isMatch;
+      },
+    });
 };
 
 /**
@@ -305,4 +353,16 @@ export const getAllBlocks = (properties, blocks) => {
     });
   }
   return blocks;
+};
+
+export const clearFormatting = (editor) => {
+  const { slate } = config.settings;
+  Transforms.setNodes(editor, {
+    type: slate.defaultBlockType,
+  });
+  Transforms.unwrapNodes(editor, {
+    match: (n) => n.type && n.type !== slate.defaultBlockType,
+    mode: 'all',
+    split: false,
+  });
 };

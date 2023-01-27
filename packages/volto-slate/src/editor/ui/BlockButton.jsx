@@ -4,7 +4,7 @@ import { isBlockActive, toggleBlock } from '@plone/volto-slate/utils';
 
 import ToolbarButton from './ToolbarButton';
 
-const BlockButton = ({ format, icon, ...props }) => {
+const BlockButton = ({ format, icon, allowedChildren, ...props }) => {
   const editor = useSlate();
 
   const isActive = isBlockActive(editor, format);
@@ -12,10 +12,10 @@ const BlockButton = ({ format, icon, ...props }) => {
   const handleMouseDown = React.useCallback(
     (event) => {
       event.preventDefault();
-      toggleBlock(editor, format);
+      toggleBlock(editor, format, allowedChildren);
       // console.log('toggled', format, editor);
     },
-    [editor, format], // , isActive
+    [editor, format, allowedChildren], // , isActive
   );
 
   return (

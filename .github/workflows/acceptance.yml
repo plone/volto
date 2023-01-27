@@ -9,31 +9,20 @@ jobs:
       matrix:
         node-version: [14.x, 16.x]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-
-      # node cache
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: 'yarn'
 
       ## node install
-      - run: yarn --frozen-lockfile
+      - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -45,9 +34,7 @@ jobs:
           record: true
           parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
-          # headless: true
           group: Core ${{ matrix.node-version }}
-          config: integrationFolder=cypress/tests
           spec: cypress/tests/core/basic/**/*.js
           start: |
             make start-test-acceptance-server
@@ -75,31 +62,20 @@ jobs:
       matrix:
         node-version: [14.x, 16.x]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-
-      # node cache
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: 'yarn'
 
       ## node install
-      - run: yarn --frozen-lockfile
+      - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -111,9 +87,7 @@ jobs:
           record: true
           parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
-          # headless: true
           group: Core Blocks ${{ matrix.node-version }}
-          config: integrationFolder=cypress/tests
           spec: cypress/tests/core/blocks/**/*.js
           start: |
             make start-test-acceptance-server
@@ -141,31 +115,20 @@ jobs:
       matrix:
         node-version: [14.x, 16.x]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-
-      # node cache
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: 'yarn'
 
       ## node install
       - run: yarn --frozen-lockfile
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -177,9 +140,7 @@ jobs:
           record: true
           parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
-          # headless: true
           group: Core Volto Slate ${{ matrix.node-version }}
-          config: integrationFolder=cypress/tests
           spec: cypress/tests/core/volto-slate/**/*.js
           start: |
             make start-test-acceptance-server
@@ -199,38 +160,27 @@ jobs:
           name: cypress-videos
           path: cypress/videos
 
-  core6:
+  core5:
     runs-on: ubuntu-latest
-    name: Core Basic - Plone 6
+    name: Core Basic - Plone 5
     strategy:
       matrix:
         node-version: [16.x]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-
-      # node cache
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: 'yarn'
 
       ## node install
-      - run: yarn --frozen-lockfile
+      - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -242,12 +192,10 @@ jobs:
           record: true
           parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
-          # headless: true
-          group: Core Basic - Plone 6
-          config: integrationFolder=cypress/tests
+          group: Core Basic - Plone 5
           spec: cypress/tests/core/basic/**/*.js
           start: |
-            make start-test-acceptance-server DOCKER_IMAGE=plone/plone-backend:6.0.0a4
+            make start-test-acceptance-server-5
             make start-test-acceptance-frontend
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
 
@@ -273,30 +221,16 @@ jobs:
         node-version: [16.x]
         python-version: [3.7]
     steps:
-      - uses: actions/checkout@v2
-      - name: debug
-        working-directory: api
-        run: ls -al
+      - uses: actions/checkout@v3
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
 
-      # node cache
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      - run: yarn --frozen-lockfile
+      - run: yarn --immutable
 
       # python setup (temporary, while p.volto coresandbox changes are in a PR)
       # - name: Set up Python ${{ matrix.python-version }}
@@ -323,7 +257,7 @@ jobs:
       #     CI: true
 
       - name: Cypress Coresandbox Acceptance tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -335,9 +269,7 @@ jobs:
           record: true
           parallel: true
           browser: chrome
-          # headless: true
           group: Coresandbox
-          config: integrationFolder=cypress/tests
           spec: cypress/tests/coresandbox/**/*.js
           start: |
             make start-test-acceptance-server-coresandbox
@@ -365,31 +297,20 @@ jobs:
       matrix:
         node-version: [16.x]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-
-      # node cache
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: 'yarn'
 
       # node install
-      - run: yarn --frozen-lockfile
+      - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         env:
           BABEL_ENV: production
           CYPRESS_API: guillotina
@@ -402,9 +323,7 @@ jobs:
           record: true
           parallel: true
           browser: chrome
-          headless: true
           group: Guillotina
-          config: integrationFolder=cypress/tests
           spec: cypress/tests/guillotina/**/*.js
           start: |
             make start-test-acceptance-server-guillotina
@@ -432,34 +351,20 @@ jobs:
       matrix:
         node-version: [16.x]
     steps:
-      - uses: actions/checkout@v2
-      - name: debug
-        working-directory: api
-        run: ls -al
+      - uses: actions/checkout@v3
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-
-      # node cache
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: 'yarn'
 
       # node install
-      - run: yarn --frozen-lockfile
+      - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -471,9 +376,7 @@ jobs:
           record: true
           parallel: true
           browser: chrome
-          headless: true
           group: Multilingual
-          config: integrationFolder=cypress/tests
           spec: cypress/tests/multilingual/**/*.js
           start: |
             make start-test-acceptance-server-multilingual
@@ -502,28 +405,17 @@ jobs:
         node-version: [16.x]
         # python-version: [3.7]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-
-      # node cache
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: 'yarn'
 
       # node install
-      - run: yarn --frozen-lockfile
+      - run: yarn --immutable
 
       # # python setup (temporary, while p.a.iterate changes are in a PR)
       # - name: Set up Python ${{ matrix.python-version }}
@@ -550,7 +442,7 @@ jobs:
       #     CI: true
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -562,9 +454,7 @@ jobs:
           record: true
           parallel: true
           browser: chrome
-          headless: true
           group: Working Copy
-          config: integrationFolder=cypress/tests
           spec: cypress/tests/workingCopy/**/*.js
           start: |
             make start-test-acceptance-server-workingcopy
@@ -596,29 +486,18 @@ jobs:
       project-directory: ./my-volto-app
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-
-      # node cache
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: 'yarn'
 
       # Build main Volto environment
       - name: Build main Volto environment
-        run: yarn --frozen-lockfile
+        run: yarn --immutable
 
       # Generator own tests
       - name: Generator tests
@@ -632,22 +511,26 @@ jobs:
         working-directory: ${{env.generator-directory}}
 
       # create a project
-      - run: yo @plone/volto my-volto-app --description "test volto project" --no-interactive
+      - run: yo @plone/volto my-volto-app --description "test volto project" --volto . --skip-install --no-interactive
 
       - name: Install yalc
         run: npm -g install yalc
 
       - name: Install a yalc'ed version of the current Volto in the project - publish
-        run: yalc publish
+        run: |
+          yalc publish
+          yalc publish packages/scripts
       - name: Install a yalc'ed version of the current Volto in the project - add
-        run: yalc add @plone/volto --no-pure
+        run: |
+          yalc add @plone/volto --no-pure
+          yalc add @plone/scripts --no-pure
         working-directory: ${{env.project-directory}}
       - name: Install a yalc'ed version of the current Volto in the project - install
-        run: yarn --force
+        run: yarn config set -H enableImmutableInstalls false && yarn
         working-directory: ${{env.project-directory}}
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -659,9 +542,7 @@ jobs:
           record: true
           parallel: true
           browser: chrome
-          headless: true
           group: Project Generator
-          config: integrationFolder=cypress/tests
           spec: cypress/tests/minimal/**/*.js
           start: |
             make start-test-acceptance-server
@@ -695,31 +576,20 @@ jobs:
       matrix:
         node-version: [16.x]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-
-      # node cache
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: 'yarn'
 
       # node install
-      - run: yarn --frozen-lockfile
+      - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -731,14 +601,14 @@ jobs:
           record: true
           parallel: true
           browser: chrome
-          headless: true
           group: Seamless
-          config: integrationFolder=cypress/tests
-          spec: cypress/tests/minimal/**/*.js
+          spec: cypress/tests/core/basic/**/*.js
+          config: baseUrl=http://localhost
           start: |
             make start-test-acceptance-server
             make start-test-acceptance-frontend-seamless
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+            make start-test-acceptance-webserver-seamless
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000 http://localhost'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1

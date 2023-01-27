@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const fs = require('fs');
 const path = require('path');
 const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
 const fileLoaderFinder = makeLoaderFinder('file-loader');
@@ -29,6 +30,30 @@ const SVGLOADER = {
   ],
 };
 
+const defaultRazzleOptions = {
+  verbose: false,
+  debug: {},
+  buildType: 'iso',
+  cssPrefix: 'static/css',
+  jsPrefix: 'static/js',
+  enableSourceMaps: true,
+  enableReactRefresh: true,
+  enableTargetBabelrc: false,
+  enableBabelCache: true,
+  forceRuntimeEnvVars: [],
+  mediaPrefix: 'static/media',
+  staticCssInDev: false,
+  emitOnErrors: false,
+  disableWebpackbar: false,
+  browserslist: [
+    '>1%',
+    'last 4 versions',
+    'Firefox ESR',
+    'not ie 11',
+    'not dead',
+  ],
+};
+
 module.exports = {
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
@@ -52,6 +77,10 @@ module.exports = {
         plugins: razzleConfig.plugins,
       },
       webpack,
+      false,
+      undefined,
+      [],
+      defaultRazzleOptions,
     );
     const AddonConfigurationRegistry = require('@plone/volto/addon-registry');
 
@@ -85,7 +114,16 @@ module.exports = {
         alias: { ...config.resolve.alias, ...baseConfig.resolve.alias },
       },
     };
-    resultConfig.module.rules[1].exclude = /node_modules\/(?!(@plone\/volto)\/)/;
+
+    // Addons have to be loaded with babel
+    const addonPaths = registry.addonNames.map((addon) =>
+      fs.realpathSync(registry.packages[addon].modulePath),
+    );
+    resultConfig.module.rules[1].exclude = (input) =>
+      // exclude every input from node_modules except from @plone/volto
+      /node_modules\/(?!(@plone\/volto)\/)/.test(input) &&
+      // If input is in an addon, DON'T exclude it
+      !addonPaths.some((p) => input.includes(p));
 
     const addonExtenders = registry.getAddonExtenders().map((m) => require(m));
 

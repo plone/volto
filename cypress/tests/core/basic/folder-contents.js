@@ -6,7 +6,7 @@ describe('Folder Contents Tests', () => {
     cy.visit('/');
     cy.autologin();
     cy.createContent({
-      contentType: 'Folder',
+      contentType: 'Document',
       contentId: 'my-folder',
       contentTitle: 'My Folder',
     });

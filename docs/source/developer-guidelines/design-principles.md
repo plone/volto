@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Volto design principles"
-  "property=og:description": "Volto design principles"
-  "property=og:title": "Design principles"
-  "keywords": "Volto, Plone, frontend, React, design principles"
+myst:
+  html_meta:
+    "description": "Volto design principles"
+    "property=og:description": "Volto design principles"
+    "property=og:title": "Design principles"
+    "keywords": "Volto, Plone, frontend, React, design principles"
 ---
 
 # Design principles
@@ -63,8 +64,7 @@ In Volto we have a blank page in front of us. Let's work to keep it clean and sh
 
 ## Customization and extensibility
 
-Volto should ensure customization every core component via "component shadowing",
-whenever it is possible.
+Volto should ensure customization of every core component via {term}`component shadowing`, whenever it is possible.
 
 Extensibility should also be a requirement on Volto core and in every new added feature,
 whenever it applies. Volto have to ensure that it can be "pluggable" and provide enough

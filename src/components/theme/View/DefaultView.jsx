@@ -7,7 +7,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 
-import { Container, Segment, Grid, Label } from 'semantic-ui-react';
+import {
+  Container as SemanticContainer,
+  Segment,
+  Grid,
+  Label,
+} from 'semantic-ui-react';
 import config from '@plone/volto/registry';
 import { getSchema } from '@plone/volto/actions';
 import { getWidget } from '@plone/volto/helpers/Widget/utils';
@@ -15,6 +20,8 @@ import RenderBlocks from './RenderBlocks';
 
 import { hasBlocksData, getBaseUrl } from '@plone/volto/helpers';
 import { useDispatch, useSelector } from 'react-redux';
+
+import { isEqual } from 'lodash';
 
 /**
  * Component to display the default view.
@@ -27,7 +34,6 @@ const DefaultView = (props) => {
   const path = getBaseUrl(location?.pathname || '');
   const dispatch = useDispatch();
   const { views } = config.widgets;
-  const contentLoaded = useSelector((state) => state.content.get.loaded);
   const contentSchema = useSelector((state) => state.schema?.schema);
   const fieldsetsToExclude = [
     'categorization',
@@ -39,6 +45,16 @@ const DefaultView = (props) => {
     (fs) => !fieldsetsToExclude.includes(fs.id),
   );
 
+  // TL;DR: There is a flash of the non block-based view because of the reset
+  // of the content on route change. Subscribing to the content change at this
+  // level has nasty implications, so we can't watch the Redux state for loaded
+  // content flag here (because it forces an additional component update)
+  // Instead, we can watch if the content is "empty", but this has a drawback
+  // since the locking mechanism inserts a `lock` key before the content is there.
+  // So "empty" means `content` is present, but only with a `lock` key, thus the next
+  // ugly condition comes to life
+  const contentLoaded = content && !isEqual(Object.keys(content), ['lock']);
+
   React.useEffect(() => {
     content?.['@type'] &&
       !hasBlocksData(content) &&
@@ -46,12 +62,15 @@ const DefaultView = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const Container =
+    config.getComponent({ name: 'Container' }).component || SemanticContainer;
+
   // If the content is not yet loaded, then do not show anything
   return contentLoaded ? (
     hasBlocksData(content) ? (
-      <div id="page-document" className="ui container">
+      <Container id="page-document">
         <RenderBlocks {...props} path={path} />
-      </div>
+      </Container>
     ) : (
       <Container id="page-document">
         {fieldsets?.map((fs) => {

@@ -17,7 +17,7 @@ describe('Search Block Tests', () => {
     });
 
     cy.createContent({
-      contentType: 'Folder',
+      contentType: 'Document',
       contentId: 'my-folder',
       contentTitle: 'My Folder',
       path: '/',
@@ -92,7 +92,7 @@ describe('Search Block Tests', () => {
     cy.get('.react-select__option').contains('Effective date').click();
     cy.get('#field-title-0-facets-1').type('Effective date');
     cy.get('#field-type-2-facets-1').click();
-    cy.get('.react-select__option').contains('Date range').click();
+    cy.get('.react-select__option').contains('Date Range').click();
 
     // Save the page
     cy.get('#toolbar-save > .icon').click();

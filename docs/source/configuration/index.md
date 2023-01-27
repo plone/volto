@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Main configuration file"
-  "property=og:description": "Main configuration file"
-  "property=og:title": "Configuration"
-  "keywords": "Volto, Plone, frontend, React, configuration"
+myst:
+  html_meta:
+    "description": "Main configuration file"
+    "property=og:description": "Main configuration file"
+    "property=og:title": "Configuration"
+    "keywords": "Volto, Plone, frontend, React, configuration"
 ---
 
 # Configuration
@@ -13,7 +14,9 @@ html_meta:
 
 how-to
 settings-reference
+experimental
 zero-config-builds
+component-registry
 internalproxy
 backend
 volto-config-js

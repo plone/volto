@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "How to configure custom blocks"
-  "property=og:description": "How to configure custom blocks"
-  "property=og:title": "Blocks settings"
-  "keywords": "Volto, Plone, frontend, React, Block settings"
+myst:
+  html_meta:
+    "description": "How to configure custom blocks"
+    "property=og:description": "How to configure custom blocks"
+    "property=og:title": "Blocks settings"
+    "keywords": "Volto, Plone, frontend, React, Block settings"
 ---
 
 # Blocks settings
@@ -43,10 +44,6 @@ const customBlocks = {
     mostUsed: true, // A meta group `most used`, appearing at the top of the chooser
     blockHasOwnFocusManagement: false, // Set this to true if the block manages its own focus
     sidebarTab: 0, // The sidebar tab you want to be selected when selecting the block
-    security: {
-      addPermission: [], // Future proof (not implemented yet) add user permission role(s)
-      view: [], // Future proof (not implemented yet) view user role(s)
-    },
     blockHasValue: (data) => {
       // Returns true if the provided block data represents a value for the current block.
       // Required for alternate default block types implementations.
@@ -179,6 +176,19 @@ const initialBlocks = {
     Document: ['leadimage', 'title', 'text', 'listing' ]
 };
 ```
+
+## Listing block configuration
+
+`allowed_headline_tags`
+: Allows you to customize the choices of the "Headline Tag" types shown in the block settings by default. It has the following syntax (a list of lists, where a list item consists of `['token', 'display_name']`):
+
+  ```js
+  allowed_headline_tags: [['h2', 'h2'], ['h3', 'h3']]
+  ```
+
+  If not specified, an internal hardcoded default is the above shown example.
+
+  If the choice is limited to one item, then the setting hides itself from the `listing` block settings list.
 
 ## Search block configuration
 

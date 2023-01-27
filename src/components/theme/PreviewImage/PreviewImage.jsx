@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { flattenToAppURL } from '@plone/volto/helpers';
+import config from '@plone/volto/registry';
 
 import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/default-image.svg';
 
@@ -11,14 +12,18 @@ import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/defau
  */
 function PreviewImage(props) {
   const { item, size = 'preview', alt, ...rest } = props;
+
   if (item.image_field) {
-    const { width, height } =
-      item.image_scales?.[item.image_field]?.[0]?.scales[size] ?? {};
+    const { width, height, download } =
+      item.image_scales?.[item.image_field]?.[0]?.scales[size] ??
+      item.image_scales?.[item.image_field]?.[0] ??
+      {};
 
     return (
       <img
         src={flattenToAppURL(
-          `${item['@id']}/@@images/${item.image_field}/${size}?modified=${item.modified}`,
+          download ??
+            `${item['@id']}/@@images/${item.image_field}/${size}?modified=${item.modified}`,
         )}
         alt={alt ?? item.title}
         {...rest}
@@ -29,7 +34,12 @@ function PreviewImage(props) {
   } else {
     return (
       <img
-        src={DefaultImageSVG}
+        src={
+          config.getComponent({
+            name: 'DefaultImage',
+            dependencies: ['listing', 'summary'],
+          }).component || DefaultImageSVG
+        }
         alt={alt ?? item.title}
         {...rest}
         width="400"

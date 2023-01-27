@@ -1,7 +1,7 @@
 describe('Listing Block Tests', () => {
   beforeEach(() => {
     // Wait a bit to previous teardown to complete correctly because Heisenbug in this point
-    cy.wait(2000);
+    // cy.wait(2000);
     // given a logged in editor and a page in edit mode
     cy.autologin();
     cy.createContent({
@@ -9,21 +9,23 @@ describe('Listing Block Tests', () => {
       contentId: 'my-page',
       contentTitle: 'My Page',
     });
-    cy.removeContent({ path: 'front-page' });
     cy.removeContent({ path: 'news' });
     cy.removeContent({ path: 'events' });
     cy.removeContent({ path: 'Members' });
 
-    cy.visit('/my-page');
+    cy.visit('/');
     cy.waitForResourceToLoad('@navigation');
     cy.waitForResourceToLoad('@breadcrumbs');
     cy.waitForResourceToLoad('@actions');
     cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('my-page');
-    cy.navigate('/my-page/edit');
+    cy.waitForResourceToLoad('');
   });
 
   it('Add Listing block', () => {
+    cy.intercept('PATCH', '/**/my-page').as('save');
+    cy.intercept('GET', '/**/my-page').as('content');
+    cy.intercept('GET', '/**/@types/Document').as('schema');
+
     // Given One Document My Page Test and One News Item MY News and One Folder My Folder
     cy.createContent({
       contentType: 'Document',
@@ -38,19 +40,17 @@ describe('Listing Block Tests', () => {
       path: 'my-page',
     });
     cy.createContent({
-      contentType: 'Folder',
+      contentType: 'Document',
       contentId: 'my-folder',
       contentTitle: 'My Folder',
       path: 'my-page',
     });
 
-    cy.visit('/my-page');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('my-page');
+    cy.navigate('/my-page');
+    cy.wait('@content');
+
     cy.navigate('/my-page/edit');
+    cy.wait('@schema');
 
     cy.clearSlateTitle().type('My title');
 
@@ -67,6 +67,8 @@ describe('Listing Block Tests', () => {
 
     //save
     cy.get('#toolbar-save').click();
+    cy.wait('@save');
+    cy.wait('@content');
 
     //test after save
     cy.get('#page-document .listing-body:first-of-type').contains(
@@ -79,7 +81,200 @@ describe('Listing Block Tests', () => {
     );
   });
 
+  it('Add Listing block - containing items', () => {
+    cy.intercept('PATCH', '/**/my-page').as('save');
+    cy.intercept('GET', '/**/my-page').as('content');
+    cy.intercept('GET', '/**/@types/Document').as('schema');
+
+    // Given One Document My Page Test and One News Item MY News and One Folder My Folder
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'my-page-test',
+      contentTitle: 'My Page Test',
+      path: 'my-page',
+    });
+    cy.createContent({
+      contentType: 'News Item',
+      contentId: 'my-news',
+      contentTitle: 'My News',
+      path: 'my-page',
+    });
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'my-folder',
+      contentTitle: 'My Folder',
+      path: 'my-page',
+    });
+
+    cy.navigate('/my-page');
+    cy.wait('@content');
+
+    cy.navigate('/my-page/edit');
+    cy.wait('@schema');
+
+    cy.clearSlateTitle().type('My title');
+
+    //add listing block
+    cy.getSlate().click();
+    cy.get('button.block-add-button').click();
+    cy.get('.blocks-chooser .title').contains('Common').click();
+    cy.get('.blocks-chooser .common').contains('Listing').click();
+
+    //verify before save
+    cy.get(`.block.listing .listing-body:first-of-type`).contains(
+      'My Page Test',
+    );
+    cy.get('.items-preview').contains('Contained items');
+
+    //save
+    cy.get('#toolbar-save').click();
+    cy.wait('@save');
+    cy.wait('@content');
+
+    //test after save
+    cy.get('#page-document .listing-body:first-of-type').contains(
+      'My Page Test',
+    );
+  });
+
+  it.only('Add Listing block - results preview', () => {
+    cy.intercept('PATCH', '/**/my-page').as('save');
+    cy.intercept('GET', '/**/my-page').as('content');
+    cy.intercept('GET', '/**/@types/Document').as('schema');
+
+    // Given One Document My Page Test and One News Item MY News and One Folder My Folder
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'my-page-test',
+      contentTitle: 'My Page Test',
+      path: 'my-page',
+    });
+    cy.createContent({
+      contentType: 'News Item',
+      contentId: 'my-news',
+      contentTitle: 'My News',
+      path: 'my-page',
+    });
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'my-folder',
+      contentTitle: 'My Folder',
+      path: 'my-page',
+    });
+
+    cy.navigate('/my-page');
+    cy.wait('@content');
+
+    cy.navigate('/my-page/edit');
+    cy.wait('@schema');
+
+    cy.clearSlateTitle().type('My title');
+
+    //add listing block
+    cy.getSlate().click();
+    cy.get('button.block-add-button').click();
+    cy.get('.blocks-chooser .title').contains('Common').click();
+    cy.get('.blocks-chooser .common').contains('Listing').click();
+
+    cy.get('.sidebar-container .tabs-wrapper .menu .item')
+      .contains('Block')
+      .click();
+    cy.get('.querystring-widget .fields').contains('Add criteria').click();
+    cy.get(
+      '.querystring-widget .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
+    )
+      .contains('Type')
+      .click();
+
+    //insert Page
+    cy.get('.querystring-widget .fields:first-of-type > .field').click();
+    cy.get(
+      '.querystring-widget .fields:first-of-type > .field .react-select__menu .react-select__option',
+    )
+      .contains('Page')
+      .click();
+
+    //verify before save
+    cy.get(`.block.listing .listing-body:first-of-type`).contains(
+      'My Page Test',
+    );
+    cy.get('.items-preview').contains('Results preview');
+
+    //save
+    cy.get('#toolbar-save').click();
+    cy.wait('@save');
+    cy.wait('@content');
+
+    //test after save
+    cy.get('#page-document .listing-body:first-of-type').contains(
+      'My Page Test',
+    );
+    cy.get('#page-document .listing-item:first-of-type a').should(
+      'have.attr',
+      'href',
+      '/my-page/my-page-test',
+    );
+  });
+
+  it('Add Listing block - with a headline', () => {
+    cy.intercept('PATCH', '/**/my-page').as('save');
+    cy.intercept('GET', '/**/my-page').as('content');
+    cy.intercept('GET', '/**/@types/Document').as('schema');
+
+    // Given One Document My Page Test and One News Item MY News and One Folder My Folder
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'my-page-test',
+      contentTitle: 'My Page Test',
+      path: 'my-page',
+    });
+    cy.createContent({
+      contentType: 'News Item',
+      contentId: 'my-news',
+      contentTitle: 'My News',
+      path: 'my-page',
+    });
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'my-folder',
+      contentTitle: 'My Folder',
+      path: 'my-page',
+    });
+
+    cy.navigate('/my-page');
+    cy.wait('@content');
+
+    cy.navigate('/my-page/edit');
+    cy.wait('@schema');
+
+    cy.clearSlateTitle().type('My title');
+
+    //add listing block
+    cy.getSlate().click();
+    cy.get('button.block-add-button').click();
+    cy.get('.blocks-chooser .title').contains('Common').click();
+    cy.get('.blocks-chooser .common').contains('Listing').click();
+
+    //verify before save
+    cy.get(`.block.listing .listing-body:first-of-type`).contains(
+      'My Page Test',
+    );
+    cy.get('#field-headline').type('This is a headline');
+
+    //save
+    cy.get('#toolbar-save').click();
+    cy.wait('@save');
+    cy.wait('@content');
+
+    //test after save
+    cy.get('#page-document h2.headline').contains('This is a headline');
+  });
+
   it('Add Listing Block: sort by effective date', () => {
+    cy.intercept('PATCH', '/**/my-page').as('save');
+    cy.intercept('GET', '/**/my-page').as('content');
+    cy.intercept('GET', '/**/@types/Document').as('schema');
+
     // given a page with two pages
     cy.createContent({
       contentType: 'Document',
@@ -104,13 +299,11 @@ describe('Listing Block Tests', () => {
       effective: '2019-01-01T08:00:00',
     });
 
-    cy.visit('/my-page');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('my-page');
+    cy.navigate('/my-page');
+    cy.wait('@content');
+
     cy.navigate('/my-page/edit');
+    cy.wait('@schema');
 
     cy.clearSlateTitle().type('My title');
 
@@ -146,6 +339,8 @@ describe('Listing Block Tests', () => {
 
     //save
     cy.get('#toolbar-save').click();
+    cy.wait('@save');
+    cy.wait('@content');
 
     //test after save
     cy.get('#page-document .listing-body:first-of-type').contains('Page Two');
@@ -157,27 +352,26 @@ describe('Listing Block Tests', () => {
   });
 
   it('Listing block - Test Root with Criteria: Type Page', () => {
-    // Given three Document in My Page i.e My News, My Folder and My Page Test
+    cy.intercept('PATCH', '/**/').as('save');
+    cy.intercept('GET', '/**/').as('content');
+    cy.intercept('GET', '/**/@types/*').as('schema');
+
     cy.createContent({
-      contentType: 'Document',
-      contentId: 'my-page-test',
-      contentTitle: 'My Page Test',
+      contentType: 'News Item',
+      contentId: 'my-news',
+      contentTitle: 'My News',
       path: 'my-page',
     });
 
-    cy.visit('/');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('');
     cy.navigate('/edit');
+    cy.wait('@schema');
 
     cy.clearSlateTitle().type(
       'Listing block - Test Root with Criteria: Type Page',
     );
 
     //add listing block
+    cy.scrollTo('bottom');
     cy.getSlate(true).click();
     cy.get('button.block-add-button').click();
     cy.get('.blocks-chooser .title').contains('Common').click();
@@ -211,14 +405,9 @@ describe('Listing Block Tests', () => {
 
     //save
     cy.get('#toolbar-save').click();
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('@querystring-search');
-    cy.waitForResourceToLoad('');
 
-    cy.visit('/');
+    cy.wait('@save');
+    cy.wait('@content');
 
     cy.get('#page-document .listing-body:first-of-type').contains('My Page');
     cy.get('#page-document .listing-item:first-of-type a').should(
@@ -229,6 +418,10 @@ describe('Listing Block Tests', () => {
   });
 
   it('Listing block - Test Criteria: short-name', () => {
+    cy.intercept('PATCH', '/**/my-page').as('save');
+    cy.intercept('GET', '/**/my-page').as('content');
+    cy.intercept('GET', '/**/@types/Document').as('schema');
+
     // Given three Document in My Page i.e My News, My Folder and My Page Test
     cy.createContent({
       contentType: 'Document',
@@ -243,19 +436,17 @@ describe('Listing Block Tests', () => {
       path: 'my-page',
     });
     cy.createContent({
-      contentType: 'Folder',
+      contentType: 'Document',
       contentId: 'my-folder',
       contentTitle: 'My Folder',
       path: 'my-page',
     });
 
-    cy.visit('/my-page');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('my-page');
+    cy.navigate('/my-page');
+    cy.wait('@content');
+
     cy.navigate('/my-page/edit');
+    cy.wait('@schema');
 
     cy.clearSlateTitle().type('Listing block - Test Criteria: short-name');
 
@@ -300,6 +491,8 @@ describe('Listing Block Tests', () => {
 
     //save
     cy.get('#toolbar-save').click();
+    cy.wait('@save');
+    cy.wait('@content');
 
     //test short-name criteria after save
     cy.get('#page-document .listing-body:first-of-type').contains(
@@ -313,6 +506,10 @@ describe('Listing Block Tests', () => {
   });
 
   it('Listing block - Test Criteria: Location relative', () => {
+    cy.intercept('PATCH', '/**/my-page/my-folder').as('save');
+    cy.intercept('GET', '/**/my-page/my-folder').as('content');
+    cy.intercept('GET', '/**/@types/Document').as('schema');
+
     // Given two Document in My Page i.e Document outside Folder and My Folder
     // And One Document in My Folder i.e Document within Folder
     cy.createContent({
@@ -336,13 +533,11 @@ describe('Listing Block Tests', () => {
       path: 'my-page/my-folder',
     });
 
-    cy.visit('/my-page/my-folder');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('my-folder');
+    cy.navigate('/my-page/my-folder');
+    cy.wait('@content');
+
     cy.navigate('/my-page/my-folder/edit');
+    cy.wait('@schema');
 
     cy.clearSlateTitle().type(
       'Listing block - Test Criteria: Location relative',
@@ -390,6 +585,8 @@ describe('Listing Block Tests', () => {
 
     //save
     cy.get('#toolbar-save').click();
+    cy.wait('@save');
+    cy.wait('@content');
 
     //test location relative criteria after save
     cy.get('#page-document .listing-body:first-of-type').contains(
@@ -401,6 +598,10 @@ describe('Listing Block Tests', () => {
   });
 
   it('Listing block - Test Criteria: Location absolute', () => {
+    cy.intercept('PATCH', '/**/my-page/my-folder').as('save');
+    cy.intercept('GET', '/**/my-page/my-folder').as('content');
+    cy.intercept('GET', '/**/@types/Document').as('schema');
+
     // Given two Document in My Page i.e Document outside Folder and My Folder
     // And One Document in My Folder i.e Document within Folder
     cy.createContent({
@@ -424,13 +625,11 @@ describe('Listing Block Tests', () => {
       path: 'my-page/my-folder',
     });
 
-    cy.visit('/my-page/my-folder');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('my-folder');
+    cy.navigate('/my-page/my-folder');
+    cy.wait('@content');
+
     cy.navigate('/my-page/my-folder/edit');
+    cy.wait('@schema');
 
     cy.clearSlateTitle().type(
       'Listing block - Test Criteria: Location absolute',
@@ -478,6 +677,8 @@ describe('Listing Block Tests', () => {
 
     //save
     cy.get('#toolbar-save').click();
+    cy.wait('@save');
+    cy.wait('@content');
 
     //test location absolute criteria after save
     cy.get('#page-document .listing-body:first-of-type').contains(
@@ -489,6 +690,10 @@ describe('Listing Block Tests', () => {
   });
 
   it('Listing block - Test Criteria: Location relative with some outside content', () => {
+    cy.intercept('PATCH', '/**/my-page').as('save');
+    cy.intercept('GET', '/**/my-page').as('content');
+    cy.intercept('GET', '/**/@types/Document').as('schema');
+
     // Given we have two document about us, contact at portal route and two document in My Page
     // i.e News Item One and News Item Two
     cy.createContent({
@@ -517,6 +722,12 @@ describe('Listing Block Tests', () => {
       contentTitle: 'News Item Two',
       path: 'my-page',
     });
+
+    cy.navigate('/my-page');
+    cy.wait('@content');
+
+    cy.navigate('/my-page/edit');
+    cy.wait('@schema');
 
     //add listing block
     cy.getSlate().click();
@@ -560,6 +771,8 @@ describe('Listing Block Tests', () => {
 
     // save;
     cy.get('#toolbar-save').click();
+    cy.wait('@save');
+    cy.wait('@content');
 
     //test location relative criteria after save
     cy.get(`.block.listing .listing-body:first-of-type`).contains(
@@ -571,32 +784,34 @@ describe('Listing Block Tests', () => {
   });
 
   it('Listing block: respect batching and limits', () => {
+    cy.intercept('PATCH', '/**/my-page').as('save');
+    cy.intercept('GET', '/**/my-page').as('content');
+    cy.intercept('GET', '/**/@types/Document').as('schema');
+
     cy.createContent({
-      contentType: 'Folder',
+      contentType: 'Document',
       contentId: 'my-folder',
       contentTitle: 'My Folder',
       path: 'my-page',
     });
     cy.createContent({
-      contentType: 'Folder',
+      contentType: 'Document',
       contentId: 'my-folder2',
       contentTitle: 'My Folder 2',
       path: 'my-page',
     });
     cy.createContent({
-      contentType: 'Folder',
+      contentType: 'Document',
       contentId: 'my-folder3',
       contentTitle: 'My Folder 3',
       path: 'my-page',
     });
 
-    cy.visit('/my-page');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('my-page');
+    cy.navigate('/my-page');
+    cy.wait('@content');
+
     cy.navigate('/my-page/edit');
+    cy.wait('@schema');
 
     cy.clearSlateTitle().type('Listing block - respect batching and limits');
 
@@ -624,13 +839,15 @@ describe('Listing Block Tests', () => {
     cy.get(
       '.querystring-widget .fields:first-of-type > .field .react-select__menu .react-select__option',
     )
-      .contains('Folder')
+      .contains('Page')
       .click();
 
     cy.get('#field-limit-3-querystring').click().type('2');
 
     //save
     cy.get('#toolbar-save').click();
+    cy.wait('@save');
+    cy.wait('@content');
 
     //test after save
     cy.get('#page-document .listing-item:first-of-type a').should(
@@ -643,6 +860,8 @@ describe('Listing Block Tests', () => {
     });
 
     cy.navigate('/my-page/edit');
+    cy.wait('@schema');
+
     cy.get('.block-editor-listing').click();
     cy.get('.sidebar-container .tabs-wrapper .menu .item')
       .contains('Block')

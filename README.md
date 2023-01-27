@@ -54,8 +54,19 @@ First get all the requirements installed on your system.
 ### Prerequisites
 
 - [Node.js LTS (16.x)](https://nodejs.org/)
-- [Python 3.8.x](https://python.org/) or
+- [Python](https://python.org/) - See below for specific versions.
 - [Docker](https://www.docker.com/get-started) (if using the Plone docker images)
+
+*UPDATE 2022-10-25*: Since 2022-10-25, NodeJS 18 is in LTS state (https://github.com/nodejs/release#release-schedule). However, due to changes in internal SSL libraries, some Volto dependencies have been deprecated and need to be updated in order to continue working in NodeJS 18, mainly Webpack 4 (see: https://github.com/webpack/webpack/issues/14532#issuecomment-947525539 for further information). You can still use it, but NodeJS should be run under a special flag: `NODE_OPTIONS=--openssl-legacy-provider`. See also Volto's PR: https://github.com/plone/volto/pull/3699 for more information.
+
+The versions of Python that are supported in Volto depend on the version of Plone that you use.
+
+| Plone | Python | Volto |
+|---|---|---|
+| 5.2 | 2.7, 3.6-3.8 | 15.0 |
+| 6.0 (beta) | 3.8-3.10 | 16.0 (alpha) |
+
+At the time of this writing, Volto 16 is still in alpha status, and Plone 6 is in beta status.
 
 ### Create a Volto project using the generator
 
@@ -79,7 +90,7 @@ cd myvoltoproject
 You can bootstrap a ready Docker Plone container with all the dependencies and ready for Volto use. We recommend to use the Plone docker builds based in `pip` [plone/plone-backend](https://github.com/plone/plone-backend) image:
 
 ```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.restapi==8.22.0 plone.volto==4.0.0a4 plone.rest==2.0.0a5 plone.app.iterate==4.0.2 plone.app.vocabularies==4.3.0" -e PROFILES="plone.volto:default-homepage" plone/plone-backend
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.0b3
 ```
 
 or as an alternative if you have experience with Plone and you have all the
@@ -92,24 +103,25 @@ make build-backend
 
 #### Recommended Plone version
 
-Volto is Plone 6 default UI, so it will work for all Plone 6 released versions.
+Volto is the default UI for Plone 6, so it will work for all Plone 6 released versions.
 
-For the Plone 5 series latest released version (with Python 3) and above is recommended (at the time of writing 5.2.6).
-
-The following KGS (or above) are also recommended, for any Plone version used.
+For the Plone 5 series, the latest released version of Plone 5 (with Python 3) is recommended (at the time of writing 5.2.9).
 
 #### KGS (known good set of versions) for backend packages
 
-Volto always works best with latest versions of the "Frontend stack" or at least the recommended ones (in parenthesis) which are:
+On Plone 6, we recommend using the known good set (KGS) of package versions that are specified in the Plone release.
 
-- plone.restapi (8.22.0)
-- plone.rest (2.0.0a5)
-- plone.volto (4.0.0a4)
+On Plone 5, Volto is currently tested with the following packages pinned to specific versions, and we recommend using the same versions, which are:
 
-and the following core packages since some features require up to date versions:
+- plone.restapi 8.30.0
+- plone.rest 2.0.0a5
+- plone.volto 4.0.0a13
 
-- plone.app.iterate (4.0.2)
-- plone.app.vocabularies (4.3.0)
+This would be the docker command to spawn a Plone 5 container with the right KGS versions:
+
+```shell
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.restapi==8.30.0 plone.volto==4.0.0a13 plone.rest==2.0.0a5 plone.app.iterate==4.0.2 plone.app.vocabularies==4.3.0" -e PROFILES="plone.volto:default-homepage" plone/plone-backend
+```
 
 ### Start Volto
 
@@ -162,6 +174,11 @@ Volto is actively developed since 2017 and used in production since 2018 on the 
 - [Memori](https://memori.ai/en) (Corporate website for Memori, startup specialising in technologies applied to the experience of memory through the development of Artificial Intelligences. Developed by [RawMaterial](https://rawmaterial.it/en), 2021)
 - [TwinCreator](https://twincreator.com/en) (TwinCreator allows you to design and train multiple AI’s through simple conversation through NLP. Developed by [RawMaterial](https://rawmaterial.it/en), 2021)
 - [MemoryTwin](https://memorytwin.com/en) (Product website, MemoryTwin allows you to create your personal artificial intelligence, able to remember and speak. Developed by [RawMaterial](https://rawmaterial.it/en), 2022)
+- [Forschungszentrum Jülich](https://fz-juelich.de) (Website for Forschungzentrum Jülich, which is one of the largest research institutions in Europe, developed by [kitconcept GmbH](https://kitconcept.com), 2022)
+- [ILPO](https://ilpo.jyu.fi/) (the registration portal of continuous learning at the University of Jyväskylä. Developed by University of Jyväskylä, 2022)
+- [Debabarreneko mankomunitatea](https://debabarrena.eus) (Website of the Commonwealth of Debabarrena, community of municipalities to centralize waste handling services, developed by [CodeSyntax](https://www.codesyntax.com/en), 2022)
+- [Debako Udala / Ayuntamiento de Deba](https://www.deba.eus) (Website of the municipality of Deba, developed by [CodeSyntax](https://www.codesyntax.com/en), 2022)
+- [Helmholtz-Institut Erlangen-Nürnberg für Erneuerbare Energien (HI-ERN)](https://www.hi-ern.de) (Website for HI ERN, a research institution for renewable energies, developed by [kitconcept GmbH](https://kitconcept.com), 2022)
 
 Please create a new [issue](https://github.com/plone/volto/issues/new) or [pull request](https://github.com/plone/volto/pulls) to add your Volto-site here!
 
@@ -253,7 +270,7 @@ yarn
 Either using a Docker command:
 
 ```shell
-docker run -it --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS="plone.restapi==8.22.0 plone.app.iterate==4.0.2 plone.rest==2.0.0a5 plone.app.vocabularies==4.3.0 plone.volto==4.0.0a3" -e PROFILES="plone.volto:default-homepage" plone/plone-backend
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.0b3
 ```
 
 or using the convenience makefile command:
@@ -264,7 +281,7 @@ make start-backend-docker
 
 or running Plone on your machine (advanced), additional dependencies might be
 required, only for Plone experienced integrators/developers. Check the [Plone
-Installation Documentation](https://docs.plone.org/manage/installing/installation.html).
+Installation Documentation](https://6.docs.plone.org/install/index.html).
 
 ```shell
 make build-backend
@@ -298,37 +315,6 @@ Browse to [http://localhost:3000](http://localhost:3000) in your browser.
 
 ```shell
 yarn test
-```
-
-### Releasing
-
-For ease the release process, we use `release-it` utility that helps with the process.
-
-https://www.npmjs.com/package/release-it
-
-For using it and start a release you need to fulfill the requirements:
-
-- Have permissions to push on master branch
-- Have permissions on the @plone org on npmjs.com
-- Have a environment variable (`GITHUB_TOKEN`) with a GitHub personal token with permissions to
-  write the Volto Release page on GitHub (https://www.npmjs.com/package/release-it#github-releases)
-
-Then the command for release:
-
-```shell
-yarn release
-```
-
-a dry-release command for testing the output is also available:
-
-```shell
-yarn dry-release
-```
-
-and alpha release can also be cut using:
-
-```shell
-yarn release-alpha
 ```
 
 ## Acceptance testing

@@ -9,11 +9,11 @@ import {
   CREATE_USER,
   DELETE_USER,
   GET_USER,
-  LIST_USERS,
-  UPDATE_USER,
-  UPDATE_PASSWORD,
   INITIAL_PASSWORD,
+  LIST_USERS,
   RESET_PASSWORD,
+  UPDATE_PASSWORD,
+  UPDATE_USER,
 } from '@plone/volto/constants/ActionTypes';
 
 /**
@@ -22,13 +22,13 @@ import {
  * @param {Object|Array} content User data.
  * @returns {Object} Create user action.
  */
-export function createUser(content) {
+export function createUser(content, sendPasswordReset = null) {
   return {
     type: CREATE_USER,
     request: {
       op: 'post',
       path: '/@users',
-      data: content,
+      data: sendPasswordReset ? { ...content, sendPasswordReset } : content,
     },
   };
 }
@@ -76,7 +76,7 @@ export function getUser(id) {
  * @param {int} limit
  * @returns {Object} List users action
  */
-export function listUsers(options) {
+export function listUsers(options = {}) {
   const { query = '', search = '', groups_filter = [], limit = null } = options;
   let path = '/@users';
 

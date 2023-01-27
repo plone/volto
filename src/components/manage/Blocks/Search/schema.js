@@ -54,10 +54,6 @@ const messages = defineMessages({
     id: 'Show sorting?',
     defaultMessage: 'Show sorting?',
   },
-  sortOnLabel: {
-    id: 'Sort on label',
-    defaultMessage: 'Sort on label',
-  },
   sortOnOptions: {
     id: 'Sort on options',
     defaultMessage: 'Sort on options',
@@ -95,6 +91,18 @@ const messages = defineMessages({
   facetWidget: {
     id: 'Facet widget',
     defaultMessage: 'Facet widget',
+  },
+  views: {
+    id: 'views',
+    defaultMessage: 'Views',
+  },
+  availableViews: {
+    id: 'availableViews',
+    defaultMessage: 'Available views',
+  },
+  showTotalResults: {
+    id: 'Show total results',
+    defaultMessage: 'Show total results',
   },
 });
 
@@ -165,7 +173,10 @@ const FacetSchema = ({ intl }) => ({
     type: {
       title: intl.formatMessage(messages.facetWidget),
       choices: config.blocks.blocksConfig.search.extensions.facetWidgets.types.map(
-        ({ id, title }) => [id, title],
+        ({ id, title }) => [
+          id,
+          `${intl.formatMessage({ id: id, defaultMessage: title })}`,
+        ],
       ),
       defaultValue: config.blocks.blocksConfig.search.extensions.facetWidgets.types.find(
         ({ isDefault }) => isDefault,
@@ -175,7 +186,7 @@ const FacetSchema = ({ intl }) => ({
   required: ['field'],
 });
 
-export default ({ data = {}, intl }) => {
+const SearchSchema = ({ data = {}, intl }) => {
   return {
     title: intl.formatMessage(messages.searchBlock),
     fieldsets: [
@@ -199,13 +210,18 @@ export default ({ data = {}, intl }) => {
         title: intl.formatMessage(messages.controls),
         fields: [
           'showSortOn',
-          ...(data.showSortOn ? ['sortOnLabel'] : []),
           ...(data.showSortOn ? ['sortOnOptions'] : []),
           'showSearchInput',
           ...(data.showSearchInput ?? true ? ['showSearchButton'] : []),
           // ...(data.showSearchInput ? ['searchInputPrompt'] : []),
           // ...(data.showSearchButton ? ['searchButtonLabel'] : []),
+          'showTotalResults',
         ],
+      },
+      {
+        id: 'views',
+        title: intl.formatMessage(messages.views),
+        fields: ['availableViews'],
       },
     ],
     properties: {
@@ -225,6 +241,11 @@ export default ({ data = {}, intl }) => {
         title: intl.formatMessage(messages.showSearchButtonTitle),
         description: intl.formatMessage(messages.showSearchButtonDescription),
       },
+      showTotalResults: {
+        type: 'boolean',
+        title: intl.formatMessage(messages.showTotalResults),
+        default: true,
+      },
       searchButtonLabel: {
         title: intl.formatMessage(messages.searchButtonLabel),
         placeholder: intl.formatMessage(messages.searchButtonPlaceholder),
@@ -232,9 +253,6 @@ export default ({ data = {}, intl }) => {
       showSortOn: {
         type: 'boolean',
         title: intl.formatMessage(messages.showSortOn),
-      },
-      sortOnLabel: {
-        title: intl.formatMessage(messages.sortOnLabel),
       },
       sortOnOptions: {
         title: intl.formatMessage(messages.sortOnOptions),
@@ -252,7 +270,16 @@ export default ({ data = {}, intl }) => {
       query: {
         title: 'Query',
       },
+      availableViews: {
+        title: intl.formatMessage(messages.availableViews),
+        choices: config.blocks.blocksConfig.listing.variations.map(
+          ({ id, title }) => [id, title],
+        ),
+        widget: 'array',
+      },
     },
     required: [],
   };
 };
+
+export default SearchSchema;

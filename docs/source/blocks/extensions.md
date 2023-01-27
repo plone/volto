@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "A common pattern in blocks is the 'variations' pattern - a slightly different versions of a block that can be toggled on demand by the editors."
-  "property=og:description": "A common pattern in blocks is the 'variations' pattern - a slightly different versions of a block that can be toggled on demand by the editors."
-  "property=og:title": "Block extensions mechanism"
-  "keywords": "Volto, Plone, frontend, React, Upgrade, Guide, Block extensions, variations, schema enhancers"
+myst:
+  html_meta:
+    "description": "A common pattern in blocks is the 'variations' pattern - a slightly different versions of a block that can be toggled on demand by the editors."
+    "property=og:description": "A common pattern in blocks is the 'variations' pattern - a slightly different versions of a block that can be toggled on demand by the editors."
+    "property=og:title": "Block extensions mechanism"
+    "keywords": "Volto, Plone, frontend, React, Upgrade, Guide, Block extensions, variations, schema enhancers"
 ---
 
 (extensions-block-extensions-mechanism)=
@@ -159,6 +160,17 @@ The `schemaEnhancer` is a generic extension mechanism provided by
 it for the `variation` extension.
 ```
 
+Volto provides a helper to combine multiple `schemaEnhancer` functions into a single
+function. This allows creating clean, single purpose, reusable schema enhancers:
+
+```js
+import { composeSchema } from '@plone/volto/helpers';
+
+const oldEnhancer = blocksConfig.dataTable.schemaEnhancer;
+
+blocksConfig.dataTable.schemaEnhancer = composeSchema(
+  oldEnhancer, addTitleField, addStandardStyling);
+```
 
 (extensions-consuming-extensions)=
 

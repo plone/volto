@@ -9,6 +9,7 @@ import {
   contentTypesViews,
   defaultView,
   errorViews,
+  layoutViewsNamesMapping,
 } from './Views';
 import { nonContentRoutes } from './NonContentRoutes';
 import {
@@ -20,13 +21,17 @@ import {
 } from './Blocks';
 import { components } from './Components';
 import { loadables } from './Loadables';
+import { workflowMapping } from './Workflows';
 
-import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
-import { controlPanelsIcons } from './ControlPanels';
+import { styleClassNameConverters, styleClassNameExtenders } from './Style';
+import {
+  controlPanelsIcons,
+  filterControlPanels,
+  filterControlPanelsSchema,
+} from './ControlPanels';
 
 import { richtextEditorSettings, richtextViewSettings } from './RichTextEditor';
-import applySlateConfiguration from '@plone/volto-slate';
 
 import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
 
@@ -106,15 +111,12 @@ let config = {
     defaultLanguage: 'en',
     navDepth: 1,
     expressMiddleware: serverConfig.expressMiddleware, // BBB
-    defaultBlockType: 'text',
+    defaultBlockType: 'slate',
     verticalFormTabs: false,
     useEmailAsLogin: false,
     persistentReducers: ['blocksClipboard'],
     initialReducersBlacklist: [], // reducers in this list won't be hydrated in windows.__data
     asyncPropsExtenders: [], // per route asyncConnect customizers
-    sentryOptions: {
-      ...sentryOptions,
-    },
     contentIcons: contentIcons,
     loadables,
     lazyBundles: {
@@ -144,6 +146,8 @@ let config = {
     showTags: true,
     controlpanels: [],
     controlPanelsIcons,
+    filterControlPanels,
+    filterControlPanelsSchema,
     externalRoutes: [
       // URL to be considered as external
       // {
@@ -162,6 +166,16 @@ let config = {
     hasWorkingCopySupport: false,
     maxUndoLevels: 200, // undo history size for the main form
     addonsInfo: addonsInfo,
+    workflowMapping,
+    errorHandlers: [], // callables for unhandled errors
+    styleClassNameConverters,
+    hashLinkSmoothScroll: false,
+    styleClassNameExtenders,
+  },
+  experimental: {
+    addBlockButton: {
+      enabled: false,
+    },
   },
   widgets: {
     ...widgetMapping,
@@ -172,6 +186,7 @@ let config = {
     contentTypesViews,
     defaultView,
     errorViews,
+    layoutViewsNamesMapping,
   },
   blocks: {
     requiredBlocks,
@@ -186,14 +201,13 @@ let config = {
   components,
 };
 
-config = applySlateConfiguration(config);
-config = applyAddonConfiguration(config);
-
 ConfigRegistry.settings = config.settings;
+ConfigRegistry.experimental = config.experimental;
 ConfigRegistry.blocks = config.blocks;
 ConfigRegistry.views = config.views;
 ConfigRegistry.widgets = config.widgets;
 ConfigRegistry.addonRoutes = config.addonRoutes;
 ConfigRegistry.addonReducers = config.addonReducers;
-ConfigRegistry.appExtras = config.appExtras;
 ConfigRegistry.components = config.components;
+
+applyAddonConfiguration(ConfigRegistry);
