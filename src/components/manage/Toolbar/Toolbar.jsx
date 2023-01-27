@@ -29,7 +29,12 @@ import {
   unlockContent,
 } from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
-import { BodyClass, getBaseUrl, getCookieOptions } from '@plone/volto/helpers';
+import {
+  BodyClass,
+  getBaseUrl,
+  getCookieOptions,
+  hasApiExpander,
+} from '@plone/volto/helpers';
 import { Pluggable } from '@plone/volto/components/manage/Pluggable';
 
 import penSVG from '@plone/volto/icons/pen.svg';
@@ -197,8 +202,14 @@ class Toolbar extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    this.props.listActions(getBaseUrl(this.props.pathname));
-    this.props.getTypes(getBaseUrl(this.props.pathname));
+    // Do not trigger the actions action if the expander is present
+    if (!hasApiExpander('actions', getBaseUrl(this.props.pathname))) {
+      this.props.listActions(getBaseUrl(this.props.pathname));
+    }
+    // Do not trigger the types action if the expander is present
+    if (!hasApiExpander('types', getBaseUrl(this.props.pathname))) {
+      this.props.getTypes(getBaseUrl(this.props.pathname));
+    }
     this.props.setExpandedToolbar(this.state.expanded);
     document.addEventListener('mousedown', this.handleClickOutside, false);
   }
@@ -211,8 +222,14 @@ class Toolbar extends Component {
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
-      this.props.listActions(getBaseUrl(nextProps.pathname));
-      this.props.getTypes(getBaseUrl(nextProps.pathname));
+      // Do not trigger the actions action if the expander is present
+      if (!hasApiExpander('actions', getBaseUrl(nextProps.pathname))) {
+        this.props.listActions(getBaseUrl(nextProps.pathname));
+      }
+      // Do not trigger the types action if the expander is present
+      if (!hasApiExpander('types', getBaseUrl(nextProps.pathname))) {
+        this.props.getTypes(getBaseUrl(nextProps.pathname));
+      }
     }
 
     // Unlock
