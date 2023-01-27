@@ -296,7 +296,51 @@ styleClassNameExtenders
         },
       ];
     ```
+apiExpanders
+    You can configure the API expanders Volto uses using the `settings.apiExpanders` like:
 
+    ```jsx
+    import { GET_CONTENT } from '@plone/volto/constants/ActionTypes';
+
+    export default function applyConfig (config) {
+      config.settings.apiExpanders = [
+          ...config.settings.apiExpanders,
+          {
+            match: '',
+            GET_CONTENT: ['mycustomexpander'],
+          },
+          {
+            match: '/de',
+            GET_CONTENT: ['myothercustomexpander'],
+          },
+          {
+            match: '/de',
+            GET_CONTENT: ['navigation'],
+            querystring: {
+              'expand.navigation.depth': 3,
+            },
+          }
+      ];
+
+      return config;
+    }
+    ```
+
+    If you want that Volto only does a single request and concentrate all the expanders in it then configure `apiExpanders` like:
+
+    ```jsx
+    config.settings.apiExpanders = [
+      {
+        match: '',
+        GET_CONTENT: ['breadcrumbs', 'navigation', 'actions', 'types'],
+      },
+    ],
+    ```
+
+```
+
+The config accepts a list of matchers with the ability to filter by request path and action type, for maximum flexibility.
+It also accepts a `querystring` object that allows to configure the expandeders via querystring params (eg. the navigation expander).
 ```
 
 
