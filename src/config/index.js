@@ -76,7 +76,8 @@ let config = {
     publicURL,
     apiPath,
     apiExpanders: [
-      // Uncomment or add the following expanders for only issuing a single request
+      // Add the following expanders for only issuing a single request.
+      // https://6.docs.plone.org/volto/configuration/settings-reference.html#term-apiExpanders
       // {
       //   match: '',
       //   GET_CONTENT: ['breadcrumbs', 'navigation', 'actions', 'types'],
@@ -85,7 +86,7 @@ let config = {
     // Internal proxy to bypass CORS *while developing*. NOT intended for production use.
     // In production is recommended you use a Seamless mode deployment using a web server in
     // front of both the frontend and the backend so you can bypass CORS safely.
-    // https://docs.voltocms.com/deploying/seamless-mode/
+    // https://6.docs.plone.org/volto/deploying/seamless-mode.html
     devProxyToApiPath:
       process.env.RAZZLE_DEV_PROXY_API_PATH ||
       process.env.RAZZLE_API_PATH ||
