@@ -8,6 +8,28 @@
 
 <!-- towncrier release notes start -->
 
+## 16.9.0 (2023-01-27)
+
+### Feature
+
+- Enable scrolling to ids via hashes in internal links @jackahl [#4165](https://github.com/plone/volto/issues/4165)
+- Read listing block schema from configuration registry @pnicolli [#4231](https://github.com/plone/volto/issues/4231)
+- Add displayName when registering a component @sneridagh [#4282](https://github.com/plone/volto/issues/4282)
+- Support for all default expanders (breadcrumbs, navigation, actions, types) in actions/reducers. Conditional loading of actions if the expanders are present. @sneridagh [#4285](https://github.com/plone/volto/issues/4285)
+- Add `addNewBlock` Cypress support command @sneridagh [#4313](https://github.com/plone/volto/issues/4313)
+
+### Bugfix
+
+- Fixed maxLength validation for string type fields @pnicolli [#4189](https://github.com/plone/volto/issues/4189)
+- bugfix : add pathname as required proptype in Blocks/Edit @akshatgarg12 [#4194](https://github.com/plone/volto/issues/4194)
+- (Fix) Select Widgets scrolls the page when the options are not visible @dobri1408 [#4223](https://github.com/plone/volto/issues/4223)
+- Updated volto-slate to check for slateSettings before falling back to config @danalvrz [#4311](https://github.com/plone/volto/issues/4311)
+
+### Internal
+
+- Updated 4 Dependencies @SaiRev0 [#4104](https://github.com/plone/volto/issues/4104)
+
+
 ## 16.8.1 (2023-01-18)
 
 ### Bugfix
