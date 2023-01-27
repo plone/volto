@@ -210,6 +210,7 @@ class SelectWidget extends Component {
           id={`field-${id}`}
           key={choices}
           name={id}
+          menuShouldScrollIntoView={false}
           isDisabled={disabled}
           isSearchable={true}
           className="react-select-container"

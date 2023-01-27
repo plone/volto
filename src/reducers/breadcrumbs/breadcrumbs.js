@@ -4,9 +4,16 @@
  */
 
 import { map } from 'lodash';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import {
+  flattenToAppURL,
+  getBaseUrl,
+  hasApiExpander,
+} from '@plone/volto/helpers';
 
-import { GET_BREADCRUMBS } from '@plone/volto/constants/ActionTypes';
+import {
+  GET_BREADCRUMBS,
+  GET_CONTENT,
+} from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
   error: null,
@@ -24,6 +31,7 @@ const initialState = {
  * @returns {Object} New state.
  */
 export default function breadcrumbs(state = initialState, action = {}) {
+  let hasExpander;
   switch (action.type) {
     case `${GET_BREADCRUMBS}_PENDING`:
       return {
@@ -32,18 +40,47 @@ export default function breadcrumbs(state = initialState, action = {}) {
         loaded: false,
         loading: true,
       };
+    case `${GET_CONTENT}_SUCCESS`:
+      hasExpander = hasApiExpander(
+        'breadcrumbs',
+        getBaseUrl(flattenToAppURL(action.result['@id'])),
+      );
+      if (hasExpander) {
+        return {
+          ...state,
+          error: null,
+          items: map(
+            action.result['@components'].breadcrumbs.items,
+            (item) => ({
+              title: item.title,
+              url: flattenToAppURL(item['@id']),
+            }),
+          ),
+          root: flattenToAppURL(action.result['@components'].breadcrumbs.root),
+          loaded: true,
+          loading: false,
+        };
+      }
+      return state;
     case `${GET_BREADCRUMBS}_SUCCESS`:
-      return {
-        ...state,
-        error: null,
-        items: map(action.result.items, (item) => ({
-          title: item.title,
-          url: flattenToAppURL(item['@id']),
-        })),
-        root: flattenToAppURL(action.result.root),
-        loaded: true,
-        loading: false,
-      };
+      hasExpander = hasApiExpander(
+        'breadcrumbs',
+        getBaseUrl(flattenToAppURL(action.result['@id'])),
+      );
+      if (!hasExpander) {
+        return {
+          ...state,
+          error: null,
+          items: map(action.result.items, (item) => ({
+            title: item.title,
+            url: flattenToAppURL(item['@id']),
+          })),
+          root: flattenToAppURL(action.result.root),
+          loaded: true,
+          loading: false,
+        };
+      }
+      return state;
     case `${GET_BREADCRUMBS}_FAIL`:
       return {
         ...state,
