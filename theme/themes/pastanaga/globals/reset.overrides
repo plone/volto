@@ -61,7 +61,7 @@ figcaption,
 figure,
 main {
   /* 1 */
-  display: block;
+  display: flex;
 }
 
 /**
