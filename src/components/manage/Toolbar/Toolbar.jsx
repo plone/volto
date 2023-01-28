@@ -557,6 +557,7 @@ class Toolbar extends Component {
                     </button>
                   </>
                 )}
+                <Pluggable name="main.toolbar.top" />
               </div>
               <div className="toolbar-bottom">
                 <Pluggable
