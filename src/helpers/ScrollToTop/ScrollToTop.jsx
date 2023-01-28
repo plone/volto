@@ -34,6 +34,7 @@ class ScrollToTop extends React.Component {
         : true;
     if (
       !this.props.location?.hash &&
+      !this.props.location?.pathname.hash &&
       noInitialBlocksFocus &&
       this.props.location?.pathname !== prevProps.location?.pathname
     ) {
