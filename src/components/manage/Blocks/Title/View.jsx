@@ -5,6 +5,7 @@
 
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
+import Slugger from 'github-slugger';
 import { renderLinkElement } from '@plone/volto-slate/editor/render';
 
 /**
@@ -13,12 +14,15 @@ import { renderLinkElement } from '@plone/volto-slate/editor/render';
  * @extends Component
  */
 const TitleBlockView = ({ properties, metadata, id, children }) => {
-  const attr = { id };
+  let attr = { id };
+  const title = (properties || metadata)['title'];
+  const slug = Slugger.slug(title);
+  attr.id = slug || id;
   const LinkedTitle = useMemo(() => renderLinkElement('h1'), []);
   return (
     <LinkedTitle
       mode="view"
-      children={(properties || metadata)['title'] ?? children}
+      children={title ?? children}
       attributes={attr}
       className={'documentFirstHeading'}
     />

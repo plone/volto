@@ -160,16 +160,16 @@ export const renderLinkElement = (tagName) => {
     className = null,
   }) {
     const Tag = tagName;
-    const id = attributes.id || '';
+    const slug = attributes.id || '';
 
     return (
       <Tag {...attributes} className={className}>
-        {mode === 'view' && id && (
+        {mode === 'view' && slug && (
           <UniversalLink
             className="anchor"
             aria-hidden="true"
             tabIndex={-1}
-            href={`#${id}`}
+            href={`#${slug}`}
           >
             <svg
               {...linkSVG.attributes}
