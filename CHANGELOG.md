@@ -24,6 +24,7 @@
 - bugfix : add pathname as required proptype in Blocks/Edit @akshatgarg12 [#4194](https://github.com/plone/volto/issues/4194)
 - (Fix) Select Widgets scrolls the page when the options are not visible @dobri1408 [#4223](https://github.com/plone/volto/issues/4223)
 - Updated volto-slate to check for slateSettings before falling back to config @danalvrz [#4311](https://github.com/plone/volto/issues/4311)
+- Fix bug where label of search facet wasn't translated when the content object is being translated @robgietema [#4306](https://github.com/plone/volto/issues/4306)
 
 ### Internal
 
@@ -35,7 +36,6 @@
 ### Bugfix
 
 - Fix StyleWrapper extenders, the classNames were not being re-fed into the pipe @sneridagh [#4275](https://github.com/plone/volto/issues/4275)
-- Fix bug where label of search facet wasn't translated when the content object is being translated @robgietema
 
 
 ## 16.8.0 (2023-01-18)
