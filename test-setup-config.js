@@ -31,6 +31,8 @@ import {
   filterControlPanelsSchema,
 } from '@plone/volto/config/ControlPanels';
 
+import ListingBlockSchema from '@plone/volto/components/manage/Blocks/Listing/schema';
+
 // we need to do a redefinition here because of circular import issues
 // because draftjs-based components are not really tested, this is basically
 // dummy code.
@@ -84,6 +86,7 @@ config.set('settings', {
 config.set('blocks', {
   blocksConfig: {
     listing: {
+      blockSchema: ListingBlockSchema,
       variations: [
         {
           id: 'default',
