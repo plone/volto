@@ -32,7 +32,13 @@ import {
   AppExtras,
   SkipLinks,
 } from '@plone/volto/components';
-import { BodyClass, getBaseUrl, getView, isCmsUi } from '@plone/volto/helpers';
+import {
+  BodyClass,
+  getBaseUrl,
+  getView,
+  hasApiExpander,
+  isCmsUi,
+} from '@plone/volto/helpers';
 import {
   getBreadcrumbs,
   getContent,
@@ -257,8 +263,15 @@ export default compose(
   asyncConnect([
     {
       key: 'breadcrumbs',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ && dispatch(getBreadcrumbs(getBaseUrl(location.pathname))),
+      promise: ({ location, store: { dispatch } }) => {
+        // Do not trigger the breadcrumbs action if the expander is present
+        if (
+          __SERVER__ &&
+          !hasApiExpander('breadcrumbs', getBaseUrl(location.pathname))
+        ) {
+          return dispatch(getBreadcrumbs(getBaseUrl(location.pathname)));
+        }
+      },
     },
     {
       key: 'content',
@@ -267,19 +280,32 @@ export default compose(
     },
     {
       key: 'navigation',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ &&
-        dispatch(
-          getNavigation(
-            getBaseUrl(location.pathname),
-            config.settings.navDepth,
-          ),
-        ),
+      promise: ({ location, store: { dispatch } }) => {
+        // Do not trigger the navigation action if the expander is present
+        if (
+          __SERVER__ &&
+          !hasApiExpander('navigation', getBaseUrl(location.pathname))
+        ) {
+          return dispatch(
+            getNavigation(
+              getBaseUrl(location.pathname),
+              config.settings.navDepth,
+            ),
+          );
+        }
+      },
     },
     {
       key: 'types',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ && dispatch(getTypes(getBaseUrl(location.pathname))),
+      promise: ({ location, store: { dispatch } }) => {
+        // Do not trigger the types action if the expander is present
+        if (
+          __SERVER__ &&
+          !hasApiExpander('types', getBaseUrl(location.pathname))
+        ) {
+          return dispatch(getTypes(getBaseUrl(location.pathname)));
+        }
+      },
     },
     {
       key: 'workflow',
