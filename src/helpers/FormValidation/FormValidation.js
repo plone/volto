@@ -4,27 +4,29 @@ import { messages } from '../MessageLabels/MessageLabels';
 /**
  * Will return the intl message if invalid
  * @param {boolean} isValid
- * @param {string} maxCriterion
+ * @param {string} criterion
  * @param {string | number} valueToCompare can compare '47' < 50
  * @param {Function} intlFunc
  */
-const validationMessage = (isValid, maxCriterion, valueToCompare, intlFunc) =>
+const validationMessage = (isValid, criterion, valueToCompare, intlFunc) =>
   !isValid
-    ? intlFunc(messages[maxCriterion], {
+    ? intlFunc(messages[criterion], {
         len: valueToCompare,
       })
     : null;
+
 /**
  * Returns if based on the criterion the value is lower or equal
  * @param {string | number} value can compare '47' < 50
  * @param {string | number} valueToCompare can compare '47' < 50
- * @param {string} minCriterion
+ * @param {string} maxCriterion
  * @param {Function} intlFunc
  */
-const isMaxPropertyValid = (value, valueToCompare, minCriterion, intlFunc) => {
+const isMaxPropertyValid = (value, valueToCompare, maxCriterion, intlFunc) => {
   const isValid = valueToCompare !== undefined ? value <= valueToCompare : true;
-  return validationMessage(isValid, minCriterion, valueToCompare, intlFunc);
+  return validationMessage(isValid, maxCriterion, valueToCompare, intlFunc);
 };
+
 /**
  * Returns if based on the criterion the value is higher or equal
  * @param {string | number} value can compare '47' < 50
@@ -32,9 +34,9 @@ const isMaxPropertyValid = (value, valueToCompare, minCriterion, intlFunc) => {
  * @param {string} minCriterion
  * @param {Function} intlFunc
  */
-const isMinPropertyValid = (value, valueToCompare, maxCriterion, intlFunc) => {
+const isMinPropertyValid = (value, valueToCompare, minCriterion, intlFunc) => {
   const isValid = valueToCompare !== undefined ? value >= valueToCompare : true;
-  return validationMessage(isValid, maxCriterion, valueToCompare, intlFunc);
+  return validationMessage(isValid, minCriterion, valueToCompare, intlFunc);
 };
 
 const widgetValidation = {
@@ -109,7 +111,7 @@ const widgetValidation = {
     maxLength: (value, itemObj, intlFunc) =>
       isMaxPropertyValid(
         value.length,
-        itemObj.maxLengthj,
+        itemObj.maxLength,
         'maxLength',
         intlFunc,
       ),
