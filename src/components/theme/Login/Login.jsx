@@ -129,11 +129,17 @@ class Login extends Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.token) {
       this.props.history.push(this.props.returnUrl || '/');
+      if (toast.isActive('loggedOut')) {
+        toast.dismiss('loggedOut');
+      }
       if (toast.isActive('loginFailed')) {
         toast.dismiss('loginFailed');
       }
     }
     if (nextProps.error) {
+      if (toast.isActive('loggedOut')) {
+        toast.dismiss('loggedOut');
+      }
       if (!toast.isActive('loginFailed')) {
         toast.error(
           <Toast
@@ -257,7 +263,7 @@ class Login extends Component {
                       )}
                       <Grid.Column stretched width="12">
                         <p className="help">
-                          <Link to="/password-reset">
+                          <Link to="/passwordreset">
                             {this.props.intl.formatMessage(
                               messages.forgotPassword,
                             )}
@@ -316,8 +322,8 @@ export default compose(
       returnUrl:
         qs.parse(props.location.search).return_url ||
         props.location.pathname
-          .replace(/\/login$/, '')
-          .replace(/\/logout$/, '') ||
+          .replace(/\/login\/?$/, '')
+          .replace(/\/logout\/?$/, '') ||
         '/',
     }),
     { login },

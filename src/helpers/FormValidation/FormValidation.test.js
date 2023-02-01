@@ -61,7 +61,7 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({
-        Username: [messages.required.defaultMessage],
+        username: [messages.required.defaultMessage],
       });
     });
 
@@ -75,6 +75,17 @@ describe('FormValidation', () => {
       ).toEqual({
         email: [messages.isValidEmail.defaultMessage],
       });
+    });
+
+    it('validates correct email', () => {
+      formData.email = 'test@domain.name';
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema,
+          formData,
+          formatMessage,
+        }),
+      ).toEqual({});
     });
   });
 });

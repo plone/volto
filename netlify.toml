@@ -1,5 +1,5 @@
 [build.environment]
   PYTHON_VERSION = "3.8"
-
+  NODE_VERSION = "16.17.1"
 [build]
   ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF ./docs/"

@@ -30,6 +30,7 @@ export EventDetails from '@plone/volto/components/theme/EventDetails/EventDetail
 export PreviewImage from '@plone/volto/components/theme/PreviewImage/PreviewImage';
 
 export Error from '@plone/volto/components/theme/Error/Error';
+export ErrorBoundary from '@plone/volto/components/theme/Error/ErrorBoundary';
 export NotFound from '@plone/volto/components/theme/NotFound/NotFound';
 export Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
 export Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
@@ -74,18 +75,27 @@ export AlbumView from '@plone/volto/components/theme/View/AlbumView';
 export Actions from '@plone/volto/components/manage/Actions/Actions';
 export Add from '@plone/volto/components/manage/Add/Add';
 export AddonsControlpanel from '@plone/volto/components/manage/Controlpanels/AddonsControlpanel';
+export UndoControlpanel from '@plone/volto/components/manage/Controlpanels/UndoControlpanel';
 export Contents from '@plone/volto/components/manage/Contents/Contents';
 export Circle from '@plone/volto/components/manage/Contents/circle';
 export DatabaseInformation from '@plone/volto/components/manage/Controlpanels/DatabaseInformation';
 export Controlpanel from '@plone/volto/components/manage/Controlpanels/Controlpanel';
 export Controlpanels from '@plone/volto/components/manage/Controlpanels/Controlpanels';
+export AliasesControlpanel from '@plone/volto/components/manage/Controlpanels/Aliases';
 export ContentTypes from '@plone/volto/components/manage/Controlpanels/ContentTypes';
 export ContentType from '@plone/volto/components/manage/Controlpanels/ContentType';
 export ContentTypeLayout from '@plone/volto/components/manage/Controlpanels/ContentTypeLayout';
 export ContentTypeSchema from '@plone/volto/components/manage/Controlpanels/ContentTypeSchema';
 export ContentTypesActions from '@plone/volto/components/manage/Controlpanels/ContentTypesActions';
 export UsersControlpanel from '@plone/volto/components/manage/Controlpanels/Users/UsersControlpanel';
+export UserGroupMembershipControlPanel from '@plone/volto/components/manage/Controlpanels/Users/UserGroupMembershipControlPanel';
 export GroupsControlpanel from '@plone/volto/components/manage/Controlpanels/Groups/GroupsControlpanel';
+export RulesControlpanel from '@plone/volto/components/manage/Controlpanels/Rules/Rules';
+export AddRuleControlpanel from '@plone/volto/components/manage/Controlpanels/Rules/AddRule';
+export EditRuleControlpanel from '@plone/volto/components/manage/Controlpanels/Rules/EditRule';
+export ConfigureRuleControlpanel from '@plone/volto/components/manage/Controlpanels/Rules/ConfigureRule';
+export UpgradeControlPanel from '@plone/volto/components/manage/Controlpanels/UpgradeControlPanel';
+
 export ModerateComments from '@plone/volto/components/manage/Controlpanels/ModerateComments';
 export VersionOverview from '@plone/volto/components/manage/Controlpanels/VersionOverview';
 export Delete from '@plone/volto/components/manage/Delete/Delete';
@@ -95,6 +105,8 @@ export Edit from '@plone/volto/components/manage/Edit/Edit';
 export ModalForm from '@plone/volto/components/manage/Form/ModalForm';
 export History from '@plone/volto/components/manage/History/History';
 export Sharing from '@plone/volto/components/manage/Sharing/Sharing';
+export Rules from '@plone/volto/components/manage/Rules/Rules';
+export Aliases from '@plone/volto/components/manage/Aliases/Aliases';
 export Workflow from '@plone/volto/components/manage/Workflow/Workflow';
 export Messages from '@plone/volto/components/manage/Messages/Messages';
 export BlockChooser from '@plone/volto/components/manage/BlockChooser/BlockChooser';
@@ -161,6 +173,7 @@ export ObjectBrowserWidgetMode from '@plone/volto/components/manage/Widgets/Obje
 export ObjectWidget from '@plone/volto/components/manage/Widgets/ObjectWidget';
 export ObjectListWidget from '@plone/volto/components/manage/Widgets/ObjectListWidget';
 
+export EditDefaultBlock from '@plone/volto/components/manage/Blocks/Block/DefaultEdit';
 export EditDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/Edit';
 export EditTitleBlock from '@plone/volto/components/manage/Blocks/Title/Edit';
 export EditToCBlock from '@plone/volto/components/manage/Blocks/ToC/Edit';
@@ -174,6 +187,7 @@ export ViewHeroImageLeftBlock from '@plone/volto/components/manage/Blocks/HeroIm
 export EditMapBlock from '@plone/volto/components/manage/Blocks/Maps/Edit';
 export EditHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/Edit';
 
+export ViewDefaultBlock from '@plone/volto/components/manage/Blocks/Block/DefaultView';
 export ViewDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/View';
 export ViewTitleBlock from '@plone/volto/components/manage/Blocks/Title/View';
 export ViewToCBlock from '@plone/volto/components/manage/Blocks/ToC/View';

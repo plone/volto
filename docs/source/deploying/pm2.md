@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Using PM2 as a process manager for deployment of Volto."
-  "property=og:description": "Using PM2 as a process manager for deployment of Volto."
-  "property=og:title": "Deployment using a node process manager (PM2)"
-  "keywords": "Volto, Plone, frontend, React, deployment, PM2"
+myst:
+  html_meta:
+    "description": "Using PM2 as a process manager for deployment of Volto."
+    "property=og:description": "Using PM2 as a process manager for deployment of Volto."
+    "property=og:title": "Deployment using a node process manager (PM2)"
+    "keywords": "Volto, Plone, frontend, React, deployment, PM2"
 ---
 
 # Deployment using a node process manager (PM2)
@@ -53,7 +54,7 @@ module.exports = {
 };
 ```
 
-- `mywebsite.com-volto` starts the Node process that is responsible for Volto server-side rendering.
+- `mywebsite.com-volto` starts the Node process that is responsible for Volto {term}`server-side rendering`.
 - `mywebsite.com-api-zeo` starts the ZEO server.
 - `mywebsite.com-api-instance1` starts the first Zope instance.
 - `mywebsite.com-api-instance2` starts the second Zope instance.

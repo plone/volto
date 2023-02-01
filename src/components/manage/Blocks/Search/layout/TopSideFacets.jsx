@@ -1,15 +1,16 @@
 import React from 'react';
+import { flushSync } from 'react-dom';
+import { defineMessages, useIntl } from 'react-intl';
+import { Button, Grid } from 'semantic-ui-react';
+
 import {
   SearchInput,
   SearchDetails,
   Facets,
   FilterList,
   SortOn,
+  ViewSwitcher,
 } from '../components';
-import { Grid } from 'semantic-ui-react';
-import { Button } from 'semantic-ui-react';
-import { flushSync } from 'react-dom';
-import { defineMessages, useIntl } from 'react-intl';
 
 const messages = defineMessages({
   searchButtonText: {
@@ -50,11 +51,13 @@ const TopSideFacets = (props) => {
 
   return (
     <Grid className="searchBlock-facets" stackable>
-      <Grid.Row>
-        <Grid.Column>
-          {data.headline && <h2 className="headline">{data.headline}</h2>}
-        </Grid.Column>
-      </Grid.Row>
+      {data.headline && (
+        <Grid.Row>
+          <Grid.Column>
+            <h2 className="headline">{data.headline}</h2>
+          </Grid.Column>
+        </Grid.Row>
+      )}
 
       <Grid.Row>
         <Grid.Column>
@@ -110,6 +113,9 @@ const TopSideFacets = (props) => {
                 }}
               />
             )}
+            {data.availableViews && data.availableViews.length > 1 && (
+              <ViewSwitcher {...props} />
+            )}
           </div>
           {data.facets?.length > 0 && (
             <div className="facets">
@@ -130,7 +136,12 @@ const TopSideFacets = (props) => {
               </Grid>
             </div>
           )}
-          <SearchDetails text={searchedText} total={totalItems} as="h5" />
+          <SearchDetails
+            text={searchedText}
+            total={totalItems}
+            as="h5"
+            data={data}
+          />
         </Grid.Column>
       </Grid.Row>
 

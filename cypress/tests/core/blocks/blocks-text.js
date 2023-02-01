@@ -15,21 +15,12 @@ describe('Text Block Tests', () => {
     cy.waitForResourceToLoad('@types');
     cy.waitForResourceToLoad('my-page');
     cy.navigate('/my-page/edit');
-    cy.get(`.block.title [data-contents]`);
   });
 
   it('As editor I can add a text block', () => {
-    cy.intercept('GET', '/**/my-page').as('content');
-    cy.intercept('PATCH', '*').as('save');
-    // when I add a text block
-    cy.get('.block.inner.text .public-DraftEditor-content')
-      .click()
-      .type('My text')
-      .get('span[data-text]')
-      .contains('My text');
-    cy.get('#toolbar-save').click();
-    cy.wait('@save');
-    cy.wait('@content');
+    cy.log('when I add a text block');
+    cy.getSlateEditorAndType('My text').contains('My text');
+    cy.toolbarSave();
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
 
     // then the page view should contain the text block
@@ -37,59 +28,51 @@ describe('Text Block Tests', () => {
   });
 
   it('As editor I can add a link to a text block', function () {
-    cy.intercept('GET', '/**/my-page').as('content');
-    cy.intercept('PATCH', '*').as('save');
-    cy.get('.documentFirstHeading > .public-DraftStyleDefault-block');
+    cy.get('.block.inner.title .documentFirstHeading');
 
-    // when I create a link
-    cy.get('.block.inner.text .public-DraftEditor-content')
-      .type('Colorless green ideas sleep furiously.')
-      .setSelection('furiously');
-    cy.get(
-      '#page-edit .draftJsToolbar__buttonWrapper__1Dmqh:nth-of-type(3)',
-    ).click();
-    cy.get('.link-form-container input').type('https://google.com{enter}');
-    cy.get('#toolbar-save').click();
-    cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
+    cy.log('when I create a link');
 
-    cy.wait('@save');
-    cy.wait('@content');
+    cy.getSlateEditorAndType(
+      'Colorless green ideas sleep furiously.',
+    ).setSlateSelection('furiously');
+    cy.clickSlateButton('Add link');
+    cy.get('.slate-toolbar .link-form-container input').type(
+      'https://google.com{enter}',
+    );
+    cy.toolbarSave();
 
-    // then the page view should contain a link
+    cy.log('then the page view should contain a link');
+
     cy.get('.ui.container p').contains(
       'Colorless green ideas sleep furiously.',
     );
     cy.get('.ui.container p a')
-      .should('have.attr', 'href')
+      .should('have.text', 'furiously')
+      .and('have.attr', 'href')
       .and('include', 'https://google.com');
   });
 
   it('As editor I can add a mailto link to a text block', function () {
-    cy.intercept('GET', '/**/my-page').as('content');
-    cy.intercept('PATCH', '*').as('save');
-    cy.get('.documentFirstHeading > .public-DraftStyleDefault-block');
+    cy.getSlateTitle();
 
-    // when I create a mailto link
-    cy.get('.block.inner.text .public-DraftEditor-content')
-      .type('Colorless green ideas sleep furiously.')
-      .setSelection('furiously');
-    cy.get(
-      '#page-edit .draftJsToolbar__buttonWrapper__1Dmqh:nth-of-type(3)',
-    ).click();
-    cy.get('.link-form-container input').type(
+    cy.log('when I create a mailto link');
+    cy.getSlateEditorAndType(
+      'Colorless green ideas sleep furiously.',
+    ).setSlateSelection('furiously');
+
+    cy.clickSlateButton('Add link');
+    cy.get('.slate-toolbar .link-form-container input').type(
       'mailto:hello@example.com{enter}',
     );
-    cy.get('#toolbar-save').click();
-    cy.wait('@save');
-    cy.wait('@content');
-    cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
+    cy.toolbarSave();
 
-    // then the page view should contain a mailto link
+    cy.log('then the page view should contain a mailto link');
     cy.get('.ui.container p').contains(
       'Colorless green ideas sleep furiously.',
     );
     cy.get('.ui.container p a')
-      .should('have.attr', 'href')
+      .should('have.text', 'furiously')
+      .and('have.attr', 'href')
       .and('include', 'mailto:hello@example.com');
   });
 });

@@ -5,19 +5,19 @@ const nodeExternals = require('webpack-node-externals');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const fs = require('fs');
-const { pickBy } = require('lodash');
 const RootResolverPlugin = require('./webpack-plugins/webpack-root-resolver');
 const RelativeResolverPlugin = require('./webpack-plugins/webpack-relative-resolver');
 const createAddonsLoader = require('./create-addons-loader');
 const AddonConfigurationRegistry = require('./addon-registry');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 const fileLoaderFinder = makeLoaderFinder('file-loader');
-const babelLoaderFinder = makeLoaderFinder('babel-loader');
 
 const projectRootPath = path.resolve('.');
 const languages = require('./src/constants/Languages');
-const { poToJson } = require('@plone/scripts/i18n');
+const { poToJson } = require('@plone/scripts/i18n.cjs');
 
 const packageJson = require(path.join(projectRootPath, 'package.json'));
 
@@ -27,6 +27,7 @@ const defaultModify = ({
   env: { target, dev },
   webpackConfig: config,
   webpackObject: webpack,
+  options,
 }) => {
   // Compile language JSON files from po files
   poToJson({ registry, addonMode: false });
@@ -111,6 +112,25 @@ const defaultModify = ({
       },
     });
 
+    // This is needed to override Razzle use of the unmaintained CleanCSS
+    // which does not have support for recently CSS features (container queries).
+    // Using the default provided (cssnano) by css-minimizer-webpack-plugin
+    // should be enough see:
+    // (https://github.com/clean-css/clean-css/discussions/1209)
+    if (!dev) {
+      config.optimization = Object.assign({}, config.optimization, {
+        minimizer: [
+          new TerserPlugin(options.webpackOptions.terserPluginOptions),
+          new CssMinimizerPlugin({
+            sourceMap: options.razzleOptions.enableSourceMaps,
+            minimizerOptions: {
+              sourceMap: options.razzleOptions.enableSourceMaps,
+            },
+          }),
+        ],
+      });
+    }
+
     config.plugins.unshift(
       // restrict moment.js locales to en/de
       // see https://github.com/jmblog/how-to-optimize-momentjs-with-webpack for details
@@ -188,9 +208,6 @@ const defaultModify = ({
     ...fileLoader.exclude,
   ];
 
-  // Disabling the ESlint pre loader
-  config.module.rules.splice(0, 1);
-
   let addonsFromEnvVar = [];
   if (process.env.ADDONS) {
     addonsFromEnvVar = process.env.ADDONS.split(';');
@@ -235,8 +252,7 @@ const defaultModify = ({
 
   let addonsAsExternals = [];
 
-  const babelLoader = config.module.rules.find(babelLoaderFinder);
-  const { include } = babelLoader;
+  const { include } = options.webpackOptions.babelRule;
   if (packageJson.name !== '@plone/volto') {
     include.push(fs.realpathSync(`${registry.voltoPath}/src`));
   }
@@ -271,23 +287,39 @@ const defaultModify = ({
     });
   }
 
+  // write a .dot file with the graph
+  // convert it to svg with: `dot addon-dependency-graph.dot -Tsvg -o out.svg`
+  if (process.env.DEBUG_ADDONS_LOADER && target === 'node') {
+    const addonsDepGraphPath = path.join(
+      process.cwd(),
+      'addon-dependency-graph.dot',
+    );
+    const graph = registry.getDotDependencyGraph();
+    fs.writeFileSync(addonsDepGraphPath, new Buffer.from(graph));
+  }
+
   config.externals =
     target === 'node'
       ? [
           nodeExternals({
-            whitelist: [
+            allowlist: [
               dev ? 'webpack/hot/poll?300' : null,
               /\.(eot|woff|woff2|ttf|otf)$/,
               /\.(svg|png|jpg|jpeg|gif|ico)$/,
               /\.(mp4|mp3|ogg|swf|webp)$/,
               /\.(css|scss|sass|sss|less)$/,
-              // Add support for whitelist external (ie. node_modules npm published packages)
+              // Add support for addons to include externals (ie. node_modules npm published packages)
               ...addonsAsExternals,
               /^@plone\/volto/,
             ].filter(Boolean),
           }),
         ]
       : [];
+
+  if (config.devServer) {
+    config.devServer.watchOptions.ignored = /node_modules\/(?!@plone\/volto)/;
+  }
+
   return config;
 };
 
@@ -295,7 +327,6 @@ const addonExtenders = registry.getAddonExtenders().map((m) => require(m));
 
 const defaultPlugins = [
   { object: require('./webpack-plugins/webpack-less-plugin')({ registry }) },
-  { object: require('./webpack-plugins/webpack-sentry-plugin') },
   { object: require('./webpack-plugins/webpack-svg-plugin') },
   { object: require('./webpack-plugins/webpack-bundle-analyze-plugin') },
   { object: require('./jest-extender-plugin') },
@@ -308,23 +339,30 @@ const plugins = addonExtenders.reduce(
 
 module.exports = {
   plugins,
+  modifyJestConfig: ({ jestConfig }) => {
+    jestConfig.testEnvironment = 'jsdom';
+    return jestConfig;
+  },
   modifyWebpackConfig: ({
     env: { target, dev },
     webpackConfig,
     webpackObject,
+    options,
   }) => {
     const defaultConfig = defaultModify({
       env: { target, dev },
       webpackConfig,
       webpackObject,
+      options,
     });
+
     const res = addonExtenders.reduce(
       (acc, extender) => extender.modify(acc, { target, dev }, webpackConfig),
       defaultConfig,
     );
     return res;
   },
-  experimental: {
-    reactRefresh: true,
+  options: {
+    enableReactRefresh: true,
   },
 };

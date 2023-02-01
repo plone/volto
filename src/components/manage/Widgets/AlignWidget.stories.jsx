@@ -18,5 +18,10 @@ export default {
       </div>
     ),
   ],
-  argTypes: {},
+  argTypes: {
+    actions: {
+      control: 'check',
+      options: ['left', 'right', 'center', 'narrow', 'wide', 'full'],
+    },
+  },
 };

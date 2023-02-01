@@ -74,6 +74,7 @@ class Form extends Component {
     onCancel: PropTypes.func,
     submitLabel: PropTypes.string,
     resetAfterSubmit: PropTypes.bool,
+    resetOnCancel: PropTypes.bool,
     isEditForm: PropTypes.bool,
     isAdminForm: PropTypes.bool,
     title: PropTypes.string,
@@ -105,6 +106,7 @@ class Form extends Component {
     onCancel: null,
     submitLabel: null,
     resetAfterSubmit: false,
+    resetOnCancel: false,
     isEditForm: false,
     isAdminForm: false,
     title: null,
@@ -199,6 +201,8 @@ class Form extends Component {
       selected: selectedBlock,
       multiSelected: [],
       isClient: false,
+      // Ensure focus remain in field after change
+      inFocus: {},
     };
     this.onChangeField = this.onChangeField.bind(this);
     this.onSelectBlock = this.onSelectBlock.bind(this);
@@ -322,6 +326,13 @@ class Form extends Component {
           [id]:
             value || (value !== undefined && isBoolean(value)) ? value : null,
         },
+        // Changing the form data re-renders the select widget which causes the
+        // focus to get lost. To circumvent this, we set the focus back to
+        // the input.
+        // This could fix other widgets too but currently targeted
+        // against the select widget only.
+        // Ensure field to be in focus after the change
+        inFocus: { [id]: true },
       };
     });
   }
@@ -399,7 +410,7 @@ class Form extends Component {
     if (event) {
       event.preventDefault();
     }
-    if (this.props.resetAfterSubmit) {
+    if (this.props.resetOnCancel || this.props.resetAfterSubmit) {
       this.setState({
         formData: this.props.formData,
       });
@@ -418,11 +429,13 @@ class Form extends Component {
       event.preventDefault();
     }
 
-    const errors = FormValidation.validateFieldsPerFieldset({
-      schema: this.props.schema,
-      formData: this.state.formData,
-      formatMessage: this.props.intl.formatMessage,
-    });
+    const errors = this.props.schema
+      ? FormValidation.validateFieldsPerFieldset({
+          schema: this.props.schema,
+          formData: this.state.formData,
+          formatMessage: this.props.intl.formatMessage,
+        })
+      : {};
 
     if (keys(errors).length > 0) {
       const activeIndex = FormValidation.showFirstTabWithErrors({
@@ -437,7 +450,11 @@ class Form extends Component {
         () => {
           Object.keys(errors).forEach((err) =>
             toast.error(
-              <Toast error title={err} content={errors[err].join(', ')} />,
+              <Toast
+                error
+                title={this.props.schema.properties[err].title || err}
+                content={errors[err].join(', ')}
+              />,
             ),
           );
         },
@@ -599,7 +616,7 @@ class Form extends Component {
                           id={field}
                           fieldSet={item.title.toLowerCase()}
                           formData={this.state.formData}
-                          focus={false}
+                          focus={this.state.inFocus[field]}
                           value={this.state.formData?.[field]}
                           required={schema.required.indexOf(field) !== -1}
                           onChange={this.onChangeField}
@@ -652,6 +669,11 @@ class Form extends Component {
                           <Segment secondary attached key={this.props.title}>
                             {this.props.title}
                           </Segment>
+                        ),
+                        item.description && (
+                          <Message attached="bottom">
+                            {item.description}
+                          </Message>
                         ),
                         ...map(item.fields, (field, index) => (
                           <Field

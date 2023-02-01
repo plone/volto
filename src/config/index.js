@@ -9,6 +9,7 @@ import {
   contentTypesViews,
   defaultView,
   errorViews,
+  layoutViewsNamesMapping,
 } from './Views';
 import { nonContentRoutes } from './NonContentRoutes';
 import {
@@ -20,10 +21,15 @@ import {
 } from './Blocks';
 import { components } from './Components';
 import { loadables } from './Loadables';
+import { workflowMapping } from './Workflows';
 
-import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
-import { controlPanelsIcons } from './ControlPanels';
+import { styleClassNameConverters, styleClassNameExtenders } from './Style';
+import {
+  controlPanelsIcons,
+  filterControlPanels,
+  filterControlPanelsSchema,
+} from './ControlPanels';
 
 import { richtextEditorSettings, richtextViewSettings } from './RichTextEditor';
 
@@ -69,11 +75,18 @@ let config = {
     // The URL Volto is going to be served (see sensible defaults above)
     publicURL,
     apiPath,
-    apiExpanders: [],
+    apiExpanders: [
+      // Add the following expanders for only issuing a single request.
+      // https://6.docs.plone.org/volto/configuration/settings-reference.html#term-apiExpanders
+      // {
+      //   match: '',
+      //   GET_CONTENT: ['breadcrumbs', 'navigation', 'actions', 'types'],
+      // },
+    ],
     // Internal proxy to bypass CORS *while developing*. NOT intended for production use.
     // In production is recommended you use a Seamless mode deployment using a web server in
     // front of both the frontend and the backend so you can bypass CORS safely.
-    // https://docs.voltocms.com/deploying/seamless-mode/
+    // https://6.docs.plone.org/volto/deploying/seamless-mode.html
     devProxyToApiPath:
       process.env.RAZZLE_DEV_PROXY_API_PATH ||
       process.env.RAZZLE_API_PATH ||
@@ -91,8 +104,8 @@ let config = {
     legacyTraverse: process.env.RAZZLE_LEGACY_TRAVERSE || false,
     cookieExpires: 15552000, //in seconds. Default is 6 month (15552000)
     nonContentRoutes,
-    richtextEditorSettings,
-    richtextViewSettings,
+    richtextEditorSettings, // Part of draftjs support, to be removed
+    richtextViewSettings, // Part of draftjs support, to be removed
     imageObjects: ['Image'],
     reservedIds: ['login', 'layout', 'plone', 'zip', 'properties'],
     downloadableObjects: ['File'], //list of content-types for which the direct download of the file will be carried out if the user is not authenticated
@@ -105,15 +118,12 @@ let config = {
     defaultLanguage: 'en',
     navDepth: 1,
     expressMiddleware: serverConfig.expressMiddleware, // BBB
-    defaultBlockType: 'text',
+    defaultBlockType: 'slate',
     verticalFormTabs: false,
     useEmailAsLogin: false,
     persistentReducers: ['blocksClipboard'],
     initialReducersBlacklist: [], // reducers in this list won't be hydrated in windows.__data
     asyncPropsExtenders: [], // per route asyncConnect customizers
-    sentryOptions: {
-      ...sentryOptions,
-    },
     contentIcons: contentIcons,
     loadables,
     lazyBundles: {
@@ -143,6 +153,8 @@ let config = {
     showTags: true,
     controlpanels: [],
     controlPanelsIcons,
+    filterControlPanels,
+    filterControlPanelsSchema,
     externalRoutes: [
       // URL to be considered as external
       // {
@@ -161,6 +173,16 @@ let config = {
     hasWorkingCopySupport: false,
     maxUndoLevels: 200, // undo history size for the main form
     addonsInfo: addonsInfo,
+    workflowMapping,
+    errorHandlers: [], // callables for unhandled errors
+    styleClassNameConverters,
+    hashLinkSmoothScroll: false,
+    styleClassNameExtenders,
+  },
+  experimental: {
+    addBlockButton: {
+      enabled: false,
+    },
   },
   widgets: {
     ...widgetMapping,
@@ -171,6 +193,7 @@ let config = {
     contentTypesViews,
     defaultView,
     errorViews,
+    layoutViewsNamesMapping,
   },
   blocks: {
     requiredBlocks,
@@ -185,13 +208,13 @@ let config = {
   components,
 };
 
-config = applyAddonConfiguration(config);
-
 ConfigRegistry.settings = config.settings;
+ConfigRegistry.experimental = config.experimental;
 ConfigRegistry.blocks = config.blocks;
 ConfigRegistry.views = config.views;
 ConfigRegistry.widgets = config.widgets;
 ConfigRegistry.addonRoutes = config.addonRoutes;
 ConfigRegistry.addonReducers = config.addonReducers;
-ConfigRegistry.appExtras = config.appExtras;
 ConfigRegistry.components = config.components;
+
+applyAddonConfiguration(ConfigRegistry);

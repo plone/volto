@@ -2,15 +2,25 @@ version: '3.3'
 services:
 
   backend:
-    image: plone/plone-backend:6.0.0a3
+    image: plone/plone-backend:6.0.0b2
     # Plone 5.2 series can be used too
-    # image: plone/plone-backend:5.2.7
+    # image: plone/plone-backend:5.2.9
     ports:
       - '8080:8080'
     environment:
       - SITE=Plone
-      - 'ADDONS=plone.restapi==8.21.0 plone.volto==4.0.0a3 plone.rest==2.0.0a2 plone.app.iterate==4.0.2 plone.app.vocabularies==4.3.0'
+      - 'ADDONS=plone.restapi==8.29.0 plone.volto==4.0.0a13 plone.rest==2.0.0a5'
       - 'PROFILES=plone.volto:default-homepage'
+    labels:
+      - traefik.enable=true
+      # SERVICE
+      - traefik.http.services.plone-backend.loadbalancer.server.port=8080
+      # Plone API
+      - traefik.http.routers.backend.rule=Host(`plone.localhost`) && PathPrefix(`/++api++`)
+      - traefik.http.routers.backend.service=plone-backend
+      - "traefik.http.middlewares.backend.replacepathregex.regex=^/\\+\\+api\\+\\+($$|/.*)"
+      - "traefik.http.middlewares.backend.replacepathregex.replacement=/VirtualHostBase/http/plone.localhost/Plone/++api++/VirtualHostRoot/$$1"
+      - traefik.http.routers.backend.middlewares=gzip,backend
 
   frontend:
     image: 'plone/plone-frontend:latest'
@@ -22,6 +32,32 @@ services:
       # routing needs to be amended. You can point to the
       # internal network alias.
       RAZZLE_INTERNAL_API_PATH: http://backend:8080/Plone
+      # This last is not required if a reverse proxy is in the stack
       RAZZLE_DEV_PROXY_API_PATH: http://backend:8080/Plone
     depends_on:
       - backend
+    labels:
+      - traefik.enable=true
+      # SERVICE
+      - traefik.http.services.plone-frontend.loadbalancer.server.port=3000
+      # HOSTS: Main
+      - traefik.http.routers.frontend.rule=Host(`plone.localhost`)
+      - traefik.http.routers.frontend.service=plone-frontend
+      - traefik.http.routers.frontend.middlewares=gzip
+
+  reverse-proxy:
+    # The official v2 Traefik docker image
+    image: traefik:v2.9
+    # Enables the web UI and tells Traefik to listen to docker
+    command: --api.insecure=true --providers.docker
+    ports:
+      # The HTTP port
+      - "80:80"
+      # The Web UI (enabled by --api.insecure=true)
+      - "8888:8080"
+    volumes:
+      # So that Traefik can listen to the Docker events
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    labels:
+      - traefik.http.middlewares.gzip.compress=true
+      - traefik.http.middlewares.gzip.compress.excludedcontenttypes=image/png, image/jpeg, font/woff2

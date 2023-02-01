@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Layers and components in Semantic UI theming."
-  "property=og:description": "Layers and components in Semantic UI theming."
-  "property=og:title": "Semantic UI Theming"
-  "keywords": "Volto, Plone, frontend, React, Semantic UI, Theming"
+myst:
+  html_meta:
+    "description": "Layers and components in Semantic UI theming."
+    "property=og:description": "Layers and components in Semantic UI theming."
+    "property=og:title": "Semantic UI Theming"
+    "keywords": "Volto, Plone, frontend, React, Semantic UI, Theming"
 ---
 
 # Semantic UI Theming
