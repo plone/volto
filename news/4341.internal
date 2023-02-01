@@ -1,1 +1,1 @@
-Fixed the issue #4341 @ajmalwali7
+Fixed the issue #4341: Exported ListingBody unconnected with 'withQuerystringResults(ListingBodyComponent)' and changed ListingBody to ListingBodyComponent.  @ajmalwali7
