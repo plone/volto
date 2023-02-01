@@ -8,6 +8,15 @@
 
 <!-- towncrier release notes start -->
 
+## 2.3.0 (2023-01-13)
+
+### Feature
+
+- The `consolidate` command includes Cypress folder @sneridagh [#4192](https://github.com/plone/volto/issues/4192)
+- Add backport PR helper script @sneridagh [#4222](https://github.com/plone/volto/issues/4222)
+- Improve consolidate and local clone copy files @sneridagh [#4253](https://github.com/plone/volto/issues/4253)
+
+
 ## 2.2.2 (2022-12-23)
 
 ### Internal
