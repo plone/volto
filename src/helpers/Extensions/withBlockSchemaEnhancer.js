@@ -316,7 +316,7 @@ export const withStylingSchemaEnhancer = (FormComponent) => (props) => {
     };
   }
   return <FormComponent {...props} schema={schema} />;
-}
+};
 
 export const EMPTY_STYLES_SCHEMA = {
   fieldsets: [
