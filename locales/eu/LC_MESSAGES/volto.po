@@ -3780,6 +3780,7 @@ msgid "Video URL"
 msgstr "Bideoaren URLa"
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Toolbar/Toolbar
 # defaultMessage: View
 msgid "View"
 msgstr "Ikusi"
