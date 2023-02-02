@@ -255,6 +255,8 @@ msgstr "Ajoutée"
 msgid "Additional date"
 msgstr "Date supplémentaire"
 
+#: components/manage/Blocks/Block/StylesSchema
+#: components/manage/Blocks/Hero/schema
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Addon could not be installed
 msgid "Addon could not be installed"
@@ -471,7 +473,8 @@ msgstr "L'adresse e-mail et le mot de passe sont sensibles aux majuscules et min
 msgid "Breadcrumbs"
 msgstr "Fil d'Ariane"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroImage
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 # defaultMessage: Browse
@@ -985,7 +988,8 @@ msgstr "Profondeur"
 msgid "Descending"
 msgstr "Descendant"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroText
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1472,7 +1476,7 @@ msgstr "De"
 #: components/manage/Widgets/AlignWidget
 # defaultMessage: Full
 msgid "Full"
-msgstr "Complet<<<<<<< HEAD"
+msgstr "Complet"
 
 #: components/theme/Register/Register
 # defaultMessage: Full Name
@@ -1547,6 +1551,11 @@ msgstr "Cellule d'en-tête"
 # defaultMessage: Headline
 msgid "Headline"
 msgstr "Gros titre"
+
+#: components/manage/Blocks/Hero/schema
+# defaultMessage: Hero
+msgid "Hero"
+msgstr ""
 
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Headline level
@@ -1623,7 +1632,8 @@ msgstr "Si vous êtes certain que cet utilisateur a abandonné l'objet, vous pou
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Si vous êtes certain que l'adresse est bonne, mais que vous avez un erreur, veuillez contacter le {site_admin}."
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroImage
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1635,6 +1645,21 @@ msgstr "Image"
 # defaultMessage: Image gallery
 msgid "Image gallery"
 msgstr "Galerie d'images"
+
+#: config/Blocks
+# defaultMessage: Image on left side
+msgid "Image on left side"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Image on right side
+msgid "Image on right side"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Image on the background
+msgid "Image on the background"
+msgstr ""
 
 #: components/manage/Blocks/Image/schema
 # defaultMessage: Image size
@@ -1859,12 +1884,13 @@ msgstr "Gauche"
 msgid "Link"
 msgstr "Lien"
 
-#: components/manage/Blocks/HeroImageLeft/schema
+#: components/manage/Blocks/Hero/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link more
 msgid "Link more"
 msgstr "Lier plus"
 
+#: components/manage/Blocks/Hero/schema
 #: config/Views
 # defaultMessage: Link redirect view
 msgid "Link redirect view"
@@ -1876,7 +1902,7 @@ msgstr ""
 msgid "Link title"
 msgstr "Titre du lien"
 
-#: components/manage/Blocks/HeroImageLeft/schema
+#: components/manage/Blocks/Hero/schema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
@@ -2302,6 +2328,11 @@ msgstr "Ok"
 # defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.
 msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed."
 msgstr "Uniquement des caractères en minuscules (a-z) sans accents, chiffres (0-9), et les caractères "-", "_", and "." sont autorisés."
+
+#: components/manage/Blocks/Hero/schema
+# defaultMessage: Opacity
+msgid "Opacity"
+msgstr ""
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -3281,7 +3312,7 @@ msgstr "Merci."
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: The Database Manager allow you to view database status information
 msgid "The Database Manager allow you to view database status information"
-msgstr "Le gestionnaire de base de données vous permet d'afficher les informations d'état de la base de données<<<<<<< HEAD======="
+msgstr "Le gestionnaire de base de données vous permet d'afficher les informations d'état de la base de données"
 
 #: components/theme/RequestTimeout/RequestTimeout
 # defaultMessage: The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again.
@@ -3425,7 +3456,8 @@ msgstr "Cet règle a été assignée aux endroits suivants :"
 msgid "Time"
 msgstr "Temps"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroText
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -3676,7 +3708,7 @@ msgstr "Téléchargé"
 msgid "Upload a lead image in the 'Lead Image' content field."
 msgstr "Téléchargez une image de garde dans le champ «Image de garde»."
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/Edit
 # defaultMessage: Upload a new image
 msgid "Upload a new image"
 msgstr "Charger une nouveller image"
@@ -3691,7 +3723,8 @@ msgstr "Télécharger des fichiers"
 msgid "Uploading files"
 msgstr "Téléchargement de fichiers"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroImage
+#: components/manage/Blocks/Hero/Edit
 # defaultMessage: Uploading image
 msgid "Uploading image"
 msgstr "Chargement de l'image"

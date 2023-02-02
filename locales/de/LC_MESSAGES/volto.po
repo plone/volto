@@ -244,6 +244,8 @@ msgstr "Hinzugefügt"
 msgid "Additional date"
 msgstr "Zusätzliches Datum"
 
+#: components/manage/Blocks/Block/StylesSchema
+#: components/manage/Blocks/Hero/schema
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Addon could not be installed
 msgid "Addon could not be installed"
@@ -460,7 +462,8 @@ msgstr "Sowohl E-Mail Adresse als auch Passwort unterscheiden zwischen Groß- un
 msgid "Breadcrumbs"
 msgstr "Brotkrumen"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroImage
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 # defaultMessage: Browse
@@ -974,7 +977,8 @@ msgstr "Tiefe"
 msgid "Descending"
 msgstr "Absteigend"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroText
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1537,6 +1541,11 @@ msgstr "Kopfzeile"
 msgid "Headline"
 msgstr "Überschrift"
 
+#: components/manage/Blocks/Hero/schema
+# defaultMessage: Hero
+msgid "Hero"
+msgstr ""
+
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Headline level
 msgid "Headline level"
@@ -1612,7 +1621,8 @@ msgstr "Wenn Sie sicher sind dass das Objekt nicht mehr aktiv von einem anderen 
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Wenn Sie sicher sind, dass Sie die richtige Adresse eingegeben haben, kontaktieren Sie bitte den {site_admin}."
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroImage
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1624,6 +1634,21 @@ msgstr "Bild"
 # defaultMessage: Image gallery
 msgid "Image gallery"
 msgstr "Bildergalerie"
+
+#: config/Blocks
+# defaultMessage: Image on left side
+msgid "Image on left side"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Image on right side
+msgid "Image on right side"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Image on the background
+msgid "Image on the background"
+msgstr ""
 
 #: components/manage/Blocks/Image/schema
 # defaultMessage: Image size
@@ -1848,12 +1873,13 @@ msgstr "Links"
 msgid "Link"
 msgstr "Link"
 
-#: components/manage/Blocks/HeroImageLeft/schema
+#: components/manage/Blocks/Hero/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link more
 msgid "Link more"
 msgstr "'Mehr' Link"
 
+#: components/manage/Blocks/Hero/schema
 #: config/Views
 # defaultMessage: Link redirect view
 msgid "Link redirect view"
@@ -1865,7 +1891,7 @@ msgstr "Link"
 msgid "Link title"
 msgstr "Linktitel"
 
-#: components/manage/Blocks/HeroImageLeft/schema
+#: components/manage/Blocks/Hero/schema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
@@ -2291,6 +2317,11 @@ msgstr "OK"
 # defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.
 msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed."
 msgstr "Nur Kleinbuchstaben (a-z) ohne Umlaute oder Sonderzeichen, Zahlen (0-9) und die beiden Zeichen "-" und "_", und "." sind erlaubt."
+
+#: components/manage/Blocks/Hero/schema
+# defaultMessage: Opacity
+msgid "Opacity"
+msgstr ""
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -3414,7 +3445,8 @@ msgstr "Diese Regel ist an den folgenden Orten zugewiesen:"
 msgid "Time"
 msgstr "Zeit"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroText
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -3665,7 +3697,7 @@ msgstr "Hochladen"
 msgid "Upload a lead image in the 'Lead Image' content field."
 msgstr "Laden Sie ein Lead-Bild im Feld 'Lead-Bild' hoch."
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/Edit
 # defaultMessage: Upload a new image
 msgid "Upload a new image"
 msgstr "Neues Bild hochladen"
@@ -3680,7 +3712,8 @@ msgstr "Datei hochladen"
 msgid "Uploading files"
 msgstr "Dateien hochladen"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroImage
+#: components/manage/Blocks/Hero/Edit
 # defaultMessage: Uploading image
 msgid "Uploading image"
 msgstr "Bild hochladen"

@@ -1,6 +1,9 @@
 import React from 'react';
 import Wrapper from '@plone/volto/storybook';
 import TextLineEdit from './TextLineEdit';
+import { BlocksForm } from '@plone/volto/components';
+import { RealStoreWrapper, FormUndoWrapper } from '@plone/volto/storybook';
+import cx from 'classnames';
 
 function StoryComponent(args) {
   const {
@@ -63,6 +66,9 @@ ValueAsData.args = {
   fieldDataName: 'title',
   renderClassName: '',
   renderTag: 'h1',
+  properties: {
+    title: 'This is properties title',
+  },
 };
 
 export const InitialPropertiesValue = StoryComponent.bind({});
@@ -118,8 +124,95 @@ H3.args = {
   renderTag: 'h3',
 };
 
+const TextlineBlockEdit = (props) => {
+  const { data = {} } = props;
+  return (
+    <TextLineEdit
+      {...props}
+      detached
+      fieldName={data.fieldName}
+      fieldDataName={data.fieldDataName}
+    />
+  );
+};
+
+const blocksConfig = {
+  testTextlineBlock: {
+    id: 'testTextlineBlock',
+    title: 'Textline Block',
+    view: (props) => <div>{JSON.stringify(props.data)}</div>,
+    edit: TextlineBlockEdit,
+    blockHasOwnFocusManagement: true,
+  },
+};
+
+const content = {
+  title: 'Some title here',
+  description: 'Some description here',
+  blocks: {
+    a: { '@type': 'testTextlineBlock' },
+    b: { '@type': 'testTextlineBlock', fieldName: 'description' },
+    c: {
+      '@type': 'testTextlineBlock',
+      fieldDataName: 'fieldC',
+      placeholder: 'Type something for fieldC',
+    },
+  },
+  blocks_layout: { items: ['a', 'b', 'c'] },
+};
+
+export const AsBlockComponent = (props) => {
+  const pathname = '/folder2/folder21/doc212';
+  const [selectedBlock, setSelectedBlock] = React.useState('a');
+
+  return (
+    <RealStoreWrapper location={{ pathname }}>
+      <FormUndoWrapper initialState={content} showControls={true}>
+        {({ state, onChange }) => (
+          <div style={{ width: '400px' }}>
+            <BlocksForm
+              pathname={pathname}
+              blocksConfig={blocksConfig}
+              metadata={state}
+              properties={state}
+              selectedBlock={selectedBlock}
+              onSelectBlock={setSelectedBlock}
+              onChangeField={(id, value) => onChange({ ...state, [id]: value })}
+              onChangeFormData={onChange}
+              isMainForm={false}
+            >
+              {({ draginfo }, editBlock, blockProps) => {
+                // console.log('blockProps', blockProps);
+                return (
+                  <div
+                    className={cx('edit-block', {
+                      selected: blockProps.selected,
+                    })}
+                    ref={draginfo.innerRef}
+                    {...draginfo.draggableProps}
+                    style={{
+                      ...(blockProps.selected
+                        ? { border: '1px solid red' }
+                        : {}),
+                    }}
+                  >
+                    <div className="draghandle" {...draginfo.dragHandleProps} />
+                    {editBlock}
+                  </div>
+                );
+              }}
+            </BlocksForm>
+            <pre>Value: {JSON.stringify(state, null, 4)}</pre>
+          </div>
+        )}
+      </FormUndoWrapper>
+    </RealStoreWrapper>
+  );
+};
+AsBlockComponent.args = {};
+
 export default {
-  title: 'Edit Widgets/TextLineEdit',
+  title: 'Internal components/TextLineEdit',
   component: TextLineEdit,
   decorators: [
     (Story) => (

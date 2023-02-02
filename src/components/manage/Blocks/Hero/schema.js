@@ -5,6 +5,10 @@ const messages = defineMessages({
     id: 'Link more',
     defaultMessage: 'Link more',
   },
+  blockTitle: {
+    id: 'Hero',
+    defaultMessage: 'Hero',
+  },
   LinkTitle: {
     id: 'Link title',
     defaultMessage: 'Link Title',
@@ -13,17 +17,31 @@ const messages = defineMessages({
     id: 'Link to',
     defaultMessage: 'Link to',
   },
+  Align: {
+    id: 'Alignment',
+    defaultMessage: 'Alignment',
+  },
+  Opacity: {
+    id: 'Opacity',
+    defaultMessage: 'Opacity',
+  },
 });
 
-const schemaHero = ({ intl }) => {
+const schemaHero = ({ intl, variation }) => {
   return {
-    title: 'Block settings',
+    title: intl.formatMessage(messages.blockTitle),
     required: [],
     fieldsets: [
       {
         id: 'default',
         title: intl.formatMessage(messages.more),
-        fields: ['linkTitle', 'linkHref'],
+        fields: [
+          'linkTitle',
+          'linkHref',
+          ...(variation?.id === 'heroImageBackground'
+            ? ['align', 'opacity']
+            : []),
+        ],
       },
     ],
     properties: {
@@ -37,7 +55,20 @@ const schemaHero = ({ intl }) => {
         selectedItemAttrs: ['Title', 'Description'],
         allowExternals: true,
       },
+      align: {
+        title: intl.formatMessage(messages.Align),
+        widget: 'align',
+      },
+      opacity: {
+        title: intl.formatMessage(messages.Opacity),
+        type: 'number',
+        minimum: 0.1,
+        maximum: 1,
+        defaultValue: 1,
+        step: 0.1,
+      },
     },
   };
 };
+
 export default schemaHero;

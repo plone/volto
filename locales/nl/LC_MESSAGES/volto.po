@@ -291,6 +291,8 @@ msgstr "Alias"
 msgid "Alias has been added"
 msgstr "Alias toegevoegd"
 
+#: components/manage/Blocks/Block/StylesSchema
+#: components/manage/Blocks/Hero/schema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
@@ -461,7 +463,8 @@ msgstr "E-mailadres en wachtwoord zijn hoofdlettergevoelig, kijk na of caps lock
 msgid "Breadcrumbs"
 msgstr "Broodkruimel"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroImage
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 # defaultMessage: Browse
@@ -975,7 +978,8 @@ msgstr "Diepte"
 msgid "Descending"
 msgstr "Aflopend"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroText
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1543,6 +1547,11 @@ msgstr "Kop"
 msgid "Headline level"
 msgstr "Kopniveau"
 
+#: components/manage/Blocks/Hero/schema
+# defaultMessage: Hero
+msgid "Hero"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hidden facets will still filter the results if proper parameters are passed in URLs
 msgid "Hidden facets will still filter the results if proper parameters are passed in URLs"
@@ -1613,7 +1622,8 @@ msgstr "Als je zeker bent dat de gebruiker dit object niet meer bewerkt, mag je 
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Als je zeker bent dat het webadres correct is, maar je toch een foutmelding krijgt, neem dan contact op met {site_admin}."
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroImage
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1625,6 +1635,21 @@ msgstr "Afbeelding"
 # defaultMessage: Image gallery
 msgid "Image gallery"
 msgstr "Afbeeldingsgallerij"
+
+#: config/Blocks
+# defaultMessage: Image on left side
+msgid "Image on left side"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Image on right side
+msgid "Image on right side"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Image on the background
+msgid "Image on the background"
+msgstr ""
 
 #: components/manage/Blocks/Image/schema
 # defaultMessage: Image size
@@ -1849,7 +1874,7 @@ msgstr "Links"
 msgid "Link"
 msgstr "Link"
 
-#: components/manage/Blocks/HeroImageLeft/schema
+#: components/manage/Blocks/Hero/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link more
 msgid "Link more"
@@ -1860,13 +1885,13 @@ msgstr "Meer link"
 msgid "Link redirect view"
 msgstr "Link redirect weergave"
 
-#: components/manage/Blocks/HeroImageLeft/schema
+#: components/manage/Blocks/Hero/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link Title
 msgid "Link title"
 msgstr "Link titel"
 
-#: components/manage/Blocks/HeroImageLeft/schema
+#: components/manage/Blocks/Hero/schema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
@@ -2292,6 +2317,11 @@ msgstr "Ok"
 # defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.
 msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed."
 msgstr "Enkel kleine letters (a-z) zonder accenten, cijfers (0-9) en de karakters  '-', '_' en '.' zijn toegelaten."
+
+#: components/manage/Blocks/Hero/schema
+# defaultMessage: Opacity
+msgid "Opacity"
+msgstr ""
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -3415,7 +3445,8 @@ msgstr ""
 msgid "Time"
 msgstr "Tijd"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroText
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -3666,7 +3697,7 @@ msgstr "Upload"
 msgid "Upload a lead image in the 'Lead Image' content field."
 msgstr "Upload een afbeelding in het 'Voorbeeldafbeelding' veld"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/Edit
 # defaultMessage: Upload a new image
 msgid "Upload a new image"
 msgstr "Upload een afbeelding"
@@ -3681,7 +3712,8 @@ msgstr "Bestanden uploaden"
 msgid "Uploading files"
 msgstr "Bestanden aan het uploaden"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroImage
+#: components/manage/Blocks/Hero/Edit
 # defaultMessage: Uploading image
 msgid "Uploading image"
 msgstr "Afbeelding aan het uploaden"

@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import config from '@plone/volto/registry';
 
 import Edit from './Edit';
 
@@ -15,6 +16,23 @@ global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
 
 const mockStore = configureStore();
 const blockId = '1234';
+
+config.blocks.blocksConfig = {
+  hero: {
+    id: 'hero',
+    title: 'Hero',
+    group: 'media',
+    extensions: {},
+    variations: [],
+    restricted: false,
+    mostUsed: true,
+    sidebarTab: 1,
+    security: {
+      addPermission: [],
+      view: [],
+    },
+  },
+};
 
 test('renders an edit hero block component', () => {
   const store = mockStore({
@@ -33,7 +51,7 @@ test('renders an edit hero block component', () => {
   const component = renderer.create(
     <Provider store={store}>
       <Edit
-        data={{ url: 'hero' }}
+        data={{ url: 'hero', '@type': 'hero' }}
         selected={false}
         block={blockId}
         content={{}}

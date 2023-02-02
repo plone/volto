@@ -245,6 +245,8 @@ msgstr "Ondo gehitu da"
 msgid "Additional date"
 msgstr "Data gehigarria"
 
+#: components/manage/Blocks/Block/StylesSchema
+#: components/manage/Blocks/Hero/schema
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Addon could not be installed
 msgid "Addon could not be installed"
@@ -461,7 +463,8 @@ msgstr "Bai e-posta helbideak eta bai pasahitzak maiuskula eta minuskulak bereiz
 msgid "Breadcrumbs"
 msgstr "Nabigazio arrastoa"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroImage
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 # defaultMessage: Browse
@@ -975,7 +978,8 @@ msgstr "Sakonera"
 msgid "Descending"
 msgstr "Beheraka"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroText
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1538,6 +1542,11 @@ msgstr "Goiburuko gelaxka"
 msgid "Headline"
 msgstr "Goiburua"
 
+#: components/manage/Blocks/Hero/schema
+# defaultMessage: Hero
+msgid "Hero"
+msgstr ""
+
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Headline level
 msgid "Headline level"
@@ -1613,7 +1622,8 @@ msgstr "Erabiltzaileak elementua editatzeari utzi diola ziur bazaude, objektua d
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Ziurtatu helbide zuzenean zaudena, hala ere errorea baduzu jarri kontaktuan {site_admin}."
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroImage
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1625,6 +1635,21 @@ msgstr "Irudia"
 # defaultMessage: Image gallery
 msgid "Image gallery"
 msgstr "Irudi galeria"
+
+#: config/Blocks
+# defaultMessage: Image on left side
+msgid "Image on left side"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Image on right side
+msgid "Image on right side"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Image on the background
+msgid "Image on the background"
+msgstr ""
 
 #: components/manage/Blocks/Image/schema
 # defaultMessage: Image size
@@ -1849,12 +1874,13 @@ msgstr "Ezkerrean"
 msgid "Link"
 msgstr "Esteka"
 
-#: components/manage/Blocks/HeroImageLeft/schema
+#: components/manage/Blocks/Hero/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link more
 msgid "Link more"
 msgstr "Gehiago estekatu"
 
+#: components/manage/Blocks/Hero/schema
 #: config/Views
 # defaultMessage: Link redirect view
 msgid "Link redirect view"
@@ -1866,7 +1892,7 @@ msgstr "Loturaren berbideraketa bista"
 msgid "Link title"
 msgstr "Izenburua estekatu"
 
-#: components/manage/Blocks/HeroImageLeft/schema
+#: components/manage/Blocks/Hero/schema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
@@ -2292,6 +2318,11 @@ msgstr "Ados"
 # defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.
 msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed."
 msgstr "Letra xeheak (a-z), karaktere berezi gabe, zenbakiak (0-9) eta "-", "_" eta "." ikurrak bakarrik erabili daitezke."
+
+#: components/manage/Blocks/Hero/schema
+# defaultMessage: Opacity
+msgid "Opacity"
+msgstr ""
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -3415,7 +3446,8 @@ msgstr "Erregela hau toki hauetan dago esletituta:"
 msgid "Time"
 msgstr "Ordua"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroText
+#: components/manage/Blocks/Hero/Edit
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -3666,7 +3698,7 @@ msgstr "Kargatu"
 msgid "Upload a lead image in the 'Lead Image' content field."
 msgstr "Kargatu irudia"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/Edit
 # defaultMessage: Upload a new image
 msgid "Upload a new image"
 msgstr "Kargatu irudi berria"
@@ -3681,7 +3713,8 @@ msgstr "Kargatu fitxategiak"
 msgid "Uploading files"
 msgstr "Fitxategiak kargatzen"
 
-#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Hero/components/HeroImage
+#: components/manage/Blocks/Hero/Edit
 # defaultMessage: Uploading image
 msgid "Uploading image"
 msgstr "Irudia kargatzen"

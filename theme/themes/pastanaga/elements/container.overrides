@@ -127,4 +127,9 @@ body.has-toolbar-collapsed.has-sidebar-collapsed {
   max-width: initial !important;
   margin-right: -50vw !important;
   margin-left: -50vw !important;
+
+  &.hero-image {
+    right: 0%;
+    left: 0%;
+  }
 }

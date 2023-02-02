@@ -172,6 +172,9 @@ export ObjectBrowserWidget from '@plone/volto/components/manage/Widgets/ObjectBr
 export ObjectBrowserWidgetMode from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
 export ObjectWidget from '@plone/volto/components/manage/Widgets/ObjectWidget';
 export ObjectListWidget from '@plone/volto/components/manage/Widgets/ObjectListWidget';
+export TextLineWidget, {
+  TextLineInput,
+} from '@plone/volto/components/manage/Widgets/TextLineWidget';
 
 export EditDefaultBlock from '@plone/volto/components/manage/Blocks/Block/DefaultEdit';
 export EditDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/Edit';
@@ -182,8 +185,8 @@ export EditImageBlock from '@plone/volto/components/manage/Blocks/Image/Edit';
 export EditListingBlock from '@plone/volto/components/manage/Blocks/Listing/Edit';
 export EditVideoBlock from '@plone/volto/components/manage/Blocks/Video/Edit';
 export EditBlock from '@plone/volto/components/manage/Blocks/Block/Edit';
-export EditHeroImageLeftBlock from '@plone/volto/components/manage/Blocks/HeroImageLeft/Edit';
-export ViewHeroImageLeftBlock from '@plone/volto/components/manage/Blocks/HeroImageLeft/View';
+export EditHeroBlock from '@plone/volto/components/manage/Blocks/Hero/Edit';
+export ViewHeroBlock from '@plone/volto/components/manage/Blocks/Hero/View';
 export EditMapBlock from '@plone/volto/components/manage/Blocks/Maps/Edit';
 export EditHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/Edit';
 
@@ -200,6 +203,8 @@ export ViewHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/View';
 
 export ListingBlockBody from '@plone/volto/components/manage/Blocks/Listing/ListingBody';
 export ListingBlockData from '@plone/volto/components/manage/Blocks/Listing/ListingData';
+
+export Hero from '@plone/volto/components/manage/Blocks/Hero/Hero';
 
 export ImageSidebar from '@plone/volto/components/manage/Blocks/Image/ImageSidebar';
 export MapsSidebar from '@plone/volto/components/manage/Blocks/Maps/MapsSidebar';
