@@ -34,7 +34,7 @@ This will select all the blocks between the start and end blocks, allowing you t
 ## Paste blocks
 
 Once you copy/cut the blocks you can paste those blocks on that page or some other page.
-Select an empty block where you want to paste blocks from clipboard.
+Select an empty block where you want to paste blocks from the clipboard.
 You can see the paste option <i class="fas fa-clipboard"></i> at the bottom of Toolbar.
 
 Also, in addition if you hold <kbd>ctrl</kbd> key while clicking the paste button, it does not clear the clipboard.
