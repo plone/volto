@@ -341,7 +341,7 @@ apiExpanders
     It also accepts a `querystring` object that allows configuring the expanders via query string parameters, such as the navigation expander.
 
 additionalToolbarComponents
-    For additional toolbar menues, the menu body component needs to be added to the on demand loaded components.
+    For additional toolbar menus, the menu body component needs to be added to the on-demand loaded components.
 
     ```jsx
     config.settings.additionalToolbarComponents = {
