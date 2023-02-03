@@ -18,7 +18,7 @@ This chapter describes how to do so.
 
 ## Copy/Cut blocks
 
-While in edit mode you can hold <kbd>ctrl</kbd> key to select multiple blocks you want to copy/cut.
+While in edit mode you can hold :kbd:`ctrl` key to select multiple blocks you want to copy/cut.
 Once blocks are selected, you will have a copy <i class="fas fa-copy"></i> and a cut <i class="fas fa-cut"></i> option at the bottom of Toolbar.
 
 Additionally, Volto also has a hidden feature for selecting multiple blocks in sequence.
