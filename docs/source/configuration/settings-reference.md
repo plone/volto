@@ -340,7 +340,7 @@ apiExpanders
     The configuration accepts a list of matchers, with the ability to filter by the request path and action type for maximum flexibility.
     It also accepts a `querystring` object that allows configuring the expanders via query string parameters, such as the navigation expander.
 
-toolbarComponents
+additionalToolbarComponents
     For additional toolbar menues, the menu body component needs to be added to the on demand loaded components.
 
     ```jsx
