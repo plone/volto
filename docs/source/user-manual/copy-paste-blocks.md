@@ -22,7 +22,7 @@ While in edit mode you can hold :kbd:`ctrl` key to select multiple blocks you wa
 Once blocks are selected, you will have a copy <img alt="../_static/copy.svg" src="../_static/copy.svg" style="height: 1em;"> and a cut <img alt="../_static/cut.svg" src="../_static/cut.svg" style="height: 1em;"> option at the bottom of Toolbar.
 
 Additionally, Volto also has a hidden feature for selecting multiple blocks in sequence.
-This feature can be used by selecting a start block and an end block while holding the <kbd>shift</kbd> key.
+This feature can be used by selecting a start block and an end block while holding the `kbd`shift` key.
 This will select all the blocks between the start and end block, allowing you to copy or delete multiple blocks at once.
 
 ```{image} ../_static/user-manual/blocks/block-copy-cut.gif
