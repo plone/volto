@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "16.6.0",
+  "version": "16.9.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -281,7 +281,7 @@
     "eslint-plugin-prettier": "3.1.3",
     "eslint-plugin-react": "7.20.0",
     "eslint-plugin-react-hooks": "4.0.2",
-    "express": "4.17.1",
+    "express": "4.17.3",
     "filesize": "6",
     "glob": "7.1.6",
     "hamburgers": "1.1.3",
@@ -349,6 +349,7 @@
     "react-router": "5.2.0",
     "react-router-config": "5.1.1",
     "react-router-dom": "5.2.0",
+    "react-router-hash-link": "2.4.3",
     "react-select": "4.3.1",
     "react-select-async-paginate": "0.5.3",
     "react-share": "2.3.1",
@@ -408,6 +409,7 @@
     "identity-obj-proxy": "3.0.0",
     "jest": "26.6.3",
     "jest-environment-jsdom": "^26",
+    "react-error-overlay": "6.0.9",
     "react-is": "^16.13.1",
     "release-it": "^15.1.3",
     "tmp": "0.2.1",
