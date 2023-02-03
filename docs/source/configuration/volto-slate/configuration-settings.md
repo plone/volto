@@ -238,3 +238,22 @@ They are not persisted in the final value, so they are useful, for example, to h
 ```js
 slate.runtimeDecorators = [([node, path], ranges) => ranges];
 ```
+
+
+(editor-configuration-blocks-initialBlocksFocus-label)=
+
+## `blocks.initialBlocksFocus`
+
+Determine which type of block should be selected on edit.
+
+```js
+blocks.initialBlocksFocus === {
+  <content type name>: <block type>
+};
+```
+
+Disable selection of any block and prevent scrolling to a block:
+
+```js
+blocks.initialBlocksFocus === null;
+```
