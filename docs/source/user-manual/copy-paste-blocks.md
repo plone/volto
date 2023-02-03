@@ -35,7 +35,7 @@ This will select all the blocks between the start and end blocks, allowing you t
 
 Once you copy or cut the blocks, you can paste those blocks on that page or some other page.
 Select an empty block where you want to paste blocks from the clipboard.
-You can see the paste option <i class="fas fa-clipboard"></i> at the bottom of Toolbar.
+You can see the paste option <img alt="../_static/paste.svg" src="../_static/paste.svg" style="height: 1em;"> at the bottom of the toolbar.
 
 Also if you hold the :kbd:`ctrl` key while clicking the paste button, it does not clear the clipboard.
 
