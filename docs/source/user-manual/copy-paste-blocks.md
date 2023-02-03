@@ -1,7 +1,7 @@
 ---
 myst:
   html_meta:
-    "description": "Copy, cut and paste blocks in Volto, the Plone 6 frontend."
+    "description": "Copy, cut, and paste blocks in Volto, the Plone 6 frontend."
     "property=og:description": "Copy, cut and paste blocks in Volto, the Plone 6 frontend."
     "property=og:title": "How to copy, cut, and paste Volto blocks"
     "keywords": "Volto, Plone, frontend, React, User manual, edit blocks, copy, cut, paste"
