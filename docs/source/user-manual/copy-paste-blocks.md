@@ -11,7 +11,8 @@ myst:
 
 # Copy, Cut, and Paste blocks in Volto
 
-Volto supports copying/cutting of blocks from one page and pasting them to another page. Here's how you can do:
+Volto supports copying and cutting of blocks from one page, and pasting them to another page.
+This chapter describes how to do so.
 
 (copy-cut-blocks-label)=
 
