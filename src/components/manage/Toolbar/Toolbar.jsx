@@ -109,7 +109,7 @@ const messages = defineMessages({
   },
 });
 
-const toolbarComponents = {
+let toolbarComponents = {
   personalTools: { component: PersonalTools, wrapper: null },
   more: { component: More, wrapper: null },
   types: { component: Types, wrapper: null, contentAsProps: true },
@@ -210,6 +210,12 @@ class Toolbar extends Component {
     if (!hasApiExpander('types', getBaseUrl(this.props.pathname))) {
       this.props.getTypes(getBaseUrl(this.props.pathname));
     }
+    toolbarComponents = {
+      ...(config.settings
+        ? config.settings.additionalToolbarComponents || {}
+        : {}),
+      ...toolbarComponents,
+    };
     this.props.setExpandedToolbar(this.state.expanded);
     document.addEventListener('mousedown', this.handleClickOutside, false);
   }
@@ -551,9 +557,13 @@ class Toolbar extends Component {
                     </button>
                   </>
                 )}
+                <Pluggable name="main.toolbar.top" />
               </div>
               <div className="toolbar-bottom">
-                <Pluggable name="main.toolbar.bottom" />
+                <Pluggable
+                  name="main.toolbar.bottom"
+                  params={{ onClickHandler: this.toggleMenu }}
+                />
                 {!this.props.hideDefaultViewButtons && (
                   <button
                     className="user"
