@@ -180,10 +180,11 @@ class Form extends Component {
       formData.hasOwnProperty(blocksLayoutFieldname) &&
       formData[blocksLayoutFieldname].items.length > 0
     ) {
-      selectedBlock = formData[blocksLayoutFieldname].items[0];
-
-      if (config.blocks?.initialBlocksFocus?.[this.props.type]) {
-        //Default selected is not the first block, but the one from config.
+      if (config.blocks?.initialBlocksFocus === null) {
+        selectedBlock = null;
+      } else if (this.props.type in config.blocks?.initialBlocksFocus) {
+        // Default selected is not the first block, but the one from config.
+        // TODO Select first block and not an arbitrary one.
         Object.keys(formData[blocksFieldname]).forEach((b_key) => {
           if (
             formData[blocksFieldname][b_key]['@type'] ===
@@ -192,8 +193,11 @@ class Form extends Component {
             selectedBlock = b_key;
           }
         });
+      } else {
+        selectedBlock = formData[blocksLayoutFieldname].items[0];
       }
     }
+
     this.state = {
       formData,
       initialFormData: cloneDeep(formData),
