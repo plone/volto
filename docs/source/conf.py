@@ -139,6 +139,7 @@ myst_enable_extensions = [
     "linkify",  # Identify “bare” web URLs and add hyperlinks.
     "colon_fence",  # You can also use ::: delimiters to denote code fences,\
                     #  instead of ```.
+    "html_image",
 ]
 
 

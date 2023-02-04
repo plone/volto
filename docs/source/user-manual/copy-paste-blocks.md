@@ -18,11 +18,11 @@ This chapter describes how to do so.
 
 ## Copy/Cut blocks
 
-While in edit mode you can hold :kbd:`ctrl` key to select multiple blocks you want to copy/cut.
+While in edit mode you can hold `ctrl` key to select multiple blocks you want to copy/cut.
 Once blocks are selected, you will have a copy <img alt="../_static/copy.svg" src="../_static/copy.svg" style="height: 1em;"> and a cut <img alt="../_static/cut.svg" src="../_static/cut.svg" style="height: 1em;"> option at the bottom of Toolbar.
 
 Additionally, Volto also has a hidden feature for selecting multiple blocks in sequence.
-This feature can be used by selecting a start block and an end block while holding the `kbd`shift` key.
+This feature can be used by selecting a start block and an end block while holding the `shift` key.
 This will select all the blocks between the start and end blocks, allowing you to copy or delete multiple blocks at once.
 
 ```{image} ../_static/user-manual/blocks/block-copy-cut.gif
@@ -37,7 +37,7 @@ Once you copy or cut the blocks, you can paste those blocks on that page or some
 Select an empty block where you want to paste blocks from the clipboard.
 You can see the paste option <img alt="../_static/paste.svg" src="../_static/paste.svg" style="height: 1em;"> at the bottom of the toolbar.
 
-Also if you hold the :kbd:`ctrl` key while clicking the paste button, it does not clear the clipboard.
+Also if you hold the `ctrl` key while clicking the paste button, it does not clear the clipboard.
 
 ```{image} ../_static/user-manual/blocks/block-paste.gif
 :alt: Paste blocks
