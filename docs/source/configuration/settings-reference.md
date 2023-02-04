@@ -234,7 +234,7 @@ styleClassNameConverters
     where the converter is registered here.
 
 styleClassNameExtenders
-    An array containing functions that extends how the StyleWrapper builds a list of styles. These functions have the signature `({ block, content, data, classNames }) => classNames`. Here some examples of useful ones, for simplicity, they are compacted in one extender:
+    An array containing functions that extends how the StyleWrapper builds a list of styles. These functions have the signature `({ block, content, data, classNames }) => classNames`. Here are some examples of useful ones, for simplicity, they are compacted in one extender:
 
     ```js
       import { getPreviousNextBlock } from '@plone/volto/helpers';
@@ -339,6 +339,41 @@ apiExpanders
     ```
     The configuration accepts a list of matchers, with the ability to filter by the request path and action type for maximum flexibility.
     It also accepts a `querystring` object that allows configuring the expanders via query string parameters, such as the navigation expander.
+
+additionalToolbarComponents
+    For additional toolbar menus, the menu body component needs to be added to the on-demand loaded components.
+
+    ```jsx
+    config.settings.additionalToolbarComponents = {
+      bookmarksMenu: {
+        component: BookmarksEditorComponent,
+        wrapper: null,
+      },
+    };
+    ```
+
+    The plug:
+    ```jsx
+    <Plug pluggable="main.toolbar.bottom" id="bookmarks-menu">
+      {({ onClickHandler }) => {
+        return (
+          <button
+            className="show-bookmarks"
+            aria-label={intl.formatMessage(messages.label_showbookmarksmenu)}
+            onClick={(e) => onClickHandler(e, 'bookmarksMenu')}
+            tabIndex={0}
+            id="toolbar-show-bookmarks"
+          >
+            <Icon
+              name={bookSVG}
+              size="30px"
+              title={intl.formatMessage(messages.label_showbookmarksmenu)}
+            />
+          </button>
+        );
+      }}
+    </Plug>
+    ```
 ```
 
 
