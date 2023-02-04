@@ -25,9 +25,7 @@ Additionally, Volto also has a hidden feature for selecting multiple blocks in s
 This feature can be used by selecting a start block and an end block while holding the `shift` key.
 This will select all the blocks between the start and end blocks, allowing you to copy or delete multiple blocks at once.
 
-```{image} ../_static/user-manual/blocks/block-copy-cut.gif
-:alt: Select and Copy/Cut blocks
-```
+.. video:: ../_static/user-manual/blocks/block-copy-cut.gif
 
 (paste-blocks-label)=
 
@@ -39,6 +37,4 @@ You can see the paste option <img alt="../_static/paste.svg" src="../_static/pas
 
 Also if you hold the `ctrl` key while clicking the paste button, it does not clear the clipboard.
 
-```{image} ../_static/user-manual/blocks/block-paste.gif
-:alt: Paste blocks
-```
+.. video:: ../_static/user-manual/blocks/block-paste.mp4

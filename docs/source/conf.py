@@ -61,6 +61,7 @@ extensions = [
     "sphinx.ext.todo",
     "sphinx_copybutton",
     "sphinxext.opengraph",
+    "sphinxcontrib.video",
 ]
 
 
