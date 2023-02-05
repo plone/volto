@@ -39,4 +39,6 @@ You can see the paste option <img alt="../_static/paste.svg" src="../_static/pas
 
 Also if you hold the `ctrl` key while clicking the paste button, it does not clear the clipboard.
 
+```{eval-rst}
 .. video:: ../_static/user-manual/blocks/block-paste.mp4
+```
