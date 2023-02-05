@@ -38,7 +38,7 @@ Once you copy or cut the blocks, you can paste those blocks on that page or some
 Select an empty block where you want to paste blocks from the clipboard.
 You can see the paste option <img alt="../_static/paste.svg" src="../_static/paste.svg" class="inline"> in the toolbar.
 
-Also if you hold the {kbd}`ctrl` key while clicking the paste button, it does not clear the clipboard.
+Also if you hold the {kbd}`ctrl` key while clicking the paste button, it keeps the clipboard buffer, allowing you to repeatedly paste it.
 
 ```{eval-rst}
 .. video:: ../_static/user-manual/blocks/block-paste.mp4
