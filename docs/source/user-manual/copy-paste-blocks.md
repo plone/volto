@@ -23,7 +23,7 @@ Once blocks are selected, you will have copy <img alt="../_static/copy.svg" src=
 
 Volto also allows the selection of multiple contiguous blocks.
 This feature can be used by selecting a start block and an end block while holding the {kbd}`shift` key.
-This will select all the blocks between the start and end blocks, allowing you to copy or delete multiple blocks at once.
+This will select all the blocks between the start and end blocks, allowing you to copy, cut, or delete multiple blocks at once.
 
 ```{eval-rst}
 .. video:: ../_static/user-manual/blocks/block-copy-cut.mp4
