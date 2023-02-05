@@ -18,7 +18,7 @@ This chapter describes how to do so.
 
 ## Copy or cut blocks
 
-While in edit mode you can hold {kbd}`ctrl` key to select multiple blocks you want to copy/cut.
+While in edit mode, you can hold the {kbd}`ctrl` key to select multiple blocks that you want to copy or cut.
 Once blocks are selected, you will have a copy <img alt="../_static/copy.svg" src="../_static/copy.svg" class="inline"> and a cut <img alt="../_static/cut.svg" src="../_static/cut.svg" class="inline"> option at the bottom of Toolbar.
 
 Additionally, Volto also has a hidden feature for selecting multiple blocks in sequence.
