@@ -16,7 +16,7 @@ This chapter describes how to do so.
 
 (copy-cut-blocks-label)=
 
-## Copy/Cut blocks
+## Copy or cut blocks
 
 While in edit mode you can hold {kbd}`ctrl` key to select multiple blocks you want to copy/cut.
 Once blocks are selected, you will have a copy <img alt="../_static/copy.svg" src="../_static/copy.svg" class="inline"> and a cut <img alt="../_static/cut.svg" src="../_static/cut.svg" class="inline"> option at the bottom of Toolbar.
