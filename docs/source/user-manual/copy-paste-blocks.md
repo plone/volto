@@ -27,6 +27,7 @@ This will select all the blocks between the start and end blocks, allowing you t
 
 ```{eval-rst}
 .. video:: ../_static/user-manual/blocks/block-copy-cut.mp4
+    :width: 100%
 ```
 
 (paste-blocks-label)=
@@ -41,4 +42,5 @@ Also if you hold the {kbd}`ctrl` key while clicking the paste button, it does no
 
 ```{eval-rst}
 .. video:: ../_static/user-manual/blocks/block-paste.mp4
+    :width: 100%
 ```
