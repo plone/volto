@@ -1,5 +1,5 @@
 import { Content } from '../interfaces/content';
-import superagent from 'superagent';
+import API, { handleRequest } from '../API';
 
 type ContentArgs = {
   path: string;
@@ -8,18 +8,13 @@ type ContentArgs = {
   fullObjects?: boolean;
 };
 
-// const { isLoading, isError, data, error } = useQuery(getContentQuery(path));
 const getContent = async ({
   path,
   version,
   page,
   fullObjects,
 }: ContentArgs): Promise<Content> => {
-  const response = await superagent.get(`${path}`).accept('application/json');
-  if (!response.ok) {
-    throw new Error('Network response was not ok');
-  }
-  return response.body;
+  return handleRequest('get', path);
 };
 
 export const getContentQuery = ({

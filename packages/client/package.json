@@ -1,6 +1,6 @@
 {
-  "name": "@plone/actions",
-  "description": "Volto Core actions add-on - Actions for querying Plone 6 backend",
+  "name": "@plone/client",
+  "description": "Volto Core client add-on - Actions for querying Plone 6 backend",
   "maintainers": [
     {
       "name": "Plone Foundation",
@@ -26,7 +26,8 @@
     "plone6",
     "react",
     "cms",
-    "actions",
+    "client",
+    "query",
     "react-query"
   ],
   "scripts": {
@@ -60,6 +61,7 @@
     "prettier": "2.8.3",
     "release-it": "15.6.0",
     "typescript": "4.9.5",
+    "vite": "4.1.1",
     "vitest": "0.28.4"
   },
   "dependencies": {

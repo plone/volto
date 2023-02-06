@@ -8,7 +8,7 @@ describe('[GET] Content', () => {
   test('successful query hook', async () => {
     const url = '/';
     const { result } = renderHook(
-      () => useQuery(getContentQuery({ path: `${testServer}${url}` })),
+      () => useQuery(getContentQuery({ path: `${url}` })),
       {
         wrapper: createWrapper(),
       },
