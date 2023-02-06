@@ -1,5 +1,5 @@
 import { Content } from '../interfaces/content';
-import API, { handleRequest, ApiRequestParams } from '../API';
+import { handleRequest, ApiRequestParams } from '../API';
 
 type ContentArgs = {
   path: string;
@@ -8,7 +8,7 @@ type ContentArgs = {
   fullObjects?: boolean;
 };
 
-export const getContent = async ({
+const getContent = async ({
   path,
   version,
   page,

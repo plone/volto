@@ -1,18 +1,15 @@
 import * as React from 'react';
 import { renderHook, waitFor } from '@testing-library/react';
 import { createWrapper, testServer } from '../testUtils';
-import { getContent, getContentQuery } from './get';
+import { getContentQuery } from './get';
 import { useQuery } from '@tanstack/react-query';
 
 describe('[GET] Content', () => {
   test('Hook - Successful', async () => {
-    const url = '/';
-    const { result } = renderHook(
-      () => useQuery(getContentQuery({ path: `${url}` })),
-      {
-        wrapper: createWrapper(),
-      },
-    );
+    const path = '/';
+    const { result } = renderHook(() => useQuery(getContentQuery({ path })), {
+      wrapper: createWrapper(),
+    });
 
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
@@ -21,13 +18,10 @@ describe('[GET] Content', () => {
   });
 
   test('Hook - Failure', async () => {
-    const url = '/blah';
-    const { result } = renderHook(
-      () => useQuery(getContentQuery({ path: `${url}` })),
-      {
-        wrapper: createWrapper(),
-      },
-    );
+    const path = '/blah';
+    const { result } = renderHook(() => useQuery(getContentQuery({ path })), {
+      wrapper: createWrapper(),
+    });
 
     await waitFor(() => expect(result.current.isError).toBe(true));
 
