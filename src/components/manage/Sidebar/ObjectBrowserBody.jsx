@@ -265,7 +265,6 @@ class ObjectBrowserBody extends Component {
           break;
       }
     };
-
     if (dataName) {
       onChangeBlock(block, {
         ...data,

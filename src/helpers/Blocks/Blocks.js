@@ -271,6 +271,17 @@ export function insertBlock(formData, id, value, current = {}, offset = 0) {
  * @return {Object} New form data
  */
 export function changeBlock(formData, id, value) {
+  // console.group(
+  //   'this is formData:',
+  //   formData,
+  //   typeof formData,
+  //   'this is id:',
+  //   id,
+  //   typeof id,
+  //   'this is value:',
+  //   value,
+  //   typeof value,
+  // );
   const blocksFieldname = getBlocksFieldname(formData);
   return {
     ...formData,

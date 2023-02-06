@@ -85,7 +85,7 @@ export const TeaserSchema = ({ intl }) => {
         type: 'boolean',
       },
     },
-    required: [],
+    required: ['href'],
   };
 
   addStyling({ schema, intl });

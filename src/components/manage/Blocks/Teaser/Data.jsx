@@ -1,21 +1,30 @@
 import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
+import { useDispatch } from 'react-redux';
 import { Button } from 'semantic-ui-react';
 import { BlockDataForm, Icon } from '@plone/volto/components';
 import { isEmpty } from 'lodash';
+import { getContent } from '@plone/volto/actions';
+import { getBaseUrl, flattenToAppURL } from '@plone/volto/helpers';
 
 import trashSVG from '@plone/volto/icons/delete.svg';
+import reloadSVG from '@plone/volto/icons/reload.svg';
 
 const messages = defineMessages({
   resetTeaser: {
     id: 'Reset the block',
     defaultMessage: 'Reset the block',
   },
+  refreshTeaser: {
+    id: 'Fetch newest data',
+    defaultMessage: 'Fetch newest data',
+  },
 });
 
 const TeaserData = (props) => {
   const { block, blocksConfig, data, onChangeBlock } = props;
   const intl = useIntl();
+  const dispatch = useDispatch();
 
   const reset = () => {
     onChangeBlock(block, {
@@ -24,6 +33,41 @@ const TeaserData = (props) => {
       title: '',
       description: '',
       head_title: '',
+    });
+  };
+
+  const refresh = () => {
+    dispatch(getContent(getBaseUrl(data.href[0]['@id']))).then((resp) => {
+      if (resp) {
+        let dataBlock = {
+          '@type': data['@type'],
+          description: resp?.description,
+          head_title: resp?.head_title,
+          href: [
+            {
+              '@id': flattenToAppURL(resp['@id']),
+              '@type': resp?.['@type'],
+              Description: resp?.description,
+              Title: resp.title,
+              hasPreviewImage: resp?.preview_image ? true : false,
+              head_title: resp.head_title ?? null,
+              image_field: resp?.preview_image
+                ? 'preview_image'
+                : resp?.image
+                ? 'image'
+                : null,
+              image_scales: {
+                preview_image: [resp?.preview_image],
+                image: [resp?.image?.image],
+              },
+              title: resp.title,
+            },
+          ],
+          styles: data.styles,
+          title: resp.title,
+        };
+        onChangeBlock(block, dataBlock);
+      }
     });
   };
 
@@ -48,6 +92,14 @@ const TeaserData = (props) => {
 
   const HeaderActions = (
     <Button.Group>
+      <Button
+        aria-label={intl.formatMessage(messages.refreshTeaser)}
+        basic
+        disabled={isReseteable}
+        onClick={() => refresh()}
+      >
+        <Icon name={reloadSVG} size="24px" color="grey" />
+      </Button>
       <Button
         aria-label={intl.formatMessage(messages.resetTeaser)}
         basic

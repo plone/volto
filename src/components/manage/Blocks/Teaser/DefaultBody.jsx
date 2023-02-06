@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Message } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
+import placeholderIMG from './placeholder.jpg';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { getTeaserImageURL } from './utils';
 import { MaybeWrap } from '@plone/volto/components';
@@ -15,6 +16,20 @@ const messages = defineMessages({
     id: 'Please choose an existing content as source for this element',
     defaultMessage:
       'Please choose an existing content as source for this element',
+  },
+  PlaceholderHeadtitle: {
+    id: 'Alpine City Sprint',
+    defaultMessage: 'Alpine City Sprint',
+  },
+  PlaceholderTitle: {
+    id: 'Plone in the sky with diamonds',
+    defaultMessage: 'Plone in the sky with diamonds',
+  },
+  PlaceholderDescription: {
+    id:
+      'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.',
+    defaultMessage:
+      'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.',
   },
 });
 
@@ -33,12 +48,18 @@ const TeaserDefaultTemplate = (props) => {
     <div className={cx('block teaser', className)}>
       <>
         {!href && isEditMode && (
-          <Message>
-            <div className="teaser-item placeholder">
-              <img src={imageBlockSVG} alt="" />
-              <p>{intl.formatMessage(messages.PleaseChooseContent)}</p>
+          <div className="teaser-item default">
+            <div className="image-wrapper">
+              <Image src={placeholderIMG} alt="" loading="lazy" />
             </div>
-          </Message>
+            <div className="content">
+              <div className="headline">
+                {intl.formatMessage(messages.PlaceholderHeadtitle)}
+              </div>
+              <h2>{intl.formatMessage(messages.PlaceholderTitle)}</h2>
+              <p>{intl.formatMessage(messages.PlaceholderDescription)}</p>
+            </div>
+          </div>
         )}
         {href && (
           <MaybeWrap
