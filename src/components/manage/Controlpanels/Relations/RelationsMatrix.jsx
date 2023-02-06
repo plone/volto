@@ -110,19 +110,18 @@ const RelationsMatrix = (props) => {
     {
       menuItem: intl.formatMessage(messages.inspectRelations),
       pane: (
-        <Tab.Pane attached={false}>
+        <Tab.Pane attached={false} key="fix">
           <div className="controlpanel_matrix">
             <div className="controlpanel_select_relation">
               <Form className="select_relation">
                 <Form.Field>
                   <Dropdown
-                    selection
                     placeholder={
                       relationtype ||
                       intl.formatMessage(messages.selectRelation)
                     }
                   >
-                    <Dropdown.Menu className="left">
+                    <Dropdown.Menu>
                       {Object.keys(relationtypes).map((relationtype) => (
                         <Dropdown.Item
                           onClick={onChangeRelation}
@@ -226,7 +225,7 @@ const RelationsMatrix = (props) => {
     {
       menuItem: intl.formatMessage(messages.fixRelations),
       pane: (
-        <Tab.Pane attached={false}>
+        <Tab.Pane attached={false} key="rebuild">
           <div>TODO Rebuild relations</div>
           <div>
             <span>(button rebuild)</span>{' '}
