@@ -19,4 +19,21 @@ describe('[GET] Content', () => {
     // console.dir(result.current.error, { depth: null });
     expect(result.current.data?.title).toBe('Welcome to Plone 6!');
   });
+
+  test('[GET] Content - Failure', async () => {
+    const url = '/blah';
+    const { result } = renderHook(
+      () => useQuery(getContentQuery({ path: `${url}` })),
+      {
+        wrapper: createWrapper(),
+      },
+    );
+
+    await waitFor(() => expect(result.current.isError).toBe(true));
+
+    // console.dir(result.current.error, { depth: null });
+    // @ts-ignore
+    expect(result.current.error.status).toBe(404);
+    expect(result.current.error).toBeDefined();
+  });
 });
