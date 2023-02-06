@@ -5,11 +5,22 @@ import { createContentQuery } from './add';
 import { login } from '../login/post';
 import { useQuery } from '@tanstack/react-query';
 import Cookies from 'universal-cookie';
+import { setup, teardown } from '../resetFixture';
+import { beforeAll, beforeEach } from 'vitest';
+import { expect, test } from 'vitest';
 
 beforeAll(async () => {
   const cookies = new Cookies();
-  const { token } = await login('admin', 'admin');
+  const { token } = await login('admin', 'secret');
   cookies.set('auth_token', token);
+});
+
+beforeEach(async () => {
+  await setup();
+});
+
+afterEach(async () => {
+  await teardown();
 });
 
 describe('[POST] Content', () => {
@@ -30,6 +41,32 @@ describe('[POST] Content', () => {
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
     // console.dir(result.current.error, { depth: null });
+    expect(result.current.data?.['@id']).toBe(
+      'http://localhost:55001/plone/my-page',
+    );
+    expect(result.current.data?.title).toBe('My Page');
+  });
+
+  test('Hook - Successful - setup/tearingDown setup', async () => {
+    const path = '/';
+    const data = {
+      '@type': 'Document',
+      title: 'My Page',
+    };
+
+    const { result } = renderHook(
+      () => useQuery(createContentQuery({ path, data })),
+      {
+        wrapper: createWrapper(),
+      },
+    );
+
+    await waitFor(() => expect(result.current.isSuccess).toBe(true));
+
+    // console.dir(result.current.data['@id'], { depth: null });
+    expect(result.current.data?.['@id']).toBe(
+      'http://localhost:55001/plone/my-page',
+    );
     expect(result.current.data?.title).toBe('My Page');
   });
 

@@ -19,7 +19,7 @@ function getBackendURL(path: string) {
     // process.env.RAZZLE_API_PATH ||
     // (window && window.env.API_PATH) ||
     // (window && window.env.RAZZLE_API_PATH) ||
-    'http://localhost:8080/Plone' || 'http://localhost:55001/plone';
+    'http://localhost:55001/plone' || 'http://localhost:8080/Plone';
 
   const APISUFIX = '/++api++';
 
