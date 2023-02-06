@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { uniq, uniqBy } from 'lodash';
 import { Button, Checkbox } from 'semantic-ui-react';
 import { messages } from '@plone/volto/helpers';
-import { Icon, Toast } from '@plone/volto/components';
+import { Icon, Toast, UniversalLink } from '@plone/volto/components';
 import { listRelations } from '@plone/volto/actions';
 import add from '@plone/volto/icons/add.svg';
 import remove from '@plone/volto/icons/remove.svg';
@@ -171,9 +171,12 @@ const ListingTemplate = ({
             key={matrix_option.value}
           >
             <div>
-              <a href={matrix_option.url}>
+              <UniversalLink
+                href={matrix_option.url}
+                title={matrix_option['@type']}
+              >
                 <span className="label">{matrix_option.label}</span>
-              </a>
+              </UniversalLink>
             </div>
           </div>
         ))}
@@ -245,7 +248,9 @@ const ListingTemplate = ({
                 <div className="listing-item" key={item['@id']}>
                   <div>
                     <h4 title={item.value}>
-                      <a href={item.url}>{item.label}</a>
+                      <UniversalLink href={item.url}>
+                        {item.label}
+                      </UniversalLink>
                     </h4>
                   </div>
                   <div className="matrix_options">
