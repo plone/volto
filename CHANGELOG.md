@@ -8,6 +8,25 @@
 
 <!-- towncrier release notes start -->
 
+## 16.10.0 (2023-02-06)
+
+### Feature
+
+- Option for opening /edit with the same vertical offset like the page in view mode before. @ksuess [#3662](https://github.com/plone/volto/issues/3662)
+- Add option to add an action button to the top of the toolbar and to add a menu button to the bottom of the toolbar. @ksuess [#4333](https://github.com/plone/volto/issues/4333)
+- Update to latest versions in the backend for testing and the convenience api folder @sneridagh [#4361](https://github.com/plone/volto/issues/4361)
+- Content Rules: Support server-provided schema for condition and action @ericof [#4368](https://github.com/plone/volto/issues/4368)
+
+### Bugfix
+
+- Fix react-error-overlay resolution @sneridagh [#4360](https://github.com/plone/volto/issues/4360)
+
+### Documentation
+
+- Add documentation for copy, cut, and paste blocks in Volto. @MAX-786 [#3827](https://github.com/plone/volto/issues/3827)
+- Fixed Grammar error @SaiRev0 [#4272](https://github.com/plone/volto/issues/4272)
+
+
 ## 16.9.0 (2023-01-27)
 
 ### Feature
