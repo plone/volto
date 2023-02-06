@@ -210,7 +210,7 @@ class Controlpanels extends Component {
           },
           {
             '@id': '/relations',
-            group: 'Content',
+            group: this.props.intl.formatMessage(messages.content),
             title: this.props.intl.formatMessage(messages.relations),
           },
           {
