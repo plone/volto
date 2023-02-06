@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { renderHook, waitFor } from '@testing-library/react';
 import { createWrapper, testServer } from '../testUtils';
-import { getContentQuery } from './get';
+import { getContent, getContentQuery } from './get';
 import { useQuery } from '@tanstack/react-query';
 
 describe('[GET] Content', () => {
-  test('successful query hook', async () => {
+  test('Hook - Successful', async () => {
     const url = '/';
     const { result } = renderHook(
       () => useQuery(getContentQuery({ path: `${url}` })),
@@ -20,7 +20,7 @@ describe('[GET] Content', () => {
     expect(result.current.data?.title).toBe('Welcome to Plone 6!');
   });
 
-  test('[GET] Content - Failure', async () => {
+  test('Hook - Failure', async () => {
     const url = '/blah';
     const { result } = renderHook(
       () => useQuery(getContentQuery({ path: `${url}` })),
@@ -35,5 +35,51 @@ describe('[GET] Content', () => {
     // @ts-ignore
     expect(result.current.error.status).toBe(404);
     expect(result.current.error).toBeDefined();
+  });
+
+  test('Hook - fullobjects', async () => {
+    const path = '/';
+    const fullObjects = true;
+    const { result } = renderHook(
+      () => useQuery(getContentQuery({ path, fullObjects })),
+      {
+        wrapper: createWrapper(),
+      },
+    );
+
+    await waitFor(() => expect(result.current.isSuccess).toBe(true));
+
+    expect(result.current.data?.title).toBe('Welcome to Plone 6!');
+  });
+
+  test.skip('Hook - version', async () => {
+    const path = '/';
+    const version = 'abcd';
+    const { result } = renderHook(
+      () => useQuery(getContentQuery({ path, version })),
+      {
+        wrapper: createWrapper(),
+      },
+    );
+
+    await waitFor(() => expect(result.current.isSuccess).toBe(true));
+
+    expect(result.current.data?.title).toBe('Welcome to Plone 6!');
+  });
+
+  test.skip('Hook - fullObjects && version', async () => {
+    const path = '/';
+    const fullObjects = true;
+    const version = 'abcd';
+    const { result } = renderHook(
+      () => useQuery(getContentQuery({ path, fullObjects, version })),
+      {
+        wrapper: createWrapper(),
+      },
+    );
+
+    await waitFor(() => expect(result.current.isSuccess).toBe(true));
+
+    expect(result.current.data?.title).toBe('Welcome to Plone 6!');
   });
 });

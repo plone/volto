@@ -5,7 +5,7 @@ import type request from 'superagent';
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];
 
-type ApiRequestParams = {
+export type ApiRequestParams = {
   params?: any;
   data?: any;
   type?: any;

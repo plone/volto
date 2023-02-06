@@ -1,5 +1,5 @@
 import { Content } from '../interfaces/content';
-import API, { handleRequest } from '../API';
+import API, { handleRequest, ApiRequestParams } from '../API';
 
 type ContentArgs = {
   path: string;
@@ -8,13 +8,22 @@ type ContentArgs = {
   fullObjects?: boolean;
 };
 
-const getContent = async ({
+export const getContent = async ({
   path,
   version,
   page,
   fullObjects,
 }: ContentArgs): Promise<Content> => {
-  return handleRequest('get', path);
+  const options: ApiRequestParams = {
+    params: {
+      ...(version && { version }),
+      ...(fullObjects && { fullobjects: fullObjects }),
+    },
+  };
+  if (version) {
+    return handleRequest('get', `${path}/@history/${version}`, options);
+  }
+  return handleRequest('get', path, options);
 };
 
 export const getContentQuery = ({
