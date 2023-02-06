@@ -35,6 +35,12 @@ figure img,
   width: 200px;
   margin-bottom: 1rem;
 }
+
+img.inline {
+  margin: 0;
+  height: 1em;
+}
+
 span.linenos {
   padding-right: 1em;
 }
