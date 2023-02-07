@@ -14,6 +14,10 @@
   padding-bottom: @15px;
 }
 
+.ui.form .inline.field.overwritten input {
+  background-color: rgb(#edc3c2);
+}
+
 .ui.form .inline.field .help {
   padding-top: @10px;
   padding-bottom: @10px;

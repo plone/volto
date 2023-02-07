@@ -84,6 +84,14 @@ export const TeaserSchema = ({ intl }) => {
         title: intl.formatMessage(messages.openLinkInNewTab),
         type: 'boolean',
       },
+      previous_href: {
+        type: 'array',
+        default: [],
+      },
+      overwritten: {
+        type: 'array',
+        default: [],
+      },
     },
     required: ['href'],
   };
