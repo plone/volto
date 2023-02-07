@@ -31,8 +31,8 @@
     "react-query"
   ],
   "scripts": {
-    "test": "vitest",
-    "coverage": "vitest run --coverage",
+    "test": "vitest --no-threads",
+    "coverage": "vitest run --coverage --no-threads",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet",
     "lint:fix": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
     "prettier": "prettier --check 'src/**/*.{js,jsx,ts,tsx}'",
@@ -54,6 +54,7 @@
     "@typescript-eslint/eslint-plugin": "5.50.0",
     "@typescript-eslint/parser": "5.50.0",
     "@vitejs/plugin-react": "3.1.0",
+    "@vitest/coverage-c8": "0.28.4",
     "eslint": "8.33.0",
     "eslint-config-prettier": "8.6.0",
     "eslint-plugin-prettier": "4.2.1",

@@ -3,7 +3,7 @@ import Cookies from 'universal-cookie';
 import { addHeadersFactory } from './utils';
 import type request from 'superagent';
 
-const methods = ['get', 'post', 'put', 'patch', 'del'];
+const methods = ['get', 'post', 'put', 'patch', 'delete'];
 
 export type ApiRequestParams = {
   params?: any;

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { renderHook, waitFor } from '@testing-library/react';
 import { createWrapper, testServer } from '../testUtils';
+import { getContent } from './get';
 import { createContent } from './add';
 import { updateContentQuery } from './update';
 import { login } from '../login/post';
@@ -25,7 +26,7 @@ afterEach(async () => {
 });
 
 describe('[PATCH] Content', () => {
-  test.only('Hook - Successful', async () => {
+  test('Hook - Successful', async () => {
     const path = '/';
     const data = {
       '@type': 'Document',
@@ -34,12 +35,12 @@ describe('[PATCH] Content', () => {
     await createContent({ path, data });
 
     const dataPatch = {
-      '@type': 'Document',
       title: 'My Page updated',
     };
+    const pagePath = '/my-page';
 
     const { result } = renderHook(
-      () => useQuery(updateContentQuery({ path, data: dataPatch })),
+      () => useQuery(updateContentQuery({ path: pagePath, data: dataPatch })),
       {
         wrapper: createWrapper(),
       },
@@ -47,11 +48,11 @@ describe('[PATCH] Content', () => {
 
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
-    // console.dir(result.current.error, { depth: null });
-    expect(result.current.data?.['@id']).toBe(
-      'http://localhost:55001/plone/my-page',
-    );
-    expect(result.current.data?.title).toBe('My Page updated');
+    const page = await getContent({ path: pagePath });
+
+    // console.dir(page, { depth: null });
+    expect(page?.['@id']).toBe('http://localhost:55001/plone/my-page');
+    expect(page?.title).toBe('My Page updated');
   });
 
   test('Hook - Failure', async () => {

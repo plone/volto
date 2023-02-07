@@ -8,7 +8,7 @@ type ContentArgs = {
   fullObjects?: boolean;
 };
 
-const getContent = async ({
+export const getContent = async ({
   path,
   version,
   page,

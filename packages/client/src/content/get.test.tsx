@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { renderHook, waitFor } from '@testing-library/react';
 import { createWrapper, testServer } from '../testUtils';
 import { getContentQuery } from './get';
