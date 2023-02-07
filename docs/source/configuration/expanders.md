@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Configure the API expanders in Volto using the `settings.apiExpanders`"
-  "property=og:description": "Configure the API expanders in Volto using the `settings.apiExpanders`"
-  "property=og:title": "API expanders"
-  "keywords": "Volto, Plone, frontend, React, api expanders"
+myst:
+  html_meta:
+    "description": "Configure the API expanders in Volto using the `settings.apiExpanders`"
+    "property=og:description": "Configure the API expanders in Volto using the `settings.apiExpanders`"
+    "property=og:title": "API expanders"
+    "keywords": "Volto, Plone, frontend, React, api expanders"
 ---
 
 # API expanders
@@ -23,6 +24,13 @@ export default function applyConfig (config) {
       {
         match: '/de',
         GET_CONTENT: ['myothercustomexpander'],
+      },
+      {
+        match: '/de',
+        GET_CONTENT: ['navigation'],
+        querystring: {
+          'expand.navigation.depth': 3,
+        },
       }
   ];
 
@@ -31,3 +39,4 @@ export default function applyConfig (config) {
 ```
 
 The config accepts a list of matchers with the ability to filter by request path and action type, for maximum flexibility.
+It also accepts a `querystring` object that allows to configure the expandeders via querystring params (eg. the navigation expander).

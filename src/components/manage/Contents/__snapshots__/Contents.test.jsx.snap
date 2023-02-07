@@ -311,6 +311,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                       value=""
                     />
                   </div>
+                  
                   <svg
                     className="icon zoom"
                     dangerouslySetInnerHTML={
@@ -322,6 +323,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                     style={
                       Object {
                         "fill": "#007eb1",
+                        "flexShrink": "0",
                         "height": "30px",
                         "width": "auto",
                       }

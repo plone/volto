@@ -13,10 +13,15 @@ MAKEFLAGS+=--no-builtin-rules
 # Project settings
 
 INSTANCE_PORT=8080
-DOCKER_IMAGE=plone/plone-backend:5.2.7
-KGS=plone.restapi==8.22.0 plone.volto==4.0.0a4 plone.rest==2.0.0a5 plone.app.iterate==4.0.2 plone.app.vocabularies==4.3.0
-TESTING_ADDONS=plone.app.robotframework==2.0.0a6 plone.app.testing==7.0.0a3
+DOCKER_IMAGE=plone/plone-backend:6.0.1
+KGS=plone.volto==4.0.5
+TESTING_ADDONS=plone.app.robotframework==2.0.0 plone.app.testing==7.0.0
 NODEBIN = ./node_modules/.bin
+SCRIPTSPACKAGE = ./packages/scripts
+
+# Plone 5 legacy
+DOCKER_IMAGE5=plone/plone-backend:5.2.9
+KGS5=plone.restapi==8.33.3 plone.volto==4.0.5 plone.rest==3.0.0
 
 # Sphinx variables
 # You can set these variables from the command line.
@@ -27,6 +32,7 @@ SPHINXAUTOBUILD = $(realpath bin/sphinx-autobuild)
 DOCS_DIR        = ./docs/source/
 BUILDDIR        = ../_build/
 ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(SPHINXOPTS) .
+VALEFILES       := $(shell find $(DOCS_DIR) -type f -name "*.md" -print)
 
 # Recipe snippets for reuse
 
@@ -133,17 +139,17 @@ docs-linkcheck: bin/python  ## Run linkcheck
 
 .PHONY: docs-linkcheckbroken
 docs-linkcheckbroken: bin/python  ## Run linkcheck and show only broken links
-	cd $(DOCS_DIR) && $(SPHINXBUILD) -b linkcheck $(ALLSPHINXOPTS) $(BUILDDIR)/linkcheck | GREP_COLORS='0;31' grep -wi "broken\|redirect" --color=auto || test $$? = 1
+	cd $(DOCS_DIR) && $(SPHINXBUILD) -b linkcheck $(ALLSPHINXOPTS) $(BUILDDIR)/linkcheck | GREP_COLORS='0;31' grep -wi "broken\|redirect" --color=always | GREP_COLORS='0;31' grep -vi "https://github.com/plone/volto/issues/" --color=always && if test $$? = 0; then exit 1; fi || test $$? = 1
 	@echo
 	@echo "Link check complete; look for any errors in the above output " \
 		"or in $(BUILDDIR)/linkcheck/ ."
 
-.PHONY: docs-spellcheck
-docs-spellcheck: bin/python  ## Run spellcheck
-	cd $(DOCS_DIR) && LANGUAGE=$* $(SPHINXBUILD) -b spelling -j 4 $(ALLSPHINXOPTS) $(BUILDDIR)/spellcheck/$*
+.PHONY: docs-vale
+docs-vale:  ## Run Vale style, grammar, and spell checks
+	vale sync
+	vale --no-wrap $(VALEFILES)
 	@echo
-	@echo "Spellcheck is finished; look for any errors in the above output " \
-		" or in $(BUILDDIR)/spellcheck/ ."
+	@echo "Vale is finished; look for any errors in the above output."
 
 .PHONY: netlify
 netlify:
@@ -151,11 +157,21 @@ netlify:
 	cd $(DOCS_DIR) && sphinx-build -b html $(ALLSPHINXOPTS) ../$(BUILDDIR)/html
 
 .PHONY: docs-test
-docs-test: docs-clean docs-linkcheckbroken docs-spellcheck  ## Clean docs build, then run linkcheckbroken, spellcheck
+docs-test: docs-clean docs-linkcheckbroken docs-vale  ## Clean docs build, then run linkcheckbroken, vale
 
 .PHONY: storybook-build
 storybook-build:
 	yarn build-storybook -o docs/_build/storybook
+
+.PHONY: patches
+patches:
+	/bin/bash patches/patchit.sh > /dev/null 2>&1 ||true
+
+##### Release
+
+.PHONY: corepackagebump
+corepackagebump:
+	node $(SCRIPTSPACKAGE)/corepackagebump.js packages/volto-slate $(VERSION)
 
 ##### Docker containers
 
@@ -233,7 +249,15 @@ full-test-acceptance: ## Runs Core Full Acceptance Testing in headless mode
 
 .PHONY: start-test-acceptance-frontend-seamless
 start-test-acceptance-frontend-seamless: ## Start the Seamless Core Acceptance Frontend Fixture
-	RAZZLE_DEV_PROXY_API_PATH=http://localhost:55001/plone yarn build && yarn start:prod
+	yarn build && yarn start:prod
+
+.PHONY: test-acceptance-seamless
+test-acceptance-seamless: ## Start Seamless Cypress Acceptance Tests
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config baseUrl='http://localhost'
+
+.PHONY: start-test-acceptance-webserver-seamless
+start-test-acceptance-webserver-seamless: ## Start the seamless webserver
+	cd cypress/docker && docker-compose -f seamless.yml up
 
 .PHONY: full-test-acceptance-seamless
 full-test-acceptance-seamless: ## Runs Seamless Core Full Acceptance Testing in headless mode
@@ -256,13 +280,17 @@ start-test-acceptance-server-coresandbox test-acceptance-server-coresandbox: ## 
 start-test-acceptance-frontend-coresandbox: ## Start the CoreSandbox Acceptance Frontend Fixture
 	ADDONS=coresandbox RAZZLE_API_PATH=http://localhost:55001/plone yarn build && yarn start:prod
 
+.PHONY: start-test-acceptance-frontend-coresandbox-dev
+start-test-acceptance-frontend-coresandbox-dev: ## Start the CoreSandbox Acceptance Frontend Fixture in dev mode
+	ADDONS=coresandbox RAZZLE_API_PATH=http://localhost:55001/plone yarn start
+
 .PHONY: test-acceptance-coresandbox
 test-acceptance-coresandbox: ## Start CoreSandbox Cypress Acceptance Tests
-	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config integrationFolder='cypress/tests/coresandbox'
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config specPattern='cypress/tests/coresandbox/**/*.{js,jsx,ts,tsx}'
 
 .PHONY: test-acceptance-coresandbox-headless
 test-acceptance-coresandbox-headless: ## Start CoreSandbox Cypress Acceptance Tests in headless mode
-	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config integrationFolder='cypress/tests/coresandbox'
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/coresandbox/**/*.{js,jsx,ts,tsx}/**/*.{js,jsx,ts,tsx}'
 
 .PHONY: full-test-acceptance-coresandbox
 full-test-acceptance-coresandbox: ## Runs CoreSandbox Full Acceptance Testing in headless mode
@@ -280,11 +308,11 @@ start-test-acceptance-frontend-multilingual: ## Start the Multilingual Acceptanc
 
 .PHONY: test-acceptance-multilingual
 test-acceptance-multilingual: ## Start Multilingual Cypress Acceptance Tests
-	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config integrationFolder='cypress/tests/multilingual'
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config specPattern='cypress/tests/multilingual/**/*.{js,jsx,ts,tsx}'
 
 .PHONY: test-acceptance-multilingual-headless
 test-acceptance-multilingual-headless: ## Start Multilingual Cypress Acceptance Tests in headless mode
-	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config integrationFolder='cypress/tests/multilingual'
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/multilingual/**/*.{js,jsx,ts,tsx}'
 
 .PHONY: full-test-acceptance-multilingual
 full-test-acceptance-multilingual: ## Runs Multilingual Full Acceptance Testing in headless mode
@@ -303,11 +331,11 @@ start-test-acceptance-frontend-workingcopy: ## Start the WorkingCopy Acceptance 
 
 .PHONY: test-acceptance-workingcopy
 test-acceptance-workingcopy: ## Start WorkingCopy Cypress Acceptance Tests
-	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config integrationFolder='cypress/tests/workingCopy'
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config specPattern='cypress/tests/workingCopy/**/*.{js,jsx,ts,tsx}'
 
 .PHONY: test-acceptance-workingcopy-headless
 test-acceptance-workingcopy-headless: ## Start WorkingCopy Cypress Acceptance Tests in headless mode
-	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config integrationFolder='cypress/tests/workingCopy'
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/workingCopy/**/*.{js,jsx,ts,tsx}'
 
 .PHONY: full-test-acceptance-workingcopy
 full-test-acceptance-workingcopy: ## Runs WorkingCopy Full Acceptance Testing in headless mode
@@ -325,12 +353,18 @@ start-test-acceptance-frontend-guillotina: ## Start the Guillotina Acceptance Fr
 
 .PHONY: test-acceptance-guillotina
 test-acceptance-guillotina: ## Start the Guillotina Cypress Acceptance Tests
-	NODE_ENV=production CYPRESS_API=guillotina $(NODEBIN)/cypress open --config integrationFolder='cypress/tests/guillotina'
+	NODE_ENV=production CYPRESS_API=guillotina $(NODEBIN)/cypress open --config specPattern='cypress/tests/guillotina/**/*.{js,jsx,ts,tsx}'
 
 .PHONY: test-acceptance-guillotina-headless
 test-acceptance-guillotina-headless: ## Start the Guillotina Cypress Acceptance Tests in headless mode
-	NODE_ENV=production CYPRESS_API=guillotina $(NODEBIN)/cypress run --config integrationFolder='cypress/tests/guillotina'
+	NODE_ENV=production CYPRESS_API=guillotina $(NODEBIN)/cypress run --config specPattern='cypress/tests/guillotina/**/*.{js,jsx,ts,tsx}'
 
 .PHONY: full-test-acceptance-guillotina
 full-test-acceptance-guillotina: ## Runs the Guillotina Full Acceptance Testing in headless mode
 	$(NODEBIN)/start-test "make start-test-acceptance-server-guillotina" http-get://localhost:8081 "make start-test-acceptance-frontend-guillotina" http://localhost:3000 "make test-acceptance-guillotina-headless"
+
+######### Plone 5 Acceptance tests
+
+.PHONY: start-test-acceptance-server-5
+start-test-acceptance-server-5: ## Start Test Acceptance Server Main Fixture Plone 5 (docker container)
+	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS5) $(TESTING_ADDONS)' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE5) ./bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING

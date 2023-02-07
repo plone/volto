@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const fs = require('fs');
 const path = require('path');
 const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
 const fileLoaderFinder = makeLoaderFinder('file-loader');
@@ -30,9 +31,34 @@ const SVGLOADER = {
   ],
 };
 
+const defaultRazzleOptions = {
+  verbose: false,
+  debug: {},
+  buildType: 'iso',
+  cssPrefix: 'static/css',
+  jsPrefix: 'static/js',
+  enableSourceMaps: true,
+  enableReactRefresh: true,
+  enableTargetBabelrc: false,
+  enableBabelCache: true,
+  forceRuntimeEnvVars: [],
+  mediaPrefix: 'static/media',
+  staticCssInDev: false,
+  emitOnErrors: false,
+  disableWebpackbar: false,
+  browserslist: [
+    '>1%',
+    'last 4 versions',
+    'Firefox ESR',
+    'not ie 11',
+    'not dead',
+  ],
+};
+
 module.exports = {
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
+  staticDirs: ['./static'],
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
     // You can change the configuration based on that.
@@ -49,6 +75,10 @@ module.exports = {
         plugins: razzleConfig.plugins,
       },
       webpack,
+      false,
+      undefined,
+      [],
+      defaultRazzleOptions,
     );
     const AddonConfigurationRegistry = require('../addon-registry');
 
@@ -83,7 +113,15 @@ module.exports = {
       },
     };
 
-    // console.dir(resultConfig, { depth: null });
+    // Addons have to be loaded with babel
+    const addonPaths = registry.addonNames.map((addon) =>
+      fs.realpathSync(registry.packages[addon].modulePath),
+    );
+    resultConfig.module.rules[1].exclude = (input) =>
+      // exclude every input from node_modules except from @plone/volto
+      /node_modules\/(?!(@plone\/volto)\/)/.test(input) &&
+      // If input is in an addon, DON'T exclude it
+      !addonPaths.some((p) => input.includes(p));
 
     return resultConfig;
   },

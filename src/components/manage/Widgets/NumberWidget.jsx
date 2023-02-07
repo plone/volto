@@ -28,11 +28,11 @@ const NumberWidget = (props) => {
     onChange,
     onBlur,
     onClick,
-    defaultValue,
     isDisabled,
     maximum,
     minimum,
     placeholder,
+    step,
   } = props;
 
   return (
@@ -44,7 +44,8 @@ const NumberWidget = (props) => {
         disabled={isDisabled}
         min={minimum || null}
         max={maximum || null}
-        value={value || defaultValue}
+        step={step}
+        value={value ?? ''}
         placeholder={placeholder}
         onChange={({ target }) =>
           onChange(id, target.value === '' ? undefined : target.value)
@@ -66,7 +67,7 @@ const NumberWidget = (props) => {
 NumberWidget.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  description: PropTypes.string,
+  description: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   required: PropTypes.bool,
   error: PropTypes.arrayOf(PropTypes.string),
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -74,6 +75,7 @@ NumberWidget.propTypes = {
   wrapped: PropTypes.bool,
   maximum: PropTypes.number,
   minimum: PropTypes.number,
+  step: PropTypes.number,
   placeholder: PropTypes.string,
 };
 

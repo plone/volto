@@ -1,15 +1,16 @@
 ---
-html_meta:
-  "description": "Volto uses the popular Express server for its server-side rendering implementation and static resource serving."
-  "property=og:description": "Volto uses the popular Express server for its server-side rendering implementation and static resource serving."
-  "property=og:title": "Custom Express middleware"
-  "keywords": "Volto, Plone, frontend, React, custom, express, middleware"
+myst:
+  html_meta:
+    "description": "Volto uses the popular Express server for its server-side rendering implementation and static resource serving."
+    "property=og:description": "Volto uses the popular Express server for its server-side rendering implementation and static resource serving."
+    "property=og:title": "Custom Express middleware"
+    "keywords": "Volto, Plone, frontend, React, custom, express, middleware"
 ---
 
 # Custom Express middleware
 
 Volto uses the popular [Express](https://expressjs.com/) server for its
-Server-Side Rendering implementation and static resource serving.  In some
+{term}`server-side rendering` implementation and static resource serving.  In some
 cases it is useful to extend this server with new functionality. For example,
 Volto includes a middleware that proxies the backend and that can be used
 during development. Other use cases might include a CORS proxy server, a proxy

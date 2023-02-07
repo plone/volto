@@ -45,6 +45,51 @@ exports[`IdWidget renders an empty id widget component 1`] = `
 </div>
 `;
 
+exports[`IdWidget renders an id widget with a valid dot character 1`] = `
+<div>
+  <div
+    class="inline field text field-wrapper-my-field.jpg"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="stretched row"
+      >
+        <div
+          class="four wide column"
+        >
+          <div
+            class="wrapper"
+          >
+            <label
+              for="field-my-field.jpg"
+              id="fieldset-default-field-label-my-field.jpg"
+            >
+              My field
+            </label>
+          </div>
+        </div>
+        <div
+          class="eight wide column"
+        >
+          <div
+            class="ui input"
+          >
+            <input
+              id="field-my-field.jpg"
+              name="my-field.jpg"
+              type="text"
+              value="test-id"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`IdWidget renders an id widget with a valid value 1`] = `
 <div>
   <div
@@ -181,7 +226,7 @@ exports[`IdWidget renders an id widget with invalid characters 1`] = `
           <div
             class="ui red pointing basic label"
           >
-            Only lowercase letters (a-z) without accents, numbers (0-9), and the two characters "-" and "_" are allowed.
+            Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.
           </div>
         </div>
       </div>

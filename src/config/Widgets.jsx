@@ -4,6 +4,7 @@
 import loadable from '@loadable/component';
 
 import AlignWidget from '@plone/volto/components/manage/Widgets/AlignWidget';
+import ButtonsWidget from '@plone/volto/components/manage/Widgets/ButtonsWidget';
 import ArrayWidget from '@plone/volto/components/manage/Widgets/ArrayWidget';
 import CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidget';
 import FileWidget from '@plone/volto/components/manage/Widgets/FileWidget';
@@ -19,8 +20,10 @@ import TextWidget from '@plone/volto/components/manage/Widgets/TextWidget';
 import TokenWidget from '@plone/volto/components/manage/Widgets/TokenWidget';
 import WysiwygWidget from '@plone/volto/components/manage/Widgets/WysiwygWidget';
 import UrlWidget from '@plone/volto/components/manage/Widgets/UrlWidget';
+import InternalUrlWidget from '@plone/volto/components/manage/Widgets/InternalUrlWidget';
 import EmailWidget from '@plone/volto/components/manage/Widgets/EmailWidget';
 import NumberWidget from '@plone/volto/components/manage/Widgets/NumberWidget';
+import ImageSizeWidget from '@plone/volto/components/manage/Widgets/ImageSizeWidget';
 
 import ReferenceWidget from '@plone/volto/components/manage/Widgets/ReferenceWidget';
 import ObjectBrowserWidget from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
@@ -78,7 +81,9 @@ export const widgetMapping = {
     password: PasswordWidget,
     file: FileWidget,
     align: AlignWidget,
+    buttons: ButtonsWidget,
     url: UrlWidget,
+    internal_url: InternalUrlWidget,
     email: EmailWidget,
     array: ArrayWidget,
     token: TokenWidget,
@@ -89,6 +94,7 @@ export const widgetMapping = {
     object: ObjectWidget,
     object_list: ObjectListWidget,
     vocabularyterms: VocabularyTermsWidget,
+    image_size: ImageSizeWidget,
     select_querystring_field: SelectMetadataWidget,
     autocomplete: SelectAutoComplete,
     color_picker: ColorPickerWidget,
@@ -140,6 +146,7 @@ export const widgetMapping = {
       textarea: TextViewWidget,
       title: TitleViewWidget,
       url: UrlViewWidget,
+      internal_url: InternalUrlWidget,
     },
     vocabulary: {},
     choices: SelectViewWidget,
