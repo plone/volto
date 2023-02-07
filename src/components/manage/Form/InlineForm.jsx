@@ -39,6 +39,7 @@ const InlineForm = (props) => {
     title,
     icon,
     headerActions,
+    prompts,
     footer,
     focusIndex,
     intl,
@@ -74,10 +75,9 @@ const InlineForm = (props) => {
   function handleCurrentActiveFieldset(e, blockProps) {
     const { index } = blockProps;
     const newIndex = currentActiveFieldset === index ? -1 : index;
-
     setCurrentActiveFieldset(newIndex);
   }
-  console.log(error, errors, keys(errors));
+
   return (
     <div className="ui form">
       {title && (
@@ -90,6 +90,11 @@ const InlineForm = (props) => {
       {description && (
         <Segment secondary className="attached">
           {description}
+        </Segment>
+      )}
+      {prompts && (
+        <Segment secondary className="prompts attached">
+          {prompts}
         </Segment>
       )}
       {keys(errors).length > 0 && (
@@ -113,26 +118,22 @@ const InlineForm = (props) => {
 
       <div id={`blockform-fieldset-${defaultFieldset.id}`}>
         <Segment className="form attached">
-          {map(defaultFieldset.fields, (field, index) => {
-            const className =
-              formData?.['overwritten']?.includes(field) && 'overwritten';
-            return (
-              <Field
-                {...schema.properties[field]}
-                id={`${field} ${className}`}
-                fieldSet={defaultFieldset.title.toLowerCase()}
-                focus={index === focusIndex}
-                value={formData[field]}
-                required={schema.required.indexOf(field) !== -1}
-                onChange={(id, value) => {
-                  onChangeField(id, value);
-                }}
-                key={field}
-                error={errors[field]}
-                block={block}
-              />
-            );
-          })}
+          {map(defaultFieldset.fields, (field, index) => (
+            <Field
+              {...schema.properties[field]}
+              id={field}
+              fieldSet={defaultFieldset.title.toLowerCase()}
+              focus={index === focusIndex}
+              value={formData[field]}
+              required={schema.required.indexOf(field) !== -1}
+              onChange={(id, value) => {
+                onChangeField(id, value);
+              }}
+              key={field}
+              error={errors[field]}
+              block={block}
+            />
+          ))}
         </Segment>
       </div>
 
