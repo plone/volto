@@ -1,0 +1,1 @@
+Add open external link in a new tab config option. @robgietema
