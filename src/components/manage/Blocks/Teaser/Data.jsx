@@ -27,8 +27,8 @@ const messages = defineMessages({
     defaultMessage: 'This field has been overwritten.',
   },
   confirmationPrompt: {
-    id: 'Please confirm the overwrite below.',
-    defaultMessage: 'Please confirm the overwrite below.',
+    id: 'Please confirm the overwrite above.',
+    defaultMessage: 'Please confirm the overwrite above.',
   },
   resetOverwrite: {
     id: 'Reset the Overwrite',
@@ -37,6 +37,10 @@ const messages = defineMessages({
   keepOverwrite: {
     id: 'Keep the Overwrite',
     defaultMessage: 'Keep the Overwrite',
+  },
+  overwrite: {
+    id: 'Accept overwrites:',
+    defaultMessage: 'Accept overwrites:',
   },
 });
 
@@ -48,7 +52,7 @@ const TeaserData = (props) => {
   const [confirmed, setConfirmed] = useState(false);
   const errors = useRef({});
   const [fetchedData, setFetchedData] = useState({});
-  console.log(data.overwritten);
+  console.log(data.overwritten, errors.current, Object.keys(errors.current));
   const reset = () => {
     onChangeBlock(block, {
       ...data,
@@ -178,8 +182,9 @@ const TeaserData = (props) => {
 
   const Prompts = (
     <Button.Group className="teaser block overwrite actions">
-      {data.overwritten.length > 0 &&
-        data.overwritten.map((i) => (
+      <h3>{intl.formatMessage(messages.overwrite)}</h3>
+      {Object.keys(errors.current).length > 0 &&
+        Object.keys(errors.current)?.map((i) => (
           <div>
             <Label>{i}</Label>
             <Button.Group>
