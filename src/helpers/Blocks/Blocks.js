@@ -355,7 +355,7 @@ export function blocksFormGenerator(number, type) {
     blocks: Object.fromEntries(
       start.blocks_layout.items.map((item) => [
         item,
-        type ? { '@type': type } : {},
+        { '@type': type || 'empty' },
       ]),
     ),
   };

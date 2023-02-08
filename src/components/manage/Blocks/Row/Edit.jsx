@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { isEmpty, pickBy } from 'lodash';
 import { BlocksForm, SidebarPortal, Icon } from '@plone/volto/components';
 import PropTypes from 'prop-types';
-import { Button, Grid, Ref } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 import GridData from './Data';
 import EditBlockWrapper from './EditBlockWrapper';
 import { useIntl } from 'react-intl';
@@ -116,13 +116,16 @@ const RowEdit = (props) => {
 
   const direction = data['@type'] === 'row' ? 'horizontal' : 'vertical';
 
+  const columnsLength =
+    (data?.data && data.data.blocks_layout.items.length) || 0;
+
   return (
     <div
       className={cx({
-        one: data?.data && data.data.blocks_layout.items.length === 1,
-        two: data?.data && data.data.blocks_layout.items.length === 2,
-        three: data?.data && data.data.blocks_layout.items.length === 3,
-        four: data?.data && data.data.blocks_layout.items.length === 4,
+        one: columnsLength === 1,
+        two: columnsLength === 2,
+        three: columnsLength === 3,
+        four: columnsLength === 4,
         rows: true,
       })}
     >
@@ -182,6 +185,7 @@ const RowEdit = (props) => {
           onSelectTemplate={onSelectTemplate}
         />
       )}
+
       <BlocksForm
         metadata={metadata}
         properties={properties}
@@ -192,6 +196,7 @@ const RowEdit = (props) => {
         title={data.placeholder}
         onSelectBlock={(id) => {
           setSelectedBlock(id);
+          props.setSidebarTab(1);
         }}
         onChangeFormData={(newFormData) => {
           onChangeBlock(block, {

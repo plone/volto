@@ -11,6 +11,7 @@ import {
 import StyleWrapper from '@plone/volto/components/manage/Blocks/Block/StyleWrapper';
 import config from '@plone/volto/registry';
 import { ViewDefaultBlock } from '@plone/volto/components';
+import RenderEmptyBlock from './RenderEmptyBlock';
 
 const messages = defineMessages({
   unknownBlock: {
@@ -45,26 +46,42 @@ const RenderBlocks = (props) => {
           properties: content,
         });
 
-        return Block ? (
-          <MaybeWrap condition={blockWrapperTag} as={blockWrapperTag}>
-            <StyleWrapper key={block} {...props} id={block} data={blockData}>
-              <Block
-                id={block}
-                metadata={metadata}
-                properties={content}
-                data={blockData}
-                path={getBaseUrl(location?.pathname || '')}
-                blocksConfig={blocksConfig}
-              />
-            </StyleWrapper>
-          </MaybeWrap>
-        ) : blockData ? (
-          <div key={block}>
-            {intl.formatMessage(messages.unknownBlock, {
-              block: content[blocksFieldname]?.[block]?.['@type'],
-            })}
-          </div>
-        ) : (
+        if (content[blocksFieldname]?.[block]?.['@type'] === 'empty') {
+          return (
+            <MaybeWrap condition={blockWrapperTag} as={blockWrapperTag}>
+              <RenderEmptyBlock />
+            </MaybeWrap>
+          );
+        }
+
+        if (Block) {
+          return (
+            <MaybeWrap condition={blockWrapperTag} as={blockWrapperTag}>
+              <StyleWrapper key={block} {...props} id={block} data={blockData}>
+                <Block
+                  id={block}
+                  metadata={metadata}
+                  properties={content}
+                  data={blockData}
+                  path={getBaseUrl(location?.pathname || '')}
+                  blocksConfig={blocksConfig}
+                />
+              </StyleWrapper>
+            </MaybeWrap>
+          );
+        }
+
+        if (blockData) {
+          return (
+            <div key={block}>
+              {intl.formatMessage(messages.unknownBlock, {
+                block: content[blocksFieldname]?.[block]?.['@type'],
+              })}
+            </div>
+          );
+        }
+
+        return (
           <div key={block}>{intl.formatMessage(messages.invalidBlock)}</div>
         );
       })}

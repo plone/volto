@@ -5,7 +5,7 @@ import registry from '@plone/volto/registry';
 const TeaserBody = (props) => {
   const { variation } = props;
   const BodyComponent =
-    variation?.view || registry.resolve('Teaser|Default')?.component;
+    variation?.view || registry.getComponent('Teaser|Default')?.component;
 
   return <BodyComponent {...props} />;
 };

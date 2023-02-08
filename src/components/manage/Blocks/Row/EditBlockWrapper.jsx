@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon } from '@plone/volto/components';
-import { blockHasValue } from '@plone/volto/helpers';
+// import { blockHasValue } from '@plone/volto/helpers';
 import { Button } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 import NewBlockAddButton from './NewBlockAddButton';
@@ -18,9 +18,9 @@ const messages = defineMessages({
 
 const EditBlockWrapper = (props) => {
   const intl = useIntl();
-  const hideHandler = (data) => {
-    return !!data.fixed || !(blockHasValue(data) && props.blockProps.editable);
-  };
+  // const hideHandler = (data) => {
+  //   return !!data.fixed || !(blockHasValue(data) && props.blockProps.editable);
+  // };
 
   const { blockProps, draginfo, children } = props;
   const {
@@ -34,15 +34,22 @@ const EditBlockWrapper = (props) => {
     data,
   } = blockProps;
 
-  const visible = selected && !hideHandler(data);
+  // const visible = selected && !hideHandler(data);
 
   return (
     <div
       ref={draginfo.innerRef}
       {...draginfo.draggableProps}
-      className={`block-editor-${data['@type']}`}
+      className={cx(`block-editor-${data['@type']}`, { selected })}
     >
-      <div style={{ position: 'relative' }}>
+      <div
+        role="presentation"
+        className="cell-wrapper"
+        onClick={(e) => {
+          // e.stopPropagation();
+          onSelectBlock(block);
+        }}
+      >
         <Button
           basic
           icon
@@ -55,7 +62,7 @@ const EditBlockWrapper = (props) => {
         <div {...draginfo.dragHandleProps} className="drag row handle wrapper">
           <Icon name={dragSVG} size="18px" />
         </div>
-        {type ? (
+        {type && type !== 'empty' ? (
           <div className={`ui drag block inner ${type}`}>{children}</div>
         ) : (
           <div

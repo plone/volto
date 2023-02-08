@@ -51,6 +51,7 @@ const TeaserData = (props) => {
       }}
       formData={data}
       block={block}
+      onChangeBlock={onChangeBlock}
     />
   );
 };
