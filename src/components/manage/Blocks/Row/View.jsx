@@ -6,16 +6,16 @@ import { RenderBlocks } from '@plone/volto/components';
 import { withBlockExtensions } from '@plone/volto/helpers';
 
 const RowBlockView = (props) => {
-  const { data } = props;
+  const { data, path, className } = props;
   const metadata = props.metadata || props.properties;
   const columns = data.data.blocks_layout.items;
+  const location = {
+    pathname: path,
+  };
 
   return (
     <div
-      className={cx('block', data['@type'], {
-        centered: data.align === 'center' || data.align === undefined,
-        'space-between': data.align === 'space-between',
-        'centered-text': data.centeredText,
+      className={cx('block', data['@type'], className, {
         one: columns?.length === 1,
         two: columns?.length === 2,
         three: columns?.length === 3,
@@ -31,6 +31,7 @@ const RowBlockView = (props) => {
             blockWrapperTag={Grid.Column}
             metadata={metadata}
             content={data.data}
+            location={location}
           />
         </Grid>
       )}
