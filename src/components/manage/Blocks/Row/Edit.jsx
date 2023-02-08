@@ -196,7 +196,6 @@ const RowEdit = (props) => {
         title={data.placeholder}
         onSelectBlock={(id) => {
           setSelectedBlock(id);
-          props.setSidebarTab(1);
         }}
         onChangeFormData={(newFormData) => {
           onChangeBlock(block, {
@@ -226,7 +225,7 @@ const RowEdit = (props) => {
           </EditBlockWrapper>
         )}
       </BlocksForm>
-      <SidebarPortal selected={selected}>
+      <SidebarPortal selected={selected && !selectedBlock}>
         <GridData {...props}></GridData>
       </SidebarPortal>
     </div>
