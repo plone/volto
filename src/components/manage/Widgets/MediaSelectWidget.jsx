@@ -8,16 +8,21 @@ import loadable from '@loadable/component';
 import useLinkEditor from '@plone/volto/components/manage/AnchorPlugin/useLinkEditor';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 
-import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
+import {
+  flattenToAppURL,
+  getBaseUrl,
+  isInternalURL,
+} from '@plone/volto/helpers';
 import { createContent } from '@plone/volto/actions';
 import { readAsDataURL } from 'promise-file-reader';
-import { FormFieldWrapper, Icon } from '@plone/volto/components';
+import { FormFieldWrapper, Icon, UniversalLink } from '@plone/volto/components';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
 import uploadSVG from '@plone/volto/icons/upload.svg';
+import openinnewtabSVG from '@plone/volto/icons/openinnewtab.svg';
 
 const Dropzone = loadable(() => import('react-dropzone'));
 
@@ -54,7 +59,7 @@ const messages = defineMessages({
   },
 });
 
-const UnconnectedMediaInput = (props) => {
+const MediaSelectWidget = (props) => {
   const {
     id,
     pathname,
@@ -64,6 +69,7 @@ const UnconnectedMediaInput = (props) => {
     value,
     imageSize = 'teaser',
     selected = true,
+    inline,
   } = props;
 
   const intl = useIntl();
@@ -128,6 +134,16 @@ const UnconnectedMediaInput = (props) => {
         src={`${flattenToAppURL(value)}/@@images/image/${imageSize}`}
         alt=""
       />
+      <FormFieldWrapper {...props} noForInFieldLabel className="image">
+        <div className="image-widget-filepath-preview">
+          {value}&nbsp;
+          {isInternalURL ? (
+            <UniversalLink href={value} openLinkInNewTab>
+              <Icon name={openinnewtabSVG} size="16px" />
+            </UniversalLink>
+          ) : null}
+        </div>
+      </FormFieldWrapper>
     </div>
   ) : (
     <div
@@ -136,6 +152,9 @@ const UnconnectedMediaInput = (props) => {
       onKeyDown={onFocus}
       role="toolbar"
     >
+      {!inline ? (
+        <FormFieldWrapper {...props} noForInFieldLabel className="image" />
+      ) : null}
       <Dropzone
         noClick
         onDrop={handleUpload}
@@ -219,15 +238,4 @@ const UnconnectedMediaInput = (props) => {
   );
 };
 
-export const MediaInput = withObjectBrowser(UnconnectedMediaInput);
-
-const MediaWidget = (props) =>
-  !props.inline ? (
-    <FormFieldWrapper {...props} className="image-upload-widget">
-      <MediaInput {...props} />
-    </FormFieldWrapper>
-  ) : (
-    <MediaInput {...props} />
-  );
-
-export default MediaWidget;
+export default withObjectBrowser(MediaSelectWidget);
