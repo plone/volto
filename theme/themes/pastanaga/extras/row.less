@@ -11,12 +11,14 @@
   // z-index: 10;
 }
 
+// Override handler TODO: do it better (only for rows/columns)
 body.has-toolbar.has-sidebar .drag.row.handle.wrapper {
   // TODO: review
   margin-top: 5px;
   margin-left: 0px !important;
 }
 
+// Remove inner block button
 .ui.basic.button.remove-block-button {
   position: absolute;
   z-index: 3;
@@ -42,33 +44,7 @@ body.has-toolbar.has-sidebar .drag.row.handle.wrapper {
   }
 }
 
-.renderer-wrapper {
-  position: relative;
-  height: 100%;
-  border-radius: 6px;
-
-  &.empty {
-    background: @blueArctic;
-  }
-
-  &.selected::before {
-    position: absolute;
-    // otherwise, this layer is above the object, then it does not allow clicking inside
-    z-index: -1;
-    top: -5px;
-    left: -5px;
-    width: calc(100% + 10px);
-    height: calc(100% + 10px);
-    border: 1px solid rgba(120, 192, 215, 0.5);
-    border-radius: 3px;
-    content: '';
-  }
-
-  .block {
-    margin: 0;
-  }
-}
-
+// The Empty block cell (yet to be added)
 .row-empty-placeholder {
   position: relative;
   display: flex;
@@ -120,15 +96,6 @@ body.has-toolbar.has-sidebar .drag.row.handle.wrapper {
   }
 }
 
-// .block .block.detached:hover::before {
-//   border: none;
-// }
-
-// Transfer upstream
-// .block [data-rbd-draggable-context-id] {
-//   margin-bottom: 0;
-// }
-
 // Required to overcome the droppable from b-d&d at the bottom
 // !! Required for ALL blocks that have b-d&d and a grid
 .block.row,
@@ -144,10 +111,11 @@ body.has-toolbar.has-sidebar .drag.row.handle.wrapper {
   }
 }
 
+// Toolbar position
 .block-editor-row .block .toolbar,
 .block-editor-column .block .toolbar,
 [class$='Row'] .block .toolbar {
-  top: -49px;
+  top: -50px;
   left: -10px;
   border-radius: 6px;
   box-shadow: 0px 9px 18px rgba(2, 19, 34, 0.18),
@@ -155,7 +123,7 @@ body.has-toolbar.has-sidebar .drag.row.handle.wrapper {
   transform: initial;
 }
 
-[class$='Grid'] .block,
+[class$='Row'] .block,
 .block.row {
   h2,
   h3 {
@@ -218,15 +186,6 @@ body.has-toolbar.has-sidebar .drag.row.handle.wrapper {
     margin: 0;
     border-radius: 6px;
   }
-
-  // Override for grid image hover
-  // .block.image:hover::before {
-  //   display: none;
-  // }
-
-  // .block.listing:hover::before {
-  //   display: none;
-  // }
 }
 
 .grid-teaser-item {
@@ -283,23 +242,27 @@ body.has-toolbar.has-sidebar .drag.row.handle.wrapper {
   }
 }
 
-[data-rbd-draggable-context-id].grid-block-slate {
-  // cursor: text;
-
-  .renderer-wrapper {
-    min-height: 50px;
-  }
-}
-
+// Agnostic flexbox behavior for the Blocks Editor
+// Reasoning: SemanticUI Grid does not support detached (as non consecutive)
+// Grid > Grid.Columns support, so we have to build our own because of the
+// Blocks Editor wrappers
 .block.row .rows [data-rbd-droppable-id] {
   display: flex;
-  margin-top: 1rem;
 }
 
+// general spacing in the Row block wrapper
 .block.row [class^='block-editor-'] {
   padding-right: 1rem;
   padding-left: 1rem;
-  margin-bottom: 0;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+// general spacing in the Column block wrapper
+.block.column [class^='block-editor-'] {
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-top: 1rem;
 }
 
 .block.column [class^='block-editor-'] {
@@ -324,18 +287,20 @@ body.has-toolbar.has-sidebar .drag.row.handle.wrapper {
   width: 25%;
 }
 
-.cell-wrapper {
-  position: relative;
-  flex-grow: 1;
-}
-
+// Outter cell item flexbox behavior so all have the same height
 .block.row [class^='block-editor-'] {
   display: inline-flex !important;
   flex-direction: column;
   align-self: stretch;
 }
 
-// Adds a smaller block selected marker than the normal one
+// (Inner) cell wrapper flexbox behavior so all have the same height
+.cell-wrapper {
+  position: relative;
+  flex-grow: 1;
+}
+
+// Add our own block selected marker different than the normal one so we can full control over it
 .block.row [class^='block-editor-'].selected .cell-wrapper::before {
   position: absolute;
   // otherwise, this layer is above the object, then it does not allow clicking inside
@@ -350,14 +315,17 @@ body.has-toolbar.has-sidebar .drag.row.handle.wrapper {
   content: '';
 }
 
+// Remove default bottom image block margin
 .block.row [class^='block-editor-'] .block.image {
   margin: 0;
 }
 
+// Remove the text block "add block" button TODO: remove when we move to Quanta Toolbar
 .block.row [class^='block-editor-'] .block-add-button {
   display: none;
 }
 
+// Remove completely the default inner selection marker, so we are using our own
 .block.row [class^='block-editor-'] .block.selected::before {
   content: unset;
 }
@@ -367,6 +335,14 @@ body.has-toolbar.has-sidebar .drag.row.handle.wrapper {
 [class$='Row'].block [class^='block-editor-'] {
   .block:not(.inner):not(.selected)::before {
     content: unset;
+  }
+}
+
+// Remove block selection blue outline on hover for view only
+.block.row,
+.block.column {
+  :not([class^='block-editor-']) .block:hover::before {
+    border: none;
   }
 }
 

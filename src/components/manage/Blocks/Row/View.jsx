@@ -12,8 +12,7 @@ const RowBlockView = (props) => {
 
   return (
     <div
-      className={cx('block __grid', {
-        [data['@type']]: data['@type'] !== '__grid',
+      className={cx('block', data['@type'], {
         centered: data.align === 'center' || data.align === undefined,
         'space-between': data.align === 'space-between',
         'centered-text': data.centeredText,
@@ -25,14 +24,25 @@ const RowBlockView = (props) => {
     >
       {data.headline && <h2 className="headline">{data.headline}</h2>}
 
-      <Grid stackable stretched columns={columns.length}>
+      {data['@type'] === 'row' && (
+        <Grid stackable stretched columns={columns.length}>
+          <RenderBlocks
+            {...props}
+            blockWrapperTag={Grid.Column}
+            metadata={metadata}
+            content={data.data}
+          />
+        </Grid>
+      )}
+
+      {data['@type'] === 'column' && (
         <RenderBlocks
           {...props}
           blockWrapperTag={Grid.Column}
           metadata={metadata}
           content={data.data}
         />
-      </Grid>
+      )}
     </div>
   );
 };
