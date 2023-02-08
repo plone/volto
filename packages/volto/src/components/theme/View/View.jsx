@@ -15,6 +15,7 @@ import qs from 'query-string';
 import {
   ContentMetadataTags,
   Comments,
+  RelatedItems,
   Tags,
   Toolbar,
 } from '@plone/volto/components';
@@ -261,6 +262,9 @@ class View extends Component {
           this.props.content.subjects.length > 0 && (
             <Tags tags={this.props.content.subjects} />
           )}
+        {config.settings.showRelatedItems && (
+          <RelatedItems relatedItems={this.props.content.relatedItems} />
+        )}
         {this.props.content.allow_discussion && (
           <Comments pathname={this.props.pathname} />
         )}

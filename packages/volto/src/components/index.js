@@ -22,6 +22,7 @@ export { default as Title } from '@plone/volto/components/theme/Title/Title';
 export { default as DefaultView } from '@plone/volto/components/theme/View/DefaultView';
 export { default as Pagination } from '@plone/volto/components/theme/Pagination/Pagination';
 export { default as Tags } from '@plone/volto/components/theme/Tags/Tags';
+export { default as RelatedItems } from '@plone/volto/components/theme/RelatedItems/RelatedItems';
 export { default as OutdatedBrowser } from '@plone/volto/components/theme/OutdatedBrowser/OutdatedBrowser';
 export { default as LanguageSelector } from '@plone/volto/components/theme/LanguageSelector/LanguageSelector';
 export { default as RenderBlocks } from '@plone/volto/components/theme/View/RenderBlocks';
