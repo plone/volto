@@ -1,15 +1,17 @@
 import React from 'react';
 import { Button } from 'semantic-ui-react';
 import { BlockChooser, Icon } from '@plone/volto/components';
-import useOutsideClick from './useOutsideClick';
+import { useDetectClickOutside } from '@plone/volto/helpers';
 import addSVG from '@plone/volto/icons/add.svg';
 
 const NewBlockAddButton = (props) => {
   const { blocksConfig, block, index, onMutateBlock } = props;
-  const ref = React.useRef();
   const [isOpenMenu, setOpenMenu] = React.useState(false);
 
-  useOutsideClick(ref, () => setOpenMenu(false));
+  const ref = useDetectClickOutside({
+    onTriggered: () => setOpenMenu(false),
+    triggerKeys: ['Escape'],
+  });
 
   return (
     <>
