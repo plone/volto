@@ -11,9 +11,8 @@ import { withBlockExtensions } from '@plone/volto/helpers';
 import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
 
 /**
- * View image block class.
- * @class View
- * @extends Component
+ * View image block function.
+ * @function View
  */
 export const View = ({ data, detached }) => {
   const href = data?.href?.[0]?.['@id'] || '';
