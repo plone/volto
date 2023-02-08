@@ -47,6 +47,9 @@ const RowEdit = (props) => {
   const data_blocks = data?.data?.blocks;
   const properties = isEmpty(data_blocks) ? emptyBlocksForm() : data.data;
   const blockConfig = getBlockConfig(data['@type']);
+  const blocksConfig =
+    config.blocks.blocksConfig[data['@type']].blocksConfig ||
+    props.blocksConfig;
   const allowedBlocks = blockConfig.allowedBlocks;
   const maxRowLength = blockConfig.maxRowLength || 8;
 
@@ -101,7 +104,7 @@ const RowEdit = (props) => {
     });
   };
 
-  const allowedBlocksConfig = pickBy(config.blocks.blocksConfig, (value, key) =>
+  const allowedBlocksConfig = pickBy(blocksConfig, (value, key) =>
     allowedBlocks.includes(key),
   );
 

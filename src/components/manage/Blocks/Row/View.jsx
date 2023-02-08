@@ -4,11 +4,15 @@ import { Grid } from 'semantic-ui-react';
 import cx from 'classnames';
 import { RenderBlocks } from '@plone/volto/components';
 import { withBlockExtensions } from '@plone/volto/helpers';
+import config from '@plone/volto/registry';
 
 const RowBlockView = (props) => {
   const { data, path, className } = props;
   const metadata = props.metadata || props.properties;
   const columns = data.data.blocks_layout.items;
+  const blocksConfig =
+    config.blocks.blocksConfig[data['@type']].blocksConfig ||
+    props.blocksConfig;
   const location = {
     pathname: path,
   };
@@ -32,6 +36,7 @@ const RowBlockView = (props) => {
             metadata={metadata}
             content={data.data}
             location={location}
+            blocksConfig={blocksConfig}
           />
         </Grid>
       )}
@@ -42,6 +47,7 @@ const RowBlockView = (props) => {
           blockWrapperTag={Grid.Column}
           metadata={metadata}
           content={data.data}
+          blocksConfig={blocksConfig}
         />
       )}
     </div>
