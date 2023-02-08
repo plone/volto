@@ -1,13 +1,11 @@
 import React from 'react';
 import { Icon } from '@plone/volto/components';
-// import { blockHasValue } from '@plone/volto/helpers';
 import { Button } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 import NewBlockAddButton from './NewBlockAddButton';
 import cx from 'classnames';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
-import dragSVG from '@plone/volto/icons/drag.svg';
 
 const messages = defineMessages({
   delete: {
@@ -18,9 +16,6 @@ const messages = defineMessages({
 
 const EditBlockWrapper = (props) => {
   const intl = useIntl();
-  // const hideHandler = (data) => {
-  //   return !!data.fixed || !(blockHasValue(data) && props.blockProps.editable);
-  // };
 
   const { blockProps, draginfo, children } = props;
   const {
@@ -34,12 +29,11 @@ const EditBlockWrapper = (props) => {
     data,
   } = blockProps;
 
-  // const visible = selected && !hideHandler(data);
-
   return (
     <div
       ref={draginfo.innerRef}
       {...draginfo.draggableProps}
+      {...draginfo.dragHandleProps}
       className={cx(`block-editor-${data['@type']}`, { selected })}
     >
       <div
@@ -58,9 +52,7 @@ const EditBlockWrapper = (props) => {
         >
           <Icon name={clearSVG} className="circled" size="24px" />
         </Button>
-        <div {...draginfo.dragHandleProps} className="drag row handle wrapper">
-          <Icon name={dragSVG} size="18px" />
-        </div>
+
         {type && type !== 'empty' ? (
           <div className={`ui drag block inner ${type}`}>{children}</div>
         ) : (

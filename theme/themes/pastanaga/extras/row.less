@@ -18,12 +18,13 @@ body.has-toolbar.has-sidebar .drag.row.handle.wrapper {
   margin-left: 0px !important;
 }
 
-// Remove inner block button
+// Inner Remove block button
 .ui.basic.button.remove-block-button {
   position: absolute;
   z-index: 3;
   top: 6px;
   right: 2px;
+  display: none;
 
   .icon {
     height: 18px !important;
@@ -41,6 +42,14 @@ body.has-toolbar.has-sidebar .drag.row.handle.wrapper {
 
   &:hover {
     background-color: transparent !important;
+  }
+}
+
+.block.row,
+.block.column {
+  [class^='block-editor-'].selected .ui.basic.button.remove-block-button,
+  [class^='block-editor-']:hover .ui.basic.button.remove-block-button {
+    display: block;
   }
 }
 
@@ -343,6 +352,17 @@ body.has-toolbar.has-sidebar .drag.row.handle.wrapper {
 .block.column {
   :not([class^='block-editor-']) .block:hover::before {
     border: none;
+  }
+}
+
+.block.row,
+.block.column {
+  .block.inner.slate {
+    cursor: text;
+  }
+
+  body.cms-ui .ui.basic.segment.content-area & {
+    cursor: grab;
   }
 }
 
