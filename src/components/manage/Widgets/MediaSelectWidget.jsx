@@ -65,7 +65,6 @@ const UnconnectedMediaInput = (props) => {
     imageSize = 'teaser',
     selected = true,
   } = props;
-  // console.log(props);
 
   const intl = useIntl();
   const linkEditor = useLinkEditor();

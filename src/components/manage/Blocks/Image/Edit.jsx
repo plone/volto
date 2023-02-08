@@ -7,37 +7,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { readAsDataURL } from 'promise-file-reader';
-import { Button, Dimmer, Input, Loader, Message } from 'semantic-ui-react';
-import { defineMessages, injectIntl } from 'react-intl';
-import loadable from '@loadable/component';
+import { injectIntl } from 'react-intl';
 import cx from 'classnames';
-import { isEqual } from 'lodash';
 
-import { Icon, ImageSidebar, SidebarPortal } from '@plone/volto/components';
+import { ImageSidebar, SidebarPortal } from '@plone/volto/components';
 import { withBlockExtensions } from '@plone/volto/helpers';
 import { createContent } from '@plone/volto/actions';
-import {
-  flattenToAppURL,
-  getBaseUrl,
-  isInternalURL,
-} from '@plone/volto/helpers';
+import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
 
-import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
-import clearSVG from '@plone/volto/icons/clear.svg';
-import navTreeSVG from '@plone/volto/icons/nav.svg';
-import aheadSVG from '@plone/volto/icons/ahead.svg';
-import uploadSVG from '@plone/volto/icons/upload.svg';
 import MediaWidget from '@plone/volto/components/manage/Widgets/MediaSelectWidget';
-
-const Dropzone = loadable(() => import('react-dropzone'));
-
-const messages = defineMessages({
-  ImageBlockInputPlaceholder: {
-    id: 'Browse the site, drop an image, or type an URL',
-    defaultMessage: 'Browse the site, drop an image, or type an URL',
-  },
-});
 
 /**
  * Edit image block class.
@@ -71,173 +49,13 @@ class Edit extends Component {
     openObjectBrowser: PropTypes.func.isRequired,
   };
 
-  state = {
-    uploading: false,
-    url: '',
-    dragging: false,
-  };
-
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (
-      this.props.request.loading &&
-      nextProps.request.loaded &&
-      this.state.uploading
-    ) {
-      this.setState({
-        uploading: false,
-      });
-      this.props.onChangeBlock(this.props.block, {
-        ...this.props.data,
-        url: nextProps.content['@id'],
-        alt: '',
-      });
-    }
-  }
-
-  /**
-   * @param {*} nextProps
-   * @returns {boolean}
-   * @memberof Edit
-   */
-  shouldComponentUpdate(nextProps) {
-    return (
-      this.props.selected ||
-      nextProps.selected ||
-      !isEqual(this.props.data, nextProps.data)
-    );
-  }
-
-  /**
-   * Upload image handler (not used), but useful in case that we want a button
-   * not powered by react-dropzone
-   * @method onUploadImage
-   * @returns {undefined}
-   */
-  onUploadImage = (e) => {
-    e.stopPropagation();
-    const file = e.target.files[0];
-    this.setState({
-      uploading: true,
-    });
-    readAsDataURL(file).then((data) => {
-      const fields = data.match(/^data:(.*);(.*),(.*)$/);
-      this.props.createContent(
-        getBaseUrl(this.props.pathname),
-        {
-          '@type': 'Image',
-          title: file.name,
-          image: {
-            data: fields[3],
-            encoding: fields[2],
-            'content-type': fields[1],
-            filename: file.name,
-          },
-        },
-        this.props.block,
-      );
-    });
-  };
-
-  /**
-   * Change url handler
-   * @method onChangeUrl
-   * @param {Object} target Target object
-   * @returns {undefined}
-   */
-  onChangeUrl = ({ target }) => {
-    this.setState({
-      url: target.value,
-    });
-  };
-
-  /**
-   * Submit url handler
-   * @method onSubmitUrl
-   * @param {object} e Event
-   * @returns {undefined}
-   */
-  onSubmitUrl = () => {
-    this.props.onChangeBlock(this.props.block, {
-      ...this.props.data,
-      url: flattenToAppURL(this.state.url),
-    });
-  };
-
-  /**
-   * Drop handler
-   * @method onDrop
-   * @param {array} files File objects
-   * @returns {undefined}
-   */
-  onDrop = (file) => {
-    this.setState({
-      uploading: true,
-    });
-
-    readAsDataURL(file[0]).then((data) => {
-      const fields = data.match(/^data:(.*);(.*),(.*)$/);
-      this.props.createContent(
-        getBaseUrl(this.props.pathname),
-        {
-          '@type': 'Image',
-          title: file[0].name,
-          image: {
-            data: fields[3],
-            encoding: fields[2],
-            'content-type': fields[1],
-            filename: file[0].name,
-          },
-        },
-        this.props.block,
-      );
-    });
-  };
-
-  /**
-   * Keydown handler on Variant Menu Form
-   * This is required since the ENTER key is already mapped to a onKeyDown
-   * event and needs to be overriden with a child onKeyDown.
-   * @method onKeyDownVariantMenuForm
-   * @param {Object} e Event object
-   * @returns {undefined}
-   */
-  onKeyDownVariantMenuForm = (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      e.stopPropagation();
-      this.onSubmitUrl();
-    } else if (e.key === 'Escape') {
-      e.preventDefault();
-      e.stopPropagation();
-      // TODO: Do something on ESC key
-    }
-  };
-  onDragEnter = () => {
-    this.setState({ dragging: true });
-  };
-  onDragLeave = () => {
-    this.setState({ dragging: false });
-  };
-
-  node = React.createRef();
-
   /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
-    console.log(this.props);
     const { data } = this.props;
-    const placeholder =
-      this.props.data.placeholder ||
-      this.props.intl.formatMessage(messages.ImageBlockInputPlaceholder);
     return (
       <div
         className={cx(
