@@ -1,10 +1,10 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
 import { BlockDataForm } from '@plone/volto/components';
-import { GridSchema } from './schema';
+import { RowSchema } from './schema';
 import config from '@plone/volto/registry';
 
-const GridData = (props) => {
+const RowData = (props) => {
   const { block, blocksConfig, data, onChangeBlock } = props;
   const intl = useIntl();
 
@@ -13,7 +13,7 @@ const GridData = (props) => {
     dependencies: ['Row', 'BlockData'],
   }).component;
 
-  const schema = GridSchema({ ...props, intl });
+  const schema = RowSchema({ ...props, intl });
 
   return (
     <BlockDataForm
@@ -36,4 +36,4 @@ const GridData = (props) => {
   );
 };
 
-export default GridData;
+export default RowData;

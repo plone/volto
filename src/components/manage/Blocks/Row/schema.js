@@ -18,7 +18,7 @@ const messages = defineMessages({
   },
 });
 
-export const GridSchema = (props) => {
+export const RowSchema = (props) => {
   const { intl } = props;
   const hasColumnBlockEnabled = config.experimental.columnBlock.enabled;
 

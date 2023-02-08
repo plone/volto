@@ -3,7 +3,7 @@ import { isEmpty, pickBy } from 'lodash';
 import { BlocksForm, SidebarPortal, Icon } from '@plone/volto/components';
 import PropTypes from 'prop-types';
 import { Button } from 'semantic-ui-react';
-import GridData from './Data';
+import RowData from './Data';
 import EditBlockWrapper from './EditBlockWrapper';
 import { useIntl } from 'react-intl';
 import { v4 as uuid } from 'uuid';
@@ -207,7 +207,7 @@ const RowEdit = (props) => {
         )}
       </BlocksForm>
       <SidebarPortal selected={selected && !selectedBlock}>
-        <GridData {...props}></GridData>
+        <RowData {...props}></RowData>
       </SidebarPortal>
     </div>
   );
