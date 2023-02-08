@@ -310,18 +310,21 @@ body.has-toolbar.has-sidebar .drag.row.handle.wrapper {
 }
 
 // Add our own block selected marker different than the normal one so we can full control over it
-.block.row [class^='block-editor-'].selected .cell-wrapper::before {
-  position: absolute;
-  // otherwise, this layer is above the object, then it does not allow clicking inside
-  z-index: -1;
-  top: -5px;
-  left: -5px;
-  display: block;
-  width: calc(100% + 10px);
-  height: calc(100% + 10px);
-  border: 1px solid rgba(120, 192, 215, 0.5);
-  border-radius: 3px;
-  content: '';
+.block.row,
+.block.column {
+  [class^='block-editor-'].selected .cell-wrapper::before {
+    position: absolute;
+    // otherwise, this layer is above the object, then it does not allow clicking inside
+    z-index: -1;
+    top: -5px;
+    left: -5px;
+    display: block;
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
+    border: 1px solid rgba(120, 192, 215, 0.5);
+    border-radius: 3px;
+    content: '';
+  }
 }
 
 // Remove default bottom image block margin
@@ -335,12 +338,16 @@ body.has-toolbar.has-sidebar .drag.row.handle.wrapper {
 }
 
 // Remove completely the default inner selection marker, so we are using our own
-.block.row [class^='block-editor-'] .block.selected::before {
-  content: unset;
+.block.row,
+.block.column {
+  [class^='block-editor-'] .block.selected::before {
+    content: unset;
+  }
 }
 
 // Disable hover blue border on inner blocks
 .block.row [class^='block-editor-'],
+.block.column [class^='block-editor-'],
 [class$='Row'].block [class^='block-editor-'] {
   .block:not(.inner):not(.selected)::before {
     content: unset;

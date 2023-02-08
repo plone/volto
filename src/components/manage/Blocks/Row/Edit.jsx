@@ -48,7 +48,7 @@ const RowEdit = (props) => {
   const properties = isEmpty(data_blocks) ? emptyBlocksForm() : data.data;
   const blockConfig = getBlockConfig(data['@type']);
   const allowedBlocks = blockConfig.allowedBlocks;
-  const maxRowLength = blockConfig.maxRowLength;
+  const maxRowLength = blockConfig.maxRowLength || 8;
 
   const [selectedBlock, setSelectedBlock] = useState(
     properties.blocks_layout.items[0],
@@ -137,21 +137,6 @@ const RowEdit = (props) => {
               <Icon name={addSVG} size="24px" />
             </Button>
           </Button.Group>
-          {/* <Button.Group>
-            <Button
-              aria-label={`Toggle`}
-              icon
-              basic
-              onClick={(e) => onToggleDirection()}
-            >
-              <Icon
-                name={
-                  direction === 'horizontal' ? circleDownSVG : circleRightSVG
-                }
-                size="24px"
-              />
-            </Button>
-          </Button.Group> */}
           <Button.Group>
             <Button
               aria-label={`Row block settings`}
