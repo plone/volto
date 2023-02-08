@@ -13,8 +13,6 @@ import TemplateChooser from '@plone/volto/components/manage/TemplateChooser/Temp
 
 import addSVG from '@plone/volto/icons/add.svg';
 import configSVG from '@plone/volto/icons/configuration.svg';
-import circleDownSVG from '@plone/volto/icons/circle-bottom.svg';
-import circleRightSVG from '@plone/volto/icons/circle-right.svg';
 
 import templates from './templates';
 
@@ -103,13 +101,6 @@ const RowEdit = (props) => {
     });
   };
 
-  const onToggleDirection = () => {
-    onChangeBlock(block, {
-      ...data,
-      '@type': data['@type'] === 'row' ? 'column' : 'row',
-    });
-  };
-
   const allowedBlocksConfig = pickBy(config.blocks.blocksConfig, (value, key) =>
     allowedBlocks.includes(key),
   );
@@ -129,6 +120,8 @@ const RowEdit = (props) => {
         rows: true,
       })}
     >
+      {data.headline && <h2 className="headline">{data.headline}</h2>}
+
       {selected && (
         <div className="toolbar">
           <Button.Group>
@@ -144,7 +137,7 @@ const RowEdit = (props) => {
               <Icon name={addSVG} size="24px" />
             </Button>
           </Button.Group>
-          <Button.Group>
+          {/* <Button.Group>
             <Button
               aria-label={`Toggle`}
               icon
@@ -158,7 +151,7 @@ const RowEdit = (props) => {
                 size="24px"
               />
             </Button>
-          </Button.Group>
+          </Button.Group> */}
           <Button.Group>
             <Button
               aria-label={`Row block settings`}

@@ -1,4 +1,6 @@
 import { defineMessages } from 'react-intl';
+import downSVG from '@plone/volto/icons/down.svg';
+import rightSVG from '@plone/volto/icons/ahead.svg';
 
 const messages = defineMessages({
   headline: {
@@ -8,6 +10,10 @@ const messages = defineMessages({
   row: {
     id: 'Row',
     defaultMessage: 'Row',
+  },
+  direction: {
+    id: 'Direction',
+    defaultMessage: 'Direction',
   },
 });
 
@@ -20,13 +26,24 @@ export const GridSchema = (props) => {
       {
         id: 'default',
         title: 'Default',
-        fields: ['headline'],
+        fields: ['headline', 'direction'],
       },
     ],
 
     properties: {
       headline: {
         title: intl.formatMessage(messages.headline),
+      },
+      direction: {
+        title: intl.formatMessage(messages.direction),
+        widget: 'buttons',
+        actions: ['row', 'column'],
+        actionsInfoMap: {
+          row: [rightSVG, 'Row'],
+          column: [downSVG, 'Column'],
+        },
+        defaultAction: 'row',
+        default: 'row',
       },
     },
     required: [],
