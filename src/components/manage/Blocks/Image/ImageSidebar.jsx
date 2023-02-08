@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Segment } from 'semantic-ui-react';
 import { useIntl, FormattedMessage } from 'react-intl';
-import { BlockDataForm, Icon } from '@plone/volto/components';
-import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
+import { BlockDataForm } from '@plone/volto/components';
 import { ImageSchema } from './schema';
-import imageSVG from '@plone/volto/icons/image.svg';
 
 const ImageSidebar = (props) => {
   const { data, block, onChangeBlock } = props;
@@ -19,30 +16,6 @@ const ImageSidebar = (props) => {
         </h2>
       </header>
 
-      <Segment className="sidebar-metadata-container" secondary attached>
-        {data.url ? (
-          <>
-            {data.url.split('/').slice(-1)[0]}
-            {isInternalURL(data.url) && (
-              <img
-                src={`${flattenToAppURL(data.url)}/@@images/image/mini`}
-                alt={data.alt}
-              />
-            )}
-            {!isInternalURL(data.url) && (
-              <img src={data.url} alt={data.alt} style={{ width: '50%' }} />
-            )}
-          </>
-        ) : (
-          <>
-            <FormattedMessage
-              id="No image selected"
-              defaultMessage="No image selected"
-            />
-            <Icon name={imageSVG} size="100px" color="#b8c6c8" />
-          </>
-        )}
-      </Segment>
       <BlockDataForm
         schema={schema}
         title={schema.title}
