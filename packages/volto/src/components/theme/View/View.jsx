@@ -15,6 +15,7 @@ import qs from 'query-string';
 import {
   ContentMetadataTags,
   Comments,
+  RelatedItems,
   Toolbar,
 } from '@plone/volto/components';
 import { listActions, getContent } from '@plone/volto/actions';
@@ -255,6 +256,9 @@ class View extends Component {
           history={this.props.history}
         />
         <SlotRenderer name="belowContent" content={this.props.content} />
+        {config.settings.showRelatedItems && (
+          <RelatedItems relatedItems={this.props.content.relatedItems} />
+        )}
         {this.props.content.allow_discussion && (
           <Comments pathname={this.props.pathname} />
         )}

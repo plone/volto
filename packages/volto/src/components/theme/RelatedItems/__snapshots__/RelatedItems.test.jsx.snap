@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Related Items renders with related items 1`] = `
+<div
+  className="ui container"
+>
+  <h4
+    className="ui header"
+  >
+    Related Items
+  </h4>
+  <div
+    className="ui list"
+  >
+    <div
+      className="item"
+    >
+      <div
+        className="content"
+      >
+        <a
+          className="header"
+          href="/test-1"
+          onClick={[Function]}
+          target={null}
+          title={null}
+        >
+          <div>
+            Title 1
+          </div>
+          <div
+            className="description"
+          >
+            Description 1
+          </div>
+        </a>
+      </div>
+    </div>
+    <div
+      className="item"
+    >
+      <div
+        className="content"
+      >
+        <a
+          className="header"
+          href="/test-2"
+          onClick={[Function]}
+          target={null}
+          title={null}
+        >
+          <div>
+            Title 2
+          </div>
+          <div
+            className="description"
+          >
+            Description 2
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Related Items renders with related items has null 1`] = `
+<div
+  className="ui container"
+>
+  <h4
+    className="ui header"
+  >
+    Related Items
+  </h4>
+  <div
+    className="ui list"
+  >
+    <div
+      className="item"
+    >
+      <div
+        className="content"
+      >
+        <a
+          className="header"
+          href="/test-1"
+          onClick={[Function]}
+          target={null}
+          title={null}
+        >
+          <div>
+            Title 1
+          </div>
+          <div
+            className="description"
+          >
+            Description 1
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Related Items renders without related items 1`] = `<span />`;
