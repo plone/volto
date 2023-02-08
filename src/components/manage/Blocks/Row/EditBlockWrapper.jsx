@@ -9,8 +9,12 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   delete: {
-    id: 'delete',
-    defaultMessage: 'delete',
+    id: 'Remove row element',
+    defaultMessage: 'Remove row element',
+  },
+  reset: {
+    id: 'Reset row element',
+    defaultMessage: 'Reset row element',
   },
 });
 
@@ -29,6 +33,10 @@ const EditBlockWrapper = (props) => {
     data,
   } = blockProps;
 
+  function onResetBlock() {
+    onChangeBlock(block, { '@type': 'empty' });
+  }
+
   return (
     <div
       ref={draginfo.innerRef}
@@ -43,16 +51,32 @@ const EditBlockWrapper = (props) => {
           onSelectBlock(block);
         }}
       >
-        <Button
-          basic
-          icon
-          onClick={() => onDeleteBlock(block, true)}
-          className="remove-block-button"
-          aria-label={intl.formatMessage(messages.delete)}
-        >
-          <Icon name={clearSVG} className="circled" size="24px" />
-        </Button>
-
+        {type !== 'empty' ? (
+          <Button
+            aria-label={intl.formatMessage(messages.reset)}
+            basic
+            icon
+            onClick={(e) => onResetBlock(block, {})}
+            className="remove-block-button"
+          >
+            <Icon name={clearSVG} className="circled" size="24px" />
+          </Button>
+        ) : (
+          <Button
+            basic
+            icon
+            className="remove-block-button"
+            onClick={(e) => onDeleteBlock(block, true)}
+            aria-label={intl.formatMessage(messages.delete)}
+          >
+            <Icon
+              name={clearSVG}
+              className="circled"
+              size="24px"
+              color="#e40166"
+            />
+          </Button>
+        )}
         {type && type !== 'empty' ? (
           <div className={`ui drag block inner ${type}`}>{children}</div>
         ) : (
