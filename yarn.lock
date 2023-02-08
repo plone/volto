@@ -20200,13 +20200,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-error-overlay@npm:^6.0.7, react-error-overlay@npm:^6.0.9":
-  version: 6.0.11
-  resolution: "react-error-overlay@npm:6.0.11"
-  checksum: ce7b44c38fadba9cedd7c095cf39192e632daeccf1d0747292ed524f17dcb056d16bc197ddee5723f9dd888f0b9b19c3b486c430319e30504289b9296f2d2c42
-  languageName: node
-  linkType: hard
-
 "react-fast-compare@npm:2.0.4":
   version: 2.0.4
   resolution: "react-fast-compare@npm:2.0.4"
