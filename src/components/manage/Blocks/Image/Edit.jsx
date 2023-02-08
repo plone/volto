@@ -233,6 +233,7 @@ class Edit extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    console.log(this.props);
     const { data } = this.props;
     const placeholder =
       this.props.data.placeholder ||
@@ -281,9 +282,11 @@ class Edit extends Component {
                 id="url"
                 title="Source"
                 onChange={(id, value) => {
-                  this.props.onChangeField(id, value);
+                  this.props.onChangeBlock(this.props.block, {
+                    ...data,
+                    [id]: value,
+                  });
                 }}
-                openObjectBrowser={() => this.props.openObjectBrowser()}
               />
             )}
           </div>

@@ -65,7 +65,7 @@ const UnconnectedMediaInput = (props) => {
     imageSize = 'teaser',
     selected = true,
   } = props;
-  console.log(props);
+  // console.log(props);
 
   const intl = useIntl();
   const linkEditor = useLinkEditor();
@@ -170,7 +170,7 @@ const UnconnectedMediaInput = (props) => {
                         openObjectBrowser({
                           mode: 'link',
                           overlay: true,
-                          onSelectItem: onChange,
+                          onSelectItem: (url, item) => onChange(id, url, item),
                         });
                       }}
                     >
