@@ -53,7 +53,8 @@ import TextViewWidget from '@plone/volto/components/theme/Widgets/TextWidget';
 import TitleViewWidget from '@plone/volto/components/theme/Widgets/TitleWidget';
 import TokenViewWidget from '@plone/volto/components/theme/Widgets/TokenWidget';
 import UrlViewWidget from '@plone/volto/components/theme/Widgets/UrlWidget';
-import ImageWidget from '@plone/volto/components/theme/Widgets/ImageWidget';
+import ImageWidget from '@plone/volto/components/manage/Widgets/ImageWidget';
+import MediaWidget from '@plone/volto/components/manage/Widgets/MediaSelectWidget';
 
 export const DatetimeWidget = loadable(() =>
   import('@plone/volto/components/manage/Widgets/DatetimeWidget'),
@@ -100,6 +101,7 @@ export const widgetMapping = {
     autocomplete: SelectAutoComplete,
     color_picker: ColorPickerWidget,
     image: ImageWidget,
+    media: MediaWidget,
   },
   vocabulary: {
     'plone.app.vocabularies.Catalog': ObjectBrowserWidget,

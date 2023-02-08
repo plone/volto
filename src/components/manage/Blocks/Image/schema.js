@@ -45,7 +45,7 @@ export function ImageSchema({ formData, intl }) {
       {
         id: 'default',
         title: 'Default',
-        fields: [...(formData.url ? ['url', 'alt', 'align', 'size'] : [])],
+        fields: [...(formData.url ? ['url', 'alt', 'align', 'size'] : ['url'])],
       },
       ...(formData.url
         ? [
@@ -60,7 +60,7 @@ export function ImageSchema({ formData, intl }) {
     properties: {
       url: {
         title: intl.formatMessage(messages.Source),
-        widget: 'url',
+        widget: 'media',
       },
       alt: {
         title: intl.formatMessage(messages.AltText),
