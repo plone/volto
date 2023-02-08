@@ -183,6 +183,9 @@ let config = {
     addBlockButton: {
       enabled: false,
     },
+    columnBlock: {
+      enabled: false,
+    },
   },
   widgets: {
     ...widgetMapping,

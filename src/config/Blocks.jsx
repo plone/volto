@@ -481,7 +481,7 @@ const blocksConfig = {
     group: 'common',
     view: RowViewBlock,
     edit: RowEditBlock,
-    restricted: false,
+    restricted: true,
     mostUsed: false,
     sidebarTab: 1,
     // This has a good reason: Slate does not work in detached mode if enabled

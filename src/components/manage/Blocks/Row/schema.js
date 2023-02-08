@@ -1,6 +1,7 @@
 import { defineMessages } from 'react-intl';
 import downSVG from '@plone/volto/icons/down.svg';
 import rightSVG from '@plone/volto/icons/ahead.svg';
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   headline: {
@@ -19,6 +20,8 @@ const messages = defineMessages({
 
 export const GridSchema = (props) => {
   const { intl } = props;
+  const hasColumnBlockEnabled = config.experimental.columnBlock.enabled;
+
   return {
     title: intl.formatMessage(messages.row),
     block: 'row',
@@ -26,7 +29,7 @@ export const GridSchema = (props) => {
       {
         id: 'default',
         title: 'Default',
-        fields: ['headline', 'direction'],
+        fields: ['headline', ...(hasColumnBlockEnabled ? 'direction' : [])],
       },
     ],
 
