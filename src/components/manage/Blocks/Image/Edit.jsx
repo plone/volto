@@ -62,12 +62,14 @@ const Edit = (props) => {
               inline
               id="url"
               title="Source"
+              block={block}
               onChange={(id, value) => {
                 onChangeBlock(block, {
                   ...data,
                   [id]: value,
                 });
               }}
+              handlesErrors={false}
             />
           )}
         </div>

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
 import { useIntl, defineMessages } from 'react-intl';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import loadable from '@loadable/component';
+import { toast } from 'react-toastify';
 
 import useLinkEditor from '@plone/volto/components/manage/AnchorPlugin/useLinkEditor';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
@@ -15,7 +16,12 @@ import {
 } from '@plone/volto/helpers';
 import { createContent } from '@plone/volto/actions';
 import { readAsDataURL } from 'promise-file-reader';
-import { FormFieldWrapper, Icon, UniversalLink } from '@plone/volto/components';
+import {
+  FormFieldWrapper,
+  Icon,
+  UniversalLink,
+  Toast,
+} from '@plone/volto/components';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -70,7 +76,9 @@ const MediaSelectWidget = (props) => {
     imageSize = 'teaser',
     selected = true,
     inline,
+    handlesErrors = true,
   } = props;
+  console.log(props);
 
   const intl = useIntl();
   const linkEditor = useLinkEditor();
@@ -78,15 +86,35 @@ const MediaSelectWidget = (props) => {
   const dispatch = useDispatch();
   const contextUrl = pathname ?? location.pathname;
 
-  const [uploading, setUploading] = React.useState(false);
-  const [dragging, setDragging] = React.useState(false);
+  const [dragging, setDragging] = useState(false);
 
   const requestId = `image-upload-${id}`;
+
+  const uploadState = useSelector((state) => {
+    return state.content.subrequests['image-upload-url'];
+  });
+  const uploadError = useSelector((state) => {
+    return state.content.subrequests?.['image-upload-url']?.error;
+  });
+
+  useEffect(() => {
+    if (uploadError && handlesErrors) {
+      toast.error(
+        <>
+          <Toast
+            error
+            title="Upload error:"
+            content={uploadState?.error?.response.body.message}
+          />
+        </>,
+      );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [uploadError]);
 
   const handleUpload = React.useCallback(
     (eventOrFile) => {
       eventOrFile.target && eventOrFile.stopPropagation();
-      setUploading(true);
       const file = eventOrFile.target
         ? eventOrFile.target.files[0]
         : eventOrFile[0];
@@ -109,7 +137,6 @@ const MediaSelectWidget = (props) => {
           ),
         ).then((resp) => {
           if (resp) {
-            setUploading(false);
             onChange(id, resp['@id']);
           }
         });
@@ -166,7 +193,7 @@ const MediaSelectWidget = (props) => {
           <div {...getRootProps()}>
             <Message>
               {dragging && <Dimmer active></Dimmer>}
-              {uploading && (
+              {uploadState?.loading && (
                 <Dimmer active>
                   <Loader indeterminate>
                     {intl.formatMessage(messages.uploadingImage)}

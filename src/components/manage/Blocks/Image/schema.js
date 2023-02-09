@@ -61,6 +61,7 @@ export function ImageSchema({ formData, intl }) {
       url: {
         title: intl.formatMessage(messages.Source),
         widget: 'media',
+        mode: 'image',
       },
       alt: {
         title: intl.formatMessage(messages.AltText),
