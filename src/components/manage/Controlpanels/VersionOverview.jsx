@@ -7,7 +7,14 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { isEmpty } from 'lodash';
 
-import { version as voltoVersion } from '../../../../package.json';
+import {
+  version as voltoVersion,
+  name as voltoName,
+} from '../../../../package.json';
+import {
+  version as projectVersion,
+  name as projectName,
+} from '@root/../package.json';
 
 import { defineMessages, useIntl } from 'react-intl';
 import config from '@plone/volto/registry';
@@ -30,6 +37,7 @@ const VersionOverview = ({
 }) => {
   const intl = useIntl();
   const { addonsInfo } = config.settings;
+  const isProject = voltoName !== projectName;
 
   return (
     <>
@@ -40,6 +48,11 @@ const VersionOverview = ({
           paddingLeft: '1rem',
         }}
       >
+        {isProject ? (
+          <li>
+            {projectName} {projectVersion}
+          </li>
+        ) : null}
         {voltoVersion && <li>Volto {voltoVersion}</li>}
         <li>Plone {plone_version}</li>
         <li>plone.restapi {plone_restapi_version}</li>

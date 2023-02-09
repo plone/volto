@@ -60,8 +60,8 @@ extensions = [
     "sphinx.ext.intersphinx",
     "sphinx.ext.todo",
     "sphinx_copybutton",
-    "sphinxcontrib.spelling",
     "sphinxext.opengraph",
+    "sphinxcontrib.video",
 ]
 
 
@@ -87,6 +87,7 @@ linkcheck_ignore = [
     r"https://github.com/plone/documentation/issues/new/choose",  # requires auth
     # Ignore specific anchors
     r"https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors#Identifying_the_issue",
+    r"https://docs.cypress.io/guides/references/migration-guide#Migrating-to-Cypress-version-10-0",
     r"https://github.com/browserslist/browserslist#queries",
     r"https://github.com/nodejs/release#release-schedule",
     r"https://github.com/plone/plone.docker#for-basic-usage",
@@ -139,6 +140,7 @@ myst_enable_extensions = [
     "linkify",  # Identify “bare” web URLs and add hyperlinks.
     "colon_fence",  # You can also use ::: delimiters to denote code fences,\
                     #  instead of ```.
+    "html_image",
 ]
 
 

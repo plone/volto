@@ -1,0 +1,1 @@
+Add option to add an action button to the top of the toolbar and to add a menu button to the bottom of the toolbar. @ksuess

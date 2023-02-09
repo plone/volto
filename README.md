@@ -176,6 +176,11 @@ Volto is actively developed since 2017 and used in production since 2018 on the 
 - [MemoryTwin](https://memorytwin.com/en) (Product website, MemoryTwin allows you to create your personal artificial intelligence, able to remember and speak. Developed by [RawMaterial](https://rawmaterial.it/en), 2022)
 - [Forschungszentrum Jülich](https://fz-juelich.de) (Website for Forschungzentrum Jülich, which is one of the largest research institutions in Europe, developed by [kitconcept GmbH](https://kitconcept.com), 2022)
 - [ILPO](https://ilpo.jyu.fi/) (the registration portal of continuous learning at the University of Jyväskylä. Developed by University of Jyväskylä, 2022)
+- [Debabarreneko mankomunitatea](https://debabarrena.eus) (Website of the Commonwealth of Debabarrena, community of municipalities to centralize waste handling services, developed by [CodeSyntax](https://www.codesyntax.com/en), 2022)
+- [Debako Udala / Ayuntamiento de Deba](https://www.deba.eus) (Website of the municipality of Deba, developed by [CodeSyntax](https://www.codesyntax.com/en), 2022)
+- [Helmholtz-Institut Erlangen-Nürnberg für Erneuerbare Energien (HI-ERN)](https://www.hi-ern.de) (Website for HI ERN, a research institution for renewable energies, developed by [kitconcept GmbH](https://kitconcept.com), 2022)
+- [Lanku](https://www.lanku.eus) (Website for Lanku Kultur Zerbitzuak, a company offering cultural services and improvised Basque verse singing sessions accross the Basque Country, developed by [CodeSyntax](https://www.codesyntax.com/en), 2023)
+- [UEU](https://www.ueu.eus) (Website for Udako Euskal Unibertsitatea, a non-profit University offering all its service only in Basque: courses, publications, ... developed by [CodeSyntax](https://www.codesyntax.com/en), 2023)
 
 Please create a new [issue](https://github.com/plone/volto/issues/new) or [pull request](https://github.com/plone/volto/pulls) to add your Volto-site here!
 
@@ -278,7 +283,7 @@ make start-backend-docker
 
 or running Plone on your machine (advanced), additional dependencies might be
 required, only for Plone experienced integrators/developers. Check the [Plone
-Installation Documentation](https://docs.plone.org/manage/installing/installation.html).
+Installation Documentation](https://6.docs.plone.org/install/index.html).
 
 ```shell
 make build-backend

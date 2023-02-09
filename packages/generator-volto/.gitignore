@@ -65,6 +65,8 @@ typings/
 
 *~
 
+.changelog.draft
+
 # yarn 3
 .pnp.*
 .yarn/*
