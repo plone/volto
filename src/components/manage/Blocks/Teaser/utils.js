@@ -1,4 +1,4 @@
-import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
+import { isInternalURL } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 export function getTeaserImageURL({ href, image, align }) {

@@ -352,6 +352,11 @@ msgstr "替代 URL 路径必须以斜杠开头。"
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
 msgstr "替代 URL 路径 → 目标 URL 路径（创建的日期和时间，手动创建 yes/no）"
 
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Always show live data
+msgid "Always show live data"
+msgstr ""
+
 #: components/manage/Rules/Rules
 # defaultMessage: Applied to subfolders
 msgid "Applied to subfolders"
@@ -688,6 +693,11 @@ msgstr "配置内容规则: {title}"
 # defaultMessage: Configure content rule
 msgid "Configure content rule"
 msgstr "配置内容规则"
+
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Confirm Overwrites:
+msgid "Confirm Overwrites:"
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
@@ -1373,6 +1383,11 @@ msgstr ""
 msgid "Failed To Undo Transactions"
 msgstr "撤销事务失败"
 
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Fetch newest data
+msgid "Fetch newest data"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Field
 msgid "Field"
@@ -1527,6 +1542,11 @@ msgstr "组"
 # defaultMessage: Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group.
 msgid "Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group."
 msgstr "组是用户的逻辑集合，如部门和商务小组。他们不直接和某个权限关联，您应该用角色分配权限，然后让组拥有某个角色。符号{plone_svg}表示从另一个组的成员继承的角色"
+
+#: components/manage/Blocks/Teaser/DefaultBody
+# defaultMessage: Head Title
+msgid "Head Title"
+msgstr ""
 
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Header cell
@@ -1788,6 +1808,11 @@ msgstr "条目必须是独特的"
 msgid "Items to be deleted:"
 msgstr "需要删除的条目"
 
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Keep the Overwrite
+msgid "Keep the Overwrite"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Label
 msgid "Label"
@@ -1940,6 +1965,11 @@ msgstr "登录名"
 # defaultMessage: Logout
 msgid "Logout"
 msgstr "退出"
+
+#: components/manage/Blocks/Teaser/DefaultBody
+# defaultMessage: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+msgid "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum."
+msgstr ""
 
 #: components/manage/Toolbar/More
 # defaultMessage: Made by {creator} on {date}. This is not a working copy anymore, but the main content.
@@ -2321,6 +2351,11 @@ msgstr "打开目标浏览器"
 msgid "Origin"
 msgstr "原始"
 
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Overwritten fields will be excluded from live data.
+msgid "Overwritten fields will be excluded from live data."
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Page
 msgid "Page"
@@ -2399,6 +2434,11 @@ msgstr "负责创建此条目内容的人员。请输入用户名列表，每行
 #: components/manage/Blocks/Teaser/DefaultBody
 # defaultMessage: Please choose an existing content as source for this element
 msgid "Please choose an existing content as source for this element"
+msgstr ""
+
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Please confirm the overwrite above.
+msgid "Please confirm the overwrite above."
 msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
@@ -2670,6 +2710,11 @@ msgstr "缺少所需的输出。"
 # defaultMessage: Reset title
 msgid "Reset term title"
 msgstr "重新设置标题"
+
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Reset the Overwrite
+msgid "Reset the Overwrite"
+msgstr ""
 
 #: components/manage/Blocks/Teaser/Data
 # defaultMessage: Reset the block
@@ -3277,6 +3322,11 @@ msgstr "目标url路径必须以斜杠开头。"
 msgid "Teaser"
 msgstr ""
 
+#: components/manage/Blocks/Teaser/DefaultBody
+# defaultMessage: Teaser Title
+msgid "Teaser Title"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Text
 msgid "Text"
@@ -3397,6 +3447,11 @@ msgstr "第三"
 # defaultMessage: This Page is referenced by the following items:
 msgid "This Page is referenced by the following items:"
 msgstr "此页面被下列条目引用："
+
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: This field has been overwritten.
+msgid "This field has been overwritten."
+msgstr ""
 
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This has an ongoing working copy in {title}

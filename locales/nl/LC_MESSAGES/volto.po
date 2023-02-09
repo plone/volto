@@ -353,6 +353,11 @@ msgstr "Alternatieve url moet beginnen met een slash."
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
 msgstr "Alternatieve url → doel url (datum en tijd van aanmaak, manuaal aangemaakt ja/nee)"
 
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Always show live data
+msgid "Always show live data"
+msgstr ""
+
 #: components/manage/Rules/Rules
 # defaultMessage: Applied to subfolders
 msgid "Applied to subfolders"
@@ -688,6 +693,11 @@ msgstr ""
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Configure content rule
 msgid "Configure content rule"
+msgstr ""
+
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Confirm Overwrites:
+msgid "Confirm Overwrites:"
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
@@ -1374,6 +1384,11 @@ msgstr "Facetten boven"
 msgid "Failed To Undo Transactions"
 msgstr "Kon transactie niet ongedana maken"
 
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Fetch newest data
+msgid "Fetch newest data"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Field
 msgid "Field"
@@ -1528,6 +1543,11 @@ msgstr "Groepen"
 # defaultMessage: Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group.
 msgid "Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group."
 msgstr "Groepen zijn logische verzamelingen van gebruikers"
+
+#: components/manage/Blocks/Teaser/DefaultBody
+# defaultMessage: Head Title
+msgid "Head Title"
+msgstr ""
 
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Header cell
@@ -1789,6 +1809,11 @@ msgstr "Items moeten uniek zijn."
 msgid "Items to be deleted:"
 msgstr ""
 
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Keep the Overwrite
+msgid "Keep the Overwrite"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Label
 msgid "Label"
@@ -1941,6 +1966,11 @@ msgstr "Gebruikersnaam"
 # defaultMessage: Logout
 msgid "Logout"
 msgstr "Uitloggen"
+
+#: components/manage/Blocks/Teaser/DefaultBody
+# defaultMessage: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+msgid "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum."
+msgstr ""
 
 #: components/manage/Toolbar/More
 # defaultMessage: Made by {creator} on {date}. This is not a working copy anymore, but the main content.
@@ -2322,6 +2352,11 @@ msgstr "Open object browser"
 msgid "Origin"
 msgstr "Oorsprong"
 
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Overwritten fields will be excluded from live data.
+msgid "Overwritten fields will be excluded from live data."
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Page
 msgid "Page"
@@ -2400,6 +2435,11 @@ msgstr "Gebruikers die verantwoordelijk zijn voor de inhoud van dit item. De ein
 #: components/manage/Blocks/Teaser/DefaultBody
 # defaultMessage: Please choose an existing content as source for this element
 msgid "Please choose an existing content as source for this element"
+msgstr ""
+
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Please confirm the overwrite above.
+msgid "Please confirm the overwrite above."
 msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
@@ -2671,6 +2711,11 @@ msgstr "Verplichte waarde mist."
 # defaultMessage: Reset title
 msgid "Reset term title"
 msgstr "Title resetten"
+
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Reset the Overwrite
+msgid "Reset the Overwrite"
+msgstr ""
 
 #: components/manage/Blocks/Teaser/Data
 # defaultMessage: Reset the block
@@ -3278,6 +3323,11 @@ msgstr "URL pad van doel moet beginnen met een slash"
 msgid "Teaser"
 msgstr ""
 
+#: components/manage/Blocks/Teaser/DefaultBody
+# defaultMessage: Teaser Title
+msgid "Teaser Title"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Text
 msgid "Text"
@@ -3397,6 +3447,11 @@ msgstr "Derde"
 #: components/manage/Contents/Contents
 # defaultMessage: This Page is referenced by the following items:
 msgid "This Page is referenced by the following items:"
+msgstr ""
+
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: This field has been overwritten.
+msgid "This field has been overwritten."
 msgstr ""
 
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory

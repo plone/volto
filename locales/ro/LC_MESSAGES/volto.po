@@ -346,6 +346,11 @@ msgstr ""
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
 msgstr ""
 
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Always show live data
+msgid "Always show live data"
+msgstr ""
+
 #: components/manage/Rules/Rules
 # defaultMessage: Applied to subfolders
 msgid "Applied to subfolders"
@@ -681,6 +686,11 @@ msgstr ""
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Configure content rule
 msgid "Configure content rule"
+msgstr ""
+
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Confirm Overwrites:
+msgid "Confirm Overwrites:"
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
@@ -1367,6 +1377,11 @@ msgstr "Fațete deasupra"
 msgid "Failed To Undo Transactions"
 msgstr ""
 
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Fetch newest data
+msgid "Fetch newest data"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Field
 msgid "Field"
@@ -1521,6 +1536,11 @@ msgstr "Grupuri"
 # defaultMessage: Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group.
 msgid "Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group."
 msgstr "Grupurile sunt colecții logice de utilizatori, cum ar fi departamente și unități de afaceri. Grupurile nu au legătură directă cu permisiunile la nivel global, de obicei folosiți Roluri pentru asta - și lăsați anumite Grupuri să aibă un anumit rol. Simbolul{plone_svg}indică un rol moștenit din apartenența la alt grup."
+
+#: components/manage/Blocks/Teaser/DefaultBody
+# defaultMessage: Head Title
+msgid "Head Title"
+msgstr ""
 
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Header cell
@@ -1782,6 +1802,11 @@ msgstr "Obiectele trebuie să fie unice."
 msgid "Items to be deleted:"
 msgstr ""
 
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Keep the Overwrite
+msgid "Keep the Overwrite"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Label
 msgid "Label"
@@ -1934,6 +1959,11 @@ msgstr "Nume de autentificare"
 # defaultMessage: Logout
 msgid "Logout"
 msgstr "Deconectare"
+
+#: components/manage/Blocks/Teaser/DefaultBody
+# defaultMessage: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+msgid "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum."
+msgstr ""
 
 #: components/manage/Toolbar/More
 # defaultMessage: Made by {creator} on {date}. This is not a working copy anymore, but the main content.
@@ -2315,6 +2345,11 @@ msgstr "Deschideți browserul de obiecte"
 msgid "Origin"
 msgstr "Origine"
 
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Overwritten fields will be excluded from live data.
+msgid "Overwritten fields will be excluded from live data."
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Page
 msgid "Page"
@@ -2393,6 +2428,11 @@ msgstr "Persoane responsabile de crearea conținutului acestui articol. Vă rug�
 #: components/manage/Blocks/Teaser/DefaultBody
 # defaultMessage: Please choose an existing content as source for this element
 msgid "Please choose an existing content as source for this element"
+msgstr ""
+
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Please confirm the overwrite above.
+msgid "Please confirm the overwrite above."
 msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
@@ -2664,6 +2704,11 @@ msgstr "Câmpul este obligatoriu."
 # defaultMessage: Reset title
 msgid "Reset term title"
 msgstr "Resetați titlul termenului"
+
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Reset the Overwrite
+msgid "Reset the Overwrite"
+msgstr ""
 
 #: components/manage/Blocks/Teaser/Data
 # defaultMessage: Reset the block
@@ -3271,6 +3316,11 @@ msgstr ""
 msgid "Teaser"
 msgstr ""
 
+#: components/manage/Blocks/Teaser/DefaultBody
+# defaultMessage: Teaser Title
+msgid "Teaser Title"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Text
 msgid "Text"
@@ -3391,6 +3441,11 @@ msgstr "Al treilea"
 # defaultMessage: This Page is referenced by the following items:
 msgid "This Page is referenced by the following items:"
 msgstr "Aceasta pagina e referita de urmatoarele articole:"
+
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: This field has been overwritten.
+msgid "This field has been overwritten."
+msgstr ""
 
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This has an ongoing working copy in {title}

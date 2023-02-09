@@ -352,6 +352,11 @@ msgstr "Alternativer Pfad muss mit einem Schrägstrich beginnen"
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
 msgstr "Alternativer URL Pfad → Zielpfad (Datum und Zeit der Erstellung, manuell erstellt ja/nein)"
 
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Always show live data
+msgid "Always show live data"
+msgstr ""
+
 #: components/manage/Rules/Rules
 # defaultMessage: Applied to subfolders
 msgid "Applied to subfolders"
@@ -688,6 +693,11 @@ msgstr "Inhaltsregel konfigurieren: {title}"
 # defaultMessage: Configure content rule
 msgid "Configure content rule"
 msgstr "Inhaltsregel konfigurieren"
+
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Confirm Overwrites:
+msgid "Confirm Overwrites:"
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
@@ -1373,6 +1383,11 @@ msgstr "Facetten oben"
 msgid "Failed To Undo Transactions"
 msgstr "Transaktion rückgänig machen fehlgeschlagen"
 
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Fetch newest data
+msgid "Fetch newest data"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Field
 msgid "Field"
@@ -1527,6 +1542,11 @@ msgstr "Gruppen"
 # defaultMessage: Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group.
 msgid "Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group."
 msgstr "Gruppen sind Kollektionen von Nutzern, wie z.B. Abteilungen oder Organisationseinheiten. Berechtigungen werden normalerweise nicht global an Gruppen vergeben, sondern eher an Rollen, und dann haben Gruppen eine bestimmte Rolle. Das Symbol {plone_svg} zeigt an, dass eine Rolle von einer anderen Gruppe geerbt wird."
+
+#: components/manage/Blocks/Teaser/DefaultBody
+# defaultMessage: Head Title
+msgid "Head Title"
+msgstr ""
 
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Header cell
@@ -1788,6 +1808,11 @@ msgstr "Auswahl muss eindeutig sein."
 msgid "Items to be deleted:"
 msgstr "Zu löschende Elemente:"
 
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Keep the Overwrite
+msgid "Keep the Overwrite"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Label
 msgid "Label"
@@ -1940,6 +1965,11 @@ msgstr "Benutzername"
 # defaultMessage: Logout
 msgid "Logout"
 msgstr "Ausloggen"
+
+#: components/manage/Blocks/Teaser/DefaultBody
+# defaultMessage: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+msgid "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum."
+msgstr ""
 
 #: components/manage/Toolbar/More
 # defaultMessage: Made by {creator} on {date}. This is not a working copy anymore, but the main content.
@@ -2321,6 +2351,11 @@ msgstr "Objekt-Browser öffnen"
 msgid "Origin"
 msgstr "Quelle"
 
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Overwritten fields will be excluded from live data.
+msgid "Overwritten fields will be excluded from live data."
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Page
 msgid "Page"
@@ -2399,6 +2434,11 @@ msgstr "Eine Liste von Personen, die an der Erstellung dieses Artikels beteiligt
 #: components/manage/Blocks/Teaser/DefaultBody
 # defaultMessage: Please choose an existing content as source for this element
 msgid "Please choose an existing content as source for this element"
+msgstr ""
+
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Please confirm the overwrite above.
+msgid "Please confirm the overwrite above."
 msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
@@ -2670,6 +2710,11 @@ msgstr "Notwendige Eingabe fehlt."
 # defaultMessage: Reset title
 msgid "Reset term title"
 msgstr "Setze Titel zurück"
+
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Reset the Overwrite
+msgid "Reset the Overwrite"
+msgstr ""
 
 #: components/manage/Blocks/Teaser/Data
 # defaultMessage: Reset the block
@@ -3277,6 +3322,11 @@ msgstr "Der Zielpfad muss mit einem Schrägstrich beginnen."
 msgid "Teaser"
 msgstr ""
 
+#: components/manage/Blocks/Teaser/DefaultBody
+# defaultMessage: Teaser Title
+msgid "Teaser Title"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Text
 msgid "Text"
@@ -3397,6 +3447,11 @@ msgstr "Dritter"
 # defaultMessage: This Page is referenced by the following items:
 msgid "This Page is referenced by the following items:"
 msgstr "Diese Seite wird von folgenden Elementen referenziert:"
+
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: This field has been overwritten.
+msgid "This field has been overwritten."
+msgstr ""
 
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This has an ongoing working copy in {title}

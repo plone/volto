@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
-import placeholderIMG from './placeholder.jpg';
+import placeholderIMG from './teaserPlaceholder.jpg';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { getTeaserImageURL } from './utils';
 import { MaybeWrap } from '@plone/volto/components';
@@ -18,12 +18,12 @@ const messages = defineMessages({
       'Please choose an existing content as source for this element',
   },
   PlaceholderHeadtitle: {
-    id: 'Alpine City Sprint',
-    defaultMessage: 'Alpine City Sprint',
+    id: 'Head Title',
+    defaultMessage: 'Head Title',
   },
   PlaceholderTitle: {
-    id: 'Plone in the sky with diamonds',
-    defaultMessage: 'Plone in the sky with diamonds',
+    id: 'Teaser Title',
+    defaultMessage: 'Teaser Title',
   },
   PlaceholderDescription: {
     id:
