@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 3.1.0 (2023-02-08)
+
+### Feature
+
+- Update Cypress support commands, add missing peer dependency `axe-core` @sneridagh [#4382](https://github.com/plone/volto/issues/4382)
+
+
 ## 3.0.0 (2022-12-15)
 
 ### Breaking
