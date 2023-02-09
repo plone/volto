@@ -1,0 +1,1 @@
+Use open in new tab setting for link types. @robgietema
