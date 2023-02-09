@@ -28,6 +28,7 @@ const NavItem = ({ item, lang }) => {
         key={item.url}
         className="item"
         rel="noopener noreferrer"
+        target={settings.openExternalLinkInNewTab ? '_blank' : '_self'}
       >
         {item.title}
       </a>
