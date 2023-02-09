@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, useIntl } from 'react-intl';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import placeholderIMG from './placeholder.jpg';
 import { flattenToAppURL } from '@plone/volto/helpers';
-import { getTeaserImageURL, dataMinusOverwrites } from './utils';
+import { getTeaserImageURL } from './utils';
 import { MaybeWrap } from '@plone/volto/components';
 import { UniversalLink } from '@plone/volto/components';
 import { getContent } from '@plone/volto/actions';
@@ -48,7 +48,7 @@ const TeaserDefaultTemplate = (props) => {
 
   const Image = config.getComponent('Image').component || DefaultImage;
 
-  const live = useSelector((state) => state?.content?.subrequests?.[id]?.data);
+  // const live = useSelector((state) => state?.content?.subrequests?.[id]?.data);
 
   useEffect(() => {
     if (href && alwaysLive) {
@@ -73,11 +73,10 @@ const TeaserDefaultTemplate = (props) => {
     }
   }, [alwaysLive]);
 
-  console.log(isLive, liveData.current);
-  return isLive ? (
+  return isLive && alwaysLive ? (
     <div className={cx('block teaser', className)}>
       <>
-        {!href && isEditMode && (
+        {!liveData.current && isEditMode && (
           <div className="teaser-item default">
             <div className="image-wrapper">
               <Image src={placeholderIMG} alt="" loading="lazy" />
@@ -91,7 +90,7 @@ const TeaserDefaultTemplate = (props) => {
             </div>
           </div>
         )}
-        {href && (
+        {liveData.current && (
           <MaybeWrap
             condition={!isEditMode}
             as={UniversalLink}
@@ -102,9 +101,6 @@ const TeaserDefaultTemplate = (props) => {
               {(href.hasPreviewImage || href.image_field || image) && (
                 <div className="image-wrapper">
                   <Image
-                    // src={flattenToAppURL(
-                    //   getTeaserImageURL({ href, image, align }),
-                    // )}
                     src={
                       liveData.current?.preview_image
                         ? flattenToAppURL(
@@ -136,7 +132,7 @@ const TeaserDefaultTemplate = (props) => {
         )}
       </>
     </div>
-  ) : (
+  ) : !alwaysLive ? (
     <div className={cx('block teaser', className)}>
       <>
         {!href && isEditMode && (
@@ -184,7 +180,7 @@ const TeaserDefaultTemplate = (props) => {
         )}
       </>
     </div>
-  );
+  ) : null;
 };
 
 TeaserDefaultTemplate.propTypes = {

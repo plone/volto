@@ -6,7 +6,6 @@ import { BlockDataForm, Icon } from '@plone/volto/components';
 import { isEmpty } from 'lodash';
 import { getContent } from '@plone/volto/actions';
 import { flattenToAppURL } from '@plone/volto/helpers';
-import { dataMinusOverwrites } from './utils';
 
 import trashSVG from '@plone/volto/icons/delete.svg';
 import reloadSVG from '@plone/volto/icons/reload.svg';
@@ -66,6 +65,36 @@ const TeaserData = (props) => {
     });
   };
 
+  const dataMinusOverwrites = (resp, data) => {
+    let hrefData = {
+      '@id': flattenToAppURL(resp['@id']),
+      '@type': resp?.['@type'],
+      Description: resp?.description,
+      Title: resp.title,
+      hasPreviewImage: resp?.preview_image ? true : false,
+      head_title: resp.head_title ?? null,
+      image_field: resp?.preview_image
+        ? 'preview_image'
+        : resp?.image
+        ? 'image'
+        : null,
+      image_scales: {
+        preview_image: [resp?.preview_image],
+        image: [resp?.image?.image],
+      },
+      title: resp.title,
+    };
+    let blockData = {
+      '@type': data['@type'],
+      description: resp?.description,
+      overwritten: data.overwritten,
+      head_title: resp?.head_title,
+      href: [hrefData],
+      styles: data.styles,
+      title: resp.title,
+    };
+    return blockData;
+  };
   const refresh = () => {
     errors.current = data.overwritten.reduce(
       (err, n) => (
