@@ -34,6 +34,10 @@ const messages = defineMessages({
     id: 'Alignment',
     defaultMessage: 'Alignment',
   },
+  isLive: {
+    id: 'Always show live data',
+    defaultMessage: 'Always show live data',
+  },
 });
 
 export const TeaserSchema = ({ intl }) => {
@@ -43,11 +47,22 @@ export const TeaserSchema = ({ intl }) => {
       {
         id: 'default',
         title: 'Default',
-        fields: ['href', 'title', 'head_title', 'description', 'preview_image'],
+        fields: [
+          'is_live',
+          'href',
+          'title',
+          'head_title',
+          'description',
+          'preview_image',
+        ],
       },
     ],
 
     properties: {
+      is_live: {
+        title: intl.formatMessage(messages.isLive),
+        type: 'boolean',
+      },
       href: {
         title: intl.formatMessage(messages.Target),
         widget: 'object_browser',
@@ -83,10 +98,6 @@ export const TeaserSchema = ({ intl }) => {
       openLinkInNewTab: {
         title: intl.formatMessage(messages.openLinkInNewTab),
         type: 'boolean',
-      },
-      previous_href: {
-        type: 'array',
-        default: [],
       },
       overwritten: {
         type: 'array',

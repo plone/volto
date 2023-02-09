@@ -1,12 +1,12 @@
 import React, { useState, useRef } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
-import cx from 'classnames';
 import { Button, Label } from 'semantic-ui-react';
 import { BlockDataForm, Icon } from '@plone/volto/components';
 import { isEmpty } from 'lodash';
 import { getContent } from '@plone/volto/actions';
 import { flattenToAppURL } from '@plone/volto/helpers';
+import { dataMinusOverwrites } from './utils';
 
 import trashSVG from '@plone/volto/icons/delete.svg';
 import reloadSVG from '@plone/volto/icons/reload.svg';
@@ -39,8 +39,12 @@ const messages = defineMessages({
     defaultMessage: 'Keep the Overwrite',
   },
   overwrite: {
-    id: 'Accept overwrites:',
-    defaultMessage: 'Accept overwrites:',
+    id: 'Confirm Overwrites:',
+    defaultMessage: 'Confirm Overwrites:',
+  },
+  liveDataPrompt: {
+    id: 'Overwritten fields will be excluded from live data.',
+    defaultMessage: 'Overwritten fields will be excluded from live data.',
   },
 });
 
@@ -49,10 +53,9 @@ const TeaserData = (props) => {
   const intl = useIntl();
   const dispatch = useDispatch();
   const [refreshed, setRefreshed] = useState(false);
-  const [confirmed, setConfirmed] = useState(false);
   const errors = useRef({});
   const [fetchedData, setFetchedData] = useState({});
-  console.log(data.overwritten, errors.current, Object.keys(errors.current));
+
   const reset = () => {
     onChangeBlock(block, {
       ...data,
@@ -65,58 +68,35 @@ const TeaserData = (props) => {
 
   const refresh = () => {
     errors.current = data.overwritten.reduce(
-      (err, n) => ((err[n] = { message: errorMsg(n) }), err),
+      (err, n) => (
+        (err[n] = { message: intl.formatMessage(messages.overwrittenField) }),
+        err
+      ),
       {},
     );
 
     dispatch(getContent(flattenToAppURL(data.href[0]['@id']))).then((resp) => {
       if (resp) {
         setFetchedData(resp);
-        let hrefData = {
-          '@id': flattenToAppURL(resp['@id']),
-          '@type': resp?.['@type'],
-          Description: resp?.description,
-          Title: resp.title,
-          hasPreviewImage: resp?.preview_image ? true : false,
-          head_title: resp.head_title ?? null,
-          image_field: resp?.preview_image
-            ? 'preview_image'
-            : resp?.image
-            ? 'image'
-            : null,
-          image_scales: {
-            preview_image: [resp?.preview_image],
-            image: [resp?.image?.image],
-          },
-          title: resp.title,
-        };
-        let dataBlock = {
-          '@type': data['@type'],
-          description: resp?.description,
-          overwritten: data.overwritten,
-          head_title: resp?.head_title,
-          href: [hrefData],
-          styles: data.styles,
-          title: resp.title,
-        };
+        let blockData = dataMinusOverwrites(resp, data);
 
         if (data.overwritten.length > 0) {
           for (const field of data.overwritten) {
-            if (field in dataBlock) {
-              dataBlock[field] = data[field];
+            if (field in blockData) {
+              blockData[field] = data[field];
             }
           }
         }
 
         setRefreshed(true);
-        onChangeBlock(block, dataBlock);
+        onChangeBlock(block, blockData);
       }
     });
   };
 
   const onOverwrite = ({ id, value }) => {
     const overwritten = data.overwritten;
-    const ignore = ['href', 'image_override', 'styles', 'align'];
+    const ignore = ['is_live', 'href', 'image_override', 'styles', 'align'];
     if (!overwritten.includes(id) && !ignore.includes(id)) {
       overwritten.push(id);
       onChangeBlock(block, {
@@ -154,6 +134,8 @@ const TeaserData = (props) => {
       };
     }
     onChangeBlock(block, dataSaved);
+
+    onOverwrite({ id, value });
   };
 
   const isReseteable =
@@ -161,14 +143,17 @@ const TeaserData = (props) => {
 
   const HeaderActions = (
     <Button.Group>
-      <Button
-        aria-label={intl.formatMessage(messages.refreshTeaser)}
-        basic
-        disabled={refreshed}
-        onClick={() => refresh()}
-      >
-        <Icon name={reloadSVG} size="24px" color="grey" />
-      </Button>
+      {!data.is_live && (
+        <Button
+          aria-label={intl.formatMessage(messages.refreshTeaser)}
+          basic
+          disabled={refreshed}
+          className={'hidden'}
+          onClick={() => refresh()}
+        >
+          <Icon name={reloadSVG} size="24px" color="grey" />
+        </Button>
+      )}
       <Button
         aria-label={intl.formatMessage(messages.resetTeaser)}
         basic
@@ -186,7 +171,7 @@ const TeaserData = (props) => {
       {Object.keys(errors.current).length > 0 &&
         Object.keys(errors.current)?.map((i) => (
           <div>
-            <Label>{i}</Label>
+            <Label>{i?.replace('-', ' ')?.replace('_', ' ')}</Label>
             <Button.Group>
               <Button
                 aria-label={intl.formatMessage(messages.keepOverwrite)}
@@ -210,11 +195,7 @@ const TeaserData = (props) => {
 
   const schema = blocksConfig[data['@type']].blockSchema({ intl });
 
-  const errorMsg = (field) => {
-    return `${intl.formatMessage(
-      messages.overwrittenField,
-    )} ${intl.formatMessage(messages.confirmationPrompt)}`;
-  };
+  const errorOptions = { hideErrorBox: true, type: 'warning' };
 
   return (
     <BlockDataForm
@@ -228,19 +209,15 @@ const TeaserData = (props) => {
           onChangeBlock,
           value,
         });
-        onOverwrite({
-          id,
-          value,
-        });
       }}
       onChangeBlock={onChangeBlock}
       formData={data}
       block={block}
-      // error={refreshed ? error : null}
       errors={refreshed ? errors.current : {}}
       blocksConfig={blocksConfig}
       headerActions={HeaderActions}
       prompts={Object.keys(errors.current).length > 0 ? Prompts : null}
+      errorOptions={errorOptions}
     />
   );
 };

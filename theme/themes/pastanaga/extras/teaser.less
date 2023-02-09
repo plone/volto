@@ -179,29 +179,32 @@
   }
 }
 
-#sidebar-properties .ui.form .teaser.block.overwrite.actions {
-  display: flex;
-  flex-direction: column;
-
-  > div {
+#sidebar-properties .ui.form {
+  .teaser.block.overwrite.actions {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
 
-    .ui.label {
-      text-transform: capitalize;
-      background: unset;
-      font-size: 15px;
-      padding-left: 0;
+    > div {
+      display: flex;
+      justify-content: space-between;
+
+      .ui.label {
+        text-transform: capitalize;
+        background: unset;
+        font-size: 15px;
+        padding-left: 0;
+      }
     }
-  }
 
-  h3 {
-    text-transform: capitalize;
-  }
+    h3 {
+      text-transform: capitalize;
+    }
 
-  .ui.button {
-    &:hover {
+    .ui.button:hover {
       background: none !important;
     }
+  }
+  .ui.message.warning:has(.teaser.block.overwrite.actions) {
+    display: block;
   }
 }

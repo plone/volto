@@ -32,6 +32,7 @@ const InlineForm = (props) => {
     description,
     error, // Such as {message: "It's not good"}
     errors = {},
+    errorOptions,
     formData,
     onChangeFormData,
     onChangeField,
@@ -92,12 +93,7 @@ const InlineForm = (props) => {
           {description}
         </Segment>
       )}
-      {prompts && (
-        <Segment secondary className="prompts attached">
-          {prompts}
-        </Segment>
-      )}
-      {keys(errors).length > 0 && (
+      {keys(errors).length > 0 && !errorOptions?.hideErrorBox && (
         <Message
           icon="warning"
           negative
@@ -106,7 +102,7 @@ const InlineForm = (props) => {
           content={_(messages.thereWereSomeErrors)}
         />
       )}
-      {error && (
+      {error && !errorOptions?.hideErrorBox && (
         <Message
           icon="warning"
           negative
@@ -115,7 +111,11 @@ const InlineForm = (props) => {
           content={error.message}
         />
       )}
-
+      {prompts && (
+        <Message icon="warning" warning attached>
+          {prompts}
+        </Message>
+      )}
       <div id={`blockform-fieldset-${defaultFieldset.id}`}>
         <Segment className="form attached">
           {map(defaultFieldset.fields, (field, index) => (

@@ -1,4 +1,4 @@
-import { isInternalURL } from '@plone/volto/helpers';
+import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 export function getTeaserImageURL({ href, image, align }) {
@@ -42,3 +42,34 @@ export function getTeaserImageURL({ href, image, align }) {
     }
   }
 }
+
+export const dataMinusOverwrites = (resp, data) => {
+  let hrefData = {
+    '@id': flattenToAppURL(resp['@id']),
+    '@type': resp?.['@type'],
+    Description: resp?.description,
+    Title: resp.title,
+    hasPreviewImage: resp?.preview_image ? true : false,
+    head_title: resp.head_title ?? null,
+    image_field: resp?.preview_image
+      ? 'preview_image'
+      : resp?.image
+      ? 'image'
+      : null,
+    image_scales: {
+      preview_image: [resp?.preview_image],
+      image: [resp?.image?.image],
+    },
+    title: resp.title,
+  };
+  let blockData = {
+    '@type': data['@type'],
+    description: resp?.description,
+    overwritten: data.overwritten,
+    head_title: resp?.head_title,
+    href: [hrefData],
+    styles: data.styles,
+    title: resp.title,
+  };
+  return blockData;
+};
