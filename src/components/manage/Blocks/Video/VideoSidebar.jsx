@@ -23,28 +23,19 @@ const VideoSidebar = (props) => {
   const schema = VideoBlockSchema({ ...props, intl });
 
   return (
-    <>
-      {!data.url ? (
-        <Segment className="sidebar-metadata-container" secondary>
-          {props.intl.formatMessage(messages.NoVideo)}
-          <Icon name={videoSVG} size="100px" color="#b8c6c8" />
-        </Segment>
-      ) : (
-        <BlockDataForm
-          schema={schema}
-          title={intl.formatMessage(messages.Video)}
-          onChangeField={(id, value) => {
-            onChangeBlock(block, {
-              ...data,
-              [id]: value,
-            });
-          }}
-          onChangeBlock={onChangeBlock}
-          formData={data}
-          block={block}
-        />
-      )}
-    </>
+    <BlockDataForm
+      schema={schema}
+      title={intl.formatMessage(messages.Video)}
+      onChangeField={(id, value) => {
+        onChangeBlock(block, {
+          ...data,
+          [id]: value,
+        });
+      }}
+      onChangeBlock={onChangeBlock}
+      formData={data}
+      block={block}
+    />
   );
 };
 

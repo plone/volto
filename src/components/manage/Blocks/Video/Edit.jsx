@@ -3,20 +3,14 @@
  * @module components/manage/Blocks/Title/Edit
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { defineMessages, injectIntl } from 'react-intl';
-import { Button, Input, Message } from 'semantic-ui-react';
+import { defineMessages } from 'react-intl';
 import cx from 'classnames';
-import { isEqual } from 'lodash';
 
-import { Icon, SidebarPortal, VideoSidebar } from '@plone/volto/components';
-import clearSVG from '@plone/volto/icons/clear.svg';
-import aheadSVG from '@plone/volto/icons/ahead.svg';
-import videoBlockSVG from '@plone/volto/components/manage/Blocks/Video/block-video.svg';
+import { SidebarPortal, VideoSidebar } from '@plone/volto/components';
 import Body from '@plone/volto/components/manage/Blocks/Video/Body';
 import { withBlockExtensions } from '@plone/volto/helpers';
-import { compose } from 'redux';
 import MediaWidget from '@plone/volto/components/manage/Widgets/MediaSelectWidget';
 
 const messages = defineMessages({
@@ -31,158 +25,67 @@ const messages = defineMessages({
 });
 
 /**
- * Edit video block class.
- * @class Edit
- * @extends Component
+ * Edit video block function.
+ * @function Edit
  */
-class Edit extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    selected: PropTypes.bool.isRequired,
-    block: PropTypes.string.isRequired,
-    index: PropTypes.number.isRequired,
-    data: PropTypes.objectOf(PropTypes.any).isRequired,
-    onChangeBlock: PropTypes.func.isRequired,
-    onSelectBlock: PropTypes.func.isRequired,
-    onDeleteBlock: PropTypes.func.isRequired,
-    onFocusPreviousBlock: PropTypes.func.isRequired,
-    onFocusNextBlock: PropTypes.func.isRequired,
-    handleKeyDown: PropTypes.func.isRequired,
-  };
+const Edit = (props) => {
+  const { data, editable, block, onChangeBlock, selected } = props;
+  return (
+    <div
+      className={cx(
+        'block video align',
+        {
+          selected: selected,
+          center: !Boolean(data.align),
+        },
+        data.align,
+      )}
+    >
+      {data.url ? (
+        <Body data={data} isEditMode={true} />
+      ) : (
+        <div>
+          {editable && (
+            <MediaWidget
+              inline
+              mode="video"
+              id="url"
+              title="Source"
+              block={block}
+              onChange={(id, value) => {
+                onChangeBlock(block, {
+                  ...data,
+                  [id]: value,
+                });
+              }}
+              handlesErrors={false}
+            />
+          )}
+        </div>
+      )}
+      <SidebarPortal selected={selected}>
+        <VideoSidebar {...props} />
+      </SidebarPortal>
+    </div>
+  );
+};
 
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   * @constructs WysiwygEditor
-   */
-  constructor(props) {
-    super(props);
+/**
+ * Property types.
+ * @property {Object} propTypes Property types.
+ * @static
+ */
+Edit.propTypes = {
+  selected: PropTypes.bool.isRequired,
+  block: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
+  data: PropTypes.objectOf(PropTypes.any).isRequired,
+  onChangeBlock: PropTypes.func.isRequired,
+  onSelectBlock: PropTypes.func.isRequired,
+  onDeleteBlock: PropTypes.func.isRequired,
+  onFocusPreviousBlock: PropTypes.func.isRequired,
+  onFocusNextBlock: PropTypes.func.isRequired,
+  handleKeyDown: PropTypes.func.isRequired,
+};
 
-    this.onChangeUrl = this.onChangeUrl.bind(this);
-    this.onSubmitUrl = this.onSubmitUrl.bind(this);
-    this.onKeyDownVariantMenuForm = this.onKeyDownVariantMenuForm.bind(this);
-    this.state = {
-      url: '',
-    };
-  }
-
-  /**
-   * Change url handler
-   * @method onChangeUrl
-   * @param {Object} target Target object
-   * @returns {undefined}
-   */
-  onChangeUrl({ target }) {
-    this.setState({
-      url: target.value,
-    });
-  }
-
-  /**
-   * @param {*} nextProps
-   * @returns {boolean}
-   * @memberof Edit
-   */
-  shouldComponentUpdate(nextProps) {
-    return (
-      this.props.selected ||
-      nextProps.selected ||
-      !isEqual(this.props.data, nextProps.data)
-    );
-  }
-
-  /**
-   * Submit url handler
-   * @method onSubmitUrl
-   * @returns {undefined}
-   */
-  onSubmitUrl() {
-    this.props.onChangeBlock(this.props.block, {
-      ...this.props.data,
-      url: this.state.url,
-    });
-  }
-
-  resetSubmitUrl = () => {
-    this.setState({
-      url: '',
-    });
-  };
-
-  /**
-   * Keydown handler on Variant Menu Form
-   * This is required since the ENTER key is already mapped to a onKeyDown
-   * event and needs to be overriden with a child onKeyDown.
-   * @method onKeyDownVariantMenuForm
-   * @param {Object} e Event object
-   * @returns {undefined}
-   */
-  onKeyDownVariantMenuForm(e) {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      e.stopPropagation();
-      this.onSubmitUrl();
-    } else if (e.key === 'Escape') {
-      e.preventDefault();
-      e.stopPropagation();
-      // TODO: Do something on ESC key
-    }
-  }
-
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
-    const { data, editable, block, onChangeBlock } = this.props;
-    const placeholder =
-      this.props.data.placeholder ||
-      this.props.intl.formatMessage(messages.VideoBlockInputPlaceholder);
-    return (
-      <div
-        className={cx(
-          'block video align',
-          {
-            selected: this.props.selected,
-            center: !Boolean(this.props.data.align),
-          },
-          this.props.data.align,
-        )}
-      >
-        {data.url ? (
-          <Body data={this.props.data} isEditMode={true} />
-        ) : (
-          <div>
-            {editable && (
-              <MediaWidget
-                inline
-                mode="video"
-                id="url"
-                title="Source"
-                block={block}
-                onChange={(id, value) => {
-                  onChangeBlock(block, {
-                    ...data,
-                    [id]: value,
-                  });
-                }}
-                handlesErrors={false}
-              />
-            )}
-          </div>
-        )}
-        <SidebarPortal selected={this.props.selected}>
-          <VideoSidebar {...this.props} resetSubmitUrl={this.resetSubmitUrl} />
-        </SidebarPortal>
-      </div>
-    );
-  }
-}
-
-export default compose(injectIntl, withBlockExtensions)(Edit);
+export default withBlockExtensions(Edit);

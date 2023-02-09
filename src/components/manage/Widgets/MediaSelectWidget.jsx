@@ -168,7 +168,7 @@ const MediaSelectWidget = (props) => {
       onKeyDown={onFocus}
       role="toolbar"
     >
-      {selected && <ImageToolbar {...props} />}
+      {mode === 'image' && !inline && selected && <ImageToolbar {...props} />}
       <img
         className={props.className}
         src={`${flattenToAppURL(value)}/@@images/image/${imageSize}`}
