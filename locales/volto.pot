@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2022-12-19T16:28:50.552Z\n"
+"POT-Creation-Date: 2023-02-09T10:37:23.556Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -463,7 +463,6 @@ msgstr ""
 msgid "Browse"
 msgstr ""
 
-#: components/manage/Blocks/Image/Edit
 #: components/manage/Widgets/ImageWidget
 # defaultMessage: Browse the site, drop an image, or type an URL
 msgid "Browse the site, drop an image, or type an URL"
@@ -1988,6 +1987,11 @@ msgstr ""
 msgid "Maximum value is {len}."
 msgstr ""
 
+#: components/manage/Widgets/MediaSelectWidget
+# defaultMessage: Pick an existing {type}
+msgid "Media"
+msgstr ""
+
 #: components/manage/Widgets/ImageSizeWidget
 # defaultMessage: Medium
 msgid "Medium"
@@ -2161,11 +2165,6 @@ msgstr ""
 #: components/theme/RequestTimeout/RequestTimeout
 # defaultMessage: There is no connection to the server, due to a timeout o no network connection.
 msgid "No connection to the server"
-msgstr ""
-
-#: components/manage/Blocks/Image/ImageSidebar
-# defaultMessage: No image selected
-msgid "No image selected"
 msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -3984,6 +3983,11 @@ msgstr ""
 msgid "Your usernaame is required for reset your password."
 msgstr ""
 
+#: components/manage/Widgets/MediaSelectWidget
+# defaultMessage: Browse the site, drop {type} file, or use an URL
+msgid "addMedia"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
 msgid "addUserFormEmailDescription"
@@ -4125,8 +4129,9 @@ msgstr ""
 msgid "html"
 msgstr ""
 
+#: components/manage/Widgets/MediaSelectWidget
 #: config/Blocks
-# defaultMessage: Image
+# defaultMessage: image
 msgid "image"
 msgstr ""
 
@@ -4153,6 +4158,11 @@ msgstr ""
 #: config/Blocks
 # defaultMessage: Lead Image Field
 msgid "leadimage"
+msgstr ""
+
+#: components/manage/Widgets/MediaSelectWidget
+# defaultMessage: Enter a URL to {type}
+msgid "linkMedia"
 msgstr ""
 
 #: config/Blocks
@@ -4489,6 +4499,16 @@ msgstr ""
 msgid "upgradeVersions"
 msgstr ""
 
+#: components/manage/Widgets/MediaSelectWidget
+# defaultMessage: Upload  {type} from your computer
+msgid "uploadMedia"
+msgstr ""
+
+#: components/manage/Widgets/MediaSelectWidget
+# defaultMessage: Uploading {type}
+msgid "uploadingMedia"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be valid url (www.something.com or http(s)://www.something.com)
 msgid "url"
@@ -4499,8 +4519,9 @@ msgstr ""
 msgid "user avatar"
 msgstr ""
 
+#: components/manage/Widgets/MediaSelectWidget
 #: config/Blocks
-# defaultMessage: Video
+# defaultMessage: video
 msgid "video"
 msgstr ""
 

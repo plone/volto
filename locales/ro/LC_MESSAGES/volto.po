@@ -461,7 +461,6 @@ msgstr "Breadcrumbs"
 msgid "Browse"
 msgstr "Răsfoiește"
 
-#: components/manage/Blocks/Image/Edit
 #: components/manage/Widgets/ImageWidget
 # defaultMessage: Browse the site, drop an image, or type an URL
 msgid "Browse the site, drop an image, or type an URL"
@@ -1986,6 +1985,11 @@ msgstr "Lungimea maximă este {len}."
 msgid "Maximum value is {len}."
 msgstr "Valoarea maximă este {len}."
 
+#: components/manage/Widgets/MediaSelectWidget
+# defaultMessage: Pick an existing {type}
+msgid "Media"
+msgstr ""
+
 #: components/manage/Widgets/ImageSizeWidget
 # defaultMessage: Medium
 msgid "Medium"
@@ -2159,11 +2163,6 @@ msgstr "Nu s-au găsit addons"
 #: components/theme/RequestTimeout/RequestTimeout
 # defaultMessage: There is no connection to the server, due to a timeout o no network connection.
 msgid "No connection to the server"
-msgstr ""
-
-#: components/manage/Blocks/Image/ImageSidebar
-# defaultMessage: No image selected
-msgid "No image selected"
 msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -3982,6 +3981,11 @@ msgstr ""
 msgid "Your usernaame is required for reset your password."
 msgstr ""
 
+#: components/manage/Widgets/MediaSelectWidget
+# defaultMessage: Browse the site, drop {type} file, or use an URL
+msgid "addMedia"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
 msgid "addUserFormEmailDescription"
@@ -4123,8 +4127,9 @@ msgstr "Hero"
 msgid "html"
 msgstr "HTML"
 
+#: components/manage/Widgets/MediaSelectWidget
 #: config/Blocks
-# defaultMessage: Image
+# defaultMessage: image
 msgid "image"
 msgstr "Imagine"
 
@@ -4152,6 +4157,11 @@ msgstr "Numele meu de utilizator este"
 # defaultMessage: Lead Image Field
 msgid "leadimage"
 msgstr "Imagine (copertă)"
+
+#: components/manage/Widgets/MediaSelectWidget
+# defaultMessage: Enter a URL to {type}
+msgid "linkMedia"
+msgstr ""
 
 #: config/Blocks
 # defaultMessage: Listing
@@ -4487,6 +4497,16 @@ msgstr ""
 msgid "upgradeVersions"
 msgstr ""
 
+#: components/manage/Widgets/MediaSelectWidget
+# defaultMessage: Upload  {type} from your computer
+msgid "uploadMedia"
+msgstr ""
+
+#: components/manage/Widgets/MediaSelectWidget
+# defaultMessage: Uploading {type}
+msgid "uploadingMedia"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be valid url (www.something.com or http(s)://www.something.com)
 msgid "url"
@@ -4497,8 +4517,9 @@ msgstr "url"
 msgid "user avatar"
 msgstr "avatarul utilizatorului"
 
+#: components/manage/Widgets/MediaSelectWidget
 #: config/Blocks
-# defaultMessage: Video
+# defaultMessage: video
 msgid "video"
 msgstr "Video"
 

@@ -471,7 +471,6 @@ msgstr "Navegação estrutural"
 msgid "Browse"
 msgstr "Procurar"
 
-#: components/manage/Blocks/Image/Edit
 #: components/manage/Widgets/ImageWidget
 # defaultMessage: Browse the site, drop an image, or type an URL
 msgid "Browse the site, drop an image, or type an URL"
@@ -1996,6 +1995,11 @@ msgstr "O comprimento máximo é {len}."
 msgid "Maximum value is {len}."
 msgstr "O valor máximo é {len}."
 
+#: components/manage/Widgets/MediaSelectWidget
+# defaultMessage: Pick an existing {type}
+msgid "Media"
+msgstr ""
+
 #: components/manage/Widgets/ImageSizeWidget
 # defaultMessage: Medium
 msgid "Medium"
@@ -2170,11 +2174,6 @@ msgstr "Nenhum complemento encontrado"
 # defaultMessage: There is no connection to the server, due to a timeout o no network connection.
 msgid "No connection to the server"
 msgstr "Sem conexão ao servidor"
-
-#: components/manage/Blocks/Image/ImageSidebar
-# defaultMessage: No image selected
-msgid "No image selected"
-msgstr "Nenhuma imagem selecionada"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: No image set in Lead Image content field
@@ -3992,6 +3991,11 @@ msgstr "Seu site está atualizado."
 msgid "Your usernaame is required for reset your password."
 msgstr "Seu nome de usuário é necessário para redefinir sua senha."
 
+#: components/manage/Widgets/MediaSelectWidget
+# defaultMessage: Browse the site, drop {type} file, or use an URL
+msgid "addMedia"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
 msgid "addUserFormEmailDescription"
@@ -4133,8 +4137,9 @@ msgstr "Herói"
 msgid "html"
 msgstr "HTML"
 
+#: components/manage/Widgets/MediaSelectWidget
 #: config/Blocks
-# defaultMessage: Image
+# defaultMessage: image
 msgid "image"
 msgstr "Imagem"
 
@@ -4162,6 +4167,11 @@ msgstr "Meu nome de usuário é<<<<<<< HEAD"
 # defaultMessage: Lead Image Field
 msgid "leadimage"
 msgstr "Imagem principal"
+
+#: components/manage/Widgets/MediaSelectWidget
+# defaultMessage: Enter a URL to {type}
+msgid "linkMedia"
+msgstr ""
 
 #: config/Blocks
 # defaultMessage: Listing
@@ -4497,6 +4507,16 @@ msgstr "Alternar"
 msgid "upgradeVersions"
 msgstr "Atualizar da versão {origin} para versão {destination}"
 
+#: components/manage/Widgets/MediaSelectWidget
+# defaultMessage: Upload  {type} from your computer
+msgid "uploadMedia"
+msgstr ""
+
+#: components/manage/Widgets/MediaSelectWidget
+# defaultMessage: Uploading {type}
+msgid "uploadingMedia"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be valid url (www.something.com or http(s)://www.something.com)
 msgid "url"
@@ -4507,8 +4527,9 @@ msgstr "URL"
 msgid "user avatar"
 msgstr "avatar do usuário"
 
+#: components/manage/Widgets/MediaSelectWidget
 #: config/Blocks
-# defaultMessage: Video
+# defaultMessage: video
 msgid "video"
 msgstr "Vídeo"
 

@@ -467,7 +467,6 @@ msgstr "面包屑导航"
 msgid "Browse"
 msgstr "浏览"
 
-#: components/manage/Blocks/Image/Edit
 #: components/manage/Widgets/ImageWidget
 # defaultMessage: Browse the site, drop an image, or type an URL
 msgid "Browse the site, drop an image, or type an URL"
@@ -1992,6 +1991,11 @@ msgstr "最大长度为{len}。"
 msgid "Maximum value is {len}."
 msgstr "最大值为{len}。"
 
+#: components/manage/Widgets/MediaSelectWidget
+# defaultMessage: Pick an existing {type}
+msgid "Media"
+msgstr ""
+
 #: components/manage/Widgets/ImageSizeWidget
 # defaultMessage: Medium
 msgid "Medium"
@@ -2166,11 +2170,6 @@ msgstr "没有找到附件"
 # defaultMessage: There is no connection to the server, due to a timeout o no network connection.
 msgid "No connection to the server"
 msgstr "与服务器无连接"
-
-#: components/manage/Blocks/Image/ImageSidebar
-# defaultMessage: No image selected
-msgid "No image selected"
-msgstr "未选择图像"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: No image set in Lead Image content field
@@ -3988,6 +3987,11 @@ msgstr "您的网站是最新的。"
 msgid "Your usernaame is required for reset your password."
 msgstr "重置密码需要您的用户名。"
 
+#: components/manage/Widgets/MediaSelectWidget
+# defaultMessage: Browse the site, drop {type} file, or use an URL
+msgid "addMedia"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
 msgid "addUserFormEmailDescription"
@@ -4129,8 +4133,9 @@ msgstr ""
 msgid "html"
 msgstr ""
 
+#: components/manage/Widgets/MediaSelectWidget
 #: config/Blocks
-# defaultMessage: Image
+# defaultMessage: image
 msgid "image"
 msgstr "图片"
 
@@ -4157,6 +4162,11 @@ msgstr "我的用户名是"
 #: config/Blocks
 # defaultMessage: Lead Image Field
 msgid "leadimage"
+msgstr ""
+
+#: components/manage/Widgets/MediaSelectWidget
+# defaultMessage: Enter a URL to {type}
+msgid "linkMedia"
 msgstr ""
 
 #: config/Blocks
@@ -4493,6 +4503,16 @@ msgstr ""
 msgid "upgradeVersions"
 msgstr ""
 
+#: components/manage/Widgets/MediaSelectWidget
+# defaultMessage: Upload  {type} from your computer
+msgid "uploadMedia"
+msgstr ""
+
+#: components/manage/Widgets/MediaSelectWidget
+# defaultMessage: Uploading {type}
+msgid "uploadingMedia"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be valid url (www.something.com or http(s)://www.something.com)
 msgid "url"
@@ -4503,8 +4523,9 @@ msgstr ""
 msgid "user avatar"
 msgstr "用户头像"
 
+#: components/manage/Widgets/MediaSelectWidget
 #: config/Blocks
-# defaultMessage: Video
+# defaultMessage: video
 msgid "video"
 msgstr "视频"
 

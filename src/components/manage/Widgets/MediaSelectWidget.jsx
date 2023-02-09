@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
 import { useIntl, defineMessages } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
@@ -33,7 +33,7 @@ import openinnewtabSVG from '@plone/volto/icons/openinnewtab.svg';
 const Dropzone = loadable(() => import('react-dropzone'));
 
 export const ImageToolbar = ({ className, data, id, onChange, selected }) => (
-  <div className="image-upload-widget-toolbar">
+  <div className="media-upload-widget-toolbar">
     <Button.Group>
       <Button icon basic onClick={() => onChange(id, null)}>
         <Icon className="circled" name={clearSVG} size="24px" color="#e40166" />
@@ -43,25 +43,33 @@ export const ImageToolbar = ({ className, data, id, onChange, selected }) => (
 );
 
 const messages = defineMessages({
-  addImage: {
-    id: 'addImage',
-    defaultMessage: 'Browse the site, drop an image, or use an URL',
+  addMedia: {
+    id: 'addMedia',
+    defaultMessage: 'Browse the site, drop {type} file, or use an URL',
   },
-  pickAnImage: {
-    id: 'pickAnImage',
-    defaultMessage: 'Pick an existing image',
+  pickMedia: {
+    id: 'Media',
+    defaultMessage: 'Pick an existing {type}',
   },
-  uploadAnImage: {
-    id: 'uploadAnImage',
-    defaultMessage: 'Upload an image from your computer',
+  uploadMedia: {
+    id: 'uploadMedia',
+    defaultMessage: 'Upload  {type} from your computer',
   },
-  linkAnImage: {
-    id: 'linkAnImage',
-    defaultMessage: 'Enter a URL to an image',
+  linkMedia: {
+    id: 'linkMedia',
+    defaultMessage: 'Enter a URL to {type}',
   },
-  uploadingImage: {
-    id: 'uploadingImage',
-    defaultMessage: 'Uploading image',
+  uploadingMedia: {
+    id: 'uploadingMedia',
+    defaultMessage: 'Uploading {type}',
+  },
+  image: {
+    id: 'image',
+    defaultMessage: 'image',
+  },
+  video: {
+    id: 'video',
+    defaultMessage: 'video',
   },
 });
 
@@ -77,8 +85,8 @@ const MediaSelectWidget = (props) => {
     selected = true,
     inline,
     handlesErrors = true,
+    mode = 'image',
   } = props;
-  console.log(props);
 
   const intl = useIntl();
   const linkEditor = useLinkEditor();
@@ -88,13 +96,13 @@ const MediaSelectWidget = (props) => {
 
   const [dragging, setDragging] = useState(false);
 
-  const requestId = `image-upload-${id}`;
+  const requestId = `media-upload-${id}`;
 
   const uploadState = useSelector((state) => {
-    return state.content.subrequests['image-upload-url'];
+    return state.content.subrequests['media-upload-url'];
   });
   const uploadError = useSelector((state) => {
-    return state.content.subrequests?.['image-upload-url']?.error;
+    return state.content.subrequests?.['media-upload-url']?.error;
   });
 
   useEffect(() => {
@@ -112,7 +120,12 @@ const MediaSelectWidget = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [uploadError]);
 
-  const handleUpload = React.useCallback(
+  const typesMap = {
+    image: { type: 'Image', field: 'image' },
+    video: { type: 'File', field: 'file' },
+  };
+
+  const handleUpload = useCallback(
     (eventOrFile) => {
       eventOrFile.target && eventOrFile.stopPropagation();
       const file = eventOrFile.target
@@ -124,9 +137,9 @@ const MediaSelectWidget = (props) => {
           createContent(
             getBaseUrl(contextUrl),
             {
-              '@type': 'Image',
+              '@type': typesMap[mode].type,
               title: file.name,
-              image: {
+              [typesMap[mode].field]: {
                 data: fields[3],
                 encoding: fields[2],
                 'content-type': fields[1],
@@ -142,15 +155,15 @@ const MediaSelectWidget = (props) => {
         });
       });
     },
-    [dispatch, contextUrl, id, requestId, onChange],
+    [dispatch, contextUrl, typesMap, mode, requestId, onChange, id],
   );
 
-  const onDragEnter = React.useCallback(() => setDragging(true), []);
-  const onDragLeave = React.useCallback(() => setDragging(false), []);
+  const onDragEnter = useCallback(() => setDragging(true), []);
+  const onDragLeave = useCallback(() => setDragging(false), []);
 
   return value ? (
     <div
-      className="image-upload-widget-image"
+      className="media-upload-widget-image"
       onClick={onFocus}
       onKeyDown={onFocus}
       role="toolbar"
@@ -162,7 +175,7 @@ const MediaSelectWidget = (props) => {
         alt=""
       />
       <FormFieldWrapper {...props} noForInFieldLabel className="image">
-        <div className="image-widget-filepath-preview">
+        <div className="media-widget-filepath-preview">
           {value}&nbsp;
           {isInternalURL ? (
             <UniversalLink href={value} openLinkInNewTab>
@@ -174,7 +187,7 @@ const MediaSelectWidget = (props) => {
     </div>
   ) : (
     <div
-      className="image-upload-widget"
+      className="media-upload-widget"
       onClick={onFocus}
       onKeyDown={onFocus}
       role="toolbar"
@@ -196,17 +209,25 @@ const MediaSelectWidget = (props) => {
               {uploadState?.loading && (
                 <Dimmer active>
                   <Loader indeterminate>
-                    {intl.formatMessage(messages.uploadingImage)}
+                    {intl.formatMessage(messages.uploadingMedia, {
+                      type: intl.formatMessage(messages[mode]),
+                    })}
                   </Loader>
                 </Dimmer>
               )}
               <img src={imageBlockSVG} alt="" />
-              <div>{intl.formatMessage(messages.addImage)}</div>
+              <div>
+                {intl.formatMessage(messages.addMedia, {
+                  type: intl.formatMessage(messages[mode]),
+                })}
+              </div>
               <div className="toolbar-wrapper">
                 <div className="toolbar-inner" ref={linkEditor.anchorNode}>
                   <Button.Group>
                     <Button
-                      title={intl.formatMessage(messages.pickAnImage)}
+                      title={intl.formatMessage(messages.pickMedia, {
+                        type: intl.formatMessage(messages[mode]),
+                      })}
                       icon
                       basic
                       onClick={(e) => {
@@ -231,7 +252,9 @@ const MediaSelectWidget = (props) => {
                           onChange: handleUpload,
                           style: { display: 'none' },
                         })}
-                        title={intl.formatMessage(messages.uploadAnImage)}
+                        title={intl.formatMessage(messages.uploadMedia, {
+                          type: intl.formatMessage(messages[mode]),
+                        })}
                       />
                     </label>
                   </Button.Group>
@@ -239,7 +262,9 @@ const MediaSelectWidget = (props) => {
                     <Button
                       icon
                       basic
-                      title={intl.formatMessage(messages.linkAnImage)}
+                      title={intl.formatMessage(messages.linkMedia, {
+                        type: intl.formatMessage(messages[mode]),
+                      })}
                       onClick={(e) => {
                         !props.selected && onFocus && onFocus();
                         linkEditor.show();

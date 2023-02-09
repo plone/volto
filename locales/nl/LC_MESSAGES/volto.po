@@ -468,7 +468,6 @@ msgstr "Broodkruimel"
 msgid "Browse"
 msgstr "Bladeren"
 
-#: components/manage/Blocks/Image/Edit
 #: components/manage/Widgets/ImageWidget
 # defaultMessage: Browse the site, drop an image, or type an URL
 msgid "Browse the site, drop an image, or type an URL"
@@ -1993,6 +1992,11 @@ msgstr "Maximum lengte is {len}"
 msgid "Maximum value is {len}."
 msgstr "Maximum waarde is {len}"
 
+#: components/manage/Widgets/MediaSelectWidget
+# defaultMessage: Pick an existing {type}
+msgid "Media"
+msgstr ""
+
 #: components/manage/Widgets/ImageSizeWidget
 # defaultMessage: Medium
 msgid "Medium"
@@ -2167,11 +2171,6 @@ msgstr "Geen modules gevonden"
 # defaultMessage: There is no connection to the server, due to a timeout o no network connection.
 msgid "No connection to the server"
 msgstr "Er is geen verbinding met de server, door een time-out of door geen netwerkverbinding"
-
-#: components/manage/Blocks/Image/ImageSidebar
-# defaultMessage: No image selected
-msgid "No image selected"
-msgstr "Geen afbeelding geselecteerd"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: No image set in Lead Image content field
@@ -3989,6 +3988,11 @@ msgstr ""
 msgid "Your usernaame is required for reset your password."
 msgstr "Gebruikersnaam is verplicht om het wachtwoor dte resetten."
 
+#: components/manage/Widgets/MediaSelectWidget
+# defaultMessage: Browse the site, drop {type} file, or use an URL
+msgid "addMedia"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
 msgid "addUserFormEmailDescription"
@@ -4130,8 +4134,9 @@ msgstr "Hero"
 msgid "html"
 msgstr "HTML"
 
+#: components/manage/Widgets/MediaSelectWidget
 #: config/Blocks
-# defaultMessage: Image
+# defaultMessage: image
 msgid "image"
 msgstr "Afbeelding"
 
@@ -4159,6 +4164,11 @@ msgstr "Mijn gebruikersnaam is"
 # defaultMessage: Lead Image Field
 msgid "leadimage"
 msgstr "Voorbeeld afbeelding"
+
+#: components/manage/Widgets/MediaSelectWidget
+# defaultMessage: Enter a URL to {type}
+msgid "linkMedia"
+msgstr ""
 
 #: config/Blocks
 # defaultMessage: Listing
@@ -4494,6 +4504,16 @@ msgstr ""
 msgid "upgradeVersions"
 msgstr "Werk bij van versie {origin} naar {destination}"
 
+#: components/manage/Widgets/MediaSelectWidget
+# defaultMessage: Upload  {type} from your computer
+msgid "uploadMedia"
+msgstr ""
+
+#: components/manage/Widgets/MediaSelectWidget
+# defaultMessage: Uploading {type}
+msgid "uploadingMedia"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be valid url (www.something.com or http(s)://www.something.com)
 msgid "url"
@@ -4504,8 +4524,9 @@ msgstr "URL"
 msgid "user avatar"
 msgstr "avatar gebruiker"
 
+#: components/manage/Widgets/MediaSelectWidget
 #: config/Blocks
-# defaultMessage: Video
+# defaultMessage: video
 msgid "video"
 msgstr "video"
 

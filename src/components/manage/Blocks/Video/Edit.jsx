@@ -17,6 +17,7 @@ import videoBlockSVG from '@plone/volto/components/manage/Blocks/Video/block-vid
 import Body from '@plone/volto/components/manage/Blocks/Video/Body';
 import { withBlockExtensions } from '@plone/volto/helpers';
 import { compose } from 'redux';
+import MediaWidget from '@plone/volto/components/manage/Widgets/MediaSelectWidget';
 
 const messages = defineMessages({
   VideoFormDescription: {
@@ -139,7 +140,7 @@ class Edit extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { data } = this.props;
+    const { data, editable, block, onChangeBlock } = this.props;
     const placeholder =
       this.props.data.placeholder ||
       this.props.intl.formatMessage(messages.VideoBlockInputPlaceholder);
@@ -157,48 +158,24 @@ class Edit extends Component {
         {data.url ? (
           <Body data={this.props.data} isEditMode={true} />
         ) : (
-          <Message>
-            <center>
-              <img src={videoBlockSVG} alt="" />
-              <div className="toolbar-inner">
-                <Input
-                  onKeyDown={this.onKeyDownVariantMenuForm}
-                  onChange={this.onChangeUrl}
-                  placeholder={placeholder}
-                  value={this.state.url}
-                  // Prevents propagation to the Dropzone and the opening
-                  // of the upload browser dialog
-                  onClick={(e) => e.stopPropagation()}
-                />
-                {this.state.url && (
-                  <Button.Group>
-                    <Button
-                      basic
-                      className="cancel"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        this.setState({ url: '' });
-                      }}
-                    >
-                      <Icon name={clearSVG} size="30px" />
-                    </Button>
-                  </Button.Group>
-                )}
-                <Button.Group>
-                  <Button
-                    basic
-                    primary
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      this.onSubmitUrl();
-                    }}
-                  >
-                    <Icon name={aheadSVG} size="30px" />
-                  </Button>
-                </Button.Group>
-              </div>
-            </center>
-          </Message>
+          <div>
+            {editable && (
+              <MediaWidget
+                inline
+                mode="video"
+                id="url"
+                title="Source"
+                block={block}
+                onChange={(id, value) => {
+                  onChangeBlock(block, {
+                    ...data,
+                    [id]: value,
+                  });
+                }}
+                handlesErrors={false}
+              />
+            )}
+          </div>
         )}
         <SidebarPortal selected={this.props.selected}>
           <VideoSidebar {...this.props} resetSubmitUrl={this.resetSubmitUrl} />
