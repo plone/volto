@@ -1,0 +1,8 @@
+{
+  "client": {
+    "package": "@plone/client",
+    "url": "git@github.com:plone/plone.restapi-client.git",
+    "https": "https://github.com/plone/plone.restapi-client",
+    "path": "src"
+  }
+}

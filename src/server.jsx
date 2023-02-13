@@ -40,6 +40,13 @@ import languages from '@plone/volto/constants/Languages';
 import configureStore from '@plone/volto/store';
 import { ReduxAsyncConnect, loadOnServer } from './helpers/AsyncConnect';
 
+import {
+  dehydrate,
+  Hydrate,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query';
+
 let locales = {};
 
 if (config.settings) {
@@ -243,6 +250,10 @@ server.get('/*', (req, res) => {
         store.dispatch(changeLanguage(newLocale, locales[newLocale], req));
       }
 
+      const queryClient = new QueryClient();
+      // await queryClient.prefetchQuery('apiRequest', apiGet);
+      const dehydratedState = dehydrate(queryClient);
+
       const context = {};
       resetServerContext();
       const markup = renderToString(
@@ -250,7 +261,11 @@ server.get('/*', (req, res) => {
           <CookiesProvider cookies={req.universalCookies}>
             <Provider store={store} onError={reactIntlErrorHandler}>
               <StaticRouter context={context} location={req.url}>
-                <ReduxAsyncConnect routes={routes} helpers={api} />
+                <QueryClientProvider client={queryClient}>
+                  <Hydrate state={dehydratedState}>
+                    <ReduxAsyncConnect routes={routes} helpers={api} />
+                  </Hydrate>
+                </QueryClientProvider>
               </StaticRouter>
             </Provider>
           </CookiesProvider>

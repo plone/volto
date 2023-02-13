@@ -30,8 +30,14 @@
   "packagesFolderAddons": {
     "volto-slate": {
       "package": "@plone/volto-slate"
+    },
+    "client": {
+      "package": "@plone/client"
     }
   },
+  "workspaces": [
+    "packages/client"
+  ],
   "scripts": {
     "postinstall": "make patches",
     "analyze": "BUNDLE_ANALYZE=true razzle build",
@@ -233,6 +239,7 @@
     "@loadable/server": "5.14.0",
     "@loadable/webpack-plugin": "5.14.0",
     "@plone/scripts": "2.1.2",
+    "@tanstack/react-query": "4.24.6",
     "@testing-library/cypress": "8.0.7",
     "@testing-library/jest-dom": "5.16.4",
     "@testing-library/react": "12.1.5",
@@ -409,6 +416,7 @@
     "identity-obj-proxy": "3.0.0",
     "jest": "26.6.3",
     "jest-environment-jsdom": "^26",
+    "mrs-developer": "2.1.0",
     "react-error-overlay": "6.0.9",
     "react-is": "^16.13.1",
     "release-it": "^15.1.3",

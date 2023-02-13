@@ -110,6 +110,11 @@ clean:
 	$(MAKE) -C "./api/" clean
 	rm -rf node_modules
 
+### Develop external Volto Core add-ons
+.PHONY: develop
+develop: ## Runs missdev in the local project (mrs.developer.json should be present)
+	npx -p mrs-developer missdev --config=jsconfig.json --output=../packages --fetch-https
+
 ##### Documentation
 
 .PHONY: docs-clean

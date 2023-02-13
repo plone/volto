@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "paths": {
+            "@plone/client": [
+                "../packages/client/src"
+            ]
+        },
+        "baseUrl": "src"
+    }
+}

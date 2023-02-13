@@ -15,6 +15,11 @@ import config from '@plone/volto/registry';
 
 import configureStore from '@plone/volto/store';
 import { Api, persistAuthToken, ScrollToTop } from '@plone/volto/helpers';
+import {
+  Hydrate,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query';
 
 export const history = createBrowserHistory();
 
@@ -58,14 +63,21 @@ export default function client() {
   }
 
   loadableReady(() => {
+    const dehydratedState = window.__REACT_QUERY_STATE__;
+    const queryClient = new QueryClient();
+
     hydrate(
       <CookiesProvider>
         <Provider store={store}>
           <IntlProvider onError={reactIntlErrorHandler}>
             <ConnectedRouter history={history}>
-              <ScrollToTop>
-                <ReduxAsyncConnect routes={routes} helpers={api} />
-              </ScrollToTop>
+              <QueryClientProvider client={queryClient}>
+                <Hydrate state={dehydratedState}>
+                  <ScrollToTop>
+                    <ReduxAsyncConnect routes={routes} helpers={api} />
+                  </ScrollToTop>
+                </Hydrate>
+              </QueryClientProvider>
             </ConnectedRouter>
           </IntlProvider>
         </Provider>
