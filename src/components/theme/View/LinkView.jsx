@@ -9,6 +9,7 @@ import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
 import { Container } from 'semantic-ui-react';
 import { UniversalLink } from '@plone/volto/components';
 import { FormattedMessage } from 'react-intl';
+import config from '@plone/volto/registry';
 
 /**
  * View container class.
@@ -58,6 +59,7 @@ class LinkView extends Component {
    */
   render() {
     const { remoteUrl } = this.props.content;
+    const { openExternalLinkInNewTab } = config.settings;
     return (
       <Container id="page-document">
         <h1 className="documentFirstHeading">{this.props.content.title}</h1>
@@ -72,7 +74,12 @@ class LinkView extends Component {
               id="The link address is:"
               defaultMessage="The link address is:"
             />{' '}
-            <UniversalLink href={remoteUrl}>
+            <UniversalLink
+              href={remoteUrl}
+              openLinkInNewTab={
+                openExternalLinkInNewTab && !isInternalURL(remoteUrl)
+              }
+            >
               {flattenToAppURL(remoteUrl)}
             </UniversalLink>
           </p>
