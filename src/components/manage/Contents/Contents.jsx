@@ -1242,7 +1242,7 @@ class Contents extends Component {
                     }
                     onCancel={this.onDeleteCancel}
                     onConfirm={this.onDeleteOk}
-                    size="fullscreen"
+                    size="medium"
                   />
                   <ContentsUploadModal
                     open={this.state.showUpload}
