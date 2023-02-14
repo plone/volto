@@ -3,12 +3,13 @@
 exports[`renders a view title component 1`] = `
 <h1
   className="documentFirstHeading"
-  id="a123"
+  id="my-title"
 >
+  My Title
   <a
     aria-hidden="true"
     className="anchor"
-    href="/#a123"
+    href="/#my-title"
     onClick={[Function]}
     tabIndex={-1}
     target={null}
@@ -26,6 +27,5 @@ exports[`renders a view title component 1`] = `
       xmlns=""
     />
   </a>
-  My Title
 </h1>
 `;
