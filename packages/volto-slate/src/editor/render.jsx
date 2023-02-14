@@ -164,6 +164,7 @@ export const renderLinkElement = (tagName) => {
 
     return (
       <Tag {...attributes} className={className}>
+        {children}
         {mode === 'view' && slug && (
           <UniversalLink
             className="anchor"
@@ -179,7 +180,6 @@ export const renderLinkElement = (tagName) => {
             ></svg>
           </UniversalLink>
         )}
-        {children}
       </Tag>
     );
   }
