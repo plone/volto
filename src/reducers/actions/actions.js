@@ -3,7 +3,12 @@
  * @module reducers/actions/actions
  */
 
-import { LIST_ACTIONS } from '@plone/volto/constants/ActionTypes';
+import { GET_CONTENT, LIST_ACTIONS } from '@plone/volto/constants/ActionTypes';
+import {
+  flattenToAppURL,
+  getBaseUrl,
+  hasApiExpander,
+} from '@plone/volto/helpers';
 
 const initialState = {
   error: null,
@@ -27,6 +32,7 @@ const initialState = {
  * @returns {Object} New state.
  */
 export default function actions(state = initialState, action = {}) {
+  let hasExpander;
   switch (action.type) {
     case `${LIST_ACTIONS}_PENDING`:
       return {
@@ -35,14 +41,36 @@ export default function actions(state = initialState, action = {}) {
         loaded: false,
         loading: true,
       };
+    case `${GET_CONTENT}_SUCCESS`:
+      hasExpander = hasApiExpander(
+        'actions',
+        getBaseUrl(flattenToAppURL(action.result['@id'])),
+      );
+      if (hasExpander) {
+        return {
+          ...state,
+          error: null,
+          actions: action.result['@components'].actions,
+          loaded: true,
+          loading: false,
+        };
+      }
+      return state;
     case `${LIST_ACTIONS}_SUCCESS`:
-      return {
-        ...state,
-        error: null,
-        actions: action.result,
-        loaded: true,
-        loading: false,
-      };
+      hasExpander = hasApiExpander(
+        'actions',
+        getBaseUrl(flattenToAppURL(action.result['@id'])),
+      );
+      if (!hasExpander) {
+        return {
+          ...state,
+          error: null,
+          actions: action.result,
+          loaded: true,
+          loading: false,
+        };
+      }
+      return state;
     case `${LIST_ACTIONS}_FAIL`:
       return {
         ...state,

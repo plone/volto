@@ -11,7 +11,7 @@ assignees: ''
 
 <!--
 
-Read http://docs.plone.org/develop/coredev/docs/plips.html first!
+Read http://5.docs.plone.org/develop/coredev/docs/plips.html first!
 
 Set "03 type: feature: plip" as label.
 
