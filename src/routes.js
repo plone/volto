@@ -46,6 +46,7 @@ import {
   ConfigureRuleControlpanel,
   UpgradeControlPanel,
   PersonalInformation,
+  Ok,
 } from '@plone/volto/components';
 
 // Deliberatelly use of absolute path of these components, since we do not want them
@@ -297,6 +298,11 @@ export const defaultRoutes = [
   {
     path: '/personal-information',
     component: PersonalInformation,
+    exact: true,
+  },
+  {
+    path: '/ok',
+    component: Ok,
     exact: true,
   },
   {

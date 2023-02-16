@@ -145,6 +145,8 @@ export InlineForm from '@plone/volto/components/manage/Form/InlineForm';
 export BlocksForm from '@plone/volto/components/manage/Blocks/Block/BlocksForm';
 export BlockDataForm from '@plone/volto/components/manage/Form/BlockDataForm';
 
+export Ok from '@plone/volto/components/manage/Ok/Ok';
+
 export FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 export ArrayWidget from '@plone/volto/components/manage/Widgets/ArrayWidget';
 export CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidget';
