@@ -307,6 +307,7 @@ class ArrayWidget extends Component {
           // react-sortable-hoc props:
           axis="xy"
           onSortEnd={this.onSortEnd}
+          menuShouldScrollIntoView={false}
           distance={4}
           // small fix for https://github.com/clauderic/react-sortable-hoc/pull/352:
           getHelperDimensions={({ node }) => node.getBoundingClientRect()}
