@@ -11,7 +11,6 @@ exports[`PersonalInformation renders a personal information component 1`] = `
   >
     <fieldset
       className="invisible"
-      disabled={false}
     >
       <div
         className="ui raised segments"
@@ -91,7 +90,6 @@ exports[`PersonalInformation renders a personal information component embedded i
   >
     <fieldset
       className="invisible"
-      disabled={false}
     >
       <div
         className="ui raised segments"

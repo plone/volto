@@ -645,7 +645,7 @@ class Form extends Component {
           error={keys(this.state.errors).length > 0}
           className={settings.verticalFormTabs ? 'vertical-form' : ''}
         >
-          <fieldset className="invisible" disabled={!this.props.editable}>
+          <fieldset className="invisible">
             <Segment.Group raised>
               {schema && schema.fieldsets.length > 1 && (
                 <>
@@ -682,6 +682,7 @@ class Form extends Component {
                         ...map(item.fields, (field, index) => (
                           <Field
                             {...schema.properties[field]}
+                            isDisabled={!this.props.editable}
                             id={field}
                             formData={this.state.formData}
                             fieldSet={item.title.toLowerCase()}

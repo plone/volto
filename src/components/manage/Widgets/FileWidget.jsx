@@ -71,7 +71,7 @@ const messages = defineMessages({
  *
  */
 const FileWidget = (props) => {
-  const { id, value, onChange } = props;
+  const { id, value, onChange, isDisabled } = props;
   const [fileType, setFileType] = React.useState(false);
   const intl = useIntl();
 
@@ -163,6 +163,7 @@ const FileWidget = (props) => {
               id={`field-${id}`}
               name={id}
               type="file"
+              disabled={isDisabled}
             />
           </div>
         )}
@@ -175,6 +176,7 @@ const FileWidget = (props) => {
             basic
             className="delete-button"
             aria-label="delete file"
+            disabled={isDisabled}
             onClick={() => {
               onChange(id, null);
               setFileType(false);
