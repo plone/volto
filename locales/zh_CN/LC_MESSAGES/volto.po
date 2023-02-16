@@ -3685,6 +3685,11 @@ msgstr "上传文件中"
 msgid "Uploading image"
 msgstr "上传图像中"
 
+#: components/manage/Blocks/Video/Edit
+# defaultMessage: Uploading video
+msgid "Uploading video"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 # defaultMessage: Use the form below to define the new content rule

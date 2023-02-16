@@ -3689,6 +3689,11 @@ msgstr "Enviando arquivos"
 msgid "Uploading image"
 msgstr "Enviando imagem"
 
+#: components/manage/Blocks/Video/Edit
+# defaultMessage: Uploading video
+msgid "Uploading video"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 # defaultMessage: Use the form below to define the new content rule

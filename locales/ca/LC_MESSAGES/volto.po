@@ -3688,6 +3688,11 @@ msgstr "Carregant fitxers"
 msgid "Uploading image"
 msgstr "S'està carregant la imatge"
 
+#: components/manage/Blocks/Video/Edit
+# defaultMessage: Uploading video
+msgid "Uploading video"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 # defaultMessage: Use the form below to define the new content rule
