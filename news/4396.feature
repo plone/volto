@@ -1,0 +1,1 @@
+Provide disable props to all widget and pass disable props in babel view @iFlameing
