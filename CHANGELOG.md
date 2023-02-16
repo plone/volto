@@ -8,6 +8,61 @@
 
 <!-- towncrier release notes start -->
 
+## 16.11.0 (2023-02-13)
+
+### Feature
+
+- Add open external link in a new tab config option. @robgietema [#4379](https://github.com/plone/volto/issues/4379)
+- Add scss support in core @sneridagh [#4383](https://github.com/plone/volto/issues/4383)
+- Use open in new tab setting for link types. @robgietema [#4384](https://github.com/plone/volto/issues/4384)
+
+### Bugfix
+
+- Fix Cannot read properties of undefined (reading 'translations') @avoinea [#4377](https://github.com/plone/volto/issues/4377)
+
+
+## 16.10.0 (2023-02-06)
+
+### Feature
+
+- Option for opening /edit with the same vertical offset like the page in view mode before. @ksuess [#3662](https://github.com/plone/volto/issues/3662)
+- Add option to add an action button to the top of the toolbar and to add a menu button to the bottom of the toolbar. @ksuess [#4333](https://github.com/plone/volto/issues/4333)
+- Update to latest versions in the backend for testing and the convenience api folder @sneridagh [#4361](https://github.com/plone/volto/issues/4361)
+- Content Rules: Support server-provided schema for condition and action @ericof [#4368](https://github.com/plone/volto/issues/4368)
+
+### Bugfix
+
+- Fix react-error-overlay resolution @sneridagh [#4360](https://github.com/plone/volto/issues/4360)
+
+### Documentation
+
+- Add documentation for copy, cut, and paste blocks in Volto. @MAX-786 [#3827](https://github.com/plone/volto/issues/3827)
+- Fixed Grammar error @SaiRev0 [#4272](https://github.com/plone/volto/issues/4272)
+
+
+## 16.9.0 (2023-01-27)
+
+### Feature
+
+- Enable scrolling to ids via hashes in internal links @jackahl [#4165](https://github.com/plone/volto/issues/4165)
+- Read listing block schema from configuration registry @pnicolli [#4231](https://github.com/plone/volto/issues/4231)
+- Add displayName when registering a component @sneridagh [#4282](https://github.com/plone/volto/issues/4282)
+- Support for all default expanders (breadcrumbs, navigation, actions, types) in actions/reducers. Conditional loading of actions if the expanders are present. @sneridagh [#4285](https://github.com/plone/volto/issues/4285)
+- Add `addNewBlock` Cypress support command @sneridagh [#4313](https://github.com/plone/volto/issues/4313)
+
+### Bugfix
+
+- Fixed maxLength validation for string type fields @pnicolli [#4189](https://github.com/plone/volto/issues/4189)
+- bugfix : add pathname as required proptype in Blocks/Edit @akshatgarg12 [#4194](https://github.com/plone/volto/issues/4194)
+- (Fix) Select Widgets scrolls the page when the options are not visible @dobri1408 [#4223](https://github.com/plone/volto/issues/4223)
+- Updated volto-slate to check for slateSettings before falling back to config @danalvrz [#4311](https://github.com/plone/volto/issues/4311)
+- Fix bug where label of search facet wasn't translated when the content object is being translated @robgietema [#4306](https://github.com/plone/volto/issues/4306)
+
+### Internal
+
+- Updated 4 Dependencies @SaiRev0 [#4104](https://github.com/plone/volto/issues/4104)
+
+
 ## 16.8.1 (2023-01-18)
 
 ### Bugfix

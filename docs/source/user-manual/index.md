@@ -30,4 +30,5 @@ Note that the audience for these sources may be a Developer, not an Editor, and 
 :maxdepth: 1
 
 blocks
+copy-paste-blocks
 ```
