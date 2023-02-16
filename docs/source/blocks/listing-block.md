@@ -32,13 +32,7 @@ const MyNoResultsComponent = (props) => {
 };
 
 const applyConfig = (config) => {
-  config.blocks = {
-    ...config.blocks,
-    listing: {
-      ...config.blocks.listing,
-      noResultsComponent: MyNoResultsComponent,
-    },
-  };
+  config.blocks.listing['noResultsComponent'] = MyNoResultsComponent;
   return config;
 };
 ```
@@ -58,19 +52,9 @@ const MyNoResultsTemplate = (props) => {
 };
 
 const applyConfig = (config) => {
-  config.blocks = {
-    ...config.blocks,
-    listing: {
-      ...config.blocks.listing,
-      variations: {
-        ...config.blocks.listing.variations,
-        default: {
-          ...config.blocks.listing.variations.default,
-          noResultsTemplate: MyNoResultsTemplate,
-        },
-      },
-    },
-  };
+  config.blocks.listing.variations.default[
+    'noResultsTemplate'
+  ] = MyNoResultsTemplate;
   return config;
 };
 ```
