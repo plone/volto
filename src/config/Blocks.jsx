@@ -472,7 +472,7 @@ const blocksConfig = {
       addPermission: [],
       view: [],
     },
-    allowedBlocks: ['image', 'listing', 'slate', 'text', 'teaser'],
+    allowedBlocks: ['image', 'listing', 'slate', 'teaser'],
   },
   column: {
     id: 'column',
@@ -490,7 +490,7 @@ const blocksConfig = {
       addPermission: [],
       view: [],
     },
-    allowedBlocks: ['image', 'listing', 'slate', 'text', 'teaser'],
+    allowedBlocks: ['image', 'listing', 'slate', 'teaser'],
   },
   teaser: {
     id: 'teaser',

@@ -1,10 +1,19 @@
 import React from 'react';
 import { Button } from 'semantic-ui-react';
+import { defineMessages, useIntl } from 'react-intl';
 import { BlockChooser, Icon } from '@plone/volto/components';
 import { useDetectClickOutside } from '@plone/volto/helpers';
 import addSVG from '@plone/volto/icons/add.svg';
 
+const messages = defineMessages({
+  addBlock: {
+    id: 'Add block in position {index}',
+    defaultMessage: 'Add block in position {index}',
+  },
+});
+
 const NewBlockAddButton = (props) => {
+  const intl = useIntl();
   const { blocksConfig, block, index, onMutateBlock } = props;
   const [isOpenMenu, setOpenMenu] = React.useState(false);
 
@@ -30,7 +39,9 @@ const NewBlockAddButton = (props) => {
           icon
           onClick={() => setOpenMenu(true)}
           className="add-block-button"
-          aria-label={`Add grid block in position ${index}`}
+          aria-label={intl.formatMessage(messages.addBlock, {
+            index,
+          })}
         >
           <Icon name={addSVG} className="circled" size="24px" />
         </Button>

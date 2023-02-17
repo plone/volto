@@ -9,12 +9,12 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   delete: {
-    id: 'Remove row element',
-    defaultMessage: 'Remove row element',
+    id: 'Remove row element {index}',
+    defaultMessage: 'Remove row element {index}',
   },
   reset: {
-    id: 'Reset row element',
-    defaultMessage: 'Reset row element',
+    id: 'Reset row element {index}',
+    defaultMessage: 'Reset row element {index}',
   },
 });
 
@@ -31,6 +31,7 @@ const EditBlockWrapper = (props) => {
     onDeleteBlock,
     onSelectBlock,
     data,
+    index,
   } = blockProps;
 
   function onResetBlock() {
@@ -53,7 +54,9 @@ const EditBlockWrapper = (props) => {
       >
         {type !== 'empty' ? (
           <Button
-            aria-label={intl.formatMessage(messages.reset)}
+            aria-label={intl.formatMessage(messages.reset, {
+              index,
+            })}
             basic
             icon
             onClick={(e) => onResetBlock(block, {})}
@@ -67,7 +70,9 @@ const EditBlockWrapper = (props) => {
             icon
             className="remove-block-button"
             onClick={(e) => onDeleteBlock(block, true)}
-            aria-label={intl.formatMessage(messages.delete)}
+            aria-label={intl.formatMessage(messages.delete, {
+              index,
+            })}
           >
             <Icon
               name={clearSVG}
@@ -93,6 +98,7 @@ const EditBlockWrapper = (props) => {
             <p>Add a new block</p>
             <NewBlockAddButton
               block={block}
+              index={index}
               blocksConfig={blocksConfig}
               onMutateBlock={(block, value) =>
                 onChangeBlock(block, {
