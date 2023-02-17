@@ -140,19 +140,22 @@ const DragDropList = (props) => {
                 </Draggable>
               ))}
             {provided.placeholder}
-            {!isEmpty(placeholderProps) && snapshot.isDraggingOver && (
-              <div
-                style={{
-                  position: 'absolute',
-                  top: placeholderProps.clientY,
-                  left: placeholderProps.clientX,
-                  height: placeholderProps.clientHeight,
-                  background: '#eee',
-                  width: placeholderProps.clientWidth,
-                  borderRadius: '3px',
-                }}
-              />
-            )}
+            {/* TODO: Fix the ghost problem if horizontal dnd is present */}
+            {direction !== 'horizontal' &&
+              !isEmpty(placeholderProps) &&
+              snapshot.isDraggingOver && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: placeholderProps.clientY,
+                    left: placeholderProps.clientX,
+                    height: placeholderProps.clientHeight,
+                    background: '#eee',
+                    width: placeholderProps.clientWidth,
+                    borderRadius: '3px',
+                  }}
+                />
+              )}
           </AsDomComponent>
         )}
       </Droppable>
