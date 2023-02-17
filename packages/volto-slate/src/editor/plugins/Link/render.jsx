@@ -1,7 +1,7 @@
 import React from 'react';
 import { UniversalLink } from '@plone/volto/components';
 import config from '@plone/volto/registry';
-import { isInternalURL } from '@plone/volto/helpers';
+import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
 
 const ViewLink = ({ url, target, download, children }) => {
   const { openExternalLinkInNewTab } = config.settings;
@@ -27,7 +27,11 @@ export const LinkElement = (props) => {
     <a
       {...attributes}
       className="slate-editor-link"
-      href={element.data?.url}
+      href={
+        isInternalURL(element.data?.url)
+          ? flattenToAppURL(element.data?.url)
+          : element.data?.url
+      }
       onClick={(e) => e.preventDefault()}
     >
       {Array.isArray(children)
