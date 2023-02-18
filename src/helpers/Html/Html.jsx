@@ -94,6 +94,7 @@ class Html extends Component {
       criticalCss,
       apiPath,
       publicURL,
+      dehydratedState,
     } = this.props;
     const head = Helmet.rewind();
     const bodyClass = join(BodyClass.rewind(), ' ');
@@ -189,6 +190,13 @@ class Html extends Component {
               )};`,
             }}
             charSet="UTF-8"
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `window.__REACT_QUERY_STATE__ = ${serialize({
+                dehydratedState,
+              })};`,
+            }}
           />
           {/* Add the crossorigin while in development */}
           {this.props.extractScripts !== false

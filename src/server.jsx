@@ -38,7 +38,15 @@ import ErrorPage from '@plone/volto/error';
 import languages from '@plone/volto/constants/Languages';
 
 import configureStore from '@plone/volto/store';
-import { ReduxAsyncConnect, loadOnServer } from './helpers/AsyncConnect';
+
+import superagent from 'superagent';
+import {
+  dehydrate,
+  Hydrate,
+  QueryClient,
+  QueryClientProvider,
+} from 'react-query';
+import { renderRoutes } from 'react-router-config';
 
 let locales = {};
 
@@ -104,6 +112,16 @@ server.use(function (err, req, res, next) {
       .send(`<!doctype html> ${renderToString(errorPage)}`);
   }
 });
+
+export const apiGet = async ({ path = '' } = {}) => {
+  const server = 'http://localhost:8080/Plone/++api++';
+  const url = `${server}${path}`;
+  const response = await superagent.get(url);
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+  return response.body;
+};
 
 function setupServer(req, res, next) {
   const api = new Api(req);
@@ -176,7 +194,7 @@ function setupServer(req, res, next) {
   next();
 }
 
-server.get('/*', (req, res) => {
+server.get('/*', async (req, res) => {
   const { errorHandler } = res.locals;
 
   const api = new Api(req);
@@ -222,53 +240,59 @@ server.get('/*', (req, res) => {
   const url = req.originalUrl || req.url;
   const location = parseUrl(url);
 
-  loadOnServer({ store, location, routes, api })
-    .then(() => {
-      // The content info is in the store at this point thanks to the asynconnect
-      // features, then we can force the current language info into the store when
-      // coming from an SSR request
-      const contentLang =
-        store.getState().content.data?.language?.token ||
-        config.settings.defaultLanguage;
+  // The content info is in the store at this point thanks to the asynconnect
+  // features, then we can force the current language info into the store when
+  // coming from an SSR request
+  const contentLang =
+    store.getState().content.data?.language?.token ||
+    config.settings.defaultLanguage;
 
-      const cookie_lang =
-        req.universalCookies.get('I18N_LANGUAGE') ||
-        config.settings.defaultLanguage ||
-        req.headers['accept-language'];
+  const cookie_lang =
+    req.universalCookies.get('I18N_LANGUAGE') ||
+    config.settings.defaultLanguage ||
+    req.headers['accept-language'];
 
-      if (cookie_lang !== contentLang) {
-        const newLocale = toLangUnderscoreRegion(
-          new locale.Locales(contentLang).best(supported).toString(),
-        );
-        store.dispatch(changeLanguage(newLocale, locales[newLocale], req));
-      }
+  if (cookie_lang !== contentLang) {
+    const newLocale = toLangUnderscoreRegion(
+      new locale.Locales(contentLang).best(supported).toString(),
+    );
+    store.dispatch(changeLanguage(newLocale, locales[newLocale], req));
+  }
 
-      const context = {};
-      resetServerContext();
-      const markup = renderToString(
-        <ChunkExtractorManager extractor={extractor}>
-          <CookiesProvider cookies={req.universalCookies}>
-            <Provider store={store} onError={reactIntlErrorHandler}>
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery('apiRequest', apiGet);
+  const dehydratedState = dehydrate(queryClient);
+
+  const context = {};
+  resetServerContext();
+  const markup = renderToString(
+    <ChunkExtractorManager extractor={extractor}>
+      <CookiesProvider cookies={req.universalCookies}>
+        <Provider store={store} onError={reactIntlErrorHandler}>
+          <QueryClientProvider client={queryClient}>
+            <Hydrate state={dehydratedState}>
               <StaticRouter context={context} location={req.url}>
-                <ReduxAsyncConnect routes={routes} helpers={api} />
+                {renderRoutes(routes)}
               </StaticRouter>
-            </Provider>
-          </CookiesProvider>
-        </ChunkExtractorManager>,
-      );
+            </Hydrate>
+          </QueryClientProvider>
+        </Provider>
+      </CookiesProvider>
+    </ChunkExtractorManager>,
+  );
 
-      const readCriticalCss =
-        config.settings.serverConfig.readCriticalCss || defaultReadCriticalCss;
+  const readCriticalCss =
+    config.settings.serverConfig.readCriticalCss || defaultReadCriticalCss;
 
-      if (context.url) {
-        res.redirect(flattenToAppURL(context.url));
-      } else if (context.error_code) {
-        res.set({
-          'Cache-Control': 'no-cache',
-        });
+  if (context.url) {
+    res.redirect(flattenToAppURL(context.url));
+  } else if (context.error_code) {
+    res.set({
+      'Cache-Control': 'no-cache',
+    });
 
-        res.status(context.error_code).send(
-          `<!doctype html>
+    res.status(context.error_code).send(
+      `<!doctype html>
               ${renderToString(
                 <Html
                   extractor={extractor}
@@ -286,10 +310,10 @@ server.get('/*', (req, res) => {
                 />,
               )}
             `,
-        );
-      } else {
-        res.status(200).send(
-          `<!doctype html>
+    );
+  } else {
+    res.status(200).send(
+      `<!doctype html>
               ${renderToString(
                 <Html
                   extractor={extractor}
@@ -300,13 +324,12 @@ server.get('/*', (req, res) => {
                   publicURL={
                     res.locals.detectedHost || config.settings.publicURL
                   }
+                  dehydratedState={dehydratedState}
                 />,
               )}
             `,
-        );
-      }
-    }, errorHandler)
-    .catch(errorHandler);
+    );
+  }
 });
 
 export const defaultReadCriticalCss = () => {

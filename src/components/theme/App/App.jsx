@@ -8,7 +8,7 @@ import jwtDecode from 'jwt-decode';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { asyncConnect, Helmet } from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/helpers'; // asyncConnect,
 import { Segment } from 'semantic-ui-react';
 import { renderRoutes } from 'react-router-config';
 import { Slide, ToastContainer, toast } from 'react-toastify';
@@ -20,6 +20,7 @@ import config from '@plone/volto/registry';
 import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
 import { visitBlocks } from '@plone/volto/helpers/Blocks/Blocks';
 import { injectIntl } from 'react-intl';
+import withContent from './withContent';
 
 import Error from '@plone/volto/error';
 
@@ -36,21 +37,23 @@ import {
   BodyClass,
   getBaseUrl,
   getView,
-  hasApiExpander,
+  // hasApiExpander,
   isCmsUi,
 } from '@plone/volto/helpers';
 import {
-  getBreadcrumbs,
+  // getBreadcrumbs,
   getContent,
-  getNavigation,
-  getTypes,
-  getWorkflow,
+  // getNavigation,
+  // getTypes,
+  // getWorkflow,
 } from '@plone/volto/actions';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 import MultilingualRedirector from '@plone/volto/components/theme/MultilingualRedirector/MultilingualRedirector';
 import WorkingCopyToastsFactory from '@plone/volto/components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory';
 import LockingToastsFactory from '@plone/volto/components/manage/LockingToastsFactory/LockingToastsFactory';
+
+import { withRouter } from 'react-router';
 
 /**
  * @export
@@ -158,6 +161,7 @@ class App extends Component {
           })}
         />
         <SkipLinks />
+        {/* <h1>{this.props.content?.title}</h1> */}
         <Header pathname={path} />
         <Breadcrumbs pathname={path} />
         <MultilingualRedirector
@@ -260,60 +264,62 @@ export const fetchContent = async ({ store, location }) => {
 };
 
 export default compose(
-  asyncConnect([
-    {
-      key: 'breadcrumbs',
-      promise: ({ location, store: { dispatch } }) => {
-        // Do not trigger the breadcrumbs action if the expander is present
-        if (
-          __SERVER__ &&
-          !hasApiExpander('breadcrumbs', getBaseUrl(location.pathname))
-        ) {
-          return dispatch(getBreadcrumbs(getBaseUrl(location.pathname)));
-        }
-      },
-    },
-    {
-      key: 'content',
-      promise: ({ location, store }) =>
-        __SERVER__ && fetchContent({ store, location }),
-    },
-    {
-      key: 'navigation',
-      promise: ({ location, store: { dispatch } }) => {
-        // Do not trigger the navigation action if the expander is present
-        if (
-          __SERVER__ &&
-          !hasApiExpander('navigation', getBaseUrl(location.pathname))
-        ) {
-          return dispatch(
-            getNavigation(
-              getBaseUrl(location.pathname),
-              config.settings.navDepth,
-            ),
-          );
-        }
-      },
-    },
-    {
-      key: 'types',
-      promise: ({ location, store: { dispatch } }) => {
-        // Do not trigger the types action if the expander is present
-        if (
-          __SERVER__ &&
-          !hasApiExpander('types', getBaseUrl(location.pathname))
-        ) {
-          return dispatch(getTypes(getBaseUrl(location.pathname)));
-        }
-      },
-    },
-    {
-      key: 'workflow',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
-    },
-  ]),
+  // asyncConnect([
+  //   {
+  //     key: 'breadcrumbs',
+  //     promise: ({ location, store: { dispatch } }) => {
+  //       // Do not trigger the breadcrumbs action if the expander is present
+  //       if (
+  //         __SERVER__ &&
+  //         !hasApiExpander('breadcrumbs', getBaseUrl(location.pathname))
+  //       ) {
+  //         return dispatch(getBreadcrumbs(getBaseUrl(location.pathname)));
+  //       }
+  //     },
+  //   },
+  //   {
+  //     key: 'content',
+  //     promise: ({ location, store }) =>
+  //       __SERVER__ && fetchContent({ store, location }),
+  //   },
+  //   {
+  //     key: 'navigation',
+  //     promise: ({ location, store: { dispatch } }) => {
+  //       // Do not trigger the navigation action if the expander is present
+  //       if (
+  //         __SERVER__ &&
+  //         !hasApiExpander('navigation', getBaseUrl(location.pathname))
+  //       ) {
+  //         return dispatch(
+  //           getNavigation(
+  //             getBaseUrl(location.pathname),
+  //             config.settings.navDepth,
+  //           ),
+  //         );
+  //       }
+  //     },
+  //   },
+  //   {
+  //     key: 'types',
+  //     promise: ({ location, store: { dispatch } }) => {
+  //       // Do not trigger the types action if the expander is present
+  //       if (
+  //         __SERVER__ &&
+  //         !hasApiExpander('types', getBaseUrl(location.pathname))
+  //       ) {
+  //         return dispatch(getTypes(getBaseUrl(location.pathname)));
+  //       }
+  //     },
+  //   },
+  //   {
+  //     key: 'workflow',
+  //     promise: ({ location, store: { dispatch } }) =>
+  //       __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
+  //   },
+  // ]),
   injectIntl,
+  withRouter,
+  withContent,
   connect(
     (state, props) => ({
       pathname: props.location.pathname,
@@ -321,7 +327,7 @@ export default compose(
       userId: state.userSession.token
         ? jwtDecode(state.userSession.token).sub
         : '',
-      content: state.content.data,
+      // content: state.content.data,
       apiError: state.apierror.error,
       connectionRefused: state.apierror.connectionRefused,
     }),
