@@ -4,11 +4,6 @@ import http from 'http';
 import app from './server';
 import debug from 'debug';
 
-import * as Sentry from '@sentry/node';
-import initSentry from '@plone/volto/sentry';
-
-initSentry(Sentry);
-
 export default () => {
   const server = http.createServer(app);
   // const host = process.env.HOST || 'localhost';

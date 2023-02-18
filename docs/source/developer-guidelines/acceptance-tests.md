@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Developer guidelines for acceptance tests."
-  "property=og:description": "Developer guidelines for acceptance tests."
-  "property=og:title": "Acceptance tests"
-  "keywords": "Volto, Plone, frontend, React, helper command, redux, acceptance, tests, Cypress"
+myst:
+  html_meta:
+    "description": "Developer guidelines for acceptance tests."
+    "property=og:description": "Developer guidelines for acceptance tests."
+    "property=og:title": "Acceptance tests"
+    "keywords": "Volto, Plone, frontend, React, helper command, redux, acceptance, tests, Cypress"
 ---
 
 # Acceptance testing
@@ -33,7 +34,7 @@ It's recommended to start three individual terminal sessions, one each for runni
 2.  Run the frontend fixture.
 
     ```shell
-    make start-test-acceptance-frontend
+    make start-test-acceptance-frontend-dev
     ```
 
 3.  Run the Cypress tests for that fixture.
@@ -67,7 +68,7 @@ There are some artifacts available for the acceptance tests made accessible to C
 
 ### Access History, Redux Store and Settings
 
-We expose the History, Redux Store and Settings from the app (only for Cypress environments) so we can easily access them and execute actions (like navigate using the router), dispatch Redux actions or change app settings "on the fly".
+We expose the History, {term}`Redux` Store and Settings from the app (only for Cypress environments) so we can easily access them and execute actions (like navigate using the router), dispatch Redux actions or change app settings "on the fly".
 
 #### Navigate using React Router
 

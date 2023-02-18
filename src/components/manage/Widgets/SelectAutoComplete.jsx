@@ -26,6 +26,7 @@ import {
   Option,
   ClearIndicator,
   DropdownIndicator,
+  MultiValueContainer,
   selectTheme,
   customSelectStyles,
   MenuList,
@@ -81,6 +82,7 @@ class SelectAutoComplete extends Component {
     onChange: PropTypes.func.isRequired,
     wrapped: PropTypes.bool,
     isDisabled: PropTypes.bool,
+    placeholder: PropTypes.string,
   };
 
   /**
@@ -235,12 +237,16 @@ class SelectAutoComplete extends Component {
             ...(this.props.choices?.length > 25 && {
               MenuList,
             }),
+            MultiValueContainer,
             ClearIndicator,
             DropdownIndicator,
             Option,
           }}
           value={selectedOption || []}
-          placeholder={this.props.intl.formatMessage(messages.select)}
+          placeholder={
+            this.props.placeholder ??
+            this.props.intl.formatMessage(messages.select)
+          }
           onChange={this.handleChange}
           isMulti
         />

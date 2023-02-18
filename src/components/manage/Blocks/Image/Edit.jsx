@@ -15,6 +15,7 @@ import cx from 'classnames';
 import { isEqual } from 'lodash';
 
 import { Icon, ImageSidebar, SidebarPortal } from '@plone/volto/components';
+import { withBlockExtensions } from '@plone/volto/helpers';
 import { createContent } from '@plone/volto/actions';
 import {
   flattenToAppURL,
@@ -34,6 +35,10 @@ const messages = defineMessages({
   ImageBlockInputPlaceholder: {
     id: 'Browse the site, drop an image, or type an URL',
     defaultMessage: 'Browse the site, drop an image, or type an URL',
+  },
+  uploadingImage: {
+    id: 'Uploading image',
+    defaultMessage: 'Uploading image',
   },
 });
 
@@ -143,19 +148,6 @@ class Edit extends Component {
   };
 
   /**
-   * Align block handler
-   * @method onAlignBlock
-   * @param {string} align Alignment option
-   * @returns {undefined}
-   */
-  onAlignBlock(align) {
-    this.props.onChangeBlock(this.props.block, {
-      ...this.props.data,
-      align,
-    });
-  }
-
-  /**
    * Change url handler
    * @method onChangeUrl
    * @param {Object} target Target object
@@ -177,12 +169,6 @@ class Edit extends Component {
     this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
       url: flattenToAppURL(this.state.url),
-    });
-  };
-
-  resetSubmitUrl = () => {
-    this.setState({
-      url: '',
     });
   };
 
@@ -306,7 +292,11 @@ class Edit extends Component {
                       {this.state.dragging && <Dimmer active></Dimmer>}
                       {this.state.uploading && (
                         <Dimmer active>
-                          <Loader indeterminate>Uploading image</Loader>
+                          <Loader indeterminate>
+                            {this.props.intl.formatMessage(
+                              messages.uploadingImage,
+                            )}
+                          </Loader>
                         </Dimmer>
                       )}
                       <div className="no-image-wrapper">
@@ -386,7 +376,7 @@ class Edit extends Component {
           </div>
         )}
         <SidebarPortal selected={this.props.selected}>
-          <ImageSidebar {...this.props} resetSubmitUrl={this.resetSubmitUrl} />
+          <ImageSidebar {...this.props} />
         </SidebarPortal>
       </div>
     );
@@ -395,6 +385,7 @@ class Edit extends Component {
 
 export default compose(
   injectIntl,
+  withBlockExtensions,
   connect(
     (state, ownProps) => ({
       request: state.content.subrequests[ownProps.block] || {},

@@ -19,6 +19,7 @@ import {
   Option,
   DropdownIndicator,
   ClearIndicator,
+  MultiValueContainer,
   selectTheme,
   customSelectStyles,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
@@ -61,6 +62,8 @@ class TokenWidget extends Component {
     error: PropTypes.arrayOf(PropTypes.string),
     getVocabulary: PropTypes.func.isRequired,
     choices: PropTypes.arrayOf(PropTypes.object),
+    vocabLoading: PropTypes.bool,
+    vocabLoaded: PropTypes.bool,
     items: PropTypes.shape({
       vocabulary: PropTypes.object,
     }),
@@ -70,6 +73,7 @@ class TokenWidget extends Component {
     value: PropTypes.arrayOf(PropTypes.string),
     onChange: PropTypes.func.isRequired,
     wrapped: PropTypes.bool,
+    placeholder: PropTypes.string,
   };
 
   /**
@@ -117,6 +121,20 @@ class TokenWidget extends Component {
     }
   }
 
+  componentDidUpdate() {
+    if (
+      !this.props.choices?.length &&
+      this.props.vocabLoading === undefined &&
+      !this.props.vocabLoaded
+    ) {
+      this.props.getVocabulary({
+        vocabNameOrURL: this.props.vocabBaseUrl,
+        size: -1,
+        subrequest: this.props.lang,
+      });
+    }
+  }
+
   /**
    * Handle the field change, store it in the local state and back to simple
    * array of tokens for correct serialization
@@ -156,6 +174,7 @@ class TokenWidget extends Component {
         <CreatableSelect
           id={`field-${this.props.id}`}
           key={this.props.id}
+          menuShouldScrollIntoView={false}
           isDisabled={this.props.isDisabled}
           className="react-select-container"
           classNamePrefix="react-select"
@@ -163,11 +182,19 @@ class TokenWidget extends Component {
           options={defaultOptions}
           styles={customSelectStyles}
           theme={selectTheme}
-          components={{ ClearIndicator, DropdownIndicator, Option }}
+          components={{
+            MultiValueContainer,
+            ClearIndicator,
+            DropdownIndicator,
+            Option,
+          }}
           isMulti
           value={selectedOption || []}
           onChange={this.handleChange}
-          placeholder={this.props.intl.formatMessage(messages.select)}
+          placeholder={
+            this.props.placeholder ??
+            this.props.intl.formatMessage(messages.select)
+          }
           noOptionsMessage={() =>
             this.props.intl.formatMessage(messages.no_options)
           }
@@ -198,6 +225,8 @@ export default compose(
                 value: item.value,
               }))
             : [],
+          vocabLoading: vocabState.loading,
+          vocabLoaded: vocabState.loaded,
           vocabBaseUrl,
           lang: state.intl.locale,
         };

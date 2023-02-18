@@ -3,7 +3,12 @@
  * @module reducers/types/types
  */
 
-import { GET_TYPES } from '@plone/volto/constants/ActionTypes';
+import { GET_CONTENT, GET_TYPES } from '@plone/volto/constants/ActionTypes';
+import {
+  flattenToAppURL,
+  getBaseUrl,
+  hasApiExpander,
+} from '@plone/volto/helpers';
 
 const initialState = {
   error: null,
@@ -20,6 +25,7 @@ const initialState = {
  * @returns {Object} New state.
  */
 export default function types(state = initialState, action = {}) {
+  let hasExpander;
   switch (action.type) {
     case `${GET_TYPES}_PENDING`:
       return {
@@ -28,14 +34,36 @@ export default function types(state = initialState, action = {}) {
         loading: true,
         loaded: false,
       };
+    case `${GET_CONTENT}_SUCCESS`:
+      hasExpander = hasApiExpander(
+        'types',
+        getBaseUrl(flattenToAppURL(action.result['@id'])),
+      );
+      if (hasExpander) {
+        return {
+          ...state,
+          error: null,
+          loading: false,
+          loaded: true,
+          types: action.result['@components'].types,
+        };
+      }
+      return state;
     case `${GET_TYPES}_SUCCESS`:
-      return {
-        ...state,
-        error: null,
-        loading: false,
-        loaded: true,
-        types: action.result,
-      };
+      hasExpander = hasApiExpander(
+        'types',
+        getBaseUrl(flattenToAppURL(action.result['@id'])),
+      );
+      if (!hasExpander) {
+        return {
+          ...state,
+          error: null,
+          loading: false,
+          loaded: true,
+          types: action.result,
+        };
+      }
+      return state;
     case `${GET_TYPES}_FAIL`:
       return {
         ...state,

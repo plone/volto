@@ -1,4 +1,4 @@
-import { flatten, isEqual, isObject, transform } from 'lodash';
+import { cloneDeepWith, flatten, isEqual, isObject, transform } from 'lodash';
 import React from 'react';
 import { matchPath } from 'react-router';
 import config from '@plone/volto/registry';
@@ -154,7 +154,7 @@ export const getColor = (name) => {
  */
 export const parseDateTime = (locale, value, format, moment) => {
   //  Used to set a server timezone or UTC as default
-  moment.defineLocale(locale, moment.localeData(locale)._config); // copy locale to moment-timezone
+  moment.updateLocale(locale, moment.localeData(locale)._config); // copy locale to moment-timezone
   let datetime = null;
 
   if (value) {
@@ -208,9 +208,11 @@ export const toLangUnderscoreRegion = (language) => {
 };
 
 /**
- * Lookup if a given expander is set in apiExpanders
- * @param {string} language Language to be normalized
- * @returns {string} Language normalized
+ * Lookup if a given expander is set in apiExpanders for the given path and action type
+ * @param {string} expander The id literal of the expander eg. `navigation`
+ * @param {string} path The path (no URL) to check if the expander has effect
+ * @param {string} type The Redux action type
+ * @returns {boolean} Return if the expander is present for the path and the type given
  */
 export const hasApiExpander = (expander, path = '', type = 'GET_CONTENT') => {
   return flatten(
@@ -280,4 +282,20 @@ export const slugify = (string) => {
     .toLowerCase()
     .replace(/[\s-]+/g, '_')
     .replace(/[^\w]+/g, '');
+};
+
+/**
+ * cloneDeep an object with support for JSX nodes on it
+ * Somehow, in a browser it fails with a "Illegal invocation" error
+ * but in node (Jest test) it doesn't. This does the trick.
+ * @param {object} object object to be cloned
+ * @returns {object} deep cloned object
+ */
+export const cloneDeepSchema = (object) => {
+  return cloneDeepWith(object, (value) => {
+    if (React.isValidElement(value)) {
+      // If a JSX valid element, just return it, do not try to deep clone it
+      return value;
+    }
+  });
 };

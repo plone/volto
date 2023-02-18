@@ -13,7 +13,7 @@ import { setSidebarTab } from '@plone/volto/actions';
 import config from '@plone/volto/registry';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import { applyBlockDefaults } from '@plone/volto/helpers';
-import StyleWrapper from './StyleWrapper';
+import { ViewDefaultBlock, EditDefaultBlock } from '@plone/volto/components';
 
 import {
   SidebarPortal,
@@ -52,6 +52,7 @@ export class Edit extends Component {
     onMoveBlock: PropTypes.func.isRequired,
     onDeleteBlock: PropTypes.func.isRequired,
     editable: PropTypes.bool,
+    pathname: PropTypes.string.isRequired,
   };
 
   /**
@@ -121,12 +122,12 @@ export class Edit extends Component {
 
     const disableNewBlocks = this.props.data?.disableNewBlocks;
 
-    let Block = blocksConfig?.[type]?.['edit'] || null;
+    let Block = blocksConfig?.[type]?.['edit'] || EditDefaultBlock;
     if (
       this.props.data?.readOnly ||
       (!editable && !config.blocks.showEditBlocksInBabelView)
     ) {
-      Block = blocksConfig?.[type]?.['view'] || null;
+      Block = blocksConfig?.[type]?.['view'] || ViewDefaultBlock;
     }
     const schema = blocksConfig?.[type]?.['schema'] || BlockSettingsSchema;
     const blockHasOwnFocusManagement =
@@ -157,7 +158,7 @@ export class Edit extends Component {
                     )
                 : null
             }
-            className={cx(`block ${type}`, {
+            className={cx(`block ${type} ${this.props.data.variation ?? ''}`, {
               selected: this.props.selected || this.props.multiSelected,
               multiSelected: this.props.multiSelected,
             })}
@@ -167,13 +168,11 @@ export class Edit extends Component {
             /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
             tabIndex={!blockHasOwnFocusManagement ? -1 : null}
           >
-            <StyleWrapper {...this.props}>
-              <Block
-                {...this.props}
-                blockNode={this.blockNode}
-                data={applyBlockDefaults(this.props)}
-              />
-            </StyleWrapper>
+            <Block
+              {...this.props}
+              blockNode={this.blockNode}
+              data={applyBlockDefaults(this.props)}
+            />
             {this.props.manage && (
               <SidebarPortal
                 selected={this.props.selected}

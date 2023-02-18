@@ -25,6 +25,7 @@ import {
   Option,
   selectTheme,
   MenuList,
+  MultiValueContainer,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
@@ -119,6 +120,7 @@ class SelectWidget extends Component {
     noValueOption: PropTypes.bool,
     customOptionStyling: PropTypes.any,
     isMulti: PropTypes.bool,
+    placeholder: PropTypes.string,
   };
 
   /**
@@ -208,6 +210,7 @@ class SelectWidget extends Component {
           id={`field-${id}`}
           key={choices}
           name={id}
+          menuShouldScrollIntoView={false}
           isDisabled={disabled}
           isSearchable={true}
           className="react-select-container"
@@ -220,6 +223,7 @@ class SelectWidget extends Component {
             ...(options?.length > 25 && {
               MenuList,
             }),
+            MultiValueContainer,
             DropdownIndicator,
             ClearIndicator,
             Option: this.props.customOptionStyling || Option,

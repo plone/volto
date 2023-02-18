@@ -15,20 +15,16 @@ import config from '@plone/volto/registry';
 import configureStore from '@plone/volto/store';
 import { Api, persistAuthToken, ScrollToTop } from '@plone/volto/helpers';
 
-import * as Sentry from '@sentry/browser';
-import initSentry from '@plone/volto/sentry';
 import { renderRoutes } from 'react-router-config';
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 
 export const history = createBrowserHistory();
 
-initSentry(Sentry);
-
 function reactIntlErrorHandler(error) {
   debug('i18n')(error);
 }
 
-export default () => {
+export default function client() {
   const api = new Api();
 
   const store = configureStore(window.__data, history, api);
@@ -49,6 +45,14 @@ export default () => {
   }
   if (window.env.publicURL) {
     config.settings.publicURL = window.env.publicURL;
+  }
+  // There are some cases that the client needs to know the internal server URL
+  // too, as some helpers (isInternalURL and flattenToAppURL) need to be aware of it.
+  // This is specially important when the hydration of the store coming from the first SSR
+  // request happens, since there all the server URLs might be the internalApiPath ones,
+  // and the client should be able to take care of them properly.
+  if (window.env.RAZZLE_INTERNAL_API_PATH) {
+    config.settings.internalApiPath = window.env.RAZZLE_INTERNAL_API_PATH;
   }
   // TODO: To be removed when the use of the legacy traverse is deprecated.
   if (window.env.RAZZLE_LEGACY_TRAVERSE) {
@@ -76,4 +80,4 @@ export default () => {
       document.getElementById('main'),
     );
   });
-};
+}

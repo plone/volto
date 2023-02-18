@@ -1,0 +1,29 @@
+@brown: #826a6a;
+
+table.slate-table {
+  width: 100%;
+  border: 0.025rem solid @brown;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-collapse: collapse;
+  border-spacing: 30px;
+
+  th,
+  td {
+    padding: 0.5rem;
+    border: 0.05rem solid @brown;
+    vertical-align: middle;
+  }
+
+  th {
+    border-bottom: 0.15rem solid @brown;
+  }
+}
+
+table.slate-table-block.sortable {
+  tr th > * {
+    // Header will contain both the slate and an icon when sorted
+    // so this will keep them on the same line.
+    display: inline-block;
+  }
+}

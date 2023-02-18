@@ -25,6 +25,7 @@ import {
   getBaseUrl,
   flattenToAppURL,
   getLayoutFieldname,
+  hasApiExpander,
 } from '@plone/volto/helpers';
 
 import config from '@plone/volto/registry';
@@ -119,7 +120,10 @@ class View extends Component {
   };
 
   componentDidMount() {
-    this.props.listActions(getBaseUrl(this.props.pathname));
+    // Do not trigger the actions action if the expander is present
+    if (!hasApiExpander('actions', getBaseUrl(this.props.pathname))) {
+      this.props.listActions(getBaseUrl(this.props.pathname));
+    }
     this.props.getContent(
       getBaseUrl(this.props.pathname),
       this.props.versionId,
@@ -135,7 +139,10 @@ class View extends Component {
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
-      this.props.listActions(getBaseUrl(nextProps.pathname));
+      // Do not trigger the actions action if the expander is present
+      if (!hasApiExpander('actions', getBaseUrl(nextProps.pathname))) {
+        this.props.listActions(getBaseUrl(nextProps.pathname));
+      }
       this.props.getContent(
         getBaseUrl(nextProps.pathname),
         this.props.versionId,
@@ -223,7 +230,7 @@ class View extends Component {
       return <span />;
     }
     const RenderedView =
-      this.getViewByType() || this.getViewByLayout() || this.getViewDefault();
+      this.getViewByLayout() || this.getViewByType() || this.getViewDefault();
 
     return (
       <div id="view">
@@ -237,6 +244,7 @@ class View extends Component {
           }
         />
         <RenderedView
+          key={this.props.content['@id']}
           content={this.props.content}
           location={this.props.location}
           token={this.props.token}
