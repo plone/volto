@@ -239,7 +239,10 @@ server.get('/*', async (req, res) => {
     },
   });
   // default query
-  await queryClient.prefetchQuery(getContentQuery({ path: req.url }));
+  const expanders = config.settings.contentAPIExpanders;
+  await queryClient.prefetchQuery(
+    getContentQuery({ path: req.url, expanders }),
+  );
   const dehydratedState = dehydrate(queryClient);
 
   loadOnServer({ store, location, routes, api })

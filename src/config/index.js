@@ -75,12 +75,26 @@ let config = {
     // The URL Volto is going to be served (see sensible defaults above)
     publicURL,
     apiPath,
+    contentAPIExpanders: [
+      {
+        name: 'navigation',
+        querystring: {
+          'expand.navigation.depth': 3,
+        },
+      },
+      {
+        name: 'breadcrumbs',
+      },
+      {
+        name: 'actions',
+      },
+    ],
     apiExpanders: [
       // Add the following expanders for only issuing a single request.
       // https://6.docs.plone.org/volto/configuration/settings-reference.html#term-apiExpanders
       // {
       //   match: '',
-      //   GET_CONTENT: ['breadcrumbs', 'navigation', 'actions', 'types'],
+      //   GET_CONTENT: ['breadcrumbs', 'navigation', 'actions'],
       // },
     ],
     // Internal proxy to bypass CORS *while developing*. NOT intended for production use.

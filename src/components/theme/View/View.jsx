@@ -227,7 +227,6 @@ class View extends Component {
       );
     }
     if (!this.props.content) {
-      console.log('no content in view component');
       return <span />;
     }
     const RenderedView =
