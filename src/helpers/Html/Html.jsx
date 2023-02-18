@@ -94,6 +94,7 @@ class Html extends Component {
       criticalCss,
       apiPath,
       publicURL,
+      dehydratedState,
     } = this.props;
     const head = Helmet.rewind();
     const bodyClass = join(BodyClass.rewind(), ' ');
@@ -187,6 +188,14 @@ class Html extends Component {
               __html: `window.__data=${serialize(
                 loadReducers(store.getState()),
               )};`,
+            }}
+            charSet="UTF-8"
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `window.__REACT_QUERY_STATE__ = ${serialize({
+                dehydratedState,
+              })};`,
             }}
             charSet="UTF-8"
           />

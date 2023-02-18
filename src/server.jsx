@@ -46,6 +46,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query';
+import { getContentQuery } from '@plone/client/index.ts';
 
 let locales = {};
 
@@ -183,7 +184,7 @@ function setupServer(req, res, next) {
   next();
 }
 
-server.get('/*', (req, res) => {
+server.get('/*', async (req, res) => {
   const { errorHandler } = res.locals;
 
   const api = new Api(req);
@@ -229,6 +230,18 @@ server.get('/*', (req, res) => {
   const url = req.originalUrl || req.url;
   const location = parseUrl(url);
 
+  // react-query init boilerplate
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: Infinity,
+      },
+    },
+  });
+  // default query
+  await queryClient.prefetchQuery(getContentQuery({ path: req.url }));
+  const dehydratedState = dehydrate(queryClient);
+
   loadOnServer({ store, location, routes, api })
     .then(() => {
       // The content info is in the store at this point thanks to the asynconnect
@@ -250,26 +263,22 @@ server.get('/*', (req, res) => {
         store.dispatch(changeLanguage(newLocale, locales[newLocale], req));
       }
 
-      const queryClient = new QueryClient();
-      // await queryClient.prefetchQuery('apiRequest', apiGet);
-      const dehydratedState = dehydrate(queryClient);
-
       const context = {};
       resetServerContext();
       const markup = renderToString(
-        <ChunkExtractorManager extractor={extractor}>
-          <CookiesProvider cookies={req.universalCookies}>
-            <Provider store={store} onError={reactIntlErrorHandler}>
-              <StaticRouter context={context} location={req.url}>
-                <QueryClientProvider client={queryClient}>
-                  <Hydrate state={dehydratedState}>
+        <QueryClientProvider client={queryClient}>
+          <Hydrate state={dehydratedState}>
+            <ChunkExtractorManager extractor={extractor}>
+              <CookiesProvider cookies={req.universalCookies}>
+                <Provider store={store} onError={reactIntlErrorHandler}>
+                  <StaticRouter context={context} location={req.url}>
                     <ReduxAsyncConnect routes={routes} helpers={api} />
-                  </Hydrate>
-                </QueryClientProvider>
-              </StaticRouter>
-            </Provider>
-          </CookiesProvider>
-        </ChunkExtractorManager>,
+                  </StaticRouter>
+                </Provider>
+              </CookiesProvider>
+            </ChunkExtractorManager>
+          </Hydrate>
+        </QueryClientProvider>,
       );
 
       const readCriticalCss =
@@ -298,6 +307,7 @@ server.get('/*', (req, res) => {
                   publicURL={
                     res.locals.detectedHost || config.settings.publicURL
                   }
+                  dehydratedState={dehydratedState}
                 />,
               )}
             `,
@@ -315,11 +325,13 @@ server.get('/*', (req, res) => {
                   publicURL={
                     res.locals.detectedHost || config.settings.publicURL
                   }
+                  dehydratedState={dehydratedState}
                 />,
               )}
             `,
         );
       }
+      queryClient.clear();
     }, errorHandler)
     .catch(errorHandler);
 });

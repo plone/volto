@@ -12,14 +12,11 @@ import { CookiesProvider } from 'react-cookie';
 import debug from 'debug';
 import routes from '@root/routes';
 import config from '@plone/volto/registry';
+import AppQueryWrapper from '@plone/volto/queries/AppQueryWrapper';
 
 import configureStore from '@plone/volto/store';
 import { Api, persistAuthToken, ScrollToTop } from '@plone/volto/helpers';
-import {
-  Hydrate,
-  QueryClient,
-  QueryClientProvider,
-} from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 export const history = createBrowserHistory();
 
@@ -63,25 +60,21 @@ export default function client() {
   }
 
   loadableReady(() => {
-    const dehydratedState = window.__REACT_QUERY_STATE__;
-    const queryClient = new QueryClient();
-
     hydrate(
-      <CookiesProvider>
-        <Provider store={store}>
-          <IntlProvider onError={reactIntlErrorHandler}>
-            <ConnectedRouter history={history}>
-              <QueryClientProvider client={queryClient}>
-                <Hydrate state={dehydratedState}>
-                  <ScrollToTop>
-                    <ReduxAsyncConnect routes={routes} helpers={api} />
-                  </ScrollToTop>
-                </Hydrate>
-              </QueryClientProvider>
-            </ConnectedRouter>
-          </IntlProvider>
-        </Provider>
-      </CookiesProvider>,
+      <AppQueryWrapper>
+        <CookiesProvider>
+          <Provider store={store}>
+            <IntlProvider onError={reactIntlErrorHandler}>
+              <ConnectedRouter history={history}>
+                <ScrollToTop>
+                  <ReduxAsyncConnect routes={routes} helpers={api} />
+                  <ReactQueryDevtools initialIsOpen={true} />
+                </ScrollToTop>
+              </ConnectedRouter>
+            </IntlProvider>
+          </Provider>
+        </CookiesProvider>
+      </AppQueryWrapper>,
       document.getElementById('main'),
     );
   });

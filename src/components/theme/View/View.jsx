@@ -28,6 +28,7 @@ import {
 } from '@plone/volto/helpers';
 
 import config from '@plone/volto/registry';
+import withQuery from '@plone/volto/queries/withQuery';
 
 /**
  * View container class.
@@ -123,10 +124,10 @@ class View extends Component {
     if (!hasApiExpander('actions', getBaseUrl(this.props.pathname))) {
       this.props.listActions(getBaseUrl(this.props.pathname));
     }
-    this.props.getContent(
-      getBaseUrl(this.props.pathname),
-      this.props.versionId,
-    );
+    // this.props.getContent(
+    //   getBaseUrl(this.props.pathname),
+    //   this.props.versionId,
+    // );
     this.setState({ isClient: true });
   }
 
@@ -142,10 +143,10 @@ class View extends Component {
       if (!hasApiExpander('actions', getBaseUrl(nextProps.pathname))) {
         this.props.listActions(getBaseUrl(nextProps.pathname));
       }
-      this.props.getContent(
-        getBaseUrl(nextProps.pathname),
-        this.props.versionId,
-      );
+      // this.props.getContent(
+      //   getBaseUrl(nextProps.pathname),
+      //   this.props.versionId,
+      // );
     }
 
     if (nextProps.actions.object_buttons) {
@@ -226,6 +227,7 @@ class View extends Component {
       );
     }
     if (!this.props.content) {
+      console.log('no content in view component');
       return <span />;
     }
     const RenderedView =
@@ -280,7 +282,6 @@ export default compose(
     (state, props) => ({
       actions: state.actions.actions,
       token: state.userSession.token,
-      content: state.content.data,
       error: state.content.get.error,
       apiError: state.apierror.error,
       connectionRefused: state.apierror.connectionRefused,
@@ -294,4 +295,5 @@ export default compose(
       getContent,
     },
   ),
+  withQuery,
 )(View);

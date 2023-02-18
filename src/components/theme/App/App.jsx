@@ -20,6 +20,7 @@ import config from '@plone/volto/registry';
 import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
 import { visitBlocks } from '@plone/volto/helpers/Blocks/Blocks';
 import { injectIntl } from 'react-intl';
+import withQuery from '../../../queries/withQuery';
 
 import Error from '@plone/volto/error';
 
@@ -119,17 +120,16 @@ class App extends Component {
    */
   render() {
     const { views } = config;
-    const path = getBaseUrl(this.props.pathname);
-    const action = getView(this.props.pathname);
-    const isCmsUI = isCmsUi(this.props.pathname);
+    const { content, intl, pathname, token } = this.props;
+    const path = getBaseUrl(pathname);
+    const action = getView(pathname);
+    const isCmsUI = isCmsUi(pathname);
     const ConnectionRefusedView = views.errorViews.ECONNREFUSED;
 
-    const language =
-      this.props.content?.language?.token ?? this.props.intl?.locale;
+    const language = content?.language?.token ?? intl?.locale;
 
     return (
       <PluggablesProvider>
-        <ComponentTest />
         {language && (
           <Helmet>
             <html lang={language} />
@@ -138,9 +138,9 @@ class App extends Component {
         <BodyClass className={`view-${action}view`} />
 
         {/* Body class depending on content type */}
-        {this.props.content && this.props.content['@type'] && (
+        {content?.['@type'] && (
           <BodyClass
-            className={`contenttype-${this.props.content['@type']
+            className={`contenttype-${content['@type']
               .replace(' ', '-')
               .toLowerCase()}`}
           />
@@ -149,21 +149,21 @@ class App extends Component {
         {/* Body class depending on sections */}
         <BodyClass
           className={cx({
-            [trim(join(split(this.props.pathname, '/'), ' section-'))]:
-              this.props.pathname !== '/',
-            siteroot: this.props.pathname === '/',
-            'is-authenticated': !!this.props.token,
-            'is-anonymous': !this.props.token,
+            [trim(join(split(pathname, '/'), ' section-'))]: pathname !== '/',
+            siteroot: pathname === '/',
+            'is-authenticated': !!token,
+            'is-anonymous': !token,
             'cms-ui': isCmsUI,
             'public-ui': !isCmsUI,
           })}
         />
         <SkipLinks />
+        {/* <ComponentTest /> */}
         <Header pathname={path} />
         <Breadcrumbs pathname={path} />
         <MultilingualRedirector
-          pathname={this.props.pathname}
-          contentLanguage={this.props.content?.language?.token}
+          pathname={pathname}
+          contentLanguage={content?.language?.token}
         >
           <Segment
             basic
@@ -188,11 +188,8 @@ class App extends Component {
           </Segment>
         </MultilingualRedirector>
         <Footer />
-        <LockingToastsFactory
-          content={this.props.content}
-          user={this.props.userId}
-        />
-        <WorkingCopyToastsFactory content={this.props.content} />
+        <LockingToastsFactory content={content} user={this.props.userId} />
+        <WorkingCopyToastsFactory content={content} />
         <ToastContainer
           position={toast.POSITION.BOTTOM_CENTER}
           hideProgressBar
@@ -262,70 +259,69 @@ export const fetchContent = async ({ store, location }) => {
 
 export default compose(
   asyncConnect([
-    {
-      key: 'breadcrumbs',
-      promise: ({ location, store: { dispatch } }) => {
-        // Do not trigger the breadcrumbs action if the expander is present
-        if (
-          __SERVER__ &&
-          !hasApiExpander('breadcrumbs', getBaseUrl(location.pathname))
-        ) {
-          return dispatch(getBreadcrumbs(getBaseUrl(location.pathname)));
-        }
-      },
-    },
-    {
-      key: 'content',
-      promise: ({ location, store }) =>
-        __SERVER__ && fetchContent({ store, location }),
-    },
-    {
-      key: 'navigation',
-      promise: ({ location, store: { dispatch } }) => {
-        // Do not trigger the navigation action if the expander is present
-        if (
-          __SERVER__ &&
-          !hasApiExpander('navigation', getBaseUrl(location.pathname))
-        ) {
-          return dispatch(
-            getNavigation(
-              getBaseUrl(location.pathname),
-              config.settings.navDepth,
-            ),
-          );
-        }
-      },
-    },
-    {
-      key: 'types',
-      promise: ({ location, store: { dispatch } }) => {
-        // Do not trigger the types action if the expander is present
-        if (
-          __SERVER__ &&
-          !hasApiExpander('types', getBaseUrl(location.pathname))
-        ) {
-          return dispatch(getTypes(getBaseUrl(location.pathname)));
-        }
-      },
-    },
-    {
-      key: 'workflow',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
-    },
+    // {
+    //   key: 'breadcrumbs',
+    //   promise: ({ location, store: { dispatch } }) => {
+    //     // Do not trigger the breadcrumbs action if the expander is present
+    //     if (
+    //       __SERVER__ &&
+    //       !hasApiExpander('breadcrumbs', getBaseUrl(location.pathname))
+    //     ) {
+    //       return dispatch(getBreadcrumbs(getBaseUrl(location.pathname)));
+    //     }
+    //   },
+    // },
+    // {
+    //   key: 'content',
+    //   promise: ({ location, store }) =>
+    //     __SERVER__ && fetchContent({ store, location }),
+    // },
+    // {
+    //   key: 'navigation',
+    //   promise: ({ location, store: { dispatch } }) => {
+    //     // Do not trigger the navigation action if the expander is present
+    //     if (
+    //       __SERVER__ &&
+    //       !hasApiExpander('navigation', getBaseUrl(location.pathname))
+    //     ) {
+    //       return dispatch(
+    //         getNavigation(
+    //           getBaseUrl(location.pathname),
+    //           config.settings.navDepth,
+    //         ),
+    //       );
+    //     }
+    //   },
+    // },
+    // {
+    //   key: 'types',
+    //   promise: ({ location, store: { dispatch } }) => {
+    //     // Do not trigger the types action if the expander is present
+    //     if (
+    //       __SERVER__ &&
+    //       !hasApiExpander('types', getBaseUrl(location.pathname))
+    //     ) {
+    //       return dispatch(getTypes(getBaseUrl(location.pathname)));
+    //     }
+    //   },
+    // },
+    // {
+    //   key: 'workflow',
+    //   promise: ({ location, store: { dispatch } }) =>
+    //     __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
+    // },
   ]),
   injectIntl,
   connect(
     (state, props) => ({
-      pathname: props.location.pathname,
       token: state.userSession.token,
       userId: state.userSession.token
         ? jwtDecode(state.userSession.token).sub
         : '',
-      content: state.content.data,
       apiError: state.apierror.error,
       connectionRefused: state.apierror.connectionRefused,
     }),
     null,
   ),
+  withQuery,
 )(App);

@@ -30,9 +30,6 @@
   "packagesFolderAddons": {
     "volto-slate": {
       "package": "@plone/volto-slate"
-    },
-    "client": {
-      "package": "@plone/client"
     }
   },
   "workspaces": [
@@ -240,6 +237,7 @@
     "@loadable/webpack-plugin": "5.14.0",
     "@plone/scripts": "2.1.2",
     "@tanstack/react-query": "4.24.6",
+    "@tanstack/react-query-devtools": "4.24.6",
     "@testing-library/cypress": "8.0.7",
     "@testing-library/jest-dom": "5.16.4",
     "@testing-library/react": "12.1.5",
