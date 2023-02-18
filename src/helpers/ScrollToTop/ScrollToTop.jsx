@@ -51,9 +51,11 @@ class ScrollToTop extends React.Component {
   }
 }
 
-export default connect(
-  (state, props) => ({
-    location: state.loadProtector.location,
-  }),
-  {},
-)(ScrollToTop);
+export default ScrollToTop;
+// TODO: Sync problems, solved with loadProtector
+// export default connect(
+//   (state, props) => ({
+//     location: state.loadProtector.location,
+//   }),
+//   {},
+// )(ScrollToTop);

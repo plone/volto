@@ -5,7 +5,7 @@ import config from '@plone/volto/registry';
 
 const withQuery = (Component, query = getContentQuery) => ({ ...props }) => {
   const path = useLocation().pathname;
-  // console.log(path);
+  console.log(path);
   const expanders = config.settings.contentAPIExpanders;
   const { data } = useQuery(query({ path, expanders }));
   return <Component {...props} content={data} pathname={path} />;

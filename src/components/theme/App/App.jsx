@@ -179,6 +179,7 @@ class App extends Component {
                   stackTrace={this.state.errorInfo.componentStack}
                 />
               ) : (
+                // TODO: static context for better error handling
                 renderRoutes(this.props.route.routes, {
                   staticContext: this.props.staticContext,
                 })
@@ -257,59 +258,6 @@ export const fetchContent = async ({ store, location }) => {
 };
 
 export default compose(
-  asyncConnect([
-    // {
-    //   key: 'breadcrumbs',
-    //   promise: ({ location, store: { dispatch } }) => {
-    //     // Do not trigger the breadcrumbs action if the expander is present
-    //     if (
-    //       __SERVER__ &&
-    //       !hasApiExpander('breadcrumbs', getBaseUrl(location.pathname))
-    //     ) {
-    //       return dispatch(getBreadcrumbs(getBaseUrl(location.pathname)));
-    //     }
-    //   },
-    // },
-    // {
-    //   key: 'content',
-    //   promise: ({ location, store }) =>
-    //     __SERVER__ && fetchContent({ store, location }),
-    // },
-    // {
-    //   key: 'navigation',
-    //   promise: ({ location, store: { dispatch } }) => {
-    //     // Do not trigger the navigation action if the expander is present
-    //     if (
-    //       __SERVER__ &&
-    //       !hasApiExpander('navigation', getBaseUrl(location.pathname))
-    //     ) {
-    //       return dispatch(
-    //         getNavigation(
-    //           getBaseUrl(location.pathname),
-    //           config.settings.navDepth,
-    //         ),
-    //       );
-    //     }
-    //   },
-    // },
-    // {
-    //   key: 'types',
-    //   promise: ({ location, store: { dispatch } }) => {
-    //     // Do not trigger the types action if the expander is present
-    //     if (
-    //       __SERVER__ &&
-    //       !hasApiExpander('types', getBaseUrl(location.pathname))
-    //     ) {
-    //       return dispatch(getTypes(getBaseUrl(location.pathname)));
-    //     }
-    //   },
-    // },
-    // {
-    //   key: 'workflow',
-    //   promise: ({ location, store: { dispatch } }) =>
-    //     __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
-    // },
-  ]),
   injectIntl,
   connect(
     (state, props) => ({

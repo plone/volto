@@ -8,6 +8,7 @@ import jwtDecode from 'jwt-decode';
 
 import { loginRenew } from '@plone/volto/actions';
 import { getCookieOptions } from '@plone/volto/helpers';
+// TODO: replace it with history.push()
 import { push } from 'connected-react-router';
 
 /**

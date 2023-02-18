@@ -4,7 +4,6 @@ import React from 'react';
 import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl-redux';
-import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 import { ReduxAsyncConnect } from '@plone/volto/helpers/AsyncConnect';
 import { loadableReady } from '@loadable/component';
@@ -17,6 +16,8 @@ import AppQueryWrapper from '@plone/volto/queries/AppQueryWrapper';
 import configureStore from '@plone/volto/store';
 import { Api, persistAuthToken, ScrollToTop } from '@plone/volto/helpers';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { BrowserRouter } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
 
 export const history = createBrowserHistory();
 
@@ -65,12 +66,13 @@ export default function client() {
         <CookiesProvider>
           <Provider store={store}>
             <IntlProvider onError={reactIntlErrorHandler}>
-              <ConnectedRouter history={history}>
+              <BrowserRouter>
                 <ScrollToTop>
-                  <ReduxAsyncConnect routes={routes} helpers={api} />
+                  {/* <ReduxAsyncConnect routes={routes} helpers={api} /> */}
+                  {renderRoutes(routes)}
                   <ReactQueryDevtools initialIsOpen={true} />
                 </ScrollToTop>
-              </ConnectedRouter>
+              </BrowserRouter>
             </IntlProvider>
           </Provider>
         </CookiesProvider>

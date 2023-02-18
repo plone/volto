@@ -47,6 +47,7 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query';
 import { getContentQuery } from '@plone/client/index.ts';
+import { renderRoutes } from 'react-router-config';
 
 let locales = {};
 
@@ -245,98 +246,91 @@ server.get('/*', async (req, res) => {
   );
   const dehydratedState = dehydrate(queryClient);
 
-  loadOnServer({ store, location, routes, api })
-    .then(() => {
-      // The content info is in the store at this point thanks to the asynconnect
-      // features, then we can force the current language info into the store when
-      // coming from an SSR request
-      const contentLang =
-        store.getState().content.data?.language?.token ||
-        config.settings.defaultLanguage;
+  // The content info is in the store at this point thanks to the asynconnect
+  // features, then we can force the current language info into the store when
+  // coming from an SSR request
+  const contentLang =
+    store.getState().content.data?.language?.token ||
+    config.settings.defaultLanguage;
 
-      const cookie_lang =
-        req.universalCookies.get('I18N_LANGUAGE') ||
-        config.settings.defaultLanguage ||
-        req.headers['accept-language'];
+  const cookie_lang =
+    req.universalCookies.get('I18N_LANGUAGE') ||
+    config.settings.defaultLanguage ||
+    req.headers['accept-language'];
 
-      if (cookie_lang !== contentLang) {
-        const newLocale = toLangUnderscoreRegion(
-          new locale.Locales(contentLang).best(supported).toString(),
-        );
-        store.dispatch(changeLanguage(newLocale, locales[newLocale], req));
-      }
+  if (cookie_lang !== contentLang) {
+    const newLocale = toLangUnderscoreRegion(
+      new locale.Locales(contentLang).best(supported).toString(),
+    );
+    store.dispatch(changeLanguage(newLocale, locales[newLocale], req));
+  }
 
-      const context = {};
-      resetServerContext();
-      const markup = renderToString(
-        <QueryClientProvider client={queryClient}>
-          <Hydrate state={dehydratedState}>
-            <ChunkExtractorManager extractor={extractor}>
-              <CookiesProvider cookies={req.universalCookies}>
-                <Provider store={store} onError={reactIntlErrorHandler}>
-                  <StaticRouter context={context} location={req.url}>
-                    <ReduxAsyncConnect routes={routes} helpers={api} />
-                  </StaticRouter>
-                </Provider>
-              </CookiesProvider>
-            </ChunkExtractorManager>
-          </Hydrate>
-        </QueryClientProvider>,
-      );
+  const context = {};
+  resetServerContext();
+  const markup = renderToString(
+    <QueryClientProvider client={queryClient}>
+      <Hydrate state={dehydratedState}>
+        <ChunkExtractorManager extractor={extractor}>
+          <CookiesProvider cookies={req.universalCookies}>
+            <Provider store={store} onError={reactIntlErrorHandler}>
+              <StaticRouter context={context} location={req.url}>
+                {/* <ReduxAsyncConnect routes={routes} helpers={api} /> */}
+                {renderRoutes(routes)}
+              </StaticRouter>
+            </Provider>
+          </CookiesProvider>
+        </ChunkExtractorManager>
+      </Hydrate>
+    </QueryClientProvider>,
+  );
 
-      const readCriticalCss =
-        config.settings.serverConfig.readCriticalCss || defaultReadCriticalCss;
+  const readCriticalCss =
+    config.settings.serverConfig.readCriticalCss || defaultReadCriticalCss;
 
-      if (context.url) {
-        res.redirect(flattenToAppURL(context.url));
-      } else if (context.error_code) {
-        res.set({
-          'Cache-Control': 'no-cache',
-        });
+  if (context.url) {
+    res.redirect(flattenToAppURL(context.url));
+  } else if (context.error_code) {
+    res.set({
+      'Cache-Control': 'no-cache',
+    });
 
-        res.status(context.error_code).send(
-          `<!doctype html>
-              ${renderToString(
-                <Html
-                  extractor={extractor}
-                  markup={markup}
-                  store={store}
-                  extractScripts={
-                    config.settings.serverConfig.extractScripts?.errorPages ||
-                    process.env.NODE_ENV !== 'production'
-                  }
-                  criticalCss={readCriticalCss(req)}
-                  apiPath={res.locals.detectedHost || config.settings.apiPath}
-                  publicURL={
-                    res.locals.detectedHost || config.settings.publicURL
-                  }
-                  dehydratedState={dehydratedState}
-                />,
-              )}
-            `,
-        );
-      } else {
-        res.status(200).send(
-          `<!doctype html>
-              ${renderToString(
-                <Html
-                  extractor={extractor}
-                  markup={markup}
-                  store={store}
-                  criticalCss={readCriticalCss(req)}
-                  apiPath={res.locals.detectedHost || config.settings.apiPath}
-                  publicURL={
-                    res.locals.detectedHost || config.settings.publicURL
-                  }
-                  dehydratedState={dehydratedState}
-                />,
-              )}
-            `,
-        );
-      }
-      queryClient.clear();
-    }, errorHandler)
-    .catch(errorHandler);
+    res.status(context.error_code).send(
+      `<!doctype html>
+        ${renderToString(
+          <Html
+            extractor={extractor}
+            markup={markup}
+            store={store}
+            extractScripts={
+              config.settings.serverConfig.extractScripts?.errorPages ||
+              process.env.NODE_ENV !== 'production'
+            }
+            criticalCss={readCriticalCss(req)}
+            apiPath={res.locals.detectedHost || config.settings.apiPath}
+            publicURL={res.locals.detectedHost || config.settings.publicURL}
+            dehydratedState={dehydratedState}
+          />,
+        )}
+      `,
+    );
+  } else {
+    res.status(200).send(
+      `<!doctype html>
+        ${renderToString(
+          <Html
+            extractor={extractor}
+            markup={markup}
+            store={store}
+            criticalCss={readCriticalCss(req)}
+            apiPath={res.locals.detectedHost || config.settings.apiPath}
+            publicURL={res.locals.detectedHost || config.settings.publicURL}
+            dehydratedState={dehydratedState}
+          />,
+        )}
+      `,
+    );
+  }
+  queryClient.clear();
 });
 
 export const defaultReadCriticalCss = () => {
