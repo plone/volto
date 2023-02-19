@@ -328,7 +328,7 @@ export function connectAppComponent(AppComponent) {
       }),
       null,
     ),
-  );
+  )(AppComponent);
 }
 
 export default connectAppComponent(App);
