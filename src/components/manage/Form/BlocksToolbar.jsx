@@ -21,6 +21,7 @@ import cutSVG from '@plone/volto/icons/cut.svg';
 import pasteSVG from '@plone/volto/icons/paste.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
 
+import { pushToUndoStack } from '@plone/volto/helpers';
 export class BlocksToolbarComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -124,6 +125,7 @@ export class BlocksToolbarComponent extends React.Component {
       },
     };
 
+    pushToUndoStack(mode, blocksData);
     if (!(e.ctrlKey || e.metaKey)) this.props.resetBlocksClipboard();
     this.props.onChangeBlocks(newBlockData);
   }

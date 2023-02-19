@@ -4,6 +4,8 @@
  * @example import { Api, Html } from 'helpers';
  */
 
+import { pushToUndoStack } from './UndoManager/useUndoManager';
+
 // export { injectLazyLibs } from './Loadable/Loadable';
 export Api from '@plone/volto/helpers/Api/Api';
 export { getAPIResourceWithAuth } from '@plone/volto/helpers/Api/APIResourceWithAuth';
@@ -106,6 +108,7 @@ export { useEvent } from './Utils/useEvent';
 export { usePrevious } from './Utils/usePrevious';
 export { usePagination } from './Utils/usePagination';
 export useUndoManager from './UndoManager/useUndoManager';
+export { pushToUndoStack } from './UndoManager/useUndoManager';
 export { getCookieOptions } from './Cookies/cookies';
 export { getWidgetView } from './Widget/widget';
 export {

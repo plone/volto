@@ -7,6 +7,8 @@ import { useDispatch } from 'react-redux';
 // Code based on Apache-2.0 License
 // https://github.com/reaviz/reaflow/blob/78d60aa04f514947a17097c906efdbbd6bae5080/src/helpers/useUndo.ts
 
+export let pushToUndoStack = {};
+
 const useUndoManager = (
   state,
   onUndoRedo,
@@ -30,15 +32,20 @@ const useUndoManager = (
       setCanUndo(nextUndo);
       setCanRedo(nextRedo);
 
-      if (Object.keys(state.blocksClipboard).length !== 0) {
-        const actionType = Object.keys(state.blocksClipboard)[0];
+      // if (Object.keys(state.blocksClipboard).length !== 0) {
+      //   const actionType = Object.keys(state.blocksClipboard)[0];
 
-        const blocksData = state.blocksClipboard?.copy
-          ? state.blocksClipboard.copy
-          : state.blocksClipboard.cut;
-        dispatch(setBlocksClipboard({ [actionType]: blocksData }));
+      //   const blocksData = state.blocksClipboard?.copy
+      //     ? state.blocksClipboard.copy
+      //     : state.blocksClipboard.cut;
+      //   dispatch(setBlocksClipboard({ [actionType]: blocksData }));
+      // }
+      console.log(state);
+      if (state?.dispatch) {
+        state.dispatch();
+        delete state.dispatch;
+        console.log('Dispatched!');
       }
-
       callbackRef.current({
         state,
         type: 'undo',
@@ -46,7 +53,7 @@ const useUndoManager = (
         canRedo: nextRedo,
       });
     });
-  }, [dispatch]);
+  }, []);
 
   React.useEffect(() => {
     manager.current.save({
@@ -56,6 +63,23 @@ const useUndoManager = (
     setCanUndo(manager.current.canUndo());
     setCanRedo(manager.current.canRedo());
   }, [state]);
+
+  pushToUndoStack = React.useCallback(
+    (actionType, blocksData) => {
+      console.log('pushed to stack');
+      manager.current.save({
+        state: {
+          ...state,
+          dispatch: () =>
+            dispatch(setBlocksClipboard({ [actionType]: blocksData })),
+        },
+      });
+
+      setCanUndo(manager.current.canUndo());
+      setCanRedo(manager.current.canRedo());
+    },
+    [dispatch, state],
+  );
 
   const doRedo = React.useCallback(() => {
     manager.current.redo(({ state }) => {
