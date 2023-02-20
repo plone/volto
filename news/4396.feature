@@ -1,1 +1,1 @@
-Provide disable props to all widget and pass disable props in babel view @iFlameing
+Provide disabled props to all widgets, and pass disabled props in to babel views. @iFlameing
