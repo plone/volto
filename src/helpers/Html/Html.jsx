@@ -193,9 +193,9 @@ class Html extends Component {
           />
           <script
             dangerouslySetInnerHTML={{
-              __html: `window.__REACT_QUERY_STATE__ = ${serialize({
+              __html: `window.__REACT_QUERY_STATE__ = ${serialize(
                 dehydratedState,
-              })};`,
+              )};`,
             }}
             charSet="UTF-8"
           />

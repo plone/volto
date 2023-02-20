@@ -12,13 +12,13 @@ export default function AppQueryWrapper(props) {
       new QueryClient({
         defaultOptions: {
           queries: {
-            staleTime: Infinity,
+            staleTime: 1000,
           },
         },
       }),
   );
 
-  const { dehydratedState } = window.__REACT_QUERY_STATE__;
+  const dehydratedState = window.__REACT_QUERY_STATE__;
 
   return (
     <QueryClientProvider client={queryClient}>
