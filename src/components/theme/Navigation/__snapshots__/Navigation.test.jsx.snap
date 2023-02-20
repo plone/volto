@@ -49,6 +49,7 @@ exports[`Navigation renders a navigation component including external links 1`] 
       className="item"
       href="https://store.plone.org"
       rel="noopener noreferrer"
+      target="_self"
     >
       Store
     </a>
