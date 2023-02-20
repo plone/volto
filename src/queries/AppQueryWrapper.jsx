@@ -12,7 +12,7 @@ export default function AppQueryWrapper(props) {
       new QueryClient({
         defaultOptions: {
           queries: {
-            staleTime: 1000,
+            staleTime: 5000,
           },
         },
       }),

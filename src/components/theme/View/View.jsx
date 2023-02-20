@@ -139,6 +139,9 @@ class View extends Component {
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
+      // console.log(
+      //   `View: next pathname ${nextProps.pathname} | current pathname ${this.props.pathname}`,
+      // );
       // Do not trigger the actions action if the expander is present
       if (!hasApiExpander('actions', getBaseUrl(nextProps.pathname))) {
         this.props.listActions(getBaseUrl(nextProps.pathname));

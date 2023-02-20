@@ -228,14 +228,11 @@ server.get('/*', async (req, res) => {
     entrypoints: ['client'],
   });
 
-  const url = req.originalUrl || req.url;
-  const location = parseUrl(url);
-
   // react-query init boilerplate
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
-        staleTime: Infinity,
+        staleTime: 5000,
       },
     },
   });
