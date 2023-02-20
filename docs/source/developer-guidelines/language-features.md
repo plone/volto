@@ -39,7 +39,7 @@ currently targeting.
 By doing this, enables the bundles to be smaller, as the resultant code does not need to
 support old browsers (thus, transform your code to ES5 compatible code) as Babel will
 apply only the required transforms that your target enviroments need. For more
-information: https://babeljs.io/docs/en/babel-preset-env#browserslist-integration
+information: https://babeljs.io/docs/babel-preset-env#browserslist-integration
 
 Volto project generators use this browserlist by default (you can find it in your local `package.json`):
 
