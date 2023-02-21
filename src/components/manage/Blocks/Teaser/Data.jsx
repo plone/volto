@@ -3,6 +3,7 @@ import { defineMessages, useIntl } from 'react-intl';
 import { Button } from 'semantic-ui-react';
 import { BlockDataForm, Icon } from '@plone/volto/components';
 import { isEmpty } from 'lodash';
+import config from '@plone/volto/registry';
 
 import trashSVG from '@plone/volto/icons/delete.svg';
 
@@ -27,24 +28,13 @@ const TeaserData = (props) => {
     });
   };
 
-  const teaserDataAdapter = ({ block, data, id, onChangeBlock, value }) => {
-    let dataSaved = {
-      ...data,
-      [id]: value,
-    };
-    if (id === 'href' && !isEmpty(value) && !data.title && !data.description) {
-      dataSaved = {
-        ...dataSaved,
-        title: value[0].Title,
-        description: value[0].Description,
-        head_title: value[0].head_title,
-      };
-    }
-    onChangeBlock(block, dataSaved);
-  };
-
   const isReseteable =
     isEmpty(data.href) && !data.title && !data.description && !data.head_title;
+
+  const dataAdapter = config.getComponent({
+    name: 'dataAdapter',
+    dependencies: ['Teaser', 'BlockData'],
+  }).component;
 
   const HeaderActions = (
     <Button.Group>
@@ -66,7 +56,7 @@ const TeaserData = (props) => {
       schema={schema}
       title={schema.title}
       onChangeField={(id, value) => {
-        teaserDataAdapter({
+        dataAdapter({
           block,
           data,
           id,
