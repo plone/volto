@@ -16,7 +16,7 @@ NODEBIN = ./node_modules/.bin
 
 # Plone 5 legacy
 DOCKER_IMAGE5=plone/plone-backend:5.2.10
-KGS5=plone.restapi==8.35.1 plone.volto==4.0.5 plone.rest==3.0.0
+KGS5=plone.restapi==8.35.0 plone.volto==4.0.5 plone.rest==3.0.0
 
 # Project settings
 
