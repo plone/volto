@@ -86,7 +86,7 @@ cd myvoltoproject
 You can bootstrap a ready Docker Plone container with all the dependencies and ready for Volto use. We recommend to use the Plone docker builds based in `pip` [plone/plone-backend](https://github.com/plone/plone-backend) image:
 
 ```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.0
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.1
 ```
 
 or as an alternative if you have experience with Plone and you have all the
@@ -230,10 +230,11 @@ JavaScript-centered trainings.
 
 ## Node Support
 
+- Node 18: Supported since Volto 17
 - Node 16: Supported since Volto 14
-- Node 14: Supported since Volto 8.8.0
-- Node 12: Deprecated from Volto 16 onwards. It was supported since Volto 4
-- Node 10: Deprecated from Volto 13 onwards. It was supported since Volto 1 (and its predecessor "plone-react")
+- Node 14: No longer supported. It was supported from Volto 8.8.0 - 16
+- Node 12: No longer supported. It was supported from Volto 4 - 15
+- Node 10: No longer supported. It was supported from Volto 1 - 12
 
 ## Browser support
 
@@ -268,7 +269,7 @@ yarn
 Either using a Docker command:
 
 ```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.0
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.1
 ```
 
 or using the convenience makefile command:
