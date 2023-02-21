@@ -3706,6 +3706,7 @@ msgid "Uploading files"
 msgstr "上传文件中"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Image/Edit
 # defaultMessage: Uploading image
 msgid "Uploading image"
 msgstr "上传图像中"

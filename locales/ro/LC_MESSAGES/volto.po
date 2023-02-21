@@ -3700,6 +3700,7 @@ msgid "Uploading files"
 msgstr "Încărcarea fișierelor"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Image/Edit
 # defaultMessage: Uploading image
 msgid "Uploading image"
 msgstr "Se încarcă imaginea"

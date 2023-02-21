@@ -339,6 +339,23 @@ const detectVocabulary = (type) => {
   }
 };
 
+const processSchema = (schema) => {
+  const properties = { ...schema.properties };
+  Object.keys(properties).forEach((key) => {
+    const value = properties[key];
+    const vocabId = value?.vocabulary?.['@id'];
+    if (vocabId?.includes('@sources')) {
+      value['widget'] = 'internal_url';
+      delete value['vocabulary'];
+    }
+  });
+  const newSchema = {
+    ...schema,
+    properties,
+  };
+  return newSchema;
+};
+
 const VariableModal = ({
   open,
   type,
@@ -371,17 +388,27 @@ const VariableModal = ({
   React.useEffect(() => {
     //reset input schema to rehydrate options
     setInputSchema('');
-    const vocabularyOptions =
-      vocabularyName &&
-      vocabularies &&
-      vocabularies[vocabularyName] &&
-      vocabularies[vocabularyName].items
-        ? vocabularies[vocabularyName].items.map((item, i) => {
-            return [item.value, item.label];
-          })
-        : [];
-    //set schema with the new options from vocabulary
-    setInputSchema(setSchema(value.title, vocabularyOptions));
+    // On creation, @schema is provided by value
+    // On update, @schema comes from formData
+    const rawSchema = value['@schema'] || formData['@schema'];
+    let schema;
+    if (rawSchema) {
+      schema = processSchema(rawSchema);
+    } else {
+      const vocabularyOptions =
+        vocabularyName &&
+        vocabularies &&
+        vocabularies[vocabularyName] &&
+        vocabularies[vocabularyName].items
+          ? vocabularies[vocabularyName].items.map((item, i) => {
+              return [item.value, item.label];
+            })
+          : [];
+      //set schema with the new options from vocabulary
+      schema = setSchema(value.title, vocabularyOptions);
+    }
+    setInputSchema(schema);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [vocabularies, open, formData, value]);
 

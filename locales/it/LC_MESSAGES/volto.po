@@ -3700,6 +3700,7 @@ msgid "Uploading files"
 msgstr "Caricamento dei files"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Image/Edit
 # defaultMessage: Uploading image
 msgid "Uploading image"
 msgstr "Caricamento dell'immagine"
