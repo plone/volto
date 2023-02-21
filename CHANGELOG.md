@@ -8,6 +8,25 @@
 
 <!-- towncrier release notes start -->
 
+## 16.12.0 (2023-02-21)
+
+### Feature
+
+- Provide disabled props to all widgets, and pass disabled props in to babel views. @iFlameing [#4396](https://github.com/plone/volto/issues/4396)
+
+### Bugfix
+
+- fix : Restrictive propTypes for widgets . @suman9893 [#4150](https://github.com/plone/volto/issues/4150)
+- Add the intl string 'Uploading image' to the image block @bipoza [#4180](https://github.com/plone/volto/issues/4180)
+- Fix link integrity overlay is too narrowed @iFlameing [#4399](https://github.com/plone/volto/issues/4399)
+- Fix External link Icon shows up in Grid-text block @iRohitSingh [#4400](https://github.com/plone/volto/issues/4400)
+- Fix broken links: babeljs.io/… @ksuess [#4414](https://github.com/plone/volto/issues/4414)
+
+### Documentation
+
+- Remove inclusion of CHANGELOG.md for volto repo only. Fixes https://github.com/plone/documentation/issues/1431. @stevepiercy [#4404](https://github.com/plone/volto/issues/4404)
+
+
 ## 16.11.0 (2023-02-13)
 
 ### Feature
