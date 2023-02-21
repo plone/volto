@@ -3690,6 +3690,7 @@ msgid "Uploading files"
 msgstr "Enviando arquivos"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Image/Edit
 # defaultMessage: Uploading image
 msgid "Uploading image"
 msgstr "Enviando imagem"
