@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Message } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
 import { getTeaserImageURL } from './utils';
 import { MaybeWrap } from '@plone/volto/components';
 import { UniversalLink } from '@plone/volto/components';
@@ -18,6 +18,8 @@ const messages = defineMessages({
   },
 });
 
+const DefaultImage = (props) => <img {...props} alt={props.alt || ''} />;
+
 const TeaserDefaultTemplate = (props) => {
   const { className, data, isEditMode } = props;
   const intl = useIntl();
@@ -25,9 +27,11 @@ const TeaserDefaultTemplate = (props) => {
   const image = data.preview_image?.[0];
   const align = data?.styles?.align;
 
-  const DefaultImage = (props) => <img {...props} alt={props.alt || ''} />;
-
+  const hasImageComponent = config.getComponent('Image').component;
   const Image = config.getComponent('Image').component || DefaultImage;
+  const { openExternalLinkInNewTab } = config.settings;
+  const defaultImageSrc =
+    href && flattenToAppURL(getTeaserImageURL({ href, image, align }));
 
   return (
     <div className={cx('block teaser', className)}>
@@ -45,15 +49,18 @@ const TeaserDefaultTemplate = (props) => {
             condition={!isEditMode}
             as={UniversalLink}
             href={href['@id']}
-            target={data.openLinkInNewTab ? '_blank' : null}
+            target={
+              data.openLinkInNewTab ||
+              (openExternalLinkInNewTab && !isInternalURL(href['@id']))
+                ? '_blank'
+                : null
+            }
           >
             <div className="teaser-item default">
               {(href.hasPreviewImage || href.image_field || image) && (
                 <div className="image-wrapper">
                   <Image
-                    src={flattenToAppURL(
-                      getTeaserImageURL({ href, image, align }),
-                    )}
+                    src={hasImageComponent ? href : defaultImageSrc}
                     alt=""
                     loading="lazy"
                   />
