@@ -130,6 +130,9 @@
     "yeoman-assert": "^3.1.0",
     "yeoman-test": "^6.1.0"
   },
+  "overrides": {
+    "mem-fs-editor": "^9.5.0"
+  },
   "resolutions": {
     "mem-fs-editor": "^9.5.0"
   }
