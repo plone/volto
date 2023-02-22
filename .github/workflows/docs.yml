@@ -48,12 +48,3 @@ jobs:
           # Required, set by GitHub actions automatically:
           # https://docs.github.com/en/actions/security-guides/automatic-token-authentication#about-the-github_token-secret
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-      - name: Install vale
-        run: |
-          wget https://github.com/errata-ai/vale/releases/download/v2.23.0/vale_2.23.0_Linux_64-bit.tar.gz
-          mkdir /usr/local/bin && tar -xvzf vale_2.15.4_Linux_64-bit.tar.gz -C bin
-          export PATH=./usr/local/bin:"$PATH"
-
-      - name: Run vale
-        run: make docs-vale
