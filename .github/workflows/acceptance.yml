@@ -588,12 +588,12 @@ jobs:
           browser: chrome
           group: Seamless
           spec: cypress/tests/core/basic/**/*.js
-          config: baseUrl=http://127.0.0.1
+          config: baseUrl=http://localhost
           start: |
             make start-test-acceptance-server
             make start-test-acceptance-frontend-seamless
             make start-test-acceptance-webserver-seamless
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000 http://127.0.0.1'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000 http://localhost'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1

@@ -253,7 +253,7 @@ start-test-acceptance-frontend-seamless: ## Start the Seamless Core Acceptance F
 
 .PHONY: test-acceptance-seamless
 test-acceptance-seamless: ## Start Seamless Cypress Acceptance Tests
-	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config baseUrl='http://127.0.0.1'
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config baseUrl='http://localhost'
 
 .PHONY: start-test-acceptance-webserver-seamless
 start-test-acceptance-webserver-seamless: ## Start the seamless webserver
