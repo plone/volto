@@ -38,10 +38,6 @@ jobs:
       - name: Build HTML documentation
         run: make docs-html
 
-name: Check spellings
-on: [push]
-
-jobs:
   vale:
     name: runner / vale
     runs-on: ubuntu-latest
