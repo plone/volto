@@ -85,7 +85,7 @@ build:
 
 .PHONY: build-frontend
 build-frontend:
-	yarn && RAZZLE_API_PATH=http://localhost:55001/plone yarn build
+	yarn && RAZZLE_API_PATH=http://127.0.0.1:55001/plone yarn build
 
 .PHONY: build-backend
 build-backend:  ## Build Plone 5.2
@@ -202,7 +202,7 @@ start-test-all: ## Start Test
 .PHONY: start-test-frontend
 start-test-frontend: ## Start Test Volto Frontend
 	@echo "$(GREEN)==> Start Test Volto Frontend$(RESET)"
-	RAZZLE_API_PATH=http://localhost:55001/plone yarn build && NODE_ENV=production node build/server.js
+	RAZZLE_API_PATH=http://127.0.0.1:55001/plone yarn build && NODE_ENV=production node build/server.js
 
 .PHONY: start-test-backend
 start-test-backend: ## Start Test Plone Backend (api folder)
@@ -221,7 +221,7 @@ test-acceptance-server-old:
 
 .PHONY: start-test-acceptance-frontend-dev
 start-test-acceptance-frontend-dev: ## Start the Core Acceptance Frontend Fixture in dev mode
-	RAZZLE_API_PATH=http://localhost:55001/plone yarn start
+	RAZZLE_API_PATH=http://127.0.0.1:55001/plone yarn start
 
 ######### Core Acceptance tests
 
@@ -243,7 +243,7 @@ test-acceptance-headless: ## Start Core Cypress Acceptance Tests in headless mod
 
 .PHONY: full-test-acceptance
 full-test-acceptance: ## Runs Core Full Acceptance Testing in headless mode
-	$(NODEBIN)/start-test "make start-test-acceptance-server" http-get://localhost:55001/plone "make start-test-acceptance-frontend" http://localhost:3000 "make test-acceptance-headless"
+	$(NODEBIN)/start-test "make start-test-acceptance-server" http-get://127.0.0.1:55001/plone "make start-test-acceptance-frontend" http://127.0.0.1:3000 "make test-acceptance-headless"
 
 ######### Seamless Core Acceptance tests
 
@@ -253,7 +253,7 @@ start-test-acceptance-frontend-seamless: ## Start the Seamless Core Acceptance F
 
 .PHONY: test-acceptance-seamless
 test-acceptance-seamless: ## Start Seamless Cypress Acceptance Tests
-	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config baseUrl='http://localhost'
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config baseUrl='http://127.0.0.1'
 
 .PHONY: start-test-acceptance-webserver-seamless
 start-test-acceptance-webserver-seamless: ## Start the seamless webserver
@@ -261,7 +261,7 @@ start-test-acceptance-webserver-seamless: ## Start the seamless webserver
 
 .PHONY: full-test-acceptance-seamless
 full-test-acceptance-seamless: ## Runs Seamless Core Full Acceptance Testing in headless mode
-	$(NODEBIN)/start-test "make start-test-acceptance-server" http-get://localhost:55001/plone "make start-test-acceptance-frontend-seamless" http://localhost:3000 "make test-acceptance-headless"
+	$(NODEBIN)/start-test "make start-test-acceptance-server" http-get://127.0.0.1:55001/plone "make start-test-acceptance-frontend-seamless" http://127.0.0.1:3000 "make test-acceptance-headless"
 
 ######### Project Acceptance tests
 
@@ -294,7 +294,7 @@ test-acceptance-coresandbox-headless: ## Start CoreSandbox Cypress Acceptance Te
 
 .PHONY: full-test-acceptance-coresandbox
 full-test-acceptance-coresandbox: ## Runs CoreSandbox Full Acceptance Testing in headless mode
-	$(NODEBIN)/start-test "make start-test-acceptance-server-coresandbox" http-get://localhost:55001/plone "make start-test-acceptance-frontend-coresandbox" http://localhost:3000 "make test-acceptance-coresandbox-headless"
+	$(NODEBIN)/start-test "make start-test-acceptance-server-coresandbox" http-get://127.0.0.1:55001/plone "make start-test-acceptance-frontend-coresandbox" http://127.0.0.1:3000 "make test-acceptance-coresandbox-headless"
 
 ######### Multilingual Acceptance tests
 
@@ -316,7 +316,7 @@ test-acceptance-multilingual-headless: ## Start Multilingual Cypress Acceptance 
 
 .PHONY: full-test-acceptance-multilingual
 full-test-acceptance-multilingual: ## Runs Multilingual Full Acceptance Testing in headless mode
-	$(NODEBIN)/start-test "make start-test-acceptance-server-multilingual" http-get://localhost:55001/plone "make start-test-acceptance-frontend-multilingual" http://localhost:3000 "make test-acceptance-multilingual-headless"
+	$(NODEBIN)/start-test "make start-test-acceptance-server-multilingual" http-get://127.0.0.1:55001/plone "make start-test-acceptance-frontend-multilingual" http://127.0.0.1:3000 "make test-acceptance-multilingual-headless"
 
 ######### WorkingCopy Acceptance tests
 
@@ -339,7 +339,7 @@ test-acceptance-workingcopy-headless: ## Start WorkingCopy Cypress Acceptance Te
 
 .PHONY: full-test-acceptance-workingcopy
 full-test-acceptance-workingcopy: ## Runs WorkingCopy Full Acceptance Testing in headless mode
-	$(NODEBIN)/start-test "make start-test-acceptance-server-workingcopy" http-get://localhost:55001/plone "make start-test-acceptance-frontend-workingcopy" http://localhost:3000 "make test-acceptance-workingcopy-headless"
+	$(NODEBIN)/start-test "make start-test-acceptance-server-workingcopy" http-get://127.0.0.1:55001/plone "make start-test-acceptance-frontend-workingcopy" http://127.0.0.1:3000 "make test-acceptance-workingcopy-headless"
 
 ######### Guillotina Acceptance tests
 
@@ -361,7 +361,7 @@ test-acceptance-guillotina-headless: ## Start the Guillotina Cypress Acceptance 
 
 .PHONY: full-test-acceptance-guillotina
 full-test-acceptance-guillotina: ## Runs the Guillotina Full Acceptance Testing in headless mode
-	$(NODEBIN)/start-test "make start-test-acceptance-server-guillotina" http-get://localhost:8081 "make start-test-acceptance-frontend-guillotina" http://localhost:3000 "make test-acceptance-guillotina-headless"
+	$(NODEBIN)/start-test "make start-test-acceptance-server-guillotina" http-get://127.0.0.1:8081 "make start-test-acceptance-frontend-guillotina" http://127.0.0.1:3000 "make test-acceptance-guillotina-headless"
 
 ######### Plone 5 Acceptance tests
 
