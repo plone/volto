@@ -1,0 +1,1 @@
+Using Vale in CI for spellcheck. @MAX-786
