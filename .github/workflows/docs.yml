@@ -38,8 +38,8 @@ jobs:
       - name: Build HTML documentation
         run: make docs-html
 
-name: reviewdog
-on: [pull_request]
+name: Check spellings
+on: [push]
 
 jobs:
   vale:
