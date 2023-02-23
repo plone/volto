@@ -9,6 +9,7 @@ on:
   pull_request:
     paths:
       - 'docs/**'
+      - 'github/workflows/docs.yml'
 
 jobs:
   docs:
@@ -48,3 +49,4 @@ jobs:
           # Required, set by GitHub actions automatically:
           # https://docs.github.com/en/actions/security-guides/automatic-token-authentication#about-the-github_token-secret
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          

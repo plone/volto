@@ -1,1 +1,1 @@
-Using Vale in CI for spellcheck. @MAX-786
+Add Vale to CI for spell and style checks. @MAX-786
