@@ -51,6 +51,8 @@ import ToCSettingsSchema from '@plone/volto/components/manage/Blocks/ToC/Schema'
 
 import RowViewBlock from '@plone/volto/components/manage/Blocks/Row/View';
 import RowEditBlock from '@plone/volto/components/manage/Blocks/Row/Edit';
+import { RowBlockDataAdapter } from '@plone/volto/components/manage/Blocks/Row/adapter';
+import { RowBlockSchema } from '@plone/volto/components/manage/Blocks/Row/schema';
 
 import TeaserViewBlock from '@plone/volto/components/manage/Blocks/Teaser/View';
 import TeaserEditBlock from '@plone/volto/components/manage/Blocks/Teaser/Edit';
@@ -462,16 +464,14 @@ const blocksConfig = {
     group: 'common',
     view: RowViewBlock,
     edit: RowEditBlock,
+    blockSchema: RowBlockSchema,
+    dataAdapter: RowBlockDataAdapter,
     restricted: false,
     mostUsed: true,
     sidebarTab: 1,
     // This has a good reason: Slate does not work in detached mode if enabled
     blockHasOwnFocusManagement: false,
     maxRowLength: 4,
-    security: {
-      addPermission: [],
-      view: [],
-    },
     allowedBlocks: ['image', 'listing', 'slate', 'teaser'],
   },
   column: {
@@ -481,15 +481,13 @@ const blocksConfig = {
     group: 'common',
     view: RowViewBlock,
     edit: RowEditBlock,
+    blockSchema: RowBlockSchema,
+    dataAdapter: RowBlockDataAdapter,
     restricted: true,
     mostUsed: false,
     sidebarTab: 1,
     // This has a good reason: Slate does not work in detached mode if enabled
     blockHasOwnFocusManagement: false,
-    security: {
-      addPermission: [],
-      view: [],
-    },
     allowedBlocks: ['image', 'listing', 'slate', 'teaser'],
   },
   teaser: {
@@ -502,10 +500,6 @@ const blocksConfig = {
     restricted: false,
     mostUsed: true,
     sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
 };
 
