@@ -6,6 +6,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
+import { useSelector } from 'react-redux';
+import isArray from 'lodash/isArray';
+import isObject from 'lodash/isObject';
 import cx from 'classnames';
 import { Message } from 'semantic-ui-react';
 import config from '@plone/volto/registry';
@@ -33,6 +36,9 @@ const View = (props) => {
         : [1, 2, 3, 4, 5, 6],
     [data],
   );
+
+  const querystringsearch = useSelector((state) => state.querystringsearch);
+
   const tocEntries = React.useMemo(() => {
     let rootLevel = Infinity;
     let entries = [];
@@ -49,8 +55,11 @@ const View = (props) => {
       const entry = config.blocks.blocksConfig[block['@type']]?.tocEntry(
         block,
         data,
+        {
+          querystringsearch,
+        },
       );
-      if (entry) {
+      if (isArray(entry)) {
         const level = entry[0];
         const title = entry[1];
         const items = [];
@@ -60,6 +69,25 @@ const View = (props) => {
         if (level < rootLevel) {
           rootLevel = level;
         }
+      }
+      if (isObject(entry) && isArray(entry.entries)) {
+        entry.entries.forEach((e, index) => {
+          const i = `${id}-${index}`;
+          const level = e[0];
+          const title = e[1];
+          const items = [];
+          if (!level || !levels.includes(level)) return;
+          tocEntriesLayout.push(i);
+          tocEntries[i] = {
+            level,
+            title: title || block.plaintext,
+            items,
+            id: i,
+          };
+          if (level < rootLevel) {
+            rootLevel = level;
+          }
+        });
       }
     });
 
@@ -91,7 +119,14 @@ const View = (props) => {
     });
 
     return entries;
-  }, [data, levels, properties, blocksFieldname, blocksLayoutFieldname]);
+  }, [
+    data,
+    levels,
+    properties,
+    blocksFieldname,
+    blocksLayoutFieldname,
+    querystringsearch,
+  ]);
 
   const Renderer = variation?.view;
   return (

@@ -5,7 +5,7 @@ import { flattenToAppURL } from '@plone/volto/helpers';
 
 import { isInternalURL } from '@plone/volto/helpers/Url/Url';
 
-const DefaultTemplate = ({ items, linkTitle, linkHref, isEditMode }) => {
+const DefaultTemplate = ({ block, items, linkTitle, linkHref, isEditMode }) => {
   let link = null;
   let href = linkHref?.[0]?.['@id'] || '';
 
@@ -22,11 +22,13 @@ const DefaultTemplate = ({ items, linkTitle, linkHref, isEditMode }) => {
   return (
     <>
       <div className="items">
-        {items.map((item) => (
+        {items.map((item, index) => (
           <div className="listing-item" key={item['@id']}>
             <ConditionalLink item={item} condition={!isEditMode}>
               <div className="listing-body">
-                <h4>{item.title ? item.title : item.id}</h4>
+                <h4 id={`${block}-${index}`}>
+                  {item.title ? item.title : item.id}
+                </h4>
                 <p>{item.description}</p>
               </div>
             </ConditionalLink>

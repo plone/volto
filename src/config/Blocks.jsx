@@ -285,6 +285,20 @@ const blocksConfig = {
       },
     ],
     getAsyncData: getListingBlockAsyncData,
+    tocEntry: (blockData = {}, _, store) => {
+      const search = store.querystringsearch.subrequests[blockData.block] || {};
+      const levels = {
+        h2: 2,
+        h3: 3,
+      };
+      if (!search.items) return false;
+      return {
+        entries: search.items.map((item) => [
+          levels[blockData.headlineTag],
+          item.Title,
+        ]),
+      };
+    },
   },
   video: {
     id: 'video',
