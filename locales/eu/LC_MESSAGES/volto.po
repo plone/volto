@@ -3682,6 +3682,7 @@ msgid "Uploading files"
 msgstr "Fitxategiak kargatzen"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Image/Edit
 # defaultMessage: Uploading image
 msgid "Uploading image"
 msgstr "Irudia kargatzen"
