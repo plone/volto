@@ -9,7 +9,11 @@ on:
   pull_request:
     paths:
       - 'docs/**'
+<<<<<<< HEAD
       - 'github/workflows/docs.yml'
+=======
+      - '.github/workflows/docs.yml'
+>>>>>>> 38829b14a (add suggestions (edited))
 
 jobs:
   docs:
@@ -39,14 +43,12 @@ jobs:
       - name: Build HTML documentation
         run: make docs-html
 
-  vale:
-    name: runner / vale
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
       - uses: errata-ai/vale-action@reviewdog
         env:
           # Required, set by GitHub actions automatically:
           # https://docs.github.com/en/actions/security-guides/automatic-token-authentication#about-the-github_token-secret
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+<<<<<<< HEAD
           
+=======
+>>>>>>> 38829b14a (add suggestions (edited))
