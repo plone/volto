@@ -76,6 +76,7 @@ import TeaserViewBlock from '@plone/volto/components/manage/Blocks/Teaser/View';
 import TeaserEditBlock from '@plone/volto/components/manage/Blocks/Teaser/Edit';
 import TeaserBlockDefaultBody from '@plone/volto/components/manage/Blocks/Teaser/DefaultBody';
 import { TeaserSchema } from '@plone/volto/components/manage/Blocks/Teaser/schema';
+import { TeaserBlockDataAdapter } from '@plone/volto/components/manage/Blocks/Teaser/adapter';
 
 defineMessages({
   title: {
@@ -464,6 +465,7 @@ const blocksConfig = {
     mostUsed: true,
     sidebarTab: 1,
     blockSchema: TeaserSchema,
+    dataAdapter: TeaserBlockDataAdapter,
     variations: [
       {
         id: 'default',
