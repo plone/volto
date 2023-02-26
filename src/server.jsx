@@ -329,7 +329,7 @@ export const defaultReadCriticalCss = () => {
 // Exposed for the console bootstrap info messages
 server.apiPath = config.settings.apiPath;
 server.devProxyToApiPath = config.settings.devProxyToApiPath;
-server.proxyRewritePath = config.settings.proxyRewritePath;
+server.proxyRewriteTarget = config.settings.proxyRewriteTarget;
 server.publicURL = config.settings.publicURL;
 
 export default server;
