@@ -9,7 +9,7 @@ myst:
 
 (extensions-block-extensions-mechanism)=
 
-# Listing Block Extensions
+# Listing block extensions
 
 The listing block is a special block that can be configured to run a catalog query in the backend and show the results of that search.
 
