@@ -280,7 +280,7 @@ const blocksConfig = {
         id: 'imageGallery',
         title: 'Image gallery',
         template: ImageGalleryListingBlockTemplate,
-        noResultsTemplate: GalleryNoResultsComponent,
+        noResultsComponent: GalleryNoResultsComponent,
       },
       {
         id: 'summary',

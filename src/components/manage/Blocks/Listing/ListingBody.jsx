@@ -40,8 +40,8 @@ const ListingBody = withQuerystringResults((props) => {
 
   const listingRef = createRef();
 
-  const NoResults = variation?.noResultsTemplate
-    ? variation.noResultsTemplate
+  const NoResults = variation?.noResultsComponent
+    ? variation.noResultsComponent
     : config.blocks?.blocksConfig['listing'].noResultsComponent;
 
   return listingItems?.length > 0 ? (

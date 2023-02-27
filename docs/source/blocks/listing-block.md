@@ -47,10 +47,10 @@ This can be done, like in the earlier step, stating that in the configuration:
 ```jsx
 import { FormattedMessage } from 'react-intl';
 
-const MyNoResultsTemplate = (props) => {
+const MyNoResultsComponent = (props) => {
   return (
     <FormattedMessage
-      id="mynoresultstemplate"
+      id="myNoResultsComponentForVariation"
       defaultMessage="This is my no results text specific for the default variation "
     />
   );
@@ -58,8 +58,8 @@ const MyNoResultsTemplate = (props) => {
 
 const applyConfig = (config) => {
   config.blocks.listing.variations.default[
-    'noResultsTemplate'
-  ] = MyNoResultsTemplate;
+    'noResultsComponent'
+  ] = MyNoResultsComponent;
   return config;
 };
 ```
