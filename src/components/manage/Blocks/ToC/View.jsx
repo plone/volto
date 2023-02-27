@@ -6,7 +6,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
-import { useSelector } from 'react-redux';
 import isArray from 'lodash/isArray';
 import isObject from 'lodash/isObject';
 import cx from 'classnames';
@@ -37,8 +36,6 @@ const View = (props) => {
     [data],
   );
 
-  const querystringsearch = useSelector((state) => state.querystringsearch);
-
   const tocEntries = React.useMemo(() => {
     let rootLevel = Infinity;
     let entries = [];
@@ -55,9 +52,6 @@ const View = (props) => {
       const entry = config.blocks.blocksConfig[block['@type']]?.tocEntry(
         block,
         data,
-        {
-          querystringsearch,
-        },
       );
       if (isArray(entry)) {
         const level = entry[0];
@@ -119,14 +113,7 @@ const View = (props) => {
     });
 
     return entries;
-  }, [
-    data,
-    levels,
-    properties,
-    blocksFieldname,
-    blocksLayoutFieldname,
-    querystringsearch,
-  ]);
+  }, [data, levels, properties, blocksFieldname, blocksLayoutFieldname]);
 
   const Renderer = variation?.view;
   return (

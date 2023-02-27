@@ -285,19 +285,13 @@ const blocksConfig = {
       },
     ],
     getAsyncData: getListingBlockAsyncData,
-    tocEntry: (blockData = {}, _, store) => {
-      const search = store.querystringsearch.subrequests[blockData.block] || {};
+    tocEntry: (blockData = {}, _) => {
       const levels = {
         h2: 2,
         h3: 3,
       };
-      if (!search.items) return false;
-      return {
-        entries: search.items.map((item) => [
-          levels[blockData.headlineTag],
-          item.Title,
-        ]),
-      };
+      if (!blockData.headline) return false;
+      return [levels[blockData.headlineTag], blockData.headline];
     },
   },
   video: {
