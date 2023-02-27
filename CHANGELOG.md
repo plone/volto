@@ -20,6 +20,7 @@
 
 - Fix Cannot read properties of undefined (reading 'translations') @avoinea [#4377](https://github.com/plone/volto/issues/4377)
 
+
 ## 16.10.0 (2023-02-06)
 
 ### Feature
@@ -37,6 +38,7 @@
 
 - Add documentation for copy, cut, and paste blocks in Volto. @MAX-786 [#3827](https://github.com/plone/volto/issues/3827)
 - Fixed Grammar error @SaiRev0 [#4272](https://github.com/plone/volto/issues/4272)
+
 
 ## 16.9.0 (2023-01-27)
 
@@ -60,11 +62,13 @@
 
 - Updated 4 Dependencies @SaiRev0 [#4104](https://github.com/plone/volto/issues/4104)
 
+
 ## 16.8.1 (2023-01-18)
 
 ### Bugfix
 
 - Fix StyleWrapper extenders, the classNames were not being re-fed into the pipe @sneridagh [#4275](https://github.com/plone/volto/issues/4275)
+
 
 ## 16.8.0 (2023-01-18)
 
@@ -79,7 +83,8 @@
 
 ### Documentation
 
-- Update links to docs to use correct versions. [stevepiercy][#4256](https://github.com/plone/volto/issues/4256)
+- Update links to docs to use correct versions. [stevepiercy] [#4256](https://github.com/plone/volto/issues/4256)
+
 
 ## 16.7.0 (2023-01-11)
 
@@ -91,7 +96,7 @@
 ### Bugfix
 
 - Use Grid instead of Table in Diffview @erral
-- Improve matching in keyboard slash menu. [davisagli][#4187](https://github.com/plone/volto/issues/4187)
+- Improve matching in keyboard slash menu. [davisagli] [#4187](https://github.com/plone/volto/issues/4187)
 - (fix): sidebar is not displaying correctly when clicking on a lead image field. @dobri1408 [#4191](https://github.com/plone/volto/issues/4191)
 - Cleanup `package.json` scripts section @sneridagh [#4193](https://github.com/plone/volto/issues/4193)
 - Fixed condition to select without vocabulary @SaraBianchi [#4200](https://github.com/plone/volto/issues/4200)
@@ -100,12 +105,13 @@
 ### Documentation
 
 - Add description for different types of blocks. @MAX-786 [#3827](https://github.com/plone/volto/issues/3827)
-- Update makefile to use Vale for spell, grammar, and style checking. Fix linkcheckbroken to return the correct exit code for broken links. Fix broken links. [stevepiercy][#4181](https://github.com/plone/volto/issues/4181)
-- Add todo regarding management of Plone's backend. Update versions. [stevepiercy][#4198](https://github.com/plone/volto/issues/4198)
-- Pin Sphinx<5,>=3 due to sphinx-book-theme 0.3.3 requirement. [stevepiercy][#4199](https://github.com/plone/volto/issues/4199)
-- Add message about the status of Volto and Plone 6 Installation docs, directing the reader to the main Plone 6 docs. [stevepiercy][#4209](https://github.com/plone/volto/issues/4209)
-- Clean up Glossary and integrate with main docs. See https://github.com/plone/documentation/issues/1415. [stevepiercy][#4211](https://github.com/plone/volto/issues/4211)
-- Add some instructions for dealing with untranspiled add-ons and a lazy loading example for functional components. [cguardia][#4233](https://github.com/plone/volto/issues/4233)
+- Update makefile to use Vale for spell, grammar, and style checking. Fix linkcheckbroken to return the correct exit code for broken links. Fix broken links. [stevepiercy] [#4181](https://github.com/plone/volto/issues/4181)
+- Add todo regarding management of Plone's backend. Update versions. [stevepiercy] [#4198](https://github.com/plone/volto/issues/4198)
+- Pin Sphinx<5,>=3 due to sphinx-book-theme 0.3.3 requirement. [stevepiercy] [#4199](https://github.com/plone/volto/issues/4199)
+- Add message about the status of Volto and Plone 6 Installation docs, directing the reader to the main Plone 6 docs. [stevepiercy] [#4209](https://github.com/plone/volto/issues/4209)
+- Clean up Glossary and integrate with main docs. See https://github.com/plone/documentation/issues/1415. [stevepiercy] [#4211](https://github.com/plone/volto/issues/4211)
+- Add some instructions for dealing with untranspiled add-ons and a lazy loading example for functional components. [cguardia] [#4233](https://github.com/plone/volto/issues/4233)
+
 
 ## 16.6.0 (2022-12-23)
 
@@ -125,6 +131,7 @@
 - Fix URLs to Plone 6 docs. @stevepiercy [#4143](https://github.com/plone/volto/issues/4143)
 - Fix Sphinx warning Document headings start at H2, not H1 [myst.header]. @stevepiercy [#4145](https://github.com/plone/volto/issues/4145)
 
+
 ## 16.5.0 (2022-12-16)
 
 ### Feature
@@ -140,12 +147,14 @@
 
 - Upgrade testbed and convenience api folder to Plone 6 final @sneridagh [#4105](https://github.com/plone/volto/issues/4105)
 
+
 ## 16.4.1 (2022-12-13)
 
 ### Bugfix
 
 - For hot reloading purposes when developing code, the Volto package is no longer excluded @tiberiuichim [#4108](https://github.com/plone/volto/issues/4108)
 - Remove clean-css from the CSS minimizing step, use css-minimizer-webpack-plugin one instead @sneridagh [#4115](https://github.com/plone/volto/issues/4115)
+
 
 ## 16.4.0 (2022-12-12)
 
@@ -157,14 +166,14 @@
 ### Bugfix
 
 - Update Chinese translation @adam139 [#4009](https://github.com/plone/volto/issues/4009)
-- Reset value of search field after submit. [@MAX-786][#4028](https://github.com/plone/volto/issues/4028)
+- Reset value of search field after submit. [@MAX-786] [#4028](https://github.com/plone/volto/issues/4028)
 - Don't crash the view page when dealing with unknown blocks @tiberiuichim [#4070](https://github.com/plone/volto/issues/4070)
 - Bump version for plone-backend version used in Makefile @tiberiuichim [#4071](https://github.com/plone/volto/issues/4071)
 - Properly handle whitespace in HTML (richtext) slate-based widget @tiberiuichim [#4082](https://github.com/plone/volto/issues/4082)
 - Add Finnish translation (contributed by @rioksane)
-  [erral][#4084](https://github.com/plone/volto/issues/4084)
+  [erral] [#4084](https://github.com/plone/volto/issues/4084)
 - Fix typo in english translation and add missing french translation
-  [mpeeters, jchandelle][#4085](https://github.com/plone/volto/issues/4085)
+  [mpeeters, jchandelle] [#4085](https://github.com/plone/volto/issues/4085)
 
 ### Internal
 
@@ -172,8 +181,9 @@
 
 ### Documentation
 
-- Add content for user-manual of Volto, Plone 6 frontend. [@MAX-786][#3827](https://github.com/plone/volto/issues/3827)
+- Add content for user-manual of Volto, Plone 6 frontend. [@MAX-786] [#3827](https://github.com/plone/volto/issues/3827)
 - Remove duplicate `H1`-level page title, and inherit from Volto's `CHANGELOG.md`. @stevepiercy [#4048](https://github.com/plone/volto/issues/4048)
+
 
 ## 16.3.0 (2022-12-05)
 
@@ -190,9 +200,9 @@
 - Clear error message when canceling user add. Fix https://github.com/plone/volto/issues/4006 @wesleybl [#4006](https://github.com/plone/volto/issues/4006)
 - Fix subscript and supscript active at same time. @iFlameing [#4011](https://github.com/plone/volto/issues/4011)
 - Complete eu translation
-  [erral][#4015](https://github.com/plone/volto/issues/4015)
+  [erral] [#4015](https://github.com/plone/volto/issues/4015)
 - Complete es translation
-  [erral][#4016](https://github.com/plone/volto/issues/4016)
+  [erral] [#4016](https://github.com/plone/volto/issues/4016)
 - Add `cypress.config.js` to generator templates @sneridagh [#4021](https://github.com/plone/volto/issues/4021)
 - Bump Volto core packages with the current Volto version on Volto release @sneridagh [#4025](https://github.com/plone/volto/issues/4025)
 
@@ -207,6 +217,7 @@
 - Close the open Glossary list. @stevepiercy [#3995](https://github.com/plone/volto/issues/3995)
 - Added docs for proper usage of draftjs for richtext widgets. @pnicolli [#4001](https://github.com/plone/volto/issues/4001)
 - Document how to change the base font and the font for headings. Describe how to host the font. @ksuess [#4013](https://github.com/plone/volto/issues/4013)
+
 
 ## 16.2.0 (2022-11-25)
 
