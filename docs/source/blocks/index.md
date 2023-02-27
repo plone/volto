@@ -18,5 +18,6 @@ settings
 editcomponent
 block-style-wrapper
 extensions
+listing-block
 ssr
 ```

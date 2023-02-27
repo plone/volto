@@ -2182,6 +2182,11 @@ msgstr "Geen afbeelding ingesteld in het Voorbeeldafbeelding veld"
 msgid "No image set in image content field"
 msgstr "Geen afbeelding ingesteld in het afbeeldingsveld"
 
+#: components/manage/Blocks/Listing/GalleryNoResultsComponent
+# defaultMessage: No images found.
+msgid "No images found."
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 # defaultMessage: No items found in this container.
 msgid "No items found in this container."
@@ -2216,7 +2221,7 @@ msgstr "Geen opties"
 msgid "No results found"
 msgstr "Geen resulaten gevonden"
 
-#: components/manage/Blocks/Listing/ListingBody
+#: components/manage/Blocks/Listing/DefaultNoResultsComponent
 #: components/manage/Widgets/ReferenceWidget
 # defaultMessage: No results found.
 msgid "No results found."
