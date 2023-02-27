@@ -40,7 +40,9 @@ const applyConfig = (config) => {
 };
 ```
 
-In addition to that, each variation configured for the listing block, can also have a custom no results template. This way you can provide specific no results messages per-variation. This can be done, like in the earlier step, stating that in the configuration:
+In addition to that, each variation configured for the listing block can have a custom no results template.
+This way you can provide specific no results messages per-variation.
+This can be done, like in the earlier step, stating that in the configuration:
 
 ```jsx
 import { FormattedMessage } from 'react-intl';
