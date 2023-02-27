@@ -5,7 +5,7 @@ import React from 'react';
 const ShortcutListing = (props) => {
   const hotkeys = config.settings?.slate?.hotkeys;
   return (
-    <div>
+    <div className="shortcut-listing">
       <header className="header">
         <h2>Editor shortcuts</h2>
       </header>

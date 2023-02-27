@@ -7,7 +7,7 @@ import React from 'react';
  */
 const MarkdownIntroduction = (props) => {
   return (
-    <div>
+    <div className="markdown-introduction">
       <header className="header">
         <h2>Markdown shortcuts</h2>
       </header>
