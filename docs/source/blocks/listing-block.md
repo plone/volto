@@ -15,7 +15,9 @@ The listing block is a special block that can be configured to run a catalog que
 
 Apart from the {ref}`standard variation <extensions-block-variations>` and {ref}`schema enchancing extensions <extensions-schema-enhancers>`, the listing block provides a configurable way to handle the "No results" message.
 
-When the listing block configured search returns no results, Volto presents a default "No results found" message. But sometimes you want to be able to change such a message to offer more meaningful messages or do some other fancy stuff in that case. For instance, you may want to show a "There are no future events" or "There are no images in the gallery" message for a given listing block.
+When the listing block configured search returns no results, Volto presents a default "No results found" message.
+But sometimes you want to change such a message to offer more meaningful messages, or do some other fancy stuff in that case.
+For instance, you may want to show a "There are no future events" or "There are no images in the gallery" message for a given listing block.
 
 To achieve that, you can configure a new `noResultsComponent` when configuring the listing block, and provide a custom component to render such a message. To do that, you need to reconfigure that option in the configuration of your project:
 
