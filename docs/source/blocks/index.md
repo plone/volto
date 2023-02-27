@@ -17,7 +17,7 @@ anatomy
 settings
 editcomponent
 block-style-wrapper
-extensionss
+extensions
 listing-block
 ssr
 ```
