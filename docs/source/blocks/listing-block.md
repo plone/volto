@@ -1,10 +1,10 @@
 ---
 myst:
   html_meta:
-    'description': "The listing block provides an additional extension letting the developer modify the default 'No results found' message using the configuration of the block"
-    'property=og:description': "The listing block provides an additional extension letting the developer modify the default 'No results found' message using the configuration of the block"
-    'property=og:title': 'Listing block extensions mechanism'
-    'keywords': 'Volto, Plone, frontend, React, Upgrade, Guide, Block extensions, variations, schema enhancers, listing block'
+    "description": "The listing block provides an additional extension letting the developer modify the default 'No results found' message using the configuration of the block"
+    "property=og:description": "The listing block provides an additional extension letting the developer modify the default 'No results found' message using the configuration of the block"
+    "property=og:title": "Listing block extensions mechanism"
+    "keywords": "Volto, Plone, frontend, React, Upgrade, Guide, Block extensions, variations, schema enhancers, listing block"
 ---
 
 (extensions-block-extensions-mechanism)=
