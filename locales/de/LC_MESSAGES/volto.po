@@ -2184,7 +2184,7 @@ msgstr "Im Feld 'Bild' wurde kein Bild gesetzt"
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 # defaultMessage: No images found.
 msgid "No images found."
-msgstr ""
+msgstr "Keine Bilder gefunden"
 
 #: components/manage/Blocks/Listing/ListingBody
 # defaultMessage: No items found in this container.
