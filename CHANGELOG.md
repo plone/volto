@@ -1017,6 +1017,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 
 ## 16.0.0-alpha.34 (2022-09-17)
 
+- Display style schema as accordion not tabs
 ### Breaking
 
 ### Feature

@@ -152,34 +152,138 @@ exports[`renders an object list widget component 1`] = `
             <div
               class="ui segment"
             >
-              <div>
+              <div
+                class="accordion ui fluid styled form"
+              >
                 <div
-                  class="ui attached tabular menu"
-                >
-                  <a
-                    class="active item"
-                  >
-                    Internal
-                  </a>
-                  <a
-                    class="item"
-                  >
-                    External
-                  </a>
-                  <a
-                    class="item"
-                  >
-                    Email
-                  </a>
-                </div>
-                <div
-                  class="ui bottom attached segment active tab"
+                  id="blockform-fieldset-internal"
                 >
                   <div
-                    class="mocked-default-widget"
-                    id="mocked-field-internal_link-0-my-widget-0"
+                    class="active title"
                   >
-                    Internal link - No description
+                    Internal
+                    <svg
+                      class="icon"
+                      style="height: 20px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                  </div>
+                  <div
+                    class="content active"
+                  >
+                    <div
+                      aria-hidden="false"
+                      class="rah-static rah-static--height-auto"
+                      style="height: auto; overflow: visible;"
+                    >
+                      <div
+                        style="transition: opacity 500ms ease 0ms;"
+                      >
+                        <div
+                          class="ui segment attached"
+                        >
+                          <div
+                            class="mocked-default-widget"
+                            id="mocked-field-internal_link-0-my-widget-0"
+                          >
+                            Internal link - No description
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="accordion ui fluid styled form"
+              >
+                <div
+                  id="blockform-fieldset-external"
+                >
+                  <div
+                    class="title"
+                  >
+                    External
+                    <svg
+                      class="icon"
+                      style="height: 20px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                  </div>
+                  <div
+                    class="content"
+                  >
+                    <div
+                      aria-hidden="true"
+                      class="rah-static rah-static--height-zero"
+                      style="height: 0px; overflow: hidden;"
+                    >
+                      <div
+                        style="transition: opacity 500ms ease 0ms; opacity: 0; display: none;"
+                      >
+                        <div
+                          class="ui segment attached"
+                        >
+                          <div
+                            class="mocked-default-widget"
+                            id="mocked-field-external_link-0-my-widget-0"
+                          >
+                            External URL (can be relative within this site or absolute if it starts with http:// or https://) - No description
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="accordion ui fluid styled form"
+              >
+                <div
+                  id="blockform-fieldset-email"
+                >
+                  <div
+                    class="title"
+                  >
+                    Email
+                    <svg
+                      class="icon"
+                      style="height: 20px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                  </div>
+                  <div
+                    class="content"
+                  >
+                    <div
+                      aria-hidden="true"
+                      class="rah-static rah-static--height-zero"
+                      style="height: 0px; overflow: hidden;"
+                    >
+                      <div
+                        style="transition: opacity 500ms ease 0ms; opacity: 0; display: none;"
+                      >
+                        <div
+                          class="ui segment attached"
+                        >
+                          <div
+                            class="mocked-default-widget"
+                            id="mocked-field-email_address-0-my-widget-0"
+                          >
+                            Email address - No description
+                          </div>
+                          <div
+                            class="mocked-default-widget"
+                            id="mocked-field-email_subject-1-my-widget-0"
+                          >
+                            Email subject (optional) - No description
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -247,34 +351,138 @@ exports[`renders an object list widget component 1`] = `
             <div
               class="ui segment"
             >
-              <div>
+              <div
+                class="accordion ui fluid styled form"
+              >
                 <div
-                  class="ui attached tabular menu"
-                >
-                  <a
-                    class="active item"
-                  >
-                    Internal
-                  </a>
-                  <a
-                    class="item"
-                  >
-                    External
-                  </a>
-                  <a
-                    class="item"
-                  >
-                    Email
-                  </a>
-                </div>
-                <div
-                  class="ui bottom attached segment active tab"
+                  id="blockform-fieldset-internal"
                 >
                   <div
-                    class="mocked-default-widget"
-                    id="mocked-field-internal_link-0-my-widget-1"
+                    class="active title"
                   >
-                    Internal link - No description
+                    Internal
+                    <svg
+                      class="icon"
+                      style="height: 20px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                  </div>
+                  <div
+                    class="content active"
+                  >
+                    <div
+                      aria-hidden="false"
+                      class="rah-static rah-static--height-auto"
+                      style="height: auto; overflow: visible;"
+                    >
+                      <div
+                        style="transition: opacity 500ms ease 0ms;"
+                      >
+                        <div
+                          class="ui segment attached"
+                        >
+                          <div
+                            class="mocked-default-widget"
+                            id="mocked-field-internal_link-0-my-widget-1"
+                          >
+                            Internal link - No description
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="accordion ui fluid styled form"
+              >
+                <div
+                  id="blockform-fieldset-external"
+                >
+                  <div
+                    class="title"
+                  >
+                    External
+                    <svg
+                      class="icon"
+                      style="height: 20px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                  </div>
+                  <div
+                    class="content"
+                  >
+                    <div
+                      aria-hidden="true"
+                      class="rah-static rah-static--height-zero"
+                      style="height: 0px; overflow: hidden;"
+                    >
+                      <div
+                        style="transition: opacity 500ms ease 0ms; opacity: 0; display: none;"
+                      >
+                        <div
+                          class="ui segment attached"
+                        >
+                          <div
+                            class="mocked-default-widget"
+                            id="mocked-field-external_link-0-my-widget-1"
+                          >
+                            External URL (can be relative within this site or absolute if it starts with http:// or https://) - No description
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="accordion ui fluid styled form"
+              >
+                <div
+                  id="blockform-fieldset-email"
+                >
+                  <div
+                    class="title"
+                  >
+                    Email
+                    <svg
+                      class="icon"
+                      style="height: 20px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                  </div>
+                  <div
+                    class="content"
+                  >
+                    <div
+                      aria-hidden="true"
+                      class="rah-static rah-static--height-zero"
+                      style="height: 0px; overflow: hidden;"
+                    >
+                      <div
+                        style="transition: opacity 500ms ease 0ms; opacity: 0; display: none;"
+                      >
+                        <div
+                          class="ui segment attached"
+                        >
+                          <div
+                            class="mocked-default-widget"
+                            id="mocked-field-email_address-0-my-widget-1"
+                          >
+                            Email address - No description
+                          </div>
+                          <div
+                            class="mocked-default-widget"
+                            id="mocked-field-email_subject-1-my-widget-1"
+                          >
+                            Email subject (optional) - No description
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
