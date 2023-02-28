@@ -22,7 +22,7 @@ const DefaultTemplate = ({ items, linkTitle, linkHref, isEditMode }) => {
   return (
     <>
       <div className="items">
-        {items.map((item, index) => (
+        {items.map((item) => (
           <div className="listing-item" key={item['@id']}>
             <ConditionalLink item={item} condition={!isEditMode}>
               <div className="listing-body">
