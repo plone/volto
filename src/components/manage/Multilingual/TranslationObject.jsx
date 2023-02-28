@@ -123,7 +123,7 @@ const TranslationObject = ({
         )}
         {activeMenu === 'properties' && (
           <UiForm method="post" onSubmit={() => {}}>
-            <fieldset className="invisible" disabled={true}>
+            <fieldset className="invisible">
               {schema &&
                 map(schema.fieldsets, (item) => [
                   <Segment secondary attached key={item.title}>
@@ -133,6 +133,7 @@ const TranslationObject = ({
                     {map(item.fields, (field, index) => (
                       <Field
                         {...schema.properties[field]}
+                        isDisabled={true}
                         id={field}
                         formData={translationObject}
                         focus={false}
