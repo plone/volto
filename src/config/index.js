@@ -111,6 +111,7 @@ let config = {
     downloadableObjects: ['File'], //list of content-types for which the direct download of the file will be carried out if the user is not authenticated
     viewableInBrowserObjects: [], //ex: ['File']. List of content-types for which the file will be displayed in browser if the user is not authenticated
     listingPreviewImageField: 'image', // deprecated from Volto 14 onwards
+    openExternalLinkInNewTab: false,
     notSupportedBrowsers: ['ie'],
     defaultPageSize: 25,
     isMultilingual: false,

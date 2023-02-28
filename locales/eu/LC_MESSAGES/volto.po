@@ -2182,6 +2182,11 @@ msgstr "Ez dago irudirik dagokion eremuan"
 msgid "No image set in image content field"
 msgstr "Ez dago irudirik dagokion eremuan"
 
+#: components/manage/Blocks/Listing/GalleryNoResultsComponent
+# defaultMessage: No images found.
+msgid "No images found."
+msgstr "Ez da irudirik aurkitu."
+
 #: components/manage/Blocks/Listing/ListingBody
 # defaultMessage: No items found in this container.
 msgid "No items found in this container."
@@ -2216,7 +2221,7 @@ msgstr "Ez du aukerarik"
 msgid "No results found"
 msgstr "Ez da emaitzarik aurkitu."
 
-#: components/manage/Blocks/Listing/ListingBody
+#: components/manage/Blocks/Listing/DefaultNoResultsComponent
 #: components/manage/Widgets/ReferenceWidget
 # defaultMessage: No results found.
 msgid "No results found."
@@ -3682,6 +3687,7 @@ msgid "Uploading files"
 msgstr "Fitxategiak kargatzen"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Image/Edit
 # defaultMessage: Uploading image
 msgid "Uploading image"
 msgstr "Irudia kargatzen"
