@@ -289,7 +289,7 @@ const blocksConfig = {
       },
     ],
     getAsyncData: getListingBlockAsyncData,
-    tocEntry: (blockData = {}, _) => {
+    tocEntry: (blockData = {}) => {
       const levels = {
         h2: 2,
         h3: 3,
