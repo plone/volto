@@ -555,7 +555,7 @@ Image override
 : The image override is either an existing image in your Plone site that can be selected by clicking the list icon, or an external URL of an image that can be typed into the text field and saved by clicking the right arrow when it appears after you start typing.
 
 Alignment
-: The alignment of the teaser image can be set to left (default), right or top.
+: The alignment of the teaser image can be set to left (default), right, or top.
 
 (user-manual-teaser-grid-block-label)=
 
