@@ -4141,7 +4141,7 @@ msgid "event_where"
 msgstr "Waar"
 
 #: components/manage/Blocks/Teaser/schema
-# defaultMessage: head title
+# defaultMessage: Head title
 msgid "head_title"
 msgstr ""
 

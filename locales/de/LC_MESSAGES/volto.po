@@ -1630,7 +1630,7 @@ msgstr "Bildergalerie"
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Image override
 msgid "Image override"
-msgstr ""
+msgstr "Bild überschreiben"
 
 #: components/manage/Blocks/Image/schema
 # defaultMessage: Image size
@@ -2399,7 +2399,7 @@ msgstr "Eine Liste von Personen, die an der Erstellung dieses Artikels beteiligt
 #: components/manage/Blocks/Teaser/DefaultBody
 # defaultMessage: Please choose an existing content as source for this element
 msgid "Please choose an existing content as source for this element"
-msgstr ""
+msgstr "Bitte wählen sie einen existierenden Inhalt als Quelle für dieses Element aus"
 
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Please continue with the upgrade.
@@ -4140,9 +4140,9 @@ msgid "event_where"
 msgstr "Ort"
 
 #: components/manage/Blocks/Teaser/schema
-# defaultMessage: head title
+# defaultMessage: Head title
 msgid "head_title"
-msgstr ""
+msgstr "Kopftitel"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Password reset confirmation sent

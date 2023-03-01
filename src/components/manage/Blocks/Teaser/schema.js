@@ -24,7 +24,7 @@ const messages = defineMessages({
   },
   head_title: {
     id: 'head_title',
-    defaultMessage: 'head title',
+    defaultMessage: 'Head title',
   },
   teaser: {
     id: 'Teaser',
