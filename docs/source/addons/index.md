@@ -332,7 +332,7 @@ export default applyConfig;
 
 If you're developing the add-on and you wish to add an external dependency,
 you'll have to switch your project to be a [Yarn Workspaces
-root](https://classic.yarnpkg.com/en/docs/workspaces/).
+root](https://yarnpkg.com/en/docs/workspaces/).
 
 So you'll need to add, in your Volto project's `package.json`:
 
