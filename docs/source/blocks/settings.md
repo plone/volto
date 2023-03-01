@@ -1,10 +1,10 @@
 ---
 myst:
   html_meta:
-    'description': 'How to configure custom blocks'
-    'property=og:description': 'How to configure custom blocks'
-    'property=og:title': 'Blocks settings'
-    'keywords': 'Volto, Plone, frontend, React, Block settings'
+    "description": "How to configure custom blocks"
+    "property=og:description": "How to configure custom blocks"
+    "property=og:title": "Blocks settings"
+    "keywords": "Volto, Plone, frontend, React, Block settings"
 ---
 
 # Blocks settings
@@ -103,7 +103,7 @@ const customBlocks = {
         ]
       }
     },
-    // A block can have elements included in ToC (Table of Contents Block)
+     // A block can have elements included in ToC (Table of Contents block)
     tocEntry: (blockData, data) => {
     // Arguments of the function will be the data of the block
     // which will interact with ToC and the data of ToC
@@ -117,6 +117,7 @@ const customBlocks = {
         // to be displayed in the ToC
         entries: [[level, title], [level, title]]
       }
+    },
   },
 };
 
@@ -187,7 +188,7 @@ and provide your own per content type, e.g:
 
 ```js
 const initialBlocks = {
-  Document: ['leadimage', 'title', 'text', 'listing'],
+    Document: ['leadimage', 'title', 'text', 'listing' ]
 };
 ```
 
@@ -196,16 +197,13 @@ const initialBlocks = {
 `allowed_headline_tags`
 : Allows you to customize the choices of the "Headline Tag" types shown in the block settings by default. It has the following syntax (a list of lists, where a list item consists of `['token', 'display_name']`):
 
-```js
-allowed_headline_tags: [
-  ['h2', 'h2'],
-  ['h3', 'h3'],
-];
-```
+  ```js
+  allowed_headline_tags: [['h2', 'h2'], ['h3', 'h3']]
+  ```
 
-If not specified, an internal hardcoded default is the above shown example.
+  If not specified, an internal hardcoded default is the above shown example.
 
-If the choice is limited to one item, then the setting hides itself from the `listing` block settings list.
+  If the choice is limited to one item, then the setting hides itself from the `listing` block settings list.
 
 ## Search block configuration
 
