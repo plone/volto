@@ -14,7 +14,7 @@ MAKEFLAGS+=--no-builtin-rules
 
 INSTANCE_PORT=8080
 DOCKER_IMAGE=plone/server-dev:6.0.2
-DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.1
+DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.2
 KGS=
 NODEBIN = ./node_modules/.bin
 SCRIPTSPACKAGE = ./packages/scripts
@@ -368,4 +368,4 @@ full-test-acceptance-guillotina: ## Runs the Guillotina Full Acceptance Testing 
 
 .PHONY: start-test-acceptance-server-5
 start-test-acceptance-server-5: ## Start Test Acceptance Server Main Fixture Plone 5 (docker container)
-	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS5) $(TESTING_ADDONS)' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE_ACCEPTANCE5) ./bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
+	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS5) $(TESTING_ADDONS)' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE5) ./bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
