@@ -131,7 +131,7 @@ import { Icon } from '@plone/volto/components';
 
 In the block schema definition, you can use the two additional properties for
 each field: `default` and `missing`. The `default` value is used to populate
-the data as "initial value". The `missing` value should be used when the field
+the field with an initial value. The `missing` value should be used when the field
 should always have a value (as required).
 
 ```
