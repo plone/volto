@@ -869,6 +869,30 @@ describe('Blocks', () => {
         style: 'green',
       });
     });
+
+    it('Does not override with default value', () => {
+      const schema = {
+        properties: {
+          style: {
+            default: 'red',
+          },
+        },
+      };
+
+      const data = applySchemaDefaults({
+        schema,
+        data: {
+          '@type': 'slider',
+          style: undefined,
+        },
+        intl: {},
+      });
+      expect(data).toEqual({
+        '@type': 'slider',
+        style: undefined,
+      });
+      expect(typeof data.style === 'undefined');
+    });
   });
 
   describe('applyBlockDefaults', () => {
