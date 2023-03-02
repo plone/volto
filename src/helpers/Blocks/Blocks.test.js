@@ -794,6 +794,81 @@ describe('Blocks', () => {
         },
       });
     });
+
+    it('Handles missing value as schema property', () => {
+      const schema = {
+        properties: {
+          style: {
+            missing: 'green',
+          },
+        },
+      };
+
+      expect(
+        applySchemaDefaults({
+          schema,
+          data: {
+            '@type': 'slider',
+          },
+          intl: {},
+        }),
+      ).toEqual({
+        '@type': 'slider',
+        style: 'green',
+      });
+
+      expect(
+        applySchemaDefaults({
+          schema,
+          data: {
+            '@type': 'slider',
+            style: undefined,
+          },
+          intl: {},
+        }),
+      ).toEqual({
+        '@type': 'slider',
+        style: 'green',
+      });
+    });
+
+    it('Handles missing value together with default', () => {
+      const schema = {
+        properties: {
+          style: {
+            default: 'red',
+            missing: 'green',
+          },
+        },
+      };
+
+      expect(
+        applySchemaDefaults({
+          schema,
+          data: {
+            '@type': 'slider',
+          },
+          intl: {},
+        }),
+      ).toEqual({
+        '@type': 'slider',
+        style: 'red',
+      });
+
+      expect(
+        applySchemaDefaults({
+          schema,
+          data: {
+            '@type': 'slider',
+            style: undefined,
+          },
+          intl: {},
+        }),
+      ).toEqual({
+        '@type': 'slider',
+        style: 'green',
+      });
+    });
   });
 
   describe('applyBlockDefaults', () => {
