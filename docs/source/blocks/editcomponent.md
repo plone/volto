@@ -149,7 +149,7 @@ should always have a value (as required).
 In effect, the following situation matrix will occur:
 
 - `default` and `missing` are declared: the block form is initialized with
-  the `default. value. When the user clears the field, the field is
+  the `default` value. When the user clears the field, the field is
   reinitialized with the `missing` value. This would imply a "required" field.
 - only `default` is declared: the block form is initialized with the `default`
   value. When the user clears the field, the field remains empty. This would
