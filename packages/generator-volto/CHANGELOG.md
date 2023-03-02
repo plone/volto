@@ -8,6 +8,17 @@
 
 <!-- towncrier release notes start -->
 
+## 6.2.4 (2023-03-02)
+
+### Bugfix
+
+- Fix generator adding the jest config for @plone/volto-slate @sneridagh [#4453](https://github.com/plone/volto/issues/4453)
+
+### Internal
+
+- made razzle.config.js in project template easier to extend @akshatgarg12 [#3424](https://github.com/plone/volto/issues/3424)
+
+
 ## 6.2.3 (2023-01-16)
 
 ### Bugfix
