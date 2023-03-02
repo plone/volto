@@ -4,7 +4,7 @@
 #     https://tech.davis-hansson.com/p/make/
 SHELL:=bash
 .ONESHELL:
-.SHELLFLAGS:=-xeu -o pipefail -O inherit_errexit -c
+.SHELLFLAGS:=-eu -o pipefail -c
 .SILENT:
 .DELETE_ON_ERROR:
 MAKEFLAGS+=--warn-undefined-variables
@@ -13,15 +13,16 @@ MAKEFLAGS+=--no-builtin-rules
 # Project settings
 
 INSTANCE_PORT=8080
-DOCKER_IMAGE=plone/plone-backend:6.0.1
-KGS=plone.volto==4.0.5
-TESTING_ADDONS=plone.app.robotframework==2.0.0 plone.app.testing==7.0.0
+DOCKER_IMAGE=plone/server-dev:6.0.2
+DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.2
+KGS=
 NODEBIN = ./node_modules/.bin
 SCRIPTSPACKAGE = ./packages/scripts
 
 # Plone 5 legacy
 DOCKER_IMAGE5=plone/plone-backend:5.2.10
-KGS5=plone.restapi==8.35.0 plone.volto==4.0.5 plone.rest==3.0.0
+KGS5=plone.restapi==8.35.0 plone.volto==4.0.7 plone.rest==3.0.0
+TESTING_ADDONS=plone.app.robotframework==2.0.0 plone.app.testing==7.0.0
 
 # Sphinx variables
 # You can set these variables from the command line.
@@ -202,7 +203,7 @@ start-test-all: ## Start Test
 .PHONY: start-test-frontend
 start-test-frontend: ## Start Test Volto Frontend
 	@echo "$(GREEN)==> Start Test Volto Frontend$(RESET)"
-	RAZZLE_API_PATH=http://127.0.0.1:55001/plone yarn build && NODE_ENV=production node build/server.js
+	RAZZLE_API_PATH=http://127.0.0.1:55001/plone yarn build && NODE_ENV=production yarn start:prod
 
 .PHONY: start-test-backend
 start-test-backend: ## Start Test Plone Backend (api folder)
@@ -227,7 +228,7 @@ start-test-acceptance-frontend-dev: ## Start the Core Acceptance Frontend Fixtur
 
 .PHONY: start-test-acceptance-server test-acceptance-server
 start-test-acceptance-server test-acceptance-server: ## Start Test Acceptance Server Main Fixture (docker container)
-	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) $(TESTING_ADDONS)' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
+	docker run -i --rm -p 55001:55001 $(DOCKER_IMAGE_ACCEPTANCE)
 
 .PHONY: start-test-acceptance-frontend
 start-test-acceptance-frontend: ## Start the Core Acceptance Frontend Fixture
@@ -273,7 +274,7 @@ start-test-acceptance-frontend-project: ## Start the Project Acceptance Frontend
 
 .PHONY: start-test-acceptance-server-coresandbox test-acceptance-server-coresandbox
 start-test-acceptance-server-coresandbox test-acceptance-server-coresandbox: ## Start CoreSandbox Test Acceptance Server Fixture (docker container)
-	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) $(TESTING_ADDONS)' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage,plone.volto:coresandbox -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors,plone.volto.coresandbox $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
+	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage,plone.volto:coresandbox -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors,plone.volto.coresandbox $(DOCKER_IMAGE_ACCEPTANCE)
 	# ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors,plone.volto.coresandbox APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage,plone.volto:coresandbox ./api/bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
 
 .PHONY: start-test-acceptance-frontend-coresandbox
@@ -300,7 +301,7 @@ full-test-acceptance-coresandbox: ## Runs CoreSandbox Full Acceptance Testing in
 
 .PHONY: start-test-acceptance-server-multilingual test-acceptance-server-multilingual
 start-test-acceptance-server-multilingual test-acceptance-server-multilingual: ## Start Multilingual Acceptance Server Multilingual Fixture (docker container)
-	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) $(TESTING_ADDONS)' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:multilingual -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
+	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:multilingual $(DOCKER_IMAGE_ACCEPTANCE)
 
 .PHONY: start-test-acceptance-frontend-multilingual
 start-test-acceptance-frontend-multilingual: ## Start the Multilingual Acceptance Frontend Fixture
@@ -322,7 +323,7 @@ full-test-acceptance-multilingual: ## Runs Multilingual Full Acceptance Testing 
 
 .PHONY: start-test-acceptance-server-workingcopy test-acceptance-server-workingcopy
 start-test-acceptance-server-workingcopy test-acceptance-server-workingcopy : ## Start the WorkingCopy Acceptance Server  Fixture (docker container)
-	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) $(TESTING_ADDONS)' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
+	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default,plone.volto:default-homepage $(DOCKER_IMAGE_ACCEPTANCE)
 	# ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.app.iterate,plone.volto,plone.volto.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default,plone.volto:default-homepage ./api/bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
 
 .PHONY: start-test-acceptance-frontend-workingcopy
