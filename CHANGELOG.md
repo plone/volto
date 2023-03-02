@@ -8,6 +8,47 @@
 
 <!-- towncrier release notes start -->
 
+## 16.13.0 (2023-03-02)
+
+### Feature
+
+- Added a default Component to show when the Listing block has no results, and another only for the ImageGallery variation. Both of them registered in the block registration config. @ionlizarazu [#3602](https://github.com/plone/volto/issues/3602)
+- Add GHA Towncrier syntax checker @sneridagh [#4450](https://github.com/plone/volto/issues/4450)
+
+### Bugfix
+
+- On SSR-generated error pages, don't change the user's language to the default site language @tiberiuichim [#4425](https://github.com/plone/volto/issues/4425)
+
+### Internal
+
+- Expose a named export for the App component, separate its default wrappers as a separate `connectAppComponent` function. @tiberiuichim [#4413](https://github.com/plone/volto/issues/4413)
+- Use latest plone/server breed images @sneridagh [#4454](https://github.com/plone/volto/issues/4454)
+
+### Documentation
+
+- Fix links, convert features to definition list, add link to issue for TODO. @stevepiercy [#4431](https://github.com/plone/volto/issues/4431)
+- Update link to Yarn 3 Workspaces to avoid redirect to Yarn Classic 1.x. @stevepiercy [#4441](https://github.com/plone/volto/issues/4441)
+
+
+## 16.12.0 (2023-02-21)
+
+### Feature
+
+- Provide disabled props to all widgets, and pass disabled props in to babel views. @iFlameing [#4396](https://github.com/plone/volto/issues/4396)
+
+### Bugfix
+
+- fix : Restrictive propTypes for widgets . @suman9893 [#4150](https://github.com/plone/volto/issues/4150)
+- Add the intl string 'Uploading image' to the image block @bipoza [#4180](https://github.com/plone/volto/issues/4180)
+- Fix link integrity overlay is too narrowed @iFlameing [#4399](https://github.com/plone/volto/issues/4399)
+- Fix External link Icon shows up in Grid-text block @iRohitSingh [#4400](https://github.com/plone/volto/issues/4400)
+- Fix broken links: babeljs.io/… @ksuess [#4414](https://github.com/plone/volto/issues/4414)
+
+### Documentation
+
+- Remove inclusion of CHANGELOG.md for volto repo only. Fixes https://github.com/plone/documentation/issues/1431. @stevepiercy [#4404](https://github.com/plone/volto/issues/4404)
+
+
 ## 16.11.0 (2023-02-13)
 
 ### Feature
