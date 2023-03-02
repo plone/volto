@@ -20,17 +20,6 @@ jobs:
       - name: Install towncrier
         run: pip install towncrier
 
-      # node setup
-      - name: Use Node.js ${{ env.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ env.node-version }}
-          cache: 'yarn'
-
-      # node install
-      - name: Install dependencies
-        run: yarn
-
       - name: Check for presence of a Change Log fragment (only pull requests)
         run: |
           # Fetch the pull request' base branch so towncrier will be able to
