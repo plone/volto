@@ -129,7 +129,7 @@ import { Icon } from '@plone/volto/components';
 
 ### Default values support for block schema forms
 
-In the block schema definition you can use the two additional properties for
+In the block schema definition, you can use the two additional properties for
 each field: `default` and `missing`. The `default` value is used to populate
 the data as "initial value". The `missing` value should be used when the field
 should always have a value (as required).
