@@ -1,1 +1,0 @@
-Expose a named export for the App component, separate its default wrappers as a separate `connectAppComponent` function. @tiberiuichim
