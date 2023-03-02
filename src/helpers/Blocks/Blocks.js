@@ -385,7 +385,7 @@ export function applySchemaDefaults({ data = {}, schema, intl }) {
 
   const dataKeys = Object.keys(data);
   const derivedData = Object.keys(schema.properties).reduce((acc, key) => {
-    // TODO: the `.schema` properties for widget_list should be renamed to
+    // TODO: the `.schema` properties for `object_list` should be renamed to
     // `item_schema`
 
     const isObjectWidget =

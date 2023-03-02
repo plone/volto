@@ -158,6 +158,12 @@ In effect, the following situation matrix will occur:
   value. When the user clears the field, the field is reinitialized with the
   `missing` value.
 
+
+```{note}
+In order to have working default data derived from schema, you should always
+pass the `onChangeBlock` prop to `BlockDataForm`!
+```
+
 ## Object Browser
 
 Volto 4 has a new object browser component that allows you to select an existing content object from the site.
