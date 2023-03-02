@@ -15,7 +15,7 @@ import config from '@plone/volto/registry';
 const routes = [
   {
     path: '/',
-    component: App, // Change this if you want a different component
+    component: config.getComponent('App').component, // Change this if you want a different component
     routes: [
       // Add your routes here
       ...(config.addonRoutes || []),
