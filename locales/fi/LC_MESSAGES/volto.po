@@ -2186,6 +2186,11 @@ msgstr "Sisällöstä puuttuu nostokuva"
 msgid "No image set in image content field"
 msgstr "Kuva puuttuu"
 
+#: components/manage/Blocks/Listing/GalleryNoResultsComponent
+# defaultMessage: No images found.
+msgid "No images found."
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 # defaultMessage: No items found in this container.
 msgid "No items found in this container."
@@ -2220,7 +2225,7 @@ msgstr "Ei vaihtoehtoja"
 msgid "No results found"
 msgstr "Yhtään tulosta ei löytynyt"
 
-#: components/manage/Blocks/Listing/ListingBody
+#: components/manage/Blocks/Listing/DefaultNoResultsComponent
 #: components/manage/Widgets/ReferenceWidget
 # defaultMessage: No results found.
 msgid "No results found."
