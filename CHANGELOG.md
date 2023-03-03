@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 16.14.0 (2023-03-03)
+
+### Feature
+
+- Add `Teaser` block @sneridagh [#3706](https://github.com/plone/volto/issues/3706)
+
+
 ## 16.13.0 (2023-03-02)
 
 ### Feature
