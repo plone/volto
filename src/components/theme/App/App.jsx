@@ -57,7 +57,7 @@ import LockingToastsFactory from '@plone/volto/components/manage/LockingToastsFa
  * @class App
  * @extends {Component}
  */
-class App extends Component {
+export class App extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -259,72 +259,76 @@ export const fetchContent = async ({ store, location }) => {
   return content;
 };
 
-export default compose(
-  asyncConnect([
-    {
-      key: 'breadcrumbs',
-      promise: ({ location, store: { dispatch } }) => {
-        // Do not trigger the breadcrumbs action if the expander is present
-        if (
-          __SERVER__ &&
-          !hasApiExpander('breadcrumbs', getBaseUrl(location.pathname))
-        ) {
-          return dispatch(getBreadcrumbs(getBaseUrl(location.pathname)));
-        }
+export function connectAppComponent(AppComponent) {
+  return compose(
+    asyncConnect([
+      {
+        key: 'breadcrumbs',
+        promise: ({ location, store: { dispatch } }) => {
+          // Do not trigger the breadcrumbs action if the expander is present
+          if (
+            __SERVER__ &&
+            !hasApiExpander('breadcrumbs', getBaseUrl(location.pathname))
+          ) {
+            return dispatch(getBreadcrumbs(getBaseUrl(location.pathname)));
+          }
+        },
       },
-    },
-    {
-      key: 'content',
-      promise: ({ location, store }) =>
-        __SERVER__ && fetchContent({ store, location }),
-    },
-    {
-      key: 'navigation',
-      promise: ({ location, store: { dispatch } }) => {
-        // Do not trigger the navigation action if the expander is present
-        if (
-          __SERVER__ &&
-          !hasApiExpander('navigation', getBaseUrl(location.pathname))
-        ) {
-          return dispatch(
-            getNavigation(
-              getBaseUrl(location.pathname),
-              config.settings.navDepth,
-            ),
-          );
-        }
+      {
+        key: 'content',
+        promise: ({ location, store }) =>
+          __SERVER__ && fetchContent({ store, location }),
       },
-    },
-    {
-      key: 'types',
-      promise: ({ location, store: { dispatch } }) => {
-        // Do not trigger the types action if the expander is present
-        if (
-          __SERVER__ &&
-          !hasApiExpander('types', getBaseUrl(location.pathname))
-        ) {
-          return dispatch(getTypes(getBaseUrl(location.pathname)));
-        }
+      {
+        key: 'navigation',
+        promise: ({ location, store: { dispatch } }) => {
+          // Do not trigger the navigation action if the expander is present
+          if (
+            __SERVER__ &&
+            !hasApiExpander('navigation', getBaseUrl(location.pathname))
+          ) {
+            return dispatch(
+              getNavigation(
+                getBaseUrl(location.pathname),
+                config.settings.navDepth,
+              ),
+            );
+          }
+        },
       },
-    },
-    {
-      key: 'workflow',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
-    },
-  ]),
-  injectIntl,
-  connect(
-    (state, props) => ({
-      pathname: props.location.pathname,
-      token: state.userSession.token,
-      userId: state.userSession.token
-        ? jwtDecode(state.userSession.token).sub
-        : '',
-      content: state.content.data,
-      apiError: state.apierror.error,
-      connectionRefused: state.apierror.connectionRefused,
-    }),
-    null,
-  ),
-)(App);
+      {
+        key: 'types',
+        promise: ({ location, store: { dispatch } }) => {
+          // Do not trigger the types action if the expander is present
+          if (
+            __SERVER__ &&
+            !hasApiExpander('types', getBaseUrl(location.pathname))
+          ) {
+            return dispatch(getTypes(getBaseUrl(location.pathname)));
+          }
+        },
+      },
+      {
+        key: 'workflow',
+        promise: ({ location, store: { dispatch } }) =>
+          __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
+      },
+    ]),
+    injectIntl,
+    connect(
+      (state, props) => ({
+        pathname: props.location.pathname,
+        token: state.userSession.token,
+        userId: state.userSession.token
+          ? jwtDecode(state.userSession.token).sub
+          : '',
+        content: state.content.data,
+        apiError: state.apierror.error,
+        connectionRefused: state.apierror.connectionRefused,
+      }),
+      null,
+    ),
+  )(AppComponent);
+}
+
+export default connectAppComponent(App);
