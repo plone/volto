@@ -41,7 +41,6 @@ import listingBlockSVG from '@plone/volto/icons/content-listing.svg';
 import tocSVG from '@plone/volto/icons/list-bullet.svg';
 import searchSVG from '@plone/volto/icons/zoom.svg';
 import rowSVG from '@plone/volto/icons/rowblock.svg';
-import imagesSVG from '@plone/volto/icons/images.svg';
 
 import ImageGalleryListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/ImageGallery';
 import BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Schema';
@@ -53,9 +52,6 @@ import RowViewBlock from '@plone/volto/components/manage/Blocks/Row/View';
 import RowEditBlock from '@plone/volto/components/manage/Blocks/Row/Edit';
 import { RowBlockDataAdapter } from '@plone/volto/components/manage/Blocks/Row/adapter';
 import { RowBlockSchema } from '@plone/volto/components/manage/Blocks/Row/schema';
-
-import TeaserViewBlock from '@plone/volto/components/manage/Blocks/Teaser/View';
-import TeaserEditBlock from '@plone/volto/components/manage/Blocks/Teaser/Edit';
 
 import SearchBlockView from '@plone/volto/components/manage/Blocks/Search/SearchBlockView';
 import SearchBlockEdit from '@plone/volto/components/manage/Blocks/Search/SearchBlockEdit';
@@ -489,17 +485,6 @@ const blocksConfig = {
     // This has a good reason: Slate does not work in detached mode if enabled
     blockHasOwnFocusManagement: false,
     allowedBlocks: ['image', 'listing', 'slate', 'teaser'],
-  },
-  teaser: {
-    id: 'teaser',
-    title: 'Teaser',
-    icon: imagesSVG,
-    group: 'common',
-    view: TeaserViewBlock,
-    edit: TeaserEditBlock,
-    restricted: false,
-    mostUsed: true,
-    sidebarTab: 1,
   },
 };
 
