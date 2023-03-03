@@ -133,6 +133,11 @@ msgstr ""
 msgid "Add block"
 msgstr "Aggiungi blocco"
 
+#: components/manage/Blocks/Row/NewBlockAddButton
+# defaultMessage: Add block in position {index}
+msgid "Add block in position {index}"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add block…
 msgid "Add block…"
@@ -991,6 +996,11 @@ msgstr "Diff"
 msgid "Difference between revision {one} and {two} of {title}"
 msgstr "Differenze tra la revisione {one} e {two} di {title}"
 
+#: components/manage/Blocks/Row/schema
+# defaultMessage: Direction
+msgid "Direction"
+msgstr ""
+
 #: components/manage/Rules/Rules
 # defaultMessage: Disable
 msgid "Disable"
@@ -1528,6 +1538,7 @@ msgid "Header cell"
 msgstr "Cella d'intestazione"
 
 #: components/manage/Blocks/Listing/schema
+#: components/manage/Blocks/Row/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
 msgid "Headline"
@@ -2591,6 +2602,11 @@ msgstr "Rimuovi elemento"
 msgid "Remove recurrence"
 msgstr "Rimuovi"
 
+#: components/manage/Blocks/Row/EditBlockWrapper
+# defaultMessage: Remove row element {index}
+msgid "Remove row element {index}"
+msgstr ""
+
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Remove selected
 msgid "Remove selected"
@@ -2665,6 +2681,11 @@ msgstr "Obbligatorio"
 msgid "Required input is missing."
 msgstr "Un campo richiesto è mancante."
 
+#: components/manage/Blocks/Row/EditBlockWrapper
+# defaultMessage: Reset row element {index}
+msgid "Reset row element {index}"
+msgstr ""
+
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Reset title
 msgid "Reset term title"
@@ -2732,6 +2753,11 @@ msgstr "Ruoli"
 # defaultMessage: Root
 msgid "Root"
 msgstr "Radice"
+
+#: components/manage/Blocks/Row/schema
+# defaultMessage: Row
+msgid "Row"
+msgstr ""
 
 #: components/manage/Controlpanels/Rules/AddRule
 # defaultMessage: Rule added
@@ -4046,6 +4072,16 @@ msgstr "Hai dimenticato la tua password?"
 #: config/Blocks
 # defaultMessage: Checkbox
 msgid "checkboxFacet"
+msgstr ""
+
+#: components/manage/Blocks/Row/templates
+# defaultMessage: column
+msgid "column"
+msgstr ""
+
+#: components/manage/Blocks/Row/templates
+# defaultMessage: columns
+msgid "columns"
 msgstr ""
 
 #: config/Blocks

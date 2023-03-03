@@ -144,6 +144,11 @@ msgstr "Añadir acción"
 msgid "Add block"
 msgstr "Añadir bloque"
 
+#: components/manage/Blocks/Row/NewBlockAddButton
+# defaultMessage: Add block in position {index}
+msgid "Add block in position {index}"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add block…
 msgid "Add block…"
@@ -1002,6 +1007,11 @@ msgstr "Diferencias"
 msgid "Difference between revision {one} and {two} of {title}"
 msgstr "Diferencias entre la revisión {one} y {two} del {title}"
 
+#: components/manage/Blocks/Row/schema
+# defaultMessage: Direction
+msgid "Direction"
+msgstr ""
+
 #: components/manage/Rules/Rules
 # defaultMessage: Disable
 msgid "Disable"
@@ -1539,6 +1549,7 @@ msgid "Header cell"
 msgstr "Celda de cabecera"
 
 #: components/manage/Blocks/Listing/schema
+#: components/manage/Blocks/Row/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
 msgid "Headline"
@@ -2602,6 +2613,11 @@ msgstr "Eliminar elemento"
 msgid "Remove recurrence"
 msgstr "Eliminar repetición"
 
+#: components/manage/Blocks/Row/EditBlockWrapper
+# defaultMessage: Remove row element {index}
+msgid "Remove row element {index}"
+msgstr ""
+
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Remove selected
 msgid "Remove selected"
@@ -2676,6 +2692,11 @@ msgstr "Obligatorio"
 msgid "Required input is missing."
 msgstr "Un campo requerido esta sin tomar en cuenta."
 
+#: components/manage/Blocks/Row/EditBlockWrapper
+# defaultMessage: Reset row element {index}
+msgid "Reset row element {index}"
+msgstr ""
+
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Reset title
 msgid "Reset term title"
@@ -2743,6 +2764,11 @@ msgstr "Roles"
 # defaultMessage: Root
 msgid "Root"
 msgstr "Raíz"
+
+#: components/manage/Blocks/Row/schema
+# defaultMessage: Row
+msgid "Row"
+msgstr ""
 
 #: components/manage/Controlpanels/Rules/AddRule
 # defaultMessage: Rule added
@@ -4058,6 +4084,16 @@ msgstr "¿Olvidaste tu contraseña?"
 # defaultMessage: Checkbox
 msgid "checkboxFacet"
 msgstr "Casilla de verificación"
+
+#: components/manage/Blocks/Row/templates
+# defaultMessage: column
+msgid "column"
+msgstr ""
+
+#: components/manage/Blocks/Row/templates
+# defaultMessage: columns
+msgid "columns"
+msgstr ""
 
 #: config/Blocks
 # defaultMessage: Common
