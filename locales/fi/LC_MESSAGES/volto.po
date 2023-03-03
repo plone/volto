@@ -298,6 +298,7 @@ msgstr "Alias on lisätty"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
+#: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/Video/schema
 # defaultMessage: Alignment
 msgid "Alignment"
@@ -980,6 +981,7 @@ msgid "Descending"
 msgstr "Laskeva"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1629,6 +1631,11 @@ msgstr "Kuva"
 # defaultMessage: Image gallery
 msgid "Image gallery"
 msgstr "Kuvagalleria"
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Image override
+msgid "Image override"
+msgstr ""
 
 #: components/manage/Blocks/Image/schema
 # defaultMessage: Image size
@@ -2304,6 +2311,7 @@ msgstr "Ainostaan pienet kirjaimet (a-z), numerot (0-9) ja merkit "-", "_", ja "
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Teaser/schema
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr "Avaa uudella välilehdellä"
@@ -2397,6 +2405,11 @@ msgstr "Omat työkalut"
 # defaultMessage: Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first.
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Tämän sisällön tuottamiseen osallistuneet käyttäjät. Syötä Yksi käyttäjätunus per rivi. Syötä ensisijainen tekijä ensimmäisenä."
+
+#: components/manage/Blocks/Teaser/DefaultBody
+# defaultMessage: Please choose an existing content as source for this element
+msgid "Please choose an existing content as source for this element"
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Please continue with the upgrade.
@@ -2667,6 +2680,11 @@ msgstr "Pakollista tietoa puuttuu."
 # defaultMessage: Reset title
 msgid "Reset term title"
 msgstr "Tyhjennä termin otsikko"
+
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Reset the block
+msgid "Reset the block"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Results limit
@@ -3238,6 +3256,7 @@ msgstr "Lisättävät tagit"
 msgid "Tags to remove"
 msgstr "Poistettavat tagit"
 
+#: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Target
 msgid "Target"
@@ -3262,6 +3281,11 @@ msgstr "Välimuistin tavoitekoko olioiden määrässä"
 # defaultMessage: Target url path must start with a slash.
 msgid "Target url path must start with a slash."
 msgstr "Kohdeosoitteen tulee alkaa kauttaviivalla."
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Teaser
+msgid "Teaser"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Text
@@ -3425,6 +3449,7 @@ msgid "Time"
 msgstr "Aika"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Teaser/schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -4123,6 +4148,11 @@ msgstr "Milloin"
 # defaultMessage: Where
 msgid "event_where"
 msgstr "Missä"
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Head title
+msgid "head_title"
+msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Password reset confirmation sent

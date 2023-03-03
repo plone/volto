@@ -43,7 +43,9 @@ context('Listing block tests', () => {
       cy.getSlate().click();
       cy.get('button.block-add-button').click();
       cy.get('.blocks-chooser .title').contains('Common').click();
-      cy.get('.blocks-chooser .common').contains('Listing').click();
+      cy.get('.blocks-chooser .common')
+        .contains('Listing')
+        .click({ force: true });
 
       // select variation
       cy.get('#field-variation')
@@ -91,7 +93,9 @@ context('Listing block tests', () => {
       cy.getSlate().click();
       cy.get('button.block-add-button').click();
       cy.get('.blocks-chooser .title').contains('Common').click();
-      cy.get('.blocks-chooser .common').contains('Listing').click();
+      cy.get('.blocks-chooser .common')
+        .contains('Listing')
+        .click({ force: true });
 
       // select variation
       cy.get('#field-variation')
