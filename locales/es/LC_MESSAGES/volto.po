@@ -298,6 +298,7 @@ msgstr "Alias añadido correctamente"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
+#: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/Video/schema
 # defaultMessage: Alignment
 msgid "Alignment"
@@ -980,6 +981,7 @@ msgid "Descending"
 msgstr "Descendente"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1630,6 +1632,11 @@ msgstr "Imagen"
 msgid "Image gallery"
 msgstr "Galería de imágenes"
 
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Image override
+msgid "Image override"
+msgstr ""
+
 #: components/manage/Blocks/Image/schema
 # defaultMessage: Image size
 msgid "Image size"
@@ -2186,6 +2193,11 @@ msgstr "No hay imagen en el campo de imagen principal"
 msgid "No image set in image content field"
 msgstr "No hay imagen en el campo de imagen"
 
+#: components/manage/Blocks/Listing/GalleryNoResultsComponent
+# defaultMessage: No images found.
+msgid "No images found."
+msgstr "No hay imágenes."
+
 #: components/manage/Blocks/Listing/ListingBody
 # defaultMessage: No items found in this container.
 msgid "No items found in this container."
@@ -2220,7 +2232,7 @@ msgstr "No hay opciones"
 msgid "No results found"
 msgstr "No hay resultados"
 
-#: components/manage/Blocks/Listing/ListingBody
+#: components/manage/Blocks/Listing/DefaultNoResultsComponent
 #: components/manage/Widgets/ReferenceWidget
 # defaultMessage: No results found.
 msgid "No results found."
@@ -2299,6 +2311,7 @@ msgstr "Solo letras minúsculas (a-z) sin tildes, números (0-9), y los caracter
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Teaser/schema
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr "Abrir en un nueva pestaña"
@@ -2392,6 +2405,11 @@ msgstr "Herramientas personales"
 # defaultMessage: Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first.
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Las personas responsables de la creación del contenido de este elemento. Por favor, introduzca una lista de nombres de usuarios, uno por linea. El principal autor debe aparecer de primer lugar."
+
+#: components/manage/Blocks/Teaser/DefaultBody
+# defaultMessage: Please choose an existing content as source for this element
+msgid "Please choose an existing content as source for this element"
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Please continue with the upgrade.
@@ -2662,6 +2680,11 @@ msgstr "Un campo requerido esta sin tomar en cuenta."
 # defaultMessage: Reset title
 msgid "Reset term title"
 msgstr "Limpiar el título del término"
+
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Reset the block
+msgid "Reset the block"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Results limit
@@ -3233,6 +3256,7 @@ msgstr "Categoría a agregar"
 msgid "Tags to remove"
 msgstr "Categoría a remover"
 
+#: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Target
 msgid "Target"
@@ -3257,6 +3281,11 @@ msgstr "Número objetivo de elementos en la memoria por caché"
 # defaultMessage: Target url path must start with a slash.
 msgid "Target url path must start with a slash."
 msgstr "El camino de destino debe comenzar con /."
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Teaser
+msgid "Teaser"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Text
@@ -3420,6 +3449,7 @@ msgid "Time"
 msgstr "Hora"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Teaser/schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -4118,6 +4148,11 @@ msgstr "Cuándo"
 # defaultMessage: Where
 msgid "event_where"
 msgstr "Dónde"
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Head title
+msgid "head_title"
+msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Password reset confirmation sent
