@@ -30,7 +30,10 @@ describe('New Block Auto Focus Tests', () => {
   });
 
   it('Press Enter on a text block adds new autofocused default block', () => {
-    cy.addNewBlock('text');
+    cy.getSlate().click();
+    cy.get('button.block-add-button').click();
+    cy.get('.blocks-chooser .title').contains('Text').click();
+    cy.get('.blocks-chooser .text').contains('Text').click();
     cy.get('.text-slate-editor-inner').first().click().type('{enter}');
     cy.get('*[class^="block-editor"]')
       .eq(2)
@@ -70,7 +73,7 @@ describe('New Block Auto Focus Tests', () => {
   });
 
   it('Press Enter on a table of contents block adds new autofocused default block', () => {
-    cy.addNewBlock('toc');
+    cy.addNewBlock('contents');
     cy.get('.block-editor-toc').first().click().type('{enter}');
     cy.get('*[class^="block-editor"]')
       .eq(2)
