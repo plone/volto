@@ -9,7 +9,7 @@ myst:
 
 # The configuration registry
 
-Volto has a centralized configuration registry used to parameterize Volto. It has the
+Volto has a centralized {term}`configuration registry` used to parameterize Volto. It has the
 form of a singleton that can be called and queried from anywhere in your code like this:
 
 ```js

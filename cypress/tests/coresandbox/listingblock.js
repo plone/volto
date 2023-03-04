@@ -86,6 +86,12 @@ context('Listing block tests', () => {
 
       // Add listing block
       cy.addNewBlock('listing');
+      cy.getSlate().click();
+      cy.get('button.block-add-button').click();
+      cy.get('.blocks-chooser .title').contains('Common').click();
+      cy.get('.blocks-chooser .common')
+        .contains('Listing')
+        .click({ force: true });
 
       // select variation
       cy.get('#field-variation')
