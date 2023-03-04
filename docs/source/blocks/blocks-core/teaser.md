@@ -14,12 +14,6 @@ myst:
 Volto comes with a Teaser block that given a content object as target is able to pull information from it and show it in the block.
 By default, this information is the `title`, `description`, `preview_image` and shows them in a summary (Image on left, title, description) way.
 
-## Style Wrapper Properties
-
-The Teaser has a styling property to align the image. The image can be aligned left (default), right and top.
-
-The styling wrapper properties can be extended using: {ref}`blocks-style-wrapper-label`
-
 ## Blocks settings
 
 The Teaser has the following settings:
@@ -38,6 +32,12 @@ Description
 
 Image override
 : The image override is either an existing image in your Plone site that can be selected by clicking the list icon, or an external URL of an image that can be typed into the text field and saved by clicking the right arrow when it appears after you start typing.
+
+## Style Wrapper Properties
+
+The Teaser has a styling property to align the image. The image can be aligned left (default), right and top.
+
+The styling wrapper properties can be extended using: {ref}`blocks-style-wrapper-label`
 
 ## Variations
 
