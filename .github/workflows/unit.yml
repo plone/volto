@@ -5,8 +5,9 @@ jobs:
     name: Core Unit Tests
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [16.x, 18.x]
     steps:
       - uses: actions/checkout@v3
 
@@ -28,4 +29,3 @@ jobs:
       - uses: jackyef/bundlewatch-gh-action@master
         with:
           bundlewatch-github-token: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
-

@@ -30,7 +30,6 @@ export {
   removeProtocol,
   URLUtils,
 } from '@plone/volto/helpers/Url/Url';
-export { generateSitemap } from '@plone/volto/helpers/Sitemap/Sitemap';
 export { generateRobots } from '@plone/volto/helpers/Robots/Robots';
 export {
   nestContent,
@@ -56,6 +55,8 @@ export {
   applyBlockDefaults,
   applySchemaDefaults,
   buildStyleClassNamesFromData,
+  buildStyleClassNamesExtenders,
+  getPreviousNextBlock,
 } from '@plone/volto/helpers/Blocks/Blocks';
 export BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 export ScrollToTop from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
