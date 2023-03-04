@@ -7,10 +7,11 @@ myst:
     "keywords": "Volto, Plone, frontend, React, blocks"
 ---
 
-# Blocks
+# Core Blocks developer notes
 
 ```{toctree}
 :maxdepth: 1
 
+listing
 teaser
 ```

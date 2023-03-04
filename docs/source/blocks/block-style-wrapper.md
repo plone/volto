@@ -7,6 +7,8 @@ myst:
     "keywords": "Volto, Plone, frontend, React, Blocks, Edit, Style, Wrapper, components"
 ---
 
+(blocks-style-wrapper-label)=
+
 # Blocks - Style Wrapper
 
 The block style wrapper is part of a block anatomy.

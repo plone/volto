@@ -18,6 +18,6 @@ settings
 editcomponent
 block-style-wrapper
 extensions
-listing-block
 ssr
+blocks-core/index
 ```
