@@ -8,6 +8,77 @@
 
 <!-- towncrier release notes start -->
 
+## 17.0.0-alpha.0 (2023-03-04)
+
+### Breaking
+
+- Volto 17 drops support for NodeJS 14, and adds support for NodeJS 18.
+  Please see the [upgrade guide](https://6.docs.plone.org/volto/upgrade-guide/index.html)
+  for more information.
+
+  Volto 17 now uses Webpack 5. [#4086](https://github.com/plone/volto/issues/4086)
+
+### Internal
+
+- Add HI-ERN website to "Volto in Production" section in README @steffenri [#4172](https://github.com/plone/volto/issues/4172)
+
+### Documentation
+
+- Add a new Volto site to the README @erral [#4158](https://github.com/plone/volto/issues/4158), [#4170](https://github.com/plone/volto/issues/4170)
+- Add new websites Lanku and UEU
+  [erral] [#4310](https://github.com/plone/volto/issues/4310)
+- Fix English and MyST grammar and syntax from PR #4285 @stevepiercy [#4331](https://github.com/plone/volto/issues/4331)
+- Use a universal static path for both documentation and volto repos. @stevepiercy [#4376](https://github.com/plone/volto/issues/4376)
+
+
+## 16.14.0 (2023-03-03)
+
+### Feature
+
+- Add `Teaser` block @sneridagh [#3706](https://github.com/plone/volto/issues/3706)
+
+
+## 16.13.0 (2023-03-02)
+
+### Feature
+
+- Added a default Component to show when the Listing block has no results, and another only for the ImageGallery variation. Both of them registered in the block registration config. @ionlizarazu [#3602](https://github.com/plone/volto/issues/3602)
+- Add GHA Towncrier syntax checker @sneridagh [#4450](https://github.com/plone/volto/issues/4450)
+
+### Bugfix
+
+- On SSR-generated error pages, don't change the user's language to the default site language @tiberiuichim [#4425](https://github.com/plone/volto/issues/4425)
+
+### Internal
+
+- Expose a named export for the App component, separate its default wrappers as a separate `connectAppComponent` function. @tiberiuichim [#4413](https://github.com/plone/volto/issues/4413)
+- Use latest plone/server breed images @sneridagh [#4454](https://github.com/plone/volto/issues/4454)
+
+### Documentation
+
+- Fix links, convert features to definition list, add link to issue for TODO. @stevepiercy [#4431](https://github.com/plone/volto/issues/4431)
+- Update link to Yarn 3 Workspaces to avoid redirect to Yarn Classic 1.x. @stevepiercy [#4441](https://github.com/plone/volto/issues/4441)
+
+
+## 16.12.0 (2023-02-21)
+
+### Feature
+
+- Provide disabled props to all widgets, and pass disabled props in to babel views. @iFlameing [#4396](https://github.com/plone/volto/issues/4396)
+
+### Bugfix
+
+- fix : Restrictive propTypes for widgets . @suman9893 [#4150](https://github.com/plone/volto/issues/4150)
+- Add the intl string 'Uploading image' to the image block @bipoza [#4180](https://github.com/plone/volto/issues/4180)
+- Fix link integrity overlay is too narrowed @iFlameing [#4399](https://github.com/plone/volto/issues/4399)
+- Fix External link Icon shows up in Grid-text block @iRohitSingh [#4400](https://github.com/plone/volto/issues/4400)
+- Fix broken links: babeljs.io/… @ksuess [#4414](https://github.com/plone/volto/issues/4414)
+
+### Documentation
+
+- Remove inclusion of CHANGELOG.md for volto repo only. Fixes https://github.com/plone/documentation/issues/1431. @stevepiercy [#4404](https://github.com/plone/volto/issues/4404)
+
+
 ## 16.11.0 (2023-02-13)
 
 ### Feature

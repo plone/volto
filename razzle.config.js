@@ -99,15 +99,14 @@ const defaultModify = ({
       runtimeChunk: true,
       splitChunks: {
         chunks: 'all',
-        name: dev,
         cacheGroups: {
           // We reset the default values set by webpack
           // So the chunks have all proper names (no random numbers)
           // The CSS gets bundled in one CSS chunk and it's consistent with
           // the `style-loader` load order, so no difference between
           // local (project CSS) and `node_modules` ones.
-          vendors: false,
           default: false,
+          defaultVendors: false,
         },
       },
     });
@@ -117,6 +116,7 @@ const defaultModify = ({
     // Using the default provided (cssnano) by css-minimizer-webpack-plugin
     // should be enough see:
     // (https://github.com/clean-css/clean-css/discussions/1209)
+    delete options.webpackOptions.terserPluginOptions?.sourceMap;
     if (!dev) {
       config.optimization = Object.assign({}, config.optimization, {
         minimizer: [
@@ -317,7 +317,7 @@ const defaultModify = ({
       : [];
 
   if (config.devServer) {
-    config.devServer.watchOptions.ignored = /node_modules\/(?!@plone\/volto)/;
+    config.devServer.static.watch.ignored = /node_modules\/(?!@plone\/volto)/;
   }
 
   return config;
