@@ -16,37 +16,8 @@ import {
   SearchWidget,
 } from '@plone/volto/components';
 
-/**
- * Header component class.
- * @class Header
- * @extends Component
- */
-class Header extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    token: PropTypes.string,
-    pathname: PropTypes.string.isRequired,
-  };
 
-  /**
-   * Default properties.
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    token: null,
-  };
-
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
+const Header = ({pathname, token}) => {
     return (
       <Segment basic className="header-wrapper" role="banner">
         <Container>
@@ -55,11 +26,11 @@ class Header extends Component {
               <div className="logo">
                 <Logo />
               </div>
-              <Navigation pathname={this.props.pathname} />
+              <Navigation pathname={pathname} />
             </div>
             <div className="tools-search-wrapper">
               <LanguageSelector />
-              {!this.props.token && (
+              {!token && (
                 <div className="tools">
                   <Anontools />
                 </div>
@@ -73,7 +44,16 @@ class Header extends Component {
       </Segment>
     );
   }
-}
+  
+  Header.propTypes = {
+    token: PropTypes.string,
+    pathname: PropTypes.string.isRequired,
+  };
+  
+  Header.defaultProps = {
+    token: null,
+  };
+
 
 export default connect((state) => ({
   token: state.userSession.token,
