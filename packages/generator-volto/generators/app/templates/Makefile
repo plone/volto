@@ -16,8 +16,8 @@ TESTING_ADDONS=plone.app.robotframework==2.0.0 plone.app.testing==7.0.0
 NODEBIN = ./node_modules/.bin
 
 # Plone 5 legacy
-DOCKER_IMAGE5=plone/plone-backend:5.2.9
-KGS5=plone.restapi==8.32.6 plone.volto==4.0.0 plone.rest==2.0.0
+DOCKER_IMAGE5=plone/plone-backend:5.2.10
+KGS5=plone.restapi==8.35.0 plone.volto==4.0.5 plone.rest==3.0.0
 
 # Project settings
 
@@ -78,7 +78,7 @@ start-test-acceptance-server start-test-backend : ## Start Test Plone Backend
 
 .PHONY: start-test-acceptance-frontend
 start-test-acceptance-frontend: ## Start the Acceptance Frontend Fixture
-	RAZZLE_API_PATH=http://localhost:55001/plone yarn build && yarn start:prod
+	RAZZLE_API_PATH=http://127.0.0.1:55001/plone yarn build && yarn start:prod
 
 .PHONY: test-acceptance
 test-acceptance: ## Start Core Cypress Acceptance Tests
@@ -90,7 +90,7 @@ test-acceptance-headless: ## Start Core Cypress Acceptance Tests in headless mod
 
 .PHONY: full-test-acceptance
 full-test-acceptance: ## Runs Core Full Acceptance Testing in headless mode
-	$(NODEBIN)/start-test "make start-test-acceptance-server" http-get://localhost:55001/plone "make start-test-acceptance-frontend" http://localhost:3000 "make test-acceptance-headless"
+	$(NODEBIN)/start-test "make start-test-acceptance-server" http-get://127.0.0.1:55001/plone "make start-test-acceptance-frontend" http://127.0.0.1:3000 "make test-acceptance-headless"
 
 .PHONY: test-acceptance
 test-acceptance-addon: ## Start Core Cypress Acceptance Tests for an addon
@@ -102,4 +102,4 @@ test-acceptance-addon-headless: ## Start Core Cypress Acceptance Tests for an ad
 
 .PHONY: full-test-acceptance-addon
 full-test-acceptance-addon: ## Runs Core Full Acceptance Testing for an addon in headless mode
-	$(NODEBIN)/start-test "make start-test-acceptance-server" http-get://localhost:55001/plone "make start-test-acceptance-frontend" http://localhost:3000 "make test-acceptance-addon-headless"
+	$(NODEBIN)/start-test "make start-test-acceptance-server" http-get://127.0.0.1:55001/plone "make start-test-acceptance-frontend" http://127.0.0.1:3000 "make test-acceptance-addon-headless"
