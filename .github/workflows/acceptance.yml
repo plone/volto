@@ -128,7 +128,7 @@ jobs:
           cache: 'yarn'
 
       ## node install
-      - run: yarn --frozen-lockfile
+      - run: yarn --immutable
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v5
