@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 7.0.0-alpha.0 (2023-03-04)
+
+### Breaking
+
+- Volto 17 compliant version @davisagli [#4089](https://github.com/plone/volto/issues/4089)
+
+
 ## 6.2.5 (2023-03-02)
 
 ### Internal
