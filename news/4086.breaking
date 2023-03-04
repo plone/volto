@@ -1,0 +1,5 @@
+Volto 17 drops support for NodeJS 14, and adds support for NodeJS 18.
+Please see the [upgrade guide](https://6.dev-docs.plone.org/volto/upgrade-guide/index.html)
+for more information.
+
+Volto 17 now uses Webpack 5.
