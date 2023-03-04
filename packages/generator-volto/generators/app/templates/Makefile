@@ -8,7 +8,7 @@ SHELL:=bash
 MAKEFLAGS+=--warn-undefined-variables
 MAKEFLAGS+=--no-builtin-rules
 
-# Update the versions depending on your project requirements | Last Updated 2022-12-09
+# Update the versions depending on your project requirements | Last Updated 2023-03-02
 DOCKER_IMAGE=plone/server-dev:6.0.2
 DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.2
 KGS=
