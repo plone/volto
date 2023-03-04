@@ -10,7 +10,7 @@
     }
   ],
   "license": "MIT",
-  "version": "6.2.5",
+  "version": "6.2.6",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/plone/generator-volto.git"
