@@ -1,0 +1,1 @@
+Refactored src/components/theme/Header/Header.jsx from the class-based component to the function-based component.
