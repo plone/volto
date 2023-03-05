@@ -23,19 +23,23 @@ It shows them in a summary layout, with the image on the left, and the title and
 The Teaser has the following settings:
 
 Target
-: The target is either an existing content item in your Plone site that can be selected by clicking the list icon, or an external URL that can be typed into the text field and saved by clicking the right arrow when it appears after you start typing.
+: The target is either an existing content item in your Plone site, or an external URL
 
 Title
-: The title is the title of the content item.
+: The title is the title of the Teaser block.
+By default is copied over from the Teaser target.
 
 Head title
-: The head title is a heading that appears above the title.
+: The head title is a heading that appears above the title of the Teaser Block.
+By default is copied over from the Teaser target.
 
 Description
-: The description is plain text that summarizes or describes the content item.
+: The description is plain text that summarizes or describes the Teaser.
+By default is copied over from the Teaser target.
 
 Image override
-: The image override is either an existing image in your Plone site that can be selected by clicking the list icon, or an external URL of an image that can be typed into the text field and saved by clicking the right arrow when it appears after you start typing.
+: The image override is either an existing image in your Plone site, or an external URL.
+It overrides the image provided by the Teaser target.
 
 ## Style wrapper properties
 
