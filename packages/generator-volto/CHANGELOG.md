@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 6.3.0 (2023-03-05)
+
+### Feature
+
+- Improve stylelint config in generator, include scss support @sneridagh [#4469](https://github.com/plone/volto/issues/4469)
+
+
 ## 6.2.6 (2023-03-04)
 
 ### Bugfix
