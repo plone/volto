@@ -1,13 +1,15 @@
 ---
 myst:
   html_meta:
-    "description": "Volto provides stock core blocks out of the box"
-    "property=og:description": "Volto provides stock core blocks out of the box"
-    "property=og:title": "Blocks"
-    "keywords": "Volto, Plone, frontend, React, blocks"
+    "description": "Core blocks provided in Volto by default"
+    "property=og:description": "Core blocks provided in Volto by default"
+    "property=og:title": "Core blocks provided in Volto by default"
+    "keywords": "Volto, Plone, frontend, React, blocks, default, core"
 ---
 
 # Core Blocks developer notes
+
+This part of the documentation describes how to develop the core blocks in Volto.
 
 ```{toctree}
 :maxdepth: 1

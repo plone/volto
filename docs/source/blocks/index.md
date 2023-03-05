@@ -19,5 +19,5 @@ editcomponent
 block-style-wrapper
 extensions
 ssr
-blocks-core/index
+core/index
 ```
