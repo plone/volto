@@ -17,6 +17,7 @@ import SchemaWidget from '@plone/volto/components/manage/Widgets/SchemaWidget';
 import SelectWidget from '@plone/volto/components/manage/Widgets/SelectWidget';
 import TextareaWidget from '@plone/volto/components/manage/Widgets/TextareaWidget';
 import TextWidget from '@plone/volto/components/manage/Widgets/TextWidget';
+import TextLineWidget from '@plone/volto/components/manage/Widgets/TextLineWidget';
 import TokenWidget from '@plone/volto/components/manage/Widgets/TokenWidget';
 import WysiwygWidget from '@plone/volto/components/manage/Widgets/WysiwygWidget';
 import UrlWidget from '@plone/volto/components/manage/Widgets/UrlWidget';
@@ -98,6 +99,7 @@ export const widgetMapping = {
     select_querystring_field: SelectMetadataWidget,
     autocomplete: SelectAutoComplete,
     color_picker: ColorPickerWidget,
+    textline: TextLineWidget,
   },
   vocabulary: {
     'plone.app.vocabularies.Catalog': ObjectBrowserWidget,
