@@ -24,6 +24,29 @@ The generator will also "update" your project with the latest changes, and propo
 Thus it is safe to run it on top of your project and answer the prompts.
 ```
 
+(volto-upgrade-guide-17.x.x)=
+
+## Upgrading to Volto 17.x.x
+
+### Ending support for NodeJS 14
+
+Long Term Support for NodeJS 14 by the NodeJS community ends in April 2023.
+Volto 17 no longer supports NodeJS 14.
+Please update your projects to a NodeJS LTS version, where either 16 or 18 is supported at the moment of this writing.
+Version 18 is recommended.
+
+#### localhost now resolves to an IPv6 address
+
+NodeJS 18 prefers to resolve `localhost` to an IPv6 address instead of IPv4.
+If you are setting `RAZZLE_API_PATH` to a URL that includes `localhost`,
+change the hostname to `127.0.0.1` instead.
+
+### Webpack 5
+
+Volto 17 now uses Webpack 5.
+If you customized `razzle.config.js` for your project to change Webpack configuration
+or use Webpack plugins, you might need to make adjustments.
+
 
 (volto-upgrade-guide-16.x.x)=
 
