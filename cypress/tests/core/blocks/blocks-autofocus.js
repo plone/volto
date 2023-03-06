@@ -35,8 +35,8 @@ describe('New Block Auto Focus Tests', () => {
   });
 
   it('Press Enter on a text block adds new autofocused default block', () => {
-    cy.get('.blocks-chooser .title').contains('Text').click();
-    cy.get('.blocks-chooser .text').contains('Text').click();
+    cy.get('.blocks-chooser .title').contains('Text').click({ force: true });
+    cy.get('.blocks-chooser .text').contains('Text').click({ force: true });
     cy.get('.text-slate-editor-inner').first().click().type('{enter}');
     cy.get('*[class^="block-editor"]')
       .eq(2)
