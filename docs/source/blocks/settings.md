@@ -107,7 +107,7 @@ const customBlocks = {
     tocEntry: (blockData, data) => {
     // Arguments of the function will be the data of the block
     // which will interact with ToC and the data of ToC
-      // If a singe entry is needed, the function will return an array with the
+      // If a single entry is needed, the function will return an array with the
       // level and the element to be placed in ToC
       return [level, title]
       // If there are more entries to be displayed in Toc, the function will
