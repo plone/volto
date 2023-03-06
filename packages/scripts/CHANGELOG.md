@@ -1,14 +1,28 @@
-# Change Log
+# Volto Scripts Release Notes
 
-## 2.2.2 (unreleased)
+<!-- You should *NOT* be adding new change log entries to this file.
+     You should create a file in the news directory instead.
+     For helpful instructions, please see:
+     https://6.dev-docs.plone.org/volto/developer-guidelines/contributing.html#create-a-pull-request
+-->
 
-### Breaking
+<!-- towncrier release notes start -->
+
+## 2.3.0 (2023-01-13)
 
 ### Feature
 
-### Bugfix
+- The `consolidate` command includes Cypress folder @sneridagh [#4192](https://github.com/plone/volto/issues/4192)
+- Add backport PR helper script @sneridagh [#4222](https://github.com/plone/volto/issues/4222)
+- Improve consolidate and local clone copy files @sneridagh [#4253](https://github.com/plone/volto/issues/4253)
+
+
+## 2.2.2 (2022-12-23)
 
 ### Internal
+
+- Adjust npmignores, reissue package @sneridagh [#0](https://github.com/plone/volto/issues/0)
+
 
 ## 2.2.1 (2022-11-24)
 

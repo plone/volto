@@ -78,7 +78,7 @@ persistentReducers
 maxResponseSize
     The library that we use to get files and images from the backend (superagent)
     has a response size limit of 200 mb, so if you want to get a file bigger than 200 mb
-    from Plone, the SSR will throw an error.
+    from Plone, the {term}`SSR` will throw an error.
 
     You can edit this limit in the `settings` object setting a new value in bytes
     (for example, to set 500 mb you need to write 5000000000).
@@ -118,7 +118,7 @@ storeExtenders
 
 asyncPropsExtenders
     Per-route customizable `asyncConnect` action dispatcher. These enable
-    proper server-side rendering of content that depends on additional async
+    proper {term}`server-side rendering` of content that depends on additional async
     props coming from backend calls. It is a list of route-like configuration
     objects (they are matched using
     [matchRoutes](https://github.com/remix-run/react-router/blob/ea44618e68f6a112e48404b2ea0da3e207daf4f0/packages/react-router-config/modules/matchRoutes.js).
@@ -233,6 +233,150 @@ styleClassNameConverters
     registering fieldnames with names such as `<fieldname>:<converterName>`,
     where the converter is registered here.
 
+styleClassNameExtenders
+    An array containing functions that extends how the StyleWrapper builds a list of styles. These functions have the signature `({ block, content, data, classNames }) => classNames`. Here are some examples of useful ones, for simplicity, they are compacted in one extender:
+
+    ```js
+      import { getPreviousNextBlock } from '@plone/volto/helpers';
+
+      config.settings.styleClassNameExtenders = [
+        ({ block, content, data, classNames }) => {
+          let styles = [];
+          const [previousBlock, nextBlock] = getPreviousNextBlock({
+            content,
+            block,
+          });
+
+          // Inject a class depending of which type is the next block
+          if (nextBlock?.['@type']) {
+            styles.push(`next--is--${nextBlock['@type']}`);
+          }
+
+          // Inject a class depending if previous is the same type of block
+          if (data?.['@type'] === previousBlock?.['@type']) {
+            styles.push('previous--is--same--block-type');
+          }
+
+          // Inject a class depending if next is the same type of block
+          if (data?.['@type'] === nextBlock?.['@type']) {
+            styles.push('next--is--same--block-type');
+          }
+
+          // Inject a class depending if it's the first of block type
+          if (data?.['@type'] !== previousBlock?.['@type']) {
+            styles.push('is--first--of--block-type');
+          }
+
+          // Inject a class depending if it's the last of block type
+          if (data?.['@type'] !== nextBlock?.['@type']) {
+            styles.push('is--last--of--block-type');
+          }
+
+          // Given a StyleWrapper defined `backgroundColor` style
+          const previousColor =
+            previousBlock?.styles?.backgroundColor ?? 'transparent';
+          const currentColor = data?.styles?.backgroundColor ?? 'transparent';
+          const nextColor = nextBlock?.styles?.backgroundColor ?? 'transparent';
+
+          // Inject a class depending if the previous block has the same `backgroundColor`
+          if (currentColor === previousColor) {
+            styles.push('previous--has--same--backgroundColor');
+          } else if (currentColor !== previousColor) {
+            styles.push('previous--has--different--backgroundColor');
+          }
+
+          // Inject a class depending if the next block has the same `backgroundColor`
+          if (currentColor === nextColor) {
+            styles.push('next--has--same--backgroundColor');
+          } else if (currentColor !== nextColor) {
+            styles.push('next--has--different--backgroundColor');
+          }
+
+          return [...classNames, ...styles];
+        },
+      ];
+    ```
+
+apiExpanders
+    You can configure the API expanders in Volto using `settings.apiExpanders`, as in the following example.
+
+    ```jsx
+    import { GET_CONTENT } from '@plone/volto/constants/ActionTypes';
+
+    export default function applyConfig (config) {
+      config.settings.apiExpanders = [
+          ...config.settings.apiExpanders,
+          {
+            match: '',
+            GET_CONTENT: ['mycustomexpander'],
+          },
+          {
+            match: '/de',
+            GET_CONTENT: ['myothercustomexpander'],
+          },
+          {
+            match: '/de',
+            GET_CONTENT: ['navigation'],
+            querystring: {
+              'expand.navigation.depth': 3,
+            },
+          }
+      ];
+
+      return config;
+    }
+    ```
+
+    If you want Volto to make only a single request, combining all the expanders in it, then configure `apiExpanders` as shown.
+
+    ```jsx
+    config.settings.apiExpanders = [
+      {
+        match: '',
+        GET_CONTENT: ['breadcrumbs', 'navigation', 'actions', 'types'],
+      },
+    ],
+    ```
+    The configuration accepts a list of matchers, with the ability to filter by the request path and action type for maximum flexibility.
+    It also accepts a `querystring` object that allows configuring the expanders via query string parameters, such as the navigation expander.
+
+additionalToolbarComponents
+    For additional toolbar menus, the menu body component needs to be added to the on-demand loaded components.
+
+    ```jsx
+    config.settings.additionalToolbarComponents = {
+      bookmarksMenu: {
+        component: BookmarksEditorComponent,
+        wrapper: null,
+      },
+    };
+    ```
+
+    The plug:
+    ```jsx
+    <Plug pluggable="main.toolbar.bottom" id="bookmarks-menu">
+      {({ onClickHandler }) => {
+        return (
+          <button
+            className="show-bookmarks"
+            aria-label={intl.formatMessage(messages.label_showbookmarksmenu)}
+            onClick={(e) => onClickHandler(e, 'bookmarksMenu')}
+            tabIndex={0}
+            id="toolbar-show-bookmarks"
+          >
+            <Icon
+              name={bookSVG}
+              size="30px"
+              title={intl.formatMessage(messages.label_showbookmarksmenu)}
+            />
+          </button>
+        );
+      }}
+    </Plug>
+    ```
+```
+
+
 ## Views settings
 
 They are exposed in `config.views`:
@@ -281,7 +425,7 @@ layoutViewsNamesMapping
 
 ## Server-specific serverConfig
 
-Settings that are relevant to the Express-powered Volto SSR server are stored
+Settings that are relevant to the Express-powered Volto {term}`SSR` server are stored
 in the `config.settings.serverConfig` object.
 
 ```{glossary}
@@ -303,5 +447,4 @@ extractScripts
     For the moment it admits only one property: `errorPages` whose value is a Boolean.
 
     If `extractScripts.errorPages` is `true`, the JS will be inserted into the error page.
-
 ```

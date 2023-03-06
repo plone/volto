@@ -1941,7 +1941,7 @@ __metadata:
     mrs-developer: "*"
     pofile: 1.0.10
     release-it: 14.2.1
-    simple-git: 3.5.0
+    simple-git: 3.15.0
   bin:
     addon: ./addon/index.js
     changelogupdater: ./changelogupdater.cjs
@@ -2683,7 +2683,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:^4.0.1, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.3":
+"debug@npm:^4.0.1, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.4":
   version: 4.3.4
   resolution: "debug@npm:4.3.4"
   dependencies:
@@ -4620,14 +4620,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"simple-git@npm:3.5.0":
-  version: 3.5.0
-  resolution: "simple-git@npm:3.5.0"
+"simple-git@npm:3.15.0":
+  version: 3.15.0
+  resolution: "simple-git@npm:3.15.0"
   dependencies:
     "@kwsites/file-exists": ^1.1.1
     "@kwsites/promise-deferred": ^1.1.1
-    debug: ^4.3.3
-  checksum: be078d9e898d1dea99bb15d4f6927c0f61aafde73114c7423fb0efca6d6f99012da2a2f43b5e2151a1707994cc9c75139bc12e3d307dd25da48ed1dce1167748
+    debug: ^4.3.4
+  checksum: 4733d1b769965a7608254c3a5b27532e02e60d4369bc9b397ce47159dd153344a3774739fd2602f693947ed64631b30145b970988fb007b5b779459e9abcdee8
   languageName: node
   linkType: hard
 
