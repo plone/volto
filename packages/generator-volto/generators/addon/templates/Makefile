@@ -12,14 +12,15 @@ MAKEFLAGS+=--no-builtin-rules
 
 # Project settings
 # Update the versions depending on your project requirements | Last Updated 2022-12-23
-DOCKER_IMAGE=plone/plone-backend:6.0
+DOCKER_IMAGE=plone/server-dev:6.0.2
+DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.2
 KGS=
-TESTING_ADDONS=plone.app.robotframework==2.0.0 plone.app.testing==7.0.0
 NODEBIN = ./node_modules/.bin
 
 # Plone 5 legacy
-DOCKER_IMAGE5=plone/plone-backend:5.2.9
-KGS5=plone.restapi==8.32.6 plone.volto==4.0.0 plone.rest==2.0.0
+DOCKER_IMAGE5=plone/plone-backend:5.2.10
+KGS5=plone.restapi==8.35.1 plone.volto==4.0.7 plone.rest==3.0.0
+TESTING_ADDONS=plone.app.robotframework==2.0.0 plone.app.testing==7.0.0
 
 DIR=$(shell basename $$(pwd))
 ADDON ?= "<%= addonName %>"
