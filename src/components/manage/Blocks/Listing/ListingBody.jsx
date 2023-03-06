@@ -46,9 +46,13 @@ const ListingBody = withQuerystringResults((props) => {
     <>
       {data.headline && (
         <HeadlineTag
-          className={cx('headline', variation.id, {
-            emptyListing: !listingItems?.length > 0,
-          })}
+          className={cx(
+            'headline',
+            typeof variation?.id !== undefined ? variation?.id : '',
+            {
+              emptyListing: !listingItems?.length > 0,
+            },
+          )}
         >
           {data.headline}
         </HeadlineTag>
@@ -110,7 +114,14 @@ const ListingBody = withQuerystringResults((props) => {
           </Dimmer>
         </div>
       ) : (
-        <div className={`${variation.id} emptyListing`}>
+        <div
+          className={cx(
+            typeof variation?.id !== undefined ? variation?.id : '',
+            {
+              emptyListing: !listingItems?.length > 0,
+            },
+          )}
+        >
           {hasLoaded && (
             <FormattedMessage
               id="No results found."
