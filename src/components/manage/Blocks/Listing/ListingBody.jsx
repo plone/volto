@@ -40,6 +40,10 @@ const ListingBody = withQuerystringResults((props) => {
 
   const listingRef = createRef();
 
+  const NoResults = variation?.noResultsComponent
+    ? variation.noResultsComponent
+    : config.blocks?.blocksConfig['listing'].noResultsComponent;
+
   return listingItems?.length > 0 ? (
     <div ref={listingRef}>
       <ListingBodyTemplate
@@ -84,11 +88,8 @@ const ListingBody = withQuerystringResults((props) => {
           defaultMessage="No items found in this container."
         />
       )}
-      {hasLoaded && (
-        <FormattedMessage
-          id="No results found."
-          defaultMessage="No results found."
-        />
+      {hasLoaded && NoResults && (
+        <NoResults isEditMode={isEditMode} {...data} />
       )}
       <Dimmer active={!hasLoaded} inverted>
         <Loader indeterminate size="small">
@@ -98,11 +99,8 @@ const ListingBody = withQuerystringResults((props) => {
     </div>
   ) : (
     <div>
-      {hasLoaded && (
-        <FormattedMessage
-          id="No results found."
-          defaultMessage="No results found."
-        />
+      {hasLoaded && NoResults && (
+        <NoResults isEditMode={isEditMode} {...data} />
       )}
       <Dimmer active={!hasLoaded} inverted>
         <Loader indeterminate size="small">
