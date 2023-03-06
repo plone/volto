@@ -266,18 +266,20 @@ class History extends Component {
                               />
                             </Link>
                           )}
-                          {'version' in entry && (
-                            <Dropdown.Item
-                              value={entry.version}
-                              onClick={this.onRevert}
-                            >
-                              <Icon name="undo" />{' '}
-                              <FormattedMessage
-                                id="Revert to this revision"
-                                defaultMessage="Revert to this revision"
-                              />
-                            </Dropdown.Item>
-                          )}
+                          {'version' in entry &&
+                            entry.may_revert &&
+                            entry.show_revert && (
+                              <Dropdown.Item
+                                value={entry.version}
+                                onClick={this.onRevert}
+                              >
+                                <Icon name="undo" />{' '}
+                                <FormattedMessage
+                                  id="Revert to this revision"
+                                  defaultMessage="Revert to this revision"
+                                />
+                              </Dropdown.Item>
+                            )}
                         </Dropdown.Menu>
                       </Dropdown>
                     )}
