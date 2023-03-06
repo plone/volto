@@ -250,7 +250,7 @@ full-test-acceptance: ## Runs Core Full Acceptance Testing in headless mode
 
 .PHONY: start-test-acceptance-frontend-seamless
 start-test-acceptance-frontend-seamless: ## Start the Seamless Core Acceptance Frontend Fixture
-	yarn build && RAZZLE_DEV_PROXY_API_PATH=http://localhost:55001/plone yarn start:prod
+	yarn build && yarn start:prod
 
 .PHONY: test-acceptance-seamless
 test-acceptance-seamless: ## Start Seamless Cypress Acceptance Tests

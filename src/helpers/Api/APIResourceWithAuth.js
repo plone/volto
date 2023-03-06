@@ -21,7 +21,7 @@ export const getAPIResourceWithAuth = (req) =>
     let apiPath = '';
     if (settings.internalApiPath && __SERVER__) {
       apiPath = settings.internalApiPath;
-    } else if (settings.devProxyToApiPath) {
+    } else if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
       apiPath = settings.devProxyToApiPath;
     } else {
       apiPath = settings.apiPath;
