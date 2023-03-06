@@ -299,3 +299,16 @@ export const cloneDeepSchema = (object) => {
     }
   });
 };
+
+/**
+ * Creates an array given a range of numbers
+ * @param {number} start start number from
+ * @param {number} stop stop number at
+ * @param {number} step step every each number in the sequence
+ * @returns {array} The result, eg. [0, 1, 2, 3, 4]
+ */
+export const arrayRange = (start, stop, step) =>
+  Array.from(
+    { length: (stop - start) / step + 1 },
+    (value, index) => start + index * step,
+  );

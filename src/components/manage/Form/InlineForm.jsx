@@ -7,6 +7,7 @@ import { keys, map, isEqual } from 'lodash';
 import {
   insertInArray,
   removeFromArray,
+  arrayRange,
 } from '@plone/volto/helpers/Utils/Utils';
 import { Field, Icon } from '@plone/volto/components';
 import { applySchemaDefaults } from '@plone/volto/helpers';
@@ -73,9 +74,15 @@ const InlineForm = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const [currentActiveFieldset, setCurrentActiveFieldset] = React.useState([
-    ...Array.from(Array(other.length).keys()),
-  ]);
+  const [currentActiveFieldset, setCurrentActiveFieldset] = React.useState(
+    arrayRange(0, other.length - 1, 1),
+  );
+
+  React.useEffect(() => {
+    // Edge case when the length of schema.fieldset is variable (eg. image block schema)
+    setCurrentActiveFieldset(arrayRange(0, other.length - 1, 1));
+  }, [other.length]);
+
   function handleCurrentActiveFieldset(e, blockProps) {
     const { index } = blockProps;
     if (currentActiveFieldset.includes(index)) {
