@@ -10,7 +10,7 @@
     }
   ],
   "license": "MIT",
-  "version": "6.2.5",
+  "version": "7.0.0-alpha.2",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/plone/generator-volto.git"
@@ -96,7 +96,7 @@
     }
   },
   "engines": {
-    "node": "^12 || ^14 || ^16"
+    "node": "^16 || ^18"
   },
   "dependencies": {
     "ansi-escapes": "2.0.0",
@@ -129,5 +129,8 @@
     "release-it": "^14.9.0",
     "yeoman-assert": "^3.1.0",
     "yeoman-test": "^6.1.0"
+  },
+  "resolutions": {
+    "mem-fs-editor": "^9.5.0"
   }
 }

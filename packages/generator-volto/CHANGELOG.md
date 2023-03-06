@@ -8,6 +8,27 @@
 
 <!-- towncrier release notes start -->
 
+## 7.0.0-alpha.2 (2023-03-05)
+
+### Feature
+
+- Improve stylelint config in generator, include scss support @sneridagh [#4469](https://github.com/plone/volto/issues/4469)
+
+
+## 7.0.0-alpha.1 (2023-03-04)
+
+### Bugfix
+
+- Fix ESlint failure for the generator @sneridagh [#4465](https://github.com/plone/volto/issues/4465)
+
+
+## 7.0.0-alpha.0 (2023-03-04)
+
+### Breaking
+
+- Volto 17 compliant version @davisagli [#4089](https://github.com/plone/volto/issues/4089)
+
+
 ## 6.2.5 (2023-03-02)
 
 ### Internal

@@ -61,12 +61,12 @@ const DiffField = ({
         break;
       case 'datetime':
         parts = diffWords(
-          new Intl.DateTimeFormat(language, readable_date_format).format(
-            new Date(one),
-          ),
-          new Intl.DateTimeFormat(language, readable_date_format).format(
-            new Date(two),
-          ),
+          new Intl.DateTimeFormat(language, readable_date_format)
+            .format(new Date(one))
+            .replace('\u202F', ' '),
+          new Intl.DateTimeFormat(language, readable_date_format)
+            .format(new Date(two))
+            .replace('\u202F', ' '),
         );
         break;
       case 'json':

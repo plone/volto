@@ -23,9 +23,9 @@ const FormattedDate = ({
     <time
       className={className}
       dateTime={date}
-      title={new Intl.DateTimeFormat(language, long_date_format).format(
-        new Date(toDate(date)),
-      )}
+      title={new Intl.DateTimeFormat(language, long_date_format)
+        .format(new Date(toDate(date)))
+        .replace('\u202F', ' ')}
     >
       {children
         ? children(

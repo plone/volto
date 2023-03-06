@@ -83,6 +83,7 @@
   },
   "stylelint": {
     "extends": [
+      "stylelint-config-prettier",
       "stylelint-config-idiomatic-order"
     ],
     "plugins": [
@@ -100,6 +101,12 @@
           "**/*.overrides"
         ],
         "customSyntax": "postcss-less"
+      },
+      {
+        "files": [
+          "**/*.scss"
+        ],
+        "customSyntax": "postcss-scss"
       }
     ],
     "rules": {
@@ -126,7 +133,7 @@
     "not dead"
   ],
   "engines": {
-    "node": "^14 || ^16"
+    "node": "^16 || ^18"
   },
   "dependencies": <%- dependencies %>,
   "devDependencies": {

@@ -20,8 +20,8 @@ NODEBIN = ./node_modules/.bin
 SCRIPTSPACKAGE = ./packages/scripts
 
 # Plone 5 legacy
-DOCKER_IMAGE5=plone/plone-backend:5.2.9
-KGS5=plone.restapi==8.35.1 plone.volto==4.0.7 plone.rest==3.0.0
+DOCKER_IMAGE5=plone/plone-backend:5.2.10
+KGS5=plone.restapi==8.35.0 plone.volto==4.0.7 plone.rest==3.0.0
 TESTING_ADDONS=plone.app.robotframework==2.0.0 plone.app.testing==7.0.0
 
 # Sphinx variables
@@ -86,7 +86,7 @@ build:
 
 .PHONY: build-frontend
 build-frontend:
-	yarn && RAZZLE_API_PATH=http://localhost:55001/plone yarn build
+	yarn && RAZZLE_API_PATH=http://127.0.0.1:55001/plone yarn build
 
 .PHONY: build-backend
 build-backend:  ## Build Plone 5.2
@@ -203,7 +203,7 @@ start-test-all: ## Start Test
 .PHONY: start-test-frontend
 start-test-frontend: ## Start Test Volto Frontend
 	@echo "$(GREEN)==> Start Test Volto Frontend$(RESET)"
-	RAZZLE_API_PATH=http://localhost:55001/plone yarn build && NODE_ENV=production yarn start:prod
+	RAZZLE_API_PATH=http://127.0.0.1:55001/plone yarn build && NODE_ENV=production yarn start:prod
 
 .PHONY: start-test-backend
 start-test-backend: ## Start Test Plone Backend (api folder)
@@ -222,7 +222,7 @@ test-acceptance-server-old:
 
 .PHONY: start-test-acceptance-frontend-dev
 start-test-acceptance-frontend-dev: ## Start the Core Acceptance Frontend Fixture in dev mode
-	RAZZLE_API_PATH=http://localhost:55001/plone yarn start
+	RAZZLE_API_PATH=http://127.0.0.1:55001/plone yarn start
 
 ######### Core Acceptance tests
 
@@ -232,7 +232,7 @@ start-test-acceptance-server test-acceptance-server: ## Start Test Acceptance Se
 
 .PHONY: start-test-acceptance-frontend
 start-test-acceptance-frontend: ## Start the Core Acceptance Frontend Fixture
-	RAZZLE_API_PATH=http://localhost:55001/plone yarn build && yarn start:prod
+	RAZZLE_API_PATH=http://127.0.0.1:55001/plone yarn build && yarn start:prod
 
 .PHONY: test-acceptance
 test-acceptance: ## Start Core Cypress Acceptance Tests
@@ -244,7 +244,7 @@ test-acceptance-headless: ## Start Core Cypress Acceptance Tests in headless mod
 
 .PHONY: full-test-acceptance
 full-test-acceptance: ## Runs Core Full Acceptance Testing in headless mode
-	$(NODEBIN)/start-test "make start-test-acceptance-server" http-get://localhost:55001/plone "make start-test-acceptance-frontend" http://localhost:3000 "make test-acceptance-headless"
+	$(NODEBIN)/start-test "make start-test-acceptance-server" http-get://127.0.0.1:55001/plone "make start-test-acceptance-frontend" http://127.0.0.1:3000 "make test-acceptance-headless"
 
 ######### Seamless Core Acceptance tests
 
@@ -262,13 +262,13 @@ start-test-acceptance-webserver-seamless: ## Start the seamless webserver
 
 .PHONY: full-test-acceptance-seamless
 full-test-acceptance-seamless: ## Runs Seamless Core Full Acceptance Testing in headless mode
-	$(NODEBIN)/start-test "make start-test-acceptance-server" http-get://localhost:55001/plone "make start-test-acceptance-frontend-seamless" http://localhost:3000 "make test-acceptance-headless"
+	$(NODEBIN)/start-test "make start-test-acceptance-server" http-get://127.0.0.1:55001/plone "make start-test-acceptance-frontend-seamless" http://127.0.0.1:3000 "make test-acceptance-headless"
 
 ######### Project Acceptance tests
 
 .PHONY: start-test-acceptance-frontend-project
 start-test-acceptance-frontend-project: ## Start the Project Acceptance Frontend Fixture
-	cd my-volto-app && RAZZLE_API_PATH=http://localhost:55001/plone yarn build && yarn start:prod
+	cd my-volto-app && RAZZLE_API_PATH=http://127.0.0.1:55001/plone yarn build && yarn start:prod
 
 ######### CoreSandbox Acceptance tests
 
@@ -279,11 +279,11 @@ start-test-acceptance-server-coresandbox test-acceptance-server-coresandbox: ## 
 
 .PHONY: start-test-acceptance-frontend-coresandbox
 start-test-acceptance-frontend-coresandbox: ## Start the CoreSandbox Acceptance Frontend Fixture
-	ADDONS=coresandbox RAZZLE_API_PATH=http://localhost:55001/plone yarn build && yarn start:prod
+	ADDONS=coresandbox RAZZLE_API_PATH=http://127.0.0.1:55001/plone yarn build && yarn start:prod
 
 .PHONY: start-test-acceptance-frontend-coresandbox-dev
 start-test-acceptance-frontend-coresandbox-dev: ## Start the CoreSandbox Acceptance Frontend Fixture in dev mode
-	ADDONS=coresandbox RAZZLE_API_PATH=http://localhost:55001/plone yarn start
+	ADDONS=coresandbox RAZZLE_API_PATH=http://127.0.0.1:55001/plone yarn start
 
 .PHONY: test-acceptance-coresandbox
 test-acceptance-coresandbox: ## Start CoreSandbox Cypress Acceptance Tests
@@ -295,7 +295,7 @@ test-acceptance-coresandbox-headless: ## Start CoreSandbox Cypress Acceptance Te
 
 .PHONY: full-test-acceptance-coresandbox
 full-test-acceptance-coresandbox: ## Runs CoreSandbox Full Acceptance Testing in headless mode
-	$(NODEBIN)/start-test "make start-test-acceptance-server-coresandbox" http-get://localhost:55001/plone "make start-test-acceptance-frontend-coresandbox" http://localhost:3000 "make test-acceptance-coresandbox-headless"
+	$(NODEBIN)/start-test "make start-test-acceptance-server-coresandbox" http-get://127.0.0.1:55001/plone "make start-test-acceptance-frontend-coresandbox" http://127.0.0.1:3000 "make test-acceptance-coresandbox-headless"
 
 ######### Multilingual Acceptance tests
 
@@ -305,7 +305,7 @@ start-test-acceptance-server-multilingual test-acceptance-server-multilingual: #
 
 .PHONY: start-test-acceptance-frontend-multilingual
 start-test-acceptance-frontend-multilingual: ## Start the Multilingual Acceptance Frontend Fixture
-	ADDONS=coresandbox:multilingualFixture RAZZLE_API_PATH=http://localhost:55001/plone yarn build && yarn start:prod
+	ADDONS=coresandbox:multilingualFixture RAZZLE_API_PATH=http://127.0.0.1:55001/plone yarn build && yarn start:prod
 
 .PHONY: test-acceptance-multilingual
 test-acceptance-multilingual: ## Start Multilingual Cypress Acceptance Tests
@@ -317,7 +317,7 @@ test-acceptance-multilingual-headless: ## Start Multilingual Cypress Acceptance 
 
 .PHONY: full-test-acceptance-multilingual
 full-test-acceptance-multilingual: ## Runs Multilingual Full Acceptance Testing in headless mode
-	$(NODEBIN)/start-test "make start-test-acceptance-server-multilingual" http-get://localhost:55001/plone "make start-test-acceptance-frontend-multilingual" http://localhost:3000 "make test-acceptance-multilingual-headless"
+	$(NODEBIN)/start-test "make start-test-acceptance-server-multilingual" http-get://127.0.0.1:55001/plone "make start-test-acceptance-frontend-multilingual" http://127.0.0.1:3000 "make test-acceptance-multilingual-headless"
 
 ######### WorkingCopy Acceptance tests
 
@@ -328,7 +328,7 @@ start-test-acceptance-server-workingcopy test-acceptance-server-workingcopy : ##
 
 .PHONY: start-test-acceptance-frontend-workingcopy
 start-test-acceptance-frontend-workingcopy: ## Start the WorkingCopy Acceptance Frontend Fixture
-	ADDONS=coresandbox:workingCopyFixture RAZZLE_API_PATH=http://localhost:55001/plone yarn build && yarn start:prod
+	ADDONS=coresandbox:workingCopyFixture RAZZLE_API_PATH=http://127.0.0.1:55001/plone yarn build && yarn start:prod
 
 .PHONY: test-acceptance-workingcopy
 test-acceptance-workingcopy: ## Start WorkingCopy Cypress Acceptance Tests
@@ -340,7 +340,7 @@ test-acceptance-workingcopy-headless: ## Start WorkingCopy Cypress Acceptance Te
 
 .PHONY: full-test-acceptance-workingcopy
 full-test-acceptance-workingcopy: ## Runs WorkingCopy Full Acceptance Testing in headless mode
-	$(NODEBIN)/start-test "make start-test-acceptance-server-workingcopy" http-get://localhost:55001/plone "make start-test-acceptance-frontend-workingcopy" http://localhost:3000 "make test-acceptance-workingcopy-headless"
+	$(NODEBIN)/start-test "make start-test-acceptance-server-workingcopy" http-get://127.0.0.1:55001/plone "make start-test-acceptance-frontend-workingcopy" http://127.0.0.1:3000 "make test-acceptance-workingcopy-headless"
 
 ######### Guillotina Acceptance tests
 
@@ -350,7 +350,7 @@ start-test-acceptance-server-guillotina: ## Start Guillotina Test Acceptance Ser
 
 .PHONY: start-test-acceptance-frontend-guillotina
 start-test-acceptance-frontend-guillotina: ## Start the Guillotina Acceptance Frontend Fixture
-	ADDONS=volto-guillotina RAZZLE_API_PATH=http://localhost:8081/db/web RAZZLE_LEGACY_TRAVERSE=true yarn build && yarn start:prod
+	ADDONS=volto-guillotina RAZZLE_API_PATH=http://127.0.0.1:8081/db/web RAZZLE_LEGACY_TRAVERSE=true yarn build && yarn start:prod
 
 .PHONY: test-acceptance-guillotina
 test-acceptance-guillotina: ## Start the Guillotina Cypress Acceptance Tests
@@ -362,7 +362,7 @@ test-acceptance-guillotina-headless: ## Start the Guillotina Cypress Acceptance 
 
 .PHONY: full-test-acceptance-guillotina
 full-test-acceptance-guillotina: ## Runs the Guillotina Full Acceptance Testing in headless mode
-	$(NODEBIN)/start-test "make start-test-acceptance-server-guillotina" http-get://localhost:8081 "make start-test-acceptance-frontend-guillotina" http://localhost:3000 "make test-acceptance-guillotina-headless"
+	$(NODEBIN)/start-test "make start-test-acceptance-server-guillotina" http-get://127.0.0.1:8081 "make start-test-acceptance-frontend-guillotina" http://127.0.0.1:3000 "make test-acceptance-guillotina-headless"
 
 ######### Plone 5 Acceptance tests
 
