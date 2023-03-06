@@ -93,7 +93,7 @@ export const TeaserBlockDataAdapter = ({
 
 ## Custom components in registry
 
-The Teaser block looks up a couple of components in the registry that you can provide in case you want to modify the default behavior.
+The Teaser block looks up a couple of components in the {ref}`component-registry` that you can provide in case you want to modify the default behavior.
 
 ### Image component
 
@@ -106,6 +106,19 @@ By default, it uses an `<img />` tag with the following signature.
   alt=""
   loading="lazy"
 />
+```
+
+You can register your as:
+
+```js
+  import Image from './components/Image/MyImageComponent';
+
+  ...
+
+  config.registerComponent({
+    name: 'Image',
+    component: Image,
+  });
 ```
 
 ### Content type dependent `Body` component
