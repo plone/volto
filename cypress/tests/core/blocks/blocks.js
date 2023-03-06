@@ -67,10 +67,7 @@ describe('Blocks Tests', () => {
 
   it('Add HTML block', () => {
     // when I add a maps block
-    cy.getSlate().click();
-    cy.get('button.block-add-button').click();
-    cy.get('.blocks-chooser .title').contains('Common').click();
-    cy.get('.blocks-chooser .common').contains('HTML').click();
+    cy.addNewBlock('html');
     cy.get(`.block.html .npm__react-simple-code-editor__textarea`).type(
       `<pre>This is HTML</pre>`,
     );
@@ -92,10 +89,7 @@ describe('Blocks Tests', () => {
     cy.intercept('PATCH', '*').as('save');
     cy.intercept('GET', '/**/my-page').as('content');
     // Edit
-    cy.getSlate().click();
-    cy.get('button.block-add-button').click();
-    cy.get('.blocks-chooser .title').contains('Common').click();
-    cy.get('.ui.buttons .button.slateTable').click();
+    cy.addNewBlock('table');
     cy.wait(2000);
     cy.get(
       '.celled.fixed.table thead tr th:first-child() [contenteditable="true"]',
