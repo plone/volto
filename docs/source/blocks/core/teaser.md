@@ -14,7 +14,7 @@ myst:
 ```{versionadded} Volto 16.14.0
 ```
 
-Volto comes with a Teaser block that given a content object as target is able to pull information from it and show it in the block.
+Volto comes with a Teaser block, which when given a content object as a target, is able to pull information from the targeted content object and show it in the block.
 By default, this information includes the `title`, `description`, and `preview_image`.
 It shows them in a summary layout, with the image on the left, and the title and description on the right, with the description below the title.
 
