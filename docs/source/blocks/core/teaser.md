@@ -16,7 +16,7 @@ myst:
 
 Volto comes with a Teaser block, which when given a content object as a target, is able to pull information from the targeted content object and show it in the block.
 By default, this information includes the `title`, `description`, `head_title`, and `preview_image` fields.
-It shows them in a summary layout, with the image on the left, and the title and description on the right, with the description below the title.
+It shows them in a summary layout, with the image on the left, and the head title, title, and description on the right in order from top to bottm.
 
 ## Settings
 
