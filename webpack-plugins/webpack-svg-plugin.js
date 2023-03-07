@@ -16,10 +16,17 @@ module.exports = {
           loader: 'svgo-loader',
           options: {
             plugins: [
-              { removeTitle: true },
-              { convertPathData: false },
-              { removeUselessStrokeAndFill: true },
-              { removeViewBox: false },
+              {
+                name: 'preset-default',
+                params: {
+                  overrides: {
+                    convertPathData: false,
+                    removeViewBox: false,
+                  },
+                },
+              },
+              'removeTitle',
+              'removeUselessStrokeAndFill',
             ],
           },
         },
