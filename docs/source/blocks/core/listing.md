@@ -7,9 +7,9 @@ myst:
     "keywords": "Volto, Plone, frontend, React, Upgrade, Guide, Block extensions, variations, schema enhancers, listing block"
 ---
 
-(extensions-block-extensions-mechanism)=
+(listing-block)=
 
-# Listing block extensions
+# Listing block
 
 The listing block is a special block that can be configured to run a catalog query in the backend and show the results of that search.
 
