@@ -7,7 +7,7 @@ import { GET_NAVIGATION } from '@plone/volto/constants/ActionTypes';
 
 /**
  * Get navigation.
- * @function getNavigation
+ * @function getNavigation function to get navigation
  * @param {string} url Content url.
  * @param {number} depth Depth of the navigation tree.
  * @returns {Object} Get navigation action.

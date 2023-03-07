@@ -10,6 +10,8 @@ import { GET_QUERYSTRING } from '@plone/volto/constants/ActionTypes';
  * @function getQuerystring
  * @returns {Object} Get querystring action.
  */
+
+// Below functin is performing and action of GET_QUERYSTRING when get reuqest is done
 export function getQuerystring() {
   return {
     type: GET_QUERYSTRING,

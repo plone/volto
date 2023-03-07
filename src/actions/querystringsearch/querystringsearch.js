@@ -31,6 +31,8 @@ export function getQueryStringResults(path, data, subrequest, page) {
     }
   }
 
+
+  // Below function is searching for a specific string from query that is made from the user side.
   return {
     type: GET_QUERYSTRING_RESULTS,
     subrequest,
