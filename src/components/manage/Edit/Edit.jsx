@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { asyncConnect } from '@plone/volto/helpers';
+import { asyncConnect, hasApiExpander } from '@plone/volto/helpers';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Button, Grid, Menu } from 'semantic-ui-react';
 import { Portal } from 'react-portal';
@@ -98,6 +98,7 @@ class Edit extends Component {
     }),
     schema: PropTypes.objectOf(PropTypes.any),
     objectActions: PropTypes.array,
+    newId: PropTypes.string,
   };
 
   /**
@@ -124,6 +125,7 @@ class Edit extends Component {
       isClient: false,
       error: null,
       formSelected: 'editForm',
+      newId: null,
     };
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -220,7 +222,12 @@ class Edit extends Component {
    */
   componentWillUnmount() {
     if (this.props.content?.lock?.locked) {
-      this.props.unlockContent(getBaseUrl(this.props.pathname));
+      const baseUrl = getBaseUrl(this.props.pathname);
+      const { newId } = this.state;
+      // Unlock the page, taking a possible id change into account
+      this.props.unlockContent(
+        newId ? baseUrl.replace(/\/[^/]*$/, '/' + newId) : baseUrl,
+      );
     }
   }
 
@@ -233,6 +240,10 @@ class Edit extends Component {
   onSubmit(data) {
     const lock_token = this.props.content?.lock?.token;
     const headers = lock_token ? { 'Lock-Token': lock_token } : {};
+    // if the id has changed, remember it for unlock control
+    if ('id' in data) {
+      this.setState({ newId: data.id });
+    }
     this.props.updateContent(getBaseUrl(this.props.pathname), data, headers);
   }
 
@@ -464,7 +475,10 @@ export default compose(
     {
       key: 'actions',
       promise: async ({ location, store: { dispatch } }) => {
-        await dispatch(listActions(getBaseUrl(location.pathname)));
+        // Do not trigger the actions action if the expander is present
+        if (!hasApiExpander('actions', getBaseUrl(location.pathname))) {
+          return await dispatch(listActions(getBaseUrl(location.pathname)));
+        }
       },
     },
     {

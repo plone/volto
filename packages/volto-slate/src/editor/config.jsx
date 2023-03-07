@@ -3,6 +3,7 @@ import config from '@plone/volto/registry';
 
 import boldIcon from '@plone/volto/icons/bold.svg';
 import codeIcon from '@plone/volto/icons/code.svg';
+import formatClearIcon from '@plone/volto/icons/format-clear.svg';
 import headingIcon from '@plone/volto/icons/heading.svg';
 import italicIcon from '@plone/volto/icons/italic.svg';
 import listBulletIcon from '@plone/volto/icons/list-bullet.svg';
@@ -20,6 +21,7 @@ import {
   MarkButton,
   MarkElementButton,
   BlockButton,
+  ClearFormattingButton,
   Separator,
   Expando,
 } from './ui';
@@ -30,6 +32,7 @@ import {
   withDeleteSelectionOnEnter,
   withDeserializers,
   normalizeNode,
+  normalizeExternalData,
 } from './extensions';
 import {
   // inlineTagDeserializer,
@@ -121,6 +124,9 @@ export const buttons = {
       {...props}
     />
   ),
+  clearformatting: (props) => (
+    <ClearFormattingButton title="Clear formatting" icon={formatClearIcon} />
+  ),
   'numbered-list': (props) => (
     <BlockButton
       title="Numbered list"
@@ -145,6 +151,8 @@ export const defaultToolbarButtons = [
   'heading-two',
   'heading-three',
   'heading-four',
+  'separator',
+  'clearformatting',
   'separator',
   'sub',
   'sup',
@@ -191,6 +199,7 @@ export const extensions = [
   insertData,
   isInline,
   normalizeNode,
+  normalizeExternalData,
 ];
 
 // Default hotkeys and the format they trigger
@@ -237,9 +246,7 @@ export const elements = {
   },
 
   div: ({ attributes, children }) => <div {...attributes}>{children}</div>,
-  p: ({ attributes, children }) => {
-    return <p {...attributes}>{children}</p>;
-  },
+  p: ({ attributes, children, element }) => <p {...attributes}>{children}</p>,
 
   // While usual slate editor consider these to be Leafs, we treat them as
   // inline elements because they can sometimes contain elements (ex:
@@ -328,3 +335,9 @@ export const runtimeDecorators = [highlightSelection]; // , highlightByType
 
 // Only these types of element nodes are allowed in the headlines
 export const allowedHeadlineElements = ['em', 'i'];
+
+// Scroll into view when typing
+export const scrollIntoView = true;
+
+// In inline toolbar only one tag should be active at a time.
+export const exclusiveElements = [['sup', 'sub']];

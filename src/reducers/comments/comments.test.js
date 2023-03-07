@@ -26,6 +26,7 @@ describe('Content reducer', () => {
       },
       items: [],
       items_total: null,
+      permissions: {},
       next: null,
     });
   });

@@ -152,13 +152,8 @@ export const DefaultTextBlockEditor = (props) => {
       if (defaultSelection) {
         const selection = parseDefaultSelection(editor, defaultSelection);
         if (selection) {
-          setTimeout(() => {
-            Transforms.select(editor, selection);
-            saveSlateBlockSelection(block, null);
-          }, 120);
-          // TODO: use React sync render API
-          // without setTimeout, the join is not correct. Slate uses internally
-          // a 100ms throttle, so setting to a bigger value seems to help
+          Transforms.select(editor, selection);
+          saveSlateBlockSelection(block, null);
         }
       }
     },
@@ -244,6 +239,7 @@ export const DefaultTextBlockEditor = (props) => {
                   selected={selected}
                   placeholder={placeholder}
                   slateSettings={slateSettings}
+                  editableProps={{ 'aria-multiline': 'false' }}
                 />
                 {DEBUG ? <div>{block}</div> : ''}
               </>
@@ -251,21 +247,23 @@ export const DefaultTextBlockEditor = (props) => {
           }}
         </Dropzone>
 
-        {selected && !data.plaintext?.trim() && !disableNewBlocks && (
-          <BlockChooserButton
-            data={data}
-            block={block}
-            onInsertBlock={(id, value) => {
-              onSelectBlock(onInsertBlock(id, value));
-            }}
-            onMutateBlock={onMutateBlock}
-            allowedBlocks={allowedBlocks}
-            blocksConfig={blocksConfig}
-            size="24px"
-            className="block-add-button"
-            properties={properties}
-          />
-        )}
+        {!config.experimental.addBlockButton.enabled &&
+          selected &&
+          !data.plaintext?.trim() &&
+          !disableNewBlocks && (
+            <BlockChooserButton
+              data={data}
+              block={block}
+              onInsertBlock={(id, value) => {
+                onSelectBlock(onInsertBlock(id, value));
+              }}
+              onMutateBlock={onMutateBlock}
+              allowedBlocks={allowedBlocks}
+              blocksConfig={blocksConfig}
+              size="24px"
+              properties={properties}
+            />
+          )}
 
         <SidebarPortal selected={selected}>
           <div id="slate-plugin-sidebar"></div>
@@ -281,6 +279,7 @@ export const DefaultTextBlockEditor = (props) => {
                 block={block}
                 schema={schema}
                 title={schema.title}
+                onChangeBlock={onChangeBlock}
                 onChangeField={(id, value) => {
                   onChangeBlock(block, {
                     ...data,

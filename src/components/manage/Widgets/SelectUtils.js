@@ -99,6 +99,7 @@ export function normalizeValue(choices, value, intl) {
         }
       : {};
   }
+
   if (value === 'no-value') {
     return {
       label: intl.formatMessage(messages.no_value),

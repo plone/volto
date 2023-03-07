@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Legacy browser support with polyfills, babel-env, and pre- and post-transpiling"
-  "property=og:description": "Legacy browser support with polyfills, babel-env, and pre- and post-transpiling"
-  "property=og:title": "Legacy Browser Support (IE11 compatibility)"
-  "keywords": "Volto, Plone, frontend, React, IE11 compatability, polyfills, legacy browser support"
+myst:
+  html_meta:
+    "description": "Legacy browser support with polyfills, babel-env, and pre- and post-transpiling"
+    "property=og:description": "Legacy browser support with polyfills, babel-env, and pre- and post-transpiling"
+    "property=og:title": "Legacy Browser Support (IE11 compatibility)"
+    "keywords": "Volto, Plone, frontend, React, IE11 compatability, polyfills, legacy browser support"
 ---
 
 # Legacy Browser Support (IE11 compatibility)
@@ -38,7 +39,7 @@ import '@babel/polyfill';
 ```
 
 ```{seealso}
-See https://babeljs.io/docs/en/babel-polyfill for more updated information
+See https://babeljs.io/docs/babel-polyfill for more updated information
 ```
 
 ## babel-env

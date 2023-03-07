@@ -4,27 +4,29 @@ import { messages } from '../MessageLabels/MessageLabels';
 /**
  * Will return the intl message if invalid
  * @param {boolean} isValid
- * @param {string} maxCriterion
+ * @param {string} criterion
  * @param {string | number} valueToCompare can compare '47' < 50
  * @param {Function} intlFunc
  */
-const validationMessage = (isValid, maxCriterion, valueToCompare, intlFunc) =>
+const validationMessage = (isValid, criterion, valueToCompare, intlFunc) =>
   !isValid
-    ? intlFunc(messages[maxCriterion], {
+    ? intlFunc(messages[criterion], {
         len: valueToCompare,
       })
     : null;
+
 /**
  * Returns if based on the criterion the value is lower or equal
  * @param {string | number} value can compare '47' < 50
  * @param {string | number} valueToCompare can compare '47' < 50
- * @param {string} minCriterion
+ * @param {string} maxCriterion
  * @param {Function} intlFunc
  */
-const isMaxPropertyValid = (value, valueToCompare, minCriterion, intlFunc) => {
+const isMaxPropertyValid = (value, valueToCompare, maxCriterion, intlFunc) => {
   const isValid = valueToCompare !== undefined ? value <= valueToCompare : true;
-  return validationMessage(isValid, minCriterion, valueToCompare, intlFunc);
+  return validationMessage(isValid, maxCriterion, valueToCompare, intlFunc);
 };
+
 /**
  * Returns if based on the criterion the value is higher or equal
  * @param {string | number} value can compare '47' < 50
@@ -32,15 +34,17 @@ const isMaxPropertyValid = (value, valueToCompare, minCriterion, intlFunc) => {
  * @param {string} minCriterion
  * @param {Function} intlFunc
  */
-const isMinPropertyValid = (value, valueToCompare, maxCriterion, intlFunc) => {
+const isMinPropertyValid = (value, valueToCompare, minCriterion, intlFunc) => {
   const isValid = valueToCompare !== undefined ? value >= valueToCompare : true;
-  return validationMessage(isValid, maxCriterion, valueToCompare, intlFunc);
+  return validationMessage(isValid, minCriterion, valueToCompare, intlFunc);
 };
 
 const widgetValidation = {
   email: {
     isValidEmail: (emailValue, emailObj, intlFunc) => {
-      const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+      // Email Regex taken from from WHATWG living standard:
+      // https://html.spec.whatwg.org/multipage/input.html#e-mail-state-(type=email)
+      const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
       const isValid = emailRegex.test(emailValue);
       return !isValid ? intlFunc(messages.isValidEmail) : null;
     },
@@ -107,7 +111,7 @@ const widgetValidation = {
     maxLength: (value, itemObj, intlFunc) =>
       isMaxPropertyValid(
         value.length,
-        itemObj.maxLengthj,
+        itemObj.maxLength,
         'maxLength',
         intlFunc,
       ),
@@ -208,10 +212,8 @@ const validateRequiredFields = (
       !schema.properties[requiredField].readonly &&
       isEmpty
     ) {
-      const requiredFieldName =
-        schema.properties[requiredField].title || requiredField;
-      errors[requiredFieldName] = [];
-      errors[requiredFieldName].push(formatMessage(messages.required));
+      errors[requiredField] = [];
+      errors[requiredField].push(formatMessage(messages.required));
     }
   });
 

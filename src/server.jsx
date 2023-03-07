@@ -217,17 +217,22 @@ server.get('/*', (req, res) => {
 
   loadOnServer({ store, location, routes, api })
     .then(() => {
-      // The content info is in the store at this point thanks to the asynconnect
-      // features, then we can force the current language info into the store when
-      // coming from an SSR request
-      const contentLang =
-        store.getState().content.data?.language?.token ||
-        config.settings.defaultLanguage;
-
       const cookie_lang =
         req.universalCookies.get('I18N_LANGUAGE') ||
         config.settings.defaultLanguage ||
         req.headers['accept-language'];
+
+      // The content info is in the store at this point thanks to the asynconnect
+      // features, then we can force the current language info into the store when
+      // coming from an SSR request
+
+      // TODO: there is a bug here with content that, for any reason, doesn't
+      // present the language token field, for some reason. In this case, we
+      // should follow the cookie rather then switching the language
+      const contentLang = store.getState().content.get?.error
+        ? cookie_lang
+        : store.getState().content.data?.language?.token ||
+          config.settings.defaultLanguage;
 
       if (cookie_lang !== contentLang) {
         const newLocale = toLangUnderscoreRegion(

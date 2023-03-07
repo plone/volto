@@ -37,6 +37,7 @@ CNAME
 entrypoint.sh
 Jenkinsfile
 Makefile
+.husky
 
 # Logs
 logs
@@ -88,6 +89,15 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
+# Volto logos
+./logos
+
+# Razzle cache
+cache/
+
+# Github
+.github
+
 # dotenv environment variables file
 .env
 
@@ -99,3 +109,12 @@ styleguide.config
 packages/*
 !packages/volto-slate
 .tx
+
+# yarn 3
+.yarn
+.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

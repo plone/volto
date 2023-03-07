@@ -48,7 +48,9 @@ export function formatDate({
     : short_date_format;
 
   const formatter = new Intl.DateTimeFormat(locale, format);
-  return formatToParts ? formatter.formatToParts(date) : formatter.format(date);
+  return formatToParts
+    ? formatter.formatToParts(date)
+    : formatter.format(date).replace('\u202F', ' ');
 }
 
 export function formatRelativeDate({
@@ -93,5 +95,5 @@ export function formatRelativeDate({
     ? ''
     : formatToParts
     ? formatter.formatToParts(v, tag)
-    : formatter.format(v, tag); // use "now" ?
+    : formatter.format(v, tag).replace('\u202F', ' '); // use "now" ?
 }

@@ -110,6 +110,13 @@ export function createDefaultBlock(children) {
   };
 }
 
+export function createBlock(type, children) {
+  return {
+    type,
+    children: children || [{ text: '' }],
+  };
+}
+
 export function createEmptyParagraph() {
   // TODO: rename to createEmptyBlock
   return {
@@ -190,10 +197,41 @@ export const toggleInlineFormat = (editor, format) => {
     return;
   }
 
+  const exclusiveElements = config.settings.slate.exclusiveElements;
+  const matchedElements = exclusiveTags(exclusiveElements, format);
+  let alreadyOneIsActive =
+    !!matchedElements &&
+    (matchedElements.indexOf(format) === 0
+      ? isBlockActive(editor, matchedElements[1])
+      : isBlockActive(editor, matchedElements[0]));
+
+  if (alreadyOneIsActive) {
+    Transforms.unwrapNodes(editor, {
+      match: (n) => matchedElements.includes(n.type),
+      split: false,
+    });
+
+    const block = { type: format, children: [] };
+    Transforms.wrapNodes(editor, block, { split: true });
+    return;
+  }
+
   // `children` property is added automatically as an empty array then
   // normalized
   const block = { type: defaultFormat };
   Transforms.wrapNodes(editor, block, { split: true });
+};
+
+const exclusiveTags = (exclusiveElements, format) => {
+  let elements = null;
+  for (const item of exclusiveElements) {
+    if (item.includes(format)) {
+      elements = item;
+      break;
+    }
+  }
+
+  return elements;
 };
 
 export const toggleBlock = (editor, format, allowedChildren) => {
@@ -205,7 +243,6 @@ export const toggleBlock = (editor, format, allowedChildren) => {
   const isListItem = isBlockActive(editor, slate.listItemType);
   const isActive = isBlockActive(editor, format);
   const wantsList = listTypes.includes(format);
-  // console.log({ isListItem, isActive, wantsList, format });
 
   if (isListItem && !wantsList) {
     toggleFormatAsListItem(editor, format);
@@ -216,7 +253,7 @@ export const toggleBlock = (editor, format, allowedChildren) => {
   } else if (!isListItem && !wantsList) {
     toggleFormat(editor, format, allowedChildren);
   } else if (isListItem && wantsList && isActive) {
-    toggleFormatAsListItem(editor, slate.defaultBlockType);
+    clearFormatting(editor);
   } else {
     console.warn('toggleBlock case not covered, please examine:', {
       wantsList,
@@ -316,4 +353,16 @@ export const getAllBlocks = (properties, blocks) => {
     });
   }
   return blocks;
+};
+
+export const clearFormatting = (editor) => {
+  const { slate } = config.settings;
+  Transforms.setNodes(editor, {
+    type: slate.defaultBlockType,
+  });
+  Transforms.unwrapNodes(editor, {
+    match: (n) => n.type && n.type !== slate.defaultBlockType,
+    mode: 'all',
+    split: false,
+  });
 };

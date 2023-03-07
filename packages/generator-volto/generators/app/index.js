@@ -105,6 +105,9 @@ Run "npm install -g @plone/generator-volto" to update.`,
       this.log(chalk.red('Getting latest canary (alpha) Volto version'));
       voltoVersion = await utils.getLatestCanaryVoltoVersion();
       this.log(`Using latest canary (alpha) Volto version: ${voltoVersion}`);
+    } else if (this.opts.volto === '.') {
+      voltoVersion = '*';
+      this.voltoYarnLock = this.fs.read('yarn.lock');
     } else if (this.opts.volto) {
       voltoVersion = this.opts.volto;
       this.log(`Using chosen Volto version: ${voltoVersion}`);
@@ -114,8 +117,10 @@ Run "npm install -g @plone/generator-volto" to update.`,
       this.log(`Using latest released Volto version: ${voltoVersion}`);
     }
 
-    this.log(chalk.red("Retrieving Volto's yarn.lock"));
-    this.voltoYarnLock = await utils.getVoltoYarnLock(voltoVersion);
+    if (!this.voltoYarnLock) {
+      this.log(chalk.red("Retrieving Volto's yarn.lock"));
+      this.voltoYarnLock = await utils.getVoltoYarnLock(voltoVersion);
+    }
 
     this.globals = {
       addons: [],
@@ -222,24 +227,19 @@ Run "npm install -g @plone/generator-volto" to update.`,
       this.destinationPath(base, 'package.json'),
       this.globals,
     );
-
-    this.fs.write(this.destinationPath(base, 'yarn.lock'), this.voltoYarnLock);
-
-    this.fs.copy(this.templatePath(), this.destinationPath(base), {
-      globOptions: {
-        ignore: ['**/*.tpl', '**/*~'],
-        dot: true,
-      },
-    });
-
     this.fs.copyTpl(
       this.templatePath('.gitignorefile'),
       this.destinationPath(base, '.gitignore'),
       this.globals,
     );
+    this.fs.write(this.destinationPath(base, 'yarn.lock'), this.voltoYarnLock);
 
-    this.fs.delete(this.destinationPath(base, 'package.json.tpl'));
-    this.fs.delete(this.destinationPath(base, '.gitignorefile'));
+    this.fs.copy(this.templatePath(), this.destinationPath(base), {
+      globOptions: {
+        ignore: ['**/*.tpl', '**/*~', '**/.gitignorefile'],
+        dot: true,
+      },
+    });
   }
 
   install() {

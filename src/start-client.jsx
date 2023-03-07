@@ -16,18 +16,13 @@ import config from '@plone/volto/registry';
 import configureStore from '@plone/volto/store';
 import { Api, persistAuthToken, ScrollToTop } from '@plone/volto/helpers';
 
-import * as Sentry from '@sentry/browser';
-import initSentry from '@plone/volto/sentry';
-
 export const history = createBrowserHistory();
-
-initSentry(Sentry);
 
 function reactIntlErrorHandler(error) {
   debug('i18n')(error);
 }
 
-export default () => {
+export default function client() {
   const api = new Api();
 
   const store = configureStore(window.__data, history, api);
@@ -78,4 +73,4 @@ export default () => {
       document.getElementById('main'),
     );
   });
-};
+}

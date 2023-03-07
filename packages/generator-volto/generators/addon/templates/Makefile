@@ -11,6 +11,16 @@ MAKEFLAGS+=--warn-undefined-variables
 MAKEFLAGS+=--no-builtin-rules
 
 # Project settings
+# Update the versions depending on your project requirements | Last Updated 2022-12-23
+DOCKER_IMAGE=plone/server-dev:6.0.2
+DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.2
+KGS=
+NODEBIN = ./node_modules/.bin
+
+# Plone 5 legacy
+DOCKER_IMAGE5=plone/plone-backend:5.2.10
+KGS5=plone.restapi==8.35.1 plone.volto==4.0.7 plone.rest==3.0.0
+TESTING_ADDONS=plone.app.robotframework==2.0.0 plone.app.testing==7.0.0
 
 DIR=$(shell basename $$(pwd))
 ADDON ?= "<%= addonName %>"
@@ -51,7 +61,7 @@ start-test-backend: ## Start Test Plone Backend
 .PHONY: start-backend-docker
 start-backend-docker:		## Starts a Docker-based backend
 	@echo "$(GREEN)==> Start Docker-based Plone Backend$(RESET)"
-	docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.volto" -e ZCML="plone.volto.cors" plone
+	docker run -it --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS='$(KGS)' $(DOCKER_IMAGE)
 
 .PHONY: help
 help:		## Show this help.

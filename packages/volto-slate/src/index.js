@@ -31,7 +31,10 @@ export default (config) => {
     'numbered-list',
     'bulleted-list',
     'blockquote',
+    'styleMenu',
   ];
+
+  config.settings.slate.scrollIntoView = false;
 
   config.addonReducers = {
     ...config.addonReducers,

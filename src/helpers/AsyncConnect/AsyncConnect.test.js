@@ -10,6 +10,7 @@ import reduxAsyncConnect from '@plone/volto/reducers/asyncConnect/asyncConnect';
 
 import { AsyncConnectWithContext, AsyncConnect } from './AsyncConnect'; // , AsyncConnect
 import { asyncConnect, loadOnServer } from './';
+import { matchAllRoutes } from './utils';
 
 import '@testing-library/jest-dom/extend-expect';
 
@@ -498,5 +499,28 @@ describe('<ReduxAsyncConnect />', () => {
       );
       expect(serial).toBe(1);
     });
+  });
+
+  it('Matches multiple asyncPropExtenders', function () {
+    const routes = [
+      {
+        key: 'nav',
+        path: '/',
+      },
+      {
+        key: 'footer',
+        path: '/',
+      },
+      {
+        key: 'breads',
+        path: '/something',
+      },
+    ];
+    const match = matchAllRoutes(routes, '/en');
+    expect(match.length).toBe(2);
+    expect(match.map(({ route }) => route.key)).toStrictEqual([
+      'nav',
+      'footer',
+    ]);
   });
 });
