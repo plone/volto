@@ -19,9 +19,11 @@ export default () => {
       } else {
         console.log(`API server (API_PATH) is set to: ${app.apiPath}`);
       }
-      if (__DEVELOPMENT__ && app.devProxyToApiPath)
+      if (app.devProxyToApiPath)
         console.log(
-          `Using internal proxy: ${app.publicURL} -> ${app.devProxyToApiPath}`,
+          `Proxying API requests from ${app.publicURL}/++api++ to ${
+            app.devProxyToApiPath
+          }${app.proxyRewriteTarget || ''}`,
         );
       console.log(`🎭 Volto started at ${bind_address}:${port} 🚀`);
 
