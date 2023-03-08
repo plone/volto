@@ -1,0 +1,5 @@
+Makeing the Site setup page responsive for small screen devices.
+
+ <Grid doubling columns={6}>
+
+ Grid/>
