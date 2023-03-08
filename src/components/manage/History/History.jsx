@@ -128,21 +128,12 @@ class History extends Component {
     // We reverse them again
     reverse(entries);
 
-    // We identify the latest 'versioning' entry and mark the others with
-    // show the revert button property
-    let mark = false;
-    return entries.map((item) => {
-      if (item.type === 'versioning' && !mark) {
-        mark = true;
-        return item;
-      }
-
-      if (item.type === 'versioning' && mark) {
-        return { ...item, show_revert_button: true };
-      }
-
-      return item;
-    });
+    // We identify the latest 'versioning' entry and mark it
+    const current_version = find(entries, (item) => item.type === 'versioning');
+    if (current_version) {
+      current_version.is_current = true;
+    }
+    return entries;
   };
 
   /**
@@ -292,7 +283,7 @@ class History extends Component {
                           )}
                           {'version' in entry &&
                             entry.may_revert &&
-                            entry.show_revert_button && (
+                            !entry.is_current && (
                               <Dropdown.Item
                                 value={entry.version}
                                 onClick={this.onRevert}
