@@ -8,6 +8,35 @@
 
 <!-- towncrier release notes start -->
 
+## 17.0.0-alpha.1 (2023-03-09)
+
+### Feature
+
+- - Add directive to cache stable resources in browser or intermediate server for 365 days by default directly in the SSR Express server, static resource that could change after a new deployment for 1 minute. @mamico [#2216](https://github.com/plone/volto/issues/2216)
+- Use popperjs in BlockChooser, move the markup to the bottom of the body tag. @sneridagh [#4141](https://github.com/plone/volto/issues/4141)
+- Improvements to the dev API proxy:
+  - Prefer RAZZLE_INTERNAL_API_PATH over RAZZLE_API_PATH as the target of the proxy.
+    The target of the API proxy is now always logged on startup, even in production mode.
+  - Support proxying to a backend served over https. For this configuration it
+    might be necessary to set RAZZLE_DEV_PROXY_INSECURE=1 if the backend
+    certificate can't be verified.
+
+  [davisagli] [#4434](https://github.com/plone/volto/issues/4434)
+
+### Bugfix
+
+- fix: newsitem and event views wrapper classNames @nzambello [#4443](https://github.com/plone/volto/issues/4443)
+- Fix weird GHA failure on config option not supported @sneridagh [#4466](https://github.com/plone/volto/issues/4466)
+- Fix history view dropdown for first entry, showing 'Revert to this version option' always @sneridagh [#4471](https://github.com/plone/volto/issues/4471)
+- Fix order of row of long table in edit and view mode @iFlameing [#4473](https://github.com/plone/volto/issues/4473)
+- Improve flaky test in autofocus Cypress tests @sneridagh [#4475](https://github.com/plone/volto/issues/4475)
+
+### Documentation
+
+- Complete teaser docs, add new section in `Blocks`: `Core Blocks developers notes` @sneridagh [#4461](https://github.com/plone/volto/issues/4461)
+- Change from links to inline literals in `CHANGELOG.md` to fix linkcheckbroken. @stevepiercy [#4470](https://github.com/plone/volto/issues/4470)
+
+
 ## 17.0.0-alpha.0 (2023-03-04)
 
 ### Breaking
