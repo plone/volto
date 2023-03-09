@@ -302,6 +302,7 @@
     "is-hotkey": "0.2.0",
     "is-url": "1.2.4",
     "jest-file": "1.0.0",
+    "jotai": "2.0.3",
     "jsonwebtoken": "8.3.0",
     "jwt-decode": "2.2.0",
     "less": "3.11.1",

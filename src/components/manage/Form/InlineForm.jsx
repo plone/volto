@@ -15,6 +15,9 @@ import { applySchemaDefaults } from '@plone/volto/helpers';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
 
+import { useAtom } from 'jotai';
+import { inlineFormFieldsetsState } from './InlineFormState';
+
 const messages = defineMessages({
   editValues: {
     id: 'Edit values',
@@ -74,14 +77,13 @@ const InlineForm = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const [currentActiveFieldset, setCurrentActiveFieldset] = React.useState(
-    arrayRange(0, other.length - 1, 1),
+  const [currentActiveFieldset, setCurrentActiveFieldset] = useAtom(
+    inlineFormFieldsetsState({
+      name: block,
+      fielsetList: other,
+      initialState: arrayRange(0, other.length - 1, 1),
+    }),
   );
-
-  React.useEffect(() => {
-    // Edge case when the length of schema.fieldset is variable (eg. image block schema)
-    setCurrentActiveFieldset(arrayRange(0, other.length - 1, 1));
-  }, [other.length]);
 
   function handleCurrentActiveFieldset(e, blockProps) {
     const { index } = blockProps;
