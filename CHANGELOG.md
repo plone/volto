@@ -1113,11 +1113,6 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 
 ## 16.0.0-alpha.34 (2022-09-17)
 
-### Breaking
-
-- Add directive to cache stable resources in browser or intermediate server for 365 days,
-  static resource that could change after a new deployment for 1 minute. @mamico
-
 ### Feature
 
 - Added new components `Aliases` for aliases control in Volto. Alias management in both controlpanel and object view. @andreiggr @avoinea
