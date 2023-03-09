@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 16.16.0 (2023-03-09)
+
+### Feature
+
+- - Add directive to cache stable resources in browser or intermediate server for 365 days by default directly in the SSR Express server, static resource that could change after a new deployment for 1 minute. @mamico [#2216](https://github.com/plone/volto/issues/2216)
+
+
 ## 16.15.0 (2023-03-08)
 
 ### Feature
