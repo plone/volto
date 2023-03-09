@@ -4,6 +4,8 @@ import { Accordion, Segment, Message } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import AnimateHeight from 'react-animate-height';
 import { keys, map, isEqual } from 'lodash';
+import { useAtom } from 'jotai';
+import { inlineFormFieldsetsState } from './InlineFormState';
 import {
   insertInArray,
   removeFromArray,
@@ -14,9 +16,6 @@ import { applySchemaDefaults } from '@plone/volto/helpers';
 
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
-
-import { useAtom } from 'jotai';
-import { inlineFormFieldsetsState } from './InlineFormState';
 
 const messages = defineMessages({
   editValues: {
