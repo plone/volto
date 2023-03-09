@@ -90,6 +90,7 @@ let config = {
     // https://6.docs.plone.org/volto/deploying/seamless-mode.html
     devProxyToApiPath:
       process.env.RAZZLE_DEV_PROXY_API_PATH ||
+      process.env.RAZZLE_INTERNAL_API_PATH ||
       process.env.RAZZLE_API_PATH ||
       'http://localhost:8080/Plone', // Set it to '' for disabling the proxy
     // proxyRewriteTarget Set it for set a custom target for the proxy or overide the internal VHM rewrite

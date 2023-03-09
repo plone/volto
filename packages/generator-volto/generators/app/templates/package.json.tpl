@@ -83,6 +83,7 @@
   },
   "stylelint": {
     "extends": [
+      "stylelint-config-prettier",
       "stylelint-config-idiomatic-order"
     ],
     "plugins": [
@@ -100,6 +101,12 @@
           "**/*.overrides"
         ],
         "customSyntax": "postcss-less"
+      },
+      {
+        "files": [
+          "**/*.scss"
+        ],
+        "customSyntax": "postcss-scss"
       }
     ],
     "rules": {

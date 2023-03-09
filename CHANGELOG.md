@@ -31,6 +31,31 @@
 - Use a universal static path for both documentation and volto repos. @stevepiercy [#4376](https://github.com/plone/volto/issues/4376)
 
 
+## 16.15.0 (2023-03-08)
+
+### Feature
+
+- Improvements to the dev API proxy:
+  - Prefer RAZZLE_INTERNAL_API_PATH over RAZZLE_API_PATH as the target of the proxy.
+    The target of the API proxy is now always logged on startup, even in production mode.
+  - Support proxying to a backend served over https. For this configuration it
+    might be necessary to set RAZZLE_DEV_PROXY_INSECURE=1 if the backend
+    certificate can't be verified.
+
+  [davisagli] [#4434](https://github.com/plone/volto/issues/4434)
+
+### Bugfix
+
+- fix: newsitem and event views wrapper classNames @nzambello [#4443](https://github.com/plone/volto/issues/4443)
+- Fix weird GHA failure on config option not supported @sneridagh [#4466](https://github.com/plone/volto/issues/4466)
+- Fix history view dropdown for first entry, showing 'Revert to this version option' always @sneridagh [#4471](https://github.com/plone/volto/issues/4471)
+- Fix order of row of long table in edit and view mode @iFlameing [#4473](https://github.com/plone/volto/issues/4473)
+
+### Documentation
+
+- Complete teaser docs, add new section in `Blocks`: `Core Blocks developers notes` @sneridagh [#4461](https://github.com/plone/volto/issues/4461)
+
+
 ## 16.14.0 (2023-03-03)
 
 ### Feature
@@ -72,11 +97,11 @@
 - Add the intl string 'Uploading image' to the image block @bipoza [#4180](https://github.com/plone/volto/issues/4180)
 - Fix link integrity overlay is too narrowed @iFlameing [#4399](https://github.com/plone/volto/issues/4399)
 - Fix External link Icon shows up in Grid-text block @iRohitSingh [#4400](https://github.com/plone/volto/issues/4400)
-- Fix broken links: babeljs.io/… @ksuess [#4414](https://github.com/plone/volto/issues/4414)
+- Fix broken links: `babeljs.io/…` @ksuess [#4414](https://github.com/plone/volto/issues/4414)
 
 ### Documentation
 
-- Remove inclusion of CHANGELOG.md for volto repo only. Fixes https://github.com/plone/documentation/issues/1431. @stevepiercy [#4404](https://github.com/plone/volto/issues/4404)
+- Remove inclusion of `CHANGELOG.md` for volto repo only. Fixes https://github.com/plone/documentation/issues/1431. @stevepiercy [#4404](https://github.com/plone/volto/issues/4404)
 
 
 ## 16.11.0 (2023-02-13)
@@ -1087,8 +1112,6 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Ignore redirect that requires login to GitHub. @stevepiercy
 
 ## 16.0.0-alpha.34 (2022-09-17)
-
-### Breaking
 
 ### Feature
 
