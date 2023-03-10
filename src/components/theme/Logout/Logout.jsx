@@ -3,7 +3,7 @@
  * @module components/theme/Logout/Logout
  */
 
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -27,37 +27,15 @@ const messages = defineMessages({
 });
 
 /**
- * Logout class.
- * @class Logout
- * @extends Component
+ * Logout function.
+ * @function Logout
  */
-class Logout extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    logout: PropTypes.func.isRequired,
-    purgeMessages: PropTypes.func.isRequired,
-    query: PropTypes.shape({
-      return_url: PropTypes.string,
-    }),
-  };
 
-  /**
-   * Default properties.
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    query: null,
-  };
-
-  componentDidMount() {
-    this.props.logout();
-    this.props.purgeMessages();
-  }
+const Logout = (props) => {
+  useEffect(() => {
+    props.logout();
+    props.purgeMessages();
+  }, []);
 
   /**
    * Component will receive props
@@ -65,31 +43,53 @@ class Logout extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (!nextProps.token) {
-      this.props.history.replace(this.props.returnUrl || '/');
+
+  useEffect(() => {
+    if (!props.token) {
+      props.history.replace(props.returnUrl || '/');
       if (!toast.isActive('loggedOut')) {
         toast.info(
           <Toast
             info
-            title={this.props.intl.formatMessage(messages.loggedOut)}
-            content={this.props.intl.formatMessage(messages.loggedOutContent)}
+            title={props.intl.formatMessage(messages.loggedOut)}
+            content={props.intl.formatMessage(messages.loggedOutContent)}
           />,
           { autoClose: false, toastId: 'loggedOut' },
         );
       }
     }
-  }
+  }, [props]);
 
   /**
    * Render method.
-   * @method render
+   * @method return similar to render in Class Component
    * @returns {string} Markup for the component.
    */
-  render() {
-    return <Login location={{ query: this.props.location.query }} />;
-  }
-}
+  return <Login location={{ query: props.location.query }} />;
+};
+
+/**
+ * Property types.
+ * @property {Object} propTypes Property types.
+ */
+
+Logout.propTypes = {
+  logout: PropTypes.func.isRequired,
+  purgeMessages: PropTypes.func.isRequired,
+  query: PropTypes.shape({
+    return_url: PropTypes.string,
+  }),
+};
+
+/**
+ * Default properties.
+ * @property {Object} defaultProps Default properties.
+ */
+
+Logout.defaultProps = {
+  query: null,
+};
+
 export default compose(
   injectIntl,
   connect(
