@@ -65,19 +65,22 @@ const DragDropList = (props) => {
   // queueing timed action
   const timer = useRef(null);
 
-  const onDragStart = React.useCallback((event) => {
-    clearTimeout(timer.current);
-    const queryAttr = 'data-rbd-draggable-id';
-    const domQuery = `[${queryAttr}='${event.draggableId}']`;
-    const draggedDOM = document.querySelector(domQuery);
-    if (!draggedDOM) {
-      return;
-    }
-    const sourceIndex = event.source.index;
-    setPlaceholderProps(
-      getPlaceholder(draggedDOM, sourceIndex, sourceIndex, uid),
-    );
-  }, []);
+  const onDragStart = React.useCallback(
+    (event) => {
+      clearTimeout(timer.current);
+      const queryAttr = 'data-rbd-draggable-id';
+      const domQuery = `[${queryAttr}='${event.draggableId}']`;
+      const draggedDOM = document.querySelector(domQuery);
+      if (!draggedDOM) {
+        return;
+      }
+      const sourceIndex = event.source.index;
+      setPlaceholderProps(
+        getPlaceholder(draggedDOM, sourceIndex, sourceIndex, uid),
+      );
+    },
+    [uid],
+  );
 
   const onDragEnd = React.useCallback(
     (result) => {
@@ -88,30 +91,33 @@ const DragDropList = (props) => {
     [onMoveItem],
   );
 
-  const onDragUpdate = React.useCallback((update) => {
-    clearTimeout(timer.current);
-    setPlaceholderProps({});
-    if (!update.destination) {
-      return;
-    }
-    const draggableId = update.draggableId;
-    const queryAttr = 'data-rbd-draggable-id';
-    const domQuery = `[${queryAttr}='${draggableId}']`;
-    const draggedDOM = document.querySelector(domQuery);
-    if (!draggedDOM) {
-      return;
-    }
-    const sourceIndex = update.source.index;
-    const destinationIndex = update.destination.index;
-    // Wait until the animations have finished, to make it look good.
-    timer.current = setTimeout(
-      () =>
-        setPlaceholderProps(
-          getPlaceholder(draggedDOM, sourceIndex, destinationIndex, uid),
-        ),
-      250,
-    );
-  }, []);
+  const onDragUpdate = React.useCallback(
+    (update) => {
+      clearTimeout(timer.current);
+      setPlaceholderProps({});
+      if (!update.destination) {
+        return;
+      }
+      const draggableId = update.draggableId;
+      const queryAttr = 'data-rbd-draggable-id';
+      const domQuery = `[${queryAttr}='${draggableId}']`;
+      const draggedDOM = document.querySelector(domQuery);
+      if (!draggedDOM) {
+        return;
+      }
+      const sourceIndex = update.source.index;
+      const destinationIndex = update.destination.index;
+      // Wait until the animations have finished, to make it look good.
+      timer.current = setTimeout(
+        () =>
+          setPlaceholderProps(
+            getPlaceholder(draggedDOM, sourceIndex, destinationIndex, uid),
+          ),
+        250,
+      );
+    },
+    [uid],
+  );
 
   const AsDomComponent = as;
   return (
