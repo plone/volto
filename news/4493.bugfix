@@ -1,0 +1,2 @@
+The menu for the contents page was unresponsive on mobile devices. Fixed this by changing the menu overflow to scroll.
+In `theme/themes/pastanaga/extras/contents.less` file added a `overflow-x: scroll;` to make overflow content to scroll.
