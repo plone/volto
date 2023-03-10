@@ -3,7 +3,7 @@ import { isEmpty } from 'lodash';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { v4 as uuid } from 'uuid';
 
-const getPlaceholder = (draggedDOM, sourceIndex, destinationIndex) => {
+const getPlaceholder = (draggedDOM, sourceIndex, destinationIndex, uid) => {
   // Because of the margin rendering rules, there is no easy
   // way to calculate the offset of the placeholder.
   //
@@ -13,12 +13,16 @@ const getPlaceholder = (draggedDOM, sourceIndex, destinationIndex) => {
   //
   // To get a placeholder that looks good in all cases, we
   // fill up the space between the previous and the next element.
-  const childrenArray = [...draggedDOM.parentNode.children];
+  const queryAttr = 'data-rbd-droppable-id';
+  const domQuery = `[${queryAttr}='${uid}']`;
+  const parentDOM = document.querySelector(domQuery);
+
+  const childrenArray = [...parentDOM.children];
   // Remove the source element
   childrenArray.splice(sourceIndex, 1);
   // Also remove the placeholder that the library always inserts at the end
   childrenArray.splice(-1, 1);
-  const parentRect = draggedDOM.parentNode.getBoundingClientRect();
+  const parentRect = parentDOM.getBoundingClientRect();
   const prevNode = childrenArray[destinationIndex - 1];
   const nextNode = childrenArray[destinationIndex];
   let top, bottom;
@@ -40,9 +44,7 @@ const getPlaceholder = (draggedDOM, sourceIndex, destinationIndex) => {
   return {
     clientY: top,
     clientHeight: bottom - top,
-    clientX: parseFloat(
-      window.getComputedStyle(draggedDOM.parentNode).paddingLeft,
-    ),
+    clientX: parseFloat(window.getComputedStyle(parentDOM).paddingLeft),
     clientWidth: draggedDOM.clientWidth,
   };
 };
@@ -72,7 +74,9 @@ const DragDropList = (props) => {
       return;
     }
     const sourceIndex = event.source.index;
-    setPlaceholderProps(getPlaceholder(draggedDOM, sourceIndex, sourceIndex));
+    setPlaceholderProps(
+      getPlaceholder(draggedDOM, sourceIndex, sourceIndex, uid),
+    );
   }, []);
 
   const onDragEnd = React.useCallback(
@@ -103,7 +107,7 @@ const DragDropList = (props) => {
     timer.current = setTimeout(
       () =>
         setPlaceholderProps(
-          getPlaceholder(draggedDOM, sourceIndex, destinationIndex),
+          getPlaceholder(draggedDOM, sourceIndex, destinationIndex, uid),
         ),
       250,
     );
@@ -116,7 +120,18 @@ const DragDropList = (props) => {
       onDragUpdate={onDragUpdate}
       onDragEnd={onDragEnd}
     >
-      <Droppable droppableId={uid}>
+      <Droppable
+        droppableId={uid}
+        renderClone={(provided, snapshot, rubric) => {
+          const index = rubric.source.index;
+          return children({
+            child: childList[index][1],
+            childId: childList[index][0],
+            index,
+            draginfo: provided,
+          });
+        }}
+      >
         {(provided, snapshot) => (
           <AsDomComponent
             ref={provided.innerRef}
