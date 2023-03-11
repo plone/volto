@@ -1,3 +1,4 @@
+import { normalizeExternalData } from '../Text/extensions';
 import TableBlockEdit from './TableBlockEdit';
 import TableBlockView from './TableBlockView';
 import { extractTables } from './deconstruct';
@@ -25,6 +26,7 @@ export default function install(config) {
       // withDeserializers,
       // breakList,
       normalizeTable,
+      normalizeExternalData,
     ],
   };
 
