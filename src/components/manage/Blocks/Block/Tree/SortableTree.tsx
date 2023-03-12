@@ -286,24 +286,46 @@ export function SortableTree({
 
       // Translate position depending on parent
       if (parentId === oldParentId) {
-        const parentIndex = clonedItems.findIndex(({ id }) => id === parentId);
-        // const oldParentIndex = clonedItems.findIndex(
-        //   ({ id }) => id === oldParentId,
-        // );
-        const translatedPositionOver = clonedItems[
-          parentIndex
-        ].children.findIndex(({ id }) => id === over.id);
-        const translatedPositionActive = clonedItems[
-          parentIndex
-        ].children.findIndex(({ id }) => id === active.id);
-        onMoveBlock(
-          translatedPositionActive,
-          translatedPositionOver,
-          oldParentId,
-          parentId,
-        );
+        if (parent && oldParentId) {
+          const parentIndex = clonedItems.findIndex(
+            ({ id }) => id === parentId,
+          );
+          const translatedPositionOver = clonedItems[
+            parentIndex
+          ].children.findIndex(({ id }) => id === over.id);
+          const translatedPositionActive = clonedItems[
+            parentIndex
+          ].children.findIndex(({ id }) => id === active.id);
+          onMoveBlock(
+            translatedPositionActive,
+            translatedPositionOver,
+            oldParentId,
+            parentId,
+          );
+        } else {
+          // We are moving things within the main container
+          onMoveBlock(activeIndex, overIndex, oldParentId, parentId);
+        }
+      } else if (parentId !== oldParentId) {
+        // Containers are different
+        if (!parentId) {
+          // Moving to the main container
+          // The overIndex is valid already
+          // The activeIndex has to be translated
+          const oldParentIndex = clonedItems.findIndex(
+            ({ id }) => id === oldParentId,
+          );
+          const translatedPositionActive = clonedItems[
+            oldParentIndex
+          ].children.findIndex(({ id }) => id === active.id);
+          onMoveBlock(
+            translatedPositionActive,
+            overIndex,
+            oldParentId,
+            parentId,
+          );
+        }
       }
-      // onMoveBlock(activeIndex, overIndex, oldParentId, parentId);
       setItems(newItems);
     }
   }

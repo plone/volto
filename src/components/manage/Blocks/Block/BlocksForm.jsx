@@ -14,6 +14,7 @@ import {
   changeBlock,
   deleteBlock,
   moveBlock,
+  moveBlockEnhanced,
   mutateBlock,
   nextBlockId,
   previousBlockId,
@@ -171,8 +172,24 @@ const BlocksForm = (props) => {
     onSelectBlock(selectPrev ? previous : null);
   };
 
-  const onMoveBlock = (dragIndex, hoverIndex, parentId) => {
-    const newFormData = moveBlock(properties, dragIndex, hoverIndex, parentId);
+  const onMoveBlock = (dragIndex, hoverIndex) => {
+    const newFormData = moveBlock(properties, dragIndex, hoverIndex);
+    onChangeFormData(newFormData);
+  };
+
+  const onMoveBlockEnhanced = (
+    dragIndex,
+    hoverIndex,
+    oldParentId,
+    parentId,
+  ) => {
+    const newFormData = moveBlockEnhanced(
+      properties,
+      dragIndex,
+      hoverIndex,
+      oldParentId,
+      parentId,
+    );
     onChangeFormData(newFormData);
   };
 
@@ -208,7 +225,7 @@ const BlocksForm = (props) => {
     <>
       <SortableTree
         defaultItems={getBlocksHierarchy(properties)}
-        onMoveBlock={onMoveBlock}
+        onMoveBlock={onMoveBlockEnhanced}
         onDeleteBlock={onDeleteBlock}
         collapsible
         indicator

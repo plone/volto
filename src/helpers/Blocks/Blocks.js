@@ -109,30 +109,68 @@ export const getBlocksHierarchy = (properties) => {
  * @param {number} destination index within form blocks_layout items
  * @return {Object} New form data
  */
-export function moveBlock(formData, source, destination, parentId) {
+export function moveBlock(formData, source, destination) {
+  const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
+  return {
+    ...formData,
+    [blocksLayoutFieldname]: {
+      items: move(formData[blocksLayoutFieldname].items, source, destination),
+    },
+  };
+}
+
+/**
+ * Move block to different location index within blocks_layout
+ * @function moveBlock
+ * @param {Object} formData Form data
+ * @param {number} source index within form blocks_layout items
+ * @param {number} destination index within form blocks_layout items
+ * @return {Object} New form data
+ */
+export function moveBlockEnhanced(
+  formData,
+  source,
+  destination,
+  oldParentId,
+  parentId,
+) {
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
   const blocksFieldName = getBlocksFieldname(formData);
-  if (parentId) {
-    return {
-      ...formData,
-      [blocksFieldName]: {
-        ...formData[blocksFieldName],
-        [parentId]: {
-          ...formData[blocksFieldName][parentId],
-          data: {
-            ...formData[blocksFieldName][parentId]?.data,
-            [blocksLayoutFieldname]: {
-              items: move(
-                formData[blocksFieldName][parentId].data[blocksLayoutFieldname]
-                  .items,
-                source,
-                destination,
-              ),
+
+  if (parentId || oldParentId) {
+    if (!parentId && oldParentId) {
+      const clonedFormData = {
+        ...formData,
+        [blocksFieldName]: {
+          ...formData[blocksFieldName],
+        },
+      };
+
+      return clonedFormData;
+    }
+    if (parentId) {
+      return {
+        ...formData,
+        [blocksFieldName]: {
+          ...formData[blocksFieldName],
+          [parentId]: {
+            ...formData[blocksFieldName][parentId],
+            data: {
+              ...formData[blocksFieldName][parentId]?.data,
+              [blocksLayoutFieldname]: {
+                items: move(
+                  formData[blocksFieldName][parentId].data[
+                    blocksLayoutFieldname
+                  ].items,
+                  source,
+                  destination,
+                ),
+              },
             },
           },
         },
-      },
-    };
+      };
+    }
   }
   return {
     ...formData,
