@@ -170,6 +170,40 @@ export function moveBlockEnhanced(formData, { source, destination }) {
 
       return clonedFormData;
     }
+    if (!source.parent && destination.parent) {
+      let clonedFormData = {
+        ...formData,
+        [blocksFieldName]: {
+          ...formData[blocksFieldName],
+          [source.id]:
+            formData[blocksFieldName][source.parent].data[blocksFieldName][
+              source.id
+            ],
+        },
+        [blocksLayoutFieldname]: {
+          items: insertInArray(
+            formData[blocksLayoutFieldname].items,
+            source.id,
+            destination.position,
+          ),
+        },
+      };
+
+      // Remove the source block from the source parent
+      delete clonedFormData[blocksFieldName][source.parent].data[
+        blocksFieldName
+      ][source.id];
+      clonedFormData[blocksFieldName][source.parent].data[
+        blocksLayoutFieldname
+      ].items = removeFromArray(
+        clonedFormData[blocksFieldName][source.parent].data[
+          blocksLayoutFieldname
+        ].items,
+        source.position,
+      );
+
+      return clonedFormData;
+    }
     if (destination.parent) {
       return {
         ...formData,
@@ -642,4 +676,28 @@ export const getPreviousNextBlock = ({ content, block }) => {
     ];
 
   return [previousBlock, nextBlock];
+};
+
+export const findContainer = (formData, { containerId }) => {
+  if (
+    formData.blocks[containerId] &&
+    formData.blocks[containerId]['@type'] === 'container'
+  ) {
+    return formData.blocks[containerId];
+  }
+
+  let container;
+  Object.keys(formData.blocks).every((blockId) => {
+    const block = formData.blocks[blockId];
+    if (block['@type'] === 'container') {
+      container = findContainer(block, { containerId });
+    }
+    if (container) {
+      return false;
+    } else {
+      return true;
+    }
+  });
+
+  return container;
 };
