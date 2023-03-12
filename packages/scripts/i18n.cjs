@@ -149,7 +149,7 @@ function poToJson({ registry, addonMode }) {
     if (!addonMode) {
       // Merge addons locales
       if (packageJson.addons) {
-        registry.addonNames.forEach((addon) => {
+        registry.getAddonDependencies().forEach((addon) => {
           const addonlocale = `${registry.packages[addon].modulePath}/../${filename}`;
           if (fs.existsSync(addonlocale)) {
             const addonItems = Pofile.parse(
