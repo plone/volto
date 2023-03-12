@@ -171,8 +171,8 @@ const BlocksForm = (props) => {
     onSelectBlock(selectPrev ? previous : null);
   };
 
-  const onMoveBlock = (dragIndex, hoverIndex) => {
-    const newFormData = moveBlock(properties, dragIndex, hoverIndex);
+  const onMoveBlock = (dragIndex, hoverIndex, parentId) => {
+    const newFormData = moveBlock(properties, dragIndex, hoverIndex, parentId);
     onChangeFormData(newFormData);
   };
 

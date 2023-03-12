@@ -92,9 +92,12 @@ export const getBlocksHierarchy = (properties) => {
   const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
   return properties[blocksLayoutFieldname]?.items?.map((n) => ({
     id: n,
-    title: properties[blocksFieldName][n]['@type'],
+    title: properties[blocksFieldName][n]?.['@type'],
     data: properties[blocksFieldName][n],
-    children: [],
+    children:
+      properties[blocksFieldName][n]?.['@type'] === 'row'
+        ? getBlocksHierarchy(properties[blocksFieldName][n]?.data)
+        : [],
   }));
 };
 
@@ -106,8 +109,31 @@ export const getBlocksHierarchy = (properties) => {
  * @param {number} destination index within form blocks_layout items
  * @return {Object} New form data
  */
-export function moveBlock(formData, source, destination) {
+export function moveBlock(formData, source, destination, parentId) {
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
+  const blocksFieldName = getBlocksFieldname(formData);
+  if (parentId) {
+    return {
+      ...formData,
+      [blocksFieldName]: {
+        ...formData[blocksFieldName],
+        [parentId]: {
+          ...formData[blocksFieldName][parentId],
+          data: {
+            ...formData[blocksFieldName][parentId]?.data,
+            [blocksLayoutFieldname]: {
+              items: move(
+                formData[blocksFieldName][parentId].data[blocksLayoutFieldname]
+                  .items,
+                source,
+                destination,
+              ),
+            },
+          },
+        },
+      },
+    };
+  }
   return {
     ...formData,
     [blocksLayoutFieldname]: {

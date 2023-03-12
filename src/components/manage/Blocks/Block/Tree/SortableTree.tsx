@@ -277,12 +277,33 @@ export function SortableTree({
       const overIndex = clonedItems.findIndex(({ id }) => id === over.id);
       const activeIndex = clonedItems.findIndex(({ id }) => id === active.id);
       const activeTreeItem = clonedItems[activeIndex];
+      const oldParentId = activeTreeItem.parentId;
 
       clonedItems[activeIndex] = { ...activeTreeItem, depth, parentId };
 
       const sortedItems = arrayMove(clonedItems, activeIndex, overIndex);
       const newItems = buildTree(sortedItems);
-      onMoveBlock(activeIndex, overIndex);
+
+      // Translate position depending on parent
+      if (parentId === oldParentId) {
+        const parentIndex = clonedItems.findIndex(({ id }) => id === parentId);
+        // const oldParentIndex = clonedItems.findIndex(
+        //   ({ id }) => id === oldParentId,
+        // );
+        const translatedPositionOver = clonedItems[
+          parentIndex
+        ].children.findIndex(({ id }) => id === over.id);
+        const translatedPositionActive = clonedItems[
+          parentIndex
+        ].children.findIndex(({ id }) => id === active.id);
+        onMoveBlock(
+          translatedPositionActive,
+          translatedPositionOver,
+          oldParentId,
+          parentId,
+        );
+      }
+      // onMoveBlock(activeIndex, overIndex, oldParentId, parentId);
       setItems(newItems);
     }
   }
