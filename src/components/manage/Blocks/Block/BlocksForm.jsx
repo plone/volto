@@ -177,19 +177,8 @@ const BlocksForm = (props) => {
     onChangeFormData(newFormData);
   };
 
-  const onMoveBlockEnhanced = (
-    dragIndex,
-    hoverIndex,
-    oldParentId,
-    parentId,
-  ) => {
-    const newFormData = moveBlockEnhanced(
-      properties,
-      dragIndex,
-      hoverIndex,
-      oldParentId,
-      parentId,
-    );
+  const onMoveBlockEnhanced = ({ source, destination }) => {
+    const newFormData = moveBlockEnhanced(properties, { source, destination });
     onChangeFormData(newFormData);
   };
 

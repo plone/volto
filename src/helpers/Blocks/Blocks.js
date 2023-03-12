@@ -7,7 +7,11 @@ import { omit, without, endsWith, find, isObject, keys, merge } from 'lodash';
 import move from 'lodash-move';
 import { v4 as uuid } from 'uuid';
 import config from '@plone/volto/registry';
-import { applySchemaEnhancer } from '@plone/volto/helpers';
+import {
+  applySchemaEnhancer,
+  insertInArray,
+  removeFromArray,
+} from '@plone/volto/helpers';
 
 /**
  * Get blocks field.
@@ -127,43 +131,61 @@ export function moveBlock(formData, source, destination) {
  * @param {number} destination index within form blocks_layout items
  * @return {Object} New form data
  */
-export function moveBlockEnhanced(
-  formData,
-  source,
-  destination,
-  oldParentId,
-  parentId,
-) {
+export function moveBlockEnhanced(formData, { source, destination }) {
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
   const blocksFieldName = getBlocksFieldname(formData);
 
-  if (parentId || oldParentId) {
-    if (!parentId && oldParentId) {
-      const clonedFormData = {
+  if (source.parent || destination.parent) {
+    if (source.parent && !destination.parent) {
+      let clonedFormData = {
         ...formData,
         [blocksFieldName]: {
           ...formData[blocksFieldName],
+          [source.id]:
+            formData[blocksFieldName][source.parent].data[blocksFieldName][
+              source.id
+            ],
+        },
+        [blocksLayoutFieldname]: {
+          items: insertInArray(
+            formData[blocksLayoutFieldname].items,
+            source.id,
+            destination.position,
+          ),
         },
       };
 
+      // Remove the source block from the source parent
+      delete clonedFormData[blocksFieldName][source.parent].data[
+        blocksFieldName
+      ][source.id];
+      clonedFormData[blocksFieldName][source.parent].data[
+        blocksLayoutFieldname
+      ].items = removeFromArray(
+        clonedFormData[blocksFieldName][source.parent].data[
+          blocksLayoutFieldname
+        ].items,
+        source.position,
+      );
+
       return clonedFormData;
     }
-    if (parentId) {
+    if (destination.parent) {
       return {
         ...formData,
         [blocksFieldName]: {
           ...formData[blocksFieldName],
-          [parentId]: {
-            ...formData[blocksFieldName][parentId],
+          [destination.parent]: {
+            ...formData[blocksFieldName][destination.parent],
             data: {
-              ...formData[blocksFieldName][parentId]?.data,
+              ...formData[blocksFieldName][destination.parent]?.data,
               [blocksLayoutFieldname]: {
                 items: move(
-                  formData[blocksFieldName][parentId].data[
+                  formData[blocksFieldName][destination.parent].data[
                     blocksLayoutFieldname
                   ].items,
-                  source,
-                  destination,
+                  source.position,
+                  destination.position,
                 ),
               },
             },
@@ -175,7 +197,11 @@ export function moveBlockEnhanced(
   return {
     ...formData,
     [blocksLayoutFieldname]: {
-      items: move(formData[blocksLayoutFieldname].items, source, destination),
+      items: move(
+        formData[blocksLayoutFieldname].items,
+        source.position,
+        destination.position,
+      ),
     },
   };
 }

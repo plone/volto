@@ -296,12 +296,16 @@ export function SortableTree({
           const translatedPositionActive = clonedItems[
             parentIndex
           ].children.findIndex(({ id }) => id === active.id);
-          onMoveBlock(
-            translatedPositionActive,
-            translatedPositionOver,
-            oldParentId,
-            parentId,
-          );
+          onMoveBlock({
+            source: {
+              position: translatedPositionActive,
+              parent: oldParentId,
+            },
+            destination: {
+              position: translatedPositionOver,
+              parent: parentId,
+            },
+          });
         } else {
           // We are moving things within the main container
           onMoveBlock(activeIndex, overIndex, oldParentId, parentId);
@@ -318,12 +322,18 @@ export function SortableTree({
           const translatedPositionActive = clonedItems[
             oldParentIndex
           ].children.findIndex(({ id }) => id === active.id);
-          onMoveBlock(
-            translatedPositionActive,
-            overIndex,
-            oldParentId,
-            parentId,
-          );
+
+          onMoveBlock({
+            source: {
+              position: translatedPositionActive,
+              parent: oldParentId,
+              id: active.id,
+            },
+            destination: {
+              position: overIndex,
+              parent: parentId,
+            },
+          });
         }
       }
       setItems(newItems);
