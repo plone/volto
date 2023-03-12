@@ -23,6 +23,8 @@ import { useDispatch } from 'react-redux';
 import { useDetectClickOutside, useEvent } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
+import { SortableTree } from '../Block/Tree/SortableTree.tsx';
+
 const BlocksForm = (props) => {
   const {
     pathname,
@@ -200,68 +202,71 @@ const BlocksForm = (props) => {
   });
 
   return (
-    <div className="blocks-form" ref={ref}>
-      <fieldset className="invisible" disabled={!editable}>
-        <DragDropList
-          childList={blockList}
-          onMoveItem={(result) => {
-            const { source, destination } = result;
-            if (!destination) {
-              return;
-            }
-            const newFormData = moveBlock(
-              properties,
-              source.index,
-              destination.index,
-            );
-            onChangeFormData(newFormData);
-            return true;
-          }}
-          direction={direction}
-        >
-          {(dragProps) => {
-            const { child, childId, index } = dragProps;
-            const blockProps = {
-              allowedBlocks,
-              showRestricted,
-              block: childId,
-              data: child,
-              handleKeyDown,
-              id: childId,
-              formTitle: title,
-              formDescription: description,
-              index,
-              manage,
-              onAddBlock,
-              onInsertBlock,
-              onChangeBlock,
-              onChangeField,
-              onChangeFormData,
-              onDeleteBlock,
-              onFocusNextBlock,
-              onFocusPreviousBlock,
-              onMoveBlock,
-              onMutateBlock,
-              onSelectBlock,
-              pathname,
-              metadata,
-              properties,
-              blocksConfig,
-              selected: selectedBlock === childId,
-              multiSelected: multiSelected?.includes(childId),
-              type: child['@type'],
-              editable,
-              showBlockChooser: selectedBlock === childId,
-            };
-            return editBlockWrapper(
-              dragProps,
-              <EditBlock key={childId} {...blockProps} />,
-              blockProps,
-            );
-          }}
-        </DragDropList>
-      </fieldset>
-    </div>
+    <>
+      <SortableTree collapsible indicator removable />
+      <div className="blocks-form" ref={ref}>
+        <fieldset className="invisible" disabled={!editable}>
+          <DragDropList
+            childList={blockList}
+            onMoveItem={(result) => {
+              const { source, destination } = result;
+              if (!destination) {
+                return;
+              }
+              const newFormData = moveBlock(
+                properties,
+                source.index,
+                destination.index,
+              );
+              onChangeFormData(newFormData);
+              return true;
+            }}
+            direction={direction}
+          >
+            {(dragProps) => {
+              const { child, childId, index } = dragProps;
+              const blockProps = {
+                allowedBlocks,
+                showRestricted,
+                block: childId,
+                data: child,
+                handleKeyDown,
+                id: childId,
+                formTitle: title,
+                formDescription: description,
+                index,
+                manage,
+                onAddBlock,
+                onInsertBlock,
+                onChangeBlock,
+                onChangeField,
+                onChangeFormData,
+                onDeleteBlock,
+                onFocusNextBlock,
+                onFocusPreviousBlock,
+                onMoveBlock,
+                onMutateBlock,
+                onSelectBlock,
+                pathname,
+                metadata,
+                properties,
+                blocksConfig,
+                selected: selectedBlock === childId,
+                multiSelected: multiSelected?.includes(childId),
+                type: child['@type'],
+                editable,
+                showBlockChooser: selectedBlock === childId,
+              };
+              return editBlockWrapper(
+                dragProps,
+                <EditBlock key={childId} {...blockProps} />,
+                blockProps,
+              );
+            }}
+          </DragDropList>
+        </fieldset>
+      </div>
+    </>
   );
 };
 
