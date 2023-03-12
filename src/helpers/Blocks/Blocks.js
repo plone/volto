@@ -87,6 +87,17 @@ export const getBlocks = (properties) => {
   );
 };
 
+export const getBlocksHierarchy = (properties) => {
+  const blocksFieldName = getBlocksFieldname(properties);
+  const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
+  return properties[blocksLayoutFieldname]?.items?.map((n) => ({
+    id: n,
+    title: properties[blocksFieldName][n]['@type'],
+    data: properties[blocksFieldName][n],
+    children: [],
+  }));
+};
+
 /**
  * Move block to different location index within blocks_layout
  * @function moveBlock

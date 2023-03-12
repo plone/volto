@@ -106,6 +106,8 @@ interface Props {
 export function SortableTree({
   collapsible,
   defaultItems = initialItems,
+  onMoveBlock,
+  onDeleteBlock,
   indicator = false,
   indentationWidth = 50,
   removable,
@@ -201,11 +203,11 @@ export function SortableTree({
       onDragCancel={handleDragCancel}
     >
       <SortableContext items={sortedIds} strategy={verticalListSortingStrategy}>
-        {flattenedItems.map(({ id, children, collapsed, depth }) => (
+        {flattenedItems.map(({ id, title, children, collapsed, depth }) => (
           <SortableTreeItem
             key={id}
             id={id}
-            value={id}
+            value={`${title} - ${id}`}
             depth={id === activeId && projected ? projected.depth : depth}
             indentationWidth={indentationWidth}
             indicator={indicator}
@@ -280,7 +282,7 @@ export function SortableTree({
 
       const sortedItems = arrayMove(clonedItems, activeIndex, overIndex);
       const newItems = buildTree(sortedItems);
-
+      onMoveBlock(activeIndex, overIndex);
       setItems(newItems);
     }
   }
@@ -299,6 +301,7 @@ export function SortableTree({
   }
 
   function handleRemove(id: UniqueIdentifier) {
+    onDeleteBlock(id);
     setItems((items) => removeItem(items, id));
   }
 

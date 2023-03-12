@@ -6,6 +6,7 @@ import {
   getBlocks,
   getBlocksFieldname,
   applyBlockDefaults,
+  getBlocksHierarchy,
 } from '@plone/volto/helpers';
 import {
   addBlock,
@@ -201,9 +202,18 @@ const BlocksForm = (props) => {
     );
   });
 
+  console.log(getBlocksHierarchy(properties));
+
   return (
     <>
-      <SortableTree collapsible indicator removable />
+      <SortableTree
+        defaultItems={getBlocksHierarchy(properties)}
+        onMoveBlock={onMoveBlock}
+        onDeleteBlock={onDeleteBlock}
+        collapsible
+        indicator
+        removable
+      />
       <div className="blocks-form" ref={ref}>
         <fieldset className="invisible" disabled={!editable}>
           <DragDropList
