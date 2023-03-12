@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { isEmpty, pickBy } from 'lodash';
+import { pickBy } from 'lodash';
 import { BlocksForm, SidebarPortal, Icon } from '@plone/volto/components';
 import PropTypes from 'prop-types';
 import { Button } from 'semantic-ui-react';
@@ -22,7 +22,7 @@ function getBlockConfig(type) {
   return config.blocks.blocksConfig?.[type];
 }
 
-function emptyBlocksForm() {
+function initBlocksForm() {
   return {
     blocks: {},
     blocks_layout: {
@@ -44,8 +44,8 @@ const RowEdit = (props) => {
 
   const intl = useIntl();
   const metadata = props.metadata || props.properties;
-  const data_blocks = data?.data?.blocks;
-  const properties = isEmpty(data_blocks) ? emptyBlocksForm() : data.data;
+  const isInitialized = data?.blocks && data?.blocks_layout;
+  const properties = isInitialized ? data : initBlocksForm();
   const blockConfig = getBlockConfig(data['@type']);
   const blocksConfig =
     config.blocks.blocksConfig[data['@type']].blocksConfig ||
@@ -57,18 +57,19 @@ const RowEdit = (props) => {
     properties.blocks_layout.items[0],
   );
 
-  React.useEffect(() => {
-    if (
-      isEmpty(data_blocks) &&
-      properties.blocks_layout.items[0] !== selectedBlock
-    ) {
-      setSelectedBlock(properties.blocks_layout.items[0]);
-      onChangeBlock(block, {
-        ...data,
-        data: properties,
-      });
-    }
-  }, [onChangeBlock, properties, selectedBlock, block, data, data_blocks]);
+  // Seems never applies...
+  // React.useEffect(() => {
+  //   if (
+  //     isEmpty(data_blocks) &&
+  //     properties.blocks_layout.items[0] !== selectedBlock
+  //   ) {
+  //     setSelectedBlock(properties.blocks_layout.items[0]);
+  //     onChangeBlock(block, {
+  //       ...data,
+  //       data: properties,
+  //     });
+  //   }
+  // }, [onChangeBlock, properties, selectedBlock, block, data, data_blocks]);
 
   const blockState = {};
 
@@ -76,21 +77,20 @@ const RowEdit = (props) => {
     const newuuid = uuid();
     const type = allowedBlocks?.length === 1 ? allowedBlocks[0] : null;
     const newFormData = {
-      ...data.data,
+      ...data,
       blocks: {
-        ...data.data.blocks,
+        ...data.blocks,
         [newuuid]: {
           ...(type && { '@type': type }),
         },
       },
       blocks_layout: {
-        items: [...data.data.blocks_layout.items, newuuid],
+        items: [...data.blocks_layout.items, newuuid],
       },
     };
-    if (data.data.blocks_layout.items.length < maxRowLength) {
+    if (data.blocks_layout.items.length < maxRowLength) {
       onChangeBlock(block, {
-        ...data,
-        data: newFormData,
+        ...newFormData,
       });
     }
   };
@@ -100,7 +100,7 @@ const RowEdit = (props) => {
       allowedBlocks?.length === 1 ? templates(allowedBlocks[0]) : templates();
     onChangeBlock(block, {
       ...data,
-      data: resultantTemplates(intl)[templateIndex].blocksData,
+      ...resultantTemplates(intl)[templateIndex].blocksData,
     });
   };
 
@@ -110,8 +110,7 @@ const RowEdit = (props) => {
 
   const direction = data['@type'] === 'row' ? 'horizontal' : 'vertical';
 
-  const columnsLength =
-    (data?.data && data.data.blocks_layout.items.length) || 0;
+  const columnsLength = (isInitialized && data.blocks_layout.items.length) || 0;
 
   return (
     <div
@@ -132,9 +131,7 @@ const RowEdit = (props) => {
               aria-label={`Add row element`}
               icon
               basic
-              disabled={
-                data?.data?.blocks_layout?.items?.length >= maxRowLength
-              }
+              disabled={data?.blocks_layout?.items?.length >= maxRowLength}
               onClick={(e) => onAddNewBlock()}
             >
               <Icon name={addSVG} size="24px" />
@@ -156,7 +153,7 @@ const RowEdit = (props) => {
           </Button.Group>
         </div>
       )}
-      {isEmpty(data_blocks) && (
+      {!isInitialized && (
         <TemplateChooser
           templates={
             allowedBlocks?.length === 1
@@ -181,7 +178,7 @@ const RowEdit = (props) => {
         onChangeFormData={(newFormData) => {
           onChangeBlock(block, {
             ...data,
-            data: newFormData,
+            ...newFormData,
           });
         }}
         onChangeField={(id, value) => {
@@ -189,10 +186,7 @@ const RowEdit = (props) => {
             blockState[id] = value;
             onChangeBlock(block, {
               ...data,
-              data: {
-                ...data.data,
-                ...blockState,
-              },
+              ...blockState,
             });
           } else {
             onChangeField(id, value);
@@ -215,7 +209,6 @@ const RowEdit = (props) => {
 
 RowEdit.propTypes = {
   block: PropTypes.string.isRequired,
-  data: PropTypes.object.isRequired,
   onChangeBlock: PropTypes.func.isRequired,
   pathname: PropTypes.string.isRequired,
   selected: PropTypes.bool.isRequired,

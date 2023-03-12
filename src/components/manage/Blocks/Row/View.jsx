@@ -9,14 +9,13 @@ import config from '@plone/volto/registry';
 const RowBlockView = (props) => {
   const { data, path, className } = props;
   const metadata = props.metadata || props.properties;
-  const columns = data.data.blocks_layout.items;
+  const columns = data.blocks_layout.items;
   const blocksConfig =
     config.blocks.blocksConfig[data['@type']].blocksConfig ||
     props.blocksConfig;
   const location = {
     pathname: path,
   };
-
   return (
     <div
       className={cx('block', data['@type'], className, {
@@ -34,7 +33,7 @@ const RowBlockView = (props) => {
             {...props}
             blockWrapperTag={Grid.Column}
             metadata={metadata}
-            content={data.data}
+            content={data}
             location={location}
             blocksConfig={blocksConfig}
           />
@@ -46,7 +45,7 @@ const RowBlockView = (props) => {
           {...props}
           blockWrapperTag={Grid.Column}
           metadata={metadata}
-          content={data.data}
+          content={data}
           blocksConfig={blocksConfig}
         />
       )}
@@ -60,7 +59,8 @@ const RowBlockView = (props) => {
  * @static
  */
 RowBlockView.propTypes = {
-  data: PropTypes.objectOf(PropTypes.any).isRequired,
+  blocks: PropTypes.objectOf(PropTypes.any).isRequired,
+  blocks_layout: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default withBlockExtensions(RowBlockView);
