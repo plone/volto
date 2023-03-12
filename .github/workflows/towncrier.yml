@@ -9,7 +9,7 @@ env:
   node-version: 16.x
 
 jobs:
-  build:
+  towncrier:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
