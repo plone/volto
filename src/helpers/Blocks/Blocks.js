@@ -100,7 +100,7 @@ export const getBlocksHierarchy = (properties) => {
     data: properties[blocksFieldName][n],
     children:
       properties[blocksFieldName][n]?.['@type'] === 'row'
-        ? getBlocksHierarchy(properties[blocksFieldName][n]?.data)
+        ? getBlocksHierarchy(properties[blocksFieldName][n])
         : [],
   }));
 };
@@ -135,99 +135,79 @@ export function moveBlockEnhanced(formData, { source, destination }) {
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
   const blocksFieldName = getBlocksFieldname(formData);
 
+  // If either one of source and destination are present
+  // (Moves intra-container or container <-> main container)
   if (source.parent || destination.parent) {
+    // Move from a container to the main container
     if (source.parent && !destination.parent) {
-      let clonedFormData = {
-        ...formData,
-        [blocksFieldName]: {
-          ...formData[blocksFieldName],
-          [source.id]:
-            formData[blocksFieldName][source.parent].data[blocksFieldName][
-              source.id
-            ],
-        },
-        [blocksLayoutFieldname]: {
-          items: insertInArray(
-            formData[blocksLayoutFieldname].items,
-            source.id,
-            destination.position,
-          ),
-        },
-      };
+      let clonedFormData = { ...formData };
+
+      clonedFormData[blocksFieldName][source.id] =
+        formData[blocksFieldName][source.parent][blocksFieldName][source.id];
+
+      clonedFormData[blocksLayoutFieldname].items = insertInArray(
+        formData[blocksLayoutFieldname].items,
+        source.id,
+        destination.position,
+      );
 
       // Remove the source block from the source parent
-      delete clonedFormData[blocksFieldName][source.parent].data[
-        blocksFieldName
-      ][source.id];
-      clonedFormData[blocksFieldName][source.parent].data[
-        blocksLayoutFieldname
-      ].items = removeFromArray(
-        clonedFormData[blocksFieldName][source.parent].data[
-          blocksLayoutFieldname
-        ].items,
+      const sourceContainer = findContainer(clonedFormData, {
+        containerId: source.parent,
+      });
+      delete sourceContainer[blocksFieldName][source.id];
+      sourceContainer[blocksLayoutFieldname].items = removeFromArray(
+        sourceContainer[blocksLayoutFieldname].items,
         source.position,
       );
 
       return clonedFormData;
     }
+
+    // Move from the main container to an inner container
     if (!source.parent && destination.parent) {
-      let clonedFormData = {
-        ...formData,
-        [blocksFieldName]: {
-          ...formData[blocksFieldName],
-          [source.id]:
-            formData[blocksFieldName][source.parent].data[blocksFieldName][
-              source.id
-            ],
-        },
-        [blocksLayoutFieldname]: {
-          items: insertInArray(
-            formData[blocksLayoutFieldname].items,
-            source.id,
-            destination.position,
-          ),
-        },
-      };
+      let clonedFormData = { ...formData };
+
+      const destinationContainer = findContainer(clonedFormData, {
+        containerId: destination.parent,
+      });
+      destinationContainer[blocksFieldName][source.id] =
+        clonedFormData[blocksFieldName][source.id];
+      destinationContainer[blocksLayoutFieldname].items = insertInArray(
+        destinationContainer[blocksLayoutFieldname].items,
+        source.id,
+        destination.position,
+      );
 
       // Remove the source block from the source parent
-      delete clonedFormData[blocksFieldName][source.parent].data[
-        blocksFieldName
-      ][source.id];
-      clonedFormData[blocksFieldName][source.parent].data[
-        blocksLayoutFieldname
-      ].items = removeFromArray(
-        clonedFormData[blocksFieldName][source.parent].data[
-          blocksLayoutFieldname
-        ].items,
+      delete clonedFormData[blocksFieldName][source.id];
+      clonedFormData[blocksLayoutFieldname].items = removeFromArray(
+        clonedFormData[blocksLayoutFieldname].items,
         source.position,
       );
 
       return clonedFormData;
     }
-    if (destination.parent) {
-      return {
-        ...formData,
-        [blocksFieldName]: {
-          ...formData[blocksFieldName],
-          [destination.parent]: {
-            ...formData[blocksFieldName][destination.parent],
-            data: {
-              ...formData[blocksFieldName][destination.parent]?.data,
-              [blocksLayoutFieldname]: {
-                items: move(
-                  formData[blocksFieldName][destination.parent].data[
-                    blocksLayoutFieldname
-                  ].items,
-                  source.position,
-                  destination.position,
-                ),
-              },
-            },
-          },
-        },
-      };
+
+    // Move within the same container (except moves within the main container)
+    if (source.parent === destination.parent) {
+      let clonedFormData = { ...formData };
+
+      const destinationContainer = findContainer(clonedFormData, {
+        containerId: destination.parent,
+      });
+
+      destinationContainer[blocksLayoutFieldname].items = move(
+        destinationContainer[blocksLayoutFieldname].items,
+        source.position,
+        destination.position,
+      );
+      return clonedFormData;
     }
   }
+
+  // Default catch all, no source/destination parent specified
+  // Move within the main container
   return {
     ...formData,
     [blocksLayoutFieldname]: {
@@ -681,7 +661,7 @@ export const getPreviousNextBlock = ({ content, block }) => {
 export const findContainer = (formData, { containerId }) => {
   if (
     formData.blocks[containerId] &&
-    formData.blocks[containerId]['@type'] === 'container'
+    formData.blocks[containerId]['@type'] === 'row'
   ) {
     return formData.blocks[containerId];
   }
@@ -689,7 +669,7 @@ export const findContainer = (formData, { containerId }) => {
   let container;
   Object.keys(formData.blocks).every((blockId) => {
     const block = formData.blocks[blockId];
-    if (block['@type'] === 'container') {
+    if (block['@type'] === 'row') {
       container = findContainer(block, { containerId });
     }
     if (container) {

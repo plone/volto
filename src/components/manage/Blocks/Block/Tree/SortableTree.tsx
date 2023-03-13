@@ -308,7 +308,15 @@ export function SortableTree({
           });
         } else {
           // We are moving things within the main container
-          onMoveBlock(activeIndex, overIndex, oldParentId, parentId);
+          onMoveBlock({
+            source: {
+              position: activeIndex,
+              id: active.id,
+            },
+            destination: {
+              position: overIndex,
+            },
+          });
         }
       } else if (parentId !== oldParentId) {
         // Containers are different
@@ -331,6 +339,28 @@ export function SortableTree({
             },
             destination: {
               position: overIndex,
+              parent: parentId,
+            },
+          });
+        } else {
+          // Moving from the main container
+          // The overIndex has to be translated
+          // The activeIndex is valid already
+          const parentIndex = clonedItems.findIndex(
+            ({ id }) => id === parentId,
+          );
+          const translatedPositionOver = clonedItems[
+            parentIndex
+          ].children.findIndex(({ id }) => id === over.id);
+
+          onMoveBlock({
+            source: {
+              position: activeIndex,
+              parent: oldParentId,
+              id: active.id,
+            },
+            destination: {
+              position: translatedPositionOver,
               parent: parentId,
             },
           });
