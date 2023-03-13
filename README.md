@@ -53,20 +53,16 @@ First get all the requirements installed on your system.
 
 ### Prerequisites
 
-- [Node.js LTS (16.x)](https://nodejs.org/)
+- [Node.js LTS (18.x)](https://nodejs.org/)
 - [Python](https://python.org/) - See below for specific versions.
 - [Docker](https://www.docker.com/get-started) (if using the Plone docker images)
-
-*UPDATE 2022-10-25*: Since 2022-10-25, NodeJS 18 is in LTS state (https://github.com/nodejs/release#release-schedule). However, due to changes in internal SSL libraries, some Volto dependencies have been deprecated and need to be updated in order to continue working in NodeJS 18, mainly Webpack 4 (see: https://github.com/webpack/webpack/issues/14532#issuecomment-947525539 for further information). You can still use it, but NodeJS should be run under a special flag: `NODE_OPTIONS=--openssl-legacy-provider`. See also Volto's PR: https://github.com/plone/volto/pull/3699 for more information.
 
 The versions of Python that are supported in Volto depend on the version of Plone that you use.
 
 | Plone | Python | Volto |
 |---|---|---|
 | 5.2 | 2.7, 3.6-3.8 | 15.0 |
-| 6.0 (beta) | 3.8-3.10 | 16.0 (alpha) |
-
-At the time of this writing, Volto 16 is still in alpha status, and Plone 6 is in beta status.
+| 6.0 | 3.8-3.11 | 16.0 |
 
 ### Create a Volto project using the generator
 
@@ -90,7 +86,7 @@ cd myvoltoproject
 You can bootstrap a ready Docker Plone container with all the dependencies and ready for Volto use. We recommend to use the Plone docker builds based in `pip` [plone/plone-backend](https://github.com/plone/plone-backend) image:
 
 ```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.0b3
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.1
 ```
 
 or as an alternative if you have experience with Plone and you have all the
@@ -105,7 +101,7 @@ make build-backend
 
 Volto is the default UI for Plone 6, so it will work for all Plone 6 released versions.
 
-For the Plone 5 series, the latest released version of Plone 5 (with Python 3) is recommended (at the time of writing 5.2.9).
+For the Plone 5 series, the latest released version of Plone 5 (with Python 3) is recommended (at the time of writing 5.2.10).
 
 #### KGS (known good set of versions) for backend packages
 
@@ -113,14 +109,14 @@ On Plone 6, we recommend using the known good set (KGS) of package versions that
 
 On Plone 5, Volto is currently tested with the following packages pinned to specific versions, and we recommend using the same versions, which are:
 
-- plone.restapi 8.30.0
-- plone.rest 2.0.0a5
-- plone.volto 4.0.0a13
+- plone.restapi 8.32.6
+- plone.rest 2.0.0
+- plone.volto 4.0.3
 
 This would be the docker command to spawn a Plone 5 container with the right KGS versions:
 
 ```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.restapi==8.30.0 plone.volto==4.0.0a13 plone.rest==2.0.0a5 plone.app.iterate==4.0.2 plone.app.vocabularies==4.3.0" -e PROFILES="plone.volto:default-homepage" plone/plone-backend
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.restapi==8.32.6 plone.volto==4.0.3 plone.rest==2.0.0" -e PROFILES="plone.volto:default-homepage" plone/plone-backend
 ```
 
 ### Start Volto
@@ -194,14 +190,14 @@ On the [Plone Trainings Website](https://training.plone.org) you'll find
 Volto-dedicated open training materials, plus React and other
 JavaScript-centered trainings.
 
-- [Mastering Plone 6 Development](https://training.plone.org/5/mastering-plone/)
+- [Mastering Plone 6 Development](https://training.plone.org/mastering-plone/)
   The comprehensive training on Plone 6 with best practice tips for developers and integrators.
 - [Volto](https://training.plone.org/5/volto/index.html)
   A detailed training on how to create your own website using Volto frontend.
-- [Volto Hands-On](https://training.plone.org/5/voltohandson/index.html)
-- [Volto Add-ons Development](https://training.plone.org/5/voltoaddons/index.html)
+- [Volto Hands-On](https://training.plone.org/voltohandson/index.html)
+- [Volto Add-ons Development](https://training.plone.org/voltoaddons/index.html)
 - [Plone Deployment](https://training.plone.org/5/plone-deployment/index.html)
-- [React](https://training.plone.org/5/react/index.html)
+- [React](https://training.plone.org/react/index.html)
 - [JavaScript For Plone Developers](https://training.plone.org/5/javascript/index.html)
 
 ## Talks
@@ -234,10 +230,11 @@ JavaScript-centered trainings.
 
 ## Node Support
 
+- Node 18: Supported since Volto 17
 - Node 16: Supported since Volto 14
-- Node 14: Supported since Volto 8.8.0
-- Node 12: Deprecated from Volto 16 onwards. It was supported since Volto 4
-- Node 10: Deprecated from Volto 13 onwards. It was supported since Volto 1 (and its predecessor "plone-react")
+- Node 14: No longer supported. It was supported from Volto 8.8.0 - 16
+- Node 12: No longer supported. It was supported from Volto 4 - 15
+- Node 10: No longer supported. It was supported from Volto 1 - 12
 
 ## Browser support
 
@@ -272,7 +269,7 @@ yarn
 Either using a Docker command:
 
 ```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.0b3
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.1
 ```
 
 or using the convenience makefile command:

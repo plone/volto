@@ -1,4 +1,15 @@
-# Component Registry
+---
+myst:
+  html_meta:
+    "description": "Volto provides an integrated component registry that stores named references to components, allowing them to be queried programmatically."
+    "property=og:description": "Volto provides an integrated component registry that stores named references to components, allowing them to be queried programmatically."
+    "property=og:title": "Component registry in Volto"
+    "keywords": "Volto, Plone, frontend, React, registry, component"
+---
+
+(component-registry)=
+
+# Component registry
 
 The {term}`configuration registry` has a component registry integrated on itself.
 These registry stores by a given name the components.
