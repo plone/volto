@@ -1,9 +1,11 @@
 import React from 'react';
-import { Button } from 'semantic-ui-react';
+import { Button, Ref } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 import { BlockChooser, Icon } from '@plone/volto/components';
 import { useDetectClickOutside } from '@plone/volto/helpers';
 import addSVG from '@plone/volto/icons/add.svg';
+import { usePopper } from 'react-popper';
+import { Portal } from 'react-portal';
 
 const messages = defineMessages({
   addBlock: {
@@ -17,23 +19,34 @@ const NewBlockAddButton = (props) => {
   const { blocksConfig, block, index, onMutateBlock } = props;
   const [isOpenMenu, setOpenMenu] = React.useState(false);
 
-  const ref = useDetectClickOutside({
+  const blockChooserRef = useDetectClickOutside({
     onTriggered: () => setOpenMenu(false),
     triggerKeys: ['Escape'],
   });
 
+  const [referenceElement, setReferenceElement] = React.useState(null);
+  const [popperElement, setPopperElement] = React.useState(null);
+  const { styles, attributes } = usePopper(referenceElement, popperElement, {
+    placement: 'bottom',
+    modifiers: [
+      {
+        name: 'offset',
+        options: {
+          offset: [0, -30],
+        },
+      },
+      {
+        name: 'flip',
+        options: {
+          fallbackPlacements: ['right', 'top-start'],
+        },
+      },
+    ],
+  });
+
   return (
     <>
-      {isOpenMenu ? (
-        <div ref={ref}>
-          <BlockChooser
-            onMutateBlock={onMutateBlock}
-            currentBlock={block}
-            showRestricted
-            blocksConfig={blocksConfig}
-          />
-        </div>
-      ) : (
+      <Ref innerRef={setReferenceElement}>
         <Button
           basic
           icon
@@ -45,7 +58,24 @@ const NewBlockAddButton = (props) => {
         >
           <Icon name={addSVG} className="circled" size="24px" />
         </Button>
-      )}
+      </Ref>
+      {isOpenMenu ? (
+        <Portal node={document.getElementById('body')}>
+          <div
+            ref={setPopperElement}
+            style={styles.popper}
+            {...attributes.popper}
+          >
+            <BlockChooser
+              onMutateBlock={onMutateBlock}
+              currentBlock={block}
+              showRestricted
+              blocksConfig={blocksConfig}
+              ref={blockChooserRef}
+            />
+          </div>
+        </Portal>
+      ) : null}
     </>
   );
 };
