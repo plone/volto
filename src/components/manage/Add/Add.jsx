@@ -313,6 +313,8 @@ class Add extends Component {
               type: this.props.type,
             })}
           />
+          <div className='form-ui' >
+
           <Form
             ref={this.form}
             key="translated-or-new-content-form"
@@ -354,6 +356,7 @@ class Add extends Component {
               this.setState({ formSelected: 'addForm' });
             }}
           />
+          </div>
           {this.state.isClient && (
             <Portal node={document.getElementById('toolbar')}>
               <Toolbar

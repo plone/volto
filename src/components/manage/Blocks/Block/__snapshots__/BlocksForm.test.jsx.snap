@@ -39,31 +39,37 @@ exports[`Allow override of blocksConfig 1`] = `
               />
             </div>
             <div
-              class="ui drag block inner custom"
+              class=" delete-btn-container ui drag block inner custom"
             >
-              <div
-                class="block custom  selected"
-                role="presentation"
-                style="outline: none;"
-                tabindex="-1"
-              >
-                <div>
-                  a
-                   - 
-                  a
+              <div>
+                <div
+                  class="block custom  selected"
+                  role="presentation"
+                  style="outline: none;"
+                  tabindex="-1"
+                >
+                  <div>
+                    a
+                     - 
+                    a
+                  </div>
                 </div>
               </div>
-              <button
-                aria-label="delete"
-                class="ui basic icon button delete-button"
+              <div
+                class="delete-btn"
               >
-                <svg
-                  class="icon"
-                  style="height: 18px; width: auto; fill: currentColor;"
-                  viewBox=""
-                  xmlns=""
-                />
-              </button>
+                <button
+                  aria-label="delete"
+                  class="ui basic icon button delete-button"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 18px; width: auto; fill: currentColor;"
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -93,20 +99,25 @@ exports[`Allow override of blocksConfig 1`] = `
               />
             </div>
             <div
-              class="ui drag block inner custom"
+              class=" delete-btn-container ui drag block inner custom"
             >
-              <div
-                class="block custom "
-                role="presentation"
-                style="outline: none;"
-                tabindex="-1"
-              >
-                <div>
-                  b
-                   - 
-                  b
+              <div>
+                <div
+                  class="block custom "
+                  role="presentation"
+                  style="outline: none;"
+                  tabindex="-1"
+                >
+                  <div>
+                    b
+                     - 
+                    b
+                  </div>
                 </div>
               </div>
+              <div
+                class="delete-btn"
+              />
             </div>
           </div>
         </div>
