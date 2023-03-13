@@ -313,49 +313,48 @@ class Add extends Component {
               type: this.props.type,
             })}
           />
-          <div className='form-ui' >
-
-          <Form
-            ref={this.form}
-            key="translated-or-new-content-form"
-            schema={this.props.schema}
-            type={this.props.type}
-            formData={{
-              ...(blocksFieldname && {
-                [blocksFieldname]:
-                  initialBlocks ||
-                  this.props.schema.properties[blocksFieldname]?.default,
-              }),
-              ...(blocksLayoutFieldname && {
-                [blocksLayoutFieldname]: {
-                  items:
-                    initialBlocksLayout ||
-                    this.props.schema.properties[blocksLayoutFieldname]?.default
-                      ?.items,
-                },
-              }),
-              // Copy the Language Independent Fields values from the to-be translated content
-              // into the default values of the translated content Add form.
-              ...lifData(),
-            }}
-            requestError={this.state.error}
-            onSubmit={this.onSubmit}
-            hideActions
-            pathname={this.props.pathname}
-            visual={visual}
-            title={
-              this.props?.schema?.title
-                ? this.props.intl.formatMessage(messages.add, {
-                    type: this.props.schema.title,
-                  })
-                : null
-            }
-            loading={this.props.createRequest.loading}
-            isFormSelected={this.state.formSelected === 'addForm'}
-            onSelectForm={() => {
-              this.setState({ formSelected: 'addForm' });
-            }}
-          />
+          <div className="form-ui">
+            <Form
+              ref={this.form}
+              key="translated-or-new-content-form"
+              schema={this.props.schema}
+              type={this.props.type}
+              formData={{
+                ...(blocksFieldname && {
+                  [blocksFieldname]:
+                    initialBlocks ||
+                    this.props.schema.properties[blocksFieldname]?.default,
+                }),
+                ...(blocksLayoutFieldname && {
+                  [blocksLayoutFieldname]: {
+                    items:
+                      initialBlocksLayout ||
+                      this.props.schema.properties[blocksLayoutFieldname]
+                        ?.default?.items,
+                  },
+                }),
+                // Copy the Language Independent Fields values from the to-be translated content
+                // into the default values of the translated content Add form.
+                ...lifData(),
+              }}
+              requestError={this.state.error}
+              onSubmit={this.onSubmit}
+              hideActions
+              pathname={this.props.pathname}
+              visual={visual}
+              title={
+                this.props?.schema?.title
+                  ? this.props.intl.formatMessage(messages.add, {
+                      type: this.props.schema.title,
+                    })
+                  : null
+              }
+              loading={this.props.createRequest.loading}
+              isFormSelected={this.state.formSelected === 'addForm'}
+              onSelectForm={() => {
+                this.setState({ formSelected: 'addForm' });
+              }}
+            />
           </div>
           {this.state.isClient && (
             <Portal node={document.getElementById('toolbar')}>

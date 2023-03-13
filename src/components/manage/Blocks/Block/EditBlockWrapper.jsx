@@ -67,7 +67,7 @@ const EditBlockWrapper = (props) => {
         [data.align]: data.align,
       })}
     >
-      <div style={{ position: 'relative',  }}>
+      <div style={{ position: 'relative' }}>
         <div
           style={{
             visibility: visible ? 'visible' : 'hidden',
@@ -78,44 +78,40 @@ const EditBlockWrapper = (props) => {
         >
           <Icon name={dragSVG} size="18px" />
         </div>
-        <div   className={` delete-btn-container ui drag block inner ${type}`}>
-          <div  >
-          {children}
+        <div className={` delete-btn-container ui drag block inner ${type}`}>
+          <div>{children}</div>
+          <div className="delete-btn">
+            {selected && !required && editable && (
+              <Button
+                icon
+                basic
+                onClick={() => onDeleteBlock(block, true)}
+                className="delete-button"
+                aria-label={intl.formatMessage(messages.delete)}
+              >
+                <Icon name={trashSVG} size="18px" />
+              </Button>
+            )}
+
+            {config.experimental.addBlockButton.enabled && showBlockChooser && (
+              <BlockChooserButton
+                data={data}
+                block={block}
+                onInsertBlock={(id, value) => {
+                  if (blockHasValue(data)) {
+                    onSelectBlock(onInsertBlock(id, value));
+                  } else {
+                    onChangeBlock(id, value);
+                  }
+                }}
+                onMutateBlock={onMutateBlock}
+                allowedBlocks={allowedBlocks}
+                blocksConfig={blocksConfig}
+                size="24px"
+                properties={properties}
+              />
+            )}
           </div>
-          <div  className='delete-btn'  >
-          {selected && !required && editable && (
-            <Button
-              icon
-              basic
-              onClick={() => onDeleteBlock(block, true)}
-              className="delete-button"
-              aria-label={intl.formatMessage(messages.delete)}
-            >
-              <Icon name={trashSVG} size="18px" />
-            </Button>
-            
-            )}
-           
-          
-          {config.experimental.addBlockButton.enabled && showBlockChooser && (
-            <BlockChooserButton
-              data={data}
-              block={block}
-              onInsertBlock={(id, value) => {
-                if (blockHasValue(data)) {
-                  onSelectBlock(onInsertBlock(id, value));
-                } else {
-                  onChangeBlock(id, value);
-                }
-              }}
-              onMutateBlock={onMutateBlock}
-              allowedBlocks={allowedBlocks}
-              blocksConfig={blocksConfig}
-              size="24px"
-              properties={properties}
-            />
-            )}
-             </div>
         </div>
       </div>
     </div>
