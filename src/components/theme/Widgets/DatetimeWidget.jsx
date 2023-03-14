@@ -9,8 +9,8 @@ const DatetimeWidget = ({ value, children, className, format = 'lll' }) => {
   return value ? (
     <span className={cx(className, 'datetime', 'widget')}>
       {children
-        ? children(moment(value).format(format))
-        : moment(value).format(format)}
+        ? children(moment.utc(value).local().format(format))
+        : moment.utc(value).local().format(format)}
     </span>
   ) : (
     ''
