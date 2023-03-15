@@ -2,7 +2,7 @@ import { ploneAuth } from '../../support/constants';
 
 describe('Autologin Tests', () => {
   it('Autologin as an standalone test', function () {
-    const api_url = 'http://localhost:55001/plone';
+    const api_url = 'http://127.0.0.1:55001/plone';
     const user = ploneAuth[0];
     const password = ploneAuth[1];
 

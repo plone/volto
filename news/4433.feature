@@ -1,0 +1,1 @@
+Add custom CSS animation to hamburger menu, to avoid third party dependency. @danalvrz

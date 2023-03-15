@@ -263,6 +263,7 @@ __metadata:
     "@testing-library/cypress": 8.0.7
     "@testing-library/jest-dom": 5.16.4
     "@testing-library/react": 12.1.5
+    axe-core: 4.6.3
     cypress: 11.1.0
     cypress-axe: 1.0.0
     cypress-file-upload: 5.0.8
@@ -670,6 +671,13 @@ __metadata:
   version: 1.11.0
   resolution: "aws4@npm:1.11.0"
   checksum: 5a00d045fd0385926d20ebebcfba5ec79d4482fe706f63c27b324d489a04c68edb0db99ed991e19eda09cb8c97dc2452059a34d97545cebf591d7a2b5a10999f
+  languageName: node
+  linkType: hard
+
+"axe-core@npm:4.6.3":
+  version: 4.6.3
+  resolution: "axe-core@npm:4.6.3"
+  checksum: d0c46be92b9707c48b88a53cd5f471b155a2bfc8bf6beffb514ecd14e30b4863e340b5fc4f496d82a3c562048088c1f3ff5b93b9b3b026cb9c3bfacfd535da10
   languageName: node
   linkType: hard
 
