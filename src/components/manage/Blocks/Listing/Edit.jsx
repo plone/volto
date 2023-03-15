@@ -32,7 +32,6 @@ const Edit = React.memo(
       (data?.querystring?.query?.length
         ? intl.formatMessage(messages.results)
         : intl.formatMessage(messages.items));
-    const HeadlineTag = data.headlineTag || 'h2';
 
     return (
       <>
