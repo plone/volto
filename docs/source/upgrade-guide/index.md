@@ -59,6 +59,11 @@ This is better from the UI point of view, since any other element can take prece
 
 If you have customized the `BlockChooser` in any way could be that this now could interact with your customizations.
 
+### Removed `hamburgers` library
+
+The `hamburgers` library was removed from core Volto, replaced by a much more lightweight approach.
+If your theme or add-ons relied on it, add it again as a dependency in them, or adopt the CSS part that you are using in them.
+
 (volto-upgrade-guide-16.x.x)=
 
 ## Upgrading to Volto 16.x.x
