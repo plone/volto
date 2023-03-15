@@ -1,1 +1,0 @@
-Improve i18n script ordering of addons, so that addons can override translations from their dependencies. @davisagli

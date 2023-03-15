@@ -59,6 +59,17 @@ This is better from the UI point of view, since any other element can take prece
 
 If you have customized the `BlockChooser` in any way could be that this now could interact with your customizations.
 
+### Removed `hamburgers` library
+
+The `hamburgers` library was removed from core Volto, replaced by a much more lightweight approach.
+If your theme or add-ons relied on it, add it again as a dependency in them, or adopt the CSS part that you are using in them.
+
+### Fixed i18n script by taking into account the real add-on order
+
+By fixing this, we are potentially breaking how the locales were applied, since now the order will be the correct.
+Please check the translations of your project and add-ons and verify that the translations are still correct.
+This could be specially true if you did translation overrides or two add-ons were using different translations for the same `msgid` or there were conflicting `msgid` in different add-ons.
+
 (volto-upgrade-guide-16.x.x)=
 
 ## Upgrading to Volto 16.x.x
