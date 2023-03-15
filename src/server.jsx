@@ -59,13 +59,6 @@ const supported = new locale.Locales(keys(languages), 'en');
 
 const server = express()
   .disable('x-powered-by')
-  .use(
-    express.static(
-      process.env.BUILD_DIR
-        ? path.join(process.env.BUILD_DIR, 'public')
-        : process.env.RAZZLE_PUBLIC_DIR,
-    ),
-  )
   .head('/*', function (req, res) {
     // Support for HEAD requests. Required by start-test utility in CI.
     res.send('');
@@ -329,6 +322,7 @@ export const defaultReadCriticalCss = () => {
 // Exposed for the console bootstrap info messages
 server.apiPath = config.settings.apiPath;
 server.devProxyToApiPath = config.settings.devProxyToApiPath;
+server.proxyRewriteTarget = config.settings.proxyRewriteTarget;
 server.publicURL = config.settings.publicURL;
 
 export default server;
