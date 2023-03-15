@@ -91,9 +91,15 @@ You can call the hook like:
 ```jsx
 import { useLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
-useLazyLibs(['toastify', 'reactDnd'])
+const loaded = useLazyLibs(['toastify', 'reactDnd'])
 // or:
-useLazyLibs(['toastify', 'reactDnd'], {shouldRerender: false})
+const loaded = useLazyLibs(['toastify', 'reactDnd'], {shouldRerender: false})
+
+const reactDnd = loaded?.reactDnd;
+
+if (reactDnd) {
+  // The library is now loaded and can be used.
+}
 ```
 
 Passing the `shouldRerender` as false as options will cause the component to
