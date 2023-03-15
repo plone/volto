@@ -1,0 +1,1 @@
+Add option to hide empty listing blocks @ksuess
