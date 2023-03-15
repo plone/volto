@@ -8,6 +8,38 @@
 
 <!-- towncrier release notes start -->
 
+## 17.0.0-alpha.2 (2023-03-15)
+
+### Breaking
+
+- Add custom CSS animation to hamburger menu. Removed `hamburgers` dependency. @danalvrz [#4433](https://github.com/plone/volto/issues/4433)
+- Improve i18n script ordering of addons, so that addons can override translations from their dependencies. @davisagli [#4495](https://github.com/plone/volto/issues/4495)
+
+### Feature
+
+- Add option to hide empty listing blocks @ksuess [#4393](https://github.com/plone/volto/issues/4393)
+
+### Bugfix
+
+- Update build dependencies (razzle and react-dev-utils) @davisagli [#3997](https://github.com/plone/volto/issues/3997)
+- Added block prop to BlockDataForm in the Edit component of ToC. If block is not passed, OnChangeBlock will be called with undefined block id. @tedw87 [#4110](https://github.com/plone/volto/issues/4110)
+- Fix focus steal in Form @tedw87 [#4230](https://github.com/plone/volto/issues/4230)
+- Fixed paste issue in Table Block and added cypress test for pasting text in Table Block. [#4301](https://github.com/plone/volto/issues/4301)
+- Fixed i18n script to avoid overwriting translations with an empty msgstr @danalvrz [#4316](https://github.com/plone/volto/issues/4316)
+- bugfix: conditionally render all delete items in confirm widget [#4336](https://github.com/plone/volto/issues/4336)
+- Make the Site Setup control panel responsive for small screen devices. @lord2anil [#4484](https://github.com/plone/volto/issues/4484)
+- The menu for the contents page was unresponsive on mobile devices. Fixed this by changing the menu overflow to scroll. @sudhanshu1309 [#4492](https://github.com/plone/volto/issues/4492)
+- Make Drag and Drop list work with container-type inline-size. @robgietema [#4497](https://github.com/plone/volto/issues/4497)
+- (fix): Paste button disappearing while coping from nested blocks @dobri1408 [#4505](https://github.com/plone/volto/issues/4505)
+- Patch updates for some dependencies. @davisagli [#4520](https://github.com/plone/volto/issues/4520)
+- Fix flaky Cypress test introduced in #4521 @sneridagh [#4522](https://github.com/plone/volto/issues/4522)
+
+### Documentation
+
+- Fix training urls @ksuess [#4502](https://github.com/plone/volto/issues/4502)
+- Add upgrade guide for 4504 @sneridagh [#4542](https://github.com/plone/volto/issues/4542)
+
+
 ## 17.0.0-alpha.1 (2023-03-09)
 
 ### Feature
