@@ -1,4 +1,4 @@
-import isUrl from 'is-url';
+import isUrl from './isUrl';
 import imageExtensions from 'image-extensions';
 import { blockTagDeserializer } from '@plone/volto-slate/editor/deserialize';
 import { getBaseUrl } from '@plone/volto/helpers';
