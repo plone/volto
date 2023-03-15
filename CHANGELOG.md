@@ -8,6 +8,29 @@
 
 <!-- towncrier release notes start -->
 
+## 16.17.0 (2023-03-15)
+
+### Feature
+
+- Add option to hide empty listing blocks @ksuess [#4393](https://github.com/plone/volto/issues/4393)
+
+### Bugfix
+
+- Added block prop to BlockDataForm in the Edit component of ToC. If block is not passed, OnChangeBlock will be called with undefined block id. @tedw87 [#4110](https://github.com/plone/volto/issues/4110)
+- Fix focus steal in Form @tedw87 [#4230](https://github.com/plone/volto/issues/4230)
+- Fixed paste issue in Table Block and added cypress test for pasting text in Table Block. [#4301](https://github.com/plone/volto/issues/4301)
+- Fixed i18n script to avoid overwriting translations with an empty msgstr @danalvrz [#4316](https://github.com/plone/volto/issues/4316)
+- bugfix: conditionally render all delete items in confirm widget [#4336](https://github.com/plone/volto/issues/4336)
+- Make the Site Setup control panel responsive for small screen devices. @lord2anil [#4484](https://github.com/plone/volto/issues/4484)
+- The menu for the contents page was unresponsive on mobile devices. Fixed this by changing the menu overflow to scroll. @sudhanshu1309 [#4492](https://github.com/plone/volto/issues/4492)
+- (fix): Paste button disappearing while coping from nested blocks @dobri1408 [#4505](https://github.com/plone/volto/issues/4505)
+- Fix flaky Cypress test introduced in #4521 @sneridagh [#4522](https://github.com/plone/volto/issues/4522)
+
+### Documentation
+
+- Fix training urls @ksuess [#4502](https://github.com/plone/volto/issues/4502)
+
+
 ## 16.16.0 (2023-03-09)
 
 ### Feature
