@@ -17,7 +17,6 @@ exports[`Comments renders a comments component 1`] = `
       >
         <fieldset
           className="invisible"
-          disabled={false}
         >
           <div
             className="ui raised segments"

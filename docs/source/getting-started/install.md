@@ -11,6 +11,11 @@ myst:
 
 # Getting Started
 
+```{warning}
+This chapter of the documentation has been superseded by the official Plone 6 Documentation chapter {ref}`install-index-label`.
+This chapter contains some legacy information that may be useful to Plone 5.2 development.
+```
+
 
 (frontend-getting-started-installing-volto-label)=
 
@@ -18,13 +23,9 @@ myst:
 
 Volto can be installed in any operating system assuming that the following pre-requisites are met:
 
-- [Node.js LTS (16.x)](https://nodejs.org/en/)
+- [Node.js LTS (18.x)](https://nodejs.org/en/)
 - [Python](https://www.python.org/) - See below for specific versions.
 - [Docker](https://www.docker.com/get-started) (if using the Plone docker images)
-
-```{note}
-*UPDATE 2022-10-25*: Since 2022-10-25, NodeJS 18 is in LTS state (https://github.com/nodejs/release#release-schedule). However, due to changes in internal SSL libraries, some Volto dependencies have been deprecated and need to be updated in order to continue working in NodeJS 18, mainly Webpack 4 (see: https://github.com/webpack/webpack/issues/14532#issuecomment-947525539 for further information). You can still use it, but NodeJS should be run under a special flag: `NODE_OPTIONS=--openssl-legacy-provider`. See also Volto's PR: https://github.com/plone/volto/pull/3699 for more information.
-```
 
 The versions of Python that are supported in Volto depend on the version of Plone that you use.
 
@@ -45,7 +46,7 @@ There are three processes continuously running when you have a working Volto web
 
 1. A frontend web application running in your browser (JavaScript)
 2. A Node.js server process that delivers the JavaScript to the client and does
-   Server Side Rendering (SSR) of your pages on first request (JavaScript, the
+   {term}`server-side rendering` (SSR) of your pages on first request (JavaScript, the
    Razzle package is used for SSR)
 3. A Plone server process that stores and delivers all content through a REST API (Python)
 
@@ -88,8 +89,8 @@ it provides easy access to any NodeJS released version.
 4.  Install any active LTS version of NodeJS (https://github.com/nodejs/release#release-schedule):
 
     ```bash
-    nvm install 16
-    nvm use 16
+    nvm install 18
+    nvm use 18
     ```
 
 5.  Test NodeJS:
@@ -104,7 +105,7 @@ it provides easy access to any NodeJS released version.
 
     ```{note}
     Volto supports currently active NodeJS LTS versions based on [NodeJS
-    Releases page](https://github.com/nodejs/release#release-schedule), starting with Node 12 LTS.
+    Releases page](https://github.com/nodejs/release#release-schedule), starting with Node 16 LTS.
     ```
 
 
@@ -251,7 +252,7 @@ advanced options that can be passed to the generator.
 ## Build the production bundle
 
 In production environments, you should build an static version of your (Volto) app. The
-app should be run in a node process (because of the server side rendering
+app should be run in a node process (because of the {term}`server-side rendering`
 part), but it also have a client part that is provided and deployed by the server
 side rendering process.
 

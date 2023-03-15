@@ -68,7 +68,7 @@ There are some artifacts available for the acceptance tests made accessible to C
 
 ### Access History, Redux Store and Settings
 
-We expose the History, Redux Store and Settings from the app (only for Cypress environments) so we can easily access them and execute actions (like navigate using the router), dispatch Redux actions or change app settings "on the fly".
+We expose the History, {term}`Redux` Store and Settings from the app (only for Cypress environments) so we can easily access them and execute actions (like navigate using the router), dispatch Redux actions or change app settings "on the fly".
 
 #### Navigate using React Router
 

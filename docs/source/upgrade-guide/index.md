@@ -24,6 +24,40 @@ The generator will also "update" your project with the latest changes, and propo
 Thus it is safe to run it on top of your project and answer the prompts.
 ```
 
+(volto-upgrade-guide-17.x.x)=
+
+## Upgrading to Volto 17.x.x
+
+### Ending support for NodeJS 14
+
+Long Term Support for NodeJS 14 by the NodeJS community ends in April 2023.
+Volto 17 no longer supports NodeJS 14.
+Please update your projects to a NodeJS LTS version, where either 16 or 18 is supported at the moment of this writing.
+Version 18 is recommended.
+
+#### localhost now resolves to an IPv6 address
+
+NodeJS 18 prefers to resolve `localhost` to an IPv6 address instead of IPv4.
+If you are setting `RAZZLE_API_PATH` to a URL that includes `localhost`,
+change the hostname to `127.0.0.1` instead.
+
+### Webpack 5
+
+Volto 17 now uses Webpack 5.
+If you customized `razzle.config.js` for your project to change Webpack configuration
+or use Webpack plugins, you might need to make adjustments.
+
+### `BlockChooser` component now uses `popperjs` internally
+
+Technically not a breaking, the API nor the component contract has changed, but it's worth noting this change in here.
+
+```{versionadded} 17.0.0-alpha.1
+The `BlockChooser` component now uses `popperjs` library to position itself in the screen.
+It spawns at the end of the body instead of inner the block that called it.
+This is better from the UI point of view, since any other element can take precedence in the CSS element flow, preventing the block chooser to get overlapped by anything else.
+```
+
+If you have customized the `BlockChooser` in any way could be that this now could interact with your customizations.
 
 (volto-upgrade-guide-16.x.x)=
 
@@ -533,7 +567,7 @@ Integrate Sentry in your app with [`@plone-collective/volto-sentry`](https://www
 
 ### Upgrade `husky` to latest version
 
-In case you use `husky` in your projects (like Volto does), you must adapt to the new way that `husky` defines hooks.
+In case you use `husky` in your projects (like Volto does), you must adapt to the new way that `husky` defines {term}`hooks`.
 
 You will have to add a script in your `package.json` file called `prepare`:
 
@@ -583,8 +617,8 @@ To correct this and allow Volto to handle defaults in a correct way, we have to 
 ### Updated react-cookie library
 
 This fixes a use case where cookies could potentially be messed up if your site is under heavy load.
-The old `react-cookie` library was not able to handle correctly the SSR part, specially the one that
-is shared in "Nobody's land" (not SSR, not under the React tree, actions, Redux middleware).
+The old `react-cookie` library was not able to handle correctly the {term}`SSR` part, specially the one that
+is shared in "Nobody's land" (not SSR, not under the React tree, actions, {term}`Redux middleware`).
 Upgrading to the latest version of the `react-cookie` suite (`react-cookie`, `universal-cookie-express` and `universal-cookie`) will fix it.
 
 You have to take action only in case you did some development involving cookies. The `react-cookie`
@@ -633,7 +667,7 @@ export default function applyConfig(config) {
 
 ### Language Switcher no longer takes care of the sync of the language
 
-This responsibility has been transferred in full to the API Redux middleware, if you have shadowed either `LanguageSwitcher` or `MultilingualRedirector` (during the alpha phase) components, please update them.
+This responsibility has been transferred in full to the API {term}`Redux middleware`, if you have shadowed either `LanguageSwitcher` or `MultilingualRedirector` (during the alpha phase) components, please update them.
 Not doing so won't break your project, but they won't get the latest features and bug fixes, and probably will update the language cookie twice.
 
 ### LinkView component markup change
@@ -1015,7 +1049,7 @@ dependency" problems in Volto, due to the very nature of the solution (importing
 us. In fact, circular dependencies are common in NodeJS world, and the very nature of
 how it works make them "workable" thanks to the NodeJS own import resolution algorithm.
 So the "build" always works, although we have the circular dependencies, but that leads to weird problems
-like (just to mention one of them) the HMR (Hot Module Reloader) not working properly.
+like (just to mention one of them) the {term}`hot module replacement` (HMR) not working properly.
 
 That's why in this version we are introducing the new Volto's Configuration Registry.
 It's a centralized singleton that is populated from the core config module and can be
@@ -1449,7 +1483,7 @@ compiling. Migrate your code or if you want to use the proposal anyways, you'll 
 provide the configuration to your own project (babel.config.js) in your project root
 folder.
 
-You might still be using the old-style connecting of your components to the Redux store using
+You might still be using the old-style connecting of your components to the {term}`Redux` store using
 `@connect` decorator, in that case, take a look at any connected component in Volto to
 have a glimpse on how to migrate the code.
 
@@ -1458,7 +1492,7 @@ you are good to go, and you don't have to do anything.
 
 ### Hoisting problems on some setups
 
-Some people were experimenting weird hoisting issues when installing dependencies. This
+Some people were experimenting weird {term}`hoisting` issues when installing dependencies. This
 was caused by Babel deprecated proposals packages and its peer dependencies that
 sometimes conflicted with other installed packages.
 
