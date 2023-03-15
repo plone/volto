@@ -24,6 +24,7 @@ import { setSidebarTab } from '@plone/volto/actions';
 import { useDispatch } from 'react-redux';
 import { useDetectClickOutside, useEvent } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
+import { Portal } from 'react-portal';
 
 import { SortableTree } from '../Block/Tree/SortableTree.tsx';
 
@@ -208,18 +209,26 @@ const BlocksForm = (props) => {
     );
   });
 
-  console.log(getBlocksHierarchy(properties));
+  const [isClient, setIsClient] = React.useState(null);
+
+  React.useEffect(() => setIsClient(true), []);
 
   return (
     <>
-      <SortableTree
-        defaultItems={getBlocksHierarchy(properties)}
-        onMoveBlock={onMoveBlockEnhanced}
-        onDeleteBlock={onDeleteBlock}
-        collapsible
-        indicator
-        removable
-      />
+      {isMainForm && (
+        <Portal node={isClient && document.getElementById('sidebar-layout')}>
+          <div>
+            <SortableTree
+              defaultItems={getBlocksHierarchy(properties)}
+              onMoveBlock={onMoveBlockEnhanced}
+              onDeleteBlock={onDeleteBlock}
+              collapsible
+              indicator
+              removable
+            />
+          </div>
+        </Portal>
+      )}
       <div className="blocks-form" ref={ref}>
         <fieldset className="invisible" disabled={!editable}>
           <DragDropList

@@ -169,6 +169,7 @@ const RowEdit = (props) => {
         properties={properties}
         direction={direction}
         manage={manage}
+        isMainForm={false}
         selectedBlock={selected ? selectedBlock : null}
         blocksConfig={allowedBlocksConfig}
         title={data.placeholder}

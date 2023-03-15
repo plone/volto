@@ -27,6 +27,10 @@ const messages = defineMessages({
     id: 'Block',
     defaultMessage: 'Block',
   },
+  layout: {
+    id: 'Layout',
+    defaultMessage: 'Layout',
+  },
   settings: {
     id: 'Settings',
     defaultMessage: 'Settings',
@@ -55,6 +59,7 @@ class Sidebar extends Component {
   static propTypes = {
     documentTab: PropTypes.bool,
     blockTab: PropTypes.bool,
+    layoutTab: PropTypes.bool,
     settingsTab: PropTypes.bool,
   };
 
@@ -66,6 +71,7 @@ class Sidebar extends Component {
   static defaultProps = {
     documentTab: true,
     blockTab: true,
+    layoutTab: true,
     settingsTab: false,
   };
 
@@ -234,6 +240,22 @@ class Sidebar extends Component {
                     key="properties"
                     className="tab-wrapper"
                     id="sidebar-properties"
+                  >
+                    <Icon
+                      className="tab-forbidden"
+                      name={forbiddenSVG}
+                      size="48px"
+                    />
+                  </Tab.Pane>
+                ),
+              },
+              !!this.props.layoutTab && {
+                menuItem: this.props.intl.formatMessage(messages.layout),
+                pane: (
+                  <Tab.Pane
+                    key="layout"
+                    className="tab-wrapper"
+                    id="sidebar-layout"
                   >
                     <Icon
                       className="tab-forbidden"
