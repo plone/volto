@@ -1,6 +1,6 @@
 ## Documentation
 
-A training on how to create your own website using Volto is available as part of the Plone training at [https://2022.training.plone.org/volto/index.html](https://2022.training.plone.org/volto/index.html).
+[Volto Hands-On](https://training.plone.org/voltohandson/index.html) is a training on how to create your own website.
 
 ## Quick Start
 
