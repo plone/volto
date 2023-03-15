@@ -116,22 +116,37 @@ class History extends Component {
     this.props.revertHistory(getBaseUrl(this.props.pathname), value);
   }
 
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
+  processHistoryEntries = () => {
+    // Getting the history entries from the props
+    // No clue why the reverse(concat()) is necessary
     const entries = reverse(concat(this.props.entries));
     let title = entries.length > 0 ? entries[0].state_title : '';
     for (let x = 1; x < entries.length; x += 1) {
       entries[x].prev_state_title = title;
       title = entries[x].state_title || title;
     }
+    // We reverse them again
     reverse(entries);
+
+    // We identify the latest 'versioning' entry and mark it
+    const current_version = find(entries, (item) => item.type === 'versioning');
+    if (current_version) {
+      current_version.is_current = true;
+    }
+    return entries;
+  };
+
+  /**
+   * Render method.
+   * @method render
+   * @returns {string} Markup for the component.
+   */
+  render() {
     const historyAction = find(this.props.objectActions, {
       id: 'history',
     });
+    const entries = this.processHistoryEntries();
+
     return !historyAction ? (
       <>
         {this.props.token ? (
@@ -266,18 +281,20 @@ class History extends Component {
                               />
                             </Link>
                           )}
-                          {'version' in entry && (
-                            <Dropdown.Item
-                              value={entry.version}
-                              onClick={this.onRevert}
-                            >
-                              <Icon name="undo" />{' '}
-                              <FormattedMessage
-                                id="Revert to this revision"
-                                defaultMessage="Revert to this revision"
-                              />
-                            </Dropdown.Item>
-                          )}
+                          {'version' in entry &&
+                            entry.may_revert &&
+                            !entry.is_current && (
+                              <Dropdown.Item
+                                value={entry.version}
+                                onClick={this.onRevert}
+                              >
+                                <Icon name="undo" />{' '}
+                                <FormattedMessage
+                                  id="Revert to this revision"
+                                  defaultMessage="Revert to this revision"
+                                />
+                              </Dropdown.Item>
+                            )}
                         </Dropdown.Menu>
                       </Dropdown>
                     )}
