@@ -2,6 +2,8 @@
  * Routes.
  * @module routes
  */
+import debug from 'debug';
+import { compact } from 'lodash';
 import {
   Add,
   AddonsControlpanel,
@@ -28,6 +30,7 @@ import {
   NotFound,
   PasswordReset,
   Register,
+  Rules,
   RequestPasswordReset,
   Search,
   Sharing,
@@ -37,6 +40,11 @@ import {
   UsersControlpanel,
   UserGroupMembershipControlPanel,
   GroupsControlpanel,
+  RulesControlpanel,
+  AddRuleControlpanel,
+  EditRuleControlpanel,
+  ConfigureRuleControlpanel,
+  UpgradeControlPanel,
   PersonalInformation,
 } from '@plone/volto/components';
 
@@ -87,12 +95,36 @@ export const multilingualRoutes = [
   },
 ];
 
+export function getExternalRoutes() {
+  return compact(
+    (config.settings?.externalRoutes || []).map((route) => {
+      const newRoute = {
+        component: NotFound,
+      };
+      if (typeof route.match === 'string') {
+        newRoute.path = route.match;
+        return newRoute;
+      } else if (
+        typeof route.match === 'object' &&
+        !Array.isArray(route.match)
+      ) {
+        return {
+          ...newRoute,
+          ...route.match,
+        };
+      } else {
+        debug('routes')(
+          'Got invalid externalRoute, please check the configuration.',
+        );
+        return null;
+      }
+    }),
+  );
+}
+
 export const defaultRoutes = [
   // redirect to external links if path is in blacklist
-  ...(config.settings?.externalRoutes || []).map((route) => ({
-    ...route.match,
-    component: NotFound,
-  })),
+  ...getExternalRoutes(),
   ...((config.settings?.isMultilingual && multilingualRoutes) || []),
   {
     path: '/',
@@ -173,6 +205,26 @@ export const defaultRoutes = [
     component: GroupsControlpanel,
   },
   {
+    path: '/controlpanel/plone-upgrade',
+    component: UpgradeControlPanel,
+  },
+  {
+    path: '/controlpanel/rules/:id/configure',
+    component: ConfigureRuleControlpanel,
+  },
+  {
+    path: '/controlpanel/rules/:id/edit',
+    component: EditRuleControlpanel,
+  },
+  {
+    path: '/controlpanel/rules/add',
+    component: AddRuleControlpanel,
+  },
+  {
+    path: '/controlpanel/rules',
+    component: RulesControlpanel,
+  },
+  {
     path: '/controlpanel/:id',
     component: Controlpanel,
   },
@@ -197,8 +249,16 @@ export const defaultRoutes = [
     component: Sharing,
   },
   {
+    path: '/rules',
+    component: Rules,
+  },
+  {
     path: '/**/create-translation',
     component: CreateTranslation,
+  },
+  {
+    path: '/**/rules',
+    component: Rules,
   },
   {
     path: '/**/aliases',

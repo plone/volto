@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders TextLineEdit renders an TextLineEdit as h1 1`] = `
+<div
+  aria-multiline="false"
+  autoCapitalize="false"
+  autoCorrect="false"
+  contentEditable={true}
+  data-slate-editor={true}
+  data-slate-node="value"
+  onBeforeInput={[Function]}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onCompositionEnd={[Function]}
+  onCompositionStart={[Function]}
+  onCompositionUpdate={[Function]}
+  onCopy={[Function]}
+  onCut={[Function]}
+  onDragEnd={[Function]}
+  onDragOver={[Function]}
+  onDragStart={[Function]}
+  onDrop={[Function]}
+  onFocus={[Function]}
+  onInput={[Function]}
+  onKeyDown={[Function]}
+  onPaste={[Function]}
+  role="textbox"
+  spellCheck={false}
+  style={
+    Object {
+      "outline": "none",
+      "position": "relative",
+      "whiteSpace": "pre-wrap",
+      "wordWrap": "break-word",
+    }
+  }
+  suppressContentEditableWarning={true}
+  zindex={-1}
+>
+  <h1
+    className=""
+    data-slate-node="element"
+  >
+    <span
+      data-slate-node="text"
+    >
+      <span
+        data-slate-leaf={true}
+      >
+        <span
+          data-slate-string={true}
+        >
+          My Title
+        </span>
+      </span>
+    </span>
+  </h1>
+</div>
+`;
+
+exports[`renders TextLineEdit renders an TextLineEdit as h2 1`] = `
+<div
+  aria-multiline="false"
+  autoCapitalize="false"
+  autoCorrect="false"
+  contentEditable={true}
+  data-slate-editor={true}
+  data-slate-node="value"
+  onBeforeInput={[Function]}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onCompositionEnd={[Function]}
+  onCompositionStart={[Function]}
+  onCompositionUpdate={[Function]}
+  onCopy={[Function]}
+  onCut={[Function]}
+  onDragEnd={[Function]}
+  onDragOver={[Function]}
+  onDragStart={[Function]}
+  onDrop={[Function]}
+  onFocus={[Function]}
+  onInput={[Function]}
+  onKeyDown={[Function]}
+  onPaste={[Function]}
+  role="textbox"
+  spellCheck={false}
+  style={
+    Object {
+      "outline": "none",
+      "position": "relative",
+      "whiteSpace": "pre-wrap",
+      "wordWrap": "break-word",
+    }
+  }
+  suppressContentEditableWarning={true}
+  zindex={-1}
+>
+  <h2
+    className=""
+    data-slate-node="element"
+  >
+    <span
+      data-slate-node="text"
+    >
+      <span
+        data-slate-leaf={true}
+      >
+        <span
+          data-slate-string={true}
+        >
+          My Title
+        </span>
+      </span>
+    </span>
+  </h2>
+</div>
+`;
+
+exports[`renders TextLineEdit renders an TextLineEdit as h2 with a classname 1`] = `
+<div
+  aria-multiline="false"
+  autoCapitalize="false"
+  autoCorrect="false"
+  contentEditable={true}
+  data-slate-editor={true}
+  data-slate-node="value"
+  onBeforeInput={[Function]}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onCompositionEnd={[Function]}
+  onCompositionStart={[Function]}
+  onCompositionUpdate={[Function]}
+  onCopy={[Function]}
+  onCut={[Function]}
+  onDragEnd={[Function]}
+  onDragOver={[Function]}
+  onDragStart={[Function]}
+  onDrop={[Function]}
+  onFocus={[Function]}
+  onInput={[Function]}
+  onKeyDown={[Function]}
+  onPaste={[Function]}
+  role="textbox"
+  spellCheck={false}
+  style={
+    Object {
+      "outline": "none",
+      "position": "relative",
+      "whiteSpace": "pre-wrap",
+      "wordWrap": "break-word",
+    }
+  }
+  suppressContentEditableWarning={true}
+  zindex={-1}
+>
+  <h2
+    className="my-custom-h2-classname"
+    data-slate-node="element"
+  >
+    <span
+      data-slate-node="text"
+    >
+      <span
+        data-slate-leaf={true}
+      >
+        <span
+          data-slate-string={true}
+        >
+          My Title
+        </span>
+      </span>
+    </span>
+  </h2>
+</div>
+`;

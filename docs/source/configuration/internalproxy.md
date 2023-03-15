@@ -9,7 +9,7 @@ myst:
 
 # Internal proxy to content backend API
 
-The server side Volto SSR process (based on Razzle) has an internal proxy to the backend API
+The server side Volto {term}`SSR` process (based on Razzle) has an internal proxy to the backend API
 enabled by default.
 
 It provides a better developer experience out of the box, so the developer doesn't has to
@@ -20,7 +20,7 @@ To understand the need for the internal proxy, there are three processes running
 
 1. A frontend web application running in your browser (Javascript)
 2. A Node.js server process that delivers the javascript to the client and does
-   Server Side Rendering (SSR) of your pages on first request (Javascript, the
+   {term}`server-side rendering` (SSR) of your pages on first request (Javascript, the
    Razzle package is used for SSR)
 3. A Plone server process that stores and delivers all content through a REST API (Python)
 

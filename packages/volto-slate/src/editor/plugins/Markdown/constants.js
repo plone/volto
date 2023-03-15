@@ -16,17 +16,6 @@ export const localToggleList = (editor, format) => {
 };
 
 /**
- * @summary Turns off any list type.
- * @param {Editor} editor The editor to which to apply the change.
- * @returns The result of the inner call to the function `unwrapList`.
- */
-const preFormat = (editor) => {
-  return unwrapList(editor, false, {
-    unwrapFromList: false,
-  });
-};
-
-/**
  * The autoformat rules created by this plugin for the Markdown language.
  *
  * @todo Use constants instead of the remaining hard-coded types (h2, h3 etc.).
@@ -35,17 +24,14 @@ export const autoformatRules = [
   {
     type: 'h2',
     markup: '#',
-    // preFormat,
   },
   {
     type: 'h3',
     markup: '##',
-    // preFormat,
   },
   {
     type: LI,
     markup: ['*', '-', '+'],
-    preFormat,
     format: (editor) => {
       localToggleList(editor, 'ul');
     },
@@ -53,7 +39,6 @@ export const autoformatRules = [
   {
     type: LI,
     markup: ['1.', '1)'],
-    preFormat,
     format: (editor) => {
       localToggleList(editor, 'ol');
     },

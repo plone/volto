@@ -59,13 +59,6 @@ const supported = new locale.Locales(keys(languages), 'en');
 
 const server = express()
   .disable('x-powered-by')
-  .use(
-    express.static(
-      process.env.BUILD_DIR
-        ? path.join(process.env.BUILD_DIR, 'public')
-        : process.env.RAZZLE_PUBLIC_DIR,
-    ),
-  )
   .head('/*', function (req, res) {
     // Support for HEAD requests. Required by start-test utility in CI.
     res.send('');
@@ -224,17 +217,22 @@ server.get('/*', (req, res) => {
 
   loadOnServer({ store, location, routes, api })
     .then(() => {
-      // The content info is in the store at this point thanks to the asynconnect
-      // features, then we can force the current language info into the store when
-      // coming from an SSR request
-      const contentLang =
-        store.getState().content.data?.language?.token ||
-        config.settings.defaultLanguage;
-
       const cookie_lang =
         req.universalCookies.get('I18N_LANGUAGE') ||
         config.settings.defaultLanguage ||
         req.headers['accept-language'];
+
+      // The content info is in the store at this point thanks to the asynconnect
+      // features, then we can force the current language info into the store when
+      // coming from an SSR request
+
+      // TODO: there is a bug here with content that, for any reason, doesn't
+      // present the language token field, for some reason. In this case, we
+      // should follow the cookie rather then switching the language
+      const contentLang = store.getState().content.get?.error
+        ? cookie_lang
+        : store.getState().content.data?.language?.token ||
+          config.settings.defaultLanguage;
 
       if (cookie_lang !== contentLang) {
         const newLocale = toLangUnderscoreRegion(
@@ -324,6 +322,7 @@ export const defaultReadCriticalCss = () => {
 // Exposed for the console bootstrap info messages
 server.apiPath = config.settings.apiPath;
 server.devProxyToApiPath = config.settings.devProxyToApiPath;
+server.proxyRewriteTarget = config.settings.proxyRewriteTarget;
 server.publicURL = config.settings.publicURL;
 
 export default server;

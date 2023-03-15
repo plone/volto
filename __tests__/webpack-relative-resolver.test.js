@@ -120,10 +120,16 @@ describe('functions as a Webpack resolver plugin', () => {
     const resolved = [];
 
     const resolver = {
-      plugin(typ, resolveCallback) {
-        resolveCallback(req, () => flag.push(true));
+      ensureHook(typ) {
+        return this;
       },
-      doResolve(type, req, _, callback) {
+      getHook(typ) {
+        return this;
+      },
+      tapAsync: (name, callback) => {
+        callback(req, {});
+      },
+      doResolve(type, req, _, resolveContext, callback) {
         flag.push(true);
         resolved.push(req.request);
       },
@@ -143,10 +149,16 @@ describe('functions as a Webpack resolver plugin', () => {
     const resolved = [];
 
     const resolver = {
-      plugin(typ, resolveCallback) {
-        resolveCallback(req, () => flag.push(true));
+      ensureHook(typ) {
+        return this;
       },
-      doResolve(type, req, _, callback) {
+      getHook(typ) {
+        return this;
+      },
+      tapAsync: (name, callback) => {
+        callback(req, {}, () => flag.push(true));
+      },
+      doResolve(type, req, _, resolveContext, callback) {
         flag.push(true);
         resolved.push(req.request);
       },

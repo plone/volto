@@ -24,7 +24,6 @@
     "i18n:ci": "Description for `npm run i18n:ci` command",
     "stylelint:patches": "Description for `npm run stylelint:patches` command",
     "patches": "Description for `npm run patches` command",
-    "deduplicate": "Description for `npm run deduplicate` command",
     "dry-release": "Description for `npm run dry-release` command",
     "release": "Description for `npm run release` command",
     "release-major-alpha": "Description for `npm run release-major-alpha` command",

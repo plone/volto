@@ -34,6 +34,8 @@ export default (config) => {
     'styleMenu',
   ];
 
+  config.settings.slate.scrollIntoView = false;
+
   config.addonReducers = {
     ...config.addonReducers,
     ...slateReducers,
