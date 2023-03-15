@@ -290,7 +290,6 @@
     "express": "4.17.3",
     "filesize": "6",
     "glob": "7.1.6",
-    "hamburgers": "1.1.3",
     "history": "4.10.1",
     "hoist-non-react-statics": "3.3.2",
     "html-webpack-plugin": "5.5.0",
