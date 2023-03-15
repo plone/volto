@@ -1,1 +1,0 @@
-Added block prop to BlockDataForm in the Edit component of ToC. If block is not passed, OnChangeBlock will be called with undefined block id. @tedw87
