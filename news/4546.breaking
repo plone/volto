@@ -1,0 +1,2 @@
+Remove dependency of `@plone/scripts` on `simple-git`. It is used by
+`mrs-developer` but not directly. @davisagli
