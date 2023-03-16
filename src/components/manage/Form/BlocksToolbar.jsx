@@ -177,7 +177,11 @@ export class BlocksToolbarComponent extends React.Component {
           ''
         )}
         {selectedBlock && (blocksClipboard?.cut || blocksClipboard?.copy) && (
-          <Plug pluggable="main.toolbar.bottom" id="block-paste-btn">
+          <Plug
+            pluggable="main.toolbar.bottom"
+            id="block-paste-btn"
+            dependencies={[selectedBlock]}
+          >
             <button
               aria-label={intl.formatMessage(messages.pasteBlocks)}
               onClick={this.pasteBlocks}

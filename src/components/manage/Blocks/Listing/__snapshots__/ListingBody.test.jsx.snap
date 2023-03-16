@@ -1,8 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a ListingBody component 1`] = `
-<div>
-  No results found.
+<div
+  className="emptyListing"
+>
   <div
     className="ui inverted dimmer"
     onClick={[Function]}
