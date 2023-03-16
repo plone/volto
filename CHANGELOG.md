@@ -17,7 +17,6 @@
 
 ### Feature
 
-- Added the ability to view other user's personal information from the `/personal-information` route. @JeffersonBledsoe #373
 - Add option to hide empty listing blocks @ksuess [#4393](https://github.com/plone/volto/issues/4393)
 
 ### Bugfix
