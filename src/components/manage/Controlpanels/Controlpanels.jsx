@@ -4,7 +4,7 @@
  */
 
 import PropTypes from 'prop-types';
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
