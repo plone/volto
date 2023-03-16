@@ -129,11 +129,17 @@ class Login extends Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.token) {
       this.props.history.push(this.props.returnUrl || '/');
+      if (toast.isActive('loggedOut')) {
+        toast.dismiss('loggedOut');
+      }
       if (toast.isActive('loginFailed')) {
         toast.dismiss('loginFailed');
       }
     }
     if (nextProps.error) {
+      if (toast.isActive('loggedOut')) {
+        toast.dismiss('loggedOut');
+      }
       if (!toast.isActive('loginFailed')) {
         toast.error(
           <Toast

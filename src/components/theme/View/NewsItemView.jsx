@@ -21,7 +21,7 @@ import RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
  */
 const NewsItemView = ({ content }) =>
   hasBlocksData(content) ? (
-    <div id="page-document" className="ui container viewwrapper event-view">
+    <div id="page-document" className="ui container view-wrapper newsitem-view">
       <RenderBlocks content={content} />
     </div>
   ) : (

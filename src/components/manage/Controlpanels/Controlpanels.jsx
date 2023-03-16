@@ -120,8 +120,9 @@ function Controlpanels({
         return el;
       })
     : [];
+  const { filterControlPanels } = config.settings;
   const controlpanels = map(
-    concat(fetchedControlpanels, customcontrolpanels, [
+    concat(filterControlPanels(fetchedControlpanels), customcontrolpanels, [
       {
         '@id': '/addons',
         group: intl.formatMessage(messages.general),
@@ -184,7 +185,7 @@ function Controlpanels({
               {group}
             </Segment>,
             <Segment key={`body-${group}`} attached>
-              <Grid columns={6}>
+              <Grid doubling columns={6}>
                 <Grid.Row>
                   {map(filter(controlpanels, { group }), (controlpanel) => (
                     <Grid.Column key={controlpanel.id}>
