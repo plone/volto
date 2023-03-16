@@ -3,17 +3,17 @@
  * @module components/manage/Controlpanels/Controlpanels
  */
 
-import { asyncConnect, Helmet } from '@plone/volto/helpers';
-import { concat, filter, last, map, uniqBy } from 'lodash';
 import PropTypes from 'prop-types';
-import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
-import { Portal } from 'react-portal';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { compose } from 'redux';
+import { Link } from 'react-router-dom';
+import { concat, filter, last, map, uniqBy } from 'lodash';
+import { Portal } from 'react-portal';
+import { asyncConnect, Helmet } from '@plone/volto/helpers';
 import { Container, Grid, Header, Message, Segment } from 'semantic-ui-react';
+import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
 
-import { getSystemInformation, listControlpanels } from '@plone/volto/actions';
+import { listControlpanels, getSystemInformation } from '@plone/volto/actions';
 import { Error, Icon, Toolbar, VersionOverview } from '@plone/volto/components';
 
 import config from '@plone/volto/registry';
