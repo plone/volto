@@ -8,6 +8,17 @@
 
 <!-- towncrier release notes start -->
 
+## 16.17.1 (2023-03-16)
+
+### Bugfix
+
+- Fix Search is case sensitive in Block chooser @iRohitSingh [#4526](https://github.com/plone/volto/issues/4526)
+
+### Documentation
+
+- Deleted duplicate import and fixed training URLs. @yahya-cloud [#4523](https://github.com/plone/volto/issues/4523)
+
+
 ## 16.17.0 (2023-03-15)
 
 ### Feature
