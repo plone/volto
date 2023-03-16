@@ -286,13 +286,13 @@ export default compose(
   asyncConnect([
     {
       key: 'controlpanels',
-      // Dispatch async/await to make the operation syncronous, otherwise it returns
-      // before the promise is resolved
-      promise: async ({ location, store: { dispatch } }) => {
-        const controlpanels = await dispatch(listControlpanels());
-        await dispatch(getSystemInformation());
-        return controlpanels;
-      },
+      promise: async ({ location, store: { dispatch } }) =>
+        await dispatch(listControlpanels()),
+    },
+    {
+      key: 'systemInformation',
+      promise: async ({ location, store: { dispatch } }) =>
+        await dispatch(getSystemInformation()),
     },
   ]),
 )(Controlpanels);
