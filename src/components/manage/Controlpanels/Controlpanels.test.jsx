@@ -44,7 +44,6 @@ describe('Controlpanels', () => {
       ],
       reduxAsyncConnect: {
         // Mocked in redux async connect as it isn't fetch client-side.
-        //   The first `controlpanels` is the redux connect key, the next two keys are data
         controlpanels: [
           {
             '@id': 'http://localhost:8080/Plone/@controlpanels/date-and-time',
@@ -96,7 +95,6 @@ describe('Controlpanels', () => {
       ],
       reduxAsyncConnect: {
         // Mocked in redux async connect as it isn't fetch client-side.
-        //   The first `controlpanels` is the redux connect key, the next two keys are data
         controlpanels: [
           {
             '@id': 'http://localhost:8080/Plone/@controlpanels/security',
