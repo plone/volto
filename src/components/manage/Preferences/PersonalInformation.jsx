@@ -13,7 +13,8 @@ import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
 import { messages, asyncConnect } from '@plone/volto/helpers';
 import { getUser, updateUser, getUserSchema } from '@plone/volto/actions';
-import { Form, Toast, Unauthorized } from '@plone/volto/components';
+import { Form, Toast } from '@plone/volto/components';
+import config from '@plone/volto/registry';
 
 const personalInformatioNMessages = defineMessages({
   personalInformationFor: {
@@ -104,8 +105,10 @@ class PersonalInformation extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    if (this.props.error && this.props.error.status === 401) {
-      return <Unauthorized />;
+    if (this.props.error && this.props.error.status) {
+      const { views } = config;
+      const ErrorView = views.errorViews[this.props.error.status.toString()];
+      return <ErrorView />;
     }
 
     const title = this.props.match.params.username
