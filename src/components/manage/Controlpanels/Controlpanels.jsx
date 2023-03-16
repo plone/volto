@@ -6,7 +6,6 @@
 import { asyncConnect, Helmet } from '@plone/volto/helpers';
 import { concat, filter, last, map, uniqBy } from 'lodash';
 import PropTypes from 'prop-types';
-import React from 'react';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
 import { Portal } from 'react-portal';
 import { connect } from 'react-redux';
