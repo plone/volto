@@ -86,13 +86,17 @@ const messages = defineMessages({
     id: 'URL Management',
     defaultMessage: 'URL Management',
   },
+  contentRules: {
+    id: 'Content Rules',
+    defaultMessage: 'Content Rules',
+  },
 });
 
 /**
  * Controlpanels container class.
  */
 function Controlpanels({
-  controlpanels: fetchedControlpanels,
+  controlpanels,
   controlpanelsRequest,
   systemInformation,
   pathname,
@@ -121,8 +125,12 @@ function Controlpanels({
       })
     : [];
   const { filterControlPanels } = config.settings;
-  const controlpanels = map(
-    concat(filterControlPanels(fetchedControlpanels), customcontrolpanels, [
+
+  console.log('controlpanels', controlpanels);
+  console.log('controlpanelsRequest', controlpanelsRequest);
+
+  const filteredControlPanels = map(
+    concat(filterControlPanels(controlpanels), customcontrolpanels, [
       {
         '@id': '/addons',
         group: intl.formatMessage(messages.general),
@@ -132,6 +140,11 @@ function Controlpanels({
         '@id': '/database',
         group: intl.formatMessage(messages.general),
         title: intl.formatMessage(messages.database),
+      },
+      {
+        '@id': '/rules',
+        group: intl.formatMessage(messages.content),
+        title: intl.formatMessage(messages.contentRules),
       },
       {
         '@id': '/undo',
@@ -169,7 +182,7 @@ function Controlpanels({
       id: last(controlpanel['@id'].split('/')),
     }),
   );
-  const groups = map(uniqBy(controlpanels, 'group'), 'group');
+  const groups = map(uniqBy(filteredControlPanels, 'group'), 'group');
   const { controlPanelsIcons: icons } = config.settings;
 
   return (
@@ -187,19 +200,24 @@ function Controlpanels({
             <Segment key={`body-${group}`} attached>
               <Grid doubling columns={6}>
                 <Grid.Row>
-                  {map(filter(controlpanels, { group }), (controlpanel) => (
-                    <Grid.Column key={controlpanel.id}>
-                      <Link to={`/controlpanel/${controlpanel.id}`}>
-                        <Header as="h3" icon textAlign="center">
-                          <Icon
-                            name={icons?.[controlpanel.id] || icons.default}
-                            size="48px"
-                          />
-                          <Header.Content>{controlpanel.title}</Header.Content>
-                        </Header>
-                      </Link>
-                    </Grid.Column>
-                  ))}
+                  {map(
+                    filter(filteredControlPanels, { group }),
+                    (controlpanel) => (
+                      <Grid.Column key={controlpanel.id}>
+                        <Link to={`/controlpanel/${controlpanel.id}`}>
+                          <Header as="h3" icon textAlign="center">
+                            <Icon
+                              name={icons?.[controlpanel.id] || icons.default}
+                              size="48px"
+                            />
+                            <Header.Content>
+                              {controlpanel.title}
+                            </Header.Content>
+                          </Header>
+                        </Link>
+                      </Grid.Column>
+                    ),
+                  )}
                 </Grid.Row>
               </Grid>
             </Segment>,
