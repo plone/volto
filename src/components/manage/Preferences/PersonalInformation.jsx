@@ -163,9 +163,12 @@ export default compose(
   injectIntl,
   asyncConnect([
     {
+      key: 'user',
+      promise: async ({ store: { dispatch }, match }) =>
+        await dispatch(getUser(match.params.username)),
+    },
+    {
       key: 'userschema',
-      // Dispatch async/await to make the operation syncronous, otherwise it returns
-      // before the promise is resolved
       promise: async ({ store: { dispatch } }) =>
         await dispatch(getUserSchema()),
     },
