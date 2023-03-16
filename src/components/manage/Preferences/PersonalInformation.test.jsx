@@ -42,6 +42,10 @@ describe('PersonalInformation', () => {
         locale: 'en',
         messages: {},
       },
+      router: { location: 'foo' },
+      reduxAsyncConnect: {
+        user: {},
+      },
     });
     const component = renderer.create(
       <Provider store={store}>
@@ -75,6 +79,10 @@ describe('PersonalInformation', () => {
       intl: {
         locale: 'en',
         messages: {},
+      },
+      router: { location: 'foo' },
+      reduxAsyncConnect: {
+        user: {},
       },
     });
     const component = renderer.create(
