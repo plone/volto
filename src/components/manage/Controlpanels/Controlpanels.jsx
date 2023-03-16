@@ -12,7 +12,7 @@ import { Portal } from 'react-portal';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { compose } from 'redux';
-import { Container, Grid, Header, Segment } from 'semantic-ui-react';
+import { Container, Grid, Header, Message, Segment } from 'semantic-ui-react';
 
 import { getSystemInformation, listControlpanels } from '@plone/volto/actions';
 import { Error, Icon, Toolbar, VersionOverview } from '@plone/volto/components';
@@ -126,9 +126,6 @@ function Controlpanels({
     : [];
   const { filterControlPanels } = config.settings;
 
-  console.log('controlpanels', controlpanels);
-  console.log('controlpanelsRequest', controlpanelsRequest);
-
   const filteredControlPanels = map(
     concat(filterControlPanels(controlpanels), customcontrolpanels, [
       {
@@ -193,6 +190,20 @@ function Controlpanels({
           <Segment className="primary">
             <FormattedMessage id="Site Setup" defaultMessage="Site Setup" />
           </Segment>
+          {systemInformation && systemInformation.upgrade && (
+            <Message attached warning>
+              <FormattedMessage
+                id="The site configuration is outdated and needs to be upgraded."
+                defaultMessage="The site configuration is outdated and needs to be upgraded."
+              />{' '}
+              <Link to={`/controlpanel/plone-upgrade`}>
+                <FormattedMessage
+                  id="Please continue with the upgrade."
+                  defaultMessage="Please continue with the upgrade."
+                />
+              </Link>
+            </Message>
+          )}
           {map(groups, (group) => [
             <Segment key={`header-${group}`} secondary>
               {group}
