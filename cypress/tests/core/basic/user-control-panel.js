@@ -84,6 +84,8 @@ describe('User Control Panel Test', () => {
     cy.get('tr:nth-of-type(2) > td.fullname').should('have.text', userFullName);
     cy.get('tr:nth-of-type(2) div[role="listbox"]').click();
     cy.waitForResourceToLoad('@users');
+
+    // I can visit the user edit form through the action menu
     cy.get('.menu.visible').within(() => {
       cy.findByRole('option', { name: /view user info/gi }).click();
     });
@@ -91,6 +93,7 @@ describe('User Control Panel Test', () => {
     cy.waitForResourceToLoad('@users/example');
     cy.findByText(/Test Example/gi).should('be.visible');
 
+    // I can visit the user edit form through clicking the user's name
     cy.visit('/controlpanel/users');
     cy.findByRole('link', { name: /Test Example/gi }).click();
 
