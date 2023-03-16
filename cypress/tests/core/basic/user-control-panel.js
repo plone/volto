@@ -88,15 +88,16 @@ describe('User Control Panel Test', () => {
       cy.findByRole('option', { name: /view user info/gi }).click();
     });
     cy.waitForResourceToLoad('@userschema');
-    cy.waitForResourceToLoad('/personal-information/example');
+    cy.waitForResourceToLoad('@users/example');
     cy.findByText(/Test Example/gi).should('be.visible');
 
     cy.visit('/controlpanel/users');
     cy.findByRole('link', { name: /Test Example/gi }).click();
 
     cy.waitForResourceToLoad('@userschema');
-    cy.waitForResourceToLoad('/personal-information/example');
+    cy.waitForResourceToLoad('@users/example');
     cy.findByText(/Test Example/gi).should('be.visible');
+    cy.findByText(/(example)/gi).should('be.visible');
   });
 
   it('Should delete User from controlPanel', () => {
