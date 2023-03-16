@@ -7,6 +7,7 @@ import { last, memoize } from 'lodash';
 import { urlRegex, telRegex, mailRegex } from './urlRegex';
 import prependHttp from 'prepend-http';
 import config from '@plone/volto/registry';
+import { matchPath } from 'react-router';
 
 /**
  * Get base url.
@@ -213,7 +214,17 @@ export function expandToBackendURL(path) {
  */
 export function isInternalURL(url) {
   const { settings } = config;
-  return (
+
+  const isMatch = (config.settings.externalRoutes ?? []).find((route) => {
+    if (typeof route === 'object') {
+      return matchPath(flattenToAppURL(url), route.match);
+    }
+    return matchPath(flattenToAppURL(url), route);
+  });
+
+  const isBlacklisted = isMatch && Object.keys(isMatch)?.length > 0;
+
+  const internalURL =
     url &&
     (url.indexOf(settings.publicURL) !== -1 ||
       (settings.internalApiPath &&
@@ -221,8 +232,13 @@ export function isInternalURL(url) {
       url.indexOf(settings.apiPath) !== -1 ||
       url.charAt(0) === '/' ||
       url.charAt(0) === '.' ||
-      url.startsWith('#'))
-  );
+      url.startsWith('#'));
+
+  if (internalURL && isBlacklisted) {
+    return false;
+  }
+
+  return internalURL;
 }
 
 /**
