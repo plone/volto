@@ -6,6 +6,7 @@ import AnimateHeight from 'react-animate-height';
 import { keys, map, isEqual } from 'lodash';
 
 import { Field, Icon } from '@plone/volto/components';
+import { applySchemaDefaults } from '@plone/volto/helpers';
 
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
@@ -32,6 +33,7 @@ const InlineForm = (props) => {
     error, // Such as {message: "It's not good"}
     errors = {},
     formData,
+    onChangeFormData,
     onChangeField,
     schema,
     title,
@@ -49,26 +51,22 @@ const InlineForm = (props) => {
     // Will set field values from schema, by matching the default values
 
     const objectSchema = typeof schema === 'function' ? schema(props) : schema;
-    const initialData = {
-      ...Object.keys(objectSchema.properties).reduce(
-        (accumulator, currentField) => {
-          return objectSchema.properties[currentField].default
-            ? {
-                ...accumulator,
-                [currentField]: objectSchema.properties[currentField].default,
-              }
-            : accumulator;
-        },
-        {},
-      ),
-      ...formData,
-    };
 
-    Object.keys(initialData).forEach((k) => {
-      if (!isEqual(initialData[k], formData?.[k])) {
-        onChangeField(k, initialData[k]);
-      }
+    const initialData = applySchemaDefaults({
+      data: formData,
+      schema: objectSchema,
+      intl,
     });
+
+    if (onChangeFormData) {
+      onChangeFormData(initialData);
+    } else {
+      Object.keys(initialData).forEach((k) => {
+        if (!isEqual(initialData[k], formData?.[k])) {
+          onChangeField(k, initialData[k]);
+        }
+      });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

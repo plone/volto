@@ -112,6 +112,7 @@ function TokenWidget(props) {
       <CreatableSelect
         id={`field-${id}`}
         key={id}
+        menuShouldScrollIntoView={false}
         isDisabled={isDisabled}
         className="react-select-container"
         classNamePrefix="react-select"

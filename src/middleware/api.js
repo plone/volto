@@ -36,7 +36,7 @@ let socket = null;
  * @param {*} type The action type
  * @returns {string} The url/path with the configured expanders added to the query string
  */
-export function addExpandersToPath(path, type) {
+export function addExpandersToPath(path, type, isAnonymous) {
   const { settings } = config;
   const { apiExpanders = [] } = settings;
 
@@ -49,7 +49,9 @@ export function addExpandersToPath(path, type) {
     .filter((expand) => matchPath(url, expand.match) && expand[type])
     .map((expand) => expand[type]);
 
-  const expandMerge = compact(union([expand, ...flatten(expandersFromConfig)]));
+  const expandMerge = compact(
+    union([expand, ...flatten(expandersFromConfig)]),
+  ).filter((item) => !(item === 'types' && isAnonymous)); // Remove types expander if isAnonymous
 
   const stringifiedExpand = qs.stringify(
     { expand: expandMerge },
@@ -111,8 +113,12 @@ function sendOnSocket(request) {
  * @param {Object} api Api object.
  * @returns {Promise} Action promise.
  */
-export default (api) => ({ dispatch, getState }) => (next) => (action) => {
+const apiMiddlewareFactory = (api) => ({ dispatch, getState }) => (next) => (
+  action,
+) => {
   const { settings } = config;
+
+  const isAnonymous = !getState().userSession.token;
 
   if (typeof action === 'function') {
     return action(dispatch, getState);
@@ -135,14 +141,14 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
           request.map((item) =>
             sendOnSocket({
               ...item,
-              path: addExpandersToPath(item.path, type),
+              path: addExpandersToPath(item.path, type, isAnonymous),
               id: type,
             }),
           ),
         )
       : sendOnSocket({
           ...request,
-          path: addExpandersToPath(request.path, type),
+          path: addExpandersToPath(request.path, type, isAnonymous),
           id: type,
         });
   } else {
@@ -150,22 +156,25 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
       ? mode === 'serial'
         ? request.reduce((prevPromise, item) => {
             return prevPromise.then((acc) => {
-              return api[item.op](addExpandersToPath(item.path, type), {
-                data: item.data,
-                type: item.type,
-                headers: item.headers,
-                params: request.params,
-                checkUrl: settings.actions_raising_api_errors.includes(
-                  action.type,
-                ),
-              }).then((reqres) => {
+              return api[item.op](
+                addExpandersToPath(item.path, type, isAnonymous),
+                {
+                  data: item.data,
+                  type: item.type,
+                  headers: item.headers,
+                  params: request.params,
+                  checkUrl: settings.actions_raising_api_errors.includes(
+                    action.type,
+                  ),
+                },
+              ).then((reqres) => {
                 return [...acc, reqres];
               });
             });
           }, Promise.resolve([]))
         : Promise.all(
             request.map((item) =>
-              api[item.op](addExpandersToPath(item.path, type), {
+              api[item.op](addExpandersToPath(item.path, type, isAnonymous), {
                 data: item.data,
                 type: item.type,
                 headers: item.headers,
@@ -176,7 +185,7 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
               }),
             ),
           )
-      : api[request.op](addExpandersToPath(request.path, type), {
+      : api[request.op](addExpandersToPath(request.path, type, isAnonymous), {
           data: request.data,
           type: request.type,
           headers: request.headers,
@@ -316,3 +325,5 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
 
   return actionPromise;
 };
+
+export default apiMiddlewareFactory;

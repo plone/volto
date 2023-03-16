@@ -1,13 +1,28 @@
-import { compose } from 'redux';
+import React from 'react';
 import { InlineForm } from '@plone/volto/components';
-import {
-  withVariationSchemaEnhancer,
-  withStylingSchemaEnhancer,
-} from '@plone/volto/helpers';
+import { withVariationSchemaEnhancer } from '@plone/volto/helpers';
 
-const BlockDataForm = compose(
-  withStylingSchemaEnhancer,
-  withVariationSchemaEnhancer,
-)(InlineForm);
+const EnhancedBlockDataForm = withVariationSchemaEnhancer(InlineForm);
 
-export default BlockDataForm;
+export default function BlockDataForm(props) {
+  const { onChangeBlock, block } = props;
+
+  if (!onChangeBlock) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'BlockDataForm component is used without passing down onChangeBlock as props',
+    );
+  }
+
+  const onChangeFormData = React.useCallback(
+    (data) => onChangeBlock(block, data),
+    [block, onChangeBlock],
+  );
+
+  return (
+    <EnhancedBlockDataForm
+      {...props}
+      onChangeFormData={onChangeBlock ? onChangeFormData : undefined}
+    />
+  );
+}

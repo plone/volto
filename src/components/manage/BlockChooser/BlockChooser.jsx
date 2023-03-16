@@ -89,14 +89,18 @@ const BlockChooser = ({
   function blocksAvailableFilter(blocks) {
     return blocks.filter(
       (block) =>
-        getFormatMessage(block.title).toLowerCase().includes(filterValue) ||
+        getFormatMessage(block.title)
+          .toLowerCase()
+          .includes(filterValue.toLowerCase()) ||
         filterVariations(block)?.length,
     );
   }
   function filterVariations(block) {
     return block.variations?.filter(
       (variation) =>
-        getFormatMessage(variation.title).toLowerCase().includes(filterValue) &&
+        getFormatMessage(variation.title)
+          .toLowerCase()
+          .includes(filterValue.toLowerCase()) &&
         !variation.title.toLowerCase().includes('default'),
     );
   }
@@ -131,7 +135,12 @@ const BlockChooser = ({
   };
 
   return (
-    <div className="blocks-chooser" ref={blockChooserRef}>
+    <div
+      className={`blocks-chooser${
+        config.experimental.addBlockButton.enabled ? ' new-add-block' : ''
+      }`}
+      ref={blockChooserRef}
+    >
       <BlockChooserSearch
         onChange={(value) => setFilterValue(value)}
         searchValue={filterValue}
