@@ -66,9 +66,9 @@ If your theme or add-ons relied on it, add it again as a dependency in them, or 
 
 ### Fixed i18n script by taking into account the real add-on order
 
-By fixing this, we are potentially breaking how the locales were applied, since now the order will be the correct.
-Please check the translations of your project and add-ons and verify that the translations are still correct.
-This could be specially true if you did translation overrides or two add-ons were using different translations for the same `msgid` or there were conflicting `msgid` in different add-ons.
+By fixing this, we may break how the locales were applied, since the order will now be correct.
+Please check the translations of your project and add-ons, and verify that the translations are still correct.
+This could be especially true if you did translation overrides, two add-ons were using different translations for the same `msgid`, or there were conflicting `msgid`s in different add-ons.
 
 (volto-upgrade-guide-16.x.x)=
 
