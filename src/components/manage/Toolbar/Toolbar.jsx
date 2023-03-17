@@ -564,7 +564,6 @@ class Toolbar extends Component {
                   name="main.toolbar.bottom"
                   params={{ onClickHandler: this.toggleMenu }}
                 />
-                {!this.props.hideDefaultViewButtons && (
                   <button
                     className="user"
                     aria-label={this.props.intl.formatMessage(
@@ -582,7 +581,6 @@ class Toolbar extends Component {
                       )}
                     />
                   </button>
-                )}
               </div>
             </div>
             <div className="toolbar-handler">
