@@ -91,6 +91,18 @@
 - Fix English and MyST grammar and syntax from PR #4285 @stevepiercy [#4331](https://github.com/plone/volto/issues/4331)
 - Use a universal static path for both documentation and volto repos. @stevepiercy [#4376](https://github.com/plone/volto/issues/4376)
 
+
+## 16.17.1 (2023-03-16)
+
+ ### Bugfix
+
+ - Fix Search is case sensitive in Block chooser @iRohitSingh [#4526](https://github.com/plone/volto/issues/4526)
+
+ ### Documentation
+
+ - Deleted duplicate import and fixed training URLs. @yahya-cloud [#4523](https://github.com/plone/volto/issues/4523)
+
+
 ## 16.17.0 (2023-03-15)
 
 ### Feature
