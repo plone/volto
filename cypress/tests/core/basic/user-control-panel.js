@@ -36,7 +36,7 @@ describe('User Control Panel Test', () => {
     // same with the same username
     cy.get('input[id="user-search-input"]').clear().type('i');
     cy.get('.icon.button:first').click();
-    cy.get('.fullname').should('have.text', 'Alok Kumar');
+    cy.get('.fullname').should('have.text', 'Alok Kumar (iFlameing)');
   });
 
   it('Should show error from backend when add User fails', () => {
@@ -78,7 +78,10 @@ describe('User Control Panel Test', () => {
     cy.get('button[title="Save"]').click(-50, -50, { force: true });
 
     // select first user with name, delete it and search if its exists or not!
-    cy.get('tr:nth-of-type(2) > td.fullname').should('have.text', 'Alok Kumar');
+    cy.get('tr:nth-of-type(2) > td.fullname').should(
+      'have.text',
+      'Alok Kumar (iFlameing)',
+    );
     cy.get('tr:nth-of-type(2) div[role="listbox"]').click();
     cy.get('tr:nth-of-type(2) div[role="option"]').click();
     cy.contains('Delete User');
