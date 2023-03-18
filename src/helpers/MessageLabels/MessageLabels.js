@@ -178,9 +178,13 @@ export const messages = defineMessages({
     defaultMessage:
       'It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them.',
   },
-  addFormUserSearchNoResults: {
+  userSearchNoResults: {
     id: 'There are no users with the searched criteria',
     defaultMesages: 'There are no users with the searched criteria',
+  },
+  groupSearchNoResults: {
+    id: 'There are no groups with the searched criteria',
+    defaultMesages: 'There are no groups with the searched criteria',
   },
   updateRoles: {
     id: 'User roles updated',
