@@ -1,15 +1,9 @@
-/**
- * Login container.
- * @module components/theme/Logout/Logout
- */
-
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { defineMessages, injectIntl } from 'react-intl';
 import qs from 'query-string';
-
 import { Login } from '@plone/volto/components';
 import { logout, purgeMessages } from '@plone/volto/actions';
 import { toast } from 'react-toastify';
@@ -26,70 +20,57 @@ const messages = defineMessages({
   },
 });
 
-/**
- * Logout class.
- * @class Logout
- * @extends Component
- */
-class Logout extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    logout: PropTypes.func.isRequired,
-    purgeMessages: PropTypes.func.isRequired,
-    query: PropTypes.shape({
-      return_url: PropTypes.string,
-    }),
-  };
+const Logout = ({
+  logout,
+  purgeMessages,
+  query,
+  token,
+  returnUrl,
+  history,
+  location,
+  intl,
+}) => {
+  useEffect(() => {
+    logout();
+    purgeMessages();
+  }, []);
 
-  /**
-   * Default properties.
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    query: null,
-  };
-
-  componentDidMount() {
-    this.props.logout();
-    this.props.purgeMessages();
-  }
-
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (!nextProps.token) {
-      this.props.history.replace(this.props.returnUrl || '/');
+  useEffect(() => {
+    if (!token) {
+      history.replace(returnUrl || '/');
       if (!toast.isActive('loggedOut')) {
         toast.info(
           <Toast
             info
-            title={this.props.intl.formatMessage(messages.loggedOut)}
-            content={this.props.intl.formatMessage(messages.loggedOutContent)}
+            title={intl.formatMessage(messages.loggedOut)}
+            content={intl.formatMessage(messages.loggedOutContent)}
           />,
           { autoClose: false, toastId: 'loggedOut' },
         );
       }
     }
-  }
+  }, [token, history, returnUrl, intl]);
 
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
-    return <Login location={{ query: this.props.location.query }} />;
-  }
-}
+  return <Login location={{ query: location.query }} />;
+};
+
+Logout.propTypes = {
+  logout: PropTypes.func.isRequired,
+  purgeMessages: PropTypes.func.isRequired,
+  query: PropTypes.shape({
+    return_url: PropTypes.string,
+  }),
+  token: PropTypes.string,
+  returnUrl: PropTypes.string,
+  history: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  intl: PropTypes.object.isRequired,
+};
+
+Logout.defaultProps = {
+  query: null,
+};
+
 export default compose(
   injectIntl,
   connect(
