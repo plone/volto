@@ -11,6 +11,7 @@ import {
   getControlpanel,
   updateUser,
   updateGroup,
+  getUserSchema,
 } from '@plone/volto/actions';
 import {
   Icon,
@@ -120,6 +121,7 @@ class UsersControlpanel extends Component {
         entries: this.props.users,
       });
     }
+    await this.props.getUserSchema();
   };
 
   /**
@@ -382,6 +384,55 @@ class UsersControlpanel extends Component {
     let usernameToDelete = this.state.userToDelete
       ? this.state.userToDelete.username
       : '';
+    let adduserschema = this.props?.userschema?.userschema;
+    if (this.props?.userschema?.loaded) {
+      adduserschema.properties['username'] = {
+        title: this.props.intl.formatMessage(messages.addUserFormUsernameTitle),
+        type: 'string',
+        description: this.props.intl.formatMessage(
+          messages.addUserFormUsernameDescription,
+        ),
+      };
+      adduserschema.properties['password'] = {
+        title: this.props.intl.formatMessage(messages.addUserFormPasswordTitle),
+        type: 'password',
+        description: this.props.intl.formatMessage(
+          messages.addUserFormPasswordDescription,
+        ),
+        widget: 'password',
+      };
+      adduserschema.properties['sendPasswordReset'] = {
+        title: this.props.intl.formatMessage(
+          messages.addUserFormSendPasswordResetTitle,
+        ),
+        type: 'boolean',
+      };
+      adduserschema.properties['roles'] = {
+        title: this.props.intl.formatMessage(messages.addUserFormRolesTitle),
+        type: 'array',
+        choices: this.props.roles.map((role) => [role.id, role.title]),
+        noValueOption: false,
+      };
+      adduserschema.properties['groups'] = {
+        title: this.props.intl.formatMessage(messages.addUserGroupNameTitle),
+        type: 'array',
+        choices: this.props.groups.map((group) => [group.id, group.id]),
+        noValueOption: false,
+      };
+      if (!adduserschema.fieldsets[0]['fields'].includes('username')) {
+        adduserschema.fieldsets[0]['fields'] = adduserschema.fieldsets[0][
+          'fields'
+        ].concat([
+          'username',
+          'password',
+          'sendPasswordReset',
+          'roles',
+          'groups',
+        ]);
+      }
+      console.log('after manipulation', adduserschema.fieldsets[0]['fields']);
+    }
+
     return (
       <Container className="users-control-panel">
         <Helmet title={this.props.intl.formatMessage(messages.users)} />
@@ -419,92 +470,7 @@ class UsersControlpanel extends Component {
               }
               title={this.props.intl.formatMessage(messages.addUserFormTitle)}
               loading={this.props.createRequest.loading}
-              schema={{
-                fieldsets: [
-                  {
-                    id: 'default',
-                    title: 'FIXME: User Data',
-                    fields: [
-                      'username',
-                      'fullname',
-                      'email',
-                      'password',
-                      'sendPasswordReset',
-                      'roles',
-                      'groups',
-                    ],
-                  },
-                ],
-                properties: {
-                  username: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormUsernameTitle,
-                    ),
-                    type: 'string',
-                    description: this.props.intl.formatMessage(
-                      messages.addUserFormUsernameDescription,
-                    ),
-                  },
-                  fullname: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormFullnameTitle,
-                    ),
-                    type: 'string',
-                    description: this.props.intl.formatMessage(
-                      messages.addUserFormFullnameDescription,
-                    ),
-                  },
-                  email: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormEmailTitle,
-                    ),
-                    type: 'string',
-                    description: this.props.intl.formatMessage(
-                      messages.addUserFormEmailDescription,
-                    ),
-                    widget: 'email',
-                  },
-                  password: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormPasswordTitle,
-                    ),
-                    type: 'password',
-                    description: this.props.intl.formatMessage(
-                      messages.addUserFormPasswordDescription,
-                    ),
-                    widget: 'password',
-                  },
-                  sendPasswordReset: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormSendPasswordResetTitle,
-                    ),
-                    type: 'boolean',
-                  },
-                  roles: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormRolesTitle,
-                    ),
-                    type: 'array',
-                    choices: this.props.roles.map((role) => [
-                      role.id,
-                      role.title,
-                    ]),
-                    noValueOption: false,
-                  },
-                  groups: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserGroupNameTitle,
-                    ),
-                    type: 'array',
-                    choices: this.props.groups.map((group) => [
-                      group.id,
-                      group.id,
-                    ]),
-                    noValueOption: false,
-                  },
-                },
-                required: ['username', 'email'],
-              }}
+              schema={adduserschema}
             />
           ) : null}
         </div>
@@ -670,6 +636,7 @@ export default compose(
       createRequest: state.users.create,
       loadRolesRequest: state.roles,
       inheritedRole: state.authRole.authenticatedRole,
+      userschema: state.userschema,
     }),
     (dispatch) =>
       bindActionCreators(
@@ -682,6 +649,7 @@ export default compose(
           createUser,
           updateUser,
           updateGroup,
+          getUserSchema,
         },
         dispatch,
       ),
