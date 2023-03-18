@@ -1736,6 +1736,11 @@ msgstr "Jährliches Intervall"
 msgid "Invalid Block"
 msgstr "Ungültiger Block - Wird beim Speichern entfernt"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them.
+msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
+msgstr ""
+
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Item batch size
 msgid "Item batch size"
@@ -3371,6 +3376,16 @@ msgstr "Die Arbeitskopie wurde verworfen"
 # defaultMessage: The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends.
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
 msgstr "{plonecms} {copyright} 2000-{current_year} {plonefoundation} und Freunde."
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: undefined
+msgid "There are no groups with the searched criteria"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: undefined
+msgid "There are no users with the searched criteria"
+msgstr ""
 
 #: components/theme/CorsError/CorsError
 # defaultMessage: There is a configuration problem on the backend
