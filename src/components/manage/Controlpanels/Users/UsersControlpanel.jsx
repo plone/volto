@@ -431,7 +431,11 @@ class UsersControlpanel extends Component {
         choices: this.props.groups.map((group) => [group.id, group.id]),
         noValueOption: false,
       };
-      if (!adduserschema.fieldsets[0]['fields'].includes('username')) {
+      if (
+        adduserschema.fieldsets &&
+        adduserschema.fieldsets.length > 0 &&
+        !adduserschema.fieldsets[0]['fields'].includes('username')
+      ) {
         adduserschema.fieldsets[0]['fields'] = adduserschema.fieldsets[0][
           'fields'
         ].concat([
