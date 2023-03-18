@@ -474,7 +474,7 @@ class UsersControlpanel extends Component {
             onConfirm={this.onDeleteOk}
             size={null}
           />
-          {this.state.showAddUser ? (
+          {this.props?.userschema?.loaded && this.state.showAddUser ? (
             <ModalForm
               open={this.state.showAddUser}
               className="modal"
