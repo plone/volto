@@ -257,12 +257,24 @@ class UsersControlpanel extends Component {
    * @returns {undefined}
    */
   onAddUserSubmit(data, callback) {
-    const { groups, sendPasswordReset } = data;
-    if (groups && groups.length > 0) this.addUserToGroup(data);
-    this.props.createUser(data, sendPasswordReset);
-    this.setState({
-      addUserSetFormDataCallback: callback,
-    });
+    const { groups, sendPasswordReset, password } = data;
+    if (sendPasswordReset !== undefined && password !== undefined) {
+      toast.error(
+        <Toast
+          error
+          title={this.props.intl.formatMessage(messages.error)}
+          content={this.props.intl.formatMessage(
+            messages.addUserFormPasswordAndSendPasswordTogetherNotAllowed,
+          )}
+        />,
+      );
+    } else {
+      if (groups && groups.length > 0) this.addUserToGroup(data);
+      this.props.createUser(data, sendPasswordReset);
+      this.setState({
+        addUserSetFormDataCallback: callback,
+      });
+    }
   }
 
   /**
