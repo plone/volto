@@ -442,7 +442,6 @@ class UsersControlpanel extends Component {
           'groups',
         ]);
       }
-      console.log('after manipulation', adduserschema.fieldsets[0]['fields']);
     }
 
     return (
@@ -522,7 +521,8 @@ class UsersControlpanel extends Component {
             </Form>
           </Segment>
           <Form>
-            <div className="table">
+            {((this.props.many_users && this.state.entries.length > 0) ||
+              !this.props.many_users) && (
               <Table padded striped attached unstackable>
                 <Table.Header>
                   <Table.Row>
@@ -560,7 +560,12 @@ class UsersControlpanel extends Component {
                     ))}
                 </Table.Body>
               </Table>
-            </div>
+            )}
+            {this.state.entries.length === 0 && this.state.search && (
+              <Segment>
+                {this.props.intl.formatMessage(messages.userSearchNoResults)}
+              </Segment>
+            )}
             <div className="contents-pagination">
               <Pagination
                 current={this.state.currentPage}
