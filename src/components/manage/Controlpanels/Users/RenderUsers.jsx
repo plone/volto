@@ -67,7 +67,8 @@ class RenderUsers extends Component {
         <Table.Cell className="fullname">
           {this.props.user.fullname
             ? this.props.user.fullname
-            : this.props.user.username}
+            : this.props.user.username}{' '}
+          ({this.props.user.username})
         </Table.Cell>
         {this.props.roles.map((role) => (
           <Table.Cell key={role.id}>
