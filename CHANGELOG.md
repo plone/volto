@@ -2447,7 +2447,7 @@ See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information
 - Use Plone logo @ericof
 - Update favicon and related tags with best practices @sneridagh
 - Enable to be able to use the internal proxy in production as well @sneridagh
-- Add runtime configuration for `@babel/plugin-transform-react-jsx` set to `automatic`. This enables the new JSX runtime: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html So no longer `import React from 'react'` is needed anymore. @sneridagh
+- - Add runtime configuration for `@babel/plugin-transform-react-jsx` set to `automatic`. This enables the new JSX runtime: https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html So no longer `import React from 'react'` is needed anymore. @sneridagh
 - Add `autocomplete` Widget component - It holds off the vocabulary endpoint pull until you search (more than 2 chars). Useful when dealing with huge vocabularies @sneridagh @reebalazs
 - Add new listing block option "fullobjects" per variation @ksuess
 - `FormFieldWrapper` accepts now strings and elements for description @nzambello
