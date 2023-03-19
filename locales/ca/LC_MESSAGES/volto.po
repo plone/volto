@@ -1114,6 +1114,7 @@ msgstr "Les adreces de correu electrònic no coincideixen."
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
 #: components/theme/Comments/Comments
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Edit
 msgid "Edit"
 msgstr "Edita"
@@ -3673,6 +3674,11 @@ msgstr ""
 msgid "Update"
 msgstr "Actualització"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Update User
+msgid "Update User"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update installed addons
 msgid "Update installed addons"
@@ -3787,6 +3793,11 @@ msgstr "Nom d'usuari"
 # defaultMessage: User roles updated
 msgid "User roles updated"
 msgstr "Rols d'usuari actualitzats"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: undefined
+msgid "User updated successfuly"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Username

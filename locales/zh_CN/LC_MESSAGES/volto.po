@@ -1111,6 +1111,7 @@ msgstr "邮箱地址不匹配"
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
 #: components/theme/Comments/Comments
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Edit
 msgid "Edit"
 msgstr "编辑"
@@ -3670,6 +3671,11 @@ msgstr "未排序"
 msgid "Update"
 msgstr "更新"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Update User
+msgid "Update User"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update installed addons
 msgid "Update installed addons"
@@ -3784,6 +3790,11 @@ msgstr "用户名"
 # defaultMessage: User roles updated
 msgid "User roles updated"
 msgstr "用户角色更新"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: undefined
+msgid "User updated successfuly"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Username

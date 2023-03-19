@@ -1112,6 +1112,7 @@ msgstr "E-mailadressen komen niet overeen"
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
 #: components/theme/Comments/Comments
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Edit
 msgid "Edit"
 msgstr "Bewerken"
@@ -3671,6 +3672,11 @@ msgstr "Niet gesorteerd"
 msgid "Update"
 msgstr "Bijwerken"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Update User
+msgid "Update User"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update installed addons
 msgid "Update installed addons"
@@ -3785,6 +3791,11 @@ msgstr "Gebruikersnaam"
 # defaultMessage: User roles updated
 msgid "User roles updated"
 msgstr "Gberuikersrollen bijgewerkt"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: undefined
+msgid "User updated successfuly"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Username

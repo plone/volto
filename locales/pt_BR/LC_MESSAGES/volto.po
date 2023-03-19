@@ -1115,6 +1115,7 @@ msgstr "Os endereços de e-mail não coincidem."
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
 #: components/theme/Comments/Comments
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Edit
 msgid "Edit"
 msgstr "Editar"
@@ -3674,6 +3675,11 @@ msgstr "Desordenado"
 msgid "Update"
 msgstr "Atualizar"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Update User
+msgid "Update User"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update installed addons
 msgid "Update installed addons"
@@ -3788,6 +3794,11 @@ msgstr "Nome de usuário"
 # defaultMessage: User roles updated
 msgid "User roles updated"
 msgstr "Papéis do grupo atualizados"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: undefined
+msgid "User updated successfuly"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Username

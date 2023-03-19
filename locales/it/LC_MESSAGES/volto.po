@@ -1105,6 +1105,7 @@ msgstr "Gli indirizzi e-mail non corrispondono"
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
 #: components/theme/Comments/Comments
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Edit
 msgid "Edit"
 msgstr "Modifica"
@@ -3664,6 +3665,11 @@ msgstr ""
 msgid "Update"
 msgstr "Aggiorna"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Update User
+msgid "Update User"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update installed addons
 msgid "Update installed addons"
@@ -3778,6 +3784,11 @@ msgstr "Nome utente"
 # defaultMessage: User roles updated
 msgid "User roles updated"
 msgstr "Ruoli utente aggiornati"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: undefined
+msgid "User updated successfuly"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Username
