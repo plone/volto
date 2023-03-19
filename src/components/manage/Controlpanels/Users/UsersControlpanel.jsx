@@ -404,10 +404,11 @@ class UsersControlpanel extends Component {
     // this is really ugly, but if we don't do this the original value
     // of the userschema is changed and it is used like that though
     // the lifecycle of the application
-    let adduserschema = JSON.parse(
-      JSON.stringify(this.props?.userschema?.userschema),
-    );
+    let adduserschema = {};
     if (this.props?.userschema?.loaded) {
+      let adduserschema = JSON.parse(
+        JSON.stringify(this.props?.userschema?.userschema),
+      );
       adduserschema.properties['username'] = {
         title: this.props.intl.formatMessage(messages.addUserFormUsernameTitle),
         type: 'string',
