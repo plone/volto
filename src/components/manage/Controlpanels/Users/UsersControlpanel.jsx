@@ -258,7 +258,11 @@ class UsersControlpanel extends Component {
    */
   onAddUserSubmit(data, callback) {
     const { groups, sendPasswordReset, password } = data;
-    if (sendPasswordReset !== undefined && password !== undefined) {
+    if (
+      sendPasswordReset !== undefined &&
+      sendPasswordReset === true &&
+      password !== undefined
+    ) {
       toast.error(
         <Toast
           error
@@ -396,7 +400,13 @@ class UsersControlpanel extends Component {
     let usernameToDelete = this.state.userToDelete
       ? this.state.userToDelete.username
       : '';
-    let adduserschema = this.props?.userschema?.userschema;
+    // Copy the userschema using JSON serialization/deserialization
+    // this is really ugly, but if we don't do this the original value
+    // of the userschema is changed and it is used like that though
+    // the lifecycle of the application
+    let adduserschema = JSON.parse(
+      JSON.stringify(this.props?.userschema?.userschema),
+    );
     if (this.props?.userschema?.loaded) {
       adduserschema.properties['username'] = {
         title: this.props.intl.formatMessage(messages.addUserFormUsernameTitle),
@@ -560,6 +570,8 @@ class UsersControlpanel extends Component {
                         user={user}
                         updateUser={this.updateUserRole}
                         inheritedRole={this.props.inheritedRole}
+                        userschema={this.props.userschema}
+                        listUsers={this.props.listUsers}
                       />
                     ))}
                 </Table.Body>

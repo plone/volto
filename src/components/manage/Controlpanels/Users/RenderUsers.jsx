@@ -5,10 +5,15 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { Dropdown, Table, Checkbox } from 'semantic-ui-react';
+import { Button, Dropdown, Table, Checkbox } from 'semantic-ui-react';
 import trashSVG from '@plone/volto/icons/delete.svg';
-import { Icon } from '@plone/volto/components';
+import { Icon, ModalForm, Toast } from '@plone/volto/components';
+import { updateUser } from '@plone/volto/actions';
 import ploneSVG from '@plone/volto/icons/plone.svg';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { messages } from '@plone/volto/helpers';
+import { toast } from 'react-toastify';
 
 /**
  * UsersControlpanelUser class.
@@ -43,9 +48,14 @@ class RenderUsers extends Component {
    */
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      user: {},
+    };
     this.onChange = this.onChange.bind(this);
+    this.onEditUserError = this.onEditUserError.bind(this);
+    this.onEditUserSubmit = this.onEditUserSubmit.bind(this);
   }
+
   /**
    * @param {*} event
    * @param {*} { value }
@@ -56,6 +66,40 @@ class RenderUsers extends Component {
     const [user, role] = value.split('.');
     this.props.updateUser(user, role);
   }
+
+  onEditUserSubmit(data, callback) {
+    // Do not handle groups and roles in this form
+    delete data.groups;
+    delete data.roles;
+    this.props.updateUser(data.id, data);
+    this.setState({ user: {} });
+    this.props.listUsers();
+    return toast.success(
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.success)}
+        content={this.props.intl.formatMessage(messages.updateUserSuccess)}
+      />,
+    );
+  }
+
+  onEditUserError() {
+    return toast.error(
+      <Toast
+        error
+        title={this.props.intl.formatMessage(messages.error)}
+        content={this.props.intl.formatMessage(
+          messages.addUserFormPasswordAndSendPasswordTogetherNotAllowed,
+        )}
+      />,
+    );
+  }
+
+  onClickEdit(props) {
+    const { formData } = props;
+    this.setState({ user: { ...formData } });
+  }
+
   /**
    * Render method.
    * @method render
@@ -69,6 +113,15 @@ class RenderUsers extends Component {
             ? this.props.user.fullname
             : this.props.user.username}{' '}
           ({this.props.user.username})
+          {this.props.userschema && (
+            <Button
+              onClick={() => {
+                this.onClickEdit({ formData: this.props.user });
+              }}
+            >
+              {this.props.intl.formatMessage(messages.edit)}
+            </Button>
+          )}
         </Table.Cell>
         {this.props.roles.map((role) => (
           <Table.Cell key={role.id}>
@@ -102,9 +155,31 @@ class RenderUsers extends Component {
             </Dropdown.Menu>
           </Dropdown>
         </Table.Cell>
+        {Object.keys(this.state.user).length &&
+          this.props.userschema.loaded && (
+            <ModalForm
+              className="modal"
+              onSubmit={this.onEditUserSubmit}
+              submitError={this.state.editUserError}
+              formData={this.state.user}
+              onCancel={() => this.setState({ user: {} })}
+              title={this.props.intl.formatMessage(
+                messages.updateUserFormTitle,
+              )}
+              loading={this.props.updateRequest.loading}
+              schema={this.props.userschema.userschema}
+            />
+          )}
       </Table.Row>
     );
   }
 }
-
-export default injectIntl(RenderUsers);
+export default compose(
+  injectIntl,
+  connect(
+    (state, props) => ({
+      updateRequest: state.users.update,
+    }),
+    { updateUser },
+  ),
+)(RenderUsers);

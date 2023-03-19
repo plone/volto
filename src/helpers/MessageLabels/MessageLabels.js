@@ -186,6 +186,14 @@ export const messages = defineMessages({
     id: 'There are no groups with the searched criteria',
     defaultMesages: 'There are no groups with the searched criteria',
   },
+  updateUserFormTitle: {
+    id: 'Update User',
+    defaultMessage: 'Update User',
+  },
+  updateUserSuccess: {
+    id: 'User updated successfuly',
+    defaultMesage: 'User updated successfuly',
+  },
   updateRoles: {
     id: 'User roles updated',
     defaultMessage: 'User roles updated',
@@ -273,5 +281,9 @@ export const messages = defineMessages({
   addJoinedGroups: {
     id: 'Show groups of users below',
     defaultMessage: 'Show groups of users below',
+  },
+  edit: {
+    id: 'Edit',
+    defaultMesage: 'Edit',
   },
 });
