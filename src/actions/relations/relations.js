@@ -20,7 +20,7 @@ export function createRelations(content) {
     type: CREATE_RELATIONS,
     request: {
       op: 'post',
-      path: '/@relations-catalog',
+      path: '/@relations',
       data: content,
     },
   };
@@ -37,7 +37,7 @@ export function deleteRelations(content) {
     type: DELETE_RELATIONS,
     request: {
       op: 'del',
-      path: `/@relations-catalog`,
+      path: `/@relations`,
       data: content,
     },
   };
@@ -53,9 +53,12 @@ export function deleteRelations(content) {
  * @returns {Object} List relations action
  */
 export function listRelations(relation, sources, targets, backrelations = 0) {
-  let path = '/@relations-catalog';
-  if (relation) {
-    path += `?relation=${relation}`;
+  let path = '/@relations';
+  var searchParams = new URLSearchParams();
+  relation && searchParams.append('relation', relation);
+  const searchParamsToString = searchParams.toString();
+  if (searchParamsToString) {
+    path += `?${searchParamsToString}`;
   }
   return {
     type: LIST_RELATIONS,
