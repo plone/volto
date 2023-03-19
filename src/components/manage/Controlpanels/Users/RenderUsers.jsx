@@ -181,7 +181,7 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
-      updateRequest: state.users.update,
+      updateRequest: state.users?.update,
     }),
     { updateUser },
   ),
