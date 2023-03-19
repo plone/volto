@@ -114,13 +114,16 @@ class RenderUsers extends Component {
             : this.props.user.username}{' '}
           ({this.props.user.username})
           {this.props.userschema && (
-            <Button
-              onClick={() => {
-                this.onClickEdit({ formData: this.props.user });
-              }}
-            >
-              {this.props.intl.formatMessage(messages.edit)}
-            </Button>
+            <>
+              <br />
+              <Button
+                onClick={() => {
+                  this.onClickEdit({ formData: this.props.user });
+                }}
+              >
+                {this.props.intl.formatMessage(messages.edit)}
+              </Button>
+            </>
           )}
         </Table.Cell>
         {this.props.roles.map((role) => (
@@ -155,7 +158,7 @@ class RenderUsers extends Component {
             </Dropdown.Menu>
           </Dropdown>
         </Table.Cell>
-        {Object.keys(this.state.user).length &&
+        {Object.keys(this.state.user).length > 0 &&
           this.props.userschema.loaded && (
             <ModalForm
               className="modal"
