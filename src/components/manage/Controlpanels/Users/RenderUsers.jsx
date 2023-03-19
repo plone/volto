@@ -71,7 +71,7 @@ class RenderUsers extends Component {
     // Do not handle groups and roles in this form
     delete data.groups;
     delete data.roles;
-    this.props.updateUser(data.id, data);
+    this.props.updateUserData(data.id, data);
     this.setState({ user: {} });
     this.props.listUsers();
     return toast.success(
@@ -183,6 +183,6 @@ export default compose(
     (state, props) => ({
       updateRequest: state.users?.update,
     }),
-    { updateUser },
+    { updateUserData: updateUser },
   ),
 )(RenderUsers);
