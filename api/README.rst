@@ -45,7 +45,7 @@ are required for cryptography, image handling/scaling support and compression.
 You can find more up to date details on installing these necessary libraries for linux
 systems in the 'Mastering Plone' training at
 
--> https://training.plone.org/5/mastering-plone/installation.html#installing-plone-backend
+-> https://training.plone.org/mastering-plone/installation.html#installing-plone-backend
 
 For Windows you could try WSL (Windows subsystem for Linux) and for Mac OS X for example
 Homebrew to install these necessary support libraries.

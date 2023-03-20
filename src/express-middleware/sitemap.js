@@ -1,5 +1,5 @@
 import express from 'express';
-import { generateSitemap } from '@plone/volto/helpers';
+import { generateSitemap } from '@plone/volto/helpers/Sitemap/Sitemap';
 
 export const sitemap = function (req, res, next) {
   generateSitemap(req).then((sitemap) => {
