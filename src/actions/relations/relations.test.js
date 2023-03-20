@@ -10,7 +10,7 @@ describe('Users action', () => {
       expect(action.type).toEqual(LIST_RELATIONS);
       expect(action.request.op).toEqual('get');
       expect(action.request.path).toEqual(
-        `/@relations-catalog?relation=${relation}`,
+        `/@relations?relation=${relation}`,
       );
     });
   });
