@@ -84,6 +84,7 @@ export default function relations(state = initialState, action = {}) {
       return {
         ...state,
         relations: [],
+        stats: {},
         [getRequestKey(action.type)]: {
           loading: false,
           loaded: false,
