@@ -222,7 +222,7 @@ export function isInternalURL(url) {
     return matchPath(flattenToAppURL(url), route);
   });
 
-  const isBlacklisted = isMatch && Object.keys(isMatch)?.length > 0;
+  const isExcluded = isMatch && Object.keys(isMatch)?.length > 0;
 
   const internalURL =
     url &&
@@ -234,7 +234,7 @@ export function isInternalURL(url) {
       url.charAt(0) === '.' ||
       url.startsWith('#'));
 
-  if (internalURL && isBlacklisted) {
+  if (internalURL && isExcluded) {
     return false;
   }
 
