@@ -2623,6 +2623,12 @@ msgstr "S'enregistrer"
 msgid "Registration form"
 msgstr "Formulaire d'enregistrement"
 
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Relation
+msgid "Relation name"
+msgstr ""
+
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/Relations/Relations
 #: helpers/MessageLabels/MessageLabels
@@ -4312,6 +4318,11 @@ msgstr "Début de la plage"
 # defaultMessage: Most used
 msgid "mostUsed"
 msgstr "souvent utilisé"
+
+#: components/manage/Controlpanels/Relations/RelationsListing
+# defaultMessage: Found {sources} sources and {targets} targets. Narrow down to {max}!
+msgid "narrowDownRelations"
+msgstr ""
 
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry

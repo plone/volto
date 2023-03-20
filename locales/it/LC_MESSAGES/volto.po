@@ -2606,6 +2606,12 @@ msgstr "Registrati"
 msgid "Registration form"
 msgstr "Form di iscrizione"
 
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Relation
+msgid "Relation name"
+msgstr ""
+
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/Relations/Relations
 #: helpers/MessageLabels/MessageLabels
@@ -4295,6 +4301,11 @@ msgstr "Inizio del range"
 # defaultMessage: Most used
 msgid "mostUsed"
 msgstr "Più usati"
+
+#: components/manage/Controlpanels/Relations/RelationsListing
+# defaultMessage: Found {sources} sources and {targets} targets. Narrow down to {max}!
+msgid "narrowDownRelations"
+msgstr ""
 
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry

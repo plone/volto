@@ -188,7 +188,7 @@ const RelationsMatrix = (props) => {
                           id="x-search-input"
                         />
                       </Form.Field>
-                      <Form.Field>
+                      {/* <Form.Field>
                         <Checkbox
                           name="showPotentialTargets"
                           label="Show potential targets (not only objects that are target of some relation)"
@@ -196,7 +196,7 @@ const RelationsMatrix = (props) => {
                           defaultChecked={false}
                           onChange={onChangeShowPotentialTargets}
                         />
-                      </Form.Field>
+                      </Form.Field> */}
                     </Form>
                   </div>
                   {/* Possible filter:

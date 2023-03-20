@@ -2612,6 +2612,12 @@ msgstr "Registrieren"
 msgid "Registration form"
 msgstr "Registrierungsformular"
 
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Relation
+msgid "Relation name"
+msgstr "Relation"
+
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/Relations/Relations
 #: helpers/MessageLabels/MessageLabels
@@ -4301,6 +4307,11 @@ msgstr "Minimum"
 # defaultMessage: Most used
 msgid "mostUsed"
 msgstr "Häufig genutzt"
+
+#: components/manage/Controlpanels/Relations/RelationsListing
+# defaultMessage: Found {sources} sources and {targets} targets. Narrow down to {max}!
+msgid "narrowDownRelations"
+msgstr "{sources} Quellen und {targets} Ziele gefunden. Reduzieren Sie auf {max}!"
 
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry

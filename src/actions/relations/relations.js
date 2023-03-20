@@ -55,6 +55,7 @@ export function deleteRelations(content) {
 export function listRelations(relation, sources, targets, backrelations = 0) {
   let path = '/@relations';
   var searchParams = new URLSearchParams();
+  searchParams.append('max', 2500);
   relation && searchParams.append('relation', relation);
   const searchParamsToString = searchParams.toString();
   if (searchParamsToString) {

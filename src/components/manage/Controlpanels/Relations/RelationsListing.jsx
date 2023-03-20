@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { uniq, uniqBy } from 'lodash';
@@ -16,16 +16,10 @@ const ListingTemplate = ({
   target_filter,
   relationtype,
 }) => {
-  // console.debug('ListingTemplate');
-  // console.debug(
-  //   'query_source, query_target, target_filter, relationtype ',
-  //   query_source,
-  //   query_target,
-  //   target_filter,
-  //   relationtype,
-  // );
   const intl = useIntl();
   const dispatch = useDispatch();
+
+  const MAX = 50;
 
   let relations = useSelector(
     (state) =>
@@ -61,6 +55,7 @@ const ListingTemplate = ({
     value: relation.target.UID,
     label: relation.target.title,
     url: relation.target['@id'],
+    review_state: relation.target.review_state,
   }));
   matrix_options = uniqBy(matrix_options, function (el) {
     return el.value;
@@ -92,6 +87,7 @@ const ListingTemplate = ({
     label: relationMatrix[key].source.title,
     targets: relationMatrix[key].targets.map((el) => el.UID),
     url: relationMatrix[key].source['@id'],
+    review_state: relationMatrix[key].source.review_state,
   }));
   items = uniq(items);
   items.sort(function (a, b) {
@@ -162,7 +158,7 @@ const ListingTemplate = ({
     });
   };
 
-  return (
+  return matrix_options.length < MAX && items.length < MAX ? (
     <div className="administration_matrix">
       <div className="label-options" key="label-options">
         {matrix_options?.map((matrix_option) => (
@@ -174,6 +170,9 @@ const ListingTemplate = ({
               <UniversalLink
                 href={matrix_option.url}
                 title={matrix_option['@type']}
+                className={
+                  matrix_option.review_state !== 'published' ? 'private' : ''
+                }
               >
                 <span className="label">{matrix_option.label}</span>
               </UniversalLink>
@@ -248,7 +247,12 @@ const ListingTemplate = ({
                 <div className="listing-item" key={item['@id']}>
                   <div>
                     <h4 title={item.value}>
-                      <UniversalLink href={item.url}>
+                      <UniversalLink
+                        href={item.url}
+                        className={
+                          item.review_state !== 'published' ? 'private' : ''
+                        }
+                      >
                         {item.label}
                       </UniversalLink>
                     </h4>
@@ -282,6 +286,18 @@ const ListingTemplate = ({
         )}
       </div>
     </div>
+  ) : (
+    <p>
+      <FormattedMessage
+        id="narrowDownRelations"
+        defaultMessage="Found {sources} sources and {targets} targets. Narrow down to {max}!"
+        values={{
+          sources: items.length,
+          targets: matrix_options.length,
+          max: MAX,
+        }}
+      />
+    </p>
   );
 };
 export default ListingTemplate;

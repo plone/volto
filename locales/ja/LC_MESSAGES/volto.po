@@ -2614,6 +2614,12 @@ msgstr "登録"
 msgid "Registration form"
 msgstr "登録フォーム"
 
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Relation
+msgid "Relation name"
+msgstr ""
+
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/Relations/Relations
 #: helpers/MessageLabels/MessageLabels
@@ -4303,6 +4309,11 @@ msgstr "入力範囲の最小値"
 # defaultMessage: Most used
 msgid "mostUsed"
 msgstr "よく使う物"
+
+#: components/manage/Controlpanels/Relations/RelationsListing
+# defaultMessage: Found {sources} sources and {targets} targets. Narrow down to {max}!
+msgid "narrowDownRelations"
+msgstr ""
 
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
