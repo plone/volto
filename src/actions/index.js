@@ -74,7 +74,7 @@ export { getNavigation } from '@plone/volto/actions/navigation/navigation';
 export {
   createRelations,
   deleteRelations,
-  listRelations,
+  queryRelations,
 } from '@plone/volto/actions/relations/relations';
 export { listRoles } from '@plone/volto/actions/roles/roles';
 export {

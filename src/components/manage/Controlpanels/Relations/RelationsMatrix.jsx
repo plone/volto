@@ -1,19 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { toast } from 'react-toastify';
-import {
-  Checkbox,
-  Dropdown,
-  Form,
-  Header,
-  Input,
-  Tab,
-} from 'semantic-ui-react';
+import { Dropdown, Form, Header, Input, Tab } from 'semantic-ui-react';
 // import { isEqual, pull } from 'lodash';
 import { messages } from '@plone/volto/helpers';
-import { listRelations } from '@plone/volto/actions';
-import { Toast } from '@plone/volto/components';
+import { queryRelations } from '@plone/volto/actions';
 import RelationsListing from './RelationsListing';
 
 const RelationsMatrix = (props) => {
@@ -51,11 +42,11 @@ const RelationsMatrix = (props) => {
   }
 
   useEffect(() => {
-    dispatch(listRelations());
+    dispatch(queryRelations());
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(listRelations(relationtype, query_target_filter));
+    dispatch(queryRelations(relationtype, query_target_filter));
   }, [dispatch, relationtype, query_target_filter, props]);
 
   const onReset = (event) => {
@@ -107,15 +98,15 @@ const RelationsMatrix = (props) => {
     setRelationtype(value);
   };
 
-  const onChangeShowPotentialTargets = () => {
-    toast.warning(
-      <Toast
-        warning
-        title="add or remove relation"
-        content="not yet implemented"
-      />,
-    );
-  };
+  // const onChangeShowPotentialTargets = () => {
+  //   toast.warning(
+  //     <Toast
+  //       warning
+  //       title="add or remove relation"
+  //       content="not yet implemented"
+  //     />,
+  //   );
+  // };
 
   const panes = [
     {

@@ -45,14 +45,14 @@ export function deleteRelations(content) {
 
 /**
  * List relations function
- * @function listRelations
+ * @function queryRelations
  * @param {string} relation Name of relation
  * @param {list} sources list of UIDS
  * @param {list} targets list of UIDS
  * @param {boolean} backrelations
  * @returns {Object} List relations action
  */
-export function listRelations(relation, sources, targets, backrelations = 0) {
+export function queryRelations(relation, sources, targets, backrelations = 0) {
   let path = '/@relations';
   var searchParams = new URLSearchParams();
   searchParams.append('max', 2500);

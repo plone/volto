@@ -6,7 +6,11 @@ import { uniq, uniqBy } from 'lodash';
 import { Button, Checkbox } from 'semantic-ui-react';
 import { messages } from '@plone/volto/helpers';
 import { Icon, Toast, UniversalLink } from '@plone/volto/components';
-import { listRelations } from '@plone/volto/actions';
+import {
+  createRelations,
+  deleteRelations,
+  queryRelations,
+} from '@plone/volto/actions';
 import add from '@plone/volto/icons/add.svg';
 import remove from '@plone/volto/icons/remove.svg';
 
@@ -103,35 +107,30 @@ const ListingTemplate = ({
   });
 
   useEffect(() => {
-    dispatch(listRelations(relationtype));
+    dispatch(queryRelations(relationtype));
   }, [dispatch, relationtype, query_source]);
 
   const onSelectOptionHandler = (item, selectedvalue, checked) => {
-    // let source = selectedvalue.y;
-    // let target = selectedvalue.x;
-    // console.debug('>> create or delete relation');
-    // console.debug(source, target);
-    // TODO update relations
-    // dispatch(checked ? createRelations() : deleteRelations())
-    //   .then((resp) => {
-    //     dispatch(listRelations(relationtype, query_source, target_filter));
-    //   })
-    //   .then(() => {
-    //     toast.success(
-    //       <Toast
-    //         success
-    //         title={intl.formatMessage(messages.success)}
-    //         content="Relations updated"
-    //       />,
-    //     );
-    //   });
-    toast.warning(
-      <Toast
-        warning
-        title="Toggle potential targets"
-        content="not yet implemented"
-      />,
+    let source = selectedvalue.y;
+    let target = selectedvalue.x;
+    console.debug(
+      '>> create or delete relation:',
+      checked ? 'create' : 'delete',
     );
+    console.debug(source, target);
+    dispatch(checked ? createRelations() : deleteRelations())
+      .then((resp) => {
+        dispatch(queryRelations(relationtype, query_source, target_filter));
+      })
+      .then(() => {
+        toast.success(
+          <Toast
+            success
+            title={intl.formatMessage(messages.success)}
+            content="Relations updated"
+          />,
+        );
+      });
   };
 
   const onSelectAllHandler = (mtxoption, checked) => {
