@@ -270,7 +270,7 @@ class Controlpanels extends Component {
                 {group}
               </Segment>,
               <Segment key={`body-${group}`} attached>
-                <Grid columns={6}>
+                <Grid doubling columns={6}>
                   <Grid.Row>
                     {map(filter(controlpanels, { group }), (controlpanel) => (
                       <Grid.Column key={controlpanel.id}>

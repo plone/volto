@@ -3476,6 +3476,11 @@ msgstr "Total d'objectes actius i no actius"
 msgid "Total comments"
 msgstr "Total de comentaris"
 
+#: components/manage/Contents/Contents
+# defaultMessage: Total items to be deleted:
+msgid "Total items to be deleted:"
+msgstr ""
+
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Total number of objects in each cache
 msgid "Total number of objects in each cache"
