@@ -47,6 +47,28 @@ Volto 17 now uses Webpack 5.
 If you customized `razzle.config.js` for your project to change Webpack configuration
 or use Webpack plugins, you might need to make adjustments.
 
+### `BlockChooser` component now uses `popperjs` internally
+
+Technically not a breaking, the API nor the component contract has changed, but it's worth noting this change in here.
+
+```{versionadded} 17.0.0-alpha.1
+The `BlockChooser` component now uses `popperjs` library to position itself in the screen.
+It spawns at the end of the body instead of inner the block that called it.
+This is better from the UI point of view, since any other element can take precedence in the CSS element flow, preventing the block chooser to get overlapped by anything else.
+```
+
+If you have customized the `BlockChooser` in any way could be that this now could interact with your customizations.
+
+### Removed `hamburgers` library
+
+The `hamburgers` library was removed from core Volto, replaced by a much more lightweight approach.
+If your theme or add-ons relied on it, add it again as a dependency in them, or adopt the CSS part that you are using in them.
+
+### Fixed i18n script by taking into account the real add-on order
+
+By fixing this, we may break how the locales were applied, since the order will now be correct.
+Please check the translations of your project and add-ons, and verify that the translations are still correct.
+This could be especially true if you did translation overrides, two add-ons were using different translations for the same `msgid`, or there were conflicting `msgid`s in different add-ons.
 
 (volto-upgrade-guide-16.x.x)=
 
