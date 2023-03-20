@@ -292,6 +292,10 @@ export const messages = defineMessages({
     id: 'Filter relations by target',
     defaultMessage: 'Filter relations by target',
   },
+  relationName: {
+    id: 'Relation name',
+    defaultMessage: 'relation',
+  },
   selectRelation: {
     id: 'Select relation',
     defaultMessage: 'Select relation',
