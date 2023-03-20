@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2023-03-20T14:26:51.546Z\n"
+"POT-Creation-Date: 2023-03-20T19:43:35.914Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -455,6 +455,11 @@ msgstr ""
 #: components/theme/Breadcrumbs/Breadcrumbs
 # defaultMessage: Breadcrumbs
 msgid "Breadcrumbs"
+msgstr ""
+
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+# defaultMessage: Broken relations
+msgid "Broken relations"
 msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/Edit
@@ -1440,7 +1445,7 @@ msgid "First"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Fix relations by rebuild
+# defaultMessage: Fix relations
 msgid "Fix relations"
 msgstr ""
 
@@ -2192,6 +2197,11 @@ msgstr ""
 #: components/manage/Controlpanels/VersionOverview
 # defaultMessage: No addons found
 msgid "No addons found"
+msgstr ""
+
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+# defaultMessage: No broken relations found.
+msgid "No broken relations found."
 msgstr ""
 
 #: components/theme/RequestTimeout/RequestTimeout
@@ -3123,6 +3133,11 @@ msgstr ""
 #: components/manage/Widgets/ImageSizeWidget
 # defaultMessage: Small
 msgid "Small"
+msgstr ""
+
+#: components/manage/Controlpanels/Relations/Relations
+# defaultMessage: Some relations are broken. Please fix.
+msgid "Some relations are broken. Please fix."
 msgstr ""
 
 #: error
@@ -4203,6 +4218,16 @@ msgstr ""
 msgid "event_where"
 msgstr ""
 
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+# defaultMessage: flush and rebuild intids, and rebuild relations
+msgid "flush and rebuild intids, and rebuild relations"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: flush and rebuild relations
+msgid "flush and rebuild relations"
+msgstr ""
+
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Head title
 msgid "head_title"
@@ -4360,6 +4385,12 @@ msgstr ""
 #: components/manage/Widgets/QueryWidget
 # defaultMessage: Select…
 msgid "querystring-widget-select"
+msgstr ""
+
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: rebuild relations
+msgid "rebuild relations"
 msgstr ""
 
 #: components/theme/Search/Search

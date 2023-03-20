@@ -463,6 +463,11 @@ msgstr "メールアドレスとパスワードは大文字小文字が区別さ
 msgid "Breadcrumbs"
 msgstr "パンくず"
 
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+# defaultMessage: Broken relations
+msgid "Broken relations"
+msgstr ""
+
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
@@ -1446,7 +1451,7 @@ msgid "First"
 msgstr "第1"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Fix relations by rebuild
+# defaultMessage: Fix relations
 msgid "Fix relations"
 msgstr ""
 
@@ -2198,6 +2203,11 @@ msgstr ""
 #: components/manage/Controlpanels/VersionOverview
 # defaultMessage: No addons found
 msgid "No addons found"
+msgstr ""
+
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+# defaultMessage: No broken relations found.
+msgid "No broken relations found."
 msgstr ""
 
 #: components/theme/RequestTimeout/RequestTimeout
@@ -3129,6 +3139,11 @@ msgstr "サイズ: {size}"
 #: components/manage/Widgets/ImageSizeWidget
 # defaultMessage: Small
 msgid "Small"
+msgstr ""
+
+#: components/manage/Controlpanels/Relations/Relations
+# defaultMessage: Some relations are broken. Please fix.
+msgid "Some relations are broken. Please fix."
 msgstr ""
 
 #: error
@@ -4209,6 +4224,16 @@ msgstr "日時"
 msgid "event_where"
 msgstr "場所"
 
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+# defaultMessage: flush and rebuild intids, and rebuild relations
+msgid "flush and rebuild intids, and rebuild relations"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: flush and rebuild relations
+msgid "flush and rebuild relations"
+msgstr ""
+
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Head title
 msgid "head_title"
@@ -4367,6 +4392,12 @@ msgstr "公開中"
 # defaultMessage: Select…
 msgid "querystring-widget-select"
 msgstr "選択してください"
+
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: rebuild relations
+msgid "rebuild relations"
+msgstr ""
 
 #: components/theme/Search/Search
 # defaultMessage: results

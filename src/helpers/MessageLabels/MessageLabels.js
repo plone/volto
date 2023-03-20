@@ -270,7 +270,7 @@ export const messages = defineMessages({
   },
   fixRelations: {
     id: 'Fix relations',
-    defaultMessage: 'Fix relations by rebuild',
+    defaultMessage: 'Fix relations',
   },
   searchRelationSource: {
     id: 'Filter relations by search in source',
@@ -303,5 +303,13 @@ export const messages = defineMessages({
   norelationfound: {
     id: 'No relation found',
     defaultMessage: 'No relation found',
+  },
+  rebuildRelations: {
+    id: 'rebuild relations',
+    defaultMessage: 'rebuild relations',
+  },
+  flushAndRebuildRelations: {
+    id: 'flush and rebuild relations',
+    defaultMessage: 'flush and rebuild relations',
   },
 });

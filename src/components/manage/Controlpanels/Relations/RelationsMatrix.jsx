@@ -1,10 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { Dropdown, Form, Header, Input, Tab } from 'semantic-ui-react';
+import { toast } from 'react-toastify';
+import {
+  Button,
+  Dropdown,
+  Form,
+  Header,
+  Input,
+  Tab,
+  Table,
+} from 'semantic-ui-react';
 // import { isEqual, pull } from 'lodash';
 import { messages } from '@plone/volto/helpers';
-import { queryRelations } from '@plone/volto/actions';
+import { Toast } from '@plone/volto/components';
+import { rebuildRelations, queryRelations } from '@plone/volto/actions';
 import RelationsListing from './RelationsListing';
 
 const RelationsMatrix = (props) => {
@@ -20,6 +30,9 @@ const RelationsMatrix = (props) => {
   );
   const relationsListError = useSelector(
     (state) => state.relations?.list?.error?.response?.body?.error,
+  );
+  const brokenRelations = useSelector(
+    (state) => state.relations?.stats?.broken,
   );
 
   let filter_options = useSelector((state) => state.groups.filter_groups);
@@ -46,7 +59,9 @@ const RelationsMatrix = (props) => {
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(queryRelations(relationtype, query_target_filter));
+    if (relationtype) {
+      dispatch(queryRelations(relationtype, query_target_filter));
+    }
   }, [dispatch, relationtype, query_target_filter, props]);
 
   const onReset = (event) => {
@@ -108,17 +123,46 @@ const RelationsMatrix = (props) => {
   //   );
   // };
 
+  const rebuildRelationsHandler = (flush = false) => {
+    dispatch(rebuildRelations(flush))
+      .then(() => {
+        dispatch(queryRelations());
+      })
+      .then(() => {
+        toast.success(
+          <Toast
+            success
+            title={intl.formatMessage(messages.success)}
+            content="Relations updated"
+          />,
+        );
+      })
+      .catch((error) => {
+        console.debug('error', error);
+        // TODO: The true error sent by the API is shadowed by the superagent one
+        // Update this when this issue is fixed.
+        const shadowedError = JSON.parse(error.response.text);
+        toast.error(
+          <Toast
+            error
+            title={shadowedError.error.type}
+            content={shadowedError.error.message}
+          />,
+        );
+      });
+  };
+
   const panes = [
     {
       menuItem: intl.formatMessage(messages.inspectRelations),
       pane: (
-        <Tab.Pane attached={false} key="fix">
+        <Tab.Pane attached={true} key="fix">
           {relationtypes ? (
             <div className="controlpanel_matrix">
               <div className="controlpanel_select_relation">
                 <Form className="select_relation">
                   <Form.Field>
-                    <Header as="h2">
+                    <Header as="h3">
                       <Header.Content>
                         <FormattedMessage
                           id="Relation name"
@@ -238,18 +282,95 @@ const RelationsMatrix = (props) => {
     {
       menuItem: intl.formatMessage(messages.fixRelations),
       pane: (
-        <Tab.Pane attached={false} key="rebuild">
-          <div>TODO Rebuild relations</div>
-          <div>
-            <span>(button rebuild)</span>{' '}
-            <span>(button flush and rebuild)</span>
-          </div>
+        <Tab.Pane attached={true} key="rebuild">
+          {brokenRelations ? (
+            <div>
+              <h3>
+                <FormattedMessage
+                  id="Broken relations"
+                  defaultMessage="Broken relations"
+                />
+              </h3>
+              <Table>
+                <Table.Body>
+                  {Object.keys(brokenRelations).map((el) => {
+                    return (
+                      <Table.Row>
+                        <Table.Cell>{el}</Table.Cell>
+                        <Table.Cell>{brokenRelations[el]}</Table.Cell>
+                      </Table.Row>
+                    );
+                  })}
+                </Table.Body>
+              </Table>
+              <h3>Rebuild relations</h3>
+              <p>
+                Get all relations from zc.relation catalog and store them in an
+                annotation on the portal. Remove all entries from zc.relation
+                catalog. Clean up intids. Restore relations from the annotation
+                on on the portal.
+              </p>
+
+              <Button.Group>
+                <Button
+                  primary
+                  onClick={() => rebuildRelationsHandler(false)}
+                  title={intl.formatMessage(messages.rebuildRelations)}
+                  aria-label={intl.formatMessage(messages.rebuildRelations)}
+                >
+                  <FormattedMessage
+                    id="rebuild relations"
+                    defaultMessage="rebuild relations"
+                  />
+                </Button>
+              </Button.Group>
+              <h3>Flush and rebuild intids, and rebuild relations</h3>
+              <p>
+                This will delete all intids during the rebuild process and
+                create new one. If you have a lot of relations this can take
+                some time. Check the log for details!{' '}
+              </p>
+              <p>
+                Warning: If you have relations on tiles, flushing and rebuilding
+                intids will destroy them because the intids changed.
+              </p>
+              <Button.Group>
+                <Button
+                  secondary
+                  color="red"
+                  onClick={() => rebuildRelationsHandler(true)}
+                  title={intl.formatMessage(messages.flushAndRebuildRelations)}
+                  aria-label={intl.formatMessage(
+                    messages.flushAndRebuildRelations,
+                  )}
+                >
+                  <FormattedMessage
+                    id="flush and rebuild intids, and rebuild relations"
+                    defaultMessage="flush and rebuild intids, and rebuild relations"
+                  />
+                </Button>
+              </Button.Group>
+            </div>
+          ) : (
+            <p>
+              <FormattedMessage
+                id="No broken relations found."
+                defaultMessage="No broken relations found."
+              />
+            </p>
+          )}
         </Tab.Pane>
       ),
     },
   ];
 
-  return <Tab panes={panes} renderActiveOnly={false} />;
+  return (
+    <Tab
+      panes={panes}
+      renderActiveOnly={false}
+      menu={{ secondary: true, pointing: true, attached: false, tabular: true }}
+    />
+  );
 };
 
 export default RelationsMatrix;

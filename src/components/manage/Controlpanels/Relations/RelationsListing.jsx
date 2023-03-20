@@ -60,6 +60,7 @@ const ListingTemplate = ({
     label: relation.target.title,
     url: relation.target['@id'],
     review_state: relation.target.review_state,
+    uid: relation.target.UID,
   }));
   matrix_options = uniqBy(matrix_options, function (el) {
     return el.value;
@@ -110,7 +111,7 @@ const ListingTemplate = ({
     dispatch(queryRelations(relationtype));
   }, [dispatch, relationtype, query_source]);
 
-  const onSelectOptionHandler = (item, selectedvalue, checked) => {
+  const onSelectOptionHandler = (relation, item, selectedvalue, checked) => {
     let source = selectedvalue.y;
     let target = selectedvalue.x;
     console.debug(
@@ -119,19 +120,29 @@ const ListingTemplate = ({
     );
     console.debug(source, target);
     console.debug('item', item);
-    // dispatch(checked ? createRelations() : deleteRelations())
-    //   .then((resp) => {
-    //     dispatch(queryRelations(relationtype, query_source, target_filter));
-    //   })
-    //   .then(() => {
-    //     toast.success(
-    //       <Toast
-    //         success
-    //         title={intl.formatMessage(messages.success)}
-    //         content="Relations updated"
-    //       />,
-    //     );
-    //   });
+    const relation_data = [
+      {
+        source: source,
+        target: target,
+        relation: relation,
+      },
+    ];
+    console.debug('relation_data', relation_data);
+    dispatch(
+      checked ? createRelations(relation_data) : deleteRelations(relation_data),
+    )
+      .then((resp) => {
+        dispatch(queryRelations(relationtype, query_source, target_filter));
+      })
+      .then(() => {
+        toast.success(
+          <Toast
+            success
+            title={intl.formatMessage(messages.success)}
+            content="Relations updated"
+          />,
+        );
+      });
   };
 
   const onSelectAllHandler = (mtxoption, checked) => {
@@ -171,7 +182,9 @@ const ListingTemplate = ({
                 href={matrix_option.url}
                 title={matrix_option['@type']}
                 className={
-                  matrix_option.review_state !== 'published' ? 'private' : ''
+                  matrix_option.review_state !== 'published'
+                    ? 'not-published'
+                    : ''
                 }
               >
                 <span className="label">{matrix_option.label}</span>
@@ -250,7 +263,9 @@ const ListingTemplate = ({
                       <UniversalLink
                         href={item.url}
                         className={
-                          item.review_state !== 'published' ? 'private' : ''
+                          item.review_state !== 'published'
+                            ? 'not-published'
+                            : ''
                         }
                       >
                         {item.label}
@@ -264,12 +279,13 @@ const ListingTemplate = ({
                         className={`checkbox_${matrix_option.value}`}
                         key={matrix_option.value}
                         title={matrix_option.title}
-                        readOnly={relationtype === 'isReferencing' ? '1' : ''}
+                        readOnly={relationtype === 'isReferencing'}
                         defaultChecked={item.targets.includes(
                           matrix_option.value,
                         )}
                         onChange={(event, { checked }) => {
                           onSelectOptionHandler(
+                            relationtype,
                             item,
                             { x: matrix_option.value, y: item.value },
                             checked,

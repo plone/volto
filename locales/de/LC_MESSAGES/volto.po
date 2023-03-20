@@ -461,6 +461,11 @@ msgstr "Sowohl E-Mail Adresse als auch Passwort unterscheiden zwischen Groß- un
 msgid "Breadcrumbs"
 msgstr "Brotkrumen"
 
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+# defaultMessage: Broken relations
+msgid "Broken relations"
+msgstr "Kaputte Relationen"
+
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
@@ -1444,7 +1449,7 @@ msgid "First"
 msgstr "Erster Tag des Monats"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Fix relations by rebuild
+# defaultMessage: Fix relations
 msgid "Fix relations"
 msgstr "Repariere Relationen"
 
@@ -2197,6 +2202,11 @@ msgstr "Kein Video ausgewählt"
 # defaultMessage: No addons found
 msgid "No addons found"
 msgstr "Keine Add-ons installiert."
+
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+# defaultMessage: No broken relations found.
+msgid "No broken relations found."
+msgstr "Alle Relationen OK"
 
 #: components/theme/RequestTimeout/RequestTimeout
 # defaultMessage: There is no connection to the server, due to a timeout o no network connection.
@@ -3128,6 +3138,11 @@ msgstr "Grösse: {size}"
 # defaultMessage: Small
 msgid "Small"
 msgstr "Klein"
+
+#: components/manage/Controlpanels/Relations/Relations
+# defaultMessage: Some relations are broken. Please fix.
+msgid "Some relations are broken. Please fix."
+msgstr "Ein paar Relationen sind kaputt."
 
 #: error
 # defaultMessage: Sorry, something went wrong with your request
@@ -4207,6 +4222,16 @@ msgstr "Datum"
 msgid "event_where"
 msgstr "Ort"
 
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+# defaultMessage: flush and rebuild intids, and rebuild relations
+msgid "flush and rebuild intids, and rebuild relations"
+msgstr "intids löschen und neu generieren, und Relationen neu katalogisieren"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: flush and rebuild relations
+msgid "flush and rebuild relations"
+msgstr "Relationen neu katalogisieren"
+
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Head title
 msgid "head_title"
@@ -4365,6 +4390,12 @@ msgstr "Veröffentlicht"
 # defaultMessage: Select…
 msgid "querystring-widget-select"
 msgstr "Auswahl"
+
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: rebuild relations
+msgid "rebuild relations"
+msgstr "Relationen neu katalogisieren"
 
 #: components/theme/Search/Search
 # defaultMessage: results

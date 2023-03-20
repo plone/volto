@@ -2,12 +2,13 @@
  * Relations Control Panel
  */
 import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Portal } from 'react-portal';
 import { useHistory } from 'react-router';
 import { Link, useLocation } from 'react-router-dom';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
-import { Container, Segment } from 'semantic-ui-react';
+import { Container, Message, Segment } from 'semantic-ui-react';
 import { Helmet, messages } from '@plone/volto/helpers';
 import { listActions } from '@plone/volto/actions';
 import { Icon, Toolbar } from '@plone/volto/components';
@@ -21,6 +22,10 @@ const RelationsControlPanel = () => {
   const location = useLocation();
   const dispatch = useDispatch();
 
+  const brokenRelations = useSelector(
+    (state) => state.relations?.stats?.broken,
+  );
+
   useEffect(() => {
     dispatch(listActions('/'));
   }, [dispatch]);
@@ -32,6 +37,14 @@ const RelationsControlPanel = () => {
         <Segment.Group raised>
           <Segment className="primary">
             <FormattedMessage id="Relations" defaultMessage="Relations" />
+            {brokenRelations ? (
+              <Message attached warning>
+                <FormattedMessage
+                  id="Some relations are broken. Please fix."
+                  defaultMessage="Some relations are broken. Please fix."
+                />
+              </Message>
+            ) : null}
           </Segment>
           <Segment>
             <RelationsMatrix />

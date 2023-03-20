@@ -466,6 +466,11 @@ msgstr "Tanto la dirección de correo electrónico y la contraseña son sensible
 msgid "Breadcrumbs"
 msgstr "Barra de ruta"
 
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+# defaultMessage: Broken relations
+msgid "Broken relations"
+msgstr ""
+
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
@@ -1449,7 +1454,7 @@ msgid "First"
 msgstr "Primero"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Fix relations by rebuild
+# defaultMessage: Fix relations
 msgid "Fix relations"
 msgstr ""
 
@@ -2202,6 +2207,11 @@ msgstr "No se ha seleccionado el vídeo"
 # defaultMessage: No addons found
 msgid "No addons found"
 msgstr "No se han encontrado complementos"
+
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+# defaultMessage: No broken relations found.
+msgid "No broken relations found."
+msgstr ""
 
 #: components/theme/RequestTimeout/RequestTimeout
 # defaultMessage: There is no connection to the server, due to a timeout o no network connection.
@@ -3133,6 +3143,11 @@ msgstr "Tamaño: {size}"
 # defaultMessage: Small
 msgid "Small"
 msgstr "Pequeño"
+
+#: components/manage/Controlpanels/Relations/Relations
+# defaultMessage: Some relations are broken. Please fix.
+msgid "Some relations are broken. Please fix."
+msgstr ""
 
 #: error
 # defaultMessage: Sorry, something went wrong with your request
@@ -4212,6 +4227,16 @@ msgstr "Cuándo"
 msgid "event_where"
 msgstr "Dónde"
 
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+# defaultMessage: flush and rebuild intids, and rebuild relations
+msgid "flush and rebuild intids, and rebuild relations"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: flush and rebuild relations
+msgid "flush and rebuild relations"
+msgstr ""
+
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Head title
 msgid "head_title"
@@ -4370,6 +4395,12 @@ msgstr "Publicado"
 # defaultMessage: Select…
 msgid "querystring-widget-select"
 msgstr "Seleccione..."
+
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: rebuild relations
+msgid "rebuild relations"
+msgstr ""
 
 #: components/theme/Search/Search
 # defaultMessage: results

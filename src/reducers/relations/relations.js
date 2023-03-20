@@ -7,6 +7,7 @@ import {
   CREATE_RELATIONS,
   DELETE_RELATIONS,
   LIST_RELATIONS,
+  REBUILD_RELATIONS,
 } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
@@ -23,6 +24,11 @@ const initialState = {
     loading: false,
   },
   list: {
+    error: null,
+    loaded: false,
+    loading: false,
+  },
+  rebuild: {
     error: null,
     loaded: false,
     loading: false,
@@ -51,6 +57,7 @@ export default function relations(state = initialState, action = {}) {
     case `${CREATE_RELATIONS}_PENDING`:
     case `${DELETE_RELATIONS}_PENDING`:
     case `${LIST_RELATIONS}_PENDING`:
+    case `${REBUILD_RELATIONS}_PENDING`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
@@ -72,6 +79,7 @@ export default function relations(state = initialState, action = {}) {
       };
     case `${CREATE_RELATIONS}_SUCCESS`:
     case `${DELETE_RELATIONS}_SUCCESS`:
+    case `${REBUILD_RELATIONS}_SUCCESS`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
@@ -93,6 +101,7 @@ export default function relations(state = initialState, action = {}) {
       };
     case `${CREATE_RELATIONS}_FAIL`:
     case `${DELETE_RELATIONS}_FAIL`:
+    case `${REBUILD_RELATIONS}_FAIL`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
