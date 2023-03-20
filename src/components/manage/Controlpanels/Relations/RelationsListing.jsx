@@ -118,19 +118,20 @@ const ListingTemplate = ({
       checked ? 'create' : 'delete',
     );
     console.debug(source, target);
-    dispatch(checked ? createRelations() : deleteRelations())
-      .then((resp) => {
-        dispatch(queryRelations(relationtype, query_source, target_filter));
-      })
-      .then(() => {
-        toast.success(
-          <Toast
-            success
-            title={intl.formatMessage(messages.success)}
-            content="Relations updated"
-          />,
-        );
-      });
+    console.debug('item', item);
+    // dispatch(checked ? createRelations() : deleteRelations())
+    //   .then((resp) => {
+    //     dispatch(queryRelations(relationtype, query_source, target_filter));
+    //   })
+    //   .then(() => {
+    //     toast.success(
+    //       <Toast
+    //         success
+    //         title={intl.formatMessage(messages.success)}
+    //         content="Relations updated"
+    //       />,
+    //     );
+    //   });
   };
 
   const onSelectAllHandler = (mtxoption, checked) => {
@@ -263,6 +264,7 @@ const ListingTemplate = ({
                         className={`checkbox_${matrix_option.value}`}
                         key={matrix_option.value}
                         title={matrix_option.title}
+                        readOnly={relationtype === 'isReferencing' ? '1' : ''}
                         defaultChecked={item.targets.includes(
                           matrix_option.value,
                         )}
