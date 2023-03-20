@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { toast } from 'react-toastify';
-import { Checkbox, Dropdown, Form, Input, Tab } from 'semantic-ui-react';
+import {
+  Checkbox,
+  Dropdown,
+  Form,
+  Header,
+  Input,
+  Tab,
+} from 'semantic-ui-react';
 // import { isEqual, pull } from 'lodash';
 import { messages } from '@plone/volto/helpers';
 import { listRelations } from '@plone/volto/actions';
@@ -17,8 +24,12 @@ const RelationsMatrix = (props) => {
   const [query_target_filter, setQuery_target_filter] = useState('');
   // const [target_filter, setTarget_filter] = useState([]); // Show source with these targets.
   const [relationtype, setRelationtype] = useState(undefined);
-  let relationtypes =
-    useSelector((state) => state.relations?.stats?.relations) || {};
+  const relationtypes = useSelector(
+    (state) => state.relations?.stats?.relations,
+  );
+  const relationsListError = useSelector(
+    (state) => state.relations?.list?.error?.response?.body?.error,
+  );
 
   let filter_options = useSelector((state) => state.groups.filter_groups);
   if (filter_options) {
@@ -111,114 +122,125 @@ const RelationsMatrix = (props) => {
       menuItem: intl.formatMessage(messages.inspectRelations),
       pane: (
         <Tab.Pane attached={false} key="fix">
-          <div className="controlpanel_matrix">
-            <div className="controlpanel_select_relation">
-              <Form className="select_relation">
-                <Form.Field>
-                  <Dropdown
-                    placeholder={
-                      relationtype ||
-                      intl.formatMessage(messages.selectRelation)
-                    }
-                  >
-                    <Dropdown.Menu>
-                      {Object.keys(relationtypes).map((relationtype) => (
-                        <Dropdown.Item
-                          onClick={onChangeRelation}
-                          value={relationtype}
-                          text={relationtype}
-                          className={`select-relation-${relationtype}`}
-                          key={relationtype}
+          {relationtypes ? (
+            <div className="controlpanel_matrix">
+              <div className="controlpanel_select_relation">
+                <Form className="select_relation">
+                  <Form.Field>
+                    <Header as="h2">
+                      <Header.Content>
+                        <FormattedMessage
+                          id="Relation name"
+                          defaultMessage="Relation"
+                        />{' '}
+                        <Dropdown
+                          placeholder={
+                            relationtype ||
+                            intl.formatMessage(messages.selectRelation)
+                          }
                         >
-                          {`${relationtype} (${relationtypes[relationtype]})`}
-                        </Dropdown.Item>
-                      ))}
-                    </Dropdown.Menu>
-                  </Dropdown>
-                </Form.Field>
-              </Form>
+                          <Dropdown.Menu>
+                            {Object.keys(relationtypes).map((relationtype) => (
+                              <Dropdown.Item
+                                onClick={onChangeRelation}
+                                value={relationtype}
+                                text={relationtype}
+                                className={`select-relation-${relationtype}`}
+                                key={relationtype}
+                              >
+                                {`${relationtype} (${relationtypes[relationtype]})`}
+                              </Dropdown.Item>
+                            ))}
+                          </Dropdown.Menu>
+                        </Dropdown>
+                      </Header.Content>
+                    </Header>
+                  </Form.Field>
+                </Form>
+              </div>
+              {relationtype ? (
+                <>
+                  <div className="controlpanel_search_y">
+                    <Form className="search_y" onSubmit={onReset}>
+                      <Form.Field>
+                        <Input
+                          name="SearchY"
+                          action={{ icon: 'delete' }}
+                          placeholder={intl.formatMessage(
+                            messages.searchRelationSource,
+                          )}
+                          onChange={onChangeSearchYs}
+                          id="y-search-input"
+                        />
+                      </Form.Field>
+                    </Form>
+                  </div>
+                  <div className="controlpanel_search_x">
+                    <Form className="search_x" onSubmit={onReset}>
+                      <Form.Field>
+                        <Input
+                          name="SearchX"
+                          action={{ icon: 'delete' }}
+                          placeholder={intl.formatMessage(
+                            messages.searchRelationTarget,
+                          )}
+                          onChange={onChangeSearchXs}
+                          id="x-search-input"
+                        />
+                      </Form.Field>
+                      <Form.Field>
+                        <Checkbox
+                          name="showPotentialTargets"
+                          label="Show potential targets (not only objects that are target of some relation)"
+                          title="Show potential targets"
+                          defaultChecked={false}
+                          onChange={onChangeShowPotentialTargets}
+                        />
+                      </Form.Field>
+                    </Form>
+                  </div>
+                  {/* Possible filter:
+                  - path
+                  - content type
+                  - review state */}
+                  {/* <div className="controlpanel_filter">
+                    <h3>{intl.formatMessage(messages.filterByTarget)}</h3>
+                    <Form className="search_filter_groups" onSubmit={onReset}>
+                      <Form.Field>
+                        <Input
+                          name="SearchXFilter"
+                          action={{ icon: 'delete' }}
+                          placeholder={intl.formatMessage(messages.searchRelationTarget)}
+                          onChange={onChangeSearchXsFilter}
+                          id="groupfilter-search-input"
+                        />
+                      </Form.Field>
+                    </Form>
+                    {filter_options?.map((filter_option) => (
+                      <Checkbox
+                        name={`filter_option_${filter_option.value}`}
+                        key={filter_option.value}
+                        title={filter_option.label}
+                        label={filter_option.label}
+                        defaultChecked={false}
+                        onChange={(event, { checked }) => {
+                          onSelectOptionHandler(filter_option, checked);
+                        }}
+                      />
+                    ))}
+                  </div> */}
+                  <RelationsListing
+                    relationtype={relationtype}
+                    query_source={query_source}
+                    query_target={query_target}
+                    // target_filter={target_filter}
+                  />
+                </>
+              ) : null}
             </div>
-            <div className="controlpanel_search_y">
-              <Form className="search_y" onSubmit={onReset}>
-                <Form.Field>
-                  <Input
-                    name="SearchY"
-                    action={{ icon: 'delete' }}
-                    placeholder={intl.formatMessage(
-                      messages.searchRelationSource,
-                    )}
-                    onChange={onChangeSearchYs}
-                    id="y-search-input"
-                  />
-                </Form.Field>
-              </Form>
-            </div>
-            <div className="controlpanel_search_x">
-              <Form className="search_x" onSubmit={onReset}>
-                <Form.Field>
-                  <Input
-                    name="SearchX"
-                    action={{ icon: 'delete' }}
-                    placeholder={intl.formatMessage(
-                      messages.searchRelationTarget,
-                    )}
-                    onChange={onChangeSearchXs}
-                    id="x-search-input"
-                  />
-                </Form.Field>
-                <Form.Field>
-                  <Checkbox
-                    name="showPotentialTargets"
-                    label="Show potential targets (not only objects that are target of some relation)"
-                    title="Show potential targets"
-                    defaultChecked={false}
-                    onChange={onChangeShowPotentialTargets}
-                  />
-                </Form.Field>
-              </Form>
-            </div>
-
-            {/* Possible filter:
-            - path
-            - content type
-            - review state */}
-
-            {/* <div className="controlpanel_filter">
-              <h3>{intl.formatMessage(messages.filterByTarget)}</h3>
-      
-              <Form className="search_filter_groups" onSubmit={onReset}>
-                <Form.Field>
-                  <Input
-                    name="SearchXFilter"
-                    action={{ icon: 'delete' }}
-                    placeholder={intl.formatMessage(messages.searchRelationTarget)}
-                    onChange={onChangeSearchXsFilter}
-                    id="groupfilter-search-input"
-                  />
-                </Form.Field>
-              </Form>
-      
-              {filter_options?.map((filter_option) => (
-                <Checkbox
-                  name={`filter_option_${filter_option.value}`}
-                  key={filter_option.value}
-                  title={filter_option.label}
-                  label={filter_option.label}
-                  defaultChecked={false}
-                  onChange={(event, { checked }) => {
-                    onSelectOptionHandler(filter_option, checked);
-                  }}
-                />
-              ))}
-            </div> */}
-
-            <RelationsListing
-              relationtype={relationtype}
-              query_source={query_source}
-              query_target={query_target}
-              // target_filter={target_filter}
-            />
-          </div>
+          ) : (
+            <p>{relationsListError?.message}</p>
+          )}
         </Tab.Pane>
       ),
     },
