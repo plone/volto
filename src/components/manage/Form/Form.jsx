@@ -43,16 +43,7 @@ import { BlocksToolbar, UndoToolbar } from '@plone/volto/components';
 import { setSidebarTab } from '@plone/volto/actions';
 import { compose } from 'redux';
 import BlocksDnDContainer from '../BlocksDnD/BlocksDnDContainer';
-import {
-  addBlock,
-  insertBlock,
-  changeBlock,
-  deleteBlock,
-  moveBlock,
-  mutateBlock,
-  nextBlockId,
-  previousBlockId,
-} from '@plone/volto/helpers';
+import { moveBlock } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 /**
@@ -535,6 +526,7 @@ class Form extends Component {
     const { schema: originalSchema, onCancel, onSubmit } = this.props;
     const { formData } = this.state;
     const schema = this.removeBlocksLayoutFields(originalSchema);
+    const blocksFieldname = getBlocksFieldname(formData);
 
     return this.props.visual ? (
       // Removing this from SSR is important, since react-beautiful-dnd supports SSR,
@@ -584,6 +576,7 @@ class Form extends Component {
               });
               return true;
             }}
+            blocks={formData[blocksFieldname]}
           >
             <BlocksForm
               onChangeFormData={(newFormData) =>

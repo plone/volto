@@ -1,5 +1,5 @@
 import { useSortable } from '@dnd-kit/sortable';
-import { CSS } from '@dnd-kit/utilities';
+import { useDndContext } from '@dnd-kit/core';
 import { Icon } from '@plone/volto/components';
 import {
   blockHasValue,
@@ -28,19 +28,28 @@ const EditBlockWrapper = (props) => {
     return !!data.fixed || !(blockHasValue(data) && props.blockProps.editable);
   };
 
-  const { intl, blockProps, draginfo, children } = props;
+  const { intl, blockProps, children } = props;
   const { block, selected, type, onDeleteBlock, data, editable } = blockProps;
 
-  const {
-    attributes,
-    listeners,
-    setNodeRef,
-    transform,
-    transition,
-  } = useSortable({ id: block });
+  const { attributes, listeners, setNodeRef, transition } = useSortable({
+    id: block,
+  });
+  const { over, active } = useDndContext();
+  const overIndex = over?.id
+    ? over?.data.current.sortable.items.indexOf(over?.id)
+    : -1;
+  const activeIndex = active?.id
+    ? active?.data.current.sortable.items.indexOf(active?.id)
+    : -1;
+  const border = activeIndex !== overIndex && over?.id === block;
+
   const style = {
-    transform: CSS.Translate.toString(transform),
     transition,
+    borderTop: border && overIndex < activeIndex ? 'solid 3px blue' : null,
+    borderBottom: border && overIndex > activeIndex ? 'solid 3px blue' : null,
+    marginTop: border && overIndex < activeIndex ? '-3px' : null,
+    marginBottom: border && overIndex > activeIndex ? '-3px' : null,
+    opacity: active?.id === block ? 0.2 : null,
   };
 
   const visible = selected && !hideHandler(data);
@@ -53,11 +62,6 @@ const EditBlockWrapper = (props) => {
 
   return (
     <div
-      // ref={draginfo.innerRef}
-      // {...draginfo.draggableProps}
-      // Right now, we can have the alignment information in the styles property or in the
-      // block data root, we inject the classname here for having control over the whole
-      // Block Edit wrapper
       className={cx(`block-editor-${data['@type']}`, styles, {
         [data.align]: data.align,
       })}
@@ -72,7 +76,6 @@ const EditBlockWrapper = (props) => {
             visibility: visible ? 'visible' : 'hidden',
             display: 'inline-block',
           }}
-          // {...draginfo.dragHandleProps}
           className="drag handle wrapper"
         >
           <Icon name={dragSVG} size="18px" />

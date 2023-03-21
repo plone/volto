@@ -9,27 +9,45 @@ exports[`Allow override of blocksConfig 1`] = `
       class="invisible"
     >
       <div
-        data-rbd-droppable-context-id="0"
-        data-rbd-droppable-id="id-0"
-        style="position: relative;"
+        class="block-editor-custom"
       >
         <div
-          class="block-editor-custom"
-          data-rbd-draggable-context-id="0"
-          data-rbd-draggable-id="a"
+          style="position: relative;"
         >
           <div
-            style="position: relative;"
+            aria-describedby=""
+            aria-disabled="false"
+            aria-roledescription="sortable"
+            class="drag handle wrapper"
+            role="button"
+            style="visibility: visible; display: inline-block;"
+            tabindex="0"
+          >
+            <svg
+              class="icon"
+              style="height: 18px; width: auto; fill: currentColor;"
+              viewBox=""
+              xmlns=""
+            />
+          </div>
+          <div
+            class="ui drag block inner custom"
           >
             <div
-              aria-describedby="rbd-hidden-text-0-hidden-text-0"
-              class="drag handle wrapper"
-              data-rbd-drag-handle-context-id="0"
-              data-rbd-drag-handle-draggable-id="a"
-              draggable="false"
-              role="button"
-              style="visibility: visible; display: inline-block;"
-              tabindex="0"
+              class="block custom  selected"
+              role="presentation"
+              style="outline: none;"
+              tabindex="-1"
+            >
+              <div>
+                a
+                 - 
+                a
+              </div>
+            </div>
+            <button
+              aria-label="delete"
+              class="ui basic icon button delete-button"
             >
               <svg
                 class="icon"
@@ -37,75 +55,45 @@ exports[`Allow override of blocksConfig 1`] = `
                 viewBox=""
                 xmlns=""
               />
-            </div>
-            <div
-              class="ui drag block inner custom"
-            >
-              <div
-                class="block custom  selected"
-                role="presentation"
-                style="outline: none;"
-                tabindex="-1"
-              >
-                <div>
-                  a
-                   - 
-                  a
-                </div>
-              </div>
-              <button
-                aria-label="delete"
-                class="ui basic icon button delete-button"
-              >
-                <svg
-                  class="icon"
-                  style="height: 18px; width: auto; fill: currentColor;"
-                  viewBox=""
-                  xmlns=""
-                />
-              </button>
-            </div>
+            </button>
           </div>
         </div>
+      </div>
+      <div
+        class="block-editor-custom"
+      >
         <div
-          class="block-editor-custom"
-          data-rbd-draggable-context-id="0"
-          data-rbd-draggable-id="b"
+          style="position: relative;"
         >
           <div
-            style="position: relative;"
+            aria-describedby=""
+            aria-disabled="false"
+            aria-roledescription="sortable"
+            class="drag handle wrapper"
+            role="button"
+            style="visibility: hidden; display: inline-block;"
+            tabindex="0"
+          >
+            <svg
+              class="icon"
+              style="height: 18px; width: auto; fill: currentColor;"
+              viewBox=""
+              xmlns=""
+            />
+          </div>
+          <div
+            class="ui drag block inner custom"
           >
             <div
-              aria-describedby="rbd-hidden-text-0-hidden-text-0"
-              class="drag handle wrapper"
-              data-rbd-drag-handle-context-id="0"
-              data-rbd-drag-handle-draggable-id="b"
-              draggable="false"
-              role="button"
-              style="visibility: hidden; display: inline-block;"
-              tabindex="0"
+              class="block custom "
+              role="presentation"
+              style="outline: none;"
+              tabindex="-1"
             >
-              <svg
-                class="icon"
-                style="height: 18px; width: auto; fill: currentColor;"
-                viewBox=""
-                xmlns=""
-              />
-            </div>
-            <div
-              class="ui drag block inner custom"
-            >
-              <div
-                class="block custom "
-                role="presentation"
-                style="outline: none;"
-                tabindex="-1"
-              >
-                <div>
-                  b
-                   - 
-                  b
-                </div>
+              <div>
+                b
+                 - 
+                b
               </div>
             </div>
           </div>
