@@ -43,7 +43,7 @@ const messages = defineMessages({
   addAddons: {
     id: 'Add Addons',
     defaultMessage:
-      'To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see',
+      'To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see',
   },
   addonsSettings: {
     id: 'Add-ons Settings',
@@ -380,11 +380,11 @@ class AddonsControlpanel extends Component {
                 </Header>
                 <FormattedMessage
                   id="Add Addons"
-                  defaultMessage="To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see"
+                  defaultMessage="To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
                 />
                 &nbsp;
                 <a
-                  href="http://docs.plone.org/manage/installing/installing_addons.html"
+                  href="https://6.docs.plone.org/install/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
