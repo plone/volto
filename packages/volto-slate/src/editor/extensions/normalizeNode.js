@@ -25,31 +25,45 @@ export const normalizeNode = (editor) => {
     }
 
     if (node.type === slate.listItemType) {
-      for (const [child] of Node.children(editor, path)) {
+      for (const [child, childPath] of Node.children(editor, path)) {
         if (Text.isText(child) || editor.isInline(child)) {
           // don't allow slate default normalizeNode, as it will remove the
           // blocks after this
+          const newParent = { type: 'span', children: [] };
+          Transforms.wrapNodes(editor, newParent, { at: childPath });
           return;
         }
       }
     }
 
-    if (isElementNode && isListTypeNode) {
-      // lift all child nodes of ul/ol that are not ul/ol/li
-      for (const [child, childPath] of Node.children(editor, path)) {
-        if (
-          !validListElements.includes(child.type) &&
-          !validListElements.includes(node.type)
-        ) {
-          Transforms.liftNodes(editor, { at: childPath, split: true });
+    // console.log(editor.children);
 
-          // Alternate strategy, need to investigate
-          // const newParent = { type: slate.defaultBlockType, children: [] };
-          // Transforms.wrapNodes(editor, newParent, { at: childPath });
-          return;
-        }
-      }
-    }
+    // if (node.type === slate.listItemType) {
+    //   for (const [child] of Node.children(editor, path)) {
+    //     if (Text.isText(child) || editor.isInline(child)) {
+    //       // don't allow slate default normalizeNode, as it will remove the
+    //       // blocks after this
+    //       return;
+    //     }
+    //   }
+    // }
+
+    // if (isElementNode && isListTypeNode) {
+    //   // lift all child nodes of ul/ol that are not ul/ol/li
+    //   for (const [child, childPath] of Node.children(editor, path)) {
+    //     if (
+    //       !validListElements.includes(child.type) &&
+    //       !validListElements.includes(node.type)
+    //     ) {
+    //       Transforms.liftNodes(editor, { at: childPath, split: true });
+    //
+    //       // Alternate strategy, need to investigate
+    //       // const newParent = { type: slate.defaultBlockType, children: [] };
+    //       // Transforms.wrapNodes(editor, newParent, { at: childPath });
+    //       return;
+    //     }
+    //   }
+    // }
 
     normalizeNode(entry);
   };
