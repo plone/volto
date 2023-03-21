@@ -11,8 +11,8 @@ import {
 } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
-  relations: {},
-  stats: {},
+  relations: null,
+  stats: null,
   create: {
     error: null,
     loaded: false,
@@ -33,6 +33,7 @@ const initialState = {
     loaded: false,
     loading: false,
   },
+  subrequests: {},
 };
 
 /**
@@ -56,7 +57,6 @@ export default function relations(state = initialState, action = {}) {
   switch (action.type) {
     case `${CREATE_RELATIONS}_PENDING`:
     case `${DELETE_RELATIONS}_PENDING`:
-    case `${LIST_RELATIONS}_PENDING`:
     case `${REBUILD_RELATIONS}_PENDING`:
       return {
         ...state,
@@ -66,17 +66,58 @@ export default function relations(state = initialState, action = {}) {
           error: null,
         },
       };
+    case `${LIST_RELATIONS}_PENDING`:
+      return action.subrequest
+        ? {
+            ...state,
+            subrequests: {
+              ...state.subrequests,
+              [action.subrequest]: {
+                ...(state.subrequests[action.subrequest] || {
+                  relations: null,
+                  stats: null,
+                }),
+                loaded: false,
+                loading: true,
+                error: null,
+              },
+            },
+          }
+        : {
+            ...state,
+            [getRequestKey(action.type)]: {
+              loading: true,
+              loaded: false,
+              error: null,
+            },
+          };
     case `${LIST_RELATIONS}_SUCCESS`:
-      return {
-        ...state,
-        relations: action.result.items ? action.result : state.relations,
-        stats: action.result.relations ? action.result : state.stats,
-        [getRequestKey(action.type)]: {
-          loading: false,
-          loaded: true,
-          error: null,
-        },
-      };
+      return action.subrequest
+        ? {
+            ...state,
+            subrequests: {
+              ...state.subrequests,
+              [action.subrequest]: {
+                loading: false,
+                loaded: true,
+                error: null,
+                relations: action.result.items
+                  ? action.result
+                  : state.relations,
+                stats: null,
+              },
+            },
+          }
+        : {
+            ...state,
+            relations: action.result.items ? action.result : state.relations,
+            stats: action.result.relations ? action.result : state.stats,
+            [getRequestKey(action.type)]: {
+              loading: false,
+              loaded: true,
+              error: null,
+            },
+          };
     case `${CREATE_RELATIONS}_SUCCESS`:
     case `${DELETE_RELATIONS}_SUCCESS`:
     case `${REBUILD_RELATIONS}_SUCCESS`:
@@ -89,16 +130,30 @@ export default function relations(state = initialState, action = {}) {
         },
       };
     case `${LIST_RELATIONS}_FAIL`:
-      return {
-        ...state,
-        relations: [],
-        stats: {},
-        [getRequestKey(action.type)]: {
-          loading: false,
-          loaded: false,
-          error: action.error,
-        },
-      };
+      return action.subrequest
+        ? {
+            ...state,
+            subrequests: {
+              ...state.subrequests,
+              [action.subrequest]: {
+                relations: null,
+                stats: null,
+                loading: false,
+                loaded: false,
+                error: action.error,
+              },
+            },
+          }
+        : {
+            ...state,
+            relations: null,
+            stats: null,
+            [getRequestKey(action.type)]: {
+              loading: false,
+              loaded: false,
+              error: action.error,
+            },
+          };
     case `${CREATE_RELATIONS}_FAIL`:
     case `${DELETE_RELATIONS}_FAIL`:
     case `${REBUILD_RELATIONS}_FAIL`:

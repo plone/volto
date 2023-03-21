@@ -15,10 +15,10 @@ import add from '@plone/volto/icons/add.svg';
 import remove from '@plone/volto/icons/remove.svg';
 
 const ListingTemplate = ({
+  relationtype,
   query_source,
   query_target,
   target_filter,
-  relationtype,
 }) => {
   const intl = useIntl();
   const dispatch = useDispatch();
@@ -132,7 +132,7 @@ const ListingTemplate = ({
       checked ? createRelations(relation_data) : deleteRelations(relation_data),
     )
       .then((resp) => {
-        dispatch(queryRelations(relationtype, query_source, target_filter));
+        dispatch(queryRelations(relationtype));
       })
       .then(() => {
         toast.success(
@@ -259,7 +259,7 @@ const ListingTemplate = ({
               <div className="listing-row" key={item.id}>
                 <div className="listing-item" key={item['@id']}>
                   <div>
-                    <h4 title={item.value}>
+                    <span title={item.value}>
                       <UniversalLink
                         href={item.url}
                         className={
@@ -270,7 +270,7 @@ const ListingTemplate = ({
                       >
                         {item.label}
                       </UniversalLink>
-                    </h4>
+                    </span>
                   </div>
                   <div className="matrix_options">
                     {matrix_options?.map((matrix_option) => (

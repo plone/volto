@@ -16,6 +16,7 @@ import { messages } from '@plone/volto/helpers';
 import { Toast } from '@plone/volto/components';
 import { rebuildRelations, queryRelations } from '@plone/volto/actions';
 import RelationsListing from './RelationsListing';
+import BrokenRelations from './BrokenRelations';
 
 const RelationsMatrix = (props) => {
   const intl = useIntl();
@@ -60,7 +61,7 @@ const RelationsMatrix = (props) => {
 
   useEffect(() => {
     if (relationtype) {
-      dispatch(queryRelations(relationtype, query_target_filter));
+      dispatch(queryRelations(relationtype));
     }
   }, [dispatch, relationtype, query_target_filter, props]);
 
@@ -127,6 +128,7 @@ const RelationsMatrix = (props) => {
     dispatch(rebuildRelations(flush))
       .then(() => {
         dispatch(queryRelations());
+        dispatch(queryRelations(null, true, 'broken'));
       })
       .then(() => {
         toast.success(
@@ -297,7 +299,9 @@ const RelationsMatrix = (props) => {
                     return (
                       <Table.Row>
                         <Table.Cell>{el}</Table.Cell>
-                        <Table.Cell>{brokenRelations[el]}</Table.Cell>
+                        <Table.Cell textAlign="right">
+                          {brokenRelations[el]}
+                        </Table.Cell>
                       </Table.Row>
                     );
                   })}
@@ -350,6 +354,7 @@ const RelationsMatrix = (props) => {
                   />
                 </Button>
               </Button.Group>
+              <BrokenRelations />
             </div>
           ) : (
             <p>

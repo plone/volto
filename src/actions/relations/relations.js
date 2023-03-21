@@ -47,22 +47,26 @@ export function deleteRelations(content) {
  * List relations function
  * @function queryRelations
  * @param {string} relation Name of relation
- * @param {list} sources list of UIDS
- * @param {list} targets list of UIDS
- * @param {boolean} backrelations
+ * @param {boolean} onlyBroken
  * @returns {Object} List relations action
  */
-export function queryRelations(relation, sources, targets, backrelations = 0) {
+export function queryRelations(
+  relation = null,
+  onlyBroken = false,
+  subrequest = null,
+) {
   let path = '/@relations';
   var searchParams = new URLSearchParams();
   searchParams.append('max', 2500);
   relation && searchParams.append('relation', relation);
+  onlyBroken && searchParams.append('onlyBroken', onlyBroken);
   const searchParamsToString = searchParams.toString();
   if (searchParamsToString) {
     path += `?${searchParamsToString}`;
   }
   return {
     type: LIST_RELATIONS,
+    subrequest,
     request: { op: 'get', path: path },
   };
 }
