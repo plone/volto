@@ -14,7 +14,13 @@ function getDisplayName(WrappedComponent) {
 
 export default function withQuerystringResults(WrappedComponent) {
   function WithQuerystringResults(props) {
-    const { id, data = {}, properties: content, path, variation } = props;
+    const {
+      data = {},
+      id = data.block,
+      properties: content,
+      path,
+      variation,
+    } = props;
     const { settings } = config;
     const querystring = data.querystring || data; // For backwards compat with data saved before Blocks schema. Note, this is also how the Search block passes data to ListingBody
 
