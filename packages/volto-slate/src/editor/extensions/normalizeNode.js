@@ -14,28 +14,27 @@ export const normalizeNode = (editor) => {
     const isTextNode = Text.isText(node);
     const isInlineNode = editor.isInline(node);
     const isElementNode = Element.isElement(node);
-    const isListTypeNode = slate.listTypes.includes(node.type);
+    const isListTypeNode =
+      isElementNode && validListElements.includes(node.type);
 
     // delete childless ul/ol nodes
-    if (!isTextNode && isElementNode && !isInlineNode && isListTypeNode) {
+    if (!isTextNode && !isInlineNode && isListTypeNode) {
       if ((node.children || []).length === 0) {
         Transforms.removeNodes(editor, { at: path });
         return;
       }
     }
 
-    if (isElementNode && isListTypeNode) {
-      // lift all child nodes of ul/ol that are not ul/ol/li
+    if (isListTypeNode) {
+      // wrap all child nodes of ul/ol that are not ul/ol/li
       for (const [child, childPath] of Node.children(editor, path)) {
-        if (
-          !validListElements.includes(child.type) &&
-          !validListElements.includes(node.type)
-        ) {
-          Transforms.liftNodes(editor, { at: childPath, split: true });
+        if (Text.isText(child) || editor.isInline(child)) {
+          // original strategy, lift all nodes
+          // Transforms.liftNodes(editor, { at: childPath, split: true });
 
-          // Alternate strategy, need to investigate
-          // const newParent = { type: slate.defaultBlockType, children: [] };
-          // Transforms.wrapNodes(editor, newParent, { at: childPath });
+          // Alternate strategy, wrap in span
+          const newParent = { type: 'span', children: [] };
+          Transforms.wrapNodes(editor, newParent, { at: childPath });
           return;
         }
       }

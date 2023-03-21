@@ -245,6 +245,7 @@ export const elements = {
     return <ul {...attributes}>{children}</ul>;
   },
 
+  span: ({ attributes, children }) => <span {...attributes}>{children}</span>,
   div: ({ attributes, children }) => <div {...attributes}>{children}</div>,
   p: ({ attributes, children, element }) => <p {...attributes}>{children}</p>,
 
