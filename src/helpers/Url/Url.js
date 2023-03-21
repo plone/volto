@@ -300,7 +300,7 @@ export function checkAndNormalizeUrl(url) {
         res.isValid = false;
       }
     }
-    if (res.url == undefined || res.url == null) res.isValid = false;
+    if (res.url === undefined || res.url === null) res.isValid = false;
   }
   return res;
 }
