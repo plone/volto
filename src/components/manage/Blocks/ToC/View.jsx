@@ -6,17 +6,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
-import isArray from 'lodash/isArray';
-import isObject from 'lodash/isObject';
 import cx from 'classnames';
 import { Message } from 'semantic-ui-react';
-import config from '@plone/volto/registry';
 import { withBlockExtensions } from '@plone/volto/helpers';
 
-import {
-  getBlocksFieldname,
-  getBlocksLayoutFieldname,
-} from '@plone/volto/helpers';
+import { getBlocksTocEntries } from '@plone/volto/helpers';
 
 /**
  * View toc block class.
@@ -24,66 +18,18 @@ import {
  * @extends Component
  */
 const View = (props) => {
-  const { properties, data } = props;
+  const { data } = props;
   const { variation } = props;
-  const blocksFieldname = getBlocksFieldname(properties);
-  const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
-  const levels = React.useMemo(
-    () =>
-      data.levels?.length > 0
-        ? data.levels.map((l) => parseInt(l.slice(1)))
-        : [1, 2, 3, 4, 5, 6],
-    [data],
-  );
+  const metadata = props.metadata || props.properties;
 
   const tocEntries = React.useMemo(() => {
-    let rootLevel = Infinity;
     let entries = [];
     let prevEntry = {};
-    let tocEntries = {};
-    let tocEntriesLayout = [];
 
-    properties[blocksLayoutFieldname].items.forEach((id) => {
-      const block = properties[blocksFieldname][id];
-      if (typeof block === 'undefined') {
-        return null;
-      }
-      if (!config.blocks.blocksConfig[block['@type']]?.tocEntry) return null;
-      const entry = config.blocks.blocksConfig[block['@type']]?.tocEntry(
-        block,
-        data,
-      );
-      if (isArray(entry)) {
-        const level = entry[0];
-        const title = entry[1];
-        const items = [];
-        if (!level || !levels.includes(level)) return;
-        tocEntriesLayout.push(id);
-        tocEntries[id] = { level, title: title || block.plaintext, items, id };
-        if (level < rootLevel) {
-          rootLevel = level;
-        }
-      }
-      if (isObject(entry) && isArray(entry.entries)) {
-        entry.entries.forEach((e, index) => {
-          const i = `${id}-${index}`;
-          const level = e[0];
-          const title = e[1];
-          const items = [];
-          if (!level || !levels.includes(level)) return;
-          tocEntriesLayout.push(i);
-          tocEntries[i] = {
-            level,
-            title: title || block.plaintext,
-            items,
-            id: i,
-          };
-          if (level < rootLevel) {
-            rootLevel = level;
-          }
-        });
-      }
-    });
+    const { rootLevel, tocEntries, tocEntriesLayout } = getBlocksTocEntries(
+      metadata,
+      data,
+    );
 
     tocEntriesLayout.forEach((id) => {
       const entry = tocEntries[id];
@@ -113,7 +59,7 @@ const View = (props) => {
     });
 
     return entries;
-  }, [data, levels, properties, blocksFieldname, blocksLayoutFieldname]);
+  }, [data, metadata]);
 
   const Renderer = variation?.view;
   return (
@@ -123,7 +69,7 @@ const View = (props) => {
       )}
 
       {Renderer ? (
-        <Renderer {...props} tocEntries={tocEntries} properties={properties} />
+        <Renderer {...props} tocEntries={tocEntries} properties={metadata} />
       ) : (
         <div>View extension not found</div>
       )}
