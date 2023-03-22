@@ -182,7 +182,7 @@ and provide your own per content type, e.g:
 
 ```js
 const initialBlocks = {
-    Document: ['leadimage', 'title', 'text', 'listing'],
+    Document: ['leadimage', 'title', 'text', 'listing']
 };
 ```
 
@@ -191,16 +191,13 @@ const initialBlocks = {
 `allowed_headline_tags`
 : Allows you to customize the choices of the "Headline Tag" types shown in the block settings by default. It has the following syntax (a list of lists, where a list item consists of `['token', 'display_name']`):
 
-```js
-allowed_headline_tags: [
-  ['h2', 'h2'],
-  ['h3', 'h3'],
-];
-```
+  ```js
+  allowed_headline_tags: [['h2', 'h2'], ['h3', 'h3']]
+  ```
 
-If not specified, an internal hardcoded default is the above shown example.
+  If not specified, an internal hardcoded default is the above shown example.
 
-If the choice is limited to one item, then the setting hides itself from the `listing` block settings list.
+  If the choice is limited to one item, then the setting hides itself from the `listing` block settings list.
 
 ## Search block configuration
 
