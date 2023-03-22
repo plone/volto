@@ -1,10 +1,10 @@
 ---
 myst:
   html_meta:
-    'description': 'How to configure custom blocks'
-    'property=og:description': 'How to configure custom blocks'
-    'property=og:title': 'Blocks settings'
-    'keywords': 'Volto, Plone, frontend, React, Block settings'
+    "description": "How to configure custom blocks"
+    "property=og:description": "How to configure custom blocks"
+    "property=og:title": "Blocks settings"
+    "keywords": "Volto, Plone, frontend, React, Block settings"
 ---
 
 # Blocks settings
@@ -182,7 +182,7 @@ and provide your own per content type, e.g:
 
 ```js
 const initialBlocks = {
-  Document: ['leadimage', 'title', 'text', 'listing'],
+    Document: ['leadimage', 'title', 'text', 'listing'],
 };
 ```
 
