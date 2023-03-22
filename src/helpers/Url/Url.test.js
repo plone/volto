@@ -205,6 +205,7 @@ describe('Url', () => {
       expect(isInternalURL(href)).toBe(false);
       settings.internalApiPath = saved;
     });
+
     it('tells if an URL is internal if it is an anchor', () => {
       const href = '#anchor';
       expect(isInternalURL(href)).toBe(true);
@@ -224,6 +225,17 @@ describe('Url', () => {
     it('Behave if URL is not a string II', () => {
       const href = undefined;
       expect(isInternalURL(href)).toBe(undefined);
+    });
+    it('tells if an  URL is external if settings.externalroutes is persent.', () => {
+      const url = `https://localhost:3000/fb/my-page/contents`;
+      const blacklistedurl = '/blacklisted';
+      settings.externalRoutes = [
+        { title: 'My Page', match: '/fb' },
+        '/blacklisted',
+      ];
+      settings.publicURL = 'https://localhost:3000';
+      expect(isInternalURL(url)).toBe(false);
+      expect(isInternalURL(blacklistedurl)).toBe(false);
     });
   });
   describe('isUrl', () => {
