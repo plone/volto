@@ -1,5 +1,142 @@
 import { slateBeforeEach } from '../../../support/e2e';
 
+const fixture = {
+  blocks: {
+    'd3f1c443-583f-4e8e-a682-3bf25752a300': { '@type': 'title' },
+    '07035ae3-c9fa-48b0-9bdd-152611b91b95': {
+      plaintext: '',
+      '@type': 'slate',
+      value: [
+        {
+          type: 'ul',
+          children: [
+            {
+              type: 'li',
+              children: [
+                {
+                  type: 'strong',
+                  children: [
+                    {
+                      text: 'Smarter adaptation',
+                    },
+                  ],
+                },
+                {
+                  text:
+                    ': Improving knowledge and manage uncertainty; including:',
+                },
+                {
+                  type: 'ul',
+                  children: [
+                    {
+                      type: 'li',
+                      children: [
+                        {
+                          text:
+                            'Pushing the frontiers of adaptation knowledge;',
+                        },
+                      ],
+                    },
+                    {
+                      type: 'li',
+                      children: [
+                        {
+                          text: 'More and better climate loss data; and',
+                        },
+                      ],
+                    },
+                    {
+                      type: 'li',
+                      children: [
+                        {
+                          text:
+                            'Enhancing and expanding Climate-ADAPT as the European platform for adaptation knowledge.',
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              type: 'li',
+              children: [
+                {
+                  text: 'More ',
+                },
+                {
+                  type: 'strong',
+                  children: [
+                    {
+                      text: 'systemic adaptation',
+                    },
+                  ],
+                },
+                {
+                  text:
+                    ': Supporting policy development at all levels and all relevant policy fields; including three cross-cutting priorities to integrate adaptation into:',
+                },
+                {
+                  type: 'ul',
+                  children: [
+                    {
+                      type: 'li',
+                      children: [
+                        {
+                          text: 'Macro-fiscal policy;',
+                        },
+                      ],
+                    },
+                    {
+                      type: 'li',
+                      children: [
+                        {
+                          text: 'Nature-based solutions; and',
+                        },
+                      ],
+                    },
+                    {
+                      type: 'li',
+                      children: [
+                        {
+                          text: 'Local adaptation actions.',
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              type: 'li',
+              children: [
+                {
+                  type: 'strong',
+                  children: [
+                    {
+                      text: 'Faster adaptation',
+                    },
+                  ],
+                },
+                {
+                  text:
+                    ': Speed up adaptation implementation across the board.',
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  },
+  blocks_layout: {
+    items: [
+      'd3f1c443-583f-4e8e-a682-3bf25752a300',
+      '07035ae3-c9fa-48b0-9bdd-152611b91b95',
+    ],
+  },
+};
+
 describe('Block Tests: Bulleted lists', () => {
   beforeEach(slateBeforeEach);
 
@@ -96,6 +233,32 @@ describe('Block Tests: Bulleted lists', () => {
 </ul>`,
     );
 
+    cy.toolbarSave();
+
+    cy.get('[id="page-document"] ul li+ul li:first').should(
+      'have.text',
+      'Pushing the frontiers of adaptation knowledge;',
+    );
+  });
+
+  it('Can normalize slate content with inline list in list', () => {
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'my-other-page',
+      contentTitle: 'My Other Page',
+      bodyModifier: (body) => {
+        return {
+          ...body,
+          ...fixture,
+        };
+      },
+    });
+    cy.visit('/my-other-page');
+    cy.get('[id="page-document"] ul li:first ul').should('have.length', 1);
+    cy.visit('/my-other-page/edit');
+    cy.getSlate().focus().click();
+    cy.setSlateSelection('knowledge');
+    cy.clickSlateButton('Bold');
     cy.toolbarSave();
 
     cy.get('[id="page-document"] ul li+ul li:first').should(
