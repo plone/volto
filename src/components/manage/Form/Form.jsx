@@ -258,7 +258,11 @@ class Form extends Component {
    * Tab selection is done only by setting activeIndex in state
    */
   onTabChange(e, { activeIndex }) {
-    this.setState({ activeIndex });
+    const defaultFocus = this.props.schema.fieldsets[activeIndex].fields[0];
+    this.setState({
+      activeIndex,
+      ...(defaultFocus ? { inFocus: { [defaultFocus]: true } } : {}),
+    });
   }
 
   /**
@@ -686,7 +690,7 @@ class Form extends Component {
                             id={field}
                             formData={this.state.formData}
                             fieldSet={item.title.toLowerCase()}
-                            focus={index === 0}
+                            focus={this.state.inFocus[field]}
                             value={this.state.formData?.[field]}
                             required={schema.required.indexOf(field) !== -1}
                             onChange={this.onChangeField}
