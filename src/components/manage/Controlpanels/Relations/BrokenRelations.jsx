@@ -28,6 +28,7 @@ const BrokenRelations = () => {
         </h3>
         {Object.keys(brokenRelations.items).map((el) => (
           <div>
+            <Divider section hidden />
             <h4>{el}</h4>
             <Table>
               {brokenRelations.items[el].map((el) => (

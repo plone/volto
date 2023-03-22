@@ -466,6 +466,7 @@ msgstr "Tanto la dirección de correo electrónico y la contraseña son sensible
 msgid "Breadcrumbs"
 msgstr "Barra de ruta"
 
+#: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Broken relations
 msgid "Broken relations"
@@ -1422,21 +1423,6 @@ msgstr "Reglas de filtrado:"
 # defaultMessage: Filter by prefix
 msgid "Filter by prefix"
 msgstr "Filtrar por prefijo"
-
-#: helpers/MessageLabels/MessageLabels
-# defaultMessage: Filter relations by search in source
-msgid "Filter relations by search in source"
-msgstr ""
-
-#: helpers/MessageLabels/MessageLabels
-# defaultMessage: Filter relations by target
-msgid "Filter relations by target"
-msgstr ""
-
-#: helpers/MessageLabels/MessageLabels
-# defaultMessage: Filter targets by search
-msgid "Filter targets by search"
-msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Filter users by groups
@@ -2927,6 +2913,16 @@ msgid "Search results for {term}"
 msgstr "Resultados de búsqueda para {term}"
 
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search sources by title or path
+msgid "Search sources by title or path"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search targets by title or path
+msgid "Search targets by title or path"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Search users…
 msgid "Search users…"
 msgstr "Buscar usuarios..."
@@ -3076,6 +3072,11 @@ msgstr "Mostrar grupos de usuarios más abajo"
 # defaultMessage: Show item
 msgid "Show item"
 msgstr "Mostrar elemento"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Show potential targets. Not only objects that are target of some relation.
+msgid "Show potential targets. Not only objects that are target of some relation."
+msgstr ""
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Show search button?

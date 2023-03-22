@@ -273,12 +273,12 @@ export const messages = defineMessages({
     defaultMessage: 'Fix relations',
   },
   searchRelationSource: {
-    id: 'Filter relations by search in source',
-    defaultMessage: 'Filter relations by search in source',
+    id: 'Search sources by title or path',
+    defaultMessage: 'Search sources by title or path',
   },
   searchRelationTarget: {
-    id: 'Filter targets by search',
-    defaultMessage: 'Filter targets by search',
+    id: 'Search targets by title or path',
+    defaultMessage: 'Search targets by title or path',
   },
   createRelationsToTarget: {
     id: 'Create relations to target',
@@ -287,10 +287,6 @@ export const messages = defineMessages({
   removeRelationsToTarget: {
     id: 'Remove relations to target',
     defaultMessage: 'Remove relations to target',
-  },
-  filterByTarget: {
-    id: 'Filter relations by target',
-    defaultMessage: 'Filter relations by target',
   },
   relationName: {
     id: 'Relation name',
@@ -311,5 +307,11 @@ export const messages = defineMessages({
   flushAndRebuildRelations: {
     id: 'flush and rebuild relations',
     defaultMessage: 'flush and rebuild relations',
+  },
+  addPotentialTargetsPath: {
+    id:
+      'Show potential targets. Not only objects that are target of some relation.',
+    defaultMessage:
+      'Show potential targets. Not only objects that are target of some relation.',
   },
 });

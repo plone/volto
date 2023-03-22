@@ -465,6 +465,7 @@ msgstr "O endereço de e-mail e a senha diferenciam maiúsculas de minúsculas. 
 msgid "Breadcrumbs"
 msgstr "Navegação estrutural"
 
+#: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Broken relations
 msgid "Broken relations"
@@ -1421,21 +1422,6 @@ msgstr "Filtrar regras:"
 # defaultMessage: Filter by prefix
 msgid "Filter by prefix"
 msgstr "Filtrar por prefixo"
-
-#: helpers/MessageLabels/MessageLabels
-# defaultMessage: Filter relations by search in source
-msgid "Filter relations by search in source"
-msgstr ""
-
-#: helpers/MessageLabels/MessageLabels
-# defaultMessage: Filter relations by target
-msgid "Filter relations by target"
-msgstr ""
-
-#: helpers/MessageLabels/MessageLabels
-# defaultMessage: Filter targets by search
-msgid "Filter targets by search"
-msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Filter users by groups
@@ -2926,6 +2912,16 @@ msgid "Search results for {term}"
 msgstr "Resultados da pesquisa para {term}"
 
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search sources by title or path
+msgid "Search sources by title or path"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search targets by title or path
+msgid "Search targets by title or path"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Search users…
 msgid "Search users…"
 msgstr "Pesquisar usuários…"
@@ -3075,6 +3071,11 @@ msgstr "Mostrar grupos de usuários abaixo"
 # defaultMessage: Show item
 msgid "Show item"
 msgstr "Mostrar item"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Show potential targets. Not only objects that are target of some relation.
+msgid "Show potential targets. Not only objects that are target of some relation."
+msgstr ""
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Show search button?

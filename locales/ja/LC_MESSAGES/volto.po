@@ -463,6 +463,7 @@ msgstr "メールアドレスとパスワードは大文字小文字が区別さ
 msgid "Breadcrumbs"
 msgstr "パンくず"
 
+#: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Broken relations
 msgid "Broken relations"
@@ -1418,21 +1419,6 @@ msgstr ""
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Filter by prefix
 msgid "Filter by prefix"
-msgstr ""
-
-#: helpers/MessageLabels/MessageLabels
-# defaultMessage: Filter relations by search in source
-msgid "Filter relations by search in source"
-msgstr ""
-
-#: helpers/MessageLabels/MessageLabels
-# defaultMessage: Filter relations by target
-msgid "Filter relations by target"
-msgstr ""
-
-#: helpers/MessageLabels/MessageLabels
-# defaultMessage: Filter targets by search
-msgid "Filter targets by search"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
@@ -2924,6 +2910,16 @@ msgid "Search results for {term}"
 msgstr "検索"
 
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search sources by title or path
+msgid "Search sources by title or path"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search targets by title or path
+msgid "Search targets by title or path"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Search users…
 msgid "Search users…"
 msgstr "ユーザーを検索…"
@@ -3072,6 +3068,11 @@ msgstr ""
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Show item
 msgid "Show item"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Show potential targets. Not only objects that are target of some relation.
+msgid "Show potential targets. Not only objects that are target of some relation."
 msgstr ""
 
 #: components/manage/Blocks/Search/schema

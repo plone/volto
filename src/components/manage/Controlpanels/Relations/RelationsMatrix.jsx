@@ -11,7 +11,6 @@ import {
   Tab,
   Table,
 } from 'semantic-ui-react';
-// import { isEqual, pull } from 'lodash';
 import { messages } from '@plone/volto/helpers';
 import { Toast } from '@plone/volto/components';
 import { rebuildRelations, queryRelations } from '@plone/volto/actions';
@@ -23,8 +22,7 @@ const RelationsMatrix = (props) => {
   const dispatch = useDispatch();
   const [query_source, setQuery_source] = useState('');
   const [query_target, setQuery_target] = useState('');
-  const [query_target_filter, setQuery_target_filter] = useState('');
-  // const [target_filter, setTarget_filter] = useState([]); // Show source with these targets.
+  const [potential_targets_path, setPotential_targets_path] = useState('');
   const [relationtype, setRelationtype] = useState(undefined);
   const relationtypes = useSelector(
     (state) => state.relations?.stats?.relations,
@@ -59,14 +57,7 @@ const RelationsMatrix = (props) => {
     dispatch(queryRelations());
   }, [dispatch]);
 
-  useEffect(() => {
-    if (relationtype) {
-      dispatch(queryRelations(relationtype));
-    }
-  }, [dispatch, relationtype, query_target_filter, props]);
-
   const onReset = (event) => {
-    // event.preventDefault();
     let element = event.target.querySelector('input');
     element.value = '';
     element.focus();
@@ -78,51 +69,31 @@ const RelationsMatrix = (props) => {
       case 'SearchX':
         setQuery_target('');
         break;
-      case 'SearchXFilter':
-        setQuery_target_filter('');
+      case 'showPotentialTargets':
+        setPotential_targets_path('/');
         break;
       default:
         break;
     }
   };
 
+  // search for sources
   const onChangeSearchYs = (event) => {
     setQuery_source(event.target.value);
   };
 
+  // search for targets
   const onChangeSearchXs = (event) => {
     setQuery_target(event.target.value);
   };
-
-  // const onSelectOptionHandler = (filter_option, checked) => {
-  //   let target_filter_set_new = [];
-  //   if (checked) {
-  //     target_filter_set_new = new Set([...target_filter, filter_option.value]);
-  //   } else {
-  //     target_filter_set_new = pull(target_filter, filter_option.value);
-  //   }
-  //   if (!isEqual(target_filter_set_new, new Set(target_filter))) {
-  //     setTarget_filter([...target_filter_set_new]);
-  //   }
-  // };
-
-  // const onChangeSearchXsFilter = (event) => {
-  //   setQuery_target_filter(event.target.value);
-  // };
 
   const onChangeRelation = (event, { value }) => {
     setRelationtype(value);
   };
 
-  // const onChangeShowPotentialTargets = () => {
-  //   toast.warning(
-  //     <Toast
-  //       warning
-  //       title="add or remove relation"
-  //       content="not yet implemented"
-  //     />,
-  //   );
-  // };
+  const onChangeShowPotentialTargets = (event) => {
+    setPotential_targets_path(event.target.value);
+  };
 
   const rebuildRelationsHandler = (flush = false) => {
     dispatch(rebuildRelations(flush))
@@ -225,51 +196,26 @@ const RelationsMatrix = (props) => {
                           id="x-search-input"
                         />
                       </Form.Field>
-                      {/* <Form.Field>
-                        <Checkbox
-                          name="showPotentialTargets"
-                          label="Show potential targets (not only objects that are target of some relation)"
-                          title="Show potential targets"
-                          defaultChecked={false}
-                          onChange={onChangeShowPotentialTargets}
-                        />
-                      </Form.Field> */}
                     </Form>
-                  </div>
-                  {/* Possible filter:
-                  - path
-                  - content type
-                  - review state */}
-                  {/* <div className="controlpanel_filter">
-                    <h3>{intl.formatMessage(messages.filterByTarget)}</h3>
-                    <Form className="search_filter_groups" onSubmit={onReset}>
+                    <Form className="add_potential_targets" onSubmit={onReset}>
                       <Form.Field>
                         <Input
-                          name="SearchXFilter"
+                          name="showPotentialTargets"
                           action={{ icon: 'delete' }}
-                          placeholder={intl.formatMessage(messages.searchRelationTarget)}
-                          onChange={onChangeSearchXsFilter}
-                          id="groupfilter-search-input"
+                          placeholder={intl.formatMessage(
+                            messages.addPotentialTargetsPath,
+                          )}
+                          onChange={onChangeShowPotentialTargets}
+                          id="potential-targets-path-input"
                         />
                       </Form.Field>
                     </Form>
-                    {filter_options?.map((filter_option) => (
-                      <Checkbox
-                        name={`filter_option_${filter_option.value}`}
-                        key={filter_option.value}
-                        title={filter_option.label}
-                        label={filter_option.label}
-                        defaultChecked={false}
-                        onChange={(event, { checked }) => {
-                          onSelectOptionHandler(filter_option, checked);
-                        }}
-                      />
-                    ))}
-                  </div> */}
+                  </div>
                   <RelationsListing
                     relationtype={relationtype}
                     query_source={query_source}
                     query_target={query_target}
+                    potential_targets_path={potential_targets_path}
                     // target_filter={target_filter}
                   />
                 </>
@@ -297,7 +243,7 @@ const RelationsMatrix = (props) => {
                 <Table.Body>
                   {Object.keys(brokenRelations).map((el) => {
                     return (
-                      <Table.Row>
+                      <Table.Row key={el}>
                         <Table.Cell>{el}</Table.Cell>
                         <Table.Cell textAlign="right">
                           {brokenRelations[el]}
@@ -373,7 +319,7 @@ const RelationsMatrix = (props) => {
     <Tab
       panes={panes}
       renderActiveOnly={false}
-      menu={{ secondary: true, pointing: true, attached: false, tabular: true }}
+      menu={{ secondary: true, pointing: true, attached: true, tabular: true }}
     />
   );
 };

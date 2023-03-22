@@ -461,6 +461,7 @@ msgstr "Sowohl E-Mail Adresse als auch Passwort unterscheiden zwischen Groß- un
 msgid "Breadcrumbs"
 msgstr "Brotkrumen"
 
+#: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Broken relations
 msgid "Broken relations"
@@ -1417,21 +1418,6 @@ msgstr "Filterregeln:"
 # defaultMessage: Filter by prefix
 msgid "Filter by prefix"
 msgstr "Nach Präfix filtern"
-
-#: helpers/MessageLabels/MessageLabels
-# defaultMessage: Filter relations by search in source
-msgid "Filter relations by search in source"
-msgstr "Schränke die angezeigten Relationen per Suche in Quelle ein."
-
-#: helpers/MessageLabels/MessageLabels
-# defaultMessage: Filter relations by target
-msgid "Filter relations by target"
-msgstr "Schränke die angezeigten Relationen per Suche in Ziel ein."
-
-#: helpers/MessageLabels/MessageLabels
-# defaultMessage: Filter targets by search
-msgid "Filter targets by search"
-msgstr "Schränke die Ziele der Relationen ein."
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Filter users by groups
@@ -2922,6 +2908,16 @@ msgid "Search results for {term}"
 msgstr "Suchergebnisse für {term}"
 
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search sources by title or path
+msgid "Search sources by title or path"
+msgstr "Suche in Quellen nach Titel oder Pfad"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search targets by title or path
+msgid "Search targets by title or path"
+msgstr "Suche in Zielen nach Titel oder Pfad"
+
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Search users…
 msgid "Search users…"
 msgstr "Nach Nutzern suchen…"
@@ -3071,6 +3067,11 @@ msgstr "Zeige die Gruppenmitgliedschaften der unten gezeigten Benutzer"
 # defaultMessage: Show item
 msgid "Show item"
 msgstr "Elemente anzeigen"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Show potential targets. Not only objects that are target of some relation.
+msgid "Show potential targets. Not only objects that are target of some relation."
+msgstr "Zeige potentielle Ziele. Nicht nur Objekte die Ziele von Relationen sind."
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Show search button?

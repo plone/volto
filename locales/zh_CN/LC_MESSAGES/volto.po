@@ -461,6 +461,7 @@ msgstr "Email 地址和密码都是区分大小写的，请检查 CapsLock 键�
 msgid "Breadcrumbs"
 msgstr "面包屑导航"
 
+#: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Broken relations
 msgid "Broken relations"
@@ -1417,21 +1418,6 @@ msgstr "过滤规则"
 # defaultMessage: Filter by prefix
 msgid "Filter by prefix"
 msgstr "按前缀过滤"
-
-#: helpers/MessageLabels/MessageLabels
-# defaultMessage: Filter relations by search in source
-msgid "Filter relations by search in source"
-msgstr ""
-
-#: helpers/MessageLabels/MessageLabels
-# defaultMessage: Filter relations by target
-msgid "Filter relations by target"
-msgstr ""
-
-#: helpers/MessageLabels/MessageLabels
-# defaultMessage: Filter targets by search
-msgid "Filter targets by search"
-msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Filter users by groups
@@ -2922,6 +2908,16 @@ msgid "Search results for {term}"
 msgstr "搜索{term}的结果"
 
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search sources by title or path
+msgid "Search sources by title or path"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search targets by title or path
+msgid "Search targets by title or path"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Search users…
 msgid "Search users…"
 msgstr "搜索用户..."
@@ -3071,6 +3067,11 @@ msgstr "显示用户的组"
 # defaultMessage: Show item
 msgid "Show item"
 msgstr "显示条目"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Show potential targets. Not only objects that are target of some relation.
+msgid "Show potential targets. Not only objects that are target of some relation."
+msgstr ""
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Show search button?

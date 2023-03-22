@@ -10,6 +10,7 @@ import {
   createRelations,
   deleteRelations,
   queryRelations,
+  searchContent,
 } from '@plone/volto/actions';
 import add from '@plone/volto/icons/add.svg';
 import remove from '@plone/volto/icons/remove.svg';
@@ -18,6 +19,7 @@ const ListingTemplate = ({
   relationtype,
   query_source,
   query_target,
+  potential_targets_path,
   target_filter,
 }) => {
   const intl = useIntl();
@@ -36,10 +38,21 @@ const ListingTemplate = ({
     if (query_source) {
       matched =
         matched &&
-        el.source.title.toLowerCase().indexOf(query_source.toLowerCase()) > -1;
+        (el.source.title.toLowerCase().indexOf(query_source.toLowerCase()) >
+          -1 ||
+          el.source['@id'].toLowerCase().indexOf(query_source.toLowerCase()) >
+            -1);
     }
     return matched;
   });
+
+  let potential_targets_objects = useSelector(
+    (state) => state.search.subrequests.potential_targets?.items || [],
+  );
+
+  const allowedTypes = useSelector(
+    (state) => state.relations?.relations?.allowedTypes || [],
+  );
 
   let relationMatrix = {};
   relations.map((tpl) => {
@@ -54,7 +67,7 @@ const ListingTemplate = ({
     return relationMatrix;
   });
 
-  // x-axis
+  // x-axis: relation targets
   let matrix_options = relations.map((relation) => ({
     value: relation.target.UID,
     label: relation.target.title,
@@ -65,12 +78,27 @@ const ListingTemplate = ({
   matrix_options = uniqBy(matrix_options, function (el) {
     return el.value;
   });
+
+  // Add potential targets
+  const potential_targets = potential_targets_objects.map((obj) => ({
+    value: obj.UID,
+    label: obj.title,
+    url: obj['@id'],
+    review_state: obj.review_state,
+    uid: obj.UID,
+  }));
+  matrix_options = [...matrix_options, ...potential_targets];
+  matrix_options = uniqBy(matrix_options, function (el) {
+    return el.value;
+  });
+
   matrix_options = matrix_options.filter((el) => {
     let matched = true;
     if (query_target) {
       matched =
         matched &&
-        el.label.toLowerCase().indexOf(query_target.toLowerCase()) > -1;
+        (el.label.toLowerCase().indexOf(query_target.toLowerCase()) > -1 ||
+          el.url.toLowerCase().indexOf(query_target.toLowerCase()) > -1);
     }
     return matched;
   });
@@ -86,7 +114,7 @@ const ListingTemplate = ({
     return 0;
   });
 
-  // y-axis
+  // y-axis: relation sources
   let items = Object.keys(relationMatrix).map((key) => ({
     value: key,
     label: relationMatrix[key].source.title,
@@ -109,7 +137,27 @@ const ListingTemplate = ({
 
   useEffect(() => {
     dispatch(queryRelations(relationtype));
-  }, [dispatch, relationtype, query_source]);
+  }, [dispatch, relationtype]); // query_source
+
+  // Get potential target objects
+  // TODO restrict to vocabulary
+  useEffect(() => {
+    if (potential_targets_path !== '/' && potential_targets_path !== '') {
+      dispatch(
+        searchContent(
+          potential_targets_path,
+          {
+            metadata_fields: ['UID'],
+            sort_on: 'getObjPositionInParent',
+            portal_type: allowedTypes,
+          },
+          'potential_targets',
+        ),
+      );
+    } else {
+      dispatch(searchContent('/findstenichätsch', null, 'potential_targets'));
+    }
+  }, [dispatch, potential_targets_path, allowedTypes]);
 
   const onSelectOptionHandler = (relation, item, selectedvalue, checked) => {
     let source = selectedvalue.y;
@@ -180,14 +228,15 @@ const ListingTemplate = ({
             <div>
               <UniversalLink
                 href={matrix_option.url}
-                title={matrix_option['@type']}
                 className={
                   matrix_option.review_state !== 'published'
                     ? 'not-published'
                     : ''
                 }
               >
-                <span className="label">{matrix_option.label}</span>
+                <span className="label" title={matrix_option.value}>
+                  {matrix_option.label}
+                </span>
               </UniversalLink>
             </div>
           </div>
@@ -270,28 +319,29 @@ const ListingTemplate = ({
                       >
                         {item.label}
                       </UniversalLink>
+                      {/* <span>targets: {item.targets.join(', ')}</span> */}
                     </span>
                   </div>
                   <div className="matrix_options">
                     {matrix_options?.map((matrix_option) => (
-                      <Checkbox
-                        name={`member_-_${item.value}_-_${matrix_option.value}`}
-                        className={`checkbox_${matrix_option.value}`}
-                        key={matrix_option.value}
-                        title={matrix_option.title}
-                        readOnly={relationtype === 'isReferencing'}
-                        defaultChecked={item.targets.includes(
-                          matrix_option.value,
-                        )}
-                        onChange={(event, { checked }) => {
-                          onSelectOptionHandler(
-                            relationtype,
-                            item,
-                            { x: matrix_option.value, y: item.value },
-                            checked,
-                          );
-                        }}
-                      />
+                      <React.Fragment key={matrix_option.value}>
+                        <Checkbox
+                          name={`member_-_${item.value}_-_${matrix_option.value}`}
+                          className={`checkbox_${matrix_option.value}`}
+                          key={matrix_option.value}
+                          title={matrix_option.title}
+                          readOnly={relationtype === 'isReferencing'}
+                          checked={item.targets.includes(matrix_option.value)}
+                          onChange={(event, { checked }) => {
+                            onSelectOptionHandler(
+                              relationtype,
+                              item,
+                              { x: matrix_option.value, y: item.value },
+                              checked,
+                            );
+                          }}
+                        />
+                      </React.Fragment>
                     ))}
                   </div>
                 </div>

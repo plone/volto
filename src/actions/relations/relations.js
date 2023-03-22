@@ -57,7 +57,7 @@ export function queryRelations(
 ) {
   let path = '/@relations';
   var searchParams = new URLSearchParams();
-  searchParams.append('max', 2500);
+  (relation || onlyBroken) && searchParams.append('max', 2500);
   relation && searchParams.append('relation', relation);
   onlyBroken && searchParams.append('onlyBroken', onlyBroken);
   const searchParamsToString = searchParams.toString();
