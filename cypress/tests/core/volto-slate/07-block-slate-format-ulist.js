@@ -47,7 +47,7 @@ describe('Block Tests: Bulleted lists', () => {
 
     cy.log('then the page view should contain a link');
     cy.get('#view #page-document p').its('length').should('eq', 1);
-    cy.get('#view #page-document p').should('have.text', "");
+    cy.get('#view #page-document p').should('have.text', '');
   });
 
   it('As editor I can remove bulleted lists', function () {
@@ -73,5 +73,34 @@ describe('Block Tests: Bulleted lists', () => {
       'Colorless green ideas',
     );
     cy.get('[id="page-document"] p:last-of-type').contains('sleep furiously.');
+  });
+
+  it.only('Handles pasted inline list in list item', function () {
+    cy.getSlate().pasteClipboard(
+      `<ul>
+<li><strong>Smarter adaptation</strong>: Improving knowledge and manage uncertainty; including:
+<ul>
+<li>Pushing the frontiers of adaptation knowledge;</li>
+<li>More and better climate loss data; and</li>
+<li>Enhancing and expanding Climate-ADAPT as the European platform for adaptation knowledge.</li>
+</ul>
+</li>
+<li>More <strong>systemic adaptation</strong>: Supporting policy development at all levels and all relevant policy fields; including three cross-cutting priorities to integrate adaptation into:
+<ul>
+<li>Macro-fiscal policy;</li>
+<li>Nature-based solutions; and</li>
+<li>Local adaptation actions.</li>
+</ul>
+</li>
+<li><strong>Faster adaptation</strong>: Speed up adaptation implementation across the board.</li>
+</ul>`,
+    );
+
+    cy.toolbarSave();
+
+    cy.get('[id="page-document"] ul li+ul li:first').should(
+      'have.text',
+      'Pushing the frontiers of adaptation knowledge;',
+    );
   });
 });
