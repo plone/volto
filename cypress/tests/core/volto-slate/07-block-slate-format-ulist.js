@@ -75,7 +75,7 @@ describe('Block Tests: Bulleted lists', () => {
     cy.get('[id="page-document"] p:last-of-type').contains('sleep furiously.');
   });
 
-  it.only('Handles pasted inline list in list item', function () {
+  it('Handles pasted inline list in list item', function () {
     cy.getSlate().pasteClipboard(
       `<ul>
 <li><strong>Smarter adaptation</strong>: Improving knowledge and manage uncertainty; including:
