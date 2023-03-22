@@ -5,7 +5,6 @@ import { hasNonValueOperation, hasDateOperation } from '../utils';
 import { useSelector } from 'react-redux';
 import { useIntl } from 'react-intl';
 
-
 const showFacet = (index) => {
   const { values } = index;
   return index
@@ -33,7 +32,7 @@ const Facets = (props) => {
     ...(data?.query?.query?.map(({ i, v }) => ({ [i]: v })) || []),
   );
   const intl = useIntl();
-  const currentLang = useSelector((state) => state.intl.locale); 
+  const currentLang = useSelector((state) => state.intl.locale);
 
   return (
     <>
@@ -58,7 +57,9 @@ const Facets = (props) => {
             );
 
           choices = choices.sort((a, b) =>
-            a.label.localeCompare(b.label, currentLang, { sensitivity: 'base' }),
+            a.label.localeCompare(b.label, currentLang, {
+              sensitivity: 'base',
+            }),
           );
 
           const isMulti = facetSettings.multiple;
