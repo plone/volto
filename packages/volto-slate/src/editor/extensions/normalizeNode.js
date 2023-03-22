@@ -2,6 +2,12 @@ import { Text, Transforms, Element, Node, Path } from 'slate'; // Editor,
 import config from '@plone/volto/registry';
 import { isEqual } from 'lodash';
 
+const hasNoText = (node) => {
+  const texts = Array.from(Node.texts(node));
+  const text = texts.reduce((acc, [child]) => `${acc}${child?.text || ''}`, '');
+  return text === '';
+};
+
 export const normalizeNode = (editor) => {
   const { normalizeNode } = editor;
   const { slate } = config.settings;
@@ -40,13 +46,29 @@ export const normalizeNode = (editor) => {
             );
           })
           .map(([n, p]) => [...path, ...p]);
-        Transforms.liftNodes(editor, {
-          at: path,
-          split: true,
-          match: (childNode, childPath) =>
-            Path.isChild(childPath, path) &&
-            toLift.findIndex((f) => isEqual(f, childPath)) > -1,
-        });
+        if (toLift.length) {
+          Transforms.liftNodes(editor, {
+            at: path,
+            split: true,
+            match: (childNode, childPath) =>
+              Path.isChild(childPath, path) &&
+              toLift.findIndex((f) => isEqual(f, childPath)) > -1,
+          });
+          return;
+        }
+      }
+
+      // after we hit enter in a list item, remove any leftover duplicated
+      // elements. Slate splits the elements (and copies it to the next line
+      const emptyEntries = Array.from(Node.elements(node))
+        .filter(([childNode, childRelPath]) => childRelPath.length === 1)
+        .filter(([childNode, childRelPath]) => hasNoText(childNode));
+
+      const [toRemove] = emptyEntries;
+      if (toRemove) {
+        const [, childRelPath] = toRemove;
+        const at = [...path, ...childRelPath];
+        Transforms.removeNodes(editor, { at });
         return;
       }
     }
