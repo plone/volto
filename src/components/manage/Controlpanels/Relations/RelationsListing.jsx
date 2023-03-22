@@ -19,6 +19,7 @@ const ListingTemplate = ({
   relationtype,
   query_source,
   query_target,
+  potential_sources_path,
   potential_targets_path,
   target_filter,
 }) => {
@@ -50,8 +51,12 @@ const ListingTemplate = ({
     (state) => state.search.subrequests.potential_targets?.items || [],
   );
 
-  const allowedTypes = useSelector(
-    (state) => state.relations?.relations?.allowedTypes || [],
+  let potential_sources_objects = useSelector(
+    (state) => state.search.subrequests.potential_sources?.items || [],
+  );
+
+  const staticCatalogVocabularyQuery = useSelector(
+    (state) => state.relations?.relations?.staticCatalogVocabularyQuery || [],
   );
 
   let relationMatrix = {};
@@ -122,7 +127,28 @@ const ListingTemplate = ({
     url: relationMatrix[key].source['@id'],
     review_state: relationMatrix[key].source.review_state,
   }));
-  items = uniq(items);
+  // Add potential sources
+  const potential_sources = potential_sources_objects.map((obj) => ({
+    value: obj.UID,
+    label: obj.title,
+    targets: [],
+    url: obj['@id'],
+    review_state: obj.review_state,
+  }));
+  items = [...items, ...potential_sources];
+  items = uniqBy(items, function (el) {
+    return el.value;
+  });
+  items = items.filter((el) => {
+    let matched = true;
+    if (query_source) {
+      matched =
+        matched &&
+        (el.label.toLowerCase().indexOf(query_source.toLowerCase()) > -1 ||
+          el.url.toLowerCase().indexOf(query_source.toLowerCase()) > -1);
+    }
+    return matched;
+  });
   items.sort(function (a, b) {
     var labelA = a.label.toUpperCase();
     var labelB = b.label.toUpperCase();
@@ -142,6 +168,7 @@ const ListingTemplate = ({
   // Get potential target objects
   // TODO restrict to vocabulary
   useEffect(() => {
+    // Fetch fresh potential targets
     if (potential_targets_path !== '/' && potential_targets_path !== '') {
       dispatch(
         searchContent(
@@ -149,7 +176,7 @@ const ListingTemplate = ({
           {
             metadata_fields: ['UID'],
             sort_on: 'getObjPositionInParent',
-            portal_type: allowedTypes,
+            ...staticCatalogVocabularyQuery,
           },
           'potential_targets',
         ),
@@ -157,7 +184,24 @@ const ListingTemplate = ({
     } else {
       dispatch(searchContent('/findstenichätsch', null, 'potential_targets'));
     }
-  }, [dispatch, potential_targets_path, allowedTypes]);
+
+    // Fetch fresh potential sources
+    if (potential_sources_path !== '/' && potential_sources_path !== '') {
+      dispatch(
+        searchContent(
+          potential_sources_path,
+          {
+            metadata_fields: ['UID'],
+            sort_on: 'getObjPositionInParent',
+            // No need to restrict here. ...staticCatalogVocabularyQuery,
+          },
+          'potential_sources',
+        ),
+      );
+    } else {
+      dispatch(searchContent('/findstenichätsch', null, 'potential_sources'));
+    }
+  }, [dispatch, potential_targets_path, potential_sources_path]);
 
   const onSelectOptionHandler = (relation, item, selectedvalue, checked) => {
     let source = selectedvalue.y;

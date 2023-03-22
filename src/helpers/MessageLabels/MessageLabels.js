@@ -309,9 +309,11 @@ export const messages = defineMessages({
     defaultMessage: 'flush and rebuild relations',
   },
   addPotentialTargetsPath: {
-    id:
-      'Show potential targets. Not only objects that are target of some relation.',
-    defaultMessage:
-      'Show potential targets. Not only objects that are target of some relation.',
+    id: 'target path',
+    defaultMessage: 'target path',
+  },
+  addPotentialSourcesPath: {
+    id: 'sources path',
+    defaultMessage: 'sources path',
   },
 });

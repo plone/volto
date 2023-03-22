@@ -23,6 +23,7 @@ const RelationsMatrix = (props) => {
   const [query_source, setQuery_source] = useState('');
   const [query_target, setQuery_target] = useState('');
   const [potential_targets_path, setPotential_targets_path] = useState('');
+  const [potential_sources_path, setPotential_sources_path] = useState('');
   const [relationtype, setRelationtype] = useState(undefined);
   const relationtypes = useSelector(
     (state) => state.relations?.stats?.relations,
@@ -72,6 +73,9 @@ const RelationsMatrix = (props) => {
       case 'showPotentialTargets':
         setPotential_targets_path('/');
         break;
+      case 'showPotentialSources':
+        setPotential_sources_path('/');
+        break;
       default:
         break;
     }
@@ -93,6 +97,10 @@ const RelationsMatrix = (props) => {
 
   const onChangeShowPotentialTargets = (event) => {
     setPotential_targets_path(event.target.value);
+  };
+
+  const onChangeShowPotentialSources = (event) => {
+    setPotential_sources_path(event.target.value);
   };
 
   const rebuildRelationsHandler = (flush = false) => {
@@ -152,7 +160,6 @@ const RelationsMatrix = (props) => {
                               <Dropdown.Item
                                 onClick={onChangeRelation}
                                 value={relationtype}
-                                text={relationtype}
                                 className={`select-relation-${relationtype}`}
                                 key={relationtype}
                               >
@@ -182,6 +189,23 @@ const RelationsMatrix = (props) => {
                         />
                       </Form.Field>
                     </Form>
+                    <Form className="add_potential_sources" onSubmit={onReset}>
+                      <Form.Field>
+                        <Input
+                          name="showPotentialSources"
+                          action={{ icon: 'delete' }}
+                          placeholder={intl.formatMessage(
+                            messages.addPotentialSourcesPath,
+                          )}
+                          onChange={onChangeShowPotentialSources}
+                          id="potential-sources-path-input"
+                        />
+                      </Form.Field>
+                      <FormattedMessage
+                        id="Show potential sources. Not only objects that are source of some relation."
+                        defaultMessage="Show potential sources. Not only objects that are source of some relation."
+                      />
+                    </Form>
                   </div>
                   <div className="controlpanel_search_x">
                     <Form className="search_x" onSubmit={onReset}>
@@ -209,6 +233,10 @@ const RelationsMatrix = (props) => {
                           id="potential-targets-path-input"
                         />
                       </Form.Field>
+                      <FormattedMessage
+                        id="Show potential targets. Not only objects that are target of some relation."
+                        defaultMessage="Show potential targets. Not only objects that are target of some relation."
+                      />
                     </Form>
                   </div>
                   <RelationsListing
@@ -216,6 +244,7 @@ const RelationsMatrix = (props) => {
                     query_source={query_source}
                     query_target={query_target}
                     potential_targets_path={potential_targets_path}
+                    potential_sources_path={potential_sources_path}
                     // target_filter={target_filter}
                   />
                 </>
