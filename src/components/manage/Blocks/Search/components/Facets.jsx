@@ -3,7 +3,6 @@ import { resolveExtension } from '@plone/volto/helpers/Extensions/withBlockExten
 import config from '@plone/volto/registry';
 import { hasNonValueOperation, hasDateOperation } from '../utils';
 import { useSelector } from 'react-redux';
-import { useIntl } from 'react-intl';
 
 const showFacet = (index) => {
   const { values } = index;
@@ -31,7 +30,7 @@ const Facets = (props) => {
     {},
     ...(data?.query?.query?.map(({ i, v }) => ({ [i]: v })) || []),
   );
-  const intl = useIntl();
+
   const currentLang = useSelector((state) => state.intl.locale);
 
   return (
