@@ -106,7 +106,7 @@ export const getBlocksTocEntries = (properties, tocData) => {
       ? tocData.levels.map((l) => parseInt(l.slice(1)))
       : [1, 2, 3, 4, 5, 6];
   let rootLevel = Infinity;
-  let blockDataFormEntries = [];
+  let blocksFormEntries = [];
   let tocEntries = {};
   let tocEntriesLayout = [];
 
@@ -128,7 +128,7 @@ export const getBlocksTocEntries = (properties, tocData) => {
         (blockTocEntry ? [blockTocEntry] : [])),
     ];
 
-    blockDataFormEntries = [...blockDataFormEntries, ...blockTocEntries];
+    blocksFormEntries = [...blocksFormEntries, ...blockTocEntries];
 
     blockTocEntries.forEach((entry, index) => {
       const i = `${id}-${index}`;
@@ -151,7 +151,7 @@ export const getBlocksTocEntries = (properties, tocData) => {
 
   return {
     rootLevel,
-    blockDataFormEntries,
+    blocksFormEntries,
     tocEntries,
     tocEntriesLayout,
   };
