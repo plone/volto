@@ -1,4 +1,4 @@
-import { Text, Transforms, Element, Node } from 'slate'; // Editor,
+import { Text, Transforms, Element, Node, Path } from 'slate'; // Editor,
 import config from '@plone/volto/registry';
 import { isEqual } from 'lodash';
 
@@ -6,18 +6,20 @@ export const normalizeNode = (editor) => {
   const { normalizeNode } = editor;
   const { slate } = config.settings;
 
+  // slate.listTypes is 'ol', 'ul'
   const validListElements = [...slate.listTypes, slate.listItemType];
 
   editor.normalizeNode = (entry) => {
     const [node, path] = entry;
 
-    const isTextNode = Text.isText(node);
-    const isInlineNode = editor.isInline(node);
-    const isElementNode = Element.isElement(node);
-    const isListTypeNode = slate.listTypes.includes(node.type);
+    const isInlineNode = Text.isText(node) || editor.isInline(node);
+    const isListTypeNode =
+      !isInlineNode &&
+      Element.isElement(node) &&
+      slate.listTypes.includes(node.type);
 
     // delete childless ul/ol nodes
-    if (!isTextNode && isElementNode && !isInlineNode && isListTypeNode) {
+    if (isListTypeNode) {
       if ((node.children || []).length === 0) {
         Transforms.removeNodes(editor, { at: path });
         return;
@@ -25,35 +27,31 @@ export const normalizeNode = (editor) => {
     }
 
     if (node.type === slate.listItemType) {
-      // don't allow slate default normalizeNode, as it will remove the blocks
-      // when there's combined inline + block elements and the first child is
-      // inline
-      // See https://github.com/ianstormtaylor/slate/blob/1d8010be8500ef5c98dbd4179354db1986d5c8f4/packages/slate/src/create-editor.ts#L253-L256
-
-      const toWrap = [];
-      for (const [child, childPath] of Node.children(editor, path)) {
-        if (Text.isText(child) || editor.isInline(child)) {
-          toWrap.push([child, childPath]);
-        } else {
-          break;
-        }
-      }
-
-      const paths = toWrap.map(([, childPath]) => childPath);
-      if (toWrap.length) {
-        const newParent = { type: 'span', children: [] };
-        Transforms.wrapNodes(editor, newParent, {
+      // if we have inline text nodes, we lift any found <ul/ol> as sibling
+      if (
+        node.children?.length &&
+        (Text.isText(node.children[0]) || editor.isInline(node.children[0]))
+      ) {
+        const toLift = Array.from(Node.elements(node))
+          .filter(([childNode, childRelPath]) => {
+            return (
+              childRelPath.length === 1 &&
+              slate.listTypes.includes(childNode?.type)
+            );
+          })
+          .map(([n, p]) => [...path, ...p]);
+        Transforms.liftNodes(editor, {
           at: path,
-          match: (child, childPath) => {
-            const is = paths.find((p) => isEqual(p, childPath));
-            return !!is;
-          },
+          split: true,
+          match: (childNode, childPath) =>
+            Path.isChild(childPath, path) &&
+            toLift.findIndex((f) => isEqual(f, childPath)) > -1,
         });
         return;
       }
     }
 
-    if (isElementNode && isListTypeNode) {
+    if (isListTypeNode) {
       // lift all child nodes of ul/ol that are not ul/ol/li
       for (const [child, childPath] of Node.children(editor, path)) {
         if (
