@@ -148,7 +148,6 @@ export const createAndSelectNewBlockAfter = (editor, blockValue) => {
 
   const blocksFieldname = getBlocksFieldname(properties);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
-  // console.log('layout', blocksLayoutFieldname, newFormData);
 
   ReactDOM.unstable_batchedUpdates(() => {
     blockProps.saveSlateBlockSelection(blockId, 'start');
@@ -250,7 +249,11 @@ export function deconstructToVoltoBlocks(editor) {
   return new Promise((resolve, reject) => {
     if (!editor?.children) return;
 
-    const { properties, onChangeField, onSelectBlock } = editor.getBlockProps();
+    const {
+      properties,
+      onChangeFormData,
+      onSelectBlock,
+    } = editor.getBlockProps();
     const blocksFieldname = getBlocksFieldname(properties);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
 
@@ -265,13 +268,6 @@ export function deconstructToVoltoBlocks(editor) {
       const blockids = blocks.map((b) => b[0]);
 
       if (blocks.length) {
-        console.log('new blocks', {
-          blocks,
-          blockids,
-          oldBlock: blockProps.block,
-          children: editor.children,
-        });
-
         const blocksData = omit(
           {
             ...properties[blocksFieldname],
@@ -288,21 +284,20 @@ export function deconstructToVoltoBlocks(editor) {
           ].filter((id) => id !== blockProps.block),
         };
 
-        // TODO: use onChangeFormData instead of this API style
         ReactDOM.unstable_batchedUpdates(() => {
-          console.log('onchange', blocksData, layoutData);
-          onChangeField(blocksFieldname, blocksData);
-          onChangeField(blocksLayoutFieldname, layoutData);
+          onChangeFormData({
+            ...properties,
+            [blocksFieldname]: blocksData,
+            [blocksLayoutFieldname]: layoutData,
+          });
+
           onSelectBlock(blockids[blockids.length - 1]);
-          // resolve(blockids);
-          // or rather this?
           resolve(blockids);
         });
-        return;
       } else {
         resolve([blockProps.block]);
-        return;
       }
+      return;
     }
 
     let blocks = [];
@@ -313,7 +308,6 @@ export function deconstructToVoltoBlocks(editor) {
     );
 
     for (const pathRef of pathRefs) {
-      console.log('path', pathRef);
       // extra nodes are always extracted after the text node
       const extras = voltoBlockEmiters
         .map((emit) => emit(editor, pathRef))
@@ -349,13 +343,14 @@ export function deconstructToVoltoBlocks(editor) {
       ].filter((id) => id !== blockProps.block),
     };
 
-    // TODO: use onChangeFormData instead of this API style
     ReactDOM.unstable_batchedUpdates(() => {
-      onChangeField(blocksFieldname, blocksData);
-      onChangeField(blocksLayoutFieldname, layoutData);
+      onChangeFormData({
+        ...properties,
+        [blocksFieldname]: blocksData,
+        [blocksLayoutFieldname]: layoutData,
+      });
+
       onSelectBlock(blockids[blockids.length - 1]);
-      // resolve(blockids);
-      // or rather this?
       Promise.resolve().then(resolve(blockids));
     });
   });
