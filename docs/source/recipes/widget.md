@@ -236,7 +236,7 @@ We can disable the input of a widget by passing props `isDisabled: true`.
 
 ## Available widgets
 
-See [storybook](https://6.docs.plone.org/storybook) with available widgets.
+See [Storybook](https://6.docs.plone.org/storybook) with available widgets.
 
 
 ## Write a new widget
