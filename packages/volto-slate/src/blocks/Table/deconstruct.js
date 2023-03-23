@@ -35,7 +35,6 @@ export function syncCreateTableBlock(rows) {
  * `table` blocks.
  */
 export const extractTables = (editor, pathRef) => {
-  // console.log('extractTables', editor, pathRef);
   const tableNodes = Array.from(
     Editor.nodes(editor, {
       at: pathRef.current,
