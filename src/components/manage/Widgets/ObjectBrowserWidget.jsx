@@ -121,11 +121,11 @@ export class ObjectBrowserWidgetComponent extends Component {
           </div>
         }
         trigger={
-          <a target="_blank" href={flattenToAppURL(href)}>
+          <a target="_blank" rel="noreferrer" href={flattenToAppURL(href)}>
             <Label>
               <div className="item-title">{item.title}</div>
               <div>
-                {this.props.mode === "multiple" && (
+                {this.props.mode === 'multiple' && (
                   <Icon
                     name={clearSVG}
                     size="12px"
