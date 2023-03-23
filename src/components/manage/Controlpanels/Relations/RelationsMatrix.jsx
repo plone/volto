@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { find, toNumber } from 'lodash';
+import { find } from 'lodash';
 import { useSelector, useDispatch } from 'react-redux';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { toast } from 'react-toastify';
@@ -9,14 +9,16 @@ import {
   Form,
   Header,
   Input,
+  Popup,
   Tab,
   Table,
 } from 'semantic-ui-react';
 import { messages } from '@plone/volto/helpers';
-import { Toast } from '@plone/volto/components';
+import { Icon, Toast } from '@plone/volto/components';
 import { rebuildRelations, queryRelations } from '@plone/volto/actions';
 import RelationsListing from './RelationsListing';
 import BrokenRelations from './BrokenRelations';
+import helpSVG from '@plone/volto/icons/help.svg';
 
 const RelationsMatrix = (props) => {
   const intl = useIntl();
@@ -243,7 +245,25 @@ const RelationsMatrix = (props) => {
                       <FormattedMessage
                         id="Show potential targets. Not only objects that are target of some relation."
                         defaultMessage="Show potential targets. Not only objects that are target of some relation."
-                      />
+                      />{' '}
+                      <Popup
+                        trigger={
+                          <a
+                            href="https://6.docs.plone.org/volto/recipes/widget.html#restricting-potential-targets"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <Icon name={helpSVG} size="16px" />
+                          </a>
+                        }
+                      >
+                        <Popup.Header>Respect constraints</Popup.Header>
+                        <Popup.Content>
+                          <div>
+                            See docs.plone.org on how to respect constraints.
+                          </div>
+                        </Popup.Content>
+                      </Popup>
                     </Form>
                   </div>
                   <RelationsListing
