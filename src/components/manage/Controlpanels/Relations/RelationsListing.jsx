@@ -56,7 +56,11 @@ const ListingTemplate = ({
   );
 
   const staticCatalogVocabularyQuery = useSelector(
-    (state) => state.relations?.relations?.staticCatalogVocabularyQuery || [],
+    (state) => state.relations?.relations?.staticCatalogVocabularyQuery || {},
+  );
+
+  const editable = useSelector(
+    (state) => state.relations?.relations?.readonly === false,
   );
 
   let relationMatrix = {};
@@ -204,13 +208,17 @@ const ListingTemplate = ({
   }, [dispatch, potential_targets_path, potential_sources_path]);
 
   const onSelectOptionHandler = (relation, item, selectedvalue, checked) => {
-    toast.warning(
-      <Toast
-        warning
-        title="Create or delete relation"
-        content="not yet implemented"
-      />,
-    );
+    // if (noPloneApiRelation) {
+    //   // read only
+    //   toast.warning(
+    //     <Toast
+    //       warning
+    //       title="Create or delete relation"
+    //       content="not yet implemented"
+    //     />,
+    //   );
+    //   return;
+    // }
     let source = selectedvalue.y;
     let target = selectedvalue.x;
     console.debug(
@@ -381,7 +389,9 @@ const ListingTemplate = ({
                           className={`checkbox_${matrix_option.value}`}
                           key={matrix_option.value}
                           title={matrix_option.title}
-                          readOnly={relationtype === 'isReferencing'}
+                          disabled={
+                            relationtype === 'isReferencing' || !editable
+                          }
                           checked={item.targets.includes(matrix_option.value)}
                           onChange={(event, { checked }) => {
                             onSelectOptionHandler(
