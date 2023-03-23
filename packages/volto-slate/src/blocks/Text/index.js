@@ -28,14 +28,12 @@ import {
   withIsSelected,
   normalizeExternalData,
 } from './extensions';
-import { extractImages } from '@plone/volto-slate/editor/plugins/Image/deconstruct';
-import { extractTables } from '@plone/volto-slate/blocks/Table/deconstruct';
 
 import textSVG from '@plone/volto/icons/subtext.svg';
 
 export { TextBlockView, TextBlockEdit, TextBlockSchema };
 
-export default (config) => {
+export default function installTextBlock(config) {
   config.settings.slate = {
     // TODO: should we inverse order? First here gets executed last
     textblockExtensions: [
@@ -90,11 +88,9 @@ export default (config) => {
     // Used by deconstructToVoltoBlocks to transform tags such as <img> to a Volto image block
     // These emiters receive (editor, pathRef), emit [blockid, blockoptions] and
     // are allowed to change the editor contents (for the given path)
-    voltoBlockEmiters: [
-      ...(config.settings.slate.voltoBlockEmiters || []),
-      extractImages,
-      extractTables,
-    ],
+    // voltoBlockEmiters: [
+    //   ...(config.settings.slate.voltoBlockEmiters || []),
+    // ],
 
     // These elements will get an id, to make them targets in TOC
     topLevelTargetElements: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
@@ -165,4 +161,4 @@ export default (config) => {
     restricted: true,
   };
   return config;
-};
+}

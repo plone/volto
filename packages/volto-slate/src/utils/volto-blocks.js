@@ -250,14 +250,61 @@ export function deconstructToVoltoBlocks(editor) {
   return new Promise((resolve, reject) => {
     if (!editor?.children) return;
 
-    if (editor.children.length === 1) {
-      return resolve([blockProps.block]);
-    }
     const { properties, onChangeField, onSelectBlock } = editor.getBlockProps();
     const blocksFieldname = getBlocksFieldname(properties);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
 
     const { index } = blockProps;
+
+    // optimization to avoid replacing a single block
+    if (editor.children.length === 1) {
+      const pathRef = Editor.pathRef(editor, [0]);
+      const blocks = voltoBlockEmiters
+        .map((emit) => emit(editor, pathRef))
+        .flat(1);
+      const blockids = blocks.map((b) => b[0]);
+
+      if (blocks.length) {
+        console.log('new blocks', {
+          blocks,
+          blockids,
+          oldBlock: blockProps.block,
+          children: editor.children,
+        });
+
+        const blocksData = omit(
+          {
+            ...properties[blocksFieldname],
+            ...fromEntries(blocks),
+          },
+          blockProps.block,
+        );
+        const layoutData = {
+          ...properties[blocksLayoutFieldname],
+          items: [
+            ...properties[blocksLayoutFieldname].items.slice(0, index),
+            ...blockids,
+            ...properties[blocksLayoutFieldname].items.slice(index),
+          ].filter((id) => id !== blockProps.block),
+        };
+
+        // TODO: use onChangeFormData instead of this API style
+        ReactDOM.unstable_batchedUpdates(() => {
+          console.log('onchange', blocksData, layoutData);
+          onChangeField(blocksFieldname, blocksData);
+          onChangeField(blocksLayoutFieldname, layoutData);
+          onSelectBlock(blockids[blockids.length - 1]);
+          // resolve(blockids);
+          // or rather this?
+          resolve(blockids);
+        });
+        return;
+      } else {
+        resolve([blockProps.block]);
+        return;
+      }
+    }
+
     let blocks = [];
 
     // TODO: should use Editor.levels() instead of Node.children
@@ -266,8 +313,9 @@ export function deconstructToVoltoBlocks(editor) {
     );
 
     for (const pathRef of pathRefs) {
+      console.log('path', pathRef);
       // extra nodes are always extracted after the text node
-      let extras = voltoBlockEmiters
+      const extras = voltoBlockEmiters
         .map((emit) => emit(editor, pathRef))
         .flat(1);
 

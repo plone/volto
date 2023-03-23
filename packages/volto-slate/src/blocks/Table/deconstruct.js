@@ -35,6 +35,7 @@ export function syncCreateTableBlock(rows) {
  * `table` blocks.
  */
 export const extractTables = (editor, pathRef) => {
+  // console.log('extractTables', editor, pathRef);
   const tableNodes = Array.from(
     Editor.nodes(editor, {
       at: pathRef.current,
@@ -50,6 +51,8 @@ export const extractTables = (editor, pathRef) => {
 
   return tables.map((el) => syncCreateTableBlock(el));
 };
+
+extractTables.id = 'extractTables';
 
 /**
  * @param {Node[]} fragment A Slate document fragment.
