@@ -422,7 +422,7 @@ class RecurrenceWidget extends Component {
           break;
       }
 
-      if (value) {
+      if (value === 0 || value) {
         //set value
         values[field] = value;
       } else {
