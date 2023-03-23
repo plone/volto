@@ -456,9 +456,10 @@ describe('Block Tests: pasting content in table block', () => {
     cy.toolbarSave();
     cy.wait('@save');
 
-    cy.get('#page-document tr td').should('have.length', 27);
-    cy.get('#page-document tr td:first').should('have.text', 'Project name');
-    cy.get('#page-document tr:nth-child(3) td:nth-child(3) a').should(
+    cy.get('#page-document tr th').should('have.length', 3);
+    cy.get('#page-document tr td').should('have.length', 24);
+    cy.get('#page-document tr th:first').should('have.text', 'Project name');
+    cy.get('#page-document tr:nth-child(2) td:nth-child(3) a').should(
       'have.text',
       'https://transformar.eu/',
     );
