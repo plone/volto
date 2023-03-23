@@ -463,7 +463,7 @@ describe('Block Tests: pasting content in table block', () => {
     );
   });
 
-  it.only('should paste a html containing a table', () => {
+  it('should paste a html containing a table', () => {
     cy.intercept('PATCH', '/**/my-page').as('save');
     cy.getSlate().focus().click().pasteClipboard(mixedHtml);
     cy.toolbarSave();
