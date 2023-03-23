@@ -426,6 +426,7 @@ describe('Block Tests: pasting content in table block', () => {
   });
 
   it('should paste external text containing html', function () {
+    cy.intercept('PATCH', '/**/my-page').as('save');
     // Paste
     cy.getTableSlate(true)
       .focus()
