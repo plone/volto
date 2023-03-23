@@ -480,6 +480,9 @@ describe('Block Tests: pasting content in table block', () => {
     cy.get('#page-document ol')
       .should('have.length', 1)
       .should('have.text', 'Who are the Charter Signatories? ');
+
+    cy.get('#page-document p:nth-child(4) br').should('have.length', 2);
+
     cy.get('#page-document tr th').should('have.length', 3);
     cy.get('#page-document tr td').should('have.length', 24);
     cy.get('#page-document tr th:first').should('have.text', 'Project name');
