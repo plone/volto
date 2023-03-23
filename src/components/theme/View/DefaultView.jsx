@@ -87,7 +87,7 @@ const DefaultView = (props) => {
                 return f !== 'title' ? (
                   <Grid celled="internally" key={key}>
                     <Grid.Row>
-                      <Label>{field.title}:</Label>
+                      <Label title={field.id}>{field.title}:</Label>
                     </Grid.Row>
                     <Grid.Row>
                       <Segment basic>
