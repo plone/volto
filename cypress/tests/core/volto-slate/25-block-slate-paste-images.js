@@ -13,7 +13,7 @@ describe('Block Tests: paste external images', () => {
     // Save
     cy.toolbarSave();
 
-    cy.get('[id="page-document"] span img')
+    cy.get('[id="page-document"] .block.image img')
       .should('have.attr', 'src')
       .and('include', 'https://dummyimage.com/600x400/000/fff');
   });
