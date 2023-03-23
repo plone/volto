@@ -21,7 +21,9 @@ export function createRelations(content) {
     request: {
       op: 'post',
       path: '/@relations',
-      data: content,
+      data: {
+        items: content,
+      },
     },
   };
 }
@@ -38,7 +40,9 @@ export function deleteRelations(content) {
     request: {
       op: 'del',
       path: `/@relations`,
-      data: content,
+      data: {
+        items: content,
+      },
     },
   };
 }
