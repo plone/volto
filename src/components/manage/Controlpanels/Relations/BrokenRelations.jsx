@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { uniq, uniqBy } from 'lodash';
 import { FormattedMessage } from 'react-intl';
 import { useSelector, useDispatch } from 'react-redux';
 import { Divider, Segment, Table } from 'semantic-ui-react';
@@ -26,13 +27,15 @@ const BrokenRelations = () => {
             defaultMessage="Broken relations"
           />
         </h3>
-        {Object.keys(brokenRelations.items).map((el) => (
-          <div>
+        {Object.keys(brokenRelations.items).map((relationname) => (
+          <div key={relationname}>
             <Divider section hidden />
-            <h4>{el}</h4>
+            <h4>{relationname}</h4>
             <Table>
-              {brokenRelations.items[el].map((el) => (
-                <Table.Row>
+              {uniqBy(brokenRelations.items[relationname], function (el) {
+                return el[0];
+              }).map((el) => (
+                <Table.Row key={el[0]}>
                   <Table.Cell>
                     <UniversalLink
                       href={`${flattenToAppURL(el[0])}/edit`}
