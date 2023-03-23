@@ -2483,6 +2483,11 @@ msgstr "Veuillez rechercher des utilisateurs ou utiliser les filtres sur le cot�
 msgid "Please upgrade to plone.restapi >= 8.24.0."
 msgstr "Veuillez mettre à niveau plone.restapi >= 8.24.0."
 
+#: components/manage/Controlpanels/Relations/Relations
+# defaultMessage: Please upgrade to plone.restapi >= 8.35.3.
+msgid "Please upgrade to plone.restapi >= 8.35.3."
+msgstr ""
+
 #: components/theme/Footer/Footer
 # defaultMessage: Plone Foundation
 msgid "Plone Foundation"
@@ -3079,7 +3084,12 @@ msgstr "Afficher ci-dessous les groupes d'utilisateurs"
 msgid "Show item"
 msgstr "Afficher l'élément"
 
-#: helpers/MessageLabels/MessageLabels
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+# defaultMessage: Show potential sources. Not only objects that are source of some relation.
+msgid "Show potential sources. Not only objects that are source of some relation."
+msgstr ""
+
+#: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Show potential targets. Not only objects that are target of some relation.
 msgid "Show potential targets. Not only objects that are target of some relation."
 msgstr ""
@@ -4083,6 +4093,11 @@ msgstr "Vous ne pouvez coller ce contenu ici"
 msgid "You have been logged out from the site."
 msgstr "Vous avez été déconnecté du site."
 
+#: components/manage/Controlpanels/Relations/Relations
+# defaultMessage: You have not the required permission for this control panel.
+msgid "You have not the required permission for this control panel."
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your email is required for reset your password.
 msgid "Your email is required for reset your password."
@@ -4609,10 +4624,20 @@ msgstr "Aller à la navigation"
 msgid "sort"
 msgstr "trier"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: sources path
+msgid "sources path"
+msgstr ""
+
 #: config/Blocks
 # defaultMessage: Table
 msgid "table"
 msgstr "table"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: target path
+msgid "target path"
+msgstr ""
 
 #: config/Blocks
 # defaultMessage: Text

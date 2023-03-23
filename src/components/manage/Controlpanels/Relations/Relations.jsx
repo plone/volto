@@ -2,13 +2,14 @@
  * Relations Control Panel
  */
 import React, { useEffect } from 'react';
+import { find } from 'lodash';
 import { useSelector } from 'react-redux';
 import { Portal } from 'react-portal';
 import { useHistory } from 'react-router';
 import { Link, useLocation } from 'react-router-dom';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
-import { Container, Message, Segment } from 'semantic-ui-react';
+import { Container, Divider, Message, Segment } from 'semantic-ui-react';
 import { Helmet, messages } from '@plone/volto/helpers';
 import { listActions } from '@plone/volto/actions';
 import { Icon, Toolbar } from '@plone/volto/components';
@@ -26,6 +27,12 @@ const RelationsControlPanel = () => {
     (state) => state.relations?.stats?.broken,
   );
 
+  const relations_stats = useSelector((state) => state.relations?.stats);
+  const actions = useSelector((state) => state.actions?.actions ?? {});
+  const can_edit = find(actions.object, {
+    id: 'edit',
+  });
+
   useEffect(() => {
     dispatch(listActions('/'));
   }, [dispatch]);
@@ -34,22 +41,49 @@ const RelationsControlPanel = () => {
     <>
       <Container className="users-control-panel">
         <Helmet title={intl.formatMessage(messages.relations)} />
-        <Segment.Group raised>
-          <Segment className="primary">
-            <FormattedMessage id="Relations" defaultMessage="Relations" />
-            {brokenRelations ? (
-              <Message attached warning>
-                <FormattedMessage
-                  id="Some relations are broken. Please fix."
-                  defaultMessage="Some relations are broken. Please fix."
-                />
-              </Message>
-            ) : null}
-          </Segment>
-          <Segment>
-            <RelationsMatrix />
-          </Segment>
-        </Segment.Group>
+        {can_edit ? (
+          <Segment.Group raised>
+            <Segment className="primary">
+              <FormattedMessage id="Relations" defaultMessage="Relations" />
+              {brokenRelations ? (
+                <React.Fragment>
+                  <Divider hidden />
+                  <Message warning>
+                    <FormattedMessage
+                      id="Some relations are broken. Please fix."
+                      defaultMessage="Some relations are broken. Please fix."
+                    />
+                  </Message>
+                </React.Fragment>
+              ) : null}
+              {!relations_stats ? (
+                <React.Fragment>
+                  <Divider hidden />
+                  <Message warning>
+                    <FormattedMessage
+                      id="Please upgrade to plone.restapi >= 8.35.3."
+                      defaultMessage="Please upgrade to plone.restapi >= 8.35.3."
+                    />
+                  </Message>
+                </React.Fragment>
+              ) : null}
+            </Segment>
+            <Segment>
+              <RelationsMatrix />
+            </Segment>
+          </Segment.Group>
+        ) : (
+          <Segment.Group>
+            <Segment>
+              <FormattedMessage id="Relations" defaultMessage="Relations" />
+              <Divider hidden />
+              <FormattedMessage
+                id="You have not the required permission for this control panel."
+                defaultMessage="You have not the required permission for this control panel."
+              />
+            </Segment>
+          </Segment.Group>
+        )}
       </Container>
 
       {__CLIENT__ && (

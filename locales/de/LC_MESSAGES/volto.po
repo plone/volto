@@ -2472,6 +2472,11 @@ msgstr "Bitte verwenden Sie das Suchfeld oder die Filter um Benutzer anzuzeigen.
 msgid "Please upgrade to plone.restapi >= 8.24.0."
 msgstr "Bitte upgraden auf plone.restapi >= 8.24.0."
 
+#: components/manage/Controlpanels/Relations/Relations
+# defaultMessage: Please upgrade to plone.restapi >= 8.35.3.
+msgid "Please upgrade to plone.restapi >= 8.35.3."
+msgstr "Bitte upgraden Sie zu plone.restapi >= 8.35.3."
+
 #: components/theme/Footer/Footer
 # defaultMessage: Plone Foundation
 msgid "Plone Foundation"
@@ -3068,10 +3073,15 @@ msgstr "Zeige die Gruppenmitgliedschaften der unten gezeigten Benutzer"
 msgid "Show item"
 msgstr "Elemente anzeigen"
 
-#: helpers/MessageLabels/MessageLabels
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+# defaultMessage: Show potential sources. Not only objects that are source of some relation.
+msgid "Show potential sources. Not only objects that are source of some relation."
+msgstr "Mögliche Quellen zeigen, ohne dass sie Quellen bestehender Relationen sind."
+
+#: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Show potential targets. Not only objects that are target of some relation.
 msgid "Show potential targets. Not only objects that are target of some relation."
-msgstr "Zeige potentielle Ziele. Nicht nur Objekte die Ziele von Relationen sind."
+msgstr "Mögliche Ziele zeigen, ohne dass sie Ziele bestehender Relationen sind."
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Show search button?
@@ -4072,6 +4082,11 @@ msgstr "Sie können diese(s) Objekt(e) hier nicht einfügen"
 msgid "You have been logged out from the site."
 msgstr "Sie wurden von der Website abgemeldet."
 
+#: components/manage/Controlpanels/Relations/Relations
+# defaultMessage: You have not the required permission for this control panel.
+msgid "You have not the required permission for this control panel."
+msgstr "Sie haben nicht die notwendige Berechtigung für dieses Control-Panel."
+
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your email is required for reset your password.
 msgid "Your email is required for reset your password."
@@ -4598,10 +4613,20 @@ msgstr "Navigation überspringen"
 msgid "sort"
 msgstr "sortieren"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: sources path
+msgid "sources path"
+msgstr "Pfad möglicher Quellen"
+
 #: config/Blocks
 # defaultMessage: Table
 msgid "table"
 msgstr "Tabelle"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: target path
+msgid "target path"
+msgstr "Pfad möglicher Ziele"
 
 #: config/Blocks
 # defaultMessage: Text

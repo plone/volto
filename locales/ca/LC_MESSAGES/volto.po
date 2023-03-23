@@ -2475,6 +2475,11 @@ msgstr ""
 msgid "Please upgrade to plone.restapi >= 8.24.0."
 msgstr ""
 
+#: components/manage/Controlpanels/Relations/Relations
+# defaultMessage: Please upgrade to plone.restapi >= 8.35.3.
+msgid "Please upgrade to plone.restapi >= 8.35.3."
+msgstr ""
+
 #: components/theme/Footer/Footer
 # defaultMessage: Plone Foundation
 msgid "Plone Foundation"
@@ -3071,7 +3076,12 @@ msgstr ""
 msgid "Show item"
 msgstr "Mostra l'element"
 
-#: helpers/MessageLabels/MessageLabels
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+# defaultMessage: Show potential sources. Not only objects that are source of some relation.
+msgid "Show potential sources. Not only objects that are source of some relation."
+msgstr ""
+
+#: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Show potential targets. Not only objects that are target of some relation.
 msgid "Show potential targets. Not only objects that are target of some relation."
 msgstr ""
@@ -4075,6 +4085,11 @@ msgstr "No podeu enganxar aquest contingut aquí"
 msgid "You have been logged out from the site."
 msgstr ""
 
+#: components/manage/Controlpanels/Relations/Relations
+# defaultMessage: You have not the required permission for this control panel.
+msgid "You have not the required permission for this control panel."
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your email is required for reset your password.
 msgid "Your email is required for reset your password."
@@ -4601,10 +4616,20 @@ msgstr "Saltar a la navegació"
 msgid "sort"
 msgstr "Ordena"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: sources path
+msgid "sources path"
+msgstr ""
+
 #: config/Blocks
 # defaultMessage: Table
 msgid "table"
 msgstr "Taula"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: target path
+msgid "target path"
+msgstr ""
 
 #: config/Blocks
 # defaultMessage: Text

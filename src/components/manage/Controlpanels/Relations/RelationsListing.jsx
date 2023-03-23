@@ -204,6 +204,13 @@ const ListingTemplate = ({
   }, [dispatch, potential_targets_path, potential_sources_path]);
 
   const onSelectOptionHandler = (relation, item, selectedvalue, checked) => {
+    toast.warning(
+      <Toast
+        warning
+        title="Create or delete relation"
+        content="not yet implemented"
+      />,
+    );
     let source = selectedvalue.y;
     let target = selectedvalue.x;
     console.debug(

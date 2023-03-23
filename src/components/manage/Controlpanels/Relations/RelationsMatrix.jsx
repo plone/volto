@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { find, toNumber } from 'lodash';
 import { useSelector, useDispatch } from 'react-redux';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { toast } from 'react-toastify';
@@ -25,6 +26,12 @@ const RelationsMatrix = (props) => {
   const [potential_targets_path, setPotential_targets_path] = useState('');
   const [potential_sources_path, setPotential_sources_path] = useState('');
   const [relationtype, setRelationtype] = useState(undefined);
+
+  const actions = useSelector((state) => state.actions?.actions ?? {});
+  const can_fix_relations = find(actions.user, {
+    id: 'plone_setup',
+  });
+
   const relationtypes = useSelector(
     (state) => state.relations?.stats?.relations,
   );
@@ -282,53 +289,60 @@ const RelationsMatrix = (props) => {
                   })}
                 </Table.Body>
               </Table>
-              <h3>Rebuild relations</h3>
-              <p>
-                Get all relations from zc.relation catalog and store them in an
-                annotation on the portal. Remove all entries from zc.relation
-                catalog. Clean up intids. Restore relations from the annotation
-                on on the portal.
-              </p>
+              {can_fix_relations ? (
+                <React.Fragment>
+                  <h3>Rebuild relations</h3>
+                  <p>
+                    Get all relations from zc.relation catalog and store them in
+                    an annotation on the portal. Remove all entries from
+                    zc.relation catalog. Clean up intids. Restore relations from
+                    the annotation on on the portal.
+                  </p>
 
-              <Button.Group>
-                <Button
-                  primary
-                  onClick={() => rebuildRelationsHandler(false)}
-                  title={intl.formatMessage(messages.rebuildRelations)}
-                  aria-label={intl.formatMessage(messages.rebuildRelations)}
-                >
-                  <FormattedMessage
-                    id="rebuild relations"
-                    defaultMessage="rebuild relations"
-                  />
-                </Button>
-              </Button.Group>
-              <h3>Flush and rebuild intids, and rebuild relations</h3>
-              <p>
-                This will delete all intids during the rebuild process and
-                create new one. If you have a lot of relations this can take
-                some time. Check the log for details!{' '}
-              </p>
-              <p>
-                Warning: If you have relations on tiles, flushing and rebuilding
-                intids will destroy them because the intids changed.
-              </p>
-              <Button.Group>
-                <Button
-                  secondary
-                  color="red"
-                  onClick={() => rebuildRelationsHandler(true)}
-                  title={intl.formatMessage(messages.flushAndRebuildRelations)}
-                  aria-label={intl.formatMessage(
-                    messages.flushAndRebuildRelations,
-                  )}
-                >
-                  <FormattedMessage
-                    id="flush and rebuild intids, and rebuild relations"
-                    defaultMessage="flush and rebuild intids, and rebuild relations"
-                  />
-                </Button>
-              </Button.Group>
+                  <Button.Group>
+                    <Button
+                      primary
+                      onClick={() => rebuildRelationsHandler(false)}
+                      title={intl.formatMessage(messages.rebuildRelations)}
+                      aria-label={intl.formatMessage(messages.rebuildRelations)}
+                    >
+                      <FormattedMessage
+                        id="rebuild relations"
+                        defaultMessage="rebuild relations"
+                      />
+                    </Button>
+                  </Button.Group>
+                  <h3>Flush and rebuild intids, and rebuild relations</h3>
+                  <p>
+                    This will delete all intids during the rebuild process and
+                    create new one. If you have a lot of relations this can take
+                    some time. Check the log for details!{' '}
+                  </p>
+                  <p>
+                    Warning: If you have relations on tiles, flushing and
+                    rebuilding intids will destroy them because the intids
+                    changed.
+                  </p>
+                  <Button.Group>
+                    <Button
+                      secondary
+                      color="red"
+                      onClick={() => rebuildRelationsHandler(true)}
+                      title={intl.formatMessage(
+                        messages.flushAndRebuildRelations,
+                      )}
+                      aria-label={intl.formatMessage(
+                        messages.flushAndRebuildRelations,
+                      )}
+                    >
+                      <FormattedMessage
+                        id="flush and rebuild intids, and rebuild relations"
+                        defaultMessage="flush and rebuild intids, and rebuild relations"
+                      />
+                    </Button>
+                  </Button.Group>
+                </React.Fragment>
+              ) : null}
               <BrokenRelations />
             </div>
           ) : (
