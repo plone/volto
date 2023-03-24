@@ -49,7 +49,6 @@ const withSearch = (options) => (WrappedComponent) => {
 
     const facetSettings = data?.facets;
     const debounce = useDebounce();
-    // console.log(cachedSearchData);
 
     const onTriggerSearch = React.useCallback(
       function (toSearchText, toSearchFacets, toSortOn, toSortOrder) {

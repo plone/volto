@@ -50,8 +50,8 @@ const applyDefaults = (data, root) => {
   ];
   return {
     ...data,
-    sort_on: data?.sort_on || 'effective',
-    sort_order: data?.sort_order || 'descending',
+    sort_on: data?.sort_on ?? 'effective',
+    sort_order: data?.sort_order ?? 'descending',
     query: data?.query?.length ? data.query : defaultQuery,
   };
 };
