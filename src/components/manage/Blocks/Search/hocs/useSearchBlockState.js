@@ -9,6 +9,9 @@ const useHashState = () => {
   const location = useLocation();
   const history = useHistory();
 
+  const storeName = 'search'; // can be changed to 'hash'
+  const storage = location[storeName];
+
   const oldState = React.useMemo(() => {
     return {
       ...qs.parse(location.search),
@@ -24,7 +27,7 @@ const useHashState = () => {
 
   const setSearchData = React.useCallback(
     (searchData) => {
-      const newParams = qs.parse(location.hash);
+      const newParams = qs.parse(storage);
 
       let changed = false;
 
@@ -41,11 +44,11 @@ const useHashState = () => {
 
       if (changed) {
         history.push({
-          hash: qs.stringify(newParams),
+          [storeName]: qs.stringify(newParams),
         });
       }
     },
-    [history, oldState, location.hash],
+    [history, oldState, storage],
   );
 
   return [current, setSearchData];

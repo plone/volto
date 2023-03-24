@@ -73,6 +73,38 @@ const SortOn = (props) => {
       ? intl.formatMessage(messages[activeOption])
       : sortable_indexes[activeOption]?.title,
   };
+  const options = [
+    ...(showRelevance
+      ? [
+          {
+            value: RELEVANCE,
+            label: intl.formatMessage(messages.relevance),
+          },
+        ]
+      : []),
+    ...(showUnsorted
+      ? [
+          {
+            value: UNSORTED,
+            label: intl.formatMessage(messages.unsorted),
+          },
+        ]
+      : []),
+    ...sortOnOptions.map((k) => ({
+      value: k,
+      label: sortable_indexes[k]?.title || k,
+    })),
+  ];
+
+  // console.log('showUnsorted', {
+  //   showRelevance,
+  //   showUnsorted,
+  //   sortOn,
+  //   searchedText,
+  //   sortOnOptions,
+  //   options,
+  //   value,
+  // });
 
   return (
     <div className="search-sort-wrapper">
@@ -90,24 +122,7 @@ const SortOn = (props) => {
           styles={sortOnSelectStyles}
           theme={selectTheme}
           components={{ DropdownIndicator, Option }}
-          options={[
-            ...(showRelevance && [
-              {
-                value: RELEVANCE,
-                label: intl.formatMessage(messages.relevance),
-              },
-            ]),
-            ...(showUnsorted && [
-              {
-                value: UNSORTED,
-                label: intl.formatMessage(messages.unsorted),
-              },
-            ]),
-            ...sortOnOptions.map((k) => ({
-              value: k,
-              label: sortable_indexes[k]?.title || k,
-            })),
-          ]}
+          options={options}
           isSearchable={false}
           value={value}
           onChange={(data) => {
