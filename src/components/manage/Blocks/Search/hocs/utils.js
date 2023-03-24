@@ -21,6 +21,13 @@ export function getInitialState(data, facets, searchText, id) {
   } = config.blocks.blocksConfig.search.extensions.facetWidgets;
   const facetSettings = data?.facets || [];
 
+  const defaultSort = getSort({
+    sortOn: data?.query?.sort_on,
+    sortOrder: data?.query?.sort_order,
+    searchedText: '',
+    toSearchText: searchText,
+  });
+
   return {
     query: [
       ...(data.query?.query || []),
@@ -50,8 +57,8 @@ export function getInitialState(data, facets, searchText, id) {
           ]
         : []),
     ],
-    sort_on: data.query?.sort_on,
-    sort_order: data.query?.sort_order,
+    sort_on: defaultSort.sortOn,
+    sort_order: defaultSort.sortOrder,
     b_size: data.query?.b_size,
     limit: data.query?.limit,
     block: id,
@@ -149,15 +156,18 @@ export const getSort = (args) => {
     searchedText,
     toSearchText,
   } = args;
-  return searchedText && toSearchText && toSearchText !== searchedText
-    ? {
-        sortOn: '',
-        sortOrder: '',
-      }
-    : {
-        sortOn: toSortOn || sortOn,
-        sortOrder: toSortOrder || sortOrder,
-      };
+  const res =
+    toSearchText && toSearchText !== searchedText
+      ? {
+          sortOn: '',
+          sortOrder: '',
+        }
+      : {
+          sortOn: toSortOn || sortOn,
+          sortOrder: toSortOrder || sortOrder,
+        };
+  console.log('getSort args', res, args);
+  return res;
 };
 
 export const extractFacetValues = (data, query, state) => {

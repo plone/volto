@@ -39,10 +39,12 @@ const withSearch = (options) => (WrappedComponent) => {
       searchedText,
     );
     const [facets, setFacets] = React.useState(defaultFacets);
-    const [sortOn, setSortOn] = React.useState(data?.query?.sort_on);
-    const [sortOrder, setSortOrder] = React.useState(data?.query?.sort_order);
     const [cachedSearchData, setCachedSearchData] = React.useState(
       getInitialState(data, defaultFacets, searchedText, id),
+    );
+    const [sortOn, setSortOn] = React.useState(cachedSearchData.sort_on);
+    const [sortOrder, setSortOrder] = React.useState(
+      cachedSearchData.sort_order,
     );
 
     const facetSettings = data?.facets;
