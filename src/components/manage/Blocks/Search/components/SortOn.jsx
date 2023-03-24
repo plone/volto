@@ -1,23 +1,27 @@
-import React from 'react';
-import { Button } from 'semantic-ui-react';
-import { defineMessages, injectIntl } from 'react-intl';
-import cx from 'classnames';
-import { compose } from 'redux';
 import { Icon } from '@plone/volto/components';
 import {
-  Option,
   DropdownIndicator,
+  Option,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import cx from 'classnames';
+import React from 'react';
+import { defineMessages, injectIntl } from 'react-intl';
+import { compose } from 'redux';
+import { Button } from 'semantic-ui-react';
 import { selectTheme, sortOnSelectStyles } from './SelectStyling';
 
-import upSVG from '@plone/volto/icons/sort-up.svg';
 import downSVG from '@plone/volto/icons/sort-down.svg';
+import upSVG from '@plone/volto/icons/sort-up.svg';
 
 const messages = defineMessages({
-  noSelection: {
-    id: 'No selection',
-    defaultMessage: 'No selection',
+  unsorted: {
+    id: 'Unsorted',
+    defaultMessage: 'Unsorted',
+  },
+  relevance: {
+    id: 'Relevance',
+    defaultMessage: 'Relevance',
   },
   sortOn: {
     id: 'Sort on',
@@ -36,6 +40,7 @@ const messages = defineMessages({
 const SortOn = (props) => {
   const {
     data = {},
+    searchedText,
     reactSelect,
     sortOn = null,
     sortOrder = null,
@@ -45,18 +50,28 @@ const SortOn = (props) => {
     querystring = {},
     intl,
   } = props;
+  const { sortOnOptions = [] } = data;
+
+  // We don't want to show sorting options if there is only 1 way to sort
+  if (!sortOnOptions || sortOnOptions.length < 1) {
+    return null;
+  }
+
   const { sortable_indexes } = querystring;
   const Select = reactSelect.default;
 
   const activeSortOn = sortOn || data?.query?.sort_on || '';
 
-  const { sortOnOptions = [] } = data;
+  const noValueLabel = searchedText
+    ? intl.formatMessage(messages.relevance)
+    : intl.formatMessage(messages.unsorted);
+
   const value = {
-    value: activeSortOn || intl.formatMessage(messages.noSelection),
+    value: activeSortOn,
     label:
       activeSortOn && sortable_indexes
         ? sortable_indexes[activeSortOn]?.title
-        : activeSortOn || intl.formatMessage(messages.noSelection),
+        : noValueLabel,
   };
 
   return (
@@ -75,9 +90,10 @@ const SortOn = (props) => {
           theme={selectTheme}
           components={{ DropdownIndicator, Option }}
           options={[
+            { value: '', label: noValueLabel },
             ...sortOnOptions.map((k) => ({
               value: k,
-              label: sortable_indexes[k]?.title || k,
+              label: k === '' ? noValueLabel : sortable_indexes[k]?.title || k,
             })),
           ]}
           isSearchable={false}
@@ -98,6 +114,7 @@ const SortOn = (props) => {
         onClick={() => {
           !isEditMode && setSortOrder('ascending');
         }}
+        disabled={!activeSortOn}
       >
         <Icon name={upSVG} size="25px" />
       </Button>
@@ -112,6 +129,7 @@ const SortOn = (props) => {
         onClick={() => {
           !isEditMode && setSortOrder('descending');
         }}
+        disabled={!activeSortOn}
       >
         <Icon name={downSVG} size="25px" />
       </Button>

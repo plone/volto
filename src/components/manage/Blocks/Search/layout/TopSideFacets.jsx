@@ -89,6 +89,7 @@ const TopSideFacets = (props) => {
 
             {data.showSortOn && (
               <SortOn
+                searchedText={searchedText}
                 data={data}
                 querystring={querystring}
                 isEditMode={isEditMode}

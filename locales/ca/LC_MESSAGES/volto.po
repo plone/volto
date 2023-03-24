@@ -2236,7 +2236,6 @@ msgstr "Sense resultats"
 msgid "No results found."
 msgstr "Sense resultats."
 
-#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Widgets/QuerySortOnWidget
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: No selection
@@ -2580,6 +2579,7 @@ msgstr "Registrar-se"
 msgid "Registration form"
 msgstr "Formulari d'inscripció"
 
+#: components/manage/Blocks/Search/components/SortOn
 #: components/theme/Search/Search
 # defaultMessage: Relevance
 msgid "Relevance"
@@ -3648,6 +3648,7 @@ msgstr "Desenllaça la traducció de"
 msgid "Unlock"
 msgstr "Descobrir"
 
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Controlpanels/UndoControlpanel
 # defaultMessage: Unsorted
 msgid "Unsorted"

@@ -95,6 +95,7 @@ const RightColumnFacets = (props) => {
             <div className="sort-views-wrapper">
               {data.showSortOn && (
                 <SortOn
+                  searchedText={searchedText}
                   data={data}
                   querystring={querystring}
                   isEditMode={isEditMode}

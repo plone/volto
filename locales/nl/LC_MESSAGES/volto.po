@@ -2234,7 +2234,6 @@ msgstr "Geen resulaten gevonden"
 msgid "No results found."
 msgstr "Geen resulaten gevonden."
 
-#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Widgets/QuerySortOnWidget
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: No selection
@@ -2578,6 +2577,7 @@ msgstr "Registreren"
 msgid "Registration form"
 msgstr "Registratieformulier"
 
+#: components/manage/Blocks/Search/components/SortOn
 #: components/theme/Search/Search
 # defaultMessage: Relevance
 msgid "Relevance"
@@ -3646,6 +3646,7 @@ msgstr "Vertaling ontkoppeld voor"
 msgid "Unlock"
 msgstr "Ontgrendel"
 
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Controlpanels/UndoControlpanel
 # defaultMessage: Unsorted
 msgid "Unsorted"
