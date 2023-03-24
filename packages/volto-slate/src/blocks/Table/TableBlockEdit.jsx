@@ -722,6 +722,11 @@ class Edit extends Component {
             celled={this.props.data.table.celled}
             inverted={this.props.data.table.inverted}
             striped={this.props.data.table.striped}
+            color={
+              this.props.data.table.inverted && this.props.data.table.basic
+                ? 'black'
+                : null
+            }
             className="slate-table-block"
           >
             {!this.props.data.table.hideHeaders ? (
