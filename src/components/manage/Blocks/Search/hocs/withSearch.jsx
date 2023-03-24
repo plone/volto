@@ -6,7 +6,7 @@ import {
   deserializeQuery,
   extractFacetValues,
   getInitialState,
-  getSearchFields,
+  getQuerystringSearchFields,
   getSort,
   normalizeState,
   useDebounce,
@@ -16,9 +16,8 @@ function getDisplayName(WrappedComponent) {
   return WrappedComponent.displayName || WrappedComponent.name || 'Component';
 }
 
+// TODO: refactor, should use only useLocationStateManager()!!!
 const withSearch = (options) => (WrappedComponent) => {
-  // TODO: refactor, should use only useLocationStateManager()!!!
-
   const { inputDelay = 1000 } = options || {};
 
   function WithSearch(props) {
@@ -36,7 +35,9 @@ const withSearch = (options) => (WrappedComponent) => {
       '';
     const defaultFacets = extractFacetValues(data, query, locationSearchData);
 
-    const [cachedSearchText, setLocalSearchText] = React.useState(searchedText);
+    const [cachedSearchText, setCachedSearchText] = React.useState(
+      searchedText,
+    );
     const [facets, setFacets] = React.useState(defaultFacets);
     const [sortOn, setSortOn] = React.useState(data?.query?.sort_on);
     const [sortOrder, setSortOrder] = React.useState(data?.query?.sort_order);
@@ -46,16 +47,16 @@ const withSearch = (options) => (WrappedComponent) => {
 
     const facetSettings = data?.facets;
     const debounce = useDebounce();
+    // console.log(cachedSearchData);
 
     const onTriggerSearch = React.useCallback(
-      function (args) {
-        const { toSearchText, toSearchFacets, toSortOn, toSortOrder } = args;
+      function (toSearchText, toSearchFacets, toSortOn, toSortOrder) {
         const handler = () => {
           const sortOnData = getSort({
-            ...args,
             sortOn,
             sortOrder,
             searchedText,
+            toSearchText,
           });
           const searchData = normalizeState({
             id,
@@ -67,15 +68,11 @@ const withSearch = (options) => (WrappedComponent) => {
           });
 
           if (toSearchFacets) setFacets(toSearchFacets);
-          if (sortOnData.sortOn !== sortOn) {
-            setSortOn(toSortOn);
-          }
-          if (sortOnData.sortOrder !== toSortOrder) {
-            setSortOrder(toSortOrder);
-          }
+          if (sortOnData.sortOn !== sortOn) setSortOn(toSortOn);
+          if (sortOnData.sortOrder !== toSortOrder) setSortOrder(toSortOrder);
 
           setCachedSearchData(searchData); // store internal state, can be passed to children
-          setLocationSearchData(getSearchFields(searchData)); // store in URL
+          setLocationSearchData(getQuerystringSearchFields(searchData)); // store in URL
         };
         debounce(handler, toSearchFacets ? inputDelay / 3 : inputDelay);
       },
@@ -110,7 +107,7 @@ const withSearch = (options) => (WrappedComponent) => {
         sortOrder={sortOrder}
         searchedText={searchedText}
         searchText={cachedSearchText}
-        setSearchText={setLocalSearchText}
+        setSearchText={setCachedSearchText}
         onTriggerSearch={onTriggerSearch}
         totalItems={totalItems}
       />

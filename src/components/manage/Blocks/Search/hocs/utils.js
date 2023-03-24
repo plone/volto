@@ -119,7 +119,7 @@ export function normalizeState({
   return params;
 }
 
-export const getSearchFields = (searchData) => {
+export const getQuerystringSearchFields = (searchData) => {
   return Object.assign(
     {},
     ...SEARCH_ENDPOINT_FIELDS.map((k) => {
