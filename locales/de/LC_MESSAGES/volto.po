@@ -90,7 +90,7 @@ msgid "Add (object list)"
 msgstr "Hinzufügen"
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
+# defaultMessage: To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see
 msgid "Add Addons"
 msgstr "Add-on hinzufügen"
 
@@ -293,6 +293,7 @@ msgstr "Alias wurde hinzugefügt"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
+#: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/Video/schema
 # defaultMessage: Alignment
 msgid "Alignment"
@@ -975,6 +976,7 @@ msgid "Descending"
 msgstr "Absteigend"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1625,6 +1627,11 @@ msgstr "Bild"
 msgid "Image gallery"
 msgstr "Bildergalerie"
 
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Image override
+msgid "Image override"
+msgstr "Bild überschreiben"
+
 #: components/manage/Blocks/Image/schema
 # defaultMessage: Image size
 msgid "Image size"
@@ -2181,6 +2188,11 @@ msgstr "Im Feld 'Lead-Bild' wurde kein Bild gesetzt."
 msgid "No image set in image content field"
 msgstr "Im Feld 'Bild' wurde kein Bild gesetzt"
 
+#: components/manage/Blocks/Listing/GalleryNoResultsComponent
+# defaultMessage: No images found.
+msgid "No images found."
+msgstr "Keine Bilder gefunden"
+
 #: components/manage/Blocks/Listing/ListingBody
 # defaultMessage: No items found in this container.
 msgid "No items found in this container."
@@ -2215,7 +2227,7 @@ msgstr "Keine Option"
 msgid "No results found"
 msgstr "Keine Ergebnisse gefunden"
 
-#: components/manage/Blocks/Listing/ListingBody
+#: components/manage/Blocks/Listing/DefaultNoResultsComponent
 #: components/manage/Widgets/ReferenceWidget
 # defaultMessage: No results found.
 msgid "No results found."
@@ -2293,6 +2305,7 @@ msgstr "Nur Kleinbuchstaben (a-z) ohne Umlaute oder Sonderzeichen, Zahlen (0-9) 
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Teaser/schema
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr "In neuem Browser-Tab öffnen"
@@ -2386,6 +2399,11 @@ msgstr "Persönliche Einstellungen"
 # defaultMessage: Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first.
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Eine Liste von Personen, die an der Erstellung dieses Artikels beteiligt waren. Bitte geben Sie einen Benutzernamen pro Zeile ein. Der Hauptverantwortliche sollte zuerst genannt werden."
+
+#: components/manage/Blocks/Teaser/DefaultBody
+# defaultMessage: Please choose an existing content as source for this element
+msgid "Please choose an existing content as source for this element"
+msgstr "Bitte wählen sie einen existierenden Inhalt als Quelle für dieses Element aus"
 
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Please continue with the upgrade.
@@ -2657,6 +2675,11 @@ msgstr "Notwendige Eingabe fehlt."
 # defaultMessage: Reset title
 msgid "Reset term title"
 msgstr "Setze Titel zurück"
+
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Reset the block
+msgid "Reset the block"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Results limit
@@ -3228,6 +3251,7 @@ msgstr "Hinzuzufügende Tags"
 msgid "Tags to remove"
 msgstr "Zu entfernende Tags"
 
+#: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Target
 msgid "Target"
@@ -3252,6 +3276,11 @@ msgstr "Ziel-Anzahl von Objekten im Speicher pro Cache"
 # defaultMessage: Target url path must start with a slash.
 msgid "Target url path must start with a slash."
 msgstr "Der Zielpfad muss mit einem Schrägstrich beginnen."
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Teaser
+msgid "Teaser"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Text
@@ -3415,6 +3444,7 @@ msgid "Time"
 msgstr "Zeit"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Teaser/schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -3442,6 +3472,11 @@ msgstr "Anzahl aktive und nicht-aktive Objekte"
 # defaultMessage: Total comments
 msgid "Total comments"
 msgstr "Anzahl Komentare"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Total items to be deleted:
+msgid "Total items to be deleted:"
+msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Total number of objects in each cache
@@ -3682,6 +3717,7 @@ msgid "Uploading files"
 msgstr "Dateien hochladen"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Image/Edit
 # defaultMessage: Uploading image
 msgid "Uploading image"
 msgstr "Bild hochladen"
@@ -4113,6 +4149,11 @@ msgstr "Datum"
 # defaultMessage: Where
 msgid "event_where"
 msgstr "Ort"
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Head title
+msgid "head_title"
+msgstr "Kopftitel"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Password reset confirmation sent

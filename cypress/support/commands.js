@@ -2,7 +2,7 @@ import '@testing-library/cypress/add-commands';
 import { getIfExists } from '../helpers';
 import { ploneAuth } from './constants';
 
-const HOSTNAME = Cypress.env('BACKEND_HOST') || 'localhost';
+const HOSTNAME = Cypress.env('BACKEND_HOST') || '127.0.0.1';
 const GUILLOTINA_API_URL = `http://${HOSTNAME}:8081/db/web`;
 const PLONE_SITE_ID = Cypress.env('SITE_ID') || 'plone';
 const PLONE_API_URL =
@@ -10,6 +10,11 @@ const PLONE_API_URL =
 
 const SLATE_SELECTOR = '.content-area .slate-editor [contenteditable=true]';
 const SLATE_TITLE_SELECTOR = '.block.inner.title [contenteditable="true"]';
+
+const TABLE_SLATE_SELECTOR =
+  '.celled.fixed.table tbody tr:nth-child(1) td:first-child() [contenteditable="true"]';
+const TABLE_HEAD_SLATE_SELECTOR =
+  '.celled.fixed.table thead tr th:first-child() [contenteditable="true"]';
 
 const ploneAuthObj = {
   user: ploneAuth[0],
@@ -267,7 +272,7 @@ Cypress.Commands.add('getContent', ({ path = '' }) => {
 // --- Add DX Content-Type ----------------------------------------------------------
 Cypress.Commands.add('addContentType', (name) => {
   let api_url, auth;
-  api_url = Cypress.env('API_PATH') || 'http://localhost:8080/Plone';
+  api_url = Cypress.env('API_PATH') || 'http://127.0.0.1:8080/Plone';
   auth = ploneAuthObj;
 
   return cy
@@ -288,7 +293,7 @@ Cypress.Commands.add('addContentType', (name) => {
 // --- Remove DX behavior ----------------------------------------------------------
 Cypress.Commands.add('removeContentType', (name) => {
   let api_url, auth;
-  api_url = Cypress.env('API_PATH') || 'http://localhost:8080/Plone';
+  api_url = Cypress.env('API_PATH') || 'http://127.0.0.1:8080/Plone';
   auth = ploneAuthObj;
 
   return cy
@@ -307,7 +312,7 @@ Cypress.Commands.add('removeContentType', (name) => {
 // --- Add DX field ----------------------------------------------------------
 Cypress.Commands.add('addSlateJSONField', (type, name) => {
   let api_url, auth;
-  api_url = Cypress.env('API_PATH') || 'http://localhost:8080/Plone';
+  api_url = Cypress.env('API_PATH') || 'http://127.0.0.1:8080/Plone';
   auth = ploneAuthObj;
 
   return cy
@@ -332,7 +337,7 @@ Cypress.Commands.add('addSlateJSONField', (type, name) => {
 // --- Remove DX field ----------------------------------------------------------
 Cypress.Commands.add('removeSlateJSONField', (type, name) => {
   let api_url, auth;
-  api_url = Cypress.env('API_PATH') || 'http://localhost:8080/Plone';
+  api_url = Cypress.env('API_PATH') || 'http://127.0.0.1:8080/Plone';
   auth = ploneAuthObj;
 
   return cy
@@ -360,7 +365,7 @@ Cypress.Commands.add(
     password = 'password',
     roles = ['Member', 'Reader', 'Editor'],
     groups = {
-      '@id': 'http://localhost:3000/@users',
+      '@id': 'http://127.0.0.1:3000/@users',
       items: [
         {
           id: 'AuthenticatedUsers',
@@ -444,7 +449,7 @@ Cypress.Commands.add(
     password = ploneAuth[1],
     roles = ['Member', 'Reader'],
     users = {
-      '@id': 'http://localhost:3000/@groups',
+      '@id': 'http://127.0.0.1:3000/@groups',
       items: [],
       items_total: 0,
     },
@@ -824,3 +829,23 @@ Cypress.Commands.add('settings', (key, value) => {
   return cy.window().its('settings');
 });
 Cypress.Commands.add('getIfExists', getIfExists);
+
+Cypress.Commands.add('getTableSlate', (header = false) => {
+  let slate;
+
+  cy.addNewBlock('table');
+  cy.wait(2000);
+
+  const selector = header ? TABLE_HEAD_SLATE_SELECTOR : TABLE_SLATE_SELECTOR;
+
+  cy.getIfExists(
+    selector,
+    () => {
+      slate = cy.get(selector).last();
+    },
+    () => {
+      slate = cy.get(selector, { timeout: 10000 }).last();
+    },
+  );
+  return slate;
+});

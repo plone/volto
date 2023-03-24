@@ -2,14 +2,13 @@ version: '3.3'
 services:
 
   backend:
-    image: plone/plone-backend:6.0.0b2
+    image: plone/plone-backend:6.0.1
     # Plone 5.2 series can be used too
-    # image: plone/plone-backend:5.2.9
+    # image: plone/plone-backend:5.2.10
     ports:
       - '8080:8080'
     environment:
       - SITE=Plone
-      - 'ADDONS=plone.restapi==8.29.0 plone.volto==4.0.0a13 plone.rest==2.0.0a5'
       - 'PROFILES=plone.volto:default-homepage'
     labels:
       - traefik.enable=true
