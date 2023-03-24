@@ -1,3 +1,4 @@
+import React from 'react';
 import { resolveExtension } from '@plone/volto/helpers/Extensions/withBlockExtensions';
 import config from '@plone/volto/registry';
 
@@ -172,3 +173,14 @@ export const extractFacetValues = (data, query, state) => {
     ),
   );
 };
+
+export function useDebounce() {
+  const timeoutRef = React.useRef();
+
+  const execute = React.useCallback((func, timeout) => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(func, timeout);
+  }, []);
+
+  return execute;
+}

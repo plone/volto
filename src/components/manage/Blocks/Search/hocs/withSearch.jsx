@@ -9,6 +9,7 @@ import {
   getSearchFields,
   getSort,
   normalizeState,
+  useDebounce,
 } from './utils';
 
 function getDisplayName(WrappedComponent) {
@@ -43,45 +44,43 @@ const withSearch = (options) => (WrappedComponent) => {
       getInitialState(data, defaultFacets, searchedText, id),
     );
 
-    const timeoutRef = React.useRef();
     const facetSettings = data?.facets;
+    const debounce = useDebounce();
 
     const onTriggerSearch = React.useCallback(
-      (args) => {
+      function (args) {
         const { toSearchText, toSearchFacets, toSortOn, toSortOrder } = args;
-        if (timeoutRef.current) clearTimeout(timeoutRef.current);
-        timeoutRef.current = setTimeout(
-          () => {
-            const sortOnData = getSort({
-              ...args,
-              sortOn,
-              sortOrder,
-              searchedText,
-            });
-            const searchData = normalizeState({
-              id,
-              query: data.query || {},
-              facets: toSearchFacets || facets,
-              searchText: toSearchText,
-              ...sortOnData,
-              facetSettings,
-            });
+        const handler = () => {
+          const sortOnData = getSort({
+            ...args,
+            sortOn,
+            sortOrder,
+            searchedText,
+          });
+          const searchData = normalizeState({
+            id,
+            query: data.query || {},
+            facets: toSearchFacets || facets,
+            searchText: toSearchText,
+            ...sortOnData,
+            facetSettings,
+          });
 
-            if (toSearchFacets) setFacets(toSearchFacets);
-            if (sortOnData.sortOn !== sortOn) {
-              setSortOn(toSortOn);
-            }
-            if (sortOnData.sortOrder !== toSortOrder) {
-              setSortOrder(toSortOrder);
-            }
+          if (toSearchFacets) setFacets(toSearchFacets);
+          if (sortOnData.sortOn !== sortOn) {
+            setSortOn(toSortOn);
+          }
+          if (sortOnData.sortOrder !== toSortOrder) {
+            setSortOrder(toSortOrder);
+          }
 
-            setCachedSearchData(searchData); // store internal state, can be passed to children
-            setLocationSearchData(getSearchFields(searchData)); // store in URL
-          },
-          toSearchFacets ? inputDelay / 3 : inputDelay,
-        );
+          setCachedSearchData(searchData); // store internal state, can be passed to children
+          setLocationSearchData(getSearchFields(searchData)); // store in URL
+        };
+        debounce(handler, toSearchFacets ? inputDelay / 3 : inputDelay);
       },
       [
+        debounce,
         data.query,
         facets,
         id,
