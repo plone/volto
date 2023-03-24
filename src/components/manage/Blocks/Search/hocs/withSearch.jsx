@@ -26,7 +26,7 @@ const PAQO = 'plone.app.querystring.operation';
  * @function getInitialState
  *
  */
-function getInitialState(data, facets, urlSearchText, id) {
+function getInitialState(data, facets, searchText, id) {
   const {
     types: facetWidgetTypes,
   } = config.blocks.blocksConfig.search.extensions.facetWidgets;
@@ -51,12 +51,12 @@ function getInitialState(data, facets, urlSearchText, id) {
           return valueToQuery({ value, facet });
         })
         .filter((f) => !!f),
-      ...(urlSearchText
+      ...(searchText
         ? [
             {
               i: 'SearchableText',
               o: 'plone.app.querystring.operation.string.contains',
-              v: urlSearchText,
+              v: searchText,
             },
           ]
         : []),
@@ -207,7 +207,7 @@ const useSearchBlockState = (uniqueId, isEditMode) => {
 };
 
 // Simple compress/decompress the state in URL by replacing the lengthy string
-const deserializeQuery = (q) => {
+const deserializeQuery = (q = []) => {
   return JSON.parse(q)?.map((kvp) => ({
     ...kvp,
     o: kvp.o.replace(/^paqo/, PAQO),
@@ -216,6 +216,43 @@ const deserializeQuery = (q) => {
 const serializeQuery = (q) => {
   return JSON.stringify(
     q?.map((kvp) => ({ ...kvp, o: kvp.o.replace(PAQO, 'paqo') })),
+  );
+};
+
+const getSort = (args) => {
+  const { toSortOn, toSortOrder, sortOn, sortOrder } = args;
+  return {
+    sortOn: toSortOn || sortOn,
+    sortOrder: toSortOrder || sortOrder,
+  };
+};
+
+const extractFacets = (data, query, locationSearchData) => {
+  const configuredFacets =
+    data.facets?.map((facet) => facet?.field?.value) || [];
+  const multiFacets = data.facets
+    ?.filter((facet) => facet?.multiple)
+    .map((facet) => facet?.field?.value);
+
+  return Object.assign(
+    {},
+    ...query.map(({ i, v }) => ({ [i]: v })), // TODO: the 'o' should be kept. This would be a major refactoring of the facets
+
+    // support for simple filters like ?Subject=something
+    // TODO: since the move to hash params this is no longer working.
+    // We'd have to treat the location.search and manage it just like the
+    // hash, to support it. We can read it, but we'd have to reset it as
+    // well, so at that point what's the difference to the hash?
+    ...configuredFacets.map((f) =>
+      locationSearchData[f]
+        ? {
+            [f]:
+              multiFacets.indexOf(f) > -1
+                ? [locationSearchData[f]]
+                : locationSearchData[f],
+          }
+        : {},
+    ),
   );
 };
 
@@ -230,73 +267,54 @@ const withSearch = (options) => (WrappedComponent) => {
       editable,
     );
 
-    const urlQuery = locationSearchData.query
-      ? deserializeQuery(locationSearchData.query)
-      : [];
-    const urlSearchText =
+    const query = deserializeQuery(locationSearchData.query);
+    const searchTextFromUrl =
       locationSearchData.SearchableText ||
-      urlQuery.find(({ i }) => i === 'SearchableText')?.v ||
+      query.find(({ i }) => i === 'SearchableText')?.v ||
       '';
 
     // TODO: refactor, should use only useLocationStateManager()!!!
-    const [searchText, setSearchText] = React.useState(urlSearchText);
-    const configuredFacets =
-      data.facets?.map((facet) => facet?.field?.value) || [];
-    const multiFacets = data.facets
-      ?.filter((facet) => facet?.multiple)
-      .map((facet) => facet?.field?.value);
-    const [facets, setFacets] = React.useState(
-      Object.assign(
-        {},
-        ...urlQuery.map(({ i, v }) => ({ [i]: v })), // TODO: the 'o' should be kept. This would be a major refactoring of the facets
+    const [searchText, setSearchText] = React.useState(searchTextFromUrl);
 
-        // support for simple filters like ?Subject=something
-        // TODO: since the move to hash params this is no longer working.
-        // We'd have to treat the location.search and manage it just like the
-        // hash, to support it. We can read it, but we'd have to reset it as
-        // well, so at that point what's the difference to the hash?
-        ...configuredFacets.map((f) =>
-          locationSearchData[f]
-            ? {
-                [f]:
-                  multiFacets.indexOf(f) > -1
-                    ? [locationSearchData[f]]
-                    : locationSearchData[f],
-              }
-            : {},
-        ),
-      ),
-    );
+    const defaultFacets = extractFacets(data, query, locationSearchData);
+    const [facets, setFacets] = React.useState(defaultFacets);
 
     const [sortOn, setSortOn] = React.useState(data?.query?.sort_on);
     const [sortOrder, setSortOrder] = React.useState(data?.query?.sort_order);
 
     const [searchData, setSearchData] = React.useState(
-      getInitialState(data, facets, urlSearchText, id),
+      getInitialState(data, facets, searchTextFromUrl, id),
     );
 
     const timeoutRef = React.useRef();
     const facetSettings = data?.facets;
 
     const onTriggerSearch = React.useCallback(
-      (toSearchText, toSearchFacets, toSortOn, toSortOrder) => {
+      (args) => {
+        const { toSearchText, toSearchFacets, toSortOn, toSortOrder } = args;
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
         timeoutRef.current = setTimeout(
           () => {
+            const sortOnData = getSort({ ...args, sortOn, sortOrder });
             const searchData = normalizeState({
               id,
               query: data.query || {},
               facets: toSearchFacets || facets,
               searchText: toSearchText,
-              sortOn: toSortOn || sortOn,
-              sortOrder: toSortOrder || sortOrder,
+              ...sortOnData,
               facetSettings,
             });
+
             if (toSearchFacets) setFacets(toSearchFacets);
-            if (toSortOn) setSortOn(toSortOn);
-            if (toSortOrder) setSortOrder(toSortOrder);
-            setSearchData(searchData);
-            setLocationSearchData(getSearchFields(searchData));
+            if (sortOnData.sortOn !== sortOn) {
+              setSortOn(toSortOn);
+            }
+            if (sortOnData.sortOrder !== toSortOrder) {
+              setSortOrder(toSortOrder);
+            }
+
+            setSearchData(searchData); // store internal state, can be passed to children
+            setLocationSearchData(getSearchFields(searchData)); // store in URL
           },
           toSearchFacets ? inputDelay / 3 : inputDelay,
         );
@@ -328,7 +346,7 @@ const withSearch = (options) => (WrappedComponent) => {
         setSortOrder={setSortOrder}
         sortOn={sortOn}
         sortOrder={sortOrder}
-        searchedText={urlSearchText}
+        searchedText={searchTextFromUrl}
         searchText={searchText}
         setSearchText={setSearchText}
         onTriggerSearch={onTriggerSearch}
