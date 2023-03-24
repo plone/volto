@@ -121,22 +121,24 @@ export class ObjectBrowserWidgetComponent extends Component {
           </div>
         }
         trigger={
-          <Label>
-            <div className="item-title">{item.title}</div>
-            <div>
-              {this.props.mode === 'multiple' && (
-                <Icon
-                  name={clearSVG}
-                  size="12px"
-                  className="right"
-                  onClick={(event) => {
-                    event.preventDefault();
-                    this.removeItem(item);
-                  }}
-                />
-              )}
-            </div>
-          </Label>
+          <a target="_blank" rel="noreferrer" href={flattenToAppURL(href)}>
+            <Label>
+              <div className="item-title">{item.title}</div>
+              <div>
+                {this.props.mode === 'multiple' && (
+                  <Icon
+                    name={clearSVG}
+                    size="12px"
+                    className="right"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      this.removeItem(item);
+                    }}
+                  />
+                )}
+              </div>
+            </Label>
+          </a>
         }
       />
     );
