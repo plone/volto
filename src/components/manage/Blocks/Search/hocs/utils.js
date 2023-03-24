@@ -1,7 +1,7 @@
 import { resolveExtension } from '@plone/volto/helpers/Extensions/withBlockExtensions';
 import config from '@plone/volto/registry';
 
-const SEARCH_ENDPOINT_FIELDS = [
+export const SEARCH_ENDPOINT_FIELDS = [
   'SearchableText',
   'b_size',
   'limit',
@@ -9,7 +9,7 @@ const SEARCH_ENDPOINT_FIELDS = [
   'sort_order',
 ];
 
-const PAQO = 'plone.app.querystring.operation';
+export const PAQO = 'plone.app.querystring.operation';
 
 /**
  * Based on URL state, gets an initial internal state for the search
@@ -136,7 +136,7 @@ export const deserializeQuery = (q) =>
         o: kvp.o.replace(/^paqo/, PAQO),
       }))
     : [];
-const serializeQuery = (q) =>
+export const serializeQuery = (q) =>
   JSON.stringify(q?.map((kvp) => ({ ...kvp, o: kvp.o.replace(PAQO, 'paqo') })));
 
 export const getSort = (args) => {
@@ -147,7 +147,7 @@ export const getSort = (args) => {
   };
 };
 
-export const extractFacetValues = (data, query, locationSearchData) => {
+export const extractFacetValues = (data, query, state) => {
   const configuredFacets =
     data.facets?.map((facet) => facet?.field?.value) || [];
   const multiFacets = data.facets
@@ -164,12 +164,9 @@ export const extractFacetValues = (data, query, locationSearchData) => {
     // hash, to support it. We can read it, but we'd have to reset it as
     // well, so at that point what's the difference to the hash?
     ...configuredFacets.map((f) =>
-      locationSearchData[f]
+      state[f]
         ? {
-            [f]:
-              multiFacets.indexOf(f) > -1
-                ? [locationSearchData[f]]
-                : locationSearchData[f],
+            [f]: multiFacets.indexOf(f) > -1 ? [state[f]] : state[f],
           }
         : {},
     ),

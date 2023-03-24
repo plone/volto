@@ -33,14 +33,14 @@ const withSearch = (options) => (WrappedComponent) => {
       locationSearchData.SearchableText ||
       query.find(({ i }) => i === 'SearchableText')?.v ||
       '';
-    const searchedFacets = extractFacetValues(data, query, locationSearchData);
+    const defaultFacets = extractFacetValues(data, query, locationSearchData);
 
     const [cachedSearchText, setLocalSearchText] = React.useState(searchedText);
-    const [facets, setFacets] = React.useState(searchedFacets);
+    const [facets, setFacets] = React.useState(defaultFacets);
     const [sortOn, setSortOn] = React.useState(data?.query?.sort_on);
     const [sortOrder, setSortOrder] = React.useState(data?.query?.sort_order);
     const [cachedSearchData, setCachedSearchData] = React.useState(
-      getInitialState(data, searchedFacets, searchedText, id),
+      getInitialState(data, defaultFacets, searchedText, id),
     );
 
     const timeoutRef = React.useRef();
