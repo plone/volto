@@ -3380,12 +3380,12 @@ msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation
 msgstr "Het {plonecms} is {copyright} 2000-{current_year} door de {plonefoundation} et al."
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: There are no groups with the searched criteria
 msgid "There are no groups with the searched criteria"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: There are no users with the searched criteria
 msgid "There are no users with the searched criteria"
 msgstr ""
 

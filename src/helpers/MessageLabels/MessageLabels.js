@@ -180,11 +180,11 @@ export const messages = defineMessages({
   },
   userSearchNoResults: {
     id: 'There are no users with the searched criteria',
-    defaultMesages: 'There are no users with the searched criteria',
+    defaultMessage: 'There are no users with the searched criteria',
   },
   groupSearchNoResults: {
     id: 'There are no groups with the searched criteria',
-    defaultMesages: 'There are no groups with the searched criteria',
+    defaultMessage: 'There are no groups with the searched criteria',
   },
   updateUserFormTitle: {
     id: 'Update User',
