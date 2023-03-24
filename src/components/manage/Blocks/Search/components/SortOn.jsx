@@ -37,41 +37,6 @@ const messages = defineMessages({
   },
 });
 
-/**
- *
- * We start with the following assumption: the "relevance" based ordering is an
- * intrinsec property which should be provided by the system, the end users
- * should automatically benefit from it.
- *
- * So we follow this logic:
- *
- * For the main listing-block derived query, the editors can choose a sort
- * order. This will be the called the "default sort", it will be used whenever
- * we don't have "an external condition" that changes that.
- *
- * If the Editor doesn't enable aditional Sort On index from the Controls
- * fieldset, the block will work like:
- *
- * - when the user loads the search block without a search term, the listing
- *   uses the "default sort" in the Query part.
- * - when the user enters a search term (or if he/she loads the search block
- *   with a search term via URL), the search block will automatically switch to
- *   "relevance" sorting.
- * - If there's only one sort option available, the SortOn control is read-only
- *   (disabled)
- * - The "relevance" sort option is automatically added as an option when the
- *   user has a "search term"
- * - If there's no "default sort" and no "search term", but the Editor enabled
- *   the Sort On control, then the Sort On control displays only one option,
- *   "Unsorted". This will force the Editor to either disable the control or
- *   add some sorting options
- *
- * If the Editor enables additional sorton indexes but doesn't define
- * a "default sort":
- *
- * - the users see an "Unsorted" option if there's no "search term"
- *
- */
 const SortOn = (props) => {
   const {
     data = {},
@@ -85,42 +50,29 @@ const SortOn = (props) => {
     querystring = {},
     intl,
   } = props;
-  const { sortOnOptions = [] } = data;
-
-  // We don't want to show sorting options if there is only 1 way to sort
-  if (!sortOnOptions || sortOnOptions.length < 1) {
-    return null;
-  }
-
-  const { sortable_indexes } = querystring;
   const Select = reactSelect.default;
 
-  const isSortByRelevance = sortOn === '';
-  const isUnsorted = !(sortOn || isSortByRelevance);
+  const RELEVANCE = 'relevance';
+  const UNSORTED = 'unsorted';
 
-  const activeSortOn = data?.query?.sort_on;
+  const { sortOnOptions = [] } = data;
+  const { sortable_indexes } = querystring;
 
-  const noValueLabel = searchedText
-    ? intl.formatMessage(messages.relevance)
-    : intl.formatMessage(messages.unsorted);
+  const activeOption = searchedText ? (sortOn ? sortOn : RELEVANCE) : UNSORTED;
 
-  const value = isSortByRelevance
-    ? {
-        value: '',
-        label: intl.formatMessage(messages.relevance),
-      }
-    : isUnsorted
-    ? {
-        value: 'unsorted',
-        label: intl.formatMessage(messages.unsorted),
-      }
-    : {
-        value: activeSortOn,
-        label:
-          activeSortOn && sortable_indexes
-            ? sortable_indexes[activeSortOn]?.title
-            : noValueLabel,
-      };
+  const showRelevance = searchedText && !sortOn;
+  const showUnsorted = !(sortOn || searchedText);
+
+  const isDisabledSelect = !searchedText && sortOnOptions.length < 2;
+  const isDisabledOrder =
+    activeOption === RELEVANCE || activeOption === UNSORTED;
+
+  const value = {
+    value: activeOption,
+    label: messages[activeOption]
+      ? intl.formatMessage(messages[activeOption])
+      : sortable_indexes[activeOption]?.title,
+  };
 
   return (
     <div className="search-sort-wrapper">
@@ -129,7 +81,7 @@ const SortOn = (props) => {
           {intl.formatMessage(messages.sortOn)}
         </span>
         <Select
-          disabled={isUnsorted}
+          disabled={isDisabledSelect}
           id="select-search-sort-on"
           name="select-searchblock-sort-on"
           className="search-react-select-container"
@@ -139,10 +91,21 @@ const SortOn = (props) => {
           theme={selectTheme}
           components={{ DropdownIndicator, Option }}
           options={[
-            { value: '', label: noValueLabel },
+            ...(showRelevance && [
+              {
+                value: RELEVANCE,
+                label: intl.formatMessage(messages.relevance),
+              },
+            ]),
+            ...(showUnsorted && [
+              {
+                value: UNSORTED,
+                label: intl.formatMessage(messages.unsorted),
+              },
+            ]),
             ...sortOnOptions.map((k) => ({
               value: k,
-              label: k === '' ? noValueLabel : sortable_indexes[k]?.title || k,
+              label: sortable_indexes[k]?.title || k,
             })),
           ]}
           isSearchable={false}
@@ -163,7 +126,7 @@ const SortOn = (props) => {
         onClick={() => {
           !isEditMode && setSortOrder('ascending');
         }}
-        disabled={!activeSortOn}
+        disabled={isDisabledOrder}
       >
         <Icon name={upSVG} size="25px" />
       </Button>
@@ -178,7 +141,7 @@ const SortOn = (props) => {
         onClick={() => {
           !isEditMode && setSortOrder('descending');
         }}
-        disabled={!activeSortOn}
+        disabled={isDisabledOrder}
       >
         <Icon name={downSVG} size="25px" />
       </Button>
