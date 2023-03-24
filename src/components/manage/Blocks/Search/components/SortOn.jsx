@@ -58,12 +58,22 @@ const SortOn = (props) => {
   const { sortOnOptions = [] } = data;
   const { sortable_indexes } = querystring;
 
-  const activeOption = searchedText ? (sortOn ? sortOn : RELEVANCE) : UNSORTED;
-
+  const activeOption = searchedText
+    ? sortOn
+      ? sortOn
+      : RELEVANCE
+    : sortOn || UNSORTED;
   const showRelevance = searchedText && !sortOn;
   const showUnsorted = !(sortOn || searchedText);
 
-  const isDisabledSelect = !searchedText && sortOnOptions.length < 2;
+  const allSortOnOptions = [
+    ...(sortOnOptions || []),
+    data?.query?.sort_on,
+  ].reduce((acc, f) => (acc.includes(f) ? acc : [...acc, f]), []);
+  const isDisabledSelect = !searchedText || allSortOnOptions.length < 1;
+
+  // console.log({ activeOption, searchedText, sortOn, sortOnOptions, data });
+
   const isDisabledOrder =
     activeOption === RELEVANCE || activeOption === UNSORTED;
 
@@ -90,21 +100,11 @@ const SortOn = (props) => {
           },
         ]
       : []),
-    ...sortOnOptions.map((k) => ({
+    ...allSortOnOptions.map((k) => ({
       value: k,
       label: sortable_indexes[k]?.title || k,
     })),
   ];
-
-  // console.log('showUnsorted', {
-  //   showRelevance,
-  //   showUnsorted,
-  //   sortOn,
-  //   searchedText,
-  //   sortOnOptions,
-  //   options,
-  //   value,
-  // });
 
   return (
     <div className="search-sort-wrapper">
@@ -113,7 +113,7 @@ const SortOn = (props) => {
           {intl.formatMessage(messages.sortOn)}
         </span>
         <Select
-          disabled={isDisabledSelect}
+          isDisabled={isDisabledSelect}
           id="select-search-sort-on"
           name="select-searchblock-sort-on"
           className="search-react-select-container"
