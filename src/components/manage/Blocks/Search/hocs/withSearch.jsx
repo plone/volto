@@ -1,9 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import qs from 'query-string';
-import { useLocation, useHistory } from 'react-router-dom';
 
 import { resolveExtension } from '@plone/volto/helpers/Extensions/withBlockExtensions';
+import useSearchBlockState from './useSearchBlockState';
 import config from '@plone/volto/registry';
 
 function getDisplayName(WrappedComponent) {
@@ -143,81 +142,16 @@ const getSearchFields = (searchData) => {
   );
 };
 
-/**
- * A HOC that will mirror the search block state to a hash location
- */
-const useHashState = () => {
-  const location = useLocation();
-  const history = useHistory();
-
-  const oldState = React.useMemo(() => {
-    return {
-      ...qs.parse(location.search),
-      ...qs.parse(location.hash),
-    };
-  }, [location.hash, location.search]);
-
-  // This creates a shallow copy. Why is this needed?
-  const current = Object.assign(
-    {},
-    ...Array.from(Object.keys(oldState)).map((k) => ({ [k]: oldState[k] })),
-  );
-
-  const setSearchData = React.useCallback(
-    (searchData) => {
-      const newParams = qs.parse(location.hash);
-
-      let changed = false;
-
-      Object.keys(searchData)
-        .sort()
-        .forEach((k) => {
-          if (searchData[k]) {
-            newParams[k] = searchData[k];
-            if (oldState[k] !== searchData[k]) {
-              changed = true;
-            }
-          }
-        });
-
-      if (changed) {
-        history.push({
-          hash: qs.stringify(newParams),
-        });
-      }
-    },
-    [history, oldState, location.hash],
-  );
-
-  return [current, setSearchData];
-};
-
-/**
- * A hook to make it possible to switch disable mirroring the search block
- * state to the window location. When using the internal state we "start from
- * scratch", as it's intended to be used in the edit page.
- */
-const useSearchBlockState = (uniqueId, isEditMode) => {
-  const [hashState, setHashState] = useHashState();
-  const [internalState, setInternalState] = React.useState({});
-
-  return isEditMode
-    ? [internalState, setInternalState]
-    : [hashState, setHashState];
-};
-
 // Simple compress/decompress the state in URL by replacing the lengthy string
-const deserializeQuery = (q = []) => {
-  return JSON.parse(q)?.map((kvp) => ({
-    ...kvp,
-    o: kvp.o.replace(/^paqo/, PAQO),
-  }));
-};
-const serializeQuery = (q) => {
-  return JSON.stringify(
-    q?.map((kvp) => ({ ...kvp, o: kvp.o.replace(PAQO, 'paqo') })),
-  );
-};
+const deserializeQuery = (q) =>
+  q
+    ? JSON.parse(q)?.map((kvp) => ({
+        ...kvp,
+        o: kvp.o.replace(/^paqo/, PAQO),
+      }))
+    : [];
+const serializeQuery = (q) =>
+  JSON.stringify(q?.map((kvp) => ({ ...kvp, o: kvp.o.replace(PAQO, 'paqo') })));
 
 const getSort = (args) => {
   const { toSortOn, toSortOrder, sortOn, sortOrder } = args;
@@ -227,7 +161,7 @@ const getSort = (args) => {
   };
 };
 
-const extractFacets = (data, query, locationSearchData) => {
+const extractFacetValues = (data, query, locationSearchData) => {
   const configuredFacets =
     data.facets?.map((facet) => facet?.field?.value) || [];
   const multiFacets = data.facets
@@ -268,22 +202,21 @@ const withSearch = (options) => (WrappedComponent) => {
     );
 
     const query = deserializeQuery(locationSearchData.query);
-    const searchTextFromUrl =
+    const searchedText =
       locationSearchData.SearchableText ||
       query.find(({ i }) => i === 'SearchableText')?.v ||
       '';
 
     // TODO: refactor, should use only useLocationStateManager()!!!
-    const [searchText, setSearchText] = React.useState(searchTextFromUrl);
+    const [localSearchText, setLocalSearchText] = React.useState(searchedText);
 
-    const defaultFacets = extractFacets(data, query, locationSearchData);
-    const [facets, setFacets] = React.useState(defaultFacets);
-
+    const [facets, setFacets] = React.useState(
+      extractFacetValues(data, query, locationSearchData),
+    );
     const [sortOn, setSortOn] = React.useState(data?.query?.sort_on);
     const [sortOrder, setSortOrder] = React.useState(data?.query?.sort_order);
-
     const [searchData, setSearchData] = React.useState(
-      getInitialState(data, facets, searchTextFromUrl, id),
+      getInitialState(data, facets, searchedText, id),
     );
 
     const timeoutRef = React.useRef();
@@ -346,9 +279,9 @@ const withSearch = (options) => (WrappedComponent) => {
         setSortOrder={setSortOrder}
         sortOn={sortOn}
         sortOrder={sortOrder}
-        searchedText={searchTextFromUrl}
-        searchText={searchText}
-        setSearchText={setSearchText}
+        searchedText={searchedText}
+        searchText={localSearchText}
+        setSearchText={setLocalSearchText}
         onTriggerSearch={onTriggerSearch}
         totalItems={totalItems}
       />
