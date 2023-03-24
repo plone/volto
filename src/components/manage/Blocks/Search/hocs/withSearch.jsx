@@ -53,6 +53,8 @@ const withSearch = (options) => (WrappedComponent) => {
       function (toSearchText, toSearchFacets, toSortOn, toSortOrder) {
         const handler = () => {
           const sortOnData = getSort({
+            toSortOn,
+            toSortOrder,
             sortOn,
             sortOrder,
             searchedText,

@@ -141,11 +141,23 @@ export const serializeQuery = (q) =>
   JSON.stringify(q?.map((kvp) => ({ ...kvp, o: kvp.o.replace(PAQO, 'paqo') })));
 
 export const getSort = (args) => {
-  const { toSortOn, toSortOrder, sortOn, sortOrder } = args;
-  return {
-    sortOn: toSortOn || sortOn,
-    sortOrder: toSortOrder || sortOrder,
-  };
+  const {
+    toSortOn,
+    toSortOrder,
+    sortOn,
+    sortOrder,
+    searchedText,
+    toSearchText,
+  } = args;
+  return searchedText && toSearchText && toSearchText !== searchedText
+    ? {
+        sortOn: '',
+        sortOrder: '',
+      }
+    : {
+        sortOn: toSortOn || sortOn,
+        sortOrder: toSortOrder || sortOrder,
+      };
 };
 
 export const extractFacetValues = (data, query, state) => {
