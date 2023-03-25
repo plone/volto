@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { uniq, uniqBy } from 'lodash';
-import { Button, Checkbox } from 'semantic-ui-react';
+import { uniqBy } from 'lodash';
+import { Button, Checkbox, Message } from 'semantic-ui-react';
 import { messages } from '@plone/volto/helpers';
 import { Icon, Toast, UniversalLink } from '@plone/volto/components';
 import {
@@ -59,6 +59,7 @@ const ListingTemplate = ({
     (state) => state.relations?.relations?.staticCatalogVocabularyQuery || {},
   );
 
+  // Editable if plone.api.relations available
   const editable = useSelector(
     (state) => state.relations?.relations?.readonly === false,
   );
@@ -305,6 +306,14 @@ const ListingTemplate = ({
       <div className="items" key="items">
         {items.length > 0 ? (
           <>
+            {!editable && (
+              <Message warning>
+                <FormattedMessage
+                  id="Relations are editable with plone.api >= 2.0.0."
+                  defaultMessage="Relations are editable with plone.api >= 2.0.0."
+                />
+              </Message>
+            )}
             <div className="listing-row selectall" key="selectall">
               <div className="listing-item">
                 <div />
