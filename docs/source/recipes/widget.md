@@ -150,56 +150,25 @@ Based on this setup, Volto will render this field with the `TokenWidget`.
 
 ### Single relation field
 
-```python
-relationchoice_field = RelationChoice(
-    title="RelationChoice – Object Browser widget",
-    description="relationchoice_field",
-    vocabulary="plone.app.vocabularies.Catalog",
-    required=False,
-)
-directives.widget(
-    "relationchoice_field",
-    frontendOptions={
-        "widget": "object_browser",
-        "widgetProps": {"mode": "link", "return": "single"},
-    },
-)
-```
-
-
-### Multi relation field
-
-```python
-relationlist_field = RelationList(
-    title="RelationList",
-    description="relationlist_field: z3c.relationfield.schema.RelationList",
-    value_type=RelationChoice(vocabulary="plone.app.vocabularies.Catalog"),
-    default=[],
-    missing_value=[],
-    required=False,
-)
-```
-
-
-### Restricting potential targets
+Relation field with named `StaticCatalogVocabulary`and `Select` widget:
 
 ```python
 relationchoice_field_named_staticcatalogvocabulary = RelationChoice(
-    title="RelationChoice – named StaticCatalogVocabulary – Object Browser widget",
-    description="relationchoice_field_named_staticcatalogvocabulary",
+    title="RelationChoice – named StaticCatalogVocabulary – Select widget",
+    description="field/relation: relationchoice_field_named_staticcatalogvocabulary",
     vocabulary="relationchoice_field_named_staticcatalogvocabulary",
     required=False,
 )
 directives.widget(
     "relationchoice_field_named_staticcatalogvocabulary",
     frontendOptions={
-        "widget": "object_browser",
-        "widgetProps": {"mode": "link", "return": "single"},
+        "widget": "select",
     },
 )
 ```
 
-It is recommended to define the vocabulary as a named StaticCatalogVocabulary.  
+
+It is recommended to define the vocabulary as a named `StaticCatalogVocabulary` with the field/relation name as its name.  
 This allowes the relations control panel to respect the defined restrictions to potential relation targets.
 
 {file}`vocabularies.py`
@@ -215,7 +184,7 @@ def ExamplesVocabularyFactory(context=None):
         {
             "portal_type": ["example"],
             "review_state": "published",
-            "sort_on": "getObjPositionInParent",
+            "sort_on": "sortable_title",
         }
     )
 ```
@@ -226,6 +195,40 @@ def ExamplesVocabularyFactory(context=None):
   name="relationchoice_field_named_staticcatalogvocabulary"
   component="example.contenttype.vocabularies.ExamplesVocabularyFactory"
   />
+```
+
+
+The directive is by now default and can be ommitted.
+
+```python
+relationchoice_field_named_staticcatalogvocabulary = RelationChoice(
+    title="RelationChoice – named StaticCatalogVocabulary – Select widget",
+    description="field/relation: relationchoice_field_named_staticcatalogvocabulary",
+    vocabulary="relationchoice_field_named_staticcatalogvocabulary",
+    required=False,
+)
+```
+
+
+### Multi relation field
+
+Multi relation field with named `StaticCatalogVocabulary`and `Select` widget:
+
+```python
+relationlist_field_named_staticcatalogvocabulary = RelationList(
+    title="RelationList – named StaticCatalogVocabulary – Select widget",
+    description="field/relation: relationlist_field_named_staticcatalogvocabulary",
+    value_type=RelationChoice(
+        vocabulary="relationlist_field_named_staticcatalogvocabulary",
+    ),
+    required=False,
+)
+directives.widget(
+    "relationlist_field_named_staticcatalogvocabulary",
+    frontendOptions={
+        "widget": "select",
+    },
+)
 ```
 
 
