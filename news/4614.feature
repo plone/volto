@@ -1,0 +1,1 @@
+Support RelationList field with named StaticCatalogVocabulary and SelectWidget. @ksuess
