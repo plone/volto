@@ -9,6 +9,9 @@ import { UniversalLink } from '@plone/volto/components';
 
 const BrokenRelations = () => {
   const dispatch = useDispatch();
+  const brokenRelationStats = useSelector(
+    (state) => state.relations?.stats?.broken,
+  );
   const brokenRelations = useSelector(
     (state) => state.relations?.subrequests?.broken?.relations,
   );
@@ -30,7 +33,10 @@ const BrokenRelations = () => {
         {Object.keys(brokenRelations.items).map((relationname) => (
           <div key={relationname}>
             <Divider section hidden />
-            <h4>{relationname}</h4>
+            <h4>
+              {brokenRelationStats[relationname]} broken <i>{relationname}</i>{' '}
+              relations
+            </h4>
             <Table>
               {uniqBy(brokenRelations.items[relationname], function (el) {
                 return el[0];

@@ -115,9 +115,9 @@ clean:
 
 .PHONY: docs-clean
 docs-clean:  ## Clean current and legacy docs build directories, and Python virtual environment
-	cd $(DOCS_DIR) && rm -rf $(BUILDDIR)/
 	rm -rf bin include lib
 	rm -rf docs/_build
+	cd $(DOCS_DIR) && rm -rf $(BUILDDIR)/
 
 .PHONY: docs-html
 docs-html: bin/python  ## Build html

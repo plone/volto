@@ -464,7 +464,6 @@ msgid "Breadcrumbs"
 msgstr "パンくず"
 
 #: components/manage/Controlpanels/Relations/BrokenRelations
-#: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Broken relations
 msgid "Broken relations"
 msgstr ""
@@ -2628,6 +2627,11 @@ msgstr ""
 msgid "Relations"
 msgstr ""
 
+#: components/manage/Controlpanels/Relations/RelationsListing
+# defaultMessage: Relations are editable with plone.api >= 2.0.0.
+msgid "Relations are editable with plone.api >= 2.0.0."
+msgstr ""
+
 #: components/theme/Search/Search
 # defaultMessage: Relevance
 msgid "Relevance"
@@ -4240,11 +4244,6 @@ msgstr "日時"
 msgid "event_where"
 msgstr "場所"
 
-#: components/manage/Controlpanels/Relations/RelationsMatrix
-# defaultMessage: flush and rebuild intids, and rebuild relations
-msgid "flush and rebuild intids, and rebuild relations"
-msgstr ""
-
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: flush and rebuild relations
 msgid "flush and rebuild relations"
@@ -4409,7 +4408,6 @@ msgstr "公開中"
 msgid "querystring-widget-select"
 msgstr "選択してください"
 
-#: components/manage/Controlpanels/Relations/RelationsMatrix
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: rebuild relations
 msgid "rebuild relations"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2023-03-23T09:14:08.291Z\n"
+"POT-Creation-Date: 2023-03-24T07:40:50.807Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -458,7 +458,6 @@ msgid "Breadcrumbs"
 msgstr ""
 
 #: components/manage/Controlpanels/Relations/BrokenRelations
-#: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Broken relations
 msgid "Broken relations"
 msgstr ""
@@ -2622,6 +2621,11 @@ msgstr ""
 msgid "Relations"
 msgstr ""
 
+#: components/manage/Controlpanels/Relations/RelationsListing
+# defaultMessage: Relations are editable with plone.api >= 2.0.0.
+msgid "Relations are editable with plone.api >= 2.0.0."
+msgstr ""
+
 #: components/theme/Search/Search
 # defaultMessage: Relevance
 msgid "Relevance"
@@ -4234,11 +4238,6 @@ msgstr ""
 msgid "event_where"
 msgstr ""
 
-#: components/manage/Controlpanels/Relations/RelationsMatrix
-# defaultMessage: flush and rebuild intids, and rebuild relations
-msgid "flush and rebuild intids, and rebuild relations"
-msgstr ""
-
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: flush and rebuild relations
 msgid "flush and rebuild relations"
@@ -4403,7 +4402,6 @@ msgstr ""
 msgid "querystring-widget-select"
 msgstr ""
 
-#: components/manage/Controlpanels/Relations/RelationsMatrix
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: rebuild relations
 msgid "rebuild relations"

@@ -462,7 +462,6 @@ msgid "Breadcrumbs"
 msgstr "面包屑导航"
 
 #: components/manage/Controlpanels/Relations/BrokenRelations
-#: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Broken relations
 msgid "Broken relations"
 msgstr ""
@@ -2626,6 +2625,11 @@ msgstr ""
 msgid "Relations"
 msgstr ""
 
+#: components/manage/Controlpanels/Relations/RelationsListing
+# defaultMessage: Relations are editable with plone.api >= 2.0.0.
+msgid "Relations are editable with plone.api >= 2.0.0."
+msgstr ""
+
 #: components/theme/Search/Search
 # defaultMessage: Relevance
 msgid "Relevance"
@@ -4238,11 +4242,6 @@ msgstr ""
 msgid "event_where"
 msgstr ""
 
-#: components/manage/Controlpanels/Relations/RelationsMatrix
-# defaultMessage: flush and rebuild intids, and rebuild relations
-msgid "flush and rebuild intids, and rebuild relations"
-msgstr ""
-
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: flush and rebuild relations
 msgid "flush and rebuild relations"
@@ -4407,7 +4406,6 @@ msgstr "已发布"
 msgid "querystring-widget-select"
 msgstr ""
 
-#: components/manage/Controlpanels/Relations/RelationsMatrix
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: rebuild relations
 msgid "rebuild relations"

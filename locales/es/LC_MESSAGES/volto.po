@@ -467,7 +467,6 @@ msgid "Breadcrumbs"
 msgstr "Barra de ruta"
 
 #: components/manage/Controlpanels/Relations/BrokenRelations
-#: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Broken relations
 msgid "Broken relations"
 msgstr ""
@@ -2631,6 +2630,11 @@ msgstr ""
 msgid "Relations"
 msgstr ""
 
+#: components/manage/Controlpanels/Relations/RelationsListing
+# defaultMessage: Relations are editable with plone.api >= 2.0.0.
+msgid "Relations are editable with plone.api >= 2.0.0."
+msgstr ""
+
 #: components/theme/Search/Search
 # defaultMessage: Relevance
 msgid "Relevance"
@@ -4243,11 +4247,6 @@ msgstr "Cuándo"
 msgid "event_where"
 msgstr "Dónde"
 
-#: components/manage/Controlpanels/Relations/RelationsMatrix
-# defaultMessage: flush and rebuild intids, and rebuild relations
-msgid "flush and rebuild intids, and rebuild relations"
-msgstr ""
-
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: flush and rebuild relations
 msgid "flush and rebuild relations"
@@ -4412,7 +4411,6 @@ msgstr "Publicado"
 msgid "querystring-widget-select"
 msgstr "Seleccione..."
 
-#: components/manage/Controlpanels/Relations/RelationsMatrix
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: rebuild relations
 msgid "rebuild relations"

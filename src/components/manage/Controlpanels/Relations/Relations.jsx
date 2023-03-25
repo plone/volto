@@ -44,18 +44,20 @@ const RelationsControlPanel = () => {
         {can_edit ? (
           <Segment.Group raised>
             <Segment className="primary">
-              <FormattedMessage id="Relations" defaultMessage="Relations" />
               {brokenRelations ? (
                 <React.Fragment>
-                  <Divider hidden />
                   <Message warning>
                     <FormattedMessage
                       id="Some relations are broken. Please fix."
                       defaultMessage="Some relations are broken. Please fix."
                     />
                   </Message>
+                  <Divider hidden />
                 </React.Fragment>
               ) : null}
+              <h1>
+                <FormattedMessage id="Relations" defaultMessage="Relations" />
+              </h1>
               {!relations_stats ? (
                 <React.Fragment>
                   <Divider hidden />
