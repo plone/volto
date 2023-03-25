@@ -166,7 +166,7 @@ export const getSort = (args) => {
           sortOn: toSortOn || sortOn,
           sortOrder: toSortOrder || sortOrder,
         };
-  console.log('getSort args', res, args);
+  console.log('res', res);
   return res;
 };
 

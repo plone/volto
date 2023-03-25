@@ -53,6 +53,7 @@ const withSearch = (options) => (WrappedComponent) => {
     const onTriggerSearch = React.useCallback(
       function (toSearchText, toSearchFacets, toSortOn, toSortOrder) {
         const handler = () => {
+          console.log('ontriggersearch', toSortOn, toSortOrder);
           const sortOnData = getSort({
             toSortOn,
             toSortOrder,

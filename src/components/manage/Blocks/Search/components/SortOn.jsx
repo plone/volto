@@ -63,7 +63,7 @@ const SortOn = (props) => {
       ? sortOn
       : RELEVANCE
     : sortOn || UNSORTED;
-  const showRelevance = searchedText && !sortOn;
+  const showRelevance = !!searchedText; // && !sortOn;
   const showUnsorted = !(sortOn || searchedText);
 
   const allSortOnOptions = [
@@ -72,7 +72,14 @@ const SortOn = (props) => {
   ].reduce((acc, f) => (acc.includes(f) ? acc : [...acc, f]), []);
   const isDisabledSelect = !searchedText || allSortOnOptions.length < 1;
 
-  // console.log({ activeOption, searchedText, sortOn, sortOnOptions, data });
+  console.log('xxx', {
+    activeOption,
+    searchedText,
+    sortOn,
+    sortOnOptions,
+    data,
+    sortOrder,
+  });
 
   const isDisabledOrder =
     activeOption === RELEVANCE || activeOption === UNSORTED;
@@ -142,6 +149,7 @@ const SortOn = (props) => {
           !isEditMode && setSortOrder('ascending');
         }}
         disabled={isDisabledOrder}
+        active={sortOrder === 'ascending'}
       >
         <Icon name={upSVG} size="25px" />
       </Button>
@@ -157,6 +165,7 @@ const SortOn = (props) => {
           !isEditMode && setSortOrder('descending');
         }}
         disabled={isDisabledOrder}
+        active={sortOrder === 'descending'}
       >
         <Icon name={downSVG} size="25px" />
       </Button>
