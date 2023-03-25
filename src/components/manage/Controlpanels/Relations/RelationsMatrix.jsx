@@ -13,7 +13,6 @@ import {
   Message,
   Popup,
   Tab,
-  Table,
 } from 'semantic-ui-react';
 import { messages } from '@plone/volto/helpers';
 import { Icon, Toast } from '@plone/volto/components';

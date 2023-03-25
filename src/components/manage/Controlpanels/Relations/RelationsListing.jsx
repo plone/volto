@@ -206,28 +206,16 @@ const ListingTemplate = ({
     } else {
       dispatch(searchContent('/findstenichätsch', null, 'potential_sources'));
     }
-  }, [dispatch, potential_targets_path, potential_sources_path]);
+  }, [
+    dispatch,
+    potential_targets_path,
+    potential_sources_path,
+    staticCatalogVocabularyQuery,
+  ]);
 
   const onSelectOptionHandler = (relation, item, selectedvalue, checked) => {
-    // if (noPloneApiRelation) {
-    //   // read only
-    //   toast.warning(
-    //     <Toast
-    //       warning
-    //       title="Create or delete relation"
-    //       content="not yet implemented"
-    //     />,
-    //   );
-    //   return;
-    // }
     let source = selectedvalue.y;
     let target = selectedvalue.x;
-    console.debug(
-      '>> create or delete relation:',
-      checked ? 'create' : 'delete',
-    );
-    console.debug(source, target);
-    console.debug('item', item);
     const relation_data = [
       {
         source: source,
@@ -235,7 +223,6 @@ const ListingTemplate = ({
         relation: relation,
       },
     ];
-    console.debug('relation_data', relation_data);
     dispatch(
       checked ? createRelations(relation_data) : deleteRelations(relation_data),
     )
