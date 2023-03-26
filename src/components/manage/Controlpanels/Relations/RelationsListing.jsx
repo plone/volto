@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import useDeepCompareEffect from 'use-deep-compare-effect';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -171,8 +172,7 @@ const ListingTemplate = ({
   }, [dispatch, relationtype]); // query_source
 
   // Get potential target objects
-  // TODO restrict to vocabulary
-  useEffect(() => {
+  useDeepCompareEffect(() => {
     // Fetch fresh potential targets
     if (potential_targets_path !== '/' && potential_targets_path !== '') {
       dispatch(
@@ -241,27 +241,31 @@ const ListingTemplate = ({
   };
 
   const onSelectAllHandler = (mtxoption, checked) => {
-    toast.warning(
-      <Toast
-        warning
-        title="Create or remove relations for all shown sources"
-        content="not yet implemented"
-      />,
-    );
     let elements = document.querySelectorAll(`div.checkbox_${mtxoption} input`);
-    // let identifier;
+    let relation_data = [];
     elements.forEach((element) => {
-      element.checked = checked;
-      // identifier = element.name.split('_-_');
-      // TODO update relations
-      // dispatch(
-      //   updateGroup(identifier[2], {
-      //     users: {
-      //       [identifier[1]]: checked ? true : false,
-      //     },
-      //   }),
-      // );
+      let identifier = element.name.split('_-_');
+      relation_data.push({
+        source: identifier[1],
+        target: identifier[2],
+        relation: relationtype,
+      });
     });
+    dispatch(
+      checked ? createRelations(relation_data) : deleteRelations(relation_data),
+    )
+      .then((resp) => {
+        dispatch(queryRelations(relationtype));
+      })
+      .then(() => {
+        toast.success(
+          <Toast
+            success
+            title={intl.formatMessage(messages.success)}
+            content="Relations updated"
+          />,
+        );
+      });
   };
 
   return matrix_options.length < MAX && items.length < MAX ? (
