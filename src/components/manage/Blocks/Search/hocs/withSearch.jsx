@@ -74,13 +74,13 @@ const withSearch = (options) => (WrappedComponent) => {
           if (sortOnData.sortOn !== sortOn) setSortOn(toSortOn);
           if (sortOnData.sortOrder !== toSortOrder) setSortOrder(toSortOrder);
 
-          // console.log(
-          //   'ontriggersearch',
+          // console.log('onTriggerSearch', [
+          //   toSearchText,
+          //   toSearchFacets,
           //   toSortOn,
           //   toSortOrder,
-          //   sortOnData,
           //   searchData,
-          // );
+          // ]);
 
           setCachedSearchData(searchData); // store internal state, can be passed to children
           setLocationSearchData(getQuerystringSearchFields(searchData)); // store in URL

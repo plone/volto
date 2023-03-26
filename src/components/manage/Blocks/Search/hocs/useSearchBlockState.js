@@ -34,7 +34,7 @@ const useHashState = () => {
       Object.keys(searchData)
         .sort()
         .forEach((k) => {
-          if (searchData[k]) {
+          if (searchData[k] !== undefined) {
             newParams[k] = searchData[k];
             if (oldState[k] !== searchData[k]) {
               changed = true;

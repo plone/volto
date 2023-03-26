@@ -24,7 +24,7 @@ export function getInitialState(data, facets, searchText, id) {
   const defaultSort = getSort({
     sortOn: data?.query?.sort_on,
     sortOrder: data?.query?.sort_order,
-    searchedText: '',
+    searchedText: searchText,
     toSearchText: searchText,
   });
 
@@ -130,7 +130,7 @@ export const getQuerystringSearchFields = (searchData) => {
   return Object.assign(
     {},
     ...SEARCH_ENDPOINT_FIELDS.map((k) => {
-      return searchData[k] ? { [k]: searchData[k] } : {};
+      return searchData[k] !== undefined ? { [k]: searchData[k] } : {};
     }),
     searchData.query ? { query: serializeQuery(searchData['query']) } : {},
   );
@@ -166,7 +166,7 @@ export const getSort = (args) => {
           sortOn: toSortOn || sortOn,
           sortOrder: toSortOrder || sortOrder,
         };
-  // console.log('res', res);
+  // console.log('args', args, res);
   return res;
 };
 
