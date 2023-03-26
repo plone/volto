@@ -180,7 +180,7 @@ const ListingTemplate = ({
           potential_targets_path,
           {
             metadata_fields: ['UID'],
-            sort_on: 'getObjPositionInParent',
+            sort_on: 'sortable_title',
             ...staticCatalogVocabularyQuery,
           },
           'potential_targets',
@@ -197,7 +197,7 @@ const ListingTemplate = ({
           potential_sources_path,
           {
             metadata_fields: ['UID'],
-            sort_on: 'getObjPositionInParent',
+            sort_on: 'sortable_title',
             // No need to restrict here. ...staticCatalogVocabularyQuery,
           },
           'potential_sources',
