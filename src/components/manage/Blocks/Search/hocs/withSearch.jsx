@@ -53,7 +53,6 @@ const withSearch = (options) => (WrappedComponent) => {
     const onTriggerSearch = React.useCallback(
       function (toSearchText, toSearchFacets, toSortOn, toSortOrder) {
         const handler = () => {
-          console.log('ontriggersearch', toSortOn, toSortOrder);
           const sortOnData = getSort({
             toSortOn,
             toSortOrder,
@@ -74,6 +73,14 @@ const withSearch = (options) => (WrappedComponent) => {
           if (toSearchFacets) setFacets(toSearchFacets);
           if (sortOnData.sortOn !== sortOn) setSortOn(toSortOn);
           if (sortOnData.sortOrder !== toSortOrder) setSortOrder(toSortOrder);
+
+          // console.log(
+          //   'ontriggersearch',
+          //   toSortOn,
+          //   toSortOrder,
+          //   sortOnData,
+          //   searchData,
+          // );
 
           setCachedSearchData(searchData); // store internal state, can be passed to children
           setLocationSearchData(getQuerystringSearchFields(searchData)); // store in URL

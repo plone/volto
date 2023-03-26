@@ -72,14 +72,14 @@ const SortOn = (props) => {
   ].reduce((acc, f) => (acc.includes(f) ? acc : [...acc, f]), []);
   const isDisabledSelect = !searchedText || allSortOnOptions.length < 1;
 
-  console.log('xxx', {
-    activeOption,
-    searchedText,
-    sortOn,
-    sortOnOptions,
-    data,
-    sortOrder,
-  });
+  // console.log('xxx', {
+  //   activeOption,
+  //   searchedText,
+  //   sortOn,
+  //   sortOnOptions,
+  //   data,
+  //   sortOrder,
+  // });
 
   const isDisabledOrder =
     activeOption === RELEVANCE || activeOption === UNSORTED;

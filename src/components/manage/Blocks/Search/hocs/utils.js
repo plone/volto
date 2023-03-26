@@ -100,8 +100,8 @@ export function normalizeState({
         return valueToQuery({ value, facet });
       }),
     ].filter((o) => !!o),
-    sort_on: sortOn || query.sort_on,
-    sort_order: sortOrder || query.sort_order,
+    sort_on: sortOn === 'relevance' ? '' : sortOn ?? query.sort_on,
+    sort_order: sortOn === 'relevance' ? '' : sortOrder ?? query.sort_order,
     b_size: query.b_size,
     limit: query.limit,
     block: id,
@@ -166,7 +166,7 @@ export const getSort = (args) => {
           sortOn: toSortOn || sortOn,
           sortOrder: toSortOrder || sortOrder,
         };
-  console.log('res', res);
+  // console.log('res', res);
   return res;
 };
 
