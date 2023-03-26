@@ -71,8 +71,17 @@ const withSearch = (options) => (WrappedComponent) => {
           });
 
           if (toSearchFacets) setFacets(toSearchFacets);
-          if (sortOnData.sortOn !== sortOn) setSortOn(toSortOn);
-          if (sortOnData.sortOrder !== toSortOrder) setSortOrder(toSortOrder);
+
+          let sort_order;
+          if (sortOnData.sortOn !== sortOn) {
+            setSortOn(toSortOn);
+            if (toSortOrder === undefined || toSortOrder === sortOrder) {
+              // TODO: a sortOn also needs a default sort order
+              sort_order = data?.query?.sort_order || 'descending';
+            }
+          }
+          if (sortOnData.sortOrder !== toSortOrder || sort_order)
+            setSortOrder(sort_order || toSortOrder);
 
           // console.log('onTriggerSearch', [
           //   toSearchText,
