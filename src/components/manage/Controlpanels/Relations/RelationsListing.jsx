@@ -171,7 +171,7 @@ const ListingTemplate = ({
     dispatch(queryRelations(relationtype));
   }, [dispatch, relationtype]); // query_source
 
-  // Get potential target objects
+  // Get potential source and target objects
   useDeepCompareEffect(() => {
     // Fetch fresh potential targets
     if (potential_targets_path !== '/' && potential_targets_path !== '') {
