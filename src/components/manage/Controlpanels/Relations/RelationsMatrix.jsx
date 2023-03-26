@@ -131,7 +131,6 @@ const RelationsMatrix = (props) => {
         );
       })
       .catch((error) => {
-        console.debug('error', error);
         // TODO: The true error sent by the API is shadowed by the superagent one
         // Update this when this issue is fixed.
         const shadowedError = JSON.parse(error.response.text);
