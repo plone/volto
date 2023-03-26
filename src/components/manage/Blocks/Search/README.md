@@ -53,4 +53,19 @@ a "default sort":
 
 - the users see an "Unsorted" option if there's no "search term"
 
+## TODO tests:
 
+When I set:
+- Query Sort On is "effective", "descending"
+- "show sorting" is true
+And I first display the search block
+- SortOn control shows "Effective date" as option and is disabled
+And when I enter some search text
+- SortOn controls is enabled
+- "Relevance" is its current value. The sort order is disabled
+And when I change sorting to "Effective date"
+- Results are sorted by effective
+- "Descending" sort order button is active
+And I can copy the URL and paste it in a new tab
+- Sort on is Effective
+- Sort order is descending and button is active
