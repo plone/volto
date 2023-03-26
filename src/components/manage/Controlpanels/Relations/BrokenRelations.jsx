@@ -38,21 +38,23 @@ const BrokenRelations = () => {
               relations
             </h4>
             <Table>
-              {uniqBy(brokenRelations.items[relationname], function (el) {
-                return el[0];
-              }).map((el) => (
-                <Table.Row key={el[0]}>
-                  <Table.Cell>
-                    <UniversalLink
-                      href={`${flattenToAppURL(el[0])}/edit`}
-                      openLinkInNewTab={true}
-                    >
-                      {flattenToAppURL(el[0])}
-                    </UniversalLink>
-                  </Table.Cell>
-                  <Table.Cell>{el[1]}</Table.Cell>
-                </Table.Row>
-              ))}
+              <Table.Body>
+                {uniqBy(brokenRelations.items[relationname], function (el) {
+                  return el[0];
+                }).map((el) => (
+                  <Table.Row key={el[0]}>
+                    <Table.Cell>
+                      <UniversalLink
+                        href={`${flattenToAppURL(el[0])}/edit`}
+                        openLinkInNewTab={true}
+                      >
+                        {flattenToAppURL(el[0])}
+                      </UniversalLink>
+                    </Table.Cell>
+                    <Table.Cell>{el[1]}</Table.Cell>
+                  </Table.Row>
+                ))}
+              </Table.Body>
             </Table>
           </div>
         ))}
