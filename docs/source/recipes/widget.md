@@ -150,12 +150,12 @@ Based on this setup, Volto will render this field with the `TokenWidget`.
 
 ## Relation fields
 
-A relation field is either a single relation field to hold at most one content object, `RelationChoice`, or a multi relation field `RelationList`, that can hold more than one content object.
+A relation field is either a single relation field to hold at most one content object, `RelationChoice`, or a multi relation field, `RelationList`, that can hold more than one content object.
 
 Relation fields can be edited and rendered with the `Select` widget.
-The restriction on content types, workflow states, e.a. can be done with a `StaticCatalogVocabulary`.
+The restriction on content types, workflow states, and so on can be done with a `StaticCatalogVocabulary`.
 
-There are other vocabulary types and other widgets like the `ObjectBrowser` widget.
+There are other vocabulary types and other widgets, including the `ObjectBrowser` widget.
 
 (widget-relation-field-single-label)=
 
@@ -207,7 +207,7 @@ def ExamplesVocabularyFactory(context=None):
 ```
 
 The `Select` widget is currently the default for `RelationChoice` fields with vocabulary.
-Therefore the directive can be ommitted.
+Therefore the directive can be omitted.
 
 ```python
 relationchoice_field_named_staticcatalogvocabulary = RelationChoice(
