@@ -146,11 +146,22 @@ const applyConfig = (config) => {
 Based on this setup, Volto will render this field with the `TokenWidget`.
 
 
+(widget-relation-field-label)=
+
 ## Relation fields
+
+A relation field is either a single relation field to hold at most one content object, `RelationChoice`, or a multi relation field `RelationList`, that can hold more than one content object.
+
+Relation fields can be edited and rendered with the `Select` widget.
+The restriction on content types, workflow states, e.a. can be done with a `StaticCatalogVocabulary`.
+
+There are other vocabulary types and other widgets like the `ObjectBrowser` widget.
+
+(widget-relation-field-single-label)=
 
 ### Single relation field
 
-Relation field with named `StaticCatalogVocabulary`and `Select` widget:
+Relation field (`RelationChoice`) with a named `StaticCatalogVocabulary` and `Select` widget:
 
 ```python
 relationchoice_field_named_staticcatalogvocabulary = RelationChoice(
@@ -176,7 +187,6 @@ from plone.app.vocabularies.catalog import StaticCatalogVocabulary
 from zope.interface import provider
 from zope.schema.interfaces import IVocabularyFactory
 
-
 @provider(IVocabularyFactory)
 def ExamplesVocabularyFactory(context=None):
     return StaticCatalogVocabulary(
@@ -196,7 +206,8 @@ def ExamplesVocabularyFactory(context=None):
   />
 ```
 
-The directive is by now default and can be ommitted.
+The `Select` widget is currently the default for `RelationChoice` fields with vocabulary.
+Therefore the directive can be ommitted.
 
 ```python
 relationchoice_field_named_staticcatalogvocabulary = RelationChoice(
@@ -207,10 +218,11 @@ relationchoice_field_named_staticcatalogvocabulary = RelationChoice(
 )
 ```
 
+(widget-relation-field-multi-label)=
 
 ### Multi relation field
 
-Multi relation field with named `StaticCatalogVocabulary`and `Select` widget:
+Multi relation field (`RelationList`) with a named `StaticCatalogVocabulary`and `Select` widget:
 
 ```python
 relationlist_field_named_staticcatalogvocabulary = RelationList(
