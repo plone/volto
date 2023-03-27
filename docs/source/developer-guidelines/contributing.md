@@ -52,8 +52,9 @@ Creating branches and editing code on our main repositories is restricted and gr
 - A Developer with full access to the workflow will need to review and approve your Pull request.
 
 Please be aware that as long as you are working from a fork, you are the only developer being able to commit to your branch.
-Collaboration between developers on bigger pull requests is only efficient when these are done on branch on the main repo. 
+Collaboration between developers on bigger pull requests is more efficient when these are done on branch on the main repo. 
 Therefore: as your first time contribution don't choose a too big problem to solve.
+Pick something that you can fix or complete from start to end.
 
 
 
