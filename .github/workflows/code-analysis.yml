@@ -1,5 +1,6 @@
 name: Code Analysis Check
-on: [push]
+on: [push, pull_request_target]
+
 jobs:
   prettier:
     name: Prettier

@@ -6,9 +6,11 @@ on:
     paths:
       - 'docs/**'
   # Build pull requests
-  pull_request:
+  pull_request_target:
     paths:
       - 'docs/**'
+    branches:
+      - master
 
 jobs:
   docs:
