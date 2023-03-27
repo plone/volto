@@ -33,10 +33,31 @@ In your report, please specify a few things:
 ```{include} ./branch-policy.md
 ```
 
-## Create a pull request
+## Sign and send us the Plone Contributors Agreement
 
 You must sign the [Plone Contributor Agreement](https://plone.org/foundation/contributors-agreement) to contribute code and documentation to any Plone project.
-This means that we can NOT accept pull requests from you until you do this.
+This means that we can NOT accept pull requests from you from any location until you do this.
+
+
+## First Time Contributors: work from a fork
+
+When we have received and it has been process by a communty member, you will be added to the Plone organisation and added to the Contributors Team on GitHub. 
+You can create issues, add comments to existing issues, and discuss the development of Plone with others.
+Creating branches and editing code on our main repositories is restricted and granted to members who have been active in the Plone community for a while and have shown continued interest to contributing.
+
+- First, verify that your issue is valid by creating it and discussing it with other developers.
+- Then, create a fork of the repo in your own workspace, work on your code and make commits. 
+- When you want to run our code quality checks, create a Pull Request from your repo/branch to the main repository.
+- As a security measure, the first run of code Quality checks need to be [approved by a member in our Developers Team](https://docs.github.com/en/actions/managing-workflow-runs/approving-workflow-runs-from-public-forks)
+- A Developer with full access to the workflow will need to review and approve your Pull request.
+
+Please be aware that as long as you are working from a fork, you are the only developer being able to commit to your branch.
+Collaboration between developers on bigger pull requests is only efficient when these are done on branch on the main repo. 
+Therefore: as your first time contribution don't choose a too big problem to solve.
+
+
+
+## Documenting your changes 
 
 All pull requests must include a `towncrier` news item.
 This is a file that is placed in the root of the repository directory at `/news`.
@@ -57,7 +78,8 @@ strings as translatable as defined in the [i18n guide](../recipes/i18n.md).
 ## Code Quality
 
 All pull requests must pass tests, documentation builds, and other code quality checks.
-Contributors are strongly encouraged to run these checks locally before creating a pull request.
+Developers are strongly encouraged to run these checks locally before creating a pull request.
+Contributors without full Developer access will need to create a Pull request first and get approval for their first PR from a Developer.
 These checks are enforced automatically on every pull request, so you might as well save time and frustration by doing these checks locally first.
 
 Specifically:
