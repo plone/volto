@@ -167,9 +167,8 @@ directives.widget(
 )
 ```
 
-
 It is recommended to define the vocabulary as a named `StaticCatalogVocabulary` with the field/relation name as its name.  
-This allowes the relations control panel to respect the defined restrictions to potential relation targets.
+This allows the {guilabel}`relations` control panel to respect the defined restrictions to potential relation targets.
 
 {file}`vocabularies.py`
 ```python
@@ -196,7 +195,6 @@ def ExamplesVocabularyFactory(context=None):
   component="example.contenttype.vocabularies.ExamplesVocabularyFactory"
   />
 ```
-
 
 The directive is by now default and can be ommitted.
 
