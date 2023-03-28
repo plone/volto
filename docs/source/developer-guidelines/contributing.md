@@ -41,7 +41,7 @@ This means that we can NOT accept pull requests from you from any location until
 
 ## First Time Contributors: work from a fork
 
-When we have received and it has been process by a communty member, you will be added to the Plone organisation and added to the Contributors Team on GitHub. 
+When we have received the Plone Contributor Agreement and it has been process by a community member, you will be added to the Plone organisation and added to the Contributors Team on GitHub. 
 You can create issues, add comments to existing issues, and discuss the development of Plone with others.
 Creating branches and editing code on our main repositories is restricted and granted to members who have been active in the Plone community for a while and have shown continued interest to contributing.
 
