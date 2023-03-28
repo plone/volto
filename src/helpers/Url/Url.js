@@ -310,7 +310,11 @@ export function checkAndNormalizeUrl(url) {
     res.url = URLUtils.normalizeTelephone(url);
   } else {
     //url
-    if (res.url && !res.url.startsWith('/') && !res.url.startsWith('#')) {
+    if (
+      res.url?.length >= 0 &&
+      !res.url.startsWith('/') &&
+      !res.url.startsWith('#')
+    ) {
       res.url = URLUtils.normalizeUrl(url);
       if (!URLUtils.isUrl(res.url)) {
         res.isValid = false;
