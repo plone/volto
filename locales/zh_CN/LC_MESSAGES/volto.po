@@ -90,7 +90,7 @@ msgid "Add (object list)"
 msgstr "添加（对象列表）"
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
+# defaultMessage: To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see
 msgid "Add Addons"
 msgstr "添加附件"
 
@@ -3472,6 +3472,11 @@ msgstr "活动和非活动对象的总数"
 # defaultMessage: Total comments
 msgid "Total comments"
 msgstr "全部评论"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Total items to be deleted:
+msgid "Total items to be deleted:"
+msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Total number of objects in each cache

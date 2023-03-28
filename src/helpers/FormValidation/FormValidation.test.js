@@ -5,6 +5,7 @@ const schema = {
   properties: {
     username: { title: 'Username', type: 'string', description: '' },
     email: { title: 'Email', type: 'string', widget: 'email', description: '' },
+    url: { title: 'url', type: 'string', widget: 'url', description: '' },
   },
   fieldsets: [
     { id: 'default', title: 'FIXME: User Data', fields: ['username'] },
@@ -79,6 +80,46 @@ describe('FormValidation', () => {
 
     it('validates correct email', () => {
       formData.email = 'test@domain.name';
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema,
+          formData,
+          formatMessage,
+        }),
+      ).toEqual({});
+    });
+    it('validates incorrect url', () => {
+      formData.url = 'foo';
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema,
+          formData,
+          formatMessage,
+        }),
+      ).toEqual({ url: [messages.isValidURL.defaultMessage] });
+    });
+    it('validates url', () => {
+      formData.url = 'https://plone.org/';
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema,
+          formData,
+          formatMessage,
+        }),
+      ).toEqual({});
+    });
+    it('validates url with ip', () => {
+      formData.url = 'http://127.0.0.1:8080/Plone';
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema,
+          formData,
+          formatMessage,
+        }),
+      ).toEqual({});
+    });
+    it('validates url with localhost', () => {
+      formData.url = 'http://localhost:8080/Plone';
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema,

@@ -84,7 +84,7 @@ msgid "Add (object list)"
 msgstr "Aggiungi"
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
+# defaultMessage: To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see
 msgid "Add Addons"
 msgstr "Aggiungi Add-ons"
 
@@ -3466,6 +3466,11 @@ msgstr "Totale degli oggetti attivi e non attivi"
 # defaultMessage: Total comments
 msgid "Total comments"
 msgstr "Totale dei commenti"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Total items to be deleted:
+msgid "Total items to be deleted:"
+msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Total number of objects in each cache

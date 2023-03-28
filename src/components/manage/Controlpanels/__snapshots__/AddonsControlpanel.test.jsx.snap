@@ -31,10 +31,10 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
       >
         Activate and deactivate add-ons in the lists below.
       </h3>
-      To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
+      To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see
        
       <a
-        href="http://docs.plone.org/manage/installing/installing_addons.html"
+        href="https://6.docs.plone.org/install/"
         rel="noopener noreferrer"
         target="_blank"
       >
