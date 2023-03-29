@@ -16,7 +16,6 @@ import {
   normalizeUrl,
   removeProtocol,
 } from '@plone/volto/helpers/Url/Url';
-import { UniversalLink } from '@plone/volto/components';
 import { searchContent } from '@plone/volto/actions/search/search';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import { defineMessages, injectIntl } from 'react-intl';

@@ -10,27 +10,17 @@ import useLinkEditor from '@plone/volto/components/manage/AnchorPlugin/useLinkEd
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import ObjectBrowserWidget from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
 
-import {
-  flattenToAppURL,
-  getBaseUrl,
-  isInternalURL,
-} from '@plone/volto/helpers';
+import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
 import { createContent } from '@plone/volto/actions';
 import { readAsDataURL } from 'promise-file-reader';
 import { isEmpty } from 'lodash';
-import {
-  FormFieldWrapper,
-  Icon,
-  UniversalLink,
-  Toast,
-} from '@plone/volto/components';
+import { FormFieldWrapper, Icon, Toast } from '@plone/volto/components';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
 import uploadSVG from '@plone/volto/icons/upload.svg';
-import openinnewtabSVG from '@plone/volto/icons/openinnewtab.svg';
 
 const Dropzone = loadable(() => import('react-dropzone'));
 
@@ -84,18 +74,16 @@ const MediaSelectWidget = (props) => {
     openObjectBrowser,
     value,
     imageSize = 'teaser',
-    selected = true,
     inline,
     handlesErrors = true,
     mode = 'image',
   } = props;
-  !inline && console.log(value);
   const intl = useIntl();
   const linkEditor = useLinkEditor();
   const location = useLocation();
   const dispatch = useDispatch();
   const contextUrl = pathname ?? location.pathname;
-
+  const objId = value?.split('/')[value.split('/').length - 1];
   const [dragging, setDragging] = useState(false);
 
   const requestId = `media-upload-${id}`;
@@ -178,7 +166,7 @@ const MediaSelectWidget = (props) => {
       />
       <ObjectBrowserWidget
         {...props}
-        value={[{ '@id': value, title: value }]}
+        value={[{ '@id': value, title: objId }]}
         mode="link"
       />
     </div>
