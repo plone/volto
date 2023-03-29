@@ -390,7 +390,9 @@ const ListingTemplate = ({
                           key={matrix_option.value}
                           title={matrix_option.title}
                           disabled={
-                            relationtype === 'isReferencing' || !editable
+                            relationtype === 'isReferencing' ||
+                            relationtype === 'iterate-working-copy' ||
+                            !editable
                           }
                           checked={item.targets.includes(matrix_option.value)}
                           onChange={(event, { checked }) => {
