@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 
 import useLinkEditor from '@plone/volto/components/manage/AnchorPlugin/useLinkEditor';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
+import ObjectBrowserWidget from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
 
 import {
   flattenToAppURL,
@@ -16,6 +17,7 @@ import {
 } from '@plone/volto/helpers';
 import { createContent } from '@plone/volto/actions';
 import { readAsDataURL } from 'promise-file-reader';
+import { isEmpty } from 'lodash';
 import {
   FormFieldWrapper,
   Icon,
@@ -87,7 +89,7 @@ const MediaSelectWidget = (props) => {
     handlesErrors = true,
     mode = 'image',
   } = props;
-
+  !inline && console.log(value);
   const intl = useIntl();
   const linkEditor = useLinkEditor();
   const location = useLocation();
@@ -161,29 +163,24 @@ const MediaSelectWidget = (props) => {
   const onDragEnter = useCallback(() => setDragging(true), []);
   const onDragLeave = useCallback(() => setDragging(false), []);
 
-  return value ? (
+  return !isEmpty(value) ? (
     <div
       className="media-upload-widget-image"
       onClick={onFocus}
       onKeyDown={onFocus}
       role="toolbar"
     >
-      {mode === 'image' && !inline && selected && <ImageToolbar {...props} />}
+      {/* {mode === 'image' && !inline && selected && <ImageToolbar {...props} />} */}
       <img
         className={props.className}
         src={`${flattenToAppURL(value)}/@@images/image/${imageSize}`}
         alt=""
       />
-      <FormFieldWrapper {...props} noForInFieldLabel className="image">
-        <div className="media-widget-filepath-preview">
-          {value}&nbsp;
-          {isInternalURL ? (
-            <UniversalLink href={value} openLinkInNewTab>
-              <Icon name={openinnewtabSVG} size="16px" />
-            </UniversalLink>
-          ) : null}
-        </div>
-      </FormFieldWrapper>
+      <ObjectBrowserWidget
+        {...props}
+        value={[{ '@id': value, title: value }]}
+        mode="link"
+      />
     </div>
   ) : (
     <div
@@ -202,7 +199,7 @@ const MediaSelectWidget = (props) => {
         onDragLeave={onDragLeave}
         className="dropzone"
       >
-        {({ getRootProps, getInputProps }) => (
+        {({ getRootProps, getInputProps, open }) => (
           <div {...getRootProps()}>
             <Message>
               {dragging && <Dimmer active></Dimmer>}

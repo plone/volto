@@ -1,4 +1,5 @@
 import { defineMessages } from 'react-intl';
+import { isEmpty } from 'lodash';
 
 const messages = defineMessages({
   Source: {
@@ -45,7 +46,11 @@ export function ImageSchema({ formData, intl }) {
       {
         id: 'default',
         title: 'Default',
-        fields: [...(formData.url ? ['url', 'alt', 'align', 'size'] : ['url'])],
+        fields: [
+          ...(!isEmpty[formData.url]
+            ? ['url', 'alt', 'align', 'size']
+            : ['url']),
+        ],
       },
       ...(formData.url
         ? [

@@ -19,6 +19,7 @@ import MediaWidget from '@plone/volto/components/manage/Widgets/MediaSelectWidge
  */
 const Edit = (props) => {
   const { data, block, onChangeBlock, editable, selected } = props;
+  console.log(data);
   return (
     <div
       className={cx(
@@ -29,7 +30,7 @@ const Edit = (props) => {
         data.align,
       )}
     >
-      {data.url ? (
+      {data.url?.length > 0 ? (
         <img
           className={cx({
             'full-width': data.align === 'full',
