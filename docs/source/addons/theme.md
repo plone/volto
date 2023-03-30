@@ -128,3 +128,63 @@ or add a key in your `package.json` project:
 ```{warning}
 This feature works only with scss-based themes, and not with SemanticUI themes.
 ```
+
+Volto theming uses SemanticUI theming capabilities to define and extend at a later point if needed a theme. However, while maintaining and playing well with the Semantic UI Volto base, using a traditional CSS approach can be done using the less-based `extras` scape hatch.
+
+At the same time, one can entirely bail off the extras scape hatch and add your own, by customizing the `theme.js` module in Volto.
+
+```js
+// These are the default
+import 'semantic-ui-less/semantic.less';
+import '@plone/volto/../theme/themes/pastanaga/extras/extras.less';
+
+// You can add more entry points for theming
+import '@kitconcept/volto-light-theme/theme/main.scss';
+```
+
+Then you can build your own approach for theming, even use the preprocessor of your choice (here, scss) while maintaining the "base" Volto theme, but customizing it using the resultant CSS from your own theming entry point.
+
+You can see an example of such a theme in: https://github.com/kitconcept/volto-light-theme
+
+This approach supports only scss preprocessor, but the same approach can be used to add more entry points or use another preprocessor or theming approach.
+
+There are defined two entry points: variables and main.
+In your add-on, you can extend an existing theme in use by creating a file corresponding to each entry point:
+
+* `./src/theme/_variables.scss`
+* `./src/theme/_main.scss`
+
+## Variables (`addonsThemeCustomizationsVariables`)
+
+Use this entry point file to modify a theme original variables (by adding the entry point after your own variable definitions in the theme). In the theme, it should be imported like this:
+
+```scss hl_lines="2"
+@import 'variables';
+@import 'addonsThemeCustomizationsVariables';
+@import 'typography';
+@import 'utils';
+@import 'layout';
+```
+
+Volto will detect all the add-ons that have the entry points files and import grouped them under `addonsThemeCustomizationsVariables` alias which that Volto sets automatically.
+
+## Main (`addonsThemeCustomizationsMain`)
+
+These entry point that is intended to add your own styling complementing the theme ones. You should add it after all the CSS of your theme:
+
+```scss hl_lines="6"
+@import 'blocks/search';
+@import 'blocks/listing';
+
+@import 'temp';
+
+@import 'addonsThemeCustomizationsMain';
+
+/* No CSS beyond this point */
+```
+
+Volto will detect all the add-ons that have the entry points files and import grouped them under `addonsThemeCustomizationsMain` alias that Volto sets automatically.
+
+```{note}
+It will only work in combination of the theme declaration above.
+```
