@@ -41,6 +41,16 @@ const SearchBlockEdit = (props) => {
     intl,
     title: { id: intl.formatMessage(messages.template) },
   });
+
+  const { schemaEnhancer } = config.blocks.blocksConfig.listing;
+  if (schemaEnhancer) {
+    schema = schemaEnhancer({
+      schema: cloneDeep(schema),
+      data,
+      intl,
+    });
+  }
+
   const listingVariations = config.blocks.blocksConfig?.listing?.variations;
   let activeItem = listingVariations.find(
     (item) => item.id === data.listingBodyTemplate,
