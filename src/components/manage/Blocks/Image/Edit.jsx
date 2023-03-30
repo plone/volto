@@ -19,7 +19,6 @@ import MediaWidget from '@plone/volto/components/manage/Widgets/MediaSelectWidge
  */
 const Edit = (props) => {
   const { data, block, onChangeBlock, editable, selected } = props;
-  console.log(data);
   return (
     <div
       className={cx(
