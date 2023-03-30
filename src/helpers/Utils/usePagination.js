@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import qs from 'query-string';
 import { useSelector } from 'react-redux';
@@ -11,9 +11,12 @@ import { slugify } from '@plone/volto/helpers/Utils/Utils';
  */
 const useCreatePageQueryStringKey = (id) => {
   const blockTypesWithPagination = ['search', 'listing'];
-  const blocks = useSelector((state) => state.content.data.blocks);
+  const blocks = useSelector((state) => state?.content?.data?.blocks) || [];
+  const blocksLayout =
+    useSelector((state) => state?.content?.data?.blocks_layout?.items) || [];
+  const displayedBlocks = blocksLayout?.map((item) => blocks[item]);
   const hasMultiplePaginations =
-    Object.values(blocks).filter((item) =>
+    displayedBlocks.filter((item) =>
       blockTypesWithPagination.includes(item['@type']),
     ).length > 1 || false;
 
@@ -24,26 +27,30 @@ const useCreatePageQueryStringKey = (id) => {
  * A pagination helper that tracks the query and resets pagination in case the
  * query changes.
  */
-export const usePagination = (id = null, defaultPage = 1) => {
+export const usePagination = (blockId = null, defaultPage = '1') => {
+  console.log('blockId', blockId);
   const location = useLocation();
   const history = useHistory();
-  const pageQueryStringKey = useCreatePageQueryStringKey(id);
+  const pageQueryStringKey = useCreatePageQueryStringKey(blockId);
   const pageQueryParam =
     qs.parse(location.search)[pageQueryStringKey] || defaultPage;
-  const [currentPage, setCurrentPage] = React.useState(pageQueryParam);
-  const firstUpdate = useRef(true);
+  const [currentPage, setCurrentPage] = React.useState(
+    parseInt(pageQueryParam),
+  );
+  const queryRef = useRef(qs.parse(location.search)?.query);
 
   useEffect(() => {
-    if (!firstUpdate.current) {
-      const newParams = {
-        ...qs.parse(location.search),
-        [pageQueryStringKey]: currentPage,
-      };
-      history.replace({
-        search: qs.stringify(newParams),
-      });
+    if (queryRef.current !== qs.parse(location.search)?.query) {
+      setCurrentPage(defaultPage);
+      queryRef.current = qs.parse(location.search)?.query;
     }
-    firstUpdate.current = false;
+    const newParams = {
+      ...qs.parse(location.search),
+      [pageQueryStringKey]: currentPage,
+    };
+    history.replace({
+      search: qs.stringify(newParams),
+    });
   }, [currentPage, defaultPage, location.search, history, pageQueryStringKey]);
 
   return {
