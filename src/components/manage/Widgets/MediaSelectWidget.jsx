@@ -83,7 +83,7 @@ const MediaSelectWidget = (props) => {
   const location = useLocation();
   const dispatch = useDispatch();
   const contextUrl = pathname ?? location.pathname;
-  const objId = value?.split('/')[value.split('/').length - 1];
+  const objId = value?.split('/')[value?.split('/')?.length - 1];
   const [dragging, setDragging] = useState(false);
 
   const requestId = `media-upload-${id}`;
