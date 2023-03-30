@@ -130,6 +130,10 @@ class AddonConfigurationRegistry {
     this.packages = {};
     this.customizations = new Map();
 
+    // Theme from a package.json key or from volto.config.js
+    // Programatically via volto.config.js wins
+    this.theme = packageJson.theme || this.voltoConfigJS.theme;
+
     this.initDevelopmentPackages();
     this.initPublishedPackages();
     this.initAddonsFromEnvVar();
@@ -352,6 +356,27 @@ class AddonConfigurationRegistry {
     return this.getAddons()
       .map((o) => o.eslintExtender)
       .filter((e) => e);
+  }
+
+  getCustomThemeAddons() {
+    const customThemeAddonsInfo = {
+      variables: [],
+      main: [],
+    };
+
+    this.getAddonDependencies().forEach((addon) => {
+      // We have two possible insertion points, variables and main
+      const customThemeVariables = `${this.packages[addon].modulePath}/theme/_variables.scss`;
+      const customThemeMain = `${this.packages[addon].modulePath}/theme/_main.scss`;
+      if (fs.existsSync(customThemeVariables) && addon !== this.theme) {
+        customThemeAddonsInfo.variables.push(addon);
+      }
+      if (fs.existsSync(customThemeMain) && addon !== this.theme) {
+        customThemeAddonsInfo.main.push(addon);
+      }
+    });
+
+    return customThemeAddonsInfo;
   }
 
   /**
