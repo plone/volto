@@ -110,7 +110,7 @@ const RightColumnFacets = (props) => {
                         sortOn,
                         // we use the default sort order as a reasonable default
                         // I doubt it's reasonable, but I don't see another way
-                        sortOrder || data?.query?.sort_order || 'descending',
+                        // sortOrder || data?.query?.sort_order || 'descending',
                       );
                     });
                   }}
