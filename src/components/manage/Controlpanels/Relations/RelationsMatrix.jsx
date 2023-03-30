@@ -10,7 +10,6 @@ import {
   Form,
   Header,
   Input,
-  Message,
   Popup,
   Tab,
 } from 'semantic-ui-react';
