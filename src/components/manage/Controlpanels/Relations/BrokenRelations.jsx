@@ -10,7 +10,7 @@ import { UniversalLink } from '@plone/volto/components';
 const BrokenRelations = () => {
   const dispatch = useDispatch();
   const brokenRelationStats = useSelector(
-    (state) => state.relations?.stats?.broken,
+    (state) => state.relations?.stats?.broken || {},
   );
   const brokenRelations = useSelector(
     (state) => state.relations?.subrequests?.broken?.relations,
@@ -20,7 +20,7 @@ const BrokenRelations = () => {
     dispatch(queryRelations(null, true, 'broken'));
   }, [dispatch]);
 
-  return brokenRelations ? (
+  return brokenRelations && Object.keys(brokenRelations).length > 0 ? (
     <>
       <Divider section hidden />
       <Segment>

@@ -44,7 +44,7 @@ const RelationsControlPanel = () => {
         {can_edit ? (
           <Segment.Group raised>
             <Segment className="primary">
-              {brokenRelations ? (
+              {brokenRelations && Object.keys(brokenRelations).length > 0  ? (
                 <React.Fragment>
                   <Message warning>
                     <FormattedMessage
