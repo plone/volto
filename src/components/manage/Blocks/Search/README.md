@@ -18,3 +18,54 @@ facet type.
 Layout: a high-level component that controls the way the results are layed out
 in relation to the facet list (facets can be displayed at top, left or right of
 results).
+
+## Sorting
+
+We start with the following assumption: the "relevance" based ordering is an
+intrinsec property which should be provided by the system, the end users should
+automatically benefit from it.
+
+For the main listing-block derived query, the editors can choose a sort order.
+This will be the called the "default sort", it will be used whenever we don't
+have "an external condition" that changes that.
+
+So we follow this logic:
+
+If the Editor doesn't enable aditional Sort On index from the Controls
+fieldset, the block will work like:
+
+- when the user loads the search block without a search term, the listing uses
+  the "default sort" in the Query part.
+- when the user enters a search term (or if he/she loads the search block with
+  a search term via URL), the search block will automatically switch to
+  "relevance" sorting.
+- If there's only one sort option available, the SortOn control is read-only
+  (disabled)
+- The "relevance" sort option is automatically added as an option when the user
+  has a "search term"
+- If there's no "default sort" and no "search term", but the Editor enabled the
+  Sort On control, then the Sort On control displays only one option,
+  "Unsorted". This will force the Editor to either disable the control or add
+  some sorting options
+
+If the Editor enables additional sorton indexes but doesn't define
+a "default sort":
+
+- the users see an "Unsorted" option if there's no "search term"
+
+## TODO tests:
+
+When I set:
+- Query Sort On is "effective", "descending"
+- "show sorting" is true
+And I first display the search block
+- SortOn control shows "Effective date" as option and is disabled
+And when I enter some search text
+- SortOn controls is enabled
+- "Relevance" is its current value. The sort order is disabled
+And when I change sorting to "Effective date"
+- Results are sorted by effective
+- "Descending" sort order button is active
+And I can copy the URL and paste it in a new tab
+- Sort on is Effective
+- Sort order is descending and button is active

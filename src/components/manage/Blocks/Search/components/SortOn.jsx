@@ -50,29 +50,59 @@ const SortOn = (props) => {
     querystring = {},
     intl,
   } = props;
-  const { sortOnOptions = [] } = data;
-
-  // We don't want to show sorting options if there is only 1 way to sort
-  if (!sortOnOptions || sortOnOptions.length < 1) {
-    return null;
-  }
-
-  const { sortable_indexes } = querystring;
   const Select = reactSelect.default;
 
-  const activeSortOn = sortOn || data?.query?.sort_on || '';
+  const RELEVANCE = 'relevance';
+  const UNSORTED = 'unsorted';
 
-  const noValueLabel = searchedText
-    ? intl.formatMessage(messages.relevance)
-    : intl.formatMessage(messages.unsorted);
+  const { sortOnOptions = [] } = data;
+  const { sortable_indexes } = querystring;
+
+  const activeOption = searchedText
+    ? sortOn
+      ? sortOn
+      : RELEVANCE
+    : sortOn || UNSORTED;
+  const showRelevance = !!searchedText; // && !sortOn;
+  const showUnsorted = !(sortOn || searchedText);
+
+  const allSortOnOptions = [
+    ...(sortOnOptions || []),
+    data?.query?.sort_on,
+  ].reduce((acc, f) => (acc.includes(f) ? acc : [...acc, f]), []);
+  const isDisabledSelect = !searchedText || allSortOnOptions.length < 1;
+
+  const isDisabledOrder =
+    activeOption === RELEVANCE || activeOption === UNSORTED;
 
   const value = {
-    value: activeSortOn,
-    label:
-      activeSortOn && sortable_indexes
-        ? sortable_indexes[activeSortOn]?.title
-        : noValueLabel,
+    value: activeOption,
+    label: messages[activeOption]
+      ? intl.formatMessage(messages[activeOption])
+      : sortable_indexes[activeOption]?.title,
   };
+  const options = [
+    ...(showRelevance
+      ? [
+          {
+            value: RELEVANCE,
+            label: intl.formatMessage(messages.relevance),
+          },
+        ]
+      : []),
+    ...(showUnsorted
+      ? [
+          {
+            value: UNSORTED,
+            label: intl.formatMessage(messages.unsorted),
+          },
+        ]
+      : []),
+    ...allSortOnOptions.map((k) => ({
+      value: k,
+      label: sortable_indexes[k]?.title || k,
+    })),
+  ];
 
   return (
     <div className="search-sort-wrapper">
@@ -81,6 +111,7 @@ const SortOn = (props) => {
           {intl.formatMessage(messages.sortOn)}
         </span>
         <Select
+          isDisabled={isDisabledSelect}
           id="select-search-sort-on"
           name="select-searchblock-sort-on"
           className="search-react-select-container"
@@ -89,13 +120,7 @@ const SortOn = (props) => {
           styles={sortOnSelectStyles}
           theme={selectTheme}
           components={{ DropdownIndicator, Option }}
-          options={[
-            { value: '', label: noValueLabel },
-            ...sortOnOptions.map((k) => ({
-              value: k,
-              label: k === '' ? noValueLabel : sortable_indexes[k]?.title || k,
-            })),
-          ]}
+          options={options}
           isSearchable={false}
           value={value}
           onChange={(data) => {
@@ -114,7 +139,8 @@ const SortOn = (props) => {
         onClick={() => {
           !isEditMode && setSortOrder('ascending');
         }}
-        disabled={!activeSortOn}
+        disabled={isDisabledOrder}
+        active={sortOrder === 'ascending'}
       >
         <Icon name={upSVG} size="25px" />
       </Button>
@@ -129,7 +155,8 @@ const SortOn = (props) => {
         onClick={() => {
           !isEditMode && setSortOrder('descending');
         }}
-        disabled={!activeSortOn}
+        disabled={isDisabledOrder}
+        active={sortOrder === 'descending'}
       >
         <Icon name={downSVG} size="25px" />
       </Button>
