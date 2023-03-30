@@ -28,7 +28,6 @@ const useCreatePageQueryStringKey = (id) => {
  * query changes.
  */
 export const usePagination = (blockId = null, defaultPage = '1') => {
-  console.log('blockId', blockId);
   const location = useLocation();
   const history = useHistory();
   const pageQueryStringKey = useCreatePageQueryStringKey(blockId);
