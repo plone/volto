@@ -4243,8 +4243,8 @@ msgid "event_where"
 msgstr "Ort"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: flush and rebuild relations
-msgid "flush and rebuild relations"
+# defaultMessage: flush intIds and rebuild relations
+msgid "flush intIds and rebuild relations"
 msgstr "TODO Translation. IntIds neu generieren und Relationen neu katalogisieren"
 
 #: components/manage/Blocks/Teaser/schema

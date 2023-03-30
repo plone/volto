@@ -305,8 +305,8 @@ export const messages = defineMessages({
     defaultMessage: 'rebuild relations',
   },
   flushAndRebuildRelations: {
-    id: 'flush and rebuild relations',
-    defaultMessage: 'flush and rebuild relations',
+    id: 'flush intIds and rebuild relations',
+    defaultMessage: 'flush intIds and rebuild relations',
   },
   addPotentialTargetsPath: {
     id: 'target path',
