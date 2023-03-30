@@ -27,10 +27,10 @@ const useCreatePageQueryStringKey = (id) => {
  * A pagination helper that tracks the query and resets pagination in case the
  * query changes.
  */
-export const usePagination = (blockId = null, defaultPage = '1') => {
+export const usePagination = (id = null, defaultPage = 1) => {
   const location = useLocation();
   const history = useHistory();
-  const pageQueryStringKey = useCreatePageQueryStringKey(blockId);
+  const pageQueryStringKey = useCreatePageQueryStringKey(id);
   const pageQueryParam =
     qs.parse(location.search)[pageQueryStringKey] || defaultPage;
   const [currentPage, setCurrentPage] = React.useState(
