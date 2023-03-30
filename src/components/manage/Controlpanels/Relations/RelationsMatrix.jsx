@@ -290,7 +290,7 @@ const RelationsMatrix = (props) => {
       menuItem: intl.formatMessage(messages.fixRelations),
       pane: (
         <Tab.Pane attached={true} key="rebuild">
-          {brokenRelations ? (
+          {brokenRelations && Object.keys(brokenRelations).length > 0 ? (
             <div>
               {can_fix_relations ? (
                 <React.Fragment>
@@ -298,12 +298,6 @@ const RelationsMatrix = (props) => {
                   <h2>
                     {capitalize(intl.formatMessage(messages.rebuildRelations))}
                   </h2>
-                  <p>
-                    Get all relations from zc.relation catalog and store them in
-                    an annotation on the portal. Remove all entries from
-                    zc.relation catalog. Clean up intids. Restore relations from
-                    the annotation on on the portal.
-                  </p>
 
                   <Button.Group>
                     <Button
@@ -320,18 +314,18 @@ const RelationsMatrix = (props) => {
                       intl.formatMessage(messages.flushAndRebuildRelations),
                     )}
                   </h2>
+                  <ul>
+                    <li>
+                      Regenerate intIds (tokens of relations in relation
+                      catalog)
+                    </li>
+                    <li>Rebuild relations</li>
+                  </ul>
+                  <p>Check the log for details!</p>
                   <p>
-                    Delete all intids during the rebuild process and create new
-                    one. If you have a lot of relations this can take some time.
-                    Check the log for details!
+                    <b>Warning</b>: If you have add-ons relying on intIds, you
+                    should not flush them.
                   </p>
-                  <div>
-                    <Message warning>
-                      Warning: If you have relations on tiles, flushing and
-                      rebuilding intids will destroy them because the intids
-                      changed.
-                    </Message>
-                  </div>
                   <Divider hidden />
                   <Button.Group>
                     <Button
