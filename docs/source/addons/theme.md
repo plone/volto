@@ -119,22 +119,17 @@ or add a key in your `package.json` project:
 /* End Config */
 ```
 
-3. Load the add-on as any other in your project's `package.json` `addons` key.
-4. The theme should be active and you can add now overrides to the default theme in `src/theme` as you would do it in a project.
-5. If you want, you can delete now your project `theme` folder, since the one in the add-on will take precedence.
+3. You also have to declare it as an add-on, so don't forget to add it in the `addons` key in `volto.config.js` or in `package.json`.
+4. After starting Volto, the theme should be active and you can add now overrides to the default theme in `src/theme` as you would do it in a project.
+5. You can safely delete now your project's `theme` folder, since the one in the add-on will take precedence.
 
-# Modify the theme from another add-on
+## Using your own scape hatch
 
-```{warning}
-This feature works only with scss-based themes, and not with SemanticUI themes.
-```
-
-Volto theming uses SemanticUI theming capabilities to define and extend at a later point if needed a theme. However, while maintaining and playing well with the Semantic UI Volto base, using a traditional CSS approach can be done using the less-based `extras` scape hatch.
+Volto theming uses SemanticUI theming capabilities to define and extend a theme for your site. However, while maintaining and playing well with the Semantic UI Volto base, using a traditional CSS approach can be done using the less-based `extras` scape hatch.
 
 At the same time, one can entirely bail off the extras scape hatch and add your own, by customizing the `theme.js` module in Volto.
 
 ```js
-// These are the default
 import 'semantic-ui-less/semantic.less';
 import '@plone/volto/../theme/themes/pastanaga/extras/extras.less';
 
@@ -142,21 +137,36 @@ import '@plone/volto/../theme/themes/pastanaga/extras/extras.less';
 import '@kitconcept/volto-light-theme/theme/main.scss';
 ```
 
-Then you can build your own approach for theming, even use the preprocessor of your choice (here, scss) while maintaining the "base" Volto theme, but customizing it using the resultant CSS from your own theming entry point.
+While building your own scape hatch for theming, you can use the preprocessor of your choice (in the example, scss) while maintaining the "base" Volto theme, but customizing it using the resultant CSS.
 
 You can see an example of such a theme in: https://github.com/kitconcept/volto-light-theme
 
-This approach supports only scss preprocessor, but the same approach can be used to add more entry points or use another preprocessor or theming approach.
+## Modify a custom theme using from another add-on
 
-There are defined two entry points: variables and main.
-In your add-on, you can extend an existing theme in use by creating a file corresponding to each entry point:
+Sometimes you have a custom theme that you want to reuse through all your projects, but with some differences, maintaining the base.
+Usually, the only option would be to use an addon that adds more CSS to the base theme, using imports that will load after the theme.
+However, there is a problem with this approach.
+You cannot use existing theme variables (like breakpoints, etc) on these new CSS.
+The same way, it gets somewhat detached from the normal flow of the loaded theme.
+Same applies for add-ons, they are detached from the current theme.
+One could use a SemanticUI approach for making this work, but it's SemanticUI bound.
+
+```{warning}
+This is only possible when using your own scape hatch, and works only with scss-based themes, and not with SemanticUI themes, since it enables a couple of entry points that only support scss files. For an example of how it could be used, see: https://github.com/kitconcept/volto-light-theme
+```
+
+If your custom scape hatch defines a custom theme using scss, you can take advantage of this feature.
+Although not limited to this, it would be possible to extend this feature to add more entry points, use another preprocessor or theming approach.
+
+This feature enables two entry points: variables and main.
+From your add-on code, you can extend an existing theme in use by creating a file corresponding to each entry point:
 
 * `./src/theme/_variables.scss`
 * `./src/theme/_main.scss`
 
-## Variables (`addonsThemeCustomizationsVariables`)
+### Variables (`addonsThemeCustomizationsVariables`)
 
-Use this entry point file to modify a theme original variables (by adding the entry point after your own variable definitions in the theme). In the theme, it should be imported like this:
+Use this entrypoint file to modify the original variables of the current loaded theme (by adding the entrypoint after your own variable definitions in the theme). In the theme, it should be imported like this:
 
 ```scss hl_lines="2"
 @import 'variables';
@@ -166,11 +176,11 @@ Use this entry point file to modify a theme original variables (by adding the en
 @import 'layout';
 ```
 
-Volto will detect all the add-ons that have the entry points files and import grouped them under `addonsThemeCustomizationsVariables` alias which that Volto sets automatically.
+Volto will not only load your add-on entrypoints files but it will also detect all the add-ons that have these entrypoint files and import them grouped under a single file, and will add automatically an `addonsThemeCustomizationsVariables` alias that can be referenced from the theme as shown above.
 
-## Main (`addonsThemeCustomizationsMain`)
+### Main (`addonsThemeCustomizationsMain`)
 
-These entry point that is intended to add your own styling complementing the theme ones. You should add it after all the CSS of your theme:
+This entrypoint is intended to add your own styling definitions, complementing the theme ones. You should add it after all the CSS of your theme:
 
 ```scss hl_lines="6"
 @import 'blocks/search';
@@ -183,8 +193,8 @@ These entry point that is intended to add your own styling complementing the the
 /* No CSS beyond this point */
 ```
 
-Volto will detect all the add-ons that have the entry points files and import grouped them under `addonsThemeCustomizationsMain` alias that Volto sets automatically.
+Volto will also detect all the add-ons that have this entrypoint files and import them grouped under a single file, and will add automatically an `addonsThemeCustomizationsMain` alias that can be referenced from the theme as shown above.
 
 ```{note}
-It will only work in combination of the theme declaration above.
+It will only work in combination with the theme declaration in `volto.config.js` or in `package.json`.
 ```
