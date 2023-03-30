@@ -39,18 +39,30 @@ Add a ./theme/_${name}.scss in your add-on to load your theme customizations in 
 }
 
 module.exports = ({ main, variables }) => {
-  const addonsThemeLoaderVariablesPath = path.join(
-    process.cwd(),
-    'src',
-    '_variables.scss',
-  );
-  const addonsThemeLoaderMainPath = path.join(
-    process.cwd(),
-    'src',
-    '_main.scss',
-  );
+  // const addonsThemeLoaderVariablesPath = path.join(
+  //   process.cwd(),
+  //   'src',
+  //   '_variables.scss',
+  // );
+  // const addonsThemeLoaderMainPath = path.join(
+  //   process.cwd(),
+  //   'src',
+  //   '_main.scss',
+  // );
 
-  // const addonsLoaderPath = tmp.tmpNameSync({ postfix: '.js' });
+  // const addonsThemeLoaderVariablesPath = path.join(
+  //   process.cwd(),
+  //   'src',
+  //   '_variables.scss',
+  // );
+  // const addonsThemeLoaderMainPath = path.join(
+  //   process.cwd(),
+  //   'src',
+  //   '_main.scss',
+  // );
+
+  const addonsThemeLoaderVariablesPath = tmp.tmpNameSync({ postfix: '.scss' });
+  const addonsThemeLoaderMainPath = tmp.tmpNameSync({ postfix: '.scss' });
   fs.writeFileSync(
     addonsThemeLoaderVariablesPath,
     new Buffer.from(getAddonsLoaderCode('variables', variables)),
@@ -59,6 +71,7 @@ module.exports = ({ main, variables }) => {
     addonsThemeLoaderMainPath,
     new Buffer.from(getAddonsLoaderCode('main', main)),
   );
+
   return [addonsThemeLoaderVariablesPath, addonsThemeLoaderMainPath];
 };
 
