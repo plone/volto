@@ -365,14 +365,22 @@ class AddonConfigurationRegistry {
     };
 
     this.getAddonDependencies().forEach((addon) => {
+      const normalizedAddonName = addon.split(':')[0];
       // We have two possible insertion points, variables and main
-      const customThemeVariables = `${this.packages[addon].modulePath}/theme/_variables.scss`;
-      const customThemeMain = `${this.packages[addon].modulePath}/theme/_main.scss`;
-      if (fs.existsSync(customThemeVariables) && addon !== this.theme) {
-        customThemeAddonsInfo.variables.push(addon);
+
+      const customThemeVariables = `${this.packages[normalizedAddonName].modulePath}/theme/_variables.scss`;
+      const customThemeMain = `${this.packages[normalizedAddonName].modulePath}/theme/_main.scss`;
+      if (
+        fs.existsSync(customThemeVariables) &&
+        normalizedAddonName !== this.theme
+      ) {
+        customThemeAddonsInfo.variables.push(normalizedAddonName);
       }
-      if (fs.existsSync(customThemeMain) && addon !== this.theme) {
-        customThemeAddonsInfo.main.push(addon);
+      if (
+        fs.existsSync(customThemeMain) &&
+        normalizedAddonName !== this.theme
+      ) {
+        customThemeAddonsInfo.main.push(normalizedAddonName);
       }
     });
 
