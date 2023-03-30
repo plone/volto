@@ -9,6 +9,7 @@ import { compose } from 'redux';
 import { compact, isArray, isEmpty, remove } from 'lodash';
 import { connect } from 'react-redux';
 import { Label, Popup, Button } from 'semantic-ui-react';
+import { UniversalLink } from '@plone/volto/components';
 import {
   flattenToAppURL,
   isInternalURL,
@@ -109,8 +110,13 @@ export class ObjectBrowserWidgetComponent extends Component {
     return (
       <Popup
         key={flattenToAppURL(href)}
+        hoverable
         content={
-          <div style={{ display: 'flex' }}>
+          <UniversalLink
+            href={flattenToAppURL(href)}
+            openLinkInNewTab
+            style={{ display: 'flex' }}
+          >
             {isInternalURL(href) ? (
               <Icon name={homeSVG} size="18px" />
             ) : (
@@ -118,7 +124,7 @@ export class ObjectBrowserWidgetComponent extends Component {
             )}
             &nbsp;
             {flattenToAppURL(href)}
-          </div>
+          </UniversalLink>
         }
         trigger={
           <Label>
