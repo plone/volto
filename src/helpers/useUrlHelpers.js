@@ -12,7 +12,8 @@ export function useUrlHelpers() {
     return calculateApiPath(
       apiHeaders.host,
       apiHeaders.internalApiPath,
-      apiHeaders.protocol);
+      apiHeaders.protocol,
+    );
   }
   return {
     getApiPath: getApiPath,
@@ -49,7 +50,8 @@ export function injectUrlHelpers(WrappedComponent){
       return calculateApiPath(
         this.props.apiHeaders.host,
         this.props.apiHeaders.internalApiPath,
-        this.props.apiHeaders.protocol);
+        this.props.apiHeaders.protocol,
+      );
     }
 
     render() {
@@ -83,11 +85,13 @@ export function injectUrlHelpers(WrappedComponent){
       (!settings.internalApiPath || settings.internalApiPath === undefined) &&
       internalApiPath
     ) {
-      apiPathValue = req.headers['x-internal-api-path'];
-    } else if ((!settings.apiPath || settings.apiPath === undefined) &&
-      apiPath){
+      apiPathValue = internalApiPath;
+    } else if (
+      (!settings.apiPath || settings.apiPath === undefined) &&
+      apiPath
+    ) {
       apiPathValue = `${protocol}://${apiPath}`;
-    }else {
+    } else {
       apiPathValue =
         settings.internalApiPath === undefined
           ? 'http://localhost:8080/Plone'
