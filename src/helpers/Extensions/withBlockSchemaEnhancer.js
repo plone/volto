@@ -1,9 +1,8 @@
-import { defineMessages } from 'react-intl';
 import React from 'react';
+import { defineMessages } from 'react-intl';
 import { useIntl } from 'react-intl';
 import config from '@plone/volto/registry';
 import { cloneDeepSchema } from '@plone/volto/helpers/Utils/Utils';
-import { defaultStyleSchema } from '@plone/volto/components/manage/Blocks/Block/StylesSchema';
 
 const messages = defineMessages({
   variation: {
@@ -258,7 +257,12 @@ export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
   const blockType = formData['@type'];
   const variations = blocksConfig[blockType]?.variations || [];
 
-  let schema = applySchemaEnhancer({ schema: originalSchema, formData, intl });
+  let schema = applySchemaEnhancer({
+    schema: originalSchema,
+    formData,
+    intl,
+    blocksConfig,
+  });
 
   if (variations.length > 1) {
     addExtensionFieldToSchema({
@@ -274,40 +278,54 @@ export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
   return <FormComponent {...props} schema={schema} />;
 };
 
-/**
- * A HOC that enhances the incoming schema prop with styling widget support
- * by:
- *
- * - adds the variation selection input (as a choice widget)
- */
-export const withStylingSchemaEnhancer = (FormComponent) => (props) => {
-  const { formData, schema } = props;
-  const intl = useIntl();
-
-  const blocksConfig = getBlocksConfig(props);
-
-  const blockType = formData['@type'];
-  const enableStyling = blocksConfig[blockType]?.enableStyling;
-
-  if (enableStyling) {
-    const stylesSchema =
-      blocksConfig[blockType]?.stylesSchema || defaultStyleSchema;
-
-    schema.fieldsets.push({
-      id: 'styling',
-      title: intl.formatMessage(messages.styling),
-      fields: ['styles'],
-    });
-
-    schema.properties.styles = {
-      widget: 'object',
-      title: intl.formatMessage(messages.styling),
-      schema: stylesSchema({
-        schema: defaultStyleSchema({ formData, intl }),
-        formData,
-        intl,
-      }),
-    };
-  }
-  return <FormComponent {...props} schema={schema} />;
+export const EMPTY_STYLES_SCHEMA = {
+  fieldsets: [
+    {
+      id: 'default',
+      title: 'Default',
+      fields: [],
+    },
+  ],
+  properties: {},
+  required: [],
 };
+
+/**
+ * Creates the `styles` field and fieldset in a schema
+ */
+export const addStyling = ({ schema, formData, intl }) => {
+  schema.fieldsets.push({
+    id: 'styling',
+    title: intl.formatMessage(messages.styling),
+    fields: ['styles'],
+  });
+
+  schema.properties.styles = {
+    widget: 'object',
+    title: intl.formatMessage(messages.styling),
+    schema: EMPTY_STYLES_SCHEMA,
+  };
+  return schema;
+};
+
+/**
+ * Allows compose-like declaration of schema enhancers
+ *
+ * Example usage:
+ * const schemaEnhancer = composeSchema(schemaEnhancerA, schemaEnhancerB)
+ *
+ * where each enhancer is a function with signature
+ * ({schema, formData, ...rest}) => schema
+ *
+ */
+export function composeSchema() {
+  const enhancers = Array.from(arguments);
+  const composer = (args) => {
+    const props = enhancers.reduce(
+      (acc, enhancer) => (enhancer ? { ...acc, schema: enhancer(acc) } : acc),
+      { ...args },
+    );
+    return props.schema;
+  };
+  return composer;
+}

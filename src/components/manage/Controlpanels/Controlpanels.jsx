@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import { concat, filter, last, map, uniqBy } from 'lodash';
 import { Portal } from 'react-portal';
 import { Helmet } from '@plone/volto/helpers';
-import { Container, Grid, Header, Segment } from 'semantic-ui-react';
+import { Container, Grid, Header, Message, Segment } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import { listControlpanels, getSystemInformation } from '@plone/volto/actions';
@@ -173,60 +173,67 @@ class Controlpanels extends Component {
           return el;
         })
       : [];
+    const { filterControlPanels } = config.settings;
     const controlpanels = map(
-      concat(this.props.controlpanels, customcontrolpanels, [
-        {
-          '@id': '/addons',
-          group: this.props.intl.formatMessage(messages.general),
-          title: this.props.intl.formatMessage(messages.addons),
-        },
-        {
-          '@id': '/database',
-          group: this.props.intl.formatMessage(messages.general),
-          title: this.props.intl.formatMessage(messages.database),
-        },
-        {
-          '@id': '/rules',
-          group: this.props.intl.formatMessage(messages.content),
-          title: this.props.intl.formatMessage(messages.contentRules),
-        },
-        {
-          '@id': '/undo',
-          group: this.props.intl.formatMessage(messages.general),
-          title: this.props.intl.formatMessage(messages.undo),
-        },
-        {
-          '@id': '/aliases',
-          group: this.props.intl.formatMessage(messages.general),
-          title: this.props.intl.formatMessage(messages.urlmanagement),
-        },
-        {
-          '@id': '/moderate-comments',
-          group: this.props.intl.formatMessage(messages.content),
-          title: this.props.intl.formatMessage(messages.moderatecomments),
-        },
-        {
-          '@id': '/users',
-          group: this.props.intl.formatMessage(
-            messages.usersControlPanelCategory,
-          ),
-          title: this.props.intl.formatMessage(messages.users),
-        },
-        {
-          '@id': '/usergroupmembership',
-          group: this.props.intl.formatMessage(
-            messages.usersControlPanelCategory,
-          ),
-          title: this.props.intl.formatMessage(messages.usergroupmemberbership),
-        },
-        {
-          '@id': '/groups',
-          group: this.props.intl.formatMessage(
-            messages.usersControlPanelCategory,
-          ),
-          title: this.props.intl.formatMessage(messages.groups),
-        },
-      ]),
+      concat(
+        filterControlPanels(this.props.controlpanels),
+        customcontrolpanels,
+        [
+          {
+            '@id': '/addons',
+            group: this.props.intl.formatMessage(messages.general),
+            title: this.props.intl.formatMessage(messages.addons),
+          },
+          {
+            '@id': '/database',
+            group: this.props.intl.formatMessage(messages.general),
+            title: this.props.intl.formatMessage(messages.database),
+          },
+          {
+            '@id': '/rules',
+            group: this.props.intl.formatMessage(messages.content),
+            title: this.props.intl.formatMessage(messages.contentRules),
+          },
+          {
+            '@id': '/undo',
+            group: this.props.intl.formatMessage(messages.general),
+            title: this.props.intl.formatMessage(messages.undo),
+          },
+          {
+            '@id': '/aliases',
+            group: this.props.intl.formatMessage(messages.general),
+            title: this.props.intl.formatMessage(messages.urlmanagement),
+          },
+          {
+            '@id': '/moderate-comments',
+            group: this.props.intl.formatMessage(messages.content),
+            title: this.props.intl.formatMessage(messages.moderatecomments),
+          },
+          {
+            '@id': '/users',
+            group: this.props.intl.formatMessage(
+              messages.usersControlPanelCategory,
+            ),
+            title: this.props.intl.formatMessage(messages.users),
+          },
+          {
+            '@id': '/usergroupmembership',
+            group: this.props.intl.formatMessage(
+              messages.usersControlPanelCategory,
+            ),
+            title: this.props.intl.formatMessage(
+              messages.usergroupmemberbership,
+            ),
+          },
+          {
+            '@id': '/groups',
+            group: this.props.intl.formatMessage(
+              messages.usersControlPanelCategory,
+            ),
+            title: this.props.intl.formatMessage(messages.groups),
+          },
+        ],
+      ),
       (controlpanel) => ({
         ...controlpanel,
         id: last(controlpanel['@id'].split('/')),
@@ -243,12 +250,27 @@ class Controlpanels extends Component {
             <Segment className="primary">
               <FormattedMessage id="Site Setup" defaultMessage="Site Setup" />
             </Segment>
+            {this.props.systemInformation &&
+              this.props.systemInformation.upgrade && (
+                <Message attached warning>
+                  <FormattedMessage
+                    id="The site configuration is outdated and needs to be upgraded."
+                    defaultMessage="The site configuration is outdated and needs to be upgraded."
+                  />{' '}
+                  <Link to={`/controlpanel/plone-upgrade`}>
+                    <FormattedMessage
+                      id="Please continue with the upgrade."
+                      defaultMessage="Please continue with the upgrade."
+                    />
+                  </Link>
+                </Message>
+              )}
             {map(groups, (group) => [
               <Segment key={`header-${group}`} secondary>
                 {group}
               </Segment>,
               <Segment key={`body-${group}`} attached>
-                <Grid columns={6}>
+                <Grid doubling columns={6}>
                   <Grid.Row>
                     {map(filter(controlpanels, { group }), (controlpanel) => (
                       <Grid.Column key={controlpanel.id}>

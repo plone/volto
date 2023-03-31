@@ -90,6 +90,7 @@ import sortDownSVG from '@plone/volto/icons/sort-down.svg';
 import sortUpSVG from '@plone/volto/icons/sort-up.svg';
 import downKeySVG from '@plone/volto/icons/down-key.svg';
 import moreSVG from '@plone/volto/icons/more.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   back: {
@@ -150,7 +151,7 @@ const messages = defineMessages({
   },
   messageReorder: {
     id: 'Item succesfully moved.',
-    defaultMessage: 'Item succesfully moved.',
+    defaultMessage: 'Item successfully moved.',
   },
   messagePasted: {
     id: 'Item(s) pasted.',
@@ -289,6 +290,10 @@ const messages = defineMessages({
     id: 'This Page is referenced by the following items:',
     defaultMessage: 'This Page is referenced by the following items:',
   },
+  deleteItemCountMessage: {
+    id: 'Total items to be deleted:',
+    defaultMessage: 'Total items to be deleted:',
+  },
   deleteItemMessage: {
     id: 'Items to be deleted:',
     defaultMessage: 'Items to be deleted:',
@@ -417,6 +422,8 @@ class Contents extends Component {
     this.paste = this.paste.bind(this);
     this.fetchContents = this.fetchContents.bind(this);
     this.orderTimeout = null;
+    this.deleteItemsToShowThreshold = 10;
+
     this.state = {
       selected: [],
       showDelete: false,
@@ -426,6 +433,7 @@ class Contents extends Component {
       showProperties: false,
       showWorkflow: false,
       itemsToDelete: [],
+      showAllItemsToDelete: true,
       items: this.props.items,
       filter: '',
       currentPage: 0,
@@ -455,7 +463,6 @@ class Contents extends Component {
     this.fetchContents();
     this.setState({ isClient: true });
   }
-
   async componentDidUpdate(_, prevState) {
     if (
       this.state.itemsToDelete !== prevState.itemsToDelete &&
@@ -467,6 +474,8 @@ class Contents extends Component {
             this.getFieldById(item, 'UID'),
           ),
         ),
+        showAllItemsToDelete:
+          this.state.itemsToDelete.length < this.deleteItemsToShowThreshold,
       });
     }
   }
@@ -1187,16 +1196,35 @@ class Contents extends Component {
                       <div className="content">
                         <h3>
                           {this.props.intl.formatMessage(
-                            messages.deleteItemMessage,
-                          )}
+                            messages.deleteItemCountMessage,
+                          ) + ` ${this.state.itemsToDelete.length}`}
                         </h3>
                         <ul className="content">
-                          {map(this.state.itemsToDelete, (item) => (
-                            <li key={item}>
-                              {this.getFieldById(item, 'title')}
-                            </li>
-                          ))}
+                          {map(
+                            this.state.showAllItemsToDelete
+                              ? this.state.itemsToDelete
+                              : this.state.itemsToDelete.slice(
+                                  0,
+                                  this.deleteItemsToShowThreshold,
+                                ),
+                            (item) => (
+                              <li key={item}>
+                                {this.getFieldById(item, 'title')}
+                              </li>
+                            ),
+                          )}
                         </ul>
+                        {!this.state.showAllItemsToDelete && (
+                          <Button
+                            onClick={() =>
+                              this.setState({
+                                showAllItemsToDelete: true,
+                              })
+                            }
+                          >
+                            Show all items
+                          </Button>
+                        )}
                         {this.state.linkIntegrityBreakages.length > 0 ? (
                           <div>
                             <h3>
@@ -1241,7 +1269,7 @@ class Contents extends Component {
                     }
                     onCancel={this.onDeleteCancel}
                     onConfirm={this.onDeleteOk}
-                    size="mini"
+                    size="medium"
                   />
                   <ContentsUploadModal
                     open={this.state.showUpload}
@@ -1507,11 +1535,26 @@ class Contents extends Component {
                               value={this.state.filter}
                               onChange={this.onChangeFilter}
                             />
+                            {this.state.filter && (
+                              <Button
+                                className="icon icon-container"
+                                onClick={() => {
+                                  this.onChangeFilter('', { value: '' });
+                                }}
+                              >
+                                <Icon
+                                  name={clearSVG}
+                                  size="30px"
+                                  color="#e40166"
+                                />
+                              </Button>
+                            )}
                             <Icon
                               name={zoomSVG}
                               size="30px"
                               color="#007eb1"
                               className="zoom"
+                              style={{ flexShrink: '0' }}
                             />
                             <div className="results" />
                           </div>

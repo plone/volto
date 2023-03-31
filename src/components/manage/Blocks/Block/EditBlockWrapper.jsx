@@ -11,6 +11,7 @@ import isBoolean from 'lodash/isBoolean';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
+import { BlockChooserButton } from '@plone/volto/components';
 
 import trashSVG from '@plone/volto/icons/delete.svg';
 
@@ -23,11 +24,30 @@ const messages = defineMessages({
 
 const EditBlockWrapper = (props) => {
   const hideHandler = (data) => {
-    return !!data.fixed || !(blockHasValue(data) && props.blockProps.editable);
+    return (
+      !!data.fixed ||
+      (!config.experimental.addBlockButton.enabled &&
+        !(blockHasValue(data) && props.blockProps.editable))
+    );
   };
 
   const { intl, blockProps, draginfo, children } = props;
-  const { block, selected, type, onDeleteBlock, data, editable } = blockProps;
+  const {
+    allowedBlocks,
+    block,
+    blocksConfig,
+    selected,
+    type,
+    onChangeBlock,
+    onDeleteBlock,
+    onInsertBlock,
+    onSelectBlock,
+    onMutateBlock,
+    data,
+    editable,
+    properties,
+    showBlockChooser,
+  } = blockProps;
   const visible = selected && !hideHandler(data);
 
   const required = isBoolean(data.required)
@@ -70,6 +90,24 @@ const EditBlockWrapper = (props) => {
             >
               <Icon name={trashSVG} size="18px" />
             </Button>
+          )}
+          {config.experimental.addBlockButton.enabled && showBlockChooser && (
+            <BlockChooserButton
+              data={data}
+              block={block}
+              onInsertBlock={(id, value) => {
+                if (blockHasValue(data)) {
+                  onSelectBlock(onInsertBlock(id, value));
+                } else {
+                  onChangeBlock(id, value);
+                }
+              }}
+              onMutateBlock={onMutateBlock}
+              allowedBlocks={allowedBlocks}
+              blocksConfig={blocksConfig}
+              size="24px"
+              properties={properties}
+            />
           )}
         </div>
       </div>

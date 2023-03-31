@@ -1,7 +1,12 @@
 import React from 'react';
+import { useIntl } from 'react-intl';
 import EditBlock from './Edit';
 import { DragDropList } from '@plone/volto/components';
-import { getBlocks } from '@plone/volto/helpers';
+import {
+  getBlocks,
+  getBlocksFieldname,
+  applyBlockDefaults,
+} from '@plone/volto/helpers';
 import {
   addBlock,
   insertBlock,
@@ -15,7 +20,7 @@ import {
 import EditBlockWrapper from './EditBlockWrapper';
 import { setSidebarTab } from '@plone/volto/actions';
 import { useDispatch } from 'react-redux';
-import { useDetectClickOutside } from '@plone/volto/helpers';
+import { useDetectClickOutside, useEvent } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 const BlocksForm = (props) => {
@@ -42,6 +47,7 @@ const BlocksForm = (props) => {
   const blockList = getBlocks(properties);
 
   const dispatch = useDispatch();
+  const intl = useIntl();
 
   const ClickOutsideListener = () => {
     onSelectBlock(null);
@@ -110,7 +116,23 @@ const BlocksForm = (props) => {
   };
 
   const onInsertBlock = (id, value, current) => {
-    const [newId, newFormData] = insertBlock(properties, id, value, current);
+    const [newId, newFormData] = insertBlock(
+      properties,
+      id,
+      value,
+      current,
+      config.experimental.addBlockButton.enabled ? 1 : 0,
+    );
+
+    const blocksFieldname = getBlocksFieldname(newFormData);
+    const blockData = newFormData[blocksFieldname][newId];
+    newFormData[blocksFieldname][newId] = applyBlockDefaults({
+      data: blockData,
+      intl,
+      metadata,
+      properties,
+    });
+
     onChangeFormData(newFormData);
     return newId;
   };
@@ -118,6 +140,14 @@ const BlocksForm = (props) => {
   const onAddBlock = (type, index) => {
     if (editable) {
       const [id, newFormData] = addBlock(properties, type, index);
+      const blocksFieldname = getBlocksFieldname(newFormData);
+      const blockData = newFormData[blocksFieldname][id];
+      newFormData[blocksFieldname][id] = applyBlockDefaults({
+        data: blockData,
+        intl,
+        metadata,
+        properties,
+      });
       onChangeFormData(newFormData);
       return id;
     }
@@ -149,6 +179,24 @@ const BlocksForm = (props) => {
   );
 
   const editBlockWrapper = children || defaultBlockWrapper;
+
+  // Remove invalid blocks on saving
+  // Note they are alreaady filtered by DragDropList, but we also want them
+  // to be removed when the user saves the page next. Otherwise the invalid
+  // blocks would linger for ever.
+  for (const [n, v] of blockList) {
+    if (!v) {
+      const newFormData = deleteBlock(properties, n);
+      onChangeFormData(newFormData);
+    }
+  }
+
+  useEvent('voltoClickBelowContent', () => {
+    if (!config.experimental.addBlockButton.enabled || !isMainForm) return;
+    onSelectBlock(
+      onAddBlock(config.settings.defaultBlockType, blockList.length),
+    );
+  });
 
   return (
     <div className="blocks-form" ref={ref}>
@@ -201,6 +249,7 @@ const BlocksForm = (props) => {
               multiSelected: multiSelected?.includes(childId),
               type: child['@type'],
               editable,
+              showBlockChooser: selectedBlock === childId,
             };
             return editBlockWrapper(
               dragProps,

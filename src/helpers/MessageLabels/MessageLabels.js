@@ -114,6 +114,24 @@ export const messages = defineMessages({
     id: 'Username',
     defaultMessage: 'Username',
   },
+  addUserFormUsernameDescription: {
+    id: 'addUserFormUsernameDescription',
+    defaultMessage:
+      'Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in.',
+  },
+  addUserFormFullnameDescription: {
+    id: 'addUserFormFullnameDescription',
+    defaultMessage: 'Enter full name, e.g. John Smith.',
+  },
+  addUserFormEmailDescription: {
+    id: 'addUserFormEmailDescription',
+    defaultMessage:
+      'Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.',
+  },
+  addUserFormPasswordDescription: {
+    id: 'addUserFormPasswordDescription',
+    defaultMessage: 'Enter your new password. Minimum 8 characters.',
+  },
   addGroupsFormTitleTitle: {
     id: 'Title',
     defaultMessage: 'Title',
@@ -189,6 +207,10 @@ export const messages = defineMessages({
   usergroupmemberbership: {
     id: 'User Group Membership',
     defaultMessage: 'User Group Membership',
+  },
+  membershipUpdated: {
+    id: 'Membership updated',
+    defaultMessage: 'Membership updated',
   },
   noUserFound: {
     id: 'No user found',

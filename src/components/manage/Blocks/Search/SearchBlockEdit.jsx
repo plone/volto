@@ -80,6 +80,7 @@ const SearchBlockEdit = (props) => {
               [id]: value,
             });
           }}
+          onChangeBlock={onChangeBlock}
           formData={data}
         />
       </SidebarPortal>
