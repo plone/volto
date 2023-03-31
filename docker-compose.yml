@@ -10,6 +10,7 @@ services:
     environment:
       - SITE=Plone
       - 'PROFILES=plone.volto:default-homepage'
+      - CORS_ALLOW_ORIGIN=http://plone.localhost
     labels:
       - traefik.enable=true
       # SERVICE
@@ -34,7 +35,9 @@ services:
       # RAZZLE_INTERNAL_API_PATH: http://backend:8080/Plone
       # This last is not required if a reverse proxy is in the stack
       RAZZLE_API_PATH: http://plone.localhost
-      # RAZZLE_DEV_PROXY_API_PATH: http://backend:8080/Plone
+      RAZZLE_DEV_PROXY_API_PATH: http://backend:8080/Plone
+    volumes:
+      - ./src/:/app/src
     depends_on:
       - backend
     labels:
