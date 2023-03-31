@@ -15,14 +15,15 @@ services:
       # SERVICE
       - traefik.http.services.plone-backend.loadbalancer.server.port=8080
       # Plone API
-      - traefik.http.routers.backend.rule=Host(`plone.localhost`) && PathPrefix(`/++api++`)
+      - traefik.http.routers.backend.rule=(Host(`plone.localhost`) && PathPrefix(`/++api++`)) || (Host(`plone2.localhost`) && PathPrefix(`/++api++`)) || Host(`plone-backend.localhost`)
       - traefik.http.routers.backend.service=plone-backend
       - "traefik.http.middlewares.backend.replacepathregex.regex=^/\\+\\+api\\+\\+($$|/.*)"
       - "traefik.http.middlewares.backend.replacepathregex.replacement=/VirtualHostBase/http/plone.localhost/Plone/++api++/VirtualHostRoot/$$1"
       - traefik.http.routers.backend.middlewares=gzip,backend
 
   frontend:
-    image: 'plone/plone-frontend:latest'
+    # image: 'plone/plone-frontend:latest'
+    build: .
     ports:
       - '3000:3000'
     restart: always
@@ -30,9 +31,10 @@ services:
       # These are needed in a Docker environment since the
       # routing needs to be amended. You can point to the
       # internal network alias.
-      RAZZLE_INTERNAL_API_PATH: http://backend:8080/Plone
+      # RAZZLE_INTERNAL_API_PATH: http://backend:8080/Plone
       # This last is not required if a reverse proxy is in the stack
-      RAZZLE_DEV_PROXY_API_PATH: http://backend:8080/Plone
+      RAZZLE_API_PATH: http://plone.localhost
+      # RAZZLE_DEV_PROXY_API_PATH: http://backend:8080/Plone
     depends_on:
       - backend
     labels:
@@ -42,7 +44,35 @@ services:
       # HOSTS: Main
       - traefik.http.routers.frontend.rule=Host(`plone.localhost`)
       - traefik.http.routers.frontend.service=plone-frontend
-      - traefik.http.routers.frontend.middlewares=gzip
+      - "traefik.http.middlewares.apiPathHeaders.headers.customrequestheaders.x-internal-api-path=http://backend:8080/Plone"
+      - "traefik.http.middlewares.apiPathHeaders.headers.customresponseheaders.x-internal-api-path=http://backend:8080/Plone"
+      - traefik.http.routers.frontend.middlewares=gzip,apiPathHeaders
+      # - "traefik.http.middlewares.frontend.headers.x-internal-api-path=http://plone.localhost"
+      # - "traefik.http.middlewares.plone-frontend.headers.customresponseheaders.x-internal-api-path=http://plone.localhost/Plone"
+      # - "traefik.http.middlewares.frontend.headers.customrequestheaders.X-internal-api-path=http://backend:8080/Plone"
+      # - "traefik.http.middlewares.frontend.headers.customresponseheaders.X-internal-api-path=http://plone.localhost/Plone"
+  frontend2:
+    image: 'plone/plone-frontend:latest'
+    ports:
+      - "3020:3000"
+    restart: always
+    environment:
+      # These are needed in a Docker environment since the
+      # routing needs to be amended. You can point to the
+      # internal network alias.
+      RAZZLE_INTERNAL_API_PATH: http://backend:8080/Plone2
+      # This last is not required if a reverse proxy is in the stack
+      RAZZLE_API_PATH: http://backend:8080/Plone2
+    depends_on:
+      - backend
+    labels:
+      - traefik.enable=true
+      # SERVICE
+      - traefik.http.services.plone2-frontend.loadbalancer.server.port=3000
+      # HOSTS: Main
+      - traefik.http.routers.frontend2.rule=Host(`plone2.localhost`)
+      - traefik.http.routers.frontend2.service=plone2-frontend
+      - traefik.http.routers.frontend2.middlewares=gzip
 
   reverse-proxy:
     # The official v2 Traefik docker image
