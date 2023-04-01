@@ -11,8 +11,3 @@ myst:
 ```{include} ../../../submodules/volto/CHANGELOG.md
 ```
 ````
-
-````{ifconfig} context in ("volto")
-```{include} ../../../CHANGELOG.md
-```
-````
