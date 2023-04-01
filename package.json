@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "17.0.0-alpha.1",
+  "version": "17.0.0-alpha.3",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -328,9 +328,9 @@
     "promise-file-reader": "1.0.2",
     "prop-types": "15.7.2",
     "query-string": "7.1.0",
-    "razzle": "4.2.17",
-    "razzle-dev-utils": "4.2.17",
-    "razzle-plugin-bundle-analyzer": "4.2.17",
+    "razzle": "4.2.18",
+    "razzle-dev-utils": "4.2.18",
+    "razzle-plugin-bundle-analyzer": "4.2.18",
     "razzle-plugin-scss": "4.2.18",
     "rc-time-picker": "3.7.3",
     "react": "17.0.2",
@@ -431,6 +431,7 @@
   "resolutions": {
     "clean-css": "5.3.1",
     "http-proxy": "^1.18.1",
+    "react-dev-utils": "^12",
     "react-error-overlay": "6.0.9",
     "ua-parser-js": "0.7.28"
   },
