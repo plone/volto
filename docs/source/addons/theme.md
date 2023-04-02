@@ -129,7 +129,7 @@ or add a key in your `package.json` project:
 Volto theming uses SemanticUI theming capabilities to define and extend a theme for your site.
 However, while maintaining and playing well with the Semantic UI Volto base, using a traditional CSS approach can be done using the Less-based `extras` escape hatch.
 
-At the same time, one can entirely bail off the extras scape hatch and add your own, by customizing the `theme.js` module in Volto.
+At the same time, one can entirely discard the extras escape hatch and add your own, by customizing the `theme.js` module in Volto.
 
 ```js
 import 'semantic-ui-less/semantic.less';
