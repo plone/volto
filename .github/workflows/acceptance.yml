@@ -1,7 +1,8 @@
 name: Acceptance Tests
-on: [push]
+on: [push, pull_request]
 jobs:
   core:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
     name: Core Basic
     timeout-minutes: 45
@@ -56,6 +57,7 @@ jobs:
           path: cypress/videos
 
   coreblocks:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
     name: Core Blocks
     timeout-minutes: 35
@@ -110,6 +112,7 @@ jobs:
           path: cypress/videos
 
   corevoltoslate:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
     name: Core Volto Slate
     timeout-minutes: 45
@@ -164,6 +167,7 @@ jobs:
           path: cypress/videos
 
   core5:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
     name: Core Basic - Plone 5
     strategy:
@@ -217,6 +221,7 @@ jobs:
           path: cypress/videos
 
   coresandbox:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
     name: Coresandbox
     timeout-minutes: 35
@@ -270,6 +275,7 @@ jobs:
           path: cypress/videos
 
   guillotina:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     name: Guillotina
     runs-on: ubuntu-latest
     timeout-minutes: 35
@@ -325,6 +331,7 @@ jobs:
           path: cypress/videos
 
   multilingual:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     name: Multilingual
     runs-on: ubuntu-latest
     timeout-minutes: 35
@@ -379,6 +386,7 @@ jobs:
           path: cypress/videos
 
   workingcopy:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     name: Working Copy
     runs-on: ubuntu-latest
     timeout-minutes: 35
@@ -458,6 +466,7 @@ jobs:
           path: cypress/videos
 
   generator:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     name: Project Generator
     runs-on: ubuntu-latest
     timeout-minutes: 35
@@ -553,6 +562,7 @@ jobs:
         working-directory: ${{env.generator-directory}}
 
   seamless:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     name: Seamless Mode
     runs-on: ubuntu-latest
     timeout-minutes: 35
