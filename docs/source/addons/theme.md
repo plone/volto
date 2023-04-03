@@ -128,7 +128,7 @@ THEME='volto-my-theme' yarn start
 /* End Config */
 ```
 
-3. Declare the theme as an add-on by adding its name as the value for the `addons` key in either `volto.config.js` or `package.json`.
+3. Declare the theme as an add-on by adding its name to the value for the `addons` key in either `volto.config.js` or `package.json` of your project.
 4. After starting Volto, the theme should be active.
    Now you can add overrides to the default theme in `src/theme`, same as you would in a project.
 5. Now you can safely delete your project's `theme` folder, since the one in the add-on will take precedence and a project can only have one active theme at a time.
