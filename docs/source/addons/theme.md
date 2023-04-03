@@ -11,6 +11,7 @@ myst:
 
 We can create a Volto Add-on that acts as a theme Add-on, so we can detach it from the project.
 The advantage is that you can deploy the same theme in different projects, or have themes depending on conditions that you could inject on build time.
+For convenience, it can also be set via a `THEME` environment variable.
 
 1. Add a `theme` key in your `volto.config.js` file in the root of your project:
 
@@ -20,10 +21,17 @@ module.exports = {
   theme: 'volto-my-theme'
 };
 ```
+
 or add a key in your `package.json` project:
 
 ```json
 "theme": "volto-my-theme"
+```
+
+or via a `THEME` variable:
+
+```shell
+THEME='volto-my-theme' yarn start
 ```
 
 2. Create a directory `src/theme` in your add-on, then add this file `theme.config`, replacing `<name_of_your_theme>` with your add-on name:
@@ -139,6 +147,8 @@ import '@plone/volto/../theme/themes/pastanaga/extras/extras.less';
 import '@kitconcept/volto-light-theme/theme/main.scss';
 ```
 
+Customizing it is a special use case  in Volto: add a `./@root/theme.js` file structure in your `customizations` folder in your add-on or project.
+
 While building your own escape hatch for theming, you can use the preprocessor of your choice (in the example, SCSS) while maintaining the "base" Volto theme, but customizing it using the resultant CSS.
 
 You can see an example of such a theme in: https://github.com/kitconcept/volto-light-theme
@@ -169,15 +179,19 @@ From your add-on code, you can extend an existing theme by creating a file corre
 
 ### Variables (`addonsThemeCustomizationsVariables`)
 
-Use this entry point file to modify the original variables of the current loaded theme by adding the entry point after your own variable definitions in the theme.
+Use this entry point file to modify the original variables of the current loaded theme by adding the entry point before the theme variable definitions.
 In the theme, it should be imported as shown below:
 
 ```scss hl_lines="2"
-@import 'variables';
 @import 'addonsThemeCustomizationsVariables';
+@import 'variables';
 @import 'typography';
 @import 'utils';
 @import 'layout';
+```
+
+```{warning}
+Following SCSS best practices, your theme variables should be "overridable" using the `!default` keyword. Then your customizations should be loaded before them. For more information: https://sass-lang.com/documentation/variables#default-values
 ```
 
 Volto will not only load your add-on entry point files, but it will also detect all the add-ons that have these entry point files and import them grouped under a single file.
