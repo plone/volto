@@ -147,7 +147,7 @@ import '@plone/volto/../theme/themes/pastanaga/extras/extras.less';
 import '@kitconcept/volto-light-theme/theme/main.scss';
 ```
 
-Customizing it is a special use case  in Volto: add a `./@root/theme.js` file structure in your `customizations` folder in your add-on or project.
+Customizing it is a special use case in Volto: add a `./@root/theme.js` file structure in your `customizations` folder in your add-on or project.
 
 While building your own escape hatch for theming, you can use the preprocessor of your choice (in the example, SCSS) while maintaining the "base" Volto theme, but customizing it using the resultant CSS.
 
@@ -191,7 +191,10 @@ In the theme, it should be imported as shown below:
 ```
 
 ```{warning}
-Following SCSS best practices, your theme variables should be "overridable" using the `!default` keyword. Then your customizations should be loaded before them. For more information: https://sass-lang.com/documentation/variables#default-values
+Following SCSS best practices, your theme variables should be "overridable" using the `!default` flag.
+This assigns a value to a variable _only_ if that variable isn't defined or its value is [`null`](https://sass-lang.com/documentation/values/null).
+Otherwise, the existing value will be used.
+For more information, see https://sass-lang.com/documentation/variables#default-values
 ```
 
 Volto will not only load your add-on entry point files, but it will also detect all the add-ons that have these entry point files and import them grouped under a single file.
