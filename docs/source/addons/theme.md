@@ -11,6 +11,7 @@ myst:
 
 We can create a Volto Add-on that acts as a theme Add-on, so we can detach it from the project.
 The advantage is that you can deploy the same theme in different projects, or have themes depending on conditions that you could inject on build time.
+This is the purpose of `volto.config.js`, the ability of declaring `add-ons` and the active `theme` programatically. See {ref}`volto-config-js` for more information.
 For convenience, it can also be set via a `THEME` environment variable.
 
 1. Add a `theme` key in your `volto.config.js` file in the root of your project:
@@ -130,14 +131,14 @@ THEME='volto-my-theme' yarn start
 3. Declare the theme as an add-on by adding its name as the value for the `addons` key in either `volto.config.js` or `package.json`.
 4. After starting Volto, the theme should be active.
    Now you can add overrides to the default theme in `src/theme`, same as you would in a project.
-5. Now you can safely delete your project's `theme` folder, since the one in the add-on will take precedence.
+5. Now you can safely delete your project's `theme` folder, since the one in the add-on will take precedence and a project can only have one active theme at a time.
 
 ## Using your own escape hatch
 
 Volto theming uses SemanticUI theming capabilities to define and extend a theme for your site.
 However, while maintaining and playing well with the Semantic UI Volto base, using a traditional CSS approach can be done using the Less-based `extras` escape hatch.
 
-At the same time, one can entirely discard the extras escape hatch and add your own, by customizing the `theme.js` module in Volto.
+At the same time, one can either discard or complement the extras escape hatch and add your own, by customizing the `theme.js` module in Volto.
 
 ```js
 import 'semantic-ui-less/semantic.less';
@@ -148,6 +149,11 @@ import '@kitconcept/volto-light-theme/theme/main.scss';
 ```
 
 Customizing it is a special use case in Volto: add a `./@root/theme.js` file structure in your `customizations` folder in your add-on or project.
+
+You may want to do this to create a complete new theming experience adapted to your way of doing things that do not match the current Volto theming experience.
+For example, if you want to use another preprocessor in the theme, like SCSS.
+Maybe because your client forces you to have another entirely base of pre-made components based on another library other than Semantic UI:
+See {ref}`volto-custom-theming-strategy` for an example of a custom theme escape hatch.
 
 While building your own escape hatch for theming, you can use the preprocessor of your choice (in the example, SCSS) while maintaining the "base" Volto theme, but customizing it using the resultant CSS.
 
