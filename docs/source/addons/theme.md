@@ -111,7 +111,7 @@ THEME='volto-my-theme' yarn start
 @themesFolder : '~volto-themes';
 
 /* Path to site override folder */
-@siteFolder  : "~<name_of_your_theme>/theme";
+@siteFolder  : "<name_of_your_theme>/theme";
 
 /*******************************
          Import Theme
