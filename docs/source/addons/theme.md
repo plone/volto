@@ -7,10 +7,11 @@ myst:
     "keywords": "Volto, Plone, Semantic UI, CSS, Volto theme"
 ---
 
-# Create a theme add-on
+# Create a Volto theme add-on
 
-We can create a Volto Add-on that acts as a theme Add-on, so we can detach it from the project.
-The advantage is that you can deploy the same theme in different projects, or have themes depending on conditions that you could inject on build time.
+We can create a Volto Add-on that acts as a Volto theme Add-on, so we can detach it from the project files.
+The advantage is that you convert the project Volto theme in a pluggable one, so you can deploy the same theme in different projects.
+You can even have themes depending on conditions that you could inject on build time.
 This is the purpose of `volto.config.js`, the ability of declaring `add-ons` and the active `theme` programatically. See {ref}`volto-config-js` for more information.
 For convenience, it can also be set via a `THEME` environment variable.
 
@@ -133,10 +134,10 @@ THEME='volto-my-theme' yarn start
    Now you can add overrides to the default theme in `src/theme`, same as you would in a project.
 5. Now you can safely delete your project's `theme` folder, since the one in the add-on will take precedence and a project can only have one active theme at a time.
 
-## Using your own escape hatch
+## Using your own theming escape hatch
 
 Volto theming uses SemanticUI theming capabilities to define and extend a theme for your site.
-However, while maintaining and playing well with the Semantic UI Volto base, using a traditional CSS approach can be done using the Less-based `extras` escape hatch.
+However, while maintaining and playing well with the Semantic UI Volto base, using a traditional CSS approach can be done using the LESS preprocessor-based `extras` escape hatch.
 
 At the same time, one can either discard or complement the extras escape hatch and add your own, by customizing the `theme.js` module in Volto.
 
