@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 7.0.0-alpha.3 (2023-04-03)
+
+### Bugfix
+
+- Update to latest Razzle - needed since #3997. This fixes the duplicated Razzles issue @sneridagh [#4640](https://github.com/plone/volto/issues/4640)
+
+
 ## 7.0.0-alpha.2 (2023-03-05)
 
 ### Feature
