@@ -14,7 +14,7 @@
 
 [Plone](https://plone.org) is a CMS built on Python with more than 20 years of history and experience.
 
-Plone has very interesting features that appeal to developers and users alike,
+Plone has compelling features that appeal to developers and users alike,
 such as customizable content types, hierarchical URL object traversing and a
 sophisticated content workflow powered by a granular permissions model. This
 allows you to build anything from simple websites to enterprise-grade
