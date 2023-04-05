@@ -31,7 +31,7 @@ const messages = defineMessages({
   },
   usernameTitle: {
     id: 'My username is',
-    defaultMessage: 'My username is',
+    defaultMessage: 'My user name is',
   },
   emailTitle: {
     id: 'My email is',

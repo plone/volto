@@ -11,6 +11,11 @@ const PLONE_API_URL =
 const SLATE_SELECTOR = '.content-area .slate-editor [contenteditable=true]';
 const SLATE_TITLE_SELECTOR = '.block.inner.title [contenteditable="true"]';
 
+const TABLE_SLATE_SELECTOR =
+  '.celled.fixed.table tbody tr:nth-child(1) td:first-child() [contenteditable="true"]';
+const TABLE_HEAD_SLATE_SELECTOR =
+  '.celled.fixed.table thead tr th:first-child() [contenteditable="true"]';
+
 const ploneAuthObj = {
   user: ploneAuth[0],
   pass: ploneAuth[1],
@@ -842,3 +847,23 @@ Cypress.Commands.add('settings', (key, value) => {
   return cy.window().its('settings');
 });
 Cypress.Commands.add('getIfExists', getIfExists);
+
+Cypress.Commands.add('getTableSlate', (header = false) => {
+  let slate;
+
+  cy.addNewBlock('table');
+  cy.wait(2000);
+
+  const selector = header ? TABLE_HEAD_SLATE_SELECTOR : TABLE_SLATE_SELECTOR;
+
+  cy.getIfExists(
+    selector,
+    () => {
+      slate = cy.get(selector).last();
+    },
+    () => {
+      slate = cy.get(selector, { timeout: 10000 }).last();
+    },
+  );
+  return slate;
+});
