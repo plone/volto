@@ -18,8 +18,7 @@ import { getBlocksTocEntries } from '@plone/volto/helpers';
  * @extends Component
  */
 const View = (props) => {
-  const { data } = props;
-  const { variation } = props;
+  const { data, variation } = props;
   const metadata = props.metadata || props.properties;
 
   const tocEntries = React.useMemo(() => {

@@ -102,10 +102,10 @@ const customBlocks = {
         ]
       }
     },
-    // A block can have elements included in ToC (Table of Contents block)
+    // A block can have elements included in a Table of Contents (ToC) block
     // Arguments of the function will be the data of the block and the data of ToC
     tocEntries: (blockData, data) => {
-      // The function returns an array of entries each entry defined by
+      // The function returns an array of entries, with each entry defined by
       // the level in the tree of ToC and the title that is displayed in ToC
       return [
         [level, Title],
