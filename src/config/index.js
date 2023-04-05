@@ -180,7 +180,7 @@ let config = {
     styleClassNameConverters,
     hashLinkSmoothScroll: false,
     styleClassNameExtenders,
-    querystringSearchGet: true,
+    querystringSearchGet: false,
   },
   experimental: {
     addBlockButton: {
