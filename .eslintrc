@@ -8,7 +8,7 @@
     "mocha": true,
     "jasmine": true
   },
-  "parser": "@typescript-eslint/parser",
+  "parser": "@babel/eslint-parser",
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module",
@@ -54,7 +54,8 @@
     {
       "files": ["**/*.ts", "**/*.tsx"],
       "extends": ["plugin:@typescript-eslint/recommended", "react-app", "prettier", "plugin:jsx-a11y/recommended"],
-      "plugins": ["@typescript-eslint", "prettier", "react-hooks", "jsx-a11y"]
+      "plugins": ["@typescript-eslint", "prettier", "react-hooks", "jsx-a11y"],
+      "parser": "@typescript-eslint/parser"
     }
   ],
   "globals": {
