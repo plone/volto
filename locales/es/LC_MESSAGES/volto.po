@@ -2100,7 +2100,7 @@ msgid "My email is"
 msgstr "Mi dirección de correo electrónico es"
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: My username is
+# defaultMessage: My user name is
 msgid "My username is"
 msgstr "Mi nombre de usuario es"
 
@@ -4195,7 +4195,7 @@ msgid "label_my_email_is"
 msgstr "Mi dirección de correo es"
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: My username is
+# defaultMessage: My user name is
 msgid "label_my_username_is"
 msgstr "Mi nombre de usuario es"
 
