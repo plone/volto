@@ -5,7 +5,7 @@ export const sitemap = function (req, res, next) {
   generateSitemap(req).then((sitemap) => {
     if (Buffer.isBuffer(sitemap)) {
       res.set('Content-Type', 'application/x-gzip');
-      res.set('Content-Encoding', 'gzip');
+      res.set('Content-Encoding', 'gz');
       res.set('Content-Disposition', 'attachment; filename="sitemap.xml.gz"');
       res.send(sitemap);
     } else {
