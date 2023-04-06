@@ -2,7 +2,7 @@ import React from 'react';
 import { useIntl } from 'react-intl';
 import { BlockDataForm } from '@plone/volto/components';
 
-const RowData = (props) => {
+const ContainerData = (props) => {
   const { block, blocksConfig, data, onChangeBlock } = props;
   const intl = useIntl();
 
@@ -30,4 +30,4 @@ const RowData = (props) => {
   );
 };
 
-export default RowData;
+export default ContainerData;

@@ -55,6 +55,7 @@ import RowViewBlock from '@plone/volto/components/manage/Blocks/Row/View';
 import RowEditBlock from '@plone/volto/components/manage/Blocks/Row/Edit';
 import { RowBlockDataAdapter } from '@plone/volto/components/manage/Blocks/Row/adapter';
 import { RowBlockSchema } from '@plone/volto/components/manage/Blocks/Row/schema';
+import RowTemplates from '@plone/volto/components/manage/Blocks/Row/templates';
 
 import SearchBlockView from '@plone/volto/components/manage/Blocks/Search/SearchBlockView';
 import SearchBlockEdit from '@plone/volto/components/manage/Blocks/Search/SearchBlockEdit';
@@ -478,6 +479,7 @@ const blocksConfig = {
     sidebarTab: 1,
     // This has a good reason: Slate does not work in detached mode if enabled
     blockHasOwnFocusManagement: false,
+    templates: RowTemplates,
     maxRowLength: 4,
     allowedBlocks: ['image', 'listing', 'slate', 'teaser'],
   },
