@@ -17,8 +17,22 @@ const DatetimeWidget = ({ value, children, className }) => {
   return value ? (
     <span className={cx(className, 'datetime', 'widget')}>
       {children
-        ? children(date.toLocaleString(lang))
-        : date.toLocaleString(lang)}
+        ? children(
+            date.toLocaleString(lang, {
+              month: 'short',
+              day: 'numeric',
+              year: 'numeric',
+              hour: 'numeric',
+              minute: 'numeric',
+            }),
+          )
+        : date.toLocaleString(lang, {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+          })}
     </span>
   ) : (
     ''
