@@ -8,7 +8,7 @@
     "mocha": true,
     "jasmine": true
   },
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module",
@@ -17,6 +17,7 @@
     }
   },
   "rules": {
+    "import/no-anonymous-default-export": 0,
     "import/no-unresolved": 1,
     "no-alert": 1,
     "no-console": 1,
@@ -44,8 +45,18 @@
         "rootPathSuffix": "src"
       }
     },
-    "import/core-modules": ["load-volto-addons"]
+    "import/core-modules": ["load-volto-addons"],
+    "react": {
+      "version": "detect"
+    }
   },
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "extends": ["plugin:@typescript-eslint/recommended", "react-app", "prettier", "plugin:jsx-a11y/recommended"],
+      "plugins": ["@typescript-eslint", "prettier", "react-hooks", "jsx-a11y"]
+    }
+  ],
   "globals": {
     "root": true,
     "__DEVELOPMENT__": true,
