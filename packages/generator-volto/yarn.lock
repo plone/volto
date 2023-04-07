@@ -6367,7 +6367,7 @@ __metadata:
 
 "minizlib@npm:^2.1.1, minizlib@npm:^2.1.2":
   version: 2.1.2
-  resolution: "minizlib@npm:2.1.2"
+  resolution: "mini@npm:2.1.2"
   dependencies:
     minipass: ^3.0.0
     yallist: ^4.0.0
