@@ -112,6 +112,23 @@
 - Use a universal static path for both documentation and volto repos. @stevepiercy [#4376](https://github.com/plone/volto/issues/4376)
 
 
+## 16.19.0 (2023-04-04)
+
+### Feature
+
+- DefaultView (view of fields for content types with blocks disabled): Show field name as tip on hover of label. @ksuess [#4598](https://github.com/plone/volto/issues/4598)
+- Set sameSite in I18N_LANGUAGE cookie @sneridagh [#4627](https://github.com/plone/volto/issues/4627)
+
+### Bugfix
+
+- Fix regexp that checks valid URLs and improve tests [cekk] [#4601](https://github.com/plone/volto/issues/4601)
+
+### Documentation
+
+- Added `JavaScript` and `NodeJS` as accepted spellings, and deviations of them as rejected spellings. @utkkkarshhh [#3092](https://github.com/plone/volto/issues/3092)
+- Fix documentation build, add pins @sneridagh [#4626](https://github.com/plone/volto/issues/4626)
+
+
 ## 16.18.0 (2023-03-22)
 
 ### Feature
