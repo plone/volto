@@ -2651,7 +2651,6 @@ __metadata:
     babel-plugin-react-intl: 5.1.17
     babel-plugin-root-import: 6.1.0
     babel-preset-razzle: 4.2.17
-    base64: 2.1.0
     bundlewatch: 0.2.7
     circular-dependency-plugin: 5.2.2
     classnames: 2.2.6
@@ -6626,15 +6625,6 @@ __metadata:
   version: 1.5.1
   resolution: "base64-js@npm:1.5.1"
   checksum: 669632eb3745404c2f822a18fc3a0122d2f9a7a13f7fb8b5823ee19d1d2ff9ee5b52c53367176ea4ad093c332fd5ab4bd0ebae5a8e27917a4105a4cfc86b1005
-  languageName: node
-  linkType: hard
-
-"base64@npm:2.1.0":
-  version: 2.1.0
-  resolution: "base64@npm:2.1.0"
-  dependencies:
-    node-gyp: latest
-  checksum: 436246dc8ff6e2a7372f8636592db14587726317dda35252590976f27450c64436c36fb39c854848662591f457a0cb62ba0f0da929f50912613a884ccdd2bec3
   languageName: node
   linkType: hard
 
@@ -19863,7 +19853,7 @@ __metadata:
   dependencies:
     prop-types: ^15.7.2
   peerDependencies:
-    react-intl: ^2.2.2 || ^3.0.0
+    react-intl: ^2.2.2 || ^3.0.0
     react-redux: ^5.0.1 || ^6.0.0 || ^7.0.0
   checksum: eece9837c7b97581961732168b2e286e771ad4104bdde94caf3ce61ef51d8daa64b4365d4353901029a0cfa91c411a5149ff8bf0a89ac94eebce93982e1cb0f4
   languageName: node
