@@ -17,7 +17,6 @@
     }
   },
   "rules": {
-    "import/no-anonymous-default-export": 0,
     "import/no-unresolved": 1,
     "no-alert": 1,
     "no-console": 1,
@@ -56,6 +55,15 @@
       "extends": ["plugin:@typescript-eslint/recommended", "react-app", "prettier", "plugin:jsx-a11y/recommended"],
       "plugins": ["@typescript-eslint", "prettier", "react-hooks", "jsx-a11y"],
       "parser": "@typescript-eslint/parser"
+    },
+    {
+      "files": [
+        "**/*.stories.js",
+        "**/*.stories.jsx"
+      ],
+      "rules": {
+        "import/no-anonymous-default-export": "off"
+      }
     }
   ],
   "globals": {
