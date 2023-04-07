@@ -1,0 +1,1 @@
+Fixed i18n script to avoid overwriting translations with an empty msgstr @danalvrz
