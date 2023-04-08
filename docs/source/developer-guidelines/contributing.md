@@ -7,11 +7,15 @@ myst:
     "keywords": "Volto, Plone, frontend, React, guidelines"
 ---
 
+(contributing-to-volto-label)=
+
 # Contributing to Volto
 
-You may have an issue to report, make a feature request, report a security vulnerability, or you want to create a pull request.
-You have come to the right place to learn how to do so.
+First read {doc}`plone:contributing/index`.
+Volto follows those guidelines with a few specific variations, as described in this chapter.
 
+
+(contributing-reporting-an-issue-or-making-a-feature-request-label)=
 
 ## Reporting an issue or making a feature request
 
@@ -22,37 +26,60 @@ When in doubt, create one in the [CMFPlone issue tracker](https://github.com/plo
 
 In your report, please specify a few things:
 
-- What are the steps to reproduce the problem?
-- What do you expect when you follow those steps?
-- What do you observe?
-- Which Plone version are you using?
-- Include relevant screenshots, error messages, and stack traces.
+-   What are the steps to reproduce the problem?
+-   What do you expect when you follow those steps?
+-   What do you observe?
+-   Which Plone version are you using?
+-   Include relevant screenshots, error messages, and stack traces.
 
-## Create a pull request
 
-You must sign the [Plone Contributor Agreement](https://plone.org/foundation/contributors-agreement) to contribute code and documentation to any Plone project.
-This means that we can NOT accept pull requests from you until you do this.
+(contributing-sign-and-return-the-plone-contributor-agreement-label)=
 
-All pull requests must include a `towncrier` news item.
-This is a file that is placed in the root of the repository directory at `/news`.
-Its format must be `###.type`, where `###` is the referenced GitHub issue or pull request number, `.` is the literal extension delimiter, and `type` is one of the following strings.
+## Sign and return the Plone Contributor Agreement
 
-- `breaking` for breaking changes
-- `bugfix` for bug fixes
-- `documentation` for documentation
-- `feature` for new features
-- `internal` for internal changes
+The Volto Team reviews pull requests only from people with a GitHub account who have signed and returned the {ref}`Plone Contributor Agreement <contributing-sign-and-return-the-plone-contributor-agreement-label>`, and subsequently been assigned to a Plone Team in GitHub.
+
+
+(contributing-branch-policy-label)=
+
+## Branch policy
+
+```{include} ./branch-policy.md
+```
+
+
+(contributing-translations-label)=
+
+## Translations
+
+All text that can be shown in a browser must be translatable.
+Please mark all such strings as translatable as defined in the [i18n guide](../recipes/i18n.md).
+
+
+(contributing-change-log-entry-label)=
+
+## Change log entry
+
+Volto requires that you include a change log entry or news item with your contribution.
+Your attribution must be in the format of `@github_username`.
+
+```{seealso}
+For details see {ref}`contributing-change-log-label`.
+```
+
+
+(contributing-documenting-your-changes-label)=
+
+## Documenting your changes
 
 If the feature includes a breaking change, you must include instructions for how to upgrade in the [upgrade guide](../upgrade-guide/index.md).
 
-All text that can be shown in a browser must be translatable. Please mark all such
-strings as translatable as defined in the [i18n guide](../recipes/i18n.md).
 
+(contributing-code-quality-label)=
 
-## Code Quality
+## Code quality
 
 All pull requests must pass tests, documentation builds, and other code quality checks.
-Contributors are strongly encouraged to run these checks locally before creating a pull request.
 These checks are enforced automatically on every pull request, so you might as well save time and frustration by doing these checks locally first.
 
 Specifically:
@@ -62,7 +89,9 @@ Specifically:
 -   {doc}`./acceptance-tests`
 
 
-If after reading this you become hesitant, don't worry.
-You can always create a pull request, mark it as "Draft", and improve the above points later, requesting help from the community.
+(contributing-final-advice-label)=
 
-Welcome to the Plone community, and thank you for contributing!
+## Final advice
+
+If you become hesitant after reading the foregoing, don't worry.
+You can always create a pull request, mark it as "Draft", and improve these points later while requesting help from the community.
