@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { asyncConnect, Helmet } from '@plone/volto/helpers';
 import { Segment } from 'semantic-ui-react';
-import { renderRoutes } from 'react-router-config';
+import { matchRoutes, renderRoutes } from 'react-router-config';
 import { Slide, ToastContainer, toast } from 'react-toastify';
 import split from 'lodash/split';
 import join from 'lodash/join';
@@ -222,10 +222,9 @@ export const __test__ = connect(
   {},
 )(App);
 
-export const fetchContent = async ({ store, location }) => {
-  const content = await store.dispatch(
-    getContent(getBaseUrl(location.pathname)),
-  );
+export const fetchContent = async ({ store, location, routeId }) => {
+  const path = routeId || location.pathname;
+  const content = await store.dispatch(getContent(getBaseUrl(path)));
 
   const promises = [];
   const { blocksConfig } = config.blocks;
@@ -259,65 +258,72 @@ export const fetchContent = async ({ store, location }) => {
   return content;
 };
 
+const getRoute = (route, location) => {
+  return matchRoutes(route.routes, location.pathname)?.[0]?.route || {};
+};
+
 export function connectAppComponent(AppComponent) {
   return compose(
     asyncConnect([
       {
         key: 'breadcrumbs',
-        promise: ({ location, store: { dispatch } }) => {
+        promise: ({ location, route, store: { dispatch } }) => {
           // Do not trigger the breadcrumbs action if the expander is present
-          if (
-            __SERVER__ &&
-            !hasApiExpander('breadcrumbs', getBaseUrl(location.pathname))
-          ) {
-            return dispatch(getBreadcrumbs(getBaseUrl(location.pathname)));
+          const path = getRoute(route, location)['@id'] || location.pathname;
+          if (__SERVER__ && !hasApiExpander('breadcrumbs', getBaseUrl(path))) {
+            return dispatch(getBreadcrumbs(getBaseUrl(path)));
           }
         },
       },
       {
         key: 'content',
-        promise: ({ location, store }) =>
-          __SERVER__ && fetchContent({ store, location }),
+        promise: ({ location, route, store }) =>
+          __SERVER__ &&
+          fetchContent({
+            location,
+            routeId: getRoute(route, location)['@id'],
+            store,
+          }),
       },
       {
         key: 'navigation',
-        promise: ({ location, store: { dispatch } }) => {
+        promise: ({ location, route, store: { dispatch } }) => {
           // Do not trigger the navigation action if the expander is present
-          if (
-            __SERVER__ &&
-            !hasApiExpander('navigation', getBaseUrl(location.pathname))
-          ) {
+          const path = getRoute(route, location)['@id'] || location.pathname;
+          if (__SERVER__ && !hasApiExpander('navigation', getBaseUrl(path))) {
             return dispatch(
-              getNavigation(
-                getBaseUrl(location.pathname),
-                config.settings.navDepth,
-              ),
+              getNavigation(getBaseUrl(path), config.settings.navDepth),
             );
           }
         },
       },
       {
         key: 'types',
-        promise: ({ location, store: { dispatch } }) => {
+        promise: ({ location, route, store: { dispatch } }) => {
           // Do not trigger the types action if the expander is present
-          if (
-            __SERVER__ &&
-            !hasApiExpander('types', getBaseUrl(location.pathname))
-          ) {
-            return dispatch(getTypes(getBaseUrl(location.pathname)));
+          const path = getRoute(route, location)['@id'] || location.pathname;
+          if (__SERVER__ && !hasApiExpander('types', getBaseUrl(path))) {
+            return dispatch(getTypes(getBaseUrl(path)));
           }
         },
       },
       {
         key: 'workflow',
-        promise: ({ location, store: { dispatch } }) =>
-          __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
+        promise: ({ location, route, store: { dispatch } }) => {
+          const path = getRoute(route, location)['@id'] || location.pathname;
+          return __SERVER__ && dispatch(getWorkflow(getBaseUrl(path)));
+        },
       },
     ]),
     injectIntl,
-    connect(
-      (state, props) => ({
-        pathname: props.location.pathname,
+    connect((state, props) => {
+      const routeId = matchRoutes(
+        props.route.routes,
+        props.location.pathname,
+      )?.[0]?.route?.['@id'];
+
+      return {
+        pathname: routeId || props.location.pathname,
         token: state.userSession.token,
         userId: state.userSession.token
           ? jwtDecode(state.userSession.token).sub
@@ -325,9 +331,8 @@ export function connectAppComponent(AppComponent) {
         content: state.content.data,
         apiError: state.apierror.error,
         connectionRefused: state.apierror.connectionRefused,
-      }),
-      null,
-    ),
+      };
+    }, null),
   )(AppComponent);
 }
 

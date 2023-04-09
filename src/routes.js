@@ -122,6 +122,39 @@ export function getExternalRoutes() {
   );
 }
 
+export function getRoutesWithParameter({ path, id }) {
+  return [
+    {
+      path: `${path}(add)`,
+      component: Add,
+      exact: true,
+    },
+    {
+      path: `${path}(edit)`,
+      component: Edit,
+      exact: true,
+    },
+    {
+      path: `${path}/add`,
+      '@id': id,
+      component: Add,
+      exact: true,
+    },
+    {
+      path: `${path}/edit`,
+      '@id': id,
+      component: Edit,
+      exact: true,
+    },
+    {
+      path,
+      '@id': id,
+      component: View,
+      exact: true,
+    },
+  ];
+}
+
 export const defaultRoutes = [
   // redirect to external links if path is in blacklist
   ...getExternalRoutes(),

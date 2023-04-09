@@ -284,7 +284,7 @@ export default compose(
       error: state.content.get.error,
       apiError: state.apierror.error,
       connectionRefused: state.apierror.connectionRefused,
-      pathname: props.location.pathname,
+      pathname: props.route['@id'] || props.location.pathname,
       versionId:
         qs.parse(props.location.search) &&
         qs.parse(props.location.search).version,
