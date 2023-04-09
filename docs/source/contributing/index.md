@@ -33,11 +33,11 @@ In your report, please specify a few things:
 -   Include relevant screenshots, error messages, and stack traces.
 
 
-(contributing-sign-and-return-the-plone-contributor-agreement-label)=
+(contributing-volto-sign-and-return-the-plone-contributor-agreement-label)=
 
 ## Sign and return the Plone Contributor Agreement
 
-The Volto Team reviews pull requests only from people with a GitHub account who have signed and returned the {ref}`Plone Contributor Agreement <contributing-sign-and-return-the-plone-contributor-agreement-label>`, and subsequently been assigned to a Plone Team in GitHub.
+The Volto Team reviews pull requests only from people with a GitHub account who have signed and returned the {ref}`Plone Contributor Agreement <plone:contributing-sign-and-return-the-plone-contributor-agreement-label>`, and subsequently been assigned to a Plone Team in GitHub.
 
 
 (contributing-branch-policy-label)=
