@@ -8,6 +8,110 @@
 
 <!-- towncrier release notes start -->
 
+## 17.0.0-alpha.3 (2023-03-22)
+
+### Feature
+
+- Add Vale to CI for spell and style checks. @MAX-786 [#4423](https://github.com/plone/volto/issues/4423)
+
+### Bugfix
+
+- Fix Search is case sensitive in Block chooser @iRohitSingh [#4526](https://github.com/plone/volto/issues/4526)
+- InternalURl helper method should incorporate externalRoutes settings into consideration. @iFlameing [#4559](https://github.com/plone/volto/issues/4559)
+- Update message add-on control panel: remove 'buildout', update reference. @ksuess [#4574](https://github.com/plone/volto/issues/4574)
+
+### Documentation
+
+- Deleted duplicate import and fixed training URLs. @yahya-cloud [#4523](https://github.com/plone/volto/issues/4523)
+- Fix grammar in PR #4542. @stevepiercy [#4555](https://github.com/plone/volto/issues/4555)
+- Fix broken links at `ReactJS.org`. @stevepiercy [#4569](https://github.com/plone/volto/issues/4569)
+- Fix video warnings and link errors. @stevepiercy [#4578](https://github.com/plone/volto/issues/4578)
+
+
+## 17.0.0-alpha.2 (2023-03-15)
+
+### Breaking
+
+- Add custom CSS animation to hamburger menu. Removed `hamburgers` dependency. @danalvrz [#4433](https://github.com/plone/volto/issues/4433)
+- Improve i18n script ordering of addons, so that addons can override translations from their dependencies. @davisagli [#4495](https://github.com/plone/volto/issues/4495)
+
+### Feature
+
+- Add option to hide empty listing blocks @ksuess [#4393](https://github.com/plone/volto/issues/4393)
+
+### Bugfix
+
+- Update build dependencies (razzle and react-dev-utils) @davisagli [#3997](https://github.com/plone/volto/issues/3997)
+- Added block prop to BlockDataForm in the Edit component of ToC. If block is not passed, OnChangeBlock will be called with undefined block id. @tedw87 [#4110](https://github.com/plone/volto/issues/4110)
+- Fix focus steal in Form @tedw87 [#4230](https://github.com/plone/volto/issues/4230)
+- Fixed paste issue in Table Block and added cypress test for pasting text in Table Block. [#4301](https://github.com/plone/volto/issues/4301)
+- Fixed i18n script to avoid overwriting translations with an empty msgstr @danalvrz [#4316](https://github.com/plone/volto/issues/4316)
+- bugfix: conditionally render all delete items in confirm widget [#4336](https://github.com/plone/volto/issues/4336)
+- Make the Site Setup control panel responsive for small screen devices. @lord2anil [#4484](https://github.com/plone/volto/issues/4484)
+- The menu for the contents page was unresponsive on mobile devices. Fixed this by changing the menu overflow to scroll. @sudhanshu1309 [#4492](https://github.com/plone/volto/issues/4492)
+- Make Drag and Drop list work with container-type inline-size. @robgietema [#4497](https://github.com/plone/volto/issues/4497)
+- (fix): Paste button disappearing while coping from nested blocks @dobri1408 [#4505](https://github.com/plone/volto/issues/4505)
+- Patch updates for some dependencies. @davisagli [#4520](https://github.com/plone/volto/issues/4520)
+- Fix flaky Cypress test introduced in #4521 @sneridagh [#4522](https://github.com/plone/volto/issues/4522)
+
+### Documentation
+
+- Fix training urls @ksuess [#4502](https://github.com/plone/volto/issues/4502)
+- Add upgrade guide for 4504 @sneridagh [#4542](https://github.com/plone/volto/issues/4542)
+
+
+## 17.0.0-alpha.1 (2023-03-09)
+
+### Feature
+
+- - Add directive to cache stable resources in browser or intermediate server for 365 days by default directly in the SSR Express server, static resource that could change after a new deployment for 1 minute. @mamico [#2216](https://github.com/plone/volto/issues/2216)
+- Use popperjs in BlockChooser, move the markup to the bottom of the body tag. @sneridagh [#4141](https://github.com/plone/volto/issues/4141)
+- Improvements to the dev API proxy:
+  - Prefer RAZZLE_INTERNAL_API_PATH over RAZZLE_API_PATH as the target of the proxy.
+    The target of the API proxy is now always logged on startup, even in production mode.
+  - Support proxying to a backend served over https. For this configuration it
+    might be necessary to set RAZZLE_DEV_PROXY_INSECURE=1 if the backend
+    certificate can't be verified.
+
+  [davisagli] [#4434](https://github.com/plone/volto/issues/4434)
+
+### Bugfix
+
+- fix: newsitem and event views wrapper classNames @nzambello [#4443](https://github.com/plone/volto/issues/4443)
+- Fix weird GHA failure on config option not supported @sneridagh [#4466](https://github.com/plone/volto/issues/4466)
+- Fix history view dropdown for first entry, showing 'Revert to this version option' always @sneridagh [#4471](https://github.com/plone/volto/issues/4471)
+- Fix order of row of long table in edit and view mode @iFlameing [#4473](https://github.com/plone/volto/issues/4473)
+- Improve flaky test in autofocus Cypress tests @sneridagh [#4475](https://github.com/plone/volto/issues/4475)
+
+### Documentation
+
+- Complete teaser docs, add new section in `Blocks`: `Core Blocks developers notes` @sneridagh [#4461](https://github.com/plone/volto/issues/4461)
+- Change from links to inline literals in `CHANGELOG.md` to fix linkcheckbroken. @stevepiercy [#4470](https://github.com/plone/volto/issues/4470)
+
+
+## 17.0.0-alpha.0 (2023-03-04)
+
+### Breaking
+
+- Volto 17 drops support for NodeJS 14, and adds support for NodeJS 18.
+  Please see the [upgrade guide](https://6.docs.plone.org/volto/upgrade-guide/index.html)
+  for more information.
+
+  Volto 17 now uses Webpack 5. [#4086](https://github.com/plone/volto/issues/4086)
+
+### Internal
+
+- Add HI-ERN website to "Volto in Production" section in README @steffenri [#4172](https://github.com/plone/volto/issues/4172)
+
+### Documentation
+
+- Add a new Volto site to the README @erral [#4158](https://github.com/plone/volto/issues/4158), [#4170](https://github.com/plone/volto/issues/4170)
+- Add new websites Lanku and UEU
+  [erral] [#4310](https://github.com/plone/volto/issues/4310)
+- Fix English and MyST grammar and syntax from PR #4285 @stevepiercy [#4331](https://github.com/plone/volto/issues/4331)
+- Use a universal static path for both documentation and volto repos. @stevepiercy [#4376](https://github.com/plone/volto/issues/4376)
+
+
 ## 16.19.0 (2023-04-04)
 
 ### Feature
