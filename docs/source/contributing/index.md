@@ -1,10 +1,10 @@
 ---
 myst:
   html_meta:
-    "description": "A guide on how to contribute to Volto, the frontend for Plone."
-    "property=og:description": "A guide on how to contribute to Volto, the frontend for Plone."
-    "property=og:title": "Contributing to Volto"
-    "keywords": "Volto, Plone, frontend, React, guidelines"
+    "description": "How to contribute to Volto, the frontend for Plone."
+    "property=og:description": "How to contribute to Volto, the frontend for Plone."
+    "property=og:title": "How to contribute to Volto, the frontend for Plone."
+    "keywords": "Plone, Volto, contributing, developer, guidelines"
 ---
 
 (contributing-to-volto-label)=
@@ -33,11 +33,11 @@ In your report, please specify a few things:
 -   Include relevant screenshots, error messages, and stack traces.
 
 
-(contributing-sign-and-return-the-plone-contributor-agreement-label)=
+(contributing-volto-sign-and-return-the-plone-contributor-agreement-label)=
 
 ## Sign and return the Plone Contributor Agreement
 
-The Volto Team reviews pull requests only from people with a GitHub account who have signed and returned the {ref}`Plone Contributor Agreement <contributing-sign-and-return-the-plone-contributor-agreement-label>`, and subsequently been assigned to a Plone Team in GitHub.
+The Volto Team reviews pull requests only from people with a GitHub account who have signed and returned the {ref}`Plone Contributor Agreement <plone:contributing-sign-and-return-the-plone-contributor-agreement-label>`, and subsequently been assigned to a Plone Team in GitHub.
 
 
 (contributing-branch-policy-label)=
@@ -87,6 +87,38 @@ Specifically:
 -   {doc}`./linting`
 -   {doc}`./testing`
 -   {doc}`./acceptance-tests`
+
+
+(contributing-developer-guidelines-label)=
+
+## Developer guidelines
+
+Development and configuration of Volto is managed through your {ref}`choice of Plone installation method <install-index-choose-installation-method-label>`.
+You may choose to install Plone via {ref}`containers <install-containers-label>` or from its {ref}`packages <install-packages-1-label>`.
+
+```{todo}
+When referring to installation and configuration of Plone's backend, this part of the Volto documentation may have obsolete content.
+The most current information for installing and configuring Plone is in {ref}`install-index-label`.
+Please report any issues in the [Volto issue tracker](https://github.com/plone/volto/issues/).
+```
+
+```{toctree}
+:maxdepth: 1
+
+design-principles
+style-guide
+language-features
+linting
+react
+redux
+routing
+icons
+testing
+acceptance-tests
+accessibility-guidelines
+typescript
+volto-core-addons
+```
 
 
 (contributing-final-advice-label)=
