@@ -24,7 +24,7 @@
 
 - Deleted duplicate import and fixed training URLs. @yahya-cloud [#4523](https://github.com/plone/volto/issues/4523)
 - Fix grammar in PR #4542. @stevepiercy [#4555](https://github.com/plone/volto/issues/4555)
-- Fix broken links at ReactJS.org. @stevepiercy [#4569](https://github.com/plone/volto/issues/4569)
+- Fix broken links at `ReactJS.org`. @stevepiercy [#4569](https://github.com/plone/volto/issues/4569)
 - Fix video warnings and link errors. @stevepiercy [#4578](https://github.com/plone/volto/issues/4578)
 
 
@@ -143,7 +143,7 @@
 
 ### Documentation
 
-- Fix broken links at ReactJS.org. @stevepiercy [#4569](https://github.com/plone/volto/issues/4569)
+- Fix broken links at `ReactJS.org`. @stevepiercy [#4569](https://github.com/plone/volto/issues/4569)
 - Fix video warnings and link errors. @stevepiercy [#4578](https://github.com/plone/volto/issues/4578)
 
 
