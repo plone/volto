@@ -48,7 +48,7 @@ exports[`IdWidget renders an empty id widget component 1`] = `
 exports[`IdWidget renders an id widget with a valid dot character 1`] = `
 <div>
   <div
-    class="inline field text field-wrapper-my-field.jpg"
+    class="error inline field text field-wrapper-my-field.jpg"
   >
     <div
       class="ui grid"
@@ -83,6 +83,11 @@ exports[`IdWidget renders an id widget with a valid dot character 1`] = `
               value="test-id"
             />
           </div>
+          <div
+            class="ui red pointing basic label"
+          >
+            Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.
+          </div>
         </div>
       </div>
     </div>
@@ -93,7 +98,7 @@ exports[`IdWidget renders an id widget with a valid dot character 1`] = `
 exports[`IdWidget renders an id widget with a valid value 1`] = `
 <div>
   <div
-    class="inline field text field-wrapper-my-field"
+    class="error inline field text field-wrapper-my-field"
   >
     <div
       class="ui grid"
@@ -127,6 +132,11 @@ exports[`IdWidget renders an id widget with a valid value 1`] = `
               type="text"
               value="test-id"
             />
+          </div>
+          <div
+            class="ui red pointing basic label"
+          >
+            Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.
           </div>
         </div>
       </div>
