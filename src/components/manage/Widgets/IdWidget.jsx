@@ -141,7 +141,7 @@ class IdWidget extends Component {
     }
 
     // Check invalid characters
-    if (!/^(?!aq_|_)(?!\.{1,2}$)[a-z0-9._]+(?<!__)$/.test(value)) {
+    if (!/^(?!aq_|_)(?!\.{1,2}$)[a-z0-9._]*(?<!__)$/.test(value)) {
       error.push(this.props.intl.formatMessage(messages.invalidCharacters));
     }
 
