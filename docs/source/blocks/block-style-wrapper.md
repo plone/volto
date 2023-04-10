@@ -7,7 +7,9 @@ myst:
     "keywords": "Volto, Plone, frontend, React, Blocks, Edit, Style, Wrapper, components"
 ---
 
-# Blocks - Style Wrapper
+(block-style-wrapper-label)=
+
+# Block style wrapper
 
 The block style wrapper is part of a block anatomy.
 It allows you to inject styles from the block schema into the block wrapper in the form of class names.
@@ -62,7 +64,7 @@ const stylingSchema = {
 }
 ```
 
-The `addStyling` helper adds the (empty) `styles` field inside the `Styling` fieldset for you, so when defining your block schema you can do:
+The `addStyling` schemaEnhancer adds the (empty) `styles` field inside the `Styling` fieldset for you, so when defining your block schema you can do:
 
 ```js
 import { addStyling } from '@plone/volto/helpers/Extensions/withBlockSchemaEnhancer';
@@ -89,6 +91,19 @@ export const TeaserSchema = ({ intl }) => {
 ```
 
 You can add a set of style fields defining your block styles—such as alignment, background color, and so on—in your block schema by adding them to the `styles` object field as shown above.
+
+In case you decide to create reusable sets of styling controls for your blocks, you can use the `composeSchema` helper to compose multiple schemaEnhancers:
+
+```js
+import { composeSchema } from '@plone/volto/helpers';
+
+// ...
+config.blocks.blocksConfig.listing.schemaEnhancer = composeSchema(
+  config.blocks.blocksConfig.listing.schemaEnhancer,
+  addStyling,
+  addMyCustomColorStylingField,
+)
+```
 
 ## The `styles` field
 
@@ -132,8 +147,23 @@ The resultant HTML would be the following:
 ```html
 <div class="has--backgroundColor--ee22ee has--myCustomStyleField--red has--myCustom2StyleField--color--black has--myCustom2StyleField--color--MyGradient">
 ```
-
 Then it's at your discretion how you define the CSS class names in your theme.
+
+If you need other style of classnames generated, you can use the classname
+converters defined in `config.settings.styleClassNameConverters`, by
+registering fieldnames suffixed with the converter name. For example, a style
+data like:
+
+```
+{
+  "styles": {
+    "theme:noprefix": "primary",
+    "inverted:bool": true,
+  }
+}
+```
+
+will generate classnames `primary inverted`
 
 ## Align class injection
 

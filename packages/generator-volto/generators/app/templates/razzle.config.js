@@ -19,4 +19,26 @@ if (configFile) {
     voltoPath = `./${jsConfig.baseUrl}/${pathsConfig['@plone/volto'][0]}`;
 }
 
-module.exports = require(`${voltoPath}/razzle.config`);
+const defaultVoltoRazzleConfig = require(`${voltoPath}/razzle.config`);
+const { modifyWebpackConfig } = defaultVoltoRazzleConfig;
+
+const customModifyWebpackConfig = ({
+  env: { target, dev },
+  webpackConfig,
+  webpackObject,
+  options,
+}) => {
+  const config = modifyWebpackConfig({
+    env: { target, dev },
+    webpackConfig,
+    webpackObject,
+    options,
+  });
+  // add custom code here..
+  return config;
+};
+
+module.exports = {
+  ...defaultVoltoRazzleConfig,
+  modifyWebpackConfig: customModifyWebpackConfig,
+};

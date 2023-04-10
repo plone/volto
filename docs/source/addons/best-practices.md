@@ -24,7 +24,7 @@ register the most basic configuration of that widget with a name that can be
 used.
 
 On more complicated cases, see if you can structure your code to use the
-`settings` configuration registry, or stash your configuration in your block
+`settings` {term}`configuration registry`, or stash your configuration in your block
 registration, for example.
 
 As an example: let's say we're building a Color Picker widget and we want to
@@ -36,7 +36,7 @@ multiple instances of that color widget with custom color palettes.
 
 ### Provide additional configuration
 
-An add-on can ship with multiple Volto configuration loaders. This makes it
+An add-on can ship with multiple {term}`Volto configuration loader`s. This makes it
 possible to provide configuration methods for demo purposes, for example, or to
 ship with a default "shallow" integration, then provide another separate
 configuration loader for a deeper integration.

@@ -144,7 +144,7 @@ const ListingTemplate = ({
             <Toast
               success
               title={intl.formatMessage(messages.success)}
-              content="Membership updated"
+              content={intl.formatMessage(messages.membershipUpdated)}
             />,
           );
       });
@@ -178,7 +178,7 @@ const ListingTemplate = ({
           <Toast
             success
             title={intl.formatMessage(messages.success)}
-            content="Membership updated"
+            content={intl.formatMessage(messages.membershipUpdated)}
           />,
         );
       });

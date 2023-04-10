@@ -24,7 +24,12 @@ import { loadables } from './Loadables';
 import { workflowMapping } from './Workflows';
 
 import { contentIcons } from './ContentIcons';
-import { controlPanelsIcons } from './ControlPanels';
+import { styleClassNameConverters, styleClassNameExtenders } from './Style';
+import {
+  controlPanelsIcons,
+  filterControlPanels,
+  filterControlPanelsSchema,
+} from './ControlPanels';
 
 import { richtextEditorSettings, richtextViewSettings } from './RichTextEditor';
 
@@ -70,13 +75,21 @@ let config = {
     // The URL Volto is going to be served (see sensible defaults above)
     publicURL,
     apiPath,
-    apiExpanders: [],
+    apiExpanders: [
+      // Add the following expanders for only issuing a single request.
+      // https://6.docs.plone.org/volto/configuration/settings-reference.html#term-apiExpanders
+      // {
+      //   match: '',
+      //   GET_CONTENT: ['breadcrumbs', 'navigation', 'actions', 'types'],
+      // },
+    ],
     // Internal proxy to bypass CORS *while developing*. NOT intended for production use.
     // In production is recommended you use a Seamless mode deployment using a web server in
     // front of both the frontend and the backend so you can bypass CORS safely.
-    // https://docs.voltocms.com/deploying/seamless-mode/
+    // https://6.docs.plone.org/volto/deploying/seamless-mode.html
     devProxyToApiPath:
       process.env.RAZZLE_DEV_PROXY_API_PATH ||
+      process.env.RAZZLE_INTERNAL_API_PATH ||
       process.env.RAZZLE_API_PATH ||
       'http://localhost:8080/Plone', // Set it to '' for disabling the proxy
     // proxyRewriteTarget Set it for set a custom target for the proxy or overide the internal VHM rewrite
@@ -99,6 +112,7 @@ let config = {
     downloadableObjects: ['File'], //list of content-types for which the direct download of the file will be carried out if the user is not authenticated
     viewableInBrowserObjects: [], //ex: ['File']. List of content-types for which the file will be displayed in browser if the user is not authenticated
     listingPreviewImageField: 'image', // deprecated from Volto 14 onwards
+    openExternalLinkInNewTab: false,
     notSupportedBrowsers: ['ie'],
     defaultPageSize: 25,
     isMultilingual: false,
@@ -141,6 +155,8 @@ let config = {
     showTags: true,
     controlpanels: [],
     controlPanelsIcons,
+    filterControlPanels,
+    filterControlPanelsSchema,
     externalRoutes: [
       // URL to be considered as external
       // {
@@ -161,6 +177,15 @@ let config = {
     addonsInfo: addonsInfo,
     workflowMapping,
     errorHandlers: [], // callables for unhandled errors
+    styleClassNameConverters,
+    hashLinkSmoothScroll: false,
+    styleClassNameExtenders,
+    querystringSearchGet: false,
+  },
+  experimental: {
+    addBlockButton: {
+      enabled: false,
+    },
   },
   widgets: {
     ...widgetMapping,
@@ -187,12 +212,12 @@ let config = {
 };
 
 ConfigRegistry.settings = config.settings;
+ConfigRegistry.experimental = config.experimental;
 ConfigRegistry.blocks = config.blocks;
 ConfigRegistry.views = config.views;
 ConfigRegistry.widgets = config.widgets;
 ConfigRegistry.addonRoutes = config.addonRoutes;
 ConfigRegistry.addonReducers = config.addonReducers;
-ConfigRegistry.appExtras = config.appExtras;
 ConfigRegistry.components = config.components;
 
 applyAddonConfiguration(ConfigRegistry);
