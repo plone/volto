@@ -22,9 +22,9 @@ const messages = defineMessages({
   },
   invalidCharacters: {
     id:
-      'Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.',
+      'Only 7-bit bytes characters are allowed. Cannot contain characters like:"<", ">", "&", "#", "/", "?". Cannot start with: "_", "aq_", "@@", "++". Cannot end with "__". Cannot be ".", "..", double quotes(can be traversed). Cannot be "REQUEST" or any characters that are illegal in URLs. No newlines.',
     defaultMessage:
-      'Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.',
+      'Only 7-bit bytes characters are allowed. Cannot contain characters like:"<", ">", "&", "#", "/", "?". Cannot start with: "_", "aq_", "@@", "++". Cannot end with "__". Cannot be ".", "..", double quotes(can be traversed). Cannot be "REQUEST" or any characters that are illegal in URLs. No newlines.',
   },
 });
 
@@ -141,7 +141,12 @@ class IdWidget extends Component {
     }
 
     // Check invalid characters
-    if (!/^(?!aq_|_)(?!\.{1,2}$)[a-z0-9._]*(?<!__)$/.test(value)) {
+    if (
+      // eslint-disable-next-line no-control-regex
+      !/^(?!\+\+)(?!@@)(?!.*REQUEST)(?!aq_)(?!.*__)(?!_)(?!((^|\/)\.\.?($|\/)|^"\s*"$))(?:(?![\r\n<>/?&#\x00-\x1F\x7F])['\x00-\x7F\u0080-\uFFFF. _])*$/.test(
+        value,
+      )
+    ) {
       error.push(this.props.intl.formatMessage(messages.invalidCharacters));
     }
 
