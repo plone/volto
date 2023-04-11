@@ -14,6 +14,7 @@ myst:
 
 i18n
 best-practices
+theme
 ```
 
 There are several advanced scenarios where we might want to have more control
