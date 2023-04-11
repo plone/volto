@@ -202,7 +202,7 @@ class SelectWidget extends Component {
 
     const isMulti = this.props.isMulti
       ? this.props.isMulti
-      : id === 'roles' || id === 'groups';
+      : id === 'roles' || id === 'groups' || this.props.type === 'array';
 
     return (
       <FormFieldWrapper {...this.props}>
