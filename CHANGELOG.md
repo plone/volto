@@ -143,7 +143,7 @@
 
 ### Documentation
 
-- Fix broken links at ReactJS.org. @stevepiercy [#4569](https://github.com/plone/volto/issues/4569)
+- Fix broken links at `ReactJS.org`. @stevepiercy [#4569](https://github.com/plone/volto/issues/4569)
 - Fix video warnings and link errors. @stevepiercy [#4578](https://github.com/plone/volto/issues/4578)
 
 
