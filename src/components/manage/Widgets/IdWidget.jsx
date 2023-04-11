@@ -142,8 +142,7 @@ class IdWidget extends Component {
 
     // Check invalid characters
     if (
-      // eslint-disable-next-line no-control-regex
-      !/^(?!\+\+)(?!@@)(?!.*REQUEST)(?!aq_)(?!.*__)(?!_)(?!((^|\/)\.\.?($|\/)|^"\s*"$))(?:(?![\r\n<>/?&#\x00-\x1F\x7F])['\x00-\x7F\u0080-\uFFFF. _])*$/.test(
+      !/^(?!\+\+)(?!@@)(?!.*REQUEST)(?!aq_)(?!.*__)(?!_)(?!((^|\/)\.\.?($|\/)|^"\s*"$))(?:(?![\r\n<>\/?&#\x00-\x1F\x7F])['\x00-\x7F\u0080-\uFFFF. _])*$/.test(
         value,
       )
     ) {
