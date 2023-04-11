@@ -2100,7 +2100,7 @@ msgid "My email is"
 msgstr "Sähköpostiosoitteeni on"
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: My username is
+# defaultMessage: My user name is
 msgid "My username is"
 msgstr "Käyttäjätunnukseni on"
 
@@ -4195,7 +4195,7 @@ msgid "label_my_email_is"
 msgstr "Sähköpostiosoitteeni"
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: My username is
+# defaultMessage: My user name is
 msgid "label_my_username_is"
 msgstr "Käyttäjätunnukseni"
 
