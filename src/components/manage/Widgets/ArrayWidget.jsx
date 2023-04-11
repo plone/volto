@@ -236,7 +236,8 @@ class ArrayWidget extends Component {
       !this.props.items?.choices?.length &&
       !this.props.choices?.length &&
       this.props.vocabLoading === undefined &&
-      !this.props.vocabLoaded
+      !this.props.vocabLoaded &&
+      this.props.vocabBaseUrl
     ) {
       this.props.getVocabulary({
         vocabNameOrURL: this.props.vocabBaseUrl,
@@ -306,6 +307,7 @@ class ArrayWidget extends Component {
           // react-sortable-hoc props:
           axis="xy"
           onSortEnd={this.onSortEnd}
+          menuShouldScrollIntoView={false}
           distance={4}
           // small fix for https://github.com/clauderic/react-sortable-hoc/pull/352:
           getHelperDimensions={({ node }) => node.getBoundingClientRect()}
@@ -314,6 +316,9 @@ class ArrayWidget extends Component {
           isDisabled={this.props.disabled || this.props.isDisabled}
           className="react-select-container"
           classNamePrefix="react-select"
+          /* eslint-disable jsx-a11y/no-autofocus */
+          autoFocus={this.props.focus}
+          /* eslint-enable jsx-a11y/no-autofocus */
           options={
             this.props.vocabBaseUrl
               ? choices

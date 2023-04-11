@@ -150,6 +150,10 @@ Based on this setup, Volto will render this field with the `TokenWidget`.
 See [storybook](https://6.dev-docs.plone.org/storybook) with available widgets.
 ```
 
+## Widget `isDisabled` Props
+
+We can disable the input of a widget by passing props `isDisabled: true`.
+
 ## Write a new widget
 
 ```{note}

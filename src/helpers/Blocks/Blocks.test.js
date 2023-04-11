@@ -17,6 +17,8 @@ import {
   applyBlockDefaults,
   applySchemaDefaults,
   buildStyleClassNamesFromData,
+  buildStyleClassNamesExtenders,
+  getPreviousNextBlock,
 } from './Blocks';
 
 import config from '@plone/volto/registry';
@@ -869,6 +871,7 @@ describe('Blocks', () => {
       expect(applyBlockDefaults({ data })).toEqual({});
     });
   });
+
   describe('buildStyleClassNamesFromData', () => {
     it('Sets styles classname array according to style values', () => {
       const styles = {
@@ -880,6 +883,7 @@ describe('Blocks', () => {
         'has--backgroundColor--AABBCC',
       ]);
     });
+
     it('Sets styles classname array according to style values with nested', () => {
       const styles = {
         color: 'red',
@@ -896,6 +900,7 @@ describe('Blocks', () => {
         'has--nested--bar--black',
       ]);
     });
+
     it('Sets styles classname array according to style values with nested and colors', () => {
       const styles = {
         color: 'red',
@@ -913,6 +918,27 @@ describe('Blocks', () => {
       ]);
     });
 
+    it('Supports multiple nested level', () => {
+      const styles = {
+        color: 'red',
+        backgroundColor: '#AABBCC',
+        nested: {
+          l1: 'white',
+          level2: {
+            foo: '#fff',
+            bar: '#000',
+          },
+        },
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual([
+        'has--color--red',
+        'has--backgroundColor--AABBCC',
+        'has--nested--l1--white',
+        'has--nested--level2--foo--fff',
+        'has--nested--level2--bar--000',
+      ]);
+    });
+
     it('Sets styles classname array according to style values with int values', () => {
       const styles = {
         color: 'red',
@@ -921,6 +947,331 @@ describe('Blocks', () => {
       expect(buildStyleClassNamesFromData(styles)).toEqual([
         'has--color--red',
         'has--borderRadius--8',
+      ]);
+    });
+
+    it('Understands noprefix converter for style values', () => {
+      const styles = {
+        color: 'red',
+        'theme:noprefix': 'primary',
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual([
+        'has--color--red',
+        'primary',
+      ]);
+    });
+
+    it('Understands bool converter for trueish value', () => {
+      const styles = {
+        color: 'red',
+        'inverted:bool': true,
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual([
+        'has--color--red',
+        'inverted',
+      ]);
+    });
+
+    it('Understands bool converter for false value', () => {
+      const styles = {
+        color: 'red',
+        'inverted:bool': false,
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual(['has--color--red']);
+    });
+
+    it('Ugly edge cases', () => {
+      const styles = {
+        color: undefined,
+        nested: {
+          l1: {},
+        },
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual([]);
+    });
+  });
+
+  describe('getPreviousNextBlock', () => {
+    it('basic functionality', () => {
+      const content = {
+        blocks: {
+          1: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+          2: {
+            '@type': 'slate',
+          },
+          3: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+        },
+        blocks_layout: {
+          items: [1, 2, 3],
+        },
+      };
+      const block = 2;
+      const [previousBlock, nextBlock] = getPreviousNextBlock({
+        content,
+        block,
+      });
+      expect(previousBlock).toEqual({
+        '@type': 'slate',
+        styles: {
+          backgroundColor: 'grey',
+        },
+      });
+      expect(nextBlock).toEqual({
+        '@type': 'slate',
+        styles: {
+          backgroundColor: 'grey',
+        },
+      });
+    });
+  });
+
+  describe('buildStyleClassNamesExtenders', () => {
+    beforeAll(() => {
+      // Example styleClassNameExtenders
+      config.settings.styleClassNameExtenders = [
+        ({ block, content, data, classNames }) => {
+          let styles = [];
+          const [previousBlock, nextBlock] = getPreviousNextBlock({
+            content,
+            block,
+          });
+
+          if (nextBlock?.['@type']) {
+            styles.push(`next--is--${nextBlock['@type']}`);
+          }
+
+          if (data?.['@type'] === previousBlock?.['@type']) {
+            styles.push('previous--is--same--block-type');
+          }
+
+          if (data?.['@type'] === nextBlock?.['@type']) {
+            styles.push('next--is--same--block-type');
+          }
+
+          if (data?.['@type'] !== previousBlock?.['@type']) {
+            styles.push('is--first--of--block-type');
+          }
+
+          if (data?.['@type'] !== nextBlock?.['@type']) {
+            styles.push('is--last--of--block-type');
+          }
+
+          const previousColor =
+            previousBlock?.styles?.backgroundColor ?? 'transparent';
+          const currentColor = data?.styles?.backgroundColor ?? 'transparent';
+          const nextColor = nextBlock?.styles?.backgroundColor ?? 'transparent';
+
+          if (currentColor === previousColor) {
+            styles.push('previous--has--same--backgroundColor');
+          } else if (currentColor !== previousColor) {
+            styles.push('previous--has--different--backgroundColor');
+          }
+
+          if (currentColor === nextColor) {
+            styles.push('next--has--same--backgroundColor');
+          } else if (currentColor !== nextColor) {
+            styles.push('next--has--different--backgroundColor');
+          }
+
+          return [...classNames, ...styles];
+        },
+      ];
+    });
+
+    it('slate grey + slate + slate grey ', () => {
+      const content = {
+        blocks: {
+          1: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+          2: {
+            '@type': 'slate',
+          },
+          3: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+        },
+        blocks_layout: {
+          items: [1, 2, 3],
+        },
+      };
+      const block = 2;
+      const data = content['blocks'][2];
+      const classNames = [];
+      expect(
+        buildStyleClassNamesExtenders({ block, content, data, classNames }),
+      ).toStrictEqual([
+        'next--is--slate',
+        'previous--is--same--block-type',
+        'next--is--same--block-type',
+        'previous--has--different--backgroundColor',
+        'next--has--different--backgroundColor',
+      ]);
+    });
+
+    it('slate grey + slate grey + slate grey ', () => {
+      const content = {
+        blocks: {
+          1: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+          2: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+          3: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+        },
+        blocks_layout: {
+          items: [1, 2, 3],
+        },
+      };
+      const block = 2;
+      const data = content['blocks'][2];
+      const classNames = [];
+
+      expect(
+        buildStyleClassNamesExtenders({ block, content, data, classNames }),
+      ).toStrictEqual([
+        'next--is--slate',
+        'previous--is--same--block-type',
+        'next--is--same--block-type',
+        'previous--has--same--backgroundColor',
+        'next--has--same--backgroundColor',
+      ]);
+    });
+
+    it('grid + slate grey + slate grey ', () => {
+      const content = {
+        blocks: {
+          1: {
+            '@type': '__grid',
+          },
+          2: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+          3: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+        },
+        blocks_layout: {
+          items: [1, 2, 3],
+        },
+      };
+      const block = 2;
+      const data = content['blocks'][2];
+      const classNames = [];
+
+      expect(
+        buildStyleClassNamesExtenders({ block, content, data, classNames }),
+      ).toStrictEqual([
+        'next--is--slate',
+        'next--is--same--block-type',
+        'is--first--of--block-type',
+        'previous--has--different--backgroundColor',
+        'next--has--same--backgroundColor',
+      ]);
+    });
+
+    it('grid + grid + slate grey ', () => {
+      const content = {
+        blocks: {
+          1: {
+            '@type': '__grid',
+          },
+          2: {
+            '@type': '__grid',
+          },
+          3: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+        },
+        blocks_layout: {
+          items: [1, 2, 3],
+        },
+      };
+      const block = 2;
+      const data = content['blocks'][2];
+      const classNames = [];
+
+      expect(
+        buildStyleClassNamesExtenders({ block, content, data, classNames }),
+      ).toStrictEqual([
+        'next--is--slate',
+        'previous--is--same--block-type',
+        'is--last--of--block-type',
+        'previous--has--same--backgroundColor',
+        'next--has--different--backgroundColor',
+      ]);
+    });
+
+    it('grid + grid + slate grey - with existing classNames list', () => {
+      const content = {
+        blocks: {
+          1: {
+            '@type': '__grid',
+          },
+          2: {
+            '@type': '__grid',
+          },
+          3: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+        },
+        blocks_layout: {
+          items: [1, 2, 3],
+        },
+      };
+      const block = 2;
+      const data = content['blocks'][2];
+      const classNames = ['has--align--center'];
+
+      expect(
+        buildStyleClassNamesExtenders({ block, content, data, classNames }),
+      ).toStrictEqual([
+        'has--align--center',
+        'next--is--slate',
+        'previous--is--same--block-type',
+        'is--last--of--block-type',
+        'previous--has--same--backgroundColor',
+        'next--has--different--backgroundColor',
       ]);
     });
   });

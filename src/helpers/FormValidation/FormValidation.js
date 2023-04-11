@@ -4,27 +4,29 @@ import { messages } from '../MessageLabels/MessageLabels';
 /**
  * Will return the intl message if invalid
  * @param {boolean} isValid
- * @param {string} maxCriterion
+ * @param {string} criterion
  * @param {string | number} valueToCompare can compare '47' < 50
  * @param {Function} intlFunc
  */
-const validationMessage = (isValid, maxCriterion, valueToCompare, intlFunc) =>
+const validationMessage = (isValid, criterion, valueToCompare, intlFunc) =>
   !isValid
-    ? intlFunc(messages[maxCriterion], {
+    ? intlFunc(messages[criterion], {
         len: valueToCompare,
       })
     : null;
+
 /**
  * Returns if based on the criterion the value is lower or equal
  * @param {string | number} value can compare '47' < 50
  * @param {string | number} valueToCompare can compare '47' < 50
- * @param {string} minCriterion
+ * @param {string} maxCriterion
  * @param {Function} intlFunc
  */
-const isMaxPropertyValid = (value, valueToCompare, minCriterion, intlFunc) => {
+const isMaxPropertyValid = (value, valueToCompare, maxCriterion, intlFunc) => {
   const isValid = valueToCompare !== undefined ? value <= valueToCompare : true;
-  return validationMessage(isValid, minCriterion, valueToCompare, intlFunc);
+  return validationMessage(isValid, maxCriterion, valueToCompare, intlFunc);
 };
+
 /**
  * Returns if based on the criterion the value is higher or equal
  * @param {string | number} value can compare '47' < 50
@@ -32,9 +34,9 @@ const isMaxPropertyValid = (value, valueToCompare, minCriterion, intlFunc) => {
  * @param {string} minCriterion
  * @param {Function} intlFunc
  */
-const isMinPropertyValid = (value, valueToCompare, maxCriterion, intlFunc) => {
+const isMinPropertyValid = (value, valueToCompare, minCriterion, intlFunc) => {
   const isValid = valueToCompare !== undefined ? value >= valueToCompare : true;
-  return validationMessage(isValid, maxCriterion, valueToCompare, intlFunc);
+  return validationMessage(isValid, minCriterion, valueToCompare, intlFunc);
 };
 
 const widgetValidation = {
@@ -63,7 +65,16 @@ const widgetValidation = {
   },
   url: {
     isValidURL: (urlValue, urlObj, intlFunc) => {
-      const urlRegex = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?|^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([_.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?|^((http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/gm;
+      var urlRegex = new RegExp(
+        '^(https?:\\/\\/)?' + // validate protocol
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // validate domain name
+        '((\\d{1,3}\\.){3}\\d{1,3}))|' + // validate OR ip (v4) address
+        '(localhost)' + // validate OR localhost address
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // validate port and path
+        '(\\?[;&a-z\\d%_.~+=-]*)?' + // validate query string
+          '(\\#[-a-z\\d_]*)?$', // validate fragment locator
+        'i',
+      );
       const isValid = urlRegex.test(urlValue);
       return !isValid ? intlFunc(messages.isValidURL) : null;
     },
@@ -109,7 +120,7 @@ const widgetValidation = {
     maxLength: (value, itemObj, intlFunc) =>
       isMaxPropertyValid(
         value.length,
-        itemObj.maxLengthj,
+        itemObj.maxLength,
         'maxLength',
         intlFunc,
       ),

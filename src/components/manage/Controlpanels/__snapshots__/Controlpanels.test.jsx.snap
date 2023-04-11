@@ -24,7 +24,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
         className="ui attached segment"
       >
         <div
-          className="ui six column grid"
+          className="ui doubling six column grid"
         >
           <div
             className="row"
@@ -257,7 +257,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
         className="ui attached segment"
       >
         <div
-          className="ui six column grid"
+          className="ui doubling six column grid"
         >
           <div
             className="row"
@@ -382,7 +382,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
         className="ui attached segment"
       >
         <div
-          className="ui six column grid"
+          className="ui doubling six column grid"
         >
           <div
             className="row"
@@ -435,7 +435,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
         className="ui attached segment"
       >
         <div
-          className="ui six column grid"
+          className="ui doubling six column grid"
         >
           <div
             className="row"
@@ -595,7 +595,7 @@ exports[`Controlpanels renders an additional control panel 1`] = `
         className="ui attached segment"
       >
         <div
-          className="ui six column grid"
+          className="ui doubling six column grid"
         >
           <div
             className="row"
@@ -648,7 +648,7 @@ exports[`Controlpanels renders an additional control panel 1`] = `
         className="ui attached segment"
       >
         <div
-          className="ui six column grid"
+          className="ui doubling six column grid"
         >
           <div
             className="row"
@@ -809,7 +809,7 @@ exports[`Controlpanels renders an additional control panel 1`] = `
         className="ui attached segment"
       >
         <div
-          className="ui six column grid"
+          className="ui doubling six column grid"
         >
           <div
             className="row"
@@ -898,7 +898,7 @@ exports[`Controlpanels renders an additional control panel 1`] = `
         className="ui attached segment"
       >
         <div
-          className="ui six column grid"
+          className="ui doubling six column grid"
         >
           <div
             className="row"

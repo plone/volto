@@ -96,6 +96,7 @@ export const SliderSchema = (props) => ({
       id: 'default',
       title: 'Default',
       fields: [
+        'html',
         'slides',
         'fieldAfterObjectList',
         'href',
@@ -148,6 +149,10 @@ export const SliderSchema = (props) => ({
         },
         required: [],
       },
+    },
+    html: {
+      title: 'HTML',
+      widget: 'richtext',
     },
   },
   required: [],

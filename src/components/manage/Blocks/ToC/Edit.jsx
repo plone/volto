@@ -24,7 +24,9 @@ class Edit extends Component {
                 [id]: value,
               });
             }}
+            onChangeBlock={this.props.onChangeBlock}
             formData={this.props.data}
+            block={this.props.block}
           />
         </SidebarPortal>
       </>
