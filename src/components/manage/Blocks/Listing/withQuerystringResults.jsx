@@ -3,10 +3,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import useDeepCompareEffect from 'use-deep-compare-effect';
 
-import { getContent, getQueryStringResults } from '@plone/volto/actions';
+import { getQueryStringResults } from '@plone/volto/actions';
 import { usePagination, getBaseUrl } from '@plone/volto/helpers';
 
 import config from '@plone/volto/registry';
+
+export const defaultQuery = [
+  {
+    i: 'path',
+    o: 'plone.app.querystring.operation.string.relativePath',
+    v: '::1',
+  },
+];
 
 function getDisplayName(WrappedComponent) {
   return WrappedComponent.displayName || WrappedComponent.name || 'Component';
@@ -14,7 +22,7 @@ function getDisplayName(WrappedComponent) {
 
 export default function withQuerystringResults(WrappedComponent) {
   function WithQuerystringResults(props) {
-    const { data = {}, properties: content, path, variation } = props;
+    const { data = {}, path, variation } = props;
     const { settings } = config;
     const querystring = data.querystring || data; // For backwards compat with data saved before Blocks schema. Note, this is also how the Search block passes data to ListingBody
 
@@ -42,33 +50,22 @@ export default function withQuerystringResults(WrappedComponent) {
     );
     const dispatch = useDispatch();
 
-    const folderItems = content?.is_folderish ? content.items : [];
     const hasQuery = querystring?.query?.length > 0;
-    const hasLoaded = hasQuery ? !querystringResults?.[block]?.loading : true;
+    const hasLoaded = !querystringResults?.[block]?.loading;
 
-    const listingItems =
-      querystring?.query?.length > 0 && querystringResults?.[block]
-        ? querystringResults?.[block]?.items || []
-        : folderItems;
+    const listingItems = querystringResults?.[block]?.items || [];
 
-    const showAsFolderListing = !hasQuery && content?.items_total > b_size;
-    const showAsQueryListing =
-      hasQuery && querystringResults?.[block]?.total > b_size;
+    const showAsQueryListing = querystringResults?.[block]?.total > b_size;
+    const showAsFolderListing = !hasQuery && showAsQueryListing;
 
-    const totalPages = showAsFolderListing
-      ? Math.ceil(content.items_total / b_size)
-      : showAsQueryListing
+    const totalPages = showAsQueryListing
       ? Math.ceil(querystringResults[block].total / b_size)
       : 0;
 
-    const prevBatch = showAsFolderListing
-      ? content.batching?.prev
-      : showAsQueryListing
+    const prevBatch = showAsQueryListing
       ? querystringResults[block].batching?.prev
       : null;
-    const nextBatch = showAsFolderListing
-      ? content.batching?.next
-      : showAsQueryListing
+    const nextBatch = showAsQueryListing
       ? querystringResults[block].batching?.next
       : null;
 
@@ -101,7 +98,18 @@ export default function withQuerystringResults(WrappedComponent) {
           ),
         );
       } else {
-        dispatch(getContent(initialPath, null, null, currentPage));
+        dispatch(
+          getQueryStringResults(
+            initialPath,
+            {
+              ...adaptedQuery,
+              sort_on: 'getObjPositionInParent',
+              query: defaultQuery,
+            },
+            block,
+            currentPage,
+          ),
+        );
       }
     }, [
       block,

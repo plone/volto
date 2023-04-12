@@ -1,0 +1,1 @@
+Use default query in SSR rendering and client fetch of the listing block when we don't have a search criteria. Fix https://github.com/plone/volto/issues/3839 @wesleybl
