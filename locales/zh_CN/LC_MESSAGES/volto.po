@@ -2300,9 +2300,9 @@ msgid "Ok"
 msgstr ""
 
 #: components/manage/Widgets/IdWidget
-# defaultMessage: Only 7-bit bytes characters are allowed. Cannot contain characters like:"<", ">", "&", "#", "/", "?". Cannot start with: "_", "aq_", "@@", "++". Cannot end with "__". Cannot be ".", "..", double quotes(can be traversed). Cannot be "REQUEST" or any characters that are illegal in URLs. No newlines.
-msgid "Only 7-bit bytes characters are allowed. Cannot contain characters like:"<", ">", "&", "#", "/", "?". Cannot start with: "_", "aq_", "@@", "++". Cannot end with "__". Cannot be ".", "..", double quotes(can be traversed). Cannot be "REQUEST" or any characters that are illegal in URLs. No newlines."
-msgstr "只允许 7 位字节字符。 不能包含以下字符：“<”、“>”、“&”、“#”、“/”、“？”。 不能以：“_”、“aq_”、“@@”、“++”开头。 不能以“__”结尾。 不能是“.”、“..”、双引号（可以遍历）。 不能是“REQUEST”或 URL 中的任何非法字符。 没有换行符。"
+# defaultMessage: Only 7-bit bytes characters are allowed. Cannot contain characters like:<, >, &, #, /, ?. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be these specific keywords: REQUEST, ., ..,"", or any other characters that are illegal in URLs. No new lines allowed.
+msgid "Only 7-bit bytes characters are allowed. Cannot contain characters like:<, >, &, #, /, ?. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be these specific keywords: REQUEST, ., ..,"", or any other characters that are illegal in URLs. No new lines allowed."
+msgstr "只允许 7 位字节字符。 不能包含以下字符：<、>、&、#、/、?。 不能以：_、aq_、@@、++ 开头。 不能以 __ 结尾。 不能是这些特定关键字：REQUEST、.、..、"" 或 URL 中非法的任何其他字符。 不允许换行。"
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
