@@ -47,7 +47,7 @@ addons/index
 backend/index
 deploying/index
 upgrade-guide/index
-developer-guidelines/index
 user-manual/index
+contributing/index
 release-notes/index
 ```
