@@ -8,6 +8,40 @@
 
 <!-- towncrier release notes start -->
 
+## 17.0.0-alpha.4 (2023-04-12)
+
+### Feature
+
+- DefaultView (view of fields for content types with blocks disabled): Show field name as tip on hover of label. @ksuess [#4598](https://github.com/plone/volto/issues/4598)
+- Support RelationList field with named StaticCatalogVocabulary and SelectWidget. @ksuess [#4614](https://github.com/plone/volto/issues/4614)
+- Support for declaring a theme in `volto.config.js` or in `package.json`
+  Add two entry points to allow extension of a theme from other add-ons. @sneridagh [#4625](https://github.com/plone/volto/issues/4625)
+- Set sameSite in I18N_LANGUAGE cookie @sneridagh [#4627](https://github.com/plone/volto/issues/4627)
+- Added querystring search get option. @robgietema [#4658](https://github.com/plone/volto/issues/4658)
+
+### Bugfix
+
+- Added current page parameter to route in listing and search block pagination - Fix: #3868 @bipoza [#4159](https://github.com/plone/volto/issues/4159)
+- Fix regexp that checks valid URLs and improve tests [cekk] [#4601](https://github.com/plone/volto/issues/4601)
+- Fixed wrong localization on password reset page @iRohitSingh [#4656](https://github.com/plone/volto/issues/4656)
+- fix sitemap.xml.gz not is not compressed @dobri1408 [#4663](https://github.com/plone/volto/issues/4663)
+
+### Internal
+
+- Trigger CI workflows to run from external pull requests. @davisagli [#4629](https://github.com/plone/volto/issues/4629)
+- Update to p.restapi 8.36.0 and Plone 6.0.3 @sneridagh [#4682](https://github.com/plone/volto/issues/4682)
+
+### Documentation
+
+- Added `JavaScript` and `NodeJS` as accepted spellings, and deviations of them as rejected spellings. @utkkkarshhh [#3092](https://github.com/plone/volto/issues/3092)
+- Fix documentation build, add pins @sneridagh [#4626](https://github.com/plone/volto/issues/4626)
+- Update Volto contributing to align with and refer to the new Plone core code contributing requirements. @stevepiercy [#4634](https://github.com/plone/volto/issues/4634)
+- Improve creating views documentation page. @rboixaderg [#4636](https://github.com/plone/volto/issues/4636)
+- Razzle upgrade notice in upgrade guide @sneridagh [#4641](https://github.com/plone/volto/issues/4641)
+- Rename "Developer Guidelines" to "Contributing". @stevepiercy [#4666](https://github.com/plone/volto/issues/4666)
+- Fix broken link to `ReactJS.org`. @stevepiercy [#4667](https://github.com/plone/volto/issues/4667)
+
+
 ## 17.0.0-alpha.3 (2023-03-22)
 
 ### Feature
