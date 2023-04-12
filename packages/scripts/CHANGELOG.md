@@ -8,6 +8,17 @@
 
 <!-- towncrier release notes start -->
 
+## 3.0.0 (2023-04-07)
+
+### Breaking
+
+- Remove dependency on `simple-git`. It is used by `mrs-developer` but not directly. @davisagli [#4546](https://github.com/plone/volto/issues/4546)
+
+### Bugfix
+
+- Fixed i18n script to avoid overwriting translations with an empty msgstr @danalvrz [#4316](https://github.com/plone/volto/issues/4316)
+
+
 ## 2.3.0 (2023-01-13)
 
 ### Feature
