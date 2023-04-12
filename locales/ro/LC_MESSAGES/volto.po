@@ -2294,8 +2294,8 @@ msgid "Ok"
 msgstr "Ok"
 
 #: components/manage/Widgets/IdWidget
-# defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.
-msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed."
+# defaultMessage: Only 7-bit bytes characters are allowed. Cannot contain characters like:"<", ">", "&", "#", "/", "?". Cannot start with: "_", "aq_", "@@", "++". Cannot end with "__". Cannot be ".", "..", double quotes(can be traversed). Cannot be "REQUEST" or any characters that are illegal in URLs. No newlines.
+msgid "Only 7-bit bytes characters are allowed. Cannot contain characters like:"<", ">", "&", "#", "/", "?". Cannot start with: "_", "aq_", "@@", "++". Cannot end with "__". Cannot be ".", "..", double quotes(can be traversed). Cannot be "REQUEST" or any characters that are illegal in URLs. No newlines."
 msgstr ""
 
 #: components/manage/Blocks/Image/schema

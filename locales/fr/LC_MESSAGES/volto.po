@@ -2311,9 +2311,9 @@ msgid "Ok"
 msgstr "Ok"
 
 #: components/manage/Widgets/IdWidget
-# defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.
-msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed."
-msgstr "Uniquement des caractères en minuscules (a-z) sans accents, chiffres (0-9), et les caractères "-", "_", and "." sont autorisés."
+# defaultMessage: Only 7-bit bytes characters are allowed. Cannot contain characters like:"<", ">", "&", "#", "/", "?". Cannot start with: "_", "aq_", "@@", "++". Cannot end with "__". Cannot be ".", "..", double quotes(can be traversed). Cannot be "REQUEST" or any characters that are illegal in URLs. No newlines.
+msgid "Only 7-bit bytes characters are allowed. Cannot contain characters like:"<", ">", "&", "#", "/", "?". Cannot start with: "_", "aq_", "@@", "++". Cannot end with "__". Cannot be ".", "..", double quotes(can be traversed). Cannot be "REQUEST" or any characters that are illegal in URLs. No newlines."
+msgstr "Seuls les caractères d'octets de 7 bits sont autorisés. Ne peut pas contenir de caractères tels que :"<", ">", "&", "#", "/", "?". Ne peut pas commencer par : "_", "aq_", "@@", "++". Ne peut pas se terminer par "__". Ne peut pas être ".", "..", guillemets doubles (peut être traversé). Ne peut pas être "REQUEST" ou tout caractère illégal dans les URL. Pas de nouvelles lignes."
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar

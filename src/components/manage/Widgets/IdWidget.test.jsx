@@ -125,7 +125,7 @@ describe('IdWidget', () => {
           onChange={() => {}}
           onBlur={() => {}}
           onClick={() => {}}
-          value="test id"
+          value="Test id"
         />
       </Provider>,
     );

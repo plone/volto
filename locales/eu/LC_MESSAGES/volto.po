@@ -2302,8 +2302,8 @@ msgstr "Ados"
 
 #: components/manage/Widgets/IdWidget
 # defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.
-msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed."
-msgstr "Letra xeheak (a-z), karaktere berezi gabe, zenbakiak (0-9) eta "-", "_" eta "." ikurrak bakarrik erabili daitezke."
+msgid "Only 7-bit bytes characters are allowed. Cannot contain characters like:"<", ">", "&", "#", "/", "?". Cannot start with: "_", "aq_", "@@", "++". Cannot end with "__". Cannot be ".", "..", double quotes(can be traversed). Cannot be "REQUEST" or any characters that are illegal in URLs. No newlines."
+msgstr "7 biteko karaktereak soilik onartzen dira. Ezin ditu izan: "<", ">", "&", "#", "/", "?" bezalako karaktereak. Ezin da hasi: "_", "aq_", "@@", "++". Ezin da "__"rekin amaitu. Ezin da izan ".", "..", komatxo bikoitzak (pasatu daitezke). Ezin da izan "ESKAERA" edo URLetan legez kanpokoak diren karaktereak. Lerro berririk ez."
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
