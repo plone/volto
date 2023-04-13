@@ -11,7 +11,7 @@ myst:
 
 ## Plone Trainings
 
-On the [Plone Trainings website](https://training.plone.org), you'll find Volto-dedicated training materials, plus other JavaScript-centered trainings.
+On the [Plone Training website](https://training.plone.org), you'll find Volto-dedicated training materials, plus other JavaScript-centered trainings.
 
 - [Mastering Plone 6 Development](https://training.plone.org/mastering-plone/)
   The comprehensive training on Plone 6 with best practice tips for developers and integrators.
