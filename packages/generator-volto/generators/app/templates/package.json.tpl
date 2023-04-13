@@ -154,5 +154,8 @@
     "stylelint-config-prettier": "8.0.1",
     "stylelint-prettier": "1.1.2"
   },
+  "resolutions": {
+    "react-error-overlay": "6.0.9"
+  },
   "packageManager": "yarn@3.2.3"
 }
