@@ -25,7 +25,7 @@ export default function withQuerystringResults(WrappedComponent) {
     const [initialPath] = React.useState(getBaseUrl(path));
 
     const copyFields = ['limit', 'query', 'sort_on', 'sort_order', 'depth'];
-    const { currentPage, setCurrentPage } = usePagination(data.block, 1);
+
     const adaptedQuery = Object.assign(
       variation?.fullobjects ? { fullobjects: 1 } : { metadata_fields: '_all' },
       {
@@ -37,6 +37,7 @@ export default function withQuerystringResults(WrappedComponent) {
           : {},
       ),
     );
+    const { currentPage, setCurrentPage } = usePagination(querystring, 1);
     const querystringResults = useSelector(
       (state) => state.querystringsearch.subrequests,
     );
