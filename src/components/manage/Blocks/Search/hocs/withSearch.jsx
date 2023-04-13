@@ -279,7 +279,12 @@ const withSearch = (options) => (WrappedComponent) => {
     const facetSettings = data?.facets;
 
     const onTriggerSearch = React.useCallback(
-      (toSearchText, toSearchFacets, toSortOn, toSortOrder) => {
+      (
+        toSearchText = undefined,
+        toSearchFacets = undefined,
+        toSortOn = undefined,
+        toSortOrder = undefined,
+      ) => {
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
         timeoutRef.current = setTimeout(
           () => {
@@ -287,7 +292,7 @@ const withSearch = (options) => (WrappedComponent) => {
               id,
               query: data.query || {},
               facets: toSearchFacets || facets,
-              searchText: toSearchText,
+              searchText: toSearchText || searchText,
               sortOn: toSortOn || sortOn,
               sortOrder: toSortOrder || sortOrder,
               facetSettings,
@@ -306,6 +311,7 @@ const withSearch = (options) => (WrappedComponent) => {
         facets,
         id,
         setLocationSearchData,
+        searchText,
         sortOn,
         sortOrder,
         facetSettings,
