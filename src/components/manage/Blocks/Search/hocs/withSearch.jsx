@@ -278,6 +278,7 @@ const withSearch = (options) => (WrappedComponent) => {
     const timeoutRef = React.useRef();
     const facetSettings = data?.facets;
 
+    const deepQuery = JSON.stringify(data.query);
     const onTriggerSearch = React.useCallback(
       (
         toSearchText = undefined,
@@ -306,8 +307,10 @@ const withSearch = (options) => (WrappedComponent) => {
           toSearchFacets ? inputDelay / 3 : inputDelay,
         );
       },
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       [
-        data.query,
+        // Use deep comparison of data.query
+        deepQuery,
         facets,
         id,
         setLocationSearchData,
