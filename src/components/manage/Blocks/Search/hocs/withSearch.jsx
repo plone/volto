@@ -144,16 +144,12 @@ const getSearchFields = (searchData) => {
 };
 
 /**
- * A hook that will mirror the search block state to a hash location
+ * A HOC that will mirror the search block state to a hash location
  */
 const useHashState = () => {
   const location = useLocation();
   const history = useHistory();
 
-  /**
-   * Required to maintain parameter compatibility.
-    With this we will maintain support for receiving hash (#) and search (?) type parameters.
-  */
   const oldState = React.useMemo(() => {
     return {
       ...qs.parse(location.search),
@@ -169,7 +165,7 @@ const useHashState = () => {
 
   const setSearchData = React.useCallback(
     (searchData) => {
-      const newParams = qs.parse(location.search);
+      const newParams = qs.parse(location.hash);
 
       let changed = false;
 
@@ -186,11 +182,11 @@ const useHashState = () => {
 
       if (changed) {
         history.push({
-          search: qs.stringify(newParams),
+          hash: qs.stringify(newParams),
         });
       }
     },
-    [history, oldState, location.search],
+    [history, oldState, location.hash],
   );
 
   return [current, setSearchData];
