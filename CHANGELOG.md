@@ -8,6 +8,20 @@
 
 <!-- towncrier release notes start -->
 
+## 17.0.0-alpha.5 (2023-04-14)
+
+### Bugfix
+
+- Generate a split sitemap @reebalazs [#4638](https://github.com/plone/volto/issues/4638)
+- Fix Move to top of folder ordering in folder content view @iFlameing [#4690](https://github.com/plone/volto/issues/4690)
+- Revert "Add current page parameter to the route in the listing and search block pagination (#4159)" @sneridagh [#4695](https://github.com/plone/volto/issues/4695)
+- Fix search block in edit mode re-queries multiple blocks with an empty search text @reebalazs [#4697](https://github.com/plone/volto/issues/4697)
+
+### Documentation
+
+- Update links for 2022 Training archive. @stevepiercy [#4635](https://github.com/plone/volto/issues/4635)
+
+
 ## 17.0.0-alpha.4 (2023-04-12)
 
 ### Feature
