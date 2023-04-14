@@ -114,15 +114,19 @@ function normalizeState({
     block: id,
   };
 
-  // TODO: need to check if SearchableText facet is not already in the query
-  // Ideally the searchtext functionality should be restructured as being just
-  // another facet
-  params.query = params.query.reduce(
-    // Remove SearchableText from query
-    (acc, kvp) => (kvp.i === 'SearchableText' ? acc : [...acc, kvp]),
-    [],
-  );
+  // Note Ideally the searchtext functionality should be restructured as being just
+  // another facet. But right now it's the same. This means that if a searchText
+  // is provided, it will override the SearchableText facet.
+  // If there is no searchText, the SearchableText in the query remains in effect.
+  // TODO eventually the searchText should be a distinct facet from SearchableText, and
+  // the two conditions could be combined, in comparison to the current state, when
+  // one overrides the other.
   if (searchText) {
+    params.query = params.query.reduce(
+      // Remove SearchableText from query
+      (acc, kvp) => (kvp.i === 'SearchableText' ? acc : [...acc, kvp]),
+      [],
+    );
     params.query.push({
       i: 'SearchableText',
       o: 'plone.app.querystring.operation.string.contains',
