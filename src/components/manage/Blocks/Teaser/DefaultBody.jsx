@@ -26,12 +26,13 @@ const TeaserDefaultTemplate = (props) => {
   const href = data.href?.[0];
   const image = data.preview_image?.[0];
   const align = data?.styles?.align;
-
+  const scale = data?.styles?.scale;
+  
   const hasImageComponent = config.getComponent('Image').component;
   const Image = config.getComponent('Image').component || DefaultImage;
   const { openExternalLinkInNewTab } = config.settings;
   const defaultImageSrc =
-    href && flattenToAppURL(getTeaserImageURL({ href, image, align }));
+    href && flattenToAppURL(getTeaserImageURL({ href, image, align, scale }));
 
   return (
     <div className={cx('block teaser', className)}>

@@ -34,6 +34,10 @@ const messages = defineMessages({
     id: 'Alignment',
     defaultMessage: 'Alignment',
   },
+  scale: {
+    id: 'image_scale',
+    defaultMessage: 'Image size',
+  },
 });
 
 export const TeaserSchema = ({ intl }) => {
@@ -96,8 +100,19 @@ export const TeaserSchema = ({ intl }) => {
     actions: ['left', 'right', 'center'],
     default: 'left',
   };
+  schema.properties.styles.schema.properties.scale = {
+    title: intl.formatMessage(messages.scale),
+    choices: [
+      ['mini', 'Mini'],
+      ['preview', 'Preview'],
+      ['teaser', 'Teaser'],
+      ['large', 'Large'],
+      ['great', 'Great'],
+    ],
+    default: 'teaser',
+  };
 
-  schema.properties.styles.schema.fieldsets[0].fields = ['align'];
+  schema.properties.styles.schema.fieldsets[0].fields = ['align', 'scale'];
 
   return schema;
 };
