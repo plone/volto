@@ -275,7 +275,7 @@
     "draft-js-plugins-editor": "2.1.1",
     "draft-js-plugins-utils": "2.0.3",
     "draftjs-filters": "2.3.0",
-    "eslint": "6.8.0",
+    "eslint": "7.1.0",
     "eslint-config-airbnb": "18.1.0",
     "eslint-config-prettier": "6.11.0",
     "eslint-config-react-app": "5.2.1",
