@@ -8,6 +8,15 @@
 
 <!-- towncrier release notes start -->
 
+## 16.20.2 (2023-04-18)
+
+### Bugfix
+
+- Fix robot.txt - the sitemap link should respect x-forwarded headers @reebalazs [#4638](https://github.com/plone/volto/issues/4638)
+- Fix Move to top of folder ordering in folder content view by searching also @iFlameing [#4690](https://github.com/plone/volto/issues/4690)
+- Fix faulty D&D elements in ObjectBrowserList widget @sneridagh [#4703](https://github.com/plone/volto/issues/4703)
+
+
 ## 16.20.1 (2023-04-14)
 
 ### Bugfix
