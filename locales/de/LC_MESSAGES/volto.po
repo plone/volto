@@ -90,7 +90,7 @@ msgid "Add (object list)"
 msgstr "Hinzufügen"
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
+# defaultMessage: To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see
 msgid "Add Addons"
 msgstr "Add-on hinzufügen"
 
@@ -2095,9 +2095,9 @@ msgid "My email is"
 msgstr "Meine E-Mail ist"
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: My username is
+# defaultMessage: My user name is
 msgid "My username is"
-msgstr "Mein Benutzername ist"
+msgstr "Mein Nutzername lautet"
 
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
@@ -4190,9 +4190,9 @@ msgid "label_my_email_is"
 msgstr "Meine E-Mail ist"
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: My username is
+# defaultMessage: My user name is
 msgid "label_my_username_is"
-msgstr "El meu nom d'usuari és"
+msgstr "Mein Nutzername lautet"
 
 #: config/Blocks
 # defaultMessage: Lead Image Field

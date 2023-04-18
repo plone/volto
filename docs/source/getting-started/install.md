@@ -23,7 +23,7 @@ This chapter contains some legacy information that may be useful to Plone 5.2 de
 
 Volto can be installed in any operating system assuming that the following pre-requisites are met:
 
-- [Node.js LTS (18.x)](https://nodejs.org/en/)
+- [Node.js LTS (18.x)](https://nodejs.org/en)
 - [Python](https://www.python.org/) - See below for specific versions.
 - [Docker](https://www.docker.com/get-started) (if using the Plone docker images)
 
@@ -188,7 +188,8 @@ docker run -it --rm --name=plone \
 ```
 
 ```{tip}
-This setup is meant only for demonstration and quick testing purposes (since it destroys the container on exit (--rm)). In case you need production ready deployment, check the latest [Plone Deployment Training](https://training.plone.org/5/plone-deployment/index.html).
+This setup is meant only for demonstration and quick testing purposes, since it destroys the container on exit (`--rm`).
+In case you need production-ready deployment, check the latest [Plone Deployment Training](https://training.plone.org/plone-deployment/index.html).
 ```
 
 ```{note}
