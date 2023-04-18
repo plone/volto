@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 16.20.3 (2023-04-18)
+
+### Bugfix
+
+- Revert inadvertently included files from another PR in #4710 @sneridagh [#4713](https://github.com/plone/volto/issues/4713)
+
+
 ## 16.20.2 (2023-04-18)
 
 ### Bugfix
