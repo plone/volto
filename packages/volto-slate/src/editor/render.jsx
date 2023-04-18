@@ -175,7 +175,6 @@ export const renderLinkElement = (tagName) => {
             <svg
               {...linkSVG.attributes}
               dangerouslySetInnerHTML={{ __html: linkSVG.content }}
-              width="2em"
               height={null}
             ></svg>
           </UniversalLink>
