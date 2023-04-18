@@ -86,6 +86,7 @@ export {
   hasApiExpander,
   replaceItemOfArray,
   cloneDeepSchema,
+  reorderArray,
 } from '@plone/volto/helpers/Utils/Utils';
 export { messages } from './MessageLabels/MessageLabels';
 export {
