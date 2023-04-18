@@ -128,7 +128,7 @@ describe('Folder Contents Tests', () => {
     cy.waitForResourceToLoad('@breadcrumbs');
     cy.get('thead tr').contains('Creator');
   });
-  it('Move items to top folder and bottom of folder', () => {
+  it('Move items to top of folder and bottom of folder', () => {
     // creating a Document
     cy.createContent({
       contentType: 'Document',
