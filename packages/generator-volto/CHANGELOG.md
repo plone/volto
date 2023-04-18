@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 7.0.0-alpha.4 (2023-04-13)
+
+### Bugfix
+
+- Force the resolution of the `react-error-overlay` package to `6.0.9` @sneridagh [#4687](https://github.com/plone/volto/issues/4687)
+
+
 ## 7.0.0-alpha.3 (2023-04-03)
 
 ### Bugfix
