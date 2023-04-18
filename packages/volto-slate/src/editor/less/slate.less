@@ -6,21 +6,25 @@ h4 {
     a.anchor {
       svg {
         opacity: 1;
-        transform: none !important;
+        transform: rotate(30deg);
       }
     }
+  }
+
+  .anchor-wrapper {
+    margin-left: 5px;
   }
 
   a.anchor {
     display: contents;
     margin-left: -1ch;
-    float: left;
+    float: right;
 
     svg {
-      width: 1.3ch;
+      width: 1.6ch;
       fill: #42526e;
       opacity: 0;
-      transform: translate(-8px, 0px);
+      transform: rotate(30deg) translate(-8px, 4px);
       transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
     }
   }

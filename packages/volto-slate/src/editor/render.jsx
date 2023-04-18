@@ -166,18 +166,20 @@ export const renderLinkElement = (tagName) => {
       <Tag {...attributes} className={className}>
         {children}
         {mode === 'view' && slug && (
-          <UniversalLink
-            className="anchor"
-            aria-hidden="true"
-            tabIndex={-1}
-            href={`#${slug}`}
-          >
-            <svg
-              {...linkSVG.attributes}
-              dangerouslySetInnerHTML={{ __html: linkSVG.content }}
-              height={null}
-            ></svg>
-          </UniversalLink>
+          <span className="anchor-wrapper">
+            <UniversalLink
+              className="anchor"
+              aria-hidden="true"
+              tabIndex={-1}
+              href={`#${slug}`}
+            >
+              <svg
+                {...linkSVG.attributes}
+                dangerouslySetInnerHTML={{ __html: linkSVG.content }}
+                height={null}
+              ></svg>
+            </UniversalLink>
+          </span>
         )}
       </Tag>
     );
