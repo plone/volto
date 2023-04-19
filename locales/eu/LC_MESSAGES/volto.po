@@ -2301,9 +2301,9 @@ msgid "Ok"
 msgstr "Ados"
 
 #: components/manage/Widgets/IdWidget
-# defaultMessage: Only 7-bit bytes characters are allowed. Cannot contain characters like:<, >, &, #, /, ?. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be these specific keywords: REQUEST, ., ..,"", or any other characters that are illegal in URLs. No new lines allowed.
-msgid "Only 7-bit bytes characters are allowed. Cannot contain characters like:<, >, &, #, /, ?. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be these specific keywords: REQUEST, ., ..,"", or any other characters that are illegal in URLs. No new lines allowed."
-msgstr "7 biteko karaktereak soilik onartzen dira. Ezin du izan:<, >, &, #, /, ? bezalako karaktereak. Ezin da hasi: _, aq_, @@, ++. Ezin da __rekin amaitu. Ezin dira gako-hitz hauek izan: REQUEST, ., ..,"" edo URLetan legez kanpokoak diren beste karaktere batzuk. Ez da lerro berririk onartzen."
+# defaultMessage: Only 7-bit bytes characters are allowed. Cannot contain characters like: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: REQUEST, ., .., "". Cannot contain new lines.
+msgid "Only 7-bit bytes characters are allowed. Cannot contain characters like: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: REQUEST, ., .., "". Cannot contain new lines."
+msgstr "7 biteko karaktereak soilik onartzen dira. Ezin ditu izan: <, >, &, #, /, ? edo URLetan legez kanpoko beste karaktere batzuk. Ezin da hasi: _, aq_, @@, ++. Ezin da __rekin amaitu. Ezin da izan: REQUEST, ., .., "". Ezin ditu lerro berriak eduki."
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar

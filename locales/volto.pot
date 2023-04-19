@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2023-04-12T17:56:01.000Z\n"
+"POT-Creation-Date: 2023-04-19T11:18:53.009Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -2296,8 +2296,8 @@ msgid "Ok"
 msgstr ""
 
 #: components/manage/Widgets/IdWidget
-# defaultMessage: Only 7-bit bytes characters are allowed. Cannot contain characters like:<, >, &, #, /, ?. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be these specific keywords: REQUEST, ., ..,"", or any other characters that are illegal in URLs. No new lines allowed.
-msgid "Only 7-bit bytes characters are allowed. Cannot contain characters like:<, >, &, #, /, ?. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be these specific keywords: REQUEST, ., ..,"", or any other characters that are illegal in URLs. No new lines allowed."
+# defaultMessage: Only 7-bit bytes characters are allowed. Cannot contain characters like: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: REQUEST, ., .., "". Cannot contain new lines.
+msgid "Only 7-bit bytes characters are allowed. Cannot contain characters like: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: REQUEST, ., .., "". Cannot contain new lines."
 msgstr ""
 
 #: components/manage/Blocks/Image/schema

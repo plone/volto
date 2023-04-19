@@ -22,9 +22,9 @@ const messages = defineMessages({
   },
   invalidCharacters: {
     id:
-      'Only 7-bit bytes characters are allowed. Cannot contain characters like:<, >, &, #, /, ?. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be these specific keywords: REQUEST, ., ..,"", or any other characters that are illegal in URLs. No new lines allowed.',
+      'Only 7-bit bytes characters are allowed. Cannot contain characters like: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: REQUEST, ., .., "". Cannot contain new lines.',
     defaultMessage:
-      'Only 7-bit bytes characters are allowed. Cannot contain characters like:<, >, &, #, /, ?. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be these specific keywords: REQUEST, ., ..,"", or any other characters that are illegal in URLs. No new lines allowed.',
+      'Only 7-bit bytes characters are allowed. Cannot contain characters like: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: REQUEST, ., .., "". Cannot contain new lines.',
   },
 });
 
