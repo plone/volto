@@ -8,7 +8,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [16.x, 18.x]
+        # set back to 18.x once https://github.com/nodejs/node/issues/47563 is fixed
+        node-version: [16.x, 18.15.0]
     steps:
       - uses: actions/checkout@v3
 
