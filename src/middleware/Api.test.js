@@ -53,6 +53,17 @@ describe('api middleware helpers', () => {
     );
     expect(result).toEqual('/de/mypage/@navigation?expand.navigation.depth=3');
   });
+  it('addExpandersToPath - Path not matching, preserve encoded query', () => {
+    config.settings.apiExpanders = [
+      {
+        match: '/de/otherpath',
+        GET_CONTENT: ['mycustomexpander'],
+      },
+    ];
+
+    const result = addExpandersToPath('/de/mypage?query=a%26b', GET_CONTENT);
+    expect(result).toEqual('/de/mypage?query=a%26b');
+  });
   it('addExpandersToPath - Two custom expanders from settings', () => {
     config.settings.apiExpanders = [
       {
