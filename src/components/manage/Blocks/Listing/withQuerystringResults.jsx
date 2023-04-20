@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import useDeepCompareEffect from 'use-deep-compare-effect';
@@ -24,6 +24,7 @@ export default function withQuerystringResults(WrappedComponent) {
     const { settings } = config;
     const querystring = data.querystring || data; // For backwards compat with data saved before Blocks schema. Note, this is also how the Search block passes data to ListingBody
 
+    const { block } = data;
     const { b_size = settings.defaultPageSize } = querystring; // batchsize
 
     // save the path so it won't trigger dispatch on eager router location change
@@ -42,6 +43,9 @@ export default function withQuerystringResults(WrappedComponent) {
           : {},
       ),
     );
+    const adaptedQueryRef = useRef(adaptedQuery);
+    const currentPageRef = useRef(currentPage);
+
     const querystringResults = useSelector(
       (state) => state.querystringsearch.subrequests,
     );
@@ -49,7 +53,7 @@ export default function withQuerystringResults(WrappedComponent) {
 
     const folderItems = content?.is_folderish ? content.items : [];
     const hasQuery = querystring?.query?.length > 0;
-    const hasLoaded = hasQuery ? !querystringResults?.[id]?.loading : true;
+    const hasLoaded = hasQuery ? querystringResults?.[block]?.loaded : true;
 
     const listingItems =
       querystring?.query?.length > 0 && querystringResults?.[id]
@@ -82,40 +86,57 @@ export default function withQuerystringResults(WrappedComponent) {
       data.variation === 'imageGallery';
 
     useDeepCompareEffect(() => {
-      if (hasQuery) {
-        dispatch(
-          getQueryStringResults(initialPath, adaptedQuery, id, currentPage),
-        );
-      } else if (isImageGallery && !hasQuery) {
-        // when used as image gallery, it doesn't need a query to list children
-        dispatch(
-          getQueryStringResults(
-            initialPath,
-            {
-              ...adaptedQuery,
-              b_size: 10000000000,
-              query: [
-                {
-                  i: 'path',
-                  o: 'plone.app.querystring.operation.string.relativePath',
-                  v: '',
-                },
-              ],
-            },
-            id,
-          ),
-        );
-      } else {
-        dispatch(getContent(initialPath, null, null, currentPage));
+      if (
+        !hasLoaded ||
+        (hasLoaded &&
+          (JSON.stringify(adaptedQuery) !==
+            JSON.stringify(adaptedQueryRef.current) ||
+            currentPage !== currentPageRef.current))
+      ) {
+        if (hasQuery) {
+          dispatch(
+            getQueryStringResults(
+              initialPath,
+              adaptedQuery,
+              block,
+              currentPage,
+            ),
+          );
+        } else if (isImageGallery && !hasQuery) {
+          // when used as image gallery, it doesn't need a query to list children
+          dispatch(
+            getQueryStringResults(
+              initialPath,
+              {
+                ...adaptedQuery,
+                b_size: 10000000000,
+                query: [
+                  {
+                    i: 'path',
+                    o: 'plone.app.querystring.operation.string.relativePath',
+                    v: '',
+                  },
+                ],
+              },
+              block,
+            ),
+          );
+        } else {
+          dispatch(getContent(initialPath, null, null, currentPage));
+        }
       }
+      adaptedQueryRef.current = adaptedQuery;
+      currentPageRef.current = currentPage;
     }, [
       id,
+      block,
       isImageGallery,
       adaptedQuery,
       hasQuery,
       initialPath,
       dispatch,
       currentPage,
+      hasLoaded,
     ]);
 
     return (
