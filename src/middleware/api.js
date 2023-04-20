@@ -43,7 +43,7 @@ export function addExpandersToPath(path, type, isAnonymous) {
   const {
     url,
     query: { expand, ...query },
-  } = qs.parseUrl(path);
+  } = qs.parseUrl(path, { decode: false });
 
   const expandersFromConfig = apiExpanders
     .filter((expand) => matchPath(url, expand.match) && expand[type])
