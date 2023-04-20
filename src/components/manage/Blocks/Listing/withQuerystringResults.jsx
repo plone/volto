@@ -24,14 +24,13 @@ export default function withQuerystringResults(WrappedComponent) {
     const { settings } = config;
     const querystring = data.querystring || data; // For backwards compat with data saved before Blocks schema. Note, this is also how the Search block passes data to ListingBody
 
-    const { block } = data;
     const { b_size = settings.defaultPageSize } = querystring; // batchsize
 
     // save the path so it won't trigger dispatch on eager router location change
     const [initialPath] = React.useState(getBaseUrl(path));
 
     const copyFields = ['limit', 'query', 'sort_on', 'sort_order', 'depth'];
-    const { currentPage, setCurrentPage } = usePagination(data.block, 1);
+    const { currentPage, setCurrentPage } = usePagination(id, 1);
     const adaptedQuery = Object.assign(
       variation?.fullobjects ? { fullobjects: 1 } : { metadata_fields: '_all' },
       {
@@ -53,7 +52,7 @@ export default function withQuerystringResults(WrappedComponent) {
 
     const folderItems = content?.is_folderish ? content.items : [];
     const hasQuery = querystring?.query?.length > 0;
-    const hasLoaded = hasQuery ? querystringResults?.[block]?.loaded : true;
+    const hasLoaded = hasQuery ? querystringResults?.[id]?.loaded : true;
 
     const listingItems =
       querystring?.query?.length > 0 && querystringResults?.[id]
@@ -95,12 +94,7 @@ export default function withQuerystringResults(WrappedComponent) {
       ) {
         if (hasQuery) {
           dispatch(
-            getQueryStringResults(
-              initialPath,
-              adaptedQuery,
-              block,
-              currentPage,
-            ),
+            getQueryStringResults(initialPath, adaptedQuery, id, currentPage),
           );
         } else if (isImageGallery && !hasQuery) {
           // when used as image gallery, it doesn't need a query to list children
@@ -118,7 +112,7 @@ export default function withQuerystringResults(WrappedComponent) {
                   },
                 ],
               },
-              block,
+              id,
             ),
           );
         } else {
@@ -129,7 +123,6 @@ export default function withQuerystringResults(WrappedComponent) {
       currentPageRef.current = currentPage;
     }, [
       id,
-      block,
       isImageGallery,
       adaptedQuery,
       hasQuery,
