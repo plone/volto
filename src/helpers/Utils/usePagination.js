@@ -44,7 +44,7 @@ export const usePagination = (id = null, defaultPage = 1) => {
     parseInt(pageQueryParam),
   );
   const setCurrentPage = (page) => {
-    setCurrentPageState(parseInt(page));
+    setCurrentPageState(page);
     const newParams = {
       ...qs.parse(location.search),
       [pageQueryStringKey]: page,
@@ -68,7 +68,9 @@ export const usePagination = (id = null, defaultPage = 1) => {
       queryRef.current = qs.parse(location.search)?.query;
     } else {
       setCurrentPageState(
-        parseInt(qs.parse(location.search)?.[pageQueryStringKey]),
+        parseInt(
+          qs.parse(location.search)?.[pageQueryStringKey] || defaultPage,
+        ),
       );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
