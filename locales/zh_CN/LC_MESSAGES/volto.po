@@ -1495,6 +1495,11 @@ msgstr "全局角色"
 msgid "Google Maps Embedded Block"
 msgstr "Google 地图嵌入块"
 
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Great
+msgid "Great"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: Group
 msgid "Group"
@@ -1803,6 +1808,7 @@ msgstr "语言"
 msgid "Language independent field."
 msgstr "语言独立字段"
 
+#: components/manage/Blocks/Teaser/schema
 #: components/manage/Widgets/ImageSizeWidget
 # defaultMessage: Large
 msgid "Large"
@@ -2012,6 +2018,11 @@ msgstr "成员身份更新"
 # defaultMessage: Message
 msgid "Message"
 msgstr "消息"
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Mini
+msgid "Mini"
+msgstr ""
 
 #: components/manage/Form/ModalForm
 #: helpers/MessageLabels/MessageLabels
@@ -2487,6 +2498,7 @@ msgid "Prettify your code"
 msgstr "美化你的代码"
 
 #: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Teaser/schema
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Preview
 msgid "Preview"
@@ -4173,6 +4185,11 @@ msgstr ""
 # defaultMessage: Image
 msgid "image"
 msgstr "图片"
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Image size
+msgid "image_scale"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be integer

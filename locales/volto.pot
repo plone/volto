@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2023-04-05T10:12:20.363Z\n"
+"POT-Creation-Date: 2023-04-20T17:40:10.553Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1491,6 +1491,11 @@ msgstr ""
 msgid "Google Maps Embedded Block"
 msgstr ""
 
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Great
+msgid "Great"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: Group
 msgid "Group"
@@ -1799,6 +1804,7 @@ msgstr ""
 msgid "Language independent field."
 msgstr ""
 
+#: components/manage/Blocks/Teaser/schema
 #: components/manage/Widgets/ImageSizeWidget
 # defaultMessage: Large
 msgid "Large"
@@ -2007,6 +2013,11 @@ msgstr ""
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Message
 msgid "Message"
+msgstr ""
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Mini
+msgid "Mini"
 msgstr ""
 
 #: components/manage/Form/ModalForm
@@ -2483,6 +2494,7 @@ msgid "Prettify your code"
 msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Teaser/schema
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Preview
 msgid "Preview"
@@ -4168,6 +4180,11 @@ msgstr ""
 #: config/Blocks
 # defaultMessage: Image
 msgid "image"
+msgstr ""
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Image size
+msgid "image_scale"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels

@@ -1506,6 +1506,11 @@ msgstr "Rôle global"
 msgid "Google Maps Embedded Block"
 msgstr "Bloc intégré de la carte Google"
 
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Great
+msgid "Great"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: Group
 msgid "Group"
@@ -1814,6 +1819,7 @@ msgstr "Langage"
 msgid "Language independent field."
 msgstr "Champ indépendant de la langue."
 
+#: components/manage/Blocks/Teaser/schema
 #: components/manage/Widgets/ImageSizeWidget
 # defaultMessage: Large
 msgid "Large"
@@ -2023,6 +2029,11 @@ msgstr "Adhésion mise à jour"
 # defaultMessage: Message
 msgid "Message"
 msgstr "Message"
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Mini
+msgid "Mini"
+msgstr ""
 
 #: components/manage/Form/ModalForm
 #: helpers/MessageLabels/MessageLabels
@@ -2498,6 +2509,7 @@ msgid "Prettify your code"
 msgstr "Embelli votre code"
 
 #: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Teaser/schema
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Preview
 msgid "Preview"
@@ -4184,6 +4196,11 @@ msgstr "html"
 # defaultMessage: Image
 msgid "image"
 msgstr "image"
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Image size
+msgid "image_scale"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be integer
