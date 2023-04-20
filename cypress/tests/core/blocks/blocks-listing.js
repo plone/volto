@@ -1104,11 +1104,14 @@ describe('Listing Block Tests', () => {
     cy.wait('@save');
     cy.wait('@content');
 
+    // const listing1 = cy.get('.ui.pagination.menu').first();
+    // cy.log('listing1', listing1);
     //test second pagination click
     cy.get('.ui.pagination.menu a[value="2"]').first().click();
     //test f5
     cy.reload();
     cy.url().should('include', '=2');
+    // const listing2 = cy.get('.ui.pagination.menu').last();
     //test third pagination click on second listing
     cy.get('.ui.pagination.menu a[value="3"]').first().click();
     //test f5
@@ -1117,6 +1120,16 @@ describe('Listing Block Tests', () => {
     cy.url().should('include', '=3');
     //on logo click go to home page and remove ?page=2 from path
     cy.get('.logo').first().click();
+    cy.url().should('not.include', '=2');
+    cy.url().should('not.include', '=3');
+    //test back button
+    cy.navigate('/my-page');
+    cy.wait('@content');
+    cy.get('.ui.pagination.menu a[value="2"]').first().click();
+    cy.get('.ui.pagination.menu a[value="3"]').first().click();
+    cy.go(-1);
+    cy.url().should('not.include', '=3');
+    cy.go(-1);
     cy.url().should('not.include', '=2');
     cy.url().should('not.include', '=3');
   });
