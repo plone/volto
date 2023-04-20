@@ -8,6 +8,17 @@
 
 <!-- towncrier release notes start -->
 
+## 16.20.4 (2023-04-20)
+
+### Bugfix
+
+- Fix fetching API paths with urlencoded characters in the querystring. @davisagli [#4718](https://github.com/plone/volto/issues/4718)
+
+### Internal
+
+- Security upgrade for momentjs [#4716](https://github.com/plone/volto/issues/4716)
+
+
 ## 16.20.3 (2023-04-18)
 
 ### Bugfix
