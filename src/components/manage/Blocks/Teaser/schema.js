@@ -38,6 +38,22 @@ const messages = defineMessages({
     id: 'image_scale',
     defaultMessage: 'Image size',
   },
+  mini: {
+    id: 'Mini',
+    defaultMessage: 'Mini',
+  },
+  preview: {
+    id: 'Preview',
+    defaultMessage: 'Preview',
+  },
+  large: {
+    id: 'Large',
+    defaultMessage: 'Large',
+  },
+  great: {
+    id: 'Great',
+    defaultMessage: 'Great',
+  },
 });
 
 export const TeaserSchema = ({ intl }) => {
@@ -103,11 +119,11 @@ export const TeaserSchema = ({ intl }) => {
   schema.properties.styles.schema.properties.scale = {
     title: intl.formatMessage(messages.scale),
     choices: [
-      ['mini', 'Mini'],
-      ['preview', 'Preview'],
-      ['teaser', 'Teaser'],
-      ['large', 'Large'],
-      ['great', 'Great'],
+      ['mini', intl.formatMessage(messages.mini)],
+      ['preview', intl.formatMessage(messages.preview)],
+      ['teaser', intl.formatMessage(messages.teaser)],
+      ['large', intl.formatMessage(messages.large)],
+      ['great', intl.formatMessage(messages.great)],
     ],
     default: 'teaser',
   };

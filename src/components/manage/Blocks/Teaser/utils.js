@@ -1,7 +1,7 @@
 import { isInternalURL } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
-export function getTeaserImageURL({ href, image, align, scale }) {
+export function getTeaserImageURL({ href, image, align, scale = 'teaser' }) {
   // The default scale used in teasers is the 'teaser' scale
   // except if it's customized otherwise in the teaser block settings
   // or if the teaser is center (top)
