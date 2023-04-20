@@ -23,6 +23,12 @@ const useCreatePageQueryStringKey = (id) => {
   return hasMultiplePaginations ? slugify(`page-${id}`) : 'page';
 };
 
+const useGetBlockType = (id) => {
+  const blocks = useSelector((state) => state?.content?.data?.blocks) || [];
+  const block = blocks[id];
+  return block ? block?.['@type'] : null;
+};
+
 /**
  * A pagination helper that tracks the query and resets pagination in case the
  * query changes.
@@ -31,26 +37,42 @@ export const usePagination = (id = null, defaultPage = 1) => {
   const location = useLocation();
   const history = useHistory();
   const pageQueryStringKey = useCreatePageQueryStringKey(id);
+  const block_type = useGetBlockType(id);
   const pageQueryParam =
     qs.parse(location.search)[pageQueryStringKey] || defaultPage;
-  const [currentPage, setCurrentPage] = React.useState(
+  const [currentPage, setCurrentPageState] = React.useState(
     parseInt(pageQueryParam),
   );
-  const queryRef = useRef(qs.parse(location.search)?.query);
-
-  useEffect(() => {
-    if (queryRef.current !== qs.parse(location.search)?.query) {
-      setCurrentPage(defaultPage);
-      queryRef.current = qs.parse(location.search)?.query;
-    }
+  const setCurrentPage = (page) => {
+    setCurrentPageState(parseInt(page));
     const newParams = {
       ...qs.parse(location.search),
-      [pageQueryStringKey]: currentPage,
+      [pageQueryStringKey]: page,
     };
-    history.replace({
-      search: qs.stringify(newParams),
-    });
-  }, [currentPage, defaultPage, location.search, history, pageQueryStringKey]);
+    history.push({ search: qs.stringify(newParams) });
+  };
+
+  const queryRef = useRef(qs.parse(location.search)?.query);
+  useEffect(() => {
+    if (
+      queryRef.current !== qs.parse(location.search)?.query &&
+      block_type === 'search'
+    ) {
+      setCurrentPageState(defaultPage);
+      const newParams = {
+        ...qs.parse(location.search),
+        [pageQueryStringKey]: defaultPage,
+      };
+      delete newParams[pageQueryStringKey];
+      history.replace({ search: qs.stringify(newParams) });
+      queryRef.current = qs.parse(location.search)?.query;
+    } else {
+      setCurrentPageState(
+        parseInt(qs.parse(location.search)?.[pageQueryStringKey]),
+      );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.search, block_type]);
 
   return {
     currentPage,
