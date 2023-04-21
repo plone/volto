@@ -57,7 +57,7 @@ const applyDefaults = (data, root) => {
 };
 
 const SearchBlockView = (props) => {
-  const { data, searchData, mode = 'view', variation } = props;
+  const { id, data, searchData, mode = 'view', variation } = props;
 
   const Layout = variation.view;
 
@@ -89,6 +89,7 @@ const SearchBlockView = (props) => {
         setSelectedView={setSelectedView}
       >
         <ListingBody
+          id={id}
           variation={{ ...data, ...listingBodyVariation }}
           data={listingBodyData}
           path={props.path}
