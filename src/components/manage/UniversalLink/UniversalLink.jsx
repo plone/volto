@@ -66,10 +66,10 @@ const UniversalLink = ({
     }
   }
 
-  const isBlacklisted =
-    (config.settings.externalRoutes ?? []).find((route) =>
-      matchPath(flattenToAppURL(url), route.match),
-    )?.length > 0;
+  const isBlacklisted = !!(config.settings.externalRoutes ?? []).find((route) =>
+    matchPath(flattenToAppURL(url), route.match),
+  );
+
   const isExternal = !isInternalURL(url) || isBlacklisted;
   const isDownload = (!isExternal && url.includes('@@download')) || download;
   const isDisplayFile =
