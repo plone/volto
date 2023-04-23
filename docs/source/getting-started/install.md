@@ -227,8 +227,7 @@ You may choose to install the canary version, which is the latest alpha release,
     yo @plone/volto --canary
     ```
 
-    See the [Creating a project](../recipes/creating-project) page for more advanced options that can be passed to the generator.
-
+    See {doc}`../recipes/creating-project` for more advanced options that can be passed to the generator.
 
 2.  Answer the questions when prompted, and provide the name of the new app (folder) to be created.
     For the sake of this documentation, provide `myvoltoproject` as the project name.
