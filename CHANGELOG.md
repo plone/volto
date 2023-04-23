@@ -10,6 +10,8 @@
 
 ## 17.0.0-alpha.5 (2023-04-14)
 
+- Added Error Handling in Addons and Database components of control panel @avimishra18
+
 ### Bugfix
 
 - Generate a split sitemap @reebalazs [#4638](https://github.com/plone/volto/issues/4638)
