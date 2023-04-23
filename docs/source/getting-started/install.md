@@ -28,7 +28,10 @@ Volto can be installed in any operating system assuming that the following pre-r
 - [Docker](https://www.docker.com/get-started) (if using the Plone docker images)
 
 ```{note}
-*UPDATE 2022-10-25*: Since 2022-10-25, NodeJS 18 is in LTS state (https://github.com/nodejs/release#release-schedule). However, due to changes in internal SSL libraries, some Volto dependencies have been deprecated and need to be updated in order to continue working in NodeJS 18, mainly Webpack 4 (see: https://github.com/webpack/webpack/issues/14532#issuecomment-947525539 for further information). You can still use it, but NodeJS should be run under a special flag: `NODE_OPTIONS=--openssl-legacy-provider`. See also Volto's PR: https://github.com/plone/volto/pull/3699 for more information.
+*UPDATE 2022-10-25*: Since 2022-10-25, NodeJS 18 is in LTS state (https://github.com/nodejs/release#release-schedule).
+However, due to changes in internal SSL libraries, some Volto dependencies have been deprecated and need to be updated in order to continue working in NodeJS 18, mainly Webpack 4 (see: https://github.com/webpack/webpack/issues/14532#issuecomment-947525539 for further information).
+You can still use it, but NodeJS should be run under a special flag: `NODE_OPTIONS=--openssl-legacy-provider`.
+See also Volto's PR: https://github.com/plone/volto/pull/3699 for more information.
 ```
 
 The versions of Python that are supported in Volto depend on the version of Plone that you use.
@@ -192,7 +195,8 @@ docker run -it --rm --name=plone \
 ```
 
 ```{tip}
-This setup is meant only for demonstration and quick testing purposes (since it destroys the container on exit (--rm)). In case you need production ready deployment, check the latest [Plone Deployment Training](https://training.plone.org/5/plone-deployment/index.html).
+This setup is meant only for demonstration and quick testing purposes, since it destroys the container on exit (`--rm`).
+In case you need production-ready deployment, check the latest [Plone Deployment Training](https://training.plone.org/plone-deployment/index.html).
 ```
 
 ```{note}
@@ -222,7 +226,7 @@ You may choose to install the canary version, which is the latest alpha release,
 
 1.  Open a terminal and execute:
 
-    ```bash
+    ```shell
     npm install -g yo @plone/generator-volto
     # install latest stable release
     yo @plone/volto
@@ -230,12 +234,13 @@ You may choose to install the canary version, which is the latest alpha release,
     yo @plone/volto --canary
     ```
 
-2.  Answer to the prompted questions and provide the name of the new app (folder) to be created. For the sake of this documentation, provide `myvoltoproject` as project name then.
+2.  Answer the questions when prompted, and provide the name of the new app (folder) to be created.
+    For the sake of this documentation, provide `myvoltoproject` as the project name.
 
     ````{note}
     You can run the generator with parameters to tailor your requirements.
 
-    ```bash
+    ```shell
     yo @plone/volto --help
     ```
 

@@ -296,8 +296,9 @@ styleClassNameExtenders
         },
       ];
     ```
+
 apiExpanders
-    You can configure the API expanders Volto uses using the `settings.apiExpanders` like:
+    You can configure the API expanders in Volto using `settings.apiExpanders`, as in the following example.
 
     ```jsx
     import { GET_CONTENT } from '@plone/volto/constants/ActionTypes';
@@ -326,7 +327,7 @@ apiExpanders
     }
     ```
 
-    If you want that Volto only does a single request and concentrate all the expanders in it then configure `apiExpanders` like:
+    If you want Volto to make only a single request, combining all the expanders in it, then configure `apiExpanders` as shown.
 
     ```jsx
     config.settings.apiExpanders = [

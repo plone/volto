@@ -14,6 +14,7 @@ myst:
 Volto supports copying and cutting of blocks from one page, and pasting them to another page.
 This chapter describes how to do so.
 
+
 (copy-cut-blocks-label)=
 
 ## Copy or cut blocks
@@ -27,6 +28,7 @@ This will select all the blocks between the start and end blocks, allowing you t
 
 ```{video} /_static/user-manual/blocks/block-copy-cut.mp4
 ```
+
 
 (paste-blocks-label)=
 
