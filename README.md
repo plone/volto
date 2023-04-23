@@ -181,7 +181,7 @@ Please create a new [issue](https://github.com/plone/volto/issues/new) or [pull 
 
 ## Documentation
 
-You can find the latest (in-progress) documentation in [https://6.dev-docs.plone.org/](https://6.dev-docs.plone.org/volto/index.html)
+You can find the latest documentation in [https://6.docs.plone.org/](https://6.docs.plone.org/volto/index.html)
 
 ## Training
 
@@ -243,7 +243,7 @@ We do not guarantee that deprecated browsers (e.g., Internet Explorer 11) are su
 
 ## Upgrades
 
-You can find the upgrade guide here: https://6.dev-docs.plone.org/volto/upgrade-guide/index.html
+You can find the upgrade guide here: https://6.docs.plone.org/volto/upgrade-guide/index.html
 
 ## Volto Development
 
@@ -318,11 +318,11 @@ yarn test
 
 Here you can find a guide on how acceptance testing is done in Volto:
 
-https://6.dev-docs.plone.org/volto/developer-guidelines/acceptance-tests.html
+https://6.docs.plone.org/volto/developer-guidelines/acceptance-tests.html
 
 ## Translations
 
-If you would like contribute to translate Volto into several languages, please, read the [Internationalization (i18n) guide](https://6.dev-docs.plone.org/volto/recipes/i18n.html).
+If you would like contribute to translate Volto into several languages, please, read the [Internationalization (i18n) guide](https://6.docs.plone.org/volto/recipes/i18n.html).
 
 ## Contributors
 
