@@ -27,13 +27,6 @@ Volto can be installed in any operating system assuming that the following pre-r
 - [Python](https://www.python.org/) - See below for specific versions.
 - [Docker](https://www.docker.com/get-started) (if using the Plone docker images)
 
-```{note}
-*UPDATE 2022-10-25*: Since 2022-10-25, NodeJS 18 is in LTS state (https://github.com/nodejs/release#release-schedule).
-However, due to changes in internal SSL libraries, some Volto dependencies have been deprecated and need to be updated in order to continue working in NodeJS 18, mainly Webpack 4 (see: https://github.com/webpack/webpack/issues/14532#issuecomment-947525539 for further information).
-You can still use it, but NodeJS should be run under a special flag: `NODE_OPTIONS=--openssl-legacy-provider`.
-See also Volto's PR: https://github.com/plone/volto/pull/3699 for more information.
-```
-
 The versions of Python that are supported in Volto depend on the version of Plone that you use.
 
 | Plone | Python | Volto |
@@ -96,8 +89,8 @@ it provides easy access to any NodeJS released version.
 4.  Install any active LTS version of NodeJS (https://github.com/nodejs/release#release-schedule):
 
     ```bash
-    nvm install 16
-    nvm use 16
+    nvm install 18
+    nvm use 18
     ```
 
 5.  Test NodeJS:
@@ -112,7 +105,7 @@ it provides easy access to any NodeJS released version.
 
     ```{note}
     Volto supports currently active NodeJS LTS versions based on [NodeJS
-    Releases page](https://github.com/nodejs/release#release-schedule), starting with Node 12 LTS.
+    Releases page](https://github.com/nodejs/release#release-schedule), starting with Node 16 LTS.
     ```
 
 
