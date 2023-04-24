@@ -518,7 +518,7 @@ If you are extending an existing one, you should add it as a normal `schemaEnhan
 ```
 
 ```{seealso}
-See https://6.dev-docs.plone.org/volto/blocks/block-style-wrapper.html for more documentation.
+See https://6.docs.plone.org/volto/blocks/block-style-wrapper.html for more documentation.
 ```
 
 ### Sentry integration moved from Volto core to add-on
