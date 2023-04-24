@@ -160,6 +160,33 @@
 - Use a universal static path for both documentation and volto repos. @stevepiercy [#4376](https://github.com/plone/volto/issues/4376)
 
 
+## 16.20.4 (2023-04-20)
+
+### Bugfix
+
+- Fix fetching API paths with urlencoded characters in the querystring. @davisagli [#4718](https://github.com/plone/volto/issues/4718)
+
+### Internal
+
+- Security upgrade for momentjs [#4716](https://github.com/plone/volto/issues/4716)
+
+
+## 16.20.3 (2023-04-18)
+
+### Bugfix
+
+- Revert inadvertently included files from another PR in #4710 @sneridagh [#4713](https://github.com/plone/volto/issues/4713)
+
+
+## 16.20.2 (2023-04-18)
+
+### Bugfix
+
+- Fix robot.txt - the sitemap link should respect x-forwarded headers @reebalazs [#4638](https://github.com/plone/volto/issues/4638)
+- Fix Move to top of folder ordering in folder content view by searching also @iFlameing [#4690](https://github.com/plone/volto/issues/4690)
+- Fix faulty D&D elements in ObjectBrowserList widget @sneridagh [#4703](https://github.com/plone/volto/issues/4703)
+
+
 ## 16.20.1 (2023-04-14)
 
 ### Bugfix
