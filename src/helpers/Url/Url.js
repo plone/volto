@@ -255,7 +255,7 @@ export function isUrl(url) {
  * Get field url
  * @method getFieldURL
  * @param {object} data
- * @returns {string} URL string value.
+ * @returns {string | any} URL string value if field is of url type or any.
  */
 export const getFieldURL = (data) => {
   let url = data;
