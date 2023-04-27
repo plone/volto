@@ -1,7 +1,5 @@
-// rebuildRelations
-
 /**
- * Relations actions.
+ * Rebuild relations action.
  * @module actions/relations/rebuild
  */
 

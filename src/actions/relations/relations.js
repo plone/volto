@@ -48,17 +48,13 @@ export function deleteRelations(content) {
 }
 
 /**
- * List relations function
+ * Query relations
  * @function queryRelations
  * @param {string} relation Name of relation
  * @param {boolean} onlyBroken
  * @returns {Object} List relations action
  */
-export function queryRelations(
-  relation = null,
-  onlyBroken = false,
-  subrequest = null,
-) {
+export function queryRelations(relation = null, onlyBroken = false, subrequest = null) {
   let path = '/@relations';
   var searchParams = new URLSearchParams();
   (relation || onlyBroken) && searchParams.append('max', 2500);
@@ -71,6 +67,9 @@ export function queryRelations(
   return {
     type: LIST_RELATIONS,
     subrequest,
-    request: { op: 'get', path: path },
+    request: {
+      op: 'get',
+      path: path,
+    },
   };
 }
