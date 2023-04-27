@@ -27,23 +27,22 @@ const ListingTemplate = ({
   const intl = useIntl();
   const dispatch = useDispatch();
 
-  const MAX = 50;
+  // const MAX = 50;
+  // DEBUG MAX
+  const MAX = 5;
 
   let relations = useSelector(
     (state) =>
-      (state.relations?.relations?.items
-        ? state.relations?.relations?.items[relationtype]
-        : []) || [],
+      (state.relations?.relations?.items ? state.relations?.relations?.items[relationtype] : []) ||
+      [],
   );
   relations = relations.filter((el) => {
     let matched = true;
     if (query_source) {
       matched =
         matched &&
-        (el.source.title.toLowerCase().indexOf(query_source.toLowerCase()) >
-          -1 ||
-          el.source['@id'].toLowerCase().indexOf(query_source.toLowerCase()) >
-            -1);
+        (el.source.title.toLowerCase().indexOf(query_source.toLowerCase()) > -1 ||
+          el.source['@id'].toLowerCase().indexOf(query_source.toLowerCase()) > -1);
     }
     return matched;
   });
@@ -61,9 +60,7 @@ const ListingTemplate = ({
   );
 
   // Editable if plone.api.relations available
-  const editable = useSelector(
-    (state) => state.relations?.relations?.readonly === false,
-  );
+  const editable = useSelector((state) => state.relations?.relations?.readonly === false);
 
   let relationMatrix = {};
   relations.map((tpl) => {
@@ -206,12 +203,7 @@ const ListingTemplate = ({
     } else {
       dispatch(searchContent('/findstenichätsch', null, 'potential_sources'));
     }
-  }, [
-    dispatch,
-    potential_targets_path,
-    potential_sources_path,
-    staticCatalogVocabularyQuery,
-  ]);
+  }, [dispatch, potential_targets_path, potential_sources_path, staticCatalogVocabularyQuery]);
 
   const onSelectOptionHandler = (relation, item, selectedvalue, checked) => {
     let source = selectedvalue.y;
@@ -223,9 +215,7 @@ const ListingTemplate = ({
         relation: relation,
       },
     ];
-    dispatch(
-      checked ? createRelations(relation_data) : deleteRelations(relation_data),
-    )
+    dispatch(checked ? createRelations(relation_data) : deleteRelations(relation_data))
       .then((resp) => {
         dispatch(queryRelations(relationtype));
       })
@@ -251,9 +241,7 @@ const ListingTemplate = ({
         relation: relationtype,
       });
     });
-    dispatch(
-      checked ? createRelations(relation_data) : deleteRelations(relation_data),
-    )
+    dispatch(checked ? createRelations(relation_data) : deleteRelations(relation_data))
       .then((resp) => {
         dispatch(queryRelations(relationtype));
       })
@@ -272,18 +260,11 @@ const ListingTemplate = ({
     <div className="administration_matrix">
       <div className="label-options" key="label-options">
         {matrix_options?.map((matrix_option) => (
-          <div
-            className="label-options-label inclined"
-            key={matrix_option.value}
-          >
+          <div className="label-options-label inclined" key={matrix_option.value}>
             <div>
               <UniversalLink
                 href={matrix_option.url}
-                className={
-                  matrix_option.review_state !== 'published'
-                    ? 'not-published'
-                    : ''
-                }
+                className={matrix_option.review_state !== 'published' ? 'not-published' : ''}
               >
                 <span className="label" title={matrix_option.value}>
                   {matrix_option.label}
@@ -315,9 +296,7 @@ const ListingTemplate = ({
                       <Button
                         icon
                         basic
-                        onClick={() =>
-                          onSelectAllHandler(matrix_option.value, true)
-                        }
+                        onClick={() => onSelectAllHandler(matrix_option.value, true)}
                         className="add-button"
                         aria-label={
                           intl.formatMessage(messages.createRelationsToTarget) +
@@ -328,19 +307,12 @@ const ListingTemplate = ({
                           ` '${matrix_option.label}'`
                         }
                       >
-                        <Icon
-                          name={add}
-                          size="10px"
-                          className="circled"
-                          color="unset"
-                        />
+                        <Icon name={add} size="10px" className="circled" color="unset" />
                       </Button>
                       <Button
                         icon
                         basic
-                        onClick={() =>
-                          onSelectAllHandler(matrix_option.value, false)
-                        }
+                        onClick={() => onSelectAllHandler(matrix_option.value, false)}
                         className="remove-button"
                         aria-label={
                           intl.formatMessage(messages.removeRelationsToTarget) +
@@ -351,12 +323,7 @@ const ListingTemplate = ({
                           ` '${matrix_option.label}'`
                         }
                       >
-                        <Icon
-                          name={remove}
-                          size="10px"
-                          className="circled"
-                          color="unset"
-                        />
+                        <Icon name={remove} size="10px" className="circled" color="unset" />
                       </Button>
                     </div>
                   ))}
@@ -370,11 +337,7 @@ const ListingTemplate = ({
                     <span title={item.value}>
                       <UniversalLink
                         href={item.url}
-                        className={
-                          item.review_state !== 'published'
-                            ? 'not-published'
-                            : ''
-                        }
+                        className={item.review_state !== 'published' ? 'not-published' : ''}
                       >
                         {item.label}
                       </UniversalLink>
