@@ -2,7 +2,7 @@ import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { Accordion, Button, Segment } from 'semantic-ui-react';
 import { DragDropList, FormFieldWrapper, Icon } from '@plone/volto/components';
-import { applySchemaDefaults } from '@plone/volto/helpers';
+import { applySchemaDefaults, reorderArray } from '@plone/volto/helpers';
 import ObjectWidget from '@plone/volto/components/manage/Widgets/ObjectWidget';
 
 import upSVG from '@plone/volto/icons/up-key.svg';
@@ -64,24 +64,13 @@ const messages = defineMessages({
  * ```
  */
 const ObjectListWidget = (props) => {
-  const {
-    block,
-    fieldSet,
-    id,
-    schema,
-    value = [],
-    onChange,
-    schemaExtender,
-  } = props;
+  const { block, fieldSet, id, schema, value = [], onChange, schemaExtender } = props;
   const [localActiveObject, setLocalActiveObject] = React.useState(
     props.activeObject ?? value.length - 1,
   );
 
   let activeObject, setActiveObject;
-  if (
-    (props.activeObject || props.activeObject === 0) &&
-    props.setActiveObject
-  ) {
+  if ((props.activeObject || props.activeObject === 0) && props.setActiveObject) {
     activeObject = props.activeObject;
     setActiveObject = props.setActiveObject;
   } else {
@@ -111,17 +100,14 @@ const ObjectListWidget = (props) => {
             compact
             icon
             aria-label={
-              objectSchema.addMessage ||
-              `${intl.formatMessage(messages.add)} ${objectSchema.title}`
+              objectSchema.addMessage || `${intl.formatMessage(messages.add)} ${objectSchema.title}`
             }
             onClick={(e) => {
               e.preventDefault();
               const data = {
                 '@id': uuid(),
               };
-              const objSchema = schemaExtender
-                ? schemaExtender(schema, data, intl)
-                : objectSchema;
+              const objSchema = schemaExtender ? schemaExtender(schema, data, intl) : objectSchema;
               const dataWithDefaults = applySchemaDefaults({
                 data,
                 schema: objSchema,
@@ -135,15 +121,12 @@ const ObjectListWidget = (props) => {
             <Icon name={addSVG} size="18px" />
             &nbsp;
             {/* Custom addMessage in schema, else default to English */}
-            {objectSchema.addMessage ||
-              `${intl.formatMessage(messages.add)} ${objectSchema.title}`}
+            {objectSchema.addMessage || `${intl.formatMessage(messages.add)} ${objectSchema.title}`}
           </Button>
         </div>
         {value.length === 0 && (
           <input
-            aria-labelledby={`fieldset-${
-              fieldSet || 'default'
-            }-field-label-${id}`}
+            aria-labelledby={`fieldset-${fieldSet || 'default'}-field-label-${id}`}
             type="hidden"
             value={intl.formatMessage(messages.emptyObjectList)}
           />
@@ -155,32 +138,21 @@ const ObjectListWidget = (props) => {
             value.length > 2 ? thirdLayer : ''
           }`,
         }}
-        forwardedAriaLabelledBy={`fieldset-${
-          fieldSet || 'default'
-        }-field-label-${id}`}
+        forwardedAriaLabelledBy={`fieldset-${fieldSet || 'default'}-field-label-${id}`}
         childList={value.map((o) => [o['@id'], o])}
         onMoveItem={(result) => {
           const { source, destination } = result;
           if (!destination) {
             return;
           }
-
-          const first = value[source.index];
-          const second = value[destination.index];
-          value[destination.index] = first;
-          value[source.index] = second;
-
-          onChange(id, value);
+          const newValue = reorderArray(value, source.index, destination.index);
+          onChange(id, newValue);
           return true;
         }}
       >
         {({ child, childId, index, draginfo }) => {
           return (
-            <div
-              ref={draginfo.innerRef}
-              {...draginfo.draggableProps}
-              key={childId}
-            >
+            <div ref={draginfo.innerRef} {...draginfo.draggableProps} key={childId}>
               <Accordion key={index} fluid styled>
                 <Accordion.Title
                   active={activeObject === index}
@@ -208,9 +180,7 @@ const ObjectListWidget = (props) => {
                   </div>
                   <div className="accordion-tools">
                     <button
-                      aria-label={`${intl.formatMessage(
-                        messages.labelRemoveItem,
-                      )} #${index + 1}`}
+                      aria-label={`${intl.formatMessage(messages.labelRemoveItem)} #${index + 1}`}
                       onClick={() => {
                         onChange(
                           id,
@@ -233,16 +203,10 @@ const ObjectListWidget = (props) => {
                       id={`${id}-${index}`}
                       key={`ow-${id}-${index}`}
                       block={block}
-                      schema={
-                        schemaExtender
-                          ? schemaExtender(schema, child, intl)
-                          : objectSchema
-                      }
+                      schema={schemaExtender ? schemaExtender(schema, child, intl) : objectSchema}
                       value={child}
                       onChange={(fi, fv) => {
-                        const newvalue = value.map((v, i) =>
-                          i !== index ? v : fv,
-                        );
+                        const newvalue = value.map((v, i) => (i !== index ? v : fv));
                         onChange(id, newvalue);
                       }}
                     />

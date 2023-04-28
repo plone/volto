@@ -1,5 +1,4 @@
-import React from 'react';
-import useDeepCompareEffect from 'use-deep-compare-effect';
+import React, { useEffect } from 'react';
 import { defineMessages } from 'react-intl';
 import { compose } from 'redux';
 
@@ -21,15 +20,7 @@ const messages = defineMessages({
 });
 
 const SearchBlockEdit = (props) => {
-  const {
-    block,
-    onChangeBlock,
-    data,
-    selected,
-    intl,
-    onTriggerSearch,
-    querystring = {},
-  } = props;
+  const { block, onChangeBlock, data, selected, intl, onTriggerSearch, querystring = {} } = props;
   const { sortable_indexes = {} } = querystring;
 
   let schema = Schema({ data, intl });
@@ -42,9 +33,7 @@ const SearchBlockEdit = (props) => {
     title: { id: intl.formatMessage(messages.template) },
   });
   const listingVariations = config.blocks.blocksConfig?.listing?.variations;
-  let activeItem = listingVariations.find(
-    (item) => item.id === data.listingBodyTemplate,
-  );
+  let activeItem = listingVariations.find((item) => item.id === data.listingBodyTemplate);
   const listingSchemaEnhancer = activeItem?.schemaEnhancer;
   if (listingSchemaEnhancer)
     schema = listingSchemaEnhancer({
@@ -53,24 +42,19 @@ const SearchBlockEdit = (props) => {
       intl,
     });
   schema.properties.sortOnOptions.items = {
-    choices: Object.keys(sortable_indexes).map((k) => [
-      k,
-      sortable_indexes[k].title,
-    ]),
+    choices: Object.keys(sortable_indexes).map((k) => [k, sortable_indexes[k].title]),
   };
 
   const { query = {} } = data || {};
-  useDeepCompareEffect(() => {
+  // We don't need deep compare here, as this is just json serializable data.
+  const deepQuery = JSON.stringify(query);
+  useEffect(() => {
     onTriggerSearch();
-  }, [query, onTriggerSearch]);
+  }, [deepQuery, onTriggerSearch]);
 
   return (
     <>
-      <SearchBlockViewComponent
-        {...props}
-        path={getBaseUrl(props.pathname)}
-        mode="edit"
-      />
+      <SearchBlockViewComponent {...props} path={getBaseUrl(props.pathname)} mode="edit" />
       <SidebarPortal selected={selected}>
         <BlockDataForm
           schema={schema}

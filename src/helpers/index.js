@@ -8,10 +8,7 @@
 export Api from '@plone/volto/helpers/Api/Api';
 export { getAPIResourceWithAuth } from '@plone/volto/helpers/Api/APIResourceWithAuth';
 export Html from '@plone/volto/helpers/Html/Html';
-export {
-  getAuthToken,
-  persistAuthToken,
-} from '@plone/volto/helpers/AuthToken/AuthToken';
+export { getAuthToken, persistAuthToken } from '@plone/volto/helpers/AuthToken/AuthToken';
 export {
   addAppURL,
   expandToBackendURL,
@@ -85,6 +82,7 @@ export {
   hasApiExpander,
   replaceItemOfArray,
   cloneDeepSchema,
+  reorderArray,
 } from '@plone/volto/helpers/Utils/Utils';
 export { messages } from './MessageLabels/MessageLabels';
 export {
@@ -107,7 +105,4 @@ export { usePagination } from './Utils/usePagination';
 export useUndoManager from './UndoManager/useUndoManager';
 export { getCookieOptions } from './Cookies/cookies';
 export { getWidgetView } from './Widget/widget';
-export {
-  getCurrentStateMapping,
-  getWorkflowOptions,
-} from './Workflows/Workflows';
+export { getCurrentStateMapping, getWorkflowOptions } from './Workflows/Workflows';

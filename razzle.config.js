@@ -8,6 +8,7 @@ const fs = require('fs');
 const RootResolverPlugin = require('./webpack-plugins/webpack-root-resolver');
 const RelativeResolverPlugin = require('./webpack-plugins/webpack-relative-resolver');
 const createAddonsLoader = require('./create-addons-loader');
+const createThemeAddonsLoader = require('./create-theme-addons-loader');
 const AddonConfigurationRegistry = require('./addon-registry');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -244,6 +245,28 @@ const defaultModify = ({
     // semantic-ui-react uses lodash-es, everything else uses lodash
     'lodash-es': path.dirname(require.resolve('lodash')),
   };
+
+  const [
+    addonsThemeLoaderVariablesPath,
+    addonsThemeLoaderMainPath,
+  ] = createThemeAddonsLoader(registry.getCustomThemeAddons());
+
+  // Automatic Theme Loading
+  if (registry.theme) {
+    // The themes should be located in `src/theme`
+    const themePath = registry.packages[registry.theme].modulePath;
+    const themeConfigPath = `${themePath}/theme/theme.config`;
+    config.resolve.alias['../../theme.config$'] = themeConfigPath;
+    config.resolve.alias['../../theme.config'] = themeConfigPath;
+
+    // We create an alias for each custom theme insertion point (variables, main)
+    config.resolve.alias[
+      'addonsThemeCustomizationsVariables'
+    ] = addonsThemeLoaderVariablesPath;
+    config.resolve.alias[
+      'addonsThemeCustomizationsMain'
+    ] = addonsThemeLoaderMainPath;
+  }
 
   config.performance = {
     maxAssetSize: 10000000,

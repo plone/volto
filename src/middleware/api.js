@@ -43,15 +43,15 @@ export function addExpandersToPath(path, type, isAnonymous) {
   const {
     url,
     query: { expand, ...query },
-  } = qs.parseUrl(path);
+  } = qs.parseUrl(path, { decode: false });
 
   const expandersFromConfig = apiExpanders
     .filter((expand) => matchPath(url, expand.match) && expand[type])
     .map((expand) => expand[type]);
 
-  const expandMerge = compact(
-    union([expand, ...flatten(expandersFromConfig)]),
-  ).filter((item) => !(item === 'types' && isAnonymous)); // Remove types expander if isAnonymous
+  const expandMerge = compact(union([expand, ...flatten(expandersFromConfig)])).filter(
+    (item) => !(item === 'types' && isAnonymous),
+  ); // Remove types expander if isAnonymous
 
   const stringifiedExpand = qs.stringify(
     { expand: expandMerge },
@@ -113,9 +113,7 @@ function sendOnSocket(request) {
  * @param {Object} api Api object.
  * @returns {Promise} Action promise.
  */
-const apiMiddlewareFactory = (api) => ({ dispatch, getState }) => (next) => (
-  action,
-) => {
+const apiMiddlewareFactory = (api) => ({ dispatch, getState }) => (next) => (action) => {
   const { settings } = config;
 
   const isAnonymous = !getState().userSession.token;
@@ -156,18 +154,13 @@ const apiMiddlewareFactory = (api) => ({ dispatch, getState }) => (next) => (
       ? mode === 'serial'
         ? request.reduce((prevPromise, item) => {
             return prevPromise.then((acc) => {
-              return api[item.op](
-                addExpandersToPath(item.path, type, isAnonymous),
-                {
-                  data: item.data,
-                  type: item.type,
-                  headers: item.headers,
-                  params: request.params,
-                  checkUrl: settings.actions_raising_api_errors.includes(
-                    action.type,
-                  ),
-                },
-              ).then((reqres) => {
+              return api[item.op](addExpandersToPath(item.path, type, isAnonymous), {
+                data: item.data,
+                type: item.type,
+                headers: item.headers,
+                params: request.params,
+                checkUrl: settings.actions_raising_api_errors.includes(action.type),
+              }).then((reqres) => {
                 return [...acc, reqres];
               });
             });
@@ -179,9 +172,7 @@ const apiMiddlewareFactory = (api) => ({ dispatch, getState }) => (next) => (
                 type: item.type,
                 headers: item.headers,
                 params: request.params,
-                checkUrl: settings.actions_raising_api_errors.includes(
-                  action.type,
-                ),
+                checkUrl: settings.actions_raising_api_errors.includes(action.type),
               }),
             ),
           )
@@ -226,9 +217,7 @@ const apiMiddlewareFactory = (api) => ({ dispatch, getState }) => (next) => (
           );
           api.get('/@wstoken').then((res) => {
             socket = new WebSocket(
-              `${settings.apiPath.replace('http', 'ws')}/@ws?ws_token=${
-                res.token
-              }`,
+              `${settings.apiPath.replace('http', 'ws')}/@ws?ws_token=${res.token}`,
             );
             socket.onmessage = (message) => {
               const packet = JSON.parse(message.data);

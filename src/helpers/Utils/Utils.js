@@ -12,10 +12,7 @@ import config from '@plone/volto/registry';
 export function difference(object, base) {
   return transform(object, (result, value, key) => {
     if (!isEqual(value, base[key])) {
-      result[key] =
-        isObject(value) && isObject(base[key])
-          ? difference(value, base[key])
-          : value;
+      result[key] = isObject(value) && isObject(base[key]) ? difference(value, base[key]) : value;
     }
   });
 }
@@ -258,11 +255,11 @@ export const removeFromArray = (array, index) => {
 };
 
 /**
- * Reorder array
+ * Moves an item from origin to target inside an array in an immutable way
  * @param {Array} array Array with data
- * @param {number} origin Index of item to be reordered
- * @param {number} target Index of item to be reordered to
- * @returns {Array} Array with reordered elements
+ * @param {number} origin Index of item to be moved from
+ * @param {number} target Index of item to be moved to
+ * @returns {Array} Resultant array
  */
 export const reorderArray = (array, origin, target) => {
   const result = Array.from(array);

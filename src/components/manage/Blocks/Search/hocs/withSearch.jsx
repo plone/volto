@@ -10,13 +10,7 @@ function getDisplayName(WrappedComponent) {
   return WrappedComponent.displayName || WrappedComponent.name || 'Component';
 }
 
-const SEARCH_ENDPOINT_FIELDS = [
-  'SearchableText',
-  'b_size',
-  'limit',
-  'sort_on',
-  'sort_order',
-];
+const SEARCH_ENDPOINT_FIELDS = ['SearchableText', 'b_size', 'limit', 'sort_on', 'sort_order'];
 
 const PAQO = 'plone.app.querystring.operation';
 
@@ -27,9 +21,7 @@ const PAQO = 'plone.app.querystring.operation';
  *
  */
 function getInitialState(data, facets, urlSearchText, id) {
-  const {
-    types: facetWidgetTypes,
-  } = config.blocks.blocksConfig.search.extensions.facetWidgets;
+  const { types: facetWidgetTypes } = config.blocks.blocksConfig.search.extensions.facetWidgets;
   const facetSettings = data?.facets || [];
 
   return {
@@ -39,11 +31,7 @@ function getInitialState(data, facets, urlSearchText, id) {
         .map((facet) => {
           if (!facet?.field) return null;
 
-          const { valueToQuery } = resolveExtension(
-            'type',
-            facetWidgetTypes,
-            facet,
-          );
+          const { valueToQuery } = resolveExtension('type', facetWidgetTypes, facet);
 
           const name = facet.field.value;
           const value = facets[name];
@@ -85,9 +73,7 @@ function normalizeState({
   sortOrder,
   facetSettings, // data.facets extracted from block data
 }) {
-  const {
-    types: facetWidgetTypes,
-  } = config.blocks.blocksConfig.search.extensions.facetWidgets;
+  const { types: facetWidgetTypes } = config.blocks.blocksConfig.search.extensions.facetWidgets;
 
   const params = {
     query: [
@@ -95,11 +81,7 @@ function normalizeState({
       ...(facetSettings || []).map((facet) => {
         if (!facet?.field) return null;
 
-        const { valueToQuery } = resolveExtension(
-          'type',
-          facetWidgetTypes,
-          facet,
-        );
+        const { valueToQuery } = resolveExtension('type', facetWidgetTypes, facet);
 
         const name = facet.field.value;
         const value = facets[name];
@@ -114,15 +96,19 @@ function normalizeState({
     block: id,
   };
 
-  // TODO: need to check if SearchableText facet is not already in the query
-  // Ideally the searchtext functionality should be restructured as being just
-  // another facet
-  params.query = params.query.reduce(
-    // Remove SearchableText from query
-    (acc, kvp) => (kvp.i === 'SearchableText' ? acc : [...acc, kvp]),
-    [],
-  );
+  // Note Ideally the searchtext functionality should be restructured as being just
+  // another facet. But right now it's the same. This means that if a searchText
+  // is provided, it will override the SearchableText facet.
+  // If there is no searchText, the SearchableText in the query remains in effect.
+  // TODO eventually the searchText should be a distinct facet from SearchableText, and
+  // the two conditions could be combined, in comparison to the current state, when
+  // one overrides the other.
   if (searchText) {
+    params.query = params.query.reduce(
+      // Remove SearchableText from query
+      (acc, kvp) => (kvp.i === 'SearchableText' ? acc : [...acc, kvp]),
+      [],
+    );
     params.query.push({
       i: 'SearchableText',
       o: 'plone.app.querystring.operation.string.contains',
@@ -144,16 +130,12 @@ const getSearchFields = (searchData) => {
 };
 
 /**
- * A hook that will mirror the search block state to a hash location
+ * A HOC that will mirror the search block state to a hash location
  */
 const useHashState = () => {
   const location = useLocation();
   const history = useHistory();
 
-  /**
-   * Required to maintain parameter compatibility.
-    With this we will maintain support for receiving hash (#) and search (?) type parameters.
-  */
   const oldState = React.useMemo(() => {
     return {
       ...qs.parse(location.search),
@@ -169,7 +151,7 @@ const useHashState = () => {
 
   const setSearchData = React.useCallback(
     (searchData) => {
-      const newParams = qs.parse(location.search);
+      const newParams = qs.parse(location.hash);
 
       let changed = false;
 
@@ -186,11 +168,11 @@ const useHashState = () => {
 
       if (changed) {
         history.push({
-          search: qs.stringify(newParams),
+          hash: qs.stringify(newParams),
         });
       }
     },
-    [history, oldState, location.search],
+    [history, oldState, location.hash],
   );
 
   return [current, setSearchData];
@@ -205,9 +187,7 @@ const useSearchBlockState = (uniqueId, isEditMode) => {
   const [hashState, setHashState] = useHashState();
   const [internalState, setInternalState] = React.useState({});
 
-  return isEditMode
-    ? [internalState, setInternalState]
-    : [hashState, setHashState];
+  return isEditMode ? [internalState, setInternalState] : [hashState, setHashState];
 };
 
 // Simple compress/decompress the state in URL by replacing the lengthy string
@@ -218,9 +198,7 @@ const deserializeQuery = (q) => {
   }));
 };
 const serializeQuery = (q) => {
-  return JSON.stringify(
-    q?.map((kvp) => ({ ...kvp, o: kvp.o.replace(PAQO, 'paqo') })),
-  );
+  return JSON.stringify(q?.map((kvp) => ({ ...kvp, o: kvp.o.replace(PAQO, 'paqo') })));
 };
 
 const withSearch = (options) => (WrappedComponent) => {
@@ -229,14 +207,9 @@ const withSearch = (options) => (WrappedComponent) => {
   function WithSearch(props) {
     const { data, id, editable = false } = props;
 
-    const [locationSearchData, setLocationSearchData] = useSearchBlockState(
-      id,
-      editable,
-    );
+    const [locationSearchData, setLocationSearchData] = useSearchBlockState(id, editable);
 
-    const urlQuery = locationSearchData.query
-      ? deserializeQuery(locationSearchData.query)
-      : [];
+    const urlQuery = locationSearchData.query ? deserializeQuery(locationSearchData.query) : [];
     const urlSearchText =
       locationSearchData.SearchableText ||
       urlQuery.find(({ i }) => i === 'SearchableText')?.v ||
@@ -244,8 +217,7 @@ const withSearch = (options) => (WrappedComponent) => {
 
     // TODO: refactor, should use only useLocationStateManager()!!!
     const [searchText, setSearchText] = React.useState(urlSearchText);
-    const configuredFacets =
-      data.facets?.map((facet) => facet?.field?.value) || [];
+    const configuredFacets = data.facets?.map((facet) => facet?.field?.value) || [];
     const multiFacets = data.facets
       ?.filter((facet) => facet?.multiple)
       .map((facet) => facet?.field?.value);
@@ -262,10 +234,7 @@ const withSearch = (options) => (WrappedComponent) => {
         ...configuredFacets.map((f) =>
           locationSearchData[f]
             ? {
-                [f]:
-                  multiFacets.indexOf(f) > -1
-                    ? [locationSearchData[f]]
-                    : locationSearchData[f],
+                [f]: multiFacets.indexOf(f) > -1 ? [locationSearchData[f]] : locationSearchData[f],
               }
             : {},
         ),
@@ -282,8 +251,14 @@ const withSearch = (options) => (WrappedComponent) => {
     const timeoutRef = React.useRef();
     const facetSettings = data?.facets;
 
+    const deepQuery = JSON.stringify(data.query);
     const onTriggerSearch = React.useCallback(
-      (toSearchText, toSearchFacets, toSortOn, toSortOrder) => {
+      (
+        toSearchText = undefined,
+        toSearchFacets = undefined,
+        toSortOn = undefined,
+        toSortOrder = undefined,
+      ) => {
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
         timeoutRef.current = setTimeout(
           () => {
@@ -291,7 +266,7 @@ const withSearch = (options) => (WrappedComponent) => {
               id,
               query: data.query || {},
               facets: toSearchFacets || facets,
-              searchText: toSearchText,
+              searchText: toSearchText || searchText,
               sortOn: toSortOn || sortOn,
               sortOrder: toSortOrder || sortOrder,
               facetSettings,
@@ -305,22 +280,22 @@ const withSearch = (options) => (WrappedComponent) => {
           toSearchFacets ? inputDelay / 3 : inputDelay,
         );
       },
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       [
-        data.query,
+        // Use deep comparison of data.query
+        deepQuery,
         facets,
         id,
         setLocationSearchData,
+        searchText,
         sortOn,
         sortOrder,
         facetSettings,
       ],
     );
 
-    const querystringResults = useSelector(
-      (state) => state.querystringsearch.subrequests,
-    );
-    const totalItems =
-      querystringResults[id]?.total || querystringResults[id]?.items?.length;
+    const querystringResults = useSelector((state) => state.querystringsearch.subrequests);
+    const totalItems = querystringResults[id]?.total || querystringResults[id]?.items?.length;
 
     return (
       <WrappedComponent

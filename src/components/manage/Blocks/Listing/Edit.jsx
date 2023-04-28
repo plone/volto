@@ -4,10 +4,7 @@ import { defineMessages, useIntl } from 'react-intl';
 import { isEqual } from 'lodash';
 import { withBlockExtensions } from '@plone/volto/helpers';
 
-import {
-  SidebarPortal,
-  ListingBlockBody as ListingBody,
-} from '@plone/volto/components';
+import { SidebarPortal, ListingBlockBody as ListingBody } from '@plone/volto/components';
 import ListingData from './ListingData';
 
 import { getBaseUrl } from '@plone/volto/helpers';
@@ -26,21 +23,7 @@ const messages = defineMessages({
 const Edit = React.memo(
   (props) => {
     const { data, onChangeBlock, block, selected, pathname } = props;
-
     const intl = useIntl();
-
-    // componentDidMount
-    React.useEffect(() => {
-      if (!data.query) {
-        onChangeBlock(block, {
-          ...data,
-          query: [],
-          block,
-        });
-      }
-      /* eslint-disable react-hooks/exhaustive-deps */
-    }, []);
-
     const placeholder =
       data.placeholder ||
       (data?.querystring?.query?.length
@@ -64,10 +47,7 @@ const Edit = React.memo(
     );
   },
   function areEquals(prevProps, nextProps) {
-    return !(
-      nextProps.selected !== prevProps.selected ||
-      !isEqual(prevProps.data, nextProps.data)
-    );
+    return !(nextProps.selected !== prevProps.selected || !isEqual(prevProps.data, nextProps.data));
   },
 );
 

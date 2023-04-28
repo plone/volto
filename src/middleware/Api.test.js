@@ -22,10 +22,7 @@ describe('api middleware helpers', () => {
       },
     ];
 
-    const result = addExpandersToPath(
-      '/de/mypage?expand=translations',
-      GET_CONTENT,
-    );
+    const result = addExpandersToPath('/de/mypage?expand=translations', GET_CONTENT);
     expect(result).toEqual('/de/mypage?expand=translations,mycustomexpander');
   });
   it('addExpandersToPath - Path not matching', () => {
@@ -53,6 +50,60 @@ describe('api middleware helpers', () => {
     );
     expect(result).toEqual('/de/mypage/@navigation?expand.navigation.depth=3');
   });
+  it('addExpandersToPath - Path matching, preserve query', () => {
+    config.settings.apiExpanders = [
+      {
+        match: '/de/mypage',
+        GET_CONTENT: ['mycustomexpander', 'mycustomexpander2'],
+      },
+    ];
+
+    const result = addExpandersToPath(
+      '/de/mypage/@navigation?expand.navigation.depth=3',
+      GET_CONTENT,
+    );
+    expect(result).toEqual(
+      '/de/mypage/@navigation?expand=mycustomexpander,mycustomexpander2&expand.navigation.depth=3',
+    );
+  });
+  it('addExpandersToPath - Path matching, preserve query with multiple', () => {
+    config.settings.apiExpanders = [
+      {
+        match: '/de/mypage',
+        GET_CONTENT: ['mycustomexpander', 'mycustomexpander2'],
+      },
+    ];
+
+    const result = addExpandersToPath(
+      '/de/mypage/@navigation?expand.navigation.depth=3&expand.other=2',
+      GET_CONTENT,
+    );
+    expect(result).toEqual(
+      '/de/mypage/@navigation?expand=mycustomexpander,mycustomexpander2&expand.navigation.depth=3&expand.other=2',
+    );
+  });
+  it('addExpandersToPath - Path not matching, preserve encoded query', () => {
+    config.settings.apiExpanders = [
+      {
+        match: '/de/otherpath',
+        GET_CONTENT: ['mycustomexpander'],
+      },
+    ];
+
+    const result = addExpandersToPath('/de/mypage?query=a%26b', GET_CONTENT);
+    expect(result).toEqual('/de/mypage?query=a%26b');
+  });
+  it('addExpandersToPath - Path matching, preserve encoded query', () => {
+    config.settings.apiExpanders = [
+      {
+        match: '/de/mypage',
+        GET_CONTENT: ['mycustomexpander'],
+      },
+    ];
+
+    const result = addExpandersToPath('/de/mypage?query=a%26b', GET_CONTENT);
+    expect(result).toEqual('/de/mypage?expand=mycustomexpander&query=a%26b');
+  });
   it('addExpandersToPath - Two custom expanders from settings', () => {
     config.settings.apiExpanders = [
       {
@@ -63,9 +114,7 @@ describe('api middleware helpers', () => {
 
     const result = addExpandersToPath('/de/mypage', GET_CONTENT);
     // No need to stringify
-    expect(result).toEqual(
-      '/de/mypage?expand=mycustomexpander,mycustomexpander2',
-    );
+    expect(result).toEqual('/de/mypage?expand=mycustomexpander,mycustomexpander2');
   });
   it('addExpandersToPath - Two custom expanders from settings, expansion nested (with dots notation) present', () => {
     config.settings.apiExpanders = [
@@ -165,9 +214,7 @@ describe('api middleware helpers', () => {
 
     const result = addExpandersToPath('/de/mypage', GET_CONTENT);
     // No need to stringify
-    expect(result).toEqual(
-      '/de/mypage?expand=navigation&expand.navigation.depth=3',
-    );
+    expect(result).toEqual('/de/mypage?expand=navigation&expand.navigation.depth=3');
   });
   it('addExpandersToPath - navigation expander with several querystrings - no querystring from original request', () => {
     config.settings.apiExpanders = [
@@ -198,10 +245,7 @@ describe('api middleware helpers', () => {
       },
     ];
 
-    const result = addExpandersToPath(
-      '/de/mypage?someotherquery=1&someotherquery=2',
-      GET_CONTENT,
-    );
+    const result = addExpandersToPath('/de/mypage?someotherquery=1&someotherquery=2', GET_CONTENT);
     // No need to stringify
     expect(result).toEqual(
       '/de/mypage?expand=navigation&expand.navigation.depth=3&someotherquery=1&someotherquery=2',
@@ -219,10 +263,7 @@ describe('api middleware helpers', () => {
       },
     ];
 
-    const result = addExpandersToPath(
-      '/de/mypage?someotherquery=1&someotherquery=2',
-      GET_CONTENT,
-    );
+    const result = addExpandersToPath('/de/mypage?someotherquery=1&someotherquery=2', GET_CONTENT);
     // No need to stringify
     expect(result).toEqual(
       '/de/mypage?expand=navigation&expand.navigation.coolness=1&expand.navigation.depth=3&someotherquery=1&someotherquery=2',
