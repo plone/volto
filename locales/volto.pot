@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2023-04-05T10:12:20.363Z\n"
+"POT-Creation-Date: 2023-04-27T13:56:55.229Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -2624,6 +2624,11 @@ msgstr ""
 #: components/manage/Controlpanels/Relations/RelationsListing
 # defaultMessage: Relations are editable with plone.api >= 2.0.0.
 msgid "Relations are editable with plone.api >= 2.0.0."
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Relations updated
+msgid "Relations updated"
 msgstr ""
 
 #: components/theme/Search/Search

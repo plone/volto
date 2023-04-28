@@ -27,25 +27,14 @@ const ListingTemplate = ({
   const intl = useIntl();
   const dispatch = useDispatch();
 
-  // const MAX = 50;
-  // DEBUG MAX
-  const MAX = 5;
+  const MAX = 40; // Maximum of rows and columns
 
+  const stats = useSelector((state) => state.relations?.stats || null);
   let relations = useSelector(
     (state) =>
       (state.relations?.relations?.items ? state.relations?.relations?.items[relationtype] : []) ||
       [],
   );
-  relations = relations.filter((el) => {
-    let matched = true;
-    if (query_source) {
-      matched =
-        matched &&
-        (el.source.title.toLowerCase().indexOf(query_source.toLowerCase()) > -1 ||
-          el.source['@id'].toLowerCase().indexOf(query_source.toLowerCase()) > -1);
-    }
-    return matched;
-  });
 
   let potential_targets_objects = useSelector(
     (state) => state.search.subrequests.potential_targets?.items || [],
@@ -76,6 +65,7 @@ const ListingTemplate = ({
   });
 
   // x-axis: relation targets
+  // ************************
   let matrix_options = relations.map((relation) => ({
     value: relation.target.UID,
     label: relation.target.title,
@@ -99,17 +89,6 @@ const ListingTemplate = ({
   matrix_options = uniqBy(matrix_options, function (el) {
     return el.value;
   });
-
-  matrix_options = matrix_options.filter((el) => {
-    let matched = true;
-    if (query_target) {
-      matched =
-        matched &&
-        (el.label.toLowerCase().indexOf(query_target.toLowerCase()) > -1 ||
-          el.url.toLowerCase().indexOf(query_target.toLowerCase()) > -1);
-    }
-    return matched;
-  });
   matrix_options.sort(function (a, b) {
     var labelA = a.label.toUpperCase();
     var labelB = b.label.toUpperCase();
@@ -123,6 +102,7 @@ const ListingTemplate = ({
   });
 
   // y-axis: relation sources
+  // ************************
   let items = Object.keys(relationMatrix).map((key) => ({
     value: key,
     label: relationMatrix[key].source.title,
@@ -142,16 +122,6 @@ const ListingTemplate = ({
   items = uniqBy(items, function (el) {
     return el.value;
   });
-  items = items.filter((el) => {
-    let matched = true;
-    if (query_source) {
-      matched =
-        matched &&
-        (el.label.toLowerCase().indexOf(query_source.toLowerCase()) > -1 ||
-          el.url.toLowerCase().indexOf(query_source.toLowerCase()) > -1);
-    }
-    return matched;
-  });
   items.sort(function (a, b) {
     var labelA = a.label.toUpperCase();
     var labelB = b.label.toUpperCase();
@@ -164,9 +134,34 @@ const ListingTemplate = ({
     return 0;
   });
 
+  function fetchRelations() {
+    dispatch(
+      queryRelations(
+        relationtype,
+        false,
+        null,
+        query_source ? (query_source.startsWith('/') ? query_source : `${query_source}*`) : null,
+        query_target ? (query_target.startsWith('/') ? query_target : `${query_target}*`) : null,
+      ),
+    );
+  }
+
   useEffect(() => {
-    dispatch(queryRelations(relationtype));
-  }, [dispatch, relationtype]); // query_source
+    // If many relations, then fetch relations only with search query on source or target
+    if (stats?.relations[relationtype] < 1000) {
+      dispatch(queryRelations(relationtype));
+    } else if (query_source || query_target) {
+      dispatch(
+        queryRelations(
+          relationtype,
+          false,
+          null,
+          query_source ? (query_source.startsWith('/') ? query_source : `${query_source}*`) : null,
+          query_target ? (query_target.startsWith('/') ? query_target : `${query_target}*`) : null,
+        ),
+      );
+    }
+  }, [dispatch, stats, relationtype, query_source, query_target]);
 
   // Get potential source and target objects
   useDeepCompareEffect(() => {
@@ -217,14 +212,14 @@ const ListingTemplate = ({
     ];
     dispatch(checked ? createRelations(relation_data) : deleteRelations(relation_data))
       .then((resp) => {
-        dispatch(queryRelations(relationtype));
+        fetchRelations();
       })
       .then(() => {
         toast.success(
           <Toast
             success
             title={intl.formatMessage(messages.success)}
-            content="Relations updated"
+            content={intl.formatMessage(messages.relationsUpdated)}
           />,
         );
       });
@@ -243,14 +238,14 @@ const ListingTemplate = ({
     });
     dispatch(checked ? createRelations(relation_data) : deleteRelations(relation_data))
       .then((resp) => {
-        dispatch(queryRelations(relationtype));
+        fetchRelations();
       })
       .then(() => {
         toast.success(
           <Toast
             success
             title={intl.formatMessage(messages.success)}
-            content="Relations updated"
+            content={intl.formatMessage(messages.relationsUpdated)}
           />,
         );
       });

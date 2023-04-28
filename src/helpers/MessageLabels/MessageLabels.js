@@ -51,8 +51,7 @@ export const messages = defineMessages({
   },
   isValidURL: {
     id: 'url',
-    defaultMessage:
-      'Input must be valid url (www.something.com or http(s)://www.something.com)',
+    defaultMessage: 'Input must be valid url (www.something.com or http(s)://www.something.com)',
   },
   cancel: {
     id: 'Cancel',
@@ -315,5 +314,9 @@ export const messages = defineMessages({
   addPotentialSourcesPath: {
     id: 'sources path',
     defaultMessage: 'sources path',
+  },
+  relationsUpdated: {
+    id: 'Relations updated',
+    defaultMessage: 'Relations updated',
   },
 });

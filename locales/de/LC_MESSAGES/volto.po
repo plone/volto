@@ -2630,6 +2630,11 @@ msgstr "Relationen"
 msgid "Relations are editable with plone.api >= 2.0.0."
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Relations updated
+msgid "Relations updated"
+msgstr "Relationen aktualisiert"
+
 #: components/theme/Search/Search
 # defaultMessage: Relevance
 msgid "Relevance"
