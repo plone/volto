@@ -47,9 +47,8 @@ const apiPath =
 const getServerURL = (url) => {
   if (!url) return;
   const apiPathURL = parseUrl(url);
-  return `${apiPathURL.protocol}//${apiPathURL.hostname}${
-    apiPathURL.port ? `:${apiPathURL.port}` : ''
-  }`;
+  return `${apiPathURL.protocol}//${apiPathURL.hostname}${apiPathURL.port ? `:${apiPathURL.port}` : ''
+    }`;
 };
 
 // Sensible defaults for publicURL
@@ -87,6 +86,13 @@ let config = {
     // In production is recommended you use a Seamless mode deployment using a web server in
     // front of both the frontend and the backend so you can bypass CORS safely.
     // https://6.docs.plone.org/volto/deploying/seamless-mode.html
+
+    // Environment Variables Documentation
+    // Environment variables decalerd with 'RAZZLE_' prefix can be accessed from browser window
+    // and in front end using command : window.env.RAZZLE_DEV_PROXY_API_PATH
+    // These are run time variable
+    // Declaration : yarn build && RAZZLE_API_PATH=https://plone.org yarn start:prod
+
     devProxyToApiPath:
       process.env.RAZZLE_DEV_PROXY_API_PATH ||
       process.env.RAZZLE_INTERNAL_API_PATH ||
