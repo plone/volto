@@ -22,7 +22,10 @@ describe('api middleware helpers', () => {
       },
     ];
 
-    const result = addExpandersToPath('/de/mypage?expand=translations', GET_CONTENT);
+    const result = addExpandersToPath(
+      '/de/mypage?expand=translations',
+      GET_CONTENT,
+    );
     expect(result).toEqual('/de/mypage?expand=translations,mycustomexpander');
   });
   it('addExpandersToPath - Path not matching', () => {
@@ -114,7 +117,9 @@ describe('api middleware helpers', () => {
 
     const result = addExpandersToPath('/de/mypage', GET_CONTENT);
     // No need to stringify
-    expect(result).toEqual('/de/mypage?expand=mycustomexpander,mycustomexpander2');
+    expect(result).toEqual(
+      '/de/mypage?expand=mycustomexpander,mycustomexpander2',
+    );
   });
   it('addExpandersToPath - Two custom expanders from settings, expansion nested (with dots notation) present', () => {
     config.settings.apiExpanders = [
@@ -214,7 +219,9 @@ describe('api middleware helpers', () => {
 
     const result = addExpandersToPath('/de/mypage', GET_CONTENT);
     // No need to stringify
-    expect(result).toEqual('/de/mypage?expand=navigation&expand.navigation.depth=3');
+    expect(result).toEqual(
+      '/de/mypage?expand=navigation&expand.navigation.depth=3',
+    );
   });
   it('addExpandersToPath - navigation expander with several querystrings - no querystring from original request', () => {
     config.settings.apiExpanders = [
@@ -245,7 +252,10 @@ describe('api middleware helpers', () => {
       },
     ];
 
-    const result = addExpandersToPath('/de/mypage?someotherquery=1&someotherquery=2', GET_CONTENT);
+    const result = addExpandersToPath(
+      '/de/mypage?someotherquery=1&someotherquery=2',
+      GET_CONTENT,
+    );
     // No need to stringify
     expect(result).toEqual(
       '/de/mypage?expand=navigation&expand.navigation.depth=3&someotherquery=1&someotherquery=2',
@@ -263,7 +273,10 @@ describe('api middleware helpers', () => {
       },
     ];
 
-    const result = addExpandersToPath('/de/mypage?someotherquery=1&someotherquery=2', GET_CONTENT);
+    const result = addExpandersToPath(
+      '/de/mypage?someotherquery=1&someotherquery=2',
+      GET_CONTENT,
+    );
     // No need to stringify
     expect(result).toEqual(
       '/de/mypage?expand=navigation&expand.navigation.coolness=1&expand.navigation.depth=3&someotherquery=1&someotherquery=2',

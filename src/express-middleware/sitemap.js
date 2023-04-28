@@ -25,7 +25,10 @@ export const sitemap = function (req, res, next) {
   generateSitemap(req, start, size).then((sitemap) => {
     if (Buffer.isBuffer(sitemap)) {
       res.set('Content-Type', 'application/x-gzip');
-      res.set('Content-Disposition', `attachment; filename="sitemap${batchStr || ''}.xml.gz"`);
+      res.set(
+        'Content-Disposition',
+        `attachment; filename="sitemap${batchStr || ''}.xml.gz"`,
+      );
       res.send(sitemap);
     } else {
       // {"errno":-111, "code":"ECONNREFUSED", "host": ...}

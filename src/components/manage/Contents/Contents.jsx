@@ -22,7 +22,16 @@ import {
   Loader,
   Dimmer,
 } from 'semantic-ui-react';
-import { concat, filter, find, indexOf, keys, map, mapValues, pull } from 'lodash';
+import {
+  concat,
+  filter,
+  find,
+  indexOf,
+  keys,
+  map,
+  mapValues,
+  pull,
+} from 'lodash';
 import move from 'lodash-move';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { asyncConnect } from '@plone/volto/helpers';
@@ -461,9 +470,12 @@ class Contents extends Component {
     ) {
       this.setState({
         linkIntegrityBreakages: await this.props.linkIntegrityCheck(
-          map(this.state.itemsToDelete, (item) => this.getFieldById(item, 'UID')),
+          map(this.state.itemsToDelete, (item) =>
+            this.getFieldById(item, 'UID'),
+          ),
         ),
-        showAllItemsToDelete: this.state.itemsToDelete.length < this.deleteItemsToShowThreshold,
+        showAllItemsToDelete:
+          this.state.itemsToDelete.length < this.deleteItemsToShowThreshold,
       });
     }
   }
@@ -476,7 +488,8 @@ class Contents extends Component {
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (
-      (this.props.clipboardRequest.loading && nextProps.clipboardRequest.loaded) ||
+      (this.props.clipboardRequest.loading &&
+        nextProps.clipboardRequest.loaded) ||
       (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) ||
       (this.props.updateRequest.loading && nextProps.updateRequest.loaded)
     ) {
@@ -498,7 +511,10 @@ class Contents extends Component {
         {
           currentPage: 0,
         },
-        () => this.setState({ filter: '' }, () => this.fetchContents(nextProps.pathname)),
+        () =>
+          this.setState({ filter: '' }, () =>
+            this.fetchContents(nextProps.pathname),
+          ),
       );
     }
     if (this.props.searchRequest.loading && nextProps.searchRequest.loaded) {
@@ -506,7 +522,10 @@ class Contents extends Component {
         items: nextProps.items,
       });
     }
-    if (this.props.clipboardRequest.loading && nextProps.clipboardRequest.error) {
+    if (
+      this.props.clipboardRequest.loading &&
+      nextProps.clipboardRequest.error
+    ) {
       this.props.toastify.toast.error(
         <Toast
           error
@@ -516,7 +535,10 @@ class Contents extends Component {
       );
     }
 
-    if (this.props.clipboardRequest.loading && nextProps.clipboardRequest.loaded) {
+    if (
+      this.props.clipboardRequest.loading &&
+      nextProps.clipboardRequest.loaded
+    ) {
       this.props.toastify.toast.success(
         <Toast
           success
@@ -611,10 +633,12 @@ class Contents extends Component {
     let newIndex = {
       ...this.state.index,
       selectedCount:
-        this.state.index.selectedCount + (this.state.index.values[value].selected ? -1 : 1),
+        this.state.index.selectedCount +
+        (this.state.index.values[value].selected ? -1 : 1),
       values: mapValues(this.state.index.values, (indexValue, indexKey) => ({
         ...indexValue,
-        selected: indexKey === value ? !indexValue.selected : indexValue.selected,
+        selected:
+          indexKey === value ? !indexValue.selected : indexValue.selected,
       })),
     };
     this.setState({
@@ -715,7 +739,10 @@ class Contents extends Component {
         order: move(this.state.index.order, index, index + delta),
       },
     });
-    this.props.updateColumnsContent(getBaseUrl(this.props.pathname), this.state.index);
+    this.props.updateColumnsContent(
+      getBaseUrl(this.props.pathname),
+      this.state.index,
+    );
   }
 
   /**
@@ -728,7 +755,11 @@ class Contents extends Component {
    */
   onOrderItem(id, itemIndex, delta, backend) {
     if (backend) {
-      this.props.orderContent(getBaseUrl(this.props.pathname), id.replace(/^.*\//, ''), delta);
+      this.props.orderContent(
+        getBaseUrl(this.props.pathname),
+        id.replace(/^.*\//, ''),
+        delta,
+      );
     } else {
       this.setState({
         items: move(this.state.items, itemIndex, itemIndex + delta),
@@ -749,7 +780,11 @@ class Contents extends Component {
       sort_on: values[0],
       sort_order: values[1],
     });
-    this.props.sortContent(getBaseUrl(this.props.pathname), values[0], values[1]);
+    this.props.sortContent(
+      getBaseUrl(this.props.pathname),
+      values[0],
+      values[1],
+    );
   }
 
   /**
@@ -762,7 +797,11 @@ class Contents extends Component {
   onMoveToTop(event, { value }) {
     const id = this.state.items[value]['@id'];
     this.props
-      .orderContent(getBaseUrl(this.props.pathname), id.replace(/^.*\//, ''), 'top')
+      .orderContent(
+        getBaseUrl(this.props.pathname),
+        id.replace(/^.*\//, ''),
+        'top',
+      )
       .then(() => {
         this.setState(
           {
@@ -783,7 +822,11 @@ class Contents extends Component {
   onMoveToBottom(event, { value }) {
     const id = this.state.items[value]['@id'];
     this.props
-      .orderContent(getBaseUrl(this.props.pathname), id.replace(/^.*\//, ''), 'bottom')
+      .orderContent(
+        getBaseUrl(this.props.pathname),
+        id.replace(/^.*\//, ''),
+        'bottom',
+      )
       .then(() => {
         this.setState(
           {
@@ -1099,10 +1142,16 @@ class Contents extends Component {
    */
   paste() {
     if (this.props.action === 'copy') {
-      this.props.copyContent(this.props.source, getBaseUrl(this.props.pathname));
+      this.props.copyContent(
+        this.props.source,
+        getBaseUrl(this.props.pathname),
+      );
     }
     if (this.props.action === 'cut') {
-      this.props.moveContent(this.props.source, getBaseUrl(this.props.pathname));
+      this.props.moveContent(
+        this.props.source,
+        getBaseUrl(this.props.pathname),
+      );
     }
   }
 
@@ -1119,7 +1168,8 @@ class Contents extends Component {
       id: 'folderContents',
     });
     const loading =
-      (this.props.clipboardRequest?.loading && !this.props.clipboardRequest?.error) ||
+      (this.props.clipboardRequest?.loading &&
+        !this.props.clipboardRequest?.error) ||
       (this.props.deleteRequest?.loading && !this.props.deleteRequest?.error) ||
       (this.props.updateRequest?.loading && !this.props.updateRequest?.error) ||
       (this.props.orderRequest?.loading && !this.props.orderRequest?.error) ||
@@ -1136,26 +1186,36 @@ class Contents extends Component {
                 </Loader>
               </Dimmer>
 
-              <Helmet title={this.props.intl.formatMessage(messages.contents)} />
+              <Helmet
+                title={this.props.intl.formatMessage(messages.contents)}
+              />
               <div className="container">
                 <article id="content">
                   <Confirm
                     open={this.state.showDelete}
                     confirmButton="Delete"
-                    header={this.props.intl.formatMessage(messages.deleteConfirm)}
+                    header={this.props.intl.formatMessage(
+                      messages.deleteConfirm,
+                    )}
                     content={
                       <div className="content">
                         <h3>
-                          {this.props.intl.formatMessage(messages.deleteItemCountMessage) +
-                            ` ${this.state.itemsToDelete.length}`}
+                          {this.props.intl.formatMessage(
+                            messages.deleteItemCountMessage,
+                          ) + ` ${this.state.itemsToDelete.length}`}
                         </h3>
                         <ul className="content">
                           {map(
                             this.state.showAllItemsToDelete
                               ? this.state.itemsToDelete
-                              : this.state.itemsToDelete.slice(0, this.deleteItemsToShowThreshold),
+                              : this.state.itemsToDelete.slice(
+                                  0,
+                                  this.deleteItemsToShowThreshold,
+                                ),
                             (item) => (
-                              <li key={item}>{this.getFieldById(item, 'title')}</li>
+                              <li key={item}>
+                                {this.getFieldById(item, 'title')}
+                              </li>
                             ),
                           )}
                         </ul>
@@ -1173,29 +1233,38 @@ class Contents extends Component {
                         {this.state.linkIntegrityBreakages.length > 0 ? (
                           <div>
                             <h3>
-                              {this.props.intl.formatMessage(messages.linkIntegrityMessageHeader)}
+                              {this.props.intl.formatMessage(
+                                messages.linkIntegrityMessageHeader,
+                              )}
                             </h3>
                             <p>
-                              {this.props.intl.formatMessage(messages.linkIntegrityMessageBody)}
+                              {this.props.intl.formatMessage(
+                                messages.linkIntegrityMessageBody,
+                              )}
                             </p>
                             <ul className="content">
-                              {map(this.state.linkIntegrityBreakages, (item) => (
-                                <li key={item['@id']}>
-                                  <a href={item['@id']}>{item.title}</a>
-                                  <p>
-                                    {this.props.intl.formatMessage(
-                                      messages.linkIntegrityMessageExtra,
-                                    )}
-                                  </p>
-                                  <ul className="content">
-                                    {map(item.breaches, (breach) => (
-                                      <li key={breach['@id']}>
-                                        <a href={breach['@id']}>{breach.title}</a>
-                                      </li>
-                                    ))}
-                                  </ul>
-                                </li>
-                              ))}
+                              {map(
+                                this.state.linkIntegrityBreakages,
+                                (item) => (
+                                  <li key={item['@id']}>
+                                    <a href={item['@id']}>{item.title}</a>
+                                    <p>
+                                      {this.props.intl.formatMessage(
+                                        messages.linkIntegrityMessageExtra,
+                                      )}
+                                    </p>
+                                    <ul className="content">
+                                      {map(item.breaches, (breach) => (
+                                        <li key={breach['@id']}>
+                                          <a href={breach['@id']}>
+                                            {breach.title}
+                                          </a>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </li>
+                                ),
+                              )}
                             </ul>
                           </div>
                         ) : (
@@ -1252,7 +1321,12 @@ class Contents extends Component {
                         <Menu.Menu className="top-menu-menu">
                           <Popup
                             trigger={
-                              <Menu.Item icon as={Button} onClick={this.upload} className="upload">
+                              <Menu.Item
+                                icon
+                                as={Button}
+                                onClick={this.upload}
+                                className="upload"
+                              >
                                 <Icon
                                   name={uploadSVG}
                                   color="#007eb1"
@@ -1262,7 +1336,9 @@ class Contents extends Component {
                               </Menu.Item>
                             }
                             position="top center"
-                            content={this.props.intl.formatMessage(messages.upload)}
+                            content={this.props.intl.formatMessage(
+                              messages.upload,
+                            )}
                             size="mini"
                           />
                         </Menu.Menu>
@@ -1284,7 +1360,9 @@ class Contents extends Component {
                               </Menu.Item>
                             }
                             position="top center"
-                            content={this.props.intl.formatMessage(messages.rename)}
+                            content={this.props.intl.formatMessage(
+                              messages.rename,
+                            )}
                             size="mini"
                           />
                           <Popup
@@ -1304,12 +1382,19 @@ class Contents extends Component {
                               </Menu.Item>
                             }
                             position="top center"
-                            content={this.props.intl.formatMessage(messages.state)}
+                            content={this.props.intl.formatMessage(
+                              messages.state,
+                            )}
                             size="mini"
                           />
                           <Popup
                             trigger={
-                              <Menu.Item icon as={Button} onClick={this.tags} disabled={!selected}>
+                              <Menu.Item
+                                icon
+                                as={Button}
+                                onClick={this.tags}
+                                disabled={!selected}
+                              >
                                 <Icon
                                   name={tagSVG}
                                   color={selected ? '#826a6a' : 'grey'}
@@ -1319,7 +1404,9 @@ class Contents extends Component {
                               </Menu.Item>
                             }
                             position="top center"
-                            content={this.props.intl.formatMessage(messages.tags)}
+                            content={this.props.intl.formatMessage(
+                              messages.tags,
+                            )}
                             size="mini"
                           />
 
@@ -1340,14 +1427,21 @@ class Contents extends Component {
                               </Menu.Item>
                             }
                             position="top center"
-                            content={this.props.intl.formatMessage(messages.properties)}
+                            content={this.props.intl.formatMessage(
+                              messages.properties,
+                            )}
                             size="mini"
                           />
                         </Menu.Menu>
                         <Menu.Menu className="top-menu-menu">
                           <Popup
                             trigger={
-                              <Menu.Item icon as={Button} onClick={this.cut} disabled={!selected}>
+                              <Menu.Item
+                                icon
+                                as={Button}
+                                onClick={this.cut}
+                                disabled={!selected}
+                              >
                                 <Icon
                                   name={cutSVG}
                                   color={selected ? '#826a6a' : 'grey'}
@@ -1357,12 +1451,19 @@ class Contents extends Component {
                               </Menu.Item>
                             }
                             position="top center"
-                            content={this.props.intl.formatMessage(messages.cut)}
+                            content={this.props.intl.formatMessage(
+                              messages.cut,
+                            )}
                             size="mini"
                           />
                           <Popup
                             trigger={
-                              <Menu.Item icon as={Button} onClick={this.copy} disabled={!selected}>
+                              <Menu.Item
+                                icon
+                                as={Button}
+                                onClick={this.copy}
+                                disabled={!selected}
+                              >
                                 <Icon
                                   name={copySVG}
                                   color={selected ? '#826a6a' : 'grey'}
@@ -1372,7 +1473,9 @@ class Contents extends Component {
                               </Menu.Item>
                             }
                             position="top center"
-                            content={this.props.intl.formatMessage(messages.copy)}
+                            content={this.props.intl.formatMessage(
+                              messages.copy,
+                            )}
                             size="mini"
                           />
 
@@ -1393,7 +1496,9 @@ class Contents extends Component {
                               </Menu.Item>
                             }
                             position="top center"
-                            content={this.props.intl.formatMessage(messages.paste)}
+                            content={this.props.intl.formatMessage(
+                              messages.paste,
+                            )}
                             size="mini"
                           />
 
@@ -1414,16 +1519,23 @@ class Contents extends Component {
                               </Menu.Item>
                             }
                             position="top center"
-                            content={this.props.intl.formatMessage(messages.delete)}
+                            content={this.props.intl.formatMessage(
+                              messages.delete,
+                            )}
                             size="mini"
                           />
                         </Menu.Menu>
-                        <Menu.Menu position="right" className="top-menu-searchbox">
+                        <Menu.Menu
+                          position="right"
+                          className="top-menu-searchbox"
+                        >
                           <div className="ui right aligned category search item">
                             <Input
                               type="text"
                               transparent
-                              placeholder={this.props.intl.formatMessage(messages.filter)}
+                              placeholder={this.props.intl.formatMessage(
+                                messages.filter,
+                              )}
                               size="small"
                               value={this.state.filter}
                               onChange={this.onChangeFilter}
@@ -1435,7 +1547,11 @@ class Contents extends Component {
                                   this.onChangeFilter('', { value: '' });
                                 }}
                               >
-                                <Icon name={clearSVG} size="30px" color="#e40166" />
+                                <Icon
+                                  name={clearSVG}
+                                  size="30px"
+                                  color="#e40166"
+                                />
                               </Button>
                             )}
                             <Icon
@@ -1449,17 +1565,25 @@ class Contents extends Component {
                           </div>
                         </Menu.Menu>
                       </Menu>
-                      <Segment secondary attached className="contents-breadcrumbs">
+                      <Segment
+                        secondary
+                        attached
+                        className="contents-breadcrumbs"
+                      >
                         <ContentsBreadcrumbs items={this.props.breadcrumbs} />
                         <Dropdown
                           item
                           upward={false}
-                          icon={<Icon name={moreSVG} size="24px" color="#826a6a" />}
+                          icon={
+                            <Icon name={moreSVG} size="24px" color="#826a6a" />
+                          }
                           className="right floating selectIndex"
                         >
                           <Dropdown.Menu className="left">
                             <Dropdown.Header
-                              content={this.props.intl.formatMessage(messages.selectColumns)}
+                              content={this.props.intl.formatMessage(
+                                messages.selectColumns,
+                              )}
                             />
                             <Dropdown.Menu scrolling>
                               {map(
@@ -1479,20 +1603,27 @@ class Contents extends Component {
                                         name={checkboxCheckedSVG}
                                         size="24px"
                                         color="#007eb1"
-                                        className={this.state.index.values[index].label}
+                                        className={
+                                          this.state.index.values[index].label
+                                        }
                                       />
                                     ) : (
                                       <Icon
                                         name={checkboxUncheckedSVG}
-                                        className={this.state.index.values[index].label}
+                                        className={
+                                          this.state.index.values[index].label
+                                        }
                                         size="24px"
                                       />
                                     )}
                                     <span>
                                       {' '}
                                       {this.props.intl.formatMessage({
-                                        id: this.state.index.values[index].label,
-                                        defaultMessage: this.state.index.values[index].label,
+                                        id: this.state.index.values[index]
+                                          .label,
+                                        defaultMessage: this.state.index.values[
+                                          index
+                                        ].label,
                                       })}
                                     </span>
                                   </Dropdown.Item>
@@ -1527,7 +1658,9 @@ class Contents extends Component {
                                 >
                                   <Menu vertical borderless fluid>
                                     <Menu.Header
-                                      content={this.props.intl.formatMessage(messages.rearrangeBy)}
+                                      content={this.props.intl.formatMessage(
+                                        messages.rearrangeBy,
+                                      )}
                                     />
                                     {map(
                                       [
@@ -1545,7 +1678,11 @@ class Contents extends Component {
                                           simple
                                           className={`sort_${index} icon-align`}
                                           icon={
-                                            <Icon name={downKeySVG} size="24px" className="left" />
+                                            <Icon
+                                              name={downKeySVG}
+                                              size="24px"
+                                              className="left"
+                                            />
                                           }
                                           text={this.props.intl.formatMessage({
                                             id: Indexes[index].label,
@@ -1557,7 +1694,10 @@ class Contents extends Component {
                                               value={`${Indexes[index].sort_on}|ascending`}
                                               className={`sort_${Indexes[index].sort_on}_ascending icon-align`}
                                             >
-                                              <Icon name={sortDownSVG} size="24px" />{' '}
+                                              <Icon
+                                                name={sortDownSVG}
+                                                size="24px"
+                                              />{' '}
                                               <FormattedMessage
                                                 id="Ascending"
                                                 defaultMessage="Ascending"
@@ -1568,7 +1708,10 @@ class Contents extends Component {
                                               value={`${Indexes[index].sort_on}|descending`}
                                               className={`sort_${Indexes[index].sort_on}_descending icon-align`}
                                             >
-                                              <Icon name={sortUpSVG} size="24px" />{' '}
+                                              <Icon
+                                                name={sortUpSVG}
+                                                size="24px"
+                                              />{' '}
                                               <FormattedMessage
                                                 id="Descending"
                                                 defaultMessage="Descending"
@@ -1596,11 +1739,16 @@ class Contents extends Component {
                                       name={
                                         this.state.selected.length === 0
                                           ? checkboxUncheckedSVG
-                                          : this.state.selected.length === this.state.items.length
+                                          : this.state.selected.length ===
+                                            this.state.items.length
                                           ? checkboxCheckedSVG
                                           : checkboxIndeterminateSVG
                                       }
-                                      color={this.state.selected.length > 0 ? '#007eb1' : '#826a6a'}
+                                      color={
+                                        this.state.selected.length > 0
+                                          ? '#007eb1'
+                                          : '#826a6a'
+                                      }
                                       className="dropdown-popup-trigger"
                                       size="24px"
                                     />
@@ -1608,28 +1756,50 @@ class Contents extends Component {
                                 >
                                   <Menu vertical borderless fluid>
                                     <Menu.Header
-                                      content={this.props.intl.formatMessage(messages.select)}
+                                      content={this.props.intl.formatMessage(
+                                        messages.select,
+                                      )}
                                     />
                                     <Menu.Item onClick={this.onSelectAll}>
-                                      <Icon name={checkboxCheckedSVG} color="#007eb1" size="24px" />{' '}
-                                      <FormattedMessage id="All" defaultMessage="All" />
+                                      <Icon
+                                        name={checkboxCheckedSVG}
+                                        color="#007eb1"
+                                        size="24px"
+                                      />{' '}
+                                      <FormattedMessage
+                                        id="All"
+                                        defaultMessage="All"
+                                      />
                                     </Menu.Item>
                                     <Menu.Item onClick={this.onSelectNone}>
-                                      <Icon name={checkboxUncheckedSVG} size="24px" />{' '}
-                                      <FormattedMessage id="None" defaultMessage="None" />
+                                      <Icon
+                                        name={checkboxUncheckedSVG}
+                                        size="24px"
+                                      />{' '}
+                                      <FormattedMessage
+                                        id="None"
+                                        defaultMessage="None"
+                                      />
                                     </Menu.Item>
                                     <Divider />
                                     <Menu.Header
-                                      content={this.props.intl.formatMessage(messages.selected, {
-                                        count: this.state.selected.length,
-                                      })}
+                                      content={this.props.intl.formatMessage(
+                                        messages.selected,
+                                        {
+                                          count: this.state.selected.length,
+                                        },
+                                      )}
                                     />
                                     <Input
                                       icon={<Icon name={zoomSVG} size="24px" />}
                                       iconPosition="left"
                                       className="item search"
-                                      placeholder={this.props.intl.formatMessage(messages.filter)}
-                                      value={this.state.selectedMenuFilter || ''}
+                                      placeholder={this.props.intl.formatMessage(
+                                        messages.filter,
+                                      )}
+                                      value={
+                                        this.state.selectedMenuFilter || ''
+                                      }
                                       onChange={this.onChangeSelected}
                                       onClick={(e) => {
                                         e.preventDefault();
@@ -1643,7 +1813,11 @@ class Contents extends Component {
                                           value={item}
                                           onClick={this.onDeselect}
                                         >
-                                          <Icon name={deleteSVG} color="#e40166" size="24px" />{' '}
+                                          <Icon
+                                            name={deleteSVG}
+                                            color="#e40166"
+                                            size="24px"
+                                          />{' '}
                                           {this.getFieldById(item, 'title')}
                                         </Menu.Item>
                                       ))}
@@ -1652,9 +1826,14 @@ class Contents extends Component {
                                 </Popup>
                               </Table.HeaderCell>
                               <Table.HeaderCell
-                                width={Math.ceil(16 / this.state.index.selectedCount)}
+                                width={Math.ceil(
+                                  16 / this.state.index.selectedCount,
+                                )}
                               >
-                                <FormattedMessage id="Title" defaultMessage="Title" />
+                                <FormattedMessage
+                                  id="Title"
+                                  defaultMessage="Title"
+                                />
                               </Table.HeaderCell>
                               {map(
                                 this.state.index.order,
@@ -1662,15 +1841,22 @@ class Contents extends Component {
                                   this.state.index.values[index].selected && (
                                     <ContentsIndexHeader
                                       key={index}
-                                      width={Math.ceil(16 / this.state.index.selectedCount)}
-                                      label={this.state.index.values[index].label}
+                                      width={Math.ceil(
+                                        16 / this.state.index.selectedCount,
+                                      )}
+                                      label={
+                                        this.state.index.values[index].label
+                                      }
                                       order={order}
                                       onOrderIndex={this.onOrderIndex}
                                     />
                                   ),
                               )}
                               <Table.HeaderCell textAlign="right">
-                                <FormattedMessage id="Actions" defaultMessage="Actions" />
+                                <FormattedMessage
+                                  id="Actions"
+                                  defaultMessage="Actions"
+                                />
                               </Table.HeaderCell>
                             </Table.Row>
                           </Table.Header>
@@ -1680,14 +1866,18 @@ class Contents extends Component {
                                 key={item['@id']}
                                 item={item}
                                 order={order}
-                                selected={indexOf(this.state.selected, item['@id']) !== -1}
+                                selected={
+                                  indexOf(this.state.selected, item['@id']) !==
+                                  -1
+                                }
                                 onClick={this.onSelect}
                                 indexes={filter(
                                   map(this.state.index.order, (index) => ({
                                     id: index,
                                     type: this.state.index.values[index].type,
                                   })),
-                                  (index) => this.state.index.values[index.id].selected,
+                                  (index) =>
+                                    this.state.index.values[index.id].selected,
                                 )}
                                 onCut={this.cut}
                                 onCopy={this.copy}
@@ -1704,9 +1894,14 @@ class Contents extends Component {
                       <div className="contents-pagination">
                         <Pagination
                           current={this.state.currentPage}
-                          total={Math.ceil(this.props.total / this.state.pageSize)}
+                          total={Math.ceil(
+                            this.props.total / this.state.pageSize,
+                          )}
                           pageSize={this.state.pageSize}
-                          pageSizes={[50, this.props.intl.formatMessage(messages.all)]}
+                          pageSizes={[
+                            50,
+                            this.props.intl.formatMessage(messages.all),
+                          ]}
                           onChangePage={this.onChangePage}
                           onChangePageSize={this.onChangePageSize}
                         />
@@ -1722,7 +1917,9 @@ class Contents extends Component {
                     inner={
                       <Link
                         to={`${path}`}
-                        aria-label={this.props.intl.formatMessage(messages.back)}
+                        aria-label={this.props.intl.formatMessage(
+                          messages.back,
+                        )}
                       >
                         <Icon
                           name={backSVG}

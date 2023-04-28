@@ -3,7 +3,16 @@ import { capitalize, find } from 'lodash';
 import { useSelector, useDispatch } from 'react-redux';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { toast } from 'react-toastify';
-import { Button, Divider, Dropdown, Form, Header, Input, Popup, Tab } from 'semantic-ui-react';
+import {
+  Button,
+  Divider,
+  Dropdown,
+  Form,
+  Header,
+  Input,
+  Popup,
+  Tab,
+} from 'semantic-ui-react';
 import { messages } from '@plone/volto/helpers';
 import { Icon, Toast } from '@plone/volto/components';
 import { rebuildRelations, queryRelations } from '@plone/volto/actions';
@@ -25,11 +34,15 @@ const RelationsMatrix = (props) => {
     id: 'plone_setup',
   });
 
-  const relationtypes = useSelector((state) => state.relations?.stats?.relations);
+  const relationtypes = useSelector(
+    (state) => state.relations?.stats?.relations,
+  );
   const relationsListError = useSelector(
     (state) => state.relations?.list?.error?.response?.body?.error,
   );
-  const brokenRelations = useSelector((state) => state.relations?.stats?.broken);
+  const brokenRelations = useSelector(
+    (state) => state.relations?.stats?.broken,
+  );
 
   let filter_options = useSelector((state) => state.groups.filter_groups);
   if (filter_options) {
@@ -125,7 +138,11 @@ const RelationsMatrix = (props) => {
         // Update this when this issue is fixed.
         const shadowedError = JSON.parse(error.response.text);
         toast.error(
-          <Toast error title={shadowedError.error.type} content={shadowedError.error.message} />,
+          <Toast
+            error
+            title={shadowedError.error.type}
+            content={shadowedError.error.message}
+          />,
         );
       });
   };
@@ -143,9 +160,15 @@ const RelationsMatrix = (props) => {
                   <Form.Field>
                     <Header as="h3">
                       <Header.Content>
-                        <FormattedMessage id="Relation name" defaultMessage="Relation" />{' '}
+                        <FormattedMessage
+                          id="Relation name"
+                          defaultMessage="Relation"
+                        />{' '}
                         <Dropdown
-                          placeholder={relationtype || intl.formatMessage(messages.selectRelation)}
+                          placeholder={
+                            relationtype ||
+                            intl.formatMessage(messages.selectRelation)
+                          }
                         >
                           <Dropdown.Menu>
                             {Object.keys(relationtypes).map((relationtype) => (
@@ -173,7 +196,9 @@ const RelationsMatrix = (props) => {
                         <Input
                           name="SearchY"
                           action={{ icon: 'delete' }}
-                          placeholder={intl.formatMessage(messages.searchRelationSource)}
+                          placeholder={intl.formatMessage(
+                            messages.searchRelationSource,
+                          )}
                           onChange={onChangeSearchYs}
                           id="y-search-input"
                         />
@@ -184,7 +209,9 @@ const RelationsMatrix = (props) => {
                         <Input
                           name="showPotentialSources"
                           action={{ icon: 'delete' }}
-                          placeholder={intl.formatMessage(messages.addPotentialSourcesPath)}
+                          placeholder={intl.formatMessage(
+                            messages.addPotentialSourcesPath,
+                          )}
                           onChange={onChangeShowPotentialSources}
                           id="potential-sources-path-input"
                         />
@@ -201,7 +228,9 @@ const RelationsMatrix = (props) => {
                         <Input
                           name="SearchX"
                           action={{ icon: 'delete' }}
-                          placeholder={intl.formatMessage(messages.searchRelationTarget)}
+                          placeholder={intl.formatMessage(
+                            messages.searchRelationTarget,
+                          )}
                           onChange={onChangeSearchXs}
                           id="x-search-input"
                         />
@@ -212,7 +241,9 @@ const RelationsMatrix = (props) => {
                         <Input
                           name="showPotentialTargets"
                           action={{ icon: 'delete' }}
-                          placeholder={intl.formatMessage(messages.addPotentialTargetsPath)}
+                          placeholder={intl.formatMessage(
+                            messages.addPotentialTargetsPath,
+                          )}
                           onChange={onChangeShowPotentialTargets}
                           id="potential-targets-path-input"
                         />
@@ -234,7 +265,9 @@ const RelationsMatrix = (props) => {
                       >
                         <Popup.Header>Respect constraints</Popup.Header>
                         <Popup.Content>
-                          <div>See docs.plone.org on how to respect constraints.</div>
+                          <div>
+                            See docs.plone.org on how to respect constraints.
+                          </div>
                         </Popup.Content>
                       </Popup>
                     </Form>
@@ -265,7 +298,9 @@ const RelationsMatrix = (props) => {
               {can_fix_relations ? (
                 <React.Fragment>
                   <Divider hidden />
-                  <h2>{capitalize(intl.formatMessage(messages.rebuildRelations))}</h2>
+                  <h2>
+                    {capitalize(intl.formatMessage(messages.rebuildRelations))}
+                  </h2>
 
                   <Button.Group>
                     <Button
@@ -277,15 +312,22 @@ const RelationsMatrix = (props) => {
                   </Button.Group>
 
                   <Divider hidden />
-                  <h2>{capitalize(intl.formatMessage(messages.flushAndRebuildRelations))}</h2>
+                  <h2>
+                    {capitalize(
+                      intl.formatMessage(messages.flushAndRebuildRelations),
+                    )}
+                  </h2>
                   <ul>
-                    <li>Regenerate intIds (tokens of relations in relation catalog)</li>
+                    <li>
+                      Regenerate intIds (tokens of relations in relation
+                      catalog)
+                    </li>
                     <li>Rebuild relations</li>
                   </ul>
                   <p>Check the log for details!</p>
                   <p>
-                    <b>Warning</b>: If you have add-ons relying on intIds, you should not flush
-                    them.
+                    <b>Warning</b>: If you have add-ons relying on intIds, you
+                    should not flush them.
                   </p>
                   <Divider hidden />
                   <Button.Group>
@@ -293,8 +335,12 @@ const RelationsMatrix = (props) => {
                       secondary
                       color="red"
                       onClick={() => rebuildRelationsHandler(true)}
-                      content={intl.formatMessage(messages.flushAndRebuildRelations)}
-                      aria-label={intl.formatMessage(messages.flushAndRebuildRelations)}
+                      content={intl.formatMessage(
+                        messages.flushAndRebuildRelations,
+                      )}
+                      aria-label={intl.formatMessage(
+                        messages.flushAndRebuildRelations,
+                      )}
                     />
                   </Button.Group>
                 </React.Fragment>

@@ -10,7 +10,13 @@ function getDisplayName(WrappedComponent) {
   return WrappedComponent.displayName || WrappedComponent.name || 'Component';
 }
 
-const SEARCH_ENDPOINT_FIELDS = ['SearchableText', 'b_size', 'limit', 'sort_on', 'sort_order'];
+const SEARCH_ENDPOINT_FIELDS = [
+  'SearchableText',
+  'b_size',
+  'limit',
+  'sort_on',
+  'sort_order',
+];
 
 const PAQO = 'plone.app.querystring.operation';
 
@@ -21,7 +27,9 @@ const PAQO = 'plone.app.querystring.operation';
  *
  */
 function getInitialState(data, facets, urlSearchText, id) {
-  const { types: facetWidgetTypes } = config.blocks.blocksConfig.search.extensions.facetWidgets;
+  const {
+    types: facetWidgetTypes,
+  } = config.blocks.blocksConfig.search.extensions.facetWidgets;
   const facetSettings = data?.facets || [];
 
   return {
@@ -31,7 +39,11 @@ function getInitialState(data, facets, urlSearchText, id) {
         .map((facet) => {
           if (!facet?.field) return null;
 
-          const { valueToQuery } = resolveExtension('type', facetWidgetTypes, facet);
+          const { valueToQuery } = resolveExtension(
+            'type',
+            facetWidgetTypes,
+            facet,
+          );
 
           const name = facet.field.value;
           const value = facets[name];
@@ -73,7 +85,9 @@ function normalizeState({
   sortOrder,
   facetSettings, // data.facets extracted from block data
 }) {
-  const { types: facetWidgetTypes } = config.blocks.blocksConfig.search.extensions.facetWidgets;
+  const {
+    types: facetWidgetTypes,
+  } = config.blocks.blocksConfig.search.extensions.facetWidgets;
 
   const params = {
     query: [
@@ -81,7 +95,11 @@ function normalizeState({
       ...(facetSettings || []).map((facet) => {
         if (!facet?.field) return null;
 
-        const { valueToQuery } = resolveExtension('type', facetWidgetTypes, facet);
+        const { valueToQuery } = resolveExtension(
+          'type',
+          facetWidgetTypes,
+          facet,
+        );
 
         const name = facet.field.value;
         const value = facets[name];
@@ -187,7 +205,9 @@ const useSearchBlockState = (uniqueId, isEditMode) => {
   const [hashState, setHashState] = useHashState();
   const [internalState, setInternalState] = React.useState({});
 
-  return isEditMode ? [internalState, setInternalState] : [hashState, setHashState];
+  return isEditMode
+    ? [internalState, setInternalState]
+    : [hashState, setHashState];
 };
 
 // Simple compress/decompress the state in URL by replacing the lengthy string
@@ -198,7 +218,9 @@ const deserializeQuery = (q) => {
   }));
 };
 const serializeQuery = (q) => {
-  return JSON.stringify(q?.map((kvp) => ({ ...kvp, o: kvp.o.replace(PAQO, 'paqo') })));
+  return JSON.stringify(
+    q?.map((kvp) => ({ ...kvp, o: kvp.o.replace(PAQO, 'paqo') })),
+  );
 };
 
 const withSearch = (options) => (WrappedComponent) => {
@@ -207,9 +229,14 @@ const withSearch = (options) => (WrappedComponent) => {
   function WithSearch(props) {
     const { data, id, editable = false } = props;
 
-    const [locationSearchData, setLocationSearchData] = useSearchBlockState(id, editable);
+    const [locationSearchData, setLocationSearchData] = useSearchBlockState(
+      id,
+      editable,
+    );
 
-    const urlQuery = locationSearchData.query ? deserializeQuery(locationSearchData.query) : [];
+    const urlQuery = locationSearchData.query
+      ? deserializeQuery(locationSearchData.query)
+      : [];
     const urlSearchText =
       locationSearchData.SearchableText ||
       urlQuery.find(({ i }) => i === 'SearchableText')?.v ||
@@ -217,7 +244,8 @@ const withSearch = (options) => (WrappedComponent) => {
 
     // TODO: refactor, should use only useLocationStateManager()!!!
     const [searchText, setSearchText] = React.useState(urlSearchText);
-    const configuredFacets = data.facets?.map((facet) => facet?.field?.value) || [];
+    const configuredFacets =
+      data.facets?.map((facet) => facet?.field?.value) || [];
     const multiFacets = data.facets
       ?.filter((facet) => facet?.multiple)
       .map((facet) => facet?.field?.value);
@@ -234,7 +262,10 @@ const withSearch = (options) => (WrappedComponent) => {
         ...configuredFacets.map((f) =>
           locationSearchData[f]
             ? {
-                [f]: multiFacets.indexOf(f) > -1 ? [locationSearchData[f]] : locationSearchData[f],
+                [f]:
+                  multiFacets.indexOf(f) > -1
+                    ? [locationSearchData[f]]
+                    : locationSearchData[f],
               }
             : {},
         ),
@@ -294,8 +325,11 @@ const withSearch = (options) => (WrappedComponent) => {
       ],
     );
 
-    const querystringResults = useSelector((state) => state.querystringsearch.subrequests);
-    const totalItems = querystringResults[id]?.total || querystringResults[id]?.items?.length;
+    const querystringResults = useSelector(
+      (state) => state.querystringsearch.subrequests,
+    );
+    const totalItems =
+      querystringResults[id]?.total || querystringResults[id]?.items?.length;
 
     return (
       <WrappedComponent

@@ -16,7 +16,10 @@ export const usePagination = (query, defaultPage = 1) => {
   }, [query, previousQuery, defaultPage]);
 
   return {
-    currentPage: previousQuery && !isEqual(previousQuery, query) ? defaultPage : currentPage,
+    currentPage:
+      previousQuery && !isEqual(previousQuery, query)
+        ? defaultPage
+        : currentPage,
     setCurrentPage,
   };
 };

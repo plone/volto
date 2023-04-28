@@ -14,7 +14,13 @@ function getDisplayName(WrappedComponent) {
 
 export default function withQuerystringResults(WrappedComponent) {
   function WithQuerystringResults(props) {
-    const { data = {}, id = data.block, properties: content, path, variation } = props;
+    const {
+      data = {},
+      id = data.block,
+      properties: content,
+      path,
+      variation,
+    } = props;
     const { settings } = config;
     const querystring = data.querystring || data; // For backwards compat with data saved before Blocks schema. Note, this is also how the Search block passes data to ListingBody
 
@@ -31,11 +37,15 @@ export default function withQuerystringResults(WrappedComponent) {
         b_size: b_size,
       },
       ...copyFields.map((name) =>
-        Object.keys(querystring).includes(name) ? { [name]: querystring[name] } : {},
+        Object.keys(querystring).includes(name)
+          ? { [name]: querystring[name] }
+          : {},
       ),
     );
     const { currentPage, setCurrentPage } = usePagination(querystring, 1);
-    const querystringResults = useSelector((state) => state.querystringsearch.subrequests);
+    const querystringResults = useSelector(
+      (state) => state.querystringsearch.subrequests,
+    );
     const dispatch = useDispatch();
 
     const folderItems = content?.is_folderish ? content.items : [];
@@ -48,7 +58,8 @@ export default function withQuerystringResults(WrappedComponent) {
         : folderItems;
 
     const showAsFolderListing = !hasQuery && content?.items_total > b_size;
-    const showAsQueryListing = hasQuery && querystringResults?.[id]?.total > b_size;
+    const showAsQueryListing =
+      hasQuery && querystringResults?.[id]?.total > b_size;
 
     const totalPages = showAsFolderListing
       ? Math.ceil(content.items_total / b_size)
@@ -68,11 +79,14 @@ export default function withQuerystringResults(WrappedComponent) {
       : null;
 
     const isImageGallery =
-      (!data.variation && data.template === 'imageGallery') || data.variation === 'imageGallery';
+      (!data.variation && data.template === 'imageGallery') ||
+      data.variation === 'imageGallery';
 
     useDeepCompareEffect(() => {
       if (hasQuery) {
-        dispatch(getQueryStringResults(initialPath, adaptedQuery, id, currentPage));
+        dispatch(
+          getQueryStringResults(initialPath, adaptedQuery, id, currentPage),
+        );
       } else if (isImageGallery && !hasQuery) {
         // when used as image gallery, it doesn't need a query to list children
         dispatch(
@@ -95,7 +109,15 @@ export default function withQuerystringResults(WrappedComponent) {
       } else {
         dispatch(getContent(initialPath, null, null, currentPage));
       }
-    }, [id, isImageGallery, adaptedQuery, hasQuery, initialPath, dispatch, currentPage]);
+    }, [
+      id,
+      isImageGallery,
+      adaptedQuery,
+      hasQuery,
+      initialPath,
+      dispatch,
+      currentPage,
+    ]);
 
     return (
       <WrappedComponent

@@ -24,7 +24,8 @@ test('renders a ListingBody component', () => {
             {
               '@id': 'http://localhost:8080/Plone/front-page',
               '@type': 'Document',
-              description: 'Congratulations! You have successfully installed Plone.',
+              description:
+                'Congratulations! You have successfully installed Plone.',
               review_state: 'published',
               title: 'Welcome to Plone',
             },

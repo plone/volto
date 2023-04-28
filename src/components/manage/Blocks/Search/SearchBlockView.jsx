@@ -62,7 +62,9 @@ const SearchBlockView = (props) => {
   const Layout = variation.view;
 
   const dataListingBodyVariation = getListingBodyVariation(data).id;
-  const [selectedView, setSelectedView] = React.useState(dataListingBodyVariation);
+  const [selectedView, setSelectedView] = React.useState(
+    dataListingBodyVariation,
+  );
 
   // in the block edit you can change the used listing block variation,
   // but it's cached here in the state. So we reset it.
@@ -98,8 +100,9 @@ const SearchBlockView = (props) => {
   );
 };
 
-export const SearchBlockViewComponent = compose(withBlockExtensions, (Component) =>
-  React.memo(Component, blockPropsAreChanged),
+export const SearchBlockViewComponent = compose(
+  withBlockExtensions,
+  (Component) => React.memo(Component, blockPropsAreChanged),
 )(SearchBlockView);
 
 export default compose(withQueryString, withSearch())(SearchBlockViewComponent);

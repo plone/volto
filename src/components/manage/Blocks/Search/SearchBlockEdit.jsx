@@ -20,7 +20,15 @@ const messages = defineMessages({
 });
 
 const SearchBlockEdit = (props) => {
-  const { block, onChangeBlock, data, selected, intl, onTriggerSearch, querystring = {} } = props;
+  const {
+    block,
+    onChangeBlock,
+    data,
+    selected,
+    intl,
+    onTriggerSearch,
+    querystring = {},
+  } = props;
   const { sortable_indexes = {} } = querystring;
 
   let schema = Schema({ data, intl });
@@ -33,7 +41,9 @@ const SearchBlockEdit = (props) => {
     title: { id: intl.formatMessage(messages.template) },
   });
   const listingVariations = config.blocks.blocksConfig?.listing?.variations;
-  let activeItem = listingVariations.find((item) => item.id === data.listingBodyTemplate);
+  let activeItem = listingVariations.find(
+    (item) => item.id === data.listingBodyTemplate,
+  );
   const listingSchemaEnhancer = activeItem?.schemaEnhancer;
   if (listingSchemaEnhancer)
     schema = listingSchemaEnhancer({
@@ -42,7 +52,10 @@ const SearchBlockEdit = (props) => {
       intl,
     });
   schema.properties.sortOnOptions.items = {
-    choices: Object.keys(sortable_indexes).map((k) => [k, sortable_indexes[k].title]),
+    choices: Object.keys(sortable_indexes).map((k) => [
+      k,
+      sortable_indexes[k].title,
+    ]),
   };
 
   const { query = {} } = data || {};
@@ -54,7 +67,11 @@ const SearchBlockEdit = (props) => {
 
   return (
     <>
-      <SearchBlockViewComponent {...props} path={getBaseUrl(props.pathname)} mode="edit" />
+      <SearchBlockViewComponent
+        {...props}
+        path={getBaseUrl(props.pathname)}
+        mode="edit"
+      />
       <SidebarPortal selected={selected}>
         <BlockDataForm
           schema={schema}
