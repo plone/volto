@@ -1998,6 +1998,11 @@ msgstr "Eskuz"
 msgid "Manually or automatically added?"
 msgstr "Eskuz edo automatikoki gehitu da?"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Many relations found. Please search.
+msgid "Many relations found. Please search."
+msgstr ""
+
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Maps/schema
 # defaultMessage: Maps

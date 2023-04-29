@@ -1997,6 +1997,11 @@ msgstr ""
 msgid "Manually or automatically added?"
 msgstr "手动添加还是自动添加？"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Many relations found. Please search.
+msgid "Many relations found. Please search."
+msgstr ""
+
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Maps/schema
 # defaultMessage: Maps
