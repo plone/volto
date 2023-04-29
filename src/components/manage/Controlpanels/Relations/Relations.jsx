@@ -9,7 +9,7 @@ import { useHistory } from 'react-router';
 import { Link, useLocation } from 'react-router-dom';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
-import { Container, Divider, Message, Segment } from 'semantic-ui-react';
+import { Divider, Message, Segment } from 'semantic-ui-react';
 import { Helmet, messages } from '@plone/volto/helpers';
 import { listActions } from '@plone/volto/actions';
 import { Icon, Toolbar } from '@plone/volto/components';
@@ -39,7 +39,7 @@ const RelationsControlPanel = () => {
 
   return (
     <>
-      <Container className="users-control-panel">
+      <div className="relations-control-panel">
         <Helmet title={intl.formatMessage(messages.relations)} />
         {can_edit ? (
           <Segment.Group raised>
@@ -86,7 +86,7 @@ const RelationsControlPanel = () => {
             </Segment>
           </Segment.Group>
         )}
-      </Container>
+      </div>
 
       {__CLIENT__ && (
         <Portal node={document.getElementById('toolbar')}>

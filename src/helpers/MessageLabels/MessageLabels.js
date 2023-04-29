@@ -300,6 +300,10 @@ export const messages = defineMessages({
     id: 'No relation found',
     defaultMessage: 'No relation found',
   },
+  toomanyrelationsfound: {
+    id: 'Many relations found. Please search.',
+    defaultMessage: 'Many relations found. Please search.',
+  },
   rebuildRelations: {
     id: 'rebuild relations',
     defaultMessage: 'rebuild relations',

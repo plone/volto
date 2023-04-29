@@ -28,6 +28,7 @@ const ListingTemplate = ({
   const dispatch = useDispatch();
 
   const MAX = 40; // Maximum of rows and columns
+  const MAX_RELATIONS = 1000;
 
   const stats = useSelector((state) => state.relations?.stats || null);
   let relations = useSelector(
@@ -137,29 +138,9 @@ const ListingTemplate = ({
     return 0;
   });
 
-  function fetchRelations() {
-    dispatch(
-      queryRelations(
-        relationtype,
-        false,
-        null,
-        query_source
-          ? query_source.startsWith('/')
-            ? query_source
-            : `${query_source}*`
-          : null,
-        query_target
-          ? query_target.startsWith('/')
-            ? query_target
-            : `${query_target}*`
-          : null,
-      ),
-    );
-  }
-
   useEffect(() => {
     // If many relations, then fetch relations only with search query on source or target
-    if (stats?.relations[relationtype] < 1000) {
+    if (stats?.relations[relationtype] <= MAX_RELATIONS) {
       dispatch(queryRelations(relationtype));
     } else if (query_source || query_target) {
       dispatch(
@@ -179,6 +160,8 @@ const ListingTemplate = ({
             : null,
         ),
       );
+    } else {
+      // console.debug('many relations, but no search for source nor target');
     }
   }, [dispatch, stats, relationtype, query_source, query_target]);
 
@@ -190,6 +173,7 @@ const ListingTemplate = ({
         searchContent(
           potential_targets_path,
           {
+            SearchableText: query_target,
             metadata_fields: ['UID'],
             sort_on: 'sortable_title',
             ...staticCatalogVocabularyQuery,
@@ -198,6 +182,7 @@ const ListingTemplate = ({
         ),
       );
     } else {
+      // TODO Better just reset redux store
       dispatch(searchContent('/findstenichätsch', null, 'potential_targets'));
     }
 
@@ -207,6 +192,7 @@ const ListingTemplate = ({
         searchContent(
           potential_sources_path,
           {
+            SearchableText: query_source,
             metadata_fields: ['UID'],
             sort_on: 'sortable_title',
             // No need to restrict here. ...staticCatalogVocabularyQuery,
@@ -215,6 +201,7 @@ const ListingTemplate = ({
         ),
       );
     } else {
+      // TODO Better just reset redux store
       dispatch(searchContent('/findstenichätsch', null, 'potential_sources'));
     }
   }, [
@@ -222,7 +209,29 @@ const ListingTemplate = ({
     potential_targets_path,
     potential_sources_path,
     staticCatalogVocabularyQuery,
+    query_source,
+    query_target,
   ]);
+
+  function fetchRelations() {
+    dispatch(
+      queryRelations(
+        relationtype,
+        false,
+        null,
+        query_source
+          ? query_source.startsWith('/')
+            ? query_source
+            : `${query_source}*`
+          : null,
+        query_target
+          ? query_target.startsWith('/')
+            ? query_target
+            : `${query_target}*`
+          : null,
+      ),
+    );
+  }
 
   const onSelectOptionHandler = (relation, item, selectedvalue, checked) => {
     let source = selectedvalue.y;
@@ -279,166 +288,184 @@ const ListingTemplate = ({
       });
   };
 
-  return matrix_options.length < MAX && items.length < MAX ? (
-    <div className="administration_matrix">
-      <div className="label-options" key="label-options">
-        {matrix_options?.map((matrix_option) => (
-          <div
-            className="label-options-label inclined"
-            key={matrix_option.value}
-          >
-            <div>
-              <UniversalLink
-                href={matrix_option.url}
-                className={
-                  matrix_option.review_state !== 'published'
-                    ? 'not-published'
-                    : ''
-                }
+  return (
+    <>
+      {/* 
+        <div>
+          <div>{items.length} items</div>
+          <div>{matrix_options.length} matrix_options</div>
+        </div> 
+      */}
+      {matrix_options.length <= MAX &&
+      (items.length <= MAX) & (matrix_options.length > 0) &&
+      items.length > 0 ? (
+        <div className="administration_matrix">
+          <div className="label-options" key="label-options">
+            {matrix_options?.map((matrix_option) => (
+              <div
+                className="label-options-label inclined"
+                key={matrix_option.value}
               >
-                <span className="label" title={matrix_option.value}>
-                  {matrix_option.label}
-                </span>
-              </UniversalLink>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="items" key="items">
-        {items.length > 0 ? (
-          <>
-            {!editable && (
-              <Message warning>
-                <FormattedMessage
-                  id="Relations are editable with plone.api >= 2.0.0."
-                  defaultMessage="Relations are editable with plone.api >= 2.0.0."
-                />
-              </Message>
-            )}
-            <div className="listing-row selectall" key="selectall">
-              <div className="listing-item">
-                <div />
-
-                <div className="matrix_options">
-                  {matrix_options?.map((matrix_option) => (
-                    <div key={matrix_option.value}>
-                      <Button
-                        icon
-                        basic
-                        onClick={() =>
-                          onSelectAllHandler(matrix_option.value, true)
-                        }
-                        className="add-button"
-                        aria-label={
-                          intl.formatMessage(messages.createRelationsToTarget) +
-                          ` '${matrix_option.label}'`
-                        }
-                        title={
-                          intl.formatMessage(messages.createRelationsToTarget) +
-                          ` '${matrix_option.label}'`
-                        }
-                      >
-                        <Icon
-                          name={add}
-                          size="10px"
-                          className="circled"
-                          color="unset"
-                        />
-                      </Button>
-                      <Button
-                        icon
-                        basic
-                        onClick={() =>
-                          onSelectAllHandler(matrix_option.value, false)
-                        }
-                        className="remove-button"
-                        aria-label={
-                          intl.formatMessage(messages.removeRelationsToTarget) +
-                          ` '${matrix_option.label}'`
-                        }
-                        title={
-                          intl.formatMessage(messages.removeRelationsToTarget) +
-                          ` '${matrix_option.label}'`
-                        }
-                      >
-                        <Icon
-                          name={remove}
-                          size="10px"
-                          className="circled"
-                          color="unset"
-                        />
-                      </Button>
-                    </div>
-                  ))}
+                <div>
+                  <UniversalLink
+                    href={matrix_option.url}
+                    className={
+                      matrix_option.review_state !== 'published'
+                        ? 'not-published'
+                        : ''
+                    }
+                  >
+                    <span className="label" title={matrix_option.value}>
+                      {matrix_option.label}
+                    </span>
+                  </UniversalLink>
                 </div>
               </div>
-            </div>
-            {items.map((item) => (
-              <div className="listing-row" key={item.id}>
-                <div className="listing-item" key={item['@id']}>
-                  <div>
-                    <span title={item.value}>
-                      <UniversalLink
-                        href={item.url}
-                        className={
-                          item.review_state !== 'published'
-                            ? 'not-published'
-                            : ''
-                        }
-                      >
-                        {item.label}
-                      </UniversalLink>
-                      {/* <span>targets: {item.targets.join(', ')}</span> */}
-                    </span>
-                  </div>
+            ))}
+          </div>
+
+          <div className="items" key="items">
+            <>
+              {!editable && (
+                <Message warning>
+                  <FormattedMessage
+                    id="Relations are editable with plone.api >= 2.0.0."
+                    defaultMessage="Relations are editable with plone.api >= 2.0.0."
+                  />
+                </Message>
+              )}
+              <div className="listing-row selectall" key="selectall">
+                <div className="listing-item">
+                  <div />
+
                   <div className="matrix_options">
                     {matrix_options?.map((matrix_option) => (
-                      <React.Fragment key={matrix_option.value}>
-                        <Checkbox
-                          name={`member_-_${item.value}_-_${matrix_option.value}`}
-                          className={`checkbox_${matrix_option.value}`}
-                          key={matrix_option.value}
-                          title={matrix_option.title}
-                          disabled={
-                            relationtype === 'isReferencing' ||
-                            relationtype === 'iterate-working-copy' ||
-                            !editable
+                      <div key={matrix_option.value}>
+                        <Button
+                          icon
+                          basic
+                          onClick={() =>
+                            onSelectAllHandler(matrix_option.value, true)
                           }
-                          checked={item.targets.includes(matrix_option.value)}
-                          onChange={(event, { checked }) => {
-                            onSelectOptionHandler(
-                              relationtype,
-                              item,
-                              { x: matrix_option.value, y: item.value },
-                              checked,
-                            );
-                          }}
-                        />
-                      </React.Fragment>
+                          className="add-button"
+                          aria-label={
+                            intl.formatMessage(
+                              messages.createRelationsToTarget,
+                            ) + ` '${matrix_option.label}'`
+                          }
+                          title={
+                            intl.formatMessage(
+                              messages.createRelationsToTarget,
+                            ) + ` '${matrix_option.label}'`
+                          }
+                        >
+                          <Icon
+                            name={add}
+                            size="10px"
+                            className="circled"
+                            color="unset"
+                          />
+                        </Button>
+                        <Button
+                          icon
+                          basic
+                          onClick={() =>
+                            onSelectAllHandler(matrix_option.value, false)
+                          }
+                          className="remove-button"
+                          aria-label={
+                            intl.formatMessage(
+                              messages.removeRelationsToTarget,
+                            ) + ` '${matrix_option.label}'`
+                          }
+                          title={
+                            intl.formatMessage(
+                              messages.removeRelationsToTarget,
+                            ) + ` '${matrix_option.label}'`
+                          }
+                        >
+                          <Icon
+                            name={remove}
+                            size="10px"
+                            className="circled"
+                            color="unset"
+                          />
+                        </Button>
+                      </div>
                     ))}
                   </div>
                 </div>
               </div>
-            ))}
-          </>
-        ) : (
-          <div>{intl.formatMessage(messages.norelationfound)}</div>
-        )}
-      </div>
-    </div>
-  ) : (
-    <p>
-      <FormattedMessage
-        id="narrowDownRelations"
-        defaultMessage="Found {sources} sources and {targets} targets. Narrow down to {max}!"
-        values={{
-          sources: items.length,
-          targets: matrix_options.length,
-          max: MAX,
-        }}
-      />
-    </p>
+              {items.map((item) => (
+                <div className="listing-row" key={item.id}>
+                  <div className="listing-item" key={item['@id']}>
+                    <div>
+                      <span title={item.value}>
+                        <UniversalLink
+                          href={item.url}
+                          className={
+                            item.review_state !== 'published'
+                              ? 'not-published'
+                              : ''
+                          }
+                        >
+                          {item.label}
+                        </UniversalLink>
+                        {/* <span>targets: {item.targets.join(', ')}</span> */}
+                      </span>
+                    </div>
+                    <div className="matrix_options">
+                      {matrix_options?.map((matrix_option) => (
+                        <React.Fragment key={matrix_option.value}>
+                          <Checkbox
+                            name={`member_-_${item.value}_-_${matrix_option.value}`}
+                            className={`checkbox_${matrix_option.value}`}
+                            key={matrix_option.value}
+                            title={matrix_option.title}
+                            disabled={
+                              relationtype === 'isReferencing' ||
+                              relationtype === 'iterate-working-copy' ||
+                              !editable
+                            }
+                            checked={item.targets.includes(matrix_option.value)}
+                            onChange={(event, { checked }) => {
+                              onSelectOptionHandler(
+                                relationtype,
+                                item,
+                                { x: matrix_option.value, y: item.value },
+                                checked,
+                              );
+                            }}
+                          />
+                        </React.Fragment>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </>
+          </div>
+        </div>
+      ) : (
+        <div className="administration_matrix">
+          {matrix_options.length > MAX || items.length > MAX ? (
+            <FormattedMessage
+              id="narrowDownRelations"
+              defaultMessage="Found {sources} sources and {targets} targets. Narrow down to {max}!"
+              values={{
+                sources: items.length,
+                targets: matrix_options.length,
+                max: MAX,
+              }}
+            />
+          ) : query_source || query_target ? (
+            <div>{intl.formatMessage(messages.norelationfound)}</div>
+          ) : (
+            <div>{intl.formatMessage(messages.toomanyrelationsfound)}</div>
+          )}
+        </div>
+      )}
+    </>
   );
 };
 export default ListingTemplate;

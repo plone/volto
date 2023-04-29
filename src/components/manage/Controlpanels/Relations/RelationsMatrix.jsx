@@ -92,15 +92,19 @@ const RelationsMatrix = (props) => {
 
   // search for sources
   const onChangeSearchYs = (event) => {
-    if (event.target.value.length > 2) {
+    if (event.target.value.length > 1) {
       setQuery_source(event.target.value);
+    } else {
+      setQuery_source('');
     }
   };
 
   // search for targets
   const onChangeSearchXs = (event) => {
-    if (event.target.value.length > 2) {
+    if (event.target.value.length > 1) {
       setQuery_target(event.target.value);
+    } else {
+      setQuery_source('');
     }
   };
 
