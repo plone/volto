@@ -16,7 +16,6 @@ import PropTypes from 'prop-types';
 import { defineMessages, useIntl } from 'react-intl';
 import config from '@plone/volto/registry';
 import { P } from '@plone/volto-slate/constants';
-import AboveTitle from '@plone/volto/components/manage/Blocks/Title/AboveTitle';
 
 const messages = defineMessages({
   title: {
@@ -144,18 +143,28 @@ export const TitleBlockEdit = (props) => {
     onSelectBlock(block);
   }, [block, onSelectBlock]);
 
+  const AboveTitle = config.getComponent('AboveTitle').component;
+
   const renderElement = useCallback(
     ({ attributes, children }) => {
       return (
         <>
-          <AboveTitle item={properties} />
-          <h1 {...attributes} className="documentFirstHeading">
-            {children}
-          </h1>
+          {AboveTitle ? (
+            <>
+              <AboveTitle item={properties} />
+              <h1 {...attributes} className="documentFirstHeading">
+                {children}
+              </h1>
+            </>
+          ) : (
+            <h1 {...attributes} className="documentFirstHeading">
+              {children}
+            </h1>
+          )}
         </>
       );
     },
-    [properties],
+    [AboveTitle, properties],
   );
 
   if (typeof window.__SERVER__ !== 'undefined') {

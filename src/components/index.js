@@ -186,7 +186,6 @@ export EditHeroImageLeftBlock from '@plone/volto/components/manage/Blocks/HeroIm
 export ViewHeroImageLeftBlock from '@plone/volto/components/manage/Blocks/HeroImageLeft/View';
 export EditMapBlock from '@plone/volto/components/manage/Blocks/Maps/Edit';
 export EditHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/Edit';
-export AboveTitle from '@plone/volto/components/manage/Blocks/Title/AboveTitle';
 
 export ViewDefaultBlock from '@plone/volto/components/manage/Blocks/Block/DefaultView';
 export ViewDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/View';
