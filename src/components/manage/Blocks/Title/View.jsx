@@ -5,6 +5,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import AboveTitle from '@plone/volto/components/manage/Blocks/Title/AboveTitle';
 
 /**
  * View title block component.
@@ -13,9 +14,12 @@ import PropTypes from 'prop-types';
  */
 const TitleBlockView = ({ properties, metadata }) => {
   return (
-    <h1 className="documentFirstHeading">
-      {(metadata || properties)['title'] || ''}
-    </h1>
+    <>
+      <AboveTitle item={properties} />
+      <h1 className="documentFirstHeading">
+        {(metadata || properties)['title'] || ''}
+      </h1>
+    </>
   );
 };
 
