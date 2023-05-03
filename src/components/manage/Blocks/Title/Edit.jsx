@@ -149,22 +149,14 @@ export const TitleBlockEdit = (props) => {
       const AboveTitle =
         hasType &&
         config.getComponent({ name: 'AboveTitle', dependencies: [hasType] })
-          .component;
+          ?.component;
 
       return (
         <>
-          {AboveTitle ? (
-            <>
-              <AboveTitle item={properties} />
-              <h1 {...attributes} className="documentFirstHeading">
-                {children}
-              </h1>
-            </>
-          ) : (
-            <h1 {...attributes} className="documentFirstHeading">
-              {children}
-            </h1>
-          )}
+          {AboveTitle ? <AboveTitle item={properties} /> : null}
+          <h1 {...attributes} className="documentFirstHeading">
+            {children}
+          </h1>
         </>
       );
     },

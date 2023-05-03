@@ -21,18 +21,10 @@ const TitleBlockView = ({ properties, metadata }) => {
 
   return (
     <>
-      {AboveTitle ? (
-        <>
-          <AboveTitle item={properties} />
-          <h1 className="documentFirstHeading">
-            {(metadata || properties)['title'] || ''}
-          </h1>
-        </>
-      ) : (
-        <h1 className="documentFirstHeading">
-          {(metadata || properties)['title'] || ''}
-        </h1>
-      )}
+      {AboveTitle ? <AboveTitle item={properties} /> : null}
+      <h1 className="documentFirstHeading">
+        {(metadata || properties)['title'] || ''}
+      </h1>
     </>
   );
 };
