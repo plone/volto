@@ -145,7 +145,12 @@ export const TitleBlockEdit = (props) => {
 
   const renderElement = useCallback(
     ({ attributes, children }) => {
-      const AboveTitle = config.getComponent('AboveTitle')?.component;
+      const hasType = properties['@type'];
+      const AboveTitle =
+        hasType &&
+        config.getComponent({ name: 'AboveTitle', dependencies: [hasType] })
+          .component;
+
       return (
         <>
           {AboveTitle ? (

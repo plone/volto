@@ -13,7 +13,12 @@ import config from '@plone/volto/registry';
  * @extends Component
  */
 const TitleBlockView = ({ properties, metadata }) => {
-  const AboveTitle = config.getComponent('AboveTitle')?.component;
+  const hasType = properties['@type'];
+  const AboveTitle =
+    hasType &&
+    config.getComponent({ name: 'AboveTitle', dependencies: [hasType] })
+      .component;
+
   return (
     <>
       {AboveTitle ? (
