@@ -143,10 +143,9 @@ export const TitleBlockEdit = (props) => {
     onSelectBlock(block);
   }, [block, onSelectBlock]);
 
-  const AboveTitle = config.getComponent('AboveTitle').component;
-
   const renderElement = useCallback(
     ({ attributes, children }) => {
+      const AboveTitle = config.getComponent('AboveTitle')?.component;
       return (
         <>
           {AboveTitle ? (
@@ -164,7 +163,7 @@ export const TitleBlockEdit = (props) => {
         </>
       );
     },
-    [AboveTitle, properties],
+    [properties],
   );
 
   if (typeof window.__SERVER__ !== 'undefined') {

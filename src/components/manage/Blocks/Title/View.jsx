@@ -13,7 +13,7 @@ import config from '@plone/volto/registry';
  * @extends Component
  */
 const TitleBlockView = ({ properties, metadata }) => {
-  const AboveTitle = config.getComponent('AboveTitle').component;
+  const AboveTitle = config.getComponent('AboveTitle')?.component;
   return (
     <>
       {AboveTitle ? (
