@@ -1,0 +1,1 @@
+Add conditional AboveTitle component to display properties above the Title @danalvrz
