@@ -42,6 +42,41 @@ if (__SERVER__) {
 }
 ```
 
+## Static Middleware
+
+The `staticMiddleware` is for serving static files (such as stylesheets and client-side JavaScript files) in the `BUILD_DIR/PUBLIC` or `PUBLIC_DIR` directory. It uses the `express.static()` function to serve static files and the `setHeaders()` function to add response headers to the files that it serves.
+
+### Function `setHeaders(path)`
+
+The `setHeaders()` function is used to update the response headers for a file. It takes the path of the file being served as an argument and adds the response headers to that file. It uses the `config` object specified in `config.settings.serverConfig.staticFiles` to determine which response headers should be added to the file.
+
+### Configuration
+
+The `config.settings.staticFiles` is an array of objects with three properties:
+
+- `id`: a string identifier for the static file rule
+- `match`: a regular expression that evaluates the path of the requested resource
+- `headers`: an object containing the headers added if the match is successful.
+
+To add response header Cache-Control: public, max-age=3600 to a file named styles.css located in BUILD_DIR/PUBLIC directory:
+
+```js
+
+settings.staticFiles = [
+    ...,{
+    id: 'styles_css',
+    match: /^\/styles\.css$/,
+    headers: {
+      'Cache-Control': 'public, max-age=3600',
+    },
+  }
+]
+
+```
+
+The rules are checked in sequential order, and the search stops at the first match.
+Current default rules add headers per browser cache of 365 days for resources under the `/static` path and 60 seconds for the others
+
 Now the [test-middleware](http://localhost:3000/test-middleware) page can be
 visited and it will return the simple string and not the usual Volto pages.
 
