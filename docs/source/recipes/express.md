@@ -77,7 +77,6 @@ import {
 } from '@plone/volto/config';
 
 const settings = { ...defaultSettings };
-
 settings.staticFiles = [
     ...defaultSettings.staticFiles, {
         id: 'styles_css',
