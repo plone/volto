@@ -1,16 +1,38 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import cx from 'classnames';
-import moment from 'moment';
 import { useSelector } from 'react-redux';
 
-const DatetimeWidget = ({ value, children, className, format = 'lll' }) => {
+const noTimezoneDateRe = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?$/g;
+
+const DatetimeWidget = ({ value, children, className }) => {
   const lang = useSelector((state) => state.intl.locale);
-  moment.locale(lang);
+
+  const date = useMemo(() => {
+    if (!noTimezoneDateRe.test(value)) {
+      return new Date(value);
+    }
+    return new Date(value + 'Z');
+  }, [value]);
+
   return value ? (
     <span className={cx(className, 'datetime', 'widget')}>
       {children
-        ? children(moment(value).format(format))
-        : moment(value).format(format)}
+        ? children(
+            date.toLocaleString(lang, {
+              month: 'short',
+              day: 'numeric',
+              year: 'numeric',
+              hour: 'numeric',
+              minute: 'numeric',
+            }),
+          )
+        : date.toLocaleString(lang, {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+          })}
     </span>
   ) : (
     ''
