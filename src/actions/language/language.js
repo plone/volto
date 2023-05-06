@@ -7,6 +7,7 @@ export function changeLanguageCookies(language, req) {
 
   const cookieOptions = getCookieOptions({
     secure: req?.protocol?.startsWith('https') ? true : false,
+    sameSite: 'strict',
   });
 
   if (!req) {

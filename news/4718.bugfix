@@ -1,0 +1,1 @@
+Fix fetching API paths with urlencoded characters in the querystring. @davisagli

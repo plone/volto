@@ -27,7 +27,7 @@ Volto adopted some time ago [Storybook](https://storybook.js.org), a tool that i
 
 Not all Volto's visual components are covered yet in Storybook, but it has already a good foundation.
 
-You can find the current Storybook build in: https://6.dev-docs.plone.org/storybook
+You can find the current Storybook build in: https://6.docs.plone.org/storybook
 
 ## Quanta, the design system for Plone 6
 

@@ -114,15 +114,19 @@ function normalizeState({
     block: id,
   };
 
-  // TODO: need to check if SearchableText facet is not already in the query
-  // Ideally the searchtext functionality should be restructured as being just
-  // another facet
-  params.query = params.query.reduce(
-    // Remove SearchableText from query
-    (acc, kvp) => (kvp.i === 'SearchableText' ? acc : [...acc, kvp]),
-    [],
-  );
+  // Note Ideally the searchtext functionality should be restructured as being just
+  // another facet. But right now it's the same. This means that if a searchText
+  // is provided, it will override the SearchableText facet.
+  // If there is no searchText, the SearchableText in the query remains in effect.
+  // TODO eventually the searchText should be a distinct facet from SearchableText, and
+  // the two conditions could be combined, in comparison to the current state, when
+  // one overrides the other.
   if (searchText) {
+    params.query = params.query.reduce(
+      // Remove SearchableText from query
+      (acc, kvp) => (kvp.i === 'SearchableText' ? acc : [...acc, kvp]),
+      [],
+    );
     params.query.push({
       i: 'SearchableText',
       o: 'plone.app.querystring.operation.string.contains',
@@ -278,8 +282,14 @@ const withSearch = (options) => (WrappedComponent) => {
     const timeoutRef = React.useRef();
     const facetSettings = data?.facets;
 
+    const deepQuery = JSON.stringify(data.query);
     const onTriggerSearch = React.useCallback(
-      (toSearchText, toSearchFacets, toSortOn, toSortOrder) => {
+      (
+        toSearchText = undefined,
+        toSearchFacets = undefined,
+        toSortOn = undefined,
+        toSortOrder = undefined,
+      ) => {
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
         timeoutRef.current = setTimeout(
           () => {
@@ -287,7 +297,7 @@ const withSearch = (options) => (WrappedComponent) => {
               id,
               query: data.query || {},
               facets: toSearchFacets || facets,
-              searchText: toSearchText,
+              searchText: toSearchText || searchText,
               sortOn: toSortOn || sortOn,
               sortOrder: toSortOrder || sortOrder,
               facetSettings,
@@ -301,11 +311,14 @@ const withSearch = (options) => (WrappedComponent) => {
           toSearchFacets ? inputDelay / 3 : inputDelay,
         );
       },
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       [
-        data.query,
+        // Use deep comparison of data.query
+        deepQuery,
         facets,
         id,
         setLocationSearchData,
+        searchText,
         sortOn,
         sortOrder,
         facetSettings,
