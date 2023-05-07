@@ -50,6 +50,29 @@ visited and it will return the simple string and not the usual Volto pages.
 The `staticMiddleware` is for serving static files such as style sheets and client-side JavaScript files from the `BUILD_DIR/PUBLIC` or `PUBLIC_DIR` directory.
 It uses the `express.static()` function to serve static files, and the `setHeaders()` function to add response headers to the files that it serves.
 
+```js
+import { settings as defaultSettings } from '@plone/volto/config';
+import express from 'express';
+
+const settings = { ...defaultSettings };
+if (__SERVER__) {
+    const customStaticMiddleware = express.static('test/static/files');
+
+    function setCustomHeaders(req, res, next) {
+        res.setHeader('Cache-Control', 'public, max-age=3600');
+        next();
+    }
+
+    customStaticMiddleware.setHeaders = setCustomHeaders;
+    customStaticMiddleware.id = 'custom-static-middleware';
+
+    settings.expressMiddleware = [
+        ...defaultSettings.expressMiddleware,
+        customStaticMiddleware,
+    ];
+}
+```
+
 ### Function `setHeaders(path)`
 
 The `setHeaders()` function is used to update the response headers for a file.
