@@ -53,20 +53,16 @@ First get all the requirements installed on your system.
 
 ### Prerequisites
 
-- [Node.js LTS (16.x)](https://nodejs.org/)
+- [Node.js LTS (18.x)](https://nodejs.org/)
 - [Python](https://python.org/) - See below for specific versions.
 - [Docker](https://www.docker.com/get-started) (if using the Plone docker images)
-
-*UPDATE 2022-10-25*: Since 2022-10-25, NodeJS 18 is in LTS state (https://github.com/nodejs/release#release-schedule). However, due to changes in internal SSL libraries, some Volto dependencies have been deprecated and need to be updated in order to continue working in NodeJS 18, mainly Webpack 4 (see: https://github.com/webpack/webpack/issues/14532#issuecomment-947525539 for further information). You can still use it, but NodeJS should be run under a special flag: `NODE_OPTIONS=--openssl-legacy-provider`. See also Volto's PR: https://github.com/plone/volto/pull/3699 for more information.
 
 The versions of Python that are supported in Volto depend on the version of Plone that you use.
 
 | Plone | Python | Volto |
 |---|---|---|
 | 5.2 | 2.7, 3.6-3.8 | 15.0 |
-| 6.0 (beta) | 3.8-3.10 | 16.0 (alpha) |
-
-At the time of this writing, Volto 16 is still in alpha status, and Plone 6 is in beta status.
+| 6.0 | 3.8-3.11 | 16.0 |
 
 ### Create a Volto project using the generator
 
@@ -90,7 +86,7 @@ cd myvoltoproject
 You can bootstrap a ready Docker Plone container with all the dependencies and ready for Volto use. We recommend to use the Plone docker builds based in `pip` [plone/plone-backend](https://github.com/plone/plone-backend) image:
 
 ```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.0b3
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.1
 ```
 
 or as an alternative if you have experience with Plone and you have all the
@@ -105,7 +101,7 @@ make build-backend
 
 Volto is the default UI for Plone 6, so it will work for all Plone 6 released versions.
 
-For the Plone 5 series, the latest released version of Plone 5 (with Python 3) is recommended (at the time of writing 5.2.9).
+For the Plone 5 series, the latest released version of Plone 5 (with Python 3) is recommended (at the time of writing 5.2.10).
 
 #### KGS (known good set of versions) for backend packages
 
@@ -113,14 +109,14 @@ On Plone 6, we recommend using the known good set (KGS) of package versions that
 
 On Plone 5, Volto is currently tested with the following packages pinned to specific versions, and we recommend using the same versions, which are:
 
-- plone.restapi 8.30.0
-- plone.rest 2.0.0a5
-- plone.volto 4.0.0a13
+- plone.restapi 8.32.6
+- plone.rest 2.0.0
+- plone.volto 4.0.3
 
 This would be the docker command to spawn a Plone 5 container with the right KGS versions:
 
 ```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.restapi==8.30.0 plone.volto==4.0.0a13 plone.rest==2.0.0a5 plone.app.iterate==4.0.2 plone.app.vocabularies==4.3.0" -e PROFILES="plone.volto:default-homepage" plone/plone-backend
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.restapi==8.32.6 plone.volto==4.0.3 plone.rest==2.0.0" -e PROFILES="plone.volto:default-homepage" plone/plone-backend
 ```
 
 ### Start Volto
@@ -138,7 +134,7 @@ Go to [http://localhost:3000](http://localhost:3000) in your browser.
 Volto is actively developed since 2017 and used in production since 2018 on the following websites:
 
 - [VHS Ehrenamtsportal](https://vhs-ehrenamtsportal.de) (Website to help volunteers that help refugees for the [German Adult Education Association](https://www.dvv-vhs.de/en/home/), developed by [kitconcept GmbH](https://kitconcept.com), 2018)
-- [Zeelandia](https://zeelandia.de) (Corporate website for one of the leading backery ingrediences manufactors in Germany, developed by [kitconcept GmbH](https://kitconcept.com), 2019)
+- [Zeelandia](https://zeelandia.de) (Corporate website for one of the leading backery ingredients manufacturers in Germany, developed by [kitconcept GmbH](https://kitconcept.com), 2019)
 - [Excellence at Humboldt-Universität zu Berlin](https://www.alles-beginnt-mit-einer-frage.de) (Website for the excellence initiative of the [Humboldt University Berlin](https://hu-berlin.de), developed by [kitconcept GmbH](https://kitconcept.com), 2019)
 - [Forest Information System for Europe](https://forest.eea.europa.eu) (Thematic website focusing on European forests, developed by [Eau de Web](https://www.eaudeweb.ro), 2019)
 - [Industrial Emissions portal for Europe](https://industry.eea.europa.eu) (Thematic website focusing on European industrial emissions, developed by [Eau de Web](https://www.eaudeweb.ro), 2020)
@@ -153,7 +149,7 @@ Volto is actively developed since 2017 and used in production since 2018 on the 
 - [Jobfamilie MEDICE](https://jobfamilie.medice.de/de) (Carrer website for MEDICE Arzneimittel Pütter GmbH & Co. KG), developed by [Werkbank GmbH](https://werkbank.de/), 2020)
 - [Baccanale Imola](https://www.baccanaleimola.it) (Baccanale is a food fair that happens every year in Imola, Italy. Developed by [RedTurtle](https://redturtle.it), 2020)
 - [ResOU](https://resou.osaka-u.ac.jp) (ResOU is introducing official researched releases by the University of Osaka, Japan. Developed by [CMScom](https://www.cmscom.jp), 2020)
-- [Humboldt Labor](https://www.humboldt-labor.de/) (The Humboldt Lab is a website where the Humboldt University Berlin presents its latest reaseach projects and findings. Developed by [WLDX](https://wldx.de/) and [kitconcept GmbH](https://kitconcept.com), 2020)
+- [Humboldt Labor](https://www.humboldt-labor.de/) (The Humboldt Lab is a website where the Humboldt University Berlin presents its latest research projects and findings. Developed by [WLDX](https://wldx.de/) and [kitconcept GmbH](https://kitconcept.com), 2020)
 - [Osaka University](https://www.osaka-u.ac.jp/en) (Osaka University is considered one of the most prestigious universities in Japan. Developed by [CMScom](https://www.cmscom.jp), 2021)
 - [Comune di Modena](https://www.comune.modena.it/) (Website of the Municipality of Modena. Developed by [RedTurtle](https://redturtle.it), 2020)
 - [Comune di Camposanto](https://www.comune.camposanto.mo.it/) (Website of the Municipality of Camposanto. Developed by [RedTurtle](https://redturtle.it), 2021)
@@ -171,7 +167,7 @@ Volto is actively developed since 2017 and used in production since 2018 on the 
 - [RawMaterial](https://rawmaterial.it/en) (Company's website. Developed by [RawMaterial](https://rawmaterial.it/en), 2021)
 - [WISE-Freshwater](https://water.europa.eu/freshwater) (WISE-Freshwater, the Freshwater Information System for Europe. Developed by [Eau de web](https://eaudeweb.ro) for the European Environmental Agency, 2021)
 - [EEA-IMSv4](https://www.eea.europa.eu/ims) (EEA Indicator Management System v4. Developed by [Eau de web](https://eaudeweb.ro) for the European Environmental Agency, 2021)
-- [Memori](https://memori.ai/en) (Corporate website for Memori, startup specialising in technologies applied to the experience of memory through the development of Artificial Intelligences. Developed by [RawMaterial](https://rawmaterial.it/en), 2021)
+- [Memori](https://memori.ai/en) (Corporate website for Memori, startup specializing in technologies applied to the experience of memory through the development of Artificial Intelligences. Developed by [RawMaterial](https://rawmaterial.it/en), 2021)
 - [TwinCreator](https://twincreator.com/en) (TwinCreator allows you to design and train multiple AI’s through simple conversation through NLP. Developed by [RawMaterial](https://rawmaterial.it/en), 2021)
 - [MemoryTwin](https://memorytwin.com/en) (Product website, MemoryTwin allows you to create your personal artificial intelligence, able to remember and speak. Developed by [RawMaterial](https://rawmaterial.it/en), 2022)
 - [Forschungszentrum Jülich](https://fz-juelich.de) (Website for Forschungzentrum Jülich, which is one of the largest research institutions in Europe, developed by [kitconcept GmbH](https://kitconcept.com), 2022)
@@ -179,30 +175,27 @@ Volto is actively developed since 2017 and used in production since 2018 on the 
 - [Debabarreneko mankomunitatea](https://debabarrena.eus) (Website of the Commonwealth of Debabarrena, community of municipalities to centralize waste handling services, developed by [CodeSyntax](https://www.codesyntax.com/en), 2022)
 - [Debako Udala / Ayuntamiento de Deba](https://www.deba.eus) (Website of the municipality of Deba, developed by [CodeSyntax](https://www.codesyntax.com/en), 2022)
 - [Helmholtz-Institut Erlangen-Nürnberg für Erneuerbare Energien (HI-ERN)](https://www.hi-ern.de) (Website for HI ERN, a research institution for renewable energies, developed by [kitconcept GmbH](https://kitconcept.com), 2022)
-- [Lanku](https://www.lanku.eus) (Website for Lanku Kultur Zerbitzuak, a company offering cultural services and improvised Basque verse singing sessions accross the Basque Country, developed by [CodeSyntax](https://www.codesyntax.com/en), 2023)
+- [Lanku](https://www.lanku.eus) (Website for Lanku Kultur Zerbitzuak, a company offering cultural services and improvised Basque verse singing sessions across the Basque Country, developed by [CodeSyntax](https://www.codesyntax.com/en), 2023)
 - [UEU](https://www.ueu.eus) (Website for Udako Euskal Unibertsitatea, a non-profit University offering all its service only in Basque: courses, publications, ... developed by [CodeSyntax](https://www.codesyntax.com/en), 2023)
 
 Please create a new [issue](https://github.com/plone/volto/issues/new) or [pull request](https://github.com/plone/volto/pulls) to add your Volto-site here!
 
 ## Documentation
 
-You can find the latest (in-progress) documentation in [https://6.dev-docs.plone.org/](https://6.dev-docs.plone.org/volto/index.html)
+You can find the latest (in-progress) documentation in [https://6.docs.plone.org/](https://6.docs.plone.org/volto/index.html)
 
 ## Training
 
-On the [Plone Trainings Website](https://training.plone.org) you'll find
-Volto-dedicated open training materials, plus React and other
-JavaScript-centered trainings.
+On the [Plone Training website](https://training.plone.org), you'll find Volto-dedicated training materials, plus other JavaScript-centered trainings.
 
-- [Mastering Plone 6 Development](https://training.plone.org/5/mastering-plone/)
+- [Mastering Plone 6 Development](https://training.plone.org/mastering-plone/)
   The comprehensive training on Plone 6 with best practice tips for developers and integrators.
-- [Volto](https://training.plone.org/5/volto/index.html)
-  A detailed training on how to create your own website using Volto frontend.
-- [Volto Hands-On](https://training.plone.org/5/voltohandson/index.html)
-- [Volto Add-ons Development](https://training.plone.org/5/voltoaddons/index.html)
-- [Plone Deployment](https://training.plone.org/5/plone-deployment/index.html)
-- [React](https://training.plone.org/5/react/index.html)
-- [JavaScript For Plone Developers](https://training.plone.org/5/javascript/index.html)
+- [Volto Hands-On](https://training.plone.org/voltohandson/index.html)
+- [Volto Add-ons Development](https://training.plone.org/voltoaddons/index.html)
+- [Effective Volto](https://training.plone.org/effective-volto/index.html)
+- [Plone Deployment](https://training.plone.org/plone-deployment/index.html)
+- [Volto](https://2022.training.plone.org/volto/index.html) (archived)
+- [JavaScript For Plone Developers](https://2022.training.plone.org/javascript/index.html) (archived)
 
 ## Talks
 
@@ -234,10 +227,11 @@ JavaScript-centered trainings.
 
 ## Node Support
 
+- Node 18: Supported since Volto 17
 - Node 16: Supported since Volto 14
-- Node 14: Supported since Volto 8.8.0
-- Node 12: Deprecated from Volto 16 onwards. It was supported since Volto 4
-- Node 10: Deprecated from Volto 13 onwards. It was supported since Volto 1 (and its predecessor "plone-react")
+- Node 14: No longer supported. It was supported from Volto 8.8.0 - 16
+- Node 12: No longer supported. It was supported from Volto 4 - 15
+- Node 10: No longer supported. It was supported from Volto 1 - 12
 
 ## Browser support
 
@@ -248,7 +242,7 @@ We do not guarantee that deprecated browsers (e.g., Internet Explorer 11) are su
 
 ## Upgrades
 
-You can find the upgrade guide here: https://6.dev-docs.plone.org/volto/upgrade-guide/index.html
+You can find the upgrade guide here: https://6.docs.plone.org/volto/upgrade-guide/index.html
 
 ## Volto Development
 
@@ -272,7 +266,7 @@ yarn
 Either using a Docker command:
 
 ```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.0b3
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.1
 ```
 
 or using the convenience makefile command:
@@ -323,11 +317,11 @@ yarn test
 
 Here you can find a guide on how acceptance testing is done in Volto:
 
-https://6.dev-docs.plone.org/volto/developer-guidelines/acceptance-tests.html
+https://6.docs.plone.org/volto/developer-guidelines/acceptance-tests.html
 
 ## Translations
 
-If you would like contribute to translate Volto into several languages, please, read the [Internationalization (i18n) guide](https://6.dev-docs.plone.org/volto/recipes/i18n.html).
+If you would like contribute to translate Volto into several languages, please, read the [Internationalization (i18n) guide](https://6.docs.plone.org/volto/recipes/i18n.html).
 
 ## Contributors
 

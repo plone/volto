@@ -8,7 +8,6 @@
 @import (multiple) '../../theme.config';
 
 // Extras (third party libs)
-@import (less) '~hamburgers/dist/hamburgers.css';
 @import (less) '~react-toastify/dist/ReactToastify.css';
 
 // Mixins
@@ -494,6 +493,86 @@ fieldset.invisible {
 .hamburger-wrapper {
   position: relative;
   z-index: 5;
+  width: 70px;
+  height: 59px;
+  padding: 15px 15px;
+
+  .hamburger {
+    position: relative;
+    width: 40px;
+    height: 24px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+  }
+
+  .hamburger::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    width: 100%;
+    height: 4px;
+    background-color: #000;
+    border-radius: 4px;
+    content: '';
+    transition: 0.3s ease-in-out;
+  }
+
+  .hamburger::before {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    display: inline-block;
+    width: 100%;
+    height: 4px;
+    background-color: #000;
+    border-radius: 4px;
+    content: '';
+    transition: 0.3s ease-in-out;
+  }
+
+  .hamburger-inner {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    display: inline-block;
+    width: 100%;
+    height: 4px;
+    border-radius: 4px;
+    transition: 0.3s ease-in-out;
+  }
+
+  .hamburger.is-active::after,
+  .hamburger.is-active::before {
+    top: 10px;
+    left: 50%;
+    width: 0%;
+  }
+
+  .hamburger-inner::after,
+  .hamburger-inner::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: #000;
+    border-radius: 4px;
+    content: '';
+    transition: 0.3s ease-in-out;
+  }
+
+  .hamburger.is-active .hamburger-inner::after {
+    transform: rotate(45deg);
+  }
+
+  .hamburger.is-active .hamburger-inner::before {
+    transform: rotate(-45deg);
+  }
 }
 
 .mobile-menu {

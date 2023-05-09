@@ -31,24 +31,30 @@ export function getQueryStringResults(path, data, subrequest, page) {
     }
   }
 
+  const query = {
+    ...requestData,
+    ...(!requestData.b_size && {
+      b_size: settings.defaultPageSize,
+    }),
+    ...(page && {
+      b_start: requestData.b_size
+        ? data.b_size * (page - 1)
+        : settings.defaultPageSize * (page - 1),
+    }),
+    query: requestData?.query,
+  };
+
   return {
     type: GET_QUERYSTRING_RESULTS,
     subrequest,
     request: {
-      op: 'post',
-      path: `${path}/@querystring-search`,
-      data: {
-        ...requestData,
-        ...(!requestData.b_size && {
-          b_size: settings.defaultPageSize,
-        }),
-        ...(page && {
-          b_start: requestData.b_size
-            ? data.b_size * (page - 1)
-            : settings.defaultPageSize * (page - 1),
-        }),
-        query: requestData?.query,
-      },
+      op: settings.querystringSearchGet ? 'get' : 'post',
+      path: `${path}/@querystring-search${
+        settings.querystringSearchGet
+          ? `?query=${encodeURIComponent(JSON.stringify(query))}`
+          : ''
+      }`,
+      data: settings.querystringSearchGet ? null : query,
     },
   };
 }

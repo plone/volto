@@ -258,7 +258,11 @@ class Form extends Component {
    * Tab selection is done only by setting activeIndex in state
    */
   onTabChange(e, { activeIndex }) {
-    this.setState({ activeIndex });
+    const defaultFocus = this.props.schema.fieldsets[activeIndex].fields[0];
+    this.setState({
+      activeIndex,
+      ...(defaultFocus ? { inFocus: { [defaultFocus]: true } } : {}),
+    });
   }
 
   /**
@@ -645,7 +649,7 @@ class Form extends Component {
           error={keys(this.state.errors).length > 0}
           className={settings.verticalFormTabs ? 'vertical-form' : ''}
         >
-          <fieldset className="invisible" disabled={!this.props.editable}>
+          <fieldset className="invisible">
             <Segment.Group raised>
               {schema && schema.fieldsets.length > 1 && (
                 <>
@@ -682,10 +686,11 @@ class Form extends Component {
                         ...map(item.fields, (field, index) => (
                           <Field
                             {...schema.properties[field]}
+                            isDisabled={!this.props.editable}
                             id={field}
                             formData={this.state.formData}
                             fieldSet={item.title.toLowerCase()}
-                            focus={index === 0}
+                            focus={this.state.inFocus[field]}
                             value={this.state.formData?.[field]}
                             required={schema.required.indexOf(field) !== -1}
                             onChange={this.onChangeField}
