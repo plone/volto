@@ -7,6 +7,8 @@ myst:
     "keywords": "Volto, Plone, frontend, React, Semantic UI, semantic-ui, third, party, libraries, themes"
 ---
 
+(volto-custom-theming-strategy)=
+
 # Using third party libraries and themes other than `semantic-ui`
 
 You can use Volto with third party libraries or themes written in SASS and avoid applying `semantic-ui` on public facing views.

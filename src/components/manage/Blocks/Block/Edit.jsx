@@ -52,6 +52,7 @@ export class Edit extends Component {
     onMoveBlock: PropTypes.func.isRequired,
     onDeleteBlock: PropTypes.func.isRequired,
     editable: PropTypes.bool,
+    pathname: PropTypes.string.isRequired,
   };
 
   /**

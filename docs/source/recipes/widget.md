@@ -146,9 +146,111 @@ const applyConfig = (config) => {
 Based on this setup, Volto will render this field with the `TokenWidget`.
 
 
-```{seealso}
-See [storybook](https://6.dev-docs.plone.org/storybook) with available widgets.
+(widget-relation-field-label)=
+
+## Relation fields
+
+A relation field is either a single relation field to hold at most one content object, `RelationChoice`, or a multi relation field, `RelationList`, that can hold more than one content object.
+
+Relation fields can be edited and rendered with the `Select` widget.
+The restriction on content types, workflow states, and so on can be done with a `StaticCatalogVocabulary`.
+
+There are other vocabulary types and other widgets, including the `ObjectBrowser` widget.
+
+(widget-relation-field-single-label)=
+
+### Single relation field
+
+Relation field (`RelationChoice`) with a named `StaticCatalogVocabulary` and `Select` widget:
+
+```python
+relationchoice_field_named_staticcatalogvocabulary = RelationChoice(
+    title="RelationChoice – named StaticCatalogVocabulary – Select widget",
+    description="field/relation: relationchoice_field_named_staticcatalogvocabulary",
+    vocabulary="relationchoice_field_named_staticcatalogvocabulary",
+    required=False,
+)
+directives.widget(
+    "relationchoice_field_named_staticcatalogvocabulary",
+    frontendOptions={
+        "widget": "select",
+    },
+)
 ```
+
+It is recommended to define the vocabulary as a named `StaticCatalogVocabulary` with the field/relation name as its name.  
+This allows the {guilabel}`relations` control panel to respect the defined restrictions to potential relation targets.
+
+{file}`vocabularies.py`
+```python
+from plone.app.vocabularies.catalog import StaticCatalogVocabulary
+from zope.interface import provider
+from zope.schema.interfaces import IVocabularyFactory
+
+@provider(IVocabularyFactory)
+def ExamplesVocabularyFactory(context=None):
+    return StaticCatalogVocabulary(
+        {
+            "portal_type": ["example"],
+            "review_state": "published",
+            "sort_on": "sortable_title",
+        }
+    )
+```
+
+{file}`configure.zcml`
+```xml
+<utility
+  name="relationchoice_field_named_staticcatalogvocabulary"
+  component="example.contenttype.vocabularies.ExamplesVocabularyFactory"
+  />
+```
+
+The `Select` widget is currently the default for `RelationChoice` fields with vocabulary.
+Therefore the directive can be omitted.
+
+```python
+relationchoice_field_named_staticcatalogvocabulary = RelationChoice(
+    title="RelationChoice – named StaticCatalogVocabulary – Select widget",
+    description="field/relation: relationchoice_field_named_staticcatalogvocabulary",
+    vocabulary="relationchoice_field_named_staticcatalogvocabulary",
+    required=False,
+)
+```
+
+(widget-relation-field-multi-label)=
+
+### Multi relation field
+
+Multi relation field (`RelationList`) with a named `StaticCatalogVocabulary`and `Select` widget:
+
+```python
+relationlist_field_named_staticcatalogvocabulary = RelationList(
+    title="RelationList – named StaticCatalogVocabulary – Select widget",
+    description="field/relation: relationlist_field_named_staticcatalogvocabulary",
+    value_type=RelationChoice(
+        vocabulary="relationlist_field_named_staticcatalogvocabulary",
+    ),
+    required=False,
+)
+directives.widget(
+    "relationlist_field_named_staticcatalogvocabulary",
+    frontendOptions={
+        "widget": "select",
+    },
+)
+```
+
+
+## Widget `isDisabled` Props
+
+We can disable the input of a widget by passing props `isDisabled: true`.
+
+
+## Available widgets
+
+See [Storybook](https://6.docs.plone.org/storybook) with available widgets.
+
 
 ## Write a new widget
 

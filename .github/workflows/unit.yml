@@ -1,12 +1,14 @@
 name: Unit Tests
-on: [push]
+on: [push, pull_request]
 jobs:
   unit:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     name: Core Unit Tests
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [16.x, 18.x]
     steps:
       - uses: actions/checkout@v3
 
@@ -14,7 +16,8 @@ jobs:
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+        # remove workaround for 18.x once https://github.com/nodejs/node/issues/47563 is fixed
+          node-version: ${{ matrix.node-version == '18.x' && '18.15.0' || matrix.node-version }}
           cache: yarn
 
       # node install
@@ -28,4 +31,3 @@ jobs:
       - uses: jackyef/bundlewatch-gh-action@master
         with:
           bundlewatch-github-token: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
-

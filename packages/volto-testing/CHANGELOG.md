@@ -3,10 +3,17 @@
 <!-- You should *NOT* be adding new change log entries to this file.
      You should create a file in the news directory instead.
      For helpful instructions, please see:
-     https://6.dev-docs.plone.org/volto/developer-guidelines/contributing.html#create-a-pull-request
+     https://6.docs.plone.org/volto/developer-guidelines/contributing.html#create-a-pull-request
 -->
 
 <!-- towncrier release notes start -->
+
+## 3.1.0 (2023-02-08)
+
+### Feature
+
+- Update Cypress support commands, add missing peer dependency `axe-core` @sneridagh [#4382](https://github.com/plone/volto/issues/4382)
+
 
 ## 3.0.0 (2022-12-15)
 
