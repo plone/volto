@@ -56,10 +56,15 @@ const TranslationObject = ({
       let lang =
         config.settings.supportedLanguages[Object.keys(locales).length];
       const langFileName = normalizeLanguageName(lang);
-      import('@root/../locales/' + langFileName + '.json').then((locale) => {
-        setLocales({ ...locales, [lang]: locale.default });
-        setLoadingLocale(false);
-      });
+      import('@root/../locales/' + langFileName + '.json')
+        .then((locale) => {
+          setLocales({ ...locales, [lang]: locale.default });
+          setLoadingLocale(false);
+        })
+        .catch((error) => {
+          setLocales({ ...locales, [lang]: {} });
+          setLoadingLocale(false);
+        });
     }
   }, [loadingLocale, locales]);
 

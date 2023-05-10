@@ -45,9 +45,14 @@ let locales = {};
 if (config.settings) {
   config.settings.supportedLanguages.forEach((lang) => {
     const langFileName = normalizeLanguageName(lang);
-    import('@root/../locales/' + langFileName + '.json').then((locale) => {
-      locales = { ...locales, [lang]: locale.default };
-    });
+    import('@root/../locales/' + langFileName + '.json')
+      .then((locale) => {
+        locales = { ...locales, [lang]: locale.default };
+      })
+      .catch((error) => {
+        console.warn(`Could not find locale file for: ${langFileName}`);
+        locales = { ...locales, [lang]: {} };
+      });
   });
 }
 

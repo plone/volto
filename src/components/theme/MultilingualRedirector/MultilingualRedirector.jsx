@@ -24,11 +24,13 @@ const MultilingualRedirector = (props) => {
     let mounted = true;
     if (settings.isMultilingual && pathname === '/') {
       const langFileName = normalizeLanguageName(redirectToLanguage);
-      import('@root/../locales/' + langFileName + '.json').then((locale) => {
-        if (mounted) {
-          dispatch(changeLanguage(redirectToLanguage, locale.default));
-        }
-      });
+      import('@root/../locales/' + langFileName + '.json')
+        .then((locale) => {
+          if (mounted) {
+            dispatch(changeLanguage(redirectToLanguage, locale.default));
+          }
+        })
+        .catch((error) => this.props.changeLanguage(redirectToLanguage, {}));
     }
     return () => {
       mounted = false;

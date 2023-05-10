@@ -87,9 +87,11 @@ class PersonalPreferences extends Component {
     let language = data.language || 'en';
     if (config.settings.supportedLanguages.includes(language)) {
       const langFileName = normalizeLanguageName(language);
-      import('@root/../locales/' + langFileName + '.json').then((locale) => {
-        this.props.changeLanguage(language, locale.default);
-      });
+      import('@root/../locales/' + langFileName + '.json')
+        .then((locale) => {
+          this.props.changeLanguage(language, locale.default);
+        })
+        .catch((error) => this.props.changeLanguage(language, {}));
     }
     toast.success(
       <Toast success title={this.props.intl.formatMessage(messages.saved)} />,
