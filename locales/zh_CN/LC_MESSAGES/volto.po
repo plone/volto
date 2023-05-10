@@ -90,7 +90,7 @@ msgid "Add (object list)"
 msgstr "添加（对象列表）"
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
+# defaultMessage: To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see
 msgid "Add Addons"
 msgstr "添加附件"
 
@@ -2095,7 +2095,7 @@ msgid "My email is"
 msgstr "我的邮箱是"
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: My username is
+# defaultMessage: My user name is
 msgid "My username is"
 msgstr "我的用户名是"
 
@@ -3473,6 +3473,11 @@ msgstr "活动和非活动对象的总数"
 msgid "Total comments"
 msgstr "全部评论"
 
+#: components/manage/Contents/Contents
+# defaultMessage: Total items to be deleted:
+msgid "Total items to be deleted:"
+msgstr ""
+
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Total number of objects in each cache
 msgid "Total number of objects in each cache"
@@ -4185,7 +4190,7 @@ msgid "label_my_email_is"
 msgstr "我的邮箱是"
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: My username is
+# defaultMessage: My user name is
 msgid "label_my_username_is"
 msgstr "我的用户名是"
 
