@@ -101,7 +101,7 @@ msgid "Add (object list)"
 msgstr "Ajouter (liste d'objets)"
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
+# defaultMessage: To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see
 msgid "Add Addons"
 msgstr "Ajouter des modules"
 
@@ -2117,7 +2117,7 @@ msgid "My email is"
 msgstr "Mon email est"
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: My username is
+# defaultMessage: My user name is
 msgid "My username is"
 msgstr "Mon nom d'utilisateur est"
 
@@ -3510,6 +3510,11 @@ msgstr "Total des objets actifs et non actifs"
 msgid "Total comments"
 msgstr "Nombre de commentaires"
 
+#: components/manage/Contents/Contents
+# defaultMessage: Total items to be deleted:
+msgid "Total items to be deleted:"
+msgstr ""
+
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Total number of objects in each cache
 msgid "Total number of objects in each cache"
@@ -4232,7 +4237,7 @@ msgid "label_my_email_is"
 msgstr "Mon email est"
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: My username is
+# defaultMessage: My user name is
 msgid "label_my_username_is"
 msgstr "Mon nom d'utilisateur est"
 

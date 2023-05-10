@@ -1,5 +1,3 @@
-# Translators:
-# Léu Almeida <leo@webid.net.br>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"

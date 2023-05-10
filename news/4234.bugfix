@@ -1,0 +1,1 @@
+Fix duplicating listing block by removing block uid from blocks data. @ksuess

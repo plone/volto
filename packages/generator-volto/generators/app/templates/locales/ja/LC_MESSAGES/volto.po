@@ -1,5 +1,3 @@
-# Manabu TERADA <terada@cmscom.jp> 2019
-# Peacock <peacock0803sz@gmail.com> 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
