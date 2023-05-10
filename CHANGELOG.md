@@ -25,6 +25,7 @@
 - Fix regexp that checks valid URLs and improve tests [cekk] [#4601](https://github.com/plone/volto/issues/4601)
 - Fixed wrong localization on password reset page @iRohitSingh [#4656](https://github.com/plone/volto/issues/4656)
 - fix sitemap.xml.gz not is not compressed @dobri1408 [#4663](https://github.com/plone/volto/issues/4663)
+- fixed the issue 'shouldn't use a hook like function name for a variable' @Kaku-g [#4660](https://github.com/plone/volto/issues/4660)
 
 ### Internal
 
