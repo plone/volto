@@ -39,7 +39,7 @@ import '@babel/polyfill';
 ```
 
 ```{seealso}
-See https://babeljs.io/docs/en/babel-polyfill for more updated information
+See https://babeljs.io/docs/babel-polyfill for more updated information
 ```
 
 ## babel-env

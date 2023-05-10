@@ -30,7 +30,6 @@ export {
   removeProtocol,
   URLUtils,
 } from '@plone/volto/helpers/Url/Url';
-export { generateSitemap } from '@plone/volto/helpers/Sitemap/Sitemap';
 export { generateRobots } from '@plone/volto/helpers/Robots/Robots';
 export {
   nestContent,
@@ -86,6 +85,7 @@ export {
   hasApiExpander,
   replaceItemOfArray,
   cloneDeepSchema,
+  reorderArray,
 } from '@plone/volto/helpers/Utils/Utils';
 export { messages } from './MessageLabels/MessageLabels';
 export {

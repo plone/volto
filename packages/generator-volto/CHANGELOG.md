@@ -3,10 +3,63 @@
 <!-- You should *NOT* be adding new change log entries to this file.
      You should create a file in the news directory instead.
      For helpful instructions, please see:
-     https://6.dev-docs.plone.org/volto/developer-guidelines/contributing.html#create-a-pull-request
+     https://6.docs.plone.org/volto/developer-guidelines/contributing.html#create-a-pull-request
 -->
 
 <!-- towncrier release notes start -->
+
+## 7.0.0-alpha.4 (2023-04-13)
+
+### Bugfix
+
+- Force the resolution of the `react-error-overlay` package to `6.0.9` @sneridagh [#4687](https://github.com/plone/volto/issues/4687)
+
+
+## 7.0.0-alpha.3 (2023-04-03)
+
+### Bugfix
+
+- Update to latest Razzle - needed since #3997. This fixes the duplicated Razzles issue @sneridagh [#4640](https://github.com/plone/volto/issues/4640)
+
+
+## 7.0.0-alpha.2 (2023-03-05)
+
+### Feature
+
+- Improve stylelint config in generator, include scss support @sneridagh [#4469](https://github.com/plone/volto/issues/4469)
+
+
+## 7.0.0-alpha.1 (2023-03-04)
+
+### Bugfix
+
+- Fix ESlint failure for the generator @sneridagh [#4465](https://github.com/plone/volto/issues/4465)
+
+
+## 7.0.0-alpha.0 (2023-03-04)
+
+### Breaking
+
+- Volto 17 compliant version @davisagli [#4089](https://github.com/plone/volto/issues/4089)
+
+
+## 6.2.5 (2023-03-02)
+
+### Internal
+
+- Get the App component from the registry. This makes it possible to add wrappers over the App@tiberiuichim [#4413](https://github.com/plone/volto/issues/4413)
+
+
+## 6.2.4 (2023-03-02)
+
+### Bugfix
+
+- Fix generator adding the jest config for @plone/volto-slate @sneridagh [#4453](https://github.com/plone/volto/issues/4453)
+
+### Internal
+
+- made razzle.config.js in project template easier to extend @akshatgarg12 [#3424](https://github.com/plone/volto/issues/3424)
+
 
 ## 6.2.3 (2023-01-16)
 
