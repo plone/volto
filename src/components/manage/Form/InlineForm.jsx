@@ -17,6 +17,8 @@ import { applySchemaDefaults } from '@plone/volto/helpers';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
 
+import config from '@plone/volto/registry';
+
 const messages = defineMessages({
   editValues: {
     id: 'Edit values',
@@ -80,7 +82,9 @@ const InlineForm = (props) => {
     inlineFormFieldsetsState({
       name: block,
       fielsetList: other,
-      initialState: arrayRange(0, other.length - 1, 1),
+      initialState: config.settings.blockSettingsTabFieldsetsInitialStateOpen
+        ? arrayRange(0, other.length - 1, 1)
+        : [],
     }),
   );
 
