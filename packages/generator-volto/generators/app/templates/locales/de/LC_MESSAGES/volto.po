@@ -1,13 +1,4 @@
-# Translation of plone.pot to German
-# Jan Ulrich Hasecke <jan.ulrich@hasecke.com>, 2003-2010.
-# Simon Eisenmann <simon@struktur.de>, 2003.
-# Hanno Schlichting <plone@hannosch.info>, 2003-2008.
-# Dominik Bittl <dominik@umount.org>, 2005.
-# Christian Ullrich <chris@chrullrich.de>, 2005.
-# Thomas Lotze <tl@gocept.com>, 2005-2008.
-# Sven Deichmann <deichmann@werkbank.com>, 2008-2010.
-# Harald Friessnegger <harald@webmeisterei.com>, 2011.
-# Andreas Jung <info@zopyx.com>, 2012
+# Translation of volto.pot to German
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"

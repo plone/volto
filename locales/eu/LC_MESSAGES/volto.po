@@ -91,7 +91,7 @@ msgid "Add (object list)"
 msgstr "Gehitu"
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
+# defaultMessage: To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see
 msgid "Add Addons"
 msgstr "Gehitu gehigarriak"
 
@@ -2096,7 +2096,7 @@ msgid "My email is"
 msgstr "Nire helbidea hauxe da"
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: My username is
+# defaultMessage: My user name is
 msgid "My username is"
 msgstr "Nire erabiltzaile izena da"
 
@@ -3474,6 +3474,11 @@ msgstr "Objektu aktibo eta ez-aktiboak"
 msgid "Total comments"
 msgstr "Erantzun kopurua"
 
+#: components/manage/Contents/Contents
+# defaultMessage: Total items to be deleted:
+msgid "Total items to be deleted:"
+msgstr ""
+
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Total number of objects in each cache
 msgid "Total number of objects in each cache"
@@ -4186,7 +4191,7 @@ msgid "label_my_email_is"
 msgstr "Nire helbidea hauxe da: "
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: My username is
+# defaultMessage: My user name is
 msgid "label_my_username_is"
 msgstr "Nire erabiltzaile izena da"
 

@@ -23,7 +23,7 @@ This chapter contains some legacy information that may be useful to Plone 5.2 de
 
 Volto can be installed in any operating system assuming that the following pre-requisites are met:
 
-- [Node.js LTS (18.x)](https://nodejs.org/en/)
+- [Node.js LTS (18.x)](https://nodejs.org/en)
 - [Python](https://www.python.org/) - See below for specific versions.
 - [Docker](https://www.docker.com/get-started) (if using the Plone docker images)
 
@@ -188,7 +188,8 @@ docker run -it --rm --name=plone \
 ```
 
 ```{tip}
-This setup is meant only for demonstration and quick testing purposes (since it destroys the container on exit (--rm)). In case you need production ready deployment, check the latest [Plone Deployment Training](https://training.plone.org/5/plone-deployment/index.html).
+This setup is meant only for demonstration and quick testing purposes, since it destroys the container on exit (`--rm`).
+In case you need production-ready deployment, check the latest [Plone Deployment Training](https://training.plone.org/plone-deployment/index.html).
 ```
 
 ```{note}
@@ -218,15 +219,28 @@ You may choose to install the canary version, which is the latest alpha release,
 
 1.  Open a terminal and execute:
 
-    ```bash
+    ```shell
     npm install -g yo @plone/generator-volto
+    # install latest stable release
     yo @plone/volto
+    # or install latest alpha release
+    yo @plone/volto --canary
     ```
 
-See the [Creating a project](../recipes/creating-project) page for more
-advanced options that can be passed to the generator.
+    See {doc}`../recipes/creating-project` for more advanced options that can be passed to the generator.
 
-2.  Answer the questions when prompted, and provide the name of the new app (folder) to be created. For the sake of this documentation, provide `myvoltoproject` as the project name.
+2.  Answer the questions when prompted, and provide the name of the new app (folder) to be created.
+    For the sake of this documentation, provide `myvoltoproject` as the project name.
+
+    ````{note}
+    You can run the generator with parameters to tailor your requirements.
+
+    ```shell
+    yo @plone/volto --help
+    ```
+
+    or take a look at the [README](https://github.com/plone/volto/blob/master/packages/generator-volto/README.md) for more information.
+    ````
 
 3.  Change directory to the newly created folder `myvoltoapp` (or the one you've chosen):
     ```bash
