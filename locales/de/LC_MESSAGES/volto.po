@@ -60,7 +60,7 @@ msgstr "Aktionen"
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Activate and deactivate add-ons in the lists below.
 msgid "Activate and deactivate"
-msgstr "Aktiviern und Deaktivieren"
+msgstr "Aktivieren und Deaktivieren"
 
 #: components/manage/Rules/Rules
 # defaultMessage: Active
@@ -90,9 +90,9 @@ msgid "Add (object list)"
 msgstr "Hinzufügen"
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
+# defaultMessage: To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see
 msgid "Add Addons"
-msgstr "Add-on hinzufügen"
+msgstr "Hier werden verfügbare und installierte Backend-Add-ons gezeigt. Informationen wie Weitere hinzugefügt werden können, finden sich hier:"
 
 #: components/manage/Toolbar/Types
 # defaultMessage: Add Content…
@@ -232,7 +232,7 @@ msgstr "Erweiterungen"
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Add-ons Settings
 msgid "Add-ons Settings"
-msgstr "Einstellungen Add-ons"
+msgstr "Add-ons"
 
 #: components/manage/Rules/Rules
 # defaultMessage: Added
@@ -247,12 +247,12 @@ msgstr "Zusätzliches Datum"
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Addon could not be installed
 msgid "Addon could not be installed"
-msgstr "Erweiterung konnte nicht installiert werden"
+msgstr "Erweiterung konnte nicht aktiviert werden"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Addon could not be uninstalled
 msgid "Addon could not be uninstalled"
-msgstr "Erweiterung konnte nicht deinstalliert werden"
+msgstr "Erweiterung konnte nicht deaktiviert werden"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Addon could not be upgraded
@@ -262,12 +262,12 @@ msgstr "Erweiterung konnte nicht aktualisiert werden"
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Addon installed succesfuly
 msgid "Addon installed succesfuly"
-msgstr "Erweiterungen erfolgreich installiert"
+msgstr "Erweiterungen erfolgreich aktiviert"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Addon uninstalled succesfuly
 msgid "Addon uninstalled succesfuly"
-msgstr "Erweiterung erfolgreich deinstalliert"
+msgstr "Erweiterung erfolgreich deaktiviert"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Addon upgraded succesfuly
@@ -1693,22 +1693,22 @@ msgstr "Zeile davor einfügen"
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Install
 msgid "Install"
-msgstr "Installieren"
+msgstr "aktivieren"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Installed
 msgid "Installed"
-msgstr "Installiert"
+msgstr "aktiviert"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Installed version
 msgid "Installed version"
-msgstr "Installierte Version"
+msgstr "Aktivierte Version"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Installing a third party add-on
 msgid "Installing a third party add-on"
-msgstr "Eine Erweiterung installieren"
+msgstr "Eine Erweiterung aktivieren"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: days
@@ -1831,7 +1831,7 @@ msgstr "Letzte verfügbare Konfiguration"
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Latest version
 msgid "Latest version"
-msgstr "Letzte Version"
+msgstr "Verfügbare Version"
 
 #: components/manage/Controlpanels/ContentTypesActions
 # defaultMessage: Layout
@@ -2095,9 +2095,9 @@ msgid "My email is"
 msgstr "Meine E-Mail ist"
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: My username is
+# defaultMessage: My user name is
 msgid "My username is"
-msgstr "Mein Benutzername ist"
+msgstr "Mein Nutzername lautet"
 
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
@@ -2243,7 +2243,7 @@ msgstr "Keine Auswahl"
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: This addon does not provide an uninstall profile.
 msgid "No uninstall profile"
-msgstr "Kein Deinstallationsprofil"
+msgstr "Kein Deaktivierungsprofil"
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: No user found
@@ -3626,7 +3626,7 @@ msgstr "Vereinigt"
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Uninstall
 msgid "Uninstall"
-msgstr "Deinstallieren"
+msgstr "deaktivieren"
 
 #: components/manage/Blocks/Block/DefaultView
 #: components/manage/Blocks/Block/Edit
@@ -3658,12 +3658,12 @@ msgstr "Update"
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update installed addons
 msgid "Update installed addons"
-msgstr "Installierte Erweiterungen aktualisieren"
+msgstr "Aktivierte Erweiterungen aktualisieren"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update installed addons:
 msgid "Update installed addons:"
-msgstr "Installierte Erweiterungen:"
+msgstr "Aktivierte Erweiterungen:"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Updates available
@@ -4190,9 +4190,9 @@ msgid "label_my_email_is"
 msgstr "Meine E-Mail ist"
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: My username is
+# defaultMessage: My user name is
 msgid "label_my_username_is"
-msgstr "El meu nom d'usuari és"
+msgstr "Mein Nutzername lautet"
 
 #: config/Blocks
 # defaultMessage: Lead Image Field
@@ -4531,7 +4531,7 @@ msgstr "Toggle"
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update from version {origin} to {destination}
 msgid "upgradeVersions"
-msgstr "Aktualisieren von Version {origin} zu Version {destination}"
+msgstr "Von Version {origin} zu Version {destination} aktualisieren"
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be valid url (www.something.com or http(s)://www.something.com)
