@@ -157,3 +157,80 @@ export const SliderSchema = (props) => ({
   },
   required: [],
 });
+
+export const multipleFieldsetsSchema = (props) => ({
+  title: props.intl.formatMessage(messages.Slider),
+  fieldsets: [
+    {
+      id: 'default',
+      title: 'Default',
+      fields: ['html'],
+    },
+    {
+      id: 'second',
+      title: 'second',
+      fields: ['slides'],
+    },
+    {
+      id: 'third',
+      title: 'third',
+      fields: ['fieldAfterObjectList'],
+    },
+    {
+      id: 'fourth',
+      title: 'fourth',
+      fields: ['href', 'firstWithDefault', 'style'],
+    },
+  ],
+  properties: {
+    slides: {
+      widget: 'object_list',
+      title: props.intl.formatMessage(messages.items),
+      schema: itemSchema,
+    },
+    fieldAfterObjectList: {
+      title: 'Field after OL',
+    },
+    href: {
+      title: props.intl.formatMessage(messages.Source),
+      widget: 'object_browser',
+      mode: 'link',
+      selectedItemAttrs: [
+        'Title',
+        'Description',
+        'hasPreviewImage',
+        'headtitle',
+      ],
+      allowExternals: true,
+    },
+    firstWithDefault: {
+      title: 'Field with default',
+      default: 'Some default value',
+    },
+    style: {
+      widget: 'object',
+      schema: {
+        title: 'Style',
+        fieldsets: [
+          {
+            id: 'default',
+            fields: ['color'],
+            title: 'Default',
+          },
+        ],
+        properties: {
+          color: {
+            title: 'Color',
+            default: 'red',
+          },
+        },
+        required: [],
+      },
+    },
+    html: {
+      title: 'HTML',
+      widget: 'richtext',
+    },
+  },
+  required: [],
+});
