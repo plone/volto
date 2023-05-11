@@ -120,6 +120,24 @@ class Config {
       const componentName = `${name}${depsString ? `|${depsString}` : ''}`;
 
       this._data.components[componentName] = { component };
+      // Try to set a displayName (useful for React dev tools) for the registered component
+      // Only if it's a function and it's not set previously
+      try {
+        const displayName = this._data.components[componentName].component
+          .displayName;
+
+        if (
+          !displayName &&
+          typeof this._data.components[componentName].component === 'function'
+        ) {
+          this._data.components[componentName].component.displayName = name;
+        }
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.warning(
+          `Not setting the component displayName because ${error}`,
+        );
+      }
     }
   }
 }
