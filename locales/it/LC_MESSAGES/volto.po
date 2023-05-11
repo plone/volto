@@ -84,7 +84,7 @@ msgid "Add (object list)"
 msgstr "Aggiungi"
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
+# defaultMessage: To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see
 msgid "Add Addons"
 msgstr "Aggiungi Add-ons"
 
@@ -2089,7 +2089,7 @@ msgid "My email is"
 msgstr "La mia email è"
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: My username is
+# defaultMessage: My user name is
 msgid "My username is"
 msgstr "Il mio nome utente è"
 
@@ -4194,7 +4194,7 @@ msgid "label_my_email_is"
 msgstr "La mia email è"
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: My username is
+# defaultMessage: My user name is
 msgid "label_my_username_is"
 msgstr "Il mio nome utente è"
 
