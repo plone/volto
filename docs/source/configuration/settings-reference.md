@@ -374,6 +374,9 @@ additionalToolbarComponents
       }}
     </Plug>
     ```
+blockSettingsTabFieldsetsInitialStateOpen
+    A Boolean, `true` by default.
+    The fieldsets in the blocks settings tab start by default as non-collapsed (opened), you can decide to have them collapsed (closed) by default setting this to `false`.
 ```
 
 
