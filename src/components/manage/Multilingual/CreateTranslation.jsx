@@ -6,7 +6,7 @@ import {
   getTranslationLocator,
   getContent,
 } from '@plone/volto/actions';
-import { flattenToAppURL, normalizeLanguageName } from '@plone/volto/helpers';
+import { flattenToAppURL, toGettextLang } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 const CreateTranslation = (props) => {
@@ -33,7 +33,7 @@ const CreateTranslation = (props) => {
     return () => {
       // We change the interface language
       if (config.settings.supportedLanguages.includes(language)) {
-        const langFileName = normalizeLanguageName(language);
+        const langFileName = toGettextLang(language);
         import('@root/../locales/' + langFileName + '.json').then((locale) => {
           dispatch(changeLanguage(language, locale.default));
         });
