@@ -23,6 +23,7 @@ import {
 } from 'semantic-ui-react';
 
 import { SelectWidget, Icon, DatetimeWidget } from '@plone/volto/components';
+import { toBackendLang } from '@plone/volto/helpers';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import saveSVG from '@plone/volto/icons/save.svg';
@@ -183,7 +184,7 @@ class RecurrenceWidget extends Component {
     const { RRuleSet, rrulestr } = props.rrule;
 
     this.moment = this.props.moment.default;
-    this.moment.locale(this.props.lang);
+    this.moment.locale(toBackendLang(this.props.lang));
 
     let rruleSet = this.props.value
       ? rrulestr(props.value, {
@@ -201,7 +202,11 @@ class RecurrenceWidget extends Component {
       open: false,
       rruleSet: rruleSet,
       formValues: this.getFormValues(rruleSet),
-      RRULE_LANGUAGE: rrulei18n(this.props.intl, this.moment, this.props.lang),
+      RRULE_LANGUAGE: rrulei18n(
+        this.props.intl,
+        this.moment,
+        toBackendLang(this.props.lang),
+      ),
     };
   }
 
