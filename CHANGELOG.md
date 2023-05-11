@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 17.0.0-alpha.7 (2023-05-11)
+
+### Bugfix
+
+- Fix language negotiation for language codes that include a region (e.g. `pt-br`). @davisagli [#4644](https://github.com/plone/volto/issues/4644)
+
+
 ## 17.0.0-alpha.6 (2023-05-11)
 
 ### Feature
