@@ -1,1 +1,0 @@
-Fix language negotiation for language codes that include a region (e.g. `pt-br`). @davisagli
