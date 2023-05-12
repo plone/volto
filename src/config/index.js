@@ -180,6 +180,8 @@ let config = {
     styleClassNameConverters,
     hashLinkSmoothScroll: false,
     styleClassNameExtenders,
+    querystringSearchGet: false,
+    blockSettingsTabFieldsetsInitialStateOpen: true,
   },
   experimental: {
     addBlockButton: {
