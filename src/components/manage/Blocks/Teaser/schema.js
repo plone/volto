@@ -24,7 +24,7 @@ const messages = defineMessages({
   },
   head_title: {
     id: 'head_title',
-    defaultMessage: 'Head title',
+    defaultMessage: 'head title',
   },
   teaser: {
     id: 'Teaser',
@@ -33,6 +33,10 @@ const messages = defineMessages({
   align: {
     id: 'Alignment',
     defaultMessage: 'Alignment',
+  },
+  isLive: {
+    id: 'Always show live data',
+    defaultMessage: 'Always show live data',
   },
 });
 
@@ -43,24 +47,20 @@ export const TeaserSchema = ({ intl }) => {
       {
         id: 'default',
         title: 'Default',
-        fields: ['href', 'title', 'head_title', 'description', 'preview_image'],
+        fields: ['is_live', 'href', 'title', 'head_title', 'description', 'preview_image'],
       },
     ],
 
     properties: {
+      is_live: {
+        title: intl.formatMessage(messages.isLive),
+        type: 'boolean',
+      },
       href: {
         title: intl.formatMessage(messages.Target),
         widget: 'object_browser',
         mode: 'link',
-        selectedItemAttrs: [
-          'Title',
-          'head_title',
-          'Description',
-          'hasPreviewImage',
-          'image_field',
-          'image_scales',
-          '@type',
-        ],
+        selectedItemAttrs: ['Title', 'head_title', 'Description', 'hasPreviewImage', 'image_field', 'image_scales', '@type'],
         allowExternals: true,
       },
       title: {
@@ -84,8 +84,12 @@ export const TeaserSchema = ({ intl }) => {
         title: intl.formatMessage(messages.openLinkInNewTab),
         type: 'boolean',
       },
+      overwritten: {
+        type: 'array',
+        default: [],
+      },
     },
-    required: [],
+    required: ['href'],
   };
 
   addStyling({ schema, intl });

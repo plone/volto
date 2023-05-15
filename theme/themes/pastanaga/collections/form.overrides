@@ -2,6 +2,10 @@
          Theme Overrides
 *******************************/
 
+.ui.form .inline.field.overwritten input {
+  background-color: rgb(#edc3c2);
+}
+
 .ui.form .inline.field {
   margin: 0;
 }
