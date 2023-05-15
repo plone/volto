@@ -3,10 +3,10 @@
  * @module components/theme/Header/Header
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import { Container, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector, shallowEqual } from 'react-redux';
 
 import {
   Anontools,
@@ -17,64 +17,72 @@ import {
 } from '@plone/volto/components';
 
 /**
- * Header component class.
- * @class Header
- * @extends Component
- */
-class Header extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    token: PropTypes.string,
-    pathname: PropTypes.string.isRequired,
-  };
+ * Header function.
+ * @function Header
+ * @
+ * @returns {string} Markup of the component.
 
-  /**
-   * Default properties.
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    token: null,
-  };
+ */
+const Header = ({ pathname }) => {
+  const { token } = useSelector(
+    (state) => ({
+      token: state.userSession.token,
+    }),
+    shallowEqual,
+  );
 
   /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
-  render() {
-    return (
-      <Segment basic className="header-wrapper" role="banner">
-        <Container>
-          <div className="header">
-            <div className="logo-nav-wrapper">
-              <div className="logo">
-                <Logo />
-              </div>
-              <Navigation pathname={this.props.pathname} />
+  return (
+    <Segment basic className="header-wrapper" role="banner">
+      <Container>
+        <div className="header">
+          <div className="logo-nav-wrapper">
+            <div className="logo">
+              <Logo />
             </div>
-            <div className="tools-search-wrapper">
-              <LanguageSelector />
-              {!this.props.token && (
-                <div className="tools">
-                  <Anontools />
-                </div>
-              )}
-              <div className="search">
-                <SearchWidget />
+            <Navigation pathname={pathname} />
+          </div>
+          <div className="tools-search-wrapper">
+            <LanguageSelector />
+            {!token && (
+              <div className="tools">
+                <Anontools />
               </div>
+            )}
+            <div className="search">
+              <SearchWidget />
             </div>
           </div>
-        </Container>
-      </Segment>
-    );
-  }
-}
+        </div>
+      </Container>
+    </Segment>
+  );
+};
 
-export default connect((state) => ({
-  token: state.userSession.token,
-}))(Header);
+export default Header;
+
+/**
+ * Property types.
+ * @property {Object} propTypes Property types.
+ * @static
+ */
+
+Header.propTypes = {
+  token: PropTypes.string,
+  pathname: PropTypes.string.isRequired,
+  content: PropTypes.objectOf(PropTypes.any),
+};
+
+/**
+ * Default properties.
+ * @property {Object} defaultProps Default properties.
+ * @static
+ */
+Header.defaultProps = {
+  token: null,
+  content: null,
+};
