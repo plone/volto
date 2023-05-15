@@ -177,7 +177,6 @@ const TeaserData = (props) => {
           aria-label={intl.formatMessage(messages.refreshTeaser)}
           basic
           disabled={refreshed}
-          className={'hidden'}
           onClick={() => refresh()}
         >
           <Icon name={reloadSVG} size="24px" color="grey" />

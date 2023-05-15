@@ -38,6 +38,7 @@ const TeaserDefaultTemplate = (props) => {
   const intl = useIntl();
   const dispatch = useDispatch();
   const [isLive, setIsLive] = useState(false);
+  const [error, setError] = useState(false);
   let href = data.href?.[0];
   let image = data.preview_image?.[0];
   const align = data?.styles?.align;
@@ -48,6 +49,8 @@ const TeaserDefaultTemplate = (props) => {
 
   const Image = config.getComponent('Image').component || DefaultImage;
 
+  console.group(liveData.current, data);
+
   // const live = useSelector((state) => state?.content?.subrequests?.[id]?.data);
 
   useEffect(() => {
@@ -55,7 +58,6 @@ const TeaserDefaultTemplate = (props) => {
       dispatch(getContent(flattenToAppURL(href['@id']), null, id)).then(
         (resp) => {
           if (resp) {
-            href = resp;
             image = resp?.preview_image;
             liveData.current = resp;
 
@@ -66,6 +68,9 @@ const TeaserDefaultTemplate = (props) => {
                 }
               });
               setIsLive(true);
+            }
+            if (resp.status === 200) {
+              setError(true);
             }
           }
         },
@@ -94,11 +99,13 @@ const TeaserDefaultTemplate = (props) => {
           <MaybeWrap
             condition={!isEditMode}
             as={UniversalLink}
-            href={href['@id']}
+            href={liveData.current['@id']}
             target={data?.openLinkInNewTab ? '_blank' : null}
           >
             <div className="teaser-item default">
-              {(href.hasPreviewImage || href.image_field || image) && (
+              {(liveData.current.hasPreviewImage ||
+                liveData.current.image_field ||
+                image) && (
                 <div className="image-wrapper">
                   <Image
                     src={
@@ -132,7 +139,7 @@ const TeaserDefaultTemplate = (props) => {
         )}
       </>
     </div>
-  ) : !alwaysLive ? (
+  ) : !alwaysLive || error ? (
     <div className={cx('block teaser', className)}>
       <>
         {!href && isEditMode && (
