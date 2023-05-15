@@ -15,6 +15,7 @@ import qs from 'query-string';
 import {
   ContentMetadataTags,
   Comments,
+  RelatedItems,
   Tags,
   Toolbar,
 } from '@plone/volto/components';
@@ -254,6 +255,9 @@ class View extends Component {
           this.props.content.subjects.length > 0 && (
             <Tags tags={this.props.content.subjects} />
           )}
+        {config.settings.showRelatedItems && (
+          <RelatedItems relatedItems={this.props.content.relatedItems} />
+        )}
         {/* Add opt-in social sharing if required, disabled by default */}
         {/* In the future this might be parameterized from the app config */}
         {/* <SocialSharing

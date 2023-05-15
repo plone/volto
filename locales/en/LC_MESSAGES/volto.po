@@ -2571,6 +2571,11 @@ msgstr ""
 msgid "Registration form"
 msgstr ""
 
+#: components/theme/RelatedItems/RelatedItems
+# defaultMessage: Related Items
+msgid "Related Items"
+msgstr ""
+
 #: components/theme/Search/Search
 # defaultMessage: Relevance
 msgid "Relevance"
