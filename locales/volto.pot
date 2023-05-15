@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2023-04-11T15:49:07.488Z\n"
+"POT-Creation-Date: 2023-05-15T07:04:19.612Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -39,7 +39,7 @@ msgid "Action changed"
 msgstr ""
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Action: 
+# defaultMessage: Action:
 msgid "Action: "
 msgstr ""
 
@@ -661,7 +661,7 @@ msgid "Condition changed"
 msgstr ""
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Condition: 
+# defaultMessage: Condition:
 msgid "Condition: "
 msgstr ""
 
@@ -2779,6 +2779,11 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Saved
 msgid "Saved"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Scheduled
+msgid "Scheduled"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypesActions

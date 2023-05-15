@@ -2787,6 +2787,11 @@ msgstr "繰り返しを保存"
 msgid "Saved"
 msgstr ""
 
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Scheduled
+msgid "Scheduled"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypesActions
 # defaultMessage: Schema
 msgid "Schema"
