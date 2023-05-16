@@ -4,49 +4,7 @@
  */
 import debug from 'debug';
 import { compact } from 'lodash';
-import {
-  Add,
-  AddonsControlpanel,
-  Aliases,
-  ChangePassword,
-  ContactForm,
-  Contents,
-  ContentType,
-  ContentTypeLayout,
-  ContentTypeSchema,
-  ContentTypes,
-  Controlpanel,
-  Controlpanels,
-  CreateTranslation,
-  DatabaseInformation,
-  Delete,
-  Diff,
-  Edit,
-  History,
-  Login,
-  Logout,
-  ManageTranslations,
-  ModerateComments,
-  NotFound,
-  PasswordReset,
-  Register,
-  Rules,
-  RequestPasswordReset,
-  Search,
-  Sharing,
-  Sitemap,
-  AliasesControlpanel,
-  UndoControlpanel,
-  UsersControlpanel,
-  UserGroupMembershipControlPanel,
-  GroupsControlpanel,
-  RulesControlpanel,
-  AddRuleControlpanel,
-  EditRuleControlpanel,
-  ConfigureRuleControlpanel,
-  UpgradeControlPanel,
-  PersonalInformation,
-} from '@plone/volto/components';
+import { Add, AddonsControlpanel, Aliases, ChangePassword, ContactForm, Contents, ContentType, ContentTypeLayout, ContentTypeSchema, ContentTypes, Controlpanel, Controlpanels, CreateTranslation, DatabaseInformation, Delete, Diff, Edit, History, Login, Logout, ManageTranslations, ModerateComments, NotFound, PasswordReset, Register, Rules, RequestPasswordReset, Search, Sharing, Sitemap, AliasesControlpanel, UndoControlpanel, UsersControlpanel, UserGroupMembershipControlPanel, GroupsControlpanel, RulesControlpanel, AddRuleControlpanel, EditRuleControlpanel, ConfigureRuleControlpanel, UpgradeControlPanel, PersonalInformation, MissingTranslations } from '@plone/volto/components';
 
 // Deliberatelly use of absolute path of these components, since we do not want them
 // in the components/index.js file.
@@ -87,11 +45,13 @@ export const multilingualRoutes = [
     exact: true,
   },
   {
-    path: `/(${config.settings?.supportedLanguages.join(
-      '|',
-    )})/passwordreset/:token`,
+    path: `/(${config.settings?.supportedLanguages.join('|')})/passwordreset/:token`,
     component: PasswordReset,
     exact: true,
+  },
+  {
+    path: ['/missing-translations', '/**/missing-translations'],
+    component: MissingTranslations,
   },
 ];
 
@@ -104,18 +64,13 @@ export function getExternalRoutes() {
       if (typeof route.match === 'string') {
         newRoute.path = route.match;
         return newRoute;
-      } else if (
-        typeof route.match === 'object' &&
-        !Array.isArray(route.match)
-      ) {
+      } else if (typeof route.match === 'object' && !Array.isArray(route.match)) {
         return {
           ...newRoute,
           ...route.match,
         };
       } else {
-        debug('routes')(
-          'Got invalid externalRoute, please check the configuration.',
-        );
+        debug('routes')('Got invalid externalRoute, please check the configuration.');
         return null;
       }
     }),
@@ -307,6 +262,10 @@ export const defaultRoutes = [
     path: '*',
     component: NotFound,
   },
+  // {
+  //   path: ['/missing-translations', '/**/missing-translations'],
+  //   component: MissingTranslations,
+  // },
 ];
 
 /**

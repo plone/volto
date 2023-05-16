@@ -19,13 +19,7 @@ const messages = defineMessages({
   },
 });
 
-const CompareLanguagesMenu = ({
-  theToolbar,
-  translations,
-  comparingLanguage,
-  setComparingLanguage,
-  closeMenu,
-}) => {
+const CompareLanguagesMenu = ({ theToolbar, translations, comparingLanguage, setComparingLanguage, closeMenu }) => {
   const intl = useIntl();
 
   const ClickOutsideListener = () => {
@@ -42,9 +36,7 @@ const CompareLanguagesMenu = ({
       className="toolbar-content show compare-languages"
       ref={ref}
       style={{
-        flex: theToolbar.current
-          ? `0 0 ${theToolbar.current.getBoundingClientRect().width}px`
-          : null,
+        flex: theToolbar.current ? `0 0 ${theToolbar.current.getBoundingClientRect().width}px` : null,
       }}
     >
       <div className="pastanaga-menu">
@@ -55,12 +47,8 @@ const CompareLanguagesMenu = ({
               <li key={t['@id']}>
                 {comparingLanguage === t.language ? (
                   <button
-                    aria-label={`${intl.formatMessage(messages.stop_compare)} ${
-                      langmap[t.language].nativeName
-                    }`}
-                    title={`${intl.formatMessage(messages.stop_compare)} ${
-                      langmap[t.language].nativeName
-                    }`}
+                    aria-label={`${intl.formatMessage(messages.stop_compare)} ${langmap[t.language].nativeName}`}
+                    title={`${intl.formatMessage(messages.stop_compare)} ${langmap[t.language].nativeName}`}
                     onClick={() => {
                       setComparingLanguage(null);
                       closeMenu();
@@ -71,12 +59,8 @@ const CompareLanguagesMenu = ({
                   </button>
                 ) : (
                   <button
-                    aria-label={`${intl.formatMessage(
-                      messages.compare_to,
-                    )} ${langmap[t.language].nativeName.toLowerCase()}`}
-                    title={`${intl.formatMessage(
-                      messages.compare_to,
-                    )} ${langmap[t.language].nativeName.toLowerCase()}`}
+                    aria-label={`${intl.formatMessage(messages.compare_to)} ${langmap[t.language].nativeName.toLowerCase()}`}
+                    title={`${intl.formatMessage(messages.compare_to)} ${langmap[t.language].nativeName.toLowerCase()}`}
                     onClick={() => {
                       setComparingLanguage(t.language);
                       closeMenu();
@@ -95,19 +79,11 @@ const CompareLanguagesMenu = ({
 };
 
 const CompareLanguages = React.forwardRef((props, ref) => {
-  const {
-    content,
-    comparingLanguage,
-    setComparingLanguage,
-    pathname,
-    toolbarRef,
-  } = props;
+  const { content, comparingLanguage, setComparingLanguage, pathname, toolbarRef } = props;
 
   const intl = useIntl();
   const [viewMenu, setViewMenu] = useState(false);
-  const translations = config.settings.isMultilingual
-    ? content?.['@components']?.translations?.items || []
-    : [];
+  const translations = config.settings.isMultilingual ? content?.['@components']?.translations?.items || [] : [];
 
   const translationsObject = {};
   translations.forEach((t) => {
@@ -129,11 +105,7 @@ const CompareLanguages = React.forwardRef((props, ref) => {
           className="toolbar-button-compare-translations"
         >
           <Icon className="mobile hidden" name={translateSVG} size="30px" />
-          {viewMenu ? (
-            <Icon className="mobile only" name={clearSVG} size="30px" />
-          ) : (
-            <Icon className="mobile only" name={translateSVG} size="30px" />
-          )}
+          {viewMenu ? <Icon className="mobile only" name={clearSVG} size="30px" /> : <Icon className="mobile only" name={translateSVG} size="30px" />}
         </Button>
 
         {viewMenu && (

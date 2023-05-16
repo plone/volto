@@ -4,32 +4,16 @@
  */
 import { parse as parseUrl } from 'url';
 import { defaultWidget, widgetMapping } from './Widgets';
-import {
-  layoutViews,
-  contentTypesViews,
-  defaultView,
-  errorViews,
-  layoutViewsNamesMapping,
-} from './Views';
+import { layoutViews, contentTypesViews, defaultView, errorViews, layoutViewsNamesMapping } from './Views';
 import { nonContentRoutes } from './NonContentRoutes';
-import {
-  groupBlocksOrder,
-  requiredBlocks,
-  blocksConfig,
-  initialBlocks,
-  initialBlocksFocus,
-} from './Blocks';
+import { groupBlocksOrder, requiredBlocks, blocksConfig, initialBlocks, initialBlocksFocus } from './Blocks';
 import { components } from './Components';
 import { loadables } from './Loadables';
 import { workflowMapping } from './Workflows';
 
 import { contentIcons } from './ContentIcons';
 import { styleClassNameConverters, styleClassNameExtenders } from './Style';
-import {
-  controlPanelsIcons,
-  filterControlPanels,
-  filterControlPanelsSchema,
-} from './ControlPanels';
+import { controlPanelsIcons, filterControlPanels, filterControlPanelsSchema } from './ControlPanels';
 
 import { richtextEditorSettings, richtextViewSettings } from './RichTextEditor';
 
@@ -40,16 +24,12 @@ import ConfigRegistry from '@plone/volto/registry';
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || '3000';
 
-const apiPath =
-  process.env.RAZZLE_API_PATH ||
-  (__DEVELOPMENT__ ? `http://${host}:${port}` : '');
+const apiPath = process.env.RAZZLE_API_PATH || (__DEVELOPMENT__ ? `http://${host}:${port}` : '');
 
 const getServerURL = (url) => {
   if (!url) return;
   const apiPathURL = parseUrl(url);
-  return `${apiPathURL.protocol}//${apiPathURL.hostname}${
-    apiPathURL.port ? `:${apiPathURL.port}` : ''
-  }`;
+  return `${apiPathURL.protocol}//${apiPathURL.hostname}${apiPathURL.port ? `:${apiPathURL.port}` : ''}`;
 };
 
 // Sensible defaults for publicURL
@@ -57,16 +37,9 @@ const getServerURL = (url) => {
 // if in DEV, use the host/port combination by default
 // if in PROD, assume it's RAZZLE_API_PATH server name (no /api or alikes) or fallback
 // to DEV settings if RAZZLE_API_PATH is not present
-const publicURL =
-  process.env.RAZZLE_PUBLIC_URL ||
-  (__DEVELOPMENT__
-    ? `http://${host}:${port}`
-    : getServerURL(process.env.RAZZLE_API_PATH) || `http://${host}:${port}`);
+const publicURL = process.env.RAZZLE_PUBLIC_URL || (__DEVELOPMENT__ ? `http://${host}:${port}` : getServerURL(process.env.RAZZLE_API_PATH) || `http://${host}:${port}`);
 
-const serverConfig =
-  typeof __SERVER__ !== 'undefined' && __SERVER__
-    ? require('./server').default
-    : {};
+const serverConfig = typeof __SERVER__ !== 'undefined' && __SERVER__ ? require('./server').default : {};
 
 let config = {
   settings: {
@@ -87,11 +60,7 @@ let config = {
     // In production is recommended you use a Seamless mode deployment using a web server in
     // front of both the frontend and the backend so you can bypass CORS safely.
     // https://6.docs.plone.org/volto/deploying/seamless-mode.html
-    devProxyToApiPath:
-      process.env.RAZZLE_DEV_PROXY_API_PATH ||
-      process.env.RAZZLE_INTERNAL_API_PATH ||
-      process.env.RAZZLE_API_PATH ||
-      'http://localhost:8080/Plone', // Set it to '' for disabling the proxy
+    devProxyToApiPath: process.env.RAZZLE_DEV_PROXY_API_PATH || process.env.RAZZLE_INTERNAL_API_PATH || process.env.RAZZLE_API_PATH || 'http://localhost:8080/Plone', // Set it to '' for disabling the proxy
     // proxyRewriteTarget Set it for set a custom target for the proxy or overide the internal VHM rewrite
     // proxyRewriteTarget: '/VirtualHostBase/http/localhost:8080/Plone/VirtualHostRoot/_vh_api'
     // proxyRewriteTarget: 'https://myvoltositeinproduction.com'
@@ -115,9 +84,9 @@ let config = {
     openExternalLinkInNewTab: false,
     notSupportedBrowsers: ['ie'],
     defaultPageSize: 25,
-    isMultilingual: false,
-    supportedLanguages: ['en'],
-    defaultLanguage: 'en',
+    isMultilingual: true,
+    supportedLanguages: ['en', 'de'],
+    defaultLanguage: 'de',
     navDepth: 1,
     expressMiddleware: serverConfig.expressMiddleware, // BBB
     defaultBlockType: 'slate',
@@ -138,15 +107,7 @@ let config = {
         'reactBeautifulDnd',
         // 'diffLib',
       ],
-      draftEditor: [
-        'immutableLib',
-        'draftJs',
-        'draftJsLibIsSoftNewlineEvent',
-        'draftJsFilters',
-        'draftJsInlineToolbarPlugin',
-        'draftJsImportHtml',
-        'draftJsBlockBreakoutPlugin',
-      ],
+      draftEditor: ['immutableLib', 'draftJs', 'draftJsLibIsSoftNewlineEvent', 'draftJsFilters', 'draftJsInlineToolbarPlugin', 'draftJsImportHtml', 'draftJsBlockBreakoutPlugin'],
     },
     appExtras: [],
     maxResponseSize: 2000000000, // This is superagent default (200 mb)

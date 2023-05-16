@@ -4,7 +4,6 @@
  */
 
 import { GET_MISSING_TRANSLATIONS } from '@plone/volto/constants/ActionTypes';
-import { flattenToAppURL, getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
 
 const initialState = {
   error: null,
@@ -21,7 +20,6 @@ const initialState = {
  * @returns {Object} New state.
  */
 export default function missingtranslations(state = initialState, action = {}) {
-  let hasExpander;
   switch (action.type) {
     case `${GET_MISSING_TRANSLATIONS}_PENDING`:
       return {
@@ -32,18 +30,16 @@ export default function missingtranslations(state = initialState, action = {}) {
         missingtranslations: [],
       };
     case `${GET_MISSING_TRANSLATIONS}_SUCCESS`:
-      hasExpander = hasApiExpander('types', getBaseUrl(flattenToAppURL(action.result['@id'])));
-      if (hasExpander && !action.subrequest) {
-        return {
-          ...state,
-          error: null,
-          loading: false,
-          loaded: true,
-          missingtranslations: action.result,
-        };
-      }
+      return {
+        ...state,
+        error: null,
+        loading: false,
+        loaded: true,
+        missingtranslations: action.result,
+      };
+
       return state;
-    case `${GET_TYPES}_FAIL`:
+    case `${GET_MISSING_TRANSLATIONS}_FAIL`:
       return {
         ...state,
         error: action.error,

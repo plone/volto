@@ -10,26 +10,13 @@ import React from 'react';
 import config from '@plone/volto/registry';
 import { loadables } from '@plone/volto/config/Loadables';
 import { nonContentRoutes } from '@plone/volto/config/NonContentRoutes';
-import ToHTMLRenderers, {
-  options as ToHTMLOptions,
-} from '@plone/volto/config/RichTextEditor/ToHTML';
-import {
-  extendedBlockRenderMap,
-  blockStyleFn,
-  listBlockTypes,
-} from '@plone/volto/config/RichTextEditor/Blocks';
+import ToHTMLRenderers, { options as ToHTMLOptions } from '@plone/volto/config/RichTextEditor/ToHTML';
+import { extendedBlockRenderMap, blockStyleFn, listBlockTypes } from '@plone/volto/config/RichTextEditor/Blocks';
 import FromHTMLCustomBlockFn from '@plone/volto/config/RichTextEditor/FromHTML';
 import { contentIcons } from '@plone/volto/config/ContentIcons';
-import {
-  styleClassNameConverters,
-  styleClassNameExtenders,
-} from '@plone/volto/config/Style';
+import { styleClassNameConverters, styleClassNameExtenders } from '@plone/volto/config/Style';
 
-import {
-  controlPanelsIcons,
-  filterControlPanels,
-  filterControlPanelsSchema,
-} from '@plone/volto/config/ControlPanels';
+import { controlPanelsIcons, filterControlPanels, filterControlPanelsSchema } from '@plone/volto/config/ControlPanels';
 
 import ListingBlockSchema from '@plone/volto/components/manage/Blocks/Listing/schema';
 
@@ -93,9 +80,7 @@ config.set('blocks', {
           id: 'default',
           isDefault: true,
           title: 'Default',
-          template: () => (
-            <div className="mocked-default-listing-template"></div>
-          ),
+          template: () => <div className="mocked-default-listing-template"></div>,
         },
         {
           id: 'imageGallery',
@@ -105,9 +90,7 @@ config.set('blocks', {
         {
           id: 'summary',
           title: 'Summary',
-          template: () => (
-            <div className="mocked-summary-listing-template"></div>
-          ),
+          template: () => <div className="mocked-summary-listing-template"></div>,
         },
       ],
     },

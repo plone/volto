@@ -63,9 +63,7 @@ export FileView from '@plone/volto/components/theme/View/FileView';
 export ImageView from '@plone/volto/components/theme/View/ImageView';
 export NewsItemView from '@plone/volto/components/theme/View/NewsItemView';
 
-export const EventView = loadable(() =>
-  import('@plone/volto/components/theme/View/EventView'),
-);
+export const EventView = loadable(() => import('@plone/volto/components/theme/View/EventView'));
 
 export ListingView from '@plone/volto/components/theme/View/ListingView';
 export SummaryView from '@plone/volto/components/theme/View/SummaryView';
@@ -120,6 +118,7 @@ export More from '@plone/volto/components/manage/Toolbar/More';
 export Types from '@plone/volto/components/manage/Toolbar/Types';
 export Toast from '@plone/volto/components/manage/Toast/Toast';
 export ManageTranslations from '@plone/volto/components/manage/Multilingual/ManageTranslations';
+export MissingTranslations from '@plone/volto/components/manage/MissingTranslations/MissingTranslations';
 
 // Potentially could ve removed from index, since they are internal components and
 // we don't want them to end up in the main chunk
@@ -149,14 +148,8 @@ export FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWr
 export ArrayWidget from '@plone/volto/components/manage/Widgets/ArrayWidget';
 export CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidget';
 
-export const DatetimeWidget = loadable(() =>
-  import('@plone/volto/components/manage/Widgets/DatetimeWidget'),
-);
-export const RecurrenceWidget = loadable(() =>
-  import(
-    '@plone/volto/components/manage/Widgets/RecurrenceWidget/RecurrenceWidget'
-  ),
-);
+export const DatetimeWidget = loadable(() => import('@plone/volto/components/manage/Widgets/DatetimeWidget'));
+export const RecurrenceWidget = loadable(() => import('@plone/volto/components/manage/Widgets/RecurrenceWidget/RecurrenceWidget'));
 
 export FileWidget from '@plone/volto/components/manage/Widgets/FileWidget';
 export IdWidget from '@plone/volto/components/manage/Widgets/IdWidget';

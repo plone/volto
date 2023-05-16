@@ -7,20 +7,16 @@ import { GET_MISSING_TRANSLATIONS } from '@plone/volto/constants/ActionTypes';
 
 /**
  * Get types function.
- * @function getTypes
+ * @function getMissingTranslations
  * @param {string} url Content url.
- * @returns {Object} Get types action.
+ * @returns {Object} Get missingtranslations action.
  */
 export function getMissingTranslations(url) {
-  return (dispatch, getState) => {
-    if (getState().userSession.token) {
-      dispatch({
-        type: GET_MISSING_TRANSLATIONS,
-        request: {
-          op: 'get',
-          path: `${url}/@missing-translations`,
-        },
-      });
-    }
+  return {
+    type: GET_MISSING_TRANSLATIONS,
+    request: {
+      op: 'get',
+      path: `${url}/@missing-translations`,
+    },
   };
 }
