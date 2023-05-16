@@ -52,8 +52,15 @@ export default function Image({
         else return 0;
       });
 
+      const useBaseUrl = image.download.startsWith('@@images');
+
       attrs.srcSet = sortedScales
-        .map((scale) => `${flattenToAppURL(scale.download)} ${scale.width}w`)
+        .map(
+          (scale) =>
+            `${useBaseUrl ? baseUrl : ''}${flattenToAppURL(scale.download)} ${
+              scale.width
+            }w`,
+        )
         .join(', ');
     }
   }
