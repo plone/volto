@@ -1,34 +1,26 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 
 import { flattenToAppURL } from '@plone/volto/helpers';
+import { Image } from '@plone/volto/components';
 import config from '@plone/volto/registry';
 
 import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/default-image.svg';
 
 /**
  * Renders a preview image for a catalog brain result item.
- *
  */
-function PreviewImage(props) {
-  const { item, size = 'preview', alt, ...rest } = props;
-
-  if (item.image_field) {
-    const { width, height, download } =
-      item.image_scales?.[item.image_field]?.[0]?.scales[size] ??
-      item.image_scales?.[item.image_field]?.[0] ??
-      {};
+function PreviewImage({ item, alt, ...rest }) {
+  if (item.image_field && item.image_scales?.[item.image_field]?.[0]) {
+    const image = item.image_scales[item.image_field][0];
 
     return (
-      <img
-        src={flattenToAppURL(
-          download ??
-            `${item['@id']}/@@images/${item.image_field}/${size}?modified=${item.modified}`,
-        )}
-        alt={alt ?? item.title}
+      <Image
+        image={image}
+        baseUrl={flattenToAppURL(item['@id'])}
+        alt={alt}
         {...rest}
-        width={width}
-        height={height}
+        width={image.width}
+        height={image.height}
       />
     );
   } else {
@@ -40,7 +32,7 @@ function PreviewImage(props) {
             dependencies: ['listing', 'summary'],
           }).component || DefaultImageSVG
         }
-        alt={alt ?? item.title}
+        alt={alt}
         {...rest}
         width="400"
         height="300"
@@ -50,12 +42,13 @@ function PreviewImage(props) {
 }
 
 PreviewImage.propTypes = {
-  size: PropTypes.string,
   item: PropTypes.shape({
     '@id': PropTypes.string.isRequired,
-    image_field: PropTypes.string,
     title: PropTypes.string.isRequired,
+    image_field: PropTypes.string,
+    image_scales: PropTypes.object,
   }),
+  alt: PropTypes.string.isRequired,
 };
 
 export default PreviewImage;

@@ -1,140 +1,76 @@
-import React, { /* useState, useEffect, useCallback, */ useRef } from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
-import { getImageAttributes } from '@plone/volto/components/theme/Image/utils';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 /**
  * Image component
  * @param {object | string} image - Plone image as object or url
- * @param {string} alt - Alternative text for image
- * @param {string} className - CSS class attribute
- * @param {string} pictureClassName - CSS class attribute for picture element
- * @param {string} size - (default: full) Size of image: can be small, medium, large, full
- * @param {string} responsive - if the image is responsive it adapts to the container
- * @param {string} role - img role attribute
- * @param {boolean} loading - (default: eager) if set to `lazy`, the srcset is loaded when the image is in the viewport
+ * @param {string} baseUrl - Base URL of the image item (the part before /@@images)
+ * @param {string} alt - Alternative text for the image
+ * @param {boolean} loading - (default: eager) set to `lazy` to lazy load the image
  */
-const Image = ({
+export default function Image({
   image,
+  baseUrl = '',
   alt = '',
-  className,
-  pictureClassName,
-  size = 'full',
-  responsive = true,
-  role = 'img',
   loading = 'eager',
   ...imageProps
-}) => {
-  const { src, srcSet, width, height } = getImageAttributes(image, size);
-  const imageRef = useRef();
-  // const [srcset, setSrcset] = useState(
-  //   critical && srcSet ? srcSet.join(', ') : null,
-  // );
-  // const imageHasLoaded = imageRef.current?.complete;
+}) {
+  // TypeScript hints for editor autocomplete :)
+  /** @type {React.ImgHTMLAttributes<HTMLImageElement>} */
+  const attrs = {};
 
-  //apply srcset
-  // const applySrcSet = useCallback(() => {
-  //   setSrcset(
-  //     srcSet
-  //       .filter((s, index) => {
-  //         let addable = (ss) => {
-  //           let devicePixelRatio = window.devicePixelRatio;
+  let imageType = 'external';
+  /**
+   * Same result as checking `typeof image === 'object' && !Array.isArray(image)`
+   * but in just one call
+   */
+  if (Object.prototype.toString.call(image) === '[object Object]') {
+    if (image['content-type'] === 'image/svg+xml') {
+      imageType = 'svg';
+    } else if (image.scales && Object.keys(image.scales).length > 0) {
+      imageType = 'imageObject';
+    }
+  }
 
-  //           let w = ss ? parseInt(ss.split(' ')[1].replace('w', ''), 10) : null;
+  if (imageType === 'external' && typeof image === 'string') {
+    attrs.src = image;
+  } else {
+    attrs.src = flattenToAppURL(image.download);
+    attrs.width = image.width;
+    attrs.height = image.height;
+    attrs.style = {
+      aspectRatio: `${image.width} / ${image.height}`,
+      ...imageProps.style,
+    };
 
-  //           return w
-  //             ? w <=
-  //                 (imageRef?.current?.width * devicePixelRatio ?? Infinity) ||
-  //                 w <=
-  //                   (imageRef?.current?.height * devicePixelRatio ?? Infinity)
-  //             : false;
-  //         };
+    if (imageType === 'imageObject') {
+      attrs.src = image.download;
 
-  //         let add = addable(s);
+      const sortedScales = Object.values(image.scales).sort((a, b) => {
+        if (a.width > b.width) return 1;
+        else if (a.width < b.width) return -1;
+        else return 0;
+      });
 
-  //         return add;
-  //       })
-  //       .join(', '),
-  //   );
-  // }, [srcSet]);
+      attrs.srcSet = sortedScales
+        .map((scale) => `${flattenToAppURL(scale.download)} ${scale.width}w`)
+        .join(', ');
+    }
+  }
 
-  //intersection observer
-  // useEffect(() => {
-  //   if ('IntersectionObserver' in window && !srcset) {
-  //     const observer = new IntersectionObserver(
-  //       (entries) => {
-  //         setTimeout(() => {
-  //           if (
-  //             entries[0].isIntersecting === true &&
-  //             //imageRef?.current?.complete && //removed to load images on top of the page.
-  //             (!srcset || srcset?.split(', ')?.length < 2) &&
-  //             srcSet?.length > 0
-  //           ) {
-  //             applySrcSet();
-  //           }
-  //         }, 10);
-  //       },
-  //       { threshold: [0], rootMargin: '100px' },
-  //     );
-  //     observer.observe(imageRef.current);
-  //   } else if (srcSet?.length > 0) {
-  //     applySrcSet();
-  //   }
-  // }, [imageRef, applySrcSet, imageHasLoaded, srcSet, srcset]);
+  if (loading === 'lazy') {
+    attrs.loading = 'lazy';
+    attrs.decoding = 'async';
+  } else {
+    attrs.fetchpriority = 'high';
+  }
 
-  return (
-    <>
-      <picture
-        className={cx('volto-image', {
-          pictureClassName,
-          responsive,
-        })}
-      >
-        {loading === 'eager' && srcSet.length > 0 && (
-          <source srcSet={srcSet} sizes="100vw" />
-        )}
-        <img
-          src={src}
-          alt={alt}
-          className={className}
-          role={role}
-          width={width}
-          height={height}
-          {...imageProps}
-          ref={imageRef}
-        />
-        {/* {loading === 'lazy' && (
-          <noscript
-            dangerouslySetInnerHTML={{
-              __html: `
-                <img
-                  src="${src}"
-                  ${srcSet?.length > 0 && `srcset="${srcSet.join(', ')}"`}
-                  alt="${alt}"
-                  class="${className || ''}"
-                  role="${role}"
-                  ${width ? `width="${width}` : ''}
-                  ${height ? `height="${height}` : ''}
-                  loading="lazy"
-                />
-              `,
-            }}
-          />
-        )} */}
-      </picture>
-    </>
-  );
-};
+  return <img {...attrs} alt={alt} {...imageProps} />;
+}
 
 Image.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
-  alt: PropTypes.string,
-  className: PropTypes.string,
-  pictureClassName: PropTypes.string,
-  size: PropTypes.string,
-  responsive: PropTypes.bool,
-  role: PropTypes.string,
+  baseUrl: PropTypes.string,
+  alt: PropTypes.string.isRequired,
   loading: PropTypes.bool,
 };
-
-export default Image;

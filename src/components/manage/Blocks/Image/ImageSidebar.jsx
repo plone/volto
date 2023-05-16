@@ -47,10 +47,18 @@ const ImageSidebar = (props) => {
         schema={schema}
         title={schema.title}
         onChangeField={(id, value) => {
-          onChangeBlock(block, {
-            ...data,
-            [id]: value,
-          });
+          if (id === 'image') {
+            onChangeBlock(block, {
+              ...data,
+              alt: data.alt || value?.title,
+              [id]: value?.image_scales[value?.image_field]?.[0],
+            });
+          } else {
+            onChangeBlock(block, {
+              ...data,
+              [id]: value,
+            });
+          }
         }}
         onChangeBlock={onChangeBlock}
         formData={data}
