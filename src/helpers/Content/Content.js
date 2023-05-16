@@ -63,7 +63,7 @@ export function getContentIcon(type, isFolderish, forceFolderIcon) {
 
   // Allows UX affordance to indicate a branch vs leaf node in folder contents.
   if (forceFolderIcon) {
-    return contentIcons.Folder
+    return contentIcons.Folder;
   }
 
   if (type in contentIcons) return contentIcons[type];
