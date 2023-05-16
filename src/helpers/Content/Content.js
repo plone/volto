@@ -60,7 +60,7 @@ export function getLayoutFieldname(props) {
 export function getContentIcon(type, isFolderish, forceFolderIcon) {
   const { settings } = config;
   const { contentIcons } = settings;
-  
+
   // Allows UX affordance to indicate a branch vs leaf node in folder contents.
   if (forceFolderIcon) {
     return contentIcons.Folder
