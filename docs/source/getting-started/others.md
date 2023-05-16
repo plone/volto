@@ -30,8 +30,7 @@ You can watch the talk during the World Plone Day 2021:
 
 ## Presentations at Plone Conferences (PloneConf) and other events
 
-In recent years the react based Volto frontend for Plone has been presented in more and more talks at
-our yearly Conferences:
+In recent years the React based Volto frontend for Plone has been presented in more and more talks at our yearly Conferences.
 
 ### PloneConf 2022
 

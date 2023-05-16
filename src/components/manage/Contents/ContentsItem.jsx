@@ -169,6 +169,12 @@ export const ContentsItemComponent = ({
                   <FormattedMessage id="Expired" defaultMessage="Expired" />
                 </Button>
               )}
+            {item.EffectiveDate !== 'None' &&
+              new Date(item.EffectiveDate).getTime() > new Date().getTime() && (
+                <Button className="button-margin effective-future" size="mini">
+                  <FormattedMessage id="Scheduled" defaultMessage="Scheduled" />
+                </Button>
+              )}
           </Link>
         </Table.Cell>
         {map(indexes, (index) => (
