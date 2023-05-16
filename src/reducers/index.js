@@ -22,6 +22,7 @@ import form from '@plone/volto/reducers/form/form';
 import history from '@plone/volto/reducers/history/history';
 import groups from '@plone/volto/reducers/groups/groups';
 import messages from '@plone/volto/reducers/messages/messages';
+import missingtranslations from '@plone/volto/reducers/missingtranslations/missingtranslations';
 import navigation from '@plone/volto/reducers/navigation/navigation';
 import querystring from '@plone/volto/reducers/querystring/querystring';
 import querystringsearch from '@plone/volto/reducers/querystringsearch/querystringsearch';
@@ -77,6 +78,7 @@ const reducers = {
   groups,
   history,
   messages,
+  missingtranslations,
   navigation,
   querystring,
   querystringsearch,
