@@ -796,12 +796,11 @@ class Contents extends Component {
    */
   onMoveToTop(event, { value }) {
     const id = this.state.items[value]['@id'];
-    value = this.state.currentPage * this.state.pageSize + value;
     this.props
       .orderContent(
         getBaseUrl(this.props.pathname),
         id.replace(/^.*\//, ''),
-        -value,
+        'top',
       )
       .then(() => {
         this.setState(
@@ -821,18 +820,21 @@ class Contents extends Component {
    * @returns {undefined}
    */
   onMoveToBottom(event, { value }) {
-    this.onOrderItem(
-      this.state.items[value]['@id'],
-      value,
-      this.state.items.length - 1 - value,
-      false,
-    );
-    this.onOrderItem(
-      this.state.items[value]['@id'],
-      value,
-      this.state.items.length - 1 - value,
-      true,
-    );
+    const id = this.state.items[value]['@id'];
+    this.props
+      .orderContent(
+        getBaseUrl(this.props.pathname),
+        id.replace(/^.*\//, ''),
+        'bottom',
+      )
+      .then(() => {
+        this.setState(
+          {
+            currentPage: 0,
+          },
+          () => this.fetchContents(),
+        );
+      });
   }
 
   /**
@@ -1011,6 +1013,7 @@ class Contents extends Component {
         sort_order: this.state.sort_order,
         metadata_fields: '_all',
         b_size: 100000000,
+        show_inactive: true,
         ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
       });
     } else {
@@ -1022,6 +1025,7 @@ class Contents extends Component {
         ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
         b_size: this.state.pageSize,
         b_start: this.state.currentPage * this.state.pageSize,
+        show_inactive: true,
       });
     }
   }

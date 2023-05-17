@@ -11,7 +11,12 @@ import { useSelector } from 'react-redux';
 import cx from 'classnames';
 import { find, map } from 'lodash';
 
-import { Helmet, langmap, flattenToAppURL } from '@plone/volto/helpers';
+import {
+  Helmet,
+  langmap,
+  flattenToAppURL,
+  toReactIntlLang,
+} from '@plone/volto/helpers';
 
 import config from '@plone/volto/registry';
 
@@ -42,7 +47,7 @@ const LanguageSelector = (props) => {
             aria-label={`${intl.formatMessage(
               messages.switchLanguageTo,
             )} ${langmap[lang].nativeName.toLowerCase()}`}
-            className={cx({ selected: lang === currentLang })}
+            className={cx({ selected: toReactIntlLang(lang) === currentLang })}
             to={translation ? flattenToAppURL(translation['@id']) : `/${lang}`}
             title={langmap[lang].nativeName}
             onClick={() => {
@@ -57,7 +62,7 @@ const LanguageSelector = (props) => {
     </div>
   ) : (
     <Helmet>
-      <html lang={settings.defaultLanguage} />
+      <html lang={toReactIntlLang(settings.defaultLanguage)} />
     </Helmet>
   );
 };
