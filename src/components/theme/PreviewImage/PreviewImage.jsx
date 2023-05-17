@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 
-import { flattenToAppURL } from '@plone/volto/helpers';
 import { Image } from '@plone/volto/components';
 import config from '@plone/volto/registry';
 
@@ -11,17 +10,8 @@ import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/defau
  */
 function PreviewImage({ item, alt, ...rest }) {
   if (item.image_field && item.image_scales?.[item.image_field]?.[0]) {
-    const image = item.image_scales[item.image_field][0];
-
     return (
-      <Image
-        image={image}
-        baseUrl={flattenToAppURL(item['@id'])}
-        alt={alt}
-        {...rest}
-        width={image.width}
-        height={image.height}
-      />
+      <Image item={item} imageField={item.image_field} alt={alt} {...rest} />
     );
   } else {
     return (

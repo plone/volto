@@ -14,7 +14,7 @@ import { withBlockExtensions } from '@plone/volto/helpers';
  * @class View
  * @extends Component
  */
-export const View = ({ data, detached }) => {
+export const View = ({ data, detached, properties }) => {
   const href = data?.href?.[0]?.['@id'] || '';
   return (
     <p
@@ -38,7 +38,8 @@ export const View = ({ data, detached }) => {
                   medium: data.size === 'm',
                   small: data.size === 's',
                 })}
-                image={data.image}
+                item={data}
+                imageField="image"
                 alt={data.alt || ''}
                 loading="lazy"
               />

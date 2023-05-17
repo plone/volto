@@ -87,6 +87,11 @@ class Edit extends Component {
       this.props.data.placeholder ||
       this.props.intl.formatMessage(messages.ImageBlockInputPlaceholder);
 
+    const hasImage = !!properties.image;
+    const hasImageData = hasImage && !!properties.image.data;
+    const className = cx({ 'full-image': data.align === 'full' });
+    const altText = data.image_caption || properties.image_caption || '';
+
     return (
       <div
         className={cx(
@@ -97,7 +102,7 @@ class Edit extends Component {
           data.align,
         )}
       >
-        {!properties.image && (
+        {!hasImage && (
           <Message>
             <center>
               <img src={imageBlockSVG} alt="" />
@@ -105,15 +110,22 @@ class Edit extends Component {
             </center>
           </Message>
         )}
-        {properties.image && (
+        {hasImage && hasImageData && (
+          <img
+            className={className}
+            // TODO understand when this actually happens
+            src={`data:${properties.image['content-type']};base64,${properties.image.data}`}
+            width={properties.image.width}
+            height={properties.image.height}
+            alt={altText}
+          />
+        )}
+        {hasImage && !hasImageData && (
           <Image
             className={cx({ 'full-width': data.align === 'full' })}
-            image={
-              properties.image.data
-                ? `data:${properties.image['content-type']};base64,${properties.image.data}`
-                : properties.image
-            }
-            alt={data.image_caption || properties.image_caption || ''}
+            item={properties}
+            imageField="image"
+            alt={altText}
           />
         )}
         <SidebarPortal selected={this.props.selected}>

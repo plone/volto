@@ -6,9 +6,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { hasBlocksData, flattenHTMLToAppURL } from '@plone/volto/helpers';
-import { Image, Grid } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
-import { EventDetails } from '@plone/volto/components';
+import { EventDetails, Image } from '@plone/volto/components';
 
 const EventTextfieldView = ({ content }) => (
   <React.Fragment>
@@ -18,9 +18,10 @@ const EventTextfieldView = ({ content }) => (
     )}
     {content.image && (
       <Image
-        className="document-image"
-        src={content.image.scales.thumb.download}
-        floated="right"
+        className="document-image ui right floated image"
+        item={content}
+        imageField="image"
+        alt=""
       />
     )}
     {content.text && (

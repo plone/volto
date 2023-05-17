@@ -29,7 +29,8 @@ const View = ({ data, properties }) => (
           const image = (
             <Image
               className={cx({ 'full-width': data.align === 'full' })}
-              image={properties.image}
+              item={properties}
+              imageField="image"
               alt={properties.image_caption || ''}
             />
           );

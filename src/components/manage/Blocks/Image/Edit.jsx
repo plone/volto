@@ -14,14 +14,15 @@ import loadable from '@loadable/component';
 import cx from 'classnames';
 import { isEqual } from 'lodash';
 
-import { Icon, ImageSidebar, SidebarPortal } from '@plone/volto/components';
+import {
+  Icon,
+  Image,
+  ImageSidebar,
+  SidebarPortal,
+} from '@plone/volto/components';
 import { withBlockExtensions } from '@plone/volto/helpers';
 import { createContent } from '@plone/volto/actions';
-import {
-  flattenToAppURL,
-  getBaseUrl,
-  isInternalURL,
-} from '@plone/volto/helpers';
+import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -251,30 +252,17 @@ class Edit extends Component {
         )}
       >
         {data.url ? (
-          <img
+          <Image
             className={cx({
               'full-width': data.align === 'full',
               large: data.size === 'l',
               medium: data.size === 'm',
               small: data.size === 's',
             })}
-            src={
-              isInternalURL(data.url)
-                ? // Backwards compat in the case that the block is storing the full server URL
-                  (() => {
-                    if (data.size === 'l')
-                      return `${flattenToAppURL(data.url)}/@@images/image`;
-                    if (data.size === 'm')
-                      return `${flattenToAppURL(
-                        data.url,
-                      )}/@@images/image/preview`;
-                    if (data.size === 's')
-                      return `${flattenToAppURL(data.url)}/@@images/image/mini`;
-                    return `${flattenToAppURL(data.url)}/@@images/image`;
-                  })()
-                : data.url
-            }
+            item={data}
+            imageField="image"
             alt={data.alt || ''}
+            loading="lazy"
           />
         ) : (
           <div>

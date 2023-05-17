@@ -95,15 +95,23 @@ const LeadImageSidebar = ({
         <>
           <Segment className="sidebar-metadata-container" secondary>
             {properties.image.filename}
-            <Image
-              image={
-                properties.image.data
-                  ? `data:${properties.image['content-type']};base64,${properties.image.data}`
-                  : properties.image
-              }
-              alt={data.image_caption || properties.image_caption || ''}
-              size="small"
-            />
+            {properties.image.data && (
+              <img
+                // TODO understand when this actually happens
+                src={`data:${properties.image['content-type']};base64,${properties.image.data}`}
+                width={properties.image.width}
+                height={properties.image.height}
+                alt={data.image_caption || properties.image_caption || ''}
+              />
+            )}
+            {!properties.image.data && (
+              <Image
+                item={properties.image}
+                imageField="image"
+                alt={data.image_caption || properties.image_caption || ''}
+                loading="lazy"
+              />
+            )}
           </Segment>
           <Segment className="form sidebar-image-data">
             <TextWidget

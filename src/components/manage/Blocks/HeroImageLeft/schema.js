@@ -34,7 +34,12 @@ const schemaHero = ({ intl }) => {
         title: intl.formatMessage(messages.LinkTo),
         widget: 'object_browser',
         mode: 'link',
-        selectedItemAttrs: ['Title', 'Description'],
+        selectedItemAttrs: [
+          'Title',
+          'Description',
+          'image_field',
+          'image_scales',
+        ],
         allowExternals: true,
       },
     },
