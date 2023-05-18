@@ -80,11 +80,15 @@ export {
   applyConfig,
   withServerErrorCode,
   parseDateTime,
-  normalizeLanguageName,
-  toLangUnderscoreRegion,
+  toGettextLang,
+  normalizeLanguageName, // old name for toGettextLang
+  toReactIntlLang,
+  toLangUnderscoreRegion, // old name for toReactIntlLang
+  toBackendLang,
   hasApiExpander,
   replaceItemOfArray,
   cloneDeepSchema,
+  arrayRange,
   reorderArray,
 } from '@plone/volto/helpers/Utils/Utils';
 export { messages } from './MessageLabels/MessageLabels';
