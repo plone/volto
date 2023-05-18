@@ -28,7 +28,9 @@ export default function Image({
 
   if (!image) return null;
 
-  const baseUrl = isFromRealObject ? '' : flattenToAppURL(item['@id']);
+  const baseUrl = isFromRealObject
+    ? ''
+    : flattenToAppURL(item['@id'] || item.url) + '/';
 
   attrs.src = `${baseUrl}${flattenToAppURL(image.download)}`;
   attrs.width = image.width;

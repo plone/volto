@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Segment } from 'semantic-ui-react';
 import { useIntl, FormattedMessage } from 'react-intl';
 import { BlockDataForm, Icon, Image } from '@plone/volto/components';
-import { isInternalURL } from '@plone/volto/helpers';
 import { ImageSchema } from './schema';
 import imageSVG from '@plone/volto/icons/image.svg';
 
@@ -20,20 +19,23 @@ const ImageSidebar = (props) => {
       </header>
 
       <Segment className="sidebar-metadata-container" secondary attached>
-        {data.url ? (
+        {typeof data.url === 'string' ? (
+          // Entered an external URL
           <>
             {data.url.split('/').slice(-1)[0]}
-            {isInternalURL(data.url) && (
-              <Image
-                item={data}
-                imageField="image"
-                alt={data.alt}
-                loading="lazy"
-              />
-            )}
-            {!isInternalURL(data.url) && (
-              <img src={data.url} alt={data.alt} style={{ width: '50%' }} />
-            )}
+            <img src={data.url} alt={data.alt} style={{ width: '50%' }} />
+          </>
+        ) : Object.prototype.toString.call(data.url) === '[object Object]' ? (
+          // Selected an image with the object browser
+          <>
+            {data.url['@id'].split('/').slice(-1)[0]}
+            <Image
+              item={data.url}
+              imageField="image"
+              alt={data.alt}
+              loading="lazy"
+              style={{ width: '50%', height: 'auto' }}
+            />
           </>
         ) : (
           <>
@@ -49,11 +51,11 @@ const ImageSidebar = (props) => {
         schema={schema}
         title={schema.title}
         onChangeField={(id, value) => {
-          if (id === 'image') {
+          if (id === 'url' && Array.isArray(value)) {
             onChangeBlock(block, {
               ...data,
-              alt: data.alt || value?.title,
-              [id]: value?.image_scales[value?.image_field]?.[0],
+              alt: data.alt || value[0]?.title,
+              url: value[0],
             });
           } else {
             onChangeBlock(block, {

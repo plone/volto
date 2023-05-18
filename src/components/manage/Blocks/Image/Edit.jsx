@@ -259,7 +259,7 @@ class Edit extends Component {
               medium: data.size === 'm',
               small: data.size === 's',
             })}
-            item={data}
+            item={data.url}
             imageField="image"
             alt={data.alt || ''}
             loading="lazy"
@@ -297,7 +297,25 @@ class Edit extends Component {
                               onClick={(e) => {
                                 e.stopPropagation();
                                 e.preventDefault();
-                                this.props.openObjectBrowser();
+                                this.props.openObjectBrowser({
+                                  mode: 'link',
+                                  onSelectItem: (
+                                    url,
+                                    { title, image_field, image_scales },
+                                  ) => {
+                                    this.props.onChangeBlock(this.props.block, {
+                                      ...this.props.data,
+                                      url: {
+                                        '@id': url,
+                                        title,
+                                        image_field,
+                                        image_scales,
+                                      },
+                                      alt: this.props.data.alt || title,
+                                    });
+                                  },
+                                  selectableTypes: ['Image'],
+                                });
                               }}
                             >
                               <Icon name={navTreeSVG} size="24px" />
