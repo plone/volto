@@ -100,16 +100,16 @@ const LeftColumnFacets = (props) => {
           {(Object.keys(data).includes('showSearchInput')
             ? data.showSearchInput
             : true) && (
-              <div className="search-wrapper">
-                <SearchInput {...props} isLive={isLive} />
-                {data.showSearchButton && (
-                  <Button primary onClick={() => onTriggerSearch(searchText)}>
-                    {data.searchButtonLabel ||
-                      intl.formatMessage(messages.searchButtonText)}
-                  </Button>
-                )}
-              </div>
-            )}
+            <div className="search-wrapper">
+              <SearchInput {...props} isLive={isLive} />
+              {data.showSearchButton && (
+                <Button primary onClick={() => onTriggerSearch(searchText)}>
+                  {data.searchButtonLabel ||
+                    intl.formatMessage(messages.searchButtonText)}
+                </Button>
+              )}
+            </div>
+          )}
 
           <FilterList
             {...props}

@@ -94,7 +94,8 @@ const messages = defineMessages({
   },
   advancedFacetDescription: {
     id: 'Advanced facets are initially hidden and displayed on demand',
-    defaultMessage: 'Advanced facets are initially hidden and displayed on demand',
+    defaultMessage:
+      'Advanced facets are initially hidden and displayed on demand',
   },
   facetWidget: {
     id: 'Facet widget',
@@ -159,8 +160,8 @@ const FacetSchema = ({ intl }) => ({
           {},
           ...Object.keys(options).map((k) =>
             Object.keys(options[k].values || {}).length ||
-              hasNonValueOperation(options[k].operations) ||
-              hasDateOperation(options[k].operations)
+            hasNonValueOperation(options[k].operations) ||
+            hasDateOperation(options[k].operations)
               ? { [k]: options[k] }
               : {},
           ),
