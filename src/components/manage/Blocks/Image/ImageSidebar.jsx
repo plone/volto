@@ -21,45 +21,43 @@ const ImageSidebar = (props) => {
       </header>
 
       <Segment className="sidebar-metadata-container" secondary attached>
-        {typeof data.url === 'string' ? (
-          // Entered an external URL
-          <>
-            <div>
-              {(data.url?.['@id'] ?? data.url).split('/').slice(-1)[0]}
-              <Button
-                basic
-                className="cancel"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onChangeBlock(block, {
-                    ...data,
-                    url: undefined,
-                    image_scales: undefined,
-                  });
-                }}
-              >
-                <Icon name={clearSVG} size="30px" />
-              </Button>
-            </div>
-            {isString(data.url) ? (
-              <img src={data.url} alt={data.alt} style={{ width: '50%' }} />
-            ) : (
-              <Image
-                item={data.url}
-                alt={data.alt}
-                loading="lazy"
-                style={{ width: '50%' }}
-              />
-            )}
-          </>
-        ) : (
-          <>
-            <FormattedMessage
-              id="No image selected"
-              defaultMessage="No image selected"
+        <>
+          <div>
+            {(data.url?.['@id'] ?? data.url).split('/').slice(-1)[0]}
+            <Button
+              basic
+              className="cancel"
+              onClick={(e) => {
+                e.stopPropagation();
+                onChangeBlock(block, {
+                  ...data,
+                  url: undefined,
+                  image_scales: undefined,
+                });
+              }}
+            >
+              <Icon name={clearSVG} size="30px" />
+            </Button>
+          </div>
+          {isString(data.url) ? (
+            <img src={data.url} alt={data.alt} style={{ width: '50%' }} />
+          ) : (
+            <Image
+              item={data.url}
+              alt={data.alt}
+              loading="lazy"
+              style={{ width: '50%' }}
             />
-            <Icon name={imageSVG} size="100px" color="#b8c6c8" />
-          </>
+          )}
+        </>
+        ) : (
+        <>
+          <FormattedMessage
+            id="No image selected"
+            defaultMessage="No image selected"
+          />
+          <Icon name={imageSVG} size="100px" color="#b8c6c8" />
+        </>
         )}
       </Segment>
       <BlockDataForm
