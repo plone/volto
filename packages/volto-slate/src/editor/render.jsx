@@ -23,10 +23,22 @@ export const Element = ({ element, attributes = {}, extras, ...rest }) => {
   const { elements } = slate;
   const El = elements[element.type] || elements['default'];
 
-  const attrs = Object.assign(element.styleName ? { className: element.styleName } : {}, ...Object.keys(attributes || {}).map((k) => (!isEmpty(attributes[k]) ? { [k]: attributes[k] } : {})));
+  const attrs = Object.assign(
+    element.styleName ? { className: element.styleName } : {},
+    ...Object.keys(attributes || {}).map((k) =>
+      !isEmpty(attributes[k]) ? { [k]: attributes[k] } : {},
+    ),
+  );
   attrs.ref = attributes?.ref; // never remove the ref
 
-  return <El element={element} {...omit(rest, OMITTED)} attributes={attrs} extras={extras} />;
+  return (
+    <El
+      element={element}
+      {...omit(rest, OMITTED)}
+      attributes={attrs}
+      extras={extras}
+    />
+  );
 };
 
 export const Leaf = ({ children, ...rest }) => {
@@ -34,7 +46,9 @@ export const Leaf = ({ children, ...rest }) => {
   let { leafs } = config.settings.slate;
 
   children = Object.keys(leafs).reduce((acc, name) => {
-    return Object.keys(leaf).includes(name) ? leafs[name]({ children: acc }) : acc;
+    return Object.keys(leaf).includes(name)
+      ? leafs[name]({ children: acc })
+      : acc;
   }, children);
 
   const classNames = {
@@ -57,7 +71,8 @@ export const Leaf = ({ children, ...rest }) => {
         // Softbreak support. Should do a plugin?
         return (
           <React.Fragment key={`${i}`}>
-            {children.indexOf('\n') > -1 && children.split('\n').length - 1 > i ? (
+            {children.indexOf('\n') > -1 &&
+            children.split('\n').length - 1 > i ? (
               <>
                 {klass ? <span className={klass}>{t}</span> : t}
                 <br />
@@ -94,7 +109,15 @@ export const serializeNodes = (nodes, getAttributes, extras = {}) => {
           {node.text}
         </Leaf>
       ) : (
-        <Element path={path} element={node} mode="view" key={path} data-slate-data={node.data ? serializeData(node) : null} attributes={getAttributes ? getAttributes(node, path) : null} extras={extras}>
+        <Element
+          path={path}
+          element={node}
+          mode="view"
+          key={path}
+          data-slate-data={node.data ? serializeData(node) : null}
+          attributes={getAttributes ? getAttributes(node, path) : null}
+          extras={extras}
+        >
           {_serializeNodes(Array.from(Node.children(editor, path)))}
         </Element>
       );
@@ -131,17 +154,25 @@ export const serializeNodesToText = (nodes) => {
   return nodes.map(ConcatenatedString).join('\n');
 };
 
-export const serializeNodesToHtml = (nodes) => renderToStaticMarkup(serializeNodes(nodes));
+export const serializeNodesToHtml = (nodes) =>
+  renderToStaticMarkup(serializeNodes(nodes));
 
 export const renderLinkElement = (tagName) => {
-  function LinkElement({ attributes, children, mode = 'edit', className = null }) {
+  function LinkElement({
+    attributes,
+    children,
+    mode = 'edit',
+    className = null,
+  }) {
     const { slate } = config.settings;
     const Tag = tagName;
     const slug = attributes.id || '';
     const location = useLocation();
     const appPathname = addAppURL(location.pathname);
     // eslint-disable-next-line no-unused-vars
-    const [copied, copy, setCopied] = useClipboard(appPathname.concat(`#${slug}`));
+    const [copied, copy, setCopied] = useClipboard(
+      appPathname.concat(`#${slug}`),
+    );
     const intl = useIntl();
 
     return slate.uselinkedHeadlines === false ? (
@@ -153,7 +184,12 @@ export const renderLinkElement = (tagName) => {
         {children}
         {mode === 'view' && slug && (
           <span className="anchor-wrapper">
-            <UniversalLink className="anchor" aria-hidden="true" tabIndex={-1} href={`#${slug}`}>
+            <UniversalLink
+              className="anchor"
+              aria-hidden="true"
+              tabIndex={-1}
+              href={`#${slug}`}
+            >
               <svg
                 {...linkSVG.attributes}
                 dangerouslySetInnerHTML={{ __html: linkSVG.content }}
@@ -161,7 +197,13 @@ export const renderLinkElement = (tagName) => {
                 onClick={() => {
                   copy();
 
-                  toast.info(<Toast info title={intl.formatMessage(messages.success)} content={intl.formatMessage(messages.UrlclipboardCopy)} />);
+                  toast.info(
+                    <Toast
+                      info
+                      title={intl.formatMessage(messages.success)}
+                      content={intl.formatMessage(messages.UrlclipboardCopy)}
+                    />,
+                  );
                 }}
               ></svg>
             </UniversalLink>
