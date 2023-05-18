@@ -88,6 +88,14 @@ const messages = defineMessages({
     defaultMessage:
       'Hidden facets will still filter the results if proper parameters are passed in URLs',
   },
+  advancedFacetTitle: {
+    id: 'Advanced facet?',
+    defaultMessage: 'Advanced facet?',
+  },
+  advancedFacetDescription: {
+    id: 'Advanced facets are initially hidden and displayed on demand',
+    defaultMessage: 'Advanced facets are initially hidden and displayed on demand',
+  },
   facetWidget: {
     id: 'Facet widget',
     defaultMessage: 'Facet widget',
@@ -131,7 +139,7 @@ const FacetSchema = ({ intl }) => ({
     {
       id: 'default',
       title: 'Default',
-      fields: ['title', 'field', 'type', 'hidden'],
+      fields: ['title', 'field', 'type', 'hidden', 'advanced'],
     },
   ],
   properties: {
@@ -151,8 +159,8 @@ const FacetSchema = ({ intl }) => ({
           {},
           ...Object.keys(options).map((k) =>
             Object.keys(options[k].values || {}).length ||
-            hasNonValueOperation(options[k].operations) ||
-            hasDateOperation(options[k].operations)
+              hasNonValueOperation(options[k].operations) ||
+              hasDateOperation(options[k].operations)
               ? { [k]: options[k] }
               : {},
           ),
@@ -169,6 +177,12 @@ const FacetSchema = ({ intl }) => ({
       title: intl.formatMessage(messages.hideFacetTitle),
       default: false,
       description: intl.formatMessage(messages.hideFacetDescription),
+    },
+    advanced: {
+      type: 'boolean',
+      title: intl.formatMessage(messages.advancedFacetTitle),
+      default: false,
+      description: intl.formatMessage(messages.advancedFacetDescription),
     },
     type: {
       title: intl.formatMessage(messages.facetWidget),

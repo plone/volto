@@ -11,6 +11,7 @@ import {
   SortOn,
   ViewSwitcher,
 } from '../components';
+import cx from 'classnames';
 
 const messages = defineMessages({
   searchButtonText: {
@@ -19,11 +20,24 @@ const messages = defineMessages({
   },
 });
 
-const FacetWrapper = ({ children }) => (
-  <Grid.Column mobile={12} tablet={4} computer={3}>
-    {children}
-  </Grid.Column>
-);
+const FacetWrapper = ({ children, facetSettings = {}, visible }) => {
+  const { advanced, field = {} } = facetSettings;
+
+  return (
+    <Grid.Column
+      mobile={12}
+      tablet={4}
+      computer={3}
+      className={cx('facet', {
+        [`facet-index-${field.value}`]: !!field.value,
+        'advanced-facet': advanced,
+        'advanced-facet-hidden': !visible,
+      })}
+    >
+      {children}
+    </Grid.Column>
+  );
+};
 
 const TopSideFacets = (props) => {
   const {
@@ -64,16 +78,16 @@ const TopSideFacets = (props) => {
           {(Object.keys(data).includes('showSearchInput')
             ? data.showSearchInput
             : true) && (
-            <div className="search-wrapper">
-              <SearchInput {...props} isLive={isLive} />
-              {data.showSearchButton && (
-                <Button primary onClick={() => onTriggerSearch(searchText)}>
-                  {data.searchButtonLabel ||
-                    intl.formatMessage(messages.searchButtonText)}
-                </Button>
-              )}
-            </div>
-          )}
+              <div className="search-wrapper">
+                <SearchInput {...props} isLive={isLive} />
+                {data.showSearchButton && (
+                  <Button primary onClick={() => onTriggerSearch(searchText)}>
+                    {data.searchButtonLabel ||
+                      intl.formatMessage(messages.searchButtonText)}
+                  </Button>
+                )}
+              </div>
+            )}
 
           <div className="search-filters-sort">
             <FilterList
@@ -117,6 +131,7 @@ const TopSideFacets = (props) => {
               <ViewSwitcher {...props} />
             )}
           </div>
+
           {data.facets?.length > 0 && (
             <div className="facets">
               {data.facetsTitle && <h3>{data.facetsTitle}</h3>}
@@ -136,6 +151,7 @@ const TopSideFacets = (props) => {
               </Grid>
             </div>
           )}
+
           <SearchDetails
             text={searchedText}
             total={totalItems}
