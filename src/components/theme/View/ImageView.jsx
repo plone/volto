@@ -29,7 +29,12 @@ const ImageView = ({ content }) => (
     )}
     {content?.image?.download && (
       <a href={flattenToAppURL(content.image.download)}>
-        <Image item={content} imageField="image" alt={content.title} />
+        <Image
+          item={content}
+          imageField="image"
+          alt={content.title}
+          responsive={true}
+        />
         <figcaption>
           <FormattedMessage
             id="Size: {size}"

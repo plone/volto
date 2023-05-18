@@ -32,6 +32,7 @@ const View = ({ data, properties }) => (
               item={properties}
               imageField="image"
               alt={properties.image_caption || ''}
+              responsive={true}
             />
           );
           if (data.href) {

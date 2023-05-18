@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { isString } from 'lodash';
 import { Segment, Button } from 'semantic-ui-react';
-import { useIntl, FormattedMessage } from 'react-intl';
+import { useIntl, FormattedMessage, defineMessages } from 'react-intl';
 import { BlockDataForm, Icon, Image } from '@plone/volto/components';
 import { ImageSchema } from './schema';
 import imageSVG from '@plone/volto/icons/image.svg';
@@ -21,43 +21,52 @@ const ImageSidebar = (props) => {
       </header>
 
       <Segment className="sidebar-metadata-container" secondary attached>
-        <>
-          <div>
-            {(data.url?.['@id'] ?? data.url).split('/').slice(-1)[0]}
-            <Button
-              basic
-              className="cancel"
-              onClick={(e) => {
-                e.stopPropagation();
-                onChangeBlock(block, {
-                  ...data,
-                  url: undefined,
-                  image_scales: undefined,
-                });
-              }}
-            >
-              <Icon name={clearSVG} size="30px" />
-            </Button>
-          </div>
-          {isString(data.url) ? (
-            <img src={data.url} alt={data.alt} style={{ width: '50%' }} />
-          ) : (
-            <Image
-              item={data.url}
-              alt={data.alt}
-              loading="lazy"
-              style={{ width: '50%' }}
-            />
-          )}
-        </>
+        {data.url ? (
+          <>
+            <div>
+              {(data.url?.['@id'] ?? data.url).split('/').slice(-1)[0]}
+              <Button
+                basic
+                className="cancel"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onChangeBlock(block, {
+                    ...data,
+                    url: undefined,
+                    alt: data.url.title === data.alt ? undefined : data.alt,
+                  });
+                }}
+              >
+                <Icon name={clearSVG} size="30px" />
+              </Button>
+            </div>
+            {isString(data.url) ? (
+              <img
+                src={data.url}
+                alt={intl.formatMessage(messages.preview)}
+                style={{ width: '50%' }}
+                className="responsive"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <Image
+                item={data.url}
+                alt={intl.formatMessage(messages.preview)}
+                loading="lazy"
+                responsive={true}
+                style={{ width: '50%' }}
+              />
+            )}
+          </>
         ) : (
-        <>
-          <FormattedMessage
-            id="No image selected"
-            defaultMessage="No image selected"
-          />
-          <Icon name={imageSVG} size="100px" color="#b8c6c8" />
-        </>
+          <>
+            <FormattedMessage
+              id="No image selected"
+              defaultMessage="No image selected"
+            />
+            <Icon name={imageSVG} size="100px" color="#b8c6c8" />
+          </>
         )}
       </Segment>
       <BlockDataForm
@@ -85,3 +94,10 @@ ImageSidebar.propTypes = {
 };
 
 export default ImageSidebar;
+
+const messages = defineMessages({
+  preview: {
+    id: 'image_block_preview',
+    defaultMessage: 'Image preview',
+  },
+});

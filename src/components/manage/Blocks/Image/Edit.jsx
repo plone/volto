@@ -245,6 +245,13 @@ class Edit extends Component {
     const placeholder =
       this.props.data.placeholder ||
       this.props.intl.formatMessage(messages.ImageBlockInputPlaceholder);
+    const className = cx('responsive', {
+      'full-width': data.align === 'full',
+      large: data.size === 'l',
+      medium: data.size === 'm',
+      small: data.size === 's',
+    });
+
     return (
       <div
         className={cx(
@@ -257,15 +264,17 @@ class Edit extends Component {
       >
         {data.url ? (
           isString(data.url) ? (
-            <img src={data.url} alt={data.alt} style={{ width: '50%' }} />
+            <img
+              src={data.url}
+              alt={data.alt || ''}
+              style={{ width: '50%' }}
+              className={className}
+              loading="lazy"
+              decoding="async"
+            />
           ) : (
             <Image
-              className={cx({
-                'full-width': data.align === 'full',
-                large: data.size === 'l',
-                medium: data.size === 'm',
-                small: data.size === 's',
-              })}
+              className={className}
               item={data.url}
               alt={data.alt || ''}
               loading="lazy"
@@ -305,6 +314,7 @@ class Edit extends Component {
                                 e.stopPropagation();
                                 e.preventDefault();
                                 this.props.openObjectBrowser({
+                                  mode: 'link',
                                   onSelectItem: (
                                     url,
                                     { title, image_field, image_scales },

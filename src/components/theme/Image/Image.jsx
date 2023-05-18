@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 import { flattenToAppURL } from '@plone/volto/helpers';
 
 /**
@@ -13,6 +14,8 @@ export default function Image({
   imageField,
   alt = '',
   loading = 'eager',
+  responsive = false,
+  className = '',
   ...imageProps
 }) {
   // TypeScript hints for editor autocomplete :)
@@ -32,12 +35,12 @@ export default function Image({
 
   attrs.src = `${baseUrl}${flattenToAppURL(image.download)}`;
   attrs.width = image.width;
-  attrs.height = 'auto';
+  attrs.height = image.height;
   attrs.style = {
     aspectRatio: `${image.width} / ${image.height}`,
-    maxWidth: '100%',
     ...imageProps.style,
   };
+  attrs.className = cx(className, { responsive });
 
   if (image.scales && Object.keys(image.scales).length > 0) {
     const sortedScales = Object.values(image.scales).sort((a, b) => {
@@ -69,4 +72,6 @@ Image.propTypes = {
   imageField: PropTypes.string,
   alt: PropTypes.string.isRequired,
   loading: PropTypes.string,
+  responsive: PropTypes.bool,
+  className: PropTypes.string,
 };

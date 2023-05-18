@@ -38,6 +38,8 @@ const SummaryView = ({ content }) => (
                 item={item}
                 size="thumb"
                 className="ui image floated right clear"
+                responsive={true}
+                loading="lazy"
               />
             )}
             {item.description && <p>{item.description}</p>}

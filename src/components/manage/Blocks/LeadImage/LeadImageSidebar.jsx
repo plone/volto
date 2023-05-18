@@ -102,6 +102,10 @@ const LeadImageSidebar = ({
                 width={properties.image.width}
                 height={properties.image.height}
                 alt={data.image_caption || properties.image_caption || ''}
+                className="responsive"
+                style={{
+                  aspectRatio: `${properties.image.width} / ${properties.image.height}`,
+                }}
               />
             )}
             {!properties.image.data && (
@@ -110,6 +114,7 @@ const LeadImageSidebar = ({
                 imageField="image"
                 alt={data.image_caption || properties.image_caption || ''}
                 loading="lazy"
+                responsive={true}
               />
             )}
           </Segment>

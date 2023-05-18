@@ -33,6 +33,8 @@ const ListingView = ({ content }) => (
               item={item}
               size="thumb"
               className="ui image"
+              responsive={true}
+              loading="lazy"
             />
           )}
         </Segment>

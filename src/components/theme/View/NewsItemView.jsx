@@ -39,6 +39,7 @@ const NewsItemView = ({ content }) =>
           title={content.title}
           item={content}
           imageField="image"
+          responsive={true}
         />
       )}
       {content.text && (

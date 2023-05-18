@@ -1705,7 +1705,6 @@ See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information
 
 ### Breaking
 
-- Added new Image component to render optimized images @nzambello @giuliaghisini @pnicolli
 - Remove the `callout` button (the one with the megaphone icon) from the slate toolbar since it has the same styling as `blockquote`. If you need it anyway, you can bring it back in your addon. @sneridagh
 
 ### Bugfix

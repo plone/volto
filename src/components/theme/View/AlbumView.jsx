@@ -87,6 +87,10 @@ class AlbumView extends React.Component {
                                   });
                                 }}
                                 className="ui middle aligned image"
+                                responsive={true}
+                                loading="lazy"
+                                alt={item.title}
+                                title={item.title}
                               />
                             </Segment>
                           </Grid.Column>
@@ -137,6 +141,7 @@ class AlbumView extends React.Component {
                                   }}
                                   size="large"
                                   className="ui image"
+                                  responsive={true}
                                 />
                                 <Modal.Description>
                                   <p>{item.description}</p>

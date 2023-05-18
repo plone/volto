@@ -89,7 +89,7 @@ class Edit extends Component {
 
     const hasImage = !!properties.image;
     const hasImageData = hasImage && !!properties.image.data;
-    const className = cx({ 'full-image': data.align === 'full' });
+    const className = cx('responsive', { 'full-image': data.align === 'full' });
     const altText = data.image_caption || properties.image_caption || '';
 
     return (
@@ -118,11 +118,14 @@ class Edit extends Component {
             width={properties.image.width}
             height={properties.image.height}
             alt={altText}
+            style={{
+              aspectRatio: `${properties.image.width}/${properties.image.height}`,
+            }}
           />
         )}
         {hasImage && !hasImageData && (
           <Image
-            className={cx({ 'full-width': data.align === 'full' })}
+            className={className}
             item={properties}
             imageField="image"
             alt={altText}
