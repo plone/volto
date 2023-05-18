@@ -58,6 +58,8 @@ export function queryRelations(
   relation = null,
   onlyBroken = false,
   subrequest = null,
+  source = null,
+  target = null,
   query_source = null,
   query_target = null,
 ) {
@@ -65,6 +67,8 @@ export function queryRelations(
   var searchParams = new URLSearchParams();
   relation && searchParams.append('relation', relation);
   onlyBroken && searchParams.append('onlyBroken', onlyBroken);
+  source && searchParams.append('source', source);
+  target && searchParams.append('target', target);
   query_source && searchParams.append('query_source', query_source);
   query_target && searchParams.append('query_target', query_target);
   const searchParamsToString = searchParams.toString();

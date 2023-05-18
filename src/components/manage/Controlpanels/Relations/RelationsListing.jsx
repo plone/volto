@@ -148,6 +148,8 @@ const ListingTemplate = ({
           relationtype,
           false,
           null,
+          null,
+          null,
           query_source
             ? query_source.startsWith('/')
               ? query_source
@@ -218,6 +220,8 @@ const ListingTemplate = ({
       queryRelations(
         relationtype,
         false,
+        null,
+        null,
         null,
         query_source
           ? query_source.startsWith('/')
