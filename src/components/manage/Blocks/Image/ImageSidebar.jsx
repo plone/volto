@@ -76,7 +76,6 @@ const ImageSidebar = (props) => {
           onChangeBlock(block, {
             ...data,
             [id]: value,
-            image_scales: id === 'url' ? undefined : data.image_scales,
           });
         }}
         onChangeBlock={onChangeBlock}

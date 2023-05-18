@@ -3125,7 +3125,6 @@ msgid "Sorted"
 msgstr "Trié"
 
 #: components/manage/Blocks/HTML/Edit
-#: components/manage/Blocks/Image/schema
 # defaultMessage: Source
 msgid "Source"
 msgstr "Source"
@@ -4189,6 +4188,11 @@ msgstr "html"
 # defaultMessage: Image
 msgid "image"
 msgstr "image"
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Image preview
+msgid "image_block_preview"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be integer

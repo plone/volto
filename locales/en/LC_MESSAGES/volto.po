@@ -3108,7 +3108,6 @@ msgid "Sorted"
 msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
-#: components/manage/Blocks/Image/schema
 # defaultMessage: Source
 msgid "Source"
 msgstr ""
@@ -4171,6 +4170,11 @@ msgstr ""
 #: config/Blocks
 # defaultMessage: Image
 msgid "image"
+msgstr ""
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Image preview
+msgid "image_block_preview"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels

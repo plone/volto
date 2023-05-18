@@ -3115,7 +3115,6 @@ msgid "Sorted"
 msgstr "Ordenatuta"
 
 #: components/manage/Blocks/HTML/Edit
-#: components/manage/Blocks/Image/schema
 # defaultMessage: Source
 msgid "Source"
 msgstr "Iturburua"
@@ -4179,6 +4178,11 @@ msgstr "HTML"
 # defaultMessage: Image
 msgid "image"
 msgstr "Irudia"
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Image preview
+msgid "image_block_preview"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be integer
