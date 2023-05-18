@@ -175,7 +175,7 @@ export const renderLinkElement = (tagName) => {
     );
     const intl = useIntl();
 
-    return slate.uselinkedHeadlines === false ? (
+    return slate.useLinkedHeadlines === false ? (
       <Tag {...attributes} className={className}>
         {children}
       </Tag>

@@ -239,6 +239,15 @@ They are not persisted in the final value, so they are useful, for example, to h
 slate.runtimeDecorators = [([node, path], ranges) => ranges];
 ```
 
+(editor-configuration-slate-useLinkedHeadlines-label)=
+
+## `slate.useLinkedHeadlines`
+
+volto-slate comes with anchored headings for all tags(h1,h2,h3,h4) formatted via editor. You can easily opt-out by using the setting.
+
+```js
+slate.useLinkedHeadlines = false
+```
 
 (editor-configuration-blocks-initialBlocksFocus-label)=
 
