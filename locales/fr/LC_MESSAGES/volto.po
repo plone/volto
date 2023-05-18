@@ -489,11 +489,6 @@ msgstr "Explorer le site, déposer l'image ou écriver l'URL"
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "Par défaut, les autorisations du conteneur de cet élément sont héritées. Si vous désactivez cette option, seules les autorisations de partage explicitement définies seront valides. Dans l'aperçu, le symbole {inherited} indique une valeur héritée. De même, le symbole {global} indique un rôle global, qui est géré par l'administrateur du site."
 
-#: components/manage/Contents/Contents
-# defaultMessage: By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first.
-msgid "By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first."
-msgstr "En supprimant cet élément, vous rompez les liens qui existent dans les éléments répertoriés ci-dessous. Si c'est ce que vous voulez faire, nous vous recommandons de supprimer d'abord ces références."
-
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Cache Name
 msgid "Cache Name"
@@ -970,6 +965,16 @@ msgstr "Condition supprimée"
 msgid "Delete row"
 msgstr "Supprimer la ligne"
 
+#: components/manage/Contents/Contents
+# defaultMessage: Delete selected items?
+msgid "Delete selected items?"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Delete this item?
+msgid "Delete this item?"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Deleted
 msgid "Deleted"
@@ -1037,11 +1042,6 @@ msgstr "Distribué sous la {license}."
 # defaultMessage: Add border to inner columns
 msgid "Divide each row into separate cells"
 msgstr "Diviser chaque colonnes en cellules séparées"
-
-#: components/manage/Contents/Contents
-# defaultMessage: Do you really want to delete the following items?
-msgid "Do you really want to delete the following items?"
-msgstr "Voulez-vous vraiment supprimer les éléments suivants ?"
 
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 # defaultMessage: Do you really want to delete the group {groupname}?
@@ -1794,11 +1794,6 @@ msgstr "Eléments"
 msgid "Items must be unique."
 msgstr "Les éléments doivent être unique."
 
-#: components/manage/Contents/Contents
-# defaultMessage: Items to be deleted:
-msgid "Items to be deleted:"
-msgstr "Éléments à supprimer :"
-
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Label
 msgid "Label"
@@ -2477,11 +2472,6 @@ msgstr "Position changée"
 msgid "Possible values"
 msgstr "Valeurs possibles"
 
-#: components/manage/Contents/Contents
-# defaultMessage: Potential link breakage
-msgid "Potential link breakage"
-msgstr "Lien potentiellement cassé"
-
 #: components/theme/Footer/Footer
 # defaultMessage: Powered by Plone & Python
 msgid "Powered by Plone & Python"
@@ -3087,6 +3077,21 @@ msgstr "Taille : {size}"
 msgid "Small"
 msgstr "Petit"
 
+#: components/manage/Contents/Contents
+# defaultMessage: Some items are also a folder.
+msgid "Some items are also a folder."
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Some items are referenced by other contents.
+msgid "Some items are referenced by other contents."
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Some items are referenced by other contents.
+msgid "Some items are referenced by other contents."
+msgstr ""
+
 #: error
 # defaultMessage: Sorry, something went wrong with your request
 msgid "Sorry, something went wrong with your request"
@@ -3414,11 +3419,6 @@ msgstr "Il y a eu quelques erreurs."
 msgid "Third"
 msgstr "Troisième"
 
-#: components/manage/Contents/Contents
-# defaultMessage: This Page is referenced by the following items:
-msgid "This Page is referenced by the following items:"
-msgstr "Cette page est référencée par les éléments suivants :"
-
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This has an ongoing working copy in {title}
 msgid "This has an ongoing working copy in {title}"
@@ -3433,6 +3433,21 @@ msgstr "Il sagit d'un nom réservé, il ne peut être utilisé"
 # defaultMessage: This is a working copy of {title}
 msgid "This is a working copy of {title}"
 msgstr "Il sagit d'une copie de travail de {title}"
+
+#: components/manage/Contents/Contents
+# defaultMessage: This item is also a folder.
+msgid "This item is also a folder."
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: This item is referenced by other items. By
+msgid "This item is referenced by other items. Bydeleting it {brokenReferences}"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: This item is referenced by other items. By
+msgid "This item is referenced by other items. Bydeleting it {brokenReferences}"
+msgstr ""
 
 #: components/manage/LockingToastsFactory/LockingToastsFactory
 # defaultMessage: This item was locked by {creator} on {date}
@@ -3488,11 +3503,6 @@ msgstr "Total des objets actifs et non actifs"
 # defaultMessage: Total comments
 msgid "Total comments"
 msgstr "Nombre de commentaires"
-
-#: components/manage/Contents/Contents
-# defaultMessage: Total items to be deleted:
-msgid "Total items to be deleted:"
-msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Total number of objects in each cache
